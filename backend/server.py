@@ -78,6 +78,10 @@ class LoginIn(BaseModel):
     email: EmailStr
     password: str
 
+class ChangePasswordIn(BaseModel):
+    current_password: str
+    new_password: str
+
 class TokenOut(BaseModel):
     token: str
     email: str
@@ -201,6 +205,20 @@ async def login(payload: LoginIn):
 @api.get("/auth/me")
 async def me(user=Depends(require_admin)):
     return {"email": user["email"], "role": user["role"]}
+
+
+@api.post("/auth/change-password")
+async def change_password(payload: ChangePasswordIn, user=Depends(require_admin)):
+    if len(payload.new_password) < 8:
+        raise HTTPException(status_code=400, detail="New password must be at least 8 characters")
+    existing = await db.users.find_one({"email": user["email"]}, {"_id": 0})
+    if not existing or not verify_password(payload.current_password, existing["password_hash"]):
+        raise HTTPException(status_code=400, detail="Current password is incorrect")
+    await db.users.update_one(
+        {"email": user["email"]},
+        {"$set": {"password_hash": hash_password(payload.new_password)}},
+    )
+    return {"ok": True, "message": "Password updated. Please sign in again."}
 
 
 # ---------- Public: Categories ----------
@@ -516,7 +534,7 @@ async def on_startup():
     await db.newsletter.create_index("email", unique=True)
     await db.settings.create_index("key", unique=True)
 
-    # admin
+    # admin (seed only if absent; do NOT overwrite password so admin can change it via UI)
     existing = await db.users.find_one({"email": ADMIN_EMAIL.lower()})
     if not existing:
         await db.users.insert_one({
@@ -528,12 +546,6 @@ async def on_startup():
             "created_at": now_iso(),
         })
         logger.info("Seeded admin user")
-    elif not verify_password(ADMIN_PASSWORD, existing["password_hash"]):
-        await db.users.update_one(
-            {"email": ADMIN_EMAIL.lower()},
-            {"$set": {"password_hash": hash_password(ADMIN_PASSWORD)}},
-        )
-        logger.info("Updated admin password")
 
     # categories
     for c in SEED_CATEGORIES:

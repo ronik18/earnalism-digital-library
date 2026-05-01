@@ -39,7 +39,7 @@ export default function Footer() {
       <div className="border-t border-brand">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-xs tracking-wider text-charcoal-soft">© {new Date().getFullYear()} The Earnalism. Read with depth.</p>
-          <Link to="/admin/login" className="text-xs tracking-wider text-charcoal-soft hover:text-burgundy" data-testid="footer-admin-link">Admin</Link>
+          <p className="text-xs tracking-wider text-charcoal-soft">Crafted with care · theearnalism.com</p>
         </div>
       </div>
     </footer>
