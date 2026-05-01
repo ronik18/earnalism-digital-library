@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { api, formatError } from "../lib/api";
 import useSEO from "../hooks/useSEO";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1739918075668-fc7844c6d921?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjBsaWJyYXJ5JTIwaW50ZXJpb3IlMjB3YXJtJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzc3NjE3MTkwfDA&ixlib=rb-4.1.0&q=85";
+const HERO_IMG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1920&q=90";
 const FOUNDER_IMG = "https://images.unsplash.com/photo-1773067752075-2cfd37ab02dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
 
 export default function Home() {
@@ -43,9 +43,33 @@ export default function Home() {
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <img src={HERO_IMG} alt="" loading="eager" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1a0a0e]/72 via-[#2a1218]/55 to-[#F4EFEA]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(197,160,89,0.18),transparent_70%)]" />
+          <img
+            src={HERO_IMG}
+            alt=""
+            loading="eager"
+            className="w-full h-full object-cover"
+            style={{ filter: "saturate(1.05) brightness(0.82)" }}
+          />
+          {/* Strong left-side dark gradient so headline + subtext sit on a deep, readable surface */}
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(to right, rgba(14,6,8,0.88) 0%, rgba(14,6,8,0.66) 38%, rgba(14,6,8,0.28) 65%, rgba(14,6,8,0.05) 100%)" }}
+          />
+          {/* Subtle top + bottom deepening to ground the masthead and the page transition */}
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(to bottom, rgba(14,6,8,0.45) 0%, transparent 22%, transparent 70%, rgba(14,6,8,0.30) 100%)" }}
+          />
+          {/* Warm amber glow on the upper-right — lifts the library's golden depth */}
+          <div
+            className="absolute inset-0"
+            style={{ background: "radial-gradient(ellipse 55% 55% at 78% 40%, rgba(216,185,122,0.22), transparent 72%)" }}
+          />
+          {/* Soft transition into the page beige */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-1/3"
+            style={{ background: "linear-gradient(to top, #F4EFEA 0%, rgba(244,239,234,0.60) 55%, transparent 100%)" }}
+          />
         </div>
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-36 lg:pt-44 pb-28 sm:pb-44 lg:pb-52">
           <div className="max-w-3xl">
@@ -53,10 +77,10 @@ export default function Home() {
               <span className="h-px w-8 sm:w-10 bg-[var(--brand-gold)]/70" />
               <span className="text-[0.85rem] sm:text-[0.95rem]">Volume I &middot; Curated Reading</span>
             </div>
-            <h1 className="font-serif-light text-[2.6rem] sm:text-[3.5rem] md:text-6xl lg:text-7xl leading-[1.04] text-[#FDFCF8] tracking-tight text-balance" data-testid="hero-headline">
+            <h1 className="font-serif-light text-[2.6rem] sm:text-[3.5rem] md:text-6xl lg:text-7xl leading-[1.04] text-[#FDFCF8] tracking-tight text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]" data-testid="hero-headline">
               Books for those who <span className="italic-accent text-[var(--brand-gold-soft)]">read</span> with depth.
             </h1>
-            <p className="mt-7 sm:mt-9 text-[0.95rem] sm:text-[1.05rem] text-[#F4EFEA]/80 max-w-md sm:max-w-lg leading-[1.75] font-light">
+            <p className="mt-7 sm:mt-9 text-[0.95rem] sm:text-[1.05rem] text-[#F4EFEA]/85 max-w-md sm:max-w-lg leading-[1.75] font-light drop-shadow-[0_1px_18px_rgba(0,0,0,0.4)]">
               Curated titles in business, self-growth, literature, spirituality, technology, and Bengali reading — chosen for readers who value depth, beauty, and meaning.
             </p>
             <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
