@@ -16,8 +16,8 @@ export default function Shop() {
   const cat = params.get("category") || "all";
 
   useSEO({
-    title: "Shop — The Earnalism",
-    description: "A small, deliberate shelf — chosen for depth. Browse curated titles in business, self-growth, literature, spirituality, technology, and Bengali reading.",
+    title: "Shop the Collection — The Earnalism",
+    description: "Browse The Earnalism's curated bookstore — a small, deliberate shelf of titles in business, self-growth, literature, spirituality, technology, and Bengali reading. Independent online bookstore & self-publishing house.",
     image: SHOP_OG,
   });
 

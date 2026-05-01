@@ -16,8 +16,8 @@ export default function Journal() {
   const [active, setActive] = useState("all");
 
   useSEO({
-    title: "Journal — The Earnalism",
-    description: "Notes from an independent online bookstore that reads slowly — essays on literature, business, and the quiet craft of reading.",
+    title: "The Journal — Notes from The Earnalism Bookstore",
+    description: "Essays from The Earnalism on literature, business, technology, and the quiet craft of reading well. Notes from an independent online bookstore that reads slowly.",
     image: JOURNAL_OG,
   });
 

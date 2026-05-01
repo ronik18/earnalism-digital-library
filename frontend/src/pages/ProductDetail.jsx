@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Check, ChevronLeft } from "lucide-react";
 import { api } from "../lib/api";
 import ShareButtons from "../components/ShareButtons";
+import JsonLd from "../components/JsonLd";
 import useSEO from "../hooks/useSEO";
 
 export default function ProductDetail() {
@@ -13,9 +14,39 @@ export default function ProductDetail() {
 
   useSEO({
     title: book ? `${book.title} — The Earnalism` : "Book — The Earnalism",
-    description: book?.short_description || book?.subtitle || "A curated title from The Earnalism — for readers who value depth, beauty, and meaning.",
+    description: book?.short_description || book?.subtitle || "A curated title from The Earnalism — an independent online bookstore and self-publishing house for readers who value depth, beauty, and meaning.",
     image: book?.cover_image_url,
+    type: "book",
   });
+
+  const priceNumeric = (s) => {
+    const n = (s || "").replace(/[^\d.]/g, "");
+    return n || undefined;
+  };
+
+  const bookSchema = book ? {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": book.title,
+    ...(book.subtitle ? { "alternativeHeadline": book.subtitle } : {}),
+    "description": book.description || book.short_description,
+    ...(book.cover_image_url ? { "image": book.cover_image_url } : {}),
+    "bookFormat": format === "Ebook" ? "https://schema.org/EBook" : "https://schema.org/Paperback",
+    "inLanguage": "en",
+    "publisher": { "@type": "Organization", "name": "The Earnalism" },
+    "url": typeof window !== "undefined" ? window.location.href : undefined,
+    "offers": book.buy_url ? {
+      "@type": "Offer",
+      "url": book.buy_url,
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "INR",
+      ...(priceNumeric(book.price_paperback) ? { "price": priceNumeric(book.price_paperback) } : {}),
+    } : {
+      "@type": "Offer",
+      "availability": "https://schema.org/PreOrder",
+      "priceCurrency": "INR",
+    },
+  } : null;
 
   useEffect(() => {
     setLoading(true);
@@ -35,6 +66,7 @@ export default function ProductDetail() {
 
   return (
     <div data-testid="product-page">
+      {bookSchema && <JsonLd id="book" data={bookSchema} />}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-10">
         <Link to="/shop" className="inline-flex items-center gap-1 text-xs tracking-[0.18em] uppercase text-charcoal-soft hover:text-burgundy" data-testid="back-to-shop">
           <ChevronLeft size={14} /> Back to Collection

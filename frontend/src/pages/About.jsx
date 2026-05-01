@@ -4,8 +4,8 @@ const HERO_IMG = "https://images.unsplash.com/photo-1739918075668-fc7844c6d921?c
 
 export default function About() {
   useSEO({
-    title: "About — The Earnalism",
-    description: "An independent online bookstore built around quiet permanence — fewer books, deeper readings, a longer relationship with each title.",
+    title: "About The Earnalism — Independent Bookstore & Self-Publishing House",
+    description: "The story of The Earnalism — an independent online bookstore and self-publishing house built around quiet permanence: fewer books, deeper readings, a longer relationship with each title.",
     image: HERO_IMG,
   });
   return (

@@ -21,7 +21,7 @@ export default function Contact() {
 
   useSEO({
     title: "Contact — The Earnalism",
-    description: "Write to The Earnalism — for book inquiries, order questions, reading recommendations, press, or simply to introduce yourself as a reader.",
+    description: "Write to The Earnalism — for book inquiries, order questions, reading recommendations, press, or simply to introduce yourself as a reader. Email hello@theearnalism.com.",
   });
 
   const submit = async (e) => {

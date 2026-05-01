@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { api } from "../lib/api";
 import ShareButtons from "../components/ShareButtons";
+import JsonLd from "../components/JsonLd";
 import useSEO from "../hooks/useSEO";
 
 export default function JournalArticle() {
@@ -12,10 +13,36 @@ export default function JournalArticle() {
   const [loading, setLoading] = useState(true);
 
   useSEO({
-    title: post ? `${post.title} — The Earnalism` : "Journal — The Earnalism",
-    description: post?.excerpt || "An essay from The Earnalism — notes on literature, business, and the quiet craft of reading.",
+    title: post ? `${post.title} — The Earnalism Journal` : "Journal — The Earnalism",
+    description: post?.excerpt || "An essay from The Earnalism Journal — notes on literature, business, technology, and the quiet craft of reading.",
     image: post?.cover_image_url,
+    type: "article",
   });
+
+  const articleSchema = post ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt || (post.content || "").slice(0, 220),
+    ...(post.cover_image_url ? { "image": [post.cover_image_url] } : {}),
+    "datePublished": post.created_at,
+    "dateModified": post.created_at,
+    "articleSection": post.category,
+    "inLanguage": "en",
+    "author": { "@type": "Organization", "name": post.author || "The Earnalism" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Earnalism",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%234A1C27'/></svg>",
+      },
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": typeof window !== "undefined" ? window.location.href : undefined,
+    },
+  } : null;
 
   useEffect(() => {
     setLoading(true);
@@ -33,6 +60,7 @@ export default function JournalArticle() {
 
   return (
     <article data-testid="journal-article">
+      {articleSchema && <JsonLd id="article" data={articleSchema} />}
       <div className="max-w-3xl mx-auto px-5 sm:px-8 pt-12">
         <Link to="/journal" className="inline-flex items-center gap-1 text-xs tracking-[0.18em] uppercase text-charcoal-soft hover:text-burgundy" data-testid="back-journal">
           <ChevronLeft size={14} /> Back to Journal
