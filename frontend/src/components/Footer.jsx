@@ -18,10 +18,10 @@ export default function Footer() {
     <footer className="mt-24 sm:mt-32 border-t border-brand bg-ivory" data-testid="site-footer">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="md:col-span-2">
-          <div className="font-serif-light text-[2rem] sm:text-[2.25rem] text-burgundy mb-3 leading-tight">The Earnalism</div>
-          <p className="font-serif-display italic text-base text-charcoal-soft mb-4">An independent online bookstore.</p>
+          <div className="font-serif-light text-[2rem] sm:text-[2.25rem] text-burgundy mb-3 leading-tight">The Earnalism <span className="italic-accent text-gold-deep text-[1.4rem]">Digital Library</span></div>
+          <p className="font-serif-display italic text-base text-charcoal-soft mb-4">Buy reading time. Read beautifully. Return whenever you wish.</p>
           <p className="text-charcoal-soft max-w-md leading-[1.8] font-light text-[0.95rem]">
-            A boutique online bookstore devoted to thoughtful business, literature, self-growth, spirituality, technology, and Bengali reading.
+            A quiet digital reading room for books in business, self-growth, literature, spirituality, Bengali reading, and technology.
           </p>
           <div className="gold-rule-thin mt-7" />
         </div>
@@ -29,10 +29,11 @@ export default function Footer() {
         <div>
           <div className="overline mb-4">Read</div>
           <ul className="space-y-2 text-charcoal-soft">
-            <li><Link to="/shop" className="hover:text-burgundy transition-colors">Shop</Link></li>
+            <li><Link to="/library" className="hover:text-burgundy transition-colors">Library</Link></li>
             <li><Link to="/journal" className="hover:text-burgundy transition-colors">Journal</Link></li>
             <li><Link to="/about" className="hover:text-burgundy transition-colors">About</Link></li>
             <li><Link to="/contact" className="hover:text-burgundy transition-colors">Contact</Link></li>
+            <li><Link to="/signin" className="hover:text-burgundy transition-colors">Sign In</Link></li>
           </ul>
         </div>
 
@@ -62,7 +63,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-brand">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-xs tracking-wider text-charcoal-soft">© {new Date().getFullYear()} The Earnalism. Read with depth.</p>
+          <p className="text-xs tracking-wider text-charcoal-soft">© {new Date().getFullYear()} The Earnalism Digital Library. Read with depth.</p>
           <p className="text-xs tracking-wider text-charcoal-soft">Crafted with care · theearnalism.com</p>
         </div>
       </div>

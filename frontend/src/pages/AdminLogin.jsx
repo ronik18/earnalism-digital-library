@@ -3,8 +3,13 @@ import { useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { formatError } from "../lib/api";
 import { toast } from "sonner";
+import useSEO from "../hooks/useSEO";
 
 export default function AdminLogin() {
+  useSEO({
+    title: "Admin Sign-In — The Earnalism Digital Library",
+    description: "Administrator sign-in for The Earnalism Digital Library.",
+  });
   const { admin, login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

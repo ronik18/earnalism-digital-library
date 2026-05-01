@@ -5,10 +5,11 @@ import { useSettings } from "../context/SettingsContext";
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/shop", label: "Shop" },
+  { to: "/library", label: "Library" },
   { to: "/journal", label: "Journal" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
+  { to: "/signin", label: "Sign In" },
 ];
 
 const SOCIALS = [
@@ -30,17 +31,17 @@ export default function Header() {
     <header className="sticky top-0 z-50 glass-header" data-testid="site-header">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-baseline gap-2 sm:gap-3 min-w-0" data-testid="brand-logo">
-          <span className="font-serif-light text-[1.5rem] sm:text-[1.8rem] tracking-tight text-burgundy leading-none truncate">The Earnalism</span>
-          <span className="hidden md:inline italic-accent text-[0.85rem] text-gold-deep leading-none whitespace-nowrap">Curated Bookstore</span>
+          <span className="font-serif-light text-[1.35rem] sm:text-[1.65rem] tracking-tight text-burgundy leading-none truncate">The Earnalism</span>
+          <span className="hidden md:inline italic-accent text-[0.8rem] text-gold-deep leading-none whitespace-nowrap">Digital Library</span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
+        <nav className="hidden lg:flex items-center gap-7 xl:gap-9">
           {NAV.map((n) => (
             <NavLink
               key={n.to}
               to={n.to}
               end={n.to === "/"}
-              data-testid={`nav-${n.label.toLowerCase()}`}
+              data-testid={`nav-${n.label.toLowerCase().replace(/\s/g, '-')}`}
               className={({ isActive }) =>
                 `text-[0.7rem] tracking-[0.26em] uppercase transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
               }
@@ -51,7 +52,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <Link to="/shop" className="btn-secondary" data-testid="header-cta-shop">Explore</Link>
+          <Link to="/library" className="btn-secondary" data-testid="header-cta-library">Start Reading</Link>
         </div>
 
         <button
@@ -66,24 +67,24 @@ export default function Header() {
 
       {open && (
         <div className="lg:hidden border-t border-brand bg-ivory/95 backdrop-blur-xl" data-testid="mobile-menu">
-          <div className="px-5 py-6 flex flex-col gap-1">
+          <div className="px-5 py-5 flex flex-col">
             {NAV.map((n) => (
               <NavLink
                 key={n.to}
                 to={n.to}
                 end={n.to === "/"}
-                data-testid={`mobile-nav-${n.label.toLowerCase()}`}
+                data-testid={`mobile-nav-${n.label.toLowerCase().replace(/\s/g, '-')}`}
                 className={({ isActive }) =>
-                  `py-3 px-2 text-base tracking-wide border-b border-brand ${isActive ? "text-burgundy" : "text-charcoal"}`
+                  `py-4 text-[0.95rem] tracking-wide border-b border-brand-soft ${isActive ? "text-burgundy" : "text-charcoal"}`
                 }
               >
                 {n.label}
               </NavLink>
             ))}
-            <Link to="/shop" className="btn-primary mt-5 self-start" data-testid="mobile-cta-shop">Explore the Collection</Link>
+            <Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Start Reading</Link>
 
             {activeSocials.length > 0 && (
-              <div className="mt-6 pt-5 border-t border-brand flex items-center gap-4" data-testid="mobile-socials">
+              <div className="mt-7 pt-5 border-t border-brand-soft flex items-center justify-center gap-5" data-testid="mobile-socials">
                 {activeSocials.map(({ key, label, Icon }) => (
                   <a
                     key={key}
@@ -91,10 +92,10 @@ export default function Header() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={label}
-                    className="text-charcoal-soft hover:text-burgundy transition-colors"
+                    className="text-charcoal-soft hover:text-burgundy transition-colors p-2"
                     data-testid={`mobile-social-${key}`}
                   >
-                    <Icon size={18} />
+                    <Icon size={18} strokeWidth={1.5} />
                   </a>
                 ))}
               </div>

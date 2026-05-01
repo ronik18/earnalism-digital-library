@@ -16,8 +16,8 @@ export default function Home() {
   const [submitting, setSubmitting] = useState(false);
 
   useSEO({
-    title: "The Earnalism — Books for Those Who Read With Depth",
-    description: "An independent online bookstore and self-publishing house. Curated titles in business, self-growth, literature, spirituality, technology, and Bengali reading — for readers who value depth, beauty, and meaning.",
+    title: "The Earnalism Digital Library — Buy Reading Time. Read Beautifully.",
+    description: "A quiet digital reading room for books in business, self-growth, literature, spirituality, Bengali reading, and technology. Buy reading time. Read beautifully. Return whenever you wish.",
     image: HERO_IMG,
   });
 
@@ -75,17 +75,20 @@ export default function Home() {
           <div className="max-w-3xl">
             <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-6 sm:mb-7 flex items-center gap-3" data-testid="hero-overline">
               <span className="h-px w-8 sm:w-10 bg-[var(--brand-gold)]/70" />
-              <span className="text-[0.85rem] sm:text-[0.95rem]">Volume I &middot; Curated Reading</span>
+              <span className="text-[0.85rem] sm:text-[0.95rem]">Volume I &middot; The Digital Library</span>
             </div>
             <h1 className="font-serif-light text-[2.6rem] sm:text-[3.5rem] md:text-6xl lg:text-7xl leading-[1.04] text-[#FDFCF8] tracking-tight text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]" data-testid="hero-headline">
-              Books for those who <span className="italic-accent text-[var(--brand-gold-soft)]">read</span> with depth.
+              The Earnalism <span className="italic-accent text-[var(--brand-gold-soft)]">Digital Library.</span>
             </h1>
-            <p className="mt-7 sm:mt-9 text-[0.95rem] sm:text-[1.05rem] text-[#F4EFEA]/85 max-w-md sm:max-w-lg leading-[1.75] font-light drop-shadow-[0_1px_18px_rgba(0,0,0,0.4)]">
-              Curated titles in business, self-growth, literature, spirituality, technology, and Bengali reading — chosen for readers who value depth, beauty, and meaning.
+            <p className="mt-5 sm:mt-6 font-serif-display italic text-lg sm:text-2xl text-[#F4EFEA]/90 max-w-xl leading-snug drop-shadow-[0_1px_18px_rgba(0,0,0,0.5)]">
+              Buy reading time. Read beautifully. Return whenever you wish.
+            </p>
+            <p className="mt-6 sm:mt-7 text-[0.95rem] sm:text-[1.05rem] text-[#F4EFEA]/80 max-w-md sm:max-w-lg leading-[1.75] font-light drop-shadow-[0_1px_18px_rgba(0,0,0,0.4)]">
+              A quiet digital reading room for books in business, self-growth, literature, spirituality, Bengali reading, and technology.
             </p>
             <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
-              <Link to="/shop" className="btn-primary w-full sm:w-auto" data-testid="hero-cta-explore">Explore the Collection</Link>
-              <Link to={featured ? `/shop/${featured.slug}` : "/shop"} className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-featured">Start with our featured book</Link>
+              <Link to={featured ? `/reader/${featured.slug}` : "/library"} className="btn-primary w-full sm:w-auto" data-testid="hero-cta-read">Start Reading</Link>
+              <Link to="/library" className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-library">Explore the Library</Link>
             </div>
           </div>
         </div>
@@ -98,14 +101,14 @@ export default function Home() {
             <div className="overline mb-4">The Shelves</div>
             <h2 className="font-serif-light text-[2.25rem] sm:text-5xl lg:text-[3.5rem] text-burgundy leading-[1.06] tracking-tight">A small library, <span className="italic-accent">carefully kept.</span></h2>
           </div>
-          <Link to="/shop" className="btn-link self-start sm:self-end" data-testid="categories-view-all">View the full collection <ArrowRight size={14} /></Link>
+          <Link to="/library" className="btn-link self-start sm:self-end" data-testid="categories-view-all">View the full library <ArrowRight size={14} /></Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-9">
           {categories.map((c, i) => (
             <Link
               key={c.slug}
-              to={`/shop?category=${c.slug}`}
+              to={`/library?category=${c.slug}`}
               className={`card-elegant overflow-hidden group ${i === 0 ? "lg:col-span-2 lg:row-span-2" : ""}`}
               data-testid={`category-card-${c.slug}`}
             >
@@ -141,7 +144,7 @@ export default function Home() {
               <div className="gold-rule-thin mt-6 mx-auto lg:mx-0" />
               <p className="text-charcoal-soft mt-6 sm:mt-7 leading-[1.85] max-w-2xl font-light text-[0.95rem] sm:text-base mx-auto lg:mx-0">{featured.description}</p>
               <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
-                <Link to={`/shop/${featured.slug}`} className="btn-secondary justify-center" data-testid="featured-view">View Book</Link>
+                <Link to={`/book/${featured.slug}`} className="btn-secondary justify-center" data-testid="featured-view">View Book</Link>
                 {featured.buy_url ? (
                   <a href={featured.buy_url} target="_blank" rel="noreferrer" className="btn-primary justify-center" data-testid="featured-buy">Buy Now</a>
                 ) : (

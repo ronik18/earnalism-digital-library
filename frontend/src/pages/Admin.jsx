@@ -71,7 +71,7 @@ function SimpleList({ endpoint, cols, title, testid }) {
   );
 }
 
-const EMPTY_BOOK = { title: "", subtitle: "", category_slug: "business", short_description: "", description: "", cover_image_url: "", price_paperback: "", price_ebook: "", buy_url: "", formats: ["Paperback", "Ebook"], benefits: [], who_for: [], learnings: [], about_author: "", is_published: true };
+const EMPTY_BOOK = { title: "", subtitle: "", author: "The Earnalism", category_slug: "business", short_description: "", description: "", cover_image_url: "", estimated_reading_time: "", price_paperback: "", price_ebook: "", buy_url: "", formats: ["Ebook"], benefits: [], who_for: [], learnings: [], about_author: "", is_published: true };
 
 function BooksAdmin() {
   const [books, setBooks] = useState([]);
@@ -158,26 +158,35 @@ function BookEditor({ book, cats, onClose, onSave }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="Title"><input className="input-elegant" value={f.title} onChange={(e) => setF({ ...f, title: e.target.value })} data-testid="book-title" /></Field>
           <Field label="Subtitle"><input className="input-elegant" value={f.subtitle} onChange={(e) => setF({ ...f, subtitle: e.target.value })} /></Field>
+          <Field label="Author"><input className="input-elegant" value={f.author || ""} onChange={(e) => setF({ ...f, author: e.target.value })} placeholder="The Earnalism" data-testid="book-author" /></Field>
           <Field label="Category">
             <select className="input-elegant" value={f.category_slug} onChange={(e) => setF({ ...f, category_slug: e.target.value })}>
               {cats.map((c) => <option key={c.slug} value={c.slug}>{c.name}</option>)}
             </select>
           </Field>
           <Field label="Cover image URL"><input className="input-elegant" value={f.cover_image_url} onChange={(e) => setF({ ...f, cover_image_url: e.target.value })} /></Field>
-          <Field label="Price (Paperback)"><input className="input-elegant" value={f.price_paperback} onChange={(e) => setF({ ...f, price_paperback: e.target.value })} placeholder="₹499" /></Field>
-          <Field label="Price (Ebook)"><input className="input-elegant" value={f.price_ebook} onChange={(e) => setF({ ...f, price_ebook: e.target.value })} placeholder="₹199" /></Field>
-          <Field label="Buy Now URL (Razorpay / Amazon / etc.)" wide><input className="input-elegant" value={f.buy_url} onChange={(e) => setF({ ...f, buy_url: e.target.value })} placeholder="https://rzp.io/l/your-link" data-testid="book-buy-url" /></Field>
+          <Field label="Estimated reading time"><input className="input-elegant" value={f.estimated_reading_time || ""} onChange={(e) => setF({ ...f, estimated_reading_time: e.target.value })} placeholder="4 hours" data-testid="book-reading-time" /></Field>
+          <Field label="Buy Reading Time URL (Razorpay / external)" wide><input className="input-elegant" value={f.buy_url} onChange={(e) => setF({ ...f, buy_url: e.target.value })} placeholder="https://rzp.io/l/your-link (leave empty for 'Request Access')" data-testid="book-buy-url" /></Field>
           <Field label="Short description" wide><textarea rows={2} className="input-elegant" value={f.short_description} onChange={(e) => setF({ ...f, short_description: e.target.value })} /></Field>
           <Field label="Description" wide><textarea rows={4} className="input-elegant" value={f.description} onChange={(e) => setF({ ...f, description: e.target.value })} /></Field>
-          <Field label="Formats (one per line)"><textarea rows={2} className="input-elegant" value={f.formats} onChange={(e) => setF({ ...f, formats: e.target.value })} /></Field>
           <Field label="Benefits (one per line)"><textarea rows={3} className="input-elegant" value={f.benefits} onChange={(e) => setF({ ...f, benefits: e.target.value })} /></Field>
           <Field label="Who this is for (one per line)"><textarea rows={3} className="input-elegant" value={f.who_for} onChange={(e) => setF({ ...f, who_for: e.target.value })} /></Field>
           <Field label="What you will learn (one per line)"><textarea rows={3} className="input-elegant" value={f.learnings} onChange={(e) => setF({ ...f, learnings: e.target.value })} /></Field>
           <Field label="About the author / publisher" wide><textarea rows={2} className="input-elegant" value={f.about_author} onChange={(e) => setF({ ...f, about_author: e.target.value })} /></Field>
         </div>
-        <div className="mt-6 flex justify-end gap-3">
-          <button onClick={onClose} className="btn-secondary">Cancel</button>
-          <button onClick={() => onSave(f, isNew ? null : book.slug)} className="btn-primary" data-testid="save-book">Save</button>
+
+        {!isNew && <ChaptersManager slug={book.slug} />}
+
+        <div className="mt-6 flex items-center justify-between gap-3 flex-wrap">
+          {!isNew && (
+            <a href={`/reader/${book.slug}`} target="_blank" rel="noreferrer" className="btn-link" data-testid="book-preview-reader">
+              Preview reader
+            </a>
+          )}
+          <div className="flex justify-end gap-3 ml-auto">
+            <button onClick={onClose} className="btn-secondary">Cancel</button>
+            <button onClick={() => onSave(f, isNew ? null : book.slug)} className="btn-primary" data-testid="save-book">Save</button>
+          </div>
         </div>
       </div>
     </div>
@@ -501,6 +510,149 @@ function ContactsAdmin() {
           })}
         </div>
       )}
+    </div>
+  );
+}
+
+
+function ChaptersManager({ slug }) {
+  const [book, setBook] = useState(null);
+  const [editing, setEditing] = useState(null); // null | {_new: true} | chapter obj
+  const [busy, setBusy] = useState(false);
+
+  const load = async () => {
+    try {
+      const { data } = await api.get(`/books/${slug}`);
+      setBook(data);
+    } catch (e) { toast.error(formatError(e.response?.data?.detail)); }
+  };
+  useEffect(() => { load(); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [slug]);
+
+  const chapters = (book?.chapters || []).slice().sort((a, b) => (a.order || 0) - (b.order || 0));
+
+  const saveChapter = async (data, cid) => {
+    setBusy(true);
+    try {
+      if (cid) await api.put(`/admin/books/${slug}/chapters/${cid}`, { title: data.title, content: data.content });
+      else await api.post(`/admin/books/${slug}/chapters`, { title: data.title, content: data.content });
+      toast.success("Chapter saved");
+      setEditing(null);
+      load();
+    } catch (e) { toast.error(formatError(e.response?.data?.detail)); }
+    finally { setBusy(false); }
+  };
+
+  const deleteChapter = async (cid) => {
+    if (!window.confirm("Delete this chapter? This cannot be undone.")) return;
+    try {
+      await api.delete(`/admin/books/${slug}/chapters/${cid}`);
+      toast.success("Chapter deleted");
+      load();
+    } catch (e) { toast.error(formatError(e.response?.data?.detail)); }
+  };
+
+  const move = async (i, dir) => {
+    const j = i + dir;
+    if (j < 0 || j >= chapters.length) return;
+    const ids = chapters.map((c) => c.id);
+    [ids[i], ids[j]] = [ids[j], ids[i]];
+    try {
+      await api.put(`/admin/books/${slug}/chapters/reorder`, { ids });
+      load();
+    } catch (e) { toast.error(formatError(e.response?.data?.detail)); }
+  };
+
+  return (
+    <div className="mt-8 pt-8 border-t border-brand-soft" data-testid="chapters-manager">
+      <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
+        <div>
+          <div className="italic-eyebrow">Chapters</div>
+          <h4 className="font-serif-display text-[1.4rem] text-burgundy leading-snug">Manual chapter content</h4>
+          <p className="text-[0.8rem] text-charcoal-soft mt-1">Paste title and body for each chapter. Content entry is manual for Phase 1.</p>
+        </div>
+        <button
+          onClick={() => setEditing({ _new: true, title: "", content: "" })}
+          className="btn-primary"
+          data-testid="add-chapter"
+        >
+          <Plus size={14} className="mr-2" /> New chapter
+        </button>
+      </div>
+
+      {chapters.length === 0 ? (
+        <p className="text-sm text-charcoal-soft italic">No chapters yet. Add the first one to enable the reader.</p>
+      ) : (
+        <ol className="space-y-2">
+          {chapters.map((c, i) => (
+            <li key={c.id} className="flex items-center gap-3 p-3 border border-brand-soft rounded-lg" data-testid={`chapter-row-${c.id}`}>
+              <span className="italic-accent text-gold-deep w-10 shrink-0 text-center">{String(i + 1).padStart(2, "0")}</span>
+              <span className="flex-1 min-w-0 font-serif-display text-[1.05rem] text-burgundy truncate">{c.title}</span>
+              <span className="hidden sm:inline text-[0.72rem] text-charcoal-soft">{(c.content || "").length} chars</span>
+              <div className="flex items-center gap-1">
+                <button onClick={() => move(i, -1)} disabled={i === 0} className="p-1 text-charcoal-soft disabled:opacity-30 hover:text-burgundy" aria-label="Move up" data-testid={`chapter-up-${c.id}`}>↑</button>
+                <button onClick={() => move(i, 1)} disabled={i === chapters.length - 1} className="p-1 text-charcoal-soft disabled:opacity-30 hover:text-burgundy" aria-label="Move down" data-testid={`chapter-down-${c.id}`}>↓</button>
+                <button onClick={() => setEditing(c)} className="p-1 text-charcoal-soft hover:text-burgundy" aria-label="Edit" data-testid={`chapter-edit-${c.id}`}><Edit3 size={14} /></button>
+                <button onClick={() => deleteChapter(c.id)} className="p-1 text-charcoal-soft hover:text-burgundy" aria-label="Delete" data-testid={`chapter-delete-${c.id}`}><Trash2 size={14} /></button>
+              </div>
+            </li>
+          ))}
+        </ol>
+      )}
+
+      {editing && (
+        <ChapterEditor
+          chapter={editing}
+          busy={busy}
+          onCancel={() => setEditing(null)}
+          onSave={(data) => saveChapter(data, editing._new ? null : editing.id)}
+        />
+      )}
+    </div>
+  );
+}
+
+function ChapterEditor({ chapter, onCancel, onSave, busy }) {
+  const [title, setTitle] = useState(chapter.title || "");
+  const [content, setContent] = useState(chapter.content || "");
+  return (
+    <div className="fixed inset-0 z-[60] bg-black/55 flex items-center justify-center p-4" onClick={onCancel} data-testid="chapter-editor">
+      <div className="bg-ivory rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6 sm:p-10" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between mb-5">
+          <div>
+            <div className="italic-eyebrow">{chapter._new ? "New chapter" : "Edit chapter"}</div>
+            <h3 className="font-serif-display text-2xl text-burgundy">Chapter content</h3>
+          </div>
+          <button onClick={onCancel} className="text-charcoal-soft"><X /></button>
+        </div>
+        <Field label="Chapter title" wide>
+          <input className="input-elegant" value={title} onChange={(e) => setTitle(e.target.value)} data-testid="chapter-title" />
+        </Field>
+        <div className="mt-4">
+          <Field label="Chapter body (separate paragraphs with a blank line)" wide>
+            <textarea
+              rows={16}
+              className="input-elegant font-serif-display"
+              style={{ lineHeight: 1.7, fontSize: "1rem" }}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              data-testid="chapter-body"
+              placeholder="Paste your chapter here. Leave a blank line between paragraphs."
+            />
+          </Field>
+          <p className="text-[0.72rem] text-charcoal-soft mt-2 italic">{content.length.toLocaleString()} characters &middot; approx. {Math.max(1, Math.round(content.split(/\s+/).filter(Boolean).length / 200))} min read</p>
+        </div>
+        <div className="mt-6 flex justify-end gap-3">
+          <button onClick={onCancel} className="btn-secondary">Cancel</button>
+          <button
+            onClick={() => onSave({ title: title.trim(), content })}
+            disabled={busy || !title.trim()}
+            className="btn-primary disabled:opacity-60"
+            data-testid="save-chapter"
+          >
+            {busy ? "Saving…" : "Save chapter"}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

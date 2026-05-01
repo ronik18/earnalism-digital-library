@@ -137,16 +137,32 @@ class CategoryIn(BaseModel):
     order: int = 0
     slug: Optional[str] = None
 
+class Chapter(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    title: str
+    content: str = ""
+    order: int = 0
+
+class ChapterIn(BaseModel):
+    title: str
+    content: str = ""
+
+class ChapterReorderIn(BaseModel):
+    ids: List[str]
+
 class Book(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     slug: str
     title: str
     subtitle: str = ""
+    author: str = "The Earnalism"
     category_slug: str
     short_description: str = ""
     description: str = ""
     cover_image_url: str = ""
+    estimated_reading_time: str = ""
     price_paperback: str = ""
     price_ebook: str = ""
     buy_url: str = ""
@@ -155,16 +171,19 @@ class Book(BaseModel):
     who_for: List[str] = Field(default_factory=list)
     learnings: List[str] = Field(default_factory=list)
     about_author: str = ""
+    chapters: List[Chapter] = Field(default_factory=list)
     is_published: bool = True
     created_at: str = Field(default_factory=now_iso)
 
 class BookIn(BaseModel):
     title: str
     subtitle: str = ""
+    author: str = "The Earnalism"
     category_slug: str
     short_description: str = ""
     description: str = ""
     cover_image_url: str = ""
+    estimated_reading_time: str = ""
     price_paperback: str = ""
     price_ebook: str = ""
     buy_url: str = ""
@@ -294,6 +313,20 @@ async def lifespan(_app: FastAPI):
 
     # backfill contact.status for older entries that didn't have the field
     await db.contacts.update_many({"status": {"$exists": False}}, {"$set": {"status": "new"}})
+
+    # backfill digital-library fields on any pre-existing books
+    await db.books.update_many(
+        {"author": {"$exists": False}},
+        {"$set": {"author": "The Earnalism"}},
+    )
+    await db.books.update_many(
+        {"estimated_reading_time": {"$exists": False}},
+        {"$set": {"estimated_reading_time": ""}},
+    )
+    await db.books.update_many(
+        {"chapters": {"$exists": False}},
+        {"$set": {"chapters": []}},
+    )
 
     # one-time migration: replace old "publishing brand" wording in the seeded book's about_author
     await db.books.update_one(
@@ -472,6 +505,55 @@ async def admin_list_books(_=Depends(require_admin)):
     return await db.books.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
 
 
+# ---------- Admin: Chapters (manual paste only for Phase 1) ----------
+async def _load_book_or_404(slug: str) -> dict:
+    doc = await db.books.find_one({"slug": slug}, {"_id": 0})
+    if not doc:
+        raise HTTPException(status_code=404, detail="Book not found")
+    return doc
+
+@api.post("/admin/books/{slug}/chapters", response_model=Book)
+async def admin_add_chapter(slug: str, payload: ChapterIn, _=Depends(require_admin)):
+    book = await _load_book_or_404(slug)
+    existing = book.get("chapters", []) or []
+    next_order = max([c.get("order", 0) for c in existing], default=-1) + 1
+    chapter = Chapter(title=payload.title.strip(), content=payload.content, order=next_order).model_dump()
+    await db.books.update_one({"slug": slug}, {"$push": {"chapters": chapter}})
+    return await _load_book_or_404(slug)
+
+@api.put("/admin/books/{slug}/chapters/{cid}", response_model=Book)
+async def admin_update_chapter(slug: str, cid: str, payload: ChapterIn, _=Depends(require_admin)):
+    res = await db.books.update_one(
+        {"slug": slug, "chapters.id": cid},
+        {"$set": {"chapters.$.title": payload.title.strip(), "chapters.$.content": payload.content}},
+    )
+    if res.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Chapter not found")
+    return await _load_book_or_404(slug)
+
+@api.delete("/admin/books/{slug}/chapters/{cid}", response_model=Book)
+async def admin_delete_chapter(slug: str, cid: str, _=Depends(require_admin)):
+    await _load_book_or_404(slug)
+    res = await db.books.update_one({"slug": slug}, {"$pull": {"chapters": {"id": cid}}})
+    if res.modified_count == 0:
+        raise HTTPException(status_code=404, detail="Chapter not found")
+    return await _load_book_or_404(slug)
+
+@api.put("/admin/books/{slug}/chapters/reorder", response_model=Book)
+async def admin_reorder_chapters(slug: str, payload: ChapterReorderIn, _=Depends(require_admin)):
+    book = await _load_book_or_404(slug)
+    existing = {c["id"]: c for c in (book.get("chapters") or [])}
+    if set(payload.ids) != set(existing.keys()):
+        raise HTTPException(status_code=400, detail="Reorder ids must match existing chapter ids exactly")
+    reordered = []
+    for i, cid in enumerate(payload.ids):
+        c = dict(existing[cid])
+        c["order"] = i
+        reordered.append(c)
+    await db.books.update_one({"slug": slug}, {"$set": {"chapters": reordered}})
+    return await _load_book_or_404(slug)
+
+
 # ---------- Admin: Categories ----------
 @api.post("/admin/categories", response_model=Category)
 async def admin_create_cat(payload: CategoryIn, _=Depends(require_admin)):
@@ -610,14 +692,16 @@ SEED_TECH_BOOK = {
     "slug": "the-architecture-of-intelligent-systems",
     "title": "The Architecture of Intelligent Systems",
     "subtitle": "On software, data, and the engineering discipline behind modern digital products.",
+    "author": "The Earnalism",
     "category_slug": "technology",
     "short_description": "A thoughtful guide to software architecture, data platforms, AI systems, and the craft of building durable digital products.",
     "description": "The Architecture of Intelligent Systems is written for engineers, founders, and product leaders who want their software to last longer than a quarter. Across patient chapters on services, data platforms, machine intelligence, and the human discipline behind them, it returns again and again to a single idea: technology earns its place through clarity, restraint, and care.",
     "cover_image_url": "https://images.unsplash.com/photo-1532012197267-da84d127e765?crop=entropy&cs=srgb&fm=jpg&w=1200&q=85",
+    "estimated_reading_time": "5 hours",
     "price_paperback": "",
     "price_ebook": "",
     "buy_url": "",
-    "formats": ["Paperback", "Ebook"],
+    "formats": ["Ebook"],
     "benefits": [
         "A working vocabulary for modern software architecture",
         "Frameworks for designing data platforms that scale gently",
@@ -635,7 +719,15 @@ SEED_TECH_BOOK = {
         "Where AI belongs in a product, and where it does not",
         "Building engineering teams that compound over years",
     ],
-    "about_author": "Curated on the shelves of The Earnalism — an independent bookstore devoted to thoughtful business, literature, and the craft of modern technology.",
+    "about_author": "Curated on the shelves of The Earnalism Digital Library — an independent reading room devoted to thoughtful business, literature, and the craft of modern technology.",
+    "chapters": [
+        {"id": str(uuid.uuid4()), "order": 0, "title": "The Working Vocabulary",
+         "content": "Every technical discipline arrives with two vocabularies — the one used in meetings, and the one that actually ships software.\n\nThe working vocabulary is smaller, sharper, and unglamorous. It names failure modes instead of features. It refuses adjectives that cannot be measured. When a senior engineer says observability, they mean: I can read this system's mind at three in the morning without waking anyone up.\n\nGood architectures begin with this vocabulary. The rest of the system is a long conversation held in its grammar."},
+        {"id": str(uuid.uuid4()), "order": 1, "title": "Data Platforms That Scale Gently",
+         "content": "A data platform is, at its best, a library. It arranges the facts of the business so that any future question can be asked with dignity.\n\nThe temptation in young companies is to choose tools for the scale they hope to reach. The temptation in older companies is to preserve the tools of a scale they have already passed. Both miss the point. A platform scales gently when each layer does one clear job: ingestion that is honest, storage that is queryable, modelling that is owned, and serving that is fast enough for the question being asked.\n\nComplexity is not an achievement. Clarity is."},
+        {"id": str(uuid.uuid4()), "order": 2, "title": "Where AI Belongs — and Where It Does Not",
+         "content": "Artificial intelligence is both a capability and a temperament.\n\nAs a capability, it is astonishing: pattern recognition, synthesis, generation, prediction. As a temperament, it is dangerous: quick answers where slow ones are required, confident prose where uncertainty would serve the reader better, a whisper of automation inside decisions that deserve human attention.\n\nThe architect's job is to route each problem to the right temperament. Some belong to machines. Some belong to the person still awake at the end of the quarter."},
+    ],
     "is_published": True,
 }
 
@@ -643,14 +735,16 @@ SEED_BOOK = {
     "slug": "brownies-to-break-even-and-beyond",
     "title": "Brownies to Break-Even and Beyond",
     "subtitle": "A lyrical business journey for dreamers, founders, and first-time entrepreneurs.",
+    "author": "The Earnalism",
     "category_slug": "business",
     "short_description": "A disciplined yet tender memoir-guide for turning passion into a profitable, principled venture.",
     "description": "Part memoir, part operating manual, Brownies to Break-Even and Beyond traces the slow craft of building a small business with care. From the first costing sheet to the first profitable quarter, every chapter pairs lived story with the kind of practical clarity rarely offered to bakers, makers, and quiet entrepreneurs.",
     "cover_image_url": "https://images.unsplash.com/photo-1519764340700-3db40311f21e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwxfHxibGFuayUyMG1pbmltYWwlMjBib29rJTIwY292ZXIlMjBmbGF0JTIwbGF5fGVufDB8fHx8MTc3NzYxNzE5MHww&ixlib=rb-4.1.0&q=85",
+    "estimated_reading_time": "4 hours",
     "price_paperback": "",
     "price_ebook": "",
     "buy_url": "",
-    "formats": ["Paperback", "Ebook"],
+    "formats": ["Ebook"],
     "benefits": [
         "A founder's framework for pricing without guilt",
         "Honest unit economics that respect the craft",
@@ -668,7 +762,15 @@ SEED_BOOK = {
         "Building a brand that compounds with each season",
         "Scaling without losing the texture of your work",
     ],
-    "about_author": "Curated on the shelves of The Earnalism — an independent bookstore devoted to thoughtful business, literature, and self-growth.",
+    "about_author": "Curated on the shelves of The Earnalism Digital Library — an independent reading room devoted to thoughtful business, literature, and self-growth.",
+    "chapters": [
+        {"id": str(uuid.uuid4()), "order": 0, "title": "The First Costing Sheet",
+         "content": "Most first ventures begin with a feeling — a warmth, a hunch, a recipe that makes people stop mid-sentence.\n\nBut a business begins the moment that feeling meets a costing sheet.\n\nThe first sheet is uncomfortable. It asks for ingredient weights, packaging cents, the honest price of an afternoon. It resists flourish. And yet, somewhere between the third row and the fifth, the costing sheet becomes something unexpected — a quiet portrait of the work itself. Every line you enter is an act of respect.\n\nBegin there. Before the logo, before the launch, before the pretty camera angle. Sit with the sheet until it holds every real cost. The venture that comes afterward will carry that care in its bones."},
+        {"id": str(uuid.uuid4()), "order": 1, "title": "Pricing Without Guilt",
+         "content": "Pricing is the first place a founder learns to stand up for their own work.\n\nNumbers carry beliefs. A timid price tells your customer the work is smaller than it is. A reckless one borrows credibility you have not yet earned. The right price is a quiet sentence: this is what it costs to make with care, and this is the margin that lets the making continue.\n\nCharge for your hands. Charge for your judgment. Charge for the years you spent learning the difference between good and almost-good. A business that refuses to price its craft cannot protect it.\n\nThere is no apology in a fair price. Only arithmetic, and kindness to the person writing the cheque six months from now — you."},
+        {"id": str(uuid.uuid4()), "order": 2, "title": "From Side-Project to Small Institution",
+         "content": "There comes a week — usually quietly — when the project starts to outgrow evenings.\n\nOrders arrive faster than the kitchen empties. Messages accumulate. Someone asks about invoicing, and the honest answer is, I'm figuring it out. This is not a problem. It is the first sign that the work is becoming an institution — a small, dignified one, but an institution nonetheless.\n\nThe transition asks for three slow disciplines: books that close at the end of each week, a calendar that respects weekends, and a customer you would recognise in a crowd. None of it arrives in a single brave day. It arrives in a series of tiny preferences, each one a vote for the business you want to still be running in a decade.\n\nA small institution is not a downgrade from a large one. It is a particular kind of house — one built to last."},
+    ],
     "is_published": True,
 }
 
