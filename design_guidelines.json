@@ -1,0 +1,116 @@
+{
+  "theme": "Light",
+  "archetype": "Organic & Earthy / Luxury Editorial (Modified Archetype 1 & 5)",
+  "brand_identity": "The Earnalism - A luxury online bookstore and thoughtful reading destination. Premium, literary, calm, elegant, and trustworthy.",
+  "color_palette": {
+    "primary_burgundy": "#4A1C27",
+    "background_warm_beige": "#F4EFEA",
+    "surface_ivory": "#FDFCF8",
+    "accent_champagne_gold": "#C5A059",
+    "text_soft_charcoal": "#2C2C2C",
+    "border_subtle": "#E5DCD3"
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Cormorant Garamond",
+      "style": "Elegant, tight tracking for large sizes, wide for small overlines. Font weights 300 (Light) and 600 (SemiBold)."
+    },
+    "body": {
+      "font_family": "Outfit",
+      "style": "Clean, highly readable, geometric but soft. Regular 400 and Medium 500."
+    },
+    "scale": {
+      "h1": "text-5xl sm:text-6xl tracking-tight leading-none",
+      "h2": "text-4xl sm:text-5xl tracking-tight leading-tight",
+      "h3": "text-2xl sm:text-3xl leading-snug",
+      "h4": "text-xl font-medium",
+      "body": "text-base leading-relaxed text-[#2C2C2C]",
+      "overline": "text-xs tracking-[0.2em] uppercase text-[#C5A059]"
+    }
+  },
+  "spacing_and_layout": {
+    "philosophy": "Generous spacing. p-12, p-16, p-24. High-end editorial feel.",
+    "bento_grid": "Asymmetrical usage. Grid-cols-12. Large hero, varied category card sizes.",
+    "container_borders": "1px solid border_subtle with p-8 internal padding. Subtle paper texture."
+  },
+  "components": {
+    "buttons": "Primary: bg-[#4A1C27] text-[#FDFCF8] hover:bg-[#3A141D]. Secondary: bg-transparent border border-[#C5A059] text-[#4A1C27] hover:bg-[#C5A059]/10. Fully rounded-full or rounded-sm based on feel.",
+    "cards": "Surface Ivory, subtle drop-shadow-sm, rounded-2xl or rounded-xl. Hover state: slight -translate-y-1, increased soft shadow.",
+    "header": "Crystal glassmorphism: bg-[#F4EFEA]/80 backdrop-blur-xl border-b border-[#E5DCD3]/50. Must include logo, nav links, and CTA.",
+    "inputs": "Shadcn based. bg-transparent border-b border-[#2C2C2C]/20 focus:border-[#4A1C27]. No harsh outlines. rounded-none for a more editorial look or rounded-md.",
+    "filters": "Minimalist tabs/pills. active: bg-[#4A1C27] text-white, inactive: text-[#2C2C2C]/60 hover:text-[#2C2C2C]"
+  },
+  "media": {
+    "hero_library": {
+      "url": "https://images.unsplash.com/photo-1739918075668-fc7844c6d921?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjBsaWJyYXJ5JTIwaW50ZXJpb3IlMjB3YXJtJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzc3NjE3MTkwfDA&ixlib=rb-4.1.0&q=85",
+      "description": "Warm lit luxury library interior for Hero background",
+      "category": "hero"
+    },
+    "book_cover_placeholder": {
+      "url": "https://images.unsplash.com/photo-1519764340700-3db40311f21e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwxfHxibGFuayUyMG1pbmltYWwlMjBib29rJTIwY292ZXIlMjBmbGF0JTIwbGF5fGVufDB8fHx8MTc3NzYxNzE5MHww&ixlib=rb-4.1.0&q=85",
+      "description": "Minimal white/beige book standing",
+      "category": "product"
+    },
+    "category_business": {
+      "url": "https://images.unsplash.com/photo-1769184614794-f6e910de6128?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGFyY2hpdGVjdHVyZSUyMGdvbGQlMjB3YXJtfGVufDB8fHx8MTc3NzYxNzE5MHww&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract architecture gold warm (Business & Entrepreneurship)",
+      "category": "category"
+    },
+    "category_self_growth": {
+      "url": "https://images.unsplash.com/photo-1631737859676-20e3d0a25f01?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwyfHxjYWxtJTIwc2lsayUyMGZhYnJpYyUyMGZsb3dpbmclMjBpdm9yeXxlbnwwfHx8fDE3Nzc2MTcxOTB8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Calm silk fabric flowing ivory (Self-Growth)",
+      "category": "category"
+    },
+    "category_literature": {
+      "url": "https://images.unsplash.com/photo-1604778561734-cdfff7bb3c3b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxhbnRpcXVlJTIwYm9vayUyMHBhZ2VzJTIwbWFjcm8lMjBwaG90b2dyYXBoeXxlbnwwfHx8fDE3Nzc2MTcxNzd8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Antique book pages macro (Literature)",
+      "category": "category"
+    },
+    "category_spirituality": {
+      "url": "https://images.unsplash.com/photo-1774485423141-a63a49ae8df7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2ODh8MHwxfHNlYXJjaHw0fHxjYWxtJTIwbWluaW1hbCUyMGFic3RyYWN0JTIwd2FybSUyMHRleHR1cmV8ZW58MHx8fHwxNzc3NjE3MTc3fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Calm minimal abstract warm texture - golden light (Spirituality)",
+      "category": "category"
+    },
+    "category_bengali": {
+      "url": "https://images.unsplash.com/photo-1644150568283-d2c0b31cd703?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHx0ZXJyYWNvdHRhJTIwYXJ0JTIwdGV4dHVyZSUyMG1hY3JvfGVufDB8fHx8MTc3NzYxNzE5MHww&ixlib=rb-4.1.0&q=85",
+      "description": "Terracotta art texture macro (Bengali Reading)",
+      "category": "category"
+    },
+    "blog_1": {
+      "url": "https://images.unsplash.com/photo-1764087957302-ef0756ed8e0a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85",
+      "description": "Luxury fountain pen on writing desk",
+      "category": "blog"
+    },
+    "blog_2": {
+      "url": "https://images.unsplash.com/photo-1565357457446-4705a9445e54?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwyfHxhbnRpcXVlJTIwYm9vayUyMHBhZ2VzJTIwbWFjcm8lMjBwaG90b2dyYXBoeXxlbnwwfHx8fDE3Nzc2MTcxNzd8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Open antique book pages",
+      "category": "blog"
+    },
+    "blog_3": {
+      "url": "https://images.unsplash.com/photo-1761237771835-1d2914546cea?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2ODh8MHwxfHNlYXJjaHwzfHxjYWxtJTIwbWluaW1hbCUyMGFic3RyYWN0JTIwd2FybSUyMHRleHR1cmV8ZW58MHx8fHwxNzc3NjE3MTc3fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract shadows on wall",
+      "category": "blog"
+    },
+    "founder_ambient": {
+      "url": "https://images.unsplash.com/photo-1773067752075-2cfd37ab02dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85",
+      "description": "Vintage barometer / wooden desk",
+      "category": "about"
+    }
+  },
+  "instructions_to_main_agent": {
+    "css_variables": "Add these to index.css :root { --brand-burgundy: #4A1C27; --brand-beige: #F4EFEA; --brand-ivory: #FDFCF8; --brand-gold: #C5A059; --brand-charcoal: #2C2C2C; --brand-border: #E5DCD3; }. Use these via Tailwind classes like bg-[var(--brand-burgundy)].",
+    "background_texture": "Use a subtle SVG noise filter or a repeating paper texture on the main body background to give the 'subtle paper texture' requested.",
+    "page_sections": {
+      "Home": "Hero with 'hero_library' as bg with dark overlay, Featured Categories (bento grid with the 5 category images), Featured Book Spotlight (use 'book_cover_placeholder' + 'Brownies to Break-Even'), Why Us (3 cards), Founder Note (using 'founder_ambient'), Newsletter, Footer.",
+      "Shop": "Grid with Sidebar/Top filters for categories, Book cards using 'book_cover_placeholder' if no dynamic image.",
+      "Product_Detail": "Large split-screen or generous padding format. Left: Book cover sticky. Right: Details, Format Toggle (Paperback/Ebook), Add to Cart.",
+      "Blog_List": "Magazine style. Large featured article, grid of smaller articles using blog_1, 2, 3 images.",
+      "Blog_Article": "Narrow column (max-w-prose), drop caps, elegant pull-quotes with gold left-border, large serif headers.",
+      "About": "Multi-section narrative. Founder image, history, mission.",
+      "Publishing_Services": "Editorial layout, services list, elegant request form with Shadcn.",
+      "Contact": "Minimal form with Ivory surface card.",
+      "Admin": "Strict Grid hierarchy. Clean Shadcn components. Avoid large abstract images, focus on data density."
+    },
+    "testing": "All buttons, links, form inputs must have data-testid. E.g., data-testid='hero-cta-button'."
+  }
+}
