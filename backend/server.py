@@ -188,6 +188,11 @@ class SocialIn(BaseModel):
 class FeaturedIn(BaseModel):
     book_slug: str
 
+class ContactStatusIn(BaseModel):
+    status: str  # one of: new, read, responded
+
+VALID_CONTACT_STATUSES = {"new", "read", "responded"}
+
 
 # ---------- App ----------
 @asynccontextmanager
@@ -253,6 +258,9 @@ async def lifespan(_app: FastAPI):
         {"$setOnInsert": {"key": "social", "instagram": "", "facebook": "", "youtube": "", "linkedin": "", "twitter": ""}},
         upsert=True,
     )
+
+    # backfill contact.status for older entries that didn't have the field
+    await db.contacts.update_many({"status": {"$exists": False}}, {"$set": {"status": "new"}})
 
     # one-time migration: replace old "publishing brand" wording in the seeded book's about_author
     await db.books.update_one(
@@ -380,6 +388,7 @@ async def contact(payload: ContactIn):
         "email": payload.email.lower().strip(),
         "subject": payload.subject.strip(),
         "message": payload.message.strip(),
+        "status": "new",
         "created_at": now_iso(),
     })
     return {"ok": True, "message": "Thank you. We'll respond with care."}
@@ -494,6 +503,19 @@ async def admin_newsletter(_=Depends(require_admin)):
 @api.get("/admin/contacts")
 async def admin_contacts(_=Depends(require_admin)):
     return await db.contacts.find({}, {"_id": 0}).sort("created_at", -1).to_list(2000)
+
+
+@api.patch("/admin/contacts/{cid}/status")
+async def admin_set_contact_status(cid: str, payload: ContactStatusIn, _=Depends(require_admin)):
+    if payload.status not in VALID_CONTACT_STATUSES:
+        raise HTTPException(status_code=400, detail="Invalid status")
+    res = await db.contacts.update_one(
+        {"id": cid},
+        {"$set": {"status": payload.status, "updated_at": now_iso()}},
+    )
+    if res.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Contact not found")
+    return {"ok": True, "id": cid, "status": payload.status}
 
 
 # ---------- Admin: Settings (social) ----------

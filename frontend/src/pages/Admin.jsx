@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { api, formatError } from "../lib/api";
 import { toast } from "sonner";
-import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2 } from "lucide-react";
+import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
 
 const TABS = ["books", "blog", "categories", "newsletter", "contacts", "settings", "account"];
@@ -43,7 +43,7 @@ export default function Admin() {
         {tab === "blog" && <BlogAdmin />}
         {tab === "categories" && <CategoriesAdmin />}
         {tab === "newsletter" && <SimpleList endpoint="/admin/newsletter" testid="admin-newsletter" cols={["name", "email", "created_at"]} title="Reading Circle" />}
-        {tab === "contacts" && <SimpleList endpoint="/admin/contacts" testid="admin-contacts" cols={["name", "email", "subject", "message", "created_at"]} title="Contact Submissions" />}
+        {tab === "contacts" && <ContactsAdmin />}
         {tab === "settings" && <SettingsTab />}
         {tab === "account" && <AccountTab />}
       </div>
@@ -388,6 +388,119 @@ function SettingsTab() {
         ))}
         <button disabled={busy} className="btn-primary disabled:opacity-60" data-testid="save-socials">{busy ? "Saving…" : "Save links"}</button>
       </form>
+    </div>
+  );
+}
+
+
+const CONTACT_BADGE_STYLES = {
+  new: { background: "rgba(74,28,39,0.10)", color: "var(--brand-burgundy)", border: "1px solid rgba(74,28,39,0.28)" },
+  read: { background: "rgba(197,160,89,0.16)", color: "var(--brand-gold-deep)", border: "1px solid rgba(197,160,89,0.32)" },
+  responded: { background: "rgba(106,101,95,0.12)", color: "var(--brand-charcoal-soft)", border: "1px solid rgba(106,101,95,0.28)" },
+};
+const CONTACT_BADGE_LABEL = { new: "New", read: "Read", responded: "Responded" };
+
+function ContactStatusBadge({ status }) {
+  const s = CONTACT_BADGE_STYLES[status] || CONTACT_BADGE_STYLES.new;
+  return (
+    <span style={s} className="inline-flex items-center px-2.5 py-1 rounded-full text-[0.62rem] tracking-[0.24em] uppercase font-medium">
+      {CONTACT_BADGE_LABEL[status] || CONTACT_BADGE_LABEL.new}
+    </span>
+  );
+}
+
+function ContactsAdmin() {
+  const [rows, setRows] = useState([]);
+  const [filter, setFilter] = useState("all");
+
+  const load = () => api.get("/admin/contacts").then((r) => setRows(r.data)).catch(() => {});
+  useEffect(() => { load(); }, []);
+
+  const updateStatus = async (id, status) => {
+    try {
+      await api.patch(`/admin/contacts/${id}/status`, { status });
+      toast.success(`Marked as ${CONTACT_BADGE_LABEL[status]}`);
+      load();
+    } catch (e) { toast.error(formatError(e.response?.data?.detail)); }
+  };
+
+  const countBy = (s) => rows.filter((r) => (r.status || "new") === s).length;
+  const STATUS_TABS = [
+    { key: "all", label: "All", count: rows.length },
+    { key: "new", label: "New", count: countBy("new") },
+    { key: "read", label: "Read", count: countBy("read") },
+    { key: "responded", label: "Responded", count: countBy("responded") },
+  ];
+
+  const filtered = filter === "all" ? rows : rows.filter((r) => (r.status || "new") === filter);
+
+  return (
+    <div data-testid="contacts-admin">
+      <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
+        <h2 className="font-serif-display text-2xl text-burgundy">Contact Submissions ({rows.length})</h2>
+        <div className="flex gap-2 flex-wrap" data-testid="contacts-filters">
+          {STATUS_TABS.map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setFilter(t.key)}
+              data-testid={`contacts-filter-${t.key}`}
+              className={`px-3.5 py-1.5 rounded-full text-[0.66rem] tracking-[0.22em] uppercase transition-colors ${filter === t.key ? "bg-burgundy text-[var(--brand-ivory)]" : "text-charcoal-soft hover:text-burgundy border border-brand-soft"}`}
+            >
+              {t.label} · {t.count}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {filtered.length === 0 ? (
+        <div className="card-elegant p-12 text-center" data-testid="contacts-empty">
+          <div className="italic-eyebrow mb-2">Quiet inbox</div>
+          <p className="text-charcoal-soft">No submissions in this view yet.</p>
+        </div>
+      ) : (
+        <div className="grid gap-4">
+          {filtered.map((c) => {
+            const status = c.status || "new";
+            return (
+              <div key={c.id} className="card-elegant p-5 sm:p-6" data-testid={`contact-row-${c.id}`}>
+                <div className="flex items-start justify-between gap-5 flex-wrap">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <ContactStatusBadge status={status} />
+                      <span className="text-[0.66rem] tracking-[0.22em] uppercase text-charcoal-soft">{new Date(c.created_at).toLocaleString()}</span>
+                    </div>
+                    <h3 className="font-serif-display text-xl text-burgundy mt-3 leading-snug">
+                      {c.name}
+                      <span className="text-charcoal-soft text-base font-normal"> · {c.email}</span>
+                    </h3>
+                    {c.subject && <div className="italic-accent text-[1.05rem] text-charcoal-soft mt-1">{c.subject}</div>}
+                    <p className="text-charcoal-soft mt-3 leading-[1.7] text-[0.95rem] font-light whitespace-pre-wrap">{c.message}</p>
+                  </div>
+                  <div className="flex flex-col gap-3 shrink-0 min-w-[140px]" data-testid={`contact-actions-${c.id}`}>
+                    <a
+                      href={`mailto:${c.email}?subject=${encodeURIComponent("Re: " + (c.subject || "your letter to The Earnalism"))}`}
+                      className="inline-flex items-center gap-2 text-[0.66rem] tracking-[0.22em] uppercase text-burgundy hover:text-burgundy-soft border-b border-[var(--brand-gold)] pb-[2px] self-start"
+                      data-testid={`contact-reply-${c.id}`}
+                    >
+                      <Mail size={12} /> Reply by email
+                    </a>
+                    {["new", "read", "responded"].filter((s) => s !== status).map((s) => (
+                      <button
+                        key={s}
+                        onClick={() => updateStatus(c.id, s)}
+                        data-testid={`contact-mark-${s}-${c.id}`}
+                        className="text-left text-[0.66rem] tracking-[0.22em] uppercase text-charcoal-soft hover:text-burgundy"
+                      >
+                        Mark {CONTACT_BADGE_LABEL[s].toLowerCase()}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
