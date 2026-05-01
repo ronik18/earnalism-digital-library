@@ -13,7 +13,7 @@ import jwt
 from datetime import datetime, timezone, timedelta
 from typing import List, Optional
 
-from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request
+from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
@@ -30,6 +30,13 @@ JWT_SECRET = os.environ['JWT_SECRET']
 JWT_ALG = "HS256"
 ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL', 'admin@theearnalism.com')
 ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'admin123')
+
+# Cookie config — httpOnly session cookie. SECURE flag is on by default (HTTPS in prod);
+# can be disabled via env for plain-HTTP local dev only.
+SESSION_COOKIE = "ear_session"
+SESSION_TTL_SECONDS = 7 * 24 * 3600
+COOKIE_SECURE = os.environ.get("COOKIE_SECURE", "true").lower() != "false"
+COOKIE_SAMESITE = os.environ.get("COOKIE_SAMESITE", "lax")
 
 
 # ---------- Auth helpers ----------
@@ -51,11 +58,21 @@ def create_token(sub: str, email: str) -> str:
 
 bearer = HTTPBearer(auto_error=False)
 
-async def require_admin(creds: Optional[HTTPAuthorizationCredentials] = Depends(bearer)) -> dict:
-    if not creds or creds.scheme.lower() != "bearer":
+async def require_admin(
+    creds: Optional[HTTPAuthorizationCredentials] = Depends(bearer),
+    ear_session: Optional[str] = Cookie(default=None, alias=SESSION_COOKIE),
+) -> dict:
+    # Accept either an Authorization Bearer header OR the httpOnly session cookie.
+    # Cookies are preferred for browsers; Bearer is kept for server-side tests / curl.
+    token: Optional[str] = None
+    if creds and creds.scheme.lower() == "bearer":
+        token = creds.credentials
+    elif ear_session:
+        token = ear_session
+    if not token:
         raise HTTPException(status_code=401, detail="Not authenticated")
     try:
-        payload = jwt.decode(creds.credentials, JWT_SECRET, algorithms=[JWT_ALG])
+        payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALG])
     except jwt.ExpiredSignatureError:
         raise HTTPException(status_code=401, detail="Token expired")
     except jwt.InvalidTokenError:
@@ -63,6 +80,22 @@ async def require_admin(creds: Optional[HTTPAuthorizationCredentials] = Depends(
     if payload.get("role") != "admin":
         raise HTTPException(status_code=403, detail="Admin access required")
     return payload
+
+
+def _set_session_cookie(response: Response, token: str) -> None:
+    response.set_cookie(
+        key=SESSION_COOKIE,
+        value=token,
+        max_age=SESSION_TTL_SECONDS,
+        httponly=True,
+        secure=COOKIE_SECURE,
+        samesite=COOKIE_SAMESITE,
+        path="/",
+    )
+
+
+def _clear_session_cookie(response: Response) -> None:
+    response.delete_cookie(key=SESSION_COOKIE, path="/")
 
 
 # ---------- Utils ----------

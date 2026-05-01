@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, useCallback } from "react";
 import { api } from "../lib/api";
 
 const SettingsContext = createContext({ social: {}, refresh: () => {} });
@@ -10,15 +10,18 @@ export function SettingsProvider({ children }) {
     try {
       const { data } = await api.get("/settings/social");
       setSocial(data || {});
-    } catch {
-      /* ignore — defaults already set */
+    } catch (err) {
+      // Non-fatal: defaults remain in place. Surface the failure to the console for diagnosis.
+      console.warn("[SettingsContext] failed to load /settings/social:", err?.message || err);
     }
   }, []);
 
   useEffect(() => { refresh(); }, [refresh]);
 
+  const value = useMemo(() => ({ social, refresh }), [social, refresh]);
+
   return (
-    <SettingsContext.Provider value={{ social, refresh }}>
+    <SettingsContext.Provider value={value}>
       {children}
     </SettingsContext.Provider>
   );
