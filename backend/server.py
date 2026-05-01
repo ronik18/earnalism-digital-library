@@ -228,6 +228,12 @@ async def lifespan(_app: FastAPI):
         await db.books.insert_one(b.model_dump())
         logger.info("Seeded featured book")
 
+    # technology sample book (idempotent — only inserted if missing)
+    if not await db.books.find_one({"slug": SEED_TECH_BOOK["slug"]}):
+        tb = Book(**SEED_TECH_BOOK)
+        await db.books.insert_one(tb.model_dump())
+        logger.info("Seeded technology sample book")
+
     # featured setting
     await db.settings.update_one(
         {"key": "featured_book"},
@@ -542,7 +548,41 @@ SEED_CATEGORIES = [
     {"slug": "literature", "name": "Literature", "description": "Timeless prose, modern voices, and stories that linger.", "order": 3, "image_url": "https://images.unsplash.com/photo-1604778561734-cdfff7bb3c3b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxhbnRpcXVlJTIwYm9vayUyMHBhZ2VzJTIwbWFjcm8lMjBwaG90b2dyYXBoeXxlbnwwfHx8fDE3Nzc2MTcxNzd8MA&ixlib=rb-4.1.0&q=85"},
     {"slug": "spirituality", "name": "Spirituality", "description": "Reflections that return the reader to themselves.", "order": 4, "image_url": "https://images.unsplash.com/photo-1774485423141-a63a49ae8df7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2ODh8MHwxfHNlYXJjaHw0fHxjYWxtJTIwbWluaW1hbCUyMGFic3RyYWN0JTIwd2FybSUyMHRleHR1cmV8ZW58MHx8fHwxNzc3NjE3MTc3fDA&ixlib=rb-4.1.0&q=85"},
     {"slug": "bengali-reading", "name": "Bengali Reading", "description": "A devoted shelf for Bengali literature and thought.", "order": 5, "image_url": "https://images.unsplash.com/photo-1644150568283-d2c0b31cd703?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHx0ZXJyYWNvdHRhJTIwYXJ0JTIwdGV4dHVyZSUyMG1hY3JvfGVufDB8fHx8MTc3NzYxNzE5MHww&ixlib=rb-4.1.0&q=85"},
+    {"slug": "technology", "name": "Technology", "description": "Books on software, AI, data, digital systems, product thinking, and the future of work.", "order": 6, "image_url": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?crop=entropy&cs=srgb&fm=jpg&w=1600&q=85"},
 ]
+
+SEED_TECH_BOOK = {
+    "slug": "the-architecture-of-intelligent-systems",
+    "title": "The Architecture of Intelligent Systems",
+    "subtitle": "On software, data, and the engineering discipline behind modern digital products.",
+    "category_slug": "technology",
+    "short_description": "A thoughtful guide to software architecture, data platforms, AI systems, and the craft of building durable digital products.",
+    "description": "The Architecture of Intelligent Systems is written for engineers, founders, and product leaders who want their software to last longer than a quarter. Across patient chapters on services, data platforms, machine intelligence, and the human discipline behind them, it returns again and again to a single idea: technology earns its place through clarity, restraint, and care.",
+    "cover_image_url": "https://images.unsplash.com/photo-1532012197267-da84d127e765?crop=entropy&cs=srgb&fm=jpg&w=1200&q=85",
+    "price_paperback": "",
+    "price_ebook": "",
+    "buy_url": "",
+    "formats": ["Paperback", "Ebook"],
+    "benefits": [
+        "A working vocabulary for modern software architecture",
+        "Frameworks for designing data platforms that scale gently",
+        "An honest view of AI systems — what they can and cannot promise",
+        "A craft-first lens on engineering leadership",
+    ],
+    "who_for": [
+        "Engineers moving from individual contribution to system design",
+        "Founders making consequential technology choices",
+        "Product leaders responsible for long-lived digital products",
+    ],
+    "learnings": [
+        "How to choose architectures that respect both users and budgets",
+        "The discipline of data — quality, lineage, and quiet governance",
+        "Where AI belongs in a product, and where it does not",
+        "Building engineering teams that compound over years",
+    ],
+    "about_author": "Curated on the shelves of The Earnalism — an independent bookstore devoted to thoughtful business, literature, and the craft of modern technology.",
+    "is_published": True,
+}
 
 SEED_BOOK = {
     "slug": "brownies-to-break-even-and-beyond",

@@ -87,11 +87,19 @@ export default function Shop() {
             ))}
           </div>
         ) : books.length === 0 ? (
-          <div className="card-elegant p-12 sm:p-20 text-center" data-testid="shop-empty">
-            <div className="overline mb-3">An Open Shelf</div>
-            <h3 className="font-serif-display text-3xl text-burgundy">No titles match — yet.</h3>
-            <p className="text-charcoal-soft mt-3 max-w-md mx-auto">Try another shelf, or join the Reading Circle to know when our next book arrives.</p>
-          </div>
+          cat === "technology" ? (
+            <div className="card-elegant p-12 sm:p-20 text-center" data-testid="shop-empty-technology">
+              <div className="overline mb-3">Technology Shelf</div>
+              <h3 className="font-serif-display text-3xl text-burgundy">Technology titles are being curated.</h3>
+              <p className="text-charcoal-soft mt-3 max-w-xl mx-auto">Return soon for books on software, AI, data, and digital enterprise.</p>
+            </div>
+          ) : (
+            <div className="card-elegant p-12 sm:p-20 text-center" data-testid="shop-empty">
+              <div className="overline mb-3">An Open Shelf</div>
+              <h3 className="font-serif-display text-3xl text-burgundy">No titles match — yet.</h3>
+              <p className="text-charcoal-soft mt-3 max-w-md mx-auto">Try another shelf, or join the Reading Circle to know when our next book arrives.</p>
+            </div>
+          )
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" data-testid="books-grid">
             {books.map((b) => <BookCard key={b.slug} book={b} />)}
