@@ -76,7 +76,7 @@ export default function Home() {
             >
               <div className={`relative ${i === 0 ? "aspect-[16/10] lg:aspect-[16/12]" : "aspect-[4/3]"} overflow-hidden`}>
                 {c.image_url && (
-                  <img src={c.image_url} alt={c.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.06]" />
+                  <img src={c.image_url} alt={c.name} loading="lazy" className="w-full h-full object-cover transition-transform [transition-duration:1200ms] group-hover:scale-[1.06]" />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2a1218]/65 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">

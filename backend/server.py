@@ -16,6 +16,7 @@ from typing import List, Optional
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
 
@@ -188,7 +189,65 @@ class FeaturedIn(BaseModel):
 
 
 # ---------- App ----------
-app = FastAPI(title="The Earnalism API")
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    # ----- startup -----
+    # indexes
+    await db.users.create_index("email", unique=True)
+    await db.books.create_index("slug", unique=True)
+    await db.categories.create_index("slug", unique=True)
+    await db.blog_posts.create_index("slug", unique=True)
+    await db.newsletter.create_index("email", unique=True)
+    await db.settings.create_index("key", unique=True)
+
+    # admin (seed only if absent; do NOT overwrite password so admin can change it via UI)
+    existing = await db.users.find_one({"email": ADMIN_EMAIL.lower()})
+    if not existing:
+        await db.users.insert_one({
+            "id": str(uuid.uuid4()),
+            "email": ADMIN_EMAIL.lower(),
+            "password_hash": hash_password(ADMIN_PASSWORD),
+            "name": "Admin",
+            "role": "admin",
+            "created_at": now_iso(),
+        })
+        logger.info("Seeded admin user")
+
+    # categories
+    for c in SEED_CATEGORIES:
+        await db.categories.update_one(
+            {"slug": c["slug"]},
+            {"$setOnInsert": {**c, "id": str(uuid.uuid4())}},
+            upsert=True,
+        )
+
+    # featured book
+    if not await db.books.find_one({"slug": SEED_BOOK["slug"]}):
+        b = Book(**SEED_BOOK)
+        await db.books.insert_one(b.model_dump())
+        logger.info("Seeded featured book")
+
+    # featured setting
+    await db.settings.update_one(
+        {"key": "featured_book"},
+        {"$setOnInsert": {"key": "featured_book", "book_slug": SEED_BOOK["slug"]}},
+        upsert=True,
+    )
+
+    # blog posts
+    for p in SEED_POSTS:
+        if not await db.blog_posts.find_one({"slug": p["slug"]}):
+            post = BlogPost(**p)
+            await db.blog_posts.insert_one(post.model_dump())
+    logger.info("Startup seeding complete")
+
+    yield
+
+    # ----- shutdown -----
+    client.close()
+
+
+app = FastAPI(title="The Earnalism API", lifespan=lifespan)
 api = APIRouter(prefix="/api")
 
 
@@ -436,10 +495,15 @@ async def admin_set_featured(payload: FeaturedIn, _=Depends(require_admin)):
 
 app.include_router(api)
 
+# CORS: Bearer-token auth only (no cookies), so credentials=False is correct.
+# A wildcard origin with credentials=True is rejected by browsers.
+_cors_env = os.environ.get('CORS_ORIGINS', '*')
+_origins = [o.strip() for o in _cors_env.split(',') if o.strip()]
+_allow_credentials = not (len(_origins) == 1 and _origins[0] == '*')
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_credentials=_allow_credentials,
+    allow_origins=_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -522,60 +586,3 @@ SEED_POSTS = [
         "is_published": True,
     },
 ]
-
-
-@app.on_event("startup")
-async def on_startup():
-    # indexes
-    await db.users.create_index("email", unique=True)
-    await db.books.create_index("slug", unique=True)
-    await db.categories.create_index("slug", unique=True)
-    await db.blog_posts.create_index("slug", unique=True)
-    await db.newsletter.create_index("email", unique=True)
-    await db.settings.create_index("key", unique=True)
-
-    # admin (seed only if absent; do NOT overwrite password so admin can change it via UI)
-    existing = await db.users.find_one({"email": ADMIN_EMAIL.lower()})
-    if not existing:
-        await db.users.insert_one({
-            "id": str(uuid.uuid4()),
-            "email": ADMIN_EMAIL.lower(),
-            "password_hash": hash_password(ADMIN_PASSWORD),
-            "name": "Admin",
-            "role": "admin",
-            "created_at": now_iso(),
-        })
-        logger.info("Seeded admin user")
-
-    # categories
-    for c in SEED_CATEGORIES:
-        await db.categories.update_one(
-            {"slug": c["slug"]},
-            {"$setOnInsert": {**c, "id": str(uuid.uuid4())}},
-            upsert=True,
-        )
-
-    # featured book
-    if not await db.books.find_one({"slug": SEED_BOOK["slug"]}):
-        b = Book(**SEED_BOOK)
-        await db.books.insert_one(b.model_dump())
-        logger.info("Seeded featured book")
-
-    # featured setting
-    await db.settings.update_one(
-        {"key": "featured_book"},
-        {"$setOnInsert": {"key": "featured_book", "book_slug": SEED_BOOK["slug"]}},
-        upsert=True,
-    )
-
-    # blog posts
-    for p in SEED_POSTS:
-        if not await db.blog_posts.find_one({"slug": p["slug"]}):
-            post = BlogPost(**p)
-            await db.blog_posts.insert_one(post.model_dump())
-    logger.info("Startup seeding complete")
-
-
-@app.on_event("shutdown")
-async def on_shutdown():
-    client.close()
