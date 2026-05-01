@@ -38,20 +38,21 @@ export default function Contact() {
 
   return (
     <div data-testid="contact-page">
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-20 sm:pt-28 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-32 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <div className="lg:col-span-5">
-          <div className="overline mb-4">Reach The Earnalism</div>
-          <h1 className="font-serif-display text-4xl sm:text-5xl text-burgundy leading-[1.05] tracking-tight">Write to us — we read every letter.</h1>
-          <p className="text-charcoal-soft mt-6 leading-relaxed">For book inquiries, order questions, reading recommendations, press, or simply to introduce yourself as a reader.</p>
+          <div className="italic-eyebrow mb-4">Reach The Earnalism</div>
+          <h1 className="font-serif-light text-4xl sm:text-5xl lg:text-[3.75rem] text-burgundy leading-[1.02] tracking-tight">Write to us — we read every <span className="italic-accent">letter.</span></h1>
+          <div className="gold-rule-thin mt-7" />
+          <p className="text-charcoal-soft mt-7 leading-[1.8] font-light">For book inquiries, order questions, reading recommendations, press, or simply to introduce yourself as a reader.</p>
 
-          <div className="mt-10 space-y-4">
+          <div className="mt-10 space-y-5">
             <a href="mailto:hello@theearnalism.com" className="flex items-center gap-3 text-charcoal hover:text-burgundy" data-testid="contact-email-link">
-              <Mail size={18} className="text-gold" /> hello@theearnalism.com
+              <Mail size={16} className="text-gold" strokeWidth={1.5} /> <span className="font-serif-display italic text-lg">hello@theearnalism.com</span>
             </a>
             {activeSocials.length > 0 && (
               <div className="flex items-center gap-4 text-charcoal-soft" data-testid="contact-socials">
                 {activeSocials.map(({ key, label, Icon }) => (
-                  <a key={key} href={social[key]} target="_blank" rel="noreferrer" aria-label={label} className="hover:text-burgundy" data-testid={`contact-social-${key}`}><Icon size={18} /></a>
+                  <a key={key} href={social[key]} target="_blank" rel="noreferrer" aria-label={label} className="hover:text-burgundy transition-colors" data-testid={`contact-social-${key}`}><Icon size={18} strokeWidth={1.5} /></a>
                 ))}
               </div>
             )}
@@ -60,7 +61,8 @@ export default function Contact() {
 
         <div className="lg:col-span-7">
           <div className="card-elegant p-8 sm:p-12">
-            <form onSubmit={submit} className="grid grid-cols-1 sm:grid-cols-2 gap-5" data-testid="contact-form">
+            <div className="italic-eyebrow mb-5">A short letter</div>
+            <form onSubmit={submit} className="grid grid-cols-1 sm:grid-cols-2 gap-6" data-testid="contact-form">
               <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Your name" className="input-elegant" data-testid="contact-name" />
               <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="Your email" className="input-elegant" data-testid="contact-email-input" />
               <input value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} placeholder="Subject" className="input-elegant sm:col-span-2" data-testid="contact-subject" />

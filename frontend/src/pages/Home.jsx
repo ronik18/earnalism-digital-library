@@ -44,36 +44,40 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <img src={HERO_IMG} alt="" loading="eager" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1a0a0e]/85 via-[#2a1218]/70 to-[#F4EFEA] " />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1a0a0e]/72 via-[#2a1218]/55 to-[#F4EFEA]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(197,160,89,0.18),transparent_70%)]" />
         </div>
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-36 pb-32 sm:pb-44">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-28 sm:pt-40 pb-36 sm:pb-52">
           <div className="max-w-3xl">
-            <div className="overline text-[var(--brand-gold-soft)] mb-6" data-testid="hero-overline">A Boutique Independent Bookstore</div>
-            <h1 className="font-serif-display text-4xl sm:text-6xl lg:text-7xl leading-[1.05] text-[#FDFCF8] tracking-tight text-balance" data-testid="hero-headline">
-              Books for Those Who Read With Depth.
+            <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-7 flex items-center gap-3" data-testid="hero-overline">
+              <span className="h-px w-10 bg-[var(--brand-gold)]/70" />
+              <span>Volume I &middot; Curated Reading</span>
+            </div>
+            <h1 className="font-serif-light text-5xl sm:text-6xl lg:text-7xl leading-[1.02] text-[#FDFCF8] tracking-tight text-balance" data-testid="hero-headline">
+              Books for those who <span className="italic-accent text-[var(--brand-gold-soft)]">read</span> with depth.
             </h1>
-            <p className="mt-7 text-base sm:text-lg text-[#F4EFEA]/85 max-w-xl leading-relaxed">
-              Curated titles in business, self-growth, literature, spirituality, and Bengali reading — chosen for readers who value depth, beauty, and meaning.
+            <p className="mt-9 text-base sm:text-[1.05rem] text-[#F4EFEA]/80 max-w-lg leading-[1.75] font-light">
+              Curated titles in business, self-growth, literature, spirituality, technology, and Bengali reading — chosen for readers who value depth, beauty, and meaning.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3 sm:gap-4">
+            <div className="mt-12 flex flex-wrap gap-3 sm:gap-4 items-center">
               <Link to="/shop" className="btn-primary" data-testid="hero-cta-explore">Explore the Collection</Link>
-              <Link to={featured ? `/shop/${featured.slug}` : "/shop"} className="btn-secondary !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/15" data-testid="hero-cta-featured">Start With Our Featured Book</Link>
+              <Link to={featured ? `/shop/${featured.slug}` : "/shop"} className="btn-secondary !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-featured">Start with our featured book</Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* CATEGORIES */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28" id="collection">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div>
-            <div className="overline mb-3">The Shelves</div>
-            <h2 className="font-serif-display text-4xl sm:text-5xl text-burgundy tracking-tight">A small library, carefully kept.</h2>
+      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 sm:py-32" id="collection">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14 sm:mb-20">
+          <div className="max-w-xl">
+            <div className="overline mb-4">The Shelves</div>
+            <h2 className="font-serif-light text-4xl sm:text-5xl lg:text-[3.5rem] text-burgundy leading-[1.05] tracking-tight">A small library, <span className="italic-accent">carefully kept.</span></h2>
           </div>
-          <Link to="/shop" className="btn-link" data-testid="categories-view-all">View the full collection <ArrowRight size={14} /></Link>
+          <Link to="/shop" className="btn-link self-start sm:self-end" data-testid="categories-view-all">View the full collection <ArrowRight size={14} /></Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-9">
           {categories.map((c, i) => (
             <Link
               key={c.slug}
@@ -85,10 +89,11 @@ export default function Home() {
                 {c.image_url && (
                   <img src={c.image_url} alt={c.name} loading="lazy" className="w-full h-full object-cover transition-transform [transition-duration:1200ms] group-hover:scale-[1.06]" />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2a1218]/65 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
-                  <h3 className={`font-serif-display text-[#FDFCF8] ${i === 0 ? "text-3xl sm:text-4xl" : "text-2xl"} mb-1`}>{c.name}</h3>
-                  <p className="text-[#F4EFEA]/85 text-sm leading-relaxed max-w-md">{c.description}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2a1218]/72 via-[#2a1218]/15 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-7 sm:p-9">
+                  <span className="text-[0.65rem] tracking-[0.32em] uppercase text-[var(--brand-gold-soft)]">Shelf · 0{i + 1}</span>
+                  <h3 className={`font-serif-light text-[#FDFCF8] ${i === 0 ? "text-3xl sm:text-[2.5rem] mt-3" : "text-2xl mt-2"} leading-[1.1] tracking-tight`}>{c.name}</h3>
+                  <p className="text-[#F4EFEA]/85 text-[0.92rem] leading-[1.65] mt-3 max-w-md font-light">{c.description}</p>
                 </div>
               </div>
             </Link>
@@ -98,19 +103,20 @@ export default function Home() {
 
       {/* FEATURED BOOK */}
       {featured && (
-        <section className="bg-ivory border-y border-brand">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <section className="surface-warm border-y border-brand-soft">
+          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 sm:py-32 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5">
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-brand shadow-[0_30px_60px_-30px_rgba(74,28,39,0.35)]">
+              <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft shadow-[0_40px_80px_-40px_rgba(74,28,39,0.4)]">
                 <img src={featured.cover_image_url} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
               </div>
             </div>
             <div className="lg:col-span-7">
-              <div className="overline mb-4">Currently Featured</div>
-              <h2 className="font-serif-display text-4xl sm:text-5xl text-burgundy leading-[1.1] tracking-tight">{featured.title}</h2>
-              <p className="font-serif-display italic text-xl sm:text-2xl text-charcoal-soft mt-3">{featured.subtitle}</p>
-              <p className="text-charcoal-soft mt-6 leading-relaxed max-w-2xl">{featured.description}</p>
-              <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
+              <div className="italic-eyebrow mb-5">Currently on the table</div>
+              <h2 className="font-serif-light text-4xl sm:text-5xl lg:text-[3.5rem] text-burgundy leading-[1.05] tracking-tight">{featured.title}</h2>
+              <p className="font-serif-display italic text-xl sm:text-2xl text-burgundy-soft mt-4 leading-snug">{featured.subtitle}</p>
+              <div className="gold-rule-thin mt-6" />
+              <p className="text-charcoal-soft mt-7 leading-[1.85] max-w-2xl font-light">{featured.description}</p>
+              <div className="mt-10 flex flex-wrap gap-3 sm:gap-4">
                 <Link to={`/shop/${featured.slug}`} className="btn-secondary" data-testid="featured-view">View Book</Link>
                 {featured.buy_url ? (
                   <a href={featured.buy_url} target="_blank" rel="noreferrer" className="btn-primary" data-testid="featured-buy">Buy Now</a>
@@ -124,10 +130,10 @@ export default function Home() {
       )}
 
       {/* WHY EARNALISM */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="overline mb-3">Why The Earnalism</div>
-          <h2 className="font-serif-display text-4xl sm:text-5xl text-burgundy tracking-tight">A bookstore for readers who linger.</h2>
+      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 sm:py-32">
+        <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+          <div className="overline mb-4">Why The Earnalism</div>
+          <h2 className="font-serif-light text-4xl sm:text-5xl text-burgundy tracking-tight leading-[1.05]">A bookstore for readers who <span className="italic-accent">linger.</span></h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {[
@@ -135,44 +141,45 @@ export default function Home() {
             { icon: BookOpen, title: "Built for Thoughtful Readers", body: "Our writing, design, and packaging assume a patient reader. Margins to think in. Typography to return to. A pace that respects you." },
             { icon: Compass, title: "From Reading to Practice", body: "Every shelf is chosen to turn careful reading into careful living — steadier thinking, better work, quieter days. We curate for return, not rush." },
           ].map((c) => (
-            <div key={c.title} className="card-elegant p-8 sm:p-10" data-testid={`why-card-${c.title.toLowerCase().replace(/\s/g, '-')}`}>
-              <c.icon className="text-gold" size={28} />
-              <div className="gold-rule mt-5 mb-6" />
-              <h3 className="font-serif-display text-2xl text-burgundy mb-3">{c.title}</h3>
-              <p className="text-charcoal-soft leading-relaxed">{c.body}</p>
+            <div key={c.title} className="card-elegant p-9 sm:p-11" data-testid={`why-card-${c.title.toLowerCase().replace(/\s/g, '-')}`}>
+              <c.icon className="text-gold" size={26} strokeWidth={1.4} />
+              <div className="gold-rule-thin mt-6 mb-7" />
+              <h3 className="font-serif-display text-[1.6rem] sm:text-2xl text-burgundy mb-4 leading-snug">{c.title}</h3>
+              <p className="text-charcoal-soft leading-[1.8] text-[0.95rem] font-light">{c.body}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* FOUNDER NOTE */}
-      <section className="bg-ivory border-y border-brand">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="surface-warm border-y border-brand-soft">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 sm:py-32 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
-            <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-brand">
+            <div className="aspect-[4/5] rounded-xl overflow-hidden border border-brand-soft">
               <img src={FOUNDER_IMG} alt="" loading="lazy" className="w-full h-full object-cover" />
             </div>
           </div>
           <div className="lg:col-span-7 order-1 lg:order-2">
-            <div className="overline mb-4">A Founder's Note</div>
-            <h2 className="font-serif-display text-4xl sm:text-5xl text-burgundy leading-[1.1] tracking-tight">A Bookstore for the Reader Who Still Believes in Depth.</h2>
-            <p className="text-charcoal-soft mt-7 leading-relaxed text-base sm:text-lg max-w-2xl">
+            <div className="italic-eyebrow mb-5">A note from the desk</div>
+            <h2 className="font-serif-light text-4xl sm:text-5xl text-burgundy leading-[1.05] tracking-tight">A bookstore for the reader who still believes in <span className="italic-accent">depth.</span></h2>
+            <p className="text-charcoal-soft mt-8 leading-[1.85] text-[1.02rem] max-w-2xl font-light">
               The Earnalism began as a quiet rebellion against noisy bookshelves. We believe a book is a long conversation — patient, particular, and worth the careful season it takes to write. As an independent online bookstore, we keep the list small and the standard generous. Every title here is chosen for one reader: the one who still believes that meaning compounds, slowly, across the right pages.
             </p>
-            <div className="gold-rule mt-8" />
+            <div className="gold-rule mt-10" />
           </div>
         </div>
       </section>
 
       {/* NEWSLETTER */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28">
-        <div className="card-elegant p-8 sm:p-14 lg:p-20 text-center max-w-3xl mx-auto" data-testid="newsletter-card">
-          <div className="overline mb-3">The Reading Circle</div>
-          <h2 className="font-serif-display text-3xl sm:text-5xl text-burgundy tracking-tight">Join the Earnalism Reading Circle</h2>
-          <p className="text-charcoal-soft mt-4 max-w-xl mx-auto leading-relaxed">
+      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 sm:py-32">
+        <div className="surface-quiet border border-brand-soft rounded-xl p-9 sm:p-16 lg:p-24 text-center max-w-3xl mx-auto" data-testid="newsletter-card">
+          <div className="italic-eyebrow mb-4">From the Editor's Desk</div>
+          <h2 className="font-serif-light text-3xl sm:text-5xl text-burgundy tracking-tight leading-[1.05]">Join the Earnalism <span className="italic-accent">Reading Circle.</span></h2>
+          <div className="gold-rule-thin mx-auto mt-7" />
+          <p className="text-charcoal-soft mt-7 max-w-xl mx-auto leading-[1.8] font-light">
             Receive thoughtful book notes, new shelf arrivals, and curated reading recommendations — written with the care of a private letter.
           </p>
-          <form onSubmit={subscribe} className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-xl mx-auto text-left">
+          <form onSubmit={subscribe} className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl mx-auto text-left">
             <input
               required value={name} onChange={(e) => setName(e.target.value)}
               placeholder="Your name" className="input-elegant" data-testid="newsletter-name"
@@ -181,7 +188,7 @@ export default function Home() {
               required type="email" value={email} onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email" className="input-elegant" data-testid="newsletter-email"
             />
-            <div className="sm:col-span-2 flex justify-center mt-4">
+            <div className="sm:col-span-2 flex justify-center mt-6">
               <button disabled={submitting} type="submit" className="btn-primary disabled:opacity-60" data-testid="newsletter-submit">
                 {submitting ? "Joining…" : "Join the Circle"}
               </button>

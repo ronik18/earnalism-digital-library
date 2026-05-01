@@ -39,13 +39,14 @@ export default function JournalArticle() {
         </Link>
       </div>
 
-      <header className="max-w-3xl mx-auto px-5 sm:px-8 pt-8 pb-10">
-        <div className="overline mb-4">{post.category}</div>
-        <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl text-burgundy leading-[1.05] tracking-tight text-balance">{post.title}</h1>
-        <div className="mt-6 flex items-center gap-4 text-sm text-charcoal-soft">
-          <span>{post.author}</span><span>·</span>
+      <header className="max-w-3xl mx-auto px-5 sm:px-8 pt-8 pb-12 text-center">
+        <div className="overline mb-5">{post.category}</div>
+        <h1 className="font-serif-light text-4xl sm:text-5xl lg:text-[4rem] text-burgundy leading-[1.02] tracking-tight text-balance">{post.title}</h1>
+        <div className="mt-8 flex items-center justify-center gap-3 text-[0.7rem] tracking-[0.24em] uppercase text-charcoal-soft">
+          <span>By {post.author}</span><span>·</span>
           <span>{new Date(post.created_at).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })}</span>
         </div>
+        <div className="gold-rule mx-auto mt-10" />
       </header>
 
       {post.cover_image_url && (
@@ -57,9 +58,9 @@ export default function JournalArticle() {
       )}
 
       <div className="max-w-2xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
-        <div className="font-serif-display text-lg sm:text-xl leading-[1.75] text-charcoal drop-cap">
+        <div className="font-serif-display text-[1.18rem] sm:text-[1.28rem] leading-[1.85] text-charcoal drop-cap">
           {post.content.split("\n\n").map((para, i) => (
-            <p key={i} className={i === 0 ? "" : "mt-6"}>{para}</p>
+            <p key={i} className={i === 0 ? "" : "mt-7"}>{para}</p>
           ))}
         </div>
         {post.pull_quote && (

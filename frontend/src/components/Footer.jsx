@@ -16,13 +16,14 @@ export default function Footer() {
 
   return (
     <footer className="mt-24 sm:mt-32 border-t border-brand bg-ivory" data-testid="site-footer">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="md:col-span-2">
-          <div className="font-serif-display text-3xl text-burgundy mb-3">The Earnalism</div>
-          <p className="text-charcoal-soft max-w-md leading-relaxed">
-            A boutique online bookstore devoted to thoughtful business, literature, self-growth, spirituality, and Bengali reading.
+          <div className="font-serif-light text-[2rem] sm:text-[2.25rem] text-burgundy mb-3 leading-tight">The Earnalism</div>
+          <p className="font-serif-display italic text-base text-charcoal-soft mb-4">An independent online bookstore.</p>
+          <p className="text-charcoal-soft max-w-md leading-[1.8] font-light text-[0.95rem]">
+            A boutique online bookstore devoted to thoughtful business, literature, self-growth, spirituality, technology, and Bengali reading.
           </p>
-          <div className="gold-rule mt-6" />
+          <div className="gold-rule-thin mt-7" />
         </div>
 
         <div>

@@ -29,12 +29,12 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 glass-header" data-testid="site-header">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between">
-        <Link to="/" className="flex items-baseline gap-2" data-testid="brand-logo">
-          <span className="font-serif-display text-2xl sm:text-[28px] font-medium tracking-tight text-burgundy">The Earnalism</span>
-          <span className="hidden sm:inline overline">est. boutique</span>
+        <Link to="/" className="flex items-baseline gap-3" data-testid="brand-logo">
+          <span className="font-serif-light text-[1.65rem] sm:text-[1.85rem] tracking-tight text-burgundy leading-none">The Earnalism</span>
+          <span className="hidden md:inline italic-accent text-[0.85rem] text-gold-deep leading-none">est. boutique</span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-9">
+        <nav className="hidden lg:flex items-center gap-10">
           {NAV.map((n) => (
             <NavLink
               key={n.to}
@@ -42,7 +42,7 @@ export default function Header() {
               end={n.to === "/"}
               data-testid={`nav-${n.label.toLowerCase()}`}
               className={({ isActive }) =>
-                `text-[13px] tracking-[0.18em] uppercase transition-colors ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
+                `text-[0.7rem] tracking-[0.26em] uppercase transition-colors ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
               }
             >
               {n.label}
@@ -51,7 +51,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <Link to="/shop" className="btn-primary" data-testid="header-cta-shop">Explore</Link>
+          <Link to="/shop" className="btn-secondary" data-testid="header-cta-shop">Explore</Link>
         </div>
 
         <button
