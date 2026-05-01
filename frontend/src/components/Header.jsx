@@ -31,7 +31,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-baseline gap-2 sm:gap-3 min-w-0" data-testid="brand-logo">
           <span className="font-serif-light text-[1.5rem] sm:text-[1.8rem] tracking-tight text-burgundy leading-none truncate">The Earnalism</span>
-          <span className="hidden md:inline italic-accent text-[0.85rem] text-gold-deep leading-none whitespace-nowrap">est. boutique</span>
+          <span className="hidden md:inline italic-accent text-[0.85rem] text-gold-deep leading-none whitespace-nowrap">Curated Bookstore</span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
