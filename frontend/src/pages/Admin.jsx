@@ -3,9 +3,10 @@ import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { api, formatError } from "../lib/api";
 import { toast } from "sonner";
-import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound } from "lucide-react";
+import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2 } from "lucide-react";
+import { useSettings } from "../context/SettingsContext";
 
-const TABS = ["books", "blog", "categories", "newsletter", "contacts", "publishing", "account"];
+const TABS = ["books", "blog", "categories", "newsletter", "contacts", "settings", "account"];
 
 export default function Admin() {
   const { admin, logout } = useAuth();
@@ -43,7 +44,7 @@ export default function Admin() {
         {tab === "categories" && <CategoriesAdmin />}
         {tab === "newsletter" && <SimpleList endpoint="/admin/newsletter" testid="admin-newsletter" cols={["name", "email", "created_at"]} title="Reading Circle" />}
         {tab === "contacts" && <SimpleList endpoint="/admin/contacts" testid="admin-contacts" cols={["name", "email", "subject", "message", "created_at"]} title="Contact Submissions" />}
-        {tab === "publishing" && <SimpleList endpoint="/admin/publishing-requests" testid="admin-publishing" cols={["name", "email", "project_title", "message", "created_at"]} title="Publishing Requests" />}
+        {tab === "settings" && <SettingsTab />}
         {tab === "account" && <AccountTab />}
       </div>
     </div>
@@ -337,3 +338,57 @@ function AccountTab() {
     </div>
   );
 }
+
+const SOCIAL_FIELDS = [
+  { key: "instagram", label: "Instagram URL", placeholder: "https://instagram.com/theearnalism" },
+  { key: "facebook", label: "Facebook URL", placeholder: "https://facebook.com/theearnalism" },
+  { key: "youtube", label: "YouTube URL", placeholder: "https://youtube.com/@theearnalism" },
+  { key: "linkedin", label: "LinkedIn URL", placeholder: "https://linkedin.com/company/theearnalism" },
+  { key: "twitter", label: "X / Twitter URL", placeholder: "https://x.com/theearnalism" },
+];
+
+function SettingsTab() {
+  const { social, refresh } = useSettings();
+  const [form, setForm] = useState(social);
+  const [busy, setBusy] = useState(false);
+
+  useEffect(() => { setForm(social); }, [social]);
+
+  const submit = async (e) => {
+    e.preventDefault();
+    setBusy(true);
+    try {
+      await api.put("/admin/settings/social", form);
+      await refresh();
+      toast.success("Social links updated.");
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally { setBusy(false); }
+  };
+
+  return (
+    <div className="card-elegant p-6 sm:p-10 max-w-2xl" data-testid="settings-tab">
+      <div className="flex items-center gap-2 mb-5">
+        <Share2 className="text-gold" size={18} />
+        <h2 className="font-serif-display text-2xl text-burgundy">Social links</h2>
+      </div>
+      <p className="text-sm text-charcoal-soft mb-6">Paste full profile URLs. Empty fields are hidden from the site.</p>
+      <form onSubmit={submit} className="space-y-5">
+        {SOCIAL_FIELDS.map((f) => (
+          <Field key={f.key} label={f.label} wide>
+            <input
+              type="url"
+              className="input-elegant"
+              value={form[f.key] || ""}
+              onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
+              placeholder={f.placeholder}
+              data-testid={`social-${f.key}`}
+            />
+          </Field>
+        ))}
+        <button disabled={busy} className="btn-primary disabled:opacity-60" data-testid="save-socials">{busy ? "Saving…" : "Save links"}</button>
+      </form>
+    </div>
+  );
+}
+

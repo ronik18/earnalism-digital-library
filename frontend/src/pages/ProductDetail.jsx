@@ -2,12 +2,20 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Check, ChevronLeft } from "lucide-react";
 import { api } from "../lib/api";
+import ShareButtons from "../components/ShareButtons";
+import useSEO from "../hooks/useSEO";
 
 export default function ProductDetail() {
   const { slug } = useParams();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
   const [format, setFormat] = useState("Paperback");
+
+  useSEO({
+    title: book ? `${book.title} — The Earnalism` : "Book — The Earnalism",
+    description: book?.short_description || book?.subtitle || "A curated title from The Earnalism — for readers who value depth, beauty, and meaning.",
+    image: book?.cover_image_url,
+  });
 
   useEffect(() => {
     setLoading(true);
@@ -81,13 +89,16 @@ export default function ProductDetail() {
             )}
           </div>
 
-          <div className="mt-7 flex gap-3 flex-wrap" data-testid="buy-actions">
+          <div className="mt-7 flex gap-3 flex-wrap items-center" data-testid="buy-actions">
             {book.buy_url ? (
               <a href={book.buy_url} target="_blank" rel="noreferrer" className="btn-primary" data-testid="buy-now">Buy Now</a>
             ) : (
               <Link to="/contact" className="btn-primary" data-testid="request-purchase">Request Purchase Info</Link>
             )}
-            <Link to="/publishing" className="btn-secondary" data-testid="request-publishing">Request Publishing Help</Link>
+          </div>
+
+          <div className="mt-7" data-testid="product-share">
+            <ShareButtons title={book.title} variant="product" testIdPrefix="product-share" />
           </div>
 
           {book.benefits?.length > 0 && (

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Sparkles, Compass } from "lucide-react";
 import { toast } from "sonner";
 import { api, formatError } from "../lib/api";
+import useSEO from "../hooks/useSEO";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1739918075668-fc7844c6d921?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjBsaWJyYXJ5JTIwaW50ZXJpb3IlMjB3YXJtJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzc3NjE3MTkwfDA&ixlib=rb-4.1.0&q=85";
 const FOUNDER_IMG = "https://images.unsplash.com/photo-1773067752075-2cfd37ab02dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
@@ -13,6 +14,12 @@ export default function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
+
+  useSEO({
+    title: "The Earnalism — Books for Those Who Read With Depth",
+    description: "An independent online bookstore. Curated titles in business, self-growth, literature, spirituality, and Bengali reading — for readers who value depth, beauty, and meaning.",
+    image: HERO_IMG,
+  });
 
   useEffect(() => {
     api.get("/categories").then((r) => setCategories(r.data)).catch(() => {});
@@ -41,7 +48,7 @@ export default function Home() {
         </div>
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-36 pb-32 sm:pb-44">
           <div className="max-w-3xl">
-            <div className="overline text-[var(--brand-gold-soft)] mb-6" data-testid="hero-overline">A Boutique Bookstore & Publishing House</div>
+            <div className="overline text-[var(--brand-gold-soft)] mb-6" data-testid="hero-overline">A Boutique Independent Bookstore</div>
             <h1 className="font-serif-display text-4xl sm:text-6xl lg:text-7xl leading-[1.05] text-[#FDFCF8] tracking-tight text-balance" data-testid="hero-headline">
               Books for Those Who Read With Depth.
             </h1>
@@ -126,7 +133,7 @@ export default function Home() {
           {[
             { icon: Sparkles, title: "Curated With Meaning", body: "Every shelf is a slow act of selection. We choose books we would lend to a close friend — and never apologise for the smaller list." },
             { icon: BookOpen, title: "Built for Thoughtful Readers", body: "Our writing, design, and packaging assume a patient reader. Margins to think in. Typography to return to. A pace that respects you." },
-            { icon: Compass, title: "From Reading to Enterprise", body: "We publish founder-grade books and help authors release with grace — manuscripts, covers, KDP-ready files, and launches that endure." },
+            { icon: Compass, title: "From Reading to Practice", body: "Every shelf is chosen to turn careful reading into careful living — steadier thinking, better work, quieter days. We curate for return, not rush." },
           ].map((c) => (
             <div key={c.title} className="card-elegant p-8 sm:p-10" data-testid={`why-card-${c.title.toLowerCase().replace(/\s/g, '-')}`}>
               <c.icon className="text-gold" size={28} />
@@ -150,7 +157,7 @@ export default function Home() {
             <div className="overline mb-4">A Founder's Note</div>
             <h2 className="font-serif-display text-4xl sm:text-5xl text-burgundy leading-[1.1] tracking-tight">A Bookstore for the Reader Who Still Believes in Depth.</h2>
             <p className="text-charcoal-soft mt-7 leading-relaxed text-base sm:text-lg max-w-2xl">
-              The Earnalism began as a quiet rebellion against noisy bookshelves. We believe a book is a long conversation — patient, particular, and worth the careful season it takes to write. As a reading destination and a publishing house, we keep the list small and the standard generous. Every title here, whether ours or curated, is chosen for one reader: the one who still believes that meaning compounds, slowly, across the right pages.
+              The Earnalism began as a quiet rebellion against noisy bookshelves. We believe a book is a long conversation — patient, particular, and worth the careful season it takes to write. As an independent online bookstore, we keep the list small and the standard generous. Every title here is chosen for one reader: the one who still believes that meaning compounds, slowly, across the right pages.
             </p>
             <div className="gold-rule mt-8" />
           </div>
@@ -163,7 +170,7 @@ export default function Home() {
           <div className="overline mb-3">The Reading Circle</div>
           <h2 className="font-serif-display text-3xl sm:text-5xl text-burgundy tracking-tight">Join the Earnalism Reading Circle</h2>
           <p className="text-charcoal-soft mt-4 max-w-xl mx-auto leading-relaxed">
-            Receive thoughtful book notes, publishing updates, and curated reading recommendations — written with the care of a private letter.
+            Receive thoughtful book notes, new shelf arrivals, and curated reading recommendations — written with the care of a private letter.
           </p>
           <form onSubmit={subscribe} className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-xl mx-auto text-left">
             <input

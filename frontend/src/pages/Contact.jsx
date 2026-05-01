@@ -1,11 +1,28 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import { Mail, Instagram, Twitter, Linkedin } from "lucide-react";
+import { Mail, Instagram, Facebook, Youtube, Linkedin, Twitter } from "lucide-react";
 import { api, formatError } from "../lib/api";
+import { useSettings } from "../context/SettingsContext";
+import useSEO from "../hooks/useSEO";
+
+const SOCIALS = [
+  { key: "instagram", label: "Instagram", Icon: Instagram },
+  { key: "facebook", label: "Facebook", Icon: Facebook },
+  { key: "youtube", label: "YouTube", Icon: Youtube },
+  { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
+  { key: "twitter", label: "X", Icon: Twitter },
+];
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
+  const { social } = useSettings();
+  const activeSocials = SOCIALS.filter((s) => social?.[s.key]);
+
+  useSEO({
+    title: "Contact — The Earnalism",
+    description: "Write to The Earnalism — for book inquiries, order questions, reading recommendations, press, or simply to introduce yourself as a reader.",
+  });
 
   const submit = async (e) => {
     e.preventDefault();
@@ -25,17 +42,19 @@ export default function Contact() {
         <div className="lg:col-span-5">
           <div className="overline mb-4">Reach The Earnalism</div>
           <h1 className="font-serif-display text-4xl sm:text-5xl text-burgundy leading-[1.05] tracking-tight">Write to us — we read every letter.</h1>
-          <p className="text-charcoal-soft mt-6 leading-relaxed">For book inquiries, publishing conversations, press, or simply to introduce yourself as a reader.</p>
+          <p className="text-charcoal-soft mt-6 leading-relaxed">For book inquiries, order questions, reading recommendations, press, or simply to introduce yourself as a reader.</p>
 
           <div className="mt-10 space-y-4">
             <a href="mailto:hello@theearnalism.com" className="flex items-center gap-3 text-charcoal hover:text-burgundy" data-testid="contact-email-link">
               <Mail size={18} className="text-gold" /> hello@theearnalism.com
             </a>
-            <div className="flex items-center gap-4 text-charcoal-soft">
-              <a href="#" className="hover:text-burgundy"><Instagram size={18} /></a>
-              <a href="#" className="hover:text-burgundy"><Twitter size={18} /></a>
-              <a href="#" className="hover:text-burgundy"><Linkedin size={18} /></a>
-            </div>
+            {activeSocials.length > 0 && (
+              <div className="flex items-center gap-4 text-charcoal-soft" data-testid="contact-socials">
+                {activeSocials.map(({ key, label, Icon }) => (
+                  <a key={key} href={social[key]} target="_blank" rel="noreferrer" aria-label={label} className="hover:text-burgundy" data-testid={`contact-social-${key}`}><Icon size={18} /></a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 

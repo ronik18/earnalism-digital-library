@@ -3,6 +3,9 @@ import { useSearchParams } from "react-router-dom";
 import { Search } from "lucide-react";
 import { api } from "../lib/api";
 import BookCard from "../components/BookCard";
+import useSEO from "../hooks/useSEO";
+
+const SHOP_OG = "https://images.unsplash.com/photo-1739918075668-fc7844c6d921?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjBsaWJyYXJ5JTIwaW50ZXJpb3IlMjB3YXJtJTIwbGlnaHRpbmd8ZW58MHx8fHwxNzc3NjE3MTkwfDA&ixlib=rb-4.1.0&q=85";
 
 export default function Shop() {
   const [params, setParams] = useSearchParams();
@@ -11,6 +14,12 @@ export default function Shop() {
   const [loading, setLoading] = useState(true);
   const [q, setQ] = useState(params.get("q") || "");
   const cat = params.get("category") || "all";
+
+  useSEO({
+    title: "Shop — The Earnalism",
+    description: "A small, deliberate shelf — chosen for depth. Browse curated titles in business, self-growth, literature, spirituality, and Bengali reading.",
+    image: SHOP_OG,
+  });
 
   useEffect(() => { api.get("/categories").then((r) => setCategories(r.data)).catch(() => {}); }, []);
 

@@ -1,10 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../lib/api";
+import useSEO from "../hooks/useSEO";
+
+const JOURNAL_OG = "https://images.unsplash.com/photo-1764087957302-ef0756ed8e0a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
 
 export default function Journal() {
   const [posts, setPosts] = useState([]);
   const [active, setActive] = useState("all");
+
+  useSEO({
+    title: "Journal — The Earnalism",
+    description: "Notes from an independent online bookstore that reads slowly — essays on literature, business, and the quiet craft of reading.",
+    image: JOURNAL_OG,
+  });
 
   useEffect(() => { api.get("/blog").then((r) => setPosts(r.data)).catch(() => {}); }, []);
 
@@ -16,7 +25,7 @@ export default function Journal() {
     <div data-testid="journal-page">
       <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-16 sm:pt-24 pb-10">
         <div className="overline mb-3">The Journal</div>
-        <h1 className="font-serif-display text-4xl sm:text-6xl text-burgundy tracking-tight max-w-3xl text-balance">Notes from a publishing house that reads slowly.</h1>
+        <h1 className="font-serif-display text-4xl sm:text-6xl text-burgundy tracking-tight max-w-3xl text-balance">Notes from a bookstore that reads slowly.</h1>
       </section>
 
       <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-6">

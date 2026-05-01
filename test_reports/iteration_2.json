@@ -1,0 +1,65 @@
+{
+  "summary": "Full backend + frontend regression for v2 (Publishing removed, Social settings added, share buttons, useSEO). 23/23 backend tests pass. All UI test cases verified against the public preview URL.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "verified_test_cases": {
+    "backend": {
+      "POST /api/publishing-request returns 404": "PASS",
+      "GET /api/admin/publishing-requests returns 404": "PASS",
+      "GET /api/settings/social returns 5-key object even when empty": "PASS",
+      "PUT /api/admin/settings/social persists values": "PASS",
+      "PUT /api/admin/settings/social without token returns 401": "PASS",
+      "Admin login admin@theearnalism.com / Earnalism@2026 still works": "PASS",
+      "Admin CRUD for books/blog/categories/featured/newsletter/contacts still works": "PASS",
+      "GET /api/books/brownies-... about_author has no 'publishing brand'": "PASS"
+    },
+    "frontend": {
+      "Desktop nav shows Home/Shop/Journal/About/Contact (no Publishing)": "PASS",
+      "Footer shows Shop/Journal/About/Contact only (no Publishing)": "PASS",
+      "/publishing redirects to /shop": "PASS",
+      "/publishing/anything redirects to /shop": "PASS",
+      "Home hero overline 'A Boutique Independent Bookstore' present": "PASS (rendered uppercase via CSS)",
+      "Home Why card 'From Reading to Practice' present": "PASS",
+      "Home newsletter mentions 'shelf arrivals'": "PASS",
+      "About has no 'publishing house'/'publishing brand'; section 'For Readers' present": "PASS",
+      "Contact hero copy starts with 'For book inquiries, order questions, reading recommendations, press'": "PASS",
+      "Product detail has NO data-testid='request-publishing'": "PASS",
+      "Product share buttons product-share-{whatsapp|facebook|copy} present with correct hrefs (wa.me, facebook.com/sharer)": "PASS",
+      "Journal article share buttons article-share-{whatsapp|facebook|twitter|copy} present": "PASS",
+      "Copy-link button shows 'Link copied' toast": "PASS",
+      "Admin tabs admin-tab-{books,blog,categories,newsletter,contacts,settings,account}; no admin-tab-publishing": "PASS",
+      "Settings tab inputs social-{instagram,facebook,youtube,linkedin,twitter} + save-socials present": "PASS",
+      "Save flow: PUT persists -> public GET returns saved values -> footer/contact/mobile menu show icons": "PASS (verified end-to-end via UI)",
+      "Empty socials -> no social icons in footer/contact/mobile menu": "PASS",
+      "useSEO sets <title> for Home/Shop/Product/Journal/Article/About/Contact and og:title meta": "PASS",
+      "Mobile menu (430px) shows all 5 nav items + Explore the Collection CTA + social icons row when configured": "PASS"
+    }
+  },
+  "critical_code_review_comments": [
+    "server.py is ~610 lines including seed data inline; would benefit from splitting seeds into a separate module but acceptable at current size.",
+    "social settings doc is keyed via 'key':'social' singleton — fine; unique index on settings.key is properly created.",
+    "/publishing redirect handled at React Router level only; for SEO purposes a server-side 301 would be stronger but not required for SPA.",
+    "ShareButtons WhatsApp uses wa.me without phone (correct for share); Facebook sharer.php uses encoded URL (correct)."
+  ],
+  "updated_files": [
+    "/app/backend/tests/backend_test.py"
+  ],
+  "success_rate": {"backend": "100% (23/23)", "frontend": "100% (all listed UI cases)"},
+  "test_credentials": "admin@theearnalism.com / Earnalism@2026 — verified working; password unchanged after testing.",
+  "seed_data_creation": "Used UI to set Instagram + Facebook social URLs to test footer/contact/mobile rendering, then cleared all socials back to empty via API at end of test run.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Admin tab testid pattern is admin-tab-{name} (NOT tab-{name}). Social inputs use data-testid='social-{key}' and 'save-socials'. ShareButtons use prefix-{whatsapp|facebook|twitter|copy}. Tests left socials empty after run.",
+  "rca of the issue": "No issues found."
+}

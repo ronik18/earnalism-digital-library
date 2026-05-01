@@ -2,12 +2,20 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { api } from "../lib/api";
+import ShareButtons from "../components/ShareButtons";
+import useSEO from "../hooks/useSEO";
 
 export default function JournalArticle() {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
   const [related, setRelated] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  useSEO({
+    title: post ? `${post.title} — The Earnalism` : "Journal — The Earnalism",
+    description: post?.excerpt || "An essay from The Earnalism — notes on literature, business, and the quiet craft of reading.",
+    image: post?.cover_image_url,
+  });
 
   useEffect(() => {
     setLoading(true);
@@ -57,6 +65,10 @@ export default function JournalArticle() {
         {post.pull_quote && (
           <div className="my-12 pull-quote" data-testid="pull-quote">{post.pull_quote}</div>
         )}
+        <div className="mt-10 pt-8 border-t border-brand flex items-center justify-between flex-wrap gap-4" data-testid="article-share">
+          <span className="overline">Share this essay</span>
+          <ShareButtons title={post.title} variant="article" testIdPrefix="article-share" />
+        </div>
       </div>
 
       {related.length > 0 && (

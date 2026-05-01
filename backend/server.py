@@ -178,11 +178,12 @@ class ContactIn(BaseModel):
     subject: str = ""
     message: str
 
-class PublishingIn(BaseModel):
-    name: str
-    email: EmailStr
-    project_title: str = ""
-    message: str
+class SocialIn(BaseModel):
+    instagram: str = ""
+    facebook: str = ""
+    youtube: str = ""
+    linkedin: str = ""
+    twitter: str = ""
 
 class FeaturedIn(BaseModel):
     book_slug: str
@@ -239,6 +240,19 @@ async def lifespan(_app: FastAPI):
         if not await db.blog_posts.find_one({"slug": p["slug"]}):
             post = BlogPost(**p)
             await db.blog_posts.insert_one(post.model_dump())
+
+    # social settings (seed empty config so GET /api/settings/social always works)
+    await db.settings.update_one(
+        {"key": "social"},
+        {"$setOnInsert": {"key": "social", "instagram": "", "facebook": "", "youtube": "", "linkedin": "", "twitter": ""}},
+        upsert=True,
+    )
+
+    # one-time migration: replace old "publishing brand" wording in the seeded book's about_author
+    await db.books.update_one(
+        {"slug": SEED_BOOK["slug"], "about_author": re.compile("publishing brand", re.IGNORECASE)},
+        {"$set": {"about_author": SEED_BOOK["about_author"]}},
+    )
     logger.info("Startup seeding complete")
 
     yield
@@ -364,17 +378,18 @@ async def contact(payload: ContactIn):
     })
     return {"ok": True, "message": "Thank you. We'll respond with care."}
 
-@api.post("/publishing-request")
-async def publishing_request(payload: PublishingIn):
-    await db.publishing_requests.insert_one({
-        "id": str(uuid.uuid4()),
-        "name": payload.name.strip(),
-        "email": payload.email.lower().strip(),
-        "project_title": payload.project_title.strip(),
-        "message": payload.message.strip(),
-        "created_at": now_iso(),
-    })
-    return {"ok": True, "message": "Your request has been received."}
+
+# ---------- Public: Social settings ----------
+@api.get("/settings/social")
+async def get_social():
+    doc = await db.settings.find_one({"key": "social"}, {"_id": 0}) or {}
+    return {
+        "instagram": doc.get("instagram", ""),
+        "facebook": doc.get("facebook", ""),
+        "youtube": doc.get("youtube", ""),
+        "linkedin": doc.get("linkedin", ""),
+        "twitter": doc.get("twitter", ""),
+    }
 
 
 # ---------- Admin: Books ----------
@@ -474,9 +489,17 @@ async def admin_newsletter(_=Depends(require_admin)):
 async def admin_contacts(_=Depends(require_admin)):
     return await db.contacts.find({}, {"_id": 0}).sort("created_at", -1).to_list(2000)
 
-@api.get("/admin/publishing-requests")
-async def admin_publishing(_=Depends(require_admin)):
-    return await db.publishing_requests.find({}, {"_id": 0}).sort("created_at", -1).to_list(2000)
+
+# ---------- Admin: Settings (social) ----------
+@api.put("/admin/settings/social")
+async def admin_set_social(payload: SocialIn, _=Depends(require_admin)):
+    data = payload.model_dump()
+    await db.settings.update_one(
+        {"key": "social"},
+        {"$set": {"key": "social", **data}},
+        upsert=True,
+    )
+    return {"ok": True, **data}
 
 
 # ---------- Admin: Featured ----------
@@ -550,7 +573,7 @@ SEED_BOOK = {
         "Building a brand that compounds with each season",
         "Scaling without losing the texture of your work",
     ],
-    "about_author": "Written from the desk of The Earnalism — a publishing brand devoted to thoughtful business, literature, and self-growth.",
+    "about_author": "Curated on the shelves of The Earnalism — an independent bookstore devoted to thoughtful business, literature, and self-growth.",
     "is_published": True,
 }
 
@@ -568,7 +591,7 @@ SEED_POSTS = [
     {
         "slug": "the-quiet-power-of-a-premium-bookstore-brand",
         "title": "The Quiet Power of a Premium Bookstore Brand",
-        "excerpt": "Why restraint, ritual, and refusal are the most underrated assets in modern publishing.",
+        "excerpt": "Why restraint, ritual, and refusal are the most underrated assets in running a modern independent bookstore.",
         "content": "A premium brand is not loud — it is precise. It refuses noisy launches, declines easy collaborations, and waits for the right shelf. In bookstores especially, restraint is the most expensive ingredient. The Earnalism is built around the same principle: fewer titles, deeper readings, a longer relationship with each book.\n\nTrust accrues like compound interest. Each careful decision becomes the next reader's reason to return.",
         "category": "Brand",
         "pull_quote": "A premium brand is not loud — it is precise.",

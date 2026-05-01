@@ -86,12 +86,64 @@ def test_contact(s):
     assert r.status_code == 200 and r.json()["ok"] is True
 
 
-def test_publishing_request(s):
+def test_publishing_request_removed(s):
+    """POST /api/publishing-request should be 404 (route removed)."""
     r = s.post(f"{API}/publishing-request", json={
-        "name": "TEST", "email": f"p_{uuid.uuid4().hex[:6]}@x.com",
-        "project_title": "TEST Book", "message": "TEST"
+        "name": "TEST", "email": "p@x.com",
+        "project_title": "TEST", "message": "TEST"
     })
-    assert r.status_code == 200 and r.json()["ok"] is True
+    assert r.status_code == 404
+
+
+def test_admin_publishing_requests_removed(s):
+    """GET /api/admin/publishing-requests should be 404 (route removed)."""
+    r = s.get(f"{API}/admin/publishing-requests")
+    assert r.status_code == 404
+
+
+def test_book_about_author_no_publishing_brand(s):
+    r = s.get(f"{API}/books/brownies-to-break-even-and-beyond")
+    assert r.status_code == 200
+    assert "publishing brand" not in r.json()["about_author"].lower()
+
+
+# ----- Social settings -----
+def test_get_social_public_returns_5_keys(s):
+    r = s.get(f"{API}/settings/social")
+    assert r.status_code == 200
+    data = r.json()
+    for k in ("instagram", "facebook", "youtube", "linkedin", "twitter"):
+        assert k in data, f"Missing key {k}"
+        assert isinstance(data[k], str)
+
+
+def test_put_social_requires_auth(s):
+    r = s.put(f"{API}/admin/settings/social", json={"instagram": "https://x"})
+    assert r.status_code == 401
+
+
+def test_put_social_persists(s, auth):
+    payload = {
+        "instagram": "https://instagram.com/earnalism_test",
+        "facebook": "https://facebook.com/earnalism_test",
+        "youtube": "",
+        "linkedin": "",
+        "twitter": "",
+    }
+    r = s.put(f"{API}/admin/settings/social", json=payload, headers=auth)
+    assert r.status_code == 200
+    assert r.json()["ok"] is True
+    # GET should match
+    r2 = s.get(f"{API}/settings/social")
+    assert r2.status_code == 200
+    got = r2.json()
+    for k, v in payload.items():
+        assert got[k] == v, f"{k}: expected {v}, got {got[k]}"
+    # cleanup: clear
+    r3 = s.put(f"{API}/admin/settings/social", json={
+        "instagram": "", "facebook": "", "youtube": "", "linkedin": "", "twitter": ""
+    }, headers=auth)
+    assert r3.status_code == 200
 
 
 # ----- Auth -----
@@ -121,14 +173,14 @@ def test_me_with_token(s, auth):
 
 # ----- Admin protected lists -----
 def test_admin_lists_require_auth(s):
-    for path in ["/admin/newsletter", "/admin/contacts", "/admin/publishing-requests",
+    for path in ["/admin/newsletter", "/admin/contacts",
                  "/admin/books", "/admin/blog"]:
         r = s.get(f"{API}{path}")
         assert r.status_code == 401, f"{path} should be 401"
 
 
 def test_admin_lists_with_auth(s, auth):
-    for path in ["/admin/newsletter", "/admin/contacts", "/admin/publishing-requests",
+    for path in ["/admin/newsletter", "/admin/contacts",
                  "/admin/books", "/admin/blog"]:
         r = s.get(f"{API}{path}", headers=auth)
         assert r.status_code == 200, f"{path}: {r.status_code}"

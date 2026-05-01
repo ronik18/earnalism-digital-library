@@ -1,14 +1,26 @@
 import { Link } from "react-router-dom";
-import { Instagram, Twitter, Linkedin, Mail } from "lucide-react";
+import { Instagram, Facebook, Youtube, Linkedin, Twitter, Mail } from "lucide-react";
+import { useSettings } from "../context/SettingsContext";
+
+const SOCIALS = [
+  { key: "instagram", label: "Instagram", Icon: Instagram },
+  { key: "facebook", label: "Facebook", Icon: Facebook },
+  { key: "youtube", label: "YouTube", Icon: Youtube },
+  { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
+  { key: "twitter", label: "X", Icon: Twitter },
+];
 
 export default function Footer() {
+  const { social } = useSettings();
+  const activeSocials = SOCIALS.filter((s) => social?.[s.key]);
+
   return (
     <footer className="mt-24 sm:mt-32 border-t border-brand bg-ivory" data-testid="site-footer">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 md:grid-cols-4 gap-10">
         <div className="md:col-span-2">
           <div className="font-serif-display text-3xl text-burgundy mb-3">The Earnalism</div>
           <p className="text-charcoal-soft max-w-md leading-relaxed">
-            A boutique bookstore and self-publishing brand devoted to thoughtful business, literature, self-growth, spirituality, and Bengali reading.
+            A boutique online bookstore devoted to thoughtful business, literature, self-growth, spirituality, and Bengali reading.
           </p>
           <div className="gold-rule mt-6" />
         </div>
@@ -19,7 +31,6 @@ export default function Footer() {
             <li><Link to="/shop" className="hover:text-burgundy transition-colors">Shop</Link></li>
             <li><Link to="/journal" className="hover:text-burgundy transition-colors">Journal</Link></li>
             <li><Link to="/about" className="hover:text-burgundy transition-colors">About</Link></li>
-            <li><Link to="/publishing" className="hover:text-burgundy transition-colors">Publishing</Link></li>
             <li><Link to="/contact" className="hover:text-burgundy transition-colors">Contact</Link></li>
           </ul>
         </div>
@@ -29,11 +40,23 @@ export default function Footer() {
           <a href="mailto:hello@theearnalism.com" className="flex items-center gap-2 text-charcoal-soft hover:text-burgundy">
             <Mail size={16} /> hello@theearnalism.com
           </a>
-          <div className="flex gap-3 mt-5 text-charcoal-soft">
-            <a href="#" aria-label="Instagram" className="hover:text-burgundy"><Instagram size={18} /></a>
-            <a href="#" aria-label="Twitter" className="hover:text-burgundy"><Twitter size={18} /></a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-burgundy"><Linkedin size={18} /></a>
-          </div>
+          {activeSocials.length > 0 && (
+            <div className="flex gap-3 mt-5 text-charcoal-soft" data-testid="footer-socials">
+              {activeSocials.map(({ key, label, Icon }) => (
+                <a
+                  key={key}
+                  href={social[key]}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="hover:text-burgundy transition-colors"
+                  data-testid={`footer-social-${key}`}
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <div className="border-t border-brand">
