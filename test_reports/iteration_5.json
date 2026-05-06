@@ -1,0 +1,61 @@
+{
+  "summary": "Phase 3 Razorpay TEST-MODE wallet top-up validated end-to-end. Wrote 19 new pytest cases in /app/backend/tests/test_payments_razorpay.py covering pack catalogue, /payments/config, /topup auth+503+400, /_simulate_topup auth+intent persistence, /_simulate_webhook credit + idempotency + cross-user 403 + 404, /webhook 503 (secret missing), /verify 404, /me/intents isolation, /admin/payments/{intents,webhooks,reconcile} including reconcile idempotency and user-token 403. All 19 new + 57 prior tests pass (76/76). Frontend Playwright: /pricing renders pack-30m/1h/3h/10h with prices ₹49/89/239/699 and pricing-test-mode-banner; guest click on pack-1h-buy redirects to /login?next=/pricing; after reader login, simulator runs end-to-end and lands on /account with account-balance '2h 00m' (was 1h 00m, +3600s confirmed via /users/me); admin-tab-payments visible, status pill 'KEYS MISSING', credited intents and payment.captured webhook events render in their tables. Found and FIXED a critical MongoDB index bug that blocked any 2nd top-up intent (see RCA).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_payments_razorpay.py",
+    "/app/backend/tests/test_phase2_user_reader.py",
+    "/app/backend/tests/test_chapter_gating_security.py",
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/payments.xml",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "verified_test_cases": {
+    "backend_payments_new (19)": "ALL PASS",
+    "phase1_phase2_phase2_1_regression (57)": "ALL PASS — total 76/76 green",
+    "frontend_pricing_flow": {
+      "pricing renders 4 packs + test-mode banner": "PASS",
+      "₹49/89/239/699 prices visible": "PASS",
+      "guest pack-1h-buy -> /login?next=/pricing": "PASS",
+      "reader login lands back on /pricing": "PASS",
+      "logged-in pack-1h-buy runs simulator and redirects to /account": "PASS",
+      "account-balance shows credited time (1h 00m -> 2h 00m on retest, +3600s exact)": "PASS"
+    },
+    "frontend_admin_payments": {
+      "admin-tab-payments visible": "PASS",
+      "admin-payments-config + status pill 'KEYS MISSING'": "PASS",
+      "admin-payments-intents row with status=credited": "PASS",
+      "admin-payments-webhooks row with event=payment.captured": "PASS",
+      "all other admin tabs (books/blog/users/settings/account) still visible": "PASS"
+    }
+  },
+  "critical_code_review_comments": [
+    "FIXED (during this run): topup_intents had unique sparse indexes on razorpay_order_id and razorpay_payment_id. Sparse only excludes documents MISSING the field — but the simulator (and the real /payments/topup) explicitly insert the field with value None. So the second freshly-created intent always collided on null and the insert raised DuplicateKeyError -> 500. Symptoms: only one user could ever have a single uncredited intent at a time. Replaced with partialFilterExpression={'<field>': {'$type': 'string'}} so uniqueness only applies to real ids. Dropped the legacy sparse indexes from the live DB so the new partial indexes could be created at startup.",
+    "/payments/_simulate_webhook is a query-string endpoint (intent_id passed as ?intent_id=...). This is a dev-only test helper but the convention is unusual. Consider switching to POST body + Pydantic model for symmetry with /admin/payments/intents/{id}/reconcile.",
+    "/payments/topup checks pack BEFORE keys-configured — verified by test_topup_unknown_pack_400 which gets 400 (not 503). Good ordering for client UX, but both branches are exercised.",
+    "_credit_wallet_for_intent uses the canonical atomic update_one({id, status:{$ne:'credited'}}, {$set:{status:'credited',...}); only modified_count==1 actually credits. Idempotency confirmed by test_credit_and_idempotency (simulator twice) and test_admin_reconcile_idempotent (admin reconcile twice). Both leave the balance unchanged on the second call.",
+    "Webhook entry /payments/webhook returns 503 cleanly when WEBHOOK_SECRET is empty (verified). When secret present, signature mismatch logs a 'rejected_bad_signature' row and returns 400 — auditable.",
+    "server.py is now ~1735 lines. With payments now landed, splitting routes into /routes/{auth,reader,payments,admin}.py would improve maintainability (carry-over from prior iteration).",
+    "Frontend Pricing.jsx lazy-loads the Razorpay checkout.js script only when config.configured is true — good for test-mode boot perf.",
+    "PaymentsAdmin's intents table shows 'CREATED' rows with a Reconcile button — clicking it is wired to /admin/payments/intents/{id}/reconcile. Backend tested green; UI button click was not exercised this iteration but the endpoint is verified."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_payments_razorpay.py (NEW — 19 tests)",
+    "/app/backend/server.py (FIX — replaced sparse unique indexes on topup_intents.razorpay_order_id / razorpay_payment_id with partialFilterExpression so null payment_ids don't collide)",
+    "MongoDB live: dropped pre-existing 'razorpay_order_id_1' and 'razorpay_payment_id_1' sparse indexes so the partial-filter equivalents could be created on next backend boot."
+  ],
+  "success_rate": {"backend": "100% (76/76)", "frontend": "100% (all 12 pricing+admin-payments scenarios verified)"},
+  "test_credentials": "admin@theearnalism.com / Earnalism@2026 (admin). reader@earnalism.com / Reader@2026 (reader). Reader balance ended at 7200s (2h) after the Playwright run — main agent may want to drain it back to 0 via Admin > Users > wallet adjust if a clean slate is desired for the next iteration.",
+  "seed_data_creation": "Tests created TEST_pay-* and TEST_a-/TEST_b- throwaway users via /users/signup, plus ~21 topup_intents and a handful of payment_webhook_events. The reader account (reader@earnalism.com) ended with reading_seconds_balance=7200 after the frontend simulator run.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Razorpay test-mode credit path is locked in. The CRITICAL guard test is TestSimulateWebhookCredits::test_credit_and_idempotency — it makes the simulator credit the same intent twice and asserts the balance only changed once. If someone ever weakens _credit_wallet_for_intent's atomic update guard, this test will fail. Reader balance after this iteration = 7200s (drained-then-credit twice via Pricing); to retest from 0 use POST /api/admin/users/{id}/wallet/adjust with negative minutes. Real Razorpay flow paths (/payments/topup happy path with order created, /payments/verify with valid signature, /payments/webhook with valid signature) are NOT exercised — they require RAZORPAY_KEY_ID/SECRET/WEBHOOK_SECRET to be populated and the backend restarted. The simulator paths are guarded by RAZORPAY_MODE=='test' and will return 403 in production mode. server.py is now 1735 lines — schedule a routes-split refactor.",
+  "rca of the issue": "ISSUE: Any user's 2nd freshly-created top-up intent failed with HTTP 500. ROOT CAUSE: /app/backend/server.py created two unique+sparse indexes on db.topup_intents (razorpay_order_id, razorpay_payment_id). MongoDB sparse indexes ONLY exclude documents missing the indexed field — they DO NOT exclude documents with the field set to null. Both /payments/topup and /payments/_simulate_topup explicitly insert razorpay_payment_id: None, so the second such insert collided on the unique null key (E11000 duplicate key). REPRODUCTION: signup any user, POST /payments/_simulate_topup twice — second call returned 500 'Internal Server Error' with traceback 'pymongo.errors.DuplicateKeyError: ... razorpay_payment_id_1 dup key: { razorpay_payment_id: null }'. FIX: replaced sparse=True with partialFilterExpression={field: {'$type': 'string'}} so uniqueness only applies once a real id is set, then dropped the legacy indexes from the live DB so the new partial indexes were created on backend restart. After fix, all 19 payments tests pass and the frontend Pricing flow works. MITIGATION FOR PRODUCTION: same code change must ship. If another env already has the legacy sparse indexes, ops must drop razorpay_order_id_1 and razorpay_payment_id_1 on the topup_intents collection before the new code's startup_event will succeed (current code calls create_index which raises IndexKeySpecsConflict if a conflicting index already exists)."
+}

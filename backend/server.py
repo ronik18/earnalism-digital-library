@@ -6,6 +6,9 @@ load_dotenv(ROOT_DIR / '.env')
 
 import os
 import re
+import hmac
+import hashlib
+import json as _json
 import uuid
 import logging
 import bcrypt
@@ -37,6 +40,42 @@ SESSION_COOKIE = "ear_session"
 SESSION_TTL_SECONDS = 7 * 24 * 3600
 COOKIE_SECURE = os.environ.get("COOKIE_SECURE", "true").lower() != "false"
 COOKIE_SAMESITE = os.environ.get("COOKIE_SAMESITE", "lax")
+
+
+# ---------- Razorpay test-mode config ----------
+RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID", "").strip()
+RAZORPAY_KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET", "").strip()
+RAZORPAY_WEBHOOK_SECRET = os.environ.get("RAZORPAY_WEBHOOK_SECRET", "").strip()
+RAZORPAY_MODE = os.environ.get("RAZORPAY_MODE", "test").strip().lower()
+
+# Server-owned pack catalogue. Frontend cannot influence amount/minutes.
+# amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
+PACKS: List[dict] = [
+    {"id": "30m",  "label": "Afternoon Pause",     "minutes": 30,  "amount_paise": 4900,  "price_inr": 49,  "note": "A single chapter, with breath to spare."},
+    {"id": "1h",   "label": "An Evening In",       "minutes": 60,  "amount_paise": 8900,  "price_inr": 89,  "note": "An unhurried hour with a worthy book."},
+    {"id": "3h",   "label": "Long Weekend",        "minutes": 180, "amount_paise": 23900, "price_inr": 239, "note": "Three quiet hours; a finished read."},
+    {"id": "10h",  "label": "The Reader's Reserve", "minutes": 600, "amount_paise": 69900, "price_inr": 699, "note": "Ten hours, kept until you call them in."},
+]
+PACKS_BY_ID = {p["id"]: p for p in PACKS}
+
+
+def razorpay_keys_configured() -> bool:
+    return bool(RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET)
+
+
+def get_razorpay_client():
+    """Lazy-import the SDK so the app boots even if it's not installed."""
+    if not razorpay_keys_configured():
+        return None
+    try:
+        import razorpay  # type: ignore
+    except ImportError:
+        return None
+    return razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
+
+
+def _hmac_sha256_hex(secret: str, body: bytes) -> str:
+    return hmac.new(secret.encode("utf-8"), body, hashlib.sha256).hexdigest()
 
 
 # ---------- Auth helpers ----------
@@ -358,6 +397,42 @@ class UserStatusIn(BaseModel):
     status: str  # "active" | "blocked"
 
 
+# ---------- Payments / Razorpay top-up models ----------
+class PackOut(BaseModel):
+    id: str
+    label: str
+    minutes: int
+    price_inr: int
+    amount_paise: int
+    note: str
+
+
+class TopUpCreateIn(BaseModel):
+    pack_id: str
+
+
+class TopUpCreateOut(BaseModel):
+    intent_id: str
+    razorpay_order_id: str
+    key_id: str
+    amount: int  # in paise
+    currency: str = "INR"
+    name: str
+    description: str
+    pack: PackOut
+    prefill: dict
+
+
+class PaymentVerifyIn(BaseModel):
+    razorpay_order_id: str
+    razorpay_payment_id: str
+    razorpay_signature: str
+
+
+class PaymentReconcileIn(BaseModel):
+    note: str = ""
+
+
 def _user_public(doc: dict) -> dict:
     return {
         "id": doc["id"],
@@ -420,6 +495,24 @@ async def lifespan(_app: FastAPI):
     await db.wallet_transactions.create_index([("user_id", 1), ("created_at", -1)])
     await db.reading_sessions.create_index([("user_id", 1), ("started_at", -1)])
     await db.reading_sessions.create_index("status")
+    # Payments / Razorpay
+    # Use partialFilterExpression so the unique constraint only applies to non-null
+    # string ids; otherwise multiple freshly-created intents (with null payment_id)
+    # collide on the null key.
+    await db.topup_intents.create_index(
+        "razorpay_order_id",
+        unique=True,
+        partialFilterExpression={"razorpay_order_id": {"$type": "string"}},
+    )
+    await db.topup_intents.create_index(
+        "razorpay_payment_id",
+        unique=True,
+        partialFilterExpression={"razorpay_payment_id": {"$type": "string"}},
+    )
+    await db.topup_intents.create_index([("user_id", 1), ("created_at", -1)])
+    await db.topup_intents.create_index("status")
+    await db.payment_webhook_events.create_index("event_id", unique=True, sparse=True)
+    await db.payment_webhook_events.create_index([("created_at", -1)])
 
     # admin (seed only if absent; do NOT overwrite password so admin can change it via UI)
     existing = await db.users.find_one({"email": ADMIN_EMAIL.lower()})
@@ -1143,6 +1236,354 @@ async def admin_user_status(uid: str, payload: UserStatusIn, _=Depends(require_a
     if res.matched_count == 0:
         raise HTTPException(status_code=404, detail="User not found")
     return {"ok": True, "id": uid, "status": payload.status}
+
+
+# =====================================================================
+# Razorpay test-mode wallet top-up
+# =====================================================================
+
+# ---------- Public: Pack catalogue ----------
+@api.get("/payments/packs", response_model=List[PackOut])
+async def payments_list_packs():
+    return [PackOut(**p) for p in PACKS]
+
+
+@api.get("/payments/config")
+async def payments_config():
+    """Lightweight config shim used by frontend to know if Razorpay is wired."""
+    return {
+        "configured": razorpay_keys_configured(),
+        "mode": RAZORPAY_MODE,
+        "key_id": RAZORPAY_KEY_ID if razorpay_keys_configured() else "",
+    }
+
+
+# ---------- Wallet credit helper (idempotent) ----------
+async def _credit_wallet_for_intent(intent: dict, payment_id: Optional[str], source: str) -> dict:
+    """Atomically transition a top-up intent to 'credited' and add minutes to
+    the user's wallet. Safe against concurrent webhook + verify calls.
+    Returns the refreshed intent.
+    """
+    # Atomic transition: only ONE caller can flip status from a non-credited
+    # state to 'credited'. Prevents double-credit when the verify endpoint and
+    # the webhook both fire for the same payment.
+    set_doc: dict = {
+        "status": "credited",
+        "credited_at": now_iso(),
+        "credited_by": source,  # "verify" | "webhook" | "admin_reconcile"
+    }
+    if payment_id:
+        set_doc["razorpay_payment_id"] = payment_id
+    res = await db.topup_intents.update_one(
+        {"id": intent["id"], "status": {"$ne": "credited"}},
+        {"$set": set_doc},
+    )
+    if res.modified_count != 1:
+        # Already credited by another path — return the existing record.
+        return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0})
+
+    seconds = int(intent["minutes"]) * 60
+    user_id = intent["user_id"]
+    # Race-safe credit using $inc.
+    await db.users.update_one(
+        {"id": user_id, "role": "user"},
+        {"$inc": {"reading_seconds_balance": seconds}},
+    )
+    await db.wallet_transactions.insert_one({
+        "id": str(uuid.uuid4()),
+        "user_id": user_id,
+        "type": "credit",
+        "seconds": seconds,
+        "reason": f"Razorpay top-up · {intent.get('pack_id')} · {intent['minutes']} min",
+        "created_at": now_iso(),
+        "actor": f"razorpay:{source}",
+        "topup_intent_id": intent["id"],
+    })
+    return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0})
+
+
+# ---------- Reader: create a top-up intent + Razorpay order ----------
+@api.post("/payments/topup", response_model=TopUpCreateOut)
+async def payments_create_topup(payload: TopUpCreateIn, user=Depends(require_user)):
+    pack = PACKS_BY_ID.get(payload.pack_id)
+    if not pack:
+        raise HTTPException(status_code=400, detail="Unknown pack")
+    if not razorpay_keys_configured():
+        raise HTTPException(
+            status_code=503,
+            detail="Razorpay is not configured yet. Add RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET to enable payments.",
+        )
+    client = get_razorpay_client()
+    if client is None:
+        raise HTTPException(status_code=503, detail="Razorpay SDK is unavailable on this server.")
+
+    intent_id = str(uuid.uuid4())
+    receipt = f"earn-{intent_id[:24]}"  # Razorpay receipt must be <= 40 chars
+
+    try:
+        order = client.order.create({
+            "amount": pack["amount_paise"],
+            "currency": "INR",
+            "receipt": receipt,
+            "payment_capture": 1,
+            "notes": {
+                "intent_id": intent_id,
+                "user_id": user["id"],
+                "pack_id": pack["id"],
+                "minutes": str(pack["minutes"]),
+            },
+        })
+    except Exception as exc:  # razorpay.errors.* — swallow to a clean 502
+        logger.exception("Razorpay order.create failed")
+        raise HTTPException(status_code=502, detail=f"Could not start payment: {exc}")
+
+    await db.topup_intents.insert_one({
+        "id": intent_id,
+        "user_id": user["id"],
+        "user_email": user.get("email", ""),
+        "pack_id": pack["id"],
+        "minutes": pack["minutes"],
+        "amount_paise": pack["amount_paise"],
+        "currency": "INR",
+        "razorpay_order_id": order["id"],
+        "razorpay_payment_id": None,
+        "status": "created",  # created -> paid -> credited (or failed)
+        "mode": RAZORPAY_MODE,
+        "created_at": now_iso(),
+        "credited_at": None,
+        "credited_by": None,
+    })
+
+    return TopUpCreateOut(
+        intent_id=intent_id,
+        razorpay_order_id=order["id"],
+        key_id=RAZORPAY_KEY_ID,
+        amount=pack["amount_paise"],
+        currency="INR",
+        name="The Earnalism Digital Library",
+        description=f'{pack["label"]} · {pack["minutes"]} minutes',
+        pack=PackOut(**pack),
+        prefill={"name": user.get("name", ""), "email": user.get("email", "")},
+    )
+
+
+# ---------- Reader: verify Razorpay checkout signature & credit ----------
+@api.post("/payments/verify")
+async def payments_verify(payload: PaymentVerifyIn, user=Depends(require_user)):
+    intent = await db.topup_intents.find_one(
+        {"razorpay_order_id": payload.razorpay_order_id, "user_id": user["id"]},
+        {"_id": 0},
+    )
+    if not intent:
+        raise HTTPException(status_code=404, detail="Top-up intent not found")
+    if not razorpay_keys_configured():
+        raise HTTPException(status_code=503, detail="Razorpay is not configured")
+
+    # Verify HMAC-SHA256(order_id|payment_id, KEY_SECRET)
+    expected = _hmac_sha256_hex(
+        RAZORPAY_KEY_SECRET,
+        f"{payload.razorpay_order_id}|{payload.razorpay_payment_id}".encode("utf-8"),
+    )
+    if not hmac.compare_digest(expected, payload.razorpay_signature):
+        await db.topup_intents.update_one({"id": intent["id"]}, {"$set": {"status": "failed", "failed_reason": "bad_signature"}})
+        raise HTTPException(status_code=400, detail="Invalid payment signature")
+
+    refreshed = await _credit_wallet_for_intent(intent, payload.razorpay_payment_id, "verify")
+    user_doc = await db.users.find_one({"id": user["id"]}, {"_id": 0, "password_hash": 0})
+    return {
+        "ok": True,
+        "intent": refreshed,
+        "reading_seconds_balance": int((user_doc or {}).get("reading_seconds_balance", 0)),
+    }
+
+
+# ---------- Razorpay webhook (authoritative) ----------
+@api.post("/payments/webhook")
+async def payments_webhook(request: Request):
+    raw_body = await request.body()
+    signature = request.headers.get("X-Razorpay-Signature", "")
+
+    if not RAZORPAY_WEBHOOK_SECRET:
+        # Refuse to silently accept unsigned events.
+        raise HTTPException(status_code=503, detail="Webhook secret not configured")
+    expected = _hmac_sha256_hex(RAZORPAY_WEBHOOK_SECRET, raw_body)
+    if not hmac.compare_digest(expected, signature):
+        # Store the rejected event so admins can audit attempts.
+        await db.payment_webhook_events.insert_one({
+            "id": str(uuid.uuid4()),
+            "event_id": None,
+            "event": "unknown",
+            "status": "rejected_bad_signature",
+            "raw": raw_body.decode("utf-8", errors="replace")[:8000],
+            "created_at": now_iso(),
+        })
+        raise HTTPException(status_code=400, detail="Invalid webhook signature")
+
+    try:
+        body = _json.loads(raw_body)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid JSON")
+
+    event = body.get("event", "")
+    event_id = request.headers.get("X-Razorpay-Event-Id") or body.get("id")
+    payment = (body.get("payload") or {}).get("payment", {}).get("entity") or {}
+    payment_id = payment.get("id")
+    order_id = payment.get("order_id")
+
+    # Idempotency: reject duplicate event ids quickly.
+    if event_id:
+        seen = await db.payment_webhook_events.find_one({"event_id": event_id}, {"_id": 0})
+        if seen:
+            return {"ok": True, "duplicate": True, "event_id": event_id}
+
+    log_doc = {
+        "id": str(uuid.uuid4()),
+        "event_id": event_id,
+        "event": event,
+        "status": "received",
+        "razorpay_order_id": order_id,
+        "razorpay_payment_id": payment_id,
+        "raw": raw_body.decode("utf-8", errors="replace")[:8000],
+        "created_at": now_iso(),
+    }
+
+    intent = None
+    if order_id:
+        intent = await db.topup_intents.find_one({"razorpay_order_id": order_id}, {"_id": 0})
+
+    if event == "payment.captured" and intent:
+        await _credit_wallet_for_intent(intent, payment_id, "webhook")
+        log_doc["status"] = "credited"
+    elif event == "payment.failed" and intent:
+        await db.topup_intents.update_one(
+            {"id": intent["id"], "status": "created"},
+            {"$set": {"status": "failed", "razorpay_payment_id": payment_id, "failed_reason": payment.get("error_description", "payment_failed")}},
+        )
+        log_doc["status"] = "marked_failed"
+    elif not intent:
+        log_doc["status"] = "unmatched_intent"
+    else:
+        log_doc["status"] = "ignored"
+
+    await db.payment_webhook_events.insert_one(log_doc)
+    return {"ok": True, "event": event, "status": log_doc["status"]}
+
+
+# ---------- Dev-only: simulate a webhook to exercise the credit flow ----------
+@api.post("/payments/_simulate_topup")
+async def payments_simulate_topup(payload: TopUpCreateIn, user=Depends(require_user)):
+    """Dev-only mirror of /payments/topup that does NOT call Razorpay. Creates
+    a top-up intent with a synthetic order id so the credit path can be
+    exercised end-to-end before real keys are wired up.
+
+    Disabled when RAZORPAY_MODE is not 'test'.
+    """
+    if RAZORPAY_MODE != "test":
+        raise HTTPException(status_code=403, detail="Simulator disabled outside test mode")
+    pack = PACKS_BY_ID.get(payload.pack_id)
+    if not pack:
+        raise HTTPException(status_code=400, detail="Unknown pack")
+    intent_id = str(uuid.uuid4())
+    fake_order_id = f"order_test_{uuid.uuid4().hex[:18]}"
+    await db.topup_intents.insert_one({
+        "id": intent_id,
+        "user_id": user["id"],
+        "user_email": user.get("email", ""),
+        "pack_id": pack["id"],
+        "minutes": pack["minutes"],
+        "amount_paise": pack["amount_paise"],
+        "currency": "INR",
+        "razorpay_order_id": fake_order_id,
+        "razorpay_payment_id": None,
+        "status": "created",
+        "mode": "test_simulated",
+        "created_at": now_iso(),
+        "credited_at": None,
+        "credited_by": None,
+    })
+    return {
+        "intent_id": intent_id,
+        "razorpay_order_id": fake_order_id,
+        "amount": pack["amount_paise"],
+        "currency": "INR",
+        "pack": PackOut(**pack).model_dump(),
+        "simulated": True,
+    }
+
+
+@api.post("/payments/_simulate_webhook")
+async def payments_simulate_webhook(
+    intent_id: str,
+    user=Depends(require_user),
+):
+    """Test helper. Only enabled when RAZORPAY_MODE=='test'. Lets a logged-in
+    user (or admin via curl) drive an intent to 'credited' WITHOUT real
+    Razorpay — useful when keys are not configured yet.
+    """
+    if RAZORPAY_MODE != "test":
+        raise HTTPException(status_code=403, detail="Simulator disabled outside test mode")
+    intent = await db.topup_intents.find_one({"id": intent_id}, {"_id": 0})
+    if not intent:
+        raise HTTPException(status_code=404, detail="Intent not found")
+    if intent["user_id"] != user["id"]:
+        raise HTTPException(status_code=403, detail="Not your intent")
+    if intent["status"] == "credited":
+        return {"ok": True, "duplicate": True, "intent": intent}
+    fake_payment_id = f"pay_test_{uuid.uuid4().hex[:20]}"
+    refreshed = await _credit_wallet_for_intent(intent, fake_payment_id, "simulate")
+    await db.payment_webhook_events.insert_one({
+        "id": str(uuid.uuid4()),
+        "event_id": f"evt_sim_{uuid.uuid4().hex[:20]}",
+        "event": "payment.captured",
+        "status": "credited_simulated",
+        "razorpay_order_id": intent.get("razorpay_order_id"),
+        "razorpay_payment_id": fake_payment_id,
+        "raw": "{simulated}",
+        "created_at": now_iso(),
+    })
+    user_doc = await db.users.find_one({"id": user["id"]}, {"_id": 0, "password_hash": 0})
+    return {
+        "ok": True,
+        "simulated": True,
+        "intent": refreshed,
+        "reading_seconds_balance": int((user_doc or {}).get("reading_seconds_balance", 0)),
+    }
+
+
+# ---------- Reader: own top-up history ----------
+@api.get("/payments/me/intents")
+async def payments_my_intents(user=Depends(require_user)):
+    rows = await db.topup_intents.find({"user_id": user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(100)
+    return rows
+
+
+# ---------- Admin: payments dashboard ----------
+@api.get("/admin/payments/intents")
+async def admin_list_intents(_=Depends(require_admin)):
+    rows = await db.topup_intents.find({}, {"_id": 0}).sort("created_at", -1).to_list(2000)
+    return rows
+
+
+@api.get("/admin/payments/webhooks")
+async def admin_list_webhooks(_=Depends(require_admin)):
+    rows = await db.payment_webhook_events.find({}, {"_id": 0}).sort("created_at", -1).to_list(2000)
+    return rows
+
+
+@api.post("/admin/payments/intents/{intent_id}/reconcile")
+async def admin_reconcile_intent(intent_id: str, payload: PaymentReconcileIn, admin=Depends(require_admin)):
+    """Manually mark an intent as credited (e.g. webhook never fired). Idempotent."""
+    intent = await db.topup_intents.find_one({"id": intent_id}, {"_id": 0})
+    if not intent:
+        raise HTTPException(status_code=404, detail="Intent not found")
+    if intent["status"] == "credited":
+        return {"ok": True, "duplicate": True, "intent": intent}
+    refreshed = await _credit_wallet_for_intent(
+        intent,
+        intent.get("razorpay_payment_id"),
+        f"admin_reconcile:{admin.get('email','')}:{payload.note[:80]}",
+    )
+    return {"ok": True, "intent": refreshed}
 
 
 app.include_router(api)

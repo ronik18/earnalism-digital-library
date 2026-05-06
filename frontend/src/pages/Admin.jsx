@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail, Clock, Ban, Check } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
 
-const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "settings", "account"];
+const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "settings", "account"];
 
 export default function Admin() {
   const { admin, logout } = useAuth();
@@ -45,6 +45,7 @@ export default function Admin() {
         {tab === "newsletter" && <SimpleList endpoint="/admin/newsletter" testid="admin-newsletter" cols={["name", "email", "created_at"]} title="Reading Circle" />}
         {tab === "contacts" && <ContactsAdmin />}
         {tab === "users" && <UsersAdmin />}
+        {tab === "payments" && <PaymentsAdmin />}
         {tab === "settings" && <SettingsTab />}
         {tab === "account" && <AccountTab />}
       </div>
@@ -844,6 +845,166 @@ function UsersAdmin() {
               </ul>
             )}
           </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+
+function PaymentsAdmin() {
+  const [intents, setIntents] = useState([]);
+  const [hooks, setHooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [config, setConfig] = useState({ configured: false, mode: "test" });
+  const [busyId, setBusyId] = useState(null);
+
+  const load = async () => {
+    setLoading(true);
+    try {
+      const [a, b, c] = await Promise.all([
+        api.get("/admin/payments/intents"),
+        api.get("/admin/payments/webhooks"),
+        api.get("/payments/config"),
+      ]);
+      setIntents(a.data || []);
+      setHooks(b.data || []);
+      setConfig(c.data || {});
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally { setLoading(false); }
+  };
+  useEffect(() => { load(); }, []);
+
+  const reconcile = async (intentId) => {
+    const note = window.prompt("Reconciliation note (optional)") || "";
+    setBusyId(intentId);
+    try {
+      await api.post(`/admin/payments/intents/${intentId}/reconcile`, { note });
+      toast.success("Reconciled — wallet credited.");
+      await load();
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally { setBusyId(null); }
+  };
+
+  const totalCredited = intents
+    .filter((i) => i.status === "credited")
+    .reduce((sum, i) => sum + Number(i.minutes || 0), 0);
+
+  return (
+    <div className="space-y-8" data-testid="admin-payments">
+      <div className="card-elegant p-6 sm:p-8" data-testid="admin-payments-config">
+        <div className="flex items-center justify-between flex-wrap gap-3">
+          <div>
+            <div className="overline">Payments configuration</div>
+            <h2 className="font-serif-display text-2xl text-burgundy mt-1">Razorpay status</h2>
+          </div>
+          <span className={`text-[0.65rem] tracking-[0.2em] uppercase px-3 py-1 rounded-full ${config.configured ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"}`} data-testid="admin-payments-status">
+            {config.configured ? `Live · ${config.mode}` : "Keys missing"}
+          </span>
+        </div>
+        <div className="gold-rule-thin my-4" />
+        <p className="text-charcoal-soft text-sm font-light leading-relaxed">
+          {config.configured
+            ? `Razorpay is wired in ${config.mode} mode (key id ${config.key_id || "—"}). Test purchases on /pricing will go through Razorpay Checkout.`
+            : "Add RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET, and RAZORPAY_WEBHOOK_SECRET to backend/.env and restart the backend. Until then, /pricing will run a local test simulator instead of Razorpay Checkout."}
+        </p>
+      </div>
+
+      <div className="card-elegant p-6 sm:p-8 overflow-x-auto" data-testid="admin-payments-intents">
+        <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+          <div>
+            <h2 className="font-serif-display text-2xl text-burgundy">Top-up intents ({intents.length})</h2>
+            <p className="text-xs text-charcoal-soft mt-1">Total credited: {totalCredited} minutes across all readers.</p>
+          </div>
+          <button onClick={load} className="btn-link text-xs" data-testid="payments-refresh">Refresh</button>
+        </div>
+        {loading ? <p className="text-charcoal-soft text-sm">Loading…</p> : intents.length === 0 ? (
+          <p className="text-charcoal-soft text-sm">No top-up intents yet.</p>
+        ) : (
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left text-xs uppercase tracking-wider text-charcoal-soft border-b border-brand">
+                <th className="py-3 pr-4">When</th>
+                <th className="py-3 pr-4">User</th>
+                <th className="py-3 pr-4">Pack</th>
+                <th className="py-3 pr-4">Amount</th>
+                <th className="py-3 pr-4">Razorpay</th>
+                <th className="py-3 pr-4">Status</th>
+                <th className="py-3 pr-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {intents.map((i) => (
+                <tr key={i.id} className="border-b border-brand/60" data-testid={`intent-row-${i.id}`}>
+                  <td className="py-3 pr-4 text-charcoal-soft text-xs whitespace-nowrap">{new Date(i.created_at).toLocaleString()}</td>
+                  <td className="py-3 pr-4 text-charcoal-soft">{i.user_email || i.user_id}</td>
+                  <td className="py-3 pr-4 font-serif-display">{i.pack_id} · {i.minutes}m</td>
+                  <td className="py-3 pr-4">₹{(Number(i.amount_paise) / 100).toFixed(0)}</td>
+                  <td className="py-3 pr-4 text-xs text-charcoal-soft">
+                    <div>{i.razorpay_order_id || "—"}</div>
+                    {i.razorpay_payment_id && <div className="opacity-70">{i.razorpay_payment_id}</div>}
+                  </td>
+                  <td className="py-3 pr-4">
+                    <span className={`text-[0.65rem] tracking-[0.2em] uppercase px-2 py-0.5 rounded-full ${
+                      i.status === "credited" ? "bg-emerald-100 text-emerald-800" :
+                      i.status === "failed" ? "bg-rose-100 text-rose-800" :
+                      "bg-amber-100 text-amber-800"
+                    }`}>{i.status}</span>
+                  </td>
+                  <td className="py-3 pr-4 text-right">
+                    {i.status !== "credited" && (
+                      <button
+                        disabled={busyId === i.id}
+                        onClick={() => reconcile(i.id)}
+                        className="btn-link text-xs disabled:opacity-50"
+                        data-testid={`intent-reconcile-${i.id}`}
+                      >
+                        {busyId === i.id ? "…" : "Reconcile"}
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+
+      <div className="card-elegant p-6 sm:p-8 overflow-x-auto" data-testid="admin-payments-webhooks">
+        <h2 className="font-serif-display text-2xl text-burgundy mb-4">Webhook events ({hooks.length})</h2>
+        {hooks.length === 0 ? (
+          <p className="text-charcoal-soft text-sm">No webhook events yet.</p>
+        ) : (
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left text-xs uppercase tracking-wider text-charcoal-soft border-b border-brand">
+                <th className="py-3 pr-4">When</th>
+                <th className="py-3 pr-4">Event</th>
+                <th className="py-3 pr-4">Order</th>
+                <th className="py-3 pr-4">Payment</th>
+                <th className="py-3 pr-4">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {hooks.map((h) => (
+                <tr key={h.id} className="border-b border-brand/60" data-testid={`webhook-row-${h.id}`}>
+                  <td className="py-3 pr-4 text-charcoal-soft text-xs whitespace-nowrap">{new Date(h.created_at).toLocaleString()}</td>
+                  <td className="py-3 pr-4 font-serif-display">{h.event || "—"}</td>
+                  <td className="py-3 pr-4 text-xs text-charcoal-soft">{h.razorpay_order_id || "—"}</td>
+                  <td className="py-3 pr-4 text-xs text-charcoal-soft">{h.razorpay_payment_id || "—"}</td>
+                  <td className="py-3 pr-4">
+                    <span className={`text-[0.65rem] tracking-[0.2em] uppercase px-2 py-0.5 rounded-full ${
+                      h.status?.startsWith("credited") ? "bg-emerald-100 text-emerald-800" :
+                      h.status?.startsWith("rejected") ? "bg-rose-100 text-rose-800" :
+                      "bg-amber-100 text-amber-800"
+                    }`}>{h.status}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )}
       </div>
     </div>
