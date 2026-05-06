@@ -114,6 +114,32 @@ async def require_user(
     return user
 
 
+async def optional_principal(
+    creds: Optional[HTTPAuthorizationCredentials] = Depends(bearer),
+) -> Optional[dict]:
+    """Return the caller as a dict tagged with role, or None for guests.
+
+    Never raises. Used by endpoints that return different shapes for
+    guests / readers / admins (e.g. content-gated chapter fetch).
+    """
+    if not creds or creds.scheme.lower() != "bearer":
+        return None
+    try:
+        payload = jwt.decode(creds.credentials, JWT_SECRET, algorithms=[JWT_ALG])
+    except (jwt.ExpiredSignatureError, jwt.InvalidTokenError):
+        return None
+    role = payload.get("role")
+    if role == "admin":
+        return {"role": "admin", "id": payload.get("sub"), "email": payload.get("email")}
+    if role == "user":
+        u = await db.users.find_one({"id": payload.get("sub")}, {"_id": 0, "password_hash": 0})
+        if not u:
+            return None
+        u["role"] = "user"
+        return u
+    return None
+
+
 def _set_session_cookie(response: Response, token: str) -> None:
     response.set_cookie(
         key=SESSION_COOKIE,
@@ -356,6 +382,30 @@ def _is_free_preview_chapter(book: dict, chapter_id: Optional[str]) -> bool:
     return sorted_ch[0].get("id") == chapter_id
 
 
+def _strip_paid_chapter_content(book: dict) -> dict:
+    """Return a shallow copy of `book` with non-preview chapter `content`
+    blanked. Preview chapter (order==0) keeps its content; everything later
+    is metadata-only. Used for PUBLIC `/api/books/*` endpoints so chapter
+    bodies are never leaked to guests via the catalog API.
+    """
+    if not book:
+        return book
+    chapters = book.get("chapters") or []
+    if not chapters:
+        return book
+    sorted_ch = sorted(chapters, key=lambda c: c.get("order", 0))
+    preview_id = sorted_ch[0].get("id") if sorted_ch else None
+    masked = []
+    for c in chapters:
+        c2 = dict(c)
+        if c.get("id") != preview_id:
+            c2["content"] = ""
+        masked.append(c2)
+    out = dict(book)
+    out["chapters"] = masked
+    return out
+
+
 # ---------- App ----------
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
@@ -538,14 +588,16 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
             {"category_slug": {"$regex": q, "$options": "i"}},
         ]
     docs = await db.books.find(query, {"_id": 0}).sort("created_at", -1).to_list(500)
-    return docs
+    # Public list never leaks paid chapter bodies.
+    return [_strip_paid_chapter_content(d) for d in docs]
 
 @api.get("/books/{slug}", response_model=Book)
 async def get_book(slug: str):
     doc = await db.books.find_one({"slug": slug, "is_published": True}, {"_id": 0})
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
-    return doc
+    # Public detail returns ToC + only the free-preview chapter's body.
+    return _strip_paid_chapter_content(doc)
 
 
 # ---------- Public: Blog ----------
@@ -961,6 +1013,78 @@ async def reader_session_end(payload: ReaderSessionEndIn, user=Depends(require_u
         {"$set": {"status": "ended", "ended_at": now_iso()}},
     )
     return {"ended": res.modified_count}
+
+
+# ---------- Reader: Gated chapter content ----------
+# Returns chapter BODY only when the caller is authorised. Guests, blocked
+# users and users with no reading time get a locked metadata-only response.
+# Admin tokens always pass (used for the admin reader preview).
+@api.get("/reader/chapter/{slug}/{chapter_id}")
+async def reader_get_chapter(
+    slug: str,
+    chapter_id: str,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    book = await db.books.find_one({"slug": slug, "is_published": True}, {"_id": 0})
+    if not book:
+        raise HTTPException(status_code=404, detail="Book not found")
+    chapters = sorted((book.get("chapters") or []), key=lambda c: c.get("order", 0))
+    target = next((c for c in chapters if c.get("id") == chapter_id), None)
+    if not target:
+        raise HTTPException(status_code=404, detail="Chapter not found")
+
+    meta = {
+        "id": target["id"],
+        "title": target.get("title", ""),
+        "order": target.get("order", 0),
+    }
+    is_preview = chapters[0].get("id") == chapter_id
+
+    # Free preview is open to everyone — no auth, no deduction.
+    if is_preview:
+        return {
+            "locked": False,
+            "is_preview": True,
+            "chapter": {**meta, "content": target.get("content", "")},
+        }
+
+    # Admin always has full access (admin reader preview).
+    if principal and principal.get("role") == "admin":
+        return {
+            "locked": False,
+            "is_preview": False,
+            "chapter": {**meta, "content": target.get("content", "")},
+        }
+
+    # Reader user
+    if principal and principal.get("role") == "user":
+        if principal.get("status") == "blocked":
+            return {
+                "locked": True,
+                "reason": "BLOCKED",
+                "message": "Account is blocked. Please contact support.",
+                "chapter": meta,
+            }
+        if int(principal.get("reading_seconds_balance", 0)) > 0:
+            return {
+                "locked": False,
+                "is_preview": False,
+                "chapter": {**meta, "content": target.get("content", "")},
+            }
+        return {
+            "locked": True,
+            "reason": "INSUFFICIENT_READING_TIME",
+            "message": "Your reading time has ended. Top up to continue reading.",
+            "chapter": meta,
+        }
+
+    # Guest
+    return {
+        "locked": True,
+        "reason": "AUTH_REQUIRED",
+        "message": "Sign in and add reading time to continue.",
+        "chapter": meta,
+    }
 
 
 # ---------- Admin: Reader Users + Wallet ----------

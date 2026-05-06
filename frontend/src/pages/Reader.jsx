@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Menu, X, Sun, Moon, Type, ArrowLeft, Clock, Lock } from "lucide-react";
-import { api, userApi, formatMinutes } from "../lib/api";
+import axios from "axios";
+import { api, userApi, formatMinutes, TOKEN_KEY, USER_TOKEN_KEY, API } from "../lib/api";
 import { useAuth } from "../context/AuthContext";
 
 const PREFS_KEY = "earnalism_reader_prefs";
@@ -40,6 +41,11 @@ export default function Reader() {
   const idleSinceRef = useRef(Date.now());
   const visibleRef = useRef(typeof document !== "undefined" ? document.visibilityState !== "hidden" : true);
 
+  // Server-gated chapter content. We never trust book.chapters[].content for paid chapters.
+  // Shape: { locked, is_preview, reason?, message?, chapter:{id,title,order,content?} }
+  const [chapterPayload, setChapterPayload] = useState(null);
+  const [chapterLoading, setChapterLoading] = useState(false);
+
   useEffect(() => { savePrefs(prefs); }, [prefs]);
 
   useEffect(() => {
@@ -67,8 +73,33 @@ export default function Reader() {
     if (isAuthed) setRemaining(Number(user.reading_seconds_balance || 0));
   }, [isAuthed, user]);
 
-  // Reader access gate: chapter > 0 requires login + balance > 0
-  const accessLocked = !isPreview && (!isAuthed || (remaining <= 0 && depleted));
+  // Fetch the current chapter from the gated endpoint. The server returns either
+  // `{locked:false, chapter:{...content...}}` for authorised callers or
+  // `{locked:true, reason, message, chapter:{id,title,order}}` otherwise.
+  // Admin-token preview is supported: if the admin is signed in we forward
+  // their bearer token instead of the user token (admin always passes the gate).
+  // Uses plain axios so the userApi interceptor cannot override our chosen token.
+  useEffect(() => {
+    if (!book || !current) { setChapterPayload(null); return; }
+    let cancelled = false;
+    const adminToken = localStorage.getItem(TOKEN_KEY);
+    const userToken = localStorage.getItem(USER_TOKEN_KEY);
+    const headers = {};
+    if (adminToken) headers.Authorization = `Bearer ${adminToken}`;
+    else if (userToken) headers.Authorization = `Bearer ${userToken}`;
+    setChapterLoading(true);
+    axios.get(`${API}/reader/chapter/${book.slug}/${current.id}`, { headers })
+      .then((r) => { if (!cancelled) setChapterPayload(r.data); })
+      .catch(() => { if (!cancelled) setChapterPayload({ locked: true, reason: "ERROR", message: "Could not load this chapter. Please try again.", chapter: { id: current.id, title: current.title, order: current.order || 0 } }); })
+      .finally(() => { if (!cancelled) setChapterLoading(false); });
+    return () => { cancelled = true; };
+  }, [book, current]);
+
+  // Authoritative lock state comes from the server response.
+  const serverLocked = chapterPayload?.locked === true;
+  const lockedReason = chapterPayload?.reason || null;
+  const lockedMessage = chapterPayload?.message || "";
+  const accessLocked = serverLocked;
 
   const goTo = useCallback((i) => {
     if (i < 0 || i >= chapters.length) return;
@@ -77,6 +108,7 @@ export default function Reader() {
     next.set("c", c.id);
     setParams(next, { replace: false });
     setDepleted(false);
+    setChapterPayload(null);
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [chapters, params, setParams]);
 
@@ -316,11 +348,19 @@ export default function Reader() {
           data-testid="reader-article"
           aria-hidden={accessLocked ? "true" : undefined}
         >
-          {(current.content || "").split("\n\n").filter(Boolean).map((para, i) => (
-            <p key={`${current.id}-p-${i}`} className={i === 0 ? "" : "mt-6"}>{para}</p>
-          ))}
-          {!(current.content || "").trim() && (
-            <p className="italic opacity-60">This chapter has no content yet.</p>
+          {accessLocked ? (
+            <p className="italic opacity-60">— locked —</p>
+          ) : chapterLoading && !chapterPayload ? (
+            <p className="italic opacity-60">Loading chapter…</p>
+          ) : (
+            <>
+              {((chapterPayload?.chapter?.content) || "").split("\n\n").filter(Boolean).map((para, i) => (
+                <p key={`${current.id}-p-${i}`} className={i === 0 ? "" : "mt-6"}>{para}</p>
+              ))}
+              {!((chapterPayload?.chapter?.content) || "").trim() && (
+                <p className="italic opacity-60">This chapter has no content yet.</p>
+              )}
+            </>
           )}
         </article>
 
@@ -342,30 +382,37 @@ export default function Reader() {
       {accessLocked && (
         <div className="fixed inset-0 z-40 flex items-center justify-center px-6 pointer-events-auto" data-testid="reader-locked-overlay">
           <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
-          <div className={`relative w-full max-w-md ${themeCls} border border-current/15 rounded-sm p-8 sm:p-10 shadow-2xl`}>
+          <div className={`relative w-full max-w-md ${themeCls} border border-current/15 rounded-sm p-8 sm:p-10 shadow-2xl`} data-testid={`reader-locked-${(lockedReason || "GENERIC").toLowerCase()}`}>
             <div className="flex items-center gap-2 italic-eyebrow opacity-80">
-              <Lock size={13} strokeWidth={1.5} /> {isAuthed ? "Reading time ended" : "Sign in to read on"}
+              <Lock size={13} strokeWidth={1.5} />
+              {lockedReason === "AUTH_REQUIRED" ? "Sign in to read on"
+                : lockedReason === "BLOCKED" ? "Account blocked"
+                : "Reading time ended"}
             </div>
             <h2 className={`font-serif-light text-3xl sm:text-[2.2rem] ${headingCls} mt-3 leading-tight`}>
-              {isAuthed
-                ? <>Your reading time has <span className="italic-accent">ended.</span></>
-                : <>Open an account to continue <span className="italic-accent">reading.</span></>}
+              {lockedReason === "AUTH_REQUIRED"
+                ? <>Open an account to continue <span className="italic-accent">reading.</span></>
+                : lockedReason === "BLOCKED"
+                  ? <>This account is <span className="italic-accent">blocked.</span></>
+                  : <>Your reading time has <span className="italic-accent">ended.</span></>}
             </h2>
             <div className={`h-px w-10 ${ruleCls} mt-5 mb-6`} />
             <p className="opacity-80 font-light leading-relaxed text-[0.95rem]">
-              {isAuthed
-                ? "Top up to continue this chapter. Your place in the book is saved."
-                : "The first chapter is open for everyone. From the second chapter on, sign in and add reading time to keep going."}
+              {lockedMessage || (lockedReason === "AUTH_REQUIRED"
+                ? "The first chapter is open for everyone. From the second chapter on, sign in and add reading time to keep going."
+                : "Top up to continue this chapter. Your place in the book is saved.")}
             </p>
             <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              {isAuthed ? (
-                <button onClick={() => navigate("/pricing")} className="btn-primary w-full sm:w-auto" data-testid="overlay-buy-time">Buy reading time</button>
-              ) : (
+              {lockedReason === "AUTH_REQUIRED" ? (
                 <button onClick={() => navigate(`/login?next=/reader/${book.slug}${currentCid ? `?c=${currentCid}` : ""}`)} className="btn-primary w-full sm:w-auto" data-testid="overlay-signin">Sign In</button>
+              ) : lockedReason === "BLOCKED" ? (
+                <button onClick={() => navigate("/contact")} className="btn-primary w-full sm:w-auto" data-testid="overlay-contact">Contact support</button>
+              ) : (
+                <button onClick={() => navigate("/pricing")} className="btn-primary w-full sm:w-auto" data-testid="overlay-buy-time">Buy reading time</button>
               )}
               <button onClick={() => navigate("/library")} className="btn-secondary w-full sm:w-auto" data-testid="overlay-library">Return to Library</button>
             </div>
-            {isPreview ? null : (
+            {!isPreview && (
               <button onClick={() => goTo(0)} className="mt-5 text-[0.72rem] tracking-[0.22em] uppercase opacity-60 hover:opacity-100" data-testid="overlay-read-preview">
                 ← Read free preview chapter
               </button>
