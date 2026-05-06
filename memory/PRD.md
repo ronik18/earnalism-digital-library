@@ -49,16 +49,29 @@ Premium, fully responsive online bookstore + publishing brand pivoted to a **Dig
 - **Tests**: 14 new security tests in `/app/backend/tests/test_chapter_gating_security.py` — incl. a raw-text guard that greps `response.text` for paid snippets. **57/57 backend pass; all 8 frontend scenarios green** (iteration_4.json).
 - Admin route `/api/admin/books` deliberately retains full content (admin preview) and is unchanged.
 
+### Phase 3 (2026-05-06) — Razorpay TEST MODE wallet top-up 💳
+- Backend pack catalogue (PACKS_BY_ID) is the authoritative source for minutes & paise. Frontend cannot influence amount.
+- **POST /api/payments/topup** (auth) → creates a `topup_intents` row + Razorpay Order in test mode → returns `{intent_id, razorpay_order_id, key_id, amount, currency, name, prefill, pack}` for Checkout.js.
+- **POST /api/payments/verify** (auth) — HMAC-SHA256 signature check on `order_id|payment_id` with `RAZORPAY_KEY_SECRET`. Idempotently credits.
+- **POST /api/payments/webhook** — verifies `X-Razorpay-Signature` against raw body using `RAZORPAY_WEBHOOK_SECRET`. Stores every event in `payment_webhook_events` (incl. rejected). Idempotent on `event_id`.
+- **Atomic credit guard** `_credit_wallet_for_intent()`: `update_one({id, status:{$ne:"credited"}}, {$set:{status:"credited",...}})` then `$inc` on user balance, then insert a `wallet_transactions` row. Only the first caller wins — verify and webhook can both fire safely.
+- Dev-only **/api/payments/_simulate_topup + /_simulate_webhook** (gated by `RAZORPAY_MODE=="test"`) so the credit path can be exercised without real Razorpay keys.
+- **Admin Payments tab** — config status, top-up intents table with manual reconcile button, webhook event log.
+- **Pricing.jsx** — loads packs from API, dynamically loads Razorpay Checkout.js when keys are configured, otherwise runs the simulator path. After success, refreshes wallet and navigates to /account.
+- **Index fix during testing**: `topup_intents.razorpay_order_id` / `razorpay_payment_id` use `partialFilterExpression={"$type":"string"}` so null pre-payment values don't collide on the unique index.
+- **Tests**: 19 new payments tests in `/app/backend/tests/test_payments_razorpay.py`. **76/76 backend + all 12 frontend scenarios green** (iteration_5.json).
+- Razorpay env vars added (currently empty placeholders): `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET`, `RAZORPAY_MODE=test`.
+
 ## Prioritized Backlog
 
-### P1 — Phase 3 Monetization
-- **Razorpay** payment links / orders + webhook → credit wallet on success (4 packs).
-- **Cookie-based session migration** for both admin and user (currently Bearer + localStorage).
+### P1 — Phase 4 (next)
+- Email-based password reset for readers (Resend / SendGrid).
+- Cookie-based session migration (currently Bearer + localStorage for both admin & user).
+- Wire real Razorpay keys + dashboard webhook (today everything is structurally ready in test simulator mode).
 
 ### P2 — Growth
 - Google OAuth (real, replacing the disabled placeholder button).
 - Mobile OTP (real provider integration).
-- Password reset via email (Resend / SendGrid).
 - Reading streaks, "continue reading" shelf, bookmarks.
 
 ### P3 — Future
