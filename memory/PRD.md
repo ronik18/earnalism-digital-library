@@ -38,11 +38,21 @@ Premium, fully responsive online bookstore + publishing brand pivoted to a **Dig
 - **Header**: dynamically shows "Sign In" or "Account" based on user state.
 - **Tests**: 43/43 backend pass (`/app/backend/tests/test_phase2_user_reader.py` + `backend_test.py`); all Phase 2 frontend flows green (iteration_3.json).
 
+### Phase 2.1 (2026-05-06) — Server-side chapter content gating 🔒
+- **`_strip_paid_chapter_content()`** scrubs chapter `content` from every PUBLIC `/api/books` and `/api/books/{slug}` response. Only chapter with `order==0` retains its body; the rest are metadata-only.
+- **New `GET /api/reader/chapter/{slug}/{chapter_id}`** — sole source of chapter content for the public reader. Returns:
+  - `{locked:false, is_preview:true, chapter:{...content...}}` — preview chapter for everyone (no auth).
+  - `{locked:false, chapter:{...content...}}` — admin token (admin preview) OR reader user with `balance>0` and `status=="active"`.
+  - `{locked:true, reason:"AUTH_REQUIRED" | "INSUFFICIENT_READING_TIME" | "BLOCKED", message, chapter:{id,title,order}}` — content key entirely absent in locked responses.
+- **`optional_principal`** dependency — never raises, returns admin/user/None. Used by the gated chapter endpoint.
+- **Reader.jsx** renders chapter body ONLY from the gated endpoint's response. Sends admin token first if present (so admin can preview from `/reader/{slug}`), else user token, else no auth. Locked overlay reads server `reason`+`message`.
+- **Tests**: 14 new security tests in `/app/backend/tests/test_chapter_gating_security.py` — incl. a raw-text guard that greps `response.text` for paid snippets. **57/57 backend pass; all 8 frontend scenarios green** (iteration_4.json).
+- Admin route `/api/admin/books` deliberately retains full content (admin preview) and is unchanged.
+
 ## Prioritized Backlog
 
 ### P1 — Phase 3 Monetization
 - **Razorpay** payment links / orders + webhook → credit wallet on success (4 packs).
-- **Server-side chapter content gating** — require valid balance to fetch full chapter content, not just frontend overlay (hardens against URL inspection).
 - **Cookie-based session migration** for both admin and user (currently Bearer + localStorage).
 
 ### P2 — Growth
