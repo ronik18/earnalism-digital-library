@@ -11,7 +11,10 @@ import Journal from "./pages/Journal";
 import JournalArticle from "./pages/JournalArticle";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import SignIn from "./pages/SignIn";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Account from "./pages/Account";
+import Pricing from "./pages/Pricing";
 import Reader from "./pages/Reader";
 import AdminLogin from "./pages/AdminLogin";
 import Admin from "./pages/Admin";
@@ -37,8 +40,12 @@ export default function App() {
               <Route path="/journal/:slug" element={<JournalArticle />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/signin" element={<SignIn />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/account" element={<Account />} />
               {/* Legacy redirects */}
+              <Route path="/signin" element={<Navigate to="/login" replace />} />
               <Route path="/shop" element={<Navigate to="/library" replace />} />
               <Route path="/shop/:slug" element={<LegacyShopRedirect />} />
               <Route path="/publishing" element={<Navigate to="/library" replace />} />

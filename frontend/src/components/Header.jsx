@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, Instagram, Facebook, Youtube, Linkedin, Twitter } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
+import { useAuth } from "../context/AuthContext";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -9,7 +10,6 @@ const NAV = [
   { to: "/journal", label: "Journal" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
-  { to: "/signin", label: "Sign In" },
 ];
 
 const SOCIALS = [
@@ -24,8 +24,12 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const loc = useLocation();
   const { social } = useSettings();
+  const { user } = useAuth();
   useEffect(() => { setOpen(false); }, [loc.pathname]);
   const activeSocials = SOCIALS.filter((s) => social?.[s.key]);
+  const isAuthed = !!user && typeof user === "object";
+  const accountHref = isAuthed ? "/account" : "/login";
+  const accountLabel = isAuthed ? "Account" : "Sign In";
 
   return (
     <header className="sticky top-0 z-50 glass-header" data-testid="site-header">
@@ -49,6 +53,15 @@ export default function Header() {
               {n.label}
             </NavLink>
           ))}
+          <NavLink
+            to={accountHref}
+            data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
+            className={({ isActive }) =>
+              `text-[0.7rem] tracking-[0.26em] uppercase transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
+            }
+          >
+            {accountLabel}
+          </NavLink>
         </nav>
 
         <div className="hidden lg:block">
@@ -81,6 +94,15 @@ export default function Header() {
                 {n.label}
               </NavLink>
             ))}
+            <NavLink
+              to={accountHref}
+              data-testid={isAuthed ? "mobile-nav-account" : "mobile-nav-sign-in"}
+              className={({ isActive }) =>
+                `py-4 text-[0.95rem] tracking-wide border-b border-brand-soft ${isActive ? "text-burgundy" : "text-charcoal"}`
+              }
+            >
+              {accountLabel}
+            </NavLink>
             <Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Start Reading</Link>
 
             {activeSocials.length > 0 && (

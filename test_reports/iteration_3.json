@@ -1,0 +1,89 @@
+{
+  "summary": "Phase 2 (reader auth + wallet + heartbeat + admin users) full regression: 42/43 backend tests pass on first run; the 1 failure was a stale assertion in iteration_2's backend_test.py (5 categories vs 6 after Technology was seeded) — fixed in place. Frontend UI flows for /login, /signup, /account, /pricing, header sign-in toggle, /signin->/login redirect, reader free-preview vs locked-overlay, time-pill, and Admin Users tab manage/adjust all verified end-to-end against the public preview URL.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_phase2_user_reader.py",
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "verified_test_cases": {
+    "backend_phase2": {
+      "POST /api/users/signup short password -> 400": "PASS",
+      "POST /api/users/signup returns {token,user} no password_hash, balance=0, role=user": "PASS",
+      "POST /api/users/signup normalizes email to lowercase": "PASS",
+      "POST /api/users/signup duplicate email -> 400": "PASS",
+      "POST /api/users/login wrong password -> 401 'Invalid email or password'": "PASS",
+      "POST /api/users/login correct -> {token,user}": "PASS",
+      "GET /api/users/me with user Bearer -> user (no password_hash)": "PASS",
+      "GET /api/users/me without token -> 401": "PASS",
+      "GET /api/users/me with admin token -> 403 (cross-role isolation)": "PASS",
+      "GET /api/admin/users with user token -> 403": "PASS",
+      "GET /api/admin/users with admin token -> only role=user": "PASS",
+      "POST /api/admin/users/{uid}/wallet/adjust +60min -> +3600s, balance updated": "PASS",
+      "POST /api/admin/users/{uid}/wallet/adjust negative clamped at 0": "PASS",
+      "GET /api/admin/users/{uid}/transactions sorted desc by created_at": "PASS",
+      "POST /api/reader/session/start unauth -> 401": "PASS",
+      "POST /api/reader/session/start paid chapter + 0 balance -> 402": "PASS",
+      "POST /api/reader/session/start preview chapter + 0 balance -> 200, is_preview:true, tick_seconds:30": "PASS",
+      "POST /api/reader/heartbeat preview chapter -> deducted 0, status:'preview'": "PASS",
+      "POST /api/reader/heartbeat visible+active deducts exactly 30s": "PASS",
+      "POST /api/reader/heartbeat visible:false -> 0 deducted, status:'paused'": "PASS",
+      "POST /api/reader/heartbeat idle:true -> 0 deducted, status:'paused'": "PASS",
+      "POST /api/reader/heartbeat balance hits 0 -> status:'depleted', no negative balance": "PASS",
+      "POST /api/reader/session/end -> ended:1": "PASS",
+      "PATCH /api/admin/users/{uid}/status blocked -> login 403; active -> login 200": "PASS"
+    },
+    "backend_phase1_regression": {
+      "categories list (>=5, all 5 expected slugs present)": "PASS (test updated for new Technology category)",
+      "featured + books + blog + newsletter + contact public endpoints": "PASS",
+      "publishing-request endpoints removed (404)": "PASS",
+      "social settings GET/PUT + auth": "PASS",
+      "admin login + /auth/me + /auth/me protection": "PASS",
+      "admin lists books/blog/newsletter/contacts + 401 without token": "PASS",
+      "admin book/blog/category CRUD + featured": "PASS"
+    },
+    "frontend": {
+      "Header logged-out shows nav-sign-in (no nav-account)": "PASS",
+      "Header after user login shows nav-account (no nav-sign-in)": "PASS",
+      "/login renders user-login-page + form (email,password,submit) + login-google + login-mobile both disabled": "PASS",
+      "/signin redirects to /login": "PASS",
+      "/signup renders user-signup-page; signup with phase2-<ts>@test.com / TestPass123 redirects to /account": "PASS",
+      "/account shows account-balance ('0s' for new user), transactions table, account-logout works": "PASS",
+      "/pricing shows pack-30m/pack-1h/pack-3h/pack-10h with disabled 'PAYMENTS COMING SOON' buttons": "PASS",
+      "Reader chapter 0 (default) — logged out — reads normally, no overlay": "PASS",
+      "Reader chapter 2 — logged out — reader-locked-overlay + overlay-signin CTA": "PASS",
+      "Reader chapter 2 — logged in, balance>0 — reader-time-pill visible ('2h 59m'), no overlay": "PASS",
+      "Reader chapter 2 — logged in, balance=0 — reader-locked-overlay + overlay-buy-time (NOT overlay-signin)": "PASS",
+      "Admin -> Users tab (admin-tab-users) visible after admin login": "PASS",
+      "Admin Users tab Manage button reveals right pane with user-adjust-minutes + user-adjust-submit; submitting +60 calls /admin/users/{id}/wallet/adjust and refreshes (verified balance went 7170->10770)": "PASS"
+    }
+  },
+  "critical_code_review_comments": [
+    "server.py is now ~1170 lines — getting heavy. Consider splitting into routes/ (auth, books, admin, reader) and a separate seed module.",
+    "Heartbeat happy path is clean: visible+active+balance>0+not-preview deducts exactly HEARTBEAT_TICK_SECONDS=30s; preview short-circuits to status='preview' before any deduction; balance is clamped via min(tick, balance) so cannot go negative — verified via API tests.",
+    "/api/users/login uses 401 'Invalid email or password' (correct, doesn't leak whether email exists) but blocked accounts return 403 — this side-channels account existence. Acceptable for this MVP.",
+    "Wallet adjust correctly records actual_delta (clamped) on the transaction, not the requested delta — good auditability.",
+    "Admin token cannot reach /users/me (403) and user token cannot reach /admin/users (403) — cross-role isolation verified.",
+    "Frontend Reader page: time-pill correctly hides when on preview chapter and shows 'Free preview' chip; time format ('2h 59m', '0s') is consistent with the formatMinutes helper.",
+    "Logout flow: clicking account-logout clears the token but page stays on /account showing 401s in console; minor UX gap — not a blocker. Once user navigates to / header correctly switches to nav-sign-in."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_phase2_user_reader.py (NEW — 25 Phase 2 tests)",
+    "/app/backend/tests/backend_test.py (1-line fix: categories count assertion changed to >=5 to accept new Technology seed)"
+  ],
+  "success_rate": {"backend": "100% (43/43 after fix)", "frontend": "100% (all listed Phase 2 cases verified)"},
+  "test_credentials": "admin@theearnalism.com / Earnalism@2026 — verified. reader@earnalism.com / Reader@2026 — verified. Used phase2-<ts>@test.com / TestPass123 for fresh signup tests.",
+  "seed_data_creation": "Test run created multiple TEST users via signup (phase2-<ts>-<rand>@test.com, mixed-case email tests). Reader (reader@earnalism.com) balance was used as a test fixture: ended the run drained to 0 (matches initial seed state). Several wallet_transactions rows added for the test reader (top-ups + drains + heartbeat consumes).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Phase 2 fully working. Two things to remember: (1) backend_test.py categories assertion is now '>=5' because seed has 6 categories (Technology was added); (2) admin token & user token are stored in separate localStorage keys (earnalism_admin_token vs earnalism_user_token); both are pure Bearer tokens, no cookies. Reader free-preview is determined server-side by chapter.order==0 (sorted), not client-side. The /admin Users tab UI uses testids: admin-tab-users, user-manage-{id}, user-adjust-minutes, user-adjust-submit. The reader UI uses: reader-locked-overlay, overlay-signin, overlay-buy-time, reader-time-pill. Backend tests live in /app/backend/tests/{backend_test.py, test_phase2_user_reader.py} — run with: pytest /app/backend/tests/ -v.",
+  "rca of the issue": "No Phase 2 issues. The single original-suite failure (test_categories expected len==5) was a stale assertion from iteration_2 — the SEED_CATEGORIES list in server.py legitimately gained a 'technology' entry. Fixed in test, no server change needed."
+}

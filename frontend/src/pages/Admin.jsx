@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { api, formatError } from "../lib/api";
+import { api, formatError, formatMinutes } from "../lib/api";
 import { toast } from "sonner";
-import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail } from "lucide-react";
+import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail, Clock, Ban, Check } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
 
-const TABS = ["books", "blog", "categories", "newsletter", "contacts", "settings", "account"];
+const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "settings", "account"];
 
 export default function Admin() {
   const { admin, logout } = useAuth();
@@ -44,6 +44,7 @@ export default function Admin() {
         {tab === "categories" && <CategoriesAdmin />}
         {tab === "newsletter" && <SimpleList endpoint="/admin/newsletter" testid="admin-newsletter" cols={["name", "email", "created_at"]} title="Reading Circle" />}
         {tab === "contacts" && <ContactsAdmin />}
+        {tab === "users" && <UsersAdmin />}
         {tab === "settings" && <SettingsTab />}
         {tab === "account" && <AccountTab />}
       </div>
@@ -652,6 +653,198 @@ function ChapterEditor({ chapter, onCancel, onSave, busy }) {
             {busy ? "Saving…" : "Save chapter"}
           </button>
         </div>
+      </div>
+    </div>
+  );
+}
+
+
+function UsersAdmin() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [adjMinutes, setAdjMinutes] = useState("");
+  const [adjReason, setAdjReason] = useState("");
+  const [txs, setTxs] = useState([]);
+  const [busy, setBusy] = useState(false);
+
+  const load = async () => {
+    setLoading(true);
+    try {
+      const { data } = await api.get("/admin/users");
+      setUsers(data);
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally { setLoading(false); }
+  };
+  useEffect(() => { load(); }, []);
+
+  const openUser = async (u) => {
+    setSelectedUser(u);
+    setAdjMinutes("");
+    setAdjReason("");
+    try {
+      const { data } = await api.get(`/admin/users/${u.id}/transactions`);
+      setTxs(data);
+    } catch { setTxs([]); }
+  };
+
+  const adjust = async () => {
+    if (!selectedUser) return;
+    const mins = parseInt(adjMinutes, 10);
+    if (Number.isNaN(mins) || mins === 0) {
+      toast.error("Enter a non-zero number of minutes (use negative to deduct).");
+      return;
+    }
+    setBusy(true);
+    try {
+      await api.post(`/admin/users/${selectedUser.id}/wallet/adjust`, {
+        minutes: mins,
+        reason: adjReason || "",
+      });
+      toast.success(mins > 0 ? `Added ${mins} min` : `Deducted ${Math.abs(mins)} min`);
+      setAdjMinutes("");
+      setAdjReason("");
+      await load();
+      const fresh = await api.get(`/admin/users/${selectedUser.id}/transactions`);
+      setTxs(fresh.data);
+      const refreshed = (await api.get("/admin/users")).data.find((x) => x.id === selectedUser.id);
+      if (refreshed) setSelectedUser(refreshed);
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally { setBusy(false); }
+  };
+
+  const toggleStatus = async (u) => {
+    const next = u.status === "blocked" ? "active" : "blocked";
+    if (!window.confirm(`${next === "blocked" ? "Block" : "Unblock"} ${u.email}?`)) return;
+    try {
+      await api.patch(`/admin/users/${u.id}/status`, { status: next });
+      toast.success(`Status set to ${next}`);
+      await load();
+      if (selectedUser?.id === u.id) setSelectedUser({ ...selectedUser, status: next });
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    }
+  };
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6" data-testid="admin-users">
+      <div className="lg:col-span-2 card-elegant p-6 sm:p-8 overflow-x-auto">
+        <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
+          <h2 className="font-serif-display text-2xl text-burgundy">Reader accounts ({users.length})</h2>
+          <button onClick={load} className="btn-link text-xs" data-testid="users-refresh">Refresh</button>
+        </div>
+        {loading ? <p className="text-charcoal-soft">Loading…</p> : users.length === 0 ? (
+          <p className="text-charcoal-soft text-sm">No reader accounts yet.</p>
+        ) : (
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left text-xs uppercase tracking-wider text-charcoal-soft border-b border-brand">
+                <th className="py-3 pr-4">Name</th>
+                <th className="py-3 pr-4">Email</th>
+                <th className="py-3 pr-4">Time</th>
+                <th className="py-3 pr-4">Status</th>
+                <th className="py-3 pr-4">Joined</th>
+                <th className="py-3 pr-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((u) => (
+                <tr key={u.id} className={`border-b border-brand/60 hover:bg-beige/40 transition-colors ${selectedUser?.id === u.id ? "bg-beige/60" : ""}`} data-testid={`user-row-${u.id}`}>
+                  <td className="py-3 pr-4 font-serif-display">{u.name}</td>
+                  <td className="py-3 pr-4 text-charcoal-soft">{u.email}</td>
+                  <td className="py-3 pr-4">
+                    <span className="inline-flex items-center gap-1.5"><Clock size={12} strokeWidth={1.5} /> {formatMinutes(u.reading_seconds_balance)}</span>
+                  </td>
+                  <td className="py-3 pr-4">
+                    <span className={`text-[0.65rem] tracking-[0.2em] uppercase px-2 py-0.5 rounded-full ${u.status === "blocked" ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"}`}>{u.status}</span>
+                  </td>
+                  <td className="py-3 pr-4 text-charcoal-soft text-xs">{new Date(u.created_at).toLocaleDateString()}</td>
+                  <td className="py-3 pr-4 text-right whitespace-nowrap">
+                    <button onClick={() => openUser(u)} className="btn-link text-xs mr-3" data-testid={`user-manage-${u.id}`}>Manage</button>
+                    <button onClick={() => toggleStatus(u)} className="text-xs text-charcoal-soft hover:text-burgundy" data-testid={`user-toggle-${u.id}`}>
+                      {u.status === "blocked" ? <Check size={14} /> : <Ban size={14} />}
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+
+      {/* Right pane: selected user */}
+      <div className="card-elegant p-6 sm:p-8" data-testid="admin-users-detail">
+        {!selectedUser ? (
+          <div className="text-charcoal-soft text-sm font-light">
+            Select a reader on the left to adjust their wallet and view transaction history.
+          </div>
+        ) : (
+          <div>
+            <div className="overline">Manage</div>
+            <h3 className="font-serif-display text-xl text-burgundy leading-tight mt-1">{selectedUser.name}</h3>
+            <p className="text-charcoal-soft text-xs">{selectedUser.email}</p>
+            <div className="mt-5 flex items-center gap-3">
+              <Clock size={14} strokeWidth={1.5} className="text-burgundy" />
+              <span className="font-serif-display text-2xl text-charcoal" data-testid="user-detail-balance">{formatMinutes(selectedUser.reading_seconds_balance)}</span>
+            </div>
+
+            <div className="gold-rule-thin my-6" />
+
+            <div className="overline mb-3">Adjust wallet (minutes)</div>
+            <div className="flex flex-col gap-3">
+              <input
+                type="number"
+                value={adjMinutes}
+                onChange={(e) => setAdjMinutes(e.target.value)}
+                placeholder="e.g. 60 or -15"
+                className="input-elegant"
+                data-testid="user-adjust-minutes"
+              />
+              <input
+                type="text"
+                value={adjReason}
+                onChange={(e) => setAdjReason(e.target.value)}
+                placeholder="Reason (optional)"
+                className="input-elegant"
+                data-testid="user-adjust-reason"
+              />
+              <div className="flex flex-wrap gap-2">
+                {[30, 60, 180, 600].map((m) => (
+                  <button key={m} type="button" onClick={() => setAdjMinutes(String(m))} className="text-[0.7rem] tracking-[0.18em] uppercase px-3 py-1.5 border border-brand rounded-full hover:bg-burgundy hover:text-[var(--brand-ivory)] transition-colors" data-testid={`quick-add-${m}`}>
+                    +{m >= 60 ? `${m / 60}h` : `${m}m`}
+                  </button>
+                ))}
+              </div>
+              <button onClick={adjust} disabled={busy} className="btn-primary w-full disabled:opacity-60" data-testid="user-adjust-submit">
+                {busy ? "Applying…" : "Apply adjustment"}
+              </button>
+            </div>
+
+            <div className="gold-rule-thin my-6" />
+
+            <div className="overline mb-3">Recent transactions</div>
+            {txs.length === 0 ? (
+              <p className="text-charcoal-soft text-sm font-light">No transactions yet.</p>
+            ) : (
+              <ul className="space-y-3 max-h-72 overflow-y-auto">
+                {txs.map((t) => (
+                  <li key={t.id} className="text-xs border-b border-brand/60 pb-2" data-testid={`user-tx-${t.id}`}>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className={`font-serif-display ${t.seconds < 0 ? "text-rose-700" : "text-emerald-700"}`}>
+                        {t.seconds >= 0 ? "+" : "−"}{formatMinutes(Math.abs(t.seconds))}
+                      </span>
+                      <span className="text-[0.6rem] tracking-[0.18em] uppercase text-charcoal-soft">{t.type}</span>
+                    </div>
+                    <div className="text-charcoal-soft mt-1">{t.reason || "—"}</div>
+                    <div className="text-charcoal-soft/70 mt-1">{new Date(t.created_at).toLocaleString()}</div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

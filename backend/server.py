@@ -56,6 +56,16 @@ def create_token(sub: str, email: str) -> str:
     }
     return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALG)
 
+def create_user_token(sub: str, email: str) -> str:
+    payload = {
+        "sub": sub,
+        "email": email,
+        "role": "user",
+        "exp": datetime.now(timezone.utc) + timedelta(days=7),
+        "type": "access",
+    }
+    return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALG)
+
 bearer = HTTPBearer(auto_error=False)
 
 async def require_admin(
@@ -80,6 +90,28 @@ async def require_admin(
     if payload.get("role") != "admin":
         raise HTTPException(status_code=403, detail="Admin access required")
     return payload
+
+
+async def require_user(
+    creds: Optional[HTTPAuthorizationCredentials] = Depends(bearer),
+) -> dict:
+    """Authenticate a reader user via Bearer token; reject admin tokens."""
+    if not creds or creds.scheme.lower() != "bearer":
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    try:
+        payload = jwt.decode(creds.credentials, JWT_SECRET, algorithms=[JWT_ALG])
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Token expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+    if payload.get("role") != "user":
+        raise HTTPException(status_code=403, detail="User access required")
+    user = await db.users.find_one({"id": payload["sub"]}, {"_id": 0, "password_hash": 0})
+    if not user:
+        raise HTTPException(status_code=401, detail="User not found")
+    if user.get("status") == "blocked":
+        raise HTTPException(status_code=403, detail="Account is blocked")
+    return user
 
 
 def _set_session_cookie(response: Response, token: str) -> None:
@@ -246,6 +278,84 @@ class ContactStatusIn(BaseModel):
 VALID_CONTACT_STATUSES = {"new", "read", "responded"}
 
 
+# ---------- Reader User / Wallet / Session models ----------
+class UserSignupIn(BaseModel):
+    name: str
+    email: EmailStr
+    password: str
+
+class UserLoginIn(BaseModel):
+    email: EmailStr
+    password: str
+
+class UserOut(BaseModel):
+    id: str
+    name: str
+    email: EmailStr
+    role: str = "user"
+    reading_seconds_balance: int = 0
+    status: str = "active"
+    auth_provider: str = "email"
+    created_at: str
+
+class UserAuthOut(BaseModel):
+    token: str
+    user: UserOut
+
+class WalletAdjustIn(BaseModel):
+    minutes: int  # may be negative; converted to seconds server-side
+    reason: str = ""
+
+class WalletTransactionOut(BaseModel):
+    id: str
+    user_id: str
+    type: str  # "credit" | "debit" | "consume"
+    seconds: int
+    reason: str
+    created_at: str
+    actor: str = "system"  # "admin" | "system" | "user"
+
+class ReaderSessionStartIn(BaseModel):
+    book_slug: str
+    chapter_id: Optional[str] = None
+
+class ReaderHeartbeatIn(BaseModel):
+    session_id: str
+    visible: bool = True
+    idle: bool = False
+    chapter_id: Optional[str] = None
+
+class ReaderSessionEndIn(BaseModel):
+    session_id: str
+
+class UserStatusIn(BaseModel):
+    status: str  # "active" | "blocked"
+
+
+def _user_public(doc: dict) -> dict:
+    return {
+        "id": doc["id"],
+        "name": doc.get("name", ""),
+        "email": doc["email"],
+        "role": "user",
+        "reading_seconds_balance": int(doc.get("reading_seconds_balance", 0)),
+        "status": doc.get("status", "active"),
+        "auth_provider": doc.get("auth_provider", "email"),
+        "created_at": doc.get("created_at", now_iso()),
+    }
+
+
+def _is_free_preview_chapter(book: dict, chapter_id: Optional[str]) -> bool:
+    """Chapter with order==0 (the first chapter) is always free preview."""
+    if not chapter_id:
+        return False
+    chapters = book.get("chapters") or []
+    if not chapters:
+        return False
+    sorted_ch = sorted(chapters, key=lambda c: c.get("order", 0))
+    return sorted_ch[0].get("id") == chapter_id
+
+
 # ---------- App ----------
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
@@ -257,6 +367,9 @@ async def lifespan(_app: FastAPI):
     await db.blog_posts.create_index("slug", unique=True)
     await db.newsletter.create_index("email", unique=True)
     await db.settings.create_index("key", unique=True)
+    await db.wallet_transactions.create_index([("user_id", 1), ("created_at", -1)])
+    await db.reading_sessions.create_index([("user_id", 1), ("started_at", -1)])
+    await db.reading_sessions.create_index("status")
 
     # admin (seed only if absent; do NOT overwrite password so admin can change it via UI)
     existing = await db.users.find_one({"email": ADMIN_EMAIL.lower()})
@@ -270,6 +383,36 @@ async def lifespan(_app: FastAPI):
             "created_at": now_iso(),
         })
         logger.info("Seeded admin user")
+
+    # test reader user (idempotent — only inserted if absent)
+    test_user_email = "reader@earnalism.com"
+    if not await db.users.find_one({"email": test_user_email}):
+        await db.users.insert_one({
+            "id": str(uuid.uuid4()),
+            "email": test_user_email,
+            "password_hash": hash_password("Reader@2026"),
+            "name": "Sample Reader",
+            "role": "user",
+            "auth_provider": "email",
+            "reading_seconds_balance": 0,
+            "status": "active",
+            "created_at": now_iso(),
+        })
+        logger.info("Seeded sample reader user")
+
+    # Backfill new fields on legacy user documents (role=user)
+    await db.users.update_many(
+        {"role": "user", "reading_seconds_balance": {"$exists": False}},
+        {"$set": {"reading_seconds_balance": 0}},
+    )
+    await db.users.update_many(
+        {"role": "user", "status": {"$exists": False}},
+        {"$set": {"status": "active"}},
+    )
+    await db.users.update_many(
+        {"role": "user", "auth_provider": {"$exists": False}},
+        {"$set": {"auth_provider": "email"}},
+    )
 
     # categories
     for c in SEED_CATEGORIES:
@@ -657,6 +800,225 @@ async def admin_set_featured(payload: FeaturedIn, _=Depends(require_admin)):
         upsert=True,
     )
     return {"ok": True, "book_slug": payload.book_slug}
+
+
+# ---------- Reader User: Auth ----------
+@api.post("/users/signup", response_model=UserAuthOut)
+async def user_signup(payload: UserSignupIn):
+    name = payload.name.strip()
+    email = payload.email.lower().strip()
+    if not name:
+        raise HTTPException(status_code=400, detail="Name is required")
+    if len(payload.password) < 8:
+        raise HTTPException(status_code=400, detail="Password must be at least 8 characters")
+    if await db.users.find_one({"email": email}):
+        raise HTTPException(status_code=400, detail="An account with this email already exists")
+    doc = {
+        "id": str(uuid.uuid4()),
+        "name": name,
+        "email": email,
+        "password_hash": hash_password(payload.password),
+        "role": "user",
+        "auth_provider": "email",
+        "reading_seconds_balance": 0,
+        "status": "active",
+        "created_at": now_iso(),
+    }
+    await db.users.insert_one(doc)
+    token = create_user_token(doc["id"], doc["email"])
+    return UserAuthOut(token=token, user=UserOut(**_user_public(doc)))
+
+
+@api.post("/users/login", response_model=UserAuthOut)
+async def user_login(payload: UserLoginIn):
+    email = payload.email.lower().strip()
+    user = await db.users.find_one({"email": email}, {"_id": 0})
+    if not user or user.get("role") != "user" or not verify_password(payload.password, user["password_hash"]):
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+    if user.get("status") == "blocked":
+        raise HTTPException(status_code=403, detail="Account is blocked. Please contact support.")
+    token = create_user_token(user["id"], user["email"])
+    return UserAuthOut(token=token, user=UserOut(**_user_public(user)))
+
+
+@api.post("/users/logout")
+async def user_logout(_user=Depends(require_user)):
+    return {"ok": True}
+
+
+@api.get("/users/me", response_model=UserOut)
+async def user_me(user=Depends(require_user)):
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0, "password_hash": 0})
+    return UserOut(**_user_public(fresh or user))
+
+
+@api.get("/users/me/transactions", response_model=List[WalletTransactionOut])
+async def user_my_transactions(user=Depends(require_user)):
+    rows = await db.wallet_transactions.find({"user_id": user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(100)
+    return rows
+
+
+# ---------- Reader: Sessions + Heartbeat ----------
+HEARTBEAT_TICK_SECONDS = 30
+
+
+@api.post("/reader/session/start")
+async def reader_session_start(payload: ReaderSessionStartIn, user=Depends(require_user)):
+    book = await db.books.find_one({"slug": payload.book_slug, "is_published": True}, {"_id": 0})
+    if not book:
+        raise HTTPException(status_code=404, detail="Book not found")
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0})
+    balance = int((fresh or {}).get("reading_seconds_balance", 0))
+    is_preview = _is_free_preview_chapter(book, payload.chapter_id)
+    if balance <= 0 and not is_preview:
+        raise HTTPException(status_code=402, detail="Insufficient reading time. Top up to continue.")
+    sid = str(uuid.uuid4())
+    await db.reading_sessions.insert_one({
+        "id": sid,
+        "user_id": user["id"],
+        "book_slug": payload.book_slug,
+        "chapter_id": payload.chapter_id,
+        "started_at": now_iso(),
+        "last_heartbeat_at": now_iso(),
+        "seconds_consumed": 0,
+        "status": "active",
+    })
+    return {
+        "session_id": sid,
+        "remaining_seconds": balance,
+        "is_preview": is_preview,
+        "tick_seconds": HEARTBEAT_TICK_SECONDS,
+    }
+
+
+@api.post("/reader/heartbeat")
+async def reader_heartbeat(payload: ReaderHeartbeatIn, user=Depends(require_user)):
+    session = await db.reading_sessions.find_one({"id": payload.session_id, "user_id": user["id"]}, {"_id": 0})
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    if session.get("status") != "active":
+        return {"deducted_seconds": 0, "remaining_seconds": 0, "status": session.get("status", "ended"), "is_preview": False}
+
+    book = await db.books.find_one({"slug": session["book_slug"]}, {"_id": 0})
+    if not book:
+        await db.reading_sessions.update_one({"id": payload.session_id}, {"$set": {"status": "ended"}})
+        raise HTTPException(status_code=404, detail="Book not found")
+
+    chapter_id = payload.chapter_id or session.get("chapter_id")
+    is_preview = _is_free_preview_chapter(book, chapter_id)
+
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0})
+    balance = int((fresh or {}).get("reading_seconds_balance", 0))
+
+    deducted = 0
+    status = "active"
+
+    if is_preview:
+        status = "preview"
+    elif not payload.visible or payload.idle:
+        status = "paused"
+    elif balance <= 0:
+        status = "depleted"
+    else:
+        deducted = min(HEARTBEAT_TICK_SECONDS, balance)
+        new_balance = balance - deducted
+        await db.users.update_one(
+            {"id": user["id"]},
+            {"$set": {"reading_seconds_balance": new_balance}},
+        )
+        await db.wallet_transactions.insert_one({
+            "id": str(uuid.uuid4()),
+            "user_id": user["id"],
+            "type": "consume",
+            "seconds": -deducted,
+            "reason": f"Reading {book.get('title','')[:40]}",
+            "created_at": now_iso(),
+            "actor": "system",
+        })
+        balance = new_balance
+        status = "depleted" if balance <= 0 else "active"
+
+    await db.reading_sessions.update_one(
+        {"id": payload.session_id},
+        {
+            "$set": {"last_heartbeat_at": now_iso(), "chapter_id": chapter_id},
+            "$inc": {"seconds_consumed": deducted},
+        },
+    )
+
+    return {
+        "deducted_seconds": deducted,
+        "remaining_seconds": balance,
+        "status": status,
+        "is_preview": is_preview,
+    }
+
+
+@api.post("/reader/session/end")
+async def reader_session_end(payload: ReaderSessionEndIn, user=Depends(require_user)):
+    res = await db.reading_sessions.update_one(
+        {"id": payload.session_id, "user_id": user["id"], "status": "active"},
+        {"$set": {"status": "ended", "ended_at": now_iso()}},
+    )
+    return {"ended": res.modified_count}
+
+
+# ---------- Admin: Reader Users + Wallet ----------
+@api.get("/admin/users")
+async def admin_list_users(_=Depends(require_admin)):
+    rows = await db.users.find(
+        {"role": "user"},
+        {"_id": 0, "password_hash": 0},
+    ).sort("created_at", -1).to_list(2000)
+    return [_user_public(r) for r in rows]
+
+
+@api.post("/admin/users/{uid}/wallet/adjust")
+async def admin_wallet_adjust(uid: str, payload: WalletAdjustIn, admin=Depends(require_admin)):
+    user = await db.users.find_one({"id": uid, "role": "user"}, {"_id": 0})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    seconds_delta = int(payload.minutes) * 60
+    current = int(user.get("reading_seconds_balance", 0))
+    new_balance = max(0, current + seconds_delta)
+    actual_delta = new_balance - current
+    await db.users.update_one(
+        {"id": uid},
+        {"$set": {"reading_seconds_balance": new_balance}},
+    )
+    await db.wallet_transactions.insert_one({
+        "id": str(uuid.uuid4()),
+        "user_id": uid,
+        "type": "credit" if actual_delta >= 0 else "debit",
+        "seconds": actual_delta,
+        "reason": payload.reason.strip() or ("Admin top-up" if actual_delta >= 0 else "Admin deduction"),
+        "created_at": now_iso(),
+        "actor": f"admin:{admin.get('email','')}",
+    })
+    return {
+        "ok": True,
+        "user_id": uid,
+        "applied_seconds": actual_delta,
+        "reading_seconds_balance": new_balance,
+    }
+
+
+@api.get("/admin/users/{uid}/transactions", response_model=List[WalletTransactionOut])
+async def admin_user_transactions(uid: str, _=Depends(require_admin)):
+    rows = await db.wallet_transactions.find(
+        {"user_id": uid}, {"_id": 0}
+    ).sort("created_at", -1).to_list(500)
+    return rows
+
+
+@api.patch("/admin/users/{uid}/status")
+async def admin_user_status(uid: str, payload: UserStatusIn, _=Depends(require_admin)):
+    if payload.status not in {"active", "blocked"}:
+        raise HTTPException(status_code=400, detail="Invalid status")
+    res = await db.users.update_one({"id": uid, "role": "user"}, {"$set": {"status": payload.status}})
+    if res.matched_count == 0:
+        raise HTTPException(status_code=404, detail="User not found")
+    return {"ok": True, "id": uid, "status": payload.status}
 
 
 app.include_router(api)

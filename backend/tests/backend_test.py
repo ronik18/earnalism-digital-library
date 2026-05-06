@@ -35,7 +35,7 @@ def test_categories(s):
     r = s.get(f"{API}/categories")
     assert r.status_code == 200
     data = r.json()
-    assert isinstance(data, list) and len(data) == 5
+    assert isinstance(data, list) and len(data) >= 5
     slugs = {c["slug"] for c in data}
     assert {"business", "self-growth", "literature", "spirituality", "bengali-reading"} <= slugs
 
