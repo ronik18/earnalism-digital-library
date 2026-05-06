@@ -21,8 +21,8 @@ import requests
 BASE_URL = os.environ.get("REACT_APP_BACKEND_URL", "https://earnalism-preview.preview.emergentagent.com").rstrip("/")
 API = f"{BASE_URL}/api"
 
-ADMIN_EMAIL = "admin@theearnalism.com"
-ADMIN_PASSWORD = "Earnalism@2026"
+ADMIN_EMAIL = os.environ.get("TEST_ADMIN_EMAIL", "admin@theearnalism.com")
+ADMIN_PASSWORD = os.environ.get("TEST_ADMIN_PASSWORD", "Earnalism@2026")
 
 
 # ---------- shared fixtures ----------
