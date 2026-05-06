@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { api, userApi, TOKEN_KEY, USER_TOKEN_KEY } from "../lib/api";
 
 const AuthContext = createContext(null);
@@ -23,31 +23,36 @@ export function AuthProvider({ children }) {
   }, []);
 
   // ---- Admin ----
-  const adminLogin = async (email, password) => {
+  const adminLogin = useCallback(async (email, password) => {
     const { data } = await api.post("/auth/login", { email, password });
     localStorage.setItem(TOKEN_KEY, data.token);
     setAdmin({ email: data.email, role: data.role });
-  };
-  const adminLogout = () => { localStorage.removeItem(TOKEN_KEY); setAdmin(false); };
+  }, []);
+  const adminLogout = useCallback(() => {
+    localStorage.removeItem(TOKEN_KEY);
+    setAdmin(false);
+  }, []);
 
   // ---- Reader user ----
-  const userSignup = async (name, email, password) => {
+  const userSignup = useCallback(async (name, email, password) => {
     const { data } = await userApi.post("/users/signup", { name, email, password });
     localStorage.setItem(USER_TOKEN_KEY, data.token);
     setUser(data.user);
     return data.user;
-  };
-  const userLogin = async (email, password) => {
+  }, []);
+  const userLogin = useCallback(async (email, password) => {
     const { data } = await userApi.post("/users/login", { email, password });
     localStorage.setItem(USER_TOKEN_KEY, data.token);
     setUser(data.user);
     return data.user;
-  };
-  const userLogout = () => {
-    try { userApi.post("/users/logout").catch(() => {}); } catch { /* ignore */ }
+  }, []);
+  const userLogout = useCallback(() => {
+    // Best-effort server logout; ignore network errors (token is already client-side).
+    try { userApi.post("/users/logout").catch(() => { /* fire-and-forget */ }); }
+    catch { /* userApi unavailable in test envs */ }
     localStorage.removeItem(USER_TOKEN_KEY);
     setUser(false);
-  };
+  }, []);
   const refreshUser = useCallback(async () => {
     try {
       const { data } = await userApi.get("/users/me");
@@ -61,17 +66,18 @@ export function AuthProvider({ children }) {
     setUser((u) => (u && typeof u === "object" ? { ...u, reading_seconds_balance: balance } : u));
   }, []);
 
+  // Memoise the context value so consumers don't re-render on every parent render.
+  const value = useMemo(() => ({
+    admin, user,
+    // backwards-compatible aliases (Admin pages used `login`/`logout`)
+    login: adminLogin, logout: adminLogout,
+    adminLogin, adminLogout,
+    userSignup, userLogin, userLogout,
+    refreshUser, setUserBalance,
+  }), [admin, user, adminLogin, adminLogout, userSignup, userLogin, userLogout, refreshUser, setUserBalance]);
+
   return (
-    <AuthContext.Provider
-      value={{
-        admin, user,
-        // backwards-compatible aliases (Admin pages used `login`/`logout`)
-        login: adminLogin, logout: adminLogout,
-        adminLogin, adminLogout,
-        userSignup, userLogin, userLogout,
-        refreshUser, setUserBalance,
-      }}
-    >
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );

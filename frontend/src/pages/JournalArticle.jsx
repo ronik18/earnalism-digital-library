@@ -88,7 +88,7 @@ export default function JournalArticle() {
       <div className="max-w-2xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
         <div className="font-serif-display text-[1.18rem] sm:text-[1.28rem] leading-[1.85] text-charcoal drop-cap">
           {post.content.split("\n\n").map((para, i) => (
-            <p key={i} className={i === 0 ? "" : "mt-7"}>{para}</p>
+            <p key={`${post.slug}-p-${i}`} className={i === 0 ? "" : "mt-7"}>{para}</p>
           ))}
         </div>
         {post.pull_quote && (

@@ -62,7 +62,7 @@ function SimpleList({ endpoint, cols, title, testid }) {
         <table className="w-full text-sm">
           <thead><tr className="text-left text-xs uppercase tracking-wider text-charcoal-soft border-b border-brand">{cols.map((c) => <th key={c} className="py-3 pr-4">{c.replace(/_/g, ' ')}</th>)}</tr></thead>
           <tbody>{rows.map((r, i) => (
-            <tr key={i} className="border-b border-brand/60">
+            <tr key={r.id || r.email || `row-${i}`} className="border-b border-brand/60">
               {cols.map((c) => <td key={c} className="py-3 pr-4 align-top max-w-xs">{c === "created_at" ? new Date(r[c]).toLocaleString() : (r[c] || "—")}</td>)}
             </tr>
           ))}</tbody>
