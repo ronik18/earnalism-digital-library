@@ -1380,7 +1380,10 @@ async def payments_create_topup(payload: TopUpCreateIn, user=Depends(require_use
         name="The Earnalism Digital Library",
         description=f'{pack["label"]} · {pack["minutes"]} minutes',
         pack=PackOut(**pack),
-        prefill={"name": user.get("name", ""), "email": user.get("email", "")},
+        prefill={
+            "name": user.get("name", ""),
+            "email": user.get("email", ""),
+        },
     )
 
 
