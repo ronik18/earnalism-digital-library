@@ -62,6 +62,12 @@ Premium, fully responsive online bookstore + publishing brand pivoted to a **Dig
 - **Tests**: 19 new payments tests in `/app/backend/tests/test_payments_razorpay.py`. **76/76 backend + all 12 frontend scenarios green** (iteration_5.json).
 - Razorpay env vars added (currently empty placeholders): `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET`, `RAZORPAY_MODE=test`.
 
+### Deployment readiness (2026-05-07) 🚀
+- New endpoint `GET /api/health` returns `{ok, service, mode, razorpay_configured, time}` for load-balancer healthchecks.
+- `backend/.env.example` and `frontend/.env.example` document every required env var for any deployment target.
+- Re-verified end-to-end: 76/76 backend tests, frontend `yarn build` clean (132.78 kB gz), all 12 SPA routes + 7 API routes return 200, chapter gating + Razorpay simulator + idempotency holds.
+- Target deployment platform: **Emergent native deploy**, with Hostinger managing DNS only.
+
 ## Prioritized Backlog
 
 ### P1 — Phase 4 (next)

@@ -661,6 +661,23 @@ async def change_password(payload: ChangePasswordIn, user=Depends(require_admin)
 
 
 # ---------- Public: Categories ----------
+@api.get("/health")
+async def health_check():
+    """Liveness + DB ping for load balancers and Docker healthchecks."""
+    db_ok = True
+    try:
+        await db.command("ping")
+    except Exception:
+        db_ok = False
+    return {
+        "ok": db_ok,
+        "service": "the-earnalism-api",
+        "mode": RAZORPAY_MODE,
+        "razorpay_configured": razorpay_keys_configured(),
+        "time": now_iso(),
+    }
+
+
 @api.get("/categories", response_model=List[Category])
 async def list_categories():
     docs = await db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200)
