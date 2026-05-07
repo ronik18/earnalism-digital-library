@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, Instagram, Facebook, Youtube, Linkedin, Twitter } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
 import { useAuth } from "../context/AuthContext";
+import BrandMark from "./BrandMark";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -34,9 +35,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 glass-header" data-testid="site-header">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-baseline gap-2 sm:gap-3 min-w-0" data-testid="brand-logo">
-          <span className="font-serif-light text-[1.35rem] sm:text-[1.65rem] tracking-tight text-burgundy leading-none truncate">The Earnalism</span>
-          <span className="hidden md:inline italic-accent text-[0.8rem] text-gold-deep leading-none whitespace-nowrap">Digital Library</span>
+        <Link to="/" className="flex items-baseline gap-2 sm:gap-3 min-w-0" data-testid="brand-logo" aria-label="The Earnalism Digital Library — Home">
+          <BrandMark variant="header" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7 xl:gap-9">

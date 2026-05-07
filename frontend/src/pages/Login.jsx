@@ -5,6 +5,7 @@ import { formatError } from "../lib/api";
 import { toast } from "sonner";
 import { Mail, Lock } from "lucide-react";
 import useSEO from "../hooks/useSEO";
+import BrandMark from "../components/BrandMark";
 
 export default function Login() {
   useSEO({
@@ -37,6 +38,7 @@ export default function Login() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-5 py-16" data-testid="user-login-page">
       <div className="card-elegant p-8 sm:p-12 w-full max-w-md">
+        <Link to="/" className="block mb-6 leading-none" aria-label="The Earnalism Digital Library — Home"><BrandMark variant="auth" /></Link>
         <div className="italic-eyebrow mb-3">A quiet reading room</div>
         <h1 className="font-serif-light text-3xl sm:text-[2.4rem] text-burgundy leading-tight">Sign in to your <span className="italic-accent">library</span>.</h1>
         <div className="gold-rule-thin mt-5" />

@@ -334,6 +334,10 @@ class SocialIn(BaseModel):
     linkedin: str = ""
     twitter: str = ""
 
+class BrandIn(BaseModel):
+    logo_url: str = ""
+    og_image_url: str = ""
+
 class FeaturedIn(BaseModel):
     book_slug: str
 
@@ -597,6 +601,13 @@ async def lifespan(_app: FastAPI):
         upsert=True,
     )
 
+    # brand settings (logo + OG image; seeded empty so the public endpoint always works)
+    await db.settings.update_one(
+        {"key": "brand"},
+        {"$setOnInsert": {"key": "brand", "logo_url": "", "og_image_url": ""}},
+        upsert=True,
+    )
+
     # backfill contact.status for older entries that didn't have the field
     await db.contacts.update_many({"status": {"$exists": False}}, {"$set": {"status": "new"}})
 
@@ -778,6 +789,18 @@ async def get_social():
     }
 
 
+@api.get("/settings/brand")
+async def get_brand():
+    """Brand identity: logo URL + social-share OG image. Both optional.
+    Empty strings are returned if not configured so the frontend can fall back
+    to the existing premium text logo and hero image."""
+    doc = await db.settings.find_one({"key": "brand"}, {"_id": 0}) or {}
+    return {
+        "logo_url": doc.get("logo_url", ""),
+        "og_image_url": doc.get("og_image_url", ""),
+    }
+
+
 # ---------- Admin: Books ----------
 @api.post("/admin/books", response_model=Book)
 async def admin_create_book(payload: BookIn, _=Depends(require_admin)):
@@ -945,6 +968,18 @@ async def admin_set_social(payload: SocialIn, _=Depends(require_admin)):
     await db.settings.update_one(
         {"key": "social"},
         {"$set": {"key": "social", **data}},
+        upsert=True,
+    )
+    return {"ok": True, **data}
+
+
+# ---------- Admin: Settings (brand identity) ----------
+@api.put("/admin/settings/brand")
+async def admin_set_brand(payload: BrandIn, _=Depends(require_admin)):
+    data = payload.model_dump()
+    await db.settings.update_one(
+        {"key": "brand"},
+        {"$set": {"key": "brand", **data}},
         upsert=True,
     )
     return {"ok": True, **data}

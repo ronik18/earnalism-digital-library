@@ -5,6 +5,7 @@ import { api, formatError, formatMinutes } from "../lib/api";
 import { toast } from "sonner";
 import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail, Clock, Ban, Check } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
+import BrandMark from "../components/BrandMark";
 
 const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "settings", "account"];
 
@@ -20,8 +21,8 @@ export default function Admin() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-10">
         <div className="flex items-center justify-between flex-wrap gap-4 mb-8">
           <div>
+            <div className="mb-2 leading-none"><BrandMark variant="compact" /></div>
             <div className="overline">Admin Dashboard</div>
-            <h1 className="font-serif-display text-3xl sm:text-4xl text-burgundy">The Earnalism</h1>
             <p className="text-sm text-charcoal-soft mt-1">{admin.email}</p>
           </div>
           <div className="flex items-center gap-3">
@@ -359,11 +360,14 @@ const SOCIAL_FIELDS = [
 ];
 
 function SettingsTab() {
-  const { social, refresh } = useSettings();
+  const { social, brand, refresh } = useSettings();
   const [form, setForm] = useState(social);
+  const [brandForm, setBrandForm] = useState(brand);
   const [busy, setBusy] = useState(false);
+  const [busyBrand, setBusyBrand] = useState(false);
 
   useEffect(() => { setForm(social); }, [social]);
+  useEffect(() => { setBrandForm(brand); }, [brand]);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -377,28 +381,81 @@ function SettingsTab() {
     } finally { setBusy(false); }
   };
 
+  const submitBrand = async (e) => {
+    e.preventDefault();
+    setBusyBrand(true);
+    try {
+      await api.put("/admin/settings/brand", brandForm);
+      await refresh();
+      toast.success("Brand identity updated.");
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally { setBusyBrand(false); }
+  };
+
   return (
-    <div className="card-elegant p-6 sm:p-10 max-w-2xl" data-testid="settings-tab">
-      <div className="flex items-center gap-2 mb-5">
-        <Share2 className="text-gold" size={18} />
-        <h2 className="font-serif-display text-2xl text-burgundy">Social links</h2>
-      </div>
-      <p className="text-sm text-charcoal-soft mb-6">Paste full profile URLs. Empty fields are hidden from the site.</p>
-      <form onSubmit={submit} className="space-y-5">
-        {SOCIAL_FIELDS.map((f) => (
-          <Field key={f.key} label={f.label} wide>
+    <div className="space-y-8" data-testid="settings-tab">
+      <div className="card-elegant p-6 sm:p-10 max-w-2xl" data-testid="settings-brand">
+        <div className="flex items-center gap-2 mb-5">
+          <BrandMark variant="compact" />
+          <h2 className="font-serif-display text-2xl text-burgundy ml-2">Brand identity</h2>
+        </div>
+        <p className="text-sm text-charcoal-soft mb-6">
+          Paste a hosted image URL for your logo and your social-share preview image.
+          Leave blank to keep the premium serif text mark and default hero image.
+        </p>
+        <form onSubmit={submitBrand} className="space-y-5">
+          <Field label="Logo URL" wide>
             <input
               type="url"
               className="input-elegant"
-              value={form[f.key] || ""}
-              onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
-              placeholder={f.placeholder}
-              data-testid={`social-${f.key}`}
+              value={brandForm.logo_url || ""}
+              onChange={(e) => setBrandForm({ ...brandForm, logo_url: e.target.value })}
+              placeholder="https://your-cdn.com/earnalism-logo.svg"
+              data-testid="brand-logo-url"
             />
           </Field>
-        ))}
-        <button disabled={busy} className="btn-primary disabled:opacity-60" data-testid="save-socials">{busy ? "Saving…" : "Save links"}</button>
-      </form>
+          {brandForm.logo_url && (
+            <div className="border border-brand-soft rounded-sm p-4 bg-ivory/60 inline-flex">
+              <img src={brandForm.logo_url} alt="Logo preview" className="h-10 w-auto max-w-[240px] object-contain" data-testid="brand-logo-preview" onError={(e) => { e.currentTarget.style.display = "none"; }} />
+            </div>
+          )}
+          <Field label="Social-share image URL (Open Graph / Twitter Card)" wide>
+            <input
+              type="url"
+              className="input-elegant"
+              value={brandForm.og_image_url || ""}
+              onChange={(e) => setBrandForm({ ...brandForm, og_image_url: e.target.value })}
+              placeholder="https://your-cdn.com/earnalism-og.png (1200×630 recommended)"
+              data-testid="brand-og-url"
+            />
+          </Field>
+          <button disabled={busyBrand} className="btn-primary disabled:opacity-60" data-testid="save-brand">{busyBrand ? "Saving…" : "Save brand"}</button>
+        </form>
+      </div>
+
+      <div className="card-elegant p-6 sm:p-10 max-w-2xl">
+        <div className="flex items-center gap-2 mb-5">
+          <Share2 className="text-gold" size={18} />
+          <h2 className="font-serif-display text-2xl text-burgundy">Social links</h2>
+        </div>
+        <p className="text-sm text-charcoal-soft mb-6">Paste full profile URLs. Empty fields are hidden from the site.</p>
+        <form onSubmit={submit} className="space-y-5">
+          {SOCIAL_FIELDS.map((f) => (
+            <Field key={f.key} label={f.label} wide>
+              <input
+                type="url"
+                className="input-elegant"
+                value={form[f.key] || ""}
+                onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
+                placeholder={f.placeholder}
+                data-testid={`social-${f.key}`}
+              />
+            </Field>
+          ))}
+          <button disabled={busy} className="btn-primary disabled:opacity-60" data-testid="save-socials">{busy ? "Saving…" : "Save links"}</button>
+        </form>
+      </div>
     </div>
   );
 }

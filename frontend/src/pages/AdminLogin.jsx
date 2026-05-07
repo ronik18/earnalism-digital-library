@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { formatError } from "../lib/api";
 import { toast } from "sonner";
 import useSEO from "../hooks/useSEO";
+import BrandMark from "../components/BrandMark";
 
 export default function AdminLogin() {
   useSEO({
@@ -33,6 +34,7 @@ export default function AdminLogin() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-5 py-16" data-testid="admin-login-page">
       <div className="card-elegant p-8 sm:p-12 w-full max-w-md">
+        <Link to="/" className="block mb-6 leading-none" aria-label="The Earnalism Digital Library — Home"><BrandMark variant="auth" /></Link>
         <div className="overline mb-3">The Earnalism</div>
         <h1 className="font-serif-display text-3xl text-burgundy">Admin sign in</h1>
         <p className="text-charcoal-soft mt-2 text-sm">Manage books, journal entries, and reader inquiries.</p>

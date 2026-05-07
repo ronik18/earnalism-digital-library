@@ -376,6 +376,13 @@ export default function Reader() {
             </button>
           </nav>
         )}
+
+        {/* Subtle copyright / licensing notice — visible but unobtrusive */}
+        {!accessLocked && (
+          <p className="mt-12 text-[0.7rem] leading-relaxed opacity-40 italic font-serif-display text-center" data-testid="reader-copyright-notice">
+            This reader copy is licensed for personal reading access only and is watermarked to your account.
+          </p>
+        )}
       </main>
 
       {/* Locked / Depleted overlay */}
