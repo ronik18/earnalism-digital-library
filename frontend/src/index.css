@@ -199,7 +199,10 @@ body::before {
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(44, 44, 44, .2);
-  padding: 0.85rem 0;
+  /* Use longhand so Tailwind's `pl-9` / `pr-4` utility classes can override
+     left/right padding without being beaten by `padding` shorthand. */
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
   font-family: 'Outfit', sans-serif;
   font-size: 0.95rem;
   color: var(--brand-charcoal);

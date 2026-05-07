@@ -70,18 +70,36 @@ export default function Pricing() {
           notes: { intent_id: data.intent_id, pack_id: pack.id },
           theme: { color: "#5C1A1B" },
           handler: async (resp) => {
+            // Razorpay's success handler. The modal has already closed and the
+            // payment is captured at Razorpay. We try to verify server-side so
+            // the wallet credit is immediate; if verify fails for any reason
+            // (transient network blip, token expired, etc.) the webhook is the
+            // safety net — and we still take the user to /account so they can
+            // see their up-to-date balance.
             try {
-              const verify = await userApi.post("/payments/verify", {
+              await userApi.post("/payments/verify", {
                 razorpay_order_id: resp.razorpay_order_id,
                 razorpay_payment_id: resp.razorpay_payment_id,
                 razorpay_signature: resp.razorpay_signature,
               });
-              await refreshUser();
-              toast.success(`+${pack.minutes} minutes added.`);
-              nav("/account");
-              return verify;
+              const fresh = await refreshUser();
+              const credited = Number(fresh?.reading_seconds_balance || 0) > 0;
+              toast.success(credited ? `+${pack.minutes} minutes added.` : `Payment received. Credit will appear shortly.`);
             } catch (err) {
-              toast.error(formatError(err.response?.data?.detail) || "Verification failed");
+              // Verify call itself failed. Don't leave the user stuck on
+              // /pricing — refresh wallet (webhook may already have credited)
+              // and route to /account where they can confirm their balance.
+              // eslint-disable-next-line no-console
+              console.warn("Razorpay verify failed; falling back to /account", err);
+              const fresh = await refreshUser().catch(() => null);
+              const credited = Number(fresh?.reading_seconds_balance || 0) > 0;
+              if (credited) {
+                toast.success(`+${pack.minutes} minutes added.`);
+              } else {
+                toast.message("Payment received. Your reading time will appear within a minute.");
+              }
+            } finally {
+              nav("/account");
             }
           },
           modal: {
