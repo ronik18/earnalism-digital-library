@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import "@/index.css";
 import { AuthProvider } from "./context/AuthContext";
 import { SettingsProvider } from "./context/SettingsContext";
+
+const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Library from "./pages/Library";
@@ -26,7 +29,7 @@ function ScrollToTop() {
 }
 
 export default function App() {
-  return (
+  const tree = (
     <AuthProvider>
       <SettingsProvider>
         <BrowserRouter>
@@ -60,6 +63,9 @@ export default function App() {
       </SettingsProvider>
     </AuthProvider>
   );
+  return GOOGLE_CLIENT_ID
+    ? <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>{tree}</GoogleOAuthProvider>
+    : tree;
 }
 
 function LegacyShopRedirect() {

@@ -16,7 +16,7 @@ import jwt
 from datetime import datetime, timezone, timedelta
 from typing import List, Optional
 
-from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie
+from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie, UploadFile, File
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
@@ -370,6 +370,16 @@ class UserOut(BaseModel):
 class UserAuthOut(BaseModel):
     token: str
     user: UserOut
+
+class GoogleAuthIn(BaseModel):
+    credential: str
+
+class OTPRequestIn(BaseModel):
+    mobile: str
+
+class OTPVerifyIn(BaseModel):
+    mobile: str
+    otp: str
 
 class WalletAdjustIn(BaseModel):
     minutes: int  # may be negative; converted to seconds server-side
@@ -882,6 +892,116 @@ async def admin_reorder_chapters(slug: str, payload: ChapterReorderIn, _=Depends
     return await _load_book_or_404(slug)
 
 
+# ---------- Admin: Cloudinary uploads ----------
+# Cloudinary setup is lazy — failed imports are surfaced at request time
+# rather than blocking app boot when the optional deps aren't installed yet.
+_CLOUDINARY_INITIALIZED = False
+
+def _ensure_cloudinary():
+    global _CLOUDINARY_INITIALIZED
+    if _CLOUDINARY_INITIALIZED:
+        return
+    try:
+        from config.cloudinary import init_cloudinary  # type: ignore
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
+    init_cloudinary()
+    _CLOUDINARY_INITIALIZED = True
+
+
+_ALLOWED_COVER_TYPES = {"image/jpeg", "image/png", "image/webp", "image/gif"}
+_ALLOWED_CHAPTER_EXTS = {"docx", "md", "markdown", "html", "txt"}
+
+
+@api.post("/admin/books/{slug}/cover")
+async def admin_upload_cover(slug: str, file: UploadFile = File(...), _=Depends(require_admin)):
+    if file.content_type not in _ALLOWED_COVER_TYPES:
+        raise HTTPException(status_code=400, detail="Unsupported image type")
+    body = await file.read()
+    if len(body) > 10 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="Cover must be under 10MB")
+    book = await _load_book_or_404(slug)
+    _ensure_cloudinary()
+    try:
+        from utils.content_processor import process_book_cover  # type: ignore
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
+    result = process_book_cover(body, book.get("id") or slug)
+    await db.books.update_one(
+        {"slug": slug},
+        {"$set": {
+            "cover_url": result["cover_url"],
+            "cover_image_url": result["cover_url"],
+            "thumbnail_url": result["thumbnail_url"],
+            "blur_placeholder": result["blur_placeholder"],
+            "dominant_color": result["dominant_color"],
+        }},
+    )
+    return {"success": True, **result}
+
+
+@api.post("/admin/books/{slug}/chapters/{chapter_id}/upload")
+async def admin_upload_chapter_file(
+    slug: str,
+    chapter_id: str,
+    file: UploadFile = File(...),
+    _=Depends(require_admin),
+):
+    ext = (file.filename or "").rsplit(".", 1)[-1].lower()
+    if ext not in _ALLOWED_CHAPTER_EXTS:
+        raise HTTPException(status_code=400, detail="Unsupported chapter format")
+    body = await file.read()
+    if len(body) > 50 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="Chapter file must be under 50MB")
+    book = await _load_book_or_404(slug)
+    chapters = book.get("chapters") or []
+    target = next((c for c in chapters if c.get("id") == chapter_id), None)
+    if not target:
+        raise HTTPException(status_code=404, detail="Chapter not found")
+    _ensure_cloudinary()
+    try:
+        from utils.content_processor import process_chapter_content  # type: ignore
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Content pipeline unavailable: {e}")
+    result = process_chapter_content(body, file.filename or "chapter", book.get("id") or slug)
+    new_chapters = []
+    for c in chapters:
+        if c.get("id") == chapter_id:
+            c = dict(c)
+            c["content"] = result["content_html"]
+            c["has_images"] = result["has_images"]
+            c["image_count"] = result["image_count"]
+            c["word_count"] = result["word_count"]
+            c["reading_minutes"] = result["reading_minutes"]
+            c["updated_at"] = now_iso()
+        new_chapters.append(c)
+    await db.books.update_one({"slug": slug}, {"$set": {"chapters": new_chapters}})
+    return {
+        "success": True,
+        "word_count": result["word_count"],
+        "reading_minutes": result["reading_minutes"],
+        "has_images": result["has_images"],
+        "image_count": result["image_count"],
+    }
+
+
+# ---------- Admin: Image upload (generic — for blog editor) ----------
+@api.post("/admin/upload/image")
+async def admin_upload_image(file: UploadFile = File(...), _=Depends(require_admin)):
+    if file.content_type not in _ALLOWED_COVER_TYPES:
+        raise HTTPException(status_code=400, detail="Unsupported image type")
+    body = await file.read()
+    if len(body) > 10 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="Image must be under 10MB")
+    _ensure_cloudinary()
+    try:
+        from config.cloudinary import upload_image  # type: ignore
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
+    result = upload_image(body, folder="earnalism/journal")
+    return {"url": result["url"], "width": result.get("width"), "height": result.get("height")}
+
+
 # ---------- Admin: Categories ----------
 @api.post("/admin/categories", response_model=Category)
 async def admin_create_cat(payload: CategoryIn, _=Depends(require_admin)):
@@ -1041,6 +1161,132 @@ async def user_login(payload: UserLoginIn):
 @api.post("/users/logout")
 async def user_logout(_user=Depends(require_user)):
     return {"ok": True}
+
+
+# ---------- Social auth: Google + Mobile OTP ----------
+GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "").strip()
+MSG91_AUTH_KEY = os.environ.get("MSG91_AUTH_KEY", "").strip()
+MSG91_TEMPLATE_ID = os.environ.get("MSG91_TEMPLATE_ID", "").strip()
+
+
+def _phone_email(mobile: str) -> str:
+    digits = re.sub(r"\D", "", mobile)
+    return f"mobile+{digits}@earnalism.local"
+
+
+@api.post("/auth/google", response_model=UserAuthOut)
+async def auth_google(payload: GoogleAuthIn):
+    if not GOOGLE_CLIENT_ID:
+        raise HTTPException(status_code=503, detail="Google sign-in is not configured")
+    try:
+        from google.oauth2 import id_token  # type: ignore
+        from google.auth.transport import requests as google_requests  # type: ignore
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Google auth unavailable: {e}")
+    try:
+        idinfo = id_token.verify_oauth2_token(payload.credential, google_requests.Request(), GOOGLE_CLIENT_ID)
+    except ValueError:
+        raise HTTPException(status_code=401, detail="Invalid Google token")
+    email = (idinfo.get("email") or "").lower().strip()
+    if not email:
+        raise HTTPException(status_code=401, detail="Google account has no email")
+    name = idinfo.get("name") or email.split("@", 1)[0]
+    picture = idinfo.get("picture") or ""
+
+    user = await db.users.find_one({"email": email}, {"_id": 0})
+    if not user:
+        doc = {
+            "id": str(uuid.uuid4()),
+            "name": name,
+            "email": email,
+            "password_hash": "",
+            "role": "user",
+            "status": "active",
+            "auth_provider": "google",
+            "picture": picture,
+            "reading_seconds_balance": 0,
+            "created_at": now_iso(),
+        }
+        await db.users.insert_one(doc)
+        user = doc
+    elif user.get("status") == "blocked":
+        raise HTTPException(status_code=403, detail="Account is blocked. Please contact support.")
+
+    token = create_user_token(user["id"], user["email"])
+    return UserAuthOut(token=token, user=UserOut(**_user_public(user)))
+
+
+@api.post("/auth/otp/request")
+async def auth_otp_request(payload: OTPRequestIn):
+    mobile = payload.mobile.strip()
+    if not re.match(r"^\+91[6-9]\d{9}$", mobile):
+        raise HTTPException(status_code=400, detail="Invalid mobile number")
+    import random
+    otp = str(random.randint(100000, 999999))
+    expires = datetime.now(timezone.utc) + timedelta(minutes=10)
+    await db.otp_store.update_one(
+        {"mobile": mobile},
+        {"$set": {"otp": otp, "expires": expires, "attempts": 0}},
+        upsert=True,
+    )
+    if MSG91_AUTH_KEY and MSG91_TEMPLATE_ID:
+        try:
+            import httpx  # type: ignore
+            async with httpx.AsyncClient(timeout=10.0) as client:
+                await client.post(
+                    "https://api.msg91.com/api/v5/otp",
+                    params={
+                        "authkey": MSG91_AUTH_KEY,
+                        "mobile": mobile.lstrip("+"),
+                        "template_id": MSG91_TEMPLATE_ID,
+                        "otp": otp,
+                    },
+                )
+        except Exception as e:
+            logger.warning(f"MSG91 send failed: {e}")
+    return {"success": True, "message": "OTP sent"}
+
+
+@api.post("/auth/otp/verify", response_model=UserAuthOut)
+async def auth_otp_verify(payload: OTPVerifyIn):
+    mobile = payload.mobile.strip()
+    record = await db.otp_store.find_one({"mobile": mobile})
+    if not record:
+        raise HTTPException(status_code=400, detail="OTP not requested")
+    expires = record.get("expires")
+    if isinstance(expires, datetime) and expires.tzinfo is None:
+        expires = expires.replace(tzinfo=timezone.utc)
+    if not expires or expires < datetime.now(timezone.utc):
+        raise HTTPException(status_code=400, detail="OTP expired")
+    if int(record.get("attempts", 0)) >= 3:
+        raise HTTPException(status_code=429, detail="Too many attempts")
+    if record.get("otp") != payload.otp.strip():
+        await db.otp_store.update_one({"mobile": mobile}, {"$inc": {"attempts": 1}})
+        raise HTTPException(status_code=400, detail="Incorrect OTP")
+    await db.otp_store.delete_one({"mobile": mobile})
+
+    synthetic_email = _phone_email(mobile)
+    user = await db.users.find_one({"$or": [{"mobile": mobile}, {"email": synthetic_email}]}, {"_id": 0})
+    if not user:
+        doc = {
+            "id": str(uuid.uuid4()),
+            "name": mobile,
+            "email": synthetic_email,
+            "mobile": mobile,
+            "password_hash": "",
+            "role": "user",
+            "status": "active",
+            "auth_provider": "mobile_otp",
+            "reading_seconds_balance": 0,
+            "created_at": now_iso(),
+        }
+        await db.users.insert_one(doc)
+        user = doc
+    elif user.get("status") == "blocked":
+        raise HTTPException(status_code=403, detail="Account is blocked. Please contact support.")
+
+    token = create_user_token(user["id"], user["email"])
+    return UserAuthOut(token=token, user=UserOut(**_user_public(user)))
 
 
 @api.get("/users/me", response_model=UserOut)
@@ -1645,7 +1891,8 @@ app.include_router(api)
 
 # CORS: Bearer-token auth only (no cookies), so credentials=False is correct.
 # A wildcard origin with credentials=True is rejected by browsers.
-_cors_env = os.environ.get('CORS_ORIGINS', '*')
+# Tighten default: fall back to FRONTEND_URL when CORS_ORIGINS is unset rather than '*'.
+_cors_env = os.environ.get('CORS_ORIGINS') or os.environ.get('FRONTEND_URL') or 'http://localhost:3000'
 _origins = [o.strip() for o in _cors_env.split(',') if o.strip()]
 _allow_credentials = not (len(_origins) == 1 and _origins[0] == '*')
 app.add_middleware(
