@@ -585,7 +585,8 @@ function ChaptersManager({ slug }) {
       setBook(data);
     } catch (e) { toast.error(formatError(e.response?.data?.detail)); }
   };
-  useEffect(() => { load(); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [slug]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { load(); }, [slug]);
 
   const chapters = (book?.chapters || []).slice().sort((a, b) => (a.order || 0) - (b.order || 0));
 

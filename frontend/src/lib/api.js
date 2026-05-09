@@ -1,7 +1,10 @@
 import axios from "axios";
 
-export const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-export const API = `${BACKEND_URL}/api`;
+export const BACKEND_URL =
+  process.env.REACT_APP_BACKEND_URL ||
+  process.env.REACT_APP_API_URL ||
+  "http://localhost:8000";
+export const API = `${BACKEND_URL.replace(/\/$/, "")}/api`;
 
 export const TOKEN_KEY = "earnalism_admin_token";
 export const USER_TOKEN_KEY = "earnalism_user_token";

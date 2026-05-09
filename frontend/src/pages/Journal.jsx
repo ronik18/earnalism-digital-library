@@ -58,7 +58,7 @@ export default function Journal() {
         {feature && (
           <Link to={`/journal/${feature.slug}`} className="grid grid-cols-1 lg:grid-cols-12 gap-10 group" data-testid="journal-feature">
             <div className="lg:col-span-7 aspect-[16/10] lg:aspect-auto lg:min-h-[460px] overflow-hidden rounded-xl border border-brand-soft">
-              {feature.cover_image_url && <img src={feature.cover_image_url} alt={feature.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.03]" />}
+              {feature.cover_image_url && <img src={feature.cover_image_url} alt={feature.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]" />}
             </div>
             <div className="lg:col-span-5 flex flex-col justify-center">
               <div className="overline mb-4">Featured · {feature.category}</div>
@@ -76,7 +76,7 @@ export default function Journal() {
             {rest.map((p) => (
               <Link key={p.slug} to={`/journal/${p.slug}`} className="group flex flex-col gap-5" data-testid={`journal-card-${p.slug}`}>
                 <div className="aspect-[4/3] overflow-hidden rounded-xl border border-brand-soft">
-                  {p.cover_image_url && <img src={p.cover_image_url} alt={p.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]" />}
+                  {p.cover_image_url && <img src={p.cover_image_url} alt={p.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]" />}
                 </div>
                 <div>
                   <div className="overline mb-3">{p.category}</div>

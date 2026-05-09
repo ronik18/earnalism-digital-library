@@ -119,7 +119,7 @@ function SingleBookSpotlight({ book }) {
       <Link to={`/book/${book.slug}`} className="lg:col-span-5 group" data-testid={`book-card-${book.slug}`}>
         <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft shadow-[0_40px_80px_-40px_rgba(74,28,39,0.4)]">
           {book.cover_image_url ? (
-            <img src={book.cover_image_url} alt={book.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.03]" />
+            <img src={book.cover_image_url} alt={book.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]" />
           ) : (
             <div className="w-full h-full bg-beige-deep flex items-center justify-center font-serif-light text-7xl text-burgundy">E</div>
           )}
