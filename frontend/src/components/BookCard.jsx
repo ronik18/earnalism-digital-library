@@ -10,7 +10,7 @@ export default function BookCard({ book }) {
             src={book.cover_image_url}
             alt={book.title}
             loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
+            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center font-serif-light text-burgundy text-6xl">E</div>

@@ -13,7 +13,7 @@ const FONT_SIZES = [
   {label:'M',size:'19px'},{label:'L',size:'21px'}
 ];
 const LOW_BALANCE_THRESHOLD = 300;
-const API = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+const API = process.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
 function wrapWordsInSpans(html) {
   if (typeof document === 'undefined') return { html: html || '', totalWords: 0 };
@@ -145,6 +145,7 @@ export default function Reader() {
     };
   }, []);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setLoading(true);
     const token = localStorage.getItem('token');
@@ -172,6 +173,7 @@ export default function Reader() {
       setError(err.message);
       setLoading(false);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     return () => {
       if (sessionId) {
         const token = localStorage.getItem('token');
@@ -179,6 +181,7 @@ export default function Reader() {
         axios.post(`${API}/reading/session/end`, { session_id: sessionId }, { headers });
       }
       if (pulseIntervalRef.current) clearInterval(pulseIntervalRef.current);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       const synth = synthRef.current;
       if (synth) synth.cancel();
       setTtsActive(false);
@@ -187,33 +190,6 @@ export default function Reader() {
       wordsRef.current.forEach(w => w.classList.remove('active'));
     };
   }, [bookId, chapterId, sessionId]);
-
-  useEffect(() => {
-    if (chapter && processedHtml && sessionId) {
-      clearInterval(pulseIntervalRef.current);
-      pulseIntervalRef.current = setInterval(sendPulse, 30000);
-    }
-    return () => clearInterval(pulseIntervalRef.current);
-  }, [chapter, processedHtml, sessionId, sendPulse]);
-
-  useEffect(() => {
-    wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
-  }, [processedHtml]);
-
-  useEffect(() => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    const onScroll = () => {
-      const max = el.scrollHeight - el.clientHeight;
-      const pct = max > 0 ? (el.scrollTop / max) * 100 : 0;
-      setReadProgress(Math.min(100, Math.round(pct)));
-      if (el.scrollTop > lastScrollY.current + 10) setToolbarVisible(false);
-      else if (el.scrollTop < lastScrollY.current - 5) setToolbarVisible(true);
-      lastScrollY.current = el.scrollTop;
-    };
-    el.addEventListener('scroll', onScroll, { passive: true });
-    return () => el.removeEventListener('scroll', onScroll);
-  }, [loading]);
 
   const sendPulse = useCallback(async () => {
     const token = localStorage.getItem('token');
@@ -243,6 +219,33 @@ export default function Reader() {
     } catch (err) {
     }
   }, [sessionId]);
+
+  useEffect(() => {
+    if (chapter && processedHtml && sessionId) {
+      clearInterval(pulseIntervalRef.current);
+      pulseIntervalRef.current = setInterval(sendPulse, 30000);
+    }
+    return () => clearInterval(pulseIntervalRef.current);
+  }, [chapter, processedHtml, sessionId, sendPulse]);
+
+  useEffect(() => {
+    wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
+  }, [processedHtml]);
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const max = el.scrollHeight - el.clientHeight;
+      const pct = max > 0 ? (el.scrollTop / max) * 100 : 0;
+      setReadProgress(Math.min(100, Math.round(pct)));
+      if (el.scrollTop > lastScrollY.current + 10) setToolbarVisible(false);
+      else if (el.scrollTop < lastScrollY.current - 5) setToolbarVisible(true);
+      lastScrollY.current = el.scrollTop;
+    };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, [loading]);
 
   const handleTopUp = async (pack) => {
     setTopUpProcessing(true);
