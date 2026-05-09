@@ -1,8 +1,227 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ========================================================================
+   Luxury reader tokens — additive, do not override the existing brand vars.
+   ======================================================================== */
+:root {
+  --beige-canvas: #FAF7F0;
+  --beige-surface: #F5F0E8;
+  --burgundy-deep: #6B1020;
+  --burgundy-mid: #8B1A2A;
+  --burgundy-light: #C0616F;
+  --gold-accent: #D4A843;
+  --gold-soft: #E8C97A;
+  --text-primary: #1C0A0E;
+  --text-secondary: #7A5C62;
+  --text-muted: #A88A8F;
+  --border-soft: #E8DDD8;
+}
+
+.reader-canvas {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.75;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+  max-width: 58ch;
+  margin: 0 auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (max-width: 480px) {
+  .reader-canvas {
+    text-align: left;
+    hyphens: none;
+  }
+}
+
+.reader-content p { margin-bottom: 1.6em; }
+.reader-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 4vw, 26px);
+  font-weight: 500;
+  color: var(--burgundy-deep);
+  margin: 2em 0 0.8em;
+  line-height: 1.3;
+}
+.reader-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(17px, 3vw, 21px);
+  font-weight: 500;
+  margin: 1.6em 0 0.6em;
+}
+.reader-content blockquote {
+  border-left: 3px solid var(--burgundy-mid);
+  padding: 0.5em 0 0.5em 1.5em;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+.reader-content ul, .reader-content ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.4em;
+}
+.reader-content li { margin-bottom: 0.5em; }
+.reader-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  overflow-x: auto;
+  display: block;
+  margin: 2em 0;
+}
+.reader-content th {
+  background: var(--burgundy-deep);
+  color: #FAF7F0;
+  padding: 10px 14px;
+  text-align: left;
+}
+.reader-content td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.reader-content img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+.tts-word {
+  display: inline;
+  border-radius: 3px;
+  transition: background-color 150ms ease, color 150ms ease;
+  padding: 0 1px;
+}
+.tts-word.active {
+  background-color: rgba(212,168,67,0.35);
+  color: #6B1020;
+  border-radius: 3px;
+  animation: highlightPulse 0.4s ease;
+}
+@keyframes highlightPulse {
+  0% { background-color: rgba(212,168,67,0.6); }
+  100% { background-color: rgba(212,168,67,0.25); }
+}
+
+.drop-cap::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.5em;
+  font-weight: 600;
+  line-height: 0.8;
+  float: left;
+  margin: 0.05em 0.1em 0 0;
+  color: #6B1020;
+}
+
+.reader-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2.5em auto;
+  border-radius: 8px;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+.reader-img--photo {
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.18);
+  background: #1A1010;
+}
+.reader-img--diagram {
+  background: #FFFFFF;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 2px 12px rgba(107,16,32,0.06);
+}
+.reader-img--illustration {
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 2px 8px rgba(107,16,32,0.08), 0 0 0 4px var(--beige-surface);
+}
+.reader-img--error { display: none; }
+.reader-img[data-loading="true"] {
+  filter: blur(8px);
+  transform: scale(1.02);
+}
+.reader-img[data-loading="false"] {
+  filter: blur(0);
+  transform: scale(1);
+  transition: filter 400ms ease, transform 400ms ease;
+}
+
+.reader-scroll::-webkit-scrollbar { width: 4px; }
+.reader-scroll::-webkit-scrollbar-track { background: transparent; }
+.reader-scroll::-webkit-scrollbar-thumb {
+  background: var(--burgundy-light);
+  border-radius: 4px;
+}
+
+::selection {
+  background: rgba(212,168,67,0.3);
+  color: var(--burgundy-deep);
+}
+
+.watermark {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+.watermark-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-size: 11px;
+  font-family: Inter, sans-serif;
+  color: var(--burgundy-deep);
+  opacity: 0.04;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+.page-enter {
+  animation: pageTurn 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes pageTurn {
+  0% { opacity: 0; transform: translateX(16px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes walletPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+.wallet-low { animation: walletPulse 1s ease-in-out infinite; }
+
+@media print {
+  body * { display: none !important; }
+  body::after {
+    content: "This content is protected. © Earnalism — Unauthorized reproduction is prohibited.";
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 40vh;
+    font-family: Georgia, serif;
+    color: #6B1020;
+  }
+}
+/* ======================================================================== */
 
 :root {
   --brand-burgundy: #4A1C27;

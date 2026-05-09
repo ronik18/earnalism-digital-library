@@ -122,3 +122,11 @@ watchfiles==1.1.1
 websockets==16.0
 yarl==1.23.0
 zipp==3.23.0
+
+# luxury-ux-upgrade additions
+mammoth==1.7.1
+markdown==3.6
+bleach==6.1.0
+cloudinary==1.40.0
+aiofiles==23.2.1
+google-auth-oauthlib==1.2.0
