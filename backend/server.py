@@ -15,24 +15,41 @@ import bcrypt
 import jwt
 from datetime import datetime, timezone, timedelta
 from typing import List, Optional
+from urllib.parse import urlparse
 
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie, UploadFile, File
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.cors import CORSMiddleware
+from starlette.middleware.gzip import GZipMiddleware
 from contextlib import asynccontextmanager
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
 
 
-# ---------- DB ----------
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+# ---------- Environment / DB ----------
+ENVIRONMENT = os.environ.get("ENVIRONMENT", "production").strip().lower()
 
-JWT_SECRET = os.environ['JWT_SECRET']
+mongo_url = os.environ.get("MONGODB_URL") or os.environ.get("MONGO_URL")
+if not mongo_url:
+    raise RuntimeError("MONGODB_URL is required")
+
+def _database_name_from_mongo_url(url: str) -> str:
+    parsed = urlparse(url)
+    db_name = parsed.path.lstrip("/").split("/", 1)[0]
+    return db_name or "earnalism"
+
+client = AsyncIOMotorClient(mongo_url)
+db = client[os.environ.get("DB_NAME") or _database_name_from_mongo_url(mongo_url)]
+
+JWT_SECRET = os.environ.get("JWT_SECRET")
+if not JWT_SECRET:
+    raise RuntimeError("JWT_SECRET is required")
 JWT_ALG = "HS256"
-ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL', 'admin@theearnalism.com')
-ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'admin123')
+ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@theearnalism.com").strip()
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "").strip()
+SEED_TEST_READER = os.environ.get("SEED_TEST_READER", "false").strip().lower() == "true"
+SEED_TEST_READER_EMAIL = os.environ.get("SEED_TEST_READER_EMAIL", "reader@earnalism.com").strip()
+SEED_TEST_READER_PASSWORD = os.environ.get("SEED_TEST_READER_PASSWORD", "").strip()
 
 # Cookie config — httpOnly session cookie. SECURE flag is on by default (HTTPS in prod);
 # can be disabled via env for plain-HTTP local dev only.
@@ -498,23 +515,38 @@ def _strip_paid_chapter_content(book: dict) -> dict:
 
 
 # ---------- App ----------
-@asynccontextmanager
-async def lifespan(_app: FastAPI):
-    # ----- startup -----
-    # indexes
+async def initialize_database_indexes() -> None:
     await db.users.create_index("email", unique=True)
+    await db.users.create_index("id", sparse=True)
+    await db.users.create_index("mobile", sparse=True)
+    await db.users.create_index([("role", 1), ("status", 1), ("created_at", -1)])
+
     await db.books.create_index("slug", unique=True)
+    await db.books.create_index([("is_published", 1), ("created_at", -1)])
+    await db.books.create_index([("category_slug", 1), ("is_published", 1), ("created_at", -1)])
+
     await db.categories.create_index("slug", unique=True)
+    await db.categories.create_index([("order", 1), ("slug", 1)])
+
     await db.blog_posts.create_index("slug", unique=True)
+    await db.blog_posts.create_index([("is_published", 1), ("created_at", -1)])
+
     await db.newsletter.create_index("email", unique=True)
+    await db.newsletter.create_index([("created_at", -1)])
+
+    await db.contacts.create_index([("status", 1), ("created_at", -1)])
+    await db.contacts.create_index([("created_at", -1)])
+
     await db.settings.create_index("key", unique=True)
+
     await db.wallet_transactions.create_index([("user_id", 1), ("created_at", -1)])
+
+    await db.reading_sessions.create_index("id", sparse=True)
     await db.reading_sessions.create_index([("user_id", 1), ("started_at", -1)])
+    await db.reading_sessions.create_index([("user_id", 1), ("status", 1), ("started_at", -1)])
     await db.reading_sessions.create_index("status")
-    # Payments / Razorpay
-    # Use partialFilterExpression so the unique constraint only applies to non-null
-    # string ids; otherwise multiple freshly-created intents (with null payment_id)
-    # collide on the null key.
+
+    await db.topup_intents.create_index("id", sparse=True)
     await db.topup_intents.create_index(
         "razorpay_order_id",
         unique=True,
@@ -526,13 +558,23 @@ async def lifespan(_app: FastAPI):
         partialFilterExpression={"razorpay_payment_id": {"$type": "string"}},
     )
     await db.topup_intents.create_index([("user_id", 1), ("created_at", -1)])
+    await db.topup_intents.create_index([("status", 1), ("created_at", -1)])
     await db.topup_intents.create_index("status")
+
     await db.payment_webhook_events.create_index("event_id", unique=True, sparse=True)
     await db.payment_webhook_events.create_index([("created_at", -1)])
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    # ----- startup -----
+    await initialize_database_indexes()
 
     # admin (seed only if absent; do NOT overwrite password so admin can change it via UI)
     existing = await db.users.find_one({"email": ADMIN_EMAIL.lower()})
     if not existing:
+        if not ADMIN_PASSWORD:
+            raise RuntimeError("ADMIN_PASSWORD is required to seed the initial admin user")
         await db.users.insert_one({
             "id": str(uuid.uuid4()),
             "email": ADMIN_EMAIL.lower(),
@@ -543,13 +585,15 @@ async def lifespan(_app: FastAPI):
         })
         logger.info("Seeded admin user")
 
-    # test reader user (idempotent — only inserted if absent)
-    test_user_email = "reader@earnalism.com"
-    if not await db.users.find_one({"email": test_user_email}):
+    # Optional non-production seed reader (idempotent; disabled unless explicitly enabled).
+    test_user_email = SEED_TEST_READER_EMAIL.lower()
+    if SEED_TEST_READER and not await db.users.find_one({"email": test_user_email}):
+        if not SEED_TEST_READER_PASSWORD:
+            raise RuntimeError("SEED_TEST_READER_PASSWORD is required when SEED_TEST_READER=true")
         await db.users.insert_one({
             "id": str(uuid.uuid4()),
             "email": test_user_email,
-            "password_hash": hash_password("Reader@2026"),
+            "password_hash": hash_password(SEED_TEST_READER_PASSWORD),
             "name": "Sample Reader",
             "role": "user",
             "auth_provider": "email",
@@ -703,6 +747,11 @@ async def health_check():
         "razorpay_configured": razorpay_keys_configured(),
         "time": now_iso(),
     }
+
+
+@app.get("/health")
+async def root_health_check():
+    return await health_check()
 
 
 @api.get("/categories", response_model=List[Category])
@@ -1194,6 +1243,7 @@ async def user_logout(_user=Depends(require_user)):
 
 # ---------- Social auth: Google + Mobile OTP ----------
 GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "").strip()
+GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", "").strip()
 MSG91_AUTH_KEY = os.environ.get("MSG91_AUTH_KEY", "").strip()
 MSG91_TEMPLATE_ID = os.environ.get("MSG91_TEMPLATE_ID", "").strip()
 
@@ -2014,6 +2064,7 @@ cors_origins.update(
     if origin.strip()
 )
 
+app.add_middleware(GZipMiddleware, minimum_size=1024)
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
