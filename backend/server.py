@@ -395,7 +395,9 @@ class WalletTransactionOut(BaseModel):
     actor: str = "system"  # "admin" | "system" | "user"
 
 class ReaderSessionStartIn(BaseModel):
-    book_slug: str
+    session_id: Optional[str] = None
+    book_id: Optional[str] = None
+    book_slug: Optional[str] = None
     chapter_id: Optional[str] = None
 
 class ReaderHeartbeatIn(BaseModel):
@@ -634,6 +636,10 @@ async def lifespan(_app: FastAPI):
         {"chapters": {"$exists": False}},
         {"$set": {"chapters": []}},
     )
+    await db.books.update_many(
+        {"is_published": {"$exists": False}},
+        {"$set": {"is_published": True}},
+    )
 
     # one-time migration: replace old "publishing brand" wording in the seeded book's about_author
     await db.books.update_one(
@@ -729,6 +735,30 @@ async def get_book(slug: str):
         raise HTTPException(status_code=404, detail="Book not found")
     # Public detail returns ToC + only the free-preview chapter's body.
     return _strip_paid_chapter_content(doc)
+
+
+@api.get("/books/{slug}/chapters")
+async def get_book_chapters(slug: str):
+    doc = await db.books.find_one({"slug": slug, "is_published": True})
+    if not doc:
+        raise HTTPException(status_code=404, detail="Book not found")
+    chapters = doc.get("chapters") or []
+    if not chapters:
+        return []
+    sorted_ch = sorted(chapters, key=lambda c: c.get("order", 0))
+    return sorted_ch
+
+
+@api.get("/books/{slug}/chapters/{chapter_id}")
+async def get_book_chapter(slug: str, chapter_id: str):
+    doc = await db.books.find_one({"slug": slug, "is_published": True})
+    if not doc:
+        raise HTTPException(status_code=404, detail="Book not found")
+    chapters = doc.get("chapters") or []
+    chapter = next((c for c in chapters if c.get("id") == chapter_id), None)
+    if not chapter:
+        raise HTTPException(status_code=404, detail="Chapter not found")
+    return chapter
 
 
 # ---------- Public: Blog ----------
@@ -1295,6 +1325,13 @@ async def user_me(user=Depends(require_user)):
     return UserOut(**_user_public(fresh or user))
 
 
+@api.get("/users/me/wallet")
+async def user_wallet(user=Depends(require_user)):
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+    wallet_seconds = int(fresh.get("wallet_seconds", fresh.get("reading_seconds_balance", 0)) or 0)
+    return {"wallet_seconds": wallet_seconds}
+
+
 @api.get("/users/me/transactions", response_model=List[WalletTransactionOut])
 async def user_my_transactions(user=Depends(require_user)):
     rows = await db.wallet_transactions.find({"user_id": user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(100)
@@ -1303,11 +1340,15 @@ async def user_my_transactions(user=Depends(require_user)):
 
 # ---------- Reader: Sessions + Heartbeat ----------
 HEARTBEAT_TICK_SECONDS = 30
+LOW_BALANCE_THRESHOLD = 300
 
 
 @api.post("/reader/session/start")
 async def reader_session_start(payload: ReaderSessionStartIn, user=Depends(require_user)):
-    book = await db.books.find_one({"slug": payload.book_slug, "is_published": True}, {"_id": 0})
+    book_slug = payload.book_slug or payload.book_id
+    if not book_slug:
+        raise HTTPException(status_code=400, detail="Book id is required")
+    book = await db.books.find_one({"slug": book_slug, "is_published": True}, {"_id": 0})
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
     fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0})
@@ -1319,7 +1360,7 @@ async def reader_session_start(payload: ReaderSessionStartIn, user=Depends(requi
     await db.reading_sessions.insert_one({
         "id": sid,
         "user_id": user["id"],
-        "book_slug": payload.book_slug,
+        "book_slug": book_slug,
         "chapter_id": payload.chapter_id,
         "started_at": now_iso(),
         "last_heartbeat_at": now_iso(),
@@ -1404,6 +1445,74 @@ async def reader_session_end(payload: ReaderSessionEndIn, user=Depends(require_u
         {"$set": {"status": "ended", "ended_at": now_iso()}},
     )
     return {"ended": res.modified_count}
+
+
+# Aliases for /reading/session/ endpoints (frontend compatibility)
+@api.post("/reading/session/start")
+async def reading_session_start_v2(payload: ReaderSessionStartIn, request: Request, user=Depends(require_user)):
+    session_id = payload.session_id or str(uuid.uuid4())
+    book_id = payload.book_id or payload.book_slug
+    if not book_id:
+        raise HTTPException(status_code=400, detail="Book id is required")
+    now = datetime.utcnow()
+    await db.users.update_one(
+        {"id": user["id"]},
+        {
+            "$set": {
+                "active_reading_session": {
+                    "session_id": session_id,
+                    "book_id": book_id,
+                    "chapter_id": payload.chapter_id,
+                    "started_at": now,
+                    "last_pulse_at": now,
+                    "device": request.headers.get("user-agent", "unknown")[:100],
+                }
+            }
+        },
+    )
+    return {"success": True, "session_id": session_id}
+
+
+@api.post("/reading/session/end")
+async def reading_session_end_v2(payload: ReaderSessionEndIn, user=Depends(require_user)):
+    await db.users.update_one({"id": user["id"]}, {"$unset": {"active_reading_session": ""}})
+    return {"success": True}
+
+
+@api.post("/reading/pulse")
+async def reading_pulse(payload: ReaderSessionEndIn, user=Depends(require_user)):
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+    active = fresh.get("active_reading_session") or {}
+    if active.get("session_id") != payload.session_id:
+        return {"success": False, "status": "session_invalid"}
+
+    wallet = int(fresh.get("wallet_seconds", fresh.get("reading_seconds_balance", 0)) or 0)
+    if wallet <= 0:
+        return {"success": False, "status": "wallet_empty", "wallet_seconds": 0}
+
+    deduct = min(30, wallet)
+    remaining = wallet - deduct
+    status = "low_balance" if remaining <= LOW_BALANCE_THRESHOLD else "ok"
+    now = datetime.utcnow()
+    await db.users.update_one(
+        {"id": user["id"]},
+        {
+            "$set": {
+                "wallet_seconds": remaining,
+                "reading_seconds_balance": remaining,
+                "active_reading_session.last_pulse_at": now,
+            }
+        },
+    )
+    return {"success": True, "status": status, "wallet_seconds": remaining}
+
+
+@api.get("/reading/packs")
+async def reading_packs():
+    return [
+        {"id": p["id"], "minutes": p["minutes"], "price": p["price_inr"], "label": p["label"]}
+        for p in PACKS
+    ]
 
 
 # ---------- Reader: Gated chapter content ----------
@@ -1889,16 +1998,21 @@ async def admin_reconcile_intent(intent_id: str, payload: PaymentReconcileIn, ad
 
 app.include_router(api)
 
-# CORS: Bearer-token auth only (no cookies), so credentials=False is correct.
-# A wildcard origin with credentials=True is rejected by browsers.
-# Tighten default: fall back to FRONTEND_URL when CORS_ORIGINS is unset rather than '*'.
-_cors_env = os.environ.get('CORS_ORIGINS') or os.environ.get('FRONTEND_URL') or 'http://localhost:3000'
-_origins = [o.strip() for o in _cors_env.split(',') if o.strip()]
-_allow_credentials = not (len(_origins) == 1 and _origins[0] == '*')
+cors_origins = {
+    os.getenv("FRONTEND_URL", "http://localhost:3000"),
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+}
+cors_origins.update(
+    origin.strip()
+    for origin in os.getenv("CORS_ORIGINS", "").split(",")
+    if origin.strip()
+)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=_allow_credentials,
-    allow_origins=_origins,
+    allow_credentials=True,
+    allow_origins=sorted(cors_origins),
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -1974,6 +2088,7 @@ SEED_BOOK = {
     "price_ebook": "",
     "buy_url": "",
     "formats": ["Ebook"],
+    "is_published": True,
     "benefits": [
         "A founder's framework for pricing without guilt",
         "Honest unit economics that respect the craft",

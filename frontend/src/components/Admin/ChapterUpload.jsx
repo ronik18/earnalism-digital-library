@@ -55,6 +55,7 @@ export default function ChapterUpload({ bookId, chapterId, onSuccess }) {
     onDrop,
     accept: ACCEPTED,
     maxFiles: 1,
+    maxSize: 50 * 1024 * 1024,
   });
 
   return (

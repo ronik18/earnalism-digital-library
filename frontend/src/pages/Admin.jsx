@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail, Clock, Ban, Check } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
 import BrandMark from "../components/BrandMark";
+import ChapterUpload from "../components/Admin/ChapterUpload";
 
 const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "settings", "account"];
 
@@ -627,8 +628,8 @@ function ChaptersManager({ slug }) {
       <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
         <div>
           <div className="italic-eyebrow">Chapters</div>
-          <h4 className="font-serif-display text-[1.4rem] text-burgundy leading-snug">Manual chapter content</h4>
-          <p className="text-[0.8rem] text-charcoal-soft mt-1">Paste title and body for each chapter. Content entry is manual for Phase 1.</p>
+          <h4 className="font-serif-display text-[1.4rem] text-burgundy leading-snug">Chapter content</h4>
+          <p className="text-[0.8rem] text-charcoal-soft mt-1">Paste content manually, or upload DOCX, Markdown, HTML, or TXT for automatic reader formatting.</p>
         </div>
         <button
           onClick={() => setEditing({ _new: true, title: "", content: "" })}
@@ -662,8 +663,10 @@ function ChaptersManager({ slug }) {
       {editing && (
         <ChapterEditor
           chapter={editing}
+          bookId={slug}
           busy={busy}
           onCancel={() => setEditing(null)}
+          onUploaded={() => { toast.success("Chapter file processed"); setEditing(null); load(); }}
           onSave={(data) => saveChapter(data, editing._new ? null : editing.id)}
         />
       )}
@@ -671,7 +674,7 @@ function ChaptersManager({ slug }) {
   );
 }
 
-function ChapterEditor({ chapter, onCancel, onSave, busy }) {
+function ChapterEditor({ chapter, bookId, onCancel, onSave, onUploaded, busy }) {
   const [title, setTitle] = useState(chapter.title || "");
   const [content, setContent] = useState(chapter.content || "");
   return (
@@ -701,6 +704,12 @@ function ChapterEditor({ chapter, onCancel, onSave, busy }) {
           </Field>
           <p className="text-[0.72rem] text-charcoal-soft mt-2 italic">{content.length.toLocaleString()} characters &middot; approx. {Math.max(1, Math.round(content.split(/\s+/).filter(Boolean).length / 200))} min read</p>
         </div>
+        {!chapter._new && (
+          <div className="mt-6">
+            <div className="overline mb-2">Upload formatted chapter</div>
+            <ChapterUpload bookId={bookId} chapterId={chapter.id} onSuccess={onUploaded} />
+          </div>
+        )}
         <div className="mt-6 flex justify-end gap-3">
           <button onClick={onCancel} className="btn-secondary">Cancel</button>
           <button
@@ -1068,4 +1077,3 @@ function PaymentsAdmin() {
     </div>
   );
 }
-
