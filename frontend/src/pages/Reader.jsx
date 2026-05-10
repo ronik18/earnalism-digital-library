@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Volume2, VolumeX, Bookmark, BookmarkCheck, Settings, List, X, Loader2, Clock, AlertCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Volume2, VolumeX, Bookmark, BookmarkCheck, Settings, List, X, Loader2, Clock, AlertCircle, LogIn, CreditCard } from 'lucide-react';
 import axios from 'axios';
-import { API, USER_TOKEN_KEY } from '../lib/api';
+import { API, TOKEN_KEY, USER_TOKEN_KEY, formatError } from '../lib/api';
 
 const THEMES = {
   beige: { canvas: '#FAF7F0', surface: '#F5F0E8', text: '#1C0A0E', accent: '#6B1020', border: '#E8DDD8', label: 'Beige' },
@@ -19,9 +19,29 @@ const FONT_SIZES = [
 
 const LOW_BALANCE_THRESHOLD = 300;
 
-function getReaderAuthHeaders() {
-  const token = localStorage.getItem(USER_TOKEN_KEY) || localStorage.getItem('token');
+function authHeaders(token) {
   return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+function getUserToken() {
+  return localStorage.getItem(USER_TOKEN_KEY);
+}
+
+function getUserAuthHeaders() {
+  return authHeaders(getUserToken());
+}
+
+function getChapterAuthHeaders() {
+  const token = localStorage.getItem(USER_TOKEN_KEY) || localStorage.getItem(TOKEN_KEY) || localStorage.getItem('token');
+  return authHeaders(token);
+}
+
+function getCurrentReaderPath() {
+  return `${window.location.pathname}${window.location.search}`;
+}
+
+function apiErrorMessage(err, fallback) {
+  return formatError(err.response?.data?.detail) || err.message || fallback;
 }
 
 function wrapWordsInSpans(html) {
@@ -89,8 +109,10 @@ export default function Reader() {
   const [book, setBook] = useState(null);
   const [chapter, setChapter] = useState(null);
   const [chapters, setChapters] = useState([]);
+  const [activeChapterId, setActiveChapterId] = useState(chapterId);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [lockedState, setLockedState] = useState(null);
 
   const [theme, setTheme] = useState('beige');
   const [fontSizeIdx, setFontSizeIdx] = useState(1);
@@ -120,6 +142,7 @@ export default function Reader() {
   const [topUpSuccessMinutes, setTopUpSuccessMinutes] = useState(0);
 
   const [sessionId, setSessionId] = useState(null);
+  const [meteredSessionActive, setMeteredSessionActive] = useState(false);
 
   const contentRef = useRef(null);
   const utteranceRef = useRef(null);
@@ -138,8 +161,8 @@ export default function Reader() {
   }, []);
 
   const sendPulse = useCallback(async () => {
-    if (!sessionId) return;
-    const headers = getReaderAuthHeaders();
+    if (!sessionId || !meteredSessionActive) return;
+    const headers = getUserAuthHeaders();
 
     try {
       const response = await axios.post(`${API}/reading/pulse`, { session_id: sessionId }, { headers });
@@ -169,7 +192,7 @@ export default function Reader() {
     } catch (err) {
       // Reader heartbeats should not interrupt active reading on transient network errors.
     }
-  }, [sessionId]);
+  }, [sessionId, meteredSessionActive]);
 
   useEffect(() => {
     const id = crypto.randomUUID();
@@ -218,30 +241,29 @@ export default function Reader() {
     if (!bookId || !sessionId) return undefined;
 
     let cancelled = false;
-    const headers = getReaderAuthHeaders();
+    let startedSession = false;
+    let endSessionHeaders = {};
 
     async function loadReader() {
       setLoading(true);
       setError(null);
+      setLockedState(null);
+      setMeteredSessionActive(false);
 
       try {
-        const baseRequests = [
-          axios.get(`${API}/books/${bookId}`, { headers }),
-          axios.get(`${API}/books/${bookId}/chapters`, { headers }),
-          axios.get(`${API}/users/me/wallet`, { headers }),
-          axios.get(`${API}/payments/packs`, { headers }),
-        ];
-
-        const [bookRes, chaptersRes, walletRes, packsRes] = await Promise.all(baseRequests);
+        const [bookRes, packsRes] = await Promise.all([
+          axios.get(`${API}/books/${bookId}`),
+          axios.get(`${API}/payments/packs`),
+        ]);
         if (cancelled) return;
 
-        const loadedChapters = chaptersRes.data || [];
+        const loadedChapters = [...(bookRes.data?.chapters || [])].sort((a, b) => (a.order || 0) - (b.order || 0));
         const activeChapterId = chapterId || loadedChapters[0]?.id;
 
         setBook(bookRes.data);
         setChapters(loadedChapters);
-        setWalletSeconds(walletRes.data.wallet_seconds);
         setTopUpPacks(packsRes.data || []);
+        setActiveChapterId(activeChapterId || null);
 
         if (!activeChapterId) {
           setChapter(null);
@@ -251,23 +273,83 @@ export default function Reader() {
           return;
         }
 
-        const chapterRes = await axios.get(`${API}/books/${bookId}/chapters/${activeChapterId}`, { headers });
+        if (getUserToken()) {
+          try {
+            const walletRes = await axios.get(`${API}/users/me/wallet`, { headers: getUserAuthHeaders() });
+            if (!cancelled) setWalletSeconds(walletRes.data.wallet_seconds || 0);
+          } catch (walletErr) {
+            if (walletErr.response?.status === 401) {
+              localStorage.removeItem(USER_TOKEN_KEY);
+            } else if (walletErr.response?.status !== 403) {
+              throw walletErr;
+            }
+            if (!cancelled) setWalletSeconds(0);
+          }
+        } else {
+          setWalletSeconds(0);
+        }
+
+        const chapterRes = await axios.get(
+          `${API}/reader/chapter/${encodeURIComponent(bookId)}/${encodeURIComponent(activeChapterId)}`,
+          { headers: getChapterAuthHeaders() },
+        );
         if (cancelled) return;
 
-        setChapter(chapterRes.data);
-        const wrapped = wrapWordsInSpans(chapterRes.data.content);
-        setProcessedHtml(wrapped.html);
-        setTotalWords(wrapped.totalWords);
+        const gate = chapterRes.data || {};
+        const loadedChapter = gate.chapter || gate;
 
+        setChapter(loadedChapter);
         if (!chapterId) {
           window.history.replaceState(null, '', `${window.location.pathname}?c=${activeChapterId}`);
         }
 
-        await axios.post(`${API}/reading/session/start`, { session_id: sessionId, book_slug: bookId, chapter_id: activeChapterId }, { headers });
+        if (gate.locked) {
+          setProcessedHtml('');
+          setTotalWords(0);
+          setLockedState({
+            reason: gate.reason || 'LOCKED',
+            message: gate.message || 'This chapter is locked.',
+            chapter: loadedChapter,
+          });
+          setLoading(false);
+          return;
+        }
+
+        const wrapped = wrapWordsInSpans(loadedChapter.content);
+        setProcessedHtml(wrapped.html);
+        setTotalWords(wrapped.totalWords);
+        setLockedState(null);
+
+        if (getUserToken() && !gate.is_preview) {
+          endSessionHeaders = getUserAuthHeaders();
+          await axios.post(`${API}/reading/session/start`, { session_id: sessionId, book_slug: bookId, chapter_id: activeChapterId }, { headers: endSessionHeaders });
+          startedSession = true;
+          setMeteredSessionActive(true);
+        }
+
         setLoading(false);
       } catch (err) {
         if (!cancelled) {
-          setError(err.message);
+          const status = err.response?.status;
+          if (status === 401) {
+            localStorage.removeItem(USER_TOKEN_KEY);
+            setLockedState({
+              reason: 'AUTH_REQUIRED',
+              message: 'Sign in to continue reading this chapter.',
+              chapter: null,
+            });
+            setError(null);
+          } else if (status === 402) {
+            setLockedState({
+              reason: 'INSUFFICIENT_READING_TIME',
+              message: 'Your reading time has ended. Add reading time to continue.',
+              chapter: null,
+            });
+            setError(null);
+          } else {
+            setError(apiErrorMessage(err, 'This chapter could not be opened.'));
+          }
+          setMeteredSessionActive(false);
           setLoading(false);
         }
       }
@@ -279,18 +361,20 @@ export default function Reader() {
       cancelled = true;
       stopTTS();
       clearInterval(pulseIntervalRef.current);
-      axios.post(`${API}/reading/session/end`, { session_id: sessionId }, { headers }).catch(() => {});
+      if (startedSession) {
+        axios.post(`${API}/reading/session/end`, { session_id: sessionId }, { headers: endSessionHeaders }).catch(() => {});
+      }
     };
   }, [bookId, chapterId, sessionId, stopTTS]);
 
   useEffect(() => {
-    if (chapter && processedHtml && sessionId) {
+    if (meteredSessionActive && chapter && processedHtml && sessionId) {
       clearInterval(pulseIntervalRef.current);
       pulseIntervalRef.current = setInterval(sendPulse, 30000);
     }
 
     return () => clearInterval(pulseIntervalRef.current);
-  }, [chapter, processedHtml, sessionId, sendPulse]);
+  }, [chapter, processedHtml, sessionId, meteredSessionActive, sendPulse]);
 
   useEffect(() => {
     wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
@@ -317,7 +401,7 @@ export default function Reader() {
   const handleTopUp = async (pack) => {
     if (!pack) return;
     setTopUpProcessing(true);
-    const headers = getReaderAuthHeaders();
+    const headers = getUserAuthHeaders();
 
     try {
       const orderRes = await axios.post(`${API}/payments/create-order`, { pack_id: pack._id || pack.id }, { headers });
@@ -435,7 +519,10 @@ export default function Reader() {
     else pauseTTS();
   };
 
-  const currentIdx = useMemo(() => chapters.findIndex((item) => item.id === chapterId), [chapters, chapterId]);
+  const currentIdx = useMemo(
+    () => chapters.findIndex((item) => item.id === (activeChapterId || chapterId)),
+    [chapters, activeChapterId, chapterId],
+  );
   const prevChapter = chapters[currentIdx - 1];
   const nextChapter = chapters[currentIdx + 1];
 
@@ -445,8 +532,12 @@ export default function Reader() {
   };
 
   const toggleBookmark = async () => {
-        const headers = getReaderAuthHeaders();
-    await axios.post(`${API}/bookmarks`, { bookId, chapterId }, { headers });
+    if (!getUserToken()) {
+      navigate(`/login?next=${encodeURIComponent(getCurrentReaderPath())}`);
+      return;
+    }
+    const headers = getUserAuthHeaders();
+    await axios.post(`${API}/bookmarks`, { bookId, chapterId: activeChapterId || chapterId }, { headers });
     setBookmarked((value) => !value);
   };
 
@@ -478,6 +569,55 @@ export default function Reader() {
         <button type="button" onClick={() => navigate(-1)} className="px-6 py-2 rounded-full" style={{ background: '#6B1020', color: '#FAF7F0', fontFamily: 'Inter', fontSize: 14 }}>
           Back
         </button>
+      </div>
+    );
+  }
+
+  if (lockedState) {
+    const reason = lockedState.reason;
+    const previewChapter = chapters[0];
+    const canOpenPreview = previewChapter?.id && previewChapter.id !== activeChapterId;
+    const title = lockedState.chapter?.title || chapter?.title || 'Chapter locked';
+    const signInUrl = `/login?next=${encodeURIComponent(getCurrentReaderPath())}`;
+
+    return (
+      <div className="flex min-h-screen items-center justify-center px-5 py-14 text-center" style={{ background: THEMES.beige.canvas }}>
+        <div className="w-full max-w-md rounded-2xl border border-[#E8DDD8] bg-white/70 px-7 py-9 shadow-book">
+          <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full" style={{ background: '#F5F0E8', color: '#6B1020' }}>
+            {reason === 'INSUFFICIENT_READING_TIME' ? <CreditCard size={22} /> : <LogIn size={22} />}
+          </div>
+          <div className="italic-eyebrow mb-3">Reading access</div>
+          <h1 className="font-serif-light text-3xl text-burgundy leading-tight">{title}</h1>
+          <p className="mt-5 text-sm font-light leading-relaxed text-charcoal-soft">
+            {lockedState.message || 'This chapter is locked.'}
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3">
+            {reason === 'AUTH_REQUIRED' && (
+              <button type="button" onClick={() => navigate(signInUrl)} className="btn-primary w-full justify-center">
+                Sign In
+              </button>
+            )}
+            {reason === 'INSUFFICIENT_READING_TIME' && (
+              <button type="button" onClick={() => navigate('/pricing')} className="btn-primary w-full justify-center">
+                Add Reading Time
+              </button>
+            )}
+            {reason === 'BLOCKED' && (
+              <button type="button" onClick={() => navigate('/contact')} className="btn-primary w-full justify-center">
+                Contact Support
+              </button>
+            )}
+            {canOpenPreview && (
+              <button type="button" onClick={() => navigate(`/reader/${bookId}?c=${previewChapter.id}`)} className="btn-secondary w-full justify-center">
+                Read Free Preview
+              </button>
+            )}
+            <button type="button" onClick={() => navigate(`/book/${bookId}`)} className="text-sm text-charcoal-soft underline decoration-[var(--brand-gold)]/60 underline-offset-4">
+              Back to book
+            </button>
+          </div>
+        </div>
       </div>
     );
   }

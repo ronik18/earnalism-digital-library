@@ -742,11 +742,10 @@ async def get_book_chapters(slug: str):
     doc = await db.books.find_one({"slug": slug, "is_published": True})
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
-    chapters = doc.get("chapters") or []
+    chapters = _strip_paid_chapter_content(doc).get("chapters") or []
     if not chapters:
         return []
-    sorted_ch = sorted(chapters, key=lambda c: c.get("order", 0))
-    return sorted_ch
+    return sorted(chapters, key=lambda c: c.get("order", 0))
 
 
 @api.get("/books/{slug}/chapters/{chapter_id}")
@@ -754,7 +753,7 @@ async def get_book_chapter(slug: str, chapter_id: str):
     doc = await db.books.find_one({"slug": slug, "is_published": True})
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
-    chapters = doc.get("chapters") or []
+    chapters = _strip_paid_chapter_content(doc).get("chapters") or []
     chapter = next((c for c in chapters if c.get("id") == chapter_id), None)
     if not chapter:
         raise HTTPException(status_code=404, detail="Chapter not found")
@@ -1328,7 +1327,7 @@ async def user_me(user=Depends(require_user)):
 @api.get("/users/me/wallet")
 async def user_wallet(user=Depends(require_user)):
     fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
-    wallet_seconds = int(fresh.get("wallet_seconds", fresh.get("reading_seconds_balance", 0)) or 0)
+    wallet_seconds = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
     return {"wallet_seconds": wallet_seconds}
 
 
@@ -1474,19 +1473,25 @@ async def reading_session_start_v2(payload: ReaderSessionStartIn, request: Reque
 
 
 @api.post("/reading/session/end")
-async def reading_session_end_v2(payload: ReaderSessionEndIn, user=Depends(require_user)):
+async def reading_session_end_v2(payload: ReaderSessionEndIn, principal: Optional[dict] = Depends(optional_principal)):
+    if not principal or principal.get("role") != "user":
+        return {"success": False, "status": "session_invalid"}
+    user = principal
     await db.users.update_one({"id": user["id"]}, {"$unset": {"active_reading_session": ""}})
     return {"success": True}
 
 
 @api.post("/reading/pulse")
-async def reading_pulse(payload: ReaderSessionEndIn, user=Depends(require_user)):
+async def reading_pulse(payload: ReaderSessionEndIn, principal: Optional[dict] = Depends(optional_principal)):
+    if not principal or principal.get("role") != "user" or principal.get("status") == "blocked":
+        return {"success": False, "status": "session_invalid"}
+    user = principal
     fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
     active = fresh.get("active_reading_session") or {}
     if active.get("session_id") != payload.session_id:
         return {"success": False, "status": "session_invalid"}
 
-    wallet = int(fresh.get("wallet_seconds", fresh.get("reading_seconds_balance", 0)) or 0)
+    wallet = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
     if wallet <= 0:
         return {"success": False, "status": "wallet_empty", "wallet_seconds": 0}
 

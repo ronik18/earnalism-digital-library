@@ -49,17 +49,6 @@ export default function Login() {
     }
   };
 
-  // Hooks must be called unconditionally before any early returns.
-  const googleLogin = useGoogleLogin({
-    flow: "implicit",
-    onSuccess: async (resp) => {
-      const credential = resp?.credential || resp?.access_token;
-      if (credential) return completeGoogle(credential);
-      toast.error("Google sign-in failed");
-    },
-    onError: () => toast.error("Google sign-in failed"),
-  });
-
   if (user === null) return <div className="py-32 text-center text-charcoal-soft">Loading…</div>;
   if (user) return <Navigate to={next} replace />;
 
@@ -115,35 +104,15 @@ export default function Login() {
           Pick up where you left off. Your reading time and shelf travel with you.
         </p>
 
-        {GOOGLE_CLIENT_ID && (
-          <button
-            type="button"
-            onClick={() => googleLogin()}
-            className="mt-8 w-full flex items-center justify-center gap-3 rounded-xl px-4 py-3"
-            style={{
-              background: "white",
-              border: "1px solid #6B1020",
-              fontFamily: "'Crimson Pro', Georgia, serif",
-              fontSize: 16,
-              color: "#1C0A0E",
-            }}
-            data-testid="login-google"
-          >
-            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-              <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.49h4.85a4.14 4.14 0 0 1-1.79 2.7v2.24h2.9c1.7-1.57 2.68-3.88 2.68-6.59z"/>
-              <path fill="#34A853" d="M9 18c2.43 0 4.46-.8 5.95-2.18l-2.9-2.24c-.8.55-1.83.88-3.05.88-2.34 0-4.32-1.58-5.03-3.7H.96v2.32A8.99 8.99 0 0 0 9 18z"/>
-              <path fill="#FBBC05" d="M3.97 10.76A5.4 5.4 0 0 1 3.68 9c0-.61.1-1.2.29-1.76V4.92H.96A8.99 8.99 0 0 0 0 9c0 1.45.35 2.83.96 4.08l3.01-2.32z"/>
-              <path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.43 1.34l2.57-2.57A8.99 8.99 0 0 0 9 0 8.99 8.99 0 0 0 .96 4.92l3.01 2.32C4.68 5.16 6.66 3.58 9 3.58z"/>
-            </svg>
-            Continue with Google
-          </button>
-        )}
+        {GOOGLE_CLIENT_ID && <GoogleSignInButton onComplete={completeGoogle} />}
 
-        <div className="mt-6 flex items-center gap-3 text-[0.7rem] tracking-[0.22em] uppercase text-charcoal-soft/60">
-          <div className="flex-1 h-px bg-current/20" />
-          <span>or</span>
-          <div className="flex-1 h-px bg-current/20" />
-        </div>
+        {GOOGLE_CLIENT_ID && (
+          <div className="mt-6 flex items-center gap-3 text-[0.7rem] tracking-[0.22em] uppercase text-charcoal-soft/60">
+            <div className="flex-1 h-px bg-current/20" />
+            <span>or</span>
+            <div className="flex-1 h-px bg-current/20" />
+          </div>
+        )}
 
         <div className="mt-6">
           <div
@@ -286,5 +255,41 @@ export default function Login() {
         </p>
       </div>
     </div>
+  );
+}
+
+function GoogleSignInButton({ onComplete }) {
+  const googleLogin = useGoogleLogin({
+    flow: "implicit",
+    onSuccess: async (resp) => {
+      const credential = resp?.credential || resp?.access_token;
+      if (credential) return onComplete(credential);
+      toast.error("Google sign-in failed");
+    },
+    onError: () => toast.error("Google sign-in failed"),
+  });
+
+  return (
+    <button
+      type="button"
+      onClick={() => googleLogin()}
+      className="mt-8 w-full flex items-center justify-center gap-3 rounded-xl px-4 py-3"
+      style={{
+        background: "white",
+        border: "1px solid #6B1020",
+        fontFamily: "'Crimson Pro', Georgia, serif",
+        fontSize: 16,
+        color: "#1C0A0E",
+      }}
+      data-testid="login-google"
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+        <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.49h4.85a4.14 4.14 0 0 1-1.79 2.7v2.24h2.9c1.7-1.57 2.68-3.88 2.68-6.59z"/>
+        <path fill="#34A853" d="M9 18c2.43 0 4.46-.8 5.95-2.18l-2.9-2.24c-.8.55-1.83.88-3.05.88-2.34 0-4.32-1.58-5.03-3.7H.96v2.32A8.99 8.99 0 0 0 9 18z"/>
+        <path fill="#FBBC05" d="M3.97 10.76A5.4 5.4 0 0 1 3.68 9c0-.61.1-1.2.29-1.76V4.92H.96A8.99 8.99 0 0 0 0 9c0 1.45.35 2.83.96 4.08l3.01-2.32z"/>
+        <path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.43 1.34l2.57-2.57A8.99 8.99 0 0 0 9 0 8.99 8.99 0 0 0 .96 4.92l3.01 2.32C4.68 5.16 6.66 3.58 9 3.58z"/>
+      </svg>
+      Continue with Google
+    </button>
   );
 }
