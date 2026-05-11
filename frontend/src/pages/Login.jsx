@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, Navigate, useSearchParams } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
-import { API, USER_TOKEN_KEY, formatError } from "../lib/api";
+import { API, USER_TOKEN_KEY, SESSION_EXPIRED_MESSAGE, formatError } from "../lib/api";
 import { toast } from "sonner";
 import { Mail, Lock } from "lucide-react";
 import useSEO from "../hooks/useSEO";
@@ -23,6 +23,7 @@ export default function Login() {
   const nav = useNavigate();
   const [params] = useSearchParams();
   const next = params.get("next") || "/account";
+  const showedExpiryMessage = useRef(false);
 
   // ---------- Mobile OTP ----------
   const [mobile, setMobile] = useState("");
@@ -36,6 +37,12 @@ export default function Login() {
     const id = setInterval(() => setCountdown((c) => Math.max(0, c - 1)), 1000);
     return () => clearInterval(id);
   }, [countdown]);
+
+  useEffect(() => {
+    if (params.get("expired") !== "1" || showedExpiryMessage.current) return;
+    showedExpiryMessage.current = true;
+    toast.error(SESSION_EXPIRED_MESSAGE);
+  }, [params]);
 
   const completeGoogle = async (credential) => {
     try {

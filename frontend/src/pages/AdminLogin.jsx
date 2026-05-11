@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate, Navigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { formatError } from "../lib/api";
+import { SESSION_EXPIRED_MESSAGE, formatError } from "../lib/api";
 import { toast } from "sonner";
 import useSEO from "../hooks/useSEO";
 import BrandMark from "../components/BrandMark";
@@ -16,6 +16,14 @@ export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const nav = useNavigate();
+  const [params] = useSearchParams();
+  const showedExpiryMessage = useRef(false);
+
+  useEffect(() => {
+    if (params.get("expired") !== "1" || showedExpiryMessage.current) return;
+    showedExpiryMessage.current = true;
+    toast.error(SESSION_EXPIRED_MESSAGE);
+  }, [params]);
 
   if (admin) return <Navigate to="/admin" replace />;
 
