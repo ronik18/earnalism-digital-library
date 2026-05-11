@@ -11,13 +11,17 @@ import hashlib
 import json as _json
 import uuid
 import logging
+import time
 import bcrypt
 import jwt
+from collections import defaultdict, deque
 from datetime import datetime, timezone, timedelta
-from typing import List, Optional
+from typing import Deque, Dict, List, Optional, Tuple
 from urllib.parse import urlparse
 
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie, UploadFile, File
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
@@ -28,6 +32,9 @@ from pydantic import BaseModel, Field, EmailStr, ConfigDict
 
 # ---------- Environment / DB ----------
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "production").strip().lower()
+LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO").strip().upper()
+logging.basicConfig(level=getattr(logging, LOG_LEVEL, logging.INFO), format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 mongo_url = os.environ.get("MONGODB_URL") or os.environ.get("MONGO_URL")
 if not mongo_url:
@@ -64,6 +71,33 @@ RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID", "").strip()
 RAZORPAY_KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET", "").strip()
 RAZORPAY_WEBHOOK_SECRET = os.environ.get("RAZORPAY_WEBHOOK_SECRET", "").strip()
 RAZORPAY_MODE = os.environ.get("RAZORPAY_MODE", "test").strip().lower()
+
+
+def _env_bool(name: str, default: bool) -> bool:
+    value = os.environ.get(name)
+    if value is None:
+        return default
+    return value.strip().lower() not in {"0", "false", "no", "off"}
+
+
+def _env_int(name: str, default: int, minimum: int = 1) -> int:
+    try:
+        return max(minimum, int(os.environ.get(name, default)))
+    except (TypeError, ValueError):
+        return default
+
+
+# Dependency-free per-process rate limits. For multi-instance scaling, move this
+# counter to Redis or an edge/WAF layer so limits are shared across replicas.
+RATE_LIMIT_ENABLED = _env_bool("RATE_LIMIT_ENABLED", True)
+RATE_LIMIT_WINDOW_SECONDS = _env_int("RATE_LIMIT_WINDOW_SECONDS", 60)
+RATE_LIMIT_DEFAULT_PER_MINUTE = _env_int("RATE_LIMIT_DEFAULT_PER_MINUTE", 240)
+RATE_LIMIT_AUTH_PER_MINUTE = _env_int("RATE_LIMIT_AUTH_PER_MINUTE", 20)
+RATE_LIMIT_PAYMENT_PER_MINUTE = _env_int("RATE_LIMIT_PAYMENT_PER_MINUTE", 60)
+RATE_LIMIT_WEBHOOK_PER_MINUTE = _env_int("RATE_LIMIT_WEBHOOK_PER_MINUTE", 300)
+RATE_LIMIT_UPLOAD_PER_MINUTE = _env_int("RATE_LIMIT_UPLOAD_PER_MINUTE", 30)
+_rate_limit_hits: Dict[str, Deque[float]] = defaultdict(deque)
+_rate_limit_next_sweep = 0.0
 
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
 # amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
@@ -700,6 +734,188 @@ async def lifespan(_app: FastAPI):
 
 app = FastAPI(title="The Earnalism API", lifespan=lifespan)
 api = APIRouter(prefix="/api")
+
+
+def _client_ip(request: Request) -> str:
+    for header in ("cf-connecting-ip", "x-real-ip"):
+        value = request.headers.get(header)
+        if value:
+            return value.split(",", 1)[0].strip()[:64]
+    forwarded_for = request.headers.get("x-forwarded-for")
+    if forwarded_for:
+        return forwarded_for.split(",", 1)[0].strip()[:64]
+    if request.client and request.client.host:
+        return request.client.host[:64]
+    return "unknown"
+
+
+def _rate_limit_scope(path: str) -> Tuple[str, int]:
+    if path.startswith("/api/auth/"):
+        return "auth", RATE_LIMIT_AUTH_PER_MINUTE
+    if path == "/api/payments/webhook":
+        return "webhook", RATE_LIMIT_WEBHOOK_PER_MINUTE
+    if path.startswith("/api/payments/"):
+        return "payments", RATE_LIMIT_PAYMENT_PER_MINUTE
+    if "upload" in path:
+        return "upload", RATE_LIMIT_UPLOAD_PER_MINUTE
+    return "api", RATE_LIMIT_DEFAULT_PER_MINUTE
+
+
+def _sweep_rate_limit_buckets(now: float) -> None:
+    global _rate_limit_next_sweep
+    if now < _rate_limit_next_sweep:
+        return
+    _rate_limit_next_sweep = now + RATE_LIMIT_WINDOW_SECONDS
+    cutoff = now - RATE_LIMIT_WINDOW_SECONDS
+    for key, bucket in list(_rate_limit_hits.items()):
+        while bucket and bucket[0] <= cutoff:
+            bucket.popleft()
+        if not bucket:
+            _rate_limit_hits.pop(key, None)
+
+
+def _rate_limit_retry_after(request: Request) -> Optional[int]:
+    if not RATE_LIMIT_ENABLED or request.method == "OPTIONS":
+        return None
+    path = request.url.path
+    if path in {"/health", "/api/health", "/docs", "/redoc", "/openapi.json", "/favicon.ico"}:
+        return None
+    scope, limit = _rate_limit_scope(path)
+    now = time.monotonic()
+    _sweep_rate_limit_buckets(now)
+    key = f"{scope}:{_client_ip(request)}"
+    bucket = _rate_limit_hits[key]
+    cutoff = now - RATE_LIMIT_WINDOW_SECONDS
+    while bucket and bucket[0] <= cutoff:
+        bucket.popleft()
+    if len(bucket) >= limit:
+        return max(1, int(RATE_LIMIT_WINDOW_SECONDS - (now - bucket[0])))
+    bucket.append(now)
+    return None
+
+
+def _error_payload(request: Request, status_code: int, message: str, detail=None) -> dict:
+    request_id = getattr(request.state, "request_id", None)
+    return {
+        "ok": False,
+        "detail": detail if detail is not None else message,
+        "error": {
+            "code": status_code,
+            "message": message,
+        },
+        "request_id": request_id,
+    }
+
+
+def _security_headers(response: Response) -> None:
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    response.headers.setdefault("X-Frame-Options", "DENY")
+    response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+    response.headers.setdefault("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+    response.headers.setdefault("Content-Security-Policy", "frame-ancestors 'none'; object-src 'none'; base-uri 'none'")
+    if ENVIRONMENT == "production":
+        response.headers.setdefault("Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload")
+
+
+def _json_error_response(
+    request: Request,
+    status_code: int,
+    message: str,
+    detail=None,
+    headers: Optional[dict] = None,
+) -> JSONResponse:
+    response = JSONResponse(
+        status_code=status_code,
+        content=_error_payload(request, status_code, message, detail),
+        headers=headers,
+    )
+    if request_id := getattr(request.state, "request_id", None):
+        response.headers["X-Request-ID"] = request_id
+    _security_headers(response)
+    return response
+
+
+def _sanitize_validation_errors(errors: list) -> list:
+    sanitized = []
+    for error in errors:
+        sanitized.append({
+            "loc": error.get("loc", ()),
+            "msg": error.get("msg", "Invalid input"),
+            "type": error.get("type", "value_error"),
+        })
+    return sanitized
+
+
+@app.middleware("http")
+async def production_hardening_middleware(request: Request, call_next):
+    request_id = request.headers.get("x-request-id") or str(uuid.uuid4())
+    request.state.request_id = request_id
+    started = time.perf_counter()
+    status_code = 500
+
+    retry_after = _rate_limit_retry_after(request)
+    if retry_after is not None:
+        status_code = 429
+        response = _json_error_response(
+            request,
+            status_code=429,
+            message="Too many requests",
+            headers={"Retry-After": str(retry_after)},
+        )
+    else:
+        try:
+            response = await call_next(request)
+            status_code = response.status_code
+        except Exception:
+            logger.exception("Unhandled request failure")
+            raise
+
+    response.headers["X-Request-ID"] = request_id
+    _security_headers(response)
+    duration_ms = round((time.perf_counter() - started) * 1000, 2)
+    logger.info(_json.dumps({
+        "event": "http_request",
+        "request_id": request_id,
+        "method": request.method,
+        "path": request.url.path,
+        "status": status_code,
+        "duration_ms": duration_ms,
+        "client_ip": _client_ip(request),
+        "user_agent": request.headers.get("user-agent", "")[:160],
+    }, ensure_ascii=True))
+    return response
+
+
+@app.exception_handler(HTTPException)
+async def structured_http_exception_handler(request: Request, exc: HTTPException):
+    message = exc.detail if isinstance(exc.detail, str) else "Request failed"
+    return _json_error_response(
+        request,
+        status_code=exc.status_code,
+        message=message,
+        detail=exc.detail,
+        headers=exc.headers,
+    )
+
+
+@app.exception_handler(RequestValidationError)
+async def structured_validation_exception_handler(request: Request, exc: RequestValidationError):
+    return _json_error_response(
+        request,
+        status_code=422,
+        message="Invalid request",
+        detail=_sanitize_validation_errors(exc.errors()),
+    )
+
+
+@app.exception_handler(Exception)
+async def structured_unhandled_exception_handler(request: Request, exc: Exception):
+    logger.exception("Unhandled application error")
+    return _json_error_response(
+        request,
+        status_code=500,
+        message="Internal server error",
+    )
 
 
 # ---------- Auth ----------
@@ -1874,14 +2090,17 @@ async def payments_webhook(request: Request):
     expected = _hmac_sha256_hex(RAZORPAY_WEBHOOK_SECRET, raw_body)
     if not hmac.compare_digest(expected, signature):
         # Store the rejected event so admins can audit attempts.
-        await db.payment_webhook_events.insert_one({
-            "id": str(uuid.uuid4()),
-            "event_id": None,
-            "event": "unknown",
-            "status": "rejected_bad_signature",
-            "raw": raw_body.decode("utf-8", errors="replace")[:8000],
-            "created_at": now_iso(),
-        })
+        try:
+            await db.payment_webhook_events.insert_one({
+                "id": str(uuid.uuid4()),
+                "event_id": f"rejected:{uuid.uuid4()}",
+                "event": "unknown",
+                "status": "rejected_bad_signature",
+                "raw": raw_body.decode("utf-8", errors="replace")[:8000],
+                "created_at": now_iso(),
+            })
+        except Exception:
+            logger.warning("Could not persist rejected Razorpay webhook audit event", exc_info=True)
         raise HTTPException(status_code=400, detail="Invalid webhook signature")
 
     try:
@@ -2053,28 +2272,38 @@ async def admin_reconcile_intent(intent_id: str, payload: PaymentReconcileIn, ad
 
 app.include_router(api)
 
-cors_origins = {
-    os.getenv("FRONTEND_URL", "http://localhost:3000"),
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-}
+cors_origins = set()
+frontend_url = os.getenv("FRONTEND_URL", "").strip()
+if frontend_url:
+    cors_origins.add(frontend_url)
+elif ENVIRONMENT != "production":
+    cors_origins.add("http://localhost:3000")
+if ENVIRONMENT != "production":
+    cors_origins.update({"http://localhost:3000", "http://127.0.0.1:3000"})
 cors_origins.update(
     origin.strip()
     for origin in os.getenv("CORS_ORIGINS", "").split(",")
     if origin.strip()
 )
+if ENVIRONMENT == "production" and not cors_origins:
+    logger.warning("No CORS origins configured for production")
 
 app.add_middleware(GZipMiddleware, minimum_size=1024)
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
     allow_origins=sorted(cors_origins),
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allow_headers=[
+        "Authorization",
+        "Content-Type",
+        "X-Request-ID",
+        "X-Requested-With",
+        "X-Razorpay-Event-Id",
+        "X-Razorpay-Signature",
+    ],
+    expose_headers=["X-Request-ID"],
 )
-
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 
 
 # ---------- Seed ----------
