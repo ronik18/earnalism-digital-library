@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { AppToaster } from "./AppToaster";
 
 export default function Layout() {
   return (
@@ -11,7 +10,6 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
-      <AppToaster position="bottom-right" />
     </div>
   );
 }

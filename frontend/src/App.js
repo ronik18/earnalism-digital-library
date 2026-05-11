@@ -5,6 +5,7 @@ import "@/index.css";
 import { AuthProvider } from "./context/AuthContext";
 import { SettingsProvider } from "./context/SettingsContext";
 import Layout from "./components/Layout";
+import { AppToaster } from "./components/AppToaster";
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
 
@@ -66,6 +67,7 @@ export default function App() {
               <Route path="/admin" element={<Admin />} />
             </Routes>
           </Suspense>
+          <AppToaster position="bottom-right" />
         </BrowserRouter>
       </SettingsProvider>
     </AuthProvider>

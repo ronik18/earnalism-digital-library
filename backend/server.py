@@ -36,6 +36,21 @@ LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO").strip().upper()
 logging.basicConfig(level=getattr(logging, LOG_LEVEL, logging.INFO), format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+
+def _env_bool(name: str, default: bool) -> bool:
+    value = os.environ.get(name)
+    if value is None:
+        return default
+    return value.strip().lower() not in {"0", "false", "no", "off"}
+
+
+def _env_int(name: str, default: int, minimum: int = 1) -> int:
+    try:
+        return max(minimum, int(os.environ.get(name, default)))
+    except (TypeError, ValueError):
+        return default
+
+
 mongo_url = os.environ.get("MONGODB_URL") or os.environ.get("MONGO_URL")
 if not mongo_url:
     raise RuntimeError("MONGODB_URL is required")
@@ -52,6 +67,7 @@ JWT_SECRET = os.environ.get("JWT_SECRET")
 if not JWT_SECRET:
     raise RuntimeError("JWT_SECRET is required")
 JWT_ALG = "HS256"
+JWT_EXPIRE_MINUTES = _env_int("JWT_EXPIRE_MINUTES", 1440)
 ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@theearnalism.com").strip()
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "").strip()
 SEED_TEST_READER = os.environ.get("SEED_TEST_READER", "false").strip().lower() == "true"
@@ -61,7 +77,7 @@ SEED_TEST_READER_PASSWORD = os.environ.get("SEED_TEST_READER_PASSWORD", "").stri
 # Cookie config — httpOnly session cookie. SECURE flag is on by default (HTTPS in prod);
 # can be disabled via env for plain-HTTP local dev only.
 SESSION_COOKIE = "ear_session"
-SESSION_TTL_SECONDS = 7 * 24 * 3600
+SESSION_TTL_SECONDS = JWT_EXPIRE_MINUTES * 60
 COOKIE_SECURE = os.environ.get("COOKIE_SECURE", "true").lower() != "false"
 COOKIE_SAMESITE = os.environ.get("COOKIE_SAMESITE", "lax")
 
@@ -71,21 +87,6 @@ RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID", "").strip()
 RAZORPAY_KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET", "").strip()
 RAZORPAY_WEBHOOK_SECRET = os.environ.get("RAZORPAY_WEBHOOK_SECRET", "").strip()
 RAZORPAY_MODE = os.environ.get("RAZORPAY_MODE", "test").strip().lower()
-
-
-def _env_bool(name: str, default: bool) -> bool:
-    value = os.environ.get(name)
-    if value is None:
-        return default
-    return value.strip().lower() not in {"0", "false", "no", "off"}
-
-
-def _env_int(name: str, default: int, minimum: int = 1) -> int:
-    try:
-        return max(minimum, int(os.environ.get(name, default)))
-    except (TypeError, ValueError):
-        return default
-
 
 # Dependency-free per-process rate limits. For multi-instance scaling, move this
 # counter to Redis or an edge/WAF layer so limits are shared across replicas.
@@ -141,7 +142,7 @@ def create_token(sub: str, email: str) -> str:
         "sub": sub,
         "email": email,
         "role": "admin",
-        "exp": datetime.now(timezone.utc) + timedelta(days=7),
+        "exp": datetime.now(timezone.utc) + timedelta(minutes=JWT_EXPIRE_MINUTES),
         "type": "access",
     }
     return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALG)
@@ -151,7 +152,7 @@ def create_user_token(sub: str, email: str) -> str:
         "sub": sub,
         "email": email,
         "role": "user",
-        "exp": datetime.now(timezone.utc) + timedelta(days=7),
+        "exp": datetime.now(timezone.utc) + timedelta(minutes=JWT_EXPIRE_MINUTES),
         "type": "access",
     }
     return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALG)

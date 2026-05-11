@@ -11,13 +11,13 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const adminToken = localStorage.getItem(TOKEN_KEY);
     if (!adminToken) setAdmin(false);
-    else api.get("/auth/me")
+    else api.get("/auth/me", { skipAuthRedirect: true })
       .then((r) => setAdmin(r.data))
       .catch(() => { localStorage.removeItem(TOKEN_KEY); setAdmin(false); });
 
     const userToken = localStorage.getItem(USER_TOKEN_KEY);
     if (!userToken) setUser(false);
-    else userApi.get("/users/me")
+    else userApi.get("/users/me", { skipAuthRedirect: true })
       .then((r) => setUser(r.data))
       .catch(() => { localStorage.removeItem(USER_TOKEN_KEY); setUser(false); });
   }, []);
@@ -48,7 +48,7 @@ export function AuthProvider({ children }) {
   }, []);
   const userLogout = useCallback(() => {
     // Best-effort server logout; ignore network errors (token is already client-side).
-    try { userApi.post("/users/logout").catch(() => { /* fire-and-forget */ }); }
+    try { userApi.post("/users/logout", undefined, { skipAuthRedirect: true }).catch(() => { /* fire-and-forget */ }); }
     catch { /* userApi unavailable in test envs */ }
     localStorage.removeItem(USER_TOKEN_KEY);
     setUser(false);
