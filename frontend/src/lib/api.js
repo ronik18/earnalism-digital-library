@@ -12,6 +12,7 @@ export const USER_TOKEN_KEY = "earnalism_user_token";
 export const SESSION_EXPIRED_MESSAGE = "Session expired, please login again.";
 
 let authRedirectInFlight = false;
+const DEV_API_TIMING = process.env.NODE_ENV === "development";
 
 function isBrowser() {
   return typeof window !== "undefined" && typeof window.location !== "undefined";
@@ -29,6 +30,44 @@ function requestPath(config = {}) {
   } catch {
     return rawUrl;
   }
+}
+
+function nowMs() {
+  if (typeof performance !== "undefined" && typeof performance.now === "function") {
+    return performance.now();
+  }
+  return Date.now();
+}
+
+function installDevApiTiming(instance) {
+  if (!DEV_API_TIMING) return;
+  instance.interceptors.request.use((config) => {
+    config.metadata = { ...(config.metadata || {}), startedAt: nowMs() };
+    return config;
+  });
+  instance.interceptors.response.use(
+    (response) => {
+      const startedAt = response.config?.metadata?.startedAt;
+      if (startedAt) {
+        const duration = Math.round(nowMs() - startedAt);
+        // Development-only latency breadcrumb. Never logs bodies, tokens, or uploaded content.
+        // eslint-disable-next-line no-console
+        console.debug(`[api] ${String(response.config.method || "GET").toUpperCase()} ${requestPath(response.config)} ${response.status} ${duration}ms`);
+      }
+      return response;
+    },
+    (error) => {
+      const startedAt = error.config?.metadata?.startedAt;
+      if (startedAt) {
+        const duration = Math.round(nowMs() - startedAt);
+        const status = error.response?.status || "ERR";
+        // Development-only latency breadcrumb. Never logs bodies, tokens, or uploaded content.
+        // eslint-disable-next-line no-console
+        console.debug(`[api] ${String(error.config.method || "GET").toUpperCase()} ${requestPath(error.config)} ${status} ${duration}ms`);
+      }
+      return Promise.reject(error);
+    },
+  );
 }
 
 function isPublicAuthPath(path) {
@@ -136,6 +175,9 @@ userApi.interceptors.request.use((cfg) => {
 installAuth401Handler(api);
 installAuth401Handler(userApi, "user");
 installAuth401Handler(axios);
+installDevApiTiming(api);
+installDevApiTiming(userApi);
+installDevApiTiming(axios);
 
 export function formatError(detail) {
   if (detail == null) return "Something went wrong. Please try again.";

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { api, formatError, formatMinutes } from "../lib/api";
@@ -7,6 +7,7 @@ import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail, Clock, Ba
 import { useSettings } from "../context/SettingsContext";
 import BrandMark from "../components/BrandMark";
 import ChapterUpload from "../components/Admin/ChapterUpload";
+import CoverUpload from "../components/Admin/CoverUpload";
 
 const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "settings", "account"];
 
@@ -75,7 +76,7 @@ function SimpleList({ endpoint, cols, title, testid }) {
   );
 }
 
-const EMPTY_BOOK = { title: "", subtitle: "", author: "The Earnalism", category_slug: "business", short_description: "", description: "", cover_image_url: "", estimated_reading_time: "", price_paperback: "", price_ebook: "", buy_url: "", formats: ["Ebook"], benefits: [], who_for: [], learnings: [], about_author: "", is_published: true };
+const EMPTY_BOOK = { title: "", subtitle: "", author: "The Earnalism", category_slug: "business", short_description: "", description: "", cover_image_url: "", back_cover_image_url: "", estimated_reading_time: "", price_paperback: "", price_ebook: "", buy_url: "", formats: ["Ebook"], benefits: [], who_for: [], learnings: [], about_author: "", is_published: false };
 
 function BooksAdmin() {
   const [books, setBooks] = useState([]);
@@ -124,6 +125,11 @@ function BooksAdmin() {
             <div className="flex-1 min-w-0">
               <div className="overline">{b.category_slug}</div>
               <h3 className="font-serif-display text-xl text-burgundy leading-snug">{b.title}</h3>
+              <div className="mt-1">
+                <span className={`rounded-full px-2 py-0.5 text-[0.62rem] uppercase tracking-[0.18em] ${b.is_published ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"}`}>
+                  {b.is_published ? "Published" : "Draft"}
+                </span>
+              </div>
               <p className="text-xs text-charcoal-soft mt-1 truncate">{b.short_description}</p>
               <div className="text-xs text-charcoal-soft mt-1">Buy URL: {b.buy_url ? "set" : <span className="text-burgundy">empty</span>}</div>
               <div className="flex items-center gap-2 mt-3 flex-wrap">
@@ -145,6 +151,56 @@ function BooksAdmin() {
 
 const arr = (v) => Array.isArray(v) ? v : (v || "").split("\n").map((x) => x.trim()).filter(Boolean);
 const lines = (v) => Array.isArray(v) ? v.join("\n") : (v || "");
+const BENGALI_RE = /[\u0980-\u09FF]/;
+const BENGALI_SERIF = "'Noto Serif Bengali', 'Crimson Pro', Georgia, serif";
+const ADMIN_SERIF = "'Crimson Pro', 'Noto Serif Bengali', Georgia, serif";
+
+const containsBengaliText = (value) => BENGALI_RE.test(value || "");
+const hasHtmlTags = (value) => /<\/?[a-z][\s\S]*>/i.test(value || "");
+
+const processingStatus = (item) => item?.processing_status || "ready";
+const blockingChapterStatuses = new Set(["uploaded", "processing", "failed"]);
+
+function publishIssues(book) {
+  const issues = [];
+  if (!String(book?.title || "").trim()) issues.push("Title is required.");
+  if (!book?.is_published) return issues;
+  if (!book.cover_image_url) issues.push("Front cover is required before publishing.");
+  (book.chapters || []).forEach((chapter) => {
+    const status = processingStatus(chapter);
+    if (blockingChapterStatuses.has(status)) {
+      issues.push(`${chapter.title || "Untitled chapter"} is ${status}.`);
+    }
+  });
+  return issues;
+}
+
+function sanitizePreviewHtml(value) {
+  if (typeof document === "undefined") return "";
+  const template = document.createElement("template");
+  template.innerHTML = value || "";
+  template.content.querySelectorAll("script,style,iframe,object,embed").forEach((node) => node.remove());
+  template.content.querySelectorAll("*").forEach((node) => {
+    Array.from(node.attributes).forEach((attr) => {
+      if (/^on/i.test(attr.name)) node.removeAttribute(attr.name);
+    });
+  });
+  return template.innerHTML;
+}
+
+function ProcessingBadge({ status }) {
+  const normalized = status || "ready";
+  const styles = normalized === "ready"
+    ? "bg-emerald-100 text-emerald-800"
+    : normalized === "failed"
+      ? "bg-rose-100 text-rose-800"
+      : "bg-amber-100 text-amber-800";
+  return (
+    <span className={`rounded-full px-2 py-0.5 text-[0.62rem] uppercase tracking-[0.18em] ${styles}`}>
+      {normalized}
+    </span>
+  );
+}
 
 function BookEditor({ book, cats, onClose, onSave }) {
   const [f, setF] = useState({
@@ -152,6 +208,8 @@ function BookEditor({ book, cats, onClose, onSave }) {
     benefits: lines(book.benefits), who_for: lines(book.who_for), learnings: lines(book.learnings), formats: lines(book.formats || ["Paperback", "Ebook"]),
   });
   const isNew = book._new;
+  const issues = publishIssues(f);
+  const saveBlocked = f.is_published && issues.length > 0;
   return (
     <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={onClose} data-testid="book-editor">
       <div className="bg-ivory rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6 sm:p-10" onClick={(e) => e.stopPropagation()}>
@@ -169,8 +227,15 @@ function BookEditor({ book, cats, onClose, onSave }) {
             </select>
           </Field>
           <Field label="Cover image URL"><input className="input-elegant" value={f.cover_image_url} onChange={(e) => setF({ ...f, cover_image_url: e.target.value })} /></Field>
+          <Field label="Back cover image URL"><input className="input-elegant" value={f.back_cover_image_url || ""} onChange={(e) => setF({ ...f, back_cover_image_url: e.target.value })} /></Field>
           <Field label="Estimated reading time"><input className="input-elegant" value={f.estimated_reading_time || ""} onChange={(e) => setF({ ...f, estimated_reading_time: e.target.value })} placeholder="4 hours" data-testid="book-reading-time" /></Field>
           <Field label="Buy Reading Time URL (Razorpay / external)" wide><input className="input-elegant" value={f.buy_url} onChange={(e) => setF({ ...f, buy_url: e.target.value })} placeholder="https://rzp.io/l/your-link (leave empty for 'Request Access')" data-testid="book-buy-url" /></Field>
+          <Field label="Publication status" wide>
+            <label className="inline-flex items-center gap-3 rounded-lg border border-brand-soft px-4 py-3 text-sm text-charcoal-soft">
+              <input type="checkbox" checked={Boolean(f.is_published)} onChange={(e) => setF({ ...f, is_published: e.target.checked })} />
+              Published
+            </label>
+          </Field>
           <Field label="Short description" wide><textarea rows={2} className="input-elegant" value={f.short_description} onChange={(e) => setF({ ...f, short_description: e.target.value })} /></Field>
           <Field label="Description" wide><textarea rows={4} className="input-elegant" value={f.description} onChange={(e) => setF({ ...f, description: e.target.value })} /></Field>
           <Field label="Benefits (one per line)"><textarea rows={3} className="input-elegant" value={f.benefits} onChange={(e) => setF({ ...f, benefits: e.target.value })} /></Field>
@@ -178,6 +243,38 @@ function BookEditor({ book, cats, onClose, onSave }) {
           <Field label="What you will learn (one per line)"><textarea rows={3} className="input-elegant" value={f.learnings} onChange={(e) => setF({ ...f, learnings: e.target.value })} /></Field>
           <Field label="About the author / publisher" wide><textarea rows={2} className="input-elegant" value={f.about_author} onChange={(e) => setF({ ...f, about_author: e.target.value })} /></Field>
         </div>
+
+        {!isNew && (
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <CoverUpload
+              bookId={book.slug}
+              kind="front"
+              currentUrl={f.cover_image_url}
+              onSuccess={(data) => {
+                setF((prev) => ({ ...prev, cover_image_url: data.cover_url, cover_url: data.cover_url, thumbnail_url: data.thumbnail_url, cover_processing_status: "ready", cover_processing_error: "" }));
+                toast.success("Front cover uploaded");
+              }}
+            />
+            <CoverUpload
+              bookId={book.slug}
+              kind="back"
+              currentUrl={f.back_cover_image_url}
+              onSuccess={(data) => {
+                setF((prev) => ({ ...prev, back_cover_image_url: data.cover_url, back_cover_url: data.cover_url, back_cover_thumbnail_url: data.thumbnail_url, back_cover_processing_status: "ready", back_cover_processing_error: "" }));
+                toast.success("Back cover uploaded");
+              }}
+            />
+          </div>
+        )}
+
+        {saveBlocked && (
+          <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+            <div className="font-medium">Resolve before publishing:</div>
+            <ul className="mt-2 list-disc pl-5">
+              {issues.map((issue) => <li key={issue}>{issue}</li>)}
+            </ul>
+          </div>
+        )}
 
         {!isNew && <ChaptersManager slug={book.slug} />}
 
@@ -189,7 +286,7 @@ function BookEditor({ book, cats, onClose, onSave }) {
           )}
           <div className="flex justify-end gap-3 ml-auto">
             <button onClick={onClose} className="btn-secondary">Cancel</button>
-            <button onClick={() => onSave(f, isNew ? null : book.slug)} className="btn-primary" data-testid="save-book">Save</button>
+            <button onClick={() => onSave(f, isNew ? null : book.slug)} disabled={saveBlocked || !String(f.title || "").trim()} className="btn-primary disabled:opacity-60" data-testid="save-book">Save</button>
           </div>
         </div>
       </div>
@@ -582,7 +679,7 @@ function ChaptersManager({ slug }) {
 
   const load = async () => {
     try {
-      const { data } = await api.get(`/books/${slug}`);
+      const { data } = await api.get(`/admin/books/${slug}`);
       setBook(data);
     } catch (e) { toast.error(formatError(e.response?.data?.detail)); }
   };
@@ -648,6 +745,13 @@ function ChaptersManager({ slug }) {
             <li key={c.id} className="flex items-center gap-3 p-3 border border-brand-soft rounded-lg" data-testid={`chapter-row-${c.id}`}>
               <span className="italic-accent text-gold-deep w-10 shrink-0 text-center">{String(i + 1).padStart(2, "0")}</span>
               <span className="flex-1 min-w-0 font-serif-display text-[1.05rem] text-burgundy truncate">{c.title}</span>
+              <ProcessingBadge status={processingStatus(c)} />
+              {Array.isArray(c.processing_warnings) && c.processing_warnings.length > 0 && (
+                <span className="hidden sm:inline text-[0.72rem] text-amber-800" title={c.processing_warnings.join("\n")}>Warnings</span>
+              )}
+              {c.processing_error && (
+                <span className="hidden sm:inline text-[0.72rem] text-rose-800" title={c.processing_error}>Error</span>
+              )}
               <span className="hidden sm:inline text-[0.72rem] text-charcoal-soft">{(c.content || "").length} chars</span>
               <div className="flex items-center gap-1">
                 <button onClick={() => move(i, -1)} disabled={i === 0} className="p-1 text-charcoal-soft disabled:opacity-30 hover:text-burgundy" aria-label="Move up" data-testid={`chapter-up-${c.id}`}>↑</button>
@@ -666,7 +770,7 @@ function ChaptersManager({ slug }) {
           bookId={slug}
           busy={busy}
           onCancel={() => setEditing(null)}
-          onUploaded={() => { toast.success("Chapter file processed"); setEditing(null); load(); }}
+          onUploaded={() => { toast.success("Chapter file processed"); load(); }}
           onSave={(data) => saveChapter(data, editing._new ? null : editing.id)}
         />
       )}
@@ -677,6 +781,16 @@ function ChaptersManager({ slug }) {
 function ChapterEditor({ chapter, bookId, onCancel, onSave, onUploaded, busy }) {
   const [title, setTitle] = useState(chapter.title || "");
   const [content, setContent] = useState(chapter.content || "");
+  const previewHasHtml = hasHtmlTags(content);
+  const previewHtml = useMemo(() => previewHasHtml ? sanitizePreviewHtml(content) : "", [content, previewHasHtml]);
+  const previewIsBengali = containsBengaliText(`${title} ${content}`);
+  const previewFont = previewIsBengali ? BENGALI_SERIF : ADMIN_SERIF;
+  const uploadWarnings = Array.isArray(chapter.processing_warnings) ? chapter.processing_warnings : [];
+  const handleUploadSuccess = (data) => {
+    if (data?.preview_html) setContent(data.preview_html);
+    onUploaded?.(data);
+  };
+
   return (
     <div className="fixed inset-0 z-[60] bg-black/55 flex items-center justify-center p-4" onClick={onCancel} data-testid="chapter-editor">
       <div className="bg-ivory rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6 sm:p-10" onClick={(e) => e.stopPropagation()}>
@@ -690,12 +804,20 @@ function ChapterEditor({ chapter, bookId, onCancel, onSave, onUploaded, busy }) 
         <Field label="Chapter title" wide>
           <input className="input-elegant" value={title} onChange={(e) => setTitle(e.target.value)} data-testid="chapter-title" />
         </Field>
+        {!chapter._new && (
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <ProcessingBadge status={processingStatus(chapter)} />
+            {chapter.source_filename && <span className="text-[0.72rem] text-charcoal-soft">Source: {chapter.source_filename}</span>}
+            {chapter.processing_error && <span className="text-[0.72rem] text-rose-800">{chapter.processing_error}</span>}
+          </div>
+        )}
         <div className="mt-4">
           <Field label="Chapter body (separate paragraphs with a blank line)" wide>
             <textarea
               rows={16}
               className="input-elegant font-serif-display"
-              style={{ lineHeight: 1.7, fontSize: "1rem" }}
+              lang={previewIsBengali ? "bn" : undefined}
+              style={{ lineHeight: previewIsBengali ? 1.9 : 1.7, fontSize: "1rem", fontFamily: previewFont }}
               value={content}
               onChange={(e) => setContent(e.target.value)}
               data-testid="chapter-body"
@@ -704,10 +826,46 @@ function ChapterEditor({ chapter, bookId, onCancel, onSave, onUploaded, busy }) 
           </Field>
           <p className="text-[0.72rem] text-charcoal-soft mt-2 italic">{content.length.toLocaleString()} characters &middot; approx. {Math.max(1, Math.round(content.split(/\s+/).filter(Boolean).length / 200))} min read</p>
         </div>
+        {content.trim() && (
+          <div className="mt-5 rounded-xl border border-brand-soft bg-ivory-warm/70 p-5" data-testid="chapter-preview">
+            <div className="overline mb-3">Preview</div>
+            <h4
+              className="text-burgundy leading-snug"
+              lang={previewIsBengali ? "bn" : undefined}
+              style={{ fontFamily: previewFont, fontSize: "1.35rem" }}
+            >
+              {title || "Untitled chapter"}
+            </h4>
+            {previewHasHtml ? (
+              <div
+                className={previewIsBengali ? "reader-content reader-content--bengali mt-4" : "reader-content mt-4"}
+                lang={previewIsBengali ? "bn" : undefined}
+                style={{ fontFamily: previewFont, fontSize: "1rem", lineHeight: previewIsBengali ? 1.9 : 1.75, color: "var(--brand-charcoal)", overflowWrap: "break-word" }}
+                dangerouslySetInnerHTML={{ __html: previewHtml }}
+              />
+            ) : (
+              <div
+                className={previewIsBengali ? "reader-content reader-content--bengali mt-4" : "reader-content mt-4"}
+                lang={previewIsBengali ? "bn" : undefined}
+                style={{ fontFamily: previewFont, fontSize: "1rem", lineHeight: previewIsBengali ? 1.9 : 1.75, color: "var(--brand-charcoal)", whiteSpace: "pre-wrap", overflowWrap: "break-word" }}
+              >
+                {content}
+              </div>
+            )}
+          </div>
+        )}
+        {uploadWarnings.length > 0 && (
+          <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+            <div className="font-medium">Processing warnings</div>
+            <ul className="mt-2 list-disc pl-5">
+              {uploadWarnings.map((warning) => <li key={warning}>{warning}</li>)}
+            </ul>
+          </div>
+        )}
         {!chapter._new && (
           <div className="mt-6">
             <div className="overline mb-2">Upload formatted chapter</div>
-            <ChapterUpload bookId={bookId} chapterId={chapter.id} onSuccess={onUploaded} />
+            <ChapterUpload bookId={bookId} chapterId={chapter.id} onSuccess={handleUploadSuccess} />
           </div>
         )}
         <div className="mt-6 flex justify-end gap-3">

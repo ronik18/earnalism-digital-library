@@ -38,8 +38,12 @@ export default function Pricing() {
   const nav = useNavigate();
 
   useEffect(() => {
-    api.get("/payments/packs").then((r) => setPacks(r.data || [])).catch(() => setPacks([]));
-    api.get("/payments/config").then((r) => setConfig(r.data || {})).catch(() => {});
+    Promise.all([api.get("/payments/packs"), api.get("/payments/config")])
+      .then(([packsRes, configRes]) => {
+        setPacks(packsRes.data || []);
+        setConfig(configRes.data || {});
+      })
+      .catch(() => setPacks([]));
   }, []);
 
   const isAuthed = !!user && typeof user === "object";
@@ -89,8 +93,10 @@ export default function Pricing() {
               // Verify call itself failed. Don't leave the user stuck on
               // /pricing — refresh wallet (webhook may already have credited)
               // and route to /account where they can confirm their balance.
-              // eslint-disable-next-line no-console
-              console.warn("Razorpay verify failed; falling back to /account", err);
+              if (process.env.NODE_ENV === "development") {
+                // eslint-disable-next-line no-console
+                console.warn("Razorpay verify failed; falling back to /account");
+              }
               const fresh = await refreshUser().catch(() => null);
               const credited = Number(fresh?.reading_seconds_balance || 0) > 0;
               if (credited) {

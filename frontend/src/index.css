@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=Noto+Serif+Bengali:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500&display=swap');
 
 :root {
   --beige-canvas: #FAF7F0;
@@ -15,7 +15,7 @@
 }
 
 .reader-canvas {
-  font-family: 'Crimson Pro', Georgia, serif;
+  font-family: 'Crimson Pro', 'Noto Serif Bengali', Georgia, serif;
   font-size: 17px;
   font-weight: 400;
   line-height: 1.75;
@@ -23,6 +23,9 @@
   hyphens: auto;
   -webkit-hyphens: auto;
   hyphenate-limit-chars: 6 3 3;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-break: auto;
   max-width: 58ch;
   margin: 0 auto;
   -webkit-user-select: none;
@@ -41,7 +44,7 @@
   margin-bottom: 1.6em;
 }
 .reader-content h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-size: clamp(20px, 4vw, 26px);
   font-weight: 500;
   color: var(--burgundy-deep);
@@ -49,7 +52,7 @@
   line-height: 1.3;
 }
 .reader-content h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-size: clamp(17px, 3vw, 21px);
   font-weight: 500;
   margin: 1.6em 0 0.6em;
@@ -106,7 +109,7 @@
 }
 
 .drop-cap::first-letter {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-size: 4.5em;
   font-weight: 600;
   line-height: 0.8;
@@ -242,7 +245,7 @@
 }
 
 .reader-canvas {
-  font-family: 'Crimson Pro', Georgia, serif;
+  font-family: 'Crimson Pro', 'Noto Serif Bengali', Georgia, serif;
   font-size: 17px;
   font-weight: 400;
   line-height: 1.75;
@@ -250,6 +253,9 @@
   hyphens: auto;
   -webkit-hyphens: auto;
   hyphenate-limit-chars: 6 3 3;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-break: auto;
   max-width: 58ch;
   margin: 0 auto;
   -webkit-user-select: none;
@@ -266,7 +272,7 @@
 
 .reader-content p { margin-bottom: 1.6em; }
 .reader-content h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-size: clamp(20px, 4vw, 26px);
   font-weight: 500;
   color: var(--burgundy-deep);
@@ -274,7 +280,7 @@
   line-height: 1.3;
 }
 .reader-content h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-size: clamp(17px, 3vw, 21px);
   font-weight: 500;
   margin: 1.6em 0 0.6em;
@@ -332,7 +338,7 @@
 }
 
 .drop-cap::first-letter {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-size: 4.5em;
   font-weight: 600;
   line-height: 0.8;
@@ -488,18 +494,18 @@ body::before {
 
 /* ----------- Typography ----------- */
 .font-serif-display {
-  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', 'Georgia', serif;
   font-feature-settings: "liga", "dlig";
   font-weight: 400;
   letter-spacing: -0.005em;
 }
 .font-serif-light {
-  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', 'Georgia', serif;
   font-weight: 300;
   letter-spacing: -0.01em;
 }
 .italic-accent {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-style: italic;
   font-weight: 400;
 }
@@ -601,7 +607,7 @@ body::before {
 
 /* ----------- Eyebrows / overlines ----------- */
 .overline {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', 'Noto Sans Bengali', sans-serif;
   font-size: 0.68rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -609,7 +615,7 @@ body::before {
   font-weight: 500;
 }
 .italic-eyebrow {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-style: italic;
   font-weight: 400;
   font-size: 0.95rem;
@@ -639,7 +645,7 @@ body::before {
      left/right padding without being beaten by `padding` shorthand. */
   padding-top: 0.85rem;
   padding-bottom: 0.85rem;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', 'Noto Sans Bengali', sans-serif;
   font-size: 0.95rem;
   color: var(--brand-charcoal);
   transition: border-color .3s ease;
@@ -660,7 +666,7 @@ textarea.input-elegant {
 
 /* ----------- Editorial accents ----------- */
 .drop-cap::first-letter {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-size: 4.4rem;
   line-height: 0.92;
   float: left;
@@ -668,10 +674,32 @@ textarea.input-elegant {
   color: var(--brand-burgundy);
   font-weight: 400;
 }
+.reader-content--bengali {
+  font-family: 'Noto Serif Bengali', 'Crimson Pro', Georgia, serif;
+  line-height: 1.9;
+  text-align: left;
+  hyphens: none;
+  -webkit-hyphens: none;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+.reader-content--bengali p {
+  margin-bottom: 1.45em;
+}
+.reader-content--bengali.drop-cap::first-letter,
+.reader-content--bengali .drop-cap::first-letter {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  float: none;
+  padding: 0;
+  color: inherit;
+  font-weight: inherit;
+}
 .pull-quote {
   border-left: 1px solid var(--brand-gold);
   padding-left: 1.75rem;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-style: italic;
   font-weight: 400;
   font-size: 1.7rem;
@@ -682,7 +710,7 @@ textarea.input-elegant {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-style: italic;
   font-weight: 400;
   color: var(--brand-gold-deep);
@@ -748,4 +776,48 @@ textarea.input-elegant {
 
 @layer base {
   [data-debug-wrapper="true"] { display: contents !important; }
+}
+
+/* Reader upload hardening: keep imported manuscripts contained on small screens. */
+.reader-content {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+.reader-content :where(p, h1, h2, h3, h4, h5, blockquote, ul, ol, figure, table, img, a) {
+  max-width: 100%;
+}
+.reader-content a {
+  overflow-wrap: anywhere;
+}
+.reader-content figure {
+  margin: 2em auto;
+  overflow: hidden;
+}
+.reader-content img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.reader-content table {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.reader-content--bengali {
+  font-family: 'Noto Serif Bengali', 'Noto Sans Bengali', 'Crimson Pro', Georgia, serif;
+  line-height: 1.9;
+  text-align: left;
+  word-break: normal;
+}
+
+@media (max-width: 640px) {
+  .reader-content {
+    font-size-adjust: none;
+  }
+  .reader-content blockquote {
+    padding-left: 1rem;
+  }
+  .reader-content table {
+    font-size: 0.9em;
+  }
 }

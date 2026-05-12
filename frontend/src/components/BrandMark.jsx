@@ -1,53 +1,58 @@
 import { useSettings } from "../context/SettingsContext";
 
-const ALT = "The Earnalism Digital Library logo";
+const ALT = "Earnalism logo";
+const DEFAULT_LOGO = `${process.env.PUBLIC_URL || ""}/assets/brand/earnalism-logo.png`;
 
 /**
  * BrandMark — renders the brand identity. If admin has uploaded a logo URL via
- * Settings → Brand, it shows the image. Otherwise it falls back to the existing
- * premium serif text mark. The image height is capped so an oversized upload
- * cannot blow out the layout.
+ * Settings → Brand, it uses that image. Otherwise it uses the bundled mark.
+ * The image is capped so an oversized upload cannot blow out the layout.
  *
  * Props:
  *   variant: "header" | "footer" | "auth" | "compact"
- *           — picks size + whether the "Digital Library" italic suffix shows.
+ *           — picks the lockup scale and alignment.
  *   className: extra wrapper classes.
  */
 export default function BrandMark({ variant = "header", className = "" }) {
   const { brand } = useSettings();
-  const logo = brand?.logo_url || "";
+  const logo = brand?.logo_url || DEFAULT_LOGO;
 
-  // Bounded heights — never let an admin upload distort the page.
+  const wrapperClass = {
+    header: "inline-flex items-center gap-2.5 sm:gap-3 text-left",
+    footer: "inline-flex items-center gap-3 sm:gap-4 text-left",
+    auth: "inline-flex flex-col items-center gap-3 text-center",
+    compact: "inline-flex items-center gap-2 text-left",
+  }[variant] || "inline-flex items-center gap-3 text-left";
+
   const imgClass = {
-    header: "h-7 sm:h-9 w-auto max-w-[200px] object-contain",
-    footer: "h-9 sm:h-10 w-auto max-w-[220px] object-contain",
-    auth: "h-10 w-auto max-w-[220px] object-contain",
-    compact: "h-6 w-auto max-w-[140px] object-contain",
-  }[variant] || "h-8 w-auto max-w-[200px] object-contain";
+    header: "h-9 w-9 sm:h-11 sm:w-11",
+    footer: "h-12 w-12 sm:h-14 sm:w-14",
+    auth: "h-14 w-14 sm:h-16 sm:w-16",
+    compact: "h-7 w-7",
+  }[variant] || "h-10 w-10";
 
-  if (logo) {
-    return (
-      <span className={`inline-flex items-center ${className}`} data-testid="brand-mark">
-        <img src={logo} alt={ALT} loading="lazy" decoding="async" className={imgClass} />
-      </span>
-    );
-  }
-
-  // Fallback: premium text mark (matches the original Header/Footer wording).
-  const textSize = {
-    header: "text-[1.35rem] sm:text-[1.65rem]",
+  const textClass = {
+    header: "text-[1.12rem] sm:text-[1.42rem]",
     footer: "text-[2rem] sm:text-[2.25rem]",
     auth: "text-[1.55rem] sm:text-[1.85rem]",
     compact: "text-[1.1rem]",
   }[variant] || "text-[1.5rem]";
-  const showSuffix = variant !== "compact";
 
   return (
-    <span className={`inline-flex items-baseline gap-2 sm:gap-3 ${className}`} data-testid="brand-mark">
-      <span className={`font-serif-light ${textSize} tracking-tight text-burgundy leading-none`}>The Earnalism</span>
-      {showSuffix && (
-        <span className="hidden md:inline italic-accent text-[0.8rem] text-gold-deep leading-none whitespace-nowrap">Digital Library</span>
-      )}
+    <span className={`${wrapperClass} min-w-0 ${className}`} data-testid="brand-mark">
+      <img
+        src={logo}
+        alt={ALT}
+        loading={variant === "header" ? "eager" : "lazy"}
+        decoding="async"
+        className={`${imgClass} shrink-0 object-contain mix-blend-multiply`}
+      />
+      <span className="min-w-0 flex flex-col">
+        <span className={`font-serif-light ${textClass} tracking-tight text-burgundy leading-none whitespace-nowrap`}>Earnalism</span>
+        <span className="mt-1 text-[0.48rem] sm:text-[0.56rem] tracking-[0.18em] uppercase text-gold-deep leading-none whitespace-nowrap">
+          A Reo Enterprise Venture
+        </span>
+      </span>
     </span>
   );
 }

@@ -35,7 +35,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 glass-header" data-testid="site-header">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-baseline gap-2 sm:gap-3 min-w-0" data-testid="brand-logo" aria-label="The Earnalism Digital Library — Home">
+        <Link to="/" className="flex items-center min-w-0" data-testid="brand-logo" aria-label="Earnalism — Home">
           <BrandMark variant="header" />
         </Link>
 
