@@ -207,9 +207,49 @@ function BookEditor({ book, cats, onClose, onSave }) {
     ...book,
     benefits: lines(book.benefits), who_for: lines(book.who_for), learnings: lines(book.learnings), formats: lines(book.formats || ["Paperback", "Ebook"]),
   });
+  const [docxTemplate, setDocxTemplate] = useState(null);
+  const [frontCoverFile, setFrontCoverFile] = useState(null);
+  const [backCoverFile, setBackCoverFile] = useState(null);
+  const [importing, setImporting] = useState(false);
+  const [importResult, setImportResult] = useState(null);
   const isNew = book._new;
   const issues = publishIssues(f);
   const saveBlocked = f.is_published && issues.length > 0;
+
+  const importTemplate = async () => {
+    if (!docxTemplate) {
+      toast.error("Choose a DOCX template first.");
+      return;
+    }
+    setImporting(true);
+    setImportResult(null);
+    try {
+      const fd = new FormData();
+      fd.append("docx_file", docxTemplate);
+      if (frontCoverFile) fd.append("front_cover", frontCoverFile);
+      if (backCoverFile) fd.append("back_cover", backCoverFile);
+      const { data } = await api.post("/admin/books/import-template", fd);
+      const imported = data.book || {};
+      const categorySlug = cats.some((c) => c.slug === imported.category_slug) ? imported.category_slug : f.category_slug;
+      setF((prev) => ({
+        ...prev,
+        ...imported,
+        category_slug: categorySlug,
+        benefits: lines(imported.benefits || []),
+        who_for: lines(imported.who_for || []),
+        learnings: lines(imported.learnings || []),
+        formats: lines(imported.formats || prev.formats || ["Ebook"]),
+        is_published: false,
+      }));
+      setImportResult(data);
+      toast.success("Template imported. Review before saving.");
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally {
+      setImporting(false);
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={onClose} data-testid="book-editor">
       <div className="bg-ivory rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6 sm:p-10" onClick={(e) => e.stopPropagation()}>
@@ -217,6 +257,46 @@ function BookEditor({ book, cats, onClose, onSave }) {
           <h3 className="font-serif-display text-2xl text-burgundy">{isNew ? "New Book" : f.title}</h3>
           <button onClick={onClose} className="text-charcoal-soft"><X /></button>
         </div>
+
+        {isNew && (
+          <div className="mb-6 rounded-xl border border-brand-soft bg-ivory-warm/70 p-5" data-testid="book-template-import">
+            <div className="italic-eyebrow mb-2">Import draft</div>
+            <h4 className="font-serif-display text-[1.35rem] text-burgundy leading-snug">DOCX template and covers</h4>
+            <p className="mt-2 text-sm text-charcoal-soft leading-relaxed">
+              Upload a completed DOCX metadata template plus optional front and back covers. The form below will be prefilled for review before you save.
+            </p>
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <Field label="DOCX template">
+                <input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={(e) => setDocxTemplate(e.target.files?.[0] || null)} className="input-elegant text-sm" data-testid="book-import-docx" />
+              </Field>
+              <Field label="Front cover">
+                <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={(e) => setFrontCoverFile(e.target.files?.[0] || null)} className="input-elegant text-sm" data-testid="book-import-front-cover" />
+              </Field>
+              <Field label="Back cover">
+                <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={(e) => setBackCoverFile(e.target.files?.[0] || null)} className="input-elegant text-sm" data-testid="book-import-back-cover" />
+              </Field>
+            </div>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <button type="button" onClick={importTemplate} disabled={importing || !docxTemplate} className="btn-secondary disabled:opacity-60" data-testid="book-import-submit">
+                {importing ? "Importing…" : "Import and prefill"}
+              </button>
+              {importResult?.success && (
+                <span className="text-[0.8rem] text-charcoal-soft">
+                  Imported. Review all fields before saving.
+                </span>
+              )}
+            </div>
+            {Array.isArray(importResult?.warnings) && importResult.warnings.length > 0 && (
+              <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
+                <div className="font-medium">Import warnings</div>
+                <ul className="mt-2 list-disc pl-5">
+                  {importResult.warnings.map((warning) => <li key={warning}>{warning}</li>)}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="Title"><input className="input-elegant" value={f.title} onChange={(e) => setF({ ...f, title: e.target.value })} data-testid="book-title" /></Field>
           <Field label="Subtitle"><input className="input-elegant" value={f.subtitle} onChange={(e) => setF({ ...f, subtitle: e.target.value })} /></Field>

@@ -9,6 +9,7 @@ import re
 import hmac
 import hashlib
 import html as _html
+import io
 import json as _json
 import uuid
 import logging
@@ -320,6 +321,114 @@ def _assert_publishable(book: dict) -> None:
     blockers = _publish_blockers(book)
     if blockers:
         raise HTTPException(status_code=400, detail={"message": "Book is not ready to publish.", "issues": blockers})
+
+
+BOOK_TEMPLATE_LABELS = {
+    "title": "title",
+    "booktitle": "title",
+    "subtitle": "subtitle",
+    "author": "author",
+    "category": "category_slug",
+    "categoryslug": "category_slug",
+    "shortdescription": "short_description",
+    "description": "description",
+    "estimatedreadingtime": "estimated_reading_time",
+    "readingtime": "estimated_reading_time",
+    "formats": "formats",
+    "format": "formats",
+    "benefits": "benefits",
+    "whothisisfor": "who_for",
+    "whofor": "who_for",
+    "whatyouwilllearn": "learnings",
+    "learnings": "learnings",
+    "aboutauthor": "about_author",
+    "abouttheauthor": "about_author",
+    "aboutpublisher": "about_author",
+    "abouttheauthorpublisher": "about_author",
+    "buyurl": "buy_url",
+    "paperbackprice": "price_paperback",
+    "ebookprice": "price_ebook",
+}
+BOOK_TEMPLATE_LIST_FIELDS = {"formats", "benefits", "who_for", "learnings"}
+BOOK_TEMPLATE_MULTILINE_FIELDS = {"short_description", "description", "about_author"}
+
+
+def _book_template_label_key(label: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", normalize_text(label).strip().lower())
+
+
+def _append_book_template_value(target: dict, field: str, value: str) -> None:
+    value = normalize_text(value).strip()
+    if not value:
+        return
+    target.setdefault(field, []).append(value)
+
+
+def _book_template_list(values: List[str]) -> List[str]:
+    out: List[str] = []
+    for value in values:
+        for part in re.split(r"[\n,;]", value):
+            item = re.sub(r"^\s*[-*•–—\d.)]+\s*", "", normalize_text(part)).strip()
+            if item:
+                out.append(item)
+    return out
+
+
+def _parse_book_template_docx(file_bytes: bytes) -> Tuple[dict, List[str], str]:
+    try:
+        import mammoth  # type: ignore
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"DOCX parser unavailable: {e}")
+
+    result = mammoth.extract_raw_text(io.BytesIO(file_bytes))
+    raw_text = normalize_text(result.value or "")
+    warnings = [str(m.message) for m in result.messages if getattr(m, "message", None)]
+    collected: dict = {}
+    current_field: Optional[str] = None
+
+    for raw_line in raw_text.splitlines():
+        line = normalize_text(raw_line).strip()
+        if not line:
+            continue
+        match = re.match(r"^([^:：]{2,80})[:：]\s*(.*)$", line)
+        if match:
+            field = BOOK_TEMPLATE_LABELS.get(_book_template_label_key(match.group(1)))
+            if field:
+                current_field = field
+                _append_book_template_value(collected, field, match.group(2))
+                continue
+            current_field = None
+        elif current_field:
+            _append_book_template_value(collected, current_field, line)
+
+    def scalar(field: str, default: str = "") -> str:
+        values = collected.get(field) or []
+        if field in BOOK_TEMPLATE_MULTILINE_FIELDS:
+            return "\n".join(values).strip() or default
+        return (values[0].strip() if values else "") or default
+
+    category_value = scalar("category_slug", "business")
+    imported = {
+        "title": scalar("title"),
+        "subtitle": scalar("subtitle"),
+        "author": scalar("author", "The Earnalism"),
+        "category_slug": slugify(category_value, fallback="business"),
+        "short_description": scalar("short_description"),
+        "description": scalar("description"),
+        "estimated_reading_time": scalar("estimated_reading_time"),
+        "price_paperback": scalar("price_paperback"),
+        "price_ebook": scalar("price_ebook"),
+        "buy_url": scalar("buy_url"),
+        "formats": _book_template_list(collected.get("formats") or []) or ["Ebook"],
+        "benefits": _book_template_list(collected.get("benefits") or []),
+        "who_for": _book_template_list(collected.get("who_for") or []),
+        "learnings": _book_template_list(collected.get("learnings") or []),
+        "about_author": scalar("about_author"),
+        "is_published": False,
+    }
+    if not imported["title"]:
+        warnings.append("No Title field was found in the DOCX template.")
+    return imported, warnings, raw_text
 
 
 # ---------- Models ----------
@@ -1276,6 +1385,73 @@ async def admin_list_books(_=Depends(require_admin)):
 @api.get("/admin/books/{slug}", response_model=Book)
 async def admin_get_book(slug: str, _=Depends(require_admin)):
     return await _load_book_or_404(slug)
+
+
+@api.post("/admin/books/import-template")
+async def admin_import_book_template(
+    docx_file: UploadFile = File(...),
+    front_cover: Optional[UploadFile] = File(default=None),
+    back_cover: Optional[UploadFile] = File(default=None),
+    _=Depends(require_admin),
+):
+    filename = docx_file.filename or "book-template.docx"
+    if not filename.lower().endswith(".docx"):
+        raise HTTPException(status_code=400, detail="Upload a DOCX book template.")
+    body = await docx_file.read()
+    if len(body) > 25 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="DOCX template must be under 25MB")
+
+    book_data, warnings, raw_text = _parse_book_template_docx(body)
+    import_id = f"import-{uuid.uuid4().hex[:12]}"
+
+    async def process_import_cover(file: Optional[UploadFile], kind: str) -> Optional[dict]:
+        if not file:
+            return None
+        if file.content_type not in _ALLOWED_COVER_TYPES:
+            raise HTTPException(status_code=400, detail=f"Unsupported {kind} cover type. Use JPG, PNG, WebP, or GIF.")
+        cover_body = await file.read()
+        if len(cover_body) > 10 * 1024 * 1024:
+            raise HTTPException(status_code=400, detail=f"{kind.title()} cover must be under 10MB")
+        _ensure_cloudinary()
+        try:
+            from utils.content_processor import process_book_cover  # type: ignore
+        except Exception as e:
+            raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
+        try:
+            return process_book_cover(cover_body, import_id, kind=kind)
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=f"{kind.title()} cover processing failed: {e}")
+
+    front = await process_import_cover(front_cover, "front")
+    if front:
+        book_data.update({
+            "cover_url": front["cover_url"],
+            "cover_image_url": front["cover_url"],
+            "thumbnail_url": front["thumbnail_url"],
+            "blur_placeholder": front["blur_placeholder"],
+            "dominant_color": front["dominant_color"],
+            "cover_processing_status": "ready",
+            "cover_processing_error": "",
+        })
+
+    back = await process_import_cover(back_cover, "back")
+    if back:
+        book_data.update({
+            "back_cover_url": back["cover_url"],
+            "back_cover_image_url": back["cover_url"],
+            "back_cover_thumbnail_url": back["thumbnail_url"],
+            "back_cover_blur_placeholder": back["blur_placeholder"],
+            "back_cover_dominant_color": back["dominant_color"],
+            "back_cover_processing_status": "ready",
+            "back_cover_processing_error": "",
+        })
+
+    return {
+        "success": True,
+        "book": book_data,
+        "warnings": warnings,
+        "raw_text_preview": raw_text[:2000],
+    }
 
 
 # ---------- Admin: Chapters (manual paste only for Phase 1) ----------
