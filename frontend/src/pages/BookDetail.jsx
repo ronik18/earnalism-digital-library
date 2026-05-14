@@ -65,6 +65,14 @@ export default function BookDetail() {
               <img src={book.cover_image_url} alt={book.title} className="w-full h-full object-cover" />
             ) : <div className="w-full h-full bg-beige-deep flex items-center justify-center font-serif-light text-7xl text-burgundy">E</div>}
           </div>
+          {book.back_cover_image_url && (
+            <div className="mt-5 max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
+              <div className="overline mb-2">Back cover</div>
+              <div className="aspect-[3/4] rounded-lg overflow-hidden border border-brand-soft bg-ivory-warm">
+                <img src={book.back_cover_image_url} alt={`${book.title} back cover`} className="w-full h-full object-contain" loading="lazy" />
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="lg:col-span-7">

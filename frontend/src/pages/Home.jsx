@@ -22,8 +22,12 @@ export default function Home() {
   });
 
   useEffect(() => {
-    api.get("/categories").then((r) => setCategories(r.data)).catch(() => {});
-    api.get("/featured").then((r) => setFeatured(r.data?.book)).catch(() => {});
+    Promise.all([api.get("/categories"), api.get("/featured")])
+      .then(([categoryRes, featuredRes]) => {
+        setCategories(categoryRes.data || []);
+        setFeatured(featuredRes.data?.book || null);
+      })
+      .catch(() => {});
   }, []);
 
   const subscribe = async (e) => {

@@ -10,6 +10,12 @@ const THEMES = {
   sepia: { canvas: '#EFE4C8', surface: '#E5D8B5', text: '#3B2010', accent: '#8B1A2A', border: '#D5C8A5', label: 'Sepia' },
 };
 
+const BENGALI_RE = /[\u0980-\u09FF]/;
+const READER_SERIF = "'Crimson Pro', 'Noto Serif Bengali', Georgia, serif";
+const READER_DISPLAY = "'Cormorant Garamond', 'Noto Serif Bengali', serif";
+const BENGALI_SERIF = "'Noto Serif Bengali', 'Crimson Pro', Georgia, serif";
+const UI_FONT = "Inter, 'Noto Sans Bengali', sans-serif";
+
 const FONT_SIZES = [
   { label: 'XS', size: '15px' },
   { label: 'S', size: '17px' },
@@ -42,6 +48,30 @@ function getCurrentReaderPath() {
 
 function apiErrorMessage(err, fallback) {
   return formatError(err.response?.data?.detail) || err.message || fallback;
+}
+
+function containsBengaliText(value) {
+  return BENGALI_RE.test(value || '');
+}
+
+function sanitizeReaderHtml(html) {
+  if (typeof document === 'undefined') return html || '';
+  const template = document.createElement('template');
+  template.innerHTML = html || '';
+  template.content.querySelectorAll('script,style,iframe,object,embed,form,input,button,meta,link').forEach((node) => node.remove());
+  template.content.querySelectorAll('*').forEach((node) => {
+    Array.from(node.attributes).forEach((attr) => {
+      const name = attr.name.toLowerCase();
+      const value = attr.value || '';
+      if (name.startsWith('on')) node.removeAttribute(attr.name);
+      if ((name === 'href' || name === 'src') && /^\s*javascript:/i.test(value)) node.removeAttribute(attr.name);
+    });
+    if (node.tagName?.toLowerCase() === 'img' && !node.getAttribute('src')) {
+      node.setAttribute('alt', node.getAttribute('alt') || 'Image unavailable');
+      node.classList.add('reader-img--error');
+    }
+  });
+  return template.innerHTML;
 }
 
 function wrapWordsInSpans(html) {
@@ -315,7 +345,7 @@ export default function Reader() {
           return;
         }
 
-        const wrapped = wrapWordsInSpans(loadedChapter.content);
+        const wrapped = wrapWordsInSpans(sanitizeReaderHtml(loadedChapter.content));
         setProcessedHtml(wrapped.html);
         setTotalWords(wrapped.totalWords);
         setLockedState(null);
@@ -548,11 +578,16 @@ export default function Reader() {
     return Boolean(illustrationCategory || uploadedImages);
   }, [book, chapter, processedHtml]);
 
+  const isBengali = useMemo(
+    () => containsBengaliText(`${book?.title || ''} ${chapter?.title || ''} ${processedHtml || ''}`),
+    [book, chapter, processedHtml],
+  );
+
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen" style={{ background: THEMES.beige.canvas }}>
         <Loader2 size={32} className="animate-spin" color="#6B1020" />
-        <div style={{ fontFamily: "'Crimson Pro', Georgia, serif", fontSize: 17, color: '#7A5C62' }}>
+        <div style={{ fontFamily: READER_SERIF, fontSize: 17, color: '#7A5C62' }}>
           Opening chapter…
         </div>
       </div>
@@ -563,7 +598,7 @@ export default function Reader() {
     return (
       <div className="flex flex-col items-center justify-center gap-4 px-6 text-center min-h-screen" style={{ background: THEMES.beige.canvas }}>
         <AlertCircle size={28} color="#6B1020" />
-        <div style={{ fontFamily: "'Crimson Pro', Georgia, serif", fontSize: 18, color: '#6B1020' }}>
+        <div style={{ fontFamily: READER_SERIF, fontSize: 18, color: '#6B1020' }}>
           {error}
         </div>
         <button type="button" onClick={() => navigate(-1)} className="px-6 py-2 rounded-full" style={{ background: '#6B1020', color: '#FAF7F0', fontFamily: 'Inter', fontSize: 14 }}>
@@ -645,23 +680,23 @@ export default function Reader() {
 
       <header className="fixed top-0.5 left-0 right-0 z-40" style={{ background: `${colors.canvas}EE`, backdropFilter: 'blur(12px)', borderBottom: `1px solid ${colors.border}`, transform: toolbarVisible ? 'translateY(0)' : 'translateY(-100%)', transition: 'transform 300ms ease' }}>
         <div className="flex items-center justify-between px-4 py-3">
-          <button type="button" onClick={() => navigate(`/book/${bookId}`)} className="flex items-center gap-2" style={{ color: colors.accent, fontFamily: 'Inter', fontSize: 13 }}>
+        <button type="button" onClick={() => navigate(`/book/${bookId}`)} className="flex items-center gap-2 min-w-0" style={{ color: colors.accent, fontFamily: UI_FONT, fontSize: 13 }}>
             <ChevronLeft size={16} />
             <span className="hidden sm:inline">{book?.title}</span>
           </button>
 
           <div className="flex flex-col items-center text-center min-w-0 px-2">
-            <div className="truncate" style={{ fontFamily: "'Crimson Pro', Georgia, serif", fontSize: 14, color: colors.text, maxWidth: 180 }}>
+            <div className="truncate" lang={isBengali ? 'bn' : undefined} style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_SERIF, fontSize: 14, color: colors.text, maxWidth: 220 }}>
               {chapter?.title}
             </div>
-            <div style={{ fontFamily: 'Inter', fontSize: 11, color: '#A88A8F' }}>
+            <div style={{ fontFamily: UI_FONT, fontSize: 11, color: '#A88A8F' }}>
               Ch. {Math.max(0, currentIdx) + 1} of {chapters.length}
             </div>
           </div>
 
           <div className="flex items-center gap-3">
             {walletSeconds > 0 && (
-              <div className={lowBalance ? 'wallet-low flex items-center gap-1' : 'flex items-center gap-1'} style={{ fontFamily: 'Inter', fontSize: 12, color: lowBalance ? '#D4A843' : '#A88A8F' }}>
+              <div className={lowBalance ? 'wallet-low flex items-center gap-1' : 'flex items-center gap-1'} style={{ fontFamily: UI_FONT, fontSize: 12, color: lowBalance ? '#D4A843' : '#A88A8F' }}>
                 <Clock size={14} />
                 {formatWalletTime(walletSeconds)}
               </div>
@@ -681,7 +716,7 @@ export default function Reader() {
 
       <main key={chapter?.id || chapterId || bookId} className="flex-1 px-5 pt-20 pb-36 page-enter">
         <div className="reader-canvas mx-auto">
-          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 500, textAlign: 'center', color: colors.accent, letterSpacing: '-0.01em', lineHeight: 1.4, marginBottom: 24 }}>
+          <h2 lang={isBengali ? 'bn' : undefined} style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_DISPLAY, fontSize: 28, fontWeight: 500, textAlign: 'center', color: colors.accent, letterSpacing: '-0.01em', lineHeight: isBengali ? 1.55 : 1.4, marginBottom: 24, overflowWrap: 'break-word' }}>
             {chapter?.title}
           </h2>
           <div className="flex items-center gap-3 mb-10 justify-center">
@@ -689,7 +724,13 @@ export default function Reader() {
             <span style={{ color: colors.accent, fontSize: 20 }}>❧</span>
             <div className="flex-1 h-px" style={{ background: colors.border }} />
           </div>
-          <div ref={contentRef} className="drop-cap reader-content" style={{ fontFamily: "'Crimson Pro', Georgia, serif", fontSize: FONT_SIZES[fontSizeIdx].size, lineHeight: 1.75, color: colors.text, filter: contentBlurred ? 'blur(12px)' : 'none', transition: 'filter 300ms ease', userSelect: 'none', WebkitUserSelect: 'none' }} dangerouslySetInnerHTML={{ __html: processedHtml }} />
+          <div
+            ref={contentRef}
+            className={isBengali ? 'reader-content reader-content--bengali' : 'drop-cap reader-content'}
+            lang={isBengali ? 'bn' : undefined}
+            style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_SERIF, fontSize: FONT_SIZES[fontSizeIdx].size, lineHeight: isBengali ? 1.9 : 1.75, color: colors.text, filter: contentBlurred ? 'blur(12px)' : 'none', transition: 'filter 300ms ease', userSelect: 'none', WebkitUserSelect: 'none' }}
+            dangerouslySetInnerHTML={{ __html: processedHtml }}
+          />
         </div>
       </main>
 
@@ -876,7 +917,7 @@ export default function Reader() {
           <div className="absolute inset-0 bg-black/40" style={{ backdropFilter: 'blur(4px)' }} onClick={() => setShowTOC(false)} />
           <div className="relative right-0 ml-auto w-72 h-full overflow-y-auto py-6 px-5 animate-slide-up" style={{ background: colors.surface }}>
             <div className="flex justify-between items-center mb-6">
-              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, color: colors.text }}>
+              <span style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_DISPLAY, fontSize: 20, color: colors.text }}>
                 Contents
               </span>
               <button type="button" onClick={() => setShowTOC(false)} aria-label="Close contents">
@@ -888,8 +929,8 @@ export default function Reader() {
               {chapters.map((item, index) => {
                 const current = index === currentIdx;
                 return (
-                  <button key={item.id} type="button" onClick={() => { setShowTOC(false); goToChapter(item.id); }} className="w-full text-left px-3 py-2.5 rounded-lg transition-all" style={{ background: current ? 'rgba(107,16,32,0.08)' : 'transparent', borderLeft: current ? '2px solid #6B1020' : '2px solid transparent', color: current ? '#6B1020' : colors.text, fontFamily: "'Crimson Pro', Georgia, serif", fontSize: 15 }}>
-                    <span style={{ fontFamily: 'Inter', fontSize: 11, color: '#A88A8F', marginRight: 6 }}>
+                  <button key={item.id} type="button" onClick={() => { setShowTOC(false); goToChapter(item.id); }} className="w-full text-left px-3 py-2.5 rounded-lg transition-all" lang={containsBengaliText(item.title) ? 'bn' : undefined} style={{ background: current ? 'rgba(107,16,32,0.08)' : 'transparent', borderLeft: current ? '2px solid #6B1020' : '2px solid transparent', color: current ? '#6B1020' : colors.text, fontFamily: containsBengaliText(item.title) ? BENGALI_SERIF : READER_SERIF, fontSize: 15, overflowWrap: 'break-word' }}>
+                    <span style={{ fontFamily: UI_FONT, fontSize: 11, color: '#A88A8F', marginRight: 6 }}>
                       {index + 1}.
                     </span>
                     {item.title}

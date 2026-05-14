@@ -8,12 +8,15 @@ import os
 import re
 import hmac
 import hashlib
+import html as _html
+import io
 import json as _json
 import uuid
 import logging
 import time
 import bcrypt
 import jwt
+import unicodedata
 from collections import defaultdict, deque
 from datetime import datetime, timezone, timedelta
 from typing import Deque, Dict, List, Optional, Tuple
@@ -35,6 +38,18 @@ ENVIRONMENT = os.environ.get("ENVIRONMENT", "production").strip().lower()
 LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO").strip().upper()
 logging.basicConfig(level=getattr(logging, LOG_LEVEL, logging.INFO), format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+
+class UTF8JSONResponse(JSONResponse):
+    media_type = "application/json; charset=utf-8"
+
+    def render(self, content) -> bytes:
+        return _json.dumps(
+            content,
+            ensure_ascii=False,
+            allow_nan=False,
+            separators=(",", ":"),
+        ).encode("utf-8")
 
 
 def _env_bool(name: str, default: bool) -> bool:
@@ -248,12 +263,172 @@ def _clear_session_cookie(response: Response) -> None:
 
 
 # ---------- Utils ----------
-def slugify(text: str) -> str:
-    text = re.sub(r"[^a-zA-Z0-9\s-]", "", text or "").strip().lower()
-    return re.sub(r"[\s_-]+", "-", text) or str(uuid.uuid4())[:8]
+def normalize_text(text: str) -> str:
+    return unicodedata.normalize("NFC", text or "")
+
+
+def slugify(text: str, fallback: Optional[str] = None) -> str:
+    text = normalize_text(text)
+    text = re.sub(r"[^a-zA-Z0-9\s-]", "", text).strip().lower()
+    slug = re.sub(r"[\s_-]+", "-", text).strip("-")
+    return slug or fallback or str(uuid.uuid4())[:8]
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+HTML_TAG_RE = re.compile(r"</?[a-z][\s\S]*>", re.IGNORECASE)
+
+
+def _manual_content_to_render_html(content: str) -> tuple[str, List[str]]:
+    text = normalize_text(content or "")
+    if not text.strip():
+        return "", []
+    if not HTML_TAG_RE.search(text):
+        paragraphs = re.split(r"\n{2,}", text.strip())
+        html = "".join(
+            f"<p>{_html.escape(p.strip()).replace(chr(10), '<br>')}</p>"
+            for p in paragraphs
+            if p.strip()
+        )
+        return html, []
+    try:
+        from utils.content_processor import sanitize_chapter_html_fragment  # type: ignore
+    except Exception:
+        return _html.escape(text), ["Content sanitizer unavailable; HTML was escaped."]
+    return sanitize_chapter_html_fragment(text)
+
+
+def _publish_blockers(book: dict) -> List[str]:
+    if not normalize_text(book.get("title", "")).strip():
+        return ["Title is required."]
+    if not book.get("is_published"):
+        return []
+
+    blockers: List[str] = []
+    if not (book.get("cover_image_url") or book.get("cover_url")):
+        blockers.append("Front cover is required before publishing.")
+
+    for chapter in book.get("chapters") or []:
+        status = chapter.get("processing_status") or "ready"
+        if status != "ready":
+            title = normalize_text(chapter.get("title", "")).strip() or "Untitled chapter"
+            blockers.append(f"Chapter '{title}' is {status}.")
+    return blockers
+
+
+def _assert_publishable(book: dict) -> None:
+    blockers = _publish_blockers(book)
+    if blockers:
+        raise HTTPException(status_code=400, detail={"message": "Book is not ready to publish.", "issues": blockers})
+
+
+BOOK_TEMPLATE_LABELS = {
+    "title": "title",
+    "booktitle": "title",
+    "subtitle": "subtitle",
+    "author": "author",
+    "category": "category_slug",
+    "categoryslug": "category_slug",
+    "shortdescription": "short_description",
+    "description": "description",
+    "estimatedreadingtime": "estimated_reading_time",
+    "readingtime": "estimated_reading_time",
+    "formats": "formats",
+    "format": "formats",
+    "benefits": "benefits",
+    "whothisisfor": "who_for",
+    "whofor": "who_for",
+    "whatyouwilllearn": "learnings",
+    "learnings": "learnings",
+    "aboutauthor": "about_author",
+    "abouttheauthor": "about_author",
+    "aboutpublisher": "about_author",
+    "abouttheauthorpublisher": "about_author",
+    "buyurl": "buy_url",
+    "paperbackprice": "price_paperback",
+    "ebookprice": "price_ebook",
+}
+BOOK_TEMPLATE_LIST_FIELDS = {"formats", "benefits", "who_for", "learnings"}
+BOOK_TEMPLATE_MULTILINE_FIELDS = {"short_description", "description", "about_author"}
+
+
+def _book_template_label_key(label: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", normalize_text(label).strip().lower())
+
+
+def _append_book_template_value(target: dict, field: str, value: str) -> None:
+    value = normalize_text(value).strip()
+    if not value:
+        return
+    target.setdefault(field, []).append(value)
+
+
+def _book_template_list(values: List[str]) -> List[str]:
+    out: List[str] = []
+    for value in values:
+        for part in re.split(r"[\n,;]", value):
+            item = re.sub(r"^\s*[-*•–—\d.)]+\s*", "", normalize_text(part)).strip()
+            if item:
+                out.append(item)
+    return out
+
+
+def _parse_book_template_docx(file_bytes: bytes) -> Tuple[dict, List[str], str]:
+    try:
+        import mammoth  # type: ignore
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"DOCX parser unavailable: {e}")
+
+    result = mammoth.extract_raw_text(io.BytesIO(file_bytes))
+    raw_text = normalize_text(result.value or "")
+    warnings = [str(m.message) for m in result.messages if getattr(m, "message", None)]
+    collected: dict = {}
+    current_field: Optional[str] = None
+
+    for raw_line in raw_text.splitlines():
+        line = normalize_text(raw_line).strip()
+        if not line:
+            continue
+        match = re.match(r"^([^:：]{2,80})[:：]\s*(.*)$", line)
+        if match:
+            field = BOOK_TEMPLATE_LABELS.get(_book_template_label_key(match.group(1)))
+            if field:
+                current_field = field
+                _append_book_template_value(collected, field, match.group(2))
+                continue
+            current_field = None
+        elif current_field:
+            _append_book_template_value(collected, current_field, line)
+
+    def scalar(field: str, default: str = "") -> str:
+        values = collected.get(field) or []
+        if field in BOOK_TEMPLATE_MULTILINE_FIELDS:
+            return "\n".join(values).strip() or default
+        return (values[0].strip() if values else "") or default
+
+    category_value = scalar("category_slug", "business")
+    imported = {
+        "title": scalar("title"),
+        "subtitle": scalar("subtitle"),
+        "author": scalar("author", "The Earnalism"),
+        "category_slug": slugify(category_value, fallback="business"),
+        "short_description": scalar("short_description"),
+        "description": scalar("description"),
+        "estimated_reading_time": scalar("estimated_reading_time"),
+        "price_paperback": scalar("price_paperback"),
+        "price_ebook": scalar("price_ebook"),
+        "buy_url": scalar("buy_url"),
+        "formats": _book_template_list(collected.get("formats") or []) or ["Ebook"],
+        "benefits": _book_template_list(collected.get("benefits") or []),
+        "who_for": _book_template_list(collected.get("who_for") or []),
+        "learnings": _book_template_list(collected.get("learnings") or []),
+        "about_author": scalar("about_author"),
+        "is_published": False,
+    }
+    if not imported["title"]:
+        warnings.append("No Title field was found in the DOCX template.")
+    return imported, warnings, raw_text
 
 
 # ---------- Models ----------
@@ -292,6 +467,17 @@ class Chapter(BaseModel):
     title: str
     content: str = ""
     order: int = 0
+    has_images: bool = False
+    image_count: int = 0
+    word_count: int = 0
+    reading_minutes: int = 0
+    language_hint: str = ""
+    processing_status: str = "ready"
+    processing_error: str = ""
+    processing_warnings: List[str] = Field(default_factory=list)
+    source_filename: str = ""
+    uploaded_at: str = ""
+    updated_at: str = ""
 
 class ChapterIn(BaseModel):
     title: str
@@ -310,7 +496,20 @@ class Book(BaseModel):
     category_slug: str
     short_description: str = ""
     description: str = ""
+    cover_url: str = ""
     cover_image_url: str = ""
+    thumbnail_url: str = ""
+    blur_placeholder: str = ""
+    dominant_color: str = ""
+    back_cover_url: str = ""
+    back_cover_image_url: str = ""
+    back_cover_thumbnail_url: str = ""
+    back_cover_blur_placeholder: str = ""
+    back_cover_dominant_color: str = ""
+    cover_processing_status: str = ""
+    cover_processing_error: str = ""
+    back_cover_processing_status: str = ""
+    back_cover_processing_error: str = ""
     estimated_reading_time: str = ""
     price_paperback: str = ""
     price_ebook: str = ""
@@ -332,6 +531,7 @@ class BookIn(BaseModel):
     short_description: str = ""
     description: str = ""
     cover_image_url: str = ""
+    back_cover_image_url: str = ""
     estimated_reading_time: str = ""
     price_paperback: str = ""
     price_ebook: str = ""
@@ -549,6 +749,17 @@ def _strip_paid_chapter_content(book: dict) -> dict:
     return out
 
 
+def _strip_all_chapter_content(book: dict) -> dict:
+    if not book:
+        return book
+    chapters = book.get("chapters") or []
+    if not chapters:
+        return book
+    out = dict(book)
+    out["chapters"] = [{**c, "content": ""} for c in chapters]
+    return out
+
+
 # ---------- App ----------
 async def initialize_database_indexes() -> None:
     await db.users.create_index("email", unique=True)
@@ -557,6 +768,7 @@ async def initialize_database_indexes() -> None:
     await db.users.create_index([("role", 1), ("status", 1), ("created_at", -1)])
 
     await db.books.create_index("slug", unique=True)
+    await db.books.create_index([("slug", 1), ("is_published", 1)])
     await db.books.create_index([("is_published", 1), ("created_at", -1)])
     await db.books.create_index([("category_slug", 1), ("is_published", 1), ("created_at", -1)])
 
@@ -733,7 +945,13 @@ async def lifespan(_app: FastAPI):
     client.close()
 
 
-app = FastAPI(title="The Earnalism API", lifespan=lifespan)
+app = FastAPI(
+    title="The Earnalism API",
+    lifespan=lifespan,
+    default_response_class=UTF8JSONResponse,
+    docs_url=None if ENVIRONMENT == "production" else "/docs",
+    redoc_url=None if ENVIRONMENT == "production" else "/redoc",
+)
 api = APIRouter(prefix="/api")
 
 
@@ -825,7 +1043,7 @@ def _json_error_response(
     detail=None,
     headers: Optional[dict] = None,
 ) -> JSONResponse:
-    response = JSONResponse(
+    response = UTF8JSONResponse(
         status_code=status_code,
         content=_error_payload(request, status_code, message, detail),
         headers=headers,
@@ -983,16 +1201,21 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     query: dict = {"is_published": True}
     if category and category != "all":
         query["category_slug"] = category
-    if q:
+    q_norm = normalize_text(q).strip() if q else ""
+    if q_norm:
+        pattern = re.escape(q_norm)
         query["$or"] = [
-            {"title": {"$regex": q, "$options": "i"}},
-            {"subtitle": {"$regex": q, "$options": "i"}},
-            {"short_description": {"$regex": q, "$options": "i"}},
-            {"category_slug": {"$regex": q, "$options": "i"}},
+            {"title": {"$regex": pattern, "$options": "i"}},
+            {"subtitle": {"$regex": pattern, "$options": "i"}},
+            {"author": {"$regex": pattern, "$options": "i"}},
+            {"short_description": {"$regex": pattern, "$options": "i"}},
+            {"description": {"$regex": pattern, "$options": "i"}},
+            {"category_slug": {"$regex": pattern, "$options": "i"}},
+            {"chapters.title": {"$regex": pattern, "$options": "i"}},
         ]
     docs = await db.books.find(query, {"_id": 0}).sort("created_at", -1).to_list(500)
-    # Public list never leaks paid chapter bodies.
-    return [_strip_paid_chapter_content(d) for d in docs]
+    # Public list is metadata-only so the library page does not ship manuscript bodies.
+    return [_strip_all_chapter_content(d) for d in docs]
 
 @api.get("/books/{slug}", response_model=Book)
 async def get_book(slug: str):
@@ -1109,10 +1332,17 @@ async def get_brand():
 # ---------- Admin: Books ----------
 @api.post("/admin/books", response_model=Book)
 async def admin_create_book(payload: BookIn, _=Depends(require_admin)):
-    slug = slugify(payload.slug or payload.title)
+    data = payload.model_dump()
+    book_id = str(uuid.uuid4())
+    data["title"] = normalize_text(data.get("title", "")).strip()
+    if not data["title"]:
+        raise HTTPException(status_code=400, detail="Title is required")
+    data["author"] = normalize_text(data.get("author", "")).strip() or "The Earnalism"
+    slug = slugify(data.pop("slug", None) or data["title"], fallback=f"book-{book_id[:8]}")
     if await db.books.find_one({"slug": slug}):
         raise HTTPException(status_code=400, detail="Slug already exists")
-    book = Book(slug=slug, **{k: v for k, v in payload.model_dump().items() if k != "slug"})
+    book = Book(id=book_id, slug=slug, **data)
+    _assert_publishable(book.model_dump())
     await db.books.insert_one(book.model_dump())
     return book
 
@@ -1121,9 +1351,23 @@ async def admin_update_book(slug: str, payload: BookIn, _=Depends(require_admin)
     existing = await db.books.find_one({"slug": slug}, {"_id": 0})
     if not existing:
         raise HTTPException(status_code=404, detail="Book not found")
-    new_slug = slugify(payload.slug or payload.title) if (payload.slug or payload.title != existing["title"]) else slug
     update = payload.model_dump()
+    update["title"] = normalize_text(update.get("title", "")).strip()
+    if not update["title"]:
+        raise HTTPException(status_code=400, detail="Title is required")
+    update["author"] = normalize_text(update.get("author", "")).strip() or "The Earnalism"
+    requested_slug = update.get("slug")
+    if requested_slug:
+        new_slug = slugify(requested_slug, fallback=slug)
+    elif update["title"] != normalize_text(existing.get("title", "")):
+        new_slug = slugify(update["title"], fallback=slug)
+    else:
+        new_slug = slug
+    if new_slug != slug and await db.books.find_one({"slug": new_slug}, {"_id": 0}):
+        raise HTTPException(status_code=400, detail="Slug already exists")
     update["slug"] = new_slug
+    candidate = {**existing, **update}
+    _assert_publishable(candidate)
     await db.books.update_one({"slug": slug}, {"$set": update})
     refreshed = await db.books.find_one({"slug": new_slug}, {"_id": 0})
     return refreshed
@@ -1138,6 +1382,78 @@ async def admin_list_books(_=Depends(require_admin)):
     return await db.books.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
 
 
+@api.get("/admin/books/{slug}", response_model=Book)
+async def admin_get_book(slug: str, _=Depends(require_admin)):
+    return await _load_book_or_404(slug)
+
+
+@api.post("/admin/books/import-template")
+async def admin_import_book_template(
+    docx_file: UploadFile = File(...),
+    front_cover: Optional[UploadFile] = File(default=None),
+    back_cover: Optional[UploadFile] = File(default=None),
+    _=Depends(require_admin),
+):
+    filename = docx_file.filename or "book-template.docx"
+    if not filename.lower().endswith(".docx"):
+        raise HTTPException(status_code=400, detail="Upload a DOCX book template.")
+    body = await docx_file.read()
+    if len(body) > 25 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="DOCX template must be under 25MB")
+
+    book_data, warnings, raw_text = _parse_book_template_docx(body)
+    import_id = f"import-{uuid.uuid4().hex[:12]}"
+
+    async def process_import_cover(file: Optional[UploadFile], kind: str) -> Optional[dict]:
+        if not file:
+            return None
+        if file.content_type not in _ALLOWED_COVER_TYPES:
+            raise HTTPException(status_code=400, detail=f"Unsupported {kind} cover type. Use JPG, PNG, WebP, or GIF.")
+        cover_body = await file.read()
+        if len(cover_body) > 10 * 1024 * 1024:
+            raise HTTPException(status_code=400, detail=f"{kind.title()} cover must be under 10MB")
+        _ensure_cloudinary()
+        try:
+            from utils.content_processor import process_book_cover  # type: ignore
+        except Exception as e:
+            raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
+        try:
+            return process_book_cover(cover_body, import_id, kind=kind)
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=f"{kind.title()} cover processing failed: {e}")
+
+    front = await process_import_cover(front_cover, "front")
+    if front:
+        book_data.update({
+            "cover_url": front["cover_url"],
+            "cover_image_url": front["cover_url"],
+            "thumbnail_url": front["thumbnail_url"],
+            "blur_placeholder": front["blur_placeholder"],
+            "dominant_color": front["dominant_color"],
+            "cover_processing_status": "ready",
+            "cover_processing_error": "",
+        })
+
+    back = await process_import_cover(back_cover, "back")
+    if back:
+        book_data.update({
+            "back_cover_url": back["cover_url"],
+            "back_cover_image_url": back["cover_url"],
+            "back_cover_thumbnail_url": back["thumbnail_url"],
+            "back_cover_blur_placeholder": back["blur_placeholder"],
+            "back_cover_dominant_color": back["dominant_color"],
+            "back_cover_processing_status": "ready",
+            "back_cover_processing_error": "",
+        })
+
+    return {
+        "success": True,
+        "book": book_data,
+        "warnings": warnings,
+        "raw_text_preview": raw_text[:2000],
+    }
+
+
 # ---------- Admin: Chapters (manual paste only for Phase 1) ----------
 async def _load_book_or_404(slug: str) -> dict:
     doc = await db.books.find_one({"slug": slug}, {"_id": 0})
@@ -1150,15 +1466,37 @@ async def admin_add_chapter(slug: str, payload: ChapterIn, _=Depends(require_adm
     book = await _load_book_or_404(slug)
     existing = book.get("chapters", []) or []
     next_order = max([c.get("order", 0) for c in existing], default=-1) + 1
-    chapter = Chapter(title=payload.title.strip(), content=payload.content, order=next_order).model_dump()
+    title = normalize_text(payload.title).strip()
+    if not title:
+        raise HTTPException(status_code=400, detail="Chapter title is required")
+    content, warnings = _manual_content_to_render_html(payload.content)
+    chapter = Chapter(
+        title=title,
+        content=content,
+        order=next_order,
+        processing_status="ready",
+        processing_warnings=warnings,
+        updated_at=now_iso(),
+    ).model_dump()
     await db.books.update_one({"slug": slug}, {"$push": {"chapters": chapter}})
     return await _load_book_or_404(slug)
 
 @api.put("/admin/books/{slug}/chapters/{cid}", response_model=Book)
 async def admin_update_chapter(slug: str, cid: str, payload: ChapterIn, _=Depends(require_admin)):
+    title = normalize_text(payload.title).strip()
+    if not title:
+        raise HTTPException(status_code=400, detail="Chapter title is required")
+    content, warnings = _manual_content_to_render_html(payload.content)
     res = await db.books.update_one(
         {"slug": slug, "chapters.id": cid},
-        {"$set": {"chapters.$.title": payload.title.strip(), "chapters.$.content": payload.content}},
+        {"$set": {
+            "chapters.$.title": title,
+            "chapters.$.content": content,
+            "chapters.$.processing_status": "ready",
+            "chapters.$.processing_error": "",
+            "chapters.$.processing_warnings": warnings,
+            "chapters.$.updated_at": now_iso(),
+        }},
     )
     if res.matched_count == 0:
         raise HTTPException(status_code=404, detail="Chapter not found")
@@ -1209,9 +1547,15 @@ _ALLOWED_CHAPTER_EXTS = {"docx", "md", "markdown", "html", "txt"}
 
 
 @api.post("/admin/books/{slug}/cover")
-async def admin_upload_cover(slug: str, file: UploadFile = File(...), _=Depends(require_admin)):
+async def admin_upload_cover(
+    slug: str,
+    kind: str = "front",
+    file: UploadFile = File(...),
+    _=Depends(require_admin),
+):
+    cover_kind = "back" if kind == "back" else "front"
     if file.content_type not in _ALLOWED_COVER_TYPES:
-        raise HTTPException(status_code=400, detail="Unsupported image type")
+        raise HTTPException(status_code=400, detail="Unsupported image type. Use JPG, PNG, WebP, or GIF.")
     body = await file.read()
     if len(body) > 10 * 1024 * 1024:
         raise HTTPException(status_code=400, detail="Cover must be under 10MB")
@@ -1221,18 +1565,40 @@ async def admin_upload_cover(slug: str, file: UploadFile = File(...), _=Depends(
         from utils.content_processor import process_book_cover  # type: ignore
     except Exception as e:
         raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
-    result = process_book_cover(body, book.get("id") or slug)
-    await db.books.update_one(
-        {"slug": slug},
-        {"$set": {
+    status_field = "back_cover_processing_status" if cover_kind == "back" else "cover_processing_status"
+    error_field = "back_cover_processing_error" if cover_kind == "back" else "cover_processing_error"
+    await db.books.update_one({"slug": slug}, {"$set": {status_field: "processing", error_field: ""}})
+    try:
+        result = process_book_cover(body, book.get("id") or slug, kind=cover_kind)
+    except Exception as e:
+        await db.books.update_one({"slug": slug}, {"$set": {status_field: "failed", error_field: str(e)}})
+        raise HTTPException(status_code=400, detail=f"Cover processing failed: {e}")
+
+    if cover_kind == "back":
+        fields = {
+            "back_cover_url": result["cover_url"],
+            "back_cover_image_url": result["cover_url"],
+            "back_cover_thumbnail_url": result["thumbnail_url"],
+            "back_cover_blur_placeholder": result["blur_placeholder"],
+            "back_cover_dominant_color": result["dominant_color"],
+            "back_cover_processing_status": "ready",
+            "back_cover_processing_error": "",
+        }
+    else:
+        fields = {
             "cover_url": result["cover_url"],
             "cover_image_url": result["cover_url"],
             "thumbnail_url": result["thumbnail_url"],
             "blur_placeholder": result["blur_placeholder"],
             "dominant_color": result["dominant_color"],
-        }},
+            "cover_processing_status": "ready",
+            "cover_processing_error": "",
+        }
+    await db.books.update_one(
+        {"slug": slug},
+        {"$set": fields},
     )
-    return {"success": True, **result}
+    return {"success": True, "kind": cover_kind, **result}
 
 
 @api.post("/admin/books/{slug}/chapters/{chapter_id}/upload")
@@ -1258,7 +1624,32 @@ async def admin_upload_chapter_file(
         from utils.content_processor import process_chapter_content  # type: ignore
     except Exception as e:
         raise HTTPException(status_code=503, detail=f"Content pipeline unavailable: {e}")
-    result = process_chapter_content(body, file.filename or "chapter", book.get("id") or slug)
+    started_at = now_iso()
+    await db.books.update_one(
+        {"slug": slug, "chapters.id": chapter_id},
+        {"$set": {
+            "chapters.$.processing_status": "processing",
+            "chapters.$.processing_error": "",
+            "chapters.$.processing_warnings": [],
+            "chapters.$.source_filename": file.filename or "chapter",
+            "chapters.$.uploaded_at": started_at,
+            "chapters.$.updated_at": started_at,
+        }},
+    )
+    try:
+        result = process_chapter_content(body, file.filename or "chapter", book.get("id") or slug)
+    except Exception as e:
+        await db.books.update_one(
+            {"slug": slug, "chapters.id": chapter_id},
+            {"$set": {
+                "chapters.$.processing_status": "failed",
+                "chapters.$.processing_error": str(e),
+                "chapters.$.updated_at": now_iso(),
+            }},
+        )
+        raise HTTPException(status_code=400, detail=f"Chapter processing failed: {e}")
+
+    warnings = result.get("warnings", [])
     new_chapters = []
     for c in chapters:
         if c.get("id") == chapter_id:
@@ -1268,15 +1659,25 @@ async def admin_upload_chapter_file(
             c["image_count"] = result["image_count"]
             c["word_count"] = result["word_count"]
             c["reading_minutes"] = result["reading_minutes"]
+            c["language_hint"] = result.get("language_hint", "")
+            c["processing_status"] = "ready"
+            c["processing_error"] = ""
+            c["processing_warnings"] = warnings
+            c["source_filename"] = file.filename or "chapter"
+            c["uploaded_at"] = started_at
             c["updated_at"] = now_iso()
         new_chapters.append(c)
     await db.books.update_one({"slug": slug}, {"$set": {"chapters": new_chapters}})
     return {
         "success": True,
+        "processing_status": "ready",
         "word_count": result["word_count"],
         "reading_minutes": result["reading_minutes"],
         "has_images": result["has_images"],
         "image_count": result["image_count"],
+        "language_hint": result.get("language_hint", ""),
+        "warnings": warnings,
+        "preview_html": result["content_html"],
     }
 
 

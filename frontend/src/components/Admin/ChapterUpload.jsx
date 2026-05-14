@@ -53,6 +53,10 @@ export default function ChapterUpload({ bookId, chapterId, onSuccess }) {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
+    onDropRejected: (items) => {
+      setStatus("error");
+      setError(items?.[0]?.errors?.[0]?.message || "Use DOCX, Markdown, HTML, or TXT up to 50MB.");
+    },
     accept: ACCEPTED,
     maxFiles: 1,
     maxSize: 50 * 1024 * 1024,
@@ -135,7 +139,13 @@ export default function ChapterUpload({ bookId, chapterId, onSuccess }) {
             fontSize: 13,
           }}
         >
-          ✓ Saved · {result.word_count} words · {result.reading_minutes} min read · {result.image_count} image{result.image_count === 1 ? "" : "s"}
+          ✓ {result.processing_status || "ready"} · {result.word_count} words · {result.reading_minutes} min read · {result.image_count} image{result.image_count === 1 ? "" : "s"}
+          {result.language_hint === "bn" && <div className="mt-1">Bengali Unicode text detected.</div>}
+          {Array.isArray(result.warnings) && result.warnings.length > 0 && (
+            <ul className="mt-2 list-disc pl-5 text-[0.78rem] leading-relaxed">
+              {result.warnings.map((warning) => <li key={warning}>{warning}</li>)}
+            </ul>
+          )}
         </div>
       )}
 

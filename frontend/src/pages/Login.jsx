@@ -10,6 +10,8 @@ import useSEO from "../hooks/useSEO";
 import BrandMark from "../components/BrandMark";
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
+// DISABLED: Mobile/OTP login is temporarily disabled until MSG91/DLT approval is ready.
+const OTP_LOGIN_ENABLED = false;
 
 export default function Login() {
   useSEO({
@@ -33,6 +35,7 @@ export default function Login() {
   const [otpLoading, setOtpLoading] = useState(false);
 
   useEffect(() => {
+    if (!OTP_LOGIN_ENABLED) return undefined;
     if (countdown <= 0) return;
     const id = setInterval(() => setCountdown((c) => Math.max(0, c - 1)), 1000);
     return () => clearInterval(id);
@@ -121,6 +124,7 @@ export default function Login() {
           </div>
         )}
 
+        {OTP_LOGIN_ENABLED && (
         <div className="mt-6">
           <div
             className="flex items-stretch rounded-xl overflow-hidden"
@@ -236,6 +240,7 @@ export default function Login() {
             </div>
           )}
         </div>
+        )}
 
         <form onSubmit={submit} className="mt-6 space-y-4" data-testid="user-login-form">
           <label className="block">
