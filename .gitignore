@@ -78,6 +78,7 @@ agenthub/agents/youtube/db
 .cache/
 
 memory/test_credentials.md
+backend/scripts/reset_admin_credentials.py
 
 # Mobile development
 android-sdk/-e
