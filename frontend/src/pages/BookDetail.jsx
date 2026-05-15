@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Check, ChevronLeft, Clock, BookOpen } from "lucide-react";
 import { api } from "../lib/api";
+import { optimizedImageUrl } from "../lib/images";
 import ShareButtons from "../components/ShareButtons";
 import JsonLd from "../components/JsonLd";
 import useSEO from "../hooks/useSEO";
@@ -19,9 +20,15 @@ export default function BookDetail() {
   });
 
   useEffect(() => {
+    const controller = new AbortController();
     setLoading(true);
-    api.get(`/books/${slug}`).then((r) => setBook(r.data))
-      .catch(() => setBook(null)).finally(() => setLoading(false));
+    api.get(`/books/${slug}`, { signal: controller.signal }).then((r) => setBook(r.data))
+      .catch((err) => {
+        if (err.name !== "CanceledError") setBook(null);
+      }).finally(() => {
+        if (!controller.signal.aborted) setLoading(false);
+      });
+    return () => controller.abort();
   }, [slug]);
 
   const bookSchema = book ? {
@@ -62,14 +69,14 @@ export default function BookDetail() {
         <div className="lg:col-span-5 lg:sticky lg:top-28">
           <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft shadow-[0_50px_90px_-40px_rgba(74,28,39,0.45)] max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
             {book.cover_image_url ? (
-              <img src={book.cover_image_url} alt={book.title} className="w-full h-full object-cover" />
+              <img src={optimizedImageUrl(book.cover_image_url, { width: 900 })} alt={book.title} decoding="async" fetchPriority="high" className="w-full h-full object-cover" />
             ) : <div className="w-full h-full bg-beige-deep flex items-center justify-center font-serif-light text-7xl text-burgundy">E</div>}
           </div>
           {book.back_cover_image_url && (
             <div className="mt-5 max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
               <div className="overline mb-2">Back cover</div>
               <div className="aspect-[3/4] rounded-lg overflow-hidden border border-brand-soft bg-ivory-warm">
-                <img src={book.back_cover_image_url} alt={`${book.title} back cover`} className="w-full h-full object-contain" loading="lazy" />
+                <img src={optimizedImageUrl(book.back_cover_image_url, { width: 900 })} alt={`${book.title} back cover`} className="w-full h-full object-contain" loading="lazy" decoding="async" />
               </div>
             </div>
           )}

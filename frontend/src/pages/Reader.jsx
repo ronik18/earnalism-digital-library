@@ -121,6 +121,13 @@ function wrapWordsInSpans(html) {
   return { html: div.innerHTML, totalWords: wordIndex };
 }
 
+function countWordsInHtml(html) {
+  if (typeof document === 'undefined') return (html || '').split(/\s+/).filter(Boolean).length;
+  const div = document.createElement('div');
+  div.innerHTML = html || '';
+  return (div.textContent || '').split(/\s+/).filter(Boolean).length;
+}
+
 function formatWalletTime(seconds) {
   const s = Math.max(0, Math.floor(seconds || 0));
   if (s >= 3600) {
@@ -355,9 +362,10 @@ export default function Reader() {
           return;
         }
 
-        const wrapped = wrapWordsInSpans(sanitizeReaderHtml(loadedChapter.content));
-        setProcessedHtml(wrapped.html);
-        setTotalWords(wrapped.totalWords);
+        const safeHtml = sanitizeReaderHtml(loadedChapter.content);
+        // Keep first render light. TTS word spans are injected only if narration starts.
+        setProcessedHtml(safeHtml);
+        setTotalWords(countWordsInHtml(safeHtml));
         setLockedState(null);
 
         if (getUserToken() && !gate.is_preview) {
@@ -424,7 +432,9 @@ export default function Reader() {
     const el = scrollContainerRef.current;
     if (!el) return undefined;
 
-    const onScroll = () => {
+    let rafId = 0;
+    const updateFromScroll = () => {
+      rafId = 0;
       const max = el.scrollHeight - el.clientHeight;
       const pct = max > 0 ? (el.scrollTop / max) * 100 : 0;
       setReadProgress(Math.min(100, Math.round(pct)));
@@ -433,9 +443,16 @@ export default function Reader() {
       if (el.scrollTop < lastScrollY.current - 5) setToolbarVisible(true);
       lastScrollY.current = el.scrollTop;
     };
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(updateFromScroll);
+    };
 
     el.addEventListener('scroll', onScroll, { passive: true });
-    return () => el.removeEventListener('scroll', onScroll);
+    return () => {
+      el.removeEventListener('scroll', onScroll);
+      if (rafId) window.cancelAnimationFrame(rafId);
+    };
   }, [loading]);
 
   useEffect(() => {
@@ -603,14 +620,27 @@ export default function Reader() {
 
   const startTTS = useCallback(() => {
     synthRef.current.cancel();
-    const utter = buildUtterance();
-    if (!utter) return;
+    const speak = () => {
+      wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
+      const utter = buildUtterance();
+      if (!utter) return;
 
-    utteranceRef.current = utter;
-    synthRef.current.speak(utter);
-    setTtsActive(true);
-    setTtsPaused(false);
-  }, [buildUtterance]);
+      utteranceRef.current = utter;
+      synthRef.current.speak(utter);
+      setTtsActive(true);
+      setTtsPaused(false);
+    };
+
+    if (processedHtml && !processedHtml.includes('class="tts-word"')) {
+      const wrapped = wrapWordsInSpans(processedHtml);
+      setProcessedHtml(wrapped.html);
+      setTotalWords(wrapped.totalWords);
+      window.requestAnimationFrame(() => window.requestAnimationFrame(speak));
+      return;
+    }
+
+    speak();
+  }, [buildUtterance, processedHtml]);
 
   const pauseTTS = () => {
     synthRef.current.pause();

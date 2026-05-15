@@ -202,7 +202,10 @@ function BooksAdmin() {
     <div data-testid="books-admin">
       <div className="flex items-center justify-between mb-5">
         <h2 className="font-serif-display text-2xl text-burgundy">Books ({books.length})</h2>
-        <button onClick={() => setEditing({ ...EMPTY_BOOK, _new: true })} className="btn-primary" data-testid="add-book"><Plus size={14} className="mr-2" /> New book</button>
+        <div className="flex flex-wrap gap-2">
+          <button onClick={() => setEditing({ ...EMPTY_BOOK, _new: true })} className="btn-secondary" data-testid="add-book"><Plus size={14} className="mr-2" /> New book</button>
+          <button onClick={() => setEditing({ ...EMPTY_BOOK, _new: true, _uploadFirst: true })} className="btn-primary" data-testid="upload-book-docx">Upload Book (.DOCX)</button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -301,23 +304,37 @@ function BookEditor({ book, cats, onClose, onSave }) {
   const [backCoverFile, setBackCoverFile] = useState(null);
   const [importing, setImporting] = useState(false);
   const [importResult, setImportResult] = useState(null);
+  const [importStage, setImportStage] = useState("");
+  const [importProgress, setImportProgress] = useState(0);
+  const [creditReport, setCreditReport] = useState(null);
   const isNew = book._new;
   const issues = publishIssues(f);
   const saveBlocked = f.is_published && issues.length > 0;
 
   const importTemplate = async () => {
     if (!docxTemplate) {
-      toast.error("Choose a DOCX template first.");
+      toast.error("Choose a DOCX manuscript first.");
       return;
     }
     setImporting(true);
+    setImportStage("upload");
+    setImportProgress(8);
     setImportResult(null);
+    setCreditReport(null);
     try {
       const fd = new FormData();
       fd.append("docx_file", docxTemplate);
       if (frontCoverFile) fd.append("front_cover", frontCoverFile);
       if (backCoverFile) fd.append("back_cover", backCoverFile);
-      const { data } = await api.post("/admin/books/import-template", fd);
+      const { data } = await api.post("/upload_docx", fd, {
+        onUploadProgress: (event) => {
+          if (!event.total) return;
+          const pct = Math.min(45, Math.round((event.loaded / event.total) * 45));
+          setImportProgress(pct);
+        },
+      });
+      setImportStage("validation");
+      setImportProgress(70);
       const imported = data.book || {};
       const categorySlug = cats.some((c) => c.slug === imported.category_slug) ? imported.category_slug : f.category_slug;
       setF((prev) => ({
@@ -331,12 +348,62 @@ function BookEditor({ book, cats, onClose, onSave }) {
         is_published: false,
       }));
       setImportResult(data);
-      toast.success("Template imported. Review before saving.");
+      setImportStage("auto-fill");
+      setImportProgress(92);
+      if (data.credit_report?.user_id) {
+        try {
+          const report = await api.get(`/credits/report?user_id=${encodeURIComponent(data.credit_report.user_id)}`);
+          setCreditReport(report.data);
+        } catch {
+          setCreditReport(null);
+        }
+      }
+      setImportProgress(100);
+      toast.success("DOCX validated. Review before saving.");
     } catch (err) {
       toast.error(formatError(err.response?.data?.detail));
     } finally {
       setImporting(false);
+      setImportStage("");
     }
+  };
+
+  const printValidationSummary = () => {
+    if (!importResult?.validation_summary) return;
+    const popup = window.open("", "_blank", "width=900,height=700");
+    if (!popup) return;
+    const summary = importResult.validation_summary;
+    const checks = summary.checks || [];
+    popup.document.write(`
+      <html>
+        <head>
+          <title>${summary.title}</title>
+          <style>
+            body{font-family:Inter,Arial,sans-serif;color:#2C2C2C;padding:32px;line-height:1.6}
+            h1{font-family:Georgia,serif;color:#4A1C27}
+            table{width:100%;border-collapse:collapse;margin-top:20px}
+            th,td{border-bottom:1px solid #E5DCD3;padding:10px;text-align:left;vertical-align:top}
+            .status{font-weight:700;color:#4A1C27}
+            footer{margin-top:28px;color:#6A655F;font-size:13px}
+          </style>
+        </head>
+        <body>
+          <h1>${summary.title}</h1>
+          <p class="status">Status: ${summary.status}</p>
+          <p>File: ${summary.formatted_file?.file_name || "DOCX upload"}</p>
+          <table>
+            <thead><tr><th>Check</th><th>Status</th><th>Severity</th><th>Detail</th></tr></thead>
+            <tbody>
+              ${checks.map((check) => `<tr><td>${check.name}</td><td>${check.status}</td><td>${check.severity}</td><td>${check.detail}</td></tr>`).join("")}
+            </tbody>
+          </table>
+          <footer>${summary.footer_note || "Validated content complies with anti-AI & copyright policies."}</footer>
+        </body>
+      </html>
+    `);
+    popup.document.close();
+    popup.focus();
+    popup.print();
   };
 
   return (
@@ -349,14 +416,14 @@ function BookEditor({ book, cats, onClose, onSave }) {
 
         {isNew && (
           <div className="mb-6 rounded-xl border border-brand-soft bg-ivory-warm/70 p-5" data-testid="book-template-import">
-            <div className="italic-eyebrow mb-2">Import draft</div>
-            <h4 className="font-serif-display text-[1.35rem] text-burgundy leading-snug">DOCX template and covers</h4>
+            <div className="italic-eyebrow mb-2">Admin-only validator</div>
+            <h4 className="font-serif-display text-[1.35rem] text-burgundy leading-snug">Upload Book (.DOCX)</h4>
             <p className="mt-2 text-sm text-charcoal-soft leading-relaxed">
-              Upload a completed DOCX metadata template plus optional front and back covers. The form below will be prefilled for review before you save.
+              Upload a completed DOCX manuscript for Earnalism Compliance v1.0 checks, formatting cleanup, secure storage, credit logging, and form auto-fill.
             </p>
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <Field label="DOCX template">
-                <input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={(e) => setDocxTemplate(e.target.files?.[0] || null)} className="input-elegant text-sm" data-testid="book-import-docx" />
+              <Field label="DOCX manuscript">
+                <input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={(e) => { setDocxTemplate(e.target.files?.[0] || null); setImportResult(null); setCreditReport(null); setImportProgress(0); }} className="input-elegant text-sm" data-testid="book-import-docx" />
               </Field>
               <Field label="Front cover">
                 <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={(e) => setFrontCoverFile(e.target.files?.[0] || null)} className="input-elegant text-sm" data-testid="book-import-front-cover" />
@@ -367,20 +434,90 @@ function BookEditor({ book, cats, onClose, onSave }) {
             </div>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <button type="button" onClick={importTemplate} disabled={importing || !docxTemplate} className="btn-secondary disabled:opacity-60" data-testid="book-import-submit">
-                {importing ? "Importing…" : "Import and prefill"}
+                {importing ? "Validating…" : "Upload Book (.DOCX)"}
               </button>
               {importResult?.success && (
                 <span className="text-[0.8rem] text-charcoal-soft">
-                  Imported. Review all fields before saving.
+                  Validated and auto-filled. Review all fields before saving.
                 </span>
               )}
             </div>
+            {(importing || importProgress > 0) && (
+              <div className="mt-4" aria-label="DOCX validation progress">
+                <div className="flex justify-between text-[0.72rem] uppercase tracking-[0.16em] text-charcoal-soft">
+                  <span>{importStage || (importResult ? "complete" : "ready")}</span>
+                  <span>{importProgress}%</span>
+                </div>
+                <div className="mt-2 h-2 rounded-full bg-white border border-brand-soft overflow-hidden">
+                  <div className="h-full bg-[var(--brand-burgundy)] transition-all duration-200" style={{ width: `${importProgress}%` }} />
+                </div>
+              </div>
+            )}
             {Array.isArray(importResult?.warnings) && importResult.warnings.length > 0 && (
               <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
                 <div className="font-medium">Import warnings</div>
                 <ul className="mt-2 list-disc pl-5">
                   {importResult.warnings.map((warning) => <li key={warning}>{warning}</li>)}
                 </ul>
+              </div>
+            )}
+            {importResult?.validation_summary && (
+              <div className="mt-4 rounded-lg border border-brand-soft bg-white/65 p-4 text-sm text-charcoal-soft" data-testid="docx-validation-summary">
+                <div className="flex items-center justify-between gap-3 flex-wrap">
+                  <div>
+                    <div className="font-serif-display text-xl text-burgundy">{importResult.validation_summary.title}</div>
+                    <div className="text-xs uppercase tracking-[0.16em] text-charcoal-soft mt-1">
+                      Status: {importResult.validation_summary.status} · {importResult.metadata?.word_count || 0} words · {importResult.metadata?.chapter_count || 0} chapters
+                    </div>
+                  </div>
+                  <button type="button" onClick={printValidationSummary} className="btn-link text-xs">Print summary</button>
+                </div>
+                <div className="mt-3 overflow-x-auto">
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr className="text-left uppercase tracking-[0.14em] text-charcoal-soft border-b border-brand">
+                        <th className="py-2 pr-3">Check</th>
+                        <th className="py-2 pr-3">Status</th>
+                        <th className="py-2 pr-3">Severity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {(importResult.validation_summary.checks || []).map((check) => (
+                        <tr key={check.name} className="border-b border-brand/60">
+                          <td className="py-2 pr-3">{check.name}</td>
+                          <td className="py-2 pr-3">{check.status}</td>
+                          <td className="py-2 pr-3">{check.severity}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-xs italic">{importResult.validation_summary.footer_note}</p>
+              </div>
+            )}
+            {Array.isArray(importResult?.credit_usage) && (
+              <div className="mt-4 rounded-lg border border-brand-soft bg-white/65 p-4 text-sm text-charcoal-soft" data-testid="docx-credit-usage">
+                <div className="font-serif-display text-xl text-burgundy">Credit usage</div>
+                <table className="mt-3 w-full text-xs">
+                  <thead>
+                    <tr className="text-left uppercase tracking-[0.14em] text-charcoal-soft border-b border-brand">
+                      <th className="py-2 pr-3">Task</th>
+                      <th className="py-2 pr-3">Units</th>
+                      <th className="py-2 pr-3">Credits</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {importResult.credit_usage.map((row) => (
+                      <tr key={row.task} className="border-b border-brand/60">
+                        <td className="py-2 pr-3">{row.task}</td>
+                        <td className="py-2 pr-3">{row.units} {row.unit_label}</td>
+                        <td className="py-2 pr-3">{row.credits_used}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="mt-2 text-xs">Total upload credits: {importResult.credits_used}</p>
+                {creditReport && <p className="mt-1 text-xs">Customer report total: {creditReport.total_credits_used} credits.</p>}
               </div>
             )}
           </div>

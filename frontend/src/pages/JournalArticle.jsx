@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { api } from "../lib/api";
+import { optimizedImageUrl } from "../lib/images";
 import ShareButtons from "../components/ShareButtons";
 import JsonLd from "../components/JsonLd";
 import useSEO from "../hooks/useSEO";
@@ -45,9 +46,20 @@ export default function JournalArticle() {
   } : null;
 
   useEffect(() => {
+    const controller = new AbortController();
     setLoading(true);
-    api.get(`/blog/${slug}`).then((r) => setPost(r.data)).catch(() => setPost(null)).finally(() => setLoading(false));
-    api.get("/blog").then((r) => setRelated(r.data.filter((p) => p.slug !== slug).slice(0, 3))).catch(() => {});
+    api.get(`/blog/${slug}`, { signal: controller.signal })
+      .then((r) => setPost(r.data))
+      .catch((err) => {
+        if (err.name !== "CanceledError") setPost(null);
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setLoading(false);
+      });
+    api.get("/blog", { signal: controller.signal })
+      .then((r) => setRelated(r.data.filter((p) => p.slug !== slug).slice(0, 3)))
+      .catch(() => {});
+    return () => controller.abort();
   }, [slug]);
 
   if (loading) return <div className="py-32 text-center text-charcoal-soft">Loading…</div>;
@@ -80,7 +92,7 @@ export default function JournalArticle() {
       {post.cover_image_url && (
         <div className="max-w-5xl mx-auto px-5 sm:px-8">
           <div className="aspect-[16/9] overflow-hidden rounded-2xl border border-brand">
-            <img src={post.cover_image_url} alt={post.title} className="w-full h-full object-cover" />
+            <img src={optimizedImageUrl(post.cover_image_url, { width: 1200 })} alt={post.title} decoding="async" fetchPriority="high" className="w-full h-full object-cover" />
           </div>
         </div>
       )}

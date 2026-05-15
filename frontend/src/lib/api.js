@@ -10,9 +10,11 @@ export const API = BACKEND_URL ? `${BACKEND_URL.replace(/\/$/, "")}/api` : "/api
 export const TOKEN_KEY = "earnalism_admin_token";
 export const USER_TOKEN_KEY = "earnalism_user_token";
 export const SESSION_EXPIRED_MESSAGE = "Session expired, please login again.";
+export const NEW_LOGIN_MESSAGE = "You’ve been logged out: new login detected.";
 
 let authRedirectInFlight = false;
 const DEV_API_TIMING = process.env.NODE_ENV === "development";
+axios.defaults.withCredentials = true;
 
 function isBrowser() {
   return typeof window !== "undefined" && typeof window.location !== "undefined";
@@ -75,6 +77,7 @@ function isPublicAuthPath(path) {
     "/api/auth/login",
     "/api/users/login",
     "/api/users/signup",
+    "/api/users/refresh",
     "/api/auth/google",
     "/api/auth/otp/request",
     "/api/auth/otp/verify",
@@ -122,7 +125,7 @@ function loginUrl(tokenType) {
   return `${path}?${params.toString()}`;
 }
 
-export function handleSessionExpired(tokenType = "user") {
+export function handleSessionExpired(tokenType = "user", message = SESSION_EXPIRED_MESSAGE) {
   if (!isBrowser()) return;
   clearToken(tokenType);
 
@@ -131,8 +134,26 @@ export function handleSessionExpired(tokenType = "user") {
   if (authRedirectInFlight) return;
   authRedirectInFlight = true;
 
-  toast.error(SESSION_EXPIRED_MESSAGE);
+  toast.error(message || SESSION_EXPIRED_MESSAGE);
   window.location.assign(loginUrl(tokenType));
+}
+
+async function refreshUserAccessToken() {
+  if (!isBrowser() || !localStorage.getItem(USER_TOKEN_KEY)) return null;
+  try {
+    const response = await fetch(`${API}/users/refresh`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    });
+    if (!response.ok) return null;
+    const data = await response.json();
+    if (!data?.token) return null;
+    localStorage.setItem(USER_TOKEN_KEY, data.token);
+    return data.token;
+  } catch {
+    return null;
+  }
 }
 
 function shouldHandleAuth401(error, fallbackTokenType) {
@@ -148,16 +169,31 @@ function shouldHandleAuth401(error, fallbackTokenType) {
 function installAuth401Handler(instance, fallbackTokenType) {
   instance.interceptors.response.use(
     (response) => response,
-    (error) => {
+    async (error) => {
       const tokenType = shouldHandleAuth401(error, fallbackTokenType);
-      if (tokenType) handleSessionExpired(tokenType);
+      const config = error.config || {};
+      if (tokenType === "user" && !config._retryAuthRefresh) {
+        config._retryAuthRefresh = true;
+        const refreshed = await refreshUserAccessToken();
+        if (refreshed) {
+          config.headers = { ...(config.headers || {}), Authorization: `Bearer ${refreshed}` };
+          return instance(config);
+        }
+      }
+      if (tokenType) {
+        const detail = error.response?.data?.detail;
+        const message = typeof detail === "string" && detail.includes("new login detected")
+          ? NEW_LOGIN_MESSAGE
+          : SESSION_EXPIRED_MESSAGE;
+        handleSessionExpired(tokenType, message);
+      }
       return Promise.reject(error);
     },
   );
 }
 
 // Admin axios — sends only the admin Bearer token (used by /admin/*).
-export const api = axios.create({ baseURL: API });
+export const api = axios.create({ baseURL: API, withCredentials: true });
 api.interceptors.request.use((cfg) => {
   const token = localStorage.getItem(TOKEN_KEY);
   if (token) cfg.headers.Authorization = `Bearer ${token}`;
@@ -165,7 +201,7 @@ api.interceptors.request.use((cfg) => {
 });
 
 // Reader-user axios — sends only the user Bearer token (used by /users/*, /reader/*).
-export const userApi = axios.create({ baseURL: API });
+export const userApi = axios.create({ baseURL: API, withCredentials: true });
 userApi.interceptors.request.use((cfg) => {
   const token = localStorage.getItem(USER_TOKEN_KEY);
   if (token) cfg.headers.Authorization = `Bearer ${token}`;
