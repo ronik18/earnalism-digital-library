@@ -57,6 +57,7 @@ Automatic post-deploy smoke test:
 
 - `.github/workflows/post-deploy-k6.yml` runs on pushes to `production-deploy` and `main`.
 - The workflow waits for production URLs to become healthy, installs k6 in GitHub Actions, and runs `scripts/k6_smoke.js`.
+- The default smoke threshold is `p95 < 1500ms`; override it with repository variable `K6_HTTP_P95_THRESHOLD` if you want a stricter gate later.
 - k6 is intentionally not installed inside Railway/Vercel production runtime.
 
 Manual local run:
