@@ -3,13 +3,13 @@ import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { api, formatError, formatMinutes } from "../lib/api";
 import { toast } from "sonner";
-import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail, Clock, Ban, Check } from "lucide-react";
+import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail, Clock, Ban, Check, ShieldAlert } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
 import BrandMark from "../components/BrandMark";
 import ChapterUpload from "../components/Admin/ChapterUpload";
 import CoverUpload from "../components/Admin/CoverUpload";
 
-const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "settings", "account"];
+const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "settings", "account"];
 
 export default function Admin() {
   const { admin, logout } = useAuth();
@@ -49,6 +49,7 @@ export default function Admin() {
         {tab === "contacts" && <ContactsAdmin />}
         {tab === "users" && <UsersAdmin />}
         {tab === "payments" && <PaymentsAdmin />}
+        {tab === "security" && <SecurityAlertsAdmin />}
         {tab === "settings" && <SettingsTab />}
         {tab === "account" && <AccountTab />}
       </div>
@@ -72,6 +73,94 @@ function SimpleList({ endpoint, cols, title, testid }) {
           ))}</tbody>
         </table>
       )}
+    </div>
+  );
+}
+
+function SecurityAlertsAdmin() {
+  const [summary, setSummary] = useState({ events: 0, sessions: 0, high_risk_sessions: 0 });
+  const [alerts, setAlerts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const load = async () => {
+    setLoading(true);
+    try {
+      const { data } = await api.get("/admin/secure-reader/alerts");
+      setSummary(data.summary || {});
+      setAlerts(data.alerts || []);
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => { load(); }, []);
+
+  return (
+    <div className="space-y-6" data-testid="admin-security-alerts">
+      <div className="card-elegant p-6 sm:p-8">
+        <div className="flex items-start justify-between gap-4 flex-wrap">
+          <div>
+            <div className="overline flex items-center gap-2"><ShieldAlert size={14} /> Reader protection</div>
+            <h2 className="font-serif-display text-2xl text-burgundy mt-1">Security alerts</h2>
+            <p className="text-sm text-charcoal-soft mt-2 max-w-2xl">
+              Shows repeated blocked copy, print, right-click, drag, and screenshot-key attempts from the secure reader.
+            </p>
+          </div>
+          <button onClick={load} className="btn-link text-xs" data-testid="security-refresh">Refresh</button>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
+          {[
+            ["Events", summary.events || 0],
+            ["Sessions", summary.sessions || 0],
+            ["High risk", summary.high_risk_sessions || 0],
+          ].map(([label, value]) => (
+            <div key={label} className="rounded-lg border border-brand-soft bg-white/55 p-4">
+              <div className="text-[0.65rem] uppercase tracking-[0.18em] text-charcoal-soft">{label}</div>
+              <div className="font-serif-display text-3xl text-burgundy mt-1">{value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="card-elegant p-6 sm:p-8 overflow-x-auto">
+        {loading ? <p className="text-charcoal-soft text-sm">Loading…</p> : alerts.length === 0 ? (
+          <p className="text-charcoal-soft text-sm">No reader protection alerts yet.</p>
+        ) : (
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left text-xs uppercase tracking-wider text-charcoal-soft border-b border-brand">
+                <th className="py-3 pr-4">Latest</th>
+                <th className="py-3 pr-4">Reader</th>
+                <th className="py-3 pr-4">Book</th>
+                <th className="py-3 pr-4">Attempts</th>
+                <th className="py-3 pr-4">Events</th>
+              </tr>
+            </thead>
+            <tbody>
+              {alerts.map((alert) => (
+                <tr key={alert.session_id} className="border-b border-brand/60">
+                  <td className="py-3 pr-4 text-charcoal-soft text-xs whitespace-nowrap">{alert.latest_at ? new Date(alert.latest_at).toLocaleString() : "—"}</td>
+                  <td className="py-3 pr-4 text-charcoal-soft">{alert.user_email || "Guest"}</td>
+                  <td className="py-3 pr-4">
+                    <div className="font-serif-display text-burgundy">{alert.book_slug || "—"}</div>
+                    <div className="text-xs text-charcoal-soft">{alert.chapter_id || "—"}</div>
+                  </td>
+                  <td className="py-3 pr-4">
+                    <span className={`text-[0.65rem] tracking-[0.2em] uppercase px-2 py-0.5 rounded-full ${alert.total_attempts >= 3 ? "bg-rose-100 text-rose-800" : "bg-amber-100 text-amber-800"}`}>
+                      {alert.total_attempts}
+                    </span>
+                  </td>
+                  <td className="py-3 pr-4 text-xs text-charcoal-soft">
+                    {Object.entries(alert.events || {}).map(([key, value]) => `${key}: ${value}`).join(", ")}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 }

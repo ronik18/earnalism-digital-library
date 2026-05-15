@@ -19,8 +19,9 @@ import jwt
 import unicodedata
 from collections import defaultdict, deque
 from datetime import datetime, timezone, timedelta
-from typing import Deque, Dict, List, Optional, Tuple
-from urllib.parse import urlparse
+from typing import Any, Deque, Dict, List, Optional, Tuple
+from urllib.parse import urlencode, urlparse
+from urllib.request import Request as UrlRequest, urlopen
 
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie, UploadFile, File
 from fastapi.exceptions import RequestValidationError
@@ -121,9 +122,12 @@ PACKS: List[dict] = [
     {"id": "30m",  "label": "Afternoon Pause",     "minutes": 30,  "amount_paise": 4900,  "price_inr": 49,  "note": "A single chapter, with breath to spare."},
     {"id": "1h",   "label": "An Evening In",       "minutes": 60,  "amount_paise": 8900,  "price_inr": 89,  "note": "An unhurried hour with a worthy book."},
     {"id": "3h",   "label": "Long Weekend",        "minutes": 180, "amount_paise": 23900, "price_inr": 239, "note": "Three quiet hours; a finished read."},
-    {"id": "10h",  "label": "The Reader's Reserve", "minutes": 600, "amount_paise": 69900, "price_inr": 699, "note": "Ten hours, kept until you call them in."},
+    {"id": "10h",  "label": "The Reader's Reserve", "minutes": 600, "amount_paise": 49900, "price_inr": 499, "note": "Ten hours, kept until you call them in."},
 ]
 PACKS_BY_ID = {p["id"]: p for p in PACKS}
+READER_STREAK_REWARD_KEY = "reader_reserve_streak_3"
+READER_STREAK_REQUIRED_DAYS = 3
+READER_STREAK_REWARD_SECONDS = 10 * 60
 
 
 def razorpay_keys_configured() -> bool:
@@ -661,6 +665,25 @@ class ReaderHeartbeatIn(BaseModel):
 class ReaderSessionEndIn(BaseModel):
     session_id: str
 
+class ReaderCompletionIn(BaseModel):
+    book_slug: str
+    chapter_id: str
+    chapter_title: str = ""
+    progress: int = 100
+
+class AnalyticsEventIn(BaseModel):
+    event: str
+    metadata: Dict[str, Any] = Field(default_factory=dict)
+
+class SecureReaderEventIn(BaseModel):
+    session_id: str
+    event_type: str
+    book_slug: str = ""
+    chapter_id: str = ""
+    access_token_fingerprint: str = ""
+    counts: Dict[str, int] = Field(default_factory=dict)
+    metadata: Dict[str, Any] = Field(default_factory=dict)
+
 class UserStatusIn(BaseModel):
     status: str  # "active" | "blocked"
 
@@ -811,6 +834,20 @@ async def initialize_database_indexes() -> None:
     await db.payment_webhook_events.create_index("event_id", unique=True, sparse=True)
     await db.payment_webhook_events.create_index([("created_at", -1)])
 
+    await db.analytics_events.create_index([("event", 1), ("created_at", -1)])
+
+    await db.reader_security_events.create_index([("event_type", 1), ("created_at", -1)])
+    await db.reader_security_events.create_index([("session_id", 1), ("created_at", -1)])
+    await db.reader_security_events.create_index([("user_id", 1), ("created_at", -1)])
+
+    await db.reader_completions.create_index([("user_id", 1), ("completed_on", -1)])
+    await db.reader_completions.create_index(
+        [("user_id", 1), ("book_slug", 1), ("chapter_id", 1), ("completed_on", 1)],
+        unique=True,
+    )
+
+    await db.reward_claims.create_index([("user_id", 1), ("reward_key", 1)], unique=True)
+
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
@@ -953,6 +990,78 @@ app = FastAPI(
     redoc_url=None if ENVIRONMENT == "production" else "/redoc",
 )
 api = APIRouter(prefix="/api")
+
+
+def _safe_analytics_metadata(metadata: Dict[str, Any]) -> Dict[str, Any]:
+    """Keep conversion analytics useful while avoiding secrets or large payloads."""
+    if not isinstance(metadata, dict):
+        return {}
+
+    safe: Dict[str, Any] = {}
+    for raw_key, raw_value in list(metadata.items())[:20]:
+        key = re.sub(r"[^a-zA-Z0-9_.:-]", "_", str(raw_key))[:60]
+        if not key:
+            continue
+        if isinstance(raw_value, bool) or raw_value is None:
+            safe[key] = raw_value
+        elif isinstance(raw_value, (int, float)):
+            safe[key] = raw_value
+        elif isinstance(raw_value, str):
+            safe[key] = raw_value[:240]
+        else:
+            safe[key] = str(raw_value)[:240]
+    return safe
+
+
+def _safe_counter_map(counts: Dict[str, int]) -> Dict[str, int]:
+    if not isinstance(counts, dict):
+        return {}
+    safe: Dict[str, int] = {}
+    for raw_key, raw_value in list(counts.items())[:20]:
+        key = re.sub(r"[^a-zA-Z0-9_.:-]", "_", str(raw_key))[:60]
+        if not key:
+            continue
+        try:
+            safe[key] = max(0, min(10000, int(raw_value)))
+        except (TypeError, ValueError):
+            safe[key] = 0
+    return safe
+
+
+def _utc_day() -> str:
+    return datetime.utcnow().date().isoformat()
+
+
+async def _reader_completion_streak(user_id: str) -> int:
+    rows = await db.reader_completions.find(
+        {"user_id": user_id},
+        {"_id": 0, "completed_on": 1},
+    ).sort("completed_on", -1).to_list(90)
+    completed_days = {row.get("completed_on") for row in rows if row.get("completed_on")}
+    today = datetime.utcnow().date()
+    streak = 0
+    while (today - timedelta(days=streak)).isoformat() in completed_days:
+        streak += 1
+    return streak
+
+
+async def _reader_reward_state(user_id: str) -> dict:
+    streak = await _reader_completion_streak(user_id)
+    claim = await db.reward_claims.find_one(
+        {"user_id": user_id, "reward_key": READER_STREAK_REWARD_KEY},
+        {"_id": 0},
+    )
+    claimed = bool(claim)
+    return {
+        "streak_days": streak,
+        "required_days": READER_STREAK_REQUIRED_DAYS,
+        "eligible": streak >= READER_STREAK_REQUIRED_DAYS and not claimed,
+        "claimed": claimed,
+        "credit_seconds": READER_STREAK_REWARD_SECONDS,
+        "credit_minutes": READER_STREAK_REWARD_SECONDS // 60,
+        "target_pack_id": "10h",
+        "target_pack_label": "The Reader's Reserve",
+    }
 
 
 def _client_ip(request: Request) -> str:
@@ -1187,6 +1296,58 @@ async def health_check():
 @app.get("/health")
 async def root_health_check():
     return await health_check()
+
+
+@api.post("/analytics/events")
+async def record_analytics_event(
+    payload: AnalyticsEventIn,
+    request: Request,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    event = re.sub(r"[^a-zA-Z0-9_.:-]", "_", payload.event.strip())[:80]
+    if not event:
+        raise HTTPException(status_code=400, detail="Event name is required")
+    await db.analytics_events.insert_one({
+        "id": str(uuid.uuid4()),
+        "event": event,
+        "metadata": _safe_analytics_metadata(payload.metadata),
+        "principal_role": principal.get("role") if principal else "guest",
+        "principal_id": principal.get("id") if principal else "",
+        "path": str(request.headers.get("referer", ""))[:240],
+        "user_agent": str(request.headers.get("user-agent", ""))[:180],
+        "created_at": now_iso(),
+    })
+    return {"ok": True}
+
+
+@api.post("/secure-reader/events")
+async def record_secure_reader_event(
+    payload: SecureReaderEventIn,
+    request: Request,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    event_type = re.sub(r"[^a-zA-Z0-9_.:-]", "_", payload.event_type.strip())[:80]
+    if not event_type:
+        raise HTTPException(status_code=400, detail="Event type is required")
+
+    # Never store raw auth tokens. The frontend may send only a short fingerprint.
+    await db.reader_security_events.insert_one({
+        "id": str(uuid.uuid4()),
+        "session_id": payload.session_id.strip()[:120],
+        "event_type": event_type,
+        "book_slug": payload.book_slug.strip()[:120],
+        "chapter_id": payload.chapter_id.strip()[:120],
+        "access_token_fingerprint": payload.access_token_fingerprint.strip()[:32],
+        "counts": _safe_counter_map(payload.counts),
+        "metadata": _safe_analytics_metadata(payload.metadata),
+        "principal_role": principal.get("role") if principal else "guest",
+        "user_id": principal.get("id") if principal and principal.get("role") == "user" else "",
+        "user_email": principal.get("email") if principal and principal.get("role") == "user" else "",
+        "ip": _client_ip(request),
+        "user_agent": str(request.headers.get("user-agent", ""))[:180],
+        "created_at": now_iso(),
+    })
+    return {"ok": True}
 
 
 @api.get("/categories", response_model=List[Category])
@@ -1864,6 +2025,8 @@ GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "").strip()
 GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", "").strip()
 MSG91_AUTH_KEY = os.environ.get("MSG91_AUTH_KEY", "").strip()
 MSG91_TEMPLATE_ID = os.environ.get("MSG91_TEMPLATE_ID", "").strip()
+GOOGLE_TOKENINFO_URL = "https://oauth2.googleapis.com/tokeninfo"
+GOOGLE_USERINFO_URL = "https://openidconnect.googleapis.com/v1/userinfo"
 
 
 def _phone_email(mobile: str) -> str:
@@ -1871,18 +2034,76 @@ def _phone_email(mobile: str) -> str:
     return f"mobile+{digits}@earnalism.local"
 
 
+def _google_json(url: str, headers: Optional[Dict[str, str]] = None) -> dict:
+    request = UrlRequest(url, headers=headers or {})
+    with urlopen(request, timeout=10) as response:
+        return _json.loads(response.read().decode("utf-8"))
+
+
+def _google_audience_matches(info: dict) -> bool:
+    audience = info.get("aud") or info.get("issued_to")
+    if isinstance(audience, list):
+        return GOOGLE_CLIENT_ID in audience
+    return audience == GOOGLE_CLIENT_ID
+
+
+def _google_email_verified(info: dict) -> bool:
+    value = info.get("email_verified", info.get("verified_email", True))
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in {"1", "true", "yes"}
+
+
+def _verify_google_access_token(access_token: str) -> dict:
+    tokeninfo = _google_json(f"{GOOGLE_TOKENINFO_URL}?{urlencode({'access_token': access_token})}")
+    if not _google_audience_matches(tokeninfo):
+        raise ValueError("Google token audience mismatch")
+    if not _google_email_verified(tokeninfo):
+        raise ValueError("Google email is not verified")
+
+    userinfo = {}
+    if not tokeninfo.get("email") or not tokeninfo.get("name"):
+        userinfo = _google_json(GOOGLE_USERINFO_URL, headers={"Authorization": f"Bearer {access_token}"})
+        if not _google_email_verified(userinfo):
+            raise ValueError("Google email is not verified")
+
+    return {
+        **userinfo,
+        **tokeninfo,
+        "email": (userinfo.get("email") or tokeninfo.get("email") or "").lower().strip(),
+        "name": userinfo.get("name") or tokeninfo.get("name") or "",
+        "picture": userinfo.get("picture") or tokeninfo.get("picture") or "",
+    }
+
+
+def _verify_google_credential(credential: str) -> dict:
+    credential = (credential or "").strip()
+    if not credential:
+        raise ValueError("Missing Google credential")
+    try:
+        from google.oauth2 import id_token  # type: ignore
+        from google.auth.transport import requests as google_requests  # type: ignore
+    except Exception as e:
+        raise RuntimeError(f"Google auth unavailable: {e}")
+
+    try:
+        idinfo = id_token.verify_oauth2_token(credential, google_requests.Request(), GOOGLE_CLIENT_ID)
+        if not _google_email_verified(idinfo):
+            raise ValueError("Google email is not verified")
+        return idinfo
+    except ValueError:
+        return _verify_google_access_token(credential)
+
+
 @api.post("/auth/google", response_model=UserAuthOut)
 async def auth_google(payload: GoogleAuthIn):
     if not GOOGLE_CLIENT_ID:
         raise HTTPException(status_code=503, detail="Google sign-in is not configured")
     try:
-        from google.oauth2 import id_token  # type: ignore
-        from google.auth.transport import requests as google_requests  # type: ignore
-    except Exception as e:
+        idinfo = _verify_google_credential(payload.credential)
+    except RuntimeError as e:
         raise HTTPException(status_code=503, detail=f"Google auth unavailable: {e}")
-    try:
-        idinfo = id_token.verify_oauth2_token(payload.credential, google_requests.Request(), GOOGLE_CLIENT_ID)
-    except ValueError:
+    except Exception:
         raise HTTPException(status_code=401, detail="Invalid Google token")
     email = (idinfo.get("email") or "").lower().strip()
     if not email:
@@ -2003,6 +2224,107 @@ async def user_wallet(user=Depends(require_user)):
 async def user_my_transactions(user=Depends(require_user)):
     rows = await db.wallet_transactions.find({"user_id": user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(100)
     return rows
+
+
+@api.get("/users/me/rewards")
+async def user_reward_state(user=Depends(require_user)):
+    return await _reader_reward_state(user["id"])
+
+
+@api.post("/users/me/rewards/completion")
+async def user_record_reader_completion(payload: ReaderCompletionIn, user=Depends(require_user)):
+    progress = max(0, min(100, int(payload.progress or 0)))
+    if progress < 90:
+        state = await _reader_reward_state(user["id"])
+        return {**state, "recorded": False}
+
+    book_slug = payload.book_slug.strip()[:120]
+    chapter_id = payload.chapter_id.strip()[:120]
+    if not book_slug or not chapter_id:
+        raise HTTPException(status_code=400, detail="Book and chapter are required")
+
+    await db.reader_completions.update_one(
+        {
+            "user_id": user["id"],
+            "book_slug": book_slug,
+            "chapter_id": chapter_id,
+            "completed_on": _utc_day(),
+        },
+        {
+            "$set": {
+                "chapter_title": payload.chapter_title.strip()[:180],
+                "progress": progress,
+                "updated_at": now_iso(),
+            },
+            "$setOnInsert": {
+                "id": str(uuid.uuid4()),
+                "created_at": now_iso(),
+            },
+        },
+        upsert=True,
+    )
+    state = await _reader_reward_state(user["id"])
+    return {**state, "recorded": True}
+
+
+@api.post("/users/me/rewards/claim")
+async def user_claim_reader_reward(user=Depends(require_user)):
+    state = await _reader_reward_state(user["id"])
+    if state["claimed"]:
+        fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+        return {
+            **state,
+            "claimed_now": False,
+            "wallet_seconds": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+        }
+    if not state["eligible"]:
+        raise HTTPException(status_code=400, detail="Reward is not available yet")
+
+    res = await db.reward_claims.update_one(
+        {"user_id": user["id"], "reward_key": READER_STREAK_REWARD_KEY},
+        {
+            "$setOnInsert": {
+                "id": str(uuid.uuid4()),
+                "reward_key": READER_STREAK_REWARD_KEY,
+                "user_id": user["id"],
+                "credited_seconds": READER_STREAK_REWARD_SECONDS,
+                "created_at": now_iso(),
+            }
+        },
+        upsert=True,
+    )
+    if res.upserted_id is None:
+        fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+        return {
+            **await _reader_reward_state(user["id"]),
+            "claimed_now": False,
+            "wallet_seconds": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+        }
+
+    await db.users.update_one(
+        {"id": user["id"]},
+        {
+            "$inc": {
+                "reading_seconds_balance": READER_STREAK_REWARD_SECONDS,
+                "wallet_seconds": READER_STREAK_REWARD_SECONDS,
+            }
+        },
+    )
+    await db.wallet_transactions.insert_one({
+        "id": str(uuid.uuid4()),
+        "user_id": user["id"],
+        "type": "credit",
+        "seconds": READER_STREAK_REWARD_SECONDS,
+        "reason": "Reader's Reserve streak credit",
+        "created_at": now_iso(),
+        "actor": "system",
+    })
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+    return {
+        **await _reader_reward_state(user["id"]),
+        "claimed_now": True,
+        "wallet_seconds": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+    }
 
 
 # ---------- Reader: Sessions + Heartbeat ----------
@@ -2654,6 +2976,44 @@ async def admin_list_intents(_=Depends(require_admin)):
 async def admin_list_webhooks(_=Depends(require_admin)):
     rows = await db.payment_webhook_events.find({}, {"_id": 0}).sort("created_at", -1).to_list(2000)
     return rows
+
+
+@api.get("/admin/secure-reader/alerts")
+async def admin_secure_reader_alerts(_=Depends(require_admin)):
+    violation_types = {"right_click", "copy", "cut", "print", "print_screen", "drag", "drop", "blocked_shortcut"}
+    rows = await db.reader_security_events.find(
+        {"event_type": {"$in": sorted(violation_types)}},
+        {"_id": 0},
+    ).sort("created_at", -1).to_list(500)
+
+    grouped: Dict[str, dict] = {}
+    for row in rows:
+        key = row.get("session_id") or row.get("id")
+        alert = grouped.setdefault(key, {
+            "session_id": key,
+            "user_email": row.get("user_email", ""),
+            "book_slug": row.get("book_slug", ""),
+            "chapter_id": row.get("chapter_id", ""),
+            "latest_at": row.get("created_at"),
+            "total_attempts": 0,
+            "events": {},
+        })
+        alert["total_attempts"] += 1
+        event_type = row.get("event_type", "unknown")
+        alert["events"][event_type] = alert["events"].get(event_type, 0) + 1
+        if str(row.get("created_at", "")) > str(alert.get("latest_at", "")):
+            alert["latest_at"] = row.get("created_at")
+
+    alerts = sorted(grouped.values(), key=lambda item: item.get("latest_at") or "", reverse=True)
+    high_risk = [item for item in alerts if item["total_attempts"] >= 3]
+    return {
+        "summary": {
+            "events": len(rows),
+            "sessions": len(alerts),
+            "high_risk_sessions": len(high_risk),
+        },
+        "alerts": alerts,
+    }
 
 
 @api.post("/admin/payments/intents/{intent_id}/reconcile")

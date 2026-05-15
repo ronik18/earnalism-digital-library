@@ -21,6 +21,8 @@ const Signup = lazy(() => import("./pages/Signup"));
 const Account = lazy(() => import("./pages/Account"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const Reader = lazy(() => import("./pages/Reader"));
+const MicroStoryLanding = lazy(() => import("./pages/MicroStoryLanding"));
+const SecureReaderHarness = lazy(() => import("./pages/SecureReaderHarness"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const Admin = lazy(() => import("./pages/Admin"));
 
@@ -51,6 +53,8 @@ export default function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/pricing" element={<Pricing />} />
+                <Route path="/micro-story" element={<MicroStoryLanding />} />
+                <Route path="/secure-reader-test" element={<SecureReaderHarness />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/account" element={<Account />} />
