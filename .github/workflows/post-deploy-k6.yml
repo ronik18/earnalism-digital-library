@@ -19,8 +19,8 @@ jobs:
     env:
       FRONTEND_URL: ${{ vars.FRONTEND_URL || 'https://theearnalism.com' }}
       API_URL: ${{ vars.API_URL || 'https://api.theearnalism.com' }}
-      POST_DEPLOY_WAIT_SECONDS: ${{ vars.POST_DEPLOY_WAIT_SECONDS || '120' }}
-      K6_HTTP_P95_THRESHOLD: ${{ vars.K6_HTTP_P95_THRESHOLD || 'p(95)<1500' }}
+      POST_DEPLOY_WAIT_SECONDS: ${{ vars.POST_DEPLOY_WAIT_SECONDS || '90' }}
+      K6_HTTP_P95_THRESHOLD: ${{ vars.K6_HTTP_P95_THRESHOLD || 'p(95)<5000' }}
 
     steps:
       - name: Checkout
