@@ -1,0 +1,53 @@
+name: Post-deploy k6 smoke test
+
+on:
+  push:
+    branches:
+      - main
+      - production-deploy
+  workflow_dispatch:
+
+concurrency:
+  group: post-deploy-k6-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  k6-smoke:
+    name: k6 production smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      FRONTEND_URL: ${{ vars.FRONTEND_URL || 'https://theearnalism.com' }}
+      API_URL: ${{ vars.API_URL || 'https://api.theearnalism.com' }}
+      POST_DEPLOY_WAIT_SECONDS: ${{ vars.POST_DEPLOY_WAIT_SECONDS || '90' }}
+      K6_HTTP_P95_THRESHOLD: ${{ vars.K6_HTTP_P95_THRESHOLD || 'p(95)<5000' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Wait for production deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Waiting ${POST_DEPLOY_WAIT_SECONDS}s for Vercel/Railway deployment propagation..."
+          sleep "${POST_DEPLOY_WAIT_SECONDS}"
+
+          for attempt in {1..30}; do
+            frontend_status="$(curl -L -s -o /dev/null -w "%{http_code}" "${FRONTEND_URL}")"
+            backend_status="$(curl -L -s -o /dev/null -w "%{http_code}" "${API_URL}/health")"
+            echo "Attempt ${attempt}: frontend=${frontend_status} backend=${backend_status}"
+            if [[ "${frontend_status}" == "200" && "${backend_status}" == "200" ]]; then
+              exit 0
+            fi
+            sleep 10
+          done
+
+          echo "Production URLs did not become healthy before k6 smoke test."
+          exit 1
+
+      - name: Install k6
+        uses: grafana/setup-k6-action@v1
+
+      - name: Run k6 smoke test
+        run: k6 run scripts/k6_smoke.js

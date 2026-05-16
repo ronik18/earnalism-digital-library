@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../lib/api";
+import { optimizedImageUrl } from "../lib/images";
 import useSEO from "../hooks/useSEO";
 
 const JOURNAL_OG = "https://images.unsplash.com/photo-1764087957302-ef0756ed8e0a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
@@ -21,7 +22,11 @@ export default function Journal() {
     image: JOURNAL_OG,
   });
 
-  useEffect(() => { api.get("/blog").then((r) => setPosts(r.data)).catch(() => {}); }, []);
+  useEffect(() => {
+    const controller = new AbortController();
+    api.get("/blog", { signal: controller.signal }).then((r) => setPosts(r.data)).catch(() => {});
+    return () => controller.abort();
+  }, []);
 
   const cats = useMemo(() => ["all", ...Array.from(new Set(posts.map((p) => p.category)))], [posts]);
   const filtered = active === "all" ? posts : posts.filter((p) => p.category === active);
@@ -58,7 +63,7 @@ export default function Journal() {
         {feature && (
           <Link to={`/journal/${feature.slug}`} className="grid grid-cols-1 lg:grid-cols-12 gap-10 group" data-testid="journal-feature">
             <div className="lg:col-span-7 aspect-[16/10] lg:aspect-auto lg:min-h-[460px] overflow-hidden rounded-xl border border-brand-soft">
-              {feature.cover_image_url && <img src={feature.cover_image_url} alt={feature.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]" />}
+              {feature.cover_image_url && <img src={optimizedImageUrl(feature.cover_image_url, { width: 1200 })} alt={feature.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]" />}
             </div>
             <div className="lg:col-span-5 flex flex-col justify-center">
               <div className="overline mb-4">Featured · {feature.category}</div>
@@ -76,7 +81,7 @@ export default function Journal() {
             {rest.map((p) => (
               <Link key={p.slug} to={`/journal/${p.slug}`} className="group flex flex-col gap-5" data-testid={`journal-card-${p.slug}`}>
                 <div className="aspect-[4/3] overflow-hidden rounded-xl border border-brand-soft">
-                  {p.cover_image_url && <img src={p.cover_image_url} alt={p.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]" />}
+                  {p.cover_image_url && <img src={optimizedImageUrl(p.cover_image_url, { width: 720 })} alt={p.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]" />}
                 </div>
                 <div>
                   <div className="overline mb-3">{p.category}</div>

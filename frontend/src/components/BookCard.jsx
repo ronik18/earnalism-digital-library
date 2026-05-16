@@ -1,15 +1,19 @@
 import { Link } from "react-router-dom";
 import { Clock } from "lucide-react";
+import { memo } from "react";
+import { optimizedImageUrl } from "../lib/images";
 
-export default function BookCard({ book }) {
+function BookCard({ book }) {
+  const coverSrc = optimizedImageUrl(book.cover_image_url, { width: 720 });
   return (
     <div className="card-elegant overflow-hidden flex flex-col group" data-testid={`book-card-${book.slug}`}>
       <Link to={`/book/${book.slug}`} className="block aspect-[3/4] bg-beige-deep overflow-hidden relative">
         {book.cover_image_url ? (
           <img
-            src={book.cover_image_url}
+            src={coverSrc}
             alt={book.title}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]"
           />
         ) : (
@@ -40,3 +44,5 @@ export default function BookCard({ book }) {
     </div>
   );
 }
+
+export default memo(BookCard);

@@ -3,6 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Volume2, VolumeX, Bookmark, BookmarkCheck, Settings, List, X, Loader2, Clock, AlertCircle, LogIn, CreditCard } from 'lucide-react';
 import axios from 'axios';
 import { API, TOKEN_KEY, USER_TOKEN_KEY, formatError } from '../lib/api';
+import { toast } from 'sonner';
+import ReaderUpsellPrompt from '../components/Funnel/ReaderUpsellPrompt';
+import SecureReader from '../components/SecureReader';
+import { trackFunnelEvent } from '../lib/funnelAnalytics';
+import { canShowReaderFinishPrompt, markReaderFinishPromptShown } from '../lib/funnelOffers';
+import { useAuth } from '../context/AuthContext';
 
 const THEMES = {
   beige: { canvas: '#FAF7F0', surface: '#F5F0E8', text: '#1C0A0E', accent: '#6B1020', border: '#E8DDD8', label: 'Beige' },
@@ -115,6 +121,13 @@ function wrapWordsInSpans(html) {
   return { html: div.innerHTML, totalWords: wordIndex };
 }
 
+function countWordsInHtml(html) {
+  if (typeof document === 'undefined') return (html || '').split(/\s+/).filter(Boolean).length;
+  const div = document.createElement('div');
+  div.innerHTML = html || '';
+  return (div.textContent || '').split(/\s+/).filter(Boolean).length;
+}
+
 function formatWalletTime(seconds) {
   const s = Math.max(0, Math.floor(seconds || 0));
   if (s >= 3600) {
@@ -133,6 +146,7 @@ function formatWalletTime(seconds) {
 export default function Reader() {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const bookId = slug;
   const chapterId = new URLSearchParams(window.location.search).get('c');
 
@@ -173,6 +187,7 @@ export default function Reader() {
 
   const [sessionId, setSessionId] = useState(null);
   const [meteredSessionActive, setMeteredSessionActive] = useState(false);
+  const [showReaderUpsell, setShowReaderUpsell] = useState(false);
 
   const contentRef = useRef(null);
   const utteranceRef = useRef(null);
@@ -181,6 +196,8 @@ export default function Reader() {
   const wordsRef = useRef([]);
   const pulseIntervalRef = useRef(null);
   const scrollContainerRef = useRef(null);
+  const completionReportedRef = useRef('');
+  const upsellShownRef = useRef('');
 
   const stopTTS = useCallback(() => {
     synthRef.current.cancel();
@@ -345,9 +362,10 @@ export default function Reader() {
           return;
         }
 
-        const wrapped = wrapWordsInSpans(sanitizeReaderHtml(loadedChapter.content));
-        setProcessedHtml(wrapped.html);
-        setTotalWords(wrapped.totalWords);
+        const safeHtml = sanitizeReaderHtml(loadedChapter.content);
+        // Keep first render light. TTS word spans are injected only if narration starts.
+        setProcessedHtml(safeHtml);
+        setTotalWords(countWordsInHtml(safeHtml));
         setLockedState(null);
 
         if (getUserToken() && !gate.is_preview) {
@@ -414,7 +432,9 @@ export default function Reader() {
     const el = scrollContainerRef.current;
     if (!el) return undefined;
 
-    const onScroll = () => {
+    let rafId = 0;
+    const updateFromScroll = () => {
+      rafId = 0;
       const max = el.scrollHeight - el.clientHeight;
       const pct = max > 0 ? (el.scrollTop / max) * 100 : 0;
       setReadProgress(Math.min(100, Math.round(pct)));
@@ -423,10 +443,86 @@ export default function Reader() {
       if (el.scrollTop < lastScrollY.current - 5) setToolbarVisible(true);
       lastScrollY.current = el.scrollTop;
     };
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(updateFromScroll);
+    };
 
     el.addEventListener('scroll', onScroll, { passive: true });
-    return () => el.removeEventListener('scroll', onScroll);
+    return () => {
+      el.removeEventListener('scroll', onScroll);
+      if (rafId) window.cancelAnimationFrame(rafId);
+    };
   }, [loading]);
+
+  useEffect(() => {
+    setShowReaderUpsell(false);
+  }, [activeChapterId, chapterId]);
+
+  // Funnel prompt appears near the end of short reads only, never mid-paragraph.
+  useEffect(() => {
+    if (!chapter || lockedState || loading || readProgress < 96) return;
+    const currentKey = `${bookId}:${activeChapterId || chapterId || chapter?.id}`;
+    if (upsellShownRef.current === currentKey || !canShowReaderFinishPrompt()) return;
+    const estimatedMinutes = totalWords > 0 ? Math.ceil(totalWords / 220) : 3;
+    if (estimatedMinutes > 10 && !chapter?.is_free_preview) return;
+
+    upsellShownRef.current = currentKey;
+    markReaderFinishPromptShown();
+    setShowReaderUpsell(true);
+    trackFunnelEvent('reader_upsell_shown', {
+      book_slug: bookId,
+      chapter_id: activeChapterId || chapterId || chapter?.id,
+      estimated_minutes: estimatedMinutes,
+      pack_id: '1h',
+    });
+  }, [activeChapterId, bookId, chapter, chapterId, loading, lockedState, readProgress, totalWords]);
+
+  // Completion rewards are best-effort and idempotent; failures must not disturb reading.
+  useEffect(() => {
+    if (!chapter || lockedState || loading || readProgress < 98 || !getUserToken()) return;
+    const currentKey = `${bookId}:${activeChapterId || chapterId || chapter?.id}`;
+    if (completionReportedRef.current === currentKey) return;
+    completionReportedRef.current = currentKey;
+
+    async function recordCompletion() {
+      try {
+        const { data } = await axios.post(
+          `${API}/users/me/rewards/completion`,
+          {
+            book_slug: bookId,
+            chapter_id: activeChapterId || chapterId || chapter?.id,
+            chapter_title: chapter?.title || '',
+            progress: readProgress,
+          },
+          { headers: getUserAuthHeaders() },
+        );
+        trackFunnelEvent('reader_completion_recorded', {
+          book_slug: bookId,
+          chapter_id: activeChapterId || chapterId || chapter?.id,
+          streak_days: data?.streak_days || 0,
+        });
+
+        if (data?.eligible) {
+          const claimRes = await axios.post(`${API}/users/me/rewards/claim`, {}, { headers: getUserAuthHeaders() });
+          const reward = claimRes.data || {};
+          if (reward.claimed_now) {
+            setWalletSeconds(reward.wallet_seconds || 0);
+            toast.success(`${reward.credit_minutes || 10} minutes credited toward The Reader's Reserve.`);
+            trackFunnelEvent('reader_reward_claimed', {
+              book_slug: bookId,
+              chapter_id: activeChapterId || chapterId || chapter?.id,
+              credit_minutes: reward.credit_minutes || 10,
+            });
+          }
+        }
+      } catch {
+        // Reward logging must never interrupt reading.
+      }
+    }
+
+    recordCompletion();
+  }, [activeChapterId, bookId, chapter, chapterId, loading, lockedState, readProgress]);
 
   const handleTopUp = async (pack) => {
     if (!pack) return;
@@ -524,14 +620,27 @@ export default function Reader() {
 
   const startTTS = useCallback(() => {
     synthRef.current.cancel();
-    const utter = buildUtterance();
-    if (!utter) return;
+    const speak = () => {
+      wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
+      const utter = buildUtterance();
+      if (!utter) return;
 
-    utteranceRef.current = utter;
-    synthRef.current.speak(utter);
-    setTtsActive(true);
-    setTtsPaused(false);
-  }, [buildUtterance]);
+      utteranceRef.current = utter;
+      synthRef.current.speak(utter);
+      setTtsActive(true);
+      setTtsPaused(false);
+    };
+
+    if (processedHtml && !processedHtml.includes('class="tts-word"')) {
+      const wrapped = wrapWordsInSpans(processedHtml);
+      setProcessedHtml(wrapped.html);
+      setTotalWords(wrapped.totalWords);
+      window.requestAnimationFrame(() => window.requestAnimationFrame(speak));
+      return;
+    }
+
+    speak();
+  }, [buildUtterance, processedHtml]);
 
   const pauseTTS = () => {
     synthRef.current.pause();
@@ -668,16 +777,6 @@ export default function Reader() {
         <div style={{ width: `${readProgress}%`, height: '100%', background: '#6B1020', transition: 'width 300ms' }} />
       </div>
 
-      <div aria-hidden="true" className="watermark">
-        <span className="watermark-text">
-          {localStorage.getItem('userEmail') || 'earnalism.com'}
-          {' · '}
-          {new Date().toLocaleDateString()}
-          {' · '}
-          {sessionId?.slice(0, 8)}
-        </span>
-      </div>
-
       <header className="fixed top-0.5 left-0 right-0 z-40" style={{ background: `${colors.canvas}EE`, backdropFilter: 'blur(12px)', borderBottom: `1px solid ${colors.border}`, transform: toolbarVisible ? 'translateY(0)' : 'translateY(-100%)', transition: 'transform 300ms ease' }}>
         <div className="flex items-center justify-between px-4 py-3">
         <button type="button" onClick={() => navigate(`/book/${bookId}`)} className="flex items-center gap-2 min-w-0" style={{ color: colors.accent, fontFamily: UI_FONT, fontSize: 13 }}>
@@ -724,13 +823,32 @@ export default function Reader() {
             <span style={{ color: colors.accent, fontSize: 20 }}>❧</span>
             <div className="flex-1 h-px" style={{ background: colors.border }} />
           </div>
-          <div
-            ref={contentRef}
+          <SecureReader
+            sessionId={sessionId}
+            userName={user && typeof user === 'object' ? user.name : 'Reader'}
+            userEmail={user && typeof user === 'object' ? user.email : ''}
+            bookSlug={bookId}
+            chapterId={activeChapterId || chapterId || chapter?.id}
+            title={`${book?.title || 'Earnalism'} · ${chapter?.title || 'Chapter'}`}
+            contentRef={contentRef}
             className={isBengali ? 'reader-content reader-content--bengali' : 'drop-cap reader-content'}
-            lang={isBengali ? 'bn' : undefined}
-            style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_SERIF, fontSize: FONT_SIZES[fontSizeIdx].size, lineHeight: isBengali ? 1.9 : 1.75, color: colors.text, filter: contentBlurred ? 'blur(12px)' : 'none', transition: 'filter 300ms ease', userSelect: 'none', WebkitUserSelect: 'none' }}
-            dangerouslySetInnerHTML={{ __html: processedHtml }}
+            html={processedHtml}
+            blurred={contentBlurred}
+            style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_SERIF, fontSize: FONT_SIZES[fontSizeIdx].size, lineHeight: isBengali ? 1.9 : 1.75, color: colors.text, transition: 'filter 300ms ease', userSelect: 'none', WebkitUserSelect: 'none' }}
           />
+          {showReaderUpsell && (
+            <ReaderUpsellPrompt
+              book={book}
+              chapter={chapter}
+              onDismiss={() => {
+                setShowReaderUpsell(false);
+                trackFunnelEvent('reader_upsell_dismissed', {
+                  book_slug: bookId,
+                  chapter_id: activeChapterId || chapterId || chapter?.id,
+                });
+              }}
+            />
+          )}
         </div>
       </main>
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, Instagram, Facebook, Youtube, Linkedin, Twitter } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
@@ -27,7 +27,7 @@ export default function Header() {
   const { social } = useSettings();
   const { user } = useAuth();
   useEffect(() => { setOpen(false); }, [loc.pathname]);
-  const activeSocials = SOCIALS.filter((s) => social?.[s.key]);
+  const activeSocials = useMemo(() => SOCIALS.filter((s) => social?.[s.key]), [social]);
   const isAuthed = !!user && typeof user === "object";
   const accountHref = isAuthed ? "/account" : "/login";
   const accountLabel = isAuthed ? "Account" : "Sign In";

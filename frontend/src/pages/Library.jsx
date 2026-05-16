@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Search, Clock } from "lucide-react";
 import { api } from "../lib/api";
+import { optimizedImageUrl } from "../lib/images";
 import BookCard from "../components/BookCard";
 import useSEO from "../hooks/useSEO";
 
@@ -13,6 +14,7 @@ export default function Library() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [q, setQ] = useState(params.get("q") || "");
+  const debouncedQ = useDebouncedValue(q, 300);
   const cat = params.get("category") || "all";
 
   useSEO({
@@ -21,15 +23,28 @@ export default function Library() {
     image: LIBRARY_OG,
   });
 
-  useEffect(() => { api.get("/categories").then((r) => setCategories(r.data)).catch(() => {}); }, []);
+  useEffect(() => {
+    const controller = new AbortController();
+    api.get("/categories", { signal: controller.signal }).then((r) => setCategories(r.data)).catch(() => {});
+    return () => controller.abort();
+  }, []);
 
   useEffect(() => {
     setLoading(true);
+    const controller = new AbortController();
     const p = {};
     if (cat && cat !== "all") p.category = cat;
-    if (q) p.q = q;
-    api.get("/books", { params: p }).then((r) => setBooks(r.data)).catch(() => setBooks([])).finally(() => setLoading(false));
-  }, [cat, q]);
+    if (debouncedQ) p.q = debouncedQ;
+    api.get("/books", { params: p, signal: controller.signal })
+      .then((r) => setBooks(r.data))
+      .catch((err) => {
+        if (err.name !== "CanceledError") setBooks([]);
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setLoading(false);
+      });
+    return () => controller.abort();
+  }, [cat, debouncedQ]);
 
   const setCat = (slug) => {
     const next = new URLSearchParams(params);
@@ -119,7 +134,7 @@ function SingleBookSpotlight({ book }) {
       <Link to={`/book/${book.slug}`} className="lg:col-span-5 group" data-testid={`book-card-${book.slug}`}>
         <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft shadow-[0_40px_80px_-40px_rgba(74,28,39,0.4)]">
           {book.cover_image_url ? (
-            <img src={book.cover_image_url} alt={book.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]" />
+            <img src={optimizedImageUrl(book.cover_image_url, { width: 760 })} alt={book.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]" />
           ) : (
             <div className="w-full h-full bg-beige-deep flex items-center justify-center font-serif-light text-7xl text-burgundy">E</div>
           )}
@@ -148,4 +163,13 @@ function SingleBookSpotlight({ book }) {
       </div>
     </div>
   );
+}
+
+function useDebouncedValue(value, delayMs) {
+  const [debounced, setDebounced] = useState(value);
+  useEffect(() => {
+    const id = window.setTimeout(() => setDebounced(value), delayMs);
+    return () => window.clearTimeout(id);
+  }, [value, delayMs]);
+  return debounced;
 }

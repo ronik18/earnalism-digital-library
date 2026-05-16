@@ -11,16 +11,19 @@ import hashlib
 import html as _html
 import io
 import json as _json
+import secrets
 import uuid
 import logging
 import time
 import bcrypt
 import jwt
 import unicodedata
-from collections import defaultdict, deque
+import copy
+from collections import OrderedDict, defaultdict, deque
 from datetime import datetime, timezone, timedelta
-from typing import Deque, Dict, List, Optional, Tuple
-from urllib.parse import urlparse
+from typing import Any, Deque, Dict, List, Optional, Tuple
+from urllib.parse import urlencode, urlparse
+from urllib.request import Request as UrlRequest, urlopen
 
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie, UploadFile, File
 from fastapi.exceptions import RequestValidationError
@@ -83,6 +86,11 @@ if not JWT_SECRET:
     raise RuntimeError("JWT_SECRET is required")
 JWT_ALG = "HS256"
 JWT_EXPIRE_MINUTES = _env_int("JWT_EXPIRE_MINUTES", 1440)
+USER_ACCESS_TOKEN_EXPIRE_MINUTES = _env_int("USER_ACCESS_TOKEN_EXPIRE_MINUTES", 30)
+USER_REFRESH_IDLE_MINUTES = _env_int("USER_REFRESH_IDLE_MINUTES", 30)
+USER_REFRESH_TOTAL_HOURS = _env_int("USER_REFRESH_TOTAL_HOURS", 12)
+TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS = _env_int("TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS", 1)
+MAX_READING_DEBIT_CATCHUP_SECONDS = _env_int("MAX_READING_DEBIT_CATCHUP_SECONDS", 1800)
 ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@theearnalism.com").strip()
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "").strip()
 SEED_TEST_READER = os.environ.get("SEED_TEST_READER", "false").strip().lower() == "true"
@@ -92,6 +100,7 @@ SEED_TEST_READER_PASSWORD = os.environ.get("SEED_TEST_READER_PASSWORD", "").stri
 # Cookie config — httpOnly session cookie. SECURE flag is on by default (HTTPS in prod);
 # can be disabled via env for plain-HTTP local dev only.
 SESSION_COOKIE = "ear_session"
+USER_REFRESH_COOKIE = "ear_user_refresh"
 SESSION_TTL_SECONDS = JWT_EXPIRE_MINUTES * 60
 COOKIE_SECURE = os.environ.get("COOKIE_SECURE", "true").lower() != "false"
 COOKIE_SAMESITE = os.environ.get("COOKIE_SAMESITE", "lax")
@@ -115,15 +124,28 @@ RATE_LIMIT_UPLOAD_PER_MINUTE = _env_int("RATE_LIMIT_UPLOAD_PER_MINUTE", 30)
 _rate_limit_hits: Dict[str, Deque[float]] = defaultdict(deque)
 _rate_limit_next_sweep = 0.0
 
+# Small per-process cache for anonymous public catalogue reads. It intentionally
+# excludes authenticated/user/admin routes and should move to Redis if the API is
+# scaled across several Railway replicas.
+PUBLIC_CACHE_ENABLED = _env_bool("PUBLIC_CACHE_ENABLED", True)
+PUBLIC_CACHE_TTL_SECONDS = _env_int("PUBLIC_CACHE_TTL_SECONDS", 45)
+PUBLIC_CACHE_MAX_ENTRIES = _env_int("PUBLIC_CACHE_MAX_ENTRIES", 256)
+HEALTH_CACHE_TTL_SECONDS = _env_int("HEALTH_CACHE_TTL_SECONDS", 5)
+_public_cache: "OrderedDict[str, Tuple[float, Any]]" = OrderedDict()
+_health_cache: dict = {"expires_at": 0.0, "payload": None}
+
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
 # amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
 PACKS: List[dict] = [
     {"id": "30m",  "label": "Afternoon Pause",     "minutes": 30,  "amount_paise": 4900,  "price_inr": 49,  "note": "A single chapter, with breath to spare."},
     {"id": "1h",   "label": "An Evening In",       "minutes": 60,  "amount_paise": 8900,  "price_inr": 89,  "note": "An unhurried hour with a worthy book."},
     {"id": "3h",   "label": "Long Weekend",        "minutes": 180, "amount_paise": 23900, "price_inr": 239, "note": "Three quiet hours; a finished read."},
-    {"id": "10h",  "label": "The Reader's Reserve", "minutes": 600, "amount_paise": 69900, "price_inr": 699, "note": "Ten hours, kept until you call them in."},
+    {"id": "10h",  "label": "The Reader's Reserve", "minutes": 600, "amount_paise": 49900, "price_inr": 499, "note": "Ten hours, kept until you call them in."},
 ]
 PACKS_BY_ID = {p["id"]: p for p in PACKS}
+READER_STREAK_REWARD_KEY = "reader_reserve_streak_3"
+READER_STREAK_REQUIRED_DAYS = 3
+READER_STREAK_REWARD_SECONDS = 10 * 60
 
 
 def razorpay_keys_configured() -> bool:
@@ -162,15 +184,154 @@ def create_token(sub: str, email: str) -> str:
     }
     return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALG)
 
-def create_user_token(sub: str, email: str) -> str:
+def create_user_token(sub: str, email: str, session_id: str, device_fingerprint: str) -> str:
     payload = {
         "sub": sub,
         "email": email,
         "role": "user",
-        "exp": datetime.now(timezone.utc) + timedelta(minutes=JWT_EXPIRE_MINUTES),
+        "sid": session_id,
+        "fp": device_fingerprint,
+        "exp": datetime.now(timezone.utc) + timedelta(minutes=USER_ACCESS_TOKEN_EXPIRE_MINUTES),
         "type": "access",
     }
     return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALG)
+
+
+def _as_utc_dt(value) -> Optional[datetime]:
+    if isinstance(value, datetime):
+        return value.replace(tzinfo=timezone.utc) if value.tzinfo is None else value.astimezone(timezone.utc)
+    if isinstance(value, str) and value:
+        try:
+            parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+            return parsed.replace(tzinfo=timezone.utc) if parsed.tzinfo is None else parsed.astimezone(timezone.utc)
+        except ValueError:
+            return None
+    return None
+
+
+def _hash_secret(value: str) -> str:
+    return hmac.new(JWT_SECRET.encode("utf-8"), value.encode("utf-8"), hashlib.sha256).hexdigest()
+
+
+def _device_fingerprint(request: Request) -> str:
+    ua = request.headers.get("user-agent", "")[:240]
+    lang = request.headers.get("accept-language", "")[:80]
+    browser_hint = request.headers.get("x-client-fingerprint", "")[:120]
+    raw = f"{_client_ip(request)}|{ua}|{lang}|{browser_hint}"
+    return _hash_secret(raw)
+
+
+def _set_user_refresh_cookie(response: Response, refresh_token: str) -> None:
+    response.set_cookie(
+        key=USER_REFRESH_COOKIE,
+        value=refresh_token,
+        max_age=USER_REFRESH_TOTAL_HOURS * 3600,
+        httponly=True,
+        secure=COOKIE_SECURE,
+        samesite=COOKIE_SAMESITE,
+        path="/",
+    )
+
+
+def _clear_user_refresh_cookie(response: Response) -> None:
+    response.delete_cookie(
+        key=USER_REFRESH_COOKIE,
+        httponly=True,
+        secure=COOKIE_SECURE,
+        samesite=COOKIE_SAMESITE,
+        path="/",
+    )
+
+
+async def _create_user_session(user: dict, request: Request, response: Response) -> str:
+    """Create a new reader session and revoke older active sessions.
+
+    TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS defaults to 1, which enforces one active
+    login. Raising it later allows a small trusted-device whitelist without
+    changing token semantics.
+    """
+    now = datetime.now(timezone.utc)
+    session_id = str(uuid.uuid4())
+    refresh_token = secrets.token_urlsafe(48)
+    device_fp = _device_fingerprint(request)
+
+    await db.user_sessions.insert_one({
+        "id": session_id,
+        "user_id": user["id"],
+        "email": user["email"],
+        "device_fingerprint": device_fp,
+        "refresh_token_hash": _hash_secret(refresh_token),
+        "status": "active",
+        "created_at": now,
+        "last_seen_at": now,
+        "idle_expires_at": now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES),
+        "absolute_expires_at": now + timedelta(hours=USER_REFRESH_TOTAL_HOURS),
+        "ip_hash": _hash_secret(_client_ip(request)),
+        "user_agent": request.headers.get("user-agent", "")[:240],
+    })
+
+    active = await db.user_sessions.find(
+        {"user_id": user["id"], "status": "active"},
+        {"_id": 0, "id": 1, "created_at": 1},
+    ).sort("created_at", -1).to_list(50)
+    keep = {row["id"] for row in active[:TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS]}
+    revoked = [row["id"] for row in active if row["id"] not in keep]
+    if revoked:
+        await db.user_sessions.update_many(
+            {"id": {"$in": revoked}},
+            {"$set": {"status": "revoked", "revoked_at": now, "revoked_reason": "new_login"}},
+        )
+
+    await db.users.update_one(
+        {"id": user["id"]},
+        {"$set": {"active_user_session_id": session_id, "last_login_at": now}},
+    )
+    _set_user_refresh_cookie(response, refresh_token)
+    return create_user_token(user["id"], user["email"], session_id, device_fp)
+
+
+async def _refresh_user_session(refresh_token: str, request: Request, response: Response) -> Optional[dict]:
+    now = datetime.now(timezone.utc)
+    token_hash = _hash_secret(refresh_token)
+    session = await db.user_sessions.find_one({"refresh_token_hash": token_hash, "status": "active"}, {"_id": 0})
+    if not session:
+        return None
+    idle_expires = _as_utc_dt(session.get("idle_expires_at"))
+    absolute_expires = _as_utc_dt(session.get("absolute_expires_at"))
+    if not idle_expires or not absolute_expires or idle_expires <= now or absolute_expires <= now:
+        await db.user_sessions.update_one(
+            {"id": session["id"]},
+            {"$set": {"status": "expired", "expired_at": now}},
+        )
+        _clear_user_refresh_cookie(response)
+        return None
+
+    user = await db.users.find_one({"id": session["user_id"], "role": "user"}, {"_id": 0, "password_hash": 0})
+    if not user or user.get("status") == "blocked":
+        return None
+    if TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS <= 1 and user.get("active_user_session_id") != session["id"]:
+        await db.user_sessions.update_one(
+            {"id": session["id"]},
+            {"$set": {"status": "revoked", "revoked_at": now, "revoked_reason": "new_login"}},
+        )
+        _clear_user_refresh_cookie(response)
+        return None
+
+    device_fp = _device_fingerprint(request)
+    if session.get("device_fingerprint") != device_fp:
+        await db.user_sessions.update_one(
+            {"id": session["id"]},
+            {"$set": {"status": "revoked", "revoked_at": now, "revoked_reason": "device_fingerprint_changed"}},
+        )
+        _clear_user_refresh_cookie(response)
+        return None
+
+    await db.user_sessions.update_one(
+        {"id": session["id"]},
+        {"$set": {"last_seen_at": now, "idle_expires_at": now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES)}},
+    )
+    token = create_user_token(user["id"], user["email"], session["id"], device_fp)
+    return {"token": token, "user": UserOut(**_user_public(user))}
 
 bearer = HTTPBearer(auto_error=False)
 
@@ -199,6 +360,7 @@ async def require_admin(
 
 
 async def require_user(
+    request: Request,
     creds: Optional[HTTPAuthorizationCredentials] = Depends(bearer),
 ) -> dict:
     """Authenticate a reader user via Bearer token; reject admin tokens."""
@@ -212,15 +374,42 @@ async def require_user(
         raise HTTPException(status_code=401, detail="Invalid token")
     if payload.get("role") != "user":
         raise HTTPException(status_code=403, detail="User access required")
+    session_id = payload.get("sid")
+    token_fp = payload.get("fp")
+    if not session_id or not token_fp:
+        raise HTTPException(status_code=401, detail="Session expired, please login again.")
+    if token_fp != _device_fingerprint(request):
+        raise HTTPException(status_code=401, detail="Session security check failed. Please login again.")
     user = await db.users.find_one({"id": payload["sub"]}, {"_id": 0, "password_hash": 0})
     if not user:
         raise HTTPException(status_code=401, detail="User not found")
     if user.get("status") == "blocked":
         raise HTTPException(status_code=403, detail="Account is blocked")
+    if TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS <= 1 and user.get("active_user_session_id") != session_id:
+        raise HTTPException(status_code=401, detail="You've been logged out: new login detected.")
+    session = await db.user_sessions.find_one({"id": session_id, "user_id": user["id"]}, {"_id": 0})
+    if not session or session.get("status") != "active":
+        raise HTTPException(status_code=401, detail="You've been logged out: new login detected.")
+    now = datetime.now(timezone.utc)
+    idle_expires = _as_utc_dt(session.get("idle_expires_at"))
+    absolute_expires = _as_utc_dt(session.get("absolute_expires_at"))
+    if not idle_expires or not absolute_expires or idle_expires <= now or absolute_expires <= now:
+        await db.user_sessions.update_one(
+            {"id": session_id},
+            {"$set": {"status": "expired", "expired_at": now}},
+        )
+        raise HTTPException(status_code=401, detail="Session expired, please login again.")
+    await db.user_sessions.update_one(
+        {"id": session_id},
+        {"$set": {"last_seen_at": now, "idle_expires_at": now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES)}},
+    )
+    user["session_id"] = session_id
+    user["device_fingerprint"] = token_fp
     return user
 
 
 async def optional_principal(
+    request: Request,
     creds: Optional[HTTPAuthorizationCredentials] = Depends(bearer),
 ) -> Optional[dict]:
     """Return the caller as a dict tagged with role, or None for guests.
@@ -241,7 +430,21 @@ async def optional_principal(
         u = await db.users.find_one({"id": payload.get("sub")}, {"_id": 0, "password_hash": 0})
         if not u:
             return None
+        session_id = payload.get("sid")
+        if not session_id or payload.get("fp") != _device_fingerprint(request):
+            return None
+        if TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS <= 1 and u.get("active_user_session_id") != session_id:
+            return None
+        session = await db.user_sessions.find_one({"id": session_id, "user_id": u["id"], "status": "active"}, {"_id": 0})
+        if not session:
+            return None
+        now = datetime.now(timezone.utc)
+        idle_expires = _as_utc_dt(session.get("idle_expires_at"))
+        absolute_expires = _as_utc_dt(session.get("absolute_expires_at"))
+        if not idle_expires or not absolute_expires or idle_expires <= now or absolute_expires <= now:
+            return None
         u["role"] = "user"
+        u["session_id"] = session_id
         return u
     return None
 
@@ -275,6 +478,62 @@ def slugify(text: str, fallback: Optional[str] = None) -> str:
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+BOOK_METADATA_PROJECTION = {
+    "_id": 0,
+    "chapters.content": 0,
+}
+PUBLIC_CACHE_PATHS = {
+    "/api/categories",
+    "/api/books",
+    "/api/blog",
+    "/api/featured",
+    "/api/settings/social",
+    "/api/settings/brand",
+    "/api/payments/packs",
+    "/api/payments/config",
+    "/api/reading/packs",
+}
+PUBLIC_CACHE_PREFIXES = (
+    "/api/books/",
+    "/api/blog/",
+)
+
+
+def _public_cache_key(scope: str, **params) -> str:
+    return f"{scope}:{_json.dumps(params, sort_keys=True, ensure_ascii=True, default=str)}"
+
+
+def _public_cache_get(key: str):
+    if not PUBLIC_CACHE_ENABLED:
+        return None
+    item = _public_cache.get(key)
+    if not item:
+        return None
+    expires_at, value = item
+    if expires_at <= time.monotonic():
+        _public_cache.pop(key, None)
+        return None
+    _public_cache.move_to_end(key)
+    return copy.deepcopy(value)
+
+
+def _public_cache_set(key: str, value) -> None:
+    if not PUBLIC_CACHE_ENABLED:
+        return
+    _public_cache[key] = (time.monotonic() + PUBLIC_CACHE_TTL_SECONDS, copy.deepcopy(value))
+    _public_cache.move_to_end(key)
+    while len(_public_cache) > PUBLIC_CACHE_MAX_ENTRIES:
+        _public_cache.popitem(last=False)
+
+
+def _public_cache_clear() -> None:
+    _public_cache.clear()
+
+
+def _is_public_cache_path(path: str) -> bool:
+    return path in PUBLIC_CACHE_PATHS or any(path.startswith(prefix) for prefix in PUBLIC_CACHE_PREFIXES)
 
 
 HTML_TAG_RE = re.compile(r"</?[a-z][\s\S]*>", re.IGNORECASE)
@@ -429,6 +688,421 @@ def _parse_book_template_docx(file_bytes: bytes) -> Tuple[dict, List[str], str]:
     if not imported["title"]:
         warnings.append("No Title field was found in the DOCX template.")
     return imported, warnings, raw_text
+
+
+DOCX_MIME = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+SECURE_STORAGE_DIR = ROOT_DIR / "secure_storage"
+AI_MARKER_PATTERNS = [
+    r"\bas an ai language model\b",
+    r"\bi cannot (?:provide|assist|help)\b",
+    r"\bit is important to note\b",
+    r"\bin conclusion\b",
+    r"\bdelve into\b",
+]
+COPYRIGHT_SURFACE_PATTERNS = [
+    r"\bit was the best of times\b",
+    r"\bcall me ishmael\b",
+    r"\ball happy families are alike\b",
+]
+OFFENSIVE_SURFACE_PATTERNS = [
+    r"\bkill all\b",
+    r"\bexterminate\b",
+    r"\bgenocide\b",
+]
+BENGALI_TEXT_RE = re.compile(r"[\u0980-\u09FF]")
+KEYWORD_STOPWORDS = {
+    "about", "after", "again", "also", "because", "before", "being", "between", "chapter",
+    "could", "every", "first", "from", "have", "into", "more", "other", "their", "there",
+    "these", "this", "through", "under", "were", "when", "where", "which", "with", "would",
+    "your", "book", "author", "story", "page", "part", "will",
+}
+
+
+def contains_bengali_text(value: str) -> bool:
+    return bool(BENGALI_TEXT_RE.search(value or ""))
+
+
+def _sanitize_docx_plain(value: str, limit: int = 5000) -> str:
+    value = normalize_text(value or "")
+    value = re.sub(r"<[^>]+>", "", value)
+    value = re.sub(r"[\x00-\x08\x0B\x0C\x0E-\x1F]", "", value)
+    return value.strip()[:limit]
+
+
+def _safe_storage_filename(filename: str) -> str:
+    stem = Path(filename or "manuscript.docx").stem
+    safe_stem = re.sub(r"[^a-zA-Z0-9._-]+", "-", stem).strip("-")[:80] or "manuscript"
+    return f"{safe_stem}.docx"
+
+
+def _paragraph_text(paragraph) -> str:
+    return _sanitize_docx_plain(paragraph.text or "", 10000)
+
+
+def _paragraph_is_italic(paragraph) -> bool:
+    runs = [run for run in paragraph.runs if (run.text or "").strip()]
+    return bool(runs) and all(bool(run.italic) for run in runs)
+
+
+def _derive_docx_metadata(document, raw_text: str, template_data: Optional[dict] = None) -> dict:
+    paragraphs = list(document.paragraphs)
+    title = ""
+    subtitle = ""
+    author = ""
+    chapter_count = 0
+
+    for index, paragraph in enumerate(paragraphs):
+        style = (paragraph.style.name if paragraph.style else "").lower()
+        text = _paragraph_text(paragraph)
+        if not text:
+            continue
+        if not title and "heading 1" in style:
+            title = text
+            for next_para in paragraphs[index + 1:index + 5]:
+                next_text = _paragraph_text(next_para)
+                if next_text and _paragraph_is_italic(next_para):
+                    subtitle = next_text
+                    break
+        if "heading 2" in style:
+            chapter_count += 1
+        if not author:
+            match = re.match(r"^\s*by\s+(.+)$", text, flags=re.IGNORECASE)
+            if match:
+                author = _sanitize_docx_plain(match.group(1), 180)
+
+    lines = [_sanitize_docx_plain(line, 300) for line in raw_text.splitlines() if _sanitize_docx_plain(line, 300)]
+    if not title and lines:
+        title = lines[0]
+    if not subtitle:
+        for line in lines[1:5]:
+            if not re.match(r"^\s*by\s+", line, flags=re.IGNORECASE):
+                subtitle = line
+                break
+    if not author:
+        for line in lines[:20]:
+            match = re.match(r"^\s*by\s+(.+)$", line, flags=re.IGNORECASE)
+            if match:
+                author = _sanitize_docx_plain(match.group(1), 180)
+                break
+
+    props = getattr(document, "core_properties", None)
+    keyword_source = _sanitize_docx_plain(getattr(props, "keywords", "") if props else "", 500)
+    if keyword_source:
+        keywords = [item.strip() for item in re.split(r"[,;]", keyword_source) if item.strip()][:5]
+    else:
+        words = re.findall(r"[A-Za-z][A-Za-z'-]{3,}", raw_text.lower())
+        counts = defaultdict(int)
+        for word in words:
+            base = word.strip("'-")
+            if base and base not in KEYWORD_STOPWORDS:
+                counts[base] += 1
+        keywords = [item[0] for item in sorted(counts.items(), key=lambda pair: (-pair[1], pair[0]))[:5]]
+
+    word_count = len(re.findall(r"\b[\w\u0980-\u09FF'-]+\b", raw_text or ""))
+    template_data = template_data or {}
+    return {
+        "title": template_data.get("title") or title,
+        "subtitle": template_data.get("subtitle") or subtitle,
+        "author": template_data.get("author") or author or "The Earnalism",
+        "keywords": keywords,
+        "chapter_count": chapter_count,
+        "word_count": word_count,
+    }
+
+
+def _validate_docx_document(document, raw_text: str) -> Tuple[List[dict], List[str]]:
+    checks: List[dict] = []
+    warnings: List[str] = []
+
+    def add_check(name: str, passed: bool, severity: str, detail: str, findings: Optional[list] = None):
+        checks.append({
+            "name": name,
+            "status": "PASS" if passed else "FAIL",
+            "severity": severity,
+            "detail": detail,
+            "findings": findings or [],
+        })
+
+    text = raw_text or ""
+    ai_findings = []
+    for idx, paragraph in enumerate(document.paragraphs):
+        paragraph_text = _paragraph_text(paragraph)
+        for pattern in AI_MARKER_PATTERNS:
+            if re.search(pattern, paragraph_text, flags=re.IGNORECASE):
+                ai_findings.append({"paragraph_index": idx, "excerpt": paragraph_text[:220]})
+    add_check(
+        "AI-content marker scan",
+        not ai_findings,
+        "WARNING",
+        "No common AI-authorship markers found." if not ai_findings else "Common AI-authorship markers were found for admin review.",
+        ai_findings,
+    )
+    if ai_findings:
+        warnings.append("Potential AI-content markers detected. Review manually before publishing.")
+
+    copyright_findings = []
+    for pattern in COPYRIGHT_SURFACE_PATTERNS:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+        if match:
+            copyright_findings.append({"excerpt": text[max(0, match.start() - 80):match.end() + 80]})
+    add_check(
+        "Plagiarism surface scan",
+        not copyright_findings,
+        "WARNING",
+        "No known common passage matches found." if not copyright_findings else "Known common passage surface matches found.",
+        copyright_findings,
+    )
+
+    offensive_findings = []
+    for pattern in OFFENSIVE_SURFACE_PATTERNS:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+        if match:
+            offensive_findings.append({"excerpt": text[max(0, match.start() - 80):match.end() + 80]})
+    add_check(
+        "Offensive text surface scan",
+        not offensive_findings,
+        "WARNING",
+        "No configured offensive text markers found." if not offensive_findings else "Configured offensive text markers were found.",
+        offensive_findings,
+    )
+
+    heading_names = [(p.style.name if p.style else "") for p in document.paragraphs if _paragraph_text(p)]
+    has_heading = any("Heading" in name for name in heading_names)
+    if not has_heading:
+        warnings.append("No DOCX heading styles were detected. Chapter detection may be incomplete.")
+    add_check(
+        "Heading hierarchy",
+        has_heading,
+        "INFO" if has_heading else "WARNING",
+        "DOCX heading styles detected." if has_heading else "No heading styles detected.",
+    )
+
+    inline_images = len(getattr(document, "inline_shapes", []))
+    floating_images = document.element.xml.count("<wp:anchor")
+    add_check(
+        "Inline image rendering",
+        floating_images == 0,
+        "INFO" if floating_images == 0 else "WARNING",
+        f"{inline_images} inline image(s), {floating_images} floating image layout risk(s).",
+        [{"inline_images": inline_images, "floating_images": floating_images}],
+    )
+    if floating_images:
+        warnings.append("Floating images can shift unpredictably in reader preview. Prefer inline images.")
+
+    readable = len(text.strip()) > 0
+    add_check(
+        "Structural integrity",
+        readable,
+        "ERROR" if not readable else "INFO",
+        "DOCX text was readable." if readable else "No readable text could be extracted.",
+    )
+    return checks, warnings
+
+
+def _format_docx_document(document) -> None:
+    try:
+        from docx.shared import Pt  # type: ignore
+    except Exception:
+        Pt = None
+    for paragraph in document.paragraphs:
+        style_name = paragraph.style.name if paragraph.style else ""
+        clean_text = _sanitize_docx_plain(paragraph.text, 20000)
+        if paragraph.text != clean_text:
+            for run in paragraph.runs:
+                run.text = ""
+            paragraph.add_run(clean_text)
+        if Pt:
+            paragraph.paragraph_format.space_after = Pt(8)
+            paragraph.paragraph_format.line_spacing = 1.15
+            for run in paragraph.runs:
+                run.font.name = "Noto Serif Bengali" if contains_bengali_text(run.text) else "Georgia"
+                if "Heading 1" in style_name:
+                    run.font.size = Pt(22)
+                    run.bold = True
+                elif "Heading 2" in style_name:
+                    run.font.size = Pt(18)
+                    run.bold = True
+                elif "Heading 3" in style_name:
+                    run.font.size = Pt(15)
+                    run.bold = True
+                else:
+                    run.font.size = Pt(12)
+
+
+def _docx_credit_rows(admin_user_id: str, session_id: str, file_name: str, upload_id: str, tasks: List[dict]) -> List[dict]:
+    now = now_iso()
+    rows = []
+    for task in tasks:
+        units = float(task.get("units", 0) or 0)
+        credits = round(float(task.get("credits_used", 0) or 0), 4)
+        rows.append({
+            "id": str(uuid.uuid4()),
+            "user_id": admin_user_id,
+            "session_id": session_id,
+            "file_name": file_name,
+            "upload_id": upload_id,
+            "operation_type": "docx_validation_upload",
+            "task": task.get("task", "unknown"),
+            "units": units,
+            "credits_used": credits,
+            "timestamp": now,
+        })
+    return rows
+
+
+async def _process_docx_upload(
+    *,
+    docx_file: UploadFile,
+    request: Request,
+    admin: dict,
+    front_cover: Optional[UploadFile] = None,
+    back_cover: Optional[UploadFile] = None,
+) -> dict:
+    start = time.perf_counter()
+    filename = docx_file.filename or "book-upload.docx"
+    content_type = (docx_file.content_type or "").split(";", 1)[0].strip().lower()
+    if not filename.lower().endswith(".docx") or content_type != DOCX_MIME:
+        raise HTTPException(status_code=400, detail="Upload a valid .DOCX file with the correct Office Open XML MIME type.")
+    body = await docx_file.read()
+    if len(body) > 50 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="DOCX upload must be under 50MB.")
+
+    upload_id = str(uuid.uuid4())
+    safe_filename = _safe_storage_filename(filename)
+    storage_dir = SECURE_STORAGE_DIR / upload_id
+    validated_dir = storage_dir / "validated"
+    storage_dir.mkdir(parents=True, exist_ok=True)
+    validated_dir.mkdir(parents=True, exist_ok=True)
+    original_path = storage_dir / safe_filename
+    formatted_path = validated_dir / safe_filename
+
+    try:
+        original_path.write_bytes(body)
+        from docx import Document  # type: ignore
+        document = Document(io.BytesIO(body))
+    except Exception as e:
+        await db.admin_upload_audit.insert_one({
+            "id": str(uuid.uuid4()),
+            "upload_id": upload_id,
+            "admin_user_id": admin.get("sub", ""),
+            "admin_email": admin.get("email", ""),
+            "file_name": filename,
+            "status": "failed",
+            "error": f"Unreadable DOCX: {e}",
+            "created_at": now_iso(),
+        })
+        raise HTTPException(status_code=400, detail="DOCX could not be read. Please retry with a valid Office Open XML file.")
+
+    raw_text_result = _parse_book_template_docx(body)
+    template_data, template_warnings, raw_text = raw_text_result
+    metadata = _derive_docx_metadata(document, raw_text, template_data)
+    checks, warnings = _validate_docx_document(document, raw_text)
+    warnings.extend(template_warnings)
+    _format_docx_document(document)
+    document.save(formatted_path)
+
+    book_data = {
+        **template_data,
+        "title": metadata["title"],
+        "subtitle": metadata["subtitle"],
+        "author": metadata["author"],
+        "estimated_reading_time": template_data.get("estimated_reading_time") or f"{max(1, round(metadata['word_count'] / 238))} min",
+        "is_published": False,
+    }
+    if metadata["keywords"]:
+        book_data["keywords"] = metadata["keywords"]
+
+    import_id = f"docx-{upload_id[:12]}"
+
+    async def process_import_cover(file: Optional[UploadFile], kind: str) -> Optional[dict]:
+        if not file:
+            return None
+        if file.content_type not in _ALLOWED_COVER_TYPES:
+            raise HTTPException(status_code=400, detail=f"Unsupported {kind} cover type. Use JPG, PNG, WebP, or GIF.")
+        cover_body = await file.read()
+        if len(cover_body) > 10 * 1024 * 1024:
+            raise HTTPException(status_code=400, detail=f"{kind.title()} cover must be under 10MB")
+        _ensure_cloudinary()
+        try:
+            from utils.content_processor import process_book_cover  # type: ignore
+            return process_book_cover(cover_body, import_id, kind=kind)
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=f"{kind.title()} cover processing failed: {e}")
+
+    front = await process_import_cover(front_cover, "front")
+    back = await process_import_cover(back_cover, "back")
+    if front:
+        book_data.update({
+            "cover_image_url": front["cover_url"],
+            "cover_url": front["cover_url"],
+            "thumbnail_url": front["thumbnail_url"],
+        })
+    if back:
+        book_data.update({
+            "back_cover_image_url": back["cover_url"],
+            "back_cover_url": back["cover_url"],
+            "back_cover_thumbnail_url": back["thumbnail_url"],
+        })
+
+    elapsed_ms = round((time.perf_counter() - start) * 1000, 2)
+    ai_tokens = sum(len(finding.get("excerpt", "").split()) for check in checks for finding in check.get("findings", []))
+    credit_usage = [
+        {"task": "upload_io", "units": round(len(body) / 1024, 2), "unit_label": "KB", "credits_used": round(len(body) / (1024 * 1024) * 0.05, 4)},
+        {"task": "docx_parse", "units": metadata["word_count"], "unit_label": "words", "credits_used": round(metadata["word_count"] / 1000 * 0.1, 4)},
+        {"task": "validation_rules", "units": len(checks), "unit_label": "checks", "credits_used": round(len(checks) * 0.02, 4)},
+        {"task": "formatting", "units": len(document.paragraphs), "unit_label": "paragraphs", "credits_used": round(len(document.paragraphs) * 0.002, 4)},
+        {"task": "ai_marker_review", "units": ai_tokens, "unit_label": "tokens", "credits_used": round(ai_tokens / 1000 * 0.2, 4)},
+        {"task": "compute_time", "units": elapsed_ms / 1000, "unit_label": "seconds", "credits_used": round(elapsed_ms / 1000 * 0.01, 4)},
+    ]
+    total_credits = round(sum(item["credits_used"] for item in credit_usage), 4)
+    admin_user_id = admin.get("sub", admin.get("email", "admin"))
+    session_id = getattr(request.state, "request_id", upload_id)
+    credit_rows = _docx_credit_rows(admin_user_id, session_id, filename, upload_id, credit_usage)
+    if credit_rows:
+        await db.credit_log.insert_many(credit_rows)
+
+    status = "failed" if any(check["severity"] == "ERROR" and check["status"] == "FAIL" for check in checks) else "passed"
+    audit = {
+        "id": str(uuid.uuid4()),
+        "upload_id": upload_id,
+        "admin_user_id": admin_user_id,
+        "admin_email": admin.get("email", ""),
+        "file_name": filename,
+        "operation_type": "docx_validation_upload",
+        "status": status,
+        "word_count": metadata["word_count"],
+        "chapter_count": metadata["chapter_count"],
+        "credits_used": total_credits,
+        "storage_ref": f"secure_storage/{upload_id}/validated/{safe_filename}",
+        "created_at": now_iso(),
+    }
+    await db.admin_upload_audit.insert_one(audit)
+
+    return {
+        "success": status == "passed",
+        "upload_id": upload_id,
+        "book": book_data,
+        "metadata": metadata,
+        "validation_summary": {
+            "title": "Validation Result – Earnalism Compliance v1.0",
+            "status": status.upper(),
+            "checks": checks,
+            "warnings": sorted(set(warnings)),
+            "formatted_file": {
+                "file_name": safe_filename,
+                "storage_ref": f"secure_storage/{upload_id}/validated/{safe_filename}",
+            },
+            "footer_note": "Validated content complies with anti-AI & copyright policies.",
+        },
+        "warnings": sorted(set(warnings)),
+        "credit_usage": credit_usage,
+        "credits_used": total_credits,
+        "credit_report": {
+            "user_id": admin_user_id,
+            "session_id": session_id,
+            "upload_id": upload_id,
+        },
+    }
 
 
 # ---------- Models ----------
@@ -661,6 +1335,25 @@ class ReaderHeartbeatIn(BaseModel):
 class ReaderSessionEndIn(BaseModel):
     session_id: str
 
+class ReaderCompletionIn(BaseModel):
+    book_slug: str
+    chapter_id: str
+    chapter_title: str = ""
+    progress: int = 100
+
+class AnalyticsEventIn(BaseModel):
+    event: str
+    metadata: Dict[str, Any] = Field(default_factory=dict)
+
+class SecureReaderEventIn(BaseModel):
+    session_id: str
+    event_type: str
+    book_slug: str = ""
+    chapter_id: str = ""
+    access_token_fingerprint: str = ""
+    counts: Dict[str, int] = Field(default_factory=dict)
+    metadata: Dict[str, Any] = Field(default_factory=dict)
+
 class UserStatusIn(BaseModel):
     status: str  # "active" | "blocked"
 
@@ -712,6 +1405,122 @@ def _user_public(doc: dict) -> dict:
         "auth_provider": doc.get("auth_provider", "email"),
         "created_at": doc.get("created_at", now_iso()),
     }
+
+
+async def _ledger_balance(user_id: str) -> int:
+    rows = await db.wallet_ledger.aggregate([
+        {"$match": {"user_id": user_id}},
+        {"$group": {"_id": "$user_id", "credit": {"$sum": "$credit"}, "debit": {"$sum": "$debit"}}},
+    ]).to_list(1)
+    if not rows:
+        return 0
+    return int(rows[0].get("credit", 0)) - int(rows[0].get("debit", 0))
+
+
+async def _flag_wallet_divergence(user_id: str, stored_balance: int) -> None:
+    computed = await _ledger_balance(user_id)
+    if computed == int(stored_balance or 0):
+        return
+    await db.wallet_integrity_alerts.insert_one({
+        "id": str(uuid.uuid4()),
+        "user_id": user_id,
+        "stored_balance": int(stored_balance or 0),
+        "ledger_balance": computed,
+        "delta": int(stored_balance or 0) - computed,
+        "created_at": now_iso(),
+        "status": "open",
+    })
+
+
+async def _record_wallet_ledger(
+    *,
+    user_id: str,
+    session_id: str = "",
+    action: str,
+    seconds_delta: int,
+    reason: str,
+    actor: str = "system",
+    balance_after: Optional[int] = None,
+    source_transaction_id: Optional[str] = None,
+    extra: Optional[dict] = None,
+) -> dict:
+    seconds = int(seconds_delta)
+    tx_type = "credit" if seconds >= 0 else ("debit" if action == "admin_adjustment" else "consume")
+    tx = {
+        "id": source_transaction_id or str(uuid.uuid4()),
+        "user_id": user_id,
+        "type": tx_type,
+        "seconds": seconds,
+        "reason": reason,
+        "created_at": now_iso(),
+        "actor": actor,
+        "session_id": session_id,
+    }
+    if extra:
+        tx.update(extra)
+    if not source_transaction_id:
+        await db.wallet_transactions.insert_one(tx)
+
+    if balance_after is None:
+        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1})
+        balance_after = int((fresh or {}).get("reading_seconds_balance", 0))
+
+    ledger = {
+        "id": str(uuid.uuid4()),
+        "user_id": user_id,
+        "session_id": session_id,
+        "action": action,
+        "debit": max(0, -seconds),
+        "credit": max(0, seconds),
+        "timestamp": now_iso(),
+        "reason": reason,
+        "actor": actor,
+        "balance_after": int(balance_after or 0),
+        "source_transaction_id": tx["id"],
+    }
+    if extra:
+        ledger["metadata"] = {k: str(v)[:240] for k, v in extra.items()}
+    await db.wallet_ledger.update_one(
+        {"source_transaction_id": tx["id"]},
+        {"$setOnInsert": ledger},
+        upsert=True,
+    )
+    await _flag_wallet_divergence(user_id, int(balance_after or 0))
+    return tx
+
+
+async def _migrate_wallet_transactions_to_ledger() -> None:
+    rows = await db.wallet_transactions.find({}, {"_id": 0}).sort("created_at", 1).to_list(10000)
+    running: Dict[str, int] = {}
+    for tx in rows:
+        tx_id = tx.get("id")
+        if not tx_id:
+            continue
+        user_id = tx.get("user_id")
+        if not user_id:
+            continue
+        seconds = int(tx.get("seconds", 0) or 0)
+        running[user_id] = running.get(user_id, 0) + seconds
+        await db.wallet_ledger.update_one(
+            {"source_transaction_id": tx_id},
+            {
+                "$setOnInsert": {
+                    "id": str(uuid.uuid4()),
+                    "user_id": user_id,
+                    "session_id": tx.get("session_id", ""),
+                    "action": tx.get("type", "wallet_adjustment"),
+                    "debit": max(0, -seconds),
+                    "credit": max(0, seconds),
+                    "timestamp": tx.get("created_at", now_iso()),
+                    "reason": tx.get("reason", ""),
+                    "actor": tx.get("actor", "system"),
+                    "balance_after": running[user_id],
+                    "source_transaction_id": tx_id,
+                    "migrated": True,
+                }
+            },
+            upsert=True,
+        )
 
 
 def _is_free_preview_chapter(book: dict, chapter_id: Optional[str]) -> bool:
@@ -788,6 +1597,27 @@ async def initialize_database_indexes() -> None:
 
     await db.wallet_transactions.create_index([("user_id", 1), ("created_at", -1)])
 
+    await db.wallet_ledger.create_index([("user_id", 1), ("timestamp", -1)])
+    await db.wallet_ledger.create_index([("session_id", 1), ("timestamp", -1)])
+    await db.wallet_ledger.create_index(
+        "source_transaction_id",
+        unique=True,
+        partialFilterExpression={"source_transaction_id": {"$type": "string"}},
+    )
+    await db.wallet_integrity_alerts.create_index([("user_id", 1), ("created_at", -1)])
+
+    await db.credit_log.create_index([("user_id", 1), ("timestamp", -1)])
+    await db.credit_log.create_index([("upload_id", 1), ("timestamp", -1)])
+    await db.admin_upload_audit.create_index([("admin_user_id", 1), ("created_at", -1)])
+
+    await db.user_sessions.create_index("id", unique=True)
+    await db.user_sessions.create_index([("user_id", 1), ("status", 1), ("created_at", -1)])
+    await db.user_sessions.create_index(
+        "refresh_token_hash",
+        unique=True,
+        partialFilterExpression={"refresh_token_hash": {"$type": "string"}},
+    )
+
     await db.reading_sessions.create_index("id", sparse=True)
     await db.reading_sessions.create_index([("user_id", 1), ("started_at", -1)])
     await db.reading_sessions.create_index([("user_id", 1), ("status", 1), ("started_at", -1)])
@@ -811,11 +1641,26 @@ async def initialize_database_indexes() -> None:
     await db.payment_webhook_events.create_index("event_id", unique=True, sparse=True)
     await db.payment_webhook_events.create_index([("created_at", -1)])
 
+    await db.analytics_events.create_index([("event", 1), ("created_at", -1)])
+
+    await db.reader_security_events.create_index([("event_type", 1), ("created_at", -1)])
+    await db.reader_security_events.create_index([("session_id", 1), ("created_at", -1)])
+    await db.reader_security_events.create_index([("user_id", 1), ("created_at", -1)])
+
+    await db.reader_completions.create_index([("user_id", 1), ("completed_on", -1)])
+    await db.reader_completions.create_index(
+        [("user_id", 1), ("book_slug", 1), ("chapter_id", 1), ("completed_on", 1)],
+        unique=True,
+    )
+
+    await db.reward_claims.create_index([("user_id", 1), ("reward_key", 1)], unique=True)
+
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     # ----- startup -----
     await initialize_database_indexes()
+    await _migrate_wallet_transactions_to_ledger()
 
     # admin (seed only if absent; do NOT overwrite password so admin can change it via UI)
     existing = await db.users.find_one({"email": ADMIN_EMAIL.lower()})
@@ -955,6 +1800,78 @@ app = FastAPI(
 api = APIRouter(prefix="/api")
 
 
+def _safe_analytics_metadata(metadata: Dict[str, Any]) -> Dict[str, Any]:
+    """Keep conversion analytics useful while avoiding secrets or large payloads."""
+    if not isinstance(metadata, dict):
+        return {}
+
+    safe: Dict[str, Any] = {}
+    for raw_key, raw_value in list(metadata.items())[:20]:
+        key = re.sub(r"[^a-zA-Z0-9_.:-]", "_", str(raw_key))[:60]
+        if not key:
+            continue
+        if isinstance(raw_value, bool) or raw_value is None:
+            safe[key] = raw_value
+        elif isinstance(raw_value, (int, float)):
+            safe[key] = raw_value
+        elif isinstance(raw_value, str):
+            safe[key] = raw_value[:240]
+        else:
+            safe[key] = str(raw_value)[:240]
+    return safe
+
+
+def _safe_counter_map(counts: Dict[str, int]) -> Dict[str, int]:
+    if not isinstance(counts, dict):
+        return {}
+    safe: Dict[str, int] = {}
+    for raw_key, raw_value in list(counts.items())[:20]:
+        key = re.sub(r"[^a-zA-Z0-9_.:-]", "_", str(raw_key))[:60]
+        if not key:
+            continue
+        try:
+            safe[key] = max(0, min(10000, int(raw_value)))
+        except (TypeError, ValueError):
+            safe[key] = 0
+    return safe
+
+
+def _utc_day() -> str:
+    return datetime.utcnow().date().isoformat()
+
+
+async def _reader_completion_streak(user_id: str) -> int:
+    rows = await db.reader_completions.find(
+        {"user_id": user_id},
+        {"_id": 0, "completed_on": 1},
+    ).sort("completed_on", -1).to_list(90)
+    completed_days = {row.get("completed_on") for row in rows if row.get("completed_on")}
+    today = datetime.utcnow().date()
+    streak = 0
+    while (today - timedelta(days=streak)).isoformat() in completed_days:
+        streak += 1
+    return streak
+
+
+async def _reader_reward_state(user_id: str) -> dict:
+    streak = await _reader_completion_streak(user_id)
+    claim = await db.reward_claims.find_one(
+        {"user_id": user_id, "reward_key": READER_STREAK_REWARD_KEY},
+        {"_id": 0},
+    )
+    claimed = bool(claim)
+    return {
+        "streak_days": streak,
+        "required_days": READER_STREAK_REQUIRED_DAYS,
+        "eligible": streak >= READER_STREAK_REQUIRED_DAYS and not claimed,
+        "claimed": claimed,
+        "credit_seconds": READER_STREAK_REWARD_SECONDS,
+        "credit_minutes": READER_STREAK_REWARD_SECONDS // 60,
+        "target_pack_id": "10h",
+        "target_pack_label": "The Reader's Reserve",
+    }
+
+
 def _client_ip(request: Request) -> str:
     for header in ("cf-connecting-ip", "x-real-ip"):
         value = request.headers.get(header)
@@ -1092,11 +2009,30 @@ async def production_hardening_middleware(request: Request, call_next):
     response.headers["X-Request-ID"] = request_id
     _security_headers(response)
     duration_ms = round((time.perf_counter() - started) * 1000, 2)
+    response.headers["Server-Timing"] = f"app;dur={duration_ms}"
+    response.headers["X-Response-Time-ms"] = str(duration_ms)
+    path = request.url.path
+    if (
+        request.method == "GET"
+        and response.status_code == 200
+        and not request.headers.get("authorization")
+        and _is_public_cache_path(path)
+    ):
+        response.headers.setdefault(
+            "Cache-Control",
+            f"public, max-age={min(PUBLIC_CACHE_TTL_SECONDS, 60)}, stale-while-revalidate=120",
+        )
+    elif path in {"/health", "/api/health"}:
+        response.headers.setdefault("Cache-Control", "no-store")
+    elif path.startswith(("/api/admin", "/api/users", "/api/reader", "/api/reading", "/api/payments")):
+        response.headers.setdefault("Cache-Control", "no-store")
+    if request.method in {"POST", "PUT", "PATCH", "DELETE"} and response.status_code < 400 and path.startswith("/api/admin"):
+        _public_cache_clear()
     logger.info(_json.dumps({
         "event": "http_request",
         "request_id": request_id,
         "method": request.method,
-        "path": request.url.path,
+        "path": path,
         "status": status_code,
         "duration_ms": duration_ms,
         "client_ip": _client_ip(request),
@@ -1170,18 +2106,24 @@ async def change_password(payload: ChangePasswordIn, user=Depends(require_admin)
 @api.get("/health")
 async def health_check():
     """Liveness + DB ping for load balancers and Docker healthchecks."""
+    now = time.monotonic()
+    if _health_cache["payload"] and _health_cache["expires_at"] > now:
+        return _health_cache["payload"]
     db_ok = True
     try:
         await db.command("ping")
     except Exception:
         db_ok = False
-    return {
+    payload = {
         "ok": db_ok,
         "service": "the-earnalism-api",
         "mode": RAZORPAY_MODE,
         "razorpay_configured": razorpay_keys_configured(),
         "time": now_iso(),
     }
+    _health_cache["payload"] = payload
+    _health_cache["expires_at"] = now + HEALTH_CACHE_TTL_SECONDS
+    return payload
 
 
 @app.get("/health")
@@ -1189,15 +2131,76 @@ async def root_health_check():
     return await health_check()
 
 
+@api.post("/analytics/events")
+async def record_analytics_event(
+    payload: AnalyticsEventIn,
+    request: Request,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    event = re.sub(r"[^a-zA-Z0-9_.:-]", "_", payload.event.strip())[:80]
+    if not event:
+        raise HTTPException(status_code=400, detail="Event name is required")
+    await db.analytics_events.insert_one({
+        "id": str(uuid.uuid4()),
+        "event": event,
+        "metadata": _safe_analytics_metadata(payload.metadata),
+        "principal_role": principal.get("role") if principal else "guest",
+        "principal_id": principal.get("id") if principal else "",
+        "path": str(request.headers.get("referer", ""))[:240],
+        "user_agent": str(request.headers.get("user-agent", ""))[:180],
+        "created_at": now_iso(),
+    })
+    return {"ok": True}
+
+
+@api.post("/secure-reader/events")
+async def record_secure_reader_event(
+    payload: SecureReaderEventIn,
+    request: Request,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    event_type = re.sub(r"[^a-zA-Z0-9_.:-]", "_", payload.event_type.strip())[:80]
+    if not event_type:
+        raise HTTPException(status_code=400, detail="Event type is required")
+
+    # Never store raw auth tokens. The frontend may send only a short fingerprint.
+    await db.reader_security_events.insert_one({
+        "id": str(uuid.uuid4()),
+        "session_id": payload.session_id.strip()[:120],
+        "event_type": event_type,
+        "book_slug": payload.book_slug.strip()[:120],
+        "chapter_id": payload.chapter_id.strip()[:120],
+        "access_token_fingerprint": payload.access_token_fingerprint.strip()[:32],
+        "counts": _safe_counter_map(payload.counts),
+        "metadata": _safe_analytics_metadata(payload.metadata),
+        "principal_role": principal.get("role") if principal else "guest",
+        "user_id": principal.get("id") if principal and principal.get("role") == "user" else "",
+        "user_email": principal.get("email") if principal and principal.get("role") == "user" else "",
+        "ip": _client_ip(request),
+        "user_agent": str(request.headers.get("user-agent", ""))[:180],
+        "created_at": now_iso(),
+    })
+    return {"ok": True}
+
+
 @api.get("/categories", response_model=List[Category])
 async def list_categories():
+    cache_key = _public_cache_key("categories")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
     docs = await db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200)
+    _public_cache_set(cache_key, docs)
     return docs
 
 
 # ---------- Public: Books ----------
 @api.get("/books", response_model=List[Book])
 async def list_books(category: Optional[str] = None, q: Optional[str] = None):
+    cache_key = _public_cache_key("books", category=category or "all", q=normalize_text(q).strip() if q else "")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
     query: dict = {"is_published": True}
     if category and category != "all":
         query["category_slug"] = category
@@ -1213,32 +2216,50 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
             {"category_slug": {"$regex": pattern, "$options": "i"}},
             {"chapters.title": {"$regex": pattern, "$options": "i"}},
         ]
-    docs = await db.books.find(query, {"_id": 0}).sort("created_at", -1).to_list(500)
+    docs = await db.books.find(query, BOOK_METADATA_PROJECTION).sort("created_at", -1).to_list(500)
     # Public list is metadata-only so the library page does not ship manuscript bodies.
-    return [_strip_all_chapter_content(d) for d in docs]
+    result = [_strip_all_chapter_content(d) for d in docs]
+    _public_cache_set(cache_key, result)
+    return result
 
 @api.get("/books/{slug}", response_model=Book)
 async def get_book(slug: str):
+    cache_key = _public_cache_key("book_detail", slug=slug)
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
     doc = await db.books.find_one({"slug": slug, "is_published": True}, {"_id": 0})
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
     # Public detail returns ToC + only the free-preview chapter's body.
-    return _strip_paid_chapter_content(doc)
+    result = _strip_paid_chapter_content(doc)
+    _public_cache_set(cache_key, result)
+    return result
 
 
 @api.get("/books/{slug}/chapters")
 async def get_book_chapters(slug: str):
+    cache_key = _public_cache_key("book_chapters", slug=slug)
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
     doc = await db.books.find_one({"slug": slug, "is_published": True})
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
     chapters = _strip_paid_chapter_content(doc).get("chapters") or []
     if not chapters:
         return []
-    return sorted(chapters, key=lambda c: c.get("order", 0))
+    result = sorted(chapters, key=lambda c: c.get("order", 0))
+    _public_cache_set(cache_key, result)
+    return result
 
 
 @api.get("/books/{slug}/chapters/{chapter_id}")
 async def get_book_chapter(slug: str, chapter_id: str):
+    cache_key = _public_cache_key("book_chapter", slug=slug, chapter_id=chapter_id)
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
     doc = await db.books.find_one({"slug": slug, "is_published": True})
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
@@ -1246,34 +2267,53 @@ async def get_book_chapter(slug: str, chapter_id: str):
     chapter = next((c for c in chapters if c.get("id") == chapter_id), None)
     if not chapter:
         raise HTTPException(status_code=404, detail="Chapter not found")
+    _public_cache_set(cache_key, chapter)
     return chapter
 
 
 # ---------- Public: Blog ----------
 @api.get("/blog", response_model=List[BlogPost])
 async def list_blog(category: Optional[str] = None):
+    cache_key = _public_cache_key("blog", category=category or "all")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
     query: dict = {"is_published": True}
     if category and category != "all":
         query["category"] = category
     docs = await db.blog_posts.find(query, {"_id": 0}).sort("created_at", -1).to_list(200)
+    _public_cache_set(cache_key, docs)
     return docs
 
 @api.get("/blog/{slug}", response_model=BlogPost)
 async def get_blog(slug: str):
+    cache_key = _public_cache_key("blog_detail", slug=slug)
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
     doc = await db.blog_posts.find_one({"slug": slug, "is_published": True}, {"_id": 0})
     if not doc:
         raise HTTPException(status_code=404, detail="Article not found")
+    _public_cache_set(cache_key, doc)
     return doc
 
 
 # ---------- Public: Featured ----------
 @api.get("/featured")
 async def get_featured():
+    cache_key = _public_cache_key("featured")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
     s = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
     if not s:
-        return {"book": None}
-    book = await db.books.find_one({"slug": s.get("book_slug")}, {"_id": 0})
-    return {"book": book}
+        result = {"book": None}
+        _public_cache_set(cache_key, result)
+        return result
+    book = await db.books.find_one({"slug": s.get("book_slug")}, BOOK_METADATA_PROJECTION)
+    result = {"book": _strip_all_chapter_content(book) if book else None}
+    _public_cache_set(cache_key, result)
+    return result
 
 
 # ---------- Public: Submissions ----------
@@ -1307,14 +2347,20 @@ async def contact(payload: ContactIn):
 # ---------- Public: Social settings ----------
 @api.get("/settings/social")
 async def get_social():
+    cache_key = _public_cache_key("settings_social")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
     doc = await db.settings.find_one({"key": "social"}, {"_id": 0}) or {}
-    return {
+    result = {
         "instagram": doc.get("instagram", ""),
         "facebook": doc.get("facebook", ""),
         "youtube": doc.get("youtube", ""),
         "linkedin": doc.get("linkedin", ""),
         "twitter": doc.get("twitter", ""),
     }
+    _public_cache_set(cache_key, result)
+    return result
 
 
 @api.get("/settings/brand")
@@ -1322,11 +2368,17 @@ async def get_brand():
     """Brand identity: logo URL + social-share OG image. Both optional.
     Empty strings are returned if not configured so the frontend can fall back
     to the existing premium text logo and hero image."""
+    cache_key = _public_cache_key("settings_brand")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
     doc = await db.settings.find_one({"key": "brand"}, {"_id": 0}) or {}
-    return {
+    result = {
         "logo_url": doc.get("logo_url", ""),
         "og_image_url": doc.get("og_image_url", ""),
     }
+    _public_cache_set(cache_key, result)
+    return result
 
 
 # ---------- Admin: Books ----------
@@ -1387,70 +2439,66 @@ async def admin_get_book(slug: str, _=Depends(require_admin)):
     return await _load_book_or_404(slug)
 
 
-@api.post("/admin/books/import-template")
-async def admin_import_book_template(
+@api.post("/upload_docx")
+async def admin_upload_docx_validator(
+    request: Request,
     docx_file: UploadFile = File(...),
     front_cover: Optional[UploadFile] = File(default=None),
     back_cover: Optional[UploadFile] = File(default=None),
-    _=Depends(require_admin),
+    admin=Depends(require_admin),
 ):
-    filename = docx_file.filename or "book-template.docx"
-    if not filename.lower().endswith(".docx"):
-        raise HTTPException(status_code=400, detail="Upload a DOCX book template.")
-    body = await docx_file.read()
-    if len(body) > 25 * 1024 * 1024:
-        raise HTTPException(status_code=400, detail="DOCX template must be under 25MB")
+    return await _process_docx_upload(
+        docx_file=docx_file,
+        request=request,
+        admin=admin,
+        front_cover=front_cover,
+        back_cover=back_cover,
+    )
 
-    book_data, warnings, raw_text = _parse_book_template_docx(body)
-    import_id = f"import-{uuid.uuid4().hex[:12]}"
 
-    async def process_import_cover(file: Optional[UploadFile], kind: str) -> Optional[dict]:
-        if not file:
-            return None
-        if file.content_type not in _ALLOWED_COVER_TYPES:
-            raise HTTPException(status_code=400, detail=f"Unsupported {kind} cover type. Use JPG, PNG, WebP, or GIF.")
-        cover_body = await file.read()
-        if len(cover_body) > 10 * 1024 * 1024:
-            raise HTTPException(status_code=400, detail=f"{kind.title()} cover must be under 10MB")
-        _ensure_cloudinary()
-        try:
-            from utils.content_processor import process_book_cover  # type: ignore
-        except Exception as e:
-            raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
-        try:
-            return process_book_cover(cover_body, import_id, kind=kind)
-        except Exception as e:
-            raise HTTPException(status_code=400, detail=f"{kind.title()} cover processing failed: {e}")
+@api.post("/admin/books/import-template")
+async def admin_import_book_template(
+    request: Request,
+    docx_file: UploadFile = File(...),
+    front_cover: Optional[UploadFile] = File(default=None),
+    back_cover: Optional[UploadFile] = File(default=None),
+    admin=Depends(require_admin),
+):
+    return await _process_docx_upload(
+        docx_file=docx_file,
+        request=request,
+        admin=admin,
+        front_cover=front_cover,
+        back_cover=back_cover,
+    )
 
-    front = await process_import_cover(front_cover, "front")
-    if front:
-        book_data.update({
-            "cover_url": front["cover_url"],
-            "cover_image_url": front["cover_url"],
-            "thumbnail_url": front["thumbnail_url"],
-            "blur_placeholder": front["blur_placeholder"],
-            "dominant_color": front["dominant_color"],
-            "cover_processing_status": "ready",
-            "cover_processing_error": "",
-        })
 
-    back = await process_import_cover(back_cover, "back")
-    if back:
-        book_data.update({
-            "back_cover_url": back["cover_url"],
-            "back_cover_image_url": back["cover_url"],
-            "back_cover_thumbnail_url": back["thumbnail_url"],
-            "back_cover_blur_placeholder": back["blur_placeholder"],
-            "back_cover_dominant_color": back["dominant_color"],
-            "back_cover_processing_status": "ready",
-            "back_cover_processing_error": "",
-        })
-
+@api.get("/credits/report")
+async def credits_report(user_id: str, format: str = "json", _=Depends(require_admin)):
+    requested_user = _sanitize_docx_plain(user_id, 160)
+    if not requested_user:
+        raise HTTPException(status_code=400, detail="user_id is required")
+    rows = await db.credit_log.find({"user_id": requested_user}, {"_id": 0}).sort("timestamp", -1).to_list(1000)
+    total = round(sum(float(row.get("credits_used", 0) or 0) for row in rows), 4)
+    if format.lower() == "csv":
+        headers = ["timestamp", "user_id", "session_id", "file_name", "operation_type", "task", "units", "credits_used", "upload_id"]
+        lines = [",".join(headers)]
+        for row in rows:
+            line = []
+            for header in headers:
+                value = str(row.get(header, "")).replace('"', '""')
+                line.append(f'"{value}"')
+            lines.append(",".join(line))
+        return Response(
+            "\n".join(lines),
+            media_type="text/csv",
+            headers={"Content-Disposition": f'attachment; filename="earnalism-credit-report-{requested_user}.csv"'},
+        )
     return {
-        "success": True,
-        "book": book_data,
-        "warnings": warnings,
-        "raw_text_preview": raw_text[:2000],
+        "user_id": requested_user,
+        "total_credits_used": total,
+        "records": rows,
+        "generated_at": now_iso(),
     }
 
 
@@ -1817,7 +2865,7 @@ async def admin_set_featured(payload: FeaturedIn, _=Depends(require_admin)):
 
 # ---------- Reader User: Auth ----------
 @api.post("/users/signup", response_model=UserAuthOut)
-async def user_signup(payload: UserSignupIn):
+async def user_signup(payload: UserSignupIn, request: Request, response: Response):
     name = payload.name.strip()
     email = payload.email.lower().strip()
     if not name:
@@ -1838,25 +2886,45 @@ async def user_signup(payload: UserSignupIn):
         "created_at": now_iso(),
     }
     await db.users.insert_one(doc)
-    token = create_user_token(doc["id"], doc["email"])
+    token = await _create_user_session(doc, request, response)
     return UserAuthOut(token=token, user=UserOut(**_user_public(doc)))
 
 
 @api.post("/users/login", response_model=UserAuthOut)
-async def user_login(payload: UserLoginIn):
+async def user_login(payload: UserLoginIn, request: Request, response: Response):
     email = payload.email.lower().strip()
     user = await db.users.find_one({"email": email}, {"_id": 0})
     if not user or user.get("role") != "user" or not verify_password(payload.password, user["password_hash"]):
         raise HTTPException(status_code=401, detail="Invalid email or password")
     if user.get("status") == "blocked":
         raise HTTPException(status_code=403, detail="Account is blocked. Please contact support.")
-    token = create_user_token(user["id"], user["email"])
+    token = await _create_user_session(user, request, response)
     return UserAuthOut(token=token, user=UserOut(**_user_public(user)))
 
 
 @api.post("/users/logout")
-async def user_logout(_user=Depends(require_user)):
+async def user_logout(response: Response, user=Depends(require_user)):
+    await db.user_sessions.update_one(
+        {"id": user.get("session_id"), "user_id": user["id"]},
+        {"$set": {"status": "logged_out", "logged_out_at": datetime.now(timezone.utc)}},
+    )
+    await db.users.update_one({"id": user["id"], "active_user_session_id": user.get("session_id")}, {"$unset": {"active_user_session_id": ""}})
+    _clear_user_refresh_cookie(response)
     return {"ok": True}
+
+
+@api.post("/users/refresh", response_model=UserAuthOut)
+async def user_refresh(
+    request: Request,
+    response: Response,
+    refresh_token: Optional[str] = Cookie(default=None, alias=USER_REFRESH_COOKIE),
+):
+    if not refresh_token:
+        raise HTTPException(status_code=401, detail="Session expired, please login again.")
+    refreshed = await _refresh_user_session(refresh_token, request, response)
+    if not refreshed:
+        raise HTTPException(status_code=401, detail="Session expired, please login again.")
+    return refreshed
 
 
 # ---------- Social auth: Google + Mobile OTP ----------
@@ -1864,6 +2932,8 @@ GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "").strip()
 GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", "").strip()
 MSG91_AUTH_KEY = os.environ.get("MSG91_AUTH_KEY", "").strip()
 MSG91_TEMPLATE_ID = os.environ.get("MSG91_TEMPLATE_ID", "").strip()
+GOOGLE_TOKENINFO_URL = "https://oauth2.googleapis.com/tokeninfo"
+GOOGLE_USERINFO_URL = "https://openidconnect.googleapis.com/v1/userinfo"
 
 
 def _phone_email(mobile: str) -> str:
@@ -1871,18 +2941,76 @@ def _phone_email(mobile: str) -> str:
     return f"mobile+{digits}@earnalism.local"
 
 
-@api.post("/auth/google", response_model=UserAuthOut)
-async def auth_google(payload: GoogleAuthIn):
-    if not GOOGLE_CLIENT_ID:
-        raise HTTPException(status_code=503, detail="Google sign-in is not configured")
+def _google_json(url: str, headers: Optional[Dict[str, str]] = None) -> dict:
+    request = UrlRequest(url, headers=headers or {})
+    with urlopen(request, timeout=10) as response:
+        return _json.loads(response.read().decode("utf-8"))
+
+
+def _google_audience_matches(info: dict) -> bool:
+    audience = info.get("aud") or info.get("issued_to")
+    if isinstance(audience, list):
+        return GOOGLE_CLIENT_ID in audience
+    return audience == GOOGLE_CLIENT_ID
+
+
+def _google_email_verified(info: dict) -> bool:
+    value = info.get("email_verified", info.get("verified_email", True))
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in {"1", "true", "yes"}
+
+
+def _verify_google_access_token(access_token: str) -> dict:
+    tokeninfo = _google_json(f"{GOOGLE_TOKENINFO_URL}?{urlencode({'access_token': access_token})}")
+    if not _google_audience_matches(tokeninfo):
+        raise ValueError("Google token audience mismatch")
+    if not _google_email_verified(tokeninfo):
+        raise ValueError("Google email is not verified")
+
+    userinfo = {}
+    if not tokeninfo.get("email") or not tokeninfo.get("name"):
+        userinfo = _google_json(GOOGLE_USERINFO_URL, headers={"Authorization": f"Bearer {access_token}"})
+        if not _google_email_verified(userinfo):
+            raise ValueError("Google email is not verified")
+
+    return {
+        **userinfo,
+        **tokeninfo,
+        "email": (userinfo.get("email") or tokeninfo.get("email") or "").lower().strip(),
+        "name": userinfo.get("name") or tokeninfo.get("name") or "",
+        "picture": userinfo.get("picture") or tokeninfo.get("picture") or "",
+    }
+
+
+def _verify_google_credential(credential: str) -> dict:
+    credential = (credential or "").strip()
+    if not credential:
+        raise ValueError("Missing Google credential")
     try:
         from google.oauth2 import id_token  # type: ignore
         from google.auth.transport import requests as google_requests  # type: ignore
     except Exception as e:
-        raise HTTPException(status_code=503, detail=f"Google auth unavailable: {e}")
+        raise RuntimeError(f"Google auth unavailable: {e}")
+
     try:
-        idinfo = id_token.verify_oauth2_token(payload.credential, google_requests.Request(), GOOGLE_CLIENT_ID)
+        idinfo = id_token.verify_oauth2_token(credential, google_requests.Request(), GOOGLE_CLIENT_ID)
+        if not _google_email_verified(idinfo):
+            raise ValueError("Google email is not verified")
+        return idinfo
     except ValueError:
+        return _verify_google_access_token(credential)
+
+
+@api.post("/auth/google", response_model=UserAuthOut)
+async def auth_google(payload: GoogleAuthIn, request: Request, response: Response):
+    if not GOOGLE_CLIENT_ID:
+        raise HTTPException(status_code=503, detail="Google sign-in is not configured")
+    try:
+        idinfo = _verify_google_credential(payload.credential)
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=f"Google auth unavailable: {e}")
+    except Exception:
         raise HTTPException(status_code=401, detail="Invalid Google token")
     email = (idinfo.get("email") or "").lower().strip()
     if not email:
@@ -1909,7 +3037,7 @@ async def auth_google(payload: GoogleAuthIn):
     elif user.get("status") == "blocked":
         raise HTTPException(status_code=403, detail="Account is blocked. Please contact support.")
 
-    token = create_user_token(user["id"], user["email"])
+    token = await _create_user_session(user, request, response)
     return UserAuthOut(token=token, user=UserOut(**_user_public(user)))
 
 
@@ -1945,7 +3073,7 @@ async def auth_otp_request(payload: OTPRequestIn):
 
 
 @api.post("/auth/otp/verify", response_model=UserAuthOut)
-async def auth_otp_verify(payload: OTPVerifyIn):
+async def auth_otp_verify(payload: OTPVerifyIn, request: Request, response: Response):
     mobile = payload.mobile.strip()
     record = await db.otp_store.find_one({"mobile": mobile})
     if not record:
@@ -1982,7 +3110,7 @@ async def auth_otp_verify(payload: OTPVerifyIn):
     elif user.get("status") == "blocked":
         raise HTTPException(status_code=403, detail="Account is blocked. Please contact support.")
 
-    token = create_user_token(user["id"], user["email"])
+    token = await _create_user_session(user, request, response)
     return UserAuthOut(token=token, user=UserOut(**_user_public(user)))
 
 
@@ -2005,9 +3133,168 @@ async def user_my_transactions(user=Depends(require_user)):
     return rows
 
 
+@api.get("/users/me/rewards")
+async def user_reward_state(user=Depends(require_user)):
+    return await _reader_reward_state(user["id"])
+
+
+@api.post("/users/me/rewards/completion")
+async def user_record_reader_completion(payload: ReaderCompletionIn, user=Depends(require_user)):
+    progress = max(0, min(100, int(payload.progress or 0)))
+    if progress < 90:
+        state = await _reader_reward_state(user["id"])
+        return {**state, "recorded": False}
+
+    book_slug = payload.book_slug.strip()[:120]
+    chapter_id = payload.chapter_id.strip()[:120]
+    if not book_slug or not chapter_id:
+        raise HTTPException(status_code=400, detail="Book and chapter are required")
+
+    await db.reader_completions.update_one(
+        {
+            "user_id": user["id"],
+            "book_slug": book_slug,
+            "chapter_id": chapter_id,
+            "completed_on": _utc_day(),
+        },
+        {
+            "$set": {
+                "chapter_title": payload.chapter_title.strip()[:180],
+                "progress": progress,
+                "updated_at": now_iso(),
+            },
+            "$setOnInsert": {
+                "id": str(uuid.uuid4()),
+                "created_at": now_iso(),
+            },
+        },
+        upsert=True,
+    )
+    state = await _reader_reward_state(user["id"])
+    return {**state, "recorded": True}
+
+
+@api.post("/users/me/rewards/claim")
+async def user_claim_reader_reward(user=Depends(require_user)):
+    state = await _reader_reward_state(user["id"])
+    if state["claimed"]:
+        fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+        return {
+            **state,
+            "claimed_now": False,
+            "wallet_seconds": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+        }
+    if not state["eligible"]:
+        raise HTTPException(status_code=400, detail="Reward is not available yet")
+
+    res = await db.reward_claims.update_one(
+        {"user_id": user["id"], "reward_key": READER_STREAK_REWARD_KEY},
+        {
+            "$setOnInsert": {
+                "id": str(uuid.uuid4()),
+                "reward_key": READER_STREAK_REWARD_KEY,
+                "user_id": user["id"],
+                "credited_seconds": READER_STREAK_REWARD_SECONDS,
+                "created_at": now_iso(),
+            }
+        },
+        upsert=True,
+    )
+    if res.upserted_id is None:
+        fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+        return {
+            **await _reader_reward_state(user["id"]),
+            "claimed_now": False,
+            "wallet_seconds": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+        }
+
+    await db.users.update_one(
+        {"id": user["id"]},
+        {
+            "$inc": {
+                "reading_seconds_balance": READER_STREAK_REWARD_SECONDS,
+                "wallet_seconds": READER_STREAK_REWARD_SECONDS,
+            }
+        },
+    )
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+    await _record_wallet_ledger(
+        user_id=user["id"],
+        action="reward_credit",
+        seconds_delta=READER_STREAK_REWARD_SECONDS,
+        reason="Reader's Reserve streak credit",
+        actor="system",
+        balance_after=int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+    )
+    return {
+        **await _reader_reward_state(user["id"]),
+        "claimed_now": True,
+        "wallet_seconds": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+    }
+
+
 # ---------- Reader: Sessions + Heartbeat ----------
 HEARTBEAT_TICK_SECONDS = 30
 LOW_BALANCE_THRESHOLD = 300
+
+
+def _billable_reading_seconds(last_debit_at, now: datetime) -> int:
+    last = _as_utc_dt(last_debit_at) or now
+    elapsed = max(0, int((now - last).total_seconds()))
+    capped = min(elapsed, MAX_READING_DEBIT_CATCHUP_SECONDS)
+    return (capped // HEARTBEAT_TICK_SECONDS) * HEARTBEAT_TICK_SECONDS
+
+
+async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, seconds: int) -> Tuple[int, int]:
+    if seconds <= 0:
+        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+
+    fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+    wallet = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+    debit = min(seconds, max(0, wallet))
+    remaining = max(0, wallet - debit)
+    if debit <= 0:
+        return 0, remaining
+
+    await db.users.update_one(
+        {"id": user_id},
+        {"$set": {"reading_seconds_balance": remaining, "wallet_seconds": remaining}},
+    )
+    await _record_wallet_ledger(
+        user_id=user_id,
+        session_id=session_id,
+        action="reading_debit",
+        seconds_delta=-debit,
+        reason=f"Reading {book_title[:40]}",
+        actor="system",
+        balance_after=remaining,
+    )
+    return debit, remaining
+
+
+async def _settle_active_reading_session(user_id: str, session_id: str, book_title: str = "") -> Tuple[int, int]:
+    now = datetime.now(timezone.utc)
+    active = await db.users.find_one({"id": user_id}, {"_id": 0, "active_reading_session": 1})
+    session = (active or {}).get("active_reading_session") or {}
+    if session.get("session_id") != session_id:
+        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+
+    last_debit_at = session.get("last_debit_at") or session.get("last_pulse_at") or session.get("started_at")
+    billable = _billable_reading_seconds(last_debit_at, now)
+    if billable <= 0:
+        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+
+    res = await db.users.update_one(
+        {"id": user_id, "active_reading_session.session_id": session_id},
+        {"$set": {"active_reading_session.last_debit_at": now, "active_reading_session.last_pulse_at": now}},
+    )
+    if res.modified_count != 1:
+        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+    return await _apply_reading_debit(user_id, session_id, book_title or "Earnalism", billable)
 
 
 @api.post("/reader/session/start")
@@ -2024,15 +3311,22 @@ async def reader_session_start(payload: ReaderSessionStartIn, user=Depends(requi
     if balance <= 0 and not is_preview:
         raise HTTPException(status_code=402, detail="Insufficient reading time. Top up to continue.")
     sid = str(uuid.uuid4())
+    await db.reading_sessions.update_many(
+        {"user_id": user["id"], "status": "active"},
+        {"$set": {"status": "replaced", "ended_at": now_iso()}},
+    )
+    now = datetime.now(timezone.utc)
     await db.reading_sessions.insert_one({
         "id": sid,
         "user_id": user["id"],
         "book_slug": book_slug,
         "chapter_id": payload.chapter_id,
-        "started_at": now_iso(),
-        "last_heartbeat_at": now_iso(),
+        "started_at": now,
+        "last_heartbeat_at": now,
+        "last_debit_at": now,
         "seconds_consumed": 0,
         "status": "active",
+        "auth_session_id": user.get("session_id", ""),
     })
     return {
         "session_id": sid,
@@ -2066,33 +3360,22 @@ async def reader_heartbeat(payload: ReaderHeartbeatIn, user=Depends(require_user
 
     if is_preview:
         status = "preview"
-    elif not payload.visible or payload.idle:
-        status = "paused"
     elif balance <= 0:
         status = "depleted"
     else:
-        deducted = min(HEARTBEAT_TICK_SECONDS, balance)
-        new_balance = balance - deducted
-        await db.users.update_one(
-            {"id": user["id"]},
-            {"$set": {"reading_seconds_balance": new_balance}},
+        now = datetime.now(timezone.utc)
+        billable = _billable_reading_seconds(session.get("last_debit_at") or session.get("last_heartbeat_at"), now)
+        await db.reading_sessions.update_one(
+            {"id": payload.session_id},
+            {"$set": {"last_debit_at": now}},
         )
-        await db.wallet_transactions.insert_one({
-            "id": str(uuid.uuid4()),
-            "user_id": user["id"],
-            "type": "consume",
-            "seconds": -deducted,
-            "reason": f"Reading {book.get('title','')[:40]}",
-            "created_at": now_iso(),
-            "actor": "system",
-        })
-        balance = new_balance
+        deducted, balance = await _apply_reading_debit(user["id"], payload.session_id, book.get("title", "Earnalism"), billable)
         status = "depleted" if balance <= 0 else "active"
 
     await db.reading_sessions.update_one(
         {"id": payload.session_id},
         {
-            "$set": {"last_heartbeat_at": now_iso(), "chapter_id": chapter_id},
+            "$set": {"last_heartbeat_at": datetime.now(timezone.utc), "chapter_id": chapter_id},
             "$inc": {"seconds_consumed": deducted},
         },
     )
@@ -2121,6 +3404,11 @@ async def reading_session_start_v2(payload: ReaderSessionStartIn, request: Reque
     book_id = payload.book_id or payload.book_slug
     if not book_id:
         raise HTTPException(status_code=400, detail="Book id is required")
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+    existing = (fresh.get("active_reading_session") or {})
+    if existing.get("session_id") and existing.get("session_id") != session_id:
+        old_book = await db.books.find_one({"slug": existing.get("book_id")}, {"_id": 0, "title": 1}) or {}
+        await _settle_active_reading_session(user["id"], existing["session_id"], old_book.get("title", "Earnalism"))
     now = datetime.utcnow()
     await db.users.update_one(
         {"id": user["id"]},
@@ -2132,7 +3420,9 @@ async def reading_session_start_v2(payload: ReaderSessionStartIn, request: Reque
                     "chapter_id": payload.chapter_id,
                     "started_at": now,
                     "last_pulse_at": now,
+                    "last_debit_at": now,
                     "device": request.headers.get("user-agent", "unknown")[:100],
+                    "auth_session_id": user.get("session_id", ""),
                 }
             }
         },
@@ -2145,6 +3435,11 @@ async def reading_session_end_v2(payload: ReaderSessionEndIn, principal: Optiona
     if not principal or principal.get("role") != "user":
         return {"success": False, "status": "session_invalid"}
     user = principal
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+    active = fresh.get("active_reading_session") or {}
+    book = await db.books.find_one({"slug": active.get("book_id")}, {"_id": 0, "title": 1}) or {}
+    if active.get("session_id") == payload.session_id:
+        await _settle_active_reading_session(user["id"], payload.session_id, book.get("title", "Earnalism"))
     await db.users.update_one({"id": user["id"]}, {"$unset": {"active_reading_session": ""}})
     return {"success": True}
 
@@ -2163,29 +3458,33 @@ async def reading_pulse(payload: ReaderSessionEndIn, principal: Optional[dict] =
     if wallet <= 0:
         return {"success": False, "status": "wallet_empty", "wallet_seconds": 0}
 
-    deduct = min(30, wallet)
-    remaining = wallet - deduct
-    status = "low_balance" if remaining <= LOW_BALANCE_THRESHOLD else "ok"
+    book = await db.books.find_one({"slug": active.get("book_id")}, {"_id": 0, "title": 1}) or {}
+    deducted, remaining = await _settle_active_reading_session(user["id"], payload.session_id, book.get("title", "Earnalism"))
+    status = "wallet_empty" if remaining <= 0 else ("low_balance" if remaining <= LOW_BALANCE_THRESHOLD else "ok")
     now = datetime.utcnow()
     await db.users.update_one(
         {"id": user["id"]},
         {
             "$set": {
-                "wallet_seconds": remaining,
-                "reading_seconds_balance": remaining,
                 "active_reading_session.last_pulse_at": now,
             }
         },
     )
-    return {"success": True, "status": status, "wallet_seconds": remaining}
+    return {"success": status != "wallet_empty", "status": status, "wallet_seconds": remaining, "deducted_seconds": deducted}
 
 
 @api.get("/reading/packs")
 async def reading_packs():
-    return [
+    cache_key = _public_cache_key("reading_packs")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+    result = [
         {"id": p["id"], "minutes": p["minutes"], "price": p["price_inr"], "label": p["label"]}
         for p in PACKS
     ]
+    _public_cache_set(cache_key, result)
+    return result
 
 
 # ---------- Reader: Gated chapter content ----------
@@ -2283,15 +3582,14 @@ async def admin_wallet_adjust(uid: str, payload: WalletAdjustIn, admin=Depends(r
         {"id": uid},
         {"$set": {"reading_seconds_balance": new_balance}},
     )
-    await db.wallet_transactions.insert_one({
-        "id": str(uuid.uuid4()),
-        "user_id": uid,
-        "type": "credit" if actual_delta >= 0 else "debit",
-        "seconds": actual_delta,
-        "reason": payload.reason.strip() or ("Admin top-up" if actual_delta >= 0 else "Admin deduction"),
-        "created_at": now_iso(),
-        "actor": f"admin:{admin.get('email','')}",
-    })
+    await _record_wallet_ledger(
+        user_id=uid,
+        action="admin_adjustment",
+        seconds_delta=actual_delta,
+        reason=payload.reason.strip() or ("Admin top-up" if actual_delta >= 0 else "Admin deduction"),
+        actor=f"admin:{admin.get('email','')}",
+        balance_after=new_balance,
+    )
     return {
         "ok": True,
         "user_id": uid,
@@ -2325,17 +3623,29 @@ async def admin_user_status(uid: str, payload: UserStatusIn, _=Depends(require_a
 # ---------- Public: Pack catalogue ----------
 @api.get("/payments/packs", response_model=List[PackOut])
 async def payments_list_packs():
-    return [PackOut(**p) for p in PACKS]
+    cache_key = _public_cache_key("payment_packs")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+    result = [PackOut(**p).model_dump() for p in PACKS]
+    _public_cache_set(cache_key, result)
+    return result
 
 
 @api.get("/payments/config")
 async def payments_config():
     """Lightweight config shim used by frontend to know if Razorpay is wired."""
-    return {
+    cache_key = _public_cache_key("payment_config")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+    result = {
         "configured": razorpay_keys_configured(),
         "mode": RAZORPAY_MODE,
         "key_id": RAZORPAY_KEY_ID if razorpay_keys_configured() else "",
     }
+    _public_cache_set(cache_key, result)
+    return result
 
 
 # ---------- Wallet credit helper (idempotent) ----------
@@ -2369,16 +3679,16 @@ async def _credit_wallet_for_intent(intent: dict, payment_id: Optional[str], sou
         {"id": user_id, "role": "user"},
         {"$inc": {"reading_seconds_balance": seconds}},
     )
-    await db.wallet_transactions.insert_one({
-        "id": str(uuid.uuid4()),
-        "user_id": user_id,
-        "type": "credit",
-        "seconds": seconds,
-        "reason": f"Razorpay top-up · {intent.get('pack_id')} · {intent['minutes']} min",
-        "created_at": now_iso(),
-        "actor": f"razorpay:{source}",
-        "topup_intent_id": intent["id"],
-    })
+    fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1}) or {}
+    await _record_wallet_ledger(
+        user_id=user_id,
+        action="topup_credit",
+        seconds_delta=seconds,
+        reason=f"Razorpay top-up · {intent.get('pack_id')} · {intent['minutes']} min",
+        actor=f"razorpay:{source}",
+        balance_after=int(fresh.get("reading_seconds_balance", 0) or 0),
+        extra={"topup_intent_id": intent["id"]},
+    )
     return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0})
 
 
@@ -2654,6 +3964,44 @@ async def admin_list_intents(_=Depends(require_admin)):
 async def admin_list_webhooks(_=Depends(require_admin)):
     rows = await db.payment_webhook_events.find({}, {"_id": 0}).sort("created_at", -1).to_list(2000)
     return rows
+
+
+@api.get("/admin/secure-reader/alerts")
+async def admin_secure_reader_alerts(_=Depends(require_admin)):
+    violation_types = {"right_click", "copy", "cut", "print", "print_screen", "drag", "drop", "blocked_shortcut"}
+    rows = await db.reader_security_events.find(
+        {"event_type": {"$in": sorted(violation_types)}},
+        {"_id": 0},
+    ).sort("created_at", -1).to_list(500)
+
+    grouped: Dict[str, dict] = {}
+    for row in rows:
+        key = row.get("session_id") or row.get("id")
+        alert = grouped.setdefault(key, {
+            "session_id": key,
+            "user_email": row.get("user_email", ""),
+            "book_slug": row.get("book_slug", ""),
+            "chapter_id": row.get("chapter_id", ""),
+            "latest_at": row.get("created_at"),
+            "total_attempts": 0,
+            "events": {},
+        })
+        alert["total_attempts"] += 1
+        event_type = row.get("event_type", "unknown")
+        alert["events"][event_type] = alert["events"].get(event_type, 0) + 1
+        if str(row.get("created_at", "")) > str(alert.get("latest_at", "")):
+            alert["latest_at"] = row.get("created_at")
+
+    alerts = sorted(grouped.values(), key=lambda item: item.get("latest_at") or "", reverse=True)
+    high_risk = [item for item in alerts if item["total_attempts"] >= 3]
+    return {
+        "summary": {
+            "events": len(rows),
+            "sessions": len(alerts),
+            "high_risk_sessions": len(high_risk),
+        },
+        "alerts": alerts,
+    }
 
 
 @api.post("/admin/payments/intents/{intent_id}/reconcile")

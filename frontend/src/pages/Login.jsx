@@ -273,6 +273,7 @@ export default function Login() {
 function GoogleSignInButton({ onComplete }) {
   const googleLogin = useGoogleLogin({
     flow: "implicit",
+    scope: "openid email profile",
     onSuccess: async (resp) => {
       const credential = resp?.credential || resp?.access_token;
       if (credential) return onComplete(credential);

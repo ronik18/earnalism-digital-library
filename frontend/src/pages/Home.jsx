@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Sparkles, Compass } from "lucide-react";
 import { toast } from "sonner";
 import { api, formatError } from "../lib/api";
+import { optimizedImageUrl } from "../lib/images";
 import useSEO from "../hooks/useSEO";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1920&q=90";
@@ -22,12 +23,17 @@ export default function Home() {
   });
 
   useEffect(() => {
-    Promise.all([api.get("/categories"), api.get("/featured")])
+    const controller = new AbortController();
+    Promise.all([
+      api.get("/categories", { signal: controller.signal }),
+      api.get("/featured", { signal: controller.signal }),
+    ])
       .then(([categoryRes, featuredRes]) => {
         setCategories(categoryRes.data || []);
         setFeatured(featuredRes.data?.book || null);
       })
       .catch(() => {});
+    return () => controller.abort();
   }, []);
 
   const subscribe = async (e) => {
@@ -51,6 +57,8 @@ export default function Home() {
             src={HERO_IMG}
             alt=""
             loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover"
             style={{ filter: "saturate(1.05) brightness(0.82)" }}
           />
@@ -118,7 +126,7 @@ export default function Home() {
             >
               <div className={`relative ${i === 0 ? "aspect-[16/10] lg:aspect-[16/12]" : "aspect-[4/3]"} overflow-hidden`}>
                 {c.image_url && (
-                  <img src={c.image_url} alt={c.name} loading="lazy" className="w-full h-full object-cover transition-transform [transition-duration:1200ms] group-hover:scale-[1.06]" />
+                  <img src={optimizedImageUrl(c.image_url, { width: i === 0 ? 1200 : 720 })} alt={c.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform [transition-duration:1200ms] group-hover:scale-[1.06]" />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2a1218]/72 via-[#2a1218]/15 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-7 sm:p-9">
@@ -138,7 +146,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5">
               <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft shadow-[0_30px_70px_-30px_rgba(74,28,39,0.4)] max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none lg:mx-0">
-                <img src={featured.cover_image_url} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
+                <img src={optimizedImageUrl(featured.cover_image_url, { width: 760 })} alt={featured.title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
               </div>
             </div>
             <div className="lg:col-span-7 text-center lg:text-left">
@@ -187,7 +195,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="aspect-[4/5] rounded-xl overflow-hidden border border-brand-soft max-w-[280px] sm:max-w-sm mx-auto lg:max-w-none">
-              <img src={FOUNDER_IMG} alt="" loading="lazy" className="w-full h-full object-cover" />
+              <img src={optimizedImageUrl(FOUNDER_IMG, { width: 760 })} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
             </div>
           </div>
           <div className="lg:col-span-7 order-1 lg:order-2 text-center lg:text-left">

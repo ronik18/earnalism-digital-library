@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import useSEO from "../hooks/useSEO";
 import { Clock, Lock } from "lucide-react";
 import { api, userApi, formatError } from "../lib/api";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "sonner";
+import { trackFunnelEvent } from "../lib/funnelAnalytics";
 
 const RAZORPAY_SCRIPT = "https://checkout.razorpay.com/v1/checkout.js";
 
@@ -35,7 +36,11 @@ export default function Pricing() {
   const [packs, setPacks] = useState([]);
   const [config, setConfig] = useState({ configured: false, mode: "test", key_id: "" });
   const [busyId, setBusyId] = useState(null);
+  const [searchParams] = useSearchParams();
   const nav = useNavigate();
+  const selectedPackId = searchParams.get("pack");
+  const couponCode = searchParams.get("coupon");
+  const funnelSource = searchParams.get("source");
 
   useEffect(() => {
     Promise.all([api.get("/payments/packs"), api.get("/payments/config")])
@@ -49,8 +54,15 @@ export default function Pricing() {
   const isAuthed = !!user && typeof user === "object";
 
   const handleBuy = async (pack) => {
+    trackFunnelEvent("pricing_pack_cta_click", {
+      pack_id: pack.id,
+      price_inr: pack.price_inr,
+      coupon: couponCode || "",
+      source: funnelSource || "pricing",
+    });
     if (!isAuthed) {
-      nav(`/login?next=/pricing`);
+      const next = `${window.location.pathname}${window.location.search}`;
+      nav(`/login?next=${encodeURIComponent(next)}`);
       return;
     }
     setBusyId(pack.id);
@@ -123,6 +135,7 @@ export default function Pricing() {
         await userApi.post(`/payments/_simulate_webhook?intent_id=${data.intent_id}`);
         await refreshUser();
         toast.success(`Test purchase complete · +${pack.minutes} minutes added.`);
+        trackFunnelEvent("pricing_test_purchase_complete", { pack_id: pack.id, price_inr: pack.price_inr });
         nav("/account");
       } else {
         toast.error("Payments are not configured yet.");
@@ -153,12 +166,20 @@ export default function Pricing() {
               <Lock size={11} strokeWidth={1.5} /> Test mode — Razorpay keys not configured. Purchases use a local simulator.
             </div>
           )}
+          {couponCode && (
+            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--brand-gold)]/45 bg-white/50 text-xs tracking-[0.16em] uppercase text-gold-deep">
+              Coupon {couponCode} applied at checkout
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-          {packs.map((p) => (
-            <div key={p.id} className="card-elegant p-7 flex flex-col" data-testid={`pack-${p.id}`}>
+          {packs.map((p) => {
+            const selected = selectedPackId === p.id;
+            return (
+            <div key={p.id} className={`card-elegant p-7 flex flex-col ${selected ? "pricing-card--selected" : ""}`} data-testid={`pack-${p.id}`} aria-label={selected ? `${p.label}, selected offer` : p.label}>
               <div className="italic-eyebrow opacity-80 flex items-center gap-2"><Clock size={13} strokeWidth={1.5} /> {p.minutes >= 60 ? `${p.minutes / 60} ${p.minutes === 60 ? "hour" : "hours"}` : `${p.minutes} minutes`}</div>
+              {selected && <span className="pricing-card__badge">Recommended next step</span>}
               <h3 className="font-serif-display text-2xl text-burgundy leading-snug mt-3">{p.label}</h3>
               <div className="font-serif-light text-4xl text-charcoal mt-5">₹{p.price_inr}</div>
               <p className="text-charcoal-soft text-sm font-light leading-relaxed mt-4">{p.note}</p>
@@ -175,7 +196,8 @@ export default function Pricing() {
                   : "Buy reading time"}
               </button>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="text-center mt-14">
