@@ -483,6 +483,7 @@ def now_iso() -> str:
 BOOK_METADATA_PROJECTION = {
     "_id": 0,
     "chapters.content": 0,
+    "rights_metadata": 0,
 }
 PUBLIC_CACHE_PATHS = {
     "/api/categories",
@@ -1215,6 +1216,7 @@ class BookIn(BaseModel):
     who_for: List[str] = Field(default_factory=list)
     learnings: List[str] = Field(default_factory=list)
     about_author: str = ""
+    rights_metadata: Dict[str, Any] = Field(default_factory=dict)
     is_published: bool = True
     slug: Optional[str] = None
 
@@ -1544,7 +1546,9 @@ def _strip_paid_chapter_content(book: dict) -> dict:
         return book
     chapters = book.get("chapters") or []
     if not chapters:
-        return book
+        out = dict(book)
+        out.pop("rights_metadata", None)
+        return out
     sorted_ch = sorted(chapters, key=lambda c: c.get("order", 0))
     preview_id = sorted_ch[0].get("id") if sorted_ch else None
     masked = []
@@ -1555,6 +1559,7 @@ def _strip_paid_chapter_content(book: dict) -> dict:
         masked.append(c2)
     out = dict(book)
     out["chapters"] = masked
+    out.pop("rights_metadata", None)
     return out
 
 
@@ -1563,9 +1568,12 @@ def _strip_all_chapter_content(book: dict) -> dict:
         return book
     chapters = book.get("chapters") or []
     if not chapters:
-        return book
+        out = dict(book)
+        out.pop("rights_metadata", None)
+        return out
     out = dict(book)
     out["chapters"] = [{**c, "content": ""} for c in chapters]
+    out.pop("rights_metadata", None)
     return out
 
 
@@ -2385,6 +2393,7 @@ async def get_brand():
 @api.post("/admin/books", response_model=Book)
 async def admin_create_book(payload: BookIn, _=Depends(require_admin)):
     data = payload.model_dump()
+    rights_metadata = data.pop("rights_metadata", {}) or {}
     book_id = str(uuid.uuid4())
     data["title"] = normalize_text(data.get("title", "")).strip()
     if not data["title"]:
@@ -2395,7 +2404,10 @@ async def admin_create_book(payload: BookIn, _=Depends(require_admin)):
         raise HTTPException(status_code=400, detail="Slug already exists")
     book = Book(id=book_id, slug=slug, **data)
     _assert_publishable(book.model_dump())
-    await db.books.insert_one(book.model_dump())
+    doc = book.model_dump()
+    if rights_metadata:
+        doc["rights_metadata"] = rights_metadata
+    await db.books.insert_one(doc)
     return book
 
 @api.put("/admin/books/{slug}", response_model=Book)

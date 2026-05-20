@@ -41,6 +41,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 dump.rdb
+output/book_import/
+book_import_manifest.json
+frontend/book_import_manifest.json
 
 # System files
 .DS_Store
@@ -101,3 +104,5 @@ node_modules/
 build/
 **/__pycache__/
 **pycache**
+
+.secrets/
