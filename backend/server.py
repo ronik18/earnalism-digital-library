@@ -486,7 +486,8 @@ BOOK_METADATA_PROJECTION = {
     "rights_metadata": 0,
 }
 BOOK_LIST_PROJECTION = {
-    **BOOK_METADATA_PROJECTION,
+    "_id": 0,
+    "rights_metadata": 0,
     "chapters": 0,
 }
 PUBLIC_CACHE_PATHS = {
