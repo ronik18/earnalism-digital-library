@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, Volume2, VolumeX, Bookmark, BookmarkCheck, Settings, List, X, Loader2, Clock, AlertCircle, LogIn, CreditCard } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Pause, Square, Bookmark, BookmarkCheck, Settings, List, X, Loader2, Clock, AlertCircle, LogIn, CreditCard } from 'lucide-react';
 import axios from 'axios';
 import { API, TOKEN_KEY, USER_TOKEN_KEY, formatError } from '../lib/api';
 import { toast } from 'sonner';
@@ -11,22 +11,29 @@ import { canShowReaderFinishPrompt, markReaderFinishPromptShown } from '../lib/f
 import { useAuth } from '../context/AuthContext';
 
 const THEMES = {
-  beige: { canvas: '#FAF7F0', surface: '#F5F0E8', text: '#1C0A0E', accent: '#6B1020', border: '#E8DDD8', label: 'Beige' },
-  dark: { canvas: '#141010', surface: '#1E1518', text: '#EDE0D8', accent: '#D4A843', border: '#2E1F22', label: 'Dark' },
-  sepia: { canvas: '#EFE4C8', surface: '#E5D8B5', text: '#3B2010', accent: '#8B1A2A', border: '#D5C8A5', label: 'Sepia' },
+  beige: { canvas: '#F5F0E8', surface: '#FDFAF4', text: '#2C1810', accent: '#6B1E2E', border: '#E8D5A3', label: 'Light' },
+  sepia: { canvas: '#EDE0C8', surface: '#F5E8D0', text: '#3B2A1A', accent: '#6B1E2E', border: '#D7BD7A', label: 'Sepia' },
+  dark: { canvas: '#1A0E12', surface: '#240D14', text: '#E8D5A3', accent: '#C9A84C', border: 'rgba(201,168,76,0.32)', label: 'Dark' },
 };
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
-const READER_SERIF = "'Crimson Pro', 'Noto Serif Bengali', Georgia, serif";
-const READER_DISPLAY = "'Cormorant Garamond', 'Noto Serif Bengali', serif";
-const BENGALI_SERIF = "'Noto Serif Bengali', 'Crimson Pro', Georgia, serif";
+const READER_SERIF = "'Lora', Georgia, serif";
+const READER_DISPLAY = "'Playfair Display', 'Noto Serif Bengali', serif";
+const BENGALI_SERIF = "'Noto Serif Bengali', 'Lora', Georgia, serif";
+const BENGALI_SANS = "'Noto Sans Bengali', Inter, sans-serif";
 const UI_FONT = "Inter, 'Noto Sans Bengali', sans-serif";
 
 const FONT_SIZES = [
-  { label: 'XS', size: '15px' },
-  { label: 'S', size: '17px' },
-  { label: 'M', size: '19px' },
-  { label: 'L', size: '21px' },
+  { label: 'Small', size: '16px' },
+  { label: 'Medium', size: '18px' },
+  { label: 'Large', size: '20px' },
+  { label: 'XL', size: '22px' },
+];
+
+const LINE_SPACING_OPTIONS = [
+  { label: 'Comfortable', value: 'comfortable', english: 1.75, bengali: 1.9 },
+  { label: 'Relaxed', value: 'relaxed', english: 1.9, bengali: 2.05 },
+  { label: 'Airy', value: 'airy', english: 2.05, bengali: 2.2 },
 ];
 
 const LOW_BALANCE_THRESHOLD = 300;
@@ -62,6 +69,100 @@ function apiErrorMessage(err, fallback) {
 
 function containsBengaliText(value) {
   return BENGALI_RE.test(value || '');
+}
+
+function normalizeInlineText(value = '') {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function textEquals(value, candidates = []) {
+  const normalized = normalizeInlineText(value);
+  return candidates.some((candidate) => normalizeInlineText(candidate) === normalized);
+}
+
+function looksLikePublicationYear(value = '') {
+  return /(?:\d{4}|[০-৯]{4})/.test(value) && normalizeInlineText(value).length <= 48;
+}
+
+function firstParagraphText(html = '') {
+  if (typeof document === 'undefined') return '';
+  const template = document.createElement('template');
+  template.innerHTML = html || '';
+  const first = template.content.querySelector('p, h1, h2, h3, div');
+  return normalizeInlineText(first?.textContent || '');
+}
+
+function extractReaderFrontMatter(html = '', book = {}, chapter = {}) {
+  if (typeof document === 'undefined') {
+    return {
+      html,
+      author: book?.author || '',
+      collection: book?.collection || '',
+      year: book?.original_publication_year || '',
+      storyTitle: book?.title || chapter?.title || '',
+    };
+  }
+
+  const template = document.createElement('template');
+  template.innerHTML = html || '';
+  const author = book?.author || '';
+  const title = book?.title || chapter?.title || '';
+  const subtitle = book?.subtitle || '';
+  let collection = book?.collection || book?.series || '';
+  let year = book?.original_publication_year || book?.publication_year || '';
+  let storyTitle = title;
+
+  const leadingNodes = Array.from(template.content.childNodes)
+    .filter((node) => node.nodeType === Node.ELEMENT_NODE || normalizeInlineText(node.textContent));
+
+  for (const node of leadingNodes.slice(0, 8)) {
+    const text = normalizeInlineText(node.textContent || '');
+    if (!text) {
+      node.remove();
+      continue;
+    }
+
+    const shouldRemoveAuthor = author && textEquals(text, [author]);
+    const shouldRemoveTitle = title && textEquals(text, [title, chapter?.title]);
+    const shouldRemoveSubtitle = subtitle && textEquals(text, [subtitle]);
+    const shouldRemoveYear = looksLikePublicationYear(text);
+    const shouldUseAsCollection = !collection
+      && text.length <= 42
+      && !shouldRemoveAuthor
+      && !shouldRemoveTitle
+      && !shouldRemoveYear
+      && containsBengaliText(text);
+
+    if (shouldRemoveAuthor) {
+      node.remove();
+      continue;
+    }
+    if (shouldUseAsCollection) {
+      collection = text;
+      node.remove();
+      continue;
+    }
+    if (shouldRemoveYear) {
+      year = year || text;
+      node.remove();
+      continue;
+    }
+    if (shouldRemoveTitle || shouldRemoveSubtitle) {
+      storyTitle = title || text;
+      node.remove();
+      continue;
+    }
+    break;
+  }
+
+  return {
+    html: template.innerHTML,
+    author,
+    collection,
+    year,
+    storyTitle: storyTitle || firstParagraphText(html) || 'Chapter',
+    subtitle: subtitle && !textEquals(subtitle, [collection]) ? subtitle : '',
+  };
 }
 
 function normalizeVoiceLang(value = '') {
@@ -325,6 +426,8 @@ export default function Reader() {
 
   const [theme, setTheme] = useState('beige');
   const [fontSizeIdx, setFontSizeIdx] = useState(1);
+  const [lineSpacingMode, setLineSpacingMode] = useState('comfortable');
+  const [fontFamilyMode, setFontFamilyMode] = useState('serif');
   const [showSettings, setShowSettings] = useState(false);
   const [showTOC, setShowTOC] = useState(false);
   const [toolbarVisible, setToolbarVisible] = useState(true);
@@ -611,6 +714,16 @@ export default function Reader() {
     () => containsBengaliText(`${book?.title || ''} ${chapter?.title || ''} ${processedHtml || ''}`),
     [book, chapter, processedHtml],
   );
+  const readerFrontMatter = useMemo(
+    () => extractReaderFrontMatter(processedHtml, book, chapter),
+    [book, chapter, processedHtml],
+  );
+  const readerHtml = readerFrontMatter.html || processedHtml;
+  const lineSpacing = LINE_SPACING_OPTIONS.find((item) => item.value === lineSpacingMode) || LINE_SPACING_OPTIONS[0];
+  const readerFontFamily = fontFamilyMode === 'sans'
+    ? (isBengali ? BENGALI_SANS : UI_FONT)
+    : (isBengali ? BENGALI_SERIF : READER_SERIF);
+  const readerDisplayTitle = book?.title || readerFrontMatter.storyTitle || chapter?.title || 'Chapter';
 
   useEffect(() => {
     if (meteredSessionActive && chapter && processedHtml && sessionId) {
@@ -622,7 +735,7 @@ export default function Reader() {
   }, [chapter, processedHtml, sessionId, meteredSessionActive, sendPulse]);
 
   useEffect(() => {
-    if (!processedHtml) {
+    if (!readerHtml) {
       setPaginatedPages([]);
       setCurrentPage(0);
       return undefined;
@@ -631,7 +744,7 @@ export default function Reader() {
     let cancelled = false;
     let resizeTimer = 0;
     const runPagination = () => {
-      const nextPages = paginateReaderHtml(processedHtml, {
+      const nextPages = paginateReaderHtml(readerHtml, {
         isBengali,
         fontSize: FONT_SIZES[fontSizeIdx].size,
       });
@@ -651,9 +764,9 @@ export default function Reader() {
       window.clearTimeout(resizeTimer);
       window.removeEventListener('resize', onResize);
     };
-  }, [fontSizeIdx, isBengali, processedHtml]);
+  }, [fontSizeIdx, isBengali, readerHtml]);
 
-  const currentPageHtml = paginatedPages.length ? paginatedPages[currentPage]?.html || '' : processedHtml;
+  const currentPageHtml = paginatedPages.length ? paginatedPages[currentPage]?.html || '' : readerHtml;
   const displayedHtml = ttsHtml || currentPageHtml;
   const effectiveReadProgress = paginatedPages.length > 1
     ? Math.round(((currentPage + 1) / paginatedPages.length) * 100)
@@ -962,9 +1075,9 @@ export default function Reader() {
       speakSegments(segments, 0);
     };
 
-    const readerHtml = currentPageHtml || processedHtml;
-    if (readerHtml && !readerHtml.includes('class="tts-word"')) {
-      const wrapped = wrapWordsInSpans(readerHtml);
+    const pageHtml = currentPageHtml || readerHtml;
+    if (pageHtml && !pageHtml.includes('class="tts-word"')) {
+      const wrapped = wrapWordsInSpans(pageHtml);
       setTtsHtml(wrapped.html);
       setTotalWords(wrapped.totalWords);
       window.requestAnimationFrame(() => window.requestAnimationFrame(speak));
@@ -972,7 +1085,7 @@ export default function Reader() {
     }
 
     speak();
-  }, [currentPageHtml, processedHtml, speakSegments]);
+  }, [currentPageHtml, readerHtml, speakSegments]);
 
   const pauseTTS = () => {
     clearTimeout(ttsFallbackTimerRef.current);
@@ -1035,13 +1148,6 @@ export default function Reader() {
     await axios.post(`${API}/bookmarks`, { bookId, chapterId: activeChapterId || chapterId }, { headers });
     setBookmarked((value) => !value);
   };
-
-  const illustratedContent = useMemo(() => {
-    const category = `${book?.category_slug || ''} ${book?.category || ''}`.toLowerCase();
-    const illustrationCategory = /fantasy|kid|kids|children|illustrat/.test(category);
-    const uploadedImages = chapter?.has_images || /reader-img--(?:photo|illustration)|data-type="(?:photo|illustration)"/.test(processedHtml);
-    return Boolean(illustrationCategory || uploadedImages);
-  }, [book, chapter, processedHtml]);
 
   if (loading) {
     return (
@@ -1117,88 +1223,129 @@ export default function Reader() {
     );
   }
 
-  const colors = theme === 'beige' && illustratedContent
-    ? { ...THEMES.beige, canvas: '#FFFFFF', surface: '#FFFFFF', border: '#E8DDD8', label: 'White' }
-    : THEMES[theme];
+  const colors = THEMES[theme];
   const lowBalance = walletSeconds > 0 && walletSeconds <= LOW_BALANCE_THRESHOLD;
   const voiceButtonLabel = !ttsActive
     ? (isBengali ? 'Listen in Bengali' : 'Listen')
     : ttsPaused ? 'Resume narration' : 'Pause narration';
+  const showBookHeader = currentIdx <= 0 && currentPage === 0;
+  const showStoryHeader = !hasPages || currentPage === 0;
+  const readingMinutesLeft = hasPages
+    ? Math.max(1, Math.ceil((paginatedPages.length - currentPage) / 2))
+    : totalWords > 0
+      ? Math.max(1, Math.ceil(((100 - effectiveReadProgress) / 100) * (totalWords / 220)))
+      : null;
+  const contentLineHeight = isBengali ? lineSpacing.bengali : lineSpacing.english;
+  const readerThemeClass = `premium-reader premium-reader--${theme}`;
+  const contentClassName = [
+    'reader-content',
+    isBengali ? 'reader-content--bengali' : 'reader-content--english',
+    'reader-content--dropcap',
+    fontFamilyMode === 'sans' ? 'reader-content--sans' : 'reader-content--serif',
+  ].join(' ');
 
   return (
-    <div ref={scrollContainerRef} className="relative flex flex-col min-h-screen overflow-y-auto reader-scroll" style={{ background: colors.canvas, color: colors.text, transition: 'background 400ms ease, color 300ms ease' }}>
-      <div className="fixed top-0 left-0 right-0 z-50 h-[2px]" style={{ background: colors.border }}>
-        <div style={{ width: `${effectiveReadProgress}%`, height: '100%', background: '#6B1020', transition: 'width 300ms' }} />
-      </div>
+    <div
+      ref={scrollContainerRef}
+      className={readerThemeClass}
+      data-reader-language={isBengali ? 'bn' : 'en'}
+      style={{
+        '--reader-font-size': FONT_SIZES[fontSizeIdx].size,
+        '--reader-line-height': contentLineHeight,
+        '--reader-body-font': readerFontFamily,
+        '--reader-heading-font': isBengali ? BENGALI_SERIF : READER_DISPLAY,
+        '--reader-canvas': colors.canvas,
+        '--reader-surface': colors.surface,
+        '--reader-ink': colors.text,
+        '--reader-accent': colors.accent,
+        '--reader-border': colors.border,
+      }}
+    >
+      <header className={`reader-topbar ${toolbarVisible ? 'reader-topbar--visible' : 'reader-topbar--hidden'}`}>
+        <button type="button" onClick={() => navigate(`/book/${bookId}`)} className="reader-topbar__back" aria-label="Back to book">
+          <ChevronLeft size={18} />
+          <span>{readerDisplayTitle}</span>
+        </button>
 
-      <header className="fixed top-0.5 left-0 right-0 z-40" style={{ background: `${colors.canvas}EE`, backdropFilter: 'blur(12px)', borderBottom: `1px solid ${colors.border}`, transform: toolbarVisible ? 'translateY(0)' : 'translateY(-100%)', transition: 'transform 300ms ease' }}>
-        <div className="flex items-center justify-between px-4 py-3">
-        <button type="button" onClick={() => navigate(`/book/${bookId}`)} className="flex items-center gap-2 min-w-0" style={{ color: colors.accent, fontFamily: UI_FONT, fontSize: 13 }}>
-            <ChevronLeft size={16} />
-            <span className="hidden sm:inline">{book?.title}</span>
+        <div className="reader-topbar__center">
+          <strong>{hasPages ? `Page ${currentPage + 1} of ${paginatedPages.length}` : `Ch. ${Math.max(0, currentIdx) + 1} of ${chapters.length}`}</strong>
+          <span>{chapter?.title && chapter.title !== 'Full Text' ? chapter.title : 'Reading edition'}</span>
+        </div>
+
+        <div className="reader-topbar__actions">
+          {walletSeconds > 0 && (
+            <div className={lowBalance ? 'reader-wallet reader-wallet--low' : 'reader-wallet'}>
+              <Clock size={14} />
+              {formatWalletTime(walletSeconds)}
+            </div>
+          )}
+          <button type="button" onClick={toggleBookmark} className="reader-icon-button" aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark chapter'}>
+            {bookmarked ? <BookmarkCheck size={19} /> : <Bookmark size={19} />}
           </button>
-
-          <div className="flex flex-col items-center text-center min-w-0 px-2">
-            <div className="truncate" lang={isBengali ? 'bn' : undefined} style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_SERIF, fontSize: 14, color: colors.text, maxWidth: 220 }}>
-              {chapter?.title}
-            </div>
-            <div style={{ fontFamily: UI_FONT, fontSize: 11, color: '#A88A8F' }}>
-              {hasPages ? `Page ${currentPage + 1} of ${paginatedPages.length}` : `Ch. ${Math.max(0, currentIdx) + 1} of ${chapters.length}`}
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            {walletSeconds > 0 && (
-              <div className={lowBalance ? 'wallet-low flex items-center gap-1' : 'flex items-center gap-1'} style={{ fontFamily: UI_FONT, fontSize: 12, color: lowBalance ? '#D4A843' : '#A88A8F' }}>
-                <Clock size={14} />
-                {formatWalletTime(walletSeconds)}
-              </div>
-            )}
-            <button type="button" onClick={toggleBookmark} aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark chapter'}>
-              {bookmarked ? <BookmarkCheck size={18} color="#6B1020" /> : <Bookmark size={18} color="#A88A8F" />}
-            </button>
-            <button type="button" onClick={() => setShowTOC(true)} aria-label="Open contents">
-              <List size={18} color="#A88A8F" />
-            </button>
-            <button type="button" onClick={() => setShowSettings((value) => !value)} aria-label="Open reading settings">
-              <Settings size={18} color="#A88A8F" />
-            </button>
-          </div>
+          <button type="button" onClick={() => setShowTOC(true)} className="reader-icon-button" aria-label="Open contents">
+            <List size={19} />
+          </button>
+          <button type="button" onClick={() => setShowSettings((value) => !value)} className="reader-icon-button" aria-label="Open reading settings">
+            <Settings size={19} />
+          </button>
         </div>
       </header>
 
-      <main key={chapter?.id || chapterId || bookId} className="flex-1 px-5 pt-20 pb-36 page-enter">
-        <div className="reader-canvas mx-auto">
-          <h2 lang={isBengali ? 'bn' : undefined} style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_DISPLAY, fontSize: 28, fontWeight: 500, textAlign: 'center', color: colors.accent, letterSpacing: '-0.01em', lineHeight: isBengali ? 1.55 : 1.4, marginBottom: 24, overflowWrap: 'break-word' }}>
-            {chapter?.title === 'Full Text' ? book?.title || chapter?.title : chapter?.title}
-          </h2>
-          <div className="flex items-center gap-3 mb-10 justify-center">
-            <div className="flex-1 h-px" style={{ background: colors.border }} />
-            <span style={{ color: colors.accent, fontSize: 20 }}>❧</span>
-            <div className="flex-1 h-px" style={{ background: colors.border }} />
-          </div>
-          {hasPages && (
-            <>
-              <div className="reader-page-meta">Generated reader pages · {currentPage + 1} / {paginatedPages.length}</div>
-              <nav className="reader-page-index" aria-label="Generated reader page index">
-                {paginatedPages.map((_, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    aria-current={index === currentPage ? 'page' : undefined}
-                    onClick={() => {
-                      stopTTS();
-                      setCurrentPage(index);
-                      scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: 'smooth' });
-                    }}
-                  >
-                    {index + 1}
-                  </button>
-                ))}
-              </nav>
-            </>
-          )}
-          <div className={hasPages ? 'reader-page-shell' : ''}>
+      <main key={chapter?.id || chapterId || bookId} className="reader-main">
+        <div className="reader-gutter reader-gutter--left" aria-hidden="true" />
+        <article key={`${activeChapterId || chapterId || chapter?.id || bookId}:${currentPage}`} className="reader-canvas page-enter">
+          <section className={bookmarked ? 'reader-page-shell reader-page-shell--bookmarked' : 'reader-page-shell'}>
+            {showBookHeader && (
+              <header className="reader-book-header">
+                {readerFrontMatter.author && <div className="reader-book-header__author">{readerFrontMatter.author}</div>}
+                {(readerFrontMatter.collection || readerFrontMatter.year) && (
+                  <div className="reader-book-header__meta">
+                    {readerFrontMatter.collection && <span>{readerFrontMatter.collection}</span>}
+                    {readerFrontMatter.collection && readerFrontMatter.year && <span aria-hidden="true">—</span>}
+                    {readerFrontMatter.year && <span>{readerFrontMatter.year}</span>}
+                  </div>
+                )}
+                <div className="reader-ornament" aria-hidden="true">
+                  <svg viewBox="0 0 180 22" role="img" focusable="false">
+                    <path d="M6 11h56" />
+                    <path d="M118 11h56" />
+                    <path d="M90 3c9 8 9 8 0 16-9-8-9-8 0-16Z" />
+                    <path d="M78 11c5-6 10-6 12 0-5 6-10 6-12 0Z" />
+                    <path d="M102 11c-5-6-10-6-12 0 5 6 10 6 12 0Z" />
+                  </svg>
+                </div>
+              </header>
+            )}
+
+            {showStoryHeader && (
+              <header className="reader-story-header">
+                <h1 lang={isBengali ? 'bn' : undefined}>{readerDisplayTitle}</h1>
+                {readerFrontMatter.subtitle && <p>{readerFrontMatter.subtitle}</p>}
+              </header>
+            )}
+
+            {hasPages && (
+              <>
+                <div className="reader-page-meta">Generated reader pages · {currentPage + 1} / {paginatedPages.length}</div>
+                <nav className="reader-page-index" aria-label="Generated reader page index">
+                  {paginatedPages.map((_, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      aria-current={index === currentPage ? 'page' : undefined}
+                      onClick={() => {
+                        stopTTS();
+                        setCurrentPage(index);
+                        scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: 'smooth' });
+                      }}
+                    >
+                      {index + 1}
+                    </button>
+                  ))}
+                </nav>
+              </>
+            )}
+
             <SecureReader
               sessionId={sessionId}
               userName={user && typeof user === 'object' ? user.name : 'Reader'}
@@ -1207,13 +1354,22 @@ export default function Reader() {
               chapterId={activeChapterId || chapterId || chapter?.id}
               title={`${book?.title || 'Earnalism'} · ${chapter?.title || 'Chapter'}${hasPages ? ` · page ${currentPage + 1}` : ''}`}
               contentRef={contentRef}
-              className={isBengali ? 'reader-content reader-content--bengali' : 'drop-cap reader-content'}
+              className={contentClassName}
               html={displayedHtml}
               blurred={contentBlurred}
               lang={isBengali ? 'bn' : 'en'}
-              style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_SERIF, fontSize: FONT_SIZES[fontSizeIdx].size, lineHeight: isBengali ? 1.9 : 1.75, color: colors.text, transition: 'filter 300ms ease', userSelect: 'none', WebkitUserSelect: 'none' }}
+              style={{
+                fontFamily: readerFontFamily,
+                fontSize: FONT_SIZES[fontSizeIdx].size,
+                lineHeight: contentLineHeight,
+                color: colors.text,
+                transition: 'filter 300ms ease',
+                userSelect: 'none',
+                WebkitUserSelect: 'none',
+              }}
             />
-          </div>
+          </section>
+
           {showReaderUpsell && (
             <ReaderUpsellPrompt
               book={book}
@@ -1227,43 +1383,61 @@ export default function Reader() {
               }}
             />
           )}
-        </div>
+        </article>
+        <div className="reader-gutter reader-gutter--right" aria-hidden="true" />
       </main>
 
-      <div className="fixed bottom-0 left-0 right-0 z-40" style={{ background: `${colors.canvas}F5`, backdropFilter: 'blur(16px)', borderTop: `1px solid ${colors.border}`, transform: toolbarVisible ? 'translateY(0)' : 'translateY(100%)', transition: 'transform 300ms ease' }}>
-        {ttsActive && (
-          <div style={{ height: 2, background: colors.border }}>
-            <div style={{ width: `${totalWords > 0 ? (ttsWordIndex / totalWords) * 100 : 0}%`, height: '100%', background: '#D4A843', transition: 'width 200ms' }} />
+      <footer className={`reader-bottom-bar ${toolbarVisible ? 'reader-bottom-bar--visible' : 'reader-bottom-bar--hidden'}`}>
+        <div className="reader-progress" aria-label={`Reading progress ${effectiveReadProgress}%`}>
+          {readingMinutesLeft && <span className="reader-progress__time">~{readingMinutesLeft} min left</span>}
+          <div className="reader-progress__track">
+            <div className="reader-progress__fill" style={{ width: `${effectiveReadProgress}%` }}>
+              <span className="reader-progress__thumb" />
+            </div>
           </div>
-        )}
+        </div>
 
-        <div className="flex items-center justify-between px-6 py-3 max-w-xl mx-auto">
-          <button type="button" disabled={!canPrev} onClick={goPrev} className="flex items-center gap-1" style={{ color: colors.accent, fontFamily: 'Inter', fontSize: 12, opacity: canPrev ? 1 : 0.3 }}>
-            <ChevronLeft size={16} />
-            <span className="hidden sm:inline">{hasPages ? 'Page' : 'Prev'}</span>
+        <div className="reader-bottom-bar__controls">
+          <button type="button" disabled={!canPrev} onClick={goPrev} className="reader-nav-button reader-nav-button--ghost">
+            <ChevronLeft size={17} />
+            <span>{hasPages ? 'Prev Page' : 'Prev'}</span>
           </button>
 
-          <button type="button" onClick={handleVoiceToggle} className="flex flex-col items-center gap-1" aria-label={voiceButtonLabel}>
-            <span className={ttsActive && !ttsPaused ? 'p-3 rounded-full animate-pulse-soft' : 'p-3 rounded-full'} style={{ background: ttsActive && !ttsPaused ? '#6B1020' : colors.surface, color: ttsActive && !ttsPaused ? '#FAF7F0' : colors.accent, transition: 'all 250ms ease', boxShadow: ttsActive && !ttsPaused ? '0 0 0 4px rgba(107,16,32,0.15)' : 'none', display: 'inline-flex' }}>
-              {ttsActive && !ttsPaused ? <Volume2 size={20} /> : <VolumeX size={20} />}
-            </span>
-            <span style={{ fontFamily: 'Inter', fontSize: 11, color: '#A88A8F' }}>
-              {!ttsActive ? 'Listen' : ttsPaused ? 'Resume' : 'Pause'}
-            </span>
-          </button>
-
-          {ttsActive && (
-            <button type="button" onClick={stopTTS} className="px-3 py-1 rounded-full" style={{ background: colors.surface, color: '#A88A8F', fontFamily: 'Inter', fontSize: 11 }}>
-              Stop
+          <div className="reader-audio-control">
+            <button type="button" onClick={handleVoiceToggle} className="reader-audio-button" aria-label={voiceButtonLabel}>
+              {ttsActive && !ttsPaused ? (
+                <>
+                  <Pause size={17} />
+                  <span>Pause</span>
+                  <span className="reader-waveform" aria-hidden="true"><i /><i /><i /></span>
+                </>
+              ) : ttsActive && ttsPaused ? (
+                <>
+                  <Play size={17} />
+                  <span>Resume</span>
+                </>
+              ) : (
+                <>
+                  <Play size={17} />
+                  <span>Play</span>
+                </>
+              )}
             </button>
-          )}
+            {ttsActive && (
+              <button type="button" onClick={stopTTS} className="reader-stop-button" aria-label="Stop narration">
+                <Square size={12} />
+                <span>Stop</span>
+              </button>
+            )}
+            <span className="reader-audio-control__hint">{ttsActive && !ttsPaused ? 'Narrating' : 'Resume anytime'}</span>
+          </div>
 
-          <button type="button" disabled={!canNext} onClick={goNext} className="flex items-center gap-1" style={{ color: colors.accent, fontFamily: 'Inter', fontSize: 12, opacity: canNext ? 1 : 0.3 }}>
-            <span className="hidden sm:inline">{hasPages ? 'Page' : 'Next'}</span>
-            <ChevronRight size={16} />
+          <button type="button" disabled={!canNext} onClick={goNext} className="reader-nav-button reader-nav-button--ghost">
+            <span>{hasPages ? 'Next Page' : 'Next'}</span>
+            <ChevronRight size={17} />
           </button>
         </div>
-      </div>
+      </footer>
 
       {showLowBalanceWarning && !showTopUpModal && walletSeconds > 0 && (
         <div className="fixed left-0 right-0 z-[45] animate-slide-up" style={{ bottom: 64, background: '#E8C97A', borderTop: '1px solid #D4A843' }}>
@@ -1357,59 +1531,79 @@ export default function Reader() {
       )}
 
       {showSettings && (
-        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 rounded-2xl p-5 w-80 shadow-book animate-slide-up" style={{ background: colors.surface, border: `1px solid ${colors.border}` }}>
-          <div className="flex justify-between items-center mb-4">
-            <span style={{ fontFamily: 'Inter', fontSize: 13, fontWeight: 500, color: colors.text }}>
-              Reading Settings
-            </span>
-            <button type="button" onClick={() => setShowSettings(false)} aria-label="Close reading settings">
-              <X size={16} color="#A88A8F" />
+        <div className="reader-settings-sheet" role="dialog" aria-modal="false" aria-label="Reading settings">
+          <div className="reader-settings-sheet__handle" aria-hidden="true" />
+          <div className="reader-settings-sheet__header">
+            <span>Reading Settings</span>
+            <button type="button" onClick={() => setShowSettings(false)} className="reader-icon-button" aria-label="Close reading settings">
+              <X size={16} />
             </button>
           </div>
 
-          <div className="mb-4">
-            <div style={{ fontFamily: 'Inter', fontSize: 11, color: '#A88A8F', marginBottom: 8 }}>
-              Font Size
-            </div>
-            <div className="flex gap-2">
-              {FONT_SIZES.map((font, index) => {
-                const active = fontSizeIdx === index;
-                return (
-                  <button key={font.label} type="button" onClick={() => setFontSizeIdx(index)} className="flex-1 py-2 rounded-lg" style={{ background: active ? '#6B1020' : colors.canvas, color: active ? '#FAF7F0' : colors.text, border: active ? 'none' : `1px solid ${colors.border}`, fontFamily: 'Inter', fontSize: 12, fontWeight: 500 }}>
-                    {font.label}
-                  </button>
-                );
-              })}
+          <div className="reader-setting-group">
+            <span className="reader-setting-label">Font size</span>
+            <div className="reader-segmented-control">
+              {FONT_SIZES.map((font, index) => (
+                <button key={font.label} type="button" onClick={() => setFontSizeIdx(index)} aria-pressed={fontSizeIdx === index}>
+                  {font.label}
+                </button>
+              ))}
             </div>
           </div>
 
-          <div className="mb-4">
-            <div style={{ fontFamily: 'Inter', fontSize: 11, color: '#A88A8F', marginBottom: 8 }}>
-              Theme
-            </div>
-            <div className="flex gap-2">
-              {Object.entries(THEMES).map(([key, item]) => {
-                const active = theme === key;
-                return (
-                  <button key={key} type="button" onClick={() => setTheme(key)} className="flex-1 py-2 rounded-lg capitalize" style={{ background: item.canvas, color: item.text, border: active ? '2px solid #6B1020' : `1px solid ${colors.border}`, fontFamily: 'Inter', fontSize: 11 }}>
-                    {item.label}
-                  </button>
-                );
-              })}
+          <div className="reader-setting-group">
+            <span className="reader-setting-label">Line spacing</span>
+            <div className="reader-segmented-control">
+              {LINE_SPACING_OPTIONS.map((item) => (
+                <button key={item.value} type="button" onClick={() => setLineSpacingMode(item.value)} aria-pressed={lineSpacingMode === item.value}>
+                  {item.label}
+                </button>
+              ))}
             </div>
           </div>
 
-          <div>
-            <div style={{ fontFamily: 'Inter', fontSize: 11, color: '#A88A8F', marginBottom: 8 }}>
-              Speed: {ttsSpeed}×
+          <div className="reader-setting-group">
+            <span className="reader-setting-label">Theme</span>
+            <div className="reader-segmented-control reader-segmented-control--theme">
+              {Object.entries(THEMES).map(([key, item]) => (
+                <button key={key} type="button" onClick={() => setTheme(key)} aria-pressed={theme === key}>
+                  {item.label}
+                </button>
+              ))}
             </div>
-            <input type="range" min="0.7" max="1.8" step="0.1" value={ttsSpeed} onChange={(event) => { setTtsSpeed(parseFloat(event.target.value)); if (ttsActive) { stopTTS(); setTimeout(startTTS, 150); } }} style={{ accentColor: '#6B1020', width: '100%' }} />
+          </div>
+
+          <div className="reader-setting-group">
+            <span className="reader-setting-label">Font</span>
+            <div className="reader-segmented-control">
+              <button type="button" onClick={() => setFontFamilyMode('serif')} aria-pressed={fontFamilyMode === 'serif'}>Serif</button>
+              <button type="button" onClick={() => setFontFamilyMode('sans')} aria-pressed={fontFamilyMode === 'sans'}>Sans</button>
+            </div>
+          </div>
+
+          <div className="reader-setting-group">
+            <span className="reader-setting-label">Narration speed: {ttsSpeed}×</span>
+            <input
+              className="reader-range"
+              type="range"
+              min="0.7"
+              max="1.8"
+              step="0.1"
+              value={ttsSpeed}
+              onChange={(event) => {
+                setTtsSpeed(parseFloat(event.target.value));
+                if (ttsActive) {
+                  stopTTS();
+                  setTimeout(startTTS, 150);
+                }
+              }}
+            />
           </div>
         </div>
       )}
 
       {showTOC && (
-        <div className="fixed inset-0 z-50 flex">
+        <div className="fixed inset-0 z-[80] flex">
           <div className="absolute inset-0 bg-black/40" style={{ backdropFilter: 'blur(4px)' }} onClick={() => setShowTOC(false)} />
           <div className="relative right-0 ml-auto w-72 h-full overflow-y-auto py-6 px-5 animate-slide-up" style={{ background: colors.surface }}>
             <div className="flex justify-between items-center mb-6">

@@ -2,6 +2,9 @@ python-docx==1.1.2
 Pillow==10.3.0
 mammoth==1.7.1
 playwright==1.49.1
+azure-cognitiveservices-speech==1.41.1
+beautifulsoup4==4.12.3
+requests==2.32.3
 
 # Optional: used only when OPENAI_API_KEY is present for extra AI-authorship scoring.
 # openai==1.99.9
