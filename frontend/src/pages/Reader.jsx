@@ -166,11 +166,119 @@ function wrapWordsInSpans(html) {
   return { html: div.innerHTML, totalWords: wordIndex };
 }
 
+function textSegments(text = '') {
+  const source = String(text || '');
+  if (!source.trim()) return [];
+  const segments = [];
+  const re = /[^।.!?;:]+[।.!?;:]?|[^।.!?;:]+$/g;
+  let match;
+  while ((match = re.exec(source)) !== null) {
+    const raw = match[0].trim();
+    if (!raw) continue;
+    const start = match.index + match[0].indexOf(raw);
+    const end = start + raw.length;
+    const words = raw.split(/\s+/).filter(Boolean);
+    if (words.length > 42) {
+      let cursor = start;
+      for (let index = 0; index < words.length; index += 32) {
+        const part = words.slice(index, index + 32).join(' ');
+        const partStart = source.indexOf(words[index], cursor);
+        const partEnd = partStart >= 0 ? partStart + part.length : end;
+        segments.push({ text: part, start: partStart >= 0 ? partStart : start, end: partEnd, pauseMs: 180 });
+        cursor = partEnd;
+      }
+    } else {
+      const punct = raw.slice(-1);
+      const pauseMs = /[।.!?]/.test(punct) ? 520 : /[,;:]/.test(punct) ? 280 : 180;
+      segments.push({ text: raw, start, end, pauseMs });
+    }
+  }
+  const trimmed = source.trim();
+  return segments.length ? segments : [{ text: trimmed, start: source.indexOf(trimmed), end: source.indexOf(trimmed) + trimmed.length, pauseMs: 240 }];
+}
+
 function countWordsInHtml(html) {
   if (typeof document === 'undefined') return (html || '').split(/\s+/).filter(Boolean).length;
   const div = document.createElement('div');
   div.innerHTML = html || '';
   return (div.textContent || '').split(/\s+/).filter(Boolean).length;
+}
+
+function splitParagraphNode(node) {
+  const text = (node.textContent || '').trim();
+  if (!text || text.length < 600) return [node];
+  const chunks = [];
+  let buffer = [];
+  textSegments(text).forEach((segment) => {
+    buffer.push(segment.text);
+    if (buffer.join(' ').length >= 520) {
+      chunks.push(buffer.join(' '));
+      buffer = [];
+    }
+  });
+  if (buffer.length) chunks.push(buffer.join(' '));
+  return chunks.map((chunk) => {
+    const next = document.createElement(node.nodeName.toLowerCase());
+    next.textContent = chunk;
+    return next;
+  });
+}
+
+function measurePageHeight() {
+  if (typeof window === 'undefined') return 760;
+  return Math.max(440, Math.min(780, window.innerHeight - 245));
+}
+
+function paginateReaderHtml(html, { isBengali = false, fontSize = '17px' } = {}) {
+  if (typeof document === 'undefined' || !html) return [];
+  const template = document.createElement('template');
+  template.innerHTML = html;
+
+  const measure = document.createElement('div');
+  measure.className = `reader-content ${isBengali ? 'reader-content--bengali' : ''}`;
+  measure.style.cssText = [
+    'position:absolute',
+    'left:-10000px',
+    'top:0',
+    'visibility:hidden',
+    `width:${Math.max(300, Math.min(window.innerWidth - 72, 680))}px`,
+    `font-size:${fontSize}`,
+    `font-family:${isBengali ? BENGALI_SERIF : READER_SERIF}`,
+    `line-height:${isBengali ? 1.9 : 1.75}`,
+    'box-sizing:border-box',
+    'padding:0',
+  ].join(';');
+  document.body.appendChild(measure);
+
+  const limit = measurePageHeight();
+  const pages = [];
+  let pageNodes = [];
+
+  const commitPage = () => {
+    if (!pageNodes.length) return;
+    pages.push({ html: pageNodes.map((node) => node.outerHTML || node.textContent || '').join('') });
+    pageNodes = [];
+    measure.innerHTML = '';
+  };
+
+  const sourceNodes = Array.from(template.content.childNodes)
+    .flatMap((node) => (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'P' ? splitParagraphNode(node) : [node]))
+    .filter((node) => (node.textContent || '').trim() || node.nodeType === Node.ELEMENT_NODE);
+
+  sourceNodes.forEach((node) => {
+    const candidate = node.cloneNode(true);
+    measure.appendChild(candidate);
+    if (measure.scrollHeight > limit && pageNodes.length) {
+      measure.removeChild(candidate);
+      commitPage();
+      measure.appendChild(candidate);
+    }
+    pageNodes.push(candidate.cloneNode(true));
+  });
+
+  commitPage();
+  document.body.removeChild(measure);
+  return pages.length ? pages : [{ html }];
 }
 
 function formatWalletTime(seconds) {
@@ -225,10 +333,13 @@ export default function Reader() {
   const [ttsActive, setTtsActive] = useState(false);
   const [ttsPaused, setTtsPaused] = useState(false);
   const [ttsWordIndex, setTtsWordIndex] = useState(-1);
-  const [ttsSpeed, setTtsSpeed] = useState(1);
+  const [ttsSpeed, setTtsSpeed] = useState(0.85);
   const [ttsVoices, setTtsVoices] = useState([]);
   const [processedHtml, setProcessedHtml] = useState('');
+  const [ttsHtml, setTtsHtml] = useState('');
   const [totalWords, setTotalWords] = useState(0);
+  const [paginatedPages, setPaginatedPages] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const [readProgress, setReadProgress] = useState(0);
   const [contentBlurred, setContentBlurred] = useState(false);
@@ -252,6 +363,8 @@ export default function Reader() {
   const synthRef = useRef(window.speechSynthesis);
   const lastScrollY = useRef(0);
   const wordsRef = useRef([]);
+  const ttsFallbackTimerRef = useRef(null);
+  const ttsSegmentTimerRef = useRef(null);
   const pulseIntervalRef = useRef(null);
   const scrollContainerRef = useRef(null);
   const completionReportedRef = useRef('');
@@ -260,10 +373,13 @@ export default function Reader() {
 
   const stopTTS = useCallback(() => {
     synthRef.current?.cancel?.();
+    clearTimeout(ttsFallbackTimerRef.current);
+    clearTimeout(ttsSegmentTimerRef.current);
     setTtsActive(false);
     setTtsPaused(false);
     setTtsWordIndex(-1);
-    wordsRef.current.forEach((word) => word.classList.remove('active'));
+    setTtsHtml('');
+    wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
   }, []);
 
   useEffect(() => {
@@ -439,6 +555,8 @@ export default function Reader() {
         const safeHtml = sanitizeReaderHtml(loadedChapter.content);
         // Keep first render light. TTS word spans are injected only if narration starts.
         setProcessedHtml(safeHtml);
+        setTtsHtml('');
+        setCurrentPage(0);
         setTotalWords(countWordsInHtml(safeHtml));
         setLockedState(null);
 
@@ -489,6 +607,11 @@ export default function Reader() {
     };
   }, [bookId, chapterId, sessionId, stopTTS]);
 
+  const isBengali = useMemo(
+    () => containsBengaliText(`${book?.title || ''} ${chapter?.title || ''} ${processedHtml || ''}`),
+    [book, chapter, processedHtml],
+  );
+
   useEffect(() => {
     if (meteredSessionActive && chapter && processedHtml && sessionId) {
       clearInterval(pulseIntervalRef.current);
@@ -499,8 +622,51 @@ export default function Reader() {
   }, [chapter, processedHtml, sessionId, meteredSessionActive, sendPulse]);
 
   useEffect(() => {
+    if (!processedHtml) {
+      setPaginatedPages([]);
+      setCurrentPage(0);
+      return undefined;
+    }
+
+    let cancelled = false;
+    let resizeTimer = 0;
+    const runPagination = () => {
+      const nextPages = paginateReaderHtml(processedHtml, {
+        isBengali,
+        fontSize: FONT_SIZES[fontSizeIdx].size,
+      });
+      if (cancelled) return;
+      setPaginatedPages(nextPages);
+      setCurrentPage((page) => Math.min(page, Math.max(0, nextPages.length - 1)));
+    };
+    const onResize = () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(runPagination, 120);
+    };
+
+    window.setTimeout(runPagination, 60);
+    window.addEventListener('resize', onResize);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(resizeTimer);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [fontSizeIdx, isBengali, processedHtml]);
+
+  const currentPageHtml = paginatedPages.length ? paginatedPages[currentPage]?.html || '' : processedHtml;
+  const displayedHtml = ttsHtml || currentPageHtml;
+  const effectiveReadProgress = paginatedPages.length > 1
+    ? Math.round(((currentPage + 1) / paginatedPages.length) * 100)
+    : readProgress;
+
+  useEffect(() => {
+    setTtsHtml('');
+    setTotalWords(countWordsInHtml(currentPageHtml));
+  }, [currentPageHtml]);
+
+  useEffect(() => {
     wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
-  }, [processedHtml]);
+  }, [displayedHtml]);
 
   useEffect(() => {
     const el = scrollContainerRef.current;
@@ -535,7 +701,7 @@ export default function Reader() {
 
   // Funnel prompt appears near the end of short reads only, never mid-paragraph.
   useEffect(() => {
-    if (!chapter || lockedState || loading || readProgress < 96) return;
+    if (!chapter || lockedState || loading || effectiveReadProgress < 96) return;
     const currentKey = `${bookId}:${activeChapterId || chapterId || chapter?.id}`;
     if (upsellShownRef.current === currentKey || !canShowReaderFinishPrompt()) return;
     const estimatedMinutes = totalWords > 0 ? Math.ceil(totalWords / 220) : 3;
@@ -550,11 +716,11 @@ export default function Reader() {
       estimated_minutes: estimatedMinutes,
       pack_id: '1h',
     });
-  }, [activeChapterId, bookId, chapter, chapterId, loading, lockedState, readProgress, totalWords]);
+  }, [activeChapterId, bookId, chapter, chapterId, effectiveReadProgress, loading, lockedState, totalWords]);
 
   // Completion rewards are best-effort and idempotent; failures must not disturb reading.
   useEffect(() => {
-    if (!chapter || lockedState || loading || readProgress < 98 || !getUserToken()) return;
+    if (!chapter || lockedState || loading || effectiveReadProgress < 98 || !getUserToken()) return;
     const currentKey = `${bookId}:${activeChapterId || chapterId || chapter?.id}`;
     if (completionReportedRef.current === currentKey) return;
     completionReportedRef.current = currentKey;
@@ -567,7 +733,7 @@ export default function Reader() {
             book_slug: bookId,
             chapter_id: activeChapterId || chapterId || chapter?.id,
             chapter_title: chapter?.title || '',
-            progress: readProgress,
+            progress: effectiveReadProgress,
           },
           { headers: getUserAuthHeaders() },
         );
@@ -596,7 +762,7 @@ export default function Reader() {
     }
 
     recordCompletion();
-  }, [activeChapterId, bookId, chapter, chapterId, loading, lockedState, readProgress]);
+  }, [activeChapterId, bookId, chapter, chapterId, effectiveReadProgress, loading, lockedState]);
 
   const handleTopUp = async (pack) => {
     if (!pack) return;
@@ -648,13 +814,8 @@ export default function Reader() {
     }
   };
 
-  const isBengali = useMemo(
-    () => containsBengaliText(`${book?.title || ''} ${chapter?.title || ''} ${processedHtml || ''}`),
-    [book, chapter, processedHtml],
-  );
-
   const highlightSpokenWord = useCallback((index) => {
-    wordsRef.current.forEach((word) => word.classList.remove('active'));
+    wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
     const current = wordsRef.current[index];
     if (!current) return;
 
@@ -674,14 +835,41 @@ export default function Reader() {
     return wordsRef.current.findIndex((word) => Number(word.dataset.start) >= charIndex);
   }, []);
 
-  const buildUtterance = useCallback(() => {
-    if (typeof SpeechSynthesisUtterance === 'undefined') return null;
-    const plainText = contentRef.current?.innerText || '';
-    if (!plainText.trim()) return null;
+  const fallbackHighlightSegment = useCallback((segment) => {
+    clearTimeout(ttsFallbackTimerRef.current);
+    const inRange = wordsRef.current.filter((word) => {
+      const start = Number(word.dataset.start);
+      const end = Number(word.dataset.end);
+      return Number.isFinite(start) && Number.isFinite(end) && start >= segment.start && end <= segment.end;
+    });
+    if (!inRange.length) return;
+    let index = 0;
+    const stepMs = Math.max(isBengali ? 520 : 380, (isBengali ? 690 : 520) / Math.max(0.65, ttsSpeed));
+    const tick = () => {
+      inRange.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
+      const current = inRange[index];
+      if (current) {
+        current.classList.add('active', 'tts-word--fallback');
+        current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTtsWordIndex(Number(current.dataset.word) || 0);
+      }
+      index += 1;
+      if (index < inRange.length) {
+        ttsFallbackTimerRef.current = window.setTimeout(tick, stepMs);
+      }
+    };
+    tick();
+  }, [isBengali, ttsSpeed]);
 
-    const utter = new SpeechSynthesisUtterance(plainText);
-    utter.rate = ttsSpeed;
-    utter.pitch = 1;
+  const buildUtterance = useCallback((segment, onDone) => {
+    if (typeof SpeechSynthesisUtterance === 'undefined') return null;
+    const spokenText = String(segment?.text || '').trim();
+    if (!spokenText) return null;
+
+    const utter = new SpeechSynthesisUtterance(spokenText);
+    utter.rate = isBengali ? Math.min(ttsSpeed, 0.88) : ttsSpeed;
+    utter.pitch = isBengali ? 0.96 : 1;
+    utter.volume = 1;
     utter.lang = isBengali ? 'bn-BD' : 'en-US';
 
     const voices = ttsVoices.length ? ttsVoices : (synthRef.current?.getVoices?.() || []);
@@ -693,30 +881,38 @@ export default function Reader() {
       toast.warning('Bengali narration depends on your browser voice pack. If pronunciation sounds off, add a Bengali voice in system settings.');
     }
 
-    let wordCount = 0;
+    let boundarySeen = false;
+    ttsFallbackTimerRef.current = window.setTimeout(() => {
+      if (!boundarySeen) fallbackHighlightSegment(segment);
+    }, 850);
 
     utter.onboundary = (event) => {
+      boundarySeen = true;
+      clearTimeout(ttsFallbackTimerRef.current);
       if (event.name === 'word') {
-        highlightSpokenWord(wordCount);
-        wordCount += 1;
+        const index = wordIndexFromCharIndex(segment.start + (event.charIndex || 0));
+        if (index >= 0) highlightSpokenWord(index);
         return;
       }
 
-      const index = wordIndexFromCharIndex(event.charIndex);
+      const index = wordIndexFromCharIndex(segment.start + event.charIndex);
       if (index >= 0) {
-        wordCount = index + 1;
         highlightSpokenWord(index);
       }
     };
 
     const resetTTS = () => {
+      clearTimeout(ttsFallbackTimerRef.current);
       setTtsActive(false);
       setTtsPaused(false);
       setTtsWordIndex(-1);
-      wordsRef.current.forEach((word) => word.classList.remove('active'));
+      wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
     };
 
-    utter.onend = resetTTS;
+    utter.onend = () => {
+      clearTimeout(ttsFallbackTimerRef.current);
+      onDone?.();
+    };
     utter.onerror = (event) => {
       resetTTS();
       if (event.error && event.error !== 'interrupted' && event.error !== 'canceled') {
@@ -725,7 +921,29 @@ export default function Reader() {
     };
 
     return utter;
-  }, [highlightSpokenWord, isBengali, ttsSpeed, ttsVoices, wordIndexFromCharIndex]);
+  }, [fallbackHighlightSegment, highlightSpokenWord, isBengali, ttsSpeed, ttsVoices, wordIndexFromCharIndex]);
+
+  const speakSegments = useCallback((segments, index = 0) => {
+    const synth = synthRef.current;
+    if (!segments[index]) {
+      setTtsActive(false);
+      setTtsPaused(false);
+      setTtsWordIndex(-1);
+      wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
+      return;
+    }
+
+    const segment = segments[index];
+    const onDone = () => {
+      ttsSegmentTimerRef.current = window.setTimeout(() => speakSegments(segments, index + 1), segment.pauseMs || 220);
+    };
+    const utter = buildUtterance(segment, onDone);
+    if (!utter) return;
+    utteranceRef.current = utter;
+    synth.speak(utter);
+    setTtsActive(true);
+    setTtsPaused(false);
+  }, [buildUtterance]);
 
   const startTTS = useCallback(() => {
     const synth = synthRef.current;
@@ -737,27 +955,27 @@ export default function Reader() {
     synth.cancel();
     const speak = () => {
       wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
-      const utter = buildUtterance();
-      if (!utter) return;
-
-      utteranceRef.current = utter;
-      synth.speak(utter);
-      setTtsActive(true);
-      setTtsPaused(false);
+      // Use textContent because TTS word offsets are generated from text nodes.
+      // innerText inserts layout newlines, which breaks Bengali boundary matching.
+      const plainText = contentRef.current?.textContent || '';
+      const segments = textSegments(plainText);
+      speakSegments(segments, 0);
     };
 
-    if (processedHtml && !processedHtml.includes('class="tts-word"')) {
-      const wrapped = wrapWordsInSpans(processedHtml);
-      setProcessedHtml(wrapped.html);
+    const readerHtml = currentPageHtml || processedHtml;
+    if (readerHtml && !readerHtml.includes('class="tts-word"')) {
+      const wrapped = wrapWordsInSpans(readerHtml);
+      setTtsHtml(wrapped.html);
       setTotalWords(wrapped.totalWords);
       window.requestAnimationFrame(() => window.requestAnimationFrame(speak));
       return;
     }
 
     speak();
-  }, [buildUtterance, processedHtml]);
+  }, [currentPageHtml, processedHtml, speakSegments]);
 
   const pauseTTS = () => {
+    clearTimeout(ttsFallbackTimerRef.current);
     synthRef.current?.pause?.();
     setTtsPaused(true);
   };
@@ -779,10 +997,33 @@ export default function Reader() {
   );
   const prevChapter = chapters[currentIdx - 1];
   const nextChapter = chapters[currentIdx + 1];
+  const hasPages = paginatedPages.length > 1;
+  const canPrev = hasPages ? currentPage > 0 : Boolean(prevChapter);
+  const canNext = hasPages ? currentPage < paginatedPages.length - 1 : Boolean(nextChapter);
 
   const goToChapter = (id) => {
     stopTTS();
     navigate(`/reader/${bookId}?c=${id}`);
+  };
+
+  const goPrev = () => {
+    stopTTS();
+    if (hasPages && currentPage > 0) {
+      setCurrentPage((page) => Math.max(0, page - 1));
+      scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (prevChapter) goToChapter(prevChapter.id);
+  };
+
+  const goNext = () => {
+    stopTTS();
+    if (hasPages && currentPage < paginatedPages.length - 1) {
+      setCurrentPage((page) => Math.min(paginatedPages.length - 1, page + 1));
+      scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (nextChapter) goToChapter(nextChapter.id);
   };
 
   const toggleBookmark = async () => {
@@ -887,7 +1128,7 @@ export default function Reader() {
   return (
     <div ref={scrollContainerRef} className="relative flex flex-col min-h-screen overflow-y-auto reader-scroll" style={{ background: colors.canvas, color: colors.text, transition: 'background 400ms ease, color 300ms ease' }}>
       <div className="fixed top-0 left-0 right-0 z-50 h-[2px]" style={{ background: colors.border }}>
-        <div style={{ width: `${readProgress}%`, height: '100%', background: '#6B1020', transition: 'width 300ms' }} />
+        <div style={{ width: `${effectiveReadProgress}%`, height: '100%', background: '#6B1020', transition: 'width 300ms' }} />
       </div>
 
       <header className="fixed top-0.5 left-0 right-0 z-40" style={{ background: `${colors.canvas}EE`, backdropFilter: 'blur(12px)', borderBottom: `1px solid ${colors.border}`, transform: toolbarVisible ? 'translateY(0)' : 'translateY(-100%)', transition: 'transform 300ms ease' }}>
@@ -902,7 +1143,7 @@ export default function Reader() {
               {chapter?.title}
             </div>
             <div style={{ fontFamily: UI_FONT, fontSize: 11, color: '#A88A8F' }}>
-              Ch. {Math.max(0, currentIdx) + 1} of {chapters.length}
+              {hasPages ? `Page ${currentPage + 1} of ${paginatedPages.length}` : `Ch. ${Math.max(0, currentIdx) + 1} of ${chapters.length}`}
             </div>
           </div>
 
@@ -929,27 +1170,50 @@ export default function Reader() {
       <main key={chapter?.id || chapterId || bookId} className="flex-1 px-5 pt-20 pb-36 page-enter">
         <div className="reader-canvas mx-auto">
           <h2 lang={isBengali ? 'bn' : undefined} style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_DISPLAY, fontSize: 28, fontWeight: 500, textAlign: 'center', color: colors.accent, letterSpacing: '-0.01em', lineHeight: isBengali ? 1.55 : 1.4, marginBottom: 24, overflowWrap: 'break-word' }}>
-            {chapter?.title}
+            {chapter?.title === 'Full Text' ? book?.title || chapter?.title : chapter?.title}
           </h2>
           <div className="flex items-center gap-3 mb-10 justify-center">
             <div className="flex-1 h-px" style={{ background: colors.border }} />
             <span style={{ color: colors.accent, fontSize: 20 }}>❧</span>
             <div className="flex-1 h-px" style={{ background: colors.border }} />
           </div>
-          <SecureReader
-            sessionId={sessionId}
-            userName={user && typeof user === 'object' ? user.name : 'Reader'}
-            userEmail={user && typeof user === 'object' ? user.email : ''}
-            bookSlug={bookId}
-            chapterId={activeChapterId || chapterId || chapter?.id}
-            title={`${book?.title || 'Earnalism'} · ${chapter?.title || 'Chapter'}`}
-            contentRef={contentRef}
-            className={isBengali ? 'reader-content reader-content--bengali' : 'drop-cap reader-content'}
-            html={processedHtml}
-            blurred={contentBlurred}
-            lang={isBengali ? 'bn' : 'en'}
-            style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_SERIF, fontSize: FONT_SIZES[fontSizeIdx].size, lineHeight: isBengali ? 1.9 : 1.75, color: colors.text, transition: 'filter 300ms ease', userSelect: 'none', WebkitUserSelect: 'none' }}
-          />
+          {hasPages && (
+            <>
+              <div className="reader-page-meta">Generated reader pages · {currentPage + 1} / {paginatedPages.length}</div>
+              <nav className="reader-page-index" aria-label="Generated reader page index">
+                {paginatedPages.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    aria-current={index === currentPage ? 'page' : undefined}
+                    onClick={() => {
+                      stopTTS();
+                      setCurrentPage(index);
+                      scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: 'smooth' });
+                    }}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+              </nav>
+            </>
+          )}
+          <div className={hasPages ? 'reader-page-shell' : ''}>
+            <SecureReader
+              sessionId={sessionId}
+              userName={user && typeof user === 'object' ? user.name : 'Reader'}
+              userEmail={user && typeof user === 'object' ? user.email : ''}
+              bookSlug={bookId}
+              chapterId={activeChapterId || chapterId || chapter?.id}
+              title={`${book?.title || 'Earnalism'} · ${chapter?.title || 'Chapter'}${hasPages ? ` · page ${currentPage + 1}` : ''}`}
+              contentRef={contentRef}
+              className={isBengali ? 'reader-content reader-content--bengali' : 'drop-cap reader-content'}
+              html={displayedHtml}
+              blurred={contentBlurred}
+              lang={isBengali ? 'bn' : 'en'}
+              style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_SERIF, fontSize: FONT_SIZES[fontSizeIdx].size, lineHeight: isBengali ? 1.9 : 1.75, color: colors.text, transition: 'filter 300ms ease', userSelect: 'none', WebkitUserSelect: 'none' }}
+            />
+          </div>
           {showReaderUpsell && (
             <ReaderUpsellPrompt
               book={book}
@@ -974,9 +1238,9 @@ export default function Reader() {
         )}
 
         <div className="flex items-center justify-between px-6 py-3 max-w-xl mx-auto">
-          <button type="button" disabled={!prevChapter} onClick={() => prevChapter && goToChapter(prevChapter.id)} className="flex items-center gap-1" style={{ color: colors.accent, fontFamily: 'Inter', fontSize: 12, opacity: prevChapter ? 1 : 0.3 }}>
+          <button type="button" disabled={!canPrev} onClick={goPrev} className="flex items-center gap-1" style={{ color: colors.accent, fontFamily: 'Inter', fontSize: 12, opacity: canPrev ? 1 : 0.3 }}>
             <ChevronLeft size={16} />
-            <span className="hidden sm:inline">Prev</span>
+            <span className="hidden sm:inline">{hasPages ? 'Page' : 'Prev'}</span>
           </button>
 
           <button type="button" onClick={handleVoiceToggle} className="flex flex-col items-center gap-1" aria-label={voiceButtonLabel}>
@@ -994,8 +1258,8 @@ export default function Reader() {
             </button>
           )}
 
-          <button type="button" disabled={!nextChapter} onClick={() => nextChapter && goToChapter(nextChapter.id)} className="flex items-center gap-1" style={{ color: colors.accent, fontFamily: 'Inter', fontSize: 12, opacity: nextChapter ? 1 : 0.3 }}>
-            <span className="hidden sm:inline">Next</span>
+          <button type="button" disabled={!canNext} onClick={goNext} className="flex items-center gap-1" style={{ color: colors.accent, fontFamily: 'Inter', fontSize: 12, opacity: canNext ? 1 : 0.3 }}>
+            <span className="hidden sm:inline">{hasPages ? 'Page' : 'Next'}</span>
             <ChevronRight size={16} />
           </button>
         </div>

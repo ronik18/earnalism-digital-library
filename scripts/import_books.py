@@ -258,6 +258,39 @@ def forbidden_terms_for(book: dict[str, Any]) -> list[str]:
     return terms
 
 
+def removal_phrases_for(book: dict[str, Any]) -> list[str]:
+    """Exact reader-facing phrase removals requested in the manifest.
+
+    Supported keys intentionally require explicit phrases. This avoids broad,
+    meaning-changing rewrites while still letting admins strip known edition
+    headers, index fragments, repeated disclaimers, or other review-approved
+    phrases before upload.
+    """
+    phrases: list[str] = []
+    for key in ("remove_reader_phrases", "remove_exact_phrases", "remove_phrases"):
+        value = book.get(key)
+        if isinstance(value, str):
+            phrases.append(value)
+        elif isinstance(value, list):
+            phrases.extend(item for item in value if isinstance(item, str))
+    unique: list[str] = []
+    for phrase in phrases:
+        cleaned = normalize_text(phrase).strip()
+        if cleaned and cleaned not in unique:
+            unique.append(cleaned)
+    return unique
+
+
+def apply_manifest_phrase_removals(text: str, manifest: dict[str, Any]) -> tuple[str, list[str]]:
+    warnings: list[str] = []
+    for phrase in removal_phrases_for(manifest):
+        pattern = re.compile(re.escape(phrase), flags=re.IGNORECASE)
+        text, count = pattern.subn("", text)
+        if count:
+            warnings.append(f"Removed instructed exact phrase {count} time(s): {phrase[:80]}")
+    return text, warnings
+
+
 def source_url_candidates(url: str, source_type: str = "") -> list[str]:
     url = canonical_source_url(url)
     candidates = [request_safe_url(url)]
@@ -518,6 +551,8 @@ def sanitize_text(raw: str, manifest: dict[str, Any]) -> tuple[str, list[str]]:
     warnings.extend(wrapper_warnings)
     text, illustration_warnings = remove_illustration_blocks(text)
     warnings.extend(illustration_warnings)
+    text, removal_warnings = apply_manifest_phrase_removals(text, manifest)
+    warnings.extend(removal_warnings)
 
     forbidden = forbidden_terms_for(manifest)
     forbidden_re = re.compile("|".join(re.escape(term) for term in forbidden), re.IGNORECASE)

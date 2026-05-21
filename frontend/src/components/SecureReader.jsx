@@ -56,7 +56,7 @@ export default function SecureReader({
   const safeSessionId = sessionId || "reader-session";
   const emailHash = useMemo(() => simpleHash(userEmail || "guest").slice(0, 8), [userEmail]);
   const issuedAt = useMemo(() => new Date().toISOString(), []);
-  const watermarkText = `${safeSessionId.slice(0, 8)} · ${emailHash} · ${issuedAt.slice(0, 10)}`;
+  const watermarkText = `Earnalism Licensed Edition · ${issuedAt.slice(0, 10)}`;
   const footerText = `Licensed for ${userName || "Reader"} — Unauthorized sharing prohibited`;
 
   const report = (eventType, metadata = {}) => {
