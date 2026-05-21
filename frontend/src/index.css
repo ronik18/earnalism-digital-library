@@ -1752,18 +1752,18 @@ textarea.input-elegant {
 
 .secure-reader__watermark {
   position: fixed;
-  inset: -22vh -16vw;
+  inset: -18vh -14vw;
   z-index: 3;
   display: grid;
-  grid-template-columns: repeat(4, minmax(14rem, 1fr));
-  gap: 5.5rem 4rem;
+  grid-template-columns: repeat(3, minmax(16rem, 1fr));
+  gap: 8rem 7rem;
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.03;
+  opacity: 0.012;
   color: var(--reader-accent);
   font-family: Inter, sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: 10px;
+  letter-spacing: 0.24em;
   line-height: 1;
   text-transform: uppercase;
   transform: rotate(-35deg);

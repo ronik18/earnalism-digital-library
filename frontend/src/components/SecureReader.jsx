@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { API, USER_TOKEN_KEY } from "../lib/api";
 
-const LICENSE_NOTICE = "All ebooks on Earnalism are original licensed works. Redistribution or recording is prohibited under the Copyright Act 1957 §51 & §63. Access implies acceptance of these terms.";
-const LICENSE_METADATA = "Earnalism – Licensed Digital Edition";
+const LICENSE_NOTICE = "This Earnalism reading copy is provided for lawful personal reading. Do not redistribute, scrape, or reproduce the platform-rendered edition without permission. Public-domain source texts remain subject to their applicable rights status.";
+const LICENSE_METADATA = "Earnalism – Platform Reading Edition";
 
 function simpleHash(value = "") {
   let hash = 2166136261;
@@ -56,9 +56,9 @@ export default function SecureReader({
   const safeSessionId = sessionId || "reader-session";
   const emailHash = useMemo(() => simpleHash(userEmail || "guest").slice(0, 8), [userEmail]);
   const issuedAt = useMemo(() => new Date().toISOString(), []);
-  const watermarkIdentity = userEmail || `reader-${emailHash}`;
-  const watermarkText = `${watermarkIdentity} · ${issuedAt.slice(0, 10)} · Licensed Digital Edition`;
-  const footerText = `Licensed for ${userName || "Reader"} — Unauthorized sharing prohibited`;
+  const watermarkIdentity = userName || (userEmail ? userEmail.split("@")[0] : "Reader");
+  const watermarkText = `Earnalism Reading Edition · ${watermarkIdentity} · ${issuedAt.slice(0, 10)}`;
+  const footerText = `Earnalism reading copy for ${userName || "Reader"} — Redistribution prohibited`;
 
   const report = (eventType, metadata = {}) => {
     countsRef.current[eventType] = (countsRef.current[eventType] || 0) + 1;
@@ -143,7 +143,7 @@ export default function SecureReader({
         <metadata>{LICENSE_METADATA}</metadata>
       </svg>
       <div className="secure-reader__watermark" aria-hidden="true">
-        {Array.from({ length: 36 }, (_, index) => (
+        {Array.from({ length: 18 }, (_, index) => (
           <span key={index}>{watermarkText}</span>
         ))}
       </div>

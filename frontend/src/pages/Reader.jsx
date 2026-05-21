@@ -218,11 +218,12 @@ function escapeHtmlText(value = '') {
     .replace(/>/g, '&gt;');
 }
 
-function wrapWordsInSpans(html) {
+function wrapWordsInSpans(html, startWordIndex = 0) {
   if (typeof document === 'undefined') return { html: html || '', totalWords: 0 };
   const div = document.createElement('div');
   div.innerHTML = html || '';
-  let wordIndex = 0;
+  let wordIndex = startWordIndex;
+  let wrappedWords = 0;
   let textOffset = 0;
 
   function processNode(node) {
@@ -246,6 +247,7 @@ function wrapWordsInSpans(html) {
         nextHtml += escapeHtmlText(text.slice(lastIndex, match.index));
         nextHtml += `<span class="tts-word" data-word="${wordIndex}" data-start="${start}" data-end="${end}">${escapeHtmlText(match[0])}</span>`;
         wordIndex += 1;
+        wrappedWords += 1;
         lastIndex = match.index + match[0].length;
       }
 
@@ -264,7 +266,7 @@ function wrapWordsInSpans(html) {
   }
 
   Array.from(div.childNodes).forEach(processNode);
-  return { html: div.innerHTML, totalWords: wordIndex };
+  return { html: div.innerHTML, totalWords: wrappedWords };
 }
 
 function textSegments(text = '') {
@@ -303,6 +305,25 @@ function countWordsInHtml(html) {
   const div = document.createElement('div');
   div.innerHTML = html || '';
   return (div.textContent || '').split(/\s+/).filter(Boolean).length;
+}
+
+function audioAssetSlugForBook(book, bookId) {
+  const configured = book?.audio_slug || book?.audio_asset_slug || book?.audioAssetSlug;
+  if (configured) return configured;
+  if (bookId === 'book-d19e96859f' || book?.title === 'গিন্নি') return 'ginni';
+  return '';
+}
+
+function timestampIndexAt(timestamps = [], nowMs = 0) {
+  if (!timestamps.length) return -1;
+  let lo = 0;
+  let hi = timestamps.length - 1;
+  while (lo < hi) {
+    const mid = (lo + hi + 1) >> 1;
+    if ((timestamps[mid]?.start_ms || 0) <= nowMs) lo = mid;
+    else hi = mid - 1;
+  }
+  return lo;
 }
 
 function splitParagraphNode(node) {
@@ -425,9 +446,9 @@ export default function Reader() {
   const [lockedState, setLockedState] = useState(null);
 
   const [theme, setTheme] = useState('beige');
-  const [fontSizeIdx, setFontSizeIdx] = useState(1);
-  const [lineSpacingMode, setLineSpacingMode] = useState('comfortable');
-  const [fontFamilyMode, setFontFamilyMode] = useState('serif');
+  const [fontSizeIdx, setFontSizeIdx] = useState(2);
+  const [lineSpacingMode, setLineSpacingMode] = useState('relaxed');
+  const [fontFamilyMode, setFontFamilyMode] = useState('sans');
   const [showSettings, setShowSettings] = useState(false);
   const [showTOC, setShowTOC] = useState(false);
   const [toolbarVisible, setToolbarVisible] = useState(true);
@@ -438,6 +459,8 @@ export default function Reader() {
   const [ttsWordIndex, setTtsWordIndex] = useState(-1);
   const [ttsSpeed, setTtsSpeed] = useState(0.85);
   const [ttsVoices, setTtsVoices] = useState([]);
+  const [generatedAudioAvailable, setGeneratedAudioAvailable] = useState(false);
+  const [generatedAudioActive, setGeneratedAudioActive] = useState(false);
   const [processedHtml, setProcessedHtml] = useState('');
   const [ttsHtml, setTtsHtml] = useState('');
   const [totalWords, setTotalWords] = useState(0);
@@ -462,6 +485,9 @@ export default function Reader() {
   const [showReaderUpsell, setShowReaderUpsell] = useState(false);
 
   const contentRef = useRef(null);
+  const generatedAudioRef = useRef(null);
+  const generatedTimestampsRef = useRef([]);
+  const generatedPageEndRef = useRef(null);
   const utteranceRef = useRef(null);
   const synthRef = useRef(window.speechSynthesis);
   const lastScrollY = useRef(0);
@@ -476,10 +502,17 @@ export default function Reader() {
 
   const stopTTS = useCallback(() => {
     synthRef.current?.cancel?.();
+    const audio = generatedAudioRef.current;
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+    generatedPageEndRef.current = null;
     clearTimeout(ttsFallbackTimerRef.current);
     clearTimeout(ttsSegmentTimerRef.current);
     setTtsActive(false);
     setTtsPaused(false);
+    setGeneratedAudioActive(false);
     setTtsWordIndex(-1);
     setTtsHtml('');
     wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
@@ -768,9 +801,54 @@ export default function Reader() {
 
   const currentPageHtml = paginatedPages.length ? paginatedPages[currentPage]?.html || '' : readerHtml;
   const displayedHtml = ttsHtml || currentPageHtml;
+  const pageWordOffsets = useMemo(() => {
+    let cursor = 0;
+    return paginatedPages.map((page) => {
+      const start = cursor;
+      cursor += countWordsInHtml(page.html || '');
+      return start;
+    });
+  }, [paginatedPages]);
+  const currentPageWordOffset = paginatedPages.length ? (pageWordOffsets[currentPage] || 0) : 0;
   const effectiveReadProgress = paginatedPages.length > 1
     ? Math.round(((currentPage + 1) / paginatedPages.length) * 100)
     : readProgress;
+  const generatedAudioSlug = useMemo(
+    () => audioAssetSlugForBook(book, bookId),
+    [book, bookId],
+  );
+  const generatedAudioLang = isBengali ? 'ben' : 'en';
+
+  useEffect(() => {
+    let cancelled = false;
+    generatedTimestampsRef.current = [];
+    setGeneratedAudioAvailable(false);
+    setGeneratedAudioActive(false);
+    if (!generatedAudioSlug || !processedHtml || lockedState) return undefined;
+
+    fetch(`/audio/${generatedAudioLang}/${generatedAudioSlug}_timestamps.json`, { cache: 'force-cache' })
+      .then((response) => {
+        if (!response.ok) throw new Error('Generated audio timestamps unavailable');
+        return response.json();
+      })
+      .then((timestamps) => {
+        if (cancelled) return;
+        if (Array.isArray(timestamps) && timestamps.length > 0) {
+          generatedTimestampsRef.current = timestamps;
+          setGeneratedAudioAvailable(true);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          generatedTimestampsRef.current = [];
+          setGeneratedAudioAvailable(false);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [generatedAudioLang, generatedAudioSlug, lockedState, processedHtml]);
 
   useEffect(() => {
     setTtsHtml('');
@@ -937,6 +1015,16 @@ export default function Reader() {
     setTtsWordIndex(index);
   }, []);
 
+  const highlightGeneratedWord = useCallback((globalIndex) => {
+    wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
+    const current = wordsRef.current.find((word) => Number(word.dataset.word) === globalIndex);
+    if (!current) return;
+
+    current.classList.add('active');
+    current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTtsWordIndex(globalIndex);
+  }, []);
+
   const wordIndexFromCharIndex = useCallback((charIndex) => {
     if (!Number.isFinite(charIndex) || charIndex < 0) return -1;
     const exact = wordsRef.current.findIndex((word) => {
@@ -1058,7 +1146,44 @@ export default function Reader() {
     setTtsPaused(false);
   }, [buildUtterance]);
 
+  const startGeneratedAudio = useCallback(() => {
+    const audio = generatedAudioRef.current;
+    const timestamps = generatedTimestampsRef.current || [];
+    const pageHtml = currentPageHtml || readerHtml;
+    if (!audio || !generatedAudioAvailable || !timestamps.length || !pageHtml) return false;
+
+    synthRef.current?.cancel?.();
+    const wrapped = wrapWordsInSpans(pageHtml, currentPageWordOffset);
+    const firstWord = currentPageWordOffset;
+    const lastWord = currentPageWordOffset + Math.max(0, wrapped.totalWords - 1);
+    const firstTimestamp = timestamps[firstWord];
+    if (!firstTimestamp) return false;
+
+    generatedPageEndRef.current = lastWord;
+    setTtsHtml(wrapped.html);
+    setTotalWords(wrapped.totalWords);
+    setGeneratedAudioActive(true);
+    setTtsActive(true);
+    setTtsPaused(false);
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
+        audio.currentTime = Math.max(0, (firstTimestamp.start_ms || 0) / 1000);
+        audio.play().catch(() => {
+          setGeneratedAudioActive(false);
+          setTtsActive(false);
+          setTtsPaused(false);
+          toast.error('Generated audiobook could not start in this browser.');
+        });
+      });
+    });
+    return true;
+  }, [currentPageHtml, currentPageWordOffset, generatedAudioAvailable, readerHtml]);
+
   const startTTS = useCallback(() => {
+    if (startGeneratedAudio()) return;
+
     const synth = synthRef.current;
     if (!synth?.speak || typeof SpeechSynthesisUtterance === 'undefined') {
       toast.error('Audio reading is not available in this browser.');
@@ -1085,18 +1210,72 @@ export default function Reader() {
     }
 
     speak();
-  }, [currentPageHtml, readerHtml, speakSegments]);
+  }, [currentPageHtml, readerHtml, speakSegments, startGeneratedAudio]);
 
   const pauseTTS = () => {
     clearTimeout(ttsFallbackTimerRef.current);
-    synthRef.current?.pause?.();
+    if (generatedAudioActive) {
+      generatedAudioRef.current?.pause?.();
+    } else {
+      synthRef.current?.pause?.();
+    }
     setTtsPaused(true);
   };
 
   const resumeTTS = () => {
-    synthRef.current?.resume?.();
+    if (generatedAudioActive) {
+      generatedAudioRef.current?.play?.().catch(() => toast.error('Generated audiobook could not resume.'));
+    } else {
+      synthRef.current?.resume?.();
+    }
     setTtsPaused(false);
   };
+
+  const syncGeneratedAudioHighlight = useCallback(() => {
+    const audio = generatedAudioRef.current;
+    const timestamps = generatedTimestampsRef.current || [];
+    if (!audio || !timestamps.length) return false;
+
+    const index = timestampIndexAt(timestamps, Math.floor(audio.currentTime * 1000));
+    const pageEnd = generatedPageEndRef.current;
+    if (Number.isFinite(pageEnd) && index > pageEnd) {
+      audio.pause();
+      generatedPageEndRef.current = null;
+      setGeneratedAudioActive(false);
+      setTtsActive(false);
+      setTtsPaused(false);
+      return false;
+    }
+    if (index >= currentPageWordOffset) {
+      highlightGeneratedWord(index);
+      return true;
+    }
+    return false;
+  }, [currentPageWordOffset, highlightGeneratedWord]);
+
+  const handleGeneratedAudioTimeUpdate = useCallback(() => {
+    if (!generatedAudioActive || ttsPaused) return;
+    syncGeneratedAudioHighlight();
+  }, [generatedAudioActive, syncGeneratedAudioHighlight, ttsPaused]);
+
+  const handleGeneratedAudioEnded = useCallback(() => {
+    generatedPageEndRef.current = null;
+    setGeneratedAudioActive(false);
+    setTtsActive(false);
+    setTtsPaused(false);
+    setTtsWordIndex(-1);
+  }, []);
+
+  useEffect(() => {
+    if (!generatedAudioActive || ttsPaused) return undefined;
+    let timerId = 0;
+    const tick = () => {
+      syncGeneratedAudioHighlight();
+      timerId = window.setTimeout(tick, 140);
+    };
+    tick();
+    return () => window.clearTimeout(timerId);
+  }, [generatedAudioActive, syncGeneratedAudioHighlight, ttsPaused]);
 
   const handleVoiceToggle = () => {
     if (!ttsActive) startTTS();
@@ -1261,6 +1440,18 @@ export default function Reader() {
         '--reader-border': colors.border,
       }}
     >
+      {generatedAudioSlug && (
+        <audio
+          ref={generatedAudioRef}
+          src={generatedAudioAvailable ? `/audio/${generatedAudioLang}/${generatedAudioSlug}.mp3` : undefined}
+          preload="metadata"
+          onTimeUpdate={handleGeneratedAudioTimeUpdate}
+          onEnded={handleGeneratedAudioEnded}
+          style={{ display: 'none' }}
+          data-testid="generated-audiobook"
+        />
+      )}
+
       <header className={`reader-topbar ${toolbarVisible ? 'reader-topbar--visible' : 'reader-topbar--hidden'}`}>
         <button type="button" onClick={() => navigate(`/book/${bookId}`)} className="reader-topbar__back" aria-label="Back to book">
           <ChevronLeft size={18} />
@@ -1429,7 +1620,11 @@ export default function Reader() {
                 <span>Stop</span>
               </button>
             )}
-            <span className="reader-audio-control__hint">{ttsActive && !ttsPaused ? 'Narrating' : 'Resume anytime'}</span>
+            <span className="reader-audio-control__hint">
+              {generatedAudioAvailable
+                ? (ttsActive && !ttsPaused ? 'Synced audiobook' : 'Synced audio ready')
+                : (ttsActive && !ttsPaused ? 'Narrating' : 'Resume anytime')}
+            </span>
           </div>
 
           <button type="button" disabled={!canNext} onClick={goNext} className="reader-nav-button reader-nav-button--ghost">
