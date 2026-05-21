@@ -43,6 +43,10 @@ function getUserAuthHeaders() {
   return authHeaders(getUserToken());
 }
 
+function getAdminAuthHeaders() {
+  return authHeaders(localStorage.getItem(TOKEN_KEY));
+}
+
 function getChapterAuthHeaders() {
   const token = localStorage.getItem(USER_TOKEN_KEY) || localStorage.getItem(TOKEN_KEY) || localStorage.getItem('token');
   return authHeaders(token);
@@ -182,6 +186,18 @@ function formatWalletTime(seconds) {
     return `${m}m ${sec}s`;
   }
   return `${s}s`;
+}
+
+async function fetchReaderBook(bookId) {
+  try {
+    return await axios.get(`${API}/books/${bookId}`);
+  } catch (err) {
+    const adminToken = localStorage.getItem(TOKEN_KEY);
+    if (err.response?.status === 404 && adminToken) {
+      return axios.get(`${API}/admin/books/${bookId}`, { headers: getAdminAuthHeaders() });
+    }
+    throw err;
+  }
 }
 
 export default function Reader() {
@@ -357,7 +373,7 @@ export default function Reader() {
 
       try {
         const [bookRes, packsRes] = await Promise.all([
-          axios.get(`${API}/books/${bookId}`),
+          fetchReaderBook(bookId),
           axios.get(`${API}/payments/packs`),
         ]);
         if (cancelled) return;

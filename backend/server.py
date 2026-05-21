@@ -3529,8 +3529,10 @@ async def reader_get_chapter(
     chapter_id: str,
     principal: Optional[dict] = Depends(optional_principal),
 ):
+    is_admin_preview = bool(principal and principal.get("role") == "admin")
+    book_query = {"slug": slug} if is_admin_preview else {"slug": slug, "is_published": True}
     book_meta = await db.books.find_one(
-        {"slug": slug, "is_published": True},
+        book_query,
         {"_id": 0, "chapters.id": 1, "chapters.title": 1, "chapters.order": 1},
     )
     if not book_meta:
@@ -3549,7 +3551,7 @@ async def reader_get_chapter(
 
     async def unlocked_chapter_response(preview: bool):
         content_doc = await db.books.find_one(
-            {"slug": slug, "is_published": True, "chapters.id": chapter_id},
+            {**book_query, "chapters.id": chapter_id},
             {"_id": 0, "chapters.$": 1},
         )
         target = ((content_doc or {}).get("chapters") or [{}])[0]
@@ -3560,11 +3562,11 @@ async def reader_get_chapter(
         }
 
     # Free preview is open to everyone — no auth, no deduction.
-    if is_preview:
+    if is_preview and not is_admin_preview:
         return await unlocked_chapter_response(True)
 
     # Admin always has full access (admin reader preview).
-    if principal and principal.get("role") == "admin":
+    if is_admin_preview:
         return await unlocked_chapter_response(False)
 
     # Reader user
