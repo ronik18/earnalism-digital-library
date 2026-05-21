@@ -1,13 +1,10 @@
 import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import "@/index.css";
 import { AuthProvider } from "./context/AuthContext";
 import { SettingsProvider } from "./context/SettingsContext";
 import Layout from "./components/Layout";
 import { AppToaster } from "./components/AppToaster";
-
-const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
 
 const Home = lazy(() => import("./pages/Home"));
 const Library = lazy(() => import("./pages/Library"));
@@ -25,6 +22,7 @@ const MicroStoryLanding = lazy(() => import("./pages/MicroStoryLanding"));
 const SecureReaderHarness = lazy(() => import("./pages/SecureReaderHarness"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const Admin = lazy(() => import("./pages/Admin"));
+const GoogleAuthBoundary = lazy(() => import("./components/GoogleAuthBoundary"));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -37,7 +35,7 @@ function PageFallback() {
 }
 
 export default function App() {
-  const tree = (
+  return (
     <AuthProvider>
       <SettingsProvider>
         <BrowserRouter>
@@ -55,7 +53,7 @@ export default function App() {
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/micro-story" element={<MicroStoryLanding />} />
                 <Route path="/secure-reader-test" element={<SecureReaderHarness />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<GoogleAuthBoundary><Login /></GoogleAuthBoundary>} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/account" element={<Account />} />
                 {/* Legacy redirects */}
@@ -76,9 +74,6 @@ export default function App() {
       </SettingsProvider>
     </AuthProvider>
   );
-  return GOOGLE_CLIENT_ID
-    ? <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>{tree}</GoogleOAuthProvider>
-    : tree;
 }
 
 function LegacyShopRedirect() {

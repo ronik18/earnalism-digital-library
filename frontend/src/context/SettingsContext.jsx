@@ -9,15 +9,21 @@ export function SettingsProvider({ children }) {
 
   const refresh = useCallback(async () => {
     try {
-      const [s, b] = await Promise.all([
-        api.get("/settings/social"),
-        api.get("/settings/brand"),
-      ]);
-      setSocial(s.data || {});
-      setBrand(b.data || {});
+      const { data } = await api.get("/settings/public");
+      setSocial(data?.social || {});
+      setBrand(data?.brand || {});
     } catch (err) {
-      // Non-fatal: defaults remain in place.
-      console.warn("[SettingsContext] failed to load public settings:", err?.message || err);
+      try {
+        const [s, b] = await Promise.all([
+          api.get("/settings/social"),
+          api.get("/settings/brand"),
+        ]);
+        setSocial(s.data || {});
+        setBrand(b.data || {});
+      } catch (fallbackErr) {
+        // Non-fatal: defaults remain in place.
+        console.warn("[SettingsContext] failed to load public settings:", fallbackErr?.message || err?.message || fallbackErr || err);
+      }
     }
   }, []);
 

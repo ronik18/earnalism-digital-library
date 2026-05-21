@@ -46,6 +46,7 @@ export default function SecureReader({
   contentRef,
   className = "",
   style,
+  lang,
   blurred = false,
   onViolation,
 }) {
@@ -152,6 +153,7 @@ export default function SecureReader({
         }}
         className={`secure-reader__content ${className}`}
         style={style}
+        lang={lang}
         role="document"
         aria-label={title}
         data-license={LICENSE_METADATA}

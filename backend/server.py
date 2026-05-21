@@ -485,6 +485,10 @@ BOOK_METADATA_PROJECTION = {
     "chapters.content": 0,
     "rights_metadata": 0,
 }
+BOOK_LIST_PROJECTION = {
+    **BOOK_METADATA_PROJECTION,
+    "chapters": 0,
+}
 PUBLIC_CACHE_PATHS = {
     "/api/categories",
     "/api/books",
@@ -492,6 +496,7 @@ PUBLIC_CACHE_PATHS = {
     "/api/featured",
     "/api/settings/social",
     "/api/settings/brand",
+    "/api/settings/public",
     "/api/payments/packs",
     "/api/payments/config",
     "/api/reading/packs",
@@ -2224,8 +2229,8 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
             {"category_slug": {"$regex": pattern, "$options": "i"}},
             {"chapters.title": {"$regex": pattern, "$options": "i"}},
         ]
-    docs = await db.books.find(query, BOOK_METADATA_PROJECTION).sort("created_at", -1).to_list(500)
-    # Public list is metadata-only so the library page does not ship manuscript bodies.
+    docs = await db.books.find(query, BOOK_LIST_PROJECTION).sort("created_at", -1).to_list(500)
+    # Public list is shelf metadata-only so library browsing never ships chapter bodies.
     result = [_strip_all_chapter_content(d) for d in docs]
     _public_cache_set(cache_key, result)
     return result
@@ -2239,8 +2244,9 @@ async def get_book(slug: str):
     doc = await db.books.find_one({"slug": slug, "is_published": True}, {"_id": 0})
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
-    # Public detail returns ToC + only the free-preview chapter's body.
-    result = _strip_paid_chapter_content(doc)
+    # Public detail returns metadata + ToC only. Reader content is fetched through
+    # the gated chapter endpoint so detail pages stay light for large books.
+    result = _strip_all_chapter_content(doc)
     _public_cache_set(cache_key, result)
     return result
 
@@ -2384,6 +2390,20 @@ async def get_brand():
     result = {
         "logo_url": doc.get("logo_url", ""),
         "og_image_url": doc.get("og_image_url", ""),
+    }
+    _public_cache_set(cache_key, result)
+    return result
+
+
+@api.get("/settings/public")
+async def get_public_settings():
+    cache_key = _public_cache_key("settings_public")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+    result = {
+        "social": await get_social(),
+        "brand": await get_brand(),
     }
     _public_cache_set(cache_key, result)
     return result
@@ -3509,36 +3529,43 @@ async def reader_get_chapter(
     chapter_id: str,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    book = await db.books.find_one({"slug": slug, "is_published": True}, {"_id": 0})
-    if not book:
+    book_meta = await db.books.find_one(
+        {"slug": slug, "is_published": True},
+        {"_id": 0, "chapters.id": 1, "chapters.title": 1, "chapters.order": 1},
+    )
+    if not book_meta:
         raise HTTPException(status_code=404, detail="Book not found")
-    chapters = sorted((book.get("chapters") or []), key=lambda c: c.get("order", 0))
-    target = next((c for c in chapters if c.get("id") == chapter_id), None)
-    if not target:
+    chapters = sorted((book_meta.get("chapters") or []), key=lambda c: c.get("order", 0))
+    target_meta = next((c for c in chapters if c.get("id") == chapter_id), None)
+    if not target_meta:
         raise HTTPException(status_code=404, detail="Chapter not found")
 
     meta = {
-        "id": target["id"],
-        "title": target.get("title", ""),
-        "order": target.get("order", 0),
+        "id": target_meta["id"],
+        "title": target_meta.get("title", ""),
+        "order": target_meta.get("order", 0),
     }
     is_preview = chapters[0].get("id") == chapter_id
 
-    # Free preview is open to everyone — no auth, no deduction.
-    if is_preview:
+    async def unlocked_chapter_response(preview: bool):
+        content_doc = await db.books.find_one(
+            {"slug": slug, "is_published": True, "chapters.id": chapter_id},
+            {"_id": 0, "chapters.$": 1},
+        )
+        target = ((content_doc or {}).get("chapters") or [{}])[0]
         return {
             "locked": False,
-            "is_preview": True,
+            "is_preview": preview,
             "chapter": {**meta, "content": target.get("content", "")},
         }
 
+    # Free preview is open to everyone — no auth, no deduction.
+    if is_preview:
+        return await unlocked_chapter_response(True)
+
     # Admin always has full access (admin reader preview).
     if principal and principal.get("role") == "admin":
-        return {
-            "locked": False,
-            "is_preview": False,
-            "chapter": {**meta, "content": target.get("content", "")},
-        }
+        return await unlocked_chapter_response(False)
 
     # Reader user
     if principal and principal.get("role") == "user":
@@ -3550,11 +3577,7 @@ async def reader_get_chapter(
                 "chapter": meta,
             }
         if int(principal.get("reading_seconds_balance", 0)) > 0:
-            return {
-                "locked": False,
-                "is_preview": False,
-                "chapter": {**meta, "content": target.get("content", "")},
-            }
+            return await unlocked_chapter_response(False)
         return {
             "locked": True,
             "reason": "INSUFFICIENT_READING_TIME",

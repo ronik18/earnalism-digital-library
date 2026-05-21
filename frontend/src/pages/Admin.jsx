@@ -534,6 +534,33 @@ function BookEditor({ book, cats, onClose, onSave }) {
           </Field>
           <Field label="Cover image URL"><input className="input-elegant" value={f.cover_image_url} onChange={(e) => setF({ ...f, cover_image_url: e.target.value })} /></Field>
           <Field label="Back cover image URL"><input className="input-elegant" value={f.back_cover_image_url || ""} onChange={(e) => setF({ ...f, back_cover_image_url: e.target.value })} /></Field>
+          {!isNew && (
+            <div className="sm:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <CoverUpload
+                bookId={book.slug}
+                kind="front"
+                currentUrl={f.cover_image_url}
+                onSuccess={(data) => {
+                  setF((prev) => ({ ...prev, cover_image_url: data.cover_url, cover_url: data.cover_url, thumbnail_url: data.thumbnail_url, cover_processing_status: "ready", cover_processing_error: "" }));
+                  toast.success("Front cover uploaded");
+                }}
+              />
+              <CoverUpload
+                bookId={book.slug}
+                kind="back"
+                currentUrl={f.back_cover_image_url}
+                onSuccess={(data) => {
+                  setF((prev) => ({ ...prev, back_cover_image_url: data.cover_url, back_cover_url: data.cover_url, back_cover_thumbnail_url: data.thumbnail_url, back_cover_processing_status: "ready", back_cover_processing_error: "" }));
+                  toast.success("Back cover uploaded");
+                }}
+              />
+            </div>
+          )}
+          {isNew && (
+            <div className="sm:col-span-2 rounded-xl border border-brand-soft bg-ivory-warm/70 p-4 text-sm text-charcoal-soft">
+              Save the draft once, then reopen it to upload front and back cover images directly. URL fields remain available for already-hosted images.
+            </div>
+          )}
           <Field label="Estimated reading time"><input className="input-elegant" value={f.estimated_reading_time || ""} onChange={(e) => setF({ ...f, estimated_reading_time: e.target.value })} placeholder="4 hours" data-testid="book-reading-time" /></Field>
           <Field label="Buy Reading Time URL (Razorpay / external)" wide><input className="input-elegant" value={f.buy_url} onChange={(e) => setF({ ...f, buy_url: e.target.value })} placeholder="https://rzp.io/l/your-link (leave empty for 'Request Access')" data-testid="book-buy-url" /></Field>
           <Field label="Publication status" wide>
@@ -549,29 +576,6 @@ function BookEditor({ book, cats, onClose, onSave }) {
           <Field label="What you will learn (one per line)"><textarea rows={3} className="input-elegant" value={f.learnings} onChange={(e) => setF({ ...f, learnings: e.target.value })} /></Field>
           <Field label="About the author / publisher" wide><textarea rows={2} className="input-elegant" value={f.about_author} onChange={(e) => setF({ ...f, about_author: e.target.value })} /></Field>
         </div>
-
-        {!isNew && (
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <CoverUpload
-              bookId={book.slug}
-              kind="front"
-              currentUrl={f.cover_image_url}
-              onSuccess={(data) => {
-                setF((prev) => ({ ...prev, cover_image_url: data.cover_url, cover_url: data.cover_url, thumbnail_url: data.thumbnail_url, cover_processing_status: "ready", cover_processing_error: "" }));
-                toast.success("Front cover uploaded");
-              }}
-            />
-            <CoverUpload
-              bookId={book.slug}
-              kind="back"
-              currentUrl={f.back_cover_image_url}
-              onSuccess={(data) => {
-                setF((prev) => ({ ...prev, back_cover_image_url: data.cover_url, back_cover_url: data.cover_url, back_cover_thumbnail_url: data.thumbnail_url, back_cover_processing_status: "ready", back_cover_processing_error: "" }));
-                toast.success("Back cover uploaded");
-              }}
-            />
-          </div>
-        )}
 
         {saveBlocked && (
           <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">

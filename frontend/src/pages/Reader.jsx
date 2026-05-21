@@ -60,6 +60,32 @@ function containsBengaliText(value) {
   return BENGALI_RE.test(value || '');
 }
 
+function normalizeVoiceLang(value = '') {
+  return String(value || '').toLowerCase().replace('_', '-');
+}
+
+function isBengaliVoice(voice) {
+  const lang = normalizeVoiceLang(voice?.lang);
+  const name = String(voice?.name || '');
+  return lang.startsWith('bn') || /bengali|bangla/i.test(name);
+}
+
+function selectNarrationVoice(voices = [], prefersBengali = false) {
+  const available = Array.from(voices || []).filter(Boolean);
+  if (prefersBengali) {
+    const bengaliVoice = available.find(isBengaliVoice);
+    return { voice: bengaliVoice || null, exactLanguage: Boolean(bengaliVoice) };
+  }
+
+  const preferredEnglish = available.find((voice) => /Samantha|Karen|Moira|Daniel/i.test(voice.name))
+    || available.find((voice) => normalizeVoiceLang(voice.lang) === 'en-us')
+    || available.find((voice) => normalizeVoiceLang(voice.lang).startsWith('en'))
+    || available[0]
+    || null;
+
+  return { voice: preferredEnglish, exactLanguage: Boolean(preferredEnglish) };
+}
+
 function sanitizeReaderHtml(html) {
   if (typeof document === 'undefined') return html || '';
   const template = document.createElement('template');
@@ -80,16 +106,28 @@ function sanitizeReaderHtml(html) {
   return template.innerHTML;
 }
 
+function escapeHtmlText(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 function wrapWordsInSpans(html) {
   if (typeof document === 'undefined') return { html: html || '', totalWords: 0 };
   const div = document.createElement('div');
   div.innerHTML = html || '';
   let wordIndex = 0;
+  let textOffset = 0;
 
   function processNode(node) {
     if (node.nodeType === Node.TEXT_NODE) {
       const text = node.textContent;
-      if (!text || !text.trim()) return;
+      if (!text) return;
+      if (!text.trim()) {
+        textOffset += text.length;
+        return;
+      }
 
       const wrapper = document.createElement('span');
       let lastIndex = 0;
@@ -98,14 +136,17 @@ function wrapWordsInSpans(html) {
       let match;
 
       while ((match = re.exec(text)) !== null) {
-        nextHtml += text.slice(lastIndex, match.index);
-        nextHtml += `<span class="tts-word" data-word="${wordIndex}">${match[0]}</span>`;
+        const start = textOffset + match.index;
+        const end = start + match[0].length;
+        nextHtml += escapeHtmlText(text.slice(lastIndex, match.index));
+        nextHtml += `<span class="tts-word" data-word="${wordIndex}" data-start="${start}" data-end="${end}">${escapeHtmlText(match[0])}</span>`;
         wordIndex += 1;
         lastIndex = match.index + match[0].length;
       }
 
-      nextHtml += text.slice(lastIndex);
+      nextHtml += escapeHtmlText(text.slice(lastIndex));
       wrapper.innerHTML = nextHtml;
+      textOffset += text.length;
 
       const parent = node.parentNode;
       while (wrapper.firstChild) parent.insertBefore(wrapper.firstChild, node);
@@ -169,6 +210,7 @@ export default function Reader() {
   const [ttsPaused, setTtsPaused] = useState(false);
   const [ttsWordIndex, setTtsWordIndex] = useState(-1);
   const [ttsSpeed, setTtsSpeed] = useState(1);
+  const [ttsVoices, setTtsVoices] = useState([]);
   const [processedHtml, setProcessedHtml] = useState('');
   const [totalWords, setTotalWords] = useState(0);
 
@@ -198,13 +240,29 @@ export default function Reader() {
   const scrollContainerRef = useRef(null);
   const completionReportedRef = useRef('');
   const upsellShownRef = useRef('');
+  const ttsWarningShownRef = useRef(false);
 
   const stopTTS = useCallback(() => {
-    synthRef.current.cancel();
+    synthRef.current?.cancel?.();
     setTtsActive(false);
     setTtsPaused(false);
     setTtsWordIndex(-1);
     wordsRef.current.forEach((word) => word.classList.remove('active'));
+  }, []);
+
+  useEffect(() => {
+    const synth = synthRef.current;
+    if (!synth?.getVoices) return undefined;
+
+    const refreshVoices = () => setTtsVoices(synth.getVoices());
+    refreshVoices();
+    synth.addEventListener?.('voiceschanged', refreshVoices);
+    synth.onvoiceschanged = refreshVoices;
+
+    return () => {
+      synth.removeEventListener?.('voiceschanged', refreshVoices);
+      if (synth.onvoiceschanged === refreshVoices) synth.onvoiceschanged = null;
+    };
   }, []);
 
   const sendPulse = useCallback(async () => {
@@ -574,34 +632,64 @@ export default function Reader() {
     }
   };
 
+  const isBengali = useMemo(
+    () => containsBengaliText(`${book?.title || ''} ${chapter?.title || ''} ${processedHtml || ''}`),
+    [book, chapter, processedHtml],
+  );
+
+  const highlightSpokenWord = useCallback((index) => {
+    wordsRef.current.forEach((word) => word.classList.remove('active'));
+    const current = wordsRef.current[index];
+    if (!current) return;
+
+    current.classList.add('active');
+    current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTtsWordIndex(index);
+  }, []);
+
+  const wordIndexFromCharIndex = useCallback((charIndex) => {
+    if (!Number.isFinite(charIndex) || charIndex < 0) return -1;
+    const exact = wordsRef.current.findIndex((word) => {
+      const start = Number(word.dataset.start);
+      const end = Number(word.dataset.end);
+      return Number.isFinite(start) && Number.isFinite(end) && start <= charIndex && charIndex < end;
+    });
+    if (exact >= 0) return exact;
+    return wordsRef.current.findIndex((word) => Number(word.dataset.start) >= charIndex);
+  }, []);
+
   const buildUtterance = useCallback(() => {
+    if (typeof SpeechSynthesisUtterance === 'undefined') return null;
     const plainText = contentRef.current?.innerText || '';
+    if (!plainText.trim()) return null;
+
     const utter = new SpeechSynthesisUtterance(plainText);
     utter.rate = ttsSpeed;
     utter.pitch = 1;
-    utter.lang = 'en-US';
+    utter.lang = isBengali ? 'bn-BD' : 'en-US';
 
-    const voices = synthRef.current.getVoices();
-    const preferred = voices.find((voice) => /Samantha|Karen|Moira|Daniel/i.test(voice.name))
-      || voices.find((voice) => voice.lang === 'en-US')
-      || voices[0];
+    const voices = ttsVoices.length ? ttsVoices : (synthRef.current?.getVoices?.() || []);
+    const preferred = selectNarrationVoice(voices, isBengali);
 
-    if (preferred) utter.voice = preferred;
+    if (preferred.voice) utter.voice = preferred.voice;
+    if (isBengali && !preferred.exactLanguage && !ttsWarningShownRef.current) {
+      ttsWarningShownRef.current = true;
+      toast.warning('Bengali narration depends on your browser voice pack. If pronunciation sounds off, add a Bengali voice in system settings.');
+    }
 
     let wordCount = 0;
 
     utter.onboundary = (event) => {
       if (event.name === 'word') {
-        wordsRef.current.forEach((word) => word.classList.remove('active'));
-        const current = wordsRef.current[wordCount];
-
-        if (current) {
-          current.classList.add('active');
-          current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-
-        setTtsWordIndex(wordCount);
+        highlightSpokenWord(wordCount);
         wordCount += 1;
+        return;
+      }
+
+      const index = wordIndexFromCharIndex(event.charIndex);
+      if (index >= 0) {
+        wordCount = index + 1;
+        highlightSpokenWord(index);
       }
     };
 
@@ -613,20 +701,31 @@ export default function Reader() {
     };
 
     utter.onend = resetTTS;
-    utter.onerror = resetTTS;
+    utter.onerror = (event) => {
+      resetTTS();
+      if (event.error && event.error !== 'interrupted' && event.error !== 'canceled') {
+        toast.error('Audio reading could not start in this browser.');
+      }
+    };
 
     return utter;
-  }, [ttsSpeed]);
+  }, [highlightSpokenWord, isBengali, ttsSpeed, ttsVoices, wordIndexFromCharIndex]);
 
   const startTTS = useCallback(() => {
-    synthRef.current.cancel();
+    const synth = synthRef.current;
+    if (!synth?.speak || typeof SpeechSynthesisUtterance === 'undefined') {
+      toast.error('Audio reading is not available in this browser.');
+      return;
+    }
+
+    synth.cancel();
     const speak = () => {
       wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
       const utter = buildUtterance();
       if (!utter) return;
 
       utteranceRef.current = utter;
-      synthRef.current.speak(utter);
+      synth.speak(utter);
       setTtsActive(true);
       setTtsPaused(false);
     };
@@ -643,12 +742,12 @@ export default function Reader() {
   }, [buildUtterance, processedHtml]);
 
   const pauseTTS = () => {
-    synthRef.current.pause();
+    synthRef.current?.pause?.();
     setTtsPaused(true);
   };
 
   const resumeTTS = () => {
-    synthRef.current.resume();
+    synthRef.current?.resume?.();
     setTtsPaused(false);
   };
 
@@ -686,11 +785,6 @@ export default function Reader() {
     const uploadedImages = chapter?.has_images || /reader-img--(?:photo|illustration)|data-type="(?:photo|illustration)"/.test(processedHtml);
     return Boolean(illustrationCategory || uploadedImages);
   }, [book, chapter, processedHtml]);
-
-  const isBengali = useMemo(
-    () => containsBengaliText(`${book?.title || ''} ${chapter?.title || ''} ${processedHtml || ''}`),
-    [book, chapter, processedHtml],
-  );
 
   if (loading) {
     return (
@@ -770,6 +864,9 @@ export default function Reader() {
     ? { ...THEMES.beige, canvas: '#FFFFFF', surface: '#FFFFFF', border: '#E8DDD8', label: 'White' }
     : THEMES[theme];
   const lowBalance = walletSeconds > 0 && walletSeconds <= LOW_BALANCE_THRESHOLD;
+  const voiceButtonLabel = !ttsActive
+    ? (isBengali ? 'Listen in Bengali' : 'Listen')
+    : ttsPaused ? 'Resume narration' : 'Pause narration';
 
   return (
     <div ref={scrollContainerRef} className="relative flex flex-col min-h-screen overflow-y-auto reader-scroll" style={{ background: colors.canvas, color: colors.text, transition: 'background 400ms ease, color 300ms ease' }}>
@@ -834,6 +931,7 @@ export default function Reader() {
             className={isBengali ? 'reader-content reader-content--bengali' : 'drop-cap reader-content'}
             html={processedHtml}
             blurred={contentBlurred}
+            lang={isBengali ? 'bn' : 'en'}
             style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_SERIF, fontSize: FONT_SIZES[fontSizeIdx].size, lineHeight: isBengali ? 1.9 : 1.75, color: colors.text, transition: 'filter 300ms ease', userSelect: 'none', WebkitUserSelect: 'none' }}
           />
           {showReaderUpsell && (
@@ -865,7 +963,7 @@ export default function Reader() {
             <span className="hidden sm:inline">Prev</span>
           </button>
 
-          <button type="button" onClick={handleVoiceToggle} className="flex flex-col items-center gap-1" aria-label={!ttsActive ? 'Listen' : ttsPaused ? 'Resume narration' : 'Pause narration'}>
+          <button type="button" onClick={handleVoiceToggle} className="flex flex-col items-center gap-1" aria-label={voiceButtonLabel}>
             <span className={ttsActive && !ttsPaused ? 'p-3 rounded-full animate-pulse-soft' : 'p-3 rounded-full'} style={{ background: ttsActive && !ttsPaused ? '#6B1020' : colors.surface, color: ttsActive && !ttsPaused ? '#FAF7F0' : colors.accent, transition: 'all 250ms ease', boxShadow: ttsActive && !ttsPaused ? '0 0 0 4px rgba(107,16,32,0.15)' : 'none', display: 'inline-flex' }}>
               {ttsActive && !ttsPaused ? <Volume2 size={20} /> : <VolumeX size={20} />}
             </span>
