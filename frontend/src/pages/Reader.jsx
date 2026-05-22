@@ -242,12 +242,18 @@ function wrapWordsInSpans(html, startWordIndex = 0) {
       let match;
 
       while ((match = re.exec(text)) !== null) {
-        const start = textOffset + match.index;
-        const end = start + match[0].length;
         nextHtml += escapeHtmlText(text.slice(lastIndex, match.index));
-        nextHtml += `<span class="tts-word" data-word="${wordIndex}" data-start="${start}" data-end="${end}">${escapeHtmlText(match[0])}</span>`;
-        wordIndex += 1;
-        wrappedWords += 1;
+        for (const part of highlightTokenParts(match[0])) {
+          const start = textOffset + match.index + part.index;
+          const end = start + part.text.length;
+          if (part.highlight) {
+            nextHtml += `<span class="tts-word" data-word="${wordIndex}" data-start="${start}" data-end="${end}">${escapeHtmlText(part.text)}</span>`;
+            wordIndex += 1;
+            wrappedWords += 1;
+          } else {
+            nextHtml += escapeHtmlText(part.text);
+          }
+        }
         lastIndex = match.index + match[0].length;
       }
 
@@ -301,17 +307,70 @@ function textSegments(text = '') {
 }
 
 function countWordsInHtml(html) {
-  if (typeof document === 'undefined') return (html || '').split(/\s+/).filter(Boolean).length;
+  if (typeof document === 'undefined') return countHighlightUnitsInText(html || '');
   const div = document.createElement('div');
   div.innerHTML = html || '';
-  return (div.textContent || '').split(/\s+/).filter(Boolean).length;
+  return countHighlightUnitsInText(div.textContent || '');
+}
+
+function isHighlightableToken(token = '') {
+  return /[\p{L}\p{N}\u0980-\u09FF]/u.test(token);
+}
+
+function highlightTokenParts(token = '') {
+  if (/^\d{1,3}(?:,\d{3})+(?:[^\p{L}\p{N}\u0980-\u09FF]*)$/u.test(token)) {
+    const parts = [];
+    const re = /\d+|\D+/g;
+    let match;
+    while ((match = re.exec(token)) !== null) {
+      parts.push({
+        text: match[0],
+        index: match.index,
+        highlight: /\d/.test(match[0]),
+      });
+    }
+    return parts;
+  }
+  return [{ text: token, index: 0, highlight: isHighlightableToken(token) }];
+}
+
+function countHighlightUnitsInText(text = '') {
+  return (text.match(/\S+/g) || []).reduce((count, token) => {
+    return count + highlightTokenParts(token).filter((part) => part.highlight).length;
+  }, 0);
+}
+
+function readerCoverUrl(book = {}, kind = 'front') {
+  return kind === 'back'
+    ? (book?.back_cover_image_url || book?.back_cover_url || '')
+    : (book?.cover_image_url || book?.cover_url || '');
+}
+
+function referencePageKind(html = '') {
+  if (/<h[1-6][^>]*>\s*Index\s*<\/h[1-6]>/i.test(html)) return 'index';
+  if (/<h[1-6][^>]*>\s*Bibliography\s*<\/h[1-6]>/i.test(html)) return 'reference';
+  return '';
 }
 
 function audioAssetSlugForBook(book, bookId) {
   const configured = book?.audio_slug || book?.audio_asset_slug || book?.audioAssetSlug;
   if (configured) return configured;
   if (bookId === 'book-d19e96859f' || book?.title === 'গিন্নি') return 'ginni';
-  return '';
+  if (bookId === 'bharat-at-the-crossroads' || /bharat at the crossroads/i.test(book?.title || '')) return 'bharat-at-the-crossroads';
+  return book?.slug || bookId || '';
+}
+
+function rightsForBook(book = {}, userName = 'Reader') {
+  const title = book?.title || '';
+  if (/bharat at the crossroads/i.test(title) || book?.slug === 'bharat-at-the-crossroads') {
+    return {
+      licenseMetadata: 'Bharat at the Crossroads - Original Earnalism Digital Edition',
+      licenseNotice: 'Bharat at the Crossroads is an original work authored by Ronik Basak. Copyright 2026 Reo Enterprise. This reading copy is licensed for lawful personal reading only; redistribution, scraping, recording, or reproduction is prohibited without prior written permission.',
+      watermarkText: `Bharat at the Crossroads - Reo Enterprise - Licensed for ${userName || 'Reader'}`,
+      footerText: `Licensed reading copy for ${userName || 'Reader'} - Copyright 2026 Reo Enterprise. Author: Ronik Basak. Redistribution prohibited.`,
+    };
+  }
+  return {};
 }
 
 function timestampIndexAt(timestamps = [], nowMs = 0) {
@@ -777,10 +836,28 @@ export default function Reader() {
     let cancelled = false;
     let resizeTimer = 0;
     const runPagination = () => {
-      const nextPages = paginateReaderHtml(readerHtml, {
+      const contentPages = paginateReaderHtml(readerHtml, {
         isBengali,
         fontSize: FONT_SIZES[fontSizeIdx].size,
       });
+      let referenceKind = '';
+      const readerPages = contentPages.map((page, index) => {
+        const detectedReferenceKind = referencePageKind(page.html || '');
+        if (!referenceKind && detectedReferenceKind) referenceKind = detectedReferenceKind;
+        if (referenceKind === 'reference' && detectedReferenceKind === 'index') referenceKind = 'index';
+        return {
+          ...page,
+          type: referenceKind || 'content',
+          contentIndex: referenceKind ? null : index,
+        };
+      });
+      const frontCover = readerCoverUrl(book, 'front');
+      const backCover = readerCoverUrl(book, 'back');
+      const nextPages = [
+        ...(frontCover ? [{ type: 'front-cover', imageUrl: frontCover, html: '' }] : []),
+        ...readerPages,
+        ...(backCover ? [{ type: 'back-cover', imageUrl: backCover, html: '' }] : []),
+      ];
       if (cancelled) return;
       setPaginatedPages(nextPages);
       setCurrentPage((page) => Math.min(page, Math.max(0, nextPages.length - 1)));
@@ -797,15 +874,19 @@ export default function Reader() {
       window.clearTimeout(resizeTimer);
       window.removeEventListener('resize', onResize);
     };
-  }, [fontSizeIdx, isBengali, readerHtml]);
+  }, [book, fontSizeIdx, isBengali, readerHtml]);
 
-  const currentPageHtml = paginatedPages.length ? paginatedPages[currentPage]?.html || '' : readerHtml;
+  const currentPageData = paginatedPages.length ? paginatedPages[currentPage] : { type: 'content', html: readerHtml, contentIndex: 0 };
+  const isContentPage = !paginatedPages.length || currentPageData?.type === 'content';
+  const isIndexPage = currentPageData?.type === 'index';
+  const isReferencePage = currentPageData?.type === 'reference' || isIndexPage;
+  const currentPageHtml = (isContentPage || isReferencePage) ? (currentPageData?.html || readerHtml) : '';
   const displayedHtml = ttsHtml || currentPageHtml;
   const pageWordOffsets = useMemo(() => {
     let cursor = 0;
     return paginatedPages.map((page) => {
       const start = cursor;
-      cursor += countWordsInHtml(page.html || '');
+      if (page.type === 'content') cursor += countWordsInHtml(page.html || '');
       return start;
     });
   }, [paginatedPages]);
@@ -1150,7 +1231,7 @@ export default function Reader() {
     const audio = generatedAudioRef.current;
     const timestamps = generatedTimestampsRef.current || [];
     const pageHtml = currentPageHtml || readerHtml;
-    if (!audio || !generatedAudioAvailable || !timestamps.length || !pageHtml) return false;
+    if (!isContentPage || !audio || !generatedAudioAvailable || !timestamps.length || !pageHtml) return false;
 
     synthRef.current?.cancel?.();
     const wrapped = wrapWordsInSpans(pageHtml, currentPageWordOffset);
@@ -1179,9 +1260,13 @@ export default function Reader() {
       });
     });
     return true;
-  }, [currentPageHtml, currentPageWordOffset, generatedAudioAvailable, readerHtml]);
+  }, [currentPageHtml, currentPageWordOffset, generatedAudioAvailable, isContentPage, readerHtml]);
 
   const startTTS = useCallback(() => {
+    if (!isContentPage) {
+      toast.info('Audio is available on reading pages only.');
+      return;
+    }
     if (startGeneratedAudio()) return;
 
     const synth = synthRef.current;
@@ -1210,7 +1295,7 @@ export default function Reader() {
     }
 
     speak();
-  }, [currentPageHtml, readerHtml, speakSegments, startGeneratedAudio]);
+  }, [currentPageHtml, isContentPage, readerHtml, speakSegments, startGeneratedAudio]);
 
   const pauseTTS = () => {
     clearTimeout(ttsFallbackTimerRef.current);
@@ -1292,6 +1377,9 @@ export default function Reader() {
   const hasPages = paginatedPages.length > 1;
   const canPrev = hasPages ? currentPage > 0 : Boolean(prevChapter);
   const canNext = hasPages ? currentPage < paginatedPages.length - 1 : Boolean(nextChapter);
+  const readerUserName = user && typeof user === 'object' ? user.name : 'Reader';
+  const readerUserEmail = user && typeof user === 'object' ? user.email : '';
+  const rightsCopy = rightsForBook(book, readerUserName);
 
   const goToChapter = (id) => {
     stopTTS();
@@ -1407,10 +1495,20 @@ export default function Reader() {
   const voiceButtonLabel = !ttsActive
     ? (isBengali ? 'Listen in Bengali' : 'Listen')
     : ttsPaused ? 'Resume narration' : 'Pause narration';
-  const showBookHeader = currentIdx <= 0 && currentPage === 0;
-  const showStoryHeader = !hasPages || currentPage === 0;
+  const showBookHeader = isContentPage && currentIdx <= 0 && currentPageData?.contentIndex === 0;
+  const showStoryHeader = isContentPage && (!hasPages || currentPageData?.contentIndex === 0);
+  const currentPageLabel = currentPageData?.type === 'front-cover'
+    ? 'Front cover'
+      : currentPageData?.type === 'back-cover'
+        ? 'Back cover'
+      : currentPageData?.type === 'index'
+        ? 'Index'
+        : currentPageData?.type === 'reference'
+          ? 'Reference'
+        : 'Generated reader pages';
+  const audioDisabledForPage = !isContentPage;
   const readingMinutesLeft = hasPages
-    ? Math.max(1, Math.ceil((paginatedPages.length - currentPage) / 2))
+    ? Math.max(1, Math.ceil((paginatedPages.filter((page, index) => index >= currentPage && page.type === 'content').length || 1) / 2))
     : totalWords > 0
       ? Math.max(1, Math.ceil(((100 - effectiveReadProgress) / 100) * (totalWords / 220)))
       : null;
@@ -1517,7 +1615,7 @@ export default function Reader() {
 
             {hasPages && (
               <>
-                <div className="reader-page-meta">Generated reader pages · {currentPage + 1} / {paginatedPages.length}</div>
+                <div className="reader-page-meta">{currentPageLabel} · {currentPage + 1} / {paginatedPages.length}</div>
                 <nav className="reader-page-index" aria-label="Generated reader page index">
                   {paginatedPages.map((_, index) => (
                     <button
@@ -1537,28 +1635,54 @@ export default function Reader() {
               </>
             )}
 
-            <SecureReader
-              sessionId={sessionId}
-              userName={user && typeof user === 'object' ? user.name : 'Reader'}
-              userEmail={user && typeof user === 'object' ? user.email : ''}
-              bookSlug={bookId}
-              chapterId={activeChapterId || chapterId || chapter?.id}
-              title={`${book?.title || 'Earnalism'} · ${chapter?.title || 'Chapter'}${hasPages ? ` · page ${currentPage + 1}` : ''}`}
-              contentRef={contentRef}
-              className={contentClassName}
-              html={displayedHtml}
-              blurred={contentBlurred}
-              lang={isBengali ? 'bn' : 'en'}
-              style={{
-                fontFamily: readerFontFamily,
-                fontSize: FONT_SIZES[fontSizeIdx].size,
-                lineHeight: contentLineHeight,
-                color: colors.text,
-                transition: 'filter 300ms ease',
-                userSelect: 'none',
-                WebkitUserSelect: 'none',
-              }}
-            />
+            {isContentPage || isReferencePage ? (
+              <SecureReader
+                sessionId={sessionId}
+                userName={readerUserName}
+                userEmail={readerUserEmail}
+                bookSlug={bookId}
+                chapterId={activeChapterId || chapterId || chapter?.id}
+                title={`${book?.title || 'Earnalism'} · ${chapter?.title || 'Chapter'}${hasPages ? ` · page ${currentPage + 1}` : ''}`}
+                contentRef={contentRef}
+                className={contentClassName}
+                html={displayedHtml}
+                blurred={contentBlurred}
+                lang={isBengali ? 'bn' : 'en'}
+                licenseNotice={rightsCopy.licenseNotice}
+                licenseMetadata={rightsCopy.licenseMetadata}
+                watermarkText={rightsCopy.watermarkText}
+                footerText={rightsCopy.footerText}
+                style={{
+                  fontFamily: readerFontFamily,
+                  fontSize: FONT_SIZES[fontSizeIdx].size,
+                  lineHeight: contentLineHeight,
+                  color: colors.text,
+                  transition: 'filter 300ms ease',
+                  userSelect: 'none',
+                  WebkitUserSelect: 'none',
+                }}
+              />
+            ) : (
+              <SecureReader
+                sessionId={sessionId}
+                userName={readerUserName}
+                userEmail={readerUserEmail}
+                bookSlug={bookId}
+                chapterId={activeChapterId || chapterId || chapter?.id}
+                title={`${book?.title || 'Earnalism'} · ${currentPageLabel}`}
+                className="reader-cover-page"
+                blurred={contentBlurred}
+                licenseNotice={rightsCopy.licenseNotice}
+                licenseMetadata={rightsCopy.licenseMetadata}
+                watermarkText={rightsCopy.watermarkText}
+                footerText={rightsCopy.footerText}
+              >
+                <figure>
+                  <img src={currentPageData.imageUrl} alt={`${book?.title || 'Book'} ${currentPageLabel.toLowerCase()}`} />
+                  <figcaption>{currentPageLabel}</figcaption>
+                </figure>
+              </SecureReader>
+            )}
           </section>
 
           {showReaderUpsell && (
@@ -1595,7 +1719,7 @@ export default function Reader() {
           </button>
 
           <div className="reader-audio-control">
-            <button type="button" onClick={handleVoiceToggle} className="reader-audio-button" aria-label={voiceButtonLabel}>
+            <button type="button" onClick={handleVoiceToggle} disabled={audioDisabledForPage} className="reader-audio-button" aria-label={voiceButtonLabel}>
               {ttsActive && !ttsPaused ? (
                 <>
                   <Pause size={17} />
@@ -1621,7 +1745,9 @@ export default function Reader() {
               </button>
             )}
             <span className="reader-audio-control__hint">
-              {generatedAudioAvailable
+              {audioDisabledForPage
+                ? 'Audio starts on reading pages'
+                : generatedAudioAvailable
                 ? (ttsActive && !ttsPaused ? 'Synced audiobook' : 'Synced audio ready')
                 : (ttsActive && !ttsPaused ? 'Narrating' : 'Resume anytime')}
             </span>

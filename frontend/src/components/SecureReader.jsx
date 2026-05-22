@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { API, USER_TOKEN_KEY } from "../lib/api";
 
-const LICENSE_NOTICE = "This Earnalism reading copy is provided for lawful personal reading. Do not redistribute, scrape, or reproduce the platform-rendered edition without permission. Public-domain source texts remain subject to their applicable rights status.";
-const LICENSE_METADATA = "Earnalism – Platform Reading Edition";
+const DEFAULT_LICENSE_NOTICE = "This Earnalism reading copy is provided for lawful personal reading. Do not redistribute, scrape, or reproduce the platform-rendered edition without permission. Public-domain source texts remain subject to their applicable rights status.";
+const DEFAULT_LICENSE_METADATA = "Earnalism - Platform Reading Edition";
 
 function simpleHash(value = "") {
   let hash = 2166136261;
@@ -49,6 +49,10 @@ export default function SecureReader({
   lang,
   blurred = false,
   onViolation,
+  licenseNotice = DEFAULT_LICENSE_NOTICE,
+  licenseMetadata = DEFAULT_LICENSE_METADATA,
+  watermarkText: customWatermarkText = "",
+  footerText: customFooterText = "",
 }) {
   const [shielded, setShielded] = useState(false);
   const localRef = useRef(null);
@@ -57,8 +61,8 @@ export default function SecureReader({
   const emailHash = useMemo(() => simpleHash(userEmail || "guest").slice(0, 8), [userEmail]);
   const issuedAt = useMemo(() => new Date().toISOString(), []);
   const watermarkIdentity = userName || (userEmail ? userEmail.split("@")[0] : "Reader");
-  const watermarkText = `Earnalism Reading Edition · ${watermarkIdentity} · ${issuedAt.slice(0, 10)}`;
-  const footerText = `Earnalism reading copy for ${userName || "Reader"} — Redistribution prohibited`;
+  const watermarkText = customWatermarkText || `Earnalism Reading Edition · ${watermarkIdentity} · ${issuedAt.slice(0, 10)}`;
+  const footerText = customFooterText || `Earnalism reading copy for ${userName || "Reader"} - Redistribution prohibited`;
 
   const report = (eventType, metadata = {}) => {
     countsRef.current[eventType] = (countsRef.current[eventType] || 0) + 1;
@@ -140,7 +144,7 @@ export default function SecureReader({
       onDrop={(event) => block(event, "drop")}
     >
       <svg className="secure-reader__metadata" width="0" height="0" aria-hidden="true" focusable="false">
-        <metadata>{LICENSE_METADATA}</metadata>
+        <metadata>{licenseMetadata}</metadata>
       </svg>
       <div className="secure-reader__watermark" aria-hidden="true">
         {Array.from({ length: 18 }, (_, index) => (
@@ -157,7 +161,7 @@ export default function SecureReader({
         lang={lang}
         role="document"
         aria-label={title}
-        data-license={LICENSE_METADATA}
+        data-license={licenseMetadata}
         data-session={safeSessionId}
         data-email-hash={emailHash}
         dangerouslySetInnerHTML={html ? { __html: html } : undefined}
@@ -165,7 +169,7 @@ export default function SecureReader({
         {!html ? children : null}
       </div>
       <div className="secure-reader__page-footer" aria-hidden="true">{footerText}</div>
-      <p className="secure-reader__legal">{LICENSE_NOTICE}</p>
+      <p className="secure-reader__legal">{licenseNotice}</p>
     </section>
   );
 }

@@ -1728,6 +1728,37 @@ textarea.input-elegant {
   font-family: 'Noto Serif Bengali', serif;
 }
 
+.reader-cover-page {
+  display: grid;
+  place-items: center;
+  min-height: min(68vh, 780px);
+  padding: 0;
+}
+
+.reader-cover-page figure {
+  width: min(100%, 560px);
+  margin: 0;
+}
+
+.reader-cover-page img {
+  display: block;
+  width: 100%;
+  max-height: min(66vh, 760px);
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow: 0 24px 54px rgba(44, 24, 16, 0.16);
+}
+
+.reader-cover-page figcaption {
+  margin-top: 0.8rem;
+  color: var(--reader-muted);
+  font-family: Inter, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .tts-word {
   border-radius: 2px;
   transition: background 150ms ease;
@@ -1911,6 +1942,12 @@ textarea.input-elegant {
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+}
+
+.reader-audio-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+  box-shadow: none;
 }
 
 .reader-stop-button {

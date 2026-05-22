@@ -29,11 +29,11 @@
     "primary_provider": "google",
     "google": {
       "neural2": {
-        "primary": "en-IN-Neural2-D",
+        "primary": "en-IN-Neural2-B",
         "fallback": "en-IN-Neural2-C"
       },
       "wavenet": {
-        "primary": "en-IN-Wavenet-D",
+        "primary": "en-IN-Wavenet-B",
         "fallback": "en-IN-Wavenet-C"
       },
       "rate": "-8%",
