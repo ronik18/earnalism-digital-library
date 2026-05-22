@@ -1097,8 +1097,15 @@ export default function Reader() {
   }, []);
 
   const highlightGeneratedWord = useCallback((globalIndex) => {
+    if (!wordsRef.current.length && contentRef.current) {
+      wordsRef.current = Array.from(contentRef.current.querySelectorAll('.tts-word') || []);
+    }
     wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
-    const current = wordsRef.current.find((word) => Number(word.dataset.word) === globalIndex);
+    let current = wordsRef.current.find((word) => Number(word.dataset.word) === globalIndex);
+    if (!current && contentRef.current) {
+      wordsRef.current = Array.from(contentRef.current.querySelectorAll('.tts-word') || []);
+      current = wordsRef.current.find((word) => Number(word.dataset.word) === globalIndex);
+    }
     if (!current) return;
 
     current.classList.add('active');
