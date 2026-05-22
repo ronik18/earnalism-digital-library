@@ -1048,6 +1048,8 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
             "Draft mode; human review required before publishing.",
         ],
     }
+    if len(upload_object["chapters"]) == 1 and upload_object["chapters"][0].get("title") == "Full Text":
+        upload_object["chapters"][0]["title"] = title or "Full Text"
 
     attribution = normalize_text(book.get("required_attribution", "")).strip()
     if attribution:

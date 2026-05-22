@@ -1,0 +1,18 @@
+{
+  "slug": "book-63afd5e9be",
+  "title": "দেনাপাওনা",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "language": "ben",
+  "provider_used": "sarvam",
+  "fallback_used": false,
+  "fallback_reason": null,
+  "duration_ms": 865733,
+  "total_words": 1861,
+  "highlight_available": true,
+  "chapters": 1,
+  "generated_at": "2026-05-22T17:55:03Z",
+  "voice": "anushka",
+  "pace": 0.82,
+  "characters_billed": 11957,
+  "estimated_cost_usd": 0.0
+}

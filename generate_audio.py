@@ -849,6 +849,59 @@ def sarvam_word_timestamps(wav_path: Path, text_chunk: str, offset_ms: int) -> L
     return words
 
 
+def synthetic_word_timestamps(text_chunk: str, offset_ms: int, chunk_duration_ms: int, language: str) -> List[Dict[str, Any]]:
+    """Create deterministic fallback timings when forced alignment is incomplete.
+
+    Sarvam does not return word boundaries. Bengali forced alignment can miss
+    the tail of a chunk, especially with literary punctuation. A proportional
+    fallback is less exact than alignment, but it keeps highlighting monotonic
+    and prevents the reader from freezing several words at one timestamp.
+    """
+
+    tokens = tokenize_words(text_chunk, language)
+    if not tokens or chunk_duration_ms <= 0:
+        return []
+    weights = [max(1, len(token)) for token in tokens]
+    total = sum(weights)
+    cursor = 0
+    timestamps: List[Dict[str, Any]] = []
+    for index, (token, weight) in enumerate(zip(tokens, weights)):
+        start_ms = offset_ms + int((cursor / total) * chunk_duration_ms)
+        cursor += weight
+        end_ms = offset_ms + int((cursor / total) * chunk_duration_ms)
+        if index == len(tokens) - 1:
+            end_ms = offset_ms + chunk_duration_ms
+        if end_ms <= start_ms:
+            end_ms = start_ms + 80
+        timestamps.append({"word": token, "start_ms": start_ms, "end_ms": end_ms})
+    return timestamps
+
+
+def alignment_is_usable(timestamps: List[Dict[str, Any]], text_chunk: str, offset_ms: int, chunk_duration_ms: int) -> bool:
+    """Reject partial alignments before they become visible reader glitches."""
+
+    expected = len(tokenize_words(text_chunk, "ben"))
+    if expected == 0:
+        return not timestamps
+    if len(timestamps) < max(1, int(expected * 0.9)):
+        return False
+    previous_start = offset_ms
+    zero_or_tiny = 0
+    for item in timestamps:
+        start_ms = int(item.get("start_ms", 0))
+        end_ms = int(item.get("end_ms", 0))
+        if start_ms + 25 < previous_start or end_ms < start_ms:
+            return False
+        if end_ms - start_ms <= 20:
+            zero_or_tiny += 1
+        previous_start = max(previous_start, start_ms)
+    if zero_or_tiny > max(3, int(expected * 0.05)):
+        return False
+    if timestamps and int(timestamps[-1].get("end_ms", 0)) < offset_ms + int(chunk_duration_ms * 0.75):
+        return False
+    return True
+
+
 def google_voice_name(voices: Dict[str, Any], language: str, tier: str, fallback: bool = False) -> str:
     """Resolve a Google voice from voices.json."""
 
@@ -1096,17 +1149,26 @@ def synthesize_sarvam_book(
                 if not alignment_failed:
                     try:
                         timestamps = sarvam_word_timestamps(norm_wav, chunk_text, offset_ms)
+                        if not alignment_is_usable(timestamps, chunk_text, offset_ms, chunk_duration):
+                            log_error(
+                                error_log,
+                                slug,
+                                "sarvam",
+                                "AlignmentWarning",
+                                "forced alignment was incomplete for a Bengali chunk",
+                                "used deterministic proportional word timings for this chunk",
+                            )
+                            timestamps = synthetic_word_timestamps(chunk_text, offset_ms, chunk_duration, "ben")
                     except Exception as exc:
-                        alignment_failed = True
                         log_error(
                             error_log,
                             slug,
                             "sarvam",
                             "AlignmentError",
                             str(exc),
-                            "kept audio, disabled highlight timestamps for this book",
+                            "used deterministic proportional word timings for this chunk",
                         )
-                        all_timestamps = []
+                        timestamps = synthetic_word_timestamps(chunk_text, offset_ms, chunk_duration, "ben")
 
                 if not alignment_failed:
                     all_timestamps.extend(timestamps)
