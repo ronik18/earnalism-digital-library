@@ -547,6 +547,7 @@ export default function Reader() {
   const generatedAudioRef = useRef(null);
   const generatedTimestampsRef = useRef([]);
   const generatedPageEndRef = useRef(null);
+  const generatedHighlightTimerRef = useRef(null);
   const utteranceRef = useRef(null);
   const synthRef = useRef(window.speechSynthesis);
   const lastScrollY = useRef(0);
@@ -567,6 +568,7 @@ export default function Reader() {
       audio.currentTime = 0;
     }
     generatedPageEndRef.current = null;
+    clearInterval(generatedHighlightTimerRef.current);
     clearTimeout(ttsFallbackTimerRef.current);
     clearTimeout(ttsSegmentTimerRef.current);
     setTtsActive(false);
@@ -1248,6 +1250,24 @@ export default function Reader() {
     if (!firstTimestamp) return false;
 
     generatedPageEndRef.current = lastWord;
+    const tickGeneratedHighlight = () => {
+      const audioIndex = timestampIndexAt(timestamps, Math.floor(audio.currentTime * 1000));
+      const pageEnd = generatedPageEndRef.current;
+      if (Number.isFinite(pageEnd) && audioIndex > pageEnd) {
+        audio.pause();
+        generatedPageEndRef.current = null;
+        clearInterval(generatedHighlightTimerRef.current);
+        setGeneratedAudioActive(false);
+        setTtsActive(false);
+        setTtsPaused(false);
+        return false;
+      }
+      if (audioIndex >= currentPageWordOffset) {
+        highlightGeneratedWord(audioIndex);
+        return true;
+      }
+      return false;
+    };
     setTtsHtml(wrapped.html);
     setTotalWords(wrapped.totalWords);
     setGeneratedAudioActive(true);
@@ -1258,7 +1278,11 @@ export default function Reader() {
       window.requestAnimationFrame(() => {
         wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
         audio.currentTime = Math.max(0, (firstTimestamp.start_ms || 0) / 1000);
-        audio.play().catch(() => {
+        audio.play().then(() => {
+          clearInterval(generatedHighlightTimerRef.current);
+          tickGeneratedHighlight();
+          generatedHighlightTimerRef.current = window.setInterval(tickGeneratedHighlight, 140);
+        }).catch(() => {
           setGeneratedAudioActive(false);
           setTtsActive(false);
           setTtsPaused(false);
@@ -1267,7 +1291,7 @@ export default function Reader() {
       });
     });
     return true;
-  }, [currentPageHtml, currentPageWordOffset, generatedAudioAvailable, isContentPage, readerHtml]);
+  }, [currentPageHtml, currentPageWordOffset, generatedAudioAvailable, highlightGeneratedWord, isContentPage, readerHtml]);
 
   const startTTS = useCallback(() => {
     if (!isContentPage) {
@@ -1306,6 +1330,7 @@ export default function Reader() {
 
   const pauseTTS = () => {
     clearTimeout(ttsFallbackTimerRef.current);
+    clearInterval(generatedHighlightTimerRef.current);
     if (generatedAudioActive) {
       generatedAudioRef.current?.pause?.();
     } else {
@@ -1352,6 +1377,7 @@ export default function Reader() {
 
   const handleGeneratedAudioEnded = useCallback(() => {
     generatedPageEndRef.current = null;
+    clearInterval(generatedHighlightTimerRef.current);
     setGeneratedAudioActive(false);
     setTtsActive(false);
     setTtsPaused(false);
