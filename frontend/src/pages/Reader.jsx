@@ -1112,7 +1112,6 @@ export default function Reader() {
 
     current.classList.add('active');
     current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    setTtsWordIndex(globalIndex);
   }, []);
 
   const wordIndexFromCharIndex = useCallback((charIndex) => {
