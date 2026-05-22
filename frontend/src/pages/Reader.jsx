@@ -1277,11 +1277,11 @@ export default function Reader() {
       window.requestAnimationFrame(() => {
         wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
         audio.currentTime = Math.max(0, (firstTimestamp.start_ms || 0) / 1000);
-        audio.play().then(() => {
+        clearInterval(generatedHighlightTimerRef.current);
+        tickGeneratedHighlight();
+        generatedHighlightTimerRef.current = window.setInterval(tickGeneratedHighlight, 140);
+        audio.play().catch(() => {
           clearInterval(generatedHighlightTimerRef.current);
-          tickGeneratedHighlight();
-          generatedHighlightTimerRef.current = window.setInterval(tickGeneratedHighlight, 140);
-        }).catch(() => {
           setGeneratedAudioActive(false);
           setTtsActive(false);
           setTtsPaused(false);
