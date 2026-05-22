@@ -1346,9 +1346,9 @@ export default function Reader() {
   }, [currentPageWordOffset, highlightGeneratedWord]);
 
   const handleGeneratedAudioTimeUpdate = useCallback(() => {
-    if (!generatedAudioActive || ttsPaused) return;
+    if (ttsPaused) return;
     syncGeneratedAudioHighlight();
-  }, [generatedAudioActive, syncGeneratedAudioHighlight, ttsPaused]);
+  }, [syncGeneratedAudioHighlight, ttsPaused]);
 
   const handleGeneratedAudioEnded = useCallback(() => {
     generatedPageEndRef.current = null;
@@ -1359,7 +1359,7 @@ export default function Reader() {
   }, []);
 
   useEffect(() => {
-    if (!generatedAudioActive || ttsPaused) return undefined;
+    if (!ttsActive || ttsPaused) return undefined;
     let timerId = 0;
     const tick = () => {
       syncGeneratedAudioHighlight();
@@ -1367,7 +1367,7 @@ export default function Reader() {
     };
     tick();
     return () => window.clearTimeout(timerId);
-  }, [generatedAudioActive, syncGeneratedAudioHighlight, ttsPaused]);
+  }, [syncGeneratedAudioHighlight, ttsActive, ttsPaused]);
 
   const handleVoiceToggle = () => {
     if (!ttsActive) startTTS();
