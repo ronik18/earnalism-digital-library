@@ -1099,12 +1099,12 @@ export default function Reader() {
   }, []);
 
   const highlightGeneratedWord = useCallback((globalIndex) => {
-    if (!wordsRef.current.length && contentRef.current) {
+    if (contentRef.current) {
       wordsRef.current = Array.from(contentRef.current.querySelectorAll('.tts-word') || []);
     }
     wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
     let current = wordsRef.current.find((word) => Number(word.dataset.word) === globalIndex);
-    if (!current && contentRef.current) {
+    if ((!current || !current.isConnected) && contentRef.current) {
       wordsRef.current = Array.from(contentRef.current.querySelectorAll('.tts-word') || []);
       current = wordsRef.current.find((word) => Number(word.dataset.word) === globalIndex);
     }
