@@ -1010,8 +1010,9 @@ function ChaptersManager({ slug }) {
   const saveChapter = async (data, cid) => {
     setBusy(true);
     try {
-      if (cid) await api.put(`/admin/books/${slug}/chapters/${cid}`, { title: data.title, content: data.content });
-      else await api.post(`/admin/books/${slug}/chapters`, { title: data.title, content: data.content });
+      const payload = { title: data.title, content: data.content, is_preview: data.is_preview === true };
+      if (cid) await api.put(`/admin/books/${slug}/chapters/${cid}`, payload);
+      else await api.post(`/admin/books/${slug}/chapters`, payload);
       toast.success("Chapter saved");
       setEditing(null);
       load();
@@ -1064,6 +1065,7 @@ function ChaptersManager({ slug }) {
             <li key={c.id} className="flex items-center gap-3 p-3 border border-brand-soft rounded-lg" data-testid={`chapter-row-${c.id}`}>
               <span className="italic-accent text-gold-deep w-10 shrink-0 text-center">{String(i + 1).padStart(2, "0")}</span>
               <span className="flex-1 min-w-0 font-serif-display text-[1.05rem] text-burgundy truncate">{c.title}</span>
+              {c.is_preview && <span className="hidden sm:inline text-[0.68rem] uppercase tracking-[0.14em] text-gold-deep">Preview</span>}
               <ProcessingBadge status={processingStatus(c)} />
               {Array.isArray(c.processing_warnings) && c.processing_warnings.length > 0 && (
                 <span className="hidden sm:inline text-[0.72rem] text-amber-800" title={c.processing_warnings.join("\n")}>Warnings</span>
@@ -1100,6 +1102,7 @@ function ChaptersManager({ slug }) {
 function ChapterEditor({ chapter, bookId, onCancel, onSave, onUploaded, busy }) {
   const [title, setTitle] = useState(chapter.title || "");
   const [content, setContent] = useState(chapter.content || "");
+  const [isPreview, setIsPreview] = useState(chapter.is_preview === true);
   const previewHasHtml = hasHtmlTags(content);
   const previewHtml = useMemo(() => previewHasHtml ? sanitizePreviewHtml(content) : "", [content, previewHasHtml]);
   const previewIsBengali = containsBengaliText(`${title} ${content}`);
@@ -1123,6 +1126,15 @@ function ChapterEditor({ chapter, bookId, onCancel, onSave, onUploaded, busy }) 
         <Field label="Chapter title" wide>
           <input className="input-elegant" value={title} onChange={(e) => setTitle(e.target.value)} data-testid="chapter-title" />
         </Field>
+        <label className="mt-3 inline-flex items-center gap-2 text-[0.8rem] text-charcoal-soft">
+          <input
+            type="checkbox"
+            checked={isPreview}
+            onChange={(e) => setIsPreview(e.target.checked)}
+            className="h-4 w-4 accent-[var(--brand-burgundy)]"
+          />
+          Free preview
+        </label>
         {!chapter._new && (
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <ProcessingBadge status={processingStatus(chapter)} />
@@ -1190,7 +1202,7 @@ function ChapterEditor({ chapter, bookId, onCancel, onSave, onUploaded, busy }) 
         <div className="mt-6 flex justify-end gap-3">
           <button onClick={onCancel} className="btn-secondary">Cancel</button>
           <button
-            onClick={() => onSave({ title: title.trim(), content })}
+            onClick={() => onSave({ title: title.trim(), content, is_preview: isPreview })}
             disabled={busy || !title.trim()}
             className="btn-primary disabled:opacity-60"
             data-testid="save-chapter"

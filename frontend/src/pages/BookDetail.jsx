@@ -55,6 +55,8 @@ export default function BookDetail() {
   );
 
   const chapterCount = (book.chapters || []).length;
+  const hasExplicitPreview = (book.chapters || []).some((chapter) => chapter.is_preview === true);
+  const hasFreePreview = hasExplicitPreview || chapterCount > 1;
 
   return (
     <div data-testid="book-page">
@@ -108,7 +110,9 @@ export default function BookDetail() {
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center" data-testid="book-actions">
-            <Link to={`/reader/${book.slug}`} className="btn-secondary justify-center" data-testid="read-preview">Read Preview</Link>
+            {hasFreePreview && (
+              <Link to={`/reader/${book.slug}`} className="btn-secondary justify-center" data-testid="read-preview">Read Preview</Link>
+            )}
             <Link to={`/reader/${book.slug}`} className="btn-primary justify-center" data-testid="start-reading">Start Reading</Link>
             {book.buy_url ? (
               <a href={book.buy_url} target="_blank" rel="noreferrer" className="btn-primary justify-center" data-testid="buy-reading-time">Buy Reading Time</a>

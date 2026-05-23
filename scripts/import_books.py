@@ -759,6 +759,7 @@ def detect_chapters(text: str, allow_title_case_headings: bool = False) -> tuple
             "order": 1,
             "title": "Full Text",
             "content": text_to_reader_html(text),
+            "is_preview": False,
             "summary": chapter_summary(text),
             "warnings": ["Fallback chapter created because no confident headings were detected."],
         }], warnings
@@ -793,6 +794,7 @@ def detect_chapters(text: str, allow_title_case_headings: bool = False) -> tuple
             "order": len(chapters) + 1,
             "title": title,
             "content": text_to_reader_html(body),
+            "is_preview": False,
             "summary": chapter_summary(body),
             "warnings": [],
         })
@@ -1184,6 +1186,7 @@ def upload_book(result: PreparedBook, api_url: str, token: str, update_existing:
         api_json("POST", f"{api_url}/admin/books/{slug}/chapters", {
             "title": chapter.get("title", "Untitled"),
             "content": chapter.get("content", ""),
+            "is_preview": bool(chapter.get("is_preview") is True),
         }, token)
     result.upload_result = {
         "id": created.get("id", ""),

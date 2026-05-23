@@ -1150,6 +1150,7 @@ class Chapter(BaseModel):
     title: str
     content: str = ""
     order: int = 0
+    is_preview: bool = False
     has_images: bool = False
     image_count: int = 0
     word_count: int = 0
@@ -1165,6 +1166,7 @@ class Chapter(BaseModel):
 class ChapterIn(BaseModel):
     title: str
     content: str = ""
+    is_preview: bool = False
 
 class ChapterReorderIn(BaseModel):
     ids: List[str]
@@ -1537,15 +1539,26 @@ async def _migrate_wallet_transactions_to_ledger() -> None:
         )
 
 
+def _free_preview_chapter_ids(book: dict) -> set[str]:
+    """Return chapter ids that should be free previews.
+
+    Existing chaptered books keep the historical first-chapter preview behavior.
+    Single full-text stories are paid by default unless a chapter is explicitly
+    marked as a preview, so a whole short story is not accidentally exposed.
+    """
+    chapters = sorted(book.get("chapters") or [], key=lambda c: c.get("order", 0))
+    explicit = {c.get("id") for c in chapters if c.get("is_preview") is True and c.get("id")}
+    if explicit:
+        return explicit
+    if len(chapters) > 1 and chapters[0].get("id"):
+        return {chapters[0]["id"]}
+    return set()
+
+
 def _is_free_preview_chapter(book: dict, chapter_id: Optional[str]) -> bool:
-    """Chapter with order==0 (the first chapter) is always free preview."""
     if not chapter_id:
         return False
-    chapters = book.get("chapters") or []
-    if not chapters:
-        return False
-    sorted_ch = sorted(chapters, key=lambda c: c.get("order", 0))
-    return sorted_ch[0].get("id") == chapter_id
+    return chapter_id in _free_preview_chapter_ids(book)
 
 
 def _strip_paid_chapter_content(book: dict) -> dict:
@@ -1561,12 +1574,11 @@ def _strip_paid_chapter_content(book: dict) -> dict:
         out = dict(book)
         out.pop("rights_metadata", None)
         return out
-    sorted_ch = sorted(chapters, key=lambda c: c.get("order", 0))
-    preview_id = sorted_ch[0].get("id") if sorted_ch else None
+    preview_ids = _free_preview_chapter_ids(book)
     masked = []
     for c in chapters:
         c2 = dict(c)
-        if c.get("id") != preview_id:
+        if c.get("id") not in preview_ids:
             c2["content"] = ""
         masked.append(c2)
     out = dict(book)
@@ -2561,6 +2573,7 @@ async def admin_add_chapter(slug: str, payload: ChapterIn, _=Depends(require_adm
         title=title,
         content=content,
         order=next_order,
+        is_preview=payload.is_preview,
         processing_status="ready",
         processing_warnings=warnings,
         updated_at=now_iso(),
@@ -2593,6 +2606,7 @@ async def admin_update_chapter(slug: str, cid: str, payload: ChapterIn, _=Depend
         {"$set": {
             "chapters.$.title": title,
             "chapters.$.content": content,
+            "chapters.$.is_preview": payload.is_preview,
             "chapters.$.processing_status": "ready",
             "chapters.$.processing_error": "",
             "chapters.$.processing_warnings": warnings,
@@ -3540,7 +3554,7 @@ async def reader_get_chapter(
     book_query = {"slug": slug} if is_admin_preview else {"slug": slug, "is_published": True}
     book_meta = await db.books.find_one(
         book_query,
-        {"_id": 0, "chapters.id": 1, "chapters.title": 1, "chapters.order": 1},
+        {"_id": 0, "chapters.id": 1, "chapters.title": 1, "chapters.order": 1, "chapters.is_preview": 1},
     )
     if not book_meta:
         raise HTTPException(status_code=404, detail="Book not found")
@@ -3553,8 +3567,9 @@ async def reader_get_chapter(
         "id": target_meta["id"],
         "title": target_meta.get("title", ""),
         "order": target_meta.get("order", 0),
+        "is_preview": target_meta.get("is_preview", False),
     }
-    is_preview = chapters[0].get("id") == chapter_id
+    is_preview = _is_free_preview_chapter(book_meta, chapter_id)
 
     async def unlocked_chapter_response(preview: bool):
         content_doc = await db.books.find_one(
@@ -3565,7 +3580,7 @@ async def reader_get_chapter(
         return {
             "locked": False,
             "is_preview": preview,
-            "chapter": {**meta, "content": target.get("content", "")},
+            "chapter": {**meta, "is_preview": preview, "content": target.get("content", "")},
         }
 
     # Free preview is open to everyone — no auth, no deduction.
