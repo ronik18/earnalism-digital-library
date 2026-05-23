@@ -6,7 +6,7 @@
 
 Architecture:
 
-- **Bengali primary:** Sarvam AI TTS with `bulbul:v2`, tuned through `voices.json`.
+- **Bengali primary:** configurable in `voices.json`. Sarvam AI TTS with `bulbul:v2` is available for literary narration; Google Bengali Wavenet can be selected when deterministic SSML word timestamps are preferred.
 - **Bengali fallback:** Google Cloud Text-to-Speech `bn-IN` voices.
 - **English primary:** Google Cloud Text-to-Speech `en-IN` Neural2.
 - **English fallback:** Google WaveNet `en-IN`.
@@ -207,6 +207,10 @@ python generate_audio.py \
   }
 }
 ```
+
+For Bengali batches where low-latency reader highlighting is more important than Sarvam voice style, set `"primary_provider": "google"` in the Bengali voice config. The generator will use the same `{slug}_timestamps.json` schema and skip future reruns when `{slug}.mp3` already exists.
+
+When Google credentials are not available for an operator machine, set `ENABLE_GOOGLE_FALLBACK=0` before a Sarvam batch. A Sarvam outage will then skip the affected book with a clear log entry instead of spending minutes on a fallback that cannot authenticate.
 
 Sarvam pace guide:
 

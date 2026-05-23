@@ -279,6 +279,15 @@ def validate_environment(dry_run: bool) -> None:
         sys.exit(1)
 
 
+def env_truthy(name: str, default: bool = False) -> bool:
+    """Read simple feature flags without exposing environment values."""
+
+    value = os.environ.get(name)
+    if value is None:
+        return default
+    return str(value).strip().lower() in {"1", "true", "yes", "on"}
+
+
 def ensure_ffmpeg_available() -> None:
     """Fail early if audio normalization/stitching tools are not installed."""
 
@@ -1179,6 +1188,9 @@ def synthesize_sarvam_book(
 
     except Exception as exc:
         reason = f"Sarvam failed: {exc}"
+        if not env_truthy("ENABLE_GOOGLE_FALLBACK", True):
+            log_error(error_log, slug, "sarvam", "APIError", str(exc), "skipped book; Google fallback disabled")
+            raise RuntimeError(f"{reason}; Google fallback disabled")
         log_error(error_log, slug, "sarvam", "APIError", str(exc), "fell back to google bn-IN")
         return synthesize_google_book(
             book,
@@ -1372,7 +1384,16 @@ def dry_run_book(
 ) -> Dict[str, Any]:
     """Print a dry-run preview with zero provider calls."""
 
-    if language == "ben":
+    if language == "ben" and str(voices["ben"].get("primary_provider", "sarvam")).lower() == "google":
+        provider = "google"
+        voice = google_voice_name(voices, "ben", voice_tier, False)
+        body = build_google_body(text[:1200], "ben")
+        marked, _words = insert_word_marks(body)
+        preview = wrap_google_ssml(marked, voice, "ben", voices)[:300]
+        characters = int(len(text) * 1.15)
+        price = GOOGLE_NEURAL2_COST_PER_1K if voice_tier == "neural2" else GOOGLE_WAVENET_COST_PER_1K
+        estimated_cost = (characters / 1000) * price
+    elif language == "ben":
         provider = "sarvam"
         voice = str(voices["ben"]["sarvam"]["speaker"])
         preview = preprocess_sarvam_text(text)[:300]
@@ -1494,7 +1515,20 @@ def process_book(
 
     with tempfile.TemporaryDirectory(prefix=f"earnalism_audio_{slug}_") as tmp:
         temp_dir = Path(tmp)
-        if language == "ben":
+        if language == "ben" and str(voices["ben"].get("primary_provider", "sarvam")).lower() == "google":
+            result, timestamps = synthesize_google_book(
+                book,
+                slug,
+                text,
+                "ben",
+                voices,
+                args.voice_tier,
+                output_path,
+                temp_dir,
+                error_log,
+                forced_fallback_reason="configured Bengali primary_provider=google for deterministic word timing",
+            )
+        elif language == "ben":
             result, timestamps = synthesize_sarvam_book(
                 book,
                 slug,

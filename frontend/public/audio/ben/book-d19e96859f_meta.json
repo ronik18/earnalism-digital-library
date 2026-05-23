@@ -1,0 +1,18 @@
+{
+  "slug": "book-d19e96859f",
+  "title": "গিন্নি",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "language": "ben",
+  "provider_used": "sarvam",
+  "fallback_used": false,
+  "fallback_reason": null,
+  "duration_ms": 465154,
+  "total_words": 998,
+  "highlight_available": true,
+  "chapters": 1,
+  "generated_at": "2026-05-23T20:47:37Z",
+  "voice": "anushka",
+  "pace": 0.82,
+  "characters_billed": 6459,
+  "estimated_cost_usd": 0.0
+}

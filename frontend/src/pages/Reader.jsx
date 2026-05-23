@@ -341,6 +341,64 @@ function countHighlightUnitsInText(text = '') {
   }, 0);
 }
 
+function normalizeAudioWord(value = '') {
+  return String(value || '')
+    .normalize('NFC')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\u0980-\u09FF]+/gu, '')
+    .trim();
+}
+
+function highlightWordsFromHtml(html = '', limit = 32) {
+  if (typeof document === 'undefined') return [];
+  const div = document.createElement('div');
+  div.innerHTML = html || '';
+  const words = [];
+  const tokens = div.textContent?.match(/\S+/g) || [];
+
+  for (const token of tokens) {
+    for (const part of highlightTokenParts(token)) {
+      if (!part.highlight) continue;
+      const normalized = normalizeAudioWord(part.text);
+      if (normalized) words.push(normalized);
+      if (words.length >= limit) return words;
+    }
+  }
+
+  return words;
+}
+
+function audioWordFromTimestamp(item = {}) {
+  return normalizeAudioWord(item.word || item.text || item.value || '');
+}
+
+function findTimestampWordOffset(timestamps = [], html = '') {
+  const visibleWords = highlightWordsFromHtml(html, 24);
+  if (!visibleWords.length || !timestamps.length) return 0;
+
+  const audioWords = timestamps.slice(0, 96).map(audioWordFromTimestamp);
+  const windowSize = Math.min(12, visibleWords.length);
+  const minimumScore = Math.max(4, Math.ceil(windowSize * 0.7));
+  let bestOffset = 0;
+  let bestScore = -1;
+
+  for (let offset = 0; offset < audioWords.length; offset += 1) {
+    let score = 0;
+    for (let index = 0; index < windowSize; index += 1) {
+      if (audioWords[offset + index] && audioWords[offset + index] === visibleWords[index]) {
+        score += 1;
+      }
+    }
+    if (score > bestScore) {
+      bestScore = score;
+      bestOffset = offset;
+    }
+    if (score === windowSize) break;
+  }
+
+  return bestScore >= minimumScore ? bestOffset : 0;
+}
+
 function readerCoverUrl(book = {}, kind = 'front') {
   const src = kind === 'back'
     ? (book?.back_cover_image_url || book?.back_cover_url || '')
@@ -357,15 +415,12 @@ function referencePageKind(html = '') {
 function audioAssetSlugForBook(book, bookId) {
   const configured = book?.audio_slug || book?.audio_asset_slug || book?.audioAssetSlug;
   if (configured) return configured;
-  if (bookId === 'book-d19e96859f' || book?.title === 'গিন্নি') return 'ginni';
   if (bookId === 'bharat-at-the-crossroads' || /bharat at the crossroads/i.test(book?.title || '')) return 'bharat-at-the-crossroads';
   return book?.slug || bookId || '';
 }
 
 function hasLegacyGeneratedAudioAsset(book = {}, bookId = '') {
-  return bookId === 'book-d19e96859f'
-    || book?.title === 'গিন্নি'
-    || bookId === 'bharat-at-the-crossroads'
+  return bookId === 'bharat-at-the-crossroads'
     || /bharat at the crossroads/i.test(book?.title || '');
 }
 
@@ -606,8 +661,8 @@ export default function Reader() {
   const contentRef = useRef(null);
   const generatedAudioRef = useRef(null);
   const generatedTimestampsRef = useRef([]);
+  const generatedAudioWordOffsetRef = useRef(0);
   const generatedPageEndRef = useRef(null);
-  const generatedHighlightTimerRef = useRef(null);
   const utteranceRef = useRef(null);
   const synthRef = useRef(window.speechSynthesis);
   const lastScrollY = useRef(0);
@@ -628,7 +683,6 @@ export default function Reader() {
       audio.currentTime = 0;
     }
     generatedPageEndRef.current = null;
-    clearInterval(generatedHighlightTimerRef.current);
     clearTimeout(ttsFallbackTimerRef.current);
     clearTimeout(ttsSegmentTimerRef.current);
     setTtsActive(false);
@@ -972,15 +1026,18 @@ export default function Reader() {
     [book, bookId],
   );
   const generatedAudioLang = isBengali ? 'ben' : 'en';
+  const generatedAudioUrl = generatedAudioSlug ? `/audio/${generatedAudioLang}/${generatedAudioSlug}.mp3` : '';
+  const generatedTimestampsUrl = generatedAudioSlug ? `/audio/${generatedAudioLang}/${generatedAudioSlug}_timestamps.json` : '';
 
   useEffect(() => {
     let cancelled = false;
     generatedTimestampsRef.current = [];
+    generatedAudioWordOffsetRef.current = 0;
     setGeneratedAudioAvailable(false);
     setGeneratedAudioActive(false);
-    if (!generatedAudioSlug || !processedHtml || lockedState) return undefined;
+    if (!generatedTimestampsUrl || !readerHtml || lockedState) return undefined;
 
-    fetch(`/audio/${generatedAudioLang}/${generatedAudioSlug}_timestamps.json`, { cache: 'force-cache' })
+    fetch(generatedTimestampsUrl, { cache: 'force-cache' })
       .then((response) => {
         if (!response.ok) throw new Error('Generated audio timestamps unavailable');
         return response.json();
@@ -989,12 +1046,14 @@ export default function Reader() {
         if (cancelled) return;
         if (Array.isArray(timestamps) && timestamps.length > 0) {
           generatedTimestampsRef.current = timestamps;
+          generatedAudioWordOffsetRef.current = findTimestampWordOffset(timestamps, readerHtml);
           setGeneratedAudioAvailable(true);
         }
       })
       .catch(() => {
         if (!cancelled) {
           generatedTimestampsRef.current = [];
+          generatedAudioWordOffsetRef.current = 0;
           setGeneratedAudioAvailable(false);
         }
       });
@@ -1002,7 +1061,14 @@ export default function Reader() {
     return () => {
       cancelled = true;
     };
-  }, [generatedAudioLang, generatedAudioSlug, lockedState, processedHtml]);
+  }, [generatedTimestampsUrl, lockedState, readerHtml]);
+
+  useEffect(() => {
+    const audio = generatedAudioRef.current;
+    if (!audio || !generatedAudioAvailable || !generatedAudioUrl || lockedState) return;
+    audio.preload = 'metadata';
+    audio.load();
+  }, [generatedAudioAvailable, generatedAudioUrl, lockedState]);
 
   useEffect(() => {
     setTtsHtml('');
@@ -1306,34 +1372,42 @@ export default function Reader() {
     setTtsPaused(false);
   }, [buildUtterance]);
 
+  const primeGeneratedAudio = useCallback(() => {
+    const audio = generatedAudioRef.current;
+    if (!audio || !generatedAudioAvailable || !generatedAudioUrl) return;
+    audio.preload = 'auto';
+    if (audio.readyState === 0) audio.load();
+  }, [generatedAudioAvailable, generatedAudioUrl]);
+
   const startGeneratedAudio = useCallback(() => {
     const audio = generatedAudioRef.current;
     const timestamps = generatedTimestampsRef.current || [];
     const pageHtml = currentPageHtml || readerHtml;
     if (!isContentPage || !audio || !generatedAudioAvailable || !timestamps.length || !pageHtml) return false;
 
+    primeGeneratedAudio();
     synthRef.current?.cancel?.();
     const wrapped = wrapWordsInSpans(pageHtml, currentPageWordOffset);
+    const audioWordOffset = generatedAudioWordOffsetRef.current || 0;
     const firstWord = currentPageWordOffset;
     const lastWord = currentPageWordOffset + Math.max(0, wrapped.totalWords - 1);
-    const firstTimestamp = timestamps[firstWord];
+    const firstTimestamp = timestamps[firstWord + audioWordOffset];
     if (!firstTimestamp) return false;
 
-    generatedPageEndRef.current = lastWord;
+    generatedPageEndRef.current = lastWord + audioWordOffset;
     const tickGeneratedHighlight = () => {
       const audioIndex = timestampIndexAt(timestamps, Math.floor(audio.currentTime * 1000));
       const pageEnd = generatedPageEndRef.current;
       if (Number.isFinite(pageEnd) && audioIndex > pageEnd) {
         audio.pause();
         generatedPageEndRef.current = null;
-        clearInterval(generatedHighlightTimerRef.current);
         setGeneratedAudioActive(false);
         setTtsActive(false);
         setTtsPaused(false);
         return false;
       }
-      if (audioIndex >= currentPageWordOffset) {
-        highlightGeneratedWord(audioIndex);
+      if (audioIndex >= currentPageWordOffset + audioWordOffset) {
+        highlightGeneratedWord(audioIndex - audioWordOffset);
         return true;
       }
       return false;
@@ -1348,11 +1422,8 @@ export default function Reader() {
       window.requestAnimationFrame(() => {
         wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
         audio.currentTime = Math.max(0, (firstTimestamp.start_ms || 0) / 1000);
-        clearInterval(generatedHighlightTimerRef.current);
         tickGeneratedHighlight();
-        generatedHighlightTimerRef.current = window.setInterval(tickGeneratedHighlight, 140);
         audio.play().catch(() => {
-          clearInterval(generatedHighlightTimerRef.current);
           setGeneratedAudioActive(false);
           setTtsActive(false);
           setTtsPaused(false);
@@ -1361,7 +1432,7 @@ export default function Reader() {
       });
     });
     return true;
-  }, [currentPageHtml, currentPageWordOffset, generatedAudioAvailable, highlightGeneratedWord, isContentPage, readerHtml]);
+  }, [currentPageHtml, currentPageWordOffset, generatedAudioAvailable, highlightGeneratedWord, isContentPage, primeGeneratedAudio, readerHtml]);
 
   const startTTS = useCallback(() => {
     if (!isContentPage) {
@@ -1404,7 +1475,6 @@ export default function Reader() {
 
   const pauseTTS = () => {
     clearTimeout(ttsFallbackTimerRef.current);
-    clearInterval(generatedHighlightTimerRef.current);
     if (generatedAudioActive) {
       generatedAudioRef.current?.pause?.();
     } else {
@@ -1428,6 +1498,7 @@ export default function Reader() {
     if (!audio || !timestamps.length) return false;
 
     const index = timestampIndexAt(timestamps, Math.floor(audio.currentTime * 1000));
+    const audioWordOffset = generatedAudioWordOffsetRef.current || 0;
     const pageEnd = generatedPageEndRef.current;
     if (Number.isFinite(pageEnd) && index > pageEnd) {
       audio.pause();
@@ -1437,8 +1508,8 @@ export default function Reader() {
       setTtsPaused(false);
       return false;
     }
-    if (index >= currentPageWordOffset) {
-      highlightGeneratedWord(index);
+    if (index >= currentPageWordOffset + audioWordOffset) {
+      highlightGeneratedWord(index - audioWordOffset);
       return true;
     }
     return false;
@@ -1451,7 +1522,6 @@ export default function Reader() {
 
   const handleGeneratedAudioEnded = useCallback(() => {
     generatedPageEndRef.current = null;
-    clearInterval(generatedHighlightTimerRef.current);
     setGeneratedAudioActive(false);
     setTtsActive(false);
     setTtsPaused(false);
@@ -1459,7 +1529,7 @@ export default function Reader() {
   }, []);
 
   useEffect(() => {
-    if (!ttsActive || ttsPaused) return undefined;
+    if (!generatedAudioActive || ttsPaused) return undefined;
     let timerId = 0;
     const tick = () => {
       syncGeneratedAudioHighlight();
@@ -1467,7 +1537,7 @@ export default function Reader() {
     };
     tick();
     return () => window.clearTimeout(timerId);
-  }, [syncGeneratedAudioHighlight, ttsActive, ttsPaused]);
+  }, [generatedAudioActive, syncGeneratedAudioHighlight, ttsPaused]);
 
   const handleVoiceToggle = () => {
     if (!ttsActive) startTTS();
@@ -1662,8 +1732,8 @@ export default function Reader() {
       {generatedAudioSlug && (
         <audio
           ref={generatedAudioRef}
-          src={generatedAudioAvailable ? `/audio/${generatedAudioLang}/${generatedAudioSlug}.mp3` : undefined}
-          preload="none"
+          src={generatedAudioAvailable ? generatedAudioUrl : undefined}
+          preload={generatedAudioAvailable ? 'metadata' : 'none'}
           onTimeUpdate={handleGeneratedAudioTimeUpdate}
           onEnded={handleGeneratedAudioEnded}
           style={{ display: 'none' }}
@@ -1860,7 +1930,16 @@ export default function Reader() {
             </div>
           ) : (
             <div className="reader-audio-control">
-              <button type="button" onClick={handleVoiceToggle} disabled={audioDisabledForPage} className="reader-audio-button" aria-label={voiceButtonLabel}>
+              <button
+                type="button"
+                onClick={handleVoiceToggle}
+                onMouseEnter={primeGeneratedAudio}
+                onFocus={primeGeneratedAudio}
+                onTouchStart={primeGeneratedAudio}
+                disabled={audioDisabledForPage}
+                className="reader-audio-button"
+                aria-label={voiceButtonLabel}
+              >
                 {ttsActive && !ttsPaused ? (
                   <>
                     <Pause size={17} />
