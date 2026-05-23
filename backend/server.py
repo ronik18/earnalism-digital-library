@@ -4160,12 +4160,15 @@ app.add_middleware(
 
 # ---------- Seed ----------
 SEED_CATEGORIES = [
-    {"slug": "business", "name": "Business & Entrepreneurship", "description": "Disciplined founder reads on building, growing, and sustaining ventures.", "order": 1, "image_url": "https://images.unsplash.com/photo-1769184614794-f6e910de6128?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGFyY2hpdGVjdHVyZSUyMGdvbGQlMjB3YXJtfGVufDB8fHx8MTc3NzYxNzE5MHww&ixlib=rb-4.1.0&q=85"},
-    {"slug": "self-growth", "name": "Self-Growth", "description": "Quiet, deliberate books for the inner architect.", "order": 2, "image_url": "https://images.unsplash.com/photo-1631737859676-20e3d0a25f01?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwyfHxjYWxtJTIwc2lsayUyMGZhYnJpYyUyMGZsb3dpbmclMjBpdm9yeXxlbnwwfHx8fDE3Nzc2MTcxOTB8MA&ixlib=rb-4.1.0&q=85"},
-    {"slug": "literature", "name": "Literature", "description": "Timeless prose, modern voices, and stories that linger.", "order": 3, "image_url": "https://images.unsplash.com/photo-1604778561734-cdfff7bb3c3b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxhbnRpcXVlJTIwYm9vayUyMHBhZ2VzJTIwbWFjcm8lMjBwaG90b2dyYXBoeXxlbnwwfHx8fDE3Nzc2MTcxNzd8MA&ixlib=rb-4.1.0&q=85"},
-    {"slug": "spirituality", "name": "Spirituality", "description": "Reflections that return the reader to themselves.", "order": 4, "image_url": "https://images.unsplash.com/photo-1774485423141-a63a49ae8df7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2ODh8MHwxfHNlYXJjaHw0fHxjYWxtJTIwbWluaW1hbCUyMGFic3RyYWN0JTIwd2FybSUyMHRleHR1cmV8ZW58MHx8fHwxNzc3NjE3MTc3fDA&ixlib=rb-4.1.0&q=85"},
-    {"slug": "bengali-reading", "name": "Bengali Reading", "description": "A devoted shelf for Bengali literature and thought.", "order": 5, "image_url": "https://images.unsplash.com/photo-1644150568283-d2c0b31cd703?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHx0ZXJyYWNvdHRhJTIwYXJ0JTIwdGV4dHVyZSUyMG1hY3JvfGVufDB8fHx8MTc3NzYxNzE5MHww&ixlib=rb-4.1.0&q=85"},
-    {"slug": "technology", "name": "Technology", "description": "Books on software, AI, data, digital systems, product thinking, and the future of work.", "order": 6, "image_url": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?crop=entropy&cs=srgb&fm=jpg&w=1600&q=85"},
+    {"slug": "business", "name": "Business & Entrepreneurship", "description": "Founder reads on building, growing, and sustaining ventures.", "order": 1, "image_url": "/assets/shelves/business.jpg"},
+    {"slug": "technology", "name": "Technology & AI", "description": "Software, AI, data, digital systems, product thinking, and the future of work.", "order": 2, "image_url": "/assets/shelves/technology.jpg"},
+    {"slug": "history-strategy", "name": "History & Strategy", "description": "Modern history, geopolitics, statecraft, diplomacy, and strategic thought.", "order": 3, "image_url": "/assets/shelves/history-politics.jpg"},
+    {"slug": "bengali-classics", "name": "Bengali Classics", "description": "Classic Bengali literature and short fiction in clean digital editions.", "order": 4, "image_url": "/assets/shelves/bengali.jpg"},
+    {"slug": "classic-literature", "name": "Classic Literature", "description": "Enduring novels and literary works prepared for focused reading.", "order": 5, "image_url": "/assets/shelves/literature.jpg"},
+    {"slug": "children-classics", "name": "Children's Classics", "description": "Beloved classic stories for younger readers and lifelong rereading.", "order": 6, "image_url": "/assets/shelves/literature.jpg"},
+    {"slug": "adventure", "name": "Adventure", "description": "Survival, journeys, and high-stakes stories of movement and courage.", "order": 7, "image_url": "/assets/shelves/literature.jpg"},
+    {"slug": "science-fiction", "name": "Science Fiction", "description": "Speculative classics about invention, time, society, and possible futures.", "order": 8, "image_url": "/assets/shelves/technology.jpg"},
+    {"slug": "gothic-fiction", "name": "Gothic Fiction", "description": "Atmospheric classics of fear, invention, mystery, and moral tension.", "order": 9, "image_url": "/assets/shelves/literature.jpg"},
 ]
 
 SEED_TECH_BOOK = {
