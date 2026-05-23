@@ -3,6 +3,16 @@ import { API, USER_TOKEN_KEY } from "../lib/api";
 
 const DEFAULT_LICENSE_NOTICE = "This Earnalism reading copy is provided for lawful personal reading. Do not redistribute, scrape, or reproduce the platform-rendered edition without permission. Public-domain source texts remain subject to their applicable rights status.";
 const DEFAULT_LICENSE_METADATA = "Earnalism - Platform Reading Edition";
+const SERVER_SECURITY_EVENTS = new Set([
+  "right_click",
+  "copy",
+  "cut",
+  "print",
+  "print_screen",
+  "drag",
+  "drop",
+  "blocked_shortcut",
+]);
 
 function simpleHash(value = "") {
   let hash = 2166136261;
@@ -67,6 +77,7 @@ export default function SecureReader({
   const report = (eventType, metadata = {}) => {
     countsRef.current[eventType] = (countsRef.current[eventType] || 0) + 1;
     onViolation?.(eventType, countsRef.current);
+    if (!SERVER_SECURITY_EVENTS.has(eventType)) return;
     sendSecurityEvent({
       session_id: safeSessionId,
       event_type: eventType,

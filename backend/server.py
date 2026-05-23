@@ -91,6 +91,12 @@ USER_REFRESH_IDLE_MINUTES = _env_int("USER_REFRESH_IDLE_MINUTES", 30)
 USER_REFRESH_TOTAL_HOURS = _env_int("USER_REFRESH_TOTAL_HOURS", 12)
 TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS = _env_int("TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS", 1)
 MAX_READING_DEBIT_CATCHUP_SECONDS = _env_int("MAX_READING_DEBIT_CATCHUP_SECONDS", 1800)
+SESSION_TOUCH_INTERVAL_SECONDS = _env_int("SESSION_TOUCH_INTERVAL_SECONDS", 60)
+if SESSION_TOUCH_INTERVAL_SECONDS > 0:
+    SESSION_TOUCH_INTERVAL_SECONDS = min(
+        SESSION_TOUCH_INTERVAL_SECONDS,
+        max(1, (USER_REFRESH_IDLE_MINUTES * 60) // 2),
+    )
 ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@theearnalism.com").strip()
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "").strip()
 SEED_TEST_READER = os.environ.get("SEED_TEST_READER", "false").strip().lower() == "true"
@@ -399,10 +405,17 @@ async def require_user(
             {"$set": {"status": "expired", "expired_at": now}},
         )
         raise HTTPException(status_code=401, detail="Session expired, please login again.")
-    await db.user_sessions.update_one(
-        {"id": session_id},
-        {"$set": {"last_seen_at": now, "idle_expires_at": now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES)}},
+    last_seen_at = _as_utc_dt(session.get("last_seen_at"))
+    should_touch_session = (
+        SESSION_TOUCH_INTERVAL_SECONDS <= 0
+        or not last_seen_at
+        or (now - last_seen_at).total_seconds() >= SESSION_TOUCH_INTERVAL_SECONDS
     )
+    if should_touch_session:
+        await db.user_sessions.update_one(
+            {"id": session_id},
+            {"$set": {"last_seen_at": now, "idle_expires_at": now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES)}},
+        )
     user["session_id"] = session_id
     user["device_fingerprint"] = token_fp
     return user
@@ -1868,6 +1881,18 @@ def _safe_counter_map(counts: Dict[str, int]) -> Dict[str, int]:
     return safe
 
 
+SECURE_READER_RECORDED_EVENTS = {
+    "right_click",
+    "copy",
+    "cut",
+    "print",
+    "print_screen",
+    "drag",
+    "drop",
+    "blocked_shortcut",
+}
+
+
 def _utc_day() -> str:
     return datetime.utcnow().date().isoformat()
 
@@ -1929,6 +1954,22 @@ def _rate_limit_scope(path: str) -> Tuple[str, int]:
     return "api", RATE_LIMIT_DEFAULT_PER_MINUTE
 
 
+def _rate_limit_identity(request: Request) -> str:
+    auth = request.headers.get("authorization", "")
+    if auth.lower().startswith("bearer "):
+        token = auth.split(" ", 1)[1].strip()
+        if token:
+            try:
+                payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALG])
+                subject = str(payload.get("sub") or "")[:80]
+                role = str(payload.get("role") or "user")[:20]
+                if subject:
+                    return f"token:{role}:{subject}"
+            except (jwt.ExpiredSignatureError, jwt.InvalidTokenError):
+                pass
+    return f"ip:{_client_ip(request)}"
+
+
 def _sweep_rate_limit_buckets(now: float) -> None:
     global _rate_limit_next_sweep
     if now < _rate_limit_next_sweep:
@@ -1951,7 +1992,7 @@ def _rate_limit_retry_after(request: Request) -> Optional[int]:
     scope, limit = _rate_limit_scope(path)
     now = time.monotonic()
     _sweep_rate_limit_buckets(now)
-    key = f"{scope}:{_client_ip(request)}"
+    key = f"{scope}:{_rate_limit_identity(request)}"
     bucket = _rate_limit_hits[key]
     cutoff = now - RATE_LIMIT_WINDOW_SECONDS
     while bucket and bucket[0] <= cutoff:
@@ -2194,6 +2235,8 @@ async def record_secure_reader_event(
     event_type = re.sub(r"[^a-zA-Z0-9_.:-]", "_", payload.event_type.strip())[:80]
     if not event_type:
         raise HTTPException(status_code=400, detail="Event type is required")
+    if event_type not in SECURE_READER_RECORDED_EVENTS:
+        return {"ok": True, "stored": False}
 
     # Never store raw auth tokens. The frontend may send only a short fingerprint.
     await db.reader_security_events.insert_one({
@@ -2212,7 +2255,7 @@ async def record_secure_reader_event(
         "user_agent": str(request.headers.get("user-agent", ""))[:180],
         "created_at": now_iso(),
     })
-    return {"ok": True}
+    return {"ok": True, "stored": True}
 
 
 @api.get("/categories", response_model=List[Category])
@@ -2483,6 +2526,11 @@ async def admin_delete_book(slug: str, _=Depends(require_admin)):
 @api.get("/admin/books", response_model=List[Book])
 async def admin_list_books(_=Depends(require_admin)):
     return await db.books.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+
+
+@api.get("/admin/books/summary", response_model=List[Book])
+async def admin_list_books_summary(_=Depends(require_admin)):
+    return await db.books.find({}, {"_id": 0, "chapters.content": 0}).sort("created_at", -1).to_list(1000)
 
 
 @api.get("/admin/books/{slug}", response_model=Book)
@@ -3514,15 +3562,11 @@ async def reading_pulse(payload: ReaderSessionEndIn, principal: Optional[dict] =
     book = await db.books.find_one({"slug": active.get("book_id")}, {"_id": 0, "title": 1}) or {}
     deducted, remaining = await _settle_active_reading_session(user["id"], payload.session_id, book.get("title", "Earnalism"))
     status = "wallet_empty" if remaining <= 0 else ("low_balance" if remaining <= LOW_BALANCE_THRESHOLD else "ok")
-    now = datetime.utcnow()
-    await db.users.update_one(
-        {"id": user["id"]},
-        {
-            "$set": {
-                "active_reading_session.last_pulse_at": now,
-            }
-        },
-    )
+    if deducted <= 0:
+        await db.users.update_one(
+            {"id": user["id"]},
+            {"$set": {"active_reading_session.last_pulse_at": datetime.now(timezone.utc)}},
+        )
     return {"success": status != "wallet_empty", "status": status, "wallet_seconds": remaining, "deducted_seconds": deducted}
 
 
@@ -4027,9 +4071,8 @@ async def admin_list_webhooks(_=Depends(require_admin)):
 
 @api.get("/admin/secure-reader/alerts")
 async def admin_secure_reader_alerts(_=Depends(require_admin)):
-    violation_types = {"right_click", "copy", "cut", "print", "print_screen", "drag", "drop", "blocked_shortcut"}
     rows = await db.reader_security_events.find(
-        {"event_type": {"$in": sorted(violation_types)}},
+        {"event_type": {"$in": sorted(SECURE_READER_RECORDED_EVENTS)}},
         {"_id": 0},
     ).sort("created_at", -1).to_list(500)
 

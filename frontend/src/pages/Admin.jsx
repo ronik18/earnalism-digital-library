@@ -175,7 +175,7 @@ function BooksAdmin() {
   const [featured, setFeatured] = useState("");
 
   const load = async () => {
-    const [b, c, f] = await Promise.all([api.get("/admin/books"), api.get("/categories"), api.get("/featured")]);
+    const [b, c, f] = await Promise.all([api.get("/admin/books/summary"), api.get("/categories"), api.get("/featured")]);
     setBooks(b.data); setCats(c.data); setFeatured(f.data?.book?.slug || "");
   };
   useEffect(() => { load(); }, []);

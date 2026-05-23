@@ -362,6 +362,13 @@ function audioAssetSlugForBook(book, bookId) {
   return book?.slug || bookId || '';
 }
 
+function hasLegacyGeneratedAudioAsset(book = {}, bookId = '') {
+  return bookId === 'book-d19e96859f'
+    || book?.title === 'গিন্নি'
+    || bookId === 'bharat-at-the-crossroads'
+    || /bharat at the crossroads/i.test(book?.title || '');
+}
+
 function isAgenticAiWithPython(book = {}, bookId = '') {
   const identity = `${bookId || ''} ${book?.slug || ''} ${book?.title || ''}`.toLowerCase();
   return identity.includes('agentic-ai-with-python') || /agentic\s+ai\s+with\s+python/i.test(book?.title || '');
@@ -372,6 +379,13 @@ function isNarrationDisabledForBook(book = {}, bookId = '') {
   return book?.audiobook_enabled === false
     && book?.generate_audiobook === false
     && (book?.narration_enabled === false || book?.audio_disabled === true);
+}
+
+function hasGeneratedAudioEnabled(book = {}, bookId = '') {
+  if (isNarrationDisabledForBook(book, bookId)) return false;
+  if (book?.audio_slug || book?.audio_asset_slug || book?.audioAssetSlug) return true;
+  if (book?.audiobook_enabled === true || book?.generate_audiobook === true || book?.narration_enabled === true) return true;
+  return hasLegacyGeneratedAudioAsset(book, bookId);
 }
 
 function rightsForBook(book = {}, userName = 'Reader') {
@@ -954,7 +968,7 @@ export default function Reader() {
     ? Math.round(((currentPage + 1) / paginatedPages.length) * 100)
     : readProgress;
   const generatedAudioSlug = useMemo(
-    () => (isNarrationDisabledForBook(book, bookId) ? '' : audioAssetSlugForBook(book, bookId)),
+    () => (hasGeneratedAudioEnabled(book, bookId) ? audioAssetSlugForBook(book, bookId) : ''),
     [book, bookId],
   );
   const generatedAudioLang = isBengali ? 'ben' : 'en';
@@ -1649,7 +1663,7 @@ export default function Reader() {
         <audio
           ref={generatedAudioRef}
           src={generatedAudioAvailable ? `/audio/${generatedAudioLang}/${generatedAudioSlug}.mp3` : undefined}
-          preload="metadata"
+          preload="none"
           onTimeUpdate={handleGeneratedAudioTimeUpdate}
           onEnded={handleGeneratedAudioEnded}
           style={{ display: 'none' }}
