@@ -67,9 +67,9 @@ export default function BookDetail() {
 
       <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         <div className="lg:col-span-5 lg:sticky lg:top-28">
-          <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft shadow-[0_50px_90px_-40px_rgba(74,28,39,0.45)] max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
+          <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft bg-ivory-warm shadow-[0_50px_90px_-40px_rgba(74,28,39,0.45)] max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
             {book.cover_image_url ? (
-              <img src={optimizedImageUrl(book.cover_image_url, { width: 900 })} alt={book.title} decoding="async" fetchPriority="high" className="w-full h-full object-cover" />
+              <img src={optimizedImageUrl(book.cover_image_url, { width: 900 })} alt={book.title} decoding="async" fetchPriority="high" className="w-full h-full object-contain" />
             ) : <div className="w-full h-full bg-beige-deep flex items-center justify-center font-serif-light text-7xl text-burgundy">E</div>}
           </div>
           {book.back_cover_image_url && (

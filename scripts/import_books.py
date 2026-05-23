@@ -1041,6 +1041,8 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
     metadata["slug"] = stable_book_slug(book, index)
     upload_object = {
         **metadata,
+        "audiobook_enabled": bool(book.get("audiobook_enabled") is True),
+        "generate_audiobook": bool(book.get("generate_audiobook") is True),
         "rights_metadata": rights_metadata(book, rights_log, result.warnings),
         "chapters": chapters,
         "upload_notes": [
@@ -1049,7 +1051,7 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
         ],
     }
     if len(upload_object["chapters"]) == 1 and upload_object["chapters"][0].get("title") == "Full Text":
-        upload_object["chapters"][0]["title"] = title or "Full Text"
+        upload_object["chapters"][0]["title"] = metadata.get("title") or "Full Text"
 
     attribution = normalize_text(book.get("required_attribution", "")).strip()
     if attribution:
@@ -1156,8 +1158,10 @@ def upload_book(result: PreparedBook, api_url: str, token: str, update_existing:
             "title", "subtitle", "author", "category_slug", "short_description",
             "description", "cover_image_url", "back_cover_image_url",
             "estimated_reading_time", "formats", "benefits", "who_for",
-            "learnings", "about_author", "rights_metadata", "is_published", "slug",
+            "learnings", "about_author", "rights_metadata", "audiobook_enabled",
+            "generate_audiobook", "is_published", "slug",
         ]
+        if key in obj
     }
     target_slug = obj.get("slug") or slugify(obj.get("title", ""))
     existing = api_json_optional("GET", f"{api_url}/admin/books/{target_slug}", token=token)

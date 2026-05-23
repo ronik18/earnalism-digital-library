@@ -202,6 +202,16 @@ def test_admin_book_crud(s, auth):
     r3 = s.put(f"{API}/admin/books/{slug}", json=payload, headers=auth)
     assert r3.status_code == 200
     assert r3.json()["short_description"] == "TEST updated"
+    # CHAPTER REORDER
+    c1 = s.post(f"{API}/admin/books/{slug}/chapters", json={"title": "One", "content": "First"}, headers=auth)
+    assert c1.status_code == 200, c1.text
+    c2 = s.post(f"{API}/admin/books/{slug}/chapters", json={"title": "Two", "content": "Second"}, headers=auth)
+    assert c2.status_code == 200, c2.text
+    ids = [c["id"] for c in sorted(c2.json()["chapters"], key=lambda c: c.get("order", 0))]
+    rr = s.put(f"{API}/admin/books/{slug}/chapters/reorder", json={"ids": list(reversed(ids))}, headers=auth)
+    assert rr.status_code == 200, rr.text
+    reordered = sorted(rr.json()["chapters"], key=lambda c: c.get("order", 0))
+    assert [c["title"] for c in reordered] == ["Two", "One"]
     # DELETE
     r4 = s.delete(f"{API}/admin/books/{r3.json()['slug']}", headers=auth)
     assert r4.status_code == 200 and r4.json()["deleted"] == 1

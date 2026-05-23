@@ -8,6 +8,7 @@ import { useSettings } from "../context/SettingsContext";
 import BrandMark from "../components/BrandMark";
 import ChapterUpload from "../components/Admin/ChapterUpload";
 import CoverUpload from "../components/Admin/CoverUpload";
+import { normalizeImageUrl, optimizedImageUrl } from "../lib/images";
 
 const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "settings", "account"];
 
@@ -181,7 +182,15 @@ function BooksAdmin() {
 
   const save = async (form, originalSlug) => {
     try {
-      const payload = { ...form, benefits: arr(form.benefits), who_for: arr(form.who_for), learnings: arr(form.learnings), formats: arr(form.formats) };
+      const payload = {
+        ...form,
+        cover_image_url: normalizeImageUrl(form.cover_image_url || form.cover_url || ""),
+        back_cover_image_url: normalizeImageUrl(form.back_cover_image_url || form.back_cover_url || ""),
+        benefits: arr(form.benefits),
+        who_for: arr(form.who_for),
+        learnings: arr(form.learnings),
+        formats: arr(form.formats),
+      };
       if (originalSlug) await api.put(`/admin/books/${originalSlug}`, payload);
       else await api.post("/admin/books", payload);
       toast.success("Saved"); setEditing(null); await load();
@@ -212,7 +221,7 @@ function BooksAdmin() {
         {books.map((b) => (
           <div key={b.slug} className="card-elegant p-5 flex gap-4" data-testid={`admin-book-${b.slug}`}>
             <div className="w-20 h-28 bg-beige rounded-md overflow-hidden flex-shrink-0">
-              {b.cover_image_url && <img src={b.cover_image_url} alt={b.title} className="w-full h-full object-cover" />}
+              {b.cover_image_url && <img src={optimizedImageUrl(b.cover_image_url, { width: 240 })} alt={b.title} className="w-full h-full object-cover" />}
             </div>
             <div className="flex-1 min-w-0">
               <div className="overline">{b.category_slug}</div>
@@ -539,7 +548,7 @@ function BookEditor({ book, cats, onClose, onSave }) {
               <CoverUpload
                 bookId={book.slug}
                 kind="front"
-                currentUrl={f.cover_image_url}
+                currentUrl={f.cover_image_url || f.cover_url}
                 onSuccess={(data) => {
                   setF((prev) => ({ ...prev, cover_image_url: data.cover_url, cover_url: data.cover_url, thumbnail_url: data.thumbnail_url, cover_processing_status: "ready", cover_processing_error: "" }));
                   toast.success("Front cover uploaded");
@@ -548,7 +557,7 @@ function BookEditor({ book, cats, onClose, onSave }) {
               <CoverUpload
                 bookId={book.slug}
                 kind="back"
-                currentUrl={f.back_cover_image_url}
+                currentUrl={f.back_cover_image_url || f.back_cover_url}
                 onSuccess={(data) => {
                   setF((prev) => ({ ...prev, back_cover_image_url: data.cover_url, back_cover_url: data.cover_url, back_cover_thumbnail_url: data.thumbnail_url, back_cover_processing_status: "ready", back_cover_processing_error: "" }));
                   toast.success("Back cover uploaded");

@@ -1015,6 +1015,8 @@ async def _process_docx_upload(
         "author": metadata["author"],
         "estimated_reading_time": template_data.get("estimated_reading_time") or f"{max(1, round(metadata['word_count'] / 238))} min",
         "is_published": False,
+        "audiobook_enabled": False,
+        "generate_audiobook": False,
     }
     if metadata["keywords"]:
         book_data["keywords"] = metadata["keywords"]
@@ -1201,6 +1203,8 @@ class Book(BaseModel):
     learnings: List[str] = Field(default_factory=list)
     about_author: str = ""
     chapters: List[Chapter] = Field(default_factory=list)
+    audiobook_enabled: bool = False
+    generate_audiobook: bool = False
     is_published: bool = True
     created_at: str = Field(default_factory=now_iso)
 
@@ -1223,6 +1227,8 @@ class BookIn(BaseModel):
     learnings: List[str] = Field(default_factory=list)
     about_author: str = ""
     rights_metadata: Dict[str, Any] = Field(default_factory=dict)
+    audiobook_enabled: bool = False
+    generate_audiobook: bool = False
     is_published: bool = True
     slug: Optional[str] = None
 
@@ -2562,6 +2568,20 @@ async def admin_add_chapter(slug: str, payload: ChapterIn, _=Depends(require_adm
     await db.books.update_one({"slug": slug}, {"$push": {"chapters": chapter}})
     return await _load_book_or_404(slug)
 
+@api.put("/admin/books/{slug}/chapters/reorder", response_model=Book)
+async def admin_reorder_chapters(slug: str, payload: ChapterReorderIn, _=Depends(require_admin)):
+    book = await _load_book_or_404(slug)
+    existing = {c["id"]: c for c in (book.get("chapters") or [])}
+    if set(payload.ids) != set(existing.keys()):
+        raise HTTPException(status_code=400, detail="Reorder ids must match existing chapter ids exactly")
+    reordered = []
+    for i, cid in enumerate(payload.ids):
+        c = dict(existing[cid])
+        c["order"] = i
+        reordered.append(c)
+    await db.books.update_one({"slug": slug}, {"$set": {"chapters": reordered}})
+    return await _load_book_or_404(slug)
+
 @api.put("/admin/books/{slug}/chapters/{cid}", response_model=Book)
 async def admin_update_chapter(slug: str, cid: str, payload: ChapterIn, _=Depends(require_admin)):
     title = normalize_text(payload.title).strip()
@@ -2589,20 +2609,6 @@ async def admin_delete_chapter(slug: str, cid: str, _=Depends(require_admin)):
     res = await db.books.update_one({"slug": slug}, {"$pull": {"chapters": {"id": cid}}})
     if res.modified_count == 0:
         raise HTTPException(status_code=404, detail="Chapter not found")
-    return await _load_book_or_404(slug)
-
-@api.put("/admin/books/{slug}/chapters/reorder", response_model=Book)
-async def admin_reorder_chapters(slug: str, payload: ChapterReorderIn, _=Depends(require_admin)):
-    book = await _load_book_or_404(slug)
-    existing = {c["id"]: c for c in (book.get("chapters") or [])}
-    if set(payload.ids) != set(existing.keys()):
-        raise HTTPException(status_code=400, detail="Reorder ids must match existing chapter ids exactly")
-    reordered = []
-    for i, cid in enumerate(payload.ids):
-        c = dict(existing[cid])
-        c["order"] = i
-        reordered.append(c)
-    await db.books.update_one({"slug": slug}, {"$set": {"chapters": reordered}})
     return await _load_book_or_404(slug)
 
 

@@ -8,6 +8,35 @@ import useSEO from "../hooks/useSEO";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1920&q=90";
 const FOUNDER_IMG = "https://images.unsplash.com/photo-1773067752075-2cfd37ab02dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
+const SHELF_IMAGES = {
+  "bengali": "/assets/shelves/bengali.jpg",
+  "bengali-reading": "/assets/shelves/bengali.jpg",
+  "bengali-classics": "/assets/shelves/bengali.jpg",
+  "business": "/assets/shelves/business.jpg",
+  "business-entrepreneurship": "/assets/shelves/business.jpg",
+  "history": "/assets/shelves/history-politics.jpg",
+  "history-politics": "/assets/shelves/history-politics.jpg",
+  "history-strategy": "/assets/shelves/history-politics.jpg",
+  "literature": "/assets/shelves/literature.jpg",
+  "self-growth": "/assets/shelves/self-growth.jpg",
+  "self-improvement": "/assets/shelves/self-growth.jpg",
+  "technology": "/assets/shelves/technology.jpg",
+};
+
+function shelfImageFor(category) {
+  const slug = (category?.slug || "").toLowerCase();
+  const name = (category?.name || "").toLowerCase();
+
+  if (SHELF_IMAGES[slug]) return SHELF_IMAGES[slug];
+  if (slug.includes("bengali") || name.includes("bengali")) return SHELF_IMAGES.bengali;
+  if (slug.includes("business") || name.includes("business") || name.includes("entrepreneur")) return SHELF_IMAGES.business;
+  if (slug.includes("history") || slug.includes("politic") || name.includes("history") || name.includes("politic")) return SHELF_IMAGES["history-politics"];
+  if (slug.includes("literature") || name.includes("literature")) return SHELF_IMAGES.literature;
+  if (slug.includes("self") || name.includes("self")) return SHELF_IMAGES["self-growth"];
+  if (slug.includes("tech") || name.includes("tech") || name.includes("ai")) return SHELF_IMAGES.technology;
+
+  return category?.image_url;
+}
 
 export default function Home() {
   const [categories, setCategories] = useState([]);
@@ -117,26 +146,30 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-9">
-          {categories.map((c, i) => (
-            <Link
-              key={c.slug}
-              to={`/library?category=${c.slug}`}
-              className={`card-elegant overflow-hidden group ${i === 0 ? "lg:col-span-2 lg:row-span-2" : ""}`}
-              data-testid={`category-card-${c.slug}`}
-            >
-              <div className={`relative ${i === 0 ? "aspect-[16/10] lg:aspect-[16/12]" : "aspect-[4/3]"} overflow-hidden`}>
-                {c.image_url && (
-                  <img src={optimizedImageUrl(c.image_url, { width: i === 0 ? 1200 : 720 })} alt={c.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform [transition-duration:1200ms] group-hover:scale-[1.06]" />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2a1218]/72 via-[#2a1218]/15 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-7 sm:p-9">
-                  <span className="text-[0.65rem] tracking-[0.32em] uppercase text-[var(--brand-gold-soft)]">Shelf · 0{i + 1}</span>
-                  <h3 className={`font-serif-light text-[#FDFCF8] ${i === 0 ? "text-3xl sm:text-[2.5rem] mt-3" : "text-2xl mt-2"} leading-[1.1] tracking-tight`}>{c.name}</h3>
-                  <p className="text-[#F4EFEA]/85 text-[0.92rem] leading-[1.65] mt-3 max-w-md font-light">{c.description}</p>
+          {categories.map((c, i) => {
+            const shelfImage = shelfImageFor(c);
+
+            return (
+              <Link
+                key={c.slug}
+                to={`/library?category=${c.slug}`}
+                className={`card-elegant overflow-hidden group ${i === 0 ? "lg:col-span-2 lg:row-span-2" : ""}`}
+                data-testid={`category-card-${c.slug}`}
+              >
+                <div className={`relative ${i === 0 ? "aspect-[16/10] lg:aspect-[16/12]" : "aspect-[4/3]"} overflow-hidden`}>
+                  {shelfImage && (
+                    <img src={optimizedImageUrl(shelfImage, { width: i === 0 ? 1200 : 720 })} alt={c.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform [transition-duration:1200ms] group-hover:scale-[1.06]" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#2a1218]/72 via-[#2a1218]/15 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-7 sm:p-9">
+                    <span className="text-[0.65rem] tracking-[0.32em] uppercase text-[var(--brand-gold-soft)]">Shelf · 0{i + 1}</span>
+                    <h3 className={`font-serif-light text-[#FDFCF8] ${i === 0 ? "text-3xl sm:text-[2.5rem] mt-3" : "text-2xl mt-2"} leading-[1.1] tracking-tight`}>{c.name}</h3>
+                    <p className="text-[#F4EFEA]/85 text-[0.92rem] leading-[1.65] mt-3 max-w-md font-light">{c.description}</p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -145,8 +178,8 @@ export default function Home() {
         <section className="surface-warm border-y border-brand-soft">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5">
-              <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft shadow-[0_30px_70px_-30px_rgba(74,28,39,0.4)] max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none lg:mx-0">
-                <img src={optimizedImageUrl(featured.cover_image_url, { width: 760 })} alt={featured.title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+              <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft bg-ivory-warm shadow-[0_30px_70px_-30px_rgba(74,28,39,0.4)] max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none lg:mx-0">
+                <img src={optimizedImageUrl(featured.cover_image_url, { width: 760 })} alt={featured.title} loading="lazy" decoding="async" className="w-full h-full object-contain" />
               </div>
             </div>
             <div className="lg:col-span-7 text-center lg:text-left">

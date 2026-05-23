@@ -51,6 +51,8 @@ BOOK_IN_FIELDS = {
     "learnings",
     "about_author",
     "rights_metadata",
+    "audiobook_enabled",
+    "generate_audiobook",
     "is_published",
     "slug",
 }
@@ -90,6 +92,7 @@ class BookProductionResult:
     warnings: List[str] = field(default_factory=list)
     audio_assets: Dict[str, str] = field(default_factory=dict)
     published: bool = False
+    audiobook_enabled: bool = False
 
     def add_gate(self, name: str, ok: bool, detail: str) -> None:
         self.gates.append(GateResult(name, ok, detail))
@@ -229,6 +232,29 @@ def rights_metadata_from_manifest(manifest_item: Optional[Dict[str, Any]]) -> Di
         if key in manifest_item and manifest_item[key] not in (None, "")
     }
     return rights
+
+
+def truthy(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    return str(value or "").strip().lower() in {"1", "true", "yes", "on"}
+
+
+def live_publish_allowed() -> bool:
+    return truthy(os.environ.get("PUBLISH_LIVE")) and truthy(os.environ.get("HUMAN_APPROVED"))
+
+
+def audiobook_enabled_for_book(book: Dict[str, Any], manifest_item: Optional[Dict[str, Any]]) -> bool:
+    """Future audiobook support is opt-in and feature-flagged per book."""
+
+    title_key = normalize_title_key(str(book.get("title") or ""))
+    if title_key == normalize_title_key("Agentic AI With Python"):
+        return False
+    values = []
+    if manifest_item:
+        values.extend([manifest_item.get("audiobook_enabled"), manifest_item.get("generate_audiobook")])
+    values.extend([book.get("audiobook_enabled"), book.get("generate_audiobook")])
+    return any(truthy(value) for value in values)
 
 
 def find_manifest_item(book: Dict[str, Any], manifest_by_slug: Dict[str, Dict[str, Any]]) -> Optional[Dict[str, Any]]:
@@ -502,7 +528,7 @@ def validate_timestamps(slug: str, language: str, expected_units: int, public_au
     return True, f"timestamps={len(timestamps)}, expected_units={expected_units}, delta={delta}"
 
 
-def http_smoke(book: Dict[str, Any], frontend_url: str, api_url: str, language: str, public_audio_dir: Path) -> Tuple[bool, str]:
+def http_smoke(book: Dict[str, Any], frontend_url: str, api_url: str, language: str, public_audio_dir: Path, audio_required: bool = True) -> Tuple[bool, str]:
     slug = book["slug"]
     details: List[str] = []
     errors: List[str] = []
@@ -520,18 +546,23 @@ def http_smoke(book: Dict[str, Any], frontend_url: str, api_url: str, language: 
     check(f"{normalize_api_url(api_url)}/books/{slug}/chapters", expected=(200, 404))
     if book.get("is_published"):
         check(f"{frontend_url.rstrip('/')}/book/{slug}")
-        check(f"{frontend_url.rstrip('/')}/audio/{language}/{slug}_timestamps.json")
-        # HEAD is enough for the large MP3, but some CDNs treat HEAD differently.
-        try:
-            response = requests.head(f"{frontend_url.rstrip('/')}/audio/{language}/{slug}.mp3", timeout=30, allow_redirects=True)
-            details.append(f"{response.status_code} audio-head")
-            if response.status_code != 200:
-                errors.append(f"audio mp3 returned {response.status_code}")
-        except Exception as exc:  # noqa: BLE001
-            errors.append(f"audio mp3 failed: {exc}")
+        if audio_required:
+            check(f"{frontend_url.rstrip('/')}/audio/{language}/{slug}_timestamps.json")
+            # HEAD is enough for the large MP3, but some CDNs treat HEAD differently.
+            try:
+                response = requests.head(f"{frontend_url.rstrip('/')}/audio/{language}/{slug}.mp3", timeout=30, allow_redirects=True)
+                details.append(f"{response.status_code} audio-head")
+                if response.status_code != 200:
+                    errors.append(f"audio mp3 returned {response.status_code}")
+            except Exception as exc:  # noqa: BLE001
+                errors.append(f"audio mp3 failed: {exc}")
+        else:
+            details.append("audio smoke skipped: audiobook feature disabled")
     else:
         local_mp3 = public_audio_dir / language / f"{slug}.mp3"
-        if local_mp3.exists():
+        if not audio_required:
+            details.append("local audio smoke skipped: audiobook feature disabled")
+        elif local_mp3.exists():
             details.append(f"local audio ok: {local_mp3.relative_to(ROOT)}")
         else:
             errors.append("local audio mp3 missing")
@@ -559,6 +590,7 @@ def render_markdown_report(path: Path, results: List[BookProductionResult], publ
         lines.append("")
         lines.append(f"Verdict: **{result.verdict}**")
         lines.append(f"Language: `{result.language or 'unknown'}`")
+        lines.append(f"Audiobook enabled: `{str(result.audiobook_enabled).lower()}`")
         if result.published:
             lines.append("Published: yes")
         if result.audio_assets:
@@ -583,7 +615,7 @@ def render_markdown_report(path: Path, results: List[BookProductionResult], publ
             lines.append(f"- `{slug}`")
         lines.append("")
     lines.append("## Approval")
-    lines.append("If all intended books are GO, rerun with `--publish-approved` to publish them.")
+    lines.append("If all intended books are GO, rerun with `PUBLISH_LIVE=1 HUMAN_APPROVED=1 --publish-approved` to publish them.")
     write_text(path, "\n".join(lines))
 
 
@@ -602,7 +634,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-import", action="store_true")
     parser.add_argument("--skip-audio", action="store_true")
     parser.add_argument("--skip-qa", action="store_true")
-    parser.add_argument("--publish-approved", action="store_true", help="Publish GO books. This is the explicit human approval gate.")
+    parser.add_argument("--publish-approved", action="store_true", help="Publish GO books only when PUBLISH_LIVE=1 and HUMAN_APPROVED=1 are also set.")
     parser.add_argument("--trust-existing-admin-rights", action="store_true", help="Allow GO when rights were manually reviewed outside exposed admin API.")
     parser.add_argument("--env-file", action="append", type=Path, default=[ROOT / ".secrets/earnalism-import.env", ROOT / ".secrets/earnalism-audio.env"])
     return parser.parse_args()
@@ -654,6 +686,7 @@ def main() -> int:
         write_json(run_dir / "admin_books" / f"{slug}.json", book_payload_summary(book))
 
         manifest_item = find_manifest_item(book, manifest_by_slug)
+        result.audiobook_enabled = audiobook_enabled_for_book(book, manifest_item)
         duplicate_drafts = [
             value
             for value in draft_slugs_by_title.get(normalize_title_key(str(book.get("title") or "")), [])
@@ -668,29 +701,40 @@ def main() -> int:
         result.warnings.extend(legal_warnings)
         result.add_gate("legal_compliance", legal_ok, "; ".join(legal_errors or legal_warnings or ["ok"]))
 
-        manifest_path, text_dir, language, expected_units = prepare_audio_manifest(book, run_dir)
-        result.language = language
-        result.add_gate("audio_text", expected_units > 0, f"{expected_units} highlight units prepared")
+        if result.audiobook_enabled and not args.skip_audio:
+            manifest_path, text_dir, language, expected_units = prepare_audio_manifest(book, run_dir)
+            result.language = language
+            result.add_gate("audio_text", expected_units > 0, f"{expected_units} highlight units prepared")
 
-        try:
-            run_audio_generation(slug, manifest_path, text_dir, args.audio_output_dir, run_dir, args.skip_audio)
-            assets = copy_audio_assets(slug, language, args.audio_output_dir, args.public_audio_dir)
-            result.audio_assets = assets
-            result.add_gate("audio_assets", bool(assets.get(".mp3")), f"{len(assets)} assets copied/reused")
-        except Exception as exc:  # noqa: BLE001 - record and keep processing other books
-            result.add_gate("audio_assets", False, str(exc))
+            try:
+                run_audio_generation(slug, manifest_path, text_dir, args.audio_output_dir, run_dir, args.skip_audio)
+                assets = copy_audio_assets(slug, language, args.audio_output_dir, args.public_audio_dir)
+                result.audio_assets = assets
+                result.add_gate("audio_assets", bool(assets.get(".mp3")), f"{len(assets)} assets copied/reused")
+            except Exception as exc:  # noqa: BLE001 - record and keep processing other books
+                result.add_gate("audio_assets", False, str(exc))
 
-        ts_ok, ts_detail = validate_timestamps(slug, language, expected_units, args.public_audio_dir)
-        result.add_gate("timestamp_sync", ts_ok, ts_detail)
+            ts_ok, ts_detail = validate_timestamps(slug, language, expected_units, args.public_audio_dir)
+            result.add_gate("timestamp_sync", ts_ok, ts_detail)
+        else:
+            result.language = infer_language(book_chapter_text(book), str(book.get("language") or ""))
+            detail = "disabled by audiobook_enabled=false" if not result.audiobook_enabled else "skipped by operator"
+            result.add_gate("audiobook_feature_flag", True, detail)
 
         if args.skip_qa:
             result.add_gate("qa_smoke", True, "skipped by operator")
         else:
-            qa_ok, qa_detail = http_smoke(book, args.frontend_url, args.api_url, language, args.public_audio_dir)
+            qa_ok, qa_detail = http_smoke(book, args.frontend_url, args.api_url, result.language or "en", args.public_audio_dir, audio_required=result.audiobook_enabled)
             result.add_gate("qa_smoke", qa_ok, qa_detail)
 
         result.finalize()
-        if args.publish_approved and result.verdict == "GO":
+        if args.publish_approved and not live_publish_allowed():
+            result.add_gate(
+                "publish",
+                False,
+                "blocked: set PUBLISH_LIVE=1 and HUMAN_APPROVED=1 after human review",
+            )
+        elif args.publish_approved and result.verdict == "GO":
             rights_payload = rights_metadata_from_manifest(manifest_item) or book.get("rights_metadata") or {}
             if not rights_payload:
                 result.add_gate(
@@ -728,6 +772,7 @@ def main() -> int:
                     "published": result.published,
                     "warnings": result.warnings,
                     "audio_assets": result.audio_assets,
+                    "audiobook_enabled": result.audiobook_enabled,
                     "gates": [gate.__dict__ for gate in result.gates],
                 }
                 for result in results
