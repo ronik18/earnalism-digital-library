@@ -967,13 +967,16 @@ textarea.input-elegant {
 }
 
 .live-cover-showcase--band {
+  width: 100%;
   padding: 1rem 0 0.95rem;
 }
 
 .live-cover-showcase--band::before {
   inset: 0;
+  border-right: 0;
+  border-left: 0;
   border-color: rgba(216, 185, 122, 0.38);
-  border-radius: 0.95rem;
+  border-radius: 0;
   background:
     linear-gradient(135deg, rgba(253, 252, 248, 0.16), rgba(253, 252, 248, 0.04) 42%, rgba(197, 160, 89, 0.18)),
     linear-gradient(180deg, rgba(45, 21, 24, 0.82), rgba(61, 34, 30, 0.78));
@@ -981,7 +984,9 @@ textarea.input-elegant {
 }
 
 .live-cover-showcase--band .live-cover-showcase__header {
-  padding: 0.25rem 1.45rem 0.8rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0.25rem clamp(1rem, 3vw, 1.45rem) 0.8rem;
 }
 
 .live-cover-showcase--band .live-cover-marquee {
@@ -989,7 +994,7 @@ textarea.input-elegant {
 }
 
 .live-cover-showcase--band .live-cover-marquee__edge {
-  width: 5rem;
+  width: clamp(2.75rem, 7vw, 7rem);
 }
 
 .live-cover-showcase--band .live-cover-card {
@@ -1007,7 +1012,9 @@ textarea.input-elegant {
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.7rem;
-  padding: 0.65rem 1.45rem 0;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0.65rem clamp(1rem, 3vw, 1.45rem) 0;
 }
 
 .live-cover-showcase--band .live-cover-action {

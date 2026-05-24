@@ -143,8 +143,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="absolute inset-x-0 bottom-0 translate-y-1/2 z-10 px-4 sm:px-6 lg:px-10">
-          <div className="max-w-7xl mx-auto">
+        <div className="absolute inset-x-0 bottom-0 translate-y-1/2 z-10">
+          <div className="w-full">
             <LiveCoverShowcase books={liveBooks} featured={featured} variant="band" />
           </div>
         </div>
