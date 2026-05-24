@@ -56,22 +56,28 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
                 data-testid={isDuplicate ? undefined : `live-cover-card-${book.slug}`}
               >
                 <Link
-                  to={`/book/${book.slug}#preview-payment`}
+                  to={`/reader/${book.slug}`}
                   tabIndex={isDuplicate ? -1 : 0}
-                  className="live-cover-card__cover"
-                  aria-label={`Open ${book.title} preview and reading time options`}
+                  className="live-cover-card__link"
+                  aria-label={`Read preview of ${book.title}`}
+                  data-testid={isDuplicate ? undefined : `live-cover-preview-${book.slug}`}
                 >
-                  <img
-                    src={optimizedImageUrl(cover, { width: 420, quality: 88 })}
-                    alt={book.title}
-                    loading={index < 4 ? "eager" : "lazy"}
-                    decoding="async"
-                  />
+                  <span className="live-cover-card__cover">
+                    <img
+                      src={optimizedImageUrl(cover, { width: 420, quality: 88 })}
+                      alt={book.title}
+                      loading={index < 4 ? "eager" : "lazy"}
+                      decoding="async"
+                    />
+                    <span className="live-cover-card__preview">
+                      <BookOpen size={13} strokeWidth={1.6} /> Preview
+                    </span>
+                  </span>
+                  <span className="live-cover-card__body">
+                    <span className="live-cover-card__title">{book.title}</span>
+                    {book.author && <span className="live-cover-card__author">{book.author}</span>}
+                  </span>
                 </Link>
-                <div className="live-cover-card__body">
-                  <h3>{book.title}</h3>
-                  {book.author && <p>{book.author}</p>}
-                </div>
               </article>
             );
           })}
