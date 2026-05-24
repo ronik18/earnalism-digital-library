@@ -18,6 +18,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable, Sequence
+from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -78,6 +79,27 @@ def shell_join(command: Sequence[str]) -> str:
     return " ".join(command)
 
 
+def env_with_files(env_files: Sequence[Path]) -> dict[str, str]:
+    env = os.environ.copy()
+    for path in env_files:
+        if not path.exists():
+            continue
+        for raw in path.read_text(encoding="utf-8").splitlines():
+            line = raw.strip()
+            if not line or line.startswith("#"):
+                continue
+            if line.startswith("export "):
+                line = line[len("export ") :]
+            if "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            value = value.strip().strip('"').strip("'")
+            if value.startswith("~/"):
+                value = str(Path.home() / value[2:])
+            env.setdefault(key.strip(), value)
+    return env
+
+
 def manifest_path(value: str | None) -> Path:
     return Path(value).expanduser().resolve() if value else DEFAULT_MANIFEST
 
@@ -94,6 +116,18 @@ def latest_file(base: Path, filename: str) -> Path | None:
     if not candidates:
         return None
     return max(candidates, key=lambda path: path.stat().st_mtime)
+
+
+def clone_args(args: argparse.Namespace, **overrides: Any) -> argparse.Namespace:
+    values = vars(args).copy()
+    values.update(overrides)
+    return argparse.Namespace(**values)
+
+
+def fetch_json_url(url: str) -> Any:
+    request = Request(url, headers={"Accept": "application/json", "User-Agent": "EarnalismBulkPipeline/1.0"})
+    with urlopen(request, timeout=45) as response:
+        return json.loads(response.read().decode("utf-8"))
 
 
 def run_phase(
@@ -216,6 +250,18 @@ def build_import_validation_command(args: argparse.Namespace, output_base: Path)
     ]
 
 
+def build_import_upload_command(args: argparse.Namespace, output_base: Path) -> list[str]:
+    command = [
+        *build_import_validation_command(args, output_base),
+        "--upload",
+        "--api-url",
+        args.api_url,
+    ]
+    if args.update_existing_drafts:
+        command.append("--update-existing-drafts")
+    return command
+
+
 def build_production_command(args: argparse.Namespace, production_base: Path) -> list[str]:
     command = [
         sys.executable,
@@ -276,6 +322,38 @@ def enrich_import_phase(phase: PhaseResult, output_base: Path, allow_skipped: bo
         phase.detail = f"{len(skipped)} book(s) skipped validation; see {rel(report_path)}"
     elif phase.status == "passed":
         phase.detail = f"{report.get('passed_validation_count', 0)}/{report.get('total_books', 0)} book(s) passed validation"
+    return phase
+
+
+def enrich_import_upload_phase(phase: PhaseResult, output_base: Path, allow_skipped: bool) -> PhaseResult:
+    report_path = latest_file(output_base, "upload_report.json")
+    if not report_path:
+        phase.status = "failed"
+        phase.detail = "upload report was not produced"
+        return phase
+    report = read_json(report_path)
+    skipped = report.get("skipped_books") or []
+    uploaded = report.get("uploaded_books") or []
+    phase.artifacts["upload_report"] = rel(report_path)
+    dry_run_report = latest_file(output_base, "dry_run_report.json")
+    if dry_run_report:
+        phase.artifacts["dry_run_report"] = rel(dry_run_report)
+    phase.data = {
+        "total_books": report.get("total_books", 0),
+        "passed_validation_count": report.get("passed_validation_count", 0),
+        "uploaded_count": report.get("uploaded_count", len(uploaded)),
+        "skipped_count": report.get("skipped_count", 0),
+        "uploaded_books": uploaded,
+        "skipped_books": skipped,
+    }
+    if skipped and not allow_skipped:
+        phase.status = "failed"
+        phase.detail = f"{len(skipped)} book(s) skipped during draft upload; see {rel(report_path)}"
+    elif report.get("passed_validation_count", 0) and not uploaded:
+        phase.status = "failed"
+        phase.detail = "validation passed but no draft uploads were returned"
+    elif phase.status == "passed":
+        phase.detail = f"uploaded {len(uploaded)} draft book(s)"
     return phase
 
 
@@ -361,10 +439,96 @@ def run_k6_phase(args: argparse.Namespace, run_dir: Path) -> PhaseResult:
     )
 
 
+def verify_landing_slideshow_phase(args: argparse.Namespace, run_dir: Path, published_slugs: Sequence[str]) -> PhaseResult:
+    unique_slugs = sorted({slug for slug in published_slugs if slug})
+    if not unique_slugs:
+        return PhaseResult(
+            name="landing_slideshow_sync",
+            status="skipped",
+            detail="no newly published slugs to verify",
+        )
+
+    artifact = run_dir / "landing_slideshow_sync.json"
+    books_url = f"{strip_api_suffix(args.api_url)}/api/books"
+    try:
+        books = fetch_json_url(books_url)
+        if not isinstance(books, list):
+            raise ValueError("/api/books did not return a list")
+    except Exception as exc:  # noqa: BLE001 - report transport/API failure as a gate
+        payload = {
+            "checked_at": now_iso(),
+            "books_url": books_url,
+            "published_slugs": unique_slugs,
+            "ok": False,
+            "error": str(exc),
+        }
+        write_json(artifact, payload)
+        return PhaseResult(
+            name="landing_slideshow_sync",
+            status="failed",
+            detail=f"could not verify public books endpoint: {exc}",
+            artifacts={"slideshow_sync": rel(artifact)},
+            data=payload,
+        )
+
+    public_by_slug = {
+        str(book.get("slug") or ""): book
+        for book in books
+        if isinstance(book, dict)
+    }
+    missing = [slug for slug in unique_slugs if slug not in public_by_slug]
+    missing_covers = [
+        slug
+        for slug in unique_slugs
+        if slug in public_by_slug and not (
+            public_by_slug[slug].get("cover_image_url")
+            or public_by_slug[slug].get("cover_url")
+            or public_by_slug[slug].get("thumbnail_url")
+        )
+    ]
+    payload = {
+        "checked_at": now_iso(),
+        "books_url": books_url,
+        "frontend_url": args.frontend_url,
+        "published_slugs": unique_slugs,
+        "public_book_count": len(books),
+        "missing_from_public_books": missing,
+        "missing_public_covers": missing_covers,
+        "ok": not missing and not missing_covers,
+        "note": "The landing-page infinite slideshow reads this public /api/books collection at runtime.",
+    }
+    write_json(artifact, payload)
+
+    if missing or missing_covers:
+        details = []
+        if missing:
+            details.append(f"missing from /api/books: {', '.join(missing)}")
+        if missing_covers:
+            details.append(f"missing public covers: {', '.join(missing_covers)}")
+        return PhaseResult(
+            name="landing_slideshow_sync",
+            status="failed",
+            detail="; ".join(details),
+            artifacts={"slideshow_sync": rel(artifact)},
+            data=payload,
+        )
+
+    return PhaseResult(
+        name="landing_slideshow_sync",
+        status="passed",
+        detail=f"{len(unique_slugs)} published book(s) visible to the landing slideshow",
+        artifacts={"slideshow_sync": rel(artifact)},
+        data=payload,
+    )
+
+
 def pipeline_decision(stage: str, phases: Sequence[PhaseResult]) -> str:
     failures = [phase for phase in phases if phase.status == "failed"]
     if failures:
         return "BLOCKED"
+    if stage == "go-live":
+        published = any(phase.data.get("published") for phase in phases)
+        return "PUBLISHED_AND_SLIDESHOW_SYNCED" if published else "GO_GREEN_NO_PUBLISH"
     if stage == "publish":
         published = any(phase.data.get("published") for phase in phases)
         return "PUBLISHED" if published else "PUBLISH_GATES_PASSED"
@@ -421,13 +585,22 @@ def render_markdown_report(report: dict[str, Any]) -> str:
             for gate in item.get("failed_gates") or []:
                 lines.append(f"  FAIL `{gate.get('name')}`: {gate.get('detail')}")
 
-    if report["stage"] != "publish":
+    if report["stage"] == "go-live" and published:
+        lines.extend(
+            [
+                "",
+                "## Slideshow Sync",
+                "",
+                "The landing-page slideshow is dynamic. Newly published books appear when they are present in the public `/api/books` response with a cover image.",
+            ]
+        )
+    elif report["stage"] != "publish":
         lines.extend(
             [
                 "",
                 "## Approval",
                 "",
-                "Live publishing remains blocked. Publish only by rerunning stage `publish` with `PUBLISH_LIVE=1` and `HUMAN_APPROVED=1` after reviewing the reports.",
+                "Live publishing remains blocked. Publish only by rerunning stage `publish` or `go-live` with `PUBLISH_LIVE=1` and `HUMAN_APPROVED=1` after reviewing the reports.",
             ]
         )
     return "\n".join(lines).rstrip() + "\n"
@@ -451,10 +624,108 @@ def collect_summary(phases: Sequence[PhaseResult]) -> dict[str, Any]:
     return summary
 
 
+def has_failed(phases: Sequence[PhaseResult]) -> bool:
+    return any(phase.status == "failed" for phase in phases)
+
+
+def add_agentic_phase(args: argparse.Namespace, run_dir: Path, phases: list[PhaseResult]) -> None:
+    if args.agentic_ai_mode == "prepare":
+        phases.append(
+            run_phase(
+                "agentic_ai_prepare",
+                build_prepare_agentic_command(args),
+                run_dir / "logs" / "agentic_ai_prepare.log",
+            )
+        )
+        if phases[-1].status == "failed":
+            return
+        phases.append(check_agentic_package(ROOT, run_dir))
+    elif args.agentic_ai_mode == "check":
+        phases.append(check_agentic_package(ROOT, run_dir))
+    else:
+        phases.append(PhaseResult(name="agentic_ai_readiness", status="skipped", detail="skipped by operator"))
+
+
+def run_go_live(args: argparse.Namespace, run_dir: Path) -> list[PhaseResult]:
+    """Run the complete manifest-to-live path with hard stops between gates."""
+
+    phases: list[PhaseResult] = []
+    add_agentic_phase(args, run_dir, phases)
+    if has_failed(phases):
+        return phases
+
+    if not args.skip_import_validation:
+        import_base = run_dir / "import_validation"
+        phase = run_phase(
+            "import_dry_run",
+            build_import_validation_command(args, import_base),
+            run_dir / "logs" / "import_dry_run.log",
+        )
+        phases.append(enrich_import_phase(phase, import_base, args.allow_skipped_imports))
+    else:
+        phases.append(PhaseResult(name="import_dry_run", status="skipped", detail="skipped by operator"))
+    if has_failed(phases):
+        return phases
+
+    upload_base = run_dir / "upload_drafts"
+    upload_phase = run_phase(
+        "upload_drafts",
+        build_import_upload_command(args, upload_base),
+        run_dir / "logs" / "upload_drafts.log",
+        env=env_with_files(args.env_file),
+    )
+    phases.append(enrich_import_upload_phase(upload_phase, upload_base, args.allow_skipped_imports))
+    if has_failed(phases):
+        return phases
+
+    uploaded_slugs = sorted({
+        str(book.get("slug") or "")
+        for book in phases[-1].data.get("uploaded_books", [])
+        if book.get("slug")
+    })
+    selected_gate_slugs = args.book_slug or uploaded_slugs
+    gate_args = clone_args(args, stage="preflight", book_slug=selected_gate_slugs, all_drafts=False)
+    gate_base = run_dir / "go_green_gates"
+    gate_phase = run_phase(
+        "go_green_gates",
+        build_production_command(gate_args, gate_base),
+        run_dir / "logs" / "go_green_gates.log",
+    )
+    phases.append(enrich_production_phase(gate_phase, gate_base, args.allow_skipped_imports))
+    if has_failed(phases):
+        return phases
+
+    go_slugs = sorted({
+        str(book.get("slug") or "")
+        for book in phases[-1].data.get("go_books", [])
+        if book.get("slug")
+    })
+    publish_book_slugs = args.book_slug or go_slugs
+    publish_args = clone_args(args, stage="publish", book_slug=publish_book_slugs)
+    publish_base = run_dir / "publish_go_books"
+    publish_phase = run_phase(
+        "publish_go_books",
+        build_production_command(publish_args, publish_base),
+        run_dir / "logs" / "publish_go_books.log",
+    )
+    phases.append(enrich_production_phase(publish_phase, publish_base, args.allow_skipped_imports))
+    if has_failed(phases):
+        return phases
+
+    published_slugs = phases[-1].data.get("published") or []
+    phases.append(verify_landing_slideshow_phase(args, run_dir, published_slugs))
+    if has_failed(phases):
+        return phases
+
+    if args.run_k6_smoke:
+        phases.append(run_k6_phase(args, run_dir))
+    return phases
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Automate Earnalism bulk book publishing phases.")
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST, help="Book import manifest. Defaults to ./book_import_manifest.json.")
-    parser.add_argument("--stage", choices=["preflight", "upload-drafts", "publish"], default="preflight")
+    parser.add_argument("--stage", choices=["preflight", "upload-drafts", "publish", "go-live"], default="preflight")
     parser.add_argument("--run-output-dir", type=Path, default=DEFAULT_RUN_ROOT)
     parser.add_argument("--api-url", default=os.environ.get("EARNALISM_API_URL", DEFAULT_API_URL))
     parser.add_argument("--frontend-url", default=os.environ.get("EARNALISM_FRONTEND_URL", DEFAULT_FRONTEND_URL))
@@ -490,47 +761,40 @@ def main() -> int:
     run_dir = args.run_output_dir.expanduser().resolve() / utc_stamp()
     run_dir.mkdir(parents=True, exist_ok=True)
 
-    phases: list[PhaseResult] = []
+    if args.stage == "go-live":
+        phases = run_go_live(args, run_dir)
+    else:
+        phases: list[PhaseResult] = []
 
-    if args.agentic_ai_mode == "prepare":
-        phases.append(
-            run_phase(
-                "agentic_ai_prepare",
-                build_prepare_agentic_command(args),
-                run_dir / "logs" / "agentic_ai_prepare.log",
+        add_agentic_phase(args, run_dir, phases)
+
+        if args.stage == "preflight" and not args.skip_import_validation:
+            import_base = run_dir / "import_validation"
+            phase = run_phase(
+                "import_dry_run",
+                build_import_validation_command(args, import_base),
+                run_dir / "logs" / "import_dry_run.log",
             )
-        )
-        phases.append(check_agentic_package(ROOT, run_dir))
-    elif args.agentic_ai_mode == "check":
-        phases.append(check_agentic_package(ROOT, run_dir))
-    else:
-        phases.append(PhaseResult(name="agentic_ai_readiness", status="skipped", detail="skipped by operator"))
+            phases.append(enrich_import_phase(phase, import_base, args.allow_skipped_imports))
+        elif args.stage == "preflight":
+            phases.append(PhaseResult(name="import_dry_run", status="skipped", detail="skipped by operator"))
 
-    if args.stage == "preflight" and not args.skip_import_validation:
-        import_base = run_dir / "import_validation"
-        phase = run_phase(
-            "import_dry_run",
-            build_import_validation_command(args, import_base),
-            run_dir / "logs" / "import_dry_run.log",
-        )
-        phases.append(enrich_import_phase(phase, import_base, args.allow_skipped_imports))
-    elif args.stage == "preflight":
-        phases.append(PhaseResult(name="import_dry_run", status="skipped", detail="skipped by operator"))
+        if not (args.stage == "preflight" and args.skip_production_gates):
+            production_base = run_dir / "production"
+            phase = run_phase(
+                "production_gates",
+                build_production_command(args, production_base),
+                run_dir / "logs" / "production_gates.log",
+                allowed_returncodes=(0,),
+            )
+            phases.append(enrich_production_phase(phase, production_base, args.allow_skipped_imports))
+            if args.stage == "publish" and not has_failed(phases):
+                phases.append(verify_landing_slideshow_phase(args, run_dir, phases[-1].data.get("published") or []))
+        else:
+            phases.append(PhaseResult(name="production_gates", status="skipped", detail="skipped by operator"))
 
-    if not (args.stage == "preflight" and args.skip_production_gates):
-        production_base = run_dir / "production"
-        phase = run_phase(
-            "production_gates",
-            build_production_command(args, production_base),
-            run_dir / "logs" / "production_gates.log",
-            allowed_returncodes=(0,),
-        )
-        phases.append(enrich_production_phase(phase, production_base, args.allow_skipped_imports))
-    else:
-        phases.append(PhaseResult(name="production_gates", status="skipped", detail="skipped by operator"))
-
-    if args.run_k6_smoke:
-        phases.append(run_k6_phase(args, run_dir))
+        if args.run_k6_smoke and not has_failed(phases):
+            phases.append(run_k6_phase(args, run_dir))
 
     phase_payloads = [
         {

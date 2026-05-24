@@ -966,6 +966,58 @@ textarea.input-elegant {
   color: var(--brand-gold-soft);
 }
 
+.live-cover-showcase--band {
+  padding: 1rem 0 0.95rem;
+}
+
+.live-cover-showcase--band::before {
+  inset: 0;
+  border-color: rgba(216, 185, 122, 0.38);
+  border-radius: 0.95rem;
+  background:
+    linear-gradient(135deg, rgba(253, 252, 248, 0.16), rgba(253, 252, 248, 0.04) 42%, rgba(197, 160, 89, 0.18)),
+    linear-gradient(180deg, rgba(45, 21, 24, 0.82), rgba(61, 34, 30, 0.78));
+  box-shadow: 0 38px 95px -48px rgba(31, 9, 14, 0.92), 0 1px 0 rgba(253, 252, 248, 0.12) inset;
+}
+
+.live-cover-showcase--band .live-cover-showcase__header {
+  padding: 0.25rem 1.45rem 0.8rem;
+}
+
+.live-cover-showcase--band .live-cover-marquee {
+  padding-bottom: 0.2rem;
+}
+
+.live-cover-showcase--band .live-cover-marquee__edge {
+  width: 5rem;
+}
+
+.live-cover-showcase--band .live-cover-card {
+  width: 8.65rem;
+  flex-basis: 8.65rem;
+  background: rgba(253, 252, 248, 0.09);
+}
+
+.live-cover-showcase--band .live-cover-card__body {
+  min-height: 4.35rem;
+}
+
+.live-cover-showcase--band .live-cover-showcase__cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  padding: 0.65rem 1.45rem 0;
+}
+
+.live-cover-showcase--band .live-cover-action {
+  min-width: 12rem;
+}
+
+.live-cover-showcase--band .live-cover-showcase__library {
+  padding-inline: 0.65rem;
+}
+
 .live-cover-skeleton {
   width: 9.6rem;
   height: 17.5rem;
@@ -1093,6 +1145,10 @@ textarea.input-elegant {
     max-width: 42rem;
   }
 
+  .live-cover-showcase--band {
+    max-width: none;
+  }
+
   .preview-payment-shell {
     grid-template-columns: auto minmax(0, 1fr);
   }
@@ -1120,6 +1176,20 @@ textarea.input-elegant {
   .live-cover-showcase__cta {
     grid-template-columns: 1fr;
     padding-inline: 1rem;
+  }
+
+  .live-cover-showcase--band .live-cover-showcase__cta {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-inline: 1rem;
+  }
+
+  .live-cover-showcase--band .live-cover-action {
+    min-width: 0;
+  }
+
+  .live-cover-showcase--band .live-cover-marquee__edge {
+    width: 2.5rem;
   }
 
   .preview-payment-shell {

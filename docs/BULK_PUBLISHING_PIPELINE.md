@@ -6,9 +6,47 @@
 - Legal-source import dry-run or draft upload through `scripts/import_books.py`.
 - Admin draft gates and optional live publish through `scripts/book_production_workflow.py`.
 - Existing HTTP QA smoke gates, with optional k6 post-publish smoke.
+- Landing-page slideshow sync verification through the public `/api/books` response.
 - One combined JSON/Markdown report under `output/bulk_publishing_pipeline/`.
 
-The pipeline keeps live publishing blocked by default. Stage `publish` still requires both `PUBLISH_LIVE=1` and `HUMAN_APPROVED=1`, enforced by the production workflow.
+The pipeline keeps live publishing blocked by default. Any live publish still requires both `PUBLISH_LIVE=1` and `HUMAN_APPROVED=1`, enforced by the production workflow and the single-command wrapper.
+
+## One-Command Go-Live
+
+Use this from macOS/Linux after updating `book_import_manifest.json` with legally cleared books:
+
+```bash
+PUBLISH_LIVE=1 HUMAN_APPROVED=1 scripts/earnalism_go_live.sh
+```
+
+That single command runs the full automated path:
+
+1. Checks or prepares the Agentic AI publication package.
+2. Dry-runs the manifest importer and blocks on rights, source, boilerplate, sanitization, chapter, or metadata failures.
+3. Uploads only validation-passing books as drafts.
+4. Runs production GO/NO-GO gates on the exact slugs returned by the upload report.
+5. Publishes only GO books.
+6. Verifies the newly published slugs are visible in public `/api/books` with cover images.
+7. Runs `scripts/k6_smoke.js`.
+8. Writes the combined report under `output/bulk_publishing_pipeline/<timestamp>/`.
+
+To use a different manifest or a narrowed slug set:
+
+```bash
+PUBLISH_LIVE=1 HUMAN_APPROVED=1 scripts/earnalism_go_live.sh path/to/manifest.json --book-slug my-book-slug
+```
+
+The wrapper intentionally requires `k6`. Install it once on macOS:
+
+```bash
+brew install k6
+```
+
+The pipeline loads `.secrets/earnalism-import.env` and `.secrets/earnalism-audio.env` for draft upload, production gates, publish, and audio steps. Make sure admin credentials are present there or exported in the shell.
+
+## Slideshow Behavior
+
+No separate slideshow edit is needed after publishing. The landing-page infinite slideshow reads the live public books endpoint at runtime. Once a book is published and appears in `/api/books` with a cover image, it is automatically included in the slideshow. The `landing_slideshow_sync` phase fails the go-live report if a newly published slug is missing from that public response or lacks a public cover.
 
 ## Preflight
 
@@ -57,6 +95,8 @@ PUBLISH_LIVE=1 HUMAN_APPROVED=1 python3 scripts/bulk_publishing_pipeline.py \
 ```
 
 Use `--book-slug` repeatedly or `--all-drafts` to control the publish batch. The report prints published slugs and any blocked gates.
+
+For normal operations, prefer the one-command `scripts/earnalism_go_live.sh` wrapper instead of manually sequencing `preflight`, `upload-drafts`, and `publish`.
 
 ## Agentic AI Package
 

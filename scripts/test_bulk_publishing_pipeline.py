@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from argparse import Namespace
 from pathlib import Path
+from unittest.mock import patch
 
 from scripts import bulk_publishing_pipeline as pipeline
 
@@ -43,6 +44,41 @@ class BulkPublishingPipelineTests(unittest.TestCase):
         self.assertIn("--book-slug", command)
         self.assertIn("agentic-ai-with-python", command)
         self.assertIn("--trust-existing-admin-rights", command)
+
+    def test_import_upload_command_uploads_and_updates_drafts(self) -> None:
+        args = Namespace(
+            manifest=Path("book_import_manifest.json"),
+            api_url="https://api.theearnalism.com",
+            update_existing_drafts=True,
+        )
+
+        command = pipeline.build_import_upload_command(args, Path("out/import"))
+
+        self.assertIn("--upload", command)
+        self.assertIn("--api-url", command)
+        self.assertIn("https://api.theearnalism.com", command)
+        self.assertIn("--update-existing-drafts", command)
+
+    def test_go_live_decision_requires_published_books(self) -> None:
+        phases = [
+            pipeline.PhaseResult(name="publish_go_books", status="passed", data={"published": ["ready-book"]}),
+            pipeline.PhaseResult(name="landing_slideshow_sync", status="passed"),
+        ]
+
+        self.assertEqual(pipeline.pipeline_decision("go-live", phases), "PUBLISHED_AND_SLIDESHOW_SYNCED")
+
+    def test_slideshow_sync_verifies_published_slugs_and_covers(self) -> None:
+        args = Namespace(api_url="https://api.theearnalism.com", frontend_url="https://theearnalism.com")
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(
+                pipeline,
+                "fetch_json_url",
+                return_value=[{"slug": "ready-book", "cover_image_url": "https://example.com/cover.png"}],
+            ):
+                phase = pipeline.verify_landing_slideshow_phase(args, Path(tmp), ["ready-book"])
+
+            self.assertEqual(phase.status, "passed")
+            self.assertTrue((Path(tmp) / "landing_slideshow_sync.json").exists())
 
     def test_skipped_import_books_fail_by_default(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

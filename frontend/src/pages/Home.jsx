@@ -90,7 +90,7 @@ export default function Home() {
   return (
     <div data-testid="home-page">
       {/* HERO */}
-      <section className="relative overflow-hidden">
+      <section className="relative isolate overflow-visible">
         <div className="absolute inset-0 -z-10">
           <img
             src={HERO_IMG}
@@ -122,36 +122,36 @@ export default function Home() {
             style={{ background: "linear-gradient(to top, #F4EFEA 0%, rgba(244,239,234,0.60) 55%, transparent 100%)" }}
           />
         </div>
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-32 lg:pt-36 pb-20 sm:pb-28 lg:pb-32">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <div className="max-w-3xl lg:col-span-7">
-              <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-6 sm:mb-7 flex items-center gap-3" data-testid="hero-overline">
-                <span className="h-px w-8 sm:w-10 bg-[var(--brand-gold)]/70" />
-                <span className="text-[0.85rem] sm:text-[0.95rem]">Volume I &middot; The Digital Library</span>
-              </div>
-              <h1 className="font-serif-light text-[2.6rem] sm:text-[3.5rem] md:text-6xl lg:text-7xl leading-[1.04] text-[#FDFCF8] tracking-tight text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]" data-testid="hero-headline">
-                The Earnalism <span className="italic-accent text-[var(--brand-gold-soft)]">Digital Library.</span>
-              </h1>
-              <p className="mt-5 sm:mt-6 font-serif-display italic text-lg sm:text-2xl text-[#F4EFEA]/90 max-w-xl leading-snug drop-shadow-[0_1px_18px_rgba(0,0,0,0.5)]">
-                Buy reading time. Read beautifully. Return whenever you wish.
-              </p>
-              <p className="mt-6 sm:mt-7 text-[0.95rem] sm:text-[1.05rem] text-[#F4EFEA]/80 max-w-md sm:max-w-lg leading-[1.75] font-light drop-shadow-[0_1px_18px_rgba(0,0,0,0.4)]">
-                A quiet digital reading room for books in business, self-growth, literature, spirituality, Bengali reading, and technology.
-              </p>
-              <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
-                <Link to={featured ? `/reader/${featured.slug}` : "/library"} className="btn-primary w-full sm:w-auto" data-testid="hero-cta-read">Start Reading</Link>
-                <Link to="/library" className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-library">Explore the Library</Link>
-              </div>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-32 lg:pt-36 pb-44 sm:pb-48 lg:pb-52">
+          <div className="max-w-3xl">
+            <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-6 sm:mb-7 flex items-center gap-3" data-testid="hero-overline">
+              <span className="h-px w-8 sm:w-10 bg-[var(--brand-gold)]/70" />
+              <span className="text-[0.85rem] sm:text-[0.95rem]">Volume I &middot; The Digital Library</span>
             </div>
-            <div className="lg:col-span-5">
-              <LiveCoverShowcase books={liveBooks} featured={featured} />
+            <h1 className="font-serif-light text-[2.6rem] sm:text-[3.5rem] md:text-6xl lg:text-7xl leading-[1.04] text-[#FDFCF8] tracking-tight text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]" data-testid="hero-headline">
+              The Earnalism <span className="italic-accent text-[var(--brand-gold-soft)]">Digital Library.</span>
+            </h1>
+            <p className="mt-5 sm:mt-6 font-serif-display italic text-lg sm:text-2xl text-[#F4EFEA]/90 max-w-xl leading-snug drop-shadow-[0_1px_18px_rgba(0,0,0,0.5)]">
+              Buy reading time. Read beautifully. Return whenever you wish.
+            </p>
+            <p className="mt-6 sm:mt-7 text-[0.95rem] sm:text-[1.05rem] text-[#F4EFEA]/80 max-w-md sm:max-w-lg leading-[1.75] font-light drop-shadow-[0_1px_18px_rgba(0,0,0,0.4)]">
+              A quiet digital reading room for books in business, self-growth, literature, spirituality, Bengali reading, and technology.
+            </p>
+            <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
+              <Link to={featured ? `/reader/${featured.slug}` : "/library"} className="btn-primary w-full sm:w-auto" data-testid="hero-cta-read">Start Reading</Link>
+              <Link to="/library" className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-library">Explore the Library</Link>
             </div>
+          </div>
+        </div>
+        <div className="absolute inset-x-0 bottom-0 translate-y-1/2 z-10 px-4 sm:px-6 lg:px-10">
+          <div className="max-w-7xl mx-auto">
+            <LiveCoverShowcase books={liveBooks} featured={featured} variant="band" />
           </div>
         </div>
       </section>
 
       {/* CATEGORIES */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32" id="collection">
+      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-56 sm:pt-44 lg:pt-48 pb-20 sm:pb-28 lg:pb-32" id="collection">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16 lg:mb-20">
           <div className="max-w-xl">
             <div className="overline mb-4">The Shelves</div>

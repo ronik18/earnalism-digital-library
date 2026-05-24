@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, CreditCard } from "lucide-react";
 import { optimizedImageUrl } from "../lib/images";
 
-function LiveCoverShowcase({ books = [], featured }) {
+function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
   const liveBooks = useMemo(() => {
     const seen = new Set();
     const candidates = [...books, featured].filter(Boolean).map((book) => ({
@@ -25,7 +25,7 @@ function LiveCoverShowcase({ books = [], featured }) {
 
   if (!primaryBook && liveBooks.length === 0) {
     return (
-      <div className="live-cover-showcase live-cover-showcase--loading" data-testid="live-cover-showcase-loading" aria-label="Loading live books">
+      <div className={`live-cover-showcase live-cover-showcase--${variant} live-cover-showcase--loading`} data-testid="live-cover-showcase-loading" aria-label="Loading live books">
         <div className="live-cover-showcase__rail">
           {[0, 1, 2, 3].map((item) => (
             <span key={item} className="live-cover-skeleton" />
@@ -36,7 +36,7 @@ function LiveCoverShowcase({ books = [], featured }) {
   }
 
   return (
-    <aside className="live-cover-showcase" data-testid="live-cover-showcase" aria-label="Live Earnalism books">
+    <aside className={`live-cover-showcase live-cover-showcase--${variant}`} data-testid="live-cover-showcase" aria-label="Live Earnalism books">
       <div className="live-cover-showcase__header">
         <span className="live-cover-showcase__kicker">Live now</span>
         <span>{liveBooks.length} reading rooms open</span>
