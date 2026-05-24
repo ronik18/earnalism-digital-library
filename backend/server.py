@@ -145,7 +145,7 @@ _rate_limit_next_sweep = 0.0
 # excludes authenticated/user/admin routes and should move to Redis if the API is
 # scaled across several Railway replicas.
 PUBLIC_CACHE_ENABLED = _env_bool("PUBLIC_CACHE_ENABLED", True)
-PUBLIC_CACHE_TTL_SECONDS = _env_int("PUBLIC_CACHE_TTL_SECONDS", 45)
+PUBLIC_CACHE_TTL_SECONDS = _env_int("PUBLIC_CACHE_TTL_SECONDS", 300)
 PUBLIC_CACHE_MAX_ENTRIES = _env_int("PUBLIC_CACHE_MAX_ENTRIES", 256)
 HOME_BOOK_LIMIT = _env_int("HOME_BOOK_LIMIT", 500)
 HEALTH_CACHE_TTL_SECONDS = _env_int("HEALTH_CACHE_TTL_SECONDS", 5)

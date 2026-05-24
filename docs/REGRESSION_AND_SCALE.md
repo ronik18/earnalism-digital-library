@@ -72,6 +72,7 @@ brew install k6
 
 - `/api/home` combines categories, featured book, and live books into one cached payload, reducing landing-page API fanout.
 - Public cache includes `/api/home`, catalog endpoints, free reader previews, payment pack metadata, and settings.
+- Server-side public cache TTL defaults to `PUBLIC_CACHE_TTL_SECONDS=300` so normal reading bursts do not rebuild catalog payloads mid-session; admin writes still clear the cache immediately.
 - MongoDB connection pooling defaults are raised and configurable:
   - `MONGODB_MAX_POOL_SIZE=200`
   - `MONGODB_MIN_POOL_SIZE=5`
