@@ -168,6 +168,22 @@ function SecurityAlertsAdmin() {
 
 const EMPTY_BOOK = { title: "", subtitle: "", author: "The Earnalism", category_slug: "business", short_description: "", description: "", cover_image_url: "", back_cover_image_url: "", estimated_reading_time: "", price_paperback: "", price_ebook: "", buy_url: "", formats: ["Ebook"], benefits: [], who_for: [], learnings: [], about_author: "", is_published: false };
 
+async function loadAdminBooks() {
+  try {
+    const { data } = await api.get("/admin/books/summary");
+    return Array.isArray(data) ? data : [];
+  } catch (err) {
+    if (err.response?.status !== 404) throw err;
+    const { data } = await api.get("/admin/books");
+    return Array.isArray(data)
+      ? data.map((book) => ({
+        ...book,
+        chapters: (book.chapters || []).map((chapter) => ({ ...chapter, content: "" })),
+      }))
+      : [];
+  }
+}
+
 function BooksAdmin() {
   const [books, setBooks] = useState([]);
   const [cats, setCats] = useState([]);
@@ -175,8 +191,20 @@ function BooksAdmin() {
   const [featured, setFeatured] = useState("");
 
   const load = async () => {
-    const [b, c, f] = await Promise.all([api.get("/admin/books/summary"), api.get("/categories"), api.get("/featured")]);
-    setBooks(b.data); setCats(c.data); setFeatured(f.data?.book?.slug || "");
+    const [booksResult, catsResult, featuredResult] = await Promise.allSettled([
+      loadAdminBooks(),
+      api.get("/categories"),
+      api.get("/featured"),
+    ]);
+
+    if (booksResult.status === "fulfilled") setBooks(booksResult.value);
+    else toast.error(formatError(booksResult.reason?.response?.data?.detail) || "Books could not be loaded.");
+
+    if (catsResult.status === "fulfilled") setCats(catsResult.value.data);
+    else setCats([]);
+
+    if (featuredResult.status === "fulfilled") setFeatured(featuredResult.value.data?.book?.slug || "");
+    else setFeatured("");
   };
   useEffect(() => { load(); }, []);
 
