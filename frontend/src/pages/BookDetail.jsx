@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Check, ChevronLeft, Clock, BookOpen } from "lucide-react";
+import { Check, ChevronLeft, Clock, BookOpen, CreditCard, Sparkles } from "lucide-react";
 import { api } from "../lib/api";
 import { optimizedImageUrl } from "../lib/images";
 import ShareButtons from "../components/ShareButtons";
@@ -30,6 +30,13 @@ export default function BookDetail() {
       });
     return () => controller.abort();
   }, [slug]);
+
+  useEffect(() => {
+    if (loading || !book || window.location.hash !== "#preview-payment") return;
+    window.requestAnimationFrame(() => {
+      document.getElementById("preview-payment")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [book, loading]);
 
   const bookSchema = book ? {
     "@context": "https://schema.org",
@@ -185,6 +192,42 @@ export default function BookDetail() {
           <div className="gold-rule mx-auto mt-8" />
         </section>
       )}
+
+      <section id="preview-payment" className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-6 pb-20 sm:pb-28" data-testid="preview-payment-section">
+        <div className="preview-payment-shell">
+          <div className="preview-payment-shell__cover" aria-hidden="true">
+            {book.cover_image_url ? (
+              <img src={optimizedImageUrl(book.cover_image_url, { width: 420, quality: 88 })} alt="" loading="lazy" decoding="async" />
+            ) : (
+              <span>E</span>
+            )}
+          </div>
+          <div className="preview-payment-shell__copy">
+            <div className="italic-eyebrow">Preview, then continue</div>
+            <h2>Open the first pages. Add reading time only when the book has earned your hour.</h2>
+            <p>
+              Start with the free preview, then move straight into a reading-time pack when you are ready to continue without losing the thread.
+            </p>
+            <div className="preview-payment-shell__proof">
+              <span><Sparkles size={14} strokeWidth={1.5} /> No subscription</span>
+              <span><Clock size={14} strokeWidth={1.5} /> Time runs only while reading</span>
+            </div>
+          </div>
+          <div className="preview-payment-shell__actions">
+            <Link to={`/reader/${book.slug}`} className="btn-secondary w-full justify-center" data-testid="bottom-read-preview">
+              <BookOpen size={15} strokeWidth={1.6} /> Read Preview
+            </Link>
+            <Link to={`/pricing?pack=1h&source=book_preview&book=${book.slug}`} className="btn-primary w-full justify-center" data-testid="bottom-buy-reading-time">
+              <CreditCard size={15} strokeWidth={1.6} /> Buy Reading Time
+            </Link>
+            {book.buy_url && (
+              <a href={book.buy_url} target="_blank" rel="noreferrer" className="preview-payment-shell__external" data-testid="bottom-external-buy">
+                Publisher checkout
+              </a>
+            )}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

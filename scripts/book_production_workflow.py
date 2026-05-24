@@ -425,6 +425,8 @@ def run_importer(args: argparse.Namespace, run_dir: Path) -> None:
         sys.executable,
         "scripts/import_books.py",
         str(args.manifest),
+        "--output-dir",
+        str(run_dir / "import_books"),
         "--upload",
         "--api-url",
         args.api_url,

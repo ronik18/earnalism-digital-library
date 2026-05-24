@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen, Sparkles, Compass } from "lucide-react";
 import { toast } from "sonner";
 import { api, formatError } from "../lib/api";
 import { optimizedImageUrl } from "../lib/images";
+import LiveCoverShowcase from "../components/LiveCoverShowcase";
 import useSEO from "../hooks/useSEO";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1920&q=90";
@@ -41,6 +42,7 @@ function shelfImageFor(category) {
 export default function Home() {
   const [categories, setCategories] = useState([]);
   const [featured, setFeatured] = useState(null);
+  const [liveBooks, setLiveBooks] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -53,13 +55,21 @@ export default function Home() {
 
   useEffect(() => {
     const controller = new AbortController();
-    Promise.all([
+    Promise.allSettled([
       api.get("/categories", { signal: controller.signal }),
       api.get("/featured", { signal: controller.signal }),
+      api.get("/books", { signal: controller.signal }),
     ])
-      .then(([categoryRes, featuredRes]) => {
-        setCategories(categoryRes.data || []);
-        setFeatured(featuredRes.data?.book || null);
+      .then(([categoryRes, featuredRes, booksRes]) => {
+        if (categoryRes.status === "fulfilled") {
+          setCategories(categoryRes.value.data || []);
+        }
+        if (featuredRes.status === "fulfilled") {
+          setFeatured(featuredRes.value.data?.book || null);
+        }
+        if (booksRes.status === "fulfilled") {
+          setLiveBooks(booksRes.value.data || []);
+        }
       })
       .catch(() => {});
     return () => controller.abort();
@@ -112,24 +122,29 @@ export default function Home() {
             style={{ background: "linear-gradient(to top, #F4EFEA 0%, rgba(244,239,234,0.60) 55%, transparent 100%)" }}
           />
         </div>
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-36 lg:pt-44 pb-28 sm:pb-44 lg:pb-52">
-          <div className="max-w-3xl">
-            <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-6 sm:mb-7 flex items-center gap-3" data-testid="hero-overline">
-              <span className="h-px w-8 sm:w-10 bg-[var(--brand-gold)]/70" />
-              <span className="text-[0.85rem] sm:text-[0.95rem]">Volume I &middot; The Digital Library</span>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-32 lg:pt-36 pb-20 sm:pb-28 lg:pb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div className="max-w-3xl lg:col-span-7">
+              <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-6 sm:mb-7 flex items-center gap-3" data-testid="hero-overline">
+                <span className="h-px w-8 sm:w-10 bg-[var(--brand-gold)]/70" />
+                <span className="text-[0.85rem] sm:text-[0.95rem]">Volume I &middot; The Digital Library</span>
+              </div>
+              <h1 className="font-serif-light text-[2.6rem] sm:text-[3.5rem] md:text-6xl lg:text-7xl leading-[1.04] text-[#FDFCF8] tracking-tight text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]" data-testid="hero-headline">
+                The Earnalism <span className="italic-accent text-[var(--brand-gold-soft)]">Digital Library.</span>
+              </h1>
+              <p className="mt-5 sm:mt-6 font-serif-display italic text-lg sm:text-2xl text-[#F4EFEA]/90 max-w-xl leading-snug drop-shadow-[0_1px_18px_rgba(0,0,0,0.5)]">
+                Buy reading time. Read beautifully. Return whenever you wish.
+              </p>
+              <p className="mt-6 sm:mt-7 text-[0.95rem] sm:text-[1.05rem] text-[#F4EFEA]/80 max-w-md sm:max-w-lg leading-[1.75] font-light drop-shadow-[0_1px_18px_rgba(0,0,0,0.4)]">
+                A quiet digital reading room for books in business, self-growth, literature, spirituality, Bengali reading, and technology.
+              </p>
+              <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
+                <Link to={featured ? `/reader/${featured.slug}` : "/library"} className="btn-primary w-full sm:w-auto" data-testid="hero-cta-read">Start Reading</Link>
+                <Link to="/library" className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-library">Explore the Library</Link>
+              </div>
             </div>
-            <h1 className="font-serif-light text-[2.6rem] sm:text-[3.5rem] md:text-6xl lg:text-7xl leading-[1.04] text-[#FDFCF8] tracking-tight text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]" data-testid="hero-headline">
-              The Earnalism <span className="italic-accent text-[var(--brand-gold-soft)]">Digital Library.</span>
-            </h1>
-            <p className="mt-5 sm:mt-6 font-serif-display italic text-lg sm:text-2xl text-[#F4EFEA]/90 max-w-xl leading-snug drop-shadow-[0_1px_18px_rgba(0,0,0,0.5)]">
-              Buy reading time. Read beautifully. Return whenever you wish.
-            </p>
-            <p className="mt-6 sm:mt-7 text-[0.95rem] sm:text-[1.05rem] text-[#F4EFEA]/80 max-w-md sm:max-w-lg leading-[1.75] font-light drop-shadow-[0_1px_18px_rgba(0,0,0,0.4)]">
-              A quiet digital reading room for books in business, self-growth, literature, spirituality, Bengali reading, and technology.
-            </p>
-            <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
-              <Link to={featured ? `/reader/${featured.slug}` : "/library"} className="btn-primary w-full sm:w-auto" data-testid="hero-cta-read">Start Reading</Link>
-              <Link to="/library" className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-library">Explore the Library</Link>
+            <div className="lg:col-span-5">
+              <LiveCoverShowcase books={liveBooks} featured={featured} />
             </div>
           </div>
         </div>
