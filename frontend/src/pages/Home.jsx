@@ -55,12 +55,20 @@ export default function Home() {
 
   useEffect(() => {
     const controller = new AbortController();
-    Promise.allSettled([
-      api.get("/categories", { signal: controller.signal }),
-      api.get("/featured", { signal: controller.signal }),
-      api.get("/books", { signal: controller.signal }),
-    ])
-      .then(([categoryRes, featuredRes, booksRes]) => {
+
+    async function loadHomePayload() {
+      try {
+        const { data } = await api.get("/home", { signal: controller.signal });
+        setCategories(data?.categories || []);
+        setFeatured(data?.featured?.book || null);
+        setLiveBooks(data?.books || []);
+      } catch (err) {
+        if (controller.signal.aborted) return;
+        const [categoryRes, featuredRes, booksRes] = await Promise.allSettled([
+          api.get("/categories", { signal: controller.signal }),
+          api.get("/featured", { signal: controller.signal }),
+          api.get("/books", { signal: controller.signal }),
+        ]);
         if (categoryRes.status === "fulfilled") {
           setCategories(categoryRes.value.data || []);
         }
@@ -70,8 +78,10 @@ export default function Home() {
         if (booksRes.status === "fulfilled") {
           setLiveBooks(booksRes.value.data || []);
         }
-      })
-      .catch(() => {});
+      }
+    }
+
+    loadHomePayload().catch(() => {});
     return () => controller.abort();
   }, []);
 

@@ -44,6 +44,8 @@ brew install k6
 
 The pipeline loads `.secrets/earnalism-import.env` and `.secrets/earnalism-audio.env` for draft upload, production gates, publish, and audio steps. Make sure admin credentials are present there or exported in the shell.
 
+For full platform regression and 100-user load gates, see `docs/REGRESSION_AND_SCALE.md`.
+
 ## Slideshow Behavior
 
 No separate slideshow edit is needed after publishing. The landing-page infinite slideshow reads the live public books endpoint at runtime. Once a book is published and appears in `/api/books` with a cover image, it is automatically included in the slideshow. The `landing_slideshow_sync` phase fails the go-live report if a newly published slug is missing from that public response or lacks a public cover.

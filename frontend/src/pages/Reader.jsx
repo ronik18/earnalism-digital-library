@@ -1716,6 +1716,7 @@ export default function Reader() {
     <div
       ref={scrollContainerRef}
       className={readerThemeClass}
+      data-testid="reader-page"
       data-reader-language={isBengali ? 'bn' : 'en'}
       style={{
         '--reader-font-size': FONT_SIZES[fontSizeIdx].size,

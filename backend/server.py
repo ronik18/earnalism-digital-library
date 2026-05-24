@@ -78,7 +78,16 @@ def _database_name_from_mongo_url(url: str) -> str:
     db_name = parsed.path.lstrip("/").split("/", 1)[0]
     return db_name or "earnalism"
 
-client = AsyncIOMotorClient(mongo_url)
+MONGODB_MAX_POOL_SIZE = _env_int("MONGODB_MAX_POOL_SIZE", 200)
+MONGODB_MIN_POOL_SIZE = _env_int("MONGODB_MIN_POOL_SIZE", 5, minimum=0)
+MONGODB_SERVER_SELECTION_TIMEOUT_MS = _env_int("MONGODB_SERVER_SELECTION_TIMEOUT_MS", 5000)
+client = AsyncIOMotorClient(
+    mongo_url,
+    maxPoolSize=MONGODB_MAX_POOL_SIZE,
+    minPoolSize=min(MONGODB_MIN_POOL_SIZE, MONGODB_MAX_POOL_SIZE),
+    serverSelectionTimeoutMS=MONGODB_SERVER_SELECTION_TIMEOUT_MS,
+    uuidRepresentation="standard",
+)
 db = client[os.environ.get("DB_NAME") or _database_name_from_mongo_url(mongo_url)]
 
 JWT_SECRET = os.environ.get("JWT_SECRET")
@@ -122,11 +131,11 @@ RAZORPAY_MODE = os.environ.get("RAZORPAY_MODE", "test").strip().lower()
 # counter to Redis or an edge/WAF layer so limits are shared across replicas.
 RATE_LIMIT_ENABLED = _env_bool("RATE_LIMIT_ENABLED", True)
 RATE_LIMIT_WINDOW_SECONDS = _env_int("RATE_LIMIT_WINDOW_SECONDS", 60)
-RATE_LIMIT_DEFAULT_PER_MINUTE = _env_int("RATE_LIMIT_DEFAULT_PER_MINUTE", 240)
-RATE_LIMIT_AUTH_PER_MINUTE = _env_int("RATE_LIMIT_AUTH_PER_MINUTE", 20)
-RATE_LIMIT_PAYMENT_PER_MINUTE = _env_int("RATE_LIMIT_PAYMENT_PER_MINUTE", 60)
-RATE_LIMIT_WEBHOOK_PER_MINUTE = _env_int("RATE_LIMIT_WEBHOOK_PER_MINUTE", 300)
-RATE_LIMIT_UPLOAD_PER_MINUTE = _env_int("RATE_LIMIT_UPLOAD_PER_MINUTE", 30)
+RATE_LIMIT_DEFAULT_PER_MINUTE = _env_int("RATE_LIMIT_DEFAULT_PER_MINUTE", 1200)
+RATE_LIMIT_AUTH_PER_MINUTE = _env_int("RATE_LIMIT_AUTH_PER_MINUTE", 120)
+RATE_LIMIT_PAYMENT_PER_MINUTE = _env_int("RATE_LIMIT_PAYMENT_PER_MINUTE", 300)
+RATE_LIMIT_WEBHOOK_PER_MINUTE = _env_int("RATE_LIMIT_WEBHOOK_PER_MINUTE", 600)
+RATE_LIMIT_UPLOAD_PER_MINUTE = _env_int("RATE_LIMIT_UPLOAD_PER_MINUTE", 60)
 _rate_limit_hits: Dict[str, Deque[float]] = defaultdict(deque)
 _rate_limit_next_sweep = 0.0
 
@@ -136,6 +145,7 @@ _rate_limit_next_sweep = 0.0
 PUBLIC_CACHE_ENABLED = _env_bool("PUBLIC_CACHE_ENABLED", True)
 PUBLIC_CACHE_TTL_SECONDS = _env_int("PUBLIC_CACHE_TTL_SECONDS", 45)
 PUBLIC_CACHE_MAX_ENTRIES = _env_int("PUBLIC_CACHE_MAX_ENTRIES", 256)
+HOME_BOOK_LIMIT = _env_int("HOME_BOOK_LIMIT", 500)
 HEALTH_CACHE_TTL_SECONDS = _env_int("HEALTH_CACHE_TTL_SECONDS", 5)
 _public_cache: "OrderedDict[str, Tuple[float, Any]]" = OrderedDict()
 _health_cache: dict = {"expires_at": 0.0, "payload": None}
@@ -504,6 +514,7 @@ BOOK_LIST_PROJECTION = {
     "chapters": 0,
 }
 PUBLIC_CACHE_PATHS = {
+    "/api/home",
     "/api/categories",
     "/api/books",
     "/api/blog",
@@ -2202,6 +2213,47 @@ async def health_check():
 @app.get("/health")
 async def root_health_check():
     return await health_check()
+
+
+@api.get("/home")
+async def get_home_payload():
+    """Cached landing-page payload.
+
+    The home page needs categories, live books and a featured book immediately.
+    Returning them together cuts the first-load API fanout from three database
+    reads to one cached request while keeping the older public endpoints intact.
+    """
+    cache_key = _public_cache_key("home_payload")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+
+    categories = await db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200)
+    books_docs = await db.books.find(
+        {"is_published": True},
+        BOOK_LIST_PROJECTION,
+    ).sort("created_at", -1).to_list(HOME_BOOK_LIMIT)
+    books = [_strip_all_chapter_content(doc) for doc in books_docs]
+
+    featured_book = None
+    setting = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
+    featured_slug = (setting or {}).get("book_slug")
+    if featured_slug:
+        featured_book = next((book for book in books if book.get("slug") == featured_slug), None)
+        if featured_book is None:
+            doc = await db.books.find_one(
+                {"slug": featured_slug, "is_published": True},
+                BOOK_LIST_PROJECTION,
+            )
+            featured_book = _strip_all_chapter_content(doc) if doc else None
+
+    result = {
+        "categories": categories,
+        "books": books,
+        "featured": {"book": featured_book},
+    }
+    _public_cache_set(cache_key, result)
+    return result
 
 
 @api.post("/analytics/events")
@@ -4154,7 +4206,7 @@ app.add_middleware(
         "X-Razorpay-Event-Id",
         "X-Razorpay-Signature",
     ],
-    expose_headers=["X-Request-ID"],
+    expose_headers=["X-Request-ID", "X-Response-Time-ms", "Server-Timing", "Cache-Control"],
 )
 
 

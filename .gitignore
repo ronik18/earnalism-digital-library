@@ -41,6 +41,17 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 dump.rdb
+test-results/
+audio_output/
+exports/
+final_package/
+outputs/
+code_companion/
+source/
+output/**
+!output/
+!output/call_of_the_wild/
+!output/call_of_the_wild/go_live_qa_report.md
 output/book_import/
 book_import_manifest.json
 frontend/book_import_manifest.json
