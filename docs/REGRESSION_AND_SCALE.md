@@ -71,12 +71,15 @@ brew install k6
 ## Performance Changes Supporting 100 Concurrent Users
 
 - `/api/home` combines categories, featured book, and live books into one cached payload, reducing landing-page API fanout.
-- Public cache includes `/api/home`, catalog endpoints, payment pack metadata, and settings.
+- Public cache includes `/api/home`, catalog endpoints, free reader previews, payment pack metadata, and settings.
 - MongoDB connection pooling defaults are raised and configurable:
   - `MONGODB_MAX_POOL_SIZE=200`
   - `MONGODB_MIN_POOL_SIZE=5`
   - `MONGODB_SERVER_SELECTION_TIMEOUT_MS=5000`
-- API rate-limit defaults are raised for 100-user bursts while remaining configurable by environment.
+- API rate-limit defaults are raised for 100-user bursts while remaining configurable by environment:
+  - `RATE_LIMIT_PUBLIC_PER_MINUTE=30000` for cached catalog, home, public settings, and pack metadata.
+  - `RATE_LIMIT_READER_PER_MINUTE=15000` for reader chapter checks and preview access.
+  - Auth, upload, webhook, and payment mutation limits stay on separate tighter buckets.
 - The frontend prefetches high-intent route bundles during idle time: library, book detail, reader, pricing, and login.
 
 No finite test suite can mathematically prove every future use case forever. The gate is designed to cover the current critical Earnalism flows: browse, preview, read, account auth surfaces, payment entry, publishing pipeline safety, and production load capacity signals.

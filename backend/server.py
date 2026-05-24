@@ -132,6 +132,8 @@ RAZORPAY_MODE = os.environ.get("RAZORPAY_MODE", "test").strip().lower()
 RATE_LIMIT_ENABLED = _env_bool("RATE_LIMIT_ENABLED", True)
 RATE_LIMIT_WINDOW_SECONDS = _env_int("RATE_LIMIT_WINDOW_SECONDS", 60)
 RATE_LIMIT_DEFAULT_PER_MINUTE = _env_int("RATE_LIMIT_DEFAULT_PER_MINUTE", 1200)
+RATE_LIMIT_PUBLIC_PER_MINUTE = _env_int("RATE_LIMIT_PUBLIC_PER_MINUTE", 30000)
+RATE_LIMIT_READER_PER_MINUTE = _env_int("RATE_LIMIT_READER_PER_MINUTE", 15000)
 RATE_LIMIT_AUTH_PER_MINUTE = _env_int("RATE_LIMIT_AUTH_PER_MINUTE", 120)
 RATE_LIMIT_PAYMENT_PER_MINUTE = _env_int("RATE_LIMIT_PAYMENT_PER_MINUTE", 300)
 RATE_LIMIT_WEBHOOK_PER_MINUTE = _env_int("RATE_LIMIT_WEBHOOK_PER_MINUTE", 600)
@@ -1954,6 +1956,10 @@ def _client_ip(request: Request) -> str:
 
 
 def _rate_limit_scope(path: str) -> Tuple[str, int]:
+    if _is_public_cache_path(path):
+        return "public", RATE_LIMIT_PUBLIC_PER_MINUTE
+    if path.startswith("/api/reader/chapter/"):
+        return "reader", RATE_LIMIT_READER_PER_MINUTE
     if path.startswith("/api/auth/"):
         return "auth", RATE_LIMIT_AUTH_PER_MINUTE
     if path == "/api/payments/webhook":
@@ -3681,7 +3687,13 @@ async def reader_get_chapter(
 
     # Free preview is open to everyone — no auth, no deduction.
     if is_preview and not is_admin_preview:
-        return await unlocked_chapter_response(True)
+        cache_key = _public_cache_key("reader_preview_chapter", slug=slug, chapter_id=chapter_id)
+        cached = _public_cache_get(cache_key)
+        if cached is not None:
+            return cached
+        result = await unlocked_chapter_response(True)
+        _public_cache_set(cache_key, result)
+        return result
 
     # Admin always has full access (admin reader preview).
     if is_admin_preview:
