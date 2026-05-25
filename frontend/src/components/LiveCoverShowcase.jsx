@@ -1,9 +1,21 @@
-import { memo, useMemo } from "react";
+import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, CreditCard } from "lucide-react";
 import { optimizedImageUrl } from "../lib/images";
 
 function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
+  const marqueeRef = useRef(null);
+  const trackRef = useRef(null);
+  const rafRef = useRef(0);
+  const setWidthRef = useRef(0);
+  const hoverRef = useRef(false);
+  const draggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartScrollRef = useRef(0);
+  const pointerIdRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+
   const liveBooks = useMemo(() => {
     const seen = new Set();
     const candidates = [...books, featured].filter(Boolean).map((book) => ({
@@ -20,8 +32,170 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
       });
   }, [books, featured]);
 
-  const marqueeBooks = liveBooks.length > 0 ? [...liveBooks, ...liveBooks] : [];
+  const marqueeBooks = useMemo(
+    () => (liveBooks.length > 0 ? [...liveBooks, ...liveBooks, ...liveBooks] : []),
+    [liveBooks],
+  );
   const primaryBook = liveBooks[0] || featured;
+
+  const measureSetWidth = useCallback(() => {
+    const marquee = marqueeRef.current;
+    if (!marquee || liveBooks.length === 0) return 0;
+    const oneSetWidth = marquee.scrollWidth / 3;
+    setWidthRef.current = oneSetWidth;
+    return oneSetWidth;
+  }, [liveBooks.length]);
+
+  const resetToMiddleIfNeeded = useCallback((adjustDragAnchor = false) => {
+    const marquee = marqueeRef.current;
+    const oneSetWidth = setWidthRef.current || measureSetWidth();
+    if (!marquee || !oneSetWidth) return;
+
+    let nextScrollLeft = marquee.scrollLeft;
+    let anchorAdjustment = 0;
+
+    while (nextScrollLeft >= oneSetWidth * 2) {
+      nextScrollLeft -= oneSetWidth;
+      anchorAdjustment -= oneSetWidth;
+    }
+
+    while (nextScrollLeft <= 0) {
+      nextScrollLeft += oneSetWidth;
+      anchorAdjustment += oneSetWidth;
+    }
+
+    if (nextScrollLeft !== marquee.scrollLeft) {
+      marquee.scrollLeft = nextScrollLeft;
+      if (adjustDragAnchor) {
+        dragStartScrollRef.current += anchorAdjustment;
+      }
+    }
+  }, [measureSetWidth]);
+
+  useLayoutEffect(() => {
+    const marquee = marqueeRef.current;
+    if (!marquee || liveBooks.length === 0) return undefined;
+
+    let frame = 0;
+    const centerRail = () => {
+      const oneSetWidth = measureSetWidth();
+      if (oneSetWidth) {
+        marquee.scrollLeft = oneSetWidth;
+      }
+    };
+
+    frame = window.requestAnimationFrame(centerRail);
+    const observer = typeof ResizeObserver !== "undefined"
+      ? new ResizeObserver(centerRail)
+      : null;
+    if (observer) {
+      observer.observe(marquee);
+      if (trackRef.current) observer.observe(trackRef.current);
+    }
+    window.addEventListener("resize", centerRail);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("resize", centerRail);
+      if (observer) observer.disconnect();
+    };
+  }, [liveBooks.length, measureSetWidth]);
+
+  useEffect(() => {
+    const marquee = marqueeRef.current;
+    if (!marquee || liveBooks.length === 0) return undefined;
+
+    const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    let lastTimestamp = 0;
+
+    const animate = (timestamp) => {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const elapsed = timestamp - lastTimestamp;
+      lastTimestamp = timestamp;
+
+      if (!prefersReducedMotion && !isPaused && !draggingRef.current) {
+        resetToMiddleIfNeeded();
+        marquee.scrollLeft += elapsed / 16;
+        resetToMiddleIfNeeded();
+      }
+
+      rafRef.current = window.requestAnimationFrame(animate);
+    };
+
+    rafRef.current = window.requestAnimationFrame(animate);
+    return () => {
+      window.cancelAnimationFrame(rafRef.current);
+    };
+  }, [isPaused, liveBooks.length, resetToMiddleIfNeeded]);
+
+  const pauseRail = useCallback(() => setIsPaused(true), []);
+
+  const resumeRail = useCallback(() => {
+    if (!hoverRef.current && !draggingRef.current) {
+      setIsPaused(false);
+    }
+  }, []);
+
+  const handlePointerDown = useCallback((event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    const marquee = marqueeRef.current;
+    if (!marquee) return;
+
+    draggingRef.current = true;
+    pointerIdRef.current = event.pointerId;
+    dragStartXRef.current = event.clientX;
+    dragStartScrollRef.current = marquee.scrollLeft;
+    setIsDragging(true);
+    setIsPaused(true);
+    marquee.setPointerCapture?.(event.pointerId);
+  }, []);
+
+  const handlePointerMove = useCallback((event) => {
+    const marquee = marqueeRef.current;
+    if (!marquee || !draggingRef.current || pointerIdRef.current !== event.pointerId) return;
+
+    event.preventDefault();
+    const deltaX = event.clientX - dragStartXRef.current;
+    marquee.scrollLeft = dragStartScrollRef.current - deltaX;
+    resetToMiddleIfNeeded(true);
+  }, [resetToMiddleIfNeeded]);
+
+  const handlePointerUp = useCallback((event) => {
+    const marquee = marqueeRef.current;
+    if (marquee && pointerIdRef.current === event.pointerId) {
+      marquee.releasePointerCapture?.(event.pointerId);
+    }
+    draggingRef.current = false;
+    pointerIdRef.current = null;
+    setIsDragging(false);
+    resumeRail();
+  }, [resumeRail]);
+
+  const handleMouseEnter = useCallback(() => {
+    hoverRef.current = true;
+    pauseRail();
+  }, [pauseRail]);
+
+  const handleMouseLeave = useCallback(() => {
+    hoverRef.current = false;
+    resumeRail();
+  }, [resumeRail]);
+
+  const handleWheel = useCallback((event) => {
+    const marquee = marqueeRef.current;
+    if (!marquee) return;
+
+    const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY) || event.shiftKey;
+    if (!horizontalIntent) return;
+
+    event.preventDefault();
+    marquee.scrollLeft += event.deltaX || event.deltaY;
+    resetToMiddleIfNeeded();
+  }, [resetToMiddleIfNeeded]);
+
+  const handleDragStart = useCallback((event) => {
+    event.preventDefault();
+  }, []);
 
   if (!primaryBook && liveBooks.length === 0) {
     return (
@@ -42,25 +216,51 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
         <span>{liveBooks.length} reading rooms open</span>
       </div>
 
-      <div className="live-cover-marquee" aria-label="Live book cover slideshow">
+      <div
+        ref={marqueeRef}
+        className="live-cover-marquee"
+        aria-label="Live book cover slideshow"
+        onBlur={resumeRail}
+        onFocus={pauseRail}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onPointerCancel={handlePointerUp}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onDragStart={handleDragStart}
+        onWheel={handleWheel}
+        style={{
+          cursor: isDragging ? "grabbing" : "grab",
+          overflowX: "hidden",
+          touchAction: "pan-y",
+          userSelect: isDragging ? "none" : undefined,
+        }}
+      >
         <div className="live-cover-marquee__edge live-cover-marquee__edge--left" aria-hidden="true" />
-        <div className="live-cover-marquee__track">
+        <div
+          ref={trackRef}
+          className="live-cover-marquee__track"
+          style={{ animation: "none", transform: "none" }}
+        >
           {marqueeBooks.map((book, index) => {
             const cover = book.cover_image_url || book.cover_url || book.thumbnail_url;
-            const isDuplicate = index >= liveBooks.length;
+            const copyIndex = Math.floor(index / liveBooks.length);
+            const isInteractiveCopy = copyIndex === 1;
             return (
               <article
                 key={`${book.slug}-${index}`}
                 className="live-cover-card"
-                aria-hidden={isDuplicate ? "true" : undefined}
-                data-testid={isDuplicate ? undefined : `live-cover-card-${book.slug}`}
+                aria-hidden={isInteractiveCopy ? undefined : "true"}
+                data-testid={isInteractiveCopy ? `live-cover-card-${book.slug}` : undefined}
               >
                 <Link
                   to={`/reader/${book.slug}`}
-                  tabIndex={isDuplicate ? -1 : 0}
+                  tabIndex={isInteractiveCopy ? 0 : -1}
                   className="live-cover-card__link"
                   aria-label={`Read preview of ${book.title}`}
-                  data-testid={isDuplicate ? undefined : `live-cover-preview-${book.slug}`}
+                  data-testid={isInteractiveCopy ? `live-cover-preview-${book.slug}` : undefined}
+                  draggable="false"
                 >
                   <span className="live-cover-card__cover">
                     <img
@@ -68,6 +268,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
                       alt={book.title}
                       loading={index < 4 ? "eager" : "lazy"}
                       decoding="async"
+                      draggable="false"
                     />
                     <span className="live-cover-card__preview">
                       <BookOpen size={13} strokeWidth={1.6} /> Preview
