@@ -7,6 +7,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from scripts import bulk_publishing_pipeline as pipeline
+from scripts import import_books
 
 
 class BulkPublishingPipelineTests(unittest.TestCase):
@@ -58,6 +59,28 @@ class BulkPublishingPipelineTests(unittest.TestCase):
         self.assertIn("--api-url", command)
         self.assertIn("https://api.theearnalism.com", command)
         self.assertIn("--update-existing-drafts", command)
+
+    def test_importer_maps_legacy_book_categories_to_current_shelves(self) -> None:
+        warnings: list[str] = []
+        meta = import_books.metadata_defaults(
+            {"title": "A Story", "author": "A Writer", "category_slug": "children-classics"},
+            word_count=1200,
+            warnings=warnings,
+        )
+
+        self.assertEqual(meta["category_slug"], "young-readers")
+        self.assertTrue(any("migrated to 'young-readers'" in warning for warning in warnings))
+
+    def test_importer_defaults_unknown_book_categories_to_literary_fiction(self) -> None:
+        warnings: list[str] = []
+        meta = import_books.metadata_defaults(
+            {"title": "A Story", "author": "A Writer", "category_slug": "uncategorized"},
+            word_count=1200,
+            warnings=warnings,
+        )
+
+        self.assertEqual(meta["category_slug"], "literary-fiction")
+        self.assertTrue(any("not a current shelf" in warning for warning in warnings))
 
     def test_go_live_decision_requires_published_books(self) -> None:
         phases = [

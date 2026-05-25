@@ -146,6 +146,48 @@ def slugify(value: str, fallback: str | None = None) -> str:
     slug = re.sub(r"[\s_-]+", "-", value).strip("-")
     return slug or fallback or f"book-{uuid.uuid4().hex[:8]}"
 
+DEFAULT_CATEGORY_SLUG = "literary-fiction"
+CANONICAL_CATEGORY_SLUGS = {
+    "bengali-classics",
+    "literary-fiction",
+    "young-readers",
+    "business",
+    "technology",
+    "history-strategy",
+    "adventure",
+    "science-fiction",
+    "gothic-fiction",
+}
+LEGACY_CATEGORY_SLUG_MAP = {
+    "classic-literature": "literary-fiction",
+    "literature": "literary-fiction",
+    "children-classics": "young-readers",
+    "children": "young-readers",
+    "business-entrepreneurship": "business",
+    "technology-ai": "technology",
+    "history-politics": "history-strategy",
+    "bengali": "bengali-classics",
+    "bengali-reading": "bengali-classics",
+}
+
+
+def category_value_to_slug(value: str) -> str:
+    value = normalize_text(value)
+    value = re.sub(r"[^a-zA-Z0-9\s-]", "", value).strip().lower()
+    return re.sub(r"[\s_-]+", "-", value).strip("-")
+
+
+def normalize_category_slug(value: str) -> str:
+    slug = category_value_to_slug(value)
+    return LEGACY_CATEGORY_SLUG_MAP.get(slug, slug)
+
+
+def canonical_category_slug(value: str, default: str = DEFAULT_CATEGORY_SLUG) -> str:
+    slug = normalize_category_slug(value)
+    if slug in CANONICAL_CATEGORY_SLUGS:
+        return slug
+    return default
+
 
 def ascii_slug(value: str) -> str:
     value = normalize_text(value)
@@ -912,9 +954,15 @@ def minimum_word_count_for(book: dict[str, Any]) -> int:
 def metadata_defaults(book: dict[str, Any], word_count: int, warnings: list[str]) -> dict[str, Any]:
     title = normalize_text(book.get("title", "")).strip()
     author = normalize_text(book.get("author", "")).strip()
-    category = normalize_text(book.get("category_slug", "")).strip() or "literary-fiction"
-    if not book.get("category_slug"):
+    category_input = normalize_text(book.get("category_slug", "")).strip()
+    category_candidate = normalize_category_slug(category_input)
+    category = canonical_category_slug(category_input)
+    if not category_input:
         warnings.append("category_slug missing; defaulted to literary-fiction.")
+    elif category_value_to_slug(category_input) in LEGACY_CATEGORY_SLUG_MAP:
+        warnings.append(f"category_slug '{category_input}' migrated to '{category}'.")
+    elif category_candidate not in CANONICAL_CATEGORY_SLUGS:
+        warnings.append(f"category_slug '{category_input}' is not a current shelf; defaulted to '{category}'.")
     about_author = normalize_text(book.get("about_author", "")).strip()
     if not about_author:
         warnings.append("about_author missing; left empty for human review.")

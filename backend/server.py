@@ -501,6 +501,48 @@ def slugify(text: str, fallback: Optional[str] = None) -> str:
     slug = re.sub(r"[\s_-]+", "-", text).strip("-")
     return slug or fallback or str(uuid.uuid4())[:8]
 
+DEFAULT_CATEGORY_SLUG = "literary-fiction"
+CANONICAL_CATEGORY_SLUGS = {
+    "bengali-classics",
+    "literary-fiction",
+    "young-readers",
+    "business",
+    "technology",
+    "history-strategy",
+    "adventure",
+    "science-fiction",
+    "gothic-fiction",
+}
+LEGACY_CATEGORY_SLUG_MAP = {
+    "classic-literature": "literary-fiction",
+    "literature": "literary-fiction",
+    "children-classics": "young-readers",
+    "children": "young-readers",
+    "business-entrepreneurship": "business",
+    "technology-ai": "technology",
+    "history-politics": "history-strategy",
+    "bengali": "bengali-classics",
+    "bengali-reading": "bengali-classics",
+}
+
+
+def _category_value_to_slug(value: str) -> str:
+    text = normalize_text(value or "")
+    text = re.sub(r"[^a-zA-Z0-9\s-]", "", text).strip().lower()
+    return re.sub(r"[\s_-]+", "-", text).strip("-")
+
+
+def normalize_category_slug(value: str) -> str:
+    slug = _category_value_to_slug(value)
+    return LEGACY_CATEGORY_SLUG_MAP.get(slug, slug)
+
+
+def canonical_category_slug(value: str, default: str = DEFAULT_CATEGORY_SLUG) -> str:
+    slug = normalize_category_slug(value)
+    if slug in CANONICAL_CATEGORY_SLUGS:
+        return slug
+    return default
+
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -704,7 +746,7 @@ def _parse_book_template_docx(file_bytes: bytes) -> Tuple[dict, List[str], str]:
         "title": scalar("title"),
         "subtitle": scalar("subtitle"),
         "author": scalar("author", "The Earnalism"),
-        "category_slug": slugify(category_value, fallback="business"),
+        "category_slug": canonical_category_slug(category_value, default="business"),
         "short_description": scalar("short_description"),
         "description": scalar("description"),
         "estimated_reading_time": scalar("estimated_reading_time"),
@@ -1774,7 +1816,15 @@ async def lifespan(_app: FastAPI):
             {"category_slug": old_slug},
             {"$set": {"category_slug": new_slug}},
         )
-    await db.categories.delete_many({"slug": {"$in": list(LEGACY_CATEGORY_SLUG_MAP.keys())}})
+    await db.books.update_many(
+        {"$or": [
+            {"category_slug": {"$exists": False}},
+            {"category_slug": ""},
+            {"category_slug": {"$nin": list(CANONICAL_CATEGORY_SLUGS)}},
+        ]},
+        {"$set": {"category_slug": DEFAULT_CATEGORY_SLUG}},
+    )
+    await db.categories.delete_many({"slug": {"$nin": list(CANONICAL_CATEGORY_SLUGS)}})
     for c in SEED_CATEGORIES:
         await db.categories.update_one(
             {"slug": c["slug"]},
@@ -2337,13 +2387,16 @@ async def list_categories():
 # ---------- Public: Books ----------
 @api.get("/books", response_model=List[Book])
 async def list_books(category: Optional[str] = None, q: Optional[str] = None):
-    cache_key = _public_cache_key("books", category=category or "all", q=normalize_text(q).strip() if q else "")
+    category_filter = None
+    if category and category != "all":
+        category_filter = normalize_category_slug(category) or category
+    cache_key = _public_cache_key("books", category=category_filter or "all", q=normalize_text(q).strip() if q else "")
     cached = _public_cache_get(cache_key)
     if cached is not None:
         return cached
     query: dict = {"is_published": True}
-    if category and category != "all":
-        query["category_slug"] = category
+    if category_filter:
+        query["category_slug"] = category_filter
     q_norm = normalize_text(q).strip() if q else ""
     if q_norm:
         pattern = re.escape(q_norm)
@@ -2546,6 +2599,7 @@ async def admin_create_book(payload: BookIn, _=Depends(require_admin)):
     if not data["title"]:
         raise HTTPException(status_code=400, detail="Title is required")
     data["author"] = normalize_text(data.get("author", "")).strip() or "The Earnalism"
+    data["category_slug"] = canonical_category_slug(data.get("category_slug", ""))
     slug = slugify(data.pop("slug", None) or data["title"], fallback=f"book-{book_id[:8]}")
     if await db.books.find_one({"slug": slug}):
         raise HTTPException(status_code=400, detail="Slug already exists")
@@ -2567,6 +2621,7 @@ async def admin_update_book(slug: str, payload: BookIn, _=Depends(require_admin)
     if not update["title"]:
         raise HTTPException(status_code=400, detail="Title is required")
     update["author"] = normalize_text(update.get("author", "")).strip() or "The Earnalism"
+    update["category_slug"] = canonical_category_slug(update.get("category_slug", ""))
     requested_slug = update.get("slug")
     if requested_slug:
         new_slug = slugify(requested_slug, fallback=slug)
@@ -4241,18 +4296,6 @@ SEED_CATEGORIES = [
     {"slug": "science-fiction", "name": "Science Fiction", "description": "Speculative classics about invention, time, society, and possible futures.", "order": 8, "image_url": "/assets/shelves/science-fiction.jpg"},
     {"slug": "gothic-fiction", "name": "Gothic Fiction", "description": "Atmospheric classics of fear, invention, mystery, and moral tension.", "order": 9, "image_url": "/assets/shelves/gothic-fiction.jpg"},
 ]
-
-LEGACY_CATEGORY_SLUG_MAP = {
-    "classic-literature": "literary-fiction",
-    "literature": "literary-fiction",
-    "children-classics": "young-readers",
-    "children": "young-readers",
-    "business-entrepreneurship": "business",
-    "technology-ai": "technology",
-    "history-politics": "history-strategy",
-    "bengali": "bengali-classics",
-    "bengali-reading": "bengali-classics",
-}
 
 SEED_TECH_BOOK = {
     "slug": "the-architecture-of-intelligent-systems",

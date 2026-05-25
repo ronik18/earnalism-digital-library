@@ -60,7 +60,7 @@ Use these canonical `category_slug` values in manifests and admin uploads:
 - `science-fiction`
 - `gothic-fiction`
 
-Legacy slugs such as `classic-literature` and `children-classics` are migrated to `literary-fiction` and `young-readers`.
+Legacy slugs such as `classic-literature` and `children-classics` are migrated to `literary-fiction` and `young-readers`. The importer and admin API also normalize incoming book records to this shelf list so a book cannot be uploaded with a dangling category.
 
 ## Slideshow Behavior
 
