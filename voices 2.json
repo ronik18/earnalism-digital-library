@@ -1,0 +1,12 @@
+{
+  "ben": {
+    "locale": "bn-IN",
+    "primary": "bn-IN-TanishaaNeural",
+    "fallback": "bn-IN-BashkarNeural"
+  },
+  "en": {
+    "locale": "en-IN",
+    "primary": "en-IN-NeerjaNeural",
+    "fallback": "en-IN-PrabhatNeural"
+  }
+}
