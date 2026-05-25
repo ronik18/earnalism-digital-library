@@ -1,7 +1,36 @@
+# Existing Earnalism manuscript utilities
 python-docx==1.1.2
 Pillow==10.3.0
 mammoth==1.7.1
 playwright==1.49.1
 
-# Optional: used only when OPENAI_API_KEY is present for extra AI-authorship scoring.
-# openai==1.99.9
+# HTTP + scraping
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Google Cloud TTS (v1beta1 required for SSML timepoints)
+google-cloud-texttospeech>=2.16.0
+
+# Forced alignment for Sarvam word timestamps
+stable-ts>=2.14.0
+torch>=2.0.0
+openai-whisper>=20231117
+
+# Audio processing
+pydub>=0.25.1
+ffmpeg-python>=0.2.0
+
+# Utilities
+tqdm>=4.66.0
+python-dotenv>=1.0.0
+
+# System dependency, not installed by pip:
+# ffmpeg >= 6.0
+# macOS: brew install ffmpeg
+# Ubuntu: sudo apt install ffmpeg
+# Windows: winget install ffmpeg
+#
+# stable-ts downloads Whisper "base" model (~140MB) on first run.
+# Pre-download once with: python -c "import whisper; whisper.load_model('base')"
+# Use "tiny" model for faster alignment at slight accuracy cost on Bengali.

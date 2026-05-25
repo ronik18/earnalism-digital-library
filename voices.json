@@ -1,0 +1,44 @@
+{
+  "ben": {
+    "primary_provider": "sarvam",
+    "sarvam": {
+      "target_language_code": "bn-IN",
+      "speaker": "anushka",
+      "pace": 0.82,
+      "pitch": 0.0,
+      "loudness": 1.5,
+      "model": "bulbul:v2",
+      "enable_preprocessing": true,
+      "speech_sample_rate": 22050
+    },
+    "fallback_provider": "google",
+    "google": {
+      "neural2": {
+        "primary": "bn-IN-Wavenet-C",
+        "fallback": "bn-IN-Wavenet-D"
+      },
+      "wavenet": {
+        "primary": "bn-IN-Wavenet-C",
+        "fallback": "bn-IN-Wavenet-D"
+      },
+      "rate": "-12%",
+      "pitch": "-2%"
+    }
+  },
+  "en": {
+    "primary_provider": "google",
+    "google": {
+      "neural2": {
+        "primary": "en-IN-Neural2-B",
+        "fallback": "en-IN-Neural2-C"
+      },
+      "wavenet": {
+        "primary": "en-IN-Wavenet-B",
+        "fallback": "en-IN-Wavenet-C"
+      },
+      "rate": "-8%",
+      "pitch": "-1%"
+    },
+    "fallback_provider": "google_wavenet"
+  }
+}

@@ -20,6 +20,7 @@ BENGALI_RE = re.compile(r"[\u0980-\u09FF]")
 ALLOWED_TAGS = [
     "p", "h1", "h2", "h3", "h4", "h5",
     "blockquote", "strong", "em", "b", "i", "u",
+    "pre", "code",
     "ul", "ol", "li", "br", "hr",
     "img", "figure", "figcaption",
     "table", "thead", "tbody", "tr", "th", "td",
@@ -33,6 +34,7 @@ ALLOWED_ATTRS = {
         "class", "loading",
     ],
     "a": ["href", "title", "target"],
+    "code": ["class"],
     "span": ["class"],
     "div": ["class"],
     "figure": ["class"],

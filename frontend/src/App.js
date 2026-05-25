@@ -1,30 +1,48 @@
 import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import "@/index.css";
 import { AuthProvider } from "./context/AuthContext";
 import { SettingsProvider } from "./context/SettingsContext";
 import Layout from "./components/Layout";
 import { AppToaster } from "./components/AppToaster";
 
-const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
+const pageImports = {
+  Home: () => import("./pages/Home"),
+  Library: () => import("./pages/Library"),
+  BookDetail: () => import("./pages/BookDetail"),
+  Journal: () => import("./pages/Journal"),
+  JournalArticle: () => import("./pages/JournalArticle"),
+  About: () => import("./pages/About"),
+  Contact: () => import("./pages/Contact"),
+  Login: () => import("./pages/Login"),
+  Signup: () => import("./pages/Signup"),
+  Account: () => import("./pages/Account"),
+  Pricing: () => import("./pages/Pricing"),
+  Reader: () => import("./pages/Reader"),
+  MicroStoryLanding: () => import("./pages/MicroStoryLanding"),
+  SecureReaderHarness: () => import("./pages/SecureReaderHarness"),
+  AdminLogin: () => import("./pages/AdminLogin"),
+  Admin: () => import("./pages/Admin"),
+  GoogleAuthBoundary: () => import("./components/GoogleAuthBoundary"),
+};
 
-const Home = lazy(() => import("./pages/Home"));
-const Library = lazy(() => import("./pages/Library"));
-const BookDetail = lazy(() => import("./pages/BookDetail"));
-const Journal = lazy(() => import("./pages/Journal"));
-const JournalArticle = lazy(() => import("./pages/JournalArticle"));
-const About = lazy(() => import("./pages/About"));
-const Contact = lazy(() => import("./pages/Contact"));
-const Login = lazy(() => import("./pages/Login"));
-const Signup = lazy(() => import("./pages/Signup"));
-const Account = lazy(() => import("./pages/Account"));
-const Pricing = lazy(() => import("./pages/Pricing"));
-const Reader = lazy(() => import("./pages/Reader"));
-const MicroStoryLanding = lazy(() => import("./pages/MicroStoryLanding"));
-const SecureReaderHarness = lazy(() => import("./pages/SecureReaderHarness"));
-const AdminLogin = lazy(() => import("./pages/AdminLogin"));
-const Admin = lazy(() => import("./pages/Admin"));
+const Home = lazy(pageImports.Home);
+const Library = lazy(pageImports.Library);
+const BookDetail = lazy(pageImports.BookDetail);
+const Journal = lazy(pageImports.Journal);
+const JournalArticle = lazy(pageImports.JournalArticle);
+const About = lazy(pageImports.About);
+const Contact = lazy(pageImports.Contact);
+const Login = lazy(pageImports.Login);
+const Signup = lazy(pageImports.Signup);
+const Account = lazy(pageImports.Account);
+const Pricing = lazy(pageImports.Pricing);
+const Reader = lazy(pageImports.Reader);
+const MicroStoryLanding = lazy(pageImports.MicroStoryLanding);
+const SecureReaderHarness = lazy(pageImports.SecureReaderHarness);
+const AdminLogin = lazy(pageImports.AdminLogin);
+const Admin = lazy(pageImports.Admin);
+const GoogleAuthBoundary = lazy(pageImports.GoogleAuthBoundary);
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -36,8 +54,28 @@ function PageFallback() {
   return <div className="min-h-screen bg-[var(--beige-canvas)]" aria-busy="true" />;
 }
 
+function useHighIntentRoutePrefetch() {
+  useEffect(() => {
+    const prefetch = () => {
+      [
+        pageImports.Library,
+        pageImports.BookDetail,
+        pageImports.Reader,
+        pageImports.Pricing,
+        pageImports.Login,
+      ].forEach((load) => load().catch(() => {}));
+    };
+    const idle = window.requestIdleCallback || ((callback) => window.setTimeout(callback, 1600));
+    const cancelIdle = window.cancelIdleCallback || window.clearTimeout;
+    const id = idle(prefetch, { timeout: 3000 });
+    return () => cancelIdle(id);
+  }, []);
+}
+
 export default function App() {
-  const tree = (
+  useHighIntentRoutePrefetch();
+
+  return (
     <AuthProvider>
       <SettingsProvider>
         <BrowserRouter>
@@ -55,7 +93,7 @@ export default function App() {
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/micro-story" element={<MicroStoryLanding />} />
                 <Route path="/secure-reader-test" element={<SecureReaderHarness />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<GoogleAuthBoundary><Login /></GoogleAuthBoundary>} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/account" element={<Account />} />
                 {/* Legacy redirects */}
@@ -76,9 +114,6 @@ export default function App() {
       </SettingsProvider>
     </AuthProvider>
   );
-  return GOOGLE_CLIENT_ID
-    ? <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>{tree}</GoogleOAuthProvider>
-    : tree;
 }
 
 function LegacyShopRedirect() {

@@ -1,8 +1,18 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { API, USER_TOKEN_KEY } from "../lib/api";
 
-const LICENSE_NOTICE = "All ebooks on Earnalism are original licensed works. Redistribution or recording is prohibited under the Copyright Act 1957 §51 & §63. Access implies acceptance of these terms.";
-const LICENSE_METADATA = "Earnalism – Licensed Digital Edition";
+const DEFAULT_LICENSE_NOTICE = "This Earnalism reading copy is provided for lawful personal reading. Do not redistribute, scrape, or reproduce the platform-rendered edition without permission. Public-domain source texts remain subject to their applicable rights status.";
+const DEFAULT_LICENSE_METADATA = "Earnalism - Platform Reading Edition";
+const SERVER_SECURITY_EVENTS = new Set([
+  "right_click",
+  "copy",
+  "cut",
+  "print",
+  "print_screen",
+  "drag",
+  "drop",
+  "blocked_shortcut",
+]);
 
 function simpleHash(value = "") {
   let hash = 2166136261;
@@ -46,8 +56,13 @@ export default function SecureReader({
   contentRef,
   className = "",
   style,
+  lang,
   blurred = false,
   onViolation,
+  licenseNotice = DEFAULT_LICENSE_NOTICE,
+  licenseMetadata = DEFAULT_LICENSE_METADATA,
+  watermarkText: customWatermarkText = "",
+  footerText: customFooterText = "",
 }) {
   const [shielded, setShielded] = useState(false);
   const localRef = useRef(null);
@@ -55,12 +70,14 @@ export default function SecureReader({
   const safeSessionId = sessionId || "reader-session";
   const emailHash = useMemo(() => simpleHash(userEmail || "guest").slice(0, 8), [userEmail]);
   const issuedAt = useMemo(() => new Date().toISOString(), []);
-  const watermarkText = `${safeSessionId.slice(0, 8)} · ${emailHash} · ${issuedAt.slice(0, 10)}`;
-  const footerText = `Licensed for ${userName || "Reader"} — Unauthorized sharing prohibited`;
+  const watermarkIdentity = userName || (userEmail ? userEmail.split("@")[0] : "Reader");
+  const watermarkText = customWatermarkText || `Earnalism Reading Edition · ${watermarkIdentity} · ${issuedAt.slice(0, 10)}`;
+  const footerText = customFooterText || `Licensed reading copy - Redistribution prohibited`;
 
   const report = (eventType, metadata = {}) => {
     countsRef.current[eventType] = (countsRef.current[eventType] || 0) + 1;
     onViolation?.(eventType, countsRef.current);
+    if (!SERVER_SECURITY_EVENTS.has(eventType)) return;
     sendSecurityEvent({
       session_id: safeSessionId,
       event_type: eventType,
@@ -138,7 +155,7 @@ export default function SecureReader({
       onDrop={(event) => block(event, "drop")}
     >
       <svg className="secure-reader__metadata" width="0" height="0" aria-hidden="true" focusable="false">
-        <metadata>{LICENSE_METADATA}</metadata>
+        <metadata>{licenseMetadata}</metadata>
       </svg>
       <div className="secure-reader__watermark" aria-hidden="true">
         {Array.from({ length: 18 }, (_, index) => (
@@ -152,17 +169,25 @@ export default function SecureReader({
         }}
         className={`secure-reader__content ${className}`}
         style={style}
+        lang={lang}
         role="document"
         aria-label={title}
-        data-license={LICENSE_METADATA}
+        data-license={licenseMetadata}
         data-session={safeSessionId}
         data-email-hash={emailHash}
         dangerouslySetInnerHTML={html ? { __html: html } : undefined}
       >
         {!html ? children : null}
       </div>
-      <div className="secure-reader__page-footer" aria-hidden="true">{footerText}</div>
-      <p className="secure-reader__legal">{LICENSE_NOTICE}</p>
+      <footer className="secure-reader__page-footer" aria-label="Licensed reading notice">
+        <span>{footerText}</span>
+        {licenseNotice && (
+          <details className="secure-reader__legal">
+            <summary>Terms</summary>
+            <p>{licenseNotice}</p>
+          </details>
+        )}
+      </footer>
     </section>
   );
 }

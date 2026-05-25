@@ -21,6 +21,8 @@ jobs:
       API_URL: ${{ vars.API_URL || 'https://api.theearnalism.com' }}
       POST_DEPLOY_WAIT_SECONDS: ${{ vars.POST_DEPLOY_WAIT_SECONDS || '90' }}
       K6_HTTP_P95_THRESHOLD: ${{ vars.K6_HTTP_P95_THRESHOLD || 'p(95)<5000' }}
+      K6_LOAD_VUS: ${{ vars.K6_LOAD_VUS || '100' }}
+      K6_LOAD_DURATION: ${{ vars.K6_LOAD_DURATION || '2m' }}
 
     steps:
       - name: Checkout
@@ -36,8 +38,9 @@ jobs:
           for attempt in {1..30}; do
             frontend_status="$(curl -L -s -o /dev/null -w "%{http_code}" "${FRONTEND_URL}")"
             backend_status="$(curl -L -s -o /dev/null -w "%{http_code}" "${API_URL}/health")"
-            echo "Attempt ${attempt}: frontend=${frontend_status} backend=${backend_status}"
-            if [[ "${frontend_status}" == "200" && "${backend_status}" == "200" ]]; then
+            home_status="$(curl -L -s -o /dev/null -w "%{http_code}" "${API_URL}/api/home")"
+            echo "Attempt ${attempt}: frontend=${frontend_status} backend=${backend_status} home=${home_status}"
+            if [[ "${frontend_status}" == "200" && "${backend_status}" == "200" && "${home_status}" == "200" ]]; then
               exit 0
             fi
             sleep 10
@@ -51,3 +54,6 @@ jobs:
 
       - name: Run k6 smoke test
         run: k6 run scripts/k6_smoke.js
+
+      - name: Run 100-user k6 load test
+        run: k6 run scripts/k6_load_100.js

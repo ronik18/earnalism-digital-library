@@ -78,7 +78,16 @@ def _database_name_from_mongo_url(url: str) -> str:
     db_name = parsed.path.lstrip("/").split("/", 1)[0]
     return db_name or "earnalism"
 
-client = AsyncIOMotorClient(mongo_url)
+MONGODB_MAX_POOL_SIZE = _env_int("MONGODB_MAX_POOL_SIZE", 200)
+MONGODB_MIN_POOL_SIZE = _env_int("MONGODB_MIN_POOL_SIZE", 5, minimum=0)
+MONGODB_SERVER_SELECTION_TIMEOUT_MS = _env_int("MONGODB_SERVER_SELECTION_TIMEOUT_MS", 5000)
+client = AsyncIOMotorClient(
+    mongo_url,
+    maxPoolSize=MONGODB_MAX_POOL_SIZE,
+    minPoolSize=min(MONGODB_MIN_POOL_SIZE, MONGODB_MAX_POOL_SIZE),
+    serverSelectionTimeoutMS=MONGODB_SERVER_SELECTION_TIMEOUT_MS,
+    uuidRepresentation="standard",
+)
 db = client[os.environ.get("DB_NAME") or _database_name_from_mongo_url(mongo_url)]
 
 JWT_SECRET = os.environ.get("JWT_SECRET")
@@ -91,6 +100,12 @@ USER_REFRESH_IDLE_MINUTES = _env_int("USER_REFRESH_IDLE_MINUTES", 30)
 USER_REFRESH_TOTAL_HOURS = _env_int("USER_REFRESH_TOTAL_HOURS", 12)
 TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS = _env_int("TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS", 1)
 MAX_READING_DEBIT_CATCHUP_SECONDS = _env_int("MAX_READING_DEBIT_CATCHUP_SECONDS", 1800)
+SESSION_TOUCH_INTERVAL_SECONDS = _env_int("SESSION_TOUCH_INTERVAL_SECONDS", 60)
+if SESSION_TOUCH_INTERVAL_SECONDS > 0:
+    SESSION_TOUCH_INTERVAL_SECONDS = min(
+        SESSION_TOUCH_INTERVAL_SECONDS,
+        max(1, (USER_REFRESH_IDLE_MINUTES * 60) // 2),
+    )
 ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@theearnalism.com").strip()
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "").strip()
 SEED_TEST_READER = os.environ.get("SEED_TEST_READER", "false").strip().lower() == "true"
@@ -116,11 +131,13 @@ RAZORPAY_MODE = os.environ.get("RAZORPAY_MODE", "test").strip().lower()
 # counter to Redis or an edge/WAF layer so limits are shared across replicas.
 RATE_LIMIT_ENABLED = _env_bool("RATE_LIMIT_ENABLED", True)
 RATE_LIMIT_WINDOW_SECONDS = _env_int("RATE_LIMIT_WINDOW_SECONDS", 60)
-RATE_LIMIT_DEFAULT_PER_MINUTE = _env_int("RATE_LIMIT_DEFAULT_PER_MINUTE", 240)
-RATE_LIMIT_AUTH_PER_MINUTE = _env_int("RATE_LIMIT_AUTH_PER_MINUTE", 20)
-RATE_LIMIT_PAYMENT_PER_MINUTE = _env_int("RATE_LIMIT_PAYMENT_PER_MINUTE", 60)
-RATE_LIMIT_WEBHOOK_PER_MINUTE = _env_int("RATE_LIMIT_WEBHOOK_PER_MINUTE", 300)
-RATE_LIMIT_UPLOAD_PER_MINUTE = _env_int("RATE_LIMIT_UPLOAD_PER_MINUTE", 30)
+RATE_LIMIT_DEFAULT_PER_MINUTE = _env_int("RATE_LIMIT_DEFAULT_PER_MINUTE", 1200)
+RATE_LIMIT_PUBLIC_PER_MINUTE = _env_int("RATE_LIMIT_PUBLIC_PER_MINUTE", 30000)
+RATE_LIMIT_READER_PER_MINUTE = _env_int("RATE_LIMIT_READER_PER_MINUTE", 15000)
+RATE_LIMIT_AUTH_PER_MINUTE = _env_int("RATE_LIMIT_AUTH_PER_MINUTE", 120)
+RATE_LIMIT_PAYMENT_PER_MINUTE = _env_int("RATE_LIMIT_PAYMENT_PER_MINUTE", 300)
+RATE_LIMIT_WEBHOOK_PER_MINUTE = _env_int("RATE_LIMIT_WEBHOOK_PER_MINUTE", 600)
+RATE_LIMIT_UPLOAD_PER_MINUTE = _env_int("RATE_LIMIT_UPLOAD_PER_MINUTE", 60)
 _rate_limit_hits: Dict[str, Deque[float]] = defaultdict(deque)
 _rate_limit_next_sweep = 0.0
 
@@ -128,8 +145,9 @@ _rate_limit_next_sweep = 0.0
 # excludes authenticated/user/admin routes and should move to Redis if the API is
 # scaled across several Railway replicas.
 PUBLIC_CACHE_ENABLED = _env_bool("PUBLIC_CACHE_ENABLED", True)
-PUBLIC_CACHE_TTL_SECONDS = _env_int("PUBLIC_CACHE_TTL_SECONDS", 45)
+PUBLIC_CACHE_TTL_SECONDS = _env_int("PUBLIC_CACHE_TTL_SECONDS", 300)
 PUBLIC_CACHE_MAX_ENTRIES = _env_int("PUBLIC_CACHE_MAX_ENTRIES", 256)
+HOME_BOOK_LIMIT = _env_int("HOME_BOOK_LIMIT", 500)
 HEALTH_CACHE_TTL_SECONDS = _env_int("HEALTH_CACHE_TTL_SECONDS", 5)
 _public_cache: "OrderedDict[str, Tuple[float, Any]]" = OrderedDict()
 _health_cache: dict = {"expires_at": 0.0, "payload": None}
@@ -399,10 +417,17 @@ async def require_user(
             {"$set": {"status": "expired", "expired_at": now}},
         )
         raise HTTPException(status_code=401, detail="Session expired, please login again.")
-    await db.user_sessions.update_one(
-        {"id": session_id},
-        {"$set": {"last_seen_at": now, "idle_expires_at": now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES)}},
+    last_seen_at = _as_utc_dt(session.get("last_seen_at"))
+    should_touch_session = (
+        SESSION_TOUCH_INTERVAL_SECONDS <= 0
+        or not last_seen_at
+        or (now - last_seen_at).total_seconds() >= SESSION_TOUCH_INTERVAL_SECONDS
     )
+    if should_touch_session:
+        await db.user_sessions.update_one(
+            {"id": session_id},
+            {"$set": {"last_seen_at": now, "idle_expires_at": now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES)}},
+        )
     user["session_id"] = session_id
     user["device_fingerprint"] = token_fp
     return user
@@ -476,6 +501,48 @@ def slugify(text: str, fallback: Optional[str] = None) -> str:
     slug = re.sub(r"[\s_-]+", "-", text).strip("-")
     return slug or fallback or str(uuid.uuid4())[:8]
 
+DEFAULT_CATEGORY_SLUG = "literary-fiction"
+CANONICAL_CATEGORY_SLUGS = {
+    "bengali-classics",
+    "literary-fiction",
+    "young-readers",
+    "business",
+    "technology",
+    "history-strategy",
+    "adventure",
+    "science-fiction",
+    "gothic-fiction",
+}
+LEGACY_CATEGORY_SLUG_MAP = {
+    "classic-literature": "literary-fiction",
+    "literature": "literary-fiction",
+    "children-classics": "young-readers",
+    "children": "young-readers",
+    "business-entrepreneurship": "business",
+    "technology-ai": "technology",
+    "history-politics": "history-strategy",
+    "bengali": "bengali-classics",
+    "bengali-reading": "bengali-classics",
+}
+
+
+def _category_value_to_slug(value: str) -> str:
+    text = normalize_text(value or "")
+    text = re.sub(r"[^a-zA-Z0-9\s-]", "", text).strip().lower()
+    return re.sub(r"[\s_-]+", "-", text).strip("-")
+
+
+def normalize_category_slug(value: str) -> str:
+    slug = _category_value_to_slug(value)
+    return LEGACY_CATEGORY_SLUG_MAP.get(slug, slug)
+
+
+def canonical_category_slug(value: str, default: str = DEFAULT_CATEGORY_SLUG) -> str:
+    slug = normalize_category_slug(value)
+    if slug in CANONICAL_CATEGORY_SLUGS:
+        return slug
+    return default
+
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -483,14 +550,22 @@ def now_iso() -> str:
 BOOK_METADATA_PROJECTION = {
     "_id": 0,
     "chapters.content": 0,
+    "rights_metadata": 0,
+}
+BOOK_LIST_PROJECTION = {
+    "_id": 0,
+    "rights_metadata": 0,
+    "chapters": 0,
 }
 PUBLIC_CACHE_PATHS = {
+    "/api/home",
     "/api/categories",
     "/api/books",
     "/api/blog",
     "/api/featured",
     "/api/settings/social",
     "/api/settings/brand",
+    "/api/settings/public",
     "/api/payments/packs",
     "/api/payments/config",
     "/api/reading/packs",
@@ -671,7 +746,7 @@ def _parse_book_template_docx(file_bytes: bytes) -> Tuple[dict, List[str], str]:
         "title": scalar("title"),
         "subtitle": scalar("subtitle"),
         "author": scalar("author", "The Earnalism"),
-        "category_slug": slugify(category_value, fallback="business"),
+        "category_slug": canonical_category_slug(category_value, default="business"),
         "short_description": scalar("short_description"),
         "description": scalar("description"),
         "estimated_reading_time": scalar("estimated_reading_time"),
@@ -1008,6 +1083,8 @@ async def _process_docx_upload(
         "author": metadata["author"],
         "estimated_reading_time": template_data.get("estimated_reading_time") or f"{max(1, round(metadata['word_count'] / 238))} min",
         "is_published": False,
+        "audiobook_enabled": False,
+        "generate_audiobook": False,
     }
     if metadata["keywords"]:
         book_data["keywords"] = metadata["keywords"]
@@ -1141,6 +1218,7 @@ class Chapter(BaseModel):
     title: str
     content: str = ""
     order: int = 0
+    is_preview: bool = False
     has_images: bool = False
     image_count: int = 0
     word_count: int = 0
@@ -1156,6 +1234,7 @@ class Chapter(BaseModel):
 class ChapterIn(BaseModel):
     title: str
     content: str = ""
+    is_preview: bool = False
 
 class ChapterReorderIn(BaseModel):
     ids: List[str]
@@ -1194,6 +1273,8 @@ class Book(BaseModel):
     learnings: List[str] = Field(default_factory=list)
     about_author: str = ""
     chapters: List[Chapter] = Field(default_factory=list)
+    audiobook_enabled: bool = False
+    generate_audiobook: bool = False
     is_published: bool = True
     created_at: str = Field(default_factory=now_iso)
 
@@ -1215,6 +1296,9 @@ class BookIn(BaseModel):
     who_for: List[str] = Field(default_factory=list)
     learnings: List[str] = Field(default_factory=list)
     about_author: str = ""
+    rights_metadata: Dict[str, Any] = Field(default_factory=dict)
+    audiobook_enabled: bool = False
+    generate_audiobook: bool = False
     is_published: bool = True
     slug: Optional[str] = None
 
@@ -1523,15 +1607,26 @@ async def _migrate_wallet_transactions_to_ledger() -> None:
         )
 
 
+def _free_preview_chapter_ids(book: dict) -> set[str]:
+    """Return chapter ids that should be free previews.
+
+    Existing chaptered books keep the historical first-chapter preview behavior.
+    Single full-text stories are paid by default unless a chapter is explicitly
+    marked as a preview, so a whole short story is not accidentally exposed.
+    """
+    chapters = sorted(book.get("chapters") or [], key=lambda c: c.get("order", 0))
+    explicit = {c.get("id") for c in chapters if c.get("is_preview") is True and c.get("id")}
+    if explicit:
+        return explicit
+    if len(chapters) > 1 and chapters[0].get("id"):
+        return {chapters[0]["id"]}
+    return set()
+
+
 def _is_free_preview_chapter(book: dict, chapter_id: Optional[str]) -> bool:
-    """Chapter with order==0 (the first chapter) is always free preview."""
     if not chapter_id:
         return False
-    chapters = book.get("chapters") or []
-    if not chapters:
-        return False
-    sorted_ch = sorted(chapters, key=lambda c: c.get("order", 0))
-    return sorted_ch[0].get("id") == chapter_id
+    return chapter_id in _free_preview_chapter_ids(book)
 
 
 def _strip_paid_chapter_content(book: dict) -> dict:
@@ -1544,17 +1639,19 @@ def _strip_paid_chapter_content(book: dict) -> dict:
         return book
     chapters = book.get("chapters") or []
     if not chapters:
-        return book
-    sorted_ch = sorted(chapters, key=lambda c: c.get("order", 0))
-    preview_id = sorted_ch[0].get("id") if sorted_ch else None
+        out = dict(book)
+        out.pop("rights_metadata", None)
+        return out
+    preview_ids = _free_preview_chapter_ids(book)
     masked = []
     for c in chapters:
         c2 = dict(c)
-        if c.get("id") != preview_id:
+        if c.get("id") not in preview_ids:
             c2["content"] = ""
         masked.append(c2)
     out = dict(book)
     out["chapters"] = masked
+    out.pop("rights_metadata", None)
     return out
 
 
@@ -1563,9 +1660,12 @@ def _strip_all_chapter_content(book: dict) -> dict:
         return book
     chapters = book.get("chapters") or []
     if not chapters:
-        return book
+        out = dict(book)
+        out.pop("rights_metadata", None)
+        return out
     out = dict(book)
     out["chapters"] = [{**c, "content": ""} for c in chapters]
+    out.pop("rights_metadata", None)
     return out
 
 
@@ -1709,11 +1809,26 @@ async def lifespan(_app: FastAPI):
         {"$set": {"auth_provider": "email"}},
     )
 
-    # categories
+    # Canonical shelf taxonomy. Keep older imported/admin book records attached
+    # to their closest current shelf before refreshing category documents.
+    for old_slug, new_slug in LEGACY_CATEGORY_SLUG_MAP.items():
+        await db.books.update_many(
+            {"category_slug": old_slug},
+            {"$set": {"category_slug": new_slug}},
+        )
+    await db.books.update_many(
+        {"$or": [
+            {"category_slug": {"$exists": False}},
+            {"category_slug": ""},
+            {"category_slug": {"$nin": list(CANONICAL_CATEGORY_SLUGS)}},
+        ]},
+        {"$set": {"category_slug": DEFAULT_CATEGORY_SLUG}},
+    )
+    await db.categories.delete_many({"slug": {"$nin": list(CANONICAL_CATEGORY_SLUGS)}})
     for c in SEED_CATEGORIES:
         await db.categories.update_one(
             {"slug": c["slug"]},
-            {"$setOnInsert": {**c, "id": str(uuid.uuid4())}},
+            {"$set": c, "$setOnInsert": {"id": str(uuid.uuid4())}},
             upsert=True,
         )
 
@@ -1836,6 +1951,18 @@ def _safe_counter_map(counts: Dict[str, int]) -> Dict[str, int]:
     return safe
 
 
+SECURE_READER_RECORDED_EVENTS = {
+    "right_click",
+    "copy",
+    "cut",
+    "print",
+    "print_screen",
+    "drag",
+    "drop",
+    "blocked_shortcut",
+}
+
+
 def _utc_day() -> str:
     return datetime.utcnow().date().isoformat()
 
@@ -1886,6 +2013,10 @@ def _client_ip(request: Request) -> str:
 
 
 def _rate_limit_scope(path: str) -> Tuple[str, int]:
+    if _is_public_cache_path(path):
+        return "public", RATE_LIMIT_PUBLIC_PER_MINUTE
+    if path.startswith("/api/reader/chapter/"):
+        return "reader", RATE_LIMIT_READER_PER_MINUTE
     if path.startswith("/api/auth/"):
         return "auth", RATE_LIMIT_AUTH_PER_MINUTE
     if path == "/api/payments/webhook":
@@ -1895,6 +2026,22 @@ def _rate_limit_scope(path: str) -> Tuple[str, int]:
     if "upload" in path:
         return "upload", RATE_LIMIT_UPLOAD_PER_MINUTE
     return "api", RATE_LIMIT_DEFAULT_PER_MINUTE
+
+
+def _rate_limit_identity(request: Request) -> str:
+    auth = request.headers.get("authorization", "")
+    if auth.lower().startswith("bearer "):
+        token = auth.split(" ", 1)[1].strip()
+        if token:
+            try:
+                payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALG])
+                subject = str(payload.get("sub") or "")[:80]
+                role = str(payload.get("role") or "user")[:20]
+                if subject:
+                    return f"token:{role}:{subject}"
+            except (jwt.ExpiredSignatureError, jwt.InvalidTokenError):
+                pass
+    return f"ip:{_client_ip(request)}"
 
 
 def _sweep_rate_limit_buckets(now: float) -> None:
@@ -1919,7 +2066,7 @@ def _rate_limit_retry_after(request: Request) -> Optional[int]:
     scope, limit = _rate_limit_scope(path)
     now = time.monotonic()
     _sweep_rate_limit_buckets(now)
-    key = f"{scope}:{_client_ip(request)}"
+    key = f"{scope}:{_rate_limit_identity(request)}"
     bucket = _rate_limit_hits[key]
     cutoff = now - RATE_LIMIT_WINDOW_SECONDS
     while bucket and bucket[0] <= cutoff:
@@ -2131,6 +2278,47 @@ async def root_health_check():
     return await health_check()
 
 
+@api.get("/home")
+async def get_home_payload():
+    """Cached landing-page payload.
+
+    The home page needs categories, live books and a featured book immediately.
+    Returning them together cuts the first-load API fanout from three database
+    reads to one cached request while keeping the older public endpoints intact.
+    """
+    cache_key = _public_cache_key("home_payload")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+
+    categories = await db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200)
+    books_docs = await db.books.find(
+        {"is_published": True},
+        BOOK_LIST_PROJECTION,
+    ).sort("created_at", -1).to_list(HOME_BOOK_LIMIT)
+    books = [_strip_all_chapter_content(doc) for doc in books_docs]
+
+    featured_book = None
+    setting = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
+    featured_slug = (setting or {}).get("book_slug")
+    if featured_slug:
+        featured_book = next((book for book in books if book.get("slug") == featured_slug), None)
+        if featured_book is None:
+            doc = await db.books.find_one(
+                {"slug": featured_slug, "is_published": True},
+                BOOK_LIST_PROJECTION,
+            )
+            featured_book = _strip_all_chapter_content(doc) if doc else None
+
+    result = {
+        "categories": categories,
+        "books": books,
+        "featured": {"book": featured_book},
+    }
+    _public_cache_set(cache_key, result)
+    return result
+
+
 @api.post("/analytics/events")
 async def record_analytics_event(
     payload: AnalyticsEventIn,
@@ -2162,6 +2350,8 @@ async def record_secure_reader_event(
     event_type = re.sub(r"[^a-zA-Z0-9_.:-]", "_", payload.event_type.strip())[:80]
     if not event_type:
         raise HTTPException(status_code=400, detail="Event type is required")
+    if event_type not in SECURE_READER_RECORDED_EVENTS:
+        return {"ok": True, "stored": False}
 
     # Never store raw auth tokens. The frontend may send only a short fingerprint.
     await db.reader_security_events.insert_one({
@@ -2180,7 +2370,7 @@ async def record_secure_reader_event(
         "user_agent": str(request.headers.get("user-agent", ""))[:180],
         "created_at": now_iso(),
     })
-    return {"ok": True}
+    return {"ok": True, "stored": True}
 
 
 @api.get("/categories", response_model=List[Category])
@@ -2197,13 +2387,16 @@ async def list_categories():
 # ---------- Public: Books ----------
 @api.get("/books", response_model=List[Book])
 async def list_books(category: Optional[str] = None, q: Optional[str] = None):
-    cache_key = _public_cache_key("books", category=category or "all", q=normalize_text(q).strip() if q else "")
+    category_filter = None
+    if category and category != "all":
+        category_filter = normalize_category_slug(category) or category
+    cache_key = _public_cache_key("books", category=category_filter or "all", q=normalize_text(q).strip() if q else "")
     cached = _public_cache_get(cache_key)
     if cached is not None:
         return cached
     query: dict = {"is_published": True}
-    if category and category != "all":
-        query["category_slug"] = category
+    if category_filter:
+        query["category_slug"] = category_filter
     q_norm = normalize_text(q).strip() if q else ""
     if q_norm:
         pattern = re.escape(q_norm)
@@ -2216,8 +2409,8 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
             {"category_slug": {"$regex": pattern, "$options": "i"}},
             {"chapters.title": {"$regex": pattern, "$options": "i"}},
         ]
-    docs = await db.books.find(query, BOOK_METADATA_PROJECTION).sort("created_at", -1).to_list(500)
-    # Public list is metadata-only so the library page does not ship manuscript bodies.
+    docs = await db.books.find(query, BOOK_LIST_PROJECTION).sort("created_at", -1).to_list(500)
+    # Public list is shelf metadata-only so library browsing never ships chapter bodies.
     result = [_strip_all_chapter_content(d) for d in docs]
     _public_cache_set(cache_key, result)
     return result
@@ -2231,8 +2424,9 @@ async def get_book(slug: str):
     doc = await db.books.find_one({"slug": slug, "is_published": True}, {"_id": 0})
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
-    # Public detail returns ToC + only the free-preview chapter's body.
-    result = _strip_paid_chapter_content(doc)
+    # Public detail returns metadata + ToC only. Reader content is fetched through
+    # the gated chapter endpoint so detail pages stay light for large books.
+    result = _strip_all_chapter_content(doc)
     _public_cache_set(cache_key, result)
     return result
 
@@ -2381,21 +2575,40 @@ async def get_brand():
     return result
 
 
+@api.get("/settings/public")
+async def get_public_settings():
+    cache_key = _public_cache_key("settings_public")
+    cached = _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+    result = {
+        "social": await get_social(),
+        "brand": await get_brand(),
+    }
+    _public_cache_set(cache_key, result)
+    return result
+
+
 # ---------- Admin: Books ----------
 @api.post("/admin/books", response_model=Book)
 async def admin_create_book(payload: BookIn, _=Depends(require_admin)):
     data = payload.model_dump()
+    rights_metadata = data.pop("rights_metadata", {}) or {}
     book_id = str(uuid.uuid4())
     data["title"] = normalize_text(data.get("title", "")).strip()
     if not data["title"]:
         raise HTTPException(status_code=400, detail="Title is required")
     data["author"] = normalize_text(data.get("author", "")).strip() or "The Earnalism"
+    data["category_slug"] = canonical_category_slug(data.get("category_slug", ""))
     slug = slugify(data.pop("slug", None) or data["title"], fallback=f"book-{book_id[:8]}")
     if await db.books.find_one({"slug": slug}):
         raise HTTPException(status_code=400, detail="Slug already exists")
     book = Book(id=book_id, slug=slug, **data)
     _assert_publishable(book.model_dump())
-    await db.books.insert_one(book.model_dump())
+    doc = book.model_dump()
+    if rights_metadata:
+        doc["rights_metadata"] = rights_metadata
+    await db.books.insert_one(doc)
     return book
 
 @api.put("/admin/books/{slug}", response_model=Book)
@@ -2408,6 +2621,7 @@ async def admin_update_book(slug: str, payload: BookIn, _=Depends(require_admin)
     if not update["title"]:
         raise HTTPException(status_code=400, detail="Title is required")
     update["author"] = normalize_text(update.get("author", "")).strip() or "The Earnalism"
+    update["category_slug"] = canonical_category_slug(update.get("category_slug", ""))
     requested_slug = update.get("slug")
     if requested_slug:
         new_slug = slugify(requested_slug, fallback=slug)
@@ -2432,6 +2646,11 @@ async def admin_delete_book(slug: str, _=Depends(require_admin)):
 @api.get("/admin/books", response_model=List[Book])
 async def admin_list_books(_=Depends(require_admin)):
     return await db.books.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+
+
+@api.get("/admin/books/summary", response_model=List[Book])
+async def admin_list_books_summary(_=Depends(require_admin)):
+    return await db.books.find({}, {"_id": 0, "chapters.content": 0}).sort("created_at", -1).to_list(1000)
 
 
 @api.get("/admin/books/{slug}", response_model=Book)
@@ -2522,11 +2741,26 @@ async def admin_add_chapter(slug: str, payload: ChapterIn, _=Depends(require_adm
         title=title,
         content=content,
         order=next_order,
+        is_preview=payload.is_preview,
         processing_status="ready",
         processing_warnings=warnings,
         updated_at=now_iso(),
     ).model_dump()
     await db.books.update_one({"slug": slug}, {"$push": {"chapters": chapter}})
+    return await _load_book_or_404(slug)
+
+@api.put("/admin/books/{slug}/chapters/reorder", response_model=Book)
+async def admin_reorder_chapters(slug: str, payload: ChapterReorderIn, _=Depends(require_admin)):
+    book = await _load_book_or_404(slug)
+    existing = {c["id"]: c for c in (book.get("chapters") or [])}
+    if set(payload.ids) != set(existing.keys()):
+        raise HTTPException(status_code=400, detail="Reorder ids must match existing chapter ids exactly")
+    reordered = []
+    for i, cid in enumerate(payload.ids):
+        c = dict(existing[cid])
+        c["order"] = i
+        reordered.append(c)
+    await db.books.update_one({"slug": slug}, {"$set": {"chapters": reordered}})
     return await _load_book_or_404(slug)
 
 @api.put("/admin/books/{slug}/chapters/{cid}", response_model=Book)
@@ -2540,6 +2774,7 @@ async def admin_update_chapter(slug: str, cid: str, payload: ChapterIn, _=Depend
         {"$set": {
             "chapters.$.title": title,
             "chapters.$.content": content,
+            "chapters.$.is_preview": payload.is_preview,
             "chapters.$.processing_status": "ready",
             "chapters.$.processing_error": "",
             "chapters.$.processing_warnings": warnings,
@@ -2556,20 +2791,6 @@ async def admin_delete_chapter(slug: str, cid: str, _=Depends(require_admin)):
     res = await db.books.update_one({"slug": slug}, {"$pull": {"chapters": {"id": cid}}})
     if res.modified_count == 0:
         raise HTTPException(status_code=404, detail="Chapter not found")
-    return await _load_book_or_404(slug)
-
-@api.put("/admin/books/{slug}/chapters/reorder", response_model=Book)
-async def admin_reorder_chapters(slug: str, payload: ChapterReorderIn, _=Depends(require_admin)):
-    book = await _load_book_or_404(slug)
-    existing = {c["id"]: c for c in (book.get("chapters") or [])}
-    if set(payload.ids) != set(existing.keys()):
-        raise HTTPException(status_code=400, detail="Reorder ids must match existing chapter ids exactly")
-    reordered = []
-    for i, cid in enumerate(payload.ids):
-        c = dict(existing[cid])
-        c["order"] = i
-        reordered.append(c)
-    await db.books.update_one({"slug": slug}, {"$set": {"chapters": reordered}})
     return await _load_book_or_404(slug)
 
 
@@ -3461,15 +3682,11 @@ async def reading_pulse(payload: ReaderSessionEndIn, principal: Optional[dict] =
     book = await db.books.find_one({"slug": active.get("book_id")}, {"_id": 0, "title": 1}) or {}
     deducted, remaining = await _settle_active_reading_session(user["id"], payload.session_id, book.get("title", "Earnalism"))
     status = "wallet_empty" if remaining <= 0 else ("low_balance" if remaining <= LOW_BALANCE_THRESHOLD else "ok")
-    now = datetime.utcnow()
-    await db.users.update_one(
-        {"id": user["id"]},
-        {
-            "$set": {
-                "active_reading_session.last_pulse_at": now,
-            }
-        },
-    )
+    if deducted <= 0:
+        await db.users.update_one(
+            {"id": user["id"]},
+            {"$set": {"active_reading_session.last_pulse_at": datetime.now(timezone.utc)}},
+        )
     return {"success": status != "wallet_empty", "status": status, "wallet_seconds": remaining, "deducted_seconds": deducted}
 
 
@@ -3497,36 +3714,52 @@ async def reader_get_chapter(
     chapter_id: str,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    book = await db.books.find_one({"slug": slug, "is_published": True}, {"_id": 0})
-    if not book:
+    is_admin_preview = bool(principal and principal.get("role") == "admin")
+    book_query = {"slug": slug} if is_admin_preview else {"slug": slug, "is_published": True}
+    book_meta = await db.books.find_one(
+        book_query,
+        {"_id": 0, "chapters.id": 1, "chapters.title": 1, "chapters.order": 1, "chapters.is_preview": 1},
+    )
+    if not book_meta:
         raise HTTPException(status_code=404, detail="Book not found")
-    chapters = sorted((book.get("chapters") or []), key=lambda c: c.get("order", 0))
-    target = next((c for c in chapters if c.get("id") == chapter_id), None)
-    if not target:
+    chapters = sorted((book_meta.get("chapters") or []), key=lambda c: c.get("order", 0))
+    target_meta = next((c for c in chapters if c.get("id") == chapter_id), None)
+    if not target_meta:
         raise HTTPException(status_code=404, detail="Chapter not found")
 
     meta = {
-        "id": target["id"],
-        "title": target.get("title", ""),
-        "order": target.get("order", 0),
+        "id": target_meta["id"],
+        "title": target_meta.get("title", ""),
+        "order": target_meta.get("order", 0),
+        "is_preview": target_meta.get("is_preview", False),
     }
-    is_preview = chapters[0].get("id") == chapter_id
+    is_preview = _is_free_preview_chapter(book_meta, chapter_id)
+
+    async def unlocked_chapter_response(preview: bool):
+        content_doc = await db.books.find_one(
+            {**book_query, "chapters.id": chapter_id},
+            {"_id": 0, "chapters.$": 1},
+        )
+        target = ((content_doc or {}).get("chapters") or [{}])[0]
+        return {
+            "locked": False,
+            "is_preview": preview,
+            "chapter": {**meta, "is_preview": preview, "content": target.get("content", "")},
+        }
 
     # Free preview is open to everyone — no auth, no deduction.
-    if is_preview:
-        return {
-            "locked": False,
-            "is_preview": True,
-            "chapter": {**meta, "content": target.get("content", "")},
-        }
+    if is_preview and not is_admin_preview:
+        cache_key = _public_cache_key("reader_preview_chapter", slug=slug, chapter_id=chapter_id)
+        cached = _public_cache_get(cache_key)
+        if cached is not None:
+            return cached
+        result = await unlocked_chapter_response(True)
+        _public_cache_set(cache_key, result)
+        return result
 
     # Admin always has full access (admin reader preview).
-    if principal and principal.get("role") == "admin":
-        return {
-            "locked": False,
-            "is_preview": False,
-            "chapter": {**meta, "content": target.get("content", "")},
-        }
+    if is_admin_preview:
+        return await unlocked_chapter_response(False)
 
     # Reader user
     if principal and principal.get("role") == "user":
@@ -3538,11 +3771,7 @@ async def reader_get_chapter(
                 "chapter": meta,
             }
         if int(principal.get("reading_seconds_balance", 0)) > 0:
-            return {
-                "locked": False,
-                "is_preview": False,
-                "chapter": {**meta, "content": target.get("content", "")},
-            }
+            return await unlocked_chapter_response(False)
         return {
             "locked": True,
             "reason": "INSUFFICIENT_READING_TIME",
@@ -3968,9 +4197,8 @@ async def admin_list_webhooks(_=Depends(require_admin)):
 
 @api.get("/admin/secure-reader/alerts")
 async def admin_secure_reader_alerts(_=Depends(require_admin)):
-    violation_types = {"right_click", "copy", "cut", "print", "print_screen", "drag", "drop", "blocked_shortcut"}
     rows = await db.reader_security_events.find(
-        {"event_type": {"$in": sorted(violation_types)}},
+        {"event_type": {"$in": sorted(SECURE_READER_RECORDED_EVENTS)}},
         {"_id": 0},
     ).sort("created_at", -1).to_list(500)
 
@@ -4052,18 +4280,21 @@ app.add_middleware(
         "X-Razorpay-Event-Id",
         "X-Razorpay-Signature",
     ],
-    expose_headers=["X-Request-ID"],
+    expose_headers=["X-Request-ID", "X-Response-Time-ms", "Server-Timing", "Cache-Control"],
 )
 
 
 # ---------- Seed ----------
 SEED_CATEGORIES = [
-    {"slug": "business", "name": "Business & Entrepreneurship", "description": "Disciplined founder reads on building, growing, and sustaining ventures.", "order": 1, "image_url": "https://images.unsplash.com/photo-1769184614794-f6e910de6128?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGFyY2hpdGVjdHVyZSUyMGdvbGQlMjB3YXJtfGVufDB8fHx8MTc3NzYxNzE5MHww&ixlib=rb-4.1.0&q=85"},
-    {"slug": "self-growth", "name": "Self-Growth", "description": "Quiet, deliberate books for the inner architect.", "order": 2, "image_url": "https://images.unsplash.com/photo-1631737859676-20e3d0a25f01?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwyfHxjYWxtJTIwc2lsayUyMGZhYnJpYyUyMGZsb3dpbmclMjBpdm9yeXxlbnwwfHx8fDE3Nzc2MTcxOTB8MA&ixlib=rb-4.1.0&q=85"},
-    {"slug": "literature", "name": "Literature", "description": "Timeless prose, modern voices, and stories that linger.", "order": 3, "image_url": "https://images.unsplash.com/photo-1604778561734-cdfff7bb3c3b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxhbnRpcXVlJTIwYm9vayUyMHBhZ2VzJTIwbWFjcm8lMjBwaG90b2dyYXBoeXxlbnwwfHx8fDE3Nzc2MTcxNzd8MA&ixlib=rb-4.1.0&q=85"},
-    {"slug": "spirituality", "name": "Spirituality", "description": "Reflections that return the reader to themselves.", "order": 4, "image_url": "https://images.unsplash.com/photo-1774485423141-a63a49ae8df7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2ODh8MHwxfHNlYXJjaHw0fHxjYWxtJTIwbWluaW1hbCUyMGFic3RyYWN0JTIwd2FybSUyMHRleHR1cmV8ZW58MHx8fHwxNzc3NjE3MTc3fDA&ixlib=rb-4.1.0&q=85"},
-    {"slug": "bengali-reading", "name": "Bengali Reading", "description": "A devoted shelf for Bengali literature and thought.", "order": 5, "image_url": "https://images.unsplash.com/photo-1644150568283-d2c0b31cd703?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHx0ZXJyYWNvdHRhJTIwYXJ0JTIwdGV4dHVyZSUyMG1hY3JvfGVufDB8fHx8MTc3NzYxNzE5MHww&ixlib=rb-4.1.0&q=85"},
-    {"slug": "technology", "name": "Technology", "description": "Books on software, AI, data, digital systems, product thinking, and the future of work.", "order": 6, "image_url": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?crop=entropy&cs=srgb&fm=jpg&w=1600&q=85"},
+    {"slug": "bengali-classics", "name": "Bengali Classics", "description": "A cultural identity shelf for Bengali literature, short fiction, and clean digital editions for readers in India and beyond.", "order": 1, "image_url": "/assets/shelves/bengali-classics.jpg"},
+    {"slug": "literary-fiction", "name": "Literary Fiction", "description": "Enduring novels and modern literary works prepared for focused, thoughtful reading.", "order": 2, "image_url": "/assets/shelves/literary-fiction.jpg"},
+    {"slug": "young-readers", "name": "Young Readers", "description": "Classic and modern children's books for younger readers, families, and lifelong rereading.", "order": 3, "image_url": "/assets/shelves/young-readers.jpg"},
+    {"slug": "business", "name": "Business & Entrepreneurship", "description": "Founder reads on building, growing, and sustaining ventures.", "order": 4, "image_url": "/assets/shelves/business.jpg"},
+    {"slug": "technology", "name": "Technology & AI", "description": "Software, AI, data, digital systems, product thinking, and the future of work.", "order": 5, "image_url": "/assets/shelves/technology-ai.jpg"},
+    {"slug": "history-strategy", "name": "History & Strategy", "description": "Modern history, geopolitics, statecraft, diplomacy, and strategic thought.", "order": 6, "image_url": "/assets/shelves/history-strategy.jpg"},
+    {"slug": "adventure", "name": "Adventure", "description": "Survival, journeys, and high-stakes stories of movement and courage.", "order": 7, "image_url": "/assets/shelves/adventure.jpg"},
+    {"slug": "science-fiction", "name": "Science Fiction", "description": "Speculative classics about invention, time, society, and possible futures.", "order": 8, "image_url": "/assets/shelves/science-fiction.jpg"},
+    {"slug": "gothic-fiction", "name": "Gothic Fiction", "description": "Atmospheric classics of fear, invention, mystery, and moral tension.", "order": 9, "image_url": "/assets/shelves/gothic-fiction.jpg"},
 ]
 
 SEED_TECH_BOOK = {

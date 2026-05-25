@@ -8,6 +8,7 @@ import { useSettings } from "../context/SettingsContext";
 import BrandMark from "../components/BrandMark";
 import ChapterUpload from "../components/Admin/ChapterUpload";
 import CoverUpload from "../components/Admin/CoverUpload";
+import { normalizeImageUrl, optimizedImageUrl } from "../lib/images";
 
 const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "settings", "account"];
 
@@ -167,6 +168,22 @@ function SecurityAlertsAdmin() {
 
 const EMPTY_BOOK = { title: "", subtitle: "", author: "The Earnalism", category_slug: "business", short_description: "", description: "", cover_image_url: "", back_cover_image_url: "", estimated_reading_time: "", price_paperback: "", price_ebook: "", buy_url: "", formats: ["Ebook"], benefits: [], who_for: [], learnings: [], about_author: "", is_published: false };
 
+async function loadAdminBooks() {
+  try {
+    const { data } = await api.get("/admin/books/summary");
+    return Array.isArray(data) ? data : [];
+  } catch (err) {
+    if (err.response?.status !== 404) throw err;
+    const { data } = await api.get("/admin/books");
+    return Array.isArray(data)
+      ? data.map((book) => ({
+        ...book,
+        chapters: (book.chapters || []).map((chapter) => ({ ...chapter, content: "" })),
+      }))
+      : [];
+  }
+}
+
 function BooksAdmin() {
   const [books, setBooks] = useState([]);
   const [cats, setCats] = useState([]);
@@ -174,14 +191,34 @@ function BooksAdmin() {
   const [featured, setFeatured] = useState("");
 
   const load = async () => {
-    const [b, c, f] = await Promise.all([api.get("/admin/books"), api.get("/categories"), api.get("/featured")]);
-    setBooks(b.data); setCats(c.data); setFeatured(f.data?.book?.slug || "");
+    const [booksResult, catsResult, featuredResult] = await Promise.allSettled([
+      loadAdminBooks(),
+      api.get("/categories"),
+      api.get("/featured"),
+    ]);
+
+    if (booksResult.status === "fulfilled") setBooks(booksResult.value);
+    else toast.error(formatError(booksResult.reason?.response?.data?.detail) || "Books could not be loaded.");
+
+    if (catsResult.status === "fulfilled") setCats(catsResult.value.data);
+    else setCats([]);
+
+    if (featuredResult.status === "fulfilled") setFeatured(featuredResult.value.data?.book?.slug || "");
+    else setFeatured("");
   };
   useEffect(() => { load(); }, []);
 
   const save = async (form, originalSlug) => {
     try {
-      const payload = { ...form, benefits: arr(form.benefits), who_for: arr(form.who_for), learnings: arr(form.learnings), formats: arr(form.formats) };
+      const payload = {
+        ...form,
+        cover_image_url: normalizeImageUrl(form.cover_image_url || form.cover_url || ""),
+        back_cover_image_url: normalizeImageUrl(form.back_cover_image_url || form.back_cover_url || ""),
+        benefits: arr(form.benefits),
+        who_for: arr(form.who_for),
+        learnings: arr(form.learnings),
+        formats: arr(form.formats),
+      };
       if (originalSlug) await api.put(`/admin/books/${originalSlug}`, payload);
       else await api.post("/admin/books", payload);
       toast.success("Saved"); setEditing(null); await load();
@@ -212,7 +249,7 @@ function BooksAdmin() {
         {books.map((b) => (
           <div key={b.slug} className="card-elegant p-5 flex gap-4" data-testid={`admin-book-${b.slug}`}>
             <div className="w-20 h-28 bg-beige rounded-md overflow-hidden flex-shrink-0">
-              {b.cover_image_url && <img src={b.cover_image_url} alt={b.title} className="w-full h-full object-cover" />}
+              {b.cover_image_url && <img src={optimizedImageUrl(b.cover_image_url, { width: 240 })} alt={b.title} className="w-full h-full object-cover" />}
             </div>
             <div className="flex-1 min-w-0">
               <div className="overline">{b.category_slug}</div>
@@ -534,6 +571,33 @@ function BookEditor({ book, cats, onClose, onSave }) {
           </Field>
           <Field label="Cover image URL"><input className="input-elegant" value={f.cover_image_url} onChange={(e) => setF({ ...f, cover_image_url: e.target.value })} /></Field>
           <Field label="Back cover image URL"><input className="input-elegant" value={f.back_cover_image_url || ""} onChange={(e) => setF({ ...f, back_cover_image_url: e.target.value })} /></Field>
+          {!isNew && (
+            <div className="sm:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <CoverUpload
+                bookId={book.slug}
+                kind="front"
+                currentUrl={f.cover_image_url || f.cover_url}
+                onSuccess={(data) => {
+                  setF((prev) => ({ ...prev, cover_image_url: data.cover_url, cover_url: data.cover_url, thumbnail_url: data.thumbnail_url, cover_processing_status: "ready", cover_processing_error: "" }));
+                  toast.success("Front cover uploaded");
+                }}
+              />
+              <CoverUpload
+                bookId={book.slug}
+                kind="back"
+                currentUrl={f.back_cover_image_url || f.back_cover_url}
+                onSuccess={(data) => {
+                  setF((prev) => ({ ...prev, back_cover_image_url: data.cover_url, back_cover_url: data.cover_url, back_cover_thumbnail_url: data.thumbnail_url, back_cover_processing_status: "ready", back_cover_processing_error: "" }));
+                  toast.success("Back cover uploaded");
+                }}
+              />
+            </div>
+          )}
+          {isNew && (
+            <div className="sm:col-span-2 rounded-xl border border-brand-soft bg-ivory-warm/70 p-4 text-sm text-charcoal-soft">
+              Save the draft once, then reopen it to upload front and back cover images directly. URL fields remain available for already-hosted images.
+            </div>
+          )}
           <Field label="Estimated reading time"><input className="input-elegant" value={f.estimated_reading_time || ""} onChange={(e) => setF({ ...f, estimated_reading_time: e.target.value })} placeholder="4 hours" data-testid="book-reading-time" /></Field>
           <Field label="Buy Reading Time URL (Razorpay / external)" wide><input className="input-elegant" value={f.buy_url} onChange={(e) => setF({ ...f, buy_url: e.target.value })} placeholder="https://rzp.io/l/your-link (leave empty for 'Request Access')" data-testid="book-buy-url" /></Field>
           <Field label="Publication status" wide>
@@ -549,29 +613,6 @@ function BookEditor({ book, cats, onClose, onSave }) {
           <Field label="What you will learn (one per line)"><textarea rows={3} className="input-elegant" value={f.learnings} onChange={(e) => setF({ ...f, learnings: e.target.value })} /></Field>
           <Field label="About the author / publisher" wide><textarea rows={2} className="input-elegant" value={f.about_author} onChange={(e) => setF({ ...f, about_author: e.target.value })} /></Field>
         </div>
-
-        {!isNew && (
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <CoverUpload
-              bookId={book.slug}
-              kind="front"
-              currentUrl={f.cover_image_url}
-              onSuccess={(data) => {
-                setF((prev) => ({ ...prev, cover_image_url: data.cover_url, cover_url: data.cover_url, thumbnail_url: data.thumbnail_url, cover_processing_status: "ready", cover_processing_error: "" }));
-                toast.success("Front cover uploaded");
-              }}
-            />
-            <CoverUpload
-              bookId={book.slug}
-              kind="back"
-              currentUrl={f.back_cover_image_url}
-              onSuccess={(data) => {
-                setF((prev) => ({ ...prev, back_cover_image_url: data.cover_url, back_cover_url: data.cover_url, back_cover_thumbnail_url: data.thumbnail_url, back_cover_processing_status: "ready", back_cover_processing_error: "" }));
-                toast.success("Back cover uploaded");
-              }}
-            />
-          </div>
-        )}
 
         {saveBlocked && (
           <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
@@ -997,8 +1038,9 @@ function ChaptersManager({ slug }) {
   const saveChapter = async (data, cid) => {
     setBusy(true);
     try {
-      if (cid) await api.put(`/admin/books/${slug}/chapters/${cid}`, { title: data.title, content: data.content });
-      else await api.post(`/admin/books/${slug}/chapters`, { title: data.title, content: data.content });
+      const payload = { title: data.title, content: data.content, is_preview: data.is_preview === true };
+      if (cid) await api.put(`/admin/books/${slug}/chapters/${cid}`, payload);
+      else await api.post(`/admin/books/${slug}/chapters`, payload);
       toast.success("Chapter saved");
       setEditing(null);
       load();
@@ -1051,6 +1093,7 @@ function ChaptersManager({ slug }) {
             <li key={c.id} className="flex items-center gap-3 p-3 border border-brand-soft rounded-lg" data-testid={`chapter-row-${c.id}`}>
               <span className="italic-accent text-gold-deep w-10 shrink-0 text-center">{String(i + 1).padStart(2, "0")}</span>
               <span className="flex-1 min-w-0 font-serif-display text-[1.05rem] text-burgundy truncate">{c.title}</span>
+              {c.is_preview && <span className="hidden sm:inline text-[0.68rem] uppercase tracking-[0.14em] text-gold-deep">Preview</span>}
               <ProcessingBadge status={processingStatus(c)} />
               {Array.isArray(c.processing_warnings) && c.processing_warnings.length > 0 && (
                 <span className="hidden sm:inline text-[0.72rem] text-amber-800" title={c.processing_warnings.join("\n")}>Warnings</span>
@@ -1087,6 +1130,7 @@ function ChaptersManager({ slug }) {
 function ChapterEditor({ chapter, bookId, onCancel, onSave, onUploaded, busy }) {
   const [title, setTitle] = useState(chapter.title || "");
   const [content, setContent] = useState(chapter.content || "");
+  const [isPreview, setIsPreview] = useState(chapter.is_preview === true);
   const previewHasHtml = hasHtmlTags(content);
   const previewHtml = useMemo(() => previewHasHtml ? sanitizePreviewHtml(content) : "", [content, previewHasHtml]);
   const previewIsBengali = containsBengaliText(`${title} ${content}`);
@@ -1110,6 +1154,15 @@ function ChapterEditor({ chapter, bookId, onCancel, onSave, onUploaded, busy }) 
         <Field label="Chapter title" wide>
           <input className="input-elegant" value={title} onChange={(e) => setTitle(e.target.value)} data-testid="chapter-title" />
         </Field>
+        <label className="mt-3 inline-flex items-center gap-2 text-[0.8rem] text-charcoal-soft">
+          <input
+            type="checkbox"
+            checked={isPreview}
+            onChange={(e) => setIsPreview(e.target.checked)}
+            className="h-4 w-4 accent-[var(--brand-burgundy)]"
+          />
+          Free preview
+        </label>
         {!chapter._new && (
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <ProcessingBadge status={processingStatus(chapter)} />
@@ -1177,7 +1230,7 @@ function ChapterEditor({ chapter, bookId, onCancel, onSave, onUploaded, busy }) 
         <div className="mt-6 flex justify-end gap-3">
           <button onClick={onCancel} className="btn-secondary">Cancel</button>
           <button
-            onClick={() => onSave({ title: title.trim(), content })}
+            onClick={() => onSave({ title: title.trim(), content, is_preview: isPreview })}
             disabled={busy || !title.trim()}
             className="btn-primary disabled:opacity-60"
             data-testid="save-chapter"

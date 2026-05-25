@@ -1,0 +1,18 @@
+{
+  "slug": "ginni",
+  "title": "গিন্নি",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "language": "ben",
+  "provider_used": "google",
+  "fallback_used": true,
+  "fallback_reason": "selected_google_wavenet_for_clean_reader_body_word_timestamps",
+  "duration_ms": 478800,
+  "total_words": 998,
+  "highlight_available": true,
+  "chapters": 1,
+  "generated_at": "2026-05-21T19:52:09Z",
+  "voice": "bn-IN-Wavenet-C",
+  "pace": null,
+  "characters_billed": 7427,
+  "estimated_cost_usd": 0.059416
+}

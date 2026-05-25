@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "regression": "bash scripts/run_regression_suite.sh",
+    "regression:e2e": "node scripts/e2e_regression.mjs",
+    "load:100": "k6 run scripts/k6_load_100.js"
+  },
   "dependencies": {
     "cloudinary": "^2.10.0"
   }

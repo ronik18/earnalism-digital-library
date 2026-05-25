@@ -7,14 +7,14 @@ function BookCard({ book }) {
   const coverSrc = optimizedImageUrl(book.cover_image_url, { width: 720 });
   return (
     <div className="card-elegant overflow-hidden flex flex-col group" data-testid={`book-card-${book.slug}`}>
-      <Link to={`/book/${book.slug}`} className="block aspect-[3/4] bg-beige-deep overflow-hidden relative">
+      <Link to={`/book/${book.slug}`} className="block aspect-[3/4] bg-ivory-warm overflow-hidden relative">
         {book.cover_image_url ? (
           <img
             src={coverSrc}
             alt={book.title}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]"
+            className="w-full h-full object-contain"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center font-serif-light text-burgundy text-6xl">E</div>

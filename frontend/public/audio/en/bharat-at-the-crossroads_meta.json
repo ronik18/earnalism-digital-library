@@ -1,0 +1,18 @@
+{
+  "slug": "bharat-at-the-crossroads",
+  "title": "Bharat at the Crossroads",
+  "author": "Ronik Basak",
+  "language": "en",
+  "provider_used": "google",
+  "fallback_used": false,
+  "fallback_reason": null,
+  "duration_ms": 13698074,
+  "total_words": 35542,
+  "highlight_available": true,
+  "chapters": 10,
+  "generated_at": "2026-05-22T07:49:12Z",
+  "voice": "en-IN-Neural2-B",
+  "pace": null,
+  "characters_billed": 268687,
+  "estimated_cost_usd": 4.298992
+}

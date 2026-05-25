@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="mb-4 leading-none" data-testid="footer-brand"><BrandMark variant="footer" /></div>
           <p className="font-serif-display italic text-base text-charcoal-soft mb-4">Buy reading time. Read beautifully. Return whenever you wish.</p>
           <p className="text-charcoal-soft max-w-md leading-[1.8] font-light text-[0.95rem]">
-            A quiet digital reading room for books in business, self-growth, literature, spirituality, Bengali reading, and technology.
+            A quiet digital reading room for Bengali classics, literary fiction, young readers, business, technology and AI, history, adventure, science fiction, and gothic fiction.
           </p>
           <div className="gold-rule-thin mt-7" />
         </div>

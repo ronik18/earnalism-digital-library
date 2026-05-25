@@ -22,8 +22,6 @@ def upload_image(file_bytes, folder: str = "earnalism", public_id=None, resource
         public_id=public_id,
         resource_type=resource_type,
         overwrite=True,
-        format="auto",
-        quality="auto:best",
         colors=True,
         responsive_breakpoints={
             "create_derived": True,

@@ -19,7 +19,7 @@ export default function Library() {
 
   useSEO({
     title: "The Library — The Earnalism Digital Library",
-    description: "A quiet digital reading room. Browse curated titles in business, self-growth, literature, spirituality, technology, and Bengali reading. Buy reading time. Read beautifully.",
+    description: "Browse Bengali classics, literary fiction, young readers, business, technology and AI, history, adventure, science fiction, and gothic fiction. Buy reading time. Read beautifully.",
     image: LIBRARY_OG,
   });
 
@@ -132,9 +132,9 @@ function SingleBookSpotlight({ book }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-5xl mx-auto py-6 sm:py-10" data-testid="single-book-spotlight">
       <Link to={`/book/${book.slug}`} className="lg:col-span-5 group" data-testid={`book-card-${book.slug}`}>
-        <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft shadow-[0_40px_80px_-40px_rgba(74,28,39,0.4)]">
+        <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft bg-ivory-warm shadow-[0_40px_80px_-40px_rgba(74,28,39,0.4)]">
           {book.cover_image_url ? (
-            <img src={optimizedImageUrl(book.cover_image_url, { width: 760 })} alt={book.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]" />
+            <img src={optimizedImageUrl(book.cover_image_url, { width: 760 })} alt={book.title} loading="lazy" decoding="async" className="w-full h-full object-contain" />
           ) : (
             <div className="w-full h-full bg-beige-deep flex items-center justify-center font-serif-light text-7xl text-burgundy">E</div>
           )}
