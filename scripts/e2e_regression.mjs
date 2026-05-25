@@ -9,6 +9,17 @@ const baseUrl = (process.env.E2E_BASE_URL || "https://theearnalism.com").replace
 const apiUrl = (process.env.E2E_API_URL || "https://api.theearnalism.com").replace(/\/$/, "");
 const outputDir = path.resolve(process.env.E2E_OUTPUT_DIR || "test-results/regression");
 const isLocalFrontend = /^https?:\/\/(?:127\.0\.0\.1|localhost|\[::1\])/i.test(baseUrl);
+const expectedShelves = [
+  "Bengali Classics",
+  "Literary Fiction",
+  "Young Readers",
+  "Business & Entrepreneurship",
+  "Technology & AI",
+  "History & Strategy",
+  "Adventure",
+  "Science Fiction",
+  "Gothic Fiction",
+];
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -94,6 +105,9 @@ async function main() {
   await page.waitForTimeout(900);
   const home = await page.evaluate(() => {
     const band = document.querySelector(".live-cover-showcase--band");
+    const shelves = [...document.querySelectorAll('[data-testid^="category-card-"] h3')]
+      .map((node) => node.textContent?.trim())
+      .filter(Boolean);
     const cards = [...document.querySelectorAll('[data-testid^="live-cover-preview-"]')].map((link) => ({
       href: link.getAttribute("href"),
       slug: link.getAttribute("href")?.replace(/^\/reader\//, ""),
@@ -107,6 +121,7 @@ async function main() {
     return {
       viewportWidth: window.innerWidth,
       bandRect,
+      shelves,
       cards,
       visiblePreviewPills,
     };
@@ -115,6 +130,10 @@ async function main() {
   assert(Math.round(home.bandRect.x) === 0, `home slideshow is not flush-left: ${home.bandRect.x}`);
   assert(Math.abs(home.bandRect.width - home.viewportWidth) <= 2, `home slideshow is not full width: ${home.bandRect.width}/${home.viewportWidth}`);
   assert(home.cards.length > 0, "home slideshow has no live book cards");
+  assert(
+    JSON.stringify(home.shelves) === JSON.stringify(expectedShelves),
+    `home shelves mismatch: ${JSON.stringify(home.shelves)}`,
+  );
   assert(home.cards.every((card) => card.href?.startsWith("/reader/")), `one or more slideshow cards do not open readers: ${JSON.stringify(home.cards)}`);
   assert(home.visiblePreviewPills >= home.cards.length, "preview affordance is not visible on every primary card");
   const firstSlug = home.cards[0].slug;

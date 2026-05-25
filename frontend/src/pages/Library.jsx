@@ -19,7 +19,7 @@ export default function Library() {
 
   useSEO({
     title: "The Library — The Earnalism Digital Library",
-    description: "A quiet digital reading room. Browse curated titles in business, self-growth, literature, spirituality, technology, and Bengali reading. Buy reading time. Read beautifully.",
+    description: "Browse Bengali classics, literary fiction, young readers, business, technology and AI, history, adventure, science fiction, and gothic fiction. Buy reading time. Read beautifully.",
     image: LIBRARY_OG,
   });
 

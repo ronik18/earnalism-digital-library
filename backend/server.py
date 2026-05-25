@@ -1767,11 +1767,18 @@ async def lifespan(_app: FastAPI):
         {"$set": {"auth_provider": "email"}},
     )
 
-    # categories
+    # Canonical shelf taxonomy. Keep older imported/admin book records attached
+    # to their closest current shelf before refreshing category documents.
+    for old_slug, new_slug in LEGACY_CATEGORY_SLUG_MAP.items():
+        await db.books.update_many(
+            {"category_slug": old_slug},
+            {"$set": {"category_slug": new_slug}},
+        )
+    await db.categories.delete_many({"slug": {"$in": list(LEGACY_CATEGORY_SLUG_MAP.keys())}})
     for c in SEED_CATEGORIES:
         await db.categories.update_one(
             {"slug": c["slug"]},
-            {"$setOnInsert": {**c, "id": str(uuid.uuid4())}},
+            {"$set": c, "$setOnInsert": {"id": str(uuid.uuid4())}},
             upsert=True,
         )
 
@@ -4224,16 +4231,28 @@ app.add_middleware(
 
 # ---------- Seed ----------
 SEED_CATEGORIES = [
-    {"slug": "business", "name": "Business & Entrepreneurship", "description": "Founder reads on building, growing, and sustaining ventures.", "order": 1, "image_url": "/assets/shelves/business.jpg"},
-    {"slug": "technology", "name": "Technology & AI", "description": "Software, AI, data, digital systems, product thinking, and the future of work.", "order": 2, "image_url": "/assets/shelves/technology.jpg"},
-    {"slug": "history-strategy", "name": "History & Strategy", "description": "Modern history, geopolitics, statecraft, diplomacy, and strategic thought.", "order": 3, "image_url": "/assets/shelves/history-politics.jpg"},
-    {"slug": "bengali-classics", "name": "Bengali Classics", "description": "Classic Bengali literature and short fiction in clean digital editions.", "order": 4, "image_url": "/assets/shelves/bengali.jpg"},
-    {"slug": "classic-literature", "name": "Classic Literature", "description": "Enduring novels and literary works prepared for focused reading.", "order": 5, "image_url": "/assets/shelves/literature.jpg"},
-    {"slug": "children-classics", "name": "Children's Classics", "description": "Beloved classic stories for younger readers and lifelong rereading.", "order": 6, "image_url": "/assets/shelves/literature.jpg"},
-    {"slug": "adventure", "name": "Adventure", "description": "Survival, journeys, and high-stakes stories of movement and courage.", "order": 7, "image_url": "/assets/shelves/literature.jpg"},
-    {"slug": "science-fiction", "name": "Science Fiction", "description": "Speculative classics about invention, time, society, and possible futures.", "order": 8, "image_url": "/assets/shelves/technology.jpg"},
-    {"slug": "gothic-fiction", "name": "Gothic Fiction", "description": "Atmospheric classics of fear, invention, mystery, and moral tension.", "order": 9, "image_url": "/assets/shelves/literature.jpg"},
+    {"slug": "bengali-classics", "name": "Bengali Classics", "description": "A cultural identity shelf for Bengali literature, short fiction, and clean digital editions for readers in India and beyond.", "order": 1, "image_url": "/assets/shelves/bengali-classics.jpg"},
+    {"slug": "literary-fiction", "name": "Literary Fiction", "description": "Enduring novels and modern literary works prepared for focused, thoughtful reading.", "order": 2, "image_url": "/assets/shelves/literary-fiction.jpg"},
+    {"slug": "young-readers", "name": "Young Readers", "description": "Classic and modern children's books for younger readers, families, and lifelong rereading.", "order": 3, "image_url": "/assets/shelves/young-readers.jpg"},
+    {"slug": "business", "name": "Business & Entrepreneurship", "description": "Founder reads on building, growing, and sustaining ventures.", "order": 4, "image_url": "/assets/shelves/business.jpg"},
+    {"slug": "technology", "name": "Technology & AI", "description": "Software, AI, data, digital systems, product thinking, and the future of work.", "order": 5, "image_url": "/assets/shelves/technology-ai.jpg"},
+    {"slug": "history-strategy", "name": "History & Strategy", "description": "Modern history, geopolitics, statecraft, diplomacy, and strategic thought.", "order": 6, "image_url": "/assets/shelves/history-strategy.jpg"},
+    {"slug": "adventure", "name": "Adventure", "description": "Survival, journeys, and high-stakes stories of movement and courage.", "order": 7, "image_url": "/assets/shelves/adventure.jpg"},
+    {"slug": "science-fiction", "name": "Science Fiction", "description": "Speculative classics about invention, time, society, and possible futures.", "order": 8, "image_url": "/assets/shelves/science-fiction.jpg"},
+    {"slug": "gothic-fiction", "name": "Gothic Fiction", "description": "Atmospheric classics of fear, invention, mystery, and moral tension.", "order": 9, "image_url": "/assets/shelves/gothic-fiction.jpg"},
 ]
+
+LEGACY_CATEGORY_SLUG_MAP = {
+    "classic-literature": "literary-fiction",
+    "literature": "literary-fiction",
+    "children-classics": "young-readers",
+    "children": "young-readers",
+    "business-entrepreneurship": "business",
+    "technology-ai": "technology",
+    "history-politics": "history-strategy",
+    "bengali": "bengali-classics",
+    "bengali-reading": "bengali-classics",
+}
 
 SEED_TECH_BOOK = {
     "slug": "the-architecture-of-intelligent-systems",

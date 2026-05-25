@@ -10,18 +10,24 @@ import useSEO from "../hooks/useSEO";
 const HERO_IMG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1920&q=90";
 const FOUNDER_IMG = "https://images.unsplash.com/photo-1773067752075-2cfd37ab02dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
 const SHELF_IMAGES = {
-  "bengali": "/assets/shelves/bengali.jpg",
-  "bengali-reading": "/assets/shelves/bengali.jpg",
-  "bengali-classics": "/assets/shelves/bengali.jpg",
+  "bengali": "/assets/shelves/bengali-classics.jpg",
+  "bengali-reading": "/assets/shelves/bengali-classics.jpg",
+  "bengali-classics": "/assets/shelves/bengali-classics.jpg",
   "business": "/assets/shelves/business.jpg",
   "business-entrepreneurship": "/assets/shelves/business.jpg",
-  "history": "/assets/shelves/history-politics.jpg",
-  "history-politics": "/assets/shelves/history-politics.jpg",
-  "history-strategy": "/assets/shelves/history-politics.jpg",
-  "literature": "/assets/shelves/literature.jpg",
-  "self-growth": "/assets/shelves/self-growth.jpg",
-  "self-improvement": "/assets/shelves/self-growth.jpg",
-  "technology": "/assets/shelves/technology.jpg",
+  "history": "/assets/shelves/history-strategy.jpg",
+  "history-politics": "/assets/shelves/history-strategy.jpg",
+  "history-strategy": "/assets/shelves/history-strategy.jpg",
+  "literature": "/assets/shelves/literary-fiction.jpg",
+  "classic-literature": "/assets/shelves/literary-fiction.jpg",
+  "literary-fiction": "/assets/shelves/literary-fiction.jpg",
+  "children-classics": "/assets/shelves/young-readers.jpg",
+  "young-readers": "/assets/shelves/young-readers.jpg",
+  "technology": "/assets/shelves/technology-ai.jpg",
+  "technology-ai": "/assets/shelves/technology-ai.jpg",
+  "adventure": "/assets/shelves/adventure.jpg",
+  "science-fiction": "/assets/shelves/science-fiction.jpg",
+  "gothic-fiction": "/assets/shelves/gothic-fiction.jpg",
 };
 
 function shelfImageFor(category) {
@@ -32,9 +38,12 @@ function shelfImageFor(category) {
   if (slug.includes("bengali") || name.includes("bengali")) return SHELF_IMAGES.bengali;
   if (slug.includes("business") || name.includes("business") || name.includes("entrepreneur")) return SHELF_IMAGES.business;
   if (slug.includes("history") || slug.includes("politic") || name.includes("history") || name.includes("politic")) return SHELF_IMAGES["history-politics"];
-  if (slug.includes("literature") || name.includes("literature")) return SHELF_IMAGES.literature;
-  if (slug.includes("self") || name.includes("self")) return SHELF_IMAGES["self-growth"];
+  if (slug.includes("literary") || slug.includes("literature") || name.includes("literary") || name.includes("literature")) return SHELF_IMAGES["literary-fiction"];
+  if (slug.includes("young") || slug.includes("children") || name.includes("young") || name.includes("children")) return SHELF_IMAGES["young-readers"];
   if (slug.includes("tech") || name.includes("tech") || name.includes("ai")) return SHELF_IMAGES.technology;
+  if (slug.includes("adventure") || name.includes("adventure")) return SHELF_IMAGES.adventure;
+  if (slug.includes("science") || name.includes("science")) return SHELF_IMAGES["science-fiction"];
+  if (slug.includes("gothic") || name.includes("gothic")) return SHELF_IMAGES["gothic-fiction"];
 
   return category?.image_url;
 }
@@ -49,7 +58,7 @@ export default function Home() {
 
   useSEO({
     title: "The Earnalism Digital Library — Buy Reading Time. Read Beautifully.",
-    description: "A quiet digital reading room for books in business, self-growth, literature, spirituality, Bengali reading, and technology. Buy reading time. Read beautifully. Return whenever you wish.",
+    description: "A quiet digital reading room for Bengali classics, literary fiction, young readers, business, technology and AI, history, adventure, science fiction, and gothic fiction.",
     image: HERO_IMG,
   });
 
@@ -145,7 +154,7 @@ export default function Home() {
               Buy reading time. Read beautifully. Return whenever you wish.
             </p>
             <p className="mt-6 sm:mt-7 text-[0.95rem] sm:text-[1.05rem] text-[#F4EFEA]/80 max-w-md sm:max-w-lg leading-[1.75] font-light drop-shadow-[0_1px_18px_rgba(0,0,0,0.4)]">
-              A quiet digital reading room for books in business, self-growth, literature, spirituality, Bengali reading, and technology.
+              A quiet digital reading room for Bengali classics, literary fiction, young readers, business, technology and AI, history, adventure, science fiction, and gothic fiction.
             </p>
             <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
               <Link to={featured ? `/reader/${featured.slug}` : "/library"} className="btn-primary w-full sm:w-auto" data-testid="hero-cta-read">Start Reading</Link>

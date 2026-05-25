@@ -912,9 +912,9 @@ def minimum_word_count_for(book: dict[str, Any]) -> int:
 def metadata_defaults(book: dict[str, Any], word_count: int, warnings: list[str]) -> dict[str, Any]:
     title = normalize_text(book.get("title", "")).strip()
     author = normalize_text(book.get("author", "")).strip()
-    category = normalize_text(book.get("category_slug", "")).strip() or "literature"
+    category = normalize_text(book.get("category_slug", "")).strip() or "literary-fiction"
     if not book.get("category_slug"):
-        warnings.append("category_slug missing; defaulted to literature.")
+        warnings.append("category_slug missing; defaulted to literary-fiction.")
     about_author = normalize_text(book.get("about_author", "")).strip()
     if not about_author:
         warnings.append("about_author missing; left empty for human review.")

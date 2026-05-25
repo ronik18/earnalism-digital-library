@@ -46,6 +46,22 @@ The pipeline loads `.secrets/earnalism-import.env` and `.secrets/earnalism-audio
 
 For full platform regression and 100-user load gates, see `docs/REGRESSION_AND_SCALE.md`.
 
+## Current Shelf Slugs
+
+Use these canonical `category_slug` values in manifests and admin uploads:
+
+- `bengali-classics`
+- `literary-fiction`
+- `young-readers`
+- `business`
+- `technology`
+- `history-strategy`
+- `adventure`
+- `science-fiction`
+- `gothic-fiction`
+
+Legacy slugs such as `classic-literature` and `children-classics` are migrated to `literary-fiction` and `young-readers`.
+
 ## Slideshow Behavior
 
 No separate slideshow edit is needed after publishing. The landing-page infinite slideshow reads the live public books endpoint at runtime. Once a book is published and appears in `/api/books` with a cover image, it is automatically included in the slideshow. The `landing_slideshow_sync` phase fails the go-live report if a newly published slug is missing from that public response or lacks a public cover.

@@ -20,7 +20,7 @@ export default function About() {
       <section className="max-w-3xl mx-auto px-5 sm:px-8 py-12 space-y-16 sm:space-y-20">
         {[
           { t: "Our Philosophy", b: "We believe books are long instruments. They earn their place in a reader's life by returning, season after season, to be opened again. The Earnalism is built around that quiet permanence — fewer books, deeper readings, a longer relationship with each title." },
-          { t: "What We Curate", b: "Our shelves are kept by hand: business books a founder can argue with, literature that lingers, self-growth that respects intelligence, spirituality that returns the reader to themselves, technology written with craft, and Bengali reading we love and want to make accessible to a new generation." },
+          { t: "What We Curate", b: "Our shelves are kept by hand: Bengali classics with cultural memory, literary fiction that lingers, young readers' books for early wonder, business books a founder can argue with, technology and AI written with craft, history and strategy for long context, adventure, science fiction, and gothic fiction." },
           { t: "For Readers", b: "Our single promise is restraint — never a book we wouldn't lend to a close friend. The collection grows slowly because the trust of a careful reader compounds over years, not weeks. We design the bookstore, the packaging, and the reading notes for the one customer who still lingers over a single chapter." },
           { t: "The Earnalism Promise", b: "Read with depth. Curate with care. Share with meaning. These are not slogans for us — they are the standards we keep when no one is watching, and they are the reason we believe this small bookstore has a long future." },
         ].map((s, i) => (

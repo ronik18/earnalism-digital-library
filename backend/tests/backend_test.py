@@ -37,7 +37,19 @@ def test_categories(s):
     data = r.json()
     assert isinstance(data, list) and len(data) >= 5
     slugs = {c["slug"] for c in data}
-    assert {"business", "technology", "history-strategy", "bengali-classics", "classic-literature"} <= slugs
+    assert {
+        "bengali-classics",
+        "literary-fiction",
+        "young-readers",
+        "business",
+        "technology",
+        "history-strategy",
+        "adventure",
+        "science-fiction",
+        "gothic-fiction",
+    } <= slugs
+    assert "classic-literature" not in slugs
+    assert "children-classics" not in slugs
 
 
 def test_featured(s):
