@@ -14,7 +14,7 @@ import { optimizedImageUrl } from '../lib/images';
 const THEMES = {
   beige: { canvas: '#F5F0E8', surface: '#FDFAF4', text: '#2C1810', accent: '#6B1E2E', border: '#E8D5A3', label: 'Light' },
   sepia: { canvas: '#EDE0C8', surface: '#F5E8D0', text: '#3B2A1A', accent: '#6B1E2E', border: '#D7BD7A', label: 'Sepia' },
-  dark: { canvas: '#1A0E12', surface: '#240D14', text: '#E8D5A3', accent: '#C9A84C', border: 'rgba(201,168,76,0.32)', label: 'Dark' },
+  dark: { canvas: '#14090D', surface: '#250B13', text: '#D9C793', accent: '#CDB158', border: 'rgba(205,177,88,0.34)', label: 'Dark' },
 };
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
@@ -619,9 +619,9 @@ export default function Reader() {
   const [error, setError] = useState(null);
   const [lockedState, setLockedState] = useState(null);
 
-  const [theme, setTheme] = useState('beige');
-  const [fontSizeIdx, setFontSizeIdx] = useState(2);
-  const [lineSpacingMode, setLineSpacingMode] = useState('relaxed');
+  const [theme, setTheme] = useState('dark');
+  const [fontSizeIdx, setFontSizeIdx] = useState(0);
+  const [lineSpacingMode, setLineSpacingMode] = useState('comfortable');
   const [fontFamilyMode, setFontFamilyMode] = useState('sans');
   const [showSettings, setShowSettings] = useState(false);
   const [showTOC, setShowTOC] = useState(false);
