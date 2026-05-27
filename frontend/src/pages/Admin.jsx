@@ -599,7 +599,7 @@ function BookEditor({ book, cats, onClose, onSave }) {
             </div>
           )}
           <Field label="Estimated reading time"><input className="input-elegant" value={f.estimated_reading_time || ""} onChange={(e) => setF({ ...f, estimated_reading_time: e.target.value })} placeholder="4 hours" data-testid="book-reading-time" /></Field>
-          <Field label="Buy Reading Time URL (Razorpay / external)" wide><input className="input-elegant" value={f.buy_url} onChange={(e) => setF({ ...f, buy_url: e.target.value })} placeholder="https://rzp.io/l/your-link (leave empty for 'Request Access')" data-testid="book-buy-url" /></Field>
+          <Field label="Buy Reading Time URL (Razorpay / external)" wide><input className="input-elegant" value={f.buy_url} onChange={(e) => setF({ ...f, buy_url: e.target.value })} placeholder="https://rzp.io/l/your-link (optional external checkout)" data-testid="book-buy-url" /></Field>
           <Field label="Publication status" wide>
             <label className="inline-flex items-center gap-3 rounded-lg border border-brand-soft px-4 py-3 text-sm text-charcoal-soft">
               <input type="checkbox" checked={Boolean(f.is_published)} onChange={(e) => setF({ ...f, is_published: e.target.checked })} />

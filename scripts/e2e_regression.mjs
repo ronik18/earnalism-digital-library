@@ -164,12 +164,25 @@ async function main() {
   await gotoAppPath(page, `/book/${firstSlug}`);
   await page.waitForSelector('[data-testid="book-page"]', { timeout: 30000 });
   const bookDetail = await page.evaluate((slug) => ({
+    topPreviewHref: document.querySelector('[data-testid="read-preview"]')?.getAttribute("href"),
+    topStartHref: document.querySelector('[data-testid="start-reading"]')?.getAttribute("href"),
+    requestAccessCount: document.querySelectorAll('[data-testid="request-access"]').length,
+    topBuyReadingTimeCount: document.querySelectorAll('[data-testid="buy-reading-time"]').length,
     previewHref: document.querySelector('[data-testid="bottom-read-preview"]')?.getAttribute("href"),
     paymentHref: document.querySelector('[data-testid="bottom-buy-reading-time"]')?.getAttribute("href"),
     hasPaymentSection: Boolean(document.querySelector('[data-testid="preview-payment-section"]')),
     rawBodyIncludesRightsMetadata: document.body.innerText.includes("rights_metadata"),
     slug,
   }), firstSlug);
+  if (bookDetail.topPreviewHref) {
+    assert(bookDetail.topPreviewHref === `/reader/${firstSlug}`, `top preview CTA mismatch: ${bookDetail.topPreviewHref}`);
+  }
+  assert(
+    bookDetail.topStartHref === `/pricing?pack=1h&source=book_detail&book=${firstSlug}`,
+    `top Start Reading CTA should open book-specific pricing, got ${bookDetail.topStartHref}`,
+  );
+  assert(bookDetail.requestAccessCount === 0, "Request Access CTA should not render on book detail");
+  assert(bookDetail.topBuyReadingTimeCount === 0, "top Buy Reading Time CTA should not render on book detail");
   assert(bookDetail.previewHref === `/reader/${firstSlug}`, `book preview CTA mismatch: ${bookDetail.previewHref}`);
   assert(bookDetail.paymentHref?.includes(`book=${firstSlug}`), `payment CTA does not preserve book slug: ${bookDetail.paymentHref}`);
   assert(bookDetail.hasPaymentSection, "book detail payment section missing");
