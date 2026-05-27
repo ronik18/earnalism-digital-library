@@ -116,6 +116,26 @@ Use `--book-slug` repeatedly or `--all-drafts` to control the publish batch. The
 
 For normal operations, prefer the one-command `scripts/earnalism_go_live.sh` wrapper instead of manually sequencing `preflight`, `upload-drafts`, and `publish`.
 
+## Latency-Risk Holdbacks
+
+The production workflow automatically holds oversized books as drafts when publishing them could increase API latency or timeout risk. By default, a book is held back if it exceeds any of these thresholds:
+
+- More than `80` chapters.
+- More than `1,800,000` stored-content characters.
+- Any single chapter over `120,000` stored-content characters.
+
+Held books stay uploaded as admin drafts with their text and covers intact, but they are not published live and are excluded from the publish batch. The report lists them under `Latency-Risk Holdbacks`. Tune the guard per run with:
+
+```bash
+python3 scripts/bulk_publishing_pipeline.py \
+  --stage publish \
+  --max-publish-chapters 80 \
+  --max-publish-chars 1800000 \
+  --max-publish-chapter-chars 120000
+```
+
+Use `--disable-latency-risk-gate` only after backend pagination/projection has been verified for very large books. Use `--block-latency-risk-holdbacks` if you want a holdback to fail the whole batch instead of publishing the safe books.
+
 ## Agentic AI Package
 
 By default the pipeline checks `final_package/` for the existing Agentic AI readiness report, metadata, DOCX, PDF, Markdown, disabled audiobook flags, balanced code fences, and zero secret-like strings.

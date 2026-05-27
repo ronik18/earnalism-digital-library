@@ -32,6 +32,9 @@ except ImportError as exc:  # pragma: no cover - local environment guard
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_API_URL = "https://api.theearnalism.com"
 DEFAULT_FRONTEND_URL = "https://theearnalism.com"
+DEFAULT_MAX_PUBLISH_CHAPTERS = int(os.environ.get("EARNALISM_MAX_PUBLISH_CHAPTERS", "80"))
+DEFAULT_MAX_PUBLISH_CHARS = int(os.environ.get("EARNALISM_MAX_PUBLISH_CHARS", "1800000"))
+DEFAULT_MAX_PUBLISH_CHAPTER_CHARS = int(os.environ.get("EARNALISM_MAX_PUBLISH_CHAPTER_CHARS", "120000"))
 BOOK_IN_FIELDS = {
     "title",
     "subtitle",
@@ -274,35 +277,57 @@ class EarnalismApi:
         self.session = requests.Session()
         self.headers: Dict[str, str] = {}
 
+    def request_json(self, method: str, path: str, timeout: int = 60, **kwargs: Any) -> Any:
+        url = f"{self.api_url}{path}"
+        headers = dict(kwargs.pop("headers", {}) or {})
+        if self.headers:
+            headers.update(self.headers)
+        last_error: Exception | None = None
+        for attempt in range(1, 4):
+            try:
+                response = self.session.request(method, url, headers=headers, timeout=timeout, **kwargs)
+                if response.status_code in {502, 503, 504} and attempt < 3:
+                    last_error = RuntimeError(f"HTTP {response.status_code}: {response.text[:200]}")
+                    time.sleep(attempt * 3)
+                    continue
+                response.raise_for_status()
+                return response.json() if response.text.strip() else {}
+            except (requests.ConnectionError, requests.Timeout) as exc:
+                last_error = exc
+                if attempt < 3:
+                    time.sleep(attempt * 3)
+                    continue
+                break
+            except requests.HTTPError as exc:
+                last_error = exc
+                status = exc.response.status_code if exc.response is not None else 0
+                if status in {502, 503, 504} and attempt < 3:
+                    time.sleep(attempt * 3)
+                    continue
+                raise
+        raise RuntimeError(f"{method} {path} failed after retries: {last_error}") from last_error
+
     def login(self) -> None:
         email = os.environ.get("ADMIN_EMAIL")
         password = os.environ.get("ADMIN_PASSWORD")
         if not email or not password:
             raise RuntimeError("Missing ADMIN_EMAIL/ADMIN_PASSWORD. Load .secrets/earnalism-import.env or export them.")
-        response = self.session.post(
-            f"{self.api_url}/auth/login",
-            json={"email": email, "password": password},
-            timeout=30,
-        )
-        if response.status_code != 200:
-            raise RuntimeError(f"Admin login failed with HTTP {response.status_code}")
-        token = response.json()["token"]
+        token = self.request_json("POST", "/auth/login", json={"email": email, "password": password}, timeout=30)["token"]
         self.headers = {"Authorization": f"Bearer {token}"}
 
     def get_admin_books(self) -> List[Dict[str, Any]]:
-        response = self.session.get(f"{self.api_url}/admin/books", headers=self.headers, timeout=60)
-        response.raise_for_status()
-        return response.json()
+        try:
+            return self.request_json("GET", "/admin/books/summary", timeout=60)
+        except Exception:
+            return self.request_json("GET", "/admin/books", timeout=90)
 
     def get_admin_book(self, slug: str) -> Dict[str, Any]:
-        response = self.session.get(f"{self.api_url}/admin/books/{slug}", headers=self.headers, timeout=60)
-        response.raise_for_status()
-        return response.json()
+        return self.request_json("GET", f"/admin/books/{slug}", timeout=90)
 
-    def publish_book(self, book: Dict[str, Any], rights_metadata: Dict[str, Any]) -> Dict[str, Any]:
+    def set_publication_status(self, book: Dict[str, Any], rights_metadata: Dict[str, Any], is_published: bool) -> Dict[str, Any]:
         payload = {field: book.get(field) for field in BOOK_IN_FIELDS if field in book}
         payload["slug"] = book["slug"]
-        payload["is_published"] = True
+        payload["is_published"] = is_published
         payload["cover_image_url"] = book.get("cover_image_url") or book.get("cover_url") or ""
         payload["back_cover_image_url"] = book.get("back_cover_image_url") or book.get("back_cover_url") or ""
         payload["rights_metadata"] = rights_metadata
@@ -310,14 +335,13 @@ class EarnalismApi:
         payload.setdefault("benefits", book.get("benefits") or [])
         payload.setdefault("who_for", book.get("who_for") or [])
         payload.setdefault("learnings", book.get("learnings") or [])
-        response = self.session.put(
-            f"{self.api_url}/admin/books/{book['slug']}",
-            json=payload,
-            headers=self.headers,
-            timeout=60,
-        )
-        response.raise_for_status()
-        return response.json()
+        return self.request_json("PUT", f"/admin/books/{book['slug']}", json=payload, timeout=90)
+
+    def publish_book(self, book: Dict[str, Any], rights_metadata: Dict[str, Any]) -> Dict[str, Any]:
+        return self.set_publication_status(book, rights_metadata, True)
+
+    def hold_book_as_draft(self, book: Dict[str, Any], rights_metadata: Dict[str, Any]) -> Dict[str, Any]:
+        return self.set_publication_status(book, rights_metadata, False)
 
 
 def book_chapter_text(book: Dict[str, Any]) -> str:
@@ -416,6 +440,41 @@ def validate_compliance(
             errors.append("missing rights_basis")
 
     return not errors, errors, warnings
+
+
+def assess_latency_risk(book: Dict[str, Any], args: argparse.Namespace) -> Tuple[bool, str]:
+    """Hold large drafts back when publishing them may stress public/admin APIs."""
+
+    if args.disable_latency_risk_gate:
+        return True, "disabled by operator"
+
+    chapters = book.get("chapters") or []
+    chapter_count = len(chapters)
+    chapter_lengths = [len(str(chapter.get("content") or "")) for chapter in chapters]
+    total_chars = sum(chapter_lengths)
+    max_chapter_chars = max(chapter_lengths, default=0)
+    failures: List[str] = []
+
+    if args.max_publish_chapters > 0 and chapter_count > args.max_publish_chapters:
+        failures.append(f"chapters={chapter_count} > {args.max_publish_chapters}")
+    if args.max_publish_chars > 0 and total_chars > args.max_publish_chars:
+        failures.append(f"content_chars={total_chars} > {args.max_publish_chars}")
+    if args.max_publish_chapter_chars > 0 and max_chapter_chars > args.max_publish_chapter_chars:
+        failures.append(f"largest_chapter_chars={max_chapter_chars} > {args.max_publish_chapter_chars}")
+
+    detail = (
+        f"chapters={chapter_count}, content_chars={total_chars}, "
+        f"largest_chapter_chars={max_chapter_chars}; thresholds "
+        f"chapters<={args.max_publish_chapters}, content_chars<={args.max_publish_chars}, "
+        f"largest_chapter_chars<={args.max_publish_chapter_chars}"
+    )
+    if failures:
+        return False, "held as draft for latency/timeout risk: " + "; ".join(failures) + f" ({detail})"
+    return True, "ok: " + detail
+
+
+def has_latency_risk_holdback(result: BookProductionResult) -> bool:
+    return any(gate.name == "latency_risk" and not gate.ok for gate in result.gates)
 
 
 def run_importer(args: argparse.Namespace, run_dir: Path) -> None:
@@ -638,6 +697,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-qa", action="store_true")
     parser.add_argument("--publish-approved", action="store_true", help="Publish GO books only when PUBLISH_LIVE=1 and HUMAN_APPROVED=1 are also set.")
     parser.add_argument("--trust-existing-admin-rights", action="store_true", help="Allow GO when rights were manually reviewed outside exposed admin API.")
+    parser.add_argument("--max-publish-chapters", type=int, default=DEFAULT_MAX_PUBLISH_CHAPTERS, help="Hold books above this chapter count as drafts. Use 0 to disable this threshold.")
+    parser.add_argument("--max-publish-chars", type=int, default=DEFAULT_MAX_PUBLISH_CHARS, help="Hold books above this stored-content character count as drafts. Use 0 to disable this threshold.")
+    parser.add_argument("--max-publish-chapter-chars", type=int, default=DEFAULT_MAX_PUBLISH_CHAPTER_CHARS, help="Hold books with any chapter above this stored-content character count as drafts. Use 0 to disable this threshold.")
+    parser.add_argument("--disable-latency-risk-gate", action="store_true", help="Disable automatic draft holdbacks for oversized books.")
     parser.add_argument("--env-file", action="append", type=Path, default=[ROOT / ".secrets/earnalism-import.env", ROOT / ".secrets/earnalism-audio.env"])
     return parser.parse_args()
 
@@ -699,6 +762,8 @@ def main() -> int:
             not duplicate_drafts,
             "ok" if not duplicate_drafts else f"duplicate unpublished draft slug(s): {', '.join(duplicate_drafts)}",
         )
+        latency_ok, latency_detail = assess_latency_risk(book, args)
+        result.add_gate("latency_risk", latency_ok, latency_detail)
         legal_ok, legal_errors, legal_warnings = validate_compliance(book, manifest_item, args.trust_existing_admin_rights)
         result.warnings.extend(legal_warnings)
         result.add_gate("legal_compliance", legal_ok, "; ".join(legal_errors or legal_warnings or ["ok"]))
@@ -751,6 +816,10 @@ def main() -> int:
             result.published = True
             published.append(published_book["slug"])
             result.add_gate("publish", True, "published after explicit --publish-approved")
+        elif args.publish_approved and has_latency_risk_holdback(result) and live_publish_allowed():
+            rights_payload = rights_metadata_from_manifest(manifest_item) or book.get("rights_metadata") or {}
+            held_book = api.hold_book_as_draft(book, rights_payload)
+            result.add_gate("publish", True, f"held as draft after latency-risk gate ({held_book['slug']})")
         elif args.publish_approved:
             result.add_gate("publish", False, "not published because verdict was NO-GO")
         result.finalize()

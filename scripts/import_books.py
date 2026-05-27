@@ -37,6 +37,7 @@ CURRENT_YEAR = datetime.now(timezone.utc).year
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT_ROOT = REPO_ROOT / "output" / "book_import"
 MAX_SOURCE_BYTES = 20 * 1024 * 1024
+API_TIMEOUT_SECONDS = int(os.environ.get("EARNALISM_IMPORT_API_TIMEOUT", "180"))
 READING_WPM = 238
 MIN_DEFAULT_WORD_COUNT = 2500
 MIN_BENGALI_WIKISOURCE_WORD_COUNT = 500
@@ -59,6 +60,12 @@ WIKISOURCE_SOURCE_TYPES = {
     "wikisource_bengali",
     "wikisource_bengali_html",
     "mediawiki_html",
+}
+GUTENBERG_SOURCE_TYPES = {
+    "gutenberg",
+    "gutenberg_html",
+    "gutenberg_text",
+    "project_gutenberg",
 }
 WIKISOURCE_FORBIDDEN_TERMS = [
     "Wikisource",
@@ -161,7 +168,12 @@ CANONICAL_CATEGORY_SLUGS = {
 LEGACY_CATEGORY_SLUG_MAP = {
     "classic-literature": "literary-fiction",
     "literature": "literary-fiction",
+    "romance": "literary-fiction",
+    "mystery": "literary-fiction",
     "children-classics": "young-readers",
+    "childrens-literature": "young-readers",
+    "children-literature": "young-readers",
+    "childrens": "young-readers",
     "children": "young-readers",
     "business-entrepreneurship": "business",
     "technology-ai": "technology",
@@ -285,6 +297,15 @@ def is_wikisource_url(url: str) -> bool:
     return parsed.scheme in {"http", "https"} and parsed.netloc.lower().endswith("wikisource.org")
 
 
+def is_gutenberg_type(source_type: str) -> bool:
+    return normalize_text(source_type).strip().lower() in GUTENBERG_SOURCE_TYPES
+
+
+def is_gutenberg_url(url: str) -> bool:
+    parsed = urlparse(canonical_source_url(url or ""))
+    return parsed.scheme in {"http", "https"} and parsed.netloc.lower().endswith("gutenberg.org")
+
+
 def wikisource_render_url(url: str) -> str:
     url = canonical_source_url(url)
     if "action=render" in url:
@@ -339,14 +360,17 @@ def source_url_candidates(url: str, source_type: str = "") -> list[str]:
     parsed = urlparse(url or "")
     if is_wikisource_type(source_type) or is_wikisource_url(url):
         candidates.insert(0, wikisource_render_url(url))
-    match = re.search(r"/ebooks/(\d+)\.txt\.utf-8$", parsed.path)
-    if "gutenberg.org" in parsed.netloc.lower() and match:
+    gutenberg_id_match = re.search(r"/ebooks/(\d+)(?:[./?#].*)?$", parsed.path)
+    text_file_match = re.search(r"/ebooks/(\d+)\.txt\.utf-8$", parsed.path)
+    match = text_file_match or gutenberg_id_match
+    if is_gutenberg_url(url) and match:
         book_id = match.group(1)
-        candidates.extend([
+        text_candidates = [
             request_safe_url(f"https://www.gutenberg.org/cache/epub/{book_id}/pg{book_id}.txt"),
             request_safe_url(f"https://www.gutenberg.org/files/{book_id}/{book_id}-0.txt"),
             request_safe_url(f"https://www.gutenberg.org/files/{book_id}/{book_id}.txt"),
-        ])
+        ]
+        candidates = text_candidates + candidates
     unique: list[str] = []
     for candidate in candidates:
         if candidate not in unique:
@@ -858,10 +882,16 @@ def commercial_rights_validation(book: dict[str, Any]) -> tuple[bool, dict[str, 
     source_url = canonical_source_url(book.get("source_url", ""))
     if not source_url:
         errors.append("source_url is required")
-    if source_type not in {"plain_text_utf8", "text_utf8", "plain_text", "txt"} and source_type not in WIKISOURCE_SOURCE_TYPES:
+    if (
+        source_type not in {"plain_text_utf8", "text_utf8", "plain_text", "txt"}
+        and source_type not in WIKISOURCE_SOURCE_TYPES
+        and source_type not in GUTENBERG_SOURCE_TYPES
+    ):
         errors.append(f"unsupported source_type '{book.get('source_type', '')}'; use plain-text UTF-8")
     if source_type in WIKISOURCE_SOURCE_TYPES and not is_wikisource_url(source_url):
         errors.append("Wikisource source_type requires a verified *.wikisource.org source_url")
+    if source_type in GUTENBERG_SOURCE_TYPES and not is_gutenberg_url(source_url):
+        errors.append("Gutenberg source_type requires a verified *.gutenberg.org source_url")
 
     disallowed = ["cc-nc", "cc by-nc", "non-commercial", "noncommercial", "orphan", "unclear", "all rights reserved"]
     if any(term in license_text for term in disallowed):
@@ -1165,13 +1195,26 @@ def api_json(method: str, url: str, payload: dict[str, Any] | None = None, token
     headers = {"Content-Type": "application/json"}
     if token:
         headers["Authorization"] = f"Bearer {token}"
-    request = Request(url, data=body, headers=headers, method=method)
-    try:
-        with urlopen(request, timeout=60) as response:
-            return json.loads(response.read().decode("utf-8"))
-    except HTTPError as exc:
-        detail = exc.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"{method} {url} failed with HTTP {exc.code}: {detail[:500]}") from exc
+    last_error: Exception | None = None
+    for attempt in range(1, 4):
+        request = Request(url, data=body, headers=headers, method=method)
+        try:
+            with urlopen(request, timeout=API_TIMEOUT_SECONDS) as response:
+                return json.loads(response.read().decode("utf-8"))
+        except HTTPError as exc:
+            detail = exc.read().decode("utf-8", errors="replace")
+            if exc.code in {502, 503, 504} and attempt < 3:
+                last_error = RuntimeError(f"{method} {url} failed with HTTP {exc.code}: {detail[:500]}")
+                time.sleep(attempt * 3)
+                continue
+            raise RuntimeError(f"{method} {url} failed with HTTP {exc.code}: {detail[:500]}") from exc
+        except (TimeoutError, socket.timeout, ConnectionResetError, URLError) as exc:
+            last_error = exc
+            if attempt < 3:
+                time.sleep(attempt * 2)
+                continue
+            break
+    raise RuntimeError(f"{method} {url} failed after retries: {last_error}") from last_error
 
 
 def api_json_optional(method: str, url: str, payload: dict[str, Any] | None = None, token: str | None = None) -> dict[str, Any] | None:
@@ -1198,7 +1241,13 @@ def admin_token(api_url: str) -> str:
     return token
 
 
-def upload_book(result: PreparedBook, api_url: str, token: str, update_existing: bool = False) -> None:
+def upload_book(
+    result: PreparedBook,
+    api_url: str,
+    token: str,
+    update_existing: bool = False,
+    ignore_published_duplicates: bool = False,
+) -> None:
     if not result.upload_object:
         raise RuntimeError("No upload object prepared.")
     obj = result.upload_object
@@ -1219,12 +1268,25 @@ def upload_book(result: PreparedBook, api_url: str, token: str, update_existing:
         raise RuntimeError(f"Book slug already exists: {target_slug}. Re-run with --update-existing-drafts to replace draft content.")
     if existing:
         if existing.get("is_published"):
+            if ignore_published_duplicates:
+                result.status = "skipped"
+                result.warnings.append(f"Published duplicate ignored for slug: {target_slug}")
+                result.errors.append(f"Book slug already exists and is published: {target_slug}. Ignored as requested.")
+                if result.internal_log:
+                    result.internal_log["validation_result"] = "published_duplicate_ignored"
+                    result.internal_log["errors"] = result.errors
+                    result.internal_log["warnings"] = result.warnings
+                return
             raise RuntimeError(f"Book slug already exists and is published: {target_slug}. Refusing to overwrite published content.")
         created = api_json("PUT", f"{api_url}/admin/books/{target_slug}", book_payload, token)
         for chapter in existing.get("chapters", []):
             cid = chapter.get("id")
             if cid:
-                api_json("DELETE", f"{api_url}/admin/books/{target_slug}/chapters/{cid}", token=token)
+                try:
+                    api_json("DELETE", f"{api_url}/admin/books/{target_slug}/chapters/{cid}", token=token)
+                except RuntimeError as exc:
+                    if "HTTP 404" not in str(exc):
+                        raise
     else:
         created = api_json("POST", f"{api_url}/admin/books", book_payload, token)
     slug = created.get("slug")
@@ -1320,6 +1382,7 @@ def main() -> int:
     parser.add_argument("--api-url", default=os.environ.get("EARNALISM_API_URL", ""), help="Earnalism API URL, e.g. https://api.theearnalism.com or http://localhost:8000")
     parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT_ROOT), help="Base directory for sanitized files and reports.")
     parser.add_argument("--update-existing-drafts", action="store_true", help="If a slug already exists as a draft, update its metadata and replace its chapters. Published books are never overwritten.")
+    parser.add_argument("--ignore-published-duplicates", action="store_true", help="Skip already-published duplicate slugs without failing the upload batch.")
     args = parser.parse_args()
 
     out_dir = output_dir(Path(args.output_dir).expanduser().resolve())
@@ -1365,8 +1428,15 @@ def main() -> int:
 
     for item in passing:
         try:
-            upload_book(item, api_url, token, update_existing=args.update_existing_drafts)
-            item.status = "uploaded"
+            upload_book(
+                item,
+                api_url,
+                token,
+                update_existing=args.update_existing_drafts,
+                ignore_published_duplicates=args.ignore_published_duplicates,
+            )
+            if item.upload_result:
+                item.status = "uploaded"
         except Exception as exc:
             item.errors.append(str(exc))
             item.status = "skipped"
@@ -1376,7 +1446,16 @@ def main() -> int:
 
     upload_report = write_reports(results, manifest_source, out_dir, "upload_report")
     print_report(upload_report, "Upload report")
-    return 0 if upload_report["uploaded_count"] == len(passing) else 1
+    if upload_report["uploaded_count"] == len(passing):
+        return 0
+    if args.ignore_published_duplicates:
+        failed = [
+            item for item in passing
+            if not item.upload_result and not any("already exists and is published" in error for error in item.errors)
+        ]
+        if not failed:
+            return 0
+    return 1
 
 
 if __name__ == "__main__":

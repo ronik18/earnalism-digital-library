@@ -41,8 +41,8 @@ export default function Footer() {
 
         <div>
           <div className="overline mb-4">Reach</div>
-          <a href="mailto:hello@theearnalism.com" className="flex items-center gap-2 text-charcoal-soft hover:text-burgundy">
-            <Mail size={16} /> hello@theearnalism.com
+          <a href="mailto:sales@reoenterprise.org" className="flex items-center gap-2 text-charcoal-soft hover:text-burgundy">
+            <Mail size={16} /> sales@reoenterprise.org
           </a>
           {activeSocials.length > 0 && (
             <div className="flex gap-3 mt-5 text-charcoal-soft" data-testid="footer-socials">
@@ -68,7 +68,7 @@ export default function Footer() {
       <div className="border-t border-brand">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-3" data-testid="footer-copyright">
           <p className="text-xs tracking-wider text-charcoal-soft">© {year} The Earnalism Digital Library. All rights reserved.</p>
-          <p className="text-xs tracking-wider text-charcoal-soft">Crafted with care · theearnalism.com</p>
+          <p className="text-xs tracking-wider text-charcoal-soft">Crafted with Care by Reo Enterprise</p>
         </div>
         <div className="border-t border-brand-soft">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-4">

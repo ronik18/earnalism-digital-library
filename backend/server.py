@@ -2373,7 +2373,7 @@ async def record_secure_reader_event(
     return {"ok": True, "stored": True}
 
 
-@api.get("/categories", response_model=List[Category])
+@api.get("/categories")
 async def list_categories():
     cache_key = _public_cache_key("categories")
     cached = _public_cache_get(cache_key)
@@ -2385,7 +2385,7 @@ async def list_categories():
 
 
 # ---------- Public: Books ----------
-@api.get("/books", response_model=List[Book])
+@api.get("/books")
 async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     category_filter = None
     if category and category != "all":
