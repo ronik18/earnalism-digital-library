@@ -1832,22 +1832,20 @@ async def lifespan(_app: FastAPI):
             upsert=True,
         )
 
-    # featured book
-    if not await db.books.find_one({"slug": SEED_BOOK["slug"]}):
-        b = Book(**SEED_BOOK)
-        await db.books.insert_one(b.model_dump())
-        logger.info("Seeded featured book")
-
-    # technology sample book (idempotent — only inserted if missing)
-    if not await db.books.find_one({"slug": SEED_TECH_BOOK["slug"]}):
-        tb = Book(**SEED_TECH_BOOK)
-        await db.books.insert_one(tb.model_dump())
-        logger.info("Seeded technology sample book")
+    # Retired sample books used to be seeded on startup, which made them
+    # reappear after admins deleted them. Keep them removed permanently.
+    retired_result = await db.books.delete_many({"slug": {"$in": list(RETIRED_SEED_BOOK_SLUGS)}})
+    if retired_result.deleted_count:
+        logger.info("Removed %s retired seed book(s)", retired_result.deleted_count)
+    await db.settings.update_one(
+        {"key": "featured_book", "book_slug": {"$in": list(RETIRED_SEED_BOOK_SLUGS)}},
+        {"$unset": {"book_slug": ""}},
+    )
 
     # featured setting
     await db.settings.update_one(
         {"key": "featured_book"},
-        {"$setOnInsert": {"key": "featured_book", "book_slug": SEED_BOOK["slug"]}},
+        {"$setOnInsert": {"key": "featured_book"}},
         upsert=True,
     )
 
@@ -1892,11 +1890,6 @@ async def lifespan(_app: FastAPI):
         {"$set": {"is_published": True}},
     )
 
-    # one-time migration: replace old "publishing brand" wording in the seeded book's about_author
-    await db.books.update_one(
-        {"slug": SEED_BOOK["slug"], "about_author": re.compile("publishing brand", re.IGNORECASE)},
-        {"$set": {"about_author": SEED_BOOK["about_author"]}},
-    )
     logger.info("Startup seeding complete")
 
     yield
@@ -4297,92 +4290,10 @@ SEED_CATEGORIES = [
     {"slug": "gothic-fiction", "name": "Gothic Fiction", "description": "Atmospheric classics of fear, invention, mystery, and moral tension.", "order": 9, "image_url": "/assets/shelves/gothic-fiction.jpg"},
 ]
 
-SEED_TECH_BOOK = {
-    "slug": "the-architecture-of-intelligent-systems",
-    "title": "The Architecture of Intelligent Systems",
-    "subtitle": "On software, data, and the engineering discipline behind modern digital products.",
-    "author": "The Earnalism",
-    "category_slug": "technology",
-    "short_description": "A thoughtful guide to software architecture, data platforms, AI systems, and the craft of building durable digital products.",
-    "description": "The Architecture of Intelligent Systems is written for engineers, founders, and product leaders who want their software to last longer than a quarter. Across patient chapters on services, data platforms, machine intelligence, and the human discipline behind them, it returns again and again to a single idea: technology earns its place through clarity, restraint, and care.",
-    "cover_image_url": "https://images.unsplash.com/photo-1532012197267-da84d127e765?crop=entropy&cs=srgb&fm=jpg&w=1200&q=85",
-    "estimated_reading_time": "5 hours",
-    "price_paperback": "",
-    "price_ebook": "",
-    "buy_url": "",
-    "formats": ["Ebook"],
-    "benefits": [
-        "A working vocabulary for modern software architecture",
-        "Frameworks for designing data platforms that scale gently",
-        "An honest view of AI systems — what they can and cannot promise",
-        "A craft-first lens on engineering leadership",
-    ],
-    "who_for": [
-        "Engineers moving from individual contribution to system design",
-        "Founders making consequential technology choices",
-        "Product leaders responsible for long-lived digital products",
-    ],
-    "learnings": [
-        "How to choose architectures that respect both users and budgets",
-        "The discipline of data — quality, lineage, and quiet governance",
-        "Where AI belongs in a product, and where it does not",
-        "Building engineering teams that compound over years",
-    ],
-    "about_author": "Curated on the shelves of The Earnalism Digital Library — an independent reading room devoted to thoughtful business, literature, and the craft of modern technology.",
-    "chapters": [
-        {"id": str(uuid.uuid4()), "order": 0, "title": "The Working Vocabulary",
-         "content": "Every technical discipline arrives with two vocabularies — the one used in meetings, and the one that actually ships software.\n\nThe working vocabulary is smaller, sharper, and unglamorous. It names failure modes instead of features. It refuses adjectives that cannot be measured. When a senior engineer says observability, they mean: I can read this system's mind at three in the morning without waking anyone up.\n\nGood architectures begin with this vocabulary. The rest of the system is a long conversation held in its grammar."},
-        {"id": str(uuid.uuid4()), "order": 1, "title": "Data Platforms That Scale Gently",
-         "content": "A data platform is, at its best, a library. It arranges the facts of the business so that any future question can be asked with dignity.\n\nThe temptation in young companies is to choose tools for the scale they hope to reach. The temptation in older companies is to preserve the tools of a scale they have already passed. Both miss the point. A platform scales gently when each layer does one clear job: ingestion that is honest, storage that is queryable, modelling that is owned, and serving that is fast enough for the question being asked.\n\nComplexity is not an achievement. Clarity is."},
-        {"id": str(uuid.uuid4()), "order": 2, "title": "Where AI Belongs — and Where It Does Not",
-         "content": "Artificial intelligence is both a capability and a temperament.\n\nAs a capability, it is astonishing: pattern recognition, synthesis, generation, prediction. As a temperament, it is dangerous: quick answers where slow ones are required, confident prose where uncertainty would serve the reader better, a whisper of automation inside decisions that deserve human attention.\n\nThe architect's job is to route each problem to the right temperament. Some belong to machines. Some belong to the person still awake at the end of the quarter."},
-    ],
-    "is_published": True,
-}
-
-SEED_BOOK = {
-    "slug": "brownies-to-break-even-and-beyond",
-    "title": "Brownies to Break-Even and Beyond",
-    "subtitle": "A lyrical business journey for dreamers, founders, and first-time entrepreneurs.",
-    "author": "The Earnalism",
-    "category_slug": "business",
-    "short_description": "A disciplined yet tender memoir-guide for turning passion into a profitable, principled venture.",
-    "description": "Part memoir, part operating manual, Brownies to Break-Even and Beyond traces the slow craft of building a small business with care. From the first costing sheet to the first profitable quarter, every chapter pairs lived story with the kind of practical clarity rarely offered to bakers, makers, and quiet entrepreneurs.",
-    "cover_image_url": "https://images.unsplash.com/photo-1519764340700-3db40311f21e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwxfHxibGFuayUyMG1pbmltYWwlMjBib29rJTIwY292ZXIlMjBmbGF0JTIwbGF5fGVufDB8fHx8MTc3NzYxNzE5MHww&ixlib=rb-4.1.0&q=85",
-    "estimated_reading_time": "4 hours",
-    "price_paperback": "",
-    "price_ebook": "",
-    "buy_url": "",
-    "formats": ["Ebook"],
-    "is_published": True,
-    "benefits": [
-        "A founder's framework for pricing without guilt",
-        "Honest unit economics that respect the craft",
-        "A gentle path from side-project to small institution",
-        "Marketing that sounds like you, not a template",
-    ],
-    "who_for": [
-        "Bakers, makers, and creative founders building their first venture",
-        "Quiet entrepreneurs who prefer depth over hype",
-        "Operators ready to move from busy to profitable",
-    ],
-    "learnings": [
-        "How to design a product that pays for itself",
-        "The discipline of clean books and honest margins",
-        "Building a brand that compounds with each season",
-        "Scaling without losing the texture of your work",
-    ],
-    "about_author": "Curated on the shelves of The Earnalism Digital Library — an independent reading room devoted to thoughtful business, literature, and self-growth.",
-    "chapters": [
-        {"id": str(uuid.uuid4()), "order": 0, "title": "The First Costing Sheet",
-         "content": "Most first ventures begin with a feeling — a warmth, a hunch, a recipe that makes people stop mid-sentence.\n\nBut a business begins the moment that feeling meets a costing sheet.\n\nThe first sheet is uncomfortable. It asks for ingredient weights, packaging cents, the honest price of an afternoon. It resists flourish. And yet, somewhere between the third row and the fifth, the costing sheet becomes something unexpected — a quiet portrait of the work itself. Every line you enter is an act of respect.\n\nBegin there. Before the logo, before the launch, before the pretty camera angle. Sit with the sheet until it holds every real cost. The venture that comes afterward will carry that care in its bones."},
-        {"id": str(uuid.uuid4()), "order": 1, "title": "Pricing Without Guilt",
-         "content": "Pricing is the first place a founder learns to stand up for their own work.\n\nNumbers carry beliefs. A timid price tells your customer the work is smaller than it is. A reckless one borrows credibility you have not yet earned. The right price is a quiet sentence: this is what it costs to make with care, and this is the margin that lets the making continue.\n\nCharge for your hands. Charge for your judgment. Charge for the years you spent learning the difference between good and almost-good. A business that refuses to price its craft cannot protect it.\n\nThere is no apology in a fair price. Only arithmetic, and kindness to the person writing the cheque six months from now — you."},
-        {"id": str(uuid.uuid4()), "order": 2, "title": "From Side-Project to Small Institution",
-         "content": "There comes a week — usually quietly — when the project starts to outgrow evenings.\n\nOrders arrive faster than the kitchen empties. Messages accumulate. Someone asks about invoicing, and the honest answer is, I'm figuring it out. This is not a problem. It is the first sign that the work is becoming an institution — a small, dignified one, but an institution nonetheless.\n\nThe transition asks for three slow disciplines: books that close at the end of each week, a calendar that respects weekends, and a customer you would recognise in a crowd. None of it arrives in a single brave day. It arrives in a series of tiny preferences, each one a vote for the business you want to still be running in a decade.\n\nA small institution is not a downgrade from a large one. It is a particular kind of house — one built to last."},
-    ],
-    "is_published": True,
-}
+RETIRED_SEED_BOOK_SLUGS = frozenset({
+    "the-architecture-of-intelligent-systems",
+    "brownies-to-break-even-and-beyond",
+})
 
 SEED_POSTS = [
     {

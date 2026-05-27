@@ -10,7 +10,6 @@ API = f"{BASE_URL}/api"
 
 ADMIN_EMAIL = os.environ.get("TEST_ADMIN_EMAIL", "admin@theearnalism.com")
 ADMIN_PASSWORD = os.environ.get("TEST_ADMIN_PASSWORD", "Earnalism@2026")
-BOOK_SLUG = "brownies-to-break-even-and-beyond"
 
 
 @pytest.fixture(scope="module")
@@ -50,12 +49,24 @@ def fresh_user(s):
 
 
 @pytest.fixture(scope="module")
-def book_chapters(s):
-    r = s.get(f"{API}/books/{BOOK_SLUG}")
+def reader_book(s):
+    r = s.get(f"{API}/books")
     assert r.status_code == 200, r.text
-    chapters = sorted(r.json().get("chapters") or [], key=lambda c: c.get("order", 0))
-    assert len(chapters) >= 2, "need at least 2 chapters for preview & paid tests"
-    return chapters
+    for book in r.json():
+        chapters = sorted(book.get("chapters") or [], key=lambda c: c.get("order", 0))
+        if len(chapters) >= 2:
+            return {"slug": book["slug"], "chapters": chapters}
+    pytest.fail("need at least one published book with preview and paid chapters")
+
+
+@pytest.fixture(scope="module")
+def book_slug(reader_book):
+    return reader_book["slug"]
+
+
+@pytest.fixture(scope="module")
+def book_chapters(reader_book):
+    return reader_book["chapters"]
 
 
 # --------------------- Signup / Login ---------------------
@@ -162,13 +173,13 @@ class TestWalletAdjust:
 
 # --------------------- Reader: sessions + heartbeat ---------------------
 class TestReaderFlow:
-    def test_session_start_unauth_401(self, s, book_chapters):
+    def test_session_start_unauth_401(self, s, book_slug, book_chapters):
         r = s.post(f"{API}/reader/session/start", json={
-            "book_slug": BOOK_SLUG, "chapter_id": book_chapters[1]["id"]
+            "book_slug": book_slug, "chapter_id": book_chapters[1]["id"]
         })
         assert r.status_code == 401
 
-    def test_session_start_paid_chapter_zero_balance_402(self, s, fresh_user, book_chapters, admin_headers):
+    def test_session_start_paid_chapter_zero_balance_402(self, s, fresh_user, book_slug, book_chapters, admin_headers):
         # Ensure balance is 0
         uid = fresh_user["user"]["id"]
         # query me to read balance
@@ -179,14 +190,14 @@ class TestReaderFlow:
                    headers=admin_headers)
         paid_chap = book_chapters[1]["id"]
         r = s.post(f"{API}/reader/session/start",
-                   json={"book_slug": BOOK_SLUG, "chapter_id": paid_chap},
+                   json={"book_slug": book_slug, "chapter_id": paid_chap},
                    headers=fresh_user["headers"])
         assert r.status_code == 402
 
-    def test_session_start_preview_chapter_zero_balance_ok(self, s, fresh_user, book_chapters):
+    def test_session_start_preview_chapter_zero_balance_ok(self, s, fresh_user, book_slug, book_chapters):
         preview_chap = book_chapters[0]["id"]
         r = s.post(f"{API}/reader/session/start",
-                   json={"book_slug": BOOK_SLUG, "chapter_id": preview_chap},
+                   json={"book_slug": book_slug, "chapter_id": preview_chap},
                    headers=fresh_user["headers"])
         assert r.status_code == 200, r.text
         j = r.json()
@@ -194,10 +205,10 @@ class TestReaderFlow:
         assert j["tick_seconds"] == 30
         assert "session_id" in j
 
-    def test_heartbeat_preview_never_deducts(self, s, fresh_user, book_chapters):
+    def test_heartbeat_preview_never_deducts(self, s, fresh_user, book_slug, book_chapters):
         preview_chap = book_chapters[0]["id"]
         start = s.post(f"{API}/reader/session/start",
-                       json={"book_slug": BOOK_SLUG, "chapter_id": preview_chap},
+                       json={"book_slug": book_slug, "chapter_id": preview_chap},
                        headers=fresh_user["headers"]).json()
         sid = start["session_id"]
         r = s.post(f"{API}/reader/heartbeat",
@@ -209,7 +220,7 @@ class TestReaderFlow:
         assert j["status"] == "preview"
         assert j["is_preview"] is True
 
-    def test_heartbeat_visible_active_deducts_30s(self, s, fresh_user, book_chapters, admin_headers):
+    def test_heartbeat_visible_active_deducts_30s(self, s, fresh_user, book_slug, book_chapters, admin_headers):
         uid = fresh_user["user"]["id"]
         # Top up 2 minutes
         s.post(f"{API}/admin/users/{uid}/wallet/adjust",
@@ -217,7 +228,7 @@ class TestReaderFlow:
                headers=admin_headers)
         paid_chap = book_chapters[1]["id"]
         start = s.post(f"{API}/reader/session/start",
-                       json={"book_slug": BOOK_SLUG, "chapter_id": paid_chap},
+                       json={"book_slug": book_slug, "chapter_id": paid_chap},
                        headers=fresh_user["headers"]).json()
         sid = start["session_id"]
 
