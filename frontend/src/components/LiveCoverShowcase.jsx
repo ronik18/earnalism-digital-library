@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { optimizedImageUrl } from "../lib/images";
 
 function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
@@ -311,12 +311,6 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
           })}
         </div>
         <div className="live-cover-marquee__edge live-cover-marquee__edge--right" aria-hidden="true" />
-      </div>
-
-      <div className="live-cover-showcase__cta">
-        <Link to="/library" className="live-cover-showcase__library" data-testid="live-cover-library">
-          All books <ArrowRight size={13} strokeWidth={1.6} />
-        </Link>
       </div>
     </aside>
   );

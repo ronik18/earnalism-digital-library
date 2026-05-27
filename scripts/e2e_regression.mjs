@@ -128,7 +128,7 @@ async function main() {
       heroCurrentPayCount: document.querySelectorAll('[data-testid="hero-current-pay"]').length,
       railPrimaryPreviewCount: document.querySelectorAll('[data-testid="live-cover-primary-preview"]').length,
       railPrimaryPaymentCount: document.querySelectorAll('[data-testid="live-cover-primary-payment"]').length,
-      allBooksHref: document.querySelector('[data-testid="live-cover-library"]')?.getAttribute("href"),
+      railLibraryCount: document.querySelectorAll('[data-testid="live-cover-library"]').length,
     };
   });
   assert(home.bandRect, "home slideshow band is missing");
@@ -145,12 +145,12 @@ async function main() {
   assert(home.heroCurrentPayCount === 0, "hero Preview & Pay CTA should not render");
   assert(home.railPrimaryPreviewCount === 0, "rail-level Read Preview CTA should not render");
   assert(home.railPrimaryPaymentCount === 0, "rail-level Preview & Pay CTA should not render");
-  assert(home.allBooksHref === "/library", `All books CTA should open library, got ${home.allBooksHref}`);
+  assert(home.railLibraryCount === 0, "rail-level All books CTA should not render");
   const firstSlug = home.cards[0].slug;
   assert(firstSlug, "could not infer first live book slug from slideshow");
   const homeScreenshot = await snapshot(page, "home");
 
-  await page.click('[data-testid="live-cover-library"]');
+  await gotoAppPath(page, "/library");
   await page.waitForSelector('[data-testid^="book-card-"], [data-testid="single-book-spotlight"]', { timeout: 30000 });
   const library = await page.evaluate(() => ({
     hasGrid: Boolean(document.querySelector('[data-testid="books-grid"], [data-testid="single-book-spotlight"]')),
