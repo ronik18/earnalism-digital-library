@@ -46,6 +46,52 @@ The pipeline loads `.secrets/earnalism-import.env` and `.secrets/earnalism-audio
 
 For full platform regression and 100-user load gates, see `docs/REGRESSION_AND_SCALE.md`.
 
+## Future Book Onboarding Without Codex
+
+Use this exact operating path whenever you onboard a new title. It uses only local scripts and terminal commands.
+
+1. Put each future book into `book_import_manifest.json` under `books[]`.
+2. Use the canonical fields already shown in the manifest: `title`, `subtitle`, `author`, `author_death_year`, `original_publication_year`, `source_url`, `source_type`, `source_license`, `rights_basis`, `commercial_use_allowed`, `requires_attribution`, `requires_sharealike`, `category_slug`, `short_description`, `description`, `benefits`, `who_for`, `learnings`, `about_author`, `is_published`, `availability`, `attribution_notice`, and `forbidden_source_terms`.
+3. Keep reader-facing metadata clean: do not place source repository names, legal boilerplate, or source URLs in `title`, descriptions, chapters, benefits, who-for, learnings, or about-author copy unless the license requires it.
+4. Set `is_published` to `false` and `availability` to `draft` for every new book. The pipeline decides whether a draft is safe to publish.
+5. Use only these shelf slugs: `bengali-classics`, `literary-fiction`, `young-readers`, `business`, `technology`, `history-strategy`, `adventure`, `science-fiction`, `gothic-fiction`.
+6. For audiobook generation, add both `audiobook_enabled: true` and `generate_audiobook: true` to that book's manifest item. Leave both `false` or omitted when no generated audiobook is needed.
+7. Confirm `.secrets/earnalism-import.env` and `.secrets/earnalism-audio.env` are present on the machine. They provide admin upload credentials and any audio provider settings.
+8. Run a no-publish preflight first:
+
+```bash
+python3 scripts/bulk_publishing_pipeline.py \
+  --stage preflight \
+  --manifest book_import_manifest.json \
+  --trust-existing-admin-rights
+```
+
+9. If preflight is green, upload drafts only:
+
+```bash
+python3 scripts/bulk_publishing_pipeline.py \
+  --stage upload-drafts \
+  --manifest book_import_manifest.json \
+  --update-existing-drafts \
+  --trust-existing-admin-rights
+```
+
+10. Publish only after human approval. This command runs legal gates, formatting checks, latency-risk holdbacks, optional audiobook generation, smoke tests, and slideshow sync:
+
+```bash
+PUBLISH_LIVE=1 HUMAN_APPROVED=1 scripts/earnalism_go_live.sh
+```
+
+11. If only one book should go live, pass its slug:
+
+```bash
+PUBLISH_LIVE=1 HUMAN_APPROVED=1 scripts/earnalism_go_live.sh book_import_manifest.json --book-slug your-book-slug
+```
+
+12. Read the generated report under `output/bulk_publishing_pipeline/<timestamp>/`. It prints uploaded IDs/slugs, published slugs, skipped-book reasons, latency-risk holdbacks, audiobook asset checks, smoke-test status, and slideshow visibility.
+
+Books held by latency-risk gates stay as drafts. They should not be forced live unless backend projection, pagination, and load tests have been verified for that specific manuscript size.
+
 ## Current Shelf Slugs
 
 Use these canonical `category_slug` values in manifests and admin uploads:

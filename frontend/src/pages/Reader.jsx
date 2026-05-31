@@ -568,17 +568,29 @@ function formatWalletTime(seconds) {
 
 async function fetchReaderBook(bookId) {
   try {
-    return await axios.get(`${API}/books/${bookId}`);
+    const response = await axios.get(`${API}/books/${bookId}`);
+    response.adminPreview = false;
+    return response;
   } catch (err) {
     const adminToken = localStorage.getItem(TOKEN_KEY);
     if (err.response?.status === 404 && adminToken) {
-      return axios.get(`${API}/admin/books/${bookId}`, { headers: getAdminAuthHeaders() });
+      const response = await axios.get(`${API}/admin/books/${bookId}`, { headers: getAdminAuthHeaders() });
+      response.adminPreview = true;
+      return response;
     }
     throw err;
   }
 }
 
-function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '', onChapterSelect }) {
+function readerSearchParams({ chapterId, adminPreview } = {}) {
+  const params = new URLSearchParams();
+  if (chapterId) params.set('c', chapterId);
+  if (adminPreview) params.set('preview', 'admin');
+  const query = params.toString();
+  return query ? `?${query}` : '';
+}
+
+function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '', adminPreview = false, onChapterSelect }) {
   const sortedChapters = [...chapters].sort((a, b) => (a.order || 0) - (b.order || 0));
 
   return (
@@ -588,7 +600,7 @@ function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '',
       <ol>
         {sortedChapters.map((item, index) => {
           const isCurrent = item.id === currentChapterId;
-          const href = `/reader/${bookId}?c=${encodeURIComponent(item.id)}`;
+          const href = `/reader/${bookId}${readerSearchParams({ chapterId: item.id, adminPreview })}`;
           return (
             <li key={item.id || item.title}>
               <a
@@ -621,6 +633,7 @@ export default function Reader() {
   const [chapter, setChapter] = useState(null);
   const [chapters, setChapters] = useState([]);
   const [activeChapterId, setActiveChapterId] = useState(chapterId);
+  const [adminPreview, setAdminPreview] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [lockedState, setLockedState] = useState(null);
@@ -744,7 +757,8 @@ export default function Reader() {
           break;
         case 'session_invalid':
           clearInterval(pulseIntervalRef.current);
-          alert('Your reading session was opened on another device');
+          setMeteredSessionActive(false);
+          toast.info('Reading moved to another device. This device has stopped billing.');
           break;
         default:
           break;
@@ -828,6 +842,7 @@ export default function Reader() {
     let cancelled = false;
     let startedSession = false;
     let endSessionHeaders = {};
+    const requestedAdminPreview = new URLSearchParams(window.location.search).get('preview') === 'admin';
 
     async function loadReader() {
       setLoading(true);
@@ -842,11 +857,13 @@ export default function Reader() {
         ]);
         if (cancelled) return;
 
+        const isAdminPreview = requestedAdminPreview || Boolean(bookRes.adminPreview);
         const loadedChapters = [...(bookRes.data?.chapters || [])].sort((a, b) => (a.order || 0) - (b.order || 0));
         const activeChapterId = chapterId || loadedChapters[0]?.id;
 
         setBook(bookRes.data);
         setChapters(loadedChapters);
+        setAdminPreview(isAdminPreview);
         setTopUpPacks(packsRes.data || []);
         setActiveChapterId(activeChapterId || null);
 
@@ -858,7 +875,7 @@ export default function Reader() {
           return;
         }
 
-        if (getUserToken()) {
+        if (!isAdminPreview && getUserToken()) {
           try {
             const walletRes = await axios.get(`${API}/users/me/wallet`, { headers: getUserAuthHeaders() });
             if (!cancelled) setWalletSeconds(walletRes.data.wallet_seconds || 0);
@@ -876,7 +893,7 @@ export default function Reader() {
 
         const chapterRes = await axios.get(
           `${API}/reader/chapter/${encodeURIComponent(bookId)}/${encodeURIComponent(activeChapterId)}`,
-          { headers: getChapterAuthHeaders() },
+          { headers: isAdminPreview ? getAdminAuthHeaders() : getChapterAuthHeaders() },
         );
         if (cancelled) return;
 
@@ -885,7 +902,7 @@ export default function Reader() {
 
         setChapter(loadedChapter);
         if (!chapterId) {
-          window.history.replaceState(null, '', `${window.location.pathname}?c=${activeChapterId}`);
+          window.history.replaceState(null, '', `${window.location.pathname}${readerSearchParams({ chapterId: activeChapterId, adminPreview: isAdminPreview })}`);
         }
 
         if (gate.locked) {
@@ -908,7 +925,7 @@ export default function Reader() {
         setTotalWords(countWordsInHtml(safeHtml));
         setLockedState(null);
 
-        if (getUserToken() && !gate.is_preview) {
+        if (!isAdminPreview && getUserToken() && !gate.is_preview) {
           endSessionHeaders = getUserAuthHeaders();
           await axios.post(`${API}/reading/session/start`, { session_id: sessionId, book_slug: bookId, chapter_id: activeChapterId }, { headers: endSessionHeaders });
           startedSession = true;
@@ -1625,7 +1642,7 @@ export default function Reader() {
 
   const goToChapter = (id) => {
     stopTTS();
-    navigate(`/reader/${bookId}?c=${id}`);
+    navigate(`/reader/${bookId}${readerSearchParams({ chapterId: id, adminPreview })}`);
   };
 
   const goPrev = () => {
@@ -1811,9 +1828,9 @@ export default function Reader() {
       )}
 
       <header className={`reader-topbar ${toolbarVisible ? 'reader-topbar--visible' : 'reader-topbar--hidden'}`}>
-        <button type="button" onClick={() => navigate(`/book/${bookId}`)} className="reader-topbar__back" aria-label="Back to book">
+        <button type="button" onClick={() => navigate(adminPreview ? '/admin' : `/book/${bookId}`)} className="reader-topbar__back" aria-label={adminPreview ? 'Back to admin' : 'Back to book'}>
           <ChevronLeft size={18} />
-          <span>{readerDisplayTitle}</span>
+          <span>{adminPreview ? 'Back to Admin' : readerDisplayTitle}</span>
         </button>
 
         <div className="reader-topbar__center">
@@ -1918,6 +1935,7 @@ export default function Reader() {
                   chapters={chapters}
                   currentChapterId={activeChapterId || chapterId || chapter?.id}
                   bookId={bookId}
+                  adminPreview={adminPreview}
                   onChapterSelect={goToChapter}
                 />
               </SecureReader>

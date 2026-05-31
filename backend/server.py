@@ -3615,6 +3615,12 @@ async def reader_heartbeat(payload: ReaderHeartbeatIn, user=Depends(require_user
         raise HTTPException(status_code=404, detail="Session not found")
     if session.get("status") != "active":
         return {"deducted_seconds": 0, "remaining_seconds": 0, "status": session.get("status", "ended"), "is_preview": False}
+    if session.get("auth_session_id") and session.get("auth_session_id") != user.get("session_id"):
+        await db.reading_sessions.update_one(
+            {"id": payload.session_id},
+            {"$set": {"status": "replaced", "ended_at": now_iso(), "ended_reason": "auth_session_mismatch"}},
+        )
+        return {"deducted_seconds": 0, "remaining_seconds": 0, "status": "session_invalid", "is_preview": False}
 
     book = await db.books.find_one({"slug": session["book_slug"]}, {"_id": 0})
     if not book:
@@ -3732,9 +3738,12 @@ async def reading_session_end_v2(payload: ReaderSessionEndIn, principal: Optiona
     user = principal
     fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
     active = fresh.get("active_reading_session") or {}
+    if active.get("session_id") != payload.session_id:
+        return {"success": False, "status": "session_invalid"}
+    if active.get("auth_session_id") and active.get("auth_session_id") != user.get("session_id"):
+        return {"success": False, "status": "session_invalid"}
     book = await db.books.find_one({"slug": active.get("book_id")}, {"_id": 0, "title": 1}) or {}
-    if active.get("session_id") == payload.session_id:
-        await _settle_active_reading_session(user["id"], payload.session_id, book.get("title", "Earnalism"))
+    await _settle_active_reading_session(user["id"], payload.session_id, book.get("title", "Earnalism"))
     await db.users.update_one({"id": user["id"]}, {"$unset": {"active_reading_session": ""}})
     return {"success": True}
 
@@ -3747,6 +3756,8 @@ async def reading_pulse(payload: ReadingPulseIn, principal: Optional[dict] = Dep
     fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
     active = fresh.get("active_reading_session") or {}
     if active.get("session_id") != payload.session_id:
+        return {"success": False, "status": "session_invalid"}
+    if active.get("auth_session_id") and active.get("auth_session_id") != user.get("session_id"):
         return {"success": False, "status": "session_invalid"}
 
     wallet = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)

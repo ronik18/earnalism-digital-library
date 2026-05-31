@@ -627,9 +627,9 @@ function BookEditor({ book, cats, onClose, onSave }) {
 
         <div className="mt-6 flex items-center justify-between gap-3 flex-wrap">
           {!isNew && (
-            <a href={`/reader/${book.slug}`} target="_blank" rel="noreferrer" className="btn-link" data-testid="book-preview-reader">
+            <Link to={`/reader/${book.slug}?preview=admin`} className="btn-link" data-testid="book-preview-reader">
               Preview reader
-            </a>
+            </Link>
           )}
           <div className="flex justify-end gap-3 ml-auto">
             <button onClick={onClose} className="btn-secondary">Cancel</button>
