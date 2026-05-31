@@ -40,6 +40,9 @@ const LINE_SPACING_OPTIONS = [
 const LOW_BALANCE_THRESHOLD = 300;
 const READING_PULSE_MS = 30000;
 const READER_IDLE_MS = 5 * 60 * 1000;
+const PAGE_SCROLL_THROTTLE_MS = 520;
+const PAGE_SCROLL_WHEEL_THRESHOLD = 28;
+const PAGE_TOUCH_SWIPE_THRESHOLD = 56;
 
 function isReaderVisible() {
   return document.visibilityState === 'visible' && !document.hidden;
@@ -690,6 +693,8 @@ export default function Reader() {
   const ttsSegmentTimerRef = useRef(null);
   const pulseIntervalRef = useRef(null);
   const scrollContainerRef = useRef(null);
+  const pageScrollLastAtRef = useRef(0);
+  const pageTouchStartRef = useRef(null);
   const completionReportedRef = useRef('');
   const upsellShownRef = useRef('');
   const ttsWarningShownRef = useRef(false);
@@ -1640,12 +1645,12 @@ export default function Reader() {
   const rightsCopy = rightsForBook(book, readerUserName);
   const narrationDisabledForBook = isNarrationDisabledForBook(book, bookId);
 
-  const goToChapter = (id) => {
+  const goToChapter = useCallback((id) => {
     stopTTS();
     navigate(`/reader/${bookId}${readerSearchParams({ chapterId: id, adminPreview })}`);
-  };
+  }, [adminPreview, bookId, navigate, stopTTS]);
 
-  const goPrev = () => {
+  const goPrev = useCallback(() => {
     stopTTS();
     if (hasPages && currentPage > 0) {
       setCurrentPage((page) => Math.max(0, page - 1));
@@ -1653,9 +1658,9 @@ export default function Reader() {
       return;
     }
     if (prevChapter) goToChapter(prevChapter.id);
-  };
+  }, [currentPage, goToChapter, hasPages, prevChapter, stopTTS]);
 
-  const goNext = () => {
+  const goNext = useCallback(() => {
     stopTTS();
     if (hasPages && currentPage < paginatedPages.length - 1) {
       setCurrentPage((page) => Math.min(paginatedPages.length - 1, page + 1));
@@ -1663,15 +1668,92 @@ export default function Reader() {
       return;
     }
     if (nextChapter) goToChapter(nextChapter.id);
-  };
+  }, [currentPage, goToChapter, hasPages, nextChapter, paginatedPages.length, stopTTS]);
 
-  const goToPage = (index, options = {}) => {
+  const goToPage = useCallback((index, options = {}) => {
     const nextPage = Math.min(Math.max(Number(index) || 0, 0), Math.max(paginatedPages.length - 1, 0));
     if (nextPage === currentPage) return;
     stopTTS();
     setCurrentPage(nextPage);
     scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: options.behavior || 'smooth' });
-  };
+  }, [currentPage, paginatedPages.length, stopTTS]);
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el || !hasPages || loading || lockedState) return undefined;
+
+    const isInsideReader = (target) => {
+      if (!(target instanceof Node)) return true;
+      return el.contains(target);
+    };
+    const isBlockedTarget = (target) => {
+      if (!(target instanceof Element)) return false;
+      return Boolean(target.closest(
+        'button, input, textarea, select, [role="dialog"], .reader-bottom-bar, .reader-settings-sheet',
+      ));
+    };
+    const shouldIgnoreGesture = (target) => (
+      showSettings
+      || showTOC
+      || showTopUpModal
+      || !isInsideReader(target)
+      || isBlockedTarget(target)
+    );
+    const canTurnPage = (direction) => (direction > 0 ? canNext : canPrev);
+    const turnPage = (direction) => {
+      if (!canTurnPage(direction)) return;
+      const now = Date.now();
+      if (now - pageScrollLastAtRef.current < PAGE_SCROLL_THROTTLE_MS) return;
+      pageScrollLastAtRef.current = now;
+      if (direction > 0) goNext();
+      else goPrev();
+    };
+
+    const onWheel = (event) => {
+      if (shouldIgnoreGesture(event.target)) return;
+      if (Math.abs(event.deltaY) < PAGE_SCROLL_WHEEL_THRESHOLD || Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+      event.preventDefault();
+      turnPage(event.deltaY > 0 ? 1 : -1);
+    };
+    const onTouchStart = (event) => {
+      if (shouldIgnoreGesture(event.target)) {
+        pageTouchStartRef.current = null;
+        return;
+      }
+      const touch = event.touches?.[0];
+      pageTouchStartRef.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+    };
+    const onTouchMove = (event) => {
+      const start = pageTouchStartRef.current;
+      const touch = event.touches?.[0];
+      if (!start || !touch) return;
+      const dx = touch.clientX - start.x;
+      const dy = touch.clientY - start.y;
+      if (Math.abs(dy) > 12 && Math.abs(dy) > Math.abs(dx)) event.preventDefault();
+    };
+    const onTouchEnd = (event) => {
+      const start = pageTouchStartRef.current;
+      pageTouchStartRef.current = null;
+      const touch = event.changedTouches?.[0];
+      if (!start || !touch) return;
+      const dx = touch.clientX - start.x;
+      const dy = touch.clientY - start.y;
+      if (Math.abs(dy) < PAGE_TOUCH_SWIPE_THRESHOLD || Math.abs(dy) < Math.abs(dx)) return;
+      turnPage(dy < 0 ? 1 : -1);
+    };
+
+    window.addEventListener('wheel', onWheel, { capture: true, passive: false });
+    window.addEventListener('touchstart', onTouchStart, { capture: true, passive: true });
+    window.addEventListener('touchmove', onTouchMove, { capture: true, passive: false });
+    window.addEventListener('touchend', onTouchEnd, { capture: true, passive: true });
+
+    return () => {
+      window.removeEventListener('wheel', onWheel, true);
+      window.removeEventListener('touchstart', onTouchStart, true);
+      window.removeEventListener('touchmove', onTouchMove, true);
+      window.removeEventListener('touchend', onTouchEnd, true);
+    };
+  }, [canNext, canPrev, goNext, goPrev, hasPages, loading, lockedState, showSettings, showTOC, showTopUpModal]);
 
   const toggleBookmark = async () => {
     if (!getUserToken()) {
