@@ -74,6 +74,35 @@ class BulkPublishingPipelineTests(unittest.TestCase):
         self.assertEqual(candidates[0], "https://www.gutenberg.org/cache/epub/84/pg84.txt")
         self.assertIn("https://www.gutenberg.org/ebooks/84", candidates)
 
+    def test_importer_combines_split_classic_chapter_titles(self) -> None:
+        source_text = """
+CHAPTER I
+Down the Rabbit-Hole
+
+Alice was beginning to get very tired of sitting by her sister on the bank.
+
+CHAPTER III
+A Caucus-Race and a Long Tale
+
+They were indeed a queer-looking party that assembled on the bank.
+
+CHAPTER XI
+Who Stole the Tarts?
+
+The King and Queen of Hearts were seated on their throne when they arrived.
+"""
+
+        chapters, _warnings = import_books.detect_chapters(source_text)
+
+        self.assertEqual(
+            [chapter["title"] for chapter in chapters],
+            [
+                "CHAPTER I. Down the Rabbit-Hole",
+                "CHAPTER III. A Caucus-Race and a Long Tale",
+                "CHAPTER XI. Who Stole the Tarts?",
+            ],
+        )
+
     def test_importer_maps_legacy_book_categories_to_current_shelves(self) -> None:
         warnings: list[str] = []
         meta = import_books.metadata_defaults(
