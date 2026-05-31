@@ -95,12 +95,17 @@ RATE_LIMIT_READER_PER_MINUTE=150000
 ```
 
 For a true sudden 10X event, keep at least three Railway replicas warm before
-the launch window and scale higher if the 10X k6 gate shows p95 pressure. The
-CLI command is:
+the launch window and scale higher if the 10X k6 gate shows p95 pressure. On
+plans and regions that allow replica scaling, the CLI command is:
 
 ```bash
 railway scale --service earnalism us-west=3
 ```
+
+If Railway rejects the redeploy with a single-region or plan limitation, upgrade
+the Railway plan or migrate the service into a scalable region first. Until that
+is done, `WEB_CONCURRENCY` increases per-replica process capacity but it is not
+a full substitute for warm horizontal replicas.
 
 Do not raise auth, payment, webhook, or upload mutation limits without a
 separate fraud and abuse review. If the backend runs more than one replica for
