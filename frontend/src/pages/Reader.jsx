@@ -38,6 +38,12 @@ const LINE_SPACING_OPTIONS = [
 ];
 
 const LOW_BALANCE_THRESHOLD = 300;
+const READING_PULSE_MS = 30000;
+const READER_IDLE_MS = 5 * 60 * 1000;
+
+function isReaderVisible() {
+  return document.visibilityState === 'visible' && !document.hidden;
+}
 
 function authHeaders(token) {
   return token ? { Authorization: `Bearer ${token}` } : {};
@@ -674,6 +680,7 @@ export default function Reader() {
   const completionReportedRef = useRef('');
   const upsellShownRef = useRef('');
   const ttsWarningShownRef = useRef(false);
+  const lastReaderActivityRef = useRef(Date.now());
 
   const stopTTS = useCallback(() => {
     synthRef.current?.cancel?.();
@@ -711,9 +718,11 @@ export default function Reader() {
   const sendPulse = useCallback(async () => {
     if (!sessionId || !meteredSessionActive) return;
     const headers = getUserAuthHeaders();
+    const visible = isReaderVisible();
+    const idle = Date.now() - lastReaderActivityRef.current > READER_IDLE_MS;
 
     try {
-      const response = await axios.post(`${API}/reading/pulse`, { session_id: sessionId }, { headers });
+      const response = await axios.post(`${API}/reading/pulse`, { session_id: sessionId, visible, idle }, { headers });
       const { status, wallet_seconds } = response.data;
 
       switch (status) {
@@ -723,6 +732,9 @@ export default function Reader() {
         case 'low_balance':
           setWalletSeconds(wallet_seconds);
           setShowLowBalanceWarning(true);
+          break;
+        case 'paused':
+          setWalletSeconds(wallet_seconds);
           break;
         case 'wallet_empty':
           setWalletSeconds(0);
@@ -782,6 +794,31 @@ export default function Reader() {
       document.removeEventListener('copy', onCopy);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       clearInterval(protectionInterval);
+    };
+  }, []);
+
+  useEffect(() => {
+    const markActive = () => {
+      lastReaderActivityRef.current = Date.now();
+    };
+    const markVisibleActive = () => {
+      if (isReaderVisible()) markActive();
+    };
+    const activityEvents = ['pointerdown', 'pointermove', 'keydown', 'wheel', 'touchstart', 'scroll'];
+
+    markActive();
+    activityEvents.forEach((eventName) => {
+      window.addEventListener(eventName, markActive, { passive: true });
+    });
+    document.addEventListener('visibilitychange', markVisibleActive);
+    window.addEventListener('focus', markActive);
+
+    return () => {
+      activityEvents.forEach((eventName) => {
+        window.removeEventListener(eventName, markActive);
+      });
+      document.removeEventListener('visibilitychange', markVisibleActive);
+      window.removeEventListener('focus', markActive);
     };
   }, []);
 
@@ -934,12 +971,39 @@ export default function Reader() {
   const readerDisplayTitle = book?.title || readerFrontMatter.storyTitle || chapter?.title || 'Chapter';
 
   useEffect(() => {
-    if (meteredSessionActive && chapter && processedHtml && sessionId) {
+    if (!(meteredSessionActive && chapter && processedHtml && sessionId)) {
       clearInterval(pulseIntervalRef.current);
-      pulseIntervalRef.current = setInterval(sendPulse, 30000);
+      return undefined;
     }
 
-    return () => clearInterval(pulseIntervalRef.current);
+    const startPulseTimer = () => {
+      clearInterval(pulseIntervalRef.current);
+      if (isReaderVisible()) {
+        pulseIntervalRef.current = setInterval(sendPulse, READING_PULSE_MS);
+      }
+    };
+    const handleReaderVisibility = () => {
+      if (isReaderVisible()) {
+        lastReaderActivityRef.current = Date.now();
+        void sendPulse();
+        startPulseTimer();
+      } else {
+        clearInterval(pulseIntervalRef.current);
+        void sendPulse();
+      }
+    };
+
+    startPulseTimer();
+    document.addEventListener('visibilitychange', handleReaderVisibility);
+    window.addEventListener('focus', handleReaderVisibility);
+    window.addEventListener('blur', handleReaderVisibility);
+
+    return () => {
+      clearInterval(pulseIntervalRef.current);
+      document.removeEventListener('visibilitychange', handleReaderVisibility);
+      window.removeEventListener('focus', handleReaderVisibility);
+      window.removeEventListener('blur', handleReaderVisibility);
+    };
   }, [chapter, processedHtml, sessionId, meteredSessionActive, sendPulse]);
 
   const currentIdx = useMemo(
@@ -1210,7 +1274,11 @@ export default function Reader() {
             if (scrollContainerRef.current) {
               scrollContainerRef.current.scrollTop = savedScrollPosition;
             }
-            pulseIntervalRef.current = setInterval(sendPulse, 30000);
+            lastReaderActivityRef.current = Date.now();
+            clearInterval(pulseIntervalRef.current);
+            if (isReaderVisible()) {
+              pulseIntervalRef.current = setInterval(sendPulse, READING_PULSE_MS);
+            }
           }, 1500);
         },
         modal: {

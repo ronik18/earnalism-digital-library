@@ -22,6 +22,7 @@ PYTHONPATH=backend \
 "${PYTHON_BIN}" -m pytest -q \
   backend/tests/test_bengali_content_pipeline.py \
   backend/tests/test_content_processor_safety.py \
+  backend/tests/test_reader_billing_policy.py \
   scripts/test_bulk_publishing_pipeline.py
 
 if [[ "${RUN_LIVE_BACKEND}" == "1" ]]; then

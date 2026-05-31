@@ -232,12 +232,13 @@ class TestReaderFlow:
                        headers=fresh_user["headers"]).json()
         sid = start["session_id"]
 
-        # 1st beat: deduct 30 -> remaining 90
+        # Immediate beats do not bill; the server only charges after a real
+        # 30-second reading window so refreshes/retries cannot consume time.
         r1 = s.post(f"{API}/reader/heartbeat",
                     json={"session_id": sid, "visible": True, "idle": False, "chapter_id": paid_chap},
                     headers=fresh_user["headers"]).json()
-        assert r1["deducted_seconds"] == 30
-        assert r1["remaining_seconds"] == 90
+        assert r1["deducted_seconds"] == 0
+        assert r1["remaining_seconds"] == 120
         assert r1["status"] == "active"
 
         # visible:false -> 0 deducted, paused
@@ -246,7 +247,7 @@ class TestReaderFlow:
                     headers=fresh_user["headers"]).json()
         assert r2["deducted_seconds"] == 0
         assert r2["status"] == "paused"
-        assert r2["remaining_seconds"] == 90
+        assert r2["remaining_seconds"] == 120
 
         # idle:true -> 0 deducted, paused
         r3 = s.post(f"{API}/reader/heartbeat",
@@ -255,22 +256,22 @@ class TestReaderFlow:
         assert r3["deducted_seconds"] == 0
         assert r3["status"] == "paused"
 
-        # 3 more active beats to drain balance: 90->60->30->0
-        last = None
-        for _ in range(3):
-            last = s.post(f"{API}/reader/heartbeat",
-                          json={"session_id": sid, "visible": True, "idle": False, "chapter_id": paid_chap},
-                          headers=fresh_user["headers"]).json()
-        assert last["remaining_seconds"] == 0
-        assert last["status"] == "depleted"
+        # Wait for one real billing window. One heartbeat can charge at most one pulse.
+        time.sleep(31)
+        r_bill = s.post(f"{API}/reader/heartbeat",
+                        json={"session_id": sid, "visible": True, "idle": False, "chapter_id": paid_chap},
+                        headers=fresh_user["headers"]).json()
+        assert r_bill["deducted_seconds"] == 30
+        assert r_bill["remaining_seconds"] == 90
+        assert r_bill["status"] == "active"
 
-        # Further beat with 0 balance -> deducted 0, status depleted
+        # Immediate retry after a billed beat must not double-charge.
         r4 = s.post(f"{API}/reader/heartbeat",
                     json={"session_id": sid, "visible": True, "idle": False, "chapter_id": paid_chap},
                     headers=fresh_user["headers"]).json()
         assert r4["deducted_seconds"] == 0
-        assert r4["status"] == "depleted"
-        assert r4["remaining_seconds"] == 0
+        assert r4["status"] == "active"
+        assert r4["remaining_seconds"] == 90
 
         # End the session
         end = s.post(f"{API}/reader/session/end",

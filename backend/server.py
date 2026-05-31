@@ -99,7 +99,8 @@ USER_ACCESS_TOKEN_EXPIRE_MINUTES = _env_int("USER_ACCESS_TOKEN_EXPIRE_MINUTES", 
 USER_REFRESH_IDLE_MINUTES = _env_int("USER_REFRESH_IDLE_MINUTES", 30)
 USER_REFRESH_TOTAL_HOURS = _env_int("USER_REFRESH_TOTAL_HOURS", 12)
 TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS = _env_int("TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS", 1)
-MAX_READING_DEBIT_CATCHUP_SECONDS = _env_int("MAX_READING_DEBIT_CATCHUP_SECONDS", 1800)
+READING_HEARTBEAT_EARLY_GRACE_SECONDS = _env_int("READING_HEARTBEAT_EARLY_GRACE_SECONDS", 5)
+READING_SESSION_IDLE_GRACE_SECONDS = _env_int("READING_SESSION_IDLE_GRACE_SECONDS", 120)
 SESSION_TOUCH_INTERVAL_SECONDS = _env_int("SESSION_TOUCH_INTERVAL_SECONDS", 60)
 if SESSION_TOUCH_INTERVAL_SECONDS > 0:
     SESSION_TOUCH_INTERVAL_SECONDS = min(
@@ -1403,6 +1404,7 @@ class WalletTransactionOut(BaseModel):
     reason: str
     created_at: str
     actor: str = "system"  # "admin" | "system" | "user"
+    session_id: str = ""
 
 class ReaderSessionStartIn(BaseModel):
     session_id: Optional[str] = None
@@ -1418,6 +1420,11 @@ class ReaderHeartbeatIn(BaseModel):
 
 class ReaderSessionEndIn(BaseModel):
     session_id: str
+
+class ReadingPulseIn(BaseModel):
+    session_id: str
+    visible: bool = True
+    idle: bool = False
 
 class ReaderCompletionIn(BaseModel):
     book_slug: str
@@ -3452,11 +3459,36 @@ HEARTBEAT_TICK_SECONDS = 30
 LOW_BALANCE_THRESHOLD = 300
 
 
-def _billable_reading_seconds(last_debit_at, now: datetime) -> int:
+def _billable_reading_seconds(
+    last_debit_at,
+    now: datetime,
+    *,
+    visible: bool = True,
+    idle: bool = False,
+) -> int:
+    """Return seconds to bill for this heartbeat.
+
+    Billing is pulse-based, not catch-up based. A single heartbeat can never
+    debit more than one 30-second pulse; long gaps usually mean the tab slept,
+    the screen was hidden, or the user was away.
+    """
+    if not visible or idle:
+        return 0
     last = _as_utc_dt(last_debit_at) or now
     elapsed = max(0, int((now - last).total_seconds()))
-    capped = min(elapsed, MAX_READING_DEBIT_CATCHUP_SECONDS)
-    return (capped // HEARTBEAT_TICK_SECONDS) * HEARTBEAT_TICK_SECONDS
+    if elapsed > READING_SESSION_IDLE_GRACE_SECONDS:
+        return 0
+    if elapsed + READING_HEARTBEAT_EARLY_GRACE_SECONDS < HEARTBEAT_TICK_SECONDS:
+        return 0
+    return HEARTBEAT_TICK_SECONDS
+
+
+def _should_reset_reading_clock(last_debit_at, now: datetime, *, visible: bool = True, idle: bool = False) -> bool:
+    if not visible or idle:
+        return True
+    last = _as_utc_dt(last_debit_at) or now
+    elapsed = max(0, int((now - last).total_seconds()))
+    return elapsed > READING_SESSION_IDLE_GRACE_SECONDS
 
 
 async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, seconds: int) -> Tuple[int, int]:
@@ -3471,10 +3503,13 @@ async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, s
     if debit <= 0:
         return 0, remaining
 
-    await db.users.update_one(
-        {"id": user_id},
+    res = await db.users.update_one(
+        {"id": user_id, "reading_seconds_balance": wallet},
         {"$set": {"reading_seconds_balance": remaining, "wallet_seconds": remaining}},
     )
+    if res.modified_count != 1:
+        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
     await _record_wallet_ledger(
         user_id=user_id,
         session_id=session_id,
@@ -3487,28 +3522,51 @@ async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, s
     return debit, remaining
 
 
-async def _settle_active_reading_session(user_id: str, session_id: str, book_title: str = "") -> Tuple[int, int]:
+async def _settle_active_reading_session(
+    user_id: str,
+    session_id: str,
+    book_title: str = "",
+    *,
+    visible: bool = True,
+    idle: bool = False,
+) -> Tuple[int, int, str]:
     now = datetime.now(timezone.utc)
     active = await db.users.find_one({"id": user_id}, {"_id": 0, "active_reading_session": 1})
     session = (active or {}).get("active_reading_session") or {}
     if session.get("session_id") != session_id:
         fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
-        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0), "session_invalid"
 
     last_debit_at = session.get("last_debit_at") or session.get("last_pulse_at") or session.get("started_at")
-    billable = _billable_reading_seconds(last_debit_at, now)
+    billable = _billable_reading_seconds(last_debit_at, now, visible=visible, idle=idle)
+    reset_clock = _should_reset_reading_clock(last_debit_at, now, visible=visible, idle=idle)
     if billable <= 0:
+        if reset_clock:
+            await db.users.update_one(
+                {"id": user_id, "active_reading_session.session_id": session_id},
+                {"$set": {"active_reading_session.last_debit_at": now, "active_reading_session.last_pulse_at": now}},
+            )
+        else:
+            await db.users.update_one(
+                {"id": user_id, "active_reading_session.session_id": session_id},
+                {"$set": {"active_reading_session.last_pulse_at": now}},
+            )
         fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
-        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+        status = "paused" if reset_clock else "active"
+        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0), status
 
+    debit_filter = {"id": user_id, "active_reading_session.session_id": session_id}
+    if session.get("last_debit_at") is not None:
+        debit_filter["active_reading_session.last_debit_at"] = session.get("last_debit_at")
     res = await db.users.update_one(
-        {"id": user_id, "active_reading_session.session_id": session_id},
+        debit_filter,
         {"$set": {"active_reading_session.last_debit_at": now, "active_reading_session.last_pulse_at": now}},
     )
     if res.modified_count != 1:
         fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
-        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
-    return await _apply_reading_debit(user_id, session_id, book_title or "Earnalism", billable)
+        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0), "session_invalid"
+    deducted, remaining = await _apply_reading_debit(user_id, session_id, book_title or "Earnalism", billable)
+    return deducted, remaining, "active"
 
 
 @api.post("/reader/session/start")
@@ -3578,13 +3636,36 @@ async def reader_heartbeat(payload: ReaderHeartbeatIn, user=Depends(require_user
         status = "depleted"
     else:
         now = datetime.now(timezone.utc)
-        billable = _billable_reading_seconds(session.get("last_debit_at") or session.get("last_heartbeat_at"), now)
-        await db.reading_sessions.update_one(
-            {"id": payload.session_id},
-            {"$set": {"last_debit_at": now}},
+        last_debit_at = session.get("last_debit_at") or session.get("last_heartbeat_at")
+        billable = _billable_reading_seconds(
+            last_debit_at,
+            now,
+            visible=payload.visible,
+            idle=payload.idle,
         )
-        deducted, balance = await _apply_reading_debit(user["id"], payload.session_id, book.get("title", "Earnalism"), billable)
-        status = "depleted" if balance <= 0 else "active"
+        reset_clock = _should_reset_reading_clock(
+            last_debit_at,
+            now,
+            visible=payload.visible,
+            idle=payload.idle,
+        )
+        if billable > 0:
+            heartbeat_filter = {"id": payload.session_id}
+            if session.get("last_debit_at") is not None:
+                heartbeat_filter["last_debit_at"] = session.get("last_debit_at")
+            res = await db.reading_sessions.update_one(
+                heartbeat_filter,
+                {"$set": {"last_debit_at": now}},
+            )
+            if res.modified_count == 1:
+                deducted, balance = await _apply_reading_debit(user["id"], payload.session_id, book.get("title", "Earnalism"), billable)
+                status = "depleted" if balance <= 0 else "active"
+        elif reset_clock:
+            await db.reading_sessions.update_one(
+                {"id": payload.session_id},
+                {"$set": {"last_debit_at": now}},
+            )
+            status = "paused"
 
     await db.reading_sessions.update_one(
         {"id": payload.session_id},
@@ -3659,7 +3740,7 @@ async def reading_session_end_v2(payload: ReaderSessionEndIn, principal: Optiona
 
 
 @api.post("/reading/pulse")
-async def reading_pulse(payload: ReaderSessionEndIn, principal: Optional[dict] = Depends(optional_principal)):
+async def reading_pulse(payload: ReadingPulseIn, principal: Optional[dict] = Depends(optional_principal)):
     if not principal or principal.get("role") != "user" or principal.get("status") == "blocked":
         return {"success": False, "status": "session_invalid"}
     user = principal
@@ -3673,8 +3754,17 @@ async def reading_pulse(payload: ReaderSessionEndIn, principal: Optional[dict] =
         return {"success": False, "status": "wallet_empty", "wallet_seconds": 0}
 
     book = await db.books.find_one({"slug": active.get("book_id")}, {"_id": 0, "title": 1}) or {}
-    deducted, remaining = await _settle_active_reading_session(user["id"], payload.session_id, book.get("title", "Earnalism"))
-    status = "wallet_empty" if remaining <= 0 else ("low_balance" if remaining <= LOW_BALANCE_THRESHOLD else "ok")
+    deducted, remaining, settle_status = await _settle_active_reading_session(
+        user["id"],
+        payload.session_id,
+        book.get("title", "Earnalism"),
+        visible=payload.visible,
+        idle=payload.idle,
+    )
+    if settle_status in {"paused", "session_invalid"}:
+        status = settle_status
+    else:
+        status = "wallet_empty" if remaining <= 0 else ("low_balance" if remaining <= LOW_BALANCE_THRESHOLD else "ok")
     if deducted <= 0:
         await db.users.update_one(
             {"id": user["id"]},
