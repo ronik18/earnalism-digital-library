@@ -570,6 +570,25 @@ BOOK_LIST_PROJECTION = {
     "rights_metadata": 0,
     "chapters": 0,
 }
+BOOK_SUMMARY_PROJECTION = {
+    "_id": 0,
+    "id": 1,
+    "slug": 1,
+    "title": 1,
+    "subtitle": 1,
+    "author": 1,
+    "category_slug": 1,
+    "short_description": 1,
+    "cover_url": 1,
+    "cover_image_url": 1,
+    "thumbnail_url": 1,
+    "blur_placeholder": 1,
+    "dominant_color": 1,
+    "estimated_reading_time": 1,
+    "audiobook_enabled": 1,
+    "is_published": 1,
+    "created_at": 1,
+}
 PUBLIC_CACHE_PATHS = {
     "/api/home",
     "/api/categories",
@@ -2306,7 +2325,7 @@ async def get_home_payload():
     categories = await db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200)
     books_docs = await db.books.find(
         {"is_published": True},
-        BOOK_LIST_PROJECTION,
+        BOOK_SUMMARY_PROJECTION,
     ).sort("created_at", -1).to_list(HOME_BOOK_LIMIT)
     books = [_strip_all_chapter_content(doc) for doc in books_docs]
 
@@ -2314,13 +2333,11 @@ async def get_home_payload():
     setting = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
     featured_slug = (setting or {}).get("book_slug")
     if featured_slug:
-        featured_book = next((book for book in books if book.get("slug") == featured_slug), None)
-        if featured_book is None:
-            doc = await db.books.find_one(
-                {"slug": featured_slug, "is_published": True},
-                BOOK_LIST_PROJECTION,
-            )
-            featured_book = _strip_all_chapter_content(doc) if doc else None
+        doc = await db.books.find_one(
+            {"slug": featured_slug, "is_published": True},
+            BOOK_METADATA_PROJECTION,
+        )
+        featured_book = _strip_all_chapter_content(doc) if doc else None
 
     result = {
         "categories": categories,
@@ -2421,7 +2438,7 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
             {"category_slug": {"$regex": pattern, "$options": "i"}},
             {"chapters.title": {"$regex": pattern, "$options": "i"}},
         ]
-    docs = await db.books.find(query, BOOK_LIST_PROJECTION).sort("created_at", -1).to_list(500)
+    docs = await db.books.find(query, BOOK_SUMMARY_PROJECTION).sort("created_at", -1).to_list(500)
     # Public list is shelf metadata-only so library browsing never ships chapter bodies.
     result = [_strip_all_chapter_content(d) for d in docs]
     _public_cache_set(cache_key, result)
