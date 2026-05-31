@@ -646,6 +646,45 @@ def title_case_ratio(line: str) -> float:
     return title_like / len(tokens)
 
 
+TITLE_FUNCTION_WORDS = {
+    "a",
+    "an",
+    "and",
+    "as",
+    "at",
+    "but",
+    "by",
+    "for",
+    "from",
+    "in",
+    "into",
+    "nor",
+    "of",
+    "on",
+    "or",
+    "over",
+    "the",
+    "to",
+    "with",
+    "without",
+}
+
+
+def title_line_ratio(line: str) -> float:
+    tokens = [token for token in re.split(r"\s+", line.strip()) if token]
+    if not tokens:
+        return 0.0
+    title_like = 0
+    for token in tokens:
+        cleaned = re.sub(r"^[\"'“‘(\[]+|[\"'”’),.!?\]:;]+$", "", token)
+        if not cleaned:
+            continue
+        lower = cleaned.lower()
+        if lower in TITLE_FUNCTION_WORDS or cleaned[:1].isupper() or cleaned.isupper():
+            title_like += 1
+    return title_like / len(tokens)
+
+
 def clean_heading_text(value: str) -> str:
     value = re.sub(r"[\[\]_*`]+", " ", value)
     value = re.sub(r"\s+", " ", value).strip(" .\t")
@@ -663,11 +702,16 @@ def looks_like_title_line(line: str) -> bool:
     line = line.strip()
     if not line or len(line) > 100:
         return False
-    if re.search(r"[.!?;:]$", line):
+    if re.search(r"[.;:]$", line):
         return False
     if len(words(line)) > 12:
         return False
-    return line.isupper() or title_case_ratio(line) >= 0.75 or line.startswith(("“", "\"", "‘", "'"))
+    return (
+        line.isupper()
+        or title_case_ratio(line) >= 0.75
+        or title_line_ratio(line) >= 0.75
+        or line.startswith(("“", "\"", "‘", "'"))
+    )
 
 
 def heading_candidate(lines: list[str], index: int, allow_title_case_headings: bool = False) -> dict[str, Any] | None:
