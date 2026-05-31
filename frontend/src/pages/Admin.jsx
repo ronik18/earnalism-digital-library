@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { api, formatError, formatMinutes } from "../lib/api";
 import { toast } from "sonner";
@@ -185,6 +185,7 @@ async function loadAdminBooks() {
 }
 
 function BooksAdmin() {
+  const navigate = useNavigate();
   const [books, setBooks] = useState([]);
   const [cats, setCats] = useState([]);
   const [editing, setEditing] = useState(null);
@@ -235,6 +236,14 @@ function BooksAdmin() {
     setFeatured(slug); toast.success("Featured updated");
   };
 
+  const previewReader = (slug) => {
+    if (!slug) {
+      toast.error("Save the book before opening the reader preview.");
+      return;
+    }
+    navigate(`/reader/${encodeURIComponent(slug)}?preview=admin`, { state: { from: "/admin" } });
+  };
+
   return (
     <div data-testid="books-admin">
       <div className="flex items-center justify-between mb-5">
@@ -273,7 +282,7 @@ function BooksAdmin() {
         ))}
       </div>
 
-      {editing && <BookEditor book={editing} cats={cats} onClose={() => setEditing(null)} onSave={save} />}
+      {editing && <BookEditor book={editing} cats={cats} onClose={() => setEditing(null)} onSave={save} onPreviewReader={previewReader} />}
     </div>
   );
 }
@@ -331,7 +340,7 @@ function ProcessingBadge({ status }) {
   );
 }
 
-function BookEditor({ book, cats, onClose, onSave }) {
+function BookEditor({ book, cats, onClose, onSave, onPreviewReader }) {
   const [f, setF] = useState({
     ...book,
     benefits: lines(book.benefits), who_for: lines(book.who_for), learnings: lines(book.learnings), formats: lines(book.formats || ["Paperback", "Ebook"]),
@@ -627,9 +636,14 @@ function BookEditor({ book, cats, onClose, onSave }) {
 
         <div className="mt-6 flex items-center justify-between gap-3 flex-wrap">
           {!isNew && (
-            <Link to={`/reader/${book.slug}?preview=admin`} className="btn-link" data-testid="book-preview-reader">
+            <button
+              type="button"
+              onClick={() => onPreviewReader?.(f.slug || book.slug)}
+              className="btn-link"
+              data-testid="book-preview-reader"
+            >
               Preview reader
-            </Link>
+            </button>
           )}
           <div className="flex justify-end gap-3 ml-auto">
             <button onClick={onClose} className="btn-secondary">Cancel</button>

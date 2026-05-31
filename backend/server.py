@@ -78,8 +78,8 @@ def _database_name_from_mongo_url(url: str) -> str:
     db_name = parsed.path.lstrip("/").split("/", 1)[0]
     return db_name or "earnalism"
 
-MONGODB_MAX_POOL_SIZE = _env_int("MONGODB_MAX_POOL_SIZE", 200)
-MONGODB_MIN_POOL_SIZE = _env_int("MONGODB_MIN_POOL_SIZE", 5, minimum=0)
+MONGODB_MAX_POOL_SIZE = _env_int("MONGODB_MAX_POOL_SIZE", 100)
+MONGODB_MIN_POOL_SIZE = _env_int("MONGODB_MIN_POOL_SIZE", 2, minimum=0)
 MONGODB_SERVER_SELECTION_TIMEOUT_MS = _env_int("MONGODB_SERVER_SELECTION_TIMEOUT_MS", 5000)
 client = AsyncIOMotorClient(
     mongo_url,
@@ -552,6 +552,18 @@ BOOK_METADATA_PROJECTION = {
     "_id": 0,
     "chapters.content": 0,
     "rights_metadata": 0,
+}
+READER_ACCESS_PROJECTION = {
+    "_id": 0,
+    "title": 1,
+    "chapters.id": 1,
+    "chapters.title": 1,
+    "chapters.order": 1,
+    "chapters.is_preview": 1,
+}
+CHAPTER_CONTENT_PROJECTION = {
+    "_id": 0,
+    "chapters.$": 1,
 }
 BOOK_LIST_PROJECTION = {
     "_id": 0,
@@ -2421,7 +2433,7 @@ async def get_book(slug: str):
     cached = _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    doc = await db.books.find_one({"slug": slug, "is_published": True}, {"_id": 0})
+    doc = await db.books.find_one({"slug": slug, "is_published": True}, BOOK_METADATA_PROJECTION)
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
     # Public detail returns metadata + ToC only. Reader content is fetched through
@@ -2437,10 +2449,10 @@ async def get_book_chapters(slug: str):
     cached = _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    doc = await db.books.find_one({"slug": slug, "is_published": True})
+    doc = await db.books.find_one({"slug": slug, "is_published": True}, BOOK_METADATA_PROJECTION)
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
-    chapters = _strip_paid_chapter_content(doc).get("chapters") or []
+    chapters = _strip_all_chapter_content(doc).get("chapters") or []
     if not chapters:
         return []
     result = sorted(chapters, key=lambda c: c.get("order", 0))
@@ -2454,11 +2466,23 @@ async def get_book_chapter(slug: str, chapter_id: str):
     cached = _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    doc = await db.books.find_one({"slug": slug, "is_published": True})
-    if not doc:
+    book_meta = await db.books.find_one({"slug": slug, "is_published": True}, READER_ACCESS_PROJECTION)
+    if not book_meta:
         raise HTTPException(status_code=404, detail="Book not found")
-    chapters = _strip_paid_chapter_content(doc).get("chapters") or []
-    chapter = next((c for c in chapters if c.get("id") == chapter_id), None)
+    chapters = sorted((book_meta.get("chapters") or []), key=lambda c: c.get("order", 0))
+    target_meta = next((c for c in chapters if c.get("id") == chapter_id), None)
+    if not target_meta:
+        raise HTTPException(status_code=404, detail="Chapter not found")
+
+    chapter = dict(target_meta)
+    chapter["content"] = ""
+    if _is_free_preview_chapter(book_meta, chapter_id):
+        content_doc = await db.books.find_one(
+            {"slug": slug, "is_published": True, "chapters.id": chapter_id},
+            CHAPTER_CONTENT_PROJECTION,
+        )
+        target = ((content_doc or {}).get("chapters") or [{}])[0]
+        chapter["content"] = target.get("content", "")
     if not chapter:
         raise HTTPException(status_code=404, detail="Chapter not found")
     _public_cache_set(cache_key, chapter)
@@ -3574,7 +3598,7 @@ async def reader_session_start(payload: ReaderSessionStartIn, user=Depends(requi
     book_slug = payload.book_slug or payload.book_id
     if not book_slug:
         raise HTTPException(status_code=400, detail="Book id is required")
-    book = await db.books.find_one({"slug": book_slug, "is_published": True}, {"_id": 0})
+    book = await db.books.find_one({"slug": book_slug, "is_published": True}, READER_ACCESS_PROJECTION)
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
     fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0})
@@ -3622,7 +3646,7 @@ async def reader_heartbeat(payload: ReaderHeartbeatIn, user=Depends(require_user
         )
         return {"deducted_seconds": 0, "remaining_seconds": 0, "status": "session_invalid", "is_preview": False}
 
-    book = await db.books.find_one({"slug": session["book_slug"]}, {"_id": 0})
+    book = await db.books.find_one({"slug": session["book_slug"]}, READER_ACCESS_PROJECTION)
     if not book:
         await db.reading_sessions.update_one({"id": payload.session_id}, {"$set": {"status": "ended"}})
         raise HTTPException(status_code=404, detail="Book not found")

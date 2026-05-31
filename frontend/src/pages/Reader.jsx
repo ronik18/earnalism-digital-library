@@ -569,15 +569,22 @@ function formatWalletTime(seconds) {
   return `${s}s`;
 }
 
-async function fetchReaderBook(bookId) {
+async function fetchReaderBook(bookId, requestedAdminPreview = false) {
+  const encodedBookId = encodeURIComponent(bookId);
+  const adminToken = localStorage.getItem(TOKEN_KEY);
+  if (requestedAdminPreview && adminToken) {
+    const response = await axios.get(`${API}/admin/books/${encodedBookId}`, { headers: getAdminAuthHeaders() });
+    response.adminPreview = true;
+    return response;
+  }
+
   try {
-    const response = await axios.get(`${API}/books/${bookId}`);
+    const response = await axios.get(`${API}/books/${encodedBookId}`);
     response.adminPreview = false;
     return response;
   } catch (err) {
-    const adminToken = localStorage.getItem(TOKEN_KEY);
     if (err.response?.status === 404 && adminToken) {
-      const response = await axios.get(`${API}/admin/books/${bookId}`, { headers: getAdminAuthHeaders() });
+      const response = await axios.get(`${API}/admin/books/${encodedBookId}`, { headers: getAdminAuthHeaders() });
       response.adminPreview = true;
       return response;
     }
@@ -857,7 +864,7 @@ export default function Reader() {
 
       try {
         const [bookRes, packsRes] = await Promise.all([
-          fetchReaderBook(bookId),
+          fetchReaderBook(bookId, requestedAdminPreview),
           axios.get(`${API}/payments/packs`),
         ]);
         if (cancelled) return;
@@ -907,7 +914,7 @@ export default function Reader() {
 
         setChapter(loadedChapter);
         if (!chapterId) {
-          window.history.replaceState(null, '', `${window.location.pathname}${readerSearchParams({ chapterId: activeChapterId, adminPreview: isAdminPreview })}`);
+          window.history.replaceState(window.history.state, '', `${window.location.pathname}${readerSearchParams({ chapterId: activeChapterId, adminPreview: isAdminPreview })}`);
         }
 
         if (gate.locked) {
