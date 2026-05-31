@@ -18,7 +18,6 @@ import time
 import bcrypt
 import jwt
 import unicodedata
-import copy
 from collections import OrderedDict, defaultdict, deque
 from datetime import datetime, timezone, timedelta
 from typing import Any, Deque, Dict, List, Optional, Tuple
@@ -623,13 +622,13 @@ def _public_cache_get(key: str):
         _public_cache.pop(key, None)
         return None
     _public_cache.move_to_end(key)
-    return copy.deepcopy(value)
+    return value
 
 
 def _public_cache_set(key: str, value) -> None:
     if not PUBLIC_CACHE_ENABLED:
         return
-    _public_cache[key] = (time.monotonic() + PUBLIC_CACHE_TTL_SECONDS, copy.deepcopy(value))
+    _public_cache[key] = (time.monotonic() + PUBLIC_CACHE_TTL_SECONDS, value)
     _public_cache.move_to_end(key)
     while len(_public_cache) > PUBLIC_CACHE_MAX_ENTRIES:
         _public_cache.popitem(last=False)
