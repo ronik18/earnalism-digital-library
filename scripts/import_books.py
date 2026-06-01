@@ -710,7 +710,6 @@ def looks_like_title_line(line: str) -> bool:
         line.isupper()
         or title_case_ratio(line) >= 0.75
         or title_line_ratio(line) >= 0.75
-        or line.startswith(("“", "\"", "‘", "'"))
     )
 
 
@@ -885,6 +884,19 @@ def detect_chapters(text: str, allow_title_case_headings: bool = False) -> tuple
         break
     if dropped_leading:
         warnings.append(f"Dropped {dropped_leading} leading table-of-contents/front-matter heading candidate(s).")
+
+    dropped_trailing = 0
+    if len(boundaries) > 8:
+        sequence_numbers = [heading_sequence_number(candidate["title"]) for candidate in boundaries]
+        for idx in range(1, len(sequence_numbers)):
+            previous = sequence_numbers[idx - 1]
+            current = sequence_numbers[idx]
+            if previous is not None and current == 1 and previous >= 8:
+                dropped_trailing = len(boundaries) - idx
+                boundaries = boundaries[:idx]
+                break
+    if dropped_trailing:
+        warnings.append(f"Dropped {dropped_trailing} trailing duplicate/reset chapter heading candidate(s).")
 
     preamble = "\n".join(lines[:boundaries[0]["start"]]).strip()
     if len(words(preamble)) > 20:
