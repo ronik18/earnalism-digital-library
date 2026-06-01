@@ -106,6 +106,9 @@ export default function Home() {
     } finally { setSubmitting(false); }
   };
 
+  const heroBook = featured || liveBooks[0];
+  const liveBookCount = liveBooks.length || categories.reduce((total, category) => total + (category.book_count || 0), 0);
+
   return (
     <div data-testid="home-page">
       {/* HERO */}
@@ -141,25 +144,48 @@ export default function Home() {
             style={{ background: "linear-gradient(to top, #F4EFEA 0%, rgba(244,239,234,0.60) 55%, transparent 100%)" }}
           />
         </div>
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-32 lg:pt-36 pb-44 sm:pb-48 lg:pb-52">
-          <div className="max-w-3xl">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-32 lg:pt-36 pb-56 sm:pb-48 lg:pb-52">
+          <div className="max-w-4xl">
             <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-6 sm:mb-7 flex items-center gap-3" data-testid="hero-overline">
               <span className="h-px w-8 sm:w-10 bg-[var(--brand-gold)]/70" />
-              <span className="text-[0.85rem] sm:text-[0.95rem]">Volume I &middot; The Digital Library</span>
+              <span className="text-[0.85rem] sm:text-[0.95rem]">The Earnalism Digital Library</span>
             </div>
-            <h1 className="font-serif-light text-[2.6rem] sm:text-[3.5rem] md:text-6xl lg:text-7xl leading-[1.04] text-[#FDFCF8] tracking-tight text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]" data-testid="hero-headline">
-              The Earnalism <span className="italic-accent text-[var(--brand-gold-soft)]">Digital Library.</span>
+            <h1 className="font-serif-light text-[2.6rem] sm:text-[3.5rem] md:text-6xl lg:text-7xl leading-[1.04] text-[#FDFCF8] tracking-normal text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]" data-testid="hero-headline">
+              A quieter bookstore for readers who <span className="italic-accent text-[var(--brand-gold-soft)]">linger.</span>
             </h1>
             <p className="mt-5 sm:mt-6 font-serif-display italic text-lg sm:text-2xl text-[#F4EFEA]/90 max-w-xl leading-snug drop-shadow-[0_1px_18px_rgba(0,0,0,0.5)]">
-              Buy reading time. Read beautifully. Return whenever you wish.
+              Preview every book before you pay. Read deeply when the day finally slows down.
             </p>
             <p className="mt-6 sm:mt-7 text-[0.95rem] sm:text-[1.05rem] text-[#F4EFEA]/80 max-w-md sm:max-w-lg leading-[1.75] font-light drop-shadow-[0_1px_18px_rgba(0,0,0,0.4)]">
-              A quiet digital reading room for Bengali classics, literary fiction, young readers, business, technology and AI, history, adventure, science fiction, and gothic fiction.
+              Discover thoughtful books across Bengali classics, literary fiction, business, technology, history, AI, and imagination. Earnalism keeps the shelves intentional so choosing your next read feels calm.
             </p>
-            <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
-              <Link to={featured ? `/reader/${featured.slug}` : "/library"} className="btn-primary w-full sm:w-auto" data-testid="hero-cta-read">Start Reading</Link>
-              <Link to="/library" className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-library">Explore the Library</Link>
+            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-[0.73rem] sm:text-[0.78rem] uppercase tracking-[0.16em] text-[#FDFCF8]/90 drop-shadow-[0_1px_12px_rgba(0,0,0,0.55)]" aria-label="Earnalism reading promises">
+              <span className="inline-flex items-center gap-2"><BookOpen size={14} strokeWidth={1.6} /> Preview before purchase</span>
+              <span className="inline-flex items-center gap-2"><Sparkles size={14} strokeWidth={1.6} /> Curated shelves</span>
+              <span className="inline-flex items-center gap-2"><Compass size={14} strokeWidth={1.6} /> Focused reading</span>
             </div>
+            <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
+              <Link to="/library" className="btn-primary w-full sm:w-auto" data-testid="hero-cta-read">
+                <BookOpen size={16} strokeWidth={1.7} /> Start Reading
+              </Link>
+              <Link to="/library" className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-library">
+                Explore Library <ArrowRight size={15} strokeWidth={1.7} />
+              </Link>
+            </div>
+            {heroBook && (
+              <div className="mt-8 hidden max-w-2xl border-t border-[rgba(216,185,122,0.34)] pt-5 text-[#F4EFEA]/82 sm:block" data-testid="hero-current-read">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-[0.68rem] uppercase tracking-[0.22em] text-[var(--brand-gold-soft)]">Currently on the table</p>
+                    <p className="mt-2 font-serif-display text-xl sm:text-2xl leading-tight text-[#FDFCF8]">{heroBook.title}</p>
+                    {heroBook.author && <p className="mt-1 text-sm text-[#F4EFEA]/70">{heroBook.author}</p>}
+                  </div>
+                </div>
+              </div>
+            )}
+            <p className="mt-5 hidden text-[0.72rem] uppercase tracking-[0.18em] text-[#FDFCF8]/70 drop-shadow-[0_1px_12px_rgba(0,0,0,0.5)] sm:block" data-testid="hero-library-meta">
+              {liveBookCount || "Live"} books ready to preview · {categories.length || 9} curated shelves · Bengali, business, AI, fiction
+            </p>
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0 translate-y-1/2 z-10">
@@ -222,13 +248,21 @@ export default function Home() {
               <p className="font-serif-display italic text-lg sm:text-2xl text-burgundy-soft mt-3 sm:mt-4 leading-snug">{featured.subtitle}</p>
               <div className="gold-rule-thin mt-6 mx-auto lg:mx-0" />
               <p className="text-charcoal-soft mt-6 sm:mt-7 leading-[1.85] max-w-2xl font-light text-[0.95rem] sm:text-base mx-auto lg:mx-0">{featured.description}</p>
+              <div className="mt-6 flex flex-wrap justify-center gap-4 text-[0.72rem] uppercase tracking-[0.16em] text-charcoal-soft/80 lg:justify-start">
+                <span className="inline-flex items-center gap-2"><BookOpen size={14} strokeWidth={1.6} /> Preview before purchase</span>
+                <span className="inline-flex items-center gap-2"><Sparkles size={14} strokeWidth={1.6} /> Curated selection</span>
+                <span className="inline-flex items-center gap-2"><Compass size={14} strokeWidth={1.6} /> Focused reading room</span>
+              </div>
               <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
-                <Link to={`/book/${featured.slug}`} className="btn-secondary justify-center" data-testid="featured-view">View Book</Link>
-                {featured.buy_url ? (
-                  <a href={featured.buy_url} target="_blank" rel="noreferrer" className="btn-primary justify-center" data-testid="featured-buy">Buy Now</a>
-                ) : (
-                  <Link to="/contact" className="btn-primary justify-center" data-testid="featured-request">Request Purchase Info</Link>
-                )}
+                <Link to={`/reader/${featured.slug}`} className="btn-primary justify-center" data-testid="featured-preview">
+                  <BookOpen size={16} strokeWidth={1.7} /> Read Preview
+                </Link>
+                <Link to={`/book/${featured.slug}#preview-payment`} className="btn-secondary justify-center" data-testid="featured-payment">
+                  Preview & Pay
+                </Link>
+                <Link to={`/book/${featured.slug}`} className="btn-link justify-center" data-testid="featured-view">
+                  Details <ArrowRight size={14} strokeWidth={1.7} />
+                </Link>
               </div>
             </div>
           </div>

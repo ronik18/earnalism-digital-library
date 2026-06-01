@@ -51,6 +51,7 @@ class BulkPublishingPipelineTests(unittest.TestCase):
             manifest=Path("book_import_manifest.json"),
             api_url="https://api.theearnalism.com",
             update_existing_drafts=True,
+            ignore_published_duplicates=True,
         )
 
         command = pipeline.build_import_upload_command(args, Path("out/import"))
@@ -59,6 +60,48 @@ class BulkPublishingPipelineTests(unittest.TestCase):
         self.assertIn("--api-url", command)
         self.assertIn("https://api.theearnalism.com", command)
         self.assertIn("--update-existing-drafts", command)
+        self.assertIn("--ignore-published-duplicates", command)
+
+    def test_importer_accepts_gutenberg_manifest_urls(self) -> None:
+        self.assertTrue(import_books.is_gutenberg_type("gutenberg_html"))
+        self.assertTrue(import_books.is_gutenberg_url("https://www.gutenberg.org/ebooks/84"))
+
+        candidates = import_books.source_url_candidates(
+            "[gutenberg.org](https://www.gutenberg.org/ebooks/84)",
+            "gutenberg_html",
+        )
+
+        self.assertEqual(candidates[0], "https://www.gutenberg.org/cache/epub/84/pg84.txt")
+        self.assertIn("https://www.gutenberg.org/ebooks/84", candidates)
+
+    def test_importer_combines_split_classic_chapter_titles(self) -> None:
+        source_text = """
+CHAPTER I
+Down the Rabbit-Hole
+
+Alice was beginning to get very tired of sitting by her sister on the bank.
+
+CHAPTER III
+A Caucus-Race and a Long Tale
+
+They were indeed a queer-looking party that assembled on the bank.
+
+CHAPTER XI
+Who Stole the Tarts?
+
+The King and Queen of Hearts were seated on their throne when they arrived.
+"""
+
+        chapters, _warnings = import_books.detect_chapters(source_text)
+
+        self.assertEqual(
+            [chapter["title"] for chapter in chapters],
+            [
+                "CHAPTER I. Down the Rabbit-Hole",
+                "CHAPTER III. A Caucus-Race and a Long Tale",
+                "CHAPTER XI. Who Stole the Tarts?",
+            ],
+        )
 
     def test_importer_maps_legacy_book_categories_to_current_shelves(self) -> None:
         warnings: list[str] = []
@@ -70,6 +113,16 @@ class BulkPublishingPipelineTests(unittest.TestCase):
 
         self.assertEqual(meta["category_slug"], "young-readers")
         self.assertTrue(any("migrated to 'young-readers'" in warning for warning in warnings))
+
+    def test_importer_maps_manifest_children_category_to_young_readers(self) -> None:
+        warnings: list[str] = []
+        meta = import_books.metadata_defaults(
+            {"title": "A Story", "author": "A Writer", "category_slug": "childrens-literature"},
+            word_count=1200,
+            warnings=warnings,
+        )
+
+        self.assertEqual(meta["category_slug"], "young-readers")
 
     def test_importer_defaults_unknown_book_categories_to_literary_fiction(self) -> None:
         warnings: list[str] = []
@@ -193,6 +246,47 @@ class BulkPublishingPipelineTests(unittest.TestCase):
             self.assertEqual(enriched.status, "passed")
             self.assertEqual(enriched.data["uploaded_books"][0]["slug"], "ready-book")
             self.assertIn("import_upload_report", enriched.artifacts)
+
+    def test_latency_risk_holdbacks_do_not_fail_safe_publish_batch(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            report_dir = base / "production" / "20260524T000000Z"
+            report_dir.mkdir(parents=True)
+            pipeline.write_json(
+                report_dir / "book_production_report.json",
+                {
+                    "publish_approved": True,
+                    "published": ["safe-book"],
+                    "results": [
+                        {"slug": "safe-book", "title": "Safe", "verdict": "GO", "gates": []},
+                        {
+                            "slug": "large-book",
+                            "title": "Large",
+                            "verdict": "NO-GO",
+                            "gates": [
+                                {
+                                    "name": "latency_risk",
+                                    "ok": False,
+                                    "detail": "held as draft for latency/timeout risk",
+                                }
+                            ],
+                        },
+                    ],
+                },
+            )
+
+            phase = pipeline.PhaseResult(name="production_gates", status="failed", returncode=2)
+            enriched = pipeline.enrich_production_phase(
+                phase,
+                base,
+                allow_skipped_imports=False,
+                allow_latency_holdbacks=True,
+            )
+
+            self.assertEqual(enriched.status, "passed")
+            self.assertEqual(enriched.data["published"], ["safe-book"])
+            self.assertEqual(enriched.data["latency_holdbacks"][0]["slug"], "large-book")
+            self.assertEqual(enriched.data["no_go_books"], [])
 
 
 if __name__ == "__main__":

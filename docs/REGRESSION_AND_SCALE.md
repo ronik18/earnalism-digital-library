@@ -62,6 +62,59 @@ Install k6 once on macOS:
 brew install k6
 ```
 
+## 10X Burst Readiness Gate
+
+Use this before high-traffic launches to simulate a sudden 10X jump from the
+100-user gate to 1,000 simultaneous virtual readers:
+
+```bash
+FRONTEND_URL=https://theearnalism.com \
+API_URL=https://api.theearnalism.com \
+npm run load:10x
+```
+
+Override the size or duration when needed:
+
+```bash
+K6_LOAD_VUS=1500 K6_LOAD_DURATION=5m npm run load:10x
+```
+
+The backend Railway start command now honors `WEB_CONCURRENCY` so every replica
+can run multiple Uvicorn workers instead of one process. Suggested production
+burst settings:
+
+```bash
+WEB_CONCURRENCY=4
+UVICORN_KEEP_ALIVE=15
+MONGODB_MAX_POOL_SIZE=100
+MONGODB_MIN_POOL_SIZE=2
+PUBLIC_CACHE_TTL_SECONDS=300
+PUBLIC_CACHE_MAX_ENTRIES=512
+RATE_LIMIT_PUBLIC_PER_MINUTE=300000
+RATE_LIMIT_READER_PER_MINUTE=150000
+```
+
+For a true sudden 10X event, keep at least three Railway replicas warm before
+the launch window and scale higher if the 10X k6 gate shows p95 pressure. On
+plans and regions that allow replica scaling, the CLI command is:
+
+```bash
+railway scale --service earnalism us-west=3
+```
+
+If Railway rejects the redeploy with a single-region or plan limitation, upgrade
+the Railway plan or migrate the service into a scalable region first. Until that
+is done, `WEB_CONCURRENCY` increases per-replica process capacity but it is not
+a full substitute for warm horizontal replicas.
+
+Do not raise auth, payment, webhook, or upload mutation limits without a
+separate fraud and abuse review. If the backend runs more than one replica for
+long periods, move rate-limit counters and public cache entries to Redis or an
+edge/WAF layer so throttling and cache warmth are shared across replicas.
+MongoDB pool settings are per worker process, so `WEB_CONCURRENCY=4` and
+`MONGODB_MAX_POOL_SIZE=100` means up to 400 MongoDB connections per Railway
+replica.
+
 ## CI Enforcement
 
 `.github/workflows/regression-suite.yml` runs the regression suite on pull requests and pushes to `main` and `production-deploy`.
@@ -74,9 +127,11 @@ brew install k6
 - Public cache includes `/api/home`, catalog endpoints, free reader previews, payment pack metadata, and settings.
 - Server-side public cache TTL defaults to `PUBLIC_CACHE_TTL_SECONDS=300` so normal reading bursts do not rebuild catalog payloads mid-session; admin writes still clear the cache immediately.
 - MongoDB connection pooling defaults are raised and configurable:
-  - `MONGODB_MAX_POOL_SIZE=200`
-  - `MONGODB_MIN_POOL_SIZE=5`
+  - `MONGODB_MAX_POOL_SIZE=100`
+  - `MONGODB_MIN_POOL_SIZE=2`
   - `MONGODB_SERVER_SELECTION_TIMEOUT_MS=5000`
+- Public reader chapter-list and session endpoints avoid shipping full chapter
+  bodies, reducing MongoDB payload size during sudden reader bursts.
 - API rate-limit defaults are raised for 100-user bursts while remaining configurable by environment:
   - `RATE_LIMIT_PUBLIC_PER_MINUTE=30000` for cached catalog, home, public settings, and pack metadata.
   - `RATE_LIMIT_READER_PER_MINUTE=15000` for reader chapter checks and preview access.

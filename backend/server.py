@@ -18,7 +18,6 @@ import time
 import bcrypt
 import jwt
 import unicodedata
-import copy
 from collections import OrderedDict, defaultdict, deque
 from datetime import datetime, timezone, timedelta
 from typing import Any, Deque, Dict, List, Optional, Tuple
@@ -78,8 +77,8 @@ def _database_name_from_mongo_url(url: str) -> str:
     db_name = parsed.path.lstrip("/").split("/", 1)[0]
     return db_name or "earnalism"
 
-MONGODB_MAX_POOL_SIZE = _env_int("MONGODB_MAX_POOL_SIZE", 200)
-MONGODB_MIN_POOL_SIZE = _env_int("MONGODB_MIN_POOL_SIZE", 5, minimum=0)
+MONGODB_MAX_POOL_SIZE = _env_int("MONGODB_MAX_POOL_SIZE", 100)
+MONGODB_MIN_POOL_SIZE = _env_int("MONGODB_MIN_POOL_SIZE", 2, minimum=0)
 MONGODB_SERVER_SELECTION_TIMEOUT_MS = _env_int("MONGODB_SERVER_SELECTION_TIMEOUT_MS", 5000)
 client = AsyncIOMotorClient(
     mongo_url,
@@ -99,7 +98,8 @@ USER_ACCESS_TOKEN_EXPIRE_MINUTES = _env_int("USER_ACCESS_TOKEN_EXPIRE_MINUTES", 
 USER_REFRESH_IDLE_MINUTES = _env_int("USER_REFRESH_IDLE_MINUTES", 30)
 USER_REFRESH_TOTAL_HOURS = _env_int("USER_REFRESH_TOTAL_HOURS", 12)
 TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS = _env_int("TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS", 1)
-MAX_READING_DEBIT_CATCHUP_SECONDS = _env_int("MAX_READING_DEBIT_CATCHUP_SECONDS", 1800)
+READING_HEARTBEAT_EARLY_GRACE_SECONDS = _env_int("READING_HEARTBEAT_EARLY_GRACE_SECONDS", 5)
+READING_SESSION_IDLE_GRACE_SECONDS = _env_int("READING_SESSION_IDLE_GRACE_SECONDS", 120)
 SESSION_TOUCH_INTERVAL_SECONDS = _env_int("SESSION_TOUCH_INTERVAL_SECONDS", 60)
 if SESSION_TOUCH_INTERVAL_SECONDS > 0:
     SESSION_TOUCH_INTERVAL_SECONDS = min(
@@ -552,10 +552,41 @@ BOOK_METADATA_PROJECTION = {
     "chapters.content": 0,
     "rights_metadata": 0,
 }
+READER_ACCESS_PROJECTION = {
+    "_id": 0,
+    "title": 1,
+    "chapters.id": 1,
+    "chapters.title": 1,
+    "chapters.order": 1,
+    "chapters.is_preview": 1,
+}
+CHAPTER_CONTENT_PROJECTION = {
+    "_id": 0,
+    "chapters.$": 1,
+}
 BOOK_LIST_PROJECTION = {
     "_id": 0,
     "rights_metadata": 0,
     "chapters": 0,
+}
+BOOK_SUMMARY_PROJECTION = {
+    "_id": 0,
+    "id": 1,
+    "slug": 1,
+    "title": 1,
+    "subtitle": 1,
+    "author": 1,
+    "category_slug": 1,
+    "short_description": 1,
+    "cover_url": 1,
+    "cover_image_url": 1,
+    "thumbnail_url": 1,
+    "blur_placeholder": 1,
+    "dominant_color": 1,
+    "estimated_reading_time": 1,
+    "audiobook_enabled": 1,
+    "is_published": 1,
+    "created_at": 1,
 }
 PUBLIC_CACHE_PATHS = {
     "/api/home",
@@ -591,13 +622,13 @@ def _public_cache_get(key: str):
         _public_cache.pop(key, None)
         return None
     _public_cache.move_to_end(key)
-    return copy.deepcopy(value)
+    return value
 
 
 def _public_cache_set(key: str, value) -> None:
     if not PUBLIC_CACHE_ENABLED:
         return
-    _public_cache[key] = (time.monotonic() + PUBLIC_CACHE_TTL_SECONDS, copy.deepcopy(value))
+    _public_cache[key] = (time.monotonic() + PUBLIC_CACHE_TTL_SECONDS, value)
     _public_cache.move_to_end(key)
     while len(_public_cache) > PUBLIC_CACHE_MAX_ENTRIES:
         _public_cache.popitem(last=False)
@@ -1395,6 +1426,10 @@ class WalletAdjustIn(BaseModel):
     minutes: int  # may be negative; converted to seconds server-side
     reason: str = ""
 
+class WalletRefundApproveIn(BaseModel):
+    candidate_ids: List[str] = Field(default_factory=list)
+    note: str = ""
+
 class WalletTransactionOut(BaseModel):
     id: str
     user_id: str
@@ -1403,6 +1438,7 @@ class WalletTransactionOut(BaseModel):
     reason: str
     created_at: str
     actor: str = "system"  # "admin" | "system" | "user"
+    session_id: str = ""
 
 class ReaderSessionStartIn(BaseModel):
     session_id: Optional[str] = None
@@ -1418,6 +1454,11 @@ class ReaderHeartbeatIn(BaseModel):
 
 class ReaderSessionEndIn(BaseModel):
     session_id: str
+
+class ReadingPulseIn(BaseModel):
+    session_id: str
+    visible: bool = True
+    idle: bool = False
 
 class ReaderCompletionIn(BaseModel):
     book_slug: str
@@ -1607,6 +1648,87 @@ async def _migrate_wallet_transactions_to_ledger() -> None:
         )
 
 
+REFUND_DUPLICATE_PULSE_SECONDS = 10
+
+
+def _wallet_refund_candidate_id(user_id: str, tx_id: str, issue: str, refundable_seconds: int) -> str:
+    raw = f"{user_id}:{tx_id}:{issue}:{int(refundable_seconds)}"
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
+
+
+def _wallet_refund_candidates(transactions: List[dict], refunded_candidate_ids: Optional[set[str]] = None) -> List[dict]:
+    """Find high-confidence reader billing candidates that are safe to refund.
+
+    The rules intentionally stay conservative: a single reader pulse should
+    never consume more than HEARTBEAT_TICK_SECONDS, and duplicate pulses from
+    the same session within a few seconds are treated as retry/concurrency
+    artifacts. Ambiguous activity is left out for manual admin adjustment.
+    """
+    refunded = refunded_candidate_ids or set()
+    rows = sorted(
+        (tx for tx in transactions if tx.get("type") == "consume" and int(tx.get("seconds", 0) or 0) < 0),
+        key=lambda tx: _as_utc_dt(tx.get("created_at")) or datetime.min.replace(tzinfo=timezone.utc),
+    )
+    candidates: List[dict] = []
+    previous_by_session: Dict[str, dict] = {}
+    for tx in rows:
+        tx_id = tx.get("id") or ""
+        user_id = tx.get("user_id") or ""
+        session_id = tx.get("session_id") or ""
+        charged = abs(int(tx.get("seconds", 0) or 0))
+        if not tx_id or not user_id or charged <= 0:
+            continue
+
+        issue = ""
+        refundable = 0
+        evidence = ""
+        confidence = "high"
+
+        if charged > HEARTBEAT_TICK_SECONDS:
+            issue = "stale_gap_overcharge"
+            refundable = charged - HEARTBEAT_TICK_SECONDS
+            evidence = (
+                f"Single debit consumed {charged}s. The protected reader policy caps a visible, active pulse "
+                f"at {HEARTBEAT_TICK_SECONDS}s, so only one pulse is retained."
+            )
+        elif session_id:
+            current_at = _as_utc_dt(tx.get("created_at"))
+            previous = previous_by_session.get(session_id)
+            previous_at = _as_utc_dt((previous or {}).get("created_at"))
+            if current_at and previous_at:
+                gap = max(0, int((current_at - previous_at).total_seconds()))
+                if gap <= REFUND_DUPLICATE_PULSE_SECONDS:
+                    issue = "duplicate_pulse"
+                    refundable = min(charged, HEARTBEAT_TICK_SECONDS)
+                    evidence = (
+                        f"Two debits in the same reading session landed {gap}s apart. Reader pulses should "
+                        f"not settle that close together."
+                    )
+
+        if session_id:
+            previous_by_session[session_id] = tx
+
+        if refundable <= 0 or not issue:
+            continue
+
+        candidate_id = _wallet_refund_candidate_id(user_id, tx_id, issue, refundable)
+        if candidate_id in refunded:
+            continue
+        candidates.append({
+            "candidate_id": candidate_id,
+            "source_transaction_id": tx_id,
+            "session_id": session_id,
+            "created_at": tx.get("created_at", ""),
+            "charged_seconds": charged,
+            "refundable_seconds": refundable,
+            "issue": issue,
+            "reason": tx.get("reason", ""),
+            "evidence": evidence,
+            "confidence": confidence,
+        })
+    return candidates
+
+
 def _free_preview_chapter_ids(book: dict) -> set[str]:
     """Return chapter ids that should be free previews.
 
@@ -1705,6 +1827,9 @@ async def initialize_database_indexes() -> None:
         partialFilterExpression={"source_transaction_id": {"$type": "string"}},
     )
     await db.wallet_integrity_alerts.create_index([("user_id", 1), ("created_at", -1)])
+    await db.wallet_refunds.create_index("candidate_id", unique=True)
+    await db.wallet_refunds.create_index([("user_id", 1), ("created_at", -1)])
+    await db.wallet_refunds.create_index([("status", 1), ("created_at", -1)])
 
     await db.credit_log.create_index([("user_id", 1), ("timestamp", -1)])
     await db.credit_log.create_index([("upload_id", 1), ("timestamp", -1)])
@@ -1832,22 +1957,20 @@ async def lifespan(_app: FastAPI):
             upsert=True,
         )
 
-    # featured book
-    if not await db.books.find_one({"slug": SEED_BOOK["slug"]}):
-        b = Book(**SEED_BOOK)
-        await db.books.insert_one(b.model_dump())
-        logger.info("Seeded featured book")
-
-    # technology sample book (idempotent — only inserted if missing)
-    if not await db.books.find_one({"slug": SEED_TECH_BOOK["slug"]}):
-        tb = Book(**SEED_TECH_BOOK)
-        await db.books.insert_one(tb.model_dump())
-        logger.info("Seeded technology sample book")
+    # Retired sample books used to be seeded on startup, which made them
+    # reappear after admins deleted them. Keep them removed permanently.
+    retired_result = await db.books.delete_many({"slug": {"$in": list(RETIRED_SEED_BOOK_SLUGS)}})
+    if retired_result.deleted_count:
+        logger.info("Removed %s retired seed book(s)", retired_result.deleted_count)
+    await db.settings.update_one(
+        {"key": "featured_book", "book_slug": {"$in": list(RETIRED_SEED_BOOK_SLUGS)}},
+        {"$unset": {"book_slug": ""}},
+    )
 
     # featured setting
     await db.settings.update_one(
         {"key": "featured_book"},
-        {"$setOnInsert": {"key": "featured_book", "book_slug": SEED_BOOK["slug"]}},
+        {"$setOnInsert": {"key": "featured_book"}},
         upsert=True,
     )
 
@@ -1892,11 +2015,6 @@ async def lifespan(_app: FastAPI):
         {"$set": {"is_published": True}},
     )
 
-    # one-time migration: replace old "publishing brand" wording in the seeded book's about_author
-    await db.books.update_one(
-        {"slug": SEED_BOOK["slug"], "about_author": re.compile("publishing brand", re.IGNORECASE)},
-        {"$set": {"about_author": SEED_BOOK["about_author"]}},
-    )
     logger.info("Startup seeding complete")
 
     yield
@@ -2294,7 +2412,7 @@ async def get_home_payload():
     categories = await db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200)
     books_docs = await db.books.find(
         {"is_published": True},
-        BOOK_LIST_PROJECTION,
+        BOOK_SUMMARY_PROJECTION,
     ).sort("created_at", -1).to_list(HOME_BOOK_LIMIT)
     books = [_strip_all_chapter_content(doc) for doc in books_docs]
 
@@ -2302,13 +2420,11 @@ async def get_home_payload():
     setting = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
     featured_slug = (setting or {}).get("book_slug")
     if featured_slug:
-        featured_book = next((book for book in books if book.get("slug") == featured_slug), None)
-        if featured_book is None:
-            doc = await db.books.find_one(
-                {"slug": featured_slug, "is_published": True},
-                BOOK_LIST_PROJECTION,
-            )
-            featured_book = _strip_all_chapter_content(doc) if doc else None
+        doc = await db.books.find_one(
+            {"slug": featured_slug, "is_published": True},
+            BOOK_METADATA_PROJECTION,
+        )
+        featured_book = _strip_all_chapter_content(doc) if doc else None
 
     result = {
         "categories": categories,
@@ -2373,7 +2489,7 @@ async def record_secure_reader_event(
     return {"ok": True, "stored": True}
 
 
-@api.get("/categories", response_model=List[Category])
+@api.get("/categories")
 async def list_categories():
     cache_key = _public_cache_key("categories")
     cached = _public_cache_get(cache_key)
@@ -2385,7 +2501,7 @@ async def list_categories():
 
 
 # ---------- Public: Books ----------
-@api.get("/books", response_model=List[Book])
+@api.get("/books")
 async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     category_filter = None
     if category and category != "all":
@@ -2409,7 +2525,7 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
             {"category_slug": {"$regex": pattern, "$options": "i"}},
             {"chapters.title": {"$regex": pattern, "$options": "i"}},
         ]
-    docs = await db.books.find(query, BOOK_LIST_PROJECTION).sort("created_at", -1).to_list(500)
+    docs = await db.books.find(query, BOOK_SUMMARY_PROJECTION).sort("created_at", -1).to_list(500)
     # Public list is shelf metadata-only so library browsing never ships chapter bodies.
     result = [_strip_all_chapter_content(d) for d in docs]
     _public_cache_set(cache_key, result)
@@ -2421,7 +2537,7 @@ async def get_book(slug: str):
     cached = _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    doc = await db.books.find_one({"slug": slug, "is_published": True}, {"_id": 0})
+    doc = await db.books.find_one({"slug": slug, "is_published": True}, BOOK_METADATA_PROJECTION)
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
     # Public detail returns metadata + ToC only. Reader content is fetched through
@@ -2437,10 +2553,10 @@ async def get_book_chapters(slug: str):
     cached = _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    doc = await db.books.find_one({"slug": slug, "is_published": True})
+    doc = await db.books.find_one({"slug": slug, "is_published": True}, BOOK_METADATA_PROJECTION)
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
-    chapters = _strip_paid_chapter_content(doc).get("chapters") or []
+    chapters = _strip_all_chapter_content(doc).get("chapters") or []
     if not chapters:
         return []
     result = sorted(chapters, key=lambda c: c.get("order", 0))
@@ -2454,11 +2570,23 @@ async def get_book_chapter(slug: str, chapter_id: str):
     cached = _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    doc = await db.books.find_one({"slug": slug, "is_published": True})
-    if not doc:
+    book_meta = await db.books.find_one({"slug": slug, "is_published": True}, READER_ACCESS_PROJECTION)
+    if not book_meta:
         raise HTTPException(status_code=404, detail="Book not found")
-    chapters = _strip_paid_chapter_content(doc).get("chapters") or []
-    chapter = next((c for c in chapters if c.get("id") == chapter_id), None)
+    chapters = sorted((book_meta.get("chapters") or []), key=lambda c: c.get("order", 0))
+    target_meta = next((c for c in chapters if c.get("id") == chapter_id), None)
+    if not target_meta:
+        raise HTTPException(status_code=404, detail="Chapter not found")
+
+    chapter = dict(target_meta)
+    chapter["content"] = ""
+    if _is_free_preview_chapter(book_meta, chapter_id):
+        content_doc = await db.books.find_one(
+            {"slug": slug, "is_published": True, "chapters.id": chapter_id},
+            CHAPTER_CONTENT_PROJECTION,
+        )
+        target = ((content_doc or {}).get("chapters") or [{}])[0]
+        chapter["content"] = target.get("content", "")
     if not chapter:
         raise HTTPException(status_code=404, detail="Chapter not found")
     _public_cache_set(cache_key, chapter)
@@ -3459,11 +3587,36 @@ HEARTBEAT_TICK_SECONDS = 30
 LOW_BALANCE_THRESHOLD = 300
 
 
-def _billable_reading_seconds(last_debit_at, now: datetime) -> int:
+def _billable_reading_seconds(
+    last_debit_at,
+    now: datetime,
+    *,
+    visible: bool = True,
+    idle: bool = False,
+) -> int:
+    """Return seconds to bill for this heartbeat.
+
+    Billing is pulse-based, not catch-up based. A single heartbeat can never
+    debit more than one 30-second pulse; long gaps usually mean the tab slept,
+    the screen was hidden, or the user was away.
+    """
+    if not visible or idle:
+        return 0
     last = _as_utc_dt(last_debit_at) or now
     elapsed = max(0, int((now - last).total_seconds()))
-    capped = min(elapsed, MAX_READING_DEBIT_CATCHUP_SECONDS)
-    return (capped // HEARTBEAT_TICK_SECONDS) * HEARTBEAT_TICK_SECONDS
+    if elapsed > READING_SESSION_IDLE_GRACE_SECONDS:
+        return 0
+    if elapsed + READING_HEARTBEAT_EARLY_GRACE_SECONDS < HEARTBEAT_TICK_SECONDS:
+        return 0
+    return HEARTBEAT_TICK_SECONDS
+
+
+def _should_reset_reading_clock(last_debit_at, now: datetime, *, visible: bool = True, idle: bool = False) -> bool:
+    if not visible or idle:
+        return True
+    last = _as_utc_dt(last_debit_at) or now
+    elapsed = max(0, int((now - last).total_seconds()))
+    return elapsed > READING_SESSION_IDLE_GRACE_SECONDS
 
 
 async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, seconds: int) -> Tuple[int, int]:
@@ -3478,10 +3631,13 @@ async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, s
     if debit <= 0:
         return 0, remaining
 
-    await db.users.update_one(
-        {"id": user_id},
+    res = await db.users.update_one(
+        {"id": user_id, "reading_seconds_balance": wallet},
         {"$set": {"reading_seconds_balance": remaining, "wallet_seconds": remaining}},
     )
+    if res.modified_count != 1:
+        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
     await _record_wallet_ledger(
         user_id=user_id,
         session_id=session_id,
@@ -3494,28 +3650,51 @@ async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, s
     return debit, remaining
 
 
-async def _settle_active_reading_session(user_id: str, session_id: str, book_title: str = "") -> Tuple[int, int]:
+async def _settle_active_reading_session(
+    user_id: str,
+    session_id: str,
+    book_title: str = "",
+    *,
+    visible: bool = True,
+    idle: bool = False,
+) -> Tuple[int, int, str]:
     now = datetime.now(timezone.utc)
     active = await db.users.find_one({"id": user_id}, {"_id": 0, "active_reading_session": 1})
     session = (active or {}).get("active_reading_session") or {}
     if session.get("session_id") != session_id:
         fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
-        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0), "session_invalid"
 
     last_debit_at = session.get("last_debit_at") or session.get("last_pulse_at") or session.get("started_at")
-    billable = _billable_reading_seconds(last_debit_at, now)
+    billable = _billable_reading_seconds(last_debit_at, now, visible=visible, idle=idle)
+    reset_clock = _should_reset_reading_clock(last_debit_at, now, visible=visible, idle=idle)
     if billable <= 0:
+        if reset_clock:
+            await db.users.update_one(
+                {"id": user_id, "active_reading_session.session_id": session_id},
+                {"$set": {"active_reading_session.last_debit_at": now, "active_reading_session.last_pulse_at": now}},
+            )
+        else:
+            await db.users.update_one(
+                {"id": user_id, "active_reading_session.session_id": session_id},
+                {"$set": {"active_reading_session.last_pulse_at": now}},
+            )
         fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
-        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+        status = "paused" if reset_clock else "active"
+        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0), status
 
+    debit_filter = {"id": user_id, "active_reading_session.session_id": session_id}
+    if session.get("last_debit_at") is not None:
+        debit_filter["active_reading_session.last_debit_at"] = session.get("last_debit_at")
     res = await db.users.update_one(
-        {"id": user_id, "active_reading_session.session_id": session_id},
+        debit_filter,
         {"$set": {"active_reading_session.last_debit_at": now, "active_reading_session.last_pulse_at": now}},
     )
     if res.modified_count != 1:
         fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
-        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
-    return await _apply_reading_debit(user_id, session_id, book_title or "Earnalism", billable)
+        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0), "session_invalid"
+    deducted, remaining = await _apply_reading_debit(user_id, session_id, book_title or "Earnalism", billable)
+    return deducted, remaining, "active"
 
 
 @api.post("/reader/session/start")
@@ -3523,7 +3702,7 @@ async def reader_session_start(payload: ReaderSessionStartIn, user=Depends(requi
     book_slug = payload.book_slug or payload.book_id
     if not book_slug:
         raise HTTPException(status_code=400, detail="Book id is required")
-    book = await db.books.find_one({"slug": book_slug, "is_published": True}, {"_id": 0})
+    book = await db.books.find_one({"slug": book_slug, "is_published": True}, READER_ACCESS_PROJECTION)
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
     fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0})
@@ -3564,8 +3743,14 @@ async def reader_heartbeat(payload: ReaderHeartbeatIn, user=Depends(require_user
         raise HTTPException(status_code=404, detail="Session not found")
     if session.get("status") != "active":
         return {"deducted_seconds": 0, "remaining_seconds": 0, "status": session.get("status", "ended"), "is_preview": False}
+    if session.get("auth_session_id") and session.get("auth_session_id") != user.get("session_id"):
+        await db.reading_sessions.update_one(
+            {"id": payload.session_id},
+            {"$set": {"status": "replaced", "ended_at": now_iso(), "ended_reason": "auth_session_mismatch"}},
+        )
+        return {"deducted_seconds": 0, "remaining_seconds": 0, "status": "session_invalid", "is_preview": False}
 
-    book = await db.books.find_one({"slug": session["book_slug"]}, {"_id": 0})
+    book = await db.books.find_one({"slug": session["book_slug"]}, READER_ACCESS_PROJECTION)
     if not book:
         await db.reading_sessions.update_one({"id": payload.session_id}, {"$set": {"status": "ended"}})
         raise HTTPException(status_code=404, detail="Book not found")
@@ -3585,13 +3770,36 @@ async def reader_heartbeat(payload: ReaderHeartbeatIn, user=Depends(require_user
         status = "depleted"
     else:
         now = datetime.now(timezone.utc)
-        billable = _billable_reading_seconds(session.get("last_debit_at") or session.get("last_heartbeat_at"), now)
-        await db.reading_sessions.update_one(
-            {"id": payload.session_id},
-            {"$set": {"last_debit_at": now}},
+        last_debit_at = session.get("last_debit_at") or session.get("last_heartbeat_at")
+        billable = _billable_reading_seconds(
+            last_debit_at,
+            now,
+            visible=payload.visible,
+            idle=payload.idle,
         )
-        deducted, balance = await _apply_reading_debit(user["id"], payload.session_id, book.get("title", "Earnalism"), billable)
-        status = "depleted" if balance <= 0 else "active"
+        reset_clock = _should_reset_reading_clock(
+            last_debit_at,
+            now,
+            visible=payload.visible,
+            idle=payload.idle,
+        )
+        if billable > 0:
+            heartbeat_filter = {"id": payload.session_id}
+            if session.get("last_debit_at") is not None:
+                heartbeat_filter["last_debit_at"] = session.get("last_debit_at")
+            res = await db.reading_sessions.update_one(
+                heartbeat_filter,
+                {"$set": {"last_debit_at": now}},
+            )
+            if res.modified_count == 1:
+                deducted, balance = await _apply_reading_debit(user["id"], payload.session_id, book.get("title", "Earnalism"), billable)
+                status = "depleted" if balance <= 0 else "active"
+        elif reset_clock:
+            await db.reading_sessions.update_one(
+                {"id": payload.session_id},
+                {"$set": {"last_debit_at": now}},
+            )
+            status = "paused"
 
     await db.reading_sessions.update_one(
         {"id": payload.session_id},
@@ -3658,15 +3866,18 @@ async def reading_session_end_v2(payload: ReaderSessionEndIn, principal: Optiona
     user = principal
     fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
     active = fresh.get("active_reading_session") or {}
+    if active.get("session_id") != payload.session_id:
+        return {"success": False, "status": "session_invalid"}
+    if active.get("auth_session_id") and active.get("auth_session_id") != user.get("session_id"):
+        return {"success": False, "status": "session_invalid"}
     book = await db.books.find_one({"slug": active.get("book_id")}, {"_id": 0, "title": 1}) or {}
-    if active.get("session_id") == payload.session_id:
-        await _settle_active_reading_session(user["id"], payload.session_id, book.get("title", "Earnalism"))
+    await _settle_active_reading_session(user["id"], payload.session_id, book.get("title", "Earnalism"))
     await db.users.update_one({"id": user["id"]}, {"$unset": {"active_reading_session": ""}})
     return {"success": True}
 
 
 @api.post("/reading/pulse")
-async def reading_pulse(payload: ReaderSessionEndIn, principal: Optional[dict] = Depends(optional_principal)):
+async def reading_pulse(payload: ReadingPulseIn, principal: Optional[dict] = Depends(optional_principal)):
     if not principal or principal.get("role") != "user" or principal.get("status") == "blocked":
         return {"success": False, "status": "session_invalid"}
     user = principal
@@ -3674,14 +3885,25 @@ async def reading_pulse(payload: ReaderSessionEndIn, principal: Optional[dict] =
     active = fresh.get("active_reading_session") or {}
     if active.get("session_id") != payload.session_id:
         return {"success": False, "status": "session_invalid"}
+    if active.get("auth_session_id") and active.get("auth_session_id") != user.get("session_id"):
+        return {"success": False, "status": "session_invalid"}
 
     wallet = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
     if wallet <= 0:
         return {"success": False, "status": "wallet_empty", "wallet_seconds": 0}
 
     book = await db.books.find_one({"slug": active.get("book_id")}, {"_id": 0, "title": 1}) or {}
-    deducted, remaining = await _settle_active_reading_session(user["id"], payload.session_id, book.get("title", "Earnalism"))
-    status = "wallet_empty" if remaining <= 0 else ("low_balance" if remaining <= LOW_BALANCE_THRESHOLD else "ok")
+    deducted, remaining, settle_status = await _settle_active_reading_session(
+        user["id"],
+        payload.session_id,
+        book.get("title", "Earnalism"),
+        visible=payload.visible,
+        idle=payload.idle,
+    )
+    if settle_status in {"paused", "session_invalid"}:
+        status = settle_status
+    else:
+        status = "wallet_empty" if remaining <= 0 else ("low_balance" if remaining <= LOW_BALANCE_THRESHOLD else "ok")
     if deducted <= 0:
         await db.users.update_one(
             {"id": user["id"]},
@@ -3809,7 +4031,7 @@ async def admin_wallet_adjust(uid: str, payload: WalletAdjustIn, admin=Depends(r
     actual_delta = new_balance - current
     await db.users.update_one(
         {"id": uid},
-        {"$set": {"reading_seconds_balance": new_balance}},
+        {"$set": {"reading_seconds_balance": new_balance, "wallet_seconds": new_balance}},
     )
     await _record_wallet_ledger(
         user_id=uid,
@@ -3833,6 +4055,132 @@ async def admin_user_transactions(uid: str, _=Depends(require_admin)):
         {"user_id": uid}, {"_id": 0}
     ).sort("created_at", -1).to_list(500)
     return rows
+
+
+@api.get("/admin/users/{uid}/wallet/refund-review")
+async def admin_wallet_refund_review(uid: str, lookback_days: int = 30, _=Depends(require_admin)):
+    user = await db.users.find_one({"id": uid, "role": "user"}, {"_id": 0, "password_hash": 0})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    days = max(1, min(365, int(lookback_days or 30)))
+    cutoff = datetime.now(timezone.utc) - timedelta(days=days)
+    txs = await db.wallet_transactions.find({"user_id": uid}, {"_id": 0}).sort("created_at", -1).to_list(2000)
+    txs = [
+        tx for tx in txs
+        if (_as_utc_dt(tx.get("created_at")) or datetime.max.replace(tzinfo=timezone.utc)) >= cutoff
+    ]
+    refund_rows = await db.wallet_refunds.find({"user_id": uid}, {"_id": 0}).sort("created_at", -1).to_list(500)
+    refunded_ids = {row.get("candidate_id") for row in refund_rows if row.get("candidate_id")}
+    candidates = _wallet_refund_candidates(txs, refunded_ids)
+    stored_balance = int(user.get("reading_seconds_balance", user.get("wallet_seconds", 0)) or 0)
+    ledger_balance = await _ledger_balance(uid)
+    return {
+        "user": _user_public(user),
+        "lookback_days": days,
+        "stored_balance_seconds": stored_balance,
+        "ledger_balance_seconds": ledger_balance,
+        "wallet_divergence_seconds": stored_balance - ledger_balance,
+        "candidate_count": len(candidates),
+        "refundable_seconds": sum(int(c.get("refundable_seconds", 0) or 0) for c in candidates),
+        "candidates": candidates,
+        "previous_refunds": refund_rows[:25],
+    }
+
+
+@api.post("/admin/users/{uid}/wallet/refund-approve")
+async def admin_wallet_refund_approve(uid: str, payload: WalletRefundApproveIn, admin=Depends(require_admin)):
+    user = await db.users.find_one({"id": uid, "role": "user"}, {"_id": 0, "password_hash": 0})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    requested = {candidate_id.strip() for candidate_id in payload.candidate_ids if candidate_id.strip()}
+    if not requested:
+        raise HTTPException(status_code=400, detail="Select at least one refund candidate before approval")
+
+    txs = await db.wallet_transactions.find({"user_id": uid}, {"_id": 0}).sort("created_at", -1).to_list(2000)
+    refunded_rows = await db.wallet_refunds.find({"user_id": uid}, {"_id": 0, "candidate_id": 1}).to_list(1000)
+    refunded_ids = {row.get("candidate_id") for row in refunded_rows if row.get("candidate_id")}
+    open_candidates = _wallet_refund_candidates(txs, refunded_ids)
+    candidates_by_id = {c["candidate_id"]: c for c in open_candidates}
+    missing = sorted(requested - set(candidates_by_id))
+    if missing:
+        raise HTTPException(status_code=409, detail={
+            "message": "Some selected candidates were already refunded or are no longer eligible.",
+            "candidate_ids": missing,
+        })
+
+    batch_id = str(uuid.uuid4())
+    now = now_iso()
+    approved: List[dict] = []
+    for candidate_id in sorted(requested):
+        candidate = candidates_by_id[candidate_id]
+        refund_doc = {
+            "id": str(uuid.uuid4()),
+            "batch_id": batch_id,
+            "candidate_id": candidate_id,
+            "user_id": uid,
+            "status": "approved",
+            "source_transaction_id": candidate.get("source_transaction_id", ""),
+            "session_id": candidate.get("session_id", ""),
+            "issue": candidate.get("issue", ""),
+            "charged_seconds": int(candidate.get("charged_seconds", 0) or 0),
+            "refunded_seconds": int(candidate.get("refundable_seconds", 0) or 0),
+            "evidence": candidate.get("evidence", ""),
+            "admin_note": payload.note.strip()[:500],
+            "approved_by": f"admin:{admin.get('email','')}",
+            "created_at": now,
+            "credited": False,
+        }
+        result = await db.wallet_refunds.update_one(
+            {"candidate_id": candidate_id},
+            {"$setOnInsert": refund_doc},
+            upsert=True,
+        )
+        if result.upserted_id is not None:
+            approved.append(refund_doc)
+
+    applied_seconds = sum(int(row.get("refunded_seconds", 0) or 0) for row in approved)
+    if applied_seconds <= 0:
+        fresh = await db.users.find_one({"id": uid}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+        return {
+            "ok": True,
+            "applied_seconds": 0,
+            "applied_candidates": [],
+            "reading_seconds_balance": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+            "message": "Selected candidates were already approved.",
+        }
+
+    await db.users.update_one(
+        {"id": uid},
+        {"$inc": {"reading_seconds_balance": applied_seconds, "wallet_seconds": applied_seconds}},
+    )
+    fresh = await db.users.find_one({"id": uid}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+    balance_after = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+    tx = await _record_wallet_ledger(
+        user_id=uid,
+        action="refund_credit",
+        seconds_delta=applied_seconds,
+        reason=f"Admin-approved billing refund ({len(approved)} finding{'s' if len(approved) != 1 else ''})",
+        actor=f"admin:{admin.get('email','')}",
+        balance_after=balance_after,
+        extra={
+            "refund_batch_id": batch_id,
+            "candidate_ids": ",".join(row["candidate_id"] for row in approved),
+            "admin_note": payload.note.strip()[:240],
+        },
+    )
+    await db.wallet_refunds.update_many(
+        {"batch_id": batch_id, "candidate_id": {"$in": [row["candidate_id"] for row in approved]}},
+        {"$set": {"credited": True, "credited_transaction_id": tx["id"], "balance_after": balance_after}},
+    )
+    return {
+        "ok": True,
+        "batch_id": batch_id,
+        "applied_seconds": applied_seconds,
+        "applied_candidates": approved,
+        "transaction_id": tx["id"],
+        "reading_seconds_balance": balance_after,
+    }
 
 
 @api.patch("/admin/users/{uid}/status")
@@ -4297,92 +4645,10 @@ SEED_CATEGORIES = [
     {"slug": "gothic-fiction", "name": "Gothic Fiction", "description": "Atmospheric classics of fear, invention, mystery, and moral tension.", "order": 9, "image_url": "/assets/shelves/gothic-fiction.jpg"},
 ]
 
-SEED_TECH_BOOK = {
-    "slug": "the-architecture-of-intelligent-systems",
-    "title": "The Architecture of Intelligent Systems",
-    "subtitle": "On software, data, and the engineering discipline behind modern digital products.",
-    "author": "The Earnalism",
-    "category_slug": "technology",
-    "short_description": "A thoughtful guide to software architecture, data platforms, AI systems, and the craft of building durable digital products.",
-    "description": "The Architecture of Intelligent Systems is written for engineers, founders, and product leaders who want their software to last longer than a quarter. Across patient chapters on services, data platforms, machine intelligence, and the human discipline behind them, it returns again and again to a single idea: technology earns its place through clarity, restraint, and care.",
-    "cover_image_url": "https://images.unsplash.com/photo-1532012197267-da84d127e765?crop=entropy&cs=srgb&fm=jpg&w=1200&q=85",
-    "estimated_reading_time": "5 hours",
-    "price_paperback": "",
-    "price_ebook": "",
-    "buy_url": "",
-    "formats": ["Ebook"],
-    "benefits": [
-        "A working vocabulary for modern software architecture",
-        "Frameworks for designing data platforms that scale gently",
-        "An honest view of AI systems — what they can and cannot promise",
-        "A craft-first lens on engineering leadership",
-    ],
-    "who_for": [
-        "Engineers moving from individual contribution to system design",
-        "Founders making consequential technology choices",
-        "Product leaders responsible for long-lived digital products",
-    ],
-    "learnings": [
-        "How to choose architectures that respect both users and budgets",
-        "The discipline of data — quality, lineage, and quiet governance",
-        "Where AI belongs in a product, and where it does not",
-        "Building engineering teams that compound over years",
-    ],
-    "about_author": "Curated on the shelves of The Earnalism Digital Library — an independent reading room devoted to thoughtful business, literature, and the craft of modern technology.",
-    "chapters": [
-        {"id": str(uuid.uuid4()), "order": 0, "title": "The Working Vocabulary",
-         "content": "Every technical discipline arrives with two vocabularies — the one used in meetings, and the one that actually ships software.\n\nThe working vocabulary is smaller, sharper, and unglamorous. It names failure modes instead of features. It refuses adjectives that cannot be measured. When a senior engineer says observability, they mean: I can read this system's mind at three in the morning without waking anyone up.\n\nGood architectures begin with this vocabulary. The rest of the system is a long conversation held in its grammar."},
-        {"id": str(uuid.uuid4()), "order": 1, "title": "Data Platforms That Scale Gently",
-         "content": "A data platform is, at its best, a library. It arranges the facts of the business so that any future question can be asked with dignity.\n\nThe temptation in young companies is to choose tools for the scale they hope to reach. The temptation in older companies is to preserve the tools of a scale they have already passed. Both miss the point. A platform scales gently when each layer does one clear job: ingestion that is honest, storage that is queryable, modelling that is owned, and serving that is fast enough for the question being asked.\n\nComplexity is not an achievement. Clarity is."},
-        {"id": str(uuid.uuid4()), "order": 2, "title": "Where AI Belongs — and Where It Does Not",
-         "content": "Artificial intelligence is both a capability and a temperament.\n\nAs a capability, it is astonishing: pattern recognition, synthesis, generation, prediction. As a temperament, it is dangerous: quick answers where slow ones are required, confident prose where uncertainty would serve the reader better, a whisper of automation inside decisions that deserve human attention.\n\nThe architect's job is to route each problem to the right temperament. Some belong to machines. Some belong to the person still awake at the end of the quarter."},
-    ],
-    "is_published": True,
-}
-
-SEED_BOOK = {
-    "slug": "brownies-to-break-even-and-beyond",
-    "title": "Brownies to Break-Even and Beyond",
-    "subtitle": "A lyrical business journey for dreamers, founders, and first-time entrepreneurs.",
-    "author": "The Earnalism",
-    "category_slug": "business",
-    "short_description": "A disciplined yet tender memoir-guide for turning passion into a profitable, principled venture.",
-    "description": "Part memoir, part operating manual, Brownies to Break-Even and Beyond traces the slow craft of building a small business with care. From the first costing sheet to the first profitable quarter, every chapter pairs lived story with the kind of practical clarity rarely offered to bakers, makers, and quiet entrepreneurs.",
-    "cover_image_url": "https://images.unsplash.com/photo-1519764340700-3db40311f21e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwxfHxibGFuayUyMG1pbmltYWwlMjBib29rJTIwY292ZXIlMjBmbGF0JTIwbGF5fGVufDB8fHx8MTc3NzYxNzE5MHww&ixlib=rb-4.1.0&q=85",
-    "estimated_reading_time": "4 hours",
-    "price_paperback": "",
-    "price_ebook": "",
-    "buy_url": "",
-    "formats": ["Ebook"],
-    "is_published": True,
-    "benefits": [
-        "A founder's framework for pricing without guilt",
-        "Honest unit economics that respect the craft",
-        "A gentle path from side-project to small institution",
-        "Marketing that sounds like you, not a template",
-    ],
-    "who_for": [
-        "Bakers, makers, and creative founders building their first venture",
-        "Quiet entrepreneurs who prefer depth over hype",
-        "Operators ready to move from busy to profitable",
-    ],
-    "learnings": [
-        "How to design a product that pays for itself",
-        "The discipline of clean books and honest margins",
-        "Building a brand that compounds with each season",
-        "Scaling without losing the texture of your work",
-    ],
-    "about_author": "Curated on the shelves of The Earnalism Digital Library — an independent reading room devoted to thoughtful business, literature, and self-growth.",
-    "chapters": [
-        {"id": str(uuid.uuid4()), "order": 0, "title": "The First Costing Sheet",
-         "content": "Most first ventures begin with a feeling — a warmth, a hunch, a recipe that makes people stop mid-sentence.\n\nBut a business begins the moment that feeling meets a costing sheet.\n\nThe first sheet is uncomfortable. It asks for ingredient weights, packaging cents, the honest price of an afternoon. It resists flourish. And yet, somewhere between the third row and the fifth, the costing sheet becomes something unexpected — a quiet portrait of the work itself. Every line you enter is an act of respect.\n\nBegin there. Before the logo, before the launch, before the pretty camera angle. Sit with the sheet until it holds every real cost. The venture that comes afterward will carry that care in its bones."},
-        {"id": str(uuid.uuid4()), "order": 1, "title": "Pricing Without Guilt",
-         "content": "Pricing is the first place a founder learns to stand up for their own work.\n\nNumbers carry beliefs. A timid price tells your customer the work is smaller than it is. A reckless one borrows credibility you have not yet earned. The right price is a quiet sentence: this is what it costs to make with care, and this is the margin that lets the making continue.\n\nCharge for your hands. Charge for your judgment. Charge for the years you spent learning the difference between good and almost-good. A business that refuses to price its craft cannot protect it.\n\nThere is no apology in a fair price. Only arithmetic, and kindness to the person writing the cheque six months from now — you."},
-        {"id": str(uuid.uuid4()), "order": 2, "title": "From Side-Project to Small Institution",
-         "content": "There comes a week — usually quietly — when the project starts to outgrow evenings.\n\nOrders arrive faster than the kitchen empties. Messages accumulate. Someone asks about invoicing, and the honest answer is, I'm figuring it out. This is not a problem. It is the first sign that the work is becoming an institution — a small, dignified one, but an institution nonetheless.\n\nThe transition asks for three slow disciplines: books that close at the end of each week, a calendar that respects weekends, and a customer you would recognise in a crowd. None of it arrives in a single brave day. It arrives in a series of tiny preferences, each one a vote for the business you want to still be running in a decade.\n\nA small institution is not a downgrade from a large one. It is a particular kind of house — one built to last."},
-    ],
-    "is_published": True,
-}
+RETIRED_SEED_BOOK_SLUGS = frozenset({
+    "the-architecture-of-intelligent-systems",
+    "brownies-to-break-even-and-beyond",
+})
 
 SEED_POSTS = [
     {

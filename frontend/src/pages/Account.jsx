@@ -6,6 +6,110 @@ import { toast } from "sonner";
 import { LogOut, BookOpen, Clock, ArrowUpRight } from "lucide-react";
 import useSEO from "../hooks/useSEO";
 
+const FALLBACK_SESSION_GAP_MS = 15 * 60 * 1000;
+
+function txDate(value) {
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? new Date(0) : date;
+}
+
+function readingReasonLabel(reason = "") {
+  const title = String(reason || "").replace(/^Reading\s+/i, "").trim();
+  return title ? `Reading session - ${title}` : "Reading session";
+}
+
+function appendConsume(group, tx) {
+  const at = txDate(tx.created_at);
+  group.seconds += Number(tx.seconds || 0);
+  group.count += 1;
+  if (at < group.startAt) group.startAt = at;
+  if (at > group.endAt) {
+    group.endAt = at;
+    group.created_at = tx.created_at;
+  }
+}
+
+function aggregateActivity(transactions = []) {
+  const sorted = [...transactions].sort((a, b) => txDate(a.created_at) - txDate(b.created_at));
+  const sessionGroups = new Map();
+  const rows = [];
+  let fallbackGroup = null;
+
+  sorted.forEach((tx) => {
+    if (tx.type !== "consume") {
+      rows.push({
+        ...tx,
+        startAt: txDate(tx.created_at),
+        endAt: txDate(tx.created_at),
+        count: 1,
+      });
+      fallbackGroup = null;
+      return;
+    }
+
+    const sessionId = tx.session_id || "";
+    if (sessionId) {
+      const key = `reading:${sessionId}`;
+      let group = sessionGroups.get(key);
+      if (!group) {
+        const at = txDate(tx.created_at);
+        group = {
+          ...tx,
+          id: key,
+          reason: readingReasonLabel(tx.reason),
+          seconds: 0,
+          startAt: at,
+          endAt: at,
+          count: 0,
+          source_ids: [],
+        };
+        sessionGroups.set(key, group);
+        rows.push(group);
+      }
+      group.source_ids.push(tx.id);
+      appendConsume(group, tx);
+      fallbackGroup = null;
+      return;
+    }
+
+    const at = txDate(tx.created_at);
+    const canFoldIntoFallback = fallbackGroup
+      && fallbackGroup.raw_reason === tx.reason
+      && at - fallbackGroup.endAt <= FALLBACK_SESSION_GAP_MS;
+    if (!canFoldIntoFallback) {
+      fallbackGroup = {
+        ...tx,
+        id: `reading:${tx.id}`,
+        reason: readingReasonLabel(tx.reason),
+        raw_reason: tx.reason,
+        seconds: 0,
+        startAt: at,
+        endAt: at,
+        count: 0,
+        source_ids: [],
+      };
+      rows.push(fallbackGroup);
+    }
+    fallbackGroup.source_ids.push(tx.id);
+    appendConsume(fallbackGroup, tx);
+  });
+
+  return rows.sort((a, b) => b.endAt - a.endAt);
+}
+
+function formatActivityWhen(row) {
+  const start = row.startAt || txDate(row.created_at);
+  const end = row.endAt || txDate(row.created_at);
+  if (Math.abs(end - start) < 60 * 1000) {
+    return end.toLocaleString();
+  }
+  const sameDay = start.toDateString() === end.toDateString();
+  if (sameDay) {
+    return `${start.toLocaleDateString()}, ${start.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })} - ${end.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
+  }
+  return `${start.toLocaleString()} - ${end.toLocaleString()}`;
+}
+
 export default function Account() {
   useSEO({
     title: "Your Account — The Earnalism Digital Library",
@@ -29,6 +133,7 @@ export default function Account() {
   if (!user) return <Navigate to="/login?next=/account" replace />;
 
   const balance = Number(user.reading_seconds_balance || 0);
+  const activityRows = aggregateActivity(txs);
   const onLogout = () => {
     userLogout();
     toast.success("Signed out.");
@@ -61,7 +166,7 @@ export default function Account() {
             </div>
             <div className="gold-rule-thin mt-4" />
             <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">
-              Reading is billed in 30-second pulses while a chapter is open and visible. The first chapter of every book is on the house.
+              Reading is billed in 30-second pulses only while a chapter is open, visible, and active. Hidden tabs, sleeping devices, and long idle gaps are not charged.
             </p>
             <Link to="/pricing" className="inline-flex items-center gap-2 text-[0.72rem] tracking-[0.22em] uppercase text-burgundy mt-6 hover:opacity-70" data-testid="account-buy-time">
               Buy reading time <ArrowUpRight size={13} strokeWidth={1.5} />
@@ -86,7 +191,7 @@ export default function Account() {
           <div className="gold-rule-thin mt-3 mb-5" />
           {loading ? (
             <p className="text-charcoal-soft text-sm">Loading…</p>
-          ) : txs.length === 0 ? (
+          ) : activityRows.length === 0 ? (
             <p className="text-charcoal-soft text-sm font-light">No reading activity yet.</p>
           ) : (
             <table className="w-full text-sm">
@@ -99,16 +204,21 @@ export default function Account() {
                 </tr>
               </thead>
               <tbody>
-                {txs.map((t) => (
+                {activityRows.map((t) => (
                   <tr key={t.id} className="border-b border-brand/60" data-testid={`tx-row-${t.id}`}>
-                    <td className="py-3 pr-4 align-top text-charcoal-soft whitespace-nowrap">{new Date(t.created_at).toLocaleString()}</td>
+                    <td className="py-3 pr-4 align-top text-charcoal-soft whitespace-nowrap">{formatActivityWhen(t)}</td>
                     <td className="py-3 pr-4 align-top">
                       <span className={`text-[0.7rem] tracking-[0.18em] uppercase ${t.type === "credit" ? "text-emerald-700" : t.type === "debit" ? "text-rose-700" : "text-charcoal-soft"}`}>{t.type}</span>
                     </td>
                     <td className={`py-3 pr-4 align-top font-serif-display text-base ${t.seconds < 0 ? "text-rose-700" : "text-emerald-700"}`}>
                       {t.seconds >= 0 ? "+" : "−"}{formatMinutes(Math.abs(t.seconds))}
                     </td>
-                    <td className="py-3 pr-4 align-top text-charcoal-soft">{t.reason || "—"}</td>
+                    <td className="py-3 pr-4 align-top text-charcoal-soft">
+                      {t.reason || "—"}
+                      {t.type === "consume" && t.count > 1 && (
+                        <span className="block text-xs text-charcoal-soft/70 mt-1">{t.count} billing pulses grouped</span>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>

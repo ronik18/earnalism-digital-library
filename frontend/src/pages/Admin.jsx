@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { api, formatError, formatMinutes } from "../lib/api";
 import { toast } from "sonner";
@@ -185,6 +185,7 @@ async function loadAdminBooks() {
 }
 
 function BooksAdmin() {
+  const navigate = useNavigate();
   const [books, setBooks] = useState([]);
   const [cats, setCats] = useState([]);
   const [editing, setEditing] = useState(null);
@@ -235,6 +236,14 @@ function BooksAdmin() {
     setFeatured(slug); toast.success("Featured updated");
   };
 
+  const previewReader = (slug) => {
+    if (!slug) {
+      toast.error("Save the book before opening the reader preview.");
+      return;
+    }
+    navigate(`/reader/${encodeURIComponent(slug)}?preview=admin`, { state: { from: "/admin" } });
+  };
+
   return (
     <div data-testid="books-admin">
       <div className="flex items-center justify-between mb-5">
@@ -273,7 +282,7 @@ function BooksAdmin() {
         ))}
       </div>
 
-      {editing && <BookEditor book={editing} cats={cats} onClose={() => setEditing(null)} onSave={save} />}
+      {editing && <BookEditor book={editing} cats={cats} onClose={() => setEditing(null)} onSave={save} onPreviewReader={previewReader} />}
     </div>
   );
 }
@@ -331,7 +340,7 @@ function ProcessingBadge({ status }) {
   );
 }
 
-function BookEditor({ book, cats, onClose, onSave }) {
+function BookEditor({ book, cats, onClose, onSave, onPreviewReader }) {
   const [f, setF] = useState({
     ...book,
     benefits: lines(book.benefits), who_for: lines(book.who_for), learnings: lines(book.learnings), formats: lines(book.formats || ["Paperback", "Ebook"]),
@@ -599,7 +608,7 @@ function BookEditor({ book, cats, onClose, onSave }) {
             </div>
           )}
           <Field label="Estimated reading time"><input className="input-elegant" value={f.estimated_reading_time || ""} onChange={(e) => setF({ ...f, estimated_reading_time: e.target.value })} placeholder="4 hours" data-testid="book-reading-time" /></Field>
-          <Field label="Buy Reading Time URL (Razorpay / external)" wide><input className="input-elegant" value={f.buy_url} onChange={(e) => setF({ ...f, buy_url: e.target.value })} placeholder="https://rzp.io/l/your-link (leave empty for 'Request Access')" data-testid="book-buy-url" /></Field>
+          <Field label="Buy Reading Time URL (Razorpay / external)" wide><input className="input-elegant" value={f.buy_url} onChange={(e) => setF({ ...f, buy_url: e.target.value })} placeholder="https://rzp.io/l/your-link (optional external checkout)" data-testid="book-buy-url" /></Field>
           <Field label="Publication status" wide>
             <label className="inline-flex items-center gap-3 rounded-lg border border-brand-soft px-4 py-3 text-sm text-charcoal-soft">
               <input type="checkbox" checked={Boolean(f.is_published)} onChange={(e) => setF({ ...f, is_published: e.target.checked })} />
@@ -627,9 +636,14 @@ function BookEditor({ book, cats, onClose, onSave }) {
 
         <div className="mt-6 flex items-center justify-between gap-3 flex-wrap">
           {!isNew && (
-            <a href={`/reader/${book.slug}`} target="_blank" rel="noreferrer" className="btn-link" data-testid="book-preview-reader">
+            <button
+              type="button"
+              onClick={() => onPreviewReader?.(f.slug || book.slug)}
+              className="btn-link"
+              data-testid="book-preview-reader"
+            >
               Preview reader
-            </a>
+            </button>
           )}
           <div className="flex justify-end gap-3 ml-auto">
             <button onClick={onClose} className="btn-secondary">Cancel</button>
@@ -1252,6 +1266,9 @@ function UsersAdmin() {
   const [adjReason, setAdjReason] = useState("");
   const [txs, setTxs] = useState([]);
   const [busy, setBusy] = useState(false);
+  const [refundReview, setRefundReview] = useState(null);
+  const [refundSelections, setRefundSelections] = useState([]);
+  const [refundBusy, setRefundBusy] = useState(false);
 
   const load = async () => {
     setLoading(true);
@@ -1268,6 +1285,8 @@ function UsersAdmin() {
     setSelectedUser(u);
     setAdjMinutes("");
     setAdjReason("");
+    setRefundReview(null);
+    setRefundSelections([]);
     try {
       const { data } = await api.get(`/admin/users/${u.id}/transactions`);
       setTxs(data);
@@ -1290,6 +1309,8 @@ function UsersAdmin() {
       toast.success(mins > 0 ? `Added ${mins} min` : `Deducted ${Math.abs(mins)} min`);
       setAdjMinutes("");
       setAdjReason("");
+      setRefundReview(null);
+      setRefundSelections([]);
       await load();
       const fresh = await api.get(`/admin/users/${selectedUser.id}/transactions`);
       setTxs(fresh.data);
@@ -1298,6 +1319,58 @@ function UsersAdmin() {
     } catch (err) {
       toast.error(formatError(err.response?.data?.detail));
     } finally { setBusy(false); }
+  };
+
+  const runRefundReview = async () => {
+    if (!selectedUser) return;
+    setRefundBusy(true);
+    try {
+      const { data } = await api.get(`/admin/users/${selectedUser.id}/wallet/refund-review`);
+      setRefundReview(data);
+      setRefundSelections((data.candidates || []).map((candidate) => candidate.candidate_id));
+      toast.success(data.refundable_seconds > 0 ? "Refund findings ready for review." : "No high-confidence billing discrepancy found.");
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally { setRefundBusy(false); }
+  };
+
+  const approveRefund = async () => {
+    if (!selectedUser || refundSelections.length === 0) {
+      toast.error("Select at least one refund finding first.");
+      return;
+    }
+    const selectedSeconds = (refundReview?.candidates || [])
+      .filter((candidate) => refundSelections.includes(candidate.candidate_id))
+      .reduce((sum, candidate) => sum + Number(candidate.refundable_seconds || 0), 0);
+    if (!window.confirm(`Approve ${formatMinutes(selectedSeconds)} refund for ${selectedUser.email}?`)) return;
+    const note = window.prompt("Approval note (optional)") || "";
+    setRefundBusy(true);
+    try {
+      const { data } = await api.post(`/admin/users/${selectedUser.id}/wallet/refund-approve`, {
+        candidate_ids: refundSelections,
+        note,
+      });
+      toast.success(`Refunded ${formatMinutes(data.applied_seconds || 0)}.`);
+      const fresh = await api.get(`/admin/users/${selectedUser.id}/transactions`);
+      setTxs(fresh.data);
+      const usersFresh = await api.get("/admin/users");
+      setUsers(usersFresh.data);
+      const refreshed = usersFresh.data.find((x) => x.id === selectedUser.id);
+      if (refreshed) setSelectedUser(refreshed);
+      const review = await api.get(`/admin/users/${selectedUser.id}/wallet/refund-review`);
+      setRefundReview(review.data);
+      setRefundSelections((review.data.candidates || []).map((candidate) => candidate.candidate_id));
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally { setRefundBusy(false); }
+  };
+
+  const toggleRefundSelection = (candidateId) => {
+    setRefundSelections((ids) => (
+      ids.includes(candidateId)
+        ? ids.filter((id) => id !== candidateId)
+        : [...ids, candidateId]
+    ));
   };
 
   const toggleStatus = async (u) => {
@@ -1405,6 +1478,74 @@ function UsersAdmin() {
               <button onClick={adjust} disabled={busy} className="btn-primary w-full disabled:opacity-60" data-testid="user-adjust-submit">
                 {busy ? "Applying…" : "Apply adjustment"}
               </button>
+            </div>
+
+            <div className="gold-rule-thin my-6" />
+
+            <div className="overline mb-3">Billing discrepancy review</div>
+            <div className="rounded-lg border border-brand/70 bg-white/55 p-4" data-testid="wallet-refund-review">
+              <p className="text-xs text-charcoal-soft leading-relaxed">
+                Scan this reader's consumption history for high-confidence stale-gap or duplicate-pulse debits. Nothing is credited until an admin approves the selected findings.
+              </p>
+              <button
+                type="button"
+                onClick={runRefundReview}
+                disabled={refundBusy}
+                className="btn-secondary w-full mt-4 disabled:opacity-60"
+                data-testid="refund-review-run"
+              >
+                {refundBusy ? "Reviewing…" : "Run refund review"}
+              </button>
+              {refundReview && (
+                <div className="mt-4 space-y-3">
+                  <div className="flex items-center justify-between gap-3 text-xs">
+                    <span className="text-charcoal-soft">Recommended refund</span>
+                    <span className="font-serif-display text-lg text-burgundy" data-testid="refund-review-total">
+                      {formatMinutes(refundReview.refundable_seconds || 0)}
+                    </span>
+                  </div>
+                  {refundReview.wallet_divergence_seconds !== 0 && (
+                    <div className="rounded border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-900">
+                      Wallet ledger differs from stored balance by {formatMinutes(Math.abs(refundReview.wallet_divergence_seconds))}. Review before manual adjustments.
+                    </div>
+                  )}
+                  {(refundReview.candidates || []).length === 0 ? (
+                    <p className="text-xs text-charcoal-soft">No open high-confidence refund candidates.</p>
+                  ) : (
+                    <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
+                      {refundReview.candidates.map((candidate) => (
+                        <label key={candidate.candidate_id} className="block rounded border border-brand/60 bg-white/70 p-3 text-xs" data-testid={`refund-candidate-${candidate.candidate_id}`}>
+                          <div className="flex items-start gap-2">
+                            <input
+                              type="checkbox"
+                              checked={refundSelections.includes(candidate.candidate_id)}
+                              onChange={() => toggleRefundSelection(candidate.candidate_id)}
+                              className="mt-0.5"
+                            />
+                            <div>
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <span className="tracking-[0.16em] uppercase text-burgundy">{candidate.issue.replace(/_/g, " ")}</span>
+                                <span className="font-serif-display text-emerald-700">+{formatMinutes(candidate.refundable_seconds)}</span>
+                              </div>
+                              <p className="text-charcoal-soft mt-1 leading-relaxed">{candidate.evidence}</p>
+                              <p className="text-charcoal-soft/70 mt-1">{new Date(candidate.created_at).toLocaleString()}</p>
+                            </div>
+                          </div>
+                        </label>
+                      ))}
+                    </div>
+                  )}
+                  <button
+                    type="button"
+                    onClick={approveRefund}
+                    disabled={refundBusy || refundSelections.length === 0}
+                    className="btn-primary w-full disabled:opacity-60"
+                    data-testid="refund-approve-submit"
+                  >
+                    Approve selected refund
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="gold-rule-thin my-6" />

@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, CreditCard } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { optimizedImageUrl } from "../lib/images";
 
 function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
@@ -10,9 +10,12 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
   const setWidthRef = useRef(0);
   const hoverRef = useRef(false);
   const draggingRef = useRef(false);
+  const hasDraggedRef = useRef(false);
+  const suppressClickRef = useRef(false);
   const dragStartXRef = useRef(0);
   const dragStartScrollRef = useRef(0);
   const pointerIdRef = useRef(null);
+  const pointerCapturedRef = useRef(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -36,8 +39,6 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
     () => (liveBooks.length > 0 ? [...liveBooks, ...liveBooks, ...liveBooks] : []),
     [liveBooks],
   );
-  const primaryBook = liveBooks[0] || featured;
-
   const measureSetWidth = useCallback(() => {
     const marquee = marqueeRef.current;
     if (!marquee || liveBooks.length === 0) return 0;
@@ -142,33 +143,48 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
     if (!marquee) return;
 
     draggingRef.current = true;
+    hasDraggedRef.current = false;
+    suppressClickRef.current = false;
     pointerIdRef.current = event.pointerId;
     dragStartXRef.current = event.clientX;
     dragStartScrollRef.current = marquee.scrollLeft;
-    setIsDragging(true);
+    setIsDragging(false);
     setIsPaused(true);
-    marquee.setPointerCapture?.(event.pointerId);
   }, []);
 
   const handlePointerMove = useCallback((event) => {
     const marquee = marqueeRef.current;
     if (!marquee || !draggingRef.current || pointerIdRef.current !== event.pointerId) return;
 
-    event.preventDefault();
     const deltaX = event.clientX - dragStartXRef.current;
+    if (!hasDraggedRef.current && Math.abs(deltaX) < 6) return;
+
+    event.preventDefault();
+    if (!hasDraggedRef.current) {
+      hasDraggedRef.current = true;
+      marquee.setPointerCapture?.(event.pointerId);
+      pointerCapturedRef.current = true;
+      setIsDragging(true);
+    }
     marquee.scrollLeft = dragStartScrollRef.current - deltaX;
     resetToMiddleIfNeeded(true);
   }, [resetToMiddleIfNeeded]);
 
   const handlePointerUp = useCallback((event) => {
     const marquee = marqueeRef.current;
-    if (marquee && pointerIdRef.current === event.pointerId) {
+    if (marquee && pointerIdRef.current === event.pointerId && pointerCapturedRef.current) {
       marquee.releasePointerCapture?.(event.pointerId);
     }
+    suppressClickRef.current = hasDraggedRef.current;
     draggingRef.current = false;
+    hasDraggedRef.current = false;
+    pointerCapturedRef.current = false;
     pointerIdRef.current = null;
     setIsDragging(false);
     resumeRail();
+    window.setTimeout(() => {
+      suppressClickRef.current = false;
+    }, 0);
   }, [resumeRail]);
 
   const handleMouseEnter = useCallback(() => {
@@ -197,7 +213,13 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
     event.preventDefault();
   }, []);
 
-  if (!primaryBook && liveBooks.length === 0) {
+  const handleClickCapture = useCallback((event) => {
+    if (!suppressClickRef.current) return;
+    event.preventDefault();
+    event.stopPropagation();
+  }, []);
+
+  if (liveBooks.length === 0) {
     return (
       <div className={`live-cover-showcase live-cover-showcase--${variant} live-cover-showcase--loading`} data-testid="live-cover-showcase-loading" aria-label="Loading live books">
         <div className="live-cover-showcase__rail">
@@ -210,7 +232,13 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
   }
 
   return (
-    <aside className={`live-cover-showcase live-cover-showcase--${variant}`} data-testid="live-cover-showcase" aria-label="Live Earnalism books">
+    <aside
+      className={`live-cover-showcase live-cover-showcase--${variant}`}
+      data-testid="live-cover-showcase"
+      aria-label="Live Earnalism books"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="live-cover-showcase__header">
         <span className="live-cover-showcase__kicker">Live now</span>
         <span>{liveBooks.length} reading rooms open</span>
@@ -222,12 +250,11 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
         aria-label="Live book cover slideshow"
         onBlur={resumeRail}
         onFocus={pauseRail}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
         onPointerCancel={handlePointerUp}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
+        onClickCapture={handleClickCapture}
         onDragStart={handleDragStart}
         onWheel={handleWheel}
         style={{
@@ -285,20 +312,6 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
         </div>
         <div className="live-cover-marquee__edge live-cover-marquee__edge--right" aria-hidden="true" />
       </div>
-
-      {primaryBook && (
-        <div className="live-cover-showcase__cta">
-          <Link to={`/reader/${primaryBook.slug}`} className="live-cover-action live-cover-action--preview" data-testid="live-cover-primary-preview">
-            <BookOpen size={15} strokeWidth={1.6} /> Read Preview
-          </Link>
-          <Link to={`/book/${primaryBook.slug}#preview-payment`} className="live-cover-action live-cover-action--pay" data-testid="live-cover-primary-payment">
-            <CreditCard size={15} strokeWidth={1.6} /> Preview & Pay
-          </Link>
-          <Link to="/library" className="live-cover-showcase__library" data-testid="live-cover-library">
-            All books <ArrowRight size={13} strokeWidth={1.6} />
-          </Link>
-        </div>
-      )}
     </aside>
   );
 }

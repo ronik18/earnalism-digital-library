@@ -14,7 +14,7 @@ import { optimizedImageUrl } from '../lib/images';
 const THEMES = {
   beige: { canvas: '#F5F0E8', surface: '#FDFAF4', text: '#2C1810', accent: '#6B1E2E', border: '#E8D5A3', label: 'Light' },
   sepia: { canvas: '#EDE0C8', surface: '#F5E8D0', text: '#3B2A1A', accent: '#6B1E2E', border: '#D7BD7A', label: 'Sepia' },
-  dark: { canvas: '#1A0E12', surface: '#240D14', text: '#E8D5A3', accent: '#C9A84C', border: 'rgba(201,168,76,0.32)', label: 'Dark' },
+  dark: { canvas: '#14090D', surface: '#250B13', text: '#D9C793', accent: '#CDB158', border: 'rgba(205,177,88,0.34)', label: 'Dark' },
 };
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
@@ -38,6 +38,15 @@ const LINE_SPACING_OPTIONS = [
 ];
 
 const LOW_BALANCE_THRESHOLD = 300;
+const READING_PULSE_MS = 30000;
+const READER_IDLE_MS = 5 * 60 * 1000;
+const PAGE_SCROLL_THROTTLE_MS = 520;
+const PAGE_SCROLL_WHEEL_THRESHOLD = 28;
+const PAGE_TOUCH_SWIPE_THRESHOLD = 56;
+
+function isReaderVisible() {
+  return document.visibilityState === 'visible' && !document.hidden;
+}
 
 function authHeaders(token) {
   return token ? { Authorization: `Bearer ${token}` } : {};
@@ -560,19 +569,38 @@ function formatWalletTime(seconds) {
   return `${s}s`;
 }
 
-async function fetchReaderBook(bookId) {
+async function fetchReaderBook(bookId, requestedAdminPreview = false) {
+  const encodedBookId = encodeURIComponent(bookId);
+  const adminToken = localStorage.getItem(TOKEN_KEY);
+  if (requestedAdminPreview && adminToken) {
+    const response = await axios.get(`${API}/admin/books/${encodedBookId}`, { headers: getAdminAuthHeaders() });
+    response.adminPreview = true;
+    return response;
+  }
+
   try {
-    return await axios.get(`${API}/books/${bookId}`);
+    const response = await axios.get(`${API}/books/${encodedBookId}`);
+    response.adminPreview = false;
+    return response;
   } catch (err) {
-    const adminToken = localStorage.getItem(TOKEN_KEY);
     if (err.response?.status === 404 && adminToken) {
-      return axios.get(`${API}/admin/books/${bookId}`, { headers: getAdminAuthHeaders() });
+      const response = await axios.get(`${API}/admin/books/${encodedBookId}`, { headers: getAdminAuthHeaders() });
+      response.adminPreview = true;
+      return response;
     }
     throw err;
   }
 }
 
-function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '', onChapterSelect }) {
+function readerSearchParams({ chapterId, adminPreview } = {}) {
+  const params = new URLSearchParams();
+  if (chapterId) params.set('c', chapterId);
+  if (adminPreview) params.set('preview', 'admin');
+  const query = params.toString();
+  return query ? `?${query}` : '';
+}
+
+function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '', adminPreview = false, onChapterSelect }) {
   const sortedChapters = [...chapters].sort((a, b) => (a.order || 0) - (b.order || 0));
 
   return (
@@ -582,7 +610,7 @@ function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '',
       <ol>
         {sortedChapters.map((item, index) => {
           const isCurrent = item.id === currentChapterId;
-          const href = `/reader/${bookId}?c=${encodeURIComponent(item.id)}`;
+          const href = `/reader/${bookId}${readerSearchParams({ chapterId: item.id, adminPreview })}`;
           return (
             <li key={item.id || item.title}>
               <a
@@ -615,13 +643,14 @@ export default function Reader() {
   const [chapter, setChapter] = useState(null);
   const [chapters, setChapters] = useState([]);
   const [activeChapterId, setActiveChapterId] = useState(chapterId);
+  const [adminPreview, setAdminPreview] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [lockedState, setLockedState] = useState(null);
 
-  const [theme, setTheme] = useState('beige');
-  const [fontSizeIdx, setFontSizeIdx] = useState(2);
-  const [lineSpacingMode, setLineSpacingMode] = useState('relaxed');
+  const [theme, setTheme] = useState('dark');
+  const [fontSizeIdx, setFontSizeIdx] = useState(0);
+  const [lineSpacingMode, setLineSpacingMode] = useState('comfortable');
   const [fontFamilyMode, setFontFamilyMode] = useState('sans');
   const [showSettings, setShowSettings] = useState(false);
   const [showTOC, setShowTOC] = useState(false);
@@ -671,9 +700,12 @@ export default function Reader() {
   const ttsSegmentTimerRef = useRef(null);
   const pulseIntervalRef = useRef(null);
   const scrollContainerRef = useRef(null);
+  const pageScrollLastAtRef = useRef(0);
+  const pageTouchStartRef = useRef(null);
   const completionReportedRef = useRef('');
   const upsellShownRef = useRef('');
   const ttsWarningShownRef = useRef(false);
+  const lastReaderActivityRef = useRef(Date.now());
 
   const stopTTS = useCallback(() => {
     synthRef.current?.cancel?.();
@@ -711,9 +743,11 @@ export default function Reader() {
   const sendPulse = useCallback(async () => {
     if (!sessionId || !meteredSessionActive) return;
     const headers = getUserAuthHeaders();
+    const visible = isReaderVisible();
+    const idle = Date.now() - lastReaderActivityRef.current > READER_IDLE_MS;
 
     try {
-      const response = await axios.post(`${API}/reading/pulse`, { session_id: sessionId }, { headers });
+      const response = await axios.post(`${API}/reading/pulse`, { session_id: sessionId, visible, idle }, { headers });
       const { status, wallet_seconds } = response.data;
 
       switch (status) {
@@ -724,6 +758,9 @@ export default function Reader() {
           setWalletSeconds(wallet_seconds);
           setShowLowBalanceWarning(true);
           break;
+        case 'paused':
+          setWalletSeconds(wallet_seconds);
+          break;
         case 'wallet_empty':
           setWalletSeconds(0);
           clearInterval(pulseIntervalRef.current);
@@ -732,7 +769,8 @@ export default function Reader() {
           break;
         case 'session_invalid':
           clearInterval(pulseIntervalRef.current);
-          alert('Your reading session was opened on another device');
+          setMeteredSessionActive(false);
+          toast.info('Reading moved to another device. This device has stopped billing.');
           break;
         default:
           break;
@@ -786,11 +824,37 @@ export default function Reader() {
   }, []);
 
   useEffect(() => {
+    const markActive = () => {
+      lastReaderActivityRef.current = Date.now();
+    };
+    const markVisibleActive = () => {
+      if (isReaderVisible()) markActive();
+    };
+    const activityEvents = ['pointerdown', 'pointermove', 'keydown', 'wheel', 'touchstart', 'scroll'];
+
+    markActive();
+    activityEvents.forEach((eventName) => {
+      window.addEventListener(eventName, markActive, { passive: true });
+    });
+    document.addEventListener('visibilitychange', markVisibleActive);
+    window.addEventListener('focus', markActive);
+
+    return () => {
+      activityEvents.forEach((eventName) => {
+        window.removeEventListener(eventName, markActive);
+      });
+      document.removeEventListener('visibilitychange', markVisibleActive);
+      window.removeEventListener('focus', markActive);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!bookId || !sessionId) return undefined;
 
     let cancelled = false;
     let startedSession = false;
     let endSessionHeaders = {};
+    const requestedAdminPreview = new URLSearchParams(window.location.search).get('preview') === 'admin';
 
     async function loadReader() {
       setLoading(true);
@@ -800,16 +864,18 @@ export default function Reader() {
 
       try {
         const [bookRes, packsRes] = await Promise.all([
-          fetchReaderBook(bookId),
+          fetchReaderBook(bookId, requestedAdminPreview),
           axios.get(`${API}/payments/packs`),
         ]);
         if (cancelled) return;
 
+        const isAdminPreview = requestedAdminPreview || Boolean(bookRes.adminPreview);
         const loadedChapters = [...(bookRes.data?.chapters || [])].sort((a, b) => (a.order || 0) - (b.order || 0));
         const activeChapterId = chapterId || loadedChapters[0]?.id;
 
         setBook(bookRes.data);
         setChapters(loadedChapters);
+        setAdminPreview(isAdminPreview);
         setTopUpPacks(packsRes.data || []);
         setActiveChapterId(activeChapterId || null);
 
@@ -821,7 +887,7 @@ export default function Reader() {
           return;
         }
 
-        if (getUserToken()) {
+        if (!isAdminPreview && getUserToken()) {
           try {
             const walletRes = await axios.get(`${API}/users/me/wallet`, { headers: getUserAuthHeaders() });
             if (!cancelled) setWalletSeconds(walletRes.data.wallet_seconds || 0);
@@ -839,7 +905,7 @@ export default function Reader() {
 
         const chapterRes = await axios.get(
           `${API}/reader/chapter/${encodeURIComponent(bookId)}/${encodeURIComponent(activeChapterId)}`,
-          { headers: getChapterAuthHeaders() },
+          { headers: isAdminPreview ? getAdminAuthHeaders() : getChapterAuthHeaders() },
         );
         if (cancelled) return;
 
@@ -848,7 +914,7 @@ export default function Reader() {
 
         setChapter(loadedChapter);
         if (!chapterId) {
-          window.history.replaceState(null, '', `${window.location.pathname}?c=${activeChapterId}`);
+          window.history.replaceState(window.history.state, '', `${window.location.pathname}${readerSearchParams({ chapterId: activeChapterId, adminPreview: isAdminPreview })}`);
         }
 
         if (gate.locked) {
@@ -871,7 +937,7 @@ export default function Reader() {
         setTotalWords(countWordsInHtml(safeHtml));
         setLockedState(null);
 
-        if (getUserToken() && !gate.is_preview) {
+        if (!isAdminPreview && getUserToken() && !gate.is_preview) {
           endSessionHeaders = getUserAuthHeaders();
           await axios.post(`${API}/reading/session/start`, { session_id: sessionId, book_slug: bookId, chapter_id: activeChapterId }, { headers: endSessionHeaders });
           startedSession = true;
@@ -934,12 +1000,39 @@ export default function Reader() {
   const readerDisplayTitle = book?.title || readerFrontMatter.storyTitle || chapter?.title || 'Chapter';
 
   useEffect(() => {
-    if (meteredSessionActive && chapter && processedHtml && sessionId) {
+    if (!(meteredSessionActive && chapter && processedHtml && sessionId)) {
       clearInterval(pulseIntervalRef.current);
-      pulseIntervalRef.current = setInterval(sendPulse, 30000);
+      return undefined;
     }
 
-    return () => clearInterval(pulseIntervalRef.current);
+    const startPulseTimer = () => {
+      clearInterval(pulseIntervalRef.current);
+      if (isReaderVisible()) {
+        pulseIntervalRef.current = setInterval(sendPulse, READING_PULSE_MS);
+      }
+    };
+    const handleReaderVisibility = () => {
+      if (isReaderVisible()) {
+        lastReaderActivityRef.current = Date.now();
+        void sendPulse();
+        startPulseTimer();
+      } else {
+        clearInterval(pulseIntervalRef.current);
+        void sendPulse();
+      }
+    };
+
+    startPulseTimer();
+    document.addEventListener('visibilitychange', handleReaderVisibility);
+    window.addEventListener('focus', handleReaderVisibility);
+    window.addEventListener('blur', handleReaderVisibility);
+
+    return () => {
+      clearInterval(pulseIntervalRef.current);
+      document.removeEventListener('visibilitychange', handleReaderVisibility);
+      window.removeEventListener('focus', handleReaderVisibility);
+      window.removeEventListener('blur', handleReaderVisibility);
+    };
   }, [chapter, processedHtml, sessionId, meteredSessionActive, sendPulse]);
 
   const currentIdx = useMemo(
@@ -1210,7 +1303,11 @@ export default function Reader() {
             if (scrollContainerRef.current) {
               scrollContainerRef.current.scrollTop = savedScrollPosition;
             }
-            pulseIntervalRef.current = setInterval(sendPulse, 30000);
+            lastReaderActivityRef.current = Date.now();
+            clearInterval(pulseIntervalRef.current);
+            if (isReaderVisible()) {
+              pulseIntervalRef.current = setInterval(sendPulse, READING_PULSE_MS);
+            }
           }, 1500);
         },
         modal: {
@@ -1555,12 +1652,12 @@ export default function Reader() {
   const rightsCopy = rightsForBook(book, readerUserName);
   const narrationDisabledForBook = isNarrationDisabledForBook(book, bookId);
 
-  const goToChapter = (id) => {
+  const goToChapter = useCallback((id) => {
     stopTTS();
-    navigate(`/reader/${bookId}?c=${id}`);
-  };
+    navigate(`/reader/${bookId}${readerSearchParams({ chapterId: id, adminPreview })}`);
+  }, [adminPreview, bookId, navigate, stopTTS]);
 
-  const goPrev = () => {
+  const goPrev = useCallback(() => {
     stopTTS();
     if (hasPages && currentPage > 0) {
       setCurrentPage((page) => Math.max(0, page - 1));
@@ -1568,9 +1665,9 @@ export default function Reader() {
       return;
     }
     if (prevChapter) goToChapter(prevChapter.id);
-  };
+  }, [currentPage, goToChapter, hasPages, prevChapter, stopTTS]);
 
-  const goNext = () => {
+  const goNext = useCallback(() => {
     stopTTS();
     if (hasPages && currentPage < paginatedPages.length - 1) {
       setCurrentPage((page) => Math.min(paginatedPages.length - 1, page + 1));
@@ -1578,15 +1675,92 @@ export default function Reader() {
       return;
     }
     if (nextChapter) goToChapter(nextChapter.id);
-  };
+  }, [currentPage, goToChapter, hasPages, nextChapter, paginatedPages.length, stopTTS]);
 
-  const goToPage = (index, options = {}) => {
+  const goToPage = useCallback((index, options = {}) => {
     const nextPage = Math.min(Math.max(Number(index) || 0, 0), Math.max(paginatedPages.length - 1, 0));
     if (nextPage === currentPage) return;
     stopTTS();
     setCurrentPage(nextPage);
     scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: options.behavior || 'smooth' });
-  };
+  }, [currentPage, paginatedPages.length, stopTTS]);
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el || !hasPages || loading || lockedState) return undefined;
+
+    const isInsideReader = (target) => {
+      if (!(target instanceof Node)) return true;
+      return el.contains(target);
+    };
+    const isBlockedTarget = (target) => {
+      if (!(target instanceof Element)) return false;
+      return Boolean(target.closest(
+        'button, input, textarea, select, [role="dialog"], .reader-bottom-bar, .reader-settings-sheet',
+      ));
+    };
+    const shouldIgnoreGesture = (target) => (
+      showSettings
+      || showTOC
+      || showTopUpModal
+      || !isInsideReader(target)
+      || isBlockedTarget(target)
+    );
+    const canTurnPage = (direction) => (direction > 0 ? canNext : canPrev);
+    const turnPage = (direction) => {
+      if (!canTurnPage(direction)) return;
+      const now = Date.now();
+      if (now - pageScrollLastAtRef.current < PAGE_SCROLL_THROTTLE_MS) return;
+      pageScrollLastAtRef.current = now;
+      if (direction > 0) goNext();
+      else goPrev();
+    };
+
+    const onWheel = (event) => {
+      if (shouldIgnoreGesture(event.target)) return;
+      if (Math.abs(event.deltaY) < PAGE_SCROLL_WHEEL_THRESHOLD || Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
+      event.preventDefault();
+      turnPage(event.deltaY > 0 ? 1 : -1);
+    };
+    const onTouchStart = (event) => {
+      if (shouldIgnoreGesture(event.target)) {
+        pageTouchStartRef.current = null;
+        return;
+      }
+      const touch = event.touches?.[0];
+      pageTouchStartRef.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+    };
+    const onTouchMove = (event) => {
+      const start = pageTouchStartRef.current;
+      const touch = event.touches?.[0];
+      if (!start || !touch) return;
+      const dx = touch.clientX - start.x;
+      const dy = touch.clientY - start.y;
+      if (Math.abs(dy) > 12 && Math.abs(dy) > Math.abs(dx)) event.preventDefault();
+    };
+    const onTouchEnd = (event) => {
+      const start = pageTouchStartRef.current;
+      pageTouchStartRef.current = null;
+      const touch = event.changedTouches?.[0];
+      if (!start || !touch) return;
+      const dx = touch.clientX - start.x;
+      const dy = touch.clientY - start.y;
+      if (Math.abs(dy) < PAGE_TOUCH_SWIPE_THRESHOLD || Math.abs(dy) < Math.abs(dx)) return;
+      turnPage(dy < 0 ? 1 : -1);
+    };
+
+    window.addEventListener('wheel', onWheel, { capture: true, passive: false });
+    window.addEventListener('touchstart', onTouchStart, { capture: true, passive: true });
+    window.addEventListener('touchmove', onTouchMove, { capture: true, passive: false });
+    window.addEventListener('touchend', onTouchEnd, { capture: true, passive: true });
+
+    return () => {
+      window.removeEventListener('wheel', onWheel, true);
+      window.removeEventListener('touchstart', onTouchStart, true);
+      window.removeEventListener('touchmove', onTouchMove, true);
+      window.removeEventListener('touchend', onTouchEnd, true);
+    };
+  }, [canNext, canPrev, goNext, goPrev, hasPages, loading, lockedState, showSettings, showTOC, showTopUpModal]);
 
   const toggleBookmark = async () => {
     if (!getUserToken()) {
@@ -1743,9 +1917,9 @@ export default function Reader() {
       )}
 
       <header className={`reader-topbar ${toolbarVisible ? 'reader-topbar--visible' : 'reader-topbar--hidden'}`}>
-        <button type="button" onClick={() => navigate(`/book/${bookId}`)} className="reader-topbar__back" aria-label="Back to book">
+        <button type="button" onClick={() => navigate(adminPreview ? '/admin' : `/book/${bookId}`)} className="reader-topbar__back" aria-label={adminPreview ? 'Back to admin' : 'Back to book'}>
           <ChevronLeft size={18} />
-          <span>{readerDisplayTitle}</span>
+          <span>{adminPreview ? 'Back to Admin' : readerDisplayTitle}</span>
         </button>
 
         <div className="reader-topbar__center">
@@ -1850,6 +2024,7 @@ export default function Reader() {
                   chapters={chapters}
                   currentChapterId={activeChapterId || chapterId || chapter?.id}
                   bookId={bookId}
+                  adminPreview={adminPreview}
                   onChapterSelect={goToChapter}
                 />
               </SecureReader>

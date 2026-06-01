@@ -204,7 +204,7 @@ def tour_book_detail(page) -> None:
     hover_if_visible(page, top_cta, pause_ms=1_400)
     smooth_scroll_to_bottom(page)
     bottom_cta = page.locator(
-        '[data-testid="bottom-buy-reading-time"], [data-testid="bottom-read-preview"], [data-testid="request-access"]'
+        '[data-testid="bottom-buy-reading-time"], [data-testid="bottom-read-preview"], [data-testid="start-reading"]'
     ).first
     hover_if_visible(page, bottom_cta, pause_ms=1_600)
     smooth_scroll_by(page, -420)

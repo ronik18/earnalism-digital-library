@@ -64,6 +64,7 @@ export default function BookDetail() {
   const chapterCount = (book.chapters || []).length;
   const hasExplicitPreview = (book.chapters || []).some((chapter) => chapter.is_preview === true);
   const hasFreePreview = hasExplicitPreview || chapterCount > 1;
+  const startReadingHref = `/pricing?pack=1h&source=book_detail&book=${book.slug}`;
 
   return (
     <div data-testid="book-page">
@@ -120,12 +121,7 @@ export default function BookDetail() {
             {hasFreePreview && (
               <Link to={`/reader/${book.slug}`} className="btn-secondary justify-center" data-testid="read-preview">Read Preview</Link>
             )}
-            <Link to={`/reader/${book.slug}`} className="btn-primary justify-center" data-testid="start-reading">Start Reading</Link>
-            {book.buy_url ? (
-              <a href={book.buy_url} target="_blank" rel="noreferrer" className="btn-primary justify-center" data-testid="buy-reading-time">Buy Reading Time</a>
-            ) : (
-              <Link to="/contact" className="inline-flex items-center justify-center px-5 py-3 rounded-full text-[0.72rem] tracking-[0.2em] uppercase text-charcoal-soft hover:text-burgundy border border-brand-soft" data-testid="request-access">Request Access</Link>
-            )}
+            <Link to={startReadingHref} className="btn-primary justify-center" data-testid="start-reading">Start Reading</Link>
           </div>
 
           <div className="mt-8" data-testid="book-share">

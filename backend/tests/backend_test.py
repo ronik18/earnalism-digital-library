@@ -9,6 +9,10 @@ API = f"{BASE_URL}/api"
 
 ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@theearnalism.com")
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "Earnalism@2026")
+RETIRED_BOOK_SLUGS = {
+    "brownies-to-break-even-and-beyond",
+    "the-architecture-of-intelligent-systems",
+}
 
 
 @pytest.fixture(scope="session")
@@ -56,16 +60,20 @@ def test_featured(s):
     r = s.get(f"{API}/featured")
     assert r.status_code == 200
     book = r.json().get("book")
-    assert book and book["slug"] == "brownies-to-break-even-and-beyond"
+    if book:
+        assert book["slug"] not in RETIRED_BOOK_SLUGS
 
 
 def test_books_list_and_detail(s):
     r = s.get(f"{API}/books")
     assert r.status_code == 200
-    assert any(b["slug"] == "brownies-to-break-even-and-beyond" for b in r.json())
-    r2 = s.get(f"{API}/books/brownies-to-break-even-and-beyond")
+    books = r.json()
+    slugs = {b["slug"] for b in books}
+    assert RETIRED_BOOK_SLUGS.isdisjoint(slugs)
+    assert books
+    r2 = s.get(f"{API}/books/{books[0]['slug']}")
     assert r2.status_code == 200
-    assert r2.json()["title"].startswith("Brownies")
+    assert r2.json()["slug"] == books[0]["slug"]
 
 
 def test_blog_list_and_detail(s):
@@ -114,7 +122,10 @@ def test_admin_publishing_requests_removed(s):
 
 
 def test_book_about_author_no_publishing_brand(s):
-    r = s.get(f"{API}/books/brownies-to-break-even-and-beyond")
+    books = s.get(f"{API}/books")
+    assert books.status_code == 200
+    assert books.json()
+    r = s.get(f"{API}/books/{books.json()[0]['slug']}")
     assert r.status_code == 200
     assert "publishing brand" not in r.json()["about_author"].lower()
 
@@ -252,7 +263,17 @@ def test_admin_category_crud(s, auth):
 
 
 def test_admin_featured(s, auth):
-    r = s.put(f"{API}/admin/featured", json={"book_slug": "brownies-to-break-even-and-beyond"}, headers=auth)
+    books = s.get(f"{API}/admin/books/summary", headers=auth)
+    assert books.status_code == 200
+    book = next(
+        (
+            b for b in books.json()
+            if b.get("is_published") and b.get("slug") not in RETIRED_BOOK_SLUGS
+        ),
+        None,
+    )
+    assert book, "need a published non-retired book to feature"
+    r = s.put(f"{API}/admin/featured", json={"book_slug": book["slug"]}, headers=auth)
     assert r.status_code == 200 and r.json()["ok"] is True
 
 

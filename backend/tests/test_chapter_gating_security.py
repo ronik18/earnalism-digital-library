@@ -14,17 +14,13 @@ import uuid
 import pytest
 import requests
 
-BASE_URL = os.environ.get("REACT_APP_BACKEND_URL").rstrip("/")
+BASE_URL = os.environ.get("REACT_APP_BACKEND_URL", "http://127.0.0.1:8000").rstrip("/")
 API = f"{BASE_URL}/api"
 
 ADMIN_EMAIL = os.environ.get("TEST_ADMIN_EMAIL", "admin@theearnalism.com")
 ADMIN_PASSWORD = os.environ.get("TEST_ADMIN_PASSWORD", "Earnalism@2026")
 
-BOOK_SLUGS = [
-    "brownies-to-break-even-and-beyond",
-    "the-architecture-of-intelligent-systems",
-]
-PRIMARY_SLUG = BOOK_SLUGS[0]
+MIN_GATED_BOOKS = 2
 
 
 # ---------------- Fixtures ----------------
@@ -60,31 +56,41 @@ def fresh_user(s):
 
 
 @pytest.fixture(scope="module")
-def primary_chapters(s):
-    """Return sorted chapters for PRIMARY_SLUG via admin API (full content)."""
-    # Use admin books so we have the real full-content list to compare against.
-    pass  # filled via admin_chapters fixture below
-
-
-@pytest.fixture(scope="module")
 def admin_chapters(s, admin_headers):
     r = s.get(f"{API}/admin/books", headers=admin_headers)
     assert r.status_code == 200, r.text
-    by_slug = {b["slug"]: sorted(b.get("chapters") or [], key=lambda c: c.get("order", 0))
-               for b in r.json()}
-    for slug in BOOK_SLUGS:
-        assert slug in by_slug, f"seeded book missing: {slug}"
-        assert len(by_slug[slug]) >= 2, f"{slug}: need at least 2 chapters"
+    by_slug = {}
+    for book in r.json():
+        chapters = sorted(book.get("chapters") or [], key=lambda c: c.get("order", 0))
+        if (
+            book.get("is_published")
+            and len(chapters) >= 2
+            and all((chapter.get("content") or "").strip() for chapter in chapters[:2])
+        ):
+            by_slug[book["slug"]] = chapters
+        if len(by_slug) >= MIN_GATED_BOOKS:
+            break
+    assert len(by_slug) >= MIN_GATED_BOOKS, "need at least two published chaptered books"
     return by_slug
+
+
+@pytest.fixture(scope="module")
+def book_slugs(admin_chapters):
+    return list(admin_chapters.keys())
+
+
+@pytest.fixture(scope="module")
+def primary_slug(book_slugs):
+    return book_slugs[0]
 
 
 # ---------------- 1. Public list/detail strips paid content ----------------
 class TestPublicBookStripping:
-    def test_public_books_list_strips_paid_content(self, s, admin_chapters):
+    def test_public_books_list_strips_paid_content(self, s, admin_chapters, book_slugs):
         r = s.get(f"{API}/books")
         assert r.status_code == 200
         by_slug = {b["slug"]: b for b in r.json()}
-        for slug in BOOK_SLUGS:
+        for slug in book_slugs:
             assert slug in by_slug, f"{slug} missing from public /books"
             chapters = sorted(by_slug[slug].get("chapters") or [],
                               key=lambda c: c.get("order", 0))
@@ -99,8 +105,8 @@ class TestPublicBookStripping:
                 assert c.get("content") == "", \
                     f"{slug}: paid chapter '{c.get('title')}' leaked content"
 
-    def test_public_book_detail_strips_paid_content(self, s, admin_chapters):
-        for slug in BOOK_SLUGS:
+    def test_public_book_detail_strips_paid_content(self, s, admin_chapters, book_slugs):
+        for slug in book_slugs:
             r = s.get(f"{API}/books/{slug}")
             assert r.status_code == 200
             chapters = sorted(r.json().get("chapters") or [],
@@ -110,10 +116,10 @@ class TestPublicBookStripping:
             for c in chapters[1:]:
                 assert c.get("content") == ""
 
-    def test_public_book_body_does_not_contain_paid_content_raw(self, s, admin_chapters):
+    def test_public_book_body_does_not_contain_paid_content_raw(self, s, admin_chapters, book_slugs):
         """Guard test: the RAW JSON response body must not include the paid
         chapter body text anywhere (even as part of some other field)."""
-        for slug in BOOK_SLUGS:
+        for slug in book_slugs:
             paid_body = admin_chapters[slug][1].get("content", "")
             assert paid_body, f"{slug}: admin view has no paid body; test invalid"
             # Take a distinctive substring so we don't accidentally match common words.
@@ -134,11 +140,11 @@ class TestAdminBookUntouched:
         r = s.get(f"{API}/admin/books")
         assert r.status_code == 401
 
-    def test_admin_books_returns_full_content(self, s, admin_headers):
+    def test_admin_books_returns_full_content(self, s, admin_headers, book_slugs):
         r = s.get(f"{API}/admin/books", headers=admin_headers)
         assert r.status_code == 200
         by_slug = {b["slug"]: b for b in r.json()}
-        for slug in BOOK_SLUGS:
+        for slug in book_slugs:
             chapters = sorted(by_slug[slug].get("chapters") or [],
                               key=lambda c: c.get("order", 0))
             # Every chapter should have non-empty content for admin view
@@ -149,9 +155,9 @@ class TestAdminBookUntouched:
 
 # ---------------- 3. /api/reader/chapter/{slug}/{cid} gating ----------------
 class TestReaderChapterEndpoint:
-    def test_guest_preview_returns_content(self, s, admin_chapters):
-        preview = admin_chapters[PRIMARY_SLUG][0]
-        r = s.get(f"{API}/reader/chapter/{PRIMARY_SLUG}/{preview['id']}")
+    def test_guest_preview_returns_content(self, s, admin_chapters, primary_slug):
+        preview = admin_chapters[primary_slug][0]
+        r = s.get(f"{API}/reader/chapter/{primary_slug}/{preview['id']}")
         assert r.status_code == 200
         j = r.json()
         assert j["locked"] is False
@@ -162,9 +168,9 @@ class TestReaderChapterEndpoint:
         assert (j["chapter"].get("content") or "").strip(), "preview content empty"
         assert j["chapter"]["content"] == preview["content"]
 
-    def test_guest_paid_returns_locked_auth_required_no_content(self, s, admin_chapters):
-        paid = admin_chapters[PRIMARY_SLUG][1]
-        r = s.get(f"{API}/reader/chapter/{PRIMARY_SLUG}/{paid['id']}")
+    def test_guest_paid_returns_locked_auth_required_no_content(self, s, admin_chapters, primary_slug):
+        paid = admin_chapters[primary_slug][1]
+        r = s.get(f"{API}/reader/chapter/{primary_slug}/{paid['id']}")
         assert r.status_code == 200
         j = r.json()
         assert j["locked"] is True
@@ -179,7 +185,7 @@ class TestReaderChapterEndpoint:
         assert snippet not in r.text, "paid body leaked in locked response!"
 
     def test_user_zero_balance_paid_returns_locked_insufficient(
-        self, s, fresh_user, admin_headers, admin_chapters
+        self, s, fresh_user, admin_headers, admin_chapters, primary_slug
     ):
         uid = fresh_user["user"]["id"]
         # Force balance to 0
@@ -188,8 +194,8 @@ class TestReaderChapterEndpoint:
             s.post(f"{API}/admin/users/{uid}/wallet/adjust",
                    json={"minutes": -10000, "reason": "TEST reset"},
                    headers=admin_headers)
-        paid = admin_chapters[PRIMARY_SLUG][1]
-        r = s.get(f"{API}/reader/chapter/{PRIMARY_SLUG}/{paid['id']}",
+        paid = admin_chapters[primary_slug][1]
+        r = s.get(f"{API}/reader/chapter/{primary_slug}/{paid['id']}",
                   headers=fresh_user["headers"])
         assert r.status_code == 200
         j = r.json()
@@ -200,14 +206,14 @@ class TestReaderChapterEndpoint:
         assert snippet not in r.text
 
     def test_user_positive_balance_paid_returns_content(
-        self, s, fresh_user, admin_headers, admin_chapters
+        self, s, fresh_user, admin_headers, admin_chapters, primary_slug
     ):
         uid = fresh_user["user"]["id"]
         s.post(f"{API}/admin/users/{uid}/wallet/adjust",
                json={"minutes": 30, "reason": "TEST unlock"},
                headers=admin_headers)
-        paid = admin_chapters[PRIMARY_SLUG][1]
-        r = s.get(f"{API}/reader/chapter/{PRIMARY_SLUG}/{paid['id']}",
+        paid = admin_chapters[primary_slug][1]
+        r = s.get(f"{API}/reader/chapter/{primary_slug}/{paid['id']}",
                   headers=fresh_user["headers"])
         assert r.status_code == 200
         j = r.json()
@@ -220,7 +226,7 @@ class TestReaderChapterEndpoint:
                headers=admin_headers)
 
     def test_blocked_user_gets_blocked_reason_no_content(
-        self, s, fresh_user, admin_headers, admin_chapters
+        self, s, fresh_user, admin_headers, admin_chapters, primary_slug
     ):
         uid = fresh_user["user"]["id"]
         # top up so we rule out INSUFFICIENT path
@@ -231,8 +237,8 @@ class TestReaderChapterEndpoint:
                      json={"status": "blocked"}, headers=admin_headers)
         assert br.status_code == 200
         try:
-            paid = admin_chapters[PRIMARY_SLUG][1]
-            r = s.get(f"{API}/reader/chapter/{PRIMARY_SLUG}/{paid['id']}",
+            paid = admin_chapters[primary_slug][1]
+            r = s.get(f"{API}/reader/chapter/{primary_slug}/{paid['id']}",
                       headers=fresh_user["headers"])
             assert r.status_code == 200
             j = r.json()
@@ -246,9 +252,9 @@ class TestReaderChapterEndpoint:
             s.patch(f"{API}/admin/users/{uid}/status",
                     json={"status": "active"}, headers=admin_headers)
 
-    def test_admin_token_unlocks_paid(self, s, admin_headers, admin_chapters):
-        paid = admin_chapters[PRIMARY_SLUG][1]
-        r = s.get(f"{API}/reader/chapter/{PRIMARY_SLUG}/{paid['id']}",
+    def test_admin_token_unlocks_paid(self, s, admin_headers, admin_chapters, primary_slug):
+        paid = admin_chapters[primary_slug][1]
+        r = s.get(f"{API}/reader/chapter/{primary_slug}/{paid['id']}",
                   headers=admin_headers)
         assert r.status_code == 200
         j = r.json()
@@ -256,17 +262,17 @@ class TestReaderChapterEndpoint:
         assert j["is_preview"] is False
         assert j["chapter"]["content"] == paid["content"]
 
-    def test_nonexistent_chapter_returns_404(self, s):
-        r = s.get(f"{API}/reader/chapter/{PRIMARY_SLUG}/does-not-exist-{uuid.uuid4().hex[:6]}")
+    def test_nonexistent_chapter_returns_404(self, s, primary_slug):
+        r = s.get(f"{API}/reader/chapter/{primary_slug}/does-not-exist-{uuid.uuid4().hex[:6]}")
         assert r.status_code == 404
 
     def test_nonexistent_book_returns_404(self, s):
         r = s.get(f"{API}/reader/chapter/no-such-book-xyz/whatever")
         assert r.status_code == 404
 
-    def test_second_book_guest_paid_also_gated(self, s, admin_chapters):
-        """Ensure gating applies to BOTH seeded books, not just primary."""
-        second = BOOK_SLUGS[1]
+    def test_second_book_guest_paid_also_gated(self, s, admin_chapters, book_slugs):
+        """Ensure gating applies to multiple published chaptered books."""
+        second = book_slugs[1]
         paid = admin_chapters[second][1]
         r = s.get(f"{API}/reader/chapter/{second}/{paid['id']}")
         assert r.status_code == 200

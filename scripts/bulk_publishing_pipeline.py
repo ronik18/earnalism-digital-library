@@ -259,6 +259,8 @@ def build_import_upload_command(args: argparse.Namespace, output_base: Path) -> 
     ]
     if args.update_existing_drafts:
         command.append("--update-existing-drafts")
+    if args.ignore_published_duplicates:
+        command.append("--ignore-published-duplicates")
     return command
 
 
@@ -295,6 +297,16 @@ def build_production_command(args: argparse.Namespace, production_base: Path) ->
         command.append("--skip-qa")
     if args.trust_existing_admin_rights:
         command.append("--trust-existing-admin-rights")
+    if getattr(args, "disable_latency_risk_gate", False):
+        command.append("--disable-latency-risk-gate")
+    for attr, flag in (
+        ("max_publish_chapters", "--max-publish-chapters"),
+        ("max_publish_chars", "--max-publish-chars"),
+        ("max_publish_chapter_chars", "--max-publish-chapter-chars"),
+    ):
+        value = getattr(args, attr, None)
+        if value is not None:
+            command.extend([flag, str(value)])
     for env_file in args.env_file:
         command.extend(["--env-file", str(env_file)])
     return command
@@ -357,7 +369,22 @@ def enrich_import_upload_phase(phase: PhaseResult, output_base: Path, allow_skip
     return phase
 
 
-def enrich_production_phase(phase: PhaseResult, production_base: Path, allow_skipped_imports: bool) -> PhaseResult:
+def is_latency_holdback(item: dict[str, Any]) -> bool:
+    failed = [
+        gate
+        for gate in item.get("gates", [])
+        if not gate.get("ok")
+    ]
+    decisive_failures = [gate for gate in failed if gate.get("name") != "publish"]
+    return bool(decisive_failures) and all(gate.get("name") == "latency_risk" for gate in decisive_failures)
+
+
+def enrich_production_phase(
+    phase: PhaseResult,
+    production_base: Path,
+    allow_skipped_imports: bool,
+    allow_latency_holdbacks: bool = True,
+) -> PhaseResult:
     report_path = latest_file(production_base, "book_production_report.json")
     if not report_path:
         phase.status = "failed"
@@ -368,6 +395,8 @@ def enrich_production_phase(phase: PhaseResult, production_base: Path, allow_ski
     upload_report = read_json(upload_report_path) if upload_report_path else {}
     results = report.get("results") or []
     no_go = [item for item in results if item.get("verdict") != "GO"]
+    latency_holdbacks = [item for item in no_go if is_latency_holdback(item)]
+    blocking_no_go = [item for item in no_go if item not in latency_holdbacks]
     published = report.get("published") or []
     phase.artifacts["production_report"] = rel(report_path)
     md_path = report_path.with_suffix(".md")
@@ -395,16 +424,39 @@ def enrich_production_phase(phase: PhaseResult, production_base: Path, allow_ski
                     if not gate.get("ok")
                 ],
             }
-            for item in no_go
+            for item in blocking_no_go
+        ],
+        "latency_holdbacks": [
+            {
+                "slug": item.get("slug"),
+                "title": item.get("title"),
+                "failed_gates": [
+                    gate
+                    for gate in item.get("gates", [])
+                    if not gate.get("ok")
+                ],
+            }
+            for item in latency_holdbacks
         ],
     }
     skipped_imports = phase.data["skipped_books"]
     if skipped_imports and not allow_skipped_imports:
         phase.status = "failed"
         phase.detail = f"{len(skipped_imports)} import book(s) skipped during draft upload"
-    elif no_go:
+    elif blocking_no_go:
         phase.status = "failed"
-        phase.detail = f"{len(no_go)} book(s) blocked by production gates"
+        phase.detail = f"{len(blocking_no_go)} book(s) blocked by production gates"
+    elif latency_holdbacks and allow_latency_holdbacks:
+        phase.status = "passed"
+        phase.detail = (
+            f"{len(results) - len(latency_holdbacks)} book(s) passed production gates; "
+            f"held {len(latency_holdbacks)} latency-risk draft(s)"
+        )
+        if published:
+            phase.detail += f"; published {len(published)}"
+    elif latency_holdbacks:
+        phase.status = "failed"
+        phase.detail = f"{len(latency_holdbacks)} book(s) held by latency-risk gates"
     elif phase.status == "passed":
         phase.detail = f"{len(results)} book(s) passed production gates"
         if phase.data["uploaded_books"]:
@@ -560,6 +612,7 @@ def render_markdown_report(report: dict[str, Any]) -> str:
     published = report.get("published") or []
     go_books = report.get("go_books") or []
     no_go_books = report.get("no_go_books") or []
+    latency_holdbacks = report.get("latency_holdbacks") or []
 
     if uploaded:
         lines.extend(["", "## Uploaded Drafts", ""])
@@ -584,6 +637,12 @@ def render_markdown_report(report: dict[str, Any]) -> str:
             lines.append(f"- `{item.get('slug')}` {item.get('title')}")
             for gate in item.get("failed_gates") or []:
                 lines.append(f"  FAIL `{gate.get('name')}`: {gate.get('detail')}")
+    if latency_holdbacks:
+        lines.extend(["", "## Latency-Risk Holdbacks", ""])
+        for item in latency_holdbacks:
+            lines.append(f"- `{item.get('slug')}` {item.get('title')}")
+            for gate in item.get("failed_gates") or []:
+                lines.append(f"  HOLD `{gate.get('name')}`: {gate.get('detail')}")
 
     if report["stage"] == "go-live" and published:
         lines.extend(
@@ -613,6 +672,7 @@ def collect_summary(phases: Sequence[PhaseResult]) -> dict[str, Any]:
         "published": [],
         "go_books": [],
         "no_go_books": [],
+        "latency_holdbacks": [],
     }
     for phase in phases:
         data = phase.data or {}
@@ -621,6 +681,7 @@ def collect_summary(phases: Sequence[PhaseResult]) -> dict[str, Any]:
         summary["published"].extend(data.get("published") or [])
         summary["go_books"].extend(data.get("go_books") or [])
         summary["no_go_books"].extend(data.get("no_go_books") or [])
+        summary["latency_holdbacks"].extend(data.get("latency_holdbacks") or [])
     return summary
 
 
@@ -690,8 +751,14 @@ def run_go_live(args: argparse.Namespace, run_dir: Path) -> list[PhaseResult]:
         "go_green_gates",
         build_production_command(gate_args, gate_base),
         run_dir / "logs" / "go_green_gates.log",
+        allowed_returncodes=(0, 2),
     )
-    phases.append(enrich_production_phase(gate_phase, gate_base, args.allow_skipped_imports))
+    phases.append(enrich_production_phase(
+        gate_phase,
+        gate_base,
+        args.allow_skipped_imports,
+        allow_latency_holdbacks=not args.block_latency_risk_holdbacks,
+    ))
     if has_failed(phases):
         return phases
 
@@ -700,15 +767,21 @@ def run_go_live(args: argparse.Namespace, run_dir: Path) -> list[PhaseResult]:
         for book in phases[-1].data.get("go_books", [])
         if book.get("slug")
     })
-    publish_book_slugs = args.book_slug or go_slugs
+    publish_book_slugs = go_slugs
     publish_args = clone_args(args, stage="publish", book_slug=publish_book_slugs)
     publish_base = run_dir / "publish_go_books"
     publish_phase = run_phase(
         "publish_go_books",
         build_production_command(publish_args, publish_base),
         run_dir / "logs" / "publish_go_books.log",
+        allowed_returncodes=(0, 2),
     )
-    phases.append(enrich_production_phase(publish_phase, publish_base, args.allow_skipped_imports))
+    phases.append(enrich_production_phase(
+        publish_phase,
+        publish_base,
+        args.allow_skipped_imports,
+        allow_latency_holdbacks=not args.block_latency_risk_holdbacks,
+    ))
     if has_failed(phases):
         return phases
 
@@ -734,12 +807,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--all-drafts", action="store_true", help="Process every unpublished admin draft during production gates.")
     parser.add_argument("--book-slug", action="append", default=[], help="Specific draft slug to gate/publish. Repeatable.")
     parser.add_argument("--update-existing-drafts", action="store_true")
+    parser.add_argument("--ignore-published-duplicates", action="store_true", help="Let importer skip already-published duplicate slugs without failing upload.")
     parser.add_argument("--skip-audio", action="store_true")
     parser.add_argument("--skip-qa", action="store_true")
     parser.add_argument("--skip-import-validation", action="store_true", help="Skip importer dry-run during preflight.")
     parser.add_argument("--skip-production-gates", action="store_true", help="Skip admin production gates during preflight.")
     parser.add_argument("--allow-skipped-imports", action="store_true", help="Do not fail preflight if importer skips a manifest item.")
     parser.add_argument("--trust-existing-admin-rights", action="store_true")
+    parser.add_argument("--max-publish-chapters", type=int, default=int(os.environ.get("EARNALISM_MAX_PUBLISH_CHAPTERS", "80")), help="Hold books above this chapter count as drafts. Use 0 to disable this threshold.")
+    parser.add_argument("--max-publish-chars", type=int, default=int(os.environ.get("EARNALISM_MAX_PUBLISH_CHARS", "1800000")), help="Hold books above this stored-content character count as drafts. Use 0 to disable this threshold.")
+    parser.add_argument("--max-publish-chapter-chars", type=int, default=int(os.environ.get("EARNALISM_MAX_PUBLISH_CHAPTER_CHARS", "120000")), help="Hold books with any chapter above this stored-content character count as drafts. Use 0 to disable this threshold.")
+    parser.add_argument("--disable-latency-risk-gate", action="store_true")
+    parser.add_argument("--block-latency-risk-holdbacks", action="store_true", help="Fail production phases instead of treating latency-risk draft holdbacks as a safe automatic decision.")
     parser.add_argument("--env-file", action="append", type=Path, default=[ROOT / ".secrets/earnalism-import.env", ROOT / ".secrets/earnalism-audio.env"])
     parser.add_argument("--agentic-ai-mode", choices=["check", "prepare", "skip"], default="check")
     parser.add_argument("--agentic-docx", type=Path, default=ROOT / "source" / "agentic_ai_with_python_manuscript.docx")
@@ -785,9 +864,14 @@ def main() -> int:
                 "production_gates",
                 build_production_command(args, production_base),
                 run_dir / "logs" / "production_gates.log",
-                allowed_returncodes=(0,),
+                allowed_returncodes=(0, 2),
             )
-            phases.append(enrich_production_phase(phase, production_base, args.allow_skipped_imports))
+            phases.append(enrich_production_phase(
+                phase,
+                production_base,
+                args.allow_skipped_imports,
+                allow_latency_holdbacks=not args.block_latency_risk_holdbacks,
+            ))
             if args.stage == "publish" and not has_failed(phases):
                 phases.append(verify_landing_slideshow_phase(args, run_dir, phases[-1].data.get("published") or []))
         else:
