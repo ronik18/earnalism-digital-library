@@ -40,3 +40,66 @@ def test_reader_billing_pauses_when_hidden_or_idle(monkeypatch):
     assert server._billable_reading_seconds(last, now, visible=True, idle=True) == 0
     assert server._should_reset_reading_clock(last, now, visible=False, idle=False) is True
     assert server._should_reset_reading_clock(last, now, visible=True, idle=True) is True
+
+
+def test_refund_review_flags_legacy_bulk_consume(monkeypatch):
+    server = load_server(monkeypatch)
+    tx = {
+        "id": "tx-bulk",
+        "user_id": "user-1",
+        "type": "consume",
+        "seconds": -1710,
+        "session_id": "session-1",
+        "reason": "Reading দেনাপাওনা",
+        "created_at": "2026-05-31T09:02:32+00:00",
+    }
+
+    candidates = server._wallet_refund_candidates([tx])
+
+    assert len(candidates) == 1
+    assert candidates[0]["issue"] == "stale_gap_overcharge"
+    assert candidates[0]["refundable_seconds"] == 1680
+
+
+def test_refund_review_flags_duplicate_pulse(monkeypatch):
+    server = load_server(monkeypatch)
+    txs = [
+        {
+            "id": "tx-1",
+            "user_id": "user-1",
+            "type": "consume",
+            "seconds": -30,
+            "session_id": "session-1",
+            "created_at": "2026-05-31T09:00:00+00:00",
+        },
+        {
+            "id": "tx-2",
+            "user_id": "user-1",
+            "type": "consume",
+            "seconds": -30,
+            "session_id": "session-1",
+            "created_at": "2026-05-31T09:00:04+00:00",
+        },
+    ]
+
+    candidates = server._wallet_refund_candidates(txs)
+
+    assert len(candidates) == 1
+    assert candidates[0]["issue"] == "duplicate_pulse"
+    assert candidates[0]["source_transaction_id"] == "tx-2"
+    assert candidates[0]["refundable_seconds"] == 30
+
+
+def test_refund_review_excludes_already_refunded_candidate(monkeypatch):
+    server = load_server(monkeypatch)
+    tx = {
+        "id": "tx-bulk",
+        "user_id": "user-1",
+        "type": "consume",
+        "seconds": -90,
+        "session_id": "session-1",
+        "created_at": "2026-05-31T09:02:32+00:00",
+    }
+    candidate_id = server._wallet_refund_candidate_id("user-1", "tx-bulk", "stale_gap_overcharge", 60)
+
+    assert server._wallet_refund_candidates([tx], {candidate_id}) == []

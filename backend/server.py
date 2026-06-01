@@ -1426,6 +1426,10 @@ class WalletAdjustIn(BaseModel):
     minutes: int  # may be negative; converted to seconds server-side
     reason: str = ""
 
+class WalletRefundApproveIn(BaseModel):
+    candidate_ids: List[str] = Field(default_factory=list)
+    note: str = ""
+
 class WalletTransactionOut(BaseModel):
     id: str
     user_id: str
@@ -1644,6 +1648,87 @@ async def _migrate_wallet_transactions_to_ledger() -> None:
         )
 
 
+REFUND_DUPLICATE_PULSE_SECONDS = 10
+
+
+def _wallet_refund_candidate_id(user_id: str, tx_id: str, issue: str, refundable_seconds: int) -> str:
+    raw = f"{user_id}:{tx_id}:{issue}:{int(refundable_seconds)}"
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
+
+
+def _wallet_refund_candidates(transactions: List[dict], refunded_candidate_ids: Optional[set[str]] = None) -> List[dict]:
+    """Find high-confidence reader billing candidates that are safe to refund.
+
+    The rules intentionally stay conservative: a single reader pulse should
+    never consume more than HEARTBEAT_TICK_SECONDS, and duplicate pulses from
+    the same session within a few seconds are treated as retry/concurrency
+    artifacts. Ambiguous activity is left out for manual admin adjustment.
+    """
+    refunded = refunded_candidate_ids or set()
+    rows = sorted(
+        (tx for tx in transactions if tx.get("type") == "consume" and int(tx.get("seconds", 0) or 0) < 0),
+        key=lambda tx: _as_utc_dt(tx.get("created_at")) or datetime.min.replace(tzinfo=timezone.utc),
+    )
+    candidates: List[dict] = []
+    previous_by_session: Dict[str, dict] = {}
+    for tx in rows:
+        tx_id = tx.get("id") or ""
+        user_id = tx.get("user_id") or ""
+        session_id = tx.get("session_id") or ""
+        charged = abs(int(tx.get("seconds", 0) or 0))
+        if not tx_id or not user_id or charged <= 0:
+            continue
+
+        issue = ""
+        refundable = 0
+        evidence = ""
+        confidence = "high"
+
+        if charged > HEARTBEAT_TICK_SECONDS:
+            issue = "stale_gap_overcharge"
+            refundable = charged - HEARTBEAT_TICK_SECONDS
+            evidence = (
+                f"Single debit consumed {charged}s. The protected reader policy caps a visible, active pulse "
+                f"at {HEARTBEAT_TICK_SECONDS}s, so only one pulse is retained."
+            )
+        elif session_id:
+            current_at = _as_utc_dt(tx.get("created_at"))
+            previous = previous_by_session.get(session_id)
+            previous_at = _as_utc_dt((previous or {}).get("created_at"))
+            if current_at and previous_at:
+                gap = max(0, int((current_at - previous_at).total_seconds()))
+                if gap <= REFUND_DUPLICATE_PULSE_SECONDS:
+                    issue = "duplicate_pulse"
+                    refundable = min(charged, HEARTBEAT_TICK_SECONDS)
+                    evidence = (
+                        f"Two debits in the same reading session landed {gap}s apart. Reader pulses should "
+                        f"not settle that close together."
+                    )
+
+        if session_id:
+            previous_by_session[session_id] = tx
+
+        if refundable <= 0 or not issue:
+            continue
+
+        candidate_id = _wallet_refund_candidate_id(user_id, tx_id, issue, refundable)
+        if candidate_id in refunded:
+            continue
+        candidates.append({
+            "candidate_id": candidate_id,
+            "source_transaction_id": tx_id,
+            "session_id": session_id,
+            "created_at": tx.get("created_at", ""),
+            "charged_seconds": charged,
+            "refundable_seconds": refundable,
+            "issue": issue,
+            "reason": tx.get("reason", ""),
+            "evidence": evidence,
+            "confidence": confidence,
+        })
+    return candidates
+
+
 def _free_preview_chapter_ids(book: dict) -> set[str]:
     """Return chapter ids that should be free previews.
 
@@ -1742,6 +1827,9 @@ async def initialize_database_indexes() -> None:
         partialFilterExpression={"source_transaction_id": {"$type": "string"}},
     )
     await db.wallet_integrity_alerts.create_index([("user_id", 1), ("created_at", -1)])
+    await db.wallet_refunds.create_index("candidate_id", unique=True)
+    await db.wallet_refunds.create_index([("user_id", 1), ("created_at", -1)])
+    await db.wallet_refunds.create_index([("status", 1), ("created_at", -1)])
 
     await db.credit_log.create_index([("user_id", 1), ("timestamp", -1)])
     await db.credit_log.create_index([("upload_id", 1), ("timestamp", -1)])
@@ -3943,7 +4031,7 @@ async def admin_wallet_adjust(uid: str, payload: WalletAdjustIn, admin=Depends(r
     actual_delta = new_balance - current
     await db.users.update_one(
         {"id": uid},
-        {"$set": {"reading_seconds_balance": new_balance}},
+        {"$set": {"reading_seconds_balance": new_balance, "wallet_seconds": new_balance}},
     )
     await _record_wallet_ledger(
         user_id=uid,
@@ -3967,6 +4055,132 @@ async def admin_user_transactions(uid: str, _=Depends(require_admin)):
         {"user_id": uid}, {"_id": 0}
     ).sort("created_at", -1).to_list(500)
     return rows
+
+
+@api.get("/admin/users/{uid}/wallet/refund-review")
+async def admin_wallet_refund_review(uid: str, lookback_days: int = 30, _=Depends(require_admin)):
+    user = await db.users.find_one({"id": uid, "role": "user"}, {"_id": 0, "password_hash": 0})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    days = max(1, min(365, int(lookback_days or 30)))
+    cutoff = datetime.now(timezone.utc) - timedelta(days=days)
+    txs = await db.wallet_transactions.find({"user_id": uid}, {"_id": 0}).sort("created_at", -1).to_list(2000)
+    txs = [
+        tx for tx in txs
+        if (_as_utc_dt(tx.get("created_at")) or datetime.max.replace(tzinfo=timezone.utc)) >= cutoff
+    ]
+    refund_rows = await db.wallet_refunds.find({"user_id": uid}, {"_id": 0}).sort("created_at", -1).to_list(500)
+    refunded_ids = {row.get("candidate_id") for row in refund_rows if row.get("candidate_id")}
+    candidates = _wallet_refund_candidates(txs, refunded_ids)
+    stored_balance = int(user.get("reading_seconds_balance", user.get("wallet_seconds", 0)) or 0)
+    ledger_balance = await _ledger_balance(uid)
+    return {
+        "user": _user_public(user),
+        "lookback_days": days,
+        "stored_balance_seconds": stored_balance,
+        "ledger_balance_seconds": ledger_balance,
+        "wallet_divergence_seconds": stored_balance - ledger_balance,
+        "candidate_count": len(candidates),
+        "refundable_seconds": sum(int(c.get("refundable_seconds", 0) or 0) for c in candidates),
+        "candidates": candidates,
+        "previous_refunds": refund_rows[:25],
+    }
+
+
+@api.post("/admin/users/{uid}/wallet/refund-approve")
+async def admin_wallet_refund_approve(uid: str, payload: WalletRefundApproveIn, admin=Depends(require_admin)):
+    user = await db.users.find_one({"id": uid, "role": "user"}, {"_id": 0, "password_hash": 0})
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    requested = {candidate_id.strip() for candidate_id in payload.candidate_ids if candidate_id.strip()}
+    if not requested:
+        raise HTTPException(status_code=400, detail="Select at least one refund candidate before approval")
+
+    txs = await db.wallet_transactions.find({"user_id": uid}, {"_id": 0}).sort("created_at", -1).to_list(2000)
+    refunded_rows = await db.wallet_refunds.find({"user_id": uid}, {"_id": 0, "candidate_id": 1}).to_list(1000)
+    refunded_ids = {row.get("candidate_id") for row in refunded_rows if row.get("candidate_id")}
+    open_candidates = _wallet_refund_candidates(txs, refunded_ids)
+    candidates_by_id = {c["candidate_id"]: c for c in open_candidates}
+    missing = sorted(requested - set(candidates_by_id))
+    if missing:
+        raise HTTPException(status_code=409, detail={
+            "message": "Some selected candidates were already refunded or are no longer eligible.",
+            "candidate_ids": missing,
+        })
+
+    batch_id = str(uuid.uuid4())
+    now = now_iso()
+    approved: List[dict] = []
+    for candidate_id in sorted(requested):
+        candidate = candidates_by_id[candidate_id]
+        refund_doc = {
+            "id": str(uuid.uuid4()),
+            "batch_id": batch_id,
+            "candidate_id": candidate_id,
+            "user_id": uid,
+            "status": "approved",
+            "source_transaction_id": candidate.get("source_transaction_id", ""),
+            "session_id": candidate.get("session_id", ""),
+            "issue": candidate.get("issue", ""),
+            "charged_seconds": int(candidate.get("charged_seconds", 0) or 0),
+            "refunded_seconds": int(candidate.get("refundable_seconds", 0) or 0),
+            "evidence": candidate.get("evidence", ""),
+            "admin_note": payload.note.strip()[:500],
+            "approved_by": f"admin:{admin.get('email','')}",
+            "created_at": now,
+            "credited": False,
+        }
+        result = await db.wallet_refunds.update_one(
+            {"candidate_id": candidate_id},
+            {"$setOnInsert": refund_doc},
+            upsert=True,
+        )
+        if result.upserted_id is not None:
+            approved.append(refund_doc)
+
+    applied_seconds = sum(int(row.get("refunded_seconds", 0) or 0) for row in approved)
+    if applied_seconds <= 0:
+        fresh = await db.users.find_one({"id": uid}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+        return {
+            "ok": True,
+            "applied_seconds": 0,
+            "applied_candidates": [],
+            "reading_seconds_balance": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+            "message": "Selected candidates were already approved.",
+        }
+
+    await db.users.update_one(
+        {"id": uid},
+        {"$inc": {"reading_seconds_balance": applied_seconds, "wallet_seconds": applied_seconds}},
+    )
+    fresh = await db.users.find_one({"id": uid}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+    balance_after = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+    tx = await _record_wallet_ledger(
+        user_id=uid,
+        action="refund_credit",
+        seconds_delta=applied_seconds,
+        reason=f"Admin-approved billing refund ({len(approved)} finding{'s' if len(approved) != 1 else ''})",
+        actor=f"admin:{admin.get('email','')}",
+        balance_after=balance_after,
+        extra={
+            "refund_batch_id": batch_id,
+            "candidate_ids": ",".join(row["candidate_id"] for row in approved),
+            "admin_note": payload.note.strip()[:240],
+        },
+    )
+    await db.wallet_refunds.update_many(
+        {"batch_id": batch_id, "candidate_id": {"$in": [row["candidate_id"] for row in approved]}},
+        {"$set": {"credited": True, "credited_transaction_id": tx["id"], "balance_after": balance_after}},
+    )
+    return {
+        "ok": True,
+        "batch_id": batch_id,
+        "applied_seconds": applied_seconds,
+        "applied_candidates": approved,
+        "transaction_id": tx["id"],
+        "reading_seconds_balance": balance_after,
+    }
 
 
 @api.patch("/admin/users/{uid}/status")
