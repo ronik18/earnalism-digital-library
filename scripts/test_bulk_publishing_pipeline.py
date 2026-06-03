@@ -146,6 +146,25 @@ Another full paragraph gives the detector a normal body to preserve.
         self.assertEqual(chapters[-1]["title"], "Chapter 9")
         self.assertTrue(any("trailing duplicate/reset" in warning for warning in warnings))
 
+    def test_importer_strict_prepared_markers_use_only_explicit_boundaries(self) -> None:
+        source_text = """
+Chapter 1. প্রথম পরিচ্ছেদ
+
+এই অধ্যায়ে একটি সাধারণ বাক্য আছে।
+Chapter 99
+এই লাইনটি মূল লেখার অংশ, নতুন অধ্যায় নয়।
+
+Chapter 2. দ্বিতীয় পরিচ্ছেদ
+
+পরবর্তী অধ্যায়ের পাঠ এখানে শুরু হয়েছে।
+"""
+
+        chapters, warnings = import_books.detect_strict_prepared_chapters(source_text)
+
+        self.assertEqual([chapter["title"] for chapter in chapters], ["Chapter 1. প্রথম পরিচ্ছেদ", "Chapter 2. দ্বিতীয় পরিচ্ছেদ"])
+        self.assertIn("Chapter 99", chapters[0]["content"])
+        self.assertTrue(any("strict prepared chapter markers" in warning for warning in warnings))
+
     def test_importer_maps_legacy_book_categories_to_current_shelves(self) -> None:
         warnings: list[str] = []
         meta = import_books.metadata_defaults(

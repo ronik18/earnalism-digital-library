@@ -989,6 +989,53 @@ def detect_chapters(text: str, allow_title_case_headings: bool = False) -> tuple
     return chapters, warnings
 
 
+STRICT_PREPARED_CHAPTER_RE = re.compile(r"^\s*Chapter\s+(\d{1,3})\.\s+(.{1,140})\s*$", re.IGNORECASE)
+
+
+def detect_strict_prepared_chapters(text: str) -> tuple[list[dict[str, Any]], list[str]]:
+    lines = text.split("\n")
+    boundaries: list[dict[str, Any]] = []
+    for index, line in enumerate(lines):
+        match = STRICT_PREPARED_CHAPTER_RE.match(line)
+        if not match:
+            continue
+        number = int(match.group(1))
+        boundaries.append({
+            "start": index,
+            "body_start": index + 1,
+            "title": clean_heading_text(line.strip()),
+            "number": number,
+        })
+
+    if not boundaries:
+        raise ValueError("strict prepared chapter markers requested but no `Chapter N.` markers were found")
+
+    expected = list(range(1, len(boundaries) + 1))
+    found = [candidate["number"] for candidate in boundaries]
+    if found != expected:
+        raise ValueError(f"strict prepared chapter markers are not contiguous: {found}")
+
+    chapters: list[dict[str, Any]] = []
+    warnings: list[str] = ["Used strict prepared chapter markers from manifest chapter_rules."]
+    for position, candidate in enumerate(boundaries):
+        end = boundaries[position + 1]["start"] if position + 1 < len(boundaries) else len(lines)
+        body = "\n".join(lines[candidate["body_start"]:end]).strip()
+        if not body:
+            raise ValueError(f"strict prepared chapter marker has empty body: {candidate['title']}")
+        body_word_count = len(words(body))
+        if body_word_count < MIN_CHAPTER_WORDS_WARNING:
+            warnings.append(f"Chapter '{candidate['title']}' is very short; review chapter boundary.")
+        chapters.append({
+            "order": len(chapters) + 1,
+            "title": candidate["title"],
+            "content": text_to_reader_html(body),
+            "is_preview": False,
+            "summary": chapter_summary(body),
+            "warnings": [],
+        })
+    return chapters, warnings
+
+
 def commercial_rights_validation(book: dict[str, Any]) -> tuple[bool, dict[str, Any], list[str], list[str]]:
     errors: list[str] = []
     warnings: list[str] = []
@@ -1247,6 +1294,9 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
     if force_single_chapter:
         chapters: list[dict[str, Any]] = []
         result.warnings.append("Forced single reader chapter per manifest chapter_rules.")
+    elif chapter_rules.get("strict_prepared_chapter_markers"):
+        chapters, chapter_warnings = detect_strict_prepared_chapters(cleaned)
+        result.warnings.extend(chapter_warnings)
     else:
         chapters, chapter_warnings = detect_chapters(
             cleaned,
