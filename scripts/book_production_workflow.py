@@ -224,6 +224,15 @@ def manifest_index(manifest: Iterable[Dict[str, Any]]) -> Dict[str, Dict[str, An
     return index
 
 
+def manifest_target_slugs(manifest: Iterable[Dict[str, Any]]) -> List[str]:
+    slugs: List[str] = []
+    for item in manifest:
+        slug = normalize_slug(str(item.get("slug") or item.get("title") or ""))
+        if slug and slug not in slugs:
+            slugs.append(slug)
+    return slugs
+
+
 def rights_metadata_from_manifest(manifest_item: Optional[Dict[str, Any]]) -> Dict[str, Any]:
     """Keep legal provenance with admin-only book records during publish updates."""
 
@@ -727,7 +736,7 @@ def main() -> int:
     else:
         slugs = set(args.book_slug)
         if not slugs:
-            slugs.update(manifest_by_slug.keys())
+            slugs.update(manifest_target_slugs(manifest))
         if not slugs:
             raise RuntimeError("No books selected. Use --all-drafts, --book-slug, or --manifest.")
         books = [api.get_admin_book(slug) for slug in sorted(slugs)]

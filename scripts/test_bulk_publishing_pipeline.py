@@ -103,6 +103,68 @@ The King and Queen of Hearts were seated on their throne when they arrived.
             ],
         )
 
+    def test_importer_keeps_quoted_opening_line_in_chapter_body(self) -> None:
+        source_text = """
+CHAPTER V.
+
+“Mother, Mother, I am so happy!” whispered the girl, burying her face
+in the lap of the faded, tired-looking woman.
+
+The chapter continues with enough words for the importer to treat this
+as a real reader chapter instead of a short heading sample.
+
+CHAPTER VI.
+
+“I suppose you have heard the news, Basil?” said Lord Henry that evening
+as Hallward was shown into a little private room at the Bristol.
+
+Another full paragraph gives the detector a normal body to preserve.
+"""
+
+        chapters, _warnings = import_books.detect_chapters(source_text)
+
+        self.assertEqual([chapter["title"] for chapter in chapters], ["CHAPTER V", "CHAPTER VI"])
+        self.assertIn("Mother, Mother", chapters[0]["content"])
+        self.assertIn("I suppose you have heard", chapters[1]["content"])
+
+    def test_importer_drops_trailing_duplicate_chapter_reset(self) -> None:
+        source_text = "\n\n".join(
+            [
+                f"Chapter {number}\n\nThis is the main chapter {number} body with enough words "
+                "to satisfy the detector and preserve the canonical sequence."
+                for number in range(1, 10)
+            ]
+            + [
+                "Chapter 1\n\nThis duplicate tail should not create a second first chapter.",
+                "Chapter 2\n\nThis duplicate tail should be dropped with the reset.",
+            ]
+        )
+
+        chapters, warnings = import_books.detect_chapters(source_text)
+
+        self.assertEqual(len(chapters), 9)
+        self.assertEqual(chapters[-1]["title"], "Chapter 9")
+        self.assertTrue(any("trailing duplicate/reset" in warning for warning in warnings))
+
+    def test_importer_strict_prepared_markers_use_only_explicit_boundaries(self) -> None:
+        source_text = """
+Chapter 1. প্রথম পরিচ্ছেদ
+
+এই অধ্যায়ে একটি সাধারণ বাক্য আছে।
+Chapter 99
+এই লাইনটি মূল লেখার অংশ, নতুন অধ্যায় নয়।
+
+Chapter 2. দ্বিতীয় পরিচ্ছেদ
+
+পরবর্তী অধ্যায়ের পাঠ এখানে শুরু হয়েছে।
+"""
+
+        chapters, warnings = import_books.detect_strict_prepared_chapters(source_text)
+
+        self.assertEqual([chapter["title"] for chapter in chapters], ["Chapter 1. প্রথম পরিচ্ছেদ", "Chapter 2. দ্বিতীয় পরিচ্ছেদ"])
+        self.assertIn("Chapter 99", chapters[0]["content"])
+        self.assertTrue(any("strict prepared chapter markers" in warning for warning in warnings))
+
     def test_importer_maps_legacy_book_categories_to_current_shelves(self) -> None:
         warnings: list[str] = []
         meta = import_books.metadata_defaults(
