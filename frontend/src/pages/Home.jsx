@@ -106,9 +106,6 @@ export default function Home() {
     } finally { setSubmitting(false); }
   };
 
-  const heroBook = featured || liveBooks[0];
-  const liveBookCount = liveBooks.length || categories.reduce((total, category) => total + (category.book_count || 0), 0);
-
   return (
     <div data-testid="home-page">
       {/* HERO */}
@@ -172,20 +169,6 @@ export default function Home() {
                 Explore Library <ArrowRight size={15} strokeWidth={1.7} />
               </Link>
             </div>
-            {heroBook && (
-              <div className="mt-8 hidden max-w-2xl border-t border-[rgba(216,185,122,0.34)] pt-5 text-[#F4EFEA]/82 sm:block" data-testid="hero-current-read">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <p className="text-[0.68rem] uppercase tracking-[0.22em] text-[var(--brand-gold-soft)]">Currently on the table</p>
-                    <p className="mt-2 font-serif-display text-xl sm:text-2xl leading-tight text-[#FDFCF8]">{heroBook.title}</p>
-                    {heroBook.author && <p className="mt-1 text-sm text-[#F4EFEA]/70">{heroBook.author}</p>}
-                  </div>
-                </div>
-              </div>
-            )}
-            <p className="mt-5 hidden text-[0.72rem] uppercase tracking-[0.18em] text-[#FDFCF8]/70 drop-shadow-[0_1px_12px_rgba(0,0,0,0.5)] sm:block" data-testid="hero-library-meta">
-              {liveBookCount || "Live"} books ready to preview · {categories.length || 9} curated shelves · Bengali, business, AI, fiction
-            </p>
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0 translate-y-1/2 z-10">
