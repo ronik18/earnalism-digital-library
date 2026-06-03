@@ -1,6 +1,29 @@
 # Railway Horizontal Scaling Setup
 
-Prepared on June 3, 2026 for theearnalism.com. Railway Trial does not support horizontal scaling or multiple replicas, so this repository now contains only trial-safe code changes. Do not run `railway scale`, set replica counts, or add autoscaling secrets until the Railway Pro plan is active on or after June 10, 2026.
+Prepared on June 3, 2026 for theearnalism.com. Railway Pro is now active, and the backend has been configured for horizontal scaling with Redis-backed shared state and Judoscale autoscaling.
+
+## Live Pro Setup - Completed June 3, 2026
+
+- Railway service: `earnalism` in `production`.
+- Backend deploy: autoscaling-ready backend with `/healthz` Railway health check.
+- Shared state: Railway Redis service provisioned and backend `REDIS_URL` configured.
+- Multi-replica mode: `MULTI_REPLICA_ENABLED=true`.
+- Autoscaler: `JUDOSCALE_URL` configured; logs confirm Judoscale FastAPI middleware is enabled.
+- Runtime logs confirm Redis-backed multi-replica state is enabled.
+- Health checks:
+  - `https://api.theearnalism.com/healthz`
+  - `https://api.theearnalism.com/api/healthz`
+  - Expected response now includes a Railway replica id, not `single`.
+- Baseline replicas after validation: 2 running replicas in `sfo`.
+  - Railway CLI rejected `sfo` as a scale argument; the accepted California alias is `us-west`, which Railway may display as `us-west2`.
+  - During testing, Judoscale/Railway briefly used both `sfo` and `us-west2`; the final cost-conscious baseline was restored to `sfo=2` with `railway scale us-west=0`.
+- Observed autoscale behavior: during/after the 10X spike test, Railway scaled up to 4 running replicas (`sfo=2`, `us-west2=2`), confirming the autoscaling loop reacted.
+- Load test record:
+  - Command profile: `K6_BASELINE_VUS=20`, `K6_SPIKE_MULTIPLIER=10`, `K6_LOAD_DURATION=60s`.
+  - Result: 16,380 HTTP requests, 0 failed requests, 19,110/19,110 checks passed.
+  - k6 p95: 911 ms overall, 1.45 s catalog, 802 ms reader.
+  - Railway 10-minute metrics during the run: 13,665 HTTP requests, 0.0% error rate, p95 618 ms.
+  - Artifacts: `output/performance/railway_autoscale_20260603T175559Z/`.
 
 ## Stateless Audit
 
@@ -16,7 +39,7 @@ Replica-sensitive findings and fixes:
 - Sessions, reading sessions, wallet transactions, payment intents, webhooks, reader completion rewards, users, books, blog posts, settings, contacts, analytics, and admin audit records are already stored in MongoDB.
 - Cron/scheduled jobs: no cron, APScheduler, Celery, RQ, repeated background loop, or scheduled task runner was found in the web runtime. If a cron job is added later, guard it with a Redis leader lock when `MULTI_REPLICA_ENABLED=true`; run normally when false.
 
-## Section A - Do NOW (trial period, before June 10)
+## Section A - Completed During Trial Preparation
 
 1. Merge all Phase 1 code changes:
    - Dormant Judoscale FastAPI middleware, activated only when `JUDOSCALE_URL` exists.
@@ -25,7 +48,7 @@ Replica-sensitive findings and fixes:
    - Graceful SIGTERM drain marker plus 15-second Uvicorn graceful shutdown timeout.
    - `/healthz` and `/api/healthz` routes returning HTTP 200 with `{"status":"ok","replica":"single"}` while Trial mode is active.
    - `npm run loadtest` 60-second 10X spike scaffold.
-2. Sign up at https://judoscale.com/railway and get the `JUDOSCALE_URL` API key ready. Do not add it to Railway yet.
+2. Sign up at https://judoscale.com/railway and get the `JUDOSCALE_URL` API key ready.
 3. Run a baseline load test and record p95 latency:
 
 ```bash
@@ -39,19 +62,21 @@ K6_BASELINE_VUS=50 K6_SPIKE_MULTIPLIER=10 K6_LOAD_DURATION=60s npm run loadtest
 K6_SPIKE_VUS=500 K6_HTTP_P95_THRESHOLD='p(95)<3000' npm run loadtest
 ```
 
-4. Keep these Railway variables unchanged during Trial:
+4. During Trial, keep these Railway variables unchanged:
    - `MULTI_REPLICA_ENABLED=false`
    - no `JUDOSCALE_URL`
    - no replica scaling commands
 
-## Section B - Do ON DAY OF Pro upgrade (June 10+)
+## Section B - Completed On Pro Upgrade
 
 ```bash
-# 1. Set minimum replica baseline
-railway scale us-east=2   # adjust region to match theearnalism.com's Railway region
+# 1. Set minimum replica baseline.
+# Final validated baseline is sfo=2. Railway's CLI accepts us-west,
+# which may appear as us-west2 in service status during autoscale events.
+railway scale us-west=0   # remove temporary us-west2 replicas after validation
 
-# 2. Add Judoscale secret in Railway dashboard
-#    Settings -> Variables -> Add: JUDOSCALE_URL=<your key from judoscale dashboard>
+# 2. Add Judoscale secret in Railway dashboard.
+#    Settings -> Variables -> Add: JUDOSCALE_URL=<your key from Judoscale dashboard>
 
 # 3. Enable multi-replica mode
 #    Settings -> Variables -> Add: MULTI_REPLICA_ENABLED=true
@@ -68,8 +93,8 @@ railway scale us-east=2   # adjust region to match theearnalism.com's Railway re
 #    - Scale-up sensitivity: 10 seconds (fastest)
 #    - Scale-down: conservative (5 min cooldown to avoid yo-yo)
 
-# 7. Re-run load test to confirm autoscaler fires
-npm run loadtest
+# 7. Re-run load test to confirm autoscaler fires.
+K6_BASELINE_VUS=20 K6_SPIKE_MULTIPLIER=10 K6_LOAD_DURATION=60s npm run loadtest
 ```
 
 Post-upgrade verification:
@@ -94,11 +119,13 @@ Expected after enabling multi-replica mode:
 ## Section C - Emergency manual override (any time after Pro)
 
 ```bash
-# If Judoscale is slow to react during a sudden viral spike:
-railway scale us-east=8
+# If Judoscale is slow to react during a sudden viral spike.
+# This adds about 8 us-west2 replicas while existing sfo replicas remain.
+railway scale us-west=8
 
-# Scale back down after spike subsides:
-railway scale us-east=2
+# Scale back down after spike subsides.
+# This removes temporary us-west2 replicas and returns to the sfo baseline.
+railway scale us-west=0
 ```
 
 ## Rollback Notes
