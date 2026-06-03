@@ -9,7 +9,7 @@ Prepared on June 3, 2026 for theearnalism.com. Railway Pro is now active, and th
 - Shared state: Railway Redis service provisioned and backend `REDIS_URL` configured.
 - Multi-replica mode: `MULTI_REPLICA_ENABLED=true`.
 - Autoscaler: `JUDOSCALE_URL` configured; logs confirm Judoscale FastAPI middleware is enabled.
-- Judoscale process type: `earnalism`, autoscaling enabled, min 2 replicas, max 10 replicas, upscale quantity 2, 10-second scale-up sensitivity, 5-minute conservative downscale.
+- Judoscale process type: `earnalism`, autoscaling enabled, min 2 replicas, max 10 replicas, upscale quantity 2, 10-second scale-up sensitivity, queue-time scale-up threshold 100 ms, queue-time scale-down threshold 25 ms, 5-minute conservative downscale.
 - Runtime logs confirm Redis-backed multi-replica state is enabled.
 - Health checks:
   - `https://api.theearnalism.com/healthz`
@@ -19,7 +19,7 @@ Prepared on June 3, 2026 for theearnalism.com. Railway Pro is now active, and th
   - Railway CLI rejected `sfo` as a scale argument; the accepted California alias is `us-west`, which Railway may display as `us-west2`.
   - During testing, Judoscale/Railway briefly used both `sfo` and `us-west2`; the final cost-conscious baseline was restored to `sfo=2` with `railway scale us-west=0`.
 - Observed autoscale behavior: during/after the 10X spike test, Railway scaled up beyond baseline, confirming the autoscaling loop reacted.
-- Follow-up correction: Judoscale was initially enabled with range `min=1`, `max=5`; corrected via the Judoscale settings API to `min=2`, `max=10`.
+- Follow-up correction: Judoscale was initially enabled with range `min=1`, `max=5` and a very sensitive `10 ms / 5 ms` queue-time threshold; corrected via the Judoscale settings API to `min=2`, `max=10`, with `100 ms / 25 ms` queue-time thresholds.
 - During the old `min=1` cooldown, Railway metrics recorded 3 transient 5xx responses while deployments were reconciling. After the correction, `/healthz` returned clean 200s across both baseline replicas.
 - Load test record:
   - Command profile: `K6_BASELINE_VUS=20`, `K6_SPIKE_MULTIPLIER=10`, `K6_LOAD_DURATION=60s`.
@@ -95,6 +95,7 @@ railway scale us-west=0   # remove temporary us-west2 replicas after validation
 #    - Max replicas: 10  (covers 10X spike headroom)
 #    - Scale-up quantity: 2 replicas per step
 #    - Scale-up sensitivity: 10 seconds (fastest)
+#    - Adapter queue-time thresholds: scale up at 100 ms, scale down below 25 ms
 #    - Scale-down: conservative (5 min cooldown to avoid yo-yo)
 
 # 7. Re-run load test to confirm autoscaler fires.
