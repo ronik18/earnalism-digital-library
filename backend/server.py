@@ -81,14 +81,18 @@ def _database_name_from_mongo_url(url: str) -> str:
     db_name = parsed.path.lstrip("/").split("/", 1)[0]
     return db_name or "earnalism"
 
-MONGODB_MAX_POOL_SIZE = _env_int("MONGODB_MAX_POOL_SIZE", 100)
-MONGODB_MIN_POOL_SIZE = _env_int("MONGODB_MIN_POOL_SIZE", 2, minimum=0)
+MONGODB_MAX_POOL_SIZE = _env_int("MONGODB_MAX_POOL_SIZE", 25)
+MONGODB_MIN_POOL_SIZE = _env_int("MONGODB_MIN_POOL_SIZE", 1, minimum=0)
+MONGODB_MAX_CONNECTING = _env_int("MONGODB_MAX_CONNECTING", 2)
 MONGODB_SERVER_SELECTION_TIMEOUT_MS = _env_int("MONGODB_SERVER_SELECTION_TIMEOUT_MS", 15000)
+MONGODB_WAIT_QUEUE_TIMEOUT_MS = _env_int("MONGODB_WAIT_QUEUE_TIMEOUT_MS", 5000)
 client = AsyncIOMotorClient(
     mongo_url,
     maxPoolSize=MONGODB_MAX_POOL_SIZE,
     minPoolSize=min(MONGODB_MIN_POOL_SIZE, MONGODB_MAX_POOL_SIZE),
+    maxConnecting=MONGODB_MAX_CONNECTING,
     serverSelectionTimeoutMS=MONGODB_SERVER_SELECTION_TIMEOUT_MS,
+    waitQueueTimeoutMS=MONGODB_WAIT_QUEUE_TIMEOUT_MS,
     uuidRepresentation="standard",
 )
 db = client[os.environ.get("DB_NAME") or _database_name_from_mongo_url(mongo_url)]
