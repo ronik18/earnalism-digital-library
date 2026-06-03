@@ -4,8 +4,11 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
+import asyncio
 import os
+import pickle
 import re
+import signal
 import hmac
 import hashlib
 import html as _html
@@ -31,7 +34,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
 from contextlib import asynccontextmanager
-from motor.motor_asyncio import AsyncIOMotorClient
+from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorGridFSBucket
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
 
 
@@ -88,6 +91,7 @@ client = AsyncIOMotorClient(
     uuidRepresentation="standard",
 )
 db = client[os.environ.get("DB_NAME") or _database_name_from_mongo_url(mongo_url)]
+admin_upload_files = AsyncIOMotorGridFSBucket(db, bucket_name="admin_upload_files")
 
 JWT_SECRET = os.environ.get("JWT_SECRET")
 if not JWT_SECRET:
@@ -120,6 +124,15 @@ SESSION_TTL_SECONDS = JWT_EXPIRE_MINUTES * 60
 COOKIE_SECURE = os.environ.get("COOKIE_SECURE", "true").lower() != "false"
 COOKIE_SAMESITE = os.environ.get("COOKIE_SAMESITE", "lax")
 
+# Trial-safe horizontal-scaling switch. Keep false on Railway Trial. When Pro is
+# active, set MULTI_REPLICA_ENABLED=true with REDIS_URL so shared request state
+# moves out of each process.
+MULTI_REPLICA_ENABLED = _env_bool("MULTI_REPLICA_ENABLED", False)
+REDIS_URL = os.environ.get("REDIS_URL", "").strip()
+REDIS_KEY_PREFIX = os.environ.get("REDIS_KEY_PREFIX", "earnalism").strip() or "earnalism"
+_redis_client: Any = None
+_redis_available = False
+
 
 # ---------- Razorpay test-mode config ----------
 RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID", "").strip()
@@ -142,8 +155,8 @@ _rate_limit_hits: Dict[str, Deque[float]] = defaultdict(deque)
 _rate_limit_next_sweep = 0.0
 
 # Small per-process cache for anonymous public catalogue reads. It intentionally
-# excludes authenticated/user/admin routes and should move to Redis if the API is
-# scaled across several Railway replicas.
+# excludes authenticated/user/admin routes. In multi-replica mode it is backed by
+# Redis so public cache reads and invalidation are shared across Railway replicas.
 PUBLIC_CACHE_ENABLED = _env_bool("PUBLIC_CACHE_ENABLED", True)
 PUBLIC_CACHE_TTL_SECONDS = _env_int("PUBLIC_CACHE_TTL_SECONDS", 300)
 PUBLIC_CACHE_MAX_ENTRIES = _env_int("PUBLIC_CACHE_MAX_ENTRIES", 256)
@@ -151,6 +164,8 @@ HOME_BOOK_LIMIT = _env_int("HOME_BOOK_LIMIT", 500)
 HEALTH_CACHE_TTL_SECONDS = _env_int("HEALTH_CACHE_TTL_SECONDS", 5)
 _public_cache: "OrderedDict[str, Tuple[float, Any]]" = OrderedDict()
 _health_cache: dict = {"expires_at": 0.0, "payload": None}
+_public_cache_generation = 0
+_shutdown_state: dict = {"draining": False, "inflight": 0}
 
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
 # amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
@@ -607,13 +622,79 @@ PUBLIC_CACHE_PREFIXES = (
 )
 
 
+async def initialize_replica_state_backends() -> None:
+    global _redis_client, _redis_available
+    if not MULTI_REPLICA_ENABLED:
+        logger.info("Multi-replica state backends disabled; using single-replica local cache/rate-limit state.")
+        return
+    if not REDIS_URL:
+        raise RuntimeError("MULTI_REPLICA_ENABLED=true requires REDIS_URL for shared cache and rate-limit state.")
+    try:
+        import redis.asyncio as redis  # type: ignore
+    except Exception as exc:
+        raise RuntimeError("MULTI_REPLICA_ENABLED=true requires the redis Python package.") from exc
+    _redis_client = redis.from_url(
+        REDIS_URL,
+        encoding=None,
+        socket_connect_timeout=2,
+        socket_timeout=2,
+        retry_on_timeout=True,
+    )
+    await _redis_client.ping()
+    _redis_available = True
+    logger.info("Redis-backed multi-replica state is enabled.")
+
+
+async def close_replica_state_backends() -> None:
+    global _redis_available
+    if _redis_client is not None:
+        await _redis_client.aclose()
+    _redis_available = False
+
+
+def _redis_key(*parts: str) -> str:
+    cleaned = [re.sub(r"[^a-zA-Z0-9_.:-]", "_", str(part)) for part in parts if str(part)]
+    return ":".join([REDIS_KEY_PREFIX, *cleaned])
+
+
+def _redis_state_enabled() -> bool:
+    return bool(MULTI_REPLICA_ENABLED and _redis_available and _redis_client is not None)
+
+
+def _public_cache_storage_key(generation: int, key: str) -> str:
+    digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
+    return _redis_key("public-cache", str(generation), digest)
+
+
 def _public_cache_key(scope: str, **params) -> str:
     return f"{scope}:{_json.dumps(params, sort_keys=True, ensure_ascii=True, default=str)}"
 
 
-def _public_cache_get(key: str):
+async def _public_cache_generation_value() -> int:
+    if not _redis_state_enabled():
+        return _public_cache_generation
+    raw = await _redis_client.get(_redis_key("public-cache", "generation"))
+    if raw is None:
+        return 0
+    try:
+        return int(raw)
+    except (TypeError, ValueError):
+        return 0
+
+
+async def _public_cache_get(key: str):
     if not PUBLIC_CACHE_ENABLED:
         return None
+    if _redis_state_enabled():
+        redis_key = _public_cache_storage_key(await _public_cache_generation_value(), key)
+        blob = await _redis_client.get(redis_key)
+        if not blob:
+            return None
+        try:
+            return pickle.loads(blob)
+        except Exception:
+            logger.warning("Failed to decode Redis public cache entry: %s", key)
+            return None
     item = _public_cache.get(key)
     if not item:
         return None
@@ -625,8 +706,12 @@ def _public_cache_get(key: str):
     return value
 
 
-def _public_cache_set(key: str, value) -> None:
+async def _public_cache_set(key: str, value) -> None:
     if not PUBLIC_CACHE_ENABLED:
+        return
+    if _redis_state_enabled():
+        redis_key = _public_cache_storage_key(await _public_cache_generation_value(), key)
+        await _redis_client.setex(redis_key, PUBLIC_CACHE_TTL_SECONDS, pickle.dumps(value, protocol=pickle.HIGHEST_PROTOCOL))
         return
     _public_cache[key] = (time.monotonic() + PUBLIC_CACHE_TTL_SECONDS, value)
     _public_cache.move_to_end(key)
@@ -634,7 +719,12 @@ def _public_cache_set(key: str, value) -> None:
         _public_cache.popitem(last=False)
 
 
-def _public_cache_clear() -> None:
+async def _public_cache_clear() -> None:
+    global _public_cache_generation
+    if _redis_state_enabled():
+        await _redis_client.incr(_redis_key("public-cache", "generation"))
+        return
+    _public_cache_generation += 1
     _public_cache.clear()
 
 
@@ -1056,6 +1146,31 @@ def _docx_credit_rows(admin_user_id: str, session_id: str, file_name: str, uploa
     return rows
 
 
+async def _store_admin_upload_artifact(upload_id: str, safe_filename: str, kind: str, body: bytes, content_type: str) -> str:
+    if MULTI_REPLICA_ENABLED:
+        file_name = f"{upload_id}/{kind}/{safe_filename}"
+        file_id = await admin_upload_files.upload_from_stream(
+            file_name,
+            body,
+            metadata={
+                "upload_id": upload_id,
+                "kind": kind,
+                "filename": safe_filename,
+                "content_type": content_type,
+                "created_at": now_iso(),
+            },
+        )
+        return f"gridfs://admin_upload_files/{file_id}"
+
+    storage_dir = SECURE_STORAGE_DIR / upload_id
+    target_dir = storage_dir / "validated" if kind == "validated" else storage_dir
+    target_dir.mkdir(parents=True, exist_ok=True)
+    target_path = target_dir / safe_filename
+    target_path.write_bytes(body)
+    prefix = "secure_storage/{upload_id}/validated" if kind == "validated" else "secure_storage/{upload_id}"
+    return f"{prefix.format(upload_id=upload_id)}/{safe_filename}"
+
+
 async def _process_docx_upload(
     *,
     docx_file: UploadFile,
@@ -1075,15 +1190,9 @@ async def _process_docx_upload(
 
     upload_id = str(uuid.uuid4())
     safe_filename = _safe_storage_filename(filename)
-    storage_dir = SECURE_STORAGE_DIR / upload_id
-    validated_dir = storage_dir / "validated"
-    storage_dir.mkdir(parents=True, exist_ok=True)
-    validated_dir.mkdir(parents=True, exist_ok=True)
-    original_path = storage_dir / safe_filename
-    formatted_path = validated_dir / safe_filename
 
     try:
-        original_path.write_bytes(body)
+        await _store_admin_upload_artifact(upload_id, safe_filename, "original", body, DOCX_MIME)
         from docx import Document  # type: ignore
         document = Document(io.BytesIO(body))
     except Exception as e:
@@ -1105,7 +1214,9 @@ async def _process_docx_upload(
     checks, warnings = _validate_docx_document(document, raw_text)
     warnings.extend(template_warnings)
     _format_docx_document(document)
-    document.save(formatted_path)
+    formatted_buffer = io.BytesIO()
+    document.save(formatted_buffer)
+    storage_ref = await _store_admin_upload_artifact(upload_id, safe_filename, "validated", formatted_buffer.getvalue(), DOCX_MIME)
 
     book_data = {
         **template_data,
@@ -1181,7 +1292,7 @@ async def _process_docx_upload(
         "word_count": metadata["word_count"],
         "chapter_count": metadata["chapter_count"],
         "credits_used": total_credits,
-        "storage_ref": f"secure_storage/{upload_id}/validated/{safe_filename}",
+        "storage_ref": storage_ref,
         "created_at": now_iso(),
     }
     await db.admin_upload_audit.insert_one(audit)
@@ -1198,7 +1309,7 @@ async def _process_docx_upload(
             "warnings": sorted(set(warnings)),
             "formatted_file": {
                 "file_name": safe_filename,
-                "storage_ref": f"secure_storage/{upload_id}/validated/{safe_filename}",
+                "storage_ref": storage_ref,
             },
             "footer_note": "Validated content complies with anti-AI & copyright policies.",
         },
@@ -1881,9 +1992,32 @@ async def initialize_database_indexes() -> None:
     await db.reward_claims.create_index([("user_id", 1), ("reward_key", 1)], unique=True)
 
 
+def _mark_shutdown_draining() -> None:
+    _shutdown_state["draining"] = True
+    logger.warning(
+        "SIGTERM received; marking replica as draining with %s in-flight request(s).",
+        _shutdown_state.get("inflight", 0),
+    )
+
+
+def _install_sigterm_drain_marker() -> None:
+    previous_handler = signal.getsignal(signal.SIGTERM)
+
+    def _handle_sigterm(signum, frame):
+        _mark_shutdown_draining()
+        if callable(previous_handler):
+            previous_handler(signum, frame)
+        elif previous_handler == signal.SIG_DFL:
+            raise KeyboardInterrupt
+
+    signal.signal(signal.SIGTERM, _handle_sigterm)
+
+
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     # ----- startup -----
+    _install_sigterm_drain_marker()
+    await initialize_replica_state_backends()
     await initialize_database_indexes()
     await _migrate_wallet_transactions_to_ledger()
 
@@ -2020,6 +2154,11 @@ async def lifespan(_app: FastAPI):
     yield
 
     # ----- shutdown -----
+    _mark_shutdown_draining()
+    drain_deadline = time.monotonic() + 15
+    while int(_shutdown_state.get("inflight", 0)) > 0 and time.monotonic() < drain_deadline:
+        await asyncio.sleep(0.1)
+    await close_replica_state_backends()
     client.close()
 
 
@@ -2030,6 +2169,13 @@ app = FastAPI(
     docs_url=None if ENVIRONMENT == "production" else "/docs",
     redoc_url=None if ENVIRONMENT == "production" else "/redoc",
 )
+if os.environ.get("JUDOSCALE_URL", "").strip():
+    try:
+        from judoscale.asgi.middleware import FastAPIRequestQueueTimeMiddleware  # type: ignore
+    except Exception as exc:
+        raise RuntimeError("JUDOSCALE_URL is set but Judoscale ASGI middleware is unavailable.") from exc
+    app.add_middleware(FastAPIRequestQueueTimeMiddleware)
+    logger.info("Judoscale FastAPI request queue middleware enabled.")
 api = APIRouter(prefix="/api")
 
 
@@ -2175,16 +2321,35 @@ def _sweep_rate_limit_buckets(now: float) -> None:
             _rate_limit_hits.pop(key, None)
 
 
-def _rate_limit_retry_after(request: Request) -> Optional[int]:
+async def _redis_rate_limit_retry_after(key: str, limit: int, now: float) -> Optional[int]:
+    redis_key = _redis_key("rate-limit", hashlib.sha256(key.encode("utf-8")).hexdigest())
+    cutoff = now - RATE_LIMIT_WINDOW_SECONDS
+    await _redis_client.zremrangebyscore(redis_key, 0, cutoff)
+    count = await _redis_client.zcard(redis_key)
+    if count >= limit:
+        oldest = await _redis_client.zrange(redis_key, 0, 0, withscores=True)
+        if oldest:
+            oldest_score = float(oldest[0][1])
+            return max(1, int(RATE_LIMIT_WINDOW_SECONDS - (now - oldest_score)))
+        return RATE_LIMIT_WINDOW_SECONDS
+    member = f"{now:.6f}:{uuid.uuid4()}"
+    await _redis_client.zadd(redis_key, {member: now})
+    await _redis_client.expire(redis_key, RATE_LIMIT_WINDOW_SECONDS * 2)
+    return None
+
+
+async def _rate_limit_retry_after(request: Request) -> Optional[int]:
     if not RATE_LIMIT_ENABLED or request.method == "OPTIONS":
         return None
     path = request.url.path
-    if path in {"/health", "/api/health", "/docs", "/redoc", "/openapi.json", "/favicon.ico"}:
+    if path in {"/health", "/healthz", "/api/health", "/api/healthz", "/docs", "/redoc", "/openapi.json", "/favicon.ico"}:
         return None
     scope, limit = _rate_limit_scope(path)
     now = time.monotonic()
-    _sweep_rate_limit_buckets(now)
     key = f"{scope}:{_rate_limit_identity(request)}"
+    if _redis_state_enabled():
+        return await _redis_rate_limit_retry_after(key, limit, now)
+    _sweep_rate_limit_buckets(now)
     bucket = _rate_limit_hits[key]
     cutoff = now - RATE_LIMIT_WINDOW_SECONDS
     while bucket and bucket[0] <= cutoff:
@@ -2253,30 +2418,43 @@ async def production_hardening_middleware(request: Request, call_next):
     request.state.request_id = request_id
     started = time.perf_counter()
     status_code = 500
+    path = request.url.path
 
-    retry_after = _rate_limit_retry_after(request)
-    if retry_after is not None:
-        status_code = 429
+    if _shutdown_state.get("draining") and path not in {"/health", "/healthz", "/api/health", "/api/healthz"}:
         response = _json_error_response(
             request,
-            status_code=429,
-            message="Too many requests",
-            headers={"Retry-After": str(retry_after)},
+            status_code=503,
+            message="Server is draining before shutdown",
+            headers={"Connection": "close", "Retry-After": "15"},
         )
-    else:
-        try:
+        response.headers["X-Request-ID"] = request_id
+        return response
+
+    _shutdown_state["inflight"] = int(_shutdown_state.get("inflight", 0)) + 1
+    try:
+        retry_after = await _rate_limit_retry_after(request)
+        if retry_after is not None:
+            status_code = 429
+            response = _json_error_response(
+                request,
+                status_code=429,
+                message="Too many requests",
+                headers={"Retry-After": str(retry_after)},
+            )
+        else:
             response = await call_next(request)
             status_code = response.status_code
-        except Exception:
-            logger.exception("Unhandled request failure")
-            raise
+    except Exception:
+        logger.exception("Unhandled request failure")
+        raise
+    finally:
+        _shutdown_state["inflight"] = max(0, int(_shutdown_state.get("inflight", 1)) - 1)
 
     response.headers["X-Request-ID"] = request_id
     _security_headers(response)
     duration_ms = round((time.perf_counter() - started) * 1000, 2)
     response.headers["Server-Timing"] = f"app;dur={duration_ms}"
     response.headers["X-Response-Time-ms"] = str(duration_ms)
-    path = request.url.path
     if (
         request.method == "GET"
         and response.status_code == 200
@@ -2287,12 +2465,12 @@ async def production_hardening_middleware(request: Request, call_next):
             "Cache-Control",
             f"public, max-age={min(PUBLIC_CACHE_TTL_SECONDS, 60)}, stale-while-revalidate=120",
         )
-    elif path in {"/health", "/api/health"}:
+    elif path in {"/health", "/healthz", "/api/health", "/api/healthz"}:
         response.headers.setdefault("Cache-Control", "no-store")
     elif path.startswith(("/api/admin", "/api/users", "/api/reader", "/api/reading", "/api/payments")):
         response.headers.setdefault("Cache-Control", "no-store")
     if request.method in {"POST", "PUT", "PATCH", "DELETE"} and response.status_code < 400 and path.startswith("/api/admin"):
-        _public_cache_clear()
+        await _public_cache_clear()
     logger.info(_json.dumps({
         "event": "http_request",
         "request_id": request_id,
@@ -2396,6 +2574,19 @@ async def root_health_check():
     return await health_check()
 
 
+@app.get("/healthz")
+async def root_healthz_check():
+    return {
+        "status": "ok",
+        "replica": "single" if not MULTI_REPLICA_ENABLED else os.environ.get("RAILWAY_REPLICA_ID", "multi"),
+    }
+
+
+@api.get("/healthz")
+async def api_healthz_check():
+    return await root_healthz_check()
+
+
 @api.get("/home")
 async def get_home_payload():
     """Cached landing-page payload.
@@ -2405,7 +2596,7 @@ async def get_home_payload():
     reads to one cached request while keeping the older public endpoints intact.
     """
     cache_key = _public_cache_key("home_payload")
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
 
@@ -2431,7 +2622,7 @@ async def get_home_payload():
         "books": books,
         "featured": {"book": featured_book},
     }
-    _public_cache_set(cache_key, result)
+    await _public_cache_set(cache_key, result)
     return result
 
 
@@ -2492,11 +2683,11 @@ async def record_secure_reader_event(
 @api.get("/categories")
 async def list_categories():
     cache_key = _public_cache_key("categories")
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     docs = await db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200)
-    _public_cache_set(cache_key, docs)
+    await _public_cache_set(cache_key, docs)
     return docs
 
 
@@ -2507,7 +2698,7 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     if category and category != "all":
         category_filter = normalize_category_slug(category) or category
     cache_key = _public_cache_key("books", category=category_filter or "all", q=normalize_text(q).strip() if q else "")
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     query: dict = {"is_published": True}
@@ -2528,13 +2719,13 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     docs = await db.books.find(query, BOOK_SUMMARY_PROJECTION).sort("created_at", -1).to_list(500)
     # Public list is shelf metadata-only so library browsing never ships chapter bodies.
     result = [_strip_all_chapter_content(d) for d in docs]
-    _public_cache_set(cache_key, result)
+    await _public_cache_set(cache_key, result)
     return result
 
 @api.get("/books/{slug}", response_model=Book)
 async def get_book(slug: str):
     cache_key = _public_cache_key("book_detail", slug=slug)
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     doc = await db.books.find_one({"slug": slug, "is_published": True}, BOOK_METADATA_PROJECTION)
@@ -2543,14 +2734,14 @@ async def get_book(slug: str):
     # Public detail returns metadata + ToC only. Reader content is fetched through
     # the gated chapter endpoint so detail pages stay light for large books.
     result = _strip_all_chapter_content(doc)
-    _public_cache_set(cache_key, result)
+    await _public_cache_set(cache_key, result)
     return result
 
 
 @api.get("/books/{slug}/chapters")
 async def get_book_chapters(slug: str):
     cache_key = _public_cache_key("book_chapters", slug=slug)
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     doc = await db.books.find_one({"slug": slug, "is_published": True}, BOOK_METADATA_PROJECTION)
@@ -2560,14 +2751,14 @@ async def get_book_chapters(slug: str):
     if not chapters:
         return []
     result = sorted(chapters, key=lambda c: c.get("order", 0))
-    _public_cache_set(cache_key, result)
+    await _public_cache_set(cache_key, result)
     return result
 
 
 @api.get("/books/{slug}/chapters/{chapter_id}")
 async def get_book_chapter(slug: str, chapter_id: str):
     cache_key = _public_cache_key("book_chapter", slug=slug, chapter_id=chapter_id)
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     book_meta = await db.books.find_one({"slug": slug, "is_published": True}, READER_ACCESS_PROJECTION)
@@ -2589,7 +2780,7 @@ async def get_book_chapter(slug: str, chapter_id: str):
         chapter["content"] = target.get("content", "")
     if not chapter:
         raise HTTPException(status_code=404, detail="Chapter not found")
-    _public_cache_set(cache_key, chapter)
+    await _public_cache_set(cache_key, chapter)
     return chapter
 
 
@@ -2597,26 +2788,26 @@ async def get_book_chapter(slug: str, chapter_id: str):
 @api.get("/blog", response_model=List[BlogPost])
 async def list_blog(category: Optional[str] = None):
     cache_key = _public_cache_key("blog", category=category or "all")
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     query: dict = {"is_published": True}
     if category and category != "all":
         query["category"] = category
     docs = await db.blog_posts.find(query, {"_id": 0}).sort("created_at", -1).to_list(200)
-    _public_cache_set(cache_key, docs)
+    await _public_cache_set(cache_key, docs)
     return docs
 
 @api.get("/blog/{slug}", response_model=BlogPost)
 async def get_blog(slug: str):
     cache_key = _public_cache_key("blog_detail", slug=slug)
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     doc = await db.blog_posts.find_one({"slug": slug, "is_published": True}, {"_id": 0})
     if not doc:
         raise HTTPException(status_code=404, detail="Article not found")
-    _public_cache_set(cache_key, doc)
+    await _public_cache_set(cache_key, doc)
     return doc
 
 
@@ -2624,17 +2815,17 @@ async def get_blog(slug: str):
 @api.get("/featured")
 async def get_featured():
     cache_key = _public_cache_key("featured")
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     s = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
     if not s:
         result = {"book": None}
-        _public_cache_set(cache_key, result)
+        await _public_cache_set(cache_key, result)
         return result
     book = await db.books.find_one({"slug": s.get("book_slug")}, BOOK_METADATA_PROJECTION)
     result = {"book": _strip_all_chapter_content(book) if book else None}
-    _public_cache_set(cache_key, result)
+    await _public_cache_set(cache_key, result)
     return result
 
 
@@ -2670,7 +2861,7 @@ async def contact(payload: ContactIn):
 @api.get("/settings/social")
 async def get_social():
     cache_key = _public_cache_key("settings_social")
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     doc = await db.settings.find_one({"key": "social"}, {"_id": 0}) or {}
@@ -2681,7 +2872,7 @@ async def get_social():
         "linkedin": doc.get("linkedin", ""),
         "twitter": doc.get("twitter", ""),
     }
-    _public_cache_set(cache_key, result)
+    await _public_cache_set(cache_key, result)
     return result
 
 
@@ -2691,7 +2882,7 @@ async def get_brand():
     Empty strings are returned if not configured so the frontend can fall back
     to the existing premium text logo and hero image."""
     cache_key = _public_cache_key("settings_brand")
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     doc = await db.settings.find_one({"key": "brand"}, {"_id": 0}) or {}
@@ -2699,21 +2890,21 @@ async def get_brand():
         "logo_url": doc.get("logo_url", ""),
         "og_image_url": doc.get("og_image_url", ""),
     }
-    _public_cache_set(cache_key, result)
+    await _public_cache_set(cache_key, result)
     return result
 
 
 @api.get("/settings/public")
 async def get_public_settings():
     cache_key = _public_cache_key("settings_public")
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     result = {
         "social": await get_social(),
         "brand": await get_brand(),
     }
-    _public_cache_set(cache_key, result)
+    await _public_cache_set(cache_key, result)
     return result
 
 
@@ -3915,14 +4106,14 @@ async def reading_pulse(payload: ReadingPulseIn, principal: Optional[dict] = Dep
 @api.get("/reading/packs")
 async def reading_packs():
     cache_key = _public_cache_key("reading_packs")
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     result = [
         {"id": p["id"], "minutes": p["minutes"], "price": p["price_inr"], "label": p["label"]}
         for p in PACKS
     ]
-    _public_cache_set(cache_key, result)
+    await _public_cache_set(cache_key, result)
     return result
 
 
@@ -3972,11 +4163,11 @@ async def reader_get_chapter(
     # Free preview is open to everyone — no auth, no deduction.
     if is_preview and not is_admin_preview:
         cache_key = _public_cache_key("reader_preview_chapter", slug=slug, chapter_id=chapter_id)
-        cached = _public_cache_get(cache_key)
+        cached = await _public_cache_get(cache_key)
         if cached is not None:
             return cached
         result = await unlocked_chapter_response(True)
-        _public_cache_set(cache_key, result)
+        await _public_cache_set(cache_key, result)
         return result
 
     # Admin always has full access (admin reader preview).
@@ -4201,11 +4392,11 @@ async def admin_user_status(uid: str, payload: UserStatusIn, _=Depends(require_a
 @api.get("/payments/packs", response_model=List[PackOut])
 async def payments_list_packs():
     cache_key = _public_cache_key("payment_packs")
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     result = [PackOut(**p).model_dump() for p in PACKS]
-    _public_cache_set(cache_key, result)
+    await _public_cache_set(cache_key, result)
     return result
 
 
@@ -4213,7 +4404,7 @@ async def payments_list_packs():
 async def payments_config():
     """Lightweight config shim used by frontend to know if Razorpay is wired."""
     cache_key = _public_cache_key("payment_config")
-    cached = _public_cache_get(cache_key)
+    cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
     result = {
@@ -4221,7 +4412,7 @@ async def payments_config():
         "mode": RAZORPAY_MODE,
         "key_id": RAZORPAY_KEY_ID if razorpay_keys_configured() else "",
     }
-    _public_cache_set(cache_key, result)
+    await _public_cache_set(cache_key, result)
     return result
 
 
