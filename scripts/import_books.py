@@ -411,7 +411,7 @@ def download_source(url: str, source_type: str = "") -> tuple[bytes, dict[str, A
                     time.sleep(attempt)
                     continue
                 break
-            except (TimeoutError, socket.timeout, URLError) as exc:
+            except (TimeoutError, socket.timeout, ConnectionResetError, URLError) as exc:
                 last_error = exc
                 if attempt < 2:
                     time.sleep(attempt)
@@ -636,6 +636,70 @@ def sanitize_text(raw: str, manifest: dict[str, Any]) -> tuple[str, list[str]]:
     text = re.sub(r"\n{3,}", "\n\n", text)
     text = re.sub(r"[ \t]+\n", "\n", text).strip()
     return text, warnings
+
+
+def normalized_marker(value: str) -> str:
+    value = normalize_text(value).strip()
+    value = re.sub(r"\s+", " ", value)
+    return value.casefold()
+
+
+def find_marker_line(
+    lines: list[str],
+    marker: str,
+    start: int = 0,
+    occurrence: str | int = "first",
+) -> int | None:
+    target = normalized_marker(marker)
+    matches = [
+        index
+        for index in range(max(0, start), len(lines))
+        if normalized_marker(lines[index]) == target
+    ]
+    if not matches:
+        return None
+    if occurrence == "last":
+        return matches[-1]
+    if isinstance(occurrence, int):
+        if occurrence < 0:
+            return matches[occurrence] if abs(occurrence) <= len(matches) else None
+        return matches[occurrence - 1] if 0 < occurrence <= len(matches) else None
+    return matches[0]
+
+
+def apply_text_extraction(text: str, manifest: dict[str, Any]) -> tuple[str, list[str]]:
+    config = manifest.get("text_extraction") if isinstance(manifest.get("text_extraction"), dict) else {}
+    start_marker = normalize_text(config.get("start_marker", "")).strip()
+    if not start_marker:
+        return text, []
+
+    warnings: list[str] = []
+    lines = text.split("\n")
+    start_occurrence = config.get("start_occurrence", "last")
+    start_index = find_marker_line(lines, start_marker, occurrence=start_occurrence)
+    if start_index is None:
+        raise ValueError(f"text_extraction start_marker not found: {start_marker}")
+
+    include_start = bool(config.get("include_start_marker") is True)
+    body_start = start_index if include_start else start_index + 1
+    body_start += max(0, int(config.get("body_start_offset") or 0))
+
+    end_index = len(lines)
+    end_marker = normalize_text(config.get("end_marker", "")).strip()
+    if end_marker:
+        found_end = find_marker_line(lines, end_marker, start=body_start, occurrence="first")
+        if found_end is None:
+            raise ValueError(f"text_extraction end_marker not found after start_marker: {end_marker}")
+        end_index = found_end
+
+    extracted = "\n".join(lines[body_start:end_index]).strip()
+    if not extracted:
+        raise ValueError("text_extraction produced empty content")
+    warnings.append(
+        f"Extracted collection range from marker `{start_marker[:80]}`"
+        + (f" to `{end_marker[:80]}`." if end_marker else ".")
+    )
+    return extracted, warnings
 
 
 def title_case_ratio(line: str) -> float:
@@ -1153,10 +1217,25 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
         return result
 
     try:
-        body, download_log = download_source(book["source_url"], book.get("source_type", ""))
-        raw = decode_utf8(body)
-        cleaned, clean_warnings = sanitize_text(raw, book)
-        result.warnings.extend(clean_warnings)
+        prepared_text_path = normalize_text(book.get("prepared_text_path", "")).strip()
+        if prepared_text_path:
+            path = Path(prepared_text_path).expanduser().resolve()
+            if not path.exists():
+                raise ValueError(f"prepared_text_path does not exist: {path}")
+            cleaned = path.read_text(encoding="utf-8").strip()
+            download_log = {
+                "download_url": canonical_source_url(book.get("source_url", "")),
+                "prepared_text_path": str(path),
+                "download_attempts": 0,
+            }
+            result.warnings.append("Used prepared sanitized text from manifest prepared_text_path.")
+        else:
+            body, download_log = download_source(book["source_url"], book.get("source_type", ""))
+            raw = decode_utf8(body)
+            cleaned, clean_warnings = sanitize_text(raw, book)
+            result.warnings.extend(clean_warnings)
+            cleaned, extraction_warnings = apply_text_extraction(cleaned, book)
+            result.warnings.extend(extraction_warnings)
     except Exception as exc:
         result.status = "skipped"
         result.errors.append(str(exc))
@@ -1164,17 +1243,31 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
         return result
 
     chapter_rules = book.get("chapter_rules") if isinstance(book.get("chapter_rules"), dict) else {}
-    chapters, chapter_warnings = detect_chapters(
-        cleaned,
-        allow_title_case_headings=bool(chapter_rules.get("allow_title_case_headings") or book.get("allow_title_case_headings")),
-    )
-    result.warnings.extend(chapter_warnings)
+    force_single_chapter = bool(chapter_rules.get("force_single_chapter") or book.get("force_single_chapter"))
+    if force_single_chapter:
+        chapters: list[dict[str, Any]] = []
+        result.warnings.append("Forced single reader chapter per manifest chapter_rules.")
+    else:
+        chapters, chapter_warnings = detect_chapters(
+            cleaned,
+            allow_title_case_headings=bool(chapter_rules.get("allow_title_case_headings") or book.get("allow_title_case_headings")),
+        )
+        result.warnings.extend(chapter_warnings)
     if is_wikisource_type(book.get("source_type", "")) and "bengali" in normalize_text(book.get("source_type", "")).lower():
         if not BENGALI_RE.search(cleaned):
             result.errors.append("Bengali Wikisource extraction did not preserve Bengali Unicode text")
     word_count = len(words(cleaned))
     metadata = metadata_defaults(book, word_count, result.warnings)
     metadata["slug"] = stable_book_slug(book, index)
+    if force_single_chapter:
+        chapters = [{
+            "order": 1,
+            "title": metadata.get("title") or "Full Text",
+            "content": text_to_reader_html(cleaned),
+            "is_preview": False,
+            "summary": chapter_summary(cleaned),
+            "warnings": ["Single chapter requested by manifest."],
+        }]
     upload_object = {
         **metadata,
         "audiobook_enabled": bool(book.get("audiobook_enabled") is True),
@@ -1484,6 +1577,7 @@ def main() -> int:
 
     for item in passing:
         try:
+            print(f"Uploading draft: {item.upload_object.get('title', item.manifest.get('title', 'Untitled'))}", flush=True)
             upload_book(
                 item,
                 api_url,
@@ -1493,9 +1587,11 @@ def main() -> int:
             )
             if item.upload_result:
                 item.status = "uploaded"
+                print(f"Uploaded draft: {item.upload_result.get('title')} ({item.upload_result.get('slug')})", flush=True)
         except Exception as exc:
             item.errors.append(str(exc))
             item.status = "skipped"
+            print(f"Upload skipped: {item.manifest.get('title', 'Untitled')} - {exc}", flush=True)
             if item.internal_log:
                 item.internal_log["validation_result"] = "upload_failed"
                 item.internal_log["errors"] = item.errors
