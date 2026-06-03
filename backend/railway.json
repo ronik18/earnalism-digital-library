@@ -6,7 +6,7 @@
   },
   "deploy": {
     "startCommand": "sh -c \"uvicorn server:app --host 0.0.0.0 --port ${PORT:-8000} --workers ${WEB_CONCURRENCY:-2} --proxy-headers --forwarded-allow-ips '*' --timeout-keep-alive ${UVICORN_KEEP_ALIVE:-15} --timeout-graceful-shutdown ${UVICORN_GRACEFUL_TIMEOUT:-15}\"",
-    "healthcheckPath": "/health",
+    "healthcheckPath": "/healthz",
     "healthcheckTimeout": 100,
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
