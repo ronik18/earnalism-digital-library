@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Sparkles, Compass } from "lucide-react";
+import { ArrowRight, BookOpen, Sparkles, Compass, Feather, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { api, formatError } from "../lib/api";
 import { optimizedImageUrl } from "../lib/images";
@@ -47,6 +47,33 @@ function shelfImageFor(category) {
 
   return category?.image_url;
 }
+
+const WHY_POINTS = [
+  {
+    icon: Sparkles,
+    title: "Curated slowly",
+    proof: "No shelf sprawl",
+    body: "Each shelf is chosen like a letter to one thoughtful reader: fewer titles, stronger reasons, more room to return.",
+  },
+  {
+    icon: BookOpen,
+    title: "Preview first",
+    proof: "Reader-first buying",
+    body: "Earnalism lets the book introduce itself before purchase, so curiosity can become trust at its own pace.",
+  },
+  {
+    icon: Compass,
+    title: "Built for focus",
+    proof: "Quiet by design",
+    body: "The typography, spacing, and reading path are tuned for calm attention instead of restless browsing.",
+  },
+];
+
+const DESK_NOTES = [
+  { number: "01", title: "Small lists", body: "A tighter catalog makes each recommendation feel earned." },
+  { number: "02", title: "Reader pace", body: "Pages, previews, and shelves are arranged for unhurried decisions." },
+  { number: "03", title: "Useful depth", body: "Classic literature, Bengali writing, business, history, and AI sit beside each other with purpose." },
+];
 
 export default function Home() {
   const [categories, setCategories] = useState([]);
@@ -179,7 +206,7 @@ export default function Home() {
       </section>
 
       {/* CATEGORIES */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-56 sm:pt-44 lg:pt-48 pb-20 sm:pb-28 lg:pb-32" id="collection">
+      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-56 sm:pt-44 lg:pt-48 pb-12 sm:pb-16 lg:pb-20" id="collection">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16 lg:mb-20">
           <div className="max-w-xl">
             <div className="overline mb-4">The Shelves</div>
@@ -253,70 +280,116 @@ export default function Home() {
       )}
 
       {/* WHY EARNALISM */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32">
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 lg:mb-20">
-          <div className="overline mb-3 sm:mb-4">Why The Earnalism</div>
-          <h2 className="font-serif-light text-[2.25rem] sm:text-5xl text-burgundy tracking-tight leading-[1.06]">A bookstore for readers who <span className="italic-accent">linger.</span></h2>
+      <section className="relative overflow-hidden bg-[#221017] text-[#FDFCF8]">
+        <div className="absolute inset-0 opacity-28">
+          <img src={HERO_IMG} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#16070b] via-[#221017]/92 to-[#3a141d]/78" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8 max-w-5xl mx-auto lg:max-w-none">
-          {[
-            { icon: Sparkles, title: "Curated With Meaning", body: "Every shelf is a slow act of selection. We choose books we would lend to a close friend — and never apologise for the smaller list." },
-            { icon: BookOpen, title: "Built for Thoughtful Readers", body: "Our writing, design, and packaging assume a patient reader. Margins to think in. Typography to return to. A pace that respects you." },
-            { icon: Compass, title: "From Reading to Practice", body: "Every shelf is chosen to turn careful reading into careful living — steadier thinking, better work, quieter days. We curate for return, not rush." },
-          ].map((c, i) => (
-            <div key={c.title} className={`card-elegant p-8 sm:p-9 lg:p-11 ${i === 2 ? "md:col-span-2 lg:col-span-1" : ""}`} data-testid={`why-card-${c.title.toLowerCase().replace(/\s/g, '-')}`}>
-              <c.icon className="text-gold" size={26} strokeWidth={1.4} />
-              <div className="gold-rule-thin mt-5 mb-6" />
-              <h3 className="font-serif-display text-[1.5rem] sm:text-2xl text-burgundy mb-3 sm:mb-4 leading-snug">{c.title}</h3>
-              <p className="text-charcoal-soft leading-[1.8] text-[0.92rem] sm:text-[0.95rem] font-light">{c.body}</p>
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-end">
+            <div className="lg:col-span-5">
+              <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-4">Why The Earnalism</div>
+              <h2 className="font-serif-light text-[2.35rem] sm:text-5xl lg:text-[3.75rem] leading-[1.03] tracking-normal text-balance">
+                A library that lowers the room's <span className="italic-accent text-[var(--brand-gold-soft)]">volume.</span>
+              </h2>
+              <p className="mt-6 text-[#F4EFEA]/78 leading-[1.8] text-[0.98rem] sm:text-[1.05rem] font-light max-w-xl">
+                After the shelves, the promise stays simple: fewer distractions, richer judgment, and a reading path that lets each book earn its place.
+              </p>
+              <Link to="/library" className="btn-secondary mt-8 !text-[#FDFCF8] !border-[var(--brand-gold-soft)] hover:!bg-[rgba(216,185,122,0.12)]" data-testid="why-library-link">
+                Explore the shelves <ArrowRight size={15} strokeWidth={1.7} />
+              </Link>
             </div>
-          ))}
+
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+              {WHY_POINTS.map((point) => (
+                <div key={point.title} className="rounded-lg border border-[#FDFCF8]/15 bg-[#FDFCF8]/[0.06] p-6 sm:p-7 backdrop-blur-sm" data-testid={`why-card-${point.title.toLowerCase().replace(/\s/g, '-')}`}>
+                  <point.icon className="text-[var(--brand-gold-soft)]" size={24} strokeWidth={1.45} />
+                  <div className="mt-8 text-[0.65rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]">{point.proof}</div>
+                  <h3 className="font-serif-display text-[1.55rem] text-[#FDFCF8] mt-3 leading-snug">{point.title}</h3>
+                  <p className="mt-4 text-[#F4EFEA]/72 leading-[1.75] text-[0.9rem] font-light">{point.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* FOUNDER NOTE */}
-      <section className="surface-warm border-y border-brand-soft">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-5 order-2 lg:order-1">
-            <div className="aspect-[4/5] rounded-xl overflow-hidden border border-brand-soft max-w-[280px] sm:max-w-sm mx-auto lg:max-w-none">
-              <img src={optimizedImageUrl(FOUNDER_IMG, { width: 760 })} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+      <section className="bg-[#FDFCF8]">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-6">
+            <div className="relative overflow-hidden rounded-lg border border-brand-soft bg-[#221017] aspect-[5/4] sm:aspect-[16/11] lg:aspect-[4/5]">
+              <img src={optimizedImageUrl(FOUNDER_IMG, { width: 940 })} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2a1218]/55 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#FDFCF8]/35 bg-[#2a1218]/50 px-4 py-2 text-[0.65rem] uppercase tracking-[0.2em] text-[#FDFCF8] backdrop-blur">
+                  <Feather size={13} strokeWidth={1.6} /> From the desk
+                </div>
+              </div>
             </div>
           </div>
-          <div className="lg:col-span-7 order-1 lg:order-2 text-center lg:text-left">
+          <div className="lg:col-span-6">
             <div className="italic-eyebrow mb-4 sm:mb-5">A note from the desk</div>
-            <h2 className="font-serif-light text-[2.25rem] sm:text-5xl text-burgundy leading-[1.06] tracking-tight">A bookstore for the reader who still believes in <span className="italic-accent">depth.</span></h2>
-            <p className="text-charcoal-soft mt-6 sm:mt-8 leading-[1.85] text-[0.98rem] sm:text-[1.02rem] max-w-2xl font-light mx-auto lg:mx-0">
-              The Earnalism began as a quiet rebellion against noisy bookshelves. We believe a book is a long conversation — patient, particular, and worth the careful season it takes to write. As an independent online bookstore, we keep the list small and the standard generous. Every title here is chosen for one reader: the one who still believes that meaning compounds, slowly, across the right pages.
+            <h2 className="font-serif-light text-[2.25rem] sm:text-5xl lg:text-[3.55rem] text-burgundy leading-[1.04] tracking-normal text-balance">
+              A bookstore for the reader who still believes in <span className="italic-accent">depth.</span>
+            </h2>
+            <p className="text-charcoal-soft mt-6 sm:mt-7 leading-[1.85] text-[0.98rem] sm:text-[1.03rem] max-w-2xl font-light">
+              The Earnalism began as a quiet rebellion against noisy bookshelves. A book is a long conversation: patient, particular, and worth the careful season it takes to write. The list stays small because the standard stays generous.
             </p>
-            <div className="gold-rule mt-8 sm:mt-10 mx-auto lg:mx-0" />
+            <div className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-3 border-y border-brand-soft">
+              {DESK_NOTES.map((note, i) => (
+                <div key={note.title} className={`py-6 sm:px-5 ${i > 0 ? "border-t sm:border-t-0 sm:border-l border-brand-soft" : ""}`}>
+                  <div className="text-[0.68rem] tracking-[0.24em] uppercase text-gold-deep">{note.number}</div>
+                  <h3 className="font-serif-display text-[1.35rem] text-burgundy mt-3 leading-snug">{note.title}</h3>
+                  <p className="text-charcoal-soft text-[0.88rem] leading-[1.65] mt-3 font-light">{note.body}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* NEWSLETTER */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32">
-        <div className="surface-quiet border border-brand-soft rounded-xl p-8 sm:p-12 lg:p-20 text-center max-w-3xl mx-auto" data-testid="newsletter-card">
-          <div className="italic-eyebrow mb-3 sm:mb-4">From the Editor's Desk</div>
-          <h2 className="font-serif-light text-[2rem] sm:text-4xl lg:text-5xl text-burgundy tracking-tight leading-[1.08]">Join the Earnalism <span className="italic-accent">Reading Circle.</span></h2>
-          <div className="gold-rule-thin mx-auto mt-6 sm:mt-7" />
-          <p className="text-charcoal-soft mt-6 sm:mt-7 max-w-xl mx-auto leading-[1.8] font-light text-[0.95rem]">
-            Receive thoughtful book notes, new shelf arrivals, and curated reading recommendations — written with the care of a private letter.
-          </p>
-          <form onSubmit={subscribe} className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 max-w-xl mx-auto text-left">
-            <input
-              required value={name} onChange={(e) => setName(e.target.value)}
-              placeholder="Your name" className="input-elegant" data-testid="newsletter-name"
-            />
-            <input
-              required type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email" className="input-elegant" data-testid="newsletter-email"
-            />
-            <div className="sm:col-span-2 flex justify-center mt-5 sm:mt-6">
-              <button disabled={submitting} type="submit" className="btn-primary w-full sm:w-auto justify-center disabled:opacity-60" data-testid="newsletter-submit">
-                {submitting ? "Joining…" : "Join the Circle"}
-              </button>
+      <section className="relative overflow-hidden bg-[#1b0b10] text-[#FDFCF8]">
+        <div className="absolute inset-0 opacity-22">
+          <img src={HERO_IMG} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1b0b10] via-[#1b0b10]/90 to-[#4a1c27]/78" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-6">
+              <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-4">From the Editor's Desk</div>
+              <h2 className="font-serif-light text-[2.25rem] sm:text-5xl lg:text-[3.6rem] tracking-normal leading-[1.04] text-balance">
+                Join the Earnalism <span className="italic-accent text-[var(--brand-gold-soft)]">Reading Circle.</span>
+              </h2>
+              <p className="text-[#F4EFEA]/76 mt-6 leading-[1.8] max-w-xl font-light text-[0.98rem] sm:text-[1.03rem]">
+                Receive thoughtful book notes, new shelf arrivals, and curated reading recommendations written with the care of a private letter.
+              </p>
             </div>
-          </form>
+            <form onSubmit={subscribe} className="lg:col-span-6 rounded-lg border border-[#FDFCF8]/16 bg-[#FDFCF8]/[0.06] p-6 sm:p-8 lg:p-10 backdrop-blur-sm" data-testid="newsletter-card">
+              <div className="flex items-center gap-3 text-[0.68rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]">
+                <Mail size={15} strokeWidth={1.6} /> Private dispatch
+              </div>
+              <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                <input
+                  required value={name} onChange={(e) => setName(e.target.value)}
+                  placeholder="Your name" className="input-elegant !text-[#FDFCF8] !border-b-[#FDFCF8]/30 placeholder:!text-[#FDFCF8]/45" data-testid="newsletter-name"
+                />
+                <input
+                  required type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email" className="input-elegant !text-[#FDFCF8] !border-b-[#FDFCF8]/30 placeholder:!text-[#FDFCF8]/45" data-testid="newsletter-email"
+                />
+                <div className="sm:col-span-2 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between mt-3">
+                  <p className="text-[#F4EFEA]/58 text-[0.78rem] leading-[1.6] font-light max-w-sm">
+                    Quiet notes only. No noisy campaign rhythm.
+                  </p>
+                  <button disabled={submitting} type="submit" className="btn-primary w-full sm:w-auto justify-center !bg-[var(--brand-gold-soft)] !border-[var(--brand-gold-soft)] !text-[#241016] hover:!bg-[var(--brand-gold)] disabled:opacity-60" data-testid="newsletter-submit">
+                    {submitting ? "Joining…" : "Join the Circle"}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </section>
     </div>
