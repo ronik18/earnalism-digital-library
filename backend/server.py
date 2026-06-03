@@ -635,7 +635,6 @@ async def initialize_replica_state_backends() -> None:
         raise RuntimeError("MULTI_REPLICA_ENABLED=true requires the redis Python package.") from exc
     _redis_client = redis.from_url(
         REDIS_URL,
-        encoding=None,
         socket_connect_timeout=2,
         socket_timeout=2,
         retry_on_timeout=True,
