@@ -9,6 +9,7 @@ Prepared on June 3, 2026 for theearnalism.com. Railway Pro is now active, and th
 - Shared state: Railway Redis service provisioned and backend `REDIS_URL` configured.
 - Multi-replica mode: `MULTI_REPLICA_ENABLED=true`.
 - Autoscaler: `JUDOSCALE_URL` configured; logs confirm Judoscale FastAPI middleware is enabled.
+- Judoscale process type: `earnalism`, autoscaling enabled, min 2 replicas, max 10 replicas, upscale quantity 2, 10-second scale-up sensitivity, 5-minute conservative downscale.
 - Runtime logs confirm Redis-backed multi-replica state is enabled.
 - Health checks:
   - `https://api.theearnalism.com/healthz`
@@ -17,7 +18,9 @@ Prepared on June 3, 2026 for theearnalism.com. Railway Pro is now active, and th
 - Baseline replicas after validation: 2 running replicas in `sfo`.
   - Railway CLI rejected `sfo` as a scale argument; the accepted California alias is `us-west`, which Railway may display as `us-west2`.
   - During testing, Judoscale/Railway briefly used both `sfo` and `us-west2`; the final cost-conscious baseline was restored to `sfo=2` with `railway scale us-west=0`.
-- Observed autoscale behavior: during/after the 10X spike test, Railway scaled up to 4 running replicas (`sfo=2`, `us-west2=2`), confirming the autoscaling loop reacted.
+- Observed autoscale behavior: during/after the 10X spike test, Railway scaled up beyond baseline, confirming the autoscaling loop reacted.
+- Follow-up correction: Judoscale was initially enabled with range `min=1`, `max=5`; corrected via the Judoscale settings API to `min=2`, `max=10`.
+- During the old `min=1` cooldown, Railway metrics recorded 3 transient 5xx responses while deployments were reconciling. After the correction, `/healthz` returned clean 200s across both baseline replicas.
 - Load test record:
   - Command profile: `K6_BASELINE_VUS=20`, `K6_SPIKE_MULTIPLIER=10`, `K6_LOAD_DURATION=60s`.
   - Result: 16,380 HTTP requests, 0 failed requests, 19,110/19,110 checks passed.
@@ -87,9 +90,10 @@ railway scale us-west=0   # remove temporary us-west2 replicas after validation
 # 5. Set health check path in Railway
 #    Service Settings -> Health Check Path -> /healthz
 
-# 6. Configure Judoscale dashboard
+# 6. Configure Judoscale
 #    - Min replicas: 2
 #    - Max replicas: 10  (covers 10X spike headroom)
+#    - Scale-up quantity: 2 replicas per step
 #    - Scale-up sensitivity: 10 seconds (fastest)
 #    - Scale-down: conservative (5 min cooldown to avoid yo-yo)
 
