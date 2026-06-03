@@ -11,6 +11,7 @@ Prepared on June 3, 2026 for theearnalism.com. Railway Pro is now active, and th
 - Autoscaler: `JUDOSCALE_URL` configured; logs confirm Judoscale FastAPI middleware is enabled.
 - Judoscale process type: `earnalism`, autoscaling enabled, min 2 replicas, max 10 replicas, upscale quantity 2, 10-second scale-up sensitivity, queue-time scale-up threshold 100 ms, queue-time scale-down threshold 25 ms, 5-minute conservative downscale.
 - Runtime logs confirm Redis-backed multi-replica state is enabled.
+- Startup hardening: multi-replica mode uses a Redis leader lock and retry wrapper for Mongo index/seed/backfill maintenance so scale events do not make every replica run startup writes at once.
 - Health checks:
   - `https://api.theearnalism.com/healthz`
   - `https://api.theearnalism.com/api/healthz`
@@ -41,6 +42,7 @@ Replica-sensitive findings and fixes:
 - `backend/server.py` `_CLOUDINARY_INITIALIZED`: per-process lazy initialization only; safe because cover/chapter image assets are stored in Cloudinary.
 - Sessions, reading sessions, wallet transactions, payment intents, webhooks, reader completion rewards, users, books, blog posts, settings, contacts, analytics, and admin audit records are already stored in MongoDB.
 - Cron/scheduled jobs: no cron, APScheduler, Celery, RQ, repeated background loop, or scheduled task runner was found in the web runtime. If a cron job is added later, guard it with a Redis leader lock when `MULTI_REPLICA_ENABLED=true`; run normally when false.
+- Startup DB maintenance: Mongo index creation, one-time backfills, and seed/settings refreshes are guarded by a Redis leader lock in multi-replica mode. This prevents autoscale rollouts from thundering-herd writes against MongoDB.
 
 ## Section A - Completed During Trial Preparation
 

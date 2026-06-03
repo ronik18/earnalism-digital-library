@@ -36,6 +36,7 @@ from starlette.middleware.gzip import GZipMiddleware
 from contextlib import asynccontextmanager
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorGridFSBucket
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
+from pymongo.errors import AutoReconnect, ServerSelectionTimeoutError
 
 
 # ---------- Environment / DB ----------
@@ -82,7 +83,7 @@ def _database_name_from_mongo_url(url: str) -> str:
 
 MONGODB_MAX_POOL_SIZE = _env_int("MONGODB_MAX_POOL_SIZE", 100)
 MONGODB_MIN_POOL_SIZE = _env_int("MONGODB_MIN_POOL_SIZE", 2, minimum=0)
-MONGODB_SERVER_SELECTION_TIMEOUT_MS = _env_int("MONGODB_SERVER_SELECTION_TIMEOUT_MS", 5000)
+MONGODB_SERVER_SELECTION_TIMEOUT_MS = _env_int("MONGODB_SERVER_SELECTION_TIMEOUT_MS", 15000)
 client = AsyncIOMotorClient(
     mongo_url,
     maxPoolSize=MONGODB_MAX_POOL_SIZE,
@@ -130,6 +131,11 @@ COOKIE_SAMESITE = os.environ.get("COOKIE_SAMESITE", "lax")
 MULTI_REPLICA_ENABLED = _env_bool("MULTI_REPLICA_ENABLED", False)
 REDIS_URL = os.environ.get("REDIS_URL", "").strip()
 REDIS_KEY_PREFIX = os.environ.get("REDIS_KEY_PREFIX", "earnalism").strip() or "earnalism"
+STARTUP_MAINTENANCE_VERSION = os.environ.get("STARTUP_MAINTENANCE_VERSION", "2026-06-03-autoscale-v2").strip()
+STARTUP_MAINTENANCE_LOCK_SECONDS = _env_int("STARTUP_MAINTENANCE_LOCK_SECONDS", 180)
+STARTUP_MAINTENANCE_WAIT_SECONDS = _env_int("STARTUP_MAINTENANCE_WAIT_SECONDS", 45)
+STARTUP_MAINTENANCE_DONE_TTL_SECONDS = _env_int("STARTUP_MAINTENANCE_DONE_TTL_SECONDS", 600)
+STARTUP_DB_MAINTENANCE_ATTEMPTS = _env_int("STARTUP_DB_MAINTENANCE_ATTEMPTS", 5)
 _redis_client: Any = None
 _redis_available = False
 
@@ -658,6 +664,12 @@ def _redis_key(*parts: str) -> str:
 
 def _redis_state_enabled() -> bool:
     return bool(MULTI_REPLICA_ENABLED and _redis_available and _redis_client is not None)
+
+
+def _redis_text(value: Any) -> str:
+    if isinstance(value, bytes):
+        return value.decode("utf-8", errors="replace")
+    return "" if value is None else str(value)
 
 
 def _public_cache_storage_key(generation: int, key: str) -> str:
@@ -2012,11 +2024,7 @@ def _install_sigterm_drain_marker() -> None:
     signal.signal(signal.SIGTERM, _handle_sigterm)
 
 
-@asynccontextmanager
-async def lifespan(_app: FastAPI):
-    # ----- startup -----
-    _install_sigterm_drain_marker()
-    await initialize_replica_state_backends()
+async def _run_startup_database_maintenance_once() -> None:
     await initialize_database_indexes()
     await _migrate_wallet_transactions_to_ledger()
 
@@ -2149,6 +2157,85 @@ async def lifespan(_app: FastAPI):
     )
 
     logger.info("Startup seeding complete")
+
+
+async def _run_startup_database_maintenance_with_retry() -> None:
+    delay = 1.0
+    for attempt in range(1, STARTUP_DB_MAINTENANCE_ATTEMPTS + 1):
+        try:
+            await _run_startup_database_maintenance_once()
+            return
+        except (AutoReconnect, ServerSelectionTimeoutError) as exc:
+            if attempt >= STARTUP_DB_MAINTENANCE_ATTEMPTS:
+                logger.exception("Startup database maintenance failed after %s attempt(s).", attempt)
+                raise
+            logger.warning(
+                "Startup database maintenance attempt %s/%s hit a transient Mongo error: %s. Retrying in %.1fs.",
+                attempt,
+                STARTUP_DB_MAINTENANCE_ATTEMPTS,
+                exc,
+                delay,
+            )
+            await asyncio.sleep(delay)
+            delay = min(delay * 2, 8.0)
+
+
+async def _release_startup_maintenance_lock(lock_key: str, token: str) -> None:
+    try:
+        current = _redis_text(await _redis_client.get(lock_key))
+        if current == token:
+            await _redis_client.delete(lock_key)
+    except Exception:
+        logger.warning("Failed to release startup maintenance lock cleanly.", exc_info=True)
+
+
+async def _run_startup_database_maintenance() -> None:
+    if not _redis_state_enabled():
+        await _run_startup_database_maintenance_with_retry()
+        return
+
+    lock_key = _redis_key("startup-maintenance", STARTUP_MAINTENANCE_VERSION, "lock")
+    done_key = _redis_key("startup-maintenance", STARTUP_MAINTENANCE_VERSION, "done")
+    if await _redis_client.get(done_key):
+        logger.info("Startup database maintenance already completed for %s.", STARTUP_MAINTENANCE_VERSION)
+        return
+
+    token = str(uuid.uuid4())
+    deadline = time.monotonic() + STARTUP_MAINTENANCE_WAIT_SECONDS
+    while True:
+        acquired = await _redis_client.set(
+            lock_key,
+            token,
+            ex=STARTUP_MAINTENANCE_LOCK_SECONDS,
+            nx=True,
+        )
+        if acquired:
+            logger.info("Acquired startup database maintenance lock.")
+            try:
+                await _run_startup_database_maintenance_with_retry()
+                await _redis_client.setex(done_key, STARTUP_MAINTENANCE_DONE_TTL_SECONDS, now_iso())
+            finally:
+                await _release_startup_maintenance_lock(lock_key, token)
+            return
+
+        if await _redis_client.get(done_key):
+            logger.info("Startup database maintenance completed by another replica.")
+            return
+        if time.monotonic() >= deadline:
+            logger.warning(
+                "Startup database maintenance lock is still held after %ss; starting replica without rerunning maintenance.",
+                STARTUP_MAINTENANCE_WAIT_SECONDS,
+            )
+            return
+        await asyncio.sleep(1)
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    # ----- startup -----
+    _install_sigterm_drain_marker()
+    await initialize_replica_state_backends()
+    await _run_startup_database_maintenance()
 
     yield
 
