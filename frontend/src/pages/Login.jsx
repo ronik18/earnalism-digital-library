@@ -17,6 +17,7 @@ export default function Login() {
   useSEO({
     title: "Sign In — The Earnalism Digital Library",
     description: "Sign in to your reading account at The Earnalism Digital Library.",
+    robots: "noindex, nofollow",
   });
   const { user, userLogin, refreshUser } = useAuth();
   const [email, setEmail] = useState("");

@@ -10,6 +10,7 @@ export default function AdminLogin() {
   useSEO({
     title: "Admin Sign-In — The Earnalism Digital Library",
     description: "Administrator sign-in for The Earnalism Digital Library.",
+    robots: "noindex, nofollow",
   });
   const { admin, login } = useAuth();
   const [email, setEmail] = useState("");

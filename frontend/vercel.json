@@ -3,9 +3,55 @@
   "installCommand": "npm install --legacy-peer-deps",
   "buildCommand": "npm run build",
   "outputDirectory": "build",
+  "redirects": [
+    {
+      "source": "/book/moby-dick-or-the-whale",
+      "destination": "/library",
+      "permanent": false
+    },
+    {
+      "source": "/book/moby-dick-or-the-whale/",
+      "destination": "/library",
+      "permanent": false
+    },
+    {
+      "source": "/reader/moby-dick-or-the-whale",
+      "destination": "/library",
+      "permanent": false
+    },
+    {
+      "source": "/reader/moby-dick-or-the-whale/",
+      "destination": "/library",
+      "permanent": false
+    },
+    {
+      "source": "/book/the-count-of-monte-cristo",
+      "destination": "/library",
+      "permanent": false
+    },
+    {
+      "source": "/book/the-count-of-monte-cristo/",
+      "destination": "/library",
+      "permanent": false
+    },
+    {
+      "source": "/reader/the-count-of-monte-cristo",
+      "destination": "/library",
+      "permanent": false
+    },
+    {
+      "source": "/reader/the-count-of-monte-cristo/",
+      "destination": "/library",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
-      "source": "/((?!static/|asset-manifest.json|favicon.ico|manifest.json|robots.txt).*)",
+      "source": "/api/(.*)",
+      "destination": "https://api.theearnalism.com/api/$1"
+    },
+    {
+      "source": "/((?!static/|assets/|audio/|asset-manifest.json|favicon.ico|favicon.png|apple-touch-icon.png|manifest.json|site.webmanifest|robots.txt|sitemap.xml).*)",
       "destination": "/index.html"
     }
   ],
@@ -63,6 +109,33 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=86400"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=86400"
+        }
+      ]
+    },
+    {
+      "source": "/site.webmanifest",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=86400"
         }
       ]
     },

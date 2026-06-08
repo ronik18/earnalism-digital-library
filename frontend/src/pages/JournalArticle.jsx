@@ -12,12 +12,19 @@ export default function JournalArticle() {
   const [post, setPost] = useState(null);
   const [related, setRelated] = useState([]);
   const [loading, setLoading] = useState(true);
+  const postNotFound = !loading && !post;
 
   useSEO({
-    title: post ? `${post.title} — The Earnalism Journal` : "Journal — The Earnalism",
-    description: post?.excerpt || "An essay from The Earnalism Journal — notes on literature, business, technology, and the quiet craft of reading.",
+    title: postNotFound
+      ? "Article not found — The Earnalism Journal"
+      : post ? `${post.title} — The Earnalism Journal` : "Journal — The Earnalism",
+    description: postNotFound
+      ? "This Earnalism journal article is no longer available."
+      : post?.excerpt || "An essay from The Earnalism Journal — notes on literature, business, technology, and the quiet craft of reading.",
     image: post?.cover_image_url,
+    imageAlt: post?.title,
     type: "article",
+    robots: postNotFound ? "noindex, nofollow" : "index, follow",
   });
 
   const articleSchema = post ? {
@@ -27,7 +34,7 @@ export default function JournalArticle() {
     "description": post.excerpt || (post.content || "").slice(0, 220),
     ...(post.cover_image_url ? { "image": [post.cover_image_url] } : {}),
     "datePublished": post.created_at,
-    "dateModified": post.created_at,
+    "dateModified": post.updated_at || post.created_at,
     "articleSection": post.category,
     "inLanguage": "en",
     "author": { "@type": "Organization", "name": post.author || "The Earnalism" },
@@ -36,12 +43,12 @@ export default function JournalArticle() {
       "name": "The Earnalism",
       "logo": {
         "@type": "ImageObject",
-        "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%234A1C27'/></svg>",
+        "url": "https://theearnalism.com/assets/brand/earnalism-logo.png",
       },
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": typeof window !== "undefined" ? window.location.href : undefined,
+      "@id": `https://theearnalism.com/journal/${post.slug}`,
     },
   } : null;
 

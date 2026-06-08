@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.earnalism.audiobook-backfill</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>-lc</string>
+    <string>cd "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library" &amp;&amp; bash scripts/run_audiobook_backfill.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/ronikbasak/Documents/GitHub/earnalism-digital-library</string>
+
+  <key>StandardOutPath</key>
+  <string>/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/audio_onboarding/background/launchd.stdout.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/audio_onboarding/background/launchd.stderr.log</string>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <false/>
+</dict>
+</plist>

@@ -1,0 +1,22 @@
+{
+  "name": "The Earnalism Digital Library",
+  "short_name": "Earnalism",
+  "description": "A quiet online reading room for curated books and journal notes.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F4EFEA",
+  "theme_color": "#4A1C27",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

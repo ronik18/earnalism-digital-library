@@ -41,8 +41,8 @@ export default function Footer() {
 
         <div>
           <div className="overline mb-4">Reach</div>
-          <a href="mailto:sales@reoenterprise.org" className="flex items-center gap-2 text-charcoal-soft hover:text-burgundy">
-            <Mail size={16} /> sales@reoenterprise.org
+          <a href="mailto:hello@theearnalism.com" className="flex items-center gap-2 text-charcoal-soft hover:text-burgundy">
+            <Mail size={16} /> hello@theearnalism.com
           </a>
           {activeSocials.length > 0 && (
             <div className="flex gap-3 mt-5 text-charcoal-soft" data-testid="footer-socials">

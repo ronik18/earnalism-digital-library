@@ -114,6 +114,7 @@ export default function Account() {
   useSEO({
     title: "Your Account — The Earnalism Digital Library",
     description: "Manage your reading-time wallet and recent activity at The Earnalism.",
+    robots: "noindex, nofollow",
   });
   const { user, userLogout, refreshUser } = useAuth();
   const [txs, setTxs] = useState([]);

@@ -10,6 +10,7 @@ import { trackFunnelEvent } from '../lib/funnelAnalytics';
 import { canShowReaderFinishPrompt, markReaderFinishPromptShown } from '../lib/funnelOffers';
 import { useAuth } from '../context/AuthContext';
 import { optimizedImageUrl } from '../lib/images';
+import useSEO from '../hooks/useSEO';
 
 const THEMES = {
   beige: { canvas: '#F5F0E8', surface: '#FDFAF4', text: '#2C1810', accent: '#6B1E2E', border: '#E8D5A3', label: 'Light' },
@@ -23,6 +24,10 @@ const READER_DISPLAY = "'Playfair Display', 'Noto Serif Bengali', serif";
 const BENGALI_SERIF = "'Noto Serif Bengali', 'Lora', Georgia, serif";
 const BENGALI_SANS = "'Noto Sans Bengali', Inter, sans-serif";
 const UI_FONT = "Inter, 'Noto Sans Bengali', sans-serif";
+const AUDIO_ASSET_BASE_URL = (process.env.REACT_APP_AUDIO_ASSET_BASE_URL || '').replace(/\/+$/, '');
+const READER_PREFETCH_CACHE_LIMIT = 18;
+const readerChapterResponseCache = new Map();
+const readerAssetPrefetchCache = new Map();
 
 const FONT_SIZES = [
   { label: 'Small', size: '16px' },
@@ -40,9 +45,6 @@ const LINE_SPACING_OPTIONS = [
 const LOW_BALANCE_THRESHOLD = 300;
 const READING_PULSE_MS = 30000;
 const READER_IDLE_MS = 5 * 60 * 1000;
-const PAGE_SCROLL_THROTTLE_MS = 520;
-const PAGE_SCROLL_WHEEL_THRESHOLD = 28;
-const PAGE_TOUCH_SWIPE_THRESHOLD = 56;
 
 function isReaderVisible() {
   return document.visibilityState === 'visible' && !document.hidden;
@@ -71,6 +73,76 @@ function getChapterAuthHeaders() {
 
 function getCurrentReaderPath() {
   return `${window.location.pathname}${window.location.search}`;
+}
+
+function boundedCacheSet(cache, key, value, limit = READER_PREFETCH_CACHE_LIMIT) {
+  if (!key) return;
+  if (cache.has(key)) cache.delete(key);
+  cache.set(key, value);
+  while (cache.size > limit) {
+    const oldest = cache.keys().next().value;
+    cache.delete(oldest);
+  }
+}
+
+function readerChapterCacheKey({ bookId, chapterId, version, adminPreview, token }) {
+  return [
+    bookId || '',
+    chapterId || '',
+    version || 'unversioned',
+    adminPreview ? 'admin' : 'reader',
+    token ? token.slice(-18) : 'guest',
+  ].join(':');
+}
+
+function runWhenIdle(task) {
+  if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+    return window.requestIdleCallback(task, { timeout: 1200 });
+  }
+  return window.setTimeout(task, 120);
+}
+
+function cancelIdleTask(id) {
+  if (!id) return;
+  if (typeof window !== 'undefined' && 'cancelIdleCallback' in window) {
+    window.cancelIdleCallback(id);
+  } else {
+    window.clearTimeout(id);
+  }
+}
+
+function resolveAssetUrl(url = '') {
+  if (!url) return '';
+  if (/^https?:\/\//i.test(url)) return url;
+  if (url.startsWith('/')) return AUDIO_ASSET_BASE_URL ? `${AUDIO_ASSET_BASE_URL}${url}` : url;
+  return url;
+}
+
+function readerNowMs() {
+  return typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now();
+}
+
+function sendReaderMetric(event, payload = {}) {
+  const body = JSON.stringify({
+    event,
+    route: getCurrentReaderPath(),
+    ...payload,
+  });
+  const url = `${API}/reader/metrics`;
+  try {
+    if (navigator.sendBeacon) {
+      const blob = new Blob([body], { type: 'application/json' });
+      if (navigator.sendBeacon(url, blob)) return;
+    }
+  } catch {
+    // Fall through to fetch.
+  }
+  fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...getChapterAuthHeaders() },
+    body,
+    keepalive: true,
+  }).catch(() => {});
 }
 
 function apiErrorMessage(err, fallback) {
@@ -382,30 +454,56 @@ function audioWordFromTimestamp(item = {}) {
 }
 
 function findTimestampWordOffset(timestamps = [], html = '') {
-  const visibleWords = highlightWordsFromHtml(html, 24);
+  const visibleWords = highlightWordsFromHtml(html, 96);
   if (!visibleWords.length || !timestamps.length) return 0;
 
-  const audioWords = timestamps.slice(0, 96).map(audioWordFromTimestamp);
-  const windowSize = Math.min(12, visibleWords.length);
+  const audioWords = timestamps.map(audioWordFromTimestamp);
+  const windowSize = Math.min(14, visibleWords.length, audioWords.length);
   const minimumScore = Math.max(4, Math.ceil(windowSize * 0.7));
+  const maxVisibleStart = Math.min(80, Math.max(0, visibleWords.length - windowSize));
+  const maxAudioStart = Math.min(80, Math.max(0, audioWords.length - windowSize));
   let bestOffset = 0;
   let bestScore = -1;
 
-  for (let offset = 0; offset < audioWords.length; offset += 1) {
-    let score = 0;
-    for (let index = 0; index < windowSize; index += 1) {
-      if (audioWords[offset + index] && audioWords[offset + index] === visibleWords[index]) {
-        score += 1;
+  for (let visibleStart = 0; visibleStart <= maxVisibleStart; visibleStart += 1) {
+    for (let audioStart = 0; audioStart <= maxAudioStart; audioStart += 1) {
+      if (audioWords[audioStart] !== visibleWords[visibleStart]) continue;
+      let score = 0;
+      for (let index = 0; index < windowSize; index += 1) {
+        if (audioWords[audioStart + index] && audioWords[audioStart + index] === visibleWords[visibleStart + index]) {
+          score += 1;
+        }
       }
+      if (score > bestScore) {
+        bestScore = score;
+        bestOffset = audioStart - visibleStart;
+      }
+      if (score === windowSize) break;
     }
-    if (score > bestScore) {
-      bestScore = score;
-      bestOffset = offset;
-    }
-    if (score === windowSize) break;
+    if (bestScore === windowSize) break;
   }
 
   return bestScore >= minimumScore ? bestOffset : 0;
+}
+
+function audiobookAssetsForBook(book = {}) {
+  return book?.audiobook_assets || book?.audiobookAssets || book?.audio_assets || {};
+}
+
+function audioAssetUrl(book, lang, slug, suffix) {
+  if (!slug) return '';
+  const keyBySuffix = {
+    '.mp3': 'mp3',
+    '_timestamps.json': 'timestamps',
+    '_highlight.vtt': 'vtt',
+    '_chapters.json': 'chapters',
+    '_meta.json': 'meta',
+    '_manifest.json': 'manifest',
+  };
+  const mapped = audiobookAssetsForBook(book)?.[keyBySuffix[suffix]];
+  if (mapped) return resolveAssetUrl(mapped);
+  const path = `/audio/${lang}/${slug}${suffix}`;
+  return AUDIO_ASSET_BASE_URL ? `${AUDIO_ASSET_BASE_URL}${path}` : path;
 }
 
 function readerCoverUrl(book = {}, kind = 'front') {
@@ -428,6 +526,100 @@ function audioAssetSlugForBook(book, bookId) {
   return book?.slug || bookId || '';
 }
 
+function normalizeReaderManifestResponse(data = {}) {
+  if (!data?.book) return data;
+  const book = {
+    ...data.book,
+    chapters: data.chapters || data.book.chapters || [],
+    _readerManifest: {
+      version: data.version || '',
+      content_generation: data.content_generation,
+      access: data.access || {},
+      audio: data.audio || {},
+      generated_at: data.generated_at || '',
+    },
+  };
+  if (data.audio) {
+    book.audiobook_assets = {
+      ...(book.audiobook_assets || {}),
+      ...(data.audio.assets || {}),
+    };
+    book.audio_asset_slug = data.audio.asset_slug || book.audio_asset_slug;
+    book.audiobook_enabled = data.audio.enabled;
+  }
+  return book;
+}
+
+function chapterVersionFor(chapters = [], chapterId = '') {
+  return (chapters || []).find((item) => item.id === chapterId)?.content_version || '';
+}
+
+function manifestAudioForBook(book = {}) {
+  return book?._readerManifest?.audio || {};
+}
+
+function audioManifestUrlForBook(book, lang, slug) {
+  const audio = manifestAudioForBook(book);
+  const explicit = audio?.assets?.manifest || audiobookAssetsForBook(book)?.manifest;
+  if (explicit) return resolveAssetUrl(explicit);
+  return audioAssetUrl(book, lang, slug, '_manifest.json');
+}
+
+function normalizeAudioTrack(raw = {}, lang = 'en', slug = '') {
+  const audioUrl = raw.audio_url || raw.audioUrl || raw.mp3 || raw.src || '';
+  const timestampsUrl = raw.timestamps_url || raw.timestampsUrl || raw.timestamps || '';
+  const chunks = Array.isArray(raw.chunks || raw.pages || raw.timestamp_chunks)
+    ? (raw.chunks || raw.pages || raw.timestamp_chunks).map((chunk) => ({
+      startWord: Number(chunk.start_word ?? chunk.startWord ?? chunk.word_start ?? 0) || 0,
+      endWord: Number(chunk.end_word ?? chunk.endWord ?? chunk.word_end ?? Number.MAX_SAFE_INTEGER) || Number.MAX_SAFE_INTEGER,
+      audioUrl: resolveAssetUrl(chunk.audio_url || chunk.audioUrl || audioUrl),
+      timestampsUrl: resolveAssetUrl(chunk.timestamps_url || chunk.timestampsUrl || chunk.timestamps || timestampsUrl),
+      version: chunk.version || chunk.hash || raw.version || '',
+    })).filter((chunk) => chunk.timestampsUrl || chunk.audioUrl)
+    : [];
+  return {
+    chapterId: raw.chapter_id || raw.chapterId || raw.id || '',
+    startWord: Number(raw.start_word ?? raw.startWord ?? 0) || 0,
+    endWord: Number(raw.end_word ?? raw.endWord ?? Number.MAX_SAFE_INTEGER) || Number.MAX_SAFE_INTEGER,
+    audioUrl: resolveAssetUrl(audioUrl || `/audio/${lang}/${slug}.mp3`),
+    timestampsUrl: resolveAssetUrl(timestampsUrl || `/audio/${lang}/${slug}_timestamps.json`),
+    version: raw.version || raw.hash || '',
+    chunks,
+  };
+}
+
+function normalizeAudioManifest(raw = {}, lang = 'en', slug = '') {
+  const tracks = raw.tracks || raw.chapters || raw.items || [];
+  return {
+    version: raw.version || raw.hash || '',
+    tracks: Array.isArray(tracks) ? tracks.map((track) => normalizeAudioTrack(track, lang, slug)) : [],
+  };
+}
+
+function selectAudioTrack({ manifest, chapterId, currentWordOffset = 0, legacyAudioUrl, legacyTimestampsUrl }) {
+  const tracks = manifest?.tracks || [];
+  const track = tracks.find((item) => item.chapterId && item.chapterId === chapterId) || tracks[0];
+  if (track) {
+    const chunk = (track.chunks || []).find((item) => currentWordOffset >= item.startWord && currentWordOffset <= item.endWord);
+    return {
+      audioUrl: chunk?.audioUrl || track.audioUrl,
+      timestampsUrl: chunk?.timestampsUrl || track.timestampsUrl,
+      startWord: chunk?.startWord ?? track.startWord ?? 0,
+      endWord: chunk?.endWord ?? track.endWord ?? Number.MAX_SAFE_INTEGER,
+      version: chunk?.version || track.version || manifest.version || '',
+      chunked: Boolean(chunk || track.chunks?.length),
+    };
+  }
+  return {
+    audioUrl: legacyAudioUrl,
+    timestampsUrl: legacyTimestampsUrl,
+    startWord: 0,
+    endWord: Number.MAX_SAFE_INTEGER,
+    version: '',
+    chunked: false,
+  };
+}
+
 function hasLegacyGeneratedAudioAsset(book = {}, bookId = '') {
   return bookId === 'bharat-at-the-crossroads'
     || /bharat at the crossroads/i.test(book?.title || '');
@@ -447,6 +639,8 @@ function isNarrationDisabledForBook(book = {}, bookId = '') {
 
 function hasGeneratedAudioEnabled(book = {}, bookId = '') {
   if (isNarrationDisabledForBook(book, bookId)) return false;
+  const assets = audiobookAssetsForBook(book);
+  if (assets?.mp3 && assets?.timestamps) return true;
   if (book?.audio_slug || book?.audio_asset_slug || book?.audioAssetSlug) return true;
   if (book?.audiobook_enabled === true || book?.generate_audiobook === true || book?.narration_enabled === true) return true;
   return hasLegacyGeneratedAudioAsset(book, bookId);
@@ -475,6 +669,35 @@ function timestampIndexAt(timestamps = [], nowMs = 0) {
     else hi = mid - 1;
   }
   return lo;
+}
+
+function timestampWordIndex(item = {}, fallbackIndex = 0) {
+  const raw = item.word_index ?? item.wordIndex ?? item.index ?? item.global_word_index;
+  const value = Number(raw);
+  return Number.isFinite(value) ? value : fallbackIndex;
+}
+
+function timestampArrayIndexForWord(timestamps = [], wordIndex = 0) {
+  if (!timestamps.length) return -1;
+  let lo = 0;
+  let hi = timestamps.length - 1;
+  while (lo < hi) {
+    const mid = (lo + hi) >> 1;
+    if (timestampWordIndex(timestamps[mid], mid) < wordIndex) lo = mid + 1;
+    else hi = mid;
+  }
+  return lo;
+}
+
+function normalizeGeneratedTimestamps(raw, html = '', baseWord = 0) {
+  const source = Array.isArray(raw) ? raw : (raw?.words || raw?.timestamps || raw?.items || []);
+  if (!Array.isArray(source) || !source.length) return { words: [], offset: 0 };
+  const offset = findTimestampWordOffset(source, html);
+  const words = source.map((item, index) => ({
+    ...item,
+    _word_index: baseWord + index - offset,
+  }));
+  return { words, offset };
 }
 
 function splitParagraphNode(node) {
@@ -572,6 +795,19 @@ function formatWalletTime(seconds) {
 async function fetchReaderBook(bookId, requestedAdminPreview = false) {
   const encodedBookId = encodeURIComponent(bookId);
   const adminToken = localStorage.getItem(TOKEN_KEY);
+  const manifestHeaders = requestedAdminPreview && adminToken ? getAdminAuthHeaders() : getChapterAuthHeaders();
+  try {
+    const manifestUrl = `${API}/reader/book/${encodedBookId}/manifest${requestedAdminPreview && adminToken ? '?preview=admin' : ''}`;
+    const response = await axios.get(manifestUrl, { headers: manifestHeaders });
+    response.adminPreview = Boolean(response.data?.access?.admin_preview);
+    response.readerManifest = response.data;
+    response.data = normalizeReaderManifestResponse(response.data);
+    return response;
+  } catch (err) {
+    if (![401, 403, 404].includes(err.response?.status)) throw err;
+    if (requestedAdminPreview && !adminToken) throw err;
+  }
+
   if (requestedAdminPreview && adminToken) {
     const response = await axios.get(`${API}/admin/books/${encodedBookId}`, { headers: getAdminAuthHeaders() });
     response.adminPreview = true;
@@ -598,6 +834,42 @@ function readerSearchParams({ chapterId, adminPreview } = {}) {
   if (adminPreview) params.set('preview', 'admin');
   const query = params.toString();
   return query ? `?${query}` : '';
+}
+
+async function fetchReaderChapter({ bookId, chapterId, adminPreview = false, version = '', useCache = true }) {
+  const token = adminPreview ? localStorage.getItem(TOKEN_KEY) : (localStorage.getItem(USER_TOKEN_KEY) || localStorage.getItem(TOKEN_KEY) || localStorage.getItem('token'));
+  const cacheKey = readerChapterCacheKey({ bookId, chapterId, version, adminPreview, token });
+  if (useCache && readerChapterResponseCache.has(cacheKey)) {
+    return readerChapterResponseCache.get(cacheKey);
+  }
+  const url = `${API}/reader/chapter/${encodeURIComponent(bookId)}/${encodeURIComponent(chapterId)}${version ? `?v=${encodeURIComponent(version)}` : ''}`;
+  const promise = axios.get(url, { headers: adminPreview ? getAdminAuthHeaders() : getChapterAuthHeaders() })
+    .then((response) => response.data);
+  boundedCacheSet(readerChapterResponseCache, cacheKey, promise);
+  try {
+    const data = await promise;
+    boundedCacheSet(readerChapterResponseCache, cacheKey, Promise.resolve(data));
+    return data;
+  } catch (err) {
+    readerChapterResponseCache.delete(cacheKey);
+    throw err;
+  }
+}
+
+function prefetchAsset(url) {
+  if (!url || readerAssetPrefetchCache.has(url)) return;
+  const promise = fetch(url, { cache: 'force-cache', mode: /^https?:\/\//i.test(url) ? 'cors' : 'same-origin' })
+    .then((response) => (response.ok ? response : Promise.reject(new Error('asset prefetch failed'))))
+    .catch(() => null);
+  boundedCacheSet(readerAssetPrefetchCache, url, promise, 32);
+}
+
+function canPrefetchHeavyReaderAsset() {
+  if (typeof navigator === 'undefined') return false;
+  const connection = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
+  if (connection?.saveData) return false;
+  const effectiveType = String(connection?.effectiveType || '').toLowerCase();
+  return !/(^|-)2g$|slow-2g/.test(effectiveType);
 }
 
 function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '', adminPreview = false, onChapterSelect }) {
@@ -646,6 +918,7 @@ export default function Reader() {
   const [adminPreview, setAdminPreview] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [notFound, setNotFound] = useState(false);
   const [lockedState, setLockedState] = useState(null);
 
   const [theme, setTheme] = useState('dark');
@@ -664,6 +937,7 @@ export default function Reader() {
   const [ttsVoices, setTtsVoices] = useState([]);
   const [generatedAudioAvailable, setGeneratedAudioAvailable] = useState(false);
   const [generatedAudioActive, setGeneratedAudioActive] = useState(false);
+  const [generatedAudioManifest, setGeneratedAudioManifest] = useState(null);
   const [processedHtml, setProcessedHtml] = useState('');
   const [ttsHtml, setTtsHtml] = useState('');
   const [totalWords, setTotalWords] = useState(0);
@@ -700,12 +974,22 @@ export default function Reader() {
   const ttsSegmentTimerRef = useRef(null);
   const pulseIntervalRef = useRef(null);
   const scrollContainerRef = useRef(null);
-  const pageScrollLastAtRef = useRef(0);
-  const pageTouchStartRef = useRef(null);
   const completionReportedRef = useRef('');
   const upsellShownRef = useRef('');
   const ttsWarningShownRef = useRef(false);
   const lastReaderActivityRef = useRef(Date.now());
+  const readerMetricsRef = useRef({ loadStartedAt: 0, timings: {} });
+  const audioIntentStartedAtRef = useRef(0);
+
+  useSEO({
+    title: notFound
+      ? 'Reader not found - The Earnalism Digital Library'
+      : book?.title ? `${book.title} - Reader - The Earnalism Digital Library` : 'Reader - The Earnalism Digital Library',
+    description: notFound
+      ? 'This Earnalism reader page is no longer available.'
+      : 'A secure Earnalism reading room.',
+    robots: 'noindex, nofollow',
+  });
 
   const stopTTS = useCallback(() => {
     synthRef.current?.cancel?.();
@@ -857,19 +1141,26 @@ export default function Reader() {
     const requestedAdminPreview = new URLSearchParams(window.location.search).get('preview') === 'admin';
 
     async function loadReader() {
+      const loadStartedAt = readerNowMs();
+      const timings = {};
+      readerMetricsRef.current = { loadStartedAt, timings };
       setLoading(true);
       setError(null);
+      setNotFound(false);
       setLockedState(null);
       setMeteredSessionActive(false);
 
       try {
+        const manifestStartedAt = readerNowMs();
         const [bookRes, packsRes] = await Promise.all([
           fetchReaderBook(bookId, requestedAdminPreview),
           axios.get(`${API}/payments/packs`),
         ]);
+        timings.manifest_ms = Math.round(readerNowMs() - manifestStartedAt);
         if (cancelled) return;
 
         const isAdminPreview = requestedAdminPreview || Boolean(bookRes.adminPreview);
+        const manifestAccess = bookRes.data?._readerManifest?.access || bookRes.readerManifest?.access || {};
         const loadedChapters = [...(bookRes.data?.chapters || [])].sort((a, b) => (a.order || 0) - (b.order || 0));
         const activeChapterId = chapterId || loadedChapters[0]?.id;
 
@@ -888,28 +1179,35 @@ export default function Reader() {
         }
 
         if (!isAdminPreview && getUserToken()) {
-          try {
-            const walletRes = await axios.get(`${API}/users/me/wallet`, { headers: getUserAuthHeaders() });
-            if (!cancelled) setWalletSeconds(walletRes.data.wallet_seconds || 0);
-          } catch (walletErr) {
-            if (walletErr.response?.status === 401) {
-              localStorage.removeItem(USER_TOKEN_KEY);
-            } else if (walletErr.response?.status !== 403) {
-              throw walletErr;
+          if (typeof manifestAccess.wallet_seconds === 'number') {
+            setWalletSeconds(manifestAccess.wallet_seconds || 0);
+          } else {
+            try {
+              const walletRes = await axios.get(`${API}/users/me/wallet`, { headers: getUserAuthHeaders() });
+              if (!cancelled) setWalletSeconds(walletRes.data.wallet_seconds || 0);
+            } catch (walletErr) {
+              if (walletErr.response?.status === 401) {
+                localStorage.removeItem(USER_TOKEN_KEY);
+              } else if (walletErr.response?.status !== 403) {
+                throw walletErr;
+              }
+              if (!cancelled) setWalletSeconds(0);
             }
-            if (!cancelled) setWalletSeconds(0);
           }
         } else {
           setWalletSeconds(0);
         }
 
-        const chapterRes = await axios.get(
-          `${API}/reader/chapter/${encodeURIComponent(bookId)}/${encodeURIComponent(activeChapterId)}`,
-          { headers: isAdminPreview ? getAdminAuthHeaders() : getChapterAuthHeaders() },
-        );
+        const chapterStartedAt = readerNowMs();
+        const gate = await fetchReaderChapter({
+          bookId,
+          chapterId: activeChapterId,
+          adminPreview: isAdminPreview,
+          version: chapterVersionFor(loadedChapters, activeChapterId),
+        });
+        timings.chapter_ms = Math.round(readerNowMs() - chapterStartedAt);
         if (cancelled) return;
 
-        const gate = chapterRes.data || {};
         const loadedChapter = gate.chapter || gate;
 
         setChapter(loadedChapter);
@@ -925,6 +1223,20 @@ export default function Reader() {
             message: gate.message || 'This chapter is locked.',
             chapter: loadedChapter,
           });
+          timings.total_load_ms = Math.round(readerNowMs() - loadStartedAt);
+          sendReaderMetric('reader_chapter_open', {
+            session_id: sessionId,
+            book_slug: bookId,
+            chapter_id: activeChapterId,
+            timings,
+            metrics: { locked: 1 },
+            tags: {
+              reason: gate.reason || 'LOCKED',
+              admin_preview: isAdminPreview ? '1' : '0',
+              manifest_version: bookRes.data?._readerManifest?.version || '',
+              chapter_version: chapterVersionFor(loadedChapters, activeChapterId),
+            },
+          });
           setLoading(false);
           return;
         }
@@ -936,6 +1248,7 @@ export default function Reader() {
         setCurrentPage(0);
         setTotalWords(countWordsInHtml(safeHtml));
         setLockedState(null);
+        timings.render_prepare_ms = Math.round(readerNowMs() - chapterStartedAt - timings.chapter_ms);
 
         if (!isAdminPreview && getUserToken() && !gate.is_preview) {
           endSessionHeaders = getUserAuthHeaders();
@@ -944,10 +1257,34 @@ export default function Reader() {
           setMeteredSessionActive(true);
         }
 
+        timings.total_load_ms = Math.round(readerNowMs() - loadStartedAt);
+        sendReaderMetric('reader_chapter_open', {
+          session_id: sessionId,
+          book_slug: bookId,
+          chapter_id: activeChapterId,
+          timings,
+          metrics: {
+            locked: 0,
+            word_count: countWordsInHtml(safeHtml),
+            chapter_count: loadedChapters.length,
+          },
+          tags: {
+            admin_preview: isAdminPreview ? '1' : '0',
+            manifest_version: bookRes.data?._readerManifest?.version || '',
+            chapter_version: chapterVersionFor(loadedChapters, activeChapterId),
+          },
+        });
         setLoading(false);
       } catch (err) {
         if (!cancelled) {
           const status = err.response?.status;
+          const errorUrl = err.config?.url || '';
+          const missingReaderResource = status === 404 && (
+            errorUrl.includes('/books/')
+            || errorUrl.includes('/admin/books/')
+            || errorUrl.includes('/reader/chapter/')
+            || errorUrl.includes('/reader/book/')
+          );
           if (status === 401) {
             localStorage.removeItem(USER_TOKEN_KEY);
             setLockedState({
@@ -962,6 +1299,16 @@ export default function Reader() {
               message: 'Your reading time has ended. Add reading time to continue.',
               chapter: null,
             });
+            setError(null);
+          } else if (missingReaderResource) {
+            setBook(null);
+            setChapter(null);
+            setChapters([]);
+            setProcessedHtml('');
+            setTtsHtml('');
+            setTotalWords(0);
+            setLockedState(null);
+            setNotFound(true);
             setError(null);
           } else {
             setError(apiErrorMessage(err, 'This chapter could not be opened.'));
@@ -1119,8 +1466,43 @@ export default function Reader() {
     [book, bookId],
   );
   const generatedAudioLang = isBengali ? 'ben' : 'en';
-  const generatedAudioUrl = generatedAudioSlug ? `/audio/${generatedAudioLang}/${generatedAudioSlug}.mp3` : '';
-  const generatedTimestampsUrl = generatedAudioSlug ? `/audio/${generatedAudioLang}/${generatedAudioSlug}_timestamps.json` : '';
+  const legacyGeneratedAudioUrl = audioAssetUrl(book, generatedAudioLang, generatedAudioSlug, '.mp3');
+  const legacyGeneratedTimestampsUrl = audioAssetUrl(book, generatedAudioLang, generatedAudioSlug, '_timestamps.json');
+  const generatedAudioManifestUrl = generatedAudioSlug ? audioManifestUrlForBook(book, generatedAudioLang, generatedAudioSlug) : '';
+  const selectedGeneratedAudioTrack = useMemo(
+    () => selectAudioTrack({
+      manifest: generatedAudioManifest,
+      chapterId: activeChapterId || chapterId || chapter?.id,
+      currentWordOffset: currentPageWordOffset,
+      legacyAudioUrl: legacyGeneratedAudioUrl,
+      legacyTimestampsUrl: legacyGeneratedTimestampsUrl,
+    }),
+    [activeChapterId, chapter, chapterId, currentPageWordOffset, generatedAudioManifest, legacyGeneratedAudioUrl, legacyGeneratedTimestampsUrl],
+  );
+  const generatedAudioUrl = selectedGeneratedAudioTrack.audioUrl;
+  const generatedTimestampsUrl = selectedGeneratedAudioTrack.timestampsUrl;
+
+  useEffect(() => {
+    let cancelled = false;
+    setGeneratedAudioManifest(null);
+    if (!generatedAudioManifestUrl || !generatedAudioSlug || lockedState) return undefined;
+    fetch(generatedAudioManifestUrl, { cache: 'force-cache' })
+      .then((response) => {
+        if (!response.ok) throw new Error('Audio manifest unavailable');
+        return response.json();
+      })
+      .then((raw) => {
+        if (!cancelled) {
+          setGeneratedAudioManifest(normalizeAudioManifest(raw, generatedAudioLang, generatedAudioSlug));
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setGeneratedAudioManifest(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [generatedAudioLang, generatedAudioManifestUrl, generatedAudioSlug, lockedState]);
 
   useEffect(() => {
     let cancelled = false;
@@ -1137,10 +1519,23 @@ export default function Reader() {
       })
       .then((timestamps) => {
         if (cancelled) return;
-        if (Array.isArray(timestamps) && timestamps.length > 0) {
-          generatedTimestampsRef.current = timestamps;
-          generatedAudioWordOffsetRef.current = findTimestampWordOffset(timestamps, readerHtml);
+        const normalized = normalizeGeneratedTimestamps(timestamps, readerHtml, selectedGeneratedAudioTrack.startWord || 0);
+        if (normalized.words.length > 0) {
+          generatedTimestampsRef.current = normalized.words;
+          generatedAudioWordOffsetRef.current = normalized.offset;
           setGeneratedAudioAvailable(true);
+          sendReaderMetric('reader_audio_timestamps_loaded', {
+            session_id: sessionId,
+            book_slug: bookId,
+            chapter_id: activeChapterId || chapterId || chapter?.id,
+            metrics: {
+              timestamp_count: normalized.words.length,
+              chunked: selectedGeneratedAudioTrack.chunked ? 1 : 0,
+            },
+            tags: {
+              audio_version: selectedGeneratedAudioTrack.version || '',
+            },
+          });
         }
       })
       .catch(() => {
@@ -1154,7 +1549,7 @@ export default function Reader() {
     return () => {
       cancelled = true;
     };
-  }, [generatedTimestampsUrl, lockedState, readerHtml]);
+  }, [activeChapterId, bookId, chapter, chapterId, generatedTimestampsUrl, lockedState, readerHtml, selectedGeneratedAudioTrack, sessionId]);
 
   useEffect(() => {
     const audio = generatedAudioRef.current;
@@ -1472,6 +1867,7 @@ export default function Reader() {
   const primeGeneratedAudio = useCallback(() => {
     const audio = generatedAudioRef.current;
     if (!audio || !generatedAudioAvailable || !generatedAudioUrl) return;
+    if (!audioIntentStartedAtRef.current) audioIntentStartedAtRef.current = readerNowMs();
     audio.preload = 'auto';
     if (audio.readyState === 0) audio.load();
   }, [generatedAudioAvailable, generatedAudioUrl]);
@@ -1482,20 +1878,22 @@ export default function Reader() {
     const pageHtml = currentPageHtml || readerHtml;
     if (!isContentPage || !audio || !generatedAudioAvailable || !timestamps.length || !pageHtml) return false;
 
+    audioIntentStartedAtRef.current = readerNowMs();
     primeGeneratedAudio();
     synthRef.current?.cancel?.();
     const wrapped = wrapWordsInSpans(pageHtml, currentPageWordOffset);
-    const audioWordOffset = generatedAudioWordOffsetRef.current || 0;
     const firstWord = currentPageWordOffset;
     const lastWord = currentPageWordOffset + Math.max(0, wrapped.totalWords - 1);
-    const firstTimestamp = timestamps[firstWord + audioWordOffset];
+    const firstAudioWord = Math.max(0, timestampArrayIndexForWord(timestamps, firstWord));
+    const firstTimestamp = timestamps[firstAudioWord];
     if (!firstTimestamp) return false;
 
-    generatedPageEndRef.current = lastWord + audioWordOffset;
+    generatedPageEndRef.current = Math.max(0, lastWord);
     const tickGeneratedHighlight = () => {
       const audioIndex = timestampIndexAt(timestamps, Math.floor(audio.currentTime * 1000));
+      const wordIndex = audioIndex >= 0 ? timestampWordIndex(timestamps[audioIndex], audioIndex) : -1;
       const pageEnd = generatedPageEndRef.current;
-      if (Number.isFinite(pageEnd) && audioIndex > pageEnd) {
+      if (Number.isFinite(pageEnd) && wordIndex > pageEnd) {
         audio.pause();
         generatedPageEndRef.current = null;
         setGeneratedAudioActive(false);
@@ -1503,8 +1901,8 @@ export default function Reader() {
         setTtsPaused(false);
         return false;
       }
-      if (audioIndex >= currentPageWordOffset + audioWordOffset) {
-        highlightGeneratedWord(audioIndex - audioWordOffset);
+      if (wordIndex >= currentPageWordOffset) {
+        highlightGeneratedWord(wordIndex);
         return true;
       }
       return false;
@@ -1530,6 +1928,25 @@ export default function Reader() {
     });
     return true;
   }, [currentPageHtml, currentPageWordOffset, generatedAudioAvailable, highlightGeneratedWord, isContentPage, primeGeneratedAudio, readerHtml]);
+
+  const handleGeneratedAudioMetadata = useCallback(() => {
+    if (!audioIntentStartedAtRef.current) return;
+    sendReaderMetric('reader_audio_metadata_loaded', {
+      session_id: sessionId,
+      book_slug: bookId,
+      chapter_id: activeChapterId || chapterId || chapter?.id,
+      timings: {
+        audio_metadata_ms: Math.round(readerNowMs() - audioIntentStartedAtRef.current),
+      },
+      metrics: {
+        chunked: selectedGeneratedAudioTrack.chunked ? 1 : 0,
+      },
+      tags: {
+        audio_version: selectedGeneratedAudioTrack.version || '',
+      },
+    });
+    audioIntentStartedAtRef.current = 0;
+  }, [activeChapterId, bookId, chapter, chapterId, selectedGeneratedAudioTrack, sessionId]);
 
   const startTTS = useCallback(() => {
     if (!isContentPage) {
@@ -1595,9 +2012,9 @@ export default function Reader() {
     if (!audio || !timestamps.length) return false;
 
     const index = timestampIndexAt(timestamps, Math.floor(audio.currentTime * 1000));
-    const audioWordOffset = generatedAudioWordOffsetRef.current || 0;
+    const wordIndex = index >= 0 ? timestampWordIndex(timestamps[index], index) : -1;
     const pageEnd = generatedPageEndRef.current;
-    if (Number.isFinite(pageEnd) && index > pageEnd) {
+    if (Number.isFinite(pageEnd) && wordIndex > pageEnd) {
       audio.pause();
       generatedPageEndRef.current = null;
       setGeneratedAudioActive(false);
@@ -1605,8 +2022,8 @@ export default function Reader() {
       setTtsPaused(false);
       return false;
     }
-    if (index >= currentPageWordOffset + audioWordOffset) {
-      highlightGeneratedWord(index - audioWordOffset);
+    if (wordIndex >= currentPageWordOffset) {
+      highlightGeneratedWord(wordIndex);
       return true;
     }
     return false;
@@ -1652,6 +2069,51 @@ export default function Reader() {
   const rightsCopy = rightsForBook(book, readerUserName);
   const narrationDisabledForBook = isNarrationDisabledForBook(book, bookId);
 
+  useEffect(() => {
+    if (!book || lockedState || loading || !nextChapter?.id) return undefined;
+    const idleId = runWhenIdle(() => {
+      const nextVersion = chapterVersionFor(chapters, nextChapter.id);
+      const canPrefetchPaid = adminPreview || nextChapter.is_preview || walletSeconds > 0;
+      if (canPrefetchPaid) {
+        fetchReaderChapter({
+          bookId,
+          chapterId: nextChapter.id,
+          adminPreview,
+          version: nextVersion,
+        }).catch(() => {});
+      }
+
+      if (!narrationDisabledForBook && generatedAudioSlug) {
+        if (generatedAudioManifestUrl) prefetchAsset(generatedAudioManifestUrl);
+        const nextTrack = selectAudioTrack({
+          manifest: generatedAudioManifest,
+          chapterId: nextChapter.id,
+          currentWordOffset: 0,
+          legacyAudioUrl: legacyGeneratedAudioUrl,
+          legacyTimestampsUrl: legacyGeneratedTimestampsUrl,
+        });
+        if (canPrefetchHeavyReaderAsset()) prefetchAsset(nextTrack.audioUrl);
+        prefetchAsset(nextTrack.timestampsUrl);
+      }
+    });
+    return () => cancelIdleTask(idleId);
+  }, [
+    adminPreview,
+    book,
+    bookId,
+    chapters,
+    generatedAudioManifest,
+    generatedAudioManifestUrl,
+    generatedAudioSlug,
+    legacyGeneratedAudioUrl,
+    legacyGeneratedTimestampsUrl,
+    loading,
+    lockedState,
+    narrationDisabledForBook,
+    nextChapter,
+    walletSeconds,
+  ]);
+
   const goToChapter = useCallback((id) => {
     stopTTS();
     navigate(`/reader/${bookId}${readerSearchParams({ chapterId: id, adminPreview })}`);
@@ -1685,83 +2147,6 @@ export default function Reader() {
     scrollContainerRef.current?.scrollTo?.({ top: 0, behavior: options.behavior || 'smooth' });
   }, [currentPage, paginatedPages.length, stopTTS]);
 
-  useEffect(() => {
-    const el = scrollContainerRef.current;
-    if (!el || !hasPages || loading || lockedState) return undefined;
-
-    const isInsideReader = (target) => {
-      if (!(target instanceof Node)) return true;
-      return el.contains(target);
-    };
-    const isBlockedTarget = (target) => {
-      if (!(target instanceof Element)) return false;
-      return Boolean(target.closest(
-        'button, input, textarea, select, [role="dialog"], .reader-bottom-bar, .reader-settings-sheet',
-      ));
-    };
-    const shouldIgnoreGesture = (target) => (
-      showSettings
-      || showTOC
-      || showTopUpModal
-      || !isInsideReader(target)
-      || isBlockedTarget(target)
-    );
-    const canTurnPage = (direction) => (direction > 0 ? canNext : canPrev);
-    const turnPage = (direction) => {
-      if (!canTurnPage(direction)) return;
-      const now = Date.now();
-      if (now - pageScrollLastAtRef.current < PAGE_SCROLL_THROTTLE_MS) return;
-      pageScrollLastAtRef.current = now;
-      if (direction > 0) goNext();
-      else goPrev();
-    };
-
-    const onWheel = (event) => {
-      if (shouldIgnoreGesture(event.target)) return;
-      if (Math.abs(event.deltaY) < PAGE_SCROLL_WHEEL_THRESHOLD || Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
-      event.preventDefault();
-      turnPage(event.deltaY > 0 ? 1 : -1);
-    };
-    const onTouchStart = (event) => {
-      if (shouldIgnoreGesture(event.target)) {
-        pageTouchStartRef.current = null;
-        return;
-      }
-      const touch = event.touches?.[0];
-      pageTouchStartRef.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
-    };
-    const onTouchMove = (event) => {
-      const start = pageTouchStartRef.current;
-      const touch = event.touches?.[0];
-      if (!start || !touch) return;
-      const dx = touch.clientX - start.x;
-      const dy = touch.clientY - start.y;
-      if (Math.abs(dy) > 12 && Math.abs(dy) > Math.abs(dx)) event.preventDefault();
-    };
-    const onTouchEnd = (event) => {
-      const start = pageTouchStartRef.current;
-      pageTouchStartRef.current = null;
-      const touch = event.changedTouches?.[0];
-      if (!start || !touch) return;
-      const dx = touch.clientX - start.x;
-      const dy = touch.clientY - start.y;
-      if (Math.abs(dy) < PAGE_TOUCH_SWIPE_THRESHOLD || Math.abs(dy) < Math.abs(dx)) return;
-      turnPage(dy < 0 ? 1 : -1);
-    };
-
-    window.addEventListener('wheel', onWheel, { capture: true, passive: false });
-    window.addEventListener('touchstart', onTouchStart, { capture: true, passive: true });
-    window.addEventListener('touchmove', onTouchMove, { capture: true, passive: false });
-    window.addEventListener('touchend', onTouchEnd, { capture: true, passive: true });
-
-    return () => {
-      window.removeEventListener('wheel', onWheel, true);
-      window.removeEventListener('touchstart', onTouchStart, true);
-      window.removeEventListener('touchmove', onTouchMove, true);
-      window.removeEventListener('touchend', onTouchEnd, true);
-    };
-  }, [canNext, canPrev, goNext, goPrev, hasPages, loading, lockedState, showSettings, showTOC, showTopUpModal]);
-
   const toggleBookmark = async () => {
     if (!getUserToken()) {
       navigate(`/login?next=${encodeURIComponent(getCurrentReaderPath())}`);
@@ -1778,6 +2163,31 @@ export default function Reader() {
         <Loader2 size={32} className="animate-spin" color="#6B1020" />
         <div style={{ fontFamily: READER_SERIF, fontSize: 17, color: '#7A5C62' }}>
           Opening chapter…
+        </div>
+      </div>
+    );
+  }
+
+  if (notFound) {
+    return (
+      <div className="flex min-h-screen items-center justify-center px-5 py-14 text-center" style={{ background: THEMES.beige.canvas }} data-testid="reader-not-found">
+        <div className="w-full max-w-md rounded-2xl border border-[#E8DDD8] bg-white/70 px-7 py-9 shadow-book">
+          <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full" style={{ background: '#F5F0E8', color: '#6B1020' }}>
+            <AlertCircle size={22} />
+          </div>
+          <div className="italic-eyebrow mb-3">Unavailable reader</div>
+          <h1 className="font-serif-light text-3xl text-burgundy leading-tight">Reader not found</h1>
+          <p className="mt-5 text-sm font-light leading-relaxed text-charcoal-soft">
+            This book has been removed from Earnalism, so the reader page is no longer available.
+          </p>
+          <div className="mt-8 flex flex-col gap-3">
+            <button type="button" onClick={() => navigate('/library')} className="btn-primary w-full justify-center">
+              Back to Library
+            </button>
+            <button type="button" onClick={() => navigate('/')} className="text-sm text-charcoal-soft underline decoration-[var(--brand-gold)]/60 underline-offset-4">
+              Go home
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -1909,6 +2319,7 @@ export default function Reader() {
           ref={generatedAudioRef}
           src={generatedAudioAvailable ? generatedAudioUrl : undefined}
           preload={generatedAudioAvailable ? 'metadata' : 'none'}
+          onLoadedMetadata={handleGeneratedAudioMetadata}
           onTimeUpdate={handleGeneratedAudioTimeUpdate}
           onEnded={handleGeneratedAudioEnded}
           style={{ display: 'none' }}

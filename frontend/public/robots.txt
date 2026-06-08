@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /account
+Disallow: /reader/
+Disallow: /secure-reader-test
+Disallow: /login
+Disallow: /signup
+Disallow: /api/
+
+Sitemap: https://theearnalism.com/sitemap.xml

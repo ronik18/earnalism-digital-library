@@ -4,11 +4,17 @@ import { ArrowRight, BookOpen, Sparkles, Compass, Feather, Mail } from "lucide-r
 import { toast } from "sonner";
 import { api, formatError } from "../lib/api";
 import { optimizedImageUrl } from "../lib/images";
+import BookCoverImage from "../components/BookCoverImage";
 import LiveCoverShowcase from "../components/LiveCoverShowcase";
 import useSEO from "../hooks/useSEO";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1920&q=90";
 const FOUNDER_IMG = "https://images.unsplash.com/photo-1773067752075-2cfd37ab02dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
+const WHY_MOTIF_IMG = "/assets/shelves/literary-fiction.jpg";
+const READING_CIRCLE_IMG = "https://images.unsplash.com/photo-1764087957302-ef0756ed8e0a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
+const HERO_BOOK_INITIAL_PAGE_SIZE = 8;
+const HERO_BOOK_PAGE_SIZE = 12;
+const HERO_BOOK_RENDER_LIMIT = 72;
 const SHELF_IMAGES = {
   "bengali": "/assets/shelves/bengali-classics.jpg",
   "bengali-reading": "/assets/shelves/bengali-classics.jpg",
@@ -75,10 +81,110 @@ const DESK_NOTES = [
   { number: "03", title: "Useful depth", body: "Classic literature, Bengali writing, business, history, and AI sit beside each other with purpose." },
 ];
 
+function appendUniqueBooks(existing = [], incoming = [], maxItems = HERO_BOOK_RENDER_LIMIT) {
+  const seen = new Set();
+  const next = [];
+  [...existing, ...incoming].forEach((book) => {
+    const slug = book?.slug || book?.id;
+    if (!slug || seen.has(slug) || next.length >= maxItems) return;
+    seen.add(slug);
+    next.push(book);
+  });
+  return next;
+}
+
+function normalizeBooksPage(payload, fallbackOffset = 0) {
+  if (Array.isArray(payload)) {
+    return {
+      books: payload,
+      pagination: {
+        offset: fallbackOffset,
+        limit: payload.length,
+        count: payload.length,
+        total: payload.length,
+        next_offset: null,
+        has_more: false,
+      },
+    };
+  }
+  const books = payload?.books || [];
+  const pagination = payload?.pagination || payload?.books_page || {};
+  const count = Number(pagination.count ?? books.length) || books.length;
+  const offset = Number(pagination.offset ?? fallbackOffset) || 0;
+  const nextOffset = pagination.next_offset ?? pagination.nextOffset ?? null;
+  return {
+    books,
+    pagination: {
+      offset,
+      limit: Number(pagination.limit ?? books.length) || books.length,
+      count,
+      total: Number(pagination.total ?? books.length) || books.length,
+      next_offset: nextOffset === undefined ? null : nextOffset,
+      has_more: Boolean(pagination.has_more ?? pagination.hasMore ?? nextOffset !== null),
+    },
+  };
+}
+
+function runWhenIdle(task) {
+  if (typeof window === "undefined") return null;
+  if ("requestIdleCallback" in window) {
+    return window.requestIdleCallback(task, { timeout: 1600 });
+  }
+  return window.setTimeout(task, 350);
+}
+
+function cancelIdleTask(id) {
+  if (id == null || typeof window === "undefined") return;
+  if ("cancelIdleCallback" in window) window.cancelIdleCallback(id);
+  else window.clearTimeout(id);
+}
+
+function MotifBackdrop({ image, variant = "library" }) {
+  const isDesk = variant === "desk";
+  const imageTone = isDesk
+    ? "saturate(0.9) brightness(0.68) contrast(1.04)"
+    : "saturate(0.82) brightness(0.62) contrast(1.08)";
+  const veil = isDesk
+    ? "linear-gradient(90deg, rgba(25,8,13,0.94) 0%, rgba(27,11,16,0.9) 48%, rgba(74,28,39,0.7) 100%)"
+    : "linear-gradient(90deg, rgba(22,7,11,0.94) 0%, rgba(34,16,23,0.88) 52%, rgba(58,20,29,0.7) 100%)";
+  const glow = isDesk
+    ? "radial-gradient(ellipse 54% 62% at 78% 44%, rgba(216,185,122,0.18), transparent 70%)"
+    : "radial-gradient(ellipse 58% 58% at 78% 38%, rgba(216,185,122,0.14), transparent 72%)";
+
+  return (
+    <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+      <img
+        src={optimizedImageUrl(image, { width: 1800, quality: 88 })}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className={`h-full w-full object-cover ${isDesk ? "object-[center_52%]" : "object-[center_60%]"}`}
+        style={{ filter: imageTone }}
+      />
+      <div className="absolute inset-0" style={{ background: veil }} />
+      <div className="absolute inset-0" style={{ background: glow }} />
+      <div
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(180deg, rgba(253,252,248,0.05), transparent 28%, rgba(0,0,0,0.22) 100%)" }}
+      />
+      <div className="absolute inset-x-0 top-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(216,185,122,0.54), transparent)" }} />
+      <div className="absolute inset-x-0 bottom-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(216,185,122,0.38), transparent)" }} />
+    </div>
+  );
+}
+
 export default function Home() {
   const [categories, setCategories] = useState([]);
   const [featured, setFeatured] = useState(null);
   const [liveBooks, setLiveBooks] = useState([]);
+  const [liveBookPage, setLiveBookPage] = useState({
+    offset: 0,
+    limit: HERO_BOOK_INITIAL_PAGE_SIZE,
+    count: 0,
+    total: 0,
+    next_offset: null,
+    has_more: false,
+  });
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -94,16 +200,24 @@ export default function Home() {
 
     async function loadHomePayload() {
       try {
-        const { data } = await api.get("/home", { signal: controller.signal });
+        const { data } = await api.get("/home", {
+          params: { books_limit: HERO_BOOK_INITIAL_PAGE_SIZE, books_offset: 0 },
+          signal: controller.signal,
+        });
+        const booksPage = normalizeBooksPage({ books: data?.books || [], pagination: data?.books_page }, 0);
         setCategories(data?.categories || []);
         setFeatured(data?.featured?.book || null);
-        setLiveBooks(data?.books || []);
+        setLiveBooks(appendUniqueBooks([], booksPage.books));
+        setLiveBookPage(booksPage.pagination);
       } catch (err) {
         if (controller.signal.aborted) return;
         const [categoryRes, featuredRes, booksRes] = await Promise.allSettled([
           api.get("/categories", { signal: controller.signal }),
           api.get("/featured", { signal: controller.signal }),
-          api.get("/books", { signal: controller.signal }),
+          api.get("/home/books", {
+            params: { limit: HERO_BOOK_INITIAL_PAGE_SIZE, offset: 0 },
+            signal: controller.signal,
+          }),
         ]);
         if (categoryRes.status === "fulfilled") {
           setCategories(categoryRes.value.data || []);
@@ -112,7 +226,9 @@ export default function Home() {
           setFeatured(featuredRes.value.data?.book || null);
         }
         if (booksRes.status === "fulfilled") {
-          setLiveBooks(booksRes.value.data || []);
+          const booksPage = normalizeBooksPage(booksRes.value.data, 0);
+          setLiveBooks(appendUniqueBooks([], booksPage.books));
+          setLiveBookPage(booksPage.pagination);
         }
       }
     }
@@ -120,6 +236,34 @@ export default function Home() {
     loadHomePayload().catch(() => {});
     return () => controller.abort();
   }, []);
+
+  useEffect(() => {
+    if (!liveBookPage.has_more || liveBookPage.next_offset == null || liveBooks.length >= HERO_BOOK_RENDER_LIMIT) {
+      return undefined;
+    }
+    const controller = new AbortController();
+    const idleId = runWhenIdle(() => {
+      const remainingSlots = Math.max(0, HERO_BOOK_RENDER_LIMIT - liveBooks.length);
+      if (!remainingSlots) return;
+      api.get("/home/books", {
+        params: {
+          limit: Math.min(HERO_BOOK_PAGE_SIZE, remainingSlots),
+          offset: liveBookPage.next_offset,
+        },
+        signal: controller.signal,
+      }).then(({ data }) => {
+        if (controller.signal.aborted) return;
+        const booksPage = normalizeBooksPage(data, liveBookPage.next_offset);
+        setLiveBooks((current) => appendUniqueBooks(current, booksPage.books));
+        setLiveBookPage(booksPage.pagination);
+      }).catch(() => {});
+    });
+
+    return () => {
+      controller.abort();
+      cancelIdleTask(idleId);
+    };
+  }, [liveBookPage.has_more, liveBookPage.next_offset, liveBooks.length]);
 
   const subscribe = async (e) => {
     e.preventDefault();
@@ -189,8 +333,8 @@ export default function Home() {
               <span className="inline-flex items-center gap-2"><Compass size={14} strokeWidth={1.6} /> Focused reading</span>
             </div>
             <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
-              <Link to="/library" className="btn-primary w-full sm:w-auto" data-testid="hero-cta-read">
-                <BookOpen size={16} strokeWidth={1.7} /> Start Reading
+              <Link to="/library" className="btn-primary w-full sm:w-auto gap-2" data-testid="hero-cta-read">
+                <BookOpen size={16} strokeWidth={1.7} className="shrink-0" /> Start Reading
               </Link>
               <Link to="/library" className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-library">
                 Explore Library <ArrowRight size={15} strokeWidth={1.7} />
@@ -200,7 +344,7 @@ export default function Home() {
         </div>
         <div className="absolute inset-x-0 bottom-0 translate-y-1/2 z-10">
           <div className="w-full">
-            <LiveCoverShowcase books={liveBooks} featured={featured} variant="band" />
+            <LiveCoverShowcase books={liveBooks} featured={featured} variant="band" totalBooks={liveBookPage.total} />
           </div>
         </div>
       </section>
@@ -249,7 +393,14 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5">
               <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft bg-ivory-warm shadow-[0_30px_70px_-30px_rgba(74,28,39,0.4)] max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none lg:mx-0">
-                <img src={optimizedImageUrl(featured.cover_image_url, { width: 760 })} alt={featured.title} loading="lazy" decoding="async" className="w-full h-full object-contain" />
+                <BookCoverImage
+                  book={featured}
+                  alt={featured.title}
+                  loading="lazy"
+                  width={560}
+                  widths={[360, 560, 760]}
+                  sizes="(min-width: 1024px) 380px, (min-width: 640px) 52vw, 90vw"
+                />
               </div>
             </div>
             <div className="lg:col-span-7 text-center lg:text-left">
@@ -281,10 +432,7 @@ export default function Home() {
 
       {/* WHY EARNALISM */}
       <section className="relative overflow-hidden bg-[#221017] text-[#FDFCF8]">
-        <div className="absolute inset-0 opacity-28">
-          <img src={HERO_IMG} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#16070b] via-[#221017]/92 to-[#3a141d]/78" />
-        </div>
+        <MotifBackdrop image={WHY_MOTIF_IMG} />
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-end">
             <div className="lg:col-span-5">
@@ -351,10 +499,7 @@ export default function Home() {
 
       {/* NEWSLETTER */}
       <section className="relative overflow-hidden bg-[#1b0b10] text-[#FDFCF8]">
-        <div className="absolute inset-0 opacity-22">
-          <img src={HERO_IMG} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1b0b10] via-[#1b0b10]/90 to-[#4a1c27]/78" />
-        </div>
+        <MotifBackdrop image={READING_CIRCLE_IMG} variant="desk" />
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             <div className="lg:col-span-6">

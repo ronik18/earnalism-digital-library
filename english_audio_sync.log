@@ -1,0 +1,314 @@
+2026-06-06 01:54:48,695 INFO ============================================================
+2026-06-06 01:54:48,695 INFO Earnalism English Audio Generation & Sync Pipeline
+2026-06-06 01:54:48,695 INFO ============================================================
+2026-06-06 01:54:48,696 INFO Found 100 English draft books to process
+2026-06-06 01:54:48,696 INFO Processing English books:
+2026-06-06 01:54:48,696 INFO   - EN-001: The Tell-Tale Heart by Edgar Allan Poe
+2026-06-06 01:54:48,696 INFO   - EN-002: The Fall of the House of Usher by Edgar Allan Poe
+2026-06-06 01:54:48,696 INFO   - EN-003: The Murders in the Rue Morgue by Edgar Allan Poe
+2026-06-06 01:54:48,696 INFO   - EN-004: The Masque of the Red Death by Edgar Allan Poe
+2026-06-06 01:54:48,696 INFO   - EN-005: The Cask of Amontillado by Edgar Allan Poe
+2026-06-06 01:54:48,696 INFO   ... and 95 more
+2026-06-06 01:54:48,696 INFO Running: python3 generate_audio.py --manifest book_import_manifest.json --lang en --output-dir ./audio_output --voice-tier neural2
+2026-06-06 01:54:48,696 INFO Voice settings: Google Neural2 (en-IN-Neural2-B), rate: -8%, pitch: -1%
+2026-06-06 01:54:48,696 INFO This will generate emotional, expressive English audiobooks with word-level sync
+/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-06-06 01:54:54,168 INFO Using cached text for অপরিচিতা: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/অপরিচিতা.txt
+2026-06-06 01:54:55,855 INFO Using cached text for অভাগীর-স্বর্গ: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/অভাগীর-স্বর্গ.txt
+2026-06-06 01:54:56,187 INFO Using cached text for বড়দিদি: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/বড়দিদি.txt
+2026-06-06 01:54:56,187 INFO Using cached text for মেজদিদি: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/মেজদিদি.txt
+2026-06-06 01:54:56,518 INFO Using cached text for হরিলক্ষ্মী: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/হরিলক্ষ্মী.txt
+2026-06-06 01:54:57,229 INFO Using cached text for আঁধারে-আলো: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/আঁধারে-আলো.txt
+2026-06-06 01:54:57,229 INFO Using cached text for বিন্দুর-ছেলে: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/বিন্দুর-ছেলে.txt
+2026-06-06 01:54:59,215 INFO Using cached text for পরিণীতা: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/পরিণীতা.txt
+2026-06-06 01:54:59,216 INFO Using cached text for আলো-ও-ছায়া: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/আলো-ও-ছায়া.txt
+2026-06-06 01:54:59,552 INFO Using cached text for শুভদা: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/শুভদা.txt
+2026-06-06 01:55:01,224 INFO Using cached text for দেবী-চৌধুরাণী: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/দেবী-চৌধুরাণী.txt
+2026-06-06 01:55:01,556 INFO Using cached text for ইন্দিরা: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/ইন্দিরা.txt
+2026-06-06 01:55:02,548 INFO Using cached text for কৃষ্ণকান্তের-উইল: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/কৃষ্ণকান্তের-উইল.txt
+2026-06-06 01:55:02,548 INFO Using cached text for বিষবৃক্ষ: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/বিষবৃক্ষ.txt
+2026-06-06 01:55:02,549 INFO Using cached text for আনন্দমঠ: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/আনন্দমঠ.txt
+2026-06-06 01:55:03,262 INFO Using cached text for চন্দ্রশেখর: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/চন্দ্রশেখর.txt
+2026-06-06 01:55:03,262 INFO Using cached text for কপালকুণ্ডলা: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/কপালকুণ্ডলা.txt
+2026-06-06 01:55:08,380 INFO Using cached text for পথের-পাঁচালী-অংশ: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/পথের-পাঁচালী-অংশ.txt
+2026-06-06 01:55:10,817 INFO Using cached text for চাঁদের-পাহাড়-অংশ: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/চাঁদের-পাহাড়-অংশ.txt
+2026-06-06 01:55:12,147 INFO Using cached text for ইছামতী-অংশ: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/ইছামতী-অংশ.txt
+2026-06-06 01:55:12,513 INFO Using cached text for the-tell-tale-heart: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-tell-tale-heart.txt
+/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.cloud.texttospeech_v1beta1 supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.cloud.texttospeech_v1beta1.
+  warnings.warn(message, FutureWarning)
+2026-06-06 01:55:16,206 INFO Google chunk 1/1 complete for the-tell-tale-heart
+2026-06-06 01:55:16,401 INFO Using cached text for the-fall-of-the-house-of-usher: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-fall-of-the-house-of-usher.txt
+2026-06-06 01:56:20,770 INFO Google chunk 1/1 complete for the-fall-of-the-house-of-usher
+2026-06-06 01:56:20,864 INFO Using cached text for the-murders-in-the-rue-morgue: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-murders-in-the-rue-morgue.txt
+2026-06-06 01:56:22,597 INFO Google chunk 1/1 complete for the-murders-in-the-rue-morgue
+2026-06-06 01:56:22,756 INFO Using cached text for the-masque-of-the-red-death: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-masque-of-the-red-death.txt
+2026-06-06 01:56:24,633 INFO Google chunk 1/1 complete for the-masque-of-the-red-death
+2026-06-06 01:56:24,765 INFO Using cached text for the-cask-of-amontillado: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-cask-of-amontillado.txt
+2026-06-06 01:56:26,341 INFO Google chunk 1/1 complete for the-cask-of-amontillado
+2026-06-06 01:56:26,495 INFO Using cached text for the-gift-of-the-magi: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-gift-of-the-magi.txt
+2026-06-06 01:56:28,226 INFO Google chunk 1/1 complete for the-gift-of-the-magi
+2026-06-06 01:56:28,396 INFO Using cached text for the-last-leaf: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-last-leaf.txt
+2026-06-06 01:56:30,218 INFO Google chunk 1/1 complete for the-last-leaf
+2026-06-06 01:56:30,380 INFO Using cached text for after-twenty-years: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/after-twenty-years.txt
+2026-06-06 01:56:32,147 INFO Google chunk 1/1 complete for after-twenty-years
+2026-06-06 01:56:32,261 INFO Using cached text for the-ransom-of-red-chief: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-ransom-of-red-chief.txt
+2026-06-06 01:56:33,878 INFO Google chunk 1/1 complete for the-ransom-of-red-chief
+2026-06-06 01:56:34,062 INFO Using cached text for a-retrieved-reformation: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/a-retrieved-reformation.txt
+2026-06-06 01:56:35,840 INFO Google chunk 1/1 complete for a-retrieved-reformation
+2026-06-06 01:56:35,953 INFO Using cached text for the-lady-with-the-dog: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-lady-with-the-dog.txt
+2026-06-06 01:56:37,674 INFO Google chunk 1/1 complete for the-lady-with-the-dog
+2026-06-06 01:56:37,826 INFO Using cached text for the-bishop: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-bishop.txt
+2026-06-06 01:56:39,666 INFO Google chunk 1/1 complete for the-bishop
+2026-06-06 01:56:39,772 INFO Using cached text for the-student: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-student.txt
+2026-06-06 01:56:41,509 INFO Google chunk 1/1 complete for the-student
+2026-06-06 01:56:41,662 INFO Using cached text for ward-no-6: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/ward-no-6.txt
+2026-06-06 01:56:43,390 INFO Google chunk 1/1 complete for ward-no-6
+2026-06-06 01:56:43,556 INFO Using cached text for the-bet: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-bet.txt
+2026-06-06 01:56:45,433 INFO Google chunk 1/1 complete for the-bet
+2026-06-06 01:56:45,578 INFO Using cached text for a-scandal-in-bohemia: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/a-scandal-in-bohemia.txt
+2026-06-06 01:56:47,328 INFO Google chunk 1/1 complete for a-scandal-in-bohemia
+2026-06-06 01:56:47,491 INFO Using cached text for the-red-headed-league: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-red-headed-league.txt
+2026-06-06 01:56:49,388 INFO Google chunk 1/1 complete for the-red-headed-league
+2026-06-06 01:56:49,551 INFO Using cached text for the-necklace: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-necklace.txt
+2026-06-06 01:56:51,200 INFO Google chunk 1/1 complete for the-necklace
+2026-06-06 01:56:51,374 INFO Using cached text for the-necklace: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-necklace.txt
+2026-06-06 01:56:51,450 INFO Using cached text for the-adventure-of-the-six-napoleons: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-adventure-of-the-six-napoleons.txt
+2026-06-06 01:56:53,257 INFO Google chunk 1/1 complete for the-adventure-of-the-six-napoleons
+
+Audio generation summary
+========================
+Mode: generation
+Processed: 19
+Skipped: 159
+Processed books:
+  - The Tell-Tale Heart (the-tell-tale-heart) [google, timestamps]
+  - The Fall of the House of Usher (the-fall-of-the-house-of-usher) [google, timestamps]
+  - The Murders in the Rue Morgue (the-murders-in-the-rue-morgue) [google, timestamps]
+  - The Masque of the Red Death (the-masque-of-the-red-death) [google, timestamps]
+  - The Cask of Amontillado (the-cask-of-amontillado) [google, timestamps]
+  - The Gift of the Magi (the-gift-of-the-magi) [google, timestamps]
+  - The Last Leaf (the-last-leaf) [google, timestamps]
+  - After Twenty Years (after-twenty-years) [google, timestamps]
+  - The Ransom of Red Chief (the-ransom-of-red-chief) [google, timestamps]
+  - A Retrieved Reformation (a-retrieved-reformation) [google, timestamps]
+  - The Lady with the Dog (the-lady-with-the-dog) [google, timestamps]
+  - The Bishop (the-bishop) [google, timestamps]
+  - The Student (the-student) [google, timestamps]
+  - Ward No. 6 (ward-no-6) [google, timestamps]
+  - The Bet (the-bet) [google, timestamps]
+  - A Scandal in Bohemia (a-scandal-in-bohemia) [google, timestamps]
+  - The Red-Headed League (the-red-headed-league) [google, timestamps]
+  - The Necklace (the-necklace) [google, timestamps]
+  - The Adventure of the Six Napoleons (the-adventure-of-the-six-napoleons) [google, timestamps]
+Skipped books:
+  - পোস্টমাস্টার (পোস্টমাস্টার): source_url is missing
+  - ছুটি (ছুটি): source_url is missing
+  - মেঘ ও রৌদ্র (মেঘ-ও-রৌদ্র): source_url is missing
+  - সমাপ্তি (সমাপ্তি): source_url is missing
+  - নষ্টনীড় (নষ্টনীড়): source_url is missing
+  - হৈমন্তী (হৈমন্তী): source_url is missing
+  - স্ত্রীর পত্র (স্ত্রীর-পত্র): source_url is missing
+  - মাল্যদান (মাল্যদান): source_url is missing
+  - দিদি (দিদি): source_url is missing
+  - একরাত্রি (একরাত্রি): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%8F%E0%A6%95%E0%A6%B0%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BF
+  - অতিথি (অতিথি): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%85%E0%A6%A4%E0%A6%BF%E0%A6%A5%E0%A6%BF
+  - দর্পচূর্ণ (দর্পচূর্ণ): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%A6%E0%A6%B0%E0%A7%8D%E0%A6%AA%E0%A6%9A%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%A3
+  - খোকাবাবুর প্রত্যাবর্তন (খোকাবাবুর-প্রত্যাবর্তন): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B_(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE_%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1
+  - রাসমণির ছেলে (রাসমণির-ছেলে): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%B0%E0%A6%BE%E0%A6%B8%E0%A6%AE%E0%A6%A3%E0%A6%BF%E0%A6%B0_%E0%A6%9B%E0%A7%87%E0%A6%B2%E0%A7%87
+  - মধ্যবর্তিনী (মধ্যবর্তিনী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AE%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%A8%E0%A7%80
+  - শাস্তি (শাস্তি): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B_(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE_%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1
+  - ক্ষুধিত পাষাণ (ক্ষুধিত-পাষাণ): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%81%E0%A6%A7%E0%A6%BF%E0%A6%A4_%E0%A6%AA%E0%A6%BE%E0%A6%B7%E0%A6%BE%E0%A6%A3
+  - জীবিত ও মৃত (জীবিত-ও-মৃত): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B_(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE_%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1
+  - মানভঞ্জন (মানভঞ্জন): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%AE%E0%A6%BE%E0%A6%A8%E0%A6%AD%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A6%A8
+  - গিন্নি (গিন্নি): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B_(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE_%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1
+  - ঠাকুরদা (ঠাকুরদা): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%A0%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%B0%E0%A6%A6%E0%A6%BE
+  - বলাই (বলাই): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AC%E0%A6%B2%E0%A6%BE%E0%A6%87
+  - রামকানাইয়ের নির্বুদ্ধিতা (রামকানাইয়ের-নির্বুদ্ধিতা): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B_(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE_%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1
+  - কর্মফল (কর্মফল): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%AB%E0%A6%B2
+  - সুভা (সুভা): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B_(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE_%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1
+  - দুরাশা (দুরাশা): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%A6%E0%A7%81%E0%A6%B0%E0%A6%BE%E0%A6%B6%E0%A6%BE
+  - বিচারক (বিচারক): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%AC%E0%A6%BF%E0%A6%9A%E0%A6%BE%E0%A6%B0%E0%A6%95
+  - মহেশ (মহেশ): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AE%E0%A6%B9%E0%A7%87%E0%A6%B6
+  - বিলাসী (বিলাসী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AC%E0%A6%BF%E0%A6%B2%E0%A6%BE%E0%A6%B8%E0%A7%80
+  - লালু (লালু): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%B2%E0%A6%BE%E0%A6%B2%E0%A7%81
+  - ছেলেধরা (ছেলেধরা): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%9B%E0%A7%87%E0%A6%B2%E0%A7%87%E0%A6%A7%E0%A6%B0%E0%A6%BE
+  - একাদশী বৈরাগী (একাদশী-বৈরাগী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%8F%E0%A6%95%E0%A6%BE%E0%A6%A6%E0%A6%B6%E0%A7%80_%E0%A6%AC%E0%A7%88%E0%A6%B0%E0%A6%BE%E0%A6%97%E0%A7%80
+  - দর্পণ (দর্পণ): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%A6%E0%A6%B0%E0%A7%8D%E0%A6%AA%E0%A6%A3_(%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0
+  - রামের সুমতি (রামের-সুমতি): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%B0%E0%A6%BE%E0%A6%AE%E0%A7%87%E0%A6%B0_%E0%A6%B8%E0%A7%81%E0%A6%AE%E0%A6%A4%E0%A6%BF
+  - পথ নির্দেশ (পথ-নির্দেশ): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AA%E0%A6%A5_%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A7%87%E0%A6%B6
+  - নিষ্কৃতি (নিষ্কৃতি): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%95%E0%A7%83%E0%A6%A4%E0%A6%BF_(%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0
+  - স্বামী (স্বামী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%AE%E0%A7%80_(%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0
+  - সতী (সতী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%B8%E0%A6%A4%E0%A7%80_(%E0%A6%B6%E0%A6%B0%E0%A7%8E%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0
+  - মমতাদি (মমতাদি): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AE%E0%A6%AE%E0%A6%A4%E0%A6%BE%E0%A6%A6%E0%A6%BF
+  - অনুপমার প্রেম (অনুপমার-প্রেম): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%85%E0%A6%A8%E0%A7%81%E0%A6%AA%E0%A6%AE%E0%A6%BE%E0%A6%B0_%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%AE
+  - বৈকুণ্ঠের উইল (বৈকুণ্ঠের-উইল): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AC%E0%A7%88%E0%A6%95%E0%A7%81%E0%A6%A3%E0%A7%8D%E0%A6%A0%E0%A7%87%E0%A6%B0_%E0%A6%89%E0%A6%87%E0%A6%B2
+  - বিপ্রদাস (বিপ্রদাস): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AC%E0%A6%BF%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%BE%E0%A6%B8
+  - অরক্ষণীয়া (অরক্ষণীয়া): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%85%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A3%E0%A7%80%E0%A6%AF%E0%A6%BC%E0%A6%BE
+  - রাধারাণী (রাধারাণী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80
+  - যুগলাঙ্গুরীয় (যুগলাঙ্গুরীয়): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AF%E0%A7%81%E0%A6%97%E0%A6%B2%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%81%E0%A6%B0%E0%A7%80%E0%A6%AF%E0%A6%BC
+  - কমলাকান্তের দপ্তর (কমলাকান্তের-দপ্তর): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%95%E0%A6%AE%E0%A6%B2%E0%A6%BE%E0%A6%95%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%87%E0%A6%B0_%E0%A6%A6%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%B0
+  - যোগিনী (যোগিনী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A6%BF%E0%A6%A8%E0%A7%80_(%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0
+  - মুচিরাম গুড়ের জীবনচরিত (মুচিরাম-গুড়ের-জীবনচরিত): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AE%E0%A7%81%E0%A6%9A%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AE_%E0%A6%97%E0%A7%81%E0%A6%A1%E0%A6%BC%E0%A7%87%E0%A6%B0_%E0%A6%9C%E0%A7%80%E0%A6%AC%E0%A6%A8%E0%A6%9A%E0%A6%B0%E0%A6%BF%E0%A6%A4
+  - নলিনী (নলিনী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%A8%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%80_(%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%AE%E0%A6%9A%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%8D%E0%A6%B0
+  - লোকরহস্য (লোকরহস্য): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%B2%E0%A7%8B%E0%A6%95%E0%A6%B0%E0%A6%B9%E0%A6%B8%E0%A7%8D%E0%A6%AF
+  - মৃণালিনী (মৃণালিনী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AE%E0%A7%83%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%80
+  - তোতা কাহিনী (তোতা-কাহিনী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%A4%E0%A7%8B%E0%A6%A4%E0%A6%BE_%E0%A6%95%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80
+  - রাজা ও রানী (রাজা-ও-রানী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%B0%E0%A6%BE%E0%A6%9C%E0%A6%BE_%E0%A6%93_%E0%A6%B0%E0%A6%BE%E0%A6%A8%E0%A7%80
+  - গুপ্তধন (গুপ্তধন): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%97%E0%A7%81%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%A7%E0%A6%A8
+  - নিশীথে (নিশীথে): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%A8%E0%A6%BF%E0%A6%B6%E0%A7%80%E0%A6%A5%E0%A7%87
+  - মাস্টারমশাই (মাস্টারমশাই): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0%E0%A6%AE%E0%A6%B6%E0%A6%BE%E0%A6%87
+  - ভিখারিণী (ভিখারিণী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AD%E0%A6%BF%E0%A6%96%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%A3%E0%A7%80
+  - সম্পত্তি সমর্পণ (সম্পত্তি-সমর্পণ): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BF_%E0%A6%B8%E0%A6%AE%E0%A6%B0%E0%A7%8D%E0%A6%AA%E0%A6%A3
+  - মেঘ (মেঘ): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B/%E0%A6%AE%E0%A7%87%E0%A6%98
+  - ফেলু বাবুর দোকান (ফেলু-বাবুর-দোকান): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AB%E0%A7%87%E0%A6%B2%E0%A7%81_%E0%A6%AC%E0%A6%BE%E0%A6%AC%E0%A7%81%E0%A6%B0_%E0%A6%A6%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%A8
+  - ইচ্ছাপূরণ (ইচ্ছাপূরণ): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%87%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BE%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A6%A3
+  - পুত্রযজ্ঞ (পুত্রযজ্ঞ): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AA%E0%A7%81%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%9C%E0%A7%8D%E0%A6%9E
+  - ঘরে ফেরার দিন (ঘরে-ফেরার-দিন): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%98%E0%A6%B0%E0%A7%87_%E0%A6%AB%E0%A7%87%E0%A6%B0%E0%A6%BE%E0%A6%B0_%E0%A6%A6%E0%A6%BF%E0%A6%A8
+  - তারাপ্রসন্নের কীর্তি (তারাপ্রসন্নের-কীর্তি): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%97%E0%A7%81%E0%A6%9A%E0%A7%8D%E0%A6%9B_(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A5%E0%A6%AE_%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1
+  - দুই বিঘা জমি (দুই-বিঘা-জমি): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%A6%E0%A7%81%E0%A6%87_%E0%A6%AC%E0%A6%BF%E0%A6%98%E0%A6%BE_%E0%A6%9C%E0%A6%AE%E0%A6%BF
+  - পোষ্টঅফিস (পোষ্টঅফিস): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AA%E0%A7%8B%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A6%85%E0%A6%AB%E0%A6%BF%E0%A6%B8
+  - পুঁইমাচা (পুঁইমাচা): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AA%E0%A7%81%E0%A6%81%E0%A6%87%E0%A6%AE%E0%A6%BE%E0%A6%9A%E0%A6%BE
+  - মেঘমল্লার (মেঘমল্লার): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AE%E0%A7%87%E0%A6%98%E0%A6%AE%E0%A6%B2%E0%A7%8D%E0%A6%B2%E0%A6%BE%E0%A6%B0
+  - তালনবমী (তালনবমী): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%A8%E0%A6%AC%E0%A6%AE%E0%A7%80
+  - অনুবর্তন (অনুবর্তন): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%85%E0%A6%A8%E0%A7%81%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%A8
+  - কিন্নরদল (কিন্নরদল): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%95%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A8%E0%A6%B0%E0%A6%A6%E0%A6%B2
+  - বনের খাতা (বনের-খাতা): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AC%E0%A6%A8%E0%A7%87%E0%A6%B0_%E0%A6%96%E0%A6%BE%E0%A6%A4%E0%A6%BE
+  - আহ্বান (আহ্বান): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%86%E0%A6%B9%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%A8_(%E0%A6%AC%E0%A6%BF%E0%A6%AD%E0%A7%82%E0%A6%A4%E0%A6%BF%E0%A6%AD%E0%A7%82%E0%A6%B7%E0%A6%A3
+  - নিশিপদ্ম (নিশিপদ্ম): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%A8%E0%A6%BF%E0%A6%B6%E0%A6%BF%E0%A6%AA%E0%A6%A6%E0%A7%8D%E0%A6%AE
+  - যাত্রাবদল (যাত্রাবদল): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AC%E0%A6%A6%E0%A6%B2
+  - মরণের ডঙ্কা বাজে (মরণের-ডঙ্কা-বাজে): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%AE%E0%A6%B0%E0%A6%A3%E0%A7%87%E0%A6%B0_%E0%A6%A1%E0%A6%99%E0%A7%8D%E0%A6%95%E0%A6%BE_%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A7%87
+  - অশনি সংকেত (অংশ) (অশনি-সংকেত-অংশ): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%85%E0%A6%B6%E0%A6%A8%E0%A6%BF_%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%87%E0%A6%A4
+  - স্মৃতির রেখা (স্মৃতির-রেখা): 404 Client Error: Not Found for url: https://bn.wikisource.org/wiki/%E0%A6%B8%E0%A7%8D%E0%A6%AE%E0%A7%83%E0%A6%A4%E0%A6%BF%E0%A6%B0_%E0%A6%B0%E0%A7%87%E0%A6%96%E0%A6%BE
+  - The Speckled Band (the-speckled-band): source_url is missing
+  - The Five Orange Pips (the-five-orange-pips): source_url is missing
+  - The Man with the Twisted Lip (the-man-with-the-twisted-lip): source_url is missing
+  - To Build a Fire (to-build-a-fire): source_url is missing
+  - The Call of the Wild (the-call-of-the-wild): source_url is missing
+  - White Fang (white-fang): source_url is missing
+  - Love of Life (love-of-life): source_url is missing
+  - Boule de Suif (boule-de-suif): source_url is missing
+  - The Yellow Wallpaper (the-yellow-wallpaper): source_url is missing
+  - The Story of an Hour (the-story-of-an-hour): source_url is missing
+  - Désirée's Baby (désirées-baby): source_url is missing
+  - An Occurrence at Owl Creek Bridge (an-occurrence-at-owl-creek-bridge): source_url is missing
+  - The Celebrated Jumping Frog of Calaveras County (the-celebrated-jumping-frog-of-calaveras-county): source_url is missing
+  - Rip Van Winkle (rip-van-winkle): source_url is missing
+  - The Legend of Sleepy Hollow (the-legend-of-sleepy-hollow): source_url is missing
+  - Young Goodman Brown (young-goodman-brown): source_url is missing
+  - The Minister's Black Veil (the-ministers-black-veil): source_url is missing
+  - Rappaccini's Daughter (rappaccinis-daughter): source_url is missing
+  - The Monkey's Paw (the-monkeys-paw): source_url is missing
+  - The Man Who Would Be King (the-man-who-would-be-king): source_url is missing
+  - Rikki-Tikki-Tavi (rikki-tikki-tavi): source_url is missing
+  - The Pit and the Pendulum (the-pit-and-the-pendulum): source_url is missing
+  - Berenice (berenice): source_url is missing
+  - The Furnished Room (the-furnished-room): source_url is missing
+  - The Cop and the Anthem (the-cop-and-the-anthem): source_url is missing
+  - The Darling (the-darling): source_url is missing
+  - Gooseberries (gooseberries): source_url is missing
+  - The Man in a Case (the-man-in-a-case): source_url is missing
+  - A Ghost Story (a-ghost-story): source_url is missing
+  - The Adventure of the Blue Carbuncle (the-adventure-of-the-blue-carbuncle): source_url is missing
+  - The Adventure of the Copper Beeches (the-adventure-of-the-copper-beeches): source_url is missing
+  - A White Heron (a-white-heron): source_url is missing
+  - The Open Boat (the-open-boat): source_url is missing
+  - The Bride Comes to Yellow Sky (the-bride-comes-to-yellow-sky): source_url is missing
+  - The Purloined Letter (the-purloined-letter): source_url is missing
+  - The Adventure of the Engineer's Thumb (the-adventure-of-the-engineers-thumb): source_url is missing
+  - Markheim (markheim): source_url is missing
+  - The Strange Case of Dr Jekyll and Mr Hyde (the-strange-case-of-dr-jekyll-and-mr-hyde): source_url is missing
+  - The Ambitious Guest (the-ambitious-guest): source_url is missing
+  - The Outcasts of Poker Flat (the-outcasts-of-poker-flat): source_url is missing
+  - Ligeia (ligeia): source_url is missing
+  - A Wagner Matinee (a-wagner-matinee): source_url is missing
+  - The Adventure of the Noble Bachelor (the-adventure-of-the-noble-bachelor): source_url is missing
+  - Paul's Case (pauls-case): source_url is missing
+  - The Adventure of the Beryl Coronet (the-adventure-of-the-beryl-coronet): source_url is missing
+  - A Mystery of Heroism (a-mystery-of-heroism): source_url is missing
+  - The Revolt of Mother (the-revolt-of-mother): source_url is missing
+  - The Deadliest Game (the-deadliest-game): source_url is missing
+  - Sredni Vashtar (sredni-vashtar): source_url is missing
+  - The Open Window (the-open-window): source_url is missing
+  - The Canterville Ghost (the-canterville-ghost): source_url is missing
+  - The Happy Prince (the-happy-prince): source_url is missing
+  - The Selfish Giant (the-selfish-giant): source_url is missing
+  - A Horseman in the Sky (a-horseman-in-the-sky): source_url is missing
+  - The Luck of Roaring Camp (the-luck-of-roaring-camp): source_url is missing
+  - The Adventure of the Final Problem (the-adventure-of-the-final-problem): source_url is missing
+  - The Fiddler of the Reels (the-fiddler-of-the-reels): source_url is missing
+  - The Withered Arm (the-withered-arm): source_url is missing
+  - The Lifted Veil (the-lifted-veil): source_url is missing
+  - Tobermory (tobermory): source_url is missing
+  - The Stolen White Elephant (the-stolen-white-elephant): source_url is missing
+  - The Adventure of the Greek Interpreter (the-adventure-of-the-greek-interpreter): source_url is missing
+  - In the Penal Colony (in-the-penal-colony): source_url is missing
+  - The Metamorphosis (the-metamorphosis): source_url is missing
+  - The Adventure of the Empty House (the-adventure-of-the-empty-house): source_url is missing
+  - The Country of the Blind (the-country-of-the-blind): source_url is missing
+  - The Door in the Wall (the-door-in-the-wall): source_url is missing
+  - The Adventure of the Dancing Men (the-adventure-of-the-dancing-men): source_url is missing
+  - The Adventure of the Solitary Cyclist (the-adventure-of-the-solitary-cyclist): source_url is missing
+  - The Enchanted April (the-enchanted-april): source_url is missing
+  - Markheim (markheim): source_url is missing
+  - The Adventure of the Second Stain (the-adventure-of-the-second-stain): source_url is missing
+  - Sredni Vashtar (sredni-vashtar): source_url is missing
+  - The Adventure of Charles Augustus Milverton (the-adventure-of-charles-augustus-milverton): source_url is missing
+  - The Suicide Club (the-suicide-club): source_url is missing
+  - Feathertop (feathertop): source_url is missing
+  - The Imp of the Perverse (the-imp-of-the-perverse): source_url is missing
+  - The Adventure of the Priory School (the-adventure-of-the-priory-school): source_url is missing
+  - A Jury of Her Peers (a-jury-of-her-peers): source_url is missing
+  - The Adventure of the Abbey Grange (the-adventure-of-the-abbey-grange): source_url is missing
+  - The Necklace (the-necklace): audio already exists
+Billable characters estimate: 3572
+Estimated cost: $0.057152
+2026-06-06 01:56:53,498 INFO Audio generation completed successfully
+2026-06-06 01:56:53,504 INFO
+=== Generation Report ===
+2026-06-06 01:56:53,504 INFO Total English draft books: 100
+2026-06-06 01:56:53,504 INFO Successfully generated: 0
+2026-06-06 01:56:53,504 INFO Missing files: 100
+2026-06-06 01:56:53,504 WARNING Missing files:
+2026-06-06 01:56:53,504 WARNING   - EN-001: The Tell-Tale Heart
+2026-06-06 01:56:53,504 WARNING     Missing audio file
+2026-06-06 01:56:53,504 WARNING     Missing timestamps
+2026-06-06 01:56:53,504 WARNING   - EN-002: The Fall of the House of Usher
+2026-06-06 01:56:53,504 WARNING     Missing audio file
+2026-06-06 01:56:53,504 WARNING     Missing timestamps
+2026-06-06 01:56:53,504 WARNING   - EN-003: The Murders in the Rue Morgue
+2026-06-06 01:56:53,504 WARNING     Missing audio file
+2026-06-06 01:56:53,504 WARNING     Missing timestamps
+2026-06-06 01:56:53,504 WARNING   - EN-004: The Masque of the Red Death
+2026-06-06 01:56:53,504 WARNING     Missing audio file
+2026-06-06 01:56:53,504 WARNING     Missing timestamps
+2026-06-06 01:56:53,504 WARNING   - EN-005: The Cask of Amontillado
+2026-06-06 01:56:53,504 WARNING     Missing audio file
+2026-06-06 01:56:53,504 WARNING     Missing timestamps
+2026-06-06 01:56:53,504 WARNING   - EN-006: The Gift of the Magi
+2026-06-06 01:56:53,504 WARNING     Missing audio file
+2026-06-06 01:56:53,504 WARNING     Missing timestamps
+2026-06-06 01:56:53,504 WARNING   - EN-007: The Last Leaf
+2026-06-06 01:56:53,504 WARNING     Missing audio file
+2026-06-06 01:56:53,504 WARNING     Missing timestamps
+2026-06-06 01:56:53,504 WARNING   - EN-008: After Twenty Years
+2026-06-06 01:56:53,504 WARNING     Missing audio file
+2026-06-06 01:56:53,504 WARNING     Missing timestamps
+2026-06-06 01:56:53,504 WARNING   - EN-009: The Ransom of Red Chief
+2026-06-06 01:56:53,505 WARNING     Missing audio file
+2026-06-06 01:56:53,505 WARNING     Missing timestamps
+2026-06-06 01:56:53,505 WARNING   - EN-010: A Retrieved Reformation
+2026-06-06 01:56:53,505 WARNING     Missing audio file
+2026-06-06 01:56:53,505 WARNING     Missing timestamps
+2026-06-06 01:56:53,505 WARNING   ... and 90 more
+2026-06-06 01:56:53,508 INFO
+Sync report saved to: audio_output/english_audio_sync_report.json
+2026-06-06 01:56:53,508 INFO Books ready for sync: 0
+2026-06-06 01:56:53,508 INFO
+✓ Pipeline complete: 0/100 books ready for reader sync

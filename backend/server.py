@@ -9,6 +9,7 @@ import os
 import pickle
 import re
 import signal
+import zlib
 import hmac
 import hashlib
 import html as _html
@@ -68,6 +69,13 @@ def _env_bool(name: str, default: bool) -> bool:
 def _env_int(name: str, default: int, minimum: int = 1) -> int:
     try:
         return max(minimum, int(os.environ.get(name, default)))
+    except (TypeError, ValueError):
+        return default
+
+
+def _env_float(name: str, default: float, minimum: float = 0.1) -> float:
+    try:
+        return max(minimum, float(os.environ.get(name, default)))
     except (TypeError, ValueError):
         return default
 
@@ -135,6 +143,27 @@ COOKIE_SAMESITE = os.environ.get("COOKIE_SAMESITE", "lax")
 MULTI_REPLICA_ENABLED = _env_bool("MULTI_REPLICA_ENABLED", False)
 REDIS_URL = os.environ.get("REDIS_URL", "").strip()
 REDIS_KEY_PREFIX = os.environ.get("REDIS_KEY_PREFIX", "earnalism").strip() or "earnalism"
+REDIS_CACHE_ENABLED = _env_bool("REDIS_CACHE_ENABLED", bool(REDIS_URL) or MULTI_REPLICA_ENABLED)
+REDIS_CACHE_FAIL_FAST = _env_bool("REDIS_CACHE_FAIL_FAST", MULTI_REPLICA_ENABLED)
+REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS = _env_float("REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS", 2.0)
+REDIS_SOCKET_TIMEOUT_SECONDS = _env_float("REDIS_SOCKET_TIMEOUT_SECONDS", 2.0)
+REDIS_CACHE_COMPRESS_MIN_BYTES = _env_int("REDIS_CACHE_COMPRESS_MIN_BYTES", 4096)
+REDIS_CACHE_TTL_JITTER_SECONDS = _env_int("REDIS_CACHE_TTL_JITTER_SECONDS", 30, minimum=0)
+REDIS_CONFIGURE_ON_STARTUP = _env_bool("REDIS_CONFIGURE_ON_STARTUP", False)
+REDIS_MAXMEMORY = os.environ.get("REDIS_MAXMEMORY", "").strip()
+REDIS_MAXMEMORY_POLICY = os.environ.get("REDIS_MAXMEMORY_POLICY", "volatile-lfu").strip()
+USER_AUTH_CACHE_TTL_SECONDS = _env_int("USER_AUTH_CACHE_TTL_SECONDS", 20)
+USER_SESSION_CACHE_TTL_SECONDS = _env_int("USER_SESSION_CACHE_TTL_SECONDS", 20)
+USER_WALLET_CACHE_TTL_SECONDS = _env_int("USER_WALLET_CACHE_TTL_SECONDS", 8)
+USER_TRANSACTIONS_CACHE_TTL_SECONDS = _env_int("USER_TRANSACTIONS_CACHE_TTL_SECONDS", 20)
+USER_PAYMENT_INTENTS_CACHE_TTL_SECONDS = _env_int("USER_PAYMENT_INTENTS_CACHE_TTL_SECONDS", 15)
+READER_MANIFEST_CACHE_TTL_SECONDS = _env_int("READER_MANIFEST_CACHE_TTL_SECONDS", 1800)
+READER_BOOK_CACHE_TTL_SECONDS = _env_int("READER_BOOK_CACHE_TTL_SECONDS", 900)
+READER_CHAPTER_CACHE_TTL_SECONDS = _env_int("READER_CHAPTER_CACHE_TTL_SECONDS", 3600)
+READER_RUM_ENABLED = _env_bool("READER_RUM_ENABLED", True)
+READER_RUM_SAMPLE_RATE = min(1.0, _env_float("READER_RUM_SAMPLE_RATE", 0.15, minimum=0.0))
+READER_RUM_SLOW_MS = _env_int("READER_RUM_SLOW_MS", 1800)
+READER_RUM_AGGREGATE_TTL_SECONDS = _env_int("READER_RUM_AGGREGATE_TTL_SECONDS", 7 * 24 * 3600)
 STARTUP_MAINTENANCE_VERSION = os.environ.get("STARTUP_MAINTENANCE_VERSION", "2026-06-03-autoscale-v2").strip()
 STARTUP_MAINTENANCE_LOCK_SECONDS = _env_int("STARTUP_MAINTENANCE_LOCK_SECONDS", 180)
 STARTUP_MAINTENANCE_WAIT_SECONDS = _env_int("STARTUP_MAINTENANCE_WAIT_SECONDS", 45)
@@ -142,6 +171,8 @@ STARTUP_MAINTENANCE_DONE_TTL_SECONDS = _env_int("STARTUP_MAINTENANCE_DONE_TTL_SE
 STARTUP_DB_MAINTENANCE_ATTEMPTS = _env_int("STARTUP_DB_MAINTENANCE_ATTEMPTS", 5)
 _redis_client: Any = None
 _redis_available = False
+_cache_stats: Dict[str, int] = defaultdict(int)
+_redis_config_status: Dict[str, Any] = {}
 
 
 # ---------- Razorpay test-mode config ----------
@@ -171,6 +202,8 @@ PUBLIC_CACHE_ENABLED = _env_bool("PUBLIC_CACHE_ENABLED", True)
 PUBLIC_CACHE_TTL_SECONDS = _env_int("PUBLIC_CACHE_TTL_SECONDS", 300)
 PUBLIC_CACHE_MAX_ENTRIES = _env_int("PUBLIC_CACHE_MAX_ENTRIES", 256)
 HOME_BOOK_LIMIT = _env_int("HOME_BOOK_LIMIT", 500)
+HOME_BOOK_PAGE_DEFAULT_LIMIT = _env_int("HOME_BOOK_PAGE_DEFAULT_LIMIT", 8)
+HOME_BOOK_PAGE_MAX_LIMIT = _env_int("HOME_BOOK_PAGE_MAX_LIMIT", 24)
 HEALTH_CACHE_TTL_SECONDS = _env_int("HEALTH_CACHE_TTL_SECONDS", 5)
 _public_cache: "OrderedDict[str, Tuple[float, Any]]" = OrderedDict()
 _health_cache: dict = {"expires_at": 0.0, "payload": None}
@@ -329,6 +362,18 @@ async def _create_user_session(user: dict, request: Request, response: Response)
         {"id": user["id"]},
         {"$set": {"active_user_session_id": session_id, "last_login_at": now}},
     )
+    await _invalidate_user_cache(user["id"], session_ids=revoked)
+    await _cache_user_session({
+        "id": session_id,
+        "user_id": user["id"],
+        "email": user["email"],
+        "device_fingerprint": device_fp,
+        "status": "active",
+        "created_at": now,
+        "last_seen_at": now,
+        "idle_expires_at": now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES),
+        "absolute_expires_at": now + timedelta(hours=USER_REFRESH_TOTAL_HOURS),
+    })
     _set_user_refresh_cookie(response, refresh_token)
     return create_user_token(user["id"], user["email"], session_id, device_fp)
 
@@ -346,10 +391,13 @@ async def _refresh_user_session(refresh_token: str, request: Request, response: 
             {"id": session["id"]},
             {"$set": {"status": "expired", "expired_at": now}},
         )
+        await _invalidate_user_cache(session.get("user_id", ""), session_ids=[session["id"]])
         _clear_user_refresh_cookie(response)
         return None
 
-    user = await db.users.find_one({"id": session["user_id"], "role": "user"}, {"_id": 0, "password_hash": 0})
+    user = await _cached_user_doc(session["user_id"])
+    if user and user.get("role") != "user":
+        user = None
     if not user or user.get("status") == "blocked":
         return None
     if TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS <= 1 and user.get("active_user_session_id") != session["id"]:
@@ -357,6 +405,7 @@ async def _refresh_user_session(refresh_token: str, request: Request, response: 
             {"id": session["id"]},
             {"$set": {"status": "revoked", "revoked_at": now, "revoked_reason": "new_login"}},
         )
+        await _invalidate_user_cache(user["id"], session_ids=[session["id"]])
         _clear_user_refresh_cookie(response)
         return None
 
@@ -366,13 +415,18 @@ async def _refresh_user_session(refresh_token: str, request: Request, response: 
             {"id": session["id"]},
             {"$set": {"status": "revoked", "revoked_at": now, "revoked_reason": "device_fingerprint_changed"}},
         )
+        await _invalidate_user_cache(user["id"], session_ids=[session["id"]])
         _clear_user_refresh_cookie(response)
         return None
 
+    idle_expires_at = now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES)
     await db.user_sessions.update_one(
         {"id": session["id"]},
-        {"$set": {"last_seen_at": now, "idle_expires_at": now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES)}},
+        {"$set": {"last_seen_at": now, "idle_expires_at": idle_expires_at}},
     )
+    session["last_seen_at"] = now
+    session["idle_expires_at"] = idle_expires_at
+    await _cache_user_session(session)
     token = create_user_token(user["id"], user["email"], session["id"], device_fp)
     return {"token": token, "user": UserOut(**_user_public(user))}
 
@@ -423,14 +477,16 @@ async def require_user(
         raise HTTPException(status_code=401, detail="Session expired, please login again.")
     if token_fp != _device_fingerprint(request):
         raise HTTPException(status_code=401, detail="Session security check failed. Please login again.")
-    user = await db.users.find_one({"id": payload["sub"]}, {"_id": 0, "password_hash": 0})
+    user = await _cached_user_doc(payload["sub"])
     if not user:
         raise HTTPException(status_code=401, detail="User not found")
+    if user.get("role") != "user":
+        raise HTTPException(status_code=403, detail="User access required")
     if user.get("status") == "blocked":
         raise HTTPException(status_code=403, detail="Account is blocked")
     if TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS <= 1 and user.get("active_user_session_id") != session_id:
         raise HTTPException(status_code=401, detail="You've been logged out: new login detected.")
-    session = await db.user_sessions.find_one({"id": session_id, "user_id": user["id"]}, {"_id": 0})
+    session = await _cached_user_session(session_id, user["id"])
     if not session or session.get("status") != "active":
         raise HTTPException(status_code=401, detail="You've been logged out: new login detected.")
     now = datetime.now(timezone.utc)
@@ -441,6 +497,7 @@ async def require_user(
             {"id": session_id},
             {"$set": {"status": "expired", "expired_at": now}},
         )
+        await _invalidate_user_cache(user["id"], session_ids=[session_id])
         raise HTTPException(status_code=401, detail="Session expired, please login again.")
     last_seen_at = _as_utc_dt(session.get("last_seen_at"))
     should_touch_session = (
@@ -449,10 +506,14 @@ async def require_user(
         or (now - last_seen_at).total_seconds() >= SESSION_TOUCH_INTERVAL_SECONDS
     )
     if should_touch_session:
+        idle_expires_at = now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES)
         await db.user_sessions.update_one(
             {"id": session_id},
-            {"$set": {"last_seen_at": now, "idle_expires_at": now + timedelta(minutes=USER_REFRESH_IDLE_MINUTES)}},
+            {"$set": {"last_seen_at": now, "idle_expires_at": idle_expires_at}},
         )
+        session["last_seen_at"] = now
+        session["idle_expires_at"] = idle_expires_at
+        await _cache_user_session(session)
     user["session_id"] = session_id
     user["device_fingerprint"] = token_fp
     return user
@@ -477,7 +538,7 @@ async def optional_principal(
     if role == "admin":
         return {"role": "admin", "id": payload.get("sub"), "email": payload.get("email")}
     if role == "user":
-        u = await db.users.find_one({"id": payload.get("sub")}, {"_id": 0, "password_hash": 0})
+        u = await _cached_user_doc(payload.get("sub"))
         if not u:
             return None
         session_id = payload.get("sid")
@@ -485,8 +546,8 @@ async def optional_principal(
             return None
         if TRUSTED_DEVICE_MAX_ACTIVE_SESSIONS <= 1 and u.get("active_user_session_id") != session_id:
             return None
-        session = await db.user_sessions.find_one({"id": session_id, "user_id": u["id"], "status": "active"}, {"_id": 0})
-        if not session:
+        session = await _cached_user_session(session_id, u["id"])
+        if not session or session.get("status") != "active":
             return None
         now = datetime.now(timezone.utc)
         idle_expires = _as_utc_dt(session.get("idle_expires_at"))
@@ -610,11 +671,18 @@ BOOK_SUMMARY_PROJECTION = {
     "dominant_color": 1,
     "estimated_reading_time": 1,
     "audiobook_enabled": 1,
+    "generate_audiobook": 1,
+    "audiobook_provider": 1,
+    "audiobook_voice": 1,
+    "audiobook_assets_updated_at": 1,
+    "audio_asset_slug": 1,
+    "audiobook_assets": 1,
     "is_published": 1,
     "created_at": 1,
 }
 PUBLIC_CACHE_PATHS = {
     "/api/home",
+    "/api/home/books",
     "/api/categories",
     "/api/books",
     "/api/blog",
@@ -634,24 +702,41 @@ PUBLIC_CACHE_PREFIXES = (
 
 async def initialize_replica_state_backends() -> None:
     global _redis_client, _redis_available
-    if not MULTI_REPLICA_ENABLED:
-        logger.info("Multi-replica state backends disabled; using single-replica local cache/rate-limit state.")
+    if not REDIS_CACHE_ENABLED and not MULTI_REPLICA_ENABLED:
+        logger.info("Redis cache/state disabled; using per-process local cache and rate-limit state.")
         return
     if not REDIS_URL:
-        raise RuntimeError("MULTI_REPLICA_ENABLED=true requires REDIS_URL for shared cache and rate-limit state.")
+        message = "REDIS_URL is required for shared Redis cache/state."
+        if REDIS_CACHE_FAIL_FAST or MULTI_REPLICA_ENABLED:
+            raise RuntimeError(message)
+        logger.warning("%s Continuing without Redis.", message)
+        return
     try:
         import redis.asyncio as redis  # type: ignore
     except Exception as exc:
-        raise RuntimeError("MULTI_REPLICA_ENABLED=true requires the redis Python package.") from exc
+        message = "Redis cache/state requires the redis Python package."
+        if REDIS_CACHE_FAIL_FAST or MULTI_REPLICA_ENABLED:
+            raise RuntimeError(message) from exc
+        logger.warning("%s Continuing without Redis.", message)
+        return
     _redis_client = redis.from_url(
         REDIS_URL,
-        socket_connect_timeout=2,
-        socket_timeout=2,
+        socket_connect_timeout=REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS,
+        socket_timeout=REDIS_SOCKET_TIMEOUT_SECONDS,
         retry_on_timeout=True,
     )
-    await _redis_client.ping()
+    try:
+        await _redis_client.ping()
+    except Exception as exc:
+        _redis_client = None
+        message = f"Redis cache/state ping failed: {exc}"
+        if REDIS_CACHE_FAIL_FAST or MULTI_REPLICA_ENABLED:
+            raise RuntimeError(message) from exc
+        logger.warning("%s Continuing without Redis.", message)
+        return
     _redis_available = True
-    logger.info("Redis-backed multi-replica state is enabled.")
+    await _configure_redis_cache_policy()
+    logger.info("Redis-backed cache/state is enabled.")
 
 
 async def close_replica_state_backends() -> None:
@@ -667,13 +752,119 @@ def _redis_key(*parts: str) -> str:
 
 
 def _redis_state_enabled() -> bool:
-    return bool(MULTI_REPLICA_ENABLED and _redis_available and _redis_client is not None)
+    return bool(_redis_available and _redis_client is not None)
 
 
 def _redis_text(value: Any) -> str:
     if isinstance(value, bytes):
         return value.decode("utf-8", errors="replace")
     return "" if value is None else str(value)
+
+
+async def _configure_redis_cache_policy() -> None:
+    global _redis_config_status
+    _redis_config_status = {"attempted": False, "applied": {}, "errors": {}}
+    if not REDIS_CONFIGURE_ON_STARTUP or _redis_client is None:
+        return
+    _redis_config_status["attempted"] = True
+    config_pairs: Dict[str, str] = {}
+    if REDIS_MAXMEMORY:
+        config_pairs["maxmemory"] = REDIS_MAXMEMORY
+    if REDIS_MAXMEMORY_POLICY:
+        config_pairs["maxmemory-policy"] = REDIS_MAXMEMORY_POLICY
+    for name, value in config_pairs.items():
+        try:
+            await _redis_client.config_set(name, value)
+            _redis_config_status["applied"][name] = value
+        except Exception as exc:
+            _redis_config_status["errors"][name] = str(exc)[:240]
+            logger.warning("Redis CONFIG SET %s failed; continuing with provider defaults.", name, exc_info=True)
+
+
+def _ttl_with_jitter(ttl_seconds: int) -> int:
+    ttl = int(ttl_seconds or 0)
+    if ttl <= 0:
+        return ttl
+    jitter = min(max(0, REDIS_CACHE_TTL_JITTER_SECONDS), max(0, ttl // 5))
+    if jitter <= 0:
+        return ttl
+    return ttl + secrets.randbelow(jitter + 1)
+
+
+def _cache_payload_encode(value: Any) -> bytes:
+    blob = pickle.dumps(value, protocol=pickle.HIGHEST_PROTOCOL)
+    if len(blob) >= REDIS_CACHE_COMPRESS_MIN_BYTES:
+        return b"z:" + zlib.compress(blob, level=6)
+    return b"p:" + blob
+
+
+def _cache_payload_decode(blob: bytes) -> Any:
+    if blob.startswith(b"z:"):
+        return pickle.loads(zlib.decompress(blob[2:]))
+    if blob.startswith(b"p:"):
+        return pickle.loads(blob[2:])
+    # Backward-compatible reader for entries written before payload markers.
+    return pickle.loads(blob)
+
+
+def _cache_digest_key(namespace: str, key: str) -> str:
+    digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
+    return _redis_key("cache", namespace, digest)
+
+
+async def _redis_cache_get(namespace: str, key: str) -> Any:
+    if not _redis_state_enabled():
+        _cache_stats[f"{namespace}_miss"] += 1
+        return None
+    redis_key = _cache_digest_key(namespace, key)
+    try:
+        blob = await _redis_client.get(redis_key)
+    except Exception:
+        logger.warning("Redis cache get failed for namespace=%s", namespace, exc_info=True)
+        _cache_stats[f"{namespace}_error"] += 1
+        return None
+    if not blob:
+        _cache_stats[f"{namespace}_miss"] += 1
+        return None
+    try:
+        value = _cache_payload_decode(blob)
+    except Exception:
+        logger.warning("Failed to decode Redis cache entry namespace=%s key=%s", namespace, key)
+        _cache_stats[f"{namespace}_error"] += 1
+        return None
+    _cache_stats[f"{namespace}_hit"] += 1
+    return value
+
+
+async def _redis_cache_set(namespace: str, key: str, value: Any, ttl_seconds: int) -> None:
+    if ttl_seconds <= 0 or not _redis_state_enabled():
+        return
+    redis_key = _cache_digest_key(namespace, key)
+    try:
+        await _redis_client.setex(redis_key, _ttl_with_jitter(ttl_seconds), _cache_payload_encode(value))
+    except Exception:
+        logger.warning("Redis cache set failed for namespace=%s", namespace, exc_info=True)
+        _cache_stats[f"{namespace}_error"] += 1
+
+
+async def _redis_cache_delete(namespace: str, key: str) -> None:
+    if not _redis_state_enabled():
+        return
+    try:
+        await _redis_client.delete(_cache_digest_key(namespace, key))
+    except Exception:
+        logger.warning("Redis cache delete failed for namespace=%s", namespace, exc_info=True)
+        _cache_stats[f"{namespace}_error"] += 1
+
+
+async def _redis_cache_delete_keys(*keys: str) -> None:
+    if not keys or not _redis_state_enabled():
+        return
+    try:
+        await _redis_client.delete(*keys)
+    except Exception:
+        logger.warning("Redis cache key delete failed", exc_info=True)
+        _cache_stats["redis_delete_error"] += 1
 
 
 def _public_cache_storage_key(generation: int, key: str) -> str:
@@ -706,7 +897,7 @@ async def _public_cache_get(key: str):
         if not blob:
             return None
         try:
-            return pickle.loads(blob)
+            return _cache_payload_decode(blob)
         except Exception:
             logger.warning("Failed to decode Redis public cache entry: %s", key)
             return None
@@ -726,7 +917,7 @@ async def _public_cache_set(key: str, value) -> None:
         return
     if _redis_state_enabled():
         redis_key = _public_cache_storage_key(await _public_cache_generation_value(), key)
-        await _redis_client.setex(redis_key, PUBLIC_CACHE_TTL_SECONDS, pickle.dumps(value, protocol=pickle.HIGHEST_PROTOCOL))
+        await _redis_client.setex(redis_key, _ttl_with_jitter(PUBLIC_CACHE_TTL_SECONDS), _cache_payload_encode(value))
         return
     _public_cache[key] = (time.monotonic() + PUBLIC_CACHE_TTL_SECONDS, value)
     _public_cache.move_to_end(key)
@@ -738,6 +929,7 @@ async def _public_cache_clear() -> None:
     global _public_cache_generation
     if _redis_state_enabled():
         await _redis_client.incr(_redis_key("public-cache", "generation"))
+        await _redis_client.incr(_redis_key("reader-content-cache", "generation"))
         return
     _public_cache_generation += 1
     _public_cache.clear()
@@ -745,6 +937,286 @@ async def _public_cache_clear() -> None:
 
 def _is_public_cache_path(path: str) -> bool:
     return path in PUBLIC_CACHE_PATHS or any(path.startswith(prefix) for prefix in PUBLIC_CACHE_PREFIXES)
+
+
+async def _reader_content_cache_generation_value() -> int:
+    if not _redis_state_enabled():
+        return 0
+    raw = await _redis_client.get(_redis_key("reader-content-cache", "generation"))
+    if raw is None:
+        return 0
+    try:
+        return int(raw)
+    except (TypeError, ValueError):
+        return 0
+
+
+def _user_cache_key(user_id: str) -> str:
+    return _redis_key("user", user_id)
+
+
+def _user_wallet_cache_key(user_id: str) -> str:
+    return _redis_key("user-wallet", user_id)
+
+
+def _user_session_cache_key(session_id: str) -> str:
+    return _redis_key("user-session", session_id)
+
+
+def _user_transactions_cache_id(user_id: str) -> str:
+    return f"user:{user_id}:wallet-transactions"
+
+
+def _user_payment_intents_cache_id(user_id: str) -> str:
+    return f"user:{user_id}:payment-intents"
+
+
+async def _cache_user_doc(user: Optional[dict]) -> None:
+    if not user or not _redis_state_enabled():
+        return
+    doc = {k: v for k, v in dict(user).items() if k not in {"_id", "password_hash"}}
+    try:
+        await _redis_client.setex(_user_cache_key(doc["id"]), _ttl_with_jitter(USER_AUTH_CACHE_TTL_SECONDS), _cache_payload_encode(doc))
+    except Exception:
+        logger.warning("Redis user cache set failed", exc_info=True)
+        _cache_stats["user_doc_error"] += 1
+
+
+async def _cached_user_doc(user_id: str) -> Optional[dict]:
+    if not user_id:
+        return None
+    if _redis_state_enabled():
+        try:
+            blob = await _redis_client.get(_user_cache_key(user_id))
+            if blob:
+                _cache_stats["user_doc_hit"] += 1
+                return _cache_payload_decode(blob)
+        except Exception:
+            logger.warning("Redis user cache get failed", exc_info=True)
+            _cache_stats["user_doc_error"] += 1
+    _cache_stats["user_doc_miss"] += 1
+    user = await db.users.find_one({"id": user_id}, {"_id": 0, "password_hash": 0})
+    await _cache_user_doc(user)
+    return user
+
+
+async def _cache_user_session(session: Optional[dict]) -> None:
+    if not session or not _redis_state_enabled():
+        return
+    doc = {k: v for k, v in dict(session).items() if k != "_id"}
+    try:
+        await _redis_client.setex(_user_session_cache_key(doc["id"]), _ttl_with_jitter(USER_SESSION_CACHE_TTL_SECONDS), _cache_payload_encode(doc))
+    except Exception:
+        logger.warning("Redis user session cache set failed", exc_info=True)
+        _cache_stats["user_session_error"] += 1
+
+
+async def _cached_user_session(session_id: str, user_id: Optional[str] = None) -> Optional[dict]:
+    if not session_id:
+        return None
+    if _redis_state_enabled():
+        try:
+            blob = await _redis_client.get(_user_session_cache_key(session_id))
+            if blob:
+                session = _cache_payload_decode(blob)
+                if not user_id or session.get("user_id") == user_id:
+                    _cache_stats["user_session_hit"] += 1
+                    return session
+        except Exception:
+            logger.warning("Redis user session cache get failed", exc_info=True)
+            _cache_stats["user_session_error"] += 1
+    _cache_stats["user_session_miss"] += 1
+    query = {"id": session_id}
+    if user_id:
+        query["user_id"] = user_id
+    session = await db.user_sessions.find_one(query, {"_id": 0})
+    await _cache_user_session(session)
+    return session
+
+
+async def _set_user_wallet_cache(user_id: str, wallet_seconds: int) -> None:
+    if not user_id or not _redis_state_enabled():
+        return
+    try:
+        await _redis_client.setex(_user_wallet_cache_key(user_id), _ttl_with_jitter(USER_WALLET_CACHE_TTL_SECONDS), int(wallet_seconds))
+    except Exception:
+        logger.warning("Redis wallet cache set failed", exc_info=True)
+        _cache_stats["user_wallet_error"] += 1
+
+
+async def _cached_user_wallet_seconds(user_id: str) -> int:
+    if _redis_state_enabled():
+        try:
+            raw = await _redis_client.get(_user_wallet_cache_key(user_id))
+            if raw is not None:
+                _cache_stats["user_wallet_hit"] += 1
+                return int(_redis_text(raw) or 0)
+        except Exception:
+            logger.warning("Redis wallet cache get failed", exc_info=True)
+            _cache_stats["user_wallet_error"] += 1
+    _cache_stats["user_wallet_miss"] += 1
+    fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+    wallet = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+    await _set_user_wallet_cache(user_id, wallet)
+    return wallet
+
+
+async def _invalidate_user_cache(user_id: str, *, session_ids: Optional[List[str]] = None) -> None:
+    if not user_id or not _redis_state_enabled():
+        return
+    keys = [_user_cache_key(user_id), _user_wallet_cache_key(user_id)]
+    for session_id in session_ids or []:
+        if session_id:
+            keys.append(_user_session_cache_key(session_id))
+    await _redis_cache_delete("user-private", _user_transactions_cache_id(user_id))
+    await _redis_cache_delete("user-private", _user_payment_intents_cache_id(user_id))
+    await _redis_cache_delete_keys(*keys)
+
+
+async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> Optional[dict]:
+    generation = await _reader_content_cache_generation_value()
+    cache_key = f"book-access:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
+    cached = await _redis_cache_get("reader-content", cache_key)
+    if cached is not None:
+        return cached
+    query = {"slug": slug} if admin_preview else {"slug": slug, "is_published": True}
+    doc = await db.books.find_one(
+        query,
+        {"_id": 0, "title": 1, "is_published": 1, "chapters.id": 1, "chapters.title": 1, "chapters.order": 1, "chapters.is_preview": 1},
+    )
+    if doc:
+        await _redis_cache_set("reader-content", cache_key, doc, READER_BOOK_CACHE_TTL_SECONDS)
+    return doc
+
+
+async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: bool = False) -> str:
+    generation = await _reader_content_cache_generation_value()
+    cache_key = f"chapter-content:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
+    cached = await _redis_cache_get("reader-content", cache_key)
+    if cached is not None:
+        return str(cached or "")
+    query = {"slug": slug} if admin_preview else {"slug": slug, "is_published": True}
+    content_doc = await db.books.find_one(
+        {**query, "chapters.id": chapter_id},
+        {"_id": 0, "chapters.$": 1},
+    )
+    target = ((content_doc or {}).get("chapters") or [{}])[0]
+    content = target.get("content", "")
+    await _redis_cache_set("reader-content", cache_key, content, READER_CHAPTER_CACHE_TTL_SECONDS)
+    return content
+
+
+def _stable_digest(value: Any, length: int = 16) -> str:
+    payload = _json.dumps(value, sort_keys=True, ensure_ascii=True, default=str, separators=(",", ":"))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:length]
+
+
+def _reader_chapter_content_version(chapter: dict) -> str:
+    content = str(chapter.get("content") or "")
+    return _stable_digest({
+        "id": chapter.get("id", ""),
+        "title": chapter.get("title", ""),
+        "order": chapter.get("order", 0),
+        "is_preview": bool(chapter.get("is_preview")),
+        "updated_at": chapter.get("updated_at", ""),
+        "uploaded_at": chapter.get("uploaded_at", ""),
+        "word_count": chapter.get("word_count", 0),
+        "content_length": len(content),
+        "content_hash": hashlib.sha256(content.encode("utf-8")).hexdigest(),
+    }, length=20)
+
+
+def _reader_word_count(text: str) -> int:
+    return len(re.findall(r"\b[\w\u0980-\u09FF'-]+\b", text or ""))
+
+
+def _reader_manifest_audio(book: dict, slug: str) -> dict:
+    assets = {
+        str(key): str(value)
+        for key, value in (book.get("audiobook_assets") or {}).items()
+        if value
+    }
+    audio_slug = slugify(book.get("audio_asset_slug") or slug, fallback=slug)
+    enabled = bool(
+        book.get("audiobook_enabled")
+        or book.get("generate_audiobook")
+        or assets
+        or audio_slug
+    )
+    version = _stable_digest({
+        "enabled": enabled,
+        "audio_slug": audio_slug,
+        "provider": book.get("audiobook_provider", ""),
+        "voice": book.get("audiobook_voice", ""),
+        "assets": assets,
+        "updated_at": book.get("audiobook_assets_updated_at", ""),
+    })
+    return {
+        "enabled": enabled,
+        "asset_slug": audio_slug,
+        "provider": book.get("audiobook_provider", ""),
+        "voice": book.get("audiobook_voice", ""),
+        "assets": assets,
+        "version": version,
+        "updated_at": book.get("audiobook_assets_updated_at", ""),
+    }
+
+
+async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -> Optional[dict]:
+    generation = await _reader_content_cache_generation_value()
+    cache_key = f"book-manifest:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
+    cached = await _redis_cache_get("reader-manifest", cache_key)
+    if cached is not None:
+        return cached
+
+    query = {"slug": slug} if admin_preview else {"slug": slug, "is_published": True}
+    doc = await db.books.find_one(query, {"_id": 0, "rights_metadata": 0})
+    if not doc:
+        return None
+
+    chapters = []
+    preview_ids = _free_preview_chapter_ids(doc)
+    for chapter in sorted((doc.get("chapters") or []), key=lambda c: c.get("order", 0)):
+        version = _reader_chapter_content_version(chapter)
+        chapter_id = chapter.get("id") or ""
+        chapters.append({
+            "id": chapter_id,
+            "title": chapter.get("title", ""),
+            "order": chapter.get("order", 0),
+            "is_preview": chapter_id in preview_ids,
+            "content_version": version,
+            "word_count": int(chapter.get("word_count", 0) or _reader_word_count(chapter.get("content", ""))),
+            "reading_minutes": int(chapter.get("reading_minutes", 0) or 0),
+            "processing_status": chapter.get("processing_status", "ready"),
+            "has_images": bool(chapter.get("has_images", False)),
+            "content_url": f"/api/reader/chapter/{slug}/{chapter_id}?v={version}" if chapter_id else "",
+        })
+
+    audio = _reader_manifest_audio(doc, slug)
+    book_public = _strip_all_chapter_content(doc)
+    book_public["chapters"] = chapters
+    manifest_version = _stable_digest({
+        "slug": slug,
+        "admin_preview": admin_preview,
+        "book": {
+            "title": doc.get("title", ""),
+            "updated_at": doc.get("updated_at", ""),
+            "created_at": doc.get("created_at", ""),
+            "is_published": doc.get("is_published", False),
+        },
+        "chapters": [{c["id"]: c["content_version"]} for c in chapters],
+        "audio": audio.get("version", ""),
+    }, length=20)
+    result = {
+        "book": book_public,
+        "chapters": chapters,
+        "audio": audio,
+        "version": manifest_version,
+        "content_generation": generation,
+        "generated_at": now_iso(),
+    }
+    await _redis_cache_set("reader-manifest", cache_key, result, READER_MANIFEST_CACHE_TTL_SECONDS)
+    return result
 
 
 HTML_TAG_RE = re.compile(r"</?[a-z][\s\S]*>", re.IGNORECASE)
@@ -1432,6 +1904,11 @@ class Book(BaseModel):
     chapters: List[Chapter] = Field(default_factory=list)
     audiobook_enabled: bool = False
     generate_audiobook: bool = False
+    audiobook_provider: str = ""
+    audiobook_voice: str = ""
+    audiobook_assets_updated_at: str = ""
+    audio_asset_slug: str = ""
+    audiobook_assets: Dict[str, str] = Field(default_factory=dict)
     is_published: bool = True
     created_at: str = Field(default_factory=now_iso)
 
@@ -1458,6 +1935,33 @@ class BookIn(BaseModel):
     generate_audiobook: bool = False
     is_published: bool = True
     slug: Optional[str] = None
+
+
+class BookAudiobookIn(BaseModel):
+    audiobook_enabled: bool = True
+    generate_audiobook: bool = True
+    audiobook_provider: str = ""
+    audiobook_voice: str = ""
+    audio_asset_slug: str = ""
+    audiobook_assets: Dict[str, str] = Field(default_factory=dict)
+
+
+ALLOWED_AUDIO_ASSET_KEYS = {"mp3", "timestamps", "vtt", "chapters", "meta", "manifest"}
+
+
+def _safe_audiobook_assets(value: Optional[Dict[str, Any]]) -> Dict[str, str]:
+    assets: Dict[str, str] = {}
+    for key, raw_url in (value or {}).items():
+        normalized_key = str(key or "").strip().lower()
+        if normalized_key not in ALLOWED_AUDIO_ASSET_KEYS:
+            continue
+        url = str(raw_url or "").strip()
+        if not url or len(url) > 2000:
+            continue
+        if not (url.startswith("https://") or url.startswith("/audio/")):
+            continue
+        assets[normalized_key] = url
+    return assets
 
 class BlogPost(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -1592,6 +2096,16 @@ class ReaderCompletionIn(BaseModel):
     chapter_title: str = ""
     progress: int = 100
 
+class ReaderMetricIn(BaseModel):
+    event: str = "reader_metric"
+    session_id: str = ""
+    book_slug: str = ""
+    chapter_id: str = ""
+    route: str = ""
+    timings: Dict[str, Any] = Field(default_factory=dict)
+    metrics: Dict[str, Any] = Field(default_factory=dict)
+    tags: Dict[str, Any] = Field(default_factory=dict)
+
 class AnalyticsEventIn(BaseModel):
     event: str
     metadata: Dict[str, Any] = Field(default_factory=dict)
@@ -1713,8 +2227,8 @@ async def _record_wallet_ledger(
         await db.wallet_transactions.insert_one(tx)
 
     if balance_after is None:
-        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1})
-        balance_after = int((fresh or {}).get("reading_seconds_balance", 0))
+        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1})
+        balance_after = int((fresh or {}).get("reading_seconds_balance", (fresh or {}).get("wallet_seconds", 0)) or 0)
 
     ledger = {
         "id": str(uuid.uuid4()),
@@ -1737,6 +2251,8 @@ async def _record_wallet_ledger(
         upsert=True,
     )
     await _flag_wallet_divergence(user_id, int(balance_after or 0))
+    await _invalidate_user_cache(user_id)
+    await _set_user_wallet_cache(user_id, int(balance_after or 0))
     return tx
 
 
@@ -1997,6 +2513,8 @@ async def initialize_database_indexes() -> None:
     await db.reader_security_events.create_index([("event_type", 1), ("created_at", -1)])
     await db.reader_security_events.create_index([("session_id", 1), ("created_at", -1)])
     await db.reader_security_events.create_index([("user_id", 1), ("created_at", -1)])
+    await db.reader_experience_events.create_index([("event", 1), ("created_at", -1)])
+    await db.reader_experience_events.create_index([("book_slug", 1), ("chapter_id", 1), ("created_at", -1)])
 
     await db.reader_completions.create_index([("user_id", 1), ("completed_on", -1)])
     await db.reader_completions.create_index(
@@ -2305,6 +2823,70 @@ def _safe_counter_map(counts: Dict[str, int]) -> Dict[str, int]:
     return safe
 
 
+def _safe_metric_name(value: str, fallback: str = "reader_metric") -> str:
+    name = re.sub(r"[^a-zA-Z0-9_.:-]", "_", str(value or "").strip())[:80]
+    return name or fallback
+
+
+def _safe_numeric_map(values: Dict[str, Any], *, limit: int = 40, maximum: float = 10_000_000) -> Dict[str, float]:
+    if not isinstance(values, dict):
+        return {}
+    safe: Dict[str, float] = {}
+    for raw_key, raw_value in list(values.items())[:limit]:
+        key = _safe_metric_name(raw_key, fallback="")
+        if not key:
+            continue
+        try:
+            number = float(raw_value)
+        except (TypeError, ValueError):
+            continue
+        if not (number == number) or number < 0:
+            continue
+        safe[key] = min(maximum, number)
+    return safe
+
+
+def _safe_tag_map(values: Dict[str, Any], *, limit: int = 30) -> Dict[str, str]:
+    if not isinstance(values, dict):
+        return {}
+    safe: Dict[str, str] = {}
+    for raw_key, raw_value in list(values.items())[:limit]:
+        key = _safe_metric_name(raw_key, fallback="")
+        if not key:
+            continue
+        safe[key] = normalize_text(str(raw_value or ""))[:180]
+    return safe
+
+
+async def _aggregate_reader_metric(event: str, timings: Dict[str, float], metrics: Dict[str, float]) -> None:
+    if not _redis_state_enabled():
+        return
+    day = datetime.utcnow().date().isoformat()
+    redis_key = _redis_key("reader-rum", day, event)
+    try:
+        pipe = _redis_client.pipeline()
+        pipe.hincrby(redis_key, "count", 1)
+        for key, value in timings.items():
+            pipe.hincrbyfloat(redis_key, f"timing:{key}:sum", float(value))
+            pipe.hincrby(redis_key, f"timing:{key}:count", 1)
+        for key, value in metrics.items():
+            pipe.hincrbyfloat(redis_key, f"metric:{key}:sum", float(value))
+            pipe.hincrby(redis_key, f"metric:{key}:count", 1)
+        pipe.expire(redis_key, READER_RUM_AGGREGATE_TTL_SECONDS)
+        await pipe.execute()
+    except Exception:
+        logger.warning("Reader RUM aggregate failed", exc_info=True)
+
+
+def _should_persist_reader_metric(timings: Dict[str, float]) -> bool:
+    slowest = max(timings.values(), default=0)
+    if slowest >= READER_RUM_SLOW_MS:
+        return True
+    if READER_RUM_SAMPLE_RATE <= 0:
+        return False
+    return secrets.randbelow(1_000_000) < int(READER_RUM_SAMPLE_RATE * 1_000_000)
+
+
 SECURE_READER_RECORDED_EVENTS = {
     "right_click",
     "copy",
@@ -2369,7 +2951,7 @@ def _client_ip(request: Request) -> str:
 def _rate_limit_scope(path: str) -> Tuple[str, int]:
     if _is_public_cache_path(path):
         return "public", RATE_LIMIT_PUBLIC_PER_MINUTE
-    if path.startswith("/api/reader/chapter/"):
+    if path.startswith(("/api/reader/chapter/", "/api/reader/book/", "/api/reader/metrics")):
         return "reader", RATE_LIMIT_READER_PER_MINUTE
     if path.startswith("/api/auth/"):
         return "auth", RATE_LIMIT_AUTH_PER_MINUTE
@@ -2678,24 +3260,22 @@ async def api_healthz_check():
 
 
 @api.get("/home")
-async def get_home_payload():
+async def get_home_payload(books_limit: Optional[int] = None, books_offset: int = 0):
     """Cached landing-page payload.
 
     The home page needs categories, live books and a featured book immediately.
     Returning them together cuts the first-load API fanout from three database
     reads to one cached request while keeping the older public endpoints intact.
     """
-    cache_key = _public_cache_key("home_payload")
+    normalized_limit = _home_book_page_limit(books_limit, default=HOME_BOOK_LIMIT, maximum=HOME_BOOK_LIMIT)
+    normalized_offset = max(0, int(books_offset or 0))
+    cache_key = _public_cache_key("home_payload", books_limit=normalized_limit, books_offset=normalized_offset)
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
 
     categories = await db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200)
-    books_docs = await db.books.find(
-        {"is_published": True},
-        BOOK_SUMMARY_PROJECTION,
-    ).sort("created_at", -1).to_list(HOME_BOOK_LIMIT)
-    books = [_strip_all_chapter_content(doc) for doc in books_docs]
+    books_page = await _home_books_page(normalized_limit, normalized_offset, maximum=HOME_BOOK_LIMIT)
 
     featured_book = None
     setting = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
@@ -2709,11 +3289,59 @@ async def get_home_payload():
 
     result = {
         "categories": categories,
-        "books": books,
+        "books": books_page["books"],
+        "books_page": books_page["pagination"],
         "featured": {"book": featured_book},
     }
     await _public_cache_set(cache_key, result)
     return result
+
+
+def _home_book_page_limit(value: Optional[int], *, default: int, maximum: int = HOME_BOOK_PAGE_MAX_LIMIT) -> int:
+    try:
+        parsed = int(value if value is not None else default)
+    except (TypeError, ValueError):
+        parsed = default
+    return max(1, min(parsed, maximum))
+
+
+async def _home_books_page(limit: int, offset: int = 0, *, maximum: int = HOME_BOOK_PAGE_MAX_LIMIT) -> dict:
+    normalized_limit = _home_book_page_limit(limit, default=HOME_BOOK_PAGE_DEFAULT_LIMIT, maximum=maximum)
+    normalized_offset = max(0, int(offset or 0))
+    cache_key = _public_cache_key("home_books_page", limit=normalized_limit, offset=normalized_offset)
+    cached = await _public_cache_get(cache_key)
+    if cached is not None:
+        return cached
+
+    query = {"is_published": True}
+    cursor = (
+        db.books.find(query, BOOK_SUMMARY_PROJECTION)
+        .sort("created_at", -1)
+        .skip(normalized_offset)
+        .limit(normalized_limit)
+    )
+    docs = await cursor.to_list(normalized_limit)
+    total = await db.books.count_documents(query)
+    books = [_strip_all_chapter_content(doc) for doc in docs]
+    next_offset = normalized_offset + len(books)
+    result = {
+        "books": books,
+        "pagination": {
+            "offset": normalized_offset,
+            "limit": normalized_limit,
+            "count": len(books),
+            "total": total,
+            "next_offset": next_offset if next_offset < total else None,
+            "has_more": next_offset < total,
+        },
+    }
+    await _public_cache_set(cache_key, result)
+    return result
+
+
+@api.get("/home/books")
+async def get_home_books_page(limit: int = HOME_BOOK_PAGE_DEFAULT_LIMIT, offset: int = 0):
+    return await _home_books_page(limit, offset)
 
 
 @api.post("/analytics/events")
@@ -3046,6 +3674,27 @@ async def admin_update_book(slug: str, payload: BookIn, _=Depends(require_admin)
     await db.books.update_one({"slug": slug}, {"$set": update})
     refreshed = await db.books.find_one({"slug": new_slug}, {"_id": 0})
     return refreshed
+
+
+@api.patch("/admin/books/{slug}/audiobook", response_model=Book)
+async def admin_update_book_audiobook(slug: str, payload: BookAudiobookIn, _=Depends(require_admin)):
+    existing = await db.books.find_one({"slug": slug}, {"_id": 0})
+    if not existing:
+        raise HTTPException(status_code=404, detail="Book not found")
+
+    update = {
+        "audiobook_enabled": bool(payload.audiobook_enabled),
+        "generate_audiobook": bool(payload.generate_audiobook),
+        "audiobook_provider": normalize_text(payload.audiobook_provider).strip()[:80],
+        "audiobook_voice": normalize_text(payload.audiobook_voice).strip()[:120],
+        "audio_asset_slug": slugify(payload.audio_asset_slug or slug, fallback=slug),
+        "audiobook_assets": _safe_audiobook_assets(payload.audiobook_assets),
+        "audiobook_assets_updated_at": now_iso(),
+    }
+    await db.books.update_one({"slug": slug}, {"$set": update})
+    refreshed = await db.books.find_one({"slug": slug}, {"_id": 0})
+    return refreshed
+
 
 @api.delete("/admin/books/{slug}")
 async def admin_delete_book(slug: str, _=Depends(require_admin)):
@@ -3534,11 +4183,13 @@ async def user_login(payload: UserLoginIn, request: Request, response: Response)
 
 @api.post("/users/logout")
 async def user_logout(response: Response, user=Depends(require_user)):
+    session_id = user.get("session_id")
     await db.user_sessions.update_one(
-        {"id": user.get("session_id"), "user_id": user["id"]},
+        {"id": session_id, "user_id": user["id"]},
         {"$set": {"status": "logged_out", "logged_out_at": datetime.now(timezone.utc)}},
     )
-    await db.users.update_one({"id": user["id"], "active_user_session_id": user.get("session_id")}, {"$unset": {"active_user_session_id": ""}})
+    await db.users.update_one({"id": user["id"], "active_user_session_id": session_id}, {"$unset": {"active_user_session_id": ""}})
+    await _invalidate_user_cache(user["id"], session_ids=[session_id])
     _clear_user_refresh_cookie(response)
     return {"ok": True}
 
@@ -3746,20 +4397,22 @@ async def auth_otp_verify(payload: OTPVerifyIn, request: Request, response: Resp
 
 @api.get("/users/me", response_model=UserOut)
 async def user_me(user=Depends(require_user)):
-    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0, "password_hash": 0})
-    return UserOut(**_user_public(fresh or user))
+    return UserOut(**_user_public(user))
 
 
 @api.get("/users/me/wallet")
 async def user_wallet(user=Depends(require_user)):
-    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
-    wallet_seconds = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
-    return {"wallet_seconds": wallet_seconds}
+    return {"wallet_seconds": await _cached_user_wallet_seconds(user["id"])}
 
 
 @api.get("/users/me/transactions", response_model=List[WalletTransactionOut])
 async def user_my_transactions(user=Depends(require_user)):
+    cache_key = _user_transactions_cache_id(user["id"])
+    cached = await _redis_cache_get("user-private", cache_key)
+    if cached is not None:
+        return cached
     rows = await db.wallet_transactions.find({"user_id": user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(100)
+    await _redis_cache_set("user-private", cache_key, rows, USER_TRANSACTIONS_CACHE_TTL_SECONDS)
     return rows
 
 
@@ -3808,11 +4461,10 @@ async def user_record_reader_completion(payload: ReaderCompletionIn, user=Depend
 async def user_claim_reader_reward(user=Depends(require_user)):
     state = await _reader_reward_state(user["id"])
     if state["claimed"]:
-        fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
         return {
             **state,
             "claimed_now": False,
-            "wallet_seconds": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+            "wallet_seconds": await _cached_user_wallet_seconds(user["id"]),
         }
     if not state["eligible"]:
         raise HTTPException(status_code=400, detail="Reward is not available yet")
@@ -3831,11 +4483,10 @@ async def user_claim_reader_reward(user=Depends(require_user)):
         upsert=True,
     )
     if res.upserted_id is None:
-        fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
         return {
             **await _reader_reward_state(user["id"]),
             "claimed_now": False,
-            "wallet_seconds": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
+            "wallet_seconds": await _cached_user_wallet_seconds(user["id"]),
         }
 
     await db.users.update_one(
@@ -3847,7 +4498,7 @@ async def user_claim_reader_reward(user=Depends(require_user)):
             }
         },
     )
-    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
     await _record_wallet_ledger(
         user_id=user["id"],
         action="reward_credit",
@@ -3861,6 +4512,86 @@ async def user_claim_reader_reward(user=Depends(require_user)):
         "claimed_now": True,
         "wallet_seconds": int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
     }
+
+
+@api.get("/reader/book/{slug}/manifest")
+async def reader_book_manifest(
+    slug: str,
+    response: Response,
+    preview: Optional[str] = None,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    is_admin_preview = bool((preview or "").lower() == "admin" and principal and principal.get("role") == "admin")
+    manifest = await _reader_book_manifest_doc(slug, admin_preview=is_admin_preview)
+    if not manifest:
+        raise HTTPException(status_code=404, detail="Book not found")
+
+    access = {
+        "role": "guest",
+        "authenticated": False,
+        "admin_preview": is_admin_preview,
+        "wallet_seconds": 0,
+        "can_read_paid": False,
+    }
+    if principal and principal.get("role") == "admin":
+        access.update({
+            "role": "admin",
+            "authenticated": True,
+            "admin_preview": is_admin_preview,
+            "can_read_paid": True,
+        })
+    elif principal and principal.get("role") == "user":
+        wallet_seconds = 0 if principal.get("status") == "blocked" else await _cached_user_wallet_seconds(principal["id"])
+        access.update({
+            "role": "user",
+            "authenticated": True,
+            "status": principal.get("status", "active"),
+            "wallet_seconds": wallet_seconds,
+            "can_read_paid": wallet_seconds > 0 and principal.get("status") != "blocked",
+        })
+
+    payload = {**manifest, "access": access}
+    response.headers["ETag"] = f'W/"reader-manifest-{manifest["version"]}"'
+    response.headers["X-Reader-Manifest-Version"] = manifest["version"]
+    if access["role"] == "guest":
+        response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=300"
+    else:
+        response.headers["Cache-Control"] = "private, max-age=20, stale-while-revalidate=60"
+    return payload
+
+
+@api.post("/reader/metrics")
+async def reader_metrics(
+    payload: ReaderMetricIn,
+    request: Request,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    if not READER_RUM_ENABLED:
+        return {"ok": True, "recorded": False}
+    event = _safe_metric_name(payload.event, fallback="reader_metric")
+    timings = _safe_numeric_map(payload.timings, maximum=120_000)
+    metrics = _safe_numeric_map(payload.metrics)
+    tags = _safe_tag_map(payload.tags)
+    await _aggregate_reader_metric(event, timings, metrics)
+
+    should_persist = _should_persist_reader_metric(timings)
+    if should_persist:
+        await db.reader_experience_events.insert_one({
+            "id": str(uuid.uuid4()),
+            "event": event,
+            "session_id": normalize_text(payload.session_id)[:120],
+            "book_slug": normalize_text(payload.book_slug)[:160],
+            "chapter_id": normalize_text(payload.chapter_id)[:160],
+            "route": normalize_text(payload.route)[:240],
+            "timings": timings,
+            "metrics": metrics,
+            "tags": tags,
+            "role": (principal or {}).get("role", "guest") if principal else "guest",
+            "user_id": (principal or {}).get("id", "") if principal and principal.get("role") == "user" else "",
+            "client_country": request.headers.get("x-vercel-ip-country", request.headers.get("cf-ipcountry", ""))[:8],
+            "created_at": now_iso(),
+        })
+    return {"ok": True, "recorded": should_persist}
 
 
 # ---------- Reader: Sessions + Heartbeat ----------
@@ -3902,8 +4633,7 @@ def _should_reset_reading_clock(last_debit_at, now: datetime, *, visible: bool =
 
 async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, seconds: int) -> Tuple[int, int]:
     if seconds <= 0:
-        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
-        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+        return 0, await _cached_user_wallet_seconds(user_id)
 
     fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
     wallet = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
@@ -3918,7 +4648,9 @@ async def _apply_reading_debit(user_id: str, session_id: str, book_title: str, s
     )
     if res.modified_count != 1:
         fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
-        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+        wallet = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+        await _set_user_wallet_cache(user_id, wallet)
+        return 0, wallet
     await _record_wallet_ledger(
         user_id=user_id,
         session_id=session_id,
@@ -3943,8 +4675,7 @@ async def _settle_active_reading_session(
     active = await db.users.find_one({"id": user_id}, {"_id": 0, "active_reading_session": 1})
     session = (active or {}).get("active_reading_session") or {}
     if session.get("session_id") != session_id:
-        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
-        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0), "session_invalid"
+        return 0, await _cached_user_wallet_seconds(user_id), "session_invalid"
 
     last_debit_at = session.get("last_debit_at") or session.get("last_pulse_at") or session.get("started_at")
     billable = _billable_reading_seconds(last_debit_at, now, visible=visible, idle=idle)
@@ -3960,9 +4691,8 @@ async def _settle_active_reading_session(
                 {"id": user_id, "active_reading_session.session_id": session_id},
                 {"$set": {"active_reading_session.last_pulse_at": now}},
             )
-        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
         status = "paused" if reset_clock else "active"
-        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0), status
+        return 0, await _cached_user_wallet_seconds(user_id), status
 
     debit_filter = {"id": user_id, "active_reading_session.session_id": session_id}
     if session.get("last_debit_at") is not None:
@@ -3972,8 +4702,7 @@ async def _settle_active_reading_session(
         {"$set": {"active_reading_session.last_debit_at": now, "active_reading_session.last_pulse_at": now}},
     )
     if res.modified_count != 1:
-        fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
-        return 0, int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0), "session_invalid"
+        return 0, await _cached_user_wallet_seconds(user_id), "session_invalid"
     deducted, remaining = await _apply_reading_debit(user_id, session_id, book_title or "Earnalism", billable)
     return deducted, remaining, "active"
 
@@ -3983,11 +4712,10 @@ async def reader_session_start(payload: ReaderSessionStartIn, user=Depends(requi
     book_slug = payload.book_slug or payload.book_id
     if not book_slug:
         raise HTTPException(status_code=400, detail="Book id is required")
-    book = await db.books.find_one({"slug": book_slug, "is_published": True}, READER_ACCESS_PROJECTION)
+    book = await _reader_book_access_doc(book_slug)
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
-    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0})
-    balance = int((fresh or {}).get("reading_seconds_balance", 0))
+    balance = await _cached_user_wallet_seconds(user["id"])
     is_preview = _is_free_preview_chapter(book, payload.chapter_id)
     if balance <= 0 and not is_preview:
         raise HTTPException(status_code=402, detail="Insufficient reading time. Top up to continue.")
@@ -4031,7 +4759,7 @@ async def reader_heartbeat(payload: ReaderHeartbeatIn, user=Depends(require_user
         )
         return {"deducted_seconds": 0, "remaining_seconds": 0, "status": "session_invalid", "is_preview": False}
 
-    book = await db.books.find_one({"slug": session["book_slug"]}, READER_ACCESS_PROJECTION)
+    book = await _reader_book_access_doc(session["book_slug"])
     if not book:
         await db.reading_sessions.update_one({"id": payload.session_id}, {"$set": {"status": "ended"}})
         raise HTTPException(status_code=404, detail="Book not found")
@@ -4039,8 +4767,7 @@ async def reader_heartbeat(payload: ReaderHeartbeatIn, user=Depends(require_user
     chapter_id = payload.chapter_id or session.get("chapter_id")
     is_preview = _is_free_preview_chapter(book, chapter_id)
 
-    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0})
-    balance = int((fresh or {}).get("reading_seconds_balance", 0))
+    balance = await _cached_user_wallet_seconds(user["id"])
 
     deducted = 0
     status = "active"
@@ -4114,10 +4841,10 @@ async def reading_session_start_v2(payload: ReaderSessionStartIn, request: Reque
     book_id = payload.book_id or payload.book_slug
     if not book_id:
         raise HTTPException(status_code=400, detail="Book id is required")
-    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0, "active_reading_session": 1}) or {}
     existing = (fresh.get("active_reading_session") or {})
     if existing.get("session_id") and existing.get("session_id") != session_id:
-        old_book = await db.books.find_one({"slug": existing.get("book_id")}, {"_id": 0, "title": 1}) or {}
+        old_book = await _reader_book_access_doc(existing.get("book_id", "")) or {}
         await _settle_active_reading_session(user["id"], existing["session_id"], old_book.get("title", "Earnalism"))
     now = datetime.utcnow()
     await db.users.update_one(
@@ -4137,6 +4864,7 @@ async def reading_session_start_v2(payload: ReaderSessionStartIn, request: Reque
             }
         },
     )
+    await _invalidate_user_cache(user["id"])
     return {"success": True, "session_id": session_id}
 
 
@@ -4145,15 +4873,16 @@ async def reading_session_end_v2(payload: ReaderSessionEndIn, principal: Optiona
     if not principal or principal.get("role") != "user":
         return {"success": False, "status": "session_invalid"}
     user = principal
-    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0, "active_reading_session": 1}) or {}
     active = fresh.get("active_reading_session") or {}
     if active.get("session_id") != payload.session_id:
         return {"success": False, "status": "session_invalid"}
     if active.get("auth_session_id") and active.get("auth_session_id") != user.get("session_id"):
         return {"success": False, "status": "session_invalid"}
-    book = await db.books.find_one({"slug": active.get("book_id")}, {"_id": 0, "title": 1}) or {}
+    book = await _reader_book_access_doc(active.get("book_id", "")) or {}
     await _settle_active_reading_session(user["id"], payload.session_id, book.get("title", "Earnalism"))
     await db.users.update_one({"id": user["id"]}, {"$unset": {"active_reading_session": ""}})
+    await _invalidate_user_cache(user["id"])
     return {"success": True}
 
 
@@ -4162,18 +4891,18 @@ async def reading_pulse(payload: ReadingPulseIn, principal: Optional[dict] = Dep
     if not principal or principal.get("role") != "user" or principal.get("status") == "blocked":
         return {"success": False, "status": "session_invalid"}
     user = principal
-    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0}) or user
+    fresh = await db.users.find_one({"id": user["id"]}, {"_id": 0, "active_reading_session": 1}) or {}
     active = fresh.get("active_reading_session") or {}
     if active.get("session_id") != payload.session_id:
         return {"success": False, "status": "session_invalid"}
     if active.get("auth_session_id") and active.get("auth_session_id") != user.get("session_id"):
         return {"success": False, "status": "session_invalid"}
 
-    wallet = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
+    wallet = await _cached_user_wallet_seconds(user["id"])
     if wallet <= 0:
         return {"success": False, "status": "wallet_empty", "wallet_seconds": 0}
 
-    book = await db.books.find_one({"slug": active.get("book_id")}, {"_id": 0, "title": 1}) or {}
+    book = await _reader_book_access_doc(active.get("book_id", "")) or {}
     deducted, remaining, settle_status = await _settle_active_reading_session(
         user["id"],
         payload.session_id,
@@ -4215,14 +4944,12 @@ async def reading_packs():
 async def reader_get_chapter(
     slug: str,
     chapter_id: str,
+    response: Response,
+    v: Optional[str] = None,
     principal: Optional[dict] = Depends(optional_principal),
 ):
     is_admin_preview = bool(principal and principal.get("role") == "admin")
-    book_query = {"slug": slug} if is_admin_preview else {"slug": slug, "is_published": True}
-    book_meta = await db.books.find_one(
-        book_query,
-        {"_id": 0, "chapters.id": 1, "chapters.title": 1, "chapters.order": 1, "chapters.is_preview": 1},
-    )
+    book_meta = await _reader_book_access_doc(slug, admin_preview=is_admin_preview)
     if not book_meta:
         raise HTTPException(status_code=404, detail="Book not found")
     chapters = sorted((book_meta.get("chapters") or []), key=lambda c: c.get("order", 0))
@@ -4235,19 +4962,23 @@ async def reader_get_chapter(
         "title": target_meta.get("title", ""),
         "order": target_meta.get("order", 0),
         "is_preview": target_meta.get("is_preview", False),
+        "content_version": target_meta.get("content_version") or v or "",
     }
     is_preview = _is_free_preview_chapter(book_meta, chapter_id)
+    content_version = meta["content_version"] or _stable_digest({
+        "slug": slug,
+        "chapter_id": chapter_id,
+        "book_generation": await _reader_content_cache_generation_value(),
+    }, length=20)
+    response.headers["ETag"] = f'W/"reader-chapter-{content_version}"'
+    response.headers["X-Reader-Chapter-Version"] = content_version
 
     async def unlocked_chapter_response(preview: bool):
-        content_doc = await db.books.find_one(
-            {**book_query, "chapters.id": chapter_id},
-            {"_id": 0, "chapters.$": 1},
-        )
-        target = ((content_doc or {}).get("chapters") or [{}])[0]
+        content = await _reader_chapter_content(slug, chapter_id, admin_preview=is_admin_preview)
         return {
             "locked": False,
             "is_preview": preview,
-            "chapter": {**meta, "is_preview": preview, "content": target.get("content", "")},
+            "chapter": {**meta, "content_version": content_version, "is_preview": preview, "content": content},
         }
 
     # Free preview is open to everyone — no auth, no deduction.
@@ -4258,10 +4989,12 @@ async def reader_get_chapter(
             return cached
         result = await unlocked_chapter_response(True)
         await _public_cache_set(cache_key, result)
+        response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=300"
         return result
 
     # Admin always has full access (admin reader preview).
     if is_admin_preview:
+        response.headers["Cache-Control"] = "private, max-age=20"
         return await unlocked_chapter_response(False)
 
     # Reader user
@@ -4273,7 +5006,8 @@ async def reader_get_chapter(
                 "message": "Account is blocked. Please contact support.",
                 "chapter": meta,
             }
-        if int(principal.get("reading_seconds_balance", 0)) > 0:
+        if await _cached_user_wallet_seconds(principal["id"]) > 0:
+            response.headers["Cache-Control"] = "private, max-age=45, stale-while-revalidate=180"
             return await unlocked_chapter_response(False)
         return {
             "locked": True,
@@ -4471,6 +5205,7 @@ async def admin_user_status(uid: str, payload: UserStatusIn, _=Depends(require_a
     res = await db.users.update_one({"id": uid, "role": "user"}, {"$set": {"status": payload.status}})
     if res.matched_count == 0:
         raise HTTPException(status_code=404, detail="User not found")
+    await _invalidate_user_cache(uid)
     return {"ok": True, "id": uid, "status": payload.status}
 
 
@@ -4535,16 +5270,17 @@ async def _credit_wallet_for_intent(intent: dict, payment_id: Optional[str], sou
     # Race-safe credit using $inc.
     await db.users.update_one(
         {"id": user_id, "role": "user"},
-        {"$inc": {"reading_seconds_balance": seconds}},
+        {"$inc": {"reading_seconds_balance": seconds, "wallet_seconds": seconds}},
     )
-    fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1}) or {}
+    fresh = await db.users.find_one({"id": user_id}, {"_id": 0, "reading_seconds_balance": 1, "wallet_seconds": 1}) or {}
+    balance_after = int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0)
     await _record_wallet_ledger(
         user_id=user_id,
         action="topup_credit",
         seconds_delta=seconds,
         reason=f"Razorpay top-up · {intent.get('pack_id')} · {intent['minutes']} min",
         actor=f"razorpay:{source}",
-        balance_after=int(fresh.get("reading_seconds_balance", 0) or 0),
+        balance_after=balance_after,
         extra={"topup_intent_id": intent["id"]},
     )
     return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0})
@@ -4601,6 +5337,7 @@ async def payments_create_topup(payload: TopUpCreateIn, user=Depends(require_use
         "credited_at": None,
         "credited_by": None,
     })
+    await _invalidate_user_cache(user["id"])
 
     return TopUpCreateOut(
         intent_id=intent_id,
@@ -4637,14 +5374,14 @@ async def payments_verify(payload: PaymentVerifyIn, user=Depends(require_user)):
     )
     if not hmac.compare_digest(expected, payload.razorpay_signature):
         await db.topup_intents.update_one({"id": intent["id"]}, {"$set": {"status": "failed", "failed_reason": "bad_signature"}})
+        await _invalidate_user_cache(user["id"])
         raise HTTPException(status_code=400, detail="Invalid payment signature")
 
     refreshed = await _credit_wallet_for_intent(intent, payload.razorpay_payment_id, "verify")
-    user_doc = await db.users.find_one({"id": user["id"]}, {"_id": 0, "password_hash": 0})
     return {
         "ok": True,
         "intent": refreshed,
-        "reading_seconds_balance": int((user_doc or {}).get("reading_seconds_balance", 0)),
+        "reading_seconds_balance": await _cached_user_wallet_seconds(user["id"]),
     }
 
 
@@ -4713,6 +5450,7 @@ async def payments_webhook(request: Request):
             {"id": intent["id"], "status": "created"},
             {"$set": {"status": "failed", "razorpay_payment_id": payment_id, "failed_reason": payment.get("error_description", "payment_failed")}},
         )
+        await _invalidate_user_cache(intent.get("user_id", ""))
         log_doc["status"] = "marked_failed"
     elif not intent:
         log_doc["status"] = "unmatched_intent"
@@ -4755,6 +5493,7 @@ async def payments_simulate_topup(payload: TopUpCreateIn, user=Depends(require_u
         "credited_at": None,
         "credited_by": None,
     })
+    await _invalidate_user_cache(user["id"])
     return {
         "intent_id": intent_id,
         "razorpay_order_id": fake_order_id,
@@ -4795,19 +5534,23 @@ async def payments_simulate_webhook(
         "raw": "{simulated}",
         "created_at": now_iso(),
     })
-    user_doc = await db.users.find_one({"id": user["id"]}, {"_id": 0, "password_hash": 0})
     return {
         "ok": True,
         "simulated": True,
         "intent": refreshed,
-        "reading_seconds_balance": int((user_doc or {}).get("reading_seconds_balance", 0)),
+        "reading_seconds_balance": await _cached_user_wallet_seconds(user["id"]),
     }
 
 
 # ---------- Reader: own top-up history ----------
 @api.get("/payments/me/intents")
 async def payments_my_intents(user=Depends(require_user)):
+    cache_key = _user_payment_intents_cache_id(user["id"])
+    cached = await _redis_cache_get("user-private", cache_key)
+    if cached is not None:
+        return cached
     rows = await db.topup_intents.find({"user_id": user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(100)
+    await _redis_cache_set("user-private", cache_key, rows, USER_PAYMENT_INTENTS_CACHE_TTL_SECONDS)
     return rows
 
 
@@ -4877,6 +5620,91 @@ async def admin_reconcile_intent(intent_id: str, payload: PaymentReconcileIn, ad
     return {"ok": True, "intent": refreshed}
 
 
+@api.get("/admin/cache/status")
+async def admin_cache_status(_=Depends(require_admin)):
+    memory: Dict[str, Any] = {}
+    keyspace: Dict[str, Any] = {}
+    config: Dict[str, Any] = {}
+    dbsize: Optional[int] = None
+    if _redis_state_enabled():
+        try:
+            raw_memory = await _redis_client.info("memory")
+            memory = {
+                key: raw_memory.get(key)
+                for key in (
+                    "used_memory",
+                    "used_memory_human",
+                    "used_memory_peak",
+                    "used_memory_peak_human",
+                    "maxmemory",
+                    "maxmemory_human",
+                    "maxmemory_policy",
+                    "mem_fragmentation_ratio",
+                )
+                if key in raw_memory
+            }
+        except Exception:
+            logger.warning("Redis memory info failed", exc_info=True)
+        try:
+            keyspace = await _redis_client.info("keyspace")
+        except Exception:
+            logger.warning("Redis keyspace info failed", exc_info=True)
+        try:
+            dbsize = int(await _redis_client.dbsize())
+        except Exception:
+            logger.warning("Redis dbsize failed", exc_info=True)
+        try:
+            config = await _redis_client.config_get("maxmemory*")
+        except Exception:
+            config = {}
+
+    return {
+        "enabled": REDIS_CACHE_ENABLED,
+        "available": _redis_state_enabled(),
+        "multi_replica_enabled": MULTI_REPLICA_ENABLED,
+        "key_prefix": REDIS_KEY_PREFIX,
+        "timeouts_seconds": {
+            "connect": REDIS_SOCKET_CONNECT_TIMEOUT_SECONDS,
+            "operation": REDIS_SOCKET_TIMEOUT_SECONDS,
+        },
+        "ttl_seconds": {
+            "public": PUBLIC_CACHE_TTL_SECONDS,
+            "user_auth": USER_AUTH_CACHE_TTL_SECONDS,
+            "user_session": USER_SESSION_CACHE_TTL_SECONDS,
+            "user_wallet": USER_WALLET_CACHE_TTL_SECONDS,
+            "user_transactions": USER_TRANSACTIONS_CACHE_TTL_SECONDS,
+            "user_payment_intents": USER_PAYMENT_INTENTS_CACHE_TTL_SECONDS,
+            "reader_manifest": READER_MANIFEST_CACHE_TTL_SECONDS,
+            "reader_book": READER_BOOK_CACHE_TTL_SECONDS,
+            "reader_chapter": READER_CHAPTER_CACHE_TTL_SECONDS,
+        },
+        "compression": {
+            "min_payload_bytes": REDIS_CACHE_COMPRESS_MIN_BYTES,
+            "ttl_jitter_seconds": REDIS_CACHE_TTL_JITTER_SECONDS,
+        },
+        "reader_rum": {
+            "enabled": READER_RUM_ENABLED,
+            "sample_rate": READER_RUM_SAMPLE_RATE,
+            "slow_ms": READER_RUM_SLOW_MS,
+            "aggregate_ttl_seconds": READER_RUM_AGGREGATE_TTL_SECONDS,
+        },
+        "stats": dict(_cache_stats),
+        "redis": {
+            "dbsize": dbsize,
+            "memory": memory,
+            "keyspace": keyspace,
+            "config": config,
+            "startup_config": _redis_config_status,
+            "requested_maxmemory": REDIS_MAXMEMORY,
+            "requested_maxmemory_policy": REDIS_MAXMEMORY_POLICY,
+        },
+        "architecture_note": (
+            "This Redis instance is a shared backend cache in the Railway service region. "
+            "It lowers MongoDB pressure and cross-replica misses, but India/UK latency still depends on backend placement/CDN strategy."
+        ),
+    }
+
+
 app.include_router(api)
 
 cors_origins = set()
@@ -4909,7 +5737,15 @@ app.add_middleware(
         "X-Razorpay-Event-Id",
         "X-Razorpay-Signature",
     ],
-    expose_headers=["X-Request-ID", "X-Response-Time-ms", "Server-Timing", "Cache-Control"],
+    expose_headers=[
+        "X-Request-ID",
+        "X-Response-Time-ms",
+        "Server-Timing",
+        "Cache-Control",
+        "ETag",
+        "X-Reader-Manifest-Version",
+        "X-Reader-Chapter-Version",
+    ],
 )
 
 

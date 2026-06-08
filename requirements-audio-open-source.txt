@@ -1,0 +1,22 @@
+# Optional local/open-source audiobook generation stack.
+#
+# Keep this separate from requirements.txt so the Railway backend does not
+# install multi-GB model/runtime dependencies during ordinary deploys.
+-r requirements.txt
+
+# English local neural TTS. Requires a Piper .onnx voice model downloaded
+# separately and passed with --piper-model or PIPER_MODEL_PATH.
+piper-tts>=1.2.0
+
+# Bengali catalog TTS uses facebook/mms-tts-ben through transformers. The
+# slower expressive option uses ai4bharat/indic-parler-tts. That model is
+# Apache-2.0 but gated on Hugging Face; set HF_TOKEN after accepting the terms.
+# Also install git-lfs before this file on a fresh machine because Parler's
+# audio tooling depends on Git LFS-backed assets.
+transformers>=4.43.0
+accelerate>=0.33.0
+soundfile>=0.12.1
+scipy>=1.11.0
+huggingface-hub>=0.24.0
+cloudinary>=1.40.0
+parler-tts @ git+https://github.com/huggingface/parler-tts.git

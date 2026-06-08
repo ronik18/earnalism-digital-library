@@ -11,6 +11,7 @@ export default function Signup() {
   useSEO({
     title: "Create an Account — The Earnalism Digital Library",
     description: "Create your reading account at The Earnalism Digital Library — a quiet, curated reading room.",
+    robots: "noindex, nofollow",
   });
   const { user, userSignup } = useAuth();
   const [name, setName] = useState("");

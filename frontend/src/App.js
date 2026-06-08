@@ -23,6 +23,7 @@ const pageImports = {
   SecureReaderHarness: () => import("./pages/SecureReaderHarness"),
   AdminLogin: () => import("./pages/AdminLogin"),
   Admin: () => import("./pages/Admin"),
+  NotFound: () => import("./pages/NotFound"),
   GoogleAuthBoundary: () => import("./components/GoogleAuthBoundary"),
 };
 
@@ -42,6 +43,7 @@ const MicroStoryLanding = lazy(pageImports.MicroStoryLanding);
 const SecureReaderHarness = lazy(pageImports.SecureReaderHarness);
 const AdminLogin = lazy(pageImports.AdminLogin);
 const Admin = lazy(pageImports.Admin);
+const NotFound = lazy(pageImports.NotFound);
 const GoogleAuthBoundary = lazy(pageImports.GoogleAuthBoundary);
 
 function ScrollToTop() {
@@ -102,6 +104,7 @@ export default function App() {
                 <Route path="/shop/:slug" element={<LegacyShopRedirect />} />
                 <Route path="/publishing" element={<Navigate to="/library" replace />} />
                 <Route path="/publishing/*" element={<Navigate to="/library" replace />} />
+                <Route path="*" element={<NotFound />} />
               </Route>
               {/* Standalone full-screen routes (no public header/footer) */}
               <Route path="/reader/:slug" element={<Reader />} />

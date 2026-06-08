@@ -1,24 +1,22 @@
 import { Link } from "react-router-dom";
 import { Clock } from "lucide-react";
 import { memo } from "react";
-import { optimizedImageUrl } from "../lib/images";
+import BookCoverImage from "./BookCoverImage";
 
-function BookCard({ book }) {
-  const coverSrc = optimizedImageUrl(book.cover_image_url, { width: 720 });
+function BookCard({ book, priority = false }) {
   return (
     <div className="card-elegant overflow-hidden flex flex-col group" data-testid={`book-card-${book.slug}`}>
       <Link to={`/book/${book.slug}`} className="block aspect-[3/4] bg-ivory-warm overflow-hidden relative">
-        {book.cover_image_url ? (
-          <img
-            src={coverSrc}
-            alt={book.title}
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-contain"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center font-serif-light text-burgundy text-6xl">E</div>
-        )}
+        <BookCoverImage
+          book={book}
+          alt={book.title}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
+          width={320}
+          widths={[240, 320, 420]}
+          quality={80}
+          sizes="(min-width: 1024px) 300px, (min-width: 640px) 44vw, 92vw"
+        />
       </Link>
       <div className="p-7 sm:p-8 flex flex-col gap-3 flex-1">
         <span className="overline">{book.category_slug?.replace(/-/g, ' ')}</span>

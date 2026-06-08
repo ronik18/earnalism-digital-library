@@ -614,9 +614,31 @@ def http_smoke(book: Dict[str, Any], frontend_url: str, api_url: str, language: 
 
     check(f"{normalize_api_url(api_url)}/books/{slug}", expected=(200, 404))
     check(f"{normalize_api_url(api_url)}/books/{slug}/chapters", expected=(200, 404))
+
+    def check_audio_assets() -> bool:
+        if not audio_required:
+            details.append("audio smoke skipped: audiobook feature disabled")
+            return True
+        assets = book.get("audiobook_assets") if isinstance(book.get("audiobook_assets"), dict) else {}
+        mp3_url = str(assets.get("mp3") or "").strip()
+        timestamps_url = str(assets.get("timestamps") or "").strip()
+        if mp3_url and timestamps_url:
+            check(timestamps_url)
+            try:
+                response = requests.head(mp3_url, timeout=30, allow_redirects=True)
+                details.append(f"{response.status_code} cloud-audio-head")
+                if response.status_code != 200:
+                    errors.append(f"cloud audio mp3 returned {response.status_code}")
+            except Exception as exc:  # noqa: BLE001
+                errors.append(f"cloud audio mp3 failed: {exc}")
+            return True
+        return False
+
+    cloud_audio_checked = check_audio_assets()
+
     if book.get("is_published"):
         check(f"{frontend_url.rstrip('/')}/book/{slug}")
-        if audio_required:
+        if audio_required and not cloud_audio_checked:
             check(f"{frontend_url.rstrip('/')}/audio/{language}/{slug}_timestamps.json")
             # HEAD is enough for the large MP3, but some CDNs treat HEAD differently.
             try:
@@ -626,12 +648,14 @@ def http_smoke(book: Dict[str, Any], frontend_url: str, api_url: str, language: 
                     errors.append(f"audio mp3 returned {response.status_code}")
             except Exception as exc:  # noqa: BLE001
                 errors.append(f"audio mp3 failed: {exc}")
-        else:
+        elif not audio_required:
             details.append("audio smoke skipped: audiobook feature disabled")
     else:
         local_mp3 = public_audio_dir / language / f"{slug}.mp3"
         if not audio_required:
             details.append("local audio smoke skipped: audiobook feature disabled")
+        elif cloud_audio_checked:
+            details.append("cloud audio assets ok")
         elif local_mp3.exists():
             details.append(f"local audio ok: {local_mp3.relative_to(ROOT)}")
         else:
