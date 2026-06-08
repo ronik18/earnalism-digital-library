@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Search, Clock } from "lucide-react";
 import { api } from "../lib/api";
-import { optimizedImageUrl } from "../lib/images";
 import BookCard from "../components/BookCard";
+import BookCoverImage from "../components/BookCoverImage";
 import useSEO from "../hooks/useSEO";
 
 const LIBRARY_OG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=85";
@@ -120,7 +120,7 @@ export default function Library() {
           <SingleBookSpotlight book={books[0]} />
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-9" data-testid="books-grid">
-            {books.map((b) => <BookCard key={b.slug} book={b} />)}
+            {books.map((b, index) => <BookCard key={b.slug} book={b} priority={index < 9} />)}
           </div>
         )}
       </section>
@@ -133,11 +133,15 @@ function SingleBookSpotlight({ book }) {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-5xl mx-auto py-6 sm:py-10" data-testid="single-book-spotlight">
       <Link to={`/book/${book.slug}`} className="lg:col-span-5 group" data-testid={`book-card-${book.slug}`}>
         <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft bg-ivory-warm shadow-[0_40px_80px_-40px_rgba(74,28,39,0.4)]">
-          {book.cover_image_url ? (
-            <img src={optimizedImageUrl(book.cover_image_url, { width: 760 })} alt={book.title} loading="lazy" decoding="async" className="w-full h-full object-contain" />
-          ) : (
-            <div className="w-full h-full bg-beige-deep flex items-center justify-center font-serif-light text-7xl text-burgundy">E</div>
-          )}
+          <BookCoverImage
+            book={book}
+            alt={book.title}
+            loading="eager"
+            fetchPriority="high"
+            width={560}
+            widths={[360, 560, 760]}
+            sizes="(min-width: 1024px) 380px, (min-width: 640px) 52vw, 90vw"
+          />
         </div>
       </Link>
       <div className="lg:col-span-7">

@@ -9,10 +9,16 @@ import BrandMark from "../components/BrandMark";
 import ChapterUpload from "../components/Admin/ChapterUpload";
 import CoverUpload from "../components/Admin/CoverUpload";
 import { normalizeImageUrl, optimizedImageUrl } from "../lib/images";
+import useSEO from "../hooks/useSEO";
 
 const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "settings", "account"];
 
 export default function Admin() {
+  useSEO({
+    title: "Admin Dashboard — The Earnalism Digital Library",
+    description: "Internal administration dashboard for The Earnalism Digital Library.",
+    robots: "noindex, nofollow",
+  });
   const { admin, logout } = useAuth();
   const [tab, setTab] = useState("books");
 

@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Sparkles, Compass } from "lucide-react";
+import { ArrowRight, BookOpen, Sparkles, Compass, Feather, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { api, formatError } from "../lib/api";
 import { optimizedImageUrl } from "../lib/images";
+import BookCoverImage from "../components/BookCoverImage";
 import LiveCoverShowcase from "../components/LiveCoverShowcase";
 import useSEO from "../hooks/useSEO";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1920&q=90";
 const FOUNDER_IMG = "https://images.unsplash.com/photo-1773067752075-2cfd37ab02dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
+const WHY_MOTIF_IMG = "/assets/shelves/literary-fiction.jpg";
+const READING_CIRCLE_IMG = "https://images.unsplash.com/photo-1764087957302-ef0756ed8e0a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
+const HERO_BOOK_INITIAL_PAGE_SIZE = 8;
+const HERO_BOOK_PAGE_SIZE = 12;
+const HERO_BOOK_RENDER_LIMIT = 72;
 const SHELF_IMAGES = {
   "bengali": "/assets/shelves/bengali-classics.jpg",
   "bengali-reading": "/assets/shelves/bengali-classics.jpg",
@@ -48,10 +54,137 @@ function shelfImageFor(category) {
   return category?.image_url;
 }
 
+const WHY_POINTS = [
+  {
+    icon: Sparkles,
+    title: "Curated slowly",
+    proof: "No shelf sprawl",
+    body: "Each shelf is chosen like a letter to one thoughtful reader: fewer titles, stronger reasons, more room to return.",
+  },
+  {
+    icon: BookOpen,
+    title: "Preview first",
+    proof: "Reader-first buying",
+    body: "Earnalism lets the book introduce itself before purchase, so curiosity can become trust at its own pace.",
+  },
+  {
+    icon: Compass,
+    title: "Built for focus",
+    proof: "Quiet by design",
+    body: "The typography, spacing, and reading path are tuned for calm attention instead of restless browsing.",
+  },
+];
+
+const DESK_NOTES = [
+  { number: "01", title: "Small lists", body: "A tighter catalog makes each recommendation feel earned." },
+  { number: "02", title: "Reader pace", body: "Pages, previews, and shelves are arranged for unhurried decisions." },
+  { number: "03", title: "Useful depth", body: "Classic literature, Bengali writing, business, history, and AI sit beside each other with purpose." },
+];
+
+function appendUniqueBooks(existing = [], incoming = [], maxItems = HERO_BOOK_RENDER_LIMIT) {
+  const seen = new Set();
+  const next = [];
+  [...existing, ...incoming].forEach((book) => {
+    const slug = book?.slug || book?.id;
+    if (!slug || seen.has(slug) || next.length >= maxItems) return;
+    seen.add(slug);
+    next.push(book);
+  });
+  return next;
+}
+
+function normalizeBooksPage(payload, fallbackOffset = 0) {
+  if (Array.isArray(payload)) {
+    return {
+      books: payload,
+      pagination: {
+        offset: fallbackOffset,
+        limit: payload.length,
+        count: payload.length,
+        total: payload.length,
+        next_offset: null,
+        has_more: false,
+      },
+    };
+  }
+  const books = payload?.books || [];
+  const pagination = payload?.pagination || payload?.books_page || {};
+  const count = Number(pagination.count ?? books.length) || books.length;
+  const offset = Number(pagination.offset ?? fallbackOffset) || 0;
+  const nextOffset = pagination.next_offset ?? pagination.nextOffset ?? null;
+  return {
+    books,
+    pagination: {
+      offset,
+      limit: Number(pagination.limit ?? books.length) || books.length,
+      count,
+      total: Number(pagination.total ?? books.length) || books.length,
+      next_offset: nextOffset === undefined ? null : nextOffset,
+      has_more: Boolean(pagination.has_more ?? pagination.hasMore ?? nextOffset !== null),
+    },
+  };
+}
+
+function runWhenIdle(task) {
+  if (typeof window === "undefined") return null;
+  if ("requestIdleCallback" in window) {
+    return window.requestIdleCallback(task, { timeout: 1600 });
+  }
+  return window.setTimeout(task, 350);
+}
+
+function cancelIdleTask(id) {
+  if (id == null || typeof window === "undefined") return;
+  if ("cancelIdleCallback" in window) window.cancelIdleCallback(id);
+  else window.clearTimeout(id);
+}
+
+function MotifBackdrop({ image, variant = "library" }) {
+  const isDesk = variant === "desk";
+  const imageTone = isDesk
+    ? "saturate(0.9) brightness(0.68) contrast(1.04)"
+    : "saturate(0.82) brightness(0.62) contrast(1.08)";
+  const veil = isDesk
+    ? "linear-gradient(90deg, rgba(25,8,13,0.94) 0%, rgba(27,11,16,0.9) 48%, rgba(74,28,39,0.7) 100%)"
+    : "linear-gradient(90deg, rgba(22,7,11,0.94) 0%, rgba(34,16,23,0.88) 52%, rgba(58,20,29,0.7) 100%)";
+  const glow = isDesk
+    ? "radial-gradient(ellipse 54% 62% at 78% 44%, rgba(216,185,122,0.18), transparent 70%)"
+    : "radial-gradient(ellipse 58% 58% at 78% 38%, rgba(216,185,122,0.14), transparent 72%)";
+
+  return (
+    <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+      <img
+        src={optimizedImageUrl(image, { width: 1800, quality: 88 })}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className={`h-full w-full object-cover ${isDesk ? "object-[center_52%]" : "object-[center_60%]"}`}
+        style={{ filter: imageTone }}
+      />
+      <div className="absolute inset-0" style={{ background: veil }} />
+      <div className="absolute inset-0" style={{ background: glow }} />
+      <div
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(180deg, rgba(253,252,248,0.05), transparent 28%, rgba(0,0,0,0.22) 100%)" }}
+      />
+      <div className="absolute inset-x-0 top-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(216,185,122,0.54), transparent)" }} />
+      <div className="absolute inset-x-0 bottom-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(216,185,122,0.38), transparent)" }} />
+    </div>
+  );
+}
+
 export default function Home() {
   const [categories, setCategories] = useState([]);
   const [featured, setFeatured] = useState(null);
   const [liveBooks, setLiveBooks] = useState([]);
+  const [liveBookPage, setLiveBookPage] = useState({
+    offset: 0,
+    limit: HERO_BOOK_INITIAL_PAGE_SIZE,
+    count: 0,
+    total: 0,
+    next_offset: null,
+    has_more: false,
+  });
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -67,16 +200,24 @@ export default function Home() {
 
     async function loadHomePayload() {
       try {
-        const { data } = await api.get("/home", { signal: controller.signal });
+        const { data } = await api.get("/home", {
+          params: { books_limit: HERO_BOOK_INITIAL_PAGE_SIZE, books_offset: 0 },
+          signal: controller.signal,
+        });
+        const booksPage = normalizeBooksPage({ books: data?.books || [], pagination: data?.books_page }, 0);
         setCategories(data?.categories || []);
         setFeatured(data?.featured?.book || null);
-        setLiveBooks(data?.books || []);
+        setLiveBooks(appendUniqueBooks([], booksPage.books));
+        setLiveBookPage(booksPage.pagination);
       } catch (err) {
         if (controller.signal.aborted) return;
         const [categoryRes, featuredRes, booksRes] = await Promise.allSettled([
           api.get("/categories", { signal: controller.signal }),
           api.get("/featured", { signal: controller.signal }),
-          api.get("/books", { signal: controller.signal }),
+          api.get("/home/books", {
+            params: { limit: HERO_BOOK_INITIAL_PAGE_SIZE, offset: 0 },
+            signal: controller.signal,
+          }),
         ]);
         if (categoryRes.status === "fulfilled") {
           setCategories(categoryRes.value.data || []);
@@ -85,7 +226,9 @@ export default function Home() {
           setFeatured(featuredRes.value.data?.book || null);
         }
         if (booksRes.status === "fulfilled") {
-          setLiveBooks(booksRes.value.data || []);
+          const booksPage = normalizeBooksPage(booksRes.value.data, 0);
+          setLiveBooks(appendUniqueBooks([], booksPage.books));
+          setLiveBookPage(booksPage.pagination);
         }
       }
     }
@@ -93,6 +236,34 @@ export default function Home() {
     loadHomePayload().catch(() => {});
     return () => controller.abort();
   }, []);
+
+  useEffect(() => {
+    if (!liveBookPage.has_more || liveBookPage.next_offset == null || liveBooks.length >= HERO_BOOK_RENDER_LIMIT) {
+      return undefined;
+    }
+    const controller = new AbortController();
+    const idleId = runWhenIdle(() => {
+      const remainingSlots = Math.max(0, HERO_BOOK_RENDER_LIMIT - liveBooks.length);
+      if (!remainingSlots) return;
+      api.get("/home/books", {
+        params: {
+          limit: Math.min(HERO_BOOK_PAGE_SIZE, remainingSlots),
+          offset: liveBookPage.next_offset,
+        },
+        signal: controller.signal,
+      }).then(({ data }) => {
+        if (controller.signal.aborted) return;
+        const booksPage = normalizeBooksPage(data, liveBookPage.next_offset);
+        setLiveBooks((current) => appendUniqueBooks(current, booksPage.books));
+        setLiveBookPage(booksPage.pagination);
+      }).catch(() => {});
+    });
+
+    return () => {
+      controller.abort();
+      cancelIdleTask(idleId);
+    };
+  }, [liveBookPage.has_more, liveBookPage.next_offset, liveBooks.length]);
 
   const subscribe = async (e) => {
     e.preventDefault();
@@ -105,9 +276,6 @@ export default function Home() {
       toast.error(formatError(err.response?.data?.detail));
     } finally { setSubmitting(false); }
   };
-
-  const heroBook = featured || liveBooks[0];
-  const liveBookCount = liveBooks.length || categories.reduce((total, category) => total + (category.book_count || 0), 0);
 
   return (
     <div data-testid="home-page">
@@ -165,38 +333,24 @@ export default function Home() {
               <span className="inline-flex items-center gap-2"><Compass size={14} strokeWidth={1.6} /> Focused reading</span>
             </div>
             <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
-              <Link to="/library" className="btn-primary w-full sm:w-auto" data-testid="hero-cta-read">
-                <BookOpen size={16} strokeWidth={1.7} /> Start Reading
+              <Link to="/library" className="btn-primary w-full sm:w-auto gap-2" data-testid="hero-cta-read">
+                <BookOpen size={16} strokeWidth={1.7} className="shrink-0" /> Start Reading
               </Link>
               <Link to="/library" className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-library">
                 Explore Library <ArrowRight size={15} strokeWidth={1.7} />
               </Link>
             </div>
-            {heroBook && (
-              <div className="mt-8 hidden max-w-2xl border-t border-[rgba(216,185,122,0.34)] pt-5 text-[#F4EFEA]/82 sm:block" data-testid="hero-current-read">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <p className="text-[0.68rem] uppercase tracking-[0.22em] text-[var(--brand-gold-soft)]">Currently on the table</p>
-                    <p className="mt-2 font-serif-display text-xl sm:text-2xl leading-tight text-[#FDFCF8]">{heroBook.title}</p>
-                    {heroBook.author && <p className="mt-1 text-sm text-[#F4EFEA]/70">{heroBook.author}</p>}
-                  </div>
-                </div>
-              </div>
-            )}
-            <p className="mt-5 hidden text-[0.72rem] uppercase tracking-[0.18em] text-[#FDFCF8]/70 drop-shadow-[0_1px_12px_rgba(0,0,0,0.5)] sm:block" data-testid="hero-library-meta">
-              {liveBookCount || "Live"} books ready to preview · {categories.length || 9} curated shelves · Bengali, business, AI, fiction
-            </p>
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0 translate-y-1/2 z-10">
           <div className="w-full">
-            <LiveCoverShowcase books={liveBooks} featured={featured} variant="band" />
+            <LiveCoverShowcase books={liveBooks} featured={featured} variant="band" totalBooks={liveBookPage.total} />
           </div>
         </div>
       </section>
 
       {/* CATEGORIES */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-56 sm:pt-44 lg:pt-48 pb-20 sm:pb-28 lg:pb-32" id="collection">
+      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-56 sm:pt-44 lg:pt-48 pb-12 sm:pb-16 lg:pb-20" id="collection">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16 lg:mb-20">
           <div className="max-w-xl">
             <div className="overline mb-4">The Shelves</div>
@@ -239,7 +393,14 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5">
               <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft bg-ivory-warm shadow-[0_30px_70px_-30px_rgba(74,28,39,0.4)] max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none lg:mx-0">
-                <img src={optimizedImageUrl(featured.cover_image_url, { width: 760 })} alt={featured.title} loading="lazy" decoding="async" className="w-full h-full object-contain" />
+                <BookCoverImage
+                  book={featured}
+                  alt={featured.title}
+                  loading="lazy"
+                  width={560}
+                  widths={[360, 560, 760]}
+                  sizes="(min-width: 1024px) 380px, (min-width: 640px) 52vw, 90vw"
+                />
               </div>
             </div>
             <div className="lg:col-span-7 text-center lg:text-left">
@@ -270,70 +431,110 @@ export default function Home() {
       )}
 
       {/* WHY EARNALISM */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32">
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 lg:mb-20">
-          <div className="overline mb-3 sm:mb-4">Why The Earnalism</div>
-          <h2 className="font-serif-light text-[2.25rem] sm:text-5xl text-burgundy tracking-tight leading-[1.06]">A bookstore for readers who <span className="italic-accent">linger.</span></h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8 max-w-5xl mx-auto lg:max-w-none">
-          {[
-            { icon: Sparkles, title: "Curated With Meaning", body: "Every shelf is a slow act of selection. We choose books we would lend to a close friend — and never apologise for the smaller list." },
-            { icon: BookOpen, title: "Built for Thoughtful Readers", body: "Our writing, design, and packaging assume a patient reader. Margins to think in. Typography to return to. A pace that respects you." },
-            { icon: Compass, title: "From Reading to Practice", body: "Every shelf is chosen to turn careful reading into careful living — steadier thinking, better work, quieter days. We curate for return, not rush." },
-          ].map((c, i) => (
-            <div key={c.title} className={`card-elegant p-8 sm:p-9 lg:p-11 ${i === 2 ? "md:col-span-2 lg:col-span-1" : ""}`} data-testid={`why-card-${c.title.toLowerCase().replace(/\s/g, '-')}`}>
-              <c.icon className="text-gold" size={26} strokeWidth={1.4} />
-              <div className="gold-rule-thin mt-5 mb-6" />
-              <h3 className="font-serif-display text-[1.5rem] sm:text-2xl text-burgundy mb-3 sm:mb-4 leading-snug">{c.title}</h3>
-              <p className="text-charcoal-soft leading-[1.8] text-[0.92rem] sm:text-[0.95rem] font-light">{c.body}</p>
+      <section className="relative overflow-hidden bg-[#221017] text-[#FDFCF8]">
+        <MotifBackdrop image={WHY_MOTIF_IMG} />
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-end">
+            <div className="lg:col-span-5">
+              <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-4">Why The Earnalism</div>
+              <h2 className="font-serif-light text-[2.35rem] sm:text-5xl lg:text-[3.75rem] leading-[1.03] tracking-normal text-balance">
+                A library that lowers the room's <span className="italic-accent text-[var(--brand-gold-soft)]">volume.</span>
+              </h2>
+              <p className="mt-6 text-[#F4EFEA]/78 leading-[1.8] text-[0.98rem] sm:text-[1.05rem] font-light max-w-xl">
+                After the shelves, the promise stays simple: fewer distractions, richer judgment, and a reading path that lets each book earn its place.
+              </p>
+              <Link to="/library" className="btn-secondary mt-8 !text-[#FDFCF8] !border-[var(--brand-gold-soft)] hover:!bg-[rgba(216,185,122,0.12)]" data-testid="why-library-link">
+                Explore the shelves <ArrowRight size={15} strokeWidth={1.7} />
+              </Link>
             </div>
-          ))}
+
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+              {WHY_POINTS.map((point) => (
+                <div key={point.title} className="rounded-lg border border-[#FDFCF8]/15 bg-[#FDFCF8]/[0.06] p-6 sm:p-7 backdrop-blur-sm" data-testid={`why-card-${point.title.toLowerCase().replace(/\s/g, '-')}`}>
+                  <point.icon className="text-[var(--brand-gold-soft)]" size={24} strokeWidth={1.45} />
+                  <div className="mt-8 text-[0.65rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]">{point.proof}</div>
+                  <h3 className="font-serif-display text-[1.55rem] text-[#FDFCF8] mt-3 leading-snug">{point.title}</h3>
+                  <p className="mt-4 text-[#F4EFEA]/72 leading-[1.75] text-[0.9rem] font-light">{point.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* FOUNDER NOTE */}
-      <section className="surface-warm border-y border-brand-soft">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-5 order-2 lg:order-1">
-            <div className="aspect-[4/5] rounded-xl overflow-hidden border border-brand-soft max-w-[280px] sm:max-w-sm mx-auto lg:max-w-none">
-              <img src={optimizedImageUrl(FOUNDER_IMG, { width: 760 })} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+      <section className="bg-[#FDFCF8]">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-6">
+            <div className="relative overflow-hidden rounded-lg border border-brand-soft bg-[#221017] aspect-[5/4] sm:aspect-[16/11] lg:aspect-[4/5]">
+              <img src={optimizedImageUrl(FOUNDER_IMG, { width: 940 })} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2a1218]/55 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#FDFCF8]/35 bg-[#2a1218]/50 px-4 py-2 text-[0.65rem] uppercase tracking-[0.2em] text-[#FDFCF8] backdrop-blur">
+                  <Feather size={13} strokeWidth={1.6} /> From the desk
+                </div>
+              </div>
             </div>
           </div>
-          <div className="lg:col-span-7 order-1 lg:order-2 text-center lg:text-left">
+          <div className="lg:col-span-6">
             <div className="italic-eyebrow mb-4 sm:mb-5">A note from the desk</div>
-            <h2 className="font-serif-light text-[2.25rem] sm:text-5xl text-burgundy leading-[1.06] tracking-tight">A bookstore for the reader who still believes in <span className="italic-accent">depth.</span></h2>
-            <p className="text-charcoal-soft mt-6 sm:mt-8 leading-[1.85] text-[0.98rem] sm:text-[1.02rem] max-w-2xl font-light mx-auto lg:mx-0">
-              The Earnalism began as a quiet rebellion against noisy bookshelves. We believe a book is a long conversation — patient, particular, and worth the careful season it takes to write. As an independent online bookstore, we keep the list small and the standard generous. Every title here is chosen for one reader: the one who still believes that meaning compounds, slowly, across the right pages.
+            <h2 className="font-serif-light text-[2.25rem] sm:text-5xl lg:text-[3.55rem] text-burgundy leading-[1.04] tracking-normal text-balance">
+              A bookstore for the reader who still believes in <span className="italic-accent">depth.</span>
+            </h2>
+            <p className="text-charcoal-soft mt-6 sm:mt-7 leading-[1.85] text-[0.98rem] sm:text-[1.03rem] max-w-2xl font-light">
+              The Earnalism began as a quiet rebellion against noisy bookshelves. A book is a long conversation: patient, particular, and worth the careful season it takes to write. The list stays small because the standard stays generous.
             </p>
-            <div className="gold-rule mt-8 sm:mt-10 mx-auto lg:mx-0" />
+            <div className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-3 border-y border-brand-soft">
+              {DESK_NOTES.map((note, i) => (
+                <div key={note.title} className={`py-6 sm:px-5 ${i > 0 ? "border-t sm:border-t-0 sm:border-l border-brand-soft" : ""}`}>
+                  <div className="text-[0.68rem] tracking-[0.24em] uppercase text-gold-deep">{note.number}</div>
+                  <h3 className="font-serif-display text-[1.35rem] text-burgundy mt-3 leading-snug">{note.title}</h3>
+                  <p className="text-charcoal-soft text-[0.88rem] leading-[1.65] mt-3 font-light">{note.body}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* NEWSLETTER */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32">
-        <div className="surface-quiet border border-brand-soft rounded-xl p-8 sm:p-12 lg:p-20 text-center max-w-3xl mx-auto" data-testid="newsletter-card">
-          <div className="italic-eyebrow mb-3 sm:mb-4">From the Editor's Desk</div>
-          <h2 className="font-serif-light text-[2rem] sm:text-4xl lg:text-5xl text-burgundy tracking-tight leading-[1.08]">Join the Earnalism <span className="italic-accent">Reading Circle.</span></h2>
-          <div className="gold-rule-thin mx-auto mt-6 sm:mt-7" />
-          <p className="text-charcoal-soft mt-6 sm:mt-7 max-w-xl mx-auto leading-[1.8] font-light text-[0.95rem]">
-            Receive thoughtful book notes, new shelf arrivals, and curated reading recommendations — written with the care of a private letter.
-          </p>
-          <form onSubmit={subscribe} className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 max-w-xl mx-auto text-left">
-            <input
-              required value={name} onChange={(e) => setName(e.target.value)}
-              placeholder="Your name" className="input-elegant" data-testid="newsletter-name"
-            />
-            <input
-              required type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email" className="input-elegant" data-testid="newsletter-email"
-            />
-            <div className="sm:col-span-2 flex justify-center mt-5 sm:mt-6">
-              <button disabled={submitting} type="submit" className="btn-primary w-full sm:w-auto justify-center disabled:opacity-60" data-testid="newsletter-submit">
-                {submitting ? "Joining…" : "Join the Circle"}
-              </button>
+      <section className="relative overflow-hidden bg-[#1b0b10] text-[#FDFCF8]">
+        <MotifBackdrop image={READING_CIRCLE_IMG} variant="desk" />
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-6">
+              <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-4">From the Editor's Desk</div>
+              <h2 className="font-serif-light text-[2.25rem] sm:text-5xl lg:text-[3.6rem] tracking-normal leading-[1.04] text-balance">
+                Join the Earnalism <span className="italic-accent text-[var(--brand-gold-soft)]">Reading Circle.</span>
+              </h2>
+              <p className="text-[#F4EFEA]/76 mt-6 leading-[1.8] max-w-xl font-light text-[0.98rem] sm:text-[1.03rem]">
+                Receive thoughtful book notes, new shelf arrivals, and curated reading recommendations written with the care of a private letter.
+              </p>
             </div>
-          </form>
+            <form onSubmit={subscribe} className="lg:col-span-6 rounded-lg border border-[#FDFCF8]/16 bg-[#FDFCF8]/[0.06] p-6 sm:p-8 lg:p-10 backdrop-blur-sm" data-testid="newsletter-card">
+              <div className="flex items-center gap-3 text-[0.68rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]">
+                <Mail size={15} strokeWidth={1.6} /> Private dispatch
+              </div>
+              <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                <input
+                  required value={name} onChange={(e) => setName(e.target.value)}
+                  placeholder="Your name" className="input-elegant !text-[#FDFCF8] !border-b-[#FDFCF8]/30 placeholder:!text-[#FDFCF8]/45" data-testid="newsletter-name"
+                />
+                <input
+                  required type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email" className="input-elegant !text-[#FDFCF8] !border-b-[#FDFCF8]/30 placeholder:!text-[#FDFCF8]/45" data-testid="newsletter-email"
+                />
+                <div className="sm:col-span-2 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between mt-3">
+                  <p className="text-[#F4EFEA]/58 text-[0.78rem] leading-[1.6] font-light max-w-sm">
+                    Quiet notes only. No noisy campaign rhythm.
+                  </p>
+                  <button disabled={submitting} type="submit" className="btn-primary w-full sm:w-auto justify-center !bg-[var(--brand-gold-soft)] !border-[var(--brand-gold-soft)] !text-[#241016] hover:!bg-[var(--brand-gold)] disabled:opacity-60" data-testid="newsletter-submit">
+                    {submitting ? "Joining…" : "Join the Circle"}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </section>
     </div>

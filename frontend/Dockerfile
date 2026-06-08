@@ -2,8 +2,8 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-ARG REACT_APP_BACKEND_URL=
-ARG REACT_APP_API_URL=
+ARG REACT_APP_BACKEND_URL=https://api.theearnalism.com
+ARG REACT_APP_API_URL=https://api.theearnalism.com
 ARG REACT_APP_GOOGLE_CLIENT_ID=
 ARG REACT_APP_POSTHOG_KEY=
 ARG REACT_APP_POSTHOG_HOST=https://us.i.posthog.com

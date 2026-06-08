@@ -1,9 +1,9 @@
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { BookOpen } from "lucide-react";
-import { optimizedImageUrl } from "../lib/images";
+import BookCoverImage from "./BookCoverImage";
 
-function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
+function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks = 0 }) {
   const marqueeRef = useRef(null);
   const trackRef = useRef(null);
   const rafRef = useRef(0);
@@ -39,6 +39,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
     () => (liveBooks.length > 0 ? [...liveBooks, ...liveBooks, ...liveBooks] : []),
     [liveBooks],
   );
+  const visibleTotal = Number(totalBooks) > liveBooks.length ? Number(totalBooks) : liveBooks.length;
   const measureSetWidth = useCallback(() => {
     const marquee = marqueeRef.current;
     if (!marquee || liveBooks.length === 0) return 0;
@@ -241,7 +242,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
     >
       <div className="live-cover-showcase__header">
         <span className="live-cover-showcase__kicker">Live now</span>
-        <span>{liveBooks.length} reading rooms open</span>
+        <span>{visibleTotal} reading rooms open</span>
       </div>
 
       <div
@@ -271,7 +272,6 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
           style={{ animation: "none", transform: "none" }}
         >
           {marqueeBooks.map((book, index) => {
-            const cover = book.cover_image_url || book.cover_url || book.thumbnail_url;
             const copyIndex = Math.floor(index / liveBooks.length);
             const isInteractiveCopy = copyIndex === 1;
             return (
@@ -290,11 +290,15 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel" }) {
                   draggable="false"
                 >
                   <span className="live-cover-card__cover">
-                    <img
-                      src={optimizedImageUrl(cover, { width: 420, quality: 88 })}
+                    <BookCoverImage
+                      book={book}
                       alt={book.title}
                       loading={index < 4 ? "eager" : "lazy"}
-                      decoding="async"
+                      fetchPriority={index < 4 ? "high" : "auto"}
+                      widths={[240, 320, 420]}
+                      width={320}
+                      quality={84}
+                      sizes="10rem"
                       draggable="false"
                     />
                     <span className="live-cover-card__preview">

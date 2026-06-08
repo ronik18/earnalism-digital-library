@@ -2,29 +2,50 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Check, ChevronLeft, Clock, BookOpen, CreditCard, Sparkles } from "lucide-react";
 import { api } from "../lib/api";
-import { optimizedImageUrl } from "../lib/images";
 import ShareButtons from "../components/ShareButtons";
+import BookCoverImage from "../components/BookCoverImage";
 import JsonLd from "../components/JsonLd";
 import useSEO from "../hooks/useSEO";
+
+const BENGALI_RE = /[\u0980-\u09FF]/;
+const SITE_URL = "https://theearnalism.com";
 
 export default function BookDetail() {
   const { slug } = useParams();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadStatus, setLoadStatus] = useState("idle");
+
+  const bookNotFound = !loading && loadStatus === "not_found";
+  const bookLoadError = !loading && loadStatus === "error";
+  const shouldNoindex = bookNotFound || bookLoadError;
 
   useSEO({
-    title: book ? `${book.title} — The Earnalism Digital Library` : "Book — The Earnalism Digital Library",
-    description: book?.short_description || book?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
+    title: bookNotFound
+      ? "Book not found — The Earnalism Digital Library"
+      : book ? `${book.title} — The Earnalism Digital Library` : "Book — The Earnalism Digital Library",
+    description: bookNotFound
+      ? "This Earnalism book is no longer available."
+      : book?.short_description || book?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
     image: book?.cover_image_url,
-    type: "book",
+    imageAlt: book?.title,
+    type: bookNotFound ? "website" : "book",
+    robots: shouldNoindex ? "noindex, nofollow" : "index, follow",
   });
 
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
-    api.get(`/books/${slug}`, { signal: controller.signal }).then((r) => setBook(r.data))
+    setLoadStatus("loading");
+    api.get(`/books/${slug}`, { signal: controller.signal }).then((r) => {
+      setBook(r.data);
+      setLoadStatus("ready");
+    })
       .catch((err) => {
-        if (err.name !== "CanceledError") setBook(null);
+        if (err.name !== "CanceledError") {
+          setBook(null);
+          setLoadStatus(err.response?.status === 404 ? "not_found" : "error");
+        }
       }).finally(() => {
         if (!controller.signal.aborted) setLoading(false);
       });
@@ -38,6 +59,7 @@ export default function BookDetail() {
     });
   }, [book, loading]);
 
+  const bookLanguage = book && BENGALI_RE.test(`${book.title || ""} ${book.description || ""} ${book.short_description || ""}`) ? "bn" : "en";
   const bookSchema = book ? {
     "@context": "https://schema.org",
     "@type": "Book",
@@ -46,17 +68,32 @@ export default function BookDetail() {
     "description": book.description || book.short_description,
     ...(book.cover_image_url ? { "image": book.cover_image_url } : {}),
     "bookFormat": "https://schema.org/EBook",
-    "inLanguage": "en",
-    "author": { "@type": "Organization", "name": book.author || "The Earnalism" },
+    "inLanguage": bookLanguage,
+    "author": { "@type": book.author && book.author !== "The Earnalism" ? "Person" : "Organization", "name": book.author || "The Earnalism" },
     "publisher": { "@type": "Organization", "name": "The Earnalism" },
-    "url": typeof window !== "undefined" ? window.location.href : undefined,
-    "numberOfPages": (book.chapters || []).length || undefined,
+    "url": `${SITE_URL}/book/${book.slug}`,
+    "mainEntityOfPage": `${SITE_URL}/book/${book.slug}`,
+    "numberOfPages": book.page_count || undefined,
   } : null;
 
   if (loading) return <div className="max-w-7xl mx-auto px-6 py-32 text-center text-charcoal-soft">Loading…</div>;
-  if (!book) return (
+  if (bookNotFound) return (
     <div className="max-w-7xl mx-auto px-6 py-32 text-center" data-testid="book-not-found">
+      <div className="italic-eyebrow mb-4">Unavailable title</div>
       <h1 className="font-serif-light text-4xl text-burgundy">Book not found</h1>
+      <p className="mx-auto mt-5 max-w-xl text-charcoal-soft leading-relaxed">
+        This book has been removed from Earnalism and is no longer available in the reader.
+      </p>
+      <Link to="/library" className="btn-secondary mt-6">Back to the Library</Link>
+    </div>
+  );
+  if (bookLoadError || !book) return (
+    <div className="max-w-7xl mx-auto px-6 py-32 text-center" data-testid="book-load-error">
+      <div className="italic-eyebrow mb-4">Library connection</div>
+      <h1 className="font-serif-light text-4xl text-burgundy">Book could not be opened</h1>
+      <p className="mx-auto mt-5 max-w-xl text-charcoal-soft leading-relaxed">
+        The title could not be loaded right now. Please return to the library and try again.
+      </p>
       <Link to="/library" className="btn-secondary mt-6">Back to the Library</Link>
     </div>
   );
@@ -78,15 +115,35 @@ export default function BookDetail() {
       <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         <div className="lg:col-span-5 lg:sticky lg:top-28">
           <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft bg-ivory-warm shadow-[0_50px_90px_-40px_rgba(74,28,39,0.45)] max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
-            {book.cover_image_url ? (
-              <img src={optimizedImageUrl(book.cover_image_url, { width: 900 })} alt={book.title} decoding="async" fetchPriority="high" className="w-full h-full object-contain" />
-            ) : <div className="w-full h-full bg-beige-deep flex items-center justify-center font-serif-light text-7xl text-burgundy">E</div>}
+            <BookCoverImage
+              book={book}
+              alt={book.title}
+              loading="eager"
+              fetchPriority="high"
+              width={640}
+              widths={[420, 640, 900]}
+              sizes="(min-width: 1024px) 420px, (min-width: 640px) 52vw, 90vw"
+            />
           </div>
           {book.back_cover_image_url && (
             <div className="mt-5 max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
               <div className="overline mb-2">Back cover</div>
               <div className="aspect-[3/4] rounded-lg overflow-hidden border border-brand-soft bg-ivory-warm">
-                <img src={optimizedImageUrl(book.back_cover_image_url, { width: 900 })} alt={`${book.title} back cover`} className="w-full h-full object-contain" loading="lazy" decoding="async" />
+                <BookCoverImage
+                  book={{
+                    ...book,
+                    cover_image_url: book.back_cover_image_url,
+                    cover_url: book.back_cover_url,
+                    thumbnail_url: book.back_cover_thumbnail_url,
+                    blur_placeholder: book.back_cover_blur_placeholder,
+                    dominant_color: book.back_cover_dominant_color,
+                  }}
+                  alt={`${book.title} back cover`}
+                  loading="lazy"
+                  width={640}
+                  widths={[420, 640, 900]}
+                  sizes="(min-width: 1024px) 420px, (min-width: 640px) 52vw, 90vw"
+                />
               </div>
             </div>
           )}
@@ -192,11 +249,14 @@ export default function BookDetail() {
       <section id="preview-payment" className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-6 pb-20 sm:pb-28" data-testid="preview-payment-section">
         <div className="preview-payment-shell">
           <div className="preview-payment-shell__cover" aria-hidden="true">
-            {book.cover_image_url ? (
-              <img src={optimizedImageUrl(book.cover_image_url, { width: 420, quality: 88 })} alt="" loading="lazy" decoding="async" />
-            ) : (
-              <span>E</span>
-            )}
+            <BookCoverImage
+              book={book}
+              alt=""
+              loading="lazy"
+              width={320}
+              widths={[240, 320, 420]}
+              sizes="8rem"
+            />
           </div>
           <div className="preview-payment-shell__copy">
             <div className="italic-eyebrow">Preview, then continue</div>

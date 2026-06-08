@@ -1,10 +1,31 @@
 import axios from "axios";
 import { toast } from "sonner";
 
-export const BACKEND_URL =
-  process.env.REACT_APP_BACKEND_URL ||
-  process.env.REACT_APP_API_URL ||
-  "";
+const PRODUCTION_API_URL = "https://api.theearnalism.com";
+
+function resolveBackendUrl() {
+  const configured = (
+    process.env.REACT_APP_BACKEND_URL ||
+    process.env.REACT_APP_API_URL ||
+    ""
+  ).trim();
+
+  if (process.env.NODE_ENV !== "production") return configured;
+  if (!configured || configured.includes("<") || configured.includes("yourdomain.com")) {
+    return PRODUCTION_API_URL;
+  }
+  try {
+    const url = new URL(configured);
+    if (["localhost", "127.0.0.1", "0.0.0.0"].includes(url.hostname)) {
+      return PRODUCTION_API_URL;
+    }
+  } catch {
+    return PRODUCTION_API_URL;
+  }
+  return configured;
+}
+
+export const BACKEND_URL = resolveBackendUrl();
 export const API = BACKEND_URL ? `${BACKEND_URL.replace(/\/$/, "")}/api` : "/api";
 
 export const TOKEN_KEY = "earnalism_admin_token";

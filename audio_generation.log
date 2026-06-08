@@ -1,0 +1,170 @@
+/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-06-06 01:52:24,292 INFO Using cached text for অপরিচিতা: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/অপরিচিতা.txt
+2026-06-06 01:52:25,950 INFO Using cached text for অভাগীর-স্বর্গ: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/অভাগীর-স্বর্গ.txt
+2026-06-06 01:52:26,282 INFO Using cached text for বড়দিদি: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/বড়দিদি.txt
+2026-06-06 01:52:26,284 INFO Using cached text for মেজদিদি: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/মেজদিদি.txt
+2026-06-06 01:52:26,614 INFO Using cached text for হরিলক্ষ্মী: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/হরিলক্ষ্মী.txt
+2026-06-06 01:52:27,269 INFO Using cached text for আঁধারে-আলো: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/আঁধারে-আলো.txt
+2026-06-06 01:52:27,270 INFO Using cached text for বিন্দুর-ছেলে: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/বিন্দুর-ছেলে.txt
+2026-06-06 01:52:29,370 INFO Using cached text for পরিণীতা: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/পরিণীতা.txt
+2026-06-06 01:52:29,371 INFO Using cached text for আলো-ও-ছায়া: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/আলো-ও-ছায়া.txt
+2026-06-06 01:52:29,727 INFO Using cached text for শুভদা: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/শুভদা.txt
+2026-06-06 01:52:31,406 INFO Using cached text for দেবী-চৌধুরাণী: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/দেবী-চৌধুরাণী.txt
+2026-06-06 01:52:31,744 INFO Using cached text for ইন্দিরা: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/ইন্দিরা.txt
+2026-06-06 01:52:32,845 INFO Using cached text for কৃষ্ণকান্তের-উইল: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/কৃষ্ণকান্তের-উইল.txt
+2026-06-06 01:52:32,845 INFO Using cached text for বিষবৃক্ষ: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/বিষবৃক্ষ.txt
+2026-06-06 01:52:32,845 INFO Using cached text for আনন্দমঠ: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/আনন্দমঠ.txt
+2026-06-06 01:52:33,500 INFO Using cached text for চন্দ্রশেখর: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/চন্দ্রশেখর.txt
+2026-06-06 01:52:33,501 INFO Using cached text for কপালকুণ্ডলা: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/কপালকুণ্ডলা.txt
+2026-06-06 01:52:38,625 INFO Using cached text for পথের-পাঁচালী-অংশ: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/পথের-পাঁচালী-অংশ.txt
+2026-06-06 01:52:42,414 INFO Cached scraped text for চাঁদের-পাহাড়-অংশ: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/চাঁদের-পাহাড়-অংশ.txt
+2026-06-06 01:52:48,192 INFO Cached scraped text for ইছামতী-অংশ: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/ইছামতী-অংশ.txt
+2026-06-06 01:52:50,163 INFO Cached scraped text for the-tell-tale-heart: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/audio_output/texts/the-tell-tale-heart.txt
+/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.cloud.texttospeech_v1beta1 supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.cloud.texttospeech_v1beta1.
+  warnings.warn(message, FutureWarning)
+2026-06-06 01:52:53,531 ERROR AuthMetadataPluginCallback "<google.auth.transport.grpc.AuthMetadataPlugin object at 0x1134be5e0>" raised exception!
+Traceback (most recent call last):
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/grpc/_plugin_wrapping.py", line 105, in __call__
+    self._metadata_plugin(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 93, in __call__
+    callback(self._get_authorization_headers(context), None)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 79, in _get_authorization_headers
+    self._credentials.before_request(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 461, in before_request
+    self._blocking_refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 203, in _blocking_refresh
+    self.refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 474, in refresh
+    self._perform_refresh_token(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/credentials.py", line 435, in _perform_refresh_token
+    ) = reauth.refresh_grant(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-06-06 01:52:54,573 ERROR AuthMetadataPluginCallback "<google.auth.transport.grpc.AuthMetadataPlugin object at 0x114782e20>" raised exception!
+Traceback (most recent call last):
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/grpc/_plugin_wrapping.py", line 105, in __call__
+    self._metadata_plugin(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 93, in __call__
+    callback(self._get_authorization_headers(context), None)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 79, in _get_authorization_headers
+    self._credentials.before_request(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 461, in before_request
+    self._blocking_refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 203, in _blocking_refresh
+    self.refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 474, in refresh
+    self._perform_refresh_token(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/credentials.py", line 435, in _perform_refresh_token
+    ) = reauth.refresh_grant(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-06-06 01:52:54,574 WARNING Google neural2 attempt 1 failed for the-tell-tale-heart voice en-IN-Neural2-B: 503 Getting metadata from plugin failed with error: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-06-06 01:52:57,771 ERROR AuthMetadataPluginCallback "<google.auth.transport.grpc.AuthMetadataPlugin object at 0x1147756a0>" raised exception!
+Traceback (most recent call last):
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/grpc/_plugin_wrapping.py", line 105, in __call__
+    self._metadata_plugin(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 93, in __call__
+    callback(self._get_authorization_headers(context), None)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 79, in _get_authorization_headers
+    self._credentials.before_request(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 461, in before_request
+    self._blocking_refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 203, in _blocking_refresh
+    self.refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 474, in refresh
+    self._perform_refresh_token(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/credentials.py", line 435, in _perform_refresh_token
+    ) = reauth.refresh_grant(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-06-06 01:52:57,771 WARNING Google neural2 attempt 2 failed for the-tell-tale-heart voice en-IN-Neural2-B: 503 Getting metadata from plugin failed with error: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-06-06 01:53:02,964 ERROR AuthMetadataPluginCallback "<google.auth.transport.grpc.AuthMetadataPlugin object at 0x1147d78b0>" raised exception!
+Traceback (most recent call last):
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/grpc/_plugin_wrapping.py", line 105, in __call__
+    self._metadata_plugin(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 93, in __call__
+    callback(self._get_authorization_headers(context), None)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 79, in _get_authorization_headers
+    self._credentials.before_request(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 461, in before_request
+    self._blocking_refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 203, in _blocking_refresh
+    self.refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 474, in refresh
+    self._perform_refresh_token(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/credentials.py", line 435, in _perform_refresh_token
+    ) = reauth.refresh_grant(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-06-06 01:53:02,965 WARNING Google neural2 attempt 3 failed for the-tell-tale-heart voice en-IN-Neural2-B: 503 Getting metadata from plugin failed with error: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-06-06 01:53:12,137 ERROR AuthMetadataPluginCallback "<google.auth.transport.grpc.AuthMetadataPlugin object at 0x1147c3550>" raised exception!
+Traceback (most recent call last):
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/grpc/_plugin_wrapping.py", line 105, in __call__
+    self._metadata_plugin(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 93, in __call__
+    callback(self._get_authorization_headers(context), None)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 79, in _get_authorization_headers
+    self._credentials.before_request(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 461, in before_request
+    self._blocking_refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 203, in _blocking_refresh
+    self.refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 474, in refresh
+    self._perform_refresh_token(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/credentials.py", line 435, in _perform_refresh_token
+    ) = reauth.refresh_grant(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-06-06 01:53:12,138 WARNING Google neural2 attempt 4 failed for the-tell-tale-heart voice en-IN-Neural2-B: 503 Getting metadata from plugin failed with error: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-06-06 01:53:13,110 ERROR AuthMetadataPluginCallback "<google.auth.transport.grpc.AuthMetadataPlugin object at 0x1147e9040>" raised exception!
+Traceback (most recent call last):
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/grpc/_plugin_wrapping.py", line 105, in __call__
+    self._metadata_plugin(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 93, in __call__
+    callback(self._get_authorization_headers(context), None)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 79, in _get_authorization_headers
+    self._credentials.before_request(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 461, in before_request
+    self._blocking_refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 203, in _blocking_refresh
+    self.refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 474, in refresh
+    self._perform_refresh_token(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/credentials.py", line 435, in _perform_refresh_token
+    ) = reauth.refresh_grant(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-06-06 01:53:13,110 WARNING Google neural2 attempt 1 failed for the-tell-tale-heart voice en-IN-Neural2-C: 503 Getting metadata from plugin failed with error: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-06-06 01:53:16,239 ERROR AuthMetadataPluginCallback "<google.auth.transport.grpc.AuthMetadataPlugin object at 0x1147d7d30>" raised exception!
+Traceback (most recent call last):
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/grpc/_plugin_wrapping.py", line 105, in __call__
+    self._metadata_plugin(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 93, in __call__
+    callback(self._get_authorization_headers(context), None)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/transport/grpc.py", line 79, in _get_authorization_headers
+    self._credentials.before_request(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 461, in before_request
+    self._blocking_refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 203, in _blocking_refresh
+    self.refresh(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/credentials.py", line 474, in refresh
+    self._perform_refresh_token(request)
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/credentials.py", line 435, in _perform_refresh_token
+    ) = reauth.refresh_grant(
+  File "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/reauth.py", line 353, in refresh_grant
+    raise exceptions.RefreshError(
+google.auth.exceptions.RefreshError: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.
+2026-06-06 01:53:16,241 WARNING Google neural2 attempt 2 failed for the-tell-tale-heart voice en-IN-Neural2-C: 503 Getting metadata from plugin failed with error: Reauthentication is needed. Please run `gcloud auth application-default login` to reauthenticate.

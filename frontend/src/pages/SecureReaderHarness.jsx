@@ -71,6 +71,7 @@ export default function SecureReaderHarness() {
   useSEO({
     title: "Secure Reader Harness — Earnalism",
     description: "Internal secure reader test harness with 10 sample ebook pages.",
+    robots: "noindex, nofollow",
   });
 
   const pages = useMemo(() => Array.from({ length: 10 }, (_, index) => ({

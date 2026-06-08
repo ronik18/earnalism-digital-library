@@ -1,4 +1,4 @@
-import { imageUrlCandidates, normalizeImageUrl, optimizedImageUrl } from "./images";
+import { bookCoverImageSources, imageUrlCandidates, normalizeImageUrl, optimizedImageUrl } from "./images";
 
 describe("image URL helpers", () => {
   test("normalizes extensionless local assets without changing external URLs", () => {
@@ -22,5 +22,22 @@ describe("image URL helpers", () => {
       .toContain("w=720");
     expect(optimizedImageUrl("https://res.cloudinary.com/demo/image/upload/v1/cover.png", { width: 420 }))
       .toContain("/upload/f_auto,q_auto,c_limit,w_420,dpr_auto/");
+  });
+
+  test("builds progressive book cover sources from cover metadata", () => {
+    const sources = bookCoverImageSources({
+      title: "Dracula",
+      cover_image_url: "https://res.cloudinary.com/demo/image/upload/v1/cover.png",
+      thumbnail_url: "https://res.cloudinary.com/demo/image/upload/c_fill,f_auto,h_450,q_auto,w_300/v1/cover",
+      blur_placeholder: "https://res.cloudinary.com/demo/image/upload/c_fill,e_blur:2000,h_30,w_20/v1/cover",
+      dominant_color: "#111A21",
+    }, { widths: [320, 420] });
+
+    expect(sources.src).toContain("w_300");
+    expect(sources.srcSet).toContain("320w");
+    expect(sources.srcSet).toContain("420w");
+    expect(sources.placeholder).toContain("e_blur");
+    expect(sources.backgroundColor).toBe("#111A21");
+    expect(sources.hasCover).toBe(true);
   });
 });

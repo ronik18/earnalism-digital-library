@@ -881,9 +881,28 @@ def synthetic_word_timestamps(text_chunk: str, offset_ms: int, chunk_duration_ms
         if index == len(tokens) - 1:
             end_ms = offset_ms + chunk_duration_ms
         if end_ms <= start_ms:
-            end_ms = start_ms + 80
+            end_ms = start_ms + 1
         timestamps.append({"word": token, "start_ms": start_ms, "end_ms": end_ms})
-    return timestamps
+    return normalize_word_timestamps(timestamps)
+
+
+def normalize_word_timestamps(timestamps: List[Dict[str, Any]], min_duration_ms: int = 1) -> List[Dict[str, Any]]:
+    """Clamp word timings so reader highlights are strictly ordered."""
+
+    normalized: List[Dict[str, Any]] = []
+    previous_end = 0
+    for item in timestamps:
+        start_ms = max(previous_end, int(item.get("start_ms", 0)))
+        end_ms = max(start_ms + min_duration_ms, int(item.get("end_ms", start_ms)))
+        normalized.append(
+            {
+                **item,
+                "start_ms": start_ms,
+                "end_ms": end_ms,
+            }
+        )
+        previous_end = end_ms
+    return normalized
 
 
 def alignment_is_usable(timestamps: List[Dict[str, Any]], text_chunk: str, offset_ms: int, chunk_duration_ms: int) -> bool:

@@ -21,6 +21,7 @@
   },
   "scripts": {
     "start": "craco start",
+    "prebuild": "node scripts/generate-seo-assets.mjs",
     "build": "GENERATE_SOURCEMAP=false craco build",
     "test": "craco test"
   },

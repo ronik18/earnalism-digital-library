@@ -1,7 +1,7 @@
 import { useSettings } from "../context/SettingsContext";
 
 const ALT = "Earnalism logo";
-const DEFAULT_LOGO = `${process.env.PUBLIC_URL || ""}/assets/brand/earnalism-logo.png`;
+const DEFAULT_LOGO = `${process.env.PUBLIC_URL || ""}/assets/brand/earnalism-logo-transparent.png`;
 
 /**
  * BrandMark — renders the brand identity. If admin has uploaded a logo URL via
@@ -45,7 +45,7 @@ export default function BrandMark({ variant = "header", className = "" }) {
         alt={ALT}
         loading={variant === "header" ? "eager" : "lazy"}
         decoding="async"
-        className={`${imgClass} shrink-0 object-contain mix-blend-multiply`}
+        className={`${imgClass} shrink-0 object-contain`}
       />
       <span className="min-w-0 flex flex-col">
         <span className={`font-serif-light ${textClass} tracking-tight text-burgundy leading-none whitespace-nowrap`}>Earnalism</span>

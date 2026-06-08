@@ -11,7 +11,8 @@ fi
 
 FRONTEND_URL="${FRONTEND_URL:-https://theearnalism.com}" \
 API_URL="${API_URL:-https://api.theearnalism.com}" \
-K6_LOAD_VUS="${K6_LOAD_VUS:-1000}" \
-K6_LOAD_DURATION="${K6_LOAD_DURATION:-3m}" \
+K6_BASELINE_VUS="${K6_BASELINE_VUS:-100}" \
+K6_SPIKE_MULTIPLIER="${K6_SPIKE_MULTIPLIER:-10}" \
+K6_LOAD_DURATION="${K6_LOAD_DURATION:-60s}" \
 K6_LOAD_SLEEP_SECONDS="${K6_LOAD_SLEEP_SECONDS:-1}" \
-k6 run scripts/k6_load_100.js
+k6 run scripts/k6_10x_spike.js

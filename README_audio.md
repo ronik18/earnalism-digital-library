@@ -25,6 +25,16 @@ Install Python dependencies:
 python3 -m pip install -r requirements.txt
 ```
 
+For the open-source full-catalog onboarding path, install the optional local
+TTS stack separately so Railway/Vercel deploys do not pull multi-GB model
+dependencies:
+
+```bash
+brew install git-lfs  # macOS, required by Parler audio tooling
+git lfs install
+python3 -m pip install -r requirements-audio-open-source.txt
+```
+
 Install ffmpeg:
 
 ```bash
@@ -135,6 +145,124 @@ python generate_audio.py \
   --lang ben \
   --output-dir ./audio_output/
 ```
+
+## 3a. Open-source full-catalog onboarding
+
+Use `scripts/open_source_audiobook_onboarding.py` when the goal is to generate
+synced audiobooks for every book already uploaded to the live platform.
+
+Default open-source stack:
+
+- **English:** Piper TTS with a locally downloaded `.onnx` voice model.
+- **Bengali catalog default:** `facebook/mms-tts-ben`, a fast open-source
+  Bengali TTS model that is practical for full-library generation.
+- **Bengali premium option:** `ai4bharat/indic-parler-tts` with a Bengali
+  literary narration prompt. This gives more expressive narration, but should
+  be run on a GPU worker for full-book/catalog batches.
+- **Sync:** stable-ts / Whisper forced alignment into the existing
+  `{slug}_timestamps.json` schema, with deterministic proportional timestamps
+  only as a fallback when alignment coverage is too low.
+
+Preflight:
+
+```bash
+npm run audio:preflight
+```
+
+Expected production-ready environment:
+
+```bash
+export PIPER_MODEL_PATH="/absolute/path/to/en_US-lessac-medium.onnx"
+export PIPER_CONFIG_PATH="/absolute/path/to/en_US-lessac-medium.onnx.json"
+export PIPER_BINARY="/absolute/path/to/piper"
+export HF_TOKEN="hf_..."  # required for gated/parler runs and model downloads
+```
+
+Audit live uploaded books against existing reader assets:
+
+```bash
+npm run audio:audit
+```
+
+Dry-run all uploaded books without generating audio:
+
+```bash
+npm run audio:onboard:dry
+```
+
+Generate the catalog into `output/open_source_audiobooks` without touching the
+frontend bundle or live database:
+
+```bash
+python3 scripts/open_source_audiobook_onboarding.py generate
+```
+
+Generate, copy passing bundles into `frontend/public/audio`, and patch live
+admin audiobook flags only after each bundle validates:
+
+```bash
+python3 scripts/open_source_audiobook_onboarding.py generate \
+  --copy-to-public \
+  --sync-flags
+```
+
+For Cloudinary-backed production delivery, run with Railway backend variables
+so `HF_TOKEN` and Cloudinary credentials are available to the local generator:
+
+```bash
+railway run --service earnalism --environment production -- \
+  .venv-audio/bin/python scripts/open_source_audiobook_onboarding.py generate \
+  --piper-binary "$PWD/.venv-audio/bin/piper" \
+  --piper-model "$PWD/.cache/audio_models/piper/en_US-lessac-medium/en_US-lessac-medium.onnx" \
+  --piper-config "$PWD/.cache/audio_models/piper/en_US-lessac-medium/en_US-lessac-medium.onnx.json" \
+  --upload-to-cloudinary \
+  --sync-flags \
+  --order-shortest-first
+```
+
+Use `--lang en` or `--lang ben` to split long catalog jobs. The script skips
+books that already have reader-ready `audiobook_assets.mp3` and
+`audiobook_assets.timestamps` mapped in the database unless
+`--no-skip-live-audio-assets` is passed.
+
+For premium Bengali narration on a GPU-capable machine:
+
+```bash
+python3 scripts/open_source_audiobook_onboarding.py generate \
+  --lang ben \
+  --bengali-provider indic-parler-tts \
+  --indic-model ai4bharat/indic-parler-tts
+```
+
+Cloudinary upload mapping:
+
+- `mp3` uploads as Cloudinary `video`
+- `timestamps`, `vtt`, `chapters`, and `meta` upload as Cloudinary `raw`
+- returned HTTPS URLs are stored on the book under `audiobook_assets`
+- the reader prefers those URLs before falling back to `/audio/{lang}/{slug}...`
+
+For a safe first production pass, run one title first:
+
+```bash
+python3 scripts/open_source_audiobook_onboarding.py generate \
+  --book-slug the-gift-of-the-magi \
+  --copy-to-public \
+  --sync-flags
+```
+
+Every run writes a JSON report to `output/audio_onboarding/`. The script does
+not write story content back to the platform; it only reads chapters, writes
+local narration text snapshots, generates audio assets, and optionally calls
+`PATCH /api/admin/books/{slug}/audiobook` after validation passes.
+
+For the complete catalog, prefer object storage/CDN for generated audio instead
+of committing every MP3 into the Vercel frontend. Set:
+
+```bash
+REACT_APP_AUDIO_ASSET_BASE_URL=https://your-audio-cdn.example
+```
+
+The reader falls back to `/audio/{lang}/{slug}...` when the variable is empty.
 
 English only:
 

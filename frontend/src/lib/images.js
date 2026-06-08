@@ -1,5 +1,6 @@
 const LOCAL_ASSET_RE = /^\/?assets\//i;
 const IMAGE_EXTENSION_RE = /\.(avif|gif|jpe?g|png|svg|webp)(?:[?#].*)?$/i;
+const HEX_COLOR_RE = /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i;
 const FALLBACK_EXTENSIONS = ["jpg", "png", "webp", "jpeg", "gif"];
 
 function hasImageExtension(src) {
@@ -66,4 +67,46 @@ export function optimizedImageUrl(src, { width = 900, quality = 82 } = {}) {
   }
 
   return normalized;
+}
+
+function normalizeWidthList(widths, fallbackWidth) {
+  const normalized = (Array.isArray(widths) && widths.length ? widths : [fallbackWidth])
+    .map((value) => Number(value))
+    .filter((value) => Number.isFinite(value) && value > 0)
+    .map((value) => Math.round(value));
+
+  return Array.from(new Set(normalized)).sort((a, b) => a - b);
+}
+
+function safeDominantColor(value) {
+  if (typeof value !== "string") return "";
+  const color = value.trim();
+  return HEX_COLOR_RE.test(color) ? color : "";
+}
+
+export function bookCoverImageSources(book, { width = 420, widths, quality = 82 } = {}) {
+  if (!book || typeof book !== "object") {
+    return { src: "", srcSet: "", placeholder: "", backgroundColor: "", hasCover: false };
+  }
+
+  const cover = normalizeImageUrl(book.cover_image_url || book.cover_url || "");
+  const thumbnail = normalizeImageUrl(book.thumbnail_url || "");
+  const placeholder = normalizeImageUrl(book.blur_placeholder || "");
+  const backgroundColor = safeDominantColor(book.dominant_color);
+  const source = cover || thumbnail;
+  const src = thumbnail || (source ? optimizedImageUrl(source, { width, quality }) : "");
+  const responsiveWidths = normalizeWidthList(widths, width);
+  const srcSet = cover
+    ? responsiveWidths.map((candidateWidth) => (
+      `${optimizedImageUrl(cover, { width: candidateWidth, quality })} ${candidateWidth}w`
+    )).join(", ")
+    : "";
+
+  return {
+    src,
+    srcSet,
+    placeholder,
+    backgroundColor,
+    hasCover: Boolean(src || srcSet),
+  };
 }
