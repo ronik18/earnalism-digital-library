@@ -1,0 +1,16 @@
+{
+  "books": [
+    { "keys": { "slug": 1 }, "unique": true },
+    { "keys": { "slug": 1, "is_published": 1 } },
+    { "keys": { "is_published": 1, "created_at": -1 } },
+    { "keys": { "category_slug": 1, "is_published": 1, "created_at": -1 } }
+  ],
+  "categories": [
+    { "keys": { "slug": 1 }, "unique": true },
+    { "keys": { "order": 1 } }
+  ],
+  "blog_posts": [
+    { "keys": { "slug": 1 }, "unique": true },
+    { "keys": { "is_published": 1, "created_at": -1 } }
+  ]
+}

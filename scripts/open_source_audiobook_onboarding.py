@@ -45,6 +45,7 @@ DIRECT_CLOUDINARY_UPLOAD_LIMIT_BYTES = int(
 CLOUDINARY_LARGE_UPLOAD_CHUNK_BYTES = int(
     os.environ.get("CLOUDINARY_LARGE_UPLOAD_CHUNK_BYTES", str(20 * 1024 * 1024))
 )
+AUDIO_UPLOADER_JS = ROOT / "lib/storage/audioUploader.js"
 
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
@@ -84,6 +85,52 @@ DEFAULT_BENGALI_PROMPT = (
     "A warm Bengali literary audiobook narrator with clear diction, expressive "
     "emotion, natural pauses, and a reflective storytelling pace."
 )
+DEFAULT_PIPER_MODEL = ROOT / ".cache/audio_models/piper/en_US-lessac-medium/en_US-lessac-medium.onnx"
+DEFAULT_PIPER_CONFIG = ROOT / ".cache/audio_models/piper/en_US-lessac-medium/en_US-lessac-medium.onnx.json"
+DEFAULT_PIPER_BINARY = ROOT / ".venv-audio/bin/piper"
+LOCAL_TTS_PROVIDERS = {"piper", "mms-tts", "indic-parler-tts"}
+PAID_TTS_PROVIDERS = {
+    "elevenlabs",
+    "openai",
+    "openai-tts",
+    "google",
+    "google-cloud",
+    "google-tts",
+    "azure",
+    "azure-tts",
+    "amazon-polly",
+    "polly",
+    "playht",
+    "lovo",
+    "heygen",
+    "sarvam",
+}
+PAID_TTS_ENV_VARS = (
+    "ELEVENLABS_API_KEY",
+    "OPENAI_API_KEY",
+    "GOOGLE_APPLICATION_CREDENTIALS",
+    "GOOGLE_CLOUD_PROJECT",
+    "AZURE_SPEECH_KEY",
+    "AZURE_SPEECH_REGION",
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "PLAYHT_API_KEY",
+    "LOVO_API_KEY",
+    "HEYGEN_API_KEY",
+    "SARVAM_API_KEY",
+)
+
+
+def default_piper_binary() -> str:
+    return str(DEFAULT_PIPER_BINARY) if DEFAULT_PIPER_BINARY.exists() else "piper"
+
+
+def default_piper_model() -> str:
+    return str(DEFAULT_PIPER_MODEL) if DEFAULT_PIPER_MODEL.exists() else ""
+
+
+def default_piper_config() -> str:
+    return str(DEFAULT_PIPER_CONFIG) if DEFAULT_PIPER_CONFIG.exists() else ""
 
 
 class HTMLTextExtractor(HTMLParser):
@@ -136,6 +183,7 @@ class OnboardingResult:
     flags_synced: bool = False
     cloudinary_uploaded: bool = False
     duration_ms: int = 0
+    audio_size: int = 0
     timestamp_count: int = 0
     expected_units: int = 0
     asset_urls: Dict[str, str] = field(default_factory=dict)
@@ -147,15 +195,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("command", choices=("preflight", "audit", "generate"), help="Operation to run")
     parser.add_argument("--api-url", default=os.environ.get("EARNALISM_API_URL", DEFAULT_API_URL))
     parser.add_argument("--env-file", default=str(ROOT / ".secrets/earnalism-import.env"))
+    parser.add_argument("--manifest", type=Path, default=None, help="Optional JSON list/dict of target books to process")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--public-audio-dir", type=Path, default=DEFAULT_PUBLIC_AUDIO_DIR)
     parser.add_argument("--report-dir", type=Path, default=DEFAULT_REPORT_DIR)
-    parser.add_argument("--book-slug", action="append", default=[], help="Limit to one slug; can be repeated")
-    parser.add_argument("--lang", choices=("ben", "en"), default=None, help="Process one language only")
+    parser.add_argument("--book-slug", "--book", dest="book_slug", action="append", default=[], help="Limit to one slug; can be repeated")
+    parser.add_argument("--all-missing", action="store_true", help="Limit to published books that do not have mapped mp3+timestamp assets")
+    parser.add_argument("--lang", "--language", dest="lang", choices=("ben", "bn", "en"), default=None, help="Process one language only")
     parser.add_argument("--limit", type=int, default=0, help="Process at most N selected books")
     parser.add_argument("--include-drafts", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--include-published", action=argparse.BooleanOptionalAction, default=True)
-    parser.add_argument("--regenerate", action="store_true", help="Overwrite existing completed output bundles")
+    parser.add_argument("--regenerate", "--force", dest="regenerate", action="store_true", help="Overwrite existing completed output bundles")
+    parser.add_argument("--validate-only", action="store_true", help="Validate existing bundles without synthesizing audio")
+    parser.add_argument("--local-only", action=argparse.BooleanOptionalAction, default=True, help="Refuse paid/cloud TTS providers")
     parser.add_argument(
         "--skip-live-audio-assets",
         action=argparse.BooleanOptionalAction,
@@ -164,7 +216,13 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--order-shortest-first", action="store_true", help="Fetch selected books and process shorter books first")
     parser.add_argument("--copy-to-public", action="store_true", help="Copy passing bundles into frontend/public/audio")
-    parser.add_argument("--upload-to-cloudinary", action="store_true", help="Upload passing bundles to Cloudinary and keep returned secure URLs")
+    parser.add_argument(
+        "--upload-to-cloudinary",
+        "--upload-to-storage",
+        dest="upload_to_cloudinary",
+        action="store_true",
+        help="Upload passing bundles through the audiobook storage router and keep returned URLs",
+    )
     parser.add_argument("--cloudinary-folder", default=os.environ.get("CLOUDINARY_AUDIO_FOLDER", "earnalism/audiobooks"))
     parser.add_argument("--sync-flags", action="store_true", help="Patch live audiobook flags after validation passes")
     parser.add_argument("--dry-run", action="store_true", help="Do not synthesize; write text and estimates only")
@@ -175,9 +233,9 @@ def parse_args() -> argparse.Namespace:
         choices=("mms-tts", "indic-parler-tts"),
         default=os.environ.get("BENGALI_TTS_PROVIDER", "mms-tts"),
     )
-    parser.add_argument("--piper-binary", default=os.environ.get("PIPER_BINARY", "piper"))
-    parser.add_argument("--piper-model", default=os.environ.get("PIPER_MODEL_PATH", ""))
-    parser.add_argument("--piper-config", default=os.environ.get("PIPER_CONFIG_PATH", ""))
+    parser.add_argument("--piper-binary", default=os.environ.get("PIPER_BINARY") or default_piper_binary())
+    parser.add_argument("--piper-model", default=os.environ.get("PIPER_MODEL_PATH") or default_piper_model())
+    parser.add_argument("--piper-config", default=os.environ.get("PIPER_CONFIG_PATH") or default_piper_config())
     parser.add_argument("--piper-speaker", default=os.environ.get("PIPER_SPEAKER", ""))
     parser.add_argument("--piper-length-scale", type=float, default=float(os.environ.get("PIPER_LENGTH_SCALE", "1.08")))
     parser.add_argument("--indic-model", default=os.environ.get("INDIC_PARLER_TTS_MODEL", DEFAULT_INDIC_MODEL))
@@ -194,6 +252,74 @@ def parse_args() -> argparse.Namespace:
 def normalize_api_url(value: str) -> str:
     value = (value or DEFAULT_API_URL).rstrip("/")
     return value if value.endswith("/api") else f"{value}/api"
+
+
+def canonical_audio_language(value: str) -> str:
+    value = (value or "").strip().lower()
+    if value in {"bn", "ben", "bengali", "bn-in", "bn-bd"}:
+        return "ben"
+    if value in {"en", "eng", "english", "en-us", "en-in", "en-gb"}:
+        return "en"
+    return value
+
+
+def paid_tts_env_vars_present() -> List[str]:
+    return [name for name in PAID_TTS_ENV_VARS if os.environ.get(name)]
+
+
+def enforce_local_only(args: argparse.Namespace) -> None:
+    if not getattr(args, "local_only", True):
+        return
+    providers = {
+        "english_provider": str(getattr(args, "english_provider", "") or ""),
+        "bengali_provider": str(getattr(args, "bengali_provider", "") or ""),
+    }
+    invalid = {
+        name: provider
+        for name, provider in providers.items()
+        if provider and (provider in PAID_TTS_PROVIDERS or provider not in LOCAL_TTS_PROVIDERS)
+    }
+    if invalid:
+        rendered = ", ".join(f"{name}={provider}" for name, provider in invalid.items())
+        raise RuntimeError(f"--local-only refuses paid/cloud TTS provider selection: {rendered}")
+
+
+def load_target_manifest(path: Optional[Path]) -> Tuple[set[str], Dict[str, str]]:
+    if not path:
+        return set(), {}
+    manifest_path = path.expanduser()
+    if not manifest_path.exists():
+        raise RuntimeError(f"Target audiobook manifest not found: {manifest_path}")
+    payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if isinstance(payload, list):
+        items = payload
+    elif isinstance(payload, dict):
+        items = payload.get("books") or payload.get("items") or payload.get("targets") or []
+    else:
+        raise RuntimeError("Target audiobook manifest must be a JSON list or an object with books/items/targets")
+    slugs: set[str] = set()
+    languages: Dict[str, str] = {}
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        slug = normalize_slug(str(item.get("slug") or ""))
+        if not slug:
+            continue
+        slugs.add(slug)
+        language = canonical_audio_language(str(item.get("language") or ""))
+        if language:
+            languages[slug] = language
+    return slugs, languages
+
+
+def public_bundle_urls(slug: str, language: str) -> Dict[str, str]:
+    return {
+        "mp3": f"/audio/{language}/{slug}.mp3",
+        "timestamps": f"/audio/{language}/{slug}_timestamps.json",
+        "vtt": f"/audio/{language}/{slug}_highlight.vtt",
+        "chapters": f"/audio/{language}/{slug}_chapters.json",
+        "meta": f"/audio/{language}/{slug}_meta.json",
+    }
 
 
 def load_environment(args: argparse.Namespace) -> None:
@@ -266,15 +392,17 @@ class EarnalismAdminClient:
                 "audiobook_voice": result.voice,
                 "audio_asset_slug": result.slug,
                 "audiobook_assets": result.asset_urls,
+                "audiobook_size": result.audio_size,
+                "audiobook_duration_ms": result.duration_ms,
             },
         )
 
 
 def infer_language(text: str, fallback: str = "") -> str:
-    fallback = (fallback or "").strip().lower()
-    if fallback in {"ben", "bn", "bn-in", "bengali"}:
+    fallback = canonical_audio_language(fallback)
+    if fallback == "ben":
         return "ben"
-    if fallback in {"en", "eng", "english", "en-in"}:
+    if fallback == "en":
         return "en"
     return "ben" if re.search(r"[\u0980-\u09ff]", text or "") else "en"
 
@@ -328,12 +456,33 @@ def validate_bundle(base_dir: Path, language: str, slug: str, expected_units: in
         return BundleValidation(False, f"timestamp JSON failed: {exc}", expected_units=expected_units)
     if not isinstance(timestamps, list) or not timestamps:
         return BundleValidation(False, "timestamps file is empty", expected_units=expected_units)
-    monotonic = all(
-        int(timestamps[i].get("start_ms", 0)) <= int(timestamps[i].get("end_ms", 0)) <= int(timestamps[i + 1].get("start_ms", 0))
-        for i in range(len(timestamps) - 1)
-    )
-    if not monotonic:
-        return BundleValidation(False, "timestamps are not monotonic", len(timestamps), expected_units)
+    previous_end = 0
+    for index, item in enumerate(timestamps):
+        if not isinstance(item, dict) or item.get("start_ms") is None or item.get("end_ms") is None:
+            return BundleValidation(False, f"timestamp {index} has null/missing timing fields", len(timestamps), expected_units)
+        try:
+            start_ms = int(item["start_ms"])
+            end_ms = int(item["end_ms"])
+        except (TypeError, ValueError):
+            return BundleValidation(False, f"timestamp {index} has non-integer timing fields", len(timestamps), expected_units)
+        if start_ms < 0:
+            return BundleValidation(False, f"timestamp {index} starts before zero", len(timestamps), expected_units)
+        if end_ms <= start_ms:
+            return BundleValidation(False, f"timestamp {index} end is not greater than start", len(timestamps), expected_units)
+        if index > 0 and start_ms < previous_end:
+            return BundleValidation(False, f"timestamps overlap or move backwards at index {index}", len(timestamps), expected_units)
+        previous_end = end_ms
+    try:
+        audio_duration = duration_ms(paths["mp3"])
+    except Exception as exc:
+        return BundleValidation(False, f"audio duration probe failed: {exc}", len(timestamps), expected_units)
+    if previous_end > audio_duration + 500:
+        return BundleValidation(
+            False,
+            f"final timestamp exceeds audio duration by more than 500ms: timestamp={previous_end} audio={audio_duration}",
+            len(timestamps),
+            expected_units,
+        )
     tolerance = max(25, int(expected_units * 0.08))
     delta = abs(len(timestamps) - expected_units)
     if expected_units and delta > tolerance:
@@ -407,6 +556,8 @@ def preflight(args: argparse.Namespace) -> Dict[str, Any]:
         or os.environ.get("HUGGING_FACE_HUB_TOKEN")
     )
     return {
+        "local_only": bool(args.local_only),
+        "paid_tts_env_present_ignored": paid_tts_env_vars_present() if args.local_only else [],
         "ffmpeg": ffmpeg_ok,
         "stable_ts": module_installed("stable_whisper"),
         "torch": module_installed("torch"),
@@ -462,14 +613,18 @@ def preflight(args: argparse.Namespace) -> Dict[str, Any]:
 
 
 def select_books(summaries: List[Dict[str, Any]], args: argparse.Namespace) -> List[Dict[str, Any]]:
-    requested = {normalize_slug(slug) for slug in args.book_slug}
+    manifest_slugs = set(getattr(args, "manifest_slugs", set()) or set())
+    requested = {normalize_slug(slug) for slug in args.book_slug} | manifest_slugs
     selected: List[Dict[str, Any]] = []
     for item in summaries:
         slug = normalize_slug(str(item.get("slug") or ""))
         is_published = bool(item.get("is_published"))
+        if args.all_missing and has_reader_ready_audio_assets(item):
+            continue
+        manifest_language = getattr(args, "manifest_languages", {}).get(slug, "")
         summary_language = infer_language(
             f"{item.get('title', '')} {item.get('author', '')} {item.get('category', '')}",
-            str(item.get("language") or ""),
+            manifest_language or str(item.get("language") or ""),
         )
         if requested and slug not in requested:
             continue
@@ -750,22 +905,61 @@ def ensure_cloudinary_configured() -> None:
         raise RuntimeError(f"Cloudinary credentials missing: {', '.join(missing)}")
 
 
-def upload_bundle_to_cloudinary(slug: str, language: str, source_dir: Path, args: argparse.Namespace) -> Dict[str, str]:
-    """Upload a validated bundle and return reader-consumable HTTPS URLs."""
+def upload_audiobook_asset(
+    slug: str,
+    language: str,
+    asset_key: str,
+    asset_path: Path,
+    public_id: str,
+    duration: int,
+    args: argparse.Namespace,
+) -> Dict[str, Any]:
+    if not AUDIO_UPLOADER_JS.exists():
+        raise RuntimeError(f"Audio uploader helper not found: {AUDIO_UPLOADER_JS}")
+    command = [
+        "node",
+        str(AUDIO_UPLOADER_JS),
+        "--file-path",
+        str(asset_path),
+        "--slug",
+        slug,
+        "--language",
+        language,
+        "--public-id",
+        public_id,
+        "--cloudinary-folder",
+        str(args.cloudinary_folder or "earnalism/audiobooks"),
+        "--duration",
+        str(duration),
+        "--asset-kind",
+        asset_key,
+        "--file-name",
+        asset_path.name,
+    ]
+    completed = subprocess.run(command, check=False, capture_output=True, text=True, cwd=ROOT)
+    if completed.returncode != 0:
+        detail = (completed.stderr or completed.stdout or "").strip()
+        raise RuntimeError(f"Audio asset upload failed for {slug}/{asset_key}: {detail}")
+    try:
+        payload = json.loads((completed.stdout or "").strip())
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(f"Audio asset upload returned invalid JSON for {slug}/{asset_key}: {completed.stdout[:500]}") from exc
+    url = str(payload.get("url") or "").strip()
+    provider = str(payload.get("provider") or "").strip().lower()
+    if provider not in {"cloudinary", "b2"} or not url:
+        raise RuntimeError(f"Audio asset upload returned invalid payload for {slug}/{asset_key}: {payload}")
+    return {
+        "url": url,
+        "provider": provider,
+        "size": int(payload.get("size") or asset_path.stat().st_size),
+        "duration": int(payload.get("duration") or duration or 0),
+    }
+
+
+def upload_bundle_to_cloudinary(slug: str, language: str, source_dir: Path, args: argparse.Namespace) -> Dict[str, Any]:
+    """Upload a validated bundle and return reader-consumable asset URLs plus storage provider."""
 
     ensure_cloudinary_configured()
-    try:
-        import cloudinary
-        import cloudinary.uploader
-    except ImportError as exc:
-        raise RuntimeError("Install cloudinary before using --upload-to-cloudinary") from exc
-
-    cloudinary.config(
-        cloud_name=os.environ["CLOUDINARY_CLOUD_NAME"],
-        api_key=os.environ["CLOUDINARY_API_KEY"],
-        api_secret=os.environ["CLOUDINARY_API_SECRET"],
-        secure=True,
-    )
 
     paths = bundle_paths(source_dir, language, slug)
     upload_plan = {
@@ -777,45 +971,35 @@ def upload_bundle_to_cloudinary(slug: str, language: str, source_dir: Path, args
     }
     folder = str(args.cloudinary_folder or "earnalism/audiobooks").strip().strip("/")
     urls: Dict[str, str] = {}
+    audio_upload: Dict[str, Any] = {}
+    asset_providers: Dict[str, str] = {}
+    audio_duration = duration_ms(paths["mp3"]) if paths["mp3"].exists() else 0
     for key, (resource_type, path, public_name) in upload_plan.items():
         if not path.exists():
             raise RuntimeError(f"Cannot upload missing {key} asset: {path}")
         public_id = f"{folder}/{language}/{slug}/{public_name}"
-        upload_options = {
-            "resource_type": resource_type,
-            "public_id": public_id,
-            "overwrite": True,
-            "invalidate": True,
-            "tags": ["earnalism", "audiobook", language, slug],
-            "context": {
-                "slug": slug,
-                "language": language,
-                "asset_kind": key,
-                "generated_by": "open_source_audiobook_onboarding",
-            },
-        }
-        if path.stat().st_size > DIRECT_CLOUDINARY_UPLOAD_LIMIT_BYTES:
-            result = cloudinary.uploader.upload_large(
-                str(path),
-                chunk_size=CLOUDINARY_LARGE_UPLOAD_CHUNK_BYTES,
-                **upload_options,
-            )
-        else:
-            result = cloudinary.uploader.upload(str(path), **upload_options)
-        secure_url = result.get("secure_url") or result.get("url")
-        if not secure_url:
-            raise RuntimeError(f"Cloudinary upload for {key} did not return a URL")
-        urls[key] = str(secure_url)
-    return urls
+        asset_upload = upload_audiobook_asset(slug, language, key, path, public_id, audio_duration if key == "mp3" else 0, args)
+        urls[key] = str(asset_upload["url"])
+        asset_providers[key] = str(asset_upload["provider"])
+        if key == "mp3":
+            audio_upload = asset_upload
+    return {
+        "assets": urls,
+        "provider": str(audio_upload.get("provider") or "cloudinary"),
+        "asset_providers": asset_providers,
+        "size": int(audio_upload.get("size") or paths["mp3"].stat().st_size),
+        "duration": int(audio_upload.get("duration") or audio_duration or 0),
+    }
 
 
 def generate_book(book: Dict[str, Any], args: argparse.Namespace) -> OnboardingResult:
     slug = normalize_slug(str(book.get("slug") or book.get("title") or "book"))
     title = str(book.get("title") or slug)
     if args.skip_live_audio_assets and has_reader_ready_audio_assets(book):
+        manifest_language = getattr(args, "manifest_languages", {}).get(slug, "")
         language = infer_language(
             f"{book.get('title', '')} {book.get('author', '')}",
-            str(book.get("language") or ""),
+            manifest_language or str(book.get("language") or ""),
         )
         return OnboardingResult(
             slug=slug,
@@ -831,7 +1015,8 @@ def generate_book(book: Dict[str, Any], args: argparse.Namespace) -> OnboardingR
         )
 
     text = chapter_text(book)
-    language = infer_language(text, str(book.get("language") or ""))
+    manifest_language = getattr(args, "manifest_languages", {}).get(slug, "")
+    language = infer_language(text, manifest_language or str(book.get("language") or ""))
     expected = len(highlight_units(text, language))
     result = OnboardingResult(slug=slug, title=title, is_published=bool(book.get("is_published")), language=language, expected_units=expected)
 
@@ -853,6 +1038,26 @@ def generate_book(book: Dict[str, Any], args: argparse.Namespace) -> OnboardingR
         result.detail = f"over max chars: {len(text)} > {args.max_chars}"
         return result
 
+    if args.validate_only:
+        output_validation = validate_bundle(args.output_dir, language, slug, expected)
+        public_validation = validate_bundle(args.public_audio_dir, language, slug, expected)
+        if output_validation.ok:
+            result.status = "READY"
+            result.detail = "existing generated bundle"
+            result.timestamp_count = output_validation.timestamp_count
+            apply_bundle_meta(result, args.output_dir)
+        elif public_validation.ok:
+            result.status = "READY"
+            result.detail = "existing public audio bundle"
+            result.timestamp_count = public_validation.timestamp_count
+            result.asset_urls = public_bundle_urls(slug, language)
+            apply_bundle_meta(result, args.public_audio_dir)
+        else:
+            result.status = "BLOCKED"
+            result.detail = output_validation.detail
+            result.timestamp_count = output_validation.timestamp_count
+        return result
+
     existing = validate_bundle(args.output_dir, language, slug, expected)
     if existing.ok and not args.regenerate:
         refresh_existing_bundle_indexes(book, text, language, args.output_dir)
@@ -863,8 +1068,13 @@ def generate_book(book: Dict[str, Any], args: argparse.Namespace) -> OnboardingR
         if args.copy_to_public:
             copy_bundle(slug, language, args.output_dir, args.public_audio_dir)
             result.copied_to_public = True
+            result.asset_urls = public_bundle_urls(slug, language)
         if args.upload_to_cloudinary:
-            result.asset_urls = upload_bundle_to_cloudinary(slug, language, args.output_dir, args)
+            upload_result = upload_bundle_to_cloudinary(slug, language, args.output_dir, args)
+            result.asset_urls = upload_result["assets"]
+            result.provider = upload_result["provider"]
+            result.audio_size = upload_result["size"]
+            result.duration_ms = upload_result["duration"]
             result.cloudinary_uploaded = True
         return result
 
@@ -923,8 +1133,13 @@ def generate_book(book: Dict[str, Any], args: argparse.Namespace) -> OnboardingR
     if validation.ok and args.copy_to_public:
         copy_bundle(slug, language, args.output_dir, args.public_audio_dir)
         result.copied_to_public = True
+        result.asset_urls = public_bundle_urls(slug, language)
     if validation.ok and args.upload_to_cloudinary:
-        result.asset_urls = upload_bundle_to_cloudinary(slug, language, args.output_dir, args)
+        upload_result = upload_bundle_to_cloudinary(slug, language, args.output_dir, args)
+        result.asset_urls = upload_result["assets"]
+        result.provider = upload_result["provider"]
+        result.audio_size = upload_result["size"]
+        result.duration_ms = upload_result["duration"]
         result.cloudinary_uploaded = True
     return result
 
@@ -934,7 +1149,8 @@ def audit_books(summaries: List[Dict[str, Any]], args: argparse.Namespace) -> Li
     for item in select_books(summaries, args):
         slug = normalize_slug(str(item.get("slug") or ""))
         title = str(item.get("title") or slug)
-        language = infer_language(f"{item.get('title', '')} {item.get('author', '')}", str(item.get("language") or ""))
+        manifest_language = getattr(args, "manifest_languages", {}).get(slug, "")
+        language = infer_language(f"{item.get('title', '')} {item.get('author', '')}", manifest_language or str(item.get("language") or ""))
         if has_reader_ready_audio_assets(item):
             results.append(
                 OnboardingResult(
@@ -988,6 +1204,7 @@ def result_to_dict(result: OnboardingResult) -> Dict[str, Any]:
         "cloudinary_uploaded": result.cloudinary_uploaded,
         "flags_synced": result.flags_synced,
         "duration_ms": result.duration_ms,
+        "audio_size": result.audio_size,
         "timestamp_count": result.timestamp_count,
         "expected_units": result.expected_units,
         "asset_urls": result.asset_urls,
@@ -1020,10 +1237,14 @@ def write_report(args: argparse.Namespace, results: List[OnboardingResult], pref
 
 def main() -> None:
     args = parse_args()
+    args.lang = canonical_audio_language(args.lang or "") or None
     args.output_dir = args.output_dir.expanduser().resolve()
     args.public_audio_dir = args.public_audio_dir.expanduser().resolve()
     args.report_dir = args.report_dir.expanduser().resolve()
+    args.manifest = args.manifest.expanduser().resolve() if args.manifest else None
     load_environment(args)
+    enforce_local_only(args)
+    args.manifest_slugs, args.manifest_languages = load_target_manifest(args.manifest)
 
     preflight_payload = preflight(args)
     if args.command == "preflight":
@@ -1047,11 +1268,12 @@ def main() -> None:
     prefetched_books: Dict[str, Dict[str, Any]] = {}
     if args.order_shortest_first and selected:
         sortable: List[Tuple[int, str, Dict[str, Any]]] = []
-        for summary in selected:
+        for prefetch_index, summary in enumerate(selected, start=1):
             slug = normalize_slug(str(summary.get("slug") or ""))
             if args.skip_live_audio_assets and has_reader_ready_audio_assets(summary):
                 sortable.append((0, slug, summary))
                 continue
+            print(f"Prefetching {prefetch_index}/{len(selected)} {slug} for shortest-first ordering...", flush=True)
             book = client.book(slug)
             prefetched_books[slug] = book
             sortable.append((len(chapter_text(book)), slug, summary))
@@ -1060,7 +1282,7 @@ def main() -> None:
     results: List[OnboardingResult] = []
     for index, summary in enumerate(selected, start=1):
         slug = normalize_slug(str(summary.get("slug") or ""))
-        print(f"\n=== {index}/{len(selected)} {summary.get('title') or slug} ({slug}) ===")
+        print(f"\n=== {index}/{len(selected)} {summary.get('title') or slug} ({slug}) ===", flush=True)
         try:
             if args.skip_live_audio_assets and has_reader_ready_audio_assets(summary):
                 result = OnboardingResult(
@@ -1105,7 +1327,7 @@ def main() -> None:
     print(f"Ready: {sum(1 for result in results if result.status == 'READY')}")
     print(f"Blocked: {sum(1 for result in results if result.status == 'BLOCKED')}")
     print(f"Copied to public: {sum(1 for result in results if result.copied_to_public)}")
-    print(f"Uploaded to Cloudinary: {sum(1 for result in results if result.cloudinary_uploaded)}")
+    print(f"Uploaded to remote storage: {sum(1 for result in results if result.cloudinary_uploaded)}")
     print(f"Flags synced: {sum(1 for result in results if result.flags_synced)}")
     print(f"Report: {report}")
 

@@ -1,0 +1,74 @@
+[
+  {
+    "filePattern": "01-book-integrity",
+    "moduleName": "Book Integrity & Content Fidelity",
+    "mandatory": true,
+    "allowedSkipModes": []
+  },
+  {
+    "filePattern": "02-rendering-visual",
+    "moduleName": "Rendering & Visual Accuracy",
+    "mandatory": true,
+    "allowedSkipModes": ["pr", "canary"]
+  },
+  {
+    "filePattern": "03-audiobook-sync",
+    "moduleName": "Audiobook Quality & Text Highlight Sync",
+    "mandatory": true,
+    "allowedSkipModes": ["pr", "canary"]
+  },
+  {
+    "filePattern": "04-legal-compliance",
+    "moduleName": "Legal & Compliance",
+    "mandatory": true,
+    "allowedSkipModes": []
+  },
+  {
+    "filePattern": "05-url-navigation",
+    "moduleName": "URL, Path & Navigation",
+    "mandatory": true,
+    "allowedSkipModes": []
+  },
+  {
+    "filePattern": "06-seo",
+    "moduleName": "SEO",
+    "mandatory": true,
+    "allowedSkipModes": []
+  },
+  {
+    "filePattern": "07-redis-cache",
+    "moduleName": "Redis Cache Performance",
+    "mandatory": true,
+    "allowedSkipModes": ["pr", "canary"]
+  },
+  {
+    "filePattern": "08-mongodb-performance",
+    "moduleName": "MongoDB Index & Query Performance",
+    "mandatory": true,
+    "allowedSkipModes": ["pr", "canary"]
+  },
+  {
+    "filePattern": "09-infra-readiness",
+    "moduleName": "Auto-Scaling & Infrastructure",
+    "mandatory": true,
+    "allowedSkipModes": ["pr", "canary"]
+  },
+  {
+    "filePattern": "10-e2e-uat",
+    "moduleName": "End-to-End UAT",
+    "mandatory": true,
+    "allowedSkipModes": ["pr", "canary"]
+  },
+  {
+    "filePattern": "11-security-access-control",
+    "moduleName": "Security, Privacy & Access Control",
+    "mandatory": true,
+    "allowedSkipModes": []
+  },
+  {
+    "filePattern": "12-migration-data-consistency",
+    "moduleName": "Migration, Backup & Data Consistency",
+    "mandatory": true,
+    "allowedSkipModes": ["pr", "canary"]
+  }
+]

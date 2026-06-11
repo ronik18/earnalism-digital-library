@@ -864,14 +864,6 @@ function prefetchAsset(url) {
   boundedCacheSet(readerAssetPrefetchCache, url, promise, 32);
 }
 
-function canPrefetchHeavyReaderAsset() {
-  if (typeof navigator === 'undefined') return false;
-  const connection = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
-  if (connection?.saveData) return false;
-  const effectiveType = String(connection?.effectiveType || '').toLowerCase();
-  return !/(^|-)2g$|slow-2g/.test(effectiveType);
-}
-
 function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '', adminPreview = false, onChapterSelect }) {
   const sortedChapters = [...chapters].sort((a, b) => (a.order || 0) - (b.order || 0));
 
@@ -2092,7 +2084,7 @@ export default function Reader() {
           legacyAudioUrl: legacyGeneratedAudioUrl,
           legacyTimestampsUrl: legacyGeneratedTimestampsUrl,
         });
-        if (canPrefetchHeavyReaderAsset()) prefetchAsset(nextTrack.audioUrl);
+        // Keep MP3 loading under the audio element so metadata/range requests do not become full-file prefetches.
         prefetchAsset(nextTrack.timestampsUrl);
       }
     });

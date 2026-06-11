@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Sparkles, Compass, Feather, Mail } from "lucide-react";
+import { ArrowRight, BookOpen, Sparkles, Compass, Feather, Mail, Instagram, Facebook, Youtube, Linkedin, Twitter } from "lucide-react";
 import { toast } from "sonner";
 import { api, formatError } from "../lib/api";
 import { optimizedImageUrl } from "../lib/images";
 import BookCoverImage from "../components/BookCoverImage";
 import LiveCoverShowcase from "../components/LiveCoverShowcase";
+import { useSettings } from "../context/SettingsContext";
 import useSEO from "../hooks/useSEO";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1920&q=90";
@@ -79,6 +80,14 @@ const DESK_NOTES = [
   { number: "01", title: "Small lists", body: "A tighter catalog makes each recommendation feel earned." },
   { number: "02", title: "Reader pace", body: "Pages, previews, and shelves are arranged for unhurried decisions." },
   { number: "03", title: "Useful depth", body: "Classic literature, Bengali writing, business, history, and AI sit beside each other with purpose." },
+];
+
+const SOCIALS = [
+  { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
+  { key: "twitter", label: "X", Icon: Twitter },
+  { key: "instagram", label: "Instagram", Icon: Instagram },
+  { key: "facebook", label: "Facebook", Icon: Facebook },
+  { key: "youtube", label: "YouTube", Icon: Youtube },
 ];
 
 function appendUniqueBooks(existing = [], incoming = [], maxItems = HERO_BOOK_RENDER_LIMIT) {
@@ -174,6 +183,7 @@ function MotifBackdrop({ image, variant = "library" }) {
 }
 
 export default function Home() {
+  const { social } = useSettings();
   const [categories, setCategories] = useState([]);
   const [featured, setFeatured] = useState(null);
   const [liveBooks, setLiveBooks] = useState([]);
@@ -188,6 +198,7 @@ export default function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const activeSocials = useMemo(() => SOCIALS.filter((item) => social?.[item.key]), [social]);
 
   useSEO({
     title: "The Earnalism Digital Library — Buy Reading Time. Read Beautifully.",
@@ -254,8 +265,10 @@ export default function Home() {
       }).then(({ data }) => {
         if (controller.signal.aborted) return;
         const booksPage = normalizeBooksPage(data, liveBookPage.next_offset);
-        setLiveBooks((current) => appendUniqueBooks(current, booksPage.books));
-        setLiveBookPage(booksPage.pagination);
+        startTransition(() => {
+          setLiveBooks((current) => appendUniqueBooks(current, booksPage.books));
+          setLiveBookPage(booksPage.pagination);
+        });
       }).catch(() => {});
     });
 
@@ -510,6 +523,26 @@ export default function Home() {
               <p className="text-[#F4EFEA]/76 mt-6 leading-[1.8] max-w-xl font-light text-[0.98rem] sm:text-[1.03rem]">
                 Receive thoughtful book notes, new shelf arrivals, and curated reading recommendations written with the care of a private letter.
               </p>
+              {activeSocials.length > 0 && (
+                <nav className="mt-9" aria-label="Earnalism social links" data-testid="home-socials">
+                  <div className="text-[0.64rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]/90">Follow the marginalia</div>
+                  <div className="mt-4 flex flex-wrap items-center gap-3">
+                    {activeSocials.map(({ key, label, Icon }) => (
+                      <a
+                        key={key}
+                        href={social[key]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit Earnalism on ${label}`}
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#FDFCF8]/18 bg-[#FDFCF8]/[0.045] text-[#F4EFEA]/78 transition-colors duration-300 hover:border-[var(--brand-gold-soft)]/70 hover:bg-[rgba(216,185,122,0.1)] hover:text-[var(--brand-gold-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand-gold-soft)]"
+                        data-testid={`home-social-${key}`}
+                      >
+                        <Icon size={17} strokeWidth={1.55} aria-hidden="true" />
+                      </a>
+                    ))}
+                  </div>
+                </nav>
+              )}
             </div>
             <form onSubmit={subscribe} className="lg:col-span-6 rounded-lg border border-[#FDFCF8]/16 bg-[#FDFCF8]/[0.06] p-6 sm:p-8 lg:p-10 backdrop-blur-sm" data-testid="newsletter-card">
               <div className="flex items-center gap-3 text-[0.68rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]">
