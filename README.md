@@ -1121,6 +1121,7 @@ curl -s https://theearnalism.com/asset-manifest.json | head
 ```
 
 The deployed Vercel project is linked by `frontend/.vercel/project.json`.
+In GitHub Actions, the workflow links the same project at the repository checkout root and relies on the Vercel project setting `Root Directory = frontend`; run local manual Vercel commands from `frontend/`, but keep the gated CI prebuild path rooted at the repository checkout.
 
 Required GitHub Actions secrets for gated frontend deploy:
 

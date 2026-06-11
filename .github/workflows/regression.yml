@@ -172,9 +172,25 @@ jobs:
         if: steps.vercel-check.outputs.enabled == 'true'
         run: npm install -g vercel@latest
 
+      - name: Link Vercel project
+        if: steps.vercel-check.outputs.enabled == 'true'
+        shell: bash
+        run: |
+          mkdir -p .vercel
+          node - <<'NODE'
+          const fs = require('fs');
+
+          fs.writeFileSync(
+            '.vercel/project.json',
+            `${JSON.stringify({
+              orgId: process.env.VERCEL_ORG_ID,
+              projectId: process.env.VERCEL_PROJECT_ID,
+            }, null, 2)}\n`,
+          );
+          NODE
+
       - name: Pull Vercel production environment
         if: steps.vercel-check.outputs.enabled == 'true'
-        working-directory: frontend
         shell: bash
         run: |
           args=(pull --yes --environment=production --token "${VERCEL_TOKEN}")
@@ -185,10 +201,10 @@ jobs:
 
       - name: Build frontend for Vercel
         if: steps.vercel-check.outputs.enabled == 'true'
-        working-directory: frontend
         shell: bash
         run: |
-          args=(build --prod --token "${VERCEL_TOKEN}")
+          rm -rf .vercel/output
+          args=(build --prod --yes --token "${VERCEL_TOKEN}")
           if [[ -n "${VERCEL_SCOPE}" ]]; then
             args+=(--scope "${VERCEL_SCOPE}")
           fi
@@ -196,7 +212,6 @@ jobs:
 
       - name: Deploy frontend to Vercel production
         if: steps.vercel-check.outputs.enabled == 'true'
-        working-directory: frontend
         shell: bash
         run: |
           args=(deploy --prebuilt --prod --token "${VERCEL_TOKEN}")
