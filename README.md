@@ -1090,10 +1090,10 @@ Current design:
 
 Production deployment has two paths:
 
-- Main branch automation: pushes to `main` run regression gates, backend Railway deployment when required secrets exist, production canary, and post-deploy k6 smoke/load tests.
+- Main branch automation: pushes to `main` run regression gates, backend Railway deployment, frontend Vercel production deployment, production canary, and post-deploy k6 smoke/load tests when the required deploy secrets exist.
 - Manual operator path: `scripts/commit_push_deploy.sh` commits, pushes, deploys Railway backend, deploys Vercel frontend, and runs smoke checks from the terminal.
 
-Vercel also auto-builds the frontend from the linked Git project when its production branch is pushed. The GitHub GO LIVE workflow controls the Railway backend deployment after the regression gate passes.
+The GitHub GO LIVE workflow controls both production deploys after the regression gate passes. Backend deploys through Railway CLI first, frontend deploys through Vercel CLI from the `frontend/` project next, and canary runs only after both deploy jobs report an actual deploy.
 
 ### Frontend: Vercel
 
@@ -1121,6 +1121,22 @@ curl -s https://theearnalism.com/asset-manifest.json | head
 ```
 
 The deployed Vercel project is linked by `frontend/.vercel/project.json`.
+
+Required GitHub Actions secrets for gated frontend deploy:
+
+- `VERCEL_TOKEN`: Vercel token with access to the `earnalism` project.
+- `VERCEL_ORG_ID`: Vercel org/team ID from `frontend/.vercel/project.json`.
+- `VERCEL_PROJECT_ID`: Vercel project ID from `frontend/.vercel/project.json`.
+- `VERCEL_SCOPE`: optional, only needed if the token must target a specific Vercel team/user scope.
+
+One-time external Git provider setup:
+
+```bash
+cd frontend
+npx --yes vercel@latest git connect https://github.com/ronik18/earnalism-digital-library.git
+```
+
+If Vercel returns `You need to add a Login Connection to your GitHub account first`, add the GitHub Login Connection in Vercel account settings, then rerun the command. The Actions deploy path above does not bypass the GO-LIVE gate and is the production-safe automation path.
 
 ### Backend: Railway
 
@@ -1236,7 +1252,7 @@ Scale docs:
 GitHub Actions gates:
 
 - `.github/workflows/regression-suite.yml`: backend, frontend, and browser regression on PR/push.
-- `.github/workflows/regression.yml`: PR regression; push GO LIVE gate; Railway deploy; production canary.
+- `.github/workflows/regression.yml`: PR regression; push GO LIVE gate; Railway deploy; Vercel frontend deploy; production canary.
 - `.github/workflows/post-deploy-k6.yml`: post-deploy smoke and 100-user load test.
 - `.github/workflows/production-monitor.yml`: scheduled production health/latency/catalog/reader-manifest observer every 30 minutes.
 

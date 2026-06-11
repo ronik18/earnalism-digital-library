@@ -129,10 +129,89 @@ jobs:
         if: steps.deploy-check.outputs.enabled == 'true'
         run: railway up --service "${RAILWAY_SERVICE_ID}"
 
+  deploy_frontend:
+    name: Vercel frontend deploy after backend GO LIVE
+    needs: deploy
+    if: github.event_name != 'pull_request' && needs.deploy.outputs.deployed == 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      deployed: ${{ steps.vercel-check.outputs.enabled }}
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE || vars.VERCEL_SCOPE || '' }}
+    steps:
+      - name: Check Vercel deploy secrets
+        id: vercel-check
+        shell: bash
+        run: |
+          if [[ -n "${VERCEL_TOKEN}" && -n "${VERCEL_ORG_ID}" && -n "${VERCEL_PROJECT_ID}" ]]; then
+            echo "enabled=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "enabled=false" >> "${GITHUB_OUTPUT}"
+            echo "Vercel frontend deploy skipped: VERCEL_TOKEN, VERCEL_ORG_ID, or VERCEL_PROJECT_ID is missing."
+          fi
+
+      - name: Checkout
+        if: steps.vercel-check.outputs.enabled == 'true'
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        if: steps.vercel-check.outputs.enabled == 'true'
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+
+      - name: Install Vercel CLI
+        if: steps.vercel-check.outputs.enabled == 'true'
+        run: npm install -g vercel@latest
+
+      - name: Pull Vercel production environment
+        if: steps.vercel-check.outputs.enabled == 'true'
+        working-directory: frontend
+        shell: bash
+        run: |
+          args=(pull --yes --environment=production --token "${VERCEL_TOKEN}")
+          if [[ -n "${VERCEL_SCOPE}" ]]; then
+            args+=(--scope "${VERCEL_SCOPE}")
+          fi
+          vercel "${args[@]}"
+
+      - name: Build frontend for Vercel
+        if: steps.vercel-check.outputs.enabled == 'true'
+        working-directory: frontend
+        shell: bash
+        run: |
+          args=(build --prod --token "${VERCEL_TOKEN}")
+          if [[ -n "${VERCEL_SCOPE}" ]]; then
+            args+=(--scope "${VERCEL_SCOPE}")
+          fi
+          vercel "${args[@]}"
+
+      - name: Deploy frontend to Vercel production
+        if: steps.vercel-check.outputs.enabled == 'true'
+        working-directory: frontend
+        shell: bash
+        run: |
+          args=(deploy --prebuilt --prod --token "${VERCEL_TOKEN}")
+          if [[ -n "${VERCEL_SCOPE}" ]]; then
+            args+=(--scope "${VERCEL_SCOPE}")
+          fi
+          vercel "${args[@]}"
+
   canary:
     name: production canary
-    needs: deploy
-    if: always() && github.event_name != 'pull_request' && needs.deploy.result == 'success'
+    needs:
+      - deploy
+      - deploy_frontend
+    if: >-
+      always() &&
+      github.event_name != 'pull_request' &&
+      needs.deploy.result == 'success' &&
+      needs.deploy.outputs.deployed == 'true' &&
+      needs.deploy_frontend.result == 'success' &&
+      needs.deploy_frontend.outputs.deployed == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
