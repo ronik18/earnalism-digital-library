@@ -23,6 +23,8 @@ RAILWAY_PROJECT_ID="${RAILWAY_PROJECT_ID:-}"
 FRONTEND_URL="${FRONTEND_URL:-https://theearnalism.com}"
 API_URL="${API_URL:-https://api.theearnalism.com}"
 POST_DEPLOY_WAIT_SECONDS="${POST_DEPLOY_WAIT_SECONDS:-45}"
+RAILWAY_DEPLOY_RETRIES="${RAILWAY_DEPLOY_RETRIES:-2}"
+RAILWAY_RETRY_DELAY_SECONDS="${RAILWAY_RETRY_DELAY_SECONDS:-20}"
 
 usage() {
   cat <<'USAGE'
@@ -64,6 +66,8 @@ Environment overrides:
   POST_DEPLOY_WAIT_SECONDS=45
   RUN_BACKEND_TESTS=1
   RUN_FRONTEND_TESTS=1
+  RAILWAY_DEPLOY_RETRIES=2
+  RAILWAY_RETRY_DELAY_SECONDS=20
 USAGE
 }
 
@@ -107,6 +111,59 @@ confirm() {
 
 need_command() {
   command -v "$1" >/dev/null 2>&1 || die "Missing required command: $1"
+}
+
+is_railway_transient_timeout() {
+  local file="$1"
+  grep -Eiq 'reqwest error|operation timed out|timed out|error sending request|backboard\.railway\.com/graphql' "${file}"
+}
+
+railway_upload_was_handed_off() {
+  local file="$1"
+  grep -Eq 'Build Logs:|Uploaded' "${file}"
+}
+
+run_railway_backend_deploy() {
+  local attempt=1
+  local status=0
+  local output_file
+  output_file="$(mktemp -t earnalism-railway-deploy.XXXXXX)"
+  trap 'rm -f "${output_file}"' RETURN
+
+  while (( attempt <= RAILWAY_DEPLOY_RETRIES )); do
+    if (( RAILWAY_DEPLOY_RETRIES > 1 )); then
+      log "Railway deploy attempt ${attempt}/${RAILWAY_DEPLOY_RETRIES}"
+    fi
+    : > "${output_file}"
+    print_command railway "${railway_args[@]}"
+    if [[ "${DRY_RUN}" == "1" ]]; then
+      return 0
+    fi
+
+    set +e
+    railway "${railway_args[@]}" 2>&1 | tee "${output_file}"
+    status=${PIPESTATUS[0]}
+    set -e
+
+    if [[ "${status}" == "0" ]]; then
+      return 0
+    fi
+
+    if is_railway_transient_timeout "${output_file}" && railway_upload_was_handed_off "${output_file}"; then
+      echo "WARNING: Railway CLI timed out after upload/build handoff. The deployment likely started; continuing to frontend deploy and smoke checks."
+      echo "         Check Railway dashboard/build logs if smoke checks fail."
+      return 0
+    fi
+
+    if is_railway_transient_timeout "${output_file}" && (( attempt < RAILWAY_DEPLOY_RETRIES )); then
+      echo "WARNING: transient Railway CLI/network timeout. Retrying in ${RAILWAY_RETRY_DELAY_SECONDS}s..."
+      sleep "${RAILWAY_RETRY_DELAY_SECONDS}"
+      attempt=$((attempt + 1))
+      continue
+    fi
+
+    return "${status}"
+  done
 }
 
 while [[ $# -gt 0 ]]; do
@@ -255,7 +312,7 @@ if [[ "${SKIP_BACKEND}" != "1" ]]; then
   if [[ "${DETACH}" == "1" ]]; then
     railway_args+=(--detach)
   fi
-  run railway "${railway_args[@]}"
+  run_railway_backend_deploy
 else
   log "Skipping backend deploy"
 fi
