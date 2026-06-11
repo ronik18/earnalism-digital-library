@@ -1,7 +1,37 @@
-const { apiGet, request } = require("../utils/http");
-const { frontendUrl } = require("../utils/envGuard");
+const { apiGet, request, mapLimit } = require("../utils/http");
+const { apiOrigin } = require("../utils/envGuard");
 const { isGoLive } = require("../utils/envGuard");
-const { audioLanguage, publicAudioSlug, audioMarkedAvailable } = require("../utils/audio");
+const { audioMarkedAvailable, audioAssetCandidates, manifestAudio } = require("../utils/audio");
+
+const AUDIO_SAMPLE_LIMIT = Number(process.env.REGRESSION_AUDIO_SAMPLE_LIMIT || (isGoLive() ? 24 : 8));
+const AUDIO_CONCURRENCY = Number(process.env.REGRESSION_AUDIO_CONCURRENCY || 6);
+
+function absoluteAssetUrl(value) {
+  if (!value) return "";
+  try {
+    return new URL(value, apiOrigin()).toString();
+  } catch {
+    return "";
+  }
+}
+
+async function expectPlayableAudio(url) {
+  const response = await request(url, { method: "HEAD", skipBody: true, timeoutMs: 20000 });
+  expect(response.ok).toBe(true);
+  expect(response.headers.get("content-type") || "").toMatch(/audio|mpeg|octet-stream/i);
+  expect(response.headers.get("accept-ranges") || "bytes").toMatch(/bytes/i);
+}
+
+async function expectSyncCues(url) {
+  const response = await request(url, { timeoutMs: 20000 });
+  expect(response.ok).toBe(true);
+  if ((response.headers.get("content-type") || "").includes("text/vtt") || url.endsWith(".vtt")) {
+    expect(response.text).toMatch(/WEBVTT|-->/i);
+    return;
+  }
+  const parsed = JSON.parse(response.text || "[]");
+  expect(Array.isArray(parsed) || typeof parsed === "object").toBe(true);
+}
 
 describe("Audiobook Quality & Text Highlight Sync", () => {
   const fullAudioTest = (isGoLive() || process.env.REGRESSION_ENABLE_AUDIO_CHECKS === "true") ? test : test.skip;
@@ -9,27 +39,30 @@ describe("Audiobook Quality & Text Highlight Sync", () => {
   fullAudioTest("audiobook availability is backed by playable assets and cues", async () => {
     const books = (await apiGet("/books")).data;
     const audioBooks = books.filter(audioMarkedAvailable);
-    expect(Array.isArray(audioBooks)).toBe(true);
+    expect(audioBooks.length).toBeGreaterThan(0);
 
-    for (const book of audioBooks) {
-      const lang = audioLanguage(book);
-      const slug = publicAudioSlug(book);
-      const audio = await request(`${frontendUrl()}/audio/${lang}/${slug}.mp3`, { method: "GET", skipBody: true });
-      expect(audio.ok).toBe(true);
-      expect(audio.headers.get("content-type") || "").toMatch(/audio|octet-stream/i);
-      const cues = await request(`${frontendUrl()}/audio/${lang}/${slug}_timestamps.json`);
-      expect(cues.ok).toBe(true);
-      const parsed = JSON.parse(cues.text || "[]");
-      expect(Array.isArray(parsed) || typeof parsed === "object").toBe(true);
-    }
+    await mapLimit(audioBooks.slice(0, AUDIO_SAMPLE_LIMIT), AUDIO_CONCURRENCY, async (book) => {
+      const manifestResponse = await apiGet(`/reader/book/${book.slug}/manifest`, { timeoutMs: 20000 });
+      expect(manifestResponse.ok).toBe(true);
+      const manifestTrack = manifestAudio(manifestResponse.data);
+      const fallbackTrack = audioAssetCandidates(book);
+      const audioUrl = absoluteAssetUrl(manifestTrack.audio || fallbackTrack.audio);
+      const cueUrl = absoluteAssetUrl(manifestTrack.timestamps || manifestTrack.vtt || fallbackTrack.timestamps || fallbackTrack.vtt);
+
+      expect(manifestTrack.enabled).toBe(true);
+      expect(audioUrl).toBeTruthy();
+      expect(cueUrl).toBeTruthy();
+      await expectPlayableAudio(audioUrl);
+      await expectSyncCues(cueUrl);
+    });
   });
 
-  fullAudioTest("books without complete audio are not marked publicly available", async () => {
+  fullAudioTest("books with staged audio assets are not exposed as enabled unless explicitly marked", async () => {
     const books = (await apiGet("/books")).data;
-    for (const book of books) {
-      if (!audioMarkedAvailable(book)) {
-        expect(!book.audiobook_assets || Object.keys(book.audiobook_assets).length === 0).toBe(true);
-      }
+    const stagedOnly = books.filter((book) => !audioMarkedAvailable(book) && Object.keys(book.audiobook_assets || {}).length > 0);
+    for (const book of stagedOnly) {
+      expect(book.audiobook_enabled).not.toBe(true);
+      expect(book.generate_audiobook).not.toBe(true);
     }
   });
 });

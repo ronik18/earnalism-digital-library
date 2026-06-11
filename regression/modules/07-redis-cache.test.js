@@ -1,11 +1,14 @@
 const { apiGet } = require("../utils/http");
 const { getRedisClient, getRedisUrl } = require("../utils/redis");
 
-const hasRedisUrl = Boolean(getRedisUrl());
-const redisTest = hasRedisUrl ? test : test.skip;
-
 describe("Redis Cache Performance", () => {
-  redisTest("Redis is reachable and regression never flushes production cache", async () => {
+  test("Redis is reachable when configured, otherwise public cache headers are present", async () => {
+    if (!getRedisUrl()) {
+      const response = await apiGet("/home/books?limit=6&offset=0");
+      expect(response.ok).toBe(true);
+      expect(response.headers.get("cache-control") || "").toMatch(/public|max-age|stale-while-revalidate/i);
+      return;
+    }
     const state = await getRedisClient();
     if (state.skipped) throw new Error(state.reason);
     try {

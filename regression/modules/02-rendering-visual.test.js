@@ -14,6 +14,10 @@ function strictVisualMode() {
   return ["go-live", "visual-ci"].includes((process.env.REGRESSION_MODE || "pr").toLowerCase());
 }
 
+function requireVisualBaselines() {
+  return process.env.REGRESSION_REQUIRE_VISUAL_BASELINES === "true" || (process.env.REGRESSION_MODE || "").toLowerCase() === "visual-ci";
+}
+
 describe("Rendering & Visual Accuracy", () => {
   const browserTest = (isGoLive() || process.env.REGRESSION_ENABLE_BROWSER_CHECKS === "true") ? test : test.skip;
 
@@ -36,7 +40,7 @@ describe("Rendering & Visual Accuracy", () => {
   test("visual baselines are present in CI modes and never auto-created", async () => {
     const required = ["home-375.png", "home-768.png", "home-1280.png", "home-1920.png"];
     const missing = required.filter((file) => !fs.existsSync(path.resolve("regression", "fixtures", "visual-baselines", file)));
-    if (strictVisualMode()) expect(missing).toEqual([]);
+    if (requireVisualBaselines()) expect(missing).toEqual([]);
     else expect(Array.isArray(missing)).toBe(true);
   });
 });

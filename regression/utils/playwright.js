@@ -4,8 +4,8 @@ const path = require("path");
 async function getChromium() {
   try {
     return { chromium: require("playwright").chromium, skipped: false };
-  } catch {
-    return { skipped: true, reason: "playwright package is not installed." };
+  } catch (error) {
+    return { skipped: true, reason: `playwright package is not available: ${error.message}` };
   }
 }
 

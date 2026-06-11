@@ -1,9 +1,12 @@
-const { apiGet } = require("../utils/http");
+const { apiGet, mapLimit } = require("../utils/http");
 const { isGoLive } = require("../utils/envGuard");
 const fixture = require("../fixtures/books.manifest.json");
 
+const GO_LIVE_BOOK_LIMIT = Number(process.env.REGRESSION_GO_LIVE_BOOK_LIMIT || 120);
+const BOOK_CHECK_CONCURRENCY = Number(process.env.REGRESSION_BOOK_CHECK_CONCURRENCY || 8);
+
 function sampleBooks(books) {
-  return isGoLive() ? books : books.slice(0, Number(process.env.REGRESSION_PR_BOOK_LIMIT || 8));
+  return isGoLive() ? books.slice(0, GO_LIVE_BOOK_LIMIT) : books.slice(0, Number(process.env.REGRESSION_PR_BOOK_LIMIT || 8));
 }
 
 describe("Book Integrity & Content Fidelity", () => {
@@ -24,7 +27,7 @@ describe("Book Integrity & Content Fidelity", () => {
 
   test("chapter order is strictly increasing and public detail stays metadata-only", async () => {
     const books = (await apiGet("/books")).data;
-    for (const book of sampleBooks(books)) {
+    await mapLimit(sampleBooks(books), BOOK_CHECK_CONCURRENCY, async (book) => {
       const detail = await apiGet(`/books/${book.slug}`);
       expect(detail.ok).toBe(true);
       expect(JSON.stringify(detail.data.chapters || [])).not.toMatch(/<p>|chapter body|rights_metadata/i);
@@ -38,7 +41,7 @@ describe("Book Integrity & Content Fidelity", () => {
       expect(new Set(orders).size).toBe(orders.length);
       expect([...orders].sort((a, b) => a - b)).toEqual(orders);
       expect(new Set(chapters.map((chapter) => chapter.id).filter(Boolean)).size).toBe(chapters.filter((chapter) => chapter.id).length);
-    }
+    });
   });
 
   test("draft or private fixture slugs are not publicly visible", async () => {

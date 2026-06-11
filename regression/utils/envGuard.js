@@ -57,6 +57,10 @@ function isProductionTarget() {
   return target === "production" || isProductionUrl(frontendUrl()) || isProductionUrl(apiUrl());
 }
 
+function productionGoLiveAllowed() {
+  return process.env.REGRESSION_ALLOW_PRODUCTION_TARGET === "true";
+}
+
 function mutationAllowed() {
   const env = (process.env.NODE_ENV || "").toLowerCase();
   const target = targetName();
@@ -105,6 +109,7 @@ module.exports = {
   apiOrigin,
   isProductionUrl,
   isProductionTarget,
+  productionGoLiveAllowed,
   isLocalUrl,
   mutationAllowed,
   redisFlushAllowed,

@@ -11,4 +11,32 @@ function audioMarkedAvailable(book) {
   return Boolean(book.audiobook_enabled || book.generate_audiobook);
 }
 
-module.exports = { audioLanguage, publicAudioSlug, audioMarkedAvailable };
+function audioAssetCandidates(book) {
+  const assets = book.audiobook_assets || {};
+  const doc = book.audiobook || {};
+  return {
+    audio: doc.url || doc.mp3 || assets.mp3 || "",
+    timestamps: doc.timestamps || assets.timestamps || "",
+    vtt: doc.vtt || assets.vtt || "",
+  };
+}
+
+function manifestAudio(manifest) {
+  const audio = manifest?.audio || {};
+  const assets = audio.assets || {};
+  return {
+    enabled: Boolean(audio.enabled),
+    provider: audio.provider || "",
+    audio: audio.url || assets.mp3 || "",
+    timestamps: assets.timestamps || audio.timestamps || "",
+    vtt: assets.vtt || audio.vtt || "",
+  };
+}
+
+module.exports = {
+  audioLanguage,
+  publicAudioSlug,
+  audioMarkedAvailable,
+  audioAssetCandidates,
+  manifestAudio,
+};

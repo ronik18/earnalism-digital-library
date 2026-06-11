@@ -20,7 +20,12 @@ async function request(url, options = {}) {
         ...(options.headers || {}),
       },
     });
-    const text = options.skipBody ? "" : await response.text();
+    let text = "";
+    if (options.skipBody) {
+      await response.body?.cancel?.().catch?.(() => {});
+    } else {
+      text = await response.text();
+    }
     return {
       url,
       status: response.status,
@@ -66,6 +71,20 @@ async function urlOk(url, options = {}) {
   return response.status >= 200 && response.status < 400;
 }
 
+async function mapLimit(items, limit, mapper) {
+  const results = new Array(items.length);
+  let nextIndex = 0;
+  const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (nextIndex < items.length) {
+      const currentIndex = nextIndex;
+      nextIndex += 1;
+      results[currentIndex] = await mapper(items[currentIndex], currentIndex);
+    }
+  });
+  await Promise.all(workers);
+  return results;
+}
+
 module.exports = {
   joinUrl,
   request,
@@ -74,4 +93,5 @@ module.exports = {
   apiRequest,
   pageGet,
   urlOk,
+  mapLimit,
 };

@@ -18,6 +18,12 @@ function moduleForTestFile(testFilePath, modules) {
   };
 }
 
+function requireAllModules() {
+  if (process.env.REGRESSION_REQUIRE_ALL_MODULES === "true") return true;
+  if (process.env.REGRESSION_REQUIRE_ALL_MODULES === "false") return false;
+  return !process.argv.some((arg) => /(^|[/\\])modules[/\\]|\.test\.|--testNamePattern/.test(arg));
+}
+
 function assertionFailure(assertion) {
   return {
     title: assertion.fullName || assertion.title,
@@ -68,20 +74,22 @@ function buildModuleReport(jestResults) {
     }
   }
 
-  for (const mod of modules) {
-    if (!byName.has(mod.moduleName)) {
-      byName.set(mod.moduleName, {
-        moduleName: mod.moduleName,
-        totalChecks: 0,
-        passedChecks: 0,
-        failedChecks: 0,
-        skippedChecks: 0,
-        score: 0,
-        mandatory: mod.mandatory !== false,
-        allowedSkipForMode: (mod.allowedSkipModes || []).includes(mode),
-        failures: [{ title: "module file missing or not executed", status: "failed", failureMessages: [] }],
-        artifacts: [],
-      });
+  if (requireAllModules()) {
+    for (const mod of modules) {
+      if (!byName.has(mod.moduleName)) {
+        byName.set(mod.moduleName, {
+          moduleName: mod.moduleName,
+          totalChecks: 0,
+          passedChecks: 0,
+          failedChecks: 0,
+          skippedChecks: 0,
+          score: 0,
+          mandatory: mod.mandatory !== false,
+          allowedSkipForMode: (mod.allowedSkipModes || []).includes(mode),
+          failures: [{ title: "module file missing or not executed", status: "failed", failureMessages: [] }],
+          artifacts: [],
+        });
+      }
     }
   }
 

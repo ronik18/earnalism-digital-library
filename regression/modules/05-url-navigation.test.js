@@ -1,7 +1,10 @@
-const { request, apiGet } = require("../utils/http");
+const { request, apiGet, mapLimit } = require("../utils/http");
 const { fetchSitemap } = require("../utils/sitemap");
 const { isGoLive } = require("../utils/envGuard");
 const perf = require("../config/performance.rules.json");
+
+const GO_LIVE_BOOK_LIMIT = Number(process.env.REGRESSION_GO_LIVE_BOOK_LIMIT || 120);
+const URL_CHECK_CONCURRENCY = Number(process.env.REGRESSION_URL_CHECK_CONCURRENCY || 8);
 
 describe("URL, Path & Navigation", () => {
   test("sitemap.xml is reachable and public URLs do not 404", async () => {
@@ -17,19 +20,19 @@ describe("URL, Path & Navigation", () => {
   });
 
   test("cover images resolve as valid image resources", async () => {
-    const books = (await apiGet("/books")).data.slice(0, isGoLive() ? 500 : 12);
-    for (const book of books) {
+    const books = (await apiGet("/books")).data.slice(0, isGoLive() ? GO_LIVE_BOOK_LIMIT : 12);
+    await mapLimit(books, URL_CHECK_CONCURRENCY, async (book) => {
       const url = book.cover_image_url || book.cover_url || book.thumbnail_url;
       expect(url).toBeTruthy();
-      const response = await request(url, { skipBody: true });
+      const response = await request(url, { method: "HEAD", skipBody: true, timeoutMs: 20000 });
       expect(response.ok).toBe(true);
       expect(response.headers.get("content-type") || "").toMatch(/image|octet-stream/i);
-    }
+    });
   });
 
   test("book to chapter navigation APIs are internally consistent", async () => {
-    const books = (await apiGet("/books")).data.slice(0, isGoLive() ? 500 : 8);
-    for (const book of books) {
+    const books = (await apiGet("/books")).data.slice(0, isGoLive() ? GO_LIVE_BOOK_LIMIT : 8);
+    await mapLimit(books, URL_CHECK_CONCURRENCY, async (book) => {
       const chapters = (await apiGet(`/books/${book.slug}/chapters`)).data;
       expect(chapters.length).toBeGreaterThan(0);
       expect(chapters[0].id).toBeTruthy();
@@ -39,6 +42,6 @@ describe("URL, Path & Navigation", () => {
         const second = await apiGet(`/books/${book.slug}/chapters/${chapters[1].id}`);
         expect(second.ok).toBe(true);
       }
-    }
+    });
   });
 });

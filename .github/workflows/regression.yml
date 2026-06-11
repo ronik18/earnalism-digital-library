@@ -52,11 +52,14 @@ jobs:
         if: github.event_name != 'pull_request'
         env:
           REGRESSION_MODE: go-live
-          MONGODB_URL: ${{ secrets.STAGING_MONGODB_URL }}
-          REDIS_URL: ${{ secrets.STAGING_REDIS_URL }}
+          REGRESSION_TARGET: production
+          REGRESSION_ALLOW_PRODUCTION_TARGET: "true"
+          MONGODB_URL: ${{ secrets.STAGING_MONGODB_URL || secrets.MONGODB_URL }}
+          REDIS_URL: ${{ secrets.STAGING_REDIS_URL || secrets.REDIS_URL }}
           JUDOSCALE_URL: ${{ secrets.JUDOSCALE_URL }}
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
           REGRESSION_ENABLE_LOAD_TEST: ${{ vars.REGRESSION_ENABLE_LOAD_TEST || 'false' }}
+          REGRESSION_REQUIRE_INFRA_SECRETS: ${{ vars.REGRESSION_REQUIRE_INFRA_SECRETS || 'false' }}
         run: npm run regression:go-live
 
       - name: Assert GO LIVE pass
