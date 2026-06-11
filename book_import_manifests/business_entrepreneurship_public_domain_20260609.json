@@ -1,0 +1,323 @@
+{
+  "all_or_nothing": true,
+  "books": [
+    {
+      "slug": "the-art-of-money-getting",
+      "title": "The Art of Money Getting",
+      "subtitle": "Golden Rules for Making Money",
+      "author": "P. T. Barnum",
+      "author_death_year": 1891,
+      "original_publication_year": 1880,
+      "source_url": "https://www.gutenberg.org/ebooks/8581",
+      "source_type": "gutenberg",
+      "source_license": "Public domain; commercial use allowed in the United States.",
+      "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
+      "license_notes": "Official catalog record checked on 2026-06-09; source text header and catalog status show no U.S. copyright restriction.",
+      "commercial_use_allowed": true,
+      "requires_attribution": false,
+      "requires_sharealike": false,
+      "category_slug": "business",
+      "availability": "draft",
+      "availability_territory": "US",
+      "is_published": false,
+      "audiobook_enabled": false,
+      "generate_audiobook": false,
+      "audio_status": "pending_tts_generation_no_sync_cues",
+      "short_description": "A clean digital reading edition of P. T. Barnum's business classic.",
+      "description": "A text-only reader edition prepared from a legally cleared public-domain source for business and entrepreneurship readers.",
+      "benefits": [
+        "Read a clean, boilerplate-free business classic.",
+        "Use a focused reader edition without source-file distractions.",
+        "Review practical reflections on earning, thrift, persistence, and enterprise."
+      ],
+      "who_for": [
+        "Business and entrepreneurship readers",
+        "Students of classic enterprise writing",
+        "Readers interested in historical advice on money and work"
+      ],
+      "learnings": [
+        "Classic views on saving, effort, and business judgment.",
+        "Historical language around enterprise and personal discipline.",
+        "A compact public-domain text prepared for web reading."
+      ],
+      "about_author": "P. T. Barnum was an American showman, promoter, and entrepreneur whose writings often turned personal business experience into practical advice.",
+      "formats": [
+        "Ebook"
+      ],
+      "chapter_rules": {
+        "force_single_chapter": true
+      },
+      "text_extraction": {
+        "start_marker": "By P.T. Barnum",
+        "include_start_marker": false
+      },
+      "forbidden_source_terms": [
+        "Project Gutenberg",
+        "Gutenberg",
+        "Project Gutenberg-tm",
+        "Project Gutenberg\u2122",
+        "Gutenberg.org",
+        "PGLAF",
+        "Distributed Proofreaders",
+        "donation",
+        "refund",
+        "license agreement"
+      ]
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "title": "The Science of Getting Rich",
+      "subtitle": "",
+      "author": "W. D. Wattles",
+      "author_death_year": 1911,
+      "original_publication_year": 1910,
+      "source_url": "https://www.gutenberg.org/ebooks/59844",
+      "source_type": "gutenberg",
+      "source_license": "Public domain; commercial use allowed in the United States.",
+      "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
+      "license_notes": "Official catalog record checked on 2026-06-09; source text header and catalog status show no U.S. copyright restriction.",
+      "commercial_use_allowed": true,
+      "requires_attribution": false,
+      "requires_sharealike": false,
+      "category_slug": "business",
+      "availability": "draft",
+      "availability_territory": "US",
+      "is_published": false,
+      "audiobook_enabled": false,
+      "generate_audiobook": false,
+      "audio_status": "pending_tts_generation_no_sync_cues",
+      "short_description": "A clean digital reading edition of W. D. Wattles's 1910 work on prosperity and action.",
+      "description": "A text-only reader edition prepared from a legally cleared public-domain source for business and entrepreneurship readers.",
+      "benefits": [
+        "Read the public-domain text without repository or transcription boilerplate.",
+        "Navigate the original preface and chapter structure.",
+        "Keep the work available in a focused digital reader."
+      ],
+      "who_for": [
+        "Business and entrepreneurship readers",
+        "Readers studying classic prosperity literature",
+        "Students of early twentieth-century self-development writing"
+      ],
+      "learnings": [
+        "Original chapter progression from the 1910 text.",
+        "Historical views on wealth, work, and opportunity.",
+        "A clean web-ready edition for close reading."
+      ],
+      "about_author": "W. D. Wattles was an American writer associated with the New Thought movement and early twentieth-century self-development literature.",
+      "formats": [
+        "Ebook"
+      ],
+      "chapter_rules": {
+        "allow_title_case_headings": true
+      },
+      "text_extraction": {
+        "start_marker": "PREFACE.",
+        "include_start_marker": true,
+        "end_marker": "Transcriber\u2019s Notes:"
+      },
+      "forbidden_source_terms": [
+        "Project Gutenberg",
+        "Gutenberg",
+        "Project Gutenberg-tm",
+        "Project Gutenberg\u2122",
+        "Gutenberg.org",
+        "PGLAF",
+        "Distributed Proofreaders",
+        "Online Distributed Proofreading Team",
+        "donation",
+        "refund",
+        "license agreement"
+      ]
+    },
+    {
+      "slug": "my-life-and-work",
+      "title": "My Life and Work",
+      "subtitle": "",
+      "author": "Henry Ford and Samuel Crowther",
+      "author_death_year": 1947,
+      "original_publication_year": 1922,
+      "source_url": "https://www.gutenberg.org/ebooks/7213",
+      "source_type": "gutenberg",
+      "source_license": "Public domain; commercial use allowed in the United States.",
+      "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
+      "license_notes": "Official catalog record checked on 2026-06-09; source text header and catalog status show no U.S. copyright restriction.",
+      "commercial_use_allowed": true,
+      "requires_attribution": false,
+      "requires_sharealike": false,
+      "category_slug": "business",
+      "availability": "draft",
+      "availability_territory": "US",
+      "is_published": false,
+      "audiobook_enabled": false,
+      "generate_audiobook": false,
+      "audio_status": "pending_tts_generation_no_sync_cues",
+      "short_description": "A clean digital reading edition of Henry Ford and Samuel Crowther's business memoir.",
+      "description": "A text-only reader edition prepared from a legally cleared public-domain source for business and entrepreneurship readers.",
+      "benefits": [
+        "Read a structured edition of a public-domain business memoir.",
+        "Move through the original introduction and chapter sequence.",
+        "Study historical views on production, service, wages, and industry."
+      ],
+      "who_for": [
+        "Business and entrepreneurship readers",
+        "Readers interested in industrial history",
+        "Students of management, manufacturing, and company-building"
+      ],
+      "learnings": [
+        "Historical views on production and service.",
+        "Early twentieth-century thinking on industry and management.",
+        "A source-structured text prepared for web reading."
+      ],
+      "about_author": "Henry Ford was an American industrialist and founder of Ford Motor Company. Samuel Crowther was an American journalist and collaborator on business and industrial books.",
+      "formats": [
+        "Ebook"
+      ],
+      "chapter_rules": {
+        "allow_title_case_headings": true
+      },
+      "text_extraction": {
+        "start_marker": "INTRODUCTION",
+        "include_start_marker": true
+      },
+      "forbidden_source_terms": [
+        "Project Gutenberg",
+        "Gutenberg",
+        "Project Gutenberg-tm",
+        "Project Gutenberg\u2122",
+        "Gutenberg.org",
+        "PGLAF",
+        "Distributed Proofreaders",
+        "DP Team",
+        "donation",
+        "refund",
+        "license agreement"
+      ]
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "title": "Acres of Diamonds",
+      "subtitle": "Our Every-day Opportunities",
+      "author": "Russell H. Conwell",
+      "author_death_year": 1925,
+      "original_publication_year": 1915,
+      "source_url": "https://www.gutenberg.org/ebooks/368",
+      "source_type": "gutenberg",
+      "source_license": "Public domain; commercial use allowed in the United States.",
+      "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
+      "license_notes": "Official catalog record checked on 2026-06-09; source text header and catalog status show no U.S. copyright restriction.",
+      "commercial_use_allowed": true,
+      "requires_attribution": false,
+      "requires_sharealike": false,
+      "category_slug": "business",
+      "availability": "draft",
+      "availability_territory": "US",
+      "is_published": false,
+      "audiobook_enabled": false,
+      "generate_audiobook": false,
+      "audio_status": "pending_tts_generation_no_sync_cues",
+      "short_description": "A clean digital reading edition of Russell H. Conwell's public-domain lecture collection.",
+      "description": "A text-only reader edition prepared from a legally cleared public-domain source for business and entrepreneurship readers.",
+      "benefits": [
+        "Read the public-domain text without source-file boilerplate.",
+        "Navigate the source heading structure where it is reliable.",
+        "Study a classic work on opportunity, enterprise, and public service."
+      ],
+      "who_for": [
+        "Business and entrepreneurship readers",
+        "Readers interested in opportunity and enterprise classics",
+        "Students of public speaking and practical self-culture"
+      ],
+      "learnings": [
+        "Historical reflections on opportunity and enterprise.",
+        "The original lecture and supporting public-domain sections.",
+        "A clean web-ready edition for focused reading."
+      ],
+      "about_author": "Russell H. Conwell was an American minister, lawyer, lecturer, and founder of Temple University.",
+      "formats": [
+        "Ebook"
+      ],
+      "chapter_rules": {
+        "allow_title_case_headings": true
+      },
+      "text_extraction": {
+        "start_marker": "AN APPRECIATION",
+        "include_start_marker": true
+      },
+      "forbidden_source_terms": [
+        "Project Gutenberg",
+        "Gutenberg",
+        "Project Gutenberg-tm",
+        "Project Gutenberg\u2122",
+        "Gutenberg.org",
+        "PGLAF",
+        "Distributed Proofreaders",
+        "donation",
+        "refund",
+        "license agreement"
+      ]
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "title": "The Principles of Scientific Management",
+      "subtitle": "",
+      "author": "Frederick Winslow Taylor",
+      "author_death_year": 1915,
+      "original_publication_year": 1911,
+      "source_url": "https://www.gutenberg.org/ebooks/6435",
+      "source_type": "gutenberg",
+      "source_license": "Public domain; commercial use allowed in the United States.",
+      "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
+      "license_notes": "Official catalog record checked on 2026-06-09; source text header and catalog status show no U.S. copyright restriction.",
+      "commercial_use_allowed": true,
+      "requires_attribution": false,
+      "requires_sharealike": false,
+      "category_slug": "business",
+      "availability": "draft",
+      "availability_territory": "US",
+      "is_published": false,
+      "audiobook_enabled": false,
+      "generate_audiobook": false,
+      "audio_status": "pending_tts_generation_no_sync_cues",
+      "short_description": "A clean digital reading edition of Frederick Winslow Taylor's 1911 management monograph.",
+      "description": "A text-only reader edition prepared from a legally cleared public-domain source for business and entrepreneurship readers.",
+      "benefits": [
+        "Read a structured public-domain management classic.",
+        "Move through the introduction and chapter sequence.",
+        "Study foundational language around efficiency and management."
+      ],
+      "who_for": [
+        "Business and entrepreneurship readers",
+        "Management and operations students",
+        "Readers interested in industrial history"
+      ],
+      "learnings": [
+        "Source-structured sections on scientific management.",
+        "Historical arguments around efficiency and work systems.",
+        "A clean text-only edition prepared for web reading."
+      ],
+      "about_author": "Frederick Winslow Taylor was an American mechanical engineer whose work helped shape early management and industrial engineering practice.",
+      "formats": [
+        "Ebook"
+      ],
+      "chapter_rules": {
+        "allow_title_case_headings": true
+      },
+      "text_extraction": {
+        "start_marker": "INTRODUCTION",
+        "include_start_marker": true
+      },
+      "forbidden_source_terms": [
+        "Project Gutenberg",
+        "Gutenberg",
+        "Project Gutenberg-tm",
+        "Project Gutenberg\u2122",
+        "Gutenberg.org",
+        "PGLAF",
+        "Distributed Proofreaders",
+        "donation",
+        "refund",
+        "license agreement"
+      ]
+    }
+  ]
+}

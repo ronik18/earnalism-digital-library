@@ -25,12 +25,12 @@ import unicodedata
 from collections import OrderedDict, defaultdict, deque
 from datetime import datetime, timezone, timedelta
 from typing import Any, Deque, Dict, List, Optional, Tuple
-from urllib.parse import urlencode, urlparse
+from urllib.parse import unquote, urlencode, urlparse
 from urllib.request import Request as UrlRequest, urlopen
 
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Response, Cookie, UploadFile, File
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.gzip import GZipMiddleware
@@ -180,6 +180,12 @@ RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID", "").strip()
 RAZORPAY_KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET", "").strip()
 RAZORPAY_WEBHOOK_SECRET = os.environ.get("RAZORPAY_WEBHOOK_SECRET", "").strip()
 RAZORPAY_MODE = os.environ.get("RAZORPAY_MODE", "test").strip().lower()
+
+B2_S3_ENDPOINT = (os.environ.get("B2_S3_ENDPOINT") or os.environ.get("B2_ENDPOINT") or "").strip().rstrip("/")
+B2_REGION = os.environ.get("B2_REGION", "").strip()
+B2_BUCKET = (os.environ.get("B2_BUCKET") or os.environ.get("B2_BUCKET_NAME") or "").strip()
+B2_ACCESS_KEY_ID = (os.environ.get("B2_ACCESS_KEY_ID") or os.environ.get("B2_KEY_ID") or "").strip()
+B2_SECRET_ACCESS_KEY = (os.environ.get("B2_SECRET_ACCESS_KEY") or os.environ.get("B2_APP_KEY") or "").strip()
 
 # Dependency-free per-process rate limits. For multi-instance scaling, move this
 # counter to Redis or an edge/WAF layer so limits are shared across replicas.
@@ -677,6 +683,7 @@ BOOK_SUMMARY_PROJECTION = {
     "audiobook_assets_updated_at": 1,
     "audio_asset_slug": 1,
     "audiobook_assets": 1,
+    "audiobook": 1,
     "is_published": 1,
     "created_at": 1,
 }
@@ -791,11 +798,69 @@ def _ttl_with_jitter(ttl_seconds: int) -> int:
     return ttl + secrets.randbelow(jitter + 1)
 
 
+REDIS_CACHE_ALLOWED_PAYLOADS = (
+    "metadata",
+    "reader_manifests",
+    "chapter_text",
+    "short_lived_user_state",
+    "session_state",
+    "payment_state",
+    "rate_limit_state",
+    "reader_rum_aggregates",
+)
+REDIS_CACHE_EXCLUDED_PAYLOADS = (
+    "book_cover_image_binaries",
+    "audiobook_binaries",
+    "video_binaries",
+    "file_upload_streams",
+    "response_objects",
+    "inline_media_data_uris",
+)
+MEDIA_DATA_URI_RE = re.compile(
+    r"data:(?:image|audio|video|application/octet-stream|application/pdf)/",
+    re.IGNORECASE,
+)
+
+
+def _redis_cache_payload_is_media(value: Any, *, _seen: int = 0) -> bool:
+    if _seen > 800:
+        return False
+    if isinstance(value, (bytes, bytearray, memoryview, io.IOBase, Response, UploadFile)):
+        return True
+    if isinstance(value, str):
+        return bool(MEDIA_DATA_URI_RE.search(value))
+    if isinstance(value, dict):
+        for key, nested in value.items():
+            key_text = str(key).lower()
+            if isinstance(nested, (bytes, bytearray, memoryview, io.IOBase)):
+                return True
+            if (
+                isinstance(nested, str)
+                and key_text in {"body", "blob", "bytes", "binary", "file", "stream", "content"}
+                and MEDIA_DATA_URI_RE.search(nested)
+            ):
+                return True
+            if _redis_cache_payload_is_media(nested, _seen=_seen + 1):
+                return True
+        return False
+    if isinstance(value, (list, tuple, set)):
+        return any(_redis_cache_payload_is_media(item, _seen=_seen + 1) for item in value)
+    return False
+
+
 def _cache_payload_encode(value: Any) -> bytes:
     blob = pickle.dumps(value, protocol=pickle.HIGHEST_PROTOCOL)
     if len(blob) >= REDIS_CACHE_COMPRESS_MIN_BYTES:
         return b"z:" + zlib.compress(blob, level=6)
     return b"p:" + blob
+
+
+def _cache_payload_encode_for_redis(namespace: str, value: Any) -> Optional[bytes]:
+    if _redis_cache_payload_is_media(value):
+        _cache_stats[f"{namespace}_media_skip"] += 1
+        logger.info("Redis cache skipped media/binary payload for namespace=%s", namespace)
+        return None
+    return _cache_payload_encode(value)
 
 
 def _cache_payload_decode(blob: bytes) -> Any:
@@ -841,7 +906,10 @@ async def _redis_cache_set(namespace: str, key: str, value: Any, ttl_seconds: in
         return
     redis_key = _cache_digest_key(namespace, key)
     try:
-        await _redis_client.setex(redis_key, _ttl_with_jitter(ttl_seconds), _cache_payload_encode(value))
+        payload = _cache_payload_encode_for_redis(namespace, value)
+        if payload is None:
+            return
+        await _redis_client.setex(redis_key, _ttl_with_jitter(ttl_seconds), payload)
     except Exception:
         logger.warning("Redis cache set failed for namespace=%s", namespace, exc_info=True)
         _cache_stats[f"{namespace}_error"] += 1
@@ -917,7 +985,13 @@ async def _public_cache_set(key: str, value) -> None:
         return
     if _redis_state_enabled():
         redis_key = _public_cache_storage_key(await _public_cache_generation_value(), key)
-        await _redis_client.setex(redis_key, _ttl_with_jitter(PUBLIC_CACHE_TTL_SECONDS), _cache_payload_encode(value))
+        payload = _cache_payload_encode_for_redis("public-cache", value)
+        if payload is None:
+            return
+        await _redis_client.setex(redis_key, _ttl_with_jitter(PUBLIC_CACHE_TTL_SECONDS), payload)
+        return
+    if _redis_cache_payload_is_media(value):
+        _cache_stats["public-cache_media_skip"] += 1
         return
     _public_cache[key] = (time.monotonic() + PUBLIC_CACHE_TTL_SECONDS, value)
     _public_cache.move_to_end(key)
@@ -976,7 +1050,10 @@ async def _cache_user_doc(user: Optional[dict]) -> None:
         return
     doc = {k: v for k, v in dict(user).items() if k not in {"_id", "password_hash"}}
     try:
-        await _redis_client.setex(_user_cache_key(doc["id"]), _ttl_with_jitter(USER_AUTH_CACHE_TTL_SECONDS), _cache_payload_encode(doc))
+        payload = _cache_payload_encode_for_redis("user_doc", doc)
+        if payload is None:
+            return
+        await _redis_client.setex(_user_cache_key(doc["id"]), _ttl_with_jitter(USER_AUTH_CACHE_TTL_SECONDS), payload)
     except Exception:
         logger.warning("Redis user cache set failed", exc_info=True)
         _cache_stats["user_doc_error"] += 1
@@ -1005,7 +1082,10 @@ async def _cache_user_session(session: Optional[dict]) -> None:
         return
     doc = {k: v for k, v in dict(session).items() if k != "_id"}
     try:
-        await _redis_client.setex(_user_session_cache_key(doc["id"]), _ttl_with_jitter(USER_SESSION_CACHE_TTL_SECONDS), _cache_payload_encode(doc))
+        payload = _cache_payload_encode_for_redis("user_session", doc)
+        if payload is None:
+            return
+        await _redis_client.setex(_user_session_cache_key(doc["id"]), _ttl_with_jitter(USER_SESSION_CACHE_TTL_SECONDS), payload)
     except Exception:
         logger.warning("Redis user session cache set failed", exc_info=True)
         _cache_stats["user_session_error"] += 1
@@ -1130,12 +1210,64 @@ def _reader_word_count(text: str) -> int:
     return len(re.findall(r"\b[\w\u0980-\u09FF'-]+\b", text or ""))
 
 
+def _book_audiobook_doc(book: dict) -> dict:
+    value = book.get("audiobook")
+    return value if isinstance(value, dict) else {}
+
+
+def _book_audiobook_provider(book: dict) -> str:
+    nested = _book_audiobook_doc(book)
+    return str(nested.get("provider") or book.get("audiobook_provider") or "").strip().lower()
+
+
+def _book_audiobook_url(book: dict) -> str:
+    nested = _book_audiobook_doc(book)
+    assets = book.get("audiobook_assets") if isinstance(book.get("audiobook_assets"), dict) else {}
+    return str(nested.get("url") or assets.get("mp3") or "").strip()
+
+
+def _book_audiobook_asset_url(book: dict, key: str) -> str:
+    nested = _book_audiobook_doc(book)
+    nested_assets = nested.get("assets") if isinstance(nested.get("assets"), dict) else {}
+    assets = book.get("audiobook_assets") if isinstance(book.get("audiobook_assets"), dict) else {}
+    if key == "mp3":
+        return str(nested.get("url") or nested_assets.get(key) or assets.get(key) or "").strip()
+    return str(nested_assets.get(key) or assets.get(key) or "").strip()
+
+
+def _audio_asset_looks_like_b2(url: str) -> bool:
+    if not url:
+        return False
+    parsed = urlparse(url)
+    endpoint_host = urlparse(B2_S3_ENDPOINT or "").netloc
+    path_parts = [unquote(part) for part in parsed.path.split("/") if part]
+    return bool(
+        parsed.scheme in {"http", "https"}
+        and (
+            (endpoint_host and parsed.netloc == endpoint_host and path_parts and path_parts[0] == B2_BUCKET)
+            or (B2_BUCKET and parsed.netloc.startswith(f"{B2_BUCKET}."))
+            or "backblazeb2.com" in parsed.netloc
+        )
+    )
+
+
+def _reader_audio_asset_url(book: dict, slug: str, key: str, url: str) -> str:
+    if _audio_asset_looks_like_b2(url):
+        if key == "mp3":
+            return f"/api/reader/book/{slug}/audiobook"
+        return f"/api/reader/book/{slug}/audiobook/{key}"
+    return url
+
+
 def _reader_manifest_audio(book: dict, slug: str) -> dict:
+    raw_assets = book.get("audiobook_assets") if isinstance(book.get("audiobook_assets"), dict) else {}
     assets = {
-        str(key): str(value)
-        for key, value in (book.get("audiobook_assets") or {}).items()
+        str(key): _reader_audio_asset_url(book, slug, str(key), str(value))
+        for key, value in raw_assets.items()
         if value
     }
+    nested = _book_audiobook_doc(book)
+    provider = _book_audiobook_provider(book)
     audio_slug = slugify(book.get("audio_asset_slug") or slug, fallback=slug)
     enabled = bool(
         book.get("audiobook_enabled")
@@ -1146,17 +1278,21 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
     version = _stable_digest({
         "enabled": enabled,
         "audio_slug": audio_slug,
-        "provider": book.get("audiobook_provider", ""),
+        "provider": provider,
         "voice": book.get("audiobook_voice", ""),
         "assets": assets,
+        "audiobook": nested,
         "updated_at": book.get("audiobook_assets_updated_at", ""),
     })
     return {
         "enabled": enabled,
         "asset_slug": audio_slug,
-        "provider": book.get("audiobook_provider", ""),
+        "provider": provider,
         "voice": book.get("audiobook_voice", ""),
         "assets": assets,
+        "url": _reader_audio_asset_url(book, slug, "mp3", _book_audiobook_url(book)),
+        "size": int(nested.get("size", 0) or 0),
+        "duration_ms": int(nested.get("duration_ms", nested.get("duration", 0)) or 0),
         "version": version,
         "updated_at": book.get("audiobook_assets_updated_at", ""),
     }
@@ -1909,6 +2045,7 @@ class Book(BaseModel):
     audiobook_assets_updated_at: str = ""
     audio_asset_slug: str = ""
     audiobook_assets: Dict[str, str] = Field(default_factory=dict)
+    audiobook: Dict[str, Any] = Field(default_factory=dict)
     is_published: bool = True
     created_at: str = Field(default_factory=now_iso)
 
@@ -1944,6 +2081,8 @@ class BookAudiobookIn(BaseModel):
     audiobook_voice: str = ""
     audio_asset_slug: str = ""
     audiobook_assets: Dict[str, str] = Field(default_factory=dict)
+    audiobook_size: int = 0
+    audiobook_duration_ms: int = 0
 
 
 ALLOWED_AUDIO_ASSET_KEYS = {"mp3", "timestamps", "vtt", "chapters", "meta", "manifest"}
@@ -3682,13 +3821,25 @@ async def admin_update_book_audiobook(slug: str, payload: BookAudiobookIn, _=Dep
     if not existing:
         raise HTTPException(status_code=404, detail="Book not found")
 
+    provider = normalize_text(payload.audiobook_provider).strip()[:80].lower()
+    assets = _safe_audiobook_assets(payload.audiobook_assets)
+    audiobook_doc = {
+        **(_book_audiobook_doc(existing)),
+        "url": assets.get("mp3", ""),
+        "provider": provider,
+        "size": max(0, int(payload.audiobook_size or 0)),
+        "duration_ms": max(0, int(payload.audiobook_duration_ms or 0)),
+        "assets": assets,
+        "updated_at": now_iso(),
+    }
     update = {
         "audiobook_enabled": bool(payload.audiobook_enabled),
         "generate_audiobook": bool(payload.generate_audiobook),
-        "audiobook_provider": normalize_text(payload.audiobook_provider).strip()[:80],
+        "audiobook_provider": provider,
         "audiobook_voice": normalize_text(payload.audiobook_voice).strip()[:120],
         "audio_asset_slug": slugify(payload.audio_asset_slug or slug, fallback=slug),
-        "audiobook_assets": _safe_audiobook_assets(payload.audiobook_assets),
+        "audiobook_assets": assets,
+        "audiobook": audiobook_doc,
         "audiobook_assets_updated_at": now_iso(),
     }
     await db.books.update_one({"slug": slug}, {"$set": update})
@@ -4558,6 +4709,205 @@ async def reader_book_manifest(
     else:
         response.headers["Cache-Control"] = "private, max-age=20, stale-while-revalidate=60"
     return payload
+
+
+_b2_s3_client: Any = None
+
+
+def _b2_is_configured() -> bool:
+    return bool(B2_S3_ENDPOINT and B2_REGION and B2_BUCKET and B2_ACCESS_KEY_ID and B2_SECRET_ACCESS_KEY)
+
+
+def _b2_client():
+    global _b2_s3_client
+    if _b2_s3_client is not None:
+        return _b2_s3_client
+    if not _b2_is_configured():
+        raise HTTPException(status_code=503, detail="B2 audiobook storage is not configured")
+    try:
+        import boto3  # type: ignore
+        from botocore.config import Config  # type: ignore
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail=f"B2 client unavailable: {exc}")
+    _b2_s3_client = boto3.client(
+        "s3",
+        endpoint_url=B2_S3_ENDPOINT,
+        region_name=B2_REGION,
+        aws_access_key_id=B2_ACCESS_KEY_ID,
+        aws_secret_access_key=B2_SECRET_ACCESS_KEY,
+        config=Config(s3={"addressing_style": "path"}),
+    )
+    return _b2_s3_client
+
+
+def _b2_key_from_url(url: str) -> str:
+    parsed = urlparse(url or "")
+    path_parts = [unquote(part) for part in parsed.path.split("/") if part]
+    if not path_parts:
+        return ""
+    if parsed.netloc.startswith(f"{B2_BUCKET}."):
+        return "/".join(path_parts)
+    if path_parts[0] == B2_BUCKET:
+        return "/".join(path_parts[1:])
+    return "/".join(path_parts)
+
+
+def _parse_byte_range(range_header: str, total_size: int) -> Tuple[Optional[str], int]:
+    value = (range_header or "").strip()
+    if not value:
+        return None, 200
+    match = re.match(r"^bytes=(\d*)-(\d*)$", value)
+    if not match:
+        return None, 416
+    start_raw, end_raw = match.groups()
+    if not start_raw and not end_raw:
+        return None, 416
+    if start_raw:
+        start = int(start_raw)
+        end = int(end_raw) if end_raw else total_size - 1
+    else:
+        suffix = int(end_raw)
+        if suffix <= 0:
+            return None, 416
+        start = max(0, total_size - suffix)
+        end = total_size - 1
+    if start < 0 or end < start or start >= total_size:
+        return None, 416
+    end = min(end, total_size - 1)
+    return f"bytes={start}-{end}", 206
+
+
+def _content_range_header(byte_range: str, total_size: int) -> str:
+    match = re.match(r"^bytes=(\d+)-(\d+)$", byte_range or "")
+    if not match:
+        return f"bytes */{total_size}"
+    return f"bytes {match.group(1)}-{match.group(2)}/{total_size}"
+
+
+def _range_content_length(byte_range: str, total_size: int) -> int:
+    match = re.match(r"^bytes=(\d+)-(\d+)$", byte_range or "")
+    if not match:
+        return total_size
+    return max(0, int(match.group(2)) - int(match.group(1)) + 1)
+
+
+def _streaming_body_iterator(body):
+    try:
+        while True:
+            chunk = body.read(1024 * 1024)
+            if not chunk:
+                break
+            yield chunk
+    finally:
+        close = getattr(body, "close", None)
+        if callable(close):
+            close()
+
+
+def _audio_asset_content_type(asset_key: str, fallback: str = "") -> str:
+    if fallback:
+        return fallback
+    return {
+        "mp3": "audio/mpeg",
+        "timestamps": "application/json",
+        "vtt": "text/vtt",
+        "chapters": "application/json",
+        "meta": "application/json",
+        "manifest": "application/json",
+    }.get(asset_key, "application/octet-stream")
+
+
+async def _reader_book_audiobook_asset(
+    slug: str,
+    asset_key: str,
+    request: Request,
+):
+    normalized_key = str(asset_key or "mp3").strip().lower()
+    if normalized_key not in ALLOWED_AUDIO_ASSET_KEYS:
+        raise HTTPException(status_code=404, detail="Audiobook asset not found")
+    book = await db.books.find_one(
+        {"slug": slug, "is_published": True},
+        {"_id": 0, "audiobook": 1, "audiobook_assets": 1, "audiobook_provider": 1},
+    )
+    if not book:
+        raise HTTPException(status_code=404, detail="Book not found")
+    asset_url = _book_audiobook_asset_url(book, normalized_key)
+    if not _audio_asset_looks_like_b2(asset_url):
+        if asset_url:
+            return RedirectResponse(asset_url, status_code=307)
+        raise HTTPException(status_code=404, detail="Audiobook asset not found")
+    key = _b2_key_from_url(asset_url)
+    if not key:
+        raise HTTPException(status_code=404, detail="B2 audiobook asset key not found")
+
+    s3 = _b2_client()
+    try:
+        head = s3.head_object(Bucket=B2_BUCKET, Key=key)
+    except Exception as exc:
+        logger.warning("B2 audiobook asset head failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
+        raise HTTPException(status_code=404, detail="Audiobook asset object not found")
+
+    total_size = int(head.get("ContentLength") or 0)
+    content_type = _audio_asset_content_type(normalized_key, head.get("ContentType") or "")
+    byte_range, status_code = _parse_byte_range(request.headers.get("range", ""), total_size)
+    base_headers = {
+        "Accept-Ranges": "bytes",
+        "Content-Type": content_type,
+        "Cache-Control": "private, max-age=60",
+    }
+    if status_code == 416:
+        return Response(status_code=416, headers={**base_headers, "Content-Range": f"bytes */{total_size}"})
+
+    if request.method == "HEAD":
+        headers = {
+            **base_headers,
+            "Content-Length": str(_range_content_length(byte_range, total_size) if byte_range else total_size),
+        }
+        if status_code == 206 and byte_range:
+            headers["Content-Range"] = _content_range_header(byte_range, total_size)
+        return Response(status_code=status_code, headers=headers)
+
+    get_kwargs = {"Bucket": B2_BUCKET, "Key": key}
+    if byte_range:
+        get_kwargs["Range"] = byte_range
+    try:
+        obj = s3.get_object(**get_kwargs)
+    except Exception as exc:
+        logger.warning("B2 audiobook asset get failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
+        raise HTTPException(status_code=502, detail="Audiobook asset storage unavailable")
+
+    content_length = int(obj.get("ContentLength") or total_size)
+    headers = {
+        **base_headers,
+        "Content-Length": str(content_length),
+    }
+    if status_code == 206:
+        headers["Content-Range"] = obj.get("ContentRange") or _content_range_header(byte_range, total_size)
+    return StreamingResponse(
+        _streaming_body_iterator(obj["Body"]),
+        status_code=status_code,
+        media_type=content_type,
+        headers=headers,
+    )
+
+
+@api.api_route("/reader/book/{slug}/audiobook", methods=["GET", "HEAD"])
+async def reader_book_audiobook(
+    slug: str,
+    request: Request,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    return await _reader_book_audiobook_asset(slug, "mp3", request)
+
+
+@api.api_route("/reader/book/{slug}/audiobook/{asset_key}", methods=["GET", "HEAD"])
+async def reader_book_audiobook_sidecar(
+    slug: str,
+    asset_key: str,
+    request: Request,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    return await _reader_book_audiobook_asset(slug, asset_key, request)
 
 
 @api.post("/reader/metrics")
@@ -5689,6 +6039,15 @@ async def admin_cache_status(_=Depends(require_admin)):
             "aggregate_ttl_seconds": READER_RUM_AGGREGATE_TTL_SECONDS,
         },
         "stats": dict(_cache_stats),
+        "policy": {
+            "allowed_payloads": REDIS_CACHE_ALLOWED_PAYLOADS,
+            "excluded_payloads": REDIS_CACHE_EXCLUDED_PAYLOADS,
+            "media_binary_guard_enabled": True,
+            "media_binary_note": (
+                "Redis stores metadata, reader manifests, chapter text and short-lived state only. "
+                "Book-cover images and audiobook binaries stay on Cloudinary/CDN/browser caches."
+            ),
+        },
         "redis": {
             "dbsize": dbsize,
             "memory": memory,

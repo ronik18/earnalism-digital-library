@@ -106,21 +106,21 @@ export default function Header() {
             <Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Start Reading</Link>
 
             {activeSocials.length > 0 && (
-              <div className="mt-7 pt-5 border-t border-brand-soft flex items-center justify-center gap-5" data-testid="mobile-socials">
+              <nav className="mt-7 pt-5 border-t border-brand-soft flex items-center justify-center gap-4" aria-label="Earnalism social links" data-testid="mobile-socials">
                 {activeSocials.map(({ key, label, Icon }) => (
                   <a
                     key={key}
                     href={social[key]}
                     target="_blank"
-                    rel="noreferrer"
-                    aria-label={label}
-                    className="text-charcoal-soft hover:text-burgundy transition-colors p-2"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit Earnalism on ${label}`}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-soft text-charcoal-soft transition-colors duration-300 hover:border-gold hover:text-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
                     data-testid={`mobile-social-${key}`}
                   >
-                    <Icon size={18} strokeWidth={1.5} />
+                    <Icon size={17} strokeWidth={1.5} aria-hidden="true" />
                   </a>
                 ))}
-              </div>
+              </nav>
             )}
           </div>
         </div>

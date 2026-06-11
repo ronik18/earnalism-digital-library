@@ -1,0 +1,157 @@
+name: GO LIVE regression gate
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+      - production-deploy
+      - release/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: go-live-regression-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  regression:
+    name: regression gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      REGRESSION_FRONTEND_URL: ${{ vars.STAGING_FRONTEND_URL || vars.FRONTEND_URL || 'https://theearnalism.com' }}
+      REGRESSION_API_URL: ${{ vars.STAGING_API_URL || vars.API_URL || 'https://api.theearnalism.com' }}
+      NODE_ENV: ci
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run PR regression
+        if: github.event_name == 'pull_request'
+        run: npm run regression:ci
+
+      - name: Run GO LIVE regression
+        if: github.event_name != 'pull_request'
+        env:
+          REGRESSION_MODE: go-live
+          MONGODB_URL: ${{ secrets.STAGING_MONGODB_URL }}
+          REDIS_URL: ${{ secrets.STAGING_REDIS_URL }}
+          JUDOSCALE_URL: ${{ secrets.JUDOSCALE_URL }}
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          REGRESSION_ENABLE_LOAD_TEST: ${{ vars.REGRESSION_ENABLE_LOAD_TEST || 'false' }}
+        run: npm run regression:go-live
+
+      - name: Assert GO LIVE pass
+        if: github.event_name != 'pull_request'
+        run: node regression/scripts/assert-go-live-pass.js
+
+      - name: Upload regression artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-artifacts
+          path: |
+            regression/results.json
+            regression/artifacts/**
+
+      - name: PR summary comment
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const raw = JSON.parse(fs.readFileSync('regression/results.json', 'utf8'));
+            const report = raw.regression || raw;
+            const body = [
+              '### Regression module scores',
+              '',
+              ...report.modules.map((m) => `- ${m.score === 100 ? 'PASS' : 'FAIL'} ${m.score}: ${m.moduleName}`),
+            ].join('\n');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body,
+            });
+
+  deploy:
+    name: Railway deploy after GO LIVE pass
+    needs: regression
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    outputs:
+      deployed: ${{ steps.deploy-check.outputs.enabled }}
+    env:
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      RAILWAY_SERVICE_ID: ${{ secrets.RAILWAY_SERVICE_ID }}
+    steps:
+      - name: Check Railway deploy secrets
+        id: deploy-check
+        shell: bash
+        run: |
+          if [[ -n "${RAILWAY_TOKEN}" && -n "${RAILWAY_SERVICE_ID}" ]]; then
+            echo "enabled=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "enabled=false" >> "${GITHUB_OUTPUT}"
+            echo "Railway deploy skipped: RAILWAY_TOKEN or RAILWAY_SERVICE_ID is missing."
+          fi
+
+      - name: Checkout
+        if: steps.deploy-check.outputs.enabled == 'true'
+        uses: actions/checkout@v4
+
+      - name: Install Railway CLI
+        if: steps.deploy-check.outputs.enabled == 'true'
+        run: npm install -g @railway/cli
+
+      - name: Deploy backend
+        if: steps.deploy-check.outputs.enabled == 'true'
+        run: railway up --service "${RAILWAY_SERVICE_ID}"
+
+  canary:
+    name: production canary
+    needs: deploy
+    if: always() && needs.deploy.result == 'success' && needs.deploy.outputs.deployed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      REGRESSION_MODE: canary
+      REGRESSION_FRONTEND_URL: ${{ vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}
+      REGRESSION_API_URL: ${{ vars.PRODUCTION_API_URL || 'https://api.theearnalism.com' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - name: Install root dependencies
+        run: npm ci
+      - name: Run canary
+        run: npm run regression:canary
+      - name: Upload canary artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canary-regression-artifacts
+          path: regression/results.json

@@ -1,0 +1,111 @@
+{
+  "name": "missing_published_audiobooks_20260609",
+  "local_only": true,
+  "books": [
+    {
+      "category": "business",
+      "slug": "acres-of-diamonds",
+      "title": "Acres of Diamonds",
+      "author": "Russell H. Conwell",
+      "language": "en"
+    },
+    {
+      "category": "business",
+      "slug": "my-life-and-work",
+      "title": "My Life and Work",
+      "author": "Henry Ford and Samuel Crowther",
+      "language": "en"
+    },
+    {
+      "category": "business",
+      "slug": "the-art-of-money-getting",
+      "title": "The Art of Money Getting",
+      "author": "P. T. Barnum",
+      "language": "en"
+    },
+    {
+      "category": "business",
+      "slug": "the-principles-of-scientific-management",
+      "title": "The Principles of Scientific Management",
+      "author": "Frederick Winslow Taylor",
+      "language": "en"
+    },
+    {
+      "category": "business",
+      "slug": "the-science-of-getting-rich",
+      "title": "The Science of Getting Rich",
+      "author": "W. D. Wattles",
+      "language": "en"
+    },
+    {
+      "category": "gothic-fiction",
+      "slug": "dracula",
+      "title": "Dracula",
+      "author": "Bram Stoker",
+      "language": "en"
+    },
+    {
+      "category": "gothic-fiction",
+      "slug": "frankenstein",
+      "title": "Frankenstein",
+      "author": "Mary Wollstonecraft Shelley",
+      "language": "en"
+    },
+    {
+      "category": "gothic-fiction",
+      "slug": "bn-070",
+      "title": "কপালকুণ্ডলা",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "language": "bn"
+    },
+    {
+      "category": "history-strategy",
+      "slug": "bn-058",
+      "title": "দেবী চৌধুরাণী",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "language": "bn"
+    },
+    {
+      "category": "literary-fiction",
+      "slug": "great-expectations",
+      "title": "Great Expectations",
+      "author": "Charles Dickens",
+      "language": "en"
+    },
+    {
+      "category": "literary-fiction",
+      "slug": "pride-and-prejudice",
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "language": "en"
+    },
+    {
+      "category": "literary-fiction",
+      "slug": "the-picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "author": "Oscar Wilde",
+      "language": "en"
+    },
+    {
+      "category": "literary-fiction",
+      "slug": "bn-059",
+      "title": "কমলাকান্তের দপ্তর",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "language": "bn"
+    },
+    {
+      "category": "literary-fiction",
+      "slug": "bn-035",
+      "title": "বড়দিদি",
+      "author": "শরৎচন্দ্র চট্টোপাধ্যায়",
+      "language": "bn"
+    },
+    {
+      "category": "young-readers",
+      "slug": "the-secret-garden",
+      "title": "The Secret Garden",
+      "author": "Frances Hodgson Burnett",
+      "language": "en"
+    }
+  ]
+}

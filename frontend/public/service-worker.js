@@ -1,6 +1,6 @@
-const CACHE_VERSION = "earnalism-v1";
+const CACHE_VERSION = "earnalism-v2";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
-const APP_SHELL = ["/", "/index.html", "/favicon.png", "/apple-touch-icon.png"];
+const APP_SHELL = ["/", "/index.html", "/favicon.png?v=20260610-transparent", "/apple-touch-icon.png?v=20260610-transparent"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

@@ -45,21 +45,21 @@ export default function Footer() {
             <Mail size={16} /> hello@theearnalism.com
           </a>
           {activeSocials.length > 0 && (
-            <div className="flex gap-3 mt-5 text-charcoal-soft" data-testid="footer-socials">
+            <nav className="flex gap-3 mt-5 text-charcoal-soft" aria-label="Earnalism social links" data-testid="footer-socials">
               {activeSocials.map(({ key, label, Icon }) => (
                 <a
                   key={key}
                   href={social[key]}
                   target="_blank"
-                  rel="noreferrer"
-                  aria-label={label}
-                  className="hover:text-burgundy transition-colors"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit Earnalism on ${label}`}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-brand-soft text-charcoal-soft transition-colors duration-300 hover:border-gold hover:text-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
                   data-testid={`footer-social-${key}`}
                 >
-                  <Icon size={18} />
+                  <Icon size={17} strokeWidth={1.5} aria-hidden="true" />
                 </a>
               ))}
-            </div>
+            </nav>
           )}
         </div>
       </div>

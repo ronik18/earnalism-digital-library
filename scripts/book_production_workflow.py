@@ -75,6 +75,8 @@ RIGHTS_METADATA_FIELDS = {
     "attribution_required",
     "copyright_owner",
     "license_notes",
+    "availability_territory",
+    "audio_status",
 }
 
 

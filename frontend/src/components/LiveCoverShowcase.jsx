@@ -8,6 +8,10 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
   const trackRef = useRef(null);
   const rafRef = useRef(0);
   const setWidthRef = useRef(0);
+  const itemCountRef = useRef(0);
+  const activeCountRef = useRef(0);
+  const initializedRef = useRef(false);
+  const pausedRef = useRef(false);
   const hoverRef = useRef(false);
   const draggingRef = useRef(false);
   const hasDraggedRef = useRef(false);
@@ -39,32 +43,75 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
     () => (liveBooks.length > 0 ? [...liveBooks, ...liveBooks, ...liveBooks] : []),
     [liveBooks],
   );
+  activeCountRef.current = liveBooks.length;
+  const hasLiveBooks = liveBooks.length > 0;
   const visibleTotal = Number(totalBooks) > liveBooks.length ? Number(totalBooks) : liveBooks.length;
-  const measureSetWidth = useCallback(() => {
-    const marquee = marqueeRef.current;
-    if (!marquee || liveBooks.length === 0) return 0;
-    const oneSetWidth = marquee.scrollWidth / 3;
-    setWidthRef.current = oneSetWidth;
-    return oneSetWidth;
-  }, [liveBooks.length]);
 
-  const resetToMiddleIfNeeded = useCallback((adjustDragAnchor = false) => {
-    const marquee = marqueeRef.current;
-    const oneSetWidth = setWidthRef.current || measureSetWidth();
-    if (!marquee || !oneSetWidth) return;
+  useEffect(() => {
+    pausedRef.current = isPaused;
+  }, [isPaused]);
 
-    let nextScrollLeft = marquee.scrollLeft;
-    let anchorAdjustment = 0;
+  const getSetWidth = useCallback(() => {
+    const track = trackRef.current;
+    if (!track || activeCountRef.current === 0) return 0;
+    return track.scrollWidth / 3;
+  }, []);
+
+  const offsetWithinSet = useCallback((scrollLeft, oneSetWidth) => {
+    if (!oneSetWidth) return 0;
+    const offset = scrollLeft % oneSetWidth;
+    return offset < 0 ? offset + oneSetWidth : offset;
+  }, []);
+
+  const normalizeToMiddleSet = useCallback((scrollLeft, oneSetWidth) => {
+    if (!oneSetWidth) return scrollLeft;
+    let nextScrollLeft = scrollLeft;
 
     while (nextScrollLeft >= oneSetWidth * 2) {
       nextScrollLeft -= oneSetWidth;
-      anchorAdjustment -= oneSetWidth;
     }
 
-    while (nextScrollLeft <= 0) {
+    while (nextScrollLeft < oneSetWidth) {
       nextScrollLeft += oneSetWidth;
-      anchorAdjustment += oneSetWidth;
     }
+
+    return nextScrollLeft;
+  }, []);
+
+  const syncRailPosition = useCallback(() => {
+    const marquee = marqueeRef.current;
+    const nextSetWidth = getSetWidth();
+    const nextCount = activeCountRef.current;
+    if (!marquee || !nextSetWidth || nextCount === 0) return;
+
+    const previousSetWidth = setWidthRef.current;
+    const previousCount = itemCountRef.current;
+
+    if (!initializedRef.current || !previousSetWidth || previousCount === 0) {
+      marquee.scrollLeft = nextSetWidth;
+      initializedRef.current = true;
+    } else {
+      const previousOffset = offsetWithinSet(marquee.scrollLeft, previousSetWidth);
+      const preserveRatio = previousCount === nextCount && previousSetWidth !== nextSetWidth;
+      const nextOffset = preserveRatio
+        ? previousOffset * (nextSetWidth / previousSetWidth)
+        : previousOffset;
+      marquee.scrollLeft = normalizeToMiddleSet(nextSetWidth + Math.min(nextOffset, nextSetWidth - 1), nextSetWidth);
+    }
+
+    setWidthRef.current = nextSetWidth;
+    itemCountRef.current = nextCount;
+  }, [getSetWidth, normalizeToMiddleSet, offsetWithinSet]);
+
+  const resetToMiddleIfNeeded = useCallback((adjustDragAnchor = false) => {
+    const marquee = marqueeRef.current;
+    const oneSetWidth = setWidthRef.current || getSetWidth();
+    if (!marquee || !oneSetWidth) return;
+
+    const nextScrollLeft = normalizeToMiddleSet(marquee.scrollLeft, oneSetWidth);
+    let anchorAdjustment = 0;
+
+    anchorAdjustment = nextScrollLeft - marquee.scrollLeft;
 
     if (nextScrollLeft !== marquee.scrollLeft) {
       marquee.scrollLeft = nextScrollLeft;
@@ -72,40 +119,38 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
         dragStartScrollRef.current += anchorAdjustment;
       }
     }
-  }, [measureSetWidth]);
+  }, [getSetWidth, normalizeToMiddleSet]);
 
   useLayoutEffect(() => {
     const marquee = marqueeRef.current;
-    if (!marquee || liveBooks.length === 0) return undefined;
+    if (!marquee || liveBooks.length === 0) {
+      initializedRef.current = false;
+      setWidthRef.current = 0;
+      itemCountRef.current = 0;
+      return undefined;
+    }
 
-    let frame = 0;
-    const centerRail = () => {
-      const oneSetWidth = measureSetWidth();
-      if (oneSetWidth) {
-        marquee.scrollLeft = oneSetWidth;
-      }
-    };
-
-    frame = window.requestAnimationFrame(centerRail);
+    syncRailPosition();
+    const frame = window.requestAnimationFrame(syncRailPosition);
     const observer = typeof ResizeObserver !== "undefined"
-      ? new ResizeObserver(centerRail)
+      ? new ResizeObserver(syncRailPosition)
       : null;
     if (observer) {
       observer.observe(marquee);
       if (trackRef.current) observer.observe(trackRef.current);
     }
-    window.addEventListener("resize", centerRail);
+    window.addEventListener("resize", syncRailPosition);
 
     return () => {
       window.cancelAnimationFrame(frame);
-      window.removeEventListener("resize", centerRail);
+      window.removeEventListener("resize", syncRailPosition);
       if (observer) observer.disconnect();
     };
-  }, [liveBooks.length, measureSetWidth]);
+  }, [liveBooks.length, syncRailPosition]);
 
   useEffect(() => {
     const marquee = marqueeRef.current;
-    if (!marquee || liveBooks.length === 0) return undefined;
+    if (!marquee || !hasLiveBooks) return undefined;
 
     const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
     let lastTimestamp = 0;
@@ -115,7 +160,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
       const elapsed = timestamp - lastTimestamp;
       lastTimestamp = timestamp;
 
-      if (!prefersReducedMotion && !isPaused && !draggingRef.current) {
+      if (!prefersReducedMotion && !pausedRef.current && !draggingRef.current) {
         resetToMiddleIfNeeded();
         marquee.scrollLeft += elapsed / 16;
         resetToMiddleIfNeeded();
@@ -128,7 +173,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
     return () => {
       window.cancelAnimationFrame(rafRef.current);
     };
-  }, [isPaused, liveBooks.length, resetToMiddleIfNeeded]);
+  }, [hasLiveBooks, resetToMiddleIfNeeded]);
 
   const pauseRail = useCallback(() => setIsPaused(true), []);
 
@@ -276,7 +321,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
             const isInteractiveCopy = copyIndex === 1;
             return (
               <article
-                key={`${book.slug}-${index}`}
+                key={`${copyIndex}-${book.slug}`}
                 className="live-cover-card"
                 aria-hidden={isInteractiveCopy ? undefined : "true"}
                 data-testid={isInteractiveCopy ? `live-cover-card-${book.slug}` : undefined}

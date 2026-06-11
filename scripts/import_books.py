@@ -109,6 +109,10 @@ LETTER_RE = re.compile(rf"^\s*letter\s+({ROMAN}|\d+|{NUMBER_WORDS})\b[\s:.\-—]
 ROMAN_TITLE_RE = re.compile(rf"^\s*({ROMAN})\.\s+(.{{2,100}})$", re.IGNORECASE)
 ROMAN_HEADING_RE = re.compile(rf"^\s*{ROMAN}\.?\s*$", re.IGNORECASE)
 NUMERIC_HEADING_RE = re.compile(r"^\s*\d{1,3}\.?\s*$")
+FRONT_MATTER_HEADING_RE = re.compile(
+    r"^\s*(preface|introduction|foreword|an appreciation|author's note|autobiographical note)\.?\s*$",
+    re.IGNORECASE,
+)
 ILLUSTRATION_LINE_RE = re.compile(r"(?i)\[\s*(illustration|image|plate|figure)\b")
 COPYRIGHT_ART_RE = re.compile(r"(?i)\b(copyright\s+\d{4}|illustrations?\s+.*copyright|all rights reserved)\b")
 BENGALI_RE = re.compile(r"[\u0980-\u09FF]")
@@ -141,6 +145,38 @@ class PreparedBook:
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def sha256_bytes(value: bytes) -> str:
+    return hashlib.sha256(value).hexdigest()
+
+
+def sha256_text(value: str) -> str:
+    return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
+def source_header_rights_evidence(raw: str) -> dict[str, Any]:
+    """Capture compact source-header evidence for internal/admin review only."""
+
+    header = raw.split("*** START", 1)[0].strip()
+    evidence_lines: list[str] = []
+    for line in header.splitlines()[:80]:
+        stripped = re.sub(r"\s+", " ", line).strip()
+        lowered = stripped.lower()
+        if not stripped:
+            continue
+        if any(term in lowered for term in (
+            "united states",
+            "no restrictions",
+            "copy it",
+            "re-use",
+            "public domain",
+        )):
+            evidence_lines.append(stripped)
+    return {
+        "header_present": bool(header),
+        "evidence_lines": evidence_lines[:8],
+    }
 
 
 def normalize_text(value: str) -> str:
@@ -400,6 +436,8 @@ def download_source(url: str, source_type: str = "") -> tuple[bytes, dict[str, A
                         "http_status": status,
                         "content_type": response.headers.get("Content-Type", ""),
                         "content_length": response.headers.get("Content-Length", ""),
+                        "source_bytes": len(body),
+                        "source_bytes_sha256": sha256_bytes(body),
                         "download_attempts": total_attempts,
                         "download_url": candidate_url,
                     }
@@ -803,8 +841,19 @@ def heading_candidate(lines: list[str], index: int, allow_title_case_headings: b
 
     roman_title = ROMAN_TITLE_RE.match(line)
     if allow_title_case_headings and prev_blank and roman_title:
+        if reject_title_case_heading(line):
+            return None
+        body_start, skip_container = body_start_after_optional_byline(lines, index, allow_title_case_headings)
+        if skip_container and body_start is None:
+            return None
         title = f"{roman_title.group(1).upper()}. {clean_heading_text(roman_title.group(2))}"
-        return {"start": index, "body_start": index + 1, "title": title}
+        return {"start": index, "body_start": body_start or index + 1, "title": title}
+
+    if allow_title_case_headings and prev_blank and FRONT_MATTER_HEADING_RE.match(line):
+        body_start, skip_container = body_start_after_optional_byline(lines, index, allow_title_case_headings)
+        if skip_container and body_start is None:
+            return None
+        return {"start": index, "body_start": body_start or index + 1, "title": clean_heading_text(line)}
 
     if prev_blank and (ROMAN_HEADING_RE.match(line) or NUMERIC_HEADING_RE.match(line)):
         title = clean_heading_text(line)
@@ -819,8 +868,13 @@ def heading_candidate(lines: list[str], index: int, allow_title_case_headings: b
 
     next_blank = index == len(lines) - 1 or not lines[index + 1].strip()
     if allow_title_case_headings and prev_blank and next_blank and 3 <= len(line.split()) <= 8:
+        if reject_title_case_heading(line):
+            return None
         if not re.search(r"[.!?]$", line) and title_case_ratio(line) >= 0.85:
-            return {"start": index, "body_start": index + 1, "title": clean_heading_text(line)}
+            body_start, skip_container = body_start_after_optional_byline(lines, index, allow_title_case_headings)
+            if skip_container and body_start is None:
+                return None
+            return {"start": index, "body_start": body_start or index + 1, "title": clean_heading_text(line)}
     return None
 
 
@@ -849,6 +903,40 @@ def heading_line_no_context(line: str) -> bool:
         rest_for_kind = (match.group(match.lastindex or 0) or "").strip().lower()
         return not (kind in {"book", "part", "volume"} and "chapter" in rest_for_kind)
     return bool(ROMAN_HEADING_RE.match(line) or NUMERIC_HEADING_RE.match(line))
+
+
+def reject_title_case_heading(line: str) -> bool:
+    stripped = line.strip()
+    return bool(
+        re.match(r"(?i)^by\s+", stripped)
+        or re.search(r"(?i),\s*(mass|usa|u\.s\.a|england|new york|philadelphia)\.?,?\s*$", stripped)
+        or stripped.endswith(",")
+    )
+
+
+def following_line_is_heading(line: str) -> bool:
+    stripped = line.strip()
+    return bool(
+        heading_line_no_context(stripped)
+        or ROMAN_TITLE_RE.match(stripped)
+        or FRONT_MATTER_HEADING_RE.match(stripped)
+    )
+
+
+def body_start_after_optional_byline(lines: list[str], index: int, allow_title_case_headings: bool) -> tuple[int | None, bool]:
+    body_start = index + 1
+    if not allow_title_case_headings:
+        return body_start, False
+    next_idx = next_nonempty_index(lines, index + 1)
+    if next_idx is None:
+        return body_start, False
+    next_line = lines[next_idx].strip()
+    if not re.match(r"(?i)^by\s+", next_line):
+        return body_start, False
+    after_byline = next_nonempty_index(lines, next_idx + 1)
+    if after_byline is not None and following_line_is_heading(lines[after_byline]):
+        return None, True
+    return next_idx + 1, True
 
 
 def candidate_has_body(lines: list[str], candidate: dict[str, Any]) -> bool:
@@ -1129,10 +1217,14 @@ def rights_metadata(book: dict[str, Any], rights_log: dict[str, Any], warnings: 
         "source_type": book.get("source_type", ""),
         "source_license": book.get("source_license", ""),
         "rights_basis": book.get("rights_basis", ""),
+        "license_notes": book.get("license_notes", ""),
+        "source_url": canonical_source_url(book.get("source_url", "")),
+        "availability_territory": book.get("availability_territory") or book.get("availability_territories") or "US",
         "commercial_use_allowed": rights_log.get("commercial_use_allowed", False),
         "india_rights_status": rights_log.get("india_rights_status", ""),
         "us_rights_status": rights_log.get("us_rights_status", ""),
         "attribution_required": rights_log.get("attribution_required", False),
+        "audio_status": book.get("audio_status", ""),
         "requires_human_review": bool(warnings),
         "checked_at": now_iso(),
     }
@@ -1274,11 +1366,14 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
                 "download_url": canonical_source_url(book.get("source_url", "")),
                 "prepared_text_path": str(path),
                 "download_attempts": 0,
+                "prepared_text_sha256": sha256_text(cleaned),
             }
             result.warnings.append("Used prepared sanitized text from manifest prepared_text_path.")
         else:
             body, download_log = download_source(book["source_url"], book.get("source_type", ""))
             raw = decode_utf8(body)
+            download_log["source_raw_text_sha256"] = sha256_text(raw)
+            download_log["source_header_rights_evidence"] = source_header_rights_evidence(raw)
             cleaned, clean_warnings = sanitize_text(raw, book)
             result.warnings.extend(clean_warnings)
             cleaned, extraction_warnings = apply_text_extraction(cleaned, book)
@@ -1307,6 +1402,8 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
         if not BENGALI_RE.search(cleaned):
             result.errors.append("Bengali Wikisource extraction did not preserve Bengali Unicode text")
     word_count = len(words(cleaned))
+    download_log["cleaned_text_sha256"] = sha256_text(cleaned)
+    download_log["cleaned_word_count"] = word_count
     metadata = metadata_defaults(book, word_count, result.warnings)
     metadata["slug"] = stable_book_slug(book, index)
     if force_single_chapter:
@@ -1371,9 +1468,22 @@ def build_internal_log(book: dict[str, Any], rights_log: dict[str, Any], result:
         "source_type": book.get("source_type", ""),
         "source_license": book.get("source_license", ""),
         "rights_basis": book.get("rights_basis", ""),
+        "availability_territory": book.get("availability_territory") or book.get("availability_territories") or "US",
         "commercial_use_allowed": rights_log.get("commercial_use_allowed", False),
         "india_rights_status": rights_log.get("india_rights_status", ""),
         "us_rights_status": rights_log.get("us_rights_status", ""),
+        "download_url": rights_log.get("download_url", ""),
+        "http_status": rights_log.get("http_status", ""),
+        "content_type": rights_log.get("content_type", ""),
+        "content_length": rights_log.get("content_length", ""),
+        "source_bytes": rights_log.get("source_bytes", ""),
+        "source_bytes_sha256": rights_log.get("source_bytes_sha256", ""),
+        "source_raw_text_sha256": rights_log.get("source_raw_text_sha256", ""),
+        "cleaned_text_sha256": rights_log.get("cleaned_text_sha256", ""),
+        "cleaned_word_count": rights_log.get("cleaned_word_count", ""),
+        "prepared_text_path": rights_log.get("prepared_text_path", ""),
+        "prepared_text_sha256": rights_log.get("prepared_text_sha256", ""),
+        "source_header_rights_evidence": rights_log.get("source_header_rights_evidence", {}),
         "sanitization_timestamp": now_iso(),
         "validation_result": validation_result,
         "upload_id": result.upload_result.get("id", "") if result.upload_result else "",
