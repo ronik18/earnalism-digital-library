@@ -1090,10 +1090,10 @@ Current design:
 
 Production deployment has two paths:
 
-- Main branch automation: pushes to `main` run regression gates, backend Railway deployment, frontend Vercel production deployment, production canary, and post-deploy k6 smoke/load tests when the required deploy secrets exist.
+- Main branch automation: pushes to `main` run regression gates, optional backend Railway CLI deployment, frontend Vercel production deployment, production canary, and post-deploy k6 smoke/load tests when the required deploy secrets exist.
 - Manual operator path: `scripts/commit_push_deploy.sh` commits, pushes, deploys Railway backend, deploys Vercel frontend, and runs smoke checks from the terminal.
 
-The GitHub GO LIVE workflow controls both production deploys after the regression gate passes. Backend deploys through Railway CLI first, frontend deploys through Vercel CLI from the `frontend/` project next, and canary runs only after both deploy jobs report an actual deploy.
+The GitHub GO LIVE workflow runs after the regression gate passes. Backend deploys through Railway CLI when `RAILWAY_TOKEN` and `RAILWAY_SERVICE_ID` exist; if Railway is already auto-deploying from Git, that job exits successfully without blocking the frontend. Frontend deploys through Vercel CLI from the `frontend/` project, and canary runs after a successful Vercel production deploy.
 
 ### Frontend: Vercel
 

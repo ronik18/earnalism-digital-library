@@ -130,9 +130,14 @@ jobs:
         run: railway up --service "${RAILWAY_SERVICE_ID}"
 
   deploy_frontend:
-    name: Vercel frontend deploy after backend GO LIVE
-    needs: deploy
-    if: github.event_name != 'pull_request' && needs.deploy.outputs.deployed == 'true'
+    name: Vercel frontend deploy after GO LIVE pass
+    needs:
+      - regression
+      - deploy
+    if: >-
+      github.event_name != 'pull_request' &&
+      needs.regression.result == 'success' &&
+      needs.deploy.result == 'success'
     runs-on: ubuntu-latest
     outputs:
       deployed: ${{ steps.vercel-check.outputs.enabled }}
@@ -208,8 +213,8 @@ jobs:
     if: >-
       always() &&
       github.event_name != 'pull_request' &&
+      needs.regression.result == 'success' &&
       needs.deploy.result == 'success' &&
-      needs.deploy.outputs.deployed == 'true' &&
       needs.deploy_frontend.result == 'success' &&
       needs.deploy_frontend.outputs.deployed == 'true'
     runs-on: ubuntu-latest
