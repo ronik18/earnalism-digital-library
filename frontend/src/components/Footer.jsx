@@ -11,6 +11,8 @@ const SOCIALS = [
   { key: "twitter", label: "X", Icon: Twitter },
 ];
 
+const CONTACT_EMAIL = "sales@reoenterprise.org";
+
 export default function Footer() {
   const { social } = useSettings();
   const activeSocials = SOCIALS.filter((s) => social?.[s.key]);
@@ -41,8 +43,8 @@ export default function Footer() {
 
         <div>
           <div className="overline mb-4">Reach</div>
-          <a href="mailto:hello@theearnalism.com" className="flex items-center gap-2 text-charcoal-soft hover:text-burgundy">
-            <Mail size={16} /> hello@theearnalism.com
+          <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-2 text-charcoal-soft hover:text-burgundy">
+            <Mail size={16} /> {CONTACT_EMAIL}
           </a>
           {activeSocials.length > 0 && (
             <nav className="flex gap-3 mt-5 text-charcoal-soft" aria-label="Earnalism social links" data-testid="footer-socials">

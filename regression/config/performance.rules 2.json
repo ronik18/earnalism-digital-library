@@ -1,0 +1,22 @@
+{
+  "visualPixelDiffThreshold": 0.01,
+  "redisWarmRatio": 0.4,
+  "mongoQueryMs": 50,
+  "loadTest": {
+    "connections": 500,
+    "durationSeconds": 30,
+    "p95Ms": 800,
+    "p99Ms": 1500,
+    "errorRate": 0.001
+  },
+  "audio": {
+    "minBitrateKbps": 128,
+    "minSampleRateHz": 44100,
+    "highlightToleranceMs": 500
+  },
+  "crawl": {
+    "prMaxUrls": 20,
+    "goLiveMaxUrls": 500,
+    "maxDepth": 2
+  }
+}

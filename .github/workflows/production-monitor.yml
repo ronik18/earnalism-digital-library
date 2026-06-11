@@ -1,0 +1,121 @@
+name: Production monitoring
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: production-monitor
+  cancel-in-progress: true
+
+jobs:
+  observe:
+    name: production health and latency observer
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      FRONTEND_URL: ${{ vars.FRONTEND_URL || vars.PRODUCTION_FRONTEND_URL || 'https://theearnalism.com' }}
+      API_URL: ${{ vars.API_URL || vars.PRODUCTION_API_URL || 'https://api.theearnalism.com' }}
+      MONITOR_CREATE_ISSUE: ${{ vars.MONITOR_CREATE_ISSUE || 'false' }}
+      MONITOR_FAIL_ON_SLOW: ${{ vars.MONITOR_FAIL_ON_SLOW || 'false' }}
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      RAILWAY_SERVICE_ID: ${{ secrets.RAILWAY_SERVICE_ID }}
+      RAILWAY_ENVIRONMENT: ${{ vars.RAILWAY_ENVIRONMENT || 'production' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+
+      - name: Run production monitor
+        id: monitor
+        continue-on-error: true
+        run: node scripts/production_monitor.mjs
+
+      - name: Install Railway CLI
+        if: env.RAILWAY_TOKEN != '' && env.RAILWAY_SERVICE_ID != ''
+        run: npm install -g @railway/cli
+
+      - name: Capture Railway logs and metrics
+        if: env.RAILWAY_TOKEN != '' && env.RAILWAY_SERVICE_ID != ''
+        shell: bash
+        run: |
+          set -uo pipefail
+          mkdir -p output/monitoring
+          railway metrics \
+            --service "${RAILWAY_SERVICE_ID}" \
+            --environment "${RAILWAY_ENVIRONMENT}" \
+            --since 1h \
+            --json > output/monitoring/railway-metrics.json || true
+          railway metrics \
+            --service "${RAILWAY_SERVICE_ID}" \
+            --environment "${RAILWAY_ENVIRONMENT}" \
+            --since 1h \
+            --http \
+            --json > output/monitoring/railway-http-metrics.json || true
+          railway logs \
+            --service "${RAILWAY_SERVICE_ID}" \
+            --environment "${RAILWAY_ENVIRONMENT}" \
+            --lines 200 \
+            --json > output/monitoring/railway-app-logs.jsonl || true
+          railway logs \
+            --service "${RAILWAY_SERVICE_ID}" \
+            --environment "${RAILWAY_ENVIRONMENT}" \
+            --http \
+            --status ">=400" \
+            --since 1h \
+            --lines 200 \
+            --json > output/monitoring/railway-http-errors.jsonl || true
+
+      - name: Upload monitor report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: production-monitor-report
+          path: output/monitoring/**
+
+      - name: Open monitoring issue
+        if: steps.monitor.outcome == 'failure' && env.MONITOR_CREATE_ISSUE == 'true'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('fs');
+            const reportPath = 'output/monitoring/production-monitor-latest.json';
+            let body = 'Production monitoring failed before a report was written.';
+            if (fs.existsSync(reportPath)) {
+              const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+              const failed = report.checks.filter((check) => check.required && !check.ok);
+              const slow = report.checks.filter((check) => check.ok && check.slow);
+              body = [
+                `Generated: ${report.generatedAt}`,
+                `Frontend: ${report.frontendUrl}`,
+                `API: ${report.apiUrl}`,
+                '',
+                `Failures: ${failed.length}`,
+                ...failed.map((check) => `- ${check.name}: ${check.error || `HTTP ${check.status}`} (${check.durationMs}ms)`),
+                '',
+                `Slow warnings: ${slow.length}`,
+                ...slow.map((check) => `- ${check.name}: ${check.durationMs}ms over ${check.maxMs}ms`),
+                '',
+                'Artifact: production-monitor-report',
+              ].join('\n');
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Production monitor failure - ${new Date().toISOString()}`,
+              body,
+            });
+
+      - name: Fail workflow on monitor failure
+        if: steps.monitor.outcome == 'failure'
+        run: exit 1

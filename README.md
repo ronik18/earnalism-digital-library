@@ -6,8 +6,11 @@ Production:
 
 - Frontend: `https://theearnalism.com` on Vercel.
 - Backend API: `https://api.theearnalism.com` on Railway.
-- Latest frontend production deployment: `dpl_AQH3VMskxDX9oecp6GzwKq7gzjXd`, deployed on June 4, 2026.
+- Brand line: `Where Learning Becomes Earning`.
+- Contact email: `sales@reoenterprise.org`.
 - Backend autoscaling: Railway Pro + Redis + Judoscale, configured for a 2 to 10 replica range.
+- Media storage split: Cloudinary for covers/thumbnails/images/small audio, Backblaze B2 for large audiobook MP3s.
+- Continuous operations: GitHub Actions regression gates, post-deploy k6 smoke/load tests, and scheduled production monitoring.
 
 ## Table Of Contents
 
@@ -29,6 +32,9 @@ Production:
 - [Local Development](#local-development)
 - [Testing And Regression](#testing-and-regression)
 - [Operations Runbook](#operations-runbook)
+- [Technologies Used](#technologies-used)
+- [Approximate Monthly Running Cost](#approximate-monthly-running-cost)
+- [Continuous Monitoring And Safe Autonomy](#continuous-monitoring-and-safe-autonomy)
 - [Known Maintenance Notes](#known-maintenance-notes)
 
 ## System Summary
@@ -39,10 +45,12 @@ The platform is split into a static React frontend and a FastAPI backend.
 - FastAPI exposes public catalog APIs, gated reader APIs, admin CRUD APIs, auth APIs, wallet billing APIs, and Razorpay payment APIs.
 - MongoDB stores books, chapters, users, sessions, wallets, payments, settings, contacts, analytics, and audit records.
 - Redis supports multi-replica cache, rate limit state, and startup leader locks.
-- Cloudinary stores uploaded covers, chapter images, and journal images.
+- Cloudinary stores uploaded covers, thumbnails, chapter images, journal images, and small audio assets.
+- Backblaze B2 stores large audiobook binaries that exceed Cloudinary limits, exposed to readers through backend byte-range streaming.
 - Razorpay handles paid top-ups for reading time.
 - Google OAuth and MSG91 OTP are optional reader authentication methods.
 - Judoscale monitors request queue time and calls Railway scaling APIs.
+- GitHub Actions runs regression, go-live, post-deploy load, canary, and scheduled production monitoring workflows.
 
 ## High Level Design
 
@@ -55,9 +63,14 @@ flowchart LR
   BE --> Mongo[(MongoDB Atlas)]
   BE --> Redis[(Railway Redis)]
   BE --> Cloudinary[(Cloudinary)]
+  BE --> B2[(Backblaze B2)]
   BE --> Razorpay[(Razorpay)]
   BE --> Google[Google OAuth]
   BE --> MSG91[MSG91 OTP]
+  BE --> PostHog[PostHog / RUM Metrics]
+
+  GHA[GitHub Actions] -->|regression, canary, monitor| FE
+  GHA -->|health, API, k6 checks| BE
 
   Judoscale[Judoscale] -->|queue metrics from middleware| BE
   Judoscale -->|scale API| Railway[Railway Replicas]
@@ -73,9 +86,11 @@ flowchart LR
 | FastAPI app | Business rules, auth, reader gating, wallet accounting, payment verification, admin APIs. |
 | MongoDB | Canonical persistence for books, chapters, users, wallets, payments, settings, and audit data. |
 | Redis | Shared cache, shared rate-limit state, startup leader locks, replica-safe behavior. |
-| Cloudinary | Image upload, cover optimization, responsive image URLs, chapter embedded images. |
+| Cloudinary | Cover/thumbnail/image upload, responsive image URLs, chapter embedded images, small audio fallback. |
+| Backblaze B2 | S3-compatible storage for large audiobook MP3s, reached through backend byte-range proxying. |
 | Razorpay | Payment order creation, payment verification, webhook events, wallet top-up crediting. |
 | Judoscale | Horizontal autoscaling trigger based on backend queue time. |
+| GitHub Actions | Regression gates, Railway deploy gate, post-deploy k6 smoke/load, scheduled production monitoring. |
 
 ## Low Level Design
 
@@ -95,6 +110,7 @@ flowchart TB
     Auth[require_admin / require_user / optional_principal]
     PublicAPI[Public catalog APIs]
     ReaderAPI[Reader session and chapter APIs]
+    ManifestAPI[Reader manifest + audiobook APIs]
     AdminAPI[Admin CRUD APIs]
     PaymentAPI[Razorpay APIs]
     Startup[Redis startup lock + Mongo maintenance]
@@ -105,6 +121,8 @@ flowchart TB
   subgraph Utils[backend/utils + config]
     Processor[content_processor.py]
     Cloud[config/cloudinary.py]
+    AudioUpload[lib/storage/audioUploader.js]
+    B2Proxy[B2 range proxy helpers]
   end
 
   App --> Pages
@@ -113,14 +131,19 @@ flowchart TB
   Middleware --> RateLimit
   Middleware --> PublicAPI
   Middleware --> ReaderAPI
+  Middleware --> ManifestAPI
   Middleware --> AdminAPI
   Middleware --> PaymentAPI
   ReaderAPI --> Auth
+  ManifestAPI --> Auth
   AdminAPI --> Auth
   PaymentAPI --> Auth
   PublicAPI --> Cache
   AdminAPI --> Processor
   Processor --> Cloud
+  AudioUpload --> Cloud
+  AudioUpload --> B2Proxy
+  ManifestAPI --> B2Proxy
   Startup --> Cache
 ```
 
@@ -132,7 +155,8 @@ flowchart TB
 4. FastAPI middleware applies security headers, structured logging, rate limits, and graceful drain handling.
 5. Auth dependencies validate JWTs and session state where needed.
 6. Route handler reads/writes MongoDB and optionally Redis cache/locks.
-7. Response returns sanitized JSON with no Mongo `_id`.
+7. Reader manifest and audiobook routes resolve metadata from MongoDB and stream B2 audio with byte-range headers when needed.
+8. Response returns sanitized JSON with no Mongo `_id`.
 
 ## Runtime Architecture
 
@@ -151,6 +175,11 @@ flowchart LR
     Redis[(Redis plugin)]
   end
 
+  subgraph Media[Media/CDN Layer]
+    Cloudinary[(Cloudinary images + small audio)]
+    B2[(Backblaze B2 large audio)]
+  end
+
   Static -->|API calls| R1
   Static -->|API calls| R2
   Static -->|API calls| RN
@@ -160,7 +189,12 @@ flowchart LR
   R1 --> Mongo[(MongoDB Atlas)]
   R2 --> Mongo
   RN --> Mongo
+  R1 --> Cloudinary
+  R2 --> Cloudinary
+  RN --> B2
 ```
+
+Redis is intentionally not used for book-cover images or audiobook binaries. Images stay on Cloudinary/CDN/browser cache, and audiobook MP3s stay on Cloudinary or B2 with HTTP cache/range semantics. Redis is reserved for metadata, reader manifests, chapter payloads where safe, short-lived user/session/payment state, rate limits, and startup locks.
 
 ## Frontend Architecture
 
@@ -257,6 +291,8 @@ Important token keys:
 | `server.py` | `backend/server.py` | FastAPI app, models, auth, routes, billing, payments, cache, startup. |
 | `content_processor.py` | `backend/utils/content_processor.py` | DOCX/MD/HTML/TXT chapter conversion, sanitization, image extraction. |
 | `cloudinary.py` | `backend/config/cloudinary.py` | Cloudinary initialization, upload, responsive URLs. |
+| `audioUploader.js` | `lib/storage/audioUploader.js` | Node storage router for audiobook uploads: Cloudinary at or below 100 MB, Backblaze B2 multipart upload above 100 MB. |
+| `production_monitor.mjs` | `scripts/production_monitor.mjs` | Scheduled/local production health, latency, reader manifest, and catalog observer. |
 | `railway.json` | `backend/railway.json` | Railway build/start/health configuration. |
 | `Dockerfile` | `backend/Dockerfile` | Container build and local Docker health check. |
 
@@ -284,6 +320,7 @@ flowchart TD
   Handler --> Mongo
   Handler --> Redis[(Redis)]
   Handler --> Cloudinary[(Cloudinary)]
+  Handler --> B2[(Backblaze B2)]
   Handler --> Razorpay[(Razorpay)]
   Mongo --> Response
 ```
@@ -422,6 +459,25 @@ flowchart TD
   Pulse --> Wallet[Debit wallet ledger]
 ```
 
+### Audiobook Data Flow
+
+```mermaid
+flowchart TD
+  Reader[Reader page] --> Manifest[GET /api/reader/book/:slug/manifest]
+  Manifest --> Mongo[(MongoDB audiobook metadata)]
+  Mongo --> AudioDoc{provider}
+  AudioDoc -->|cloudinary| CloudinaryURL[Cloudinary URL returned]
+  AudioDoc -->|b2| ApiURL[API proxy URL returned]
+  Reader --> AudioTag[HTML audio preload=metadata]
+  AudioTag -->|Range: bytes=0-| PlaybackAPI[GET /api/reader/book/:slug/audiobook]
+  PlaybackAPI --> B2[(Backblaze B2)]
+  B2 --> Partial[206 Partial Content]
+  Partial --> AudioTag
+  AudioTag --> Highlight[Text highlighting uses timestamp sidecar]
+```
+
+Playback uses browser-native metadata preloading and byte-range requests so readers can start quickly, seek smoothly, and avoid downloading the whole audiobook upfront. The timestamp sidecar remains a separate lightweight asset so text highlighting can stay in sync with the audio timeline.
+
 ### Admin Publishing Data Flow
 
 ```mermaid
@@ -503,10 +559,14 @@ All backend API routes are under `/api` except root health aliases.
 | Method | Route | Purpose |
 | --- | --- | --- |
 | `GET` | `/api/reader/chapter/{slug}/{chapter_id}` | Gated chapter body endpoint. |
+| `GET` | `/api/reader/book/{slug}/manifest` | Reader manifest with chapter metadata, audiobook metadata, asset URLs, and cache-safe reader payload. |
+| `GET/HEAD` | `/api/reader/book/{slug}/audiobook` | Audiobook MP3 playback endpoint; proxies B2 assets with byte-range support when provider is `b2`. |
+| `GET/HEAD` | `/api/reader/book/{slug}/audiobook/{asset_key}` | Audiobook sidecar asset endpoint, including timestamps. |
 | `POST` | `/api/reading/session/start` | Start active reading session. |
 | `POST` | `/api/reading/pulse` | 30-second reader billing pulse. |
 | `POST` | `/api/reading/session/end` | End active reading session. |
 | `GET` | `/api/reading/packs` | Simplified pack list for reader UX. |
+| `POST` | `/api/reader/metrics` | Reader RUM/performance event aggregation. |
 
 Legacy aliases also exist under `/api/reader/session/start`, `/api/reader/heartbeat`, and `/api/reader/session/end`.
 
@@ -551,6 +611,8 @@ Legacy aliases also exist under `/api/reader/session/start`, `/api/reader/heartb
 | `GET` | `/api/admin/payments/webhooks` | Webhook audit dashboard. |
 | `POST` | `/api/admin/payments/intents/{intent_id}/reconcile` | Manual payment reconcile. |
 | `GET` | `/api/admin/secure-reader/alerts` | Reader protection alerts. |
+| `GET` | `/api/admin/cache/status` | Redis/local cache status, memory policy visibility, and cache guidance. |
+| `PATCH` | `/api/admin/books/{slug}/audiobook` | Updates audiobook flags, provider, asset URLs, size, and duration after onboarding. |
 
 ## API Sequence Diagrams
 
@@ -706,6 +768,89 @@ sequenceDiagram
   API-->>A: ready/warnings/preview
 ```
 
+### Audiobook Upload Routing
+
+```mermaid
+sequenceDiagram
+  participant S as open_source_audiobook_onboarding.py
+  participant U as lib/storage/audioUploader.js
+  participant C as Cloudinary
+  participant B2 as Backblaze B2
+  participant API as FastAPI Admin API
+  participant M as MongoDB
+
+  S->>S: Generate local MP3 + timestamps
+  S->>U: uploadAudiobook(filePath, slug, language, duration)
+  U->>U: Read file size
+  alt size <= 100 MB
+    U->>C: Existing Cloudinary audio upload flow
+    C-->>U: secure_url
+    U-->>S: {url, provider:"cloudinary", size, duration}
+  else size > 100 MB
+    U->>B2: Multipart Upload, partSize=10 MB, queueSize=4
+    B2-->>U: S3-compatible object key
+    U-->>S: {url, provider:"b2", size, duration}
+  end
+  S->>API: PATCH /api/admin/books/:slug/audiobook
+  API->>M: Store audiobook.url/provider/assets/size/duration
+```
+
+### Audiobook Playback And Seeking
+
+```mermaid
+sequenceDiagram
+  participant FE as Reader.jsx audio element
+  participant API as FastAPI
+  participant M as MongoDB
+  participant B2 as Backblaze B2
+  participant C as Cloudinary
+
+  FE->>API: GET /api/reader/book/:slug/manifest
+  API->>M: Fetch audiobook metadata
+  API-->>FE: provider + mp3/timestamps URLs
+  FE->>FE: Render audio element with preload metadata
+  alt provider is cloudinary
+    FE->>C: Browser requests Cloudinary media
+    C-->>FE: HTTP range-capable audio response
+  else provider is b2
+    FE->>API: GET /api/reader/book/:slug/audiobook with Range
+    API->>B2: HeadObject/GetObject with translated byte range
+    B2-->>API: ContentRange + stream
+    API-->>FE: 206 + Accept-Ranges + Content-Range + Content-Length
+  end
+  FE->>API: GET /api/reader/book/:slug/audiobook/timestamps
+  API-->>FE: Timestamp sidecar
+  FE->>FE: Sync text highlighting to currentTime
+```
+
+### CI/CD And Production Monitoring
+
+```mermaid
+sequenceDiagram
+  participant Dev as Main branch push
+  participant GH as GitHub Actions
+  participant V as Vercel
+  participant R as Railway
+  participant P as Production URLs
+
+  Dev->>GH: push to main
+  GH->>GH: Regression suite
+  GH->>GH: GO LIVE regression gate
+  alt gate passes and Railway secrets exist
+    GH->>R: railway up backend
+    R-->>GH: deployment status
+    GH->>P: production canary
+  else gate fails or secrets missing
+    GH-->>Dev: fail or skip deploy with reason
+  end
+  GH->>P: post-deploy k6 smoke/load
+  loop every 30 minutes
+    GH->>P: production_monitor.mjs
+    P-->>GH: health, latency, catalog, reader manifest results
+    GH->>GH: upload monitor artifact, optionally open issue
+  end
+```
+
 ## Classes And Modules
 
 ### Backend Pydantic Models
@@ -746,6 +891,44 @@ sequenceDiagram
 | `funnelAnalytics.js`, `performanceMetrics.js` | Analytics event capture. |
 | `images.js` | Image normalization and optimized URL helpers. |
 
+### Storage And Monitoring Modules
+
+```mermaid
+classDiagram
+  class AudioUploader {
+    +uploadAudiobookAsset(filePath, options)
+    +uploadToCloudinary(filePath, options)
+    +uploadToB2(filePath, options)
+    +normalizeResult(url, provider, size, duration)
+  }
+
+  class OpenSourceAudiobookOnboarding {
+    +generate(book)
+    +validate(bundle)
+    +upload_audiobook_asset(bundle)
+    +sync_audiobook_flags(result)
+  }
+
+  class ReaderAudioAPI {
+    +reader_book_audiobook(slug, request)
+    +reader_book_audiobook_sidecar(slug, asset_key, request)
+    +parse_b2_key(url)
+    +stream_range_response(range)
+  }
+
+  class ProductionMonitor {
+    +runCheck(name, url, budget)
+    +extractBooks(payload)
+    +writeReport()
+    +failOnRequiredFailures()
+  }
+
+  OpenSourceAudiobookOnboarding --> AudioUploader
+  OpenSourceAudiobookOnboarding --> ReaderAudioAPI : patches metadata
+  ReaderAudioAPI --> AudioUploader : consumes provider/url shape
+  ProductionMonitor --> ReaderAudioAPI : probes manifest/audio readiness
+```
+
 ## Book Import And Publishing Pipeline
 
 The repo includes admin UI upload and command-line bulk upload.
@@ -769,6 +952,45 @@ Pipeline docs:
 - `scripts/bulk_publishing_pipeline.py`
 - `scripts/book_production_workflow.py`
 - `scripts/earnalism_go_live.sh`
+
+Audiobook onboarding uses `scripts/open_source_audiobook_onboarding.py` and the storage router in `lib/storage/audioUploader.js`. The router keeps existing Cloudinary behavior for audiobook files at or below 100 MB and sends larger MP3s to Backblaze B2 with multipart S3-compatible upload.
+
+Run only the seven Cloudinary-blocked large audiobooks:
+
+```bash
+railway run npm run audiobook:b2:blocked -- --env-file .secrets/earnalism-import.env
+```
+
+Run only Pride and Prejudice if it is the remaining blocked title:
+
+```bash
+railway run .venv-audio/bin/python scripts/open_source_audiobook_onboarding.py generate \
+  --local-only \
+  --no-include-drafts \
+  --include-published \
+  --no-skip-live-audio-assets \
+  --upload-to-storage \
+  --sync-flags \
+  --book pride-and-prejudice \
+  --env-file .secrets/earnalism-import.env
+```
+
+Expected audiobook persistence shape:
+
+```json
+{
+  "audiobook": {
+    "url": "https://...",
+    "provider": "cloudinary|b2",
+    "size": 123456789,
+    "duration_ms": 3600000
+  },
+  "audiobook_assets": {
+    "mp3": "https://...",
+    "timestamps": "https://..."
+  }
+}
+```
 
 Canonical category slugs:
 
@@ -819,6 +1041,8 @@ Canonical category slugs:
 
 - Static CRA build on Vercel.
 - Immutable caching for `/static/*`.
+- Browser/CDN caching for cover images, thumbnails, static assets, and Cloudinary variants.
+- Audiobook elements use metadata preload so page render is not blocked by full audio downloads.
 - SPA fallback rewrite to `/index.html`.
 - Lazy page imports and idle-time prefetch for high-intent routes.
 
@@ -826,6 +1050,8 @@ Canonical category slugs:
 
 - `/api/home` reduces landing-page fanout by bundling categories, books, and featured book.
 - Public catalog endpoints are Redis-cacheable.
+- Reader manifests and chapter payloads are cache candidates when they are metadata-safe and do not leak paid content.
+- Audiobook playback supports byte-range streaming for B2 assets with `Accept-Ranges`, `Content-Range`, `Content-Length`, and `206 Partial Content`.
 - Public catalog responses strip chapter bodies.
 - MongoDB projections avoid shipping full embedded chapters unless required.
 - Mongo pool defaults are tuned for multi-replica mode:
@@ -834,6 +1060,14 @@ Canonical category slugs:
   - `MONGODB_MAX_CONNECTING=2`
   - `MONGODB_SERVER_SELECTION_TIMEOUT_MS=15000`
   - `MONGODB_WAIT_QUEUE_TIMEOUT_MS=5000`
+
+### Redis Policy
+
+- Use Redis for public metadata, reader manifests, safe chapter payloads, short-lived session/payment state, rate limits, and startup locks.
+- Do not use Redis for book-cover images, thumbnails, audiobook MP3s, timestamp binaries, or other large media.
+- Production eviction target: `REDIS_MAXMEMORY_POLICY=volatile-lfu`, with finite TTLs on cache keys.
+- `REDIS_CONFIGURE_ON_STARTUP=false` is safer when Railway/Redis config is managed outside the app.
+- Monitor `/api/admin/cache/status` for effective maxmemory, policy, hit/miss rate, eviction behavior, and oversized-key warnings.
 
 ### Railway Autoscaling
 
@@ -853,6 +1087,13 @@ Current design:
 - Graceful SIGTERM drain window: 15 seconds.
 
 ## Deployment
+
+Production deployment has two paths:
+
+- Main branch automation: pushes to `main` run regression gates, backend Railway deployment when required secrets exist, production canary, and post-deploy k6 smoke/load tests.
+- Manual operator path: `scripts/commit_push_deploy.sh` commits, pushes, deploys Railway backend, deploys Vercel frontend, and runs smoke checks from the terminal.
+
+Vercel also auto-builds the frontend from the linked Git project when its production branch is pushed. The GitHub GO LIVE workflow controls the Railway backend deployment after the regression gate passes.
 
 ### Frontend: Vercel
 
@@ -903,6 +1144,12 @@ Check status:
 ```bash
 railway deployment list --service earnalism --environment production --limit 5 --json
 railway metrics --service earnalism --environment production --json
+```
+
+Manual one-shot deploy helper:
+
+```bash
+bash scripts/commit_push_deploy.sh
 ```
 
 ## Local Development
@@ -957,6 +1204,9 @@ Root scripts:
 
 ```bash
 npm run regression
+npm run regression:go-live
+npm run regression:canary
+npm run monitor:production
 npm run loadtest
 npm run load:100
 npm run load:10x
@@ -982,6 +1232,13 @@ Scale docs:
 
 - `docs/REGRESSION_AND_SCALE.md`
 - `RAILWAY_SCALING_SETUP.md`
+
+GitHub Actions gates:
+
+- `.github/workflows/regression-suite.yml`: backend, frontend, and browser regression on PR/push.
+- `.github/workflows/regression.yml`: PR regression; push GO LIVE gate; Railway deploy; production canary.
+- `.github/workflows/post-deploy-k6.yml`: post-deploy smoke and 100-user load test.
+- `.github/workflows/production-monitor.yml`: scheduled production health/latency/catalog/reader-manifest observer every 30 minutes.
 
 ## Operations Runbook
 
@@ -1025,6 +1282,116 @@ Judoscale should normally handle this automatically.
 ### Billing Refund Review
 
 See `docs/WALLET_REFUND_PIPELINE.md`.
+
+### Continuous Monitoring
+
+1. Scheduled GitHub Actions runs `scripts/production_monitor.mjs` every 30 minutes.
+2. The monitor checks frontend HTML, asset manifest, sitemap, API health, home payload, catalog, public settings, and a reader manifest for the first published book.
+3. When `RAILWAY_TOKEN` and `RAILWAY_SERVICE_ID` are available, the workflow also captures Railway resource metrics, HTTP metrics, recent app logs, and recent HTTP errors.
+4. Reports are uploaded as `production-monitor-report` artifacts.
+5. Required failures fail the workflow and can notify maintainers through GitHub notifications.
+6. Set repository variable `MONITOR_CREATE_ISSUE=true` to open a GitHub issue automatically on monitor failure.
+7. Set `MONITOR_FAIL_ON_SLOW=true` only when the latency budgets are stable enough to fail scheduled runs on slow responses.
+
+Local production monitor:
+
+```bash
+npm run monitor:production
+```
+
+Optional overrides:
+
+```bash
+FRONTEND_URL=https://theearnalism.com \
+API_URL=https://api.theearnalism.com \
+MONITOR_FAIL_ON_SLOW=true \
+npm run monitor:production
+```
+
+### Optimization Loop
+
+The safe optimization loop is observe, alert, diagnose, patch, regress, deploy, canary. Automation may collect metrics, upload reports, fail workflows, open issues, and deploy already-reviewed code through green CI gates. It must not silently publish books, modify payment state, change Redis eviction/memory settings, rewrite production data, or alter secrets without an explicit operator action.
+
+## Technologies Used
+
+| Area | Technology |
+| --- | --- |
+| Frontend | React 19, Create React App, CRACO, React Router, Tailwind CSS, custom CSS variables, lucide-react, sonner, TipTap. |
+| Backend | Python 3.11, FastAPI, Uvicorn, Pydantic, Motor/PyMongo, ASGI middleware. |
+| Database | MongoDB Atlas with embedded book chapters and operational collections for users, wallets, payments, analytics, contacts, settings, and audit trails. |
+| Cache and coordination | Railway Redis, `volatile-lfu` target policy, TTL-based metadata caches, rate-limit counters, startup leader locks. |
+| Media | Cloudinary for covers/thumbnails/images/small audio; Backblaze B2 S3-compatible storage for large audiobook MP3s. |
+| Audio | Open-source audiobook onboarding pipeline, timestamp sidecars, browser `<audio preload="metadata">`, B2 byte-range proxy. |
+| Payments | Razorpay Checkout, order creation, signature verification, webhook audit, idempotent wallet crediting. |
+| Auth | JWT, HTTP-only refresh cookie, Google OAuth, MSG91 OTP. |
+| Observability | Structured backend logs, Railway metrics/log history, reader RUM aggregation, Judoscale queue-time telemetry, GitHub Actions monitor artifacts. |
+| CI/CD | GitHub Actions, Jest regression modules, Playwright browser checks, k6 smoke/load, Railway CLI, Vercel Git/CLI deploys. |
+| AI and tooling | OpenAI, Google Gemini, Hugging Face, optional ElevenLabs/paid TTS providers, local Piper/MMS-style audiobook generation. |
+
+## Approximate Monthly Running Cost
+
+Pricing estimate date: June 11, 2026. Exact monthly spend depends on region, traffic, invoices, taxes, currency conversion, support plans, and how much AI/TTS generation is run. Treat this table as an operating model, not a billing guarantee.
+
+| Dependency | Current use | Approximate monthly model |
+| --- | --- | --- |
+| Railway Pro backend + Redis | FastAPI replicas, Redis plugin, 50 GB Redis volume, logs/metrics. | Pro minimum includes usage credit. Resource usage is roughly CPU + RAM + egress + volume storage; Railway lists RAM, CPU, egress, and volume rates in its pricing docs. A practical baseline for two app replicas plus Redis is commonly modeled around `$50-$160/mo`, then spikes with autoscaling and Redis memory use. |
+| Vercel | Frontend hosting, CDN, production Git deploys. | Pro starts around `$20/mo` per team plan/seat; Hobby can be `$0` if limits and commercial terms fit. |
+| MongoDB Atlas | Canonical production database. | M10/dedicated entry tier is roughly `$57-$67/mo` before backups, storage growth, data transfer, and region-specific changes. |
+| Cloudinary | Covers, thumbnails, chapter images, journal images, small audio. | `$0` if within free credits; Plus is around `$99/mo`; higher plans depend on credits/storage/bandwidth. |
+| Backblaze B2 | Large audiobook MP3s. | Standard B2 starts at `$6.95/TB/mo`; 100 GB of audio is about `$0.70/mo` storage. Free egress applies up to 3x average monthly stored data; overage is around `$0.01/GB`. |
+| Judoscale | Railway autoscaling from queue time. | Free plan exists with limited monthly scale events; paid plan depends on the configured max autoscaled services/instances. Use Judoscale's Railway calculator for the exact belt/plan. |
+| GitHub Actions | Regression, canary, k6, scheduled monitor. | Often `$0` within included/public-repo quotas; private repo overages depend on runner minutes and artifact/cache storage. |
+| PostHog / analytics | Optional product analytics and session replay. | Free tier can cover early usage; paid product analytics starts from event-based pricing after the free tier. |
+| Razorpay | Paid reading-time wallet top-ups. | No meaningful fixed hosting cost in this app model; payment gateway cost is a per-successful-transaction fee plus taxes/GST and is best counted as cost of revenue. |
+| MSG91 OTP | Optional mobile OTP. | Usage-based per destination and OTP/SMS product. Use the country-specific MSG91 calculator for India/USA/UK mix. |
+| AI APIs | Optional generation, narration QA, content tooling, experiments. | OpenAI/Gemini/Hugging Face are usage-based by tokens, model, media type, or inference provider. Runtime cost can be near `$0` if disabled; generation/backfill can become material, so set provider billing limits. |
+| AI subscriptions | Developer productivity subscriptions such as ChatGPT/Codex/Gemini/voice tools. | Add the seats you actually pay for. Example planning line items: OpenAI business/team style seat around `$25/user/mo` when billed monthly, ElevenLabs plans from free through paid creator/pro tiers, and other AI subscriptions per invoice. |
+
+Lean baseline with production hosting, M10 MongoDB, Vercel Pro, moderate Railway usage, B2 audio, and free/low analytics is roughly `$130-$300/mo` before payment fees and AI usage. With Cloudinary Plus, paid Judoscale, one or more AI subscriptions, and heavier TTS/content generation, a safer planning range is `$300-$700+/mo`.
+
+Pricing references:
+
+- Railway pricing: `https://railway.com/pricing` and `https://docs.railway.com/pricing/plans`
+- Vercel pricing: `https://vercel.com/pricing`
+- MongoDB pricing: `https://www.mongodb.com/pricing`
+- Cloudinary pricing: `https://cloudinary.com/pricing`
+- Backblaze B2 pricing: `https://www.backblaze.com/cloud-storage/pricing`
+- Judoscale pricing details: `https://judoscale.com/docs/pricing-details`
+- PostHog pricing: `https://posthog.com/pricing`
+- GitHub Actions billing: `https://docs.github.com/billing/managing-billing-for-github-actions/about-billing-for-github-actions`
+- Razorpay pricing: `https://razorpay.com/blog/razorpay-payment-gateway-pricing-explained/`
+- MSG91 pricing: `https://msg91.com/pricing`
+- OpenAI API pricing: `https://openai.com/api/pricing/`
+- Gemini API pricing: `https://ai.google.dev/gemini-api/docs/pricing`
+- Hugging Face pricing: `https://huggingface.co/pricing`
+- ElevenLabs pricing: `https://elevenlabs.io/pricing`
+
+## Continuous Monitoring And Safe Autonomy
+
+The repository now has a safe monitoring loop:
+
+```mermaid
+flowchart LR
+  Schedule[GitHub schedule / workflow_dispatch] --> Monitor[production_monitor.mjs]
+  Monitor --> Frontend[Frontend checks]
+  Monitor --> API[API checks]
+  Monitor --> Reader[Reader manifest probe]
+  Monitor --> Artifact[JSON artifact]
+  Monitor --> Failure{required failure?}
+  Failure -->|yes| ActionFail[Fail GitHub workflow]
+  Failure -->|optional| Issue[Open GitHub issue]
+  ActionFail --> Engineer[Human review or planned agent task]
+  Engineer --> PR[Patch / PR]
+  PR --> Gates[Regression + GO LIVE gates]
+  Gates --> Deploy[Railway/Vercel deploy]
+  Deploy --> Canary[Production canary + k6]
+```
+
+Autonomy scope:
+
+- Automatic: collect health/latency evidence, collect Railway logs/metrics when credentials exist, monitor catalog and reader-manifest readiness, upload artifacts, fail scheduled workflows, optionally open issues, run post-deploy canaries, and deploy code that has already passed configured gates.
+- Human-gated: secrets, payment state, wallet ledger corrections, Redis maxmemory changes, publishing decisions, destructive scripts, and production data rewrites.
+- Optimization cadence: review monitor artifacts, k6 reports, `/api/admin/cache/status`, Railway metrics, Judoscale scaling events, MongoDB query metrics, Cloudinary/B2 bandwidth, and reader RUM. Convert repeated slow/error patterns into tracked tasks and ship through the normal CI/CD gates.
 
 ## Known Maintenance Notes
 

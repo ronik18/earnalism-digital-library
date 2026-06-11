@@ -8,6 +8,7 @@
     "regression:visual:ci": "REGRESSION_MODE=visual-ci npm run regression -- modules/02-rendering-visual.test.*",
     "regression:legacy": "bash scripts/run_regression_suite.sh",
     "regression:e2e": "node scripts/e2e_regression.mjs",
+    "monitor:production": "node scripts/production_monitor.mjs",
     "audio:preflight": "python3 scripts/open_source_audiobook_onboarding.py preflight",
     "audio:audit": "python3 scripts/open_source_audiobook_onboarding.py audit",
     "audio:onboard:dry": "python3 scripts/open_source_audiobook_onboarding.py generate --dry-run",

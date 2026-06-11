@@ -13,6 +13,8 @@ const SOCIALS = [
   { key: "twitter", label: "X", Icon: Twitter },
 ];
 
+const CONTACT_EMAIL = "sales@reoenterprise.org";
+
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
@@ -21,7 +23,7 @@ export default function Contact() {
 
   useSEO({
     title: "Contact — The Earnalism",
-    description: "Write to The Earnalism — for book inquiries, order questions, reading recommendations, press, or simply to introduce yourself as a reader. Email hello@theearnalism.com.",
+    description: `Write to The Earnalism — for book inquiries, order questions, reading recommendations, press, or simply to introduce yourself as a reader. Email ${CONTACT_EMAIL}.`,
   });
 
   const submit = async (e) => {
@@ -46,8 +48,8 @@ export default function Contact() {
           <p className="text-charcoal-soft mt-7 leading-[1.8] font-light">For book inquiries, order questions, reading recommendations, press, or simply to introduce yourself as a reader.</p>
 
           <div className="mt-10 space-y-5">
-            <a href="mailto:hello@theearnalism.com" className="flex items-center gap-3 text-charcoal hover:text-burgundy" data-testid="contact-email-link">
-              <Mail size={16} className="text-gold" strokeWidth={1.5} /> <span className="font-serif-display italic text-lg">hello@theearnalism.com</span>
+            <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-3 text-charcoal hover:text-burgundy" data-testid="contact-email-link">
+              <Mail size={16} className="text-gold" strokeWidth={1.5} /> <span className="font-serif-display italic text-lg">{CONTACT_EMAIL}</span>
             </a>
             {activeSocials.length > 0 && (
               <nav className="flex items-center gap-3 text-charcoal-soft" aria-label="Earnalism social links" data-testid="contact-socials">

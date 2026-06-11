@@ -1,0 +1,22 @@
+{
+  "criticalSlugs": [],
+  "draftOrPrivateSlugs": [],
+  "blockedSourceTerms": [
+    "Project Gutenberg",
+    "Gutenberg.org",
+    "PGLAF",
+    "Distributed Proofreaders",
+    "license agreement",
+    "refund",
+    "donation"
+  ],
+  "restrictedStatuses": [
+    "draft",
+    "rejected",
+    "unlicensed",
+    "needs-legal-review",
+    "needs_legal_review",
+    "dmca-flagged",
+    "blocked"
+  ]
+}

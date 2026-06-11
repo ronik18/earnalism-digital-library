@@ -1,0 +1,10 @@
+{
+  "title": { "hardFailMissing": true, "minLength": 10, "maxLength": 70, "lengthHardFail": false },
+  "description": { "hardFailMissing": true, "minLength": 50, "maxLength": 170, "lengthHardFail": false },
+  "canonical": { "hardFailMissing": true },
+  "h1": { "hardFailMissing": true },
+  "openGraph": { "required": ["og:title", "og:description", "og:url", "og:type"], "hardFailMissing": true },
+  "jsonLd": { "hardFailMissingOnBookPages": true },
+  "robots": { "hardFailNoindexOnPublicPages": true },
+  "chapterPolicy": "reader-routes-noindex"
+}
