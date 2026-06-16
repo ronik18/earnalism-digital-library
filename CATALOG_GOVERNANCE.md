@@ -8,8 +8,9 @@
 - About and contact pages.
 - Sign in, signup, account-entry, and payment/pricing pages.
 - Reader pages for approved Earnalism books.
-- Book/product pages for approved Earnalism books.
-- Reading pass, membership, institution, school, creator, referral, and public-domain study-material pages.
+- Book detail pages for approved Earnalism books on `/book/*`.
+- Approved paid or membership surfaces on `/pricing`, `/membership`, `/reading-pass`, `/institution`, or another explicitly approved non-WooCommerce route.
+- School, creator, referral, and public-domain study-material pages.
 
 ## Blocked Public Content
 
@@ -28,9 +29,10 @@
 ## Current Enforcement
 
 - `/product/*`, `/products/*`, `/product-category/*`, `/shop/*`, `/fashion/*`, `/clothing/*`, `/apparel/*`, and known demo terms are routed to a Vercel removed-content handler.
+- `/product/*` is treated as legacy/demo WooCommerce residue for now. Approved Earnalism paid/book pages must use `/book/*`, `/pricing`, `/membership`, `/reading-pass`, `/institution`, or another explicitly approved non-WooCommerce route.
 - Clearly irrelevant demo/ecommerce URLs return `410 Gone` through `frontend/api/removed-content.js`.
 - The removed-content handler sets `X-Robots-Tag: noindex, nofollow, noarchive`.
-- `robots.txt` blocks crawler access to demo ecommerce and fashion route families as a fallback.
+- `robots.txt` intentionally does not block removed demo/ecommerce route families during deindexing, so crawlers can observe the `410` plus `X-Robots-Tag` response. Robots blocking can be reconsidered later after indexes have dropped the retired URLs.
 - `frontend/scripts/generate-seo-assets.mjs` filters blocked route families and terms from `sitemap.xml`.
 - `scripts/audit-public-content.mjs` produces dry-run JSON, CSV, and Markdown reports for public URL governance.
 

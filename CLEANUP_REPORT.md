@@ -57,8 +57,16 @@ No legitimate Earnalism books, reader pages, pricing pages, memberships, or jour
 
 - Updated `frontend/scripts/generate-seo-assets.mjs` with blocked prefixes and blocked terms.
 - Regenerated `frontend/public/sitemap.xml`.
-- Added crawler fallback blocks in `frontend/public/robots.txt`.
+- Removed crawler blocks for demo/ecommerce route families from `frontend/public/robots.txt` during deindexing.
+- Removed demo/ecommerce URLs remain excluded from `sitemap.xml` and rely on `410 Gone` plus `X-Robots-Tag: noindex, nofollow, noarchive`.
+- Robots blocking can be reconsidered later after search indexes have dropped the retired URLs.
 - Confirmed blocked terms are excluded from the generated sitemap.
+
+## `/product/*` Policy Decision
+
+- `/product/*`, `/products/*`, and `/product-category/*` are treated as legacy/demo WooCommerce residue for now.
+- Approved Earnalism paid/book pages must use `/book/*`, `/pricing`, `/membership`, `/reading-pass`, `/institution`, or another explicitly approved non-WooCommerce route.
+- If Earnalism later needs public product-style pages, add an explicit approved-product allowlist before the broad `/product/*` removal rule.
 
 ## Audit Reports
 
@@ -85,7 +93,8 @@ Added regression module:
 Coverage:
 
 - Vercel routes demo ecommerce paths to removed-content handler.
-- `robots.txt` blocks demo ecommerce/fashion route families.
+- `robots.txt` allows removed demo/ecommerce route families during deindexing so crawlers can observe `410` and `X-Robots-Tag`.
+- Removed-content handler returns `410` for known demo terms, `404` for unknown retired paths, and never reflects raw path/query input.
 - `sitemap.xml` excludes blocked demo/ecommerce terms.
 - Optional post-deploy live check verifies removed URLs return `404` or `410` when `REGRESSION_VERIFY_DEPLOYED_CLEANUP=true`.
 
@@ -103,6 +112,8 @@ Manual spot check after deployment:
 curl -I https://theearnalism.com/product/patterned-wrap-dress
 curl -I https://theearnalism.com/journal/denim-jackets
 curl -I https://theearnalism.com/denim-jackets
+curl -s https://theearnalism.com/robots.txt | grep -E "Disallow: /(product|products|product-category|shop|fashion|clothing|apparel|tag/fashion|tag/clothing|tag/apparel)" && echo "unexpected robots block"
+curl -s https://theearnalism.com/sitemap.xml | grep -E "patterned-wrap-dress|denim-jackets|fashion|clothing|apparel|woocommerce|sample-product|placeholder-product|lorem-ipsum" && echo "unexpected sitemap entry"
 curl -I https://theearnalism.com/library
 curl -I https://theearnalism.com/journal
 ```

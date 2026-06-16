@@ -3,6 +3,7 @@ const path = require("path");
 const { request } = require("../utils/http");
 const { frontendUrl } = require("../utils/envGuard");
 const { fetchSitemap } = require("../utils/sitemap");
+const removedContent = require("../../frontend/api/removed-content");
 
 const ROOT = path.resolve(__dirname, "../..");
 const vercelConfig = JSON.parse(fs.readFileSync(path.join(ROOT, "frontend/vercel.json"), "utf8"));
@@ -26,6 +27,35 @@ const REMOVED_PATHS = [
   "/denim-jackets",
 ];
 
+function callRemovedContent({ path: requestPath, url = "/api/removed-content" }) {
+  const headers = {};
+  const chunks = [];
+  const res = {
+    statusCode: 200,
+    setHeader(name, value) {
+      headers[name.toLowerCase()] = value;
+    },
+    end(chunk = "") {
+      chunks.push(String(chunk));
+    },
+  };
+
+  removedContent(
+    {
+      query: requestPath ? { path: requestPath } : {},
+      headers: {},
+      url,
+    },
+    res,
+  );
+
+  return {
+    status: res.statusCode,
+    headers,
+    body: chunks.join(""),
+  };
+}
+
 describe("Public content governance", () => {
   test("Vercel routes demo ecommerce paths to removed-content handler", () => {
     const rewrites = vercelConfig.rewrites || [];
@@ -35,7 +65,32 @@ describe("Public content governance", () => {
     expect((vercelConfig.redirects || []).some((redirect) => redirect.source === "/shop" && redirect.destination === "/library")).toBe(true);
   });
 
-  test("robots.txt blocks demo ecommerce and fashion route families", async () => {
+  test("removed-content handler returns 410 for known retired demo paths", () => {
+    for (const removedPath of ["/product/patterned-wrap-dress", "/journal/denim-jackets"]) {
+      const response = callRemovedContent({ path: removedPath });
+      expect(response.status).toBe(410);
+      expect(response.headers["x-robots-tag"]).toBe("noindex, nofollow, noarchive");
+      expect(response.body).toContain("This page is no longer available.");
+    }
+  });
+
+  test("removed-content handler returns 404 for unknown retired paths", () => {
+    const response = callRemovedContent({ path: "/retired/unknown-earnalism-path" });
+    expect(response.status).toBe(404);
+    expect(response.headers["x-robots-tag"]).toBe("noindex, nofollow, noarchive");
+  });
+
+  test("removed-content handler does not reflect raw path or query input", () => {
+    const rawInput = '/product/patterned-wrap-dress?<script>alert("x")</script>';
+    const response = callRemovedContent({ path: rawInput });
+    expect(response.status).toBe(410);
+    expect(response.headers["x-robots-tag"]).toBe("noindex, nofollow, noarchive");
+    expect(response.body).not.toContain(rawInput);
+    expect(response.body).not.toContain("<script>");
+    expect(response.body).not.toContain("alert");
+  });
+
+  test("robots.txt keeps removed demo route families crawlable during deindexing", async () => {
     const fallbackRobots = fs.readFileSync(path.join(ROOT, "frontend/public/robots.txt"), "utf8");
     let text = fallbackRobots;
     if (process.env.REGRESSION_VERIFY_DEPLOYED_CLEANUP === "true") {
@@ -51,8 +106,9 @@ describe("Public content governance", () => {
       "Disallow: /clothing/",
       "Disallow: /apparel/",
     ]) {
-      expect(text).toContain(rule);
+      expect(text).not.toContain(rule);
     }
+    expect(text).toContain("Removed demo/ecommerce URLs are intentionally crawlable during deindexing");
   });
 
   test("sitemap excludes blocked demo ecommerce terms", async () => {
