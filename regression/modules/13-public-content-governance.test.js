@@ -90,7 +90,7 @@ describe("Public content governance", () => {
     expect(response.body).not.toContain("alert");
   });
 
-  test("robots.txt keeps removed demo route families crawlable during deindexing", async () => {
+  test("robots.txt allows removed demo ecommerce routes during deindexing", async () => {
     const fallbackRobots = fs.readFileSync(path.join(ROOT, "frontend/public/robots.txt"), "utf8");
     let text = fallbackRobots;
     if (process.env.REGRESSION_VERIFY_DEPLOYED_CLEANUP === "true") {
@@ -105,6 +105,9 @@ describe("Public content governance", () => {
       "Disallow: /fashion/",
       "Disallow: /clothing/",
       "Disallow: /apparel/",
+      "Disallow: /tag/fashion",
+      "Disallow: /tag/clothing",
+      "Disallow: /tag/apparel",
     ]) {
       expect(text).not.toContain(rule);
     }
