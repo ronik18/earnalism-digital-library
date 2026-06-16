@@ -18,6 +18,32 @@ const coreRoutes = [
   { path: "/micro-story", changefreq: "monthly", priority: "0.5" },
 ];
 
+const blockedPublicPathPrefixes = [
+  "/apparel",
+  "/clothing",
+  "/fashion",
+  "/product",
+  "/products",
+  "/product-category",
+  "/shop",
+  "/tag/apparel",
+  "/tag/clothing",
+  "/tag/fashion",
+];
+
+const blockedPublicTerms = [
+  "apparel",
+  "clothing",
+  "denim-jacket",
+  "denim-jackets",
+  "fashion",
+  "lorem-ipsum",
+  "patterned-wrap-dress",
+  "placeholder-product",
+  "sample-product",
+  "woocommerce",
+];
+
 function resolveApiBase() {
   const raw = (
     process.env.REACT_APP_BACKEND_URL ||
@@ -48,6 +74,14 @@ function dateOnly(value) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return today;
   return date.toISOString().slice(0, 10);
+}
+
+function isBlockedPublicRoute(pagePath = "") {
+  const path = String(pagePath || "").toLowerCase();
+  return (
+    blockedPublicPathPrefixes.some((prefix) => path === prefix || path.startsWith(`${prefix}/`))
+    || blockedPublicTerms.some((term) => path.includes(term))
+  );
 }
 
 async function fetchJson(endpoint) {
@@ -83,12 +117,35 @@ function sitemapEntry({ path: pagePath, changefreq, priority, lastmod = today })
 }
 
 async function main() {
-  const [books, posts] = await Promise.all([
+  const [books, posts, categories] = await Promise.all([
     fetchJson("/books"),
     fetchJson("/blog"),
+    fetchJson("/categories"),
   ]);
 
-  const bookRoutes = books
+  const publishedBooks = books.filter((book) => book?.slug && book.is_published !== false);
+  const categoryLastmod = new Map();
+  publishedBooks.forEach((book) => {
+    const slug = book.category_slug;
+    if (!slug) return;
+    const next = dateOnly(book.updated_at || book.created_at);
+    const current = categoryLastmod.get(slug);
+    if (!current || next > current) categoryLastmod.set(slug, next);
+  });
+
+  const categorySlugs = new Set([
+    ...categories.map((category) => category?.slug).filter(Boolean),
+    ...publishedBooks.map((book) => book?.category_slug).filter(Boolean),
+  ]);
+
+  const categoryRoutes = Array.from(categorySlugs).sort().map((slug) => ({
+    path: `/library?category=${encodeURIComponent(slug)}`,
+    changefreq: "weekly",
+    priority: "0.85",
+    lastmod: categoryLastmod.get(slug) || today,
+  }));
+
+  const bookRoutes = publishedBooks
     .filter((book) => book?.slug && book.is_published !== false)
     .map((book) => ({
       path: `/book/${book.slug}`,
@@ -107,7 +164,8 @@ async function main() {
     }));
 
   const seen = new Set();
-  const routes = [...coreRoutes, ...bookRoutes, ...journalRoutes].filter((route) => {
+  const routes = [...coreRoutes, ...categoryRoutes, ...bookRoutes, ...journalRoutes].filter((route) => {
+    if (isBlockedPublicRoute(route.path)) return false;
     if (seen.has(route.path)) return false;
     seen.add(route.path);
     return true;
@@ -131,7 +189,12 @@ async function main() {
     "Disallow: /secure-reader-test",
     "Disallow: /login",
     "Disallow: /signup",
+    "Disallow: /signin",
     "Disallow: /api/",
+    "",
+    "# Removed demo/ecommerce URLs are intentionally crawlable during deindexing",
+    "# so crawlers can observe the 410 + X-Robots-Tag response. Robots blocking",
+    "# can be reconsidered later after search indexes have dropped those URLs.",
     "",
     `Sitemap: ${siteUrl}/sitemap.xml`,
     "",
@@ -143,7 +206,7 @@ async function main() {
     writeFile(path.join(publicDir, "robots.txt"), robots),
   ]);
 
-  console.log(`[seo] Wrote ${routes.length} sitemap URLs from ${bookRoutes.length} books and ${journalRoutes.length} journal posts.`);
+  console.log(`[seo] Wrote ${routes.length} sitemap URLs from ${categoryRoutes.length} categories, ${bookRoutes.length} books, and ${journalRoutes.length} journal posts.`);
 }
 
 main().catch((error) => {

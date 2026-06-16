@@ -5,6 +5,16 @@
   "outputDirectory": "build",
   "redirects": [
     {
+      "source": "/shop",
+      "destination": "/library",
+      "permanent": true
+    },
+    {
+      "source": "/shop/",
+      "destination": "/library",
+      "permanent": true
+    },
+    {
       "source": "/book/moby-dick-or-the-whale",
       "destination": "/library",
       "permanent": false
@@ -46,6 +56,122 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/product",
+      "destination": "/api/removed-content?path=/product"
+    },
+    {
+      "source": "/products",
+      "destination": "/api/removed-content?path=/products"
+    },
+    {
+      "source": "/product-category",
+      "destination": "/api/removed-content?path=/product-category"
+    },
+    {
+      "source": "/fashion",
+      "destination": "/api/removed-content?path=/fashion"
+    },
+    {
+      "source": "/clothing",
+      "destination": "/api/removed-content?path=/clothing"
+    },
+    {
+      "source": "/apparel",
+      "destination": "/api/removed-content?path=/apparel"
+    },
+    {
+      "source": "/product/:path*",
+      "destination": "/api/removed-content?path=/product/:path*"
+    },
+    {
+      "source": "/products/:path*",
+      "destination": "/api/removed-content?path=/products/:path*"
+    },
+    {
+      "source": "/product-category/:path*",
+      "destination": "/api/removed-content?path=/product-category/:path*"
+    },
+    {
+      "source": "/shop/:path*",
+      "destination": "/api/removed-content?path=/shop/:path*"
+    },
+    {
+      "source": "/fashion/:path*",
+      "destination": "/api/removed-content?path=/fashion/:path*"
+    },
+    {
+      "source": "/clothing/:path*",
+      "destination": "/api/removed-content?path=/clothing/:path*"
+    },
+    {
+      "source": "/apparel/:path*",
+      "destination": "/api/removed-content?path=/apparel/:path*"
+    },
+    {
+      "source": "/tag/fashion",
+      "destination": "/api/removed-content?path=/tag/fashion"
+    },
+    {
+      "source": "/tag/clothing",
+      "destination": "/api/removed-content?path=/tag/clothing"
+    },
+    {
+      "source": "/tag/apparel",
+      "destination": "/api/removed-content?path=/tag/apparel"
+    },
+    {
+      "source": "/patterned-wrap-dress",
+      "destination": "/api/removed-content?path=/patterned-wrap-dress"
+    },
+    {
+      "source": "/denim-jacket",
+      "destination": "/api/removed-content?path=/denim-jacket"
+    },
+    {
+      "source": "/denim-jackets",
+      "destination": "/api/removed-content?path=/denim-jackets"
+    },
+    {
+      "source": "/journal/patterned-wrap-dress",
+      "destination": "/api/removed-content?path=/journal/patterned-wrap-dress"
+    },
+    {
+      "source": "/journal/denim-jacket",
+      "destination": "/api/removed-content?path=/journal/denim-jacket"
+    },
+    {
+      "source": "/journal/denim-jackets",
+      "destination": "/api/removed-content?path=/journal/denim-jackets"
+    },
+    {
+      "source": "/blog/patterned-wrap-dress",
+      "destination": "/api/removed-content?path=/blog/patterned-wrap-dress"
+    },
+    {
+      "source": "/blog/denim-jacket",
+      "destination": "/api/removed-content?path=/blog/denim-jacket"
+    },
+    {
+      "source": "/blog/denim-jackets",
+      "destination": "/api/removed-content?path=/blog/denim-jackets"
+    },
+    {
+      "source": "/woocommerce/:path*",
+      "destination": "/api/removed-content?path=/woocommerce/:path*"
+    },
+    {
+      "source": "/sample-product/:path*",
+      "destination": "/api/removed-content?path=/sample-product/:path*"
+    },
+    {
+      "source": "/placeholder-product/:path*",
+      "destination": "/api/removed-content?path=/placeholder-product/:path*"
+    },
+    {
+      "source": "/lorem-ipsum/:path*",
+      "destination": "/api/removed-content?path=/lorem-ipsum/:path*"
+    },
     {
       "source": "/api/(.*)",
       "destination": "https://api.theearnalism.com/api/$1"

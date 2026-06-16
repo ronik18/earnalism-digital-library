@@ -7,6 +7,11 @@ Disallow: /reader/
 Disallow: /secure-reader-test
 Disallow: /login
 Disallow: /signup
+Disallow: /signin
 Disallow: /api/
+
+# Removed demo/ecommerce URLs are intentionally crawlable during deindexing
+# so crawlers can observe the 410 + X-Robots-Tag response. Robots blocking
+# can be reconsidered later after search indexes have dropped those URLs.
 
 Sitemap: https://theearnalism.com/sitemap.xml
