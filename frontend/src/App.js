@@ -100,8 +100,6 @@ export default function App() {
                 <Route path="/account" element={<Account />} />
                 {/* Legacy redirects */}
                 <Route path="/signin" element={<Navigate to="/login" replace />} />
-                <Route path="/shop" element={<Navigate to="/library" replace />} />
-                <Route path="/shop/:slug" element={<LegacyShopRedirect />} />
                 <Route path="/publishing" element={<Navigate to="/library" replace />} />
                 <Route path="/publishing/*" element={<Navigate to="/library" replace />} />
                 <Route path="*" element={<NotFound />} />
@@ -117,9 +115,4 @@ export default function App() {
       </SettingsProvider>
     </AuthProvider>
   );
-}
-
-function LegacyShopRedirect() {
-  const path = window.location.pathname.replace(/^\/shop\//, "/book/");
-  return <Navigate to={path} replace />;
 }

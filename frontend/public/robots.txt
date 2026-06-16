@@ -7,6 +7,17 @@ Disallow: /reader/
 Disallow: /secure-reader-test
 Disallow: /login
 Disallow: /signup
+Disallow: /signin
 Disallow: /api/
+Disallow: /product/
+Disallow: /products/
+Disallow: /product-category/
+Disallow: /shop/
+Disallow: /fashion/
+Disallow: /clothing/
+Disallow: /apparel/
+Disallow: /tag/fashion
+Disallow: /tag/clothing
+Disallow: /tag/apparel
 
 Sitemap: https://theearnalism.com/sitemap.xml

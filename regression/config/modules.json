@@ -70,5 +70,11 @@
     "moduleName": "Migration, Backup & Data Consistency",
     "mandatory": true,
     "allowedSkipModes": ["pr", "canary"]
+  },
+  {
+    "filePattern": "13-public-content-governance",
+    "moduleName": "Public Content Governance",
+    "mandatory": true,
+    "allowedSkipModes": []
   }
 ]
