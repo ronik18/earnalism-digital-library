@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { execFileSync } = require("child_process");
 const { request } = require("../utils/http");
 const { frontendUrl } = require("../utils/envGuard");
 const { fetchSitemap } = require("../utils/sitemap");
@@ -7,6 +8,10 @@ const removedContent = require("../../frontend/api/removed-content");
 
 const ROOT = path.resolve(__dirname, "../..");
 const vercelConfig = JSON.parse(fs.readFileSync(path.join(ROOT, "frontend/vercel.json"), "utf8"));
+const AUDIT_JSON_PATH = path.join(ROOT, "output", "catalog_audit", "catalog_audit_report.json");
+const AUDIT_MD_PATH = path.join(ROOT, "output", "catalog_audit", "catalog_cleanup_report.md");
+let auditReport;
+let auditMarkdown;
 
 const BLOCKED_TERMS = [
   "apparel",
@@ -57,6 +62,15 @@ function callRemovedContent({ path: requestPath, url = "/api/removed-content" })
 }
 
 describe("Public content governance", () => {
+  beforeAll(async () => {
+    execFileSync("node", [path.join(ROOT, "scripts", "audit-public-content.mjs")], {
+      cwd: ROOT,
+      stdio: "pipe",
+    });
+    auditReport = JSON.parse(fs.readFileSync(AUDIT_JSON_PATH, "utf8"));
+    auditMarkdown = fs.readFileSync(AUDIT_MD_PATH, "utf8");
+  });
+
   test("Vercel routes demo ecommerce paths to removed-content handler", () => {
     const rewrites = vercelConfig.rewrites || [];
     for (const source of ["/product", "/product/:path*", "/fashion", "/journal/denim-jackets", "/denim-jackets"]) {
@@ -140,5 +154,40 @@ describe("Public content governance", () => {
       expect(response.text).not.toMatch(/<meta name="robots" content="index, follow"/i);
       expect(response.text).not.toMatch(/Earnalism Digital Library \| Audiobooks, Bengali Books/i);
     }
+  });
+
+  test("catalog audit preserves query routes and understands robots visibility", () => {
+    const categoryRow = auditReport.rows.find((row) => row.path === "/library?category=gothic-fiction");
+    const readerRow = auditReport.rows.find((row) => row.content_type === "reader_page");
+    const removedRow = auditReport.rows.find((row) => row.path === "/product/patterned-wrap-dress");
+    expect(categoryRow).toBeTruthy();
+    expect(categoryRow.sitemap_status).toBe("included");
+    expect(readerRow).toBeTruthy();
+    expect(readerRow.robots_status).toBe("disallowed");
+    expect(readerRow.recommended_action).toBe("NOINDEX");
+    expect(removedRow).toBeTruthy();
+    expect(removedRow.robots_status).toBe("allowed");
+  });
+
+  test("catalog audit classifies removed routes, reader pages, and orphaned assets without mutation", () => {
+    const removedRow = auditReport.rows.find((row) => row.path === "/fashion");
+    const readerRow = auditReport.rows.find((row) => row.content_type === "reader_page");
+    const audioRow = auditReport.rows.find((row) => row.content_type === "audio_asset");
+    expect(removedRow).toBeTruthy();
+    expect(removedRow.public_status).toBe("removed");
+    expect(removedRow.recommended_action).toBe("DELETE");
+    expect(readerRow).toBeTruthy();
+    expect(readerRow.recommended_action).toBe("NOINDEX");
+    expect(audioRow).toBeTruthy();
+    expect(["KEEP", "REWRITE", "ARCHIVE"]).toContain(audioRow.recommended_action);
+    expect(auditReport.summary.mode).toBe("dry-run");
+  });
+
+  test("catalog audit markdown separates every action bucket", () => {
+    for (const section of ["## KEEP", "## REWRITE", "## NOINDEX", "## QUARANTINE", "## ARCHIVE", "## DELETE"]) {
+      expect(auditMarkdown).toContain(section);
+    }
+    expect(auditMarkdown).toContain("Dry-run only: no content was mutated or deleted");
+    expect(auditReport.rows.every((row) => row.url && row.title && row.content_type && row.public_status && row.sitemap_status && row.robots_status && row.recommended_action)).toBe(true);
   });
 });
