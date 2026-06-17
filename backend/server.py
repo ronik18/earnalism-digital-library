@@ -39,6 +39,11 @@ from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorGridFSBucket
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
 from pymongo.errors import AutoReconnect, ServerSelectionTimeoutError
 
+try:
+    from rights_engine import RIGHTS_REPORT_FILENAMES, rights_publish_blockers, rights_report_csv, rights_report_rows
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.rights_engine import RIGHTS_REPORT_FILENAMES, rights_publish_blockers, rights_report_csv, rights_report_rows
+
 
 # ---------- Environment / DB ----------
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "production").strip().lower()
@@ -1387,6 +1392,9 @@ def _publish_blockers(book: dict) -> List[str]:
     if not (book.get("cover_image_url") or book.get("cover_url")):
         blockers.append("Front cover is required before publishing.")
 
+    for issue in rights_publish_blockers(book):
+        blockers.append(f"Rights verification: {issue}")
+
     for chapter in book.get("chapters") or []:
         status = chapter.get("processing_status") or "ready"
         if status != "ready":
@@ -1399,6 +1407,20 @@ def _assert_publishable(book: dict) -> None:
     blockers = _publish_blockers(book)
     if blockers:
         raise HTTPException(status_code=400, detail={"message": "Book is not ready to publish.", "issues": blockers})
+
+
+def _assert_public_rights_approved(book: dict, asset_label: str) -> None:
+    if not book.get("is_published"):
+        return
+    blockers = rights_publish_blockers(book)
+    if blockers:
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "message": f"{asset_label} cannot be published without approved rights metadata.",
+                "issues": [f"Rights verification: {issue}" for issue in blockers],
+            },
+        )
 
 
 BOOK_TEMPLATE_LABELS = {
@@ -2046,6 +2068,7 @@ class Book(BaseModel):
     audio_asset_slug: str = ""
     audiobook_assets: Dict[str, str] = Field(default_factory=dict)
     audiobook: Dict[str, Any] = Field(default_factory=dict)
+    rights_metadata: Dict[str, Any] = Field(default_factory=dict)
     is_published: bool = True
     created_at: str = Field(default_factory=now_iso)
 
@@ -2583,6 +2606,8 @@ async def initialize_database_indexes() -> None:
     await db.books.create_index([("slug", 1), ("is_published", 1)])
     await db.books.create_index([("is_published", 1), ("created_at", -1)])
     await db.books.create_index([("category_slug", 1), ("is_published", 1), ("created_at", -1)])
+    await db.books.create_index([("rights_metadata.verification_status", 1), ("rights_metadata.rights_tier", 1)])
+    await db.books.create_index([("rights_metadata.publication_region", 1), ("is_published", 1)])
 
     await db.categories.create_index("slug", unique=True)
     await db.categories.create_index([("order", 1), ("slug", 1)])
@@ -3780,12 +3805,11 @@ async def admin_create_book(payload: BookIn, _=Depends(require_admin)):
     if await db.books.find_one({"slug": slug}):
         raise HTTPException(status_code=400, detail="Slug already exists")
     book = Book(id=book_id, slug=slug, **data)
-    _assert_publishable(book.model_dump())
     doc = book.model_dump()
-    if rights_metadata:
-        doc["rights_metadata"] = rights_metadata
+    doc["rights_metadata"] = rights_metadata
+    _assert_publishable(doc)
     await db.books.insert_one(doc)
-    return book
+    return doc
 
 @api.put("/admin/books/{slug}", response_model=Book)
 async def admin_update_book(slug: str, payload: BookIn, _=Depends(require_admin)):
@@ -3793,6 +3817,7 @@ async def admin_update_book(slug: str, payload: BookIn, _=Depends(require_admin)
     if not existing:
         raise HTTPException(status_code=404, detail="Book not found")
     update = payload.model_dump()
+    rights_metadata = update.pop("rights_metadata", None)
     update["title"] = normalize_text(update.get("title", "")).strip()
     if not update["title"]:
         raise HTTPException(status_code=400, detail="Title is required")
@@ -3809,7 +3834,11 @@ async def admin_update_book(slug: str, payload: BookIn, _=Depends(require_admin)
         raise HTTPException(status_code=400, detail="Slug already exists")
     update["slug"] = new_slug
     candidate = {**existing, **update}
+    if rights_metadata:
+        candidate["rights_metadata"] = rights_metadata
     _assert_publishable(candidate)
+    if rights_metadata:
+        update["rights_metadata"] = rights_metadata
     await db.books.update_one({"slug": slug}, {"$set": update})
     refreshed = await db.books.find_one({"slug": new_slug}, {"_id": 0})
     return refreshed
@@ -3823,6 +3852,8 @@ async def admin_update_book_audiobook(slug: str, payload: BookAudiobookIn, _=Dep
 
     provider = normalize_text(payload.audiobook_provider).strip()[:80].lower()
     assets = _safe_audiobook_assets(payload.audiobook_assets)
+    if payload.audiobook_enabled or payload.generate_audiobook or assets:
+        _assert_public_rights_approved(existing, "Audiobook")
     audiobook_doc = {
         **(_book_audiobook_doc(existing)),
         "url": assets.get("mp3", ""),
@@ -3865,6 +3896,20 @@ async def admin_list_books_summary(_=Depends(require_admin)):
 @api.get("/admin/books/{slug}", response_model=Book)
 async def admin_get_book(slug: str, _=Depends(require_admin)):
     return await _load_book_or_404(slug)
+
+
+@api.get("/admin/rights/reports/{filename}")
+async def admin_rights_report(filename: str, _=Depends(require_admin)):
+    report_kind = next((kind for kind, expected in RIGHTS_REPORT_FILENAMES.items() if expected == filename), "")
+    if not report_kind:
+        raise HTTPException(status_code=404, detail="Unknown rights report")
+    books = await db.books.find({}, {"_id": 0, "chapters.content": 0}).sort("created_at", -1).to_list(5000)
+    rows = rights_report_rows(books, report_kind)
+    return Response(
+        rights_report_csv(rows),
+        media_type="text/csv",
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
 
 
 @api.post("/upload_docx")
@@ -3940,6 +3985,7 @@ async def _load_book_or_404(slug: str) -> dict:
 @api.post("/admin/books/{slug}/chapters", response_model=Book)
 async def admin_add_chapter(slug: str, payload: ChapterIn, _=Depends(require_admin)):
     book = await _load_book_or_404(slug)
+    _assert_public_rights_approved(book, "Source text")
     existing = book.get("chapters", []) or []
     next_order = max([c.get("order", 0) for c in existing], default=-1) + 1
     title = normalize_text(payload.title).strip()
@@ -3974,6 +4020,8 @@ async def admin_reorder_chapters(slug: str, payload: ChapterReorderIn, _=Depends
 
 @api.put("/admin/books/{slug}/chapters/{cid}", response_model=Book)
 async def admin_update_chapter(slug: str, cid: str, payload: ChapterIn, _=Depends(require_admin)):
+    book = await _load_book_or_404(slug)
+    _assert_public_rights_approved(book, "Source text")
     title = normalize_text(payload.title).strip()
     if not title:
         raise HTTPException(status_code=400, detail="Chapter title is required")
@@ -4038,6 +4086,7 @@ async def admin_upload_cover(
     if len(body) > 10 * 1024 * 1024:
         raise HTTPException(status_code=400, detail="Cover must be under 10MB")
     book = await _load_book_or_404(slug)
+    _assert_public_rights_approved(book, "Visual asset")
     _ensure_cloudinary()
     try:
         from utils.content_processor import process_book_cover  # type: ignore
@@ -4093,6 +4142,7 @@ async def admin_upload_chapter_file(
     if len(body) > 50 * 1024 * 1024:
         raise HTTPException(status_code=400, detail="Chapter file must be under 50MB")
     book = await _load_book_or_404(slug)
+    _assert_public_rights_approved(book, "Source text")
     chapters = book.get("chapters") or []
     target = next((c for c in chapters if c.get("id") == chapter_id), None)
     if not target:
