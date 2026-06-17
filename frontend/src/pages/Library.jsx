@@ -5,6 +5,8 @@ import { api } from "../lib/api";
 import BookCard from "../components/BookCard";
 import BookCoverImage from "../components/BookCoverImage";
 import useSEO from "../hooks/useSEO";
+import JsonLd from "../components/JsonLd";
+import { SITE_URL } from "../hooks/useSEO";
 
 const LIBRARY_OG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=85";
 
@@ -16,11 +18,59 @@ export default function Library() {
   const [q, setQ] = useState(params.get("q") || "");
   const debouncedQ = useDebouncedValue(q, 300);
   const cat = params.get("category") || "all";
+  const currentCategory = categories.find((item) => item.slug === cat);
+  const currentCategoryName = currentCategory?.name || (cat !== "all" ? categoryTitle(cat) : "");
+  const isSearchPage = Boolean(debouncedQ);
+  const isCategoryPage = cat !== "all" && Boolean(currentCategoryName);
+  const libraryTitle = isSearchPage
+    ? `Search Earnalism for "${debouncedQ}" | Digital Library`
+    : isCategoryPage
+      ? `${currentCategoryName} Books & Audiobooks | Earnalism Digital Library`
+      : "Library | Earnalism Digital Library Books, Audiobooks & Bengali Classics";
+  const libraryDescription = isSearchPage
+    ? "Search the Earnalism Digital Library for books, audiobooks, Bengali classics, English literature, and flexible reading-time access."
+    : isCategoryPage
+      ? `Browse ${currentCategoryName} books and audiobooks on Earnalism. Preview first, then read or listen with flexible reading-time access.`
+      : "Browse Earnalism's premium digital library of Bengali books, English classics, audiobooks, and flexible reading-time access.";
+  const libraryCanonicalPath = isCategoryPage ? `/library?category=${encodeURIComponent(cat)}` : "/library";
+  const libraryHeading = isSearchPage
+    ? `Search results for "${debouncedQ}"`
+    : isCategoryPage
+      ? `${currentCategoryName} books — chosen for depth.`
+      : "A small, deliberate shelf — chosen for depth.";
+  const libraryIntro = isCategoryPage
+    ? `Preview ${currentCategoryName.toLowerCase()} titles, then continue with flexible reading-time access when a book has earned your attention.`
+    : "Buy reading time. Read beautifully. Return whenever you wish. New titles arrive only when they are ready to be read for years.";
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+      { "@type": "ListItem", "position": 2, "name": "Library", "item": `${SITE_URL}/library` },
+      ...(isCategoryPage ? [{
+        "@type": "ListItem",
+        "position": 3,
+        "name": currentCategoryName,
+        "item": `${SITE_URL}${libraryCanonicalPath}`,
+      }] : []),
+    ],
+  };
 
   useSEO({
-    title: "The Library — The Earnalism Digital Library",
-    description: "Browse Bengali classics, literary fiction, young readers, business, technology and AI, history, adventure, science fiction, and gothic fiction. Buy reading time. Read beautifully.",
+    title: libraryTitle,
+    description: libraryDescription,
     image: LIBRARY_OG,
+    imageAlt: "Earnalism digital library shelves for books and audiobooks",
+    canonicalPath: libraryCanonicalPath,
+    robots: isSearchPage ? "noindex, follow" : "index, follow",
+    keywords: [
+      "Earnalism",
+      "digital library",
+      "audiobooks",
+      "Bengali books",
+      "reading-time access",
+      currentCategoryName,
+    ].filter(Boolean).join(", "),
   });
 
   useEffect(() => {
@@ -56,10 +106,11 @@ export default function Library() {
 
   return (
     <div data-testid="library-page">
+      <JsonLd id="library-breadcrumb" data={breadcrumbSchema} />
       <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-20 sm:pt-28 pb-12 sm:pb-16">
         <div className="italic-eyebrow mb-4">The Library &middot; Volume I</div>
-        <h1 className="font-serif-light text-4xl sm:text-6xl lg:text-[4.25rem] text-burgundy tracking-tight max-w-3xl text-balance leading-[1.02]">A small, deliberate shelf — <span className="italic-accent">chosen for depth.</span></h1>
-        <p className="text-charcoal-soft mt-7 max-w-xl leading-[1.85] font-light">Buy reading time. Read beautifully. Return whenever you wish. New titles arrive only when they are ready to be read for years.</p>
+        <h1 className="font-serif-light text-4xl sm:text-6xl lg:text-[4.25rem] text-burgundy tracking-tight max-w-3xl text-balance leading-[1.02]">{libraryHeading}</h1>
+        <p className="text-charcoal-soft mt-7 max-w-xl leading-[1.85] font-light">{libraryIntro}</p>
       </section>
 
       <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-6">
@@ -126,6 +177,14 @@ export default function Library() {
       </section>
     </div>
   );
+}
+
+function categoryTitle(slug = "") {
+  return String(slug || "")
+    .split("-")
+    .filter(Boolean)
+    .map((word) => (word.length <= 2 ? word.toUpperCase() : `${word.charAt(0).toUpperCase()}${word.slice(1)}`))
+    .join(" ");
 }
 
 function SingleBookSpotlight({ book }) {

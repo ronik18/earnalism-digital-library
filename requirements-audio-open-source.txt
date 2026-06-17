@@ -6,6 +6,7 @@
 
 # English local neural TTS. Requires a Piper .onnx voice model downloaded
 # separately and passed with --piper-model or PIPER_MODEL_PATH.
+edge-tts>=7.0.0
 piper-tts>=1.2.0
 
 # Bengali catalog TTS uses facebook/mms-tts-ben through transformers. The

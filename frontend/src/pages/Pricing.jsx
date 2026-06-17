@@ -31,6 +31,8 @@ export default function Pricing() {
   useSEO({
     title: "Reading Time — The Earnalism Digital Library",
     description: "Reading-time packs at The Earnalism. Buy minutes, read at your own pace, and return whenever you wish.",
+    robots: "noindex, follow",
+    canonicalPath: "/pricing",
   });
   const { user, refreshUser } = useAuth();
   const [packs, setPacks] = useState([]);

@@ -66,6 +66,7 @@ __pycache__/
 venv/
 .venv/
 .venv-audio/
+.venv-edge/
 
 # Development tools
 chainlit.md
