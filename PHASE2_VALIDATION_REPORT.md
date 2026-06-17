@@ -82,6 +82,15 @@ The fetched raw files showed normal LF line counts before this cleanup commit:
 - `scripts/rights_audit.py`: 61 lines, 60 LF bytes, 0 CR bytes
 - `scripts/check-hidden-unicode.py`: 84 lines, 83 LF bytes, 0 CR bytes
 
+Raw GitHub download verification output from the final PR branch also showed:
+
+- `scripts/check-hidden-unicode.py`: 91 lines
+- `scripts/rights_audit.py`: 60 lines
+- `backend/rights_engine.py`: 242 lines
+- `backend/tests/test_rights_engine.py`: 330 lines
+
+The raw-downloaded Python files were compiled with `py_compile` and passed.
+
 No hidden/bidirectional Unicode warning location was found in the requested
 files. A broader scan for Unicode control/format categories also found zero
 suspicious characters in the requested files.
