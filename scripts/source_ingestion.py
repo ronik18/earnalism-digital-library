@@ -76,12 +76,26 @@ def load_text(path: Path | None, *, sample: bool) -> str:
     return path.read_text(encoding="utf-8")
 
 
-def write_reports(record, output_dir: Path) -> tuple[Path, Path, Path]:
+def write_reports(
+    record,
+    output_dir: Path,
+    *,
+    include_text: bool = False,
+    text_preview_chars: int = 1000,
+) -> tuple[Path, Path, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     json_path = output_dir / "source_ingestion_report.json"
     csv_path = output_dir / "source_ingestion_report.csv"
     md_path = output_dir / "source_ingestion_report.md"
-    json_path.write_text(json.dumps(record.as_dict(), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    json_path.write_text(
+        json.dumps(
+            record.as_dict(include_text=include_text, text_preview_chars=text_preview_chars),
+            indent=2,
+            ensure_ascii=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     csv_path.write_text(ingestion_report_csv([record]), encoding="utf-8")
     md_path.write_text(ingestion_report_markdown([record]), encoding="utf-8")
     return json_path, csv_path, md_path
@@ -99,8 +113,14 @@ def main() -> int:
     parser.add_argument("--existing-hash", action="append", default=[], help="Existing source hash to dedupe.")
     parser.add_argument("--output-dir", type=Path, default=Path("output/source_ingestion"))
     parser.add_argument("--sample", action="store_true", help="Run a deterministic local sample.")
-    parser.add_argument("--commit", action="store_true", help="Marks reports as non-dry-run only; no production mutation occurs.")
+    parser.add_argument("--include-text", action="store_true", help="Include full raw and cleaned text in JSON output.")
+    parser.add_argument("--text-preview-chars", type=int, default=1000, help="Preview characters to include by default.")
+    parser.add_argument("--commit", action="store_true", help=argparse.SUPPRESS)
+    parser.add_argument("--publish", action="store_true", help=argparse.SUPPRESS)
+    parser.add_argument("--write", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
+    if args.commit or args.publish or args.write:
+        parser.error("Phase 4 source ingestion is dry-run only; commit/publish/write options are not supported.")
 
     book = load_book(args.book, sample=args.sample)
     raw_text = load_text(args.text_file, sample=args.sample)
@@ -114,10 +134,15 @@ def main() -> int:
             language=args.language,
             connector=args.connector,
             previous_source_hashes=set(args.existing_hash),
-            dry_run=not args.commit,
+            dry_run=True,
         )
     )
-    json_path, csv_path, md_path = write_reports(record, args.output_dir)
+    json_path, csv_path, md_path = write_reports(
+        record,
+        args.output_dir,
+        include_text=args.include_text,
+        text_preview_chars=args.text_preview_chars,
+    )
     print(
         "Source ingestion dry-run complete: "
         f"status={record.ingestion_status} "

@@ -14,6 +14,8 @@ Each ingestion record includes:
 - `source_name`
 - `source_license`
 - `source_hash`
+- `content_hash`
+- `provenance_hash`
 - `raw_text`
 - `cleaned_text`
 - `language`
@@ -21,7 +23,7 @@ Each ingestion record includes:
 - `ingestion_status`
 - `ingestion_log`
 
-Raw source text and cleaned reader-ready text are stored separately in the local report output.
+Raw source text and cleaned reader-ready text are stored separately in memory. Local JSON reports include previews by default, not full source text, so routine dry-runs do not create large text artifacts unless explicitly requested.
 
 ## Connectors
 
@@ -53,7 +55,11 @@ Ingestion is blocked when:
 
 ## Hashing And Dedupe
 
-`source_hash` is a SHA-256 hash of the normalized raw source text. If an existing source hash is supplied and matches the new source, the record status becomes `UNCHANGED` and downstream regeneration is skipped.
+- `source_hash` is the legacy source identity used for unchanged-source dedupe. In Phase 4 it is equal to `content_hash` for backward compatibility with existing dry-run calls.
+- `content_hash` is a SHA-256 hash of normalized raw source text.
+- `provenance_hash` is a SHA-256 hash of `source_url`, `source_name`, `source_license`, and `content_hash`.
+
+If an existing source/content/provenance hash is supplied and matches the new source, the record status becomes `UNCHANGED` and `downstream_regeneration_required` is `false`.
 
 ## Cleanup
 
@@ -74,12 +80,34 @@ Safe sample:
 npm run source:ingest
 ```
 
+By default this writes metadata, hashes, character counts, chapter metadata, and text previews only.
+
 Local book and text:
 
 ```bash
 python3 scripts/source_ingestion.py \
   --book path/to/book-with-rights.json \
   --text-file path/to/source.txt \
+  --output-dir output/source_ingestion
+```
+
+Include full raw and cleaned text only when the local reviewer explicitly needs it:
+
+```bash
+python3 scripts/source_ingestion.py \
+  --book path/to/book-with-rights.json \
+  --text-file path/to/source.txt \
+  --include-text \
+  --output-dir output/source_ingestion
+```
+
+Limit preview length:
+
+```bash
+python3 scripts/source_ingestion.py \
+  --book path/to/book-with-rights.json \
+  --text-file path/to/source.txt \
+  --text-preview-chars 500 \
   --output-dir output/source_ingestion
 ```
 
@@ -102,6 +130,8 @@ The CLI writes:
 - `output/source_ingestion/source_ingestion_report.md`
 
 These are local dry-run reports. They are not production publications.
+
+The CLI is dry-run only. `--commit`, `--publish`, and `--write` are rejected.
 
 ## Limitations
 

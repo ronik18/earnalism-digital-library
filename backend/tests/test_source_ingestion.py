@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 from backend.source_ingestion import (
@@ -8,6 +10,7 @@ from backend.source_ingestion import (
     clean_source_text,
     detect_chapters,
     detect_language,
+    hash_provenance,
     hash_source,
     ingest_source,
 )
@@ -75,7 +78,8 @@ def test_ingestion_accepts_rights_approved_source_and_keeps_raw_and_cleaned_text
     assert "Project Gutenberg" in record.raw_text
     assert "Project Gutenberg" not in record.cleaned_text
     assert len(record.chapter_segments) == 2
-    assert record.downstream_artifacts_regenerated is True
+    assert record.downstream_regeneration_required is True
+    assert record.downstream_artifacts_regenerated is False
 
 
 def test_ingestion_accepts_pending_safe_rights_for_dry_run_review():
@@ -129,6 +133,9 @@ def test_source_hash_prevents_duplicate_downstream_regeneration():
 
     assert record.ingestion_status == "UNCHANGED"
     assert record.source_hash == existing_hash
+    assert record.content_hash == existing_hash
+    assert record.provenance_hash
+    assert record.downstream_regeneration_required is False
     assert record.downstream_artifacts_regenerated is False
     assert any("downstream regeneration skipped" in item for item in record.ingestion_log)
 
@@ -171,7 +178,23 @@ def test_scanned_pdf_placeholder_does_not_attempt_ocr():
 
     assert record.connector == "scanned-pdf-placeholder"
     assert record.ingestion_status == "PENDING_OCR"
+    assert record.downstream_regeneration_required is False
     assert record.downstream_artifacts_regenerated is False
+
+
+def test_scanned_pdf_with_blocked_rights_returns_blocked_rights_before_pending_ocr():
+    book = approved_book(
+        source_url="https://example.test/scan.pdf",
+        source_name="Manual scan",
+        rights_tier="C",
+        blocked_reason="unclear source",
+    )
+
+    record = ingest_source(SourceIngestionInput(book=book, connector="auto"))
+
+    assert record.connector == "scanned-pdf-placeholder"
+    assert record.ingestion_status == "BLOCKED_RIGHTS"
+    assert record.rights_status == "RIGHTS_BLOCKED"
 
 
 def test_language_detection_supports_english_bengali_and_unknown():
@@ -204,7 +227,63 @@ def test_cli_report_writer_outputs_json_csv_and_markdown(tmp_path: Path):
     assert csv_path.exists()
     assert md_path.exists()
     payload = json.loads(json_path.read_text(encoding="utf-8"))
-    assert payload["raw_text"]
-    assert payload["cleaned_text"]
+    assert "raw_text" not in payload
+    assert "cleaned_text" not in payload
+    assert payload["raw_text_preview"]
+    assert payload["cleaned_text_preview"]
+    assert payload["content_hash"] == record.content_hash
+    assert payload["provenance_hash"] == record.provenance_hash
     assert "ingestion_status" in csv_path.read_text(encoding="utf-8")
     assert "Source Ingestion Dry-Run Report" in md_path.read_text(encoding="utf-8")
+
+
+def test_include_text_report_writer_outputs_full_raw_and_cleaned_text(tmp_path: Path):
+    record = ingest_source(SourceIngestionInput(book=approved_book(), raw_text=raw_source_text()))
+
+    json_path, _csv_path, _md_path = write_reports(record, tmp_path, include_text=True)
+
+    payload = json.loads(json_path.read_text(encoding="utf-8"))
+    assert payload["raw_text"] == record.raw_text
+    assert payload["cleaned_text"] == record.cleaned_text
+    assert payload["chapter_segments"][0]["content"]
+
+
+def test_text_preview_chars_limits_default_json_preview(tmp_path: Path):
+    record = ingest_source(SourceIngestionInput(book=approved_book(), raw_text=raw_source_text()))
+
+    json_path, _csv_path, _md_path = write_reports(record, tmp_path, text_preview_chars=12)
+
+    payload = json.loads(json_path.read_text(encoding="utf-8"))
+    assert len(payload["raw_text_preview"]) == 12
+    assert len(payload["cleaned_text_preview"]) <= 12
+
+
+def test_provenance_hash_includes_source_metadata_and_content_hash():
+    text_hash = hash_source(raw_source_text())
+    first = hash_provenance(
+        source_url="https://www.gutenberg.org/ebooks/1342",
+        source_name="Project Gutenberg",
+        source_license="Public domain",
+        content_hash=text_hash,
+    )
+    second = hash_provenance(
+        source_url="https://example.test/ebooks/1342",
+        source_name="Manual source",
+        source_license="Public domain",
+        content_hash=text_hash,
+    )
+
+    assert first != second
+
+
+def test_cli_rejects_non_dry_run_commit_option():
+    result = subprocess.run(
+        [sys.executable, "scripts/source_ingestion.py", "--sample", "--commit"],
+        cwd=Path(__file__).resolve().parents[2],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode != 0
+    assert "dry-run only" in result.stderr

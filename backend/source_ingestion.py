@@ -17,6 +17,8 @@ SOURCE_INGESTION_FIELDS = [
     "source_name",
     "source_license",
     "source_hash",
+    "content_hash",
+    "provenance_hash",
     "raw_text",
     "cleaned_text",
     "language",
@@ -69,6 +71,18 @@ class ChapterSegment:
             "word_count": len(self.content.split()),
         }
 
+    def as_metadata(self, *, include_text: bool = False, text_preview_chars: int = 1000) -> dict[str, Any]:
+        row = {
+            "title": self.title,
+            "order": self.order,
+            "character_count": len(self.content),
+            "word_count": len(self.content.split()),
+            "content_preview": preview_text(self.content, text_preview_chars),
+        }
+        if include_text:
+            row["content"] = self.content
+        return row
+
 
 @dataclass
 class SourceIngestionRecord:
@@ -76,6 +90,8 @@ class SourceIngestionRecord:
     source_name: str
     source_license: str
     source_hash: str
+    content_hash: str
+    provenance_hash: str
     raw_text: str
     cleaned_text: str
     language: str
@@ -84,28 +100,44 @@ class SourceIngestionRecord:
     ingestion_log: list[str] = field(default_factory=list)
     connector: str = "manual-text"
     rights_status: str = ""
+    downstream_regeneration_required: bool = False
     downstream_artifacts_regenerated: bool = False
     dry_run: bool = True
     generated_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
-    def as_dict(self, *, include_text: bool = True) -> dict[str, Any]:
+    def as_dict(self, *, include_text: bool = False, text_preview_chars: int = 1000) -> dict[str, Any]:
         row = {
             "source_url": self.source_url,
             "source_name": self.source_name,
             "source_license": self.source_license,
             "source_hash": self.source_hash,
-            "raw_text": self.raw_text if include_text else "",
-            "cleaned_text": self.cleaned_text if include_text else "",
+            "content_hash": self.content_hash,
+            "provenance_hash": self.provenance_hash,
+            "raw_character_count": len(self.raw_text),
+            "cleaned_character_count": len(self.cleaned_text),
+            "raw_text_preview": preview_text(self.raw_text, text_preview_chars),
+            "cleaned_text_preview": preview_text(self.cleaned_text, text_preview_chars),
             "language": self.language,
-            "chapter_segments": self.chapter_segments,
+            "chapter_segments": [
+                ChapterSegment(
+                    title=str(segment.get("title") or ""),
+                    order=int(segment.get("order") or 0),
+                    content=str(segment.get("content") or ""),
+                ).as_metadata(include_text=include_text, text_preview_chars=text_preview_chars)
+                for segment in self.chapter_segments
+            ],
             "ingestion_status": self.ingestion_status,
             "ingestion_log": self.ingestion_log,
             "connector": self.connector,
             "rights_status": self.rights_status,
+            "downstream_regeneration_required": self.downstream_regeneration_required,
             "downstream_artifacts_regenerated": self.downstream_artifacts_regenerated,
             "dry_run": self.dry_run,
             "generated_at": self.generated_at,
         }
+        if include_text:
+            row["raw_text"] = self.raw_text
+            row["cleaned_text"] = self.cleaned_text
         return row
 
 
@@ -125,6 +157,13 @@ class SourceIngestionInput:
 def ingest_source(payload: SourceIngestionInput) -> SourceIngestionRecord:
     source_url, source_name, source_license = source_metadata(payload)
     connector = normalize_connector(payload.connector, source_url, payload.raw_text)
+    content_hash = hash_source(payload.raw_text)
+    provenance_hash = hash_provenance(
+        source_url=source_url,
+        source_name=source_name,
+        source_license=source_license,
+        content_hash=content_hash,
+    )
     rights_status, blockers = ingestion_rights_blockers(
         payload.book,
         source_url=source_url,
@@ -133,32 +172,14 @@ def ingest_source(payload: SourceIngestionInput) -> SourceIngestionRecord:
     )
     ingestion_log = [f"connector={connector}", f"rights_status={rights_status}"]
 
-    if connector == "scanned-pdf-placeholder":
-        source_hash = hash_source(payload.raw_text or source_url)
-        ingestion_log.append("Scanned PDF ingestion is a placeholder until OCR is implemented.")
-        return SourceIngestionRecord(
-            source_url=source_url,
-            source_name=source_name,
-            source_license=source_license,
-            source_hash=source_hash,
-            raw_text=payload.raw_text,
-            cleaned_text="",
-            language=payload.language or "unknown",
-            ingestion_status="PENDING_OCR",
-            ingestion_log=ingestion_log,
-            connector=connector,
-            rights_status=rights_status,
-            downstream_artifacts_regenerated=False,
-            dry_run=payload.dry_run,
-        )
-
     if blockers:
-        source_hash = hash_source(payload.raw_text)
         return SourceIngestionRecord(
             source_url=source_url,
             source_name=source_name,
             source_license=source_license,
-            source_hash=source_hash,
+            source_hash=content_hash,
+            content_hash=content_hash,
+            provenance_hash=provenance_hash,
             raw_text=payload.raw_text,
             cleaned_text="",
             language=payload.language or "unknown",
@@ -166,6 +187,28 @@ def ingest_source(payload: SourceIngestionInput) -> SourceIngestionRecord:
             ingestion_log=[*ingestion_log, *blockers],
             connector=connector,
             rights_status=rights_status,
+            downstream_regeneration_required=False,
+            downstream_artifacts_regenerated=False,
+            dry_run=payload.dry_run,
+        )
+
+    if connector == "scanned-pdf-placeholder":
+        ingestion_log.append("Scanned PDF ingestion is a placeholder until OCR is implemented.")
+        return SourceIngestionRecord(
+            source_url=source_url,
+            source_name=source_name,
+            source_license=source_license,
+            source_hash=content_hash,
+            content_hash=content_hash,
+            provenance_hash=provenance_hash,
+            raw_text=payload.raw_text,
+            cleaned_text="",
+            language=payload.language or "unknown",
+            ingestion_status="PENDING_OCR",
+            ingestion_log=ingestion_log,
+            connector=connector,
+            rights_status=rights_status,
+            downstream_regeneration_required=False,
             downstream_artifacts_regenerated=False,
             dry_run=payload.dry_run,
         )
@@ -175,7 +218,9 @@ def ingest_source(payload: SourceIngestionInput) -> SourceIngestionRecord:
             source_url=source_url,
             source_name=source_name,
             source_license=source_license,
-            source_hash=hash_source(""),
+            source_hash=content_hash,
+            content_hash=content_hash,
+            provenance_hash=provenance_hash,
             raw_text="",
             cleaned_text="",
             language=payload.language or "unknown",
@@ -183,27 +228,29 @@ def ingest_source(payload: SourceIngestionInput) -> SourceIngestionRecord:
             ingestion_log=[*ingestion_log, "raw_text is required for text ingestion."],
             connector=connector,
             rights_status=rights_status,
+            downstream_regeneration_required=False,
             downstream_artifacts_regenerated=False,
             dry_run=payload.dry_run,
         )
 
-    source_hash = hash_source(payload.raw_text)
     cleaned_text = clean_source_text(payload.raw_text, connector=connector)
     language = payload.language or detect_language(cleaned_text)
     segments = [segment.as_dict() for segment in detect_chapters(cleaned_text)]
-    unchanged = source_hash in payload.previous_source_hashes
+    unchanged = bool({content_hash, provenance_hash} & payload.previous_source_hashes)
     ingestion_status = "UNCHANGED" if unchanged else "READY"
-    downstream_artifacts_regenerated = not unchanged
+    downstream_regeneration_required = not unchanged
     if unchanged:
-        ingestion_log.append("source_hash matches an existing source; downstream regeneration skipped.")
+        ingestion_log.append("source_hash/content_hash/provenance_hash matches an existing source; downstream regeneration skipped.")
     else:
-        ingestion_log.append("source_hash is new; downstream artifacts may be regenerated after review.")
+        ingestion_log.append("source_hash is new; downstream regeneration is required after review.")
 
     return SourceIngestionRecord(
         source_url=source_url,
         source_name=source_name,
         source_license=source_license,
-        source_hash=source_hash,
+        source_hash=content_hash,
+        content_hash=content_hash,
+        provenance_hash=provenance_hash,
         raw_text=payload.raw_text,
         cleaned_text=cleaned_text,
         language=language,
@@ -212,7 +259,8 @@ def ingest_source(payload: SourceIngestionInput) -> SourceIngestionRecord:
         ingestion_log=ingestion_log,
         connector=connector,
         rights_status=rights_status,
-        downstream_artifacts_regenerated=downstream_artifacts_regenerated,
+        downstream_regeneration_required=downstream_regeneration_required,
+        downstream_artifacts_regenerated=False,
         dry_run=payload.dry_run,
     )
 
@@ -294,6 +342,23 @@ def hash_source(raw_text: str) -> str:
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
 
 
+def hash_provenance(*, source_url: str, source_name: str, source_license: str, content_hash: str) -> str:
+    normalized = "\n".join([
+        source_url.strip(),
+        source_name.strip(),
+        source_license.strip(),
+        content_hash.strip(),
+    ])
+    return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+
+
+def preview_text(text: str, limit: int = 1000) -> str:
+    limit = max(0, int(limit or 0))
+    if not text or limit == 0:
+        return ""
+    return text[:limit]
+
+
 def clean_source_text(raw_text: str, *, connector: str = "manual-text") -> str:
     text = raw_text.replace("\r\n", "\n").replace("\r", "\n")
     if connector == "project-gutenberg":
@@ -361,6 +426,8 @@ def ingestion_report_csv(records: Iterable[SourceIngestionRecord]) -> str:
         "source_name",
         "source_license",
         "source_hash",
+        "content_hash",
+        "provenance_hash",
         "language",
         "connector",
         "rights_status",
@@ -368,6 +435,7 @@ def ingestion_report_csv(records: Iterable[SourceIngestionRecord]) -> str:
         "chapter_count",
         "raw_character_count",
         "cleaned_character_count",
+        "downstream_regeneration_required",
         "downstream_artifacts_regenerated",
         "dry_run",
         "ingestion_log",
@@ -381,6 +449,8 @@ def ingestion_report_csv(records: Iterable[SourceIngestionRecord]) -> str:
             "source_name": record.source_name,
             "source_license": record.source_license,
             "source_hash": record.source_hash,
+            "content_hash": record.content_hash,
+            "provenance_hash": record.provenance_hash,
             "language": record.language,
             "connector": record.connector,
             "rights_status": record.rights_status,
@@ -388,6 +458,7 @@ def ingestion_report_csv(records: Iterable[SourceIngestionRecord]) -> str:
             "chapter_count": len(record.chapter_segments),
             "raw_character_count": len(record.raw_text),
             "cleaned_character_count": len(record.cleaned_text),
+            "downstream_regeneration_required": record.downstream_regeneration_required,
             "downstream_artifacts_regenerated": record.downstream_artifacts_regenerated,
             "dry_run": record.dry_run,
             "ingestion_log": " | ".join(record.ingestion_log),
@@ -401,8 +472,8 @@ def ingestion_report_markdown(records: list[SourceIngestionRecord]) -> str:
         "",
         "No production content was mutated. Source text and cleaned text are stored separately in this report.",
         "",
-        "| Source | Connector | Rights | Status | Language | Chapters | Hash |",
-        "| --- | --- | --- | --- | --- | ---: | --- |",
+        "| Source | Connector | Rights | Status | Language | Chapters | Regeneration Required | Content Hash | Provenance Hash |",
+        "| --- | --- | --- | --- | --- | ---: | --- | --- | --- |",
     ]
     for record in records:
         lines.append(
@@ -413,7 +484,9 @@ def ingestion_report_markdown(records: list[SourceIngestionRecord]) -> str:
             f"{record.ingestion_status} | "
             f"{record.language} | "
             f"{len(record.chapter_segments)} | "
-            f"{record.source_hash[:12]} |"
+            f"{record.downstream_regeneration_required} | "
+            f"{record.content_hash[:12]} | "
+            f"{record.provenance_hash[:12]} |"
         )
     lines.extend([
         "",
@@ -421,7 +494,10 @@ def ingestion_report_markdown(records: list[SourceIngestionRecord]) -> str:
         "",
         "- Missing source URL, source name, or source license blocks ingestion.",
         "- Rights Tier C and blocked rights records are blocked before cleanup or segmentation.",
-        "- Unchanged source hashes skip downstream regeneration.",
+        "- `source_hash` is the legacy content hash used for unchanged-source dedupe.",
+        "- `content_hash` is the SHA-256 hash of normalized raw text.",
+        "- `provenance_hash` is the SHA-256 hash of source URL, source name, source license, and content hash.",
+        "- Unchanged source or provenance hashes skip downstream regeneration.",
         "- Scanned PDF ingestion is a placeholder until OCR is explicitly implemented.",
     ])
     return "\n".join(lines) + "\n"
