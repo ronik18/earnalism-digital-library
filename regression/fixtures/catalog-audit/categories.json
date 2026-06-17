@@ -1,0 +1,10 @@
+[
+  {
+    "id": "fixture-category-1",
+    "slug": "gothic-fiction",
+    "name": "Gothic Fiction",
+    "description": "Fixture category for governance tests.",
+    "image_url": "/assets/shelves/gothic-fiction.jpg",
+    "order": 1
+  }
+]
