@@ -198,6 +198,7 @@ describe("Public content governance", () => {
     expect(auditReport.summary.mode).toBe("dry-run");
     expect(auditReport.summary.degraded).toBe(false);
     expect(auditReport.summary.source_statuses).toBeTruthy();
+    expect(Array.isArray(auditReport.summary.degraded_reasons)).toBe(true);
     expect(auditReport.summary.source_statuses.sitemap.status).toBe("fixture");
     expect(auditReport.summary.source_statuses.robots.status).toBe("fixture");
     expect(auditReport.summary.source_statuses.books_api.status).toBe("fixture");
@@ -282,6 +283,8 @@ describe("Public content governance", () => {
         outputDir: degradedOutputDir,
       }).report;
       expect(degradedAudit.summary.degraded).toBe(true);
+      expect(Array.isArray(degradedAudit.summary.degraded_reasons)).toBe(true);
+      expect(degradedAudit.summary.degraded_reasons.join(" ")).toContain("books_api");
       expect(degradedAudit.summary.source_statuses.books_api.ok).toBe(false);
       expect(degradedAudit.summary.source_statuses.books_api.degraded_reason).toContain("books_api");
     } finally {
