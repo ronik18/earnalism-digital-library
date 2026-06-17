@@ -1,19 +1,21 @@
 # Phase 2 Validation Report
 
-Generated for PR #16 final hardening and cleanup-only normalization.
+Generated for PR #16 final hardening, cleanup-only normalization, and backend test dependency stabilization.
 
 ## Commands Run
 
 | Command | Result |
 | --- | --- |
+| `python3 -m pip install -r backend/requirements.txt || python3 -m pip install -r requirements.txt` | PASS as written. On this machine `python3` is Python 3.9, so backend requirements hit Python-version filtering on future Python 3.10+/3.11-oriented pins and the command completed through the documented fallback. |
+| `python3.11 -m pip install -r backend/requirements.txt` | PASS. This matches the backend/CI runtime and installed `bcrypt==4.1.3` plus `pytest==9.0.3` from declared backend requirements. |
 | `python3 scripts/check-hidden-unicode.py backend/rights_engine.py backend/server.py backend/tests/test_rights_engine.py scripts/rights_audit.py scripts/check-hidden-unicode.py RIGHTS_ENGINE.md RIGHTS_POLICY.md PHASE2_RIGHTS_INTEGRATION_REPORT.md PHASE2_VALIDATION_REPORT.md` | PASS. Hidden Unicode / line-ending check passed for 9 files. |
 | `python3 -m py_compile backend/rights_engine.py` | PASS |
 | `python3 -m py_compile backend/server.py` | PASS |
 | `python3 -m py_compile backend/tests/test_rights_engine.py` | PASS |
 | `python3 -m py_compile scripts/rights_audit.py` | PASS |
 | `python3 -m py_compile scripts/check-hidden-unicode.py` | PASS |
-| `pytest backend/tests/test_rights_engine.py` | NOT RUN in this shell because `pytest` is not installed as an executable on `PATH` (`zsh:1: command not found: pytest`). |
-| `python3 -m pytest backend/tests/test_rights_engine.py` | PASS. 23 tests passed. This is the module-form equivalent using the installed pytest package. |
+| `pytest backend/tests/test_rights_engine.py` | PASS. 23 tests passed from repo root using `pytest.ini` and Python 3.11. |
+| `python3 -m pytest backend/tests/test_rights_engine.py` | PASS. 23 tests passed with the installed pytest package. |
 | `npm run catalog:audit` | PASS. 251 items audited; reports written to `output/catalog_audit`. |
 | `npm run regression -- modules/13-public-content-governance.test.js` | PASS. 15 tests passed. |
 | `npm --prefix frontend run build` | PASS. Frontend compiled successfully. |
@@ -22,6 +24,8 @@ Generated for PR #16 final hardening and cleanup-only normalization.
 
 - `scripts/check-hidden-unicode.py`
 - `PHASE2_VALIDATION_REPORT.md`
+- `pytest.ini`
+- `backend/__init__.py`
 
 Previously added Phase 2 hardening files remain in the PR:
 
@@ -31,6 +35,15 @@ Previously added Phase 2 hardening files remain in the PR:
 - `RIGHTS_ENGINE.md`
 - `RIGHTS_POLICY.md`
 - `scripts/rights_audit.py`
+
+## Dependency And Import Path Confirmation
+
+- `backend/server.py` imports `bcrypt`.
+- `backend/requirements.txt` already declares `bcrypt==4.1.3`.
+- GitHub regression CI sets up Python 3.11.
+- `python3.11 -m pip install -r backend/requirements.txt` passed locally and installed `bcrypt==4.1.3`.
+- `pytest.ini` pins repo-root test discovery with `pythonpath = .` and `testpaths = backend/tests`.
+- `backend/__init__.py` makes the backend directory an explicit package for stable repo-root imports.
 
 ## Formatting And Hidden Character Confirmation
 
@@ -76,7 +89,7 @@ suspicious characters in the requested files.
 ## Remaining Risks
 
 - Existing published catalog records still need rights metadata backfill before strict Phase 2 operational rollout.
-- Local shell lacks a `pytest` executable even though `python3 -m pytest` works and passes.
+- The local system `python3` is Python 3.9, while backend/CI runtime is Python 3.11. Python 3.11 backend dependency installation was separately verified and passed.
 
 ## Production Mutation Confirmation
 
