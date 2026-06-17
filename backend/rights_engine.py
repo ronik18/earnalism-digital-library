@@ -170,6 +170,15 @@ def evaluate_rights(book: dict[str, Any], *, current_year: int | None = None) ->
         elif not _is_public_domain_india(illustrator_death_year, current_year=current_year):
             issues.append("illustration rights are not deterministically public domain in India.")
 
+    editor_name = _text(metadata.get("editor_name"))
+    edition_publication_year = _year(metadata.get("edition_publication_year"))
+    if editor_name:
+        if edition_publication_year is None:
+            issues.append("editorial or edition rights are unknown until edition_publication_year is verified.")
+            quarantine_only = True
+        elif original_publication_year is not None and edition_publication_year > original_publication_year:
+            issues.append("modern or later edition/editorial rights block publishing until separately verified.")
+
     rights_tier = _text(metadata.get("rights_tier")).upper()
     if rights_tier not in {TIER_A, TIER_B, TIER_C}:
         issues.append("rights_tier must be A, B, or C.")
@@ -231,4 +240,3 @@ def rights_report_csv(rows: list[dict[str, Any]]) -> str:
     for row in rows:
         writer.writerow(row)
     return output.getvalue()
-
