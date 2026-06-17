@@ -1,95 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Check, ChevronLeft, Clock, BookOpen, CreditCard, Sparkles, Headphones, Languages, LibraryBig } from "lucide-react";
+import { Check, ChevronLeft, Clock, BookOpen, CreditCard, Sparkles } from "lucide-react";
 import { api } from "../lib/api";
 import ShareButtons from "../components/ShareButtons";
 import BookCoverImage from "../components/BookCoverImage";
 import JsonLd from "../components/JsonLd";
-import useSEO, { SITE_URL, FALLBACK_OG_IMAGE, absoluteUrl } from "../hooks/useSEO";
+import useSEO from "../hooks/useSEO";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
-
-function cleanText(value = "") {
-  return String(value || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
-}
-
-function truncate(value = "", maxLength = 156) {
-  const text = cleanText(value);
-  if (text.length <= maxLength) return text;
-  return `${text.slice(0, maxLength - 1).replace(/\s+\S*$/, "")}…`;
-}
-
-function categoryLabel(slug = "") {
-  return cleanText(slug).split("-").filter(Boolean).map((word) => (
-    word.length <= 2 ? word.toUpperCase() : `${word.charAt(0).toUpperCase()}${word.slice(1)}`
-  )).join(" ");
-}
-
-function detectBookLanguage(book = {}) {
-  const explicit = cleanText(book.language || book.language_hint || book.in_language || "");
-  if (explicit) return explicit.toLowerCase().startsWith("bn") ? "bn" : "en";
-  return BENGALI_RE.test(`${book.title || ""} ${book.author || ""} ${book.description || ""} ${book.short_description || ""}`) ? "bn" : "en";
-}
-
-function hasAudiobook(book = {}) {
-  const assets = book.audiobook_assets || {};
-  const nested = book.audiobook || {};
-  return Boolean(
-    book.audiobook_enabled
-    || book.generate_audiobook
-    || book.narration_enabled
-    || book.audio_slug
-    || book.audio_asset_slug
-    || book.audiobook_provider
-    || nested.provider
-    || nested.url
-    || assets.mp3
-    || assets.manifest
-  );
-}
-
-function audiobookDataForSeo(book = {}) {
-  const assets = book.audiobook_assets || {};
-  const nested = book.audiobook || {};
-  const source = nested.url || assets.mp3 || assets.audio || assets.m4a || assets.ogg || book.audio_asset_slug || book.audio_slug || "";
-  const sourceText = String(source || "").toLowerCase();
-  const provider = cleanText(nested.provider || book.audiobook_provider || "");
-  let encodingFormat = "";
-  if (sourceText.includes(".m4a") || sourceText.includes(".mp4")) encodingFormat = "audio/mp4";
-  else if (sourceText.includes(".ogg")) encodingFormat = "audio/ogg";
-  else if (sourceText.includes(".wav")) encodingFormat = "audio/wav";
-  else if (sourceText.includes(".mp3") || assets.mp3 || book.audio_asset_slug || book.audio_slug) encodingFormat = "audio/mpeg";
-
-  return {
-    hasConcreteAudio: Boolean(source || assets.manifest),
-    encodingFormat,
-    provider,
-  };
-}
-
-function seoTitleForBook(book, audiobookAvailable) {
-  if (!book) return "Book | Earnalism Digital Library";
-  const action = audiobookAvailable ? "Read or Listen" : "Read";
-  return book.author
-    ? `${book.title} by ${book.author} | ${action} on Earnalism`
-    : `${book.title} | ${action} on Earnalism`;
-}
-
-function seoDescriptionForBook(book, audiobookAvailable) {
-  if (!book) return "Preview books and audiobooks on Earnalism with flexible reading-time access.";
-  const authorPhrase = book.author ? ` by ${book.author}` : "";
-  const actionPhrase = audiobookAvailable ? "Read or listen" : "Read";
-  const base = `Preview ${book.title}${authorPhrase} on Earnalism. ${actionPhrase} through the Earnalism Digital Library with flexible reading-time access.`;
-  const summary = cleanText(book.short_description || book.description || book.subtitle || "");
-  return truncate(summary ? `${base} ${summary}` : base);
-}
-
-function dateOnly(value) {
-  if (!value) return "";
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return "";
-  return date.toISOString().slice(0, 10);
-}
+const SITE_URL = "https://theearnalism.com";
 
 export default function BookDetail() {
   const { slug } = useParams();
@@ -100,39 +19,18 @@ export default function BookDetail() {
   const bookNotFound = !loading && loadStatus === "not_found";
   const bookLoadError = !loading && loadStatus === "error";
   const shouldNoindex = bookNotFound || bookLoadError;
-  const bookLanguage = book ? detectBookLanguage(book) : "en";
-  const audiobookAvailable = book ? hasAudiobook(book) : false;
-  const audiobookSeoData = book ? audiobookDataForSeo(book) : {};
-  const bookGenre = categoryLabel(book?.category_slug || "");
-  const canonicalPath = `/book/${slug}`;
-  const canonicalUrl = `${SITE_URL}${canonicalPath}`;
-  const bookSeoTitle = bookNotFound
-    ? "Book Not Found | Earnalism Digital Library"
-    : book ? seoTitleForBook(book, audiobookAvailable) : "Book | Earnalism Digital Library";
-  const bookSeoDescription = bookNotFound
-    ? "This Earnalism book is no longer available."
-    : book ? seoDescriptionForBook(book, audiobookAvailable) : "Preview books and audiobooks on Earnalism with flexible reading-time access.";
-  const bookCoverImage = absoluteUrl(book?.cover_image_url || book?.cover_url || FALLBACK_OG_IMAGE);
 
   useSEO({
-    title: bookSeoTitle,
-    description: bookSeoDescription,
-    image: bookCoverImage,
-    imageAlt: book ? `${book.title} book cover on Earnalism` : "Earnalism Digital Library",
+    title: bookNotFound
+      ? "Book not found — The Earnalism Digital Library"
+      : book ? `${book.title} — The Earnalism Digital Library` : "Book — The Earnalism Digital Library",
+    description: bookNotFound
+      ? "This Earnalism book is no longer available."
+      : book?.short_description || book?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
+    image: book?.cover_image_url,
+    imageAlt: book?.title,
     type: bookNotFound ? "website" : "book",
     robots: shouldNoindex ? "noindex, nofollow" : "index, follow",
-    canonicalPath,
-    language: bookLanguage,
-    keywords: book ? [
-      book.title,
-      book.author,
-      bookGenre,
-      audiobookAvailable ? "audiobook" : "",
-      "Earnalism",
-      "digital library",
-      bookLanguage === "bn" ? "Bengali books" : "English books",
-      "reading-time access",
-    ].filter(Boolean).join(", ") : undefined,
   });
 
   useEffect(() => {
@@ -161,54 +59,21 @@ export default function BookDetail() {
     });
   }, [book, loading]);
 
-  const breadcrumbSchema = book ? {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
-      { "@type": "ListItem", "position": 2, "name": "Library", "item": `${SITE_URL}/library` },
-      ...(book.category_slug ? [{
-        "@type": "ListItem",
-        "position": 3,
-        "name": bookGenre,
-        "item": `${SITE_URL}/library?category=${encodeURIComponent(book.category_slug)}`,
-      }] : []),
-      {
-        "@type": "ListItem",
-        "position": book.category_slug ? 4 : 3,
-        "name": book.title,
-        "item": canonicalUrl,
-      },
-    ],
-  } : null;
-
+  const bookLanguage = book && BENGALI_RE.test(`${book.title || ""} ${book.description || ""} ${book.short_description || ""}`) ? "bn" : "en";
   const bookSchema = book ? {
     "@context": "https://schema.org",
     "@type": "Book",
-    "@id": `${canonicalUrl}#book`,
     "name": book.title,
     ...(book.subtitle ? { "alternativeHeadline": book.subtitle } : {}),
-    "description": bookSeoDescription,
-    ...(bookCoverImage ? { "image": bookCoverImage } : {}),
-    ...(bookGenre ? { "genre": bookGenre } : {}),
+    "description": book.description || book.short_description,
+    ...(book.cover_image_url ? { "image": book.cover_image_url } : {}),
     "bookFormat": "https://schema.org/EBook",
     "inLanguage": bookLanguage,
     "author": { "@type": book.author && book.author !== "The Earnalism" ? "Person" : "Organization", "name": book.author || "The Earnalism" },
-    "publisher": { "@type": "Organization", "name": "Earnalism by Reo Enterprise", "url": SITE_URL },
-    "url": canonicalUrl,
-    "mainEntityOfPage": canonicalUrl,
-    ...(dateOnly(book.updated_at || book.created_at) ? { "dateModified": dateOnly(book.updated_at || book.created_at) } : {}),
-    ...(book.page_count ? { "numberOfPages": book.page_count } : {}),
-    ...(audiobookSeoData.hasConcreteAudio ? {
-      "associatedMedia": {
-        "@type": "AudioObject",
-        "name": `${book.title} audiobook`,
-        "inLanguage": bookLanguage,
-        ...(audiobookSeoData.encodingFormat ? { "encodingFormat": audiobookSeoData.encodingFormat } : {}),
-        "url": canonicalUrl,
-        "provider": { "@type": "Organization", "name": audiobookSeoData.provider || "Earnalism" },
-      },
-    } : {}),
+    "publisher": { "@type": "Organization", "name": "The Earnalism" },
+    "url": `${SITE_URL}/book/${book.slug}`,
+    "mainEntityOfPage": `${SITE_URL}/book/${book.slug}`,
+    "numberOfPages": book.page_count || undefined,
   } : null;
 
   if (loading) return <div className="max-w-7xl mx-auto px-6 py-32 text-center text-charcoal-soft">Loading…</div>;
@@ -241,7 +106,6 @@ export default function BookDetail() {
   return (
     <div data-testid="book-page">
       {bookSchema && <JsonLd id="book" data={bookSchema} />}
-      {breadcrumbSchema && <JsonLd id="book-breadcrumb" data={breadcrumbSchema} />}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-10">
         <Link to="/library" className="inline-flex items-center gap-1 text-xs tracking-[0.18em] uppercase text-charcoal-soft hover:text-burgundy" data-testid="back-to-library">
           <ChevronLeft size={14} /> Back to Library
@@ -286,7 +150,7 @@ export default function BookDetail() {
         </div>
 
         <div className="lg:col-span-7">
-          <div className="overline mb-5">{bookGenre}</div>
+          <div className="overline mb-5">{book.category_slug?.replace(/-/g, ' ')}</div>
           <h1 className="font-serif-light text-4xl sm:text-5xl lg:text-[3.75rem] text-burgundy leading-[1.02] tracking-tight">{book.title}</h1>
           {book.author && <p className="text-[0.85rem] tracking-[0.14em] uppercase text-charcoal-soft mt-4">by {book.author}</p>}
           {book.subtitle && <p className="font-serif-display italic text-xl sm:text-2xl text-burgundy-soft mt-5 leading-snug">{book.subtitle}</p>}
@@ -295,16 +159,6 @@ export default function BookDetail() {
 
           {/* Reader meta row */}
           <div className="flex items-center gap-8 mt-8 flex-wrap" data-testid="book-meta">
-            {bookGenre && (
-              <div className="flex items-center gap-2 text-charcoal">
-                <LibraryBig size={16} className="text-gold" strokeWidth={1.5} />
-                <span className="text-[0.9rem]"><span className="font-serif-display italic">{bookGenre}</span></span>
-              </div>
-            )}
-            <div className="flex items-center gap-2 text-charcoal">
-              <Languages size={16} className="text-gold" strokeWidth={1.5} />
-              <span className="text-[0.9rem]"><span className="font-serif-display italic">{bookLanguage === "bn" ? "Bengali" : "English"}</span> edition</span>
-            </div>
             {chapterCount > 0 && (
               <div className="flex items-center gap-2 text-charcoal">
                 <BookOpen size={16} className="text-gold" strokeWidth={1.5} />
@@ -317,10 +171,6 @@ export default function BookDetail() {
                 <span className="text-[0.9rem]">About <span className="font-serif-display italic">{book.estimated_reading_time}</span></span>
               </div>
             )}
-            <div className="flex items-center gap-2 text-charcoal">
-              <Headphones size={16} className="text-gold" strokeWidth={1.5} />
-              <span className="text-[0.9rem]">{audiobookAvailable ? "Audiobook available" : "Reading edition"}</span>
-            </div>
           </div>
 
           {/* CTAs */}

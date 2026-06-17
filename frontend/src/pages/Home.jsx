@@ -201,12 +201,9 @@ export default function Home() {
   const activeSocials = useMemo(() => SOCIALS.filter((item) => social?.[item.key]), [social]);
 
   useSEO({
-    title: "Earnalism Digital Library | Audiobooks, Bengali Books & Reading-Time Access",
-    description: "Earnalism is a premium digital library for Bengali books, English classics, audiobooks, and flexible reading-time access — where learning becomes earning.",
+    title: "The Earnalism Digital Library — Buy Reading Time. Read Beautifully.",
+    description: "A quiet digital reading room for Bengali classics, literary fiction, young readers, business, technology and AI, history, adventure, science fiction, and gothic fiction.",
     image: HERO_IMG,
-    imageAlt: "Earnalism digital library for books, audiobooks, and reading-time access",
-    canonicalPath: "/",
-    keywords: "Earnalism, digital library, audiobooks, Bengali books, reading-time access, where learning becomes earning",
   });
 
   useEffect(() => {
