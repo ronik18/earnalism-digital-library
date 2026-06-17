@@ -10,6 +10,7 @@
     "regression:e2e": "node scripts/e2e_regression.mjs",
     "monitor:production": "node scripts/production_monitor.mjs",
     "catalog:audit": "node scripts/audit-public-content.mjs",
+    "demand:score": "python3 scripts/demand_priority.py",
     "audio:preflight": "python3 scripts/open_source_audiobook_onboarding.py preflight",
     "audio:audit": "python3 scripts/open_source_audiobook_onboarding.py audit",
     "audio:onboard:dry": "python3 scripts/open_source_audiobook_onboarding.py generate --dry-run",
