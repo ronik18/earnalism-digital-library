@@ -2,6 +2,8 @@
 
 Branch: `codex/phase4-source-ingestion`
 
+Validated hardening commit: `08cade5`
+
 ## Scope
 
 Phase 4 adds a deterministic, dry-run public-domain source ingestion pipeline. It does not add production routes, publish content, call paid APIs, fetch live source URLs by default, or mutate production data.
@@ -52,7 +54,16 @@ npm --prefix frontend run build
 
 ## Raw GitHub Verification
 
-Pending after push of the hardening commit.
+Raw download check after pushing commit `08cade5`:
+
+```text
+backend/source_ingestion.py: 503 lines, CR=0, first_line=from __future__ import annotations
+backend/tests/test_source_ingestion.py: 289 lines, CR=0, first_line=from __future__ import annotations
+scripts/source_ingestion.py: 156 lines, CR=0, first_line=#!/usr/bin/env python3
+SOURCE_INGESTION.md: 141 lines, CR=0, first_line=# Phase 4 Source Ingestion
+PHASE4_VALIDATION_REPORT.md: 65 lines, CR=0, first_line=# Phase 4 Validation Report
+package.json: 36 lines, CR=0, first_line={
+```
 
 ## Production Mutation
 
