@@ -25,6 +25,7 @@ Production:
 - [API Surface](#api-surface)
 - [API Sequence Diagrams](#api-sequence-diagrams)
 - [Classes And Modules](#classes-and-modules)
+- [Growth OS](#growth-os)
 - [Book Import And Publishing Pipeline](#book-import-and-publishing-pipeline)
 - [Security Model](#security-model)
 - [Performance And Autoscaling](#performance-and-autoscaling)
@@ -292,6 +293,7 @@ Important token keys:
 | `content_processor.py` | `backend/utils/content_processor.py` | DOCX/MD/HTML/TXT chapter conversion, sanitization, image extraction. |
 | `cloudinary.py` | `backend/config/cloudinary.py` | Cloudinary initialization, upload, responsive URLs. |
 | `audioUploader.js` | `lib/storage/audioUploader.js` | Node storage router for audiobook uploads: Cloudinary at or below 100 MB, Backblaze B2 multipart upload above 100 MB. |
+| Growth OS admin APIs | `backend/server.py` | Guardrailed deterministic growth-agent control plane, audit logs, daily dry-run loop, budgets, and kill switches. |
 | `production_monitor.mjs` | `scripts/production_monitor.mjs` | Scheduled/local production health, latency, reader manifest, and catalog observer. |
 | `railway.json` | `backend/railway.json` | Railway build/start/health configuration. |
 | `Dockerfile` | `backend/Dockerfile` | Container build and local Docker health check. |
@@ -324,6 +326,20 @@ flowchart TD
   Handler --> Razorpay[(Razorpay)]
   Mongo --> Response
 ```
+
+## Growth OS
+
+Earnalism Growth OS is the admin-supervised automation layer for acquisition, onboarding, retention, referrals, institution outreach, creator partnerships, support, and operational safety.
+
+Current production-safe phase:
+
+- Admin tab: `Admin > growth`.
+- Backend APIs: `/api/admin/growth/overview`, `/api/admin/growth/run-daily`, `/api/admin/growth/kill-switch`.
+- Stores agent runs, agent actions, guardrail results, tool calls, metrics snapshots, incidents, feature flags, and audit logs in MongoDB.
+- Runs deterministic dry-run daily loops by default.
+- Blocks production execution unless `GROWTH_OS_DRY_RUN_ONLY=false`, `GROWTH_OS_PUBLIC_EXECUTION_ENABLED=true`, the matching feature flag is enabled, and all guardrails pass.
+
+Architecture details: [`docs/growth-os-architecture.md`](docs/growth-os-architecture.md).
 
 ## Data Model And ERD
 
@@ -954,6 +970,30 @@ Pipeline docs:
 - `scripts/earnalism_go_live.sh`
 
 Audiobook onboarding uses `scripts/open_source_audiobook_onboarding.py` and the storage router in `lib/storage/audioUploader.js`. The router keeps existing Cloudinary behavior for audiobook files at or below 100 MB and sends larger MP3s to Backblaze B2 with multipart S3-compatible upload.
+
+After polished audiobooks are verified in the reader, generate an orphaned
+storage cleanup report before deleting old unreferenced audio objects:
+
+```bash
+railway run --service earnalism --environment production -- \
+  npm run audiobook:storage:cleanup -- \
+  --job-id audiobook-storage-cleanup-report \
+  --env-file .secrets/earnalism-import.env
+```
+
+Delete only after reviewing the report:
+
+```bash
+railway run --service earnalism --environment production -- \
+  npm run audiobook:storage:cleanup -- \
+  --commit-delete \
+  --min-age-days 7 \
+  --delete-limit 50 \
+  --job-id audiobook-storage-cleanup-delete-v1 \
+  --env-file .secrets/earnalism-import.env
+```
+
+Full audio runbook: `README_audio.md`.
 
 Run only the seven Cloudinary-blocked large audiobooks:
 

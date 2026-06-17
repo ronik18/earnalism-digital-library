@@ -1,0 +1,5 @@
+# Lightweight English audiobook polishing fallback.
+#
+# Use this when ENGLISH_TTS_PROVIDER=edge. It intentionally avoids the full
+# transformers/Piper/Parler stack used by catalog-scale local model generation.
+edge-tts>=7.0.0

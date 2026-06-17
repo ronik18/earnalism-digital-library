@@ -3,7 +3,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { api, formatError, formatMinutes } from "../lib/api";
 import { toast } from "sonner";
-import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail, Clock, Ban, Check, ShieldAlert } from "lucide-react";
+import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail, Clock, Ban, Check, ShieldAlert, Bot, Gauge, Play, PauseCircle, RefreshCw } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
 import BrandMark from "../components/BrandMark";
 import ChapterUpload from "../components/Admin/ChapterUpload";
@@ -11,7 +11,7 @@ import CoverUpload from "../components/Admin/CoverUpload";
 import { normalizeImageUrl, optimizedImageUrl } from "../lib/images";
 import useSEO from "../hooks/useSEO";
 
-const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "settings", "account"];
+const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "growth", "settings", "account"];
 
 export default function Admin() {
   useSEO({
@@ -57,6 +57,7 @@ export default function Admin() {
         {tab === "users" && <UsersAdmin />}
         {tab === "payments" && <PaymentsAdmin />}
         {tab === "security" && <SecurityAlertsAdmin />}
+        {tab === "growth" && <GrowthOSAdmin />}
         {tab === "settings" && <SettingsTab />}
         {tab === "account" && <AccountTab />}
       </div>
@@ -168,6 +169,217 @@ function SecurityAlertsAdmin() {
           </table>
         )}
       </div>
+    </div>
+  );
+}
+
+function GrowthOSAdmin() {
+  const [overview, setOverview] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [running, setRunning] = useState(false);
+  const [switching, setSwitching] = useState(false);
+
+  const load = async () => {
+    setLoading(true);
+    try {
+      const { data } = await api.get("/admin/growth/overview");
+      setOverview(data);
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => { load(); }, []);
+
+  const runDaily = async () => {
+    setRunning(true);
+    try {
+      await api.post("/admin/growth/run-daily", {
+        mode: "dry_run",
+        objective: "daily_growth_loop",
+        max_actions: overview?.config?.max_actions_per_run || 12,
+      });
+      toast.success("Growth OS dry-run completed.");
+      await load();
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally {
+      setRunning(false);
+    }
+  };
+
+  const setEmergencyPause = async (enabled) => {
+    setSwitching(true);
+    try {
+      await api.post("/admin/growth/kill-switch", {
+        key: "growth_os_emergency_pause",
+        enabled,
+        reason: enabled ? "Paused from admin Growth OS dashboard" : "Resumed from admin Growth OS dashboard",
+      });
+      toast.success(enabled ? "Growth OS paused." : "Growth OS resumed.");
+      await load();
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally {
+      setSwitching(false);
+    }
+  };
+
+  const flags = overview?.feature_flags || [];
+  const emergencyPaused = flags.some((flag) => flag.key === "growth_os_emergency_pause" && flag.enabled);
+  const counters = overview?.counters || {};
+  const config = overview?.config || {};
+
+  return (
+    <div className="space-y-6" data-testid="admin-growth-os">
+      <div className="card-elegant p-6 sm:p-8">
+        <div className="flex items-start justify-between gap-4 flex-wrap">
+          <div>
+            <div className="overline flex items-center gap-2"><Bot size={14} /> Growth OS</div>
+            <h2 className="font-serif-display text-2xl text-burgundy mt-1">Guardrailed growth control plane</h2>
+            <p className="text-sm text-charcoal-soft mt-2 max-w-3xl">
+              Deterministic daily loop, hard policy gates, audit logs, budgets, and kill switches for reader acquisition, onboarding, retention, referrals, support, and partnerships.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <button onClick={load} className="btn-link text-xs" disabled={loading} data-testid="growth-refresh">
+              <RefreshCw size={13} className="mr-2" /> Refresh
+            </button>
+            <button onClick={runDaily} className="btn-secondary" disabled={running || loading || emergencyPaused} data-testid="growth-run-dry">
+              <Play size={13} className="mr-2" /> {running ? "Running…" : "Run dry-run"}
+            </button>
+            <button onClick={() => setEmergencyPause(!emergencyPaused)} className="btn-primary disabled:opacity-60" disabled={switching} data-testid="growth-kill-switch">
+              <PauseCircle size={13} className="mr-2" /> {emergencyPaused ? "Resume" : "Emergency pause"}
+            </button>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mt-6">
+          {[
+            ["Runs", counters.agent_runs || 0],
+            ["Actions", counters.agent_actions || 0],
+            ["Blocked", counters.blocked_actions || 0],
+            ["Escalated", counters.escalated_actions || 0],
+            ["Open incidents", counters.incidents_open || 0],
+          ].map(([label, value]) => (
+            <div key={label} className="rounded-lg border border-brand-soft bg-white/55 p-4">
+              <div className="text-[0.65rem] uppercase tracking-[0.18em] text-charcoal-soft">{label}</div>
+              <div className="font-serif-display text-3xl text-burgundy mt-1">{value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {loading && !overview ? (
+        <div className="card-elegant p-6 sm:p-8 text-sm text-charcoal-soft">Loading Growth OS…</div>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            <div className="card-elegant p-6">
+              <div className="overline flex items-center gap-2"><Gauge size={14} /> Budget gates</div>
+              <div className="font-serif-display text-3xl text-burgundy mt-3">₹{config.daily_budget_inr || 0}</div>
+              <p className="text-xs text-charcoal-soft mt-2">Daily max · {config.max_actions_per_run || 0} actions · {config.max_messages_per_day || 0} messages.</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <StatusPill label={overview?.dry_run_only ? "Dry-run only" : "Production allowed"} tone={overview?.dry_run_only ? "amber" : "green"} />
+                <StatusPill label={emergencyPaused ? "Paused" : "Active"} tone={emergencyPaused ? "rose" : "green"} />
+              </div>
+            </div>
+            <div className="card-elegant p-6 lg:col-span-2">
+              <div className="overline">Latest metrics snapshot</div>
+              {overview?.latest_snapshot ? (
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-4">
+                  {["users", "paid_readers", "reading_sessions", "referrals", "payment_failed"].map((key) => (
+                    <div key={key} className="border border-brand-soft rounded-lg p-3 bg-ivory/70">
+                      <div className="text-[0.6rem] uppercase tracking-[0.16em] text-charcoal-soft">{key.replace(/_/g, " ")}</div>
+                      <div className="font-serif-display text-xl text-burgundy mt-1">{overview.latest_snapshot[key] ?? 0}</div>
+                    </div>
+                  ))}
+                </div>
+              ) : <p className="text-sm text-charcoal-soft mt-4">Run a dry-run to create the first snapshot.</p>}
+            </div>
+          </div>
+
+          <div className="card-elegant p-6 sm:p-8">
+            <h3 className="font-serif-display text-2xl text-burgundy mb-4">Agents</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {(overview?.agents || []).map((agent) => (
+                <div key={agent.id} className="border border-brand-soft rounded-lg bg-white/50 p-4">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <div className="font-serif-display text-lg text-burgundy">{agent.name}</div>
+                      <p className="text-xs text-charcoal-soft mt-1 leading-relaxed">{agent.instructions}</p>
+                    </div>
+                    <StatusPill label="Guarded" tone="green" />
+                  </div>
+                  <div className="mt-3 text-[0.65rem] uppercase tracking-[0.16em] text-charcoal-soft">Tools</div>
+                  <p className="text-xs text-charcoal-soft mt-1">{(agent.allowed_tools || []).join(", ")}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+            <GrowthTable
+              title="Recent runs"
+              rows={overview?.recent_runs || []}
+              columns={[
+                ["created_at", "When"],
+                ["objective", "Objective"],
+                ["mode", "Mode"],
+                ["status", "Status"],
+              ]}
+            />
+            <GrowthTable
+              title="Guardrail history"
+              rows={overview?.recent_guardrails || []}
+              columns={[
+                ["created_at", "When"],
+                ["agent", "Agent"],
+                ["tool", "Tool"],
+                ["decision", "Decision"],
+              ]}
+            />
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function StatusPill({ label, tone = "amber" }) {
+  const palette = {
+    green: "bg-emerald-100 text-emerald-800",
+    rose: "bg-rose-100 text-rose-800",
+    amber: "bg-amber-100 text-amber-800",
+  }[tone] || "bg-amber-100 text-amber-800";
+  return <span className={`text-[0.62rem] tracking-[0.16em] uppercase px-2 py-1 rounded-full ${palette}`}>{label}</span>;
+}
+
+function GrowthTable({ title, rows, columns }) {
+  return (
+    <div className="card-elegant p-6 sm:p-8 overflow-x-auto">
+      <h3 className="font-serif-display text-2xl text-burgundy mb-4">{title}</h3>
+      {rows.length === 0 ? <p className="text-charcoal-soft text-sm">No entries yet.</p> : (
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="text-left text-xs uppercase tracking-wider text-charcoal-soft border-b border-brand">
+              {columns.map(([, label]) => <th key={label} className="py-3 pr-4">{label}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, index) => (
+              <tr key={row.id || index} className="border-b border-brand/60">
+                {columns.map(([key]) => (
+                  <td key={key} className="py-3 pr-4 align-top text-charcoal-soft">
+                    {key === "created_at" && row[key] ? new Date(row[key]).toLocaleString() : (row[key] || "—")}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
