@@ -34,6 +34,8 @@ REPORT_COLUMNS = [
     "category_slug",
     "language",
     "demand_score",
+    "action_status",
+    "blocking_reason",
     "recommended_product_format",
     "growth_rationale",
     "page_views",
@@ -59,6 +61,8 @@ class DemandScore:
     language: str
     demand_score: float
     priority_rank: int = 0
+    action_status: str = ""
+    blocking_reason: str = ""
     growth_rationale: str = ""
     recommended_product_format: str = ""
     page_views: int = 0
@@ -83,6 +87,8 @@ class DemandScore:
             "category_slug": self.category_slug,
             "language": self.language,
             "demand_score": f"{self.demand_score:.2f}",
+            "action_status": self.action_status,
+            "blocking_reason": self.blocking_reason,
             "recommended_product_format": self.recommended_product_format,
             "growth_rationale": self.growth_rationale,
             "page_views": self.page_views,
@@ -226,6 +232,7 @@ def score_book(book: dict[str, Any]) -> DemandScore:
     )
     penalty = (production_complexity * 1.15) + (rights_risk * 1.35)
     demand_score = max(0, min(100, positive - penalty))
+    action_status, blocking_reason = _action_status(book, demand_score)
 
     score = DemandScore(
         slug=slug,
@@ -233,6 +240,8 @@ def score_book(book: dict[str, Any]) -> DemandScore:
         category_slug=category_slug,
         language=language,
         demand_score=round(demand_score, 2),
+        action_status=action_status,
+        blocking_reason=blocking_reason,
         growth_rationale=_growth_rationale(
             seed_bonus=seed_bonus,
             bengali_cultural_fit=bengali_cultural_fit,
@@ -275,6 +284,10 @@ def demand_report_csv(scores: list[DemandScore]) -> str:
     return output.getvalue()
 
 
+def demand_report_json(scores: list[DemandScore]) -> list[dict[str, Any]]:
+    return [score.as_row() for score in scores]
+
+
 def demand_report_markdown(scores: list[DemandScore], *, top_n: int = 10) -> str:
     lines = [
         "# Demand Priority Report",
@@ -283,12 +296,12 @@ def demand_report_markdown(scores: list[DemandScore], *, top_n: int = 10) -> str
         "",
         "## Top Recommendations",
         "",
-        "| Rank | Book / Topic | Score | Recommended Format | Rationale |",
-        "|---:|---|---:|---|---|",
+        "| Rank | Book / Topic | Score | Action | Recommended Format | Rationale |",
+        "|---:|---|---:|---|---|---|",
     ]
     for score in scores[:top_n]:
         lines.append(
-            f"| {score.priority_rank} | {score.title} | {score.demand_score:.2f} | "
+            f"| {score.priority_rank} | {score.title} | {score.demand_score:.2f} | {score.action_status} | "
             f"{score.recommended_product_format} | {score.growth_rationale} |"
         )
     lines.extend(
@@ -299,6 +312,7 @@ def demand_report_markdown(scores: list[DemandScore], *, top_n: int = 10) -> str
             "- No LLM, TTS, image, or paid API calls are used.",
             "- Rights risk lowers score.",
             "- Production complexity lowers score.",
+            "- Tier C and unknown-rights items are not treated as normal generation candidates.",
             "- Internal page views, reading starts, and completions are used when present.",
             "- Missing internal engagement data is treated as zero rather than fabricated.",
             "",
@@ -476,6 +490,28 @@ def _rights_risk(book: dict[str, Any]) -> float:
     if tier == "B":
         risk += 2
     return min(10, risk)
+
+
+def _action_status(book: dict[str, Any], demand_score: float) -> tuple[str, str]:
+    metadata = book.get("rights_metadata") if isinstance(book.get("rights_metadata"), dict) else {}
+    tier = _text(metadata.get("rights_tier")).upper().replace("TIER ", "")
+    status = _text(metadata.get("verification_status")).lower()
+    blocked_reason = _text(metadata.get("blocked_reason"))
+
+    if tier == "C" or blocked_reason:
+        reason = blocked_reason or "Tier C rights block generation until rights are cleared."
+        return "BLOCKED_RIGHTS", reason
+    if not metadata:
+        return "READY_FOR_RIGHTS_REVIEW", "Rights metadata is missing; Phase 2 rights verification required."
+    if status not in {"approved", "verified"}:
+        return "READY_FOR_RIGHTS_REVIEW", "Rights verification status is not approved or verified."
+    if demand_score < 20:
+        return "LOW_PRIORITY", "Demand score is below the current production threshold."
+    if tier == "B":
+        return "REGION_GATED_PRIORITY", "Tier B rights are approved only for region-gated production."
+    if tier == "A":
+        return "READY_FOR_GENERATION", ""
+    return "READY_FOR_RIGHTS_REVIEW", "Rights tier is missing or unsupported."
 
 
 def _growth_rationale(
