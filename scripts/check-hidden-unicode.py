@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail when source files contain hidden Unicode controls or CR-only lines."""
+"""Scan files for hidden Unicode controls and CR-only line endings."""
 
 from __future__ import annotations
 
@@ -9,9 +9,12 @@ import sys
 from pathlib import Path
 
 
-BLOCKED_CODEPOINTS = {
-    **{codepoint: "bidirectional control" for codepoint in range(0x202A, 0x202F)},
-    **{codepoint: "bidirectional isolate" for codepoint in range(0x2066, 0x206A)},
+BLOCKED_RANGES = (
+    range(0x202A, 0x202F),
+    range(0x2066, 0x206A),
+)
+
+BLOCKED_POINTS = {
     0x200B: "zero-width space",
     0x200C: "zero-width non-joiner",
     0x200D: "zero-width joiner",
@@ -19,7 +22,14 @@ BLOCKED_CODEPOINTS = {
 }
 
 
-def changed_files() -> list[Path]:
+def blocked_reason(codepoint: int) -> str | None:
+    for blocked_range in BLOCKED_RANGES:
+        if codepoint in blocked_range:
+            return "bidirectional Unicode control"
+    return BLOCKED_POINTS.get(codepoint)
+
+
+def default_files() -> list[Path]:
     result = subprocess.run(
         ["git", "diff", "--name-only", "--diff-filter=ACMRTUXB", "HEAD"],
         check=False,
@@ -28,54 +38,52 @@ def changed_files() -> list[Path]:
     )
     if result.returncode != 0:
         return []
-    return [Path(line.strip()) for line in result.stdout.splitlines() if line.strip()]
+    return [Path(line) for line in result.stdout.splitlines() if line.strip()]
 
 
-def line_column(text: str, index: int) -> tuple[int, int]:
-    line = text.count("\n", 0, index) + 1
-    last_newline = text.rfind("\n", 0, index)
-    column = index + 1 if last_newline == -1 else index - last_newline
-    return line, column
+def line_and_column(text: str, index: int) -> tuple[int, int]:
+    line_number = text.count("\n", 0, index) + 1
+    previous_newline = text.rfind("\n", 0, index)
+    column_number = index + 1 if previous_newline == -1 else index - previous_newline
+    return line_number, column_number
 
 
 def scan_file(path: Path) -> list[str]:
-    problems: list[str] = []
     data = path.read_bytes()
+    errors: list[str] = []
 
-    index = 0
-    while index < len(data):
-        if data[index : index + 1] == b"\r" and data[index + 1 : index + 2] != b"\n":
-            problems.append(f"{path}: CR-only line ending near byte {index}")
-        index += 1
+    for index, byte in enumerate(data):
+        if byte == 0x0D and data[index + 1 : index + 2] != b"\n":
+            errors.append(f"{path}: CR-only line ending near byte {index}")
 
     text = data.decode("utf-8", errors="replace")
-    for position, char in enumerate(text):
-        codepoint = ord(char)
-        reason = BLOCKED_CODEPOINTS.get(codepoint)
+    for index, character in enumerate(text):
+        reason = blocked_reason(ord(character))
         if reason:
-            line, column = line_column(text, position)
-            problems.append(f"{path}:{line}:{column}: U+{codepoint:04X} {reason}")
-    return problems
+            line_number, column_number = line_and_column(text, index)
+            errors.append(f"{path}:{line_number}:{column_number}: U+{ord(character):04X} {reason}")
+
+    return errors
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("files", nargs="*", type=Path, help="Files to scan. Defaults to changed files.")
+    parser.add_argument("files", nargs="*", type=Path)
     args = parser.parse_args()
 
-    files = args.files or changed_files()
-    problems: list[str] = []
-    for path in files:
+    paths = args.files or default_files()
+    errors: list[str] = []
+    for path in paths:
         if path.is_file():
-            problems.extend(scan_file(path))
+            errors.extend(scan_file(path))
 
-    if problems:
+    if errors:
         print("Hidden Unicode / line-ending check failed:", file=sys.stderr)
-        for problem in problems:
-            print(f"- {problem}", file=sys.stderr)
+        for error in errors:
+            print(f"- {error}", file=sys.stderr)
         return 1
 
-    print(f"Hidden Unicode / line-ending check passed for {len(files)} file(s).")
+    print(f"Hidden Unicode / line-ending check passed for {len(paths)} file(s).")
     return 0
 
 

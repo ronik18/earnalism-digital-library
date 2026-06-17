@@ -1,16 +1,17 @@
 # Phase 2 Validation Report
 
-Generated for PR #16 final hardening.
+Generated for PR #16 final hardening and cleanup-only normalization.
 
 ## Commands Run
 
 | Command | Result |
 | --- | --- |
-| `python3 scripts/check-hidden-unicode.py backend/rights_engine.py backend/server.py backend/tests/test_rights_engine.py scripts/rights_audit.py RIGHTS_ENGINE.md RIGHTS_POLICY.md PHASE2_RIGHTS_INTEGRATION_REPORT.md` | PASS. Hidden Unicode / line-ending check passed for 7 files. |
+| `python3 scripts/check-hidden-unicode.py backend/rights_engine.py backend/server.py backend/tests/test_rights_engine.py scripts/rights_audit.py scripts/check-hidden-unicode.py RIGHTS_ENGINE.md RIGHTS_POLICY.md PHASE2_RIGHTS_INTEGRATION_REPORT.md PHASE2_VALIDATION_REPORT.md` | PASS. Hidden Unicode / line-ending check passed for 9 files. |
 | `python3 -m py_compile backend/rights_engine.py` | PASS |
 | `python3 -m py_compile backend/server.py` | PASS |
 | `python3 -m py_compile backend/tests/test_rights_engine.py` | PASS |
 | `python3 -m py_compile scripts/rights_audit.py` | PASS |
+| `python3 -m py_compile scripts/check-hidden-unicode.py` | PASS |
 | `pytest backend/tests/test_rights_engine.py` | NOT RUN in this shell because `pytest` is not installed as an executable on `PATH` (`zsh:1: command not found: pytest`). |
 | `python3 -m pytest backend/tests/test_rights_engine.py` | PASS. 23 tests passed. This is the module-form equivalent using the installed pytest package. |
 | `npm run catalog:audit` | PASS. 251 items audited; reports written to `output/catalog_audit`. |
@@ -19,6 +20,7 @@ Generated for PR #16 final hardening.
 
 ## Changed Files
 
+- `scripts/check-hidden-unicode.py`
 - `PHASE2_VALIDATION_REPORT.md`
 
 Previously added Phase 2 hardening files remain in the PR:
@@ -51,6 +53,25 @@ The scan passed. Local raw line counts are normal:
 - `RIGHTS_ENGINE.md`: 108 lines
 - `RIGHTS_POLICY.md`: 187 lines
 - `PHASE2_RIGHTS_INTEGRATION_REPORT.md`: 49 lines
+- `PHASE2_VALIDATION_REPORT.md`: 64 lines
+
+Raw GitHub branch verification was also run against:
+
+```text
+https://raw.githubusercontent.com/ronik18/earnalism-digital-library/codex/phase2-rights-verification-engine/
+```
+
+The fetched raw files showed normal LF line counts before this cleanup commit:
+
+- `backend/rights_engine.py`: 243 lines, 242 LF bytes, 0 CR bytes
+- `backend/server.py`: 6211 lines, 6210 LF bytes, 0 CR bytes
+- `backend/tests/test_rights_engine.py`: 331 lines, 330 LF bytes, 0 CR bytes
+- `scripts/rights_audit.py`: 61 lines, 60 LF bytes, 0 CR bytes
+- `scripts/check-hidden-unicode.py`: 84 lines, 83 LF bytes, 0 CR bytes
+
+No hidden/bidirectional Unicode warning location was found in the requested
+files. A broader scan for Unicode control/format categories also found zero
+suspicious characters in the requested files.
 
 ## Remaining Risks
 
