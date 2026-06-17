@@ -1,4 +1,5 @@
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
 const { execFileSync } = require("child_process");
 const { request } = require("../utils/http");
@@ -7,11 +8,9 @@ const { fetchSitemap } = require("../utils/sitemap");
 const removedContent = require("../../frontend/api/removed-content");
 
 const ROOT = path.resolve(__dirname, "../..");
+const FIXTURE_DIR = path.join(ROOT, "regression", "fixtures", "catalog-audit");
+const AUDIT_SCRIPT = path.join(ROOT, "scripts", "audit-public-content.mjs");
 const vercelConfig = JSON.parse(fs.readFileSync(path.join(ROOT, "frontend/vercel.json"), "utf8"));
-const AUDIT_JSON_PATH = path.join(ROOT, "output", "catalog_audit", "catalog_audit_report.json");
-const AUDIT_MD_PATH = path.join(ROOT, "output", "catalog_audit", "catalog_cleanup_report.md");
-let auditReport;
-let auditMarkdown;
 
 const BLOCKED_TERMS = [
   "apparel",
@@ -31,6 +30,11 @@ const REMOVED_PATHS = [
   "/journal/denim-jackets",
   "/denim-jackets",
 ];
+
+let fixtureOutputDir;
+let auditReport;
+let auditMarkdown;
+let auditCsvHeader;
 
 function callRemovedContent({ path: requestPath, url = "/api/removed-content" }) {
   const headers = {};
@@ -61,14 +65,48 @@ function callRemovedContent({ path: requestPath, url = "/api/removed-content" })
   };
 }
 
-describe("Public content governance", () => {
-  beforeAll(async () => {
-    execFileSync("node", [path.join(ROOT, "scripts", "audit-public-content.mjs")], {
+function runAuditWithFixture({ fixtureDir = FIXTURE_DIR, outputDir } = {}) {
+  execFileSync(
+    "node",
+    [
+      AUDIT_SCRIPT,
+      "--fixture",
+      fixtureDir,
+      "--output-dir",
+      outputDir,
+      "--frontend-url",
+      "https://fixture.theearnalism.test",
+      "--api-url",
+      "https://fixture-api.theearnalism.test/api",
+      "--timeout-ms",
+      "25",
+    ],
+    {
       cwd: ROOT,
       stdio: "pipe",
-    });
-    auditReport = JSON.parse(fs.readFileSync(AUDIT_JSON_PATH, "utf8"));
-    auditMarkdown = fs.readFileSync(AUDIT_MD_PATH, "utf8");
+    },
+  );
+
+  return {
+    report: JSON.parse(fs.readFileSync(path.join(outputDir, "catalog_audit_report.json"), "utf8")),
+    markdown: fs.readFileSync(path.join(outputDir, "catalog_cleanup_report.md"), "utf8"),
+    csvHeader: fs.readFileSync(path.join(outputDir, "catalog_audit_report.csv"), "utf8").split(/\r?\n/, 1)[0],
+  };
+}
+
+describe("Public content governance", () => {
+  beforeAll(() => {
+    fixtureOutputDir = fs.mkdtempSync(path.join(os.tmpdir(), "catalog-audit-fixture-"));
+    const audit = runAuditWithFixture({ outputDir: fixtureOutputDir });
+    auditReport = audit.report;
+    auditMarkdown = audit.markdown;
+    auditCsvHeader = audit.csvHeader;
+  });
+
+  afterAll(() => {
+    if (fixtureOutputDir) {
+      fs.rmSync(fixtureOutputDir, { recursive: true, force: true });
+    }
   });
 
   test("Vercel routes demo ecommerce paths to removed-content handler", () => {
@@ -156,38 +194,99 @@ describe("Public content governance", () => {
     }
   });
 
-  test("catalog audit preserves query routes and understands robots visibility", () => {
-    const categoryRow = auditReport.rows.find((row) => row.path === "/library?category=gothic-fiction");
-    const readerRow = auditReport.rows.find((row) => row.content_type === "reader_page");
-    const removedRow = auditReport.rows.find((row) => row.path === "/product/patterned-wrap-dress");
-    expect(categoryRow).toBeTruthy();
-    expect(categoryRow.sitemap_status).toBe("included");
-    expect(readerRow).toBeTruthy();
-    expect(readerRow.robots_status).toBe("disallowed");
-    expect(readerRow.recommended_action).toBe("NOINDEX");
-    expect(removedRow).toBeTruthy();
-    expect(removedRow.robots_status).toBe("allowed");
+  test("fixture mode works without network and reports source health", () => {
+    expect(auditReport.summary.mode).toBe("dry-run");
+    expect(auditReport.summary.degraded).toBe(false);
+    expect(auditReport.summary.source_statuses).toBeTruthy();
+    expect(auditReport.summary.source_statuses.sitemap.status).toBe("fixture");
+    expect(auditReport.summary.source_statuses.robots.status).toBe("fixture");
+    expect(auditReport.summary.source_statuses.books_api.status).toBe("fixture");
+    expect(auditReport.summary.source_statuses.audio_public_dir.item_count).toBe(2);
+    expect(auditReport.summary.source_statuses.book_assets_dir.item_count).toBe(1);
+    expect(auditReport.rows.find((row) => row.path === "/book/fixture-book").cta_present).toBe("assumed_yes");
+    expect(auditReport.rows.find((row) => row.path === "/journal/fixture-journal").cta_present).toBe("assumed_no");
   });
 
-  test("catalog audit classifies removed routes, reader pages, and orphaned assets without mutation", () => {
+  test("catalog audit preserves query routes and detects sitemap-only unknown URLs", () => {
+    const categoryRow = auditReport.rows.find((row) => row.path === "/library?category=gothic-fiction");
+    const unknownRow = auditReport.rows.find((row) => row.path === "/special/curated-route");
+    expect(categoryRow).toBeTruthy();
+    expect(categoryRow.sitemap_status).toBe("included");
+    expect(unknownRow).toBeTruthy();
+    expect(unknownRow.content_type).toBe("unknown_public_url");
+    expect(unknownRow.source_sets).toEqual(["sitemap"]);
+  });
+
+  test("unknown book and reader rights metadata are quarantined", () => {
+    const bookRow = auditReport.rows.find((row) => row.path === "/book/fixture-book");
+    const readerRow = auditReport.rows.find((row) => row.path === "/reader/fixture-book");
+    expect(bookRow).toBeTruthy();
+    expect(bookRow.rights_metadata_present).toBe("unknown");
+    expect(bookRow.recommended_action).toBe("QUARANTINE");
+    expect(bookRow.reason).toContain("Phase 2 rights verification required");
+    expect(readerRow).toBeTruthy();
+    expect(readerRow.recommended_action).toBe("QUARANTINE");
+  });
+
+  test("unknown audio and book asset rights metadata are quarantined", () => {
+    const audioRow = auditReport.rows.find((row) => row.path === "/audio/en/fixture-book-audio.mp3");
+    const bookAssetRow = auditReport.rows.find((row) => row.path === "/assets/books/fixture-book/front-cover.jpg");
+    expect(audioRow).toBeTruthy();
+    expect(audioRow.related_slug).toBe("fixture-book");
+    expect(audioRow.recommended_action).toBe("QUARANTINE");
+    expect(bookAssetRow).toBeTruthy();
+    expect(bookAssetRow.recommended_action).toBe("QUARANTINE");
+  });
+
+  test("removed demo routes stay DELETE recommendations in dry-run mode", () => {
     const removedRow = auditReport.rows.find((row) => row.path === "/fashion");
-    const readerRow = auditReport.rows.find((row) => row.content_type === "reader_page");
-    const audioRow = auditReport.rows.find((row) => row.content_type === "audio_asset");
     expect(removedRow).toBeTruthy();
     expect(removedRow.public_status).toBe("removed");
     expect(removedRow.recommended_action).toBe("DELETE");
-    expect(readerRow).toBeTruthy();
-    expect(readerRow.recommended_action).toBe("NOINDEX");
-    expect(audioRow).toBeTruthy();
-    expect(["KEEP", "REWRITE", "ARCHIVE"]).toContain(audioRow.recommended_action);
-    expect(auditReport.summary.mode).toBe("dry-run");
+    expect(auditMarkdown).toContain("Dry-run only: no content was mutated or deleted");
   });
 
-  test("catalog audit markdown separates every action bucket", () => {
+  test("csv output includes path and source fields", () => {
+    for (const header of [
+      "url",
+      "path",
+      "source_sets",
+      "related_slug",
+      "language",
+      "asset_health",
+      "asset_files",
+      "degraded",
+      "source_warnings",
+    ]) {
+      expect(auditCsvHeader).toContain(header);
+    }
+  });
+
+  test("catalog audit markdown separates every action bucket and keeps dry-run semantics", () => {
     for (const section of ["## KEEP", "## REWRITE", "## NOINDEX", "## QUARANTINE", "## ARCHIVE", "## DELETE"]) {
       expect(auditMarkdown).toContain(section);
     }
-    expect(auditMarkdown).toContain("Dry-run only: no content was mutated or deleted");
-    expect(auditReport.rows.every((row) => row.url && row.title && row.content_type && row.public_status && row.sitemap_status && row.robots_status && row.recommended_action)).toBe(true);
+    expect(auditReport.rows.every((row) => row.url && row.path && row.title && row.content_type && row.public_status && row.sitemap_status && row.robots_status && row.recommended_action)).toBe(true);
+  });
+
+  test("degraded mode is reported when a critical fixture source is missing", () => {
+    const degradedFixtureDir = fs.mkdtempSync(path.join(os.tmpdir(), "catalog-audit-degraded-fixture-"));
+    const degradedOutputDir = fs.mkdtempSync(path.join(os.tmpdir(), "catalog-audit-degraded-output-"));
+    try {
+      for (const entry of fs.readdirSync(FIXTURE_DIR)) {
+        if (entry === "books.json") continue;
+        fs.copyFileSync(path.join(FIXTURE_DIR, entry), path.join(degradedFixtureDir, entry));
+      }
+      const degradedAudit = runAuditWithFixture({
+        fixtureDir: degradedFixtureDir,
+        outputDir: degradedOutputDir,
+      }).report;
+      expect(degradedAudit.summary.degraded).toBe(true);
+      expect(degradedAudit.summary.source_statuses.books_api.ok).toBe(false);
+      expect(degradedAudit.summary.source_statuses.books_api.degraded_reason).toContain("books_api");
+    } finally {
+      fs.rmSync(degradedFixtureDir, { recursive: true, force: true });
+      fs.rmSync(degradedOutputDir, { recursive: true, force: true });
+    }
   });
 });

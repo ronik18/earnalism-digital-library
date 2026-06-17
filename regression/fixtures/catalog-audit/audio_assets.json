@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/audio/en/fixture-book-audio.mp3",
+    "title": "Fixture Book Audio",
+    "language": "en",
+    "bundle_name": "fixture-book-audio",
+    "asset_health": "complete",
+    "asset_files": [
+      "fixture-book-audio.mp3",
+      "fixture-book-audio_meta.json",
+      "fixture-book-audio_timestamps.json",
+      "fixture-book-audio_highlight.vtt"
+    ]
+  },
+  {
+    "path": "/audio/en/orphaned-audio.mp3",
+    "title": "Orphaned Audio",
+    "language": "en",
+    "bundle_name": "orphaned-audio",
+    "asset_health": "complete",
+    "asset_files": [
+      "orphaned-audio.mp3",
+      "orphaned-audio_meta.json",
+      "orphaned-audio_timestamps.json"
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+[
+  {
+    "slug": "fixture-journal",
+    "title": "Fixture Journal Entry",
+    "author": "Editorial Team",
+    "is_published": true,
+    "category": "Literary"
+  }
+]

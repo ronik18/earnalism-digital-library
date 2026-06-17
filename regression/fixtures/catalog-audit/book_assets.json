@@ -1,0 +1,12 @@
+[
+  {
+    "path": "/assets/books/fixture-book/front-cover.jpg",
+    "title": "Fixture Book Cover",
+    "related_slug": "fixture-book",
+    "asset_health": "complete",
+    "asset_files": [
+      "assets/books/fixture-book/front-cover.jpg",
+      "assets/books/fixture-book/back-cover.jpg"
+    ]
+  }
+]

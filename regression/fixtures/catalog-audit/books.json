@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "fixture-book",
+    "title": "Fixture Book",
+    "author": "Test Author",
+    "is_published": true,
+    "category_slug": "gothic-fiction",
+    "audiobook_enabled": true,
+    "audio_asset_slug": "fixture-book-audio",
+    "short_description": "A dry-run governance fixture book."
+  },
+  {
+    "slug": "verified-rights-book",
+    "title": "Verified Rights Book",
+    "author": "Rights Author",
+    "is_published": true,
+    "category_slug": "gothic-fiction",
+    "audiobook_enabled": false,
+    "rights_metadata": {
+      "rights_basis": "author-owned",
+      "commercial_use_allowed": true
+    }
+  }
+]
