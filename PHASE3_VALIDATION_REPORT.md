@@ -29,8 +29,17 @@ Local normalized line counts:
 - `DEMAND_SCORING.md`: 197 lines
 - `PHASE3_VALIDATION_REPORT.md`: 70 lines
 
-Raw GitHub verification should show normal LF line breaks after this branch is
-pushed. No minified or one-line Python file is expected.
+Raw GitHub verification against `codex/phase3-demand-scoring` showed normal LF
+line breaks and no CR bytes:
+
+- `backend/demand_scoring.py`: 566 LF bytes, 0 CR bytes
+- `backend/tests/test_demand_scoring.py`: 169 LF bytes, 0 CR bytes
+- `scripts/demand_priority.py`: 107 LF bytes, 0 CR bytes
+- `DEMAND_SCORING.md`: 197 LF bytes, 0 CR bytes
+- `PHASE3_VALIDATION_REPORT.md`: 70 LF bytes, 0 CR bytes
+- `package.json`: 35 LF bytes, 0 CR bytes
+
+No minified or one-line Python file was found in raw GitHub downloads.
 
 ## Hidden Unicode Scan
 
