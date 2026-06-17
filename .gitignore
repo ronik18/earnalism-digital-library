@@ -123,3 +123,6 @@ build/
 # Local review/export bundles
 earnalism-main-line-review-bundle/
 earnalism-review-bundle-minimal/
+
+# Local virtualenvs for optional audio tooling
+.venv-edge/
