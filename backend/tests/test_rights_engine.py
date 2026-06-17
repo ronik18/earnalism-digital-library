@@ -1,6 +1,18 @@
 from __future__ import annotations
 
+import importlib
+import os
+import asyncio
+
+import pytest
+
 from backend.rights_engine import evaluate_rights, rights_publish_blockers, rights_report_csv, rights_report_rows
+
+
+def server_module():
+    os.environ.setdefault("MONGODB_URL", "mongodb://localhost:27017/earnalism_test")
+    os.environ.setdefault("JWT_SECRET", "test-secret")
+    return importlib.import_module("backend.server")
 
 
 def approved_book(**overrides):
@@ -200,3 +212,119 @@ def test_reports_split_approved_quarantine_and_blocked_rows():
     csv_text = rights_report_csv(quarantine_rows)
     assert "author_death_year is required" in csv_text
     assert "work_title" in csv_text
+
+
+class FakeBookCursor:
+    def __init__(self, books):
+        self.books = books
+
+    def sort(self, *_args, **_kwargs):
+        return self
+
+    async def to_list(self, _limit):
+        return self.books
+
+
+class FakeBooksCollection:
+    def __init__(self, books):
+        self.books = books
+
+    def find(self, *_args, **_kwargs):
+        return FakeBookCursor(self.books)
+
+
+class FakeDb:
+    def __init__(self, books):
+        self.books = FakeBooksCollection(books)
+
+
+def test_admin_rights_report_valid_filename_returns_csv(monkeypatch):
+    server = server_module()
+    monkeypatch.setattr(server, "db", FakeDb([approved_book()]))
+
+    response = asyncio.run(server.admin_rights_report("rights_approved_report.csv"))
+
+    assert response.media_type == "text/csv"
+    body = response.body.decode("utf-8")
+    assert "decision_status" in body
+    assert "decision_issues" in body
+    assert "approved" in body
+
+
+def test_admin_rights_report_invalid_filename_returns_404():
+    server = server_module()
+
+    with pytest.raises(server.HTTPException) as exc:
+        asyncio.run(server.admin_rights_report("not-a-real-report.csv"))
+
+    assert exc.value.status_code == 404
+
+
+def test_admin_rights_report_endpoint_requires_admin_auth():
+    server = server_module()
+    matching = [
+        route
+        for route in server.app.routes
+        if getattr(route, "path", "") == "/api/admin/rights/reports/{filename}"
+    ]
+
+    assert matching
+    assert any(
+        dependency.call is server.require_admin
+        for route in matching
+        for dependency in route.dependant.dependencies
+    )
+
+
+def test_publishing_create_and_update_paths_call_publish_gate():
+    server = server_module()
+    book = approved_book(rights_metadata={"source_license": ""})
+
+    with pytest.raises(server.HTTPException) as create_exc:
+        server._assert_publishable(book)
+
+    assert create_exc.value.status_code == 400
+    assert "Rights verification" in str(create_exc.value.detail)
+
+
+def test_runtime_source_and_asset_mutations_block_published_unsafe_books():
+    server = server_module()
+    unsafe_book = approved_book(rights_metadata={"rights_tier": "C"})
+
+    for asset_label in ["Source text", "Visual asset", "Audiobook"]:
+        with pytest.raises(server.HTTPException) as exc:
+            server._assert_public_rights_approved(unsafe_book, asset_label)
+        assert exc.value.status_code == 400
+        assert asset_label in exc.value.detail["message"]
+        assert any("Rights verification" in issue for issue in exc.value.detail["issues"])
+
+
+def test_runtime_source_and_asset_mutations_allow_drafts_to_hold_assets():
+    server = server_module()
+    unsafe_draft = approved_book(is_published=False, rights_metadata={"rights_tier": "C"})
+
+    assert server._assert_public_rights_approved(unsafe_draft, "Audiobook") is None
+
+
+def test_server_routes_keep_all_required_rights_enforcement_calls():
+    source = open("backend/server.py", encoding="utf-8").read()
+
+    expected_calls = [
+        "admin_create_book(payload: BookIn",
+        "doc[\"rights_metadata\"] = rights_metadata",
+        "_assert_publishable(doc)",
+        "admin_update_book(slug: str, payload: BookIn",
+        "_assert_publishable(candidate)",
+        "admin_add_chapter(slug: str, payload: ChapterIn",
+        "_assert_public_rights_approved(book, \"Source text\")",
+        "admin_update_chapter(slug: str, cid: str, payload: ChapterIn",
+        "admin_upload_chapter_file(",
+        "admin_upload_cover(",
+        "_assert_public_rights_approved(book, \"Visual asset\")",
+        "admin_update_book_audiobook(",
+        "_assert_public_rights_approved(existing, \"Audiobook\")",
+        "admin_rights_report(filename: str, _=Depends(require_admin))",
+    ]
+
+    for expected in expected_calls:
+        assert expected in source
