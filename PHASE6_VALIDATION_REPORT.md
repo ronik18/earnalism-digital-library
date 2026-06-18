@@ -33,7 +33,7 @@ npm --prefix frontend run build
 
 - Hidden Unicode / line-ending scan: passed for 6 files.
 - Python compile: passed for `backend/visual_design_engine.py`, `backend/tests/test_visual_design_engine.py`, and `scripts/visual_design_engine.py`.
-- Visual design engine tests: passed, 13 tests.
+- Visual design engine tests: passed, 24 tests.
 - `npm run visual:design`: passed and wrote local dry-run reports to `output/visual_design`.
 - Default JSON/Markdown reports are preview-only.
 - `npm run catalog:audit`: passed, 251 items audited.
@@ -44,11 +44,18 @@ npm --prefix frontend run build
 
 - No copyrighted image dependency is introduced.
 - No AI image generation is required.
+- Phase 2 rights, Phase 3 priority, Phase 4 ingestion, Phase 5 edition, and traceability gates are enforced before asset generation.
+- Tier C, missing rights, Tier B, non-ready demand status, incomplete ingestion, failed/missing edition status, and missing hashes all block generation.
+- External dependency QA detects `<img`, `src=`, `srcset=`, `background-image`, `url(`, `http://`, `https://`, `data:image`, and `//cdn`.
 - Mermaid, SVG, and HTML/CSS outputs are deterministic local strings.
 - EPUB/PDF/mobile hooks are dry-run metadata only.
 - Direct non-dry-run library calls are blocked.
 - CLI rejects `--commit`, `--publish`, and `--write`.
 - Generated assets are lightweight and include required metadata.
+
+## Raw GitHub Verification
+
+Pending after push of the hardening commit.
 
 ## Production Mutation
 

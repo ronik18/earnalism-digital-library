@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import csv
-import hashlib
 import html
 import io
 import json
@@ -52,6 +51,11 @@ HTML_ASSETS = {
 
 CHARACTER_NAME_RE = re.compile(r"\b(?:Mr|Mrs|Miss|Dr|Professor)\.?\s+[A-Z][A-Za-z]+|\b[A-Z][a-z]{3,}\b")
 YEAR_RE = re.compile(r"\b(1[5-9]\d{2}|20\d{2})\b")
+EXTERNAL_IMAGE_DEPENDENCY_RE = re.compile(
+    r"(<img\b|\bsrc\s*=|\bsrcset\s*=|background-image\s*:|url\s*\(|https?://|data:image|//cdn)",
+    re.IGNORECASE,
+)
+ALLOWED_EDITION_STATUSES = {"READY_FOR_REVIEW", "PARTIAL_DRY_RUN", "QA_PASSED"}
 
 
 @dataclass(frozen=True)
@@ -113,6 +117,14 @@ class VisualGenerationInput:
     source_work: str
     cleaned_text: str
     source_hash: str
+    content_hash: str = ""
+    provenance_hash: str = ""
+    rights_tier: str = ""
+    verification_status: str = ""
+    blocked_reason: str = ""
+    action_status: str = ""
+    ingestion_status: str = ""
+    edition_generation_status: str = ""
     author: str = ""
     requested_assets: list[str] = field(default_factory=lambda: list(ASSET_TYPES))
     max_assets_per_run: int = DEFAULT_MAX_ASSETS_PER_RUN
@@ -123,17 +135,33 @@ class VisualGenerationInput:
 class VisualGenerationResult:
     source_work: str
     source_hash: str
+    content_hash: str
+    provenance_hash: str
     generated_assets: list[VisualAssetRecord]
     skipped_assets: list[str]
     qa: dict[str, Any]
     generation_status: str
+    gate_status: str
+    blocking_reason: str
+    rights_tier: str
+    action_status: str
+    ingestion_status: str
+    edition_generation_status: str
     dry_run: bool = True
 
     def as_dict(self, *, include_content: bool = False, content_preview_chars: int = 1200) -> dict[str, Any]:
         return {
             "source_work": self.source_work,
             "source_hash": self.source_hash,
+            "content_hash": self.content_hash,
+            "provenance_hash": self.provenance_hash,
             "generation_status": self.generation_status,
+            "gate_status": self.gate_status,
+            "blocking_reason": self.blocking_reason,
+            "rights_tier": self.rights_tier,
+            "action_status": self.action_status,
+            "ingestion_status": self.ingestion_status,
+            "edition_generation_status": self.edition_generation_status,
             "dry_run": self.dry_run,
             "generated_asset_count": len(self.generated_assets),
             "skipped_asset_count": len(self.skipped_assets),
@@ -148,14 +176,14 @@ class VisualGenerationResult:
 
 
 def generate_visual_assets(payload: VisualGenerationInput) -> VisualGenerationResult:
-    if payload.dry_run is not True:
-        return blocked_result(payload, "BLOCKED_NON_DRY_RUN", "Phase 6 visual generation is dry-run only.")
-    if not payload.source_work.strip() or not payload.source_hash.strip():
-        return blocked_result(payload, "BLOCKED_TRACEABILITY", "source_work and source_hash are required.")
     if not payload.cleaned_text.strip():
-        return blocked_result(payload, "BLOCKED_EMPTY_SOURCE", "cleaned_text is required.")
+        return blocked_result(payload, "BLOCKED_INGESTION", "cleaned_text is required.")
 
     requested_assets = normalize_requested_assets(payload.requested_assets)
+    gate_status, blocking_reason = evaluate_generation_gate(payload)
+    if gate_status != "PASS":
+        return blocked_result(payload, gate_status, blocking_reason, requested_assets=requested_assets)
+
     context = build_context(payload)
     generated: list[VisualAssetRecord] = []
     skipped: list[str] = []
@@ -178,32 +206,99 @@ def generate_visual_assets(payload: VisualGenerationInput) -> VisualGenerationRe
     return VisualGenerationResult(
         source_work=payload.source_work,
         source_hash=payload.source_hash,
+        content_hash=payload.content_hash,
+        provenance_hash=payload.provenance_hash,
         generated_assets=generated,
         skipped_assets=skipped,
         qa=qa,
         generation_status=generation_status,
+        gate_status="PASS",
+        blocking_reason="",
+        rights_tier=normalized_rights_tier(payload.rights_tier),
+        action_status=normalized_status(payload.action_status),
+        ingestion_status=normalized_status(payload.ingestion_status),
+        edition_generation_status=normalized_status(payload.edition_generation_status),
         dry_run=payload.dry_run,
     )
 
 
-def blocked_result(payload: VisualGenerationInput, status: str, reason: str) -> VisualGenerationResult:
+def evaluate_generation_gate(payload: VisualGenerationInput) -> tuple[str, str]:
+    if payload.dry_run is not True:
+        return "BLOCKED_NON_DRY_RUN", "Phase 6 visual generation is dry-run only."
+
+    rights_tier = normalized_rights_tier(payload.rights_tier)
+    verification_status = normalized_status(payload.verification_status)
+    action_status = normalized_status(payload.action_status)
+    ingestion_status = normalized_status(payload.ingestion_status)
+    edition_status = normalized_status(payload.edition_generation_status)
+    blocked_reason = str(payload.blocked_reason or "").strip()
+
+    if rights_tier == "C":
+        return "BLOCKED_RIGHTS", "Tier C rights block visual generation."
+    if rights_tier in {"", "UNKNOWN", "NO", "MISSING"} or verification_status not in {"APPROVED", "VERIFIED"}:
+        return "BLOCKED_RIGHTS_REVIEW_REQUIRED", "Approved Tier A rights metadata is required before visual generation."
+    if rights_tier == "B":
+        return "REGION_GATED_REVIEW", "Tier B rights require region-gated review before visual generation."
+    if rights_tier != "A":
+        return "BLOCKED_RIGHTS_REVIEW_REQUIRED", "Unknown rights tier requires Phase 2 rights review."
+    if blocked_reason:
+        return "BLOCKED_RIGHTS", f"Rights blocked_reason must be cleared: {blocked_reason}"
+    if action_status != "READY_FOR_GENERATION":
+        return "BLOCKED_PRIORITY_GATE", "Phase 3 action_status must be READY_FOR_GENERATION."
+    if ingestion_status not in {"INGESTED", "CLEANED"}:
+        return "BLOCKED_INGESTION", "Phase 4 ingestion_status must be INGESTED or CLEANED."
+    if edition_status not in ALLOWED_EDITION_STATUSES:
+        return "BLOCKED_EDITION_GATE", "Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed."
+    if not str(payload.source_hash or "").strip():
+        return "BLOCKED_TRACEABILITY", "source_hash is required."
+    if not str(payload.content_hash or "").strip() or not str(payload.provenance_hash or "").strip():
+        return "BLOCKED_TRACEABILITY", "content_hash and provenance_hash are required."
+    if not str(payload.source_work or "").strip():
+        return "BLOCKED_TRACEABILITY", "source_work is required."
+    return "PASS", ""
+
+
+def blocked_result(
+    payload: VisualGenerationInput,
+    status: str,
+    reason: str,
+    *,
+    requested_assets: list[str] | None = None,
+) -> VisualGenerationResult:
+    requested_assets = requested_assets or normalize_requested_assets(payload.requested_assets)
     return VisualGenerationResult(
         source_work=payload.source_work,
         source_hash=payload.source_hash,
+        content_hash=payload.content_hash,
+        provenance_hash=payload.provenance_hash,
         generated_assets=[],
-        skipped_assets=normalize_requested_assets(payload.requested_assets),
+        skipped_assets=requested_assets,
         qa={
             "qa_status": status,
             "quality_score": 0,
-            "missing_assets": normalize_requested_assets(payload.requested_assets),
+            "missing_assets": requested_assets,
             "issues": [reason],
             "copyrighted_image_dependency": False,
             "ai_image_generation_required": False,
             "epub_pdf_hooks_dry_run_capable": True,
         },
         generation_status=status,
+        gate_status=status,
+        blocking_reason=reason,
+        rights_tier=normalized_rights_tier(payload.rights_tier),
+        action_status=normalized_status(payload.action_status),
+        ingestion_status=normalized_status(payload.ingestion_status),
+        edition_generation_status=normalized_status(payload.edition_generation_status),
         dry_run=payload.dry_run,
     )
+
+
+def normalized_rights_tier(value: Any) -> str:
+    return str(value or "").strip().upper().replace("TIER ", "")
+
+
+def normalized_status(value: Any) -> str:
+    return str(value or "").strip().upper().replace("-", "_").replace(" ", "_")
 
 
 def normalize_requested_assets(asset_types: Iterable[str]) -> list[str]:
@@ -288,8 +383,9 @@ def evaluate_visual_assets(
     issues = []
     if any(asset.qa_status == "BLOCKED_QA" for asset in generated_assets):
         issues.append("One or more generated assets failed quality scoring.")
-    if any(contains_external_image_reference(asset.content) for asset in generated_assets):
-        issues.append("External image dependency detected.")
+    external_issues = external_dependency_issues(asset.content for asset in generated_assets)
+    if external_issues:
+        issues.append("External image dependency detected: " + ", ".join(sorted(set(external_issues))))
     if any(asset.file_size > 120_000 for asset in generated_assets):
         issues.append("Generated asset is too large for the lightweight Phase 6 target.")
 
@@ -301,14 +397,35 @@ def evaluate_visual_assets(
         "missing_assets": missing_assets,
         "skipped_assets": skipped_assets,
         "issues": issues,
-        "copyrighted_image_dependency": False,
+        "copyrighted_image_dependency": bool(external_issues),
         "ai_image_generation_required": False,
         "epub_pdf_hooks_dry_run_capable": True,
     }
 
 
 def contains_external_image_reference(content: str) -> bool:
-    return bool(re.search(r"<img\b|https?://.*\.(?:png|jpe?g|webp|gif|svg)", content, re.IGNORECASE))
+    return bool(EXTERNAL_IMAGE_DEPENDENCY_RE.search(content or ""))
+
+
+def external_dependency_issues(contents: Iterable[str]) -> list[str]:
+    issues: list[str] = []
+    labels = {
+        "<img": "<img",
+        "src=": "src=",
+        "srcset=": "srcset=",
+        "background-image": "background-image",
+        "url(": "url(",
+        "http://": "http://",
+        "https://": "https://",
+        "data:image": "data:image",
+        "//cdn": "//cdn",
+    }
+    for content in contents:
+        lower = (content or "").lower()
+        for needle, label in labels.items():
+            if needle in lower:
+                issues.append(label)
+    return issues
 
 
 def extract_keywords(text: str, title: str, *, limit: int = 10) -> list[str]:
@@ -404,7 +521,7 @@ def render_theme_map(context: VisualAssetContext) -> str:
             f'<text x="{x}" y="{y}" text-anchor="middle" font-size="12" fill="#3d2428">{esc(keyword)}</text></g>'
         )
     return (
-        '<svg xmlns="http://www.w3.org/2000/svg" width="420" height="220" role="img" '
+        '<svg width="420" height="220" role="img" '
         f'aria-label="{esc(context.source_work)} theme map">'
         f'<rect width="420" height="220" fill="#fffaf0"/>{"".join(circles)}</svg>'
     )
@@ -549,12 +666,20 @@ def visual_report_csv(result: VisualGenerationResult) -> str:
         "asset_type",
         "source_work",
         "source_hash",
+        "content_hash",
+        "provenance_hash",
         "generated_at",
         "quality_score",
         "file_size",
         "output_format",
         "qa_status",
         "generation_status",
+        "gate_status",
+        "blocking_reason",
+        "rights_tier",
+        "action_status",
+        "ingestion_status",
+        "edition_generation_status",
         "dry_run",
         "generation_hook",
     ]
@@ -565,6 +690,14 @@ def visual_report_csv(result: VisualGenerationResult) -> str:
         writer.writerow({
             **asset.metadata(include_content=False, content_preview_chars=0),
             "generation_status": result.generation_status,
+            "gate_status": result.gate_status,
+            "blocking_reason": result.blocking_reason,
+            "rights_tier": result.rights_tier,
+            "action_status": result.action_status,
+            "ingestion_status": result.ingestion_status,
+            "edition_generation_status": result.edition_generation_status,
+            "content_hash": result.content_hash,
+            "provenance_hash": result.provenance_hash,
         })
     return output.getvalue()
 
@@ -582,7 +715,15 @@ def visual_report_markdown(
         "",
         f"- Source work: `{result.source_work}`",
         f"- Source hash: `{result.source_hash}`",
+        f"- Content hash: `{result.content_hash}`",
+        f"- Provenance hash: `{result.provenance_hash}`",
         f"- Generation status: `{result.generation_status}`",
+        f"- Gate status: `{result.gate_status}`",
+        f"- Blocking reason: `{result.blocking_reason}`",
+        f"- Rights tier: `{result.rights_tier}`",
+        f"- Action status: `{result.action_status}`",
+        f"- Ingestion status: `{result.ingestion_status}`",
+        f"- Edition generation status: `{result.edition_generation_status}`",
         f"- QA status: `{result.qa.get('qa_status')}`",
         f"- Generated assets: {len(result.generated_assets)}",
         f"- Skipped assets: {len(result.skipped_assets)}",

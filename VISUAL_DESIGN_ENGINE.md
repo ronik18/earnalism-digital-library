@@ -32,6 +32,18 @@ Outputs use only deterministic local formats:
 
 No external images are referenced.
 
+## Upstream Gates
+
+Visual generation blocks before any asset renderer runs unless all upstream evidence is present:
+
+- Phase 2 rights: `rights_tier=A`, `verification_status=approved`, and no `blocked_reason`.
+- Phase 3 demand: `action_status=READY_FOR_GENERATION`.
+- Phase 4 ingestion: `ingestion_status=INGESTED` or `CLEANED`.
+- Phase 5 edition: `edition_generation_status=READY_FOR_REVIEW`, `PARTIAL_DRY_RUN`, or `QA_PASSED`.
+- Traceability: `source_hash`, `content_hash`, `provenance_hash`, `source_work`, and `cleaned_text` are present.
+
+Blocked gate statuses include `BLOCKED_RIGHTS`, `BLOCKED_RIGHTS_REVIEW_REQUIRED`, `REGION_GATED_REVIEW`, `BLOCKED_PRIORITY_GATE`, `BLOCKED_INGESTION`, `BLOCKED_EDITION_GATE`, and `BLOCKED_TRACEABILITY`.
+
 ## Metadata
 
 Each generated asset includes:
@@ -39,6 +51,8 @@ Each generated asset includes:
 - `asset_type`
 - `source_work`
 - `source_hash`
+- `content_hash`
+- `provenance_hash`
 - `generated_at`
 - `quality_score`
 - `file_size`
@@ -94,6 +108,24 @@ The QA layer verifies:
 - dry-run EPUB/PDF hooks are present
 - generated assets are lightweight
 - deterministic content is present for requested assets
+
+External image/dependency policy blocks or flags all generated content containing:
+
+- `<img`
+- `src=`
+- `srcset=`
+- `background-image`
+- `url(`
+- `http://`
+- `https://`
+- `data:image`
+- `//cdn`
+
+This validation applies to HTML, SVG, Mermaid, JSON-hook, and Markdown-style content.
+
+## EPUB/PDF Hooks
+
+EPUB/PDF outputs are dry-run metadata only. The engine records Pandoc-compatible command strings but does not execute Pandoc, Calibre, subprocesses, or any external conversion tooling.
 
 ## Limitations
 
