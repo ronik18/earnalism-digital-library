@@ -110,7 +110,14 @@ def write_reports(
         encoding="utf-8",
     )
     csv_path.write_text(edition_report_csv(result), encoding="utf-8")
-    md_path.write_text(edition_report_markdown(result), encoding="utf-8")
+    md_path.write_text(
+        edition_report_markdown(
+            result,
+            include_content=include_content,
+            content_preview_chars=content_preview_chars,
+        ),
+        encoding="utf-8",
+    )
     return json_path, csv_path, md_path
 
 

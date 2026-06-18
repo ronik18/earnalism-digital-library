@@ -191,6 +191,8 @@ def test_reports_include_state_and_qa(tmp_path: Path):
     assert "qa_status" in csv_text
     assert "gate_status" in csv_text
     assert "Earnalism Edition Generator Dry-Run Report" in markdown
+    assert "Content preview" in markdown
+    assert "Full generated content" not in markdown
     payload = json.loads(json_path.read_text(encoding="utf-8"))
     assert payload["state"]["prompt_version"] == PROMPT_VERSION
     assert "content" not in payload["sections"][0]
@@ -198,13 +200,28 @@ def test_reports_include_state_and_qa(tmp_path: Path):
     assert payload["qa"]["missing_sections"]
 
 
-def test_include_content_report_writer_outputs_full_section_content(tmp_path: Path):
+def test_default_markdown_excludes_full_generated_content(tmp_path: Path):
     result = generate_edition(generation_input(max_sections_per_run=1, max_generation_budget=100_000))
 
-    json_path, _csv_path, _md_path = write_reports(result, tmp_path, include_content=True)
+    _json_path, _csv_path, md_path = write_reports(result, tmp_path, content_preview_chars=24)
+
+    markdown = md_path.read_text(encoding="utf-8")
+    full_content = result.sections[result.generated_sections[0]]
+    assert full_content not in markdown
+    assert full_content[:24] in markdown
+
+
+def test_include_content_report_writer_outputs_full_section_content_in_json_and_markdown(tmp_path: Path):
+    result = generate_edition(generation_input(max_sections_per_run=1, max_generation_budget=100_000))
+
+    json_path, _csv_path, md_path = write_reports(result, tmp_path, include_content=True)
 
     payload = json.loads(json_path.read_text(encoding="utf-8"))
-    assert payload["sections"][0]["content"] == result.sections[result.generated_sections[0]]
+    full_content = result.sections[result.generated_sections[0]]
+    markdown = md_path.read_text(encoding="utf-8")
+    assert payload["sections"][0]["content"] == full_content
+    assert full_content in markdown
+    assert "Full generated content" in markdown
 
 
 def test_content_preview_chars_limits_default_json(tmp_path: Path):
@@ -277,6 +294,15 @@ def test_missing_content_or_provenance_hash_blocks_traceability():
 
     assert no_content.gate_status == "BLOCKED_TRACEABILITY"
     assert no_provenance.gate_status == "BLOCKED_TRACEABILITY"
+
+
+def test_core_generator_blocks_non_dry_run_library_calls():
+    result = generate_edition(generation_input(dry_run=False))
+
+    assert result.gate_status == "BLOCKED_NON_DRY_RUN"
+    assert result.blocking_reason == "Phase 5 edition generation is dry-run only."
+    assert result.generated_sections == []
+    assert result.dry_run is False
 
 
 def test_phase4_full_text_payload_is_compatible(tmp_path: Path):
@@ -372,3 +398,6 @@ def test_cli_sample_is_dry_run_and_rejects_commit():
     assert "Edition generation dry-run complete" in ok.stdout
     assert blocked.returncode != 0
     assert "dry-run only" in blocked.stderr
+
+    payload = json.loads(Path("/tmp/earnalism-edition-test/edition_generation_report.json").read_text(encoding="utf-8"))
+    assert payload["dry_run"] is True

@@ -97,9 +97,9 @@ python3 scripts/edition_generator.py \
   --section seo-copy
 ```
 
-The CLI rejects `--commit`, `--publish`, and `--write`.
+The CLI rejects `--commit`, `--publish`, and `--write`. The core generator also blocks non-dry-run calls with `BLOCKED_NON_DRY_RUN`, even when called directly as a Python library.
 
-Full generated section content is excluded from JSON by default. Use this only for local review:
+Full generated section content is excluded from JSON and Markdown by default. Use this only for local review:
 
 ```bash
 python3 scripts/edition_generator.py \

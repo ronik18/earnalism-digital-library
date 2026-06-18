@@ -311,6 +311,9 @@ def validate_input(payload: EditionGenerationInput) -> None:
 
 
 def evaluate_generation_gate(payload: EditionGenerationInput) -> tuple[str, str]:
+    if payload.dry_run is not True:
+        return "BLOCKED_NON_DRY_RUN", "Phase 5 edition generation is dry-run only."
+
     rights_tier = normalized_rights_tier(payload.rights_tier)
     verification_status = normalized_status(payload.verification_status)
     action_status = normalized_status(payload.action_status)
@@ -866,7 +869,12 @@ def edition_report_csv(result: EditionGenerationResult) -> str:
     return output.getvalue()
 
 
-def edition_report_markdown(result: EditionGenerationResult) -> str:
+def edition_report_markdown(
+    result: EditionGenerationResult,
+    *,
+    include_content: bool = False,
+    content_preview_chars: int = 1200,
+) -> str:
     lines = [
         "# Earnalism Edition Generator Dry-Run Report",
         "",
@@ -899,7 +907,13 @@ def edition_report_markdown(result: EditionGenerationResult) -> str:
             f"- Editorial review required: `{metadata.get('editorial_review_required', False)}`",
             f"- Source coverage: `{metadata.get('source_coverage_status', '')}`",
             "",
-            result.sections[section_id],
+            "**Content preview:**" if not include_content else "**Full generated content:**",
+            "",
+            (
+                result.sections[section_id]
+                if include_content
+                else result.sections[section_id][: max(0, int(content_preview_chars or 0))]
+            ),
             "",
         ])
     if result.skipped_sections:
