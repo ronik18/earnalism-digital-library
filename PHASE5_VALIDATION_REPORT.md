@@ -2,6 +2,8 @@
 
 Branch: `codex/phase5-edition-generator`
 
+Validated hardening commit: `1c5539e1`
+
 ## Scope
 
 Phase 5 adds a deterministic dry-run Earnalism edition generator. It does not publish content, generate full books, call LLM/TTS/image/OCR APIs, fetch network resources, or mutate production data.
@@ -59,7 +61,16 @@ npm --prefix frontend run build
 
 ## Raw GitHub Verification
 
-Pending after push of the hardening commit.
+Raw download check after pushing commit `1c5539e1`:
+
+```text
+backend/edition_generator.py: 919 lines, CR=0, first_line=from __future__ import annotations
+backend/tests/test_edition_generator.py: 374 lines, CR=0, first_line=from __future__ import annotations
+scripts/edition_generator.py: 180 lines, CR=0, first_line=#!/usr/bin/env python3
+EDITION_GENERATOR.md: 149 lines, CR=0, first_line=# Phase 5 Earnalism Edition Generator
+PHASE5_VALIDATION_REPORT.md: 72 lines, CR=0, first_line=# Phase 5 Validation Report
+package.json: 37 lines, CR=0, first_line={
+```
 
 ## Production Mutation
 
