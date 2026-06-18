@@ -2,7 +2,7 @@
 
 Branch: `codex/phase9-daily-growth-automation`
 
-Latest validation context: working tree hardening on top of commit `c1eddc46`.
+Hardening commit verified: `f5934784`.
 
 ## Scope
 
@@ -43,9 +43,9 @@ npm --prefix frontend run build
 - Public content governance regression: passed, 15 tests.
 - Frontend build: passed.
 
-## Raw Download / Line Count Verification
+## Raw GitHub Download / Line Count Verification
 
-The hardened files are LF-normalized and line-count verified. The same paths should show these physical line counts from GitHub raw after the hardening commit is pushed:
+The hardened files are LF-normalized and line-count verified. Raw GitHub download verification for commit `f5934784` returned:
 
 ```text
 backend/daily_growth_loop.py: 495 lines
@@ -53,7 +53,7 @@ backend/tests/test_daily_growth_loop.py: 314 lines
 scripts/daily_growth_loop.py: 119 lines
 package.json: 41 lines
 DAILY_GROWTH_LOOP.md: 110 lines
-PHASE9_VALIDATION_REPORT.md: 79 lines
+PHASE9_VALIDATION_REPORT.md: 79 lines before this report-only update
 ```
 
 ## Guardrails
