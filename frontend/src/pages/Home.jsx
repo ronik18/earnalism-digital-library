@@ -1,6 +1,6 @@
 import { startTransition, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Sparkles, Compass, Feather, Mail, Instagram, Facebook, Youtube, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, BookOpen, Sparkles, Compass, Feather, Mail, Instagram, Facebook, Youtube, Linkedin, Twitter, CreditCard } from "lucide-react";
 import { toast } from "sonner";
 import { api, formatError } from "../lib/api";
 import { optimizedImageUrl } from "../lib/images";
@@ -349,7 +349,10 @@ export default function Home() {
               <Link to="/library" className="btn-primary w-full sm:w-auto gap-2" data-testid="hero-cta-read">
                 <BookOpen size={16} strokeWidth={1.7} className="shrink-0" /> Start Reading
               </Link>
-              <Link to="/library" className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-library">
+              <Link to="/pricing" className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-pricing">
+                <CreditCard size={15} strokeWidth={1.7} /> Buy Reading Time
+              </Link>
+              <Link to="/library" className="btn-link w-full sm:w-auto !text-[#FDFCF8]" data-testid="hero-cta-library">
                 Explore Library <ArrowRight size={15} strokeWidth={1.7} />
               </Link>
             </div>

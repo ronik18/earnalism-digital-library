@@ -203,6 +203,7 @@ export default function Pricing() {
         <div className="text-center mt-14">
           <p className="text-sm text-charcoal-soft font-light italic max-w-xl mx-auto">
             Payments are processed securely by Razorpay. Your reading time is credited the moment payment is confirmed.
+            For support or refund questions, contact sales@reoenterprise.org with your payment reference.
           </p>
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact" className="btn-secondary">Need help?</Link>

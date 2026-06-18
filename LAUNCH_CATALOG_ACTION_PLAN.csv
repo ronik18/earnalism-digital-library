@@ -1,0 +1,125 @@
+url,path,title,recommended_action,reason
+https://theearnalism.com/,/,homepage,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/library,/library,library,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/journal,/journal,journal,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/about,/about,about,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/contact,/contact,contact,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/pricing,/pricing,pricing,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/micro-story,/micro-story,micro-story,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/library?category=adventure,/library?category=adventure,library?category=adventure,KEEP_PROMOTE,Category URL is allowed but should be canonicalized carefully.
+https://theearnalism.com/library?category=bengali-classics,/library?category=bengali-classics,library?category=bengali-classics,KEEP_PROMOTE,Category URL is allowed but should be canonicalized carefully.
+https://theearnalism.com/library?category=business,/library?category=business,library?category=business,KEEP_PROMOTE,Category URL is allowed but should be canonicalized carefully.
+https://theearnalism.com/library?category=gothic-fiction,/library?category=gothic-fiction,library?category=gothic-fiction,KEEP_PROMOTE,Category URL is allowed but should be canonicalized carefully.
+https://theearnalism.com/library?category=history-strategy,/library?category=history-strategy,library?category=history-strategy,KEEP_PROMOTE,Category URL is allowed but should be canonicalized carefully.
+https://theearnalism.com/library?category=literary-fiction,/library?category=literary-fiction,library?category=literary-fiction,KEEP_PROMOTE,Category URL is allowed but should be canonicalized carefully.
+https://theearnalism.com/library?category=science-fiction,/library?category=science-fiction,library?category=science-fiction,KEEP_PROMOTE,Category URL is allowed but should be canonicalized carefully.
+https://theearnalism.com/library?category=technology,/library?category=technology,library?category=technology,KEEP_PROMOTE,Category URL is allowed but should be canonicalized carefully.
+https://theearnalism.com/library?category=young-readers,/library?category=young-readers,library?category=young-readers,KEEP_PROMOTE,Category URL is allowed but should be canonicalized carefully.
+https://theearnalism.com/book/the-principles-of-scientific-management,/book/the-principles-of-scientific-management,book/the-principles-of-scientific-management,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/acres-of-diamonds,/book/acres-of-diamonds,book/acres-of-diamonds,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/my-life-and-work,/book/my-life-and-work,book/my-life-and-work,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-science-of-getting-rich,/book/the-science-of-getting-rich,book/the-science-of-getting-rich,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-art-of-money-getting,/book/the-art-of-money-getting,book/the-art-of-money-getting,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/bn-070,/book/bn-070,book/bn-070,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/bn-066,/book/bn-066,book/bn-066,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/bn-060,/book/bn-060,book/bn-060,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/bn-059,/book/bn-059,book/bn-059,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/bn-058,/book/bn-058,book/bn-058,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/bn-041,/book/bn-041,book/bn-041,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/bn-036,/book/bn-036,book/bn-036,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/bn-035,/book/bn-035,book/bn-035,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/bn-031,/book/bn-031,book/bn-031,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/bn-027,/book/bn-027,book/bn-027,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/mrinalini,/book/mrinalini,book/mrinalini,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/lokrahasya,/book/lokrahasya,book/lokrahasya,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/muchiram-gurer-jibanchorit,/book/muchiram-gurer-jibanchorit,book/muchiram-gurer-jibanchorit,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/yugalanguriya,/book/yugalanguriya,book/yugalanguriya,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/radharani,/book/radharani,book/radharani,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/nishkriti,/book/nishkriti,book/nishkriti,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/a-jury-of-her-peers,/book/a-jury-of-her-peers,book/a-jury-of-her-peers,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-most-dangerous-game,/book/the-most-dangerous-game,book/the-most-dangerous-game,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/feathertop,/book/feathertop,book/feathertop,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-country-of-the-blind,/book/the-country-of-the-blind,book/the-country-of-the-blind,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-adventure-of-the-greek-interpreter,/book/the-adventure-of-the-greek-interpreter,book/the-adventure-of-the-greek-interpreter,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-stolen-white-elephant,/book/the-stolen-white-elephant,book/the-stolen-white-elephant,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/tobermory,/book/tobermory,book/tobermory,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-withered-arm,/book/the-withered-arm,book/the-withered-arm,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/a-horseman-in-the-sky,/book/a-horseman-in-the-sky,book/a-horseman-in-the-sky,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-selfish-giant,/book/the-selfish-giant,book/the-selfish-giant,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-happy-prince,/book/the-happy-prince,book/the-happy-prince,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/a-mystery-of-heroism,/book/a-mystery-of-heroism,book/a-mystery-of-heroism,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-open-boat,/book/the-open-boat,book/the-open-boat,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/a-white-heron,/book/a-white-heron,book/a-white-heron,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/a-ghost-story,/book/a-ghost-story,book/a-ghost-story,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-cop-and-the-anthem,/book/the-cop-and-the-anthem,book/the-cop-and-the-anthem,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-pit-and-the-pendulum,/book/the-pit-and-the-pendulum,book/the-pit-and-the-pendulum,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/an-occurrence-at-owl-creek-bridge,/book/an-occurrence-at-owl-creek-bridge,book/an-occurrence-at-owl-creek-bridge,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/boule-de-suif,/book/boule-de-suif,book/boule-de-suif,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-necklace,/book/the-necklace,book/the-necklace,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-bishop,/book/the-bishop,book/the-bishop,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-lady-with-the-dog,/book/the-lady-with-the-dog,book/the-lady-with-the-dog,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-ransom-of-red-chief,/book/the-ransom-of-red-chief,book/the-ransom-of-red-chief,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-last-leaf,/book/the-last-leaf,book/the-last-leaf,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-murders-in-the-rue-morgue,/book/the-murders-in-the-rue-morgue,book/the-murders-in-the-rue-morgue,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-tell-tale-heart,/book/the-tell-tale-heart,book/the-tell-tale-heart,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/book-2b9853ec52,/book/book-2b9853ec52,book/book-2b9853ec52,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-a4a369483f,/book/book-a4a369483f,book/book-a4a369483f,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-b9d47814a8,/book/book-b9d47814a8,book/book-b9d47814a8,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-0fbdaa730e,/book/book-0fbdaa730e,book/book-0fbdaa730e,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-5704b31005,/book/book-5704b31005,book/book-5704b31005,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-9a7f771921,/book/book-9a7f771921,book/book-9a7f771921,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-4968248842,/book/book-4968248842,book/book-4968248842,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-88ded9b47c,/book/book-88ded9b47c,book/book-88ded9b47c,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-edfcf810c5,/book/book-edfcf810c5,book/book-edfcf810c5,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-95624627d5,/book/book-95624627d5,book/book-95624627d5,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-827fdc7aee,/book/book-827fdc7aee,book/book-827fdc7aee,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-bfc51280b3,/book/book-bfc51280b3,book/book-bfc51280b3,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-4b944e64fa,/book/book-4b944e64fa,book/book-4b944e64fa,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-ef193ffc52,/book/book-ef193ffc52,book/book-ef193ffc52,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-c307a57868,/book/book-c307a57868,book/book-c307a57868,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-0986aeb7e3,/book/book-0986aeb7e3,book/book-0986aeb7e3,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-a23625bf36,/book/book-a23625bf36,book/book-a23625bf36,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-5461971092,/book/book-5461971092,book/book-5461971092,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-1090573dff,/book/book-1090573dff,book/book-1090573dff,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-ac5a71075e,/book/book-ac5a71075e,book/book-ac5a71075e,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/the-enchanted-april,/book/the-enchanted-april,book/the-enchanted-april,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-metamorphosis,/book/the-metamorphosis,book/the-metamorphosis,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-lifted-veil,/book/the-lifted-veil,book/the-lifted-veil,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-canterville-ghost,/book/the-canterville-ghost,book/the-canterville-ghost,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-strange-case-of-dr-jekyll-and-mr-hyde,/book/the-strange-case-of-dr-jekyll-and-mr-hyde,book/the-strange-case-of-dr-jekyll-and-mr-hyde,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-man-who-would-be-king,/book/the-man-who-would-be-king,book/the-man-who-would-be-king,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-monkeys-paw,/book/the-monkeys-paw,book/the-monkeys-paw,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-yellow-wallpaper,/book/the-yellow-wallpaper,book/the-yellow-wallpaper,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/white-fang,/book/white-fang,book/white-fang,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-fall-of-the-house-of-usher,/book/the-fall-of-the-house-of-usher,book/the-fall-of-the-house-of-usher,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/book-fbdf2991ab,/book/book-fbdf2991ab,book/book-fbdf2991ab,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-c85323409f,/book/book-c85323409f,book/book-c85323409f,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-5aedda79fe,/book/book-5aedda79fe,book/book-5aedda79fe,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/the-wonderful-wizard-of-oz,/book/the-wonderful-wizard-of-oz,book/the-wonderful-wizard-of-oz,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-picture-of-dorian-gray,/book/the-picture-of-dorian-gray,book/the-picture-of-dorian-gray,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-adventures-of-sherlock-holmes,/book/the-adventures-of-sherlock-holmes,book/the-adventures-of-sherlock-holmes,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/dracula,/book/dracula,book/dracula,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/alices-adventures-in-wonderland,/book/alices-adventures-in-wonderland,book/alices-adventures-in-wonderland,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/agentic-ai-with-python,/book/agentic-ai-with-python,book/agentic-ai-with-python,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/book-63afd5e9be,/book/book-63afd5e9be,book/book-63afd5e9be,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/bharat-at-the-crossroads,/book/bharat-at-the-crossroads,book/bharat-at-the-crossroads,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/book-2e468c4990,/book/book-2e468c4990,book/book-2e468c4990,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-d2fe532e1c,/book/book-d2fe532e1c,book/book-d2fe532e1c,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-a74c1a1451,/book/book-a74c1a1451,book/book-a74c1a1451,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-f5d593e1f4,/book/book-f5d593e1f4,book/book-f5d593e1f4,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-754da4eab8,/book/book-754da4eab8,book/book-754da4eab8,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-c7f3ce526c,/book/book-c7f3ce526c,book/book-c7f3ce526c,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-d19e96859f,/book/book-d19e96859f,book/book-d19e96859f,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-0deb35c750,/book/book-0deb35c750,book/book-0deb35c750,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/book-2ddbed8293,/book/book-2ddbed8293,book/book-2ddbed8293,KEEP_REWRITE,Generated or code-like slug should be rewritten before promotion.
+https://theearnalism.com/book/the-great-gatsby,/book/the-great-gatsby,book/the-great-gatsby,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/frankenstein,/book/frankenstein,book/frankenstein,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-time-machine,/book/the-time-machine,book/the-time-machine,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-secret-garden,/book/the-secret-garden,book/the-secret-garden,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/the-call-of-the-wild,/book/the-call-of-the-wild,book/the-call-of-the-wild,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/jane-eyre,/book/jane-eyre,book/jane-eyre,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/great-expectations,/book/great-expectations,book/great-expectations,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/book/pride-and-prejudice,/book/pride-and-prejudice,book/pride-and-prejudice,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/journal/how-reading-shapes-better-founders,/journal/how-reading-shapes-better-founders,journal/how-reading-shapes-better-founders,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/journal/the-quiet-power-of-a-premium-bookstore-brand,/journal/the-quiet-power-of-a-premium-bookstore-brand,journal/the-quiet-power-of-a-premium-bookstore-brand,KEEP_PROMOTE,Launch-aligned public URL.
+https://theearnalism.com/journal/why-every-small-business-needs-a-story-before-a-strategy,/journal/why-every-small-business-needs-a-story-before-a-strategy,journal/why-every-small-business-needs-a-story-before-a-strategy,KEEP_PROMOTE,Launch-aligned public URL.

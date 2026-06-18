@@ -284,6 +284,30 @@ def enforce_local_only(args: argparse.Namespace) -> None:
         raise RuntimeError(f"--local-only refuses paid/cloud TTS provider selection: {rendered}")
 
 
+def enforce_remote_audio_safety(args: argparse.Namespace) -> None:
+    remote_actions: list[str] = []
+    if getattr(args, "upload_to_cloudinary", False):
+        remote_actions.append("--upload-to-storage")
+    if getattr(args, "sync_flags", False):
+        remote_actions.append("--sync-flags")
+    if getattr(args, "copy_to_public", False):
+        remote_actions.append("--copy-to-public")
+    if not remote_actions:
+        return
+
+    missing: list[str] = []
+    if os.environ.get("EARNALISM_ALLOW_AUDIO_UPLOAD") != "true":
+        missing.append("EARNALISM_ALLOW_AUDIO_UPLOAD=true")
+    if os.environ.get("EARNALISM_ALLOW_PROVIDER_CALLS") != "true":
+        missing.append("EARNALISM_ALLOW_PROVIDER_CALLS=true")
+    if getattr(args, "sync_flags", False) and os.environ.get("EARNALISM_CONFIRM_PRODUCTION_AUDIO") != "true":
+        missing.append("EARNALISM_CONFIRM_PRODUCTION_AUDIO=true")
+    if missing:
+        actions = ", ".join(remote_actions)
+        required = ", ".join(missing)
+        raise RuntimeError(f"Audio remote action guard blocked {actions}. Set {required} to continue.")
+
+
 def load_target_manifest(path: Optional[Path]) -> Tuple[set[str], Dict[str, str]]:
     if not path:
         return set(), {}
@@ -1244,6 +1268,7 @@ def main() -> None:
     args.manifest = args.manifest.expanduser().resolve() if args.manifest else None
     load_environment(args)
     enforce_local_only(args)
+    enforce_remote_audio_safety(args)
     args.manifest_slugs, args.manifest_languages = load_target_manifest(args.manifest)
 
     preflight_payload = preflight(args)
