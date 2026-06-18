@@ -13,6 +13,7 @@
     "demand:score": "python3 scripts/demand_priority.py",
     "source:ingest": "python3 scripts/source_ingestion.py --sample",
     "edition:generate": "python3 scripts/edition_generator.py --sample",
+    "visual:design": "python3 scripts/visual_design_engine.py --sample",
     "audio:preflight": "python3 scripts/open_source_audiobook_onboarding.py preflight",
     "audio:audit": "python3 scripts/open_source_audiobook_onboarding.py audit",
     "audio:onboard:dry": "python3 scripts/open_source_audiobook_onboarding.py generate --dry-run",
