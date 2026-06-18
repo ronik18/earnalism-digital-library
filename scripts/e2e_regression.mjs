@@ -189,17 +189,22 @@ async function main() {
   assert(!bookDetail.rawBodyIncludesRightsMetadata, "internal rights metadata leaked into book page");
 
   await gotoAppPath(page, `/reader/${firstSlug}`);
-  await page.waitForFunction(() => (
-    Boolean(document.querySelector('[data-testid="reader-page"]'))
-    || document.body.innerText.includes("Reading access")
-  ), null, { timeout: 30000 });
+  await page.waitForSelector([
+    '[data-testid="reader-page"]',
+    '[data-testid="reader-locked"]',
+    '[data-testid="reader-not-found"]',
+    '[data-testid="reader-error"]',
+  ].join(", "), { timeout: 30000 });
   const reader = await page.evaluate(() => ({
     unlocked: Boolean(document.querySelector('[data-testid="reader-page"]')),
-    locked: document.body.innerText.includes("Reading access"),
+    locked: Boolean(document.querySelector('[data-testid="reader-locked"]')),
+    notFound: Boolean(document.querySelector('[data-testid="reader-not-found"]')),
+    error: Boolean(document.querySelector('[data-testid="reader-error"]')),
+    text: document.body.innerText.replace(/\s+/g, " ").trim().slice(0, 240),
     hasSecureReader: Boolean(document.querySelector(".secure-reader")),
     hasReaderCanvas: Boolean(document.querySelector(".reader-canvas")),
   }));
-  assert(reader.unlocked || reader.locked, "reader route did not render an access state");
+  assert(reader.unlocked || reader.locked, `reader route did not render an access state: ${JSON.stringify(reader)}`);
   assert(reader.locked || reader.hasSecureReader || reader.hasReaderCanvas, "reader unlocked without secure reader/canvas");
 
   await browser.close();

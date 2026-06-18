@@ -2187,7 +2187,7 @@ export default function Reader() {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center gap-4 px-6 text-center min-h-screen" style={{ background: THEMES.beige.canvas }}>
+      <div className="flex flex-col items-center justify-center gap-4 px-6 text-center min-h-screen" style={{ background: THEMES.beige.canvas }} data-testid="reader-error">
         <AlertCircle size={28} color="#6B1020" />
         <div style={{ fontFamily: READER_SERIF, fontSize: 18, color: '#6B1020' }}>
           {error}
@@ -2207,7 +2207,7 @@ export default function Reader() {
     const signInUrl = `/login?next=${encodeURIComponent(getCurrentReaderPath())}`;
 
     return (
-      <div className="flex min-h-screen items-center justify-center px-5 py-14 text-center" style={{ background: THEMES.beige.canvas }}>
+      <div className="flex min-h-screen items-center justify-center px-5 py-14 text-center" style={{ background: THEMES.beige.canvas }} data-testid="reader-locked">
         <div className="w-full max-w-md rounded-2xl border border-[#E8DDD8] bg-white/70 px-7 py-9 shadow-book">
           <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full" style={{ background: '#F5F0E8', color: '#6B1020' }}>
             {reason === 'INSUFFICIENT_READING_TIME' ? <CreditCard size={22} /> : <LogIn size={22} />}
