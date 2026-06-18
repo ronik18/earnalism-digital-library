@@ -2,7 +2,7 @@
 
 Branch: `codex/phase11-first-product-batch`
 
-Latest validation context: Phase 11 hardening worktree before raw GitHub verification commit.
+Hardening commit raw-verified: `6360400c`.
 
 ## Scope
 
@@ -41,7 +41,9 @@ npm --prefix frontend run build
 - Public content governance regression: passed, 15 tests.
 - Frontend build: passed.
 
-## Line Count Verification
+## Raw GitHub Download / Line Count Verification
+
+Raw GitHub download verification for commit `6360400c` returned:
 
 ```text
 backend/first_batch_dry_run.py: 948 lines
@@ -49,7 +51,7 @@ backend/tests/test_first_batch_dry_run.py: 256 lines
 scripts/first_batch_dry_run.py: 70 lines
 package.json: 43 lines
 FIRST_BATCH_DRY_RUN_REPORT.md: 206 lines
-PHASE11_VALIDATION_REPORT.md: 68 lines
+PHASE11_VALIDATION_REPORT.md: 68 lines before this raw-verification report update
 ```
 
 ## Guardrails
