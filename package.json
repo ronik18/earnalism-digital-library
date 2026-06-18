@@ -11,6 +11,7 @@
     "monitor:production": "node scripts/production_monitor.mjs",
     "catalog:audit": "node scripts/audit-public-content.mjs",
     "demand:score": "python3 scripts/demand_priority.py",
+    "source:ingest": "python3 scripts/source_ingestion.py --sample",
     "audio:preflight": "python3 scripts/open_source_audiobook_onboarding.py preflight",
     "audio:audit": "python3 scripts/open_source_audiobook_onboarding.py audit",
     "audio:onboard:dry": "python3 scripts/open_source_audiobook_onboarding.py generate --dry-run",
