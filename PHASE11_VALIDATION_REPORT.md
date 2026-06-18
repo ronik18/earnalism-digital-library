@@ -2,6 +2,8 @@
 
 Branch: `codex/phase11-first-product-batch`
 
+Latest validation context: Phase 11 hardening worktree before raw GitHub verification commit.
+
 ## Scope
 
 Phase 11 prepares the first 10-product Earnalism batch as deterministic dry-run reports only.
@@ -33,7 +35,7 @@ npm --prefix frontend run build
 
 - Hidden Unicode / line-ending scan: passed for 6 files.
 - Python compile: passed for `backend/first_batch_dry_run.py`, `backend/tests/test_first_batch_dry_run.py`, and `scripts/first_batch_dry_run.py`.
-- First batch tests: passed, 11 tests.
+- First batch tests: passed, 16 tests.
 - `npm run first-batch:dry-run`: passed and generated `FIRST_BATCH_DRY_RUN_REPORT.md`.
 - `npm run catalog:audit`: passed, 251 items audited.
 - Public content governance regression: passed, 15 tests.
@@ -42,21 +44,23 @@ npm --prefix frontend run build
 ## Line Count Verification
 
 ```text
-backend/first_batch_dry_run.py: 558 lines
-backend/tests/test_first_batch_dry_run.py: 173 lines
+backend/first_batch_dry_run.py: 948 lines
+backend/tests/test_first_batch_dry_run.py: 256 lines
 scripts/first_batch_dry_run.py: 70 lines
 package.json: 43 lines
-FIRST_BATCH_DRY_RUN_REPORT.md: 120 lines
-PHASE11_VALIDATION_REPORT.md: 64 lines
+FIRST_BATCH_DRY_RUN_REPORT.md: 206 lines
+PHASE11_VALIDATION_REPORT.md: 68 lines
 ```
 
 ## Guardrails
 
 - The batch is dry-run only.
 - Public publish actions remain `0`.
-- Tier A approved items may reach `READY_FOR_PUBLICATION_DRAFT`.
+- Fixture/URN source metadata cannot produce publication-ready status.
+- Real source traceability can only produce `READY_FOR_PUBLICATION_DRAFT_CANDIDATE` when Phase 8 compatibility is READY.
 - Tier B items remain `REGION_GATED_DRAFT_REVIEW`.
 - Unsafe rights are quarantined.
+- Phase 2 rights, Phase 3 demand, Phase 4 traceability, Phase 5 edition, Phase 6 visual, Phase 7 audio, Phase 8 workflow, and Phase 10 observability are called or compatibility-validated.
 - Audio preview generation is skipped unless a provider is configured and dry-run budget allows.
 
 ## Production Mutation

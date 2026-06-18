@@ -58,15 +58,43 @@ def test_each_product_has_required_dry_run_artifacts():
         assert product["seo_draft"]["public"] is False
 
 
-def test_ready_items_are_marked_publication_draft_only():
+def with_verified_source(product):
+    product = dict(product)
+    product.update(
+        {
+            "source_url": "https://www.gutenberg.org/files/345/345-0.txt",
+            "source_name": "Project Gutenberg",
+            "source_license": "Public Domain",
+            "source_hash": "sha256:source",
+            "content_hash": "sha256:content",
+            "provenance_hash": "sha256:provenance",
+            "rights_basis": "Public-domain source verified for dry-run compatibility.",
+            "rights_note": "Dry-run only; no publication.",
+        }
+    )
+    return product
+
+
+def test_fixture_sources_do_not_produce_publication_ready_status():
     report = run_first_batch_dry_run({"dry_run": True})
     data = first_batch_report_json(report)
-    ready = [product for product in data["products"] if product["publication_readiness_status"] == "READY_FOR_PUBLICATION_DRAFT"]
 
-    assert ready
-    assert all(product["rights_report"]["rights_tier"] == "A" for product in ready)
+    assert data["summary"]["ready_for_publication_draft"] == 0
+    assert data["summary"]["ready_for_publication_draft_candidate"] == 0
+    assert data["summary"]["source_metadata_required"] == 10
     assert data["summary"]["public_publish_actions"] == 0
-    assert all(product["publication_readiness_status"] != "PUBLISHED" for product in data["products"])
+    assert all(product["publication_readiness_status"] != "READY_FOR_PUBLICATION_DRAFT" for product in data["products"])
+
+
+def test_real_source_traceability_can_produce_candidate_only_when_phase8_ready():
+    product = with_verified_source(first_batch_products()[5])
+    report = run_first_batch_dry_run({"dry_run": True, "products": [product]})
+    row = first_batch_report_json(report)["products"][0]
+
+    assert row["source_report"]["source_status"] == "SOURCE_TRACEABILITY_READY"
+    assert row["publishing_workflow_status"] == "READY"
+    assert row["publication_readiness_status"] == "READY_FOR_PUBLICATION_DRAFT_CANDIDATE"
+    assert row["publication_readiness_status"] != "READY_FOR_PUBLICATION_DRAFT"
 
 
 def test_tier_b_items_are_region_gated_not_global_ready():
@@ -76,6 +104,8 @@ def test_tier_b_items_are_region_gated_not_global_ready():
     assert tier_b
     assert all(product["rights_report"]["rights_status"] == "REGION_GATED_APPROVED" for product in tier_b)
     assert all(product["publication_readiness_status"] == "REGION_GATED_DRAFT_REVIEW" for product in tier_b)
+    assert all(product["rights_report"]["publication_region"] == "india" for product in tier_b)
+    assert all(product["rights_report"]["region_gate_acknowledged"] is True for product in tier_b)
 
 
 def test_unsafe_items_are_quarantined():
@@ -111,6 +141,42 @@ def test_audio_preview_plan_requires_provider_and_budget():
     assert "GENERATED" not in statuses
 
 
+def test_missing_traceability_hash_blocks_readiness():
+    product = with_verified_source(first_batch_products()[5])
+    product["source_hash"] = ""
+    report = run_first_batch_dry_run({"dry_run": True, "products": [product]})
+    row = first_batch_report_json(report)["products"][0]
+
+    assert row["source_report"]["source_status"] == "SOURCE_METADATA_REQUIRED"
+    assert row["publication_readiness_status"] == "SOURCE_METADATA_REQUIRED"
+    assert any("source_hash is required" in reason for reason in row["blocked_reasons"])
+
+
+def test_phase8_and_phase10_are_compatibility_validated():
+    product = with_verified_source(first_batch_products()[5])
+    report = run_first_batch_dry_run({"dry_run": True, "products": [product]})
+    row = first_batch_report_json(report)["products"][0]
+
+    assert row["phase_gate_report"]["phase8_workflow"] == "READY"
+    assert row["phase_gate_report"]["phase10_observability"] == "ALLOWED_DRY_RUN"
+    assert row["phase_gate_report"]["compatibility_validated"] is True
+
+
+def test_phase10_observability_blocks_unsafe_metadata():
+    product = with_verified_source(first_batch_products()[5])
+    product["rights_metadata"] = {
+        **product["rights_metadata"],
+        "rights_tier": "C",
+        "verification_status": "blocked",
+        "blocked_reason": "Unsafe rights.",
+    }
+    report = run_first_batch_dry_run({"dry_run": True, "products": [product]})
+    row = first_batch_report_json(report)["products"][0]
+
+    assert row["observability_guardrail_status"] == "BLOCKED"
+    assert row["publication_readiness_status"] == "QUARANTINED_DRY_RUN"
+
+
 def test_non_dry_run_and_publish_are_blocked():
     non_dry_run = run_first_batch_dry_run({"dry_run": False})
     publish = run_first_batch_dry_run({"dry_run": True, "publish": True})
@@ -132,7 +198,24 @@ def test_reports_write_json_csv_markdown_and_root_report(tmp_path: Path):
     assert data["summary"]["selected"] == 10
     assert "publication_readiness_status" in csv_text
     assert "First Batch Dry-Run Report" in markdown
+    assert "Source:" in markdown
+    assert "Publishing workflow:" in markdown
+    assert "Observability guardrail:" in markdown
     assert markdown == root_markdown
+
+
+def test_summary_counts_split_status_buckets():
+    report = run_first_batch_dry_run({"dry_run": True})
+    summary = first_batch_report_json(report)["summary"]
+
+    assert summary["selected"] == 10
+    assert summary["ready_for_publication_draft"] == 0
+    assert summary["ready_for_publication_draft_candidate"] == 0
+    assert summary["region_gated_draft_review"] == 5
+    assert summary["source_metadata_required"] == 10
+    assert summary["rights_or_source_blocked"] == 10
+    assert summary["qa_blocked"] == 10
+    assert summary["audio_skipped_provider_not_configured"] == 10
 
 
 def test_cli_sample_generates_reports(tmp_path: Path):

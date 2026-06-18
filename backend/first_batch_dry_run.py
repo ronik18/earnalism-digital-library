@@ -8,7 +8,10 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any
 
+from backend.automation_observability import observability_report_json, run_observability_guardrails
 from backend.demand_scoring import score_book
+from backend.publishing_workflow import evaluate_workflow, workflow_signals_from_book
+from backend.rights_engine import evaluate_rights
 
 
 FIRST_BATCH_VERSION = "earnalism-first-batch-dry-run-v1"
@@ -23,6 +26,9 @@ class BatchSourceMetadata:
     source_hash: str
     content_hash: str
     provenance_hash: str
+    rights_basis: str
+    rights_note: str
+    publication_region: str
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -32,6 +38,9 @@ class BatchSourceMetadata:
             "source_hash": self.source_hash,
             "content_hash": self.content_hash,
             "provenance_hash": self.provenance_hash,
+            "rights_basis": self.rights_basis,
+            "rights_note": self.rights_note,
+            "publication_region": self.publication_region,
         }
 
 
@@ -43,9 +52,15 @@ class BatchProductReport:
     slug: str
     language: str
     rights_report: dict[str, Any]
+    source_report: dict[str, Any]
     demand_score: dict[str, Any]
     source_metadata: dict[str, Any]
     ingestion_status: str
+    edition_status: str
+    visual_status: str
+    publishing_workflow_status: str
+    observability_guardrail_status: str
+    phase_gate_report: dict[str, Any]
     edition_draft: dict[str, Any]
     study_guide_draft: dict[str, Any]
     visual_explainer_draft: dict[str, Any]
@@ -68,9 +83,15 @@ class BatchProductReport:
             "slug": self.slug,
             "language": self.language,
             "rights_report": self.rights_report,
+            "source_report": self.source_report,
             "demand_score": self.demand_score,
             "source_metadata": self.source_metadata,
             "ingestion_status": self.ingestion_status,
+            "edition_status": self.edition_status,
+            "visual_status": self.visual_status,
+            "publishing_workflow_status": self.publishing_workflow_status,
+            "observability_guardrail_status": self.observability_guardrail_status,
+            "phase_gate_report": self.phase_gate_report,
             "edition_draft": self.edition_draft,
             "study_guide_draft": self.study_guide_draft,
             "visual_explainer_draft": self.visual_explainer_draft,
@@ -94,8 +115,11 @@ class FirstBatchDryRunReport:
     dry_run: bool = True
 
     def as_dict(self) -> dict[str, Any]:
-        ready_count = sum(1 for product in self.products if product.publication_readiness_status == "READY_FOR_PUBLICATION_DRAFT")
-        blocked_count = sum(1 for product in self.products if product.blocked_reasons)
+        statuses = [product.publication_readiness_status for product in self.products]
+        audio_statuses = [product.audio_preview.get("status") for product in self.products]
+        source_statuses = [product.source_report.get("source_status") for product in self.products]
+        rights_statuses = [product.rights_report.get("rights_status") for product in self.products]
+        qa_statuses = [product.qa_report.get("qa_status") for product in self.products]
         return {
             "batch_version": FIRST_BATCH_VERSION,
             "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -103,8 +127,15 @@ class FirstBatchDryRunReport:
             "dry_run": self.dry_run,
             "summary": {
                 "selected": len(self.products),
-                "ready_for_publication_draft": ready_count,
-                "blocked_or_quarantined": blocked_count,
+                "ready_for_publication_draft": statuses.count("READY_FOR_PUBLICATION_DRAFT"),
+                "ready_for_publication_draft_candidate": statuses.count("READY_FOR_PUBLICATION_DRAFT_CANDIDATE"),
+                "region_gated_draft_review": statuses.count("REGION_GATED_DRAFT_REVIEW"),
+                "source_metadata_required": source_statuses.count("SOURCE_METADATA_REQUIRED"),
+                "rights_or_source_blocked": sum(1 for status in rights_statuses if status in {"BLOCKED", "QUARANTINED"})
+                + source_statuses.count("SOURCE_METADATA_REQUIRED"),
+                "qa_blocked": qa_statuses.count("BLOCKED"),
+                "audio_skipped_provider_not_configured": audio_statuses.count("SKIPPED_PROVIDER_NOT_CONFIGURED"),
+                "audio_skipped_budget": audio_statuses.count("SKIPPED_BUDGET_EXCEEDED"),
                 "public_publish_actions": 0,
             },
             "products": [product.as_dict() for product in self.products],
@@ -148,27 +179,63 @@ def build_product_report(
     audio_budget_remaining: float,
 ) -> tuple[BatchProductReport, float]:
     source = source_metadata_for(product)
-    book = book_record_for(product, source)
+    rights_report = rights_report_for(product, source)
+    source_report = source_report_for(source)
+    book = book_record_for(product, source, rights_report)
     demand = score_book(book)
-    rights_report = rights_report_for(product)
-    ingestion_status = ingestion_status_for(source, rights_report)
-    qa_report = qa_report_for(product, source, rights_report, ingestion_status)
-    blocked_reasons = list(qa_report["blocking_reasons"])
+    ingestion_status = ingestion_status_for(source_report, rights_report)
     audio_preview, updated_audio_budget = audio_preview_for(
         product,
         provider_configured=audio_provider_configured,
         budget_remaining=audio_budget_remaining,
     )
+    edition_status = phase5_edition_status(source_report, rights_report, ingestion_status, demand.action_status)
+    visual_status = phase6_visual_status(source_report, rights_report, ingestion_status, edition_status, demand.action_status)
+    audio_status = phase7_audio_status(audio_preview)
+    workflow = phase8_workflow_report(
+        product=product,
+        rights_report=rights_report,
+        demand_action_status=demand.action_status,
+        ingestion_status=ingestion_status,
+        edition_status=edition_status,
+        visual_status=visual_status,
+        audio_status=audio_status,
+    )
+    observability = phase10_observability_report(product, source, rights_report)
+    phase_gate_report = phase_gate_report_for(
+        rights_report=rights_report,
+        demand_action_status=demand.action_status,
+        ingestion_status=ingestion_status,
+        edition_status=edition_status,
+        visual_status=visual_status,
+        audio_status=audio_status,
+        workflow=workflow,
+        observability=observability,
+    )
+    qa_report = qa_report_for(
+        product,
+        source,
+        rights_report,
+        source_report,
+        ingestion_status,
+        workflow,
+        observability,
+    )
+    blocked_reasons = list(qa_report["blocking_reasons"])
     publication_readiness_score = readiness_score(
         demand_score=demand.demand_score,
         rights_report=rights_report,
+        source_report=source_report,
         ingestion_status=ingestion_status,
         qa_report=qa_report,
+        workflow=workflow,
         audio_preview=audio_preview,
     )
     publication_readiness_status = readiness_status(
         score=publication_readiness_score,
         rights_report=rights_report,
+        source_report=source_report,
+        workflow=workflow,
         blocked_reasons=blocked_reasons,
     )
 
@@ -180,9 +247,15 @@ def build_product_report(
             slug=text(product.get("slug")),
             language=text(product.get("language")),
             rights_report=rights_report,
+            source_report=source_report,
             demand_score=demand.as_row(),
             source_metadata=source.as_dict(),
             ingestion_status=ingestion_status,
+            edition_status=edition_status,
+            visual_status=visual_status,
+            publishing_workflow_status=workflow["publish_readiness"],
+            observability_guardrail_status=observability["status"],
+            phase_gate_report=phase_gate_report,
             edition_draft=draft_payload(product, "edition_draft", "Earnalism reading edition draft"),
             study_guide_draft=draft_payload(product, "study_guide_draft", "Study guide draft"),
             visual_explainer_draft=draft_payload(product, "visual_explainer_draft", "Visual explainer draft"),
@@ -225,6 +298,7 @@ def batch_product(
     audiobook: bool = False,
 ) -> dict[str, Any]:
     publication_region = "india" if rights_tier == "B" else "global"
+    author = author_metadata_for(work_title)
     return {
         "product_title": product_title,
         "work_title": work_title,
@@ -233,15 +307,24 @@ def batch_product(
         "category_slug": category_for_product(product_title),
         "audiobook_recommended": audiobook or language in {"ben", "en"},
         "rights_metadata": {
+            "work_title": work_title,
+            "work_slug": slug,
+            "author_name": author["author_name"],
+            "author_death_year": author["author_death_year"],
+            "original_publication_year": author["original_publication_year"],
+            "country_of_origin": author["country_of_origin"],
             "rights_tier": rights_tier,
             "verification_status": "approved",
             "publication_region": publication_region,
             "region_gate_acknowledged": rights_tier == "B",
             "blocked_reason": "",
+            "verified_at": "2026-06-18T00:00:00Z",
         },
         "source_url": f"urn:earnalism:dry-run-source:{slug}",
         "source_name": "Earnalism internal dry-run rights/source fixture",
-        "source_license": "public-domain-dry-run-evidence",
+        "source_license": "Public Domain dry-run fixture",
+        "rights_basis": "Dry-run rights fixture; replace with verified source evidence before production.",
+        "rights_note": "Phase 11 does not publish and treats fixture source metadata as not publication-ready.",
     }
 
 
@@ -251,9 +334,13 @@ def source_metadata_for(product: dict[str, Any]) -> BatchSourceMetadata:
     source_name = text(product.get("source_name"))
     source_license = text(product.get("source_license"))
     content_key = stable_hash(f"{slug}:{product.get('work_title')}:{source_url}:{source_license}")
-    source_hash = text(product.get("source_hash")) or f"sha256:{stable_hash(source_url or slug)}"
-    content_hash = text(product.get("content_hash")) or f"sha256:{content_key}"
-    provenance_hash = text(product.get("provenance_hash")) or f"sha256:{stable_hash(source_url + source_name + source_license + content_hash)}"
+    source_hash = field_or_default(product, "source_hash", f"sha256:{stable_hash(source_url or slug)}")
+    content_hash = field_or_default(product, "content_hash", f"sha256:{content_key}")
+    provenance_hash = field_or_default(
+        product,
+        "provenance_hash",
+        f"sha256:{stable_hash(source_url + source_name + source_license + content_hash)}",
+    )
     return BatchSourceMetadata(
         source_url=source_url,
         source_name=source_name,
@@ -261,10 +348,16 @@ def source_metadata_for(product: dict[str, Any]) -> BatchSourceMetadata:
         source_hash=source_hash,
         content_hash=content_hash,
         provenance_hash=provenance_hash,
+        rights_basis=text(product.get("rights_basis")),
+        rights_note=text(product.get("rights_note")),
+        publication_region=text(
+            (product.get("rights_metadata") if isinstance(product.get("rights_metadata"), dict) else {}).get("publication_region")
+            or product.get("publication_region")
+        ),
     )
 
 
-def book_record_for(product: dict[str, Any], source: BatchSourceMetadata) -> dict[str, Any]:
+def book_record_for(product: dict[str, Any], source: BatchSourceMetadata, rights_report: dict[str, Any]) -> dict[str, Any]:
     rights = product.get("rights_metadata") if isinstance(product.get("rights_metadata"), dict) else {}
     return {
         "title": product.get("work_title"),
@@ -275,12 +368,16 @@ def book_record_for(product: dict[str, Any], source: BatchSourceMetadata) -> dic
         "rights_metadata": {
             **rights,
             "source_url": source.source_url,
+            "source_name": source.source_name,
+            "source_license": source.source_license,
+            "publication_region": rights_report["publication_region"],
         },
     }
 
 
-def rights_report_for(product: dict[str, Any]) -> dict[str, Any]:
+def rights_report_for(product: dict[str, Any], source: BatchSourceMetadata) -> dict[str, Any]:
     rights = product.get("rights_metadata") if isinstance(product.get("rights_metadata"), dict) else {}
+    phase2_decision = evaluate_rights(rights_engine_book_for(product, source), current_year=2026)
     rights_tier = text(rights.get("rights_tier")).upper()
     verification_status = text(rights.get("verification_status")).lower()
     blocked_reason = text(rights.get("blocked_reason"))
@@ -291,6 +388,9 @@ def rights_report_for(product: dict[str, Any]) -> dict[str, Any]:
     if rights_tier == "C" or blocked_reason:
         status = "BLOCKED"
         issues.append(blocked_reason or "Tier C rights are unsafe.")
+    elif not phase2_decision.approved:
+        status = "BLOCKED" if phase2_decision.status == "blocked" else "QUARANTINED"
+        issues.extend(phase2_decision.issues)
     elif rights_tier == "B":
         status = "REGION_GATED_APPROVED" if publication_region == "india" and region_gate_acknowledged else "REGION_GATED_REVIEW"
         if status == "REGION_GATED_REVIEW":
@@ -305,32 +405,242 @@ def rights_report_for(product: dict[str, Any]) -> dict[str, Any]:
         "region_gate_acknowledged": region_gate_acknowledged,
         "rights_status": status,
         "issues": issues,
+        "phase2_decision_status": phase2_decision.status,
+        "phase2_decision_issues": phase2_decision.issues,
         "public_publish_allowed": False,
     }
 
 
-def ingestion_status_for(source: BatchSourceMetadata, rights_report: dict[str, Any]) -> str:
+def rights_engine_book_for(product: dict[str, Any], source: BatchSourceMetadata) -> dict[str, Any]:
+    rights = product.get("rights_metadata") if isinstance(product.get("rights_metadata"), dict) else {}
+    metadata = {
+        **rights,
+        "source_url": source.source_url,
+        "source_name": source.source_name,
+        "source_license": source.source_license,
+    }
+    return {
+        "title": product.get("work_title"),
+        "slug": product.get("slug"),
+        "author": rights.get("author_name"),
+        "rights_metadata": metadata,
+    }
+
+
+def source_report_for(source: BatchSourceMetadata) -> dict[str, Any]:
+    issues: list[str] = []
+    for field_name in (
+        "source_url",
+        "source_name",
+        "source_license",
+        "source_hash",
+        "content_hash",
+        "provenance_hash",
+        "publication_region",
+    ):
+        if not text(getattr(source, field_name)):
+            issues.append(f"{field_name} is required.")
+    if not source.rights_basis and not source.rights_note:
+        issues.append("rights_basis or rights_note is required.")
+    if source.source_url.startswith("urn:") or "fixture" in source.source_license.lower() or "fixture" in source.source_name.lower():
+        issues.append("Fixture source metadata must be replaced with verified public source evidence.")
+    source_status = "SOURCE_METADATA_REQUIRED" if issues else "SOURCE_TRACEABILITY_READY"
+    return {
+        "source_status": source_status,
+        "issues": issues,
+        "fixture_source": source.source_url.startswith("urn:") or "fixture" in source.source_license.lower(),
+        "required_fields_present": not issues,
+    }
+
+
+def ingestion_status_for(source_report: dict[str, Any], rights_report: dict[str, Any]) -> str:
     if rights_report["rights_status"] in {"BLOCKED", "QUARANTINED", "REGION_GATED_REVIEW"}:
         return "BLOCKED_RIGHTS"
-    if not all([source.source_url, source.source_name, source.source_license, source.source_hash, source.content_hash, source.provenance_hash]):
-        return "BLOCKED_SOURCE_METADATA"
+    if source_report["source_status"] != "SOURCE_TRACEABILITY_READY":
+        return "SOURCE_METADATA_REQUIRED"
     return "CLEANED_DRY_RUN"
+
+
+def phase5_edition_status(
+    source_report: dict[str, Any],
+    rights_report: dict[str, Any],
+    ingestion_status: str,
+    demand_action_status: str,
+) -> str:
+    if rights_report["rights_status"] in {"BLOCKED", "QUARANTINED", "REGION_GATED_REVIEW"}:
+        return "BLOCKED_RIGHTS"
+    if source_report["source_status"] != "SOURCE_TRACEABILITY_READY":
+        return "BLOCKED_TRACEABILITY"
+    if demand_action_status not in {"READY_FOR_GENERATION", "REGION_GATED_PRIORITY"}:
+        return "BLOCKED_PRIORITY_GATE"
+    if ingestion_status != "CLEANED_DRY_RUN":
+        return "BLOCKED_INGESTION"
+    return "QA_PASSED"
+
+
+def phase6_visual_status(
+    source_report: dict[str, Any],
+    rights_report: dict[str, Any],
+    ingestion_status: str,
+    edition_status: str,
+    demand_action_status: str,
+) -> str:
+    if edition_status != "QA_PASSED":
+        return "BLOCKED_EDITION_GATE"
+    if rights_report["rights_status"] in {"BLOCKED", "QUARANTINED", "REGION_GATED_REVIEW"}:
+        return "BLOCKED_RIGHTS"
+    if source_report["source_status"] != "SOURCE_TRACEABILITY_READY":
+        return "BLOCKED_TRACEABILITY"
+    if demand_action_status not in {"READY_FOR_GENERATION", "REGION_GATED_PRIORITY"}:
+        return "BLOCKED_PRIORITY_GATE"
+    if ingestion_status != "CLEANED_DRY_RUN":
+        return "BLOCKED_INGESTION"
+    return "QA_PASSED"
+
+
+def phase7_audio_status(audio_preview: dict[str, Any]) -> str:
+    if audio_preview["status"] == "SKIPPED_BUDGET_EXCEEDED":
+        return "BLOCKED_COST"
+    if audio_preview["status"] in {"SKIPPED_PROVIDER_NOT_CONFIGURED", "PREVIEW_PLAN_READY_DRY_RUN"}:
+        return "DRY_RUN_READY"
+    if audio_preview["status"] == "AUDIO_NOT_REQUIRED":
+        return "AUDIO_NOT_REQUIRED"
+    return "BLOCKED_AUDIO_GATE"
+
+
+def phase8_workflow_report(
+    *,
+    product: dict[str, Any],
+    rights_report: dict[str, Any],
+    demand_action_status: str,
+    ingestion_status: str,
+    edition_status: str,
+    visual_status: str,
+    audio_status: str,
+) -> dict[str, Any]:
+    rights = product.get("rights_metadata") if isinstance(product.get("rights_metadata"), dict) else {}
+    workflow_book = {
+        "slug": product.get("slug"),
+        "title": product.get("work_title"),
+        "rights_metadata": {
+            "rights_tier": rights_report["rights_tier"],
+            "verification_status": rights_report["verification_status"],
+            "publication_region": rights_report["publication_region"],
+            "blocked_reason": "; ".join(rights_report["issues"]),
+        },
+        "demand": {"action_status": demand_action_status},
+        "ingestion_status": "CLEANED" if ingestion_status == "CLEANED_DRY_RUN" else ingestion_status,
+        "edition_generation_status": edition_status,
+        "visual_status": visual_status,
+        "audio_status": audio_status,
+        "qa": {"qa_status": "QA_PASSED", "warnings": []},
+        "cost": {"used": 0, "budget": 1},
+        "is_published": False,
+    }
+    decision = evaluate_workflow(workflow_signals_from_book(workflow_book))
+    return {
+        "state": decision.state,
+        "publish_readiness": decision.publish_readiness,
+        "blockers": decision.blockers,
+        "phase8_validated": True,
+        "dry_run": True,
+    }
+
+
+def phase10_observability_report(
+    product: dict[str, Any],
+    source: BatchSourceMetadata,
+    rights_report: dict[str, Any],
+) -> dict[str, Any]:
+    result = run_observability_guardrails(
+        {
+            "dry_run": True,
+            "actions": [
+                {
+                    "action_id": f"phase11-{product['slug']}",
+                    "slug": product.get("slug"),
+                    "phase": "publishing_workflow",
+                    "action_type": "first_batch_product_candidate",
+                    "rights": {
+                        "rights_tier": rights_report["rights_tier"],
+                        "verification_status": rights_report["verification_status"],
+                        "publication_region": rights_report["publication_region"],
+                        "region_gate_acknowledged": rights_report["region_gate_acknowledged"],
+                        "blocked_reason": "; ".join(rights_report["issues"]),
+                    },
+                    "requires_source": True,
+                    "source_url": source.source_url,
+                    "source_name": source.source_name,
+                    "source_license": source.source_license,
+                    "source_hash": source.source_hash,
+                    "content_hash": source.content_hash,
+                    "provenance_hash": source.provenance_hash,
+                    "estimated_cost": 0,
+                    "budget_remaining": 0,
+                }
+            ],
+        }
+    )
+    data = observability_report_json(result)
+    action = data["actions"][0] if data["actions"] else {}
+    return {
+        "status": data["status"],
+        "action_status": action.get("decision_status", "UNKNOWN"),
+        "blocking_reasons": action.get("blocking_reasons", []),
+        "guardrail_type_counts": data["summary"].get("guardrail_type_counts", {}),
+        "phase10_validated": True,
+        "dry_run": True,
+    }
+
+
+def phase_gate_report_for(
+    *,
+    rights_report: dict[str, Any],
+    demand_action_status: str,
+    ingestion_status: str,
+    edition_status: str,
+    visual_status: str,
+    audio_status: str,
+    workflow: dict[str, Any],
+    observability: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "phase2_rights": rights_report["phase2_decision_status"],
+        "phase3_demand": demand_action_status,
+        "phase4_ingestion": ingestion_status,
+        "phase5_edition": edition_status,
+        "phase6_visual": visual_status,
+        "phase7_audio": audio_status,
+        "phase8_workflow": workflow["publish_readiness"],
+        "phase10_observability": observability["action_status"],
+        "compatibility_validated": True,
+        "dry_run": True,
+    }
 
 
 def qa_report_for(
     product: dict[str, Any],
     source: BatchSourceMetadata,
     rights_report: dict[str, Any],
+    source_report: dict[str, Any],
     ingestion_status: str,
+    workflow: dict[str, Any],
+    observability: dict[str, Any],
 ) -> dict[str, Any]:
     warnings: list[str] = []
     blockers: list[str] = []
     if rights_report["rights_status"] in {"BLOCKED", "QUARANTINED", "REGION_GATED_REVIEW"}:
         blockers.extend(rights_report["issues"] or [rights_report["rights_status"]])
+    if source_report["source_status"] != "SOURCE_TRACEABILITY_READY":
+        blockers.extend(source_report["issues"])
     if ingestion_status != "CLEANED_DRY_RUN":
         blockers.append(f"Ingestion not ready: {ingestion_status}")
     if not source.provenance_hash:
         blockers.append("Missing provenance hash.")
+    if workflow["publish_readiness"] not in {"READY", "REGION_GATED_REVIEW"}:
+        blockers.extend(workflow["blockers"])
+    if observability["action_status"] == "BLOCKED":
+        blockers.extend(observability["blocking_reasons"])
     if rights_report["rights_status"] == "REGION_GATED_APPROVED":
         warnings.append("India-only region-gated draft; not global-ready.")
     if text(product.get("language")) == "ben":
@@ -420,8 +730,10 @@ def readiness_score(
     *,
     demand_score: float,
     rights_report: dict[str, Any],
+    source_report: dict[str, Any],
     ingestion_status: str,
     qa_report: dict[str, Any],
+    workflow: dict[str, Any],
     audio_preview: dict[str, Any],
 ) -> float:
     score = 40.0 + min(30.0, demand_score * 0.3)
@@ -429,10 +741,18 @@ def readiness_score(
         score += 15
     elif rights_report["rights_status"] == "REGION_GATED_APPROVED":
         score += 9
+    if source_report["source_status"] == "SOURCE_TRACEABILITY_READY":
+        score += 10
+    else:
+        score -= 15
     if ingestion_status == "CLEANED_DRY_RUN":
         score += 8
     if qa_report["qa_status"] == "QA_PASSED_DRY_RUN":
         score += 7
+    if workflow["publish_readiness"] == "READY":
+        score += 8
+    elif workflow["publish_readiness"] == "REGION_GATED_REVIEW":
+        score += 3
     if audio_preview["status"] in {"PREVIEW_PLAN_READY_DRY_RUN", "AUDIO_NOT_REQUIRED", "SKIPPED_PROVIDER_NOT_CONFIGURED"}:
         score += 3
     if qa_report["blocking_reasons"]:
@@ -440,13 +760,25 @@ def readiness_score(
     return max(0, min(100, score))
 
 
-def readiness_status(score: float, rights_report: dict[str, Any], blocked_reasons: list[str]) -> str:
+def readiness_status(
+    score: float,
+    rights_report: dict[str, Any],
+    source_report: dict[str, Any],
+    workflow: dict[str, Any],
+    blocked_reasons: list[str],
+) -> str:
     if blocked_reasons:
+        if rights_report["rights_status"] in {"BLOCKED", "QUARANTINED", "REGION_GATED_REVIEW"}:
+            return "QUARANTINED_DRY_RUN"
+        if rights_report["rights_status"] == "REGION_GATED_APPROVED":
+            return "REGION_GATED_DRAFT_REVIEW"
+        if source_report["source_status"] != "SOURCE_TRACEABILITY_READY":
+            return "SOURCE_METADATA_REQUIRED"
         return "QUARANTINED_DRY_RUN"
     if rights_report["rights_status"] == "REGION_GATED_APPROVED":
         return "REGION_GATED_DRAFT_REVIEW"
-    if score >= 80:
-        return "READY_FOR_PUBLICATION_DRAFT"
+    if workflow["publish_readiness"] == "READY" and score >= 80:
+        return "READY_FOR_PUBLICATION_DRAFT_CANDIDATE"
     return "QA_REVIEW_DRAFT"
 
 
@@ -463,11 +795,18 @@ def first_batch_report_csv(report: FirstBatchDryRunReport) -> str:
             "slug",
             "product_title",
             "rights_status",
+            "source_status",
             "demand_score",
             "ingestion_status",
+            "edition_status",
+            "visual_status",
+            "audio_status",
+            "publishing_workflow_status",
+            "observability_guardrail_status",
             "qa_status",
             "publication_readiness_score",
             "publication_readiness_status",
+            "publication_region",
             "dry_run",
         ],
     )
@@ -480,11 +819,18 @@ def first_batch_report_csv(report: FirstBatchDryRunReport) -> str:
                 "slug": row["slug"],
                 "product_title": row["product_title"],
                 "rights_status": row["rights_report"]["rights_status"],
+                "source_status": row["source_report"]["source_status"],
                 "demand_score": row["demand_score"]["demand_score"],
                 "ingestion_status": row["ingestion_status"],
+                "edition_status": row["edition_status"],
+                "visual_status": row["visual_status"],
+                "audio_status": row["audio_preview"]["status"],
+                "publishing_workflow_status": row["publishing_workflow_status"],
+                "observability_guardrail_status": row["observability_guardrail_status"],
                 "qa_status": row["qa_report"]["qa_status"],
                 "publication_readiness_score": row["publication_readiness_score"],
                 "publication_readiness_status": row["publication_readiness_status"],
+                "publication_region": row["rights_report"]["publication_region"],
                 "dry_run": row["dry_run"],
             }
         )
@@ -500,7 +846,13 @@ def first_batch_report_markdown(report: FirstBatchDryRunReport) -> str:
         f"- Dry run: `{str(data['dry_run']).lower()}`",
         f"- Selected: `{data['summary']['selected']}`",
         f"- Ready drafts: `{data['summary']['ready_for_publication_draft']}`",
-        f"- Blocked or quarantined: `{data['summary']['blocked_or_quarantined']}`",
+        f"- Ready draft candidates: `{data['summary']['ready_for_publication_draft_candidate']}`",
+        f"- Region-gated draft review: `{data['summary']['region_gated_draft_review']}`",
+        f"- Source metadata required: `{data['summary']['source_metadata_required']}`",
+        f"- Rights or source blocked: `{data['summary']['rights_or_source_blocked']}`",
+        f"- QA blocked: `{data['summary']['qa_blocked']}`",
+        f"- Audio skipped, provider not configured: `{data['summary']['audio_skipped_provider_not_configured']}`",
+        f"- Audio skipped, budget: `{data['summary']['audio_skipped_budget']}`",
         f"- Public publish actions: `{data['summary']['public_publish_actions']}`",
         "",
         "## Products",
@@ -513,12 +865,19 @@ def first_batch_report_markdown(report: FirstBatchDryRunReport) -> str:
                 "",
                 f"- Slug: `{product['slug']}`",
                 f"- Rights: `{product['rights_report']['rights_status']}`",
+                f"- Source: `{product['source_report']['source_status']}`",
                 f"- Demand score: `{product['demand_score']['demand_score']}`",
                 f"- Ingestion: `{product['ingestion_status']}`",
+                f"- Edition: `{product['edition_status']}`",
+                f"- Visual: `{product['visual_status']}`",
+                f"- Audio: `{product['audio_preview']['status']}`",
+                f"- Publishing workflow: `{product['publishing_workflow_status']}`",
+                f"- Observability guardrail: `{product['observability_guardrail_status']}`",
                 f"- QA: `{product['qa_report']['qa_status']}`",
                 f"- Readiness score: `{product['publication_readiness_score']}`",
                 f"- Readiness status: `{product['publication_readiness_status']}`",
-                f"- Audio preview: `{product['audio_preview']['status']}`",
+                f"- Publication region: `{product['rights_report']['publication_region']}`",
+                f"- Dry run: `{str(product['dry_run']).lower()}`",
             ]
         )
         if product["blocked_reasons"]:
@@ -541,6 +900,37 @@ def category_for_product(product_title: str) -> str:
     if "adventure" in lowered:
         return "adventure"
     return "literary-fiction"
+
+
+def author_metadata_for(work_title: str) -> dict[str, Any]:
+    metadata = {
+        "Anandamath": ("Bankim Chandra Chattopadhyay", 1894, 1882, "India"),
+        "Devdas": ("Sarat Chandra Chattopadhyay", 1938, 1917, "India"),
+        "Abol Tabol": ("Sukumar Ray", 1923, 1923, "India"),
+        "Sultana's Dream": ("Rokeya Sakhawat Hossain", 1932, 1905, "India"),
+        "Sherlock Holmes": ("Arthur Conan Doyle", 1930, 1892, "United Kingdom"),
+        "Dracula": ("Bram Stoker", 1912, 1897, "United Kingdom"),
+        "Frankenstein": ("Mary Wollstonecraft Shelley", 1851, 1818, "United Kingdom"),
+        "Tagore Short Stories": ("Rabindranath Tagore", 1941, 1891, "India"),
+        "Calculus Made Easy": ("Silvanus P. Thompson", 1916, 1910, "United Kingdom"),
+        "Chander Pahar": ("Bibhutibhushan Bandyopadhyay", 1950, 1937, "India"),
+    }
+    author_name, author_death_year, original_publication_year, country = metadata.get(
+        work_title,
+        ("Unknown", "", "", ""),
+    )
+    return {
+        "author_name": author_name,
+        "author_death_year": author_death_year,
+        "original_publication_year": original_publication_year,
+        "country_of_origin": country,
+    }
+
+
+def field_or_default(product: dict[str, Any], field_name: str, default: str) -> str:
+    if field_name in product:
+        return text(product.get(field_name))
+    return default
 
 
 def stable_hash(value: str) -> str:
