@@ -16,6 +16,9 @@ from backend.publishing_workflow import (
 from scripts.publishing_workflow import write_reports
 
 
+ROOT = Path(__file__).resolve().parents[2]
+
+
 def sample_book(**overrides):
     book = {
         "slug": "alice-in-wonderland",
@@ -37,6 +40,14 @@ def sample_book(**overrides):
     }
     book.update(overrides)
     return book
+
+
+def assert_blocked(book, expected_blocker):
+    decision = evaluate_workflow(workflow_signals_from_book(book))
+
+    assert decision.publish_readiness == "BLOCKED"
+    assert any(expected_blocker in blocker for blocker in decision.blockers)
+    return decision
 
 
 def test_workflow_states_are_complete_and_ordered():
@@ -78,6 +89,40 @@ def test_cannot_publish_without_rights_approval():
     assert "Rights approval is required." in decision.blockers
 
 
+def test_missing_demand_status_blocks_priority_gate():
+    book = sample_book(demand={"demand_score": 91.5, "action_status": ""})
+    decision = assert_blocked(book, "BLOCKED_PRIORITY_GATE")
+
+    assert decision.state == "DEMAND_SCORED"
+
+
+def test_missing_ingestion_blocks_ingestion_gate():
+    decision = assert_blocked(sample_book(ingestion_status=""), "BLOCKED_INGESTION")
+
+    assert decision.state == "RIGHTS_APPROVED"
+
+
+def test_missing_edition_blocks_edition_gate():
+    decision = assert_blocked(sample_book(edition_generation_status="FAILED_QA"), "BLOCKED_EDITION_GATE")
+
+    assert decision.state == "CLEANED"
+
+
+def test_missing_visual_blocks_visual_gate():
+    decision = assert_blocked(sample_book(visual_status="FAILED_QA"), "BLOCKED_VISUAL_GATE")
+
+    assert decision.state == "EDITION_GENERATED"
+
+
+def test_missing_audio_blocks_audio_gate_unless_audio_not_required():
+    blocked = assert_blocked(sample_book(audio_status="FAILED_QA"), "BLOCKED_AUDIO_GATE")
+    allowed = evaluate_workflow(workflow_signals_from_book(sample_book(audio_status="AUDIO_NOT_REQUIRED")))
+
+    assert blocked.state == "VISUALS_GENERATED"
+    assert allowed.state == "READY_FOR_PUBLICATION"
+    assert allowed.publish_readiness == "READY"
+
+
 def test_cannot_publish_without_qa_pass():
     book = sample_book(qa={"qa_status": "QA_PENDING", "warnings": ["audio pending"]})
     decision = evaluate_workflow(workflow_signals_from_book(book))
@@ -91,7 +136,7 @@ def test_cannot_publish_if_cost_budget_exceeded():
     decision = evaluate_workflow(workflow_signals_from_book(book))
 
     assert decision.state == "QA_PENDING"
-    assert "Cost budget is exceeded." in decision.blockers
+    assert "BLOCKED_COST: Cost budget is exceeded." in decision.blockers
 
 
 def test_tier_b_cannot_publish_globally():
@@ -99,7 +144,8 @@ def test_tier_b_cannot_publish_globally():
     decision = evaluate_workflow(workflow_signals_from_book(book))
 
     assert decision.state == "RIGHTS_PENDING"
-    assert "Tier B cannot publish globally." in decision.blockers
+    assert decision.publish_readiness == "REGION_GATED_REVIEW"
+    assert "REGION_GATED_REVIEW: Tier B is not eligible for normal global publication." in decision.blockers
 
 
 def test_tier_c_cannot_publish_anywhere_and_quarantines():
@@ -107,7 +153,7 @@ def test_tier_c_cannot_publish_anywhere_and_quarantines():
     decision = evaluate_workflow(workflow_signals_from_book(book))
 
     assert decision.state == "QUARANTINED"
-    assert "Tier C cannot publish anywhere." in decision.blockers
+    assert "BLOCKED_RIGHTS: Tier C cannot publish anywhere." in decision.blockers
 
 
 def test_admin_dashboard_sections_include_required_controls():
@@ -140,6 +186,7 @@ def test_dry_run_publish_creates_private_drafts_only():
     assert all(draft["public"] is False for draft in plan.created_drafts)
     assert plan.rollback_plan
     assert plan.audit_log[0]["action"] == "DRY_RUN_PUBLISH_DRAFTS_CREATED"
+    assert all(set(draft) == {"draft_type", "slug", "public"} for draft in plan.created_drafts)
 
 
 def test_dry_run_publish_blocks_when_not_ready():
@@ -149,6 +196,15 @@ def test_dry_run_publish_blocks_when_not_ready():
     assert plan.created_drafts == []
     assert plan.audit_log[0]["action"] == "DRY_RUN_PUBLISH_BLOCKED"
     assert "resolve blockers" in plan.rollback_plan[0]
+
+
+def test_rollback_plan_is_metadata_only():
+    plan = dry_run_publish(workflow_signals_from_book(sample_book()))
+
+    assert plan.public_exposure is False
+    assert plan.dry_run is True
+    assert all(isinstance(step, str) for step in plan.rollback_plan)
+    assert plan.audit_log[0]["dry_run"] is True
 
 
 def test_report_outputs_include_state_sections_and_rollback(tmp_path: Path):
@@ -201,3 +257,14 @@ def test_cli_rejects_publish_options(tmp_path: Path):
 
     assert completed.returncode != 0
     assert "dry-run only" in completed.stderr
+
+
+def test_admin_panel_is_read_only_and_prefers_report_data():
+    panel = (ROOT / "frontend/src/components/Admin/PublishingWorkflowPanel.jsx").read_text(encoding="utf-8")
+
+    assert "book.publishing_workflow_report || book.workflow_report" in panel
+    assert "function workflowFromReport" in panel
+    assert "read-only dry-run estimate" in panel
+    assert 'type="button" disabled' in panel
+    assert "onClick" not in panel
+    assert "api." not in panel

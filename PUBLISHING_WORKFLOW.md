@@ -39,16 +39,37 @@ The admin book cards now show a read-only publishing workflow panel with:
 
 The rollback and pause controls are disabled in Phase 8. They document the intended operator workflow without mutating production state.
 
+The admin panel prefers backend/report-style workflow data from `publishing_workflow_report` or `workflow_report` when present. If that data is unavailable, it computes a read-only dry-run estimate using the same documented gate categories. The panel does not call mutation APIs.
+
 ## Publishing Rules
 
-Publishing is blocked when:
+Normal publication readiness requires:
 
-- rights are missing or not approved
-- QA has not passed
-- cost budget is exceeded
-- Tier B rights are targeted globally
-- Tier C rights are present anywhere
-- rights `blocked_reason` is still set
+- `rights_tier=A`
+- `verification_status=APPROVED`
+- empty `blocked_reason`
+- `action_status=READY_FOR_GENERATION`
+- `ingestion_status=INGESTED` or `CLEANED`
+- `edition_generation_status=READY_FOR_REVIEW`, `PARTIAL_DRY_RUN`, or `QA_PASSED`
+- `visual_status=READY_FOR_REVIEW`, `PARTIAL_DRY_RUN`, or `QA_PASSED`
+- `audio_status=DRY_RUN_READY`, `READY_FOR_REVIEW`, `QA_PASSED`, or `AUDIO_NOT_REQUIRED`
+- `qa_status=QA_PASSED`
+- cost used at or below the configured budget
+
+Blocking behavior:
+
+- missing or unknown rights returns `RIGHTS_PENDING`
+- Tier B returns `publish_readiness=REGION_GATED_REVIEW`, not normal `READY`
+- Tier C returns `QUARANTINED` with `BLOCKED_RIGHTS`
+- missing demand status returns `BLOCKED_PRIORITY_GATE`
+- missing ingestion returns `BLOCKED_INGESTION`
+- missing or failed edition status returns `BLOCKED_EDITION_GATE`
+- missing or failed visual status returns `BLOCKED_VISUAL_GATE`
+- missing or failed audio status returns `BLOCKED_AUDIO_GATE`
+- missing QA pass returns `QA_PENDING`
+- budget overrun returns `BLOCKED_COST`
+
+`AUDIO_NOT_REQUIRED` is available for text-only editions where a narrated preview is intentionally out of scope for the current release.
 
 ## Dry-Run Publish
 

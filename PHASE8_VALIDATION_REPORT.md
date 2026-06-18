@@ -37,7 +37,7 @@ npm --prefix frontend run build
 
 - Hidden Unicode / line-ending scan: passed for 8 files.
 - Python compile: passed for `backend/publishing_workflow.py`, `backend/tests/test_publishing_workflow.py`, and `scripts/publishing_workflow.py`.
-- Publishing workflow tests: passed, 13 tests.
+- Publishing workflow tests: passed, 20 tests.
 - `npm run publish:workflow`: passed and wrote local dry-run reports to `output/publishing_workflow`.
 - `npm run catalog:audit`: passed, 251 items audited.
 - Public content governance regression: passed, 15 tests.
@@ -46,15 +46,19 @@ npm --prefix frontend run build
 ## Line Count Verification
 
 ```text
-backend/publishing_workflow.py: 351 lines
-backend/tests/test_publishing_workflow.py: 203 lines
+backend/publishing_workflow.py: 373 lines
+backend/tests/test_publishing_workflow.py: 270 lines
 scripts/publishing_workflow.py: 89 lines
-frontend/src/components/Admin/PublishingWorkflowPanel.jsx: 123 lines
+frontend/src/components/Admin/PublishingWorkflowPanel.jsx: 166 lines
 frontend/src/pages/Admin.jsx: 1745 lines
 package.json: 40 lines
-PUBLISHING_WORKFLOW.md: 96 lines
-PHASE8_VALIDATION_REPORT.md: 76 lines
+PUBLISHING_WORKFLOW.md: 117 lines
+PHASE8_VALIDATION_REPORT.md: 85 lines before raw verification evidence
 ```
+
+## Raw GitHub Verification
+
+Pending after push of the hardening commit.
 
 ## Guardrails
 
@@ -62,8 +66,13 @@ PHASE8_VALIDATION_REPORT.md: 76 lines
 - The CLI rejects commit, publish, and write options.
 - Admin dashboard controls are disabled and read-only.
 - Publishing is gated by rights, QA, cost, Tier B/Tier C rules, and blocked reasons.
+- Publishing readiness requires Phase 3 demand, Phase 4 ingestion, Phase 5 edition, Phase 6 visual, and Phase 7 audio evidence.
+- Tier B returns `REGION_GATED_REVIEW`, not normal ready.
+- `AUDIO_NOT_REQUIRED` is accepted for text-only releases.
 - Dry-run publish creates private draft descriptions only.
 - Rollback paths are modeled but not executed.
+- The admin panel prefers backend/report-style workflow data and otherwise renders a read-only estimate.
+- Rollback and pause controls are disabled and have no mutation handlers.
 
 ## Production Mutation
 

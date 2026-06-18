@@ -33,7 +33,7 @@ TERMINAL_STATES = {"PUBLISHED", "PAUSED", "QUARANTINED", "ARCHIVED"}
 ALLOWED_INGESTION_STATUSES = {"INGESTED", "CLEANED"}
 ALLOWED_EDITION_STATUSES = {"READY_FOR_REVIEW", "PARTIAL_DRY_RUN", "QA_PASSED"}
 ALLOWED_VISUAL_STATUSES = {"READY_FOR_REVIEW", "PARTIAL_DRY_RUN", "QA_PASSED"}
-ALLOWED_AUDIO_STATUSES = {"DRY_RUN_READY", "READY_FOR_REVIEW", "QA_PASSED"}
+ALLOWED_AUDIO_STATUSES = {"DRY_RUN_READY", "READY_FOR_REVIEW", "QA_PASSED", "AUDIO_NOT_REQUIRED"}
 
 
 @dataclass
@@ -132,6 +132,8 @@ def evaluate_workflow(signals: WorkflowSignals) -> WorkflowDecision:
     warnings = list(signals.qa_warnings)
     state = determine_state(signals, blockers)
     publish_readiness = "READY" if state == "READY_FOR_PUBLICATION" and not blockers else "BLOCKED"
+    if any("REGION_GATED_REVIEW" in blocker for blocker in blockers):
+        publish_readiness = "REGION_GATED_REVIEW"
     if state == "PUBLISHED":
         publish_readiness = "PUBLISHED"
     if state in {"PAUSED", "QUARANTINED", "ARCHIVED"}:
@@ -159,6 +161,16 @@ def determine_state(signals: WorkflowSignals, blockers: list[str]) -> str:
     if blockers:
         if any("rights" in blocker.lower() or "tier" in blocker.lower() for blocker in blockers):
             return "RIGHTS_PENDING"
+        if any("priority" in blocker.lower() for blocker in blockers):
+            return "DEMAND_SCORED"
+        if any("ingestion" in blocker.lower() for blocker in blockers):
+            return "INGESTED" if signals.ingestion_status == "INGESTED" else "RIGHTS_APPROVED"
+        if any("edition" in blocker.lower() for blocker in blockers):
+            return "CLEANED"
+        if any("visual" in blocker.lower() for blocker in blockers):
+            return "EDITION_GENERATED"
+        if any("audio" in blocker.lower() for blocker in blockers):
+            return "VISUALS_GENERATED"
         if any("cost" in blocker.lower() for blocker in blockers):
             return "QA_PENDING"
         if any("qa" in blocker.lower() for blocker in blockers):
@@ -189,19 +201,29 @@ def determine_state(signals: WorkflowSignals, blockers: list[str]) -> str:
 def publishing_blockers(signals: WorkflowSignals) -> list[str]:
     blockers: list[str] = []
     if signals.rights_tier == "C":
-        blockers.append("Tier C cannot publish anywhere.")
-    if signals.rights_tier == "B" and signals.publication_region in {"global", "world", "worldwide", "all"}:
-        blockers.append("Tier B cannot publish globally.")
-    if signals.rights_tier not in {"A", "B"}:
+        blockers.append("BLOCKED_RIGHTS: Tier C cannot publish anywhere.")
+    if signals.rights_tier == "B":
+        blockers.append("REGION_GATED_REVIEW: Tier B is not eligible for normal global publication.")
+    if signals.rights_tier not in {"A", "B", "C"}:
         blockers.append("Rights approval is required.")
-    if signals.verification_status not in {"APPROVED", "VERIFIED"}:
+    if signals.rights_tier == "A" and signals.verification_status != "APPROVED":
         blockers.append("Rights verification must be approved.")
     if signals.blocked_reason:
         blockers.append(f"Rights blocked_reason must be cleared: {signals.blocked_reason}")
+    if signals.action_status != "READY_FOR_GENERATION":
+        blockers.append("BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.")
+    if signals.ingestion_status not in ALLOWED_INGESTION_STATUSES:
+        blockers.append("BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.")
+    if signals.edition_generation_status not in ALLOWED_EDITION_STATUSES:
+        blockers.append("BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.")
+    if signals.visual_status not in ALLOWED_VISUAL_STATUSES:
+        blockers.append("BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.")
+    if signals.audio_status not in ALLOWED_AUDIO_STATUSES:
+        blockers.append("BLOCKED_AUDIO_GATE: Phase 7 audio_status must be ready, QA passed, or AUDIO_NOT_REQUIRED.")
     if signals.qa_status != "QA_PASSED":
         blockers.append("QA pass is required.")
     if signals.cost_budget > 0 and signals.cost_used > signals.cost_budget:
-        blockers.append("Cost budget is exceeded.")
+        blockers.append("BLOCKED_COST: Cost budget is exceeded.")
     return blockers
 
 
