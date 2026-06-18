@@ -2,6 +2,8 @@
 
 Branch: `codex/phase6-visual-design-engine`
 
+Validated hardening commit: `5cb6471a69202eb6e526c513f4d566e151ee9f1a`
+
 ## Scope
 
 Phase 6 adds a deterministic dry-run visual design engine for lightweight study assets and EPUB/PDF/mobile hooks. It does not publish content, fetch network resources, use copyrighted images, call AI image generation, run OCR, call TTS, or use paid APIs.
@@ -55,7 +57,16 @@ npm --prefix frontend run build
 
 ## Raw GitHub Verification
 
-Pending after push of the hardening commit.
+Raw files were downloaded from GitHub after pushing the hardening commit:
+
+```text
+backend/visual_design_engine.py: 755 lines, CR=0, first_line=from __future__ import annotations
+backend/tests/test_visual_design_engine.py: 354 lines, CR=0, first_line=from __future__ import annotations
+scripts/visual_design_engine.py: 150 lines, CR=0, first_line=#!/usr/bin/env python3
+VISUAL_DESIGN_ENGINE.md: 134 lines, CR=0, first_line=# Phase 6 Visual Design Engine
+PHASE6_VALIDATION_REPORT.md: 79 lines, CR=0, first_line=# Phase 6 Validation Report
+package.json: 38 lines, CR=0, first_line={
+```
 
 ## Production Mutation
 
