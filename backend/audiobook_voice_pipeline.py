@@ -19,6 +19,7 @@ VOICE_IDENTITY = (
 SUPPORTED_LANGUAGES = {"bn", "en", "hi"}
 SUPPORTED_PROVIDERS = ("openai_tts", "ai4bharat_indic_tts", "piper_local_tts", "manual_audio_upload")
 SUPPORTED_MODES = ("preview_30s", "preview_90s", "preview_3m", "chapter_audio", "full_audiobook_playlist")
+ALLOWED_EDITION_STATUSES = {"READY_FOR_REVIEW", "PARTIAL_DRY_RUN", "QA_PASSED"}
 
 MODE_LIMITS = {
     "preview_30s": {"estimated_seconds": 30, "max_chunks": 1, "max_chars": 650},
@@ -214,6 +215,12 @@ class AudiobookPipelineInput:
     rights_tier: str = ""
     verification_status: str = ""
     blocked_reason: str = ""
+    action_status: str = ""
+    ingestion_status: str = ""
+    edition_generation_status: str = ""
+    source_hash: str = ""
+    content_hash: str = ""
+    provenance_hash: str = ""
     qa_metrics: AudioQAMetrics | None = None
     pronunciation_dictionary: dict[str, str] = field(default_factory=dict)
     max_chunk_chars: int = 900
@@ -228,6 +235,13 @@ class AudiobookPipelineResult:
     publish_gate_status: str
     blocking_reason: str
     dry_run: bool
+    rights_tier: str
+    action_status: str
+    ingestion_status: str
+    edition_generation_status: str
+    source_hash: str
+    content_hash: str
+    provenance_hash: str
     voice_identity: str
     narration_script: NarrationScriptResult
     provider_plan: TTSProviderPlan
@@ -245,6 +259,13 @@ class AudiobookPipelineResult:
             "publish_gate_status": self.publish_gate_status,
             "blocking_reason": self.blocking_reason,
             "dry_run": self.dry_run,
+            "rights_tier": self.rights_tier,
+            "action_status": self.action_status,
+            "ingestion_status": self.ingestion_status,
+            "edition_generation_status": self.edition_generation_status,
+            "source_hash": self.source_hash,
+            "content_hash": self.content_hash,
+            "provenance_hash": self.provenance_hash,
             "voice_identity": self.voice_identity,
             "narration_script": self.narration_script.as_dict(
                 include_text=include_text,
@@ -343,6 +364,10 @@ def process_narration_script(
 
 def plan_audiobook_pipeline(payload: AudiobookPipelineInput) -> AudiobookPipelineResult:
     mode = normalize_mode(payload.generation_mode)
+    publish_gate_status, blocking_reason = evaluate_publish_gate(payload)
+    if publish_gate_status != "DRY_RUN_ONLY":
+        return blocked_pipeline_result(payload, mode, publish_gate_status, blocking_reason)
+
     script = process_narration_script(
         payload.source_text,
         language=payload.language,
@@ -353,10 +378,7 @@ def plan_audiobook_pipeline(payload: AudiobookPipelineInput) -> AudiobookPipelin
     provider_plan = plan_tts_provider(payload.provider, script.language)
     mastering_plan = build_mastering_plan(payload.book_slug, mode)
     qa = evaluate_audio_qa(payload.qa_metrics, dry_run=payload.dry_run)
-    publish_gate_status, blocking_reason = evaluate_publish_gate(payload, qa, provider_plan)
-    generation_status = "DRY_RUN_READY" if publish_gate_status == "DRY_RUN_ONLY" else publish_gate_status
-    if qa.qa_status == "PASS" and publish_gate_status == "PASS":
-        generation_status = "READY_FOR_REVIEW"
+    generation_status = "DRY_RUN_READY"
     planned_assets = planned_audio_assets(payload.book_slug, mode, script, mastering_plan)
     return AudiobookPipelineResult(
         book_slug=payload.book_slug,
@@ -366,12 +388,62 @@ def plan_audiobook_pipeline(payload: AudiobookPipelineInput) -> AudiobookPipelin
         publish_gate_status=publish_gate_status,
         blocking_reason=blocking_reason,
         dry_run=payload.dry_run,
+        rights_tier=normalize_rights_tier(payload.rights_tier),
+        action_status=normalize_status(payload.action_status),
+        ingestion_status=normalize_status(payload.ingestion_status),
+        edition_generation_status=normalize_status(payload.edition_generation_status),
+        source_hash=payload.source_hash,
+        content_hash=payload.content_hash,
+        provenance_hash=payload.provenance_hash,
         voice_identity=VOICE_IDENTITY,
         narration_script=script,
         provider_plan=provider_plan,
         mastering_plan=mastering_plan,
         qa=qa,
         planned_audio_assets=planned_assets,
+    )
+
+
+def blocked_pipeline_result(
+    payload: AudiobookPipelineInput,
+    mode: str,
+    publish_gate_status: str,
+    blocking_reason: str,
+) -> AudiobookPipelineResult:
+    language = normalize_language(payload.language) or detect_language(payload.source_text)
+    return AudiobookPipelineResult(
+        book_slug=payload.book_slug,
+        title=payload.title,
+        generation_mode=mode,
+        generation_status=publish_gate_status,
+        publish_gate_status=publish_gate_status,
+        blocking_reason=blocking_reason,
+        dry_run=payload.dry_run,
+        rights_tier=normalize_rights_tier(payload.rights_tier),
+        action_status=normalize_status(payload.action_status),
+        ingestion_status=normalize_status(payload.ingestion_status),
+        edition_generation_status=normalize_status(payload.edition_generation_status),
+        source_hash=payload.source_hash,
+        content_hash=payload.content_hash,
+        provenance_hash=payload.provenance_hash,
+        voice_identity=VOICE_IDENTITY,
+        narration_script=NarrationScriptResult(
+            language=language if language in SUPPORTED_LANGUAGES else "en",
+            chunks=[],
+            chapter_count=0,
+            dialogue_chunk_count=0,
+            poetry_chunk_count=0,
+            pronunciation_replacement_count=0,
+            processor_warnings=[blocking_reason],
+        ),
+        provider_plan=plan_tts_provider(payload.provider, language),
+        mastering_plan=build_mastering_plan(payload.book_slug, mode),
+        qa=AudioQAResult(
+            qa_status="BLOCKED_GATE",
+            issues=[blocking_reason],
+            metrics=payload.qa_metrics or AudioQAMetrics(),
+        ),
+        planned_audio_assets=[],
     )
 
 
@@ -451,27 +523,39 @@ def evaluate_audio_qa(metrics: AudioQAMetrics | None, *, dry_run: bool) -> Audio
     return AudioQAResult(qa_status=status, issues=issues, metrics=metrics)
 
 
-def evaluate_publish_gate(
-    payload: AudiobookPipelineInput,
-    qa: AudioQAResult,
-    provider_plan: TTSProviderPlan,
-) -> tuple[str, str]:
-    if payload.dry_run is True:
-        return "DRY_RUN_ONLY", "Phase 7 does not publish audio; dry-run report only."
-    if not payload.linked_approved_book or not payload.book_slug.strip():
-        return "BLOCKED_BOOK_APPROVAL", "No audio publishes without a linked approved book."
-    if normalize_rights_tier(payload.rights_tier) != "A" or normalize_status(payload.verification_status) not in {
-        "APPROVED",
-        "VERIFIED",
-    }:
-        return "BLOCKED_RIGHTS", "Approved Tier A rights are required before audiobook publishing."
+def evaluate_publish_gate(payload: AudiobookPipelineInput) -> tuple[str, str]:
+    if payload.dry_run is not True:
+        return "BLOCKED_NON_DRY_RUN", "Phase 7 audiobook voice pipeline is dry-run only."
+
+    rights_tier = normalize_rights_tier(payload.rights_tier)
+    verification_status = normalize_status(payload.verification_status)
+    action_status = normalize_status(payload.action_status)
+    ingestion_status = normalize_status(payload.ingestion_status)
+    edition_status = normalize_status(payload.edition_generation_status)
+
+    if rights_tier == "C":
+        return "BLOCKED_RIGHTS", "Tier C rights block audiobook planning."
+    if rights_tier in {"", "UNKNOWN", "NO", "MISSING"} or verification_status not in {"APPROVED", "VERIFIED"}:
+        return "BLOCKED_RIGHTS_REVIEW_REQUIRED", "Approved Tier A rights metadata is required before audiobook planning."
+    if rights_tier == "B":
+        return "REGION_GATED_REVIEW", "Tier B rights require region-gated review before audiobook planning."
+    if rights_tier != "A":
+        return "BLOCKED_RIGHTS_REVIEW_REQUIRED", "Unknown rights tier requires Phase 2 rights review."
     if str(payload.blocked_reason or "").strip():
         return "BLOCKED_RIGHTS", f"Rights blocked_reason must be cleared: {payload.blocked_reason}"
-    if provider_plan.dry_run_only:
-        return "BLOCKED_PROVIDER", provider_plan.blocking_reason or "TTS provider is not configured."
-    if qa.qa_status != "PASS":
-        return "BLOCKED_QA", "No audio publishes without QA pass."
-    return "PASS", ""
+    if action_status != "READY_FOR_GENERATION":
+        return "BLOCKED_PRIORITY_GATE", "Phase 3 action_status must be READY_FOR_GENERATION."
+    if ingestion_status not in {"INGESTED", "CLEANED"}:
+        return "BLOCKED_INGESTION", "Phase 4 ingestion_status must be INGESTED or CLEANED."
+    if edition_status not in ALLOWED_EDITION_STATUSES:
+        return "BLOCKED_EDITION_GATE", "Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed."
+    if not str(payload.source_hash or "").strip():
+        return "BLOCKED_TRACEABILITY", "source_hash is required."
+    if not str(payload.content_hash or "").strip() or not str(payload.provenance_hash or "").strip():
+        return "BLOCKED_TRACEABILITY", "content_hash and provenance_hash are required."
+    if not str(payload.source_text or "").strip():
+        return "BLOCKED_SOURCE_TEXT", "source_text is required before audiobook planning."
+    return "DRY_RUN_ONLY", "Phase 7 does not publish audio; dry-run report only."
 
 
 def build_mastering_plan(book_slug: str, mode: str) -> MasteringPlan:
@@ -652,6 +736,13 @@ def audiobook_report_csv(result: AudiobookPipelineResult) -> str:
             "generation_status",
             "publish_gate_status",
             "blocking_reason",
+            "rights_tier",
+            "action_status",
+            "ingestion_status",
+            "edition_generation_status",
+            "source_hash",
+            "content_hash",
+            "provenance_hash",
             "language",
             "provider",
             "credentials_configured",
@@ -670,6 +761,13 @@ def audiobook_report_csv(result: AudiobookPipelineResult) -> str:
             "generation_status": result.generation_status,
             "publish_gate_status": result.publish_gate_status,
             "blocking_reason": result.blocking_reason,
+            "rights_tier": result.rights_tier,
+            "action_status": result.action_status,
+            "ingestion_status": result.ingestion_status,
+            "edition_generation_status": result.edition_generation_status,
+            "source_hash": result.source_hash,
+            "content_hash": result.content_hash,
+            "provenance_hash": result.provenance_hash,
             "language": result.narration_script.language,
             "provider": result.provider_plan.provider,
             "credentials_configured": result.provider_plan.credentials_configured,
@@ -697,6 +795,10 @@ def audiobook_report_markdown(
         f"- Status: `{result.generation_status}`",
         f"- Publish gate: `{result.publish_gate_status}`",
         f"- Blocking reason: {result.blocking_reason or 'none'}",
+        f"- Rights tier: `{result.rights_tier or 'unknown'}`",
+        f"- Phase 3 action: `{result.action_status or 'unknown'}`",
+        f"- Phase 4 ingestion: `{result.ingestion_status or 'unknown'}`",
+        f"- Phase 5 edition: `{result.edition_generation_status or 'unknown'}`",
         f"- Voice identity: {VOICE_IDENTITY}",
         f"- Provider: `{result.provider_plan.provider}`",
         f"- QA: `{result.qa.qa_status}`",

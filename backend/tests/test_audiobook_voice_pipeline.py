@@ -32,6 +32,12 @@ def sample_input(**overrides):
         "rights_tier": "A",
         "verification_status": "approved",
         "blocked_reason": "",
+        "action_status": "READY_FOR_GENERATION",
+        "ingestion_status": "CLEANED",
+        "edition_generation_status": "PARTIAL_DRY_RUN",
+        "source_hash": "sample-source-hash",
+        "content_hash": "sample-content-hash",
+        "provenance_hash": "sample-provenance-hash",
         "pronunciation_dictionary": {"Earnalism": "urn-uh-lizm"},
     }
     payload.update(overrides)
@@ -120,32 +126,7 @@ def test_pipeline_dry_run_never_publishes_audio():
     assert all(asset["publishable"] is False for asset in result.planned_audio_assets)
 
 
-def test_non_dry_run_requires_linked_approved_book():
-    result = plan_audiobook_pipeline(sample_input(dry_run=False, linked_approved_book=False))
-
-    assert result.publish_gate_status == "BLOCKED_BOOK_APPROVAL"
-    assert "linked approved book" in result.blocking_reason
-
-
-def test_non_dry_run_requires_approved_rights():
-    result = plan_audiobook_pipeline(sample_input(dry_run=False, rights_tier="C"))
-
-    assert result.publish_gate_status == "BLOCKED_RIGHTS"
-
-
-def test_non_dry_run_requires_qa_pass():
-    result = plan_audiobook_pipeline(
-        sample_input(
-            dry_run=False,
-            qa_metrics=AudioQAMetrics(word_error_rate=0.2, file_size_bytes=1000),
-        )
-    )
-
-    assert result.publish_gate_status == "BLOCKED_QA"
-    assert result.qa.qa_status == "FAIL"
-
-
-def test_non_dry_run_can_pass_only_with_manual_provider_and_qa_pass():
+def test_non_dry_run_is_blocked_at_core_gate():
     result = plan_audiobook_pipeline(
         sample_input(
             dry_run=False,
@@ -157,8 +138,96 @@ def test_non_dry_run_can_pass_only_with_manual_provider_and_qa_pass():
         )
     )
 
-    assert result.publish_gate_status == "PASS"
-    assert result.generation_status == "READY_FOR_REVIEW"
+    assert result.publish_gate_status == "BLOCKED_NON_DRY_RUN"
+    assert result.generation_status == "BLOCKED_NON_DRY_RUN"
+    assert "dry-run only" in result.blocking_reason
+    assert result.planned_audio_assets == []
+
+
+def test_tier_c_blocks_before_audiobook_planning():
+    result = plan_audiobook_pipeline(sample_input(rights_tier="C"))
+
+    assert result.publish_gate_status == "BLOCKED_RIGHTS"
+    assert result.narration_script.chunks == []
+    assert result.planned_audio_assets == []
+
+
+def test_missing_or_unknown_rights_blocks_review_required():
+    result = plan_audiobook_pipeline(sample_input(rights_tier="", verification_status=""))
+
+    assert result.publish_gate_status == "BLOCKED_RIGHTS_REVIEW_REQUIRED"
+    assert result.planned_audio_assets == []
+
+
+def test_tier_b_requires_region_gated_review():
+    result = plan_audiobook_pipeline(sample_input(rights_tier="B"))
+
+    assert result.publish_gate_status == "REGION_GATED_REVIEW"
+    assert result.planned_audio_assets == []
+
+
+def test_blocked_reason_blocks_rights():
+    result = plan_audiobook_pipeline(sample_input(blocked_reason="Modern translation not verified."))
+
+    assert result.publish_gate_status == "BLOCKED_RIGHTS"
+    assert "Modern translation" in result.blocking_reason
+
+
+def test_action_status_gate_blocks_non_ready_priority():
+    result = plan_audiobook_pipeline(sample_input(action_status="READY_FOR_RIGHTS_REVIEW"))
+
+    assert result.publish_gate_status == "BLOCKED_PRIORITY_GATE"
+
+
+def test_ingestion_status_gate_blocks_incomplete_source():
+    result = plan_audiobook_pipeline(sample_input(ingestion_status="PENDING"))
+
+    assert result.publish_gate_status == "BLOCKED_INGESTION"
+
+
+def test_edition_status_gate_blocks_missing_phase5_evidence():
+    result = plan_audiobook_pipeline(sample_input(edition_generation_status="FAILED_QA"))
+
+    assert result.publish_gate_status == "BLOCKED_EDITION_GATE"
+
+
+def test_traceability_gate_requires_hashes():
+    result = plan_audiobook_pipeline(sample_input(source_hash=""))
+
+    assert result.publish_gate_status == "BLOCKED_TRACEABILITY"
+    result = plan_audiobook_pipeline(sample_input(content_hash="", provenance_hash=""))
+
+    assert result.publish_gate_status == "BLOCKED_TRACEABILITY"
+
+
+def test_source_text_gate_requires_full_text():
+    result = plan_audiobook_pipeline(sample_input(source_text=""))
+
+    assert result.publish_gate_status == "BLOCKED_SOURCE_TEXT"
+    assert "source_text" in result.blocking_reason
+
+
+def test_dry_run_gate_runs_before_legacy_publish_requirements():
+    result = plan_audiobook_pipeline(sample_input(dry_run=False, linked_approved_book=False))
+
+    assert result.publish_gate_status == "BLOCKED_NON_DRY_RUN"
+
+
+def test_dry_run_gate_runs_before_rights_publish_requirements():
+    result = plan_audiobook_pipeline(sample_input(dry_run=False, rights_tier="C"))
+
+    assert result.publish_gate_status == "BLOCKED_NON_DRY_RUN"
+
+
+def test_dry_run_gate_runs_before_qa_publish_requirements():
+    result = plan_audiobook_pipeline(
+        sample_input(
+            dry_run=False,
+            qa_metrics=AudioQAMetrics(word_error_rate=0.2, file_size_bytes=1000),
+        )
+    )
+
+    assert result.publish_gate_status == "BLOCKED_NON_DRY_RUN"
 
 
 def test_audio_qa_flags_required_failures():
@@ -185,6 +254,21 @@ def test_mastering_plan_contains_ffmpeg_metadata_but_does_not_execute():
     assert any("ffmpeg -i" in command for command in result.mastering_plan.ffmpeg_commands)
     assert result.mastering_plan.output_formats == ["mp3", "aac", "ogg"]
     assert result.mastering_plan.waveform_preview.endswith(".waveform.json")
+
+
+def test_provider_and_ffmpeg_hooks_are_metadata_only(monkeypatch):
+    def fail_subprocess(*_args, **_kwargs):
+        raise AssertionError("subprocess should not be called by Phase 7 hooks")
+
+    monkeypatch.setattr(subprocess, "run", fail_subprocess)
+
+    for provider in SUPPORTED_PROVIDERS:
+        plan = plan_tts_provider(provider, "en")
+        assert "hook" in plan.as_dict()
+
+    result = plan_audiobook_pipeline(sample_input(provider="piper_local_tts"))
+    assert result.mastering_plan.executed is False
+    assert all(asset["publishable"] is False for asset in result.planned_audio_assets)
 
 
 def test_reports_are_preview_only_by_default_and_include_text_when_requested(tmp_path: Path):
@@ -221,6 +305,9 @@ def test_cli_sample_writes_reports(tmp_path: Path):
     )
 
     assert "Audiobook voice dry-run complete" in completed.stdout
+    payload = json.loads((tmp_path / "audiobook_voice_report.json").read_text(encoding="utf-8"))
+    assert payload["dry_run"] is True
+    assert payload["publish_gate_status"] == "DRY_RUN_ONLY"
     assert (tmp_path / "audiobook_voice_report.json").exists()
     assert (tmp_path / "audiobook_voice_report.csv").exists()
     assert (tmp_path / "audiobook_voice_report.md").exists()

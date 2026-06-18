@@ -35,7 +35,7 @@ npm --prefix frontend run build
 
 - Hidden Unicode / line-ending scan: passed for 6 files.
 - Python compile: passed for `backend/audiobook_voice_pipeline.py`, `backend/tests/test_audiobook_voice_pipeline.py`, and `scripts/audiobook_voice_pipeline.py`.
-- Audiobook voice pipeline tests: passed, 17 tests.
+- Audiobook voice pipeline tests: passed, 27 tests.
 - `npm run audio:voice`: passed and wrote local dry-run reports to `output/audiobook_voice`.
 - `npm run catalog:audit`: passed, 251 items audited.
 - Public content governance regression: passed, 15 tests.
@@ -45,22 +45,26 @@ npm --prefix frontend run build
 
 ```text
 backend/audiobook_voice_pipeline.py: 720 lines
-backend/tests/test_audiobook_voice_pipeline.py: 244 lines
-scripts/audiobook_voice_pipeline.py: 163 lines
-AUDIOBOOK_VOICE_PIPELINE.md: 127 lines
-PHASE7_VALIDATION_REPORT.md: 73 lines
+backend/tests/test_audiobook_voice_pipeline.py: 331 lines
+scripts/audiobook_voice_pipeline.py: 175 lines
+AUDIOBOOK_VOICE_PIPELINE.md: 156 lines
+PHASE7_VALIDATION_REPORT.md: 77 lines before raw verification evidence
 package.json: 39 lines
 ```
+
+## Raw GitHub Verification
+
+Pending after push of the hardening commit.
 
 ## Guardrails
 
 - The CLI rejects commit, publish, and write options.
+- Core library calls with `dry_run=False` return `BLOCKED_NON_DRY_RUN`.
+- Phase 2 rights, Phase 3 priority, Phase 4 ingestion, Phase 5 edition, and traceability gates are enforced before narration/audio planning.
 - Provider hooks are metadata only and do not call external APIs.
 - FFmpeg hooks are metadata only and are not executed.
 - Reports are preview-only unless `--include-text` is passed.
-- Publishing is blocked without a linked approved book.
-- Publishing is blocked without approved Tier A rights.
-- Publishing is blocked without QA pass.
+- All planned audio assets remain `publishable=false`.
 
 ## Production Mutation
 
