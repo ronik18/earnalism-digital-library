@@ -2,6 +2,8 @@
 
 Branch: `codex/phase8-admin-publishing-workflow`
 
+Validated hardening commit: `b3086f89287f21f08c3e6659c8ea66c76ec9cfb5`
+
 ## Scope
 
 Phase 8 adds a deterministic dry-run admin publishing workflow. It models pipeline state, publishing blockers, read-only admin dashboard sections, dry-run draft creation, rollback plans, and audit log entries.
@@ -53,12 +55,23 @@ frontend/src/components/Admin/PublishingWorkflowPanel.jsx: 166 lines
 frontend/src/pages/Admin.jsx: 1745 lines
 package.json: 40 lines
 PUBLISHING_WORKFLOW.md: 117 lines
-PHASE8_VALIDATION_REPORT.md: 85 lines before raw verification evidence
+PHASE8_VALIDATION_REPORT.md: 98 lines after raw verification evidence
 ```
 
 ## Raw GitHub Verification
 
-Pending after push of the hardening commit.
+Raw files were downloaded from GitHub after pushing the hardening commit:
+
+```text
+backend/publishing_workflow.py: 373 lines, CR=0, first_line=from __future__ import annotations
+backend/tests/test_publishing_workflow.py: 270 lines, CR=0, first_line=from __future__ import annotations
+scripts/publishing_workflow.py: 89 lines, CR=0, first_line=#!/usr/bin/env python3
+frontend/src/components/Admin/PublishingWorkflowPanel.jsx: 166 lines, CR=0, first_line=const SECTION_LABELS = [
+frontend/src/pages/Admin.jsx: 1745 lines, CR=0, first_line=import { useEffect, useMemo, useState } from "react";
+package.json: 40 lines, CR=0, first_line={
+PUBLISHING_WORKFLOW.md: 117 lines, CR=0, first_line=# Phase 8 Admin Publishing Workflow
+PHASE8_VALIDATION_REPORT.md: 98 lines, CR=0, first_line=# Phase 8 Validation Report
+```
 
 ## Guardrails
 
