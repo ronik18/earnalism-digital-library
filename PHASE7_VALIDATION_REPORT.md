@@ -2,6 +2,8 @@
 
 Branch: `codex/phase7-audiobook-voice-pipeline`
 
+Validated hardening commit: `c4701b83d07670933081ff6de3ebe377a05f8932`
+
 ## Scope
 
 Phase 7 adds a deterministic dry-run audiobook and voice pipeline for Bengali, English, and Hindi. It prepares narration script chunks, provider hook plans, FFmpeg mastering metadata, audio QA gates, and preview-only reports.
@@ -44,17 +46,26 @@ npm --prefix frontend run build
 ## Line Count Verification
 
 ```text
-backend/audiobook_voice_pipeline.py: 720 lines
+backend/audiobook_voice_pipeline.py: 822 lines
 backend/tests/test_audiobook_voice_pipeline.py: 331 lines
 scripts/audiobook_voice_pipeline.py: 175 lines
 AUDIOBOOK_VOICE_PIPELINE.md: 156 lines
-PHASE7_VALIDATION_REPORT.md: 77 lines before raw verification evidence
+PHASE7_VALIDATION_REPORT.md: 88 lines after raw verification evidence
 package.json: 39 lines
 ```
 
 ## Raw GitHub Verification
 
-Pending after push of the hardening commit.
+Raw files were downloaded from GitHub after pushing the hardening commit:
+
+```text
+backend/audiobook_voice_pipeline.py: 822 lines, CR=0, first_line=from __future__ import annotations
+backend/tests/test_audiobook_voice_pipeline.py: 331 lines, CR=0, first_line=from __future__ import annotations
+scripts/audiobook_voice_pipeline.py: 175 lines, CR=0, first_line=#!/usr/bin/env python3
+AUDIOBOOK_VOICE_PIPELINE.md: 156 lines, CR=0, first_line=# Phase 7 Audiobook Voice Pipeline
+PHASE7_VALIDATION_REPORT.md: 88 lines, CR=0, first_line=# Phase 7 Validation Report
+package.json: 39 lines, CR=0, first_line={
+```
 
 ## Guardrails
 
