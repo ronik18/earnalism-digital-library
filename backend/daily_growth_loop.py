@@ -119,6 +119,7 @@ class QueuedTask:
 
 @dataclass
 class DailyGrowthReport:
+    status: str
     report_date: str
     metrics: GrowthMetrics
     budgets: GrowthBudgets
@@ -135,6 +136,7 @@ class DailyGrowthReport:
         return {
             "workflow_version": DAILY_GROWTH_LOOP_VERSION,
             "generated_at": datetime.now(timezone.utc).isoformat(),
+            "status": self.status,
             "report_date": self.report_date,
             "dry_run": self.dry_run,
             "metrics": self.metrics.as_dict(),
@@ -159,6 +161,27 @@ def run_daily_growth_loop(payload: dict[str, Any] | None = None) -> DailyGrowthR
     books = normalize_books(payload.get("books"))
     books = apply_metrics_to_books(books, payload.get("book_metrics") or {})
     demand_scores = rank_demand(books)
+
+    if payload.get("dry_run") is False:
+        return blocked_report(
+            status="BLOCKED_NON_DRY_RUN",
+            report_date=report_date,
+            metrics=metrics,
+            budgets=budgets,
+            demand_scores=demand_scores,
+            reason="Phase 9 daily growth automation is dry-run only.",
+        )
+
+    if payload.get("emergency_pause") is True:
+        return blocked_report(
+            status="BLOCKED_EMERGENCY_PAUSE",
+            report_date=report_date,
+            metrics=metrics,
+            budgets=budgets,
+            demand_scores=demand_scores,
+            reason="Emergency pause enabled",
+        )
+
     selected_scores = demand_scores[: budgets.max_books_per_day]
     by_slug = {str(book.get("slug") or ""): book for book in books}
 
@@ -168,6 +191,15 @@ def run_daily_growth_loop(payload: dict[str, Any] | None = None) -> DailyGrowthR
     blocked_items: list[dict[str, Any]] = []
     llm_used = 0.0
     audio_used = 0.0
+
+    if budgets.max_publish_actions_per_day > 0:
+        blocked_items.append(
+            {
+                "slug": "__phase9__",
+                "title": "Phase 9 publish action cap",
+                "reason": "Public publishing is disabled in Phase 9; publish action cap is ignored.",
+            }
+        )
 
     for score in selected_scores:
         book = by_slug.get(score.slug, {"slug": score.slug, "title": score.title})
@@ -209,6 +241,7 @@ def run_daily_growth_loop(payload: dict[str, Any] | None = None) -> DailyGrowthR
         )
 
     return DailyGrowthReport(
+        status="DRY_RUN_READY",
         report_date=report_date,
         metrics=metrics,
         budgets=budgets,
@@ -223,6 +256,41 @@ def run_daily_growth_loop(payload: dict[str, Any] | None = None) -> DailyGrowthR
             "audio_used": round(audio_used, 2),
             "publish_actions_used": 0,
         },
+    )
+
+
+def blocked_report(
+    *,
+    status: str,
+    report_date: str,
+    metrics: GrowthMetrics,
+    budgets: GrowthBudgets,
+    demand_scores: list[DemandScore],
+    reason: str,
+) -> DailyGrowthReport:
+    return DailyGrowthReport(
+        status=status,
+        report_date=report_date,
+        metrics=metrics,
+        budgets=budgets,
+        demand_scores=demand_scores,
+        selected_books=[],
+        queued_tasks=[],
+        seo_social_email_drafts=[],
+        reading_challenge_drafts=[],
+        blocked_items=[
+            {
+                "slug": "__phase9__",
+                "title": "Phase 9 daily growth automation",
+                "reason": reason,
+            }
+        ],
+        budget_usage={
+            "llm_used": 0.0,
+            "audio_used": 0.0,
+            "publish_actions_used": 0,
+        },
+        dry_run=True,
     )
 
 
@@ -253,18 +321,44 @@ def apply_metrics_to_books(books: list[dict[str, Any]], book_metrics: dict[str, 
 def planned_tasks_for_score(score: DemandScore) -> list[QueuedTask]:
     tasks = [
         QueuedTask(
+            task_type="source_ingestion_candidate",
+            slug=score.slug,
+            title=score.title,
+            reason="Metadata-only candidate for Phase 4 source ingestion review.",
+        ),
+        QueuedTask(
+            task_type="edition_generation_candidate",
+            slug=score.slug,
+            title=score.title,
+            reason="Metadata-only candidate for Phase 5 edition generation review.",
+            estimated_llm_cost=1.0,
+        ),
+        QueuedTask(
+            task_type="visual_design_candidate",
+            slug=score.slug,
+            title=score.title,
+            reason="Metadata-only candidate for Phase 6 visual design review.",
+            estimated_llm_cost=0.75,
+        ),
+        QueuedTask(
             task_type="seo_social_email_drafts",
             slug=score.slug,
             title=score.title,
             reason=score.growth_rationale or "High growth priority.",
-            estimated_llm_cost=1.0,
+            estimated_llm_cost=0.5,
         ),
         QueuedTask(
             task_type="reading_challenge_draft",
             slug=score.slug,
             title=score.title,
             reason="Prepare lightweight conversion challenge.",
-            estimated_llm_cost=0.5,
+            estimated_llm_cost=0.25,
+        ),
+        QueuedTask(
+            task_type="publishing_workflow_candidate",
+            slug=score.slug,
+            title=score.title,
+            reason="Metadata-only candidate for Phase 8 workflow review.",
         ),
     ]
     if "audiobook" in score.recommended_product_format.lower():
