@@ -2,6 +2,8 @@
 
 Branch: `codex/phase10-observability-guardrails`
 
+Latest validation context: hardening worktree before raw GitHub verification commit.
+
 ## Scope
 
 Phase 10 adds deterministic observability, guardrails, health checks, and incident response reports for Earnalism automation.
@@ -36,32 +38,34 @@ npm --prefix frontend run build
 
 - Hidden Unicode / line-ending scan: passed for 9 files.
 - Python compile: passed for `backend/automation_observability.py`, `backend/tests/test_automation_observability.py`, and `scripts/observability_guardrails.py`.
-- Observability tests: passed, 11 tests.
+- Observability tests: passed, 50 tests.
 - `npm run observability:audit`: passed and wrote local dry-run reports to `output/observability`.
 - `npm run catalog:audit`: passed, 251 items audited.
 - Public content governance regression: passed, 15 tests.
-- Frontend build: passed.
+- Frontend build: passed. The SEO prebuild had transient API fetch aborts and wrote local sitemap fallback output; that generated sitemap noise was restored and is not part of this PR.
 
 ## Line Count Verification
 
 ```text
-backend/automation_observability.py: 610 lines
-backend/tests/test_automation_observability.py: 205 lines
-scripts/observability_guardrails.py: 83 lines
+backend/automation_observability.py: 703 lines
+backend/tests/test_automation_observability.py: 390 lines
+scripts/observability_guardrails.py: 87 lines
 package.json: 42 lines
-OBSERVABILITY.md: 62 lines
-GUARDRAILS.md: 48 lines
-INCIDENT_RESPONSE.md: 60 lines
-COST_CONTROL.md: 40 lines
-PHASE10_VALIDATION_REPORT.md: 70 lines
+OBSERVABILITY.md: 88 lines
+GUARDRAILS.md: 79 lines
+INCIDENT_RESPONSE.md: 74 lines
+COST_CONTROL.md: 50 lines
+PHASE10_VALIDATION_REPORT.md: 74 lines
 ```
 
 ## Guardrails
 
 - Every automated action receives structured audit events.
-- Rights, source, hallucination, child-safety, image, audio, budget, and kill-switch guardrails produce block logs.
-- Budget violations block action.
-- Kill switch blocks all actions.
+- Tier C, unknown rights, unapproved rights, unsafe Tier B, source, traceability, hallucination, child-safety, image, audio, budget, kill-switch, and feature-flag guardrails produce structured logs.
+- Tier B cannot pass as normal global automation; India-only acknowledged Tier B work emits `region_gated`.
+- Phase 4 traceability requires source URL/name/license plus source/content/provenance hashes.
+- Invalid or missing cost metadata blocks action.
+- Kill switch and `feature_flags.automation_enabled=false` block all actions.
 - Incidents include severity, owner, status, and rollback instructions.
 - Health checks cover API, queue, storage, and publishing.
 

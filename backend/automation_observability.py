@@ -25,13 +25,16 @@ LOG_CATEGORIES = {
 
 GUARDRAIL_TYPES = {
     "rights_blocked",
+    "region_gated",
     "source_missing",
+    "traceability_missing",
     "hallucination_risk",
     "unsafe_child_facing_content",
     "copyrighted_image_risk",
     "low_quality_audio",
     "budget_exceeded",
     "kill_switch",
+    "feature_flag_disabled",
 }
 
 SEVERITY_ORDER = {"INFO": 0, "LOW": 1, "MEDIUM": 2, "HIGH": 3, "CRITICAL": 4}
@@ -163,6 +166,7 @@ class ObservabilityReport:
                 "log_count": len(self.logs),
                 "incident_count": len(self.incidents),
                 "unhealthy_check_count": sum(1 for check in self.health_checks if check.status != "OK"),
+                "guardrail_type_counts": guardrail_type_counts(self.logs),
             },
         }
 
@@ -173,6 +177,8 @@ def run_observability_guardrails(payload: dict[str, Any] | None = None) -> Obser
     if dry_run is not True:
         return blocked_non_dry_run_report(payload)
 
+    feature_flags = payload.get("feature_flags") if isinstance(payload.get("feature_flags"), dict) else {}
+    automation_enabled = feature_flags.get("automation_enabled", True) is not False
     kill_switch_active = bool(payload.get("kill_switch_active"))
     actions = payload.get("actions") if isinstance(payload.get("actions"), list) else sample_actions()
     decisions: list[ActionDecision] = []
@@ -180,7 +186,12 @@ def run_observability_guardrails(payload: dict[str, Any] | None = None) -> Obser
 
     for index, raw_action in enumerate(actions):
         action = raw_action if isinstance(raw_action, dict) else {}
-        decision = evaluate_action(action, index=index, kill_switch_active=kill_switch_active)
+        decision = evaluate_action(
+            action,
+            index=index,
+            kill_switch_active=kill_switch_active,
+            automation_enabled=automation_enabled,
+        )
         decisions.append(decision)
         logs.extend(decision.audit_events)
 
@@ -190,6 +201,8 @@ def run_observability_guardrails(payload: dict[str, Any] | None = None) -> Obser
     status = "BLOCKED" if any(decision.decision_status == "BLOCKED" for decision in decisions) else "READY_DRY_RUN"
     if kill_switch_active:
         status = "KILL_SWITCH_ACTIVE"
+    if not automation_enabled:
+        status = "FEATURE_FLAG_DISABLED"
     if any(check.status == "DOWN" for check in health_checks):
         status = "DEGRADED" if status == "READY_DRY_RUN" else status
 
@@ -203,7 +216,13 @@ def run_observability_guardrails(payload: dict[str, Any] | None = None) -> Obser
     )
 
 
-def evaluate_action(action: dict[str, Any], *, index: int, kill_switch_active: bool) -> ActionDecision:
+def evaluate_action(
+    action: dict[str, Any],
+    *,
+    index: int,
+    kill_switch_active: bool,
+    automation_enabled: bool = True,
+) -> ActionDecision:
     action_id = text(action.get("action_id")) or stable_id("action", index, action)
     slug = text(action.get("slug"))
     phase = text(action.get("phase")) or "unknown"
@@ -222,14 +241,20 @@ def evaluate_action(action: dict[str, Any], *, index: int, kill_switch_active: b
     ]
     blocking_reasons: list[str] = []
 
-    for guardrail_type, message, severity in guardrail_findings(action, kill_switch_active=kill_switch_active):
-        blocking_reasons.append(message)
+    for guardrail_type, message, severity in guardrail_findings(
+        action,
+        kill_switch_active=kill_switch_active,
+        automation_enabled=automation_enabled,
+    ):
+        is_blocking = is_blocking_finding(guardrail_type)
+        if is_blocking:
+            blocking_reasons.append(message)
         audit_events.append(
             log_event(
                 category="guardrail_block",
                 phase=phase,
                 action=action_type,
-                status="BLOCKED",
+                status="BLOCKED" if is_blocking else "NOTED",
                 severity=severity,
                 message=message,
                 slug=slug,
@@ -250,24 +275,44 @@ def evaluate_action(action: dict[str, Any], *, index: int, kill_switch_active: b
     )
 
 
-def guardrail_findings(action: dict[str, Any], *, kill_switch_active: bool) -> list[tuple[str, str, str]]:
+def guardrail_findings(
+    action: dict[str, Any],
+    *,
+    kill_switch_active: bool,
+    automation_enabled: bool,
+) -> list[tuple[str, str, str]]:
     findings: list[tuple[str, str, str]] = []
     if kill_switch_active:
         findings.append(("kill_switch", "Kill switch is active; all automation actions are blocked.", "CRITICAL"))
+    if not automation_enabled:
+        findings.append(("feature_flag_disabled", "Automation feature flag is disabled; all actions are blocked.", "CRITICAL"))
 
     rights = action.get("rights") if isinstance(action.get("rights"), dict) else {}
     rights_tier = text(rights.get("rights_tier") or action.get("rights_tier")).upper()
     verification_status = text(rights.get("verification_status") or action.get("verification_status")).upper()
     blocked_reason = text(rights.get("blocked_reason") or action.get("blocked_reason"))
+    publication_region = normalize_region(rights.get("publication_region") or action.get("publication_region"))
+    region_gate_acknowledged = bool(rights.get("region_gate_acknowledged") or action.get("region_gate_acknowledged"))
     if rights_tier == "C" or blocked_reason:
         findings.append(("rights_blocked", "Rights blocked; action cannot proceed.", "CRITICAL"))
-    elif rights_tier not in {"A", "B"} or verification_status not in {"APPROVED", "VERIFIED"}:
+    elif rights_tier not in {"A", "B", "C"}:
+        findings.append(("rights_blocked", "Rights tier is missing or unknown.", "HIGH"))
+    elif verification_status not in {"APPROVED", "VERIFIED"}:
         findings.append(("rights_blocked", "Rights approval is missing or incomplete.", "HIGH"))
+    elif rights_tier == "B" and not is_india_region(publication_region):
+        findings.append(("rights_blocked", "Tier B rights require India-only publication region.", "HIGH"))
+    elif rights_tier == "B" and not region_gate_acknowledged:
+        findings.append(("rights_blocked", "Tier B rights require region-gate acknowledgement.", "HIGH"))
+    elif rights_tier == "B":
+        findings.append(("region_gated", "Tier B action is region-gated and requires India-only handling.", "INFO"))
 
-    if action.get("requires_source") and not text(action.get("source_url")):
-        findings.append(("source_missing", "Source URL is missing for a source-dependent action.", "HIGH"))
-    if action.get("requires_source") and not text(action.get("source_hash")):
-        findings.append(("source_missing", "Source hash is missing for a source-dependent action.", "HIGH"))
+    if action.get("requires_source"):
+        for field in ("source_url", "source_name", "source_license"):
+            if not text(action.get(field)):
+                findings.append(("source_missing", f"{field} is missing for a source-dependent action.", "HIGH"))
+        for field in ("source_hash", "content_hash", "provenance_hash"):
+            if not text(action.get(field)):
+                findings.append(("traceability_missing", f"{field} is missing for a source-dependent action.", "HIGH"))
 
     if action.get("hallucination_risk") in {True, "high", "HIGH"}:
         findings.append(("hallucination_risk", "Hallucination risk requires editorial review.", "MEDIUM"))
@@ -284,13 +329,25 @@ def guardrail_findings(action: dict[str, Any], *, kill_switch_active: bool) -> l
     if text(action.get("audio_qa_status")).upper() in {"FAILED", "FAILED_QA", "LOW_QUALITY"}:
         findings.append(("low_quality_audio", "Audio QA status blocks action.", "MEDIUM"))
 
-    estimated_cost = float_or_none(action.get("estimated_cost")) or 0.0
+    estimated_cost = float_or_none(action.get("estimated_cost"))
     budget_remaining = float_or_none(action.get("budget_remaining"))
     budget_limit = float_or_none(action.get("budget_limit"))
-    budget_used = float_or_none(action.get("budget_used")) or 0.0
-    if budget_remaining is not None and estimated_cost > budget_remaining:
+    budget_used = float_or_none(action.get("budget_used"))
+    if estimated_cost is not None and estimated_cost < 0:
+        findings.append(("budget_exceeded", "estimated_cost cannot be negative.", "HIGH"))
+    if budget_remaining is not None and budget_remaining < 0:
+        findings.append(("budget_exceeded", "budget_remaining cannot be negative.", "HIGH"))
+    if budget_limit is not None and budget_limit < 0:
+        findings.append(("budget_exceeded", "budget_limit cannot be negative.", "HIGH"))
+    if budget_used is not None and budget_used < 0:
+        findings.append(("budget_exceeded", "budget_used cannot be negative.", "HIGH"))
+    normalized_estimated_cost = estimated_cost or 0.0
+    normalized_budget_used = budget_used or 0.0
+    if normalized_estimated_cost > 0 and budget_remaining is None and budget_limit is None:
+        findings.append(("budget_exceeded", "Positive estimated_cost requires budget_remaining or budget_limit.", "HIGH"))
+    if budget_remaining is not None and normalized_estimated_cost > budget_remaining:
         findings.append(("budget_exceeded", "Estimated cost exceeds remaining budget.", "HIGH"))
-    if budget_limit is not None and budget_used + estimated_cost > budget_limit:
+    if budget_limit is not None and normalized_budget_used + normalized_estimated_cost > budget_limit:
         findings.append(("budget_exceeded", "Estimated cost would exceed budget limit.", "HIGH"))
 
     return findings
@@ -474,6 +531,10 @@ def incident_report_csv(report: ObservabilityReport) -> str:
     return output.getvalue()
 
 
+def structured_logs_json(report: ObservabilityReport) -> list[dict[str, Any]]:
+    return [event.as_dict() for event in report.logs]
+
+
 def observability_report_markdown(report: ObservabilityReport) -> str:
     payload = report.as_dict()
     lines = [
@@ -509,7 +570,11 @@ def sample_actions() -> list[dict[str, Any]]:
             "rights": {"rights_tier": "A", "verification_status": "approved", "blocked_reason": ""},
             "requires_source": True,
             "source_url": "https://example.invalid/source/dracula",
+            "source_name": "Local public-domain fixture",
+            "source_license": "public-domain",
             "source_hash": "sha256:dracula",
+            "content_hash": "sha256:dracula-content",
+            "provenance_hash": "sha256:dracula-provenance",
             "estimated_cost": 0,
             "budget_remaining": 10,
         },
@@ -538,8 +603,10 @@ def sample_actions() -> list[dict[str, Any]]:
 def category_for_phase(phase: str) -> str:
     normalized = phase.lower().replace("-", "_")
     mapping = {
+        "public_content_governance": "publishing",
         "rights": "rights_check",
         "rights_check": "rights_check",
+        "rights_verification": "rights_check",
         "demand": "demand_scoring",
         "demand_scoring": "demand_scoring",
         "source_ingestion": "ingestion",
@@ -551,6 +618,8 @@ def category_for_phase(phase: str) -> str:
         "audio": "audio_generation",
         "audio_generation": "audio_generation",
         "publishing": "publishing",
+        "publishing_workflow": "publishing",
+        "daily_growth_loop": "demand_scoring",
     }
     return mapping.get(normalized, "failure")
 
@@ -560,6 +629,8 @@ def owner_for_event(event: StructuredLogEvent) -> str:
         return "rights"
     if event.guardrail_type == "budget_exceeded":
         return "growth"
+    if event.guardrail_type == "feature_flag_disabled":
+        return "platform"
     if event.phase == "health_check":
         return "platform"
     if event.guardrail_type == "low_quality_audio":
@@ -574,6 +645,8 @@ def rollback_instruction_for_event(event: StructuredLogEvent) -> str:
         return "Keep content unpublished and rerun Phase 2 rights verification before retry."
     if event.guardrail_type == "kill_switch":
         return "Keep automation paused until owner clears the kill switch."
+    if event.guardrail_type == "feature_flag_disabled":
+        return "Keep automation disabled until an owner explicitly reenables the feature flag."
     if event.phase == "health_check":
         return "Keep automation paused for affected subsystem and rerun health checks after repair."
     return "Keep action blocked, resolve guardrail finding, then rerun dry-run."
@@ -599,6 +672,26 @@ def utc_now() -> str:
 
 def text(value: Any) -> str:
     return str(value or "").strip()
+
+
+def normalize_region(value: Any) -> str:
+    return text(value).lower().replace("_", "-")
+
+
+def is_india_region(value: str) -> bool:
+    return value in {"in", "india", "india-only", "in-only", "region-gated-india"}
+
+
+def is_blocking_finding(guardrail_type: str) -> bool:
+    return guardrail_type != "region_gated"
+
+
+def guardrail_type_counts(logs: list[StructuredLogEvent]) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for event in logs:
+        if event.guardrail_type:
+            counts[event.guardrail_type] = counts.get(event.guardrail_type, 0) + 1
+    return counts
 
 
 def float_or_none(value: Any) -> float | None:

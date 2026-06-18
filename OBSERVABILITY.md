@@ -42,9 +42,26 @@ npm run observability:audit
 Outputs:
 
 - `output/observability/observability_guardrails_report.json`
+- `output/observability/structured_logs.json`
 - `output/observability/structured_logs.csv`
 - `output/observability/incident_report.csv`
 - `output/observability/observability_guardrails_report.md`
+
+The JSON report includes health checks, blocked action count, guardrail type counts, incidents, and dry-run status.
+
+## Phase 1-9 Coverage
+
+The dry-run observability layer maps these automation phases into structured log categories:
+
+- Phase 1 public content governance: `publishing`
+- Phase 2 rights verification: `rights_check`
+- Phase 3 demand scoring: `demand_scoring`
+- Phase 4 source ingestion: `ingestion`
+- Phase 5 edition generation: `generation`
+- Phase 6 visual generation: `generation`
+- Phase 7 audio generation: `audio_generation`
+- Phase 8 publishing workflow: `publishing`
+- Phase 9 daily growth loop: `demand_scoring`
 
 ## Health Checks
 
@@ -56,6 +73,15 @@ The dry-run report includes health checks for:
 - publishing health
 
 Statuses are `OK`, `DEGRADED`, or `DOWN`. Non-OK health checks generate structured logs and high-severity incidents when appropriate.
+
+## Emergency Stop
+
+Two dry-run stops are supported:
+
+- `kill_switch_active=true`
+- `feature_flags: { "automation_enabled": false }`
+
+Both stop all actions, create guardrail logs, and open critical incidents. No external alert delivery is configured in Phase 10.
 
 ## Scope
 

@@ -23,6 +23,7 @@ Each incident includes:
 - `MEDIUM`: review required
 - `HIGH`: action blocked and incident opened
 - `CRITICAL`: kill switch, unsafe rights, or non-dry-run attempt
+Tier B region-gated acknowledgements emit structured logs but do not open incidents unless another high-severity guardrail fails.
 
 ## Owners
 
@@ -40,11 +41,22 @@ Rollback instructions are generated in the incident report. Examples:
 - keep content unpublished and rerun rights verification
 - reduce the daily queue or budget before retry
 - keep automation paused until the kill switch is cleared
+- keep automation disabled until an owner explicitly reenables the feature flag
 - keep affected subsystem paused until health checks recover
 
 ## Kill Switch
 
 The kill switch is represented by `kill_switch_active=true`. In Phase 10 it blocks all actions, opens incidents, and writes local reports only.
+
+## Feature Flag Disable
+
+The feature flag stop is represented by:
+
+```json
+{ "feature_flags": { "automation_enabled": false } }
+```
+
+It blocks all actions, opens critical incidents, and writes local reports only.
 
 ## Output
 
@@ -57,4 +69,6 @@ npm run observability:audit
 Review:
 
 - `output/observability/incident_report.csv`
+- `output/observability/structured_logs.json`
+- `output/observability/structured_logs.csv`
 - `output/observability/observability_guardrails_report.md`
