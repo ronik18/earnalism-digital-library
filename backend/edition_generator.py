@@ -36,6 +36,13 @@ SECTION_ORDER = [
 REQUIRED_METADATA_FIELDS = ["title", "source_hash", "source_name", "source_url", "source_license"]
 ADULT_RISK_RE = re.compile(r"\b(suicide|explicit|erotic|torture|graphic)\b", re.IGNORECASE)
 CHARACTER_NAME_RE = re.compile(r"\b(?:Mr|Mrs|Miss|Dr|Professor)\.?\s+[A-Z][A-Za-z]+|\b[A-Z][a-z]{3,}\b")
+REVIEW_REQUIRED_SECTIONS = {
+    "historical_context",
+    "why_this_book_matters_today",
+    "landing_page_copy",
+    "seo_copy",
+    "social_excerpts",
+}
 
 
 @dataclass(frozen=True)
@@ -100,6 +107,13 @@ class EditionGenerationInput:
     source_name: str
     source_url: str
     source_license: str
+    content_hash: str = ""
+    provenance_hash: str = ""
+    rights_tier: str = ""
+    verification_status: str = ""
+    blocked_reason: str = ""
+    action_status: str = ""
+    ingestion_status: str = ""
     author: str = ""
     language: str = "en"
     requested_sections: list[str] = field(default_factory=lambda: list(SECTION_ORDER))
@@ -116,29 +130,84 @@ class EditionGenerationResult:
     requested_sections: list[str]
     generated_sections: list[str]
     skipped_sections: list[str]
+    section_metadata: list[dict[str, Any]]
     qa: dict[str, Any]
     cost_controls: dict[str, Any]
     generation_status: str
+    gate_status: str
+    blocking_reason: str
+    rights_tier: str
+    action_status: str
+    ingestion_status: str
+    content_hash: str
+    provenance_hash: str
     dry_run: bool = True
 
-    def as_dict(self) -> dict[str, Any]:
+    def as_dict(self, *, include_content: bool = False, content_preview_chars: int = 1200) -> dict[str, Any]:
         return {
             "state": self.state.as_dict(),
-            "sections": self.sections,
+            "sections": self.section_rows(include_content=include_content, content_preview_chars=content_preview_chars),
             "requested_sections": self.requested_sections,
             "generated_sections": self.generated_sections,
             "skipped_sections": self.skipped_sections,
+            "section_metadata": self.section_metadata_rows(content_preview_chars=content_preview_chars),
             "qa": self.qa,
             "cost_controls": self.cost_controls,
             "generation_status": self.generation_status,
+            "gate_status": self.gate_status,
+            "blocking_reason": self.blocking_reason,
+            "rights_tier": self.rights_tier,
+            "action_status": self.action_status,
+            "ingestion_status": self.ingestion_status,
+            "source_hash": self.state.source_hash,
+            "content_hash": self.content_hash,
+            "provenance_hash": self.provenance_hash,
+            "prompt_version": self.state.prompt_version,
+            "model_version": self.state.model_version,
+            "qa_status": self.state.qa_status,
+            "quality_score": round(self.state.quality_score, 2),
+            "generated_section_count": len(self.generated_sections),
+            "skipped_section_count": len(self.skipped_sections),
             "dry_run": self.dry_run,
         }
+
+    def section_rows(self, *, include_content: bool = False, content_preview_chars: int = 1200) -> list[dict[str, Any]]:
+        rows = []
+        for metadata in self.section_metadata_rows(content_preview_chars=content_preview_chars):
+            row = dict(metadata)
+            if include_content:
+                row["content"] = self.sections.get(str(row["section_id"]), "")
+            rows.append(row)
+        return rows
+
+    def section_metadata_rows(self, *, content_preview_chars: int = 1200) -> list[dict[str, Any]]:
+        rows = []
+        metadata_by_id = {row["section_id"]: row for row in self.section_metadata}
+        for section_id in self.generated_sections:
+            text = self.sections.get(section_id, "")
+            metadata = dict(metadata_by_id.get(section_id, {}))
+            metadata.setdefault("section_id", section_id)
+            metadata.setdefault("title", EDITION_TEMPLATES[section_id].title)
+            metadata["content_preview"] = text[: max(0, int(content_preview_chars or 0))]
+            metadata["content_character_count"] = len(text)
+            rows.append(metadata)
+        return rows
 
 
 def generate_edition(payload: EditionGenerationInput) -> EditionGenerationResult:
     validate_input(payload)
     state = EditionGenerationState(source_hash=payload.source_hash)
     requested_sections = normalize_requested_sections(payload.requested_sections)
+    gate_status, blocking_reason = evaluate_generation_gate(payload)
+    if gate_status != "PASS":
+        state.qa_status = gate_status
+        return blocked_result(
+            payload=payload,
+            state=state,
+            requested_sections=requested_sections,
+            gate_status=gate_status,
+            blocking_reason=blocking_reason,
+        )
     cache_key = state.cache_key()
     if cache_key in payload.existing_cache_keys:
         state.qa_status = "SKIPPED_UNCHANGED"
@@ -148,6 +217,7 @@ def generate_edition(payload: EditionGenerationInput) -> EditionGenerationResult
             requested_sections=requested_sections,
             generated_sections=[],
             skipped_sections=requested_sections,
+            section_metadata=[],
             qa={
                 "missing_sections": requested_sections,
                 "hallucination_risk": False,
@@ -158,11 +228,19 @@ def generate_edition(payload: EditionGenerationInput) -> EditionGenerationResult
             },
             cost_controls=cost_control_summary(payload, budget_used=0),
             generation_status="SKIPPED_UNCHANGED",
+            gate_status="PASS",
+            blocking_reason="",
+            rights_tier=normalized_rights_tier(payload.rights_tier),
+            action_status=normalized_status(payload.action_status),
+            ingestion_status=normalized_status(payload.ingestion_status),
+            content_hash=payload.content_hash,
+            provenance_hash=payload.provenance_hash,
             dry_run=payload.dry_run,
         )
 
     context = build_context(payload)
     sections: dict[str, str] = {}
+    section_metadata: list[dict[str, Any]] = []
     generated_sections: list[str] = []
     skipped_sections: list[str] = []
     budget_used = 0
@@ -180,6 +258,7 @@ def generate_edition(payload: EditionGenerationInput) -> EditionGenerationResult
             continue
         rendered = template.renderer(context)
         sections[section_id] = rendered
+        section_metadata.append(build_section_metadata(section_id, rendered, context))
         generated_sections.append(section_id)
         budget_used += estimate
 
@@ -205,22 +284,108 @@ def generate_edition(payload: EditionGenerationInput) -> EditionGenerationResult
         requested_sections=requested_sections,
         generated_sections=generated_sections,
         skipped_sections=skipped_sections,
+        section_metadata=section_metadata,
         qa=qa,
         cost_controls=cost_control_summary(payload, budget_used=budget_used),
         generation_status=generation_status,
+        gate_status="PASS",
+        blocking_reason="",
+        rights_tier=normalized_rights_tier(payload.rights_tier),
+        action_status=normalized_status(payload.action_status),
+        ingestion_status=normalized_status(payload.ingestion_status),
+        content_hash=payload.content_hash,
+        provenance_hash=payload.provenance_hash,
         dry_run=payload.dry_run,
     )
 
 
 def validate_input(payload: EditionGenerationInput) -> None:
     missing = []
-    for field_name in REQUIRED_METADATA_FIELDS:
+    for field_name in ("title",):
         if not str(getattr(payload, field_name) or "").strip():
             missing.append(field_name)
     if missing:
         raise ValueError(f"Edition generation requires metadata: {', '.join(missing)}.")
     if not payload.cleaned_text.strip():
         raise ValueError("Edition generation requires cleaned_text from the source ingestion pipeline.")
+
+
+def evaluate_generation_gate(payload: EditionGenerationInput) -> tuple[str, str]:
+    rights_tier = normalized_rights_tier(payload.rights_tier)
+    verification_status = normalized_status(payload.verification_status)
+    action_status = normalized_status(payload.action_status)
+    ingestion_status = normalized_status(payload.ingestion_status)
+    blocked_reason = str(payload.blocked_reason or "").strip()
+
+    if rights_tier == "C":
+        return "BLOCKED_RIGHTS", "Tier C rights block edition generation."
+    if rights_tier in {"", "UNKNOWN", "NO", "MISSING"} or verification_status not in {"APPROVED", "VERIFIED"}:
+        return "BLOCKED_RIGHTS_REVIEW_REQUIRED", "Approved Tier A rights metadata is required before edition generation."
+    if rights_tier == "B":
+        return "REGION_GATED_REVIEW", "Tier B rights require region-gated review before edition generation."
+    if rights_tier != "A":
+        return "BLOCKED_RIGHTS_REVIEW_REQUIRED", "Unknown rights tier requires Phase 2 rights review."
+    if blocked_reason:
+        return "BLOCKED_RIGHTS", f"Rights blocked_reason must be cleared: {blocked_reason}"
+    if action_status != "READY_FOR_GENERATION":
+        return "BLOCKED_PRIORITY_GATE", "Phase 3 action_status must be READY_FOR_GENERATION."
+    if ingestion_status not in {"INGESTED", "CLEANED"}:
+        return "BLOCKED_INGESTION", "Phase 4 ingestion_status must be INGESTED or CLEANED."
+    if not str(payload.source_hash or "").strip():
+        return "BLOCKED_TRACEABILITY", "source_hash is required."
+    if not str(payload.content_hash or "").strip() or not str(payload.provenance_hash or "").strip():
+        return "BLOCKED_TRACEABILITY", "content_hash and provenance_hash are required."
+    for field_name in ("source_url", "source_name", "source_license"):
+        if not str(getattr(payload, field_name) or "").strip():
+            return "BLOCKED_TRACEABILITY", f"{field_name} is required."
+    return "PASS", ""
+
+
+def blocked_result(
+    *,
+    payload: EditionGenerationInput,
+    state: EditionGenerationState,
+    requested_sections: list[str],
+    gate_status: str,
+    blocking_reason: str,
+) -> EditionGenerationResult:
+    return EditionGenerationResult(
+        state=state,
+        sections={},
+        requested_sections=requested_sections,
+        generated_sections=[],
+        skipped_sections=requested_sections,
+        section_metadata=[],
+        qa={
+            "qa_status": gate_status,
+            "quality_score": 0,
+            "missing_sections": requested_sections,
+            "skipped_sections": requested_sections,
+            "hallucination_risk": False,
+            "citation_source_coverage": 0,
+            "readability_score": 0,
+            "age_appropriateness_flag": False,
+            "qa_issues": [blocking_reason],
+        },
+        cost_controls=cost_control_summary(payload, budget_used=0),
+        generation_status=gate_status,
+        gate_status=gate_status,
+        blocking_reason=blocking_reason,
+        rights_tier=normalized_rights_tier(payload.rights_tier),
+        action_status=normalized_status(payload.action_status),
+        ingestion_status=normalized_status(payload.ingestion_status),
+        content_hash=payload.content_hash,
+        provenance_hash=payload.provenance_hash,
+        dry_run=payload.dry_run,
+    )
+
+
+def normalized_rights_tier(value: Any) -> str:
+    return str(value or "").strip().upper().replace("TIER ", "")
+
+
+def normalized_status(value: Any) -> str:
+    return str(value or "").strip().upper().replace("-", "_").replace(" ", "_")
 
 
 def generation_cache_key(*, source_hash: str, prompt_version: str, model_version: str) -> str:
@@ -302,6 +467,22 @@ def cost_control_summary(payload: EditionGenerationInput, *, budget_used: int) -
         "skip_unchanged_source_hash": True,
         "dry_run_default": payload.dry_run,
         "max_source_chars": MAX_SOURCE_CHARS,
+    }
+
+
+def build_section_metadata(section_id: str, content: str, context: EditionContext) -> dict[str, Any]:
+    citation_required = True
+    editorial_review_required = section_id in REVIEW_REQUIRED_SECTIONS
+    source_coverage_status = "SOURCE_COVERED" if context.source_name in content and context.source_url in content else "SOURCE_REVIEW_REQUIRED"
+    section_status = "EDITORIAL_REVIEW_REQUIRED" if editorial_review_required else "READY_FOR_QA_REVIEW"
+    return {
+        "section_id": section_id,
+        "title": EDITION_TEMPLATES[section_id].title,
+        "citation_required": citation_required,
+        "editorial_review_required": editorial_review_required,
+        "source_coverage_status": source_coverage_status,
+        "section_status": section_status,
+        "content_character_count": len(content),
     }
 
 
@@ -623,53 +804,64 @@ EDITION_TEMPLATES = {
 }
 
 
-def edition_report_json(result: EditionGenerationResult) -> list[dict[str, Any]]:
-    rows = []
-    for section_id in result.generated_sections:
-        rows.append({
-            "section_id": section_id,
-            "content": result.sections.get(section_id, ""),
-            **result.state.as_dict(),
-            "generation_status": result.generation_status,
-            "dry_run": result.dry_run,
-        })
-    if not rows:
-        rows.append({
-            "section_id": "",
-            "content": "",
-            **result.state.as_dict(),
-            "generation_status": result.generation_status,
-            "dry_run": result.dry_run,
-        })
-    return rows
+def edition_report_json(
+    result: EditionGenerationResult,
+    *,
+    include_content: bool = False,
+    content_preview_chars: int = 1200,
+) -> dict[str, Any]:
+    return result.as_dict(include_content=include_content, content_preview_chars=content_preview_chars)
 
 
 def edition_report_csv(result: EditionGenerationResult) -> str:
     fieldnames = [
         "section_id",
+        "gate_status",
+        "blocking_reason",
+        "rights_tier",
+        "action_status",
+        "ingestion_status",
+        "content_hash",
+        "provenance_hash",
         "qa_status",
         "quality_score",
         "source_hash",
         "prompt_version",
         "model_version",
         "generation_status",
+        "generated_section_count",
+        "skipped_section_count",
         "dry_run",
+        "citation_required",
+        "editorial_review_required",
+        "source_coverage_status",
+        "section_status",
+        "content_character_count",
         "content_preview",
     ]
     output = io.StringIO()
     writer = csv.DictWriter(output, fieldnames=fieldnames, extrasaction="ignore")
     writer.writeheader()
-    for section_id in result.generated_sections:
+    section_rows = result.section_metadata_rows(content_preview_chars=220) or [{"section_id": "", "content_preview": ""}]
+    for row in section_rows:
         writer.writerow({
-            "section_id": section_id,
+            **row,
+            "gate_status": result.gate_status,
+            "blocking_reason": result.blocking_reason,
+            "rights_tier": result.rights_tier,
+            "action_status": result.action_status,
+            "ingestion_status": result.ingestion_status,
+            "content_hash": result.content_hash,
+            "provenance_hash": result.provenance_hash,
             "qa_status": result.state.qa_status,
             "quality_score": round(result.state.quality_score, 2),
             "source_hash": result.state.source_hash,
             "prompt_version": result.state.prompt_version,
             "model_version": result.state.model_version,
             "generation_status": result.generation_status,
+            "generated_section_count": len(result.generated_sections),
+            "skipped_section_count": len(result.skipped_sections),
             "dry_run": result.dry_run,
-            "content_preview": result.sections.get(section_id, "")[:220],
         })
     return output.getvalue()
 
@@ -681,18 +873,31 @@ def edition_report_markdown(result: EditionGenerationResult) -> str:
         "No production content was published. No LLM, TTS, image, OCR, or paid API calls were made.",
         "",
         f"- Generation status: `{result.generation_status}`",
+        f"- Gate status: `{result.gate_status}`",
+        f"- Blocking reason: `{result.blocking_reason}`",
+        f"- Rights tier: `{result.rights_tier}`",
+        f"- Action status: `{result.action_status}`",
+        f"- Ingestion status: `{result.ingestion_status}`",
         f"- QA status: `{result.state.qa_status}`",
         f"- Quality score: `{round(result.state.quality_score, 2)}`",
         f"- Generated sections: {len(result.generated_sections)}",
         f"- Skipped sections: {len(result.skipped_sections)}",
+        f"- Source hash: `{result.state.source_hash}`",
+        f"- Content hash: `{result.content_hash}`",
+        f"- Provenance hash: `{result.provenance_hash}`",
         f"- Cache key: `{result.state.cache_key()}`",
         "",
         "## Sections",
         "",
     ]
     for section_id in result.generated_sections:
+        metadata = next((row for row in result.section_metadata if row["section_id"] == section_id), {})
         lines.extend([
             f"### {EDITION_TEMPLATES[section_id].title}",
+            "",
+            f"- Section status: `{metadata.get('section_status', '')}`",
+            f"- Editorial review required: `{metadata.get('editorial_review_required', False)}`",
+            f"- Source coverage: `{metadata.get('source_coverage_status', '')}`",
             "",
             result.sections[section_id],
             "",

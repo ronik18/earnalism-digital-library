@@ -33,8 +33,9 @@ npm --prefix frontend run build
 
 - Hidden Unicode / line-ending scan: passed for 6 files.
 - Python compile: passed for `backend/edition_generator.py`, `backend/tests/test_edition_generator.py`, and `scripts/edition_generator.py`.
-- Edition generator tests: passed, 11 tests.
+- Edition generator tests: passed, 24 tests.
 - `npm run edition:generate`: passed and wrote local dry-run reports to `output/edition_generation`.
+- Default JSON report excludes full generated section content; it includes section metadata and previews only.
 - `npm run catalog:audit`: passed, 251 items audited.
 - Public content governance regression: passed, 15 tests.
 - Frontend build: passed.
@@ -43,11 +44,22 @@ npm --prefix frontend run build
 
 - All requested edition template ids are present with prompt strings.
 - Generation is deterministic and does not call LLM, TTS, image, OCR, network, or paid APIs.
+- Phase 2 rights gate blocks Tier C, missing/unknown rights, Tier B region-gated records, and uncleared `blocked_reason`.
+- Phase 3 demand gate blocks non-`READY_FOR_GENERATION` action statuses.
+- Phase 4 ingestion gate blocks non-`INGESTED`/`CLEANED` records.
+- Traceability gate blocks missing `source_hash`, `content_hash`, `provenance_hash`, source URL, source name, or source license.
 - Caching skips unchanged `source_hash` + `prompt_version` + `model_version`.
 - Cost controls limit sections and budget per run.
 - QA tracks missing sections, hallucination risk, source coverage, readability, and age suitability.
 - Low-quality or under-supported output is marked `BLOCKED_QA`.
+- Every generated section includes citation/review/source-coverage metadata.
+- Full generated section content requires `--include-content`; preview length is controlled by `--content-preview-chars`.
+- Phase 4 preview-only payloads fail with: `Phase 5 requires cleaned_text; rerun Phase 4 with --include-text for local dry-run generation.`
 - The CLI rejects `--commit`, `--publish`, and `--write`.
+
+## Raw GitHub Verification
+
+Pending after push of the hardening commit.
 
 ## Production Mutation
 

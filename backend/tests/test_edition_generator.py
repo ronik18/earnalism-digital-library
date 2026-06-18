@@ -18,20 +18,28 @@ from backend.edition_generator import (
     generation_cache_key,
 )
 from backend.source_ingestion import hash_source
-from scripts.edition_generator import SAMPLE_TEXT, write_reports
+from scripts.edition_generator import SAMPLE_BOOK, SAMPLE_TEXT, load_payload, write_reports
 
 
 def sample_payload(**overrides):
     text = overrides.pop("cleaned_text", SAMPLE_TEXT)
+    source_hash = hash_source(text)
     payload = {
         "title": "Alice's Adventures in Wonderland",
         "author": "Lewis Carroll",
         "language": "en",
         "cleaned_text": text,
-        "source_hash": hash_source(text),
+        "source_hash": source_hash,
+        "content_hash": source_hash,
+        "provenance_hash": "sample-provenance-hash",
         "source_name": "Project Gutenberg",
         "source_url": "https://www.gutenberg.org/ebooks/11",
         "source_license": "Public domain",
+        "rights_tier": "A",
+        "verification_status": "approved",
+        "blocked_reason": "",
+        "action_status": "READY_FOR_GENERATION",
+        "ingestion_status": "CLEANED",
     }
     payload.update(overrides)
     return payload
@@ -67,6 +75,7 @@ def test_pipeline_generates_fixture_sections_and_state_fields():
     result = generate_edition(generation_input(max_sections_per_run=14, max_generation_budget=100_000))
 
     assert result.generation_status == "READY_FOR_REVIEW"
+    assert result.gate_status == "PASS"
     assert result.state.qa_status == "PASS"
     assert result.state.source_hash
     assert result.state.prompt_version == PROMPT_VERSION
@@ -76,6 +85,7 @@ def test_pipeline_generates_fixture_sections_and_state_fields():
     assert set(result.generated_sections) == set(SECTION_ORDER)
     assert "Editorial note" in result.sections["clean_reading_edition"]
     assert "Phase 5 does not generate a full book" in result.sections["clean_reading_edition"]
+    assert all("section_status" in row for row in result.section_metadata)
 
 
 def test_default_cost_controls_limit_sections_without_blocking_quality():
@@ -110,6 +120,7 @@ def test_caching_skips_unchanged_source_hash_prompt_and_model():
     result = generate_edition(payload)
 
     assert result.generation_status == "SKIPPED_UNCHANGED"
+    assert result.gate_status == "PASS"
     assert result.state.qa_status == "SKIPPED_UNCHANGED"
     assert result.sections == {}
     assert result.skipped_sections == SECTION_ORDER
@@ -143,12 +154,10 @@ def test_qa_reports_citation_coverage_readability_and_age_flag():
 def test_missing_metadata_blocks_generation():
     payload = generation_input(source_url="")
 
-    try:
-        generate_edition(payload)
-    except ValueError as exc:
-        assert "source_url" in str(exc)
-    else:
-        raise AssertionError("missing source_url should block edition generation")
+    result = generate_edition(payload)
+
+    assert result.gate_status == "BLOCKED_TRACEABILITY"
+    assert "source_url" in result.blocking_reason
 
 
 def test_requested_sections_can_be_subset():
@@ -176,12 +185,170 @@ def test_reports_include_state_and_qa(tmp_path: Path):
     assert json_path.exists()
     assert csv_path.exists()
     assert md_path.exists()
-    assert rows[0]["prompt_version"] == PROMPT_VERSION
+    assert rows["prompt_version"] == PROMPT_VERSION
+    assert "content" not in rows["sections"][0]
+    assert "content_preview" in rows["sections"][0]
     assert "qa_status" in csv_text
+    assert "gate_status" in csv_text
     assert "Earnalism Edition Generator Dry-Run Report" in markdown
     payload = json.loads(json_path.read_text(encoding="utf-8"))
     assert payload["state"]["prompt_version"] == PROMPT_VERSION
+    assert "content" not in payload["sections"][0]
+    assert payload["gate_status"] == "PASS"
     assert payload["qa"]["missing_sections"]
+
+
+def test_include_content_report_writer_outputs_full_section_content(tmp_path: Path):
+    result = generate_edition(generation_input(max_sections_per_run=1, max_generation_budget=100_000))
+
+    json_path, _csv_path, _md_path = write_reports(result, tmp_path, include_content=True)
+
+    payload = json.loads(json_path.read_text(encoding="utf-8"))
+    assert payload["sections"][0]["content"] == result.sections[result.generated_sections[0]]
+
+
+def test_content_preview_chars_limits_default_json(tmp_path: Path):
+    result = generate_edition(generation_input(max_sections_per_run=1, max_generation_budget=100_000))
+
+    json_path, _csv_path, _md_path = write_reports(result, tmp_path, content_preview_chars=20)
+
+    payload = json.loads(json_path.read_text(encoding="utf-8"))
+    assert len(payload["sections"][0]["content_preview"]) == 20
+
+
+def test_section_level_review_metadata_flags_conversion_sections():
+    result = generate_edition(
+        generation_input(
+            requested_sections=["historical_context", "seo_copy", "quiz"],
+            max_sections_per_run=3,
+            max_generation_budget=100_000,
+        )
+    )
+
+    metadata = {row["section_id"]: row for row in result.section_metadata}
+    assert metadata["historical_context"]["editorial_review_required"] is True
+    assert metadata["seo_copy"]["editorial_review_required"] is True
+    assert metadata["quiz"]["editorial_review_required"] is False
+    assert metadata["historical_context"]["source_coverage_status"] == "SOURCE_COVERED"
+
+
+def test_tier_c_blocks_rights_before_generation():
+    result = generate_edition(generation_input(rights_tier="C"))
+
+    assert result.gate_status == "BLOCKED_RIGHTS"
+    assert result.generated_sections == []
+
+
+def test_missing_rights_blocks_review_required():
+    result = generate_edition(generation_input(rights_tier="", verification_status=""))
+
+    assert result.gate_status == "BLOCKED_RIGHTS_REVIEW_REQUIRED"
+
+
+def test_tier_b_requires_region_gated_review_not_generation():
+    result = generate_edition(generation_input(rights_tier="B"))
+
+    assert result.gate_status == "REGION_GATED_REVIEW"
+    assert result.generated_sections == []
+
+
+def test_blocked_reason_blocks_rights():
+    result = generate_edition(generation_input(blocked_reason="unsafe edition"))
+
+    assert result.gate_status == "BLOCKED_RIGHTS"
+    assert "unsafe edition" in result.blocking_reason
+
+
+def test_non_ready_action_status_blocks_priority_gate():
+    result = generate_edition(generation_input(action_status="READY_FOR_RIGHTS_REVIEW"))
+
+    assert result.gate_status == "BLOCKED_PRIORITY_GATE"
+
+
+def test_incomplete_ingestion_blocks_generation():
+    result = generate_edition(generation_input(ingestion_status="PENDING_OCR"))
+
+    assert result.gate_status == "BLOCKED_INGESTION"
+
+
+def test_missing_content_or_provenance_hash_blocks_traceability():
+    no_content = generate_edition(generation_input(content_hash=""))
+    no_provenance = generate_edition(generation_input(provenance_hash=""))
+
+    assert no_content.gate_status == "BLOCKED_TRACEABILITY"
+    assert no_provenance.gate_status == "BLOCKED_TRACEABILITY"
+
+
+def test_phase4_full_text_payload_is_compatible(tmp_path: Path):
+    payload_path = tmp_path / "phase4-full.json"
+    source_hash = hash_source(SAMPLE_TEXT)
+    payload_path.write_text(
+        json.dumps({
+            **SAMPLE_BOOK,
+            "cleaned_text": SAMPLE_TEXT,
+            "source_hash": source_hash,
+            "content_hash": source_hash,
+            "provenance_hash": "phase4-provenance",
+            "rights_tier": "A",
+            "verification_status": "approved",
+            "action_status": "READY_FOR_GENERATION",
+            "ingestion_status": "INGESTED",
+        }),
+        encoding="utf-8",
+    )
+
+    payload = load_payload(payload_path, sample=False)
+    result = generate_edition(EditionGenerationInput(**payload))
+
+    assert result.gate_status == "PASS"
+    assert result.generated_sections
+
+
+def test_phase4_nested_source_ingestion_payload_is_compatible(tmp_path: Path):
+    payload_path = tmp_path / "phase4-nested.json"
+    source_hash = hash_source(SAMPLE_TEXT)
+    payload_path.write_text(
+        json.dumps({
+            "source_ingestion_result": {
+                **SAMPLE_BOOK,
+                "cleaned_text": SAMPLE_TEXT,
+                "source_hash": source_hash,
+                "content_hash": source_hash,
+                "provenance_hash": "phase4-provenance",
+                "rights_tier": "A",
+                "verification_status": "approved",
+                "action_status": "READY_FOR_GENERATION",
+                "ingestion_status": "CLEANED",
+            }
+        }),
+        encoding="utf-8",
+    )
+
+    payload = load_payload(payload_path, sample=False)
+
+    assert payload["cleaned_text"] == SAMPLE_TEXT
+    assert payload["source_hash"] == source_hash
+
+
+def test_phase4_preview_only_payload_fails_with_clear_error(tmp_path: Path):
+    payload_path = tmp_path / "phase4-preview-only.json"
+    payload_path.write_text(
+        json.dumps({
+            **SAMPLE_BOOK,
+            "cleaned_text_preview": SAMPLE_TEXT[:100],
+            "source_hash": hash_source(SAMPLE_TEXT),
+            "content_hash": hash_source(SAMPLE_TEXT),
+            "provenance_hash": "phase4-provenance",
+        }),
+        encoding="utf-8",
+    )
+
+    try:
+        load_payload(payload_path, sample=False)
+    except ValueError as exc:
+        assert "rerun Phase 4 with --include-text" in str(exc)
+    else:
+        raise AssertionError("preview-only Phase 4 payload should fail clearly")
 
 
 def test_cli_sample_is_dry_run_and_rejects_commit():
