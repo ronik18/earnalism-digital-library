@@ -13,7 +13,7 @@ Scope: release-readiness reporting and validation only. No deployment, publishin
 Command shape:
 
 ```bash
-curl -fsSL "https://raw.githubusercontent.com/ronik18/earnalism-digital-library/7f375b334461a8b6f7830eb878caa9e6fcbfe7aa/<file>" | wc -l
+curl -fsSL "https://raw.githubusercontent.com/ronik18/earnalism-digital-library/03ace8bbf122ab4fd908302e68a6bb4d2ef1124e/<file>" | wc -l
 ```
 
 Output:
@@ -24,7 +24,7 @@ RELEASE_READINESS_REPORT.md raw lines: 66
 PRODUCTION_GO_LIVE_CHECKLIST.md raw lines: 60
 REMAINING_RISKS.md raw lines: 39
 NEXT_30_DAY_AUTOMATION_PLAN.md raw lines: 39
-PHASE12_VALIDATION_REPORT.md raw lines: pending until report commit is pushed
+PHASE12_VALIDATION_REPORT.md raw lines: 188
 ```
 
 Local line-ending verification before report commit:
