@@ -3,6 +3,7 @@
   "installCommand": "npm install --legacy-peer-deps",
   "buildCommand": "npm run build",
   "outputDirectory": "build",
+  "ignoreCommand": "if [ \"${GITHUB_REF_NAME:-${VERCEL_GIT_COMMIT_REF:-}}\" = \"main\" ]; then exit 1; fi; echo \"Skipping Vercel deployment for non-main branch ${GITHUB_REF_NAME:-${VERCEL_GIT_COMMIT_REF:-unknown}}\"; exit 0",
   "redirects": [
     {
       "source": "/book/moby-dick-or-the-whale",

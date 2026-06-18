@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - main
-      - release/**
   workflow_dispatch:
 
 permissions:
@@ -48,8 +47,12 @@ jobs:
         if: github.event_name == 'pull_request'
         run: npm run regression:ci
 
+      - name: Run manual regression
+        if: github.event_name == 'workflow_dispatch'
+        run: npm run regression:ci
+
       - name: Run GO LIVE regression
-        if: github.event_name != 'pull_request'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
           REGRESSION_MODE: go-live
           REGRESSION_TARGET: production
@@ -63,7 +66,7 @@ jobs:
         run: npm run regression:go-live
 
       - name: Assert GO LIVE pass
-        if: github.event_name != 'pull_request'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: node regression/scripts/assert-go-live-pass.js
 
       - name: Upload regression artifacts
@@ -98,13 +101,14 @@ jobs:
   deploy:
     name: Railway deploy after GO LIVE pass
     needs: regression
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     outputs:
       deployed: ${{ steps.deploy-check.outputs.enabled }}
     env:
       RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
       RAILWAY_SERVICE_ID: ${{ secrets.RAILWAY_SERVICE_ID }}
+      RAILWAY_ENVIRONMENT: ${{ vars.RAILWAY_ENVIRONMENT || 'production' }}
     steps:
       - name: Check Railway deploy secrets
         id: deploy-check
@@ -127,7 +131,7 @@ jobs:
 
       - name: Deploy backend
         if: steps.deploy-check.outputs.enabled == 'true'
-        run: railway up --service "${RAILWAY_SERVICE_ID}"
+        run: railway up backend --path-as-root --service "${RAILWAY_SERVICE_ID}" --environment "${RAILWAY_ENVIRONMENT}"
 
   deploy_frontend:
     name: Vercel frontend deploy after GO LIVE pass
@@ -135,7 +139,8 @@ jobs:
       - regression
       - deploy
     if: >-
-      github.event_name != 'pull_request' &&
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
       needs.regression.result == 'success' &&
       needs.deploy.result == 'success'
     runs-on: ubuntu-latest
@@ -175,6 +180,7 @@ jobs:
       - name: Link Vercel project
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
+        working-directory: frontend
         run: |
           mkdir -p .vercel
           node - <<'NODE'
@@ -192,6 +198,7 @@ jobs:
       - name: Pull Vercel production environment
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
+        working-directory: frontend
         run: |
           args=(pull --yes --environment=production --token "${VERCEL_TOKEN}")
           if [[ -n "${VERCEL_SCOPE}" ]]; then
@@ -202,6 +209,7 @@ jobs:
       - name: Build frontend for Vercel
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
+        working-directory: frontend
         run: |
           rm -rf .vercel/output
           args=(build --prod --yes --token "${VERCEL_TOKEN}")
@@ -213,6 +221,7 @@ jobs:
       - name: Deploy frontend to Vercel production
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
+        working-directory: frontend
         run: |
           args=(deploy --prebuilt --prod --token "${VERCEL_TOKEN}")
           if [[ -n "${VERCEL_SCOPE}" ]]; then
@@ -227,7 +236,8 @@ jobs:
       - deploy_frontend
     if: >-
       always() &&
-      github.event_name != 'pull_request' &&
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
       needs.regression.result == 'success' &&
       needs.deploy.result == 'success' &&
       needs.deploy_frontend.result == 'success' &&
