@@ -8,6 +8,7 @@ import { useSettings } from "../context/SettingsContext";
 import BrandMark from "../components/BrandMark";
 import ChapterUpload from "../components/Admin/ChapterUpload";
 import CoverUpload from "../components/Admin/CoverUpload";
+import PublishingWorkflowPanel from "../components/Admin/PublishingWorkflowPanel";
 import { normalizeImageUrl, optimizedImageUrl } from "../lib/images";
 import useSEO from "../hooks/useSEO";
 
@@ -276,6 +277,7 @@ function BooksAdmin() {
               </div>
               <p className="text-xs text-charcoal-soft mt-1 truncate">{b.short_description}</p>
               <div className="text-xs text-charcoal-soft mt-1">Buy URL: {b.buy_url ? "set" : <span className="text-burgundy">empty</span>}</div>
+              <PublishingWorkflowPanel book={b} />
               <div className="flex items-center gap-2 mt-3 flex-wrap">
                 <button onClick={() => setEditing({ ...b })} className="text-xs uppercase tracking-wider text-burgundy hover:underline" data-testid={`edit-${b.slug}`}><Edit3 size={12} className="inline mr-1" /> Edit</button>
                 <button onClick={() => del(b.slug)} className="text-xs uppercase tracking-wider text-charcoal-soft hover:text-burgundy" data-testid={`delete-${b.slug}`}><Trash2 size={12} className="inline mr-1" /> Delete</button>
