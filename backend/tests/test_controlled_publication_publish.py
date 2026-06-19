@@ -152,3 +152,31 @@ def test_controlled_publication_update_publishes_reading_and_clears_audio():
     assert update["audiobook_assets"] == {}
     assert update["audiobook"] == {}
     assert update["controlled_publication_scope"] == "core_reading_candidate_only"
+
+
+def test_absolute_api_url_handles_reader_paths_without_double_api_prefix():
+    resolved = publish.absolute_api_url(
+        "https://api.theearnalism.com/api",
+        "/api/reader/chapter/dracula/chapter-1",
+    )
+
+    assert resolved == "https://api.theearnalism.com/api/reader/chapter/dracula/chapter-1"
+
+
+def test_redis_invalidation_reports_connection_failure_without_crashing(monkeypatch):
+    class FailingRedisClient:
+        def incr(self, _key):
+            raise OSError("redis unavailable")
+
+    class FailingRedis:
+        @staticmethod
+        def from_url(*_args, **_kwargs):
+            return FailingRedisClient()
+
+    monkeypatch.setenv("REDIS_URL", "redis://redis.railway.internal:6379")
+    monkeypatch.setitem(__import__("sys").modules, "redis", FailingRedis)
+
+    result = publish.invalidate_redis_cache_generations()
+
+    assert result["attempted"] is True
+    assert "Redis invalidation failed" in result["reason"]

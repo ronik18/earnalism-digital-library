@@ -319,14 +319,33 @@ def invalidate_redis_cache_generations() -> dict[str, Any]:
     except Exception as exc:
         return {"attempted": False, "reason": f"redis package unavailable: {exc}"}
     prefix = os.environ.get("REDIS_KEY_PREFIX", "earnalism").strip() or "earnalism"
-    client = redis.Redis.from_url(redis_url, socket_connect_timeout=5, socket_timeout=5)
-    public_generation = client.incr(redis_key(prefix, "public-cache", "generation"))
-    reader_generation = client.incr(redis_key(prefix, "reader-content-cache", "generation"))
-    return {
-        "attempted": True,
-        "public_cache_generation": int(public_generation),
-        "reader_content_cache_generation": int(reader_generation),
-    }
+    try:
+        client = redis.Redis.from_url(redis_url, socket_connect_timeout=5, socket_timeout=5)
+        public_generation = client.incr(redis_key(prefix, "public-cache", "generation"))
+        reader_generation = client.incr(redis_key(prefix, "reader-content-cache", "generation"))
+        return {
+            "attempted": True,
+            "public_cache_generation": int(public_generation),
+            "reader_content_cache_generation": int(reader_generation),
+        }
+    except Exception as exc:
+        return {
+            "attempted": True,
+            "error": str(exc),
+            "reason": "Redis invalidation failed; live verification may depend on TTL or an admin cache clear.",
+        }
+
+
+def absolute_api_url(api_base_url: str, path_or_url: str) -> str:
+    if path_or_url.startswith(("http://", "https://")):
+        return path_or_url
+    api = api_base_url.rstrip("/")
+    origin = api[:-4] if api.endswith("/api") else api
+    if path_or_url.startswith("/api/"):
+        return f"{origin}{path_or_url}"
+    if path_or_url.startswith("/"):
+        return f"{api}{path_or_url}"
+    return f"{api}/{path_or_url}"
 
 
 def fetch_json(url: str, *, timeout: int = 20) -> tuple[int, dict[str, Any]]:
@@ -356,7 +375,7 @@ def live_verify(api_base_url: str, web_base_url: str) -> dict[str, Any]:
     chapter_status = 0
     chapter_payload: dict[str, Any] = {}
     if chapter_url:
-        chapter_status, chapter_payload = fetch_json(f"{api}{chapter_url}")
+        chapter_status, chapter_payload = fetch_json(absolute_api_url(api, chapter_url))
     audiobook_status, audiobook_payload = fetch_json(f"{api}/reader/book/{ALLOWED_SLUG}/audiobook")
     html_status = 0
     try:
