@@ -2,6 +2,8 @@
 
 Scope: harden PR #30 so Dracula can become a true Tier A controlled-publication candidate only when deterministic source, rights, hash, QA, route, payment, and approval-artifact gates pass.
 
+Hardening commit checked: `a1eaa2101c747d7a627920b5ab7525f77d52d01d`.
+
 No public content was published. No final controlled-publication activation was run. No production data was mutated. No LLM, TTS, STT, OCR, image, email, social, paid provider, or deployment command was run.
 
 ## Dracula Evidence
@@ -50,6 +52,10 @@ No public content was published. No final controlled-publication activation was 
 | `npm run controlled-publication:precheck` | PASS for Dracula approval artifact |
 | `npm run regression -- modules/13-public-content-governance.test.js` | PASS, 18 passed |
 | `npm --prefix frontend run build` | PASS |
+
+## Raw Download Verification
+
+`PHASE14_RAW_VERIFICATION.md` records raw GitHub `wc -l` checks for the changed scripts/tests on branch `codex/dracula-controlled-publication-candidate`.
 
 ## Dracula-Specific Paths
 
