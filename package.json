@@ -23,6 +23,7 @@
     "launch:seo-audit": "python3 scripts/launch_readiness_audit.py --mode seo",
     "launch:performance-audit": "python3 scripts/launch_readiness_audit.py --mode performance",
     "launch:audio-audit": "python3 scripts/launch_readiness_audit.py --mode audio",
+    "launch:payment-smoke": "python3 scripts/launch_readiness_audit.py --mode payment-smoke",
     "launch:readiness": "python3 scripts/launch_readiness_audit.py --mode all",
     "audio:preflight": "python3 scripts/open_source_audiobook_onboarding.py preflight",
     "audio:audit": "python3 scripts/open_source_audiobook_onboarding.py audit",

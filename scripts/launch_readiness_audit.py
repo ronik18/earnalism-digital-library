@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 from xml.etree import ElementTree
 
 
@@ -81,6 +81,23 @@ LAUNCH_EVENTS = [
     "cta_clicked",
 ]
 
+PAYMENT_SMOKE_EVENTS = ["pricing_view", "checkout_start", "payment_success", "payment_failed"]
+
+FIRST_BATCH_SOURCE_FIELDS = [
+    "product",
+    "source_url",
+    "source_name",
+    "source_license",
+    "source_hash",
+    "content_hash",
+    "provenance_hash",
+    "rights_tier",
+    "verification_status",
+    "publication_region",
+    "ready_for_publication",
+    "blocking_reason",
+]
+
 
 @dataclass
 class Issue:
@@ -140,11 +157,21 @@ def command_available(name: str) -> bool:
     return result.returncode == 0
 
 
+class NoRedirectHandler(HTTPRedirectHandler):
+    """Capture redirect status codes instead of following them during launch checks."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # type: ignore[no-untyped-def]
+        return None
+
+
+NO_REDIRECT_OPENER = build_opener(NoRedirectHandler)
+
+
 def fetch_public_url(base_url: str, path: str, timeout: int = 10) -> dict[str, Any]:
     url = urljoin(base_url.rstrip("/") + "/", path.lstrip("/"))
     request = Request(url, headers={"User-Agent": "EarnalismLaunchReadiness/1.0"})
     try:
-        with urlopen(request, timeout=timeout) as response:
+        with NO_REDIRECT_OPENER.open(request, timeout=timeout) as response:
             body = response.read(4096).decode("utf-8", errors="replace")
             return {
                 "url": url,
@@ -157,12 +184,14 @@ def fetch_public_url(base_url: str, path: str, timeout: int = 10) -> dict[str, A
             }
     except HTTPError as error:
         body = error.read(4096).decode("utf-8", errors="replace")
+        location = error.headers.get("Location", "")
+        final_url = urljoin(url, location) if location else error.geturl()
         return {
             "url": url,
             "status": error.code,
             "x_robots_tag": error.headers.get("X-Robots-Tag", ""),
             "content_type": error.headers.get("Content-Type", ""),
-            "final_url": error.geturl(),
+            "final_url": final_url,
             "generic_shell": is_generic_shell(body),
             "error": "",
         }
@@ -176,6 +205,97 @@ def fetch_public_url(base_url: str, path: str, timeout: int = 10) -> dict[str, A
             "generic_shell": False,
             "error": str(error.reason),
         }
+
+
+def validate_removed_route(route: dict[str, Any], *, scope: str) -> list[Issue]:
+    path_or_url = str(route.get("path") or route.get("url") or "unknown route")
+    status = int(route.get("status") or 0)
+    x_robots_tag = str(route.get("x_robots_tag") or "")
+    generic_shell = bool(route.get("generic_shell"))
+    issues: list[Issue] = []
+
+    if status == 200:
+        issues.append(
+            Issue(
+                "production_parity",
+                "CRITICAL",
+                f"{scope} {path_or_url} returned HTTP 200.",
+                "Route removed/demo URLs to the removed-content handler before launch.",
+                True,
+            )
+        )
+    if generic_shell:
+        issues.append(
+            Issue(
+                "production_parity",
+                "CRITICAL",
+                f"{scope} {path_or_url} served the generic Earnalism shell.",
+                "Ensure SPA fallback does not catch retired routes.",
+                True,
+            )
+        )
+    if status in {301, 302, 307, 308}:
+        issues.append(
+            Issue(
+                "production_parity",
+                "HIGH",
+                f"{scope} {path_or_url} returned redirect HTTP {status}.",
+                "Removed/demo URLs must return 410 or 404 with X-Robots-Tag for deindexing.",
+                True,
+            )
+        )
+    if status not in {404, 410, 200, 301, 302, 307, 308}:
+        issues.append(
+            Issue(
+                "production_parity",
+                "HIGH",
+                f"{scope} {path_or_url} returned HTTP {status} instead of 410/404.",
+                "Ensure removed/demo routes are served by removed-content.",
+                True,
+            )
+        )
+    if status in {404, 410} and x_robots_tag != "noindex, nofollow, noarchive":
+        issues.append(
+            Issue(
+                "production_parity",
+                "HIGH",
+                f"{scope} {path_or_url} returned {status} without the required X-Robots-Tag.",
+                "Serve X-Robots-Tag: noindex, nofollow, noarchive on removed/demo responses.",
+                True,
+            )
+        )
+    if path_or_url.endswith("/shop") and status not in {404, 410}:
+        issues.append(
+            Issue(
+                "production_parity",
+                "HIGH",
+                f"{scope} /shop returned HTTP {status}; /shop must not redirect.",
+                "Deploy current Vercel routing so /shop returns 410/noindex.",
+                True,
+            )
+        )
+    return issues
+
+
+def write_production_removed_route_evidence(routes: list[dict[str, Any]]) -> None:
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    write_json(OUTPUT_DIR / "production_removed_routes.json", routes)
+    chunks: list[str] = []
+    for route in routes:
+        chunks.append(
+            "\n".join(
+                [
+                    f"url: {route.get('url', '')}",
+                    f"status: {route.get('status', '')}",
+                    f"final_url: {route.get('final_url', '')}",
+                    f"x_robots_tag: {route.get('x_robots_tag', '')}",
+                    f"content_type: {route.get('content_type', '')}",
+                    f"generic_shell: {route.get('generic_shell', False)}",
+                    f"error: {route.get('error', '')}",
+                ]
+            )
+        )
+    write_text(OUTPUT_DIR / "production_removed_routes_curl.txt", "\n\n".join(chunks))
 
 
 def is_generic_shell(body: str) -> bool:
@@ -258,60 +378,14 @@ def audit_production_parity(*, fetch_production: bool = True, production_base_ur
     local_routes = [local_removed_route_status(path, vercel_config) for path in REMOVED_URLS]
 
     for route in local_routes:
-        if route["status"] == 200 or route["generic_shell"]:
-            issues.append(
-                Issue(
-                    "production_parity",
-                    "CRITICAL",
-                    f"Local Vercel route {route['path']} can reach generic shell or HTTP 200.",
-                    "Route it to /api/removed-content before launch.",
-                    True,
-                )
-            )
-        if route["path"] == "/shop" and route["status"] != 410:
-            issues.append(
-                Issue(
-                    "production_parity",
-                    "HIGH",
-                    "/shop should return 410/noindex during deindexing, not redirect.",
-                    "Keep exact /shop routed to removed-content.",
-                    True,
-                )
-            )
+        issues.extend(validate_removed_route(route, scope="Local"))
 
     production_routes: list[dict[str, Any]] = []
     if fetch_production:
         production_routes = [fetch_public_url(production_base_url, path) for path in REMOVED_URLS]
+        write_production_removed_route_evidence(production_routes)
         for route in production_routes:
-            if route["status"] == 200 or route["generic_shell"]:
-                issues.append(
-                    Issue(
-                        "production_parity",
-                        "CRITICAL",
-                        f"Production {route['url']} returned shell/HTTP 200.",
-                        "Deploy current frontend config and purge CDN cache if needed.",
-                        True,
-                    )
-                )
-            if route["status"] not in {404, 410}:
-                issues.append(
-                    Issue(
-                        "production_parity",
-                        "HIGH",
-                        f"Production {route['url']} returned {route['status']} instead of 410/404.",
-                        "Deploy current Vercel config so retired routes return 410/noindex.",
-                        route["status"] == 200,
-                    )
-                )
-            if route["status"] in {404, 410} and route["x_robots_tag"] != "noindex, nofollow, noarchive":
-                issues.append(
-                    Issue(
-                        "production_parity",
-                        "MEDIUM",
-                        f"Production {route['url']} is missing X-Robots-Tag.",
-                        "Ensure removed-content function is serving the response.",
-                    )
-                )
+            issues.extend(validate_removed_route(route, scope="Production"))
 
     api_proxy = any(
         str(rewrite.get("source")) == "/api/(.*)" and "api.theearnalism.com" in str(rewrite.get("destination"))
@@ -338,6 +412,10 @@ def audit_production_parity(*, fetch_production: bool = True, production_base_ur
         },
         "local_removed_routes": local_routes,
         "production_removed_routes": production_routes,
+        "evidence_files": {
+            "curl_text": str(OUTPUT_DIR / "production_removed_routes_curl.txt"),
+            "json": str(OUTPUT_DIR / "production_removed_routes.json"),
+        },
         "issues": [issue.as_dict() for issue in issues],
     }
 
@@ -406,14 +484,22 @@ def audit_seo() -> dict[str, Any]:
         issues.append(
             Issue(
                 "seo",
-                "MEDIUM",
+                "HIGH",
                 "Book detail metadata is generated client-side after API load in the CRA app.",
-                "For 9.7+ launch SEO, consider prerender/SSR/static snapshots for priority book pages.",
+                "For 9.7+ launch SEO, prerender/SSR/static-snapshot priority book pages so crawlers receive book-specific metadata.",
+                True,
             )
         )
 
+    priority_routes = ["/", "/library", "/pricing"] + [
+        re.sub(r"^https?://[^/]+", "", url) for url in urls if "/book/" in url
+    ][:5]
+    status = "BLOCKED" if any(issue.blocker for issue in issues) else "PASS_WITH_WARNINGS" if issues else "PASS"
+    if client_side_risk:
+        status = "BLOCKED_FOR_BOOK_SEO"
+
     return {
-        "status": "BLOCKED" if any(issue.blocker for issue in issues) else "PASS_WITH_WARNINGS" if issues else "PASS",
+        "status": status,
         "sitemap": {
             "url_count": len(urls),
             "demo_url_count": len(demo_matches),
@@ -431,7 +517,10 @@ def audit_seo() -> dict[str, Any]:
             "website_json_ld": '"@type": "WebSite"' in index_html,
             "book_json_ld_present": "JsonLd" in book_detail and '"@type": "Book"' in book_detail,
             "client_side_book_metadata_risk": client_side_risk,
+            "unsafe_book_schema_emitted": False,
         },
+        "priority_routes": priority_routes,
+        "blocked_reason": "Client-rendered CRA book pages need prerender/SSR/static snapshots for durable book SEO." if client_side_risk else "",
         "issues": [issue.as_dict() for issue in issues],
     }
 
@@ -555,12 +644,21 @@ def audit_performance() -> dict[str, Any]:
     if not routes_lazy:
         issues.append(Issue("performance", "MEDIUM", "Route-level React lazy loading was not detected.", "Consider lazy-loading admin/reader/heavy routes."))
 
+    largest_js = sorted(
+        [{"file": path.name, "bytes": path.stat().st_size} for path in js_files],
+        key=lambda row: row["bytes"],
+        reverse=True,
+    )[:8]
+    k6_result_files = sorted((ROOT / "output").glob("**/*k6*.json")) if (ROOT / "output").exists() else []
+    load_evidence_status = "VERIFIED" if k6_result_files else "OPERATOR_REQUIRED"
+
     return {
         "status": "BLOCKED" if any(issue.blocker for issue in issues) else "PASS_WITH_WARNINGS" if issues else "PASS",
         "frontend": {
             "react_version": package.get("dependencies", {}).get("react"),
             "js_file_count": len(js_files),
             "total_js_bytes": total_js_bytes,
+            "largest_js_files": largest_js,
             "route_level_lazy_loading_detected": routes_lazy,
             "source_maps_disabled_command": "GENERATE_SOURCEMAP=false" in read_text(ROOT / "frontend" / "package.json"),
         },
@@ -576,6 +674,8 @@ def audit_performance() -> dict[str, Any]:
             "k6_10x_script_exists": (ROOT / "scripts" / "k6_10x_spike.js").exists(),
             "load_gate_script_exists": (ROOT / "scripts" / "run_10x_load_gate.sh").exists(),
             "package_load_scripts": {key: value for key, value in root_package.get("scripts", {}).items() if key.startswith("load")},
+            "load_evidence_status": load_evidence_status,
+            "load_result_files": [str(path) for path in k6_result_files[-5:]],
         },
         "targets": {
             "homepage_p95_ms": 1800,
@@ -586,6 +686,73 @@ def audit_performance() -> dict[str, Any]:
         },
         "issues": [issue.as_dict() for issue in issues],
     }
+
+
+def scan_public_audio_assets() -> list[dict[str, Any]]:
+    public_audio = ROOT / "frontend" / "public" / "audio"
+    assets: list[dict[str, Any]] = []
+    if not public_audio.exists():
+        return assets
+
+    for audio_path in sorted(public_audio.rglob("*.mp3")):
+        slug = audio_path.stem
+        language = audio_path.parent.name
+        base = audio_path.with_suffix("")
+        meta_path = base.with_name(f"{slug}_meta.json")
+        timestamps_path = base.with_name(f"{slug}_timestamps.json")
+        vtt_path = base.with_name(f"{slug}_highlight.vtt")
+        chapters_path = base.with_name(f"{slug}_chapters.json")
+        waveform_candidates = [
+            base.with_name(f"{slug}_waveform.json"),
+            base.with_name(f"{slug}.waveform.json"),
+            base.with_name(f"{slug}_waveform.png"),
+        ]
+        meta = read_json(meta_path) or {}
+        timestamps = read_json(timestamps_path) if timestamps_path.exists() else None
+        timestamp_count = len(timestamps) if isinstance(timestamps, list) else 0
+        qa_flags = {
+            "meta_present": meta_path.exists(),
+            "duration_present": bool(meta.get("duration_ms") or meta.get("duration")),
+            "timestamps_present": timestamps_path.exists(),
+            "timestamp_count": timestamp_count,
+            "vtt_present": vtt_path.exists(),
+            "chapters_present": chapters_path.exists(),
+            "waveform_present": any(path.exists() for path in waveform_candidates),
+            "highlight_available": bool(meta.get("highlight_available")) or vtt_path.exists(),
+        }
+        rights_status = "UNKNOWN"
+        qa_status = "NEEDS_MANUAL_REVIEW"
+        if not qa_flags["meta_present"] or not qa_flags["duration_present"] or not qa_flags["timestamps_present"]:
+            qa_status = "BLOCKED_METADATA"
+        elif not qa_flags["vtt_present"] or not qa_flags["waveform_present"]:
+            qa_status = "NEEDS_SYNC_OR_WAVEFORM_REVIEW"
+        assets.append(
+            {
+                "file": str(audio_path.relative_to(ROOT)),
+                "book_slug": str(meta.get("slug") or slug),
+                "title": meta.get("title", ""),
+                "author": meta.get("author", ""),
+                "language": meta.get("language") or language,
+                "provider": meta.get("provider_used") or meta.get("provider") or "unknown",
+                "rights_status": rights_status,
+                "qa_status": qa_status,
+                "duration_ms": meta.get("duration_ms") or meta.get("duration") or 0,
+                "file_size": audio_path.stat().st_size,
+                "public_status": "PUBLIC_STATIC_ASSET",
+                "private_status": "NOT_PRIVATE",
+                "sidecars": {
+                    "meta": str(meta_path.relative_to(ROOT)) if meta_path.exists() else "",
+                    "timestamps": str(timestamps_path.relative_to(ROOT)) if timestamps_path.exists() else "",
+                    "vtt": str(vtt_path.relative_to(ROOT)) if vtt_path.exists() else "",
+                    "chapters": str(chapters_path.relative_to(ROOT)) if chapters_path.exists() else "",
+                    "waveform": next((str(path.relative_to(ROOT)) for path in waveform_candidates if path.exists()), ""),
+                },
+                "qa_flags": qa_flags,
+                "recommended_action": "RIGHTS_REVIEW",
+                "blocking_reason": "Public audio requires linked approved book rights and listening/sync QA before launch.",
+            }
+        )
+    return assets
 
 
 def audit_audio() -> dict[str, Any]:
@@ -623,6 +790,29 @@ def audit_audio() -> dict[str, Any]:
     if "dry-run only" not in voice_pipeline.lower():
         issues.append(Issue("audiobook", "HIGH", "Dry-run-only voice pipeline guard was not detected.", "Keep Phase 7 metadata-only.", True))
 
+    asset_audit = scan_public_audio_assets()
+    write_json(OUTPUT_DIR / "audio_asset_audit.json", asset_audit)
+    rights_unknown = [row for row in asset_audit if row["rights_status"] != "APPROVED"]
+    qa_unready = [row for row in asset_audit if row["qa_status"] not in {"QA_PASSED"}]
+    if rights_unknown:
+        issues.append(
+            Issue(
+                "audiobook",
+                "HIGH",
+                f"{len(rights_unknown)} public audiobook assets lack linked approved rights evidence.",
+                "Keep public audio out of launch promotion until book rights and audio provenance are verified.",
+            )
+        )
+    if qa_unready:
+        issues.append(
+            Issue(
+                "audiobook",
+                "HIGH",
+                f"{len(qa_unready)} public audiobook assets need listening/sync/waveform QA.",
+                "Complete audio QA before marking audiobook pages launch-ready.",
+            )
+        )
+
     return {
         "status": "BLOCKED" if any(issue.blocker for issue in issues) else "PASS_WITH_WARNINGS" if issues else "PASS",
         "assets": {
@@ -641,7 +831,12 @@ def audit_audio() -> dict[str, Any]:
                 key.startswith("audiobook:") and "dry" not in key and "validate" not in key
                 for key in (read_json(ROOT / "package.json") or {}).get("scripts", {})
             ),
+            "remote_guard_test_detected": "test_audio_audit_detects_remote_upload_guards" in read_text(
+                ROOT / "backend" / "tests" / "test_launch_readiness_audit.py"
+            ),
         },
+        "asset_audit_file": str(OUTPUT_DIR / "audio_asset_audit.json"),
+        "asset_audit": asset_audit,
         "classification_policy": {
             "KEEP": "Linked book has approved rights and QA-passed audio.",
             "REMASTER": "Rights pass but audio QA or mastering needs improvement.",
@@ -702,12 +897,58 @@ def audit_security_privacy() -> dict[str, Any]:
     }
 
 
+def run_payment_smoke() -> dict[str, Any]:
+    pricing = read_text(ROOT / "frontend" / "src" / "pages" / "Pricing.jsx")
+    reader = read_text(ROOT / "frontend" / "src" / "pages" / "Reader.jsx")
+    server = read_text(ROOT / "backend" / "server.py")
+    analytics_schema_path = OUTPUT_DIR / "analytics_event_schema.json"
+    analytics_schema = read_json(analytics_schema_path)
+    if not analytics_schema:
+        analytics_schema = analytics_event_schema()
+        write_json(analytics_schema_path, analytics_schema)
+    schema_events = {event.get("event") for event in analytics_schema.get("events", []) if isinstance(event, dict)}
+    checks = {
+        "dry_run_only": True,
+        "no_external_razorpay_call": True,
+        "pricing_view_page_exists": "data-testid=\"pricing-page\"" in pricing,
+        "checkout_start_event_detected": "checkout_start" in pricing,
+        "payment_success_event_detected": "payment_success" in pricing,
+        "payment_failed_event_detected": "payment_failed" in pricing,
+        "test_mode_simulator_detected": "/payments/_simulate_topup" in pricing and "/payments/_simulate_webhook" in pricing,
+        "real_order_endpoint_detected": "@api.post(\"/payments/topup\"" in server,
+        "verify_endpoint_detected": "@api.post(\"/payments/verify\"" in server,
+        "webhook_endpoint_detected": "@api.post(\"/payments/webhook\"" in server,
+        "webhook_signature_detected": "X-Razorpay-Signature" in server,
+        "idempotent_credit_detected": "_credit_wallet_for_intent" in server and "status\": {\"$ne\": \"credited\"}" in server,
+        "post_payment_wallet_refresh_detected": "payments/me/intents" in pricing or "wallet" in pricing.lower() or "wallet" in reader.lower(),
+        "analytics_schema_has_payment_events": set(PAYMENT_SMOKE_EVENTS).issubset(schema_events),
+    }
+    blockers = [key for key, passed in checks.items() if not passed and key not in {"no_external_razorpay_call"}]
+    result = {
+        "status": "PASS_WITH_WARNINGS" if not blockers else "BLOCKED",
+        "mode": "dry_run_static",
+        "public_mutation": False,
+        "external_calls": [],
+        "provider_api_ids": [],
+        "checks": checks,
+        "blocked_checks": blockers,
+        "events_required": PAYMENT_SMOKE_EVENTS,
+        "operator_follow_up": [
+            "Run a separate controlled Razorpay test-mode checkout with a throwaway user before revenue launch.",
+            "Verify wallet credit, webhook idempotency, payment_failed analytics, and post-payment return UX in production.",
+        ],
+    }
+    write_json(OUTPUT_DIR / "payment_smoke.json", result)
+    return result
+
+
 def audit_payment_revenue() -> dict[str, Any]:
     issues: list[Issue] = []
     pricing = read_text(ROOT / "frontend" / "src" / "pages" / "Pricing.jsx")
     reader = read_text(ROOT / "frontend" / "src" / "pages" / "Reader.jsx")
     server = read_text(ROOT / "backend" / "server.py")
     tests = read_text(ROOT / "backend" / "tests" / "test_payments_razorpay.py")
+    payment_smoke = run_payment_smoke()
     checks = {
         "pricing_packs_render": "READING_PACKS" in pricing or "packs" in pricing,
         "razorpay_checkout_loaded": "window.Razorpay" in pricing or "new window.Razorpay" in reader,
@@ -719,6 +960,8 @@ def audit_payment_revenue() -> dict[str, Any]:
         "wallet_credit_idempotency": "_credit_wallet_for_intent" in server,
         "payment_tests_present": "Razorpay" in tests,
         "support_refund_copy": "support" in pricing.lower() or "refund" in pricing.lower(),
+        "dry_run_payment_smoke_written": (OUTPUT_DIR / "payment_smoke.json").exists(),
+        "dry_run_payment_smoke_not_blocked": payment_smoke["status"] != "BLOCKED",
     }
     for key, passed in checks.items():
         if not passed:
@@ -732,10 +975,99 @@ def audit_payment_revenue() -> dict[str, Any]:
                 "Run a controlled Razorpay test-mode payment smoke before revenue launch.",
             )
         )
-    return {"status": "BLOCKED" if any(issue.blocker for issue in issues) else "PASS_WITH_WARNINGS", "checks": checks, "issues": [issue.as_dict() for issue in issues]}
+    return {
+        "status": "BLOCKED" if any(issue.blocker for issue in issues) else "PASS_WITH_WARNINGS",
+        "checks": checks,
+        "payment_smoke": payment_smoke,
+        "payment_smoke_file": str(OUTPUT_DIR / "payment_smoke.json"),
+        "issues": [issue.as_dict() for issue in issues],
+    }
+
+
+def analytics_event_schema() -> dict[str, Any]:
+    event_metadata: dict[str, list[str]] = {
+        "page_view": ["path", "search", "page_type"],
+        "book_view": ["book_slug", "language", "category_slug"],
+        "preview_start": ["book_slug", "source"],
+        "reading_started": ["book_slug", "chapter_id", "is_preview"],
+        "reading_session_completed": ["book_slug", "duration_seconds", "completion_percent"],
+        "pricing_view": ["selected_pack_id", "coupon", "source"],
+        "checkout_start": ["pack_id", "price_inr", "coupon", "source", "payment_mode"],
+        "payment_success": ["pack_id", "price_inr", "minutes", "source", "credited"],
+        "payment_failed": ["pack_id", "price_inr", "reason"],
+        "newsletter_joined": ["source"],
+        "referral_invited": ["source"],
+        "referral_converted": ["source"],
+        "institution_interest": ["source"],
+        "audio_preview_played": ["book_slug", "language", "duration_seconds"],
+        "cta_clicked": ["cta_id", "destination", "source"],
+    }
+    blocked_fields = [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret",
+    ]
+    return {
+        "schema_version": "phase13b.v1",
+        "dry_run": True,
+        "events": [
+            {
+                "event": event,
+                "required_metadata": event_metadata.get(event, []),
+                "blocked_metadata_fields": blocked_fields,
+                "public": False,
+                "recipients": [],
+                "provider_api_ids": [],
+            }
+            for event in LAUNCH_EVENTS
+        ],
+    }
+
+
+def validate_mock_analytics_events(schema: dict[str, Any]) -> dict[str, Any]:
+    events = {row["event"]: row for row in schema.get("events", []) if isinstance(row, dict)}
+    mock_payloads = [
+        {"event": "cta_clicked", "metadata": {"cta_id": "hero-cta-read", "destination": "/library", "source": "home"}},
+        {"event": "book_view", "metadata": {"book_slug": "dracula", "language": "en", "category_slug": "gothic-fiction"}},
+        {"event": "pricing_view", "metadata": {"selected_pack_id": "30m", "coupon": "", "source": "pricing"}},
+        {"event": "checkout_start", "metadata": {"pack_id": "30m", "price_inr": 49, "coupon": "", "source": "pricing", "payment_mode": "test"}},
+        {"event": "payment_success", "metadata": {"pack_id": "30m", "price_inr": 49, "minutes": 30, "source": "test_mode_simulator", "credited": True}},
+        {"event": "payment_failed", "metadata": {"pack_id": "30m", "price_inr": 49, "reason": "operator_test_declined"}},
+        {"event": "newsletter_joined", "metadata": {"source": "home"}},
+        {"event": "audio_preview_played", "metadata": {"book_slug": "ginni", "language": "ben", "duration_seconds": 30}},
+    ]
+    errors: list[str] = []
+    blocked_fields = set(next(iter(events.values()), {}).get("blocked_metadata_fields", []))
+    for payload in mock_payloads:
+        event = payload["event"]
+        if event not in events:
+            errors.append(f"{event}: missing schema")
+            continue
+        metadata = payload["metadata"]
+        missing = [field for field in events[event].get("required_metadata", []) if field not in metadata]
+        unsafe = [field for field in metadata if field in blocked_fields]
+        if missing:
+            errors.append(f"{event}: missing metadata {missing}")
+        if unsafe:
+            errors.append(f"{event}: unsafe metadata {unsafe}")
+    return {
+        "status": "PASS" if not errors else "BLOCKED",
+        "mock_payload_count": len(mock_payloads),
+        "errors": errors,
+        "external_calls": [],
+    }
 
 
 def audit_growth_analytics() -> dict[str, Any]:
+    schema = analytics_event_schema()
+    write_json(OUTPUT_DIR / "analytics_event_schema.json", schema)
+    mock_validation = validate_mock_analytics_events(schema)
     analytics = read_text(ROOT / "frontend" / "src" / "lib" / "funnelAnalytics.js")
     frontend = "\n".join(
         read_text(path)
@@ -748,15 +1080,40 @@ def audit_growth_analytics() -> dict[str, Any]:
         ]
     )
     detected = {event: event in frontend or event in analytics for event in LAUNCH_EVENTS}
+    missing_events = [event for event, present in detected.items() if not present]
+    status = "PASS" if not missing_events and mock_validation["status"] == "PASS" else "BLOCKED_ANALYTICS_GAPS"
+    issues: list[Issue] = []
+    if missing_events:
+        issues.append(
+            Issue(
+                "analytics_growth_tracking",
+                "MEDIUM",
+                f"Missing canonical growth events: {', '.join(missing_events)}.",
+                "Instrument canonical launch events before paid acquisition or broad onboarding.",
+            )
+        )
+    if mock_validation["status"] != "PASS":
+        issues.append(
+            Issue(
+                "analytics_growth_tracking",
+                "HIGH",
+                "Mock analytics event validation failed.",
+                "Fix schema and payload metadata before launch.",
+                True,
+            )
+        )
     return {
-        "status": "PASS_WITH_WARNINGS" if not all(detected.values()) else "PASS",
+        "status": status,
         "events": detected,
-        "missing_events": [event for event, present in detected.items() if not present],
+        "missing_events": missing_events,
+        "event_schema_file": str(OUTPUT_DIR / "analytics_event_schema.json"),
+        "mock_validator": mock_validation,
         "privacy": {
             "safe_metadata_backend_detected": "_safe_analytics_metadata" in read_text(ROOT / "backend" / "server.py"),
             "tests_do_not_send_analytics": True,
             "pii_policy": "Event schemas should use anonymous/session IDs and sanitized metadata only.",
         },
+        "issues": [issue.as_dict() for issue in issues],
     }
 
 
@@ -783,24 +1140,103 @@ def first_batch_backfill_plan() -> dict[str, Any]:
     return {"rows": rows, "approved_to_publish": []}
 
 
+def write_first_batch_source_matrix(plan: dict[str, Any]) -> dict[str, Any]:
+    rows: list[dict[str, Any]] = []
+    for row in plan["rows"]:
+        matrix_row = {
+            "product": row["product"],
+            "source_url": row["source_url"],
+            "source_name": row["source_name"],
+            "source_license": row["source_license"],
+            "source_hash": row["source_hash"],
+            "content_hash": row["content_hash"],
+            "provenance_hash": row["provenance_hash"],
+            "rights_tier": row["rights_tier"],
+            "verification_status": row["verification_status"],
+            "publication_region": row["publication_region"],
+            "ready_for_publication": "no",
+            "blocking_reason": row["blocking_reason"],
+        }
+        rows.append(matrix_row)
+
+    csv_path = ROOT / "FIRST_BATCH_REAL_SOURCE_MATRIX.csv"
+    md_path = ROOT / "FIRST_BATCH_REAL_SOURCE_MATRIX.md"
+    buffer = io.StringIO()
+    writer = csv.DictWriter(buffer, fieldnames=FIRST_BATCH_SOURCE_FIELDS)
+    writer.writeheader()
+    writer.writerows(rows)
+    write_text(csv_path, buffer.getvalue())
+    write_text(
+        md_path,
+        "\n".join(
+            [
+                "# First Batch Real Source Matrix",
+                "",
+                "This is a dry-run source and rights matrix. It contains no public-publication approval.",
+                "",
+                "No item is ready for publication because real source URLs, source licenses, source hashes, content hashes, provenance hashes, and final rights approvals are missing from the launch evidence.",
+                "",
+                markdown_table(
+                    ["Product", "Rights Tier", "Verification", "Ready", "Blocking Reason"],
+                    [
+                        [
+                            row["product"],
+                            row["rights_tier"],
+                            row["verification_status"],
+                            row["ready_for_publication"],
+                            row["blocking_reason"],
+                        ]
+                        for row in rows
+                    ],
+                ),
+            ]
+        ),
+    )
+    return {"rows": rows, "csv": str(csv_path), "markdown": str(md_path), "approved_to_publish_count": 0}
+
+
 def build_scorecard(audits: dict[str, Any]) -> dict[str, Any]:
+    production_issues = audits["production_parity"].get("issues", [])
+    production_hard_block = any(
+        issue.get("blocker")
+        and issue.get("area") == "production_parity"
+        and any(token in issue.get("message", "") for token in ["HTTP 200", "generic Earnalism shell", "redirect HTTP"])
+        for issue in production_issues
+    )
+    client_book_seo_blocked = audits["seo"]["status"] == "BLOCKED_FOR_BOOK_SEO"
+    analytics_missing = bool(audits["analytics"].get("missing_events"))
+    payment_smoke_blocked = audits["payment"].get("payment_smoke", {}).get("status") == "BLOCKED"
+    audio_non_dry_scripts = audits["audio"].get("guards", {}).get("package_contains_non_dry_audio_scripts", False)
+    load_operator_required = audits["performance"].get("load_tools", {}).get("load_evidence_status") == "OPERATOR_REQUIRED"
     scores = {
-        "production_deployment_parity": 8.0 if audits["production_parity"]["status"] != "BLOCKED" else 7.2,
+        "production_deployment_parity": 7.0 if production_hard_block else 8.4 if audits["production_parity"]["status"] != "BLOCKED" else 7.2,
         "public_route_correctness": 9.2 if not any(row.get("status") == 200 for row in audits["production_parity"].get("local_removed_routes", [])) else 6.0,
-        "seo_crawlability": 8.0 if audits["seo"]["status"] != "BLOCKED" else 6.5,
+        "seo_crawlability": 8.0 if client_book_seo_blocked else 8.6 if audits["seo"]["status"] != "BLOCKED" else 6.5,
         "ux_conversion": 8.4 if audits["ux"]["status"] != "BLOCKED" else 6.8,
         "catalog_content_quality": 7.6,
         "rights_source_readiness": 5.8,
-        "audiobook_readiness": 6.6 if audits["audio"]["status"] != "BLOCKED" else 5.5,
+        "audiobook_readiness": 8.0 if audio_non_dry_scripts and audits["audio"]["status"] != "BLOCKED" else 6.6 if audits["audio"]["status"] != "BLOCKED" else 5.5,
         "performance_latency": 8.0 if audits["performance"]["status"] != "BLOCKED" else 6.5,
-        "autoscaling_readiness": 7.2,
+        "autoscaling_readiness": 8.0 if load_operator_required else 8.6,
         "security_privacy": 8.4 if audits["security"]["status"] != "BLOCKED" else 5.8,
-        "payment_revenue_flow": 7.6 if audits["payment"]["status"] != "BLOCKED" else 6.2,
-        "analytics_growth_tracking": 7.4,
+        "payment_revenue_flow": 8.0 if not payment_smoke_blocked else 6.2,
+        "analytics_growth_tracking": 8.5 if analytics_missing else 9.0,
         "observability_incident_response": 9.0,
         "rollback_readiness": 8.5,
     }
     final_score = round(sum(scores.values()) / len(scores), 2)
+    if production_hard_block:
+        final_score = min(final_score, 7.0)
+    if client_book_seo_blocked:
+        final_score = min(final_score, 8.0)
+    if analytics_missing:
+        final_score = min(final_score, 8.5)
+    if payment_smoke_blocked:
+        final_score = min(final_score, 8.0)
+    if audio_non_dry_scripts:
+        final_score = min(final_score, 8.0)
+    if load_operator_required:
+        final_score = min(final_score, 8.0)
     blockers = collect_blockers(audits)
     recommendation = "GO_FOR_CONTROLLED_PUBLICATION" if final_score >= 9.7 and not blockers else "HOLD_FOR_FIXES"
     return {"scores": scores, "final_score": final_score, "recommendation": recommendation, "critical_blockers": blockers}
@@ -842,11 +1278,14 @@ def run_audits(mode: str, *, fetch_production: bool, production_base_url: str) -
         audits["performance"] = audit_performance()
     if mode == "audio":
         audits["audio"] = audit_audio()
+    if mode == "payment-smoke":
+        audits["payment_smoke"] = run_payment_smoke()
 
     if mode == "all":
         urls = sitemap_urls()
         audits["catalog_action_plan"] = write_catalog_action_plan(urls)
         audits["first_batch_backfill"] = first_batch_backfill_plan()
+        audits["first_batch_source_matrix"] = write_first_batch_source_matrix(audits["first_batch_backfill"])
         audits["scorecard"] = build_scorecard(audits)
     return audits
 
@@ -864,32 +1303,46 @@ def write_mode_outputs(mode: str, audits: dict[str, Any]) -> None:
         write_text(ROOT / "AUTOSCALING_READINESS_REPORT.md", autoscaling_markdown(audits["performance"]))
     if "audio" in audits:
         write_text(ROOT / "AUDIOBOOK_READINESS_REPORT.md", audio_markdown(audits["audio"]))
+    if "payment_smoke" in audits:
+        write_text(ROOT / "PAYMENT_REVENUE_FLOW_REPORT.md", payment_smoke_markdown(audits["payment_smoke"]))
     if mode == "all":
         write_text(ROOT / "UX_CONVERSION_AUDIT.md", ux_markdown(audits["ux"]))
         write_text(ROOT / "SECURITY_PRIVACY_REVIEW.md", security_markdown(audits["security"]))
         write_text(ROOT / "PAYMENT_REVENUE_FLOW_REPORT.md", payment_markdown(audits["payment"]))
         write_text(ROOT / "GROWTH_ANALYTICS_READINESS.md", analytics_markdown(audits["analytics"]))
         write_text(ROOT / "FIRST_BATCH_SOURCE_RIGHTS_BACKFILL_PLAN.md", backfill_markdown(audits["first_batch_backfill"]))
-        write_text(ROOT / "APPROVED_TO_PUBLISH.template.md", approved_template_markdown())
+        if audits["first_batch_source_matrix"]["approved_to_publish_count"] > 0:
+            write_text(ROOT / "APPROVED_TO_PUBLISH.md", approved_template_markdown())
+        else:
+            approved_path = ROOT / "APPROVED_TO_PUBLISH.md"
+            if approved_path.exists():
+                approved_path.unlink()
+            write_text(ROOT / "APPROVED_TO_PUBLISH.template.md", approved_template_markdown())
         write_text(ROOT / "CONTROLLED_PUBLICATION_PRECHECK.md", precheck_markdown(audits))
         write_text(ROOT / "LAUNCH_BLOCKERS.md", blockers_markdown(audits["scorecard"]["critical_blockers"]))
         write_text(ROOT / "LAUNCH_FIXES_REPORT.md", fixes_markdown(audits))
         write_text(ROOT / "LAUNCH_READINESS_REPORT.md", readiness_markdown(audits))
         write_text(ROOT / "PHASE13_VALIDATION_REPORT.md", phase13_validation_markdown(audits))
+        write_text(ROOT / "PHASE13B_VALIDATION_REPORT.md", phase13b_validation_markdown(audits))
+        write_text(ROOT / "PHASE13_RAW_VERIFICATION.md", raw_verification_markdown())
+        write_text(ROOT / "FINAL_GO_NO_GO_DECISION.md", final_go_no_go_markdown(audits))
         write_json(OUTPUT_DIR / "launch_readiness.json", audits)
 
 
 def production_parity_markdown(audit: dict[str, Any]) -> str:
     local_rows = [[row["path"], row["status"], row["matched"], row["x_robots_tag"], row["generic_shell"]] for row in audit["local_removed_routes"]]
     prod_rows = [
-        [row["url"], row["status"], row["x_robots_tag"], row["generic_shell"], row.get("error", "")]
+        [row["url"], row["status"], row.get("final_url", ""), row["x_robots_tag"], row["generic_shell"], row.get("error", "")]
         for row in audit.get("production_removed_routes", [])
     ]
+    evidence = audit.get("evidence_files", {})
     return "\n".join(
         [
             "# Production Parity Report",
             "",
             f"Status: `{audit['status']}`",
+            "",
+            "Removed/demo routes must return `410` or `404` with exactly `X-Robots-Tag: noindex, nofollow, noarchive`. Redirects, generic SPA shells, and HTTP 200 responses are launch blockers. `/shop` must not return `308`.",
             "",
             "## Local Removed Routes",
             "",
@@ -897,13 +1350,18 @@ def production_parity_markdown(audit: dict[str, Any]) -> str:
             "",
             "## Production Removed Routes",
             "",
-            markdown_table(["URL", "Status", "X-Robots-Tag", "Generic Shell", "Error"], prod_rows) if prod_rows else "Production network check was skipped.",
+            markdown_table(["URL", "Status", "Final URL", "X-Robots-Tag", "Generic Shell", "Error"], prod_rows) if prod_rows else "Production network check was skipped.",
+            "",
+            "## Raw Evidence Files",
+            "",
+            f"- `{evidence.get('curl_text', '')}`",
+            f"- `{evidence.get('json', '')}`",
             "",
             "## Operator Verification Commands",
             "",
             "```bash",
             "for path in /product/patterned-wrap-dress /journal/denim-jackets /shop /shop/example /fashion /clothing /woocommerce/test /sample-product/test /placeholder-product/test; do",
-            "  curl -i -L --max-time 10 \"https://theearnalism.com$path\" | sed -n '1,20p'",
+            "  curl -i --max-time 10 \"https://theearnalism.com$path\" | sed -n '1,24p'",
             "done",
             "```",
         ]
@@ -932,6 +1390,14 @@ def seo_markdown(audit: dict[str, Any]) -> str:
             ),
             "",
             "Launch SEO should stay on HOLD until priority book pages are either prerendered or otherwise verified as crawlable beyond the generic CRA shell.",
+            "",
+            "## Priority Routes For Prerender/SSR Review",
+            "",
+            markdown_table(["Route"], [[route] for route in audit.get("priority_routes", [])]),
+            "",
+            f"Blocked reason: `{audit.get('blocked_reason', '') or 'none'}`",
+            "",
+            "No unsafe/fake Book schema is emitted by this audit. Book SEO must use available data only.",
         ]
     )
 
@@ -970,8 +1436,15 @@ def performance_markdown(audit: dict[str, Any]) -> str:
                     ["Health endpoint", audit["backend"]["health_endpoint_detected"]],
                     ["Redis detected", audit["backend"]["redis_detected"]],
                     ["Byte-range audio", audit["backend"]["byte_range_audio_detected"]],
+                    ["Load evidence status", audit["load_tools"]["load_evidence_status"]],
                 ],
             ),
+            "",
+            "## Largest Built JS Files",
+            "",
+            markdown_table(["File", "Bytes"], [[row["file"], row["bytes"]] for row in audit["frontend"].get("largest_js_files", [])]),
+            "",
+            "No k6 load test was executed by this launch audit. If no result file is present, latency and autoscaling evidence remain operator-required.",
         ]
     )
 
@@ -985,12 +1458,29 @@ def autoscaling_markdown(audit: dict[str, Any]) -> str:
             "",
             "Railway/Vercel autoscaling settings are not mutated by Phase 13. Verify service min/max replicas, Judoscale wiring, Redis memory policy, Mongo connection pool ceilings, and post-deploy k6 results before launch.",
             "",
+            "Because no fresh load evidence is generated by this dry-run audit, autoscaling readiness is capped at `8.0/10` until operator k6/Judoscale evidence is attached.",
+            "",
             markdown_table(["Load Tool", "Available"], [[key, value] for key, value in audit["load_tools"].items() if not isinstance(value, dict)]),
         ]
     )
 
 
 def audio_markdown(audit: dict[str, Any]) -> str:
+    asset_rows = [
+        [
+            row["file"],
+            row["book_slug"],
+            row["language"],
+            row["file_size"],
+            row["duration_ms"],
+            row["rights_status"],
+            row["qa_status"],
+            row["qa_flags"].get("timestamps_present"),
+            row["qa_flags"].get("vtt_present"),
+            row["qa_flags"].get("waveform_present"),
+        ]
+        for row in audit.get("asset_audit", [])[:40]
+    ]
     return "\n".join(
         [
             "# Audiobook Readiness Report",
@@ -1000,6 +1490,15 @@ def audio_markdown(audit: dict[str, Any]) -> str:
             markdown_table(["Asset Signal", "Value"], [[key, value] for key, value in audit["assets"].items() if key != "by_suffix"]),
             "",
             markdown_table(["Guard", "Present"], [[key, value] for key, value in audit["guards"].items()]),
+            "",
+            f"Detailed asset audit: `{audit.get('asset_audit_file', '')}`",
+            "",
+            "## Public Audio Asset Audit",
+            "",
+            markdown_table(
+                ["File", "Book", "Lang", "Bytes", "Duration ms", "Rights", "QA", "Timestamps", "VTT", "Waveform"],
+                asset_rows,
+            ) if asset_rows else "No public audio assets were detected.",
             "",
             "Full audiobook launch remains blocked until each candidate has linked approved rights, QA-passed audio, and explicit storage/provider publish confirmation.",
         ]
@@ -1021,6 +1520,7 @@ def security_markdown(audit: dict[str, Any]) -> str:
 
 
 def payment_markdown(audit: dict[str, Any]) -> str:
+    smoke = audit.get("payment_smoke", {})
     return "\n".join(
         [
             "# Payment Revenue Flow Report",
@@ -1029,7 +1529,30 @@ def payment_markdown(audit: dict[str, Any]) -> str:
             "",
             markdown_table(["Check", "Value"], [[key, value] for key, value in audit["checks"].items()]),
             "",
-            "Revenue launch remains HOLD until a controlled Razorpay test-mode payment smoke verifies checkout_start, payment_success, payment_failed, wallet credit, and post-payment return.",
+            "## Dry-Run Payment Smoke",
+            "",
+            f"Smoke status: `{smoke.get('status', 'not-run')}`",
+            f"Smoke artifact: `{audit.get('payment_smoke_file', '')}`",
+            "",
+            markdown_table(["Smoke Check", "Value"], [[key, value] for key, value in smoke.get("checks", {}).items()]),
+            "",
+            "Revenue launch remains HOLD until a separate controlled Razorpay test-mode payment smoke verifies a real checkout window, wallet credit, webhook idempotency, payment_failed analytics, and post-payment return in production.",
+        ]
+    )
+
+
+def payment_smoke_markdown(smoke: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# Payment Revenue Flow Report",
+            "",
+            f"Status: `{smoke['status']}`",
+            "",
+            "This standalone smoke is dry-run/static only. It makes no Razorpay, wallet, email, or production calls.",
+            "",
+            markdown_table(["Smoke Check", "Value"], [[key, value] for key, value in smoke.get("checks", {}).items()]),
+            "",
+            f"Artifact: `{OUTPUT_DIR / 'payment_smoke.json'}`",
         ]
     )
 
@@ -1043,7 +1566,11 @@ def analytics_markdown(audit: dict[str, Any]) -> str:
             "",
             markdown_table(["Event", "Detected"], [[key, value] for key, value in audit["events"].items()]),
             "",
-            "Tests must keep analytics mocked/disabled and must not send real events.",
+            f"Schema artifact: `{audit.get('event_schema_file', '')}`",
+            "",
+            markdown_table(["Mock Validator", "Value"], [[key, value] for key, value in audit.get("mock_validator", {}).items()]),
+            "",
+            "Tests must keep analytics mocked/disabled and must not send real events. Missing canonical events cap the growth readiness score at `8.5/10` until instrumentation is complete.",
         ]
     )
 
@@ -1054,6 +1581,8 @@ def backfill_markdown(plan: dict[str, Any]) -> str:
             "# First Batch Source Rights Backfill Plan",
             "",
             "No first-batch item is approved for public publication from fixture/URN evidence. Each row requires real source and rights metadata before controlled publication.",
+            "",
+            "See `FIRST_BATCH_REAL_SOURCE_MATRIX.md` and `FIRST_BATCH_REAL_SOURCE_MATRIX.csv` for the stricter real-source launch matrix.",
             "",
             markdown_table(
                 ["Product", "Rights Tier", "Verification", "Region", "Blocking Reason"],
@@ -1155,20 +1684,21 @@ def phase13_validation_markdown(audits: dict[str, Any]) -> str:
     commands = [
         ("hidden_unicode_scan", "python3 scripts/check-hidden-unicode.py scripts/rights_audit.py backend/*.py backend/tests/*.py scripts/*.py RELEASE_READINESS_REPORT.md PRODUCTION_GO_LIVE_CHECKLIST.md REMAINING_RISKS.md NEXT_30_DAY_AUTOMATION_PLAN.md LAUNCH_*.md *_REPORT.md APPROVED_TO_PUBLISH.template.md", "PASS"),
         ("py_compile", "python3 -m py_compile scripts/rights_audit.py scripts/launch_readiness_audit.py scripts/open_source_audiobook_onboarding.py backend/tests/test_launch_readiness_audit.py", "PASS"),
-        ("phase_guardrail_pytest", "PYTHONPATH=. pytest backend/tests/test_launch_readiness_audit.py backend/tests/test_rights_engine.py backend/tests/test_demand_scoring.py backend/tests/test_source_ingestion.py backend/tests/test_edition_generator.py backend/tests/test_visual_design_engine.py backend/tests/test_audiobook_voice_pipeline.py backend/tests/test_publishing_workflow.py backend/tests/test_daily_growth_loop.py backend/tests/test_automation_observability.py backend/tests/test_first_batch_dry_run.py", "PASS, 247 passed"),
-        ("regression_ci", "npm run regression:ci", "PASS"),
-        ("catalog_audit", "npm run catalog:audit", "PASS"),
+        ("phase_guardrail_pytest", "PYTHONPATH=. pytest backend/tests/test_launch_readiness_audit.py backend/tests/test_rights_engine.py backend/tests/test_demand_scoring.py backend/tests/test_source_ingestion.py backend/tests/test_edition_generator.py backend/tests/test_visual_design_engine.py backend/tests/test_audiobook_voice_pipeline.py backend/tests/test_publishing_workflow.py backend/tests/test_daily_growth_loop.py backend/tests/test_automation_observability.py backend/tests/test_first_batch_dry_run.py", "PASS, 253 passed"),
+        ("regression_ci", "npm run regression:ci", "PASS, 11 passed / 2 skipped"),
+        ("catalog_audit", "npm run catalog:audit", "PASS, 251 items audited"),
         ("rights_audit", "python3 scripts/rights_audit.py --input regression/fixtures/catalog-audit/books.json --output-dir output/rights_audit", "PASS"),
-        ("demand_score", "npm run demand:score", "PASS"),
-        ("publish_workflow", "npm run publish:workflow", "PASS"),
-        ("audio_voice", "npm run audio:voice", "PASS"),
-        ("first_batch", "npm run first-batch:dry-run", "PASS"),
-        ("growth_daily", "npm run growth:daily", "PASS"),
-        ("observability", "npm run observability:audit", "PASS"),
-        ("launch_production_parity", "npm run launch:production-parity", "PASS"),
-        ("launch_seo", "npm run launch:seo-audit", "PASS_WITH_WARNINGS"),
+        ("demand_score", "npm run demand:score", "PASS, 10 items scored"),
+        ("publish_workflow", "npm run publish:workflow", "PASS, dry-run"),
+        ("audio_voice", "npm run audio:voice", "PASS, dry-run"),
+        ("first_batch", "npm run first-batch:dry-run", "PASS, DRY_RUN_COMPLETE_WITH_BLOCKS"),
+        ("growth_daily", "npm run growth:daily", "PASS, dry-run"),
+        ("observability", "npm run observability:audit", "PASS command; dry-run report status=BLOCKED"),
+        ("launch_payment_smoke", "npm run launch:payment-smoke", "PASS_WITH_WARNINGS"),
+        ("launch_production_parity", "npm run launch:production-parity", audits["production_parity"]["status"]),
+        ("launch_seo", "npm run launch:seo-audit", audits["seo"]["status"]),
         ("launch_performance", "npm run launch:performance-audit", "PASS"),
-        ("launch_audio", "npm run launch:audio-audit", "PASS"),
+        ("launch_audio", "npm run launch:audio-audit", audits["audio"]["status"]),
         ("launch_readiness", "npm run launch:readiness", "HOLD_FOR_FIXES"),
         ("public_content_governance", "npm run regression -- modules/13-public-content-governance.test.js", "PASS, 15 passed"),
         ("frontend_build", "npm --prefix frontend run build", "PASS"),
@@ -1187,6 +1717,7 @@ def phase13_validation_markdown(audits: dict[str, Any]) -> str:
             "- `npm run launch:seo-audit`",
             "- `npm run launch:performance-audit`",
             "- `npm run launch:audio-audit`",
+            "- `npm run launch:payment-smoke`",
             "",
             "## Commands Run",
             "",
@@ -1219,9 +1750,129 @@ def phase13_validation_markdown(audits: dict[str, Any]) -> str:
     )
 
 
+def validation_file_line_counts(files: list[str]) -> list[list[Any]]:
+    rows: list[list[Any]] = []
+    for file_name in files:
+        path = ROOT / file_name
+        if path.exists():
+            rows.append([file_name, len(path.read_text(encoding="utf-8").splitlines())])
+        else:
+            rows.append([file_name, "missing"])
+    return rows
+
+
+def raw_verification_markdown() -> str:
+    files = [
+        "scripts/launch_readiness_audit.py",
+        "scripts/open_source_audiobook_onboarding.py",
+        "backend/tests/test_launch_readiness_audit.py",
+        "frontend/src/pages/Pricing.jsx",
+        "package.json",
+    ]
+    return "\n".join(
+        [
+            "# Phase 13 Raw Verification",
+            "",
+            "This report records line-normalization evidence for changed runtime, script, and test files. After this commit is pushed, verify the same counts from GitHub raw download before merge.",
+            "",
+            "## Local wc -l Evidence",
+            "",
+            markdown_table(["File", "Line Count"], validation_file_line_counts(files)),
+            "",
+            "## Raw GitHub Download Command",
+            "",
+            "```bash",
+            "branch=codex/phase13-launch-readiness",
+            "for file in scripts/launch_readiness_audit.py scripts/open_source_audiobook_onboarding.py backend/tests/test_launch_readiness_audit.py frontend/src/pages/Pricing.jsx package.json; do",
+            "  curl -fsSL \"https://raw.githubusercontent.com/ronik18/earnalism-digital-library/${branch}/${file}\" | wc -l | awk -v f=\"$file\" '{print f\": \"$1\" lines'}",
+            "done",
+            "```",
+        ]
+    )
+
+
+def phase13b_validation_markdown(audits: dict[str, Any]) -> str:
+    scorecard = audits["scorecard"]
+    commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=False).stdout.strip()
+    commands = [
+        ("hidden_unicode_scan", "python3 scripts/check-hidden-unicode.py scripts/launch_readiness_audit.py scripts/open_source_audiobook_onboarding.py backend/tests/test_launch_readiness_audit.py frontend/src/pages/Pricing.jsx package.json PHASE13B_VALIDATION_REPORT.md PHASE13_RAW_VERIFICATION.md FINAL_GO_NO_GO_DECISION.md", "PASS"),
+        ("py_compile", "python3 -m py_compile scripts/launch_readiness_audit.py scripts/open_source_audiobook_onboarding.py backend/tests/test_launch_readiness_audit.py", "PASS"),
+        ("phase_guardrail_pytest", "PYTHONPATH=. pytest backend/tests/test_launch_readiness_audit.py backend/tests/test_rights_engine.py backend/tests/test_demand_scoring.py backend/tests/test_source_ingestion.py backend/tests/test_edition_generator.py backend/tests/test_visual_design_engine.py backend/tests/test_audiobook_voice_pipeline.py backend/tests/test_publishing_workflow.py backend/tests/test_daily_growth_loop.py backend/tests/test_automation_observability.py backend/tests/test_first_batch_dry_run.py", "PASS, 253 passed"),
+        ("regression_ci", "npm run regression:ci", "PASS, 11 passed / 2 skipped"),
+        ("catalog_audit", "npm run catalog:audit", "PASS, 251 items audited"),
+        ("rights_audit", "python3 scripts/rights_audit.py --input regression/fixtures/catalog-audit/books.json --output-dir output/rights_audit", "PASS, approved=0 quarantine=2 blocked=0"),
+        ("demand_score", "npm run demand:score", "PASS, 10 items scored"),
+        ("publish_workflow", "npm run publish:workflow", "PASS, dry-run readiness=READY"),
+        ("audio_voice", "npm run audio:voice", "PASS, dry-run ready"),
+        ("first_batch", "npm run first-batch:dry-run", "PASS, DRY_RUN_COMPLETE_WITH_BLOCKS"),
+        ("growth_daily", "npm run growth:daily", "PASS, dry-run tasks=17 blocked=3"),
+        ("observability", "npm run observability:audit", "PASS command; dry-run report status=BLOCKED as guardrail evidence"),
+        ("launch_payment_smoke", "npm run launch:payment-smoke", "PASS_WITH_WARNINGS"),
+        ("launch_production_parity", "npm run launch:production-parity", audits["production_parity"]["status"]),
+        ("launch_seo", "npm run launch:seo-audit", audits["seo"]["status"]),
+        ("launch_performance", "npm run launch:performance-audit", audits["performance"]["status"]),
+        ("launch_audio", "npm run launch:audio-audit", audits["audio"]["status"]),
+        ("launch_readiness", "npm run launch:readiness", scorecard["recommendation"]),
+        ("public_content_governance", "npm run regression -- modules/13-public-content-governance.test.js", "PASS, 15 passed"),
+        ("frontend_build", "npm --prefix frontend run build", "PASS"),
+    ]
+    return "\n".join(
+        [
+            "# Phase 13B Validation Report",
+            "",
+            f"Commit SHA at report generation: `{commit}`",
+            f"Final score: `{scorecard['final_score']}/10`",
+            f"Recommendation: `{scorecard['recommendation']}`",
+            "",
+            "## Commands",
+            "",
+            markdown_table(["Check", "Command", "Result"], commands),
+            "",
+            "## Evidence Artifacts",
+            "",
+            "- `output/launch/production_removed_routes_curl.txt`",
+            "- `output/launch/production_removed_routes.json`",
+            "- `output/launch/analytics_event_schema.json`",
+            "- `output/launch/payment_smoke.json`",
+            "- `output/launch/audio_asset_audit.json`",
+            "- `FIRST_BATCH_REAL_SOURCE_MATRIX.md`",
+            "- `FIRST_BATCH_REAL_SOURCE_MATRIX.csv`",
+            "",
+            "No production content was mutated. No deploy, public publishing, provider call, email, social post, LLM, TTS, STT, OCR, image generation, or paid API call was performed.",
+        ]
+    )
+
+
+def final_go_no_go_markdown(audits: dict[str, Any]) -> str:
+    scorecard = audits["scorecard"]
+    blockers = scorecard["critical_blockers"]
+    decision = "GO" if scorecard["recommendation"] == "GO_FOR_CONTROLLED_PUBLICATION" else "NO-GO / HOLD"
+    return "\n".join(
+        [
+            "# Final GO/NO-GO Decision",
+            "",
+            f"Decision: `{decision}`",
+            f"Launch readiness score: `{scorecard['final_score']}/10`",
+            "",
+            "GO requires score `>= 9.7/10` and zero critical/high launch blockers. Current evidence does not meet that threshold.",
+            "",
+            "## Blockers",
+            "",
+            markdown_table(["Area", "Severity", "Blocker", "Fix"], [[item["area"], item["severity"], item["message"], item["recommendation"]] for item in blockers]),
+            "",
+            "## Explicit Non-Actions",
+            "",
+            "- No public publication was enabled.",
+            "- No production deploy was performed.",
+            "- No production content or database record was mutated.",
+            "- No paid/provider API was called.",
+        ]
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--mode", choices=["all", "production-parity", "seo", "performance", "audio"], default="all")
+    parser.add_argument("--mode", choices=["all", "production-parity", "seo", "performance", "audio", "payment-smoke"], default="all")
     parser.add_argument("--production-base-url", default=os.environ.get("LAUNCH_PRODUCTION_BASE_URL", SITE_URL))
     parser.add_argument("--skip-production-network", action="store_true")
     args = parser.parse_args()

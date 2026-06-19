@@ -1,0 +1,34 @@
+{
+  "status": "PASS_WITH_WARNINGS",
+  "mode": "dry_run_static",
+  "public_mutation": false,
+  "external_calls": [],
+  "provider_api_ids": [],
+  "checks": {
+    "dry_run_only": true,
+    "no_external_razorpay_call": true,
+    "pricing_view_page_exists": true,
+    "checkout_start_event_detected": true,
+    "payment_success_event_detected": true,
+    "payment_failed_event_detected": true,
+    "test_mode_simulator_detected": true,
+    "real_order_endpoint_detected": true,
+    "verify_endpoint_detected": true,
+    "webhook_endpoint_detected": true,
+    "webhook_signature_detected": true,
+    "idempotent_credit_detected": true,
+    "post_payment_wallet_refresh_detected": true,
+    "analytics_schema_has_payment_events": true
+  },
+  "blocked_checks": [],
+  "events_required": [
+    "pricing_view",
+    "checkout_start",
+    "payment_success",
+    "payment_failed"
+  ],
+  "operator_follow_up": [
+    "Run a separate controlled Razorpay test-mode checkout with a throwaway user before revenue launch.",
+    "Verify wallet credit, webhook idempotency, payment_failed analytics, and post-payment return UX in production."
+  ]
+}

@@ -1,0 +1,167 @@
+[
+  {
+    "file": "frontend/public/audio/ben/book-0deb35c750.mp3",
+    "book_slug": "book-0deb35c750",
+    "title": "খাতা",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "language": "ben",
+    "provider": "sarvam",
+    "rights_status": "UNKNOWN",
+    "qa_status": "NEEDS_SYNC_OR_WAVEFORM_REVIEW",
+    "duration_ms": 721816,
+    "file_size": 4331433,
+    "public_status": "PUBLIC_STATIC_ASSET",
+    "private_status": "NOT_PRIVATE",
+    "sidecars": {
+      "meta": "frontend/public/audio/ben/book-0deb35c750_meta.json",
+      "timestamps": "frontend/public/audio/ben/book-0deb35c750_timestamps.json",
+      "vtt": "frontend/public/audio/ben/book-0deb35c750_highlight.vtt",
+      "chapters": "frontend/public/audio/ben/book-0deb35c750_chapters.json",
+      "waveform": ""
+    },
+    "qa_flags": {
+      "meta_present": true,
+      "duration_present": true,
+      "timestamps_present": true,
+      "timestamp_count": 1557,
+      "vtt_present": true,
+      "chapters_present": true,
+      "waveform_present": false,
+      "highlight_available": true
+    },
+    "recommended_action": "RIGHTS_REVIEW",
+    "blocking_reason": "Public audio requires linked approved book rights and listening/sync QA before launch."
+  },
+  {
+    "file": "frontend/public/audio/ben/book-63afd5e9be.mp3",
+    "book_slug": "book-63afd5e9be",
+    "title": "দেনাপাওনা",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "language": "ben",
+    "provider": "sarvam",
+    "rights_status": "UNKNOWN",
+    "qa_status": "NEEDS_SYNC_OR_WAVEFORM_REVIEW",
+    "duration_ms": 865733,
+    "file_size": 5195041,
+    "public_status": "PUBLIC_STATIC_ASSET",
+    "private_status": "NOT_PRIVATE",
+    "sidecars": {
+      "meta": "frontend/public/audio/ben/book-63afd5e9be_meta.json",
+      "timestamps": "frontend/public/audio/ben/book-63afd5e9be_timestamps.json",
+      "vtt": "frontend/public/audio/ben/book-63afd5e9be_highlight.vtt",
+      "chapters": "frontend/public/audio/ben/book-63afd5e9be_chapters.json",
+      "waveform": ""
+    },
+    "qa_flags": {
+      "meta_present": true,
+      "duration_present": true,
+      "timestamps_present": true,
+      "timestamp_count": 1868,
+      "vtt_present": true,
+      "chapters_present": true,
+      "waveform_present": false,
+      "highlight_available": true
+    },
+    "recommended_action": "RIGHTS_REVIEW",
+    "blocking_reason": "Public audio requires linked approved book rights and listening/sync QA before launch."
+  },
+  {
+    "file": "frontend/public/audio/ben/book-d19e96859f.mp3",
+    "book_slug": "book-d19e96859f",
+    "title": "গিন্নি",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "language": "ben",
+    "provider": "sarvam",
+    "rights_status": "UNKNOWN",
+    "qa_status": "NEEDS_SYNC_OR_WAVEFORM_REVIEW",
+    "duration_ms": 465154,
+    "file_size": 2791515,
+    "public_status": "PUBLIC_STATIC_ASSET",
+    "private_status": "NOT_PRIVATE",
+    "sidecars": {
+      "meta": "frontend/public/audio/ben/book-d19e96859f_meta.json",
+      "timestamps": "frontend/public/audio/ben/book-d19e96859f_timestamps.json",
+      "vtt": "frontend/public/audio/ben/book-d19e96859f_highlight.vtt",
+      "chapters": "frontend/public/audio/ben/book-d19e96859f_chapters.json",
+      "waveform": ""
+    },
+    "qa_flags": {
+      "meta_present": true,
+      "duration_present": true,
+      "timestamps_present": true,
+      "timestamp_count": 999,
+      "vtt_present": true,
+      "chapters_present": true,
+      "waveform_present": false,
+      "highlight_available": true
+    },
+    "recommended_action": "RIGHTS_REVIEW",
+    "blocking_reason": "Public audio requires linked approved book rights and listening/sync QA before launch."
+  },
+  {
+    "file": "frontend/public/audio/ben/ginni.mp3",
+    "book_slug": "ginni",
+    "title": "গিন্নি",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "language": "ben",
+    "provider": "google",
+    "rights_status": "UNKNOWN",
+    "qa_status": "NEEDS_SYNC_OR_WAVEFORM_REVIEW",
+    "duration_ms": 478800,
+    "file_size": 2873487,
+    "public_status": "PUBLIC_STATIC_ASSET",
+    "private_status": "NOT_PRIVATE",
+    "sidecars": {
+      "meta": "frontend/public/audio/ben/ginni_meta.json",
+      "timestamps": "frontend/public/audio/ben/ginni_timestamps.json",
+      "vtt": "frontend/public/audio/ben/ginni_highlight.vtt",
+      "chapters": "frontend/public/audio/ben/ginni_chapters.json",
+      "waveform": ""
+    },
+    "qa_flags": {
+      "meta_present": true,
+      "duration_present": true,
+      "timestamps_present": true,
+      "timestamp_count": 998,
+      "vtt_present": true,
+      "chapters_present": true,
+      "waveform_present": false,
+      "highlight_available": true
+    },
+    "recommended_action": "RIGHTS_REVIEW",
+    "blocking_reason": "Public audio requires linked approved book rights and listening/sync QA before launch."
+  },
+  {
+    "file": "frontend/public/audio/en/bharat-at-the-crossroads.mp3",
+    "book_slug": "bharat-at-the-crossroads",
+    "title": "Bharat at the Crossroads",
+    "author": "Ronik Basak",
+    "language": "en",
+    "provider": "google",
+    "rights_status": "UNKNOWN",
+    "qa_status": "NEEDS_SYNC_OR_WAVEFORM_REVIEW",
+    "duration_ms": 13698074,
+    "file_size": 82189079,
+    "public_status": "PUBLIC_STATIC_ASSET",
+    "private_status": "NOT_PRIVATE",
+    "sidecars": {
+      "meta": "frontend/public/audio/en/bharat-at-the-crossroads_meta.json",
+      "timestamps": "frontend/public/audio/en/bharat-at-the-crossroads_timestamps.json",
+      "vtt": "frontend/public/audio/en/bharat-at-the-crossroads_highlight.vtt",
+      "chapters": "frontend/public/audio/en/bharat-at-the-crossroads_chapters.json",
+      "waveform": ""
+    },
+    "qa_flags": {
+      "meta_present": true,
+      "duration_present": true,
+      "timestamps_present": true,
+      "timestamp_count": 34481,
+      "vtt_present": true,
+      "chapters_present": true,
+      "waveform_present": false,
+      "highlight_available": true
+    },
+    "recommended_action": "RIGHTS_REVIEW",
+    "blocking_reason": "Public audio requires linked approved book rights and listening/sync QA before launch."
+  }
+]

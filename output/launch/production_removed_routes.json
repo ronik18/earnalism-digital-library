@@ -1,0 +1,83 @@
+[
+  {
+    "url": "https://theearnalism.com/product/patterned-wrap-dress",
+    "status": 410,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "content_type": "text/html; charset=utf-8",
+    "final_url": "https://theearnalism.com/product/patterned-wrap-dress",
+    "generic_shell": false,
+    "error": ""
+  },
+  {
+    "url": "https://theearnalism.com/journal/denim-jackets",
+    "status": 410,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "content_type": "text/html; charset=utf-8",
+    "final_url": "https://theearnalism.com/journal/denim-jackets",
+    "generic_shell": false,
+    "error": ""
+  },
+  {
+    "url": "https://theearnalism.com/shop",
+    "status": 308,
+    "x_robots_tag": "",
+    "content_type": "text/plain",
+    "final_url": "https://theearnalism.com/library",
+    "generic_shell": false,
+    "error": ""
+  },
+  {
+    "url": "https://theearnalism.com/shop/example",
+    "status": 404,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "content_type": "text/html; charset=utf-8",
+    "final_url": "https://theearnalism.com/shop/example",
+    "generic_shell": false,
+    "error": ""
+  },
+  {
+    "url": "https://theearnalism.com/fashion",
+    "status": 410,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "content_type": "text/html; charset=utf-8",
+    "final_url": "https://theearnalism.com/fashion",
+    "generic_shell": false,
+    "error": ""
+  },
+  {
+    "url": "https://theearnalism.com/clothing",
+    "status": 410,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "content_type": "text/html; charset=utf-8",
+    "final_url": "https://theearnalism.com/clothing",
+    "generic_shell": false,
+    "error": ""
+  },
+  {
+    "url": "https://theearnalism.com/woocommerce/test",
+    "status": 410,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "content_type": "text/html; charset=utf-8",
+    "final_url": "https://theearnalism.com/woocommerce/test",
+    "generic_shell": false,
+    "error": ""
+  },
+  {
+    "url": "https://theearnalism.com/sample-product/test",
+    "status": 410,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "content_type": "text/html; charset=utf-8",
+    "final_url": "https://theearnalism.com/sample-product/test",
+    "generic_shell": false,
+    "error": ""
+  },
+  {
+    "url": "https://theearnalism.com/placeholder-product/test",
+    "status": 410,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "content_type": "text/html; charset=utf-8",
+    "final_url": "https://theearnalism.com/placeholder-product/test",
+    "generic_shell": false,
+    "error": ""
+  }
+]

@@ -6,10 +6,12 @@ from pathlib import Path
 from scripts.launch_readiness_audit import (
     ROOT,
     audit_audio,
+    run_payment_smoke,
     audit_production_parity,
     audit_seo,
     local_removed_route_status,
     run_audits,
+    validate_removed_route,
     write_mode_outputs,
 )
 
@@ -32,6 +34,61 @@ def test_production_parity_local_mode_has_no_shell_200_for_removed_routes():
     assert all(row["generic_shell"] is False for row in audit["local_removed_routes"])
 
 
+def test_removed_route_redirect_is_blocker():
+    issues = validate_removed_route(
+        {"url": "https://theearnalism.com/shop", "status": 308, "x_robots_tag": "", "generic_shell": False},
+        scope="Production",
+    )
+
+    assert any(issue.blocker for issue in issues)
+    assert any("redirect HTTP 308" in issue.message for issue in issues)
+
+
+def test_removed_route_generic_shell_is_blocker():
+    issues = validate_removed_route(
+        {"url": "https://theearnalism.com/product/patterned-wrap-dress", "status": 200, "x_robots_tag": "", "generic_shell": True},
+        scope="Production",
+    )
+
+    assert any(issue.blocker for issue in issues)
+    assert any("generic Earnalism shell" in issue.message for issue in issues)
+
+
+def test_removed_route_http_200_is_blocker():
+    issues = validate_removed_route(
+        {"url": "https://theearnalism.com/fashion", "status": 200, "x_robots_tag": "", "generic_shell": False},
+        scope="Production",
+    )
+
+    assert any(issue.blocker for issue in issues)
+    assert any("HTTP 200" in issue.message for issue in issues)
+
+
+def test_removed_route_missing_xrobots_is_blocker():
+    issues = validate_removed_route(
+        {"url": "https://theearnalism.com/product/patterned-wrap-dress", "status": 410, "x_robots_tag": "", "generic_shell": False},
+        scope="Production",
+    )
+
+    assert any(issue.blocker for issue in issues)
+    assert any("X-Robots-Tag" in issue.message for issue in issues)
+
+
+def test_removed_route_valid_410_or_404_noindex_passes():
+    for status in (404, 410):
+        issues = validate_removed_route(
+            {
+                "url": "https://theearnalism.com/product/patterned-wrap-dress",
+                "status": status,
+                "x_robots_tag": "noindex, nofollow, noarchive",
+                "generic_shell": False,
+            },
+            scope="Production",
+        )
+
+        assert issues == []
+
+
 def test_seo_audit_excludes_demo_urls_and_keeps_deindexing_strategy():
     audit = audit_seo()
 
@@ -39,6 +96,7 @@ def test_seo_audit_excludes_demo_urls_and_keeps_deindexing_strategy():
     assert audit["robots"]["retired_routes_crawlable"] is True
     assert audit["robots"]["private_routes_blocked"] is True
     assert audit["static_html"]["homepage_meta_complete"] is True
+    assert audit["static_html"]["unsafe_book_schema_emitted"] is False
 
 
 def test_audio_audit_detects_remote_upload_guards():
@@ -46,6 +104,17 @@ def test_audio_audit_detects_remote_upload_guards():
 
     assert audit["guards"]["remote_upload_guard_present"] is True
     assert audit["guards"]["voice_pipeline_dry_run_only"] is True
+
+
+def test_payment_smoke_is_dry_run_static(tmp_path, monkeypatch):
+    monkeypatch.setattr("scripts.launch_readiness_audit.OUTPUT_DIR", tmp_path / "launch")
+
+    smoke = run_payment_smoke()
+
+    assert smoke["mode"] == "dry_run_static"
+    assert smoke["public_mutation"] is False
+    assert smoke["external_calls"] == []
+    assert (tmp_path / "launch" / "payment_smoke.json").exists()
 
 
 def test_all_audit_writes_required_reports_without_production_network(tmp_path, monkeypatch):
@@ -68,11 +137,17 @@ def test_all_audit_writes_required_reports_without_production_network(tmp_path, 
         ROOT / "FIRST_BATCH_SOURCE_RIGHTS_BACKFILL_PLAN.md",
         ROOT / "CONTROLLED_PUBLICATION_PRECHECK.md",
         ROOT / "PHASE13_VALIDATION_REPORT.md",
+        ROOT / "PHASE13B_VALIDATION_REPORT.md",
+        ROOT / "PHASE13_RAW_VERIFICATION.md",
         ROOT / "GROWTH_ANALYTICS_READINESS.md",
         ROOT / "APPROVED_TO_PUBLISH.template.md",
+        ROOT / "FIRST_BATCH_REAL_SOURCE_MATRIX.md",
+        ROOT / "FINAL_GO_NO_GO_DECISION.md",
     ]
 
     assert audits["scorecard"]["recommendation"] == "HOLD_FOR_FIXES"
     assert all(path.exists() for path in required)
     assert (ROOT / "LAUNCH_CATALOG_ACTION_PLAN.csv").exists()
+    assert (ROOT / "FIRST_BATCH_REAL_SOURCE_MATRIX.csv").exists()
+    assert not (ROOT / "APPROVED_TO_PUBLISH.md").exists()
     assert (tmp_path / "launch" / "launch_readiness.json").exists()

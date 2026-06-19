@@ -1,0 +1,71 @@
+url: https://theearnalism.com/product/patterned-wrap-dress
+status: 410
+final_url: https://theearnalism.com/product/patterned-wrap-dress
+x_robots_tag: noindex, nofollow, noarchive
+content_type: text/html; charset=utf-8
+generic_shell: False
+error: 
+
+url: https://theearnalism.com/journal/denim-jackets
+status: 410
+final_url: https://theearnalism.com/journal/denim-jackets
+x_robots_tag: noindex, nofollow, noarchive
+content_type: text/html; charset=utf-8
+generic_shell: False
+error: 
+
+url: https://theearnalism.com/shop
+status: 308
+final_url: https://theearnalism.com/library
+x_robots_tag: 
+content_type: text/plain
+generic_shell: False
+error: 
+
+url: https://theearnalism.com/shop/example
+status: 404
+final_url: https://theearnalism.com/shop/example
+x_robots_tag: noindex, nofollow, noarchive
+content_type: text/html; charset=utf-8
+generic_shell: False
+error: 
+
+url: https://theearnalism.com/fashion
+status: 410
+final_url: https://theearnalism.com/fashion
+x_robots_tag: noindex, nofollow, noarchive
+content_type: text/html; charset=utf-8
+generic_shell: False
+error: 
+
+url: https://theearnalism.com/clothing
+status: 410
+final_url: https://theearnalism.com/clothing
+x_robots_tag: noindex, nofollow, noarchive
+content_type: text/html; charset=utf-8
+generic_shell: False
+error: 
+
+url: https://theearnalism.com/woocommerce/test
+status: 410
+final_url: https://theearnalism.com/woocommerce/test
+x_robots_tag: noindex, nofollow, noarchive
+content_type: text/html; charset=utf-8
+generic_shell: False
+error: 
+
+url: https://theearnalism.com/sample-product/test
+status: 410
+final_url: https://theearnalism.com/sample-product/test
+x_robots_tag: noindex, nofollow, noarchive
+content_type: text/html; charset=utf-8
+generic_shell: False
+error: 
+
+url: https://theearnalism.com/placeholder-product/test
+status: 410
+final_url: https://theearnalism.com/placeholder-product/test
+x_robots_tag: noindex, nofollow, noarchive
+content_type: text/html; charset=utf-8
+generic_shell: False
+error:
