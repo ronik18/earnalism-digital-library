@@ -1639,7 +1639,7 @@ export default function Reader() {
           const reward = claimRes.data || {};
           if (reward.claimed_now) {
             setWalletSeconds(reward.wallet_seconds || 0);
-            toast.success(`${reward.credit_minutes || 10} minutes credited toward The Reader's Reserve.`);
+            toast.success(`${reward.credit_minutes || 10} minutes credited toward The Reader’s Reserve.`);
             trackFunnelEvent('reader_reward_claimed', {
               book_slug: bookId,
               chapter_id: activeChapterId || chapterId || chapter?.id,

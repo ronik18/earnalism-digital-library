@@ -224,10 +224,38 @@ _shutdown_state: dict = {"draining": False, "inflight": 0}
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
 # amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
 PACKS: List[dict] = [
-    {"id": "30m",  "label": "Afternoon Pause",     "minutes": 30,  "amount_paise": 4900,  "price_inr": 49,  "note": "A single chapter, with breath to spare."},
-    {"id": "1h",   "label": "An Evening In",       "minutes": 60,  "amount_paise": 8900,  "price_inr": 89,  "note": "An unhurried hour with a worthy book."},
-    {"id": "3h",   "label": "Long Weekend",        "minutes": 180, "amount_paise": 23900, "price_inr": 239, "note": "Three quiet hours; a finished read."},
-    {"id": "10h",  "label": "The Reader's Reserve", "minutes": 600, "amount_paise": 49900, "price_inr": 499, "note": "Ten hours, kept until you call them in."},
+    {
+        "id": "30m",
+        "label": "The First Chapter",
+        "minutes": 30,
+        "amount_paise": 4900,
+        "price_inr": 49,
+        "note": "Continue after the free preview, one careful sitting at a time.",
+    },
+    {
+        "id": "1h",
+        "label": "The Quiet Hour",
+        "minutes": 60,
+        "amount_paise": 8900,
+        "price_inr": 89,
+        "note": "Best first choice — enough time to settle into Dracula.",
+    },
+    {
+        "id": "3h",
+        "label": "The Deep Reading Pass",
+        "minutes": 180,
+        "amount_paise": 23900,
+        "price_inr": 239,
+        "note": "A longer weekend return to the castle and the count.",
+    },
+    {
+        "id": "10h",
+        "label": "The Reader’s Reserve",
+        "minutes": 600,
+        "amount_paise": 49900,
+        "price_inr": 499,
+        "note": "Ten quiet hours kept for Dracula and the classics coming next.",
+    },
 ]
 PACKS_BY_ID = {p["id"]: p for p in PACKS}
 READER_STREAK_REWARD_KEY = "reader_reserve_streak_3"
@@ -3114,7 +3142,7 @@ async def _reader_reward_state(user_id: str) -> dict:
         "credit_seconds": READER_STREAK_REWARD_SECONDS,
         "credit_minutes": READER_STREAK_REWARD_SECONDS // 60,
         "target_pack_id": "10h",
-        "target_pack_label": "The Reader's Reserve",
+        "target_pack_label": "The Reader’s Reserve",
     }
 
 
