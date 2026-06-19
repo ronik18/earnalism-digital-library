@@ -16,3 +16,5 @@ No item is ready for publication because real source URLs, source licenses, sour
 | Tagore Short Stories for Young Readers | B | PENDING_SOURCE_BACKFILL | no | Real source metadata and QA evidence are not present in the dry-run batch. |
 | Calculus Made Easy Visual Guide | A | PENDING_SOURCE_BACKFILL | no | Real source metadata and QA evidence are not present in the dry-run batch. |
 | Chander Pahar Adventure Companion | B | PENDING_SOURCE_BACKFILL | no | Real source metadata and QA evidence are not present in the dry-run batch. |
+
+Operator source backfill template: `FIRST_BATCH_REAL_SOURCE_BACKFILL_INPUT.template.json`

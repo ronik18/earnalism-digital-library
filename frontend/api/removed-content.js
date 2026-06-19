@@ -13,8 +13,12 @@ const BLOCKED_TERMS = [
 ];
 
 function isBlockedPath(value = "") {
-  const path = String(value || "").toLowerCase();
-  return BLOCKED_TERMS.some((term) => path.includes(term));
+  const rawPath = String(value || "").toLowerCase();
+  const path = rawPath.replace(/^https?:\/\/[^/]+/, "").split("?", 1)[0];
+  const segments = new Set(path.split("/").filter(Boolean));
+  const retiredRouteFamilies = new Set(["product", "products", "product-category", "shop"]);
+  return [...retiredRouteFamilies].some((segment) => segments.has(segment))
+    || BLOCKED_TERMS.some((term) => rawPath.includes(term));
 }
 
 module.exports = function removedContent(req, res) {

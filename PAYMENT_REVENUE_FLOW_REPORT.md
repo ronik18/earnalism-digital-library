@@ -1,6 +1,6 @@
 # Payment Revenue Flow Report
 
-Status: `PASS_WITH_WARNINGS`
+Status: `PASS_TEST_MODE`
 
 | Check | Value |
 | --- | --- |
@@ -19,7 +19,7 @@ Status: `PASS_WITH_WARNINGS`
 
 ## Dry-Run Payment Smoke
 
-Smoke status: `PASS_WITH_WARNINGS`
+Smoke status: `PASS_TEST_MODE`
 Smoke artifact: `/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/payment_smoke.json`
 
 | Smoke Check | Value |
@@ -36,7 +36,11 @@ Smoke artifact: `/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/ou
 | webhook_endpoint_detected | True |
 | webhook_signature_detected | True |
 | idempotent_credit_detected | True |
+| wallet_credit_idempotency_test_detected | True |
+| webhook_idempotency_test_detected | True |
+| admin_reconcile_idempotency_test_detected | True |
 | post_payment_wallet_refresh_detected | True |
+| post_payment_return_route_exists | True |
 | analytics_schema_has_payment_events | True |
 
 Revenue launch remains HOLD until a separate controlled Razorpay test-mode payment smoke verifies a real checkout window, wallet credit, webhook idempotency, payment_failed analytics, and post-payment return in production.

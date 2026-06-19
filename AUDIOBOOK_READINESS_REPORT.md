@@ -17,6 +17,7 @@ Status: `PASS_WITH_WARNINGS`
 | voice_pipeline_dry_run_only | True |
 | package_contains_non_dry_audio_scripts | True |
 | remote_guard_test_detected | True |
+| final_action_plan_archived | True |
 
 Detailed asset audit: `/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/audio_asset_audit.json`
 
