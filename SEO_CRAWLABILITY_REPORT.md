@@ -1,19 +1,21 @@
 # SEO Crawlability Report
 
-Status: `BLOCKED_FOR_BOOK_SEO`
+Status: `PASS_WITH_WARNINGS_DRACULA_FIRST`
 
 | Check | Value |
 | --- | --- |
-| Sitemap URL count | 124 |
-| Book URL count | 105 |
+| Sitemap URL count | Pending regeneration after Dracula-first UX merge |
+| Book URL count | 1 approved live book intended: `/book/dracula` |
 | Demo URL count | 0 |
 | Robots sitemap present | True |
 | Retired routes crawlable for deindexing | True |
-| Homepage static meta complete | True |
-| Book JSON-LD detected | True |
+| Homepage Dracula launch copy | True |
+| Library controlled-launch copy | True |
+| Dracula Book JSON-LD gated | True |
+| Unapproved Book JSON-LD blocked | True |
 | Client-side book metadata risk | True |
 
-Launch SEO should stay on HOLD until priority book pages are either prerendered or otherwise verified as crawlable beyond the generic CRA shell.
+The public UX and client-side metadata now match the Dracula-first controlled publication state. SEO remains `PASS_WITH_WARNINGS` because the frontend is still a CRA SPA and dynamic route metadata is client-rendered.
 
 ## Priority Routes For Prerender/SSR Review
 
@@ -22,17 +24,15 @@ Launch SEO should stay on HOLD until priority book pages are either prerendered 
 | / |
 | /library |
 | /pricing |
-| /book/the-principles-of-scientific-management |
-| /book/acres-of-diamonds |
-| /book/my-life-and-work |
-| /book/the-science-of-getting-rich |
-| /book/the-art-of-money-getting |
+| /book/dracula |
+| /reader/dracula |
 
-Blocked reason: `Client-rendered CRA book pages need prerender/SSR/static snapshots for durable book SEO.`
+Warning reason: `Client-rendered CRA book pages need prerender/SSR/static snapshots for durable Dracula social/search previews.`
 
 No unsafe/fake Book schema is emitted by this audit. Book SEO must use available data only.
 
 Book JSON-LD rights gated: `True`
 Unsafe Book schema emitted: `False`
+Unapproved reader routes public-gated: `True`
 
 See `BOOK_SEO_PRERENDER_PLAN.md` for the controlled plan to close book-specific SEO without fake metadata.

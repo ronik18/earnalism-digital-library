@@ -7,6 +7,7 @@ const publicDir = path.resolve(__dirname, "../public");
 const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const apiBase = resolveApiBase();
 const today = new Date().toISOString().slice(0, 10);
+const controlledLiveSlugs = new Set(["dracula"]);
 
 const coreRoutes = [
   { path: "/", changefreq: "daily", priority: "1.0" },
@@ -117,13 +118,16 @@ function sitemapEntry({ path: pagePath, changefreq, priority, lastmod = today })
 }
 
 async function main() {
-  const [books, posts, categories] = await Promise.all([
+  const [books, posts] = await Promise.all([
     fetchJson("/books"),
     fetchJson("/blog"),
-    fetchJson("/categories"),
   ]);
 
-  const publishedBooks = books.filter((book) => book?.slug && book.is_published !== false);
+  const publishedBooks = books.filter((book) => (
+    book?.slug
+    && book.is_published !== false
+    && controlledLiveSlugs.has(book.slug)
+  ));
   const categoryLastmod = new Map();
   publishedBooks.forEach((book) => {
     const slug = book.category_slug;
@@ -134,7 +138,6 @@ async function main() {
   });
 
   const categorySlugs = new Set([
-    ...categories.map((category) => category?.slug).filter(Boolean),
     ...publishedBooks.map((book) => book?.category_slug).filter(Boolean),
   ]);
 

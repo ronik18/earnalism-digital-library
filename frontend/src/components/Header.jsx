@@ -65,7 +65,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <Link to="/library" className="btn-secondary" data-testid="header-cta-library">Start Reading</Link>
+          <Link to="/book/dracula" className="btn-secondary" data-testid="header-cta-library">Start Dracula</Link>
         </div>
 
         <button
@@ -103,7 +103,7 @@ export default function Header() {
             >
               {accountLabel}
             </NavLink>
-            <Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Start Reading</Link>
+            <Link to="/book/dracula" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Start Dracula</Link>
 
             {activeSocials.length > 0 && (
               <nav className="mt-7 pt-5 border-t border-brand-soft flex items-center justify-center gap-4" aria-label="Earnalism social links" data-testid="mobile-socials">

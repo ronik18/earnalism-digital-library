@@ -1,0 +1,18 @@
+surface,item,classification,visible_cta,destination,allowed,analytics_event,notes
+homepage hero,Dracula,LIVE_APPROVED,Read Chapter 1 Free,/reader/dracula,true,homepage_dracula_cta_click,Primary CTA
+homepage hero,Dracula,LIVE_APPROVED,Start Dracula,/book/dracula,true,dracula_start_reading_click,Book page CTA
+homepage hero,Dracula,LIVE_APPROVED,Get 7-Day Reading Pass,/pricing?source=homepage_hero&book=dracula,true,dracula_reading_pass_click,Revenue CTA
+homepage carousel,Dracula,LIVE_APPROVED,Read Chapter 1 Free,/reader/dracula,true,dracula_preview_start,Approved reader path
+homepage carousel,Rights-safe source,LIVE_APPROVED_CONTEXT,View source note,/book/dracula#rights-note,true,dracula_book_view,Source note
+homepage carousel,Dracula Reading Path,COMING_SOON_PIPELINE,Notify Me,/contact?interest=dracula-reading-path,true,dracula_notify_me_click,Draft path only
+homepage pipeline,Frankenstein,COMING_SOON_PIPELINE,Notify Me,/contact?interest=frankenstein,true,dracula_notify_me_click,No reader link
+homepage pipeline,Sherlock Holmes,COMING_SOON_PIPELINE,Notify Me,/contact?interest=sherlock-holmes,true,dracula_notify_me_click,No reader link
+homepage pipeline,Sultana's Dream,COMING_SOON_PIPELINE,Notify Me,/contact?interest=sultanas-dream,true,dracula_notify_me_click,No reader link
+homepage pipeline,Calculus Made Easy,COMING_SOON_PIPELINE,Notify Me,/contact?interest=calculus-made-easy,true,dracula_notify_me_click,No reader link
+library live shelf,Dracula,LIVE_APPROVED,Read Chapter 1 Free,/reader/dracula,true,dracula_preview_start,Approved reader path
+library live shelf,Dracula,LIVE_APPROVED,Start Reading,/book/dracula,true,dracula_start_reading_click,Book page path
+library live shelf,Dracula,LIVE_APPROVED,Get 7-Day Reading Pass,/pricing?source=library_live_shelf&book=dracula,true,dracula_reading_pass_click,Revenue CTA
+book page,Dracula,LIVE_APPROVED,Read Chapter 1 Free,/reader/dracula,true,dracula_preview_start,Approved reader path
+book page,Dracula,LIVE_APPROVED,Continue Reading,/reader/dracula,true,dracula_start_reading_click,Approved reader path
+book page,Dracula,LIVE_APPROVED,Get 7-Day Reading Pass,/pricing?source=book_detail&book=dracula,true,dracula_reading_pass_click,Revenue CTA
+reader,Dracula,LIVE_APPROVED,Audio disabled,n/a,true,n/a,No audio CTA
