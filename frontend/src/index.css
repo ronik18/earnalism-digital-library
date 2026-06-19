@@ -1383,7 +1383,6 @@ textarea.input-elegant {
 
 .pricing-card__badge {
   align-self: flex-start;
-  margin-top: 1rem;
   border: 1px solid rgba(197, 160, 89, 0.42);
   border-radius: 999px;
   padding: 0.35rem 0.65rem;
@@ -1393,6 +1392,12 @@ textarea.input-elegant {
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.pricing-card__badge--muted {
+  border-color: rgba(74, 28, 39, 0.16);
+  color: var(--text-secondary);
+  background: rgba(250, 247, 240, 0.62);
 }
 
 .reader-upsell {

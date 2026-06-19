@@ -47,7 +47,7 @@ export default function ReaderUpsellPrompt({ book, chapter, onDismiss }) {
       </div>
       <div className="reader-upsell__body">
         <p className="reader-upsell__eyebrow">After this read</p>
-        <h3>Enjoyed this read? Continue with <em>An Evening In</em> at ₹89 — saving {EVENING_COUPON_DISCOUNT}%.</h3>
+        <h3>Enjoyed this read? Continue with <em>The Quiet Hour</em> at ₹89 — saving {EVENING_COUPON_DISCOUNT}%.</h3>
         <div className="reader-upsell__timer" aria-label={`Coupon expires in ${formatCouponCountdown(remainingMs)}`}>
           <div className="reader-upsell__timer-track">
             <span style={{ width: `${timerPct}%` }} />

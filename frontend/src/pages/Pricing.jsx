@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import useSEO from "../hooks/useSEO";
 import { Clock, Lock } from "lucide-react";
@@ -8,6 +8,11 @@ import { toast } from "sonner";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 
 const RAZORPAY_SCRIPT = "https://checkout.razorpay.com/v1/checkout.js";
+
+const PACK_BADGES = {
+  "1h": "Best first choice",
+  "10h": "Best value",
+};
 
 function loadRazorpayScript() {
   return new Promise((resolve) => {
@@ -41,6 +46,7 @@ export default function Pricing() {
   const selectedPackId = searchParams.get("pack");
   const couponCode = searchParams.get("coupon");
   const funnelSource = searchParams.get("source");
+  const explainerTrackedRef = useRef(false);
 
   useEffect(() => {
     trackFunnelEvent("pricing_view", {
@@ -50,13 +56,41 @@ export default function Pricing() {
     });
     Promise.all([api.get("/payments/packs"), api.get("/payments/config")])
       .then(([packsRes, configRes]) => {
-        setPacks(packsRes.data || []);
+        const packRows = packsRes.data || [];
+        setPacks(packRows);
         setConfig(configRes.data || {});
+        packRows.forEach((pack) => {
+          trackFunnelEvent("pricing_pack_rendered", {
+            pack_id: pack.id,
+            label: pack.label,
+            minutes: pack.minutes,
+            price_inr: pack.price_inr,
+            selected: selectedPackId === pack.id,
+            source: funnelSource || "pricing",
+          });
+        });
       })
       .catch(() => setPacks([]));
   }, [couponCode, funnelSource, selectedPackId]);
 
+  useEffect(() => {
+    if (explainerTrackedRef.current) return;
+    explainerTrackedRef.current = true;
+    trackFunnelEvent("reading_time_explainer_rendered", {
+      source: funnelSource || "pricing",
+      book_slug: "dracula",
+    });
+  }, [funnelSource]);
+
   const isAuthed = !!user && typeof user === "object";
+
+  const handleDraculaContinueClick = () => {
+    trackFunnelEvent("dracula_continue_from_pricing_click", {
+      book_slug: "dracula",
+      selected_pack_id: selectedPackId || "",
+      source: funnelSource || "pricing",
+    });
+  };
 
   const handleBuy = async (pack) => {
     trackFunnelEvent("pricing_pack_cta_click", {
@@ -203,12 +237,23 @@ export default function Pricing() {
         <div className="text-center mb-14">
           <div className="italic-eyebrow">Reading time, by the pack</div>
           <h1 className="font-serif-light text-4xl sm:text-5xl lg:text-[3.5rem] text-burgundy leading-[1.05] mt-3 max-w-3xl mx-auto">
-            Pay for the minutes you <span className="italic-accent">actually</span> read.
+            Choose your reading time. <span className="italic-accent">Return whenever</span> the book calls.
           </h1>
           <div className="gold-rule-thin mx-auto mt-7" />
           <p className="text-charcoal-soft text-base sm:text-lg font-light leading-[1.9] mt-7 max-w-2xl mx-auto">
-            No subscriptions. No autorenewals. No pressure to finish before a billing cycle. Choose a pack, open a book, and the clock only runs while the words do.
+            Start with Chapter 1 free. When you are ready to continue Dracula, add reading time. Your time is used only while you read.
           </p>
+          <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/book/dracula"
+              onClick={handleDraculaContinueClick}
+              className="btn-secondary"
+              data-testid="dracula-continue-from-pricing"
+            >
+              Continue Dracula
+            </Link>
+            <span className="text-xs tracking-[0.18em] uppercase text-charcoal-soft">Chapter 1 remains free to preview</span>
+          </div>
           {showSimulator && (
             <div className="mt-7 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--brand-gold)]/40 text-[0.7rem] tracking-[0.22em] uppercase text-gold-deep" data-testid="pricing-test-mode-banner">
               <Lock size={11} strokeWidth={1.5} /> Test mode — Razorpay keys not configured. Purchases use a local simulator.
@@ -224,10 +269,14 @@ export default function Pricing() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {packs.map((p) => {
             const selected = selectedPackId === p.id;
+            const badge = PACK_BADGES[p.id];
             return (
             <div key={p.id} className={`card-elegant p-7 flex flex-col ${selected ? "pricing-card--selected" : ""}`} data-testid={`pack-${p.id}`} aria-label={selected ? `${p.label}, selected offer` : p.label}>
               <div className="italic-eyebrow opacity-80 flex items-center gap-2"><Clock size={13} strokeWidth={1.5} /> {p.minutes >= 60 ? `${p.minutes / 60} ${p.minutes === 60 ? "hour" : "hours"}` : `${p.minutes} minutes`}</div>
-              {selected && <span className="pricing-card__badge">Recommended next step</span>}
+              <div className="flex flex-wrap gap-2 mt-4 min-h-[2rem]">
+                {badge && <span className="pricing-card__badge">{badge}</span>}
+                {selected && <span className="pricing-card__badge pricing-card__badge--muted">Selected</span>}
+              </div>
               <h3 className="font-serif-display text-2xl text-burgundy leading-snug mt-3">{p.label}</h3>
               <div className="font-serif-light text-4xl text-charcoal mt-5">₹{p.price_inr}</div>
               <p className="text-charcoal-soft text-sm font-light leading-relaxed mt-4">{p.note}</p>
@@ -248,10 +297,24 @@ export default function Pricing() {
           })}
         </div>
 
+        <section className="mt-16 pt-12 border-t border-[var(--border-soft)]/80" aria-labelledby="why-reading-time" data-testid="reading-time-explainer">
+          <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-12 items-start">
+            <div>
+              <div className="italic-eyebrow mb-4">Why reading time?</div>
+              <h2 id="why-reading-time" className="font-serif-light text-3xl sm:text-4xl text-burgundy leading-tight">
+                A quieter way to pay for reading.
+              </h2>
+            </div>
+            <p className="text-charcoal-soft text-base sm:text-lg font-light leading-[1.9] max-w-3xl">
+              Earnalism is a digital reading room. You buy quiet reading time, not a noisy subscription. There is no autorenewal and no pressure to finish before a billing cycle.
+            </p>
+          </div>
+        </section>
+
         <div className="text-center mt-14">
           <p className="text-sm text-charcoal-soft font-light italic max-w-xl mx-auto">
-            Payments are processed securely by Razorpay. Your reading time is credited the moment payment is confirmed.
-            For support or refund questions, contact sales@reoenterprise.org with your payment reference.
+            Secure payment by Razorpay. No subscription or autorenewal. Reading time is credited to your wallet after confirmation.
+            For support or refund questions, contact sales@reoenterprise.org.
           </p>
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact" className="btn-secondary">Need help?</Link>

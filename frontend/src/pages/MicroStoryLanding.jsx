@@ -24,7 +24,7 @@ const STORIES = [
 export default function MicroStoryLanding() {
   useSEO({
     title: "3-Minute Stories — Earnalism",
-    description: "Try a quiet 3-minute Earnalism preview, then start with the ₹49 Afternoon Pause reading pack.",
+    description: "Try a quiet 3-minute Earnalism preview, then continue with The First Chapter — ₹49.",
   });
 
   return (
@@ -35,7 +35,7 @@ export default function MicroStoryLanding() {
           <h1>Start with a small read before you choose a longer stay.</h1>
           <p>
             Built for Instagram and YouTube visitors who want a low-risk first step:
-            sample the tone, then unlock the ₹49 <em>Afternoon Pause</em>.
+            sample the tone, then unlock <em>The First Chapter</em> for ₹49.
           </p>
           <Link
             to="/pricing?pack=30m&source=micro_story"
@@ -45,7 +45,7 @@ export default function MicroStoryLanding() {
             Start with ₹49 <ArrowRight size={15} />
           </Link>
         </div>
-        <div className="micro-story-hero__panel" aria-label="Why start with Afternoon Pause">
+        <div className="micro-story-hero__panel" aria-label="Why start with The First Chapter">
           <div><Clock size={18} /> 30 reading minutes</div>
           <div><BookOpen size={18} /> Enough for a first chapter</div>
           <div><ShieldCheck size={18} /> No autorenewal</div>
@@ -63,7 +63,7 @@ export default function MicroStoryLanding() {
               className="micro-story-card__cta"
               onClick={() => trackFunnelEvent("micro_story_card_cta_click", { pack_id: "30m", story: story.title, price_inr: 49 })}
             >
-              Continue with Afternoon Pause <ArrowRight size={14} />
+              Continue with The First Chapter <ArrowRight size={14} />
             </Link>
           </article>
         ))}
