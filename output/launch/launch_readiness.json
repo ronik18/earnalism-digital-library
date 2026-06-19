@@ -1,0 +1,2010 @@
+{
+  "production_parity": {
+    "status": "BLOCKED",
+    "fetch_production": true,
+    "production_base_url": "https://theearnalism.com",
+    "vercel": {
+      "framework": "create-react-app",
+      "output_directory": "build",
+      "api_proxy_present": true,
+      "csp_present": true,
+      "removed_content_rewrites": [
+        {
+          "source": "/product",
+          "destination": "/api/removed-content?path=/product"
+        },
+        {
+          "source": "/products",
+          "destination": "/api/removed-content?path=/products"
+        },
+        {
+          "source": "/product-category",
+          "destination": "/api/removed-content?path=/product-category"
+        },
+        {
+          "source": "/fashion",
+          "destination": "/api/removed-content?path=/fashion"
+        },
+        {
+          "source": "/clothing",
+          "destination": "/api/removed-content?path=/clothing"
+        },
+        {
+          "source": "/apparel",
+          "destination": "/api/removed-content?path=/apparel"
+        },
+        {
+          "source": "/shop",
+          "destination": "/api/removed-content?path=/shop"
+        },
+        {
+          "source": "/shop/",
+          "destination": "/api/removed-content?path=/shop/"
+        },
+        {
+          "source": "/product/:path*",
+          "destination": "/api/removed-content?path=/product/:path*"
+        },
+        {
+          "source": "/products/:path*",
+          "destination": "/api/removed-content?path=/products/:path*"
+        },
+        {
+          "source": "/product-category/:path*",
+          "destination": "/api/removed-content?path=/product-category/:path*"
+        },
+        {
+          "source": "/shop/:path*",
+          "destination": "/api/removed-content?path=/shop/:path*"
+        },
+        {
+          "source": "/fashion/:path*",
+          "destination": "/api/removed-content?path=/fashion/:path*"
+        },
+        {
+          "source": "/clothing/:path*",
+          "destination": "/api/removed-content?path=/clothing/:path*"
+        },
+        {
+          "source": "/apparel/:path*",
+          "destination": "/api/removed-content?path=/apparel/:path*"
+        },
+        {
+          "source": "/tag/fashion",
+          "destination": "/api/removed-content?path=/tag/fashion"
+        },
+        {
+          "source": "/tag/clothing",
+          "destination": "/api/removed-content?path=/tag/clothing"
+        },
+        {
+          "source": "/tag/apparel",
+          "destination": "/api/removed-content?path=/tag/apparel"
+        },
+        {
+          "source": "/patterned-wrap-dress",
+          "destination": "/api/removed-content?path=/patterned-wrap-dress"
+        },
+        {
+          "source": "/denim-jacket",
+          "destination": "/api/removed-content?path=/denim-jacket"
+        },
+        {
+          "source": "/denim-jackets",
+          "destination": "/api/removed-content?path=/denim-jackets"
+        },
+        {
+          "source": "/journal/patterned-wrap-dress",
+          "destination": "/api/removed-content?path=/journal/patterned-wrap-dress"
+        },
+        {
+          "source": "/journal/denim-jacket",
+          "destination": "/api/removed-content?path=/journal/denim-jacket"
+        },
+        {
+          "source": "/journal/denim-jackets",
+          "destination": "/api/removed-content?path=/journal/denim-jackets"
+        },
+        {
+          "source": "/blog/patterned-wrap-dress",
+          "destination": "/api/removed-content?path=/blog/patterned-wrap-dress"
+        },
+        {
+          "source": "/blog/denim-jacket",
+          "destination": "/api/removed-content?path=/blog/denim-jacket"
+        },
+        {
+          "source": "/blog/denim-jackets",
+          "destination": "/api/removed-content?path=/blog/denim-jackets"
+        },
+        {
+          "source": "/woocommerce/:path*",
+          "destination": "/api/removed-content?path=/woocommerce/:path*"
+        },
+        {
+          "source": "/sample-product/:path*",
+          "destination": "/api/removed-content?path=/sample-product/:path*"
+        },
+        {
+          "source": "/placeholder-product/:path*",
+          "destination": "/api/removed-content?path=/placeholder-product/:path*"
+        },
+        {
+          "source": "/lorem-ipsum/:path*",
+          "destination": "/api/removed-content?path=/lorem-ipsum/:path*"
+        }
+      ]
+    },
+    "local_removed_routes": [
+      {
+        "path": "/product/patterned-wrap-dress",
+        "status": 410,
+        "destination": "/api/removed-content?path=/product/:path*",
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "generic_shell": false,
+        "matched": "removed-content"
+      },
+      {
+        "path": "/journal/denim-jackets",
+        "status": 410,
+        "destination": "/api/removed-content?path=/journal/denim-jackets",
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "generic_shell": false,
+        "matched": "removed-content"
+      },
+      {
+        "path": "/shop",
+        "status": 410,
+        "destination": "/api/removed-content?path=/shop",
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "generic_shell": false,
+        "matched": "removed-content"
+      },
+      {
+        "path": "/shop/example",
+        "status": 410,
+        "destination": "/api/removed-content?path=/shop/:path*",
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "generic_shell": false,
+        "matched": "removed-content"
+      },
+      {
+        "path": "/fashion",
+        "status": 410,
+        "destination": "/api/removed-content?path=/fashion",
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "generic_shell": false,
+        "matched": "removed-content"
+      },
+      {
+        "path": "/clothing",
+        "status": 410,
+        "destination": "/api/removed-content?path=/clothing",
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "generic_shell": false,
+        "matched": "removed-content"
+      },
+      {
+        "path": "/woocommerce/test",
+        "status": 410,
+        "destination": "/api/removed-content?path=/woocommerce/:path*",
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "generic_shell": false,
+        "matched": "removed-content"
+      },
+      {
+        "path": "/sample-product/test",
+        "status": 410,
+        "destination": "/api/removed-content?path=/sample-product/:path*",
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "generic_shell": false,
+        "matched": "removed-content"
+      },
+      {
+        "path": "/placeholder-product/test",
+        "status": 410,
+        "destination": "/api/removed-content?path=/placeholder-product/:path*",
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "generic_shell": false,
+        "matched": "removed-content"
+      }
+    ],
+    "production_removed_routes": [
+      {
+        "url": "https://theearnalism.com/product/patterned-wrap-dress",
+        "status": 410,
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "content_type": "text/html; charset=utf-8",
+        "final_url": "https://theearnalism.com/product/patterned-wrap-dress",
+        "generic_shell": false,
+        "error": ""
+      },
+      {
+        "url": "https://theearnalism.com/journal/denim-jackets",
+        "status": 410,
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "content_type": "text/html; charset=utf-8",
+        "final_url": "https://theearnalism.com/journal/denim-jackets",
+        "generic_shell": false,
+        "error": ""
+      },
+      {
+        "url": "https://theearnalism.com/shop",
+        "status": 308,
+        "x_robots_tag": "",
+        "content_type": "text/plain",
+        "final_url": "https://theearnalism.com/library",
+        "generic_shell": false,
+        "error": ""
+      },
+      {
+        "url": "https://theearnalism.com/shop/example",
+        "status": 404,
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "content_type": "text/html; charset=utf-8",
+        "final_url": "https://theearnalism.com/shop/example",
+        "generic_shell": false,
+        "error": ""
+      },
+      {
+        "url": "https://theearnalism.com/fashion",
+        "status": 410,
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "content_type": "text/html; charset=utf-8",
+        "final_url": "https://theearnalism.com/fashion",
+        "generic_shell": false,
+        "error": ""
+      },
+      {
+        "url": "https://theearnalism.com/clothing",
+        "status": 410,
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "content_type": "text/html; charset=utf-8",
+        "final_url": "https://theearnalism.com/clothing",
+        "generic_shell": false,
+        "error": ""
+      },
+      {
+        "url": "https://theearnalism.com/woocommerce/test",
+        "status": 410,
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "content_type": "text/html; charset=utf-8",
+        "final_url": "https://theearnalism.com/woocommerce/test",
+        "generic_shell": false,
+        "error": ""
+      },
+      {
+        "url": "https://theearnalism.com/sample-product/test",
+        "status": 410,
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "content_type": "text/html; charset=utf-8",
+        "final_url": "https://theearnalism.com/sample-product/test",
+        "generic_shell": false,
+        "error": ""
+      },
+      {
+        "url": "https://theearnalism.com/placeholder-product/test",
+        "status": 410,
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "content_type": "text/html; charset=utf-8",
+        "final_url": "https://theearnalism.com/placeholder-product/test",
+        "generic_shell": false,
+        "error": ""
+      }
+    ],
+    "evidence_files": {
+      "curl_text": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/production_removed_routes_curl.txt",
+      "json": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/production_removed_routes.json"
+    },
+    "issues": [
+      {
+        "area": "production_parity",
+        "severity": "HIGH",
+        "message": "Production https://theearnalism.com/shop returned redirect HTTP 308.",
+        "recommendation": "Removed/demo URLs must return 410 or 404 with X-Robots-Tag for deindexing.",
+        "blocker": true
+      },
+      {
+        "area": "production_parity",
+        "severity": "HIGH",
+        "message": "Production /shop returned HTTP 308; /shop must not redirect.",
+        "recommendation": "Deploy current Vercel routing so /shop returns 410/noindex.",
+        "blocker": true
+      }
+    ]
+  },
+  "seo": {
+    "status": "BLOCKED_FOR_BOOK_SEO",
+    "sitemap": {
+      "url_count": 124,
+      "demo_url_count": 0,
+      "demo_urls": [],
+      "book_url_count": 105
+    },
+    "robots": {
+      "sitemap_present": true,
+      "retired_routes_crawlable": true,
+      "private_routes_blocked": true
+    },
+    "static_html": {
+      "homepage_meta_complete": true,
+      "organization_json_ld": true,
+      "website_json_ld": true,
+      "book_json_ld_present": true,
+      "client_side_book_metadata_risk": true,
+      "unsafe_book_schema_emitted": false
+    },
+    "priority_routes": [
+      "/",
+      "/library",
+      "/pricing",
+      "/book/the-principles-of-scientific-management",
+      "/book/acres-of-diamonds",
+      "/book/my-life-and-work",
+      "/book/the-science-of-getting-rich",
+      "/book/the-art-of-money-getting"
+    ],
+    "blocked_reason": "Client-rendered CRA book pages need prerender/SSR/static snapshots for durable book SEO.",
+    "issues": [
+      {
+        "area": "seo",
+        "severity": "HIGH",
+        "message": "Book detail metadata is generated client-side after API load in the CRA app.",
+        "recommendation": "For 9.7+ launch SEO, prerender/SSR/static-snapshot priority book pages so crawlers receive book-specific metadata.",
+        "blocker": true
+      }
+    ]
+  },
+  "ux": {
+    "status": "PASS",
+    "checks": {
+      "hero_start_reading": true,
+      "hero_pricing_path": true,
+      "newsletter_entry": true,
+      "book_preview_cta": true,
+      "book_buy_cta": true,
+      "pricing_cta": true,
+      "pricing_trust_statement": true,
+      "mobile_nav_cta": true
+    },
+    "recommendations": [
+      "Add server-rendered copy for priority public pages before major SEO launch.",
+      "Keep Start Reading as primary CTA and Buy Reading Time as monetization CTA.",
+      "Add explicit institution pilot CTA to homepage once the operator has a staffed response path.",
+      "Keep pricing trust/refund/support copy visible above checkout start."
+    ],
+    "issues": []
+  },
+  "performance": {
+    "status": "PASS",
+    "frontend": {
+      "react_version": "^19.0.0",
+      "js_file_count": 20,
+      "total_js_bytes": 809090,
+      "largest_js_files": [
+        {
+          "file": "main.c1dcdab3.js",
+          "bytes": 361013
+        },
+        {
+          "file": "453.2ef94f91.chunk.js",
+          "bytes": 111336
+        },
+        {
+          "file": "429.44085a1a.chunk.js",
+          "bytes": 93263
+        },
+        {
+          "file": "556.3a2360f7.chunk.js",
+          "bytes": 65384
+        },
+        {
+          "file": "828.125aefc0.chunk.js",
+          "bytes": 40142
+        },
+        {
+          "file": "660.210aeb62.chunk.js",
+          "bytes": 22116
+        },
+        {
+          "file": "467.f5131a2b.chunk.js",
+          "bytes": 16614
+        },
+        {
+          "file": "565.4d3ed07c.chunk.js",
+          "bytes": 12592
+        }
+      ],
+      "route_level_lazy_loading_detected": true,
+      "source_maps_disabled_command": true
+    },
+    "backend": {
+      "health_endpoint_detected": true,
+      "redis_detected": true,
+      "rate_limit_detected": true,
+      "byte_range_audio_detected": true,
+      "payment_idempotency_detected": true
+    },
+    "load_tools": {
+      "k6_available": true,
+      "k6_10x_script_exists": true,
+      "load_gate_script_exists": true,
+      "package_load_scripts": {
+        "loadtest": "k6 run scripts/k6_10x_spike.js",
+        "load:100": "k6 run scripts/k6_load_100.js",
+        "load:10x": "bash scripts/run_10x_load_gate.sh"
+      },
+      "load_evidence_status": "OPERATOR_REQUIRED",
+      "load_result_files": []
+    },
+    "targets": {
+      "homepage_p95_ms": 1800,
+      "library_p95_ms": 2200,
+      "book_detail_p95_ms": 2200,
+      "reader_preview_p95_ms": 2500,
+      "api_book_detail_p95_ms": 500
+    },
+    "issues": []
+  },
+  "audio": {
+    "status": "PASS_WITH_WARNINGS",
+    "assets": {
+      "public_audio_dir_exists": true,
+      "file_count": 25,
+      "total_bytes": 102094631,
+      "by_suffix": {
+        ".vtt": 5,
+        ".json": 15,
+        ".mp3": 5
+      },
+      "mp3_count": 5,
+      "timestamp_json_count": 15,
+      "vtt_count": 5
+    },
+    "guards": {
+      "remote_upload_guard_present": true,
+      "voice_pipeline_dry_run_only": true,
+      "package_contains_non_dry_audio_scripts": true,
+      "remote_guard_test_detected": true
+    },
+    "asset_audit_file": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/audio_asset_audit.json",
+    "asset_audit": [
+      {
+        "file": "frontend/public/audio/ben/book-0deb35c750.mp3",
+        "book_slug": "book-0deb35c750",
+        "title": "খাতা",
+        "author": "রবীন্দ্রনাথ ঠাকুর",
+        "language": "ben",
+        "provider": "sarvam",
+        "rights_status": "UNKNOWN",
+        "qa_status": "NEEDS_SYNC_OR_WAVEFORM_REVIEW",
+        "duration_ms": 721816,
+        "file_size": 4331433,
+        "public_status": "PUBLIC_STATIC_ASSET",
+        "private_status": "NOT_PRIVATE",
+        "sidecars": {
+          "meta": "frontend/public/audio/ben/book-0deb35c750_meta.json",
+          "timestamps": "frontend/public/audio/ben/book-0deb35c750_timestamps.json",
+          "vtt": "frontend/public/audio/ben/book-0deb35c750_highlight.vtt",
+          "chapters": "frontend/public/audio/ben/book-0deb35c750_chapters.json",
+          "waveform": ""
+        },
+        "qa_flags": {
+          "meta_present": true,
+          "duration_present": true,
+          "timestamps_present": true,
+          "timestamp_count": 1557,
+          "vtt_present": true,
+          "chapters_present": true,
+          "waveform_present": false,
+          "highlight_available": true
+        },
+        "recommended_action": "RIGHTS_REVIEW",
+        "blocking_reason": "Public audio requires linked approved book rights and listening/sync QA before launch."
+      },
+      {
+        "file": "frontend/public/audio/ben/book-63afd5e9be.mp3",
+        "book_slug": "book-63afd5e9be",
+        "title": "দেনাপাওনা",
+        "author": "রবীন্দ্রনাথ ঠাকুর",
+        "language": "ben",
+        "provider": "sarvam",
+        "rights_status": "UNKNOWN",
+        "qa_status": "NEEDS_SYNC_OR_WAVEFORM_REVIEW",
+        "duration_ms": 865733,
+        "file_size": 5195041,
+        "public_status": "PUBLIC_STATIC_ASSET",
+        "private_status": "NOT_PRIVATE",
+        "sidecars": {
+          "meta": "frontend/public/audio/ben/book-63afd5e9be_meta.json",
+          "timestamps": "frontend/public/audio/ben/book-63afd5e9be_timestamps.json",
+          "vtt": "frontend/public/audio/ben/book-63afd5e9be_highlight.vtt",
+          "chapters": "frontend/public/audio/ben/book-63afd5e9be_chapters.json",
+          "waveform": ""
+        },
+        "qa_flags": {
+          "meta_present": true,
+          "duration_present": true,
+          "timestamps_present": true,
+          "timestamp_count": 1868,
+          "vtt_present": true,
+          "chapters_present": true,
+          "waveform_present": false,
+          "highlight_available": true
+        },
+        "recommended_action": "RIGHTS_REVIEW",
+        "blocking_reason": "Public audio requires linked approved book rights and listening/sync QA before launch."
+      },
+      {
+        "file": "frontend/public/audio/ben/book-d19e96859f.mp3",
+        "book_slug": "book-d19e96859f",
+        "title": "গিন্নি",
+        "author": "রবীন্দ্রনাথ ঠাকুর",
+        "language": "ben",
+        "provider": "sarvam",
+        "rights_status": "UNKNOWN",
+        "qa_status": "NEEDS_SYNC_OR_WAVEFORM_REVIEW",
+        "duration_ms": 465154,
+        "file_size": 2791515,
+        "public_status": "PUBLIC_STATIC_ASSET",
+        "private_status": "NOT_PRIVATE",
+        "sidecars": {
+          "meta": "frontend/public/audio/ben/book-d19e96859f_meta.json",
+          "timestamps": "frontend/public/audio/ben/book-d19e96859f_timestamps.json",
+          "vtt": "frontend/public/audio/ben/book-d19e96859f_highlight.vtt",
+          "chapters": "frontend/public/audio/ben/book-d19e96859f_chapters.json",
+          "waveform": ""
+        },
+        "qa_flags": {
+          "meta_present": true,
+          "duration_present": true,
+          "timestamps_present": true,
+          "timestamp_count": 999,
+          "vtt_present": true,
+          "chapters_present": true,
+          "waveform_present": false,
+          "highlight_available": true
+        },
+        "recommended_action": "RIGHTS_REVIEW",
+        "blocking_reason": "Public audio requires linked approved book rights and listening/sync QA before launch."
+      },
+      {
+        "file": "frontend/public/audio/ben/ginni.mp3",
+        "book_slug": "ginni",
+        "title": "গিন্নি",
+        "author": "রবীন্দ্রনাথ ঠাকুর",
+        "language": "ben",
+        "provider": "google",
+        "rights_status": "UNKNOWN",
+        "qa_status": "NEEDS_SYNC_OR_WAVEFORM_REVIEW",
+        "duration_ms": 478800,
+        "file_size": 2873487,
+        "public_status": "PUBLIC_STATIC_ASSET",
+        "private_status": "NOT_PRIVATE",
+        "sidecars": {
+          "meta": "frontend/public/audio/ben/ginni_meta.json",
+          "timestamps": "frontend/public/audio/ben/ginni_timestamps.json",
+          "vtt": "frontend/public/audio/ben/ginni_highlight.vtt",
+          "chapters": "frontend/public/audio/ben/ginni_chapters.json",
+          "waveform": ""
+        },
+        "qa_flags": {
+          "meta_present": true,
+          "duration_present": true,
+          "timestamps_present": true,
+          "timestamp_count": 998,
+          "vtt_present": true,
+          "chapters_present": true,
+          "waveform_present": false,
+          "highlight_available": true
+        },
+        "recommended_action": "RIGHTS_REVIEW",
+        "blocking_reason": "Public audio requires linked approved book rights and listening/sync QA before launch."
+      },
+      {
+        "file": "frontend/public/audio/en/bharat-at-the-crossroads.mp3",
+        "book_slug": "bharat-at-the-crossroads",
+        "title": "Bharat at the Crossroads",
+        "author": "Ronik Basak",
+        "language": "en",
+        "provider": "google",
+        "rights_status": "UNKNOWN",
+        "qa_status": "NEEDS_SYNC_OR_WAVEFORM_REVIEW",
+        "duration_ms": 13698074,
+        "file_size": 82189079,
+        "public_status": "PUBLIC_STATIC_ASSET",
+        "private_status": "NOT_PRIVATE",
+        "sidecars": {
+          "meta": "frontend/public/audio/en/bharat-at-the-crossroads_meta.json",
+          "timestamps": "frontend/public/audio/en/bharat-at-the-crossroads_timestamps.json",
+          "vtt": "frontend/public/audio/en/bharat-at-the-crossroads_highlight.vtt",
+          "chapters": "frontend/public/audio/en/bharat-at-the-crossroads_chapters.json",
+          "waveform": ""
+        },
+        "qa_flags": {
+          "meta_present": true,
+          "duration_present": true,
+          "timestamps_present": true,
+          "timestamp_count": 34481,
+          "vtt_present": true,
+          "chapters_present": true,
+          "waveform_present": false,
+          "highlight_available": true
+        },
+        "recommended_action": "RIGHTS_REVIEW",
+        "blocking_reason": "Public audio requires linked approved book rights and listening/sync QA before launch."
+      }
+    ],
+    "classification_policy": {
+      "KEEP": "Linked book has approved rights and QA-passed audio.",
+      "REMASTER": "Rights pass but audio QA or mastering needs improvement.",
+      "REGENERATE": "Narration quality or sync is below launch threshold.",
+      "UNPUBLISH": "Audio is public without rights/QA linkage.",
+      "RIGHTS_REVIEW": "Linked book lacks approved source/rights evidence."
+    },
+    "issues": [
+      {
+        "area": "audiobook",
+        "severity": "HIGH",
+        "message": "5 public audiobook assets lack linked approved rights evidence.",
+        "recommendation": "Keep public audio out of launch promotion until book rights and audio provenance are verified.",
+        "blocker": false
+      },
+      {
+        "area": "audiobook",
+        "severity": "HIGH",
+        "message": "5 public audiobook assets need listening/sync/waveform QA.",
+        "recommendation": "Complete audio QA before marking audiobook pages launch-ready.",
+        "blocker": false
+      }
+    ]
+  },
+  "security": {
+    "status": "PASS",
+    "checks": {
+      "secret_hits": [],
+      "csp_header_present": true,
+      "hsts_present": true,
+      "admin_guard_detected": true,
+      "razorpay_signature_detected": true,
+      "payment_idempotency_detected": true,
+      "analytics_sanitizer_detected": true
+    },
+    "issues": []
+  },
+  "payment": {
+    "status": "PASS_WITH_WARNINGS",
+    "checks": {
+      "pricing_packs_render": true,
+      "razorpay_checkout_loaded": true,
+      "test_mode_banner": true,
+      "order_creation_endpoint": true,
+      "verify_endpoint": true,
+      "webhook_endpoint": true,
+      "webhook_signature": true,
+      "wallet_credit_idempotency": true,
+      "payment_tests_present": true,
+      "support_refund_copy": true,
+      "dry_run_payment_smoke_written": true,
+      "dry_run_payment_smoke_not_blocked": true
+    },
+    "payment_smoke": {
+      "status": "PASS_WITH_WARNINGS",
+      "mode": "dry_run_static",
+      "public_mutation": false,
+      "external_calls": [],
+      "provider_api_ids": [],
+      "checks": {
+        "dry_run_only": true,
+        "no_external_razorpay_call": true,
+        "pricing_view_page_exists": true,
+        "checkout_start_event_detected": true,
+        "payment_success_event_detected": true,
+        "payment_failed_event_detected": true,
+        "test_mode_simulator_detected": true,
+        "real_order_endpoint_detected": true,
+        "verify_endpoint_detected": true,
+        "webhook_endpoint_detected": true,
+        "webhook_signature_detected": true,
+        "idempotent_credit_detected": true,
+        "post_payment_wallet_refresh_detected": true,
+        "analytics_schema_has_payment_events": true
+      },
+      "blocked_checks": [],
+      "events_required": [
+        "pricing_view",
+        "checkout_start",
+        "payment_success",
+        "payment_failed"
+      ],
+      "operator_follow_up": [
+        "Run a separate controlled Razorpay test-mode checkout with a throwaway user before revenue launch.",
+        "Verify wallet credit, webhook idempotency, payment_failed analytics, and post-payment return UX in production."
+      ]
+    },
+    "payment_smoke_file": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/payment_smoke.json",
+    "issues": [
+      {
+        "area": "payment",
+        "severity": "MEDIUM",
+        "message": "Payment tests exist but live Razorpay production payment flow was not executed in Phase 13.",
+        "recommendation": "Run a controlled Razorpay test-mode payment smoke before revenue launch.",
+        "blocker": false
+      }
+    ]
+  },
+  "analytics": {
+    "status": "BLOCKED_ANALYTICS_GAPS",
+    "events": {
+      "page_view": false,
+      "book_view": false,
+      "preview_start": false,
+      "reading_started": false,
+      "reading_session_completed": false,
+      "pricing_view": true,
+      "checkout_start": true,
+      "payment_success": true,
+      "payment_failed": true,
+      "newsletter_joined": false,
+      "referral_invited": false,
+      "referral_converted": false,
+      "institution_interest": false,
+      "audio_preview_played": false,
+      "cta_clicked": false
+    },
+    "missing_events": [
+      "page_view",
+      "book_view",
+      "preview_start",
+      "reading_started",
+      "reading_session_completed",
+      "newsletter_joined",
+      "referral_invited",
+      "referral_converted",
+      "institution_interest",
+      "audio_preview_played",
+      "cta_clicked"
+    ],
+    "event_schema_file": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/analytics_event_schema.json",
+    "mock_validator": {
+      "status": "PASS",
+      "mock_payload_count": 8,
+      "errors": [],
+      "external_calls": []
+    },
+    "privacy": {
+      "safe_metadata_backend_detected": true,
+      "tests_do_not_send_analytics": true,
+      "pii_policy": "Event schemas should use anonymous/session IDs and sanitized metadata only."
+    },
+    "issues": [
+      {
+        "area": "analytics_growth_tracking",
+        "severity": "MEDIUM",
+        "message": "Missing canonical growth events: page_view, book_view, preview_start, reading_started, reading_session_completed, newsletter_joined, referral_invited, referral_converted, institution_interest, audio_preview_played, cta_clicked.",
+        "recommendation": "Instrument canonical launch events before paid acquisition or broad onboarding.",
+        "blocker": false
+      }
+    ]
+  },
+  "catalog_action_plan": {
+    "rows": [
+      {
+        "url": "https://theearnalism.com/",
+        "path": "/",
+        "title": "homepage",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/library",
+        "path": "/library",
+        "title": "library",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/journal",
+        "path": "/journal",
+        "title": "journal",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/about",
+        "path": "/about",
+        "title": "about",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/contact",
+        "path": "/contact",
+        "title": "contact",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/pricing",
+        "path": "/pricing",
+        "title": "pricing",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/micro-story",
+        "path": "/micro-story",
+        "title": "micro-story",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/library?category=adventure",
+        "path": "/library?category=adventure",
+        "title": "library?category=adventure",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Category URL is allowed but should be canonicalized carefully."
+      },
+      {
+        "url": "https://theearnalism.com/library?category=bengali-classics",
+        "path": "/library?category=bengali-classics",
+        "title": "library?category=bengali-classics",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Category URL is allowed but should be canonicalized carefully."
+      },
+      {
+        "url": "https://theearnalism.com/library?category=business",
+        "path": "/library?category=business",
+        "title": "library?category=business",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Category URL is allowed but should be canonicalized carefully."
+      },
+      {
+        "url": "https://theearnalism.com/library?category=gothic-fiction",
+        "path": "/library?category=gothic-fiction",
+        "title": "library?category=gothic-fiction",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Category URL is allowed but should be canonicalized carefully."
+      },
+      {
+        "url": "https://theearnalism.com/library?category=history-strategy",
+        "path": "/library?category=history-strategy",
+        "title": "library?category=history-strategy",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Category URL is allowed but should be canonicalized carefully."
+      },
+      {
+        "url": "https://theearnalism.com/library?category=literary-fiction",
+        "path": "/library?category=literary-fiction",
+        "title": "library?category=literary-fiction",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Category URL is allowed but should be canonicalized carefully."
+      },
+      {
+        "url": "https://theearnalism.com/library?category=science-fiction",
+        "path": "/library?category=science-fiction",
+        "title": "library?category=science-fiction",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Category URL is allowed but should be canonicalized carefully."
+      },
+      {
+        "url": "https://theearnalism.com/library?category=technology",
+        "path": "/library?category=technology",
+        "title": "library?category=technology",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Category URL is allowed but should be canonicalized carefully."
+      },
+      {
+        "url": "https://theearnalism.com/library?category=young-readers",
+        "path": "/library?category=young-readers",
+        "title": "library?category=young-readers",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Category URL is allowed but should be canonicalized carefully."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-principles-of-scientific-management",
+        "path": "/book/the-principles-of-scientific-management",
+        "title": "book/the-principles-of-scientific-management",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/acres-of-diamonds",
+        "path": "/book/acres-of-diamonds",
+        "title": "book/acres-of-diamonds",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/my-life-and-work",
+        "path": "/book/my-life-and-work",
+        "title": "book/my-life-and-work",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-science-of-getting-rich",
+        "path": "/book/the-science-of-getting-rich",
+        "title": "book/the-science-of-getting-rich",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-art-of-money-getting",
+        "path": "/book/the-art-of-money-getting",
+        "title": "book/the-art-of-money-getting",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/bn-070",
+        "path": "/book/bn-070",
+        "title": "book/bn-070",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/bn-066",
+        "path": "/book/bn-066",
+        "title": "book/bn-066",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/bn-060",
+        "path": "/book/bn-060",
+        "title": "book/bn-060",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/bn-059",
+        "path": "/book/bn-059",
+        "title": "book/bn-059",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/bn-058",
+        "path": "/book/bn-058",
+        "title": "book/bn-058",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/bn-041",
+        "path": "/book/bn-041",
+        "title": "book/bn-041",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/bn-036",
+        "path": "/book/bn-036",
+        "title": "book/bn-036",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/bn-035",
+        "path": "/book/bn-035",
+        "title": "book/bn-035",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/bn-031",
+        "path": "/book/bn-031",
+        "title": "book/bn-031",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/bn-027",
+        "path": "/book/bn-027",
+        "title": "book/bn-027",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/mrinalini",
+        "path": "/book/mrinalini",
+        "title": "book/mrinalini",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/lokrahasya",
+        "path": "/book/lokrahasya",
+        "title": "book/lokrahasya",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/muchiram-gurer-jibanchorit",
+        "path": "/book/muchiram-gurer-jibanchorit",
+        "title": "book/muchiram-gurer-jibanchorit",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/yugalanguriya",
+        "path": "/book/yugalanguriya",
+        "title": "book/yugalanguriya",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/radharani",
+        "path": "/book/radharani",
+        "title": "book/radharani",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/nishkriti",
+        "path": "/book/nishkriti",
+        "title": "book/nishkriti",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/a-jury-of-her-peers",
+        "path": "/book/a-jury-of-her-peers",
+        "title": "book/a-jury-of-her-peers",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-most-dangerous-game",
+        "path": "/book/the-most-dangerous-game",
+        "title": "book/the-most-dangerous-game",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/feathertop",
+        "path": "/book/feathertop",
+        "title": "book/feathertop",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-country-of-the-blind",
+        "path": "/book/the-country-of-the-blind",
+        "title": "book/the-country-of-the-blind",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-adventure-of-the-greek-interpreter",
+        "path": "/book/the-adventure-of-the-greek-interpreter",
+        "title": "book/the-adventure-of-the-greek-interpreter",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-stolen-white-elephant",
+        "path": "/book/the-stolen-white-elephant",
+        "title": "book/the-stolen-white-elephant",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/tobermory",
+        "path": "/book/tobermory",
+        "title": "book/tobermory",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-withered-arm",
+        "path": "/book/the-withered-arm",
+        "title": "book/the-withered-arm",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/a-horseman-in-the-sky",
+        "path": "/book/a-horseman-in-the-sky",
+        "title": "book/a-horseman-in-the-sky",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-selfish-giant",
+        "path": "/book/the-selfish-giant",
+        "title": "book/the-selfish-giant",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-happy-prince",
+        "path": "/book/the-happy-prince",
+        "title": "book/the-happy-prince",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/a-mystery-of-heroism",
+        "path": "/book/a-mystery-of-heroism",
+        "title": "book/a-mystery-of-heroism",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-open-boat",
+        "path": "/book/the-open-boat",
+        "title": "book/the-open-boat",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/a-white-heron",
+        "path": "/book/a-white-heron",
+        "title": "book/a-white-heron",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/a-ghost-story",
+        "path": "/book/a-ghost-story",
+        "title": "book/a-ghost-story",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-cop-and-the-anthem",
+        "path": "/book/the-cop-and-the-anthem",
+        "title": "book/the-cop-and-the-anthem",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-pit-and-the-pendulum",
+        "path": "/book/the-pit-and-the-pendulum",
+        "title": "book/the-pit-and-the-pendulum",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/an-occurrence-at-owl-creek-bridge",
+        "path": "/book/an-occurrence-at-owl-creek-bridge",
+        "title": "book/an-occurrence-at-owl-creek-bridge",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/boule-de-suif",
+        "path": "/book/boule-de-suif",
+        "title": "book/boule-de-suif",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-necklace",
+        "path": "/book/the-necklace",
+        "title": "book/the-necklace",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-bishop",
+        "path": "/book/the-bishop",
+        "title": "book/the-bishop",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-lady-with-the-dog",
+        "path": "/book/the-lady-with-the-dog",
+        "title": "book/the-lady-with-the-dog",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-ransom-of-red-chief",
+        "path": "/book/the-ransom-of-red-chief",
+        "title": "book/the-ransom-of-red-chief",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-last-leaf",
+        "path": "/book/the-last-leaf",
+        "title": "book/the-last-leaf",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-murders-in-the-rue-morgue",
+        "path": "/book/the-murders-in-the-rue-morgue",
+        "title": "book/the-murders-in-the-rue-morgue",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-tell-tale-heart",
+        "path": "/book/the-tell-tale-heart",
+        "title": "book/the-tell-tale-heart",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-2b9853ec52",
+        "path": "/book/book-2b9853ec52",
+        "title": "book/book-2b9853ec52",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-a4a369483f",
+        "path": "/book/book-a4a369483f",
+        "title": "book/book-a4a369483f",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-b9d47814a8",
+        "path": "/book/book-b9d47814a8",
+        "title": "book/book-b9d47814a8",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-0fbdaa730e",
+        "path": "/book/book-0fbdaa730e",
+        "title": "book/book-0fbdaa730e",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-5704b31005",
+        "path": "/book/book-5704b31005",
+        "title": "book/book-5704b31005",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-9a7f771921",
+        "path": "/book/book-9a7f771921",
+        "title": "book/book-9a7f771921",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-4968248842",
+        "path": "/book/book-4968248842",
+        "title": "book/book-4968248842",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-88ded9b47c",
+        "path": "/book/book-88ded9b47c",
+        "title": "book/book-88ded9b47c",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-edfcf810c5",
+        "path": "/book/book-edfcf810c5",
+        "title": "book/book-edfcf810c5",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-95624627d5",
+        "path": "/book/book-95624627d5",
+        "title": "book/book-95624627d5",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-827fdc7aee",
+        "path": "/book/book-827fdc7aee",
+        "title": "book/book-827fdc7aee",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-bfc51280b3",
+        "path": "/book/book-bfc51280b3",
+        "title": "book/book-bfc51280b3",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-4b944e64fa",
+        "path": "/book/book-4b944e64fa",
+        "title": "book/book-4b944e64fa",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-ef193ffc52",
+        "path": "/book/book-ef193ffc52",
+        "title": "book/book-ef193ffc52",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-c307a57868",
+        "path": "/book/book-c307a57868",
+        "title": "book/book-c307a57868",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-0986aeb7e3",
+        "path": "/book/book-0986aeb7e3",
+        "title": "book/book-0986aeb7e3",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-a23625bf36",
+        "path": "/book/book-a23625bf36",
+        "title": "book/book-a23625bf36",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-5461971092",
+        "path": "/book/book-5461971092",
+        "title": "book/book-5461971092",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-1090573dff",
+        "path": "/book/book-1090573dff",
+        "title": "book/book-1090573dff",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-ac5a71075e",
+        "path": "/book/book-ac5a71075e",
+        "title": "book/book-ac5a71075e",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-enchanted-april",
+        "path": "/book/the-enchanted-april",
+        "title": "book/the-enchanted-april",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-metamorphosis",
+        "path": "/book/the-metamorphosis",
+        "title": "book/the-metamorphosis",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-lifted-veil",
+        "path": "/book/the-lifted-veil",
+        "title": "book/the-lifted-veil",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-canterville-ghost",
+        "path": "/book/the-canterville-ghost",
+        "title": "book/the-canterville-ghost",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-strange-case-of-dr-jekyll-and-mr-hyde",
+        "path": "/book/the-strange-case-of-dr-jekyll-and-mr-hyde",
+        "title": "book/the-strange-case-of-dr-jekyll-and-mr-hyde",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-man-who-would-be-king",
+        "path": "/book/the-man-who-would-be-king",
+        "title": "book/the-man-who-would-be-king",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-monkeys-paw",
+        "path": "/book/the-monkeys-paw",
+        "title": "book/the-monkeys-paw",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-yellow-wallpaper",
+        "path": "/book/the-yellow-wallpaper",
+        "title": "book/the-yellow-wallpaper",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/white-fang",
+        "path": "/book/white-fang",
+        "title": "book/white-fang",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-fall-of-the-house-of-usher",
+        "path": "/book/the-fall-of-the-house-of-usher",
+        "title": "book/the-fall-of-the-house-of-usher",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-fbdf2991ab",
+        "path": "/book/book-fbdf2991ab",
+        "title": "book/book-fbdf2991ab",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-c85323409f",
+        "path": "/book/book-c85323409f",
+        "title": "book/book-c85323409f",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-5aedda79fe",
+        "path": "/book/book-5aedda79fe",
+        "title": "book/book-5aedda79fe",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-wonderful-wizard-of-oz",
+        "path": "/book/the-wonderful-wizard-of-oz",
+        "title": "book/the-wonderful-wizard-of-oz",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-picture-of-dorian-gray",
+        "path": "/book/the-picture-of-dorian-gray",
+        "title": "book/the-picture-of-dorian-gray",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-adventures-of-sherlock-holmes",
+        "path": "/book/the-adventures-of-sherlock-holmes",
+        "title": "book/the-adventures-of-sherlock-holmes",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/dracula",
+        "path": "/book/dracula",
+        "title": "book/dracula",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/alices-adventures-in-wonderland",
+        "path": "/book/alices-adventures-in-wonderland",
+        "title": "book/alices-adventures-in-wonderland",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/agentic-ai-with-python",
+        "path": "/book/agentic-ai-with-python",
+        "title": "book/agentic-ai-with-python",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-63afd5e9be",
+        "path": "/book/book-63afd5e9be",
+        "title": "book/book-63afd5e9be",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/bharat-at-the-crossroads",
+        "path": "/book/bharat-at-the-crossroads",
+        "title": "book/bharat-at-the-crossroads",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-2e468c4990",
+        "path": "/book/book-2e468c4990",
+        "title": "book/book-2e468c4990",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-d2fe532e1c",
+        "path": "/book/book-d2fe532e1c",
+        "title": "book/book-d2fe532e1c",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-a74c1a1451",
+        "path": "/book/book-a74c1a1451",
+        "title": "book/book-a74c1a1451",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-f5d593e1f4",
+        "path": "/book/book-f5d593e1f4",
+        "title": "book/book-f5d593e1f4",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-754da4eab8",
+        "path": "/book/book-754da4eab8",
+        "title": "book/book-754da4eab8",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-c7f3ce526c",
+        "path": "/book/book-c7f3ce526c",
+        "title": "book/book-c7f3ce526c",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-d19e96859f",
+        "path": "/book/book-d19e96859f",
+        "title": "book/book-d19e96859f",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-0deb35c750",
+        "path": "/book/book-0deb35c750",
+        "title": "book/book-0deb35c750",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/book-2ddbed8293",
+        "path": "/book/book-2ddbed8293",
+        "title": "book/book-2ddbed8293",
+        "recommended_action": "KEEP_REWRITE",
+        "reason": "Generated or code-like slug should be rewritten before promotion."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-great-gatsby",
+        "path": "/book/the-great-gatsby",
+        "title": "book/the-great-gatsby",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/frankenstein",
+        "path": "/book/frankenstein",
+        "title": "book/frankenstein",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-time-machine",
+        "path": "/book/the-time-machine",
+        "title": "book/the-time-machine",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-secret-garden",
+        "path": "/book/the-secret-garden",
+        "title": "book/the-secret-garden",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/the-call-of-the-wild",
+        "path": "/book/the-call-of-the-wild",
+        "title": "book/the-call-of-the-wild",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/jane-eyre",
+        "path": "/book/jane-eyre",
+        "title": "book/jane-eyre",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/great-expectations",
+        "path": "/book/great-expectations",
+        "title": "book/great-expectations",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/book/pride-and-prejudice",
+        "path": "/book/pride-and-prejudice",
+        "title": "book/pride-and-prejudice",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/journal/how-reading-shapes-better-founders",
+        "path": "/journal/how-reading-shapes-better-founders",
+        "title": "journal/how-reading-shapes-better-founders",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/journal/the-quiet-power-of-a-premium-bookstore-brand",
+        "path": "/journal/the-quiet-power-of-a-premium-bookstore-brand",
+        "title": "journal/the-quiet-power-of-a-premium-bookstore-brand",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      },
+      {
+        "url": "https://theearnalism.com/journal/why-every-small-business-needs-a-story-before-a-strategy",
+        "path": "/journal/why-every-small-business-needs-a-story-before-a-strategy",
+        "title": "journal/why-every-small-business-needs-a-story-before-a-strategy",
+        "recommended_action": "KEEP_PROMOTE",
+        "reason": "Launch-aligned public URL."
+      }
+    ],
+    "counts": {
+      "KEEP_PROMOTE": 81,
+      "KEEP_REWRITE": 43
+    },
+    "csv": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/LAUNCH_CATALOG_ACTION_PLAN.csv",
+    "markdown": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/LAUNCH_CATALOG_ACTION_PLAN.md"
+  },
+  "first_batch_backfill": {
+    "rows": [
+      {
+        "product": "Anandamath Visual Study Companion",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "rights_tier": "B",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "india",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Devdas Study Edition",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "rights_tier": "B",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "india",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Abol Tabol Illustrated Reader",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "rights_tier": "B",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "india",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Sultana's Dream Feminist Sci-Fi Edition",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "rights_tier": "A",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "global",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Sherlock Holmes Logic Workbook",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "rights_tier": "A",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "global",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Dracula Gothic Fiction Visual Guide",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "rights_tier": "A",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "global",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Frankenstein Science & Ethics Guide",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "rights_tier": "A",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "global",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Tagore Short Stories for Young Readers",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "rights_tier": "B",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "india",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Calculus Made Easy Visual Guide",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "rights_tier": "A",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "global",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Chander Pahar Adventure Companion",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "rights_tier": "B",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "india",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      }
+    ],
+    "approved_to_publish": []
+  },
+  "first_batch_source_matrix": {
+    "rows": [
+      {
+        "product": "Anandamath Visual Study Companion",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_tier": "B",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "india",
+        "ready_for_publication": "no",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Devdas Study Edition",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_tier": "B",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "india",
+        "ready_for_publication": "no",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Abol Tabol Illustrated Reader",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_tier": "B",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "india",
+        "ready_for_publication": "no",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Sultana's Dream Feminist Sci-Fi Edition",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_tier": "A",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "global",
+        "ready_for_publication": "no",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Sherlock Holmes Logic Workbook",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_tier": "A",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "global",
+        "ready_for_publication": "no",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Dracula Gothic Fiction Visual Guide",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_tier": "A",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "global",
+        "ready_for_publication": "no",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Frankenstein Science & Ethics Guide",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_tier": "A",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "global",
+        "ready_for_publication": "no",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Tagore Short Stories for Young Readers",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_tier": "B",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "india",
+        "ready_for_publication": "no",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Calculus Made Easy Visual Guide",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_tier": "A",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "global",
+        "ready_for_publication": "no",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "product": "Chander Pahar Adventure Companion",
+        "source_url": "MISSING_REAL_SOURCE",
+        "source_name": "MISSING_REAL_SOURCE",
+        "source_license": "MISSING_REAL_SOURCE",
+        "source_hash": "MISSING",
+        "content_hash": "MISSING",
+        "provenance_hash": "MISSING",
+        "rights_tier": "B",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "publication_region": "india",
+        "ready_for_publication": "no",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      }
+    ],
+    "csv": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/FIRST_BATCH_REAL_SOURCE_MATRIX.csv",
+    "markdown": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/FIRST_BATCH_REAL_SOURCE_MATRIX.md",
+    "approved_to_publish_count": 0
+  },
+  "scorecard": {
+    "scores": {
+      "production_deployment_parity": 7.0,
+      "public_route_correctness": 9.2,
+      "seo_crawlability": 8.0,
+      "ux_conversion": 8.4,
+      "catalog_content_quality": 7.6,
+      "rights_source_readiness": 5.8,
+      "audiobook_readiness": 8.0,
+      "performance_latency": 8.0,
+      "autoscaling_readiness": 8.0,
+      "security_privacy": 8.4,
+      "payment_revenue_flow": 8.0,
+      "analytics_growth_tracking": 8.5,
+      "observability_incident_response": 9.0,
+      "rollback_readiness": 8.5
+    },
+    "final_score": 7.0,
+    "recommendation": "HOLD_FOR_FIXES",
+    "critical_blockers": [
+      {
+        "area": "production_parity",
+        "severity": "HIGH",
+        "message": "Production https://theearnalism.com/shop returned redirect HTTP 308.",
+        "recommendation": "Removed/demo URLs must return 410 or 404 with X-Robots-Tag for deindexing.",
+        "blocker": true
+      },
+      {
+        "area": "production_parity",
+        "severity": "HIGH",
+        "message": "Production /shop returned HTTP 308; /shop must not redirect.",
+        "recommendation": "Deploy current Vercel routing so /shop returns 410/noindex.",
+        "blocker": true
+      },
+      {
+        "area": "seo",
+        "severity": "HIGH",
+        "message": "Book detail metadata is generated client-side after API load in the CRA app.",
+        "recommendation": "For 9.7+ launch SEO, prerender/SSR/static-snapshot priority book pages so crawlers receive book-specific metadata.",
+        "blocker": true
+      },
+      {
+        "area": "rights_source_readiness",
+        "severity": "HIGH",
+        "message": "First batch has no approved real source metadata in the dry-run evidence.",
+        "recommendation": "Backfill source_url, source_license, source_hash, content_hash, and provenance_hash before publication.",
+        "blocker": true
+      }
+    ]
+  }
+}

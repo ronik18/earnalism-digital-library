@@ -19,10 +19,8 @@ ffprobe -version
 
 Set Azure credentials in your shell or a local, ignored secrets file:
 
-```bash
-export AZURE_SPEECH_KEY="..."
-export AZURE_SPEECH_REGION="centralindia"
-```
+Use your local shell or ignored secrets file for `AZURE_SPEECH_KEY` and
+`AZURE_SPEECH_REGION`; do not commit credential exports.
 
 The script never reads or writes hardcoded Azure credentials.
 

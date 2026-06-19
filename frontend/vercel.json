@@ -3,17 +3,8 @@
   "installCommand": "npm install --legacy-peer-deps",
   "buildCommand": "npm run build",
   "outputDirectory": "build",
+  "ignoreCommand": "if [ \"${GITHUB_REF_NAME:-${VERCEL_GIT_COMMIT_REF:-}}\" = \"main\" ]; then exit 1; fi; echo \"Skipping Vercel deployment for non-main branch ${GITHUB_REF_NAME:-${VERCEL_GIT_COMMIT_REF:-unknown}}\"; exit 0",
   "redirects": [
-    {
-      "source": "/shop",
-      "destination": "/library",
-      "permanent": true
-    },
-    {
-      "source": "/shop/",
-      "destination": "/library",
-      "permanent": true
-    },
     {
       "source": "/book/moby-dick-or-the-whale",
       "destination": "/library",
@@ -79,6 +70,14 @@
     {
       "source": "/apparel",
       "destination": "/api/removed-content?path=/apparel"
+    },
+    {
+      "source": "/shop",
+      "destination": "/api/removed-content?path=/shop"
+    },
+    {
+      "source": "/shop/",
+      "destination": "/api/removed-content?path=/shop/"
     },
     {
       "source": "/product/:path*",

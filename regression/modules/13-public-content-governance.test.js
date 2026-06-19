@@ -111,10 +111,10 @@ describe("Public content governance", () => {
 
   test("Vercel routes demo ecommerce paths to removed-content handler", () => {
     const rewrites = vercelConfig.rewrites || [];
-    for (const source of ["/product", "/product/:path*", "/fashion", "/journal/denim-jackets", "/denim-jackets"]) {
+    for (const source of ["/product", "/product/:path*", "/shop", "/shop/:path*", "/fashion", "/journal/denim-jackets", "/denim-jackets"]) {
       expect(rewrites.some((rewrite) => rewrite.source === source && rewrite.destination.includes("/api/removed-content"))).toBe(true);
     }
-    expect((vercelConfig.redirects || []).some((redirect) => redirect.source === "/shop" && redirect.destination === "/library")).toBe(true);
+    expect((vercelConfig.redirects || []).some((redirect) => redirect.source === "/shop" && redirect.destination === "/library")).toBe(false);
   });
 
   test("removed-content handler returns 410 for known retired demo paths", () => {

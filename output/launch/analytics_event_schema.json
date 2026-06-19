@@ -1,0 +1,331 @@
+{
+  "schema_version": "phase13b.v1",
+  "dry_run": true,
+  "events": [
+    {
+      "event": "page_view",
+      "required_metadata": [
+        "path",
+        "search",
+        "page_type"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "book_view",
+      "required_metadata": [
+        "book_slug",
+        "language",
+        "category_slug"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "preview_start",
+      "required_metadata": [
+        "book_slug",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "reading_started",
+      "required_metadata": [
+        "book_slug",
+        "chapter_id",
+        "is_preview"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "reading_session_completed",
+      "required_metadata": [
+        "book_slug",
+        "duration_seconds",
+        "completion_percent"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "pricing_view",
+      "required_metadata": [
+        "selected_pack_id",
+        "coupon",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "checkout_start",
+      "required_metadata": [
+        "pack_id",
+        "price_inr",
+        "coupon",
+        "source",
+        "payment_mode"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "payment_success",
+      "required_metadata": [
+        "pack_id",
+        "price_inr",
+        "minutes",
+        "source",
+        "credited"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "payment_failed",
+      "required_metadata": [
+        "pack_id",
+        "price_inr",
+        "reason"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "newsletter_joined",
+      "required_metadata": [
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "referral_invited",
+      "required_metadata": [
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "referral_converted",
+      "required_metadata": [
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "institution_interest",
+      "required_metadata": [
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "audio_preview_played",
+      "required_metadata": [
+        "book_slug",
+        "language",
+        "duration_seconds"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "cta_clicked",
+      "required_metadata": [
+        "cta_id",
+        "destination",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    }
+  ]
+}

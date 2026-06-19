@@ -225,14 +225,11 @@ earnalism-digital-library/
 ## 🔧 Troubleshooting
 
 ### CDN Deployment Fails
-```bash
-# Check Cloudinary status
-gcloud auth application-default login
-export CLOUDINARY_CLOUD_NAME="your_cloud_name"
-export CLOUDINARY_API_KEY="your_api_key"
-export CLOUDINARY_API_SECRET="your_secret"
+Check Cloudinary status and set Cloudinary credentials only in your local shell
+or an ignored secrets file. Do not commit credential exports. Then retry the
+deployment in dry-run mode:
 
-# Retry deployment
+```bash
 python3 deploy_audio_to_cdn.py --dry-run
 ```
 

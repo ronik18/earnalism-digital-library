@@ -43,13 +43,18 @@ export default function Pricing() {
   const funnelSource = searchParams.get("source");
 
   useEffect(() => {
+    trackFunnelEvent("pricing_view", {
+      selected_pack_id: selectedPackId || "",
+      coupon: couponCode || "",
+      source: funnelSource || "pricing",
+    });
     Promise.all([api.get("/payments/packs"), api.get("/payments/config")])
       .then(([packsRes, configRes]) => {
         setPacks(packsRes.data || []);
         setConfig(configRes.data || {});
       })
       .catch(() => setPacks([]));
-  }, []);
+  }, [couponCode, funnelSource, selectedPackId]);
 
   const isAuthed = !!user && typeof user === "object";
 
@@ -59,6 +64,13 @@ export default function Pricing() {
       price_inr: pack.price_inr,
       coupon: couponCode || "",
       source: funnelSource || "pricing",
+    });
+    trackFunnelEvent("checkout_start", {
+      pack_id: pack.id,
+      price_inr: pack.price_inr,
+      coupon: couponCode || "",
+      source: funnelSource || "pricing",
+      payment_mode: config.configured ? "razorpay" : config.mode || "unconfigured",
     });
     if (!isAuthed) {
       const next = `${window.location.pathname}${window.location.search}`;
@@ -100,6 +112,13 @@ export default function Pricing() {
               });
               const fresh = await refreshUser();
               const credited = Number(fresh?.reading_seconds_balance || 0) > 0;
+              trackFunnelEvent("payment_success", {
+                pack_id: pack.id,
+                price_inr: pack.price_inr,
+                minutes: pack.minutes,
+                source: "razorpay_verify",
+                credited,
+              });
               toast.success(credited ? `+${pack.minutes} minutes added.` : `Payment received. Credit will appear shortly.`);
             } catch (err) {
               // Verify call itself failed. Don't leave the user stuck on
@@ -116,6 +135,13 @@ export default function Pricing() {
               } else {
                 toast.message("Payment received. Your reading time will appear within a minute.");
               }
+              trackFunnelEvent("payment_success", {
+                pack_id: pack.id,
+                price_inr: pack.price_inr,
+                minutes: pack.minutes,
+                source: "razorpay_webhook_fallback",
+                credited,
+              });
             } finally {
               nav("/account");
             }
@@ -126,6 +152,11 @@ export default function Pricing() {
         };
         const rzp = new window.Razorpay(opts);
         rzp.on("payment.failed", (resp) => {
+          trackFunnelEvent("payment_failed", {
+            pack_id: pack.id,
+            price_inr: pack.price_inr,
+            reason: resp?.error?.code || "razorpay_failure",
+          });
           toast.error(resp?.error?.description || "Payment failed");
         });
         rzp.open();
@@ -136,11 +167,28 @@ export default function Pricing() {
         await refreshUser();
         toast.success(`Test purchase complete · +${pack.minutes} minutes added.`);
         trackFunnelEvent("pricing_test_purchase_complete", { pack_id: pack.id, price_inr: pack.price_inr });
+        trackFunnelEvent("payment_success", {
+          pack_id: pack.id,
+          price_inr: pack.price_inr,
+          minutes: pack.minutes,
+          source: "test_mode_simulator",
+          credited: true,
+        });
         nav("/account");
       } else {
+        trackFunnelEvent("payment_failed", {
+          pack_id: pack.id,
+          price_inr: pack.price_inr,
+          reason: "payments_unconfigured",
+        });
         toast.error("Payments are not configured yet.");
       }
     } catch (err) {
+      trackFunnelEvent("payment_failed", {
+        pack_id: pack.id,
+        price_inr: pack.price_inr,
+        reason: err?.response?.status || "checkout_start_failed",
+      });
       toast.error(formatError(err.response?.data?.detail) || "Could not start payment");
     } finally {
       setBusyId(null);
@@ -203,6 +251,7 @@ export default function Pricing() {
         <div className="text-center mt-14">
           <p className="text-sm text-charcoal-soft font-light italic max-w-xl mx-auto">
             Payments are processed securely by Razorpay. Your reading time is credited the moment payment is confirmed.
+            For support or refund questions, contact sales@reoenterprise.org with your payment reference.
           </p>
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact" className="btn-secondary">Need help?</Link>
