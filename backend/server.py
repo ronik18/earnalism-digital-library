@@ -258,8 +258,27 @@ def _hmac_sha256_hex(secret: str, body: bytes) -> str:
 def hash_password(p: str) -> str:
     return bcrypt.hashpw(p.encode(), bcrypt.gensalt()).decode()
 
-def verify_password(p: str, h: str) -> bool:
-    return bcrypt.checkpw(p.encode(), h.encode())
+def verify_password(p: str, h: Optional[str]) -> bool:
+    if not h or not isinstance(h, str):
+        return False
+    try:
+        return bcrypt.checkpw(p.encode(), h.encode())
+    except (TypeError, ValueError):
+        return False
+
+
+def _password_login_unavailable_detail(user: dict) -> str:
+    provider = str(user.get("auth_provider") or "this sign-in method").replace("_", " ")
+    if provider == "email":
+        provider = "this account"
+    return (
+        f"This account was created with {provider} and does not have a password credential yet. "
+        "Please use the original sign-in method or contact sales@reoenterprise.org to add a password."
+    )
+
+
+def _has_password_credential(user: Optional[dict]) -> bool:
+    return bool(user and isinstance(user.get("password_hash"), str) and user.get("password_hash"))
 
 def create_token(sub: str, email: str) -> str:
     payload = {
@@ -3357,7 +3376,7 @@ async def structured_unhandled_exception_handler(request: Request, exc: Exceptio
 async def login(payload: LoginIn):
     email = payload.email.lower().strip()
     user = await db.users.find_one({"email": email}, {"_id": 0})
-    if not user or not verify_password(payload.password, user["password_hash"]):
+    if not user or not verify_password(payload.password, user.get("password_hash")):
         raise HTTPException(status_code=401, detail="Invalid email or password")
     token = create_token(user["id"], user["email"])
     return TokenOut(token=token, email=user["email"], role=user.get("role", "admin"))
@@ -3372,7 +3391,7 @@ async def change_password(payload: ChangePasswordIn, user=Depends(require_admin)
     if len(payload.new_password) < 8:
         raise HTTPException(status_code=400, detail="New password must be at least 8 characters")
     existing = await db.users.find_one({"email": user["email"]}, {"_id": 0})
-    if not existing or not verify_password(payload.current_password, existing["password_hash"]):
+    if not existing or not verify_password(payload.current_password, existing.get("password_hash")):
         raise HTTPException(status_code=400, detail="Current password is incorrect")
     await db.users.update_one(
         {"email": user["email"]},
@@ -4374,10 +4393,14 @@ async def user_signup(payload: UserSignupIn, request: Request, response: Respons
 async def user_login(payload: UserLoginIn, request: Request, response: Response):
     email = payload.email.lower().strip()
     user = await db.users.find_one({"email": email}, {"_id": 0})
-    if not user or user.get("role") != "user" or not verify_password(payload.password, user["password_hash"]):
+    if not user or user.get("role") != "user":
         raise HTTPException(status_code=401, detail="Invalid email or password")
     if user.get("status") == "blocked":
         raise HTTPException(status_code=403, detail="Account is blocked. Please contact support.")
+    if not _has_password_credential(user) and user.get("auth_provider") not in {None, "", "email"}:
+        raise HTTPException(status_code=403, detail=_password_login_unavailable_detail(user))
+    if not verify_password(payload.password, user.get("password_hash")):
+        raise HTTPException(status_code=401, detail="Invalid email or password")
     token = await _create_user_session(user, request, response)
     return UserAuthOut(token=token, user=UserOut(**_user_public(user)))
 
