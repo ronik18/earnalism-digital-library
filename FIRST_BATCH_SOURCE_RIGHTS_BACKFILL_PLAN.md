@@ -4,7 +4,7 @@ No first-batch item is approved for public publication from fixture/URN evidence
 
 See `FIRST_BATCH_REAL_SOURCE_MATRIX.md` and `FIRST_BATCH_REAL_SOURCE_MATRIX.csv` for the stricter real-source launch matrix.
 
-| Product | Rights Tier | Verification | Region | Blocking Reason |
+| Title | Rights Tier | Verification | Region | Blocking Reason |
 | --- | --- | --- | --- | --- |
 | Anandamath Visual Study Companion | B | PENDING_SOURCE_BACKFILL | india | Real source metadata and QA evidence are not present in the dry-run batch. |
 | Devdas Study Edition | B | PENDING_SOURCE_BACKFILL | india | Real source metadata and QA evidence are not present in the dry-run batch. |

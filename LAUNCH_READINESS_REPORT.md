@@ -1,11 +1,11 @@
 # Launch Readiness Report
 
-Final launch score: `7.0/10`
+Final launch score: `8.0/10`
 Recommendation: `HOLD_FOR_FIXES`
 
 | Area | Score |
 | --- | --- |
-| production_deployment_parity | 7.0 |
+| production_deployment_parity | 8.4 |
 | public_route_correctness | 9.2 |
 | seo_crawlability | 8.0 |
 | ux_conversion | 8.4 |
@@ -20,4 +20,6 @@ Recommendation: `HOLD_FOR_FIXES`
 | observability_incident_response | 9.0 |
 | rollback_readiness | 8.5 |
 
-The score is intentionally below 9.7 because controlled publication still lacks real first-batch source evidence, full audiobook QA, book SEO prerendering, and post-deploy parity for the `/shop` route until this PR is deployed.
+Production route parity passed in the latest audit, but each future main-branch deployment must still pass the post-deploy route canary before any controlled publication.
+
+The score is intentionally below 9.7 because controlled publication still lacks real first-batch source evidence, full audiobook QA, book SEO prerendering, production test-mode revenue evidence, and measured load/autoscaling evidence.

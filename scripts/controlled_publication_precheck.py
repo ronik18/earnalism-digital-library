@@ -35,6 +35,12 @@ REQUIRED_FIELDS = [
     "rights_basis",
     "qa_status",
     "rollback_owner",
+    "publication_cap",
+    "rollback_plan",
+    "production_parity_status",
+    "production_parity_evidence",
+    "payment_smoke_status",
+    "payment_smoke_evidence",
 ]
 
 
@@ -89,6 +95,10 @@ def evaluate_item(item: dict[str, str]) -> list[str]:
         issues.append("verification_status must be approved")
     if str(item.get("qa_status", "")).strip().lower() not in {"pass", "passed", "qa_passed"}:
         issues.append("qa_status must pass")
+    if str(item.get("production_parity_status", "")).strip().upper() != "PASS":
+        issues.append("production_parity_status must be PASS")
+    if str(item.get("payment_smoke_status", "")).strip().upper() not in {"PASS", "PASS_TEST_MODE", "PRODUCTION_TEST_MODE_PASS"}:
+        issues.append("payment_smoke_status must be PASS, PASS_TEST_MODE, or PRODUCTION_TEST_MODE_PASS")
     for blocked_field in ("tier_b", "tier_c", "blocked_reason"):
         if value_present(item.get(blocked_field)):
             issues.append(f"{blocked_field} must be empty")
@@ -128,12 +138,19 @@ def evaluate() -> dict[str, Any]:
         value_present(item.get("production_parity_evidence")) and str(item.get("production_parity_status", "")).upper() == "PASS"
         for item in items
     )
+    payment_smoke_pass = any(
+        value_present(item.get("payment_smoke_evidence"))
+        and str(item.get("payment_smoke_status", "")).upper() in {"PASS", "PASS_TEST_MODE", "PRODUCTION_TEST_MODE_PASS"}
+        for item in items
+    )
     if items and not publication_cap_present:
         issues.append("publication cap is missing.")
     if items and not rollback_plan_present:
         issues.append("rollback plan is missing.")
     if items and not production_parity_pass:
         issues.append("production parity PASS evidence is missing.")
+    if items and not payment_smoke_pass:
+        issues.append("payment smoke PASS evidence is missing.")
 
     return {
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
@@ -145,6 +162,7 @@ def evaluate() -> dict[str, Any]:
         "publication_cap_present": publication_cap_present,
         "rollback_plan_present": rollback_plan_present,
         "production_parity_pass": production_parity_pass,
+        "payment_smoke_pass": payment_smoke_pass,
         "mutation_performed": False,
     }
 

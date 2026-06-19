@@ -21,3 +21,5 @@ Do not rename this file to `APPROVED_TO_PUBLISH.md` until at least one item has 
 - rollback_plan
 - production_parity_status: PASS
 - production_parity_evidence
+- payment_smoke_status: PASS_TEST_MODE or PASS
+- payment_smoke_evidence

@@ -11,7 +11,10 @@ Status: `PASS`
 | book_buy_cta | True |
 | pricing_cta | True |
 | pricing_trust_statement | True |
+| pricing_support_refund_copy | True |
 | mobile_nav_cta | True |
+| public_routes_do_not_mount_admin | True |
+| reader_facing_loading_error_empty_states | True |
 
 ## Recommendations
 

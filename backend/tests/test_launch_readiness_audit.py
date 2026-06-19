@@ -17,6 +17,7 @@ from scripts.launch_readiness_audit import (
     validate_removed_route,
     write_mode_outputs,
 )
+from scripts.controlled_publication_precheck import evaluate_item
 
 
 def test_shop_is_routed_to_removed_content_locally():
@@ -146,6 +147,45 @@ def test_payment_smoke_is_dry_run_static(tmp_path, monkeypatch):
     assert (tmp_path / "launch" / "payment_smoke.json").exists()
 
 
+def approved_publication_item(**overrides):
+    item = {
+        "work_title": "Fixture Title",
+        "work_slug": "fixture-title",
+        "rights_tier": "A",
+        "verification_status": "approved",
+        "source_url": "https://example.org/source",
+        "source_name": "Example Source",
+        "source_license": "Public Domain",
+        "source_hash": "sha256:source",
+        "content_hash": "sha256:content",
+        "provenance_hash": "sha256:provenance",
+        "rights_basis": "Public domain evidence reviewed.",
+        "qa_status": "pass",
+        "rollback_owner": "release-operator",
+        "publication_cap": "1",
+        "rollback_plan": "rollback last publication draft",
+        "production_parity_status": "PASS",
+        "production_parity_evidence": "output/launch/post_deploy_route_canary.json",
+        "payment_smoke_status": "PASS_TEST_MODE",
+        "payment_smoke_evidence": "output/launch/payment_smoke.json",
+    }
+    item.update(overrides)
+    return item
+
+
+def test_controlled_publication_precheck_requires_payment_smoke_evidence():
+    issues = evaluate_item(approved_publication_item(payment_smoke_status="", payment_smoke_evidence=""))
+
+    assert any("payment_smoke_status" in issue for issue in issues)
+    assert any("payment_smoke_evidence" in issue for issue in issues)
+
+
+def test_controlled_publication_precheck_accepts_complete_tier_a_item_shape():
+    issues = evaluate_item(approved_publication_item())
+
+    assert issues == []
+
+
 def test_all_audit_writes_required_reports_without_production_network(tmp_path, monkeypatch):
     monkeypatch.setattr("scripts.launch_readiness_audit.OUTPUT_DIR", tmp_path / "launch")
     audits = run_audits("all", fetch_production=False, production_base_url="https://example.invalid")
@@ -175,6 +215,8 @@ def test_all_audit_writes_required_reports_without_production_network(tmp_path, 
         ROOT / "POST_DEPLOY_VERIFICATION.md",
         ROOT / "BOOK_SEO_PRERENDER_PLAN.md",
         ROOT / "PHASE13C_VALIDATION_REPORT.md",
+        ROOT / "PHASE13D_VALIDATION_REPORT.md",
+        ROOT / "PHASE14_VALIDATION_REPORT.md",
         ROOT / "FINAL_GO_NO_GO_DECISION.md",
     ]
 
