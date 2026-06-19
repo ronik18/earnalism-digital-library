@@ -1,6 +1,6 @@
 # Phase 13 Raw Verification
 
-This report records line-normalization evidence for changed runtime, script, and test files. The raw GitHub download counts below were collected from branch `codex/phase13-launch-readiness` after commit `3b517dd2`.
+This report records line-normalization evidence for changed runtime, script, and test files. The raw GitHub download counts below were verified from commit `71b78228`.
 
 ## Local wc -l Evidence
 
@@ -31,5 +31,5 @@ done
 | frontend/src/pages/Pricing.jsx | 264 |
 | package.json | 49 |
 | PHASE13B_VALIDATION_REPORT.md | 42 |
-| PHASE13_RAW_VERIFICATION.md | 22 |
+| PHASE13_RAW_VERIFICATION.md | 35 |
 | FINAL_GO_NO_GO_DECISION.md | 22 |
