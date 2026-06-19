@@ -17,12 +17,23 @@
     "description": "Non-public draft for a source-verified Earnalism reading experience.",
     "image": ""
   },
-  "book_json_ld_status": "BLOCKED_UNTIL_TIER_A_APPROVAL",
-  "book_json_ld": null,
+  "book_json_ld_status": "READY_DRAFT",
+  "book_json_ld": {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Dracula",
+    "author": {
+      "@type": "Person",
+      "name": "Bram Stoker"
+    },
+    "datePublished": "1897",
+    "inLanguage": "en",
+    "url": "https://theearnalism.com/book/dracula"
+  },
   "ctas": [
     "Read preview",
     "Start 7-day reading pass",
     "Join the quiet reading room"
   ],
-  "source_rights_note": "HOLD_FOR_FIXES"
+  "source_rights_note": "GO_FOR_CONTROLLED_PUBLICATION_FOR_DRACULA_ONLY"
 }

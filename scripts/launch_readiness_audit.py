@@ -142,6 +142,27 @@ def write_text(path: Path, text: str) -> None:
     path.write_text(text.rstrip() + "\n", encoding="utf-8")
 
 
+def has_valid_controlled_approval_artifact(path: Path) -> bool:
+    text = read_text(path).lower()
+    if not text:
+        return False
+    required_tokens = [
+        "work slug: dracula",
+        "rights tier: a",
+        "verification status: approved",
+        "source url: https://www.gutenberg.org/ebooks/345",
+        "source name: project gutenberg ebook #345",
+        "source license: project gutenberg license",
+        "source hash:",
+        "content hash:",
+        "provenance hash:",
+        "qa status: qa_passed",
+        "production parity status: pass",
+        "payment smoke status: pass_test_mode",
+    ]
+    return all(token in text for token in required_tokens)
+
+
 def status_from_bool(ok: bool, degraded: bool = False) -> str:
     if ok:
         return "PASS"
@@ -1472,7 +1493,7 @@ def write_mode_outputs(mode: str, audits: dict[str, Any]) -> None:
             write_text(ROOT / "APPROVED_TO_PUBLISH.md", approved_template_markdown())
         else:
             approved_path = ROOT / "APPROVED_TO_PUBLISH.md"
-            if approved_path.exists():
+            if approved_path.exists() and not has_valid_controlled_approval_artifact(approved_path):
                 approved_path.unlink()
             write_text(ROOT / "APPROVED_TO_PUBLISH.template.md", approved_template_markdown())
         write_text(ROOT / "CONTROLLED_PUBLICATION_PRECHECK.md", precheck_markdown(audits))

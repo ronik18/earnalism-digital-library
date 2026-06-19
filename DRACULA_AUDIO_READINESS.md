@@ -1,7 +1,7 @@
 # Dracula Audio Readiness
 
 Audio status: `AUDIO_NOT_REQUIRED`
-Phase 7 dry-run status: `AUDIO_NOT_REQUIRED`
+Phase 7 dry-run status: `DRY_RUN_ONLY`
 
 - No TTS/STT/FFmpeg call was made.
 - No audio was uploaded.

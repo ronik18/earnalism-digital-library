@@ -56,13 +56,30 @@ DEFAULT_SOURCE_URL = "https://www.gutenberg.org/ebooks/345"
 DEFAULT_TEXT_URL = "https://www.gutenberg.org/cache/epub/345/pg345.txt"
 DEFAULT_PUBLICATION_CAP = "Dracula controlled-publication candidate only; public_publish_actions=0."
 DEFAULT_ROLLBACK_OWNER = "Earnalism launch operator"
-PROJECT_GUTENBERG_LICENSE_RE = re.compile(r"project gutenberg(?:\s+literary)?\s+archive|project gutenberg license", re.I)
+DRACULA_EBOOK_NUMBER = "345"
+MIN_RAW_CHARACTERS = 500_000
+MIN_CLEANED_CHARACTERS = 400_000
+MIN_CHAPTER_COUNT = 25
+PROJECT_GUTENBERG_LICENSE_RE = re.compile(
+    r"(project gutenberg license|full project gutenberg license|project gutenberg literary archive)",
+    re.I,
+)
+REQUIRED_SOURCE_MARKERS = {
+    "project_gutenberg_ebook_of_dracula": re.compile(r"project gutenberg ebook of dracula", re.I),
+    "title_dracula": re.compile(r"^\s*title:\s*dracula\s*$", re.I | re.M),
+    "author_bram_stoker": re.compile(r"^\s*author:\s*bram stoker\s*$", re.I | re.M),
+    "ebook_number_345": re.compile(r"e\s*book\s*#\s*345", re.I),
+    "start_marker": re.compile(r"\*\*\*\s*START OF (?:THE|THIS) PROJECT GUTENBERG EBOOK DRACULA\s*\*\*\s*", re.I),
+    "end_marker": re.compile(r"\*\*\*\s*END OF (?:THE|THIS) PROJECT GUTENBERG EBOOK DRACULA\s*\*\*\s*", re.I),
+    "project_gutenberg_license": PROJECT_GUTENBERG_LICENSE_RE,
+}
 
 
 @dataclass
 class SourceLoadResult:
     raw_text: str
     source_text_url: str
+    source_text_file: str
     source_retrieved_at: str
     load_status: str
     issues: list[str]
@@ -100,22 +117,46 @@ def derive_gutenberg_text_url(source_url: str) -> str:
     return source_url
 
 
-def load_source_text(source_url: str, source_text_file: str) -> SourceLoadResult:
+def canonical_url(value: str) -> str:
+    return str(value or "").strip().rstrip("/")
+
+
+def verify_source_locations(source_url: str, source_text_url: str) -> list[str]:
     issues: list[str] = []
+    if canonical_url(source_url) != DEFAULT_SOURCE_URL:
+        issues.append(f"source_url must be {DEFAULT_SOURCE_URL}.")
+    if canonical_url(source_text_url) != DEFAULT_TEXT_URL:
+        issues.append(f"source_text_url must be {DEFAULT_TEXT_URL}.")
+    return issues
+
+
+def load_source_text(source_url: str, source_text_url: str, source_text_file: str) -> SourceLoadResult:
+    issues: list[str] = []
+    source_text_url = source_text_url or derive_gutenberg_text_url(source_url)
+    location_issues = verify_source_locations(source_url, source_text_url)
     if source_text_file:
         path = Path(source_text_file)
         if not path.exists():
-            return SourceLoadResult("", "", "", "BLOCKED_SOURCE_FILE_MISSING", [f"source_text_file not found: {path}"])
+            return SourceLoadResult(
+                "",
+                source_text_url,
+                str(path),
+                "",
+                "BLOCKED_SOURCE_FILE_MISSING",
+                [*location_issues, f"source_text_file not found: {path}"],
+            )
         return SourceLoadResult(
             raw_text=path.read_text(encoding="utf-8"),
-            source_text_url=f"file:{path}",
+            source_text_url=source_text_url,
+            source_text_file=str(path),
             source_retrieved_at=utc_now(),
-            load_status="LOADED_LOCAL_SOURCE_TEXT",
-            issues=[],
+            load_status="LOADED_LOCAL_SOURCE_TEXT" if not location_issues else "BLOCKED_SOURCE_LOCATION",
+            issues=location_issues,
         )
 
     if os.getenv("EARNALISM_ALLOW_SOURCE_FETCH", "").strip().lower() == "true":
-        source_text_url = derive_gutenberg_text_url(source_url)
+        if location_issues:
+            return SourceLoadResult("", source_text_url, "", "", "BLOCKED_SOURCE_LOCATION", location_issues)
         request = Request(
             source_text_url,
             headers={"User-Agent": "EarnalismDraculaCandidateDryRun/1.0"},
@@ -124,10 +165,11 @@ def load_source_text(source_url: str, source_text_file: str) -> SourceLoadResult
             with urlopen(request, timeout=15) as response:  # noqa: S310 - explicit opt-in source fetch only.
                 raw = response.read().decode("utf-8", errors="replace")
         except (HTTPError, URLError, TimeoutError, OSError) as exc:
-            return SourceLoadResult("", source_text_url, "", "BLOCKED_SOURCE_FETCH_FAILED", [str(exc)])
+            return SourceLoadResult("", source_text_url, "", "", "BLOCKED_SOURCE_FETCH_FAILED", [str(exc)])
         return SourceLoadResult(
             raw_text=raw,
             source_text_url=source_text_url,
+            source_text_file="",
             source_retrieved_at=utc_now(),
             load_status="FETCHED_SOURCE_TEXT_WITH_EXPLICIT_OPT_IN",
             issues=[],
@@ -136,15 +178,19 @@ def load_source_text(source_url: str, source_text_file: str) -> SourceLoadResult
     issues.append(
         "Source text was not fetched because EARNALISM_ALLOW_SOURCE_FETCH is not true; pass --source-text-file for offline verification."
     )
-    return SourceLoadResult("", "", "", "BLOCKED_SOURCE_TEXT_REQUIRED", issues)
+    return SourceLoadResult("", source_text_url, "", "", "BLOCKED_SOURCE_TEXT_REQUIRED", [*location_issues, *issues])
 
 
 def detected_source_license(raw_text: str) -> str:
     if not raw_text.strip():
         return ""
-    if PROJECT_GUTENBERG_LICENSE_RE.search(raw_text) or "Project Gutenberg" in raw_text:
+    if PROJECT_GUTENBERG_LICENSE_RE.search(raw_text):
         return "Project Gutenberg License"
     return ""
+
+
+def source_marker_evidence(raw_text: str) -> dict[str, bool]:
+    return {name: bool(pattern.search(raw_text or "")) for name, pattern in REQUIRED_SOURCE_MARKERS.items()}
 
 
 def cleanup_evidence(raw_text: str, cleaned_text: str) -> dict[str, Any]:
@@ -157,6 +203,7 @@ def cleanup_evidence(raw_text: str, cleaned_text: str) -> dict[str, Any]:
         "cleaned_character_count": len(cleaned_text),
         "removed_character_count": max(0, len(raw_text) - len(cleaned_text)),
         "cleanup_method": "backend.source_ingestion.clean_source_text(connector='project-gutenberg')",
+        "required_source_markers": source_marker_evidence(raw_text),
     }
 
 
@@ -170,20 +217,26 @@ def source_qa_status(
     content_hash: str,
     provenance_hash: str,
     load_status: str,
+    marker_evidence: dict[str, bool],
 ) -> tuple[str, list[str]]:
     issues: list[str] = []
     if not raw_text.strip():
         issues.append("Source text is required before Dracula can be approved.")
     if load_status.startswith("BLOCKED"):
         issues.append(load_status)
+    missing_markers = [name for name, present in marker_evidence.items() if not present]
+    if missing_markers:
+        issues.append(f"Missing required Project Gutenberg Dracula markers: {', '.join(missing_markers)}.")
     if not source_license:
         issues.append("Project Gutenberg source license was not deterministically verified from source text.")
     if not source_hash or not content_hash or not provenance_hash:
         issues.append("source_hash, content_hash, and provenance_hash are required.")
-    if raw_text and len(cleaned_text) < 100_000:
-        issues.append("Cleaned text is too short for full Dracula source QA.")
-    if raw_text and chapter_count < 20:
-        issues.append("Chapter detection found fewer than 20 chapters for Dracula.")
+    if raw_text and len(raw_text) <= MIN_RAW_CHARACTERS:
+        issues.append(f"Raw text length must be greater than {MIN_RAW_CHARACTERS} characters.")
+    if raw_text and len(cleaned_text) <= MIN_CLEANED_CHARACTERS:
+        issues.append(f"Cleaned text length must be greater than {MIN_CLEANED_CHARACTERS} characters.")
+    if raw_text and chapter_count < MIN_CHAPTER_COUNT:
+        issues.append(f"Chapter detection must find at least {MIN_CHAPTER_COUNT} chapters for Dracula.")
     if issues:
         return "BLOCKED_SOURCE_QA", issues
     return "QA_PASSED", []
@@ -243,8 +296,9 @@ def candidate_book(
 def build_source_evidence(args: argparse.Namespace) -> dict[str, Any]:
     generated_at = utc_now()
     source_url = args.source_url or DEFAULT_SOURCE_URL
+    source_text_url = args.source_text_url or derive_gutenberg_text_url(source_url)
     source_name = DEFAULT_SOURCE_NAME
-    source_load = load_source_text(source_url, args.source_text_file or "")
+    source_load = load_source_text(source_url, source_text_url, args.source_text_file or "")
     raw_text = source_load.raw_text
     source_license = detected_source_license(raw_text)
     source_hash = hash_source(raw_text) if raw_text else ""
@@ -261,6 +315,7 @@ def build_source_evidence(args: argparse.Namespace) -> dict[str, Any]:
         else ""
     )
     chapters = detect_chapters(cleaned_text)
+    markers = source_marker_evidence(raw_text)
     qa_status, qa_issues = source_qa_status(
         raw_text=raw_text,
         cleaned_text=cleaned_text,
@@ -270,6 +325,7 @@ def build_source_evidence(args: argparse.Namespace) -> dict[str, Any]:
         content_hash=content_hash,
         provenance_hash=provenance_hash,
         load_status=source_load.load_status,
+        marker_evidence=markers,
     )
     book = candidate_book(
         title=args.title,
@@ -287,10 +343,13 @@ def build_source_evidence(args: argparse.Namespace) -> dict[str, Any]:
     )
     rights_decision = evaluate_rights(book)
     if qa_status == "QA_PASSED" and not rights_decision.approved:
+        qa_status = "BLOCKED_SOURCE_QA"
+        qa_issues = [*qa_issues, *rights_decision.issues]
         book["rights_metadata"]["rights_tier"] = "C"
         book["rights_metadata"]["verification_status"] = "blocked"
         book["rights_metadata"]["verified_at"] = ""
         book["rights_metadata"]["blocked_reason"] = "; ".join(rights_decision.issues)
+        book["qa_status"] = qa_status
         rights_decision = evaluate_rights(book)
 
     ingestion = ingest_source(
@@ -306,8 +365,11 @@ def build_source_evidence(args: argparse.Namespace) -> dict[str, Any]:
         )
     )
     rights_basis = (
-        "Bram Stoker died in 1912 and Dracula was first published in 1897; Tier A requires verified public-domain "
-        "source text and Project Gutenberg license evidence."
+        "Bram Stoker died in 1912 and Dracula was first published in 1897. "
+        "The candidate uses Project Gutenberg eBook #345 as its primary source. "
+        "Tier A global publication is allowed only when the Project Gutenberg source text, license section, "
+        "source_hash, content_hash, provenance_hash, and rights engine approval all pass. "
+        "No modern translation, illustration, or editorial dependency is included."
     )
     publication_cap = args.publication_cap or DEFAULT_PUBLICATION_CAP
     rollback_owner = args.rollback_owner or DEFAULT_ROLLBACK_OWNER
@@ -325,6 +387,7 @@ def build_source_evidence(args: argparse.Namespace) -> dict[str, Any]:
         "source_name": source_name,
         "source_license": source_license,
         "source_text_url": source_load.source_text_url,
+        "source_text_file": source_load.source_text_file,
         "source_retrieved_at": source_load.source_retrieved_at,
         "source_hash": source_hash,
         "content_hash": content_hash,
@@ -339,7 +402,10 @@ def build_source_evidence(args: argparse.Namespace) -> dict[str, Any]:
         "rollback_plan": "Disable the Dracula draft flag, remove draft artifacts, and keep public_publish_actions=0.",
         "load_status": source_load.load_status,
         "language": detect_language(cleaned_text),
+        "source_character_count": len(raw_text),
+        "cleaned_character_count": len(cleaned_text),
         "chapter_count": len(chapters),
+        "source_marker_evidence": markers,
         "cleanup_evidence": cleanup_evidence(raw_text, cleaned_text),
         "qa_issues": qa_issues,
         "source_load_issues": source_load.issues,
@@ -518,7 +584,14 @@ def build_gate_results(evidence: dict[str, Any]) -> dict[str, Any]:
     recommendation = "HOLD_FOR_FIXES"
     if source_passed and route_status == "PASS" and payment_status in {"PASS", "PASS_TEST_MODE", "PRODUCTION_TEST_MODE_PASS"}:
         recommendation = "READY_FOR_APPROVAL_ARTIFACT_REVIEW"
-    if not approved_file_exists:
+    if (
+        approved_file_exists
+        and source_passed
+        and route_status == "PASS"
+        and payment_status in {"PASS", "PASS_TEST_MODE", "PRODUCTION_TEST_MODE_PASS"}
+    ):
+        recommendation = "GO_FOR_CONTROLLED_PUBLICATION_FOR_DRACULA_ONLY"
+    elif not approved_file_exists:
         recommendation = "HOLD_FOR_FIXES"
     return {
         "generated_at": utc_now(),
@@ -664,21 +737,38 @@ def source_report_markdown(evidence: dict[str, Any]) -> str:
         "| --- | --- |",
         f"| Title | {evidence['title']} |",
         f"| Author | {evidence['author']} |",
+        "| Author death year | 1912 |",
+        "| Original publication year | 1897 |",
+        "| Project Gutenberg eBook number | 345 |",
         f"| Source URL | {evidence['source_url']} |",
+        f"| Source text URL | {evidence['source_text_url'] or 'not loaded'} |",
         f"| Source name | {evidence['source_name']} |",
         f"| Source license | {evidence['source_license'] or 'BLOCKED_UNVERIFIED'} |",
-        f"| Source text URL | {evidence['source_text_url'] or 'not loaded'} |",
         f"| Source hash | {evidence['source_hash'] or 'missing'} |",
         f"| Content hash | {evidence['content_hash'] or 'missing'} |",
         f"| Provenance hash | {evidence['provenance_hash'] or 'missing'} |",
+        f"| Raw source characters | {evidence['source_character_count']} |",
+        f"| Cleaned source characters | {evidence['cleaned_character_count']} |",
         f"| Rights tier | {evidence['rights_tier']} |",
         f"| Verification status | {evidence['verification_status']} |",
+        f"| Publication region | {evidence['publication_region']} |",
         f"| QA status | {evidence['qa_status']} |",
         f"| Chapter count | {evidence['chapter_count']} |",
         "",
         "## Rights Basis",
         "",
         evidence["rights_basis"],
+        "",
+        "## Source License Evidence",
+        "",
+        *[f"- {name}: `{present}`" for name, present in evidence.get("source_marker_evidence", {}).items()],
+        "",
+        "## Edition Dependency Notes",
+        "",
+        "- No modern translation dependency is included in this candidate.",
+        "- No modern illustration dependency is included in this candidate.",
+        "- No modern editorial/edition dependency is included in this candidate.",
+        "- Global publication is eligible only when source, license, rights, and QA gates all pass; otherwise the candidate remains blocked.",
         "",
         "## Blockers",
         "",
@@ -756,6 +846,13 @@ def write_static_reports(evidence: dict[str, Any], gate_results: dict[str, Any])
             "source_hash": evidence["source_hash"],
             "content_hash": evidence["content_hash"],
             "provenance_hash": evidence["provenance_hash"],
+            "source_text_url": evidence["source_text_url"],
+            "source_character_count": evidence["source_character_count"],
+            "cleaned_character_count": evidence["cleaned_character_count"],
+            "chapter_count": evidence["chapter_count"],
+            "language": evidence["language"],
+            "source_marker_evidence": evidence["source_marker_evidence"],
+            "cleanup_evidence": evidence["cleanup_evidence"],
             "source_hash_status": "PASS" if evidence["source_hash"] else "MISSING",
             "content_hash_status": "PASS" if evidence["content_hash"] else "MISSING",
             "provenance_hash_status": "PASS" if evidence["provenance_hash"] else "MISSING",
@@ -810,6 +907,16 @@ def upsert_markdown_section(path: Path, heading: str, body: str) -> None:
 
 def update_broad_launch_reports(gate_results: dict[str, Any]) -> None:
     blocker_text = "\n".join(f"- {blocker}" for blocker in gate_results.get("high_blockers", [])) or "- None."
+    source_note = (
+        "Dracula has passed the source/license/hash/QA checks in dry-run evidence."
+        if gate_results.get("source_qa_status") == "QA_PASSED"
+        else "The Dracula score is capped at `8.0/10` until Project Gutenberg eBook #345 source text is locally supplied or explicitly fetched through the approved opt-in path and passes all source/license/hash/QA checks."
+    )
+    blocker_artifact_note = (
+        "Absent after approval-artifact write."
+        if gate_results.get("approved_to_publish_exists")
+        else "`APPROVED_TO_PUBLISH_BLOCKERS.md`"
+    )
     upsert_markdown_section(
         ROOT / "FINAL_GO_NO_GO_DECISION.md",
         "Dracula Controlled Candidate",
@@ -821,10 +928,10 @@ def update_broad_launch_reports(gate_results: dict[str, Any]) -> None:
                 f"- SEO landing: `{gate_results['seo_status']}`",
                 f"- Audio: `{gate_results['audio_status']}`",
                 f"- Approval artifact exists: `{gate_results['approved_to_publish_exists']}`",
-                "- Blocker artifact: `APPROVED_TO_PUBLISH_BLOCKERS.md`",
+                f"- Blocker artifact: {blocker_artifact_note}",
                 "- Evidence: `output/publication_candidates/dracula/source_evidence.json`",
                 "",
-                "Score remains capped at `8.0/10` while Dracula lacks real verified source text and hashes.",
+                source_note,
                 "",
                 "### Dracula Blockers",
                 "",
@@ -843,14 +950,14 @@ def update_broad_launch_reports(gate_results: dict[str, Any]) -> None:
                 "| --- | --- |",
                 f"| Removed-route canary | {gate_results['route_canary_status']} |",
                 f"| Payment smoke | {gate_results['payment_smoke_status']} |",
-                "| Source text | BLOCKED_SOURCE_TEXT_REQUIRED |",
-                "| Source license/hash evidence | MISSING |",
-                f"| Rights tier | {gate_results['rights_tier']} until real source evidence passes |",
+                f"| Source QA | {gate_results['source_qa_status']} |",
+                f"| Source license/hash evidence | {'PASS' if gate_results['rights_tier'] == 'A' else 'MISSING'} |",
+                f"| Rights tier | {gate_results['rights_tier']} |",
                 f"| SEO landing | {gate_results['seo_status']}, non-public |",
                 f"| Audio | {gate_results['audio_status']} |",
-                "| Approval artifact | NOT_CREATED |",
+                f"| Approval artifact | {'CREATED' if gate_results['approved_to_publish_exists'] else 'NOT_CREATED'} |",
                 "",
-                "The Dracula score is capped at `8.0/10` until Project Gutenberg eBook #345 source text is locally supplied or explicitly fetched through the approved opt-in path.",
+                source_note,
             ]
         ),
     )
@@ -1029,6 +1136,7 @@ def scorecard_markdown(gate_results: dict[str, Any]) -> str:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Prepare Dracula as a dry-run controlled-publication candidate.")
     parser.add_argument("--source-url", default=DEFAULT_SOURCE_URL)
+    parser.add_argument("--source-text-url", default="")
     parser.add_argument("--source-text-file", default="")
     parser.add_argument("--slug", default="dracula")
     parser.add_argument("--title", default="Dracula")

@@ -1,18 +1,13 @@
 {
   "slug": "dracula",
-  "rights_basis": "Bram Stoker died in 1912 and Dracula was first published in 1897; Tier A requires verified public-domain source text and Project Gutenberg license evidence.",
-  "rights_tier": "C",
-  "verification_status": "blocked",
+  "rights_basis": "Bram Stoker died in 1912 and Dracula was first published in 1897. The candidate uses Project Gutenberg eBook #345 as its primary source. Tier A global publication is allowed only when the Project Gutenberg source text, license section, source_hash, content_hash, provenance_hash, and rights engine approval all pass. No modern translation, illustration, or editorial dependency is included.",
+  "rights_tier": "A",
+  "verification_status": "approved",
   "publication_region": "global",
   "rights_decision": {
-    "status": "quarantine",
-    "approved": false,
-    "issues": [
-      "source_license is required.",
-      "Tier C rights block all publishing.",
-      "verification_status must be approved before publishing.",
-      "blocked_reason: Source text is required before Dracula can be approved.; BLOCKED_SOURCE_TEXT_REQUIRED; Project Gutenberg source license was not deterministically verified from source text.; source_hash, content_hash, and provenance_hash are required."
-    ],
+    "status": "approved",
+    "approved": true,
+    "issues": [],
     "metadata": {
       "work_title": "Dracula",
       "work_slug": "dracula",
@@ -22,19 +17,19 @@
       "country_of_origin": "United Kingdom",
       "source_url": "https://www.gutenberg.org/ebooks/345",
       "source_name": "Project Gutenberg eBook #345",
-      "source_license": "",
+      "source_license": "Project Gutenberg License",
       "translator_name": "",
       "translator_death_year": "",
       "illustrator_name": "",
       "illustrator_death_year": "",
       "editor_name": "",
       "edition_publication_year": "",
-      "rights_tier": "C",
-      "verification_status": "blocked",
-      "blocked_reason": "Source text is required before Dracula can be approved.; BLOCKED_SOURCE_TEXT_REQUIRED; Project Gutenberg source license was not deterministically verified from source text.; source_hash, content_hash, and provenance_hash are required.",
+      "rights_tier": "A",
+      "verification_status": "approved",
+      "blocked_reason": "",
       "publication_region": "global",
-      "verified_at": ""
+      "verified_at": "2026-06-19T10:40:54Z"
     }
   },
-  "qa_status": "BLOCKED_SOURCE_QA"
+  "qa_status": "QA_PASSED"
 }

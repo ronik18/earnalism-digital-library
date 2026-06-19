@@ -32,11 +32,11 @@ Dracula is prepared as the first controlled-publication candidate package in dry
 | --- | --- |
 | Removed-route canary | PASS |
 | Payment smoke | PASS_TEST_MODE |
-| Source text | BLOCKED_SOURCE_TEXT_REQUIRED |
-| Source license/hash evidence | MISSING |
-| Rights tier | C until real source evidence passes |
+| Source QA | QA_PASSED |
+| Source license/hash evidence | PASS |
+| Rights tier | A |
 | SEO landing | PASS_DRAFT, non-public |
 | Audio | AUDIO_NOT_REQUIRED |
-| Approval artifact | NOT_CREATED |
+| Approval artifact | CREATED |
 
-The Dracula score is capped at `8.0/10` until Project Gutenberg eBook #345 source text is locally supplied or explicitly fetched through the approved opt-in path.
+Dracula has passed the source/license/hash/QA checks in dry-run evidence.

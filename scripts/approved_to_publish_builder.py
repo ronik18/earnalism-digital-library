@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -204,14 +205,33 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     issues.extend(route_issues)
     issues.extend(payment_issues)
 
-    status = "PASS" if not issues else "BLOCKED"
+    evidence_passes = not issues
+    mode = "write_approval_artifact" if args.write_approval_artifact else "evaluate_only"
+    write_allowed = os.getenv("EARNALISM_ALLOW_APPROVAL_ARTIFACT_WRITE", "").strip().lower() == "true"
+    status = "PASS_EVALUATE_ONLY" if evidence_passes else "BLOCKED"
+    approval_issues: list[str] = []
+    if evidence_passes and args.write_approval_artifact:
+        if write_allowed:
+            status = "PASS_APPROVAL_ARTIFACT_WRITTEN"
+        else:
+            status = "BLOCKED_APPROVAL_WRITE_DISABLED"
+            approval_issues.append("EARNALISM_ALLOW_APPROVAL_ARTIFACT_WRITE=true is required to write APPROVED_TO_PUBLISH.md.")
+    elif evidence_passes:
+        approval_issues.append("Evaluation passed, but approval artifact write was not requested.")
+
+    report_issues = [*issues, *approval_issues]
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     payload = {
         "generated_at": utc_now(),
         "dry_run": True,
         "candidate": str(candidate_path),
         "status": status,
-        "issues": issues,
+        "mode": mode,
+        "write_approval_artifact_requested": bool(args.write_approval_artifact),
+        "approval_artifact_write_env_enabled": write_allowed,
+        "approval_artifact_written": status == "PASS_APPROVAL_ARTIFACT_WRITTEN",
+        "evidence_passes": evidence_passes,
+        "issues": report_issues,
         "route_canary_status": route_status,
         "payment_smoke_status": payment_status,
         "approved_file": str(APPROVED_FILE),
@@ -221,7 +241,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     }
     (OUTPUT_DIR / "approved_to_publish_builder.json").write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
-    if status == "PASS":
+    if status == "PASS_APPROVAL_ARTIFACT_WRITTEN":
         APPROVED_FILE.write_text(
             approval_markdown(candidate, route_status, route_path, payment_status, payment_path),
             encoding="utf-8",
@@ -229,20 +249,24 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         if BLOCKERS_FILE.exists():
             BLOCKERS_FILE.unlink()
     else:
-        if APPROVED_FILE.exists():
+        if APPROVED_FILE.exists() and (not evidence_passes or args.write_approval_artifact):
             APPROVED_FILE.unlink()
-        BLOCKERS_FILE.write_text(
-            blockers_markdown(issues, candidate_path=candidate_path, route_status=route_status, payment_status=payment_status),
-            encoding="utf-8",
-        )
-    PRECHECK_REPORT.write_text(precheck_markdown(status, issues), encoding="utf-8")
+        if report_issues:
+            BLOCKERS_FILE.write_text(
+                blockers_markdown(report_issues, candidate_path=candidate_path, route_status=route_status, payment_status=payment_status),
+                encoding="utf-8",
+            )
+    PRECHECK_REPORT.write_text(precheck_markdown(status, report_issues), encoding="utf-8")
     return payload
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build Dracula APPROVED_TO_PUBLISH.md only when all gates pass.")
     parser.add_argument("--candidate", required=True)
-    parser.add_argument("--dry-run", action="store_true", default=True)
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--evaluate-only", action="store_true", default=False)
+    mode.add_argument("--write-approval-artifact", action="store_true", default=False)
+    parser.add_argument("--dry-run", action="store_true", default=True, help=argparse.SUPPRESS)
     return parser.parse_args()
 
 
@@ -251,6 +275,8 @@ def main() -> int:
     if args.dry_run is not True:
         print("approved_to_publish_builder is dry-run only in this phase.", file=sys.stderr)
         return 2
+    if not args.evaluate_only and not args.write_approval_artifact:
+        args.evaluate_only = True
     result = build(args)
     print(f"Approved-to-publish builder status: {result['status']}")
     if result["issues"]:

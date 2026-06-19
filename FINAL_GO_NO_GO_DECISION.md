@@ -24,17 +24,17 @@ Production route parity passed in the latest audit, so it no longer caps the cur
 
 ## Dracula Controlled Candidate
 
-- Candidate package: `HOLD_FOR_FIXES`
+- Candidate package: `GO_FOR_CONTROLLED_PUBLICATION_FOR_DRACULA_ONLY`
 - Removed-route canary: `PASS`
 - Payment smoke: `PASS_TEST_MODE`
 - SEO landing: `PASS_DRAFT`
 - Audio: `AUDIO_NOT_REQUIRED`
-- Approval artifact exists: `False`
-- Blocker artifact: `APPROVED_TO_PUBLISH_BLOCKERS.md`
+- Approval artifact exists: `True`
+- Blocker artifact: Absent after approval-artifact write.
 - Evidence: `output/publication_candidates/dracula/source_evidence.json`
 
-Score remains capped at `8.0/10` while Dracula lacks real verified source text and hashes.
+Dracula has passed the source/license/hash/QA checks in dry-run evidence.
 
 ### Dracula Blockers
 
-- Dracula lacks approved real source evidence.
+- None.

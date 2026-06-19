@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from argparse import Namespace
 from pathlib import Path
 
@@ -10,6 +11,7 @@ from scripts import prepare_dracula_candidate as dracula
 def dracula_args(**overrides):
     values = {
         "source_url": "https://www.gutenberg.org/ebooks/345",
+        "source_text_url": "",
         "source_text_file": "",
         "slug": "dracula",
         "title": "Dracula",
@@ -73,7 +75,9 @@ def test_approved_builder_writes_blockers_and_removes_stale_approval(tmp_path, m
     monkeypatch.setattr(builder, "OUTPUT_DIR", tmp_path / "output" / "publication_candidates" / "dracula")
     monkeypatch.setattr(builder, "LAUNCH_OUTPUT_DIR", launch_output)
 
-    result = builder.build(Namespace(candidate=str(candidate), dry_run=True))
+    result = builder.build(
+        Namespace(candidate=str(candidate), dry_run=True, evaluate_only=True, write_approval_artifact=False)
+    )
 
     assert result["status"] == "BLOCKED"
     assert not approved_file.exists()
@@ -81,8 +85,8 @@ def test_approved_builder_writes_blockers_and_removes_stale_approval(tmp_path, m
     assert (tmp_path / "CONTROLLED_PUBLICATION_PRECHECK.md").exists()
 
 
-def test_approved_builder_evaluates_complete_candidate_shape(tmp_path, monkeypatch):
-    candidate = {
+def complete_candidate():
+    return {
         "title": "Dracula",
         "slug": "dracula",
         "author": "Bram Stoker",
@@ -106,8 +110,83 @@ def test_approved_builder_evaluates_complete_candidate_shape(tmp_path, monkeypat
         "rights_decision": {"approved": True, "issues": []},
     }
 
+
+def test_approved_builder_evaluates_complete_candidate_shape():
+    candidate = complete_candidate()
+
     assert builder.evaluate_candidate(candidate) == []
 
     bad = dict(candidate)
     bad["source_hash"] = ""
     assert "source_hash is required." in builder.evaluate_candidate(bad)
+
+
+def test_approved_builder_evaluate_only_does_not_write_approval_for_passing_candidate(tmp_path, monkeypatch):
+    candidate_path = tmp_path / "source_evidence.json"
+    candidate_path.write_text(json.dumps(complete_candidate()), encoding="utf-8")
+    launch_output = tmp_path / "output" / "launch"
+    launch_output.mkdir(parents=True)
+    (launch_output / "post_deploy_route_canary.json").write_text('{"status":"PASS"}\n', encoding="utf-8")
+    (launch_output / "payment_smoke.json").write_text('{"status":"PASS_TEST_MODE"}\n', encoding="utf-8")
+
+    monkeypatch.setattr(builder, "APPROVED_FILE", tmp_path / "APPROVED_TO_PUBLISH.md")
+    monkeypatch.setattr(builder, "BLOCKERS_FILE", tmp_path / "APPROVED_TO_PUBLISH_BLOCKERS.md")
+    monkeypatch.setattr(builder, "PRECHECK_REPORT", tmp_path / "CONTROLLED_PUBLICATION_PRECHECK.md")
+    monkeypatch.setattr(builder, "OUTPUT_DIR", tmp_path / "output" / "publication_candidates" / "dracula")
+    monkeypatch.setattr(builder, "LAUNCH_OUTPUT_DIR", launch_output)
+
+    result = builder.build(
+        Namespace(candidate=str(candidate_path), dry_run=True, evaluate_only=True, write_approval_artifact=False)
+    )
+
+    assert result["status"] == "PASS_EVALUATE_ONLY"
+    assert result["evidence_passes"] is True
+    assert not (tmp_path / "APPROVED_TO_PUBLISH.md").exists()
+    assert (tmp_path / "APPROVED_TO_PUBLISH_BLOCKERS.md").exists()
+
+
+def test_approved_builder_write_mode_requires_env_flag(tmp_path, monkeypatch):
+    candidate_path = tmp_path / "source_evidence.json"
+    candidate_path.write_text(json.dumps(complete_candidate()), encoding="utf-8")
+    launch_output = tmp_path / "output" / "launch"
+    launch_output.mkdir(parents=True)
+    (launch_output / "post_deploy_route_canary.json").write_text('{"status":"PASS"}\n', encoding="utf-8")
+    (launch_output / "payment_smoke.json").write_text('{"status":"PASS_TEST_MODE"}\n', encoding="utf-8")
+
+    monkeypatch.delenv("EARNALISM_ALLOW_APPROVAL_ARTIFACT_WRITE", raising=False)
+    monkeypatch.setattr(builder, "APPROVED_FILE", tmp_path / "APPROVED_TO_PUBLISH.md")
+    monkeypatch.setattr(builder, "BLOCKERS_FILE", tmp_path / "APPROVED_TO_PUBLISH_BLOCKERS.md")
+    monkeypatch.setattr(builder, "PRECHECK_REPORT", tmp_path / "CONTROLLED_PUBLICATION_PRECHECK.md")
+    monkeypatch.setattr(builder, "OUTPUT_DIR", tmp_path / "output" / "publication_candidates" / "dracula")
+    monkeypatch.setattr(builder, "LAUNCH_OUTPUT_DIR", launch_output)
+
+    result = builder.build(
+        Namespace(candidate=str(candidate_path), dry_run=True, evaluate_only=False, write_approval_artifact=True)
+    )
+
+    assert result["status"] == "BLOCKED_APPROVAL_WRITE_DISABLED"
+    assert not (tmp_path / "APPROVED_TO_PUBLISH.md").exists()
+
+
+def test_approved_builder_write_mode_writes_approval_with_env_flag(tmp_path, monkeypatch):
+    candidate_path = tmp_path / "source_evidence.json"
+    candidate_path.write_text(json.dumps(complete_candidate()), encoding="utf-8")
+    launch_output = tmp_path / "output" / "launch"
+    launch_output.mkdir(parents=True)
+    (launch_output / "post_deploy_route_canary.json").write_text('{"status":"PASS"}\n', encoding="utf-8")
+    (launch_output / "payment_smoke.json").write_text('{"status":"PASS_TEST_MODE"}\n', encoding="utf-8")
+
+    monkeypatch.setenv("EARNALISM_ALLOW_APPROVAL_ARTIFACT_WRITE", "true")
+    monkeypatch.setattr(builder, "APPROVED_FILE", tmp_path / "APPROVED_TO_PUBLISH.md")
+    monkeypatch.setattr(builder, "BLOCKERS_FILE", tmp_path / "APPROVED_TO_PUBLISH_BLOCKERS.md")
+    monkeypatch.setattr(builder, "PRECHECK_REPORT", tmp_path / "CONTROLLED_PUBLICATION_PRECHECK.md")
+    monkeypatch.setattr(builder, "OUTPUT_DIR", tmp_path / "output" / "publication_candidates" / "dracula")
+    monkeypatch.setattr(builder, "LAUNCH_OUTPUT_DIR", launch_output)
+
+    result = builder.build(
+        Namespace(candidate=str(candidate_path), dry_run=True, evaluate_only=False, write_approval_artifact=True)
+    )
+
+    assert result["status"] == "PASS_APPROVAL_ARTIFACT_WRITTEN"
+    assert result["approval_artifact_written"] is True
+    assert (tmp_path / "APPROVED_TO_PUBLISH.md").exists()
