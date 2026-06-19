@@ -584,10 +584,11 @@ def audit_ux_conversion() -> dict[str, Any]:
 
     checks = {
         "hero_start_reading": "Start Reading" in home,
-        "hero_pricing_path": "/pricing" in home,
+        "hero_pricing_path": "/pricing" in home or "hero-cta-pricing" in home or "readingPassUrl(" in home,
         "newsletter_entry": "newsletter" in home.lower(),
         "book_preview_cta": "Read Preview" in book_detail or "reader/" in book_detail,
-        "book_buy_cta": "Buy Reading Time" in book_detail and "bottom-buy-reading-time" in book_detail,
+        "book_buy_cta": ("Buy Reading Time" in book_detail or "Get Reading Pass" in book_detail)
+        and "bottom-buy-reading-time" in book_detail,
         "pricing_cta": "data-testid={`buy-${p.id}`" in pricing or "Buy" in pricing,
         "pricing_trust_statement": "Payments are processed securely by Razorpay" in pricing,
         "pricing_support_refund_copy": "support or refund questions" in pricing,

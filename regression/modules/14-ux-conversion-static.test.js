@@ -64,10 +64,13 @@ describe("UX conversion static signals", () => {
 
   test("Bengali Gothic candidate is pipeline-only and not a live reading CTA", () => {
     expect(home).toContain('data-testid="bengali-gothic-pipeline-shelf"');
-    expect(home).toContain("Bengali Gothic Premiere: ক্ষুধিত পাষাণ");
-    expect(home).toContain("After Dracula, enter a haunted Bengali palace.");
+    expect(home).toContain("KSHUDHITA_PASHAN_PIPELINE.headline");
+    expect(home).toContain("KSHUDHITA_PASHAN_PIPELINE.subcopy");
+    expect(controlledLaunch).toContain("Bengali Gothic Premiere: ক্ষুধিত পাষাণ");
+    expect(controlledLaunch).toContain("After Dracula, enter a haunted Bengali palace.");
     expect(library).toContain('data-testid="library-bengali-gothic-pipeline"');
-    expect(library).toContain("Bengali Gothic Premiere: ক্ষুধিত পাষাণ");
+    expect(library).toContain("KSHUDHITA_PASHAN_PIPELINE.headline");
+    expect(library).toContain("KSHUDHITA_PASHAN_PIPELINE.subcopy");
 
     const homePipelineBlock = extractBetween(
       home,
