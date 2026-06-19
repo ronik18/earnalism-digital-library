@@ -1,0 +1,53 @@
+{
+  "rights_basis": "Rabindranath Tagore died in 1941. Under the India life-plus-60 assumption used by the Phase 2 rights engine, the original literary work is public domain in India. This is a Tier A source-backed candidate with CC BY-SA attribution/share-alike compliance required. It excludes modern translations, illustrations, audio recordings, annotations, film material, and commentary.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "global",
+  "rights_decision": {
+    "status": "approved",
+    "approved": true,
+    "issues": [],
+    "metadata": {
+      "work_title": "ক্ষুধিত পাষাণ",
+      "work_slug": "kshudhita-pashan",
+      "author_name": "Rabindranath Tagore",
+      "author_death_year": 1941,
+      "original_publication_year": 1895,
+      "country_of_origin": "India",
+      "source_url": "https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%81%E0%A6%A7%E0%A6%BF%E0%A6%A4_%E0%A6%AA%E0%A6%BE%E0%A6%B7%E0%A6%BE%E0%A6%A3",
+      "source_name": "Bengali Wikisource",
+      "source_license": "Creative Commons Attribution-Share Alike 4.0",
+      "translator_name": "",
+      "translator_death_year": "",
+      "illustrator_name": "",
+      "illustrator_death_year": "",
+      "editor_name": "",
+      "edition_publication_year": "",
+      "rights_tier": "A",
+      "verification_status": "approved",
+      "blocked_reason": "",
+      "publication_region": "global",
+      "verified_at": "2026-06-19T18:27:10Z",
+      "source_license_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.bn",
+      "attribution_required": true,
+      "share_alike_required": true,
+      "attribution_text": "ক্ষুধিত পাষাণ (The Hungry Stones) by Rabindranath Tagore, source text from Bengali Wikisource, licensed under Creative Commons Attribution-Share Alike 4.0.",
+      "license_compliance_status": "CC_BY_SA_ATTRIBUTION_SHAREALIKE_REQUIRED"
+    }
+  },
+  "excluded_rights_objects": [
+    "modern translations",
+    "illustrations",
+    "audio recordings",
+    "annotations",
+    "film adaptations",
+    "editorial notes"
+  ],
+  "source_license_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.bn",
+  "source_permalink": "https://bn.wikisource.org/wiki/%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%A6%E0%A6%B6%E0%A6%95/%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A7%81%E0%A6%A7%E0%A6%BF%E0%A6%A4_%E0%A6%AA%E0%A6%BE%E0%A6%B7%E0%A6%BE%E0%A6%A3",
+  "source_page_oldid": "",
+  "attribution_required": true,
+  "share_alike_required": true,
+  "attribution_text": "ক্ষুধিত পাষাণ (The Hungry Stones) by Rabindranath Tagore, source text from Bengali Wikisource, licensed under Creative Commons Attribution-Share Alike 4.0.",
+  "license_compliance_status": "CC_BY_SA_ATTRIBUTION_SHAREALIKE_REQUIRED"
+}

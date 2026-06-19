@@ -1,4 +1,5 @@
 export const LIVE_APPROVED_SLUG = "dracula";
+export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 
 export const DRACULA_SOURCE_NOTE = "Project Gutenberg eBook #345";
 export const DRACULA_RIGHTS_NOTE = "Approved Tier A core reading candidate";
@@ -27,6 +28,19 @@ export const DRACULA_FALLBACK_BOOK = {
 };
 
 export const PIPELINE_BOOKS = [
+  {
+    slug: KSHUDHITA_PASHAN_SLUG,
+    title: "ক্ষুধিত পাষাণ",
+    title_en: "The Hungry Stones",
+    author: "Rabindranath Tagore",
+    category_slug: "bengali-gothic",
+    statusLabel: "Tier A source-backed candidate with CC BY-SA attribution/share-alike compliance required",
+    pipeline_stage: "PIPELINE_ONLY",
+    rights_tier: "A",
+    verification_status: "candidate_review",
+    audio_preview_status: "AUDIO_PREVIEW_BLOCKED_UNTIL_PROVIDER_QA",
+    audiobook_enabled: false,
+  },
   {
     slug: "frankenstein",
     title: "Frankenstein",
@@ -57,6 +71,16 @@ export const PIPELINE_BOOKS = [
   },
 ];
 
+export const KSHUDHITA_PASHAN_PIPELINE = {
+  slug: KSHUDHITA_PASHAN_SLUG,
+  titleBn: "ক্ষুধিত পাষাণ",
+  titleEn: "The Hungry Stones",
+  author: "Rabindranath Tagore",
+  headline: "Bengali Gothic Premiere: ক্ষুধিত পাষাণ",
+  subcopy: "After Dracula, enter a haunted Bengali palace.",
+  statusLabel: "Pipeline only: source, rights, CC BY-SA compliance, text QA, and audio provider QA are still gated.",
+};
+
 export const DRACULA_CTA_EVENTS = {
   homepagePrimary: "homepage_dracula_cta_click",
   bookView: "dracula_book_view",
@@ -68,12 +92,57 @@ export const DRACULA_CTA_EVENTS = {
   notifyMe: "dracula_notify_me_click",
 };
 
+function normalizedSlug(book = {}) {
+  return String(book?.slug || book?.id || "").trim().toLowerCase();
+}
+
+function normalizedRightsTier(book = {}) {
+  return String(book?.rights_tier || book?.rights_metadata?.rights_tier || "").trim().toUpperCase();
+}
+
+function normalizedVerificationStatus(book = {}) {
+  return String(book?.verification_status || book?.rights_metadata?.verification_status || "").trim().toLowerCase();
+}
+
 export function isLiveApprovedBook(book = {}) {
-  return book?.slug === LIVE_APPROVED_SLUG;
+  const slug = normalizedSlug(book);
+  if (slug !== LIVE_APPROVED_SLUG) return false;
+  const tier = normalizedRightsTier(book);
+  const status = normalizedVerificationStatus(book);
+  if (tier && tier !== "A") return false;
+  if (status && !["approved", "published_core_reading_only"].includes(status)) return false;
+  return true;
+}
+
+export function isPipelineCandidate(book = {}) {
+  const slug = normalizedSlug(book);
+  if (!slug) return false;
+  if (slug === LIVE_APPROVED_SLUG) return false;
+  if (normalizedRightsTier(book) === "C") return false;
+  return PIPELINE_BOOKS.some((candidate) => candidate.slug === slug)
+    || String(book?.pipeline_stage || "").toUpperCase().includes("PIPELINE")
+    || !isLiveApprovedBook(book);
+}
+
+export function canShowStartReading(book = {}) {
+  return isLiveApprovedBook(book);
+}
+
+export function canShowPreview(book = {}) {
+  return isLiveApprovedBook(book);
+}
+
+export function canShowAudioCTA(book = {}) {
+  if (!isLiveApprovedBook(book)) return false;
+  if (!book?.audiobook_enabled || book?.generate_audiobook) return false;
+  const qaStatus = String(book?.audio_qa_status || book?.audiobook?.qa_status || "").trim().toUpperCase();
+  return qaStatus === "QA_PASSED";
 }
 
 export function bookLaunchStatus(book = {}) {
   if (isLiveApprovedBook(book)) return "LIVE_APPROVED";
+  if (normalizedRightsTier(book) === "C") return "QUARANTINED";
+  if (normalizedRightsTier(book) === "B") return "REGION_GATED_PIPELINE";
   return "COMING_SOON_PIPELINE";
 }
 

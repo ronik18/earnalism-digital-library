@@ -80,6 +80,11 @@ LAUNCH_EVENTS = [
     "institution_interest",
     "audio_preview_played",
     "cta_clicked",
+    "bengali_gothic_pipeline_view",
+    "kshudhita_pashan_notify_click",
+    "kshudhita_pashan_audio_interest_click",
+    "bengali_voice_sample_interest",
+    "bengali_gothic_reading_circle_click",
 ]
 
 PAYMENT_SMOKE_EVENTS = ["pricing_view", "checkout_start", "payment_success", "payment_failed"]
@@ -1074,6 +1079,11 @@ def analytics_event_schema() -> dict[str, Any]:
         "institution_interest": ["source"],
         "audio_preview_played": ["book_slug", "language", "duration_seconds"],
         "cta_clicked": ["cta_id", "destination", "source"],
+        "bengali_gothic_pipeline_view": ["source", "book_slug", "public"],
+        "kshudhita_pashan_notify_click": ["source", "book_slug", "cta_id", "public"],
+        "kshudhita_pashan_audio_interest_click": ["source", "book_slug", "cta_id", "public"],
+        "bengali_voice_sample_interest": ["source", "book_slug", "cta_id", "public"],
+        "bengali_gothic_reading_circle_click": ["source", "book_slug", "cta_id", "public"],
     }
     blocked_fields = [
         "email",
@@ -1121,6 +1131,46 @@ def validate_mock_analytics_events(schema: dict[str, Any]) -> dict[str, Any]:
         {"event": "institution_interest", "metadata": {"source": "contact"}},
         {"event": "audio_preview_played", "metadata": {"book_slug": "ginni", "language": "ben", "duration_seconds": 30}},
         {"event": "cta_clicked", "metadata": {"cta_id": "hero-cta-read", "destination": "/library", "source": "home"}},
+        {
+            "event": "bengali_gothic_pipeline_view",
+            "metadata": {"source": "home", "book_slug": "kshudhita-pashan", "public": False},
+        },
+        {
+            "event": "kshudhita_pashan_notify_click",
+            "metadata": {
+                "source": "home_pipeline_shelf",
+                "book_slug": "kshudhita-pashan",
+                "cta_id": "pipeline-kshudhita-notify",
+                "public": False,
+            },
+        },
+        {
+            "event": "kshudhita_pashan_audio_interest_click",
+            "metadata": {
+                "source": "home_pipeline_shelf",
+                "book_slug": "kshudhita-pashan",
+                "cta_id": "pipeline-kshudhita-audio",
+                "public": False,
+            },
+        },
+        {
+            "event": "bengali_voice_sample_interest",
+            "metadata": {
+                "source": "home_pipeline_shelf",
+                "book_slug": "kshudhita-pashan",
+                "cta_id": "pipeline-bengali-voice",
+                "public": False,
+            },
+        },
+        {
+            "event": "bengali_gothic_reading_circle_click",
+            "metadata": {
+                "source": "home_pipeline_shelf",
+                "book_slug": "kshudhita-pashan",
+                "cta_id": "pipeline-reading-circle",
+                "public": False,
+            },
+        },
     ]
     errors: list[str] = []
     blocked_fields = set(next(iter(events.values()), {}).get("blocked_metadata_fields", []))

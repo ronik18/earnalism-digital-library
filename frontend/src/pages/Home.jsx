@@ -26,6 +26,7 @@ import {
   DRACULA_CTA_EVENTS,
   DRACULA_RIGHTS_NOTE,
   DRACULA_SOURCE_NOTE,
+  KSHUDHITA_PASHAN_PIPELINE,
   LIVE_APPROVED_SLUG,
   PIPELINE_BOOKS,
   mergeDraculaBook,
@@ -48,6 +49,15 @@ function track(event, metadata = {}) {
   trackFunnelEvent(event, { book: LIVE_APPROVED_SLUG, ...metadata });
 }
 
+function trackPipelineInterest(event, ctaId) {
+  trackFunnelEvent(event, {
+    source: "home_pipeline_shelf",
+    book_slug: KSHUDHITA_PASHAN_PIPELINE.slug,
+    cta_id: ctaId,
+    public: false,
+  });
+}
+
 export default function Home() {
   const { social } = useSettings();
   const [dracula, setDracula] = useState(null);
@@ -65,6 +75,14 @@ export default function Home() {
     imageAlt: "Dracula on Earnalism",
     canonicalPath: "/",
   });
+
+  useEffect(() => {
+    trackFunnelEvent("bengali_gothic_pipeline_view", {
+      source: "home",
+      book_slug: KSHUDHITA_PASHAN_PIPELINE.slug,
+      public: false,
+    });
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -204,6 +222,81 @@ export default function Home() {
               body="The reading path is being prepared as a guided layer. The live product today is the Dracula core reader."
               primary={{ label: "Notify Me", to: notifyUrl("dracula-reading-path"), event: DRACULA_CTA_EVENTS.notifyMe }}
             />
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="relative overflow-hidden border-y border-brand-soft bg-[#221017] text-[#FDFCF8]"
+        data-testid="bengali-gothic-pipeline-shelf"
+        aria-labelledby="bengali-gothic-pipeline-title"
+      >
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:px-12 lg:py-24">
+          <div className="lg:col-span-7">
+            <div className="italic-eyebrow mb-4 text-[var(--brand-gold-soft)]">Coming Through the Rights-Safe Pipeline</div>
+            <h2 id="bengali-gothic-pipeline-title" className="font-serif-light text-4xl leading-tight sm:text-5xl lg:text-[3.65rem]">
+              {KSHUDHITA_PASHAN_PIPELINE.headline}
+            </h2>
+            <p className="mt-5 font-serif-display text-xl italic leading-snug text-[var(--brand-gold-soft)] sm:text-2xl">
+              {KSHUDHITA_PASHAN_PIPELINE.subcopy}
+            </p>
+            <p className="mt-6 max-w-2xl text-[#F4EFEA]/76 leading-[1.85] font-light">
+              This Bengali Gothic candidate remains pipeline-only. Source evidence, CC BY-SA attribution/share-alike compliance, text QA,
+              pronunciation review, and provider audio QA must pass before any reader or listening access goes live.
+            </p>
+          </div>
+          <div className="lg:col-span-5">
+            <div className="rounded-lg border border-[#FDFCF8]/16 bg-[#FDFCF8]/[0.065] p-6 backdrop-blur-sm sm:p-8" data-testid="pipeline-kshudhita-pashan">
+              <div className="text-[0.64rem] uppercase tracking-[0.28em] text-[var(--brand-gold-soft)]">Bengali Gothic Candidate</div>
+              <h3 className="mt-4 font-serif-light text-3xl leading-tight sm:text-4xl">{KSHUDHITA_PASHAN_PIPELINE.titleBn}</h3>
+              <p className="mt-2 text-[#F4EFEA]/68">{KSHUDHITA_PASHAN_PIPELINE.titleEn} by {KSHUDHITA_PASHAN_PIPELINE.author}</p>
+              <p className="mt-6 text-sm leading-[1.75] text-[#F4EFEA]/72">
+                Status: {KSHUDHITA_PASHAN_PIPELINE.statusLabel}
+              </p>
+              <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <Link
+                  to={notifyUrl(KSHUDHITA_PASHAN_PIPELINE.slug)}
+                  className="btn-secondary justify-center !border-[var(--brand-gold-soft)] !text-[#FDFCF8] hover:!bg-[rgba(216,185,122,0.12)]"
+                  data-testid="pipeline-kshudhita-notify"
+                  onClick={() => trackPipelineInterest("kshudhita_pashan_notify_click", "pipeline-kshudhita-notify")}
+                >
+                  Notify Me
+                </Link>
+                <button
+                  type="button"
+                  className="btn-secondary justify-center !border-[var(--brand-gold-soft)] !text-[#FDFCF8] hover:!bg-[rgba(216,185,122,0.12)]"
+                  data-testid="pipeline-kshudhita-voice-sample"
+                  onClick={() => {
+                    trackPipelineInterest("kshudhita_pashan_audio_interest_click", "pipeline-kshudhita-voice-sample");
+                    toast.message("Voice sample interest noted.");
+                  }}
+                >
+                  Voice Sample Soon
+                </button>
+                <button
+                  type="button"
+                  className="btn-link justify-center !text-[#FDFCF8]"
+                  data-testid="pipeline-reading-circle"
+                  onClick={() => {
+                    trackPipelineInterest("bengali_gothic_reading_circle_click", "pipeline-reading-circle");
+                    toast.message("Reading Circle interest noted.");
+                  }}
+                >
+                  Reading Circle
+                </button>
+                <button
+                  type="button"
+                  className="btn-link justify-center !text-[#FDFCF8]"
+                  data-testid="pipeline-bengali-voice"
+                  onClick={() => {
+                    trackPipelineInterest("bengali_voice_sample_interest", "pipeline-bengali-voice");
+                    toast.message("Bengali voice QA interest noted.");
+                  }}
+                >
+                  Follow Audio QA
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

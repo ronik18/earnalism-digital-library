@@ -1,0 +1,606 @@
+{
+  "generated_at": "2026-06-19T18:27:12Z",
+  "dry_run": true,
+  "mutation_performed": false,
+  "audio_file_created": false,
+  "production_storage_upload": false,
+  "book_slug": "kshudhita-pashan",
+  "voice_identity": "Refined female Bengali literary narrator; warm, intelligent, calm, expressive, punctuation-aware, emotionally restrained, haunted without theatrical overacting.",
+  "preview_lengths": [
+    "30-second sample",
+    "90-second sample",
+    "3-minute sample"
+  ],
+  "preferred_provider_route": "Bengali Indic TTS / AI4Bharat-compatible metadata hook first; OpenAI TTS fallback only after quality validation.",
+  "manual_upload_fallback": "Metadata-only; uploaded files must pass QA before any public surface.",
+  "pronunciation_dictionary": [
+    {
+      "word": "ক্ষুধিত পাষাণ",
+      "pronunciation_hint": "খু-ধি-তো পা-ষাণ; conjunct ক্ষ stays soft, not kh-sh.",
+      "context": "title and recurring mood phrase",
+      "confidence": "high",
+      "requires_human_spot_check": true
+    },
+    {
+      "word": "বরীচ",
+      "pronunciation_hint": "বো-রীচ; final চ clear but restrained.",
+      "context": "place name in the haunted palace narration",
+      "confidence": "medium",
+      "requires_human_spot_check": true
+    },
+    {
+      "word": "শুস্তা",
+      "pronunciation_hint": "শুস্-তা; keep the river name smooth, not over-enunciated.",
+      "context": "river beside the palace",
+      "confidence": "medium",
+      "requires_human_spot_check": true
+    },
+    {
+      "word": "জুনাগড়",
+      "pronunciation_hint": "জু-না-গড়; light retroflex on ড়.",
+      "context": "former administrative posting",
+      "confidence": "high",
+      "requires_human_spot_check": false
+    },
+    {
+      "word": "হাইদ্রাবাদ",
+      "pronunciation_hint": "হাই-দ্রা-বাদ; natural Bengali pacing.",
+      "context": "Nizam government setting",
+      "confidence": "high",
+      "requires_human_spot_check": false
+    },
+    {
+      "word": "মেহের আলি",
+      "pronunciation_hint": "মে-হের আ-লি; keep the repeated warning urgent but not theatrical.",
+      "context": "the haunted warning voice",
+      "confidence": "high",
+      "requires_human_spot_check": true
+    },
+    {
+      "word": "করীম খাঁ",
+      "pronunciation_hint": "কো-রীম খাঁ; nasalize খাঁ lightly.",
+      "context": "elder clerk who explains the palace",
+      "confidence": "medium",
+      "requires_human_spot_check": true
+    },
+    {
+      "word": "গুলবাগ",
+      "pronunciation_hint": "গুল-বাগ; preserve the Persianate texture.",
+      "context": "old palace history reference",
+      "confidence": "medium",
+      "requires_human_spot_check": true
+    },
+    {
+      "word": "তফাৎ যাও",
+      "pronunciation_hint": "তো-ফাৎ যাও; repeated warning should sound haunted and breath-controlled.",
+      "context": "signature refrain",
+      "confidence": "high",
+      "requires_human_spot_check": true
+    }
+  ],
+  "provider_plans": {
+    "preview_30s": {
+      "book_slug": "kshudhita-pashan",
+      "title": "ক্ষুধিত পাষাণ",
+      "generation_mode": "preview_30s",
+      "generation_status": "DRY_RUN_READY",
+      "publish_gate_status": "DRY_RUN_ONLY",
+      "blocking_reason": "Phase 7 does not publish audio; dry-run report only.",
+      "dry_run": true,
+      "rights_tier": "A",
+      "action_status": "READY_FOR_GENERATION",
+      "ingestion_status": "CLEANED",
+      "edition_generation_status": "READY_FOR_REVIEW",
+      "source_hash": "33c52e97617493f9278d97f01d26d9a72685bf7e648b097c8e81582e59c7e9fa",
+      "content_hash": "e17c53487382eb060ff724dd1d35d9fc965cd90d6856b9b462b0e0091ee9ecf0",
+      "provenance_hash": "6b567144f5e8176b27ac3cd80ad804d2c0d8438008d7b293c87f6263fe04339c",
+      "voice_identity": "A refined female literary narrator: warm, intelligent, calm, expressive, punctuation-aware, emotionally restrained, suitable for Bengali, English, and Hindi.",
+      "narration_script": {
+        "language": "bn",
+        "chunk_count": 1,
+        "chapter_count": 0,
+        "dialogue_chunk_count": 0,
+        "poetry_chunk_count": 0,
+        "pronunciation_replacement_count": 0,
+        "processor_warnings": [
+          "Mode preview_30s limited narration chunks from 4 to 1."
+        ],
+        "chunks": [
+          {
+            "index": 1,
+            "language": "bn",
+            "segment_type": "narration",
+            "chapter_title": "",
+            "estimated_seconds": 1.74,
+            "punctuation_pause_count": 0,
+            "punctuation_pauses_ms": [],
+            "pronunciation_replacements": {},
+            "text_preview": "ক্ষুধিত পাষাণ",
+            "character_count": 13
+          }
+        ]
+      },
+      "provider_plan": {
+        "provider": "ai4bharat_indic_tts",
+        "voice_profile": "female_indic_literary_narrator",
+        "language": "bn",
+        "credentials_configured": false,
+        "supports_ssml": false,
+        "dry_run_only": true,
+        "hook": "AI4Bharat/Indic TTS hook: local or configured provider command metadata only.",
+        "blocking_reason": "AI4BHARAT_TTS_ENDPOINT or INDIC_TTS_COMMAND is not configured."
+      },
+      "mastering_plan": {
+        "loudness_normalization": "EBU R128 target -16 LUFS integrated, -1.5 dBTP true peak",
+        "silence_trimming": "trim leading/trailing silence below -45 dB for longer than 0.35 seconds",
+        "output_formats": [
+          "mp3",
+          "aac",
+          "ogg"
+        ],
+        "waveform_preview": "work/audio/kshudhita-pashan/preview_30s/mastered.waveform.json",
+        "ffmpeg_commands": [
+          "ffmpeg -i work/audio/kshudhita-pashan/preview_30s/raw.wav -af loudnorm=I=-16:TP=-1.5:LRA=11,silenceremove=start_periods=1:start_threshold=-45dB:stop_periods=1:stop_threshold=-45dB work/audio/kshudhita-pashan/preview_30s/mastered.mp3",
+          "ffmpeg -i work/audio/kshudhita-pashan/preview_30s/mastered.mp3 -c:a aac work/audio/kshudhita-pashan/preview_30s/mastered.m4a",
+          "ffmpeg -i work/audio/kshudhita-pashan/preview_30s/mastered.mp3 -c:a libopus work/audio/kshudhita-pashan/preview_30s/mastered.ogg",
+          "ffmpeg -i work/audio/kshudhita-pashan/preview_30s/mastered.mp3 -filter_complex showwavespic=s=1200x240 work/audio/kshudhita-pashan/preview_30s/mastered.waveform.png"
+        ],
+        "executed": false
+      },
+      "qa": {
+        "qa_status": "DRY_RUN_PENDING_AUDIO",
+        "issues": [
+          "No audio file was generated or uploaded; QA hooks are planned only."
+        ],
+        "metrics": {
+          "stt_transcript_comparison": "HOOK_NOT_RUN",
+          "word_error_rate": null,
+          "missing_paragraph_count": 0,
+          "repeated_line_count": 0,
+          "clipping_detected": false,
+          "long_silence_detected": false,
+          "file_size_bytes": 0
+        }
+      },
+      "planned_audio_assets": [
+        {
+          "asset_type": "master_mp3",
+          "path": "dry-run/audio/kshudhita-pashan/preview_30s/mastered.mp3",
+          "publishable": false
+        },
+        {
+          "asset_type": "master_aac",
+          "path": "dry-run/audio/kshudhita-pashan/preview_30s/mastered.m4a",
+          "publishable": false
+        },
+        {
+          "asset_type": "master_ogg",
+          "path": "dry-run/audio/kshudhita-pashan/preview_30s/mastered.ogg",
+          "publishable": false
+        },
+        {
+          "asset_type": "waveform_preview",
+          "path": "work/audio/kshudhita-pashan/preview_30s/mastered.waveform.json",
+          "publishable": false
+        },
+        {
+          "asset_type": "playlist",
+          "path": "dry-run/audio/kshudhita-pashan/preview_30s/playlist.json",
+          "chunk_count": 1,
+          "publishable": false
+        }
+      ],
+      "pipeline_version": "earnalism-audiobook-voice-v1",
+      "sync_plan": [
+        {
+          "chunk_id": "kshudhita-pashan-preview-01",
+          "source_text_span": {
+            "start": 0,
+            "end": 13
+          },
+          "estimated_duration_seconds": 1.74,
+          "expected_waveform_placeholder": "PENDING_AUDIO_PROVIDER_OUTPUT",
+          "transcript_alignment_placeholder": "PENDING_STT_ALIGNMENT",
+          "qa_status": "PENDING_AUDIO_QA"
+        }
+      ],
+      "pronunciation_guide_attached": true
+    },
+    "preview_90s": {
+      "book_slug": "kshudhita-pashan",
+      "title": "ক্ষুধিত পাষাণ",
+      "generation_mode": "preview_90s",
+      "generation_status": "DRY_RUN_READY",
+      "publish_gate_status": "DRY_RUN_ONLY",
+      "blocking_reason": "Phase 7 does not publish audio; dry-run report only.",
+      "dry_run": true,
+      "rights_tier": "A",
+      "action_status": "READY_FOR_GENERATION",
+      "ingestion_status": "CLEANED",
+      "edition_generation_status": "READY_FOR_REVIEW",
+      "source_hash": "33c52e97617493f9278d97f01d26d9a72685bf7e648b097c8e81582e59c7e9fa",
+      "content_hash": "e17c53487382eb060ff724dd1d35d9fc965cd90d6856b9b462b0e0091ee9ecf0",
+      "provenance_hash": "6b567144f5e8176b27ac3cd80ad804d2c0d8438008d7b293c87f6263fe04339c",
+      "voice_identity": "A refined female literary narrator: warm, intelligent, calm, expressive, punctuation-aware, emotionally restrained, suitable for Bengali, English, and Hindi.",
+      "narration_script": {
+        "language": "bn",
+        "chunk_count": 2,
+        "chapter_count": 0,
+        "dialogue_chunk_count": 0,
+        "poetry_chunk_count": 0,
+        "pronunciation_replacement_count": 0,
+        "processor_warnings": [
+          "Mode preview_90s limited narration chunks from 4 to 2."
+        ],
+        "chunks": [
+          {
+            "index": 1,
+            "language": "bn",
+            "segment_type": "narration",
+            "chapter_title": "",
+            "estimated_seconds": 1.74,
+            "punctuation_pause_count": 0,
+            "punctuation_pauses_ms": [],
+            "pronunciation_replacements": {},
+            "text_preview": "ক্ষুধিত পাষাণ",
+            "character_count": 13
+          },
+          {
+            "index": 2,
+            "language": "bn",
+            "segment_type": "narration",
+            "chapter_title": "",
+            "estimated_seconds": 2.59,
+            "punctuation_pause_count": 1,
+            "punctuation_pauses_ms": [
+              420
+            ],
+            "pronunciation_replacements": {},
+            "text_preview": "ক্ষুধিত পাষাণ।",
+            "character_count": 14
+          }
+        ]
+      },
+      "provider_plan": {
+        "provider": "ai4bharat_indic_tts",
+        "voice_profile": "female_indic_literary_narrator",
+        "language": "bn",
+        "credentials_configured": false,
+        "supports_ssml": false,
+        "dry_run_only": true,
+        "hook": "AI4Bharat/Indic TTS hook: local or configured provider command metadata only.",
+        "blocking_reason": "AI4BHARAT_TTS_ENDPOINT or INDIC_TTS_COMMAND is not configured."
+      },
+      "mastering_plan": {
+        "loudness_normalization": "EBU R128 target -16 LUFS integrated, -1.5 dBTP true peak",
+        "silence_trimming": "trim leading/trailing silence below -45 dB for longer than 0.35 seconds",
+        "output_formats": [
+          "mp3",
+          "aac",
+          "ogg"
+        ],
+        "waveform_preview": "work/audio/kshudhita-pashan/preview_90s/mastered.waveform.json",
+        "ffmpeg_commands": [
+          "ffmpeg -i work/audio/kshudhita-pashan/preview_90s/raw.wav -af loudnorm=I=-16:TP=-1.5:LRA=11,silenceremove=start_periods=1:start_threshold=-45dB:stop_periods=1:stop_threshold=-45dB work/audio/kshudhita-pashan/preview_90s/mastered.mp3",
+          "ffmpeg -i work/audio/kshudhita-pashan/preview_90s/mastered.mp3 -c:a aac work/audio/kshudhita-pashan/preview_90s/mastered.m4a",
+          "ffmpeg -i work/audio/kshudhita-pashan/preview_90s/mastered.mp3 -c:a libopus work/audio/kshudhita-pashan/preview_90s/mastered.ogg",
+          "ffmpeg -i work/audio/kshudhita-pashan/preview_90s/mastered.mp3 -filter_complex showwavespic=s=1200x240 work/audio/kshudhita-pashan/preview_90s/mastered.waveform.png"
+        ],
+        "executed": false
+      },
+      "qa": {
+        "qa_status": "DRY_RUN_PENDING_AUDIO",
+        "issues": [
+          "No audio file was generated or uploaded; QA hooks are planned only."
+        ],
+        "metrics": {
+          "stt_transcript_comparison": "HOOK_NOT_RUN",
+          "word_error_rate": null,
+          "missing_paragraph_count": 0,
+          "repeated_line_count": 0,
+          "clipping_detected": false,
+          "long_silence_detected": false,
+          "file_size_bytes": 0
+        }
+      },
+      "planned_audio_assets": [
+        {
+          "asset_type": "master_mp3",
+          "path": "dry-run/audio/kshudhita-pashan/preview_90s/mastered.mp3",
+          "publishable": false
+        },
+        {
+          "asset_type": "master_aac",
+          "path": "dry-run/audio/kshudhita-pashan/preview_90s/mastered.m4a",
+          "publishable": false
+        },
+        {
+          "asset_type": "master_ogg",
+          "path": "dry-run/audio/kshudhita-pashan/preview_90s/mastered.ogg",
+          "publishable": false
+        },
+        {
+          "asset_type": "waveform_preview",
+          "path": "work/audio/kshudhita-pashan/preview_90s/mastered.waveform.json",
+          "publishable": false
+        },
+        {
+          "asset_type": "playlist",
+          "path": "dry-run/audio/kshudhita-pashan/preview_90s/playlist.json",
+          "chunk_count": 2,
+          "publishable": false
+        }
+      ],
+      "pipeline_version": "earnalism-audiobook-voice-v1",
+      "sync_plan": [
+        {
+          "chunk_id": "kshudhita-pashan-preview-01",
+          "source_text_span": {
+            "start": 0,
+            "end": 13
+          },
+          "estimated_duration_seconds": 1.74,
+          "expected_waveform_placeholder": "PENDING_AUDIO_PROVIDER_OUTPUT",
+          "transcript_alignment_placeholder": "PENDING_STT_ALIGNMENT",
+          "qa_status": "PENDING_AUDIO_QA"
+        },
+        {
+          "chunk_id": "kshudhita-pashan-preview-02",
+          "source_text_span": {
+            "start": 13,
+            "end": 27
+          },
+          "estimated_duration_seconds": 2.59,
+          "expected_waveform_placeholder": "PENDING_AUDIO_PROVIDER_OUTPUT",
+          "transcript_alignment_placeholder": "PENDING_STT_ALIGNMENT",
+          "qa_status": "PENDING_AUDIO_QA"
+        }
+      ],
+      "pronunciation_guide_attached": true
+    },
+    "preview_3m": {
+      "book_slug": "kshudhita-pashan",
+      "title": "ক্ষুধিত পাষাণ",
+      "generation_mode": "preview_3m",
+      "generation_status": "DRY_RUN_READY",
+      "publish_gate_status": "DRY_RUN_ONLY",
+      "blocking_reason": "Phase 7 does not publish audio; dry-run report only.",
+      "dry_run": true,
+      "rights_tier": "A",
+      "action_status": "READY_FOR_GENERATION",
+      "ingestion_status": "CLEANED",
+      "edition_generation_status": "READY_FOR_REVIEW",
+      "source_hash": "33c52e97617493f9278d97f01d26d9a72685bf7e648b097c8e81582e59c7e9fa",
+      "content_hash": "e17c53487382eb060ff724dd1d35d9fc965cd90d6856b9b462b0e0091ee9ecf0",
+      "provenance_hash": "6b567144f5e8176b27ac3cd80ad804d2c0d8438008d7b293c87f6263fe04339c",
+      "voice_identity": "A refined female literary narrator: warm, intelligent, calm, expressive, punctuation-aware, emotionally restrained, suitable for Bengali, English, and Hindi.",
+      "narration_script": {
+        "language": "bn",
+        "chunk_count": 4,
+        "chapter_count": 0,
+        "dialogue_chunk_count": 0,
+        "poetry_chunk_count": 0,
+        "pronunciation_replacement_count": 0,
+        "processor_warnings": [],
+        "chunks": [
+          {
+            "index": 1,
+            "language": "bn",
+            "segment_type": "narration",
+            "chapter_title": "",
+            "estimated_seconds": 1.74,
+            "punctuation_pause_count": 0,
+            "punctuation_pauses_ms": [],
+            "pronunciation_replacements": {},
+            "text_preview": "ক্ষুধিত পাষাণ",
+            "character_count": 13
+          },
+          {
+            "index": 2,
+            "language": "bn",
+            "segment_type": "narration",
+            "chapter_title": "",
+            "estimated_seconds": 2.59,
+            "punctuation_pause_count": 1,
+            "punctuation_pauses_ms": [
+              420
+            ],
+            "pronunciation_replacements": {},
+            "text_preview": "ক্ষুধিত পাষাণ।",
+            "character_count": 14
+          },
+          {
+            "index": 3,
+            "language": "bn",
+            "segment_type": "narration",
+            "chapter_title": "",
+            "estimated_seconds": 106.55,
+            "punctuation_pause_count": 15,
+            "punctuation_pauses_ms": [
+              420,
+              420,
+              420,
+              420,
+              180,
+              180,
+              180,
+              180,
+              420,
+              180,
+              180,
+              180,
+              420,
+              180,
+              420
+            ],
+            "pronunciation_replacements": {},
+            "text_preview": "আমি এবং আমার আত্মীয় পূজার ছুটিতে দেশভ্রমণ সারিয়া কলিকাতায় ফিরিয়া আসিতেছিলাম এমন সময় রেলগাড়িতে বাবুটির সঙ্গে দেখা হয়। তাঁহার বেশভূষা দেখিয়া প্রথমটা তাঁহাকে পশ্চিমদেশীয় মুসলমান বলিয়া ভ্রম হইয়াছিল। তাঁহার কথাবার্তা শুনিয়া আরও ধাঁধাঁ লাগিয়া যায়। পৃথিবীর সকল বিষয়েই এমন করিয়া আলাপ করিতে লাগিলেন যেন তাঁহার সহিত প্রথম পরামর্শ করিয়া বিশ্ববিধাতা সকল কাজ করিয়া থাকেন। বিশ্বসংসারের ভিতরে ভিতরে যে এমন সকল অশ্রুতপ",
+            "character_count": 862
+          },
+          {
+            "index": 4,
+            "language": "bn",
+            "segment_type": "narration",
+            "chapter_title": "",
+            "estimated_seconds": 41.15,
+            "punctuation_pause_count": 7,
+            "punctuation_pauses_ms": [
+              180,
+              180,
+              260,
+              180,
+              420,
+              180,
+              180
+            ],
+            "pronunciation_replacements": {},
+            "text_preview": "লোকটা সামান্য উপলক্ষে কখনো বিজ্ঞান বলে, কখনো বেদের ব্যাখ্যা করে, আবার হঠাৎ কখনো পার্সি বয়েৎ আওড়াইতে থাকে; বিজ্ঞান, বেদ এবং পার্সিভাষায় আমাদের কোনরূপ অধিকার না থাকাতে তাঁহার প্রতি আমাদের ভক্তি উত্তরোত্তর বাড়িতে লাগিল। এমন কি, আমার থিয়সফিষ্ট্ আত্মীয়টির মনে দৃঢ় বিশ্বাস হইল যে, আমাদের এই সহযাত্রীটির সহ",
+            "character_count": 306
+          }
+        ]
+      },
+      "provider_plan": {
+        "provider": "ai4bharat_indic_tts",
+        "voice_profile": "female_indic_literary_narrator",
+        "language": "bn",
+        "credentials_configured": false,
+        "supports_ssml": false,
+        "dry_run_only": true,
+        "hook": "AI4Bharat/Indic TTS hook: local or configured provider command metadata only.",
+        "blocking_reason": "AI4BHARAT_TTS_ENDPOINT or INDIC_TTS_COMMAND is not configured."
+      },
+      "mastering_plan": {
+        "loudness_normalization": "EBU R128 target -16 LUFS integrated, -1.5 dBTP true peak",
+        "silence_trimming": "trim leading/trailing silence below -45 dB for longer than 0.35 seconds",
+        "output_formats": [
+          "mp3",
+          "aac",
+          "ogg"
+        ],
+        "waveform_preview": "work/audio/kshudhita-pashan/preview_3m/mastered.waveform.json",
+        "ffmpeg_commands": [
+          "ffmpeg -i work/audio/kshudhita-pashan/preview_3m/raw.wav -af loudnorm=I=-16:TP=-1.5:LRA=11,silenceremove=start_periods=1:start_threshold=-45dB:stop_periods=1:stop_threshold=-45dB work/audio/kshudhita-pashan/preview_3m/mastered.mp3",
+          "ffmpeg -i work/audio/kshudhita-pashan/preview_3m/mastered.mp3 -c:a aac work/audio/kshudhita-pashan/preview_3m/mastered.m4a",
+          "ffmpeg -i work/audio/kshudhita-pashan/preview_3m/mastered.mp3 -c:a libopus work/audio/kshudhita-pashan/preview_3m/mastered.ogg",
+          "ffmpeg -i work/audio/kshudhita-pashan/preview_3m/mastered.mp3 -filter_complex showwavespic=s=1200x240 work/audio/kshudhita-pashan/preview_3m/mastered.waveform.png"
+        ],
+        "executed": false
+      },
+      "qa": {
+        "qa_status": "DRY_RUN_PENDING_AUDIO",
+        "issues": [
+          "No audio file was generated or uploaded; QA hooks are planned only."
+        ],
+        "metrics": {
+          "stt_transcript_comparison": "HOOK_NOT_RUN",
+          "word_error_rate": null,
+          "missing_paragraph_count": 0,
+          "repeated_line_count": 0,
+          "clipping_detected": false,
+          "long_silence_detected": false,
+          "file_size_bytes": 0
+        }
+      },
+      "planned_audio_assets": [
+        {
+          "asset_type": "master_mp3",
+          "path": "dry-run/audio/kshudhita-pashan/preview_3m/mastered.mp3",
+          "publishable": false
+        },
+        {
+          "asset_type": "master_aac",
+          "path": "dry-run/audio/kshudhita-pashan/preview_3m/mastered.m4a",
+          "publishable": false
+        },
+        {
+          "asset_type": "master_ogg",
+          "path": "dry-run/audio/kshudhita-pashan/preview_3m/mastered.ogg",
+          "publishable": false
+        },
+        {
+          "asset_type": "waveform_preview",
+          "path": "work/audio/kshudhita-pashan/preview_3m/mastered.waveform.json",
+          "publishable": false
+        },
+        {
+          "asset_type": "playlist",
+          "path": "dry-run/audio/kshudhita-pashan/preview_3m/playlist.json",
+          "chunk_count": 4,
+          "publishable": false
+        }
+      ],
+      "pipeline_version": "earnalism-audiobook-voice-v1",
+      "sync_plan": [
+        {
+          "chunk_id": "kshudhita-pashan-preview-01",
+          "source_text_span": {
+            "start": 0,
+            "end": 13
+          },
+          "estimated_duration_seconds": 1.74,
+          "expected_waveform_placeholder": "PENDING_AUDIO_PROVIDER_OUTPUT",
+          "transcript_alignment_placeholder": "PENDING_STT_ALIGNMENT",
+          "qa_status": "PENDING_AUDIO_QA"
+        },
+        {
+          "chunk_id": "kshudhita-pashan-preview-02",
+          "source_text_span": {
+            "start": 13,
+            "end": 27
+          },
+          "estimated_duration_seconds": 2.59,
+          "expected_waveform_placeholder": "PENDING_AUDIO_PROVIDER_OUTPUT",
+          "transcript_alignment_placeholder": "PENDING_STT_ALIGNMENT",
+          "qa_status": "PENDING_AUDIO_QA"
+        },
+        {
+          "chunk_id": "kshudhita-pashan-preview-03",
+          "source_text_span": {
+            "start": 27,
+            "end": 447
+          },
+          "estimated_duration_seconds": 106.55,
+          "expected_waveform_placeholder": "PENDING_AUDIO_PROVIDER_OUTPUT",
+          "transcript_alignment_placeholder": "PENDING_STT_ALIGNMENT",
+          "qa_status": "PENDING_AUDIO_QA"
+        },
+        {
+          "chunk_id": "kshudhita-pashan-preview-04",
+          "source_text_span": {
+            "start": 447,
+            "end": 753
+          },
+          "estimated_duration_seconds": 41.15,
+          "expected_waveform_placeholder": "PENDING_AUDIO_PROVIDER_OUTPUT",
+          "transcript_alignment_placeholder": "PENDING_STT_ALIGNMENT",
+          "qa_status": "PENDING_AUDIO_QA"
+        }
+      ],
+      "pronunciation_guide_attached": true
+    }
+  },
+  "audio_preview_status": "AUDIO_PREVIEW_BLOCKED_UNTIL_PROVIDER_QA",
+  "full_audiobook_status": "BLOCKED_FULL_AUDIO_QA_REQUIRED",
+  "public_cta_status": {
+    "listen_now": "BLOCKED",
+    "full_audiobook": "BLOCKED",
+    "audio_preview": "BLOCKED_UNTIL_PROVIDER_QA"
+  },
+  "required_public_audio_gates": [
+    "linked book is rights approved",
+    "audio script matches source text",
+    "Bengali pronunciation dictionary prepared",
+    "TTS/provider output exists",
+    "transcript comparison passes",
+    "word error rate below threshold",
+    "no missing paragraphs",
+    "no repeated lines",
+    "no clipping",
+    "no long silence",
+    "loudness normalized",
+    "waveform/timestamps generated",
+    "mobile playback verified",
+    "file size acceptable",
+    "human spot-check sample completed"
+  ]
+}

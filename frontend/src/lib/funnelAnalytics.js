@@ -24,6 +24,11 @@ export const LAUNCH_ANALYTICS_EVENTS = [
   "institution_interest",
   "audio_preview_played",
   "cta_clicked",
+  "bengali_gothic_pipeline_view",
+  "kshudhita_pashan_notify_click",
+  "kshudhita_pashan_audio_interest_click",
+  "bengali_voice_sample_interest",
+  "bengali_gothic_reading_circle_click",
 ];
 
 export const BLOCKED_ANALYTICS_METADATA_FIELDS = new Set([

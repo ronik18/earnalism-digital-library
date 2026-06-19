@@ -2,12 +2,21 @@ import { Link } from "react-router-dom";
 import { Clock } from "lucide-react";
 import { memo } from "react";
 import BookCoverImage from "./BookCoverImage";
-import { DRACULA_CTA_EVENTS, bookLaunchStatus, notifyUrl, readingPassUrl } from "../lib/controlledLaunch";
+import {
+  DRACULA_CTA_EVENTS,
+  bookLaunchStatus,
+  canShowPreview,
+  canShowStartReading,
+  notifyUrl,
+  readingPassUrl,
+} from "../lib/controlledLaunch";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 
 function BookCard({ book, priority = false }) {
   const status = bookLaunchStatus(book);
   const isLiveApproved = status === "LIVE_APPROVED";
+  const showPreview = canShowPreview(book);
+  const showStartReading = canShowStartReading(book);
   const statusLabel = isLiveApproved ? "Live controlled release" : "Coming Soon";
 
   const track = (event, metadata = {}) => {
@@ -44,24 +53,28 @@ function BookCard({ book, priority = false }) {
             <Clock size={12} strokeWidth={1.5} /> {book.estimated_reading_time}
           </div>
         )}
-        {isLiveApproved ? (
+        {showPreview || showStartReading ? (
           <div className="mt-auto flex flex-col sm:flex-row gap-2 sm:gap-3 pt-5 border-t border-brand-soft">
-            <Link
-              to={`/reader/${book.slug}`}
-              className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase text-burgundy border border-[var(--brand-gold)] hover:bg-[var(--brand-gold)]/10 transition-colors"
-              data-testid={`card-preview-${book.slug}`}
-              onClick={() => track(DRACULA_CTA_EVENTS.previewStart, { cta: "book_card_preview" })}
-            >
-              Read Chapter 1
-            </Link>
-            <Link
-              to={readingPassUrl("book_card")}
-              className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-burgundy text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
-              data-testid={`card-start-${book.slug}`}
-              onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "book_card_pass" })}
-            >
-              Reading Pass
-            </Link>
+            {showPreview && (
+              <Link
+                to={`/reader/${book.slug}`}
+                className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase text-burgundy border border-[var(--brand-gold)] hover:bg-[var(--brand-gold)]/10 transition-colors"
+                data-testid={`card-preview-${book.slug}`}
+                onClick={() => track(DRACULA_CTA_EVENTS.previewStart, { cta: "book_card_preview" })}
+              >
+                Read Chapter 1
+              </Link>
+            )}
+            {showStartReading && (
+              <Link
+                to={readingPassUrl("book_card")}
+                className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-burgundy text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
+                data-testid={`card-start-${book.slug}`}
+                onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "book_card_pass" })}
+              >
+                Reading Pass
+              </Link>
+            )}
           </div>
         ) : (
           <div className="mt-auto pt-5 border-t border-brand-soft">
