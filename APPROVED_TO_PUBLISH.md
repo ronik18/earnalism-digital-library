@@ -21,6 +21,19 @@ This file is a controlled-publication approval artifact. It does not publish by 
 - Publication Cap: Dracula controlled-publication candidate only; public_publish_actions=0.
 - Rollback Plan: Disable the Dracula draft flag, remove draft artifacts, and keep public_publish_actions=0.
 - Production Parity Status: PASS
-- Production Parity Evidence: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/post_deploy_route_canary.json
+- Production Parity Evidence: output/launch/post_deploy_route_canary.json
+- Production Parity Evidence Hash: fa8f07f067b2b94b2ec7949fd91852d562d2516d903a5f8055e6508f151d9289
 - Payment Smoke Status: PASS_TEST_MODE
-- Payment Smoke Evidence: /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/payment_smoke.json
+- Payment Smoke Evidence: output/launch/payment_smoke.json
+- Payment Smoke Evidence Hash: ad7eb905df8d59818c0fcbbad1025874735f6c710af600be1c65ef15586186ff
+- Source Evidence: output/publication_candidates/dracula/source_evidence.json
+- Source Evidence Hash: 2f6ea8dcdf00df3e70d9d5c01a91f5db0e3e261017b9629f4c2f63104e5aa6a2
+- Gate Results Evidence: output/publication_candidates/dracula/dracula_gate_results.json
+- Gate Results Hash: f55b2bf5b6d53d2253cf2ac7776830044f7eff5e9abdf41b44fb43ffc7519da9
+
+Approval Scope:
+
+- Approved Scope: Dracula core reading candidate only.
+- Not Approved: full study guide, full visual edition, full audiobook, paid ads, email sends, or social publishing.
+- Audiobook Status: AUDIO_NOT_REQUIRED.
+- Study/Visual Status: draft/partial only; separate QA approval is required before public promotion.

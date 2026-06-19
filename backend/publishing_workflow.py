@@ -128,6 +128,7 @@ def workflow_signals_from_book(book: dict[str, Any]) -> WorkflowSignals:
 
 
 def evaluate_workflow(signals: WorkflowSignals) -> WorkflowDecision:
+    signals = normalize_workflow_signals(signals)
     blockers = publishing_blockers(signals)
     warnings = list(signals.qa_warnings)
     state = determine_state(signals, blockers)
@@ -146,6 +147,32 @@ def evaluate_workflow(signals: WorkflowSignals) -> WorkflowDecision:
         rollback_available=state in {"READY_FOR_PUBLICATION", "PUBLISHED", "PAUSED"},
         pause_available=state not in {"ARCHIVED", "QUARANTINED"},
         dry_run=True,
+    )
+
+
+def normalize_workflow_signals(signals: WorkflowSignals) -> WorkflowSignals:
+    return WorkflowSignals(
+        slug=signals.slug,
+        title=signals.title,
+        rights_tier=normalize_tier(signals.rights_tier),
+        verification_status=normalize_status(signals.verification_status),
+        blocked_reason=text(signals.blocked_reason),
+        publication_region=text(signals.publication_region or "global").lower(),
+        demand_score=float_or_zero(signals.demand_score),
+        action_status=normalize_status(signals.action_status),
+        ingestion_status=normalize_status(signals.ingestion_status),
+        edition_generation_status=normalize_status(signals.edition_generation_status),
+        visual_status=normalize_status(signals.visual_status),
+        audio_status=normalize_status(signals.audio_status),
+        qa_status=normalize_status(signals.qa_status),
+        qa_warnings=list(signals.qa_warnings),
+        cost_used=float_or_zero(signals.cost_used),
+        cost_budget=float_or_zero(signals.cost_budget),
+        is_published=bool(signals.is_published),
+        paused=bool(signals.paused),
+        quarantined=bool(signals.quarantined),
+        archived=bool(signals.archived),
+        current_state=normalize_status(signals.current_state),
     )
 
 

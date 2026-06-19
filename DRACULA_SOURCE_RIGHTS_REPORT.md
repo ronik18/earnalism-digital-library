@@ -23,6 +23,7 @@ Status: `PASS`
 | Publication region | global |
 | QA status | QA_PASSED |
 | Chapter count | 54 |
+| Meaningful chapter count | 27 |
 
 ## Rights Basis
 

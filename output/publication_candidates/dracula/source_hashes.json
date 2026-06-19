@@ -7,6 +7,14 @@
   "source_character_count": 881060,
   "cleaned_character_count": 840534,
   "chapter_count": 54,
+  "meaningful_chapter_count": 27,
+  "chapter_quality_summary": {
+    "chapter_count": 54,
+    "meaningful_chapter_count": 27,
+    "empty_or_short_chapter_count": 27,
+    "meaningful_chapter_rule": "chapter content length > 1000 characters or > 200 words",
+    "minimum_meaningful_chapter_count": 25
+  },
   "language": "en",
   "source_marker_evidence": {
     "project_gutenberg_ebook_of_dracula": true,

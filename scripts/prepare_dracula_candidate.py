@@ -207,12 +207,35 @@ def cleanup_evidence(raw_text: str, cleaned_text: str) -> dict[str, Any]:
     }
 
 
+def is_meaningful_chapter(segment: Any) -> bool:
+    content = str(getattr(segment, "content", "") or "")
+    return len(content) > 1000 or len(content.split()) > 200
+
+
+def meaningful_chapter_count(chapters: list[Any]) -> int:
+    return sum(1 for segment in chapters if is_meaningful_chapter(segment))
+
+
+def chapter_quality_summary(chapters: list[Any]) -> dict[str, Any]:
+    total = len(chapters)
+    meaningful = meaningful_chapter_count(chapters)
+    empty_or_short = max(0, total - meaningful)
+    return {
+        "chapter_count": total,
+        "meaningful_chapter_count": meaningful,
+        "empty_or_short_chapter_count": empty_or_short,
+        "meaningful_chapter_rule": "chapter content length > 1000 characters or > 200 words",
+        "minimum_meaningful_chapter_count": MIN_CHAPTER_COUNT,
+    }
+
+
 def source_qa_status(
     *,
     raw_text: str,
     cleaned_text: str,
     source_license: str,
     chapter_count: int,
+    meaningful_chapters: int,
     source_hash: str,
     content_hash: str,
     provenance_hash: str,
@@ -235,8 +258,11 @@ def source_qa_status(
         issues.append(f"Raw text length must be greater than {MIN_RAW_CHARACTERS} characters.")
     if raw_text and len(cleaned_text) <= MIN_CLEANED_CHARACTERS:
         issues.append(f"Cleaned text length must be greater than {MIN_CLEANED_CHARACTERS} characters.")
-    if raw_text and chapter_count < MIN_CHAPTER_COUNT:
-        issues.append(f"Chapter detection must find at least {MIN_CHAPTER_COUNT} chapters for Dracula.")
+    if raw_text and meaningful_chapters < MIN_CHAPTER_COUNT:
+        issues.append(
+            f"Chapter QA must find at least {MIN_CHAPTER_COUNT} meaningful Dracula chapters; "
+            f"found {meaningful_chapters} meaningful chapters across {chapter_count} detected segments."
+        )
     if issues:
         return "BLOCKED_SOURCE_QA", issues
     return "QA_PASSED", []
@@ -315,12 +341,15 @@ def build_source_evidence(args: argparse.Namespace) -> dict[str, Any]:
         else ""
     )
     chapters = detect_chapters(cleaned_text)
+    meaningful_count = meaningful_chapter_count(chapters)
+    chapter_quality = chapter_quality_summary(chapters)
     markers = source_marker_evidence(raw_text)
     qa_status, qa_issues = source_qa_status(
         raw_text=raw_text,
         cleaned_text=cleaned_text,
         source_license=source_license,
         chapter_count=len(chapters),
+        meaningful_chapters=meaningful_count,
         source_hash=source_hash,
         content_hash=content_hash,
         provenance_hash=provenance_hash,
@@ -364,6 +393,14 @@ def build_source_evidence(args: argparse.Namespace) -> dict[str, Any]:
             dry_run=True,
         )
     )
+    ingestion_row = ingestion.as_dict(include_text=False)
+    ingestion_row["source_hash"] = source_hash
+    ingestion_row["content_hash"] = content_hash
+    ingestion_row["provenance_hash"] = provenance_hash
+    ingestion_row["hash_consistency_note"] = (
+        "Dracula candidate stores source_hash from raw source text, content_hash from cleaned source text, "
+        "and provenance_hash from source_url + source_name + source_license + content_hash."
+    )
     rights_basis = (
         "Bram Stoker died in 1912 and Dracula was first published in 1897. "
         "The candidate uses Project Gutenberg eBook #345 as its primary source. "
@@ -405,6 +442,8 @@ def build_source_evidence(args: argparse.Namespace) -> dict[str, Any]:
         "source_character_count": len(raw_text),
         "cleaned_character_count": len(cleaned_text),
         "chapter_count": len(chapters),
+        "meaningful_chapter_count": meaningful_count,
+        "chapter_quality_summary": chapter_quality,
         "source_marker_evidence": markers,
         "cleanup_evidence": cleanup_evidence(raw_text, cleaned_text),
         "qa_issues": qa_issues,
@@ -415,7 +454,7 @@ def build_source_evidence(args: argparse.Namespace) -> dict[str, Any]:
             "issues": rights_decision.issues,
             "metadata": rights_decision.metadata,
         },
-        "ingestion": ingestion.as_dict(include_text=False),
+        "ingestion": ingestion_row,
         "cleaned_text_preview": cleaned_text[:1200],
         "book": book,
     }
@@ -575,24 +614,23 @@ def build_gate_results(evidence: dict[str, Any]) -> dict[str, Any]:
         high_blockers.append("Dracula lacks approved real source evidence.")
     if payment_status not in {"PASS", "PASS_TEST_MODE", "PRODUCTION_TEST_MODE_PASS"}:
         high_blockers.append("Payment smoke evidence is missing or not passing.")
+    if workflow.publish_readiness != "READY":
+        high_blockers.extend(str(blocker) for blocker in workflow.blockers)
     score_cap = 9.9
     if route_status != "PASS":
         score_cap = min(score_cap, 7.0)
     if not source_passed:
         score_cap = min(score_cap, 8.0)
+    if workflow.publish_readiness != "READY":
+        score_cap = min(score_cap, 8.6)
     approved_file_exists = (ROOT / "APPROVED_TO_PUBLISH.md").exists()
     recommendation = "HOLD_FOR_FIXES"
-    if source_passed and route_status == "PASS" and payment_status in {"PASS", "PASS_TEST_MODE", "PRODUCTION_TEST_MODE_PASS"}:
-        recommendation = "READY_FOR_APPROVAL_ARTIFACT_REVIEW"
-    if (
-        approved_file_exists
-        and source_passed
-        and route_status == "PASS"
-        and payment_status in {"PASS", "PASS_TEST_MODE", "PRODUCTION_TEST_MODE_PASS"}
-    ):
+    if not high_blockers and source_passed and route_status == "PASS" and payment_status in {
+        "PASS",
+        "PASS_TEST_MODE",
+        "PRODUCTION_TEST_MODE_PASS",
+    }:
         recommendation = "GO_FOR_CONTROLLED_PUBLICATION_FOR_DRACULA_ONLY"
-    elif not approved_file_exists:
-        recommendation = "HOLD_FOR_FIXES"
     return {
         "generated_at": utc_now(),
         "dry_run": True,
@@ -754,6 +792,7 @@ def source_report_markdown(evidence: dict[str, Any]) -> str:
         f"| Publication region | {evidence['publication_region']} |",
         f"| QA status | {evidence['qa_status']} |",
         f"| Chapter count | {evidence['chapter_count']} |",
+        f"| Meaningful chapter count | {evidence['meaningful_chapter_count']} |",
         "",
         "## Rights Basis",
         "",
@@ -850,6 +889,8 @@ def write_static_reports(evidence: dict[str, Any], gate_results: dict[str, Any])
             "source_character_count": evidence["source_character_count"],
             "cleaned_character_count": evidence["cleaned_character_count"],
             "chapter_count": evidence["chapter_count"],
+            "meaningful_chapter_count": evidence["meaningful_chapter_count"],
+            "chapter_quality_summary": evidence["chapter_quality_summary"],
             "language": evidence["language"],
             "source_marker_evidence": evidence["source_marker_evidence"],
             "cleanup_evidence": evidence["cleanup_evidence"],

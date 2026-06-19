@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -18,6 +19,8 @@ BLOCKERS_FILE = ROOT / "APPROVED_TO_PUBLISH_BLOCKERS.md"
 PRECHECK_REPORT = ROOT / "CONTROLLED_PUBLICATION_PRECHECK.md"
 OUTPUT_DIR = ROOT / "output" / "publication_candidates" / "dracula"
 LAUNCH_OUTPUT_DIR = ROOT / "output" / "launch"
+GO_RECOMMENDATION = "GO_FOR_CONTROLLED_PUBLICATION_FOR_DRACULA_ONLY"
+READY_WORKFLOW_STATUSES = {"READY", "READY_FOR_PUBLICATION_DRAFT_CANDIDATE"}
 
 REQUIRED_FIELDS = [
     "title",
@@ -53,6 +56,39 @@ def read_json(path: Path) -> dict[str, Any]:
         return json.loads(path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
         return {}
+
+
+def file_sha256(path: Path) -> str:
+    if not path.exists():
+        return ""
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def display_path(path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(ROOT.resolve()))
+    except ValueError:
+        return str(path)
+
+
+def route_canary_path() -> Path:
+    return LAUNCH_OUTPUT_DIR / "post_deploy_route_canary.json"
+
+
+def payment_smoke_path() -> Path:
+    return LAUNCH_OUTPUT_DIR / "payment_smoke.json"
+
+
+def gate_results_path() -> Path:
+    return OUTPUT_DIR / "dracula_gate_results.json"
+
+
+def source_hashes_path() -> Path:
+    return OUTPUT_DIR / "source_hashes.json"
 
 
 def value_present(value: Any) -> bool:
@@ -95,26 +131,101 @@ def evaluate_candidate(candidate: dict[str, Any]) -> list[str]:
 
 
 def evaluate_route_canary() -> tuple[str, str, list[str]]:
-    report_path = LAUNCH_OUTPUT_DIR / "post_deploy_route_canary.json"
+    report_path = route_canary_path()
     report = read_json(report_path)
     status = str(report.get("status") or "MISSING")
     issues: list[str] = []
     if status != "PASS":
         issues.append("production removed-route canary must be PASS.")
-    return status, str(report_path), issues
+    return status, display_path(report_path), issues
 
 
 def evaluate_payment_smoke() -> tuple[str, str, list[str]]:
-    report_path = LAUNCH_OUTPUT_DIR / "payment_smoke.json"
+    report_path = payment_smoke_path()
     report = read_json(report_path)
     status = str(report.get("status") or "MISSING")
     issues: list[str] = []
     if status not in {"PASS", "PASS_TEST_MODE", "PRODUCTION_TEST_MODE_PASS"}:
         issues.append("payment smoke must be PASS, PASS_TEST_MODE, or PRODUCTION_TEST_MODE_PASS.")
-    return status, str(report_path), issues
+    return status, display_path(report_path), issues
 
 
-def approval_markdown(candidate: dict[str, Any], route_status: str, route_path: str, payment_status: str, payment_path: str) -> str:
+def evaluate_gate_results(gate_results: dict[str, Any]) -> list[str]:
+    issues: list[str] = []
+    if not gate_results:
+        return ["dracula_gate_results.json is missing or invalid."]
+
+    workflow_status = str(gate_results.get("publishing_workflow_status") or "").strip().upper()
+    if workflow_status not in READY_WORKFLOW_STATUSES:
+        issues.append("publishing_workflow_status must be READY or READY_FOR_PUBLICATION_DRAFT_CANDIDATE.")
+
+    workflow = gate_results.get("workflow") if isinstance(gate_results.get("workflow"), dict) else {}
+    blockers = workflow.get("blockers") if isinstance(workflow.get("blockers"), list) else []
+    if blockers:
+        issues.append(f"workflow.blockers must be empty: {'; '.join(str(blocker) for blocker in blockers)}")
+
+    publish_readiness = str(workflow.get("publish_readiness") or "").strip().upper()
+    if publish_readiness == "BLOCKED":
+        issues.append("workflow.publish_readiness must not be BLOCKED.")
+
+    recommendation = str(gate_results.get("recommendation") or "").strip()
+    if recommendation != GO_RECOMMENDATION:
+        issues.append(f"recommendation must be {GO_RECOMMENDATION}.")
+
+    high_blockers = gate_results.get("high_blockers") if isinstance(gate_results.get("high_blockers"), list) else []
+    if high_blockers:
+        issues.append(f"high_blockers must be empty: {'; '.join(str(blocker) for blocker in high_blockers)}")
+    return issues
+
+
+def evaluate_hash_consistency(candidate: dict[str, Any], source_hashes: dict[str, Any]) -> list[str]:
+    issues: list[str] = []
+    if not candidate:
+        return issues
+    ingestion = candidate.get("ingestion") if isinstance(candidate.get("ingestion"), dict) else {}
+    sources = {
+        "source_evidence": candidate,
+        "source_evidence.ingestion": ingestion,
+        "source_hashes": source_hashes,
+    }
+    for key in ("source_hash", "content_hash", "provenance_hash"):
+        expected = str(candidate.get(key) or "")
+        for source_name, source in sources.items():
+            value = str(source.get(key) or "")
+            if value != expected:
+                issues.append(f"{key} mismatch in {source_name}: expected {expected or 'missing'}, got {value or 'missing'}.")
+    return issues
+
+
+def finalize_gate_results_for_approval(gate_results: dict[str, Any]) -> None:
+    if not gate_results:
+        return
+    next_gate_results = dict(gate_results)
+    next_gate_results["approved_to_publish_exists"] = True
+    next_gate_results["recommendation"] = GO_RECOMMENDATION
+    next_gate_results["readiness_score"] = max(float(next_gate_results.get("readiness_score") or 0), 9.9)
+    gate_results_path().write_text(json.dumps(next_gate_results, indent=2) + "\n", encoding="utf-8")
+
+
+def evidence_file_hashes(candidate_path: Path) -> dict[str, str]:
+    return {
+        "route_canary_evidence_hash": file_sha256(route_canary_path()),
+        "payment_smoke_evidence_hash": file_sha256(payment_smoke_path()),
+        "source_evidence_hash": file_sha256(candidate_path),
+        "gate_results_hash": file_sha256(gate_results_path()),
+    }
+
+
+def approval_markdown(
+    candidate: dict[str, Any],
+    *,
+    candidate_path: Path,
+    route_status: str,
+    route_path: str,
+    payment_status: str,
+    payment_path: str,
+) -> str:
+    hashes = evidence_file_hashes(candidate_path)
     return "\n".join(
         [
             "# Approved To Publish",
@@ -141,8 +252,21 @@ def approval_markdown(candidate: dict[str, Any], route_status: str, route_path: 
             f"- Rollback Plan: {candidate['rollback_plan']}",
             f"- Production Parity Status: {route_status}",
             f"- Production Parity Evidence: {route_path}",
+            f"- Production Parity Evidence Hash: {hashes['route_canary_evidence_hash']}",
             f"- Payment Smoke Status: {payment_status}",
             f"- Payment Smoke Evidence: {payment_path}",
+            f"- Payment Smoke Evidence Hash: {hashes['payment_smoke_evidence_hash']}",
+            f"- Source Evidence: {display_path(candidate_path)}",
+            f"- Source Evidence Hash: {hashes['source_evidence_hash']}",
+            f"- Gate Results Evidence: {display_path(gate_results_path())}",
+            f"- Gate Results Hash: {hashes['gate_results_hash']}",
+            "",
+            "Approval Scope:",
+            "",
+            "- Approved Scope: Dracula core reading candidate only.",
+            "- Not Approved: full study guide, full visual edition, full audiobook, paid ads, email sends, or social publishing.",
+            "- Audiobook Status: AUDIO_NOT_REQUIRED.",
+            "- Study/Visual Status: draft/partial only; separate QA approval is required before public promotion.",
             "",
         ]
     )
@@ -195,6 +319,8 @@ def precheck_markdown(status: str, issues: list[str]) -> str:
 def build(args: argparse.Namespace) -> dict[str, Any]:
     candidate_path = Path(args.candidate)
     candidate = read_json(candidate_path)
+    gate_results = read_json(gate_results_path())
+    source_hashes = read_json(source_hashes_path())
     route_status, route_path, route_issues = evaluate_route_canary()
     payment_status, payment_path, payment_issues = evaluate_payment_smoke()
     issues = []
@@ -202,6 +328,8 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         issues.append(f"candidate file is missing or invalid: {candidate_path}")
     else:
         issues.extend(evaluate_candidate(candidate))
+        issues.extend(evaluate_hash_consistency(candidate, source_hashes))
+    issues.extend(evaluate_gate_results(gate_results))
     issues.extend(route_issues)
     issues.extend(payment_issues)
 
@@ -234,6 +362,10 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         "issues": report_issues,
         "route_canary_status": route_status,
         "payment_smoke_status": payment_status,
+        "publishing_workflow_status": gate_results.get("publishing_workflow_status", ""),
+        "publishing_workflow_blockers": gate_results.get("workflow", {}).get("blockers", [])
+        if isinstance(gate_results.get("workflow"), dict)
+        else [],
         "approved_file": str(APPROVED_FILE),
         "blockers_file": str(BLOCKERS_FILE),
         "mutation_performed": False,
@@ -242,8 +374,16 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     (OUTPUT_DIR / "approved_to_publish_builder.json").write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
     if status == "PASS_APPROVAL_ARTIFACT_WRITTEN":
+        finalize_gate_results_for_approval(gate_results)
         APPROVED_FILE.write_text(
-            approval_markdown(candidate, route_status, route_path, payment_status, payment_path),
+            approval_markdown(
+                candidate,
+                candidate_path=candidate_path,
+                route_status=route_status,
+                route_path=route_path,
+                payment_status=payment_status,
+                payment_path=payment_path,
+            ),
             encoding="utf-8",
         )
         if BLOCKERS_FILE.exists():

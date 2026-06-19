@@ -12,7 +12,7 @@ Readiness score: `9.9/10`
 | Edition draft | PARTIAL_DRY_RUN |
 | Visual draft | PARTIAL_DRY_RUN |
 | Audio | AUDIO_NOT_REQUIRED |
-| Publishing workflow | BLOCKED |
+| Publishing workflow | READY_FOR_PUBLICATION_DRAFT_CANDIDATE |
 | Observability | PASS |
 | Removed-route canary | PASS |
 | Payment smoke | PASS_TEST_MODE |

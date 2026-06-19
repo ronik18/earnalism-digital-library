@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T10:40:57Z",
+  "generated_at": "2026-06-19T11:09:27Z",
   "dry_run": true,
   "mutation_performed": false,
   "public_publish_actions": 0,
@@ -14,7 +14,7 @@
   "visual_status": "PARTIAL_DRY_RUN",
   "audio_status": "AUDIO_NOT_REQUIRED",
   "phase7_publish_gate_status": "DRY_RUN_ONLY",
-  "publishing_workflow_status": "BLOCKED",
+  "publishing_workflow_status": "READY_FOR_PUBLICATION_DRAFT_CANDIDATE",
   "observability_guardrail_status": "PASS",
   "route_canary_status": "PASS",
   "payment_smoke_status": "PASS_TEST_MODE",
@@ -30,7 +30,7 @@
       "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
       "prompt_version": "earnalism-edition-v1",
       "model_version": "deterministic-template-v1",
-      "generated_at": "2026-06-19T10:40:57.390224+00:00",
+      "generated_at": "2026-06-19T11:09:27.619519+00:00",
       "quality_score": 80,
       "qa_status": "NEEDS_MORE_RUNS",
       "cache_key": "c62dad883ee2fe29b2b36678a9d63e2dbbeb969d4e6ba7292b34e654c3b4ec23"
@@ -44,7 +44,7 @@
         "source_coverage_status": "SOURCE_COVERED",
         "section_status": "READY_FOR_QA_REVIEW",
         "content_character_count": 1158,
-        "content_preview": "Clean Reading Edition: Dracula\n\nDRACULA\n\n_by_\n\nBram Stoker\n\n[Illustration: colophon]\n\nNEW YORK\n\nGROSSET & DUNLAP\n\n_Publishers_\n\nCopyright, 1897, in the United States of America, according\nto Act of Congress, by Bram Stoker\n\n[_All rights reserved._]\n\nPRINTED IN THE UNITED STATES\nAT\nTHE COUNTRY LIFE PRESS, GARDEN CITY, N.Y.\n\nTO\n\nMY DEAR FRIEND\n\nHOMMY-BEG\n\nContents\n\nCHAPTER I. Jonathan Harker’s Journal\nCHAPTER II. Jonathan Harker’s Journal\nCHAPTER III. Jonathan Harker’s Journal\nCHAPTER IV. Jonathan Harker’s Journal\nCHAPTER V. Letters—Lucy and Mina\nCHAPTER VI. Mina Murray’s Journal\nCHAPTER VII. Cutting from “The Dailygraph,” 8 August\nCHAPTER VIII. Mina Murray’s Journal\nCHAPTER IX. Mina Murray’s Journal\nCHAPTER X. Mina Murray’s Journal\nCHAPTER XI. Lucy Westenra’s Diary\nCHAPTER XII. Dr. Seward’s Diary\nCHAPTER XIII. Dr. Seward’s Diary\nCHAPTER XIV. Mina Harker’s Journal\nCHAPTER XV. Dr. Seward’s Diary\nCHAPTER XVI. Dr. Seward’s\n\nEditorial note: This is a short preview scaffold only; Phase 5 does not generate a full book.\nSource note: prepared from Project Gutenberg eBook #345 (https://www.gutenberg.org/ebooks/345); license: Project Gutenberg License."
+        "content_preview": "Clean Reading Edition: Dracula\n\nDRACULA\n\n_by_\n\nBram Stoker\n\n[Illustration: colophon]\n\nNEW YORK\n\nGROSSET & DUNLAP\n\n_Publishers_\n\nCopyright, 1897, in the United States of America, according\nto Act of Congress, by Bram Stoker\n\n[_All rights reserved._]\n\nPRINTED IN THE UNITED STATES\nAT\nTHE COUNTRY LIFE PRESS, GARDEN CITY, N.Y.\n\nTO\n\nMY DEAR FRIEND\n\nHOMMY-BEG\n\nContents\n\nCHAPTER I. Jonathan Harker\u2019s Journal\nCHAPTER II. Jonathan Harker\u2019s Journal\nCHAPTER III. Jonathan Harker\u2019s Journal\nCHAPTER IV. Jonathan Harker\u2019s Journal\nCHAPTER V. Letters\u2014Lucy and Mina\nCHAPTER VI. Mina Murray\u2019s Journal\nCHAPTER VII. Cutting from \u201cThe Dailygraph,\u201d 8 August\nCHAPTER VIII. Mina Murray\u2019s Journal\nCHAPTER IX. Mina Murray\u2019s Journal\nCHAPTER X. Mina Murray\u2019s Journal\nCHAPTER XI. Lucy Westenra\u2019s Diary\nCHAPTER XII. Dr. Seward\u2019s Diary\nCHAPTER XIII. Dr. Seward\u2019s Diary\nCHAPTER XIV. Mina Harker\u2019s Journal\nCHAPTER XV. Dr. Seward\u2019s Diary\nCHAPTER XVI. Dr. Seward\u2019s\n\nEditorial note: This is a short preview scaffold only; Phase 5 does not generate a full book.\nSource note: prepared from Project Gutenberg eBook #345 (https://www.gutenberg.org/ebooks/345); license: Project Gutenberg License."
       },
       {
         "section_id": "chapter_summary",
@@ -120,7 +120,7 @@
         "source_coverage_status": "SOURCE_COVERED",
         "section_status": "READY_FOR_QA_REVIEW",
         "content_character_count": 1158,
-        "content_preview": "Clean Reading Edition: Dracula\n\nDRACULA\n\n_by_\n\nBram Stoker\n\n[Illustration: colophon]\n\nNEW YORK\n\nGROSSET & DUNLAP\n\n_Publishers_\n\nCopyright, 1897, in the United States of America, according\nto Act of Congress, by Bram Stoker\n\n[_All rights reserved._]\n\nPRINTED IN THE UNITED STATES\nAT\nTHE COUNTRY LIFE PRESS, GARDEN CITY, N.Y.\n\nTO\n\nMY DEAR FRIEND\n\nHOMMY-BEG\n\nContents\n\nCHAPTER I. Jonathan Harker’s Journal\nCHAPTER II. Jonathan Harker’s Journal\nCHAPTER III. Jonathan Harker’s Journal\nCHAPTER IV. Jonathan Harker’s Journal\nCHAPTER V. Letters—Lucy and Mina\nCHAPTER VI. Mina Murray’s Journal\nCHAPTER VII. Cutting from “The Dailygraph,” 8 August\nCHAPTER VIII. Mina Murray’s Journal\nCHAPTER IX. Mina Murray’s Journal\nCHAPTER X. Mina Murray’s Journal\nCHAPTER XI. Lucy Westenra’s Diary\nCHAPTER XII. Dr. Seward’s Diary\nCHAPTER XIII. Dr. Seward’s Diary\nCHAPTER XIV. Mina Harker’s Journal\nCHAPTER XV. Dr. Seward’s Diary\nCHAPTER XVI. Dr. Seward’s\n\nEditorial note: This is a short preview scaffold only; Phase 5 does not generate a full book.\nSource note: prepared from Project Gutenberg eBook #345 (https://www.gutenberg.org/ebooks/345); license: Project Gutenberg License."
+        "content_preview": "Clean Reading Edition: Dracula\n\nDRACULA\n\n_by_\n\nBram Stoker\n\n[Illustration: colophon]\n\nNEW YORK\n\nGROSSET & DUNLAP\n\n_Publishers_\n\nCopyright, 1897, in the United States of America, according\nto Act of Congress, by Bram Stoker\n\n[_All rights reserved._]\n\nPRINTED IN THE UNITED STATES\nAT\nTHE COUNTRY LIFE PRESS, GARDEN CITY, N.Y.\n\nTO\n\nMY DEAR FRIEND\n\nHOMMY-BEG\n\nContents\n\nCHAPTER I. Jonathan Harker\u2019s Journal\nCHAPTER II. Jonathan Harker\u2019s Journal\nCHAPTER III. Jonathan Harker\u2019s Journal\nCHAPTER IV. Jonathan Harker\u2019s Journal\nCHAPTER V. Letters\u2014Lucy and Mina\nCHAPTER VI. Mina Murray\u2019s Journal\nCHAPTER VII. Cutting from \u201cThe Dailygraph,\u201d 8 August\nCHAPTER VIII. Mina Murray\u2019s Journal\nCHAPTER IX. Mina Murray\u2019s Journal\nCHAPTER X. Mina Murray\u2019s Journal\nCHAPTER XI. Lucy Westenra\u2019s Diary\nCHAPTER XII. Dr. Seward\u2019s Diary\nCHAPTER XIII. Dr. Seward\u2019s Diary\nCHAPTER XIV. Mina Harker\u2019s Journal\nCHAPTER XV. Dr. Seward\u2019s Diary\nCHAPTER XVI. Dr. Seward\u2019s\n\nEditorial note: This is a short preview scaffold only; Phase 5 does not generate a full book.\nSource note: prepared from Project Gutenberg eBook #345 (https://www.gutenberg.org/ebooks/345); license: Project Gutenberg License."
       },
       {
         "section_id": "chapter_summary",
@@ -231,7 +231,7 @@
         "asset_type": "character_relationship_diagram",
         "source_work": "Dracula",
         "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
-        "generated_at": "2026-06-19T10:40:57.390874+00:00",
+        "generated_at": "2026-06-19T11:09:27.620229+00:00",
         "quality_score": 100,
         "file_size": 199,
         "output_format": "mermaid",
@@ -244,7 +244,7 @@
         "asset_type": "timeline",
         "source_work": "Dracula",
         "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
-        "generated_at": "2026-06-19T10:40:57.390886+00:00",
+        "generated_at": "2026-06-19T11:09:27.620239+00:00",
         "quality_score": 75,
         "file_size": 69,
         "output_format": "mermaid",
@@ -257,7 +257,7 @@
         "asset_type": "chapter_flow",
         "source_work": "Dracula",
         "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
-        "generated_at": "2026-06-19T10:40:57.390900+00:00",
+        "generated_at": "2026-06-19T11:09:27.620253+00:00",
         "quality_score": 100,
         "file_size": 182,
         "output_format": "mermaid",
@@ -270,7 +270,7 @@
         "asset_type": "theme_map",
         "source_work": "Dracula",
         "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
-        "generated_at": "2026-06-19T10:40:57.390951+00:00",
+        "generated_at": "2026-06-19T11:09:27.620305+00:00",
         "quality_score": 100,
         "file_size": 1069,
         "output_format": "svg",
@@ -431,19 +431,17 @@
     "pipeline_version": "earnalism-audiobook-voice-v1"
   },
   "workflow": {
-    "state": "RIGHTS_PENDING",
-    "publish_readiness": "BLOCKED",
-    "blockers": [
-      "Rights verification must be approved."
-    ],
+    "state": "READY_FOR_PUBLICATION",
+    "publish_readiness": "READY",
+    "blockers": [],
     "warnings": [],
-    "rollback_available": false,
+    "rollback_available": true,
     "pause_available": true,
     "dry_run": true
   },
   "observability": {
     "observability_version": "earnalism-observability-guardrails-v1",
-    "generated_at": "2026-06-19T10:40:57.391321+00:00",
+    "generated_at": "2026-06-19T11:09:27.620684+00:00",
     "status": "READY_DRY_RUN",
     "dry_run": true,
     "kill_switch_active": false,
@@ -458,7 +456,7 @@
         "audit_events": [
           {
             "event_id": "event-995f990a74a4",
-            "timestamp": "2026-06-19T10:40:57.391281+00:00",
+            "timestamp": "2026-06-19T11:09:27.620643+00:00",
             "category": "publishing",
             "phase": "publishing_workflow",
             "action": "controlled_publication_candidate_review",
@@ -479,7 +477,7 @@
     "logs": [
       {
         "event_id": "event-995f990a74a4",
-        "timestamp": "2026-06-19T10:40:57.391281+00:00",
+        "timestamp": "2026-06-19T11:09:27.620643+00:00",
         "category": "publishing",
         "phase": "publishing_workflow",
         "action": "controlled_publication_candidate_review",
@@ -495,7 +493,7 @@
       },
       {
         "event_id": "event-94d58105a693",
-        "timestamp": "2026-06-19T10:40:57.391301+00:00",
+        "timestamp": "2026-06-19T11:09:27.620664+00:00",
         "category": "publishing",
         "phase": "health_check",
         "action": "api_health",
@@ -509,7 +507,7 @@
       },
       {
         "event_id": "event-ffff8b619cdc",
-        "timestamp": "2026-06-19T10:40:57.391307+00:00",
+        "timestamp": "2026-06-19T11:09:27.620670+00:00",
         "category": "publishing",
         "phase": "health_check",
         "action": "queue_health",
@@ -523,7 +521,7 @@
       },
       {
         "event_id": "event-1a263c36e18f",
-        "timestamp": "2026-06-19T10:40:57.391312+00:00",
+        "timestamp": "2026-06-19T11:09:27.620675+00:00",
         "category": "publishing",
         "phase": "health_check",
         "action": "storage_health",
@@ -537,7 +535,7 @@
       },
       {
         "event_id": "event-9e76647c6b66",
-        "timestamp": "2026-06-19T10:40:57.391316+00:00",
+        "timestamp": "2026-06-19T11:09:27.620679+00:00",
         "category": "publishing",
         "phase": "health_check",
         "action": "publishing_health",

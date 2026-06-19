@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T10:40:54Z",
+  "generated_at": "2026-06-19T11:09:23Z",
   "dry_run": true,
   "mutation_performed": false,
   "public_publish_actions": 0,
@@ -13,7 +13,7 @@
   "source_license": "Project Gutenberg License",
   "source_text_url": "https://www.gutenberg.org/cache/epub/345/pg345.txt",
   "source_text_file": "",
-  "source_retrieved_at": "2026-06-19T10:40:57Z",
+  "source_retrieved_at": "2026-06-19T11:09:27Z",
   "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
   "content_hash": "059ee06703b309c017b770587c6106afc0542a3cc9d52eb5daaf27fa633e2252",
   "provenance_hash": "512a127ee44fcd1ed61cf2c6d3352ab74147e7ab60e0855609c1a0842dbdb711",
@@ -30,6 +30,14 @@
   "source_character_count": 881060,
   "cleaned_character_count": 840534,
   "chapter_count": 54,
+  "meaningful_chapter_count": 27,
+  "chapter_quality_summary": {
+    "chapter_count": 54,
+    "meaningful_chapter_count": 27,
+    "empty_or_short_chapter_count": 27,
+    "meaningful_chapter_rule": "chapter content length > 1000 characters or > 200 words",
+    "minimum_meaningful_chapter_count": 25
+  },
   "source_marker_evidence": {
     "project_gutenberg_ebook_of_dracula": true,
     "title_dracula": true,
@@ -82,7 +90,7 @@
       "verification_status": "approved",
       "blocked_reason": "",
       "publication_region": "global",
-      "verified_at": "2026-06-19T10:40:54Z"
+      "verified_at": "2026-06-19T11:09:23Z"
     }
   },
   "ingestion": {
@@ -90,8 +98,8 @@
     "source_name": "Project Gutenberg eBook #345",
     "source_license": "Project Gutenberg License",
     "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
-    "content_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
-    "provenance_hash": "92e77b126352231f5ec37931ab6f8391567c45bbd5a4773d2c732b5190619622",
+    "content_hash": "059ee06703b309c017b770587c6106afc0542a3cc9d52eb5daaf27fa633e2252",
+    "provenance_hash": "512a127ee44fcd1ed61cf2c6d3352ab74147e7ab60e0855609c1a0842dbdb711",
     "raw_character_count": 881060,
     "cleaned_character_count": 840534,
     "raw_text_preview": "The Project Gutenberg eBook of Dracula\r\n    \r\nThis eBook is for the use of anyone anywhere in the United States and\r\nmost other parts of the world at no cost and with almost no restrictions\r\nwhatsoever. You may copy it, give it away or re-use it under the terms\r\nof the Project Gutenberg License included with this eBook or online\r\nat www.gutenberg.org. If you are not located in the United States,\r\nyou will have to check the laws of the country where you are located\r\nbefore using this eBook.\r\n\r\nTitle: Dracula\r\n\r\nAuthor: Bram Stoker\r\n\r\n\r\n        \r\nRelease date: October 1, 1995 [eBook #345]\r\n                Most recently updated: September 24, 2025\r\n\r\nLanguage: English\r\n\r\nOther information and formats: www.gutenberg.org/ebooks/345\r\n\r\nCredits: Chuck Greif and the Online Distributed Proofreading Team\r\n\r\n\r\n*** START OF THE PROJECT GUTENBERG EBOOK DRACULA ***\r\n\r\n\r\n\r\n\r\n                                DRACULA\r\n\r\n                                  _by_\r\n\r\n                              Bram Stoker\r",
@@ -488,7 +496,8 @@
     "downstream_regeneration_required": true,
     "downstream_artifacts_regenerated": false,
     "dry_run": true,
-    "generated_at": "2026-06-19T10:40:57.364241+00:00"
+    "generated_at": "2026-06-19T11:09:27.593032+00:00",
+    "hash_consistency_note": "Dracula candidate stores source_hash from raw source text, content_hash from cleaned source text, and provenance_hash from source_url + source_name + source_license + content_hash."
   },
   "cleaned_text_preview": "DRACULA\n\n_by_\n\nBram Stoker\n\n[Illustration: colophon]\n\nNEW YORK\n\nGROSSET & DUNLAP\n\n_Publishers_\n\nCopyright, 1897, in the United States of America, according\nto Act of Congress, by Bram Stoker\n\n[_All rights reserved._]\n\nPRINTED IN THE UNITED STATES\nAT\nTHE COUNTRY LIFE PRESS, GARDEN CITY, N.Y.\n\nTO\n\nMY DEAR FRIEND\n\nHOMMY-BEG\n\nContents\n\nCHAPTER I. Jonathan Harker’s Journal\nCHAPTER II. Jonathan Harker’s Journal\nCHAPTER III. Jonathan Harker’s Journal\nCHAPTER IV. Jonathan Harker’s Journal\nCHAPTER V. Letters—Lucy and Mina\nCHAPTER VI. Mina Murray’s Journal\nCHAPTER VII. Cutting from “The Dailygraph,” 8 August\nCHAPTER VIII. Mina Murray’s Journal\nCHAPTER IX. Mina Murray’s Journal\nCHAPTER X. Mina Murray’s Journal\nCHAPTER XI. Lucy Westenra’s Diary\nCHAPTER XII. Dr. Seward’s Diary\nCHAPTER XIII. Dr. Seward’s Diary\nCHAPTER XIV. Mina Harker’s Journal\nCHAPTER XV. Dr. Seward’s Diary\nCHAPTER XVI. Dr. Seward’s Diary\nCHAPTER XVII. Dr. Seward’s Diary\nCHAPTER XVIII. Dr. Seward’s Diary\nCHAPTER XIX. Jonathan Harker’s Journal\nCHAPTER XX. Jonathan Harker’s Journal\nCHAPTER XXI. Dr. Seward’s Diary\nCHAPTER XXII. Jonathan Harker’s Journal\nCHAPTER XXIII. Dr. Seward’s Diary\nCHAPTER XXIV. Dr. Seward’s Phonograph Diary,"
 }
