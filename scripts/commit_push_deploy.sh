@@ -332,7 +332,7 @@ if [[ "${SKIP_FRONTEND}" != "1" ]]; then
   if [[ -n "${VERCEL_SCOPE:-}" ]]; then
     vercel_args+=(--scope "${VERCEL_SCOPE}")
   fi
-  (cd "${FRONTEND_DIR}" && run "${vercel_cmd[@]}" "${vercel_args[@]}")
+  run "${vercel_cmd[@]}" "${vercel_args[@]}"
 else
   log "Skipping frontend deploy"
 fi

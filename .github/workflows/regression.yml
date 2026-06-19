@@ -179,7 +179,6 @@ jobs:
       - name: Link Vercel project
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
-        working-directory: frontend
         run: |
           mkdir -p .vercel
           node - <<'NODE'
@@ -197,7 +196,6 @@ jobs:
       - name: Pull Vercel production environment
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
-        working-directory: frontend
         run: |
           args=(pull --yes --environment=production --token "${VERCEL_TOKEN}")
           if [[ -n "${VERCEL_SCOPE}" ]]; then
@@ -208,7 +206,6 @@ jobs:
       - name: Build frontend for Vercel
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
-        working-directory: frontend
         run: |
           rm -rf .vercel/output
           args=(build --prod --yes --token "${VERCEL_TOKEN}")
@@ -220,7 +217,6 @@ jobs:
       - name: Deploy frontend to Vercel production
         if: steps.vercel-check.outputs.enabled == 'true'
         shell: bash
-        working-directory: frontend
         run: |
           args=(deploy --prebuilt --prod --token "${VERCEL_TOKEN}")
           if [[ -n "${VERCEL_SCOPE}" ]]; then
