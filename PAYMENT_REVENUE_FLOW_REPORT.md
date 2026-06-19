@@ -44,3 +44,9 @@ Smoke artifact: `/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/ou
 | analytics_schema_has_payment_events | True |
 
 Revenue launch remains HOLD until a separate controlled Razorpay test-mode payment smoke verifies a real checkout window, wallet credit, webhook idempotency, payment_failed analytics, and post-payment return in production.
+
+## Dracula Candidate Use
+
+Dracula uses payment evidence as `PASS_TEST_MODE` only.
+
+It does not prove live-money readiness, does not mutate production payments or wallets, and does not enable any public publication flag.

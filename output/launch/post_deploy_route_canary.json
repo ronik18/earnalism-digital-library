@@ -1,0 +1,129 @@
+{
+  "generated_at": "2026-06-19T11:07:17Z",
+  "status": "PASS",
+  "base_url": "https://theearnalism.com",
+  "required_x_robots_tag": "noindex, nofollow, noarchive",
+  "routes": [
+    {
+      "path": "/product/patterned-wrap-dress",
+      "url": "https://theearnalism.com/product/patterned-wrap-dress",
+      "status": 410,
+      "redirected": false,
+      "location": "",
+      "x_robots_tag": "noindex, nofollow, noarchive",
+      "generic_shell": false,
+      "pass_status": true,
+      "issues": [],
+      "error": ""
+    },
+    {
+      "path": "/journal/denim-jackets",
+      "url": "https://theearnalism.com/journal/denim-jackets",
+      "status": 410,
+      "redirected": false,
+      "location": "",
+      "x_robots_tag": "noindex, nofollow, noarchive",
+      "generic_shell": false,
+      "pass_status": true,
+      "issues": [],
+      "error": ""
+    },
+    {
+      "path": "/shop",
+      "url": "https://theearnalism.com/shop",
+      "status": 410,
+      "redirected": false,
+      "location": "",
+      "x_robots_tag": "noindex, nofollow, noarchive",
+      "generic_shell": false,
+      "pass_status": true,
+      "issues": [],
+      "error": ""
+    },
+    {
+      "path": "/shop/",
+      "url": "https://theearnalism.com/shop/",
+      "status": 410,
+      "redirected": false,
+      "location": "",
+      "x_robots_tag": "noindex, nofollow, noarchive",
+      "generic_shell": false,
+      "pass_status": true,
+      "issues": [],
+      "error": ""
+    },
+    {
+      "path": "/shop/example",
+      "url": "https://theearnalism.com/shop/example",
+      "status": 410,
+      "redirected": false,
+      "location": "",
+      "x_robots_tag": "noindex, nofollow, noarchive",
+      "generic_shell": false,
+      "pass_status": true,
+      "issues": [],
+      "error": ""
+    },
+    {
+      "path": "/fashion",
+      "url": "https://theearnalism.com/fashion",
+      "status": 410,
+      "redirected": false,
+      "location": "",
+      "x_robots_tag": "noindex, nofollow, noarchive",
+      "generic_shell": false,
+      "pass_status": true,
+      "issues": [],
+      "error": ""
+    },
+    {
+      "path": "/clothing",
+      "url": "https://theearnalism.com/clothing",
+      "status": 410,
+      "redirected": false,
+      "location": "",
+      "x_robots_tag": "noindex, nofollow, noarchive",
+      "generic_shell": false,
+      "pass_status": true,
+      "issues": [],
+      "error": ""
+    },
+    {
+      "path": "/woocommerce/test",
+      "url": "https://theearnalism.com/woocommerce/test",
+      "status": 410,
+      "redirected": false,
+      "location": "",
+      "x_robots_tag": "noindex, nofollow, noarchive",
+      "generic_shell": false,
+      "pass_status": true,
+      "issues": [],
+      "error": ""
+    },
+    {
+      "path": "/sample-product/test",
+      "url": "https://theearnalism.com/sample-product/test",
+      "status": 410,
+      "redirected": false,
+      "location": "",
+      "x_robots_tag": "noindex, nofollow, noarchive",
+      "generic_shell": false,
+      "pass_status": true,
+      "issues": [],
+      "error": ""
+    },
+    {
+      "path": "/placeholder-product/test",
+      "url": "https://theearnalism.com/placeholder-product/test",
+      "status": 410,
+      "redirected": false,
+      "location": "",
+      "x_robots_tag": "noindex, nofollow, noarchive",
+      "generic_shell": false,
+      "pass_status": true,
+      "issues": [],
+      "error": ""
+    }
+  ],
+  "operator_instruction": "If status is BLOCKED, do not mark GO_FOR_CONTROLLED_PUBLICATION. Roll back the last frontend deployment or re-deploy the route fix, then rerun this canary."
+}

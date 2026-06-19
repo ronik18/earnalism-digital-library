@@ -23,3 +23,20 @@ Recommendation: `HOLD_FOR_FIXES`
 Production route parity passed in the latest audit, but each future main-branch deployment must still pass the post-deploy route canary before any controlled publication.
 
 The score is intentionally below 9.7 because controlled publication still lacks real first-batch source evidence, full audiobook QA, book SEO prerendering, production test-mode revenue evidence, and measured load/autoscaling evidence.
+
+## Dracula Controlled Candidate
+
+Dracula is prepared as the first controlled-publication candidate package in dry-run mode only.
+
+| Dracula Gate | Status |
+| --- | --- |
+| Removed-route canary | PASS |
+| Payment smoke | PASS_TEST_MODE |
+| Source QA | QA_PASSED |
+| Source license/hash evidence | PASS |
+| Rights tier | A |
+| SEO landing | PASS_DRAFT, non-public |
+| Audio | AUDIO_NOT_REQUIRED |
+| Approval artifact | CREATED |
+
+Dracula has passed the source/license/hash/QA checks in dry-run evidence.

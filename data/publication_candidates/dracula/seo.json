@@ -1,0 +1,39 @@
+{
+  "slug": "dracula",
+  "draft_only": true,
+  "public_route_enabled": false,
+  "title": "Dracula by Bram Stoker | Earnalism Reading Room Draft",
+  "description": "Preview Dracula by Bram Stoker in Earnalism's quiet digital reading room. This non-public SEO draft remains gated until source, rights, QA, revenue, and route checks pass.",
+  "canonical_url_draft": "https://theearnalism.com/book/dracula",
+  "open_graph": {
+    "title": "Read Dracula on Earnalism",
+    "description": "A controlled-publication draft for Bram Stoker's classic Gothic novel.",
+    "image": "",
+    "image_status": "BLOCKED_UNTIL_APPROVED_PUBLIC_ASSET"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "Dracula | Earnalism",
+    "description": "Non-public draft for a source-verified Earnalism reading experience.",
+    "image": ""
+  },
+  "book_json_ld_status": "READY_DRAFT",
+  "book_json_ld": {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Dracula",
+    "author": {
+      "@type": "Person",
+      "name": "Bram Stoker"
+    },
+    "datePublished": "1897",
+    "inLanguage": "en",
+    "url": "https://theearnalism.com/book/dracula"
+  },
+  "ctas": [
+    "Read preview",
+    "Start 7-day reading pass",
+    "Join the quiet reading room"
+  ],
+  "source_rights_note": "GO_FOR_CONTROLLED_PUBLICATION_FOR_DRACULA_ONLY"
+}

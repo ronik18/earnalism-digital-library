@@ -224,5 +224,12 @@ def test_all_audit_writes_required_reports_without_production_network(tmp_path, 
     assert all(path.exists() for path in required)
     assert (ROOT / "LAUNCH_CATALOG_ACTION_PLAN.csv").exists()
     assert (ROOT / "FIRST_BATCH_REAL_SOURCE_MATRIX.csv").exists()
-    assert not (ROOT / "APPROVED_TO_PUBLISH.md").exists()
+    approved_path = ROOT / "APPROVED_TO_PUBLISH.md"
+    if approved_path.exists():
+        approved_text = approved_path.read_text(encoding="utf-8")
+        assert "Work Slug: dracula" in approved_text
+        assert "Source Hash:" in approved_text
+        assert "QA Status: QA_PASSED" in approved_text
+    else:
+        assert not approved_path.exists()
     assert (tmp_path / "launch" / "launch_readiness.json").exists()

@@ -1,0 +1,587 @@
+{
+  "generated_at": "2026-06-19T11:09:27Z",
+  "dry_run": true,
+  "mutation_performed": false,
+  "public_publish_actions": 0,
+  "slug": "dracula",
+  "title": "Dracula",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "action_status": "READY_FOR_GENERATION",
+  "demand_score": 61.81,
+  "ingestion_status": "CLEANED",
+  "edition_generation_status": "PARTIAL_DRY_RUN",
+  "visual_status": "PARTIAL_DRY_RUN",
+  "audio_status": "AUDIO_NOT_REQUIRED",
+  "phase7_publish_gate_status": "DRY_RUN_ONLY",
+  "publishing_workflow_status": "READY_FOR_PUBLICATION_DRAFT_CANDIDATE",
+  "observability_guardrail_status": "PASS",
+  "route_canary_status": "PASS",
+  "payment_smoke_status": "PASS_TEST_MODE",
+  "source_qa_status": "QA_PASSED",
+  "seo_status": "PASS_DRAFT",
+  "revenue_status": "PASS_TEST_MODE",
+  "approved_to_publish_exists": true,
+  "readiness_score": 9.9,
+  "recommendation": "GO_FOR_CONTROLLED_PUBLICATION_FOR_DRACULA_ONLY",
+  "high_blockers": [],
+  "edition_result": {
+    "state": {
+      "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
+      "prompt_version": "earnalism-edition-v1",
+      "model_version": "deterministic-template-v1",
+      "generated_at": "2026-06-19T11:09:27.619519+00:00",
+      "quality_score": 80,
+      "qa_status": "NEEDS_MORE_RUNS",
+      "cache_key": "c62dad883ee2fe29b2b36678a9d63e2dbbeb969d4e6ba7292b34e654c3b4ec23"
+    },
+    "sections": [
+      {
+        "section_id": "clean_reading_edition",
+        "title": "Clean Reading Edition",
+        "citation_required": true,
+        "editorial_review_required": false,
+        "source_coverage_status": "SOURCE_COVERED",
+        "section_status": "READY_FOR_QA_REVIEW",
+        "content_character_count": 1158,
+        "content_preview": "Clean Reading Edition: Dracula\n\nDRACULA\n\n_by_\n\nBram Stoker\n\n[Illustration: colophon]\n\nNEW YORK\n\nGROSSET & DUNLAP\n\n_Publishers_\n\nCopyright, 1897, in the United States of America, according\nto Act of Congress, by Bram Stoker\n\n[_All rights reserved._]\n\nPRINTED IN THE UNITED STATES\nAT\nTHE COUNTRY LIFE PRESS, GARDEN CITY, N.Y.\n\nTO\n\nMY DEAR FRIEND\n\nHOMMY-BEG\n\nContents\n\nCHAPTER I. Jonathan Harker\u2019s Journal\nCHAPTER II. Jonathan Harker\u2019s Journal\nCHAPTER III. Jonathan Harker\u2019s Journal\nCHAPTER IV. Jonathan Harker\u2019s Journal\nCHAPTER V. Letters\u2014Lucy and Mina\nCHAPTER VI. Mina Murray\u2019s Journal\nCHAPTER VII. Cutting from \u201cThe Dailygraph,\u201d 8 August\nCHAPTER VIII. Mina Murray\u2019s Journal\nCHAPTER IX. Mina Murray\u2019s Journal\nCHAPTER X. Mina Murray\u2019s Journal\nCHAPTER XI. Lucy Westenra\u2019s Diary\nCHAPTER XII. Dr. Seward\u2019s Diary\nCHAPTER XIII. Dr. Seward\u2019s Diary\nCHAPTER XIV. Mina Harker\u2019s Journal\nCHAPTER XV. Dr. Seward\u2019s Diary\nCHAPTER XVI. Dr. Seward\u2019s\n\nEditorial note: This is a short preview scaffold only; Phase 5 does not generate a full book.\nSource note: prepared from Project Gutenberg eBook #345 (https://www.gutenberg.org/ebooks/345); license: Project Gutenberg License."
+      },
+      {
+        "section_id": "chapter_summary",
+        "title": "Chapter Summary",
+        "citation_required": true,
+        "editorial_review_required": false,
+        "source_coverage_status": "SOURCE_COVERED",
+        "section_status": "READY_FOR_QA_REVIEW",
+        "content_character_count": 572,
+        "content_preview": "Chapter Summary\n\n- Opening focus: DRACULA _by_ Bram Stoker [Illustration: colophon] NEW YORK GROSSET & DUNLAP _Publishers_ Copyright, 1897, in the United States of America, according to Act of Congress, by Bram Stoker [_All rights reserved._] PRINTED IN THE UNITED STATES AT THE COUNTRY LIFE PRESS, GARDEN CITY, N.Y.\n- Reader takeaway: watch how Journal shapes the scene.\n- Use this summary as a review aid, not a replacement for the text.\n\nSource note: prepared from Project Gutenberg eBook #345 (https://www.gutenberg.org/ebooks/345); license: Project Gutenberg License."
+      },
+      {
+        "section_id": "character_map",
+        "title": "Character Map",
+        "citation_required": true,
+        "editorial_review_required": false,
+        "source_coverage_status": "SOURCE_COVERED",
+        "section_status": "READY_FOR_QA_REVIEW",
+        "content_character_count": 550,
+        "content_preview": "Character Map\n\n- Bram: track this figure's role, relationships, and decisions.\n- Stoker: track this figure's role, relationships, and decisions.\n- Illustration: track this figure's role, relationships, and decisions.\n- Copyright: track this figure's role, relationships, and decisions.\n- United: track this figure's role, relationships, and decisions.\n- States: track this figure's role, relationships, and decisions.\n\nSource note: prepared from Project Gutenberg eBook #345 (https://www.gutenberg.org/ebooks/345); license: Project Gutenberg License."
+      },
+      {
+        "section_id": "historical_context",
+        "title": "Historical Context",
+        "citation_required": true,
+        "editorial_review_required": true,
+        "source_coverage_status": "SOURCE_COVERED",
+        "section_status": "EDITORIAL_REVIEW_REQUIRED",
+        "content_character_count": 376,
+        "content_preview": "Historical Context\n\nThis edition keeps historical framing conservative and source-tethered. For Dracula, the context section should connect publication era, author background, and reader questions only after human-reviewed citations are added.\n\nSource note: prepared from Project Gutenberg eBook #345 (https://www.gutenberg.org/ebooks/345); license: Project Gutenberg License."
+      }
+    ],
+    "requested_sections": [
+      "clean_reading_edition",
+      "chapter_summary",
+      "character_map",
+      "historical_context",
+      "glossary",
+      "themes",
+      "quiz",
+      "seven_day_reading_plan",
+      "teacher_parent_notes",
+      "why_this_book_matters_today",
+      "audiobook_ready_script",
+      "seo_copy",
+      "landing_page_copy",
+      "social_excerpts"
+    ],
+    "generated_sections": [
+      "clean_reading_edition",
+      "chapter_summary",
+      "character_map",
+      "historical_context"
+    ],
+    "skipped_sections": [
+      "glossary",
+      "themes",
+      "quiz",
+      "seven_day_reading_plan",
+      "teacher_parent_notes",
+      "why_this_book_matters_today",
+      "audiobook_ready_script",
+      "seo_copy",
+      "landing_page_copy",
+      "social_excerpts"
+    ],
+    "section_metadata": [
+      {
+        "section_id": "clean_reading_edition",
+        "title": "Clean Reading Edition",
+        "citation_required": true,
+        "editorial_review_required": false,
+        "source_coverage_status": "SOURCE_COVERED",
+        "section_status": "READY_FOR_QA_REVIEW",
+        "content_character_count": 1158,
+        "content_preview": "Clean Reading Edition: Dracula\n\nDRACULA\n\n_by_\n\nBram Stoker\n\n[Illustration: colophon]\n\nNEW YORK\n\nGROSSET & DUNLAP\n\n_Publishers_\n\nCopyright, 1897, in the United States of America, according\nto Act of Congress, by Bram Stoker\n\n[_All rights reserved._]\n\nPRINTED IN THE UNITED STATES\nAT\nTHE COUNTRY LIFE PRESS, GARDEN CITY, N.Y.\n\nTO\n\nMY DEAR FRIEND\n\nHOMMY-BEG\n\nContents\n\nCHAPTER I. Jonathan Harker\u2019s Journal\nCHAPTER II. Jonathan Harker\u2019s Journal\nCHAPTER III. Jonathan Harker\u2019s Journal\nCHAPTER IV. Jonathan Harker\u2019s Journal\nCHAPTER V. Letters\u2014Lucy and Mina\nCHAPTER VI. Mina Murray\u2019s Journal\nCHAPTER VII. Cutting from \u201cThe Dailygraph,\u201d 8 August\nCHAPTER VIII. Mina Murray\u2019s Journal\nCHAPTER IX. Mina Murray\u2019s Journal\nCHAPTER X. Mina Murray\u2019s Journal\nCHAPTER XI. Lucy Westenra\u2019s Diary\nCHAPTER XII. Dr. Seward\u2019s Diary\nCHAPTER XIII. Dr. Seward\u2019s Diary\nCHAPTER XIV. Mina Harker\u2019s Journal\nCHAPTER XV. Dr. Seward\u2019s Diary\nCHAPTER XVI. Dr. Seward\u2019s\n\nEditorial note: This is a short preview scaffold only; Phase 5 does not generate a full book.\nSource note: prepared from Project Gutenberg eBook #345 (https://www.gutenberg.org/ebooks/345); license: Project Gutenberg License."
+      },
+      {
+        "section_id": "chapter_summary",
+        "title": "Chapter Summary",
+        "citation_required": true,
+        "editorial_review_required": false,
+        "source_coverage_status": "SOURCE_COVERED",
+        "section_status": "READY_FOR_QA_REVIEW",
+        "content_character_count": 572,
+        "content_preview": "Chapter Summary\n\n- Opening focus: DRACULA _by_ Bram Stoker [Illustration: colophon] NEW YORK GROSSET & DUNLAP _Publishers_ Copyright, 1897, in the United States of America, according to Act of Congress, by Bram Stoker [_All rights reserved._] PRINTED IN THE UNITED STATES AT THE COUNTRY LIFE PRESS, GARDEN CITY, N.Y.\n- Reader takeaway: watch how Journal shapes the scene.\n- Use this summary as a review aid, not a replacement for the text.\n\nSource note: prepared from Project Gutenberg eBook #345 (https://www.gutenberg.org/ebooks/345); license: Project Gutenberg License."
+      },
+      {
+        "section_id": "character_map",
+        "title": "Character Map",
+        "citation_required": true,
+        "editorial_review_required": false,
+        "source_coverage_status": "SOURCE_COVERED",
+        "section_status": "READY_FOR_QA_REVIEW",
+        "content_character_count": 550,
+        "content_preview": "Character Map\n\n- Bram: track this figure's role, relationships, and decisions.\n- Stoker: track this figure's role, relationships, and decisions.\n- Illustration: track this figure's role, relationships, and decisions.\n- Copyright: track this figure's role, relationships, and decisions.\n- United: track this figure's role, relationships, and decisions.\n- States: track this figure's role, relationships, and decisions.\n\nSource note: prepared from Project Gutenberg eBook #345 (https://www.gutenberg.org/ebooks/345); license: Project Gutenberg License."
+      },
+      {
+        "section_id": "historical_context",
+        "title": "Historical Context",
+        "citation_required": true,
+        "editorial_review_required": true,
+        "source_coverage_status": "SOURCE_COVERED",
+        "section_status": "EDITORIAL_REVIEW_REQUIRED",
+        "content_character_count": 376,
+        "content_preview": "Historical Context\n\nThis edition keeps historical framing conservative and source-tethered. For Dracula, the context section should connect publication era, author background, and reader questions only after human-reviewed citations are added.\n\nSource note: prepared from Project Gutenberg eBook #345 (https://www.gutenberg.org/ebooks/345); license: Project Gutenberg License."
+      }
+    ],
+    "qa": {
+      "qa_status": "NEEDS_MORE_RUNS",
+      "quality_score": 80,
+      "missing_sections": [
+        "glossary",
+        "themes",
+        "quiz",
+        "seven_day_reading_plan",
+        "teacher_parent_notes",
+        "why_this_book_matters_today",
+        "audiobook_ready_script",
+        "seo_copy",
+        "landing_page_copy",
+        "social_excerpts"
+      ],
+      "skipped_sections": [
+        "glossary",
+        "themes",
+        "quiz",
+        "seven_day_reading_plan",
+        "teacher_parent_notes",
+        "why_this_book_matters_today",
+        "audiobook_ready_script",
+        "seo_copy",
+        "landing_page_copy",
+        "social_excerpts"
+      ],
+      "hallucination_risk": false,
+      "citation_source_coverage": 1.0,
+      "readability_score": 72.7,
+      "age_appropriateness_flag": false,
+      "qa_issues": []
+    },
+    "cost_controls": {
+      "max_sections_per_run": 4,
+      "max_generation_budget": 10000,
+      "budget_used": 4323,
+      "skip_unchanged_source_hash": true,
+      "dry_run_default": true,
+      "max_source_chars": 8000
+    },
+    "generation_status": "PARTIAL_DRY_RUN",
+    "gate_status": "PASS",
+    "blocking_reason": "",
+    "rights_tier": "A",
+    "action_status": "READY_FOR_GENERATION",
+    "ingestion_status": "CLEANED",
+    "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
+    "content_hash": "059ee06703b309c017b770587c6106afc0542a3cc9d52eb5daaf27fa633e2252",
+    "provenance_hash": "512a127ee44fcd1ed61cf2c6d3352ab74147e7ab60e0855609c1a0842dbdb711",
+    "prompt_version": "earnalism-edition-v1",
+    "model_version": "deterministic-template-v1",
+    "qa_status": "NEEDS_MORE_RUNS",
+    "quality_score": 80,
+    "generated_section_count": 4,
+    "skipped_section_count": 10,
+    "dry_run": true
+  },
+  "visual_result": {
+    "source_work": "Dracula",
+    "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
+    "content_hash": "059ee06703b309c017b770587c6106afc0542a3cc9d52eb5daaf27fa633e2252",
+    "provenance_hash": "512a127ee44fcd1ed61cf2c6d3352ab74147e7ab60e0855609c1a0842dbdb711",
+    "generation_status": "PARTIAL_DRY_RUN",
+    "gate_status": "PASS",
+    "blocking_reason": "",
+    "rights_tier": "A",
+    "action_status": "READY_FOR_GENERATION",
+    "ingestion_status": "CLEANED",
+    "edition_generation_status": "PARTIAL_DRY_RUN",
+    "dry_run": true,
+    "generated_asset_count": 4,
+    "skipped_asset_count": 7,
+    "generated_assets": [
+      {
+        "asset_type": "character_relationship_diagram",
+        "source_work": "Dracula",
+        "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
+        "generated_at": "2026-06-19T11:09:27.620229+00:00",
+        "quality_score": 100,
+        "file_size": 199,
+        "output_format": "mermaid",
+        "qa_status": "PASS",
+        "dry_run": true,
+        "generation_hook": "",
+        "content_preview": "graph TD\n  Dracula[\"Dracula\"]\n  Dracula --> Bram[\"Bram\"]\n  Dracula --> Stoker[\"Stoker\"]\n  Dracula --> Illustration[\"Illustration\"]\n  Dracula --> Copyright[\"Copyright\"]\n  Dracula --> United[\"United\"]\n"
+      },
+      {
+        "asset_type": "timeline",
+        "source_work": "Dracula",
+        "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
+        "generated_at": "2026-06-19T11:09:27.620239+00:00",
+        "quality_score": 75,
+        "file_size": 69,
+        "output_format": "mermaid",
+        "qa_status": "PASS",
+        "dry_run": true,
+        "generation_hook": "",
+        "content_preview": "timeline\n  title Dracula Study Timeline\n  1897 : Reading milestone 1\n"
+      },
+      {
+        "asset_type": "chapter_flow",
+        "source_work": "Dracula",
+        "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
+        "generated_at": "2026-06-19T11:09:27.620253+00:00",
+        "quality_score": 100,
+        "file_size": 182,
+        "output_format": "mermaid",
+        "qa_status": "PASS",
+        "dry_run": true,
+        "generation_hook": "",
+        "content_preview": "graph LR\n  C1[\"CHAPTER I\"]\n  C2[\"CHAPTER II\"]\n  C1 --> C2\n  C3[\"CHAPTER III\"]\n  C2 --> C3\n  C4[\"CHAPTER IV\"]\n  C3 --> C4\n  C5[\"CHAPTER V\"]\n  C4 --> C5\n  C6[\"CHAPTER VI\"]\n  C5 --> C6\n"
+      },
+      {
+        "asset_type": "theme_map",
+        "source_work": "Dracula",
+        "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
+        "generated_at": "2026-06-19T11:09:27.620305+00:00",
+        "quality_score": 100,
+        "file_size": 1069,
+        "output_format": "svg",
+        "qa_status": "PASS",
+        "dry_run": true,
+        "generation_hook": "",
+        "content_preview": "<svg width=\"420\" height=\"220\" role=\"img\" aria-label=\"Dracula theme map\"><rect width=\"420\" height=\"220\" fill=\"#fffaf0\"/><g><circle cx=\"70\" cy=\"70\" r=\"42\" fill=\"#f8f1df\" stroke=\"#9d7c38\"/><text x=\"70\" y=\"70\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3d2428\">Journal</text></g><g><circle cx=\"190\" cy=\"70\" r=\"42\" fill=\"#f8f1df\" stroke=\"#9d7c38\"/><text x=\"190\" y=\"70\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3d2428\">Diary</text></g><g><circle cx=\"310\" cy=\"70\" r=\"42\" fill=\"#f8f1df\" stroke=\"#9d7c38\"/><text x=\"310\" y=\"70\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3d2428\">Mina</text></g><g><circle cx=\"70\" cy=\"155\" r=\"42\" fill=\"#f8f1df\" stroke=\"#9d7c38\"/><text x=\"70\" y=\"155\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3d2428\">Seward</text></g><g><circle cx=\"190\" cy=\"155\" r=\"42\" fill=\"#f8f1df\" stroke=\"#9d7c38\"/><text x=\"190\" y=\"155\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3d2428\">Harker</text></g><g><circle cx=\"310\" cy=\"155\" r=\"42\" fill=\"#f8f1df\" stroke=\"#9d7c38\"/><text x=\"310\" y=\"155\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3d2428\">Jonathan</text></g></svg>"
+      }
+    ],
+    "skipped_assets": [
+      "vocabulary_cards",
+      "quiz_worksheet",
+      "seven_day_reading_plan_card",
+      "teacher_handout",
+      "reading_edition_epub_hook",
+      "study_guide_pdf_hook",
+      "mobile_html_edition_hook"
+    ],
+    "qa": {
+      "qa_status": "NEEDS_MORE_RUNS",
+      "quality_score": 86,
+      "missing_assets": [
+        "vocabulary_cards",
+        "quiz_worksheet",
+        "seven_day_reading_plan_card",
+        "teacher_handout",
+        "reading_edition_epub_hook",
+        "study_guide_pdf_hook",
+        "mobile_html_edition_hook"
+      ],
+      "skipped_assets": [
+        "vocabulary_cards",
+        "quiz_worksheet",
+        "seven_day_reading_plan_card",
+        "teacher_handout",
+        "reading_edition_epub_hook",
+        "study_guide_pdf_hook",
+        "mobile_html_edition_hook"
+      ],
+      "issues": [],
+      "copyrighted_image_dependency": false,
+      "ai_image_generation_required": false,
+      "epub_pdf_hooks_dry_run_capable": true
+    },
+    "engine_version": "earnalism-visual-v1"
+  },
+  "audio_result": {
+    "book_slug": "dracula",
+    "title": "Dracula",
+    "generation_mode": "preview_30s",
+    "generation_status": "DRY_RUN_READY",
+    "publish_gate_status": "DRY_RUN_ONLY",
+    "blocking_reason": "Phase 7 does not publish audio; dry-run report only.",
+    "dry_run": true,
+    "rights_tier": "A",
+    "action_status": "READY_FOR_GENERATION",
+    "ingestion_status": "CLEANED",
+    "edition_generation_status": "PARTIAL_DRY_RUN",
+    "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
+    "content_hash": "059ee06703b309c017b770587c6106afc0542a3cc9d52eb5daaf27fa633e2252",
+    "provenance_hash": "512a127ee44fcd1ed61cf2c6d3352ab74147e7ab60e0855609c1a0842dbdb711",
+    "voice_identity": "A refined female literary narrator: warm, intelligent, calm, expressive, punctuation-aware, emotionally restrained, suitable for Bengali, English, and Hindi.",
+    "narration_script": {
+      "language": "en",
+      "chunk_count": 1,
+      "chapter_count": 0,
+      "dialogue_chunk_count": 0,
+      "poetry_chunk_count": 0,
+      "pronunciation_replacement_count": 0,
+      "processor_warnings": [
+        "Mode preview_30s limited narration chunks from 16 to 1."
+      ],
+      "chunks": [
+        {
+          "index": 1,
+          "language": "en",
+          "segment_type": "narration",
+          "chapter_title": "",
+          "estimated_seconds": 0.39,
+          "punctuation_pause_count": 0,
+          "punctuation_pauses_ms": [],
+          "pronunciation_replacements": {},
+          "text_preview": "DRACULA",
+          "character_count": 7
+        }
+      ]
+    },
+    "provider_plan": {
+      "provider": "manual_audio_upload",
+      "voice_profile": "human_or_external_refined_female_literary_narrator",
+      "language": "en",
+      "credentials_configured": true,
+      "supports_ssml": false,
+      "dry_run_only": false,
+      "hook": "Manual audio upload fallback: validate uploaded audio through QA before any publish.",
+      "blocking_reason": ""
+    },
+    "mastering_plan": {
+      "loudness_normalization": "EBU R128 target -16 LUFS integrated, -1.5 dBTP true peak",
+      "silence_trimming": "trim leading/trailing silence below -45 dB for longer than 0.35 seconds",
+      "output_formats": [
+        "mp3",
+        "aac",
+        "ogg"
+      ],
+      "waveform_preview": "work/audio/dracula/preview_30s/mastered.waveform.json",
+      "ffmpeg_commands": [
+        "ffmpeg -i work/audio/dracula/preview_30s/raw.wav -af loudnorm=I=-16:TP=-1.5:LRA=11,silenceremove=start_periods=1:start_threshold=-45dB:stop_periods=1:stop_threshold=-45dB work/audio/dracula/preview_30s/mastered.mp3",
+        "ffmpeg -i work/audio/dracula/preview_30s/mastered.mp3 -c:a aac work/audio/dracula/preview_30s/mastered.m4a",
+        "ffmpeg -i work/audio/dracula/preview_30s/mastered.mp3 -c:a libopus work/audio/dracula/preview_30s/mastered.ogg",
+        "ffmpeg -i work/audio/dracula/preview_30s/mastered.mp3 -filter_complex showwavespic=s=1200x240 work/audio/dracula/preview_30s/mastered.waveform.png"
+      ],
+      "executed": false
+    },
+    "qa": {
+      "qa_status": "DRY_RUN_PENDING_AUDIO",
+      "issues": [
+        "No audio file was generated or uploaded; QA hooks are planned only."
+      ],
+      "metrics": {
+        "stt_transcript_comparison": "HOOK_NOT_RUN",
+        "word_error_rate": null,
+        "missing_paragraph_count": 0,
+        "repeated_line_count": 0,
+        "clipping_detected": false,
+        "long_silence_detected": false,
+        "file_size_bytes": 0
+      }
+    },
+    "planned_audio_assets": [
+      {
+        "asset_type": "master_mp3",
+        "path": "dry-run/audio/dracula/preview_30s/mastered.mp3",
+        "publishable": false
+      },
+      {
+        "asset_type": "master_aac",
+        "path": "dry-run/audio/dracula/preview_30s/mastered.m4a",
+        "publishable": false
+      },
+      {
+        "asset_type": "master_ogg",
+        "path": "dry-run/audio/dracula/preview_30s/mastered.ogg",
+        "publishable": false
+      },
+      {
+        "asset_type": "waveform_preview",
+        "path": "work/audio/dracula/preview_30s/mastered.waveform.json",
+        "publishable": false
+      },
+      {
+        "asset_type": "playlist",
+        "path": "dry-run/audio/dracula/preview_30s/playlist.json",
+        "chunk_count": 1,
+        "publishable": false
+      }
+    ],
+    "pipeline_version": "earnalism-audiobook-voice-v1"
+  },
+  "workflow": {
+    "state": "READY_FOR_PUBLICATION",
+    "publish_readiness": "READY",
+    "blockers": [],
+    "warnings": [],
+    "rollback_available": true,
+    "pause_available": true,
+    "dry_run": true
+  },
+  "observability": {
+    "observability_version": "earnalism-observability-guardrails-v1",
+    "generated_at": "2026-06-19T11:09:27.620684+00:00",
+    "status": "READY_DRY_RUN",
+    "dry_run": true,
+    "kill_switch_active": false,
+    "actions": [
+      {
+        "action_id": "dracula-controlled-publication-candidate",
+        "slug": "dracula",
+        "phase": "publishing_workflow",
+        "action_type": "controlled_publication_candidate_review",
+        "decision_status": "ALLOWED_DRY_RUN",
+        "blocking_reasons": [],
+        "audit_events": [
+          {
+            "event_id": "event-995f990a74a4",
+            "timestamp": "2026-06-19T11:09:27.620643+00:00",
+            "category": "publishing",
+            "phase": "publishing_workflow",
+            "action": "controlled_publication_candidate_review",
+            "status": "EVALUATED",
+            "severity": "INFO",
+            "message": "Automation action evaluated in dry-run observability mode.",
+            "slug": "dracula",
+            "guardrail_type": "",
+            "metadata": {
+              "action_id": "dracula-controlled-publication-candidate"
+            },
+            "dry_run": true
+          }
+        ],
+        "dry_run": true
+      }
+    ],
+    "logs": [
+      {
+        "event_id": "event-995f990a74a4",
+        "timestamp": "2026-06-19T11:09:27.620643+00:00",
+        "category": "publishing",
+        "phase": "publishing_workflow",
+        "action": "controlled_publication_candidate_review",
+        "status": "EVALUATED",
+        "severity": "INFO",
+        "message": "Automation action evaluated in dry-run observability mode.",
+        "slug": "dracula",
+        "guardrail_type": "",
+        "metadata": {
+          "action_id": "dracula-controlled-publication-candidate"
+        },
+        "dry_run": true
+      },
+      {
+        "event_id": "event-94d58105a693",
+        "timestamp": "2026-06-19T11:09:27.620664+00:00",
+        "category": "publishing",
+        "phase": "health_check",
+        "action": "api_health",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "api health check passed.",
+        "slug": "",
+        "guardrail_type": "",
+        "metadata": {},
+        "dry_run": true
+      },
+      {
+        "event_id": "event-ffff8b619cdc",
+        "timestamp": "2026-06-19T11:09:27.620670+00:00",
+        "category": "publishing",
+        "phase": "health_check",
+        "action": "queue_health",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "queue health check passed.",
+        "slug": "",
+        "guardrail_type": "",
+        "metadata": {},
+        "dry_run": true
+      },
+      {
+        "event_id": "event-1a263c36e18f",
+        "timestamp": "2026-06-19T11:09:27.620675+00:00",
+        "category": "publishing",
+        "phase": "health_check",
+        "action": "storage_health",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "storage health check passed.",
+        "slug": "",
+        "guardrail_type": "",
+        "metadata": {},
+        "dry_run": true
+      },
+      {
+        "event_id": "event-9e76647c6b66",
+        "timestamp": "2026-06-19T11:09:27.620679+00:00",
+        "category": "publishing",
+        "phase": "health_check",
+        "action": "publishing_health",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "publishing health check passed.",
+        "slug": "",
+        "guardrail_type": "",
+        "metadata": {},
+        "dry_run": true
+      }
+    ],
+    "incidents": [],
+    "health_checks": [
+      {
+        "name": "api",
+        "status": "OK",
+        "message": "api health check passed.",
+        "metadata": {}
+      },
+      {
+        "name": "queue",
+        "status": "OK",
+        "message": "queue health check passed.",
+        "metadata": {}
+      },
+      {
+        "name": "storage",
+        "status": "OK",
+        "message": "storage health check passed.",
+        "metadata": {}
+      },
+      {
+        "name": "publishing",
+        "status": "OK",
+        "message": "publishing health check passed.",
+        "metadata": {}
+      }
+    ],
+    "summary": {
+      "action_count": 1,
+      "blocked_action_count": 0,
+      "log_count": 5,
+      "incident_count": 0,
+      "unhealthy_check_count": 0,
+      "guardrail_type_counts": {}
+    }
+  }
+}

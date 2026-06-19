@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 from backend.publishing_workflow import (
+    WorkflowSignals,
     WORKFLOW_STATES,
     build_admin_dashboard_sections,
     dry_run_publish,
@@ -78,6 +79,33 @@ def test_ready_book_reaches_ready_for_publication():
     assert decision.publish_readiness == "READY"
     assert decision.blockers == []
     assert decision.rollback_available is True
+
+
+def test_workflow_normalizes_lowercase_and_uppercase_status_inputs():
+    base = {
+        "slug": "dracula",
+        "title": "Dracula",
+        "rights_tier": "A",
+        "blocked_reason": "",
+        "publication_region": "global",
+        "demand_score": 94.0,
+        "action_status": "ready_for_generation",
+        "ingestion_status": "cleaned",
+        "edition_generation_status": "qa_passed",
+        "visual_status": "qa_passed",
+        "audio_status": "audio_not_required",
+        "qa_status": "qa_passed",
+        "cost_used": 0,
+        "cost_budget": 100,
+    }
+
+    lower = evaluate_workflow(WorkflowSignals(**base, verification_status="approved"))
+    upper = evaluate_workflow(WorkflowSignals(**base, verification_status="APPROVED"))
+
+    assert lower.publish_readiness == "READY"
+    assert upper.publish_readiness == "READY"
+    assert lower.blockers == []
+    assert upper.blockers == []
 
 
 def test_cannot_publish_without_rights_approval():

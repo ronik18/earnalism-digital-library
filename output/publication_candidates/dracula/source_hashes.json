@@ -1,0 +1,48 @@
+{
+  "slug": "dracula",
+  "source_hash": "9516dd7e092027e700b179c8f6d35499da43f4bb495c33184b655610aa2d17fe",
+  "content_hash": "059ee06703b309c017b770587c6106afc0542a3cc9d52eb5daaf27fa633e2252",
+  "provenance_hash": "512a127ee44fcd1ed61cf2c6d3352ab74147e7ab60e0855609c1a0842dbdb711",
+  "source_text_url": "https://www.gutenberg.org/cache/epub/345/pg345.txt",
+  "source_character_count": 881060,
+  "cleaned_character_count": 840534,
+  "chapter_count": 54,
+  "meaningful_chapter_count": 27,
+  "chapter_quality_summary": {
+    "chapter_count": 54,
+    "meaningful_chapter_count": 27,
+    "empty_or_short_chapter_count": 27,
+    "meaningful_chapter_rule": "chapter content length > 1000 characters or > 200 words",
+    "minimum_meaningful_chapter_count": 25
+  },
+  "language": "en",
+  "source_marker_evidence": {
+    "project_gutenberg_ebook_of_dracula": true,
+    "title_dracula": true,
+    "author_bram_stoker": true,
+    "ebook_number_345": true,
+    "start_marker": true,
+    "end_marker": true,
+    "project_gutenberg_license": true
+  },
+  "cleanup_evidence": {
+    "gutenberg_start_marker_found": true,
+    "gutenberg_end_marker_found": true,
+    "raw_character_count": 881060,
+    "cleaned_character_count": 840534,
+    "removed_character_count": 40526,
+    "cleanup_method": "backend.source_ingestion.clean_source_text(connector='project-gutenberg')",
+    "required_source_markers": {
+      "project_gutenberg_ebook_of_dracula": true,
+      "title_dracula": true,
+      "author_bram_stoker": true,
+      "ebook_number_345": true,
+      "start_marker": true,
+      "end_marker": true,
+      "project_gutenberg_license": true
+    }
+  },
+  "source_hash_status": "PASS",
+  "content_hash_status": "PASS",
+  "provenance_hash_status": "PASS"
+}

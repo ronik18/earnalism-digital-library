@@ -21,3 +21,20 @@ Production route parity passed in the latest audit, so it no longer caps the cur
 - No production content or database record was mutated.
 - No paid/provider API was called.
 - No `APPROVED_TO_PUBLISH.md` was created from placeholder evidence.
+
+## Dracula Controlled Candidate
+
+- Candidate package: `GO_FOR_CONTROLLED_PUBLICATION_FOR_DRACULA_ONLY`
+- Removed-route canary: `PASS`
+- Payment smoke: `PASS_TEST_MODE`
+- SEO landing: `PASS_DRAFT`
+- Audio: `AUDIO_NOT_REQUIRED`
+- Approval artifact exists: `True`
+- Blocker artifact: Absent after approval-artifact write.
+- Evidence: `output/publication_candidates/dracula/source_evidence.json`
+
+Dracula has passed the source/license/hash/QA checks in dry-run evidence.
+
+### Dracula Blockers
+
+- None.

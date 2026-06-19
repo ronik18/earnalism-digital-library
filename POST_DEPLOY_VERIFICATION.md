@@ -25,3 +25,11 @@ npm run launch:post-deploy-route-canary
 - Removed/demo URLs stay out of `sitemap.xml`.
 - Removed/demo URLs remain crawlable by `robots.txt` so crawlers can see the deindexing response.
 - Failed canary keeps production parity `BLOCKED` and must not create `GO_FOR_CONTROLLED_PUBLICATION`.
+
+## Latest Dracula Candidate Evidence
+
+- `output/launch/post_deploy_route_canary.json`
+- `output/launch/post_deploy_route_canary.txt`
+- Current canary status: `PASS`
+
+A failed future canary keeps production parity `BLOCKED` and prevents Dracula approval.

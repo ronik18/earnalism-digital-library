@@ -1,0 +1,35 @@
+{
+  "slug": "dracula",
+  "rights_basis": "Bram Stoker died in 1912 and Dracula was first published in 1897. The candidate uses Project Gutenberg eBook #345 as its primary source. Tier A global publication is allowed only when the Project Gutenberg source text, license section, source_hash, content_hash, provenance_hash, and rights engine approval all pass. No modern translation, illustration, or editorial dependency is included.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "publication_region": "global",
+  "rights_decision": {
+    "status": "approved",
+    "approved": true,
+    "issues": [],
+    "metadata": {
+      "work_title": "Dracula",
+      "work_slug": "dracula",
+      "author_name": "Bram Stoker",
+      "author_death_year": 1912,
+      "original_publication_year": 1897,
+      "country_of_origin": "United Kingdom",
+      "source_url": "https://www.gutenberg.org/ebooks/345",
+      "source_name": "Project Gutenberg eBook #345",
+      "source_license": "Project Gutenberg License",
+      "translator_name": "",
+      "translator_death_year": "",
+      "illustrator_name": "",
+      "illustrator_death_year": "",
+      "editor_name": "",
+      "edition_publication_year": "",
+      "rights_tier": "A",
+      "verification_status": "approved",
+      "blocked_reason": "",
+      "publication_region": "global",
+      "verified_at": "2026-06-19T11:09:23Z"
+    }
+  },
+  "qa_status": "QA_PASSED"
+}

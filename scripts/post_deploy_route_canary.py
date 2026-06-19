@@ -173,6 +173,36 @@ def write_reports(base_url: str, results: list[RouteResult]) -> None:
     )
     (OUTPUT_DIR / "post_deploy_route_canary.md").write_text("\n".join(rows), encoding="utf-8")
 
+    text_rows = [
+        "Post-Deploy Route Canary",
+        f"Status: {status}",
+        f"Base URL: {base_url}",
+        f"Required X-Robots-Tag: {REQUIRED_ROBOTS_TAG}",
+        "",
+    ]
+    for result in results:
+        text_rows.extend(
+            [
+                f"Path: {result.path}",
+                f"Status: {result.status}",
+                f"Redirected: {result.redirected}",
+                f"X-Robots-Tag: {result.x_robots_tag or '(missing)'}",
+                f"Generic shell: {result.generic_shell}",
+                f"Issues: {'; '.join(result.issues) if result.issues else 'none'}",
+                "",
+            ]
+        )
+    text_rows.extend(
+        [
+            "Operator instructions:",
+            "- If any route is BLOCKED, keep launch status at HOLD_FOR_FIXES.",
+            "- Removed/demo routes must stay crawlable so crawlers can observe 410/404 plus X-Robots-Tag.",
+            "- Do not create APPROVED_TO_PUBLISH.md from a failed route canary.",
+            "",
+        ]
+    )
+    (OUTPUT_DIR / "post_deploy_route_canary.txt").write_text("\n".join(text_rows), encoding="utf-8")
+
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Verify removed/demo routes after production deployment.")

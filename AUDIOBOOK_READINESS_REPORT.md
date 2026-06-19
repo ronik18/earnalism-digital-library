@@ -32,3 +32,12 @@ Detailed asset audit: `/Users/ronikbasak/Documents/GitHub/earnalism-digital-libr
 | frontend/public/audio/en/bharat-at-the-crossroads.mp3 | bharat-at-the-crossroads | en | 82189079 | 13698074 | UNKNOWN | NEEDS_SYNC_OR_WAVEFORM_REVIEW | True | True | False |
 
 Full audiobook launch remains blocked until each candidate has linked approved rights, QA-passed audio, and explicit storage/provider publish confirmation.
+
+## Dracula Controlled Candidate
+
+Dracula audio status for this publication package is `AUDIO_NOT_REQUIRED`.
+
+- No Dracula audio upload was performed.
+- No TTS, STT, FFmpeg, or paid provider call was performed.
+- No full Dracula audiobook is promoted by the non-public SEO or campaign drafts.
+- Linked Dracula audio must pass rights linkage, listening QA, sync/highlighting QA, and storage/provider confirmation before promotion.

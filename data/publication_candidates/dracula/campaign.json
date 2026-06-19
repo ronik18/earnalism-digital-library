@@ -1,0 +1,18 @@
+{
+  "draft_only": true,
+  "campaign_name": "Return to Reading: Dracula",
+  "headline": "Return to Reading: Start with Dracula in The Earnalism quiet reading room.",
+  "offer": "7-day reading pass",
+  "ctas": [
+    "Start Dracula preview",
+    "Unlock the study guide preview",
+    "Begin the 7-day reading challenge",
+    "Join the institution pilot"
+  ],
+  "channels": {
+    "email": "draft_only",
+    "social": "draft_only",
+    "ads": "not_created"
+  },
+  "public_publish_actions": 0
+}

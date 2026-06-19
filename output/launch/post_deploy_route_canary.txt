@@ -1,0 +1,79 @@
+Post-Deploy Route Canary
+Status: PASS
+Base URL: https://theearnalism.com
+Required X-Robots-Tag: noindex, nofollow, noarchive
+
+Path: /product/patterned-wrap-dress
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /journal/denim-jackets
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /shop
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /shop/
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /shop/example
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /fashion
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /clothing
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /woocommerce/test
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /sample-product/test
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /placeholder-product/test
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Operator instructions:
+- If any route is BLOCKED, keep launch status at HOLD_FOR_FIXES.
+- Removed/demo routes must stay crawlable so crawlers can observe 410/404 plus X-Robots-Tag.
+- Do not create APPROVED_TO_PUBLISH.md from a failed route canary.
