@@ -43,6 +43,24 @@ def test_reader_manifest_rewrites_b2_mp3_to_api_proxy(monkeypatch):
     assert audio["duration_ms"] == 1234
 
 
+def test_reader_manifest_audio_slug_alone_does_not_enable_audio(monkeypatch):
+    server = _server(monkeypatch)
+    book = {
+        "audio_asset_slug": "dracula",
+        "audiobook_enabled": False,
+        "generate_audiobook": False,
+        "audiobook_assets": {},
+        "audiobook": {},
+    }
+
+    audio = server._reader_manifest_audio(book, "dracula")
+
+    assert audio["asset_slug"] == "dracula"
+    assert audio["enabled"] is False
+    assert audio["assets"] == {}
+    assert audio["url"] == ""
+
+
 def test_b2_key_and_range_helpers(monkeypatch):
     server = _server(monkeypatch)
     server.B2_BUCKET = "earnalism-audio"

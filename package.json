@@ -32,6 +32,7 @@
     "dracula:approved-builder": "python3 scripts/approved_to_publish_builder.py --candidate output/publication_candidates/dracula/source_evidence.json --evaluate-only",
     "dracula:approval-artifact": "python3 scripts/approved_to_publish_builder.py --candidate output/publication_candidates/dracula/source_evidence.json --write-approval-artifact",
     "controlled-publication:precheck": "python3 scripts/controlled_publication_precheck.py",
+    "controlled-publication:publish": "python3 scripts/controlled_publication_publish.py --slug dracula",
     "audio:preflight": "python3 scripts/open_source_audiobook_onboarding.py preflight",
     "audio:audit": "python3 scripts/open_source_audiobook_onboarding.py audit",
     "audio:onboard:dry": "python3 scripts/open_source_audiobook_onboarding.py generate --dry-run",

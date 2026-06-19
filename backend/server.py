@@ -1278,7 +1278,7 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         book.get("audiobook_enabled")
         or book.get("generate_audiobook")
         or assets
-        or audio_slug
+        or _book_audiobook_url(book)
     )
     version = _stable_digest({
         "enabled": enabled,
