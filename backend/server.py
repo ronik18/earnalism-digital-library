@@ -4755,7 +4755,7 @@ async def user_claim_reader_reward(user=Depends(require_user)):
         user_id=user["id"],
         action="reward_credit",
         seconds_delta=READER_STREAK_REWARD_SECONDS,
-        reason="Reader's Reserve streak credit",
+        reason="The Reader’s Reserve streak credit",
         actor="system",
         balance_after=int(fresh.get("reading_seconds_balance", fresh.get("wallet_seconds", 0)) or 0),
     )

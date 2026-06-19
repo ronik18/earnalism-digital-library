@@ -60,7 +60,7 @@ export default function Pricing() {
         setPacks(packRows);
         setConfig(configRes.data || {});
         packRows.forEach((pack) => {
-          trackFunnelEvent("pricing_pack_view", {
+          trackFunnelEvent("pricing_pack_rendered", {
             pack_id: pack.id,
             label: pack.label,
             minutes: pack.minutes,
@@ -76,7 +76,7 @@ export default function Pricing() {
   useEffect(() => {
     if (explainerTrackedRef.current) return;
     explainerTrackedRef.current = true;
-    trackFunnelEvent("reading_time_explainer_view", {
+    trackFunnelEvent("reading_time_explainer_rendered", {
       source: funnelSource || "pricing",
       book_slug: "dracula",
     });
@@ -306,14 +306,14 @@ export default function Pricing() {
               </h2>
             </div>
             <p className="text-charcoal-soft text-base sm:text-lg font-light leading-[1.9] max-w-3xl">
-              Earnalism is a digital reading room. You buy quiet reading time, not a noisy subscription. No subscription or autorenewal. No pressure to finish before a billing cycle.
+              Earnalism is a digital reading room. You buy quiet reading time, not a noisy subscription. There is no autorenewal and no pressure to finish before a billing cycle.
             </p>
           </div>
         </section>
 
         <div className="text-center mt-14">
           <p className="text-sm text-charcoal-soft font-light italic max-w-xl mx-auto">
-            Secure payment by Razorpay. No subscription or autorenewal. Reading time is credited to your wallet after payment confirmation.
+            Secure payment by Razorpay. No subscription or autorenewal. Reading time is credited to your wallet after confirmation.
             For support or refund questions, contact sales@reoenterprise.org.
           </p>
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">

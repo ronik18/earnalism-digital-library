@@ -24,7 +24,7 @@ const STORIES = [
 export default function MicroStoryLanding() {
   useSEO({
     title: "3-Minute Stories — Earnalism",
-    description: "Try a quiet 3-minute Earnalism preview, then start with the ₹49 The First Chapter reading pack.",
+    description: "Try a quiet 3-minute Earnalism preview, then continue with The First Chapter — ₹49.",
   });
 
   return (
@@ -35,7 +35,7 @@ export default function MicroStoryLanding() {
           <h1>Start with a small read before you choose a longer stay.</h1>
           <p>
             Built for Instagram and YouTube visitors who want a low-risk first step:
-            sample the tone, then unlock the ₹49 <em>The First Chapter</em>.
+            sample the tone, then unlock <em>The First Chapter</em> for ₹49.
           </p>
           <Link
             to="/pricing?pack=30m&source=micro_story"
