@@ -6,10 +6,16 @@ Expected result for every route: HTTP `410` or `404`, no redirect, no generic SP
 
 ```bash
 set -euo pipefail
-for path in /product/patterned-wrap-dress /journal/denim-jackets /shop /shop/ /shop/example /fashion /clothing; do
+for path in /product/patterned-wrap-dress /journal/denim-jackets /shop /shop/ /shop/example /fashion /clothing /woocommerce/test /sample-product/test /placeholder-product/test; do
   echo "==== $path"
   curl -i --max-time 10 "https://theearnalism.com$path" | sed -n '1,28p'
 done
+```
+
+Equivalent scripted canary:
+
+```bash
+npm run launch:post-deploy-route-canary
 ```
 
 ## Pass Criteria
@@ -18,3 +24,4 @@ done
 - `/product/patterned-wrap-dress` does not serve the generic Earnalism shell.
 - Removed/demo URLs stay out of `sitemap.xml`.
 - Removed/demo URLs remain crawlable by `robots.txt` so crawlers can see the deindexing response.
+- Failed canary keeps production parity `BLOCKED` and must not create `GO_FOR_CONTROLLED_PUBLICATION`.

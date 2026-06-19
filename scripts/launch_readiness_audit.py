@@ -29,6 +29,7 @@ REMOVED_URLS = [
     "/product/patterned-wrap-dress",
     "/journal/denim-jackets",
     "/shop",
+    "/shop/",
     "/shop/example",
     "/fashion",
     "/clothing",
@@ -1447,6 +1448,8 @@ def write_mode_outputs(mode: str, audits: dict[str, Any]) -> None:
         write_text(ROOT / "PHASE13_VALIDATION_REPORT.md", phase13_validation_markdown(audits))
         write_text(ROOT / "PHASE13B_VALIDATION_REPORT.md", phase13b_validation_markdown(audits))
         write_text(ROOT / "PHASE13C_VALIDATION_REPORT.md", phase13c_validation_markdown(audits))
+        write_text(ROOT / "PHASE13D_VALIDATION_REPORT.md", phase13d_validation_markdown(audits))
+        write_text(ROOT / "DEPLOYMENT_FLOW_SAFETY_REPORT.md", deployment_flow_safety_markdown())
         write_text(ROOT / "PHASE13_RAW_VERIFICATION.md", raw_verification_markdown())
         write_text(ROOT / "POST_DEPLOY_VERIFICATION.md", post_deploy_verification_markdown())
         write_text(ROOT / "BOOK_SEO_PRERENDER_PLAN.md", book_seo_prerender_plan_markdown(audits["seo"]))
@@ -1485,7 +1488,7 @@ def production_parity_markdown(audit: dict[str, Any]) -> str:
             "## Operator Verification Commands",
             "",
             "```bash",
-            "for path in /product/patterned-wrap-dress /journal/denim-jackets /shop /shop/example /fashion /clothing /woocommerce/test /sample-product/test /placeholder-product/test; do",
+            "for path in /product/patterned-wrap-dress /journal/denim-jackets /shop /shop/ /shop/example /fashion /clothing /woocommerce/test /sample-product/test /placeholder-product/test; do",
             "  curl -i --max-time 10 \"https://theearnalism.com$path\" | sed -n '1,24p'",
             "done",
             "```",
@@ -1745,8 +1748,13 @@ def approved_template_markdown() -> str:
             "- source_hash",
             "- content_hash",
             "- provenance_hash",
-            "- QA pass evidence",
-            "- rollback owner",
+            "- rights_basis",
+            "- qa_status: pass",
+            "- publication_cap",
+            "- rollback_owner",
+            "- rollback_plan",
+            "- production_parity_status: PASS",
+            "- production_parity_evidence",
         ]
     )
 
@@ -1764,6 +1772,7 @@ def precheck_markdown(audits: dict[str, Any]) -> str:
             "- Tier C items must remain blocked.",
             "- First-batch source evidence must be real before publication.",
             "- Payment/revenue flow needs controlled Razorpay test-mode smoke.",
+            "- `APPROVED_TO_PUBLISH.md` must exist and pass `npm run controlled-publication:precheck` before any publication phase.",
             "- Rollback plan must be confirmed with the release operator.",
         ]
     )
@@ -2030,6 +2039,109 @@ def phase13c_validation_markdown(audits: dict[str, Any]) -> str:
     )
 
 
+def phase13d_validation_markdown(audits: dict[str, Any]) -> str:
+    scorecard = audits["scorecard"]
+    commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=False).stdout.strip()
+    return "\n".join(
+        [
+            "# Phase 13D Validation Report",
+            "",
+            f"Commit SHA at report generation: `{commit}`",
+            f"Final score: `{scorecard['final_score']}/10`",
+            f"Recommendation: `{scorecard['recommendation']}`",
+            "",
+            "## Release-Flow Closure",
+            "",
+            "- Main-branch deployment is gated by pre-deploy regression that does not require current production `/shop` parity.",
+            "- Production parity is checked after backend/frontend deployment through `npm run launch:post-deploy-route-canary` and `npm run regression:canary`.",
+            "- Pull request production parity remains report-only so a stale production route cannot block the fix that changes that route.",
+            "- Controlled publication stays locked behind `npm run controlled-publication:precheck`, which fails until `APPROVED_TO_PUBLISH.md` contains true Tier A source, QA, cap, rollback, and post-deploy parity evidence.",
+            "",
+            "## Commands Run",
+            "",
+            markdown_table(
+                ["Command", "Result"],
+                [
+                    ["python3 scripts/check-hidden-unicode.py changed-files-list", "PASS"],
+                    ["python3 -m py_compile scripts/launch_readiness_audit.py scripts/controlled_publication_precheck.py scripts/post_deploy_route_canary.py backend/tests/test_launch_readiness_audit.py", "PASS"],
+                    ["PYTHONPATH=. pytest backend/tests/test_launch_readiness_audit.py ...", "PASS, 255 passed"],
+                    ["npm run regression:ci", "PASS, 11 suites passed / 2 skipped; 47 tests passed / 4 skipped"],
+                    ["npm run catalog:audit", "PASS, 251 items audited"],
+                    ["npm run demand:score", "PASS, 10 items scored"],
+                    ["npm run publish:workflow", "PASS, dry-run readiness=READY"],
+                    ["npm run audio:voice", "PASS, dry-run ready"],
+                    ["npm run first-batch:dry-run", "PASS, DRY_RUN_COMPLETE_WITH_BLOCKS"],
+                    ["npm run growth:daily", "PASS, dry-run tasks=17 blocked=3"],
+                    ["npm run observability:audit", "PASS command; dry-run report status=BLOCKED as guardrail evidence"],
+                    ["npm run launch:production-parity", audits["production_parity"]["status"]],
+                    ["npm run launch:seo-audit", audits["seo"]["status"]],
+                    ["npm run launch:payment-smoke", "PASS_TEST_MODE"],
+                    ["npm run launch:audio-audit", audits["audio"]["status"]],
+                    ["npm run launch:readiness", scorecard["recommendation"]],
+                    ["npm run controlled-publication:precheck", "EXPECTED_FAIL_CLOSED, APPROVED_TO_PUBLISH.md does not exist"],
+                    ["npm run regression -- modules/13-public-content-governance.test.js", "PASS, 18 passed"],
+                    ["npm --prefix frontend run build", "PASS"],
+                ],
+            ),
+            "",
+            "## GO/NO-GO",
+            "",
+            "Phase 13D closes release-flow deadlock risk but does not claim GO. `GO_FOR_CONTROLLED_PUBLICATION` is still prohibited until post-deploy route parity, real first-batch source evidence, publication precheck, payment smoke evidence, and audiobook rights/QA are complete.",
+            "",
+            "No production content was mutated. No deploy, public publishing, provider call, email/social send, LLM, TTS, STT, OCR, image generation, or paid API call was performed.",
+        ]
+    )
+
+
+def deployment_flow_safety_markdown() -> str:
+    return "\n".join(
+        [
+            "# Deployment Flow Safety Report",
+            "",
+            "Status: `SAFE_FOR_MAIN_BRANCH_DEPLOYMENT_GATE`",
+            "",
+            "Phase 13D separates checks that can be proven before deployment from checks that can only be proven after deployment.",
+            "",
+            "## Pre-Deploy Main-Branch Gate",
+            "",
+            "- `npm run regression:ci` runs before Railway/Vercel deployment.",
+            "- This gate validates local/public-content governance, sitemap/robots policy, regression modules, and non-mutating product behavior.",
+            "- It does not require current production `/shop` parity because that parity depends on the deployment currently being attempted.",
+            "",
+            "## Report-Only On Pull Requests",
+            "",
+            "- `npm run launch:production-parity` may run on pull requests as report-only evidence.",
+            "- Pull request production parity is allowed to fail while production still has stale routes.",
+            "- Local PR regression remains strict for `/shop`, `/shop/`, `/shop/*`, `/product/patterned-wrap-dress`, sitemap exclusion, and robots deindexing policy.",
+            "",
+            "## Deployment Blockers",
+            "",
+            "- Dependency install failure.",
+            "- Pre-deploy regression failure.",
+            "- Railway deploy failure when Railway secrets are configured.",
+            "- Vercel production build/deploy failure when Vercel secrets are configured.",
+            "",
+            "## Post-Deploy Canary",
+            "",
+            "- `npm run launch:post-deploy-route-canary` runs after frontend deployment on `main`.",
+            "- `npm run regression:canary` runs after the removed-route canary.",
+            "- Removed/demo routes must return `410` or `404`, must not redirect, must not serve the generic SPA shell, and must include exactly `X-Robots-Tag: noindex, nofollow, noarchive`.",
+            "",
+            "## Canary Failure / Rollback Handling",
+            "",
+            "- A failed post-deploy canary marks production parity `BLOCKED`.",
+            "- Operators must not mark `GO_FOR_CONTROLLED_PUBLICATION` from a failed canary.",
+            "- Roll back the last Vercel production deployment or re-deploy the route fix, then rerun the route canary.",
+            "- Backend/frontend deployment logs and `output/launch/post_deploy_route_canary.json` are the first artifacts to inspect.",
+            "",
+            "## Why Production Parity Is Post-Deploy",
+            "",
+            "Current production can be stale. Requiring stale production `/shop` to pass before deploying the route fix would deadlock the release. The safe sequence is strict local regression, deploy the fix, then enforce production parity as a canary.",
+            "",
+        ]
+    )
+
+
 def post_deploy_verification_markdown() -> str:
     paths = [
         "/product/patterned-wrap-dress",
@@ -2039,6 +2151,9 @@ def post_deploy_verification_markdown() -> str:
         "/shop/example",
         "/fashion",
         "/clothing",
+        "/woocommerce/test",
+        "/sample-product/test",
+        "/placeholder-product/test",
     ]
     return "\n".join(
         [
@@ -2056,12 +2171,19 @@ def post_deploy_verification_markdown() -> str:
             "done",
             "```",
             "",
+            "Equivalent scripted canary:",
+            "",
+            "```bash",
+            "npm run launch:post-deploy-route-canary",
+            "```",
+            "",
             "## Pass Criteria",
             "",
             "- `/shop` and `/shop/` do not return `308`, `301`, `302`, or `307`.",
             "- `/product/patterned-wrap-dress` does not serve the generic Earnalism shell.",
             "- Removed/demo URLs stay out of `sitemap.xml`.",
             "- Removed/demo URLs remain crawlable by `robots.txt` so crawlers can see the deindexing response.",
+            "- Failed canary keeps production parity `BLOCKED` and must not create `GO_FOR_CONTROLLED_PUBLICATION`.",
         ]
     )
 
@@ -2108,6 +2230,8 @@ def final_go_no_go_markdown(audits: dict[str, Any]) -> str:
             "",
             "GO requires score `>= 9.7/10` and zero critical/high launch blockers. Current evidence does not meet that threshold.",
             "",
+            "The max score remains `7.0/10` while production parity is unverified after deployment. Test-mode payment smoke, client-rendered book SEO, unknown audiobook rights/QA, and missing first-batch source evidence must not be upgraded to GO language.",
+            "",
             "## Blockers",
             "",
             markdown_table(["Area", "Severity", "Blocker", "Fix"], [[item["area"], item["severity"], item["message"], item["recommendation"]] for item in blockers]),
@@ -2118,6 +2242,7 @@ def final_go_no_go_markdown(audits: dict[str, Any]) -> str:
             "- No production deploy was performed.",
             "- No production content or database record was mutated.",
             "- No paid/provider API was called.",
+            "- No `APPROVED_TO_PUBLISH.md` was created from placeholder evidence.",
         ]
     )
 

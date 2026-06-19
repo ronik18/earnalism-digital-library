@@ -32,6 +32,11 @@ const REMOVED_PATHS = [
   "/shop",
   "/shop/",
   "/shop/example",
+  "/fashion",
+  "/clothing",
+  "/woocommerce/test",
+  "/sample-product/test",
+  "/placeholder-product/test",
 ];
 
 let fixtureOutputDir;
@@ -122,7 +127,7 @@ describe("Public content governance", () => {
   });
 
   test("removed-content handler returns 410 for known retired demo paths", () => {
-    for (const removedPath of ["/product/patterned-wrap-dress", "/journal/denim-jackets", "/shop", "/shop/", "/shop/example"]) {
+    for (const removedPath of REMOVED_PATHS) {
       const response = callRemovedContent({ path: removedPath });
       expect(response.status).toBe(410);
       expect(response.headers["x-robots-tag"]).toBe("noindex, nofollow, noarchive");
@@ -130,21 +135,32 @@ describe("Public content governance", () => {
     }
   });
 
-  test("shop removed route does not redirect or return a shell locally", () => {
-    const response = callRemovedContent({ path: "/shop" });
-    expect(response.status).not.toBe(200);
-    expect([404, 410]).toContain(response.status);
-    expect(response.headers["x-robots-tag"]).toBe("noindex, nofollow, noarchive");
-    expect(response.body).not.toContain('<div id="root"></div>');
-    expect(response.body).not.toMatch(/Earnalism Digital Library \| Audiobooks, Bengali Books/i);
+  test("shop removed routes do not redirect or return a shell locally", () => {
+    for (const shopPath of ["/shop", "/shop/", "/shop/example"]) {
+      const response = callRemovedContent({ path: shopPath });
+      expect(response.status).not.toBe(200);
+      expect([404, 410]).toContain(response.status);
+      expect(response.headers["x-robots-tag"]).toBe("noindex, nofollow, noarchive");
+      expect(response.body).not.toContain('<div id="root"></div>');
+      expect(response.body).not.toMatch(/Earnalism Digital Library \| Audiobooks, Bengali Books/i);
+    }
   });
 
-  test("patterned-wrap-dress removed route has no generic shell", () => {
-    const response = callRemovedContent({ path: "/product/patterned-wrap-dress" });
-    expect(response.status).toBe(410);
-    expect(response.headers["x-robots-tag"]).toBe("noindex, nofollow, noarchive");
-    expect(response.body).not.toContain('<div id="root"></div>');
-    expect(response.body).not.toMatch(/Earnalism Digital Library \| Audiobooks, Bengali Books/i);
+  test("patterned-wrap-dress removed route returns removed-content without generic shell", () => {
+    for (const removedPath of ["/product/patterned-wrap-dress", "/journal/denim-jackets"]) {
+      const response = callRemovedContent({ path: removedPath });
+      expect(response.status).toBe(410);
+      expect(response.headers["x-robots-tag"]).toBe("noindex, nofollow, noarchive");
+      expect(response.body).not.toContain('<div id="root"></div>');
+      expect(response.body).not.toMatch(/Earnalism Digital Library \| Audiobooks, Bengali Books/i);
+    }
+  });
+
+  test("removed-content responses include the exact X-Robots-Tag", () => {
+    for (const removedPath of REMOVED_PATHS) {
+      const response = callRemovedContent({ path: removedPath });
+      expect(response.headers["x-robots-tag"]).toBe("noindex, nofollow, noarchive");
+    }
   });
 
   test("removed-content handler returns 404 for unknown retired paths", () => {

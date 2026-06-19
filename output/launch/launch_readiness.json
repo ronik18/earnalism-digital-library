@@ -161,6 +161,14 @@
         "matched": "removed-content"
       },
       {
+        "path": "/shop/",
+        "status": 410,
+        "destination": "/api/removed-content?path=/shop/",
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "generic_shell": false,
+        "matched": "removed-content"
+      },
+      {
         "path": "/shop/example",
         "status": 410,
         "destination": "/api/removed-content?path=/shop/:path*",
@@ -230,6 +238,15 @@
       },
       {
         "url": "https://theearnalism.com/shop",
+        "status": 308,
+        "x_robots_tag": "",
+        "content_type": "text/plain",
+        "final_url": "https://theearnalism.com/library",
+        "generic_shell": false,
+        "error": ""
+      },
+      {
+        "url": "https://theearnalism.com/shop/",
         "status": 308,
         "x_robots_tag": "",
         "content_type": "text/plain",
@@ -309,6 +326,13 @@
         "severity": "HIGH",
         "message": "Production /shop returned HTTP 308; /shop must not redirect.",
         "recommendation": "Deploy current Vercel routing so /shop returns 410/noindex.",
+        "blocker": true
+      },
+      {
+        "area": "production_parity",
+        "severity": "HIGH",
+        "message": "Production https://theearnalism.com/shop/ returned redirect HTTP 308.",
+        "recommendation": "Removed/demo URLs must return 410 or 404 with X-Robots-Tag for deindexing.",
         "blocker": true
       }
     ]
@@ -2053,6 +2077,13 @@
         "severity": "HIGH",
         "message": "Production /shop returned HTTP 308; /shop must not redirect.",
         "recommendation": "Deploy current Vercel routing so /shop returns 410/noindex.",
+        "blocker": true
+      },
+      {
+        "area": "production_parity",
+        "severity": "HIGH",
+        "message": "Production https://theearnalism.com/shop/ returned redirect HTTP 308.",
+        "recommendation": "Removed/demo URLs must return 410 or 404 with X-Robots-Tag for deindexing.",
         "blocker": true
       },
       {
