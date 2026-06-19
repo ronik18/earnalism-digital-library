@@ -1,4 +1,6 @@
-# Daily Production Health Report
+# Daily Production Health Report Snapshot
+
+This is a committed sample snapshot from the 2026-06-20 IST owner audit. Recurring daily reports should be generated locally with `npm run owner:daily-growth-audit`, which writes dated artifacts under `output/daily/YYYY-MM-DD/`.
 
 Date: 2026-06-20 IST
 
@@ -45,4 +47,3 @@ No removed route redirected. No removed route served a generic homepage shell.
 - Keep route-canary checks running after every deploy.
 
 Rollback needed today: No.
-

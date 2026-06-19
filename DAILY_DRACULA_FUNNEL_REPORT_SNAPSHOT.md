@@ -1,4 +1,6 @@
-# Daily Dracula Funnel Report
+# Daily Dracula Funnel Report Snapshot
+
+This is a committed sample snapshot from the 2026-06-20 IST owner audit. Recurring daily reports should be generated locally with `npm run owner:daily-growth-audit`, which writes dated artifacts under `output/daily/YYYY-MM-DD/`.
 
 Date: 2026-06-20 IST
 
@@ -56,4 +58,3 @@ This branch adds those labels and keeps audio unavailable.
 Dracula stays live: Yes.
 
 Rollback needed today: No.
-

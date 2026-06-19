@@ -1,4 +1,6 @@
-# Daily Revenue Readiness Report
+# Daily Revenue Readiness Report Snapshot
+
+This is a committed sample snapshot from the 2026-06-20 IST owner audit. Recurring daily reports should be generated locally with `npm run owner:daily-growth-audit`, which writes dated artifacts under `output/daily/YYYY-MM-DD/`.
 
 Date: 2026-06-20 IST
 
@@ -49,4 +51,3 @@ The payment smoke report confirms:
 - Verify post-payment return UX and wallet credit in production after deploy.
 
 Rollback needed today: No.
-

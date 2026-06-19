@@ -137,7 +137,7 @@ export default function Home() {
               A quiet digital reading room for timeless books.
             </p>
             <p className="mt-6 max-w-2xl text-[1rem] font-light leading-[1.8] text-[#F4EFEA]/80">
-              Dracula by Bram Stoker is Earnalism's first approved Tier A core reading release. Read Chapter 1 free, then continue with a reading pass while future titles move through a rights-safe pipeline.
+              The Earnalism controlled launch starts with one approved classic. Read Chapter 1 free. Continue with a 7-day reading pass. More books are coming through the rights-safe pipeline.
             </p>
             <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-[0.74rem] uppercase tracking-[0.16em] text-[#FDFCF8]/90" aria-label="Dracula launch facts">
               <span className="inline-flex items-center gap-2"><ShieldCheck size={14} strokeWidth={1.6} /> {DRACULA_RIGHTS_NOTE}</span>
@@ -168,6 +168,14 @@ export default function Home() {
                 onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "get_7_day_reading_pass" })}
               >
                 Get 7-Day Reading Pass <ArrowRight size={15} strokeWidth={1.7} />
+              </Link>
+              <Link
+                to="/library?category=pipeline"
+                className="btn-link justify-center !text-[#FDFCF8]"
+                data-testid="hero-cta-pipeline"
+                onClick={() => track(DRACULA_CTA_EVENTS.notifyMe, { cta: "explore_pipeline_library" })}
+              >
+                Explore Pipeline / Library <ArrowRight size={15} strokeWidth={1.7} />
               </Link>
             </div>
           </div>

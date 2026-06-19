@@ -22,6 +22,7 @@ describe("UX conversion static signals", () => {
   const library = read("frontend/src/pages/Library.jsx");
   const bookCard = read("frontend/src/components/BookCard.jsx");
   const controlledLaunch = read("frontend/src/lib/controlledLaunch.js");
+  const publicationSafety = read("frontend/src/lib/publicationSafety.js");
   const pricing = read("frontend/src/pages/Pricing.jsx");
   const backend = read("backend/server.py");
   const analytics = read("frontend/src/lib/funnelAnalytics.js");
@@ -29,6 +30,8 @@ describe("UX conversion static signals", () => {
   const readerUpsell = read("frontend/src/components/Funnel/ReaderUpsellPrompt.jsx");
   const reader = read("frontend/src/pages/Reader.jsx");
   const launchAudit = read("scripts/launch_readiness_audit.py");
+  const packageJson = read("package.json");
+  const dailyRunbook = read("DAILY_GROWTH_AUDIT_RUNBOOK.md");
   const header = read("frontend/src/components/Header.jsx");
   const app = read("frontend/src/App.js");
   const renderedPricingSources = [backend, pricing, microStory, readerUpsell, reader].join("\n");
@@ -38,8 +41,15 @@ describe("UX conversion static signals", () => {
     expect(home).toContain('data-testid="hero-cta-pricing"');
     expect(home).toContain("Begin with");
     expect(home).toContain("Dracula");
+    expect(home).toContain("The Earnalism controlled launch starts with one approved classic.");
+    expect(home).toContain("Read Chapter 1 free. Continue with a 7-day reading pass.");
+    expect(home).toContain("More books are coming through the rights-safe pipeline.");
     expect(home).toContain("Read Chapter 1 Free");
+    expect(home).toContain("Start Dracula");
     expect(home).toContain("Get 7-Day Reading Pass");
+    expect(home).toContain("Explore Pipeline / Library");
+    expect(home).not.toContain("A quieter bookstore for readers who linger");
+    expect(home).not.toContain("Preview every book before you pay");
     expect(home).not.toMatch(/\b105 reading rooms open\b/i);
     expect(home).not.toContain("reading rooms open");
   });
@@ -47,6 +57,8 @@ describe("UX conversion static signals", () => {
   test("library and book pages expose only approved Dracula reading paths", () => {
     expect(library).toContain("Live Controlled Release");
     expect(library).toContain("Coming Through the Rights-Safe Pipeline");
+    expect(library).toContain("Dracula is the only live approved core reading release today.");
+    expect(library).toContain("These books are not live products yet. They have Notify Me CTAs only.");
     expect(library).toContain("Read Chapter 1 Free");
     expect(library).toContain("Start Reading");
     expect(library).toContain("Notify Me");
@@ -64,6 +76,17 @@ describe("UX conversion static signals", () => {
     expect(controlledLaunch).toContain("isPipelineCandidate");
     expect(controlledLaunch).toContain("canShowAudioCTA");
     expect(controlledLaunch).toContain("COMING_SOON_PIPELINE");
+    for (const helper of [
+      "isControlledLiveReadingBook",
+      "canShowStartReading",
+      "canShowPreview",
+      "canShowAudioCTA",
+      "isPipelineOnlyBook",
+    ]) {
+      expect(publicationSafety).toContain(`export function ${helper}`);
+    }
+    expect(publicationSafety).toContain("KSHUDHITA_PASHAN_SLUG");
+    expect(publicationSafety).toContain("QA_PASSED");
     expect(bookCard).toContain("Notify Me");
     expect(bookCard).toContain("This title is in the rights-safe pipeline and is not readable yet.");
     expect(bookCard).toContain("isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)");
@@ -174,6 +197,8 @@ describe("UX conversion static signals", () => {
     expect(renderedPricingSources).not.toContain("unlock the ₹49");
     expect(microStory).toContain("continue with The First Chapter — ₹49");
     expect(microStory).toContain("unlock <em>The First Chapter</em> for ₹49");
+    expect(readerUpsell).toContain("The Quiet Hour");
+    expect(readerUpsell).not.toContain("An Evening In");
   });
 
   test("pricing page highlights recommended and best-value packs", () => {
@@ -227,5 +252,15 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain('data-testid="book-load-error"');
     expect(bookDetail).toContain('data-testid="book-not-found"');
     expect(library).toContain('data-testid="library-empty"');
+  });
+
+  test("daily growth audit is a recurring command with snapshot reports", () => {
+    expect(packageJson).toContain("owner:daily-growth-audit");
+    expect(packageJson).toContain("output/daily/$(date +%F)");
+    expect(dailyRunbook).toContain("npm run owner:daily-growth-audit");
+    expect(dailyRunbook).toContain("output/daily/YYYY-MM-DD/");
+    expect(dailyRunbook).toContain("*_SNAPSHOT.md");
+    expect(fs.existsSync(path.join(ROOT, "DAILY_OWNER_GROWTH_REPORT.md"))).toBe(false);
+    expect(fs.existsSync(path.join(ROOT, "DAILY_OWNER_GROWTH_REPORT_SNAPSHOT.md"))).toBe(true);
   });
 });

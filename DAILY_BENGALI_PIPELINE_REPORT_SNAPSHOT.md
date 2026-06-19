@@ -1,4 +1,6 @@
-# Daily Bengali Pipeline Report
+# Daily Bengali Pipeline Report Snapshot
+
+This is a committed sample snapshot from the 2026-06-20 IST owner audit. Recurring daily reports should be generated locally with `npm run owner:daily-growth-audit`, which writes dated artifacts under `output/daily/YYYY-MM-DD/`.
 
 Date: 2026-06-20 IST
 
@@ -44,4 +46,3 @@ Pipeline work may continue only as draft/source/rights/audio-readiness artifacts
 - Add an explicit canary after any Bengali pipeline PR merge to verify no Start Reading or Listen Now CTA appears.
 
 Rollback needed today: No.
-
