@@ -5,6 +5,15 @@ import { api } from "../lib/api";
 import ShareButtons from "../components/ShareButtons";
 import BookCoverImage from "../components/BookCoverImage";
 import JsonLd from "../components/JsonLd";
+import { trackFunnelEvent } from "../lib/funnelAnalytics";
+import {
+  DRACULA_CHAPTER_COUNT,
+  DRACULA_CTA_EVENTS,
+  DRACULA_RIGHTS_NOTE,
+  DRACULA_SOURCE_NOTE,
+  LIVE_APPROVED_SLUG,
+  readingPassUrl,
+} from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
@@ -23,14 +32,19 @@ export default function BookDetail() {
   useSEO({
     title: bookNotFound
       ? "Book not found — The Earnalism Digital Library"
-      : book ? `${book.title} — The Earnalism Digital Library` : "Book — The Earnalism Digital Library",
+      : book?.slug === LIVE_APPROVED_SLUG
+        ? "Dracula by Bram Stoker | Read Chapter 1 Free on Earnalism"
+        : book ? `${book.title} — The Earnalism Digital Library` : "Book — The Earnalism Digital Library",
     description: bookNotFound
       ? "This Earnalism book is no longer available."
-      : book?.short_description || book?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
+      : book?.slug === LIVE_APPROVED_SLUG
+        ? "Preview Dracula by Bram Stoker on Earnalism. Read Chapter 1 free and continue the approved Tier A core reading release with flexible reading-time access."
+        : book?.short_description || book?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
     image: book?.cover_image_url,
     imageAlt: book?.title,
     type: bookNotFound ? "website" : "book",
     robots: shouldNoindex ? "noindex, nofollow" : "index, follow",
+    canonicalPath: book?.slug === LIVE_APPROVED_SLUG ? `/book/${LIVE_APPROVED_SLUG}` : undefined,
   });
 
   useEffect(() => {
@@ -59,12 +73,19 @@ export default function BookDetail() {
     });
   }, [book, loading]);
 
+  useEffect(() => {
+    if (!loading && book?.slug === LIVE_APPROVED_SLUG) {
+      trackFunnelEvent(DRACULA_CTA_EVENTS.bookView, { book: LIVE_APPROVED_SLUG });
+    }
+  }, [book, loading]);
+
   const bookLanguage = book && BENGALI_RE.test(`${book.title || ""} ${book.description || ""} ${book.short_description || ""}`) ? "bn" : "en";
   const rights = book?.rights_metadata || book?.rights || {};
-  const bookSchemaAllowed =
+  const bookSchemaAllowed = book?.slug === LIVE_APPROVED_SLUG || (
     rights?.rights_tier === "A"
     && rights?.verification_status === "approved"
-    && !rights?.blocked_reason;
+    && !rights?.blocked_reason
+  );
   const bookSchema = book && bookSchemaAllowed ? {
     "@context": "https://schema.org",
     "@type": "Book",
@@ -79,6 +100,11 @@ export default function BookDetail() {
     "url": `${SITE_URL}/book/${book.slug}`,
     "mainEntityOfPage": `${SITE_URL}/book/${book.slug}`,
     "numberOfPages": book.page_count || undefined,
+    ...(book.slug === LIVE_APPROVED_SLUG ? {
+      "genre": "Gothic fiction",
+      "isAccessibleForFree": true,
+      "copyrightYear": 1897,
+    } : {}),
   } : null;
 
   if (loading) return <div className="max-w-7xl mx-auto px-6 py-32 text-center text-charcoal-soft">Loading…</div>;
@@ -103,10 +129,12 @@ export default function BookDetail() {
     </div>
   );
 
-  const chapterCount = (book.chapters || []).length;
+  const isDracula = book.slug === LIVE_APPROVED_SLUG;
+  const chapterCount = isDracula ? DRACULA_CHAPTER_COUNT : (book.chapters || []).length;
   const hasExplicitPreview = (book.chapters || []).some((chapter) => chapter.is_preview === true);
   const hasFreePreview = hasExplicitPreview || chapterCount > 1;
-  const startReadingHref = `/pricing?pack=1h&source=book_detail&book=${book.slug}`;
+  const readerHref = `/reader/${book.slug}`;
+  const passHref = readingPassUrl("book_detail");
 
   return (
     <div data-testid="book-page">
@@ -162,6 +190,18 @@ export default function BookDetail() {
           <div className="gold-rule-thin mt-8" />
           <p className="text-charcoal-soft mt-7 leading-[1.85] font-light">{book.description}</p>
 
+          {isDracula && (
+            <div id="rights-note" className="mt-8 rounded-lg border border-brand-soft bg-ivory-warm p-5 sm:p-6" data-testid="dracula-rights-note">
+              <div className="italic-eyebrow mb-3">Controlled release note</div>
+              <div className="grid gap-4 text-sm leading-relaxed text-charcoal-soft sm:grid-cols-2">
+                <p><strong className="text-burgundy">Source:</strong> {DRACULA_SOURCE_NOTE}</p>
+                <p><strong className="text-burgundy">Rights status:</strong> {DRACULA_RIGHTS_NOTE}</p>
+                <p><strong className="text-burgundy">First published:</strong> 1897</p>
+                <p><strong className="text-burgundy">Audio:</strong> Not available yet</p>
+              </div>
+            </div>
+          )}
+
           {/* Reader meta row */}
           <div className="flex items-center gap-8 mt-8 flex-wrap" data-testid="book-meta">
             {chapterCount > 0 && (
@@ -181,9 +221,10 @@ export default function BookDetail() {
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center" data-testid="book-actions">
             {hasFreePreview && (
-              <Link to={`/reader/${book.slug}`} className="btn-secondary justify-center" data-testid="read-preview">Read Preview</Link>
+              <Link to={readerHref} className="btn-secondary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: book.slug, cta: "book_detail_preview" })}>Read Chapter 1 Free</Link>
             )}
-            <Link to={startReadingHref} className="btn-primary justify-center" data-testid="start-reading">Start Reading</Link>
+            <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: book.slug, cta: "book_detail_continue" })}>Continue Reading</Link>
+            <Link to={passHref} className="btn-link justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: book.slug, cta: "book_detail_pass" })}>Get 7-Day Reading Pass</Link>
           </div>
 
           <div className="mt-8" data-testid="book-share">
@@ -263,11 +304,11 @@ export default function BookDetail() {
               sizes="8rem"
             />
           </div>
-          <div className="preview-payment-shell__copy">
-            <div className="italic-eyebrow">Preview, then continue</div>
-            <h2>Open the first pages. Add reading time only when the book has earned your hour.</h2>
+            <div className="preview-payment-shell__copy">
+              <div className="italic-eyebrow">Preview, then continue</div>
+            <h2>Read Chapter 1 free. Add reading time only when Dracula has earned your next hour.</h2>
             <p>
-              Start with the free preview, then move straight into a reading-time pack when you are ready to continue without losing the thread.
+              This controlled launch includes the Dracula core reader only. Audio, study guide, visual edition, ads, email, and social campaigns are not live in this release.
             </p>
             <div className="preview-payment-shell__proof">
               <span><Sparkles size={14} strokeWidth={1.5} /> No subscription</span>
@@ -276,10 +317,10 @@ export default function BookDetail() {
           </div>
           <div className="preview-payment-shell__actions">
             <Link to={`/reader/${book.slug}`} className="btn-secondary w-full justify-center" data-testid="bottom-read-preview">
-              <BookOpen size={15} strokeWidth={1.6} /> Read Preview
+              <BookOpen size={15} strokeWidth={1.6} /> Read Chapter 1 Free
             </Link>
-            <Link to={`/pricing?pack=1h&source=book_preview&book=${book.slug}`} className="btn-primary w-full justify-center" data-testid="bottom-buy-reading-time">
-              <CreditCard size={15} strokeWidth={1.6} /> Buy Reading Time
+            <Link to={readingPassUrl("book_preview")} className="btn-primary w-full justify-center" data-testid="bottom-buy-reading-time">
+              <CreditCard size={15} strokeWidth={1.6} /> Get Reading Pass
             </Link>
             {book.buy_url && (
               <a href={book.buy_url} target="_blank" rel="noreferrer" className="preview-payment-shell__external" data-testid="bottom-external-buy">

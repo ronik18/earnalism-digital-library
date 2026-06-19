@@ -8,6 +8,7 @@ import ReaderUpsellPrompt from '../components/Funnel/ReaderUpsellPrompt';
 import SecureReader from '../components/SecureReader';
 import { trackFunnelEvent } from '../lib/funnelAnalytics';
 import { canShowReaderFinishPrompt, markReaderFinishPromptShown } from '../lib/funnelOffers';
+import { DRACULA_CTA_EVENTS, LIVE_APPROVED_SLUG } from '../lib/controlledLaunch';
 import { useAuth } from '../context/AuthContext';
 import { optimizedImageUrl } from '../lib/images';
 import useSEO from '../hooks/useSEO';
@@ -631,7 +632,10 @@ function isAgenticAiWithPython(book = {}, bookId = '') {
 }
 
 function isNarrationDisabledForBook(book = {}, bookId = '') {
+  if (bookId === LIVE_APPROVED_SLUG || book?.slug === LIVE_APPROVED_SLUG) return true;
   if (isAgenticAiWithPython(book, bookId)) return true;
+  const assets = audiobookAssetsForBook(book);
+  if (book?.audiobook_enabled === false && book?.generate_audiobook === false && !assets?.mp3 && !assets?.timestamps) return true;
   return book?.audiobook_enabled === false
     && book?.generate_audiobook === false
     && (book?.narration_enabled === false || book?.audio_disabled === true);
@@ -967,6 +971,8 @@ export default function Reader() {
   const pulseIntervalRef = useRef(null);
   const scrollContainerRef = useRef(null);
   const completionReportedRef = useRef('');
+  const draculaChapterOneCompleteRef = useRef('');
+  const readerStartedRef = useRef(false);
   const upsellShownRef = useRef('');
   const ttsWarningShownRef = useRef(false);
   const lastReaderActivityRef = useRef(Date.now());
@@ -1240,6 +1246,14 @@ export default function Reader() {
         setCurrentPage(0);
         setTotalWords(countWordsInHtml(safeHtml));
         setLockedState(null);
+        if (bookId === LIVE_APPROVED_SLUG && !readerStartedRef.current) {
+          readerStartedRef.current = true;
+          trackFunnelEvent(DRACULA_CTA_EVENTS.readerStart, {
+            book: LIVE_APPROVED_SLUG,
+            chapter_id: activeChapterId,
+            is_preview: Boolean(gate.is_preview),
+          });
+        }
         timings.render_prepare_ms = Math.round(readerNowMs() - chapterStartedAt - timings.chapter_ms);
 
         if (!isAdminPreview && getUserToken() && !gate.is_preview) {
@@ -1589,6 +1603,17 @@ export default function Reader() {
   useEffect(() => {
     setShowReaderUpsell(false);
   }, [activeChapterId, chapterId]);
+
+  useEffect(() => {
+    if (bookId !== LIVE_APPROVED_SLUG || !chapter || lockedState || loading || effectiveReadProgress < 98 || currentIdx !== 0) return;
+    const currentKey = `${bookId}:${activeChapterId || chapterId || chapter?.id}`;
+    if (draculaChapterOneCompleteRef.current === currentKey) return;
+    draculaChapterOneCompleteRef.current = currentKey;
+    trackFunnelEvent(DRACULA_CTA_EVENTS.chapterOneComplete, {
+      book: LIVE_APPROVED_SLUG,
+      chapter_id: activeChapterId || chapterId || chapter?.id,
+    });
+  }, [activeChapterId, bookId, chapter, chapterId, currentIdx, effectiveReadProgress, loading, lockedState]);
 
   // Funnel prompt appears near the end of short reads only, never mid-paragraph.
   useEffect(() => {

@@ -2,6 +2,7 @@ import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useStat
 import { Link } from "react-router-dom";
 import { BookOpen } from "lucide-react";
 import BookCoverImage from "./BookCoverImage";
+import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
 
 function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks = 0 }) {
   const marqueeRef = useRef(null);
@@ -45,7 +46,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
   );
   activeCountRef.current = liveBooks.length;
   const hasLiveBooks = liveBooks.length > 0;
-  const visibleTotal = Number(totalBooks) > liveBooks.length ? Number(totalBooks) : liveBooks.length;
+  const visibleTotal = liveBooks.filter((book) => book.slug === LIVE_APPROVED_SLUG).length || liveBooks.length;
 
   useEffect(() => {
     pausedRef.current = isPaused;
@@ -287,7 +288,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
     >
       <div className="live-cover-showcase__header">
         <span className="live-cover-showcase__kicker">Live now</span>
-        <span>{visibleTotal} reading rooms open</span>
+        <span>{visibleTotal === 1 ? "1 controlled release open" : `${visibleTotal} controlled releases open`}</span>
       </div>
 
       <div
@@ -327,10 +328,10 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
                 data-testid={isInteractiveCopy ? `live-cover-card-${book.slug}` : undefined}
               >
                 <Link
-                  to={`/reader/${book.slug}`}
+                  to={book.slug === LIVE_APPROVED_SLUG ? `/reader/${book.slug}` : `/book/${LIVE_APPROVED_SLUG}`}
                   tabIndex={isInteractiveCopy ? 0 : -1}
                   className="live-cover-card__link"
-                  aria-label={`Read preview of ${book.title}`}
+                  aria-label={book.slug === LIVE_APPROVED_SLUG ? `Read Chapter 1 of ${book.title}` : `${book.title} is coming soon`}
                   data-testid={isInteractiveCopy ? `live-cover-preview-${book.slug}` : undefined}
                   draggable="false"
                 >
@@ -347,7 +348,7 @@ function LiveCoverShowcase({ books = [], featured, variant = "panel", totalBooks
                       draggable="false"
                     />
                     <span className="live-cover-card__preview">
-                      <BookOpen size={13} strokeWidth={1.6} /> Preview
+                      <BookOpen size={13} strokeWidth={1.6} /> {book.slug === LIVE_APPROVED_SLUG ? "Chapter 1" : "Soon"}
                     </span>
                   </span>
                   <span className="live-cover-card__body">

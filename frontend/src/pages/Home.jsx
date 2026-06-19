@@ -1,86 +1,40 @@
-import { startTransition, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Sparkles, Compass, Feather, Mail, Instagram, Facebook, Youtube, Linkedin, Twitter, CreditCard } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  CheckCircle2,
+  CreditCard,
+  Facebook,
+  Headphones,
+  Instagram,
+  Linkedin,
+  LockKeyhole,
+  Mail,
+  ShieldCheck,
+  Sparkles,
+  Twitter,
+  Youtube,
+} from "lucide-react";
 import { toast } from "sonner";
-import { api, formatError } from "../lib/api";
-import { optimizedImageUrl } from "../lib/images";
 import BookCoverImage from "../components/BookCoverImage";
-import LiveCoverShowcase from "../components/LiveCoverShowcase";
 import { useSettings } from "../context/SettingsContext";
+import { api, formatError } from "../lib/api";
+import { trackFunnelEvent } from "../lib/funnelAnalytics";
+import {
+  DRACULA_CHAPTER_COUNT,
+  DRACULA_CTA_EVENTS,
+  DRACULA_RIGHTS_NOTE,
+  DRACULA_SOURCE_NOTE,
+  LIVE_APPROVED_SLUG,
+  PIPELINE_BOOKS,
+  mergeDraculaBook,
+  notifyUrl,
+  readingPassUrl,
+} from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1920&q=90";
-const FOUNDER_IMG = "https://images.unsplash.com/photo-1773067752075-2cfd37ab02dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
-const WHY_MOTIF_IMG = "/assets/shelves/literary-fiction.jpg";
-const READING_CIRCLE_IMG = "https://images.unsplash.com/photo-1764087957302-ef0756ed8e0a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
-const HERO_BOOK_INITIAL_PAGE_SIZE = 8;
-const HERO_BOOK_PAGE_SIZE = 12;
-const HERO_BOOK_RENDER_LIMIT = 72;
-const SHELF_IMAGES = {
-  "bengali": "/assets/shelves/bengali-classics.jpg",
-  "bengali-reading": "/assets/shelves/bengali-classics.jpg",
-  "bengali-classics": "/assets/shelves/bengali-classics.jpg",
-  "business": "/assets/shelves/business.jpg",
-  "business-entrepreneurship": "/assets/shelves/business.jpg",
-  "history": "/assets/shelves/history-strategy.jpg",
-  "history-politics": "/assets/shelves/history-strategy.jpg",
-  "history-strategy": "/assets/shelves/history-strategy.jpg",
-  "literature": "/assets/shelves/literary-fiction.jpg",
-  "classic-literature": "/assets/shelves/literary-fiction.jpg",
-  "literary-fiction": "/assets/shelves/literary-fiction.jpg",
-  "children-classics": "/assets/shelves/young-readers.jpg",
-  "young-readers": "/assets/shelves/young-readers.jpg",
-  "technology": "/assets/shelves/technology-ai.jpg",
-  "technology-ai": "/assets/shelves/technology-ai.jpg",
-  "adventure": "/assets/shelves/adventure.jpg",
-  "science-fiction": "/assets/shelves/science-fiction.jpg",
-  "gothic-fiction": "/assets/shelves/gothic-fiction.jpg",
-};
-
-function shelfImageFor(category) {
-  const slug = (category?.slug || "").toLowerCase();
-  const name = (category?.name || "").toLowerCase();
-
-  if (SHELF_IMAGES[slug]) return SHELF_IMAGES[slug];
-  if (slug.includes("bengali") || name.includes("bengali")) return SHELF_IMAGES.bengali;
-  if (slug.includes("business") || name.includes("business") || name.includes("entrepreneur")) return SHELF_IMAGES.business;
-  if (slug.includes("history") || slug.includes("politic") || name.includes("history") || name.includes("politic")) return SHELF_IMAGES["history-politics"];
-  if (slug.includes("literary") || slug.includes("literature") || name.includes("literary") || name.includes("literature")) return SHELF_IMAGES["literary-fiction"];
-  if (slug.includes("young") || slug.includes("children") || name.includes("young") || name.includes("children")) return SHELF_IMAGES["young-readers"];
-  if (slug.includes("tech") || name.includes("tech") || name.includes("ai")) return SHELF_IMAGES.technology;
-  if (slug.includes("adventure") || name.includes("adventure")) return SHELF_IMAGES.adventure;
-  if (slug.includes("science") || name.includes("science")) return SHELF_IMAGES["science-fiction"];
-  if (slug.includes("gothic") || name.includes("gothic")) return SHELF_IMAGES["gothic-fiction"];
-
-  return category?.image_url;
-}
-
-const WHY_POINTS = [
-  {
-    icon: Sparkles,
-    title: "Curated slowly",
-    proof: "No shelf sprawl",
-    body: "Each shelf is chosen like a letter to one thoughtful reader: fewer titles, stronger reasons, more room to return.",
-  },
-  {
-    icon: BookOpen,
-    title: "Preview first",
-    proof: "Reader-first buying",
-    body: "Earnalism lets the book introduce itself before purchase, so curiosity can become trust at its own pace.",
-  },
-  {
-    icon: Compass,
-    title: "Built for focus",
-    proof: "Quiet by design",
-    body: "The typography, spacing, and reading path are tuned for calm attention instead of restless browsing.",
-  },
-];
-
-const DESK_NOTES = [
-  { number: "01", title: "Small lists", body: "A tighter catalog makes each recommendation feel earned." },
-  { number: "02", title: "Reader pace", body: "Pages, previews, and shelves are arranged for unhurried decisions." },
-  { number: "03", title: "Useful depth", body: "Classic literature, Bengali writing, business, history, and AI sit beside each other with purpose." },
-];
 
 const SOCIALS = [
   { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
@@ -90,210 +44,54 @@ const SOCIALS = [
   { key: "youtube", label: "YouTube", Icon: Youtube },
 ];
 
-function appendUniqueBooks(existing = [], incoming = [], maxItems = HERO_BOOK_RENDER_LIMIT) {
-  const seen = new Set();
-  const next = [];
-  [...existing, ...incoming].forEach((book) => {
-    const slug = book?.slug || book?.id;
-    if (!slug || seen.has(slug) || next.length >= maxItems) return;
-    seen.add(slug);
-    next.push(book);
-  });
-  return next;
-}
-
-function normalizeBooksPage(payload, fallbackOffset = 0) {
-  if (Array.isArray(payload)) {
-    return {
-      books: payload,
-      pagination: {
-        offset: fallbackOffset,
-        limit: payload.length,
-        count: payload.length,
-        total: payload.length,
-        next_offset: null,
-        has_more: false,
-      },
-    };
-  }
-  const books = payload?.books || [];
-  const pagination = payload?.pagination || payload?.books_page || {};
-  const count = Number(pagination.count ?? books.length) || books.length;
-  const offset = Number(pagination.offset ?? fallbackOffset) || 0;
-  const nextOffset = pagination.next_offset ?? pagination.nextOffset ?? null;
-  return {
-    books,
-    pagination: {
-      offset,
-      limit: Number(pagination.limit ?? books.length) || books.length,
-      count,
-      total: Number(pagination.total ?? books.length) || books.length,
-      next_offset: nextOffset === undefined ? null : nextOffset,
-      has_more: Boolean(pagination.has_more ?? pagination.hasMore ?? nextOffset !== null),
-    },
-  };
-}
-
-function runWhenIdle(task) {
-  if (typeof window === "undefined") return null;
-  if ("requestIdleCallback" in window) {
-    return window.requestIdleCallback(task, { timeout: 1600 });
-  }
-  return window.setTimeout(task, 350);
-}
-
-function cancelIdleTask(id) {
-  if (id == null || typeof window === "undefined") return;
-  if ("cancelIdleCallback" in window) window.cancelIdleCallback(id);
-  else window.clearTimeout(id);
-}
-
-function MotifBackdrop({ image, variant = "library" }) {
-  const isDesk = variant === "desk";
-  const imageTone = isDesk
-    ? "saturate(0.9) brightness(0.68) contrast(1.04)"
-    : "saturate(0.82) brightness(0.62) contrast(1.08)";
-  const veil = isDesk
-    ? "linear-gradient(90deg, rgba(25,8,13,0.94) 0%, rgba(27,11,16,0.9) 48%, rgba(74,28,39,0.7) 100%)"
-    : "linear-gradient(90deg, rgba(22,7,11,0.94) 0%, rgba(34,16,23,0.88) 52%, rgba(58,20,29,0.7) 100%)";
-  const glow = isDesk
-    ? "radial-gradient(ellipse 54% 62% at 78% 44%, rgba(216,185,122,0.18), transparent 70%)"
-    : "radial-gradient(ellipse 58% 58% at 78% 38%, rgba(216,185,122,0.14), transparent 72%)";
-
-  return (
-    <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-      <img
-        src={optimizedImageUrl(image, { width: 1800, quality: 88 })}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className={`h-full w-full object-cover ${isDesk ? "object-[center_52%]" : "object-[center_60%]"}`}
-        style={{ filter: imageTone }}
-      />
-      <div className="absolute inset-0" style={{ background: veil }} />
-      <div className="absolute inset-0" style={{ background: glow }} />
-      <div
-        className="absolute inset-0"
-        style={{ background: "linear-gradient(180deg, rgba(253,252,248,0.05), transparent 28%, rgba(0,0,0,0.22) 100%)" }}
-      />
-      <div className="absolute inset-x-0 top-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(216,185,122,0.54), transparent)" }} />
-      <div className="absolute inset-x-0 bottom-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(216,185,122,0.38), transparent)" }} />
-    </div>
-  );
+function track(event, metadata = {}) {
+  trackFunnelEvent(event, { book: LIVE_APPROVED_SLUG, ...metadata });
 }
 
 export default function Home() {
   const { social } = useSettings();
-  const [categories, setCategories] = useState([]);
-  const [featured, setFeatured] = useState(null);
-  const [liveBooks, setLiveBooks] = useState([]);
-  const [liveBookPage, setLiveBookPage] = useState({
-    offset: 0,
-    limit: HERO_BOOK_INITIAL_PAGE_SIZE,
-    count: 0,
-    total: 0,
-    next_offset: null,
-    has_more: false,
-  });
+  const [dracula, setDracula] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const activeSocials = useMemo(() => SOCIALS.filter((item) => social?.[item.key]), [social]);
+  const liveBook = mergeDraculaBook(dracula);
 
   useSEO({
-    title: "The Earnalism Digital Library — Buy Reading Time. Read Beautifully.",
-    description: "A quiet digital reading room for Bengali classics, literary fiction, young readers, business, technology and AI, history, adventure, science fiction, and gothic fiction.",
-    image: HERO_IMG,
+    title: "Begin with Dracula | The Earnalism Digital Library",
+    description:
+      "Earnalism is live with Dracula as its first approved Tier A core reading release. Read Chapter 1 free, then continue with reading time as more classics move through a rights-safe pipeline.",
+    image: liveBook.cover_image_url || HERO_IMG,
+    imageAlt: "Dracula on Earnalism",
+    canonicalPath: "/",
   });
 
   useEffect(() => {
     const controller = new AbortController();
-
-    async function loadHomePayload() {
-      try {
-        const { data } = await api.get("/home", {
-          params: { books_limit: HERO_BOOK_INITIAL_PAGE_SIZE, books_offset: 0 },
-          signal: controller.signal,
-        });
-        const booksPage = normalizeBooksPage({ books: data?.books || [], pagination: data?.books_page }, 0);
-        setCategories(data?.categories || []);
-        setFeatured(data?.featured?.book || null);
-        setLiveBooks(appendUniqueBooks([], booksPage.books));
-        setLiveBookPage(booksPage.pagination);
-      } catch (err) {
-        if (controller.signal.aborted) return;
-        const [categoryRes, featuredRes, booksRes] = await Promise.allSettled([
-          api.get("/categories", { signal: controller.signal }),
-          api.get("/featured", { signal: controller.signal }),
-          api.get("/home/books", {
-            params: { limit: HERO_BOOK_INITIAL_PAGE_SIZE, offset: 0 },
-            signal: controller.signal,
-          }),
-        ]);
-        if (categoryRes.status === "fulfilled") {
-          setCategories(categoryRes.value.data || []);
-        }
-        if (featuredRes.status === "fulfilled") {
-          setFeatured(featuredRes.value.data?.book || null);
-        }
-        if (booksRes.status === "fulfilled") {
-          const booksPage = normalizeBooksPage(booksRes.value.data, 0);
-          setLiveBooks(appendUniqueBooks([], booksPage.books));
-          setLiveBookPage(booksPage.pagination);
-        }
-      }
-    }
-
-    loadHomePayload().catch(() => {});
+    api.get(`/books/${LIVE_APPROVED_SLUG}`, { signal: controller.signal })
+      .then((response) => setDracula(response.data))
+      .catch(() => setDracula(null));
     return () => controller.abort();
   }, []);
 
-  useEffect(() => {
-    if (!liveBookPage.has_more || liveBookPage.next_offset == null || liveBooks.length >= HERO_BOOK_RENDER_LIMIT) {
-      return undefined;
-    }
-    const controller = new AbortController();
-    const idleId = runWhenIdle(() => {
-      const remainingSlots = Math.max(0, HERO_BOOK_RENDER_LIMIT - liveBooks.length);
-      if (!remainingSlots) return;
-      api.get("/home/books", {
-        params: {
-          limit: Math.min(HERO_BOOK_PAGE_SIZE, remainingSlots),
-          offset: liveBookPage.next_offset,
-        },
-        signal: controller.signal,
-      }).then(({ data }) => {
-        if (controller.signal.aborted) return;
-        const booksPage = normalizeBooksPage(data, liveBookPage.next_offset);
-        startTransition(() => {
-          setLiveBooks((current) => appendUniqueBooks(current, booksPage.books));
-          setLiveBookPage(booksPage.pagination);
-        });
-      }).catch(() => {});
-    });
-
-    return () => {
-      controller.abort();
-      cancelIdleTask(idleId);
-    };
-  }, [liveBookPage.has_more, liveBookPage.next_offset, liveBooks.length]);
-
-  const subscribe = async (e) => {
-    e.preventDefault();
+  const subscribe = async (event) => {
+    event.preventDefault();
     setSubmitting(true);
     try {
       const { data } = await api.post("/newsletter", { name, email });
       toast.success(data.message || "Welcome to the Reading Circle.");
-      setName(""); setEmail("");
+      setName("");
+      setEmail("");
     } catch (err) {
       toast.error(formatError(err.response?.data?.detail));
-    } finally { setSubmitting(false); }
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <div data-testid="home-page">
-      {/* HERO */}
-      <section className="relative isolate overflow-visible">
+      <section className="relative isolate overflow-hidden bg-[#16090d] text-[#FDFCF8]">
         <div className="absolute inset-0 -z-10">
           <img
             src={HERO_IMG}
@@ -301,278 +99,268 @@ export default function Home() {
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="w-full h-full object-cover"
-            style={{ filter: "saturate(1.05) brightness(0.82)" }}
+            className="h-full w-full object-cover"
+            style={{ filter: "saturate(0.9) brightness(0.62)" }}
           />
-          {/* Strong left-side dark gradient so headline + subtext sit on a deep, readable surface */}
-          <div
-            className="absolute inset-0"
-            style={{ background: "linear-gradient(to right, rgba(14,6,8,0.88) 0%, rgba(14,6,8,0.66) 38%, rgba(14,6,8,0.28) 65%, rgba(14,6,8,0.05) 100%)" }}
-          />
-          {/* Subtle top + bottom deepening to ground the masthead and the page transition */}
-          <div
-            className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, rgba(14,6,8,0.45) 0%, transparent 22%, transparent 70%, rgba(14,6,8,0.30) 100%)" }}
-          />
-          {/* Warm amber glow on the upper-right — lifts the library's golden depth */}
-          <div
-            className="absolute inset-0"
-            style={{ background: "radial-gradient(ellipse 55% 55% at 78% 40%, rgba(216,185,122,0.22), transparent 72%)" }}
-          />
-          {/* Soft transition into the page beige */}
-          <div
-            className="absolute inset-x-0 bottom-0 h-1/3"
-            style={{ background: "linear-gradient(to top, #F4EFEA 0%, rgba(244,239,234,0.60) 55%, transparent 100%)" }}
-          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,7,11,0.94)_0%,rgba(32,12,18,0.86)_50%,rgba(32,12,18,0.28)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,#F4EFEA_0%,rgba(244,239,234,0.62)_50%,transparent_100%)]" />
         </div>
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-24 sm:pt-32 lg:pt-36 pb-56 sm:pb-48 lg:pb-52">
-          <div className="max-w-4xl">
-            <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-6 sm:mb-7 flex items-center gap-3" data-testid="hero-overline">
-              <span className="h-px w-8 sm:w-10 bg-[var(--brand-gold)]/70" />
-              <span className="text-[0.85rem] sm:text-[0.95rem]">The Earnalism Digital Library</span>
+
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 pb-24 pt-24 sm:px-8 sm:pt-32 lg:grid-cols-12 lg:px-12 lg:pb-32 lg:pt-36">
+          <div className="lg:col-span-7">
+            <div className="italic-eyebrow mb-6 flex items-center gap-3 text-[var(--brand-gold-soft)]" data-testid="hero-overline">
+              <span className="h-px w-10 bg-[var(--brand-gold)]/70" />
+              <span>Controlled launch release</span>
             </div>
-            <h1 className="font-serif-light text-[2.6rem] sm:text-[3.5rem] md:text-6xl lg:text-7xl leading-[1.04] text-[#FDFCF8] tracking-normal text-balance drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]" data-testid="hero-headline">
-              A quieter bookstore for readers who <span className="italic-accent text-[var(--brand-gold-soft)]">linger.</span>
+            <h1 className="font-serif-light text-[2.8rem] leading-[1.02] tracking-normal text-[#FDFCF8] text-balance sm:text-6xl lg:text-7xl" data-testid="hero-headline">
+              Begin with <span className="italic-accent text-[var(--brand-gold-soft)]">Dracula.</span>
             </h1>
-            <p className="mt-5 sm:mt-6 font-serif-display italic text-lg sm:text-2xl text-[#F4EFEA]/90 max-w-xl leading-snug drop-shadow-[0_1px_18px_rgba(0,0,0,0.5)]">
-              Preview every book before you pay. Read deeply when the day finally slows down.
+            <p className="mt-6 max-w-xl font-serif-display text-xl italic leading-snug text-[#F4EFEA]/90 sm:text-2xl">
+              A quiet digital reading room for timeless books.
             </p>
-            <p className="mt-6 sm:mt-7 text-[0.95rem] sm:text-[1.05rem] text-[#F4EFEA]/80 max-w-md sm:max-w-lg leading-[1.75] font-light drop-shadow-[0_1px_18px_rgba(0,0,0,0.4)]">
-              Discover thoughtful books across Bengali classics, literary fiction, business, technology, history, AI, and imagination. Earnalism keeps the shelves intentional so choosing your next read feels calm.
+            <p className="mt-6 max-w-2xl text-[1rem] font-light leading-[1.8] text-[#F4EFEA]/80">
+              Dracula by Bram Stoker is Earnalism's first approved Tier A core reading release. Read Chapter 1 free, then continue with a reading pass while future titles move through a rights-safe pipeline.
             </p>
-            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-[0.73rem] sm:text-[0.78rem] uppercase tracking-[0.16em] text-[#FDFCF8]/90 drop-shadow-[0_1px_12px_rgba(0,0,0,0.55)]" aria-label="Earnalism reading promises">
-              <span className="inline-flex items-center gap-2"><BookOpen size={14} strokeWidth={1.6} /> Preview before purchase</span>
-              <span className="inline-flex items-center gap-2"><Sparkles size={14} strokeWidth={1.6} /> Curated shelves</span>
-              <span className="inline-flex items-center gap-2"><Compass size={14} strokeWidth={1.6} /> Focused reading</span>
+            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-[0.74rem] uppercase tracking-[0.16em] text-[#FDFCF8]/90" aria-label="Dracula launch facts">
+              <span className="inline-flex items-center gap-2"><ShieldCheck size={14} strokeWidth={1.6} /> {DRACULA_RIGHTS_NOTE}</span>
+              <span className="inline-flex items-center gap-2"><BookOpen size={14} strokeWidth={1.6} /> Chapter 1 free</span>
+              <span className="inline-flex items-center gap-2"><Headphones size={14} strokeWidth={1.6} /> Audio not available yet</span>
             </div>
-            <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center">
-              <Link to="/library" className="btn-primary w-full sm:w-auto gap-2" data-testid="hero-cta-read">
-                <BookOpen size={16} strokeWidth={1.7} className="shrink-0" /> Start Reading
-              </Link>
-              <Link to="/pricing" className="btn-secondary w-full sm:w-auto !text-[#FDFCF8] !border-[var(--brand-gold)] hover:!bg-[var(--brand-gold)]/10" data-testid="hero-cta-pricing">
-                <CreditCard size={15} strokeWidth={1.7} /> Buy Reading Time
-              </Link>
-              <Link to="/library" className="btn-link w-full sm:w-auto !text-[#FDFCF8]" data-testid="hero-cta-library">
-                Explore Library <ArrowRight size={15} strokeWidth={1.7} />
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 translate-y-1/2 z-10">
-          <div className="w-full">
-            <LiveCoverShowcase books={liveBooks} featured={featured} variant="band" totalBooks={liveBookPage.total} />
-          </div>
-        </div>
-      </section>
-
-      {/* CATEGORIES */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-56 sm:pt-44 lg:pt-48 pb-12 sm:pb-16 lg:pb-20" id="collection">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16 lg:mb-20">
-          <div className="max-w-xl">
-            <div className="overline mb-4">The Shelves</div>
-            <h2 className="font-serif-light text-[2.25rem] sm:text-5xl lg:text-[3.5rem] text-burgundy leading-[1.06] tracking-tight">A small library, <span className="italic-accent">carefully kept.</span></h2>
-          </div>
-          <Link to="/library" className="btn-link self-start sm:self-end" data-testid="categories-view-all">View the full library <ArrowRight size={14} /></Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-9">
-          {categories.map((c, i) => {
-            const shelfImage = shelfImageFor(c);
-
-            return (
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap" data-testid="hero-ctas">
               <Link
-                key={c.slug}
-                to={`/library?category=${c.slug}`}
-                className={`card-elegant overflow-hidden group ${i === 0 ? "lg:col-span-2 lg:row-span-2" : ""}`}
-                data-testid={`category-card-${c.slug}`}
+                to={`/reader/${LIVE_APPROVED_SLUG}`}
+                className="btn-primary justify-center gap-2"
+                data-testid="hero-cta-read"
+                onClick={() => track(DRACULA_CTA_EVENTS.homepagePrimary, { cta: "read_chapter_1_free" })}
               >
-                <div className={`relative ${i === 0 ? "aspect-[16/10] lg:aspect-[16/12]" : "aspect-[4/3]"} overflow-hidden`}>
-                  {shelfImage && (
-                    <img src={optimizedImageUrl(shelfImage, { width: i === 0 ? 1200 : 720 })} alt={c.name} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform [transition-duration:1200ms] group-hover:scale-[1.06]" />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#2a1218]/72 via-[#2a1218]/15 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-7 sm:p-9">
-                    <span className="text-[0.65rem] tracking-[0.32em] uppercase text-[var(--brand-gold-soft)]">Shelf · 0{i + 1}</span>
-                    <h3 className={`font-serif-light text-[#FDFCF8] ${i === 0 ? "text-3xl sm:text-[2.5rem] mt-3" : "text-2xl mt-2"} leading-[1.1] tracking-tight`}>{c.name}</h3>
-                    <p className="text-[#F4EFEA]/85 text-[0.92rem] leading-[1.65] mt-3 max-w-md font-light">{c.description}</p>
-                  </div>
-                </div>
+                <BookOpen size={16} strokeWidth={1.7} /> Read Chapter 1 Free
               </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* FEATURED BOOK */}
-      {featured && (
-        <section className="surface-warm border-y border-brand-soft">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 sm:py-28 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
-            <div className="lg:col-span-5">
-              <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft bg-ivory-warm shadow-[0_30px_70px_-30px_rgba(74,28,39,0.4)] max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none lg:mx-0">
-                <BookCoverImage
-                  book={featured}
-                  alt={featured.title}
-                  loading="lazy"
-                  width={560}
-                  widths={[360, 560, 760]}
-                  sizes="(min-width: 1024px) 380px, (min-width: 640px) 52vw, 90vw"
-                />
-              </div>
-            </div>
-            <div className="lg:col-span-7 text-center lg:text-left">
-              <div className="italic-eyebrow mb-4 sm:mb-5">Currently on the table</div>
-              <h2 className="font-serif-light text-[2.25rem] sm:text-5xl lg:text-[3.5rem] text-burgundy leading-[1.06] tracking-tight">{featured.title}</h2>
-              <p className="font-serif-display italic text-lg sm:text-2xl text-burgundy-soft mt-3 sm:mt-4 leading-snug">{featured.subtitle}</p>
-              <div className="gold-rule-thin mt-6 mx-auto lg:mx-0" />
-              <p className="text-charcoal-soft mt-6 sm:mt-7 leading-[1.85] max-w-2xl font-light text-[0.95rem] sm:text-base mx-auto lg:mx-0">{featured.description}</p>
-              <div className="mt-6 flex flex-wrap justify-center gap-4 text-[0.72rem] uppercase tracking-[0.16em] text-charcoal-soft/80 lg:justify-start">
-                <span className="inline-flex items-center gap-2"><BookOpen size={14} strokeWidth={1.6} /> Preview before purchase</span>
-                <span className="inline-flex items-center gap-2"><Sparkles size={14} strokeWidth={1.6} /> Curated selection</span>
-                <span className="inline-flex items-center gap-2"><Compass size={14} strokeWidth={1.6} /> Focused reading room</span>
-              </div>
-              <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
-                <Link to={`/reader/${featured.slug}`} className="btn-primary justify-center" data-testid="featured-preview">
-                  <BookOpen size={16} strokeWidth={1.7} /> Read Preview
-                </Link>
-                <Link to={`/book/${featured.slug}#preview-payment`} className="btn-secondary justify-center" data-testid="featured-payment">
-                  Preview & Pay
-                </Link>
-                <Link to={`/book/${featured.slug}`} className="btn-link justify-center" data-testid="featured-view">
-                  Details <ArrowRight size={14} strokeWidth={1.7} />
-                </Link>
-              </div>
+              <Link
+                to={`/book/${LIVE_APPROVED_SLUG}`}
+                className="btn-secondary justify-center !border-[var(--brand-gold)] !text-[#FDFCF8] hover:!bg-[var(--brand-gold)]/10"
+                data-testid="hero-cta-start-dracula"
+                onClick={() => track(DRACULA_CTA_EVENTS.startReading, { cta: "start_dracula" })}
+              >
+                Start Dracula
+              </Link>
+              <Link
+                to={readingPassUrl("homepage_hero")}
+                className="btn-link justify-center !text-[#FDFCF8]"
+                data-testid="hero-cta-pricing"
+                onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "get_7_day_reading_pass" })}
+              >
+                Get 7-Day Reading Pass <ArrowRight size={15} strokeWidth={1.7} />
+              </Link>
             </div>
           </div>
-        </section>
-      )}
 
-      {/* WHY EARNALISM */}
-      <section className="relative overflow-hidden bg-[#221017] text-[#FDFCF8]">
-        <MotifBackdrop image={WHY_MOTIF_IMG} />
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-end">
-            <div className="lg:col-span-5">
-              <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-4">Why The Earnalism</div>
-              <h2 className="font-serif-light text-[2.35rem] sm:text-5xl lg:text-[3.75rem] leading-[1.03] tracking-normal text-balance">
-                A library that lowers the room's <span className="italic-accent text-[var(--brand-gold-soft)]">volume.</span>
-              </h2>
-              <p className="mt-6 text-[#F4EFEA]/78 leading-[1.8] text-[0.98rem] sm:text-[1.05rem] font-light max-w-xl">
-                After the shelves, the promise stays simple: fewer distractions, richer judgment, and a reading path that lets each book earn its place.
-              </p>
-              <Link to="/library" className="btn-secondary mt-8 !text-[#FDFCF8] !border-[var(--brand-gold-soft)] hover:!bg-[rgba(216,185,122,0.12)]" data-testid="why-library-link">
-                Explore the shelves <ArrowRight size={15} strokeWidth={1.7} />
-              </Link>
-            </div>
-
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
-              {WHY_POINTS.map((point) => (
-                <div key={point.title} className="rounded-lg border border-[#FDFCF8]/15 bg-[#FDFCF8]/[0.06] p-6 sm:p-7 backdrop-blur-sm" data-testid={`why-card-${point.title.toLowerCase().replace(/\s/g, '-')}`}>
-                  <point.icon className="text-[var(--brand-gold-soft)]" size={24} strokeWidth={1.45} />
-                  <div className="mt-8 text-[0.65rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]">{point.proof}</div>
-                  <h3 className="font-serif-display text-[1.55rem] text-[#FDFCF8] mt-3 leading-snug">{point.title}</h3>
-                  <p className="mt-4 text-[#F4EFEA]/72 leading-[1.75] text-[0.9rem] font-light">{point.body}</p>
-                </div>
-              ))}
+          <div className="lg:col-span-5">
+            <div className="rounded-lg border border-[#FDFCF8]/16 bg-[#FDFCF8]/[0.08] p-5 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.7)] backdrop-blur" data-testid="hero-dracula-card">
+              <div className="mx-auto aspect-[3/4] max-w-[280px] overflow-hidden rounded-md border border-[#FDFCF8]/18 bg-[#F4EFEA]">
+                <BookCoverImage book={liveBook} alt="Dracula by Bram Stoker cover" loading="eager" width={420} widths={[300, 420, 640]} sizes="(min-width: 1024px) 280px, 70vw" />
+              </div>
+              <div className="mt-5 text-center">
+                <div className="text-[0.68rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]">Live controlled release</div>
+                <h2 className="mt-2 font-serif-display text-3xl text-[#FDFCF8]">Dracula</h2>
+                <p className="mt-2 text-[0.82rem] uppercase tracking-[0.14em] text-[#F4EFEA]/76">by Bram Stoker</p>
+                <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-[#F4EFEA]/72">
+                  {DRACULA_CHAPTER_COUNT} chapters. Source: {DRACULA_SOURCE_NOTE}. Audio is not available yet.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FOUNDER NOTE */}
-      <section className="bg-[#FDFCF8]">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-6">
-            <div className="relative overflow-hidden rounded-lg border border-brand-soft bg-[#221017] aspect-[5/4] sm:aspect-[16/11] lg:aspect-[4/5]">
-              <img src={optimizedImageUrl(FOUNDER_IMG, { width: 940 })} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2a1218]/55 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#FDFCF8]/35 bg-[#2a1218]/50 px-4 py-2 text-[0.65rem] uppercase tracking-[0.2em] text-[#FDFCF8] backdrop-blur">
-                  <Feather size={13} strokeWidth={1.6} /> From the desk
-                </div>
-              </div>
+      <section className="surface-warm border-y border-brand-soft" data-testid="controlled-carousel-section">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-12">
+          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <div className="overline mb-3">Launch carousel</div>
+              <h2 className="font-serif-light text-4xl leading-tight text-burgundy sm:text-5xl">One live room. More are in review.</h2>
             </div>
+            <span className="text-sm leading-relaxed text-charcoal-soft">No autoplay. No fake book count. Only Dracula has reading CTAs.</span>
           </div>
-          <div className="lg:col-span-6">
-            <div className="italic-eyebrow mb-4 sm:mb-5">A note from the desk</div>
-            <h2 className="font-serif-light text-[2.25rem] sm:text-5xl lg:text-[3.55rem] text-burgundy leading-[1.04] tracking-normal text-balance">
-              A bookstore for the reader who still believes in <span className="italic-accent">depth.</span>
-            </h2>
-            <p className="text-charcoal-soft mt-6 sm:mt-7 leading-[1.85] text-[0.98rem] sm:text-[1.03rem] max-w-2xl font-light">
-              The Earnalism began as a quiet rebellion against noisy bookshelves. A book is a long conversation: patient, particular, and worth the careful season it takes to write. The list stays small because the standard stays generous.
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-3" role="list" aria-label="Dracula controlled launch slides">
+            <CarouselSlide
+              icon={BookOpen}
+              eyebrow="Slide 1"
+              title="Dracula by Bram Stoker"
+              body="Live controlled release. Chapter 1 is free, and the core reading journey continues through reading time."
+              primary={{ label: "Read Chapter 1 Free", to: `/reader/${LIVE_APPROVED_SLUG}`, event: DRACULA_CTA_EVENTS.previewStart }}
+              secondary={{ label: "Start Dracula", to: `/book/${LIVE_APPROVED_SLUG}`, event: DRACULA_CTA_EVENTS.startReading }}
+            />
+            <CarouselSlide
+              icon={ShieldCheck}
+              eyebrow="Slide 2"
+              title="Rights-safe source"
+              body={`Source: ${DRACULA_SOURCE_NOTE}. This launch is scoped to the approved core reading candidate only.`}
+              primary={{ label: "View source note", to: `/book/${LIVE_APPROVED_SLUG}#rights-note`, event: DRACULA_CTA_EVENTS.bookView }}
+            />
+            <CarouselSlide
+              icon={Sparkles}
+              eyebrow="Slide 3"
+              title="7-Day Dracula Reading Path"
+              body="The reading path is being prepared as a guided layer. The live product today is the Dracula core reader."
+              primary={{ label: "Notify Me", to: notifyUrl("dracula-reading-path"), event: DRACULA_CTA_EVENTS.notifyMe }}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-12" data-testid="dracula-shelves">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <div className="overline mb-4">Live Controlled Release</div>
+            <h2 className="font-serif-light text-4xl leading-tight text-burgundy sm:text-5xl">Dracula is the only open reading room.</h2>
+            <p className="mt-5 text-charcoal-soft leading-[1.85]">
+              Earnalism is live, but intentionally narrow: one approved Tier A classic, one core reading experience, and a visible rights trail.
             </p>
-            <div className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-3 border-y border-brand-soft">
-              {DESK_NOTES.map((note, i) => (
-                <div key={note.title} className={`py-6 sm:px-5 ${i > 0 ? "border-t sm:border-t-0 sm:border-l border-brand-soft" : ""}`}>
-                  <div className="text-[0.68rem] tracking-[0.24em] uppercase text-gold-deep">{note.number}</div>
-                  <h3 className="font-serif-display text-[1.35rem] text-burgundy mt-3 leading-snug">{note.title}</h3>
-                  <p className="text-charcoal-soft text-[0.88rem] leading-[1.65] mt-3 font-light">{note.body}</p>
+          </div>
+          <div className="lg:col-span-7">
+            <div className="card-elegant p-7 sm:p-9" data-testid="home-live-dracula">
+              <div className="flex flex-col gap-7 sm:flex-row">
+                <div className="w-full max-w-[180px] shrink-0 overflow-hidden rounded-md border border-brand-soft bg-ivory-warm">
+                  <BookCoverImage book={liveBook} alt="Dracula cover" loading="lazy" width={320} widths={[220, 320, 480]} sizes="180px" />
                 </div>
-              ))}
+                <div className="min-w-0 flex-1">
+                  <span className="overline">Gothic fiction</span>
+                  <h3 className="mt-3 font-serif-display text-3xl leading-tight text-burgundy">Dracula</h3>
+                  <p className="mt-2 text-[0.85rem] uppercase tracking-[0.14em] text-charcoal-soft">by Bram Stoker</p>
+                  <ul className="mt-5 grid gap-2 text-sm leading-relaxed text-charcoal-soft sm:grid-cols-2">
+                    <li className="inline-flex gap-2"><CheckCircle2 size={16} className="mt-0.5 text-gold" /> 27 chapters</li>
+                    <li className="inline-flex gap-2"><CheckCircle2 size={16} className="mt-0.5 text-gold" /> Chapter 1 free</li>
+                    <li className="inline-flex gap-2"><CheckCircle2 size={16} className="mt-0.5 text-gold" /> Tier A approved</li>
+                    <li className="inline-flex gap-2"><LockKeyhole size={16} className="mt-0.5 text-gold" /> Audio not available yet</li>
+                  </ul>
+                  <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                    <Link to={`/reader/${LIVE_APPROVED_SLUG}`} className="btn-secondary justify-center" data-testid="home-dracula-preview" onClick={() => track(DRACULA_CTA_EVENTS.previewStart, { cta: "live_shelf_preview" })}>
+                      Read Chapter 1 Free
+                    </Link>
+                    <Link to={`/book/${LIVE_APPROVED_SLUG}`} className="btn-primary justify-center" data-testid="home-dracula-start" onClick={() => track(DRACULA_CTA_EVENTS.startReading, { cta: "live_shelf_start" })}>
+                      Start Reading
+                    </Link>
+                    <Link to={readingPassUrl("home_live_shelf")} className="btn-link justify-center" data-testid="home-dracula-pass" onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "live_shelf_pass" })}>
+                      Get Reading Pass <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-14 border-t border-brand-soft pt-12">
+          <div className="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <div className="overline mb-3">Coming Through The Rights-Safe Pipeline</div>
+              <h2 className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">Future rooms are visible, not readable yet.</h2>
+            </div>
+            <p className="max-w-md text-sm leading-relaxed text-charcoal-soft">Pipeline titles have no reader links until their approval packet is complete.</p>
+          </div>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4" data-testid="pipeline-books">
+            {PIPELINE_BOOKS.map((book) => (
+              <article key={book.slug} className="card-elegant p-6" data-testid={`pipeline-card-${book.slug}`}>
+                <div className="overline">{book.category_slug.replace(/-/g, " ")}</div>
+                <h3 className="mt-4 min-h-[4rem] font-serif-display text-[1.55rem] leading-tight text-burgundy">{book.title}</h3>
+                <p className="mt-3 text-[0.78rem] uppercase tracking-[0.14em] text-charcoal-soft">by {book.author}</p>
+                <p className="mt-5 text-sm leading-relaxed text-charcoal-soft">{book.statusLabel}. Coming Soon.</p>
+                <Link
+                  to={notifyUrl(book.slug)}
+                  className="mt-6 inline-flex rounded-full border border-[var(--brand-gold)] px-4 py-2 text-[0.68rem] uppercase tracking-[0.2em] text-burgundy transition-colors hover:bg-[var(--brand-gold)]/10"
+                  data-testid={`pipeline-notify-${book.slug}`}
+                  onClick={() => track(DRACULA_CTA_EVENTS.notifyMe, { future_title: book.slug })}
+                >
+                  Notify Me
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="card-elegant p-7 sm:p-9" data-testid="reading-path-draft">
+            <div className="overline mb-3">Reading Paths</div>
+            <h3 className="font-serif-display text-3xl text-burgundy">Dracula 7-Day Reading Path</h3>
+            <p className="mt-5 text-charcoal-soft leading-[1.8]">The guided path is in draft. The live release today is the core Dracula reader.</p>
+            <Link to={notifyUrl("dracula-reading-path")} className="btn-secondary mt-7" onClick={() => track(DRACULA_CTA_EVENTS.notifyMe, { future_title: "dracula-reading-path" })}>
+              Notify Me
+            </Link>
+          </div>
+          <div className="card-elegant p-7 sm:p-9" data-testid="audiobook-unavailable">
+            <div className="overline mb-3">Audiobooks</div>
+            <h3 className="font-serif-display text-3xl text-burgundy">Audio is being prepared through QA.</h3>
+            <p className="mt-5 text-charcoal-soft leading-[1.8]">Dracula audiobook is not available yet. There are no play buttons, waveforms, or audiobook CTAs in this launch.</p>
           </div>
         </div>
       </section>
 
-      {/* NEWSLETTER */}
       <section className="relative overflow-hidden bg-[#1b0b10] text-[#FDFCF8]">
-        <MotifBackdrop image={READING_CIRCLE_IMG} variant="desk" />
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-6">
-              <div className="italic-eyebrow text-[var(--brand-gold-soft)] mb-4">From the Editor's Desk</div>
-              <h2 className="font-serif-light text-[2.25rem] sm:text-5xl lg:text-[3.6rem] tracking-normal leading-[1.04] text-balance">
-                Join the Earnalism <span className="italic-accent text-[var(--brand-gold-soft)]">Reading Circle.</span>
-              </h2>
-              <p className="text-[#F4EFEA]/76 mt-6 leading-[1.8] max-w-xl font-light text-[0.98rem] sm:text-[1.03rem]">
-                Receive thoughtful book notes, new shelf arrivals, and curated reading recommendations written with the care of a private letter.
-              </p>
-              {activeSocials.length > 0 && (
-                <nav className="mt-9" aria-label="Earnalism social links" data-testid="home-socials">
-                  <div className="text-[0.64rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]/90">Follow the marginalia</div>
-                  <div className="mt-4 flex flex-wrap items-center gap-3">
-                    {activeSocials.map(({ key, label, Icon }) => (
-                      <a
-                        key={key}
-                        href={social[key]}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Visit Earnalism on ${label}`}
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#FDFCF8]/18 bg-[#FDFCF8]/[0.045] text-[#F4EFEA]/78 transition-colors duration-300 hover:border-[var(--brand-gold-soft)]/70 hover:bg-[rgba(216,185,122,0.1)] hover:text-[var(--brand-gold-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand-gold-soft)]"
-                        data-testid={`home-social-${key}`}
-                      >
-                        <Icon size={17} strokeWidth={1.55} aria-hidden="true" />
-                      </a>
-                    ))}
-                  </div>
-                </nav>
-              )}
-            </div>
-            <form onSubmit={subscribe} className="lg:col-span-6 rounded-lg border border-[#FDFCF8]/16 bg-[#FDFCF8]/[0.06] p-6 sm:p-8 lg:p-10 backdrop-blur-sm" data-testid="newsletter-card">
-              <div className="flex items-center gap-3 text-[0.68rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]">
-                <Mail size={15} strokeWidth={1.6} /> Private dispatch
-              </div>
-              <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-                <input
-                  required value={name} onChange={(e) => setName(e.target.value)}
-                  placeholder="Your name" className="input-elegant !text-[#FDFCF8] !border-b-[#FDFCF8]/30 placeholder:!text-[#FDFCF8]/45" data-testid="newsletter-name"
-                />
-                <input
-                  required type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email" className="input-elegant !text-[#FDFCF8] !border-b-[#FDFCF8]/30 placeholder:!text-[#FDFCF8]/45" data-testid="newsletter-email"
-                />
-                <div className="sm:col-span-2 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between mt-3">
-                  <p className="text-[#F4EFEA]/58 text-[0.78rem] leading-[1.6] font-light max-w-sm">
-                    Quiet notes only. No noisy campaign rhythm.
-                  </p>
-                  <button disabled={submitting} type="submit" className="btn-primary w-full sm:w-auto justify-center !bg-[var(--brand-gold-soft)] !border-[var(--brand-gold-soft)] !text-[#241016] hover:!bg-[var(--brand-gold)] disabled:opacity-60" data-testid="newsletter-submit">
-                    {submitting ? "Joining…" : "Join the Circle"}
-                  </button>
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:px-12 lg:py-24">
+          <div className="lg:col-span-6">
+            <div className="italic-eyebrow mb-4 text-[var(--brand-gold-soft)]">Reading Circle</div>
+            <h2 className="font-serif-light text-4xl leading-tight sm:text-5xl">Follow the controlled launch.</h2>
+            <p className="mt-6 max-w-xl text-[#F4EFEA]/76 leading-[1.8]">
+              Receive Dracula reading notes and updates as future classics move from rights review to controlled release.
+            </p>
+            {activeSocials.length > 0 && (
+              <nav className="mt-9" aria-label="Earnalism social links" data-testid="home-socials">
+                <div className="text-[0.64rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]/90">Follow Earnalism</div>
+                <div className="mt-4 flex flex-wrap items-center gap-3">
+                  {activeSocials.map(({ key, label, Icon }) => (
+                    <a
+                      key={key}
+                      href={social[key]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit Earnalism on ${label}`}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#FDFCF8]/18 bg-[#FDFCF8]/[0.045] text-[#F4EFEA]/78 transition-colors duration-300 hover:border-[var(--brand-gold-soft)]/70 hover:bg-[rgba(216,185,122,0.1)] hover:text-[var(--brand-gold-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand-gold-soft)]"
+                      data-testid={`home-social-${key}`}
+                    >
+                      <Icon size={17} strokeWidth={1.55} aria-hidden="true" />
+                    </a>
+                  ))}
                 </div>
-              </div>
-            </form>
+              </nav>
+            )}
           </div>
+          <form onSubmit={subscribe} className="rounded-lg border border-[#FDFCF8]/16 bg-[#FDFCF8]/[0.06] p-6 backdrop-blur-sm sm:p-8 lg:col-span-6 lg:p-10" data-testid="newsletter-card">
+            <div className="flex items-center gap-3 text-[0.68rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]">
+              <Mail size={15} strokeWidth={1.6} /> Private dispatch
+            </div>
+            <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <input required value={name} onChange={(event) => setName(event.target.value)} placeholder="Your name" className="input-elegant !border-b-[#FDFCF8]/30 !text-[#FDFCF8] placeholder:!text-[#FDFCF8]/45" data-testid="newsletter-name" />
+              <input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Your email" className="input-elegant !border-b-[#FDFCF8]/30 !text-[#FDFCF8] placeholder:!text-[#FDFCF8]/45" data-testid="newsletter-email" />
+            </div>
+            <button type="submit" disabled={submitting} className="btn-primary mt-8 w-full justify-center" data-testid="newsletter-submit">
+              {submitting ? "Joining..." : "Join the Reading Circle"}
+            </button>
+          </form>
         </div>
       </section>
     </div>
+  );
+}
+
+function CarouselSlide({ icon: Icon, eyebrow, title, body, primary, secondary }) {
+  return (
+    <article className="card-elegant flex min-h-[20rem] flex-col p-7" role="listitem">
+      <Icon size={25} strokeWidth={1.55} className="text-gold" aria-hidden="true" />
+      <div className="overline mt-7">{eyebrow}</div>
+      <h3 className="mt-4 font-serif-display text-3xl leading-tight text-burgundy">{title}</h3>
+      <p className="mt-5 flex-1 text-charcoal-soft leading-[1.75]">{body}</p>
+      <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+        {primary && (
+          <Link to={primary.to} className="btn-secondary justify-center" data-testid={`carousel-${primary.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} onClick={() => track(primary.event, { cta: primary.label })}>
+            {primary.label}
+          </Link>
+        )}
+        {secondary && (
+          <Link to={secondary.to} className="btn-link justify-center" onClick={() => track(secondary.event, { cta: secondary.label })}>
+            {secondary.label} <ArrowRight size={14} />
+          </Link>
+        )}
+      </div>
+    </article>
   );
 }

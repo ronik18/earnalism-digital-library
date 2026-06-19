@@ -2,11 +2,21 @@ import { Link } from "react-router-dom";
 import { Clock } from "lucide-react";
 import { memo } from "react";
 import BookCoverImage from "./BookCoverImage";
+import { DRACULA_CTA_EVENTS, bookLaunchStatus, notifyUrl, readingPassUrl } from "../lib/controlledLaunch";
+import { trackFunnelEvent } from "../lib/funnelAnalytics";
 
 function BookCard({ book, priority = false }) {
+  const status = bookLaunchStatus(book);
+  const isLiveApproved = status === "LIVE_APPROVED";
+  const statusLabel = isLiveApproved ? "Live controlled release" : "Coming Soon";
+
+  const track = (event, metadata = {}) => {
+    trackFunnelEvent(event, { book: book.slug, ...metadata });
+  };
+
   return (
-    <div className="card-elegant overflow-hidden flex flex-col group" data-testid={`book-card-${book.slug}`}>
-      <Link to={`/book/${book.slug}`} className="block aspect-[3/4] bg-ivory-warm overflow-hidden relative">
+    <div className="card-elegant overflow-hidden flex flex-col group" data-testid={`book-card-${book.slug}`} data-launch-status={status}>
+      <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className="block aspect-[3/4] bg-ivory-warm overflow-hidden relative">
         <BookCoverImage
           book={book}
           alt={book.title}
@@ -19,8 +29,8 @@ function BookCard({ book, priority = false }) {
         />
       </Link>
       <div className="p-7 sm:p-8 flex flex-col gap-3 flex-1">
-        <span className="overline">{book.category_slug?.replace(/-/g, ' ')}</span>
-        <Link to={`/book/${book.slug}`} className="group/title">
+        <span className="overline">{statusLabel}</span>
+        <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className="group/title">
           <h3 className="font-serif-display text-[1.55rem] sm:text-[1.65rem] text-burgundy leading-[1.15] group-hover/title:text-burgundy-soft transition-colors">{book.title}</h3>
         </Link>
         {book.author && (
@@ -34,10 +44,40 @@ function BookCard({ book, priority = false }) {
             <Clock size={12} strokeWidth={1.5} /> {book.estimated_reading_time}
           </div>
         )}
-        <div className="mt-auto flex flex-col sm:flex-row gap-2 sm:gap-3 pt-5 border-t border-brand-soft">
-          <Link to={`/reader/${book.slug}`} className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase text-burgundy border border-[var(--brand-gold)] hover:bg-[var(--brand-gold)]/10 transition-colors" data-testid={`card-preview-${book.slug}`}>Read Preview</Link>
-          <Link to={`/reader/${book.slug}`} className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-burgundy text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors" data-testid={`card-start-${book.slug}`}>Start Reading</Link>
-        </div>
+        {isLiveApproved ? (
+          <div className="mt-auto flex flex-col sm:flex-row gap-2 sm:gap-3 pt-5 border-t border-brand-soft">
+            <Link
+              to={`/reader/${book.slug}`}
+              className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase text-burgundy border border-[var(--brand-gold)] hover:bg-[var(--brand-gold)]/10 transition-colors"
+              data-testid={`card-preview-${book.slug}`}
+              onClick={() => track(DRACULA_CTA_EVENTS.previewStart, { cta: "book_card_preview" })}
+            >
+              Read Chapter 1
+            </Link>
+            <Link
+              to={readingPassUrl("book_card")}
+              className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-burgundy text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
+              data-testid={`card-start-${book.slug}`}
+              onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "book_card_pass" })}
+            >
+              Reading Pass
+            </Link>
+          </div>
+        ) : (
+          <div className="mt-auto pt-5 border-t border-brand-soft">
+            <p className="text-xs leading-relaxed text-charcoal-soft">
+              This title is in the rights-safe pipeline and is not readable yet.
+            </p>
+            <Link
+              to={notifyUrl(book.slug)}
+              className="mt-4 inline-flex w-full items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase text-burgundy border border-[var(--brand-gold)] hover:bg-[var(--brand-gold)]/10 transition-colors"
+              data-testid={`card-notify-${book.slug}`}
+              onClick={() => track(DRACULA_CTA_EVENTS.notifyMe, { future_title: book.slug })}
+            >
+              Notify Me
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

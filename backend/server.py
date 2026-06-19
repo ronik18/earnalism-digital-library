@@ -221,6 +221,13 @@ _health_cache: dict = {"expires_at": 0.0, "payload": None}
 _public_cache_generation = 0
 _shutdown_state: dict = {"draining": False, "inflight": 0}
 
+# Controlled-launch public truth gate. The production database can contain
+# older published records, but the public launch surface must expose only the
+# rights-approved Tier A core reading candidate until the next approval packet
+# is intentionally merged.
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "dracula-first-v1"
+CONTROLLED_LIVE_BOOK_SLUGS = ("dracula",)
+
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
 # amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
 PACKS: List[dict] = [
@@ -946,7 +953,36 @@ def _public_cache_storage_key(generation: int, key: str) -> str:
 
 
 def _public_cache_key(scope: str, **params) -> str:
-    return f"{scope}:{_json.dumps(params, sort_keys=True, ensure_ascii=True, default=str)}"
+    payload = {
+        "truth_gate": CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION,
+        **params,
+    }
+    return f"{scope}:{_json.dumps(payload, sort_keys=True, ensure_ascii=True, default=str)}"
+
+
+def _controlled_public_book_query(extra: Optional[dict] = None) -> dict:
+    query: dict = {
+        "slug": {"$in": list(CONTROLLED_LIVE_BOOK_SLUGS)},
+        "is_published": True,
+        "rights_metadata.rights_tier": "A",
+        "rights_metadata.verification_status": "approved",
+        "$or": [
+            {"rights_metadata.blocked_reason": {"$exists": False}},
+            {"rights_metadata.blocked_reason": None},
+            {"rights_metadata.blocked_reason": ""},
+        ],
+    }
+    if extra:
+        for key, value in extra.items():
+            if key == "$or":
+                query["$and"] = [{"$or": query.pop("$or")}, {"$or": value}]
+            else:
+                query[key] = value
+    return query
+
+
+def _is_controlled_public_slug(slug: str) -> bool:
+    return slug in CONTROLLED_LIVE_BOOK_SLUGS
 
 
 async def _public_cache_generation_value() -> int:
@@ -1159,12 +1195,14 @@ async def _invalidate_user_cache(user_id: str, *, session_ids: Optional[List[str
 
 
 async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> Optional[dict]:
+    if not admin_preview and not _is_controlled_public_slug(slug):
+        return None
     generation = await _reader_content_cache_generation_value()
-    cache_key = f"book-access:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
+    cache_key = f"book-access:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
     cached = await _redis_cache_get("reader-content", cache_key)
     if cached is not None:
         return cached
-    query = {"slug": slug} if admin_preview else {"slug": slug, "is_published": True}
+    query = {"slug": slug} if admin_preview else _controlled_public_book_query({"slug": slug})
     doc = await db.books.find_one(
         query,
         {"_id": 0, "title": 1, "is_published": 1, "chapters.id": 1, "chapters.title": 1, "chapters.order": 1, "chapters.is_preview": 1},
@@ -1175,12 +1213,14 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
 
 
 async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: bool = False) -> str:
+    if not admin_preview and not _is_controlled_public_slug(slug):
+        return ""
     generation = await _reader_content_cache_generation_value()
-    cache_key = f"chapter-content:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
+    cache_key = f"chapter-content:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
     cached = await _redis_cache_get("reader-content", cache_key)
     if cached is not None:
         return str(cached or "")
-    query = {"slug": slug} if admin_preview else {"slug": slug, "is_published": True}
+    query = {"slug": slug} if admin_preview else _controlled_public_book_query({"slug": slug})
     content_doc = await db.books.find_one(
         {**query, "chapters.id": chapter_id},
         {"_id": 0, "chapters.$": 1},
@@ -1304,13 +1344,15 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
 
 
 async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -> Optional[dict]:
+    if not admin_preview and not _is_controlled_public_slug(slug):
+        return None
     generation = await _reader_content_cache_generation_value()
-    cache_key = f"book-manifest:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
+    cache_key = f"book-manifest:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}"
     cached = await _redis_cache_get("reader-manifest", cache_key)
     if cached is not None:
         return cached
 
-    query = {"slug": slug} if admin_preview else {"slug": slug, "is_published": True}
+    query = {"slug": slug} if admin_preview else _controlled_public_book_query({"slug": slug})
     doc = await db.books.find_one(query, {"_id": 0, "rights_metadata": 0})
     if not doc:
         return None
@@ -3444,12 +3486,12 @@ async def get_home_payload(books_limit: Optional[int] = None, books_offset: int 
     featured_book = None
     setting = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
     featured_slug = (setting or {}).get("book_slug")
-    if featured_slug:
-        doc = await db.books.find_one(
-            {"slug": featured_slug, "is_published": True},
-            BOOK_METADATA_PROJECTION,
-        )
-        featured_book = _strip_all_chapter_content(doc) if doc else None
+    featured_candidate = featured_slug if featured_slug in CONTROLLED_LIVE_BOOK_SLUGS else CONTROLLED_LIVE_BOOK_SLUGS[0]
+    doc = await db.books.find_one(
+        _controlled_public_book_query({"slug": featured_candidate}),
+        BOOK_METADATA_PROJECTION,
+    )
+    featured_book = _strip_all_chapter_content(doc) if doc else None
 
     result = {
         "categories": categories,
@@ -3477,7 +3519,7 @@ async def _home_books_page(limit: int, offset: int = 0, *, maximum: int = HOME_B
     if cached is not None:
         return cached
 
-    query = {"is_published": True}
+    query = _controlled_public_book_query()
     cursor = (
         db.books.find(query, BOOK_SUMMARY_PROJECTION)
         .sort("created_at", -1)
@@ -3583,13 +3625,13 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    query: dict = {"is_published": True}
+    extra_query: dict = {}
     if category_filter:
-        query["category_slug"] = category_filter
+        extra_query["category_slug"] = category_filter
     q_norm = normalize_text(q).strip() if q else ""
     if q_norm:
         pattern = re.escape(q_norm)
-        query["$or"] = [
+        extra_query["$or"] = [
             {"title": {"$regex": pattern, "$options": "i"}},
             {"subtitle": {"$regex": pattern, "$options": "i"}},
             {"author": {"$regex": pattern, "$options": "i"}},
@@ -3598,6 +3640,7 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
             {"category_slug": {"$regex": pattern, "$options": "i"}},
             {"chapters.title": {"$regex": pattern, "$options": "i"}},
         ]
+    query = _controlled_public_book_query(extra_query)
     docs = await db.books.find(query, BOOK_SUMMARY_PROJECTION).sort("created_at", -1).to_list(500)
     # Public list is shelf metadata-only so library browsing never ships chapter bodies.
     result = [_strip_all_chapter_content(d) for d in docs]
@@ -3610,7 +3653,9 @@ async def get_book(slug: str):
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    doc = await db.books.find_one({"slug": slug, "is_published": True}, BOOK_METADATA_PROJECTION)
+    if not _is_controlled_public_slug(slug):
+        raise HTTPException(status_code=404, detail="Book not found")
+    doc = await db.books.find_one(_controlled_public_book_query({"slug": slug}), BOOK_METADATA_PROJECTION)
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
     # Public detail returns metadata + ToC only. Reader content is fetched through
@@ -3626,7 +3671,9 @@ async def get_book_chapters(slug: str):
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    doc = await db.books.find_one({"slug": slug, "is_published": True}, BOOK_METADATA_PROJECTION)
+    if not _is_controlled_public_slug(slug):
+        raise HTTPException(status_code=404, detail="Book not found")
+    doc = await db.books.find_one(_controlled_public_book_query({"slug": slug}), BOOK_METADATA_PROJECTION)
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
     chapters = _strip_all_chapter_content(doc).get("chapters") or []
@@ -3643,7 +3690,9 @@ async def get_book_chapter(slug: str, chapter_id: str):
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    book_meta = await db.books.find_one({"slug": slug, "is_published": True}, READER_ACCESS_PROJECTION)
+    if not _is_controlled_public_slug(slug):
+        raise HTTPException(status_code=404, detail="Book not found")
+    book_meta = await db.books.find_one(_controlled_public_book_query({"slug": slug}), READER_ACCESS_PROJECTION)
     if not book_meta:
         raise HTTPException(status_code=404, detail="Book not found")
     chapters = sorted((book_meta.get("chapters") or []), key=lambda c: c.get("order", 0))
@@ -3655,7 +3704,7 @@ async def get_book_chapter(slug: str, chapter_id: str):
     chapter["content"] = ""
     if _is_free_preview_chapter(book_meta, chapter_id):
         content_doc = await db.books.find_one(
-            {"slug": slug, "is_published": True, "chapters.id": chapter_id},
+            {**_controlled_public_book_query({"slug": slug}), "chapters.id": chapter_id},
             CHAPTER_CONTENT_PROJECTION,
         )
         target = ((content_doc or {}).get("chapters") or [{}])[0]
@@ -3701,11 +3750,12 @@ async def get_featured():
     if cached is not None:
         return cached
     s = await db.settings.find_one({"key": "featured_book"}, {"_id": 0})
-    if not s:
-        result = {"book": None}
-        await _public_cache_set(cache_key, result)
-        return result
-    book = await db.books.find_one({"slug": s.get("book_slug")}, BOOK_METADATA_PROJECTION)
+    featured_candidate = (
+        s.get("book_slug")
+        if s and s.get("book_slug") in CONTROLLED_LIVE_BOOK_SLUGS
+        else CONTROLLED_LIVE_BOOK_SLUGS[0]
+    )
+    book = await db.books.find_one(_controlled_public_book_query({"slug": featured_candidate}), BOOK_METADATA_PROJECTION)
     result = {"book": _strip_all_chapter_content(book) if book else None}
     await _public_cache_set(cache_key, result)
     return result

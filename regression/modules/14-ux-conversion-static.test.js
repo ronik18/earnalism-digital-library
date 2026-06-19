@@ -11,23 +11,43 @@ describe("UX conversion static signals", () => {
   const home = read("frontend/src/pages/Home.jsx");
   const bookDetail = read("frontend/src/pages/BookDetail.jsx");
   const library = read("frontend/src/pages/Library.jsx");
+  const bookCard = read("frontend/src/components/BookCard.jsx");
+  const controlledLaunch = read("frontend/src/lib/controlledLaunch.js");
   const pricing = read("frontend/src/pages/Pricing.jsx");
   const header = read("frontend/src/components/Header.jsx");
   const app = read("frontend/src/App.js");
 
-  test("homepage exposes primary reading and reading-time CTAs", () => {
+  test("homepage exposes Dracula-first reading and reading-time CTAs", () => {
     expect(home).toContain('data-testid="hero-cta-read"');
     expect(home).toContain('data-testid="hero-cta-pricing"');
-    expect(home).toContain("Start Reading");
-    expect(home).toContain("Buy Reading Time");
+    expect(home).toContain("Begin with");
+    expect(home).toContain("Dracula");
+    expect(home).toContain("Read Chapter 1 Free");
+    expect(home).toContain("Get 7-Day Reading Pass");
+    expect(home).not.toMatch(/\b105 reading rooms open\b/i);
+    expect(home).not.toContain("reading rooms open");
   });
 
-  test("library and book pages expose preview and reading-time purchase paths", () => {
-    expect(library).toContain("Read Preview");
+  test("library and book pages expose only approved Dracula reading paths", () => {
+    expect(library).toContain("Live Controlled Release");
+    expect(library).toContain("Coming Through the Rights-Safe Pipeline");
+    expect(library).toContain("Read Chapter 1 Free");
     expect(library).toContain("Start Reading");
+    expect(library).toContain("Notify Me");
     expect(bookDetail).toContain('data-testid="read-preview"');
     expect(bookDetail).toContain('data-testid="bottom-buy-reading-time"');
-    expect(bookDetail).toContain("/pricing?pack=1h&source=book_detail");
+    expect(bookDetail).toContain("DRACULA_SOURCE_NOTE");
+    expect(bookDetail).toContain("Audio:</strong> Not available yet");
+    expect(bookDetail).toContain("readingPassUrl(\"book_detail\")");
+  });
+
+  test("book card truth gate prevents unapproved reader CTAs", () => {
+    expect(bookCard).toContain("bookLaunchStatus");
+    expect(bookCard).toContain('status === "LIVE_APPROVED"');
+    expect(controlledLaunch).toContain("COMING_SOON_PIPELINE");
+    expect(bookCard).toContain("Notify Me");
+    expect(bookCard).toContain("This title is in the rights-safe pipeline and is not readable yet.");
+    expect(bookCard).toContain("isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)");
   });
 
   test("pricing page has checkout CTA, payment trust copy, and support/refund copy", () => {
@@ -39,7 +59,7 @@ describe("UX conversion static signals", () => {
 
   test("mobile navigation keeps a visible library CTA", () => {
     expect(header).toContain('data-testid="mobile-cta-library"');
-    expect(header).toContain("Start Reading");
+    expect(header).toContain("Start Dracula");
   });
 
   test("public route tree does not expose admin controls in the public layout", () => {

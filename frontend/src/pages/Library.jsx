@@ -1,126 +1,213 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { Search, Clock } from "lucide-react";
+import { BookOpen, Headphones, Search, ShieldCheck, Sparkles } from "lucide-react";
 import { api } from "../lib/api";
+import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import BookCard from "../components/BookCard";
 import BookCoverImage from "../components/BookCoverImage";
+import {
+  DRACULA_CHAPTER_COUNT,
+  DRACULA_CTA_EVENTS,
+  DRACULA_RIGHTS_NOTE,
+  DRACULA_SOURCE_NOTE,
+  LIVE_APPROVED_SLUG,
+  PIPELINE_BOOKS,
+  mergeDraculaBook,
+  notifyUrl,
+  readingPassUrl,
+} from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
 
-const LIBRARY_OG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=85";
+const FILTERS = [
+  { slug: "all", name: "All" },
+  { slug: "live", name: "Live" },
+  { slug: "pipeline", name: "Pipeline" },
+  { slug: "reading-paths", name: "Reading Paths" },
+  { slug: "audiobooks", name: "Audiobooks" },
+];
 
 export default function Library() {
   const [params, setParams] = useSearchParams();
-  const [categories, setCategories] = useState([]);
-  const [books, setBooks] = useState([]);
+  const [dracula, setDracula] = useState(null);
   const [loading, setLoading] = useState(true);
   const [q, setQ] = useState(params.get("q") || "");
-  const debouncedQ = useDebouncedValue(q, 300);
   const cat = params.get("category") || "all";
+  const liveBook = mergeDraculaBook(dracula);
 
   useSEO({
-    title: "The Library — The Earnalism Digital Library",
-    description: "Browse Bengali classics, literary fiction, young readers, business, technology and AI, history, adventure, science fiction, and gothic fiction. Buy reading time. Read beautifully.",
-    image: LIBRARY_OG,
+    title: "Library | Dracula Is Live on Earnalism",
+    description:
+      "The Earnalism library is in controlled launch: Dracula is the only live approved core reading release. Future classics are shown as Coming Soon until rights and QA are complete.",
+    image: liveBook.cover_image_url,
+    imageAlt: "Dracula on Earnalism",
+    canonicalPath: cat === "all" ? "/library" : `/library?category=${cat}`,
   });
 
   useEffect(() => {
     const controller = new AbortController();
-    api.get("/categories", { signal: controller.signal }).then((r) => setCategories(r.data)).catch(() => {});
-    return () => controller.abort();
-  }, []);
-
-  useEffect(() => {
     setLoading(true);
-    const controller = new AbortController();
-    const p = {};
-    if (cat && cat !== "all") p.category = cat;
-    if (debouncedQ) p.q = debouncedQ;
-    api.get("/books", { params: p, signal: controller.signal })
-      .then((r) => setBooks(r.data))
-      .catch((err) => {
-        if (err.name !== "CanceledError") setBooks([]);
-      })
+    api.get(`/books/${LIVE_APPROVED_SLUG}`, { signal: controller.signal })
+      .then((response) => setDracula(response.data))
+      .catch(() => setDracula(null))
       .finally(() => {
         if (!controller.signal.aborted) setLoading(false);
       });
     return () => controller.abort();
-  }, [cat, debouncedQ]);
+  }, []);
 
   const setCat = (slug) => {
     const next = new URLSearchParams(params);
-    if (slug === "all") next.delete("category"); else next.set("category", slug);
+    if (slug === "all") next.delete("category");
+    else next.set("category", slug);
     setParams(next);
   };
 
-  const filters = useMemo(() => [{ slug: "all", name: "All" }, ...categories], [categories]);
+  const normalizedQuery = q.trim().toLowerCase();
+  const visiblePipeline = useMemo(() => {
+    if (!normalizedQuery) return PIPELINE_BOOKS;
+    return PIPELINE_BOOKS.filter((book) => `${book.title} ${book.author} ${book.category_slug}`.toLowerCase().includes(normalizedQuery));
+  }, [normalizedQuery]);
+  const showLive = ["all", "live"].includes(cat) && (!normalizedQuery || "dracula bram stoker gothic fiction".includes(normalizedQuery));
+  const showPipeline = ["all", "pipeline"].includes(cat);
+  const showReadingPaths = ["all", "reading-paths"].includes(cat);
+  const showAudiobooks = ["all", "audiobooks"].includes(cat);
 
   return (
     <div data-testid="library-page">
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-20 sm:pt-28 pb-12 sm:pb-16">
-        <div className="italic-eyebrow mb-4">The Library &middot; Volume I</div>
-        <h1 className="font-serif-light text-4xl sm:text-6xl lg:text-[4.25rem] text-burgundy tracking-tight max-w-3xl text-balance leading-[1.02]">A small, deliberate shelf — <span className="italic-accent">chosen for depth.</span></h1>
-        <p className="text-charcoal-soft mt-7 max-w-xl leading-[1.85] font-light">Buy reading time. Read beautifully. Return whenever you wish. New titles arrive only when they are ready to be read for years.</p>
+      <section className="mx-auto max-w-7xl px-5 pb-12 pt-20 sm:px-8 sm:pb-16 sm:pt-28 lg:px-12">
+        <div className="italic-eyebrow mb-4">The Library - Controlled Launch</div>
+        <h1 className="font-serif-light max-w-4xl text-4xl leading-[1.03] tracking-tight text-burgundy sm:text-6xl lg:text-[4.25rem]">
+          One live classic, with the next shelves moving carefully through review.
+        </h1>
+        <p className="mt-7 max-w-2xl text-charcoal-soft leading-[1.85] font-light">
+          Dracula is the only live approved core reading release today. Other titles appear only as Coming Soon until their rights, source, QA, and publication gates pass.
+        </p>
       </section>
 
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-6">
-        <div className="flex flex-col lg:flex-row gap-6 lg:items-center lg:justify-between border-y border-brand-soft py-6">
+      <section className="mx-auto max-w-7xl px-5 pb-8 sm:px-8 lg:px-12">
+        <div className="flex flex-col gap-6 border-y border-brand-soft py-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-wrap gap-2" data-testid="category-filters">
-            {filters.map((f) => (
+            {FILTERS.map((filter) => (
               <button
-                key={f.slug}
-                onClick={() => setCat(f.slug)}
-                data-testid={`filter-${f.slug}`}
-                className={`px-4 py-2 rounded-full text-[0.68rem] tracking-[0.24em] uppercase transition-colors ${cat === f.slug ? "bg-burgundy text-[var(--brand-ivory)]" : "text-charcoal-soft hover:text-burgundy border border-transparent hover:border-[var(--brand-gold)]/40"}`}
+                key={filter.slug}
+                onClick={() => setCat(filter.slug)}
+                data-testid={`filter-${filter.slug}`}
+                className={`rounded-full px-4 py-2 text-[0.68rem] uppercase tracking-[0.24em] transition-colors ${cat === filter.slug ? "bg-burgundy text-[var(--brand-ivory)]" : "border border-transparent text-charcoal-soft hover:border-[var(--brand-gold)]/40 hover:text-burgundy"}`}
               >
-                {f.name}
+                {filter.name}
               </button>
             ))}
           </div>
-          <div className="relative max-w-sm w-full">
+          <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-charcoal-soft" size={15} strokeWidth={1.5} />
             <input
-              value={q} onChange={(e) => setQ(e.target.value)}
-              placeholder="Search titles, themes…"
-              className="input-elegant pl-9 !border-b !border-[var(--brand-border)]"
+              value={q}
+              onChange={(event) => setQ(event.target.value)}
+              placeholder="Search Dracula or coming titles..."
+              className="input-elegant !border-b !border-[var(--brand-border)] pl-9"
               data-testid="library-search"
             />
           </div>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-28">
+      <section className="mx-auto max-w-7xl px-5 pb-28 sm:px-8 lg:px-12">
         {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-9">
-            {["s1", "s2", "s3"].map((k) => (
-              <div key={k} className="card-elegant overflow-hidden">
-                <div className="aspect-[3/4] bg-beige-deep animate-pulse" />
-                <div className="p-7 space-y-3">
-                  <div className="h-3 w-20 bg-beige-deep animate-pulse rounded" />
-                  <div className="h-5 w-3/4 bg-beige-deep animate-pulse rounded" />
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : books.length === 0 ? (
-          cat === "technology" ? (
-            <div className="card-elegant p-12 sm:p-24 text-center" data-testid="library-empty-technology">
-              <div className="italic-eyebrow mb-4">Technology Shelf</div>
-              <h3 className="font-serif-light text-3xl sm:text-4xl text-burgundy leading-tight">Technology titles are <span className="italic-accent">being curated.</span></h3>
-              <div className="gold-rule-thin mx-auto mt-6 mb-6" />
-              <p className="text-charcoal-soft max-w-xl mx-auto leading-[1.8] font-light">Return soon for books on software, AI, data, and digital enterprise.</p>
-            </div>
-          ) : (
-            <div className="card-elegant p-12 sm:p-24 text-center" data-testid="library-empty">
-              <div className="italic-eyebrow mb-4">An open shelf</div>
-              <h3 className="font-serif-light text-3xl sm:text-4xl text-burgundy">No titles match — <span className="italic-accent">yet.</span></h3>
-              <p className="text-charcoal-soft mt-5 max-w-md mx-auto leading-[1.8] font-light">Try another shelf, or join the Reading Circle to know when our next book arrives.</p>
-            </div>
-          )
-        ) : books.length === 1 ? (
-          <SingleBookSpotlight book={books[0]} />
+          <div className="card-elegant p-12 text-center text-charcoal-soft">Loading the controlled shelf...</div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-9" data-testid="books-grid">
-            {books.map((b, index) => <BookCard key={b.slug} book={b} priority={index < 9} />)}
+          <div className="space-y-16">
+            {showLive && (
+              <section data-testid="shelf-live-controlled-release">
+                <div className="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <div className="overline mb-3">Shelf 1</div>
+                    <h2 className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">Live Controlled Release</h2>
+                  </div>
+                  <span className="inline-flex items-center gap-2 text-sm text-charcoal-soft"><ShieldCheck size={16} className="text-gold" /> Dracula only</span>
+                </div>
+                <div className="card-elegant overflow-hidden">
+                  <div className="grid grid-cols-1 gap-8 p-7 sm:p-9 lg:grid-cols-12 lg:items-center">
+                    <div className="lg:col-span-4">
+                      <div className="mx-auto aspect-[3/4] max-w-[260px] overflow-hidden rounded-lg border border-brand-soft bg-ivory-warm">
+                        <BookCoverImage book={liveBook} alt="Dracula by Bram Stoker cover" loading="eager" width={420} widths={[300, 420, 640]} sizes="260px" />
+                      </div>
+                    </div>
+                    <div className="lg:col-span-8">
+                      <span className="overline">Gothic fiction</span>
+                      <h3 className="mt-4 font-serif-display text-4xl leading-tight text-burgundy">Dracula</h3>
+                      <p className="mt-2 text-[0.85rem] uppercase tracking-[0.14em] text-charcoal-soft">by Bram Stoker</p>
+                      <p className="mt-6 max-w-2xl text-charcoal-soft leading-[1.85]">
+                        {liveBook.short_description}
+                      </p>
+                      <dl className="mt-6 grid gap-3 text-sm text-charcoal-soft sm:grid-cols-2">
+                        <div><dt className="overline">Status</dt><dd>Live</dd></div>
+                        <div><dt className="overline">Chapters</dt><dd>{DRACULA_CHAPTER_COUNT}</dd></div>
+                        <div><dt className="overline">Preview</dt><dd>Chapter 1 unlocked</dd></div>
+                        <div><dt className="overline">Audio</dt><dd>Not available yet</dd></div>
+                        <div><dt className="overline">Rights</dt><dd>{DRACULA_RIGHTS_NOTE}</dd></div>
+                        <div><dt className="overline">Source</dt><dd>{DRACULA_SOURCE_NOTE}</dd></div>
+                      </dl>
+                      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                        <Link to={`/reader/${LIVE_APPROVED_SLUG}`} className="btn-secondary justify-center" data-testid="library-dracula-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: LIVE_APPROVED_SLUG, cta: "library_preview" })}>
+                          <BookOpen size={15} /> Read Chapter 1 Free
+                        </Link>
+                        <Link to={`/book/${LIVE_APPROVED_SLUG}`} className="btn-primary justify-center" data-testid="library-dracula-start" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: LIVE_APPROVED_SLUG, cta: "library_start" })}>
+                          Start Reading
+                        </Link>
+                        <Link to={readingPassUrl("library_live_shelf")} className="btn-link justify-center" data-testid="library-dracula-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: LIVE_APPROVED_SLUG, cta: "library_pass" })}>
+                          Get 7-Day Reading Pass
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {showPipeline && (
+              <section data-testid="shelf-pipeline">
+                <div className="mb-7">
+                  <div className="overline mb-3">Shelf 2</div>
+                  <h2 className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">Coming Through the Rights-Safe Pipeline</h2>
+                  <p className="mt-4 max-w-2xl text-charcoal-soft leading-[1.8]">These books are not live products yet. They have Notify Me CTAs only.</p>
+                </div>
+                {visiblePipeline.length > 0 ? (
+                  <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
+                    {visiblePipeline.map((book) => <BookCard key={book.slug} book={book} />)}
+                  </div>
+                ) : (
+                  <EmptyShelf title="No pipeline title matches this search." />
+                )}
+              </section>
+            )}
+
+            {showReadingPaths && (
+              <section className="card-elegant p-8 sm:p-10" data-testid="shelf-reading-paths">
+                <div className="overline mb-3">Shelf 3</div>
+                <h2 className="font-serif-display text-3xl text-burgundy">Dracula 7-Day Reading Path</h2>
+                <p className="mt-5 max-w-2xl text-charcoal-soft leading-[1.8]">The guided reading path is in draft. It is not a live product yet.</p>
+                <Link to={notifyUrl("dracula-reading-path")} className="btn-secondary mt-7" data-testid="reading-path-notify" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.notifyMe, { future_title: "dracula-reading-path" })}>
+                  <Sparkles size={15} /> Notify Me
+                </Link>
+              </section>
+            )}
+
+            {showAudiobooks && (
+              <section className="card-elegant p-8 sm:p-10" data-testid="shelf-audiobooks">
+                <div className="overline mb-3">Shelf 4</div>
+                <h2 className="font-serif-display text-3xl text-burgundy">Audiobooks are not live in this launch.</h2>
+                <p className="mt-5 max-w-2xl text-charcoal-soft leading-[1.8]">
+                  Audio is being prepared through rights and listening QA. Dracula audiobook is not available yet, so no play buttons or waveform controls are shown.
+                </p>
+                <div className="mt-6 inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-gold-deep">
+                  <Headphones size={15} /> Audio QA pending
+                </div>
+              </section>
+            )}
+
+            {!showLive && !showPipeline && !showReadingPaths && !showAudiobooks && (
+              <EmptyShelf title="This shelf is not live yet." />
+            )}
           </div>
         )}
       </section>
@@ -128,52 +215,12 @@ export default function Library() {
   );
 }
 
-function SingleBookSpotlight({ book }) {
+function EmptyShelf({ title }) {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-5xl mx-auto py-6 sm:py-10" data-testid="single-book-spotlight">
-      <Link to={`/book/${book.slug}`} className="lg:col-span-5 group" data-testid={`book-card-${book.slug}`}>
-        <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft bg-ivory-warm shadow-[0_40px_80px_-40px_rgba(74,28,39,0.4)]">
-          <BookCoverImage
-            book={book}
-            alt={book.title}
-            loading="eager"
-            fetchPriority="high"
-            width={560}
-            widths={[360, 560, 760]}
-            sizes="(min-width: 1024px) 380px, (min-width: 640px) 52vw, 90vw"
-          />
-        </div>
-      </Link>
-      <div className="lg:col-span-7">
-        <span className="overline">{book.category_slug?.replace(/-/g, ' ')}</span>
-        <h2 className="font-serif-light text-4xl sm:text-5xl text-burgundy leading-[1.05] mt-4 tracking-tight">{book.title}</h2>
-        {book.author && <p className="text-[0.85rem] tracking-[0.14em] uppercase text-charcoal-soft mt-3">by {book.author}</p>}
-        {book.subtitle && (
-          <p className="font-serif-display italic text-xl sm:text-2xl text-burgundy-soft mt-4 leading-snug">{book.subtitle}</p>
-        )}
-        <div className="gold-rule-thin mt-6" />
-        {book.short_description && (
-          <p className="text-charcoal-soft mt-7 leading-[1.85] font-light max-w-xl">{book.short_description}</p>
-        )}
-        {book.estimated_reading_time && (
-          <div className="inline-flex items-center gap-1.5 mt-5 text-[0.75rem] tracking-[0.18em] uppercase text-gold-deep">
-            <Clock size={14} strokeWidth={1.5} /> {book.estimated_reading_time}
-          </div>
-        )}
-        <div className="mt-9 flex flex-wrap gap-3 sm:gap-4">
-          <Link to={`/reader/${book.slug}`} className="btn-secondary">Read Preview</Link>
-          <Link to={`/reader/${book.slug}`} className="btn-primary">Start Reading</Link>
-        </div>
-      </div>
+    <div className="card-elegant p-12 text-center" data-testid="library-empty">
+      <div className="italic-eyebrow mb-4">Controlled shelf</div>
+      <h3 className="font-serif-light text-3xl text-burgundy">{title}</h3>
+      <p className="mx-auto mt-5 max-w-md text-charcoal-soft leading-[1.8]">Try Dracula, or join the Reading Circle for future release updates.</p>
     </div>
   );
-}
-
-function useDebouncedValue(value, delayMs) {
-  const [debounced, setDebounced] = useState(value);
-  useEffect(() => {
-    const id = window.setTimeout(() => setDebounced(value), delayMs);
-    return () => window.clearTimeout(id);
-  }, [value, delayMs]);
-  return debounced;
 }
