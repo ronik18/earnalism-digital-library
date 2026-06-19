@@ -27,6 +27,15 @@
     "error": ""
   },
   {
+    "url": "https://theearnalism.com/shop/",
+    "status": 308,
+    "x_robots_tag": "",
+    "content_type": "text/plain",
+    "final_url": "https://theearnalism.com/library",
+    "generic_shell": false,
+    "error": ""
+  },
+  {
     "url": "https://theearnalism.com/shop/example",
     "status": 404,
     "x_robots_tag": "noindex, nofollow, noarchive",

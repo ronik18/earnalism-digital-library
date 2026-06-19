@@ -8,4 +8,5 @@ Recommendation: `HOLD_FOR_FIXES`
 - Tier C items must remain blocked.
 - First-batch source evidence must be real before publication.
 - Payment/revenue flow needs controlled Razorpay test-mode smoke.
+- `APPROVED_TO_PUBLISH.md` must exist and pass `npm run controlled-publication:precheck` before any publication phase.
 - Rollback plan must be confirmed with the release operator.

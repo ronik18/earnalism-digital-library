@@ -1,0 +1,119 @@
+{
+  "mode": "operator_supplied_real_source_metadata_only",
+  "instructions": [
+    "Do not replace SOURCE_METADATA_REQUIRED with guessed values.",
+    "Use legally cleared source URLs and licenses only.",
+    "Compute source_hash, content_hash, and provenance_hash from the exact source text used for ingestion.",
+    "Attach QA evidence before any controlled-publication review.",
+    "This file is an input template; it is not publication approval."
+  ],
+  "required_fields": [
+    "source_url",
+    "source_name",
+    "source_license",
+    "source_hash",
+    "content_hash",
+    "provenance_hash",
+    "rights_basis",
+    "publication_region",
+    "verified_at",
+    "qa_evidence"
+  ],
+  "tier_a_candidates": [
+    {
+      "product": "Sultana's Dream Feminist Sci-Fi Edition",
+      "source_url": "SOURCE_METADATA_REQUIRED",
+      "source_name": "SOURCE_METADATA_REQUIRED",
+      "source_license": "SOURCE_METADATA_REQUIRED",
+      "source_hash": "SOURCE_METADATA_REQUIRED",
+      "content_hash": "SOURCE_METADATA_REQUIRED",
+      "provenance_hash": "SOURCE_METADATA_REQUIRED",
+      "rights_basis": "SOURCE_METADATA_REQUIRED",
+      "publication_region": "global",
+      "verified_at": "SOURCE_METADATA_REQUIRED",
+      "qa_evidence": {
+        "rights_review": "SOURCE_METADATA_REQUIRED",
+        "source_text_review": "SOURCE_METADATA_REQUIRED",
+        "edition_qa": "SOURCE_METADATA_REQUIRED",
+        "audio_qa": "SOURCE_METADATA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED"
+      }
+    },
+    {
+      "product": "Sherlock Holmes Logic Workbook",
+      "source_url": "SOURCE_METADATA_REQUIRED",
+      "source_name": "SOURCE_METADATA_REQUIRED",
+      "source_license": "SOURCE_METADATA_REQUIRED",
+      "source_hash": "SOURCE_METADATA_REQUIRED",
+      "content_hash": "SOURCE_METADATA_REQUIRED",
+      "provenance_hash": "SOURCE_METADATA_REQUIRED",
+      "rights_basis": "SOURCE_METADATA_REQUIRED",
+      "publication_region": "global",
+      "verified_at": "SOURCE_METADATA_REQUIRED",
+      "qa_evidence": {
+        "rights_review": "SOURCE_METADATA_REQUIRED",
+        "source_text_review": "SOURCE_METADATA_REQUIRED",
+        "edition_qa": "SOURCE_METADATA_REQUIRED",
+        "audio_qa": "SOURCE_METADATA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED"
+      }
+    },
+    {
+      "product": "Dracula Gothic Fiction Visual Guide",
+      "source_url": "SOURCE_METADATA_REQUIRED",
+      "source_name": "SOURCE_METADATA_REQUIRED",
+      "source_license": "SOURCE_METADATA_REQUIRED",
+      "source_hash": "SOURCE_METADATA_REQUIRED",
+      "content_hash": "SOURCE_METADATA_REQUIRED",
+      "provenance_hash": "SOURCE_METADATA_REQUIRED",
+      "rights_basis": "SOURCE_METADATA_REQUIRED",
+      "publication_region": "global",
+      "verified_at": "SOURCE_METADATA_REQUIRED",
+      "qa_evidence": {
+        "rights_review": "SOURCE_METADATA_REQUIRED",
+        "source_text_review": "SOURCE_METADATA_REQUIRED",
+        "edition_qa": "SOURCE_METADATA_REQUIRED",
+        "audio_qa": "SOURCE_METADATA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED"
+      }
+    },
+    {
+      "product": "Frankenstein Science & Ethics Guide",
+      "source_url": "SOURCE_METADATA_REQUIRED",
+      "source_name": "SOURCE_METADATA_REQUIRED",
+      "source_license": "SOURCE_METADATA_REQUIRED",
+      "source_hash": "SOURCE_METADATA_REQUIRED",
+      "content_hash": "SOURCE_METADATA_REQUIRED",
+      "provenance_hash": "SOURCE_METADATA_REQUIRED",
+      "rights_basis": "SOURCE_METADATA_REQUIRED",
+      "publication_region": "global",
+      "verified_at": "SOURCE_METADATA_REQUIRED",
+      "qa_evidence": {
+        "rights_review": "SOURCE_METADATA_REQUIRED",
+        "source_text_review": "SOURCE_METADATA_REQUIRED",
+        "edition_qa": "SOURCE_METADATA_REQUIRED",
+        "audio_qa": "SOURCE_METADATA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED"
+      }
+    },
+    {
+      "product": "Calculus Made Easy Visual Guide",
+      "source_url": "SOURCE_METADATA_REQUIRED",
+      "source_name": "SOURCE_METADATA_REQUIRED",
+      "source_license": "SOURCE_METADATA_REQUIRED",
+      "source_hash": "SOURCE_METADATA_REQUIRED",
+      "content_hash": "SOURCE_METADATA_REQUIRED",
+      "provenance_hash": "SOURCE_METADATA_REQUIRED",
+      "rights_basis": "SOURCE_METADATA_REQUIRED",
+      "publication_region": "global",
+      "verified_at": "SOURCE_METADATA_REQUIRED",
+      "qa_evidence": {
+        "rights_review": "SOURCE_METADATA_REQUIRED",
+        "source_text_review": "SOURCE_METADATA_REQUIRED",
+        "edition_qa": "SOURCE_METADATA_REQUIRED",
+        "audio_qa": "SOURCE_METADATA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED"
+      }
+    }
+  ]
+}

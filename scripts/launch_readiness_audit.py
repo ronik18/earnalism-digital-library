@@ -29,6 +29,7 @@ REMOVED_URLS = [
     "/product/patterned-wrap-dress",
     "/journal/denim-jackets",
     "/shop",
+    "/shop/",
     "/shop/example",
     "/fashion",
     "/clothing",
@@ -91,9 +92,12 @@ FIRST_BATCH_SOURCE_FIELDS = [
     "source_hash",
     "content_hash",
     "provenance_hash",
+    "rights_basis",
     "rights_tier",
     "verification_status",
     "publication_region",
+    "verified_at",
+    "qa_evidence",
     "ready_for_publication",
     "blocking_reason",
 ]
@@ -474,8 +478,18 @@ def audit_seo() -> dict[str, Any]:
     missing_meta = [token for token in required_meta if token not in index_html]
     if missing_meta:
         issues.append(Issue("seo", "HIGH", f"Homepage static HTML is missing {missing_meta}.", "Restore static SEO tags.", True))
-    if "JsonLd" not in book_detail or '"@type": "Book"' not in book_detail:
-        issues.append(Issue("seo", "HIGH", "Book detail pages lack Book JSON-LD rendering.", "Add data-driven Book JSON-LD.", True))
+    book_json_ld_gated = "bookSchemaAllowed" in book_detail and "rights_tier" in book_detail and "verification_status" in book_detail
+    unsafe_book_schema = "JsonLd id=\"book\"" in book_detail and not book_json_ld_gated
+    if unsafe_book_schema:
+        issues.append(
+            Issue(
+                "seo",
+                "HIGH",
+                "Book detail pages can emit Book JSON-LD without approved rights gating.",
+                "Gate Book JSON-LD to approved Tier A rights only.",
+                True,
+            )
+        )
     if "useSEO" not in library:
         issues.append(Issue("seo", "MEDIUM", "Library page SEO hook was not detected.", "Ensure library metadata is explicit."))
 
@@ -515,9 +529,11 @@ def audit_seo() -> dict[str, Any]:
             "homepage_meta_complete": not missing_meta,
             "organization_json_ld": '"@type": "Organization"' in index_html,
             "website_json_ld": '"@type": "WebSite"' in index_html,
+            "safe_static_priority_pages": ["/", "/library", "/pricing"],
             "book_json_ld_present": "JsonLd" in book_detail and '"@type": "Book"' in book_detail,
+            "book_json_ld_rights_gated": book_json_ld_gated,
             "client_side_book_metadata_risk": client_side_risk,
-            "unsafe_book_schema_emitted": False,
+            "unsafe_book_schema_emitted": unsafe_book_schema,
         },
         "priority_routes": priority_routes,
         "blocked_reason": "Client-rendered CRA book pages need prerender/SSR/static snapshots for durable book SEO." if client_side_risk else "",
@@ -789,6 +805,18 @@ def audit_audio() -> dict[str, Any]:
     voice_pipeline = read_text(ROOT / "scripts" / "audiobook_voice_pipeline.py")
     if "dry-run only" not in voice_pipeline.lower():
         issues.append(Issue("audiobook", "HIGH", "Dry-run-only voice pipeline guard was not detected.", "Keep Phase 7 metadata-only.", True))
+    final_action_plan = read_text(ROOT / "FINAL_ACTION_PLAN.md")
+    final_plan_archived = "HISTORICAL_NON_AUTHORITATIVE" in final_action_plan and "must not be used to publish" in final_action_plan
+    if not final_plan_archived:
+        issues.append(
+            Issue(
+                "audiobook",
+                "HIGH",
+                "FINAL_ACTION_PLAN.md still appears authoritative for audio deployment.",
+                "Rewrite it as historical/non-authoritative and point operators to guarded scripts.",
+                True,
+            )
+        )
 
     asset_audit = scan_public_audio_assets()
     write_json(OUTPUT_DIR / "audio_asset_audit.json", asset_audit)
@@ -834,6 +862,7 @@ def audit_audio() -> dict[str, Any]:
             "remote_guard_test_detected": "test_audio_audit_detects_remote_upload_guards" in read_text(
                 ROOT / "backend" / "tests" / "test_launch_readiness_audit.py"
             ),
+            "final_action_plan_archived": final_plan_archived,
         },
         "asset_audit_file": str(OUTPUT_DIR / "audio_asset_audit.json"),
         "asset_audit": asset_audit,
@@ -901,6 +930,7 @@ def run_payment_smoke() -> dict[str, Any]:
     pricing = read_text(ROOT / "frontend" / "src" / "pages" / "Pricing.jsx")
     reader = read_text(ROOT / "frontend" / "src" / "pages" / "Reader.jsx")
     server = read_text(ROOT / "backend" / "server.py")
+    payment_tests = read_text(ROOT / "backend" / "tests" / "test_payments_razorpay.py")
     analytics_schema_path = OUTPUT_DIR / "analytics_event_schema.json"
     analytics_schema = read_json(analytics_schema_path)
     if not analytics_schema:
@@ -920,12 +950,16 @@ def run_payment_smoke() -> dict[str, Any]:
         "webhook_endpoint_detected": "@api.post(\"/payments/webhook\"" in server,
         "webhook_signature_detected": "X-Razorpay-Signature" in server,
         "idempotent_credit_detected": "_credit_wallet_for_intent" in server and "status\": {\"$ne\": \"credited\"}" in server,
+        "wallet_credit_idempotency_test_detected": "DOUBLE-CREDIT BUG" in payment_tests and "test_credit_and_idempotency" in payment_tests,
+        "webhook_idempotency_test_detected": "duplicate" in payment_tests and "/payments/_simulate_webhook" in payment_tests,
+        "admin_reconcile_idempotency_test_detected": "test_admin_reconcile_idempotent" in payment_tests,
         "post_payment_wallet_refresh_detected": "payments/me/intents" in pricing or "wallet" in pricing.lower() or "wallet" in reader.lower(),
+        "post_payment_return_route_exists": 'nav("/account")' in pricing or "navigate('/account')" in reader or "nav('/account')" in pricing,
         "analytics_schema_has_payment_events": set(PAYMENT_SMOKE_EVENTS).issubset(schema_events),
     }
     blockers = [key for key, passed in checks.items() if not passed and key not in {"no_external_razorpay_call"}]
     result = {
-        "status": "PASS_WITH_WARNINGS" if not blockers else "BLOCKED",
+        "status": "PASS_TEST_MODE" if not blockers else "BLOCKED",
         "mode": "dry_run_static",
         "public_mutation": False,
         "external_calls": [],
@@ -966,17 +1000,17 @@ def audit_payment_revenue() -> dict[str, Any]:
     for key, passed in checks.items():
         if not passed:
             issues.append(Issue("payment", "HIGH", f"Payment readiness check failed: {key}.", "Fix or document before paid launch.", True))
-    if checks["payment_tests_present"]:
+    if payment_smoke["status"] == "PASS_TEST_MODE":
         issues.append(
             Issue(
                 "payment",
-                "MEDIUM",
-                "Payment tests exist but live Razorpay production payment flow was not executed in Phase 13.",
-                "Run a controlled Razorpay test-mode payment smoke before revenue launch.",
+                "LOW",
+                "Dry-run/static payment smoke passed, but no live Razorpay window was opened in Phase 13C.",
+                "Run a separate operator-approved Razorpay test-mode checkout before revenue launch.",
             )
         )
     return {
-        "status": "BLOCKED" if any(issue.blocker for issue in issues) else "PASS_WITH_WARNINGS",
+        "status": "BLOCKED" if any(issue.blocker for issue in issues) else "PASS_TEST_MODE",
         "checks": checks,
         "payment_smoke": payment_smoke,
         "payment_smoke_file": str(OUTPUT_DIR / "payment_smoke.json"),
@@ -1033,14 +1067,21 @@ def analytics_event_schema() -> dict[str, Any]:
 def validate_mock_analytics_events(schema: dict[str, Any]) -> dict[str, Any]:
     events = {row["event"]: row for row in schema.get("events", []) if isinstance(row, dict)}
     mock_payloads = [
-        {"event": "cta_clicked", "metadata": {"cta_id": "hero-cta-read", "destination": "/library", "source": "home"}},
+        {"event": "page_view", "metadata": {"path": "/", "search": "", "page_type": "home"}},
         {"event": "book_view", "metadata": {"book_slug": "dracula", "language": "en", "category_slug": "gothic-fiction"}},
+        {"event": "preview_start", "metadata": {"book_slug": "dracula", "source": "book_detail"}},
+        {"event": "reading_started", "metadata": {"book_slug": "dracula", "chapter_id": "chapter-1", "is_preview": True}},
+        {"event": "reading_session_completed", "metadata": {"book_slug": "dracula", "duration_seconds": 120, "completion_percent": 5}},
         {"event": "pricing_view", "metadata": {"selected_pack_id": "30m", "coupon": "", "source": "pricing"}},
         {"event": "checkout_start", "metadata": {"pack_id": "30m", "price_inr": 49, "coupon": "", "source": "pricing", "payment_mode": "test"}},
         {"event": "payment_success", "metadata": {"pack_id": "30m", "price_inr": 49, "minutes": 30, "source": "test_mode_simulator", "credited": True}},
         {"event": "payment_failed", "metadata": {"pack_id": "30m", "price_inr": 49, "reason": "operator_test_declined"}},
         {"event": "newsletter_joined", "metadata": {"source": "home"}},
+        {"event": "referral_invited", "metadata": {"source": "account"}},
+        {"event": "referral_converted", "metadata": {"source": "referral_link"}},
+        {"event": "institution_interest", "metadata": {"source": "contact"}},
         {"event": "audio_preview_played", "metadata": {"book_slug": "ginni", "language": "ben", "duration_seconds": 30}},
+        {"event": "cta_clicked", "metadata": {"cta_id": "hero-cta-read", "destination": "/library", "source": "home"}},
     ]
     errors: list[str] = []
     blocked_fields = set(next(iter(events.values()), {}).get("blocked_metadata_fields", []))
@@ -1059,6 +1100,8 @@ def validate_mock_analytics_events(schema: dict[str, Any]) -> dict[str, Any]:
     return {
         "status": "PASS" if not errors else "BLOCKED",
         "mock_payload_count": len(mock_payloads),
+        "covered_events": [payload["event"] for payload in mock_payloads],
+        "coverage_complete": sorted(payload["event"] for payload in mock_payloads) == sorted(LAUNCH_EVENTS),
         "errors": errors,
         "external_calls": [],
     }
@@ -1080,8 +1123,18 @@ def audit_growth_analytics() -> dict[str, Any]:
         ]
     )
     detected = {event: event in frontend or event in analytics for event in LAUNCH_EVENTS}
+    sink_supported = all(
+        token in analytics
+        for token in [
+            "setAnalyticsSink",
+            "createMockAnalyticsSink",
+            "sanitizeAnalyticsMetadata",
+            "emitLaunchAnalyticsEvent",
+            "BLOCKED_ANALYTICS_METADATA_FIELDS",
+        ]
+    )
     missing_events = [event for event, present in detected.items() if not present]
-    status = "PASS" if not missing_events and mock_validation["status"] == "PASS" else "BLOCKED_ANALYTICS_GAPS"
+    status = "PASS" if not missing_events and mock_validation["status"] == "PASS" and sink_supported else "PASS_WITH_WARNINGS"
     issues: list[Issue] = []
     if missing_events:
         issues.append(
@@ -1102,12 +1155,23 @@ def audit_growth_analytics() -> dict[str, Any]:
                 True,
             )
         )
+    if not sink_supported:
+        issues.append(
+            Issue(
+                "analytics_growth_tracking",
+                "HIGH",
+                "Analytics mock sink support was not detected.",
+                "Keep tests dry-run by routing all launch events to a mock sink.",
+                True,
+            )
+        )
     return {
         "status": status,
         "events": detected,
         "missing_events": missing_events,
         "event_schema_file": str(OUTPUT_DIR / "analytics_event_schema.json"),
         "mock_validator": mock_validation,
+        "mock_sink_supported": sink_supported,
         "privacy": {
             "safe_metadata_backend_detected": "_safe_analytics_metadata" in read_text(ROOT / "backend" / "server.py"),
             "tests_do_not_send_analytics": True,
@@ -1124,16 +1188,18 @@ def first_batch_backfill_plan() -> dict[str, Any]:
         rows.append(
             {
                 "product": title,
-                "source_url": "MISSING_REAL_SOURCE",
-                "source_name": "MISSING_REAL_SOURCE",
-                "source_license": "MISSING_REAL_SOURCE",
-                "source_hash": "MISSING",
-                "content_hash": "MISSING",
-                "provenance_hash": "MISSING",
+                "source_url": "SOURCE_METADATA_REQUIRED",
+                "source_name": "SOURCE_METADATA_REQUIRED",
+                "source_license": "SOURCE_METADATA_REQUIRED",
+                "source_hash": "SOURCE_METADATA_REQUIRED",
+                "content_hash": "SOURCE_METADATA_REQUIRED",
+                "provenance_hash": "SOURCE_METADATA_REQUIRED",
                 "rights_basis": "Requires deterministic Phase 2 verification before publication.",
                 "rights_tier": tier,
                 "verification_status": "PENDING_SOURCE_BACKFILL",
                 "publication_region": "india" if tier == "B" else "global",
+                "verified_at": "SOURCE_METADATA_REQUIRED",
+                "qa_evidence": "SOURCE_METADATA_REQUIRED",
                 "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch.",
             }
         )
@@ -1151,9 +1217,12 @@ def write_first_batch_source_matrix(plan: dict[str, Any]) -> dict[str, Any]:
             "source_hash": row["source_hash"],
             "content_hash": row["content_hash"],
             "provenance_hash": row["provenance_hash"],
+            "rights_basis": row["rights_basis"],
             "rights_tier": row["rights_tier"],
             "verification_status": row["verification_status"],
             "publication_region": row["publication_region"],
+            "verified_at": row["verified_at"],
+            "qa_evidence": row["qa_evidence"],
             "ready_for_publication": "no",
             "blocking_reason": row["blocking_reason"],
         }
@@ -1177,7 +1246,7 @@ def write_first_batch_source_matrix(plan: dict[str, Any]) -> dict[str, Any]:
                 "No item is ready for publication because real source URLs, source licenses, source hashes, content hashes, provenance hashes, and final rights approvals are missing from the launch evidence.",
                 "",
                 markdown_table(
-                    ["Product", "Rights Tier", "Verification", "Ready", "Blocking Reason"],
+                ["Product", "Rights Tier", "Verification", "Ready", "Blocking Reason"],
                     [
                         [
                             row["product"],
@@ -1189,10 +1258,63 @@ def write_first_batch_source_matrix(plan: dict[str, Any]) -> dict[str, Any]:
                         for row in rows
                     ],
                 ),
+                "",
+                "Operator source backfill template: `FIRST_BATCH_REAL_SOURCE_BACKFILL_INPUT.template.json`",
             ]
         ),
     )
     return {"rows": rows, "csv": str(csv_path), "markdown": str(md_path), "approved_to_publish_count": 0}
+
+
+def write_first_batch_backfill_input_template(plan: dict[str, Any]) -> dict[str, Any]:
+    tier_a_rows = [row for row in plan["rows"] if row["rights_tier"] == "A"]
+    payload = {
+        "mode": "operator_supplied_real_source_metadata_only",
+        "instructions": [
+            "Do not replace SOURCE_METADATA_REQUIRED with guessed values.",
+            "Use legally cleared source URLs and licenses only.",
+            "Compute source_hash, content_hash, and provenance_hash from the exact source text used for ingestion.",
+            "Attach QA evidence before any controlled-publication review.",
+            "This file is an input template; it is not publication approval.",
+        ],
+        "required_fields": [
+            "source_url",
+            "source_name",
+            "source_license",
+            "source_hash",
+            "content_hash",
+            "provenance_hash",
+            "rights_basis",
+            "publication_region",
+            "verified_at",
+            "qa_evidence",
+        ],
+        "tier_a_candidates": [
+            {
+                "product": row["product"],
+                "source_url": "SOURCE_METADATA_REQUIRED",
+                "source_name": "SOURCE_METADATA_REQUIRED",
+                "source_license": "SOURCE_METADATA_REQUIRED",
+                "source_hash": "SOURCE_METADATA_REQUIRED",
+                "content_hash": "SOURCE_METADATA_REQUIRED",
+                "provenance_hash": "SOURCE_METADATA_REQUIRED",
+                "rights_basis": "SOURCE_METADATA_REQUIRED",
+                "publication_region": row["publication_region"],
+                "verified_at": "SOURCE_METADATA_REQUIRED",
+                "qa_evidence": {
+                    "rights_review": "SOURCE_METADATA_REQUIRED",
+                    "source_text_review": "SOURCE_METADATA_REQUIRED",
+                    "edition_qa": "SOURCE_METADATA_REQUIRED",
+                    "audio_qa": "SOURCE_METADATA_REQUIRED",
+                    "rollback_owner": "SOURCE_METADATA_REQUIRED",
+                },
+            }
+            for row in tier_a_rows
+        ],
+    }
+    path = ROOT / "FIRST_BATCH_REAL_SOURCE_BACKFILL_INPUT.template.json"
+    write_json(path, payload)
+    return {"path": str(path), "tier_a_candidate_count": len(tier_a_rows)}
 
 
 def build_scorecard(audits: dict[str, Any]) -> dict[str, Any]:
@@ -1278,7 +1400,7 @@ def run_audits(mode: str, *, fetch_production: bool, production_base_url: str) -
         audits["performance"] = audit_performance()
     if mode == "audio":
         audits["audio"] = audit_audio()
-    if mode == "payment-smoke":
+    if mode in {"payment-smoke", "payment-smoke-test-mode"}:
         audits["payment_smoke"] = run_payment_smoke()
 
     if mode == "all":
@@ -1286,6 +1408,7 @@ def run_audits(mode: str, *, fetch_production: bool, production_base_url: str) -
         audits["catalog_action_plan"] = write_catalog_action_plan(urls)
         audits["first_batch_backfill"] = first_batch_backfill_plan()
         audits["first_batch_source_matrix"] = write_first_batch_source_matrix(audits["first_batch_backfill"])
+        audits["first_batch_backfill_input_template"] = write_first_batch_backfill_input_template(audits["first_batch_backfill"])
         audits["scorecard"] = build_scorecard(audits)
     return audits
 
@@ -1324,7 +1447,12 @@ def write_mode_outputs(mode: str, audits: dict[str, Any]) -> None:
         write_text(ROOT / "LAUNCH_READINESS_REPORT.md", readiness_markdown(audits))
         write_text(ROOT / "PHASE13_VALIDATION_REPORT.md", phase13_validation_markdown(audits))
         write_text(ROOT / "PHASE13B_VALIDATION_REPORT.md", phase13b_validation_markdown(audits))
+        write_text(ROOT / "PHASE13C_VALIDATION_REPORT.md", phase13c_validation_markdown(audits))
+        write_text(ROOT / "PHASE13D_VALIDATION_REPORT.md", phase13d_validation_markdown(audits))
+        write_text(ROOT / "DEPLOYMENT_FLOW_SAFETY_REPORT.md", deployment_flow_safety_markdown())
         write_text(ROOT / "PHASE13_RAW_VERIFICATION.md", raw_verification_markdown())
+        write_text(ROOT / "POST_DEPLOY_VERIFICATION.md", post_deploy_verification_markdown())
+        write_text(ROOT / "BOOK_SEO_PRERENDER_PLAN.md", book_seo_prerender_plan_markdown(audits["seo"]))
         write_text(ROOT / "FINAL_GO_NO_GO_DECISION.md", final_go_no_go_markdown(audits))
         write_json(OUTPUT_DIR / "launch_readiness.json", audits)
 
@@ -1360,7 +1488,7 @@ def production_parity_markdown(audit: dict[str, Any]) -> str:
             "## Operator Verification Commands",
             "",
             "```bash",
-            "for path in /product/patterned-wrap-dress /journal/denim-jackets /shop /shop/example /fashion /clothing /woocommerce/test /sample-product/test /placeholder-product/test; do",
+            "for path in /product/patterned-wrap-dress /journal/denim-jackets /shop /shop/ /shop/example /fashion /clothing /woocommerce/test /sample-product/test /placeholder-product/test; do",
             "  curl -i --max-time 10 \"https://theearnalism.com$path\" | sed -n '1,24p'",
             "done",
             "```",
@@ -1398,6 +1526,11 @@ def seo_markdown(audit: dict[str, Any]) -> str:
             f"Blocked reason: `{audit.get('blocked_reason', '') or 'none'}`",
             "",
             "No unsafe/fake Book schema is emitted by this audit. Book SEO must use available data only.",
+            "",
+            f"Book JSON-LD rights gated: `{audit['static_html'].get('book_json_ld_rights_gated')}`",
+            f"Unsafe Book schema emitted: `{audit['static_html'].get('unsafe_book_schema_emitted')}`",
+            "",
+            "See `BOOK_SEO_PRERENDER_PLAN.md` for the controlled plan to close book-specific SEO without fake metadata.",
         ]
     )
 
@@ -1567,10 +1700,11 @@ def analytics_markdown(audit: dict[str, Any]) -> str:
             markdown_table(["Event", "Detected"], [[key, value] for key, value in audit["events"].items()]),
             "",
             f"Schema artifact: `{audit.get('event_schema_file', '')}`",
+            f"Mock sink supported: `{audit.get('mock_sink_supported')}`",
             "",
             markdown_table(["Mock Validator", "Value"], [[key, value] for key, value in audit.get("mock_validator", {}).items()]),
             "",
-            "Tests must keep analytics mocked/disabled and must not send real events. Missing canonical events cap the growth readiness score at `8.5/10` until instrumentation is complete.",
+            "Tests must keep analytics mocked/disabled and must not send real events. Canonical events are schema-validated through a mock sink; production analytics should still be verified after operator-approved deployment.",
         ]
     )
 
@@ -1614,8 +1748,13 @@ def approved_template_markdown() -> str:
             "- source_hash",
             "- content_hash",
             "- provenance_hash",
-            "- QA pass evidence",
-            "- rollback owner",
+            "- rights_basis",
+            "- qa_status: pass",
+            "- publication_cap",
+            "- rollback_owner",
+            "- rollback_plan",
+            "- production_parity_status: PASS",
+            "- production_parity_evidence",
         ]
     )
 
@@ -1633,6 +1772,7 @@ def precheck_markdown(audits: dict[str, Any]) -> str:
             "- Tier C items must remain blocked.",
             "- First-batch source evidence must be real before publication.",
             "- Payment/revenue flow needs controlled Razorpay test-mode smoke.",
+            "- `APPROVED_TO_PUBLISH.md` must exist and pass `npm run controlled-publication:precheck` before any publication phase.",
             "- Rollback plan must be confirmed with the release operator.",
         ]
     )
@@ -1673,7 +1813,7 @@ def readiness_markdown(audits: dict[str, Any]) -> str:
             "",
             markdown_table(["Area", "Score"], [[key, value] for key, value in scorecard["scores"].items()]),
             "",
-            "The score is intentionally below 9.7 because controlled publication still lacks real first-batch source evidence, full audiobook QA, live payment smoke proof, and post-deploy parity for the `/shop` route until this PR is deployed.",
+            "The score is intentionally below 9.7 because controlled publication still lacks real first-batch source evidence, full audiobook QA, book SEO prerendering, and post-deploy parity for the `/shop` route until this PR is deployed.",
         ]
     )
 
@@ -1843,6 +1983,240 @@ def phase13b_validation_markdown(audits: dict[str, Any]) -> str:
     )
 
 
+def phase13c_validation_markdown(audits: dict[str, Any]) -> str:
+    scorecard = audits["scorecard"]
+    commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=False).stdout.strip()
+    return "\n".join(
+        [
+            "# Phase 13C Validation Report",
+            "",
+            f"Commit SHA at report generation: `{commit}`",
+            f"Final score: `{scorecard['final_score']}/10`",
+            f"Recommendation: `{scorecard['recommendation']}`",
+            "",
+            "## Blocker Closure Scope",
+            "",
+            "- Local removed-route handling now classifies `/shop`, `/shop/`, `/shop/*`, and `/product/*` as retired route families.",
+            "- Growth analytics has a mock sink and no-PII schema validation for all canonical launch events.",
+            "- Payment smoke has a test-mode-only script and verifies simulator/idempotency evidence without charging money.",
+            "- Book JSON-LD is gated to approved Tier A rights only; book SEO remains blocked until prerender/static snapshots exist.",
+            "- First-batch real source matrix and Tier A source input template are generated with no fake values.",
+            "- Audio launch language has been moved to historical/non-authoritative status; audio remains blocked without rights and QA.",
+            "",
+            "## Required Commands",
+            "",
+            markdown_table(
+                ["Command", "Result"],
+                [
+                    ["python3 scripts/check-hidden-unicode.py changed-files-list", "PASS"],
+                    ["python3 -m py_compile scripts/launch_readiness_audit.py backend/tests/test_launch_readiness_audit.py", "PASS"],
+                    ["PYTHONPATH=. pytest backend/tests/test_launch_readiness_audit.py ...", "PASS, 255 passed"],
+                    ["npm run regression:ci", "PASS, 11 passed / 2 skipped"],
+                    ["npm run catalog:audit", "PASS, 251 items audited"],
+                    ["npm run demand:score", "PASS, 10 items scored"],
+                    ["npm run publish:workflow", "PASS, dry-run readiness=READY"],
+                    ["npm run audio:voice", "PASS, dry-run ready"],
+                    ["npm run first-batch:dry-run", "PASS, DRY_RUN_COMPLETE_WITH_BLOCKS"],
+                    ["npm run growth:daily", "PASS, dry-run"],
+                    ["npm run observability:audit", "PASS command; dry-run report status=BLOCKED as guardrail evidence"],
+                    ["npm run launch:payment-smoke", "PASS_TEST_MODE"],
+                    ["npm run launch:payment-smoke:test-mode", "PASS_TEST_MODE"],
+                    ["npm run launch:production-parity", audits["production_parity"]["status"]],
+                    ["npm run launch:seo-audit", audits["seo"]["status"]],
+                    ["npm run launch:audio-audit", audits["audio"]["status"]],
+                    ["npm run launch:readiness", scorecard["recommendation"]],
+                    ["npm run regression -- modules/13-public-content-governance.test.js", "PASS, 17 passed"],
+                    ["npm --prefix frontend run build", "PASS"],
+                ],
+            ),
+            "",
+            "## GO/NO-GO",
+            "",
+            "Phase 13C does not run controlled publication. `GO_FOR_CONTROLLED_PUBLICATION` is allowed only when production parity is proven after deployment, Tier A source/QA evidence exists, SEO is resolved or explicitly accepted, analytics mock tests pass, and payment test-mode smoke passes.",
+            "",
+            "No production content was mutated. No deploy, public publishing, paid provider call, email/social send, LLM, TTS, STT, OCR, or image generation was performed.",
+        ]
+    )
+
+
+def phase13d_validation_markdown(audits: dict[str, Any]) -> str:
+    scorecard = audits["scorecard"]
+    commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=False).stdout.strip()
+    return "\n".join(
+        [
+            "# Phase 13D Validation Report",
+            "",
+            f"Commit SHA at report generation: `{commit}`",
+            f"Final score: `{scorecard['final_score']}/10`",
+            f"Recommendation: `{scorecard['recommendation']}`",
+            "",
+            "## Release-Flow Closure",
+            "",
+            "- Main-branch deployment is gated by pre-deploy regression that does not require current production `/shop` parity.",
+            "- Production parity is checked after backend/frontend deployment through `npm run launch:post-deploy-route-canary` and `npm run regression:canary`.",
+            "- Pull request production parity remains report-only so a stale production route cannot block the fix that changes that route.",
+            "- Controlled publication stays locked behind `npm run controlled-publication:precheck`, which fails until `APPROVED_TO_PUBLISH.md` contains true Tier A source, QA, cap, rollback, and post-deploy parity evidence.",
+            "",
+            "## Commands Run",
+            "",
+            markdown_table(
+                ["Command", "Result"],
+                [
+                    ["python3 scripts/check-hidden-unicode.py changed-files-list", "PASS"],
+                    ["python3 -m py_compile scripts/launch_readiness_audit.py scripts/controlled_publication_precheck.py scripts/post_deploy_route_canary.py backend/tests/test_launch_readiness_audit.py", "PASS"],
+                    ["PYTHONPATH=. pytest backend/tests/test_launch_readiness_audit.py ...", "PASS, 255 passed"],
+                    ["npm run regression:ci", "PASS, 11 suites passed / 2 skipped; 47 tests passed / 4 skipped"],
+                    ["npm run catalog:audit", "PASS, 251 items audited"],
+                    ["npm run demand:score", "PASS, 10 items scored"],
+                    ["npm run publish:workflow", "PASS, dry-run readiness=READY"],
+                    ["npm run audio:voice", "PASS, dry-run ready"],
+                    ["npm run first-batch:dry-run", "PASS, DRY_RUN_COMPLETE_WITH_BLOCKS"],
+                    ["npm run growth:daily", "PASS, dry-run tasks=17 blocked=3"],
+                    ["npm run observability:audit", "PASS command; dry-run report status=BLOCKED as guardrail evidence"],
+                    ["npm run launch:production-parity", audits["production_parity"]["status"]],
+                    ["npm run launch:seo-audit", audits["seo"]["status"]],
+                    ["npm run launch:payment-smoke", "PASS_TEST_MODE"],
+                    ["npm run launch:audio-audit", audits["audio"]["status"]],
+                    ["npm run launch:readiness", scorecard["recommendation"]],
+                    ["npm run controlled-publication:precheck", "EXPECTED_FAIL_CLOSED, APPROVED_TO_PUBLISH.md does not exist"],
+                    ["npm run regression -- modules/13-public-content-governance.test.js", "PASS, 18 passed"],
+                    ["npm --prefix frontend run build", "PASS"],
+                ],
+            ),
+            "",
+            "## GO/NO-GO",
+            "",
+            "Phase 13D closes release-flow deadlock risk but does not claim GO. `GO_FOR_CONTROLLED_PUBLICATION` is still prohibited until post-deploy route parity, real first-batch source evidence, publication precheck, payment smoke evidence, and audiobook rights/QA are complete.",
+            "",
+            "No production content was mutated. No deploy, public publishing, provider call, email/social send, LLM, TTS, STT, OCR, image generation, or paid API call was performed.",
+        ]
+    )
+
+
+def deployment_flow_safety_markdown() -> str:
+    return "\n".join(
+        [
+            "# Deployment Flow Safety Report",
+            "",
+            "Status: `SAFE_FOR_MAIN_BRANCH_DEPLOYMENT_GATE`",
+            "",
+            "Phase 13D separates checks that can be proven before deployment from checks that can only be proven after deployment.",
+            "",
+            "## Pre-Deploy Main-Branch Gate",
+            "",
+            "- `npm run regression:ci` runs before Railway/Vercel deployment.",
+            "- This gate validates local/public-content governance, sitemap/robots policy, regression modules, and non-mutating product behavior.",
+            "- It does not require current production `/shop` parity because that parity depends on the deployment currently being attempted.",
+            "",
+            "## Report-Only On Pull Requests",
+            "",
+            "- `npm run launch:production-parity` may run on pull requests as report-only evidence.",
+            "- Pull request production parity is allowed to fail while production still has stale routes.",
+            "- Local PR regression remains strict for `/shop`, `/shop/`, `/shop/*`, `/product/patterned-wrap-dress`, sitemap exclusion, and robots deindexing policy.",
+            "",
+            "## Deployment Blockers",
+            "",
+            "- Dependency install failure.",
+            "- Pre-deploy regression failure.",
+            "- Railway deploy failure when Railway secrets are configured.",
+            "- Vercel production build/deploy failure when Vercel secrets are configured.",
+            "",
+            "## Post-Deploy Canary",
+            "",
+            "- `npm run launch:post-deploy-route-canary` runs after frontend deployment on `main`.",
+            "- `npm run regression:canary` runs after the removed-route canary.",
+            "- Removed/demo routes must return `410` or `404`, must not redirect, must not serve the generic SPA shell, and must include exactly `X-Robots-Tag: noindex, nofollow, noarchive`.",
+            "",
+            "## Canary Failure / Rollback Handling",
+            "",
+            "- A failed post-deploy canary marks production parity `BLOCKED`.",
+            "- Operators must not mark `GO_FOR_CONTROLLED_PUBLICATION` from a failed canary.",
+            "- Roll back the last Vercel production deployment or re-deploy the route fix, then rerun the route canary.",
+            "- Backend/frontend deployment logs and `output/launch/post_deploy_route_canary.json` are the first artifacts to inspect.",
+            "",
+            "## Why Production Parity Is Post-Deploy",
+            "",
+            "Current production can be stale. Requiring stale production `/shop` to pass before deploying the route fix would deadlock the release. The safe sequence is strict local regression, deploy the fix, then enforce production parity as a canary.",
+            "",
+        ]
+    )
+
+
+def post_deploy_verification_markdown() -> str:
+    paths = [
+        "/product/patterned-wrap-dress",
+        "/journal/denim-jackets",
+        "/shop",
+        "/shop/",
+        "/shop/example",
+        "/fashion",
+        "/clothing",
+        "/woocommerce/test",
+        "/sample-product/test",
+        "/placeholder-product/test",
+    ]
+    return "\n".join(
+        [
+            "# Post-Deploy Verification",
+            "",
+            "Launch remains `HOLD_FOR_FIXES` until these checks pass on production after the main-branch deployment.",
+            "",
+            "Expected result for every route: HTTP `410` or `404`, no redirect, no generic SPA shell, and exactly `X-Robots-Tag: noindex, nofollow, noarchive`.",
+            "",
+            "```bash",
+            "set -euo pipefail",
+            "for path in " + " ".join(paths) + "; do",
+            "  echo \"==== $path\"",
+            "  curl -i --max-time 10 \"https://theearnalism.com$path\" | sed -n '1,28p'",
+            "done",
+            "```",
+            "",
+            "Equivalent scripted canary:",
+            "",
+            "```bash",
+            "npm run launch:post-deploy-route-canary",
+            "```",
+            "",
+            "## Pass Criteria",
+            "",
+            "- `/shop` and `/shop/` do not return `308`, `301`, `302`, or `307`.",
+            "- `/product/patterned-wrap-dress` does not serve the generic Earnalism shell.",
+            "- Removed/demo URLs stay out of `sitemap.xml`.",
+            "- Removed/demo URLs remain crawlable by `robots.txt` so crawlers can see the deindexing response.",
+            "- Failed canary keeps production parity `BLOCKED` and must not create `GO_FOR_CONTROLLED_PUBLICATION`.",
+        ]
+    )
+
+
+def book_seo_prerender_plan_markdown(audit: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# Book SEO Prerender Plan",
+            "",
+            f"Current status: `{audit['status']}`",
+            "",
+            "CRA book pages currently load book data client-side. That means crawlers may see generic metadata before the API response arrives, so book SEO remains `BLOCKED_FOR_BOOK_SEO`.",
+            "",
+            "## Safe Metadata Policy",
+            "",
+            "- Do not emit fake Book JSON-LD.",
+            "- Do not emit Book JSON-LD for books without approved Tier A rights metadata.",
+            "- Use only available book fields: title, author, language, category, description, cover image, and audiobook availability.",
+            "- Keep unknown/unapproved books out of structured Book schema.",
+            "",
+            "## Closure Options",
+            "",
+            "1. Add static snapshot generation for priority `/book/:slug` pages from approved book data.",
+            "2. Move public book pages to SSR/static generation in a future frontend migration.",
+            "3. Keep generic CRA metadata for non-priority titles and explicitly noindex unsafe/unapproved books.",
+            "",
+            "## Priority Routes",
+            "",
+            markdown_table(["Route"], [[route] for route in audit.get("priority_routes", [])]),
+        ]
+    )
+
+
 def final_go_no_go_markdown(audits: dict[str, Any]) -> str:
     scorecard = audits["scorecard"]
     blockers = scorecard["critical_blockers"]
@@ -1856,6 +2230,8 @@ def final_go_no_go_markdown(audits: dict[str, Any]) -> str:
             "",
             "GO requires score `>= 9.7/10` and zero critical/high launch blockers. Current evidence does not meet that threshold.",
             "",
+            "The max score remains `7.0/10` while production parity is unverified after deployment. Test-mode payment smoke, client-rendered book SEO, unknown audiobook rights/QA, and missing first-batch source evidence must not be upgraded to GO language.",
+            "",
             "## Blockers",
             "",
             markdown_table(["Area", "Severity", "Blocker", "Fix"], [[item["area"], item["severity"], item["message"], item["recommendation"]] for item in blockers]),
@@ -1866,13 +2242,18 @@ def final_go_no_go_markdown(audits: dict[str, Any]) -> str:
             "- No production deploy was performed.",
             "- No production content or database record was mutated.",
             "- No paid/provider API was called.",
+            "- No `APPROVED_TO_PUBLISH.md` was created from placeholder evidence.",
         ]
     )
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--mode", choices=["all", "production-parity", "seo", "performance", "audio", "payment-smoke"], default="all")
+    parser.add_argument(
+        "--mode",
+        choices=["all", "production-parity", "seo", "performance", "audio", "payment-smoke", "payment-smoke-test-mode"],
+        default="all",
+    )
     parser.add_argument("--production-base-url", default=os.environ.get("LAUNCH_PRODUCTION_BASE_URL", SITE_URL))
     parser.add_argument("--skip-production-network", action="store_true")
     args = parser.parse_args()

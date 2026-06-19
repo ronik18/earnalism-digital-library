@@ -11,6 +11,7 @@ Removed/demo routes must return `410` or `404` with exactly `X-Robots-Tag: noind
 | /product/patterned-wrap-dress | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /journal/denim-jackets | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /shop | 410 | removed-content | noindex, nofollow, noarchive | False |
+| /shop/ | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /shop/example | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /fashion | 410 | removed-content | noindex, nofollow, noarchive | False |
 | /clothing | 410 | removed-content | noindex, nofollow, noarchive | False |
@@ -25,6 +26,7 @@ Removed/demo routes must return `410` or `404` with exactly `X-Robots-Tag: noind
 | https://theearnalism.com/product/patterned-wrap-dress | 410 | https://theearnalism.com/product/patterned-wrap-dress | noindex, nofollow, noarchive | False |  |
 | https://theearnalism.com/journal/denim-jackets | 410 | https://theearnalism.com/journal/denim-jackets | noindex, nofollow, noarchive | False |  |
 | https://theearnalism.com/shop | 308 | https://theearnalism.com/library |  | False |  |
+| https://theearnalism.com/shop/ | 308 | https://theearnalism.com/library |  | False |  |
 | https://theearnalism.com/shop/example | 404 | https://theearnalism.com/shop/example | noindex, nofollow, noarchive | False |  |
 | https://theearnalism.com/fashion | 410 | https://theearnalism.com/fashion | noindex, nofollow, noarchive | False |  |
 | https://theearnalism.com/clothing | 410 | https://theearnalism.com/clothing | noindex, nofollow, noarchive | False |  |
@@ -40,7 +42,7 @@ Removed/demo routes must return `410` or `404` with exactly `X-Robots-Tag: noind
 ## Operator Verification Commands
 
 ```bash
-for path in /product/patterned-wrap-dress /journal/denim-jackets /shop /shop/example /fashion /clothing /woocommerce/test /sample-product/test /placeholder-product/test; do
+for path in /product/patterned-wrap-dress /journal/denim-jackets /shop /shop/ /shop/example /fashion /clothing /woocommerce/test /sample-product/test /placeholder-product/test; do
   curl -i --max-time 10 "https://theearnalism.com$path" | sed -n '1,24p'
 done
 ```

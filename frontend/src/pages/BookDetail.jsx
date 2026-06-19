@@ -60,7 +60,12 @@ export default function BookDetail() {
   }, [book, loading]);
 
   const bookLanguage = book && BENGALI_RE.test(`${book.title || ""} ${book.description || ""} ${book.short_description || ""}`) ? "bn" : "en";
-  const bookSchema = book ? {
+  const rights = book?.rights_metadata || book?.rights || {};
+  const bookSchemaAllowed =
+    rights?.rights_tier === "A"
+    && rights?.verification_status === "approved"
+    && !rights?.blocked_reason;
+  const bookSchema = book && bookSchemaAllowed ? {
     "@context": "https://schema.org",
     "@type": "Book",
     "name": book.title,
@@ -105,7 +110,7 @@ export default function BookDetail() {
 
   return (
     <div data-testid="book-page">
-      {bookSchema && <JsonLd id="book" data={bookSchema} />}
+      {bookSchemaAllowed && bookSchema && <JsonLd id="book" data={bookSchema} />}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-10">
         <Link to="/library" className="inline-flex items-center gap-1 text-xs tracking-[0.18em] uppercase text-charcoal-soft hover:text-burgundy" data-testid="back-to-library">
           <ChevronLeft size={14} /> Back to Library

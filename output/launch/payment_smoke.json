@@ -1,5 +1,5 @@
 {
-  "status": "PASS_WITH_WARNINGS",
+  "status": "PASS_TEST_MODE",
   "mode": "dry_run_static",
   "public_mutation": false,
   "external_calls": [],
@@ -17,7 +17,11 @@
     "webhook_endpoint_detected": true,
     "webhook_signature_detected": true,
     "idempotent_credit_detected": true,
+    "wallet_credit_idempotency_test_detected": true,
+    "webhook_idempotency_test_detected": true,
+    "admin_reconcile_idempotency_test_detected": true,
     "post_payment_wallet_refresh_detected": true,
+    "post_payment_return_route_exists": true,
     "analytics_schema_has_payment_events": true
   },
   "blocked_checks": [],

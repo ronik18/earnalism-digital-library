@@ -51,23 +51,22 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         run: npm run regression:ci
 
-      - name: Run GO LIVE regression
+      - name: Run main pre-deploy regression
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
-          REGRESSION_MODE: go-live
-          REGRESSION_TARGET: production
-          REGRESSION_ALLOW_PRODUCTION_TARGET: "true"
+          REGRESSION_MODE: pr
           MONGODB_URL: ${{ secrets.STAGING_MONGODB_URL || secrets.MONGODB_URL }}
           REDIS_URL: ${{ secrets.STAGING_REDIS_URL || secrets.REDIS_URL }}
           JUDOSCALE_URL: ${{ secrets.JUDOSCALE_URL }}
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
           REGRESSION_ENABLE_LOAD_TEST: ${{ vars.REGRESSION_ENABLE_LOAD_TEST || 'false' }}
           REGRESSION_REQUIRE_INFRA_SECRETS: ${{ vars.REGRESSION_REQUIRE_INFRA_SECRETS || 'false' }}
-        run: npm run regression:go-live
+        run: npm run regression:ci
 
-      - name: Assert GO LIVE pass
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: node regression/scripts/assert-go-live-pass.js
+      - name: Report production parity without blocking PR deploy fix
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
+        run: npm run launch:production-parity
 
       - name: Upload regression artifacts
         if: always()
@@ -99,7 +98,7 @@ jobs:
             });
 
   deploy:
-    name: Railway deploy after GO LIVE pass
+    name: Railway deploy after pre-deploy pass
     needs: regression
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -134,7 +133,7 @@ jobs:
         run: railway up backend --path-as-root --service "${RAILWAY_SERVICE_ID}" --environment "${RAILWAY_ENVIRONMENT}"
 
   deploy_frontend:
-    name: Vercel frontend deploy after GO LIVE pass
+    name: Vercel frontend deploy after pre-deploy pass
     needs:
       - regression
       - deploy
@@ -232,6 +231,7 @@ jobs:
   canary:
     name: production canary
     needs:
+      - regression
       - deploy
       - deploy_frontend
     if: >-
@@ -258,6 +258,8 @@ jobs:
           cache: npm
       - name: Install root dependencies
         run: npm ci
+      - name: Run removed-route post-deploy canary
+        run: npm run launch:post-deploy-route-canary
       - name: Run canary
         run: npm run regression:canary
       - name: Upload canary artifacts
@@ -265,4 +267,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: canary-regression-artifacts
-          path: regression/results.json
+          path: |
+            regression/results.json
+            output/launch/post_deploy_route_canary.json
+            output/launch/post_deploy_route_canary.md

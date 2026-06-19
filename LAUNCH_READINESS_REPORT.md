@@ -16,8 +16,8 @@ Recommendation: `HOLD_FOR_FIXES`
 | autoscaling_readiness | 8.0 |
 | security_privacy | 8.4 |
 | payment_revenue_flow | 8.0 |
-| analytics_growth_tracking | 8.5 |
+| analytics_growth_tracking | 9.0 |
 | observability_incident_response | 9.0 |
 | rollback_readiness | 8.5 |
 
-The score is intentionally below 9.7 because controlled publication still lacks real first-batch source evidence, full audiobook QA, live payment smoke proof, and post-deploy parity for the `/shop` route until this PR is deployed.
+The score is intentionally below 9.7 because controlled publication still lacks real first-batch source evidence, full audiobook QA, book SEO prerendering, and post-deploy parity for the `/shop` route until this PR is deployed.

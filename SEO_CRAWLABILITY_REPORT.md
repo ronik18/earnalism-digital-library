@@ -31,3 +31,8 @@ Launch SEO should stay on HOLD until priority book pages are either prerendered 
 Blocked reason: `Client-rendered CRA book pages need prerender/SSR/static snapshots for durable book SEO.`
 
 No unsafe/fake Book schema is emitted by this audit. Book SEO must use available data only.
+
+Book JSON-LD rights gated: `True`
+Unsafe Book schema emitted: `False`
+
+See `BOOK_SEO_PRERENDER_PLAN.md` for the controlled plan to close book-specific SEO without fake metadata.

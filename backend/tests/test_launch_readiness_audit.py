@@ -5,12 +5,15 @@ from pathlib import Path
 
 from scripts.launch_readiness_audit import (
     ROOT,
+    LAUNCH_EVENTS,
+    analytics_event_schema,
     audit_audio,
     run_payment_smoke,
     audit_production_parity,
     audit_seo,
     local_removed_route_status,
     run_audits,
+    validate_mock_analytics_events,
     validate_removed_route,
     write_mode_outputs,
 )
@@ -19,6 +22,15 @@ from scripts.launch_readiness_audit import (
 def test_shop_is_routed_to_removed_content_locally():
     vercel_config = json.loads((ROOT / "frontend" / "vercel.json").read_text(encoding="utf-8"))
     route = local_removed_route_status("/shop", vercel_config)
+
+    assert route["matched"] == "removed-content"
+    assert route["status"] == 410
+    assert route["x_robots_tag"] == "noindex, nofollow, noarchive"
+
+
+def test_shop_slash_is_routed_to_removed_content_locally():
+    vercel_config = json.loads((ROOT / "frontend" / "vercel.json").read_text(encoding="utf-8"))
+    route = local_removed_route_status("/shop/", vercel_config)
 
     assert route["matched"] == "removed-content"
     assert route["status"] == 410
@@ -104,6 +116,20 @@ def test_audio_audit_detects_remote_upload_guards():
 
     assert audit["guards"]["remote_upload_guard_present"] is True
     assert audit["guards"]["voice_pipeline_dry_run_only"] is True
+    assert audit["guards"]["final_action_plan_archived"] is True
+
+
+def test_analytics_schema_mock_covers_all_launch_events_without_pii():
+    schema = analytics_event_schema()
+    result = validate_mock_analytics_events(schema)
+
+    assert result["status"] == "PASS"
+    assert result["coverage_complete"] is True
+    assert sorted(result["covered_events"]) == sorted(LAUNCH_EVENTS)
+    for event in schema["events"]:
+        assert "email" in event["blocked_metadata_fields"]
+        assert event["recipients"] == []
+        assert event["provider_api_ids"] == []
 
 
 def test_payment_smoke_is_dry_run_static(tmp_path, monkeypatch):
@@ -111,9 +137,12 @@ def test_payment_smoke_is_dry_run_static(tmp_path, monkeypatch):
 
     smoke = run_payment_smoke()
 
+    assert smoke["status"] == "PASS_TEST_MODE"
     assert smoke["mode"] == "dry_run_static"
     assert smoke["public_mutation"] is False
     assert smoke["external_calls"] == []
+    assert smoke["checks"]["wallet_credit_idempotency_test_detected"] is True
+    assert smoke["checks"]["webhook_idempotency_test_detected"] is True
     assert (tmp_path / "launch" / "payment_smoke.json").exists()
 
 
@@ -142,6 +171,10 @@ def test_all_audit_writes_required_reports_without_production_network(tmp_path, 
         ROOT / "GROWTH_ANALYTICS_READINESS.md",
         ROOT / "APPROVED_TO_PUBLISH.template.md",
         ROOT / "FIRST_BATCH_REAL_SOURCE_MATRIX.md",
+        ROOT / "FIRST_BATCH_REAL_SOURCE_BACKFILL_INPUT.template.json",
+        ROOT / "POST_DEPLOY_VERIFICATION.md",
+        ROOT / "BOOK_SEO_PRERENDER_PLAN.md",
+        ROOT / "PHASE13C_VALIDATION_REPORT.md",
         ROOT / "FINAL_GO_NO_GO_DECISION.md",
     ]
 
