@@ -1,0 +1,146 @@
+severity,category,path,line,finding,recommendation
+HIGH,provider_guard,AUDIOBOOK_VOICE_PIPELINE.md,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,provider_guard,AUDIO_INTEGRATION_GUIDE.md,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,unsafe_redirect,CLEANUP_REPORT.md,29,Potential legacy /shop to /library redirect.,"Removed demo routes must go to removed-content, not the SPA shell or library."
+HIGH,unsafe_redirect,CLEANUP_REPORT.md,51,Potential legacy /shop to /library redirect.,"Removed demo routes must go to removed-content, not the SPA shell or library."
+HIGH,unsafe_redirect,LAUNCH_FIXES_REPORT.md,5,Potential legacy /shop to /library redirect.,"Removed demo routes must go to removed-content, not the SPA shell or library."
+HIGH,invalid_shebang,PHASE1_BASELINE_VERIFICATION.md,1,Shebang appears after line 1.,Move shebang to the first physical line.
+HIGH,invalid_shebang,PHASE4_VALIDATION_REPORT.md,1,Shebang appears after line 1.,Move shebang to the first physical line.
+HIGH,invalid_shebang,PHASE5_VALIDATION_REPORT.md,1,Shebang appears after line 1.,Move shebang to the first physical line.
+HIGH,invalid_shebang,PHASE6_VALIDATION_REPORT.md,1,Shebang appears after line 1.,Move shebang to the first physical line.
+HIGH,invalid_shebang,PHASE7_VALIDATION_REPORT.md,1,Shebang appears after line 1.,Move shebang to the first physical line.
+HIGH,invalid_shebang,PHASE8_VALIDATION_REPORT.md,1,Shebang appears after line 1.,Move shebang to the first physical line.
+HIGH,provider_guard,README_audio 2.md,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,provider_guard,README_audio.md,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,provider_guard,backend/audiobook_voice_pipeline.py,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,secret_like_string,backend/server.py,441,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,secret_like_string,backend/server.py,454,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,provider_guard,backend/tests/test_audiobook_voice_pipeline.py,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,provider_guard,backend/tests/test_b2_audiobook_routing.py,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,provider_guard,deploy_audio_to_cdn.py,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,provider_guard,deploy_english_audio.sh,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,hidden_unicode,frontend/public/audio/ben/book-0deb35c750_timestamps.json,5703,Hidden Unicode control U+200C detected.,Remove hidden Unicode.
+HIGH,hidden_unicode,frontend/public/audio/ben/book-d19e96859f_timestamps.json,4003,Hidden Unicode control U+200C detected.,Remove hidden Unicode.
+HIGH,hidden_unicode,frontend/public/audio/ben/book-d19e96859f_timestamps.json,4573,Hidden Unicode control U+200C detected.,Remove hidden Unicode.
+HIGH,hidden_unicode,frontend/public/audio/ben/book-d19e96859f_timestamps.json,4648,Hidden Unicode control U+200C detected.,Remove hidden Unicode.
+HIGH,hidden_unicode,frontend/public/audio/ben/ginni_timestamps.json,4003,Hidden Unicode control U+200C detected.,Remove hidden Unicode.
+HIGH,hidden_unicode,frontend/public/audio/ben/ginni_timestamps.json,4573,Hidden Unicode control U+200C detected.,Remove hidden Unicode.
+HIGH,hidden_unicode,frontend/public/audio/ben/ginni_timestamps.json,4648,Hidden Unicode control U+200C detected.,Remove hidden Unicode.
+HIGH,secret_like_string,frontend/src/components/Admin/ChapterUpload.jsx,30,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,secret_like_string,frontend/src/components/Admin/CoverUpload.jsx,42,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,secret_like_string,frontend/src/components/Admin/JournalEditor.jsx,36,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,secret_like_string,frontend/src/components/Admin/JournalEditor.jsx,64,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,secret_like_string,frontend/src/components/Admin/JournalEditor.jsx,90,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,provider_guard,frontend/src/components/AudioPlayer 2.jsx,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,provider_guard,frontend/src/components/AudioPlayer.jsx,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,secret_like_string,frontend/src/components/SecureReader.jsx,28,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,secret_like_string,frontend/src/components/SecureReader.jsx,34,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,raw_html_injection,frontend/src/components/SecureReader.jsx,178,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,secret_like_string,frontend/src/context/AuthContext.jsx,12,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,secret_like_string,frontend/src/context/AuthContext.jsx,18,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,secret_like_string,frontend/src/lib/api.js,219,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,secret_like_string,frontend/src/lib/api.js,227,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,raw_html_injection,frontend/src/pages/Admin.jsx,327,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Admin.jsx,334,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Admin.jsx,1225,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,secret_like_string,frontend/src/pages/Reader.jsx,70,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,raw_html_injection,frontend/src/pages/Reader.jsx,172,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Reader.jsx,189,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Reader.jsx,241,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Reader.jsx,279,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Reader.jsx,293,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Reader.jsx,306,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Reader.jsx,343,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Reader.jsx,357,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Reader.jsx,394,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Reader.jsx,436,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Reader.jsx,731,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,raw_html_injection,frontend/src/pages/Reader.jsx,757,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,secret_like_string,frontend/src/pages/Reader.jsx,797,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,provider_guard,generate_audio 2.py,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,provider_guard,generate_audio 3.py,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,provider_guard,lib/storage/audioUploader.js,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,unsafe_redirect,regression/modules/13-public-content-governance.test.js,125,Potential legacy /shop to /library redirect.,"Removed demo routes must go to removed-content, not the SPA shell or library."
+HIGH,provider_guard,requirements-audio-open-source.txt,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,provider_guard,scripts/audiobook_voice_pipeline.py,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,secret_like_string,scripts/book_production_workflow.py,326,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,unsafe_redirect,scripts/launch_readiness_audit.py,1832,Potential legacy /shop to /library redirect.,"Removed demo routes must go to removed-content, not the SPA shell or library."
+HIGH,raw_html_injection,scripts/line_by_line_launch_audit.py,193,Raw HTML rendering detected.,Verify sanitizer and trusted source boundaries.
+HIGH,unsafe_redirect,scripts/line_by_line_launch_audit.py,195,Potential legacy /shop to /library redirect.,"Removed demo routes must go to removed-content, not the SPA shell or library."
+HIGH,unsafe_redirect,scripts/line_by_line_launch_audit.py,196,Potential legacy /shop to /library redirect.,"Removed demo routes must go to removed-content, not the SPA shell or library."
+HIGH,provider_guard,scripts/open_source_audiobook_onboarding 2.py,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,secret_like_string,scripts/prepare_technical_book 2.py,531,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,secret_like_string,scripts/prepare_technical_book 2.py,532,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,secret_like_string,scripts/prepare_technical_book.py,531,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,secret_like_string,scripts/prepare_technical_book.py,532,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,provider_guard,scripts/run_audiobook_backfill 2.sh,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,provider_guard,scripts/run_audiobook_backfill.sh,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+HIGH,secret_like_string,scripts/run_regression_suite.sh,19,Secret-like literal detected.,Move secrets to environment variables or confirm this is a documented placeholder.
+HIGH,provider_guard,scripts/test_open_source_audiobook_onboarding.py,1,Audio/provider script references remote providers without all production audio guard flags.,"Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO."
+MEDIUM,deployment_script,.github/workflows/regression.yml,133,Deployment command detected.,"Ensure it is documented, main-branch gated, and not part of tests."
+MEDIUM,unsafe_or_stale_launch_language,APPROVED_TO_PUBLISH.template.md,3,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,CONTROLLED_PUBLICATION_PRECHECK.md,11,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,DEPLOYMENT.md,3,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,DEPLOYMENT.md,145,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,deployment_script,DEPLOYMENT_AUTOMATION_POLICY.md,31,Deployment command detected.,"Ensure it is documented, main-branch gated, and not part of tests."
+MEDIUM,unsafe_or_stale_launch_language,DEPLOYMENT_FLOW_SAFETY_REPORT.md,35,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,FINAL_ACTION_PLAN.md,9,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,FINAL_ACTION_PLAN.md,10,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,FINAL_GO_NO_GO_DECISION.md,23,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,FIRST_BATCH_REAL_SOURCE_MATRIX.md,5,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,PHASE13C_VALIDATION_REPORT.md,42,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,PHASE13D_VALIDATION_REPORT.md,12,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,PHASE13D_VALIDATION_REPORT.md,34,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,PHASE13D_VALIDATION_REPORT.md,40,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,POST_DEPLOY_VERIFICATION.md,27,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,deployment_script,README.md,840,Deployment command detected.,"Ensure it is documented, main-branch gated, and not part of tests."
+MEDIUM,deployment_script,README.md,1113,Deployment command detected.,"Ensure it is documented, main-branch gated, and not part of tests."
+MEDIUM,deployment_script,README.md,1156,Deployment command detected.,"Ensure it is documented, main-branch gated, and not part of tests."
+MEDIUM,deployment_script,README.md,1266,Deployment command detected.,"Ensure it is documented, main-branch gated, and not part of tests."
+MEDIUM,unsafe_or_stale_launch_language,README_audio.md,172,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,backend/tests/test_launch_readiness_audit.py,227,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,deployment_script,scripts/commit_push_deploy 2.sh,328,Deployment command detected.,"Ensure it is documented, main-branch gated, and not part of tests."
+MEDIUM,deployment_script,scripts/commit_push_deploy.sh,328,Deployment command detected.,"Ensure it is documented, main-branch gated, and not part of tests."
+MEDIUM,unsafe_or_stale_launch_language,scripts/controlled_publication_precheck.py,21,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/controlled_publication_precheck.py,112,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/controlled_publication_precheck.py,117,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,1267,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,1397,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,1472,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,1474,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,1772,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,1812,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,2080,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,2103,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,2126,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,2134,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,2191,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,2209,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,2253,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,2306,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,2343,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/launch_readiness_audit.py,2370,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/line_by_line_launch_audit.py,191,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,deployment_script,scripts/line_by_line_launch_audit.py,197,Deployment command detected.,"Ensure it is documented, main-branch gated, and not part of tests."
+MEDIUM,unsafe_or_stale_launch_language,scripts/post_deploy_route_canary.py,131,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+MEDIUM,unsafe_or_stale_launch_language,scripts/post_deploy_route_canary.py,170,Launch/GO language requires review.,Keep launch status HOLD unless evidence satisfies the publication precheck.
+LOW,external_or_mutating_call_site,backend/server.py,5690,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,backend/server.py,5759,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,backend/server.py,5789,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,backend/server.py,5865,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,backend/server.py,5907,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,backend/server.py,6007,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,frontend/src/context/AuthContext.jsx,27,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,frontend/src/context/AuthContext.jsx,38,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,frontend/src/context/AuthContext.jsx,44,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,frontend/src/pages/Admin.jsx,1616,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,frontend/src/pages/Home.jsx,285,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,frontend/src/pages/Pricing.jsx,89,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,frontend/src/pages/Pricing.jsx,108,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,frontend/src/pages/Pricing.jsx,165,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,frontend/src/pages/Pricing.jsx,166,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,frontend/src/pages/Reader.jsx,1664,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,frontend/src/pages/Reader.jsx,1674,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,scripts/launch_readiness_audit.py,966,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,scripts/launch_readiness_audit.py,967,Potential mutating call site.,Verify tests use mocks/dry-run paths only.
+LOW,external_or_mutating_call_site,scripts/launch_readiness_audit.py,968,Potential mutating call site.,Verify tests use mocks/dry-run paths only.

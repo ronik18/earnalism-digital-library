@@ -1,6 +1,6 @@
 {
   "production_parity": {
-    "status": "BLOCKED",
+    "status": "PASS",
     "fetch_production": true,
     "production_base_url": "https://theearnalism.com",
     "vercel": {
@@ -238,25 +238,25 @@
       },
       {
         "url": "https://theearnalism.com/shop",
-        "status": 308,
-        "x_robots_tag": "",
-        "content_type": "text/plain",
-        "final_url": "https://theearnalism.com/library",
+        "status": 410,
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "content_type": "text/html; charset=utf-8",
+        "final_url": "https://theearnalism.com/shop",
         "generic_shell": false,
         "error": ""
       },
       {
         "url": "https://theearnalism.com/shop/",
-        "status": 308,
-        "x_robots_tag": "",
-        "content_type": "text/plain",
-        "final_url": "https://theearnalism.com/library",
+        "status": 410,
+        "x_robots_tag": "noindex, nofollow, noarchive",
+        "content_type": "text/html; charset=utf-8",
+        "final_url": "https://theearnalism.com/shop/",
         "generic_shell": false,
         "error": ""
       },
       {
         "url": "https://theearnalism.com/shop/example",
-        "status": 404,
+        "status": 410,
         "x_robots_tag": "noindex, nofollow, noarchive",
         "content_type": "text/html; charset=utf-8",
         "final_url": "https://theearnalism.com/shop/example",
@@ -313,29 +313,7 @@
       "curl_text": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/production_removed_routes_curl.txt",
       "json": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/launch/production_removed_routes.json"
     },
-    "issues": [
-      {
-        "area": "production_parity",
-        "severity": "HIGH",
-        "message": "Production https://theearnalism.com/shop returned redirect HTTP 308.",
-        "recommendation": "Removed/demo URLs must return 410 or 404 with X-Robots-Tag for deindexing.",
-        "blocker": true
-      },
-      {
-        "area": "production_parity",
-        "severity": "HIGH",
-        "message": "Production /shop returned HTTP 308; /shop must not redirect.",
-        "recommendation": "Deploy current Vercel routing so /shop returns 410/noindex.",
-        "blocker": true
-      },
-      {
-        "area": "production_parity",
-        "severity": "HIGH",
-        "message": "Production https://theearnalism.com/shop/ returned redirect HTTP 308.",
-        "recommendation": "Removed/demo URLs must return 410 or 404 with X-Robots-Tag for deindexing.",
-        "blocker": true
-      }
-    ]
+    "issues": []
   },
   "seo": {
     "status": "BLOCKED_FOR_BOOK_SEO",
@@ -395,7 +373,10 @@
       "book_buy_cta": true,
       "pricing_cta": true,
       "pricing_trust_statement": true,
-      "mobile_nav_cta": true
+      "pricing_support_refund_copy": true,
+      "mobile_nav_cta": true,
+      "public_routes_do_not_mount_admin": true,
+      "reader_facing_loading_error_empty_states": true
     },
     "recommendations": [
       "Add server-rendered copy for priority public pages before major SEO launch.",
@@ -1702,7 +1683,8 @@
   "first_batch_backfill": {
     "rows": [
       {
-        "product": "Anandamath Visual Study Companion",
+        "title": "Anandamath Visual Study Companion",
+        "slug": "anandamath-visual-study-companion",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1713,12 +1695,14 @@
         "rights_tier": "B",
         "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "india",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
         "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
       },
       {
-        "product": "Devdas Study Edition",
+        "title": "Devdas Study Edition",
+        "slug": "devdas-study-edition",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1729,12 +1713,14 @@
         "rights_tier": "B",
         "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "india",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
         "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
       },
       {
-        "product": "Abol Tabol Illustrated Reader",
+        "title": "Abol Tabol Illustrated Reader",
+        "slug": "abol-tabol-illustrated-reader",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1745,12 +1731,14 @@
         "rights_tier": "B",
         "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "india",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
         "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
       },
       {
-        "product": "Sultana's Dream Feminist Sci-Fi Edition",
+        "title": "Sultana's Dream Feminist Sci-Fi Edition",
+        "slug": "sultana-s-dream-feminist-sci-fi-edition",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1761,12 +1749,14 @@
         "rights_tier": "A",
         "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "global",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
         "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
       },
       {
-        "product": "Sherlock Holmes Logic Workbook",
+        "title": "Sherlock Holmes Logic Workbook",
+        "slug": "sherlock-holmes-logic-workbook",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1777,12 +1767,14 @@
         "rights_tier": "A",
         "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "global",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
         "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
       },
       {
-        "product": "Dracula Gothic Fiction Visual Guide",
+        "title": "Dracula Gothic Fiction Visual Guide",
+        "slug": "dracula-gothic-fiction-visual-guide",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1793,12 +1785,14 @@
         "rights_tier": "A",
         "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "global",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
         "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
       },
       {
-        "product": "Frankenstein Science & Ethics Guide",
+        "title": "Frankenstein Science & Ethics Guide",
+        "slug": "frankenstein-science-ethics-guide",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1809,12 +1803,14 @@
         "rights_tier": "A",
         "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "global",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
         "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
       },
       {
-        "product": "Tagore Short Stories for Young Readers",
+        "title": "Tagore Short Stories for Young Readers",
+        "slug": "tagore-short-stories-for-young-readers",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1825,12 +1821,14 @@
         "rights_tier": "B",
         "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "india",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
         "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
       },
       {
-        "product": "Calculus Made Easy Visual Guide",
+        "title": "Calculus Made Easy Visual Guide",
+        "slug": "calculus-made-easy-visual-guide",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1841,12 +1839,14 @@
         "rights_tier": "A",
         "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "global",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
         "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
       },
       {
-        "product": "Chander Pahar Adventure Companion",
+        "title": "Chander Pahar Adventure Companion",
+        "slug": "chander-pahar-adventure-companion",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1857,8 +1857,9 @@
         "rights_tier": "B",
         "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "india",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
         "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
       }
     ],
@@ -1867,24 +1868,10 @@
   "first_batch_source_matrix": {
     "rows": [
       {
-        "product": "Anandamath Visual Study Companion",
-        "source_url": "SOURCE_METADATA_REQUIRED",
-        "source_name": "SOURCE_METADATA_REQUIRED",
-        "source_license": "SOURCE_METADATA_REQUIRED",
-        "source_hash": "SOURCE_METADATA_REQUIRED",
-        "content_hash": "SOURCE_METADATA_REQUIRED",
-        "provenance_hash": "SOURCE_METADATA_REQUIRED",
-        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "title": "Anandamath Visual Study Companion",
+        "slug": "anandamath-visual-study-companion",
         "rights_tier": "B",
-        "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "india",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
-        "ready_for_publication": "no",
-        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
-      },
-      {
-        "product": "Devdas Study Edition",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1892,16 +1879,17 @@
         "content_hash": "SOURCE_METADATA_REQUIRED",
         "provenance_hash": "SOURCE_METADATA_REQUIRED",
         "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "title": "Devdas Study Edition",
+        "slug": "devdas-study-edition",
         "rights_tier": "B",
-        "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "india",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
-        "ready_for_publication": "no",
-        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
-      },
-      {
-        "product": "Abol Tabol Illustrated Reader",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1909,16 +1897,17 @@
         "content_hash": "SOURCE_METADATA_REQUIRED",
         "provenance_hash": "SOURCE_METADATA_REQUIRED",
         "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "title": "Abol Tabol Illustrated Reader",
+        "slug": "abol-tabol-illustrated-reader",
         "rights_tier": "B",
-        "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "india",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
-        "ready_for_publication": "no",
-        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
-      },
-      {
-        "product": "Sultana's Dream Feminist Sci-Fi Edition",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1926,33 +1915,17 @@
         "content_hash": "SOURCE_METADATA_REQUIRED",
         "provenance_hash": "SOURCE_METADATA_REQUIRED",
         "rights_basis": "Requires deterministic Phase 2 verification before publication.",
-        "rights_tier": "A",
         "verification_status": "PENDING_SOURCE_BACKFILL",
-        "publication_region": "global",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
-        "ready_for_publication": "no",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
         "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
       },
       {
-        "product": "Sherlock Holmes Logic Workbook",
-        "source_url": "SOURCE_METADATA_REQUIRED",
-        "source_name": "SOURCE_METADATA_REQUIRED",
-        "source_license": "SOURCE_METADATA_REQUIRED",
-        "source_hash": "SOURCE_METADATA_REQUIRED",
-        "content_hash": "SOURCE_METADATA_REQUIRED",
-        "provenance_hash": "SOURCE_METADATA_REQUIRED",
-        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "title": "Sultana's Dream Feminist Sci-Fi Edition",
+        "slug": "sultana-s-dream-feminist-sci-fi-edition",
         "rights_tier": "A",
-        "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "global",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
-        "ready_for_publication": "no",
-        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
-      },
-      {
-        "product": "Dracula Gothic Fiction Visual Guide",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1960,16 +1933,17 @@
         "content_hash": "SOURCE_METADATA_REQUIRED",
         "provenance_hash": "SOURCE_METADATA_REQUIRED",
         "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "title": "Sherlock Holmes Logic Workbook",
+        "slug": "sherlock-holmes-logic-workbook",
         "rights_tier": "A",
-        "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "global",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
-        "ready_for_publication": "no",
-        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
-      },
-      {
-        "product": "Frankenstein Science & Ethics Guide",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1977,16 +1951,17 @@
         "content_hash": "SOURCE_METADATA_REQUIRED",
         "provenance_hash": "SOURCE_METADATA_REQUIRED",
         "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "title": "Dracula Gothic Fiction Visual Guide",
+        "slug": "dracula-gothic-fiction-visual-guide",
         "rights_tier": "A",
-        "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "global",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
-        "ready_for_publication": "no",
-        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
-      },
-      {
-        "product": "Tagore Short Stories for Young Readers",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -1994,16 +1969,35 @@
         "content_hash": "SOURCE_METADATA_REQUIRED",
         "provenance_hash": "SOURCE_METADATA_REQUIRED",
         "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "title": "Frankenstein Science & Ethics Guide",
+        "slug": "frankenstein-science-ethics-guide",
+        "rights_tier": "A",
+        "publication_region": "global",
+        "source_url": "SOURCE_METADATA_REQUIRED",
+        "source_name": "SOURCE_METADATA_REQUIRED",
+        "source_license": "SOURCE_METADATA_REQUIRED",
+        "source_hash": "SOURCE_METADATA_REQUIRED",
+        "content_hash": "SOURCE_METADATA_REQUIRED",
+        "provenance_hash": "SOURCE_METADATA_REQUIRED",
+        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "title": "Tagore Short Stories for Young Readers",
+        "slug": "tagore-short-stories-for-young-readers",
         "rights_tier": "B",
-        "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "india",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
-        "ready_for_publication": "no",
-        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
-      },
-      {
-        "product": "Calculus Made Easy Visual Guide",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -2011,16 +2005,17 @@
         "content_hash": "SOURCE_METADATA_REQUIRED",
         "provenance_hash": "SOURCE_METADATA_REQUIRED",
         "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "title": "Calculus Made Easy Visual Guide",
+        "slug": "calculus-made-easy-visual-guide",
         "rights_tier": "A",
-        "verification_status": "PENDING_SOURCE_BACKFILL",
         "publication_region": "global",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
-        "ready_for_publication": "no",
-        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
-      },
-      {
-        "product": "Chander Pahar Adventure Companion",
         "source_url": "SOURCE_METADATA_REQUIRED",
         "source_name": "SOURCE_METADATA_REQUIRED",
         "source_license": "SOURCE_METADATA_REQUIRED",
@@ -2028,12 +2023,28 @@
         "content_hash": "SOURCE_METADATA_REQUIRED",
         "provenance_hash": "SOURCE_METADATA_REQUIRED",
         "rights_basis": "Requires deterministic Phase 2 verification before publication.",
-        "rights_tier": "B",
         "verification_status": "PENDING_SOURCE_BACKFILL",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
+        "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
+      },
+      {
+        "title": "Chander Pahar Adventure Companion",
+        "slug": "chander-pahar-adventure-companion",
+        "rights_tier": "B",
         "publication_region": "india",
-        "verified_at": "SOURCE_METADATA_REQUIRED",
-        "qa_evidence": "SOURCE_METADATA_REQUIRED",
-        "ready_for_publication": "no",
+        "source_url": "SOURCE_METADATA_REQUIRED",
+        "source_name": "SOURCE_METADATA_REQUIRED",
+        "source_license": "SOURCE_METADATA_REQUIRED",
+        "source_hash": "SOURCE_METADATA_REQUIRED",
+        "content_hash": "SOURCE_METADATA_REQUIRED",
+        "provenance_hash": "SOURCE_METADATA_REQUIRED",
+        "rights_basis": "Requires deterministic Phase 2 verification before publication.",
+        "verification_status": "PENDING_SOURCE_BACKFILL",
+        "qa_status": "QA_REQUIRED",
+        "rollback_owner": "SOURCE_METADATA_REQUIRED",
+        "readiness_status": "SOURCE_METADATA_REQUIRED",
         "blocking_reason": "Real source metadata and QA evidence are not present in the dry-run batch."
       }
     ],
@@ -2047,7 +2058,7 @@
   },
   "scorecard": {
     "scores": {
-      "production_deployment_parity": 7.0,
+      "production_deployment_parity": 8.4,
       "public_route_correctness": 9.2,
       "seo_crawlability": 8.0,
       "ux_conversion": 8.4,
@@ -2062,30 +2073,9 @@
       "observability_incident_response": 9.0,
       "rollback_readiness": 8.5
     },
-    "final_score": 7.0,
+    "final_score": 8.0,
     "recommendation": "HOLD_FOR_FIXES",
     "critical_blockers": [
-      {
-        "area": "production_parity",
-        "severity": "HIGH",
-        "message": "Production https://theearnalism.com/shop returned redirect HTTP 308.",
-        "recommendation": "Removed/demo URLs must return 410 or 404 with X-Robots-Tag for deindexing.",
-        "blocker": true
-      },
-      {
-        "area": "production_parity",
-        "severity": "HIGH",
-        "message": "Production /shop returned HTTP 308; /shop must not redirect.",
-        "recommendation": "Deploy current Vercel routing so /shop returns 410/noindex.",
-        "blocker": true
-      },
-      {
-        "area": "production_parity",
-        "severity": "HIGH",
-        "message": "Production https://theearnalism.com/shop/ returned redirect HTTP 308.",
-        "recommendation": "Removed/demo URLs must return 410 or 404 with X-Robots-Tag for deindexing.",
-        "blocker": true
-      },
       {
         "area": "seo",
         "severity": "HIGH",

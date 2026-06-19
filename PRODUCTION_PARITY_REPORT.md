@@ -1,6 +1,6 @@
 # Production Parity Report
 
-Status: `BLOCKED`
+Status: `PASS`
 
 Removed/demo routes must return `410` or `404` with exactly `X-Robots-Tag: noindex, nofollow, noarchive`. Redirects, generic SPA shells, and HTTP 200 responses are launch blockers. `/shop` must not return `308`.
 
@@ -25,9 +25,9 @@ Removed/demo routes must return `410` or `404` with exactly `X-Robots-Tag: noind
 | --- | --- | --- | --- | --- | --- |
 | https://theearnalism.com/product/patterned-wrap-dress | 410 | https://theearnalism.com/product/patterned-wrap-dress | noindex, nofollow, noarchive | False |  |
 | https://theearnalism.com/journal/denim-jackets | 410 | https://theearnalism.com/journal/denim-jackets | noindex, nofollow, noarchive | False |  |
-| https://theearnalism.com/shop | 308 | https://theearnalism.com/library |  | False |  |
-| https://theearnalism.com/shop/ | 308 | https://theearnalism.com/library |  | False |  |
-| https://theearnalism.com/shop/example | 404 | https://theearnalism.com/shop/example | noindex, nofollow, noarchive | False |  |
+| https://theearnalism.com/shop | 410 | https://theearnalism.com/shop | noindex, nofollow, noarchive | False |  |
+| https://theearnalism.com/shop/ | 410 | https://theearnalism.com/shop/ | noindex, nofollow, noarchive | False |  |
+| https://theearnalism.com/shop/example | 410 | https://theearnalism.com/shop/example | noindex, nofollow, noarchive | False |  |
 | https://theearnalism.com/fashion | 410 | https://theearnalism.com/fashion | noindex, nofollow, noarchive | False |  |
 | https://theearnalism.com/clothing | 410 | https://theearnalism.com/clothing | noindex, nofollow, noarchive | False |  |
 | https://theearnalism.com/woocommerce/test | 410 | https://theearnalism.com/woocommerce/test | noindex, nofollow, noarchive | False |  |

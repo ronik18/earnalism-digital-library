@@ -76,5 +76,11 @@
     "moduleName": "Public Content Governance",
     "mandatory": true,
     "allowedSkipModes": []
+  },
+  {
+    "filePattern": "14-ux-conversion-static",
+    "moduleName": "UX Conversion Static Signals",
+    "mandatory": true,
+    "allowedSkipModes": []
   }
 ]

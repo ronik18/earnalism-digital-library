@@ -1,0 +1,44 @@
+# Dead Code And Dangerous Script Report
+
+This report lists duplicate/stale-looking files and scripts that need operator review before controlled publication.
+
+| Severity | Category | File | Line | Finding | Recommendation |
+| --- | --- | --- | --- | --- | --- |
+| HIGH | provider_guard | AUDIOBOOK_VOICE_PIPELINE.md | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | AUDIO_INTEGRATION_GUIDE.md | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | unsafe_redirect | CLEANUP_REPORT.md | 29 | Potential legacy /shop to /library redirect. | Removed demo routes must go to removed-content, not the SPA shell or library. |
+| HIGH | unsafe_redirect | CLEANUP_REPORT.md | 51 | Potential legacy /shop to /library redirect. | Removed demo routes must go to removed-content, not the SPA shell or library. |
+| HIGH | unsafe_redirect | LAUNCH_FIXES_REPORT.md | 5 | Potential legacy /shop to /library redirect. | Removed demo routes must go to removed-content, not the SPA shell or library. |
+| HIGH | provider_guard | README_audio 2.md | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | README_audio.md | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | backend/audiobook_voice_pipeline.py | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | backend/tests/test_audiobook_voice_pipeline.py | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | backend/tests/test_b2_audiobook_routing.py | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | deploy_audio_to_cdn.py | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | deploy_english_audio.sh | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | frontend/src/components/AudioPlayer 2.jsx | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | frontend/src/components/AudioPlayer.jsx | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | generate_audio 2.py | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | generate_audio 3.py | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | lib/storage/audioUploader.js | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | unsafe_redirect | regression/modules/13-public-content-governance.test.js | 125 | Potential legacy /shop to /library redirect. | Removed demo routes must go to removed-content, not the SPA shell or library. |
+| HIGH | provider_guard | requirements-audio-open-source.txt | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | scripts/audiobook_voice_pipeline.py | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | unsafe_redirect | scripts/launch_readiness_audit.py | 1832 | Potential legacy /shop to /library redirect. | Removed demo routes must go to removed-content, not the SPA shell or library. |
+| HIGH | unsafe_redirect | scripts/line_by_line_launch_audit.py | 195 | Potential legacy /shop to /library redirect. | Removed demo routes must go to removed-content, not the SPA shell or library. |
+| HIGH | unsafe_redirect | scripts/line_by_line_launch_audit.py | 196 | Potential legacy /shop to /library redirect. | Removed demo routes must go to removed-content, not the SPA shell or library. |
+| HIGH | provider_guard | scripts/open_source_audiobook_onboarding 2.py | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | secret_like_string | scripts/prepare_technical_book 2.py | 531 | Secret-like literal detected. | Move secrets to environment variables or confirm this is a documented placeholder. |
+| HIGH | secret_like_string | scripts/prepare_technical_book 2.py | 532 | Secret-like literal detected. | Move secrets to environment variables or confirm this is a documented placeholder. |
+| HIGH | provider_guard | scripts/run_audiobook_backfill 2.sh | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | scripts/run_audiobook_backfill.sh | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| HIGH | provider_guard | scripts/test_open_source_audiobook_onboarding.py | 1 | Audio/provider script references remote providers without all production audio guard flags. | Require EARNALISM_ALLOW_AUDIO_UPLOAD, EARNALISM_ALLOW_PROVIDER_CALLS, and EARNALISM_CONFIRM_PRODUCTION_AUDIO. |
+| MEDIUM | deployment_script | .github/workflows/regression.yml | 133 | Deployment command detected. | Ensure it is documented, main-branch gated, and not part of tests. |
+| MEDIUM | deployment_script | DEPLOYMENT_AUTOMATION_POLICY.md | 31 | Deployment command detected. | Ensure it is documented, main-branch gated, and not part of tests. |
+| MEDIUM | deployment_script | README.md | 840 | Deployment command detected. | Ensure it is documented, main-branch gated, and not part of tests. |
+| MEDIUM | deployment_script | README.md | 1113 | Deployment command detected. | Ensure it is documented, main-branch gated, and not part of tests. |
+| MEDIUM | deployment_script | README.md | 1156 | Deployment command detected. | Ensure it is documented, main-branch gated, and not part of tests. |
+| MEDIUM | deployment_script | README.md | 1266 | Deployment command detected. | Ensure it is documented, main-branch gated, and not part of tests. |
+| MEDIUM | deployment_script | scripts/commit_push_deploy 2.sh | 328 | Deployment command detected. | Ensure it is documented, main-branch gated, and not part of tests. |
+| MEDIUM | deployment_script | scripts/commit_push_deploy.sh | 328 | Deployment command detected. | Ensure it is documented, main-branch gated, and not part of tests. |
+| MEDIUM | deployment_script | scripts/line_by_line_launch_audit.py | 197 | Deployment command detected. | Ensure it is documented, main-branch gated, and not part of tests. |
