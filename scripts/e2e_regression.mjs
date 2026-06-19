@@ -9,16 +9,12 @@ const baseUrl = (process.env.E2E_BASE_URL || "https://theearnalism.com").replace
 const apiUrl = (process.env.E2E_API_URL || "https://api.theearnalism.com").replace(/\/$/, "");
 const outputDir = path.resolve(process.env.E2E_OUTPUT_DIR || "test-results/regression");
 const isLocalFrontend = /^https?:\/\/(?:127\.0\.0\.1|localhost|\[::1\])/i.test(baseUrl);
-const expectedShelves = [
-  "Bengali Classics",
-  "Literary Fiction",
-  "Young Readers",
-  "Business & Entrepreneurship",
-  "Technology & AI",
-  "History & Strategy",
-  "Adventure",
-  "Science Fiction",
-  "Gothic Fiction",
+const liveApprovedSlug = "dracula";
+const expectedPipelineSlugs = [
+  "frankenstein",
+  "sherlock-holmes",
+  "sultanas-dream",
+  "calculus-made-easy",
 ];
 
 function assert(condition, message) {
@@ -101,71 +97,103 @@ async function main() {
   await installApiProxy(page);
 
   await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });
-  await page.waitForSelector('[data-testid^="live-cover-preview-"]', { timeout: 30000 });
+  await page.waitForSelector('[data-testid="hero-dracula-card"]', { timeout: 30000 });
   await page.waitForTimeout(900);
   const home = await page.evaluate(() => {
-    const band = document.querySelector(".live-cover-showcase--band");
-    const shelves = [...document.querySelectorAll('[data-testid^="category-card-"] h3')]
-      .map((node) => node.textContent?.trim())
+    const pipelineCards = [...document.querySelectorAll('[data-testid^="pipeline-card-"]')]
+      .map((card) => card.getAttribute("data-testid")?.replace(/^pipeline-card-/, ""))
       .filter(Boolean);
-    const cards = [...document.querySelectorAll('[data-testid^="live-cover-preview-"]')].map((link) => ({
-      href: link.getAttribute("href"),
-      slug: link.getAttribute("href")?.replace(/^\/reader\//, ""),
-      title: link.querySelector(".live-cover-card__title")?.textContent?.trim(),
-    }));
-    const bandRect = band?.getBoundingClientRect().toJSON();
-    const visiblePreviewPills = [...document.querySelectorAll(".live-cover-card__preview")].filter((pill) => {
-      const style = getComputedStyle(pill);
-      return style.display !== "none" && style.visibility !== "hidden" && Number(style.opacity) > 0.5;
-    }).length;
+    const notifyLinks = [...document.querySelectorAll('[data-testid^="pipeline-notify-"]')]
+      .map((link) => link.getAttribute("href"));
     return {
       viewportWidth: window.innerWidth,
-      bandRect,
-      shelves,
-      cards,
-      visiblePreviewPills,
+      hasHeroCard: Boolean(document.querySelector('[data-testid="hero-dracula-card"]')),
+      hasControlledCarousel: Boolean(document.querySelector('[data-testid="controlled-carousel-section"]')),
+      hasDraculaShelf: Boolean(document.querySelector('[data-testid="home-live-dracula"]')),
+      hasPipelineShelf: Boolean(document.querySelector('[data-testid="pipeline-books"]')),
+      hasReadingPathDraft: Boolean(document.querySelector('[data-testid="reading-path-draft"]')),
+      hasAudioUnavailableNote: Boolean(document.querySelector('[data-testid="audiobook-unavailable"]')),
+      headline: document.querySelector('[data-testid="hero-headline"]')?.textContent?.replace(/\s+/g, " ").trim(),
       heroReadHref: document.querySelector('[data-testid="hero-cta-read"]')?.getAttribute("href"),
+      heroStartHref: document.querySelector('[data-testid="hero-cta-start-dracula"]')?.getAttribute("href"),
+      heroPassHref: document.querySelector('[data-testid="hero-cta-pricing"]')?.getAttribute("href"),
+      carouselReadHref: document.querySelector('[data-testid="carousel-read-chapter-1-free"]')?.getAttribute("href"),
+      livePreviewHref: document.querySelector('[data-testid="home-dracula-preview"]')?.getAttribute("href"),
+      liveStartHref: document.querySelector('[data-testid="home-dracula-start"]')?.getAttribute("href"),
+      livePassHref: document.querySelector('[data-testid="home-dracula-pass"]')?.getAttribute("href"),
+      pipelineCards,
+      notifyLinks,
+      legacyLiveCoverCount: document.querySelectorAll('[data-testid^="live-cover-preview-"]').length,
+      legacyCategoryCardCount: document.querySelectorAll('[data-testid^="category-card-"]').length,
+      legacyBroadReaderLinks: [...document.querySelectorAll('a[href^="/reader/"]')]
+        .map((link) => link.getAttribute("href"))
+        .filter((href) => href !== "/reader/dracula"),
       heroCurrentPayCount: document.querySelectorAll('[data-testid="hero-current-pay"]').length,
       railPrimaryPreviewCount: document.querySelectorAll('[data-testid="live-cover-primary-preview"]').length,
       railPrimaryPaymentCount: document.querySelectorAll('[data-testid="live-cover-primary-payment"]').length,
       railLibraryCount: document.querySelectorAll('[data-testid="live-cover-library"]').length,
     };
   });
-  assert(home.bandRect, "home slideshow band is missing");
-  assert(Math.round(home.bandRect.x) === 0, `home slideshow is not flush-left: ${home.bandRect.x}`);
-  assert(Math.abs(home.bandRect.width - home.viewportWidth) <= 2, `home slideshow is not full width: ${home.bandRect.width}/${home.viewportWidth}`);
-  assert(home.cards.length > 0, "home slideshow has no live book cards");
+  assert(home.hasHeroCard, "Dracula hero card is missing");
+  assert(home.hasControlledCarousel, "controlled launch carousel is missing");
+  assert(home.hasDraculaShelf, "live Dracula shelf is missing");
+  assert(home.hasPipelineShelf, "pipeline shelf is missing");
+  assert(home.hasReadingPathDraft, "reading path draft section is missing");
+  assert(home.hasAudioUnavailableNote, "audiobook unavailable note is missing");
+  assert(/Begin with Dracula/i.test(home.headline || ""), `hero headline is not Dracula-first: ${home.headline}`);
+  assert(home.heroReadHref === "/reader/dracula", `hero free-read CTA should open Dracula reader, got ${home.heroReadHref}`);
+  assert(home.heroStartHref === "/book/dracula", `hero Start Dracula CTA should open Dracula detail, got ${home.heroStartHref}`);
+  assert(home.heroPassHref === "/pricing?source=homepage_hero&book=dracula", `hero reading pass CTA mismatch: ${home.heroPassHref}`);
+  assert(home.carouselReadHref === "/reader/dracula", `carousel free-read CTA should open Dracula reader, got ${home.carouselReadHref}`);
+  assert(home.livePreviewHref === "/reader/dracula", `live shelf preview CTA should open Dracula reader, got ${home.livePreviewHref}`);
+  assert(home.liveStartHref === "/book/dracula", `live shelf start CTA should open Dracula detail, got ${home.liveStartHref}`);
+  assert(home.livePassHref === "/pricing?source=home_live_shelf&book=dracula", `live shelf reading pass CTA mismatch: ${home.livePassHref}`);
   assert(
-    JSON.stringify(home.shelves) === JSON.stringify(expectedShelves),
-    `home shelves mismatch: ${JSON.stringify(home.shelves)}`,
+    JSON.stringify(home.pipelineCards) === JSON.stringify(expectedPipelineSlugs),
+    `pipeline cards mismatch: ${JSON.stringify(home.pipelineCards)}`,
   );
-  assert(home.cards.every((card) => card.href?.startsWith("/reader/")), `one or more slideshow cards do not open readers: ${JSON.stringify(home.cards)}`);
-  assert(home.visiblePreviewPills >= home.cards.length, "preview affordance is not visible on every primary card");
-  assert(home.heroReadHref === "/library", `hero Start Reading CTA should open library, got ${home.heroReadHref}`);
+  assert(
+    home.notifyLinks.length === expectedPipelineSlugs.length && home.notifyLinks.every((href) => href?.startsWith("/contact?interest=")),
+    `pipeline titles must be notify-only: ${JSON.stringify(home.notifyLinks)}`,
+  );
+  assert(home.legacyLiveCoverCount === 0, "retired live-cover preview cards should not render in Dracula-first launch");
+  assert(home.legacyCategoryCardCount === 0, "retired broad category cards should not render in Dracula-first launch");
+  assert(home.legacyBroadReaderLinks.length === 0, `non-Dracula reader links leaked: ${JSON.stringify(home.legacyBroadReaderLinks)}`);
   assert(home.heroCurrentPayCount === 0, "hero Preview & Pay CTA should not render");
   assert(home.railPrimaryPreviewCount === 0, "rail-level Read Preview CTA should not render");
   assert(home.railPrimaryPaymentCount === 0, "rail-level Preview & Pay CTA should not render");
   assert(home.railLibraryCount === 0, "rail-level All books CTA should not render");
-  const firstSlug = home.cards[0].slug;
-  assert(firstSlug, "could not infer first live book slug from slideshow");
+  const firstSlug = liveApprovedSlug;
   const homeScreenshot = await snapshot(page, "home");
 
   await gotoAppPath(page, "/library");
-  await page.waitForSelector('[data-testid^="book-card-"], [data-testid="single-book-spotlight"]', { timeout: 30000 });
+  await page.waitForSelector('[data-testid="shelf-live-controlled-release"]', { timeout: 30000 });
   const library = await page.evaluate(() => ({
-    hasGrid: Boolean(document.querySelector('[data-testid="books-grid"], [data-testid="single-book-spotlight"]')),
-    previewLinks: [...document.querySelectorAll('[data-testid^="card-preview-"], a[href^="/reader/"]')]
+    hasLiveShelf: Boolean(document.querySelector('[data-testid="shelf-live-controlled-release"]')),
+    hasPipelineShelf: Boolean(document.querySelector('[data-testid="shelf-pipeline"]')),
+    hasAudioShelf: Boolean(document.querySelector('[data-testid="shelf-audiobooks"]')),
+    previewLinks: [...document.querySelectorAll('[data-testid="library-dracula-preview"], [data-testid^="card-preview-"], a[href^="/reader/"]')]
       .slice(0, 20)
       .map((link) => link.getAttribute("href")),
+    nonDraculaReaderLinks: [...document.querySelectorAll('a[href^="/reader/"]')]
+      .map((link) => link.getAttribute("href"))
+      .filter((href) => href !== "/reader/dracula"),
+    pipelineStatuses: [...document.querySelectorAll('[data-testid^="book-card-"]')]
+      .map((card) => card.getAttribute("data-launch-status")),
   }));
-  assert(library.hasGrid, "library did not render books");
-  assert(library.previewLinks.some((href) => href?.startsWith("/reader/")), "library has no reader preview CTA");
+  assert(library.hasLiveShelf, "library did not render the live controlled shelf");
+  assert(library.hasPipelineShelf, "library did not render the pipeline shelf");
+  assert(library.hasAudioShelf, "library did not render the audiobook status shelf");
+  assert(library.previewLinks.includes("/reader/dracula"), "library has no Dracula reader preview CTA");
+  assert(library.nonDraculaReaderLinks.length === 0, `library leaked non-Dracula reader links: ${JSON.stringify(library.nonDraculaReaderLinks)}`);
+  assert(library.pipelineStatuses.every((status) => status === "COMING_SOON_PIPELINE"), `pipeline cards are not notify-only: ${JSON.stringify(library.pipelineStatuses)}`);
 
   await gotoAppPath(page, `/book/${firstSlug}`);
   await page.waitForSelector('[data-testid="book-page"]', { timeout: 30000 });
   const bookDetail = await page.evaluate((slug) => ({
     topPreviewHref: document.querySelector('[data-testid="read-preview"]')?.getAttribute("href"),
     topStartHref: document.querySelector('[data-testid="start-reading"]')?.getAttribute("href"),
+    topPassHref: document.querySelector('[data-testid="book-reading-pass"]')?.getAttribute("href"),
     requestAccessCount: document.querySelectorAll('[data-testid="request-access"]').length,
     topBuyReadingTimeCount: document.querySelectorAll('[data-testid="buy-reading-time"]').length,
     previewHref: document.querySelector('[data-testid="bottom-read-preview"]')?.getAttribute("href"),
@@ -178,8 +206,12 @@ async function main() {
     assert(bookDetail.topPreviewHref === `/reader/${firstSlug}`, `top preview CTA mismatch: ${bookDetail.topPreviewHref}`);
   }
   assert(
-    bookDetail.topStartHref === `/pricing?pack=1h&source=book_detail&book=${firstSlug}`,
-    `top Start Reading CTA should open book-specific pricing, got ${bookDetail.topStartHref}`,
+    bookDetail.topStartHref === `/reader/${firstSlug}`,
+    `top Start Reading CTA should open Dracula reader, got ${bookDetail.topStartHref}`,
+  );
+  assert(
+    bookDetail.topPassHref === `/pricing?source=book_detail&book=${firstSlug}`,
+    `top reading pass CTA should open book-specific pricing, got ${bookDetail.topPassHref}`,
   );
   assert(bookDetail.requestAccessCount === 0, "Request Access CTA should not render on book detail");
   assert(bookDetail.topBuyReadingTimeCount === 0, "top Buy Reading Time CTA should not render on book detail");
@@ -212,7 +244,7 @@ async function main() {
     ok: true,
     baseUrl,
     firstSlug,
-    homeCards: home.cards.length,
+    pipelineCards: home.pipelineCards.length,
     homeScreenshot,
     consoleIssues: consoleIssues.slice(0, 10),
   }, null, 2));
