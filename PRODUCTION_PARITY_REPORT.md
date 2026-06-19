@@ -46,3 +46,12 @@ for path in /product/patterned-wrap-dress /journal/denim-jackets /shop /shop/ /s
   curl -i --max-time 10 "https://theearnalism.com$path" | sed -n '1,24p'
 done
 ```
+
+## Dracula Candidate Impact
+
+The latest post-deploy route canary is `PASS`.
+
+- `output/launch/post_deploy_route_canary.json`
+- `output/launch/post_deploy_route_canary.txt`
+
+If this canary becomes `BLOCKED`, Dracula approval must remain blocked and `APPROVED_TO_PUBLISH.md` must not be generated.

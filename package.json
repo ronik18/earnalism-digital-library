@@ -28,6 +28,8 @@
     "launch:post-deploy-route-canary": "python3 scripts/post_deploy_route_canary.py",
     "launch:readiness": "python3 scripts/launch_readiness_audit.py --mode all",
     "launch:line-audit": "python3 scripts/line_by_line_launch_audit.py",
+    "dracula:candidate": "python3 scripts/prepare_dracula_candidate.py --source-url https://www.gutenberg.org/ebooks/345 --slug dracula --title \"Dracula\" --author \"Bram Stoker\" --dry-run",
+    "dracula:approved-builder": "python3 scripts/approved_to_publish_builder.py --candidate output/publication_candidates/dracula/source_evidence.json --dry-run",
     "controlled-publication:precheck": "python3 scripts/controlled_publication_precheck.py",
     "audio:preflight": "python3 scripts/open_source_audiobook_onboarding.py preflight",
     "audio:audit": "python3 scripts/open_source_audiobook_onboarding.py audit",

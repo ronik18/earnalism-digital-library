@@ -1,0 +1,30 @@
+{
+  "draft_only": true,
+  "loop": [
+    "SEO landing page",
+    "preview start",
+    "reading pass CTA",
+    "checkout start",
+    "payment success",
+    "reading started",
+    "7-day reading challenge",
+    "referral invite",
+    "testimonial/review request",
+    "next book recommendation"
+  ],
+  "metrics": [
+    "homepage visits",
+    "library visits",
+    "Dracula landing views",
+    "preview starts",
+    "reading pass clicks",
+    "checkout starts",
+    "payment success",
+    "reading started",
+    "7-day return rate",
+    "referral invites",
+    "support complaints"
+  ],
+  "analytics_mode": "mock_safe_draft",
+  "public_publish_actions": 0
+}

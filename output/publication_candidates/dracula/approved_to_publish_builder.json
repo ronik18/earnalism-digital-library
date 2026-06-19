@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-06-19T10:03:24Z",
+  "dry_run": true,
+  "candidate": "output/publication_candidates/dracula/source_evidence.json",
+  "status": "BLOCKED",
+  "issues": [
+    "source_license is required.",
+    "source_hash is required.",
+    "content_hash is required.",
+    "provenance_hash is required.",
+    "rights_tier must be A.",
+    "verification_status must be approved.",
+    "qa_status must be QA_PASSED.",
+    "rights_decision.approved must be true.",
+    "rights_decision must not contain unresolved issues."
+  ],
+  "route_canary_status": "PASS",
+  "payment_smoke_status": "PASS_TEST_MODE",
+  "approved_file": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/APPROVED_TO_PUBLISH.md",
+  "blockers_file": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/APPROVED_TO_PUBLISH_BLOCKERS.md",
+  "mutation_performed": false,
+  "public_publish_actions": 0
+}

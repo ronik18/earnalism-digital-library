@@ -1,0 +1,433 @@
+{
+  "generated_at": "2026-06-19T10:03:24Z",
+  "dry_run": true,
+  "mutation_performed": false,
+  "public_publish_actions": 0,
+  "slug": "dracula",
+  "title": "Dracula",
+  "rights_tier": "C",
+  "verification_status": "blocked",
+  "action_status": "BLOCKED_RIGHTS",
+  "demand_score": 51.01,
+  "ingestion_status": "BLOCKED_RIGHTS",
+  "edition_generation_status": "BLOCKED_UPSTREAM_SOURCE",
+  "visual_status": "BLOCKED_UPSTREAM_SOURCE",
+  "audio_status": "AUDIO_NOT_REQUIRED",
+  "phase7_publish_gate_status": "AUDIO_NOT_REQUIRED",
+  "publishing_workflow_status": "QUARANTINED",
+  "observability_guardrail_status": "BLOCKED",
+  "route_canary_status": "PASS",
+  "payment_smoke_status": "PASS_TEST_MODE",
+  "source_qa_status": "BLOCKED_SOURCE_QA",
+  "seo_status": "PASS_DRAFT",
+  "revenue_status": "PASS_TEST_MODE",
+  "approved_to_publish_exists": false,
+  "readiness_score": 8.0,
+  "recommendation": "HOLD_FOR_FIXES",
+  "high_blockers": [
+    "Dracula lacks approved real source evidence."
+  ],
+  "edition_result": {
+    "generation_status": "BLOCKED_UPSTREAM_SOURCE",
+    "gate_status": "BLOCKED_UPSTREAM_SOURCE",
+    "blocking_reason": "Dracula source evidence is not approved."
+  },
+  "visual_result": {
+    "generation_status": "BLOCKED_UPSTREAM_SOURCE",
+    "gate_status": "BLOCKED_UPSTREAM_SOURCE",
+    "blocking_reason": "Dracula source evidence is not approved."
+  },
+  "audio_result": {
+    "generation_status": "AUDIO_NOT_REQUIRED",
+    "publish_gate_status": "AUDIO_NOT_REQUIRED",
+    "blocking_reason": "No linked QA-approved Dracula audio is included in this controlled-publication candidate."
+  },
+  "workflow": {
+    "state": "QUARANTINED",
+    "publish_readiness": "QUARANTINED",
+    "blockers": [
+      "BLOCKED_RIGHTS: Tier C cannot publish anywhere.",
+      "Rights blocked_reason must be cleared: Source text is required before Dracula can be approved.; BLOCKED_SOURCE_TEXT_REQUIRED; Project Gutenberg source license was not deterministically verified from source text.; source_hash, content_hash, and provenance_hash are required.",
+      "BLOCKED_PRIORITY_GATE: Phase 3 action_status must be READY_FOR_GENERATION.",
+      "BLOCKED_INGESTION: Phase 4 ingestion_status must be INGESTED or CLEANED.",
+      "BLOCKED_EDITION_GATE: Phase 5 edition_generation_status must be ready, partial dry-run, or QA passed.",
+      "BLOCKED_VISUAL_GATE: Phase 6 visual_status must be ready, partial dry-run, or QA passed.",
+      "QA pass is required."
+    ],
+    "warnings": [],
+    "rollback_available": false,
+    "pause_available": false,
+    "dry_run": true
+  },
+  "observability": {
+    "observability_version": "earnalism-observability-guardrails-v1",
+    "generated_at": "2026-06-19T10:03:24.792796+00:00",
+    "status": "BLOCKED",
+    "dry_run": true,
+    "kill_switch_active": false,
+    "actions": [
+      {
+        "action_id": "dracula-controlled-publication-candidate",
+        "slug": "dracula",
+        "phase": "publishing_workflow",
+        "action_type": "controlled_publication_candidate_review",
+        "decision_status": "BLOCKED",
+        "blocking_reasons": [
+          "Rights blocked; action cannot proceed.",
+          "source_license is missing for a source-dependent action.",
+          "source_hash is missing for a source-dependent action.",
+          "content_hash is missing for a source-dependent action.",
+          "provenance_hash is missing for a source-dependent action."
+        ],
+        "audit_events": [
+          {
+            "event_id": "event-995f990a74a4",
+            "timestamp": "2026-06-19T10:03:24.792681+00:00",
+            "category": "publishing",
+            "phase": "publishing_workflow",
+            "action": "controlled_publication_candidate_review",
+            "status": "EVALUATED",
+            "severity": "INFO",
+            "message": "Automation action evaluated in dry-run observability mode.",
+            "slug": "dracula",
+            "guardrail_type": "",
+            "metadata": {
+              "action_id": "dracula-controlled-publication-candidate"
+            },
+            "dry_run": true
+          },
+          {
+            "event_id": "event-cd48cf1f8c5e",
+            "timestamp": "2026-06-19T10:03:24.792700+00:00",
+            "category": "guardrail_block",
+            "phase": "publishing_workflow",
+            "action": "controlled_publication_candidate_review",
+            "status": "BLOCKED",
+            "severity": "CRITICAL",
+            "message": "Rights blocked; action cannot proceed.",
+            "slug": "dracula",
+            "guardrail_type": "rights_blocked",
+            "metadata": {
+              "action_id": "dracula-controlled-publication-candidate"
+            },
+            "dry_run": true
+          },
+          {
+            "event_id": "event-0fd24d8e098c",
+            "timestamp": "2026-06-19T10:03:24.792707+00:00",
+            "category": "guardrail_block",
+            "phase": "publishing_workflow",
+            "action": "controlled_publication_candidate_review",
+            "status": "BLOCKED",
+            "severity": "HIGH",
+            "message": "source_license is missing for a source-dependent action.",
+            "slug": "dracula",
+            "guardrail_type": "source_missing",
+            "metadata": {
+              "action_id": "dracula-controlled-publication-candidate"
+            },
+            "dry_run": true
+          },
+          {
+            "event_id": "event-c85b6c35424f",
+            "timestamp": "2026-06-19T10:03:24.792713+00:00",
+            "category": "guardrail_block",
+            "phase": "publishing_workflow",
+            "action": "controlled_publication_candidate_review",
+            "status": "BLOCKED",
+            "severity": "HIGH",
+            "message": "source_hash is missing for a source-dependent action.",
+            "slug": "dracula",
+            "guardrail_type": "traceability_missing",
+            "metadata": {
+              "action_id": "dracula-controlled-publication-candidate"
+            },
+            "dry_run": true
+          },
+          {
+            "event_id": "event-a4e519ef4ed0",
+            "timestamp": "2026-06-19T10:03:24.792719+00:00",
+            "category": "guardrail_block",
+            "phase": "publishing_workflow",
+            "action": "controlled_publication_candidate_review",
+            "status": "BLOCKED",
+            "severity": "HIGH",
+            "message": "content_hash is missing for a source-dependent action.",
+            "slug": "dracula",
+            "guardrail_type": "traceability_missing",
+            "metadata": {
+              "action_id": "dracula-controlled-publication-candidate"
+            },
+            "dry_run": true
+          },
+          {
+            "event_id": "event-2cb8133e2853",
+            "timestamp": "2026-06-19T10:03:24.792723+00:00",
+            "category": "guardrail_block",
+            "phase": "publishing_workflow",
+            "action": "controlled_publication_candidate_review",
+            "status": "BLOCKED",
+            "severity": "HIGH",
+            "message": "provenance_hash is missing for a source-dependent action.",
+            "slug": "dracula",
+            "guardrail_type": "traceability_missing",
+            "metadata": {
+              "action_id": "dracula-controlled-publication-candidate"
+            },
+            "dry_run": true
+          }
+        ],
+        "dry_run": true
+      }
+    ],
+    "logs": [
+      {
+        "event_id": "event-995f990a74a4",
+        "timestamp": "2026-06-19T10:03:24.792681+00:00",
+        "category": "publishing",
+        "phase": "publishing_workflow",
+        "action": "controlled_publication_candidate_review",
+        "status": "EVALUATED",
+        "severity": "INFO",
+        "message": "Automation action evaluated in dry-run observability mode.",
+        "slug": "dracula",
+        "guardrail_type": "",
+        "metadata": {
+          "action_id": "dracula-controlled-publication-candidate"
+        },
+        "dry_run": true
+      },
+      {
+        "event_id": "event-cd48cf1f8c5e",
+        "timestamp": "2026-06-19T10:03:24.792700+00:00",
+        "category": "guardrail_block",
+        "phase": "publishing_workflow",
+        "action": "controlled_publication_candidate_review",
+        "status": "BLOCKED",
+        "severity": "CRITICAL",
+        "message": "Rights blocked; action cannot proceed.",
+        "slug": "dracula",
+        "guardrail_type": "rights_blocked",
+        "metadata": {
+          "action_id": "dracula-controlled-publication-candidate"
+        },
+        "dry_run": true
+      },
+      {
+        "event_id": "event-0fd24d8e098c",
+        "timestamp": "2026-06-19T10:03:24.792707+00:00",
+        "category": "guardrail_block",
+        "phase": "publishing_workflow",
+        "action": "controlled_publication_candidate_review",
+        "status": "BLOCKED",
+        "severity": "HIGH",
+        "message": "source_license is missing for a source-dependent action.",
+        "slug": "dracula",
+        "guardrail_type": "source_missing",
+        "metadata": {
+          "action_id": "dracula-controlled-publication-candidate"
+        },
+        "dry_run": true
+      },
+      {
+        "event_id": "event-c85b6c35424f",
+        "timestamp": "2026-06-19T10:03:24.792713+00:00",
+        "category": "guardrail_block",
+        "phase": "publishing_workflow",
+        "action": "controlled_publication_candidate_review",
+        "status": "BLOCKED",
+        "severity": "HIGH",
+        "message": "source_hash is missing for a source-dependent action.",
+        "slug": "dracula",
+        "guardrail_type": "traceability_missing",
+        "metadata": {
+          "action_id": "dracula-controlled-publication-candidate"
+        },
+        "dry_run": true
+      },
+      {
+        "event_id": "event-a4e519ef4ed0",
+        "timestamp": "2026-06-19T10:03:24.792719+00:00",
+        "category": "guardrail_block",
+        "phase": "publishing_workflow",
+        "action": "controlled_publication_candidate_review",
+        "status": "BLOCKED",
+        "severity": "HIGH",
+        "message": "content_hash is missing for a source-dependent action.",
+        "slug": "dracula",
+        "guardrail_type": "traceability_missing",
+        "metadata": {
+          "action_id": "dracula-controlled-publication-candidate"
+        },
+        "dry_run": true
+      },
+      {
+        "event_id": "event-2cb8133e2853",
+        "timestamp": "2026-06-19T10:03:24.792723+00:00",
+        "category": "guardrail_block",
+        "phase": "publishing_workflow",
+        "action": "controlled_publication_candidate_review",
+        "status": "BLOCKED",
+        "severity": "HIGH",
+        "message": "provenance_hash is missing for a source-dependent action.",
+        "slug": "dracula",
+        "guardrail_type": "traceability_missing",
+        "metadata": {
+          "action_id": "dracula-controlled-publication-candidate"
+        },
+        "dry_run": true
+      },
+      {
+        "event_id": "event-94d58105a693",
+        "timestamp": "2026-06-19T10:03:24.792736+00:00",
+        "category": "publishing",
+        "phase": "health_check",
+        "action": "api_health",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "api health check passed.",
+        "slug": "",
+        "guardrail_type": "",
+        "metadata": {},
+        "dry_run": true
+      },
+      {
+        "event_id": "event-ffff8b619cdc",
+        "timestamp": "2026-06-19T10:03:24.792743+00:00",
+        "category": "publishing",
+        "phase": "health_check",
+        "action": "queue_health",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "queue health check passed.",
+        "slug": "",
+        "guardrail_type": "",
+        "metadata": {},
+        "dry_run": true
+      },
+      {
+        "event_id": "event-1a263c36e18f",
+        "timestamp": "2026-06-19T10:03:24.792748+00:00",
+        "category": "publishing",
+        "phase": "health_check",
+        "action": "storage_health",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "storage health check passed.",
+        "slug": "",
+        "guardrail_type": "",
+        "metadata": {},
+        "dry_run": true
+      },
+      {
+        "event_id": "event-9e76647c6b66",
+        "timestamp": "2026-06-19T10:03:24.792753+00:00",
+        "category": "publishing",
+        "phase": "health_check",
+        "action": "publishing_health",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "publishing health check passed.",
+        "slug": "",
+        "guardrail_type": "",
+        "metadata": {},
+        "dry_run": true
+      }
+    ],
+    "incidents": [
+      {
+        "incident_id": "incident-dc14fbef080e",
+        "severity": "CRITICAL",
+        "owner": "rights",
+        "status": "OPEN",
+        "source_event_id": "event-cd48cf1f8c5e",
+        "summary": "Rights blocked; action cannot proceed.",
+        "rollback_instruction": "Keep content unpublished and rerun Phase 2 rights verification before retry.",
+        "kill_switch_active": false,
+        "dry_run": true
+      },
+      {
+        "incident_id": "incident-18f162eea9bb",
+        "severity": "HIGH",
+        "owner": "platform",
+        "status": "OPEN",
+        "source_event_id": "event-0fd24d8e098c",
+        "summary": "source_license is missing for a source-dependent action.",
+        "rollback_instruction": "Keep action blocked, resolve guardrail finding, then rerun dry-run.",
+        "kill_switch_active": false,
+        "dry_run": true
+      },
+      {
+        "incident_id": "incident-2f0dce672667",
+        "severity": "HIGH",
+        "owner": "platform",
+        "status": "OPEN",
+        "source_event_id": "event-c85b6c35424f",
+        "summary": "source_hash is missing for a source-dependent action.",
+        "rollback_instruction": "Keep action blocked, resolve guardrail finding, then rerun dry-run.",
+        "kill_switch_active": false,
+        "dry_run": true
+      },
+      {
+        "incident_id": "incident-648d3fae5e70",
+        "severity": "HIGH",
+        "owner": "platform",
+        "status": "OPEN",
+        "source_event_id": "event-a4e519ef4ed0",
+        "summary": "content_hash is missing for a source-dependent action.",
+        "rollback_instruction": "Keep action blocked, resolve guardrail finding, then rerun dry-run.",
+        "kill_switch_active": false,
+        "dry_run": true
+      },
+      {
+        "incident_id": "incident-a791401d210c",
+        "severity": "HIGH",
+        "owner": "platform",
+        "status": "OPEN",
+        "source_event_id": "event-2cb8133e2853",
+        "summary": "provenance_hash is missing for a source-dependent action.",
+        "rollback_instruction": "Keep action blocked, resolve guardrail finding, then rerun dry-run.",
+        "kill_switch_active": false,
+        "dry_run": true
+      }
+    ],
+    "health_checks": [
+      {
+        "name": "api",
+        "status": "OK",
+        "message": "api health check passed.",
+        "metadata": {}
+      },
+      {
+        "name": "queue",
+        "status": "OK",
+        "message": "queue health check passed.",
+        "metadata": {}
+      },
+      {
+        "name": "storage",
+        "status": "OK",
+        "message": "storage health check passed.",
+        "metadata": {}
+      },
+      {
+        "name": "publishing",
+        "status": "OK",
+        "message": "publishing health check passed.",
+        "metadata": {}
+      }
+    ],
+    "summary": {
+      "action_count": 1,
+      "blocked_action_count": 1,
+      "log_count": 10,
+      "incident_count": 5,
+      "unhealthy_check_count": 0,
+      "guardrail_type_counts": {
+        "rights_blocked": 1,
+        "source_missing": 1,
+        "traceability_missing": 3
+      }
+    }
+  }
+}
