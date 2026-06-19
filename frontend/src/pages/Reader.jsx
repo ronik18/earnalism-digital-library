@@ -1280,6 +1280,11 @@ export default function Reader() {
             chapter_version: chapterVersionFor(loadedChapters, activeChapterId),
           },
         });
+        trackFunnelEvent('reading_started', {
+          book_slug: bookId,
+          chapter_id: activeChapterId,
+          is_preview: Boolean(gate.is_preview),
+        });
         setLoading(false);
       } catch (err) {
         if (!cancelled) {
@@ -1658,6 +1663,13 @@ export default function Reader() {
           chapter_id: activeChapterId || chapterId || chapter?.id,
           streak_days: data?.streak_days || 0,
         });
+        if (bookId === 'dracula' && (chapter?.order === 0 || /chapter i\b/i.test(chapter?.title || ''))) {
+          trackFunnelEvent('chapter_1_completed', {
+            book_slug: bookId,
+            chapter_id: activeChapterId || chapterId || chapter?.id,
+            source: 'reader',
+          });
+        }
 
         if (data?.eligible) {
           const claimRes = await axios.post(`${API}/users/me/rewards/claim`, {}, { headers: getUserAuthHeaders() });
