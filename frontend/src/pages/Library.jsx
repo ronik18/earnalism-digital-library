@@ -10,6 +10,7 @@ import {
   DRACULA_CTA_EVENTS,
   DRACULA_RIGHTS_NOTE,
   DRACULA_SOURCE_NOTE,
+  KSHUDHITA_PASHAN_PIPELINE,
   LIVE_APPROVED_SLUG,
   PIPELINE_BOOKS,
   mergeDraculaBook,
@@ -71,6 +72,14 @@ export default function Library() {
   const showPipeline = ["all", "pipeline"].includes(cat);
   const showReadingPaths = ["all", "reading-paths"].includes(cat);
   const showAudiobooks = ["all", "audiobooks"].includes(cat);
+  const trackPipelineInterest = (event, ctaId) => {
+    trackFunnelEvent(event, {
+      source: "library_pipeline_shelf",
+      book_slug: KSHUDHITA_PASHAN_PIPELINE.slug,
+      cta_id: ctaId,
+      public: false,
+    });
+  };
 
   return (
     <div data-testid="library-page">
@@ -82,6 +91,43 @@ export default function Library() {
         <p className="mt-7 max-w-2xl text-charcoal-soft leading-[1.85] font-light">
           Dracula is the only live approved core reading release today. Other titles appear only as Coming Soon until their rights, source, QA, and publication gates pass.
         </p>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 pb-8 sm:px-8 lg:px-12" data-testid="library-bengali-gothic-pipeline">
+        <div className="rounded-lg border border-brand-soft bg-[#221017] px-6 py-7 text-[#FDFCF8] sm:px-8 sm:py-8">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 text-[0.64rem] uppercase tracking-[0.26em] text-[var(--brand-gold-soft)]">
+                <Sparkles size={14} strokeWidth={1.6} /> Rights-Safe Pipeline
+              </div>
+              <h2 className="mt-3 font-serif-light text-3xl leading-tight text-[#FDFCF8] sm:text-4xl">
+                {KSHUDHITA_PASHAN_PIPELINE.headline}
+              </h2>
+              <p className="mt-3 text-[#F4EFEA]/72 leading-[1.75] font-light">
+                {KSHUDHITA_PASHAN_PIPELINE.subcopy} This candidate remains in source, rights, CC BY-SA compliance,
+                pronunciation, and audio-preview planning only.
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+              <Link
+                to={notifyUrl(KSHUDHITA_PASHAN_PIPELINE.slug)}
+                className="btn-secondary justify-center !border-[var(--brand-gold-soft)] !text-[#FDFCF8] hover:!bg-[rgba(216,185,122,0.12)]"
+                data-testid="library-pipeline-notify"
+                onClick={() => trackPipelineInterest("kshudhita_pashan_notify_click", "library-pipeline-notify")}
+              >
+                Notify Me
+              </Link>
+              <button
+                type="button"
+                className="btn-link justify-center !text-[#FDFCF8]"
+                data-testid="library-pipeline-reading-circle"
+                onClick={() => trackPipelineInterest("bengali_gothic_reading_circle_click", "library-pipeline-reading-circle")}
+              >
+                Reading Circle
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 pb-8 sm:px-8 lg:px-12">

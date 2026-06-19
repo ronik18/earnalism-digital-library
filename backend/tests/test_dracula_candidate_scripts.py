@@ -5,6 +5,7 @@ from argparse import Namespace
 from pathlib import Path
 
 from scripts import approved_to_publish_builder as builder
+from scripts import prepare_bengali_candidate as bengali
 from scripts import prepare_dracula_candidate as dracula
 
 
@@ -24,6 +25,35 @@ def dracula_args(**overrides):
     return Namespace(**values)
 
 
+def bengali_args(**overrides):
+    values = {
+        "slug": "kshudhita-pashan",
+        "source_url": bengali.SOURCE_URL,
+        "source_text_file": "",
+        "allow_fetch": False,
+        "dry_run": True,
+    }
+    values.update(overrides)
+    return Namespace(**values)
+
+
+def bengali_source_fixture() -> str:
+    paragraph = (
+        "ক্ষুধিত পাষাণ। “মেহের আলি বলিল, তফাৎ যাও।” "
+        "প্রাসাদের নীরব বারান্দায় বাতাস থামিয়া গেল, আর অদৃশ্য কণ্ঠে এক দীর্ঘ নিশ্বাস বাজিল। "
+        "শুস্তা নদীর ধারে সন্ধ্যার আলো পড়িতে পড়িতে মনে হইল, পাথরের দেওয়াল যেন অতীতের কথা শুনিতেছে।"
+    )
+    return "\n".join(
+        [
+            "রবীন্দ্রনাথ ঠাকুর",
+            "গল্প-দশক",
+            "১৮৯৫",
+            "ক্ষুধিত পাষাণ",
+            *[paragraph for _ in range(72)],
+        ]
+    )
+
+
 def test_dracula_candidate_blocks_without_local_source_or_fetch(monkeypatch):
     monkeypatch.delenv("EARNALISM_ALLOW_SOURCE_FETCH", raising=False)
 
@@ -40,6 +70,102 @@ def test_dracula_candidate_blocks_without_local_source_or_fetch(monkeypatch):
     assert evidence["qa_status"] == "BLOCKED_SOURCE_QA"
     assert gate_results["recommendation"] == "HOLD_FOR_FIXES"
     assert "Dracula lacks approved real source evidence." in gate_results["high_blockers"]
+
+
+def test_bengali_candidate_blocks_without_source_or_fetch(monkeypatch):
+    monkeypatch.delenv("EARNALISM_ALLOW_SOURCE_FETCH", raising=False)
+
+    evidence = bengali.build_source_evidence(bengali_args())
+
+    assert evidence["slug"] == "kshudhita-pashan"
+    assert evidence["load_status"] == "BLOCKED_SOURCE_TEXT_REQUIRED"
+    assert evidence["source_hash"] == ""
+    assert evidence["content_hash"] == ""
+    assert evidence["provenance_hash"] == ""
+    assert evidence["rights_tier"] == "C"
+    assert evidence["verification_status"] == "blocked"
+    assert evidence["qa_status"] == "BLOCKED_SOURCE_QA"
+
+
+def test_bengali_candidate_uses_real_metadata_without_committing_full_source(tmp_path, monkeypatch):
+    source_file = tmp_path / "kshudhita-source.txt"
+    source_file.write_text(bengali_source_fixture(), encoding="utf-8")
+    monkeypatch.setattr(
+        bengali,
+        "load_source_license",
+        lambda *, allow_fetch: {
+            "text": "Creative Commons Attribution-Share Alike 4.0",
+            "url": "https://creativecommons.org/licenses/by-sa/4.0/deed.bn",
+        },
+    )
+    monkeypatch.setattr(bengali, "ROOT", tmp_path)
+    monkeypatch.setattr(bengali, "DATA_DIR", tmp_path / "data" / "publication_candidates")
+    monkeypatch.setattr(bengali, "OUTPUT_DIR", tmp_path / "output" / "publication_candidates" / "kshudhita-pashan")
+
+    evidence = bengali.build_source_evidence(bengali_args(source_text_file=str(source_file)))
+    audio_plan = bengali.build_audio_preview_plan(evidence)
+    score = bengali.candidate_score(evidence, audio_plan)
+    bengali.write_outputs(evidence, audio_plan, score)
+
+    assert evidence["qa_status"] == "QA_PASSED"
+    assert evidence["rights_tier"] == "A"
+    assert evidence["verification_status"] == "approved"
+    assert evidence["source_hash"]
+    assert evidence["content_hash"]
+    assert evidence["provenance_hash"]
+    assert evidence["cleaned_text_omitted"] is True
+    assert evidence["full_source_text_committed"] is False
+    assert audio_plan["audio_file_created"] is False
+    assert audio_plan["production_storage_upload"] is False
+    assert audio_plan["audio_preview_status"] == "AUDIO_PREVIEW_BLOCKED_UNTIL_PROVIDER_QA"
+    assert audio_plan["full_audiobook_status"] == "BLOCKED_FULL_AUDIO_QA_REQUIRED"
+    assert score["recommendation"] == "READY_FOR_AUDIO_PREVIEW_PLANNING"
+    assert evidence["source_license_url"] == "https://creativecommons.org/licenses/by-sa/4.0/deed.bn"
+    assert evidence["attribution_required"] is True
+    assert evidence["share_alike_required"] is True
+    assert "Bengali Wikisource" in evidence["attribution_text"]
+    assert evidence["license_compliance_status"] == "CC_BY_SA_ATTRIBUTION_SHAREALIKE_REQUIRED"
+    assert evidence["qa"]["unicode_normalization_form"] == "NFC"
+    assert "hidden_unicode_counts_raw" in evidence["qa"]
+    assert "bengali_punctuation_count" in evidence["qa"]["punctuation_preservation"]
+    assert "non_bengali_english_quote_count" in evidence["qa"]["punctuation_preservation"]
+
+    source_record = json.loads((tmp_path / "data" / "publication_candidates" / "kshudhita-pashan.source.json").read_text())
+    assert "raw_text" not in source_record
+    assert "cleaned_text" not in source_record
+    assert source_record["attribution_required"] is True
+    assert source_record["share_alike_required"] is True
+    rights_evidence = json.loads((tmp_path / "output" / "publication_candidates" / "kshudhita-pashan" / "rights_evidence.json").read_text())
+    assert rights_evidence["license_compliance_status"] == "CC_BY_SA_ATTRIBUTION_SHAREALIKE_REQUIRED"
+    assert rights_evidence["attribution_required"] is True
+    assert rights_evidence["share_alike_required"] is True
+    assert (tmp_path / "KSHUDHITA_PASHAN_AUDIO_QA_CHECKLIST.md").exists()
+
+
+def test_bengali_audio_preview_plan_is_metadata_only(tmp_path, monkeypatch):
+    source_file = tmp_path / "kshudhita-source.txt"
+    source_file.write_text(bengali_source_fixture(), encoding="utf-8")
+    monkeypatch.setattr(
+        bengali,
+        "load_source_license",
+        lambda *, allow_fetch: {
+            "text": "Creative Commons Attribution-Share Alike 4.0",
+            "url": "https://creativecommons.org/licenses/by-sa/4.0/deed.bn",
+        },
+    )
+
+    evidence = bengali.build_source_evidence(bengali_args(source_text_file=str(source_file)))
+    audio_plan = bengali.build_audio_preview_plan(evidence)
+
+    for provider_plan in audio_plan["provider_plans"].values():
+        assert provider_plan["dry_run"] is True
+        assert provider_plan["pronunciation_guide_attached"] is True
+        assert provider_plan["provider_plan"]["dry_run_only"] is True
+        assert provider_plan["mastering_plan"]["executed"] is False
+        assert provider_plan["planned_audio_assets"]
+        assert all(asset["publishable"] is False for asset in provider_plan["planned_audio_assets"])
+        assert all("text" not in chunk for chunk in provider_plan["narration_script"]["chunks"])
+    assert any(item["requires_human_spot_check"] for item in audio_plan["pronunciation_dictionary"])
 
 
 def test_dracula_candidate_writes_dry_run_blocker_outputs(tmp_path, monkeypatch):

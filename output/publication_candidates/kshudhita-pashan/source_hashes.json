@@ -1,0 +1,6 @@
+{
+  "source_hash": "33c52e97617493f9278d97f01d26d9a72685bf7e648b097c8e81582e59c7e9fa",
+  "content_hash": "e17c53487382eb060ff724dd1d35d9fc965cd90d6856b9b462b0e0091ee9ecf0",
+  "provenance_hash": "6b567144f5e8176b27ac3cd80ad804d2c0d8438008d7b293c87f6263fe04339c",
+  "hash_policy": "source_hash=sha256(raw extracted source text); content_hash=sha256(cleaned text); provenance_hash=sha256(source_url + source_name + source_license + content_hash)"
+}
