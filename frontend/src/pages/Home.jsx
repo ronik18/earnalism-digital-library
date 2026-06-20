@@ -128,16 +128,20 @@ export default function Home() {
           <div className="lg:col-span-7">
             <div className="italic-eyebrow mb-6 flex items-center gap-3 text-[var(--brand-gold-soft)]" data-testid="hero-overline">
               <span className="h-px w-10 bg-[var(--brand-gold)]/70" />
-              <span>Controlled launch release</span>
+              <span>The Earnalism Digital Library</span>
             </div>
-            <h1 className="font-serif-light text-[2.8rem] leading-[1.02] tracking-normal text-[#FDFCF8] text-balance sm:text-6xl lg:text-7xl" data-testid="hero-headline">
+            <h1
+              className="font-serif-light text-[2.8rem] leading-[1.02] tracking-normal text-[#FDFCF8] text-balance sm:text-6xl lg:text-7xl"
+              data-testid="hero-headline"
+              aria-label="Begin with Dracula."
+            >
               Begin with <span className="italic-accent text-[var(--brand-gold-soft)]">Dracula.</span>
             </h1>
             <p className="mt-6 max-w-xl font-serif-display text-xl italic leading-snug text-[#F4EFEA]/90 sm:text-2xl">
               A quiet digital reading room for timeless books.
             </p>
             <p className="mt-6 max-w-2xl text-[1rem] font-light leading-[1.8] text-[#F4EFEA]/80">
-              Dracula by Bram Stoker is Earnalism's first approved Tier A core reading release. Read Chapter 1 free, then continue with a reading pass while future titles move through a rights-safe pipeline.
+              The Earnalism controlled launch starts with one approved classic. Read Chapter 1 free. Continue with a 7-day reading pass. More books are coming through the rights-safe pipeline.
             </p>
             <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-[0.74rem] uppercase tracking-[0.16em] text-[#FDFCF8]/90" aria-label="Dracula launch facts">
               <span className="inline-flex items-center gap-2"><ShieldCheck size={14} strokeWidth={1.6} /> {DRACULA_RIGHTS_NOTE}</span>
@@ -168,6 +172,14 @@ export default function Home() {
                 onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "get_7_day_reading_pass" })}
               >
                 Get 7-Day Reading Pass <ArrowRight size={15} strokeWidth={1.7} />
+              </Link>
+              <Link
+                to="/library?category=pipeline"
+                className="btn-link justify-center !text-[#FDFCF8]"
+                data-testid="hero-cta-pipeline"
+                onClick={() => track(DRACULA_CTA_EVENTS.notifyMe, { cta: "explore_pipeline_library" })}
+              >
+                Explore Pipeline / Library <ArrowRight size={15} strokeWidth={1.7} />
               </Link>
             </div>
           </div>
@@ -264,17 +276,6 @@ export default function Home() {
                 </Link>
                 <button
                   type="button"
-                  className="btn-secondary justify-center !border-[var(--brand-gold-soft)] !text-[#FDFCF8] hover:!bg-[rgba(216,185,122,0.12)]"
-                  data-testid="pipeline-kshudhita-voice-sample"
-                  onClick={() => {
-                    trackPipelineInterest("kshudhita_pashan_audio_interest_click", "pipeline-kshudhita-voice-sample");
-                    toast.message("Voice sample interest noted.");
-                  }}
-                >
-                  Voice Sample Soon
-                </button>
-                <button
-                  type="button"
                   className="btn-link justify-center !text-[#FDFCF8]"
                   data-testid="pipeline-reading-circle"
                   onClick={() => {
@@ -283,17 +284,6 @@ export default function Home() {
                   }}
                 >
                   Reading Circle
-                </button>
-                <button
-                  type="button"
-                  className="btn-link justify-center !text-[#FDFCF8]"
-                  data-testid="pipeline-bengali-voice"
-                  onClick={() => {
-                    trackPipelineInterest("bengali_voice_sample_interest", "pipeline-bengali-voice");
-                    toast.message("Bengali voice QA interest noted.");
-                  }}
-                >
-                  Follow Audio QA
                 </button>
               </div>
             </div>

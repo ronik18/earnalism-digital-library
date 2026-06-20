@@ -4,6 +4,7 @@ import { Mail, Instagram, Facebook, Youtube, Linkedin, Twitter } from "lucide-re
 import { api, formatError } from "../lib/api";
 import { useSettings } from "../context/SettingsContext";
 import useSEO from "../hooks/useSEO";
+import { trackFunnelEvent } from "../lib/funnelAnalytics";
 
 const SOCIALS = [
   { key: "instagram", label: "Instagram", Icon: Instagram },
@@ -31,6 +32,11 @@ export default function Contact() {
     setSubmitting(true);
     try {
       await api.post("/contact", form);
+      trackFunnelEvent("support_complaint_created", {
+        source: "contact_form",
+        has_subject: Boolean(form.subject),
+        message_type: "reader_support",
+      });
       toast.success("Thank you. We'll respond with care.");
       setForm({ name: "", email: "", subject: "", message: "" });
     } catch (err) {

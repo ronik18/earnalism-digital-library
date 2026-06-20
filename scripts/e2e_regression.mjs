@@ -11,6 +11,7 @@ const outputDir = path.resolve(process.env.E2E_OUTPUT_DIR || "test-results/regre
 const isLocalFrontend = /^https?:\/\/(?:127\.0\.0\.1|localhost|\[::1\])/i.test(baseUrl);
 const liveApprovedSlug = "dracula";
 const expectedPipelineSlugs = [
+  "kshudhita-pashan",
   "frankenstein",
   "sherlock-holmes",
   "sultanas-dream",
