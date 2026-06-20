@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const vm = require("vm");
 
 const ROOT = path.resolve(__dirname, "../..");
 
@@ -35,6 +36,23 @@ function extractBetween(source, startMarker, endMarker) {
   return afterStart.slice(0, end);
 }
 
+function loadSocialLinks(env = {}) {
+  const source = read("frontend/src/config/socialLinks.js")
+    .replace("export const SUPPORTED_SOCIAL_LINKS =", "const SUPPORTED_SOCIAL_LINKS =")
+    .replace("export function normalizeSocialUrl", "function normalizeSocialUrl")
+    .replace("export function getEnabledSocialLinks", "function getEnabledSocialLinks");
+  const context = {
+    module: { exports: {} },
+    process: { env },
+    URL,
+  };
+  vm.runInNewContext(
+    `${source}\nmodule.exports = { SUPPORTED_SOCIAL_LINKS, normalizeSocialUrl, getEnabledSocialLinks };`,
+    context
+  );
+  return context.module.exports;
+}
+
 describe("UX conversion static signals", () => {
   const home = read("frontend/src/pages/Home.jsx");
   const bookDetail = read("frontend/src/pages/BookDetail.jsx");
@@ -56,6 +74,10 @@ describe("UX conversion static signals", () => {
   const postProductionCanary = read("scripts/post_production_canary.py");
   const dailyRunbook = read("DAILY_GROWTH_AUDIT_RUNBOOK.md");
   const header = read("frontend/src/components/Header.jsx");
+  const footer = read("frontend/src/components/Footer.jsx");
+  const footerSocialLinks = read("frontend/src/components/FooterSocialLinks.jsx");
+  const socialLinksConfig = read("frontend/src/config/socialLinks.js");
+  const styles = read("frontend/src/index.css");
   const app = read("frontend/src/App.js");
   const renderedPricingSources = [backend, pricing, microStory, readerUpsell, reader].join("\n");
 
@@ -354,5 +376,61 @@ describe("UX conversion static signals", () => {
     expect(homeHtml).not.toContain("Preview every book before you pay");
     expect(metaContent(readerHtml, "name", "robots")).toContain("noindex");
     expect(canonicalHref(readerHtml)).toBe("https://theearnalism.com/book/dracula");
+  });
+
+  test("footer social links render only real configured http links", () => {
+    const emptyConfig = loadSocialLinks({});
+    expect(emptyConfig.getEnabledSocialLinks()).toEqual([]);
+
+    const instagramConfig = loadSocialLinks({
+      REACT_APP_INSTAGRAM_URL: "https://instagram.com/theearnalism",
+    });
+    expect(instagramConfig.getEnabledSocialLinks().map((link) => link.id)).toEqual(["instagram"]);
+
+    const orderedConfig = loadSocialLinks({
+      REACT_APP_TELEGRAM_CHANNEL_URL: "https://t.me/theearnalism",
+      REACT_APP_LINKEDIN_URL: "https://www.linkedin.com/company/theearnalism",
+      REACT_APP_YOUTUBE_URL: "https://youtube.com/@theearnalism",
+    });
+    expect(orderedConfig.getEnabledSocialLinks().map((link) => link.id)).toEqual([
+      "youtube",
+      "linkedin",
+      "telegram-channel",
+    ]);
+
+    const unsafeLinks = [
+      { id: "empty", url: "", enabled: true, order: 1 },
+      { id: "hash", url: "#", enabled: true, order: 2 },
+      { id: "script", url: "javascript:alert(1)", enabled: true, order: 3 },
+      { id: "mailto", url: "mailto:sales@reoenterprise.org", enabled: true, order: 4 },
+      { id: "disabled", url: "https://example.com", enabled: false, order: 5 },
+    ];
+    expect(emptyConfig.getEnabledSocialLinks(unsafeLinks)).toEqual([]);
+  });
+
+  test("footer social component is accessible, secure, and placed below contact email", () => {
+    expect(socialLinksConfig).toContain("REACT_APP_INSTAGRAM_URL");
+    expect(socialLinksConfig).toContain("REACT_APP_WHATSAPP_CHANNEL_URL");
+    expect(socialLinksConfig).toContain("REACT_APP_TELEGRAM_CHANNEL_URL");
+    expect(socialLinksConfig).toContain("new URL(trimmed)");
+    expect(socialLinksConfig).toContain('["http:", "https:"]');
+    expect(footerSocialLinks).toContain("getEnabledSocialLinks");
+    expect(footerSocialLinks).toContain("if (!enabledLinks.length) return null");
+    expect(footerSocialLinks).toContain("Follow The Earnalism");
+    expect(footerSocialLinks).toContain('target="_blank"');
+    expect(footerSocialLinks).toContain('rel="noopener noreferrer"');
+    expect(footerSocialLinks).toContain("aria-label={link.ariaLabel}");
+    expect(footerSocialLinks).not.toContain('href="#"');
+    expect(footerSocialLinks).not.toContain('href=""');
+
+    expect(footer.indexOf("CONTACT_EMAIL")).toBeGreaterThanOrEqual(0);
+    expect(footer.indexOf("<FooterSocialLinks />")).toBeGreaterThan(footer.indexOf("mailto:${CONTACT_EMAIL}"));
+    expect(footer).toContain("A quiet digital reading room beginning with Dracula by Bram Stoker.");
+    expect(footer).toContain("Bengali Gothic and other classics are moving through the rights-safe pipeline.");
+    expect(footer).not.toContain("A quiet digital reading room for Bengali classics, literary fiction, young readers");
+    expect(styles).toContain(".footer-social");
+    expect(styles).toContain("width: 2.75rem");
+    expect(styles).toContain("height: 2.75rem");
+    expect(styles).toContain(".footer-social__sr-label");
   });
 });

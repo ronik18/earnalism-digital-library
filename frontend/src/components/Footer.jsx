@@ -1,21 +1,11 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Youtube, Linkedin, Twitter, Mail } from "lucide-react";
-import { useSettings } from "../context/SettingsContext";
+import { Mail } from "lucide-react";
 import BrandMark from "./BrandMark";
-
-const SOCIALS = [
-  { key: "instagram", label: "Instagram", Icon: Instagram },
-  { key: "facebook", label: "Facebook", Icon: Facebook },
-  { key: "youtube", label: "YouTube", Icon: Youtube },
-  { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
-  { key: "twitter", label: "X", Icon: Twitter },
-];
+import FooterSocialLinks from "./FooterSocialLinks";
 
 const CONTACT_EMAIL = "sales@reoenterprise.org";
 
 export default function Footer() {
-  const { social } = useSettings();
-  const activeSocials = SOCIALS.filter((s) => social?.[s.key]);
   const year = new Date().getFullYear();
 
   return (
@@ -25,7 +15,7 @@ export default function Footer() {
           <div className="mb-4 leading-none" data-testid="footer-brand"><BrandMark variant="footer" /></div>
           <p className="font-serif-display italic text-base text-charcoal-soft mb-4">Buy reading time. Read beautifully. Return whenever you wish.</p>
           <p className="text-charcoal-soft max-w-md leading-[1.8] font-light text-[0.95rem]">
-            A quiet digital reading room for Bengali classics, literary fiction, young readers, business, technology and AI, history, adventure, science fiction, and gothic fiction.
+            A quiet digital reading room beginning with Dracula by Bram Stoker. Bengali Gothic and other classics are moving through the rights-safe pipeline.
           </p>
           <div className="gold-rule-thin mt-7" />
         </div>
@@ -46,23 +36,7 @@ export default function Footer() {
           <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-2 text-charcoal-soft hover:text-burgundy">
             <Mail size={16} /> {CONTACT_EMAIL}
           </a>
-          {activeSocials.length > 0 && (
-            <nav className="flex gap-3 mt-5 text-charcoal-soft" aria-label="Earnalism social links" data-testid="footer-socials">
-              {activeSocials.map(({ key, label, Icon }) => (
-                <a
-                  key={key}
-                  href={social[key]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Visit Earnalism on ${label}`}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-brand-soft text-charcoal-soft transition-colors duration-300 hover:border-gold hover:text-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
-                  data-testid={`footer-social-${key}`}
-                >
-                  <Icon size={17} strokeWidth={1.5} aria-hidden="true" />
-                </a>
-              ))}
-            </nav>
-          )}
+          <FooterSocialLinks />
         </div>
       </div>
 
