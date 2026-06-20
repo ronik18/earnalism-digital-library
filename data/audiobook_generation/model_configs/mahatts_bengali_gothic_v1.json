@@ -1,0 +1,14 @@
+{
+  "config_id": "mahatts_bengali_gothic_v1",
+  "model_id": "mahatts-v2",
+  "language_code": "bn",
+  "scope": "INTERNAL_REVIEW_ONLY",
+  "tone": "neutral_literary",
+  "speaking_rate": 0.88,
+  "post_process_pauses": true,
+  "commercial_candidate_only_if_license_passes": true,
+  "no_public_release": true,
+  "automatic_upload": false,
+  "listen_now": false,
+  "full_audiobook": false
+}

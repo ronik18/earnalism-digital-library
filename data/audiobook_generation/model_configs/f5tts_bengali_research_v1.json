@@ -1,0 +1,15 @@
+{
+  "config_id": "f5tts_bengali_research_v1",
+  "model_id": "f5-tts",
+  "language_code": "bn",
+  "scope": "INTERNAL_REVIEW_ONLY",
+  "research_only": true,
+  "license_check_required": true,
+  "commercial_approval": false,
+  "reference_voice_required": true,
+  "reference_voice_policy": "Use only owner-approved reference voice with written consent. No unauthorized cloning.",
+  "no_public_release": true,
+  "automatic_upload": false,
+  "listen_now": false,
+  "full_audiobook": false
+}
