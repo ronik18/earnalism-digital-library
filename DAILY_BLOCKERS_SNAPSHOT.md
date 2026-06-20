@@ -4,9 +4,9 @@ This is a committed sample snapshot from the 2026-06-20 IST owner audit. Recurri
 
 Date: 2026-06-20 IST
 
-Today's overall score: 8.7 / 10
+Today's overall score: 9.4 / 10 local pre-deploy
 
-Recommendation: GO for keeping Dracula live; HOLD for broad catalog growth expansion until the backend truth gate PR is merged, deployed, and the API-backed catalog canary passes.
+Recommendation: GO for local Dracula-only catalog truth; HOLD for operational GO until this branch is deployed and the API-backed catalog canary passes.
 
 The score remains below 9.7 until this backend catalog truth gate is merged, deployed, and `npm run launch:backend-catalog-truth-canary` passes against production. The branch hardens public API projections, reader access, audiobook access, owner audit reporting, and backend/frontend catalog truth alignment for Dracula-only controlled launch.
 
@@ -18,7 +18,7 @@ The score remains below 9.7 until this backend catalog truth gate is merged, dep
 
 ## Top 3 Risks
 
-- Backend catalog truth must be verified live after deploy with `npm run launch:backend-catalog-truth-canary`.
+- Backend catalog truth must be verified live after deploy with `npm run launch:backend-catalog-truth-canary`; the pre-fix production API canary failed.
 - Current SEO audit is `BLOCKED_FOR_BOOK_SEO` because book detail metadata is client-rendered.
 - Post-deploy verification must confirm the Dracula-first homepage/library source and backend truth gate are live before growth expansion.
 

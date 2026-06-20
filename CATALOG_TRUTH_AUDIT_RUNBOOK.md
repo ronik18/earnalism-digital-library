@@ -22,6 +22,9 @@ npm run launch:backend-catalog-truth-canary
 This calls `https://api.theearnalism.com/api` and verifies real API/database
 behavior. It must pass immediately after deployment.
 
+If this canary fails, keep `FINAL_GO_NO_GO_DECISION.md` at `HOLD_FOR_FIXES` and
+run `npm run release:post-production-canary` for the full owner summary.
+
 ## Outputs
 
 ```text
@@ -52,6 +55,7 @@ HOLD the launch or growth expansion if any of these occur:
 - Any public projection leaks rights evidence, source hashes, source URLs, or audio storage URLs.
 - API mode returns zero live Dracula rows.
 - API mode returns 200 or a redirect for any public audiobook endpoint.
+- Backend live approved slugs differ from `data/controlled_launch.json`.
 
 ## Safety
 

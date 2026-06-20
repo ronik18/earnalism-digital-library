@@ -48,6 +48,7 @@ try:
     from catalog_truth import (
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         can_expose_audio,
+        can_expose_reader,
         live_approved_mongo_query,
         public_book_projection,
     )
@@ -55,6 +56,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.catalog_truth import (
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         can_expose_audio,
+        can_expose_reader,
         live_approved_mongo_query,
         public_book_projection,
     )
@@ -240,7 +242,7 @@ _shutdown_state: dict = {"draining": False, "inflight": 0}
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "dracula-first-v1"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "dracula-first-v2"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
@@ -720,7 +722,19 @@ BOOK_METADATA_PROJECTION = {
 }
 READER_ACCESS_PROJECTION = {
     "_id": 0,
+    "slug": 1,
     "title": 1,
+    "is_published": 1,
+    "publication_status": 1,
+    "approved_to_publish": 1,
+    "rights_metadata": 1,
+    "source_url": 1,
+    "source_name": 1,
+    "source_license": 1,
+    "source_hash": 1,
+    "content_hash": 1,
+    "provenance_hash": 1,
+    "qa_status": 1,
     "chapters.id": 1,
     "chapters.title": 1,
     "chapters.order": 1,
@@ -750,16 +764,19 @@ BOOK_SUMMARY_PROJECTION = {
     "blur_placeholder": 1,
     "dominant_color": 1,
     "estimated_reading_time": 1,
-    "audiobook_enabled": 1,
-    "generate_audiobook": 1,
-    "audiobook_provider": 1,
-    "audiobook_voice": 1,
-    "audiobook_assets_updated_at": 1,
-    "audio_asset_slug": 1,
-    "audiobook_assets": 1,
-    "audiobook": 1,
     "is_published": 1,
     "created_at": 1,
+    "updated_at": 1,
+    "publication_status": 1,
+    "approved_to_publish": 1,
+    "rights_metadata": 1,
+    "source_url": 1,
+    "source_name": 1,
+    "source_license": 1,
+    "source_hash": 1,
+    "content_hash": 1,
+    "provenance_hash": 1,
+    "qa_status": 1,
 }
 PUBLIC_CACHE_PATHS = {
     "/api/home",
@@ -1030,6 +1047,23 @@ def _is_controlled_public_slug(slug: str) -> bool:
     return str(slug or "").strip().lower() in CONTROLLED_LIVE_BOOK_SLUGS
 
 
+def _public_projection_is_live(projected: Optional[dict]) -> bool:
+    return bool(
+        projected
+        and projected.get("slug") in CONTROLLED_LIVE_BOOK_SLUGS
+        and projected.get("publication_status") == "LIVE_APPROVED"
+        and projected.get("reader_enabled") is True
+        and projected.get("preview_enabled") is True
+        and projected.get("audio_enabled") is False
+        and projected.get("audiobook_enabled") is False
+    )
+
+
+def _safe_live_public_projection(book: Optional[dict]) -> Optional[dict]:
+    projected = public_book_projection(_strip_all_chapter_content(book)) if book else None
+    return projected if _public_projection_is_live(projected) else None
+
+
 async def _public_cache_generation_value() -> int:
     if not _redis_state_enabled():
         return _public_cache_generation
@@ -1250,8 +1284,10 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
     query = {"slug": slug} if admin_preview else _controlled_public_book_query({"slug": slug})
     doc = await db.books.find_one(
         query,
-        {"_id": 0, "title": 1, "is_published": 1, "chapters.id": 1, "chapters.title": 1, "chapters.order": 1, "chapters.is_preview": 1},
+        READER_ACCESS_PROJECTION,
     )
+    if doc and not admin_preview and not can_expose_reader(doc):
+        return None
     if doc:
         await _redis_cache_set("reader-content", cache_key, doc, READER_BOOK_CACHE_TTL_SECONDS)
     return doc
@@ -1265,6 +1301,10 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
     cached = await _redis_cache_get("reader-content", cache_key)
     if cached is not None:
         return str(cached or "")
+    if not admin_preview:
+        book = await _reader_book_access_doc(slug)
+        if not book:
+            return ""
     query = {"slug": slug} if admin_preview else _controlled_public_book_query({"slug": slug})
     content_doc = await db.books.find_one(
         {**query, "chapters.id": chapter_id},
@@ -1420,6 +1460,8 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
     doc = await db.books.find_one(query, {"_id": 0, "rights_metadata": 0})
     if not doc:
         return None
+    if not admin_preview and not can_expose_reader(doc):
+        return None
 
     chapters = []
     preview_ids = _free_preview_chapter_ids(doc)
@@ -1441,6 +1483,8 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
 
     audio = _reader_manifest_audio(doc, slug)
     book_public = public_book_projection(_strip_all_chapter_content(doc)) or {}
+    if not admin_preview and not _public_projection_is_live(book_public):
+        return None
     book_public["chapters"] = chapters
     manifest_version = _stable_digest({
         "slug": slug,
@@ -2177,6 +2221,77 @@ class Book(BaseModel):
     rights_metadata: Dict[str, Any] = Field(default_factory=dict)
     is_published: bool = True
     created_at: str = Field(default_factory=now_iso)
+
+
+class PublicChapterOut(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    id: str = ""
+    title: str = ""
+    order: int = 0
+    is_preview: bool = False
+    has_images: bool = False
+    image_count: int = 0
+    word_count: int = 0
+    reading_minutes: int = 0
+    language_hint: str = ""
+    processing_status: str = ""
+    processing_warnings: List[str] = Field(default_factory=list)
+    source_filename: str = ""
+    uploaded_at: str = ""
+    updated_at: str = ""
+
+
+class PublicBookOut(BaseModel):
+    """Safe public book shape for controlled-launch catalog/detail routes."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    id: str = ""
+    slug: str = ""
+    title: str = ""
+    subtitle: str = ""
+    author: str = ""
+    category_slug: str = ""
+    short_description: str = ""
+    description: str = ""
+    cover_url: str = ""
+    cover_image_url: str = ""
+    thumbnail_url: str = ""
+    blur_placeholder: str = ""
+    dominant_color: str = ""
+    back_cover_url: str = ""
+    back_cover_image_url: str = ""
+    back_cover_thumbnail_url: str = ""
+    back_cover_blur_placeholder: str = ""
+    back_cover_dominant_color: str = ""
+    estimated_reading_time: str = ""
+    formats: List[str] = Field(default_factory=list)
+    benefits: List[str] = Field(default_factory=list)
+    who_for: List[str] = Field(default_factory=list)
+    learnings: List[str] = Field(default_factory=list)
+    about_author: str = ""
+    chapters: List[PublicChapterOut] = Field(default_factory=list)
+    is_published: bool = True
+    created_at: str = ""
+    updated_at: str = ""
+    publication_status: str = ""
+    launch_status: str = ""
+    reader_enabled: bool = False
+    preview_enabled: bool = False
+    audio_enabled: bool = False
+    audiobook_enabled: bool = False
+    public_route: str = ""
+    reader_url: str = ""
+    preview_url: str = ""
+    audio_url: str = ""
+    audio_status: str = ""
+    cta_label: str = ""
+    secondary_cta_label: str = ""
+    public_json_ld_enabled: bool = False
+    source_note: str = ""
+    rights_note: str = ""
+
 
 class BookIn(BaseModel):
     title: str
@@ -3555,7 +3670,7 @@ async def get_home_payload(books_limit: Optional[int] = None, books_offset: int 
         _controlled_public_book_query({"slug": featured_candidate}),
         BOOK_METADATA_PROJECTION,
     )
-    featured_book = public_book_projection(_strip_all_chapter_content(doc)) if doc else None
+    featured_book = _safe_live_public_projection(doc)
 
     result = {
         "categories": categories,
@@ -3594,7 +3709,7 @@ async def _home_books_page(limit: int, offset: int = 0, *, maximum: int = HOME_B
     total = await db.books.count_documents(query)
     books = []
     for doc in docs:
-        projected = public_book_projection(_strip_all_chapter_content(doc))
+        projected = _safe_live_public_projection(doc)
         if projected:
             books.append(projected)
     next_offset = normalized_offset + len(books)
@@ -3713,13 +3828,13 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     # Public list is shelf metadata-only so library browsing never ships chapter bodies.
     result = []
     for doc in docs:
-        projected = public_book_projection(_strip_all_chapter_content(doc))
+        projected = _safe_live_public_projection(doc)
         if projected:
             result.append(projected)
     await _public_cache_set(cache_key, result)
     return result
 
-@api.get("/books/{slug}", response_model=Book)
+@api.get("/books/{slug}", response_model=PublicBookOut)
 async def get_book(slug: str):
     cache_key = _public_cache_key("book_detail", slug=slug)
     cached = await _public_cache_get(cache_key)
@@ -3732,7 +3847,9 @@ async def get_book(slug: str):
         raise HTTPException(status_code=404, detail="Book not found")
     # Public detail returns metadata + ToC only. Reader content is fetched through
     # the gated chapter endpoint so detail pages stay light for large books.
-    result = public_book_projection(_strip_all_chapter_content(doc))
+    result = _safe_live_public_projection(doc)
+    if not result:
+        raise HTTPException(status_code=404, detail="Book not found")
     await _public_cache_set(cache_key, result)
     return result
 
@@ -3747,6 +3864,8 @@ async def get_book_chapters(slug: str):
         raise HTTPException(status_code=404, detail="Book not found")
     doc = await db.books.find_one(_controlled_public_book_query({"slug": slug}), BOOK_METADATA_PROJECTION)
     if not doc:
+        raise HTTPException(status_code=404, detail="Book not found")
+    if not can_expose_reader(doc):
         raise HTTPException(status_code=404, detail="Book not found")
     chapters = _strip_all_chapter_content(doc).get("chapters") or []
     if not chapters:
@@ -3766,6 +3885,8 @@ async def get_book_chapter(slug: str, chapter_id: str):
         raise HTTPException(status_code=404, detail="Book not found")
     book_meta = await db.books.find_one(_controlled_public_book_query({"slug": slug}), READER_ACCESS_PROJECTION)
     if not book_meta:
+        raise HTTPException(status_code=404, detail="Book not found")
+    if not can_expose_reader(book_meta):
         raise HTTPException(status_code=404, detail="Book not found")
     chapters = sorted((book_meta.get("chapters") or []), key=lambda c: c.get("order", 0))
     target_meta = next((c for c in chapters if c.get("id") == chapter_id), None)
@@ -3828,7 +3949,7 @@ async def get_featured():
         else CONTROLLED_LIVE_BOOK_SLUGS[0]
     )
     book = await db.books.find_one(_controlled_public_book_query({"slug": featured_candidate}), BOOK_METADATA_PROJECTION)
-    result = {"book": public_book_projection(_strip_all_chapter_content(book)) if book else None}
+    result = {"book": _safe_live_public_projection(book)}
     await _public_cache_set(cache_key, result)
     return result
 

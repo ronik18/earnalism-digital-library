@@ -70,6 +70,38 @@ API_AUDIT_PATHS = [
     "/reader/book/kshudhita-pashan/audiobook",
 ]
 
+FORBIDDEN_PUBLIC_API_FIELDS = {
+    "approved_to_publish",
+    "audio_asset_slug",
+    "audio_assets",
+    "audio_files",
+    "audiobook",
+    "audiobook_assets",
+    "audiobook_provider",
+    "audiobook_url",
+    "audiobook_voice",
+    "b2_url",
+    "blocked_reason",
+    "cloudinary_audio",
+    "content",
+    "content_hash",
+    "generate_audiobook",
+    "ingestion",
+    "provenance_hash",
+    "qa_issues",
+    "rights_decision",
+    "rights_metadata",
+    "rights_tier",
+    "source_evidence",
+    "source_hash",
+    "source_license",
+    "source_metadata",
+    "source_name",
+    "source_text_url",
+    "source_url",
+    "verification_status",
+}
+
 
 @dataclass
 class EndpointResult:
@@ -159,6 +191,18 @@ def sitemap_urls(path: Path) -> set[str]:
 
 
 def frontend_controlled_live_slugs(path: Path | None = None) -> set[str] | None:
+    config_path = ROOT / "data" / "controlled_launch.json"
+    if path is None and config_path.exists():
+        try:
+            config = json.loads(config_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            config = {}
+        slugs = config.get("live_approved_slugs") if isinstance(config, dict) else []
+        if isinstance(slugs, list):
+            normalized = {normalize_slug(slug) for slug in slugs if normalize_slug(slug)}
+            if normalized:
+                return normalized
+
     source_path = path or ROOT / "frontend" / "scripts" / "generate-seo-assets.mjs"
     if not source_path.exists():
         return None
@@ -262,12 +306,31 @@ def api_audio_enabled(book: dict[str, Any]) -> bool:
     audiobook = book.get("audiobook") if isinstance(book.get("audiobook"), dict) else {}
     assets = book.get("audiobook_assets") if isinstance(book.get("audiobook_assets"), dict) else {}
     nested_assets = audiobook.get("assets") if isinstance(audiobook.get("assets"), dict) else {}
+    audio_fields = (
+        "audio_enabled",
+        "audiobook_enabled",
+        "generate_audiobook",
+        "has_audio",
+    )
+    audio_url_fields = (
+        "audio_url",
+        "audiobook_url",
+        "voice_url",
+        "waveform_url",
+        "b2_url",
+        "cloudinary_audio",
+        "narration_url",
+        "listen_url",
+    )
+    audio_collection_fields = (
+        "audio_assets",
+        "audio_files",
+    )
     return any(
         [
-            truthy(book.get("audio_enabled")),
-            truthy(book.get("audiobook_enabled")),
-            truthy(book.get("generate_audiobook")),
-            bool(normalize_text(book.get("audio_url"))),
+            *(truthy(book.get(field)) for field in audio_fields),
+            *(bool(normalize_text(book.get(field))) for field in audio_url_fields),
+            *(bool(book.get(field)) for field in audio_collection_fields),
             bool(normalize_text(audiobook.get("url"))),
             bool(assets),
             bool(nested_assets),
@@ -318,6 +381,94 @@ def api_endpoint_statuses(endpoints: dict[str, EndpointResult]) -> dict[str, dic
     return {path: result.as_dict() for path, result in endpoints.items()}
 
 
+def forbidden_public_fields(payload: Any, path: str = "$") -> list[str]:
+    found: list[str] = []
+    if isinstance(payload, dict):
+        for key, value in payload.items():
+            child_path = f"{path}.{key}" if path else key
+            if key in FORBIDDEN_PUBLIC_API_FIELDS:
+                found.append(child_path)
+            found.extend(forbidden_public_fields(value, child_path))
+    elif isinstance(payload, list):
+        for index, value in enumerate(payload):
+            found.extend(forbidden_public_fields(value, f"{path}[{index}]"))
+    return found
+
+
+def safe_field_issues(endpoint: str, payload: Any) -> list[str]:
+    return [
+        f"{endpoint} exposes forbidden public field {field}"
+        for field in forbidden_public_fields(payload)
+    ]
+
+
+def verify_dracula_detail_payload(payload: Any) -> list[str]:
+    issues = safe_field_issues("/books/dracula", payload)
+    if not isinstance(payload, dict):
+        return [*issues, "/books/dracula did not return a JSON object"]
+
+    expected_values = {
+        "slug": LIVE_APPROVED_SLUG,
+        "publication_status": PUBLIC_STATUS_LIVE_APPROVED,
+        "launch_status": PUBLIC_STATUS_LIVE_APPROVED,
+        "reader_enabled": True,
+        "preview_enabled": True,
+        "audio_enabled": False,
+        "audiobook_enabled": False,
+        "public_route": "/book/dracula",
+        "reader_url": "/reader/dracula",
+        "preview_url": "/reader/dracula",
+        "audio_url": "",
+        "public_json_ld_enabled": True,
+    }
+    for key, expected in expected_values.items():
+        if payload.get(key) != expected:
+            issues.append(f"/books/dracula {key} is {payload.get(key)!r}; expected {expected!r}")
+
+    if payload.get("audio_status") not in {"NOT_AVAILABLE", "DISABLED"}:
+        issues.append(
+            f"/books/dracula audio_status is {payload.get('audio_status')!r}; "
+            "expected 'NOT_AVAILABLE' or 'DISABLED'"
+        )
+    if not normalize_text(payload.get("source_note")):
+        issues.append("/books/dracula is missing a safe source_note")
+    if not normalize_text(payload.get("rights_note")):
+        issues.append("/books/dracula is missing a safe rights_note")
+    if "audiobook_assets" in payload or "audiobook" in payload:
+        issues.append("/books/dracula exposes raw audiobook fields")
+    return issues
+
+
+def verify_pipeline_detail_payload(endpoint: str, payload: Any) -> list[str]:
+    issues = safe_field_issues(endpoint, payload)
+    if not isinstance(payload, dict):
+        return [*issues, f"{endpoint} did not return a JSON object"]
+
+    expected_false_fields = {
+        "reader_enabled": False,
+        "preview_enabled": False,
+        "audio_enabled": False,
+        "audiobook_enabled": False,
+        "public_json_ld_enabled": False,
+    }
+    for key, expected in expected_false_fields.items():
+        if payload.get(key) is not expected:
+            issues.append(f"{endpoint} {key} is {payload.get(key)!r}; expected {expected!r}")
+
+    expected_empty_fields = ("public_route", "reader_url", "preview_url", "audio_url")
+    for key in expected_empty_fields:
+        if payload.get(key):
+            issues.append(f"{endpoint} exposes {key}: {payload.get(key)!r}")
+
+    if payload.get("publication_status") != PUBLIC_STATUS_PIPELINE_CANDIDATE:
+        issues.append(f"{endpoint} is not pipeline-only")
+    if payload.get("cta_label") != "Notify Me":
+        issues.append(f"{endpoint} CTA is not Notify Me")
+    if payload.get("secondary_cta_label") != "Reading Circle":
+        issues.append(f"{endpoint} secondary CTA is not Reading Circle")
+    return issues
+
+
 def verify_api_audit(
     *,
     books_rows: list[dict[str, Any]],
@@ -358,9 +509,12 @@ def verify_api_audit(
 
     if endpoints["/books/dracula"].status != 200:
         blockers.append("/books/dracula did not return 200")
+    else:
+        blockers.extend(verify_dracula_detail_payload(endpoints["/books/dracula"].json_data))
 
     kshudhita_detail = endpoints["/books/kshudhita-pashan"]
     if kshudhita_detail.status == 200:
+        blockers.extend(verify_pipeline_detail_payload("/books/kshudhita-pashan", kshudhita_detail.json_data))
         kshudhita_row = next((row for row in all_rows if row["slug"] == "kshudhita-pashan"), None)
         if not kshudhita_row or kshudhita_row["classification"] != PUBLIC_STATUS_PIPELINE_CANDIDATE:
             blockers.append("/books/kshudhita-pashan returned 200 but is not pipeline-only")

@@ -1,13 +1,14 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.resolve(__dirname, "../public");
+const rootDir = path.resolve(__dirname, "../..");
 const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const apiBase = resolveApiBase();
 const today = new Date().toISOString().slice(0, 10);
-const controlledLiveSlugs = new Set(["dracula"]);
+const controlledLiveSlugs = await loadControlledLiveSlugs();
 
 const coreRoutes = [
   { path: "/", changefreq: "daily", priority: "1.0" },
@@ -55,6 +56,20 @@ function resolveApiBase() {
 
   if (!raw || raw.startsWith("/")) return "https://api.theearnalism.com/api";
   return raw.endsWith("/api") ? raw : `${raw}/api`;
+}
+
+async function loadControlledLiveSlugs() {
+  try {
+    const configPath = path.join(rootDir, "data", "controlled_launch.json");
+    const config = JSON.parse(await readFile(configPath, "utf8"));
+    const slugs = Array.isArray(config.live_approved_slugs)
+      ? config.live_approved_slugs.map((slug) => String(slug || "").trim().toLowerCase()).filter(Boolean)
+      : [];
+    return new Set(slugs.length > 0 ? slugs : ["dracula"]);
+  } catch (error) {
+    console.warn(`[seo] Could not load controlled launch config: ${error.message}`);
+    return new Set(["dracula"]);
+  }
 }
 
 function escapeXml(value = "") {

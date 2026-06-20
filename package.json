@@ -4,6 +4,7 @@
     "regression:ci": "CI=true REGRESSION_MODE=pr npm run regression -- --json --outputFile=regression/results.json",
     "regression:go-live": "CI=true REGRESSION_MODE=go-live npm run regression -- --json --outputFile=regression/results.json",
     "regression:canary": "REGRESSION_MODE=canary node regression/scripts/post-deploy-canary.js",
+    "release:post-production-canary": "python3 scripts/post_production_canary.py",
     "regression:visual:update": "node regression/scripts/update-visual-baselines.js",
     "regression:visual:ci": "REGRESSION_MODE=visual-ci npm run regression -- modules/02-rendering-visual.test.*",
     "regression:legacy": "bash scripts/run_regression_suite.sh",
