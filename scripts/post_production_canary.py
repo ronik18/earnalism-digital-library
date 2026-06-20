@@ -203,7 +203,13 @@ def failed_command(results: Sequence[CanaryResult]) -> str:
 def owner_recommendation(status: str, results: Sequence[CanaryResult]) -> str:
     if status == "PASS":
         return "KEEP_DRACULA_LIVE"
-    rollback_keys = {"route_canary", "backend_catalog_truth", "production_parity", "frontend_build"}
+    rollback_keys = {
+        "route_canary",
+        "production_parity",
+        "controlled_publication",
+        "regression",
+        "frontend_build",
+    }
     if any(result.status == "FAIL" and result.key in rollback_keys for result in results):
         return "ROLLBACK"
     return "HOLD_FOR_FIXES"

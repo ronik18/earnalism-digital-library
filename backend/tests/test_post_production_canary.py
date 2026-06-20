@@ -65,7 +65,7 @@ def test_script_fails_when_backend_catalog_truth_fails(tmp_path):
     assert summary["overall_status"] == "FAIL"
     assert summary["failed_command"] == backend_command
     assert summary["backend_catalog_truth_status"] == "FAIL"
-    assert summary["owner_recommendation"] == "ROLLBACK"
+    assert summary["owner_recommendation"] == "HOLD_FOR_FIXES"
 
 
 def test_script_fails_when_controlled_publication_precheck_fails(tmp_path):
@@ -75,7 +75,7 @@ def test_script_fails_when_controlled_publication_precheck_fails(tmp_path):
     assert summary["overall_status"] == "FAIL"
     assert summary["failed_command"] == precheck_command
     assert summary["dracula_live_status"] == "FAIL"
-    assert summary["owner_recommendation"] == "HOLD_FOR_FIXES"
+    assert summary["owner_recommendation"] == "ROLLBACK"
 
 
 def test_script_marks_seo_and_audio_warnings_as_warn_without_failure(tmp_path):

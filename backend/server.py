@@ -2222,6 +2222,77 @@ class Book(BaseModel):
     is_published: bool = True
     created_at: str = Field(default_factory=now_iso)
 
+
+class PublicChapterOut(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    id: str = ""
+    title: str = ""
+    order: int = 0
+    is_preview: bool = False
+    has_images: bool = False
+    image_count: int = 0
+    word_count: int = 0
+    reading_minutes: int = 0
+    language_hint: str = ""
+    processing_status: str = ""
+    processing_warnings: List[str] = Field(default_factory=list)
+    source_filename: str = ""
+    uploaded_at: str = ""
+    updated_at: str = ""
+
+
+class PublicBookOut(BaseModel):
+    """Safe public book shape for controlled-launch catalog/detail routes."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    id: str = ""
+    slug: str = ""
+    title: str = ""
+    subtitle: str = ""
+    author: str = ""
+    category_slug: str = ""
+    short_description: str = ""
+    description: str = ""
+    cover_url: str = ""
+    cover_image_url: str = ""
+    thumbnail_url: str = ""
+    blur_placeholder: str = ""
+    dominant_color: str = ""
+    back_cover_url: str = ""
+    back_cover_image_url: str = ""
+    back_cover_thumbnail_url: str = ""
+    back_cover_blur_placeholder: str = ""
+    back_cover_dominant_color: str = ""
+    estimated_reading_time: str = ""
+    formats: List[str] = Field(default_factory=list)
+    benefits: List[str] = Field(default_factory=list)
+    who_for: List[str] = Field(default_factory=list)
+    learnings: List[str] = Field(default_factory=list)
+    about_author: str = ""
+    chapters: List[PublicChapterOut] = Field(default_factory=list)
+    is_published: bool = True
+    created_at: str = ""
+    updated_at: str = ""
+    publication_status: str = ""
+    launch_status: str = ""
+    reader_enabled: bool = False
+    preview_enabled: bool = False
+    audio_enabled: bool = False
+    audiobook_enabled: bool = False
+    public_route: str = ""
+    reader_url: str = ""
+    preview_url: str = ""
+    audio_url: str = ""
+    audio_status: str = ""
+    cta_label: str = ""
+    secondary_cta_label: str = ""
+    public_json_ld_enabled: bool = False
+    source_note: str = ""
+    rights_note: str = ""
+
+
 class BookIn(BaseModel):
     title: str
     subtitle: str = ""
@@ -3763,7 +3834,7 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     await _public_cache_set(cache_key, result)
     return result
 
-@api.get("/books/{slug}", response_model=Book)
+@api.get("/books/{slug}", response_model=PublicBookOut)
 async def get_book(slug: str):
     cache_key = _public_cache_key("book_detail", slug=slug)
     cached = await _public_cache_get(cache_key)

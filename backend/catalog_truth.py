@@ -314,6 +314,7 @@ def public_pipeline_projection(book: dict[str, Any]) -> dict[str, Any]:
             "preview_enabled": False,
             "audio_enabled": False,
             "audiobook_enabled": False,
+            "public_route": "",
             "reader_url": "",
             "preview_url": "",
             "audio_url": "",
@@ -321,6 +322,8 @@ def public_pipeline_projection(book: dict[str, Any]) -> dict[str, Any]:
             "cta_label": "Notify Me",
             "secondary_cta_label": "Reading Circle",
             "public_json_ld_enabled": False,
+            "source_note": "Source and rights verification are still in the pipeline.",
+            "rights_note": "Not publicly readable until rights and QA approval are complete.",
         }
     )
     return projected
@@ -344,6 +347,7 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
             "preview_enabled": live,
             "audio_enabled": False,
             "audiobook_enabled": False,
+            "public_route": f"/book/{slug}" if live else "",
             "reader_url": f"/reader/{slug}" if live else "",
             "preview_url": f"/reader/{slug}" if live else "",
             "audio_url": "",
@@ -351,6 +355,16 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
             "cta_label": "Start Dracula" if live else "Notify Me",
             "secondary_cta_label": "Read Chapter 1 Free" if live else "Coming Soon",
             "public_json_ld_enabled": live,
+            "source_note": (
+                "Source verified for the controlled Dracula reading launch."
+                if live
+                else "Source and rights verification are still in the pipeline."
+            ),
+            "rights_note": (
+                "Approved Tier A core reading candidate."
+                if live
+                else "Not publicly readable until rights and QA approval are complete."
+            ),
         }
     )
     for field in [*INTERNAL_RIGHTS_FIELDS, *INTERNAL_AUDIO_FIELDS]:

@@ -111,6 +111,40 @@ def test_projection_removes_private_rights_audio_and_chapter_content():
     assert "audiobook_assets" not in projected
     assert "audiobook" not in projected
     assert "content" not in projected["chapters"][0]
+    assert projected["public_route"] == "/book/dracula"
+    assert projected["source_note"]
+    assert projected["rights_note"]
+
+
+def test_public_book_response_model_is_safe_contract():
+    projected = catalog_truth.public_book_projection(
+        dracula_book(audiobook={"url": "https://cdn.example.com/dracula.mp3"})
+    )
+    projected["rights_metadata"] = {"rights_tier": "A"}
+    projected["source_hash"] = "must-not-serialize"
+    projected["audiobook_assets"] = {"mp3": "https://cdn.example.com/dracula.mp3"}
+
+    dumped = server.PublicBookOut.model_validate(projected).model_dump()
+
+    assert dumped["slug"] == "dracula"
+    assert dumped["reader_enabled"] is True
+    assert dumped["audio_enabled"] is False
+    assert dumped["audiobook_enabled"] is False
+    assert dumped["audio_url"] == ""
+    assert "rights_metadata" not in dumped
+    assert "source_hash" not in dumped
+    assert "audiobook_assets" not in dumped
+    assert "content" not in dumped["chapters"][0]
+
+
+def test_public_book_detail_route_uses_safe_response_model():
+    route = next(
+        route
+        for route in server.api.routes
+        if getattr(route, "path", "") == "/api/books/{slug}" and "GET" in getattr(route, "methods", set())
+    )
+
+    assert route.response_model is server.PublicBookOut
 
 
 def test_kshudhita_is_pipeline_only_with_notify_ctas():
@@ -284,6 +318,13 @@ class FakePublicBooks:
         self.last_query = query
         return FakeCursor([doc for doc in self.docs if self._matches(doc, query)])
 
+    async def find_one(self, query, _projection):
+        self.last_query = query
+        for doc in self.docs:
+            if self._matches(doc, query):
+                return doc
+        return None
+
     async def count_documents(self, query):
         return len([doc for doc in self.docs if self._matches(doc, query)])
 
@@ -353,6 +394,38 @@ def test_api_books_contains_no_non_dracula_reader_preview_or_audio(monkeypatch):
     assert all(book.get("audiobook_enabled") is False for book in result)
 
 
+def test_api_book_detail_returns_safe_dracula_public_projection(monkeypatch):
+    books = FakePublicBooks(
+        [
+            dracula_book(
+                audiobook_enabled=True,
+                audiobook_assets={"mp3": "https://cdn.example.com/dracula.mp3"},
+                rights_metadata={},
+            )
+        ]
+    )
+    monkeypatch.setattr(server, "db", SimpleNamespace(books=books))
+    monkeypatch.setattr(server, "_public_cache_get", noop_cache_get)
+    monkeypatch.setattr(server, "_public_cache_set", noop_cache_set)
+
+    result = asyncio.run(server.get_book("dracula"))
+    dumped = server.PublicBookOut.model_validate(result).model_dump()
+
+    assert dumped["slug"] == "dracula"
+    assert dumped["publication_status"] == "LIVE_APPROVED"
+    assert dumped["reader_enabled"] is True
+    assert dumped["preview_enabled"] is True
+    assert dumped["audio_enabled"] is False
+    assert dumped["audiobook_enabled"] is False
+    assert dumped["audio_status"] == "NOT_AVAILABLE"
+    assert dumped["public_route"] == "/book/dracula"
+    assert dumped["source_note"]
+    assert dumped["rights_note"]
+    assert "audiobook_assets" not in result
+    assert "rights_metadata" not in result
+    assert "source_hash" not in result
+
+
 def api_result(status, payload=None):
     return catalog_truth_audit.EndpointResult(status=status, json_data=payload, body="")
 
@@ -393,6 +466,51 @@ def test_api_audit_passes_with_dracula_only_response(monkeypatch):
     assert result["summary"]["launch_blockers"] == []
     assert result["summary"]["live_approved_count"] == 1
     assert result["summary"]["dracula_only_live_approved"] is True
+
+
+def test_api_audit_fails_if_dracula_detail_leaks_private_fields(monkeypatch):
+    unsafe_dracula = {
+        **catalog_truth.public_book_projection(dracula_book()),
+        "rights_metadata": {"rights_tier": "A"},
+        "source_hash": "source-hash",
+        "content_hash": "content-hash",
+        "provenance_hash": "provenance-hash",
+        "audiobook_assets": {"mp3": "https://cdn.example.com/dracula.mp3"},
+    }
+    mapping = base_api_mapping(**{"/books/dracula": api_result(200, unsafe_dracula)})
+
+    result = run_api_audit(mapping, monkeypatch)
+
+    assert any("exposes forbidden public field" in blocker for blocker in result["summary"]["launch_blockers"])
+
+
+def test_api_audit_fails_if_dracula_detail_truth_fields_are_wrong(monkeypatch):
+    unsafe_dracula = {
+        **catalog_truth.public_book_projection(dracula_book()),
+        "audio_enabled": True,
+        "audio_url": "https://cdn.example.com/dracula.mp3",
+    }
+    mapping = base_api_mapping(**{"/books/dracula": api_result(200, unsafe_dracula)})
+
+    result = run_api_audit(mapping, monkeypatch)
+
+    assert any("/books/dracula audio_enabled" in blocker for blocker in result["summary"]["launch_blockers"])
+
+
+def test_api_audit_fails_if_kshudhita_detail_is_not_pipeline_safe(monkeypatch):
+    unsafe_pipeline = {
+        **catalog_truth.public_book_projection(pipeline_book()),
+        "reader_enabled": True,
+        "reader_url": "/reader/kshudhita-pashan",
+        "source_hash": "source-hash",
+    }
+    mapping = base_api_mapping(**{"/books/kshudhita-pashan": api_result(200, unsafe_pipeline)})
+
+    result = run_api_audit(mapping, monkeypatch)
+
+    blockers = result["summary"]["launch_blockers"]
+    assert any("/books/kshudhita-pashan exposes forbidden public field" in blocker for blocker in blockers)
+    assert any("/books/kshudhita-pashan reader_enabled" in blocker for blocker in blockers)
 
 
 def test_api_audit_fails_if_non_dracula_reader_enabled(monkeypatch):
