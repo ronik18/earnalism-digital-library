@@ -75,6 +75,7 @@ describe("UX conversion static signals", () => {
   const staticSnapshotGenerator = read("frontend/scripts/generate-static-seo-snapshots.mjs");
   const socialPreviewAudit = read("scripts/social_preview_audit.py");
   const postProductionCanary = read("scripts/post_production_canary.py");
+  const brandSiteTour = read("scripts/create_premium_site_tour.py");
   const dailyRunbook = read("DAILY_GROWTH_AUDIT_RUNBOOK.md");
   const header = read("frontend/src/components/Header.jsx");
   const footer = read("frontend/src/components/Footer.jsx");
@@ -82,6 +83,9 @@ describe("UX conversion static signals", () => {
   const socialLinksConfig = read("frontend/src/config/socialLinks.js");
   const styles = read("frontend/src/index.css");
   const app = read("frontend/src/App.js");
+  const siteTourVoiceover = read("EARNALISM_SITE_TOUR_VOICEOVER_SCRIPT.md");
+  const siteTourFeatureReport = read("SITE_TOUR_FEATURE_HIGHLIGHT_REPORT.md");
+  const siteTourScorecard = read("BRAND_SITE_TOUR_VIDEO_SCORECARD.md");
   const renderedPricingSources = [backend, pricing, microStory, readerUpsell, reader].join("\n");
   const productTruthLedger = read("PRODUCT_TRUTH_LEDGER.md");
   const alwaysVisibleLaunchCopy = [
@@ -393,6 +397,28 @@ describe("UX conversion static signals", () => {
     expect(socialPreviewAudit).toContain("failed_checks");
     expect(postProductionCanary).toContain("launch:social-preview-audit:prod");
     expect(postProductionCanary).toContain("release:ux-go-no-go");
+  });
+
+  test("premium site-tour package is wired as a local brand-safety artifact", () => {
+    expect(packageJson).toContain('"brand:site-tour": "python3 scripts/create_premium_site_tour.py"');
+    expect(brandSiteTour).toContain("npm run ux:real-user-video-audit");
+    expect(brandSiteTour).toContain("earnalism-site-tour-master.webm");
+    expect(brandSiteTour).toContain("earnalism-site-tour-master.mp4");
+    expect(brandSiteTour).toContain("earnalism-site-tour-vertical-9x16.mp4");
+    expect(brandSiteTour).toContain("earnalism-site-tour-square-1x1.mp4");
+    expect(brandSiteTour).toContain("earnalism-site-tour-short-15s.mp4");
+    expect(brandSiteTour).toContain("earnalism-site-tour-captions.srt");
+    expect(brandSiteTour).toContain("OPERATOR_REQUIRED");
+    expect(brandSiteTour).toContain("HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW");
+    expect(brandSiteTour).toContain("dracula_only_live");
+    expect(brandSiteTour).toContain("kshudhita_pipeline_only");
+    expect(brandSiteTour).toContain("paid_provider_apis_not_called");
+    expect(siteTourVoiceover).toContain("Status: SCRIPT_ONLY");
+    expect(siteTourVoiceover).toContain("No AI voice, TTS, audiobook generation");
+    expect(siteTourFeatureReport).toContain("Audiobook availability claim: blocked");
+    expect(siteTourFeatureReport).toContain("Broad live catalog claim: blocked");
+    expect(siteTourScorecard).toContain("HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW");
+    expect(siteTourScorecard).toContain("No fake testimonials");
   });
 
   test("built Dracula book snapshot exposes crawlable book SEO when build output exists", () => {

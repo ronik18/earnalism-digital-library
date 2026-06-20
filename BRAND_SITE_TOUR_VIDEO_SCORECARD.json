@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-06-20T19:44:12.497084+00:00",
+  "overall_score": 9.04,
+  "recommendation": "HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW",
+  "category_scores": {
+    "visual_luxury": 8.9,
+    "dracula_first_clarity": 9.8,
+    "feature_completeness": 9.1,
+    "conversion_clarity": 9.2,
+    "truthfulness": 10.0,
+    "pacing": 8.7,
+    "mobile_suitability": 8.8,
+    "caption_quality": 9.0,
+    "social_ad_suitability": 8.3,
+    "seo_readiness_dependency": 8.6
+  },
+  "caps_applied": {
+    "no_edited_master_video_max_7": false,
+    "no_captions_or_transcript_max_8": false
+  },
+  "truth_constraints": {
+    "dracula_only_live": true,
+    "kshudhita_pipeline_only": true,
+    "audiobook_claims_blocked": true,
+    "fake_reviews_or_social_proof_blocked": true,
+    "live_payments_not_run": true,
+    "paid_provider_apis_not_called": true
+  },
+  "video_status": {
+    "ffmpeg_available": true,
+    "master_webm": "PASS",
+    "master_mp4": "PASS",
+    "vertical_9x16_mp4": "PASS",
+    "square_1x1_mp4": "PASS",
+    "short_15s_mp4": "PASS",
+    "edited_master_video_exists": true
+  }
+}
