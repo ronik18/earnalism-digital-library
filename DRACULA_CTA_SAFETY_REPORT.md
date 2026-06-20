@@ -19,12 +19,16 @@ Dracula is the only live controlled reading title. Every other book must render 
 | Item | Reader CTA | Preview CTA | Audio CTA | Fallback CTA |
 | --- | --- | --- | --- | --- |
 | Dracula approved core reader | Allowed | Allowed | Hidden until audio QA passes | Reading pass |
-| Kshudhita Pashan pipeline | Blocked | Blocked | Blocked | Notify Me / Voice Sample Soon |
+| Kshudhita Pashan pipeline | Blocked | Blocked | Blocked | Notify Me / Reading Circle |
 | Other unapproved books | Blocked | Blocked | Blocked | Coming Soon / Notify Me |
 | Tier B/Tier C unsafe items | Blocked | Blocked | Blocked | Quarantine or no public CTA |
 
 ## Validation Coverage
 
+- Home source now uses the exact hero eyebrow `The Earnalism Digital Library`.
+- Home source now exposes the exact headline label `Begin with Dracula.`
+- Home source no longer contains the broad catalog copy `A quieter bookstore for readers who linger`, `Preview every book before you pay`, or `Discover thoughtful books across`.
+- Library source explicitly states `Live Controlled Release: Dracula only` and `Coming Through the Rights-Safe Pipeline: future titles only`.
 - Static UX regression checks Dracula-first homepage copy.
 - Static UX regression checks Library live shelf says Dracula only.
 - Static UX regression checks unapproved pipeline blocks do not contain Start Reading, Read Preview, Listen Now, or Full Audiobook.

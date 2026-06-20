@@ -10,7 +10,7 @@ Recommendation: HOLD for new growth pushes; GO for keeping Dracula live.
 
 ## Executive Summary
 
-Production health is good, Dracula is reachable, the reader manifest is healthy, removed routes are gone, and payment smoke passes in test mode. The major blocker is publication-surface safety: production still exposes 105 published books through the public API while the current frontend card/detail surfaces can show reader CTAs broadly. This branch applies the smallest safe frontend fix by limiting live reading CTAs to Dracula and changing other books to Coming Soon / Notify Me.
+Production health is good, Dracula is reachable, the reader manifest is healthy, removed routes are gone, and payment smoke passes in test mode. This PR applies the smallest safe frontend source fix by making the homepage Dracula-first, limiting live reading CTAs to Dracula, and changing other books to Coming Soon / Notify Me. The remaining blocker is backend/catalog governance: production can still expose non-Dracula published book records through the public API until a separate data/catalog pass quarantines or rights-approves them.
 
 ## Top 3 Wins
 
@@ -20,9 +20,9 @@ Production health is good, Dracula is reachable, the reader manifest is healthy,
 
 ## Top 3 Risks
 
-- Current production score is capped at 7.0 until broad non-Dracula reader CTAs are gated.
+- Current production score is capped at 7.0 until this source hardening is merged, deployed, and the backend catalog governance pass closes non-Dracula public records.
 - SEO readiness remains HOLD because book detail metadata is client-rendered in CRA.
-- Dracula-specific analytics and CTA labels were incomplete before this branch.
+- Source-level CTA safety depends on deployment; do not expand campaigns until post-deploy canary confirms the Dracula-first homepage/library are live.
 
 ## Exact Fixes Needed
 

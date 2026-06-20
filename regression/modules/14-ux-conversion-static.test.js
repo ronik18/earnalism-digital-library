@@ -39,8 +39,10 @@ describe("UX conversion static signals", () => {
   test("homepage exposes Dracula-first reading and reading-time CTAs", () => {
     expect(home).toContain('data-testid="hero-cta-read"');
     expect(home).toContain('data-testid="hero-cta-pricing"');
+    expect(home).toContain("The Earnalism Digital Library");
+    expect(home).toContain('aria-label="Begin with Dracula."');
     expect(home).toContain("Begin with");
-    expect(home).toContain("Dracula");
+    expect(home).toContain("Dracula.");
     expect(home).toContain("The Earnalism controlled launch starts with one approved classic.");
     expect(home).toContain("Read Chapter 1 free. Continue with a 7-day reading pass.");
     expect(home).toContain("More books are coming through the rights-safe pipeline.");
@@ -50,15 +52,19 @@ describe("UX conversion static signals", () => {
     expect(home).toContain("Explore Pipeline / Library");
     expect(home).not.toContain("A quieter bookstore for readers who linger");
     expect(home).not.toContain("Preview every book before you pay");
+    expect(home).not.toContain("Discover thoughtful books across");
     expect(home).not.toMatch(/\b105 reading rooms open\b/i);
     expect(home).not.toContain("reading rooms open");
   });
 
   test("library and book pages expose only approved Dracula reading paths", () => {
     expect(library).toContain("Live Controlled Release");
+    expect(library).toContain("Live Controlled Release:</strong> Dracula only.");
     expect(library).toContain("Coming Through the Rights-Safe Pipeline");
+    expect(library).toContain("Coming Through the Rights-Safe Pipeline:</strong> future titles only.");
     expect(library).toContain("Dracula is the only live approved core reading release today.");
     expect(library).toContain("These books are not live products yet. They have Notify Me CTAs only.");
+    expect(library).toContain("Unapproved titles show Coming Soon / Notify Me only.");
     expect(library).toContain("Read Chapter 1 Free");
     expect(library).toContain("Start Reading");
     expect(library).toContain("Notify Me");
@@ -120,6 +126,8 @@ describe("UX conversion static signals", () => {
       expect(block).not.toContain("Read Preview");
       expect(block).not.toContain("Listen Now");
       expect(block).not.toContain("Full Audiobook");
+      expect(block).not.toContain("Voice Sample Soon");
+      expect(block).not.toContain("Follow Audio QA");
     }
   });
 

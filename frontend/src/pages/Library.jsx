@@ -91,6 +91,14 @@ export default function Library() {
         <p className="mt-7 max-w-2xl text-charcoal-soft leading-[1.85] font-light">
           Dracula is the only live approved core reading release today. Other titles appear only as Coming Soon until their rights, source, QA, and publication gates pass.
         </p>
+        <div className="mt-7 grid gap-3 text-sm leading-relaxed text-charcoal-soft sm:grid-cols-2">
+          <div className="rounded-md border border-brand-soft bg-white/45 px-4 py-3">
+            <strong className="text-burgundy">Live Controlled Release:</strong> Dracula only.
+          </div>
+          <div className="rounded-md border border-brand-soft bg-white/45 px-4 py-3">
+            <strong className="text-burgundy">Coming Through the Rights-Safe Pipeline:</strong> future titles only. Unapproved titles show Coming Soon / Notify Me only.
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 pb-8 sm:px-8 lg:px-12" data-testid="library-bengali-gothic-pipeline">
