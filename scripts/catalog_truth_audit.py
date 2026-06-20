@@ -64,6 +64,7 @@ API_AUDIT_PATHS = [
     "/books",
     "/books/dracula",
     "/books/kshudhita-pashan",
+    "/controlled-launch/status",
     "/reader/book/dracula/manifest",
     "/reader/book/kshudhita-pashan/manifest",
     "/reader/book/dracula/audiobook",
@@ -469,6 +470,27 @@ def verify_pipeline_detail_payload(endpoint: str, payload: Any) -> list[str]:
     return issues
 
 
+def verify_dracula_manifest_payload(payload: Any) -> list[str]:
+    issues = safe_field_issues("/reader/book/dracula/manifest", payload)
+    if not isinstance(payload, dict):
+        return [*issues, "/reader/book/dracula/manifest did not return a JSON object"]
+    chapters = payload.get("chapters")
+    if not isinstance(chapters, list) or len(chapters) != 27:
+        issues.append("/reader/book/dracula/manifest does not contain 27 chapters")
+    elif not any(chapter.get("is_preview") is True for chapter in chapters if isinstance(chapter, dict)):
+        issues.append("/reader/book/dracula/manifest does not unlock a preview chapter")
+    audio = payload.get("audio")
+    if isinstance(audio, dict):
+        if audio.get("enabled") is not False:
+            issues.append("/reader/book/dracula/manifest audio.enabled is not false")
+        if audio.get("url") or audio.get("assets"):
+            issues.append("/reader/book/dracula/manifest exposes audio URLs/assets")
+    book = payload.get("book")
+    if isinstance(book, dict):
+        issues.extend(verify_dracula_detail_payload(book))
+    return issues
+
+
 def verify_api_audit(
     *,
     books_rows: list[dict[str, Any]],
@@ -525,6 +547,8 @@ def verify_api_audit(
 
     if endpoints["/reader/book/dracula/manifest"].status != 200:
         blockers.append("/reader/book/dracula/manifest did not return 200")
+    else:
+        blockers.extend(verify_dracula_manifest_payload(endpoints["/reader/book/dracula/manifest"].json_data))
     if endpoints["/reader/book/kshudhita-pashan/manifest"].status not in {403, 404}:
         blockers.append("/reader/book/kshudhita-pashan/manifest did not return 403/404")
     if endpoints["/reader/book/dracula/audiobook"].status != 404:

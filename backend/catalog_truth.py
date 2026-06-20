@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -8,6 +9,14 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTROLLED_LAUNCH_CONFIG_PATH = ROOT / "data" / "controlled_launch.json"
+DRACULA_ARTIFACT_DIR = ROOT / "data" / "controlled_publications" / "dracula"
+DRACULA_REQUIRED_ARTIFACT_FILES = (
+    "public_book.json",
+    "reader_manifest.json",
+    "approval_evidence.json",
+    "source_evidence.json",
+    "checksum_manifest.json",
+)
 
 
 def controlled_launch_config() -> dict[str, Any]:
@@ -23,6 +32,24 @@ def controlled_launch_config() -> dict[str, Any]:
     except json.JSONDecodeError:
         return fallback
     return loaded if isinstance(loaded, dict) else fallback
+
+
+def read_json_file(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def normalized_slug_tuple(values: Any, fallback: tuple[str, ...]) -> tuple[str, ...]:
@@ -191,6 +218,173 @@ def dracula_approval_evidence() -> dict[str, Any]:
     return payload
 
 
+def _artifact_dir(path: str | Path | None = None) -> Path:
+    return Path(path) if path else DRACULA_ARTIFACT_DIR
+
+
+def _artifact_json(name: str, *, artifact_dir: str | Path | None = None) -> dict[str, Any]:
+    return read_json_file(_artifact_dir(artifact_dir) / name)
+
+
+@lru_cache(maxsize=8)
+def dracula_artifact_validation_issues(artifact_dir: str = "") -> tuple[str, ...]:
+    base = _artifact_dir(artifact_dir or None)
+    issues: list[str] = []
+    if not base.exists():
+        return ("Dracula artifact directory is missing.",)
+
+    for filename in DRACULA_REQUIRED_ARTIFACT_FILES:
+        if not (base / filename).exists():
+            issues.append(f"Missing required Dracula artifact file: {filename}")
+
+    public_book = _artifact_json("public_book.json", artifact_dir=base)
+    reader_manifest = _artifact_json("reader_manifest.json", artifact_dir=base)
+    approval_evidence = _artifact_json("approval_evidence.json", artifact_dir=base)
+    source_evidence = _artifact_json("source_evidence.json", artifact_dir=base)
+    checksum_manifest = _artifact_json("checksum_manifest.json", artifact_dir=base)
+
+    if normalize_slug(public_book.get("slug")) != LIVE_APPROVED_SLUG:
+        issues.append("public_book.json slug is not dracula.")
+    if normalize_text(public_book.get("title")) != "Dracula":
+        issues.append("public_book.json title is not Dracula.")
+    if normalize_text(public_book.get("author")) != "Bram Stoker":
+        issues.append("public_book.json author is not Bram Stoker.")
+    if public_book.get("is_published") is not True:
+        issues.append("public_book.json is_published is not true.")
+    if normalize_upper(public_book.get("rights_tier")) != "A":
+        issues.append("public_book.json rights_tier is not Tier A.")
+    if normalize_text(public_book.get("verification_status")).lower() not in {"approved", "verified"}:
+        issues.append("public_book.json verification_status is not approved.")
+    if normalize_upper(public_book.get("qa_status")) not in {"QA_PASSED", "PASS", "PASSED"}:
+        issues.append("public_book.json qa_status is not QA_PASSED.")
+    if public_book.get("approved_to_publish") is not True:
+        issues.append("public_book.json approved_to_publish is not true.")
+    if public_book.get("audio_enabled", False) is not False or public_book.get("audiobook_enabled", False) is not False:
+        issues.append("public_book.json audio flags are not disabled.")
+
+    for key in ("source_hash", "content_hash", "provenance_hash"):
+        if not normalize_text(source_evidence.get(key)):
+            issues.append(f"source_evidence.json missing {key}.")
+
+    if normalize_text(source_evidence.get("source_url")) != "https://www.gutenberg.org/ebooks/345":
+        issues.append("source_evidence.json source_url is not Project Gutenberg eBook #345.")
+    if "Project Gutenberg" not in normalize_text(source_evidence.get("source_name")):
+        issues.append("source_evidence.json source_name is not Project Gutenberg.")
+    if "Project Gutenberg" not in normalize_text(source_evidence.get("source_license")):
+        issues.append("source_evidence.json source_license is not Project Gutenberg License.")
+
+    if approval_evidence.get("approved_to_publish") is not True:
+        issues.append("approval_evidence.json approved_to_publish is not true.")
+    if normalize_upper(approval_evidence.get("rights_tier")) != "A":
+        issues.append("approval_evidence.json rights_tier is not Tier A.")
+    if normalize_text(approval_evidence.get("verification_status")).lower() not in {"approved", "verified"}:
+        issues.append("approval_evidence.json verification_status is not approved.")
+    if normalize_upper(approval_evidence.get("qa_status")) not in {"QA_PASSED", "PASS", "PASSED"}:
+        issues.append("approval_evidence.json qa_status is not QA_PASSED.")
+
+    manifest_chapters = reader_manifest.get("chapters")
+    if int(reader_manifest.get("chapter_count") or 0) != 27:
+        issues.append("reader_manifest.json chapter_count is not 27.")
+    if not isinstance(manifest_chapters, list) or len(manifest_chapters) != 27:
+        issues.append("reader_manifest.json does not contain 27 chapter metadata records.")
+    if reader_manifest.get("audio_enabled") is not False or reader_manifest.get("audiobook_enabled") is not False:
+        issues.append("reader_manifest.json audio flags are not disabled.")
+    if "chapter-001" not in (reader_manifest.get("preview_chapter_ids") or []):
+        issues.append("reader_manifest.json does not unlock chapter-001 as preview.")
+
+    chapter_dir = base / "chapters"
+    chapter_files = sorted(chapter_dir.glob("chapter-*.json"))
+    if len(chapter_files) != 27:
+        issues.append(f"Expected 27 Dracula chapter files, found {len(chapter_files)}.")
+    for index in range(1, 28):
+        expected = chapter_dir / f"chapter-{index:03d}.json"
+        chapter = read_json_file(expected)
+        if not chapter:
+            issues.append(f"Missing or invalid Dracula chapter file: {expected.name}")
+            continue
+        if normalize_text(chapter.get("id")) != f"chapter-{index:03d}":
+            issues.append(f"{expected.name} has the wrong id.")
+        if int(chapter.get("order") or 0) != index:
+            issues.append(f"{expected.name} has the wrong order.")
+        if not normalize_text(chapter.get("title")):
+            issues.append(f"{expected.name} is missing title.")
+        if not normalize_text(chapter.get("content")):
+            issues.append(f"{expected.name} is missing content.")
+
+    checksum_files = checksum_manifest.get("files")
+    if not isinstance(checksum_files, list):
+        issues.append("checksum_manifest.json files list is missing.")
+    else:
+        for entry in checksum_files:
+            if not isinstance(entry, dict):
+                issues.append("checksum_manifest.json contains an invalid file entry.")
+                continue
+            rel = normalize_text(entry.get("file"))
+            expected_hash = normalize_text(entry.get("sha256"))
+            if not rel or not expected_hash:
+                issues.append("checksum_manifest.json file entry is missing path or sha256.")
+                continue
+            target = base / rel
+            if not target.exists():
+                issues.append(f"Checksum target is missing: {rel}")
+                continue
+            if file_sha256(target) != expected_hash:
+                issues.append(f"Checksum mismatch for Dracula artifact: {rel}")
+
+    return tuple(issues)
+
+
+def dracula_artifact_status(*, artifact_dir: str | Path | None = None) -> dict[str, Any]:
+    base = _artifact_dir(artifact_dir)
+    issues = list(dracula_artifact_validation_issues(str(base)))
+    public_book = _artifact_json("public_book.json", artifact_dir=base)
+    reader_manifest = _artifact_json("reader_manifest.json", artifact_dir=base)
+    return {
+        "available": not issues,
+        "artifact_dir": str(base),
+        "issues": issues,
+        "slug": normalize_slug(public_book.get("slug")),
+        "title": normalize_text(public_book.get("title")),
+        "chapter_count": int(reader_manifest.get("chapter_count") or 0),
+        "audio_enabled": bool(public_book.get("audio_enabled")),
+        "audiobook_enabled": bool(public_book.get("audiobook_enabled")),
+    }
+
+
+def load_dracula_artifact_book(
+    *,
+    include_content: bool = False,
+    artifact_dir: str | Path | None = None,
+) -> dict[str, Any] | None:
+    base = _artifact_dir(artifact_dir)
+    if dracula_artifact_validation_issues(str(base)):
+        return None
+    public_book = _artifact_json("public_book.json", artifact_dir=base)
+    chapters: list[dict[str, Any]] = []
+    for chapter_meta in sorted(public_book.get("chapters") or [], key=lambda item: item.get("order", 0)):
+        chapter_id = normalize_text(chapter_meta.get("id"))
+        chapter = dict(chapter_meta)
+        if include_content and chapter_id:
+            content_payload = read_json_file(base / "chapters" / f"{chapter_id}.json")
+            chapter["content"] = content_payload.get("content", "")
+            chapter["content_hash"] = content_payload.get("content_hash", "")
+        chapters.append(chapter)
+    return {
+        **public_book,
+        "chapters": chapters,
+        "approved_to_publish": True,
+        "publication_status": PUBLIC_STATUS_LIVE_APPROVED,
+        "rights_tier": "A",
+        "verification_status": "approved",
+        "qa_status": "QA_PASSED",
+        "audio_enabled": False,
+        "audiobook_enabled": False,
+        "generate_audiobook": False,
+        "audiobook_assets": {},
+        "audiobook": {},
+    }
+
+
 def evidence_for_book(book: dict[str, Any]) -> dict[str, Any]:
     return dracula_approval_evidence() if normalize_slug(book.get("slug")) == LIVE_APPROVED_SLUG else {}
 
@@ -326,6 +520,8 @@ def public_pipeline_projection(book: dict[str, Any]) -> dict[str, Any]:
             "rights_note": "Not publicly readable until rights and QA approval are complete.",
         }
     )
+    for field in [*INTERNAL_RIGHTS_FIELDS, *INTERNAL_AUDIO_FIELDS]:
+        projected.pop(field, None)
     return projected
 
 

@@ -25,6 +25,19 @@ behavior. It must pass immediately after deployment.
 If this canary fails, keep `FINAL_GO_NO_GO_DECISION.md` at `HOLD_FOR_FIXES` and
 run `npm run release:post-production-canary` for the full owner summary.
 
+If production MongoDB is missing Dracula, the backend may still pass by using the
+validated Dracula artifact pack. Run:
+
+```bash
+npm run prod:dracula-diagnostic
+```
+
+Only if artifact fallback is unavailable should an operator review:
+
+```bash
+npm run prod:repair-dracula-record:dry-run
+```
+
 ## Outputs
 
 ```text
@@ -56,6 +69,7 @@ HOLD the launch or growth expansion if any of these occur:
 - API mode returns zero live Dracula rows.
 - API mode returns 200 or a redirect for any public audiobook endpoint.
 - Backend live approved slugs differ from `data/controlled_launch.json`.
+- The Dracula artifact pack is missing, invalid, or has fewer than 27 chapters.
 
 ## Safety
 

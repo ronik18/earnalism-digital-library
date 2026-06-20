@@ -76,7 +76,15 @@ Latest canary summary:
 - Observability: `PASS`
 - Regression: `PASS`
 - Frontend build: `PASS`
-- Owner recommendation: `ROLLBACK`
+- Owner recommendation: `HOLD_FOR_FIXES`
+
+PR #37 changed backend catalog-truth failure semantics so a missing Dracula API
+record recommends `HOLD_FOR_FIXES`, not automatic rollback. Rollback remains
+reserved for route canary, production parity, controlled-publication precheck,
+focused regression, or frontend build failures that make production unsafe.
+
+This follow-up PR adds the Dracula artifact fallback and the production diagnostic
+needed to restore `/api/books/dracula` without broad catalog exposure.
 
 The backend catalog truth failure is not masked by this PR. The new orchestrator correctly exits nonzero when a critical production canary fails.
 

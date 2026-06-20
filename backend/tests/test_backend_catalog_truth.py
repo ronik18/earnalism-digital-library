@@ -432,11 +432,23 @@ def api_result(status, payload=None):
 
 def base_api_mapping(**overrides):
     dracula = catalog_truth.public_book_projection(dracula_book())
+    manifest_chapters = [
+        {"id": f"chapter-{index:03d}", "title": f"Chapter {index}", "order": index, "is_preview": index == 1}
+        for index in range(1, 28)
+    ]
     mapping = {
         "/books": api_result(200, [dracula]),
         "/books/dracula": api_result(200, dracula),
         "/books/kshudhita-pashan": api_result(404, {"detail": "Book not found"}),
-        "/reader/book/dracula/manifest": api_result(200, {"book": dracula, "chapters": [{"id": "chapter-1"}]}),
+        "/controlled-launch/status": api_result(200, {"catalog_truth_status": "PASS"}),
+        "/reader/book/dracula/manifest": api_result(
+            200,
+            {
+                "book": dracula,
+                "chapters": manifest_chapters,
+                "audio": {"enabled": False, "assets": {}, "url": ""},
+            },
+        ),
         "/reader/book/kshudhita-pashan/manifest": api_result(404, {"detail": "Book not found"}),
         "/reader/book/dracula/audiobook": api_result(404, {"detail": "Audiobook asset not found"}),
         "/reader/book/kshudhita-pashan/audiobook": api_result(404, {"detail": "Audiobook asset not found"}),
