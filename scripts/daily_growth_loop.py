@@ -39,6 +39,13 @@ def sample_payload() -> dict[str, Any]:
             "max_books_per_day": 3,
             "max_publish_actions_per_day": 0,
         },
+        "catalog_truth": {
+            "backend_live_approved_count": 1,
+            "dracula_only_live_approved": True,
+            "unapproved_reader_link_count": 0,
+            "unapproved_audio_link_count": 0,
+            "unapproved_sitemap_count": 0,
+        },
         "books": [
             sample_ready_book("dracula", "Dracula", "gothic-fiction", page_views=1200),
             sample_ready_book("frankenstein", "Frankenstein", "gothic-fiction", page_views=960),

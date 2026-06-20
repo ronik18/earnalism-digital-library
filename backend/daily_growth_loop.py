@@ -130,6 +130,7 @@ class DailyGrowthReport:
     reading_challenge_drafts: list[GrowthDraft]
     blocked_items: list[dict[str, Any]]
     budget_usage: dict[str, float]
+    catalog_truth: dict[str, Any] = field(default_factory=dict)
     dry_run: bool = True
 
     def as_dict(self) -> dict[str, Any]:
@@ -142,6 +143,7 @@ class DailyGrowthReport:
             "metrics": self.metrics.as_dict(),
             "budgets": self.budgets.as_dict(),
             "budget_usage": self.budget_usage,
+            "catalog_truth": self.catalog_truth,
             "selected_books": self.selected_books,
             "queued_tasks": [task.as_dict() for task in self.queued_tasks],
             "seo_social_email_drafts": [draft.as_dict() for draft in self.seo_social_email_drafts],
@@ -161,6 +163,7 @@ def run_daily_growth_loop(payload: dict[str, Any] | None = None) -> DailyGrowthR
     books = normalize_books(payload.get("books"))
     books = apply_metrics_to_books(books, payload.get("book_metrics") or {})
     demand_scores = rank_demand(books)
+    catalog_truth = dict(payload.get("catalog_truth") or {})
 
     if payload.get("dry_run") is False:
         return blocked_report(
@@ -256,6 +259,7 @@ def run_daily_growth_loop(payload: dict[str, Any] | None = None) -> DailyGrowthR
             "audio_used": round(audio_used, 2),
             "publish_actions_used": 0,
         },
+        catalog_truth=catalog_truth,
     )
 
 
@@ -453,6 +457,13 @@ def daily_growth_report_markdown(report: DailyGrowthReport) -> str:
         f"- Queued tasks: `{len(report.queued_tasks)}`",
         f"- Drafts prepared: `{len(report.seo_social_email_drafts) + len(report.reading_challenge_drafts)}`",
         f"- Blocked items: `{len(report.blocked_items)}`",
+        "",
+        "## Catalog Truth",
+        "",
+        f"- Backend live approved count: `{payload.get('catalog_truth', {}).get('backend_live_approved_count', 'not_provided')}`",
+        f"- Dracula only live: `{payload.get('catalog_truth', {}).get('dracula_only_live_approved', 'not_provided')}`",
+        f"- Unapproved reader links: `{payload.get('catalog_truth', {}).get('unapproved_reader_link_count', 'not_provided')}`",
+        f"- Unapproved audio links: `{payload.get('catalog_truth', {}).get('unapproved_audio_link_count', 'not_provided')}`",
         "",
         "## Top Books",
     ]

@@ -4,13 +4,13 @@ This is a committed sample snapshot from the 2026-06-20 IST owner audit. Recurri
 
 Date: 2026-06-20 IST
 
-Today's score: 7.0 / 10
+Today's score: 8.7 / 10
 
-Recommendation: HOLD for new growth pushes; GO for keeping Dracula live.
+Recommendation: GO for keeping Dracula live; HOLD broad growth expansion until backend truth gate is deployed and verified live.
 
 ## Executive Summary
 
-Production health is good, Dracula is reachable, the reader manifest is healthy, removed routes are gone, and payment smoke passes in test mode. This PR applies the smallest safe frontend source fix by making the homepage Dracula-first, limiting live reading CTAs to Dracula, and changing other books to Coming Soon / Notify Me. The remaining blocker is backend/catalog governance: production can still expose non-Dracula published book records through the public API until a separate data/catalog pass quarantines or rights-approves them.
+Production health is good, Dracula is reachable, the reader manifest is healthy, removed routes are gone, and payment smoke passes in test mode. This PR applies the smallest safe backend catalog truth gate so public API projections, reader manifests, and audiobook asset routes match the controlled launch truth: Dracula only, audio disabled, Kshudhita Pashan pipeline-only.
 
 ## Top 3 Wins
 
@@ -20,15 +20,15 @@ Production health is good, Dracula is reachable, the reader manifest is healthy,
 
 ## Top 3 Risks
 
-- Current production score is capped at 7.0 until this source hardening is merged, deployed, and the backend catalog governance pass closes non-Dracula public records.
+- Current production score remains below 9.5 until this backend truth gate is merged, deployed, and verified live against production.
 - SEO readiness remains HOLD because book detail metadata is client-rendered in CRA.
-- Source-level CTA safety depends on deployment; do not expand campaigns until post-deploy canary confirms the Dracula-first homepage/library are live.
+- Do not expand campaigns until post-deploy canary confirms the Dracula-first homepage/library and backend catalog truth gate are live.
 
 ## Exact Fixes Needed
 
-- Merge and deploy this CTA safety branch.
+- Merge and deploy this backend catalog truth branch.
 - Create a follow-up SEO PR for Dracula/prioritized book static snapshots or SSR/prerender metadata.
-- Run a backend catalog governance pass for the 104 non-Dracula public books.
+- Run `npm run owner:catalog-truth-audit` after deploy and confirm zero unapproved reader/audio/sitemap exposure.
 
 ## Launch State
 

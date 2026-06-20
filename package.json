@@ -20,6 +20,7 @@
     "observability:audit": "python3 scripts/observability_guardrails.py --sample",
     "first-batch:dry-run": "python3 scripts/first_batch_dry_run.py --sample",
     "owner:daily-growth-audit": "python3 scripts/daily_growth_loop.py --sample --output-dir output/daily/$(date +%F)",
+    "owner:catalog-truth-audit": "python3 scripts/catalog_truth_audit.py --output-dir output/daily/$(date +%F)",
     "launch:production-parity": "python3 scripts/launch_readiness_audit.py --mode production-parity",
     "launch:seo-audit": "python3 scripts/launch_readiness_audit.py --mode seo",
     "launch:performance-audit": "python3 scripts/launch_readiness_audit.py --mode performance",
