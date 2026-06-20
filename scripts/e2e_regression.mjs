@@ -17,6 +17,76 @@ const expectedPipelineSlugs = [
   "sultanas-dream",
   "calculus-made-easy",
 ];
+const draculaFixtureBook = {
+  id: "regression-dracula",
+  slug: liveApprovedSlug,
+  title: "Dracula",
+  subtitle: "",
+  author: "Bram Stoker",
+  category_slug: "gothic-fiction",
+  short_description: "An approved controlled launch classic.",
+  description: "Dracula is the only live approved core reading release in this regression fixture.",
+  cover_image_url: "",
+  thumbnail_url: "",
+  estimated_reading_time: "8h",
+  publication_status: "LIVE_APPROVED",
+  launch_status: "LIVE_APPROVED",
+  reader_enabled: true,
+  preview_enabled: true,
+  audio_enabled: false,
+  audiobook_enabled: false,
+  reader_url: "/reader/dracula",
+  preview_url: "/reader/dracula",
+  audio_url: "",
+  chapters: [
+    {
+      id: "chapter-1",
+      title: "Chapter 1",
+      order: 1,
+      is_preview: true,
+      content_version: "regression-chapter-1",
+      word_count: 46,
+      reading_minutes: 1,
+      processing_status: "ready",
+      content_url: "/api/reader/chapter/dracula/chapter-1?v=regression-chapter-1",
+    },
+  ],
+};
+const draculaManifestFixture = {
+  book: draculaFixtureBook,
+  chapters: draculaFixtureBook.chapters,
+  audio: {
+    enabled: false,
+    asset_slug: "",
+    provider: "",
+    voice: "",
+    assets: {},
+    url: "",
+    size: 0,
+    duration_ms: 0,
+    version: "regression-audio-disabled",
+    updated_at: "",
+  },
+  access: {
+    admin_preview: false,
+    preview_chapter_ids: ["chapter-1"],
+    wallet_seconds: 0,
+  },
+  version: "regression-manifest",
+  generated_at: "2026-06-20T00:00:00Z",
+};
+const chapterFixture = {
+  id: "chapter-1",
+  title: "Chapter 1",
+  order: 1,
+  is_preview: true,
+  content: "<p>Jonathan Harker opened his journal and began the journey toward Castle Dracula.</p>",
+  locked: false,
+};
+const paymentPacksFixture = [
+  { id: "first_chapter", label: "The First Chapter", minutes: 30, amount_paise: 4900 },
+  { id: "quiet_hour", label: "The Quiet Hour", minutes: 60, amount_paise: 8900 },
+];
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -30,11 +100,46 @@ function sameOriginHeaders() {
   };
 }
 
+function localFixtureFor(request) {
+  const url = new URL(request.url());
+  const pathname = url.pathname;
+  if (request.method() !== "GET" && pathname.endsWith("/analytics/events")) {
+    return { status: 200, body: { ok: true } };
+  }
+  if (request.method() !== "GET" && pathname.endsWith("/reader/metrics")) {
+    return { status: 200, body: { ok: true, recorded: false } };
+  }
+  if (request.method() !== "GET") return null;
+  if (pathname === "/api/books") return { status: 200, body: [draculaFixtureBook] };
+  if (pathname === "/api/books/dracula") return { status: 200, body: draculaFixtureBook };
+  if (pathname === "/api/books/kshudhita-pashan") return { status: 404, body: { detail: "Book not found" } };
+  if (pathname === "/api/reader/book/dracula/manifest") return { status: 200, body: draculaManifestFixture };
+  if (pathname === "/api/reader/book/kshudhita-pashan/manifest") return { status: 404, body: { detail: "Book not found" } };
+  if (pathname === "/api/reader/book/dracula/audiobook") return { status: 404, body: { detail: "Audiobook asset not found" } };
+  if (pathname === "/api/reader/book/kshudhita-pashan/audiobook") return { status: 404, body: { detail: "Audiobook asset not found" } };
+  if (pathname === "/api/reader/chapter/dracula/chapter-1") return { status: 200, body: chapterFixture };
+  if (pathname === "/api/payments/packs") return { status: 200, body: paymentPacksFixture };
+  if (pathname === "/api/payments/config") return { status: 200, body: { provider: "razorpay", test_mode: true } };
+  return null;
+}
+
 async function installApiProxy(page) {
   if (!isLocalFrontend) return;
   await page.route(`${apiUrl}/api/**`, async (route) => {
     try {
       const request = route.request();
+      const fixture = localFixtureFor(request);
+      if (fixture) {
+        await route.fulfill({
+          status: fixture.status,
+          body: JSON.stringify(fixture.body),
+          headers: {
+            "content-type": "application/json",
+            ...sameOriginHeaders(),
+          },
+        });
+        return;
+      }
       const response = await fetch(request.url(), {
         method: request.method(),
         headers: {

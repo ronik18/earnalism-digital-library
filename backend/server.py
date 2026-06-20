@@ -44,6 +44,21 @@ try:
 except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.rights_engine import RIGHTS_REPORT_FILENAMES, rights_publish_blockers, rights_report_csv, rights_report_rows
 
+try:
+    from catalog_truth import (
+        CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
+        can_expose_audio,
+        live_approved_mongo_query,
+        public_book_projection,
+    )
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.catalog_truth import (
+        CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
+        can_expose_audio,
+        live_approved_mongo_query,
+        public_book_projection,
+    )
+
 
 # ---------- Environment / DB ----------
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "production").strip().lower()
@@ -226,7 +241,7 @@ _shutdown_state: dict = {"draining": False, "inflight": 0}
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
 CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "dracula-first-v1"
-CONTROLLED_LIVE_BOOK_SLUGS = ("dracula",)
+CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
 # amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
@@ -1008,28 +1023,11 @@ def _public_cache_key(scope: str, **params) -> str:
 
 
 def _controlled_public_book_query(extra: Optional[dict] = None) -> dict:
-    query: dict = {
-        "slug": {"$in": list(CONTROLLED_LIVE_BOOK_SLUGS)},
-        "is_published": True,
-        "rights_metadata.rights_tier": "A",
-        "rights_metadata.verification_status": "approved",
-        "$or": [
-            {"rights_metadata.blocked_reason": {"$exists": False}},
-            {"rights_metadata.blocked_reason": None},
-            {"rights_metadata.blocked_reason": ""},
-        ],
-    }
-    if extra:
-        for key, value in extra.items():
-            if key == "$or":
-                query["$and"] = [{"$or": query.pop("$or")}, {"$or": value}]
-            else:
-                query[key] = value
-    return query
+    return live_approved_mongo_query(extra)
 
 
 def _is_controlled_public_slug(slug: str) -> bool:
-    return slug in CONTROLLED_LIVE_BOOK_SLUGS
+    return str(slug or "").strip().lower() in CONTROLLED_LIVE_BOOK_SLUGS
 
 
 async def _public_cache_generation_value() -> int:
@@ -1352,6 +1350,25 @@ def _reader_audio_asset_url(book: dict, slug: str, key: str, url: str) -> str:
 
 
 def _reader_manifest_audio(book: dict, slug: str) -> dict:
+    if not can_expose_audio({**book, "slug": slug}):
+        version = _stable_digest({
+            "enabled": False,
+            "slug": slug,
+            "truth_gate": CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION,
+        })
+        return {
+            "enabled": False,
+            "asset_slug": "",
+            "provider": "",
+            "voice": "",
+            "assets": {},
+            "url": "",
+            "size": 0,
+            "duration_ms": 0,
+            "version": version,
+            "updated_at": "",
+        }
+
     raw_assets = book.get("audiobook_assets") if isinstance(book.get("audiobook_assets"), dict) else {}
     assets = {
         str(key): _reader_audio_asset_url(book, slug, str(key), str(value))
@@ -1423,7 +1440,7 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
         })
 
     audio = _reader_manifest_audio(doc, slug)
-    book_public = _strip_all_chapter_content(doc)
+    book_public = public_book_projection(_strip_all_chapter_content(doc)) or {}
     book_public["chapters"] = chapters
     manifest_version = _stable_digest({
         "slug": slug,
@@ -3538,7 +3555,7 @@ async def get_home_payload(books_limit: Optional[int] = None, books_offset: int 
         _controlled_public_book_query({"slug": featured_candidate}),
         BOOK_METADATA_PROJECTION,
     )
-    featured_book = _strip_all_chapter_content(doc) if doc else None
+    featured_book = public_book_projection(_strip_all_chapter_content(doc)) if doc else None
 
     result = {
         "categories": categories,
@@ -3575,7 +3592,11 @@ async def _home_books_page(limit: int, offset: int = 0, *, maximum: int = HOME_B
     )
     docs = await cursor.to_list(normalized_limit)
     total = await db.books.count_documents(query)
-    books = [_strip_all_chapter_content(doc) for doc in docs]
+    books = []
+    for doc in docs:
+        projected = public_book_projection(_strip_all_chapter_content(doc))
+        if projected:
+            books.append(projected)
     next_offset = normalized_offset + len(books)
     result = {
         "books": books,
@@ -3690,7 +3711,11 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
     query = _controlled_public_book_query(extra_query)
     docs = await db.books.find(query, BOOK_SUMMARY_PROJECTION).sort("created_at", -1).to_list(500)
     # Public list is shelf metadata-only so library browsing never ships chapter bodies.
-    result = [_strip_all_chapter_content(d) for d in docs]
+    result = []
+    for doc in docs:
+        projected = public_book_projection(_strip_all_chapter_content(doc))
+        if projected:
+            result.append(projected)
     await _public_cache_set(cache_key, result)
     return result
 
@@ -3707,7 +3732,7 @@ async def get_book(slug: str):
         raise HTTPException(status_code=404, detail="Book not found")
     # Public detail returns metadata + ToC only. Reader content is fetched through
     # the gated chapter endpoint so detail pages stay light for large books.
-    result = _strip_all_chapter_content(doc)
+    result = public_book_projection(_strip_all_chapter_content(doc))
     await _public_cache_set(cache_key, result)
     return result
 
@@ -3803,7 +3828,7 @@ async def get_featured():
         else CONTROLLED_LIVE_BOOK_SLUGS[0]
     )
     book = await db.books.find_one(_controlled_public_book_query({"slug": featured_candidate}), BOOK_METADATA_PROJECTION)
-    result = {"book": _strip_all_chapter_content(book) if book else None}
+    result = {"book": public_book_projection(_strip_all_chapter_content(book)) if book else None}
     await _public_cache_set(cache_key, result)
     return result
 
@@ -4976,12 +5001,33 @@ async def _reader_book_audiobook_asset(
     normalized_key = str(asset_key or "mp3").strip().lower()
     if normalized_key not in ALLOWED_AUDIO_ASSET_KEYS:
         raise HTTPException(status_code=404, detail="Audiobook asset not found")
+    if not _is_controlled_public_slug(slug):
+        raise HTTPException(status_code=404, detail="Audiobook asset not found")
     book = await db.books.find_one(
-        {"slug": slug, "is_published": True},
-        {"_id": 0, "audiobook": 1, "audiobook_assets": 1, "audiobook_provider": 1},
+        _controlled_public_book_query({"slug": slug}),
+        {
+            "_id": 0,
+            "slug": 1,
+            "is_published": 1,
+            "audiobook": 1,
+            "audiobook_assets": 1,
+            "audiobook_provider": 1,
+            "audiobook_enabled": 1,
+            "generate_audiobook": 1,
+            "rights_metadata": 1,
+            "qa_status": 1,
+            "source_hash": 1,
+            "content_hash": 1,
+            "provenance_hash": 1,
+            "source_url": 1,
+            "source_name": 1,
+            "source_license": 1,
+            "publication_status": 1,
+            "approved_to_publish": 1,
+        },
     )
-    if not book:
-        raise HTTPException(status_code=404, detail="Book not found")
+    if not book or not can_expose_audio({**book, "slug": slug}):
+        raise HTTPException(status_code=404, detail="Audiobook asset not found")
     asset_url = _book_audiobook_asset_url(book, normalized_key)
     if not _audio_asset_looks_like_b2(asset_url):
         if asset_url:

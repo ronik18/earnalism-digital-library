@@ -10,6 +10,7 @@ Dracula remains the only live controlled reading title. Kshudhita Pashan and all
 
 ```bash
 npm run owner:daily-growth-audit
+npm run owner:catalog-truth-audit
 ```
 
 The command writes dated dry-run artifacts under:
@@ -28,6 +29,7 @@ The output directory is intentionally not a committed source of truth. Commit on
 - Analytics event allowlist coverage.
 - Rights-safe publication gates.
 - Bengali Gothic pipeline status without public reader/audio access.
+- Backend catalog truth: Dracula-only live approved count, unapproved reader links, unapproved audio links, and unapproved sitemap entries.
 - Blockers and recommended owner actions.
 
 ## Safety Rules
@@ -37,6 +39,7 @@ The output directory is intentionally not a committed source of truth. Commit on
 - Do not call payment providers, TTS, STT, LLM, OCR, image, email, social, or paid APIs.
 - Do not mutate production data.
 - Do not show Start Reading, Read Preview, or audio CTAs for unapproved books.
+- Hold growth expansion if `npm run owner:catalog-truth-audit` reports any non-Dracula reader/audio/sitemap exposure.
 - Keep recurring output under `output/daily/YYYY-MM-DD/`.
 
 ## Snapshot Reports

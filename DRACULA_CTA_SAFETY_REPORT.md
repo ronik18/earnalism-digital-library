@@ -14,6 +14,15 @@ Dracula is the only live controlled reading title. Every other book must render 
 - `canShowAudioCTA(book)`
 - `isPipelineOnlyBook(book)`
 
+`backend/catalog_truth.py` mirrors the controlled launch truth for public APIs:
+
+- `is_live_approved_book(book)`
+- `is_pipeline_candidate(book)`
+- `can_expose_reader(book)`
+- `can_expose_preview(book)`
+- `can_expose_audio(book)`
+- `public_book_projection(book)`
+
 ## Expected Behavior
 
 | Item | Reader CTA | Preview CTA | Audio CTA | Fallback CTA |
@@ -34,6 +43,7 @@ Dracula is the only live controlled reading title. Every other book must render 
 - Static UX regression checks unapproved pipeline blocks do not contain Start Reading, Read Preview, Listen Now, or Full Audiobook.
 - Static UX regression checks old pricing names are absent from user-facing rendered sources.
 - Launch readiness audit accepts current Dracula-first reading pass CTAs without broad catalog assumptions.
+- Backend catalog truth audit reports Dracula as the only live approved book and audio disabled.
 
 ## Safety Confirmation
 
@@ -42,3 +52,4 @@ Dracula is the only live controlled reading title. Every other book must render 
 - No payment provider was called.
 - No production data was mutated.
 - No provider API was called.
+- Public backend audiobook routes return 404 while audio remains disabled.
