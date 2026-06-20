@@ -134,6 +134,28 @@ def test_db_dracula_without_approval_does_not_become_live_without_artifact(monke
     assert result == []
 
 
+def test_artifact_fallback_is_self_contained_without_legacy_evidence(monkeypatch):
+    install_fake_db(monkeypatch, [])
+    monkeypatch.setattr(catalog_truth, "evidence_for_book", lambda _book: {})
+
+    books = asyncio.run(server.list_books())
+    detail = asyncio.run(server.get_book("dracula"))
+    manifest = asyncio.run(server._reader_book_manifest_doc("dracula"))
+
+    assert [book["slug"] for book in books] == ["dracula"]
+    assert detail["slug"] == "dracula"
+    assert detail["reader_enabled"] is True
+    assert detail["preview_enabled"] is True
+    assert detail["audio_enabled"] is False
+    assert "source_hash" not in detail
+    assert "content_hash" not in detail
+    assert "provenance_hash" not in detail
+    assert manifest is not None
+    assert len(manifest["chapters"]) == 27
+    assert manifest["audio"]["enabled"] is False
+    assert manifest["audio"]["assets"] == {}
+
+
 def test_books_returns_exactly_one_live_readable_slug(monkeypatch):
     install_fake_db(monkeypatch, [])
 
@@ -228,6 +250,29 @@ def test_diagnostic_classifies_empty_books_and_404_detail():
     result = prod_dracula_diagnostic.classify_root_cause(api, db_status, artifact)
 
     assert result == "DRACULA_MISSING_FROM_DB"
+
+
+def test_diagnostic_reports_self_contained_artifact_pack():
+    artifact = prod_dracula_diagnostic.artifact_readiness()
+
+    assert artifact["artifact_pack_available"] is True
+    assert artifact["artifact_pack_self_contained_for_truth_gate"] is True
+    assert artifact["fallback_requires_legacy_output_evidence"] is False
+
+
+def test_diagnostic_holds_if_artifact_requires_legacy_output_evidence():
+    api = {
+        "/healthz": {"status": 200},
+        "/books": {"status": 200, "json": []},
+        "/books/dracula": {"status": 404},
+        "/reader/book/dracula/manifest": {"status": 404},
+    }
+    db_status = {"configured": False, "ok": False}
+    artifact = {"available": True, "fallback_requires_legacy_output_evidence": True}
+
+    result = prod_dracula_diagnostic.classify_root_cause(api, db_status, artifact)
+
+    assert result == "HOLD_FOR_FIXES"
 
 
 def test_repair_dry_run_does_not_mutate(tmp_path, monkeypatch):

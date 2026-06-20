@@ -339,6 +339,8 @@ def dracula_artifact_status(*, artifact_dir: str | Path | None = None) -> dict[s
     issues = list(dracula_artifact_validation_issues(str(base)))
     public_book = _artifact_json("public_book.json", artifact_dir=base)
     reader_manifest = _artifact_json("reader_manifest.json", artifact_dir=base)
+    artifact_book = load_dracula_artifact_book(include_content=False, artifact_dir=base) if not issues else None
+    self_contained_for_truth_gate = bool(artifact_book and is_live_approved_book(artifact_book))
     return {
         "available": not issues,
         "artifact_dir": str(base),
@@ -346,8 +348,10 @@ def dracula_artifact_status(*, artifact_dir: str | Path | None = None) -> dict[s
         "slug": normalize_slug(public_book.get("slug")),
         "title": normalize_text(public_book.get("title")),
         "chapter_count": int(reader_manifest.get("chapter_count") or 0),
-        "audio_enabled": bool(public_book.get("audio_enabled")),
-        "audiobook_enabled": bool(public_book.get("audiobook_enabled")),
+        "audio_enabled": bool(public_book.get("audio_enabled", False)),
+        "audiobook_enabled": bool(public_book.get("audiobook_enabled", False)),
+        "self_contained_for_truth_gate": self_contained_for_truth_gate,
+        "fallback_requires_legacy_output_evidence": not self_contained_for_truth_gate,
     }
 
 
@@ -360,6 +364,8 @@ def load_dracula_artifact_book(
     if dracula_artifact_validation_issues(str(base)):
         return None
     public_book = _artifact_json("public_book.json", artifact_dir=base)
+    approval_evidence = _artifact_json("approval_evidence.json", artifact_dir=base)
+    source_evidence = _artifact_json("source_evidence.json", artifact_dir=base)
     chapters: list[dict[str, Any]] = []
     for chapter_meta in sorted(public_book.get("chapters") or [], key=lambda item: item.get("order", 0)):
         chapter_id = normalize_text(chapter_meta.get("id"))
@@ -369,14 +375,28 @@ def load_dracula_artifact_book(
             chapter["content"] = content_payload.get("content", "")
             chapter["content_hash"] = content_payload.get("content_hash", "")
         chapters.append(chapter)
+
+    def evidence_value(key: str, default: Any = "") -> Any:
+        for source in (approval_evidence, source_evidence, public_book):
+            if key in source and source.get(key) not in (None, ""):
+                return source.get(key)
+        return default
+
     return {
         **public_book,
         "chapters": chapters,
-        "approved_to_publish": True,
+        "source_url": evidence_value("source_url"),
+        "source_name": evidence_value("source_name"),
+        "source_license": evidence_value("source_license"),
+        "source_hash": evidence_value("source_hash"),
+        "content_hash": evidence_value("content_hash"),
+        "provenance_hash": evidence_value("provenance_hash"),
+        "rights_basis": evidence_value("rights_basis"),
+        "approved_to_publish": bool(evidence_value("approved_to_publish", True)),
         "publication_status": PUBLIC_STATUS_LIVE_APPROVED,
-        "rights_tier": "A",
-        "verification_status": "approved",
-        "qa_status": "QA_PASSED",
+        "rights_tier": evidence_value("rights_tier", "A"),
+        "verification_status": evidence_value("verification_status", "approved"),
+        "qa_status": evidence_value("qa_status", "QA_PASSED"),
         "audio_enabled": False,
         "audiobook_enabled": False,
         "generate_audiobook": False,

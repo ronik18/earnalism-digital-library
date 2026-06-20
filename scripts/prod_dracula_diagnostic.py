@@ -23,6 +23,7 @@ from backend.catalog_truth import (  # noqa: E402
     CONTROLLED_LAUNCH_CONFIG_PATH,
     DRACULA_ARTIFACT_DIR,
     dracula_artifact_status,
+    is_live_approved_book,
     load_dracula_artifact_book,
     read_json_file,
 )
@@ -37,6 +38,8 @@ API_PATHS = (
     "/reader/book/dracula/manifest",
     "/reader/book/dracula/audiobook",
 )
+LEGACY_OUTPUT_EVIDENCE_PATH = ROOT / "output" / "publication_candidates" / "dracula" / "source_evidence.json"
+LEGACY_APPROVAL_PATH = ROOT / "APPROVED_TO_PUBLISH.md"
 
 
 def now_iso() -> str:
@@ -103,12 +106,30 @@ def read_only_db_status() -> dict[str, Any]:
         return {"configured": True, "ok": False, "error": str(exc)}
 
 
+def legacy_output_evidence_available() -> bool:
+    evidence = read_json_file(LEGACY_OUTPUT_EVIDENCE_PATH)
+    approval_text = LEGACY_APPROVAL_PATH.read_text(encoding="utf-8", errors="ignore") if LEGACY_APPROVAL_PATH.exists() else ""
+    return bool(
+        evidence.get("source_url") == "https://www.gutenberg.org/ebooks/345"
+        and evidence.get("source_hash")
+        and evidence.get("content_hash")
+        and evidence.get("provenance_hash")
+        and "Work Slug: dracula" in approval_text
+    )
+
+
 def artifact_readiness() -> dict[str, Any]:
     status = dracula_artifact_status()
     book = load_dracula_artifact_book(include_content=True)
     chapters = book.get("chapters") if isinstance(book, dict) else []
+    self_contained = bool(book and is_live_approved_book(book))
+    fallback_requires_legacy = bool(status.get("available") and not self_contained)
     return {
         **status,
+        "artifact_pack_available": bool(status.get("available")),
+        "artifact_pack_self_contained_for_truth_gate": self_contained,
+        "legacy_output_evidence_available": legacy_output_evidence_available(),
+        "fallback_requires_legacy_output_evidence": fallback_requires_legacy,
         "approved_to_publish_exists": (ROOT / "APPROVED_TO_PUBLISH.md").exists(),
         "controlled_launch_config_exists": CONTROLLED_LAUNCH_CONFIG_PATH.exists(),
         "artifact_dir_exists": DRACULA_ARTIFACT_DIR.exists(),
@@ -128,6 +149,8 @@ def classify_root_cause(api: dict[str, dict[str, Any]], db_status: dict[str, Any
 
     if health.get("status") != 200:
         return "BACKEND_DOWN"
+    if artifact.get("fallback_requires_legacy_output_evidence"):
+        return "HOLD_FOR_FIXES"
     if db_status.get("configured") and not db_status.get("ok"):
         return "DB_UNREACHABLE"
     if db_status.get("ok") and int(db_status.get("books_count") or 0) == 0:
@@ -174,6 +197,10 @@ def markdown_report(report: dict[str, Any]) -> str:
             "",
             "## Local Artifact Readiness",
             f"- Artifact Available: `{artifact.get('available')}`",
+            f"- Artifact Pack Available: `{artifact.get('artifact_pack_available')}`",
+            f"- Artifact Self-Contained For Truth Gate: `{artifact.get('artifact_pack_self_contained_for_truth_gate')}`",
+            f"- Legacy Output Evidence Available: `{artifact.get('legacy_output_evidence_available')}`",
+            f"- Fallback Requires Legacy Output Evidence: `{artifact.get('fallback_requires_legacy_output_evidence')}`",
             f"- Chapter Count: `{artifact.get('chapter_count')}`",
             f"- Chapter Files: `{artifact.get('chapter_files_count')}`",
             f"- Chapter Text Available: `{artifact.get('chapter_text_available')}`",
