@@ -1,0 +1,59 @@
+{
+  "book_slug": "dracula",
+  "notes": [
+    {
+      "term": "Bistritz",
+      "recommended_pronunciation": "BIS-tritz",
+      "count_in_sample": 3,
+      "requires_human_review": true
+    },
+    {
+      "term": "Buda-Pesth",
+      "recommended_pronunciation": "BOO-duh Pest",
+      "count_in_sample": 1,
+      "requires_human_review": true
+    },
+    {
+      "term": "Carpathians",
+      "recommended_pronunciation": "kar-PAY-thee-uhns",
+      "count_in_sample": 3,
+      "requires_human_review": true
+    },
+    {
+      "term": "Harker",
+      "recommended_pronunciation": "HAR-ker",
+      "count_in_sample": 2,
+      "requires_human_review": true
+    },
+    {
+      "term": "Jonathan Harker",
+      "recommended_pronunciation": "JON-uh-thun HAR-ker",
+      "count_in_sample": 1,
+      "requires_human_review": true
+    },
+    {
+      "term": "Mina",
+      "recommended_pronunciation": "MEE-nuh",
+      "count_in_sample": 2,
+      "requires_human_review": true
+    },
+    {
+      "term": "Transylvania",
+      "recommended_pronunciation": "tran-sil-VAY-nee-uh",
+      "count_in_sample": 3,
+      "requires_human_review": true
+    },
+    {
+      "term": "Dracula",
+      "recommended_pronunciation": "DRAK-yoo-luh",
+      "count_in_sample": 5,
+      "requires_human_review": true
+    },
+    {
+      "term": "Szekely",
+      "recommended_pronunciation": "SAY-kay",
+      "count_in_sample": 1,
+      "requires_human_review": true
+    }
+  ]
+}

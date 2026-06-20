@@ -1,0 +1,13 @@
+{
+  "config_id": "dia_english_dialogue_v1",
+  "model_id": "dia",
+  "voice_profile_id": "english-gothic-premium-v1",
+  "mode": "internal_dialogue_benchmark",
+  "nonverbal_tag_policy": "minimal_and_reviewed",
+  "pace": "dialogue-natural",
+  "license_status": "license_review_required",
+  "output_policy": "internal_review_only",
+  "public_audio_url": "",
+  "paid_provider_calls": 0
+}
+

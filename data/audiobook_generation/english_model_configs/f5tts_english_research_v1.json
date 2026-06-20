@@ -1,0 +1,12 @@
+{
+  "config_id": "f5tts_english_research_v1",
+  "model_id": "f5-tts",
+  "voice_profile_id": "english-gothic-premium-v1",
+  "mode": "research_only",
+  "license_status": "pretrained_weights_not_commercially_approved",
+  "reference_voice_policy": "approved_style_voice_required_if_ever_tested",
+  "output_policy": "internal_review_only_no_production_use",
+  "public_audio_url": "",
+  "paid_provider_calls": 0
+}
+
