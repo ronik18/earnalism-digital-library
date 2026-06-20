@@ -4,7 +4,10 @@ const { expect, test } = require("playwright/test");
 
 const FRONTEND_URL = process.env.EARNALISM_FRONTEND_URL || "https://theearnalism.com";
 const API_URL = (process.env.EARNALISM_API_URL || "https://api.theearnalism.com/api").replace(/\/$/, "");
+const API_ORIGIN = new URL(API_URL).origin;
 const EVIDENCE_DIR = path.resolve("output/real-user-ux/evidence");
+const ENVIRONMENT_PATH = path.join(EVIDENCE_DIR, "environment.json");
+const NETWORK_SUMMARY_PATH = path.join(EVIDENCE_DIR, "network-console-summary.json");
 
 const FORBIDDEN_BROAD_COPY = [
   "A quieter bookstore for readers who linger",
@@ -23,6 +26,8 @@ const PIPELINE_FORBIDDEN_CTAS = [
   "Read Preview",
   "Listen Now",
 ];
+
+const pageAuditSummaries = [];
 
 function ensureEvidenceDir() {
   fs.mkdirSync(EVIDENCE_DIR, { recursive: true });
@@ -43,11 +48,109 @@ async function capture(page, name) {
   });
 }
 
+function writeJson(filePath, value) {
+  ensureEvidenceDir();
+  fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
+}
+
+function isCriticalApiUrl(url) {
+  return [
+    `${API_URL}/books`,
+    `${API_URL}/books/dracula`,
+    `${API_URL}/reader/book/dracula/manifest`,
+  ].some((critical) => url === critical || url.startsWith(`${critical}?`));
+}
+
+function isPaymentProviderOrChargeUrl(url) {
+  const lowered = url.toLowerCase();
+  return lowered.includes("checkout.razorpay.com")
+    || lowered.includes("api.razorpay.com")
+    || lowered.includes("/api/payments/topup")
+    || lowered.includes("/api/payments/verify")
+    || lowered.includes("/api/payments/_simulate");
+}
+
+function isAudiobookEndpoint(url) {
+  return /\/api\/reader\/book\/[^/]+\/audiobook(?:\/|$|\?)/.test(url);
+}
+
+function installPageAudit(page, journey) {
+  const summary = {
+    journey,
+    console_errors: [],
+    page_errors: [],
+    failed_requests: [],
+    server_errors: [],
+    critical_api_failures: [],
+    payment_provider_or_charge_calls: [],
+    audiobook_endpoint_200s: [],
+  };
+  pageAuditSummaries.push(summary);
+
+  page.on("console", (message) => {
+    if (message.type() !== "error") return;
+    summary.console_errors.push({
+      text: message.text(),
+      location: message.location(),
+    });
+  });
+
+  page.on("pageerror", (error) => {
+    summary.page_errors.push({
+      message: error.message,
+      stack: error.stack || "",
+    });
+  });
+
+  page.on("requestfailed", (request) => {
+    summary.failed_requests.push({
+      url: request.url(),
+      method: request.method(),
+      failure: request.failure()?.errorText || "",
+    });
+  });
+
+  page.on("response", (response) => {
+    const url = response.url();
+    const status = response.status();
+    if (status >= 500) {
+      summary.server_errors.push({ url, status });
+    }
+    if (isCriticalApiUrl(url) && status >= 400) {
+      summary.critical_api_failures.push({ url, status });
+    }
+    if (isPaymentProviderOrChargeUrl(url)) {
+      summary.payment_provider_or_charge_calls.push({ url, status });
+    }
+    if (isAudiobookEndpoint(url) && status === 200) {
+      summary.audiobook_endpoint_200s.push({ url, status });
+    }
+  });
+
+  return summary;
+}
+
+function assertPageAuditClean(summary) {
+  writeJson(NETWORK_SUMMARY_PATH, {
+    generated_at: new Date().toISOString(),
+    frontend_url: FRONTEND_URL,
+    api_url: API_URL,
+    journeys: pageAuditSummaries,
+  });
+  expect(summary.page_errors, `${summary.journey} page errors`).toEqual([]);
+  expect(summary.server_errors, `${summary.journey} 5xx responses`).toEqual([]);
+  expect(summary.critical_api_failures, `${summary.journey} critical API failures`).toEqual([]);
+  expect(summary.payment_provider_or_charge_calls, `${summary.journey} payment provider/charge calls`).toEqual([]);
+  expect(summary.audiobook_endpoint_200s, `${summary.journey} audiobook endpoint returned 200`).toEqual([]);
+}
+
 async function openJourneyPage(page, route, name) {
+  const audit = installPageAudit(page, name);
   const response = await page.goto(route, { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("networkidle", { timeout: 25_000 }).catch(() => {});
   await expect(page.locator("body")).toBeVisible();
   await capture(page, name);
+  assertPageAuditClean(audit);
   return response;
 }
 
@@ -112,7 +215,18 @@ async function assertDraculaBackendTruth(request) {
   expect(book.slug).toBe("dracula");
   expect(book.title).toBe("Dracula");
   expect(book.author).toBe("Bram Stoker");
-  expect(book.audio_enabled || book.audiobook_enabled || false).toBeFalsy();
+  expect(book.publication_status).toBe("LIVE_APPROVED");
+  expect(book.reader_enabled).toBe(true);
+  expect(book.preview_enabled).toBe(true);
+  expect(book.reader_url).toBe("/reader/dracula");
+  expect(book.preview_url).toBe("/reader/dracula");
+  expect(book.audio_enabled).toBe(false);
+  expect(book.audiobook_enabled).toBe(false);
+  expect(book.audiobook || null).toBeNull();
+  expect(Object.keys(book.audiobook_assets || {})).toHaveLength(0);
+  expect(book).not.toHaveProperty("source_hash");
+  expect(book).not.toHaveProperty("content_hash");
+  expect(book).not.toHaveProperty("provenance_hash");
   expect(Array.isArray(book.chapters)).toBe(true);
   expect(book.chapters).toHaveLength(27);
 
@@ -123,11 +237,43 @@ async function assertDraculaBackendTruth(request) {
   expect(manifest.chapters).toHaveLength(27);
   expect(manifest.chapters[0]?.is_preview || manifest.chapters[0]?.is_free_preview).toBeTruthy();
   expect(manifest.audio?.enabled || manifest.book?.audiobook_enabled || false).toBeFalsy();
+
+  const audiobookResponse = await request.get(`${API_URL}/reader/book/dracula/audiobook`);
+  expect(audiobookResponse.status()).toBe(404);
 }
 
 test.describe("Earnalism real-user UX video audit", () => {
   test.beforeEach(async ({ context }) => {
     await context.clearCookies();
+  });
+
+  test("live environment stamp captures audited production context", async ({ request, browserName }, testInfo) => {
+    const healthResponse = await request.get(`${API_ORIGIN}/healthz`);
+    let healthBody = null;
+    try {
+      healthBody = await healthResponse.json();
+    } catch {
+      healthBody = { raw: await healthResponse.text() };
+    }
+
+    writeJson(ENVIRONMENT_PATH, {
+      timestamp: new Date().toISOString(),
+      frontend_url: FRONTEND_URL,
+      api_url: API_URL,
+      healthz_url: `${API_ORIGIN}/healthz`,
+      healthz_status: healthResponse.status(),
+      healthz: healthBody,
+      browser_name: browserName,
+      project_name: testInfo.project.name,
+      viewports: {
+        desktop: { width: 1440, height: 1000 },
+        mobile: { width: 390, height: 844 },
+        reader: { width: 1280, height: 900 },
+      },
+    });
+
+    expect(healthResponse.status()).toBe(200);
+    expect(healthBody?.status || healthBody?.ok).toBeTruthy();
   });
 
   test("backend catalog truth gate matches the controlled Dracula launch", async ({ request }) => {

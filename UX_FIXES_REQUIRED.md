@@ -1,26 +1,29 @@
 # UX Fixes Required
 
-Date: 2026-06-20
+## Environment
 
-## Critical Fixes
+- Timestamp: `2026-06-20T14:42:42+00:00`
+- Frontend URL: `https://theearnalism.com`
+- API URL: `https://api.theearnalism.com/api`
+- Git SHA: `a4fdc4182a12b10ddfd7028d8658af59cbd74304`
+- Branch: `codex/real-user-ux-video-audit`
+- Railway replica: `20fcb1b8-060b-49da-ab82-e6c918231d6c`
+- Vercel deployment id: `not set`
+- Vercel URL: `not set`
 
-None from the real-user browser UX journey.
-
-## Non-Critical Polish
-
-No blocking UX polish item was found in this PR's Playwright journey.
-
-## Release/Advertising Hold
-
-`npm run launch:seo-audit` still returns `BLOCKED_FOR_BOOK_SEO` because the CRA book detail page relies on client-side metadata after API load. This should be fixed with prerender/SSR/static snapshots for priority book pages before broad advertising.
-
-## Decision Rule
-
-- Any unapproved reading/listening CTA requires a fix before advertising.
-- Any removed demo route returning a generic shell requires a fix before advertising.
-- Any Dracula reader failure requires hold or rollback review.
-- Any pricing old pack name or awkward pricing copy requires a fix before broader conversion campaigns.
 
 ## Current Status
 
 `KEEP_DRACULA_LIVE_BUT_HOLD_ADS`
+
+## Critical Fixes
+
+None from backend catalog truth or browser UX.
+
+## Release/Advertising Hold
+
+SEO audit status: `BLOCKED_FOR_BOOK_SEO`
+
+Launch readiness status: `HOLD_FOR_FIXES`
+
+If SEO remains `BLOCKED_FOR_BOOK_SEO`, broad branding/advertising should wait for prerender/SSR/static snapshots for priority book pages.

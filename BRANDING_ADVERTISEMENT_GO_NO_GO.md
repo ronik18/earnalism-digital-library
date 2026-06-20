@@ -1,42 +1,41 @@
 # Branding And Advertisement Go/No-Go
 
-Date: 2026-06-20
+## Environment
 
-## Controlled Launch Truth
+- Timestamp: `2026-06-20T14:42:42+00:00`
+- Frontend URL: `https://theearnalism.com`
+- API URL: `https://api.theearnalism.com/api`
+- Git SHA: `a4fdc4182a12b10ddfd7028d8658af59cbd74304`
+- Branch: `codex/real-user-ux-video-audit`
+- Railway replica: `20fcb1b8-060b-49da-ab82-e6c918231d6c`
+- Vercel deployment id: `not set`
+- Vercel URL: `not set`
 
-The live public promise must remain:
-
-- Begin with Dracula.
-- Chapter 1 is free.
-- Continue with reading time.
-- Dracula audio is not available yet.
-- More books are coming through the rights-safe pipeline.
 
 ## Recommendation
 
 `KEEP_DRACULA_LIVE_BUT_HOLD_ADS`
 
-Allowed final recommendations:
+## Backend Gate
 
-- `GO_FOR_BRANDING_AND_ADVERTISEMENT`
-- `KEEP_DRACULA_LIVE_BUT_HOLD_ADS`
-- `HOLD_FOR_UX_FIXES`
-- `ROLLBACK_DRACULA`
+## Backend Catalog Truth
 
-## Conditions For GO
+- `/api/books` status: `200`
+- `/api/books` live slugs: `['dracula']`
+- `/api/books/dracula` status: `200`
+- `/api/reader/book/dracula/manifest` status: `200`
+- `/api/reader/book/dracula/manifest` chapter count: `27`
+- `/api/reader/book/dracula/manifest` first chapter preview/free: `True`
+- `/api/reader/book/dracula/audiobook` status: `404`
+- Backend catalog truth: `PASS`
 
-- Every Playwright journey passes.
-- Video evidence exists.
-- Backend catalog truth canary passes.
-- Removed routes do not return 200 or generic shell.
-- No unapproved title exposes Start Reading, Read Preview, or Listen Now.
-- Dracula page and reader pass.
-- Pricing page is Dracula-first and premium.
-- Payment smoke is mock-safe and passes.
-- SEO/readiness audits pass or produce non-critical warnings only.
+No backend catalog truth failures.
 
-## Latest Decision
 
-Dracula should remain live. The real-user UX video audit passed, but broad branding/advertising should wait until the known book SEO blocker is resolved:
+## Decision
 
-`Client-rendered CRA book pages need prerender/SSR/static snapshots for durable book SEO.`
+- Dracula stays live: `yes`
+- Rollback needed: `no`
+- Start ads: `no`
+
+Never mark `GO_FOR_BRANDING_AND_ADVERTISEMENT` while backend catalog truth fails, Playwright fails, or SEO/readiness remains blocked.
