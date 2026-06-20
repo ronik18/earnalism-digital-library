@@ -203,6 +203,7 @@ async function main() {
     "Disallow: /admin",
     "Disallow: /admin/",
     "Disallow: /account",
+    "Allow: /reader/dracula",
     "Disallow: /reader/",
     "Disallow: /secure-reader-test",
     "Disallow: /login",

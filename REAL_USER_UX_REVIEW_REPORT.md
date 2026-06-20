@@ -2,15 +2,10 @@
 
 ## Environment
 
-- Timestamp: `2026-06-20T14:42:42+00:00`
 - Frontend URL: `https://theearnalism.com`
 - API URL: `https://api.theearnalism.com/api`
-- Git SHA: `a4fdc4182a12b10ddfd7028d8658af59cbd74304`
-- Branch: `codex/real-user-ux-video-audit`
-- Railway replica: `20fcb1b8-060b-49da-ab82-e6c918231d6c`
-- Vercel deployment id: `not set`
-- Vercel URL: `not set`
-
+- Source UX audit: PR #39 real-user video harness
+- Current PR scope: static SEO snapshots only
 
 ## Scope
 
@@ -33,39 +28,23 @@ The audit verifies:
 
 | Check | Result |
 | --- | --- |
-| Playwright browser journey | PASS (12/12 passed) |
-| Video artifacts | 10 |
-| Trace artifacts | 12 |
-| Screenshots | 11 |
-| Backend catalog truth | PASS |
-| Backend catalog truth canary | PASS |
-| Visual removed-route sample | PASS via Playwright |
-| Full removed-route canary | PASS |
-| Production parity | PASS |
-| Payment smoke | PASS_TEST_MODE |
-| SEO audit | BLOCKED_FOR_BOOK_SEO |
-| Full launch readiness | HOLD_FOR_FIXES |
+| Playwright browser journey | PASS from PR #39 evidence; rerun after this PR deploy before ads. |
+| Backend catalog truth | PASS in latest local canary evidence; rerun after deploy. |
+| Static Dracula SEO | PASS locally in this PR. |
+| Social preview audit | PASS locally in this PR. |
+| Full launch readiness | HOLD_FOR_FIXES until deployed canaries and ad-readiness evidence pass. |
 
 ## Backend Catalog Truth
 
-- `/api/books` status: `200`
-- `/api/books` live slugs: `['dracula']`
-- `/api/books/dracula` status: `200`
-- `/api/reader/book/dracula/manifest` status: `200`
-- `/api/reader/book/dracula/manifest` chapter count: `27`
-- `/api/reader/book/dracula/manifest` first chapter preview/free: `True`
-- `/api/reader/book/dracula/audiobook` status: `404`
-- Backend catalog truth: `PASS`
+- `/api/books` live slugs must remain `['dracula']`.
+- `/api/books/dracula` must return `200`.
+- `/api/reader/book/dracula/manifest` must return `200` with `27` chapters.
+- `/api/reader/book/dracula/audiobook` must remain `404` or hidden.
 
-No backend catalog truth failures.
+## UX Scope In This PR
 
-
-## Artifact Summary
-
-- Screenshots: `11`
-- Videos: `10`
-- Traces: `12`
+This PR does not modify hydrated React components. It adds crawler-visible static SEO snapshots that preserve the React root and compiled JS/CSS bundles, then the existing CRA app owns the hydrated UX.
 
 ## Main Finding
 
-Hydrated UX passes, but SEO/readiness remains blocked.
+Hydrated UX evidence from PR #39 passes. Static SEO/social-preview evidence now passes locally. Ads remain held until those same checks pass on the deployed production build.

@@ -1,21 +1,56 @@
 # SEO Crawlability Report
 
-Status: `PASS_WITH_WARNINGS_DRACULA_FIRST`
+Status: `PASS`
 
 | Check | Value |
 | --- | --- |
-| Sitemap URL count | Pending regeneration after Dracula-first UX merge |
-| Book URL count | 1 approved live book intended: `/book/dracula` |
+| Sitemap URL count | 12 |
+| Book URL count | 1 |
 | Demo URL count | 0 |
 | Robots sitemap present | True |
 | Retired routes crawlable for deindexing | True |
-| Homepage Dracula launch copy | True |
-| Library controlled-launch copy | True |
-| Dracula Book JSON-LD gated | True |
-| Unapproved Book JSON-LD blocked | True |
-| Client-side book metadata risk | True |
+| Homepage static meta complete | True |
+| Homepage static source | frontend/build/index.html |
+| Dracula book static source | frontend/build/book/dracula/index.html |
+| Book JSON-LD detected | True |
+| Client-side book metadata risk | False |
 
-The public UX and client-side metadata now match the Dracula-first controlled publication state. SEO remains `PASS_WITH_WARNINGS` because the frontend is still a CRA SPA and dynamic route metadata is client-rendered.
+Launch SEO remains HOLD only when the raw HTML checks below fail. Passing checks mean the priority pages are crawler-visible before React hydration.
+
+## Raw HTML Checks
+
+### /book/dracula
+| Check | Pass |
+| --- | --- |
+| snapshot_available | True |
+| title_dracula_bram_stoker | True |
+| description_mentions_dracula | True |
+| canonical_book_dracula | True |
+| og_tags_complete | True |
+| twitter_tags_complete | True |
+| book_json_ld_present | True |
+| webpage_json_ld_present | True |
+| breadcrumb_json_ld_present | True |
+| no_fake_rating_review | True |
+| no_audio_claim | True |
+| no_broad_catalog_claim | True |
+| not_client_placeholder | True |
+
+### /
+| Check | Pass |
+| --- | --- |
+| dracula_first | True |
+| no_broad_catalog_claim | True |
+| organization_json_ld | True |
+| website_json_ld | True |
+
+### /reader/dracula
+| Check | Pass |
+| --- | --- |
+| snapshot_available | True |
+| noindex_follow | True |
+| canonical_to_book | True |
+| excluded_from_sitemap | True |
 
 ## Priority Routes For Prerender/SSR Review
 
@@ -25,14 +60,12 @@ The public UX and client-side metadata now match the Dracula-first controlled pu
 | /library |
 | /pricing |
 | /book/dracula |
-| /reader/dracula |
 
-Warning reason: `Client-rendered CRA book pages need prerender/SSR/static snapshots for durable Dracula social/search previews.`
+Blocked reason: `none`
 
 No unsafe/fake Book schema is emitted by this audit. Book SEO must use available data only.
 
 Book JSON-LD rights gated: `True`
 Unsafe Book schema emitted: `False`
-Unapproved reader routes public-gated: `True`
 
 See `BOOK_SEO_PRERENDER_PLAN.md` for the controlled plan to close book-specific SEO without fake metadata.

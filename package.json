@@ -31,6 +31,8 @@
     "launch:backend-catalog-truth-canary": "python3 scripts/catalog_truth_audit.py --mode api --api-url https://api.theearnalism.com/api --output-dir output/launch/backend_catalog_truth_canary",
     "launch:production-parity": "python3 scripts/launch_readiness_audit.py --mode production-parity",
     "launch:seo-audit": "python3 scripts/launch_readiness_audit.py --mode seo",
+    "launch:social-preview-audit": "python3 scripts/social_preview_audit.py",
+    "launch:social-preview-audit:prod": "python3 scripts/social_preview_audit.py --base-url https://theearnalism.com",
     "launch:performance-audit": "python3 scripts/launch_readiness_audit.py --mode performance",
     "launch:audio-audit": "python3 scripts/launch_readiness_audit.py --mode audio",
     "launch:payment-smoke": "python3 scripts/launch_readiness_audit.py --mode payment-smoke",

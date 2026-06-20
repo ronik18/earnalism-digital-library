@@ -7,6 +7,25 @@ function read(relativePath) {
   return fs.readFileSync(path.join(ROOT, relativePath), "utf8");
 }
 
+function readOptional(relativePath) {
+  const target = path.join(ROOT, relativePath);
+  return fs.existsSync(target) ? fs.readFileSync(target, "utf8") : "";
+}
+
+function metaContent(html, attr, value) {
+  const tag = html.match(new RegExp(`<meta\\s+[^>]*${attr}=["']${value}["'][^>]*>`, "i"));
+  if (!tag) return "";
+  const content = tag[0].match(/content=["']([^"']*)["']/i);
+  return content ? content[1] : "";
+}
+
+function canonicalHref(html) {
+  const tag = html.match(/<link\s+[^>]*rel=["']canonical["'][^>]*>/i);
+  if (!tag) return "";
+  const href = tag[0].match(/href=["']([^"']*)["']/i);
+  return href ? href[1] : "";
+}
+
 function extractBetween(source, startMarker, endMarker) {
   const start = source.indexOf(startMarker);
   expect(start).toBeGreaterThanOrEqual(0);
@@ -31,6 +50,10 @@ describe("UX conversion static signals", () => {
   const reader = read("frontend/src/pages/Reader.jsx");
   const launchAudit = read("scripts/launch_readiness_audit.py");
   const packageJson = read("package.json");
+  const frontendPackageJson = read("frontend/package.json");
+  const staticSnapshotGenerator = read("frontend/scripts/generate-static-seo-snapshots.mjs");
+  const socialPreviewAudit = read("scripts/social_preview_audit.py");
+  const postProductionCanary = read("scripts/post_production_canary.py");
   const dailyRunbook = read("DAILY_GROWTH_AUDIT_RUNBOOK.md");
   const header = read("frontend/src/components/Header.jsx");
   const app = read("frontend/src/App.js");
@@ -270,5 +293,66 @@ describe("UX conversion static signals", () => {
     expect(dailyRunbook).toContain("*_SNAPSHOT.md");
     expect(fs.existsSync(path.join(ROOT, "DAILY_OWNER_GROWTH_REPORT.md"))).toBe(false);
     expect(fs.existsSync(path.join(ROOT, "DAILY_OWNER_GROWTH_REPORT_SNAPSHOT.md"))).toBe(true);
+  });
+
+  test("static SEO snapshot generator is wired into the CRA build", () => {
+    expect(frontendPackageJson).toContain('"postbuild": "node scripts/generate-static-seo-snapshots.mjs"');
+    expect(staticSnapshotGenerator).toContain("Dracula by Bram Stoker | The Earnalism Digital Library");
+    expect(staticSnapshotGenerator).toContain("Book");
+    expect(staticSnapshotGenerator).toContain("BreadcrumbList");
+    expect(staticSnapshotGenerator).toContain("noindex,follow");
+    expect(staticSnapshotGenerator).toContain("/reader/dracula");
+    expect(packageJson).toContain("launch:social-preview-audit");
+    expect(packageJson).toContain("launch:social-preview-audit:prod");
+    expect(packageJson).toContain("release:post-production-canary");
+    expect(packageJson).toContain("ux:real-user-video-audit");
+    expect(packageJson).toContain("ux:real-user-video-audit:headed");
+    expect(packageJson).toContain("release:ux-go-no-go");
+    expect(socialPreviewAudit).toContain("PRODUCTION_ROUTES");
+    expect(socialPreviewAudit).toContain('"/reader/dracula"');
+    expect(socialPreviewAudit).toContain("REQUIRED_PROPERTY_TAGS");
+    expect(socialPreviewAudit).toContain("REQUIRED_NAME_TAGS");
+    expect(socialPreviewAudit).toContain("FAKE_REVIEW_RATING_PATTERNS");
+    expect(socialPreviewAudit).toContain("NEGATED_AUDIO_SAFETY_CLAIMS");
+    expect(socialPreviewAudit).toContain("failed_checks");
+    expect(postProductionCanary).toContain("launch:social-preview-audit:prod");
+    expect(postProductionCanary).toContain("release:ux-go-no-go");
+  });
+
+  test("built Dracula book snapshot exposes crawlable book SEO when build output exists", () => {
+    const bookHtml = readOptional("frontend/build/book/dracula/index.html");
+    if (!bookHtml) {
+      expect(staticSnapshotGenerator).toContain("writeSnapshot");
+      return;
+    }
+
+    expect(bookHtml).toContain("<title>Dracula by Bram Stoker | The Earnalism Digital Library</title>");
+    expect(metaContent(bookHtml, "name", "description")).toContain("Read Dracula by Bram Stoker");
+    expect(canonicalHref(bookHtml)).toBe("https://theearnalism.com/book/dracula");
+    expect(metaContent(bookHtml, "property", "og:type")).toBe("book");
+    expect(metaContent(bookHtml, "property", "og:title")).toContain("Dracula by Bram Stoker");
+    expect(metaContent(bookHtml, "name", "twitter:card")).toBe("summary_large_image");
+    expect(bookHtml).toContain('"@type": "Book"');
+    expect(bookHtml).toContain('"@type": "BreadcrumbList"');
+    expect(bookHtml).toContain("Project Gutenberg eBook #345");
+    expect(bookHtml).not.toMatch(/aggregateRating|"review"\s*:/i);
+    expect(bookHtml).not.toMatch(/Listen Now|audiobook available/i);
+    expect(bookHtml).not.toContain("Preview every book before you pay");
+  });
+
+  test("built homepage and reader snapshots follow controlled launch SEO policy", () => {
+    const homeHtml = readOptional("frontend/build/index.html");
+    const readerHtml = readOptional("frontend/build/reader/dracula/index.html");
+    if (!homeHtml || !readerHtml) {
+      expect(staticSnapshotGenerator).toContain("Begin with Dracula");
+      return;
+    }
+
+    expect(homeHtml).toContain("Begin with Dracula");
+    expect(homeHtml).toContain("controlled launch begins with Dracula");
+    expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");
+    expect(homeHtml).not.toContain("Preview every book before you pay");
+    expect(metaContent(readerHtml, "name", "robots")).toContain("noindex");
+    expect(canonicalHref(readerHtml)).toBe("https://theearnalism.com/book/dracula");
   });
 });

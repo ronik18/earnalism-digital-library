@@ -18,6 +18,10 @@ from typing import Callable, Sequence
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT_ROOT = ROOT / "output" / "release-canary"
 WARNING_RE = re.compile(r"\bWARN(?:ING)?\b", re.IGNORECASE)
+BENIGN_WARNING_PATTERNS = [
+    re.compile(r"Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set\.", re.IGNORECASE),
+    re.compile(r"\(Use `node --trace-warnings(?: \.\.\.)?` to show where the warning was created\)", re.IGNORECASE),
+]
 
 
 @dataclass(frozen=True)
@@ -26,6 +30,7 @@ class CanaryCommand:
     label: str
     command: str
     critical: bool = True
+    required_paths: tuple[str, ...] = ()
 
 
 @dataclass
@@ -74,6 +79,12 @@ COMMANDS: list[CanaryCommand] = [
         critical=False,
     ),
     CanaryCommand(
+        key="social_preview_prod",
+        label="Production social preview",
+        command="npm run launch:social-preview-audit:prod",
+        critical=False,
+    ),
+    CanaryCommand(
         key="audio",
         label="Audio audit",
         command="npm run launch:audio-audit",
@@ -111,6 +122,16 @@ COMMANDS: list[CanaryCommand] = [
         label="Frontend build",
         command="npm --prefix frontend run build",
     ),
+    CanaryCommand(
+        key="ux_go_no_go",
+        label="Real-user UX go/no-go",
+        command="npm run release:ux-go-no-go",
+        critical=False,
+        required_paths=(
+            "tests/e2e/earnalism-real-user-journey.spec.js",
+            "scripts/generate_real_user_ux_report.py",
+        ),
+    ),
 ]
 
 
@@ -129,7 +150,12 @@ def utc_timestamp() -> str:
 
 
 def command_status(command: CanaryCommand, returncode: int, output: str) -> tuple[str, bool]:
-    warning_detected = bool(WARNING_RE.search(output))
+    warning_scan_output = "\n".join(
+        line
+        for line in output.splitlines()
+        if not any(pattern.search(line) for pattern in BENIGN_WARNING_PATTERNS)
+    )
+    warning_detected = bool(WARNING_RE.search(warning_scan_output))
     if returncode == 0:
         if warning_detected and not command.critical:
             return "WARN", warning_detected
@@ -147,6 +173,32 @@ def run_command(
     runner: Runner = subprocess.run,
 ) -> CanaryResult:
     start = time.monotonic()
+    missing_required_paths = [path for path in command.required_paths if not (ROOT / path).exists()]
+    if missing_required_paths:
+        log_file = run_dir / f"{index:02d}-{command.key}.log"
+        log_file.write_text(
+            "\n".join(
+                [
+                    f"$ {command.command}",
+                    "",
+                    "SKIPPED:",
+                    f"Missing optional required files: {', '.join(missing_required_paths)}",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        return CanaryResult(
+            key=command.key,
+            label=command.label,
+            command=command.command,
+            critical=command.critical,
+            status="SKIP",
+            returncode=0,
+            duration_seconds=round(time.monotonic() - start, 3),
+            log_file=display_path(log_file),
+            warning_detected=False,
+        )
+
     completed = runner(
         command.command,
         cwd=ROOT,
@@ -244,12 +296,14 @@ def build_summary(run_dir: Path, results: Sequence[CanaryResult]) -> dict[str, o
         "dracula_live_status": dracula_live_status(results),
         "payment_smoke_status": result_status(results, "payment_smoke"),
         "seo_status": result_status(results, "seo"),
+        "social_preview_prod_status": result_status(results, "social_preview_prod"),
         "audio_status": result_status(results, "audio"),
         "catalog_truth_status": result_status(results, "catalog_truth"),
         "daily_growth_audit_status": result_status(results, "daily_growth_audit"),
         "observability_status": result_status(results, "observability"),
         "regression_status": result_status(results, "regression"),
         "frontend_build_status": result_status(results, "frontend_build"),
+        "ux_go_no_go_status": result_status(results, "ux_go_no_go"),
         "owner_recommendation": owner_recommendation(status, results),
         "public_mutation_performed": False,
         "paid_provider_calls_performed": False,
@@ -279,12 +333,14 @@ def markdown_summary(summary: dict[str, object]) -> str:
         f"- Dracula live: `{summary['dracula_live_status']}`",
         f"- Payment smoke: `{summary['payment_smoke_status']}`",
         f"- SEO: `{summary['seo_status']}`",
+        f"- Production social preview: `{summary['social_preview_prod_status']}`",
         f"- Audio: `{summary['audio_status']}`",
         f"- Catalog truth: `{summary['catalog_truth_status']}`",
         f"- Daily growth audit: `{summary['daily_growth_audit_status']}`",
         f"- Observability: `{summary['observability_status']}`",
         f"- Regression: `{summary['regression_status']}`",
         f"- Frontend build: `{summary['frontend_build_status']}`",
+        f"- Real-user UX go/no-go: `{summary['ux_go_no_go_status']}`",
         "",
         "## Command Results",
         "",
