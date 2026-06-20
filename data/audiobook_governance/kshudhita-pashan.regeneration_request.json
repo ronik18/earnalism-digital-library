@@ -1,0 +1,82 @@
+{
+  "book_slug": "kshudhita-pashan",
+  "title": "ক্ষুধিত পাষাণ",
+  "language": "bn",
+  "source_text_status": "SOURCE_TEXT_APPROVAL_REQUIRED",
+  "rights_status": "RIGHTS_APPROVAL_REQUIRED",
+  "publication_status": "PIPELINE_ONLY",
+  "existing_audio_status": "EXISTING_AUDIO_NOT_APPROVED_FOR_PUBLIC_RELEASE",
+  "regeneration_requested": true,
+  "regeneration_reason": "Prepare a separately approved premium Bengali Gothic narration workflow for future review without generating or publishing audio.",
+  "narrator_profile_id": "bengali-gothic-literary-female-sample",
+  "voice_source_type": "STYLE_PROFILE",
+  "voice_consent_status": "NOT_APPLICABLE_STYLE_PROFILE",
+  "ai_generation_allowed": false,
+  "human_review_required": true,
+  "provider_allowed": false,
+  "public_release_allowed": false,
+  "full_audiobook_allowed": false,
+  "preview_allowed": false,
+  "approval_status": "OWNER_APPROVAL_REQUIRED",
+  "approvals": {
+    "owner": {
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "notes": "Owner approval is required before any regenerated narration request can leave draft planning."
+    },
+    "rights": {
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "notes": "Rights approval must confirm source/license and audio derivative permissions."
+    },
+    "source_text": {
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "notes": "Source text must be approved for narration segmentation."
+    },
+    "voice_style": {
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "notes": "Style profile must be owner-approved before dry-run generation planning."
+    },
+    "qa": {
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "notes": "Human listening QA is required before public preview."
+    },
+    "product_release": {
+      "approved": false,
+      "approved_by": "",
+      "approved_at": "",
+      "notes": "Product release approval is required before any public audio CTA or URL."
+    }
+  },
+  "qa_gates": {
+    "public_preview_min_score": 9.2,
+    "full_audiobook_min_score": 9.5,
+    "internal_only_below_score": 8.5,
+    "human_listening_review_required": true,
+    "pronunciation_required": true,
+    "disclosure_required": true
+  },
+  "output_policy": {
+    "audio_url_allowed": false,
+    "public_player_allowed": false,
+    "sitemap_audio_entry_allowed": false,
+    "listen_now_cta_allowed": false,
+    "full_audiobook_public_allowed": false,
+    "manifest_audio_urls_allowed": false
+  },
+  "disclosure_policy": {
+    "human_narrated_claim_allowed": false,
+    "no_ai_touch_claim_allowed": false,
+    "celebrity_or_public_figure_voice_allowed": false,
+    "public_copy_requires_owner_approval": true,
+    "required_internal_disclosure": "Generated or regenerated narration may not be described as human narrated unless a human recording contract exists."
+  }
+}

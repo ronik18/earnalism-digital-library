@@ -1,0 +1,21 @@
+{
+  "profile_id": "bengali-gothic-literary-female-sample",
+  "display_name": "Bengali Gothic Literary Female Style",
+  "language": "bn",
+  "accent": "literary Bengali, Kolkata-adjacent neutral diction",
+  "gender_presentation": "female",
+  "age_tone": "adult, refined, calm",
+  "literary_style": "intimate, restrained, eerie, premium, human-like but truthfully disclosed",
+  "emotional_range": "subtle warmth, sorrow, quiet fear, controlled anger, restrained suspense",
+  "pacing": "measured, punctuation-aware, reflective",
+  "pitch_range": "medium-low to medium, never cartoonish",
+  "breath_style": "natural short breaths at commas and longer reflective pauses at paragraph breaks",
+  "dialogue_style": "gentle speaker separation without theatrical character acting",
+  "consent_status": "NOT_APPLICABLE_STYLE_PROFILE",
+  "voice_source_type": "STYLE_PROFILE",
+  "allowed_for_generation": false,
+  "allowed_for_public_release": false,
+  "disclosure_required": true,
+  "owner_approved": false,
+  "notes": "This is a style profile only. It is not a real-person clone and must not be marketed as a human narrator."
+}

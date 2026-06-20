@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Earnalism Audiobook Regeneration Governance Request",
+  "type": "object",
+  "required": [
+    "book_slug",
+    "title",
+    "language",
+    "source_text_status",
+    "rights_status",
+    "publication_status",
+    "existing_audio_status",
+    "regeneration_requested",
+    "regeneration_reason",
+    "narrator_profile_id",
+    "voice_source_type",
+    "voice_consent_status",
+    "ai_generation_allowed",
+    "human_review_required",
+    "provider_allowed",
+    "public_release_allowed",
+    "full_audiobook_allowed",
+    "preview_allowed",
+    "approval_status",
+    "approvals",
+    "qa_gates",
+    "output_policy",
+    "disclosure_policy"
+  ],
+  "properties": {
+    "book_slug": { "type": "string" },
+    "title": { "type": "string" },
+    "language": { "type": "string" },
+    "source_text_status": { "type": "string" },
+    "rights_status": { "type": "string" },
+    "publication_status": { "type": "string" },
+    "existing_audio_status": { "type": "string" },
+    "regeneration_requested": { "type": "boolean" },
+    "regeneration_reason": { "type": "string" },
+    "narrator_profile_id": { "type": "string" },
+    "voice_source_type": {
+      "type": "string",
+      "enum": ["STYLE_PROFILE", "HUMAN_RECORDED", "AI_GENERATED", "AI_ASSISTED", "REAL_PERSON_CLONE"]
+    },
+    "voice_consent_status": {
+      "type": "string",
+      "enum": ["NOT_APPLICABLE_STYLE_PROFILE", "WRITTEN_CONSENT_ON_FILE", "CONSENT_REQUIRED", "CONSENT_BLOCKED"]
+    },
+    "ai_generation_allowed": { "type": "boolean" },
+    "human_review_required": { "type": "boolean" },
+    "provider_allowed": { "type": "boolean" },
+    "public_release_allowed": { "type": "boolean" },
+    "full_audiobook_allowed": { "type": "boolean" },
+    "preview_allowed": { "type": "boolean" },
+    "approval_status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "OWNER_APPROVAL_REQUIRED",
+        "RIGHTS_APPROVAL_REQUIRED",
+        "SOURCE_TEXT_APPROVAL_REQUIRED",
+        "VOICE_STYLE_APPROVAL_REQUIRED",
+        "GENERATION_APPROVED_DRY_RUN_ONLY",
+        "GENERATION_APPROVED",
+        "MASTERING_APPROVED",
+        "HUMAN_LISTENING_REVIEW_REQUIRED",
+        "PUBLIC_PREVIEW_APPROVED",
+        "FULL_AUDIOBOOK_APPROVED",
+        "BLOCKED"
+      ]
+    },
+    "approvals": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["approved"],
+        "properties": {
+          "approved": { "type": "boolean" },
+          "approved_by": { "type": "string" },
+          "approved_at": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "qa_gates": { "type": "object" },
+    "output_policy": { "type": "object" },
+    "disclosure_policy": { "type": "object" }
+  }
+}

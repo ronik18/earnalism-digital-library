@@ -82,6 +82,10 @@ describe("UX conversion static signals", () => {
   const socialPreviewAudit = read("scripts/social_preview_audit.py");
   const postProductionCanary = read("scripts/post_production_canary.py");
   const brandSiteTour = read("scripts/create_premium_site_tour.py");
+  const audiobookRegenerationWorkflow = read("scripts/audiobook_regeneration_workflow.py");
+  const audiobookRegenerationReleaseGate = read("scripts/audiobook_release_gate.py");
+  const audiobookGovernanceReport = read("AUDIOBOOK_REGENERATION_GOVERNANCE_REPORT.md");
+  const audiobookDisclosurePolicy = read("AUDIOBOOK_DISCLOSURE_AND_CLAIMS_POLICY.md");
   const dailyRunbook = read("DAILY_GROWTH_AUDIT_RUNBOOK.md");
   const approvedToPublish = read("APPROVED_TO_PUBLISH.md");
   const firstBatchScorecard = read("FIRST_BATCH_RIGHTS_EVIDENCE_SCORECARD.md");
@@ -439,6 +443,26 @@ describe("UX conversion static signals", () => {
       expect(block).not.toContain("Voice Sample Soon");
       expect(block).not.toContain("Follow Audio QA");
     }
+  });
+
+  test("regenerated Bengali audiobook workflow remains internal and release-blocked", () => {
+    expect(packageJson).toContain("audiobook:regen:plan");
+    expect(packageJson).toContain("audiobook:regen:precheck");
+    expect(packageJson).toContain("audiobook:regen:approve-dry-run");
+    expect(packageJson).toContain("audiobook:regen:generate-manifest");
+    expect(packageJson).toContain("audiobook:release-gate");
+    expect(packageJson).toContain("audiobook:regen:release-gate");
+    expect(audiobookRegenerationWorkflow).toContain("No voice generation command exists");
+    expect(audiobookRegenerationWorkflow).toContain("audio_urls_included");
+    expect(audiobookRegenerationWorkflow).toContain("APPROVAL_REQUIRED");
+    expect(audiobookRegenerationReleaseGate).toContain("BLOCKED_PUBLIC_AUDIO_RELEASE");
+    expect(audiobookRegenerationReleaseGate).toContain("Full audiobook release is disabled by default");
+    expect(audiobookGovernanceReport).toContain("OWNER_APPROVAL_REQUIRED");
+    expect(audiobookGovernanceReport).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
+    expect(audiobookDisclosurePolicy).toContain("If AI-generated or AI-assisted, do not claim human narration");
+    expect(audiobookDisclosurePolicy).toContain("No AI touch");
+    expect(controlledLaunch).toContain("audiobook_enabled: false");
+    expect(controlledLaunch).toContain("audio_preview_status: \"AUDIO_PREVIEW_BLOCKED_UNTIL_PROVIDER_QA\"");
   });
 
   test("future pipeline books do not show live CTAs", () => {
