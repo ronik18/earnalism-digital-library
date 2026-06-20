@@ -35,4 +35,3 @@ Secure payment is handled by Razorpay. There is no subscription or autorenewal, 
 ## 8. Close
 
 Earnalism begins with one approved classic and a promise: every next room opens only when rights, quality, and reader trust are ready.
-

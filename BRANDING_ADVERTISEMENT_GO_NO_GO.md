@@ -1,40 +1,37 @@
-# Branding And Advertisement Go/No-Go
+# Branding Advertisement GO/NO-GO
 
 ## Environment
 
 - Frontend URL: `https://theearnalism.com`
 - API URL: `https://api.theearnalism.com/api`
-- Branch: `codex/static-seo-snapshots-dracula`
+- Branch: `codex/premium-site-tour-video-package`
 
 ## Recommendation
 
-`KEEP_DRACULA_LIVE_BUT_HOLD_ADS`
+Decision: `HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW`
+Owner recommendation: `KEEP_DRACULA_LIVE`
 
-## Current Evidence
+Dracula may stay live. Paid ads, broad branding, and acquisition campaigns remain held until overlay export, captions, checksums, duration verification, production canaries, real-user UX evidence, and human owner review all pass.
 
-| Area | Status |
-| --- | --- |
-| Backend catalog truth | PASS in latest local canary; must pass again after deploy. |
-| Real-user hydrated UX | PASS from PR #39 artifacts; must be rerun after this PR deploy if ads are considered. |
-| Static Dracula book SEO | PASS locally after static snapshots. |
-| Social preview tags | PASS locally after static snapshots. |
-| Dracula audio | Disabled as required. |
-| Non-Dracula books | Pipeline-only; no live reader, preview, or audio CTA allowed. |
+## Brand Site-Tour Evidence
 
-## Decision
+- Overlay status: `OPERATOR_REQUIRED_OVERLAY_EXPORT`
+- Caption status: `MUXED_IN_MASTER_MP4`
+- Score: `8.0/10`
+- Recommendation: `HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW`
+- Master video: `output/brand-site-tour/latest/earnalism-site-tour-master.mp4`
+- Artifact index: `BRAND_SITE_TOUR_VIDEO_INDEX.md`
+- Human review form: `BRAND_SITE_TOUR_HUMAN_REVIEW_FORM.md`
 
-- Dracula stays live: `yes`
-- Rollback needed before deploy: `no`
-- Start ads: `no`
-
-Paid ads, broad branding, and public acquisition campaigns remain on hold until the deployed build passes:
+## Required Before Ads
 
 - `npm run launch:backend-catalog-truth-canary`
 - `npm run launch:seo-audit`
 - `npm run launch:social-preview-audit:prod`
 - `npm run release:post-production-canary`
 - `npm run release:ux-go-no-go`
+- Human owner must approve the final master and social cutdowns.
 
-Never mark `GO_FOR_BRANDING_AND_ADVERTISEMENT` while backend catalog truth fails, raw production SEO/social-preview fails, Playwright fails, or unapproved titles expose live CTAs.
+Never mark `GO_FOR_BRANDING_AND_ADVERTISEMENT` while overlays are missing, backend catalog truth fails, raw production SEO/social-preview fails, Playwright fails, or unapproved titles expose live CTAs.
 
-No publication, ad, email, social, payment, provider, or production data mutation was performed by this PR.
+No publication, ad, email, social post, payment, provider call, audio enablement, or production data mutation was performed by this package.

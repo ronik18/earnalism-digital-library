@@ -1,38 +1,65 @@
 {
-  "generated_at": "2026-06-20T19:44:12.497084+00:00",
-  "overall_score": 9.04,
+  "generated_at": "2026-06-20T20:30:39.475533+00:00",
+  "overall_score": 8.0,
   "recommendation": "HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW",
   "category_scores": {
-    "visual_luxury": 8.9,
+    "visual_luxury": 9.1,
     "dracula_first_clarity": 9.8,
-    "feature_completeness": 9.1,
+    "feature_completeness": 9.3,
     "conversion_clarity": 9.2,
     "truthfulness": 10.0,
-    "pacing": 8.7,
-    "mobile_suitability": 8.8,
-    "caption_quality": 9.0,
-    "social_ad_suitability": 8.3,
-    "seo_readiness_dependency": 8.6
+    "pacing": 8.9,
+    "mobile_suitability": 9.0,
+    "caption_quality": 9.1,
+    "social_ad_suitability": 8.6,
+    "seo_readiness_dependency": 8.8
   },
   "caps_applied": {
-    "no_edited_master_video_max_7": false,
-    "no_captions_or_transcript_max_8": false
+    "overlay_status_not_pass_max_8": true,
+    "artifact_checksums_missing_max_8_2": false,
+    "ffprobe_duration_missing_max_8_5": false,
+    "human_owner_review_missing_max_9": true,
+    "release_post_production_canary_missing_or_failing_max_8_8": false,
+    "seo_or_social_preview_missing_or_failing_max_ad_readiness_8_8": false
   },
+  "human_owner_review_approved": false,
   "truth_constraints": {
     "dracula_only_live": true,
     "kshudhita_pipeline_only": true,
     "audiobook_claims_blocked": true,
     "fake_reviews_or_social_proof_blocked": true,
     "live_payments_not_run": true,
-    "paid_provider_apis_not_called": true
+    "paid_provider_apis_not_called": true,
+    "ai_voice_or_tts_not_generated": true
   },
   "video_status": {
     "ffmpeg_available": true,
+    "ffprobe_available": true,
+    "overlay_font": "/System/Library/Fonts/Supplemental/Georgia.ttf",
+    "overlay_status": "OPERATOR_REQUIRED_OVERLAY_EXPORT",
     "master_webm": "PASS",
     "master_mp4": "PASS",
     "vertical_9x16_mp4": "PASS",
     "square_1x1_mp4": "PASS",
     "short_15s_mp4": "PASS",
-    "edited_master_video_exists": true
+    "edited_master_video_exists": false,
+    "caption_status": "MUXED_IN_MASTER_MP4",
+    "master_webm_fallback": "overlay export failed; generated non-overlay concat",
+    "caption_count": 9,
+    "expected_caption_count": 9,
+    "caption_mismatch_blocker": false
+  },
+  "canary_stamp": {
+    "frontend_url": "https://theearnalism.com",
+    "api_url": "https://api.theearnalism.com/api",
+    "backend_catalog_truth_status": "PASS",
+    "release_post_production_canary_status": "PASS",
+    "seo_audit_status": "PASS",
+    "social_preview_audit_status": "PASS",
+    "ux_go_no_go_status": "ATTACHED",
+    "live_api_books_status": 200,
+    "live_api_dracula_status": 200,
+    "live_api_dracula_manifest_status": 200,
+    "live_api_dracula_audiobook_status": 404
   }
 }

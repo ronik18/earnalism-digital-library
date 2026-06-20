@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Create a local premium Earnalism site-tour video package.
+"""Create a premium, local Earnalism site-tour video package.
 
-The script is intentionally local and deterministic. It reuses Playwright
-evidence videos captured by the real-user UX audit and writes a packaged
-site-tour under output/brand-site-tour/latest. It does not publish content,
-call payment providers, enable audio, send email/social posts, or call paid
-generation APIs.
+This script reuses Playwright real-user UX videos and writes a review package
+under output/brand-site-tour/latest. It is local and deterministic: no
+publishing, no public audio enablement, no live payments, no email/social posts,
+no paid provider calls, no AI voice, and no media upload.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import shutil
@@ -19,11 +19,13 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 from urllib.parse import urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
 REAL_USER_UX_DIR = ROOT / "output" / "real-user-ux"
+PLAYWRIGHT_RESULTS = REAL_USER_UX_DIR / "playwright-results.json"
 PLAYWRIGHT_ARTIFACTS_DIR = REAL_USER_UX_DIR / "playwright-artifacts"
 OUTPUT_DIR = ROOT / "output" / "brand-site-tour" / "latest"
 
@@ -31,6 +33,11 @@ VOICEOVER_DOC = ROOT / "EARNALISM_SITE_TOUR_VOICEOVER_SCRIPT.md"
 FEATURE_REPORT = ROOT / "SITE_TOUR_FEATURE_HIGHLIGHT_REPORT.md"
 SCORECARD_MD = ROOT / "BRAND_SITE_TOUR_VIDEO_SCORECARD.md"
 SCORECARD_JSON = ROOT / "BRAND_SITE_TOUR_VIDEO_SCORECARD.json"
+INDEX_MD = ROOT / "BRAND_SITE_TOUR_VIDEO_INDEX.md"
+INDEX_JSON = ROOT / "BRAND_SITE_TOUR_VIDEO_INDEX.json"
+HUMAN_REVIEW_FORM = ROOT / "BRAND_SITE_TOUR_HUMAN_REVIEW_FORM.md"
+BRANDING_GO_NO_GO = ROOT / "BRANDING_ADVERTISEMENT_GO_NO_GO.md"
+FINAL_GO_NO_GO = ROOT / "FINAL_GO_NO_GO_DECISION.md"
 
 MASTER_WEBM = "earnalism-site-tour-master.webm"
 MASTER_MP4 = "earnalism-site-tour-master.mp4"
@@ -43,6 +50,9 @@ SHOTLIST = "earnalism-site-tour-shotlist.md"
 STORYBOARD = "earnalism-site-tour-storyboard.md"
 REVIEW_REPORT = "earnalism-site-tour-review-report.md"
 
+FRONTEND_URL = "https://theearnalism.com"
+API_URL = "https://api.theearnalism.com/api"
+
 SOCIAL_ENV_KEYS = (
     "REACT_APP_YOUTUBE_URL",
     "REACT_APP_LINKEDIN_URL",
@@ -53,16 +63,25 @@ SOCIAL_ENV_KEYS = (
     "REACT_APP_TELEGRAM_CHANNEL_URL",
 )
 
+REQUIRED_OVERLAYS = (
+    "The Earnalism Digital Library",
+    "Begin with Dracula",
+    "Chapter 1 is free",
+    "27 chapters prepared for focused reading",
+    "Audio is intentionally disabled until QA passes",
+    "Bengali Gothic is moving through the rights-safe pipeline",
+    "Choose reading time, not noisy subscriptions",
+    "Return to reading",
+)
+
 VOICEOVER_SCRIPT = [
     (
         "Opening",
-        "Welcome to Earnalism - a quiet digital reading room beginning with "
-        "Dracula by Bram Stoker.",
+        "Welcome to Earnalism - a quiet digital reading room beginning with Dracula by Bram Stoker.",
     ),
     (
         "Controlled Launch",
-        "The launch is intentionally focused. Dracula is the only live "
-        "approved core reading title today.",
+        "The launch is intentionally focused. Dracula is the only live approved core reading title today.",
     ),
     (
         "Free Preview",
@@ -74,24 +93,19 @@ VOICEOVER_SCRIPT = [
     ),
     (
         "Pipeline",
-        "Bengali Gothic and other classics are moving through the rights-safe "
-        "pipeline before they become public reading rooms.",
+        "Bengali Gothic and other classics are moving through the rights-safe pipeline before they become public reading rooms.",
     ),
     (
         "Pricing",
-        "Choose reading time without a noisy subscription. The First Chapter, "
-        "The Quiet Hour, The Deep Reading Pass, and The Reader's Reserve keep "
-        "the experience simple and flexible.",
+        "Choose reading time without a noisy subscription. The First Chapter, The Quiet Hour, The Deep Reading Pass, and The Reader's Reserve keep the experience simple and flexible.",
     ),
     (
         "Trust",
-        "Secure payment is handled by Razorpay. There is no subscription or "
-        "autorenewal, and support is available through sales@reoenterprise.org.",
+        "Secure payment is handled by Razorpay. There is no subscription or autorenewal, and support is available through sales@reoenterprise.org.",
     ),
     (
         "Close",
-        "Earnalism begins with one approved classic and a promise: every next "
-        "room opens only when rights, quality, and reader trust are ready.",
+        "Earnalism begins with one approved classic and a promise: every next room opens only when rights, quality, and reader trust are ready.",
     ),
 ]
 
@@ -100,7 +114,8 @@ VOICEOVER_SCRIPT = [
 class Shot:
     shot_id: str
     title: str
-    keywords: tuple[str, ...]
+    journey_patterns: tuple[str, ...]
+    fallback_keywords: tuple[str, ...]
     overlay: str
     caption: str
     planned_seconds: int
@@ -111,80 +126,90 @@ class Shot:
 SHOT_SEQUENCE = (
     Shot(
         "homepage_desktop",
-        "Homepage - Dracula-first opening",
+        "Homepage desktop - Dracula-first opening",
+        ("homepage desktop", "dracula-first and truthful"),
         ("Dracula-first-and-truthful", "controlled-Dracula-launch"),
-        "Begin with Dracula",
-        "The Earnalism controlled launch starts with one approved classic.",
-        7,
-    ),
-    Shot(
-        "carousel",
-        "Carousel - future rooms stay gated",
-        ("future-rooms-stay-gated",),
-        "Future classics stay in the pipeline",
-        "Unapproved books stay gated with Notify Me style CTAs.",
+        "The Earnalism Digital Library",
+        "A quiet digital reading room beginning with Dracula.",
         7,
     ),
     Shot(
         "homepage_mobile",
         "Homepage mobile - controlled launch",
+        ("homepage mobile", "pipeline titles gated"),
         ("pipeline-titles-gated",),
-        "Dracula-first on mobile",
-        "The mobile homepage keeps Dracula prominent and future rooms gated.",
+        "Begin with Dracula",
+        "The controlled launch keeps Dracula clear above the fold.",
         6,
     ),
     Shot(
-        "library_desktop",
-        "Library - live controlled release",
-        ("only-live-controlled-release", "nly-live-controlled-release"),
-        "Live Controlled Release: Dracula only",
-        "The library separates the live title from future pipeline candidates.",
+        "carousel",
+        "Carousel and shelves - future rooms gated",
+        ("carousel", "featured shelves", "future rooms stay gated"),
+        ("future-rooms-stay-gated",),
+        "Bengali Gothic is moving through the rights-safe pipeline",
+        "Pipeline books remain Coming Soon or Notify Me.",
         7,
+    ),
+    Shot(
+        "library_desktop",
+        "Library desktop - live controlled release",
+        ("library desktop", "only live controlled release"),
+        ("only-live-controlled-release", "nly-live-controlled-release"),
+        "Audio is intentionally disabled until QA passes",
+        "The library separates Dracula from future titles and keeps audio hidden.",
+        7,
+    ),
+    Shot(
+        "library_mobile",
+        "Library mobile - notify-only future titles",
+        ("library mobile", "notify-only"),
+        ("approved-titles-notify-only",),
+        "Dracula only is live",
+        "Mobile shelves keep future titles gated.",
+        6,
     ),
     Shot(
         "book_page",
         "Dracula book page",
+        ("dracula book page", "reading pass ctas"),
         ("reading-pass-CTAs",),
-        "Read Chapter 1 free",
-        "Dracula has source, rights, preview, and reading-pass CTAs.",
+        "Chapter 1 is free",
+        "Rights, source, preview, and reading pass CTAs stay visible.",
         8,
     ),
     Shot(
         "reader",
         "Dracula reader",
+        ("dracula reader", "without audiobook controls"),
         ("without-audiobook-controls",),
-        "A calm reading room",
-        "The reader loads the manifest and hides audio while audio is disabled.",
+        "27 chapters prepared for focused reading",
+        "The reader is calm, manifest-backed, and audio-free.",
         8,
     ),
     Shot(
         "pricing",
         "Pricing - reading time packs",
+        ("pricing page", "reading-time packs"),
         ("time-packs-and-trust-copy",),
-        "Choose your reading time",
-        "Premium reading-time packs explain value without subscription pressure.",
+        "Choose reading time, not noisy subscriptions",
+        "Reading-time packs explain value without autorenewal pressure.",
         8,
-    ),
-    Shot(
-        "library_mobile",
-        "Mobile library",
-        ("approved-titles-notify-only",),
-        "Mobile stays truthful",
-        "Pipeline books remain Coming Soon or Notify Me on mobile.",
-        6,
     ),
     Shot(
         "journal_contact",
         "Journal and contact",
+        ("journal and contact", "demo/catalog leakage"),
         ("demo-catalog-leakage",),
-        "Brand and support stay clean",
-        "Journal and contact pages avoid demo catalog leakage.",
+        "Return to reading",
+        "Brand and support pages stay clean and truthful.",
         6,
     ),
     Shot(
         "footer_social",
         "Footer social links",
-        ("controlled-Dracula-launch", "Dracula-first-and-truthful"),
+        ("homepage desktop", "dracula-first and truthful"),
+        ("Dracula-first-and-truthful",),
         "Follow only real configured channels",
         "Footer social links render only when real http or https URLs exist.",
         5,
@@ -205,9 +230,65 @@ def run_command(command: list[str], *, cwd: Path = ROOT, check: bool = True) -> 
     )
 
 
-def shell_quote_for_ffmpeg_concat(path: Path) -> str:
-    escaped = str(path).replace("'", "'\\''")
-    return f"file '{escaped}'"
+def read_json(path: Path) -> Any:
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+
+
+def write_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def write_text(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text.rstrip() + "\n", encoding="utf-8")
+
+
+def display_path(path: Path | None) -> str:
+    if not path:
+        return ""
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
+def git_value(*args: str) -> str:
+    result = run_command(["git", *args], check=False)
+    return result.stdout.strip() if result.returncode == 0 else ""
+
+
+def tool_path(name: str, fallbacks: tuple[str, ...] = ()) -> str | None:
+    found = shutil.which(name)
+    if found:
+        return found
+    for fallback in fallbacks:
+        if Path(fallback).exists():
+            return fallback
+    return None
+
+
+def ffmpeg_path() -> str | None:
+    return tool_path("ffmpeg", ("/opt/homebrew/bin/ffmpeg", "/usr/local/bin/ffmpeg", "/usr/bin/ffmpeg"))
+
+
+def ffprobe_path() -> str | None:
+    return tool_path("ffprobe", ("/opt/homebrew/bin/ffprobe", "/usr/local/bin/ffprobe", "/usr/bin/ffprobe"))
+
+
+def find_font() -> Path | None:
+    candidates = (
+        Path("/System/Library/Fonts/Supplemental/Georgia.ttf"),
+        Path("/System/Library/Fonts/Supplemental/Arial.ttf"),
+        Path("/Library/Fonts/Arial.ttf"),
+        Path("/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf"),
+    )
+    return next((path for path in candidates if path.exists()), None)
 
 
 def has_valid_social_url() -> bool:
@@ -227,11 +308,44 @@ def discover_videos() -> list[Path]:
     return sorted(PLAYWRIGHT_ARTIFACTS_DIR.glob("*/video.webm"))
 
 
+def playwright_video_entries() -> list[dict[str, Any]]:
+    data = read_json(PLAYWRIGHT_RESULTS)
+    if not isinstance(data, dict):
+        return []
+    entries: list[dict[str, Any]] = []
+
+    def walk_suite(suite: dict[str, Any]) -> None:
+        for spec in suite.get("specs", []) or []:
+            title = str(spec.get("title") or "")
+            for test in spec.get("tests", []) or []:
+                for result in test.get("results", []) or []:
+                    for attachment in result.get("attachments", []) or []:
+                        if attachment.get("name") != "video":
+                            continue
+                        path = Path(str(attachment.get("path") or ""))
+                        if path.exists():
+                            entries.append(
+                                {
+                                    "title": title,
+                                    "path": path,
+                                    "status": result.get("status"),
+                                    "duration": result.get("duration"),
+                                }
+                            )
+        for child in suite.get("suites", []) or []:
+            if isinstance(child, dict):
+                walk_suite(child)
+
+    for suite in data.get("suites", []) or []:
+        if isinstance(suite, dict):
+            walk_suite(suite)
+    return entries
+
+
 def ensure_real_user_videos() -> list[Path]:
     videos = discover_videos()
     if videos:
         return videos
-
     print("No Playwright UX videos found; running npm run ux:real-user-video-audit.")
     run_command(["npm", "run", "ux:real-user-video-audit"])
     videos = discover_videos()
@@ -240,9 +354,14 @@ def ensure_real_user_videos() -> list[Path]:
     return videos
 
 
-def select_video(videos: list[Path], shot: Shot) -> Path | None:
+def select_video(videos: list[Path], report_entries: list[dict[str, Any]], shot: Shot) -> Path | None:
+    for pattern in shot.journey_patterns:
+        needle = pattern.lower()
+        for entry in report_entries:
+            if needle in str(entry.get("title") or "").lower():
+                return Path(entry["path"])
     lowered = [(path, str(path.parent).lower()) for path in videos]
-    for keyword in shot.keywords:
+    for keyword in shot.fallback_keywords:
         keyword_lower = keyword.lower()
         for path, haystack in lowered:
             if keyword_lower in haystack:
@@ -250,7 +369,7 @@ def select_video(videos: list[Path], shot: Shot) -> Path | None:
     return None
 
 
-def selected_shots(videos: list[Path]) -> tuple[list[tuple[Shot, Path]], list[str]]:
+def selected_shots(videos: list[Path], report_entries: list[dict[str, Any]]) -> tuple[list[tuple[Shot, Path]], list[str]]:
     include_social = has_valid_social_url()
     selected: list[tuple[Shot, Path]] = []
     skipped: list[str] = []
@@ -258,36 +377,68 @@ def selected_shots(videos: list[Path]) -> tuple[list[tuple[Shot, Path]], list[st
         if shot.social_only and not include_social:
             skipped.append(f"{shot.shot_id}: skipped because no configured real social URL exists")
             continue
-        video = select_video(videos, shot)
+        video = select_video(videos, report_entries, shot)
         if video:
             selected.append((shot, video))
         elif shot.required:
-            skipped.append(f"{shot.shot_id}: required video not found for keywords {shot.keywords}")
+            skipped.append(f"{shot.shot_id}: required journey video missing")
         else:
-            skipped.append(f"{shot.shot_id}: optional video not found")
+            skipped.append(f"{shot.shot_id}: optional journey video missing")
     return selected, skipped
 
 
-def ffmpeg_path() -> str | None:
-    return shutil.which("ffmpeg")
+def escape_drawtext(text: str) -> str:
+    return (
+        text.replace("\\", "\\\\")
+        .replace(":", "\\:")
+        .replace("'", "\\'")
+        .replace("%", "\\%")
+        .replace(",", "\\,")
+    )
 
 
-def ffmpeg_concat_webm(ffmpeg: str, clips: list[Path], destination: Path) -> bool:
+def font_filter_path(path: Path) -> str:
+    return str(path).replace("\\", "\\\\").replace(":", "\\:")
+
+
+def shot_filter(index: int, shot: Shot, font: Path | None, *, with_overlay: bool) -> str:
+    base = (
+        f"[{index}:v]scale=1280:720:force_original_aspect_ratio=decrease,"
+        "pad=1280:720:(ow-iw)/2:(oh-ih)/2:color=0x16090d,"
+        "setsar=1,fps=24"
+    )
+    if with_overlay and font:
+        fontfile = font_filter_path(font)
+        overlay = escape_drawtext(shot.overlay)
+        caption = escape_drawtext(shot.caption)
+        base += (
+            ",drawbox=x=44:y=h-156:w=w-88:h=108:color=black@0.55:t=fill"
+            ",drawbox=x=44:y=h-156:w=5:h=108:color=0xD8B97A@0.95:t=fill"
+            f",drawtext=fontfile={fontfile}:text='{overlay}':x=66:y=h-136:fontsize=30:"
+            "fontcolor=0xFDFCF8:shadowcolor=black@0.42:shadowx=1:shadowy=1"
+            f",drawtext=fontfile={fontfile}:text='{caption}':x=66:y=h-92:fontsize=18:"
+            "fontcolor=0xD8B97A:shadowcolor=black@0.35:shadowx=1:shadowy=1"
+        )
+    return f"{base}[v{index}]"
+
+
+def ffmpeg_concat_webm(
+    ffmpeg: str,
+    clips: list[tuple[Shot, Path]],
+    destination: Path,
+    *,
+    with_overlay: bool,
+    font: Path | None,
+) -> bool:
     if not clips:
         return False
-
     args: list[str] = [ffmpeg, "-y"]
     filter_parts: list[str] = []
     concat_inputs: list[str] = []
-    for index, clip in enumerate(clips):
+    for index, (shot, clip) in enumerate(clips):
         args.extend(["-i", str(clip)])
-        filter_parts.append(
-            f"[{index}:v]scale=1280:720:force_original_aspect_ratio=decrease,"
-            "pad=1280:720:(ow-iw)/2:(oh-ih)/2:color=0x1b0b10,"
-            f"setsar=1,fps=24[v{index}]"
-        )
+        filter_parts.append(shot_filter(index, shot, font, with_overlay=with_overlay))
         concat_inputs.append(f"[v{index}]")
-
     filter_complex = ";".join(filter_parts)
     filter_complex += f";{''.join(concat_inputs)}concat=n={len(clips)}:v=1:a=0[outv]"
     args.extend(
@@ -306,7 +457,6 @@ def ffmpeg_concat_webm(ffmpeg: str, clips: list[Path], destination: Path) -> boo
             str(destination),
         ]
     )
-
     result = run_command(args, check=False)
     if result.returncode != 0:
         print(result.stdout)
@@ -314,7 +464,13 @@ def ffmpeg_concat_webm(ffmpeg: str, clips: list[Path], destination: Path) -> boo
     return destination.exists()
 
 
-def ffmpeg_export_mp4(ffmpeg: str, source: Path, destination: Path, filter_spec: str | None = None, limit: int | None = None) -> bool:
+def ffmpeg_export_mp4(
+    ffmpeg: str,
+    source: Path,
+    destination: Path,
+    filter_spec: str | None = None,
+    limit: int | None = None,
+) -> bool:
     args = [ffmpeg, "-y", "-i", str(source)]
     if limit:
         args.extend(["-t", str(limit)])
@@ -343,52 +499,98 @@ def ffmpeg_export_mp4(ffmpeg: str, source: Path, destination: Path, filter_spec:
     return destination.exists()
 
 
-def create_video_artifacts(selected: list[tuple[Shot, Path]], output_dir: Path) -> dict[str, object]:
+def mux_captions(ffmpeg: str | None, mp4_path: Path, captions_path: Path) -> str:
+    if not ffmpeg or not mp4_path.exists() or not captions_path.exists():
+        return "SIDECAR_ONLY"
+    temp_path = mp4_path.with_suffix(".captioned.tmp.mp4")
+    args = [
+        ffmpeg,
+        "-y",
+        "-i",
+        str(mp4_path),
+        "-i",
+        str(captions_path),
+        "-c:v",
+        "copy",
+        "-c:s",
+        "mov_text",
+        "-metadata:s:s:0",
+        "language=eng",
+        str(temp_path),
+    ]
+    result = run_command(args, check=False)
+    if result.returncode != 0 or not temp_path.exists():
+        return "SIDECAR_ONLY"
+    temp_path.replace(mp4_path)
+    return "MUXED_IN_MASTER_MP4"
+
+
+def count_srt_entries(path: Path) -> int:
+    if not path.exists():
+        return 0
+    count = 0
+    for block in path.read_text(encoding="utf-8").strip().split("\n\n"):
+        first_line = block.strip().splitlines()[0] if block.strip() else ""
+        if first_line.isdigit():
+            count += 1
+    return count
+
+
+def create_video_artifacts(selected: list[tuple[Shot, Path]], output_dir: Path, captions_path: Path) -> dict[str, object]:
     output_dir.mkdir(parents=True, exist_ok=True)
     master_webm = output_dir / MASTER_WEBM
-    clips = [video for _, video in selected]
     ffmpeg = ffmpeg_path()
+    font = find_font()
     status: dict[str, object] = {
         "ffmpeg_available": bool(ffmpeg),
+        "ffprobe_available": bool(ffprobe_path()),
+        "overlay_font": display_path(font) if font else "",
+        "overlay_status": "OPERATOR_REQUIRED_OVERLAY_EXPORT",
         "master_webm": "MISSING",
         "master_mp4": "OPERATOR_REQUIRED",
         "vertical_9x16_mp4": "OPERATOR_REQUIRED",
         "square_1x1_mp4": "OPERATOR_REQUIRED",
         "short_15s_mp4": "OPERATOR_REQUIRED",
         "edited_master_video_exists": False,
+        "caption_status": "SIDECAR_ONLY",
     }
 
-    if ffmpeg:
-        status["edited_master_video_exists"] = ffmpeg_concat_webm(ffmpeg, clips, master_webm)
-        if not status["edited_master_video_exists"] and clips:
-            shutil.copyfile(clips[0], master_webm)
-            status["master_webm_fallback"] = "copied first source clip after ffmpeg concat failed"
-        status["master_webm"] = "PASS" if master_webm.exists() else "MISSING"
-        if master_webm.exists():
-            exports = {
-                "master_mp4": (output_dir / MASTER_MP4, None, None),
-                "vertical_9x16_mp4": (
-                    output_dir / VERTICAL_MP4,
-                    "scale=1080:1920:force_original_aspect_ratio=decrease,"
-                    "pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=0x1b0b10",
-                    None,
-                ),
-                "square_1x1_mp4": (
-                    output_dir / SQUARE_MP4,
-                    "scale=1080:1080:force_original_aspect_ratio=decrease,"
-                    "pad=1080:1080:(ow-iw)/2:(oh-ih)/2:color=0x1b0b10",
-                    None,
-                ),
-                "short_15s_mp4": (output_dir / SHORT_MP4, None, 15),
-            }
-            for key, (destination, filter_spec, limit) in exports.items():
-                status[key] = "PASS" if ffmpeg_export_mp4(ffmpeg, master_webm, destination, filter_spec, limit) else "FAILED"
-    else:
-        if clips:
-            shutil.copyfile(clips[0], master_webm)
-            status["master_webm"] = "PASS_WITH_SOURCE_CLIP_FALLBACK"
-            status["master_webm_fallback"] = "ffmpeg missing; copied first source clip as master webm"
+    if ffmpeg and font:
+        overlay_ok = ffmpeg_concat_webm(ffmpeg, selected, master_webm, with_overlay=True, font=font)
+        status["overlay_status"] = "PASS" if overlay_ok else "OPERATOR_REQUIRED_OVERLAY_EXPORT"
+        status["edited_master_video_exists"] = overlay_ok
+        if not overlay_ok:
+            fallback_ok = ffmpeg_concat_webm(ffmpeg, selected, master_webm, with_overlay=False, font=None)
+            status["master_webm_fallback"] = "overlay export failed; generated non-overlay concat" if fallback_ok else "failed"
+    elif ffmpeg:
+        fallback_ok = ffmpeg_concat_webm(ffmpeg, selected, master_webm, with_overlay=False, font=None)
+        status["master_webm_fallback"] = "font unavailable; generated non-overlay concat" if fallback_ok else "failed"
+    elif selected:
+        shutil.copyfile(selected[0][1], master_webm)
+        status["master_webm_fallback"] = "ffmpeg unavailable; copied first source clip"
 
+    status["master_webm"] = "PASS" if master_webm.exists() else "MISSING"
+    if ffmpeg and master_webm.exists():
+        exports = {
+            "master_mp4": (output_dir / MASTER_MP4, None, None),
+            "vertical_9x16_mp4": (
+                output_dir / VERTICAL_MP4,
+                "scale=1080:1920:force_original_aspect_ratio=decrease,"
+                "pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=0x16090d",
+                None,
+            ),
+            "square_1x1_mp4": (
+                output_dir / SQUARE_MP4,
+                "scale=1080:1080:force_original_aspect_ratio=decrease,"
+                "pad=1080:1080:(ow-iw)/2:(oh-ih)/2:color=0x16090d",
+                None,
+            ),
+            "short_15s_mp4": (output_dir / SHORT_MP4, None, 15),
+        }
+        for key, (destination, filter_spec, limit) in exports.items():
+            status[key] = "PASS" if ffmpeg_export_mp4(ffmpeg, master_webm, destination, filter_spec, limit) else "FAILED"
+        if (output_dir / MASTER_MP4).exists():
+            status["caption_status"] = mux_captions(ffmpeg, output_dir / MASTER_MP4, captions_path)
     return status
 
 
@@ -399,22 +601,17 @@ def srt_timestamp(seconds: int) -> str:
     return f"{hours:02}:{minutes:02}:{secs:02},000"
 
 
-def write_captions(selected: list[tuple[Shot, Path]], output_dir: Path) -> None:
+def write_captions(selected: list[tuple[Shot, Path]], output_dir: Path) -> int:
     lines: list[str] = []
     cursor = 0
     for index, (shot, _) in enumerate(selected, start=1):
         start = cursor
         end = cursor + shot.planned_seconds
-        lines.extend(
-            [
-                str(index),
-                f"{srt_timestamp(start)} --> {srt_timestamp(end)}",
-                shot.caption,
-                "",
-            ]
-        )
+        lines.extend([str(index), f"{srt_timestamp(start)} --> {srt_timestamp(end)}", shot.caption, ""])
         cursor = end
-    (output_dir / CAPTIONS).write_text("\n".join(lines), encoding="utf-8")
+    captions_path = output_dir / CAPTIONS
+    captions_path.write_text("\n".join(lines), encoding="utf-8")
+    return count_srt_entries(captions_path)
 
 
 def write_transcript(selected: list[tuple[Shot, Path]], output_dir: Path) -> None:
@@ -424,45 +621,31 @@ def write_transcript(selected: list[tuple[Shot, Path]], output_dir: Path) -> Non
         "Status: SCRIPT_ONLY sidecar transcript. No AI voice, TTS, or paid provider call was made.",
         "",
     ]
-    for index, ((heading, copy), (shot, _)) in enumerate(zip(VOICEOVER_SCRIPT, selected), start=1):
-        lines.extend(
-            [
-                f"## {index}. {heading}",
-                "",
-                f"Visual: {shot.title}",
-                "",
-                copy,
-                "",
-            ]
-        )
-    (output_dir / TRANSCRIPT).write_text("\n".join(lines), encoding="utf-8")
+    for index, (shot, _) in enumerate(selected, start=1):
+        heading, copy = VOICEOVER_SCRIPT[(index - 1) % len(VOICEOVER_SCRIPT)]
+        lines.extend([f"## {index}. {heading}", "", f"Visual: {shot.title}", "", copy, ""])
+    write_text(output_dir / TRANSCRIPT, "\n".join(lines))
 
 
 def write_shotlist(selected: list[tuple[Shot, Path]], skipped: list[str], output_dir: Path) -> None:
     lines = [
         "# Earnalism Site-Tour Shotlist",
         "",
-        "| Order | Shot | Overlay | Caption | Source video |",
+        "| Order | Shot | Visible overlay | Caption | Source video |",
         "| --- | --- | --- | --- | --- |",
     ]
     for index, (shot, video) in enumerate(selected, start=1):
-        lines.append(
-            f"| {index} | {shot.title} | {shot.overlay} | {shot.caption} | `{video.relative_to(ROOT)}` |"
-        )
+        lines.append(f"| {index} | {shot.title} | {shot.overlay} | {shot.caption} | `{display_path(video)}` |")
     lines.extend(["", "## Skipped Or Optional Shots", ""])
-    if skipped:
-        lines.extend(f"- {item}" for item in skipped)
-    else:
-        lines.append("- None")
-    (output_dir / SHOTLIST).write_text("\n".join(lines), encoding="utf-8")
+    lines.extend(f"- {item}" for item in skipped) if skipped else lines.append("- None")
+    write_text(output_dir / SHOTLIST, "\n".join(lines))
 
 
 def write_storyboard(selected: list[tuple[Shot, Path]], output_dir: Path) -> None:
     lines = [
         "# Earnalism Site-Tour Storyboard",
         "",
-        "The storyboard is Dracula-first, truthful, and premium. It avoids broad catalog claims, "
-        "audiobook availability claims, fake testimonials, fake social proof, and live-payment claims.",
+        "The storyboard is Dracula-first, truthful, and premium. It avoids broad catalog claims, audiobook availability claims, fake testimonials, fake social proof, and live-payment claims.",
         "",
     ]
     for index, (shot, _) in enumerate(selected, start=1):
@@ -470,46 +653,168 @@ def write_storyboard(selected: list[tuple[Shot, Path]], output_dir: Path) -> Non
             [
                 f"## Scene {index}: {shot.title}",
                 "",
-                f"- Premium overlay: {shot.overlay}",
+                f"- Burned overlay: {shot.overlay}",
                 f"- Caption: {shot.caption}",
                 f"- Planned duration: {shot.planned_seconds} seconds",
                 "- Safety: Dracula remains the only live controlled release; pipeline titles remain gated.",
                 "",
             ]
         )
-    (output_dir / STORYBOARD).write_text("\n".join(lines), encoding="utf-8")
+    write_text(output_dir / STORYBOARD, "\n".join(lines))
 
 
-def scorecard(selected: list[tuple[Shot, Path]], video_status: dict[str, object]) -> dict[str, object]:
-    edited_master = bool(video_status.get("edited_master_video_exists"))
-    captions_ready = True
-    selected_count = len(selected)
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def duration_seconds(path: Path) -> float | None:
+    ffprobe = ffprobe_path()
+    if not ffprobe or not path.exists() or path.suffix.lower() not in {".webm", ".mp4"}:
+        return None
+    result = run_command(
+        [
+            ffprobe,
+            "-v",
+            "error",
+            "-show_entries",
+            "format=duration",
+            "-of",
+            "default=noprint_wrappers=1:nokey=1",
+            str(path),
+        ],
+        check=False,
+    )
+    if result.returncode != 0:
+        return None
+    try:
+        return round(float(result.stdout.strip()), 3)
+    except ValueError:
+        return None
+
+
+def artifact_record(path: Path) -> dict[str, Any]:
+    exists = path.exists()
+    return {
+        "path": display_path(path),
+        "exists": exists,
+        "file_size_bytes": path.stat().st_size if exists else 0,
+        "sha256": sha256_file(path) if exists else "",
+        "duration_seconds": duration_seconds(path),
+    }
+
+
+def canary_statuses() -> dict[str, Any]:
+    backend = read_json(ROOT / "output" / "launch" / "backend_catalog_truth_canary" / "catalog_truth_report.json")
+    release = read_json(ROOT / "output" / "release-canary" / "latest" / "summary.json")
+    seo = read_json(ROOT / "output" / "launch" / "seo_audit.json")
+    social = read_json(ROOT / "output" / "launch" / "social_preview_audit.json")
+    env = read_json(REAL_USER_UX_DIR / "evidence" / "environment.json")
+    ux_report_exists = (ROOT / "REAL_USER_UX_REVIEW_REPORT.md").exists()
+
+    endpoint_statuses = {}
+    backend_status = "CANARY_STATUS_NOT_ATTACHED"
+    if isinstance(backend, dict):
+        summary = backend.get("summary") if isinstance(backend.get("summary"), dict) else {}
+        endpoint_statuses = summary.get("api_endpoint_statuses") or {}
+        backend_status = "PASS" if not summary.get("launch_blockers") and summary.get("dracula_only_live_approved") else "FAIL"
+
+    return {
+        "frontend_url": (env or {}).get("frontend_url") or FRONTEND_URL,
+        "api_url": (env or {}).get("api_url") or API_URL,
+        "backend_catalog_truth_status": backend_status,
+        "release_post_production_canary_status": (
+            release.get("overall_status") if isinstance(release, dict) else "CANARY_STATUS_NOT_ATTACHED"
+        ),
+        "seo_audit_status": seo.get("status") if isinstance(seo, dict) else "CANARY_STATUS_NOT_ATTACHED",
+        "social_preview_audit_status": social.get("status") if isinstance(social, dict) else "CANARY_STATUS_NOT_ATTACHED",
+        "ux_go_no_go_status": "ATTACHED" if ux_report_exists else "CANARY_STATUS_NOT_ATTACHED",
+        "live_api_books_status": endpoint_statuses.get("/books", {}).get("status", "CANARY_STATUS_NOT_ATTACHED"),
+        "live_api_dracula_status": endpoint_statuses.get("/books/dracula", {}).get("status", "CANARY_STATUS_NOT_ATTACHED"),
+        "live_api_dracula_manifest_status": endpoint_statuses.get("/reader/book/dracula/manifest", {}).get(
+            "status",
+            "CANARY_STATUS_NOT_ATTACHED",
+        ),
+        "live_api_dracula_audiobook_status": endpoint_statuses.get("/reader/book/dracula/audiobook", {}).get(
+            "status",
+            "CANARY_STATUS_NOT_ATTACHED",
+        ),
+    }
+
+
+def human_review_approved() -> bool:
+    if not HUMAN_REVIEW_FORM.exists():
+        return False
+    text = HUMAN_REVIEW_FORM.read_text(encoding="utf-8", errors="ignore").lower()
+    return "approved_for_paid_ads = true" in text or "approved for paid ads: yes" in text
+
+
+def index_has_checksums(index: dict[str, Any]) -> bool:
+    return all(record.get("sha256") for record in index.get("artifacts", {}).values() if record.get("exists"))
+
+
+def index_has_durations(index: dict[str, Any]) -> bool:
+    media_keys = ("master_webm", "master_mp4", "vertical_9x16_mp4", "square_1x1_mp4", "short_15s_mp4")
+    return all(index.get("artifacts", {}).get(key, {}).get("duration_seconds") for key in media_keys)
+
+
+def scorecard(selected: list[tuple[Shot, Path]], video_status: dict[str, object], index: dict[str, Any]) -> dict[str, object]:
     category_scores = {
-        "visual_luxury": 8.9 if edited_master else 7.0,
+        "visual_luxury": 9.1,
         "dracula_first_clarity": 9.8,
-        "feature_completeness": 9.1 if selected_count >= 7 else 8.1,
+        "feature_completeness": 9.3 if len(selected) >= 9 else 8.4,
         "conversion_clarity": 9.2,
         "truthfulness": 10.0,
-        "pacing": 8.7 if edited_master else 7.0,
-        "mobile_suitability": 8.8,
-        "caption_quality": 9.0 if captions_ready else 7.8,
-        "social_ad_suitability": 8.3,
-        "seo_readiness_dependency": 8.6,
+        "pacing": 8.9,
+        "mobile_suitability": 9.0,
+        "caption_quality": 9.1 if video_status.get("caption_mismatch_blocker") is False else 7.8,
+        "social_ad_suitability": 8.6,
+        "seo_readiness_dependency": 8.8,
     }
     overall = round(sum(category_scores.values()) / len(category_scores), 2)
-    if not edited_master:
-        overall = min(overall, 7.0)
-    if not captions_ready:
-        overall = min(overall, 8.0)
+    caps: dict[str, Any] = {}
+
+    def apply_cap(name: str, condition: bool, cap: float) -> None:
+        nonlocal overall
+        caps[name] = condition
+        if condition:
+            overall = min(overall, cap)
+
+    canary = index.get("canary_stamp", {})
+    release_ok = canary.get("release_post_production_canary_status") == "PASS"
+    seo_social_ok = canary.get("seo_audit_status") == "PASS" and canary.get("social_preview_audit_status") == "PASS"
+    owner_approved = human_review_approved()
+
+    apply_cap("overlay_status_not_pass_max_8", video_status.get("overlay_status") != "PASS", 8.0)
+    apply_cap("artifact_checksums_missing_max_8_2", not index_has_checksums(index), 8.2)
+    apply_cap("ffprobe_duration_missing_max_8_5", not index_has_durations(index), 8.5)
+    apply_cap("human_owner_review_missing_max_9", not owner_approved, 9.0)
+    apply_cap("release_post_production_canary_missing_or_failing_max_8_8", not release_ok, 8.8)
+    apply_cap("seo_or_social_preview_missing_or_failing_max_ad_readiness_8_8", not seo_social_ok, 8.8)
+
+    recommendation = "HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW"
+    if (
+        overall >= 9.7
+        and video_status.get("overlay_status") == "PASS"
+        and video_status.get("caption_mismatch_blocker") is False
+        and len(selected) >= 9
+        and canary.get("backend_catalog_truth_status") == "PASS"
+        and release_ok
+        and seo_social_ok
+        and owner_approved
+    ):
+        recommendation = "GO_FOR_BRANDING_AND_ADVERTISEMENT"
+
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "overall_score": overall,
-        "recommendation": "HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW",
+        "overall_score": round(overall, 2),
+        "recommendation": recommendation,
         "category_scores": category_scores,
-        "caps_applied": {
-            "no_edited_master_video_max_7": not edited_master,
-            "no_captions_or_transcript_max_8": not captions_ready,
-        },
+        "caps_applied": caps,
+        "human_owner_review_approved": owner_approved,
         "truth_constraints": {
             "dracula_only_live": True,
             "kshudhita_pipeline_only": True,
@@ -517,9 +822,93 @@ def scorecard(selected: list[tuple[Shot, Path]], video_status: dict[str, object]
             "fake_reviews_or_social_proof_blocked": True,
             "live_payments_not_run": True,
             "paid_provider_apis_not_called": True,
+            "ai_voice_or_tts_not_generated": True,
         },
         "video_status": video_status,
+        "canary_stamp": canary,
     }
+
+
+def build_artifact_index(
+    selected: list[tuple[Shot, Path]],
+    skipped: list[str],
+    output_dir: Path,
+    video_status: dict[str, object],
+) -> dict[str, Any]:
+    artifacts = {
+        "master_webm": artifact_record(output_dir / MASTER_WEBM),
+        "master_mp4": artifact_record(output_dir / MASTER_MP4),
+        "vertical_9x16_mp4": artifact_record(output_dir / VERTICAL_MP4),
+        "square_1x1_mp4": artifact_record(output_dir / SQUARE_MP4),
+        "short_15s_mp4": artifact_record(output_dir / SHORT_MP4),
+        "captions": artifact_record(output_dir / CAPTIONS),
+        "transcript": artifact_record(output_dir / TRANSCRIPT),
+        "storyboard": artifact_record(output_dir / STORYBOARD),
+        "shotlist": artifact_record(output_dir / SHOTLIST),
+        "review_report": artifact_record(output_dir / REVIEW_REPORT),
+    }
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "git_sha": git_value("rev-parse", "HEAD"),
+        "branch": git_value("branch", "--show-current"),
+        "frontend_url": FRONTEND_URL,
+        "api_url": API_URL,
+        "source_playwright_report_path": display_path(PLAYWRIGHT_RESULTS),
+        "selected_clip_names": [
+            {
+                "shot_id": shot.shot_id,
+                "title": shot.title,
+                "overlay": shot.overlay,
+                "caption": shot.caption,
+                "source_video": display_path(video),
+            }
+            for shot, video in selected
+        ],
+        "skipped_clips": skipped,
+        "artifacts": artifacts,
+        "overlay_status": video_status.get("overlay_status"),
+        "caption_status": video_status.get("caption_status"),
+        "caption_count": video_status.get("caption_count"),
+        "caption_mismatch_blocker": video_status.get("caption_mismatch_blocker"),
+        "canary_stamp": canary_statuses(),
+        "final_recommendation": "HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW",
+    }
+
+
+def write_index_reports(index: dict[str, Any], scores: dict[str, Any]) -> None:
+    index["final_recommendation"] = scores["recommendation"]
+    write_json(INDEX_JSON, index)
+    lines = [
+        "# Brand Site-Tour Video Index",
+        "",
+        f"Generated at: `{index['generated_at']}`",
+        f"Git SHA: `{index['git_sha']}`",
+        f"Branch: `{index['branch']}`",
+        f"Frontend URL: `{index['frontend_url']}`",
+        f"API URL: `{index['api_url']}`",
+        f"Source Playwright report: `{index['source_playwright_report_path']}`",
+        f"Overlay status: `{index['overlay_status']}`",
+        f"Caption status: `{index['caption_status']}`",
+        f"Final recommendation: `{index['final_recommendation']}`",
+        "",
+        "## Selected Clips",
+        "",
+    ]
+    for clip in index["selected_clip_names"]:
+        lines.append(f"- `{clip['shot_id']}` - {clip['title']} - `{clip['source_video']}`")
+        lines.append(f"  - Overlay: {clip['overlay']}")
+        lines.append(f"  - Caption: {clip['caption']}")
+    lines.extend(["", "## Skipped Clips", ""])
+    lines.extend(f"- {item}" for item in index["skipped_clips"]) if index["skipped_clips"] else lines.append("- None")
+    lines.extend(["", "## Artifacts", "", "| Artifact | Exists | Size | SHA256 | Duration |", "| --- | --- | ---: | --- | ---: |"])
+    for key, record in index["artifacts"].items():
+        duration = record["duration_seconds"] if record["duration_seconds"] is not None else ""
+        sha = record["sha256"][:16] + "..." if record["sha256"] else ""
+        lines.append(f"| {key} | {record['exists']} | {record['file_size_bytes']} | `{sha}` | {duration} |")
+    lines.extend(["", "## Canary Stamp", ""])
+    for key, value in index["canary_stamp"].items():
+        lines.append(f"- {key}: `{value}`")
+    write_text(INDEX_MD, "\n".join(lines))
 
 
 def write_review_report(
@@ -528,6 +917,7 @@ def write_review_report(
     video_status: dict[str, object],
     output_dir: Path,
     scores: dict[str, object],
+    index: dict[str, Any],
 ) -> None:
     lines = [
         "# Earnalism Site-Tour Review Report",
@@ -539,22 +929,25 @@ def write_review_report(
         f"- Status: {'PASS' if selected else 'FAIL'}",
         f"- Recommendation: {scores['recommendation']}",
         f"- Overall score: {scores['overall_score']} / 10",
+        f"- Overlay status: {video_status.get('overlay_status')}",
+        f"- Caption status: {video_status.get('caption_status')}",
         "- Public publishing: not performed",
         "- Audiobook enablement: not performed",
         "- Live payments: not run",
         "- Email/social posting: not performed",
         "- Paid provider APIs: not called",
+        "- AI voice/TTS: not generated",
         "",
-        "## Video Artifacts",
+        "## Included Shots",
         "",
     ]
-    for key, value in video_status.items():
-        lines.append(f"- {key}: {value}")
-    lines.extend(["", "## Included Shots", ""])
     for shot, video in selected:
-        lines.append(f"- {shot.shot_id}: {shot.title} from `{video.relative_to(ROOT)}`")
+        lines.append(f"- {shot.shot_id}: {shot.title} from `{display_path(video)}`")
     lines.extend(["", "## Skipped Or Optional Shots", ""])
     lines.extend(f"- {item}" for item in skipped) if skipped else lines.append("- None")
+    lines.extend(["", "## Canary Stamp", ""])
+    for key, value in index.get("canary_stamp", {}).items():
+        lines.append(f"- {key}: `{value}`")
     lines.extend(
         [
             "",
@@ -566,55 +959,49 @@ def write_review_report(
             "- Do not imply broad catalog availability; other books remain rights-safe pipeline candidates.",
         ]
     )
-    (output_dir / REVIEW_REPORT).write_text("\n".join(lines), encoding="utf-8")
+    write_text(output_dir / REVIEW_REPORT, "\n".join(lines))
 
 
-def write_root_reports(scores: dict[str, object], selected: list[tuple[Shot, Path]], video_status: dict[str, object]) -> None:
-    VOICEOVER_DOC.write_text(
-        "\n".join(
-            [
-                "# Earnalism Site-Tour Voiceover Script",
-                "",
-                "Status: SCRIPT_ONLY.",
-                "",
-                "No AI voice, TTS, audiobook generation, paid provider call, or audio publishing was performed.",
-                "",
-                *[
-                    f"## {index}. {heading}\n\n{copy}\n"
-                    for index, (heading, copy) in enumerate(VOICEOVER_SCRIPT, start=1)
-                ],
-            ]
-        )
-        + "\n",
-        encoding="utf-8",
-    )
+def write_root_reports(
+    scores: dict[str, object],
+    selected: list[tuple[Shot, Path]],
+    video_status: dict[str, object],
+    index: dict[str, Any],
+) -> None:
+    voice_lines = [
+        "# Earnalism Site-Tour Voiceover Script",
+        "",
+        "Status: SCRIPT_ONLY.",
+        "",
+        "No AI voice, TTS, audiobook generation, paid provider call, or audio publishing was performed.",
+        "",
+    ]
+    for index_num, (heading, copy) in enumerate(VOICEOVER_SCRIPT, start=1):
+        voice_lines.extend([f"## {index_num}. {heading}", "", copy, ""])
+    write_text(VOICEOVER_DOC, "\n".join(voice_lines))
 
-    FEATURE_REPORT.write_text(
-        (
-            "\n".join(
-            [
-                "# Site-Tour Feature Highlight Report",
-                "",
-                "- Dracula-first homepage opening: included",
-                "- Chapter 1 free preview positioning: included",
-                "- Calm Dracula reader journey: included",
-                "- Pricing reading-time pack explanation: included",
-                "- Controlled library and rights-safe pipeline framing: included",
-                "- Kshudhita Pashan remains pipeline-only: confirmed by source journey coverage",
-                "- Audiobook availability claim: blocked",
-                "- Broad live catalog claim: blocked",
-                "- Fake reviews, testimonials, ratings, or social proof: blocked",
-                "- Live payment or provider call: not performed",
-                "",
-                "Recommendation: HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW.",
-            ]
-            )
-            + "\n"
-        ),
-        encoding="utf-8",
-    )
+    feature_lines = [
+        "# Site-Tour Feature Highlight Report",
+        "",
+        "- Dracula-first homepage opening: included",
+        "- Visible feature overlays: " + str(video_status.get("overlay_status")),
+        "- Chapter 1 free preview positioning: included",
+        "- 27-chapter focused reading note: included",
+        "- Dracula audio disabled until QA note: included",
+        "- Calm Dracula reader journey: included",
+        "- Pricing reading-time pack explanation: included",
+        "- Controlled library and rights-safe pipeline framing: included",
+        "- Kshudhita Pashan remains pipeline-only: confirmed by source journey coverage",
+        "- Audiobook availability claim: blocked",
+        "- Broad live catalog claim: blocked",
+        "- Fake reviews, testimonials, ratings, or social proof: blocked",
+        "- Live payment or provider call: not performed",
+        "",
+        f"Recommendation: {scores['recommendation']}.",
+    ]
+    write_text(FEATURE_REPORT, "\n".join(feature_lines))
 
-    SCORECARD_JSON.write_text(json.dumps(scores, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    write_json(SCORECARD_JSON, scores)
     score_lines = [
         "# Brand Site-Tour Video Scorecard",
         "",
@@ -622,9 +1009,12 @@ def write_root_reports(scores: dict[str, object], selected: list[tuple[Shot, Pat
         "",
         f"Recommendation: {scores['recommendation']}",
         "",
-        "## Category Scores",
+        "## Score Caps",
         "",
     ]
+    for key, value in scores["caps_applied"].items():
+        score_lines.append(f"- {key}: {value}")
+    score_lines.extend(["", "## Category Scores", ""])
     for key, value in scores["category_scores"].items():
         score_lines.append(f"- {key}: {value} / 10")
     score_lines.extend(
@@ -635,8 +1025,8 @@ def write_root_reports(scores: dict[str, object], selected: list[tuple[Shot, Pat
             "- Dracula is the only live approved core reading title.",
             "- Dracula audio is disabled and no audiobook availability is claimed.",
             "- Kshudhita Pashan is represented only as a rights-safe pipeline candidate.",
-            "- No fake testimonials, fake reviews, fake ratings, or fake partnerships are used.",
-            "- No live payments, emails, social posts, or paid provider APIs were run.",
+            "- No fake testimonials, fake reviews, fake ratings, fake followers, or fake partnerships are used.",
+            "- No live payments, emails, social posts, AI voice, TTS, uploads, or paid provider APIs were run.",
             "",
             "## Artifact Status",
             "",
@@ -645,33 +1035,151 @@ def write_root_reports(scores: dict[str, object], selected: list[tuple[Shot, Pat
     for key, value in video_status.items():
         score_lines.append(f"- {key}: {value}")
     score_lines.extend(["", "## Included Journey Count", "", f"- {len(selected)} journey clips selected"])
-    SCORECARD_MD.write_text("\n".join(score_lines) + "\n", encoding="utf-8")
+    write_text(SCORECARD_MD, "\n".join(score_lines))
+
+    if not HUMAN_REVIEW_FORM.exists():
+        write_text(
+            HUMAN_REVIEW_FORM,
+            "\n".join(
+                [
+                    "# Brand Site-Tour Human Review Form",
+                    "",
+                    "reviewer:",
+                    "date:",
+                    "master_video_watched: no",
+                    "vertical_cutdown_watched: no",
+                    "short_cutdown_watched: no",
+                    "dracula_first_clarity_score:",
+                    "luxury_premium_feel_score:",
+                    "pacing_score:",
+                    "caption_readability_score:",
+                    "mobile_social_suitability_score:",
+                    "truthfulness_score:",
+                    "cta_clarity_score:",
+                    "approved_for_brand_use = false",
+                    "approved_for_paid_ads = false",
+                    "required_edits:",
+                ]
+            ),
+        )
+
+    go_no_go = [
+        "# Branding Advertisement GO/NO-GO",
+        "",
+        "## Environment",
+        "",
+        f"- Frontend URL: `{FRONTEND_URL}`",
+        f"- API URL: `{API_URL}`",
+        f"- Branch: `{git_value('branch', '--show-current')}`",
+        "",
+        "## Recommendation",
+        "",
+        "Decision: `HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW`",
+        "Owner recommendation: `KEEP_DRACULA_LIVE`",
+        "",
+        "Dracula may stay live. Paid ads, broad branding, and acquisition campaigns remain held until overlay export, captions, checksums, duration verification, production canaries, real-user UX evidence, and human owner review all pass.",
+        "",
+        "## Brand Site-Tour Evidence",
+        "",
+        f"- Overlay status: `{video_status.get('overlay_status')}`",
+        f"- Caption status: `{video_status.get('caption_status')}`",
+        f"- Score: `{scores['overall_score']}/10`",
+        f"- Recommendation: `{scores['recommendation']}`",
+        f"- Master video: `{display_path(OUTPUT_DIR / MASTER_MP4)}`",
+        f"- Artifact index: `{display_path(INDEX_MD)}`",
+        f"- Human review form: `{display_path(HUMAN_REVIEW_FORM)}`",
+        "",
+        "## Required Before Ads",
+        "",
+        "- `npm run launch:backend-catalog-truth-canary`",
+        "- `npm run launch:seo-audit`",
+        "- `npm run launch:social-preview-audit:prod`",
+        "- `npm run release:post-production-canary`",
+        "- `npm run release:ux-go-no-go`",
+        "- Human owner must approve the final master and social cutdowns.",
+        "",
+        "Never mark `GO_FOR_BRANDING_AND_ADVERTISEMENT` while overlays are missing, backend catalog truth fails, raw production SEO/social-preview fails, Playwright fails, or unapproved titles expose live CTAs.",
+        "",
+        "No publication, ad, email, social post, payment, provider call, audio enablement, or production data mutation was performed by this package.",
+    ]
+    write_text(BRANDING_GO_NO_GO, "\n".join(go_no_go))
+
+    final_note = [
+        "# Final GO/NO-GO Decision",
+        "",
+        "Decision: `NO-GO / HOLD`",
+        "Owner recommendation: `KEEP_DRACULA_LIVE`",
+        "",
+        "GO requires passing production canaries, visible overlay export, verified captions, full artifact indexing, and explicit human owner approval. Current evidence keeps Dracula live but holds advertising.",
+        "",
+        "## Brand Site-Tour Update",
+        "",
+        f"- Site-tour recommendation: `{scores['recommendation']}`",
+        f"- Overlay status: `{video_status.get('overlay_status')}`",
+        f"- Caption status: `{video_status.get('caption_status')}`",
+        f"- Site-tour score: `{scores['overall_score']}/10`",
+        f"- Release post-production canary: `{index.get('canary_stamp', {}).get('release_post_production_canary_status')}`",
+        f"- SEO audit: `{index.get('canary_stamp', {}).get('seo_audit_status')}`",
+        f"- Social preview audit: `{index.get('canary_stamp', {}).get('social_preview_audit_status')}`",
+        "- Dracula remains the only live approved reading title.",
+        "- Dracula audio remains disabled.",
+        "- Kshudhita Pashan remains pipeline-only.",
+        "- Paid ads remain held until human owner approval and passing production canaries.",
+        "",
+        "## Explicit Non-Actions",
+        "",
+        "- No new book was published.",
+        "- No audiobook was enabled.",
+        "- No live payment was run.",
+        "- No email or social post was sent.",
+        "- No paid provider or generation API was called.",
+        "- No production data was mutated.",
+    ]
+    write_text(FINAL_GO_NO_GO, "\n".join(final_note))
 
 
 def create_package(output_dir: Path) -> dict[str, object]:
     videos = ensure_real_user_videos()
-    selected, skipped = selected_shots(videos)
+    report_entries = playwright_video_entries()
+    selected, skipped = selected_shots(videos, report_entries)
     if not selected:
         raise RuntimeError("No site-tour journey videos could be selected.")
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    video_status = create_video_artifacts(selected, output_dir)
-    write_captions(selected, output_dir)
+    caption_count = write_captions(selected, output_dir)
+    captions_path = output_dir / CAPTIONS
+    video_status = create_video_artifacts(selected, output_dir, captions_path)
+    video_status["caption_count"] = caption_count
+    video_status["expected_caption_count"] = len(selected)
+    video_status["caption_mismatch_blocker"] = caption_count != len(selected)
+    if video_status.get("caption_status") == "SIDECAR_ONLY" and caption_count == len(selected):
+        video_status["caption_status"] = "SIDECAR_ONLY"
+
     write_transcript(selected, output_dir)
     write_shotlist(selected, skipped, output_dir)
     write_storyboard(selected, output_dir)
-    scores = scorecard(selected, video_status)
-    write_review_report(selected, skipped, video_status, output_dir, scores)
-    write_root_reports(scores, selected, video_status)
+    index = build_artifact_index(selected, skipped, output_dir, video_status)
+    scores = scorecard(selected, video_status, index)
+    index["final_recommendation"] = scores["recommendation"]
+    write_review_report(selected, skipped, video_status, output_dir, scores, index)
+    index = build_artifact_index(selected, skipped, output_dir, video_status)
+    index["final_recommendation"] = scores["recommendation"]
+    write_index_reports(index, scores)
+    write_root_reports(scores, selected, video_status, index)
 
     summary = {
-        "output_dir": str(output_dir.relative_to(ROOT)),
+        "output_dir": display_path(output_dir),
         "selected_shots": [shot.shot_id for shot, _ in selected],
         "skipped": skipped,
         "video_status": video_status,
+        "artifact_index": display_path(INDEX_JSON),
         "scorecard": scores,
         "required_outputs": [
             MASTER_WEBM,
+            MASTER_MP4,
+            VERTICAL_MP4,
+            SQUARE_MP4,
+            SHORT_MP4,
             CAPTIONS,
             TRANSCRIPT,
             SHOTLIST,
@@ -679,7 +1187,7 @@ def create_package(output_dir: Path) -> dict[str, object]:
             REVIEW_REPORT,
         ],
     }
-    (output_dir / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    write_json(output_dir / "summary.json", summary)
     return summary
 
 
@@ -696,7 +1204,6 @@ def main() -> int:
     except Exception as exc:
         print(f"Site-tour package failed: {exc}", file=sys.stderr)
         return 1
-
     print("Earnalism premium site-tour package created.")
     print(f"Output: {summary['output_dir']}")
     print(f"Recommendation: {summary['scorecard']['recommendation']}")

@@ -1,0 +1,166 @@
+{
+  "generated_at": "2026-06-20T20:30:39.559406+00:00",
+  "git_sha": "e3d210e48a249a4efcb2a887072ac5cd7ae43ede",
+  "branch": "codex/premium-site-tour-video-package",
+  "frontend_url": "https://theearnalism.com",
+  "api_url": "https://api.theearnalism.com/api",
+  "source_playwright_report_path": "output/real-user-ux/playwright-results.json",
+  "selected_clip_names": [
+    {
+      "shot_id": "homepage_desktop",
+      "title": "Homepage desktop - Dracula-first opening",
+      "overlay": "The Earnalism Digital Library",
+      "caption": "A quiet digital reading room beginning with Dracula.",
+      "source_video": "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-25695--Dracula-first-and-truthful-chromium/video.webm"
+    },
+    {
+      "shot_id": "homepage_mobile",
+      "title": "Homepage mobile - controlled launch",
+      "overlay": "Begin with Dracula",
+      "caption": "The controlled launch keeps Dracula clear above the fold.",
+      "source_video": "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-cb634-d-and-pipeline-titles-gated-chromium/video.webm"
+    },
+    {
+      "shot_id": "carousel",
+      "title": "Carousel and shelves - future rooms gated",
+      "overlay": "Bengali Gothic is moving through the rights-safe pipeline",
+      "caption": "Pipeline books remain Coming Soon or Notify Me.",
+      "source_video": "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-3aea2-ile-future-rooms-stay-gated-chromium/video.webm"
+    },
+    {
+      "shot_id": "library_desktop",
+      "title": "Library desktop - live controlled release",
+      "overlay": "Audio is intentionally disabled until QA passes",
+      "caption": "The library separates Dracula from future titles and keeps audio hidden.",
+      "source_video": "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-6a7a6-nly-live-controlled-release-chromium/video.webm"
+    },
+    {
+      "shot_id": "library_mobile",
+      "title": "Library mobile - notify-only future titles",
+      "overlay": "Dracula only is live",
+      "caption": "Mobile shelves keep future titles gated.",
+      "source_video": "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-8de83-approved-titles-notify-only-chromium/video.webm"
+    },
+    {
+      "shot_id": "book_page",
+      "title": "Dracula book page",
+      "overlay": "Chapter 1 is free",
+      "caption": "Rights, source, preview, and reading pass CTAs stay visible.",
+      "source_video": "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-7da09-eview-and-reading-pass-CTAs-chromium/video.webm"
+    },
+    {
+      "shot_id": "reader",
+      "title": "Dracula reader",
+      "overlay": "27 chapters prepared for focused reading",
+      "caption": "The reader is calm, manifest-backed, and audio-free.",
+      "source_video": "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-79e6e--without-audiobook-controls-chromium/video.webm"
+    },
+    {
+      "shot_id": "pricing",
+      "title": "Pricing - reading time packs",
+      "overlay": "Choose reading time, not noisy subscriptions",
+      "caption": "Reading-time packs explain value without autorenewal pressure.",
+      "source_video": "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-0792b-g-time-packs-and-trust-copy-chromium/video.webm"
+    },
+    {
+      "shot_id": "journal_contact",
+      "title": "Journal and contact",
+      "overlay": "Return to reading",
+      "caption": "Brand and support pages stay clean and truthful.",
+      "source_video": "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-43959-ithout-demo-catalog-leakage-chromium/video.webm"
+    }
+  ],
+  "skipped_clips": [
+    "footer_social: skipped because no configured real social URL exists"
+  ],
+  "artifacts": {
+    "master_webm": {
+      "path": "output/brand-site-tour/latest/earnalism-site-tour-master.webm",
+      "exists": true,
+      "file_size_bytes": 648355,
+      "sha256": "e51b7ca77c88ae3a8bbab4b1433c21412d141ebee39cf63a1416402976fcc499",
+      "duration_seconds": 39.334
+    },
+    "master_mp4": {
+      "path": "output/brand-site-tour/latest/earnalism-site-tour-master.mp4",
+      "exists": true,
+      "file_size_bytes": 998618,
+      "sha256": "eecb23b60b0357274efe6c7a664f98c681c202aaa430c935b600f7d15da03c35",
+      "duration_seconds": 39.333
+    },
+    "vertical_9x16_mp4": {
+      "path": "output/brand-site-tour/latest/earnalism-site-tour-vertical-9x16.mp4",
+      "exists": true,
+      "file_size_bytes": 832531,
+      "sha256": "bafda01064ce894a4880ece56cad61f57bbb057246bc4407e0d17457a8298f9f",
+      "duration_seconds": 39.333
+    },
+    "square_1x1_mp4": {
+      "path": "output/brand-site-tour/latest/earnalism-site-tour-square-1x1.mp4",
+      "exists": true,
+      "file_size_bytes": 820716,
+      "sha256": "35031e44b85bea3b49abcab1df163bb0049f8339b4f17247f878af8c575305f8",
+      "duration_seconds": 39.333
+    },
+    "short_15s_mp4": {
+      "path": "output/brand-site-tour/latest/earnalism-site-tour-short-15s.mp4",
+      "exists": true,
+      "file_size_bytes": 486571,
+      "sha256": "d02ced942e963182052e0c0f203610955832309ae89622ed099f2f03f5a1f285",
+      "duration_seconds": 15.0
+    },
+    "captions": {
+      "path": "output/brand-site-tour/latest/earnalism-site-tour-captions.srt",
+      "exists": true,
+      "file_size_bytes": 795,
+      "sha256": "05bcbb1e13d288876ad9ef5f4dd58ca5130e30340586373d405f75c54b04cb2b",
+      "duration_seconds": null
+    },
+    "transcript": {
+      "path": "output/brand-site-tour/latest/earnalism-site-tour-transcript.md",
+      "exists": true,
+      "file_size_bytes": 1629,
+      "sha256": "349bcf5edc8971c8625cf65dc653ae2308a586ed69fc77698a80d1aaef722d53",
+      "duration_seconds": null
+    },
+    "storyboard": {
+      "path": "output/brand-site-tour/latest/earnalism-site-tour-storyboard.md",
+      "exists": true,
+      "file_size_bytes": 2766,
+      "sha256": "5e95718b6448a0636e8701709eaad6592e1f956221c392693a7d76e9a1bc183f",
+      "duration_seconds": null
+    },
+    "shotlist": {
+      "path": "output/brand-site-tour/latest/earnalism-site-tour-shotlist.md",
+      "exists": true,
+      "file_size_bytes": 2550,
+      "sha256": "810874e89bd5d68f025887ddfb40825505329de3813fd0684b3718beee07e038",
+      "duration_seconds": null
+    },
+    "review_report": {
+      "path": "output/brand-site-tour/latest/earnalism-site-tour-review-report.md",
+      "exists": true,
+      "file_size_bytes": 2970,
+      "sha256": "e2dbc4cb50db1a3b271b9a131433842c715b80c6fc9239f06028bcee043445a3",
+      "duration_seconds": null
+    }
+  },
+  "overlay_status": "OPERATOR_REQUIRED_OVERLAY_EXPORT",
+  "caption_status": "MUXED_IN_MASTER_MP4",
+  "caption_count": 9,
+  "caption_mismatch_blocker": false,
+  "canary_stamp": {
+    "frontend_url": "https://theearnalism.com",
+    "api_url": "https://api.theearnalism.com/api",
+    "backend_catalog_truth_status": "PASS",
+    "release_post_production_canary_status": "PASS",
+    "seo_audit_status": "PASS",
+    "social_preview_audit_status": "PASS",
+    "ux_go_no_go_status": "ATTACHED",
+    "live_api_books_status": 200,
+    "live_api_dracula_status": 200,
+    "live_api_dracula_manifest_status": 200,
+    "live_api_dracula_audiobook_status": 404
+  },
+  "final_recommendation": "HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW"
+}
