@@ -1,8 +1,8 @@
 # Book SEO Prerender Plan
 
-Current status: `BLOCKED_FOR_BOOK_SEO`
+Current status: `PASS`
 
-CRA book pages currently load book data client-side. That means crawlers may see generic metadata before the API response arrives, so book SEO remains `BLOCKED_FOR_BOOK_SEO`.
+CRA book pages still hydrate client-side, but priority launch routes now use static SEO snapshots when `frontend/build` exists. The audit remains blocked only if `/book/dracula` lacks raw title, description, canonical, OG/Twitter tags, or Book JSON-LD before JavaScript runs.
 
 ## Safe Metadata Policy
 
@@ -13,7 +13,7 @@ CRA book pages currently load book data client-side. That means crawlers may see
 
 ## Closure Options
 
-1. Add static snapshot generation for priority `/book/:slug` pages from approved book data.
+1. Keep static snapshot generation for approved launch pages after every CRA build.
 2. Move public book pages to SSR/static generation in a future frontend migration.
 3. Keep generic CRA metadata for non-priority titles and explicitly noindex unsafe/unapproved books.
 
@@ -24,8 +24,4 @@ CRA book pages currently load book data client-side. That means crawlers may see
 | / |
 | /library |
 | /pricing |
-| /book/the-principles-of-scientific-management |
-| /book/acres-of-diamonds |
-| /book/my-life-and-work |
-| /book/the-science-of-getting-rich |
-| /book/the-art-of-money-getting |
+| /book/dracula |

@@ -13,6 +13,7 @@ from scripts.launch_readiness_audit import (
     audit_seo,
     local_removed_route_status,
     run_audits,
+    static_snapshot_path,
     validate_mock_analytics_events,
     validate_removed_route,
     write_mode_outputs,
@@ -110,6 +111,13 @@ def test_seo_audit_excludes_demo_urls_and_keeps_deindexing_strategy():
     assert audit["robots"]["private_routes_blocked"] is True
     assert audit["static_html"]["homepage_meta_complete"] is True
     assert audit["static_html"]["unsafe_book_schema_emitted"] is False
+    if static_snapshot_path("/book/dracula").exists():
+        assert audit["status"] == "PASS"
+        assert audit["static_html"]["book_checks"]["title_dracula_bram_stoker"] is True
+        assert audit["static_html"]["book_checks"]["book_json_ld_present"] is True
+        assert audit["static_html"]["book_checks"]["no_audio_claim"] is True
+        assert audit["static_html"]["homepage_checks"]["dracula_first"] is True
+        assert audit["static_html"]["reader_checks"]["noindex_follow"] is True
 
 
 def test_audio_audit_detects_remote_upload_guards():

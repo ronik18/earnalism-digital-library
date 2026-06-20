@@ -94,6 +94,38 @@ def test_script_marks_seo_and_audio_warnings_as_warn_without_failure(tmp_path):
     assert summary["owner_recommendation"] == "HOLD_FOR_FIXES"
 
 
+def test_known_node_color_warning_does_not_mark_noncritical_step_warn(tmp_path):
+    log_text = (
+        "Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n"
+        "(Use `node --trace-warnings ...` to show where the warning was created)"
+    )
+    status, warning_detected = post_production_canary.command_status(
+        post_production_canary.COMMANDS[5],
+        0,
+        log_text,
+    )
+
+    assert status == "PASS"
+    assert warning_detected is False
+
+
+def test_script_records_production_social_preview_as_noncritical_warning(tmp_path):
+    social_command = command_by_key("social_preview_prod")
+    summary = run_canary(tmp_path, failures={social_command: 1})
+
+    assert summary["overall_status"] == "WARN"
+    assert summary["failed_command"] == ""
+    assert summary["social_preview_prod_status"] == "WARN"
+    assert summary["owner_recommendation"] == "HOLD_FOR_FIXES"
+
+
+def test_script_preserves_real_user_ux_go_no_go_step(tmp_path):
+    summary = run_canary(tmp_path)
+
+    assert command_by_key("ux_go_no_go") == "npm run release:ux-go-no-go"
+    assert summary["ux_go_no_go_status"] in {"PASS", "SKIP"}
+
+
 def test_report_files_are_written(tmp_path):
     summary = run_canary(tmp_path)
     output_root = tmp_path / "release-canary"

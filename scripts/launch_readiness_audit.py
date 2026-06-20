@@ -477,13 +477,114 @@ def sitemap_urls() -> list[str]:
     return [loc.text or "" for loc in root.findall(".//sm:loc", namespace)]
 
 
+def static_snapshot_path(route: str) -> Path:
+    build_dir = ROOT / "frontend" / "build"
+    if route == "/":
+        return build_dir / "index.html"
+    return build_dir / route.strip("/") / "index.html"
+
+
+def read_static_route_html(route: str) -> tuple[str, str]:
+    snapshot = static_snapshot_path(route)
+    if snapshot.exists():
+        return read_text(snapshot), str(snapshot.relative_to(ROOT))
+    if route == "/":
+        return read_text(ROOT / "frontend" / "public" / "index.html"), "frontend/public/index.html"
+    return "", str(snapshot.relative_to(ROOT))
+
+
+def html_title(html: str) -> str:
+    match = re.search(r"<title>\s*([\s\S]*?)\s*</title>", html, re.IGNORECASE)
+    return re.sub(r"\s+", " ", match.group(1)).strip() if match else ""
+
+
+def html_meta(html: str, name: str, attr: str = "name") -> str:
+    pattern = rf"<meta\s+[^>]*{attr}=[\"']{re.escape(name)}[\"'][^>]*>"
+    match = re.search(pattern, html, re.IGNORECASE)
+    if not match:
+        return ""
+    content = re.search(r"content=[\"']([^\"']*)[\"']", match.group(0), re.IGNORECASE)
+    return content.group(1).strip() if content else ""
+
+
+def html_canonical(html: str) -> str:
+    match = re.search(r"<link\s+[^>]*rel=[\"']canonical[\"'][^>]*>", html, re.IGNORECASE)
+    if not match:
+        return ""
+    href = re.search(r"href=[\"']([^\"']*)[\"']", match.group(0), re.IGNORECASE)
+    return href.group(1).strip() if href else ""
+
+
+def html_json_ld_objects(html: str) -> list[dict[str, Any]]:
+    objects: list[dict[str, Any]] = []
+    for match in re.finditer(
+        r"<script\s+[^>]*type=[\"']application/ld\+json[\"'][^>]*>([\s\S]*?)</script>",
+        html,
+        re.IGNORECASE,
+    ):
+        try:
+            payload = json.loads(match.group(1).strip())
+        except json.JSONDecodeError:
+            continue
+        if isinstance(payload, list):
+            objects.extend(item for item in payload if isinstance(item, dict))
+        elif isinstance(payload, dict):
+            objects.append(payload)
+    return objects
+
+
+def json_ld_has_type(objects: list[dict[str, Any]], schema_type: str) -> bool:
+    for item in objects:
+        item_type = item.get("@type")
+        if item_type == schema_type:
+            return True
+        if isinstance(item_type, list) and schema_type in item_type:
+            return True
+    return False
+
+
+def has_broad_catalog_claim(html: str) -> bool:
+    broad_claims = [
+        "preview every book before you pay",
+        "a quieter bookstore for readers who linger",
+        "discover thoughtful books across",
+        "all categories are live",
+        "broad live catalog",
+    ]
+    lowered = html.lower()
+    return any(claim in lowered for claim in broad_claims)
+
+
+def dracula_rights_evidence_approved() -> bool:
+    source = read_json(ROOT / "data" / "controlled_publications" / "dracula" / "source_evidence.json") or {}
+    approval = read_json(ROOT / "data" / "controlled_publications" / "dracula" / "approval_evidence.json") or {}
+    return (
+        source.get("source_url") == "https://www.gutenberg.org/ebooks/345"
+        and source.get("source_name") == "Project Gutenberg eBook #345"
+        and source.get("source_hash")
+        and source.get("content_hash")
+        and source.get("provenance_hash")
+        and approval.get("approved_to_publish") is True
+        and approval.get("rights_tier") == "A"
+        and approval.get("verification_status") == "approved"
+        and approval.get("qa_status") == "QA_PASSED"
+    )
+
+
 def audit_seo() -> dict[str, Any]:
     issues: list[Issue] = []
     urls = sitemap_urls()
     robots = read_text(ROOT / "frontend" / "public" / "robots.txt")
-    index_html = read_text(ROOT / "frontend" / "public" / "index.html")
+    index_html, index_html_source = read_static_route_html("/")
+    book_html, book_html_source = read_static_route_html("/book/dracula")
+    library_html, library_html_source = read_static_route_html("/library")
+    reader_html, reader_html_source = read_static_route_html("/reader/dracula")
     book_detail = read_text(ROOT / "frontend" / "src" / "pages" / "BookDetail.jsx")
     library = read_text(ROOT / "frontend" / "src" / "pages" / "Library.jsx")
+    book_json_ld = html_json_ld_objects(book_html)
+    homepage_json_ld = html_json_ld_objects(index_html)
+    reader_robots = html_meta(reader_html, "robots")
+    reader_canonical = html_canonical(reader_html)
 
     demo_matches = [url for url in urls if contains_demo_term(url)]
     if demo_matches:
@@ -508,6 +609,15 @@ def audit_seo() -> dict[str, Any]:
                 True,
             )
         )
+    if "Allow: /reader/dracula" not in robots:
+        issues.append(
+            Issue(
+                "seo",
+                "MEDIUM",
+                "robots.txt does not explicitly allow crawlers to see /reader/dracula noindex/canonical.",
+                "Allow /reader/dracula while keeping the rest of /reader/ blocked.",
+            )
+        )
     required_meta = [
         '<meta name="description"',
         'property="og:title"',
@@ -519,6 +629,77 @@ def audit_seo() -> dict[str, Any]:
     missing_meta = [token for token in required_meta if token not in index_html]
     if missing_meta:
         issues.append(Issue("seo", "HIGH", f"Homepage static HTML is missing {missing_meta}.", "Restore static SEO tags.", True))
+
+    book_checks = {
+        "snapshot_available": bool(book_html),
+        "title_dracula_bram_stoker": "dracula" in html_title(book_html).lower() and "bram stoker" in html_title(book_html).lower(),
+        "description_mentions_dracula": "dracula" in html_meta(book_html, "description").lower(),
+        "canonical_book_dracula": html_canonical(book_html) == "https://theearnalism.com/book/dracula",
+        "og_tags_complete": all(
+            html_meta(book_html, tag, "property")
+            for tag in ["og:type", "og:title", "og:description", "og:url", "og:image", "og:site_name"]
+        ),
+        "twitter_tags_complete": all(
+            html_meta(book_html, tag)
+            for tag in ["twitter:card", "twitter:title", "twitter:description", "twitter:image"]
+        ),
+        "book_json_ld_present": json_ld_has_type(book_json_ld, "Book"),
+        "webpage_json_ld_present": json_ld_has_type(book_json_ld, "WebPage"),
+        "breadcrumb_json_ld_present": json_ld_has_type(book_json_ld, "BreadcrumbList"),
+        "no_fake_rating_review": "aggregaterating" not in book_html.lower() and '"review"' not in book_html.lower(),
+        "no_audio_claim": "listen now" not in book_html.lower() and "audiobook available" not in book_html.lower(),
+        "no_broad_catalog_claim": not has_broad_catalog_claim(book_html),
+        "not_client_placeholder": "books for those who read with depth" not in html_title(book_html).lower(),
+    }
+    homepage_checks = {
+        "dracula_first": "begin with dracula" in index_html.lower() and "controlled launch begins with dracula" in index_html.lower(),
+        "no_broad_catalog_claim": not has_broad_catalog_claim(index_html),
+        "organization_json_ld": json_ld_has_type(homepage_json_ld, "Organization"),
+        "website_json_ld": json_ld_has_type(homepage_json_ld, "WebSite"),
+    }
+    reader_checks = {
+        "snapshot_available": bool(reader_html),
+        "noindex_follow": "noindex" in reader_robots.lower() and "follow" in reader_robots.lower(),
+        "canonical_to_book": reader_canonical == "https://theearnalism.com/book/dracula",
+        "excluded_from_sitemap": "https://theearnalism.com/reader/dracula" not in urls,
+    }
+
+    for check, ok in book_checks.items():
+        if not ok:
+            issues.append(
+                Issue(
+                    "seo",
+                    "HIGH",
+                    f"/book/dracula raw HTML failed check: {check}.",
+                    "Generate a static Dracula book snapshot with title, meta, canonical, OG/Twitter, and Book JSON-LD before hydration.",
+                    True,
+                )
+            )
+
+    for check, ok in homepage_checks.items():
+        if not ok:
+            issues.append(
+                Issue(
+                    "seo",
+                    "HIGH",
+                    f"Homepage raw HTML failed check: {check}.",
+                    "Make the static homepage snapshot Dracula-first and remove broad catalog claims.",
+                    True,
+                )
+            )
+
+    for check, ok in reader_checks.items():
+        if not ok:
+            issues.append(
+                Issue(
+                    "seo",
+                    "MEDIUM" if check == "snapshot_available" else "HIGH",
+                    f"/reader/dracula raw HTML failed check: {check}.",
+                    "Keep the reader noindex/follow with canonical to /book/dracula and exclude it from sitemap.",
+                    check != "snapshot_available",
+                )
+            )
+
     book_json_ld_gated = "bookSchemaAllowed" in book_detail and "rights_tier" in book_detail and "verification_status" in book_detail
     unsafe_book_schema = "JsonLd id=\"book\"" in book_detail and not book_json_ld_gated
     if unsafe_book_schema:
@@ -534,7 +715,7 @@ def audit_seo() -> dict[str, Any]:
     if "useSEO" not in library:
         issues.append(Issue("seo", "MEDIUM", "Library page SEO hook was not detected.", "Ensure library metadata is explicit."))
 
-    client_side_risk = "api.get(`/books/${slug}`" in book_detail
+    client_side_risk = "api.get(`/books/${slug}`" in book_detail and not all(book_checks.values())
     if client_side_risk:
         issues.append(
             Issue(
@@ -568,13 +749,20 @@ def audit_seo() -> dict[str, Any]:
         },
         "static_html": {
             "homepage_meta_complete": not missing_meta,
-            "organization_json_ld": '"@type": "Organization"' in index_html,
-            "website_json_ld": '"@type": "WebSite"' in index_html,
-            "safe_static_priority_pages": ["/", "/library", "/pricing"],
-            "book_json_ld_present": "JsonLd" in book_detail and '"@type": "Book"' in book_detail,
-            "book_json_ld_rights_gated": book_json_ld_gated,
+            "homepage_source": index_html_source,
+            "book_source": book_html_source,
+            "library_source": library_html_source,
+            "reader_source": reader_html_source,
+            "organization_json_ld": homepage_checks["organization_json_ld"],
+            "website_json_ld": homepage_checks["website_json_ld"],
+            "safe_static_priority_pages": ["/", "/book/dracula", "/library", "/pricing", "/journal", "/contact"],
+            "book_json_ld_present": book_checks["book_json_ld_present"],
+            "book_json_ld_rights_gated": bool(book_checks["book_json_ld_present"] and dracula_rights_evidence_approved()),
             "client_side_book_metadata_risk": client_side_risk,
             "unsafe_book_schema_emitted": unsafe_book_schema,
+            "book_checks": book_checks,
+            "homepage_checks": homepage_checks,
+            "reader_checks": reader_checks,
         },
         "priority_routes": priority_routes,
         "blocked_reason": "Client-rendered CRA book pages need prerender/SSR/static snapshots for durable book SEO." if client_side_risk else "",
@@ -1655,12 +1843,34 @@ def seo_markdown(audit: dict[str, Any]) -> str:
                     ["Robots sitemap present", audit["robots"]["sitemap_present"]],
                     ["Retired routes crawlable for deindexing", audit["robots"]["retired_routes_crawlable"]],
                     ["Homepage static meta complete", audit["static_html"]["homepage_meta_complete"]],
+                    ["Homepage static source", audit["static_html"].get("homepage_source", "")],
+                    ["Dracula book static source", audit["static_html"].get("book_source", "")],
                     ["Book JSON-LD detected", audit["static_html"]["book_json_ld_present"]],
                     ["Client-side book metadata risk", audit["static_html"]["client_side_book_metadata_risk"]],
                 ],
             ),
             "",
-            "Launch SEO should stay on HOLD until priority book pages are either prerendered or otherwise verified as crawlable beyond the generic CRA shell.",
+            "Launch SEO remains HOLD only when the raw HTML checks below fail. Passing checks mean the priority pages are crawler-visible before React hydration.",
+            "",
+            "## Raw HTML Checks",
+            "",
+            "### /book/dracula",
+            markdown_table(
+                ["Check", "Pass"],
+                [[key, value] for key, value in audit["static_html"].get("book_checks", {}).items()],
+            ),
+            "",
+            "### /",
+            markdown_table(
+                ["Check", "Pass"],
+                [[key, value] for key, value in audit["static_html"].get("homepage_checks", {}).items()],
+            ),
+            "",
+            "### /reader/dracula",
+            markdown_table(
+                ["Check", "Pass"],
+                [[key, value] for key, value in audit["static_html"].get("reader_checks", {}).items()],
+            ),
             "",
             "## Priority Routes For Prerender/SSR Review",
             "",
@@ -1966,7 +2176,7 @@ def readiness_markdown(audits: dict[str, Any]) -> str:
             "",
             parity_note,
             "",
-            "The score is intentionally below 9.7 because controlled publication still lacks real first-batch source evidence, full audiobook QA, book SEO prerendering, production test-mode revenue evidence, and measured load/autoscaling evidence.",
+            "The score is intentionally below 9.7 because controlled publication still lacks broader first-batch source evidence, full audiobook QA, production test-mode revenue evidence, and measured load/autoscaling evidence. Priority Dracula SEO is verified from raw static snapshots when the build artifacts exist.",
         ]
     )
 
@@ -2423,7 +2633,7 @@ def book_seo_prerender_plan_markdown(audit: dict[str, Any]) -> str:
             "",
             f"Current status: `{audit['status']}`",
             "",
-            "CRA book pages currently load book data client-side. That means crawlers may see generic metadata before the API response arrives, so book SEO remains `BLOCKED_FOR_BOOK_SEO`.",
+            "CRA book pages still hydrate client-side, but priority launch routes now use static SEO snapshots when `frontend/build` exists. The audit remains blocked only if `/book/dracula` lacks raw title, description, canonical, OG/Twitter tags, or Book JSON-LD before JavaScript runs.",
             "",
             "## Safe Metadata Policy",
             "",
@@ -2434,7 +2644,7 @@ def book_seo_prerender_plan_markdown(audit: dict[str, Any]) -> str:
             "",
             "## Closure Options",
             "",
-            "1. Add static snapshot generation for priority `/book/:slug` pages from approved book data.",
+            "1. Keep static snapshot generation for approved launch pages after every CRA build.",
             "2. Move public book pages to SSR/static generation in a future frontend migration.",
             "3. Keep generic CRA metadata for non-priority titles and explicitly noindex unsafe/unapproved books.",
             "",
@@ -2463,7 +2673,7 @@ def final_go_no_go_markdown(audits: dict[str, Any]) -> str:
             "",
             "GO requires score `>= 9.7/10` and zero critical/high launch blockers. Current evidence does not meet that threshold.",
             "",
-            f"{parity_sentence} Test-mode payment smoke, client-rendered book SEO, unknown audiobook rights/QA, and missing first-batch source evidence must not be upgraded to GO language.",
+            f"{parity_sentence} Test-mode payment smoke, unknown audiobook rights/QA, and missing broader first-batch source evidence must not be upgraded to GO language. Dracula book SEO is allowed to pass only when raw static snapshots verify before hydration.",
             "",
             "## Blockers",
             "",

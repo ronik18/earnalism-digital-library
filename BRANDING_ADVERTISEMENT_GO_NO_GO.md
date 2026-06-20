@@ -2,40 +2,39 @@
 
 ## Environment
 
-- Timestamp: `2026-06-20T14:42:42+00:00`
 - Frontend URL: `https://theearnalism.com`
 - API URL: `https://api.theearnalism.com/api`
-- Git SHA: `a4fdc4182a12b10ddfd7028d8658af59cbd74304`
-- Branch: `codex/real-user-ux-video-audit`
-- Railway replica: `20fcb1b8-060b-49da-ab82-e6c918231d6c`
-- Vercel deployment id: `not set`
-- Vercel URL: `not set`
-
+- Branch: `codex/static-seo-snapshots-dracula`
 
 ## Recommendation
 
 `KEEP_DRACULA_LIVE_BUT_HOLD_ADS`
 
-## Backend Gate
+## Current Evidence
 
-## Backend Catalog Truth
-
-- `/api/books` status: `200`
-- `/api/books` live slugs: `['dracula']`
-- `/api/books/dracula` status: `200`
-- `/api/reader/book/dracula/manifest` status: `200`
-- `/api/reader/book/dracula/manifest` chapter count: `27`
-- `/api/reader/book/dracula/manifest` first chapter preview/free: `True`
-- `/api/reader/book/dracula/audiobook` status: `404`
-- Backend catalog truth: `PASS`
-
-No backend catalog truth failures.
-
+| Area | Status |
+| --- | --- |
+| Backend catalog truth | PASS in latest local canary; must pass again after deploy. |
+| Real-user hydrated UX | PASS from PR #39 artifacts; must be rerun after this PR deploy if ads are considered. |
+| Static Dracula book SEO | PASS locally after static snapshots. |
+| Social preview tags | PASS locally after static snapshots. |
+| Dracula audio | Disabled as required. |
+| Non-Dracula books | Pipeline-only; no live reader, preview, or audio CTA allowed. |
 
 ## Decision
 
 - Dracula stays live: `yes`
-- Rollback needed: `no`
+- Rollback needed before deploy: `no`
 - Start ads: `no`
 
-Never mark `GO_FOR_BRANDING_AND_ADVERTISEMENT` while backend catalog truth fails, Playwright fails, or SEO/readiness remains blocked.
+Paid ads, broad branding, and public acquisition campaigns remain on hold until the deployed build passes:
+
+- `npm run launch:backend-catalog-truth-canary`
+- `npm run launch:seo-audit`
+- `npm run launch:social-preview-audit:prod`
+- `npm run release:post-production-canary`
+- `npm run release:ux-go-no-go`
+
+Never mark `GO_FOR_BRANDING_AND_ADVERTISEMENT` while backend catalog truth fails, raw production SEO/social-preview fails, Playwright fails, or unapproved titles expose live CTAs.
+
+No publication, ad, email, social, payment, provider, or production data mutation was performed by this PR.
