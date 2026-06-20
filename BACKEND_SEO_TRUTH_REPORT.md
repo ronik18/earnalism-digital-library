@@ -26,8 +26,9 @@ book route during the controlled launch.
 - public metadata projection
 
 `scripts/catalog_truth_audit.py --mode api` also compares backend live approved
-slugs against the frontend controlled live slug list parsed from
-`frontend/scripts/generate-seo-assets.mjs`.
+slugs against the shared controlled launch config in `data/controlled_launch.json`.
+`frontend/scripts/generate-seo-assets.mjs` reads the same config when generating
+sitemap book routes.
 
 ## Remaining SEO Limitation
 
@@ -42,4 +43,5 @@ approved core reading page; unapproved/pipeline titles must not be indexed as pu
 reading products.
 
 Post-deploy, `npm run launch:backend-catalog-truth-canary` must pass before SEO or
-growth expansion proceeds.
+growth expansion proceeds. If Dracula is not classified as `LIVE_APPROVED`, then
+`/book/dracula` must be treated as an unapproved sitemap entry until fixed.

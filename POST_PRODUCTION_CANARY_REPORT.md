@@ -79,3 +79,42 @@ Latest canary summary:
 - Owner recommendation: `ROLLBACK`
 
 The backend catalog truth failure is not masked by this PR. The new orchestrator correctly exits nonzero when a critical production canary fails.
+
+## Backend Catalog Truth Fix Added
+
+This branch now also hardens backend catalog truth after the reproduced production canary failure:
+
+- `/api/books` fetches only controlled-launch candidate slugs.
+- Public book lists no longer request raw audiobook fields.
+- `public_book_projection(book)` remains the only public catalog projection.
+- Dracula can pass via file-backed approval evidence when DB rights metadata lags.
+- Reader/manifest/chapter/audio endpoints verify post-fetch truth gates.
+- `data/controlled_launch.json` holds the controlled live/pipeline/audio slugs.
+- Public cache version is bumped to `dracula-first-v2`.
+
+Post-deploy, rerun:
+
+```bash
+npm run launch:backend-catalog-truth-canary
+npm run release:post-production-canary
+```
+
+## Backend Truth Fix Validation
+
+Additional validation after the backend truth fix:
+
+- `python3 scripts/check-hidden-unicode.py ...`: PASS
+- `python3 -m py_compile backend/catalog_truth.py backend/server.py backend/tests/test_backend_catalog_truth.py scripts/catalog_truth_audit.py scripts/launch_readiness_audit.py`: PASS
+- `PYTHONPATH=. pytest backend/tests/test_backend_catalog_truth.py backend/tests/test_dracula_first_truth_gate.py backend/tests/test_launch_readiness_audit.py backend/tests/test_daily_growth_loop.py`: PASS, 69 tests
+- `npm run owner:catalog-truth-audit`: PASS, local fixture summary has Dracula as the only live approved slug and zero unapproved audio/sitemap exposure
+- `npm run owner:daily-growth-audit`: PASS
+- `npm run launch:payment-smoke`: PASS_TEST_MODE
+- `npm run controlled-publication:precheck`: PASS
+- `npm run regression -- modules/13-public-content-governance.test.js modules/14-ux-conversion-static.test.js`: PASS, 35 tests
+- `npm run catalog:audit`: PASS, 251 items audited
+- `npm run launch:post-deploy-route-canary`: PASS
+- `npm run launch:production-parity`: PASS
+- `npm run regression:ci`: PASS, 64 tests passed and 4 skipped
+- `npm --prefix frontend run build`: PASS
+
+`npm run launch:backend-catalog-truth-canary` was reproduced before this fix and failed against the currently deployed production backend. It must be rerun immediately after this branch is deployed; it is not required to pass before merge because it validates deployed API behavior.

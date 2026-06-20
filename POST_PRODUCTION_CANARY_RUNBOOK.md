@@ -68,3 +68,16 @@ If status is `PASS`, keep Dracula live.
 If status is `WARN`, keep Dracula live only if the warnings are understood and non-publication-related. Open a focused fix PR for the warning source.
 
 If status is `FAIL`, do not publish anything else. Follow the owner recommendation in `output/release-canary/latest/summary.md`.
+
+## Relationship To Controlled Publication Precheck
+
+`npm run controlled-publication:precheck` verifies candidate approval evidence only.
+It can pass while the live backend API is still unsafe. Operational GO requires:
+
+```bash
+npm run launch:backend-catalog-truth-canary
+npm run release:post-production-canary
+```
+
+If backend catalog truth fails, keep `FINAL_GO_NO_GO_DECISION.md` at `HOLD_FOR_FIXES`
+and do not expand beyond Dracula.

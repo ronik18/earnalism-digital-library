@@ -7,10 +7,41 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
+CONTROLLED_LAUNCH_CONFIG_PATH = ROOT / "data" / "controlled_launch.json"
 
-LIVE_APPROVED_SLUG = "dracula"
-PIPELINE_CANDIDATE_SLUGS = {"kshudhita-pashan"}
-CONTROLLED_LIVE_BOOK_SLUGS = (LIVE_APPROVED_SLUG,)
+
+def controlled_launch_config() -> dict[str, Any]:
+    fallback = {
+        "live_approved_slugs": ["dracula"],
+        "pipeline_slugs": ["kshudhita-pashan"],
+        "audio_enabled_slugs": [],
+    }
+    if not CONTROLLED_LAUNCH_CONFIG_PATH.exists():
+        return fallback
+    try:
+        loaded = json.loads(CONTROLLED_LAUNCH_CONFIG_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return fallback
+    return loaded if isinstance(loaded, dict) else fallback
+
+
+def normalized_slug_tuple(values: Any, fallback: tuple[str, ...]) -> tuple[str, ...]:
+    if not isinstance(values, list):
+        return fallback
+    slugs = tuple(str(value or "").strip().lower() for value in values if str(value or "").strip())
+    return slugs or fallback
+
+
+CONTROLLED_LAUNCH_CONFIG = controlled_launch_config()
+CONTROLLED_LIVE_BOOK_SLUGS = normalized_slug_tuple(
+    CONTROLLED_LAUNCH_CONFIG.get("live_approved_slugs"),
+    ("dracula",),
+)
+LIVE_APPROVED_SLUG = CONTROLLED_LIVE_BOOK_SLUGS[0]
+PIPELINE_CANDIDATE_SLUGS = set(
+    normalized_slug_tuple(CONTROLLED_LAUNCH_CONFIG.get("pipeline_slugs"), ("kshudhita-pashan",))
+)
+AUDIO_ENABLED_SLUGS = set(normalized_slug_tuple(CONTROLLED_LAUNCH_CONFIG.get("audio_enabled_slugs"), ()))
 
 PUBLIC_STATUS_LIVE_APPROVED = "LIVE_APPROVED"
 PUBLIC_STATUS_PIPELINE_CANDIDATE = "PIPELINE_CANDIDATE"
@@ -69,13 +100,23 @@ INTERNAL_RIGHTS_FIELDS = {
 }
 
 INTERNAL_AUDIO_FIELDS = {
+    "audio_assets",
+    "audio_files",
+    "audiobook_url",
     "audiobook",
     "audiobook_assets",
     "audiobook_assets_updated_at",
     "audiobook_provider",
     "audiobook_voice",
     "audio_asset_slug",
+    "b2_url",
+    "cloudinary_audio",
     "generate_audiobook",
+    "has_audio",
+    "listen_url",
+    "narration_url",
+    "voice_url",
+    "waveform_url",
 }
 
 
@@ -259,7 +300,8 @@ def can_expose_preview(book: dict[str, Any]) -> bool:
 
 
 def can_expose_audio(book: dict[str, Any]) -> bool:
-    return False
+    slug = normalize_slug(book.get("slug"))
+    return slug in AUDIO_ENABLED_SLUGS and is_live_approved_book(book)
 
 
 def public_pipeline_projection(book: dict[str, Any]) -> dict[str, Any]:
@@ -275,6 +317,7 @@ def public_pipeline_projection(book: dict[str, Any]) -> dict[str, Any]:
             "reader_url": "",
             "preview_url": "",
             "audio_url": "",
+            "audio_status": "BLOCKED_UNTIL_RIGHTS_QA",
             "cta_label": "Notify Me",
             "secondary_cta_label": "Reading Circle",
             "public_json_ld_enabled": False,
@@ -304,6 +347,7 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
             "reader_url": f"/reader/{slug}" if live else "",
             "preview_url": f"/reader/{slug}" if live else "",
             "audio_url": "",
+            "audio_status": "NOT_AVAILABLE" if live else "BLOCKED_UNTIL_RIGHTS_QA",
             "cta_label": "Start Dracula" if live else "Notify Me",
             "secondary_cta_label": "Read Chapter 1 Free" if live else "Coming Soon",
             "public_json_ld_enabled": live,
@@ -315,23 +359,22 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
 
 
 def live_approved_mongo_query(extra: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Fetch controlled-launch candidates; Python truth gates decide exposure.
+
+    Production data can lag the file-backed Dracula approval artifact. Public
+    endpoints therefore fetch only the explicit controlled slugs from MongoDB,
+    then call `public_book_projection`/`can_expose_reader` before anything is
+    exposed. This avoids both broad catalog leaks and false negatives caused by
+    incomplete DB rights metadata.
+    """
+
     query: dict[str, Any] = {
         "slug": {"$in": list(CONTROLLED_LIVE_BOOK_SLUGS)},
         "is_published": True,
-        "rights_metadata.rights_tier": "A",
-        "rights_metadata.verification_status": "approved",
-        "$or": [
-            {"rights_metadata.blocked_reason": {"$exists": False}},
-            {"rights_metadata.blocked_reason": None},
-            {"rights_metadata.blocked_reason": ""},
-        ],
     }
     if extra:
         for key, value in extra.items():
-            if key == "$or":
-                query["$and"] = [{"$or": query.pop("$or")}, {"$or": value}]
-            else:
-                query[key] = value
+            query[key] = value
     return query
 
 

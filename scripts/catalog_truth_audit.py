@@ -159,6 +159,18 @@ def sitemap_urls(path: Path) -> set[str]:
 
 
 def frontend_controlled_live_slugs(path: Path | None = None) -> set[str] | None:
+    config_path = ROOT / "data" / "controlled_launch.json"
+    if path is None and config_path.exists():
+        try:
+            config = json.loads(config_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            config = {}
+        slugs = config.get("live_approved_slugs") if isinstance(config, dict) else []
+        if isinstance(slugs, list):
+            normalized = {normalize_slug(slug) for slug in slugs if normalize_slug(slug)}
+            if normalized:
+                return normalized
+
     source_path = path or ROOT / "frontend" / "scripts" / "generate-seo-assets.mjs"
     if not source_path.exists():
         return None
@@ -262,12 +274,31 @@ def api_audio_enabled(book: dict[str, Any]) -> bool:
     audiobook = book.get("audiobook") if isinstance(book.get("audiobook"), dict) else {}
     assets = book.get("audiobook_assets") if isinstance(book.get("audiobook_assets"), dict) else {}
     nested_assets = audiobook.get("assets") if isinstance(audiobook.get("assets"), dict) else {}
+    audio_fields = (
+        "audio_enabled",
+        "audiobook_enabled",
+        "generate_audiobook",
+        "has_audio",
+    )
+    audio_url_fields = (
+        "audio_url",
+        "audiobook_url",
+        "voice_url",
+        "waveform_url",
+        "b2_url",
+        "cloudinary_audio",
+        "narration_url",
+        "listen_url",
+    )
+    audio_collection_fields = (
+        "audio_assets",
+        "audio_files",
+    )
     return any(
         [
-            truthy(book.get("audio_enabled")),
-            truthy(book.get("audiobook_enabled")),
-            truthy(book.get("generate_audiobook")),
-            bool(normalize_text(book.get("audio_url"))),
+            *(truthy(book.get(field)) for field in audio_fields),
+            *(bool(normalize_text(book.get(field))) for field in audio_url_fields),
+            *(bool(book.get(field)) for field in audio_collection_fields),
             bool(normalize_text(audiobook.get("url"))),
             bool(assets),
             bool(nested_assets),

@@ -33,6 +33,26 @@ Public projections are generated through `backend/catalog_truth.py`. They remove
 internal rights/source evidence and audio storage fields from public metadata, and
 they strip chapter body content from metadata responses.
 
+Public MongoDB reads now fetch only controlled-launch candidate slugs and then apply
+the Python truth gate. This prevents broad catalog leakage while allowing Dracula's
+file-backed approval evidence to pass even if production DB rights metadata is
+temporarily incomplete.
+
+Shared controlled launch config:
+
+```text
+data/controlled_launch.json
+```
+
+Current values:
+
+- live approved slugs: `dracula`
+- pipeline slugs: `kshudhita-pashan`
+- audio enabled slugs: none
+
+The backend public cache truth version is `dracula-first-v2`, which invalidates
+older public-cache entries that may have been created before the catalog truth gate.
+
 ## Daily Owner Command
 
 ```bash
@@ -79,5 +99,5 @@ The local audit matrix for 2026-06-20 reports:
 - Unapproved audio link count: 0
 - Unapproved sitemap count: 0
 
-Recommendation: GO for Dracula-only backend catalog truth after validation remains green.
-Post-deploy score can rise from 9.4+ to 9.7+ only after the API-backed canary passes.
+Recommendation: GO for local Dracula-only backend catalog truth after validation remains green.
+Operational GO remains blocked until the API-backed canary passes after deployment.
