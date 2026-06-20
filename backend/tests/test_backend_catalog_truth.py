@@ -11,6 +11,7 @@ os.environ.setdefault("JWT_SECRET", "catalog-truth-test-secret")
 
 from backend import catalog_truth
 from backend import server
+from scripts import catalog_truth_audit
 
 
 def dracula_book(**overrides):
@@ -234,3 +235,111 @@ def test_catalog_truth_rows_keep_audio_false_for_every_status():
     ]
 
     assert all(row["audio_enabled"] is False for row in rows)
+
+
+def api_result(status, payload=None):
+    return catalog_truth_audit.EndpointResult(status=status, json_data=payload, body="")
+
+
+def base_api_mapping(**overrides):
+    dracula = catalog_truth.public_book_projection(dracula_book())
+    mapping = {
+        "/books": api_result(200, [dracula]),
+        "/books/dracula": api_result(200, dracula),
+        "/books/kshudhita-pashan": api_result(404, {"detail": "Book not found"}),
+        "/reader/book/dracula/manifest": api_result(200, {"book": dracula, "chapters": [{"id": "chapter-1"}]}),
+        "/reader/book/kshudhita-pashan/manifest": api_result(404, {"detail": "Book not found"}),
+        "/reader/book/dracula/audiobook": api_result(404, {"detail": "Audiobook asset not found"}),
+        "/reader/book/kshudhita-pashan/audiobook": api_result(404, {"detail": "Audiobook asset not found"}),
+    }
+    mapping.update(overrides)
+    return mapping
+
+
+def fake_api_fetcher(mapping):
+    def fetcher(api_url, path, *, timeout_ms=10_000):
+        return mapping.get(path, api_result(404, {"detail": "not found"}))
+
+    return fetcher
+
+
+def run_api_audit(mapping, monkeypatch):
+    monkeypatch.setattr(catalog_truth_audit, "frontend_controlled_live_slugs", lambda path=None: {"dracula"})
+    return catalog_truth_audit.api_audit_result(
+        "https://api.example.test/api",
+        fetcher=fake_api_fetcher(mapping),
+    )
+
+
+def test_api_audit_passes_with_dracula_only_response(monkeypatch):
+    result = run_api_audit(base_api_mapping(), monkeypatch)
+
+    assert result["summary"]["launch_blockers"] == []
+    assert result["summary"]["live_approved_count"] == 1
+    assert result["summary"]["dracula_only_live_approved"] is True
+
+
+def test_api_audit_fails_if_non_dracula_reader_enabled(monkeypatch):
+    frankenstein = {
+        "slug": "frankenstein",
+        "title": "Frankenstein",
+        "publication_status": "COMING_SOON",
+        "reader_enabled": True,
+        "preview_enabled": False,
+        "audio_enabled": False,
+    }
+    mapping = base_api_mapping(
+        **{
+            "/books": api_result(200, [catalog_truth.public_book_projection(dracula_book()), frankenstein]),
+        }
+    )
+
+    result = run_api_audit(mapping, monkeypatch)
+
+    assert any("Non-Dracula reader exposure" in blocker for blocker in result["summary"]["launch_blockers"])
+
+
+def test_api_audit_fails_if_kshudhita_manifest_returns_200(monkeypatch):
+    mapping = base_api_mapping(
+        **{
+            "/reader/book/kshudhita-pashan/manifest": api_result(200, {"book": {"slug": "kshudhita-pashan"}}),
+        }
+    )
+
+    result = run_api_audit(mapping, monkeypatch)
+
+    assert any("kshudhita-pashan/manifest" in blocker for blocker in result["summary"]["launch_blockers"])
+
+
+def test_api_audit_fails_if_dracula_audiobook_returns_200(monkeypatch):
+    mapping = base_api_mapping(
+        **{
+            "/reader/book/dracula/audiobook": api_result(200, {"url": "https://cdn.example.com/dracula.mp3"}),
+        }
+    )
+
+    result = run_api_audit(mapping, monkeypatch)
+
+    assert any("dracula/audiobook" in blocker for blocker in result["summary"]["launch_blockers"])
+
+
+def test_api_audit_passes_if_dracula_audiobook_returns_404(monkeypatch):
+    result = run_api_audit(base_api_mapping(), monkeypatch)
+
+    assert not any("dracula/audiobook" in blocker for blocker in result["summary"]["launch_blockers"])
+
+
+def test_api_audit_fails_if_books_returns_zero_live_items(monkeypatch):
+    mapping = base_api_mapping(**{"/books": api_result(200, [])})
+
+    result = run_api_audit(mapping, monkeypatch)
+
+    assert any("does not contain Dracula" in blocker for blocker in result["summary"]["launch_blockers"])
+
+
+def test_api_audit_fails_if_dracula_detail_returns_404(monkeypatch):
+    mapping = base_api_mapping(**{"/books/dracula": api_result(404, {"detail": "Book not found"})})
+
+    result = run_api_audit(mapping, monkeypatch)
+
+    assert any("/books/dracula did not return 200" in blocker for blocker in result["summary"]["launch_blockers"])

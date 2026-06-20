@@ -15,6 +15,7 @@ preview, audio, and public projection decisions.
 - Public projections strip chapter body content, rights/source evidence, and audio
   storage fields.
 - Daily owner dry-run reports include catalog truth fields.
+- The catalog truth audit supports API-backed mode for real post-deploy canary checks.
 
 ## Explicit Non-Changes
 
@@ -33,8 +34,15 @@ The PR is ready only if:
 - regression checks pass,
 - frontend build passes,
 - catalog truth audit reports zero unapproved reader/audio/sitemap exposure.
+- post-deploy API canary passes after deployment.
 
 ## Rollback
 
 Revert this PR. The changes are scoped to deterministic backend projection/gating,
 local audit reporting, tests, and docs.
+
+## Readiness Score
+
+- Local fixture plus tested API audit mode: 9.4 / 10.
+- After production API canary passes: eligible for 9.7+ / 10.
+- If production `/api/books` exposes non-Dracula reader/preview/audio fields: HOLD.

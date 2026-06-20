@@ -25,6 +25,10 @@ book route during the controlled launch.
 - audio exposure
 - public metadata projection
 
+`scripts/catalog_truth_audit.py --mode api` also compares backend live approved
+slugs against the frontend controlled live slug list parsed from
+`frontend/scripts/generate-seo-assets.mjs`.
+
 ## Remaining SEO Limitation
 
 CRA/client-rendered metadata can still limit crawler-visible per-page metadata.
@@ -36,3 +40,6 @@ changed by this backend catalog truth PR.
 SEO truth is aligned for the controlled launch: Dracula may be indexed as the live
 approved core reading page; unapproved/pipeline titles must not be indexed as public
 reading products.
+
+Post-deploy, `npm run launch:backend-catalog-truth-canary` must pass before SEO or
+growth expansion proceeds.

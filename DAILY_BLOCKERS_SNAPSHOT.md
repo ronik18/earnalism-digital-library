@@ -6,9 +6,9 @@ Date: 2026-06-20 IST
 
 Today's overall score: 8.7 / 10
 
-Recommendation: GO for keeping Dracula live; HOLD for broad catalog growth expansion until the backend truth gate PR is merged, deployed, and verified live.
+Recommendation: GO for keeping Dracula live; HOLD for broad catalog growth expansion until the backend truth gate PR is merged, deployed, and the API-backed catalog canary passes.
 
-The score remains below 9.5 until this backend catalog truth gate is merged and deployed. The branch hardens public API projections, reader access, audiobook access, owner audit reporting, and backend/frontend catalog truth alignment for Dracula-only controlled launch.
+The score remains below 9.7 until this backend catalog truth gate is merged, deployed, and `npm run launch:backend-catalog-truth-canary` passes against production. The branch hardens public API projections, reader access, audiobook access, owner audit reporting, and backend/frontend catalog truth alignment for Dracula-only controlled launch.
 
 ## Top 3 Wins
 
@@ -18,7 +18,7 @@ The score remains below 9.5 until this backend catalog truth gate is merged and 
 
 ## Top 3 Risks
 
-- Backend catalog truth must be verified live after deploy to confirm `/api/books` exposes Dracula only.
+- Backend catalog truth must be verified live after deploy with `npm run launch:backend-catalog-truth-canary`.
 - Current SEO audit is `BLOCKED_FOR_BOOK_SEO` because book detail metadata is client-rendered.
 - Post-deploy verification must confirm the Dracula-first homepage/library source and backend truth gate are live before growth expansion.
 
@@ -26,7 +26,7 @@ The score remains below 9.5 until this backend catalog truth gate is merged and 
 
 - Merge and deploy this small backend catalog truth branch.
 - Add prerender/SSR/static-snapshot metadata for Dracula and priority public book pages.
-- Run `npm run owner:catalog-truth-audit` after deploy and confirm zero unapproved reader/audio/sitemap exposure.
+- Run `npm run launch:backend-catalog-truth-canary` after deploy and confirm zero unapproved reader/audio/sitemap exposure.
 
 ## Rollback
 

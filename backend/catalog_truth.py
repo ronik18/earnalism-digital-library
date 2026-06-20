@@ -365,7 +365,12 @@ def catalog_truth_row(book: dict[str, Any], *, sitemap_urls: set[str] | None = N
     }
 
 
-def catalog_truth_summary(rows: list[dict[str, Any]], *, sitemap_urls: set[str] | None = None) -> dict[str, Any]:
+def catalog_truth_summary(
+    rows: list[dict[str, Any]],
+    *,
+    sitemap_urls: set[str] | None = None,
+    frontend_live_slugs: set[str] | None = None,
+) -> dict[str, Any]:
     sitemap_urls = sitemap_urls or set()
     live_rows = [row for row in rows if row["classification"] == PUBLIC_STATUS_LIVE_APPROVED]
     pipeline_rows = [row for row in rows if row["classification"] == PUBLIC_STATUS_PIPELINE_CANDIDATE]
@@ -376,18 +381,26 @@ def catalog_truth_summary(rows: list[dict[str, Any]], *, sitemap_urls: set[str] 
         for row in rows
         if row["classification"] != PUBLIC_STATUS_LIVE_APPROVED and row["sitemap_inclusion"]
     ]
+    backend_live_slugs = {row["slug"] for row in live_rows}
+    if frontend_live_slugs is None:
+        backend_frontend_truth_mismatch: bool | str = "not_checked"
+    else:
+        backend_frontend_truth_mismatch = backend_live_slugs != frontend_live_slugs
     return {
         "live_approved_count": len(live_rows),
         "dracula_only_live_approved": [row["slug"] for row in live_rows] == [LIVE_APPROVED_SLUG],
+        "backend_live_approved_slugs": sorted(backend_live_slugs),
+        "frontend_controlled_live_slugs": sorted(frontend_live_slugs) if frontend_live_slugs is not None else [],
         "pipeline_candidate_count": len(pipeline_rows),
         "unapproved_reader_link_count": len(unapproved_reader),
         "unapproved_audio_link_count": len(unapproved_audio),
         "unapproved_sitemap_count": len(unapproved_sitemap),
-        "backend_frontend_truth_mismatch": False,
+        "backend_frontend_truth_mismatch": backend_frontend_truth_mismatch,
         "launch_blockers": [
             "Non-Dracula live approved item detected" for row in live_rows if row["slug"] != LIVE_APPROVED_SLUG
         ]
         + ["Unapproved reader links detected"] * bool(unapproved_reader)
         + ["Unapproved audio links detected"] * bool(unapproved_audio)
-        + ["Unapproved sitemap entries detected"] * bool(unapproved_sitemap),
+        + ["Unapproved sitemap entries detected"] * bool(unapproved_sitemap)
+        + ["Backend/frontend controlled live slug mismatch"] * bool(backend_frontend_truth_mismatch is True),
     }

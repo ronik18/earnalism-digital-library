@@ -11,6 +11,17 @@ controlled launch truth: Dracula only, audio disabled, pipeline titles non-reada
 npm run owner:catalog-truth-audit
 ```
 
+This is the local fixture audit used during PR validation.
+
+## Post-Deploy API Canary
+
+```bash
+npm run launch:backend-catalog-truth-canary
+```
+
+This calls `https://api.theearnalism.com/api` and verifies real API/database
+behavior. It must pass immediately after deployment.
+
 ## Outputs
 
 ```text
@@ -23,6 +34,7 @@ output/daily/YYYY-MM-DD/catalog_truth_report.json
 
 - `live_approved_count` is `1`.
 - `dracula_only_live_approved` is `true`.
+- `/api/books` contains Dracula as the only live readable item in API mode.
 - `unapproved_reader_link_count` is `0`.
 - `unapproved_audio_link_count` is `0`.
 - `unapproved_sitemap_count` is `0`.
@@ -38,8 +50,10 @@ HOLD the launch or growth expansion if any of these occur:
 - Any title exposes audio while audio remains disabled.
 - Any pipeline/unapproved title appears in sitemap.
 - Any public projection leaks rights evidence, source hashes, source URLs, or audio storage URLs.
+- API mode returns zero live Dracula rows.
+- API mode returns 200 or a redirect for any public audiobook endpoint.
 
 ## Safety
 
-This command is dry-run and local report only. It does not call external APIs, publish
-content, enable audio, delete records, mutate production, or charge payments.
+These commands do not publish content, enable audio, delete records, mutate production,
+or charge payments. API mode only performs production GET requests.

@@ -45,6 +45,29 @@ This writes:
 - `output/daily/YYYY-MM-DD/catalog_truth_matrix.csv`
 - `output/daily/YYYY-MM-DD/catalog_truth_report.json`
 
+## API-Backed Canary Mode
+
+PR validation uses local fixture mode by default. Post-deploy validation must use
+API mode:
+
+```bash
+npm run launch:backend-catalog-truth-canary
+```
+
+API mode verifies real backend behavior for:
+
+- `GET /api/books`
+- `GET /api/books/dracula`
+- `GET /api/books/kshudhita-pashan`
+- `GET /api/reader/book/dracula/manifest`
+- `GET /api/reader/book/kshudhita-pashan/manifest`
+- `GET /api/reader/book/dracula/audiobook`
+- `GET /api/reader/book/kshudhita-pashan/audiobook`
+
+The canary exits nonzero if any non-Dracula reader, preview, audio, or sitemap
+exposure is detected, if Dracula is missing from the live catalog, or if audio
+does not return 404 while disabled.
+
 ## Result
 
 The local audit matrix for 2026-06-20 reports:
@@ -57,3 +80,4 @@ The local audit matrix for 2026-06-20 reports:
 - Unapproved sitemap count: 0
 
 Recommendation: GO for Dracula-only backend catalog truth after validation remains green.
+Post-deploy score can rise from 9.4+ to 9.7+ only after the API-backed canary passes.

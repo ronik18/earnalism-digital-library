@@ -6,7 +6,7 @@ Date: 2026-06-20 IST
 
 Today's score: 8.7 / 10
 
-Recommendation: GO for keeping Dracula live; HOLD broad growth expansion until backend truth gate is deployed and verified live.
+Recommendation: GO for keeping Dracula live; HOLD broad growth expansion until backend truth gate is deployed and the API-backed catalog canary passes.
 
 ## Executive Summary
 
@@ -20,7 +20,7 @@ Production health is good, Dracula is reachable, the reader manifest is healthy,
 
 ## Top 3 Risks
 
-- Current production score remains below 9.5 until this backend truth gate is merged, deployed, and verified live against production.
+- Current production score remains below 9.7 until this backend truth gate is merged, deployed, and verified live with `npm run launch:backend-catalog-truth-canary`.
 - SEO readiness remains HOLD because book detail metadata is client-rendered in CRA.
 - Do not expand campaigns until post-deploy canary confirms the Dracula-first homepage/library and backend catalog truth gate are live.
 
@@ -28,7 +28,7 @@ Production health is good, Dracula is reachable, the reader manifest is healthy,
 
 - Merge and deploy this backend catalog truth branch.
 - Create a follow-up SEO PR for Dracula/prioritized book static snapshots or SSR/prerender metadata.
-- Run `npm run owner:catalog-truth-audit` after deploy and confirm zero unapproved reader/audio/sitemap exposure.
+- Run `npm run launch:backend-catalog-truth-canary` after deploy and confirm zero unapproved reader/audio/sitemap exposure.
 
 ## Launch State
 
