@@ -7,9 +7,25 @@ from pathlib import Path
 from typing import Any
 
 
-ROOT = Path(__file__).resolve().parents[1]
-CONTROLLED_LAUNCH_CONFIG_PATH = ROOT / "data" / "controlled_launch.json"
-DRACULA_ARTIFACT_DIR = ROOT / "data" / "controlled_publications" / "dracula"
+MODULE_DIR = Path(__file__).resolve().parent
+ROOT = MODULE_DIR.parent if MODULE_DIR.name == "backend" else MODULE_DIR
+
+
+def first_existing_path(*paths: Path) -> Path:
+    for path in paths:
+        if path.exists():
+            return path
+    return paths[0]
+
+
+CONTROLLED_LAUNCH_CONFIG_PATH = first_existing_path(
+    ROOT / "data" / "controlled_launch.json",
+    MODULE_DIR / "data" / "controlled_launch.json",
+)
+DRACULA_ARTIFACT_DIR = first_existing_path(
+    ROOT / "data" / "controlled_publications" / "dracula",
+    MODULE_DIR / "data" / "controlled_publications" / "dracula",
+)
 DRACULA_REQUIRED_ARTIFACT_FILES = (
     "public_book.json",
     "reader_manifest.json",

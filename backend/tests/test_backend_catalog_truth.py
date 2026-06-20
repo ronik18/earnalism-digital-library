@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import os
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -145,6 +146,20 @@ def test_dracula_artifact_pack_is_self_contained_for_truth_gate(monkeypatch):
     status = catalog_truth.dracula_artifact_status()
     assert status["self_contained_for_truth_gate"] is True
     assert status["fallback_requires_legacy_output_evidence"] is False
+
+
+def test_backend_packaged_dracula_artifact_is_valid_for_railway_deploy():
+    artifact_dir = Path(__file__).resolve().parents[1] / "data" / "controlled_publications" / "dracula"
+
+    status = catalog_truth.dracula_artifact_status(artifact_dir=artifact_dir)
+    artifact = catalog_truth.load_dracula_artifact_book(include_content=True, artifact_dir=artifact_dir)
+
+    assert status["available"] is True
+    assert status["self_contained_for_truth_gate"] is True
+    assert status["fallback_requires_legacy_output_evidence"] is False
+    assert artifact is not None
+    assert catalog_truth.is_live_approved_book(artifact) is True
+    assert len(artifact["chapters"]) == 27
 
 
 def test_public_book_response_model_is_safe_contract():

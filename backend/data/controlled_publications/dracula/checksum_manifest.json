@@ -1,0 +1,164 @@
+{
+  "slug": "dracula",
+  "generated_at": "2026-06-20T00:00:00Z",
+  "chapter_count": 27,
+  "audio_enabled": false,
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "bc07b73ed4933d72455f54ecbec9aeab8582c9f03c6bf7a618d94b393e7c9379",
+      "bytes": 1128
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "9d827620f43d23a9ba1413d5fd2c032d2c476f8829940cc28a297a0744bc9cc8",
+      "bytes": 32776
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "d61546c0fc2d13f13670ca760024fb28f8b541ba12bfe1fea750d4aaf8351359",
+      "bytes": 30682
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "d7445d91ad3ee940c81f253843a34ab02e038abf7d6e7db4d5e8917f1a5ff450",
+      "bytes": 31934
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "11bff95ea9838246f7c5199ded477cf315050d41c9c0e12f0c49dbac525abc19",
+      "bytes": 32603
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "51b0324abb58cd3b4d3bbec715684c28c091d6317d4e053e5cde81356e23f59a",
+      "bytes": 19753
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "de56ea46ac47e3bf830629c1bbe2ff61ee191ba688d454167469e222d388f269",
+      "bytes": 31834
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "2834e087d9a3f889d7b8c79ba719bc89ef5e777e1c189263b9d51554863fc464",
+      "bytes": 32342
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "97ac5531b85fcb11d7679d428f1a5fa78a23f77abaf41b08a80524dc2cf99f5a",
+      "bytes": 35204
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "044b62c45440a6c9beed415770cdbb5ee4d9fa2c107439a14da43be482287a04",
+      "bytes": 32686
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "99f0f5816ab2cd4096715e61500acd58e7e4bd8985187926eaf39acb09c1c0e2",
+      "bytes": 33494
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "f6062c8cc175c08cef0c1f9af938af64f2a6dee00792290341e6c0bd299772f8",
+      "bytes": 29586
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "6f92d5871780a8f16c1d2ba3f78d65c641d153a25a1dda3cad04be0dff721dbe",
+      "bytes": 40965
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "56d19f735c7ffe07ec0b4751511c328bde4b9c47baea3020b018d6e12b140b73",
+      "bytes": 37051
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "ba574651b51fa5feb4d115798317c9258595c260bc543e29045ec75fdec58615",
+      "bytes": 35508
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "352759a2ca78a0ab06ee9e3a96b5f10a015c5bedc43b184deb90a1d5fe296196",
+      "bytes": 32474
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "2e37502ecf1d538b1a86f066b2a0add5d583177107a5196fc2cb3a58f323ab57",
+      "bytes": 25862
+    },
+    {
+      "file": "chapters/chapter-017.json",
+      "sha256": "7a144032e334f8dd45e88c6095ce2ca152105199b56f2f63b5265391bec9e3dd",
+      "bytes": 31633
+    },
+    {
+      "file": "chapters/chapter-018.json",
+      "sha256": "f65abfa61b53210e2502a80e2b3eb5da1d902ba1b263f101a029e15a7cf2e731",
+      "bytes": 38708
+    },
+    {
+      "file": "chapters/chapter-019.json",
+      "sha256": "1ba590a037e0765df60ef8cec990a6dd8eba3596fe03e5ec1be20b8b3597cdc0",
+      "bytes": 31612
+    },
+    {
+      "file": "chapters/chapter-020.json",
+      "sha256": "7282b66fa61c1e19e339a33423939edc76d3166118d53bb22c07c0cbfc039640",
+      "bytes": 34243
+    },
+    {
+      "file": "chapters/chapter-021.json",
+      "sha256": "be3651e6e1cfa4617cb8a2835323d69855711db3fe594779c63dd647982d8146",
+      "bytes": 34732
+    },
+    {
+      "file": "chapters/chapter-022.json",
+      "sha256": "72a43811da04af771ec217f6d49e13fc216aba095ce58ffed72f8e98a582ec2f",
+      "bytes": 30345
+    },
+    {
+      "file": "chapters/chapter-023.json",
+      "sha256": "a7542fdfcc5b42d8344e34209098dae8fe843c6e749be6ef0c0c9b38cb43563d",
+      "bytes": 31967
+    },
+    {
+      "file": "chapters/chapter-024.json",
+      "sha256": "cf6d78e0cb1b6afb84add46a82644e4bbacbc64e921265ee4ca134754763ffad",
+      "bytes": 34574
+    },
+    {
+      "file": "chapters/chapter-025.json",
+      "sha256": "073a873c119d3e784ac3c8c921b0206f1c20090ac08ae97706830c08195705da",
+      "bytes": 35298
+    },
+    {
+      "file": "chapters/chapter-026.json",
+      "sha256": "f23f57193734a995818bdb5bcaeba2b144e1972110cd40439175132d3ab4dcce",
+      "bytes": 40051
+    },
+    {
+      "file": "chapters/chapter-027.json",
+      "sha256": "d0baa8ed1f64d0daf11e616a63d521ca7e9c9a7d461c1ade9d734ae8ce156693",
+      "bytes": 45013
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "dcd5562938e4c5b51ac0c2d4e32514dfd085b7403e4b2ef4dc95fc88b27f0958",
+      "bytes": 13617
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "665b920c9d88a86c6776d9d970e1ad09b515c3afcae7236ba95b1f7802254692",
+      "bytes": 7177
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "2f6ea8dcdf00df3e70d9d5c01a91f5db0e3e261017b9629f4c2f63104e5aa6a2",
+      "bytes": 46113
+    }
+  ],
+  "manifest_hash": "2391397fa1220aa1cf4470fb173bf21be6e7d0302d79710a071dc24656920c16"
+}
