@@ -38,6 +38,19 @@ the Python truth gate. This prevents broad catalog leakage while allowing Dracul
 file-backed approval evidence to pass even if production DB rights metadata is
 temporarily incomplete.
 
+## Dracula Artifact Fallback
+
+This branch adds an immutable fallback pack at:
+
+```text
+data/controlled_publications/dracula/
+```
+
+The fallback is allowed only for `slug=dracula`. It requires valid approval
+evidence, source evidence, checksum verification, and exactly 27 chapter files.
+It never applies to Kshudhita Pashan or any other title, and it always keeps
+audio/audiobook fields disabled.
+
 Shared controlled launch config:
 
 ```text
@@ -78,6 +91,8 @@ API mode verifies real backend behavior for:
 
 - `GET /api/books`
 - `GET /api/books/dracula`
+- `GET /api/controlled-launch/status`
+- `GET /api/reader/book/dracula/manifest`
 - `GET /api/books/kshudhita-pashan`
 - `GET /api/reader/book/dracula/manifest`
 - `GET /api/reader/book/kshudhita-pashan/manifest`

@@ -47,17 +47,25 @@ except ImportError:  # pragma: no cover - supports package-style test imports
 try:
     from catalog_truth import (
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
+        AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
+        PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
         can_expose_audio,
         can_expose_reader,
+        dracula_artifact_status,
         live_approved_mongo_query,
+        load_dracula_artifact_book,
         public_book_projection,
     )
 except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.catalog_truth import (
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
+        AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
+        PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
         can_expose_audio,
         can_expose_reader,
+        dracula_artifact_status,
         live_approved_mongo_query,
+        load_dracula_artifact_book,
         public_book_projection,
     )
 
@@ -244,6 +252,8 @@ _shutdown_state: dict = {"draining": False, "inflight": 0}
 # is intentionally merged.
 CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "dracula-first-v2"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
+CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
+CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
 
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
 # amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
@@ -1064,6 +1074,69 @@ def _safe_live_public_projection(book: Optional[dict]) -> Optional[dict]:
     return projected if _public_projection_is_live(projected) else None
 
 
+def _slug_is_dracula(slug: str) -> bool:
+    return str(slug or "").strip().lower() == "dracula"
+
+
+def _dracula_artifact_doc(*, include_content: bool = False) -> Optional[dict]:
+    doc = load_dracula_artifact_book(include_content=include_content)
+    if not doc:
+        return None
+    projected = public_book_projection(_strip_all_chapter_content(doc)) or {}
+    if not _public_projection_is_live(projected):
+        return None
+    return doc
+
+
+def _matches_public_filters(book: dict, *, category_filter: Optional[str] = None, q: str = "") -> bool:
+    if category_filter and book.get("category_slug") != category_filter:
+        return False
+    q_norm = normalize_text(q).strip().lower()
+    if not q_norm:
+        return True
+    searchable = " ".join(
+        normalize_text(book.get(key))
+        for key in ("title", "subtitle", "author", "short_description", "description", "category_slug")
+    ).lower()
+    chapter_titles = " ".join(normalize_text(chapter.get("title")) for chapter in book.get("chapters") or []).lower()
+    return q_norm in searchable or q_norm in chapter_titles
+
+
+def _append_dracula_artifact_projection(
+    books: list[dict],
+    *,
+    category_filter: Optional[str] = None,
+    q: str = "",
+) -> list[dict]:
+    if any(book.get("slug") == "dracula" for book in books):
+        return books
+    artifact = _dracula_artifact_doc(include_content=False)
+    if not artifact or not _matches_public_filters(artifact, category_filter=category_filter, q=q):
+        return books
+    projected = _safe_live_public_projection(artifact)
+    if projected:
+        return [projected, *books]
+    return books
+
+
+async def _find_public_book_candidate(
+    slug: str,
+    projection: dict,
+    *,
+    include_artifact_content: bool = False,
+) -> tuple[Optional[dict], str]:
+    if not _is_controlled_public_slug(slug):
+        return None, "missing"
+    doc = await db.books.find_one(_controlled_public_book_query({"slug": slug}), projection)
+    if doc and _safe_live_public_projection(doc):
+        return doc, "db"
+    if _slug_is_dracula(slug):
+        artifact = _dracula_artifact_doc(include_content=include_artifact_content)
+        if artifact:
+            return artifact, "artifact"
+    return None, "missing"
+
+
 async def _public_cache_generation_value() -> int:
     if not _redis_state_enabled():
         return _public_cache_generation
@@ -1287,7 +1360,9 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
         READER_ACCESS_PROJECTION,
     )
     if doc and not admin_preview and not can_expose_reader(doc):
-        return None
+        doc = None
+    if not doc and not admin_preview and _slug_is_dracula(slug):
+        doc = _dracula_artifact_doc(include_content=False)
     if doc:
         await _redis_cache_set("reader-content", cache_key, doc, READER_BOOK_CACHE_TTL_SECONDS)
     return doc
@@ -1312,6 +1387,10 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
     )
     target = ((content_doc or {}).get("chapters") or [{}])[0]
     content = target.get("content", "")
+    if not content and not admin_preview and _slug_is_dracula(slug):
+        artifact = _dracula_artifact_doc(include_content=True) or {}
+        target = next((chapter for chapter in artifact.get("chapters") or [] if chapter.get("id") == chapter_id), {})
+        content = target.get("content", "")
     await _redis_cache_set("reader-content", cache_key, content, READER_CHAPTER_CACHE_TTL_SECONDS)
     return content
 
@@ -1458,9 +1537,11 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
 
     query = {"slug": slug} if admin_preview else _controlled_public_book_query({"slug": slug})
     doc = await db.books.find_one(query, {"_id": 0, "rights_metadata": 0})
+    if doc and not admin_preview and not can_expose_reader(doc):
+        doc = None
+    if not doc and not admin_preview and _slug_is_dracula(slug):
+        doc = _dracula_artifact_doc(include_content=True)
     if not doc:
-        return None
-    if not admin_preview and not can_expose_reader(doc):
         return None
 
     chapters = []
@@ -3644,6 +3725,29 @@ async def api_healthz_check():
     return await root_healthz_check()
 
 
+@api.get("/controlled-launch/status")
+async def controlled_launch_status():
+    dracula_doc, dracula_source = await _find_public_book_candidate(
+        "dracula",
+        BOOK_METADATA_PROJECTION,
+        include_artifact_content=False,
+    )
+    manifest = await _reader_book_manifest_doc("dracula")
+    dracula_book_available = bool(_safe_live_public_projection(dracula_doc))
+    dracula_manifest_available = bool(manifest and len(manifest.get("chapters") or []) == 27)
+    catalog_truth_status = "PASS" if dracula_book_available and dracula_manifest_available else "HOLD"
+    return {
+        "backend_healthy": True,
+        "live_approved_slugs": list(CONTROLLED_LIVE_BOOK_SLUGS),
+        "pipeline_slugs": list(CONTROLLED_PIPELINE_SLUGS),
+        "audio_enabled_slugs": list(CONTROLLED_AUDIO_ENABLED_SLUGS),
+        "dracula_book_available": dracula_book_available,
+        "dracula_manifest_available": dracula_manifest_available,
+        "dracula_source": dracula_source,
+        "catalog_truth_status": catalog_truth_status,
+    }
+
+
 @api.get("/home")
 async def get_home_payload(books_limit: Optional[int] = None, books_offset: int = 0):
     """Cached landing-page payload.
@@ -3671,6 +3775,8 @@ async def get_home_payload(books_limit: Optional[int] = None, books_offset: int 
         BOOK_METADATA_PROJECTION,
     )
     featured_book = _safe_live_public_projection(doc)
+    if not featured_book and featured_candidate == "dracula":
+        featured_book = _safe_live_public_projection(_dracula_artifact_doc(include_content=False))
 
     result = {
         "categories": categories,
@@ -3712,6 +3818,9 @@ async def _home_books_page(limit: int, offset: int = 0, *, maximum: int = HOME_B
         projected = _safe_live_public_projection(doc)
         if projected:
             books.append(projected)
+    if normalized_offset == 0:
+        books = _append_dracula_artifact_projection(books)
+    total = max(total, len(books))
     next_offset = normalized_offset + len(books)
     result = {
         "books": books,
@@ -3831,6 +3940,7 @@ async def list_books(category: Optional[str] = None, q: Optional[str] = None):
         projected = _safe_live_public_projection(doc)
         if projected:
             result.append(projected)
+    result = _append_dracula_artifact_projection(result, category_filter=category_filter, q=q_norm)
     await _public_cache_set(cache_key, result)
     return result
 
@@ -3840,9 +3950,7 @@ async def get_book(slug: str):
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    if not _is_controlled_public_slug(slug):
-        raise HTTPException(status_code=404, detail="Book not found")
-    doc = await db.books.find_one(_controlled_public_book_query({"slug": slug}), BOOK_METADATA_PROJECTION)
+    doc, _source = await _find_public_book_candidate(slug, BOOK_METADATA_PROJECTION, include_artifact_content=False)
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
     # Public detail returns metadata + ToC only. Reader content is fetched through
@@ -3860,9 +3968,7 @@ async def get_book_chapters(slug: str):
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    if not _is_controlled_public_slug(slug):
-        raise HTTPException(status_code=404, detail="Book not found")
-    doc = await db.books.find_one(_controlled_public_book_query({"slug": slug}), BOOK_METADATA_PROJECTION)
+    doc, _source = await _find_public_book_candidate(slug, BOOK_METADATA_PROJECTION, include_artifact_content=False)
     if not doc:
         raise HTTPException(status_code=404, detail="Book not found")
     if not can_expose_reader(doc):
@@ -3883,7 +3989,7 @@ async def get_book_chapter(slug: str, chapter_id: str):
         return cached
     if not _is_controlled_public_slug(slug):
         raise HTTPException(status_code=404, detail="Book not found")
-    book_meta = await db.books.find_one(_controlled_public_book_query({"slug": slug}), READER_ACCESS_PROJECTION)
+    book_meta, _source = await _find_public_book_candidate(slug, READER_ACCESS_PROJECTION, include_artifact_content=False)
     if not book_meta:
         raise HTTPException(status_code=404, detail="Book not found")
     if not can_expose_reader(book_meta):
@@ -3902,6 +4008,10 @@ async def get_book_chapter(slug: str, chapter_id: str):
         )
         target = ((content_doc or {}).get("chapters") or [{}])[0]
         chapter["content"] = target.get("content", "")
+        if not chapter["content"] and _slug_is_dracula(slug):
+            artifact = _dracula_artifact_doc(include_content=True) or {}
+            target = next((c for c in artifact.get("chapters") or [] if c.get("id") == chapter_id), {})
+            chapter["content"] = target.get("content", "")
     if not chapter:
         raise HTTPException(status_code=404, detail="Chapter not found")
     await _public_cache_set(cache_key, chapter)
@@ -3949,7 +4059,10 @@ async def get_featured():
         else CONTROLLED_LIVE_BOOK_SLUGS[0]
     )
     book = await db.books.find_one(_controlled_public_book_query({"slug": featured_candidate}), BOOK_METADATA_PROJECTION)
-    result = {"book": _safe_live_public_projection(book)}
+    featured_book = _safe_live_public_projection(book)
+    if not featured_book and featured_candidate == "dracula":
+        featured_book = _safe_live_public_projection(_dracula_artifact_doc(include_content=False))
+    result = {"book": featured_book}
     await _public_cache_set(cache_key, result)
     return result
 

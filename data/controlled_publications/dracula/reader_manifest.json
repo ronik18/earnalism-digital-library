@@ -1,0 +1,284 @@
+{
+  "slug": "dracula",
+  "title": "Dracula",
+  "author": "Bram Stoker",
+  "chapter_count": 27,
+  "preview_chapter_ids": [
+    "chapter-001"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "audio_status": "NOT_AVAILABLE",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "title": "CHAPTER I. JONATHAN HARKER’S JOURNAL",
+      "order": 1,
+      "is_preview": true,
+      "word_count": 5695,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-002",
+      "title": "CHAPTER II. JONATHAN HARKER’S JOURNAL-- continued",
+      "order": 2,
+      "is_preview": false,
+      "word_count": 5482,
+      "reading_minutes": 23,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-003",
+      "title": "CHAPTER III. JONATHAN HARKER’S JOURNAL-- continued",
+      "order": 3,
+      "is_preview": false,
+      "word_count": 5723,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-004",
+      "title": "CHAPTER IV. JONATHAN HARKER’S JOURNAL-- continued",
+      "order": 4,
+      "is_preview": false,
+      "word_count": 5889,
+      "reading_minutes": 25,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-005",
+      "title": "CHAPTER V",
+      "order": 5,
+      "is_preview": false,
+      "word_count": 3544,
+      "reading_minutes": 15,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-006",
+      "title": "CHAPTER VI. MINA MURRAY’S JOURNAL",
+      "order": 6,
+      "is_preview": false,
+      "word_count": 5710,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-007",
+      "title": "CHAPTER VII. CUTTING FROM “THE DAILYGRAPH,” 8 AUGUST",
+      "order": 7,
+      "is_preview": false,
+      "word_count": 5669,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-008",
+      "title": "CHAPTER VIII. MINA MURRAY’S JOURNAL",
+      "order": 8,
+      "is_preview": false,
+      "word_count": 6314,
+      "reading_minutes": 26,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-009",
+      "title": "CHAPTER IX",
+      "order": 9,
+      "is_preview": false,
+      "word_count": 5949,
+      "reading_minutes": 25,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-010",
+      "title": "CHAPTER X",
+      "order": 10,
+      "is_preview": false,
+      "word_count": 5940,
+      "reading_minutes": 25,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-011",
+      "title": "CHAPTER XI",
+      "order": 11,
+      "is_preview": false,
+      "word_count": 5125,
+      "reading_minutes": 21,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-012",
+      "title": "CHAPTER XII. DR. SEWARD’S DIARY",
+      "order": 12,
+      "is_preview": false,
+      "word_count": 7286,
+      "reading_minutes": 30,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-013",
+      "title": "CHAPTER XIII",
+      "order": 13,
+      "is_preview": false,
+      "word_count": 6577,
+      "reading_minutes": 27,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-014",
+      "title": "CHAPTER XIV. MINA HARKER’S JOURNAL",
+      "order": 14,
+      "is_preview": false,
+      "word_count": 6418,
+      "reading_minutes": 27,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-015",
+      "title": "CHAPTER XV",
+      "order": 15,
+      "is_preview": false,
+      "word_count": 5812,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-016",
+      "title": "CHAPTER XVI. DR. SEWARD’S DIARY-- continued",
+      "order": 16,
+      "is_preview": false,
+      "word_count": 4560,
+      "reading_minutes": 19,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-017",
+      "title": "CHAPTER XVII. DR. SEWARD’S DIARY-- continued",
+      "order": 17,
+      "is_preview": false,
+      "word_count": 5572,
+      "reading_minutes": 23,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-018",
+      "title": "CHAPTER XVIII. DR. SEWARD’S DIARY",
+      "order": 18,
+      "is_preview": false,
+      "word_count": 6907,
+      "reading_minutes": 29,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-019",
+      "title": "CHAPTER XIX. JONATHAN HARKER’S JOURNAL",
+      "order": 19,
+      "is_preview": false,
+      "word_count": 5676,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-020",
+      "title": "CHAPTER XX. JONATHAN HARKER’S JOURNAL",
+      "order": 20,
+      "is_preview": false,
+      "word_count": 5906,
+      "reading_minutes": 25,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-021",
+      "title": "CHAPTER XXI. DR. SEWARD’S DIARY",
+      "order": 21,
+      "is_preview": false,
+      "word_count": 6172,
+      "reading_minutes": 26,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-022",
+      "title": "CHAPTER XXII. JONATHAN HARKER’S JOURNAL",
+      "order": 22,
+      "is_preview": false,
+      "word_count": 5451,
+      "reading_minutes": 23,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-023",
+      "title": "CHAPTER XXIII. DR. SEWARD’S DIARY",
+      "order": 23,
+      "is_preview": false,
+      "word_count": 5664,
+      "reading_minutes": 24,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-024",
+      "title": "CHAPTER XXIV. DR. SEWARD’S PHONOGRAPH DIARY, SPOKEN BY VAN HELSING",
+      "order": 24,
+      "is_preview": false,
+      "word_count": 6299,
+      "reading_minutes": 26,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-025",
+      "title": "CHAPTER XXV. DR. SEWARD’S DIARY",
+      "order": 25,
+      "is_preview": false,
+      "word_count": 6255,
+      "reading_minutes": 26,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-026",
+      "title": "CHAPTER XXVI. DR. SEWARD’S DIARY",
+      "order": 26,
+      "is_preview": false,
+      "word_count": 7155,
+      "reading_minutes": 30,
+      "processing_status": "ready",
+      "has_images": false
+    },
+    {
+      "id": "chapter-027",
+      "title": "CHAPTER XXVII. MINA HARKER’S JOURNAL",
+      "order": 27,
+      "is_preview": false,
+      "word_count": 8175,
+      "reading_minutes": 34,
+      "processing_status": "ready",
+      "has_images": false
+    }
+  ]
+}

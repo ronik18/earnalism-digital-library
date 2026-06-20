@@ -4,11 +4,11 @@ This is a committed sample snapshot from the 2026-06-20 IST owner audit. Recurri
 
 Date: 2026-06-20 IST
 
-Today's overall score: 9.4 / 10 local pre-deploy
+Today's overall score: 9.5 / 10 local pre-deploy with artifact fallback
 
 Recommendation: GO for local Dracula-only catalog truth; HOLD for operational GO until this branch is deployed and the API-backed catalog canary passes.
 
-The score remains below 9.7 until this backend catalog truth gate is merged, deployed, and `npm run launch:backend-catalog-truth-canary` passes against production. The branch hardens public API projections, reader access, audiobook access, owner audit reporting, and backend/frontend catalog truth alignment for Dracula-only controlled launch.
+The score remains below 9.7 until the Dracula artifact fallback is deployed and `npm run launch:backend-catalog-truth-canary` passes against production. The branch restores Dracula API availability without broad catalog exposure and without enabling audiobook.
 
 ## Top 3 Wins
 
@@ -18,13 +18,14 @@ The score remains below 9.7 until this backend catalog truth gate is merged, dep
 
 ## Top 3 Risks
 
-- Backend catalog truth must be verified live after deploy with `npm run launch:backend-catalog-truth-canary`; the pre-fix production API canary failed.
+- Backend catalog truth must be verified live after deploy with `npm run launch:backend-catalog-truth-canary`; production currently returns no Dracula API record.
 - Current SEO audit is `BLOCKED_FOR_BOOK_SEO` because book detail metadata is client-rendered.
 - Post-deploy verification must confirm the Dracula-first homepage/library source and backend truth gate are live before growth expansion.
 
 ## Exact Fixes Needed
 
-- Merge and deploy this small backend catalog truth branch.
+- Merge and deploy the Dracula production API availability branch.
+- Run `npm run prod:dracula-diagnostic` after deploy.
 - Add prerender/SSR/static-snapshot metadata for Dracula and priority public book pages.
 - Run `npm run launch:backend-catalog-truth-canary` after deploy and confirm zero unapproved reader/audio/sitemap exposure.
 

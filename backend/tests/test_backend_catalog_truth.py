@@ -116,6 +116,37 @@ def test_projection_removes_private_rights_audio_and_chapter_content():
     assert projected["rights_note"]
 
 
+def test_dracula_artifact_pack_is_self_contained_for_truth_gate(monkeypatch):
+    monkeypatch.setattr(catalog_truth, "evidence_for_book", lambda _book: {})
+
+    artifact = catalog_truth.load_dracula_artifact_book(include_content=True)
+
+    assert artifact is not None
+    assert artifact["slug"] == "dracula"
+    assert len(artifact["chapters"]) == 27
+    assert artifact["source_url"] == "https://www.gutenberg.org/ebooks/345"
+    assert artifact["source_hash"]
+    assert artifact["content_hash"]
+    assert artifact["provenance_hash"]
+    assert catalog_truth.is_live_approved_book(artifact) is True
+
+    projected = catalog_truth.public_book_projection(artifact)
+
+    assert projected["publication_status"] == "LIVE_APPROVED"
+    assert projected["reader_enabled"] is True
+    assert projected["preview_enabled"] is True
+    assert projected["audio_enabled"] is False
+    assert "source_hash" not in projected
+    assert "content_hash" not in projected
+    assert "provenance_hash" not in projected
+    assert "rights_metadata" not in projected
+    assert "audiobook_assets" not in projected
+
+    status = catalog_truth.dracula_artifact_status()
+    assert status["self_contained_for_truth_gate"] is True
+    assert status["fallback_requires_legacy_output_evidence"] is False
+
+
 def test_public_book_response_model_is_safe_contract():
     projected = catalog_truth.public_book_projection(
         dracula_book(audiobook={"url": "https://cdn.example.com/dracula.mp3"})
@@ -432,11 +463,23 @@ def api_result(status, payload=None):
 
 def base_api_mapping(**overrides):
     dracula = catalog_truth.public_book_projection(dracula_book())
+    manifest_chapters = [
+        {"id": f"chapter-{index:03d}", "title": f"Chapter {index}", "order": index, "is_preview": index == 1}
+        for index in range(1, 28)
+    ]
     mapping = {
         "/books": api_result(200, [dracula]),
         "/books/dracula": api_result(200, dracula),
         "/books/kshudhita-pashan": api_result(404, {"detail": "Book not found"}),
-        "/reader/book/dracula/manifest": api_result(200, {"book": dracula, "chapters": [{"id": "chapter-1"}]}),
+        "/controlled-launch/status": api_result(200, {"catalog_truth_status": "PASS"}),
+        "/reader/book/dracula/manifest": api_result(
+            200,
+            {
+                "book": dracula,
+                "chapters": manifest_chapters,
+                "audio": {"enabled": False, "assets": {}, "url": ""},
+            },
+        ),
         "/reader/book/kshudhita-pashan/manifest": api_result(404, {"detail": "Book not found"}),
         "/reader/book/dracula/audiobook": api_result(404, {"detail": "Audiobook asset not found"}),
         "/reader/book/kshudhita-pashan/audiobook": api_result(404, {"detail": "Audiobook asset not found"}),
