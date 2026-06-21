@@ -88,7 +88,24 @@ def test_dry_run_plan_succeeds_with_draft_data_and_generates_no_audio():
     assert any("Approved full source text is unavailable" in issue for issue in plan["issues"])
     assert plan["approval_evidence"]["governance_request_checksum"]
     assert plan["approval_evidence"]["source_metadata_checksum"]
+    assert plan["approval_evidence"]["voice_profile_checksum"]
+    assert "generated_segment_manifest_checksum" in plan["approval_evidence"]
+    assert "release_gate_report_checksum" in plan["approval_evidence"]
     assert plan["approval_evidence"]["release_gate_checksum"]
+
+
+def test_schema_validation_rejects_bad_types_and_enums():
+    schema = workflow.read_json(workflow.GOVERNANCE_SCHEMA_PATH)
+    payload = workflow.read_json(workflow.REQUEST_PATH)
+    payload["public_release_allowed"] = "false"
+    payload["voice_source_type"] = "CELEBRITY_CLONE"
+    payload["approvals"]["owner"]["approved"] = "no"
+
+    issues = workflow.validate_schema_payload(schema, payload, label="governance_request")
+
+    assert any("$.public_release_allowed expected boolean" in issue for issue in issues)
+    assert any("$.voice_source_type has unsupported value" in issue for issue in issues)
+    assert any("$.approvals.owner.approved expected boolean" in issue for issue in issues)
 
 
 def test_approve_dry_run_mode_is_internal_only():
@@ -121,6 +138,7 @@ def test_provider_adapter_performs_no_network_calls(monkeypatch):
         raise AssertionError("network call attempted")
 
     monkeypatch.setattr(socket, "create_connection", fail_network)
+    monkeypatch.setattr(socket, "socket", fail_network)
     provider = DryRunNarrationProvider()
     result = provider.generate_segment(
         GenerationRequest(
@@ -179,6 +197,11 @@ def test_workflow_cli_writes_manifest_without_generation(tmp_path: Path):
     assert payload["segments"] == []
     validation = json.loads(Path("output/audiobook_regeneration/kshudhita-pashan/segment_manifest_validation.json").read_text())
     assert validation["status"] == "PASS"
+    evidence = json.loads(Path("output/audiobook_regeneration/kshudhita-pashan/approval_evidence.json").read_text())
+    assert evidence["governance_request_checksum"]
+    assert evidence["voice_profile_checksum"]
+    assert evidence["source_metadata_checksum"]
+    assert evidence["generated_segment_manifest_checksum"]
 
 
 def test_precheck_cli_exits_nonzero_until_approvals_exist():

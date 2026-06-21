@@ -91,6 +91,60 @@ def git_sha() -> str:
     return result.stdout.strip() if result.returncode == 0 else "UNKNOWN"
 
 
+def schema_type_matches(expected: str, value: Any) -> bool:
+    if expected == "object":
+        return isinstance(value, dict)
+    if expected == "array":
+        return isinstance(value, list)
+    if expected == "string":
+        return isinstance(value, str)
+    if expected == "boolean":
+        return isinstance(value, bool)
+    if expected == "integer":
+        return isinstance(value, int) and not isinstance(value, bool)
+    if expected == "number":
+        return (isinstance(value, int) or isinstance(value, float)) and not isinstance(value, bool)
+    return True
+
+
+def validate_schema_value(schema: dict[str, Any], value: Any, *, label: str, path: str) -> list[str]:
+    issues: list[str] = []
+    expected_type = schema.get("type")
+    if isinstance(expected_type, str) and not schema_type_matches(expected_type, value):
+        issues.append(f"{label} {path} expected {expected_type}, got {type(value).__name__}")
+        return issues
+
+    if "enum" in schema and value not in schema.get("enum", []):
+        issues.append(f"{label} {path} has unsupported value: {value}")
+
+    if expected_type in {"integer", "number"} and "minimum" in schema:
+        try:
+            if value < schema["minimum"]:
+                issues.append(f"{label} {path} must be >= {schema['minimum']}")
+        except TypeError:
+            issues.append(f"{label} {path} could not be compared with minimum")
+
+    if expected_type == "object" and isinstance(value, dict):
+        properties = schema.get("properties") if isinstance(schema.get("properties"), dict) else {}
+        for key in schema.get("required", []):
+            if key not in value:
+                issues.append(f"{label} {path}.{key} missing required field")
+        for key, item in value.items():
+            if key in properties:
+                issues.extend(validate_schema_value(properties[key], item, label=label, path=f"{path}.{key}"))
+                continue
+            additional = schema.get("additionalProperties")
+            if isinstance(additional, dict):
+                issues.extend(validate_schema_value(additional, item, label=label, path=f"{path}.{key}"))
+
+    if expected_type == "array" and isinstance(value, list):
+        item_schema = schema.get("items") if isinstance(schema.get("items"), dict) else {}
+        for index, item in enumerate(value, start=1):
+            issues.extend(validate_schema_value(item_schema, item, label=label, path=f"{path}[{index}]"))
+
+    return issues
+
+
 def validate_required(schema: dict[str, Any], payload: dict[str, Any], *, label: str) -> list[str]:
     issues: list[str] = []
     for key in schema.get("required", []):
@@ -113,6 +167,12 @@ def validate_required(schema: dict[str, Any], payload: dict[str, Any], *, label:
     return issues
 
 
+def validate_schema_payload(schema: dict[str, Any], payload: dict[str, Any], *, label: str) -> list[str]:
+    required_issues = validate_required(schema, payload, label=label)
+    structural_issues = validate_schema_value(schema, payload, label=label, path="$")
+    return sorted(set(required_issues + structural_issues))
+
+
 def validate_schema_file(schema_path: Path, payload_path: Path, *, label: str) -> list[str]:
     schema = read_json(schema_path)
     payload = read_json(payload_path)
@@ -120,7 +180,7 @@ def validate_schema_file(schema_path: Path, payload_path: Path, *, label: str) -
         return [f"{label} schema missing: {schema_path}"]
     if not payload:
         return [f"{label} payload missing: {payload_path}"]
-    return validate_required(schema, payload, label=label)
+    return validate_schema_payload(schema, payload, label=label)
 
 
 def load_context(book_slug: str) -> WorkflowContext:
@@ -136,6 +196,30 @@ def load_context(book_slug: str) -> WorkflowContext:
         profile = read_json(PROFILE_DIR / f"{profile_id}.json")
     source_metadata = read_json(SOURCE_METADATA_PATH)
     return WorkflowContext(request=request, profile=profile, source_metadata=source_metadata, book_slug=book_slug)
+
+
+def voice_profile_path(context: WorkflowContext) -> Path:
+    profile_id = str(context.request.get("narrator_profile_id") or "").strip()
+    sample_path = PROFILE_DIR / f"{profile_id.replace('-sample', '')}.sample.json"
+    if sample_path.exists():
+        return sample_path
+    return PROFILE_DIR / f"{profile_id}.json"
+
+
+def approval_evidence(context: WorkflowContext, output_dir: Path | None = None) -> dict[str, Any]:
+    output_dir = output_dir or OUTPUT_ROOT / context.book_slug
+    return {
+        "generated_at": utc_now(),
+        "git_sha": git_sha(),
+        "governance_request_checksum": sha256_path(REQUEST_PATH),
+        "source_metadata_checksum": sha256_path(SOURCE_METADATA_PATH),
+        "voice_profile_checksum": sha256_path(voice_profile_path(context)),
+        "generated_segment_manifest_checksum": sha256_path(output_dir / "segment_manifest.json"),
+        "release_gate_report_checksum": sha256_path(output_dir / "release_gate_report.json"),
+        "release_gate_markdown_checksum": sha256_path(ROOT / "AUDIOBOOK_RELEASE_GATE_REPORT.md"),
+        "release_gate_script_checksum": sha256_path(ROOT / "scripts" / "audiobook_release_gate.py"),
+        "release_gate_checksum": sha256_path(ROOT / "scripts" / "audiobook_release_gate.py"),
+    }
 
 
 def approval_value(request: dict[str, Any], key: str) -> bool:
@@ -286,14 +370,7 @@ def build_plan(context: WorkflowContext, *, simulate_dry_run_approvals: bool = F
         "generation_performed": False,
         "upload_performed": False,
         "provider_call_performed": False,
-        "approval_evidence": {
-            "generated_at": utc_now(),
-            "git_sha": git_sha(),
-            "governance_request_checksum": sha256_path(REQUEST_PATH),
-            "source_metadata_checksum": sha256_path(SOURCE_METADATA_PATH),
-            "voice_profile_checksum": sha256_path(PROFILE_DIR / f"{str(context.request.get('narrator_profile_id') or '').replace('-sample', '')}.sample.json"),
-            "release_gate_checksum": sha256_path(ROOT / "scripts" / "audiobook_release_gate.py"),
-        },
+        "approval_evidence": approval_evidence(context),
         "provider_result": dry_run_result.__dict__,
         "issues": issues,
         "segments_planned": len(build_segments(context, ready=simulate_dry_run_approvals and not issues)),
@@ -365,6 +442,7 @@ def write_segment_manifest(context: WorkflowContext, output_dir: Path, *, ready:
         "segments": build_segments(context, ready=ready),
     }
     write_json(output_dir / "segment_manifest.json", manifest)
+    write_json(output_dir / "approval_evidence.json", approval_evidence(context, output_dir))
     validation_issues = validate_schema_file(
         SEGMENT_SCHEMA_PATH,
         output_dir / "segment_manifest.json",

@@ -153,10 +153,14 @@ def test_no_audio_route_for_kshudhita_returns_404(monkeypatch):
 def test_release_gate_cli_writes_blocked_report():
     result = gate.main([])
     report = gate.REPORT_PATH.read_text(encoding="utf-8")
+    evidence = json.loads((workflow.OUTPUT_ROOT / "kshudhita-pashan" / "approval_evidence.json").read_text())
 
     assert result == 0
     assert "BLOCKED_PUBLIC_AUDIO_RELEASE" in report
     assert "Kshudhita Pashan remains pipeline-only" in report
+    assert evidence["release_gate_report_checksum"]
+    assert evidence["release_gate_markdown_checksum"]
+    assert evidence["release_gate_script_checksum"]
 
 
 def test_release_gate_expect_blocked_passes_and_expect_ready_fails():

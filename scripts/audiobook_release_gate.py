@@ -20,6 +20,7 @@ from backend import catalog_truth
 from scripts.audiobook_regeneration_workflow import (
     OUTPUT_ROOT,
     REQUEST_PATH,
+    approval_evidence,
     load_context,
     read_json,
     write_json,
@@ -237,6 +238,7 @@ def main(argv: list[str] | None = None) -> int:
     result = evaluate_release_gate(context.request, context.profile, manifest=manifest)
     write_text(REPORT_PATH, report_markdown(result))
     write_json(OUTPUT_ROOT / "kshudhita-pashan" / "release_gate_report.json", result.as_dict())
+    write_json(OUTPUT_ROOT / "kshudhita-pashan" / "approval_evidence.json", approval_evidence(context))
     print(f"Audiobook release gate status: {result.status}")
     if args.expect == "blocked":
         return 0 if result.status == "BLOCKED_PUBLIC_AUDIO_RELEASE" else 1
