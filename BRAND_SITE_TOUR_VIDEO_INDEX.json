@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-20T20:30:39.559406+00:00",
-  "git_sha": "e3d210e48a249a4efcb2a887072ac5cd7ae43ede",
+  "generated_at": "2026-06-21T03:47:08.539370+00:00",
+  "git_sha": "484e3e504752eca764868b564222321496ea88c6",
   "branch": "codex/premium-site-tour-video-package",
   "frontend_url": "https://theearnalism.com",
   "api_url": "https://api.theearnalism.com/api",
@@ -78,7 +78,7 @@
       "path": "output/brand-site-tour/latest/earnalism-site-tour-master.webm",
       "exists": true,
       "file_size_bytes": 648355,
-      "sha256": "e51b7ca77c88ae3a8bbab4b1433c21412d141ebee39cf63a1416402976fcc499",
+      "sha256": "ca782204d02bb9151acb036eb63a3eb44066042dcf2b91c681f3b544fb469a79",
       "duration_seconds": 39.334
     },
     "master_mp4": {
@@ -141,14 +141,32 @@
       "path": "output/brand-site-tour/latest/earnalism-site-tour-review-report.md",
       "exists": true,
       "file_size_bytes": 2970,
-      "sha256": "e2dbc4cb50db1a3b271b9a131433842c715b80c6fc9239f06028bcee043445a3",
+      "sha256": "fea2c73f3579d5a0ee64360b577ad3b7e9631c2b441f218da11e3b73246a1efa",
       "duration_seconds": null
     }
   },
   "overlay_status": "OPERATOR_REQUIRED_OVERLAY_EXPORT",
   "caption_status": "MUXED_IN_MASTER_MP4",
   "caption_count": 9,
+  "expected_caption_count": 9,
   "caption_mismatch_blocker": false,
+  "video_status": {
+    "ffmpeg_available": true,
+    "ffprobe_available": true,
+    "overlay_font": "/System/Library/Fonts/Supplemental/Georgia.ttf",
+    "overlay_status": "OPERATOR_REQUIRED_OVERLAY_EXPORT",
+    "master_webm": "PASS",
+    "master_mp4": "PASS",
+    "vertical_9x16_mp4": "PASS",
+    "square_1x1_mp4": "PASS",
+    "short_15s_mp4": "PASS",
+    "edited_master_video_exists": false,
+    "caption_status": "MUXED_IN_MASTER_MP4",
+    "master_webm_fallback": "overlay export failed; generated non-overlay concat",
+    "caption_count": 9,
+    "expected_caption_count": 9,
+    "caption_mismatch_blocker": false
+  },
   "canary_stamp": {
     "frontend_url": "https://theearnalism.com",
     "api_url": "https://api.theearnalism.com/api",

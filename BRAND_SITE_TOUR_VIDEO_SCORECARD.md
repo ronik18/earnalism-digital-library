@@ -7,11 +7,16 @@ Recommendation: HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW
 ## Score Caps
 
 - overlay_status_not_pass_max_8: True
+- captions_missing_or_mismatched_max_8: False
+- caption_track_sidecar_only_max_8_6: False
+- required_artifacts_missing_max_8: False
 - artifact_checksums_missing_max_8_2: False
 - ffprobe_duration_missing_max_8_5: False
 - human_owner_review_missing_max_9: True
+- backend_catalog_truth_missing_or_failing_max_8_8: False
 - release_post_production_canary_missing_or_failing_max_8_8: False
 - seo_or_social_preview_missing_or_failing_max_ad_readiness_8_8: False
+- ux_go_no_go_missing_or_failing_max_8_8: False
 
 ## Category Scores
 

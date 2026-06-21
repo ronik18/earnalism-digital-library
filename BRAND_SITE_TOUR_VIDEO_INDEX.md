@@ -1,7 +1,7 @@
 # Brand Site-Tour Video Index
 
-Generated at: `2026-06-20T20:30:39.559406+00:00`
-Git SHA: `e3d210e48a249a4efcb2a887072ac5cd7ae43ede`
+Generated at: `2026-06-21T03:47:08.539370+00:00`
+Git SHA: `484e3e504752eca764868b564222321496ea88c6`
 Branch: `codex/premium-site-tour-video-package`
 Frontend URL: `https://theearnalism.com`
 API URL: `https://api.theearnalism.com/api`
@@ -48,7 +48,7 @@ Final recommendation: `HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW`
 
 | Artifact | Exists | Size | SHA256 | Duration |
 | --- | --- | ---: | --- | ---: |
-| master_webm | True | 648355 | `e51b7ca77c88ae3a...` | 39.334 |
+| master_webm | True | 648355 | `ca782204d02bb915...` | 39.334 |
 | master_mp4 | True | 998618 | `eecb23b60b035727...` | 39.333 |
 | vertical_9x16_mp4 | True | 832531 | `bafda01064ce894a...` | 39.333 |
 | square_1x1_mp4 | True | 820716 | `35031e44b85bea3b...` | 39.333 |
@@ -57,7 +57,7 @@ Final recommendation: `HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW`
 | transcript | True | 1629 | `349bcf5edc8971c8...` |  |
 | storyboard | True | 2766 | `5e95718b6448a063...` |  |
 | shotlist | True | 2550 | `810874e89bd5d68f...` |  |
-| review_report | True | 2970 | `e2dbc4cb50db1a3b...` |  |
+| review_report | True | 2970 | `fea2c73f3579d5a0...` |  |
 
 ## Canary Stamp
 

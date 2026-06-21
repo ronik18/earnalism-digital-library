@@ -752,8 +752,29 @@ def human_review_approved() -> bool:
     return "approved_for_paid_ads = true" in text or "approved for paid ads: yes" in text
 
 
+def required_artifact_keys() -> tuple[str, ...]:
+    return (
+        "master_webm",
+        "master_mp4",
+        "vertical_9x16_mp4",
+        "square_1x1_mp4",
+        "short_15s_mp4",
+        "captions",
+        "transcript",
+        "storyboard",
+        "shotlist",
+        "review_report",
+    )
+
+
+def index_has_required_artifacts(index: dict[str, Any]) -> bool:
+    artifacts = index.get("artifacts", {})
+    return all(artifacts.get(key, {}).get("exists") is True for key in required_artifact_keys())
+
+
 def index_has_checksums(index: dict[str, Any]) -> bool:
-    return all(record.get("sha256") for record in index.get("artifacts", {}).values() if record.get("exists"))
+    artifacts = index.get("artifacts", {})
+    return all(artifacts.get(key, {}).get("sha256") for key in required_artifact_keys())
 
 
 def index_has_durations(index: dict[str, Any]) -> bool:
@@ -761,16 +782,32 @@ def index_has_durations(index: dict[str, Any]) -> bool:
     return all(index.get("artifacts", {}).get(key, {}).get("duration_seconds") for key in media_keys)
 
 
-def scorecard(selected: list[tuple[Shot, Path]], video_status: dict[str, object], index: dict[str, Any]) -> dict[str, object]:
+def index_has_complete_captions(index: dict[str, Any]) -> bool:
+    expected_count = int(index.get("expected_caption_count") or len(index.get("selected_clip_names") or []))
+    caption_count = int(index.get("caption_count") or 0)
+    captions_exist = index.get("artifacts", {}).get("captions", {}).get("exists") is True
+    return captions_exist and expected_count > 0 and caption_count == expected_count
+
+
+def canary_value_is_present(value: Any) -> bool:
+    return value not in (None, "", "CANARY_STATUS_NOT_ATTACHED", "FAIL", "FAILED")
+
+
+def scorecard(index: dict[str, Any]) -> dict[str, object]:
+    selected_count = len(index.get("selected_clip_names") or [])
+    video_status = index.get("video_status") if isinstance(index.get("video_status"), dict) else {}
+    overlay_status = index.get("overlay_status") or video_status.get("overlay_status")
+    caption_status = index.get("caption_status") or video_status.get("caption_status")
+    caption_mismatch_blocker = bool(index.get("caption_mismatch_blocker"))
     category_scores = {
         "visual_luxury": 9.1,
         "dracula_first_clarity": 9.8,
-        "feature_completeness": 9.3 if len(selected) >= 9 else 8.4,
+        "feature_completeness": 9.3 if selected_count >= 9 else 8.4,
         "conversion_clarity": 9.2,
         "truthfulness": 10.0,
         "pacing": 8.9,
         "mobile_suitability": 9.0,
-        "caption_quality": 9.1 if video_status.get("caption_mismatch_blocker") is False else 7.8,
+        "caption_quality": 9.1 if not caption_mismatch_blocker else 7.8,
         "social_ad_suitability": 8.6,
         "seo_readiness_dependency": 8.8,
     }
@@ -786,30 +823,40 @@ def scorecard(selected: list[tuple[Shot, Path]], video_status: dict[str, object]
     canary = index.get("canary_stamp", {})
     release_ok = canary.get("release_post_production_canary_status") == "PASS"
     seo_social_ok = canary.get("seo_audit_status") == "PASS" and canary.get("social_preview_audit_status") == "PASS"
+    ux_ok = canary_value_is_present(canary.get("ux_go_no_go_status"))
+    backend_ok = canary.get("backend_catalog_truth_status") == "PASS"
     owner_approved = human_review_approved()
 
-    apply_cap("overlay_status_not_pass_max_8", video_status.get("overlay_status") != "PASS", 8.0)
+    apply_cap("overlay_status_not_pass_max_8", overlay_status != "PASS", 8.0)
+    apply_cap("captions_missing_or_mismatched_max_8", not index_has_complete_captions(index), 8.0)
+    apply_cap("caption_track_sidecar_only_max_8_6", caption_status == "SIDECAR_ONLY", 8.6)
+    apply_cap("required_artifacts_missing_max_8", not index_has_required_artifacts(index), 8.0)
     apply_cap("artifact_checksums_missing_max_8_2", not index_has_checksums(index), 8.2)
     apply_cap("ffprobe_duration_missing_max_8_5", not index_has_durations(index), 8.5)
     apply_cap("human_owner_review_missing_max_9", not owner_approved, 9.0)
+    apply_cap("backend_catalog_truth_missing_or_failing_max_8_8", not backend_ok, 8.8)
     apply_cap("release_post_production_canary_missing_or_failing_max_8_8", not release_ok, 8.8)
     apply_cap("seo_or_social_preview_missing_or_failing_max_ad_readiness_8_8", not seo_social_ok, 8.8)
+    apply_cap("ux_go_no_go_missing_or_failing_max_8_8", not ux_ok, 8.8)
 
     recommendation = "HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW"
     if (
         overall >= 9.7
-        and video_status.get("overlay_status") == "PASS"
-        and video_status.get("caption_mismatch_blocker") is False
-        and len(selected) >= 9
-        and canary.get("backend_catalog_truth_status") == "PASS"
+        and overlay_status == "PASS"
+        and caption_status == "MUXED_IN_MASTER_MP4"
+        and not caption_mismatch_blocker
+        and selected_count >= 9
+        and backend_ok
         and release_ok
         and seo_social_ok
+        and ux_ok
         and owner_approved
     ):
         recommendation = "GO_FOR_BRANDING_AND_ADVERTISEMENT"
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_index_path": display_path(INDEX_JSON),
         "overall_score": round(overall, 2),
         "recommendation": recommendation,
         "category_scores": category_scores,
@@ -826,6 +873,9 @@ def scorecard(selected: list[tuple[Shot, Path]], video_status: dict[str, object]
         },
         "video_status": video_status,
         "canary_stamp": canary,
+        "selected_clip_count": selected_count,
+        "caption_status": caption_status,
+        "overlay_status": overlay_status,
     }
 
 
@@ -869,7 +919,9 @@ def build_artifact_index(
         "overlay_status": video_status.get("overlay_status"),
         "caption_status": video_status.get("caption_status"),
         "caption_count": video_status.get("caption_count"),
+        "expected_caption_count": video_status.get("expected_caption_count"),
         "caption_mismatch_blocker": video_status.get("caption_mismatch_blocker"),
+        "video_status": video_status,
         "canary_stamp": canary_statuses(),
         "final_recommendation": "HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW",
     }
@@ -1158,12 +1210,17 @@ def create_package(output_dir: Path) -> dict[str, object]:
     write_transcript(selected, output_dir)
     write_shotlist(selected, skipped, output_dir)
     write_storyboard(selected, output_dir)
+    provisional_index = build_artifact_index(selected, skipped, output_dir, video_status)
+    provisional_scores = scorecard(provisional_index)
+    provisional_index["final_recommendation"] = provisional_scores["recommendation"]
+    write_review_report(selected, skipped, video_status, output_dir, provisional_scores, provisional_index)
+
+    # Rebuild after the review report exists so the final scorecard is derived
+    # from the complete committed artifact index, not from pre-report state.
     index = build_artifact_index(selected, skipped, output_dir, video_status)
-    scores = scorecard(selected, video_status, index)
+    scores = scorecard(index)
     index["final_recommendation"] = scores["recommendation"]
     write_review_report(selected, skipped, video_status, output_dir, scores, index)
-    index = build_artifact_index(selected, skipped, output_dir, video_status)
-    index["final_recommendation"] = scores["recommendation"]
     write_index_reports(index, scores)
     write_root_reports(scores, selected, video_status, index)
 
