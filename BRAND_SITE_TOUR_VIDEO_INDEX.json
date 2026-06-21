@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-21T03:57:14.342114+00:00",
-  "git_sha": "20924da03560f176433dcbb40c4ad6600285c5da",
+  "generated_at": "2026-06-21T12:10:11.833819+00:00",
+  "git_sha": "56d1510340b57ceee7aaafd47796dcd60b5969f0",
   "branch": "codex/premium-site-tour-video-package",
   "frontend_url": "https://theearnalism.com",
   "api_url": "https://api.theearnalism.com/api",
@@ -78,7 +78,7 @@
       "path": "output/brand-site-tour/latest/earnalism-site-tour-master.webm",
       "exists": true,
       "file_size_bytes": 794744,
-      "sha256": "f864d3cf558d097b2be6f3abe2ef5a7ad2911b1b839d28f3c1f0eedca0a5a837",
+      "sha256": "e3b618b70eefde5933487aa50e4b5b35555bac4d2f63fdfae9519c77dd57af85",
       "duration_seconds": 39.334
     },
     "master_mp4": {
@@ -141,7 +141,7 @@
       "path": "output/brand-site-tour/latest/earnalism-site-tour-review-report.md",
       "exists": true,
       "file_size_bytes": 2942,
-      "sha256": "360cb6ff157c50388773fb1d92ad9f94d2f008c273d253e2df27bb0c826a672d",
+      "sha256": "1a4a6357aba675b046f1d06ec615fe22a177ff34841c9140d086a51cb2591411",
       "duration_seconds": null
     }
   },
