@@ -115,6 +115,7 @@ describe("UX conversion static signals", () => {
   const audiobookLegalComplianceGate = read("AUDIOBOOK_LEGAL_ACCESSIBILITY_COMPLIANCE_GATE.md");
   const accessibilityClaimsPolicy = read("ACCESSIBILITY_CLAIMS_POLICY.md");
   const audiobookComplianceScorecard = read("AUDIOBOOK_COMPLIANCE_SCORECARD.md");
+  const paymentRevenueConfidenceReport = read("PAYMENT_REVENUE_10X_CONFIDENCE_REPORT.md");
   const controlledPublicationPrecheck = read("scripts/controlled_publication_precheck.py");
   const internalAudiobookPrototype = read("frontend/src/components/Internal/InternalAudiobookPlayerPrototype.jsx");
   const accessibleAudiobookPrototypeReport = read("PREMIUM_ACCESSIBLE_AUDIOBOOK_PLAYER_REPORT.md");
@@ -178,6 +179,23 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain("Chapter 1 opens free so you can feel the room first.");
     expect(bookDetail).toContain("Later chapters use reading time from your wallet, not a subscription.");
     expect(bookDetail).toContain("Dracula audio is not available yet and no listening CTA is shown.");
+  });
+
+  test("payment revenue confidence stays test-mode, wallet-time, and audio-blocked", () => {
+    expect(paymentRevenueConfidenceReport).toContain("Status: `HOLD_FOR_CONTROLLED_TEST_MODE_CHECKOUT`");
+    expect(paymentRevenueConfidenceReport).toContain("Current confidence score: `9.1/10`");
+    expect(paymentRevenueConfidenceReport).toContain("No live Razorpay payment was run");
+    expect(paymentRevenueConfidenceReport).toContain("Public audio remains `PUBLIC_AUDIO_RELEASE_BLOCKED`");
+    expect(paymentRevenueConfidenceReport).toContain("No audiobook sale is live");
+    expect(paymentRevenueConfidenceReport).toContain("Top-up intents expire after 24 hours");
+    expect(packageJson).toContain('"launch:payment-smoke:test-mode": "python3 scripts/launch_readiness_audit.py --mode payment-smoke-test-mode"');
+    expect(launchAudit).toContain('"stale_intent_expiry_detected"');
+    expect(launchAudit).toContain('"no_public_audiobook_sale_detected"');
+    expect(alwaysVisibleLaunchCopy).toContain("Reading time is credited to your wallet after confirmation and is used only while you read.");
+    expect(renderedPricingSources).toContain("No subscription or autorenewal");
+    expect(renderedPricingSources).not.toMatch(/own forever|ownership forever|permanent ownership|autorenewing plan|recurring subscription/i);
+    expect(renderedPricingSources).not.toMatch(/buy audiobook|audiobook pass|Listen Now/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/data-testid=["'][^"']*listen|listen-now|href=["'][^"']*audio/i);
   });
 
   test("product truth ledger preserves controlled-launch boundaries", () => {

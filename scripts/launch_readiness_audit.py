@@ -1230,8 +1230,25 @@ def audit_security_privacy() -> dict[str, Any]:
 def run_payment_smoke() -> dict[str, Any]:
     pricing = read_text(ROOT / "frontend" / "src" / "pages" / "Pricing.jsx")
     reader = read_text(ROOT / "frontend" / "src" / "pages" / "Reader.jsx")
+    home = read_text(ROOT / "frontend" / "src" / "pages" / "Home.jsx")
+    library = read_text(ROOT / "frontend" / "src" / "pages" / "Library.jsx")
+    book_detail = read_text(ROOT / "frontend" / "src" / "pages" / "BookDetail.jsx")
+    account = read_text(ROOT / "frontend" / "src" / "pages" / "Account.jsx")
     server = read_text(ROOT / "backend" / "server.py")
+    package_json = read_text(ROOT / "package.json")
     payment_tests = read_text(ROOT / "backend" / "tests" / "test_payments_razorpay.py")
+    compact_server = re.sub(r"\s+", "", server)
+    public_payment_copy = "\n".join([pricing, reader, home, library, book_detail, account])
+    forbidden_payment_claims = [
+        "own forever",
+        "ownership forever",
+        "permanent ownership",
+        "autorenewing plan",
+        "recurring subscription",
+        "audiobook pass",
+        "buy audiobook",
+        "listen now",
+    ]
     analytics_schema_path = OUTPUT_DIR / "analytics_event_schema.json"
     analytics_schema = read_json(analytics_schema_path)
     if not analytics_schema:
@@ -1250,12 +1267,23 @@ def run_payment_smoke() -> dict[str, Any]:
         "verify_endpoint_detected": "@api.post(\"/payments/verify\"" in server,
         "webhook_endpoint_detected": "@api.post(\"/payments/webhook\"" in server,
         "webhook_signature_detected": "X-Razorpay-Signature" in server,
-        "idempotent_credit_detected": "_credit_wallet_for_intent" in server and "status\": {\"$ne\": \"credited\"}" in server,
+        "webhook_secret_required": "Webhook secret not configured" in server,
+        "verify_scopes_intent_to_user": '"razorpay_order_id": payload.razorpay_order_id' in server and '"user_id": user["id"]' in server,
+        "bad_verify_signature_fails_intent": '"failed_reason": "bad_signature"' in server,
+        "failed_payment_marked_failed": 'event == "payment.failed"' in server and '"status": "failed"' in server,
+        "simulator_disabled_outside_test": "Simulator disabled outside test mode" in server and 'RAZORPAY_MODE != "test"' in server,
+        "test_mode_smoke_script_detected": '"launch:payment-smoke:test-mode": "python3 scripts/launch_readiness_audit.py --mode payment-smoke-test-mode"' in package_json,
+        "idempotent_credit_detected": "_credit_wallet_for_intent" in server and '"status":{"$ne":"credited"}' in compact_server,
+        "stale_intent_expiry_detected": "TOPUP_INTENT_TTL_SECONDS" in server and "intent_expired" in server and "expires_at" in server,
         "wallet_credit_idempotency_test_detected": "DOUBLE-CREDIT BUG" in payment_tests and "test_credit_and_idempotency" in payment_tests,
         "webhook_idempotency_test_detected": "duplicate" in payment_tests and "/payments/_simulate_webhook" in payment_tests,
         "admin_reconcile_idempotency_test_detected": "test_admin_reconcile_idempotent" in payment_tests,
         "post_payment_wallet_refresh_detected": "payments/me/intents" in pricing or "wallet" in pricing.lower() or "wallet" in reader.lower(),
         "post_payment_return_route_exists": 'nav("/account")' in pricing or "navigate('/account')" in reader or "nav('/account')" in pricing,
+        "wallet_truth_copy_detected": "used only while you read" in public_payment_copy and "wallet" in public_payment_copy.lower(),
+        "no_subscription_autorenewal_copy_detected": "No subscription or autorenewal" in public_payment_copy,
+        "no_permanent_ownership_claim_detected": not any(term in public_payment_copy.lower() for term in forbidden_payment_claims),
+        "no_public_audiobook_sale_detected": "PUBLIC_AUDIO_RELEASE_BLOCKED" in server or "Dracula audio is not available yet" in public_payment_copy,
         "analytics_schema_has_payment_events": set(PAYMENT_SMOKE_EVENTS).issubset(schema_events),
     }
     blockers = [key for key, passed in checks.items() if not passed and key not in {"no_external_razorpay_call"}]
@@ -2161,6 +2189,10 @@ def payment_smoke_markdown(smoke: dict[str, Any]) -> str:
             markdown_table(["Smoke Check", "Value"], [[key, value] for key, value in smoke.get("checks", {}).items()]),
             "",
             f"Artifact: `{OUTPUT_DIR / 'payment_smoke.json'}`",
+            "",
+            "Revenue launch remains HOLD until a separate controlled Razorpay test-mode checkout verifies the hosted checkout window, wallet credit, webhook idempotency, failed-payment handling, and post-payment return UX.",
+            "",
+            "This smoke does not prove live-money readiness, does not mutate production payments or wallets, and does not enable audiobook monetization.",
         ]
     )
 
