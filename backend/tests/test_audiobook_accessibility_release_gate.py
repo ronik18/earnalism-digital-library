@@ -70,6 +70,15 @@ def base_payload(**overrides):
         "kshudhita_pipeline_only": True,
         "first_batch_audio_rights_blocked": True,
         "audio_readiness_report_status": "PASS_WITH_WARNINGS",
+        "audiobook_generated_for_unapproved_source_text": False,
+        "storage_cdn_public_serving_rights_approved": True,
+        "attribution_requirements_satisfied": True,
+        "public_claims_evidence_reviewed": True,
+        "public_copy_claims_audiobooks_live": False,
+        "public_copy_exceeds_accessibility_evidence": False,
+        "refund_support_readiness": True,
+        "owner_legal_approval_status": "approved",
+        "rollback_approval_status": "approved",
     }
     payload.update(overrides)
     return payload
@@ -139,6 +148,54 @@ def test_gate_cannot_pass_without_voice_rights_and_clone_risk_resolution():
 
     assert "VOICE_NARRATOR_RIGHTS_MISSING" in blocker_codes(result)
     assert "VOICE_CLONING_RISK_UNRESOLVED" in blocker_codes(result)
+
+
+def test_gate_cannot_pass_when_generated_for_unapproved_source_text():
+    result = evaluate_release_gate(base_payload(audiobook_generated_for_unapproved_source_text=True))
+
+    assert result["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert "AUDIOBOOK_GENERATED_FOR_UNAPPROVED_SOURCE_TEXT" in blocker_codes(result)
+
+
+def test_gate_cannot_pass_without_storage_cdn_public_serving_rights():
+    result = evaluate_release_gate(base_payload(storage_cdn_public_serving_rights_approved=False))
+
+    assert result["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert "STORAGE_CDN_PUBLIC_SERVING_RIGHTS_MISSING" in blocker_codes(result)
+
+
+def test_gate_cannot_pass_without_attribution_and_public_claims_review():
+    result = evaluate_release_gate(
+        base_payload(
+            attribution_requirements_satisfied=False,
+            public_claims_evidence_reviewed=False,
+            public_copy_claims_audiobooks_live=True,
+            public_copy_exceeds_accessibility_evidence=True,
+        )
+    )
+    codes = blocker_codes(result)
+
+    assert result["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert "ATTRIBUTION_REQUIREMENTS_UNSATISFIED" in codes
+    assert "PUBLIC_CLAIMS_EVIDENCE_REVIEW_MISSING" in codes
+    assert "PUBLIC_COPY_AUDIOBOOKS_LIVE_CLAIM" in codes
+    assert "PUBLIC_COPY_ACCESSIBILITY_OVERCLAIM" in codes
+
+
+def test_gate_cannot_pass_without_refund_support_owner_legal_and_rollback_approval():
+    result = evaluate_release_gate(
+        base_payload(
+            refund_support_readiness=False,
+            owner_legal_approval_status="",
+            rollback_approval_status="",
+        )
+    )
+    codes = blocker_codes(result)
+
+    assert result["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert "REFUND_SUPPORT_READINESS_MISSING" in codes
+    assert "OWNER_LEGAL_APPROVAL_MISSING" in codes
+    assert "ROLLBACK_APPROVAL_MISSING" in codes
 
 
 def test_gate_cannot_pass_without_transcript_and_sync_evidence():

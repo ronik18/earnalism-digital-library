@@ -59,6 +59,15 @@ REQUIRED_HUMAN_REVIEW_FIELDS = [
     "rollback_plan_passed",
 ]
 
+REQUIRED_LEGAL_ACCESSIBILITY_COMPLIANCE_EVIDENCE = [
+    "storage_cdn_public_serving_rights_approved",
+    "attribution_requirements_satisfied",
+    "public_claims_evidence_reviewed",
+    "refund_support_readiness",
+    "owner_legal_approval_status",
+    "rollback_approval_status",
+]
+
 PUBLIC_SURFACE_FILES = [
     "frontend/build/index.html",
     "frontend/build/book/dracula/index.html",
@@ -270,6 +279,15 @@ def current_repo_payload() -> dict[str, Any]:
         "kshudhita_pipeline_only": "Kshudhita Pashan remains pipeline-only" in truth_ledger,
         "first_batch_audio_rights_blocked": "Audiobook derivative rights are not approved" in first_batch,
         "audio_readiness_report_status": readiness_status,
+        "audiobook_generated_for_unapproved_source_text": False,
+        "storage_cdn_public_serving_rights_approved": False,
+        "attribution_requirements_satisfied": False,
+        "public_claims_evidence_reviewed": False,
+        "public_copy_claims_audiobooks_live": surface["public_audio_claim_found"],
+        "public_copy_exceeds_accessibility_evidence": surface["unsupported_accessibility_claim_found"],
+        "refund_support_readiness": False,
+        "owner_legal_approval_status": "",
+        "rollback_approval_status": "",
         "surface_scan": surface,
     }
 
@@ -343,6 +361,70 @@ def evaluate_release_gate(payload: dict[str, Any] | None = None) -> dict[str, An
         block("VOICE_NARRATOR_RIGHTS_MISSING", "CRITICAL", "voice", "Voice or narrator rights evidence is missing.")
     if not truthy(data.get("real_person_voice_cloning_risk_resolved")):
         block("VOICE_CLONING_RISK_UNRESOLVED", "CRITICAL", "voice", "Real-person voice cloning risk is unresolved.")
+
+    if truthy(data.get("audiobook_generated_for_unapproved_source_text")):
+        block(
+            "AUDIOBOOK_GENERATED_FOR_UNAPPROVED_SOURCE_TEXT",
+            "CRITICAL",
+            "rights",
+            "Audiobook generation evidence references source text that is not approved.",
+        )
+    if not truthy(data.get("storage_cdn_public_serving_rights_approved")):
+        block(
+            "STORAGE_CDN_PUBLIC_SERVING_RIGHTS_MISSING",
+            "CRITICAL",
+            "legal_review",
+            "Storage, CDN, and public-serving rights are not approved for audiobook delivery.",
+        )
+    if not truthy(data.get("attribution_requirements_satisfied")):
+        block(
+            "ATTRIBUTION_REQUIREMENTS_UNSATISFIED",
+            "HIGH",
+            "legal_review",
+            "Required source/model/voice attribution has not been reviewed and satisfied.",
+        )
+    if not truthy(data.get("public_claims_evidence_reviewed")):
+        block(
+            "PUBLIC_CLAIMS_EVIDENCE_REVIEW_MISSING",
+            "HIGH",
+            "public_claims",
+            "Public audiobook and accessibility claims have not been reviewed against evidence.",
+        )
+    if truthy(data.get("public_copy_claims_audiobooks_live")):
+        block(
+            "PUBLIC_COPY_AUDIOBOOKS_LIVE_CLAIM",
+            "CRITICAL",
+            "public_claims",
+            "Public copy claims audiobooks are live before release approval.",
+        )
+    if truthy(data.get("public_copy_exceeds_accessibility_evidence")):
+        block(
+            "PUBLIC_COPY_ACCESSIBILITY_OVERCLAIM",
+            "CRITICAL",
+            "public_claims",
+            "Public copy makes accessibility claims that exceed available evidence.",
+        )
+    if not truthy(data.get("refund_support_readiness")):
+        block(
+            "REFUND_SUPPORT_READINESS_MISSING",
+            "HIGH",
+            "support_refund",
+            "Refund and support readiness for paid audiobook access is missing.",
+        )
+    if str(data.get("owner_legal_approval_status") or "").strip().lower() != "approved":
+        block(
+            "OWNER_LEGAL_APPROVAL_MISSING",
+            "CRITICAL",
+            "owner_approval",
+            "Owner/legal approval for public audiobook claims and rights evidence is missing.",
+        )
+    if str(data.get("rollback_approval_status") or "").strip().lower() != "approved":
+        block(
+            "ROLLBACK_APPROVAL_MISSING",
+            "HIGH",
+            "rollback",
+            "Rollback approval for public audiobook removal, refunds, and takedown response is missing.",
+        )
 
     if truthy(data.get("transcript_required")) and not truthy(data.get("transcript_present")):
         block("TRANSCRIPT_REQUIRED_MISSING", "HIGH", "transcript", "Transcript is required and missing.")
@@ -480,15 +562,19 @@ def evaluate_release_gate(payload: dict[str, Any] | None = None) -> dict[str, An
         "owner_approval_checklist": [
             "Approve exact book, edition, language, voice/provider, and release scope.",
             "Approve derivative audiobook rights and source-license evidence.",
+            "Approve storage, CDN, and public-serving rights for audiobook delivery.",
+            "Approve attribution, public-claims wording, and accessibility-claims evidence.",
             "Approve completed Bengali and English human-review scorecards at or above 9.5.",
             "Approve text fidelity, legal/commercial-use, derivative-rights, accessibility listening, and rollback fields in each scorecard.",
+            "Approve paid-access refund and support readiness before any audiobook purchase path is exposed.",
             "Approve player accessibility evidence from keyboard and screen-reader checks.",
-            "Approve rollback owner, rollback command, and takedown response path.",
+            "Approve rollback owner, rollback command, refund handling, and takedown response path.",
         ],
         "rollback_instructions": [
             "Keep audio_enabled_slugs empty.",
             "Remove or unlink any audiobook endpoint, AudioObject metadata, and Listen Now CTA.",
             "Remove public audio URLs from public projections, sitemap, static snapshots, and social previews.",
+            "Pause audiobook sales copy and paid-access CTAs until refund/support and owner/legal review are complete.",
             "Regenerate static SEO snapshots and rerun post-deploy canaries.",
         ],
         "evidence_summary": {
@@ -504,6 +590,12 @@ def evaluate_release_gate(payload: dict[str, Any] | None = None) -> dict[str, An
             "english_human_review_scorecard_present": truthy((data.get("english_human_review") or {}).get("scorecard_present")),
             "bengali_human_review_final_score": (data.get("bengali_human_review") or {}).get("final_score"),
             "english_human_review_final_score": (data.get("english_human_review") or {}).get("final_score"),
+            "storage_cdn_public_serving_rights_approved": truthy(data.get("storage_cdn_public_serving_rights_approved")),
+            "attribution_requirements_satisfied": truthy(data.get("attribution_requirements_satisfied")),
+            "public_claims_evidence_reviewed": truthy(data.get("public_claims_evidence_reviewed")),
+            "refund_support_readiness": truthy(data.get("refund_support_readiness")),
+            "owner_legal_approval_status": data.get("owner_legal_approval_status") or "",
+            "rollback_approval_status": data.get("rollback_approval_status") or "",
             "draft_pr_44_evidence_treated_as_release_approval": truthy(
                 data.get("draft_pr_44_evidence_treated_as_release_approval")
             ),
@@ -564,6 +656,12 @@ This report is an internal release gate for future Bengali and English audiobook
 | Bengali human-review final score | `{evidence['bengali_human_review_final_score']}` |
 | English human-review scorecard present | `{str(evidence['english_human_review_scorecard_present']).lower()}` |
 | English human-review final score | `{evidence['english_human_review_final_score']}` |
+| Storage/CDN public-serving rights approved | `{str(evidence['storage_cdn_public_serving_rights_approved']).lower()}` |
+| Attribution requirements satisfied | `{str(evidence['attribution_requirements_satisfied']).lower()}` |
+| Public claims evidence reviewed | `{str(evidence['public_claims_evidence_reviewed']).lower()}` |
+| Refund/support readiness | `{str(evidence['refund_support_readiness']).lower()}` |
+| Owner/legal approval status | `{evidence['owner_legal_approval_status']}` |
+| Rollback approval status | `{evidence['rollback_approval_status']}` |
 | Draft PR #44 evidence treated as release approval | `{str(evidence['draft_pr_44_evidence_treated_as_release_approval']).lower()}` |
 | Draft PR #45 evidence treated as release approval | `{str(evidence['draft_pr_45_evidence_treated_as_release_approval']).lower()}` |
 
@@ -581,19 +679,15 @@ This report is an internal release gate for future Bengali and English audiobook
 
 {chr(10).join(f"- {item}" for item in result['rollback_instructions'])}
 
-## Files Changed
+## Gate Artifacts
 
 - `scripts/audiobook_accessibility_release_gate.py`
 - `backend/tests/test_audiobook_accessibility_release_gate.py`
-- `AUDIOBOOK_ACCESSIBILITY_10_10_RELEASE_CRITERIA.md`
-- `ACCESSIBLE_AUDIOBOOK_USER_JOURNEY.md`
 - `AUDIOBOOK_ACCESSIBILITY_GATE_REPORT.md`
-- `AUDIOBOOK_ASSET_QUARANTINE_REPORT.md`
-- `AUDIOBOOK_READINESS_REPORT.md`
-- `regression/modules/11-seo.test.js`
+- `AUDIOBOOK_LEGAL_ACCESSIBILITY_COMPLIANCE_GATE.md`
+- `ACCESSIBILITY_CLAIMS_POLICY.md`
+- `AUDIOBOOK_COMPLIANCE_SCORECARD.md`
 - `regression/modules/14-ux-conversion-static.test.js`
-- `package.json`
-- `internal/audio_quarantine/frontend-public-audio/`
 
 ## Tests Run
 

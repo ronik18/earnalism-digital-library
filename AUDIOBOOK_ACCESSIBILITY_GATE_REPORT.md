@@ -30,6 +30,12 @@ This report is an internal release gate for future Bengali and English audiobook
 | Bengali human-review final score | `None` |
 | English human-review scorecard present | `false` |
 | English human-review final score | `None` |
+| Storage/CDN public-serving rights approved | `false` |
+| Attribution requirements satisfied | `false` |
+| Public claims evidence reviewed | `false` |
+| Refund/support readiness | `false` |
+| Owner/legal approval status | `` |
+| Rollback approval status | `` |
 | Draft PR #44 evidence treated as release approval | `false` |
 | Draft PR #45 evidence treated as release approval | `false` |
 
@@ -42,6 +48,12 @@ This report is an internal release gate for future Bengali and English audiobook
 | CRITICAL | license | MODEL_LICENSE_EVIDENCE_MISSING | Model license evidence is missing. |
 | CRITICAL | voice | VOICE_NARRATOR_RIGHTS_MISSING | Voice or narrator rights evidence is missing. |
 | CRITICAL | voice | VOICE_CLONING_RISK_UNRESOLVED | Real-person voice cloning risk is unresolved. |
+| CRITICAL | legal_review | STORAGE_CDN_PUBLIC_SERVING_RIGHTS_MISSING | Storage, CDN, and public-serving rights are not approved for audiobook delivery. |
+| HIGH | legal_review | ATTRIBUTION_REQUIREMENTS_UNSATISFIED | Required source/model/voice attribution has not been reviewed and satisfied. |
+| HIGH | public_claims | PUBLIC_CLAIMS_EVIDENCE_REVIEW_MISSING | Public audiobook and accessibility claims have not been reviewed against evidence. |
+| HIGH | support_refund | REFUND_SUPPORT_READINESS_MISSING | Refund and support readiness for paid audiobook access is missing. |
+| CRITICAL | owner_approval | OWNER_LEGAL_APPROVAL_MISSING | Owner/legal approval for public audiobook claims and rights evidence is missing. |
+| HIGH | rollback | ROLLBACK_APPROVAL_MISSING | Rollback approval for public audiobook removal, refunds, and takedown response is missing. |
 | HIGH | transcript | TRANSCRIPT_REQUIRED_MISSING | Transcript is required and missing. |
 | HIGH | transcript | SYNC_TOLERANCE_MISSING | Text/audio sync tolerance evidence is missing. |
 | HIGH | player_accessibility | PLAYER_CONTROLS_ACCESSIBLE_NAMES_MISSING | Player accessibility evidence missing: player_controls_accessible_names. |
@@ -87,31 +99,31 @@ This report is an internal release gate for future Bengali and English audiobook
 
 - [ ] Approve exact book, edition, language, voice/provider, and release scope.
 - [ ] Approve derivative audiobook rights and source-license evidence.
+- [ ] Approve storage, CDN, and public-serving rights for audiobook delivery.
+- [ ] Approve attribution, public-claims wording, and accessibility-claims evidence.
 - [ ] Approve completed Bengali and English human-review scorecards at or above 9.5.
 - [ ] Approve text fidelity, legal/commercial-use, derivative-rights, accessibility listening, and rollback fields in each scorecard.
+- [ ] Approve paid-access refund and support readiness before any audiobook purchase path is exposed.
 - [ ] Approve player accessibility evidence from keyboard and screen-reader checks.
-- [ ] Approve rollback owner, rollback command, and takedown response path.
+- [ ] Approve rollback owner, rollback command, refund handling, and takedown response path.
 
 ## Rollback Instructions
 
 - Keep audio_enabled_slugs empty.
 - Remove or unlink any audiobook endpoint, AudioObject metadata, and Listen Now CTA.
 - Remove public audio URLs from public projections, sitemap, static snapshots, and social previews.
+- Pause audiobook sales copy and paid-access CTAs until refund/support and owner/legal review are complete.
 - Regenerate static SEO snapshots and rerun post-deploy canaries.
 
-## Files Changed
+## Gate Artifacts
 
 - `scripts/audiobook_accessibility_release_gate.py`
 - `backend/tests/test_audiobook_accessibility_release_gate.py`
-- `AUDIOBOOK_ACCESSIBILITY_10_10_RELEASE_CRITERIA.md`
-- `ACCESSIBLE_AUDIOBOOK_USER_JOURNEY.md`
 - `AUDIOBOOK_ACCESSIBILITY_GATE_REPORT.md`
-- `AUDIOBOOK_ASSET_QUARANTINE_REPORT.md`
-- `AUDIOBOOK_READINESS_REPORT.md`
-- `regression/modules/11-seo.test.js`
+- `AUDIOBOOK_LEGAL_ACCESSIBILITY_COMPLIANCE_GATE.md`
+- `ACCESSIBILITY_CLAIMS_POLICY.md`
+- `AUDIOBOOK_COMPLIANCE_SCORECARD.md`
 - `regression/modules/14-ux-conversion-static.test.js`
-- `package.json`
-- `internal/audio_quarantine/frontend-public-audio/`
 
 ## Tests Run
 
