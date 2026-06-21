@@ -57,6 +57,9 @@ describe("UX conversion static signals", () => {
   const home = read("frontend/src/pages/Home.jsx");
   const bookDetail = read("frontend/src/pages/BookDetail.jsx");
   const library = read("frontend/src/pages/Library.jsx");
+  const about = read("frontend/src/pages/About.jsx");
+  const journal = read("frontend/src/pages/Journal.jsx");
+  const publicIndex = read("frontend/public/index.html");
   const bookCard = read("frontend/src/components/BookCard.jsx");
   const controlledLaunch = read("frontend/src/lib/controlledLaunch.js");
   const publicationSafety = read("frontend/src/lib/publicationSafety.js");
@@ -157,6 +160,18 @@ describe("UX conversion static signals", () => {
     expect(alwaysVisibleLaunchCopy).not.toMatch(/\b9\.9\+\/10\b/i);
     expect(alwaysVisibleLaunchCopy).not.toMatch(/\bPR #4[2-6]\b[\s\S]{0,120}\b(live|merged|public|deployed)\b/i);
     expect(alwaysVisibleLaunchCopy).not.toMatch(/\bbranch-(only|visible)\b[\s\S]{0,120}\b(live|public|deployed)\b/i);
+  });
+
+  test("about, journal, and base html use reading-room truth instead of stale bookstore positioning", () => {
+    for (const source of [about, journal, publicIndex]) {
+      expect(source).not.toMatch(/independent online bookstore/i);
+      expect(source).not.toMatch(/self-publishing house/i);
+      expect(source).not.toMatch(/notes from a bookstore/i);
+      expect(source).not.toMatch(/learn about the bookstore/i);
+    }
+    expect(about).toContain("reading room");
+    expect(journal).toContain("notes from a reading room");
+    expect(publicIndex).toContain("beginning with Dracula by Bram Stoker");
   });
 
   test("book card truth gate prevents unapproved reader CTAs", () => {

@@ -28,14 +28,27 @@ SITE_URL = "https://theearnalism.com"
 REMOVED_URLS = [
     "/product/patterned-wrap-dress",
     "/journal/denim-jackets",
+    "/journal/the-quiet-power-of-a-premium-bookstore-brand",
+    "/blog/lorem-ipsum",
+    "/post/sample-product",
     "/shop",
     "/shop/",
     "/shop/example",
     "/fashion",
     "/clothing",
+    "/category/fashion",
+    "/tag/fashion",
+    "/cart",
+    "/checkout",
+    "/my-account",
+    "/woocommerce",
     "/woocommerce/test",
+    "/sample-product",
     "/sample-product/test",
+    "/placeholder-product",
     "/placeholder-product/test",
+    "/lorem-ipsum",
+    "/wp-content/uploads/demo.jpg",
 ]
 
 DEMO_TERMS = [
@@ -45,10 +58,22 @@ DEMO_TERMS = [
     "woocommerce",
     "clothing",
     "apparel",
+    "bookstore",
+    "lorem-ipsum",
+    "sample-product",
+    "placeholder-product",
+    "add-to-cart",
+    "my-account",
+    "wp-content",
+    "wp-json",
     "/shop",
     "/product/",
     "/products/",
     "/product-category/",
+    "/blog/",
+    "/post/",
+    "/category/",
+    "/tag/",
 ]
 
 FIRST_BATCH = [
@@ -396,7 +421,24 @@ def contains_demo_term(value: str) -> bool:
     lowered = value.lower()
     path = re.sub(r"^https?://[^/]+", "", lowered).split("?", 1)[0]
     segments = {segment for segment in path.split("/") if segment}
-    retired_route_segments = {"shop", "product", "products", "product-category"}
+    retired_route_segments = {
+        "blog",
+        "cart",
+        "category",
+        "checkout",
+        "my-account",
+        "post",
+        "product",
+        "products",
+        "product-category",
+        "sample-product",
+        "shop",
+        "tag",
+        "woocommerce",
+        "wp-admin",
+        "wp-content",
+        "wp-json",
+    }
     if segments.intersection(retired_route_segments):
         return True
     retired_terms = {
@@ -406,8 +448,13 @@ def contains_demo_term(value: str) -> bool:
         "woocommerce",
         "clothing",
         "apparel",
+        "add-to-cart",
+        "lorem-ipsum",
+        "my-account",
         "sample-product",
         "placeholder-product",
+        "wp-content",
+        "wp-json",
     }
     return any(term in lowered for term in retired_terms)
 

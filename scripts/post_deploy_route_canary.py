@@ -20,14 +20,27 @@ DEFAULT_BASE_URL = "https://theearnalism.com"
 REMOVED_ROUTES = [
     "/product/patterned-wrap-dress",
     "/journal/denim-jackets",
+    "/journal/the-quiet-power-of-a-premium-bookstore-brand",
+    "/blog/lorem-ipsum",
+    "/post/sample-product",
     "/shop",
     "/shop/",
     "/shop/example",
     "/fashion",
     "/clothing",
+    "/category/fashion",
+    "/tag/fashion",
+    "/cart",
+    "/checkout",
+    "/my-account",
+    "/woocommerce",
     "/woocommerce/test",
+    "/sample-product",
     "/sample-product/test",
+    "/placeholder-product",
     "/placeholder-product/test",
+    "/lorem-ipsum",
+    "/wp-content/uploads/demo.jpg",
 ]
 
 

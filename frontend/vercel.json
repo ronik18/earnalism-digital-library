@@ -80,6 +80,62 @@
       "destination": "/api/removed-content?path=/shop/"
     },
     {
+      "source": "/blog",
+      "destination": "/api/removed-content?path=/blog"
+    },
+    {
+      "source": "/post",
+      "destination": "/api/removed-content?path=/post"
+    },
+    {
+      "source": "/category",
+      "destination": "/api/removed-content?path=/category"
+    },
+    {
+      "source": "/tag",
+      "destination": "/api/removed-content?path=/tag"
+    },
+    {
+      "source": "/cart",
+      "destination": "/api/removed-content?path=/cart"
+    },
+    {
+      "source": "/checkout",
+      "destination": "/api/removed-content?path=/checkout"
+    },
+    {
+      "source": "/my-account",
+      "destination": "/api/removed-content?path=/my-account"
+    },
+    {
+      "source": "/woocommerce",
+      "destination": "/api/removed-content?path=/woocommerce"
+    },
+    {
+      "source": "/sample-product",
+      "destination": "/api/removed-content?path=/sample-product"
+    },
+    {
+      "source": "/placeholder-product",
+      "destination": "/api/removed-content?path=/placeholder-product"
+    },
+    {
+      "source": "/lorem-ipsum",
+      "destination": "/api/removed-content?path=/lorem-ipsum"
+    },
+    {
+      "source": "/wp-admin",
+      "destination": "/api/removed-content?path=/wp-admin"
+    },
+    {
+      "source": "/wp-content",
+      "destination": "/api/removed-content?path=/wp-content"
+    },
+    {
+      "source": "/wp-json",
+      "destination": "/api/removed-content?path=/wp-json"
+    },
+    {
       "source": "/product/:path*",
       "destination": "/api/removed-content?path=/product/:path*"
     },
@@ -94,6 +150,34 @@
     {
       "source": "/shop/:path*",
       "destination": "/api/removed-content?path=/shop/:path*"
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "/api/removed-content?path=/blog/:path*"
+    },
+    {
+      "source": "/post/:path*",
+      "destination": "/api/removed-content?path=/post/:path*"
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/api/removed-content?path=/category/:path*"
+    },
+    {
+      "source": "/tag/:path*",
+      "destination": "/api/removed-content?path=/tag/:path*"
+    },
+    {
+      "source": "/cart/:path*",
+      "destination": "/api/removed-content?path=/cart/:path*"
+    },
+    {
+      "source": "/checkout/:path*",
+      "destination": "/api/removed-content?path=/checkout/:path*"
+    },
+    {
+      "source": "/my-account/:path*",
+      "destination": "/api/removed-content?path=/my-account/:path*"
     },
     {
       "source": "/fashion/:path*",
@@ -144,6 +228,10 @@
       "destination": "/api/removed-content?path=/journal/denim-jackets"
     },
     {
+      "source": "/journal/the-quiet-power-of-a-premium-bookstore-brand",
+      "destination": "/api/removed-content?path=/journal/the-quiet-power-of-a-premium-bookstore-brand"
+    },
+    {
       "source": "/blog/patterned-wrap-dress",
       "destination": "/api/removed-content?path=/blog/patterned-wrap-dress"
     },
@@ -170,6 +258,18 @@
     {
       "source": "/lorem-ipsum/:path*",
       "destination": "/api/removed-content?path=/lorem-ipsum/:path*"
+    },
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "/api/removed-content?path=/wp-admin/:path*"
+    },
+    {
+      "source": "/wp-content/:path*",
+      "destination": "/api/removed-content?path=/wp-content/:path*"
+    },
+    {
+      "source": "/wp-json/:path*",
+      "destination": "/api/removed-content?path=/wp-json/:path*"
     },
     {
       "source": "/api/(.*)",

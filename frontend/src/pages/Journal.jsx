@@ -5,6 +5,7 @@ import { optimizedImageUrl } from "../lib/images";
 import useSEO from "../hooks/useSEO";
 
 const JOURNAL_OG = "https://images.unsplash.com/photo-1764087957302-ef0756ed8e0a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmb3VudGFpbiUyMHBlbiUyMHdyaXRpbmclMjBkZXNrfGVufDB8fHx8MTc3NzYxNzE3N3ww&ixlib=rb-4.1.0&q=85";
+const BLOCKED_JOURNAL_SLUGS = new Set(["the-quiet-power-of-a-premium-bookstore-brand"]);
 
 const readMinutes = (text = "") => Math.max(2, Math.round((text || "").split(/\s+/).filter(Boolean).length / 200));
 const fmtDate = (iso) => {
@@ -17,8 +18,8 @@ export default function Journal() {
   const [active, setActive] = useState("all");
 
   useSEO({
-    title: "The Journal — Notes from The Earnalism Bookstore",
-    description: "Essays from The Earnalism on literature, business, technology, and the quiet craft of reading well. Notes from an independent online bookstore that reads slowly.",
+    title: "The Journal — Notes from The Earnalism Reading Room",
+    description: "Notes from The Earnalism on Dracula, rights-safe publication, literary attention, and the quiet craft of reading well.",
     image: JOURNAL_OG,
   });
 
@@ -28,8 +29,12 @@ export default function Journal() {
     return () => controller.abort();
   }, []);
 
-  const cats = useMemo(() => ["all", ...Array.from(new Set(posts.map((p) => p.category)))], [posts]);
-  const filtered = active === "all" ? posts : posts.filter((p) => p.category === active);
+  const visiblePosts = useMemo(
+    () => posts.filter((post) => !BLOCKED_JOURNAL_SLUGS.has(String(post.slug || "").toLowerCase())),
+    [posts],
+  );
+  const cats = useMemo(() => ["all", ...Array.from(new Set(visiblePosts.map((p) => p.category)))], [visiblePosts]);
+  const filtered = active === "all" ? visiblePosts : visiblePosts.filter((p) => p.category === active);
   const [feature, ...rest] = filtered;
 
   return (
@@ -38,7 +43,7 @@ export default function Journal() {
       <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-20 sm:pt-28 pb-12 sm:pb-16 text-center">
         <div className="issue-marker mb-6">Issue 01 &middot; Volume I</div>
         <h1 className="font-serif-light text-4xl sm:text-6xl lg:text-[4.5rem] text-burgundy tracking-tight max-w-4xl mx-auto leading-[1.02] text-balance">
-          The <span className="italic-accent">Journal</span> — notes from a bookstore that reads slowly.
+          The <span className="italic-accent">Journal</span> — notes from a reading room that moves carefully.
         </h1>
         <p className="font-serif-display italic text-lg sm:text-xl text-charcoal-soft mt-7 max-w-2xl mx-auto leading-snug">Essays on literature, business, technology, and the quiet craft of reading well.</p>
         <div className="gold-rule mx-auto mt-10" />

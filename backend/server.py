@@ -4025,7 +4025,10 @@ async def list_blog(category: Optional[str] = None):
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
-    query: dict = {"is_published": True}
+    query: dict = {
+        "is_published": True,
+        "slug": {"$nin": sorted(RETIRED_PUBLIC_BLOG_SLUGS)},
+    }
     if category and category != "all":
         query["category"] = category
     docs = await db.blog_posts.find(query, {"_id": 0}).sort("created_at", -1).to_list(200)
@@ -4034,6 +4037,12 @@ async def list_blog(category: Optional[str] = None):
 
 @api.get("/blog/{slug}", response_model=BlogPost)
 async def get_blog(slug: str):
+    if slug in RETIRED_PUBLIC_BLOG_SLUGS:
+        raise HTTPException(
+            status_code=410,
+            detail="Article removed",
+            headers={"X-Robots-Tag": "noindex, nofollow, noarchive"},
+        )
     cache_key = _public_cache_key("blog_detail", slug=slug)
     cached = await _public_cache_get(cache_key)
     if cached is not None:
@@ -6557,6 +6566,10 @@ RETIRED_SEED_BOOK_SLUGS = frozenset({
     "brownies-to-break-even-and-beyond",
 })
 
+RETIRED_PUBLIC_BLOG_SLUGS = frozenset({
+    "the-quiet-power-of-a-premium-bookstore-brand",
+})
+
 SEED_POSTS = [
     {
         "slug": "why-every-small-business-needs-a-story-before-a-strategy",
@@ -6576,7 +6589,7 @@ SEED_POSTS = [
         "category": "Brand",
         "pull_quote": "A premium brand is not loud — it is precise.",
         "cover_image_url": "https://images.unsplash.com/photo-1565357457446-4705a9445e54?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwyfHxhbnRpcXVlJTIwYm9vayUyMHBhZ2VzJTIwbWFjcm8lMjBwaG90b2dyYXBoeXxlbnwwfHx8fDE3Nzc2MTcxNzd8MA&ixlib=rb-4.1.0&q=85",
-        "is_published": True,
+        "is_published": False,
     },
     {
         "slug": "how-reading-shapes-better-founders",

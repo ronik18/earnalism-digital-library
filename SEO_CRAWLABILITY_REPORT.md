@@ -4,7 +4,7 @@ Status: `PASS`
 
 | Check | Value |
 | --- | --- |
-| Sitemap URL count | 12 |
+| Sitemap URL count | 11 |
 | Book URL count | 1 |
 | Demo URL count | 0 |
 | Robots sitemap present | True |

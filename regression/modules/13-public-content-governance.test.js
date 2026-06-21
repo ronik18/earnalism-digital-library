@@ -11,32 +11,51 @@ const ROOT = path.resolve(__dirname, "../..");
 const FIXTURE_DIR = path.join(ROOT, "regression", "fixtures", "catalog-audit");
 const AUDIT_SCRIPT = path.join(ROOT, "scripts", "audit-public-content.mjs");
 const vercelConfig = JSON.parse(fs.readFileSync(path.join(ROOT, "frontend/vercel.json"), "utf8"));
+const backendServer = fs.readFileSync(path.join(ROOT, "backend/server.py"), "utf8");
 
 const BLOCKED_TERMS = [
+  "add-to-cart",
   "apparel",
+  "bookstore",
   "clothing",
   "denim-jacket",
   "denim-jackets",
   "fashion",
   "lorem-ipsum",
+  "my-account",
   "patterned-wrap-dress",
   "placeholder-product",
   "sample-product",
   "woocommerce",
+  "wp-content",
+  "wp-json",
 ];
 
 const REMOVED_PATHS = [
   "/product/patterned-wrap-dress",
   "/journal/denim-jackets",
+  "/journal/the-quiet-power-of-a-premium-bookstore-brand",
+  "/blog/lorem-ipsum",
+  "/post/sample-product",
   "/denim-jackets",
   "/shop",
   "/shop/",
   "/shop/example",
   "/fashion",
   "/clothing",
+  "/category/fashion",
+  "/tag/fashion",
+  "/cart",
+  "/checkout",
+  "/my-account",
+  "/woocommerce",
   "/woocommerce/test",
+  "/sample-product",
   "/sample-product/test",
+  "/placeholder-product",
   "/placeholder-product/test",
+  "/lorem-ipsum",
+  "/wp-content/uploads/demo.jpg",
 ];
 
 let fixtureOutputDir;
@@ -119,7 +138,34 @@ describe("Public content governance", () => {
 
   test("Vercel routes demo ecommerce paths to removed-content handler", () => {
     const rewrites = vercelConfig.rewrites || [];
-    for (const source of ["/product", "/product/:path*", "/shop", "/shop/", "/shop/:path*", "/fashion", "/journal/denim-jackets", "/denim-jackets"]) {
+    for (const source of [
+      "/product",
+      "/product/:path*",
+      "/shop",
+      "/shop/",
+      "/shop/:path*",
+      "/fashion",
+      "/blog",
+      "/blog/:path*",
+      "/post",
+      "/post/:path*",
+      "/category",
+      "/category/:path*",
+      "/tag",
+      "/tag/:path*",
+      "/cart",
+      "/cart/:path*",
+      "/checkout",
+      "/checkout/:path*",
+      "/my-account",
+      "/my-account/:path*",
+      "/woocommerce",
+      "/woocommerce/:path*",
+      "/wp-content",
+      "/wp-content/:path*",
+      "/journal/denim-jackets",
+      "/denim-jackets",
+    ]) {
       expect(rewrites.some((rewrite) => rewrite.source === source && rewrite.destination.includes("/api/removed-content"))).toBe(true);
     }
     expect((vercelConfig.redirects || []).some((redirect) => redirect.source === "/shop" && redirect.destination === "/library")).toBe(false);
@@ -133,6 +179,26 @@ describe("Public content governance", () => {
       expect(response.headers["x-robots-tag"]).toBe("noindex, nofollow, noarchive");
       expect(response.body).toContain("This page is no longer available.");
     }
+  });
+
+  test("removed-content handler does not expose product metadata or commerce CTAs", () => {
+    for (const removedPath of REMOVED_PATHS) {
+      const response = callRemovedContent({ path: removedPath });
+      expect(response.status).toBe(410);
+      expect(response.headers["x-robots-tag"]).toBe("noindex, nofollow, noarchive");
+      expect(response.body).toContain('<meta name="robots" content="noindex,nofollow,noarchive">');
+      expect(response.body).not.toMatch(/<meta\s+property=["']og:/i);
+      expect(response.body).not.toMatch(/\b(Start Reading|Listen Now|Buy Now|Add to Cart|Proceed to Checkout|checkout now)\b/i);
+      expect(response.body).not.toMatch(/patterned-wrap-dress|denim jackets|sample product|placeholder product|woocommerce/i);
+    }
+  });
+
+  test("backend public blog API tombstones retired journal slugs", () => {
+    expect(backendServer).toContain("RETIRED_PUBLIC_BLOG_SLUGS");
+    expect(backendServer).toContain("the-quiet-power-of-a-premium-bookstore-brand");
+    expect(backendServer).toContain('"slug": {"$nin": sorted(RETIRED_PUBLIC_BLOG_SLUGS)}');
+    expect(backendServer).toContain("status_code=410");
+    expect(backendServer).toContain('"X-Robots-Tag": "noindex, nofollow, noarchive"');
   });
 
   test("shop removed routes do not redirect or return a shell locally", () => {

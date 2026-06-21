@@ -22,28 +22,46 @@ const coreRoutes = [
 
 const blockedPublicPathPrefixes = [
   "/apparel",
+  "/blog",
+  "/cart",
+  "/category",
+  "/checkout",
   "/clothing",
   "/fashion",
+  "/my-account",
+  "/post",
   "/product",
   "/products",
   "/product-category",
+  "/sample-product",
   "/shop",
+  "/tag",
   "/tag/apparel",
   "/tag/clothing",
   "/tag/fashion",
+  "/woocommerce",
+  "/wp-admin",
+  "/wp-content",
+  "/wp-json",
 ];
 
 const blockedPublicTerms = [
+  "add-to-cart",
   "apparel",
+  "bookstore",
   "clothing",
   "denim-jacket",
   "denim-jackets",
   "fashion",
   "lorem-ipsum",
+  "my-account",
   "patterned-wrap-dress",
   "placeholder-product",
   "sample-product",
   "woocommerce",
+  "wp-admin",
+  "wp-content",
+  "wp-json",
 ];
 
 function resolveApiBase() {
