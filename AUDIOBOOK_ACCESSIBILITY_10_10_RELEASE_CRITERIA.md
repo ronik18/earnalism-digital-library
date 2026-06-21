@@ -26,7 +26,8 @@ The standard is evidence-based. A score cannot reach 10/10 until every mandatory
 | Commercial model permission | model/provider license allows commercial audiobook use | yes |
 | Voice rights | voice/provider/narrator rights evidence, no real-person voice cloning risk | yes |
 | Owner approval | owner signs exact book, language, voice, release scope, and rollback path | yes |
-| Human listening QA | Bengali and English QA scores at or above 9.5 where relevant | yes |
+| Human listening QA | completed Bengali and English human-review scorecards with final scores at or above 9.5 where relevant | yes |
+| Text fidelity QA | human-review scorecard confirms no omissions, additions, hallucinations, repetitions, or order drift | yes |
 | Transcript | transcript exists when required and is reachable from the player | yes |
 | Text/audio sync | measured tolerance at or below 250 ms | yes |
 | Rollback safety | owner, route disablement, metadata removal, and takedown instructions | yes |
@@ -99,7 +100,8 @@ Announcements must be concise and not repeat so often that they interrupt listen
 
 Minimum evidence:
 
-- Bengali human listening QA score at or above 9.5.
+- Completed `BENGALI_AUDIOBOOK_HUMAN_REVIEW_SCORECARD.md` with final score at or above 9.5.
+- Text fidelity, legal/commercial-use, derivative rights, accessibility listening, owner approval, and rollback fields marked pass.
 - Pronunciation guide reviewed for names, Sanskritized terms, Persian/Arabic words, English loan words, and literary archaisms.
 - Punctuation-aware pauses for commas, danda, dialogue, poetry, and chapter headings.
 - Emotional restraint suitable for literary narration.
@@ -109,7 +111,8 @@ Minimum evidence:
 
 Minimum evidence:
 
-- English human listening QA score at or above 9.5.
+- Completed `ENGLISH_AUDIOBOOK_HUMAN_REVIEW_SCORECARD.md` with final score at or above 9.5.
+- Text fidelity, legal/commercial-use, derivative rights, accessibility listening, owner approval, and rollback fields marked pass.
 - Gothic/literary tone for Dracula and similar works.
 - Proper handling of names, epistolary headings, dated letters, dialogue, and quoted material.
 - No fake human narration claim.
@@ -165,3 +168,14 @@ Owner approval must name:
 ## Current Decision
 
 Current status is `PUBLIC_AUDIO_RELEASE_BLOCKED`. This is the correct and safe state until the evidence above exists.
+
+## Narration QA Framework
+
+Supporting internal review documents:
+
+- `AUDIOBOOK_NARRATION_QA_RUBRIC.md`
+- `BENGALI_AUDIOBOOK_HUMAN_REVIEW_SCORECARD.md`
+- `ENGLISH_AUDIOBOOK_HUMAN_REVIEW_SCORECARD.md`
+- `AUDIOBOOK_NARRATION_MODEL_DECISION_REPORT.md`
+
+Draft PR #44 and Draft PR #45 evidence must not be treated as public audiobook release approval.

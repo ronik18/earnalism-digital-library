@@ -108,6 +108,10 @@ describe("UX conversion static signals", () => {
   const accessibleAudiobookJourney = read("ACCESSIBLE_AUDIOBOOK_USER_JOURNEY.md");
   const audiobookGateReport = read("AUDIOBOOK_ACCESSIBILITY_GATE_REPORT.md");
   const audiobookReleaseGate = read("scripts/audiobook_accessibility_release_gate.py");
+  const narrationQaRubric = read("AUDIOBOOK_NARRATION_QA_RUBRIC.md");
+  const bengaliNarrationScorecard = read("BENGALI_AUDIOBOOK_HUMAN_REVIEW_SCORECARD.md");
+  const englishNarrationScorecard = read("ENGLISH_AUDIOBOOK_HUMAN_REVIEW_SCORECARD.md");
+  const narrationModelDecisionReport = read("AUDIOBOOK_NARRATION_MODEL_DECISION_REPORT.md");
   const controlledPublicationPrecheck = read("scripts/controlled_publication_precheck.py");
   const internalAudiobookPrototype = read("frontend/src/components/Internal/InternalAudiobookPlayerPrototype.jsx");
   const accessibleAudiobookPrototypeReport = read("PREMIUM_ACCESSIBLE_AUDIOBOOK_PLAYER_REPORT.md");
@@ -195,10 +199,36 @@ describe("UX conversion static signals", () => {
     expect(audiobookReleaseCriteria).toContain("model/provider license allows commercial audiobook use");
     expect(audiobookReleaseCriteria).toContain("Text/audio sync");
     expect(audiobookReleaseCriteria).toContain("250 ms");
-    expect(audiobookReleaseCriteria).toContain("Bengali human listening QA score at or above 9.5");
-    expect(audiobookReleaseCriteria).toContain("English human listening QA score at or above 9.5");
+    expect(audiobookReleaseCriteria).toContain("completed Bengali and English human-review scorecards");
+    expect(audiobookReleaseCriteria).toContain("Completed `BENGALI_AUDIOBOOK_HUMAN_REVIEW_SCORECARD.md`");
+    expect(audiobookReleaseCriteria).toContain("Completed `ENGLISH_AUDIOBOOK_HUMAN_REVIEW_SCORECARD.md`");
+    expect(audiobookReleaseCriteria).toContain("BENGALI_AUDIOBOOK_HUMAN_REVIEW_SCORECARD.md");
+    expect(audiobookReleaseCriteria).toContain("ENGLISH_AUDIOBOOK_HUMAN_REVIEW_SCORECARD.md");
+    expect(audiobookReleaseCriteria).toContain("Draft PR #44 and Draft PR #45 evidence must not be treated as public audiobook release approval");
     expect(audiobookReleaseCriteria).toContain("No public Kshudhita Pashan or Bengali audiobook release");
     expect(audiobookReleaseCriteria).toContain("No public Listen Now CTA");
+  });
+
+  test("narration QA rubric and scorecards keep Bengali and English audiobook bakeoffs in HOLD", () => {
+    expect(narrationQaRubric).toContain("Minimum final human-review score: `9.5/10`");
+    expect(narrationQaRubric).toContain("Text fidelity: `PASS` required");
+    expect(narrationQaRubric).toContain("Derivative audiobook rights: `PASS` required");
+    expect(narrationQaRubric).toContain("Draft PR #44 or Draft PR #45 evidence is treated as public release approval");
+    expect(narrationQaRubric).toContain("No public claim may say blind-user tested");
+
+    expect(bengaliNarrationScorecard).toContain("Status: `HOLD`");
+    expect(bengaliNarrationScorecard).toContain("Bengali pronunciation score");
+    expect(bengaliNarrationScorecard).toContain("Rabindranath-era/classic tone handling");
+    expect(bengaliNarrationScorecard).toContain("Public release status: `PUBLIC_AUDIO_RELEASE_BLOCKED`");
+
+    expect(englishNarrationScorecard).toContain("Status: `HOLD`");
+    expect(englishNarrationScorecard).toContain("Gothic/literary tone score");
+    expect(englishNarrationScorecard).toContain("Dracula audio remains disabled publicly");
+    expect(englishNarrationScorecard).toContain("Public release status: `PUBLIC_AUDIO_RELEASE_BLOCKED`");
+
+    expect(narrationModelDecisionReport).toContain("PR #44 remains Draft");
+    expect(narrationModelDecisionReport).toContain("PR #45 remains Draft");
+    expect(narrationModelDecisionReport).toContain("Public release status: `PUBLIC_AUDIO_RELEASE_BLOCKED`");
   });
 
   test("accessible audiobook journey does not enable public audio or unsupported claims", () => {
@@ -226,6 +256,13 @@ describe("UX conversion static signals", () => {
     expect(audiobookReleaseGate).toContain("TRANSCRIPT_REQUIRED_MISSING");
     expect(audiobookReleaseGate).toContain("SYNC_TOLERANCE_MISSING");
     expect(audiobookReleaseGate).toContain("REQUIRED_PLAYER_ACCESSIBILITY_EVIDENCE");
+    expect(audiobookReleaseGate).toContain("REQUIRED_HUMAN_REVIEW_FIELDS");
+    expect(audiobookReleaseGate).toContain("HUMAN_REVIEW_SCORECARD_MISSING");
+    expect(audiobookReleaseGate).toContain("HUMAN_REVIEW_{field.upper()}_MISSING");
+    expect(audiobookReleaseGate).toContain("text_fidelity_passed");
+    expect(audiobookReleaseGate).toContain("legal_commercial_use_passed");
+    expect(audiobookReleaseGate).toContain("DRAFT_PR_44_EVIDENCE_TREATED_AS_RELEASE_APPROVAL");
+    expect(audiobookReleaseGate).toContain("DRAFT_PR_45_EVIDENCE_TREATED_AS_RELEASE_APPROVAL");
     expect(audiobookReleaseGate).toContain("QA_THRESHOLD = 9.5");
     expect(audiobookReleaseGate).toContain("OWNER_APPROVAL_MISSING");
     expect(audiobookReleaseGate).toContain("ROLLBACK_PLAN_MISSING");
@@ -246,6 +283,10 @@ describe("UX conversion static signals", () => {
     expect(audiobookGateReport).toContain("VOICE_NARRATOR_RIGHTS_MISSING");
     expect(audiobookGateReport).toContain("BENGALI_QA_SCORE_MISSING");
     expect(audiobookGateReport).toContain("ENGLISH_QA_SCORE_MISSING");
+    expect(audiobookGateReport).toContain("BENGALI_HUMAN_REVIEW_SCORECARD_MISSING");
+    expect(audiobookGateReport).toContain("ENGLISH_HUMAN_REVIEW_SCORECARD_MISSING");
+    expect(audiobookGateReport).toContain("Bengali human-review scorecard present");
+    expect(audiobookGateReport).toContain("English human-review scorecard present");
     expect(audiobookGateReport).toContain("OWNER_APPROVAL_MISSING");
     expect(audiobookGateReport).toContain("ROLLBACK_PLAN_MISSING");
     expect(audiobookGateReport).toContain("Not safe for public audiobook launch");

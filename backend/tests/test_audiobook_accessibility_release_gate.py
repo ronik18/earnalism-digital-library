@@ -11,6 +11,19 @@ from scripts.audiobook_accessibility_release_gate import (
 
 
 def base_payload(**overrides):
+    human_review = {
+        "scorecard_present": True,
+        "reviewer_named": True,
+        "sample_duration_minutes": 18,
+        "source_text_evidence_present": True,
+        "derivative_rights_passed": True,
+        "text_fidelity_passed": True,
+        "legal_commercial_use_passed": True,
+        "accessibility_listening_passed": True,
+        "owner_approval_passed": True,
+        "rollback_plan_passed": True,
+        "final_score": QA_THRESHOLD,
+    }
     payload = {
         "public_audio_enabled": False,
         "public_listen_now_cta": False,
@@ -46,6 +59,11 @@ def base_payload(**overrides):
         },
         "bengali_qa_score": QA_THRESHOLD,
         "english_qa_score": QA_THRESHOLD,
+        "required_narration_review_languages": ["bengali", "english"],
+        "bengali_human_review": dict(human_review),
+        "english_human_review": dict(human_review),
+        "draft_pr_44_evidence_treated_as_release_approval": False,
+        "draft_pr_45_evidence_treated_as_release_approval": False,
         "owner_approval_status": "approved",
         "rollback_plan": "Disable audio routes and remove public metadata.",
         "dracula_audio_disabled": True,
@@ -152,6 +170,90 @@ def test_bengali_and_english_scores_must_meet_threshold():
 
     assert "BENGALI_QA_SCORE_BELOW_THRESHOLD" in blocker_codes(result)
     assert "ENGLISH_QA_SCORE_BELOW_THRESHOLD" in blocker_codes(result)
+
+
+def test_gate_cannot_pass_without_human_review_scorecards():
+    result = evaluate_release_gate(
+        base_payload(
+            bengali_human_review={},
+            english_human_review={},
+        )
+    )
+
+    assert result["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert "BENGALI_HUMAN_REVIEW_SCORECARD_MISSING" in blocker_codes(result)
+    assert "ENGLISH_HUMAN_REVIEW_SCORECARD_MISSING" in blocker_codes(result)
+
+
+def test_human_review_final_score_must_meet_threshold():
+    low_bengali = dict(base_payload()["bengali_human_review"], final_score=9.4)
+    low_english = dict(base_payload()["english_human_review"], final_score=8.8)
+
+    result = evaluate_release_gate(base_payload(bengali_human_review=low_bengali, english_human_review=low_english))
+
+    assert "BENGALI_HUMAN_REVIEW_FINAL_SCORE_BELOW_THRESHOLD" in blocker_codes(result)
+    assert "ENGLISH_HUMAN_REVIEW_FINAL_SCORE_BELOW_THRESHOLD" in blocker_codes(result)
+
+
+def test_human_review_blocks_without_text_fidelity_legal_derivative_owner_accessibility_and_rollback():
+    failed_review = dict(
+        base_payload()["bengali_human_review"],
+        text_fidelity_passed=False,
+        legal_commercial_use_passed=False,
+        derivative_rights_passed=False,
+        owner_approval_passed=False,
+        accessibility_listening_passed=False,
+        rollback_plan_passed=False,
+    )
+
+    result = evaluate_release_gate(base_payload(bengali_human_review=failed_review))
+    codes = blocker_codes(result)
+
+    assert "BENGALI_HUMAN_REVIEW_TEXT_FIDELITY_PASSED_MISSING" in codes
+    assert "BENGALI_HUMAN_REVIEW_LEGAL_COMMERCIAL_USE_PASSED_MISSING" in codes
+    assert "BENGALI_HUMAN_REVIEW_DERIVATIVE_RIGHTS_PASSED_MISSING" in codes
+    assert "BENGALI_HUMAN_REVIEW_OWNER_APPROVAL_PASSED_MISSING" in codes
+    assert "BENGALI_HUMAN_REVIEW_ACCESSIBILITY_LISTENING_PASSED_MISSING" in codes
+    assert "BENGALI_HUMAN_REVIEW_ROLLBACK_PLAN_PASSED_MISSING" in codes
+
+
+def test_human_review_requires_named_reviewer_sample_and_source_evidence():
+    failed_review = dict(
+        base_payload()["english_human_review"],
+        reviewer_named=False,
+        sample_duration_minutes=0,
+        source_text_evidence_present=False,
+    )
+
+    result = evaluate_release_gate(base_payload(english_human_review=failed_review))
+    codes = blocker_codes(result)
+
+    assert "ENGLISH_HUMAN_REVIEW_REVIEWER_NAMED_MISSING" in codes
+    assert "ENGLISH_HUMAN_REVIEW_SAMPLE_DURATION_MISSING" in codes
+    assert "ENGLISH_HUMAN_REVIEW_SOURCE_TEXT_EVIDENCE_PRESENT_MISSING" in codes
+
+
+def test_public_audio_cannot_enable_while_narration_qa_is_hold():
+    low_review = dict(base_payload()["english_human_review"], final_score=8.7)
+
+    result = evaluate_release_gate(base_payload(public_audio_enabled=True, english_human_review=low_review))
+
+    assert result["command_status"] == FAIL_PUBLIC_AUDIO_LEAK
+    assert "PUBLIC_AUDIO_ENABLED" in blocker_codes(result)
+    assert "ENGLISH_HUMAN_REVIEW_FINAL_SCORE_BELOW_THRESHOLD" in blocker_codes(result)
+
+
+def test_draft_pr_evidence_is_not_public_release_approval():
+    result = evaluate_release_gate(
+        base_payload(
+            draft_pr_44_evidence_treated_as_release_approval=True,
+            draft_pr_45_evidence_treated_as_release_approval=True,
+        )
+    )
+
+    assert result["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert "DRAFT_PR_44_EVIDENCE_TREATED_AS_RELEASE_APPROVAL" in blocker_codes(result)
+    assert "DRAFT_PR_45_EVIDENCE_TREATED_AS_RELEASE_APPROVAL" in blocker_codes(result)
 
 
 def test_owner_approval_and_rollback_plan_are_required():

@@ -10,10 +10,10 @@ This report is an internal release gate for future Bengali and English audiobook
 
 | Area | Score |
 | --- | ---: |
-| Current audiobook readiness | 2.6/10 |
+| Current audiobook readiness | 0.0/10 |
 | Accessibility readiness | 0.0/10 |
-| Narration quality readiness | 4.8/10 |
-| Legal/rights readiness | 0.8/10 |
+| Narration quality readiness | 0.0/10 |
+| Legal/rights readiness | 0.0/10 |
 | Public-surface safety | 9.5/10 |
 
 ## Current Evidence
@@ -26,6 +26,12 @@ This report is an internal release gate for future Bengali and English audiobook
 | Audio readiness report status | `PASS` |
 | Frontend public audio-like asset count | `0` |
 | Frontend build audio-like asset count | `0` |
+| Bengali human-review scorecard present | `false` |
+| Bengali human-review final score | `None` |
+| English human-review scorecard present | `false` |
+| English human-review final score | `None` |
+| Draft PR #44 evidence treated as release approval | `false` |
+| Draft PR #45 evidence treated as release approval | `false` |
 
 ## Blockers
 
@@ -52,6 +58,28 @@ This report is an internal release gate for future Bengali and English audiobook
 | HIGH | player_accessibility | MOBILE_ASSISTIVE_TECHNOLOGY_CHECKED_MISSING | Player accessibility evidence missing: mobile_assistive_technology_checked. |
 | HIGH | bengali_qa | BENGALI_QA_SCORE_MISSING | Bengali listening QA score is missing. |
 | HIGH | english_qa | ENGLISH_QA_SCORE_MISSING | English listening QA score is missing. |
+| CRITICAL | human_review | BENGALI_HUMAN_REVIEW_SCORECARD_MISSING | Bengali human-review scorecard is missing. |
+| HIGH | human_review | BENGALI_HUMAN_REVIEW_REVIEWER_NAMED_MISSING | Bengali human-review field is missing or failed: reviewer_named. |
+| HIGH | human_review | BENGALI_HUMAN_REVIEW_SOURCE_TEXT_EVIDENCE_PRESENT_MISSING | Bengali human-review field is missing or failed: source_text_evidence_present. |
+| CRITICAL | derivative_rights | BENGALI_HUMAN_REVIEW_DERIVATIVE_RIGHTS_PASSED_MISSING | Bengali human-review field is missing or failed: derivative_rights_passed. |
+| HIGH | text_fidelity | BENGALI_HUMAN_REVIEW_TEXT_FIDELITY_PASSED_MISSING | Bengali human-review field is missing or failed: text_fidelity_passed. |
+| CRITICAL | legal_review | BENGALI_HUMAN_REVIEW_LEGAL_COMMERCIAL_USE_PASSED_MISSING | Bengali human-review field is missing or failed: legal_commercial_use_passed. |
+| HIGH | accessibility_review | BENGALI_HUMAN_REVIEW_ACCESSIBILITY_LISTENING_PASSED_MISSING | Bengali human-review field is missing or failed: accessibility_listening_passed. |
+| CRITICAL | owner_approval | BENGALI_HUMAN_REVIEW_OWNER_APPROVAL_PASSED_MISSING | Bengali human-review field is missing or failed: owner_approval_passed. |
+| HIGH | rollback | BENGALI_HUMAN_REVIEW_ROLLBACK_PLAN_PASSED_MISSING | Bengali human-review field is missing or failed: rollback_plan_passed. |
+| HIGH | human_review | BENGALI_HUMAN_REVIEW_SAMPLE_DURATION_MISSING | Bengali human-review sample duration is missing. |
+| HIGH | human_review | BENGALI_HUMAN_REVIEW_FINAL_SCORE_MISSING | Bengali human-review final score is missing. |
+| CRITICAL | human_review | ENGLISH_HUMAN_REVIEW_SCORECARD_MISSING | English human-review scorecard is missing. |
+| HIGH | human_review | ENGLISH_HUMAN_REVIEW_REVIEWER_NAMED_MISSING | English human-review field is missing or failed: reviewer_named. |
+| HIGH | human_review | ENGLISH_HUMAN_REVIEW_SOURCE_TEXT_EVIDENCE_PRESENT_MISSING | English human-review field is missing or failed: source_text_evidence_present. |
+| CRITICAL | derivative_rights | ENGLISH_HUMAN_REVIEW_DERIVATIVE_RIGHTS_PASSED_MISSING | English human-review field is missing or failed: derivative_rights_passed. |
+| HIGH | text_fidelity | ENGLISH_HUMAN_REVIEW_TEXT_FIDELITY_PASSED_MISSING | English human-review field is missing or failed: text_fidelity_passed. |
+| CRITICAL | legal_review | ENGLISH_HUMAN_REVIEW_LEGAL_COMMERCIAL_USE_PASSED_MISSING | English human-review field is missing or failed: legal_commercial_use_passed. |
+| HIGH | accessibility_review | ENGLISH_HUMAN_REVIEW_ACCESSIBILITY_LISTENING_PASSED_MISSING | English human-review field is missing or failed: accessibility_listening_passed. |
+| CRITICAL | owner_approval | ENGLISH_HUMAN_REVIEW_OWNER_APPROVAL_PASSED_MISSING | English human-review field is missing or failed: owner_approval_passed. |
+| HIGH | rollback | ENGLISH_HUMAN_REVIEW_ROLLBACK_PLAN_PASSED_MISSING | English human-review field is missing or failed: rollback_plan_passed. |
+| HIGH | human_review | ENGLISH_HUMAN_REVIEW_SAMPLE_DURATION_MISSING | English human-review sample duration is missing. |
+| HIGH | human_review | ENGLISH_HUMAN_REVIEW_FINAL_SCORE_MISSING | English human-review final score is missing. |
 | CRITICAL | owner_approval | OWNER_APPROVAL_MISSING | Owner approval for public audiobook release is missing. |
 | HIGH | rollback | ROLLBACK_PLAN_MISSING | Rollback plan is missing. |
 
@@ -59,7 +87,8 @@ This report is an internal release gate for future Bengali and English audiobook
 
 - [ ] Approve exact book, edition, language, voice/provider, and release scope.
 - [ ] Approve derivative audiobook rights and source-license evidence.
-- [ ] Approve Bengali and English human listening QA at or above 9.5.
+- [ ] Approve completed Bengali and English human-review scorecards at or above 9.5.
+- [ ] Approve text fidelity, legal/commercial-use, derivative-rights, accessibility listening, and rollback fields in each scorecard.
 - [ ] Approve player accessibility evidence from keyboard and screen-reader checks.
 - [ ] Approve rollback owner, rollback command, and takedown response path.
 

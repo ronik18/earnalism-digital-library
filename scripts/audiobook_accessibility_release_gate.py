@@ -47,6 +47,18 @@ REQUIRED_PLAYER_ACCESSIBILITY_EVIDENCE = [
     "mobile_assistive_technology_checked",
 ]
 
+REQUIRED_HUMAN_REVIEW_FIELDS = [
+    "scorecard_present",
+    "reviewer_named",
+    "source_text_evidence_present",
+    "derivative_rights_passed",
+    "text_fidelity_passed",
+    "legal_commercial_use_passed",
+    "accessibility_listening_passed",
+    "owner_approval_passed",
+    "rollback_plan_passed",
+]
+
 PUBLIC_SURFACE_FILES = [
     "frontend/build/index.html",
     "frontend/build/book/dracula/index.html",
@@ -139,6 +151,13 @@ def truthy(value: Any) -> bool:
     return str(value or "").strip().lower() in {"1", "true", "yes", "approved", "pass", "passed", "qa_passed"}
 
 
+def safe_float(value: Any) -> float | None:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
 def strip_negated_audio_safety_copy(text: str) -> str:
     patterns = [
         r"No unapproved title offers Start Reading, Read Preview, or Listen Now\.",
@@ -222,6 +241,29 @@ def current_repo_payload() -> dict[str, Any]:
         "player_accessibility_evidence": {},
         "bengali_qa_score": None,
         "english_qa_score": None,
+        "required_narration_review_languages": ["bengali", "english"],
+        "bengali_human_review": {
+            "scorecard_present": False,
+            "final_score": None,
+            "text_fidelity_passed": False,
+            "legal_commercial_use_passed": False,
+            "derivative_rights_passed": False,
+            "owner_approval_passed": False,
+            "accessibility_listening_passed": False,
+            "rollback_plan_passed": False,
+        },
+        "english_human_review": {
+            "scorecard_present": False,
+            "final_score": None,
+            "text_fidelity_passed": False,
+            "legal_commercial_use_passed": False,
+            "derivative_rights_passed": False,
+            "owner_approval_passed": False,
+            "accessibility_listening_passed": False,
+            "rollback_plan_passed": False,
+        },
+        "draft_pr_44_evidence_treated_as_release_approval": False,
+        "draft_pr_45_evidence_treated_as_release_approval": False,
         "owner_approval_status": "",
         "rollback_plan": "",
         "dracula_audio_disabled": "Dracula audio remains disabled" in truth_ledger,
@@ -239,11 +281,11 @@ def score_from_blockers(blockers: list[GateBlocker]) -> dict[str, float]:
     public_surface = 9.5
 
     for blocker in blockers:
-        if blocker.category in {"rights", "license", "voice"}:
+        if blocker.category in {"rights", "license", "voice", "legal_review", "derivative_rights"}:
             legal -= 1.8
-        if blocker.category in {"bengali_qa", "english_qa", "transcript"}:
+        if blocker.category in {"bengali_qa", "english_qa", "transcript", "human_review", "text_fidelity"}:
             narration -= 1.2
-        if blocker.category in {"player_accessibility", "transcript"}:
+        if blocker.category in {"player_accessibility", "transcript", "accessibility_review"}:
             accessibility -= 1.0
         if blocker.category in {"public_surface", "public_audio_assets"}:
             public_surface -= 1.5
@@ -342,6 +384,80 @@ def evaluate_release_gate(payload: dict[str, Any] | None = None) -> dict[str, An
         except (TypeError, ValueError):
             block(f"{language.upper()}_QA_SCORE_INVALID", "HIGH", category, f"{language} listening QA score is invalid.")
 
+    required_languages = data.get("required_narration_review_languages") or ["bengali", "english"]
+    normalized_languages = {str(language).strip().lower() for language in required_languages if str(language).strip()}
+    for language in ("bengali", "english"):
+        if language not in normalized_languages:
+            continue
+        label = "Bengali" if language == "bengali" else "English"
+        review = data.get(f"{language}_human_review") or {}
+        if not truthy(review.get("scorecard_present")):
+            block(
+                f"{label.upper()}_HUMAN_REVIEW_SCORECARD_MISSING",
+                "CRITICAL",
+                "human_review",
+                f"{label} human-review scorecard is missing.",
+            )
+
+        for field in REQUIRED_HUMAN_REVIEW_FIELDS:
+            if field == "scorecard_present":
+                continue
+            if not truthy(review.get(field)):
+                category = {
+                    "derivative_rights_passed": "derivative_rights",
+                    "text_fidelity_passed": "text_fidelity",
+                    "legal_commercial_use_passed": "legal_review",
+                    "accessibility_listening_passed": "accessibility_review",
+                    "owner_approval_passed": "owner_approval",
+                    "rollback_plan_passed": "rollback",
+                }.get(field, "human_review")
+                block(
+                    f"{label.upper()}_HUMAN_REVIEW_{field.upper()}_MISSING",
+                    "CRITICAL" if category in {"derivative_rights", "legal_review", "owner_approval"} else "HIGH",
+                    category,
+                    f"{label} human-review field is missing or failed: {field}.",
+                )
+
+        sample_minutes = safe_float(review.get("sample_duration_minutes"))
+        if sample_minutes is None or sample_minutes <= 0:
+            block(
+                f"{label.upper()}_HUMAN_REVIEW_SAMPLE_DURATION_MISSING",
+                "HIGH",
+                "human_review",
+                f"{label} human-review sample duration is missing.",
+            )
+
+        final_score = safe_float(review.get("final_score"))
+        if final_score is None:
+            block(
+                f"{label.upper()}_HUMAN_REVIEW_FINAL_SCORE_MISSING",
+                "HIGH",
+                "human_review",
+                f"{label} human-review final score is missing.",
+            )
+        elif final_score < QA_THRESHOLD:
+            block(
+                f"{label.upper()}_HUMAN_REVIEW_FINAL_SCORE_BELOW_THRESHOLD",
+                "HIGH",
+                "human_review",
+                f"{label} human-review final score is below {QA_THRESHOLD}.",
+            )
+
+    if truthy(data.get("draft_pr_44_evidence_treated_as_release_approval")):
+        block(
+            "DRAFT_PR_44_EVIDENCE_TREATED_AS_RELEASE_APPROVAL",
+            "CRITICAL",
+            "human_review",
+            "Draft PR #44 evidence must not be treated as public Bengali audiobook release approval.",
+        )
+    if truthy(data.get("draft_pr_45_evidence_treated_as_release_approval")):
+        block(
+            "DRAFT_PR_45_EVIDENCE_TREATED_AS_RELEASE_APPROVAL",
+            "CRITICAL",
+            "human_review",
+            "Draft PR #45 evidence must not be treated as public English audiobook release approval.",
+        )
+
     if str(data.get("owner_approval_status") or "").strip().lower() != "approved":
         block("OWNER_APPROVAL_MISSING", "CRITICAL", "owner_approval", "Owner approval for public audiobook release is missing.")
     if not value_present(data.get("rollback_plan")):
@@ -364,7 +480,8 @@ def evaluate_release_gate(payload: dict[str, Any] | None = None) -> dict[str, An
         "owner_approval_checklist": [
             "Approve exact book, edition, language, voice/provider, and release scope.",
             "Approve derivative audiobook rights and source-license evidence.",
-            "Approve Bengali and English human listening QA at or above 9.5.",
+            "Approve completed Bengali and English human-review scorecards at or above 9.5.",
+            "Approve text fidelity, legal/commercial-use, derivative-rights, accessibility listening, and rollback fields in each scorecard.",
             "Approve player accessibility evidence from keyboard and screen-reader checks.",
             "Approve rollback owner, rollback command, and takedown response path.",
         ],
@@ -383,6 +500,16 @@ def evaluate_release_gate(payload: dict[str, Any] | None = None) -> dict[str, An
             "public_build_audio_asset_count": int(data.get("public_build_audio_asset_count") or 0),
             "public_audio_asset_paths": data.get("public_audio_asset_paths") or [],
             "public_build_audio_asset_paths": data.get("public_build_audio_asset_paths") or [],
+            "bengali_human_review_scorecard_present": truthy((data.get("bengali_human_review") or {}).get("scorecard_present")),
+            "english_human_review_scorecard_present": truthy((data.get("english_human_review") or {}).get("scorecard_present")),
+            "bengali_human_review_final_score": (data.get("bengali_human_review") or {}).get("final_score"),
+            "english_human_review_final_score": (data.get("english_human_review") or {}).get("final_score"),
+            "draft_pr_44_evidence_treated_as_release_approval": truthy(
+                data.get("draft_pr_44_evidence_treated_as_release_approval")
+            ),
+            "draft_pr_45_evidence_treated_as_release_approval": truthy(
+                data.get("draft_pr_45_evidence_treated_as_release_approval")
+            ),
         },
     }
     return result
@@ -433,6 +560,12 @@ This report is an internal release gate for future Bengali and English audiobook
 | Audio readiness report status | `{evidence['audio_readiness_report_status']}` |
 | Frontend public audio-like asset count | `{evidence['public_audio_asset_count']}` |
 | Frontend build audio-like asset count | `{evidence['public_build_audio_asset_count']}` |
+| Bengali human-review scorecard present | `{str(evidence['bengali_human_review_scorecard_present']).lower()}` |
+| Bengali human-review final score | `{evidence['bengali_human_review_final_score']}` |
+| English human-review scorecard present | `{str(evidence['english_human_review_scorecard_present']).lower()}` |
+| English human-review final score | `{evidence['english_human_review_final_score']}` |
+| Draft PR #44 evidence treated as release approval | `{str(evidence['draft_pr_44_evidence_treated_as_release_approval']).lower()}` |
+| Draft PR #45 evidence treated as release approval | `{str(evidence['draft_pr_45_evidence_treated_as_release_approval']).lower()}` |
 
 ## Blockers
 
