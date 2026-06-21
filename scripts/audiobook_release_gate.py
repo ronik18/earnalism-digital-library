@@ -113,8 +113,8 @@ def public_projection_audio_issues() -> list[str]:
             "title": "Kshudhita Pashan",
             "is_published": True,
             "pipeline_stage": "PIPELINE_ONLY",
-            "audiobook_assets": {"mp3": "https://cdn.example.com/kshudhita.mp3"},
-            "audio_url": "https://cdn.example.com/kshudhita.mp3",
+            "audiobook_assets": {"mp3": "INTERNAL_AUDIO_SENTINEL"},
+            "audio_url": "INTERNAL_AUDIO_SENTINEL",
         }
     )
     serialized = json.dumps(projection, ensure_ascii=False)
@@ -125,7 +125,7 @@ def public_projection_audio_issues() -> list[str]:
         issues.append("Kshudhita public projection enables audiobook.")
     if projection.get("audio_url"):
         issues.append("Kshudhita public projection exposes audio_url.")
-    if "cdn.example.com" in serialized or "audiobook_assets" in serialized:
+    if "INTERNAL_AUDIO_SENTINEL" in serialized or "audiobook_assets" in serialized:
         issues.append("Kshudhita public projection leaks audio asset data.")
     return issues
 

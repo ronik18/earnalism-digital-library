@@ -1,6 +1,6 @@
 # Audiobook Release Gate Report
 
-Generated at: 2026-06-21T12:16:46.455830+00:00
+Generated at: 2026-06-21T18:36:18.194963+00:00
 
 Status: `BLOCKED_PUBLIC_AUDIO_RELEASE`
 

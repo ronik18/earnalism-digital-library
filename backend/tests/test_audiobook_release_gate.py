@@ -137,7 +137,7 @@ def test_no_audio_route_for_kshudhita_returns_404(monkeypatch):
                 "is_published": True,
                 "pipeline_stage": "PIPELINE_ONLY",
                 "audiobook_enabled": True,
-                "audiobook_assets": {"mp3": "https://cdn.example.com/kshudhita.mp3"},
+                "audiobook_assets": {"mp3": "INTERNAL_AUDIO_SENTINEL"},
             }
 
     monkeypatch.setattr(server, "db", SimpleNamespace(books=FakeBooks()))
