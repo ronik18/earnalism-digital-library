@@ -6,6 +6,7 @@
     "regression:canary": "REGRESSION_MODE=canary node regression/scripts/post-deploy-canary.js",
     "release:post-production-canary": "python3 scripts/post_production_canary.py",
     "brand:site-tour": "python3 scripts/create_premium_site_tour.py",
+    "render:logo-reveal": "python3 scripts/render_logo_reveal.py",
     "ux:real-user-video-audit": "npx playwright test tests/e2e/earnalism-real-user-journey.spec.js --project=chromium",
     "ux:real-user-video-audit:headed": "npx playwright test tests/e2e/earnalism-real-user-journey.spec.js --project=chromium --headed",
     "release:ux-go-no-go": "npm run ux:real-user-video-audit && python3 scripts/generate_real_user_ux_report.py",
