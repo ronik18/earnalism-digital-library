@@ -33,6 +33,8 @@ def evaluate_manifest(path: Path) -> dict[str, Any]:
         "asr_word_error_rate": None,
         "mos_score": None,
         "human_review_required": True,
+        "human_review_approved": False,
+        "human_review_score": None,
         "public_audio_url_count": len(public_urls),
         "audio_output_count": len(audio_outputs),
         "recommended_release_action": "DO_NOT_PUBLISH_AUDIO",
@@ -139,10 +141,30 @@ def license_snapshots_present() -> bool:
     return required.issubset({path.name for path in LICENSE_EVIDENCE_DIR.glob("*.json")})
 
 
+def license_manual_review_complete() -> bool:
+    required = {"chatterbox.json", "dia.json", "kokoro.json", "f5-tts.json", "xtts-v2.json"}
+    for filename in required:
+        path = LICENSE_EVIDENCE_DIR / filename
+        if not path.exists():
+            return False
+        payload = load_manifest(path)
+        if payload.get("human_license_review_approved") is not True:
+            return False
+        if payload.get("verified_by") in {"", "operator_required", "missing", None}:
+            return False
+    return True
+
+
 def compute_scorecard(evaluations: list[dict[str, Any]]) -> dict[str, Any]:
     generated_samples = any(row.get("audio_output_count", 0) > 0 for row in evaluations)
-    human_review_approved = any(row.get("human_review_approved") is True for row in evaluations)
+    human_review_approved = any(
+        row.get("human_review_approved") is True
+        and isinstance(row.get("human_review_score"), (int, float))
+        and row.get("human_review_score") >= 9.5
+        for row in evaluations
+    )
     license_present = license_snapshots_present()
+    license_reviewed = license_manual_review_complete()
     coverage_present = COVERAGE_REPORT.exists()
     public_audio_enabled = any(row.get("public_audio_url_count", 0) > 0 for row in evaluations)
     score = 9.7
@@ -152,10 +174,13 @@ def compute_scorecard(evaluations: list[dict[str, Any]]) -> dict[str, Any]:
         caps.append("no generated samples = max 9.0")
     if not human_review_approved:
         score = min(score, 9.0)
-        caps.append("no human review = max 9.0")
+        caps.append("no English human listening review >= 9.5 = max 9.0")
     if not license_present:
         score = min(score, 8.8)
         caps.append("no license snapshot = max 8.8")
+    if not license_reviewed:
+        score = min(score, 9.2)
+        caps.append("license evidence not manually reviewed = max 9.2")
     if not coverage_present:
         score = min(score, 9.2)
         caps.append("no full-chapter coverage report = max 9.2")
@@ -168,7 +193,9 @@ def compute_scorecard(evaluations: list[dict[str, Any]]) -> dict[str, Any]:
         "score_status": "NO_MODEL_APPROVED_YET",
         "generated_samples_present": generated_samples,
         "human_review_approved": human_review_approved,
+        "english_human_review_minimum_score": 9.5,
         "license_snapshots_present": license_present,
+        "license_manual_review_complete": license_reviewed,
         "chapter_coverage_report_present": coverage_present,
         "public_audio_enabled": public_audio_enabled,
         "caps_applied": caps,
@@ -204,6 +231,8 @@ def write_scorecard(evaluations: list[dict[str, Any]], output_dir: Path) -> None
             "",
             "A 9.9 score requires generated internal samples, human listening review, license clearance, full coverage evidence, and owner approval.",
             "",
+            "English listening review gate: score >= 9.5 and manual license review are required before any 9.9 claim.",
+            "",
             f"Local evaluation output: `{output_dir}`",
             "",
         ]
@@ -230,6 +259,8 @@ def main() -> int:
                 "asr_word_error_rate": None,
                 "mos_score": None,
                 "human_review_required": True,
+                "human_review_approved": False,
+                "human_review_score": None,
                 "public_audio_url_count": 0,
                 "audio_output_count": 0,
                 "recommended_release_action": "DO_NOT_PUBLISH_AUDIO",

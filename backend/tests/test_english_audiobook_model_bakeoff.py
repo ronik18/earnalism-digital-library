@@ -120,7 +120,27 @@ def test_scorecard_caps_without_samples_or_human_review():
     assert scorecard["score_status"] == "NO_MODEL_APPROVED_YET"
     assert scorecard["final_public_audio_status"] == "BLOCKED"
     assert "no generated samples = max 9.0" in scorecard["caps_applied"]
-    assert "no human review = max 9.0" in scorecard["caps_applied"]
+    assert "no English human listening review >= 9.5 = max 9.0" in scorecard["caps_applied"]
+    assert "license evidence not manually reviewed = max 9.2" in scorecard["caps_applied"]
+    assert scorecard["english_human_review_minimum_score"] == 9.5
+    assert scorecard["license_manual_review_complete"] is False
+
+
+def test_scorecard_requires_english_human_review_score_9_5():
+    scorecard = compute_scorecard(
+        [
+            {
+                "model_id": "chatterbox-tts",
+                "audio_output_count": 1,
+                "public_audio_url_count": 0,
+                "human_review_approved": True,
+                "human_review_score": 9.4,
+            }
+        ]
+    )
+
+    assert scorecard["score"] <= 9.0
+    assert "no English human listening review >= 9.5 = max 9.0" in scorecard["caps_applied"]
 
 
 def test_public_audio_caps_score_to_five():
@@ -131,6 +151,7 @@ def test_public_audio_caps_score_to_five():
                 "audio_output_count": 1,
                 "public_audio_url_count": 1,
                 "human_review_approved": True,
+                "human_review_score": 9.8,
             }
         ]
     )
