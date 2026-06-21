@@ -112,6 +112,9 @@ describe("UX conversion static signals", () => {
   const bengaliNarrationScorecard = read("BENGALI_AUDIOBOOK_HUMAN_REVIEW_SCORECARD.md");
   const englishNarrationScorecard = read("ENGLISH_AUDIOBOOK_HUMAN_REVIEW_SCORECARD.md");
   const narrationModelDecisionReport = read("AUDIOBOOK_NARRATION_MODEL_DECISION_REPORT.md");
+  const audiobookLegalComplianceGate = read("AUDIOBOOK_LEGAL_ACCESSIBILITY_COMPLIANCE_GATE.md");
+  const accessibilityClaimsPolicy = read("ACCESSIBILITY_CLAIMS_POLICY.md");
+  const audiobookComplianceScorecard = read("AUDIOBOOK_COMPLIANCE_SCORECARD.md");
   const controlledPublicationPrecheck = read("scripts/controlled_publication_precheck.py");
   const internalAudiobookPrototype = read("frontend/src/components/Internal/InternalAudiobookPlayerPrototype.jsx");
   const accessibleAudiobookPrototypeReport = read("PREMIUM_ACCESSIBLE_AUDIOBOOK_PLAYER_REPORT.md");
@@ -231,6 +234,41 @@ describe("UX conversion static signals", () => {
     expect(narrationModelDecisionReport).toContain("Public release status: `PUBLIC_AUDIO_RELEASE_BLOCKED`");
   });
 
+  test("audiobook legal and accessibility compliance docs keep public audio blocked", () => {
+    expect(audiobookLegalComplianceGate).toContain("Status: `PUBLIC_AUDIO_RELEASE_BLOCKED`");
+    expect(audiobookLegalComplianceGate).toContain("does not enable audio");
+    expect(audiobookLegalComplianceGate).toContain("does not make a legal guarantee");
+    expect(audiobookLegalComplianceGate).toContain("Storage/CDN/public serving");
+    expect(audiobookLegalComplianceGate).toContain("Refund/support readiness");
+    expect(audiobookLegalComplianceGate).toContain("Owner/legal approval");
+    expect(audiobookLegalComplianceGate).toContain("PR #44 and PR #45 remain Draft evidence");
+    expect(audiobookLegalComplianceGate).toContain("Audio is generated from unapproved source text");
+    expect(audiobookLegalComplianceGate).toContain("WCAG compliance");
+    expect(audiobookLegalComplianceGate).toContain("blind-user testing");
+    expect(audiobookLegalComplianceGate).toContain("screen-reader certification");
+    expect(audiobookLegalComplianceGate).toContain("fully accessible audiobook platform");
+    expect(audiobookLegalComplianceGate).not.toContain("GO_FOR_PUBLIC_AUDIOBOOK_RELEASE");
+
+    expect(accessibilityClaimsPolicy).toContain("Status: `INTERNAL_POLICY_ONLY`");
+    expect(accessibilityClaimsPolicy).toContain("Dracula audio is not available yet");
+    expect(accessibilityClaimsPolicy).toContain("audiobooks are live");
+    expect(accessibilityClaimsPolicy).toContain("Listen Now");
+    expect(accessibilityClaimsPolicy).toContain("WCAG compliant");
+    expect(accessibilityClaimsPolicy).toContain("blind-user tested");
+    expect(accessibilityClaimsPolicy).toContain("fully accessible");
+    expect(accessibilityClaimsPolicy).toContain("No public audiobook is live today");
+
+    expect(audiobookComplianceScorecard).toContain("Status: `PUBLIC_AUDIO_RELEASE_BLOCKED`");
+    expect(audiobookComplianceScorecard).toContain("Recommendation: `HOLD_PUBLIC_AUDIO`");
+    expect(audiobookComplianceScorecard).toContain("Overall audiobook compliance readiness: `0.0/10`");
+    expect(audiobookComplianceScorecard).toContain("Derivative audiobook rights | HOLD");
+    expect(audiobookComplianceScorecard).toContain("Storage/CDN/public-serving rights | HOLD");
+    expect(audiobookComplianceScorecard).toContain("Refund/support readiness | HOLD");
+    expect(audiobookComplianceScorecard).toContain("Owner/legal approval | HOLD");
+    expect(audiobookComplianceScorecard).toContain("PR #44/#45 treated only as Draft evidence | PASS");
+    expect(audiobookComplianceScorecard).not.toMatch(/\bGO_FOR_PUBLIC_AUDIOBOOK_RELEASE\b/);
+  });
+
   test("accessible audiobook journey does not enable public audio or unsupported claims", () => {
     expect(accessibleAudiobookJourney).toContain("This is an internal journey map");
     expect(accessibleAudiobookJourney).toContain("Dracula audio is disabled");
@@ -257,10 +295,20 @@ describe("UX conversion static signals", () => {
     expect(audiobookReleaseGate).toContain("SYNC_TOLERANCE_MISSING");
     expect(audiobookReleaseGate).toContain("REQUIRED_PLAYER_ACCESSIBILITY_EVIDENCE");
     expect(audiobookReleaseGate).toContain("REQUIRED_HUMAN_REVIEW_FIELDS");
+    expect(audiobookReleaseGate).toContain("REQUIRED_LEGAL_ACCESSIBILITY_COMPLIANCE_EVIDENCE");
     expect(audiobookReleaseGate).toContain("HUMAN_REVIEW_SCORECARD_MISSING");
     expect(audiobookReleaseGate).toContain("HUMAN_REVIEW_{field.upper()}_MISSING");
     expect(audiobookReleaseGate).toContain("text_fidelity_passed");
     expect(audiobookReleaseGate).toContain("legal_commercial_use_passed");
+    expect(audiobookReleaseGate).toContain("AUDIOBOOK_GENERATED_FOR_UNAPPROVED_SOURCE_TEXT");
+    expect(audiobookReleaseGate).toContain("STORAGE_CDN_PUBLIC_SERVING_RIGHTS_MISSING");
+    expect(audiobookReleaseGate).toContain("ATTRIBUTION_REQUIREMENTS_UNSATISFIED");
+    expect(audiobookReleaseGate).toContain("PUBLIC_CLAIMS_EVIDENCE_REVIEW_MISSING");
+    expect(audiobookReleaseGate).toContain("PUBLIC_COPY_AUDIOBOOKS_LIVE_CLAIM");
+    expect(audiobookReleaseGate).toContain("PUBLIC_COPY_ACCESSIBILITY_OVERCLAIM");
+    expect(audiobookReleaseGate).toContain("REFUND_SUPPORT_READINESS_MISSING");
+    expect(audiobookReleaseGate).toContain("OWNER_LEGAL_APPROVAL_MISSING");
+    expect(audiobookReleaseGate).toContain("ROLLBACK_APPROVAL_MISSING");
     expect(audiobookReleaseGate).toContain("DRAFT_PR_44_EVIDENCE_TREATED_AS_RELEASE_APPROVAL");
     expect(audiobookReleaseGate).toContain("DRAFT_PR_45_EVIDENCE_TREATED_AS_RELEASE_APPROVAL");
     expect(audiobookReleaseGate).toContain("QA_THRESHOLD = 9.5");
@@ -287,6 +335,16 @@ describe("UX conversion static signals", () => {
     expect(audiobookGateReport).toContain("ENGLISH_HUMAN_REVIEW_SCORECARD_MISSING");
     expect(audiobookGateReport).toContain("Bengali human-review scorecard present");
     expect(audiobookGateReport).toContain("English human-review scorecard present");
+    expect(audiobookGateReport).toContain("Storage/CDN public-serving rights approved");
+    expect(audiobookGateReport).toContain("Attribution requirements satisfied");
+    expect(audiobookGateReport).toContain("Public claims evidence reviewed");
+    expect(audiobookGateReport).toContain("Refund/support readiness");
+    expect(audiobookGateReport).toContain("STORAGE_CDN_PUBLIC_SERVING_RIGHTS_MISSING");
+    expect(audiobookGateReport).toContain("ATTRIBUTION_REQUIREMENTS_UNSATISFIED");
+    expect(audiobookGateReport).toContain("PUBLIC_CLAIMS_EVIDENCE_REVIEW_MISSING");
+    expect(audiobookGateReport).toContain("REFUND_SUPPORT_READINESS_MISSING");
+    expect(audiobookGateReport).toContain("OWNER_LEGAL_APPROVAL_MISSING");
+    expect(audiobookGateReport).toContain("ROLLBACK_APPROVAL_MISSING");
     expect(audiobookGateReport).toContain("OWNER_APPROVAL_MISSING");
     expect(audiobookGateReport).toContain("ROLLBACK_PLAN_MISSING");
     expect(audiobookGateReport).toContain("Not safe for public audiobook launch");
