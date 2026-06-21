@@ -1,0 +1,13 @@
+{
+  "model_id": "f5-tts",
+  "source_url": "https://github.com/SWivid/F5-TTS",
+  "license_text_summary": "Code and pretrained weights require separate review; pretrained assets are not approved for production.",
+  "model_weights_license": "CC-BY-NC_OR_VERIFY_MODEL_CARD",
+  "code_license": "MIT_OR_VERIFY_REPOSITORY",
+  "dataset_caveat": "Reference voice consent and pretrained data terms block public use until reviewed.",
+  "commercial_allowed": false,
+  "human_license_review_approved": false,
+  "verified_at": "2026-06-21",
+  "verified_by": "operator_required"
+}
+

@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 from scripts.benchmark_bengali_tts_models import OUTPUT_ROOT, run_benchmark
+from scripts.bengali_audiobook_chunker import approved_source_status
 from scripts.evaluate_audiobook_samples import evaluate_samples
 
 
@@ -22,7 +23,9 @@ def test_model_shortlist_includes_required_bengali_candidates():
 def test_plan_mode_creates_internal_review_manifest_without_audio():
     payload = run_benchmark("kshudhita-pashan", "plan", require_owner_approval=False)
 
-    assert payload["final_status"] == "NO_MODEL_APPROVED_YET"
+    assert payload["final_status"] == "OPERATOR_REQUIRED"
+    assert payload["source_status"]["status"] == "OPERATOR_REQUIRED"
+    assert payload["representative_chunk_count"] == 0
     assert payload["public_audio_urls_created"] is False
     assert payload["audio_generated"] is False
     assert payload["kshudhita_pipeline_only"] is True
@@ -32,14 +35,18 @@ def test_plan_mode_creates_internal_review_manifest_without_audio():
 def test_dry_run_benchmark_does_not_generate_audio():
     payload = run_benchmark("kshudhita-pashan", "dry-run", require_owner_approval=False)
 
+    assert payload["final_status"] == "OPERATOR_REQUIRED"
     assert payload["audio_generated"] is False
     assert all(model.get("public_audio_urls_created") is False for model in payload["models"])
+    assert all(model.get("chunks") == [] for model in payload["models"])
     assert (OUTPUT_ROOT / "benchmark_summary.json").exists()
 
 
 def test_local_benchmark_refuses_without_owner_approval_file():
-    with pytest.raises(PermissionError):
-        run_benchmark("kshudhita-pashan", "local", require_owner_approval=True)
+    payload = run_benchmark("kshudhita-pashan", "local", require_owner_approval=True)
+
+    assert payload["final_status"] == "OPERATOR_REQUIRED"
+    assert payload["representative_chunk_count"] == 0
 
 
 def test_evaluation_does_not_fake_missing_mos_or_asr_metrics():
@@ -50,6 +57,14 @@ def test_evaluation_does_not_fake_missing_mos_or_asr_metrics():
     assert payload["public_path_leakage"] is False
 
 
+def test_official_bakeoff_requires_real_approved_source_text():
+    status = approved_source_status()
+
+    assert status["status"] == "OPERATOR_REQUIRED"
+    assert status["full_source_text_committed"] is False
+    assert "full source text" in status["blocking_reason"]
+
+
 def test_human_review_is_required_for_ten_out_of_ten_or_public_release():
     form = (ROOT / "AUDIOBOOK_MODEL_BAKEOFF_HUMAN_REVIEW_FORM.md").read_text()
     selection = (ROOT / "AUDIOBOOK_MODEL_SELECTION_REPORT.md").read_text()
@@ -58,3 +73,19 @@ def test_human_review_is_required_for_ten_out_of_ten_or_public_release():
     assert "public_preview_approved = false" in form
     assert "full_audiobook_approved = false" in form
     assert "NO_MODEL_APPROVED_YET" in selection
+
+
+def test_license_evidence_blocks_automatic_production_candidates():
+    payload = run_benchmark("kshudhita-pashan", "plan", require_owner_approval=False)
+
+    assert all(model["license_evidence"]["present"] is True for model in payload["models"])
+    assert all(model["license_evidence"]["verified_by"] == "operator_required" for model in payload["models"])
+    assert all(model["license_evidence"]["production_candidate_allowed"] is False for model in payload["models"])
+
+
+def test_scorecard_blocks_9_9_without_source_samples_and_human_review():
+    payload = json.loads((ROOT / "AUDIOBOOK_BENGALI_MODEL_BAKEOFF_SCORECARD.json").read_text())
+
+    assert payload["score"] < 9.9
+    assert payload["final_public_audio_status"] == "BLOCKED"
+    assert "approved source text missing = max 8.6" in payload["caps_applied"]

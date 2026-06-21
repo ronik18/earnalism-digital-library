@@ -1,0 +1,13 @@
+{
+  "model_id": "chatterbox-multilingual-v3",
+  "source_url": "https://github.com/resemble-ai/chatterbox",
+  "license_text_summary": "Operator must verify multilingual/Bengali support, repository terms, model weights, and voice data rights.",
+  "model_weights_license": "VERIFY_MODEL_CARD",
+  "code_license": "MIT_REPORTED_OPERATOR_VERIFY",
+  "dataset_caveat": "Bengali support and reference/style voice permissions are not production-approved.",
+  "commercial_allowed": null,
+  "human_license_review_approved": false,
+  "verified_at": "2026-06-21",
+  "verified_by": "operator_required"
+}
+

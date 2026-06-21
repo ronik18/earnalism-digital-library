@@ -18,6 +18,8 @@ from scripts.bengali_text_normalizer import normalize_bengali_text, punctuation_
 
 DEFAULT_BOOK_SLUG = "kshudhita-pashan"
 DEFAULT_OUTPUT_DIR = ROOT / "data/audiobook_generation/kshudhita-pashan"
+SOURCE_METADATA_PATH = ROOT / "data/publication_candidates/kshudhita-pashan.source.json"
+APPROVED_SOURCE_TEXT_PATH = ROOT / "data/audiobook_generation/kshudhita-pashan/approved_source_text.txt"
 
 SAMPLE_TEXT = """ক্ষুধিত পাষাণ।
 
@@ -209,17 +211,62 @@ def chunk_text(book_slug: str, text: str) -> list[dict[str, Any]]:
     return chunks
 
 
-def load_text(input_path: Path | None) -> str:
+def approved_source_status(input_path: Path | None = None) -> dict[str, Any]:
+    metadata = {}
+    if SOURCE_METADATA_PATH.exists():
+        metadata = json.loads(SOURCE_METADATA_PATH.read_text(encoding="utf-8"))
+    source_path = input_path or APPROVED_SOURCE_TEXT_PATH
+    ready = (
+        source_path.exists()
+        and metadata.get("rights_tier") == "A"
+        and metadata.get("verification_status") == "approved"
+        and metadata.get("qa_status") == "QA_PASSED"
+        and metadata.get("full_source_text_committed") is True
+    )
+    display_source_path = str(source_path)
+    display_metadata_path = str(SOURCE_METADATA_PATH)
+    try:
+        display_source_path = str(source_path.relative_to(ROOT))
+    except ValueError:
+        pass
+    try:
+        display_metadata_path = str(SOURCE_METADATA_PATH.relative_to(ROOT))
+    except ValueError:
+        pass
+    return {
+        "status": "READY" if ready else "OPERATOR_REQUIRED",
+        "source_path": display_source_path,
+        "source_file_exists": source_path.exists(),
+        "source_metadata_path": display_metadata_path,
+        "source_hash": metadata.get("source_hash", ""),
+        "content_hash": metadata.get("content_hash", ""),
+        "provenance_hash": metadata.get("provenance_hash", ""),
+        "full_source_text_committed": metadata.get("full_source_text_committed") is True,
+        "rights_tier": metadata.get("rights_tier", ""),
+        "verification_status": metadata.get("verification_status", ""),
+        "qa_status": metadata.get("qa_status", ""),
+        "blocking_reason": ""
+        if ready
+        else "Approved Kshudhita Pashan full source text is not committed; official bake-off chunks cannot be generated.",
+    }
+
+
+def load_text(input_path: Path | None, *, allow_sample_fixture: bool = False) -> str:
     if input_path and input_path.exists():
         return input_path.read_text(encoding="utf-8")
-    return SAMPLE_TEXT
+    if allow_sample_fixture:
+        return SAMPLE_TEXT
+    return ""
 
 
 def write_outputs(chunks: list[dict[str, Any]], output_dir: Path = DEFAULT_OUTPUT_DIR) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
+    source_status = approved_source_status()
     json_payload = {
         "book_slug": DEFAULT_BOOK_SLUG,
         "scope": "INTERNAL_REVIEW_ONLY",
+        "source_status": source_status["status"],
+        "blocking_reason": source_status["blocking_reason"],
         "chunk_count": len(chunks),
         "chunks": chunks,
         "public_audio_urls_created": false_value(),
@@ -231,6 +278,15 @@ def write_outputs(chunks: list[dict[str, Any]], output_dir: Path = DEFAULT_OUTPU
         "Scope: `INTERNAL_REVIEW_ONLY`. No audio was generated or published.",
         "",
     ]
+    if not chunks:
+        lines.extend(
+            [
+                "Status: `OPERATOR_REQUIRED`.",
+                "",
+                source_status["blocking_reason"],
+                "",
+            ]
+        )
     for chunk in chunks:
         lines.extend(
             [
@@ -245,6 +301,56 @@ def write_outputs(chunks: list[dict[str, Any]], output_dir: Path = DEFAULT_OUTPU
             ]
         )
     (output_dir / "chunks.md").write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+    write_coverage_report(chunks, output_dir, source_status)
+
+
+def write_coverage_report(chunks: list[dict[str, Any]], output_dir: Path, source_status: dict[str, Any]) -> None:
+    emotion_distribution: dict[str, int] = {}
+    punctuation_distribution = {"danda": 0, "comma": 0, "question": 0, "exclamation": 0, "ellipsis": 0, "dash": 0}
+    for chunk in chunks:
+        emotion = str(chunk.get("expected_emotion") or "unknown")
+        emotion_distribution[emotion] = emotion_distribution.get(emotion, 0) + 1
+        profile = chunk.get("punctuation_profile") or {}
+        for key in punctuation_distribution:
+            punctuation_distribution[key] += int(profile.get(key) or 0)
+    lines = [
+        "# Bengali Audiobook Chunk Coverage Report",
+        "",
+        "Book: Kshudhita Pashan / Hungry Stones",
+        "",
+        f"Source file: `{source_status['source_path']}`",
+        f"Source hash: `{source_status['source_hash']}`",
+        f"Source status: `{source_status['status']}`",
+        f"Selected chunk count: `{len(chunks)}`",
+        "",
+    ]
+    if source_status["status"] != "READY":
+        lines.extend(
+            [
+                "## Operator Required",
+                "",
+                source_status["blocking_reason"],
+                "",
+                "No official Bengali model bake-off score may use synthetic sample text.",
+                "",
+            ]
+        )
+    lines.extend(["## Emotion Distribution", ""])
+    if emotion_distribution:
+        for key, value in sorted(emotion_distribution.items()):
+            lines.append(f"- {key}: {value}")
+    else:
+        lines.append("- OPERATOR_REQUIRED: 0")
+    lines.extend(["", "## Punctuation Distribution", ""])
+    for key, value in sorted(punctuation_distribution.items()):
+        lines.append(f"- {key}: {value}")
+    lines.extend(["", "## Skipped Sections", ""])
+    if not chunks:
+        lines.append("- All sections skipped because approved full source text is unavailable.")
+    else:
+        lines.append("- Full-source section accounting is pending approved source ingestion.")
+    lines.append("")
+    (ROOT / "BENGALI_AUDIOBOOK_CHUNK_COVERAGE_REPORT.md").write_text("\n".join(lines), encoding="utf-8")
 
 
 def false_value() -> bool:
@@ -256,12 +362,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--book-slug", default=DEFAULT_BOOK_SLUG)
     parser.add_argument("--input", type=Path)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument("--allow-sample-fixture", action="store_true")
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
-    text = load_text(args.input)
+    status = approved_source_status(args.input)
+    text = load_text(args.input, allow_sample_fixture=args.allow_sample_fixture)
+    if status["status"] != "READY" and not args.allow_sample_fixture:
+        write_outputs([], args.output_dir)
+        print(status["blocking_reason"])
+        return 0
     chunks = chunk_text(args.book_slug, text)
     write_outputs(chunks, args.output_dir)
     print(f"Wrote {len(chunks)} internal-review chunks to {args.output_dir}")

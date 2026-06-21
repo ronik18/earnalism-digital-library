@@ -1,0 +1,13 @@
+{
+  "book_slug": "kshudhita-pashan",
+  "score": 8.6,
+  "status": "OPERATOR_REQUIRED",
+  "final_public_audio_status": "BLOCKED",
+  "caps_applied": [
+    "approved source text missing = max 8.6",
+    "fewer than 25 real-source chunks = max 9.0",
+    "no generated internal samples = max 9.0",
+    "no Bengali human listening review = max 9.0"
+  ],
+  "human_review_approved": false
+}

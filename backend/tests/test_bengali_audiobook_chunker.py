@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from scripts.bengali_audiobook_chunker import SAMPLE_TEXT, chunk_text, split_sentences
+from scripts.bengali_audiobook_chunker import SAMPLE_TEXT, approved_source_status, chunk_text, split_sentences, write_outputs
 from scripts.bengali_text_normalizer import normalize_payload
 
 
@@ -81,3 +81,15 @@ def test_normalizer_keeps_original_and_normalized_side_by_side():
     assert "৩" in payload["original_text"]
     assert "3" in payload["normalized_text"]
     assert payload["punctuation_profile"]["danda"] == 1
+
+
+def test_official_chunk_report_is_operator_required_without_real_source(tmp_path):
+    status = approved_source_status()
+    write_outputs([], tmp_path)
+    payload = json.loads((tmp_path / "chunks.json").read_text(encoding="utf-8"))
+    report = (ROOT / "BENGALI_AUDIOBOOK_CHUNK_COVERAGE_REPORT.md").read_text(encoding="utf-8")
+
+    assert status["status"] == "OPERATOR_REQUIRED"
+    assert payload["source_status"] == "OPERATOR_REQUIRED"
+    assert payload["chunks"] == []
+    assert "No official Bengali model bake-off score may use synthetic sample text." in report

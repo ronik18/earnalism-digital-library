@@ -1,0 +1,13 @@
+{
+  "model_id": "xtts-v2",
+  "source_url": "https://huggingface.co/coqui/XTTS-v2",
+  "license_text_summary": "License and reference-voice terms require legal/operator review before any commercial use.",
+  "model_weights_license": "LICENSE_REVIEW_REQUIRED",
+  "code_license": "LICENSE_REVIEW_REQUIRED",
+  "dataset_caveat": "Voice-cloning governance and consent are required.",
+  "commercial_allowed": false,
+  "human_license_review_approved": false,
+  "verified_at": "2026-06-21",
+  "verified_by": "operator_required"
+}
+

@@ -1,0 +1,13 @@
+{
+  "model_id": "ai4bharat-indic-tts",
+  "source_url": "https://github.com/AI4Bharat/Indic-TTS",
+  "license_text_summary": "Model and data licenses require operator verification before commercial use.",
+  "model_weights_license": "VERIFY_MODEL_AND_DATA_LICENSE",
+  "code_license": "VERIFY_REPOSITORY_LICENSE",
+  "dataset_caveat": "Indic language datasets may carry separate restrictions.",
+  "commercial_allowed": null,
+  "human_license_review_approved": false,
+  "verified_at": "2026-06-21",
+  "verified_by": "operator_required"
+}
+

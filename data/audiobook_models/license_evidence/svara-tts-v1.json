@@ -1,0 +1,13 @@
+{
+  "model_id": "svara-tts-v1",
+  "source_url": "https://github.com/wavlab-speech/Svara",
+  "license_text_summary": "Operator must verify repository, model-card, and weights terms before commercial use.",
+  "model_weights_license": "VERIFY_MODEL_CARD",
+  "code_license": "VERIFY_REPOSITORY_LICENSE",
+  "dataset_caveat": "Bengali data provenance and voice/style permissions require review.",
+  "commercial_allowed": null,
+  "human_license_review_approved": false,
+  "verified_at": "2026-06-21",
+  "verified_by": "operator_required"
+}
+

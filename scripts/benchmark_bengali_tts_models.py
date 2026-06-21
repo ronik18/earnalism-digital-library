@@ -16,14 +16,17 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from backend.audiobook_generation.model_adapters import ADAPTERS
-from scripts.bengali_audiobook_chunker import DEFAULT_OUTPUT_DIR, SAMPLE_TEXT, chunk_text, write_outputs
+from scripts.bengali_audiobook_chunker import DEFAULT_OUTPUT_DIR, approved_source_status, chunk_text, write_outputs
 
 SHORTLIST_PATH = ROOT / "data/audiobook_models/model_shortlist.json"
+LICENSE_EVIDENCE_DIR = ROOT / "data/audiobook_models/license_evidence"
 VOICE_PROFILE_PATH = ROOT / "data/audiobook_voice_profiles/bengali-gothic-premium-v1.json"
 CONFIG_DIR = ROOT / "data/audiobook_generation/model_configs"
 APPROVAL_PATH = ROOT / "data/audiobook_governance/kshudhita-pashan.local_generation_approval.json"
 OUTPUT_ROOT = ROOT / "output/audiobook_bakeoff/kshudhita-pashan"
 SELECTION_REPORT = ROOT / "AUDIOBOOK_MODEL_SELECTION_REPORT.md"
+SCORECARD_JSON = ROOT / "AUDIOBOOK_BENGALI_MODEL_BAKEOFF_SCORECARD.json"
+SCORECARD_MD = ROOT / "AUDIOBOOK_BENGALI_MODEL_BAKEOFF_SCORECARD.md"
 
 REPRESENTATIVE_EMOTIONS = [
     "neutral_literary",
@@ -56,17 +59,93 @@ def write_json(path: Path, payload: Any) -> None:
 
 
 def load_chunks() -> list[dict[str, Any]]:
+    source_status = approved_source_status()
+    if source_status["status"] != "READY":
+        write_outputs([], DEFAULT_OUTPUT_DIR)
+        return []
     chunks_path = DEFAULT_OUTPUT_DIR / "chunks.json"
     if not chunks_path.exists():
-        chunks = chunk_text("kshudhita-pashan", SAMPLE_TEXT)
-        write_outputs(chunks, DEFAULT_OUTPUT_DIR)
-        return chunks
+        raise RuntimeError("Approved Kshudhita source text is ready, but chunks.json has not been generated.")
     payload = read_json(chunks_path, {})
     chunks = payload.get("chunks") if isinstance(payload, dict) else []
     if not chunks:
-        chunks = chunk_text("kshudhita-pashan", SAMPLE_TEXT)
-        write_outputs(chunks, DEFAULT_OUTPUT_DIR)
+        raise RuntimeError("Approved Kshudhita source text is ready, but chunk output is empty.")
     return chunks
+
+
+def load_license_evidence(model_id: str) -> dict[str, Any]:
+    filename_by_id = {
+        "chatterbox-multilingual-v3": "chatterbox.json",
+    }
+    path = LICENSE_EVIDENCE_DIR / filename_by_id.get(model_id, f"{model_id}.json")
+    if not path.exists():
+        return {
+            "model_id": model_id,
+            "present": False,
+            "commercial_allowed": False,
+            "verified_by": "missing",
+            "production_candidate_allowed": False,
+            "blocking_reason": "License evidence snapshot is missing.",
+        }
+    payload = read_json(path, {})
+    payload["present"] = True
+    payload["production_candidate_allowed"] = (
+        payload.get("commercial_allowed") is True
+        and payload.get("verified_by") not in {"", "operator_required", "missing"}
+        and payload.get("human_license_review_approved") is True
+    )
+    if not payload["production_candidate_allowed"]:
+        payload["blocking_reason"] = payload.get("blocking_reason") or "Human license review is required."
+    return payload
+
+
+def recommended_status_for_model(model: dict[str, Any], evidence: dict[str, Any]) -> str:
+    if not model.get("bengali_supported"):
+        return "RESEARCH_ONLY_UNSUPPORTED_BENGALI"
+    if evidence.get("production_candidate_allowed") is not True:
+        return "LICENSE_REVIEW_REQUIRED"
+    if model.get("commercial_allowed") is not True:
+        return "LICENSE_REVIEW_REQUIRED"
+    return str(model.get("recommended_status") or "INTERNAL_REVIEW_ONLY")
+
+
+def operator_required_payload(book_slug: str, mode: str, source_status: dict[str, Any]) -> dict[str, Any]:
+    shortlist = read_json(SHORTLIST_PATH, {"models": []})
+    models: list[dict[str, Any]] = []
+    for model in shortlist.get("models", []):
+        evidence = load_license_evidence(str(model["model_id"]))
+        models.append(
+            {
+                **model,
+                "status": "OPERATOR_REQUIRED",
+                "recommended_status": recommended_status_for_model(model, evidence),
+                "license_evidence": evidence,
+                "audio_generated": False,
+                "public_audio_urls_created": False,
+                "chunks": [],
+            }
+        )
+    payload = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "book_slug": book_slug,
+        "mode": mode,
+        "scope": "INTERNAL_REVIEW_ONLY",
+        "source_status": source_status,
+        "dracula_only_live": True,
+        "kshudhita_pipeline_only": True,
+        "public_audio_urls_created": False,
+        "audio_generated": False,
+        "owner_approval_loaded": owner_approval_loaded(),
+        "voice_profile": read_json(VOICE_PROFILE_PATH, {}),
+        "representative_chunk_count": 0,
+        "models": models,
+        "final_status": "OPERATOR_REQUIRED",
+        "blocking_reason": source_status["blocking_reason"],
+    }
+    write_summary(payload)
+    write_selection_report(payload)
+    write_bakeoff_scorecard(payload)
+    return payload
 
 
 def select_representative_chunks(chunks: list[dict[str, Any]], limit: int = 10) -> list[dict[str, Any]]:
@@ -164,7 +243,7 @@ def write_selection_report(payload: dict[str, Any]) -> None:
     lines = [
         "# Audiobook Model Selection Report",
         "",
-        "Final status: `NO_MODEL_APPROVED_YET`",
+        f"Final status: `{payload.get('final_status', 'NO_MODEL_APPROVED_YET')}`",
         "",
         "No model is approved for public preview or full audiobook release. This bake-off is internal-review-only and dry-run by default.",
         "",
@@ -178,19 +257,32 @@ def write_selection_report(payload: dict[str, Any]) -> None:
         "- Final recommended model: `NO_MODEL_APPROVED_YET`.",
         "- Required next step: generate owner-approved internal samples, complete license review, then complete human listening review.",
         "",
-        "## Safety",
-        "",
-        "- Kshudhita Pashan remains pipeline-only.",
-        "- Dracula remains the only live approved reading title.",
-        "- No public audio URL was created.",
-        "- No Listen Now CTA was added.",
-        "- No paid or cloud provider API was called.",
-        "",
-        "## Model Statuses",
-        "",
-        "| Model | Status | License status | Audio generated |",
-        "| --- | --- | --- | --- |",
     ]
+    if payload.get("final_status") == "OPERATOR_REQUIRED":
+        lines.extend(
+            [
+                "## Operator Required",
+                "",
+                payload.get("blocking_reason", "Approved source text is required before official bake-off planning."),
+                "",
+            ]
+        )
+    lines.extend(
+        [
+            "## Safety",
+            "",
+            "- Kshudhita Pashan remains pipeline-only.",
+            "- Dracula remains the only live approved reading title.",
+            "- No public audio URL was created.",
+            "- No Listen Now CTA was added.",
+            "- No paid or cloud provider API was called.",
+            "",
+            "## Model Statuses",
+            "",
+            "| Model | Status | License status | Audio generated |",
+            "| --- | --- | --- | --- |",
+        ]
+    )
     for model in payload["models"]:
         lines.append(
             f"| {model['model_id']} | {model.get('recommended_status', model.get('status'))} | "
@@ -230,11 +322,72 @@ def write_summary(payload: dict[str, Any]) -> None:
             )
 
 
+def compute_scorecard(payload: dict[str, Any]) -> dict[str, Any]:
+    score = 9.6
+    caps: list[str] = []
+    if payload.get("source_status", {}).get("status") != "READY":
+        score = min(score, 8.6)
+        caps.append("approved source text missing = max 8.6")
+    if payload.get("representative_chunk_count", 0) < 25:
+        score = min(score, 9.0)
+        caps.append("fewer than 25 real-source chunks = max 9.0")
+    if not any(model.get("audio_generated") for model in payload.get("models", [])):
+        score = min(score, 9.0)
+        caps.append("no generated internal samples = max 9.0")
+    if not payload.get("human_review_approved"):
+        score = min(score, 9.0)
+        caps.append("no Bengali human listening review = max 9.0")
+    if any(model.get("public_audio_urls_created") for model in payload.get("models", [])):
+        score = min(score, 5.0)
+        caps.append("public audio URL present = max 5.0")
+    return {
+        "book_slug": payload.get("book_slug"),
+        "score": round(score, 2),
+        "status": payload.get("final_status"),
+        "final_public_audio_status": "BLOCKED",
+        "caps_applied": caps,
+        "human_review_approved": bool(payload.get("human_review_approved")),
+    }
+
+
+def write_bakeoff_scorecard(payload: dict[str, Any]) -> None:
+    scorecard = compute_scorecard(payload)
+    SCORECARD_JSON.write_text(json.dumps(scorecard, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    lines = [
+        "# Bengali Audiobook Model Bake-Off Scorecard",
+        "",
+        f"Score: {scorecard['score']}/10",
+        "",
+        f"Status: `{scorecard['status']}`",
+        "",
+        "Final public audio status: `BLOCKED`",
+        "",
+        "## Caps Applied",
+        "",
+    ]
+    if scorecard["caps_applied"]:
+        for cap in scorecard["caps_applied"]:
+            lines.append(f"- {cap}")
+    else:
+        lines.append("- No caps applied.")
+    lines.extend(
+        [
+            "",
+            "A 9.9 score requires approved full source text, 25-40 real-source representative chunks, license clearance, generated internal samples, Bengali human listening review, and owner approval.",
+            "",
+        ]
+    )
+    SCORECARD_MD.write_text("\n".join(lines), encoding="utf-8")
+
+
 def run_benchmark(book_slug: str, mode: str, require_owner_approval: bool) -> dict[str, Any]:
     if book_slug != "kshudhita-pashan":
         raise ValueError("This bake-off is scoped only to kshudhita-pashan.")
     if mode not in {"plan", "dry-run", "local"}:
         raise ValueError("mode must be plan, dry-run, or local.")
+    source_status = approved_source_status()
+    if source_status["status"] != "READY":
+        return operator_required_payload(book_slug, mode, source_status)
     approval = owner_approval_loaded()
     if mode == "local" and (require_owner_approval and not approval):
         raise PermissionError(f"Local generation blocked. Approval file required: {APPROVAL_PATH}")
@@ -244,16 +397,24 @@ def run_benchmark(book_slug: str, mode: str, require_owner_approval: bool) -> di
     chunks = select_representative_chunks(load_chunks())
     models: list[dict[str, Any]] = []
     for model in shortlist.get("models", []):
+        evidence = load_license_evidence(str(model["model_id"]))
         if mode == "plan":
             model_result = {
                 **model,
                 "status": "PLANNED_INTERNAL_REVIEW_ONLY",
+                "recommended_status": recommended_status_for_model(model, evidence),
+                "license_evidence": evidence,
                 "audio_generated": False,
                 "public_audio_urls_created": False,
                 "chunks": [{"chunk_id": chunk["chunk_id"], "planned": True} for chunk in chunks],
             }
         else:
-            model_result = {**model, **benchmark_model(model, chunks, mode, approval)}
+            model_result = {
+                **model,
+                **benchmark_model(model, chunks, mode, approval),
+                "recommended_status": recommended_status_for_model(model, evidence),
+                "license_evidence": evidence,
+            }
         models.append(model_result)
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -265,13 +426,16 @@ def run_benchmark(book_slug: str, mode: str, require_owner_approval: bool) -> di
         "public_audio_urls_created": False,
         "audio_generated": any(model.get("audio_generated") for model in models),
         "owner_approval_loaded": approval,
+        "source_status": source_status,
         "voice_profile": voice_profile,
         "representative_chunk_count": len(chunks),
         "models": models,
         "final_status": "NO_MODEL_APPROVED_YET",
+        "human_review_approved": False,
     }
     write_summary(payload)
     write_selection_report(payload)
+    write_bakeoff_scorecard(payload)
     return payload
 
 

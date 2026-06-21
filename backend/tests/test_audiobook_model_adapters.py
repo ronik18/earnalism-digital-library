@@ -28,11 +28,16 @@ def test_adapter_registry_includes_required_models():
 
 def test_adapters_report_environment_without_network_calls(monkeypatch):
     import socket
+    import subprocess
 
     def fail_network(*args, **kwargs):
         raise AssertionError("network call attempted")
 
+    def fail_subprocess(*args, **kwargs):
+        raise AssertionError("subprocess call attempted")
+
     monkeypatch.setattr(socket, "create_connection", fail_network)
+    monkeypatch.setattr(subprocess, "run", fail_subprocess)
 
     for adapter_class in [SvaraTTSAdapter, MahaTTSAdapter, AI4BharatIndicTTSAdapter, F5TTSAdapter]:
         environment = adapter_class().check_environment()
@@ -48,6 +53,16 @@ def test_dry_run_adapter_results_do_not_create_audio_or_public_url(tmp_path):
     assert result.metadata["audio_generated"] is False
     assert result.metadata["public_audio_url"] == ""
     assert result.metadata["internal_review_only"] is True
+
+
+def test_dry_run_metadata_never_uses_public_paths(tmp_path):
+    adapter = SvaraTTSAdapter(tmp_path)
+    result = adapter.generate_chunk_dry_run(sample_chunk(), config={"no_public_release": True})
+
+    encoded = json.dumps(result.metadata, ensure_ascii=False)
+    assert "https://" not in encoded
+    assert "/frontend/public/" not in encoded
+    assert "/public/" not in encoded
 
 
 def test_local_generation_refuses_without_owner_approval(tmp_path):

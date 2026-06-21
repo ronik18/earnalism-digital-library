@@ -1,6 +1,6 @@
 # Audiobook Model Selection Report
 
-Final status: `NO_MODEL_APPROVED_YET`
+Final status: `OPERATOR_REQUIRED`
 
 No model is approved for public preview or full audiobook release. This bake-off is internal-review-only and dry-run by default.
 
@@ -14,6 +14,10 @@ No model is approved for public preview or full audiobook release. This bake-off
 - Final recommended model: `NO_MODEL_APPROVED_YET`.
 - Required next step: generate owner-approved internal samples, complete license review, then complete human listening review.
 
+## Operator Required
+
+Approved Kshudhita Pashan full source text is not committed; official bake-off chunks cannot be generated.
+
 ## Safety
 
 - Kshudhita Pashan remains pipeline-only.
@@ -26,10 +30,10 @@ No model is approved for public preview or full audiobook release. This bake-off
 
 | Model | Status | License status | Audio generated |
 | --- | --- | --- | --- |
-| svara-tts-v1 | PRIMARY_BENCHMARK | LICENSE_REVIEW_REQUIRED | False |
-| mahatts-v2 | PRIMARY_BENCHMARK | LICENSE_REVIEW_REQUIRED | False |
-| ai4bharat-indic-tts | PRONUNCIATION_BASELINE | LICENSE_REVIEW_REQUIRED | False |
-| f5-tts | RESEARCH_ONLY_LICENSE_CHECK_REQUIRED | LICENSE_REVIEW_REQUIRED | False |
-| xtts-v2 | RESEARCH_ONLY_UNSUPPORTED_BENGALI | NOT_EVALUATED_BY_ADAPTER | False |
-| chatterbox-multilingual-v3 | RESEARCH_ONLY_UNSUPPORTED_BENGALI | NOT_EVALUATED_BY_ADAPTER | False |
-| dia | EXCLUDED_FOR_BENGALI | NOT_EVALUATED_BY_ADAPTER | False |
+| svara-tts-v1 | LICENSE_REVIEW_REQUIRED | N/A | False |
+| mahatts-v2 | LICENSE_REVIEW_REQUIRED | N/A | False |
+| ai4bharat-indic-tts | LICENSE_REVIEW_REQUIRED | N/A | False |
+| f5-tts | LICENSE_REVIEW_REQUIRED | N/A | False |
+| xtts-v2 | RESEARCH_ONLY_UNSUPPORTED_BENGALI | N/A | False |
+| chatterbox-multilingual-v3 | RESEARCH_ONLY_UNSUPPORTED_BENGALI | N/A | False |
+| dia | RESEARCH_ONLY_UNSUPPORTED_BENGALI | N/A | False |

@@ -11,7 +11,8 @@ def test_audiobook_regeneration_workflow_is_internal_review_only():
     assert payload["scope"] == "INTERNAL_REVIEW_ONLY"
     assert payload["audio_generated"] is False
     assert payload["public_audio_urls_created"] is False
-    assert payload["final_status"] == "NO_MODEL_APPROVED_YET"
+    assert payload["final_status"] == "OPERATOR_REQUIRED"
+    assert payload["representative_chunk_count"] == 0
 
 
 def test_public_audio_urls_are_not_created_in_manifests():
