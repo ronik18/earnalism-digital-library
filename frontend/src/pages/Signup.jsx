@@ -20,7 +20,7 @@ export default function Signup() {
   const [busy, setBusy] = useState(false);
   const nav = useNavigate();
 
-  if (user === null) return <div className="py-32 text-center text-charcoal-soft">Loading…</div>;
+  if (user === null) return <div className="py-32 text-center text-charcoal-soft" role="status" aria-live="polite">Loading account setup…</div>;
   if (user) return <Navigate to="/account" replace />;
 
   const submit = async (e) => {
@@ -53,7 +53,10 @@ export default function Signup() {
           Chapter 1 is free. Reading time is added only when you choose a pass, and there is no subscription or autorenewal.
         </div>
 
-        <form onSubmit={submit} className="mt-8 space-y-4" data-testid="user-signup-form">
+        <form onSubmit={submit} className="mt-8 space-y-4" data-testid="user-signup-form" aria-describedby="signup-wallet-help">
+          <p id="signup-wallet-help" className="sr-only">
+            Create an account to manage Dracula reading time and return to your place later.
+          </p>
           <label className="block">
             <span className="overline block mb-2">Your name</span>
             <div className="relative">

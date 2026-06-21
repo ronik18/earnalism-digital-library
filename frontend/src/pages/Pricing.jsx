@@ -271,7 +271,12 @@ export default function Pricing() {
             const selected = selectedPackId === p.id;
             const badge = PACK_BADGES[p.id];
             return (
-            <div key={p.id} className={`card-elegant p-7 flex flex-col ${selected ? "pricing-card--selected" : ""}`} data-testid={`pack-${p.id}`} aria-label={selected ? `${p.label}, selected offer` : p.label}>
+            <div
+              key={p.id}
+              className={`card-elegant p-7 flex flex-col ${selected ? "pricing-card--selected" : ""}`}
+              data-testid={`pack-${p.id}`}
+              aria-label={`${p.label}, ${p.minutes} minutes, ₹${p.price_inr}${badge ? `, ${badge}` : ""}${selected ? ", selected offer" : ""}`}
+            >
               <div className="italic-eyebrow opacity-80 flex items-center gap-2"><Clock size={13} strokeWidth={1.5} /> {p.minutes >= 60 ? `${p.minutes / 60} ${p.minutes === 60 ? "hour" : "hours"}` : `${p.minutes} minutes`}</div>
               <div className="flex flex-wrap gap-2 mt-4 min-h-[2rem]">
                 {badge && <span className="pricing-card__badge">{badge}</span>}
@@ -285,6 +290,7 @@ export default function Pricing() {
                 disabled={busyId === p.id}
                 className="btn-primary w-full mt-7 disabled:opacity-60"
                 data-testid={`pack-${p.id}-buy`}
+                aria-label={`${!isAuthed ? "Sign in to buy" : showSimulator ? "Run test purchase for" : "Buy"} ${p.label} for ₹${p.price_inr}`}
               >
                 {busyId === p.id
                   ? "Working…"
@@ -330,7 +336,7 @@ export default function Pricing() {
         </section>
 
         <div className="text-center mt-14">
-          <div className="mx-auto grid max-w-3xl grid-cols-1 gap-3 rounded-lg border border-brand-soft bg-white/50 p-5 text-sm text-charcoal-soft sm:grid-cols-2" data-testid="pricing-trust-copy">
+          <div className="mx-auto grid max-w-3xl grid-cols-1 gap-3 rounded-lg border border-brand-soft bg-white/50 p-5 text-sm text-charcoal-soft sm:grid-cols-2" data-testid="pricing-trust-copy" role="note" aria-label="Payment and wallet trust notes">
             <span>Secure payment by Razorpay.</span>
             <span>No subscription or autorenewal.</span>
             <span>Reading time is credited to your wallet after confirmation.</span>

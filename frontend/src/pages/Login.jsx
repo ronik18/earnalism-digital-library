@@ -60,7 +60,7 @@ export default function Login() {
     }
   };
 
-  if (user === null) return <div className="py-32 text-center text-charcoal-soft">Loading…</div>;
+  if (user === null) return <div className="py-32 text-center text-charcoal-soft" role="status" aria-live="polite">Loading sign-in…</div>;
   if (user) return <Navigate to={next} replace />;
 
   const submit = async (e) => {
@@ -246,7 +246,10 @@ export default function Login() {
         </div>
         )}
 
-        <form onSubmit={submit} className="mt-6 space-y-4" data-testid="user-login-form">
+        <form onSubmit={submit} className="mt-6 space-y-4" data-testid="user-login-form" aria-describedby="login-continuation-help">
+          <p id="login-continuation-help" className="sr-only">
+            Sign in to continue Dracula, return to the reading-time page, or review your wallet.
+          </p>
           <label className="block">
             <span className="overline block mb-2">Email</span>
             <div className="relative">

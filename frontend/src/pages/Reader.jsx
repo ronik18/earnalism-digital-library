@@ -2188,7 +2188,7 @@ export default function Reader() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen" style={{ background: THEMES.beige.canvas }}>
+      <div className="flex flex-col items-center justify-center min-h-screen" style={{ background: THEMES.beige.canvas }} role="status" aria-live="polite">
         <Loader2 size={32} className="animate-spin" color="#6B1020" />
         <div style={{ fontFamily: READER_SERIF, fontSize: 17, color: '#7A5C62' }}>
           Opening chapter…
@@ -2224,7 +2224,7 @@ export default function Reader() {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center gap-4 px-6 text-center min-h-screen" style={{ background: THEMES.beige.canvas }} data-testid="reader-error">
+      <div className="flex flex-col items-center justify-center gap-4 px-6 text-center min-h-screen" style={{ background: THEMES.beige.canvas }} data-testid="reader-error" role="alert">
         <AlertCircle size={28} color="#6B1020" />
         <div style={{ fontFamily: READER_SERIF, fontSize: 18, color: '#6B1020' }}>
           {error}
@@ -2245,7 +2245,7 @@ export default function Reader() {
 
     return (
       <div className="flex min-h-screen items-center justify-center px-5 py-14 text-center" style={{ background: THEMES.beige.canvas }} data-testid="reader-locked">
-        <div className="w-full max-w-md rounded-2xl border border-[#E8DDD8] bg-white/70 px-7 py-9 shadow-book">
+        <div className="w-full max-w-md rounded-2xl border border-[#E8DDD8] bg-white/70 px-7 py-9 shadow-book" role="status" aria-live="polite" data-testid="reader-locked-state">
           <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full" style={{ background: '#F5F0E8', color: '#6B1020' }}>
             {reason === 'INSUFFICIENT_READING_TIME' ? <CreditCard size={22} /> : <LogIn size={22} />}
           </div>
@@ -2622,15 +2622,15 @@ export default function Reader() {
       )}
 
       {showTopUpModal && (
-        <div className="fixed inset-0 z-[60] flex items-end justify-center">
+        <div className="fixed inset-0 z-[60] flex items-end justify-center" role="dialog" aria-modal="true" aria-labelledby="reading-time-dialog-title" aria-describedby="reading-time-dialog-description" data-testid="reading-time-dialog">
           <div className="absolute inset-0 bg-black/50" style={{ backdropFilter: 'blur(4px)' }} />
           <div className="relative rounded-t-2xl p-6 w-full max-w-lg animate-slide-up" style={{ background: '#FAF7F0', boxShadow: '0 -8px 40px rgba(107,16,32,0.15)' }}>
             <div className="text-center">
               <div style={{ fontSize: 32 }}>⏸</div>
-              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: '#6B1020', marginTop: 3 }}>
+              <div id="reading-time-dialog-title" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: '#6B1020', marginTop: 3 }}>
                 Reading Paused
               </div>
-              <p style={{ fontFamily: "'Crimson Pro', Georgia, serif", fontSize: 16, color: '#7A5C62', marginTop: 2 }}>
+              <p id="reading-time-dialog-description" style={{ fontFamily: "'Crimson Pro', Georgia, serif", fontSize: 16, color: '#7A5C62', marginTop: 2 }}>
                 You've used all your reading time.
               </p>
               <p style={{ fontFamily: 'Inter', fontSize: 12, color: '#D4A843', marginTop: 1, marginBottom: 20 }}>
@@ -2643,7 +2643,15 @@ export default function Reader() {
                 const selected = index === selectedPack;
                 const price = pack.price ?? pack.price_inr;
                 return (
-                  <div key={pack._id || pack.id} onClick={() => setSelectedPack(index)} className="rounded-xl p-4 cursor-pointer transition-all" style={{ borderWidth: 2, borderStyle: 'solid', borderColor: selected ? '#6B1020' : '#E8DDD8', background: selected ? 'rgba(107,16,32,0.06)' : 'white' }}>
+                  <button
+                    key={pack._id || pack.id}
+                    type="button"
+                    onClick={() => setSelectedPack(index)}
+                    aria-pressed={selected}
+                    aria-label={`Select ${pack.label || `${pack.minutes} minute`} reading-time pack for ₹${price}`}
+                    className="rounded-xl p-4 cursor-pointer transition-all text-left"
+                    style={{ borderWidth: 2, borderStyle: 'solid', borderColor: selected ? '#6B1020' : '#E8DDD8', background: selected ? 'rgba(107,16,32,0.06)' : 'white' }}
+                  >
                     <div className="flex justify-between items-center gap-3">
                       <div>
                         <div style={{ fontFamily: "'Crimson Pro', Georgia, serif", fontSize: 17, color: '#1C0A0E' }}>
@@ -2659,7 +2667,7 @@ export default function Reader() {
                         ₹{price}
                       </div>
                     </div>
-                  </div>
+                  </button>
                 );
               })}
             </div>
