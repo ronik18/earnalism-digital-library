@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-06-21T18:41:46.300949+00:00",
+  "status": "READY_FOR_MANUAL_SOCIAL_PROFILE_SETUP",
+  "recommendation": "NOT_READY_FOR_PAID_SOCIAL_ADS",
+  "owner_upload_status": "OWNER_UPLOAD_REQUIRED",
+  "score": 8.5,
+  "dimensions": {
+    "brand_consistency": 9.4,
+    "premium_visual_tone": 9.2,
+    "dracula_first_clarity": 9.7,
+    "truthfulness": 9.6,
+    "profile_completeness": 9.1,
+    "platform_fit": 9.0,
+    "cta_clarity": 9.4,
+    "social_link_validity": 7.8,
+    "footer_integration_readiness": 9.0,
+    "ad_readiness": 7.2
+  },
+  "caps": [
+    {
+      "rule": "no real social links configured",
+      "cap": 8.5,
+      "applies": true
+    },
+    {
+      "rule": "no owner upload verification",
+      "cap": 9.0,
+      "applies": true
+    },
+    {
+      "rule": "no avatar/banner assets exist",
+      "cap": 8.0,
+      "applies": false
+    },
+    {
+      "rule": "fake claims exist",
+      "cap": 5.0,
+      "applies": false
+    }
+  ],
+  "forbidden_claims_detected_outside_policy": [],
+  "evidence": {
+    "assets_generated": 22,
+    "live_title": "Dracula",
+    "public_audio_status": "DISABLED",
+    "paid_ads_status": "HOLD_ADS_PENDING_HUMAN_REVIEW"
+  }
+}

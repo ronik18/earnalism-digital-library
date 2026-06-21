@@ -1,0 +1,80 @@
+{
+  "brand_name": "The Earnalism",
+  "display_name": "The Earnalism Digital Library",
+  "primary_handle": "theearnalism",
+  "alternate_handles": [
+    "earnalism",
+    "theearnalismlibrary",
+    "earnalismreadingroom"
+  ],
+  "tagline": "Read beautifully. Return to reading.",
+  "short_bio": "A quiet digital reading room beginning with Dracula by Bram Stoker. Bengali Gothic is moving through the rights-safe pipeline.",
+  "long_bio": "The Earnalism is a premium digital reading room for timeless books. We begin with Dracula by Bram Stoker, with Bengali Gothic and other classics moving through a rights-safe publication pipeline.",
+  "website_url": "https://theearnalism.com",
+  "primary_cta_url": "https://theearnalism.com/book/dracula",
+  "contact_email": "sales@reoenterprise.org",
+  "brand_colors": {
+    "near_black": "#130D0C",
+    "warm_ivory": "#F7F1E8",
+    "antique_gold": "#B88A42",
+    "deep_burgundy": "#421823",
+    "charcoal_soft": "#514742"
+  },
+  "typography_notes": [
+    "Use literary serif display type when available; fall back to Georgia, Times New Roman, or system serif.",
+    "Use small caps sparingly for labels and badges.",
+    "Keep spacing generous and quiet. Avoid loud condensed or novelty horror fonts.",
+    "Do not embed proprietary fonts in generated assets."
+  ],
+  "visual_style": [
+    "deep black or near-black fields",
+    "warm ivory panels",
+    "antique gold hairline rules",
+    "subtle paper texture",
+    "minimal literary ornament",
+    "premium reading-room mood",
+    "no cheap horror styling",
+    "no neon",
+    "no fake leather",
+    "no cluttered AI-art look"
+  ],
+  "forbidden_claims": [
+    "100+ live books",
+    "full audiobook available",
+    "human narrated unless proven",
+    "no AI touch unless proven",
+    "school partnerships unless signed",
+    "creator partnerships unless signed",
+    "testimonials unless real and approved",
+    "ratings unless real and approved"
+  ],
+  "approved_claims": [
+    "Dracula is first controlled live reading release",
+    "Chapter 1 is free",
+    "Bengali Gothic coming through rights-safe pipeline",
+    "Audio not publicly available yet",
+    "quiet digital reading room"
+  ],
+  "live_title": {
+    "slug": "dracula",
+    "title": "Dracula",
+    "author": "Bram Stoker",
+    "status": "LIVE_APPROVED_CORE_READING",
+    "audio_status": "DISABLED"
+  },
+  "pipeline_titles": [
+    {
+      "slug": "kshudhita-pashan",
+      "title": "Kshudhita Pashan",
+      "display_title": "Bengali Gothic",
+      "status": "PIPELINE_ONLY"
+    }
+  ],
+  "launch_status": {
+    "publication_status": "DRACULA_ONLY_CONTROLLED_LAUNCH",
+    "public_audio_status": "DISABLED",
+    "paid_ads_status": "HOLD_ADS_PENDING_HUMAN_REVIEW",
+    "social_profile_status": "READY_FOR_MANUAL_SOCIAL_PROFILE_SETUP",
+    "owner_upload_status": "OWNER_UPLOAD_REQUIRED"
+  }
+}

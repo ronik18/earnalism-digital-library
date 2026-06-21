@@ -42,6 +42,8 @@
     "launch:seo-audit": "python3 scripts/launch_readiness_audit.py --mode seo",
     "launch:social-preview-audit": "python3 scripts/social_preview_audit.py",
     "launch:social-preview-audit:prod": "python3 scripts/social_preview_audit.py --base-url https://theearnalism.com",
+    "social:brand-kit": "python3 scripts/generate_social_brand_assets.py",
+    "social:links:validate": "python3 scripts/validate_social_links.py",
     "launch:performance-audit": "python3 scripts/launch_readiness_audit.py --mode performance",
     "launch:audio-audit": "python3 scripts/launch_readiness_audit.py --mode audio",
     "launch:payment-smoke": "python3 scripts/launch_readiness_audit.py --mode payment-smoke",

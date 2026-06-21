@@ -1,0 +1,59 @@
+{
+  "status": "DRAFT_ONLY_OWNER_UPLOAD_REQUIRED",
+  "publishing": {
+    "auto_posting_enabled": false,
+    "social_api_calls_enabled": false,
+    "owner_manual_upload_required": true
+  },
+  "posts": [
+    {
+      "platform": "Instagram",
+      "title": "Begin with Dracula",
+      "body": "The Earnalism opens as a quiet digital reading room. Begin with Dracula by Bram Stoker. Chapter 1 is free. Bengali Gothic is coming through a rights-safe pipeline.",
+      "cta": "Read Chapter 1 Free",
+      "hashtags": ["#TheEarnalism", "#Dracula", "#ReadingRoom", "#ClassicBooks"]
+    },
+    {
+      "platform": "YouTube",
+      "title": "The Earnalism begins with Dracula",
+      "body": "Welcome to The Earnalism Digital Library. Our controlled launch begins with Dracula by Bram Stoker. Audio is not publicly available yet. Read Chapter 1 free and return to reading beautifully.",
+      "cta": "Read Dracula",
+      "hashtags": ["#TheEarnalism", "#Dracula", "#ClassicLiterature"]
+    },
+    {
+      "platform": "LinkedIn",
+      "title": "A rights-safe reading-room launch",
+      "body": "The Earnalism begins with one approved classic: Dracula by Bram Stoker. Chapter 1 is free. Bengali Gothic and other classics move through a rights-safe pipeline before publication.",
+      "cta": "Read Chapter 1 Free",
+      "hashtags": ["#DigitalLibrary", "#ClassicLiterature", "#Education"]
+    },
+    {
+      "platform": "Facebook",
+      "title": "Begin with Dracula",
+      "body": "The first lamp is lit. Start with Dracula by Bram Stoker on The Earnalism. Chapter 1 is free, and Bengali Gothic is coming carefully through the rights-safe pipeline.",
+      "cta": "Start Dracula",
+      "hashtags": ["#TheEarnalism", "#Dracula", "#Reading"]
+    },
+    {
+      "platform": "X",
+      "title": "Begin with Dracula",
+      "body": "The Earnalism is open as a quiet digital reading room. Begin with Dracula by Bram Stoker. Chapter 1 is free. Bengali Gothic is coming through a rights-safe pipeline.",
+      "cta": "Read Chapter 1 Free",
+      "hashtags": ["#Dracula", "#Reading", "#ClassicBooks"]
+    },
+    {
+      "platform": "WhatsApp Channel",
+      "title": "Welcome to The Earnalism",
+      "body": "Begin with Dracula by Bram Stoker. Chapter 1 is free. Bengali Gothic is moving through a rights-safe pipeline. Audio is not publicly available yet.",
+      "cta": "Read Dracula",
+      "hashtags": []
+    },
+    {
+      "platform": "Telegram",
+      "title": "The reading room is open",
+      "body": "The Earnalism begins with Dracula by Bram Stoker. Read Chapter 1 free and return to the reading room when the book calls.",
+      "cta": "Read Chapter 1 Free",
+      "hashtags": []
+    }
+  ]
+}
