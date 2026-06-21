@@ -212,7 +212,7 @@ function breadcrumbsJsonLd(items) {
   };
 }
 
-function draculaBookJsonLd({ source }) {
+function draculaBookJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Book",
@@ -233,7 +233,6 @@ function draculaBookJsonLd({ source }) {
     genre: "Gothic fiction",
     bookFormat: "https://schema.org/EBook",
     copyrightYear: 1897,
-    sameAs: source.source_url,
     isAccessibleForFree: false,
     hasPart: [
       {
@@ -262,7 +261,7 @@ function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
   ].filter(Boolean).join("\n");
 }
 
-function buildPages({ book, manifest, source }) {
+function buildPages({ book, manifest }) {
   const homeDescription = "The Earnalism controlled launch begins with Dracula by Bram Stoker. Read Chapter 1 free, then continue with a reading pass. Bengali Gothic and other classics are moving through the rights-safe pipeline.";
   const bookDescription = "Read Dracula by Bram Stoker in The Earnalism’s controlled digital reading room. Chapter 1 is free. Continue with a 7-day reading pass. Audio is not available yet.";
   const libraryDescription = "Live Controlled Release: Dracula only. Future classics are coming through The Earnalism rights-safe pipeline and are not live reading products yet.";
@@ -313,7 +312,7 @@ function buildPages({ book, manifest, source }) {
       ],
       jsonLd: [
         webpageJsonLd({ title: "Dracula by Bram Stoker", description: bookDescription, path: "/book/dracula" }),
-        draculaBookJsonLd({ source }),
+        draculaBookJsonLd(),
         breadcrumbsJsonLd([
           { name: "Home", path: "/" },
           { name: "Library", path: "/library" },
