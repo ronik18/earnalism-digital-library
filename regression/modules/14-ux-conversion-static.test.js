@@ -80,6 +80,19 @@ describe("UX conversion static signals", () => {
   const styles = read("frontend/src/index.css");
   const app = read("frontend/src/App.js");
   const renderedPricingSources = [backend, pricing, microStory, readerUpsell, reader].join("\n");
+  const productTruthLedger = read("PRODUCT_TRUTH_LEDGER.md");
+  const alwaysVisibleLaunchCopy = [
+    home,
+    library,
+    bookDetail,
+    pricing,
+    microStory,
+    readerUpsell,
+    header,
+    footer,
+    controlledLaunch,
+    staticSnapshotGenerator,
+  ].join("\n");
 
   test("homepage exposes Dracula-first reading and reading-time CTAs", () => {
     expect(home).toContain('data-testid="hero-cta-read"');
@@ -118,6 +131,32 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain("DRACULA_SOURCE_NOTE");
     expect(bookDetail).toContain("Audio:</strong> Not available yet");
     expect(bookDetail).toContain("readingPassUrl(\"book_detail\")");
+  });
+
+  test("product truth ledger preserves controlled-launch boundaries", () => {
+    expect(productTruthLedger).toContain("Dracula is the only currently approved core public reading release.");
+    expect(productTruthLedger).toContain("Audiobooks are not public/live.");
+    expect(productTruthLedger).toContain("Kshudhita Pashan remains pipeline-only.");
+    expect(productTruthLedger).toContain("Draft PR evidence must not become public-product claims.");
+    expect(productTruthLedger).toContain("blind-user tested");
+    expect(productTruthLedger).toContain("WCAG compliant");
+    expect(productTruthLedger).toContain("fully accessible audiobook platform");
+    expect(productTruthLedger).toContain("Product-wide launch readiness: 8.0/10 HOLD");
+    expect(productTruthLedger).toContain("Dracula controlled reading candidate: 9.9/10");
+  });
+
+  test("always-visible launch copy does not overclaim audio, accessibility, or PR branch evidence", () => {
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\b(Kshudhita|Hungry Stones)\b[\s\S]{0,160}\b(Start Reading|Read Preview|Listen Now)\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\bfull audiobook\b[\s\S]{0,80}\b(available|live|ready|published)\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\baudiobooks are live\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\bDracula audio is available\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\bblind[- ]user tested\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\bWCAG compliant\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\bfully accessible audiobook platform\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\b10\/10\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\b9\.9\+\/10\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\bPR #4[2-6]\b[\s\S]{0,120}\b(live|merged|public|deployed)\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\bbranch-(only|visible)\b[\s\S]{0,120}\b(live|public|deployed)\b/i);
   });
 
   test("book card truth gate prevents unapproved reader CTAs", () => {
