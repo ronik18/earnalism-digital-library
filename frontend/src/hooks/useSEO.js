@@ -3,7 +3,7 @@ import { useSettings } from "../context/SettingsContext";
 
 const SITE_URL = (process.env.REACT_APP_SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const DEFAULT_TITLE = "The Earnalism Digital Library";
-const DEFAULT_DESCRIPTION = "Buy reading time. Read beautifully. Return whenever you wish.";
+const DEFAULT_DESCRIPTION = "A quiet digital reading room beginning with Dracula by Bram Stoker. Read Chapter 1 free, then continue with reading time when you are ready.";
 // Premium hero/library image used as the fallback OG image until an admin uploads
 // a brand-specific share image in Settings -> Brand identity.
 const FALLBACK_OG_IMAGE =

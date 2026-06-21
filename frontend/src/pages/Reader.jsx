@@ -2254,6 +2254,9 @@ export default function Reader() {
           <p className="mt-5 text-sm font-light leading-relaxed text-charcoal-soft">
             {lockedState.message || 'This chapter is locked.'}
           </p>
+          <p className="mt-3 text-xs font-light leading-relaxed text-charcoal-soft/80" data-testid="reader-locked-wallet-note">
+            Chapter 1 remains free. Later Dracula chapters ask for sign-in and reading time from your wallet.
+          </p>
 
           <div className="mt-8 flex flex-col gap-3">
             {reason === 'AUTH_REQUIRED' && (
@@ -2608,7 +2611,7 @@ export default function Reader() {
             </div>
             <div className="flex items-center gap-2">
               <button type="button" onClick={() => { setSavedScrollPosition(scrollContainerRef.current?.scrollTop || 0); setShowTopUpModal(true); }} className="px-3 py-1 rounded-full" style={{ background: '#6B1020', color: '#FAF7F0', fontFamily: 'Inter', fontSize: 12 }}>
-                Top Up
+                Add Time
               </button>
               <button type="button" onClick={() => setShowLowBalanceWarning(false)} style={{ color: '#6B1020', fontFamily: 'Inter', fontSize: 16 }}>
                 ✕
@@ -2631,7 +2634,7 @@ export default function Reader() {
                 You've used all your reading time.
               </p>
               <p style={{ fontFamily: 'Inter', fontSize: 12, color: '#D4A843', marginTop: 1, marginBottom: 20 }}>
-                Your place is saved — top up to continue from where you left off.
+                Your place is saved. Add reading time to continue from where you left off.
               </p>
             </div>
 
@@ -2663,10 +2666,10 @@ export default function Reader() {
 
             <button type="button" onClick={() => handleTopUp(topUpPacks[selectedPack])} disabled={topUpProcessing || !topUpPacks[selectedPack]} className="w-full mt-4 rounded-xl py-3 flex items-center justify-center gap-2" style={{ background: '#6B1020', color: '#FAF7F0', fontFamily: 'Inter', fontSize: 15, fontWeight: 500, opacity: topUpProcessing ? 0.7 : 1 }}>
               {topUpProcessing && <Loader2 className="animate-spin" size={16} />}
-              Complete Payment →
+              Add reading time
             </button>
             <button type="button" onClick={() => setShowTopUpModal(false)} className="w-full mt-3 text-center" style={{ fontFamily: 'Inter', fontSize: 12, color: '#A88A8F' }}>
-              I'll top up later
+              I'll return later
             </button>
           </div>
         </div>

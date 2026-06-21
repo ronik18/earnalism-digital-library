@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="md:col-span-2">
           <div className="mb-4 leading-none" data-testid="footer-brand"><BrandMark variant="footer" /></div>
-          <p className="font-serif-display italic text-base text-charcoal-soft mb-4">Buy reading time. Read beautifully. Return whenever you wish.</p>
+          <p className="font-serif-display italic text-base text-charcoal-soft mb-4">Read Chapter 1 free. Continue with quiet reading time when you are ready.</p>
           <p className="text-charcoal-soft max-w-md leading-[1.8] font-light text-[0.95rem]">
             A quiet digital reading room beginning with Dracula by Bram Stoker. Bengali Gothic and other classics are moving through the rights-safe pipeline.
           </p>

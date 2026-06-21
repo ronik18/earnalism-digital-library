@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import useSEO from "../hooks/useSEO";
-import { Clock, Lock } from "lucide-react";
+import { BookOpen, Clock, CreditCard, Lock, ShieldCheck } from "lucide-react";
 import { api, userApi, formatError } from "../lib/api";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "sonner";
@@ -241,7 +241,7 @@ export default function Pricing() {
           </h1>
           <div className="gold-rule-thin mx-auto mt-7" />
           <p className="text-charcoal-soft text-base sm:text-lg font-light leading-[1.9] mt-7 max-w-2xl mx-auto">
-            Start with Chapter 1 free. When you are ready to continue Dracula, add reading time. Your time is used only while you read.
+            Start with Chapter 1 free. When you are ready to continue Dracula, add reading time to your wallet. Your time is used only while you read.
           </p>
           <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -297,6 +297,24 @@ export default function Pricing() {
           })}
         </div>
 
+        <section className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3" aria-label="Reading time wallet explanation" data-testid="pricing-wallet-explainer">
+          <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
+            <BookOpen size={18} strokeWidth={1.55} className="text-gold" />
+            <h2 className="mt-4 font-serif-display text-xl text-burgundy">Chapter 1 stays free</h2>
+            <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">Use the preview to decide whether Dracula has earned your next hour.</p>
+          </div>
+          <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
+            <CreditCard size={18} strokeWidth={1.55} className="text-gold" />
+            <h2 className="mt-4 font-serif-display text-xl text-burgundy">Time goes to your wallet</h2>
+            <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">After payment confirmation, reading time is credited to your wallet and can be used when you return.</p>
+          </div>
+          <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
+            <ShieldCheck size={18} strokeWidth={1.55} className="text-gold" />
+            <h2 className="mt-4 font-serif-display text-xl text-burgundy">No subscription</h2>
+            <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">This is not a recurring plan, book ownership claim, or autorenewal product.</p>
+          </div>
+        </section>
+
         <section className="mt-16 pt-12 border-t border-[var(--border-soft)]/80" aria-labelledby="why-reading-time" data-testid="reading-time-explainer">
           <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-12 items-start">
             <div>
@@ -312,10 +330,12 @@ export default function Pricing() {
         </section>
 
         <div className="text-center mt-14">
-          <p className="text-sm text-charcoal-soft font-light italic max-w-xl mx-auto">
-            Secure payment by Razorpay. No subscription or autorenewal. Reading time is credited to your wallet after confirmation.
-            For support or refund questions, contact sales@reoenterprise.org.
-          </p>
+          <div className="mx-auto grid max-w-3xl grid-cols-1 gap-3 rounded-lg border border-brand-soft bg-white/50 p-5 text-sm text-charcoal-soft sm:grid-cols-2" data-testid="pricing-trust-copy">
+            <span>Secure payment by Razorpay.</span>
+            <span>No subscription or autorenewal.</span>
+            <span>Reading time is credited to your wallet after confirmation.</span>
+            <span>For support or refund questions, contact sales@reoenterprise.org.</span>
+          </div>
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact" className="btn-secondary">Need help?</Link>
             <Link to="/library" className="btn-link" data-testid="pricing-to-library">Browse the library →</Link>

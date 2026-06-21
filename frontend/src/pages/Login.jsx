@@ -112,8 +112,11 @@ export default function Login() {
         <h1 className="font-serif-light text-3xl sm:text-[2.4rem] text-burgundy leading-tight">Sign in to your <span className="italic-accent">library</span>.</h1>
         <div className="gold-rule-thin mt-5" />
         <p className="text-charcoal-soft mt-6 text-sm font-light leading-relaxed">
-          Pick up where you left off. Your reading time and shelf travel with you.
+          Pick up Dracula where you left off. Your reading-time wallet and shelf travel with you.
         </p>
+        <div className="mt-5 rounded-md border border-brand-soft bg-white/55 px-4 py-3 text-xs leading-relaxed text-charcoal-soft" data-testid="login-continuation-note">
+          Sign in after choosing a reading pass to return to the reading-time page, or sign in from the reader to continue once Chapter 1 has done its work.
+        </div>
 
         {GOOGLE_CLIENT_ID && <GoogleSignInButton onComplete={completeGoogle} />}
 

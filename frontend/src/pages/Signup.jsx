@@ -47,8 +47,11 @@ export default function Signup() {
         <h1 className="font-serif-light text-3xl sm:text-[2.4rem] text-burgundy leading-tight">A library that <span className="italic-accent">remembers</span> you.</h1>
         <div className="gold-rule-thin mt-5" />
         <p className="text-charcoal-soft mt-6 text-sm font-light leading-relaxed">
-          Buy reading time. Read beautifully. Return whenever you wish.
+          Create a quiet account for Dracula, your reading-time wallet, and future classics that pass the rights-safe pipeline.
         </p>
+        <div className="mt-5 rounded-md border border-brand-soft bg-white/55 px-4 py-3 text-xs leading-relaxed text-charcoal-soft" data-testid="signup-wallet-note">
+          Chapter 1 is free. Reading time is added only when you choose a pass, and there is no subscription or autorenewal.
+        </div>
 
         <form onSubmit={submit} className="mt-8 space-y-4" data-testid="user-signup-form">
           <label className="block">

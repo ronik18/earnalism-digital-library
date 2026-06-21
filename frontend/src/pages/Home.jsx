@@ -202,6 +202,28 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="surface-warm border-y border-brand-soft" data-testid="dracula-journey-map">
+        <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
+          <div className="mb-8 grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+            <div>
+              <div className="overline mb-3">How the reading room works</div>
+              <h2 className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">
+                Preview first. Add time only when you want to stay.
+              </h2>
+            </div>
+            <p className="max-w-2xl text-sm leading-[1.85] text-charcoal-soft sm:text-base">
+              Dracula is the only live room today. Chapter 1 opens free, later chapters ask for sign-in and reading time, and your place follows you back through the library or account page.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-4" aria-label="Dracula reading journey">
+            <JourneyStep number="01" title="Read Chapter 1 free" body="Open the preview before paying. No audio controls or hidden catalog claims are part of this launch." />
+            <JourneyStep number="02" title="Choose quiet reading time" body="Reading time is credited to your wallet after confirmation and is used only while you read." />
+            <JourneyStep number="03" title="Return from account or library" body="Sign in to resume Dracula, review your wallet, and continue from the controlled live shelf." />
+            <JourneyStep number="04" title="Future rooms stay gated" body="Kshudhita Pashan and other classics remain Coming Soon until source, rights, and QA pass." />
+          </div>
+        </div>
+      </section>
+
       <section className="surface-warm border-y border-brand-soft" data-testid="controlled-carousel-section">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-12">
           <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -321,7 +343,7 @@ export default function Home() {
                       Read Chapter 1 Free
                     </Link>
                     <Link to={`/book/${LIVE_APPROVED_SLUG}`} className="btn-primary justify-center" data-testid="home-dracula-start" onClick={() => track(DRACULA_CTA_EVENTS.startReading, { cta: "live_shelf_start" })}>
-                      Start Reading
+                      Start Dracula
                     </Link>
                     <Link to={readingPassUrl("home_live_shelf")} className="btn-link justify-center" data-testid="home-dracula-pass" onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "live_shelf_pass" })}>
                       Get Reading Pass <ArrowRight size={14} />
@@ -422,6 +444,16 @@ export default function Home() {
         </div>
       </section>
     </div>
+  );
+}
+
+function JourneyStep({ number, title, body }) {
+  return (
+    <article className="rounded-lg border border-brand-soft bg-white/45 p-5 shadow-[0_18px_45px_-38px_rgba(74,28,39,0.45)]" data-testid={`dracula-journey-step-${number}`}>
+      <div className="font-serif-display text-2xl text-gold-deep">{number}</div>
+      <h3 className="mt-4 font-serif-display text-xl leading-tight text-burgundy">{title}</h3>
+      <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">{body}</p>
+    </article>
   );
 }
 

@@ -64,6 +64,10 @@ describe("UX conversion static signals", () => {
   const controlledLaunch = read("frontend/src/lib/controlledLaunch.js");
   const publicationSafety = read("frontend/src/lib/publicationSafety.js");
   const pricing = read("frontend/src/pages/Pricing.jsx");
+  const login = read("frontend/src/pages/Login.jsx");
+  const signup = read("frontend/src/pages/Signup.jsx");
+  const account = read("frontend/src/pages/Account.jsx");
+  const useSeo = read("frontend/src/hooks/useSEO.js");
   const backend = read("backend/server.py");
   const analytics = read("frontend/src/lib/funnelAnalytics.js");
   const microStory = read("frontend/src/pages/MicroStoryLanding.jsx");
@@ -119,6 +123,10 @@ describe("UX conversion static signals", () => {
     expect(home).toContain("Start Dracula");
     expect(home).toContain("Get 7-Day Reading Pass");
     expect(home).toContain("Explore Pipeline / Library");
+    expect(home).toContain('data-testid="dracula-journey-map"');
+    expect(home).toContain("Preview first. Add time only when you want to stay.");
+    expect(home).toContain("Reading time is credited to your wallet after confirmation and is used only while you read.");
+    expect(home).toContain("Kshudhita Pashan and other classics remain Coming Soon until source, rights, and QA pass.");
     expect(home).not.toContain("A quieter bookstore for readers who linger");
     expect(home).not.toContain("Preview every book before you pay");
     expect(home).not.toContain("Discover thoughtful books across");
@@ -142,6 +150,10 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain("DRACULA_SOURCE_NOTE");
     expect(bookDetail).toContain("Audio:</strong> Not available yet");
     expect(bookDetail).toContain("readingPassUrl(\"book_detail\")");
+    expect(bookDetail).toContain('data-testid="dracula-reading-model-note"');
+    expect(bookDetail).toContain("Chapter 1 opens free so you can feel the room first.");
+    expect(bookDetail).toContain("Later chapters use reading time from your wallet, not a subscription.");
+    expect(bookDetail).toContain("Dracula audio is not available yet and no listening CTA is shown.");
   });
 
   test("product truth ledger preserves controlled-launch boundaries", () => {
@@ -168,6 +180,8 @@ describe("UX conversion static signals", () => {
     expect(alwaysVisibleLaunchCopy).not.toMatch(/\b9\.9\+\/10\b/i);
     expect(alwaysVisibleLaunchCopy).not.toMatch(/\bPR #4[2-6]\b[\s\S]{0,120}\b(live|merged|public|deployed)\b/i);
     expect(alwaysVisibleLaunchCopy).not.toMatch(/\bbranch-(only|visible)\b[\s\S]{0,120}\b(live|public|deployed)\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\b(Buy book forever|own this book forever|recurring subscription|autorenewing plan)\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\b(cart|WooCommerce|self-publishing marketplace|fashion collection)\b/i);
   });
 
   test("about, journal, and base html use reading-room truth instead of stale bookstore positioning", () => {
@@ -326,10 +340,27 @@ describe("UX conversion static signals", () => {
     expect(pricing).toContain("Choose your reading time.");
     expect(pricing).toContain("Return whenever");
     expect(pricing).toContain("Start with Chapter 1 free");
-    expect(pricing).toContain("When you are ready to continue Dracula, add reading time");
+    expect(pricing).toContain("When you are ready to continue Dracula, add reading time to your wallet");
     expect(pricing).toContain("Earnalism is a digital reading room");
     expect(pricing).toContain("You buy quiet reading time, not a noisy subscription");
     expect(pricing).toContain('data-testid="dracula-continue-from-pricing"');
+    expect(pricing).toContain('data-testid="pricing-wallet-explainer"');
+    expect(pricing).toContain("Time goes to your wallet");
+    expect(pricing).toContain("not a recurring plan, book ownership claim, or autorenewal product");
+    expect(pricing).toContain('data-testid="pricing-trust-copy"');
+  });
+
+  test("login signup account and default SEO explain continuation without overclaiming", () => {
+    expect(login).toContain('data-testid="login-continuation-note"');
+    expect(login).toContain("Sign in after choosing a reading pass to return to the reading-time page");
+    expect(signup).toContain('data-testid="signup-wallet-note"');
+    expect(signup).toContain("Chapter 1 is free. Reading time is added only when you choose a pass");
+    expect(account).toContain('data-testid="account-wallet-explainer"');
+    expect(account).toContain("Use this wallet to continue Dracula after the free preview.");
+    expect(account).toContain("Open Dracula Shelf");
+    expect(reader).toContain('data-testid="reader-locked-wallet-note"');
+    expect(reader).toContain("Later Dracula chapters ask for sign-in and reading time from your wallet.");
+    expect(useSeo).toContain("A quiet digital reading room beginning with Dracula by Bram Stoker.");
   });
 
   test("pricing page tracks premium pricing funnel events with render semantics", () => {
