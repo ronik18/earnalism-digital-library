@@ -130,7 +130,7 @@ export default function Account() {
       .finally(() => setLoading(false));
   }, [user, refreshUser]);
 
-  if (user === null) return <div className="py-32 text-center text-charcoal-soft">Loading…</div>;
+  if (user === null) return <div className="py-32 text-center text-charcoal-soft" role="status" aria-live="polite">Loading your reading account…</div>;
   if (!user) return <Navigate to="/login?next=/account" replace />;
 
   const balance = Number(user.reading_seconds_balance || 0);
@@ -158,13 +158,13 @@ export default function Account() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-          <div className="card-elegant p-7 sm:p-8" data-testid="account-balance-card">
+          <div className="card-elegant p-7 sm:p-8" data-testid="account-balance-card" role="region" aria-labelledby="account-balance-heading">
             <div className="flex items-center gap-2 italic-eyebrow opacity-80">
               <Clock size={13} strokeWidth={1.5} /> Reading time
             </div>
-            <div className="font-serif-display text-5xl sm:text-6xl text-burgundy mt-4 leading-none" data-testid="account-balance">
+            <h2 id="account-balance-heading" className="font-serif-display text-5xl sm:text-6xl text-burgundy mt-4 leading-none" data-testid="account-balance">
               {formatMinutes(balance)}
-            </div>
+            </h2>
             <div className="gold-rule-thin mt-4" />
             <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">
               Reading is billed in 30-second pulses only while a chapter is open, visible, and active. Hidden tabs, sleeping devices, and long idle gaps are not charged.
@@ -194,9 +194,9 @@ export default function Account() {
           <h2 className="font-serif-display text-2xl text-burgundy">Recent activity</h2>
           <div className="gold-rule-thin mt-3 mb-5" />
           {loading ? (
-            <p className="text-charcoal-soft text-sm">Loading…</p>
+            <p className="text-charcoal-soft text-sm" role="status" aria-live="polite">Loading recent reading activity…</p>
           ) : activityRows.length === 0 ? (
-            <p className="text-charcoal-soft text-sm font-light">No reading activity yet.</p>
+            <p className="text-charcoal-soft text-sm font-light" role="status">No reading activity yet. Open Dracula from the library to begin.</p>
           ) : (
             <table className="w-full text-sm">
               <thead>

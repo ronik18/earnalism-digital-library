@@ -69,7 +69,9 @@ export default function Header() {
         </div>
 
         <button
-          aria-label="Open menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
           className="lg:hidden p-2 -mr-2 text-burgundy"
           data-testid="mobile-menu-toggle"
@@ -79,7 +81,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-brand bg-ivory/95 backdrop-blur-xl" data-testid="mobile-menu">
+        <div id="mobile-menu" className="lg:hidden border-t border-brand bg-ivory/95 backdrop-blur-xl" data-testid="mobile-menu">
           <div className="px-5 py-5 flex flex-col">
             {NAV.map((n) => (
               <NavLink

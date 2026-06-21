@@ -152,7 +152,8 @@ export default function Library() {
               </button>
             ))}
           </div>
-          <div className="relative w-full max-w-sm">
+          <label className="relative block w-full max-w-sm">
+            <span className="sr-only">Search Dracula or coming titles</span>
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-charcoal-soft" size={15} strokeWidth={1.5} />
             <input
               value={q}
@@ -160,8 +161,9 @@ export default function Library() {
               placeholder="Search Dracula or coming titles..."
               className="input-elegant !border-b !border-[var(--brand-border)] pl-9"
               data-testid="library-search"
+              aria-label="Search Dracula or coming titles"
             />
-          </div>
+          </label>
         </div>
       </section>
 

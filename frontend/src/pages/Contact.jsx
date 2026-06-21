@@ -81,10 +81,22 @@ export default function Contact() {
           <div className="card-elegant p-8 sm:p-12">
             <div className="italic-eyebrow mb-5">A short letter</div>
             <form onSubmit={submit} className="grid grid-cols-1 sm:grid-cols-2 gap-6" data-testid="contact-form">
-              <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Your name" className="input-elegant" data-testid="contact-name" />
-              <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="Your email" className="input-elegant" data-testid="contact-email-input" />
-              <input value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} placeholder="Subject" className="input-elegant sm:col-span-2" data-testid="contact-subject" />
-              <textarea required rows={6} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Your message" className="input-elegant sm:col-span-2" data-testid="contact-message" />
+              <label className="block">
+                <span className="overline block mb-2">Your name</span>
+                <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Your name" className="input-elegant" data-testid="contact-name" />
+              </label>
+              <label className="block">
+                <span className="overline block mb-2">Your email</span>
+                <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="Your email" className="input-elegant" data-testid="contact-email-input" />
+              </label>
+              <label className="block sm:col-span-2">
+                <span className="overline block mb-2">Subject</span>
+                <input value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} placeholder="Subject" className="input-elegant" data-testid="contact-subject" />
+              </label>
+              <label className="block sm:col-span-2">
+                <span className="overline block mb-2">Your message</span>
+                <textarea required rows={6} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Your message" className="input-elegant" data-testid="contact-message" />
+              </label>
               <div className="sm:col-span-2 mt-2"><button disabled={submitting} className="btn-primary disabled:opacity-60" data-testid="contact-submit">{submitting ? "Sending…" : "Send Message"}</button></div>
             </form>
           </div>

@@ -53,7 +53,11 @@ function ScrollToTop() {
 }
 
 function PageFallback() {
-  return <div className="min-h-screen bg-[var(--beige-canvas)]" aria-busy="true" />;
+  return (
+    <div className="min-h-screen bg-[var(--beige-canvas)]" role="status" aria-live="polite" aria-busy="true">
+      <span className="sr-only">Loading The Earnalism reading room.</span>
+    </div>
+  );
 }
 
 function useHighIntentRoutePrefetch() {

@@ -67,6 +67,8 @@ describe("UX conversion static signals", () => {
   const login = read("frontend/src/pages/Login.jsx");
   const signup = read("frontend/src/pages/Signup.jsx");
   const account = read("frontend/src/pages/Account.jsx");
+  const contact = read("frontend/src/pages/Contact.jsx");
+  const layout = read("frontend/src/components/Layout.jsx");
   const useSeo = read("frontend/src/hooks/useSEO.js");
   const backend = read("backend/server.py");
   const analytics = read("frontend/src/lib/funnelAnalytics.js");
@@ -383,6 +385,51 @@ describe("UX conversion static signals", () => {
   test("mobile navigation keeps a visible library CTA", () => {
     expect(header).toContain('data-testid="mobile-cta-library"');
     expect(header).toContain("Start Dracula");
+    expect(header).toContain("aria-expanded={open}");
+    expect(header).toContain('aria-controls="mobile-menu"');
+    expect(header).toContain('id="mobile-menu"');
+  });
+
+  test("non-visual journey has skip link, focus indicators, and spoken loading states", () => {
+    expect(layout).toContain('href="#main-content"');
+    expect(layout).toContain('className="skip-link"');
+    expect(layout).toContain('id="main-content"');
+    expect(layout).toContain("tabIndex={-1}");
+    expect(app).toContain('role="status"');
+    expect(app).toContain("Loading The Earnalism reading room.");
+    expect(styles).toContain(".sr-only");
+    expect(styles).toContain(".skip-link:focus-visible");
+    expect(styles).toContain("a:focus-visible");
+    expect(styles).toContain("button:focus-visible");
+    expect(styles).toContain("input:focus-visible");
+  });
+
+  test("public forms and search controls expose accessible labels and descriptions", () => {
+    expect(home).toContain('aria-describedby="newsletter-description"');
+    expect(home).toContain("<span className=\"sr-only\">Your name</span>");
+    expect(home).toContain("<span className=\"sr-only\">Your email</span>");
+    expect(library).toContain("Search Dracula or coming titles");
+    expect(library).toContain('aria-label="Search Dracula or coming titles"');
+    expect(login).toContain('aria-describedby="login-continuation-help"');
+    expect(signup).toContain('aria-describedby="signup-wallet-help"');
+    expect(contact).toContain("<span className=\"overline block mb-2\">Your name</span>");
+    expect(contact).toContain("<span className=\"overline block mb-2\">Your email</span>");
+    expect(contact).toContain("<span className=\"overline block mb-2\">Your message</span>");
+  });
+
+  test("reader locked and wallet states are announced without enabling public audio", () => {
+    expect(reader).toContain('data-testid="reader-locked-state"');
+    expect(reader).toContain('role="status"');
+    expect(reader).toContain('aria-live="polite"');
+    expect(reader).toContain('data-testid="reading-time-dialog"');
+    expect(reader).toContain('role="dialog"');
+    expect(reader).toContain('aria-modal="true"');
+    expect(reader).toContain('aria-labelledby="reading-time-dialog-title"');
+    expect(reader).toContain('aria-describedby="reading-time-dialog-description"');
+    expect(reader).toContain('aria-pressed={selected}');
+    expect(reader).toContain("Select ${pack.label || `${pack.minutes} minute`} reading-time pack");
+    expect(reader).toContain("Audio disabled");
+    expect(reader).not.toMatch(/\bListen Now\b/);
   });
 
   test("public route tree does not expose admin controls in the public layout", () => {
