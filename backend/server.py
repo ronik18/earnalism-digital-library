@@ -210,6 +210,7 @@ RAZORPAY_KEY_ID = os.environ.get("RAZORPAY_KEY_ID", "").strip()
 RAZORPAY_KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET", "").strip()
 RAZORPAY_WEBHOOK_SECRET = os.environ.get("RAZORPAY_WEBHOOK_SECRET", "").strip()
 RAZORPAY_MODE = os.environ.get("RAZORPAY_MODE", "test").strip().lower()
+TOPUP_INTENT_TTL_SECONDS = _env_int("TOPUP_INTENT_TTL_SECONDS", 24 * 60 * 60, minimum=60)
 
 B2_S3_ENDPOINT = (os.environ.get("B2_S3_ENDPOINT") or os.environ.get("B2_ENDPOINT") or "").strip().rstrip("/")
 B2_REGION = os.environ.get("B2_REGION", "").strip()
@@ -723,6 +724,23 @@ def canonical_category_slug(value: str, default: str = DEFAULT_CATEGORY_SLUG) ->
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def topup_intent_expires_at(created_at: Optional[str] = None) -> str:
+    created = _as_utc_dt(created_at) or datetime.now(timezone.utc)
+    return (created + timedelta(seconds=TOPUP_INTENT_TTL_SECONDS)).isoformat()
+
+
+def _topup_intent_is_expired(intent: dict) -> bool:
+    if intent.get("status") == "credited":
+        return False
+    expires = _as_utc_dt(intent.get("expires_at"))
+    if not expires:
+        created = _as_utc_dt(intent.get("created_at"))
+        if not created:
+            return True
+        expires = created + timedelta(seconds=TOPUP_INTENT_TTL_SECONDS)
+    return expires <= datetime.now(timezone.utc)
 
 
 BOOK_METADATA_PROJECTION = {
@@ -6037,6 +6055,19 @@ async def _credit_wallet_for_intent(intent: dict, payment_id: Optional[str], sou
     the user's wallet. Safe against concurrent webhook + verify calls.
     Returns the refreshed intent.
     """
+    if _topup_intent_is_expired(intent):
+        await db.topup_intents.update_one(
+            {"id": intent["id"], "status": {"$nin": ["credited", "expired"]}},
+            {
+                "$set": {
+                    "status": "expired",
+                    "failed_reason": "intent_expired",
+                    "expired_at": now_iso(),
+                }
+            },
+        )
+        return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0}) or {**intent, "status": "expired"}
+
     # Atomic transition: only ONE caller can flip status from a non-credited
     # state to 'credited'. Prevents double-credit when the verify endpoint and
     # the webhook both fire for the same payment.
@@ -6053,7 +6084,7 @@ async def _credit_wallet_for_intent(intent: dict, payment_id: Optional[str], sou
     )
     if res.modified_count != 1:
         # Already credited by another path — return the existing record.
-        return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0})
+        return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0}) or intent
 
     seconds = int(intent["minutes"]) * 60
     user_id = intent["user_id"]
@@ -6073,7 +6104,7 @@ async def _credit_wallet_for_intent(intent: dict, payment_id: Optional[str], sou
         balance_after=balance_after,
         extra={"topup_intent_id": intent["id"]},
     )
-    return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0})
+    return await db.topup_intents.find_one({"id": intent["id"]}, {"_id": 0}) or {**intent, **set_doc}
 
 
 # ---------- Reader: create a top-up intent + Razorpay order ----------
@@ -6124,6 +6155,7 @@ async def payments_create_topup(payload: TopUpCreateIn, user=Depends(require_use
         "status": "created",  # created -> paid -> credited (or failed)
         "mode": RAZORPAY_MODE,
         "created_at": now_iso(),
+        "expires_at": topup_intent_expires_at(),
         "credited_at": None,
         "credited_by": None,
     })
@@ -6168,6 +6200,9 @@ async def payments_verify(payload: PaymentVerifyIn, user=Depends(require_user)):
         raise HTTPException(status_code=400, detail="Invalid payment signature")
 
     refreshed = await _credit_wallet_for_intent(intent, payload.razorpay_payment_id, "verify")
+    if refreshed.get("status") != "credited":
+        await _invalidate_user_cache(user["id"])
+        raise HTTPException(status_code=409, detail="Top-up intent is expired or not creditable")
     return {
         "ok": True,
         "intent": refreshed,
@@ -6233,8 +6268,8 @@ async def payments_webhook(request: Request):
         intent = await db.topup_intents.find_one({"razorpay_order_id": order_id}, {"_id": 0})
 
     if event == "payment.captured" and intent:
-        await _credit_wallet_for_intent(intent, payment_id, "webhook")
-        log_doc["status"] = "credited"
+        refreshed = await _credit_wallet_for_intent(intent, payment_id, "webhook")
+        log_doc["status"] = "credited" if refreshed.get("status") == "credited" else refreshed.get("status", "ignored")
     elif event == "payment.failed" and intent:
         await db.topup_intents.update_one(
             {"id": intent["id"], "status": "created"},
@@ -6280,6 +6315,7 @@ async def payments_simulate_topup(payload: TopUpCreateIn, user=Depends(require_u
         "status": "created",
         "mode": "test_simulated",
         "created_at": now_iso(),
+        "expires_at": topup_intent_expires_at(),
         "credited_at": None,
         "credited_by": None,
     })
@@ -6314,11 +6350,12 @@ async def payments_simulate_webhook(
         return {"ok": True, "duplicate": True, "intent": intent}
     fake_payment_id = f"pay_test_{uuid.uuid4().hex[:20]}"
     refreshed = await _credit_wallet_for_intent(intent, fake_payment_id, "simulate")
+    refreshed_status = refreshed.get("status", "unknown")
     await db.payment_webhook_events.insert_one({
         "id": str(uuid.uuid4()),
         "event_id": f"evt_sim_{uuid.uuid4().hex[:20]}",
         "event": "payment.captured",
-        "status": "credited_simulated",
+        "status": "credited_simulated" if refreshed_status == "credited" else f"{refreshed_status}_simulated",
         "razorpay_order_id": intent.get("razorpay_order_id"),
         "razorpay_payment_id": fake_payment_id,
         "raw": "{simulated}",

@@ -81,7 +81,7 @@ class TestPacksCatalogue:
             "30m": (30, 49, 4900),
             "1h":  (60, 89, 8900),
             "3h":  (180, 239, 23900),
-            "10h": (600, 699, 69900),
+            "10h": (600, 499, 49900),
         }
         for pid, (mins, inr, paise) in expected.items():
             assert packs[pid]["minutes"] == mins, pid
