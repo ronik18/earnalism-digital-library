@@ -1,0 +1,15 @@
+{
+  "model_id": "kokoro-82m",
+  "model_name": "Kokoro 82M",
+  "source_url": "https://huggingface.co/hexgrad/Kokoro-82M",
+  "license_text_summary": "Model card reports Apache-style licensing; operator must verify current model-card and weight terms before production use.",
+  "model_weights_license": "APACHE_REPORTED_OPERATOR_VERIFY",
+  "code_license": "APACHE_REPORTED_OPERATOR_VERIFY",
+  "dataset_caveat": "Voice/data provenance and any downstream voice restrictions require review before production.",
+  "commercial_allowed": true,
+  "human_license_review_approved": false,
+  "verified_at": "2026-06-21",
+  "verified_by": "operator_required",
+  "blocking_reason": "Human license review and listening QA are required before any public audiobook use."
+}
+

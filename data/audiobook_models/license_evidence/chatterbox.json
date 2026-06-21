@@ -1,0 +1,15 @@
+{
+  "model_id": "chatterbox-tts",
+  "model_name": "Chatterbox TTS",
+  "source_url": "https://github.com/resemble-ai/chatterbox",
+  "license_text_summary": "Repository reports MIT licensing; operator must verify exact model and weight terms before production use.",
+  "model_weights_license": "MIT_REPORTED_OPERATOR_VERIFY",
+  "code_license": "MIT_REPORTED_OPERATOR_VERIFY",
+  "dataset_caveat": "Training data, reference voice, and style voice permissions must be verified before any public Earnalism use.",
+  "commercial_allowed": true,
+  "human_license_review_approved": false,
+  "verified_at": "2026-06-21",
+  "verified_by": "operator_required",
+  "blocking_reason": "Human license review and owner approval are required before public or commercial audiobook use."
+}
+

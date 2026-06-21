@@ -1,0 +1,15 @@
+{
+  "book_slug": "dracula",
+  "score": 9.0,
+  "score_status": "NO_MODEL_APPROVED_YET",
+  "generated_samples_present": false,
+  "human_review_approved": false,
+  "license_snapshots_present": true,
+  "chapter_coverage_report_present": true,
+  "public_audio_enabled": false,
+  "caps_applied": [
+    "no generated samples = max 9.0",
+    "no human review = max 9.0"
+  ],
+  "final_public_audio_status": "BLOCKED"
+}

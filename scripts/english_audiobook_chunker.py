@@ -311,6 +311,78 @@ def write_chunk_artifacts(chunks: list[EnglishAudiobookChunk], notes: list[dict[
     )
     normalizations = [normalize_english_text(chunk.original_text) for chunk in chunks]
     write_normalization_report(normalizations, ROOT_DIR / "ENGLISH_TEXT_NORMALIZATION_REPORT.md")
+    write_chunk_coverage_report(chunks, ROOT_DIR / "ENGLISH_AUDIOBOOK_CHUNK_COVERAGE_REPORT.md")
+
+
+def write_chunk_coverage_report(chunks: list[EnglishAudiobookChunk], output_path: Path) -> None:
+    manifest = json.loads((DRACULA_DIR / "reader_manifest.json").read_text(encoding="utf-8"))
+    chapters = manifest.get("chapters") if isinstance(manifest.get("chapters"), list) else []
+    chapter_ids = [str(chapter.get("id") or "") for chapter in chapters]
+    sampled_ids = sorted({chunk.source_chapter_id for chunk in chunks})
+    emotion_distribution: dict[str, int] = {}
+    segment_distribution: dict[str, int] = {}
+    punctuation_distribution = {
+        "dialogue_quotes": 0,
+        "dash_pause": 0,
+        "ellipsis": 0,
+        "comma": 0,
+        "question": 0,
+        "exclamation": 0,
+    }
+    for chunk in chunks:
+        emotion_distribution[chunk.emotion_label] = emotion_distribution.get(chunk.emotion_label, 0) + 1
+        segment_distribution[chunk.segment_type] = segment_distribution.get(chunk.segment_type, 0) + 1
+        punctuation_distribution["dialogue_quotes"] += chunk.original_text.count('"') + chunk.original_text.count("“")
+        punctuation_distribution["dash_pause"] += chunk.original_text.count("--") + chunk.original_text.count("—")
+        punctuation_distribution["ellipsis"] += chunk.original_text.count("...")
+        punctuation_distribution["comma"] += chunk.original_text.count(",")
+        punctuation_distribution["question"] += chunk.original_text.count("?")
+        punctuation_distribution["exclamation"] += chunk.original_text.count("!")
+
+    skipped = [
+        {
+            "chapter_id": chapter_id,
+            "reason": "Not selected for this 12-chunk dry-run sample; available for future full-chapter internal benchmark.",
+        }
+        for chapter_id in chapter_ids
+        if chapter_id and chapter_id not in sampled_ids
+    ]
+    lines = [
+        "# English Audiobook Chunk Coverage Report",
+        "",
+        "Book: Dracula by Bram Stoker",
+        "",
+        "Status: INTERNAL_REVIEW_ONLY. Dracula audio remains disabled.",
+        "",
+        f"- Total Dracula chapters: {manifest.get('chapter_count')}",
+        f"- Selected chunk count: {len(chunks)}",
+        f"- Chapters sampled: {', '.join(sampled_ids)}",
+        f"- Skipped chapter count: {len(skipped)}",
+        "",
+        "## Emotion Distribution",
+        "",
+    ]
+    for key, value in sorted(emotion_distribution.items()):
+        lines.append(f"- {key}: {value}")
+    lines.extend(["", "## Dialogue / Diary / Letter Coverage", ""])
+    for key, value in sorted(segment_distribution.items()):
+        lines.append(f"- {key}: {value}")
+    lines.extend(["", "## Punctuation Distribution", ""])
+    for key, value in sorted(punctuation_distribution.items()):
+        lines.append(f"- {key}: {value}")
+    lines.extend(["", "## Skipped Chapters", ""])
+    for row in skipped:
+        lines.append(f"- {row['chapter_id']}: {row['reason']}")
+    lines.extend(
+        [
+            "",
+            "## Readiness Note",
+            "",
+            "This report proves coverage accounting across all 27 chapters, but it does not claim full-chapter audio coverage. A 9.9+ audiobook score still requires generated internal samples, human listening review, license clearance, and owner approval.",
+            "",
+        ]
+    )
+    output_path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def main() -> int:

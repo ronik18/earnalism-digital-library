@@ -5,8 +5,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-from scripts.benchmark_english_tts_models import run_benchmark
-from scripts.evaluate_english_audiobook_samples import write_reports
+from scripts.benchmark_english_tts_models import load_license_evidence, run_benchmark
+from scripts.evaluate_english_audiobook_samples import compute_scorecard, write_reports
 
 
 def test_model_shortlist_contains_required_statuses():
@@ -30,6 +30,16 @@ def test_non_commercial_models_are_not_release_candidates():
     assert models["xtts-v2"]["production_release_allowed"] is False
 
 
+def test_license_evidence_snapshots_exist_and_block_unreviewed_production_candidates():
+    for model_id in ["chatterbox-tts", "dia", "kokoro-82m", "f5-tts", "xtts-v2"]:
+        evidence = load_license_evidence(model_id)
+
+        assert evidence["present"] is True
+        assert evidence["source_url"].startswith("https://")
+        assert evidence["verified_by"] == "operator_required"
+        assert evidence["production_candidate_allowed"] is False
+
+
 def test_plan_and_dry_run_write_internal_only_manifests(tmp_path: Path):
     plan = run_benchmark("plan", tmp_path / "plan", require_owner_approval=True)
     dry_run = run_benchmark("dry-run", tmp_path / "dry", require_owner_approval=True)
@@ -38,6 +48,8 @@ def test_plan_and_dry_run_write_internal_only_manifests(tmp_path: Path):
     assert len(dry_run["rows"]) == 5
     assert all(row["public_audio_url"] == "" for row in dry_run["rows"])
     assert all(int(row["planned_audio_outputs"]) == 0 for row in dry_run["rows"])
+    assert all(row["license_evidence_present"] is True for row in dry_run["rows"])
+    assert all(row["production_candidate_allowed"] is False for row in dry_run["rows"])
     assert sorted((tmp_path / "dry").glob("*/generation_manifest.json"))
 
 
@@ -91,3 +103,37 @@ def test_evaluation_reports_do_not_claim_asr_or_mos(tmp_path: Path):
     assert "NO_MODEL_APPROVED_YET" in selection
     assert "DO_NOT_PUBLISH_AUDIO" in selection
 
+
+def test_scorecard_caps_without_samples_or_human_review():
+    scorecard = compute_scorecard(
+        [
+            {
+                "model_id": "chatterbox-tts",
+                "audio_output_count": 0,
+                "public_audio_url_count": 0,
+                "human_review_approved": False,
+            }
+        ]
+    )
+
+    assert scorecard["score"] <= 9.0
+    assert scorecard["score_status"] == "NO_MODEL_APPROVED_YET"
+    assert scorecard["final_public_audio_status"] == "BLOCKED"
+    assert "no generated samples = max 9.0" in scorecard["caps_applied"]
+    assert "no human review = max 9.0" in scorecard["caps_applied"]
+
+
+def test_public_audio_caps_score_to_five():
+    scorecard = compute_scorecard(
+        [
+            {
+                "model_id": "chatterbox-tts",
+                "audio_output_count": 1,
+                "public_audio_url_count": 1,
+                "human_review_approved": True,
+            }
+        ]
+    )
+
+    assert scorecard["score"] <= 5.0
+    assert "public audio enabled = max 5.0" in scorecard["caps_applied"]

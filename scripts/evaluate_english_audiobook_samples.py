@@ -12,6 +12,8 @@ from typing import Any
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT_DIR = ROOT_DIR / "output" / "audiobook_bakeoff" / "dracula"
+LICENSE_EVIDENCE_DIR = ROOT_DIR / "data" / "audiobook_models" / "license_evidence"
+COVERAGE_REPORT = ROOT_DIR / "ENGLISH_AUDIOBOOK_CHUNK_COVERAGE_REPORT.md"
 
 
 def load_manifest(path: Path) -> dict[str, Any]:
@@ -129,6 +131,84 @@ def write_reports(evaluations: list[dict[str, Any]], output_dir: Path) -> None:
         ]
     )
     (ROOT_DIR / "AUDIOBOOK_ENGLISH_MODEL_SELECTION_REPORT.md").write_text("\n".join(selection), encoding="utf-8")
+    write_scorecard(evaluations, output_dir)
+
+
+def license_snapshots_present() -> bool:
+    required = {"chatterbox.json", "dia.json", "kokoro.json", "f5-tts.json", "xtts-v2.json"}
+    return required.issubset({path.name for path in LICENSE_EVIDENCE_DIR.glob("*.json")})
+
+
+def compute_scorecard(evaluations: list[dict[str, Any]]) -> dict[str, Any]:
+    generated_samples = any(row.get("audio_output_count", 0) > 0 for row in evaluations)
+    human_review_approved = any(row.get("human_review_approved") is True for row in evaluations)
+    license_present = license_snapshots_present()
+    coverage_present = COVERAGE_REPORT.exists()
+    public_audio_enabled = any(row.get("public_audio_url_count", 0) > 0 for row in evaluations)
+    score = 9.7
+    caps: list[str] = []
+    if not generated_samples:
+        score = min(score, 9.0)
+        caps.append("no generated samples = max 9.0")
+    if not human_review_approved:
+        score = min(score, 9.0)
+        caps.append("no human review = max 9.0")
+    if not license_present:
+        score = min(score, 8.8)
+        caps.append("no license snapshot = max 8.8")
+    if not coverage_present:
+        score = min(score, 9.2)
+        caps.append("no full-chapter coverage report = max 9.2")
+    if public_audio_enabled:
+        score = min(score, 5.0)
+        caps.append("public audio enabled = max 5.0")
+    return {
+        "book_slug": "dracula",
+        "score": round(score, 2),
+        "score_status": "NO_MODEL_APPROVED_YET",
+        "generated_samples_present": generated_samples,
+        "human_review_approved": human_review_approved,
+        "license_snapshots_present": license_present,
+        "chapter_coverage_report_present": coverage_present,
+        "public_audio_enabled": public_audio_enabled,
+        "caps_applied": caps,
+        "final_public_audio_status": "BLOCKED",
+    }
+
+
+def write_scorecard(evaluations: list[dict[str, Any]], output_dir: Path) -> None:
+    scorecard = compute_scorecard(evaluations)
+    (ROOT_DIR / "AUDIOBOOK_ENGLISH_SAMPLE_SCORECARD.json").write_text(
+        json.dumps(scorecard, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    lines = [
+        "# English Audiobook Sample Scorecard",
+        "",
+        f"Score: {scorecard['score']}/10",
+        "",
+        f"Status: {scorecard['score_status']}",
+        "",
+        "Final public audio status: BLOCKED",
+        "",
+        "## Caps Applied",
+        "",
+    ]
+    if scorecard["caps_applied"]:
+        for cap in scorecard["caps_applied"]:
+            lines.append(f"- {cap}")
+    else:
+        lines.append("- No caps applied.")
+    lines.extend(
+        [
+            "",
+            "A 9.9 score requires generated internal samples, human listening review, license clearance, full coverage evidence, and owner approval.",
+            "",
+            f"Local evaluation output: `{output_dir}`",
+            "",
+        ]
+    )
+    (ROOT_DIR / "AUDIOBOOK_ENGLISH_SAMPLE_SCORECARD.md").write_text("\n".join(lines), encoding="utf-8")
 
 
 def main() -> int:
@@ -166,4 +246,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

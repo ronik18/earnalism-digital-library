@@ -20,6 +20,7 @@ from backend.audiobook_generation.english_model_adapters import ADAPTER_REGISTRY
 
 
 SHORTLIST_PATH = ROOT_DIR / "data" / "audiobook_models" / "english_model_shortlist.json"
+LICENSE_EVIDENCE_DIR = ROOT_DIR / "data" / "audiobook_models" / "license_evidence"
 CHUNKS_PATH = ROOT_DIR / "data" / "audiobook_generation" / "dracula" / "chunks.json"
 CONFIG_DIR = ROOT_DIR / "data" / "audiobook_generation" / "english_model_configs"
 DEFAULT_OUTPUT_DIR = ROOT_DIR / "output" / "audiobook_bakeoff" / "dracula"
@@ -55,6 +56,41 @@ def load_config(model_id: str) -> dict[str, Any]:
     }
     path = CONFIG_DIR / mapping[model_id]
     return load_json(path)
+
+
+def license_evidence_path(model_id: str) -> Path:
+    mapping = {
+        "chatterbox-tts": "chatterbox.json",
+        "dia": "dia.json",
+        "kokoro-82m": "kokoro.json",
+        "f5-tts": "f5-tts.json",
+        "xtts-v2": "xtts-v2.json",
+    }
+    return LICENSE_EVIDENCE_DIR / mapping[model_id]
+
+
+def load_license_evidence(model_id: str) -> dict[str, Any]:
+    path = license_evidence_path(model_id)
+    if not path.exists():
+        return {
+            "model_id": model_id,
+            "present": False,
+            "verified_by": "missing",
+            "commercial_allowed": False,
+            "production_candidate_allowed": False,
+            "blocking_reason": "License evidence snapshot is missing.",
+        }
+    payload = load_json(path)
+    payload["present"] = True
+    verified_by = str(payload.get("verified_by") or "")
+    payload["production_candidate_allowed"] = (
+        payload.get("commercial_allowed") is True
+        and verified_by not in {"", "operator_required"}
+        and payload.get("human_license_review_approved") is True
+    )
+    if not payload["production_candidate_allowed"]:
+        payload["blocking_reason"] = payload.get("blocking_reason") or "License evidence exists, but human license review is not approved."
+    return payload
 
 
 def write_manifest(model_id: str, output_dir: Path, results: list[dict[str, Any]], summary: dict[str, Any]) -> Path:
@@ -142,6 +178,7 @@ def run_benchmark(mode: str, output_dir: Path, *, require_owner_approval: bool) 
         config = load_config(model_id)
         environment = adapter.check_environment(book_slug="dracula", require_owner_approval=require_owner_approval)
         license_gate = adapter.validate_license()
+        license_evidence = load_license_evidence(model_id)
         resources = adapter.estimate_resources(len(chunks))
         chunk_results = []
         if mode == "plan":
@@ -172,9 +209,15 @@ def run_benchmark(mode: str, output_dir: Path, *, require_owner_approval: bool) 
             "planned_audio_outputs": 0,
             "owner_approval_status": environment.owner_approval_status,
             "public_audio_url": "",
+            "license_evidence_present": license_evidence["present"],
+            "license_evidence_verified": license_evidence.get("verified_by") not in {"", "operator_required", "missing"},
+            "production_candidate_allowed": bool(
+                license_gate["production_allowed"] and license_evidence.get("production_candidate_allowed") is True
+            ),
             "config": config,
             "environment": environment.as_dict(),
             "license": license_gate,
+            "license_evidence": license_evidence,
             "resources": resources,
         }
         manifest_paths.append(str(write_manifest(model_id, output_dir, chunk_results, summary)))
@@ -224,4 +267,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

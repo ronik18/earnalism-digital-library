@@ -62,6 +62,16 @@ def test_committed_dracula_chunks_are_internal_review_only():
     assert any(chunk["emotion_label"] == "quiet_fear" for chunk in payload["chunks"])
 
 
+def test_english_chunk_coverage_report_accounts_for_all_chapters():
+    report = Path("ENGLISH_AUDIOBOOK_CHUNK_COVERAGE_REPORT.md").read_text(encoding="utf-8")
+
+    assert "Total Dracula chapters: 27" in report
+    assert "Selected chunk count: 12" in report
+    assert "chapter-001" in report
+    assert "Skipped chapter count" in report
+    assert "9.9+ audiobook score still requires generated internal samples" in report
+
+
 def test_voice_profile_caps_exaggeration_and_blocks_real_person_imitation():
     payload = json.loads(
         Path("data/audiobook_voice_profiles/english-gothic-premium-v1.json").read_text(encoding="utf-8")
@@ -70,6 +80,20 @@ def test_voice_profile_caps_exaggeration_and_blocks_real_person_imitation():
     assert payload["tone"]["exaggeration_cap"] <= 0.5
     assert payload["real_person_or_celebrity_imitation_allowed"] is False
     assert payload["audiobook_public_enabled"] is False
+
+
+def test_local_generation_approval_example_is_default_denied():
+    payload = json.loads(
+        Path("data/audiobook_governance/dracula.local_generation_approval.example.json").read_text(encoding="utf-8")
+    )
+
+    assert payload["approved"] is False
+    assert payload["scope"] == "LOCAL_INTERNAL_REVIEW_ONLY"
+    assert payload["allowed_models"] == []
+    assert payload["max_chunks"] == 0
+    assert payload["no_public_release"] is True
+    assert payload["no_upload"] is True
+    assert payload["owner_signature_required"] is True
 
 
 def test_chapter_source_is_controlled_dracula_artifact():
