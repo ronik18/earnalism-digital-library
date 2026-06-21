@@ -21,6 +21,14 @@ OUTPUT_DIR = ROOT / "output" / "publication_candidates" / "dracula"
 LAUNCH_OUTPUT_DIR = ROOT / "output" / "launch"
 GO_RECOMMENDATION = "GO_FOR_CONTROLLED_PUBLICATION_FOR_DRACULA_ONLY"
 READY_WORKFLOW_STATUSES = {"READY", "READY_FOR_PUBLICATION_DRAFT_CANDIDATE"}
+DRACULA_SOURCE_LICENSE_URL = "https://www.gutenberg.org/policy/license.html"
+DRACULA_COMMERCIAL_USE_STATUS = "conditional_allowed_subject_to_project_gutenberg_license_and_trademark_terms"
+DRACULA_ATTRIBUTION_REQUIREMENT = "simple_public_source_note_allowed; license/source evidence internal"
+DRACULA_AUDIO_RIGHTS_STATUS = "not approved; separate approval required; AUDIO_NOT_REQUIRED for core reading"
+DRACULA_PUBLIC_METADATA_ALLOWED = "yes"
+DRACULA_PUBLIC_CTA_ALLOWED = "yes"
+DRACULA_OWNER_APPROVAL_STATUS = "approved"
+DRACULA_GO_HOLD_DECISION = "GO_DRACULA_CORE_READING_ONLY"
 
 REQUIRED_FIELDS = [
     "title",
@@ -104,6 +112,11 @@ def value_present(value: Any) -> bool:
         "BLOCKED_UNVERIFIED",
         "MISSING",
     }
+
+
+def candidate_value(candidate: dict[str, Any], field: str, fallback: str) -> str:
+    value = candidate.get(field)
+    return str(value).strip() if value_present(value) else fallback
 
 
 def evaluate_candidate(candidate: dict[str, Any]) -> list[str]:
@@ -226,6 +239,18 @@ def approval_markdown(
     payment_path: str,
 ) -> str:
     hashes = evidence_file_hashes(candidate_path)
+    source_license_url = candidate_value(candidate, "source_license_url", DRACULA_SOURCE_LICENSE_URL)
+    commercial_use_status = candidate_value(candidate, "commercial_use_status", DRACULA_COMMERCIAL_USE_STATUS)
+    attribution_requirement = candidate_value(candidate, "attribution_requirement", DRACULA_ATTRIBUTION_REQUIREMENT)
+    derivative_audiobook_rights_status = candidate_value(
+        candidate,
+        "derivative_audiobook_rights_status",
+        DRACULA_AUDIO_RIGHTS_STATUS,
+    )
+    public_metadata_allowed = candidate_value(candidate, "public_metadata_allowed", DRACULA_PUBLIC_METADATA_ALLOWED)
+    public_cta_allowed = candidate_value(candidate, "public_cta_allowed", DRACULA_PUBLIC_CTA_ALLOWED)
+    owner_approval_status = candidate_value(candidate, "owner_approval_status", DRACULA_OWNER_APPROVAL_STATUS)
+    go_hold_decision = candidate_value(candidate, "go_hold_decision", DRACULA_GO_HOLD_DECISION)
     return "\n".join(
         [
             "# Approved To Publish",
@@ -242,9 +267,17 @@ def approval_markdown(
             f"- Source URL: {candidate['source_url']}",
             f"- Source Name: {candidate['source_name']}",
             f"- Source License: {candidate['source_license']}",
+            f"- Source License URL: {source_license_url}",
+            f"- Commercial Use Status: {commercial_use_status}",
             f"- Source Hash: {candidate['source_hash']}",
             f"- Content Hash: {candidate['content_hash']}",
             f"- Provenance Hash: {candidate['provenance_hash']}",
+            f"- Attribution Requirement: {attribution_requirement}",
+            f"- Derivative Audiobook Rights Status: {derivative_audiobook_rights_status}",
+            f"- Public Metadata Allowed: {public_metadata_allowed}",
+            f"- Public CTA Allowed: {public_cta_allowed}",
+            f"- Owner Approval Status: {owner_approval_status}",
+            f"- GO/HOLD Decision: {go_hold_decision}",
             f"- Rights Basis: {candidate['rights_basis']}",
             f"- QA Status: {candidate['qa_status']}",
             f"- Rollback Owner: {candidate['rollback_owner']}",

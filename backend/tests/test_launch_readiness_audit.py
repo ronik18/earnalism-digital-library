@@ -157,16 +157,24 @@ def test_payment_smoke_is_dry_run_static(tmp_path, monkeypatch):
 
 def approved_publication_item(**overrides):
     item = {
-        "work_title": "Fixture Title",
-        "work_slug": "fixture-title",
+        "work_title": "Dracula",
+        "work_slug": "dracula",
         "rights_tier": "A",
         "verification_status": "approved",
         "source_url": "https://example.org/source",
         "source_name": "Example Source",
         "source_license": "Public Domain",
+        "source_license_url": "https://example.org/license",
+        "commercial_use_status": "conditional_allowed_subject_to_source_terms",
         "source_hash": "sha256:source",
         "content_hash": "sha256:content",
         "provenance_hash": "sha256:provenance",
+        "attribution_requirement": "simple attribution required",
+        "derivative_audiobook_rights_status": "not approved; separate approval required",
+        "public_metadata_allowed": "yes",
+        "public_cta_allowed": "yes",
+        "owner_approval_status": "approved",
+        "go_hold_decision": "GO_DRACULA_CORE_READING_ONLY",
         "rights_basis": "Public domain evidence reviewed.",
         "qa_status": "pass",
         "rollback_owner": "release-operator",
@@ -192,6 +200,25 @@ def test_controlled_publication_precheck_accepts_complete_tier_a_item_shape():
     issues = evaluate_item(approved_publication_item())
 
     assert issues == []
+
+
+def test_controlled_publication_precheck_requires_commercial_use_evidence():
+    issues = evaluate_item(approved_publication_item(commercial_use_status="UNKNOWN_COMMERCIAL_USE"))
+
+    assert any("commercial_use_status" in issue for issue in issues)
+
+
+def test_controlled_publication_precheck_restricts_public_cta_to_dracula():
+    issues = evaluate_item(approved_publication_item(work_slug="frankenstein", work_title="Frankenstein"))
+
+    assert any("Dracula only" in issue for issue in issues)
+    assert any("public_cta_allowed is restricted to Dracula" in issue for issue in issues)
+
+
+def test_controlled_publication_precheck_blocks_public_cta_without_audio_derivative_policy():
+    issues = evaluate_item(approved_publication_item(derivative_audiobook_rights_status="UNKNOWN_DERIVATIVE_RIGHTS"))
+
+    assert any("derivative_audiobook_rights_status" in issue for issue in issues)
 
 
 def test_all_audit_writes_required_reports_without_production_network(tmp_path, monkeypatch):

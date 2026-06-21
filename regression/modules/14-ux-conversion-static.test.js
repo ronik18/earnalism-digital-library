@@ -83,6 +83,10 @@ describe("UX conversion static signals", () => {
   const postProductionCanary = read("scripts/post_production_canary.py");
   const brandSiteTour = read("scripts/create_premium_site_tour.py");
   const dailyRunbook = read("DAILY_GROWTH_AUDIT_RUNBOOK.md");
+  const approvedToPublish = read("APPROVED_TO_PUBLISH.md");
+  const firstBatchScorecard = read("FIRST_BATCH_RIGHTS_EVIDENCE_SCORECARD.md");
+  const firstBatchMatrixCsv = read("FIRST_BATCH_REAL_SOURCE_MATRIX.csv");
+  const firstBatchBackfillTemplate = read("FIRST_BATCH_REAL_SOURCE_BACKFILL_INPUT.template.json");
   const header = read("frontend/src/components/Header.jsx");
   const footer = read("frontend/src/components/Footer.jsx");
   const footerSocialLinks = read("frontend/src/components/FooterSocialLinks.jsx");
@@ -168,6 +172,58 @@ describe("UX conversion static signals", () => {
     expect(productTruthLedger).toContain("fully accessible audiobook platform");
     expect(productTruthLedger).toContain("Product-wide launch readiness: 8.0/10 HOLD");
     expect(productTruthLedger).toContain("Dracula controlled reading candidate: 9.9/10");
+  });
+
+  test("first-batch rights evidence keeps every non-Dracula item held", () => {
+    expect(firstBatchScorecard).toContain("Dracula is the only approved public core reading release today.");
+    expect(firstBatchScorecard).toContain("GO_DRACULA_CORE_READING_ONLY");
+    expect(firstBatchScorecard).toContain("Kshudhita Pashan remains pipeline-only.");
+    expect(firstBatchScorecard).toContain("Audiobook derivative rights are not approved for any item");
+    expect(firstBatchScorecard).toContain("HOLD_PIPELINE_ONLY");
+    expect(firstBatchScorecard).toContain("HOLD_SOURCE_RIGHTS_QA_REQUIRED");
+    expect(firstBatchScorecard).toContain("UNKNOWN_COMMERCIAL_USE");
+    expect(firstBatchScorecard).toContain("UNKNOWN_DERIVATIVE_RIGHTS");
+    expect(firstBatchScorecard).toContain("OWNER_APPROVAL_REQUIRED");
+
+    for (const blockedTitle of [
+      "Anandamath Visual Study Companion",
+      "Devdas Study Edition",
+      "Abol Tabol Illustrated Reader",
+      "Sultana's Dream Feminist Sci-Fi Edition",
+      "Sherlock Holmes Logic Workbook",
+      "Dracula Gothic Fiction Visual Guide",
+      "Frankenstein Science & Ethics Guide",
+      "Tagore Short Stories for Young Readers",
+      "Calculus Made Easy Visual Guide",
+      "Chander Pahar Adventure Companion",
+    ]) {
+      const scorecardRow = firstBatchScorecard.split("\n").find((line) => line.includes(`| ${blockedTitle} |`));
+      expect(scorecardRow).toContain("| not public/live |");
+      expect(scorecardRow).toContain("| no | no | OWNER_APPROVAL_REQUIRED | HOLD_SOURCE_RIGHTS_QA_REQUIRED |");
+    }
+  });
+
+  test("approval and source backfill templates require provenance, commercial-use, and audio-derivative evidence", () => {
+    for (const requiredToken of [
+      "Source License URL",
+      "Commercial Use Status",
+      "Attribution Requirement",
+      "Derivative Audiobook Rights Status",
+      "Public Metadata Allowed",
+      "Public CTA Allowed",
+      "Owner Approval Status",
+      "GO/HOLD Decision",
+    ]) {
+      expect(approvedToPublish).toContain(requiredToken);
+    }
+    expect(approvedToPublish).toContain("Derivative Audiobook Rights Status: not approved; separate approval required; AUDIO_NOT_REQUIRED for core reading");
+    expect(firstBatchMatrixCsv).toContain("source_license_url,commercial_use_status");
+    expect(firstBatchMatrixCsv).toContain("UNKNOWN_DERIVATIVE_RIGHTS");
+    expect(firstBatchMatrixCsv).toContain("public_metadata_allowed,public_cta_allowed,owner_approval_status,go_hold_decision");
+    expect(firstBatchBackfillTemplate).toContain('"source_license_url"');
+    expect(firstBatchBackfillTemplate).toContain('"commercial_use_status"');
+    expect(firstBatchBackfillTemplate).toContain('"derivative_audiobook_rights_status"');
+    expect(firstBatchBackfillTemplate).toContain('"public_cta_allowed"');
   });
 
   test("always-visible launch copy does not overclaim audio, accessibility, or PR branch evidence", () => {
