@@ -9,7 +9,9 @@ URLs, or mutates production data.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import subprocess
 import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -26,6 +28,9 @@ from backend.audiobook_generation.provider_adapter import DryRunNarrationProvide
 REQUEST_PATH = ROOT / "data" / "audiobook_governance" / "kshudhita-pashan.regeneration_request.json"
 PROFILE_DIR = ROOT / "data" / "audiobook_voice_profiles"
 SOURCE_METADATA_PATH = ROOT / "data" / "publication_candidates" / "kshudhita-pashan.source.json"
+APPROVED_SOURCE_TEXT_PATH = ROOT / "data" / "audiobook_regeneration" / "kshudhita-pashan" / "approved_source_text.txt"
+GOVERNANCE_SCHEMA_PATH = ROOT / "data" / "audiobook_governance" / "schema.json"
+SEGMENT_SCHEMA_PATH = ROOT / "data" / "audiobook_regeneration" / "kshudhita-pashan" / "segment_manifest.schema.json"
 OUTPUT_ROOT = ROOT / "output" / "audiobook_regeneration"
 
 APPROVAL_KEYS = ("owner", "rights", "source_text", "voice_style")
@@ -65,10 +70,66 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def sha256_path(path: Path) -> str:
+    if not path.exists():
+        return ""
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def git_sha() -> str:
+    result = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    return result.stdout.strip() if result.returncode == 0 else "UNKNOWN"
+
+
+def validate_required(schema: dict[str, Any], payload: dict[str, Any], *, label: str) -> list[str]:
+    issues: list[str] = []
+    for key in schema.get("required", []):
+        if key not in payload:
+            issues.append(f"{label} missing required field: {key}")
+    if "segments" in payload:
+        segment_schema = (
+            schema.get("properties", {})
+            .get("segments", {})
+            .get("items", {})
+        )
+        required = segment_schema.get("required", [])
+        for index, segment in enumerate(payload.get("segments") or [], start=1):
+            if not isinstance(segment, dict):
+                issues.append(f"{label} segment {index} is not an object")
+                continue
+            for key in required:
+                if key not in segment:
+                    issues.append(f"{label} segment {index} missing required field: {key}")
+    return issues
+
+
+def validate_schema_file(schema_path: Path, payload_path: Path, *, label: str) -> list[str]:
+    schema = read_json(schema_path)
+    payload = read_json(payload_path)
+    if not schema:
+        return [f"{label} schema missing: {schema_path}"]
+    if not payload:
+        return [f"{label} payload missing: {payload_path}"]
+    return validate_required(schema, payload, label=label)
+
+
 def load_context(book_slug: str) -> WorkflowContext:
     request = read_json(REQUEST_PATH)
     if request.get("book_slug") != book_slug:
         raise ValueError(f"No regenerated narration governance request exists for {book_slug}.")
+    schema_issues = validate_schema_file(GOVERNANCE_SCHEMA_PATH, REQUEST_PATH, label="governance_request")
+    if schema_issues:
+        raise ValueError("; ".join(schema_issues))
     profile_id = str(request.get("narrator_profile_id") or "").strip()
     profile = read_json(PROFILE_DIR / f"{profile_id.replace('-sample', '')}.sample.json")
     if not profile:
@@ -111,6 +172,8 @@ def safety_issues(context: WorkflowContext, *, simulate_dry_run_approvals: bool 
         for key in ("source_url", "source_name", "source_license", "source_hash", "content_hash", "provenance_hash"):
             if not str(source.get(key) or "").strip():
                 issues.append(f"Source metadata missing {key}.")
+        if source.get("full_source_text_committed") is not True or not APPROVED_SOURCE_TEXT_PATH.exists():
+            issues.append("Approved full source text is unavailable; source-driven segments cannot be generated.")
 
     if not simulate_dry_run_approvals:
         for key in APPROVAL_KEYS:
@@ -132,58 +195,40 @@ def safety_issues(context: WorkflowContext, *, simulate_dry_run_approvals: bool 
     return issues
 
 
+def source_paragraphs() -> list[str]:
+    if not APPROVED_SOURCE_TEXT_PATH.exists():
+        return []
+    text = APPROVED_SOURCE_TEXT_PATH.read_text(encoding="utf-8")
+    return [paragraph.strip() for paragraph in text.split("\n\n") if paragraph.strip()]
+
+
 def build_segments(context: WorkflowContext, *, ready: bool = False) -> list[dict[str, Any]]:
     status = "READY_FOR_GENERATION" if ready else "APPROVAL_REQUIRED"
-    return [
-        {
-            "segment_id": "kshudhita-pashan-segment-001",
-            "chapter_id": "chapter-001",
-            "text_ref": "source:kshudhita-pashan:paragraphs:1-4",
-            "start_paragraph": 1,
-            "end_paragraph": 4,
-            "language": "bn",
-            "punctuation_profile": "bengali_gothic_punctuation_v1",
-            "target_emotion": "restrained suspense",
-            "intensity_level": "low-medium",
-            "pause_profile": "reflective",
-            "pronunciation_notes": "Preserve literary Bengali diction; avoid modern casual flattening.",
-            "dialogue_notes": "Gentle speaker separation only where quotation marks require it.",
-            "qa_required": True,
-            "regeneration_status": status,
-        },
-        {
-            "segment_id": "kshudhita-pashan-segment-002",
-            "chapter_id": "chapter-001",
-            "text_ref": "source:kshudhita-pashan:paragraphs:5-9",
-            "start_paragraph": 5,
-            "end_paragraph": 9,
-            "language": "bn",
-            "punctuation_profile": "bengali_gothic_punctuation_v1",
-            "target_emotion": "quiet unease",
-            "intensity_level": "medium",
-            "pause_profile": "suspense_with_no_dead_air",
-            "pronunciation_notes": "Check Tagore-era phrasing and tatsama word clarity.",
-            "dialogue_notes": "No theatrical acting; maintain literary restraint.",
-            "qa_required": True,
-            "regeneration_status": status,
-        },
-        {
-            "segment_id": "kshudhita-pashan-segment-003",
-            "chapter_id": "chapter-001",
-            "text_ref": "source:kshudhita-pashan:paragraphs:10-14",
-            "start_paragraph": 10,
-            "end_paragraph": 14,
-            "language": "bn",
-            "punctuation_profile": "bengali_gothic_punctuation_v1",
-            "target_emotion": "eerie reflection",
-            "intensity_level": "medium",
-            "pause_profile": "paragraph_reflective",
-            "pronunciation_notes": "Human listening review must verify Bengali vowel length and conjunct clarity.",
-            "dialogue_notes": "Separate quoted thought shifts with a subtle breath pause.",
-            "qa_required": True,
-            "regeneration_status": status,
-        },
-    ]
+    paragraphs = source_paragraphs()
+    if not paragraphs:
+        return []
+    segments: list[dict[str, Any]] = []
+    for index, start in enumerate(range(1, len(paragraphs) + 1, 4), start=1):
+        end = min(start + 3, len(paragraphs))
+        segments.append(
+            {
+                "segment_id": f"kshudhita-pashan-segment-{index:03d}",
+                "chapter_id": "chapter-001",
+                "text_ref": f"source:kshudhita-pashan:paragraphs:{start}-{end}",
+                "start_paragraph": start,
+                "end_paragraph": end,
+                "language": "bn",
+                "punctuation_profile": "bengali_gothic_punctuation_v1",
+                "target_emotion": "source-derived Bengali Gothic narration",
+                "intensity_level": "low-medium",
+                "pause_profile": "source_punctuation_driven",
+                "pronunciation_notes": "Preserve literary Bengali diction; verify Tagore-era phrasing in human listening review.",
+                "dialogue_notes": "Gentle speaker separation only where quotation marks require it.",
+                "qa_required": True,
+                "regeneration_status": status,
+            }
+        )
+    return segments
 
 
 def qa_checklist() -> list[dict[str, Any]]:
@@ -228,6 +273,7 @@ def build_plan(context: WorkflowContext, *, simulate_dry_run_approvals: bool = F
     )
     return {
         "generated_at": utc_now(),
+        "git_sha": git_sha(),
         "book_slug": context.book_slug,
         "title": context.request.get("title"),
         "language": context.request.get("language"),
@@ -240,9 +286,18 @@ def build_plan(context: WorkflowContext, *, simulate_dry_run_approvals: bool = F
         "generation_performed": False,
         "upload_performed": False,
         "provider_call_performed": False,
+        "approval_evidence": {
+            "generated_at": utc_now(),
+            "git_sha": git_sha(),
+            "governance_request_checksum": sha256_path(REQUEST_PATH),
+            "source_metadata_checksum": sha256_path(SOURCE_METADATA_PATH),
+            "voice_profile_checksum": sha256_path(PROFILE_DIR / f"{str(context.request.get('narrator_profile_id') or '').replace('-sample', '')}.sample.json"),
+            "release_gate_checksum": sha256_path(ROOT / "scripts" / "audiobook_release_gate.py"),
+        },
         "provider_result": dry_run_result.__dict__,
         "issues": issues,
         "segments_planned": len(build_segments(context, ready=simulate_dry_run_approvals and not issues)),
+        "source_text_status": "READY" if source_paragraphs() else "OPERATOR_REQUIRED",
         "qa_checklist": qa_checklist(),
         "next_required_approvals": [key for key in APPROVAL_KEYS if not approval_value(context.request, key)],
         "notes": [
@@ -300,14 +355,28 @@ def write_gate_report(plan: dict[str, Any], output_dir: Path) -> None:
 def write_segment_manifest(context: WorkflowContext, output_dir: Path, *, ready: bool = False) -> dict[str, Any]:
     manifest = {
         "generated_at": utc_now(),
+        "git_sha": git_sha(),
         "book_slug": context.book_slug,
         "title": context.request.get("title"),
         "language": context.request.get("language"),
         "audio_urls_included": False,
         "public_release_allowed": False,
+        "source_text_status": "READY" if source_paragraphs() else "OPERATOR_REQUIRED",
         "segments": build_segments(context, ready=ready),
     }
     write_json(output_dir / "segment_manifest.json", manifest)
+    validation_issues = validate_schema_file(
+        SEGMENT_SCHEMA_PATH,
+        output_dir / "segment_manifest.json",
+        label="segment_manifest",
+    )
+    write_json(
+        output_dir / "segment_manifest_validation.json",
+        {
+            "status": "PASS" if not validation_issues else "FAIL",
+            "issues": validation_issues,
+        },
+    )
     return manifest
 
 

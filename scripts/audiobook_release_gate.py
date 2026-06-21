@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+import argparse
 import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -221,7 +222,15 @@ def report_markdown(result: ReleaseGateResult) -> str:
     return "\n".join(lines)
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--expect",
+        choices=["blocked", "ready"],
+        default="blocked",
+        help="Use blocked for today's expected state; ready must fail until public audio is truly approved.",
+    )
+    args = parser.parse_args(argv)
     context = load_context("kshudhita-pashan")
     manifest_path = OUTPUT_ROOT / "kshudhita-pashan" / "segment_manifest.json"
     manifest = read_json(manifest_path)
@@ -229,6 +238,10 @@ def main() -> int:
     write_text(REPORT_PATH, report_markdown(result))
     write_json(OUTPUT_ROOT / "kshudhita-pashan" / "release_gate_report.json", result.as_dict())
     print(f"Audiobook release gate status: {result.status}")
+    if args.expect == "blocked":
+        return 0 if result.status == "BLOCKED_PUBLIC_AUDIO_RELEASE" else 1
+    if args.expect == "ready":
+        return 0 if result.status == "PUBLIC_AUDIO_RELEASE_READY" else 1
     return 0
 
 

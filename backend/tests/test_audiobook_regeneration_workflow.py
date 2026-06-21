@@ -83,14 +83,19 @@ def test_dry_run_plan_succeeds_with_draft_data_and_generates_no_audio():
     assert plan["upload_performed"] is False
     assert plan["provider_call_performed"] is False
     assert plan["audio_urls_included"] is False
-    assert plan["segments_planned"] == 3
+    assert plan["segments_planned"] == 0
+    assert plan["source_text_status"] == "OPERATOR_REQUIRED"
+    assert any("Approved full source text is unavailable" in issue for issue in plan["issues"])
+    assert plan["approval_evidence"]["governance_request_checksum"]
+    assert plan["approval_evidence"]["source_metadata_checksum"]
+    assert plan["approval_evidence"]["release_gate_checksum"]
 
 
 def test_approve_dry_run_mode_is_internal_only():
     context = load_context()
     plan = workflow.build_plan(context, simulate_dry_run_approvals=True)
 
-    assert plan["workflow_status"] == "GENERATION_APPROVED_DRY_RUN_ONLY"
+    assert plan["workflow_status"] == "APPROVAL_REQUIRED"
     assert plan["public_release_allowed"] is False
     assert plan["full_audiobook_allowed"] is False
     assert plan["preview_allowed"] is False
@@ -108,8 +113,7 @@ def test_segment_manifest_contains_no_audio_urls():
     assert "http://" not in serialized
     assert "https://" not in serialized
     assert manifest["audio_urls_included"] is False
-    assert all("audio_url" not in segment for segment in manifest["segments"])
-    assert all(segment["regeneration_status"] == "APPROVAL_REQUIRED" for segment in manifest["segments"])
+    assert manifest["segments"] == []
 
 
 def test_provider_adapter_performs_no_network_calls(monkeypatch):
@@ -171,7 +175,10 @@ def test_workflow_cli_writes_manifest_without_generation(tmp_path: Path):
     assert manifest_path.exists()
     payload = json.loads(manifest_path.read_text(encoding="utf-8"))
     assert payload["audio_urls_included"] is False
-    assert all(segment["qa_required"] is True for segment in payload["segments"])
+    assert payload["source_text_status"] == "OPERATOR_REQUIRED"
+    assert payload["segments"] == []
+    validation = json.loads(Path("output/audiobook_regeneration/kshudhita-pashan/segment_manifest_validation.json").read_text())
+    assert validation["status"] == "PASS"
 
 
 def test_precheck_cli_exits_nonzero_until_approvals_exist():

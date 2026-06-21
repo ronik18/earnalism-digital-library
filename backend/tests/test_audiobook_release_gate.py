@@ -151,9 +151,14 @@ def test_no_audio_route_for_kshudhita_returns_404(monkeypatch):
 
 
 def test_release_gate_cli_writes_blocked_report():
-    result = gate.main()
+    result = gate.main([])
     report = gate.REPORT_PATH.read_text(encoding="utf-8")
 
     assert result == 0
     assert "BLOCKED_PUBLIC_AUDIO_RELEASE" in report
     assert "Kshudhita Pashan remains pipeline-only" in report
+
+
+def test_release_gate_expect_blocked_passes_and_expect_ready_fails():
+    assert gate.main(["--expect", "blocked"]) == 0
+    assert gate.main(["--expect", "ready"]) == 1
