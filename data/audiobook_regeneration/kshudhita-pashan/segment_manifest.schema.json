@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Earnalism Regenerated Narration Segment Manifest",
+  "type": "object",
+  "required": ["book_slug", "segments"],
+  "properties": {
+    "book_slug": { "type": "string" },
+    "title": { "type": "string" },
+    "language": { "type": "string" },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "segment_id",
+          "chapter_id",
+          "text_ref",
+          "start_paragraph",
+          "end_paragraph",
+          "language",
+          "punctuation_profile",
+          "target_emotion",
+          "intensity_level",
+          "pause_profile",
+          "pronunciation_notes",
+          "dialogue_notes",
+          "qa_required",
+          "regeneration_status"
+        ],
+        "properties": {
+          "segment_id": { "type": "string" },
+          "chapter_id": { "type": "string" },
+          "text_ref": { "type": "string" },
+          "start_paragraph": { "type": "integer", "minimum": 1 },
+          "end_paragraph": { "type": "integer", "minimum": 1 },
+          "language": { "type": "string" },
+          "punctuation_profile": { "type": "string" },
+          "target_emotion": { "type": "string" },
+          "intensity_level": { "type": "string" },
+          "pause_profile": { "type": "string" },
+          "pronunciation_notes": { "type": "string" },
+          "dialogue_notes": { "type": "string" },
+          "qa_required": { "type": "boolean" },
+          "regeneration_status": {
+            "type": "string",
+            "enum": [
+              "NOT_REQUESTED",
+              "PLANNED",
+              "APPROVAL_REQUIRED",
+              "READY_FOR_GENERATION",
+              "GENERATED_DRAFT",
+              "MASTERED_DRAFT",
+              "HUMAN_REVIEW_REQUIRED",
+              "APPROVED_FOR_INTERNAL_PREVIEW",
+              "APPROVED_FOR_PUBLIC_PREVIEW",
+              "BLOCKED"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

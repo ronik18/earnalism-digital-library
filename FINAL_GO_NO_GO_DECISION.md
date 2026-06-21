@@ -19,6 +19,14 @@ GO requires passing production canaries, visible overlay export, verified captio
 - Kshudhita Pashan remains pipeline-only.
 - Paid ads remain held until human owner approval and passing production canaries.
 
+## Regenerated Audiobook Workflow Update
+
+- Regenerated narration workflow: `REGENERATED_NARRATION_WORKFLOW_READY`
+- Kshudhita Pashan audio release: `PUBLIC_AUDIO_RELEASE_BLOCKED`
+- Kshudhita Pashan full audiobook: `FULL_AUDIOBOOK_BLOCKED`
+- Required owner state: `OWNER_APPROVAL_REQUIRED`
+- No voice generation, upload, public audio URL, Listen Now CTA, or audiobook enablement was performed.
+
 ## Explicit Non-Actions
 
 - No new book was published.
