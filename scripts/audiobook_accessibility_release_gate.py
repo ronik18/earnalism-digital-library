@@ -29,6 +29,8 @@ FAIL_PUBLIC_AUDIO_LEAK = "FAIL_PUBLIC_AUDIO_LEAK"
 
 QA_THRESHOLD = 9.5
 TEXT_SYNC_TOLERANCE_MS = 250
+AUDIO_FILE_EXTENSIONS = {".aac", ".m4a", ".mp3", ".ogg", ".wav"}
+AUDIO_SIDECAR_SUFFIXES = ("_chapters.json", "_highlight.vtt", "_meta.json", "_timestamps.json")
 
 REQUIRED_PLAYER_ACCESSIBILITY_EVIDENCE = [
     "player_controls_accessible_names",
@@ -159,24 +161,43 @@ def scan_public_surface() -> dict[str, Any]:
     metadata_text = "\n".join(read_text(path) for path in PUBLIC_METADATA_FILES)
     positive_claim_text = strip_negated_audio_safety_copy(public_text)
 
-    public_audio_dir = ROOT / "frontend" / "public" / "audio"
-    audio_files = [path for path in public_audio_dir.rglob("*") if path.is_file()] if public_audio_dir.exists() else []
+    public_static_audio_files = find_audio_like_files(ROOT / "frontend" / "public")
+    public_build_audio_files = find_audio_like_files(ROOT / "frontend" / "build")
 
     return {
         "public_audio_claim_found": bool(POSITIVE_AUDIO_CLAIM_RE.search(positive_claim_text)),
         "public_audio_metadata_found": bool(PUBLIC_AUDIO_METADATA_RE.search(metadata_text)),
         "unsupported_accessibility_claim_found": bool(UNSUPPORTED_ACCESSIBILITY_CLAIMS_RE.search(public_text)),
-        "public_audio_asset_count": len(audio_files),
-        "public_audio_asset_bytes": sum(path.stat().st_size for path in audio_files),
+        "public_audio_asset_count": len(public_static_audio_files),
+        "public_audio_asset_bytes": sum(path.stat().st_size for path in public_static_audio_files),
+        "public_audio_asset_paths": [str(path.relative_to(ROOT)) for path in public_static_audio_files],
+        "public_build_audio_asset_count": len(public_build_audio_files),
+        "public_build_audio_asset_bytes": sum(path.stat().st_size for path in public_build_audio_files),
+        "public_build_audio_asset_paths": [str(path.relative_to(ROOT)) for path in public_build_audio_files],
         "public_surface_file_count": sum(1 for path in PUBLIC_SURFACE_FILES if (ROOT / path).exists()),
         "metadata_file_count": sum(1 for path in PUBLIC_METADATA_FILES if (ROOT / path).exists()),
     }
+
+
+def is_audio_like_file(path: Path) -> bool:
+    name = path.name.lower()
+    if path.suffix.lower() in AUDIO_FILE_EXTENSIONS:
+        return True
+    return "audio" in {part.lower() for part in path.parts} and name.endswith(AUDIO_SIDECAR_SUFFIXES)
+
+
+def find_audio_like_files(root: Path) -> list[Path]:
+    if not root.exists():
+        return []
+    return sorted(path for path in root.rglob("*") if path.is_file() and is_audio_like_file(path))
 
 
 def current_repo_payload() -> dict[str, Any]:
     surface = scan_public_surface()
     truth_ledger = read_text("PRODUCT_TRUTH_LEDGER.md")
     readiness = read_text("AUDIOBOOK_READINESS_REPORT.md")
+    readiness_status_match = re.search(r"Status:\s+`([^`]+)`", readiness)
+    readiness_status = readiness_status_match.group(1) if readiness_status_match else "UNKNOWN"
     first_batch = read_text("FIRST_BATCH_RIGHTS_EVIDENCE_SCORECARD.md")
 
     return {
@@ -185,6 +206,9 @@ def current_repo_payload() -> dict[str, Any]:
         "public_audiobook_metadata": surface["public_audio_metadata_found"],
         "public_audio_url_exposed": False,
         "public_audio_asset_count": surface["public_audio_asset_count"],
+        "public_audio_asset_paths": surface["public_audio_asset_paths"],
+        "public_build_audio_asset_count": surface["public_build_audio_asset_count"],
+        "public_build_audio_asset_paths": surface["public_build_audio_asset_paths"],
         "unsupported_accessibility_claim_found": surface["unsupported_accessibility_claim_found"],
         "source_text_approved": "Dracula is the only currently approved core public reading release" in truth_ledger,
         "derivative_audiobook_rights_approved": False,
@@ -203,7 +227,7 @@ def current_repo_payload() -> dict[str, Any]:
         "dracula_audio_disabled": "Dracula audio remains disabled" in truth_ledger,
         "kshudhita_pipeline_only": "Kshudhita Pashan remains pipeline-only" in truth_ledger,
         "first_batch_audio_rights_blocked": "Audiobook derivative rights are not approved" in first_batch,
-        "audio_readiness_report_status": "PASS_WITH_WARNINGS" if "Status: `PASS_WITH_WARNINGS`" in readiness else "UNKNOWN",
+        "audio_readiness_report_status": readiness_status,
         "surface_scan": surface,
     }
 
@@ -252,10 +276,17 @@ def evaluate_release_gate(payload: dict[str, Any] | None = None) -> dict[str, An
         block("UNSUPPORTED_ACCESSIBILITY_CLAIM", "CRITICAL", "public_surface", "Unsupported accessibility claim was detected on the public surface.")
     if int(data.get("public_audio_asset_count") or 0) > 0:
         block(
-            "PUBLIC_AUDIO_ASSETS_PRESENT_UNAPPROVED",
-            "HIGH",
-            "public_audio_assets",
-            "Audio files exist under frontend/public/audio and must remain unlinked until rights and QA pass.",
+            "FRONTEND_PUBLIC_AUDIO_ASSETS_PRESENT",
+            "CRITICAL",
+            "public_surface",
+            "Audio-like files exist under frontend/public and are directly reachable by URL.",
+        )
+    if int(data.get("public_build_audio_asset_count") or 0) > 0:
+        block(
+            "FRONTEND_BUILD_AUDIO_ASSETS_PRESENT",
+            "CRITICAL",
+            "public_surface",
+            "Audio-like files exist under frontend/build and could be deployed as static assets.",
         )
 
     if not truthy(data.get("source_text_approved")):
@@ -349,6 +380,9 @@ def evaluate_release_gate(payload: dict[str, Any] | None = None) -> dict[str, An
             "first_batch_audio_rights_blocked": truthy(data.get("first_batch_audio_rights_blocked")),
             "audio_readiness_report_status": data.get("audio_readiness_report_status", "UNKNOWN"),
             "public_audio_asset_count": int(data.get("public_audio_asset_count") or 0),
+            "public_build_audio_asset_count": int(data.get("public_build_audio_asset_count") or 0),
+            "public_audio_asset_paths": data.get("public_audio_asset_paths") or [],
+            "public_build_audio_asset_paths": data.get("public_build_audio_asset_paths") or [],
         },
     }
     return result
@@ -397,7 +431,8 @@ This report is an internal release gate for future Bengali and English audiobook
 | Kshudhita Pashan pipeline-only | `{str(evidence['kshudhita_pipeline_only']).lower()}` |
 | First-batch audiobook rights blocked | `{str(evidence['first_batch_audio_rights_blocked']).lower()}` |
 | Audio readiness report status | `{evidence['audio_readiness_report_status']}` |
-| Public audio asset count requiring quarantine/review | `{evidence['public_audio_asset_count']}` |
+| Frontend public audio-like asset count | `{evidence['public_audio_asset_count']}` |
+| Frontend build audio-like asset count | `{evidence['public_build_audio_asset_count']}` |
 
 ## Blockers
 
@@ -420,8 +455,12 @@ This report is an internal release gate for future Bengali and English audiobook
 - `AUDIOBOOK_ACCESSIBILITY_10_10_RELEASE_CRITERIA.md`
 - `ACCESSIBLE_AUDIOBOOK_USER_JOURNEY.md`
 - `AUDIOBOOK_ACCESSIBILITY_GATE_REPORT.md`
+- `AUDIOBOOK_ASSET_QUARANTINE_REPORT.md`
+- `AUDIOBOOK_READINESS_REPORT.md`
+- `regression/modules/11-seo.test.js`
 - `regression/modules/14-ux-conversion-static.test.js`
 - `package.json`
+- `internal/audio_quarantine/frontend-public-audio/`
 
 ## Tests Run
 

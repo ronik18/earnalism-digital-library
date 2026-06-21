@@ -1,15 +1,15 @@
 # Audiobook Readiness Report
 
-Status: `PASS_WITH_WARNINGS`
+Status: `PASS`
 
 | Asset Signal | Value |
 | --- | --- |
-| public_audio_dir_exists | True |
-| file_count | 25 |
-| total_bytes | 102094631 |
-| mp3_count | 5 |
-| timestamp_json_count | 15 |
-| vtt_count | 5 |
+| public_audio_dir_exists | False |
+| file_count | 0 |
+| total_bytes | 0 |
+| mp3_count | 0 |
+| timestamp_json_count | 0 |
+| vtt_count | 0 |
 
 | Guard | Present |
 | --- | --- |
@@ -23,21 +23,6 @@ Detailed asset audit: `/Users/ronikbasak/Documents/GitHub/earnalism-digital-libr
 
 ## Public Audio Asset Audit
 
-| File | Book | Lang | Bytes | Duration ms | Rights | QA | Timestamps | VTT | Waveform |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| frontend/public/audio/ben/book-0deb35c750.mp3 | book-0deb35c750 | ben | 4331433 | 721816 | UNKNOWN | NEEDS_SYNC_OR_WAVEFORM_REVIEW | True | True | False |
-| frontend/public/audio/ben/book-63afd5e9be.mp3 | book-63afd5e9be | ben | 5195041 | 865733 | UNKNOWN | NEEDS_SYNC_OR_WAVEFORM_REVIEW | True | True | False |
-| frontend/public/audio/ben/book-d19e96859f.mp3 | book-d19e96859f | ben | 2791515 | 465154 | UNKNOWN | NEEDS_SYNC_OR_WAVEFORM_REVIEW | True | True | False |
-| frontend/public/audio/ben/ginni.mp3 | ginni | ben | 2873487 | 478800 | UNKNOWN | NEEDS_SYNC_OR_WAVEFORM_REVIEW | True | True | False |
-| frontend/public/audio/en/bharat-at-the-crossroads.mp3 | bharat-at-the-crossroads | en | 82189079 | 13698074 | UNKNOWN | NEEDS_SYNC_OR_WAVEFORM_REVIEW | True | True | False |
+No public audio assets were detected.
 
 Full audiobook launch remains blocked until each candidate has linked approved rights, QA-passed audio, and explicit storage/provider publish confirmation.
-
-## Dracula Controlled Candidate
-
-Dracula audio status for this publication package is `AUDIO_NOT_REQUIRED`.
-
-- No Dracula audio upload was performed.
-- No TTS, STT, FFmpeg, or paid provider call was performed.
-- No full Dracula audiobook is promoted by the non-public SEO or campaign drafts.
-- Linked Dracula audio must pass rights linkage, listening QA, sync/highlighting QA, and storage/provider confirmation before promotion.

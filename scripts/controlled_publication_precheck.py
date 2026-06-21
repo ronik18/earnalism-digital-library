@@ -22,6 +22,9 @@ ROOT = Path(__file__).resolve().parents[1]
 APPROVED_FILE = ROOT / "APPROVED_TO_PUBLISH.md"
 OUTPUT_DIR = ROOT / "output" / "launch"
 OUTPUT_FILE = OUTPUT_DIR / "controlled_publication_precheck.json"
+AUDIO_FILE_EXTENSIONS = {".aac", ".m4a", ".mp3", ".ogg", ".wav"}
+AUDIO_SIDECAR_SUFFIXES = ("_chapters.json", "_highlight.vtt", "_meta.json", "_timestamps.json")
+PUBLIC_STATIC_ROOTS = ("frontend/public", "frontend/build")
 REQUIRED_FIELDS = [
     "work_title",
     "work_slug",
@@ -122,6 +125,25 @@ def derivative_audio_status_is_safe(value: Any) -> bool:
     return any(token in text for token in ("not approved", "blocked", "audio_not_required", "not required", "separate approval required"))
 
 
+def is_audio_like_file(path: Path) -> bool:
+    name = path.name.lower()
+    if path.suffix.lower() in AUDIO_FILE_EXTENSIONS:
+        return True
+    return "audio" in {part.lower() for part in path.parts} and name.endswith(AUDIO_SIDECAR_SUFFIXES)
+
+
+def find_public_audio_like_files(root: Path = ROOT) -> list[str]:
+    public_roots = [root / relative_root for relative_root in PUBLIC_STATIC_ROOTS]
+    matches: list[str] = []
+    for public_root in public_roots:
+        if not public_root.exists():
+            continue
+        for path in public_root.rglob("*"):
+            if path.is_file() and is_audio_like_file(path):
+                matches.append(str(path.relative_to(root)))
+    return sorted(matches)
+
+
 def evaluate_item(item: dict[str, str]) -> list[str]:
     issues: list[str] = []
     missing = [field for field in REQUIRED_FIELDS if not value_present(item.get(field))]
@@ -215,6 +237,12 @@ def evaluate() -> dict[str, Any]:
         issues.append("production parity PASS evidence is missing.")
     if items and not payment_smoke_pass:
         issues.append("payment smoke PASS evidence is missing.")
+    public_audio_like_files = find_public_audio_like_files(ROOT)
+    if public_audio_like_files:
+        issues.append(
+            "public/build audio-like assets must be quarantined before controlled publication: "
+            + ", ".join(public_audio_like_files[:10])
+        )
 
     return {
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
@@ -227,6 +255,7 @@ def evaluate() -> dict[str, Any]:
         "rollback_plan_present": rollback_plan_present,
         "production_parity_pass": production_parity_pass,
         "payment_smoke_pass": payment_smoke_pass,
+        "public_audio_like_files": public_audio_like_files,
         "mutation_performed": False,
     }
 

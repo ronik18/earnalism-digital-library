@@ -17,6 +17,9 @@ def base_payload(**overrides):
         "public_audiobook_metadata": False,
         "public_audio_url_exposed": False,
         "public_audio_asset_count": 0,
+        "public_audio_asset_paths": [],
+        "public_build_audio_asset_count": 0,
+        "public_build_audio_asset_paths": [],
         "unsupported_accessibility_claim_found": False,
         "source_text_approved": True,
         "derivative_audiobook_rights_approved": True,
@@ -158,9 +161,17 @@ def test_owner_approval_and_rollback_plan_are_required():
     assert "ROLLBACK_PLAN_MISSING" in blocker_codes(result)
 
 
-def test_existing_public_audio_assets_keep_release_blocked_without_public_leak_exit():
+def test_frontend_public_audio_assets_are_direct_public_leak():
     result = evaluate_release_gate(base_payload(public_audio_asset_count=3))
 
     assert result["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
-    assert result["command_status"] == PASS_EXPECTED_BLOCKED
-    assert "PUBLIC_AUDIO_ASSETS_PRESENT_UNAPPROVED" in blocker_codes(result)
+    assert result["command_status"] == FAIL_PUBLIC_AUDIO_LEAK
+    assert "FRONTEND_PUBLIC_AUDIO_ASSETS_PRESENT" in blocker_codes(result)
+
+
+def test_frontend_build_audio_assets_are_direct_public_leak():
+    result = evaluate_release_gate(base_payload(public_build_audio_asset_count=2))
+
+    assert result["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert result["command_status"] == FAIL_PUBLIC_AUDIO_LEAK
+    assert "FRONTEND_BUILD_AUDIO_ASSETS_PRESENT" in blocker_codes(result)

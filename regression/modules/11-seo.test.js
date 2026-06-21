@@ -49,6 +49,34 @@ function jsonLdTypes(html) {
   });
 }
 
+function audioLikeFiles(relativeRoot) {
+  const absoluteRoot = path.join(ROOT, relativeRoot);
+  if (!fs.existsSync(absoluteRoot)) return [];
+  const results = [];
+  const audioExtensions = new Set([".aac", ".m4a", ".mp3", ".ogg", ".wav"]);
+  const sidecars = ["_chapters.json", "_highlight.vtt", "_meta.json", "_timestamps.json"];
+
+  function walk(directory) {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const target = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        walk(target);
+        continue;
+      }
+      const relative = path.relative(absoluteRoot, target).replace(/\\/g, "/");
+      const lower = relative.toLowerCase();
+      const isAudioFile = audioExtensions.has(path.extname(lower));
+      const isAudioSidecar = lower.split("/").includes("audio") && sidecars.some((suffix) => lower.endsWith(suffix));
+      if (isAudioFile || isAudioSidecar) {
+        results.push(`${relativeRoot}/${relative}`);
+      }
+    }
+  }
+
+  walk(absoluteRoot);
+  return results.sort();
+}
+
 function withoutNegatedAudioSafetyCopy(value) {
   return String(value || "")
     .replace(/No unapproved title offers Start Reading, Read Preview, or Listen Now\./gi, "")
@@ -120,6 +148,11 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(snapshots).not.toContain("When I found that I was a prisoner a sort of wild feeling came over me");
     expect(positiveAudioClaimSurface).not.toMatch(/audio_url|audiobook_assets|audioobject|audiobook available|play audiobook|listen now/i);
     expect(snapshots).not.toMatch(/source_hash|content_hash|provenance_hash|rights_metadata/i);
+  });
+
+  test("public and built static output contain no directly reachable audio-like assets", () => {
+    expect(audioLikeFiles("frontend/public")).toEqual([]);
+    expect(audioLikeFiles("frontend/build")).toEqual([]);
   });
 
   test("homepage, library, and pricing snapshots stay Dracula-first and not broad-catalog", () => {

@@ -10,11 +10,11 @@ This report is an internal release gate for future Bengali and English audiobook
 
 | Area | Score |
 | --- | ---: |
-| Current audiobook readiness | 2.2/10 |
+| Current audiobook readiness | 2.6/10 |
 | Accessibility readiness | 0.0/10 |
 | Narration quality readiness | 4.8/10 |
 | Legal/rights readiness | 0.8/10 |
-| Public-surface safety | 8.0/10 |
+| Public-surface safety | 9.5/10 |
 
 ## Current Evidence
 
@@ -23,14 +23,14 @@ This report is an internal release gate for future Bengali and English audiobook
 | Dracula audio disabled | `true` |
 | Kshudhita Pashan pipeline-only | `true` |
 | First-batch audiobook rights blocked | `true` |
-| Audio readiness report status | `PASS_WITH_WARNINGS` |
-| Public audio asset count requiring quarantine/review | `25` |
+| Audio readiness report status | `PASS` |
+| Frontend public audio-like asset count | `0` |
+| Frontend build audio-like asset count | `0` |
 
 ## Blockers
 
 | Severity | Category | Code | Message |
 | --- | --- | --- | --- |
-| HIGH | public_audio_assets | PUBLIC_AUDIO_ASSETS_PRESENT_UNAPPROVED | Audio files exist under frontend/public/audio and must remain unlinked until rights and QA pass. |
 | CRITICAL | rights | DERIVATIVE_AUDIOBOOK_RIGHTS_MISSING | Derivative audiobook rights approval is missing. |
 | CRITICAL | license | MODEL_COMMERCIAL_USE_PERMISSION_MISSING | Model commercial-use permission is undocumented. |
 | CRITICAL | license | MODEL_LICENSE_EVIDENCE_MISSING | Model license evidence is missing. |
@@ -77,8 +77,12 @@ This report is an internal release gate for future Bengali and English audiobook
 - `AUDIOBOOK_ACCESSIBILITY_10_10_RELEASE_CRITERIA.md`
 - `ACCESSIBLE_AUDIOBOOK_USER_JOURNEY.md`
 - `AUDIOBOOK_ACCESSIBILITY_GATE_REPORT.md`
+- `AUDIOBOOK_ASSET_QUARANTINE_REPORT.md`
+- `AUDIOBOOK_READINESS_REPORT.md`
+- `regression/modules/11-seo.test.js`
 - `regression/modules/14-ux-conversion-static.test.js`
 - `package.json`
+- `internal/audio_quarantine/frontend-public-audio/`
 
 ## Tests Run
 

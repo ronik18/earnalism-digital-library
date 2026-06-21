@@ -104,6 +104,7 @@ describe("UX conversion static signals", () => {
   const accessibleAudiobookJourney = read("ACCESSIBLE_AUDIOBOOK_USER_JOURNEY.md");
   const audiobookGateReport = read("AUDIOBOOK_ACCESSIBILITY_GATE_REPORT.md");
   const audiobookReleaseGate = read("scripts/audiobook_accessibility_release_gate.py");
+  const controlledPublicationPrecheck = read("scripts/controlled_publication_precheck.py");
   const renderedPricingSources = [backend, pricing, microStory, readerUpsell, reader].join("\n");
   const productTruthLedger = read("PRODUCT_TRUTH_LEDGER.md");
   const alwaysVisibleLaunchCopy = [
@@ -209,6 +210,8 @@ describe("UX conversion static signals", () => {
     expect(audiobookReleaseGate).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
     expect(audiobookReleaseGate).toContain("PASS_EXPECTED_BLOCKED");
     expect(audiobookReleaseGate).toContain("FAIL_PUBLIC_AUDIO_LEAK");
+    expect(audiobookReleaseGate).toContain("FRONTEND_PUBLIC_AUDIO_ASSETS_PRESENT");
+    expect(audiobookReleaseGate).toContain("FRONTEND_BUILD_AUDIO_ASSETS_PRESENT");
     expect(audiobookReleaseGate).toContain("DERIVATIVE_AUDIOBOOK_RIGHTS_MISSING");
     expect(audiobookReleaseGate).toContain("MODEL_COMMERCIAL_USE_PERMISSION_MISSING");
     expect(audiobookReleaseGate).toContain("MODEL_LICENSE_EVIDENCE_MISSING");
@@ -227,7 +230,10 @@ describe("UX conversion static signals", () => {
   test("current audiobook gate report keeps public release blocked", () => {
     expect(audiobookGateReport).toContain("Status: `PUBLIC_AUDIO_RELEASE_BLOCKED`");
     expect(audiobookGateReport).toContain("Command status: `PASS_EXPECTED_BLOCKED`");
-    expect(audiobookGateReport).toContain("Public audio asset count requiring quarantine/review");
+    expect(audiobookGateReport).toContain("Frontend public audio-like asset count");
+    expect(audiobookGateReport).toContain("Frontend build audio-like asset count");
+    expect(audiobookGateReport).toContain("| Frontend public audio-like asset count | `0` |");
+    expect(audiobookGateReport).toContain("| Frontend build audio-like asset count | `0` |");
     expect(audiobookGateReport).toContain("DERIVATIVE_AUDIOBOOK_RIGHTS_MISSING");
     expect(audiobookGateReport).toContain("MODEL_COMMERCIAL_USE_PERMISSION_MISSING");
     expect(audiobookGateReport).toContain("MODEL_LICENSE_EVIDENCE_MISSING");
@@ -245,6 +251,10 @@ describe("UX conversion static signals", () => {
     expect(firstBatchScorecard).toContain("GO_DRACULA_CORE_READING_ONLY");
     expect(firstBatchScorecard).toContain("Kshudhita Pashan remains pipeline-only.");
     expect(firstBatchScorecard).toContain("Audiobook derivative rights are not approved for any item");
+    expect(firstBatchScorecard).toContain("Public audio remains blocked.");
+    expect(firstBatchScorecard).toContain("internal/audio_quarantine/frontend-public-audio/");
+    expect(firstBatchScorecard).toContain("Audio-like files must not exist under `frontend/public` or `frontend/build`");
+    expect(firstBatchScorecard).toContain("Controlled-publication precheck now blocks if audio-like files exist");
     expect(firstBatchScorecard).toContain("HOLD_PIPELINE_ONLY");
     expect(firstBatchScorecard).toContain("HOLD_SOURCE_RIGHTS_QA_REQUIRED");
     expect(firstBatchScorecard).toContain("UNKNOWN_COMMERCIAL_USE");
@@ -290,6 +300,10 @@ describe("UX conversion static signals", () => {
     expect(firstBatchBackfillTemplate).toContain('"commercial_use_status"');
     expect(firstBatchBackfillTemplate).toContain('"derivative_audiobook_rights_status"');
     expect(firstBatchBackfillTemplate).toContain('"public_cta_allowed"');
+    expect(controlledPublicationPrecheck).toContain("find_public_audio_like_files");
+    expect(controlledPublicationPrecheck).toContain("public/build audio-like assets must be quarantined");
+    expect(controlledPublicationPrecheck).toContain("frontend/public");
+    expect(controlledPublicationPrecheck).toContain("frontend/build");
   });
 
   test("always-visible launch copy does not overclaim audio, accessibility, or PR branch evidence", () => {
