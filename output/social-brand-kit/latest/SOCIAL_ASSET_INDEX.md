@@ -1,6 +1,6 @@
 # Social Asset Index
 
-Generated: `2026-06-21T04:34:51.620829+00:00`
+Generated: `2026-06-21T12:22:49.638247+00:00`
 
 Status: `READY_FOR_MANUAL_SOCIAL_PROFILE_SETUP`
 
