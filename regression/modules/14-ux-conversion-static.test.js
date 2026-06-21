@@ -75,6 +75,7 @@ describe("UX conversion static signals", () => {
   const staticSnapshotGenerator = read("frontend/scripts/generate-static-seo-snapshots.mjs");
   const socialPreviewAudit = read("scripts/social_preview_audit.py");
   const postProductionCanary = read("scripts/post_production_canary.py");
+  const brandSiteTour = read("scripts/create_premium_site_tour.py");
   const dailyRunbook = read("DAILY_GROWTH_AUDIT_RUNBOOK.md");
   const header = read("frontend/src/components/Header.jsx");
   const footer = read("frontend/src/components/Footer.jsx");
@@ -82,6 +83,13 @@ describe("UX conversion static signals", () => {
   const socialLinksConfig = read("frontend/src/config/socialLinks.js");
   const styles = read("frontend/src/index.css");
   const app = read("frontend/src/App.js");
+  const siteTourVoiceover = read("EARNALISM_SITE_TOUR_VOICEOVER_SCRIPT.md");
+  const siteTourFeatureReport = read("SITE_TOUR_FEATURE_HIGHLIGHT_REPORT.md");
+  const siteTourScorecard = read("BRAND_SITE_TOUR_VIDEO_SCORECARD.md");
+  const siteTourScorecardJson = JSON.parse(read("BRAND_SITE_TOUR_VIDEO_SCORECARD.json"));
+  const siteTourIndex = read("BRAND_SITE_TOUR_VIDEO_INDEX.md");
+  const siteTourIndexJson = JSON.parse(read("BRAND_SITE_TOUR_VIDEO_INDEX.json"));
+  const siteTourHumanReview = read("BRAND_SITE_TOUR_HUMAN_REVIEW_FORM.md");
   const renderedPricingSources = [backend, pricing, microStory, readerUpsell, reader].join("\n");
   const productTruthLedger = read("PRODUCT_TRUTH_LEDGER.md");
   const alwaysVisibleLaunchCopy = [
@@ -393,6 +401,96 @@ describe("UX conversion static signals", () => {
     expect(socialPreviewAudit).toContain("failed_checks");
     expect(postProductionCanary).toContain("launch:social-preview-audit:prod");
     expect(postProductionCanary).toContain("release:ux-go-no-go");
+  });
+
+  test("premium site-tour package is wired as a local brand-safety artifact", () => {
+    expect(packageJson).toContain('"brand:site-tour": "python3 scripts/create_premium_site_tour.py"');
+    expect(brandSiteTour).toContain("npm run ux:real-user-video-audit");
+    expect(brandSiteTour).toContain("PLAYWRIGHT_RESULTS");
+    expect(brandSiteTour).toContain("playwright_video_entries");
+    expect(brandSiteTour).toContain("earnalism-site-tour-master.webm");
+    expect(brandSiteTour).toContain("earnalism-site-tour-master.mp4");
+    expect(brandSiteTour).toContain("earnalism-site-tour-vertical-9x16.mp4");
+    expect(brandSiteTour).toContain("earnalism-site-tour-square-1x1.mp4");
+    expect(brandSiteTour).toContain("earnalism-site-tour-short-15s.mp4");
+    expect(brandSiteTour).toContain("earnalism-site-tour-captions.srt");
+    expect(brandSiteTour).toContain("OPERATOR_REQUIRED_OVERLAY_EXPORT");
+    expect(brandSiteTour).toContain("caption_mismatch_blocker");
+    expect(brandSiteTour).toContain("sha256_file");
+    expect(brandSiteTour).toContain("duration_seconds");
+    expect(brandSiteTour).toContain("scorecard(index)");
+    expect(brandSiteTour).toContain("source_index_path");
+    expect(brandSiteTour).toContain("captions_missing_or_mismatched_max_8");
+    expect(brandSiteTour).toContain("caption_track_sidecar_only_max_8_6");
+    expect(brandSiteTour).toContain("backend_catalog_truth_missing_or_failing_max_8_8");
+    expect(brandSiteTour).toContain("ux_go_no_go_missing_or_failing_max_8_8");
+    expect(brandSiteTour).toContain("release_post_production_canary_status");
+    expect(brandSiteTour).toContain("HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW");
+    expect(brandSiteTour).toContain("dracula_only_live");
+    expect(brandSiteTour).toContain("kshudhita_pipeline_only");
+    expect(brandSiteTour).toContain("paid_provider_apis_not_called");
+
+    [
+      "The Earnalism Digital Library",
+      "Begin with Dracula",
+      "Chapter 1 is free",
+      "27 chapters prepared for focused reading",
+      "Audio is intentionally disabled until QA passes",
+      "Bengali Gothic is moving through the rights-safe pipeline",
+      "Choose reading time, not noisy subscriptions",
+      "Return to reading",
+    ].forEach((requiredOverlay) => {
+      expect(brandSiteTour).toContain(requiredOverlay);
+      expect(siteTourIndex).toContain(requiredOverlay);
+    });
+
+    expect(siteTourVoiceover).toContain("Status: SCRIPT_ONLY");
+    expect(siteTourVoiceover).toContain("No AI voice, TTS, audiobook generation");
+    expect(siteTourFeatureReport).toContain("Audiobook availability claim: blocked");
+    expect(siteTourFeatureReport).toContain("Broad live catalog claim: blocked");
+    expect(siteTourScorecard).toContain("HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW");
+    expect(siteTourScorecard).toContain("No fake testimonials");
+    expect(siteTourIndex).toContain("Brand Site-Tour Video Index");
+    expect(siteTourIndex).toContain("SHA256");
+    expect(siteTourIndex).toContain("Duration");
+    expect(siteTourHumanReview).toContain("approved_for_paid_ads = false");
+  });
+
+  test("premium site-tour package caps ad readiness unless evidence is complete", () => {
+    expect(siteTourScorecardJson.recommendation).not.toBe("GO_FOR_BRANDING_AND_ADVERTISEMENT");
+    expect(siteTourScorecardJson.truth_constraints.ai_voice_or_tts_not_generated).toBe(true);
+    expect(siteTourScorecardJson.truth_constraints.audiobook_claims_blocked).toBe(true);
+    expect(siteTourScorecardJson.truth_constraints.fake_reviews_or_social_proof_blocked).toBe(true);
+    expect(siteTourScorecardJson.human_owner_review_approved).toBe(false);
+    expect(siteTourScorecardJson.caps_applied.overlay_status_not_pass_max_8).toBe(false);
+    expect(siteTourScorecardJson.caps_applied.captions_missing_or_mismatched_max_8).toBe(false);
+    expect(siteTourScorecardJson.caps_applied.caption_track_sidecar_only_max_8_6).toBe(false);
+    expect(siteTourScorecardJson.caps_applied.required_artifacts_missing_max_8).toBe(false);
+    expect(siteTourScorecardJson.caps_applied.artifact_checksums_missing_max_8_2).toBe(false);
+    expect(siteTourScorecardJson.caps_applied.human_owner_review_missing_max_9).toBe(true);
+    expect(siteTourScorecardJson.caps_applied.backend_catalog_truth_missing_or_failing_max_8_8).toBe(false);
+    expect(siteTourScorecardJson.caps_applied.ux_go_no_go_missing_or_failing_max_8_8).toBe(false);
+    expect(siteTourScorecardJson.video_status.overlay_status).toBe("PASS");
+    expect(siteTourScorecardJson.video_status.edited_master_video_exists).toBe(true);
+    expect(siteTourScorecardJson.video_status.overlay_strategy).toBe("png_overlay_burn_in");
+    expect(siteTourScorecardJson.video_status.overlay_image_count).toBe(siteTourIndexJson.selected_clip_names.length);
+    expect(siteTourScorecardJson.source_index_path).toBe("BRAND_SITE_TOUR_VIDEO_INDEX.json");
+    expect(siteTourScorecardJson.selected_clip_count).toBe(siteTourIndexJson.selected_clip_names.length);
+    expect(siteTourScorecardJson.overall_score).toBeLessThanOrEqual(9);
+    expect(siteTourScorecardJson.overall_score).toBeLessThan(9.7);
+    expect(siteTourIndexJson.final_recommendation).toBe("HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW");
+    expect(siteTourIndexJson.caption_mismatch_blocker).toBe(false);
+    expect(siteTourIndexJson.artifacts.master_webm.sha256).toMatch(/^[a-f0-9]{64}$/);
+    expect(siteTourIndexJson.artifacts.master_mp4.sha256).toMatch(/^[a-f0-9]{64}$/);
+    expect(siteTourIndexJson.artifacts.master_webm.duration_seconds).toBeGreaterThan(0);
+    expect(siteTourIndexJson.canary_stamp.backend_catalog_truth_status).toBe("PASS");
+    expect(siteTourIndexJson.canary_stamp.live_api_dracula_audiobook_status).toBe(404);
+    expect(brandSiteTour).toContain('recommendation = "HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW"');
+    expect(brandSiteTour).toContain('owner_approved');
+    expect(brandSiteTour).toContain('release_ok');
+    expect(brandSiteTour).toContain('seo_social_ok');
+    expect(siteTourFeatureReport).not.toMatch(/audiobook available|listen now|full audiobook/i);
+    expect(siteTourFeatureReport).not.toMatch(/testimonials available|rated by readers|trusted by thousands/i);
   });
 
   test("built Dracula book snapshot exposes crawlable book SEO when build output exists", () => {
