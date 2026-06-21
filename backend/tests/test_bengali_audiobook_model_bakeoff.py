@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from scripts.benchmark_bengali_tts_models import OUTPUT_ROOT, run_benchmark
+from scripts.benchmark_bengali_tts_models import OUTPUT_ROOT, compute_scorecard, run_benchmark
 from scripts.bengali_audiobook_chunker import approved_source_status
 from scripts.evaluate_audiobook_samples import evaluate_samples
 
@@ -30,6 +30,8 @@ def test_plan_mode_creates_internal_review_manifest_without_audio():
     assert payload["audio_generated"] is False
     assert payload["kshudhita_pipeline_only"] is True
     assert payload["dracula_only_live"] is True
+    assert payload["bengali_human_listening_review"]["approved"] is False
+    assert payload["bengali_human_listening_review"]["minimum_score_for_9_9"] == 9.5
 
 
 def test_dry_run_benchmark_does_not_generate_audio():
@@ -87,5 +89,40 @@ def test_scorecard_blocks_9_9_without_source_samples_and_human_review():
     payload = json.loads((ROOT / "AUDIOBOOK_BENGALI_MODEL_BAKEOFF_SCORECARD.json").read_text())
 
     assert payload["score"] < 9.9
+    assert payload["score"] <= 8.6
     assert payload["final_public_audio_status"] == "BLOCKED"
     assert "approved source text missing = max 8.6" in payload["caps_applied"]
+    assert "no Bengali human listening review >= 9.5 = max 9.0" in payload["caps_applied"]
+    assert "license evidence not manually reviewed = max 9.2" in payload["caps_applied"]
+    assert payload["human_review_approved"] is False
+    assert payload["license_manual_review_complete"] is False
+
+
+def test_scorecard_blocks_9_9_without_bengali_human_review_and_license_review():
+    payload = {
+        "book_slug": "kshudhita-pashan",
+        "source_status": {"status": "READY"},
+        "representative_chunk_count": 32,
+        "models": [
+            {
+                "audio_generated": True,
+                "public_audio_urls_created": False,
+                "license_evidence": {
+                    "human_license_review_approved": False,
+                    "verified_by": "operator_required",
+                },
+            }
+        ],
+        "bengali_human_listening_review": {
+            "approved": False,
+            "bengali_human_review_score": 9.4,
+        },
+        "final_status": "NO_MODEL_APPROVED_YET",
+    }
+
+    scorecard = compute_scorecard(payload)
+
+    assert scorecard["score"] <= 9.0
+    assert scorecard["final_public_audio_status"] == "BLOCKED"
+    assert "no Bengali human listening review >= 9.5 = max 9.0" in scorecard["caps_applied"]
+    assert "license evidence not manually reviewed = max 9.2" in scorecard["caps_applied"]

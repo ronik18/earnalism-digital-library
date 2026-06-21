@@ -23,6 +23,7 @@ LICENSE_EVIDENCE_DIR = ROOT / "data/audiobook_models/license_evidence"
 VOICE_PROFILE_PATH = ROOT / "data/audiobook_voice_profiles/bengali-gothic-premium-v1.json"
 CONFIG_DIR = ROOT / "data/audiobook_generation/model_configs"
 APPROVAL_PATH = ROOT / "data/audiobook_governance/kshudhita-pashan.local_generation_approval.json"
+HUMAN_REVIEW_PATH = ROOT / "data/audiobook_governance/kshudhita-pashan.bengali_human_listening_review.json"
 OUTPUT_ROOT = ROOT / "output/audiobook_bakeoff/kshudhita-pashan"
 SELECTION_REPORT = ROOT / "AUDIOBOOK_MODEL_SELECTION_REPORT.md"
 SCORECARD_JSON = ROOT / "AUDIOBOOK_BENGALI_MODEL_BAKEOFF_SCORECARD.json"
@@ -136,6 +137,7 @@ def operator_required_payload(book_slug: str, mode: str, source_status: dict[str
         "public_audio_urls_created": False,
         "audio_generated": False,
         "owner_approval_loaded": owner_approval_loaded(),
+        "bengali_human_listening_review": load_human_listening_review(),
         "voice_profile": read_json(VOICE_PROFILE_PATH, {}),
         "representative_chunk_count": 0,
         "models": models,
@@ -148,7 +150,7 @@ def operator_required_payload(book_slug: str, mode: str, source_status: dict[str
     return payload
 
 
-def select_representative_chunks(chunks: list[dict[str, Any]], limit: int = 10) -> list[dict[str, Any]]:
+def select_representative_chunks(chunks: list[dict[str, Any]], limit: int = 32) -> list[dict[str, Any]]:
     selected: list[dict[str, Any]] = []
     seen_ids: set[str] = set()
     for emotion in REPRESENTATIVE_EMOTIONS:
@@ -173,6 +175,43 @@ def owner_approval_loaded() -> bool:
         and payload.get("owner_approved_local_generation") is True
         and payload.get("internal_review_only") is True
     )
+
+
+def load_human_listening_review() -> dict[str, Any]:
+    payload = read_json(HUMAN_REVIEW_PATH, {})
+    score = payload.get("bengali_human_review_score")
+    approved = (
+        payload.get("approved") is True
+        and isinstance(score, (int, float))
+        and score >= 9.5
+        and payload.get("public_preview_approved") is True
+        and payload.get("full_audiobook_approved") is True
+    )
+    return {
+        "review_file": str(HUMAN_REVIEW_PATH.relative_to(ROOT)),
+        "present": HUMAN_REVIEW_PATH.exists(),
+        "approved": approved,
+        "bengali_human_review_score": score if isinstance(score, (int, float)) else None,
+        "minimum_score_for_9_9": 9.5,
+        "public_preview_approved": payload.get("public_preview_approved") is True,
+        "full_audiobook_approved": payload.get("full_audiobook_approved") is True,
+        "blocking_reason": ""
+        if approved
+        else "Bengali human listening review >= 9.5 with public-preview and full-audiobook approvals is required.",
+    }
+
+
+def license_manual_review_complete(payload: dict[str, Any]) -> bool:
+    models = payload.get("models") if isinstance(payload.get("models"), list) else []
+    if not models:
+        return False
+    for model in models:
+        evidence = model.get("license_evidence") if isinstance(model.get("license_evidence"), dict) else {}
+        if evidence.get("human_license_review_approved") is not True:
+            return False
+        if evidence.get("verified_by") in {"", "operator_required", "missing", None}:
+            return False
+    return True
 
 
 def load_config(model_id: str) -> dict[str, Any]:
@@ -325,6 +364,7 @@ def write_summary(payload: dict[str, Any]) -> None:
 def compute_scorecard(payload: dict[str, Any]) -> dict[str, Any]:
     score = 9.6
     caps: list[str] = []
+    human_review = payload.get("bengali_human_listening_review") or {}
     if payload.get("source_status", {}).get("status") != "READY":
         score = min(score, 8.6)
         caps.append("approved source text missing = max 8.6")
@@ -334,9 +374,12 @@ def compute_scorecard(payload: dict[str, Any]) -> dict[str, Any]:
     if not any(model.get("audio_generated") for model in payload.get("models", [])):
         score = min(score, 9.0)
         caps.append("no generated internal samples = max 9.0")
-    if not payload.get("human_review_approved"):
+    if human_review.get("approved") is not True:
         score = min(score, 9.0)
-        caps.append("no Bengali human listening review = max 9.0")
+        caps.append("no Bengali human listening review >= 9.5 = max 9.0")
+    if not license_manual_review_complete(payload):
+        score = min(score, 9.2)
+        caps.append("license evidence not manually reviewed = max 9.2")
     if any(model.get("public_audio_urls_created") for model in payload.get("models", [])):
         score = min(score, 5.0)
         caps.append("public audio URL present = max 5.0")
@@ -346,7 +389,9 @@ def compute_scorecard(payload: dict[str, Any]) -> dict[str, Any]:
         "status": payload.get("final_status"),
         "final_public_audio_status": "BLOCKED",
         "caps_applied": caps,
-        "human_review_approved": bool(payload.get("human_review_approved")),
+        "human_review_approved": human_review.get("approved") is True,
+        "bengali_human_review_score": human_review.get("bengali_human_review_score"),
+        "license_manual_review_complete": license_manual_review_complete(payload),
     }
 
 
@@ -374,6 +419,8 @@ def write_bakeoff_scorecard(payload: dict[str, Any]) -> None:
         [
             "",
             "A 9.9 score requires approved full source text, 25-40 real-source representative chunks, license clearance, generated internal samples, Bengali human listening review, and owner approval.",
+            "",
+            "Bengali listening review gate: score >= 9.5, public preview approval, and full-audiobook approval are all required before any 9.9 claim.",
             "",
         ]
     )
@@ -426,12 +473,12 @@ def run_benchmark(book_slug: str, mode: str, require_owner_approval: bool) -> di
         "public_audio_urls_created": False,
         "audio_generated": any(model.get("audio_generated") for model in models),
         "owner_approval_loaded": approval,
+        "bengali_human_listening_review": load_human_listening_review(),
         "source_status": source_status,
         "voice_profile": voice_profile,
         "representative_chunk_count": len(chunks),
         "models": models,
         "final_status": "NO_MODEL_APPROVED_YET",
-        "human_review_approved": False,
     }
     write_summary(payload)
     write_selection_report(payload)
