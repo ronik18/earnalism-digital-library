@@ -462,7 +462,7 @@ describe("UX conversion static signals", () => {
     expect(siteTourScorecardJson.truth_constraints.audiobook_claims_blocked).toBe(true);
     expect(siteTourScorecardJson.truth_constraints.fake_reviews_or_social_proof_blocked).toBe(true);
     expect(siteTourScorecardJson.human_owner_review_approved).toBe(false);
-    expect(siteTourScorecardJson.caps_applied.overlay_status_not_pass_max_8).toBe(true);
+    expect(siteTourScorecardJson.caps_applied.overlay_status_not_pass_max_8).toBe(false);
     expect(siteTourScorecardJson.caps_applied.captions_missing_or_mismatched_max_8).toBe(false);
     expect(siteTourScorecardJson.caps_applied.caption_track_sidecar_only_max_8_6).toBe(false);
     expect(siteTourScorecardJson.caps_applied.required_artifacts_missing_max_8).toBe(false);
@@ -470,10 +470,14 @@ describe("UX conversion static signals", () => {
     expect(siteTourScorecardJson.caps_applied.human_owner_review_missing_max_9).toBe(true);
     expect(siteTourScorecardJson.caps_applied.backend_catalog_truth_missing_or_failing_max_8_8).toBe(false);
     expect(siteTourScorecardJson.caps_applied.ux_go_no_go_missing_or_failing_max_8_8).toBe(false);
-    expect(siteTourScorecardJson.video_status.overlay_status).not.toBe("PASS");
+    expect(siteTourScorecardJson.video_status.overlay_status).toBe("PASS");
+    expect(siteTourScorecardJson.video_status.edited_master_video_exists).toBe(true);
+    expect(siteTourScorecardJson.video_status.overlay_strategy).toBe("png_overlay_burn_in");
+    expect(siteTourScorecardJson.video_status.overlay_image_count).toBe(siteTourIndexJson.selected_clip_names.length);
     expect(siteTourScorecardJson.source_index_path).toBe("BRAND_SITE_TOUR_VIDEO_INDEX.json");
     expect(siteTourScorecardJson.selected_clip_count).toBe(siteTourIndexJson.selected_clip_names.length);
-    expect(siteTourScorecardJson.overall_score).toBeLessThanOrEqual(8);
+    expect(siteTourScorecardJson.overall_score).toBeLessThanOrEqual(9);
+    expect(siteTourScorecardJson.overall_score).toBeLessThan(9.7);
     expect(siteTourIndexJson.final_recommendation).toBe("HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW");
     expect(siteTourIndexJson.caption_mismatch_blocker).toBe(false);
     expect(siteTourIndexJson.artifacts.master_webm.sha256).toMatch(/^[a-f0-9]{64}$/);

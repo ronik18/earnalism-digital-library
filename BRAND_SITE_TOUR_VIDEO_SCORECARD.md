@@ -1,12 +1,12 @@
 # Brand Site-Tour Video Scorecard
 
-Overall score: 8.0 / 10
+Overall score: 9.0 / 10
 
 Recommendation: HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW
 
 ## Score Caps
 
-- overlay_status_not_pass_max_8: True
+- overlay_status_not_pass_max_8: False
 - captions_missing_or_mismatched_max_8: False
 - caption_track_sidecar_only_max_8_6: False
 - required_artifacts_missing_max_8: False
@@ -44,15 +44,16 @@ Recommendation: HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW
 - ffmpeg_available: True
 - ffprobe_available: True
 - overlay_font: /System/Library/Fonts/Supplemental/Georgia.ttf
-- overlay_status: OPERATOR_REQUIRED_OVERLAY_EXPORT
+- overlay_status: PASS
 - master_webm: PASS
 - master_mp4: PASS
 - vertical_9x16_mp4: PASS
 - square_1x1_mp4: PASS
 - short_15s_mp4: PASS
-- edited_master_video_exists: False
+- edited_master_video_exists: True
 - caption_status: MUXED_IN_MASTER_MP4
-- master_webm_fallback: overlay export failed; generated non-overlay concat
+- overlay_strategy: png_overlay_burn_in
+- overlay_image_count: 9
 - caption_count: 9
 - expected_caption_count: 9
 - caption_mismatch_blocker: False

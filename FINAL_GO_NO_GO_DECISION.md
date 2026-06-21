@@ -8,9 +8,9 @@ GO requires passing production canaries, visible overlay export, verified captio
 ## Brand Site-Tour Update
 
 - Site-tour recommendation: `HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW`
-- Overlay status: `OPERATOR_REQUIRED_OVERLAY_EXPORT`
+- Overlay status: `PASS`
 - Caption status: `MUXED_IN_MASTER_MP4`
-- Site-tour score: `8.0/10`
+- Site-tour score: `9.0/10`
 - Release post-production canary: `PASS`
 - SEO audit: `PASS`
 - Social preview audit: `PASS`

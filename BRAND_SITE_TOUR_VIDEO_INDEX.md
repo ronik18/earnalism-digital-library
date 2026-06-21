@@ -1,12 +1,12 @@
 # Brand Site-Tour Video Index
 
-Generated at: `2026-06-21T03:47:08.539370+00:00`
-Git SHA: `484e3e504752eca764868b564222321496ea88c6`
+Generated at: `2026-06-21T03:57:14.342114+00:00`
+Git SHA: `20924da03560f176433dcbb40c4ad6600285c5da`
 Branch: `codex/premium-site-tour-video-package`
 Frontend URL: `https://theearnalism.com`
 API URL: `https://api.theearnalism.com/api`
 Source Playwright report: `output/real-user-ux/playwright-results.json`
-Overlay status: `OPERATOR_REQUIRED_OVERLAY_EXPORT`
+Overlay status: `PASS`
 Caption status: `MUXED_IN_MASTER_MP4`
 Final recommendation: `HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW`
 
@@ -48,16 +48,16 @@ Final recommendation: `HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW`
 
 | Artifact | Exists | Size | SHA256 | Duration |
 | --- | --- | ---: | --- | ---: |
-| master_webm | True | 648355 | `ca782204d02bb915...` | 39.334 |
-| master_mp4 | True | 998618 | `eecb23b60b035727...` | 39.333 |
-| vertical_9x16_mp4 | True | 832531 | `bafda01064ce894a...` | 39.333 |
-| square_1x1_mp4 | True | 820716 | `35031e44b85bea3b...` | 39.333 |
-| short_15s_mp4 | True | 486571 | `d02ced942e963182...` | 15.0 |
+| master_webm | True | 794744 | `f864d3cf558d097b...` | 39.334 |
+| master_mp4 | True | 1056653 | `280d2c82e673e40a...` | 39.333 |
+| vertical_9x16_mp4 | True | 867417 | `75feffaec0d7f10c...` | 39.333 |
+| square_1x1_mp4 | True | 842847 | `8caf775f27e51c21...` | 39.333 |
+| short_15s_mp4 | True | 506844 | `146e7a66e6fa8097...` | 15.0 |
 | captions | True | 795 | `05bcbb1e13d28887...` |  |
 | transcript | True | 1629 | `349bcf5edc8971c8...` |  |
 | storyboard | True | 2766 | `5e95718b6448a063...` |  |
 | shotlist | True | 2550 | `810874e89bd5d68f...` |  |
-| review_report | True | 2970 | `fea2c73f3579d5a0...` |  |
+| review_report | True | 2942 | `360cb6ff157c5038...` |  |
 
 ## Canary Stamp
 

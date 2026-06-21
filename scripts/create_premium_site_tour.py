@@ -291,6 +291,57 @@ def find_font() -> Path | None:
     return next((path for path in candidates if path.exists()), None)
 
 
+def wrapped_text_lines(draw: Any, text: str, font: Any, max_width: int) -> list[str]:
+    lines: list[str] = []
+    current = ""
+    for word in text.split():
+        candidate = f"{current} {word}".strip()
+        bbox = draw.textbbox((0, 0), candidate, font=font)
+        if bbox[2] - bbox[0] <= max_width or not current:
+            current = candidate
+            continue
+        lines.append(current)
+        current = word
+    if current:
+        lines.append(current)
+    return lines
+
+
+def create_overlay_images(selected: list[tuple[Shot, Path]], output_dir: Path, font_path: Path | None) -> list[Path]:
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError:
+        return []
+
+    overlay_dir = output_dir / "overlays"
+    overlay_dir.mkdir(parents=True, exist_ok=True)
+    overlays: list[Path] = []
+    title_font = ImageFont.truetype(str(font_path), 34) if font_path else ImageFont.load_default()
+    caption_font = ImageFont.truetype(str(font_path), 20) if font_path else ImageFont.load_default()
+    small_font = ImageFont.truetype(str(font_path), 15) if font_path else ImageFont.load_default()
+
+    for index, (shot, _) in enumerate(selected):
+        image = Image.new("RGBA", (1280, 720), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(image)
+        draw.rounded_rectangle((42, 548, 1238, 674), radius=10, fill=(12, 5, 7, 178))
+        draw.rectangle((42, 548, 48, 674), fill=(216, 185, 122, 242))
+        draw.text((66, 566), "Earnalism", font=small_font, fill=(216, 185, 122, 238))
+
+        cursor_y = 586
+        for line in wrapped_text_lines(draw, shot.overlay, title_font, 1080)[:2]:
+            draw.text((66, cursor_y), line, font=title_font, fill=(253, 252, 248, 255))
+            cursor_y += 39
+        cursor_y += 2
+        for line in wrapped_text_lines(draw, shot.caption, caption_font, 1080)[:2]:
+            draw.text((66, cursor_y), line, font=caption_font, fill=(216, 185, 122, 255))
+            cursor_y += 25
+
+        overlay_path = overlay_dir / f"{index + 1:02d}-{shot.shot_id}.png"
+        image.save(overlay_path)
+        overlays.append(overlay_path)
+    return overlays
+
+
 def has_valid_social_url() -> bool:
     for key in SOCIAL_ENV_KEYS:
         value = os.environ.get(key, "").strip()
@@ -429,15 +480,35 @@ def ffmpeg_concat_webm(
     *,
     with_overlay: bool,
     font: Path | None,
+    overlay_images: list[Path] | None = None,
 ) -> bool:
     if not clips:
         return False
     args: list[str] = [ffmpeg, "-y"]
     filter_parts: list[str] = []
     concat_inputs: list[str] = []
+    input_index = 0
     for index, (shot, clip) in enumerate(clips):
         args.extend(["-i", str(clip)])
-        filter_parts.append(shot_filter(index, shot, font, with_overlay=with_overlay))
+        clip_input = input_index
+        input_index += 1
+        if with_overlay and overlay_images and index < len(overlay_images):
+            args.extend(["-loop", "1", "-i", str(overlay_images[index])])
+            overlay_input = input_index
+            input_index += 1
+            base_filter = (
+                f"[{clip_input}:v]scale=1280:720:force_original_aspect_ratio=decrease,"
+                "pad=1280:720:(ow-iw)/2:(oh-ih)/2:color=0x16090d,"
+                "setsar=1,fps=24[base"
+                f"{index}]"
+            )
+            overlay_filter = (
+                f"[base{index}][{overlay_input}:v]overlay=0:0:shortest=1:format=auto,"
+                f"format=yuv420p[v{index}]"
+            )
+            filter_parts.extend([base_filter, overlay_filter])
+        else:
+            filter_parts.append(shot_filter(index, shot, font, with_overlay=False))
         concat_inputs.append(f"[v{index}]")
     filter_complex = ";".join(filter_parts)
     filter_complex += f";{''.join(concat_inputs)}concat=n={len(clips)}:v=1:a=0[outv]"
@@ -556,7 +627,17 @@ def create_video_artifacts(selected: list[tuple[Shot, Path]], output_dir: Path, 
     }
 
     if ffmpeg and font:
-        overlay_ok = ffmpeg_concat_webm(ffmpeg, selected, master_webm, with_overlay=True, font=font)
+        overlay_images = create_overlay_images(selected, output_dir, font)
+        status["overlay_strategy"] = "png_overlay_burn_in"
+        status["overlay_image_count"] = len(overlay_images)
+        overlay_ok = len(overlay_images) == len(selected) and ffmpeg_concat_webm(
+            ffmpeg,
+            selected,
+            master_webm,
+            with_overlay=True,
+            font=font,
+            overlay_images=overlay_images,
+        )
         status["overlay_status"] = "PASS" if overlay_ok else "OPERATOR_REQUIRED_OVERLAY_EXPORT"
         status["edited_master_video_exists"] = overlay_ok
         if not overlay_ok:

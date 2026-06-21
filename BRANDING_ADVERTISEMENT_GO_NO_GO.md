@@ -15,9 +15,9 @@ Dracula may stay live. Paid ads, broad branding, and acquisition campaigns remai
 
 ## Brand Site-Tour Evidence
 
-- Overlay status: `OPERATOR_REQUIRED_OVERLAY_EXPORT`
+- Overlay status: `PASS`
 - Caption status: `MUXED_IN_MASTER_MP4`
-- Score: `8.0/10`
+- Score: `9.0/10`
 - Recommendation: `HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW`
 - Master video: `output/brand-site-tour/latest/earnalism-site-tour-master.mp4`
 - Artifact index: `BRAND_SITE_TOUR_VIDEO_INDEX.md`

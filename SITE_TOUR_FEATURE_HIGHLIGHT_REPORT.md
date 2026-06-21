@@ -1,7 +1,7 @@
 # Site-Tour Feature Highlight Report
 
 - Dracula-first homepage opening: included
-- Visible feature overlays: OPERATOR_REQUIRED_OVERLAY_EXPORT
+- Visible feature overlays: PASS
 - Chapter 1 free preview positioning: included
 - 27-chapter focused reading note: included
 - Dracula audio disabled until QA note: included

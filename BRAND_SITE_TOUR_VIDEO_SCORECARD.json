@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-21T03:47:08.554681+00:00",
+  "generated_at": "2026-06-21T03:57:14.356986+00:00",
   "source_index_path": "BRAND_SITE_TOUR_VIDEO_INDEX.json",
-  "overall_score": 8.0,
+  "overall_score": 9.0,
   "recommendation": "HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW",
   "category_scores": {
     "visual_luxury": 9.1,
@@ -16,7 +16,7 @@
     "seo_readiness_dependency": 8.8
   },
   "caps_applied": {
-    "overlay_status_not_pass_max_8": true,
+    "overlay_status_not_pass_max_8": false,
     "captions_missing_or_mismatched_max_8": false,
     "caption_track_sidecar_only_max_8_6": false,
     "required_artifacts_missing_max_8": false,
@@ -42,15 +42,16 @@
     "ffmpeg_available": true,
     "ffprobe_available": true,
     "overlay_font": "/System/Library/Fonts/Supplemental/Georgia.ttf",
-    "overlay_status": "OPERATOR_REQUIRED_OVERLAY_EXPORT",
+    "overlay_status": "PASS",
     "master_webm": "PASS",
     "master_mp4": "PASS",
     "vertical_9x16_mp4": "PASS",
     "square_1x1_mp4": "PASS",
     "short_15s_mp4": "PASS",
-    "edited_master_video_exists": false,
+    "edited_master_video_exists": true,
     "caption_status": "MUXED_IN_MASTER_MP4",
-    "master_webm_fallback": "overlay export failed; generated non-overlay concat",
+    "overlay_strategy": "png_overlay_burn_in",
+    "overlay_image_count": 9,
     "caption_count": 9,
     "expected_caption_count": 9,
     "caption_mismatch_blocker": false
@@ -70,5 +71,5 @@
   },
   "selected_clip_count": 9,
   "caption_status": "MUXED_IN_MASTER_MP4",
-  "overlay_status": "OPERATOR_REQUIRED_OVERLAY_EXPORT"
+  "overlay_status": "PASS"
 }

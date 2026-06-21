@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-21T03:47:08.539370+00:00",
-  "git_sha": "484e3e504752eca764868b564222321496ea88c6",
+  "generated_at": "2026-06-21T03:57:14.342114+00:00",
+  "git_sha": "20924da03560f176433dcbb40c4ad6600285c5da",
   "branch": "codex/premium-site-tour-video-package",
   "frontend_url": "https://theearnalism.com",
   "api_url": "https://api.theearnalism.com/api",
@@ -77,36 +77,36 @@
     "master_webm": {
       "path": "output/brand-site-tour/latest/earnalism-site-tour-master.webm",
       "exists": true,
-      "file_size_bytes": 648355,
-      "sha256": "ca782204d02bb9151acb036eb63a3eb44066042dcf2b91c681f3b544fb469a79",
+      "file_size_bytes": 794744,
+      "sha256": "f864d3cf558d097b2be6f3abe2ef5a7ad2911b1b839d28f3c1f0eedca0a5a837",
       "duration_seconds": 39.334
     },
     "master_mp4": {
       "path": "output/brand-site-tour/latest/earnalism-site-tour-master.mp4",
       "exists": true,
-      "file_size_bytes": 998618,
-      "sha256": "eecb23b60b0357274efe6c7a664f98c681c202aaa430c935b600f7d15da03c35",
+      "file_size_bytes": 1056653,
+      "sha256": "280d2c82e673e40a7076a304a5ee9ad51ce4c7ce34ee355176ad0189c50b1a1c",
       "duration_seconds": 39.333
     },
     "vertical_9x16_mp4": {
       "path": "output/brand-site-tour/latest/earnalism-site-tour-vertical-9x16.mp4",
       "exists": true,
-      "file_size_bytes": 832531,
-      "sha256": "bafda01064ce894a4880ece56cad61f57bbb057246bc4407e0d17457a8298f9f",
+      "file_size_bytes": 867417,
+      "sha256": "75feffaec0d7f10c8a6e47be287f449c10a8a95d2e0ecdacbb5f916f20e8057d",
       "duration_seconds": 39.333
     },
     "square_1x1_mp4": {
       "path": "output/brand-site-tour/latest/earnalism-site-tour-square-1x1.mp4",
       "exists": true,
-      "file_size_bytes": 820716,
-      "sha256": "35031e44b85bea3b49abcab1df163bb0049f8339b4f17247f878af8c575305f8",
+      "file_size_bytes": 842847,
+      "sha256": "8caf775f27e51c21e0cb4c9e0d6fdcf98fe6f9a9cec3c8145a3c03e104281da0",
       "duration_seconds": 39.333
     },
     "short_15s_mp4": {
       "path": "output/brand-site-tour/latest/earnalism-site-tour-short-15s.mp4",
       "exists": true,
-      "file_size_bytes": 486571,
-      "sha256": "d02ced942e963182052e0c0f203610955832309ae89622ed099f2f03f5a1f285",
+      "file_size_bytes": 506844,
+      "sha256": "146e7a66e6fa8097cd3cb40af2ef18ea1399c11444181b3082702b3bf183edd5",
       "duration_seconds": 15.0
     },
     "captions": {
@@ -140,12 +140,12 @@
     "review_report": {
       "path": "output/brand-site-tour/latest/earnalism-site-tour-review-report.md",
       "exists": true,
-      "file_size_bytes": 2970,
-      "sha256": "fea2c73f3579d5a0ee64360b577ad3b7e9631c2b441f218da11e3b73246a1efa",
+      "file_size_bytes": 2942,
+      "sha256": "360cb6ff157c50388773fb1d92ad9f94d2f008c273d253e2df27bb0c826a672d",
       "duration_seconds": null
     }
   },
-  "overlay_status": "OPERATOR_REQUIRED_OVERLAY_EXPORT",
+  "overlay_status": "PASS",
   "caption_status": "MUXED_IN_MASTER_MP4",
   "caption_count": 9,
   "expected_caption_count": 9,
@@ -154,15 +154,16 @@
     "ffmpeg_available": true,
     "ffprobe_available": true,
     "overlay_font": "/System/Library/Fonts/Supplemental/Georgia.ttf",
-    "overlay_status": "OPERATOR_REQUIRED_OVERLAY_EXPORT",
+    "overlay_status": "PASS",
     "master_webm": "PASS",
     "master_mp4": "PASS",
     "vertical_9x16_mp4": "PASS",
     "square_1x1_mp4": "PASS",
     "short_15s_mp4": "PASS",
-    "edited_master_video_exists": false,
+    "edited_master_video_exists": true,
     "caption_status": "MUXED_IN_MASTER_MP4",
-    "master_webm_fallback": "overlay export failed; generated non-overlay concat",
+    "overlay_strategy": "png_overlay_burn_in",
+    "overlay_image_count": 9,
     "caption_count": 9,
     "expected_caption_count": 9,
     "caption_mismatch_blocker": false
