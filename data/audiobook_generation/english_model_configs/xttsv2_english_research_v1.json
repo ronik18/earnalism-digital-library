@@ -1,0 +1,12 @@
+{
+  "config_id": "xttsv2_english_research_v1",
+  "model_id": "xtts-v2",
+  "voice_profile_id": "english-gothic-premium-v1",
+  "mode": "research_only",
+  "license_status": "license_review_required",
+  "reference_voice_policy": "approved_style_voice_required_no_real_person_imitation",
+  "output_policy": "internal_review_only_no_production_use",
+  "public_audio_url": "",
+  "paid_provider_calls": 0
+}
+

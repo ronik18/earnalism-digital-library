@@ -1,0 +1,15 @@
+{
+  "model_id": "dia",
+  "model_name": "Dia",
+  "source_url": "https://github.com/nari-labs/dia",
+  "license_text_summary": "License/model-card terms must be verified by the operator before production or commercial use.",
+  "model_weights_license": "VERIFY_MODEL_CARD",
+  "code_license": "VERIFY_REPOSITORY_LICENSE",
+  "dataset_caveat": "Dialogue/nonverbal-tag dataset terms require review before any public use.",
+  "commercial_allowed": null,
+  "human_license_review_approved": false,
+  "verified_at": "2026-06-21",
+  "verified_by": "operator_required",
+  "blocking_reason": "Dia remains a dramatic-dialogue benchmark only until license and consistency review pass."
+}
+

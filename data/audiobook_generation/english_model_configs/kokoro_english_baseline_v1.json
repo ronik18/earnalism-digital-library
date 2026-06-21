@@ -1,0 +1,12 @@
+{
+  "config_id": "kokoro_english_baseline_v1",
+  "model_id": "kokoro-82m",
+  "voice_profile_id": "english-gothic-premium-v1",
+  "mode": "fast_local_baseline",
+  "pace": "clear",
+  "style": "neutral-literary",
+  "output_policy": "internal_review_only",
+  "public_audio_url": "",
+  "paid_provider_calls": 0
+}
+

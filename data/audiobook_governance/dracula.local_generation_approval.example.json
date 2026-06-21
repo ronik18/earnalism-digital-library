@@ -1,0 +1,14 @@
+{
+  "approved": false,
+  "scope": "LOCAL_INTERNAL_REVIEW_ONLY",
+  "book_slug": "dracula",
+  "allowed_models": [],
+  "max_chunks": 0,
+  "no_public_release": true,
+  "no_upload": true,
+  "owner_signature_required": true,
+  "owner_signature": "",
+  "expires_at": "",
+  "notes": "Copy to dracula.local_generation_approval.json only after explicit owner approval. This example is intentionally not approved."
+}
+

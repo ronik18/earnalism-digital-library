@@ -1,0 +1,13 @@
+{
+  "config_id": "chatterbox_english_gothic_v1",
+  "model_id": "chatterbox-tts",
+  "voice_profile_id": "english-gothic-premium-v1",
+  "mode": "internal_benchmark",
+  "emotion_exaggeration": 0.42,
+  "pace": "measured",
+  "reference_voice_policy": "approved_style_voice_required",
+  "output_policy": "internal_review_only",
+  "public_audio_url": "",
+  "paid_provider_calls": 0
+}
+

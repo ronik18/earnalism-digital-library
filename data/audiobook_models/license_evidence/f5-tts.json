@@ -1,0 +1,15 @@
+{
+  "model_id": "f5-tts",
+  "model_name": "F5-TTS",
+  "source_url": "https://github.com/SWivid/F5-TTS",
+  "license_text_summary": "Code may be MIT, but commonly referenced pretrained weights/demos require non-commercial license review.",
+  "model_weights_license": "CC-BY-NC_REPORTED_OPERATOR_VERIFY",
+  "code_license": "MIT_REPORTED_OPERATOR_VERIFY",
+  "dataset_caveat": "Pretrained weights and voice/data provenance are not approved for Earnalism production use.",
+  "commercial_allowed": false,
+  "human_license_review_approved": false,
+  "verified_at": "2026-06-21",
+  "verified_by": "operator_required",
+  "blocking_reason": "Research-only until commercial-safe weights and legal review are complete."
+}
+

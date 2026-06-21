@@ -1,0 +1,97 @@
+{
+  "book_slug": "dracula",
+  "purpose": "Internal English audiobook model bake-off for Dracula only.",
+  "public_audio_enabled": false,
+  "models": [
+    {
+      "model_id": "chatterbox-tts",
+      "display_name": "Chatterbox TTS",
+      "benchmark_status": "PRIMARY_BENCHMARK",
+      "license_name": "MIT",
+      "commercial_allowed": true,
+      "requires_license_review": false,
+      "expected_strengths": [
+        "Expressive English narration",
+        "Emotion and exaggeration controls",
+        "Potential fit for restrained Gothic narration"
+      ],
+      "known_risks": [
+        "Approved reference/style voice required",
+        "Human review required to avoid overacting"
+      ],
+      "production_release_allowed": false,
+      "release_gate": "INTERNAL_REVIEW_ONLY"
+    },
+    {
+      "model_id": "dia",
+      "display_name": "Dia",
+      "benchmark_status": "DRAMATIC_DIALOGUE_BENCHMARK",
+      "license_name": "VERIFY_MODEL_CARD",
+      "commercial_allowed": null,
+      "requires_license_review": true,
+      "expected_strengths": [
+        "Dialogue and dramatic pacing benchmark",
+        "Nonverbal tag experimentation"
+      ],
+      "known_risks": [
+        "Nonverbal tags can become distracting",
+        "License review required before production"
+      ],
+      "production_release_allowed": false,
+      "release_gate": "LICENSE_REVIEW_REQUIRED"
+    },
+    {
+      "model_id": "kokoro-82m",
+      "display_name": "Kokoro 82M",
+      "benchmark_status": "FAST_BASELINE",
+      "license_name": "Apache-licensed weights",
+      "commercial_allowed": true,
+      "requires_license_review": false,
+      "expected_strengths": [
+        "Lightweight local benchmark",
+        "Fast iteration baseline"
+      ],
+      "known_risks": [
+        "May not be expressive enough for premium Gothic narration"
+      ],
+      "production_release_allowed": false,
+      "release_gate": "INTERNAL_REVIEW_ONLY"
+    },
+    {
+      "model_id": "f5-tts",
+      "display_name": "F5-TTS",
+      "benchmark_status": "RESEARCH_ONLY_LICENSE_CHECK_REQUIRED",
+      "license_name": "Code MIT; pretrained weights reported as CC-BY-NC",
+      "commercial_allowed": false,
+      "requires_license_review": true,
+      "expected_strengths": [
+        "Research comparison for voice-cloning quality"
+      ],
+      "known_risks": [
+        "Pretrained weights are not commercially approved",
+        "No public Earnalism use without legal review"
+      ],
+      "production_release_allowed": false,
+      "release_gate": "RESEARCH_ONLY"
+    },
+    {
+      "model_id": "xtts-v2",
+      "display_name": "XTTS-v2",
+      "benchmark_status": "RESEARCH_ONLY_LICENSE_CHECK_REQUIRED",
+      "license_name": "LICENSE_REVIEW_REQUIRED",
+      "commercial_allowed": false,
+      "requires_license_review": true,
+      "expected_strengths": [
+        "English voice-cloning research baseline"
+      ],
+      "known_risks": [
+        "License review required",
+        "Reference voice consent required",
+        "Real-person or celebrity imitation is prohibited"
+      ],
+      "production_release_allowed": false,
+      "release_gate": "RESEARCH_ONLY"
+    }
+  ]
+}
+

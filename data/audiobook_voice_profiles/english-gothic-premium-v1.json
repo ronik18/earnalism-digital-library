@@ -1,0 +1,25 @@
+{
+  "voice_profile_id": "english-gothic-premium-v1",
+  "language": "en",
+  "book_slug": "dracula",
+  "public_release_status": "INTERNAL_REVIEW_ONLY",
+  "voice_identity": "Refined female literary narrator: warm, intelligent, calm, expressive, punctuation-aware, emotionally restrained.",
+  "tone": {
+    "warmth": 0.72,
+    "clarity": 0.86,
+    "gothic_shadow": 0.58,
+    "emotional_restraint": 0.88,
+    "exaggeration_cap": 0.5
+  },
+  "style_rules": [
+    "Keep Dracula Gothic but premium, never campy.",
+    "Dialogue may be distinguished, but character voices must remain subtle.",
+    "Do not imitate a real person, celebrity, or protected performer.",
+    "Use only approved reference/style voice materials.",
+    "No public audio may be generated or linked from this profile."
+  ],
+  "approved_reference_voice_required": true,
+  "real_person_or_celebrity_imitation_allowed": false,
+  "audiobook_public_enabled": false
+}
+
