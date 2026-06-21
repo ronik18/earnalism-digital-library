@@ -169,8 +169,11 @@ export default function Account() {
             <p className="text-charcoal-soft text-sm font-light mt-5 leading-relaxed">
               Reading is billed in 30-second pulses only while a chapter is open, visible, and active. Hidden tabs, sleeping devices, and long idle gaps are not charged.
             </p>
+            <p className="mt-3 text-xs leading-relaxed text-charcoal-soft/80" data-testid="account-wallet-explainer">
+              Use this wallet to continue Dracula after the free preview. Future titles remain locked until their own approval gates pass.
+            </p>
             <Link to="/pricing" className="inline-flex items-center gap-2 text-[0.72rem] tracking-[0.22em] uppercase text-burgundy mt-6 hover:opacity-70" data-testid="account-buy-time">
-              Buy reading time <ArrowUpRight size={13} strokeWidth={1.5} />
+              Add reading time <ArrowUpRight size={13} strokeWidth={1.5} />
             </Link>
           </div>
 
@@ -179,10 +182,10 @@ export default function Account() {
               <BookOpen size={13} strokeWidth={1.5} /> Continue reading
             </div>
             <p className="font-serif-display text-xl text-charcoal mt-4 leading-snug">
-              Visit the library and choose a title — your time begins only when the words do.
+              Continue Dracula from the live shelf. Your time begins only when the words do.
             </p>
             <div className="mt-auto pt-6">
-              <Link to="/library" className="btn-primary w-full sm:w-auto" data-testid="account-go-library">Open the Library</Link>
+              <Link to="/library" className="btn-primary w-full sm:w-auto" data-testid="account-go-library">Open Dracula Shelf</Link>
             </div>
           </div>
         </div>

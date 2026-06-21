@@ -223,9 +223,20 @@ export default function BookDetail() {
             {hasFreePreview && (
               <Link to={readerHref} className="btn-secondary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: book.slug, cta: "book_detail_preview" })}>Read Chapter 1 Free</Link>
             )}
-            <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: book.slug, cta: "book_detail_continue" })}>Continue Reading</Link>
+            <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: book.slug, cta: "book_detail_continue" })}>Continue Dracula</Link>
             <Link to={passHref} className="btn-link justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: book.slug, cta: "book_detail_pass" })}>Get 7-Day Reading Pass</Link>
           </div>
+
+          {isDracula && (
+            <div className="mt-8 rounded-lg border border-brand-soft bg-white/55 p-5 sm:p-6" data-testid="dracula-reading-model-note">
+              <div className="overline mb-3">Before you continue</div>
+              <div className="grid gap-4 text-sm leading-relaxed text-charcoal-soft sm:grid-cols-3">
+                <p><strong className="text-burgundy">Preview:</strong> Chapter 1 opens free so you can feel the room first.</p>
+                <p><strong className="text-burgundy">Reading pass:</strong> Later chapters use reading time from your wallet, not a subscription.</p>
+                <p><strong className="text-burgundy">Audio:</strong> Dracula audio is not available yet and no listening CTA is shown.</p>
+              </div>
+            </div>
+          )}
 
           <div className="mt-8" data-testid="book-share">
             <ShareButtons title={book.title} variant="product" testIdPrefix="book-share" />
@@ -308,7 +319,7 @@ export default function BookDetail() {
               <div className="italic-eyebrow">Preview, then continue</div>
             <h2>Read Chapter 1 free. Add reading time only when Dracula has earned your next hour.</h2>
             <p>
-              This controlled launch includes the Dracula core reader only. Audio, study guide, visual edition, ads, email, and social campaigns are not live in this release.
+              This controlled launch includes the Dracula core reader only. Reading time is credited to your wallet after payment confirmation and is spent only while you read. Audio, study guide, visual edition, ads, email, and social campaigns are not live in this release.
             </p>
             <div className="preview-payment-shell__proof">
               <span><Sparkles size={14} strokeWidth={1.5} /> No subscription</span>
