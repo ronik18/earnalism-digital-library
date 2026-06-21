@@ -1,0 +1,16 @@
+{
+  "config_id": "svara_bengali_gothic_v1",
+  "model_id": "svara-tts-v1",
+  "language_code": "bn",
+  "scope": "INTERNAL_REVIEW_ONLY",
+  "style_tags_candidate": ["<warmly>", "<sad>", "<afraid>", "<whispering>", "<angry>", "<softly>"],
+  "style_tags_enabled": false,
+  "style_tags_enablement_rule": "Enable only after model documentation confirms support.",
+  "emotion_intensity_max": 0.55,
+  "emotion_policy": "Sparse emotion only; no fake laughter or sobbing unless text explicitly supports it.",
+  "speaking_rate": 0.9,
+  "no_public_release": true,
+  "automatic_upload": false,
+  "listen_now": false,
+  "full_audiobook": false
+}

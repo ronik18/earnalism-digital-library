@@ -1,0 +1,13 @@
+{
+  "model_id": "mahatts-v2",
+  "source_url": "https://github.com/dubverse-ai/MahaTTS",
+  "license_text_summary": "Commercial readiness is plausible only after exact code, model-card, and weights terms are manually verified.",
+  "model_weights_license": "APACHE_OR_VERIFY_MODEL_CARD",
+  "code_license": "APACHE_OR_VERIFY_REPOSITORY",
+  "dataset_caveat": "Dataset and voice provenance must be checked before Earnalism production use.",
+  "commercial_allowed": true,
+  "human_license_review_approved": false,
+  "verified_at": "2026-06-21",
+  "verified_by": "operator_required"
+}
+

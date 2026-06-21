@@ -1,0 +1,9 @@
+{
+  "book_slug": "kshudhita-pashan",
+  "scope": "INTERNAL_REVIEW_ONLY",
+  "source_status": "OPERATOR_REQUIRED",
+  "blocking_reason": "Approved Kshudhita Pashan full source text is not committed; official bake-off chunks cannot be generated.",
+  "chunk_count": 0,
+  "chunks": [],
+  "public_audio_urls_created": false
+}

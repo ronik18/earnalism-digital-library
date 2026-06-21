@@ -1,0 +1,27 @@
+{
+  "book_slug": "kshudhita-pashan",
+  "scope": "INTERNAL_REVIEW_ONLY",
+  "notes": [
+    {
+      "term": "ক্ষুধিত পাষাণ",
+      "pronunciation_hint": "kshudhit pashan; keep the conjunct in ক্ষুধিত clear but not over-enunciated",
+      "category": "title"
+    },
+    {
+      "term": "রবীন্দ্রনাথ ঠাকুর",
+      "pronunciation_hint": "Rabindranath Thakur; Bengali pronunciation, not Anglicized Tagore unless English context requires it",
+      "category": "author"
+    },
+    {
+      "term": "আরাবল্লী",
+      "pronunciation_hint": "Aravalli; gently stress the middle syllable",
+      "category": "place"
+    },
+    {
+      "term": "সেকেন্দ্রা",
+      "pronunciation_hint": "Sekendra; preserve Tagore-era spelling and rhythm",
+      "category": "archaic_or_literary"
+    }
+  ],
+  "normalization_policy": "Keep original and normalized text side-by-side; do not rewrite literary diction destructively."
+}

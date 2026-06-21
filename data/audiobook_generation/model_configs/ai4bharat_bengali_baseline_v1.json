@@ -1,0 +1,13 @@
+{
+  "config_id": "ai4bharat_bengali_baseline_v1",
+  "model_id": "ai4bharat-indic-tts",
+  "language_code": "bn",
+  "scope": "INTERNAL_REVIEW_ONLY",
+  "tone": "pronunciation_baseline",
+  "emotion": "minimal",
+  "compare_for": ["pronunciation_accuracy", "danda_pause_timing", "conjunct_clarity"],
+  "no_public_release": true,
+  "automatic_upload": false,
+  "listen_now": false,
+  "full_audiobook": false
+}
