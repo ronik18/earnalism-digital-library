@@ -21,9 +21,17 @@ def valid_source() -> dict:
         "source_url": "https://www.gutenberg.org/ebooks/345",
         "source_name": "Project Gutenberg eBook #345",
         "source_license": "Project Gutenberg License",
+        "source_license_url": "https://www.gutenberg.org/policy/license.html",
+        "commercial_use_status": "conditional_allowed_subject_to_project_gutenberg_license_and_trademark_terms",
         "source_hash": "a" * 64,
         "content_hash": "b" * 64,
         "provenance_hash": "c" * 64,
+        "attribution_requirement": "simple_public_source_note_allowed; license/source evidence internal",
+        "derivative_audiobook_rights_status": "not approved; separate approval required; AUDIO_NOT_REQUIRED for core reading",
+        "public_metadata_allowed": "yes",
+        "public_cta_allowed": "yes",
+        "owner_approval_status": "approved",
+        "go_hold_decision": "GO_DRACULA_CORE_READING_ONLY",
         "rights_tier": "A",
         "verification_status": "approved",
         "publication_region": "global",
@@ -85,6 +93,15 @@ def setup_context(tmp_path: Path, monkeypatch, *, rights_tier: str = "A", audio_
                 "- Work Slug: dracula",
                 f"- Rights Tier: {rights_tier}",
                 "- Verification Status: approved",
+                "- Source URL: https://www.gutenberg.org/ebooks/345",
+                "- Source License: Project Gutenberg License",
+                "- Source License URL: https://www.gutenberg.org/policy/license.html",
+                "- Commercial Use Status: conditional_allowed_subject_to_project_gutenberg_license_and_trademark_terms",
+                "- Derivative Audiobook Rights Status: not approved; separate approval required; AUDIO_NOT_REQUIRED for core reading",
+                "- Public Metadata Allowed: yes",
+                "- Public CTA Allowed: yes",
+                "- Owner Approval Status: approved",
+                "- GO/HOLD Decision: GO_DRACULA_CORE_READING_ONLY",
                 "- QA Status: QA_PASSED",
                 "- Publication Cap: Dracula controlled-publication candidate only; public_publish_actions=0.",
                 "- Production Parity Status: PASS",
@@ -139,6 +156,33 @@ def test_full_audiobook_status_blocks_core_reading_publication(monkeypatch, tmp_
     issues = publish.validate_context(context)
 
     assert "Gate audio_status must be AUDIO_NOT_REQUIRED for this core reading activation." in issues
+
+
+def test_missing_commercial_use_status_blocks_publication(monkeypatch, tmp_path):
+    context = setup_context(tmp_path, monkeypatch)
+    context.approved_item["commercial_use_status"] = "UNKNOWN_COMMERCIAL_USE"
+
+    issues = publish.validate_context(context)
+
+    assert "Approved item commercial_use_status must explicitly allow or conditionally allow commercial use." in issues
+
+
+def test_public_audio_rights_claim_blocks_publication(monkeypatch, tmp_path):
+    context = setup_context(tmp_path, monkeypatch)
+    context.approved_item["derivative_audiobook_rights_status"] = "approved for public audiobook"
+
+    issues = publish.validate_context(context)
+
+    assert "Approved item derivative_audiobook_rights_status must block audio or require separate approval." in issues
+
+
+def test_non_dracula_go_hold_decision_blocks_publication(monkeypatch, tmp_path):
+    context = setup_context(tmp_path, monkeypatch)
+    context.approved_item["go_hold_decision"] = "GO_FOR_GLOBAL_BATCH"
+
+    issues = publish.validate_context(context)
+
+    assert "Approved item go_hold_decision must be GO_DRACULA_CORE_READING_ONLY." in issues
 
 
 def test_controlled_publication_update_publishes_reading_and_clears_audio():

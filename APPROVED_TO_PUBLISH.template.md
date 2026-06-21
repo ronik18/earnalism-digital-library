@@ -11,9 +11,17 @@ Do not rename this file to `APPROVED_TO_PUBLISH.md` until at least one item has 
 - source_url
 - source_name
 - source_license
+- source_license_url
+- commercial_use_status: allowed, approved, permitted, conditional, or not required
 - source_hash
 - content_hash
 - provenance_hash
+- attribution_requirement
+- derivative_audiobook_rights_status: not approved, blocked, not required, or separate approval required
+- public_metadata_allowed: yes
+- public_cta_allowed: yes only for the approved Dracula core reading launch
+- owner_approval_status: approved
+- go_hold_decision: GO_DRACULA_CORE_READING_ONLY
 - rights_basis
 - qa_status: pass
 - publication_cap

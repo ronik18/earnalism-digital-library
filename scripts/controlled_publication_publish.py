@@ -43,6 +43,17 @@ APPROVAL_SCOPE_REQUIRED_TEXT = [
     "Not Approved: full study guide, full visual edition, full audiobook",
     "Audiobook Status: AUDIO_NOT_REQUIRED.",
 ]
+KNOWN_PLACEHOLDERS = {
+    "",
+    "TBD",
+    "TODO",
+    "UNKNOWN",
+    "UNKNOWN_COMMERCIAL_USE",
+    "UNKNOWN_DERIVATIVE_RIGHTS",
+    "SOURCE_METADATA_REQUIRED",
+    "QA_REQUIRED",
+    "OWNER_APPROVAL_REQUIRED",
+}
 
 
 @dataclass
@@ -60,6 +71,36 @@ def utc_now() -> str:
 
 def normalize_key(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "_", value.strip().lower()).strip("_")
+
+
+def value_present(value: Any) -> bool:
+    return str(value or "").strip().upper() not in KNOWN_PLACEHOLDERS
+
+
+def http_url_present(value: Any) -> bool:
+    if not value_present(value):
+        return False
+    parsed = urlparse(str(value).strip())
+    return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+
+
+def affirmative(value: Any) -> bool:
+    return str(value or "").strip().lower() in {"yes", "true", "allowed", "approved"}
+
+
+def license_is_ambiguous(value: Any) -> bool:
+    text = str(value or "").strip().lower()
+    return text in {"", "unknown", "unclear", "ambiguous", "source_metadata_required", "tbd", "todo"}
+
+
+def commercial_use_is_known(value: Any) -> bool:
+    text = str(value or "").strip().lower()
+    return any(token in text for token in ("allowed", "approved", "permitted", "conditional", "not required"))
+
+
+def derivative_audio_status_is_safe(value: Any) -> bool:
+    text = str(value or "").strip().lower()
+    return any(token in text for token in ("not approved", "blocked", "audio_not_required", "not required", "separate approval required"))
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -90,7 +131,7 @@ def parse_approved_items(text: str) -> list[dict[str, str]]:
                 items.append(current)
             current = {"work_title": heading.group(1).strip()}
             continue
-        field = re.match(r"^(?:[-*]\s*)?([A-Za-z][A-Za-z0-9 _-]+)\s*:\s*(.+)$", line)
+        field = re.match(r"^(?:[-*]\s*)?([A-Za-z][A-Za-z0-9 _/-]+)\s*:\s*(.+)$", line)
         if field:
             if not current:
                 current = {}
@@ -129,8 +170,26 @@ def validate_approval_scope(context: ValidationContext) -> list[str]:
         issues.append("Approved item must be Tier A.")
     if str(item.get("verification_status", "")).lower() != "approved":
         issues.append("Approved item verification_status must be approved.")
+    if not http_url_present(item.get("source_url")):
+        issues.append("Approved item source_url must be a verified http(s) URL.")
+    if license_is_ambiguous(item.get("source_license")):
+        issues.append("Approved item source_license must be explicit and non-ambiguous.")
+    if not http_url_present(item.get("source_license_url")):
+        issues.append("Approved item source_license_url must be a verified http(s) URL.")
+    if not commercial_use_is_known(item.get("commercial_use_status")):
+        issues.append("Approved item commercial_use_status must explicitly allow or conditionally allow commercial use.")
     if str(item.get("qa_status", "")).upper() != "QA_PASSED":
         issues.append("Approved item qa_status must be QA_PASSED.")
+    if not derivative_audio_status_is_safe(item.get("derivative_audiobook_rights_status")):
+        issues.append("Approved item derivative_audiobook_rights_status must block audio or require separate approval.")
+    if not affirmative(item.get("public_metadata_allowed")):
+        issues.append("Approved item public_metadata_allowed must be yes.")
+    if not affirmative(item.get("public_cta_allowed")):
+        issues.append("Approved item public_cta_allowed must be yes for this Dracula-only activation.")
+    if not affirmative(item.get("owner_approval_status")):
+        issues.append("Approved item owner_approval_status must be approved.")
+    if not str(item.get("go_hold_decision", "")).strip().upper().startswith("GO_DRACULA_CORE_READING_ONLY"):
+        issues.append("Approved item go_hold_decision must be GO_DRACULA_CORE_READING_ONLY.")
     if str(item.get("production_parity_status", "")).upper() != "PASS":
         issues.append("Production parity status must be PASS.")
     if str(item.get("payment_smoke_status", "")).upper() not in PAYMENT_PASS_STATUSES:
