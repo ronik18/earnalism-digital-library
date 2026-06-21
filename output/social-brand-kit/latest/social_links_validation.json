@@ -1,0 +1,74 @@
+{
+  "generated_at": "2026-06-21T04:35:08.233040+00:00",
+  "status": "OPERATOR_REQUIRED",
+  "valid_count": 0,
+  "invalid_count": 0,
+  "missing_count": 7,
+  "network_calls": false,
+  "platform_api_calls": false,
+  "checks": [
+    {
+      "env_key": "REACT_APP_INSTAGRAM_URL",
+      "platform": "Instagram",
+      "url": "",
+      "status": "MISSING_OPERATOR_REQUIRED",
+      "issues": [
+        "URL is empty or not configured."
+      ]
+    },
+    {
+      "env_key": "REACT_APP_YOUTUBE_URL",
+      "platform": "YouTube",
+      "url": "",
+      "status": "MISSING_OPERATOR_REQUIRED",
+      "issues": [
+        "URL is empty or not configured."
+      ]
+    },
+    {
+      "env_key": "REACT_APP_FACEBOOK_URL",
+      "platform": "Facebook",
+      "url": "",
+      "status": "MISSING_OPERATOR_REQUIRED",
+      "issues": [
+        "URL is empty or not configured."
+      ]
+    },
+    {
+      "env_key": "REACT_APP_LINKEDIN_URL",
+      "platform": "LinkedIn",
+      "url": "",
+      "status": "MISSING_OPERATOR_REQUIRED",
+      "issues": [
+        "URL is empty or not configured."
+      ]
+    },
+    {
+      "env_key": "REACT_APP_X_URL",
+      "platform": "X",
+      "url": "",
+      "status": "MISSING_OPERATOR_REQUIRED",
+      "issues": [
+        "URL is empty or not configured."
+      ]
+    },
+    {
+      "env_key": "REACT_APP_WHATSAPP_CHANNEL_URL",
+      "platform": "WhatsApp Channel",
+      "url": "",
+      "status": "MISSING_OPERATOR_REQUIRED",
+      "issues": [
+        "URL is empty or not configured."
+      ]
+    },
+    {
+      "env_key": "REACT_APP_TELEGRAM_CHANNEL_URL",
+      "platform": "Telegram",
+      "url": "",
+      "status": "MISSING_OPERATOR_REQUIRED",
+      "issues": [
+        "URL is empty or not configured."
+      ]
+    }
+  ]
+}

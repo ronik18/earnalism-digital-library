@@ -48,12 +48,17 @@ final_package/
 outputs/
 code_companion/
 source/
+!assets/social_brand/source/
+!assets/social_brand/source/**
 output/**
 !output/
 !output/release-canary/
 !output/release-canary/latest/
 !output/release-canary/latest/summary.json
 !output/release-canary/latest/summary.md
+!output/social-brand-kit/
+!output/social-brand-kit/latest/
+!output/social-brand-kit/latest/**
 !output/call_of_the_wild/
 !output/call_of_the_wild/go_live_qa_report.md
 output/book_import/
