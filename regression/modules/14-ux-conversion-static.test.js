@@ -105,6 +105,8 @@ describe("UX conversion static signals", () => {
   const audiobookGateReport = read("AUDIOBOOK_ACCESSIBILITY_GATE_REPORT.md");
   const audiobookReleaseGate = read("scripts/audiobook_accessibility_release_gate.py");
   const controlledPublicationPrecheck = read("scripts/controlled_publication_precheck.py");
+  const internalAudiobookPrototype = read("frontend/src/components/Internal/InternalAudiobookPlayerPrototype.jsx");
+  const accessibleAudiobookPrototypeReport = read("PREMIUM_ACCESSIBLE_AUDIOBOOK_PLAYER_REPORT.md");
   const renderedPricingSources = [backend, pricing, microStory, readerUpsell, reader].join("\n");
   const productTruthLedger = read("PRODUCT_TRUTH_LEDGER.md");
   const alwaysVisibleLaunchCopy = [
@@ -244,6 +246,55 @@ describe("UX conversion static signals", () => {
     expect(audiobookGateReport).toContain("ROLLBACK_PLAN_MISSING");
     expect(audiobookGateReport).toContain("Not safe for public audiobook launch");
     expect(audiobookGateReport).not.toContain("GO_FOR_PUBLIC_AUDIOBOOK_RELEASE");
+  });
+
+  test("internal audiobook player prototype is feature-flagged and not publicly routed", () => {
+    expect(internalAudiobookPrototype).toContain("REACT_APP_ENABLE_INTERNAL_AUDIOBOOK_PLAYER_PROTOTYPE");
+    expect(internalAudiobookPrototype).toContain('env?.NODE_ENV !== "production"');
+    expect(internalAudiobookPrototype).toContain("InternalAudiobookPlayerPrototype");
+    expect(internalAudiobookPrototype).toContain("internal-audiobook-player-prototype");
+    expect(internalAudiobookPrototype).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
+    expect(app).not.toContain("InternalAudiobookPlayerPrototype");
+    expect(app).not.toContain("audiobook-player-prototype");
+    expect(staticSnapshotGenerator).not.toContain("audiobook-player-prototype");
+    expect(frontendPackageJson).toContain('"postbuild": "node scripts/generate-static-seo-snapshots.mjs"');
+  });
+
+  test("internal audiobook player prototype uses safe mock metadata and no audio asset", () => {
+    expect(internalAudiobookPrototype).toContain("Chapter 1 Preview");
+    expect(internalAudiobookPrototype).toContain("Chapter 2 Placeholder");
+    expect(internalAudiobookPrototype).toContain("Safe mock metadata only");
+    expect(internalAudiobookPrototype).not.toMatch(/<audio\b/i);
+    expect(internalAudiobookPrototype).not.toMatch(/\bsrc\s*=/i);
+    expect(internalAudiobookPrototype).not.toMatch(/https?:\/\//i);
+    expect(internalAudiobookPrototype).not.toMatch(/\/audio\//i);
+    expect(internalAudiobookPrototype).not.toMatch(/cloudinary|backblaze|b2|provider audio path/i);
+    expect(internalAudiobookPrototype).not.toMatch(/\bListen Now\b/i);
+  });
+
+  test("internal audiobook player prototype has nonvisual control semantics without unsupported claims", () => {
+    for (const token of [
+      "Play internal audiobook prototype",
+      "Pause internal audiobook prototype",
+      "Rewind prototype by 10 seconds",
+      "Forward prototype by 30 seconds",
+      "Prototype playback speed",
+      "Prototype sleep timer",
+      "Bookmark prototype position",
+      "role=\"progressbar\"",
+      "aria-live=\"polite\"",
+      "role=\"alert\"",
+      "aria-current",
+      "aria-expanded",
+    ]) {
+      expect(internalAudiobookPrototype).toContain(token);
+    }
+    expect(internalAudiobookPrototype).not.toMatch(/\bWCAG compliant\b/i);
+    expect(internalAudiobookPrototype).not.toMatch(/\bblind[- ]user tested\b/i);
+    expect(internalAudiobookPrototype).not.toMatch(/\bfully accessible audiobook\b/i);
+    expect(accessibleAudiobookPrototypeReport).toContain("Internal-only");
+    expect(accessibleAudiobookPrototypeReport).toContain("No public route was added");
+    expect(accessibleAudiobookPrototypeReport).toContain("No real audio URL");
   });
 
   test("first-batch rights evidence keeps every non-Dracula item held", () => {
