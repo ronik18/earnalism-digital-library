@@ -100,6 +100,10 @@ describe("UX conversion static signals", () => {
   const siteTourIndex = read("BRAND_SITE_TOUR_VIDEO_INDEX.md");
   const siteTourIndexJson = JSON.parse(read("BRAND_SITE_TOUR_VIDEO_INDEX.json"));
   const siteTourHumanReview = read("BRAND_SITE_TOUR_HUMAN_REVIEW_FORM.md");
+  const audiobookReleaseCriteria = read("AUDIOBOOK_ACCESSIBILITY_10_10_RELEASE_CRITERIA.md");
+  const accessibleAudiobookJourney = read("ACCESSIBLE_AUDIOBOOK_USER_JOURNEY.md");
+  const audiobookGateReport = read("AUDIOBOOK_ACCESSIBILITY_GATE_REPORT.md");
+  const audiobookReleaseGate = read("scripts/audiobook_accessibility_release_gate.py");
   const renderedPricingSources = [backend, pricing, microStory, readerUpsell, reader].join("\n");
   const productTruthLedger = read("PRODUCT_TRUTH_LEDGER.md");
   const alwaysVisibleLaunchCopy = [
@@ -172,6 +176,68 @@ describe("UX conversion static signals", () => {
     expect(productTruthLedger).toContain("fully accessible audiobook platform");
     expect(productTruthLedger).toContain("Product-wide launch readiness: 8.0/10 HOLD");
     expect(productTruthLedger).toContain("Dracula controlled reading candidate: 9.9/10");
+  });
+
+  test("audiobook accessibility criteria stay internal, blocked, and evidence-led", () => {
+    expect(audiobookReleaseCriteria).toContain("Current status is `PUBLIC_AUDIO_RELEASE_BLOCKED`");
+    expect(audiobookReleaseCriteria).toContain("This is an internal release standard");
+    expect(audiobookReleaseCriteria).toContain("not a public claim of WCAG compliance");
+    expect(audiobookReleaseCriteria).toContain("blind-user testing");
+    expect(audiobookReleaseCriteria).toContain("fully accessible audiobook");
+    expect(audiobookReleaseCriteria).toContain("Derivative audiobook rights");
+    expect(audiobookReleaseCriteria).toContain("model/provider license allows commercial audiobook use");
+    expect(audiobookReleaseCriteria).toContain("Text/audio sync");
+    expect(audiobookReleaseCriteria).toContain("250 ms");
+    expect(audiobookReleaseCriteria).toContain("Bengali human listening QA score at or above 9.5");
+    expect(audiobookReleaseCriteria).toContain("English human listening QA score at or above 9.5");
+    expect(audiobookReleaseCriteria).toContain("No public Kshudhita Pashan or Bengali audiobook release");
+    expect(audiobookReleaseCriteria).toContain("No public Listen Now CTA");
+  });
+
+  test("accessible audiobook journey does not enable public audio or unsupported claims", () => {
+    expect(accessibleAudiobookJourney).toContain("This is an internal journey map");
+    expect(accessibleAudiobookJourney).toContain("Dracula audio is disabled");
+    expect(accessibleAudiobookJourney).toContain("Kshudhita Pashan remains pipeline-only");
+    expect(accessibleAudiobookJourney).toContain("Any sample listening is internal-only");
+    expect(accessibleAudiobookJourney).toContain("No Listen Now CTA may appear for unapproved titles");
+    expect(accessibleAudiobookJourney).toContain("all controls are buttons or links with useful accessible names");
+    expect(accessibleAudiobookJourney).toContain("Manual NVDA, VoiceOver, and TalkBack testing is still required");
+  });
+
+  test("audiobook release gate cannot pass without rights, model license, QA, player evidence, owner approval, and rollback", () => {
+    expect(packageJson).toContain('"audiobook:release-gate": "python3 scripts/audiobook_accessibility_release_gate.py"');
+    expect(audiobookReleaseGate).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
+    expect(audiobookReleaseGate).toContain("PASS_EXPECTED_BLOCKED");
+    expect(audiobookReleaseGate).toContain("FAIL_PUBLIC_AUDIO_LEAK");
+    expect(audiobookReleaseGate).toContain("DERIVATIVE_AUDIOBOOK_RIGHTS_MISSING");
+    expect(audiobookReleaseGate).toContain("MODEL_COMMERCIAL_USE_PERMISSION_MISSING");
+    expect(audiobookReleaseGate).toContain("MODEL_LICENSE_EVIDENCE_MISSING");
+    expect(audiobookReleaseGate).toContain("VOICE_NARRATOR_RIGHTS_MISSING");
+    expect(audiobookReleaseGate).toContain("VOICE_CLONING_RISK_UNRESOLVED");
+    expect(audiobookReleaseGate).toContain("TRANSCRIPT_REQUIRED_MISSING");
+    expect(audiobookReleaseGate).toContain("SYNC_TOLERANCE_MISSING");
+    expect(audiobookReleaseGate).toContain("REQUIRED_PLAYER_ACCESSIBILITY_EVIDENCE");
+    expect(audiobookReleaseGate).toContain("QA_THRESHOLD = 9.5");
+    expect(audiobookReleaseGate).toContain("OWNER_APPROVAL_MISSING");
+    expect(audiobookReleaseGate).toContain("ROLLBACK_PLAN_MISSING");
+    expect(audiobookReleaseGate).toContain("public_audio_publish_allowed");
+    expect(audiobookReleaseGate).toContain("False");
+  });
+
+  test("current audiobook gate report keeps public release blocked", () => {
+    expect(audiobookGateReport).toContain("Status: `PUBLIC_AUDIO_RELEASE_BLOCKED`");
+    expect(audiobookGateReport).toContain("Command status: `PASS_EXPECTED_BLOCKED`");
+    expect(audiobookGateReport).toContain("Public audio asset count requiring quarantine/review");
+    expect(audiobookGateReport).toContain("DERIVATIVE_AUDIOBOOK_RIGHTS_MISSING");
+    expect(audiobookGateReport).toContain("MODEL_COMMERCIAL_USE_PERMISSION_MISSING");
+    expect(audiobookGateReport).toContain("MODEL_LICENSE_EVIDENCE_MISSING");
+    expect(audiobookGateReport).toContain("VOICE_NARRATOR_RIGHTS_MISSING");
+    expect(audiobookGateReport).toContain("BENGALI_QA_SCORE_MISSING");
+    expect(audiobookGateReport).toContain("ENGLISH_QA_SCORE_MISSING");
+    expect(audiobookGateReport).toContain("OWNER_APPROVAL_MISSING");
+    expect(audiobookGateReport).toContain("ROLLBACK_PLAN_MISSING");
+    expect(audiobookGateReport).toContain("Not safe for public audiobook launch");
+    expect(audiobookGateReport).not.toContain("GO_FOR_PUBLIC_AUDIOBOOK_RELEASE");
   });
 
   test("first-batch rights evidence keeps every non-Dracula item held", () => {
