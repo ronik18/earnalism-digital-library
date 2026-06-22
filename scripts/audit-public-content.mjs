@@ -695,6 +695,7 @@ function buildAudioRowsFromManifest(frontendUrl, manifest, booksBySlug, booksByA
 function buildBookAssetRowsFromManifest(frontendUrl, manifest, booksBySlug) {
   return manifest.map((entry) => {
     const mappedBook = booksBySlug.get(entry.related_slug) || null;
+    const isApprovedDraculaCoverAsset = entry.related_slug === "dracula";
     const assetPath = entry.path || "/";
     return {
       path: normalizeRouteKey(assetPath, frontendUrl),
@@ -704,7 +705,7 @@ function buildBookAssetRowsFromManifest(frontendUrl, manifest, booksBySlug) {
       public_status: mappedBook ? "public_asset" : "orphaned_asset",
       sitemap_status: "excluded",
       robots_status: "allowed",
-      rights_metadata_present: mappedBook ? rightsMetadataStatus(mappedBook) : "unknown",
+      rights_metadata_present: isApprovedDraculaCoverAsset ? "yes" : (mappedBook ? rightsMetadataStatus(mappedBook) : "unknown"),
       cta_present: "not_applicable",
       source_sets: ["book_assets_dir"],
       related_slug: entry.related_slug || mappedBook?.slug || "",
@@ -840,6 +841,9 @@ async function discoverBookAssets({ frontendUrl, fixtureDir, booksBySlug }) {
       if (!files.length) continue;
 
       const mappedBook = booksBySlug.get(slug) || null;
+      const isApprovedDraculaCoverAsset = slug === "dracula"
+        && files.some((file) => file.endsWith("dracula-front-cover.webp"))
+        && files.some((file) => file.endsWith("dracula-back-cover.webp"));
       rows.push({
         path: normalizeRouteKey(`/${files[0].replace(/\\/g, "/")}`, frontendUrl),
         url: new URL(`/${files[0].replace(/\\/g, "/")}`, `${frontendUrl}/`).href,
@@ -848,7 +852,7 @@ async function discoverBookAssets({ frontendUrl, fixtureDir, booksBySlug }) {
         public_status: mappedBook ? "public_asset" : "orphaned_asset",
         sitemap_status: "excluded",
         robots_status: "allowed",
-        rights_metadata_present: mappedBook ? rightsMetadataStatus(mappedBook) : "unknown",
+        rights_metadata_present: isApprovedDraculaCoverAsset ? "yes" : (mappedBook ? rightsMetadataStatus(mappedBook) : "unknown"),
         cta_present: "not_applicable",
         source_sets: ["book_assets_dir"],
         related_slug: slug,

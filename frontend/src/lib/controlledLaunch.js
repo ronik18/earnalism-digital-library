@@ -4,6 +4,8 @@ export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 export const DRACULA_SOURCE_NOTE = "Project Gutenberg eBook #345";
 export const DRACULA_RIGHTS_NOTE = "Approved Tier A core reading candidate";
 export const DRACULA_CHAPTER_COUNT = 27;
+export const DRACULA_COVER_IMAGE = "/assets/books/dracula/dracula-front-cover.webp";
+export const DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cover.webp";
 
 export const DRACULA_FALLBACK_BOOK = {
   slug: LIVE_APPROVED_SLUG,
@@ -16,6 +18,12 @@ export const DRACULA_FALLBACK_BOOK = {
   description:
     "Dracula is the first controlled Earnalism release: a Tier A approved core reading candidate with 27 chapters, a rights-safe source trail, and no audiobook enabled yet.",
   estimated_reading_time: "14 min",
+  cover_image_url: DRACULA_COVER_IMAGE,
+  thumbnail_url: DRACULA_COVER_IMAGE,
+  back_cover_image_url: DRACULA_BACK_COVER_IMAGE,
+  back_cover_thumbnail_url: DRACULA_BACK_COVER_IMAGE,
+  dominant_color: "#4A1C27",
+  back_cover_dominant_color: "#2A1721",
   chapters: Array.from({ length: DRACULA_CHAPTER_COUNT }, (_, index) => ({
     id: `dracula-chapter-${index + 1}`,
     title: index === 0 ? "Chapter 1" : `Chapter ${index + 1}`,
@@ -151,6 +159,12 @@ export function mergeDraculaBook(book) {
   return {
     ...DRACULA_FALLBACK_BOOK,
     ...book,
+    cover_image_url: DRACULA_COVER_IMAGE,
+    cover_url: DRACULA_COVER_IMAGE,
+    thumbnail_url: DRACULA_COVER_IMAGE,
+    back_cover_image_url: DRACULA_BACK_COVER_IMAGE,
+    back_cover_url: DRACULA_BACK_COVER_IMAGE,
+    back_cover_thumbnail_url: DRACULA_BACK_COVER_IMAGE,
     chapters: Array.isArray(book.chapters) && book.chapters.length > 0
       ? book.chapters
       : DRACULA_FALLBACK_BOOK.chapters,

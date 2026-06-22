@@ -555,12 +555,12 @@ body::before {
   font-family: 'Cormorant Garamond', 'Noto Serif Bengali', 'Georgia', serif;
   font-feature-settings: "liga", "dlig";
   font-weight: 400;
-  letter-spacing: -0.005em;
+  letter-spacing: 0;
 }
 .font-serif-light {
   font-family: 'Cormorant Garamond', 'Noto Serif Bengali', 'Georgia', serif;
   font-weight: 300;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 .italic-accent {
   font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
@@ -661,6 +661,163 @@ body::before {
   border-color: rgba(197, 160, 89, .55);
   transform: translateY(-2px);
   box-shadow: 0 18px 32px -22px rgba(74, 28, 39, .22);
+}
+
+.premium-landing-hero {
+  background:
+    radial-gradient(circle at 76% 20%, rgba(216, 185, 122, 0.28), transparent 28rem),
+    radial-gradient(circle at 12% 6%, rgba(253, 252, 248, 0.14), transparent 24rem),
+    linear-gradient(115deg, #17080d 0%, #261016 47%, #46201f 100%);
+}
+.premium-landing-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 45%, transparent 0 34%, rgba(10, 3, 5, 0.26) 74%, rgba(10, 3, 5, 0.42) 100%),
+    linear-gradient(90deg, rgba(20, 7, 10, 0.93) 0%, rgba(28, 11, 16, 0.86) 52%, rgba(74, 32, 31, 0.68) 100%),
+    repeating-linear-gradient(90deg, rgba(253, 252, 248, 0.032) 0 1px, transparent 1px 96px);
+}
+.premium-landing-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -1;
+  height: 30%;
+  pointer-events: none;
+  background: linear-gradient(to top, #f4efea 0%, rgba(244, 239, 234, 0.58) 48%, transparent 100%);
+}
+.premium-dracula-hero-card {
+  position: relative;
+  background:
+    linear-gradient(150deg, rgba(253, 252, 248, 0.12), rgba(253, 252, 248, 0.045)),
+    linear-gradient(0deg, rgba(197, 160, 89, 0.08), transparent 46%),
+    rgba(253, 252, 248, 0.05);
+}
+.premium-dracula-hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0.7rem;
+  pointer-events: none;
+  border: 1px solid rgba(216, 185, 122, 0.2);
+  border-radius: 0.55rem;
+  mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%);
+}
+.premium-dracula-cover-frame {
+  box-shadow:
+    0 25px 54px -30px rgba(0, 0, 0, 0.92),
+    0 0 0 6px rgba(253, 252, 248, 0.05),
+    0 0 50px -25px rgba(216, 185, 122, 0.95);
+}
+.premium-dracula-mobile-object {
+  position: relative;
+  width: clamp(4.35rem, 18vw, 6.6rem);
+  aspect-ratio: 2 / 3;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(253, 252, 248, 0.2);
+  border-radius: 0.42rem;
+  background: #f4efea;
+  box-shadow:
+    0 18px 34px -25px rgba(0, 0, 0, 0.95),
+    0 0 0 5px rgba(253, 252, 248, 0.04),
+    0 0 34px -24px rgba(216, 185, 122, 0.95);
+}
+.premium-dracula-mobile-object::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(216, 185, 122, 0.2);
+}
+.premium-hero-ctas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+  max-width: 38rem;
+}
+.premium-hero-ctas .btn-primary,
+.premium-hero-ctas .btn-secondary {
+  width: 100%;
+  padding-block: 0.66rem;
+  padding-inline: 1rem;
+}
+.premium-hero-ctas .btn-link {
+  justify-self: center;
+  margin-top: 0;
+  text-align: center;
+}
+.premium-launch-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.9rem;
+  max-width: 40rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: rgba(253, 252, 248, 0.84);
+}
+@media (min-width: 480px) {
+  .premium-hero-ctas {
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    align-items: center;
+  }
+  .premium-hero-ctas .premium-hero-cta-primary {
+    grid-column: span 2;
+  }
+  .premium-hero-ctas .btn-primary,
+  .premium-hero-ctas .btn-secondary {
+    width: auto;
+  }
+  .premium-launch-facts {
+    font-size: 0.64rem;
+  }
+}
+@media (min-width: 640px) {
+  .premium-hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .premium-hero-ctas .premium-hero-cta-primary {
+    grid-column: auto;
+  }
+  .premium-hero-ctas .btn-link {
+    margin-top: 0;
+  }
+  .premium-launch-facts {
+    gap: 0.5rem 1rem;
+    font-size: 0.68rem;
+  }
+}
+@media (max-width: 479px) {
+  .premium-hero-ctas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .premium-hero-ctas .premium-hero-cta-primary {
+    grid-column: span 2;
+  }
+  .premium-hero-ctas .btn-link {
+    align-items: center;
+    border: 1px solid rgba(216, 185, 122, 0.52);
+    border-radius: 999px;
+    display: inline-flex;
+    justify-content: center;
+    min-height: 2.45rem;
+    padding: 0.54rem 0.62rem;
+  }
+  .premium-launch-facts {
+    display: grid;
+    gap: 0.36rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.11em;
+  }
+  .premium-launch-facts span {
+    min-width: 0;
+  }
 }
 
 .book-cover-image {

@@ -102,10 +102,10 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(metaContent(bookHtml, "property", "og:type")).toBe("book");
     expect(metaContent(bookHtml, "property", "og:title")).toBe("Dracula by Bram Stoker | The Earnalism");
     expect(metaContent(bookHtml, "property", "og:url")).toBe(`${SITE_URL}/book/dracula`);
-    expect(metaContent(bookHtml, "property", "og:image")).toMatch(/^https:\/\/theearnalism\.com\/assets\/shelves\/gothic-fiction\.jpg/);
+    expect(metaContent(bookHtml, "property", "og:image")).toMatch(/^https:\/\/theearnalism\.com\/assets\/books\/dracula\/dracula-front-cover\.webp/);
     expect(metaContent(bookHtml, "name", "twitter:card")).toBe("summary_large_image");
     expect(metaContent(bookHtml, "name", "twitter:title")).toBe("Dracula by Bram Stoker | The Earnalism");
-    expect(metaContent(bookHtml, "name", "twitter:image")).toMatch(/^https:\/\/theearnalism\.com\/assets\/shelves\/gothic-fiction\.jpg/);
+    expect(metaContent(bookHtml, "name", "twitter:image")).toMatch(/^https:\/\/theearnalism\.com\/assets\/books\/dracula\/dracula-front-cover\.webp/);
     expect(jsonLdTypes(bookHtml)).toEqual(expect.arrayContaining(["Book", "WebPage", "BreadcrumbList"]));
   });
 
@@ -159,7 +159,7 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(homeHtml).toContain("Begin with Dracula.");
     expect(homeHtml).toContain("Dracula is the only live approved core reading release today.");
     expect(libraryHtml).toContain("Live Controlled Release: Dracula only.");
-    expect(libraryHtml).toContain("No unapproved title offers Start Reading, Read Preview, or Listen Now.");
+    expect(libraryHtml).toContain("No unapproved title offers reader, preview, or listening CTAs.");
     expect(pricingHtml).toContain("Choose your reading time. Return whenever the book calls.");
     for (const html of [homeHtml, libraryHtml, pricingHtml]) {
       expect(html).not.toMatch(/Preview every book before you pay|A quieter bookstore for readers who linger|Discover thoughtful books across/i);

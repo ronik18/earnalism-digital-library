@@ -12,6 +12,7 @@ import {
   DRACULA_RIGHTS_NOTE,
   DRACULA_SOURCE_NOTE,
   LIVE_APPROVED_SLUG,
+  mergeDraculaBook,
   readingPassUrl,
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
@@ -28,23 +29,24 @@ export default function BookDetail() {
   const bookNotFound = !loading && loadStatus === "not_found";
   const bookLoadError = !loading && loadStatus === "error";
   const shouldNoindex = bookNotFound || bookLoadError;
+  const publicBook = book?.slug === LIVE_APPROVED_SLUG ? mergeDraculaBook(book) : book;
 
   useSEO({
     title: bookNotFound
       ? "Book not found — The Earnalism Digital Library"
-      : book?.slug === LIVE_APPROVED_SLUG
+      : publicBook?.slug === LIVE_APPROVED_SLUG
         ? "Dracula by Bram Stoker | Read Chapter 1 Free on Earnalism"
-        : book ? `${book.title} — The Earnalism Digital Library` : "Book — The Earnalism Digital Library",
+        : publicBook ? `${publicBook.title} — The Earnalism Digital Library` : "Book — The Earnalism Digital Library",
     description: bookNotFound
       ? "This Earnalism book is no longer available."
-      : book?.slug === LIVE_APPROVED_SLUG
+      : publicBook?.slug === LIVE_APPROVED_SLUG
         ? "Preview Dracula by Bram Stoker on Earnalism. Read Chapter 1 free and continue the approved Tier A core reading release with flexible reading-time access."
-        : book?.short_description || book?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
-    image: book?.cover_image_url,
-    imageAlt: book?.title,
+        : publicBook?.short_description || publicBook?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
+    image: publicBook?.cover_image_url,
+    imageAlt: publicBook?.slug === LIVE_APPROVED_SLUG ? "Custom Earnalism Dracula cover artwork" : publicBook?.title,
     type: bookNotFound ? "website" : "book",
     robots: shouldNoindex ? "noindex, nofollow" : "index, follow",
-    canonicalPath: book?.slug === LIVE_APPROVED_SLUG ? `/book/${LIVE_APPROVED_SLUG}` : undefined,
+    canonicalPath: publicBook?.slug === LIVE_APPROVED_SLUG ? `/book/${LIVE_APPROVED_SLUG}` : undefined,
   });
 
   useEffect(() => {
@@ -79,28 +81,28 @@ export default function BookDetail() {
     }
   }, [book, loading]);
 
-  const bookLanguage = book && BENGALI_RE.test(`${book.title || ""} ${book.description || ""} ${book.short_description || ""}`) ? "bn" : "en";
-  const rights = book?.rights_metadata || book?.rights || {};
-  const bookSchemaAllowed = book?.slug === LIVE_APPROVED_SLUG || (
+  const bookLanguage = publicBook && BENGALI_RE.test(`${publicBook.title || ""} ${publicBook.description || ""} ${publicBook.short_description || ""}`) ? "bn" : "en";
+  const rights = publicBook?.rights_metadata || publicBook?.rights || {};
+  const bookSchemaAllowed = publicBook?.slug === LIVE_APPROVED_SLUG || (
     rights?.rights_tier === "A"
     && rights?.verification_status === "approved"
     && !rights?.blocked_reason
   );
-  const bookSchema = book && bookSchemaAllowed ? {
+  const bookSchema = publicBook && bookSchemaAllowed ? {
     "@context": "https://schema.org",
     "@type": "Book",
-    "name": book.title,
-    ...(book.subtitle ? { "alternativeHeadline": book.subtitle } : {}),
-    "description": book.description || book.short_description,
-    ...(book.cover_image_url ? { "image": book.cover_image_url } : {}),
+    "name": publicBook.title,
+    ...(publicBook.subtitle ? { "alternativeHeadline": publicBook.subtitle } : {}),
+    "description": publicBook.description || publicBook.short_description,
+    ...(publicBook.cover_image_url ? { "image": publicBook.cover_image_url } : {}),
     "bookFormat": "https://schema.org/EBook",
     "inLanguage": bookLanguage,
-    "author": { "@type": book.author && book.author !== "The Earnalism" ? "Person" : "Organization", "name": book.author || "The Earnalism" },
+    "author": { "@type": publicBook.author && publicBook.author !== "The Earnalism" ? "Person" : "Organization", "name": publicBook.author || "The Earnalism" },
     "publisher": { "@type": "Organization", "name": "The Earnalism" },
-    "url": `${SITE_URL}/book/${book.slug}`,
-    "mainEntityOfPage": `${SITE_URL}/book/${book.slug}`,
-    "numberOfPages": book.page_count || undefined,
-    ...(book.slug === LIVE_APPROVED_SLUG ? {
+    "url": `${SITE_URL}/book/${publicBook.slug}`,
+    "mainEntityOfPage": `${SITE_URL}/book/${publicBook.slug}`,
+    "numberOfPages": publicBook.page_count || undefined,
+    ...(publicBook.slug === LIVE_APPROVED_SLUG ? {
       "genre": "Gothic fiction",
       "isAccessibleForFree": true,
       "copyrightYear": 1897,
@@ -129,11 +131,11 @@ export default function BookDetail() {
     </div>
   );
 
-  const isDracula = book.slug === LIVE_APPROVED_SLUG;
-  const chapterCount = isDracula ? DRACULA_CHAPTER_COUNT : (book.chapters || []).length;
-  const hasExplicitPreview = (book.chapters || []).some((chapter) => chapter.is_preview === true);
+  const isDracula = publicBook.slug === LIVE_APPROVED_SLUG;
+  const chapterCount = isDracula ? DRACULA_CHAPTER_COUNT : (publicBook.chapters || []).length;
+  const hasExplicitPreview = (publicBook.chapters || []).some((chapter) => chapter.is_preview === true);
   const hasFreePreview = hasExplicitPreview || chapterCount > 1;
-  const readerHref = `/reader/${book.slug}`;
+  const readerHref = `/reader/${publicBook.slug}`;
   const passHref = readingPassUrl("book_detail");
 
   return (
@@ -149,8 +151,8 @@ export default function BookDetail() {
         <div className="lg:col-span-5 lg:sticky lg:top-28">
           <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft bg-ivory-warm shadow-[0_50px_90px_-40px_rgba(74,28,39,0.45)] max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
             <BookCoverImage
-              book={book}
-              alt={book.title}
+              book={publicBook}
+              alt={isDracula ? "Custom Earnalism Dracula cover artwork" : publicBook.title}
               loading="eager"
               fetchPriority="high"
               width={640}
@@ -158,20 +160,20 @@ export default function BookDetail() {
               sizes="(min-width: 1024px) 420px, (min-width: 640px) 52vw, 90vw"
             />
           </div>
-          {book.back_cover_image_url && (
+          {publicBook.back_cover_image_url && (
             <div className="mt-5 max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
               <div className="overline mb-2">Back cover</div>
               <div className="aspect-[3/4] rounded-lg overflow-hidden border border-brand-soft bg-ivory-warm">
                 <BookCoverImage
                   book={{
-                    ...book,
-                    cover_image_url: book.back_cover_image_url,
-                    cover_url: book.back_cover_url,
-                    thumbnail_url: book.back_cover_thumbnail_url,
-                    blur_placeholder: book.back_cover_blur_placeholder,
-                    dominant_color: book.back_cover_dominant_color,
+                    ...publicBook,
+                    cover_image_url: publicBook.back_cover_image_url,
+                    cover_url: publicBook.back_cover_url,
+                    thumbnail_url: publicBook.back_cover_thumbnail_url,
+                    blur_placeholder: publicBook.back_cover_blur_placeholder,
+                    dominant_color: publicBook.back_cover_dominant_color,
                   }}
-                  alt={`${book.title} back cover`}
+                  alt={`${publicBook.title} back cover`}
                   loading="lazy"
                   width={640}
                   widths={[420, 640, 900]}
@@ -183,12 +185,12 @@ export default function BookDetail() {
         </div>
 
         <div className="lg:col-span-7">
-          <div className="overline mb-5">{book.category_slug?.replace(/-/g, ' ')}</div>
-          <h1 className="font-serif-light text-4xl sm:text-5xl lg:text-[3.75rem] text-burgundy leading-[1.02] tracking-tight">{book.title}</h1>
-          {book.author && <p className="text-[0.85rem] tracking-[0.14em] uppercase text-charcoal-soft mt-4">by {book.author}</p>}
-          {book.subtitle && <p className="font-serif-display italic text-xl sm:text-2xl text-burgundy-soft mt-5 leading-snug">{book.subtitle}</p>}
+          <div className="overline mb-5">{publicBook.category_slug?.replace(/-/g, ' ')}</div>
+          <h1 className="font-serif-light text-4xl sm:text-5xl lg:text-[3.75rem] text-burgundy leading-[1.02] tracking-tight">{publicBook.title}</h1>
+          {publicBook.author && <p className="text-[0.85rem] tracking-[0.14em] uppercase text-charcoal-soft mt-4">by {publicBook.author}</p>}
+          {publicBook.subtitle && <p className="font-serif-display italic text-xl sm:text-2xl text-burgundy-soft mt-5 leading-snug">{publicBook.subtitle}</p>}
           <div className="gold-rule-thin mt-8" />
-          <p className="text-charcoal-soft mt-7 leading-[1.85] font-light">{book.description}</p>
+          <p className="text-charcoal-soft mt-7 leading-[1.85] font-light">{publicBook.description}</p>
 
           {isDracula && (
             <div id="rights-note" className="mt-8 rounded-lg border border-brand-soft bg-ivory-warm p-5 sm:p-6" data-testid="dracula-rights-note">
@@ -210,10 +212,10 @@ export default function BookDetail() {
                 <span className="text-[0.9rem]"><span className="font-serif-display italic">{chapterCount}</span> {chapterCount === 1 ? "chapter" : "chapters"}</span>
               </div>
             )}
-            {book.estimated_reading_time && (
+            {publicBook.estimated_reading_time && (
               <div className="flex items-center gap-2 text-charcoal">
                 <Clock size={16} className="text-gold" strokeWidth={1.5} />
-                <span className="text-[0.9rem]">About <span className="font-serif-display italic">{book.estimated_reading_time}</span></span>
+                <span className="text-[0.9rem]">About <span className="font-serif-display italic">{publicBook.estimated_reading_time}</span></span>
               </div>
             )}
           </div>
@@ -221,10 +223,10 @@ export default function BookDetail() {
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center" data-testid="book-actions">
             {hasFreePreview && (
-              <Link to={readerHref} className="btn-secondary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: book.slug, cta: "book_detail_preview" })}>Read Chapter 1 Free</Link>
+              <Link to={readerHref} className="btn-secondary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, cta: "book_detail_preview" })}>Read Chapter 1 Free</Link>
             )}
-            <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: book.slug, cta: "book_detail_continue" })}>Continue Dracula</Link>
-            <Link to={passHref} className="btn-link justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: book.slug, cta: "book_detail_pass" })}>Get 7-Day Reading Pass</Link>
+            <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, cta: "book_detail_continue" })}>Continue Dracula</Link>
+            <Link to={passHref} className="btn-link justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: publicBook.slug, cta: "book_detail_pass" })}>Get 7-Day Reading Pass</Link>
           </div>
 
           {isDracula && (
@@ -239,7 +241,7 @@ export default function BookDetail() {
           )}
 
           <div className="mt-8" data-testid="book-share">
-            <ShareButtons title={book.title} variant="product" testIdPrefix="book-share" />
+            <ShareButtons title={publicBook.title} variant="product" testIdPrefix="book-share" />
           </div>
 
           {/* Chapter list */}
@@ -248,22 +250,22 @@ export default function BookDetail() {
               <div className="italic-eyebrow mb-3">Table of Contents</div>
               <h3 className="font-serif-light text-[1.65rem] sm:text-[1.85rem] text-burgundy mb-6 leading-snug">Chapters</h3>
               <ol className="space-y-3">
-                {(book.chapters || []).map((c, i) => (
+                {(publicBook.chapters || []).map((c, i) => (
                   <li key={c.id} className="flex items-baseline gap-4 text-charcoal">
                     <span className="italic-accent text-gold-deep shrink-0 w-10">{String(i + 1).padStart(2, "0")}</span>
-                    <Link to={`/reader/${book.slug}?c=${c.id}`} className="font-serif-display text-[1.15rem] hover:text-burgundy transition-colors">{c.title}</Link>
+                    <Link to={`/reader/${publicBook.slug}?c=${c.id}`} className="font-serif-display text-[1.15rem] hover:text-burgundy transition-colors">{c.title}</Link>
                   </li>
                 ))}
               </ol>
             </div>
           )}
 
-          {book.benefits?.length > 0 && (
+          {publicBook.benefits?.length > 0 && (
             <div className="mt-14">
               <div className="italic-eyebrow mb-3">For the reader</div>
               <h3 className="font-serif-light text-[1.65rem] sm:text-[1.85rem] text-burgundy mb-6 leading-snug">What waits inside</h3>
               <ul className="space-y-4">
-                {book.benefits.map((b) => (
+                {publicBook.benefits.map((b) => (
                   <li key={b} className="flex items-start gap-3 text-charcoal-soft leading-relaxed font-light">
                     <Check size={16} className="text-gold mt-1 flex-shrink-0" strokeWidth={1.5} /><span>{b}</span>
                   </li>
@@ -275,30 +277,30 @@ export default function BookDetail() {
       </section>
 
       <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 grid grid-cols-1 md:grid-cols-2 gap-8">
-        {book.who_for?.length > 0 && (
+        {publicBook.who_for?.length > 0 && (
           <div className="card-elegant p-9 sm:p-11" data-testid="who-for">
             <div className="italic-eyebrow mb-3">Who this book is for</div>
             <h3 className="font-serif-light text-[1.65rem] text-burgundy mb-6 leading-snug">Written for the careful builder</h3>
             <ul className="space-y-4 text-charcoal-soft leading-relaxed font-light">
-              {book.who_for.map((w) => <li key={w} className="flex gap-3"><span className="text-gold">—</span>{w}</li>)}
+              {publicBook.who_for.map((w) => <li key={w} className="flex gap-3"><span className="text-gold">—</span>{w}</li>)}
             </ul>
           </div>
         )}
-        {book.learnings?.length > 0 && (
+        {publicBook.learnings?.length > 0 && (
           <div className="card-elegant p-9 sm:p-11" data-testid="learnings">
             <div className="italic-eyebrow mb-3">What you will learn</div>
             <h3 className="font-serif-light text-[1.65rem] text-burgundy mb-6 leading-snug">A practical inheritance</h3>
             <ul className="space-y-4 text-charcoal-soft leading-relaxed font-light">
-              {book.learnings.map((l) => <li key={l} className="flex gap-3"><span className="text-gold">—</span>{l}</li>)}
+              {publicBook.learnings.map((l) => <li key={l} className="flex gap-3"><span className="text-gold">—</span>{l}</li>)}
             </ul>
           </div>
         )}
       </section>
 
-      {book.about_author && (
+      {publicBook.about_author && (
         <section className="max-w-3xl mx-auto px-5 sm:px-8 lg:px-12 py-16 text-center" data-testid="about-author">
           <div className="italic-eyebrow mb-4">About the author / publisher</div>
-          <p className="font-serif-display italic text-xl sm:text-2xl lg:text-[1.65rem] text-burgundy leading-[1.45]">{book.about_author}</p>
+          <p className="font-serif-display italic text-xl sm:text-2xl lg:text-[1.65rem] text-burgundy leading-[1.45]">{publicBook.about_author}</p>
           <div className="gold-rule mx-auto mt-8" />
         </section>
       )}
@@ -307,7 +309,7 @@ export default function BookDetail() {
         <div className="preview-payment-shell">
           <div className="preview-payment-shell__cover" aria-hidden="true">
             <BookCoverImage
-              book={book}
+              book={publicBook}
               alt=""
               loading="lazy"
               width={320}
@@ -327,14 +329,14 @@ export default function BookDetail() {
             </div>
           </div>
           <div className="preview-payment-shell__actions">
-            <Link to={`/reader/${book.slug}`} className="btn-secondary w-full justify-center" data-testid="bottom-read-preview">
+            <Link to={`/reader/${publicBook.slug}`} className="btn-secondary w-full justify-center" data-testid="bottom-read-preview">
               <BookOpen size={15} strokeWidth={1.6} /> Read Chapter 1 Free
             </Link>
             <Link to={readingPassUrl("book_preview")} className="btn-primary w-full justify-center" data-testid="bottom-buy-reading-time">
               <CreditCard size={15} strokeWidth={1.6} /> Get Reading Pass
             </Link>
-            {book.buy_url && (
-              <a href={book.buy_url} target="_blank" rel="noreferrer" className="preview-payment-shell__external" data-testid="bottom-external-buy">
+            {publicBook.buy_url && (
+              <a href={publicBook.buy_url} target="_blank" rel="noreferrer" className="preview-payment-shell__external" data-testid="bottom-external-buy">
                 Publisher checkout
               </a>
             )}
