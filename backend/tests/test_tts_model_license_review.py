@@ -6,7 +6,9 @@ from pathlib import Path
 from scripts.tts_model_license_review import (
     BLOCKED,
     ELIGIBLE_INTERNAL_EVAL,
+    HOLD_OWNER_REVIEW,
     HOLD_LICENSE_REVIEW,
+    HOLD_VOICE_RIGHTS,
     classify_candidate,
     decision_payload,
     review_candidates,
@@ -40,6 +42,16 @@ def complete_candidate(**overrides):
         "evidence_last_reviewed_date": "2026-06-22",
         "evidence_notes": "Complete evidence for internal evaluation only.",
         "owner_approval_status": "APPROVED",
+        "voice_rights_evidence_url": "https://example.com/voice-rights",
+        "voice_rights_summary": "Synthetic voice rights reviewed for internal evaluation.",
+        "speaker_identity_status": "SYNTHETIC_OR_LICENSED",
+        "synthetic_voice_status": "APPROVED_SYNTHETIC_INTERNAL_EVAL",
+        "real_person_voice_clone_risk": "LOW",
+        "internal_eval_allowed": True,
+        "internal_eval_blockers": "no blockers",
+        "owner_internal_eval_approval_status": "APPROVED",
+        "legal_internal_eval_review_status": "APPROVED",
+        "internal_eval_status": ELIGIBLE_INTERNAL_EVAL,
     }
     candidate.update(overrides)
     return candidate
@@ -63,7 +75,7 @@ def test_missing_weights_license_blocks_model_eligibility():
 def test_missing_voice_rights_blocks_production_eligibility():
     decision = classify_candidate(complete_candidate(voice_license=""))
 
-    assert decision.decision_status == HOLD_LICENSE_REVIEW
+    assert decision.decision_status == HOLD_VOICE_RIGHTS
     assert decision.public_production_status == "PRODUCTION_BLOCKED"
     assert any("voice rights evidence is missing" in issue for issue in decision.issues)
 
@@ -97,9 +109,12 @@ def test_repo_candidate_report_has_no_production_approved_model(tmp_path: Path):
     payload = decision_payload(decisions)
 
     assert payload["production_audio_approved"] is False
+    assert payload["eligible_internal_eval_count"] == 0
     assert not any(candidate["public_production_status"] == "PRODUCTION_APPROVED" for candidate in payload["candidates"])
     assert all(candidate["public_production_status"] == "PRODUCTION_BLOCKED" for candidate in payload["candidates"])
     assert (tmp_path / "TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md").exists()
+    assert (tmp_path / "TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md").exists()
+    assert (tmp_path / "TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md").exists()
     assert (tmp_path / "tts_model_license_review.json").exists()
     assert paths
     written = json.loads((tmp_path / "tts_model_license_review.json").read_text(encoding="utf-8"))
@@ -119,7 +134,8 @@ def test_repo_candidates_with_unresolved_voice_rights_remain_hold_or_blocked():
 
     for candidate_id in ["kokoro", "melotts", "piper", "indic-parler-tts", "indicf5"]:
         decision = by_id[candidate_id]
-        assert decision.decision_status == HOLD_LICENSE_REVIEW
+        assert decision.decision_status in {HOLD_LICENSE_REVIEW, HOLD_VOICE_RIGHTS}
+        assert decision.internal_eval_status == HOLD_VOICE_RIGHTS
         assert decision.public_production_status == "PRODUCTION_BLOCKED"
         assert any("voice rights evidence" in issue for issue in decision.issues)
 
@@ -135,3 +151,35 @@ def test_matrix_report_records_upstream_evidence_sources(tmp_path: Path):
     assert "https://huggingface.co/hexgrad/Kokoro-82M" in matrix
     assert "https://huggingface.co/ai4bharat/IndicF5" in matrix
     assert "Decision reason" in matrix
+
+
+def test_missing_voice_rights_evidence_url_blocks_internal_eval():
+    decision = classify_candidate(complete_candidate(voice_rights_evidence_url=""))
+
+    assert decision.internal_eval_status == HOLD_VOICE_RIGHTS
+    assert decision.public_production_status == "PRODUCTION_BLOCKED"
+    assert any("voice_rights_evidence_url" in issue for issue in decision.issues)
+
+
+def test_unresolved_real_person_voice_clone_risk_blocks_internal_eval():
+    decision = classify_candidate(complete_candidate(real_person_voice_clone_risk="UNRESOLVED"))
+
+    assert decision.internal_eval_status == HOLD_VOICE_RIGHTS
+    assert decision.public_production_status == "PRODUCTION_BLOCKED"
+    assert any("real-person voice clone risk" in issue for issue in decision.issues)
+
+
+def test_missing_owner_internal_eval_approval_holds_internal_eval():
+    decision = classify_candidate(complete_candidate(owner_internal_eval_approval_status=""))
+
+    assert decision.internal_eval_status == HOLD_OWNER_REVIEW
+    assert decision.public_production_status == "PRODUCTION_BLOCKED"
+    assert any("owner internal-eval approval" in issue for issue in decision.issues)
+
+
+def test_complete_internal_eval_candidate_still_has_production_blocked():
+    decision = classify_candidate(complete_candidate())
+
+    assert decision.internal_eval_status == ELIGIBLE_INTERNAL_EVAL
+    assert decision.decision_status == ELIGIBLE_INTERNAL_EVAL
+    assert decision.public_production_status == "PRODUCTION_BLOCKED"

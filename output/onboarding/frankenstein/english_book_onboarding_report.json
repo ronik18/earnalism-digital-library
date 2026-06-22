@@ -4,7 +4,7 @@
   "branch": "",
   "allow_network": false,
   "dry_run": true,
-  "generated_at": "2026-06-22T07:39:33+00:00",
+  "generated_at": "2026-06-22T15:09:53+00:00",
   "book": {
     "slug": "frankenstein",
     "title": "Frankenstein",
@@ -182,11 +182,14 @@
     },
     {
       "name": "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW",
-      "status": "HOLD_LICENSE_REVIEW",
+      "status": "HOLD_VOICE_RIGHTS",
       "blockers": [
-        "selected model `kokoro` is not eligible for real internal generation: HOLD_LICENSE_REVIEW.",
+        "selected model `kokoro` is not eligible for real internal generation: HOLD_VOICE_RIGHTS.",
         "voice_license is missing or requires review.",
         "voice rights evidence is missing or varies by voice.",
+        "speaker identity or voice provenance remains unresolved.",
+        "synthetic voice status remains unresolved.",
+        "internal_eval_allowed is not true.",
         "owner approval is required before production use."
       ],
       "warnings": [],
@@ -194,8 +197,9 @@
         "stage_name": "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW",
         "selected_model_candidate": "kokoro",
         "selected_model_display_name": "Kokoro",
-        "selected_model_decision": "HOLD_LICENSE_REVIEW",
-        "model_generation": "HOLD_LICENSE_REVIEW",
+        "selected_model_decision": "HOLD_VOICE_RIGHTS",
+        "selected_model_internal_eval_status": "HOLD_VOICE_RIGHTS",
+        "model_generation": "HOLD_VOICE_RIGHTS",
         "public_production_status": "PRODUCTION_BLOCKED",
         "public_audio_allowed": false,
         "listen_now_cta_allowed": false,
@@ -208,12 +212,16 @@
           {
             "candidate_id": "kokoro",
             "display_name": "Kokoro",
-            "decision_status": "HOLD_LICENSE_REVIEW",
-            "internal_generation_status": "HOLD_LICENSE_REVIEW",
+            "decision_status": "HOLD_VOICE_RIGHTS",
+            "internal_generation_status": "HOLD_VOICE_RIGHTS",
+            "internal_eval_status": "HOLD_VOICE_RIGHTS",
             "public_production_status": "PRODUCTION_BLOCKED",
             "issues": [
               "voice_license is missing or requires review.",
               "voice rights evidence is missing or varies by voice.",
+              "speaker identity or voice provenance remains unresolved.",
+              "synthetic voice status remains unresolved.",
+              "internal_eval_allowed is not true.",
               "owner approval is required before production use."
             ],
             "warnings": [],
@@ -242,18 +250,32 @@
               "evidence_last_reviewed_date": "2026-06-22",
               "evidence_notes": "Official GitHub README and Hugging Face card document Apache-2.0 model/weights and commercial deployment language; CC BY dataset attribution and speaker/voice-rights review keep this HOLD.",
               "official_evidence_urls": "https://github.com/hexgrad/kokoro, https://huggingface.co/hexgrad/Kokoro-82M",
-              "owner_approval_status": "OWNER_APPROVAL_REQUIRED"
+              "owner_approval_status": "OWNER_APPROVAL_REQUIRED",
+              "voice_rights_evidence_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md",
+              "voice_rights_summary": "Voice list is documented upstream, but Earnalism has not completed speaker-rights, voice provenance, or owner approval review.",
+              "speaker_identity_status": "UNVERIFIED",
+              "synthetic_voice_status": "OPEN_WEIGHT_VOICE_UNVERIFIED",
+              "real_person_voice_clone_risk": "MEDIUM",
+              "internal_eval_allowed": false,
+              "internal_eval_blockers": "voice rights approval pending; owner internal-eval approval pending; legal review pending.",
+              "owner_internal_eval_approval_status": "OWNER_REVIEW_REQUIRED",
+              "legal_internal_eval_review_status": "LEGAL_REVIEW_REQUIRED",
+              "internal_eval_status": "HOLD_VOICE_RIGHTS"
             }
           },
           {
             "candidate_id": "melotts",
             "display_name": "MeloTTS",
-            "decision_status": "HOLD_LICENSE_REVIEW",
-            "internal_generation_status": "HOLD_LICENSE_REVIEW",
+            "decision_status": "HOLD_VOICE_RIGHTS",
+            "internal_generation_status": "HOLD_VOICE_RIGHTS",
+            "internal_eval_status": "HOLD_VOICE_RIGHTS",
             "public_production_status": "PRODUCTION_BLOCKED",
             "issues": [
               "voice_license is missing or requires review.",
               "voice rights evidence is missing or varies by voice.",
+              "speaker identity or voice provenance remains unresolved.",
+              "synthetic voice status remains unresolved.",
+              "internal_eval_allowed is not true.",
               "owner approval is required before production use."
             ],
             "warnings": [],
@@ -282,7 +304,17 @@
               "evidence_last_reviewed_date": "2026-06-22",
               "evidence_notes": "Official sources document MIT licensing for library/model card and commercial/non-commercial use; voice/speaker-rights evidence remains unresolved.",
               "official_evidence_urls": "https://github.com/myshell-ai/MeloTTS, https://huggingface.co/myshell-ai/MeloTTS-English",
-              "owner_approval_status": "OWNER_APPROVAL_REQUIRED"
+              "owner_approval_status": "OWNER_APPROVAL_REQUIRED",
+              "voice_rights_evidence_url": "https://huggingface.co/myshell-ai/MeloTTS-English",
+              "voice_rights_summary": "Model card lists speaker IDs, but Earnalism has not completed speaker-rights or voice provenance review.",
+              "speaker_identity_status": "UNVERIFIED",
+              "synthetic_voice_status": "MODEL_CARD_SPEAKERS_UNVERIFIED",
+              "real_person_voice_clone_risk": "MEDIUM",
+              "internal_eval_allowed": false,
+              "internal_eval_blockers": "voice rights approval pending; owner internal-eval approval pending; legal review pending.",
+              "owner_internal_eval_approval_status": "OWNER_REVIEW_REQUIRED",
+              "legal_internal_eval_review_status": "LEGAL_REVIEW_REQUIRED",
+              "internal_eval_status": "HOLD_VOICE_RIGHTS"
             }
           },
           {
@@ -290,12 +322,14 @@
             "display_name": "Piper / Piper active fork",
             "decision_status": "HOLD_LICENSE_REVIEW",
             "internal_generation_status": "HOLD_LICENSE_REVIEW",
+            "internal_eval_status": "HOLD_VOICE_RIGHTS",
             "public_production_status": "PRODUCTION_BLOCKED",
             "issues": [
               "commercial_use_status is missing or requires review.",
               "commercial-use evidence is not approved.",
               "weights license evidence is missing or varies by voice.",
               "voice rights evidence is missing or varies by voice.",
+              "internal_eval_allowed is not true.",
               "owner approval is required before production use."
             ],
             "warnings": [],
@@ -324,7 +358,17 @@
               "evidence_last_reviewed_date": "2026-06-22",
               "evidence_notes": "Official Piper code license is MIT and piper-voices metadata is MIT, but per-voice provenance and active-fork/package obligations require manual legal review before any internal generation.",
               "official_evidence_urls": "https://github.com/rhasspy/piper, https://huggingface.co/rhasspy/piper-voices",
-              "owner_approval_status": "OWNER_APPROVAL_REQUIRED"
+              "owner_approval_status": "OWNER_APPROVAL_REQUIRED",
+              "voice_rights_evidence_url": "https://github.com/rhasspy/piper/blob/master/VOICES.md",
+              "voice_rights_summary": "Voice catalog is public, but each voice requires separate provenance, commercial, and speaker-rights review.",
+              "speaker_identity_status": "VARIES_BY_VOICE",
+              "synthetic_voice_status": "VOICE_DEPENDENT_REVIEW_REQUIRED",
+              "real_person_voice_clone_risk": "MEDIUM",
+              "internal_eval_allowed": false,
+              "internal_eval_blockers": "per-voice rights review required; commercial status hold; owner internal-eval approval pending.",
+              "owner_internal_eval_approval_status": "OWNER_REVIEW_REQUIRED",
+              "legal_internal_eval_review_status": "LEGAL_REVIEW_REQUIRED",
+              "internal_eval_status": "HOLD_VOICE_RIGHTS"
             }
           },
           {
@@ -332,12 +376,15 @@
             "display_name": "Indic Parler-TTS",
             "decision_status": "HOLD_LICENSE_REVIEW",
             "internal_generation_status": "HOLD_LICENSE_REVIEW",
+            "internal_eval_status": "HOLD_VOICE_RIGHTS",
             "public_production_status": "PRODUCTION_BLOCKED",
             "issues": [
               "code_license is missing or requires review.",
               "voice_license is missing or requires review.",
               "code license evidence is missing.",
               "voice rights evidence is missing or varies by voice.",
+              "speaker identity or voice provenance remains unresolved.",
+              "internal_eval_allowed is not true.",
               "owner approval is required before production use."
             ],
             "warnings": [],
@@ -366,7 +413,17 @@
               "evidence_last_reviewed_date": "2026-06-22",
               "evidence_notes": "Official Hugging Face API/card metadata documents Apache-2.0 weights and Indic language coverage; gated card/data and unresolved voice rights keep this HOLD.",
               "official_evidence_urls": "https://huggingface.co/ai4bharat/indic-parler-tts",
-              "owner_approval_status": "OWNER_APPROVAL_REQUIRED"
+              "owner_approval_status": "OWNER_APPROVAL_REQUIRED",
+              "voice_rights_evidence_url": "https://huggingface.co/ai4bharat/indic-parler-tts",
+              "voice_rights_summary": "Gated model/dataset metadata prevents complete speaker-rights verification from local public evidence.",
+              "speaker_identity_status": "UNVERIFIED_GATED_CARD",
+              "synthetic_voice_status": "INDIC_MODEL_VOICE_REVIEW_REQUIRED",
+              "real_person_voice_clone_risk": "MEDIUM",
+              "internal_eval_allowed": false,
+              "internal_eval_blockers": "gated evidence review required; code license review pending; owner internal-eval approval pending.",
+              "owner_internal_eval_approval_status": "OWNER_REVIEW_REQUIRED",
+              "legal_internal_eval_review_status": "LEGAL_REVIEW_REQUIRED",
+              "internal_eval_status": "HOLD_VOICE_RIGHTS"
             }
           },
           {
@@ -374,12 +431,15 @@
             "display_name": "IndicF5",
             "decision_status": "HOLD_LICENSE_REVIEW",
             "internal_generation_status": "HOLD_LICENSE_REVIEW",
+            "internal_eval_status": "HOLD_VOICE_RIGHTS",
             "public_production_status": "PRODUCTION_BLOCKED",
             "issues": [
               "code_license is missing or requires review.",
               "voice_license is missing or requires review.",
               "code license evidence is missing.",
               "voice rights evidence is missing or varies by voice.",
+              "speaker identity or voice provenance remains unresolved.",
+              "internal_eval_allowed is not true.",
               "owner approval is required before production use."
             ],
             "warnings": [],
@@ -408,7 +468,17 @@
               "evidence_last_reviewed_date": "2026-06-22",
               "evidence_notes": "Official Hugging Face metadata documents MIT weights and Bengali-language support; missing repo license file plus dataset/speaker-rights review keep this HOLD.",
               "official_evidence_urls": "https://github.com/AI4Bharat/IndicF5, https://huggingface.co/ai4bharat/IndicF5",
-              "owner_approval_status": "OWNER_APPROVAL_REQUIRED"
+              "owner_approval_status": "OWNER_APPROVAL_REQUIRED",
+              "voice_rights_evidence_url": "https://huggingface.co/ai4bharat/IndicF5",
+              "voice_rights_summary": "Model card identifies datasets, but speaker consent and voice rights require manual review before internal generation.",
+              "speaker_identity_status": "UNVERIFIED",
+              "synthetic_voice_status": "INDIC_MODEL_VOICE_REVIEW_REQUIRED",
+              "real_person_voice_clone_risk": "MEDIUM",
+              "internal_eval_allowed": false,
+              "internal_eval_blockers": "voice rights review required; repo code license review pending; owner internal-eval approval pending.",
+              "owner_internal_eval_approval_status": "OWNER_REVIEW_REQUIRED",
+              "legal_internal_eval_review_status": "LEGAL_REVIEW_REQUIRED",
+              "internal_eval_status": "HOLD_VOICE_RIGHTS"
             }
           },
           {
@@ -416,6 +486,7 @@
             "display_name": "StyleTTS2",
             "decision_status": "BLOCKED",
             "internal_generation_status": "BLOCKED",
+            "internal_eval_status": "BLOCKED",
             "public_production_status": "PRODUCTION_BLOCKED",
             "issues": [
               "weights_license is missing or requires review.",
@@ -425,6 +496,9 @@
               "candidate is explicitly blocked.",
               "weights license evidence is missing or varies by voice.",
               "voice rights evidence is missing or varies by voice.",
+              "real-person voice clone risk is unresolved or high.",
+              "internal_eval_allowed is not true.",
+              "legal internal-eval review is blocked.",
               "voice cloning or real-person voice risk is high.",
               "owner approval is required before production use."
             ],
@@ -454,10 +528,50 @@
               "evidence_last_reviewed_date": "2026-06-22",
               "evidence_notes": "Official repo code is MIT, but pre-trained model rules and high voice-cloning risk make this blocked for Earnalism generation.",
               "official_evidence_urls": "https://github.com/yl4579/StyleTTS2, https://huggingface.co/yl4579/StyleTTS2-LJSpeech, https://huggingface.co/yl4579/StyleTTS2-LibriTTS",
-              "owner_approval_status": "OWNER_APPROVAL_REQUIRED"
+              "owner_approval_status": "OWNER_APPROVAL_REQUIRED",
+              "voice_rights_evidence_url": "https://github.com/yl4579/StyleTTS2#pre-trained-models",
+              "voice_rights_summary": "Official README includes pretrained voice-use restrictions and permission/disclosure requirements; Earnalism treats this as blocked for generation.",
+              "speaker_identity_status": "CLONING_PERMISSION_REQUIRED",
+              "synthetic_voice_status": "PRETRAINED_MODEL_RESTRICTIONS",
+              "real_person_voice_clone_risk": "HIGH",
+              "internal_eval_allowed": false,
+              "internal_eval_blockers": "high voice-cloning risk; pretrained model restrictions; legal review blocked for generation.",
+              "owner_internal_eval_approval_status": "OWNER_REVIEW_REQUIRED",
+              "legal_internal_eval_review_status": "BLOCKED",
+              "internal_eval_status": "BLOCKED"
             }
           }
         ]
+      }
+    },
+    {
+      "name": "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW",
+      "status": "HOLD_VOICE_RIGHTS",
+      "blockers": [
+        "selected model `kokoro` is not eligible for internal evaluation: HOLD_VOICE_RIGHTS.",
+        "voice_license is missing or requires review.",
+        "voice rights evidence is missing or varies by voice.",
+        "speaker identity or voice provenance remains unresolved.",
+        "synthetic voice status remains unresolved.",
+        "internal_eval_allowed is not true."
+      ],
+      "warnings": [],
+      "details": {
+        "stage_name": "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW",
+        "selected_model_candidate": "kokoro",
+        "selected_model_display_name": "Kokoro",
+        "selected_model_internal_eval_status": "HOLD_VOICE_RIGHTS",
+        "voice_rights_evidence_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md",
+        "voice_rights_summary": "Voice list is documented upstream, but Earnalism has not completed speaker-rights, voice provenance, or owner approval review.",
+        "speaker_identity_status": "UNVERIFIED",
+        "synthetic_voice_status": "OPEN_WEIGHT_VOICE_UNVERIFIED",
+        "real_person_voice_clone_risk": "MEDIUM",
+        "internal_eval_allowed": false,
+        "owner_internal_eval_approval_status": "OWNER_REVIEW_REQUIRED",
+        "legal_internal_eval_review_status": "LEGAL_REVIEW_REQUIRED",
+        "public_audio_allowed": false,
+        "real_audio_generation_allowed": false,
+        "public_production_status": "PRODUCTION_BLOCKED"
       }
     },
     {
@@ -475,7 +589,7 @@
         "chapter": "1",
         "language": "en",
         "model_candidate": "kokoro",
-        "model_generation": "HOLD_LICENSE_REVIEW",
+        "model_generation": "HOLD_VOICE_RIGHTS",
         "sync_level": "sentence",
         "status": "DRY_RUN_COMPLETE",
         "public_release_target": false,
@@ -572,17 +686,26 @@
     "start_reading_cta_allowed": false,
     "sitemap_inclusion_allowed": false,
     "owner_approval_status": "OWNER_APPROVAL_REQUIRED",
-    "blocker_count": 17,
+    "blocker_count": 26,
     "blockers": [
       "cover_asset_provenance_gate: owner-designed cover provenance is required before public use.",
       "cover_asset_provenance_gate: cover provenance note is required.",
       "cover_asset_provenance_gate: owner cover approval is required.",
       "audiobook_planning_packet: public audiobook release is blocked by default.",
       "audiobook_planning_packet: model/voice license evidence is missing.",
-      "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: selected model `kokoro` is not eligible for real internal generation: HOLD_LICENSE_REVIEW.",
+      "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: selected model `kokoro` is not eligible for real internal generation: HOLD_VOICE_RIGHTS.",
       "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: voice_license is missing or requires review.",
       "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: voice rights evidence is missing or varies by voice.",
+      "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: speaker identity or voice provenance remains unresolved.",
+      "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: synthetic voice status remains unresolved.",
+      "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: internal_eval_allowed is not true.",
       "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: owner approval is required before production use.",
+      "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: selected model `kokoro` is not eligible for internal evaluation: HOLD_VOICE_RIGHTS.",
+      "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: voice_license is missing or requires review.",
+      "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: voice rights evidence is missing or varies by voice.",
+      "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: speaker identity or voice provenance remains unresolved.",
+      "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: synthetic voice status remains unresolved.",
+      "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: internal_eval_allowed is not true.",
       "audiobook_sync_dry_run_stage: sync release evidence remains HOLD; public audio cannot be released.",
       "narration_qa_gate: human narration QA is missing or not approved.",
       "narration_qa_gate: accessibility listening QA is missing or not approved.",
@@ -596,21 +719,31 @@
   "audiobook_gate": {
     "status": "PUBLIC_AUDIO_RELEASE_BLOCKED",
     "sync_status": "HOLD_SYNC_QA_REQUIRED",
-    "model_generation": "HOLD_LICENSE_REVIEW",
+    "model_generation": "HOLD_VOICE_RIGHTS",
     "selected_model_candidate": "kokoro",
-    "selected_model_decision": "HOLD_LICENSE_REVIEW",
+    "selected_model_decision": "HOLD_VOICE_RIGHTS",
+    "selected_model_internal_eval_status": "HOLD_VOICE_RIGHTS",
     "public_audio_publish_allowed": false,
     "audio_enabled": false,
     "listen_now_cta": false,
     "audio_object_metadata": false,
-    "blocker_count": 13,
+    "blocker_count": 22,
     "blockers": [
       "public audiobook release is blocked by default.",
       "model/voice license evidence is missing.",
-      "selected model `kokoro` is not eligible for real internal generation: HOLD_LICENSE_REVIEW.",
+      "selected model `kokoro` is not eligible for real internal generation: HOLD_VOICE_RIGHTS.",
       "voice_license is missing or requires review.",
       "voice rights evidence is missing or varies by voice.",
+      "speaker identity or voice provenance remains unresolved.",
+      "synthetic voice status remains unresolved.",
+      "internal_eval_allowed is not true.",
       "owner approval is required before production use.",
+      "selected model `kokoro` is not eligible for internal evaluation: HOLD_VOICE_RIGHTS.",
+      "voice_license is missing or requires review.",
+      "voice rights evidence is missing or varies by voice.",
+      "speaker identity or voice provenance remains unresolved.",
+      "synthetic voice status remains unresolved.",
+      "internal_eval_allowed is not true.",
       "sync release evidence remains HOLD; public audio cannot be released.",
       "human narration QA is missing or not approved.",
       "accessibility listening QA is missing or not approved.",
@@ -628,6 +761,8 @@
     "audiobook_qa": "ENGLISH_AUDIOBOOK_QA_PACKET.md",
     "tts_model_license_matrix": "TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md",
     "tts_model_production_eligibility": "TTS_MODEL_PRODUCTION_ELIGIBILITY_REPORT.md",
+    "tts_voice_rights_internal_eval_packet": "TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md",
+    "tts_internal_eval_scorecard": "TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md",
     "seo": "ENGLISH_BOOK_SEO_PREVIEW_REPORT.md",
     "visual": "ENGLISH_BOOK_VISUAL_SCORECARD.md",
     "codex_prompt": "output/codex_prompts/next_english_book_onboarding_prompt.md"

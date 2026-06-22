@@ -178,7 +178,9 @@ def test_orchestrator_runs_model_license_stage_before_sync_stage(tmp_path: Path)
     names = [item.name for item in result.stages]
 
     assert "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW" in names
+    assert "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW" in names
     assert names.index("TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW") < names.index("audiobook_sync_dry_run_stage")
+    assert names.index("TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW") < names.index("audiobook_sync_dry_run_stage")
 
 
 def test_selected_model_decision_appears_in_orchestrator_json(tmp_path: Path):
@@ -188,8 +190,21 @@ def test_selected_model_decision_appears_in_orchestrator_json(tmp_path: Path):
     report = paths["output/onboarding/frankenstein/english_book_onboarding_report.json"].read_text(encoding="utf-8")
 
     assert '"selected_model_candidate": "kokoro"' in report
-    assert '"selected_model_decision": "HOLD_LICENSE_REVIEW"' in report
-    assert '"model_generation": "HOLD_LICENSE_REVIEW"' in report
+    assert '"selected_model_decision": "HOLD_VOICE_RIGHTS"' in report
+    assert '"selected_model_internal_eval_status": "HOLD_VOICE_RIGHTS"' in report
+    assert '"model_generation": "HOLD_VOICE_RIGHTS"' in report
+
+
+def test_voice_rights_internal_eval_stage_records_selected_candidate(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    result = run_orchestration(config_path)
+    voice_stage = stage(result, "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW")
+
+    assert voice_stage.status == "HOLD_VOICE_RIGHTS"
+    assert voice_stage.details["selected_model_candidate"] == "kokoro"
+    assert voice_stage.details["selected_model_internal_eval_status"] == "HOLD_VOICE_RIGHTS"
+    assert voice_stage.details["public_audio_allowed"] is False
+    assert voice_stage.details["real_audio_generation_allowed"] is False
 
 
 def test_sync_manifest_path_is_recorded_in_slug_scoped_output(tmp_path: Path):
