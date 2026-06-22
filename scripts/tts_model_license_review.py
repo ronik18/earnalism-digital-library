@@ -128,7 +128,9 @@ def split_key_value(path: Path, line_number: int, text: str) -> tuple[str, str]:
 
 
 def normalized(value: Any) -> str:
-    return str(value or "").strip()
+    if value is None:
+        return ""
+    return str(value).strip()
 
 
 def upper(value: Any) -> str:
@@ -278,15 +280,16 @@ def matrix_markdown(decisions: list[CandidateDecision]) -> str:
         "",
         "This local report does not approve production audio. It records evidence status only.",
         "",
-        "| Candidate | Commercial use | Code license | Weights license | Voice license | English | Bengali | Decision | Notes |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
+        "| Candidate | Official repo | Model card | Commercial use | Code license | Weights license | Voice license | English | Bengali | Decision |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for decision in decisions:
         candidate = decision.candidate
-        notes = "; ".join(decision.issues[:2]) if decision.issues else normalized(candidate.get("evidence_notes"))
         lines.append(
-            "| {display} | {commercial} | {code} | {weights} | {voice} | {english} | {bengali} | {decision} | {notes} |".format(
+            "| {display} | {repo} | {card} | {commercial} | {code} | {weights} | {voice} | {english} | {bengali} | {decision} |".format(
                 display=normalized(candidate.get("display_name")),
+                repo=markdown_link("repo", candidate.get("upstream_url")),
+                card=markdown_link("card", candidate.get("model_card_url")),
                 commercial=normalized(candidate.get("commercial_use_status")),
                 code=normalized(candidate.get("code_license")),
                 weights=normalized(candidate.get("weights_license")),
@@ -294,10 +297,45 @@ def matrix_markdown(decisions: list[CandidateDecision]) -> str:
                 english=normalized(candidate.get("english_suitability")),
                 bengali=normalized(candidate.get("bengali_suitability")),
                 decision=decision.decision_status,
-                notes=notes.replace("|", "/"),
             )
         )
+    lines.extend(["", "## Evidence Detail", ""])
+    for decision in decisions:
+        candidate = decision.candidate
+        lines.extend(
+            [
+                f"### {normalized(candidate.get('display_name'))}",
+                "",
+                f"- Official repository: {normalized(candidate.get('upstream_url'))}",
+                f"- Official model card: {normalized(candidate.get('model_card_url'))}",
+                f"- License URL: {normalized(candidate.get('license_url'))}",
+                f"- Dataset/license notes: {normalized(candidate.get('dataset_license_notes'))}",
+                f"- Attribution required: `{normalized(candidate.get('attribution_required'))}`",
+                f"- Local inference feasible: `{normalized(candidate.get('local_inference_possible'))}`",
+                f"- Network required: `{normalized(candidate.get('network_required'))}`",
+                f"- Real-person voice risk: `{normalized(candidate.get('real_person_voice_risk'))}`",
+                f"- Evidence sources reviewed: {normalized(candidate.get('official_evidence_urls'))}",
+                f"- Evidence notes: {normalized(candidate.get('evidence_notes'))}",
+                f"- Decision reason: {decision_reason(decision)}",
+                "",
+            ]
+        )
+    while lines and lines[-1] == "":
+        lines.pop()
     return "\n".join(lines) + "\n"
+
+
+def markdown_link(label: str, value: Any) -> str:
+    url = normalized(value)
+    if not has_url(url):
+        return "missing"
+    return f"[{label}]({url})"
+
+
+def decision_reason(decision: CandidateDecision) -> str:
+    if decision.issues:
+        return "; ".join(decision.issues[:4]).replace("|", "/")
+    return "Evidence is sufficient only for internal evaluation; production still requires owner/legal review."
 
 
 def eligibility_markdown(decisions: list[CandidateDecision]) -> str:

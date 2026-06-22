@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-22T06:05:30+00:00
+- Generated: 2026-06-22T07:39:33+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - Status: `PUBLIC_AUDIO_RELEASE_BLOCKED`
@@ -20,9 +20,6 @@
 - model/voice license evidence is missing.
 - selected model `kokoro` is not eligible for real internal generation: HOLD_LICENSE_REVIEW.
 - voice_license is missing or requires review.
-- commercial_use_status is missing or requires review.
-- real_person_voice_risk is missing or requires review.
-- commercial-use evidence is not approved.
 - voice rights evidence is missing or varies by voice.
 - owner approval is required before production use.
 - sync release evidence remains HOLD; public audio cannot be released.
