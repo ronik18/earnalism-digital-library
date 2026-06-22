@@ -1,0 +1,28 @@
+# Internal TTS model candidate bakeoff config.
+# No model is production-approved by this file.
+candidates:
+  - id: kokoro
+    name: Kokoro
+    languages: [en]
+    license_status: HOLD_LICENSE_REVIEW
+    note: Evaluate only after local commercial-use and model-card review.
+  - id: melotts
+    name: MeloTTS
+    languages: [en]
+    license_status: HOLD_LICENSE_REVIEW
+    note: Evaluate only after model, voice, and dependency license review.
+  - id: piper
+    name: Piper
+    languages: [en]
+    license_status: HOLD_GPL_CAUTION
+    note: GPL/license obligations require manual legal review before production use.
+  - id: indic-parler-tts
+    name: Indic Parler-TTS
+    languages: [bn, en]
+    license_status: HOLD_LICENSE_REVIEW
+    note: Candidate for Bengali/English evaluation only after license and voice rights review.
+  - id: styletts2
+    name: StyleTTS2
+    languages: [en]
+    license_status: HOLD_LICENSE_REVIEW_ONLY
+    note: License-review candidate only; not approved for generation.

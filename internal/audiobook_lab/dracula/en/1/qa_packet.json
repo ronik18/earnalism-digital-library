@@ -1,0 +1,58 @@
+{
+  "book_slug": "dracula",
+  "chapter": "1",
+  "language": "en",
+  "model_candidate": "kokoro",
+  "mode": "dry-run",
+  "status": "DRY_RUN_COMPLETE",
+  "generated_at": "2026-06-22T04:17:14+00:00",
+  "output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/audiobook_lab/dracula/en/1",
+  "source_hash": "f4f569c1a5486a552c3bffaaa65ecb0828a3585cccd3d702dee6dd7be00394d7",
+  "sync_manifest_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/audiobook_lab/dracula/en/1/sync_manifest.json",
+  "qa_packet_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/audiobook_lab/dracula/en/1/qa_packet.json",
+  "model_decision_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/audiobook_lab/dracula/en/1/model_decision_template.json",
+  "release_gate_report_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/audiobook_lab/dracula/en/1/release_gate_report.json",
+  "blockers": [
+    {
+      "code": "MODEL_LICENSE_HOLD",
+      "severity": "HIGH",
+      "message": "Model license status is not approved: HOLD_LICENSE_REVIEW."
+    },
+    {
+      "code": "SOURCE_RIGHTS_EVIDENCE_MISSING",
+      "severity": "HIGH",
+      "message": "source_rights_evidence_missing is required before internal generation or release."
+    },
+    {
+      "code": "DERIVATIVE_AUDIOBOOK_RIGHTS_MISSING",
+      "severity": "HIGH",
+      "message": "derivative_audiobook_rights_missing is required before internal generation or release."
+    },
+    {
+      "code": "VOICE_RIGHTS_MISSING",
+      "severity": "HIGH",
+      "message": "voice_rights_missing is required before internal generation or release."
+    },
+    {
+      "code": "TEXT_FIDELITY_EVIDENCE_MISSING",
+      "severity": "HIGH",
+      "message": "text_fidelity_evidence_missing is required before internal generation or release."
+    },
+    {
+      "code": "HUMAN_LISTENING_QA_MISSING",
+      "severity": "HIGH",
+      "message": "human_listening_qa_missing is required before internal generation or release."
+    },
+    {
+      "code": "ACCESSIBILITY_LISTENING_QA_MISSING",
+      "severity": "HIGH",
+      "message": "accessibility_listening_qa_missing is required before internal generation or release."
+    }
+  ],
+  "warnings": [
+    "No real audio generated.",
+    "Public audiobook release remains blocked."
+  ],
+  "sync_item_count": 16,
+  "public_audio_release_status": "PUBLIC_AUDIO_RELEASE_BLOCKED"
+}
