@@ -98,6 +98,7 @@ def test_repo_candidate_report_has_no_production_approved_model(tmp_path: Path):
 
     assert payload["production_audio_approved"] is False
     assert not any(candidate["public_production_status"] == "PRODUCTION_APPROVED" for candidate in payload["candidates"])
+    assert all(candidate["public_production_status"] == "PRODUCTION_BLOCKED" for candidate in payload["candidates"])
     assert (tmp_path / "TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md").exists()
     assert (tmp_path / "tts_model_license_review.json").exists()
     assert paths
@@ -110,3 +111,27 @@ def test_high_voice_cloning_risk_candidate_is_blocked():
 
     assert decision.decision_status == BLOCKED
     assert any("voice cloning" in issue for issue in decision.issues)
+
+
+def test_repo_candidates_with_unresolved_voice_rights_remain_hold_or_blocked():
+    decisions = review_candidates()
+    by_id = {decision.candidate["candidate_id"]: decision for decision in decisions}
+
+    for candidate_id in ["kokoro", "melotts", "piper", "indic-parler-tts", "indicf5"]:
+        decision = by_id[candidate_id]
+        assert decision.decision_status == HOLD_LICENSE_REVIEW
+        assert decision.public_production_status == "PRODUCTION_BLOCKED"
+        assert any("voice rights evidence" in issue for issue in decision.issues)
+
+    assert by_id["styletts2"].decision_status == BLOCKED
+
+
+def test_matrix_report_records_upstream_evidence_sources(tmp_path: Path):
+    decisions = review_candidates()
+    write_reports(decisions, output_dir=tmp_path)
+    matrix = (tmp_path / "TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md").read_text(encoding="utf-8")
+
+    assert "Official repository" in matrix
+    assert "https://huggingface.co/hexgrad/Kokoro-82M" in matrix
+    assert "https://huggingface.co/ai4bharat/IndicF5" in matrix
+    assert "Decision reason" in matrix
