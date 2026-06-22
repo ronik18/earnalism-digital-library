@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-22T07:39:33+00:00
+- Generated: 2026-06-22T15:09:53+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - Gate status: `HOLD_SOURCE_RIGHTS_QA_REQUIRED`
@@ -17,10 +17,19 @@
 - cover_asset_provenance_gate: owner cover approval is required.
 - audiobook_planning_packet: public audiobook release is blocked by default.
 - audiobook_planning_packet: model/voice license evidence is missing.
-- TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: selected model `kokoro` is not eligible for real internal generation: HOLD_LICENSE_REVIEW.
+- TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: selected model `kokoro` is not eligible for real internal generation: HOLD_VOICE_RIGHTS.
 - TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: voice_license is missing or requires review.
 - TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: voice rights evidence is missing or varies by voice.
+- TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: speaker identity or voice provenance remains unresolved.
+- TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: synthetic voice status remains unresolved.
+- TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: internal_eval_allowed is not true.
 - TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: owner approval is required before production use.
+- TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: selected model `kokoro` is not eligible for internal evaluation: HOLD_VOICE_RIGHTS.
+- TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: voice_license is missing or requires review.
+- TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: voice rights evidence is missing or varies by voice.
+- TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: speaker identity or voice provenance remains unresolved.
+- TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: synthetic voice status remains unresolved.
+- TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: internal_eval_allowed is not true.
 - audiobook_sync_dry_run_stage: sync release evidence remains HOLD; public audio cannot be released.
 - narration_qa_gate: human narration QA is missing or not approved.
 - narration_qa_gate: accessibility listening QA is missing or not approved.

@@ -43,6 +43,7 @@ PUBLIC_AUDIO_RELEASE_BLOCKED = "PUBLIC_AUDIO_RELEASE_BLOCKED"
 PUBLICATION_HOLD = "HOLD_SOURCE_RIGHTS_QA_REQUIRED"
 PUBLICATION_DRAFT_REVIEW = "READY_FOR_OWNER_PUBLICATION_REVIEW_DRAFT_ONLY"
 TTS_MODEL_LICENSE_STAGE = "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW"
+TTS_VOICE_RIGHTS_STAGE = "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW"
 UNSUPPORTED_ACCESSIBILITY_CLAIMS = (
     "WCAG compliant",
     "blind-user tested",
@@ -442,19 +443,63 @@ def tts_model_license_and_suitability_review(config: dict[str, Any]) -> StageRes
         "selected_model_candidate": selected_id,
         "selected_model_display_name": selected.candidate.get("display_name", selected_id),
         "selected_model_decision": selected.decision_status,
+        "selected_model_internal_eval_status": selected.internal_eval_status,
         "model_generation": selected.internal_generation_status,
         "public_production_status": selected.public_production_status,
         "public_audio_allowed": False,
         "listen_now_cta_allowed": False,
         "audio_object_metadata_allowed": False,
         "candidate_count": len(decisions),
-        "eligible_internal_eval_count": sum(1 for decision in decisions if decision.decision_status == "ELIGIBLE_INTERNAL_EVAL"),
-        "hold_count": sum(1 for decision in decisions if decision.decision_status == "HOLD_LICENSE_REVIEW"),
+        "eligible_internal_eval_count": sum(1 for decision in decisions if decision.internal_eval_status == "ELIGIBLE_INTERNAL_EVAL"),
+        "hold_count": sum(1 for decision in decisions if decision.internal_eval_status in {"HOLD_LICENSE_REVIEW", "HOLD_VOICE_RIGHTS", "HOLD_OWNER_REVIEW"}),
         "blocked_count": sum(1 for decision in decisions if decision.decision_status == "BLOCKED"),
         "candidates": tts_decision_payload(decisions)["candidates"],
     }
-    status = selected.decision_status if not blockers else "HOLD_LICENSE_REVIEW"
-    return StageResult(TTS_MODEL_LICENSE_STAGE, status, blockers, selected.warnings, details)
+    return StageResult(TTS_MODEL_LICENSE_STAGE, selected.decision_status, blockers, selected.warnings, details)
+
+
+def tts_voice_rights_internal_eval_review(config: dict[str, Any]) -> StageResult:
+    decisions = review_tts_candidates()
+    selected_id = selected_model_candidate(config)
+    selected = selected_candidate_decision(selected_id, decisions)
+    blockers: list[str] = []
+    if selected.internal_eval_status != "ELIGIBLE_INTERNAL_EVAL":
+        blockers.append(
+            f"selected model `{selected_id}` is not eligible for internal evaluation: {selected.internal_eval_status}."
+        )
+    for issue in selected.issues:
+        if "voice" in issue.lower() or "speaker" in issue.lower() or "internal_eval" in issue.lower() or "owner internal" in issue.lower() or "legal internal" in issue.lower():
+            blockers.append(issue)
+    details = {
+        "stage_name": TTS_VOICE_RIGHTS_STAGE,
+        "selected_model_candidate": selected_id,
+        "selected_model_display_name": selected.candidate.get("display_name", selected_id),
+        "selected_model_internal_eval_status": selected.internal_eval_status,
+        "voice_rights_evidence_url": selected.candidate.get("voice_rights_evidence_url", ""),
+        "voice_rights_summary": selected.candidate.get("voice_rights_summary", ""),
+        "speaker_identity_status": selected.candidate.get("speaker_identity_status", ""),
+        "synthetic_voice_status": selected.candidate.get("synthetic_voice_status", ""),
+        "real_person_voice_clone_risk": selected.candidate.get("real_person_voice_clone_risk", ""),
+        "internal_eval_allowed": bool(selected.candidate.get("internal_eval_allowed")),
+        "owner_internal_eval_approval_status": selected.candidate.get("owner_internal_eval_approval_status", ""),
+        "legal_internal_eval_review_status": selected.candidate.get("legal_internal_eval_review_status", ""),
+        "public_audio_allowed": False,
+        "real_audio_generation_allowed": False,
+        "public_production_status": selected.public_production_status,
+    }
+    status = selected.internal_eval_status if not blockers else selected.internal_eval_status
+    return StageResult(TTS_VOICE_RIGHTS_STAGE, status, dedupe_strings(blockers), selected.warnings, details)
+
+
+def dedupe_strings(values: list[str]) -> list[str]:
+    seen: set[str] = set()
+    result: list[str] = []
+    for value in values:
+        if value in seen:
+            continue
+        seen.add(value)
+        result.append(value)
+    return result
 
 
 def audiobook_sync_dry_run_stage(config: dict[str, Any]) -> StageResult:
@@ -501,7 +546,7 @@ def audiobook_sync_dry_run_stage(config: dict[str, Any]) -> StageResult:
             "chapter": result.chapter,
             "language": result.language,
             "model_candidate": result.model_candidate,
-            "model_generation": "HOLD_LICENSE_REVIEW",
+            "model_generation": "HOLD_VOICE_RIGHTS",
             "sync_level": str(sync_config.get("sync_level") or "sentence"),
             "status": result.status,
             "public_release_target": bool(sync_config.get("public_release_target", False)),
@@ -618,7 +663,11 @@ def audiobook_gate(stages: list[StageResult]) -> dict[str, Any]:
     audio_blockers = [
         blocker
         for stage in stages
-        if "audiobook" in stage.name.lower() or "narration" in stage.name.lower() or stage.name == TTS_MODEL_LICENSE_STAGE
+        if (
+            "audiobook" in stage.name.lower()
+            or "narration" in stage.name.lower()
+            or stage.name in {TTS_MODEL_LICENSE_STAGE, TTS_VOICE_RIGHTS_STAGE}
+        )
         for blocker in stage.blockers
     ]
     return {
@@ -627,6 +676,7 @@ def audiobook_gate(stages: list[StageResult]) -> dict[str, Any]:
         "model_generation": model_generation_status(stages),
         "selected_model_candidate": selected_model_status(stages).get("selected_model_candidate"),
         "selected_model_decision": selected_model_status(stages).get("selected_model_decision"),
+        "selected_model_internal_eval_status": selected_model_status(stages).get("selected_model_internal_eval_status"),
         "public_audio_publish_allowed": False,
         "audio_enabled": False,
         "listen_now_cta": False,
@@ -650,6 +700,7 @@ def selected_model_status(stages: list[StageResult]) -> dict[str, Any]:
     return {
         "selected_model_candidate": "unknown",
         "selected_model_decision": "HOLD_LICENSE_REVIEW",
+        "selected_model_internal_eval_status": "HOLD_VOICE_RIGHTS",
         "model_generation": "HOLD_LICENSE_REVIEW",
     }
 
@@ -806,6 +857,7 @@ def write_reports(
         + f"- Sync status: `{result.audiobook_gate['sync_status']}`\n"
         + f"- Selected model: `{result.audiobook_gate['selected_model_candidate']}`\n"
         + f"- Selected model decision: `{result.audiobook_gate['selected_model_decision']}`\n"
+        + f"- Selected model internal-eval status: `{result.audiobook_gate['selected_model_internal_eval_status']}`\n"
         + f"- Model generation: `{result.audiobook_gate['model_generation']}`\n"
         + f"- Public audio publish allowed: `{str(result.audiobook_gate['public_audio_publish_allowed']).lower()}`\n"
         + f"- Public listening CTA: `{str(result.audiobook_gate['listen_now_cta']).lower()}`\n"
@@ -819,6 +871,7 @@ def write_reports(
         + f"- Highlighted-text sync status: `{result.audiobook_gate['sync_status']}`\n"
         + f"- Selected model candidate: `{result.audiobook_gate['selected_model_candidate']}`\n"
         + f"- Model license decision: `{result.audiobook_gate['selected_model_decision']}`\n"
+        + f"- Model internal-eval status: `{result.audiobook_gate['selected_model_internal_eval_status']}`\n"
         + f"- Model generation status: `{result.audiobook_gate['model_generation']}`\n"
         + "- Human narration QA: HOLD, evidence missing or pending.\n"
         + "- Accessibility listening QA: HOLD, evidence missing or pending.\n"
@@ -843,11 +896,13 @@ def write_reports(
         f"Use `{result.config_path}` as the source config and keep the onboarding dry-run until every HOLD blocker is cleared.\n\n"
         f"Current selected TTS model: `{result.audiobook_gate['selected_model_candidate']}`.\n"
         f"Current selected TTS decision: `{result.audiobook_gate['selected_model_decision']}`.\n"
+        f"Current selected TTS internal-eval status: `{result.audiobook_gate['selected_model_internal_eval_status']}`.\n"
         f"Current model generation status: `{result.audiobook_gate['model_generation']}`.\n\n"
         "Required next checks:\n"
         "- Attach complete source-rights evidence.\n"
         "- Add owner-approved cover provenance.\n"
         "- Review TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md and TTS_MODEL_PRODUCTION_ELIGIBILITY_REPORT.md.\n"
+        "- Review TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md and TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md.\n"
         "- Complete TTS model license, voice, commercial-use, speaker-rights, and owner approval evidence before real internal generation.\n"
         "- Review the internal highlighted-text sync manifest before any audio release consideration.\n"
         "- Keep public audio blocked.\n"
@@ -921,6 +976,7 @@ def run_orchestration(
             cover_asset_gate(config),
             audiobook_planning_packet(config),
             tts_model_license_and_suitability_review(config),
+            tts_voice_rights_internal_eval_review(config),
             audiobook_sync_dry_run_stage(config),
             narration_qa_gate(config),
             audiobook_legal_accessibility_gate(config),
@@ -943,6 +999,8 @@ def run_orchestration(
         "audiobook_qa": "ENGLISH_AUDIOBOOK_QA_PACKET.md",
         "tts_model_license_matrix": "TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md",
         "tts_model_production_eligibility": "TTS_MODEL_PRODUCTION_ELIGIBILITY_REPORT.md",
+        "tts_voice_rights_internal_eval_packet": "TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md",
+        "tts_internal_eval_scorecard": "TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md",
         "seo": "ENGLISH_BOOK_SEO_PREVIEW_REPORT.md",
         "visual": "ENGLISH_BOOK_VISUAL_SCORECARD.md",
         "codex_prompt": "output/codex_prompts/next_english_book_onboarding_prompt.md",

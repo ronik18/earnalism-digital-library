@@ -26,6 +26,16 @@ candidates:
     evidence_notes: Official GitHub README and Hugging Face card document Apache-2.0 model/weights and commercial deployment language; CC BY dataset attribution and speaker/voice-rights review keep this HOLD.
     official_evidence_urls: https://github.com/hexgrad/kokoro, https://huggingface.co/hexgrad/Kokoro-82M
     owner_approval_status: OWNER_APPROVAL_REQUIRED
+    voice_rights_evidence_url: https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md
+    voice_rights_summary: Voice list is documented upstream, but Earnalism has not completed speaker-rights, voice provenance, or owner approval review.
+    speaker_identity_status: UNVERIFIED
+    synthetic_voice_status: OPEN_WEIGHT_VOICE_UNVERIFIED
+    real_person_voice_clone_risk: MEDIUM
+    internal_eval_allowed: false
+    internal_eval_blockers: voice rights approval pending; owner internal-eval approval pending; legal review pending.
+    owner_internal_eval_approval_status: OWNER_REVIEW_REQUIRED
+    legal_internal_eval_review_status: LEGAL_REVIEW_REQUIRED
+    internal_eval_status: HOLD_VOICE_RIGHTS
   - candidate_id: melotts
     display_name: MeloTTS
     upstream_url: https://github.com/myshell-ai/MeloTTS
@@ -51,6 +61,16 @@ candidates:
     evidence_notes: Official sources document MIT licensing for library/model card and commercial/non-commercial use; voice/speaker-rights evidence remains unresolved.
     official_evidence_urls: https://github.com/myshell-ai/MeloTTS, https://huggingface.co/myshell-ai/MeloTTS-English
     owner_approval_status: OWNER_APPROVAL_REQUIRED
+    voice_rights_evidence_url: https://huggingface.co/myshell-ai/MeloTTS-English
+    voice_rights_summary: Model card lists speaker IDs, but Earnalism has not completed speaker-rights or voice provenance review.
+    speaker_identity_status: UNVERIFIED
+    synthetic_voice_status: MODEL_CARD_SPEAKERS_UNVERIFIED
+    real_person_voice_clone_risk: MEDIUM
+    internal_eval_allowed: false
+    internal_eval_blockers: voice rights approval pending; owner internal-eval approval pending; legal review pending.
+    owner_internal_eval_approval_status: OWNER_REVIEW_REQUIRED
+    legal_internal_eval_review_status: LEGAL_REVIEW_REQUIRED
+    internal_eval_status: HOLD_VOICE_RIGHTS
   - candidate_id: piper
     display_name: Piper / Piper active fork
     upstream_url: https://github.com/rhasspy/piper
@@ -76,6 +96,16 @@ candidates:
     evidence_notes: Official Piper code license is MIT and piper-voices metadata is MIT, but per-voice provenance and active-fork/package obligations require manual legal review before any internal generation.
     official_evidence_urls: https://github.com/rhasspy/piper, https://huggingface.co/rhasspy/piper-voices
     owner_approval_status: OWNER_APPROVAL_REQUIRED
+    voice_rights_evidence_url: https://github.com/rhasspy/piper/blob/master/VOICES.md
+    voice_rights_summary: Voice catalog is public, but each voice requires separate provenance, commercial, and speaker-rights review.
+    speaker_identity_status: VARIES_BY_VOICE
+    synthetic_voice_status: VOICE_DEPENDENT_REVIEW_REQUIRED
+    real_person_voice_clone_risk: MEDIUM
+    internal_eval_allowed: false
+    internal_eval_blockers: per-voice rights review required; commercial status hold; owner internal-eval approval pending.
+    owner_internal_eval_approval_status: OWNER_REVIEW_REQUIRED
+    legal_internal_eval_review_status: LEGAL_REVIEW_REQUIRED
+    internal_eval_status: HOLD_VOICE_RIGHTS
   - candidate_id: indic-parler-tts
     display_name: Indic Parler-TTS
     upstream_url: https://huggingface.co/ai4bharat/indic-parler-tts
@@ -101,6 +131,16 @@ candidates:
     evidence_notes: Official Hugging Face API/card metadata documents Apache-2.0 weights and Indic language coverage; gated card/data and unresolved voice rights keep this HOLD.
     official_evidence_urls: https://huggingface.co/ai4bharat/indic-parler-tts
     owner_approval_status: OWNER_APPROVAL_REQUIRED
+    voice_rights_evidence_url: https://huggingface.co/ai4bharat/indic-parler-tts
+    voice_rights_summary: Gated model/dataset metadata prevents complete speaker-rights verification from local public evidence.
+    speaker_identity_status: UNVERIFIED_GATED_CARD
+    synthetic_voice_status: INDIC_MODEL_VOICE_REVIEW_REQUIRED
+    real_person_voice_clone_risk: MEDIUM
+    internal_eval_allowed: false
+    internal_eval_blockers: gated evidence review required; code license review pending; owner internal-eval approval pending.
+    owner_internal_eval_approval_status: OWNER_REVIEW_REQUIRED
+    legal_internal_eval_review_status: LEGAL_REVIEW_REQUIRED
+    internal_eval_status: HOLD_VOICE_RIGHTS
   - candidate_id: indicf5
     display_name: IndicF5
     upstream_url: https://github.com/AI4Bharat/IndicF5
@@ -126,6 +166,16 @@ candidates:
     evidence_notes: Official Hugging Face metadata documents MIT weights and Bengali-language support; missing repo license file plus dataset/speaker-rights review keep this HOLD.
     official_evidence_urls: https://github.com/AI4Bharat/IndicF5, https://huggingface.co/ai4bharat/IndicF5
     owner_approval_status: OWNER_APPROVAL_REQUIRED
+    voice_rights_evidence_url: https://huggingface.co/ai4bharat/IndicF5
+    voice_rights_summary: Model card identifies datasets, but speaker consent and voice rights require manual review before internal generation.
+    speaker_identity_status: UNVERIFIED
+    synthetic_voice_status: INDIC_MODEL_VOICE_REVIEW_REQUIRED
+    real_person_voice_clone_risk: MEDIUM
+    internal_eval_allowed: false
+    internal_eval_blockers: voice rights review required; repo code license review pending; owner internal-eval approval pending.
+    owner_internal_eval_approval_status: OWNER_REVIEW_REQUIRED
+    legal_internal_eval_review_status: LEGAL_REVIEW_REQUIRED
+    internal_eval_status: HOLD_VOICE_RIGHTS
   - candidate_id: styletts2
     display_name: StyleTTS2
     upstream_url: https://github.com/yl4579/StyleTTS2
@@ -151,3 +201,13 @@ candidates:
     evidence_notes: Official repo code is MIT, but pre-trained model rules and high voice-cloning risk make this blocked for Earnalism generation.
     official_evidence_urls: https://github.com/yl4579/StyleTTS2, https://huggingface.co/yl4579/StyleTTS2-LJSpeech, https://huggingface.co/yl4579/StyleTTS2-LibriTTS
     owner_approval_status: OWNER_APPROVAL_REQUIRED
+    voice_rights_evidence_url: https://github.com/yl4579/StyleTTS2#pre-trained-models
+    voice_rights_summary: Official README includes pretrained voice-use restrictions and permission/disclosure requirements; Earnalism treats this as blocked for generation.
+    speaker_identity_status: CLONING_PERMISSION_REQUIRED
+    synthetic_voice_status: PRETRAINED_MODEL_RESTRICTIONS
+    real_person_voice_clone_risk: HIGH
+    internal_eval_allowed: false
+    internal_eval_blockers: high voice-cloning risk; pretrained model restrictions; legal review blocked for generation.
+    owner_internal_eval_approval_status: OWNER_REVIEW_REQUIRED
+    legal_internal_eval_review_status: BLOCKED
+    internal_eval_status: BLOCKED

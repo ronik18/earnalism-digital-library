@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-22T07:39:33+00:00
+- Generated: 2026-06-22T15:09:53+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 | Item | Status | Notes |
@@ -16,7 +16,8 @@
 | seo_social_metadata_draft | PASS | No blocker. |
 | cover_asset_provenance_gate | BLOCKED | owner-designed cover provenance is required before public use.; cover provenance note is required.; owner cover approval is required. |
 | audiobook_planning_packet | BLOCKED | public audiobook release is blocked by default.; model/voice license evidence is missing. |
-| TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW | HOLD_LICENSE_REVIEW | selected model `kokoro` is not eligible for real internal generation: HOLD_LICENSE_REVIEW.; voice_license is missing or requires review.; voice rights evidence is missing or varies by voice. |
+| TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW | HOLD_VOICE_RIGHTS | selected model `kokoro` is not eligible for real internal generation: HOLD_VOICE_RIGHTS.; voice_license is missing or requires review.; voice rights evidence is missing or varies by voice. |
+| TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW | HOLD_VOICE_RIGHTS | selected model `kokoro` is not eligible for internal evaluation: HOLD_VOICE_RIGHTS.; voice_license is missing or requires review.; voice rights evidence is missing or varies by voice. |
 | audiobook_sync_dry_run_stage | HOLD_SYNC_QA_REQUIRED | sync release evidence remains HOLD; public audio cannot be released. |
 | narration_qa_gate | BLOCKED | human narration QA is missing or not approved.; accessibility listening QA is missing or not approved. |
 | audiobook_legal_accessibility_compliance_gate | BLOCKED | public audio remains PUBLIC_AUDIO_RELEASE_BLOCKED until separate owner/legal/accessibility release approval.; rollback_approval_status is required before audiobook release.; owner_legal_approval_status is required before audiobook release. |
@@ -31,6 +32,6 @@
 - Public publish allowed: `false`
 - Public audio status: `PUBLIC_AUDIO_RELEASE_BLOCKED`
 - Audiobook sync status: `HOLD_SYNC_QA_REQUIRED`
-- Model generation status: `HOLD_LICENSE_REVIEW`
+- Model generation status: `HOLD_VOICE_RIGHTS`
 
 This orchestrator is dry-run/report-only and does not publish books, enable public audio, or change payment settings.

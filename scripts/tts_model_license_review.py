@@ -21,13 +21,18 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONFIG_PATH = ROOT / "audiobook" / "models" / "tts_model_candidates.yml"
 MATRIX_REPORT_PATH = ROOT / "TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md"
 ELIGIBILITY_REPORT_PATH = ROOT / "TTS_MODEL_PRODUCTION_ELIGIBILITY_REPORT.md"
+VOICE_RIGHTS_PACKET_PATH = ROOT / "TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md"
+INTERNAL_EVAL_SCORECARD_PATH = ROOT / "TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md"
 
 ELIGIBLE_INTERNAL_EVAL = "ELIGIBLE_INTERNAL_EVAL"
 HOLD_LICENSE_REVIEW = "HOLD_LICENSE_REVIEW"
+HOLD_VOICE_RIGHTS = "HOLD_VOICE_RIGHTS"
+HOLD_OWNER_REVIEW = "HOLD_OWNER_REVIEW"
 BLOCKED = "BLOCKED"
 UNKNOWN_VALUES = {"", "unknown", "hold_review", "tbd", "todo", "missing", "none"}
 VALID_COMMERCIAL_USE = {"ALLOWED", "HOLD_REVIEW", "BLOCKED", "UNKNOWN"}
 VALID_PRODUCTION_STATUS = {ELIGIBLE_INTERNAL_EVAL, HOLD_LICENSE_REVIEW, BLOCKED}
+VALID_INTERNAL_EVAL_STATUS = {ELIGIBLE_INTERNAL_EVAL, HOLD_VOICE_RIGHTS, HOLD_OWNER_REVIEW, BLOCKED}
 REQUIRED_FIELDS = (
     "candidate_id",
     "display_name",
@@ -53,6 +58,16 @@ REQUIRED_FIELDS = (
     "evidence_last_reviewed_date",
     "evidence_notes",
     "owner_approval_status",
+    "voice_rights_evidence_url",
+    "voice_rights_summary",
+    "speaker_identity_status",
+    "synthetic_voice_status",
+    "real_person_voice_clone_risk",
+    "internal_eval_allowed",
+    "internal_eval_blockers",
+    "owner_internal_eval_approval_status",
+    "legal_internal_eval_review_status",
+    "internal_eval_status",
 )
 
 
@@ -62,6 +77,7 @@ class CandidateDecision:
     decision_status: str
     internal_generation_status: str
     public_production_status: str
+    internal_eval_status: str
     issues: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
 
@@ -193,6 +209,34 @@ def classify_candidate(candidate: dict[str, Any]) -> CandidateDecision:
     if is_unknown(candidate.get("voice_license")) or "VARIES" in upper(candidate.get("voice_license")):
         issues.append("voice rights evidence is missing or varies by voice.")
 
+    internal_eval_declared = upper(candidate.get("internal_eval_status"))
+    if internal_eval_declared not in VALID_INTERNAL_EVAL_STATUS:
+        issues.append("internal_eval_status must be ELIGIBLE_INTERNAL_EVAL, HOLD_VOICE_RIGHTS, HOLD_OWNER_REVIEW, or BLOCKED.")
+
+    if not has_url(candidate.get("voice_rights_evidence_url")):
+        issues.append("voice_rights_evidence_url must be an http(s) URL.")
+    if is_unknown(candidate.get("voice_rights_summary")):
+        issues.append("voice_rights_summary is missing or requires review.")
+    if is_unknown(candidate.get("speaker_identity_status")) or "UNVERIFIED" in upper(candidate.get("speaker_identity_status")):
+        issues.append("speaker identity or voice provenance remains unresolved.")
+    if is_unknown(candidate.get("synthetic_voice_status")) or "UNVERIFIED" in upper(candidate.get("synthetic_voice_status")):
+        issues.append("synthetic voice status remains unresolved.")
+    clone_risk = upper(candidate.get("real_person_voice_clone_risk"))
+    if is_unknown(candidate.get("real_person_voice_clone_risk")) or clone_risk in {"HIGH", "UNRESOLVED", "HOLD_REVIEW"}:
+        issues.append("real-person voice clone risk is unresolved or high.")
+    if bool(candidate.get("internal_eval_allowed")) is not True:
+        issues.append("internal_eval_allowed is not true.")
+    if is_unknown(candidate.get("internal_eval_blockers")):
+        issues.append("internal_eval_blockers must record the current blocker set.")
+    owner_internal_eval_status = upper(candidate.get("owner_internal_eval_approval_status"))
+    if owner_internal_eval_status not in {"APPROVED", "OWNER_REVIEW_REQUIRED"}:
+        issues.append("owner internal-eval approval is missing or invalid.")
+    legal_internal_eval_status = upper(candidate.get("legal_internal_eval_review_status"))
+    if legal_internal_eval_status in {"", "UNKNOWN", "HOLD_REVIEW"}:
+        issues.append("legal internal-eval review status is missing or unresolved.")
+    if legal_internal_eval_status == "BLOCKED":
+        issues.append("legal internal-eval review is blocked.")
+
     gpl_risk = "GPL" in upper(candidate.get("code_license")) or "GPL" in upper(candidate.get("license_name"))
     if gpl_risk:
         warnings.append("GPL/commercial obligations require manual legal review before production use.")
@@ -222,7 +266,19 @@ def classify_candidate(candidate: dict[str, Any]) -> CandidateDecision:
         and "VARIES" not in upper(candidate.get("weights_license"))
         and not is_unknown(candidate.get("voice_license"))
         and "VARIES" not in upper(candidate.get("voice_license"))
-        and production_status == ELIGIBLE_INTERNAL_EVAL
+        and internal_eval_declared == ELIGIBLE_INTERNAL_EVAL
+        and has_url(candidate.get("voice_rights_evidence_url"))
+        and not is_unknown(candidate.get("voice_rights_summary"))
+        and not is_unknown(candidate.get("speaker_identity_status"))
+        and "UNVERIFIED" not in upper(candidate.get("speaker_identity_status"))
+        and not is_unknown(candidate.get("synthetic_voice_status"))
+        and "UNVERIFIED" not in upper(candidate.get("synthetic_voice_status"))
+        and not is_unknown(candidate.get("real_person_voice_clone_risk"))
+        and upper(candidate.get("real_person_voice_clone_risk")) not in {"HIGH", "UNRESOLVED", "HOLD_REVIEW"}
+        and bool(candidate.get("internal_eval_allowed")) is True
+        and not is_unknown(candidate.get("internal_eval_blockers"))
+        and owner_internal_eval_status in {"APPROVED", "OWNER_REVIEW_REQUIRED"}
+        and legal_internal_eval_status not in {"", "UNKNOWN", "HOLD_REVIEW", "BLOCKED"}
         and not (gpl_risk and not owner_approved)
         and upper(candidate.get("voice_cloning_risk")) != "HIGH"
         and upper(candidate.get("real_person_voice_risk")) != "HIGH"
@@ -231,16 +287,40 @@ def classify_candidate(candidate: dict[str, Any]) -> CandidateDecision:
     if complete_internal_evidence:
         internal_generation_status = "ELIGIBLE_INTERNAL_EVAL_ONLY"
         decision_status = ELIGIBLE_INTERNAL_EVAL
-    elif production_status == BLOCKED or commercial == "BLOCKED" or "high" in normalized(candidate.get("voice_cloning_risk")).lower():
+        internal_eval_status = ELIGIBLE_INTERNAL_EVAL
+    elif (
+        production_status == BLOCKED
+        or internal_eval_declared == BLOCKED
+        or commercial == "BLOCKED"
+        or "high" in normalized(candidate.get("voice_cloning_risk")).lower()
+        or clone_risk == "HIGH"
+        or legal_internal_eval_status == "BLOCKED"
+    ):
         internal_generation_status = BLOCKED
         decision_status = BLOCKED
-    else:
+        internal_eval_status = BLOCKED
+    elif owner_internal_eval_status not in {"APPROVED", "OWNER_REVIEW_REQUIRED"}:
+        internal_generation_status = HOLD_OWNER_REVIEW
+        decision_status = HOLD_OWNER_REVIEW
+        internal_eval_status = HOLD_OWNER_REVIEW
+    elif (
+        commercial != "ALLOWED"
+        or is_unknown(candidate.get("license_name"))
+        or not has_url(candidate.get("license_url"))
+        or is_unknown(candidate.get("code_license"))
+        or is_unknown(candidate.get("weights_license"))
+        or "VARIES" in upper(candidate.get("weights_license"))
+        or gpl_risk
+    ):
         internal_generation_status = HOLD_LICENSE_REVIEW
         decision_status = HOLD_LICENSE_REVIEW
+        internal_eval_status = HOLD_VOICE_RIGHTS
+    else:
+        internal_generation_status = HOLD_VOICE_RIGHTS
+        decision_status = HOLD_VOICE_RIGHTS
+        internal_eval_status = HOLD_VOICE_RIGHTS
 
     public_production_status = "PRODUCTION_BLOCKED"
-    if complete_internal_evidence and owner_approved:
-        public_production_status = "OWNER_REVIEW_STILL_REQUIRED"
 
     if not owner_approved:
         issues.append("owner approval is required before production use.")
@@ -254,6 +334,7 @@ def classify_candidate(candidate: dict[str, Any]) -> CandidateDecision:
         decision_status=decision_status,
         internal_generation_status=internal_generation_status,
         public_production_status=public_production_status,
+        internal_eval_status=internal_eval_status,
         issues=dedupe(issues),
         warnings=dedupe(warnings),
     )
@@ -280,13 +361,13 @@ def matrix_markdown(decisions: list[CandidateDecision]) -> str:
         "",
         "This local report does not approve production audio. It records evidence status only.",
         "",
-        "| Candidate | Official repo | Model card | Commercial use | Code license | Weights license | Voice license | English | Bengali | Decision |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
+        "| Candidate | Official repo | Model card | Commercial use | Code license | Weights license | Voice license | Internal eval | English | Bengali | Decision |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for decision in decisions:
         candidate = decision.candidate
         lines.append(
-            "| {display} | {repo} | {card} | {commercial} | {code} | {weights} | {voice} | {english} | {bengali} | {decision} |".format(
+            "| {display} | {repo} | {card} | {commercial} | {code} | {weights} | {voice} | {internal_eval} | {english} | {bengali} | {decision} |".format(
                 display=normalized(candidate.get("display_name")),
                 repo=markdown_link("repo", candidate.get("upstream_url")),
                 card=markdown_link("card", candidate.get("model_card_url")),
@@ -294,6 +375,7 @@ def matrix_markdown(decisions: list[CandidateDecision]) -> str:
                 code=normalized(candidate.get("code_license")),
                 weights=normalized(candidate.get("weights_license")),
                 voice=normalized(candidate.get("voice_license")),
+                internal_eval=decision.internal_eval_status,
                 english=normalized(candidate.get("english_suitability")),
                 bengali=normalized(candidate.get("bengali_suitability")),
                 decision=decision.decision_status,
@@ -311,9 +393,18 @@ def matrix_markdown(decisions: list[CandidateDecision]) -> str:
                 f"- License URL: {normalized(candidate.get('license_url'))}",
                 f"- Dataset/license notes: {normalized(candidate.get('dataset_license_notes'))}",
                 f"- Attribution required: `{normalized(candidate.get('attribution_required'))}`",
+                f"- Voice rights evidence URL: {normalized(candidate.get('voice_rights_evidence_url'))}",
+                f"- Voice rights summary: {normalized(candidate.get('voice_rights_summary'))}",
+                f"- Speaker identity status: `{normalized(candidate.get('speaker_identity_status'))}`",
+                f"- Synthetic voice status: `{normalized(candidate.get('synthetic_voice_status'))}`",
                 f"- Local inference feasible: `{normalized(candidate.get('local_inference_possible'))}`",
                 f"- Network required: `{normalized(candidate.get('network_required'))}`",
                 f"- Real-person voice risk: `{normalized(candidate.get('real_person_voice_risk'))}`",
+                f"- Real-person voice clone risk: `{normalized(candidate.get('real_person_voice_clone_risk'))}`",
+                f"- Internal eval allowed: `{normalized(candidate.get('internal_eval_allowed'))}`",
+                f"- Internal eval blockers: {normalized(candidate.get('internal_eval_blockers'))}",
+                f"- Owner internal-eval approval: `{normalized(candidate.get('owner_internal_eval_approval_status'))}`",
+                f"- Legal internal-eval review: `{normalized(candidate.get('legal_internal_eval_review_status'))}`",
                 f"- Evidence sources reviewed: {normalized(candidate.get('official_evidence_urls'))}",
                 f"- Evidence notes: {normalized(candidate.get('evidence_notes'))}",
                 f"- Decision reason: {decision_reason(decision)}",
@@ -361,6 +452,7 @@ def eligibility_markdown(decisions: list[CandidateDecision]) -> str:
                 f"- Candidate ID: `{candidate.get('candidate_id', 'unknown')}`",
                 f"- Decision: `{decision.decision_status}`",
                 f"- Internal generation: `{decision.internal_generation_status}`",
+                f"- Internal eval status: `{decision.internal_eval_status}`",
                 f"- Public production: `{decision.public_production_status}`",
                 f"- Owner approval: `{candidate.get('owner_approval_status', 'OWNER_APPROVAL_REQUIRED')}`",
                 "",
@@ -379,17 +471,81 @@ def eligibility_markdown(decisions: list[CandidateDecision]) -> str:
     return "\n".join(lines)
 
 
+def voice_rights_packet_markdown(decisions: list[CandidateDecision]) -> str:
+    lines = [
+        "# TTS Voice Rights Internal-Eval Approval Packet",
+        "",
+        "This packet is part of the English onboarding orchestrator. It does not approve production audio.",
+        "",
+        "- Public audio status: `PUBLIC_AUDIO_RELEASE_BLOCKED`",
+        "- Production approval status: `PRODUCTION_BLOCKED` for every candidate",
+        "- Real audio generation: `false`",
+        "- Model downloads or paid APIs: `false`",
+        "",
+    ]
+    for decision in decisions:
+        candidate = decision.candidate
+        lines.extend(
+            [
+                f"## {normalized(candidate.get('display_name'))}",
+                "",
+                f"- Candidate ID: `{normalized(candidate.get('candidate_id'))}`",
+                f"- Internal-eval status: `{decision.internal_eval_status}`",
+                f"- Voice rights evidence URL: {normalized(candidate.get('voice_rights_evidence_url'))}",
+                f"- Voice rights summary: {normalized(candidate.get('voice_rights_summary'))}",
+                f"- Speaker identity status: `{normalized(candidate.get('speaker_identity_status'))}`",
+                f"- Synthetic voice status: `{normalized(candidate.get('synthetic_voice_status'))}`",
+                f"- Real-person voice clone risk: `{normalized(candidate.get('real_person_voice_clone_risk'))}`",
+                f"- Internal eval allowed: `{normalized(candidate.get('internal_eval_allowed'))}`",
+                f"- Owner internal-eval approval: `{normalized(candidate.get('owner_internal_eval_approval_status'))}`",
+                f"- Legal internal-eval review: `{normalized(candidate.get('legal_internal_eval_review_status'))}`",
+                f"- Blockers: {normalized(candidate.get('internal_eval_blockers'))}",
+                f"- Public production: `{decision.public_production_status}`",
+                "",
+            ]
+        )
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def internal_eval_scorecard_markdown(decisions: list[CandidateDecision]) -> str:
+    eligible = [decision for decision in decisions if decision.internal_eval_status == ELIGIBLE_INTERNAL_EVAL]
+    lines = [
+        "# TTS Internal-Eval Candidate Scorecard",
+        "",
+        f"- Eligible internal-eval candidates: `{len(eligible)}`",
+        "- Public production approval: `0`",
+        "- Public audio release: `PUBLIC_AUDIO_RELEASE_BLOCKED`",
+        "",
+        "| Candidate | Internal eval | Public production | Primary blocker |",
+        "| --- | --- | --- | --- |",
+    ]
+    for decision in decisions:
+        candidate = decision.candidate
+        blocker = normalized(candidate.get("internal_eval_blockers")) or decision_reason(decision)
+        lines.append(
+            "| {display} | {internal_eval} | {production} | {blocker} |".format(
+                display=normalized(candidate.get("display_name")),
+                internal_eval=decision.internal_eval_status,
+                production=decision.public_production_status,
+                blocker=blocker.replace("|", "/"),
+            )
+        )
+    return "\n".join(lines) + "\n"
+
+
 def decision_payload(decisions: list[CandidateDecision]) -> dict[str, Any]:
     return {
         "generated_by": "scripts/tts_model_license_review.py",
         "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
         "production_audio_approved": False,
+        "eligible_internal_eval_count": sum(1 for decision in decisions if decision.internal_eval_status == ELIGIBLE_INTERNAL_EVAL),
         "candidates": [
             {
                 "candidate_id": decision.candidate.get("candidate_id"),
                 "display_name": decision.candidate.get("display_name"),
                 "decision_status": decision.decision_status,
                 "internal_generation_status": decision.internal_generation_status,
+                "internal_eval_status": decision.internal_eval_status,
                 "public_production_status": decision.public_production_status,
                 "issues": decision.issues,
                 "warnings": decision.warnings,
@@ -404,22 +560,34 @@ def write_reports(decisions: list[CandidateDecision], *, output_dir: Path | None
     paths: dict[str, Path] = {}
     matrix = matrix_markdown(decisions)
     eligibility = eligibility_markdown(decisions)
+    voice_rights_packet = voice_rights_packet_markdown(decisions)
+    internal_eval_scorecard = internal_eval_scorecard_markdown(decisions)
     MATRIX_REPORT_PATH.write_text(matrix, encoding="utf-8")
     ELIGIBILITY_REPORT_PATH.write_text(eligibility, encoding="utf-8")
+    VOICE_RIGHTS_PACKET_PATH.write_text(voice_rights_packet, encoding="utf-8")
+    INTERNAL_EVAL_SCORECARD_PATH.write_text(internal_eval_scorecard, encoding="utf-8")
     paths[path_key(MATRIX_REPORT_PATH)] = MATRIX_REPORT_PATH
     paths[path_key(ELIGIBILITY_REPORT_PATH)] = ELIGIBILITY_REPORT_PATH
+    paths[path_key(VOICE_RIGHTS_PACKET_PATH)] = VOICE_RIGHTS_PACKET_PATH
+    paths[path_key(INTERNAL_EVAL_SCORECARD_PATH)] = INTERNAL_EVAL_SCORECARD_PATH
     if output_dir:
         if not output_dir.is_absolute():
             output_dir = ROOT / output_dir
         output_dir.mkdir(parents=True, exist_ok=True)
         matrix_path = output_dir / "TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md"
         eligibility_path = output_dir / "TTS_MODEL_PRODUCTION_ELIGIBILITY_REPORT.md"
+        voice_rights_packet_path = output_dir / "TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md"
+        internal_eval_scorecard_path = output_dir / "TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md"
         json_path = output_dir / "tts_model_license_review.json"
         matrix_path.write_text(matrix, encoding="utf-8")
         eligibility_path.write_text(eligibility, encoding="utf-8")
+        voice_rights_packet_path.write_text(voice_rights_packet, encoding="utf-8")
+        internal_eval_scorecard_path.write_text(internal_eval_scorecard, encoding="utf-8")
         json_path.write_text(json.dumps(decision_payload(decisions), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         paths[path_key(matrix_path)] = matrix_path
         paths[path_key(eligibility_path)] = eligibility_path
+        paths[path_key(voice_rights_packet_path)] = voice_rights_packet_path
+        paths[path_key(internal_eval_scorecard_path)] = internal_eval_scorecard_path
         paths[path_key(json_path)] = json_path
     return paths
 
@@ -441,6 +609,7 @@ def selected_candidate_decision(candidate_id: str, decisions: list[CandidateDeci
         decision_status=HOLD_LICENSE_REVIEW,
         internal_generation_status=HOLD_LICENSE_REVIEW,
         public_production_status="PRODUCTION_BLOCKED",
+        internal_eval_status=HOLD_VOICE_RIGHTS,
         issues=["selected model candidate is not configured."],
     )
 
@@ -454,7 +623,7 @@ def main() -> int:
     decisions = review_candidates(args.config)
     paths = write_reports(decisions, output_dir=args.output_dir)
     blocked = sum(1 for decision in decisions if decision.decision_status == BLOCKED)
-    hold = sum(1 for decision in decisions if decision.decision_status == HOLD_LICENSE_REVIEW)
+    hold = sum(1 for decision in decisions if decision.decision_status in {HOLD_LICENSE_REVIEW, HOLD_VOICE_RIGHTS, HOLD_OWNER_REVIEW})
     eligible = sum(1 for decision in decisions if decision.decision_status == ELIGIBLE_INTERNAL_EVAL)
     print(
         "TTS model license review complete: "
