@@ -5,7 +5,7 @@
   "model_candidate": "kokoro",
   "mode": "dry-run",
   "status": "DRY_RUN_COMPLETE",
-  "generated_at": "2026-06-22T05:40:55+00:00",
+  "generated_at": "2026-06-22T06:05:30+00:00",
   "output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/audiobook_lab/frankenstein/en/1",
   "source_hash": "1f6184099b4e53f177299e27f638d31d9c6e57e021982c343ce8989a6cce507c",
   "sync_manifest_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/audiobook_lab/frankenstein/en/1/sync_manifest.json",

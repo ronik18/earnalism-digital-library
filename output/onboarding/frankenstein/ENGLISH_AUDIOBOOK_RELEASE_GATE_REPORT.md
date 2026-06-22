@@ -2,11 +2,14 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-22T05:40:55+00:00
+- Generated: 2026-06-22T06:05:30+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - Status: `PUBLIC_AUDIO_RELEASE_BLOCKED`
 - Sync status: `HOLD_SYNC_QA_REQUIRED`
+- Selected model: `kokoro`
+- Selected model decision: `HOLD_LICENSE_REVIEW`
+- Model generation: `HOLD_LICENSE_REVIEW`
 - Public audio publish allowed: `false`
 - Public listening CTA: `false`
 - Public audio JSON-LD metadata: `false`
@@ -15,6 +18,13 @@
 
 - public audiobook release is blocked by default.
 - model/voice license evidence is missing.
+- selected model `kokoro` is not eligible for real internal generation: HOLD_LICENSE_REVIEW.
+- voice_license is missing or requires review.
+- commercial_use_status is missing or requires review.
+- real_person_voice_risk is missing or requires review.
+- commercial-use evidence is not approved.
+- voice rights evidence is missing or varies by voice.
+- owner approval is required before production use.
 - sync release evidence remains HOLD; public audio cannot be released.
 - human narration QA is missing or not approved.
 - accessibility listening QA is missing or not approved.
