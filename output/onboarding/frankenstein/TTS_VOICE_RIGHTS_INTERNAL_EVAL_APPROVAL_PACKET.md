@@ -12,14 +12,14 @@ This packet is part of the English onboarding orchestrator. It does not approve 
 - Candidate ID: `kokoro`
 - Internal-eval status: `HOLD_VOICE_RIGHTS`
 - Voice rights evidence URL: https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md
-- Voice rights summary: Voice list is documented upstream, but Earnalism has not completed speaker-rights, voice provenance, or owner approval review.
+- Voice rights summary: Upstream voice list is documented, including selectable Kokoro voices, but no Earnalism-reviewed evidence yet proves the selected voice is non-human/synthetic or otherwise cleared for internal generation. Owner/legal review must document selected-voice speaker provenance and commercial internal-eval permission.
 - Speaker identity status: `UNVERIFIED`
 - Synthetic voice status: `OPEN_WEIGHT_VOICE_UNVERIFIED`
 - Real-person voice clone risk: `MEDIUM`
 - Internal eval allowed: `False`
 - Owner internal-eval approval: `OWNER_REVIEW_REQUIRED`
 - Legal internal-eval review: `LEGAL_REVIEW_REQUIRED`
-- Blockers: voice rights approval pending; owner internal-eval approval pending; legal review pending.
+- Blockers: selected Kokoro voice/speaker rights evidence missing; selected voice synthetic/non-human status not owner-verified; owner internal-eval approval pending; legal internal-eval review pending.
 - Public production: `PRODUCTION_BLOCKED`
 
 ## MeloTTS
@@ -27,14 +27,14 @@ This packet is part of the English onboarding orchestrator. It does not approve 
 - Candidate ID: `melotts`
 - Internal-eval status: `HOLD_VOICE_RIGHTS`
 - Voice rights evidence URL: https://huggingface.co/myshell-ai/MeloTTS-English
-- Voice rights summary: Model card lists speaker IDs, but Earnalism has not completed speaker-rights or voice provenance review.
+- Voice rights summary: Model card lists English accent/speaker options, but Earnalism has not completed selected-speaker provenance, consent, or voice-rights review for internal generation.
 - Speaker identity status: `UNVERIFIED`
 - Synthetic voice status: `MODEL_CARD_SPEAKERS_UNVERIFIED`
 - Real-person voice clone risk: `MEDIUM`
 - Internal eval allowed: `False`
 - Owner internal-eval approval: `OWNER_REVIEW_REQUIRED`
 - Legal internal-eval review: `LEGAL_REVIEW_REQUIRED`
-- Blockers: voice rights approval pending; owner internal-eval approval pending; legal review pending.
+- Blockers: selected MeloTTS speaker/voice rights evidence missing; selected speaker synthetic/non-human status not owner-verified; owner internal-eval approval pending; legal internal-eval review pending.
 - Public production: `PRODUCTION_BLOCKED`
 
 ## Piper / Piper active fork

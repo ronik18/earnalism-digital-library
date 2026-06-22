@@ -891,22 +891,43 @@ def write_reports(
         + "- Owner-designed artwork provenance and owner approval must be retained internally.\n"
         + "- No 10/10 visual or accessibility claim is made.\n"
     )
-    prompt = (
-        "# Next English Book Onboarding Prompt\n\n"
-        f"Use `{result.config_path}` as the source config and keep the onboarding dry-run until every HOLD blocker is cleared.\n\n"
-        f"Current selected TTS model: `{result.audiobook_gate['selected_model_candidate']}`.\n"
-        f"Current selected TTS decision: `{result.audiobook_gate['selected_model_decision']}`.\n"
-        f"Current selected TTS internal-eval status: `{result.audiobook_gate['selected_model_internal_eval_status']}`.\n"
-        f"Current model generation status: `{result.audiobook_gate['model_generation']}`.\n\n"
-        "Required next checks:\n"
-        "- Attach complete source-rights evidence.\n"
-        "- Add owner-approved cover provenance.\n"
-        "- Review TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md and TTS_MODEL_PRODUCTION_ELIGIBILITY_REPORT.md.\n"
-        "- Review TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md and TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md.\n"
-        "- Complete TTS model license, voice, commercial-use, speaker-rights, and owner approval evidence before real internal generation.\n"
-        "- Review the internal highlighted-text sync manifest before any audio release consideration.\n"
-        "- Keep public audio blocked.\n"
-        "- Run the publication, audio, SEO, social, payment-smoke, regression, and frontend build gates.\n"
+    selected_internal_eval_status = str(result.audiobook_gate["selected_model_internal_eval_status"])
+    selected_model_candidate = str(result.audiobook_gate["selected_model_candidate"])
+    if selected_internal_eval_status == "ELIGIBLE_INTERNAL_EVAL":
+        tts_next_action = (
+            f"- Future separate task may prepare an internal-only 2-3 minute Dracula Chapter 1 sample with "
+            f"`{selected_model_candidate}` after confirming no public audio output, no model download surprises, "
+            "and no publication-side metadata changes.\n"
+            "- Keep that future sample local/internal, preview-only, and outside `frontend/public` and `frontend/build`.\n"
+        )
+    else:
+        tts_next_action = (
+            f"- Do not generate an audio sample yet; `{selected_model_candidate}` remains "
+            f"`{selected_internal_eval_status}`.\n"
+            "- Collect owner/legal-reviewed selected voice or speaker-rights evidence, including provenance, "
+            "commercial internal-eval permission, synthetic/non-human or consent status, and real-person "
+            "voice-cloning risk review.\n"
+        )
+
+    prompt = "".join(
+        [
+            "# Next English Book Onboarding Prompt\n\n",
+            f"Use `{result.config_path}` as the source config and keep the onboarding dry-run until every HOLD blocker is cleared.\n\n",
+            f"Current selected TTS model: `{result.audiobook_gate['selected_model_candidate']}`.\n",
+            f"Current selected TTS decision: `{result.audiobook_gate['selected_model_decision']}`.\n",
+            f"Current selected TTS internal-eval status: `{result.audiobook_gate['selected_model_internal_eval_status']}`.\n",
+            f"Current model generation status: `{result.audiobook_gate['model_generation']}`.\n\n",
+            "Required next checks:\n",
+            "- Attach complete source-rights evidence.\n",
+            "- Add owner-approved cover provenance.\n",
+            "- Review TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md and TTS_MODEL_PRODUCTION_ELIGIBILITY_REPORT.md.\n",
+            "- Review TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md and TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md.\n",
+            "- Complete TTS model license, voice, commercial-use, speaker-rights, and owner approval evidence before real internal generation.\n",
+            tts_next_action,
+            "- Review the internal highlighted-text sync manifest before any audio release consideration.\n",
+            "- Keep public audio blocked.\n",
+            "- Run the publication, audio, SEO, social, payment-smoke, regression, and frontend build gates.\n",
+        ]
     )
 
     root_reports = {

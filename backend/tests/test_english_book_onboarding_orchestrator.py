@@ -205,6 +205,18 @@ def test_voice_rights_internal_eval_stage_records_selected_candidate(tmp_path: P
     assert voice_stage.details["selected_model_internal_eval_status"] == "HOLD_VOICE_RIGHTS"
     assert voice_stage.details["public_audio_allowed"] is False
     assert voice_stage.details["real_audio_generation_allowed"] is False
+    assert any("speaker" in blocker.lower() or "voice" in blocker.lower() for blocker in voice_stage.blockers)
+
+
+def test_next_prompt_requests_voice_rights_evidence_before_audio_generation(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    result = run_orchestration(config_path)
+    paths = write_reports(result, tmp_path / "onboarding", write_root_reports=False)
+    prompt = paths["output/onboarding/frankenstein/next_codex_prompt.md"].read_text(encoding="utf-8")
+
+    assert "Do not generate an audio sample yet" in prompt
+    assert "Collect owner/legal-reviewed selected voice or speaker-rights evidence" in prompt
+    assert "future separate task may prepare an internal-only 2-3 minute" not in prompt
 
 
 def test_sync_manifest_path_is_recorded_in_slug_scoped_output(tmp_path: Path):

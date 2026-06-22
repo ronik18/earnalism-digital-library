@@ -18,10 +18,10 @@ This local report does not approve production audio. It records evidence status 
 - Official repository: https://github.com/hexgrad/kokoro
 - Official model card: https://huggingface.co/hexgrad/Kokoro-82M
 - License URL: https://www.apache.org/licenses/LICENSE-2.0
-- Dataset/license notes: Official model card lists Apache-licensed model/weights and named CC BY training data, but voice/speaker-rights approval for Earnalism use still requires owner/legal review.
+- Dataset/license notes: Official model card lists Apache-licensed model/weights, permissive/non-copyrighted training-data notes, and named CC BY training data. This is sufficient for model-license review but not enough for Earnalism voice/speaker-rights approval.
 - Attribution required: `True`
 - Voice rights evidence URL: https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md
-- Voice rights summary: Voice list is documented upstream, but Earnalism has not completed speaker-rights, voice provenance, or owner approval review.
+- Voice rights summary: Upstream voice list is documented, including selectable Kokoro voices, but no Earnalism-reviewed evidence yet proves the selected voice is non-human/synthetic or otherwise cleared for internal generation. Owner/legal review must document selected-voice speaker provenance and commercial internal-eval permission.
 - Speaker identity status: `UNVERIFIED`
 - Synthetic voice status: `OPEN_WEIGHT_VOICE_UNVERIFIED`
 - Local inference feasible: `True`
@@ -29,11 +29,11 @@ This local report does not approve production audio. It records evidence status 
 - Real-person voice risk: `MEDIUM`
 - Real-person voice clone risk: `MEDIUM`
 - Internal eval allowed: `False`
-- Internal eval blockers: voice rights approval pending; owner internal-eval approval pending; legal review pending.
+- Internal eval blockers: selected Kokoro voice/speaker rights evidence missing; selected voice synthetic/non-human status not owner-verified; owner internal-eval approval pending; legal internal-eval review pending.
 - Owner internal-eval approval: `OWNER_REVIEW_REQUIRED`
 - Legal internal-eval review: `LEGAL_REVIEW_REQUIRED`
 - Evidence sources reviewed: https://github.com/hexgrad/kokoro, https://huggingface.co/hexgrad/Kokoro-82M
-- Evidence notes: Official GitHub README and Hugging Face card document Apache-2.0 model/weights and commercial deployment language; CC BY dataset attribution and speaker/voice-rights review keep this HOLD.
+- Evidence notes: Official GitHub README and Hugging Face card document Apache-2.0 model/weights, commercial deployment language, local inference, and English suitability. The linked VOICES.md identifies available voices but does not provide Earnalism-complete speaker identity, consent, or selected-voice commercial rights approval.
 - Decision reason: voice_license is missing or requires review.; voice rights evidence is missing or varies by voice.; speaker identity or voice provenance remains unresolved.; synthetic voice status remains unresolved.
 
 ### MeloTTS
@@ -41,10 +41,10 @@ This local report does not approve production audio. It records evidence status 
 - Official repository: https://github.com/myshell-ai/MeloTTS
 - Official model card: https://huggingface.co/myshell-ai/MeloTTS-English
 - License URL: https://opensource.org/license/mit
-- Dataset/license notes: Official GitHub README and Hugging Face model card state MIT license and free commercial/non-commercial use; speaker and checkpoint voice-rights provenance still require review.
+- Dataset/license notes: Official GitHub README and Hugging Face model card state MIT license and free commercial/non-commercial use. Speaker/checkpoint voice-rights provenance still requires review before Earnalism internal generation.
 - Attribution required: `True`
 - Voice rights evidence URL: https://huggingface.co/myshell-ai/MeloTTS-English
-- Voice rights summary: Model card lists speaker IDs, but Earnalism has not completed speaker-rights or voice provenance review.
+- Voice rights summary: Model card lists English accent/speaker options, but Earnalism has not completed selected-speaker provenance, consent, or voice-rights review for internal generation.
 - Speaker identity status: `UNVERIFIED`
 - Synthetic voice status: `MODEL_CARD_SPEAKERS_UNVERIFIED`
 - Local inference feasible: `True`
@@ -52,11 +52,11 @@ This local report does not approve production audio. It records evidence status 
 - Real-person voice risk: `MEDIUM`
 - Real-person voice clone risk: `MEDIUM`
 - Internal eval allowed: `False`
-- Internal eval blockers: voice rights approval pending; owner internal-eval approval pending; legal review pending.
+- Internal eval blockers: selected MeloTTS speaker/voice rights evidence missing; selected speaker synthetic/non-human status not owner-verified; owner internal-eval approval pending; legal internal-eval review pending.
 - Owner internal-eval approval: `OWNER_REVIEW_REQUIRED`
 - Legal internal-eval review: `LEGAL_REVIEW_REQUIRED`
 - Evidence sources reviewed: https://github.com/myshell-ai/MeloTTS, https://huggingface.co/myshell-ai/MeloTTS-English
-- Evidence notes: Official sources document MIT licensing for library/model card and commercial/non-commercial use; voice/speaker-rights evidence remains unresolved.
+- Evidence notes: Official GitHub README and Hugging Face card document MIT licensing, commercial/non-commercial use, English accents, and local model loading. The model card lists speaker/accent examples but does not provide Earnalism-complete speaker identity, consent, or selected-speaker commercial rights approval.
 - Decision reason: voice_license is missing or requires review.; voice rights evidence is missing or varies by voice.; speaker identity or voice provenance remains unresolved.; synthetic voice status remains unresolved.
 
 ### Piper / Piper active fork

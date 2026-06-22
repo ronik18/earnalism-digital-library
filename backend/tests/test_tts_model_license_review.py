@@ -142,6 +142,30 @@ def test_repo_candidates_with_unresolved_voice_rights_remain_hold_or_blocked():
     assert by_id["styletts2"].decision_status == BLOCKED
 
 
+def test_kokoro_cannot_become_eligible_without_selected_voice_rights():
+    decisions = review_candidates()
+    kokoro = next(decision for decision in decisions if decision.candidate["candidate_id"] == "kokoro")
+
+    assert kokoro.decision_status == HOLD_VOICE_RIGHTS
+    assert kokoro.internal_eval_status == HOLD_VOICE_RIGHTS
+    assert kokoro.public_production_status == "PRODUCTION_BLOCKED"
+    assert kokoro.candidate["internal_eval_allowed"] is False
+    assert "selected Kokoro voice/speaker rights evidence missing" in kokoro.candidate["internal_eval_blockers"]
+    assert any("speaker identity or voice provenance remains unresolved" in issue for issue in kokoro.issues)
+
+
+def test_melotts_cannot_become_eligible_without_selected_speaker_rights():
+    decisions = review_candidates()
+    melotts = next(decision for decision in decisions if decision.candidate["candidate_id"] == "melotts")
+
+    assert melotts.decision_status == HOLD_VOICE_RIGHTS
+    assert melotts.internal_eval_status == HOLD_VOICE_RIGHTS
+    assert melotts.public_production_status == "PRODUCTION_BLOCKED"
+    assert melotts.candidate["internal_eval_allowed"] is False
+    assert "selected MeloTTS speaker/voice rights evidence missing" in melotts.candidate["internal_eval_blockers"]
+    assert any("speaker identity or voice provenance remains unresolved" in issue for issue in melotts.issues)
+
+
 def test_matrix_report_records_upstream_evidence_sources(tmp_path: Path):
     decisions = review_candidates()
     write_reports(decisions, output_dir=tmp_path)
