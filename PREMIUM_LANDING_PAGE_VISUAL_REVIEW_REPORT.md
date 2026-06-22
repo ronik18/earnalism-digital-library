@@ -82,6 +82,8 @@ The final desktop/laptop hero remains below the approved threshold while gaining
 
 Decision: `USE_OWNER_DESIGNED_COVER_WITH_INTERNAL_PROVENANCE`
 
+Active public cover policy: `OWNER_DESIGNED_EARNALISM_COVER_ONLY`
+
 Owner-supplied source assets:
 
 - `/Users/ronikbasak/Documents/Reo Enterprise/Books/Book Covers/Dracula - Front.png`
@@ -103,10 +105,27 @@ Ownership/provenance basis:
 Usage constraints:
 
 - The site does not hotlink any external cover image.
+- The old yellow first-edition/public-domain cover is not the active landing, book-detail, library, static SEO, social preview, or first-visit-tour artwork.
+- Stale API cover values for Dracula are overridden by the controlled-launch owner-designed cover projection before public rendering.
 - Do not describe the custom cover as archival, public-domain, first-edition, or external-review evidence.
 - The back-cover quote should be treated as Earnalism marketing copy unless separately attributed and evidenced.
 - Alt text remains descriptive on the desktop editorial object: `Custom Earnalism Dracula cover artwork`.
 - The mobile cover object remains decorative and hidden from assistive technology because the page text already names Dracula.
+
+## Active Cover Surface Map
+
+| Surface | Active cover |
+| --- | --- |
+| Homepage hero | `frontend/public/assets/books/dracula/dracula-front-cover.webp` |
+| Homepage live Dracula shelf | `frontend/public/assets/books/dracula/dracula-front-cover.webp` |
+| Library controlled release card | `frontend/public/assets/books/dracula/dracula-front-cover.webp` |
+| Book detail front cover | `frontend/public/assets/books/dracula/dracula-front-cover.webp` |
+| Book detail back cover | `frontend/public/assets/books/dracula/dracula-back-cover.webp` |
+| Preview/payment shell cover | `frontend/public/assets/books/dracula/dracula-front-cover.webp` |
+| First-visit tour target | Owner-designed Dracula cover card; no yellow-cover copy |
+| Static SEO snapshots | `https://theearnalism.com/assets/books/dracula/dracula-front-cover.webp` |
+| Base HTML social preview | `https://theearnalism.com/assets/books/dracula/dracula-front-cover.webp` |
+| Controlled publication JSON | `https://theearnalism.com/assets/books/dracula/dracula-front-cover.webp` and back cover webp |
 
 ## Catalog Audit Count Finding
 

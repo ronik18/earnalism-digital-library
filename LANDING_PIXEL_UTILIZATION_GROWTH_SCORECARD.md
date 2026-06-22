@@ -71,6 +71,7 @@ It is not 10/10 because production screenshots, physical-device fold checks, and
 - No public listening CTA or audiobook route is introduced.
 - No non-Dracula title receives reader/payment/audio CTAs.
 - No public claim is made that the custom cover is archival, public-domain, or externally reviewed.
+- The active Dracula artwork is the owner-designed dark front/back cover set, not a yellow first-edition or Wikimedia cover.
 
 ## Remaining Gap To 10/10
 

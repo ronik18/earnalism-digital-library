@@ -182,8 +182,19 @@ describe("UX conversion static signals", () => {
     expect(controlledLaunch).toContain('DRACULA_COVER_IMAGE = "/assets/books/dracula/dracula-front-cover.webp"');
     expect(controlledLaunch).toContain('DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cover.webp"');
     expect(controlledLaunch).toContain("cover_image_url: DRACULA_COVER_IMAGE");
+    expect(controlledLaunch).toContain("cover_url: DRACULA_COVER_IMAGE");
+    expect(controlledLaunch).toContain("thumbnail_url: DRACULA_COVER_IMAGE");
     expect(controlledLaunch).toContain("back_cover_image_url: DRACULA_BACK_COVER_IMAGE");
+    expect(controlledLaunch).toContain("back_cover_url: DRACULA_BACK_COVER_IMAGE");
+    expect(controlledLaunch).toContain("back_cover_thumbnail_url: DRACULA_BACK_COVER_IMAGE");
     expect(staticSnapshotGenerator).toContain("assets/books/dracula/dracula-front-cover.webp");
+    expect(bookDetail).toContain("publicBook?.cover_image_url");
+    expect(bookDetail).toContain("mergeDraculaBook(book)");
+    expect(useSeo).toContain("assets/books/dracula/dracula-front-cover.webp");
+    expect(useSeo).not.toContain("images.unsplash.com/photo-1507842217343-583bb7270b66");
+    expect(publicIndex).toContain("https://theearnalism.com/assets/books/dracula/dracula-front-cover.webp");
+    expect(publicIndex).toContain("Owner-designed Earnalism Dracula cover artwork");
+    expect(publicIndex).not.toContain("images.unsplash.com/photo-1507842217343-583bb7270b66");
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-front-cover.webp"))).toBe(true);
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-back-cover.webp"))).toBe(true);
 

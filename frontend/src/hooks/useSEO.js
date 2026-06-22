@@ -4,10 +4,10 @@ import { useSettings } from "../context/SettingsContext";
 const SITE_URL = (process.env.REACT_APP_SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const DEFAULT_TITLE = "The Earnalism Digital Library";
 const DEFAULT_DESCRIPTION = "A quiet digital reading room beginning with Dracula by Bram Stoker. Read Chapter 1 free, then continue with reading time when you are ready.";
-// Premium hero/library image used as the fallback OG image until an admin uploads
-// a brand-specific share image in Settings -> Brand identity.
+// Owner-designed Dracula cover used as the fallback OG image for the
+// Dracula-first controlled launch until a separate approved brand share image exists.
 const FALLBACK_OG_IMAGE =
-  "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1200&q=80";
+  `${SITE_URL}/assets/books/dracula/dracula-front-cover.webp`;
 const TRACKING_PARAMS = [
   "utm_source",
   "utm_medium",

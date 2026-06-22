@@ -159,6 +159,12 @@ export function mergeDraculaBook(book) {
   return {
     ...DRACULA_FALLBACK_BOOK,
     ...book,
+    cover_image_url: DRACULA_COVER_IMAGE,
+    cover_url: DRACULA_COVER_IMAGE,
+    thumbnail_url: DRACULA_COVER_IMAGE,
+    back_cover_image_url: DRACULA_BACK_COVER_IMAGE,
+    back_cover_url: DRACULA_BACK_COVER_IMAGE,
+    back_cover_thumbnail_url: DRACULA_BACK_COVER_IMAGE,
     chapters: Array.isArray(book.chapters) && book.chapters.length > 0
       ? book.chapters
       : DRACULA_FALLBACK_BOOK.chapters,

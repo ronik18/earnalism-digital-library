@@ -26,7 +26,7 @@ Overall luxury score: `9.8/10`
 | Color | 9.8 | Deep brown, restrained burgundy, warm ivory, antique gold, and soft amber glow are more intentional while remaining readable. |
 | Spacing | 9.8 | Mobile hero height is now `646px` at 390px and `633px` at 360px; desktop/laptop remain under the approved `650px` threshold. |
 | Hero composition | 9.8 | The page now leads with identity, free preview, reading-time truth, and conversion before secondary trust facts. |
-| Dracula cover treatment | 9.8 | The owner-designed cover is local, framed, shadowed, and presented as the signature editorial object of the launch. |
+| Dracula cover treatment | 9.8 | The owner-designed dark Earnalism cover is local, framed, shadowed, and enforced as the active public Dracula artwork. |
 | Premium ambience | 9.8 | The vignette, cover frame, and restrained glow feel literary and luxurious without becoming theatrical or sales-heavy. |
 | Mobile elegance | 9.8 | CTA appears much earlier, the cover stays compact, and the first viewport now reveals the next section on 360px and 390px. |
 | Focus states | 9.4 | Existing visible focus rings are preserved; no interactive control was downgraded. |
@@ -46,6 +46,7 @@ It is not 10/10 because founder visual approval, live production screenshots, ph
 - No ownership, forever-purchase, formal accessibility compliance, or completed non-visual user testing claim was added.
 - No payment setting or Razorpay behavior was changed.
 - No claim was added that the custom cover is archival, public-domain, or externally reviewed.
+- The yellow first-edition/public-domain cover is not used as the active public landing, book-detail, SEO, or social-preview artwork.
 
 ## Owner Review Still Needed
 
