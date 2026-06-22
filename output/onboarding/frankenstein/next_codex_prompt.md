@@ -3,8 +3,10 @@
 Use `onboarding/books/frankenstein.yml` as the source config and keep the onboarding dry-run until every HOLD blocker is cleared.
 
 Current selected TTS model: `kokoro`.
+Current selected Kokoro voice: `af_heart`.
 Current selected TTS decision: `HOLD_VOICE_RIGHTS`.
 Current selected TTS internal-eval status: `HOLD_VOICE_RIGHTS`.
+Current selected voice internal-eval status: `HOLD_VOICE_RIGHTS`.
 Current model generation status: `HOLD_VOICE_RIGHTS`.
 
 Required next checks:

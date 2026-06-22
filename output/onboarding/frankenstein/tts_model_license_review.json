@@ -17,6 +17,10 @@
         "speaker identity or voice provenance remains unresolved.",
         "synthetic voice status remains unresolved.",
         "internal_eval_allowed is not true.",
+        "selected voice synthetic or speaker-rights status remains unresolved.",
+        "selected voice real-person risk is unresolved or high.",
+        "owner selected-voice approval is required for internal evaluation.",
+        "legal selected-voice review is required for internal evaluation.",
         "owner approval is required before production use."
       ],
       "warnings": [],
@@ -55,7 +59,19 @@
         "internal_eval_blockers": "selected Kokoro voice/speaker rights evidence missing; selected voice synthetic/non-human status not owner-verified; owner internal-eval approval pending; legal internal-eval review pending.",
         "owner_internal_eval_approval_status": "OWNER_REVIEW_REQUIRED",
         "legal_internal_eval_review_status": "LEGAL_REVIEW_REQUIRED",
-        "internal_eval_status": "HOLD_VOICE_RIGHTS"
+        "internal_eval_status": "HOLD_VOICE_RIGHTS",
+        "selected_voice_id": "af_heart",
+        "selected_voice_display_name": "Kokoro af_heart",
+        "selected_voice_source_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md",
+        "selected_voice_license_evidence_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md",
+        "selected_voice_rights_summary": "Kokoro VOICES.md lists af_heart under American English with grade A, but it does not provide Earnalism-complete speaker identity, consent, synthetic/non-human proof, or commercial internal-eval approval for the selected voice.",
+        "selected_voice_synthetic_status": "UNVERIFIED",
+        "selected_voice_real_person_risk": "UNRESOLVED",
+        "selected_voice_attribution_requirement": "MODEL_AND_DATASET_ATTRIBUTION_REVIEW_REQUIRED",
+        "selected_voice_internal_eval_status": "HOLD_VOICE_RIGHTS",
+        "owner_selected_voice_approval_status": "OWNER_REVIEW_REQUIRED",
+        "legal_selected_voice_review_status": "LEGAL_REVIEW_REQUIRED",
+        "selected_voice_blockers": "af_heart selected from official VOICES.md for review only; selected voice speaker provenance, consent or synthetic/non-human proof, owner approval, and legal internal-eval review remain incomplete."
       }
     },
     {

@@ -36,6 +36,18 @@ candidates:
     owner_internal_eval_approval_status: OWNER_REVIEW_REQUIRED
     legal_internal_eval_review_status: LEGAL_REVIEW_REQUIRED
     internal_eval_status: HOLD_VOICE_RIGHTS
+    selected_voice_id: af_heart
+    selected_voice_display_name: Kokoro af_heart
+    selected_voice_source_url: https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md
+    selected_voice_license_evidence_url: https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md
+    selected_voice_rights_summary: Kokoro VOICES.md lists af_heart under American English with grade A, but it does not provide Earnalism-complete speaker identity, consent, synthetic/non-human proof, or commercial internal-eval approval for the selected voice.
+    selected_voice_synthetic_status: UNVERIFIED
+    selected_voice_real_person_risk: UNRESOLVED
+    selected_voice_attribution_requirement: MODEL_AND_DATASET_ATTRIBUTION_REVIEW_REQUIRED
+    selected_voice_internal_eval_status: HOLD_VOICE_RIGHTS
+    owner_selected_voice_approval_status: OWNER_REVIEW_REQUIRED
+    legal_selected_voice_review_status: LEGAL_REVIEW_REQUIRED
+    selected_voice_blockers: af_heart selected from official VOICES.md for review only; selected voice speaker provenance, consent or synthetic/non-human proof, owner approval, and legal internal-eval review remain incomplete.
   - candidate_id: melotts
     display_name: MeloTTS
     upstream_url: https://github.com/myshell-ai/MeloTTS

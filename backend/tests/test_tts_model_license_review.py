@@ -52,6 +52,18 @@ def complete_candidate(**overrides):
         "owner_internal_eval_approval_status": "APPROVED",
         "legal_internal_eval_review_status": "APPROVED",
         "internal_eval_status": ELIGIBLE_INTERNAL_EVAL,
+        "selected_voice_id": "test_voice",
+        "selected_voice_display_name": "Test Voice",
+        "selected_voice_source_url": "https://example.com/voices",
+        "selected_voice_license_evidence_url": "https://example.com/voice-license",
+        "selected_voice_rights_summary": "Selected voice has owner/legal-reviewed synthetic voice rights.",
+        "selected_voice_synthetic_status": "APPROVED_SYNTHETIC_INTERNAL_EVAL",
+        "selected_voice_real_person_risk": "LOW",
+        "selected_voice_attribution_requirement": "MODEL_ATTRIBUTION_REQUIRED",
+        "selected_voice_internal_eval_status": ELIGIBLE_INTERNAL_EVAL,
+        "owner_selected_voice_approval_status": "APPROVED",
+        "legal_selected_voice_review_status": "APPROVED",
+        "selected_voice_blockers": "no blockers",
     }
     candidate.update(overrides)
     return candidate
@@ -151,7 +163,48 @@ def test_kokoro_cannot_become_eligible_without_selected_voice_rights():
     assert kokoro.public_production_status == "PRODUCTION_BLOCKED"
     assert kokoro.candidate["internal_eval_allowed"] is False
     assert "selected Kokoro voice/speaker rights evidence missing" in kokoro.candidate["internal_eval_blockers"]
+    assert kokoro.candidate["selected_voice_id"] == "af_heart"
+    assert kokoro.candidate["selected_voice_internal_eval_status"] == HOLD_VOICE_RIGHTS
     assert any("speaker identity or voice provenance remains unresolved" in issue for issue in kokoro.issues)
+
+
+def test_missing_selected_voice_id_keeps_kokoro_hold():
+    decision = classify_candidate(complete_candidate(candidate_id="kokoro", selected_voice_id=""))
+
+    assert decision.internal_eval_status == HOLD_VOICE_RIGHTS
+    assert decision.public_production_status == "PRODUCTION_BLOCKED"
+    assert any("selected_voice_id" in issue for issue in decision.issues)
+
+
+def test_missing_selected_voice_license_evidence_keeps_kokoro_hold():
+    decision = classify_candidate(complete_candidate(candidate_id="kokoro", selected_voice_license_evidence_url=""))
+
+    assert decision.internal_eval_status == HOLD_VOICE_RIGHTS
+    assert decision.public_production_status == "PRODUCTION_BLOCKED"
+    assert any("selected_voice_license_evidence_url" in issue for issue in decision.issues)
+
+
+def test_unresolved_selected_voice_real_person_risk_keeps_kokoro_hold():
+    decision = classify_candidate(complete_candidate(candidate_id="kokoro", selected_voice_real_person_risk="UNRESOLVED"))
+
+    assert decision.internal_eval_status == HOLD_VOICE_RIGHTS
+    assert decision.public_production_status == "PRODUCTION_BLOCKED"
+    assert any("selected voice real-person risk" in issue for issue in decision.issues)
+
+
+def test_missing_selected_voice_owner_or_legal_review_keeps_kokoro_hold():
+    decision = classify_candidate(
+        complete_candidate(
+            candidate_id="kokoro",
+            owner_selected_voice_approval_status="OWNER_REVIEW_REQUIRED",
+            legal_selected_voice_review_status="LEGAL_REVIEW_REQUIRED",
+        )
+    )
+
+    assert decision.internal_eval_status == HOLD_VOICE_RIGHTS
+    assert decision.public_production_status == "PRODUCTION_BLOCKED"
+    assert any("owner selected-voice approval" in issue for issue in decision.issues)
+    assert any("legal selected-voice review" in issue for issue in decision.issues)
 
 
 def test_melotts_cannot_become_eligible_without_selected_speaker_rights():
@@ -173,8 +226,22 @@ def test_matrix_report_records_upstream_evidence_sources(tmp_path: Path):
 
     assert "Official repository" in matrix
     assert "https://huggingface.co/hexgrad/Kokoro-82M" in matrix
+    assert "Selected voice ID: `af_heart`" in matrix
     assert "https://huggingface.co/ai4bharat/IndicF5" in matrix
     assert "Decision reason" in matrix
+
+
+def test_kokoro_selected_voice_reports_are_written(tmp_path: Path):
+    decisions = review_candidates()
+    write_reports(decisions, output_dir=tmp_path)
+
+    packet = (tmp_path / "KOKORO_SELECTED_VOICE_INTERNAL_EVAL_PACKET.md").read_text(encoding="utf-8")
+    scorecard = (tmp_path / "KOKORO_SELECTED_VOICE_RIGHTS_SCORECARD.md").read_text(encoding="utf-8")
+
+    assert "af_heart" in packet
+    assert "PUBLIC_AUDIO_RELEASE_BLOCKED" in packet
+    assert "PRODUCTION_BLOCKED" in packet
+    assert "af_heart" in scorecard
 
 
 def test_missing_voice_rights_evidence_url_blocks_internal_eval():
