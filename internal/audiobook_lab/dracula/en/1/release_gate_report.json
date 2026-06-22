@@ -1,0 +1,41 @@
+{
+  "status": "DRY_RUN_COMPLETE",
+  "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "blockers": [
+    {
+      "code": "MODEL_LICENSE_HOLD",
+      "severity": "HIGH",
+      "message": "Model license status is not approved: HOLD_LICENSE_REVIEW."
+    },
+    {
+      "code": "SOURCE_RIGHTS_EVIDENCE_MISSING",
+      "severity": "HIGH",
+      "message": "source_rights_evidence_missing is required before internal generation or release."
+    },
+    {
+      "code": "DERIVATIVE_AUDIOBOOK_RIGHTS_MISSING",
+      "severity": "HIGH",
+      "message": "derivative_audiobook_rights_missing is required before internal generation or release."
+    },
+    {
+      "code": "VOICE_RIGHTS_MISSING",
+      "severity": "HIGH",
+      "message": "voice_rights_missing is required before internal generation or release."
+    },
+    {
+      "code": "TEXT_FIDELITY_EVIDENCE_MISSING",
+      "severity": "HIGH",
+      "message": "text_fidelity_evidence_missing is required before internal generation or release."
+    },
+    {
+      "code": "HUMAN_LISTENING_QA_MISSING",
+      "severity": "HIGH",
+      "message": "human_listening_qa_missing is required before internal generation or release."
+    },
+    {
+      "code": "ACCESSIBILITY_LISTENING_QA_MISSING",
+      "severity": "HIGH",
+      "message": "accessibility_listening_qa_missing is required before internal generation or release."
+    }
+  ]
+}

@@ -139,3 +139,10 @@ earnalism-review-bundle-minimal/
 
 # Local virtualenvs for optional audio tooling
 .venv-edge/
+
+# Internal audiobook lab may keep JSON/Markdown evidence, but never commit real audio binaries.
+internal/audiobook_lab/**/*.mp3
+internal/audiobook_lab/**/*.wav
+internal/audiobook_lab/**/*.m4a
+internal/audiobook_lab/**/*.ogg
+internal/audiobook_lab/**/*.aac
