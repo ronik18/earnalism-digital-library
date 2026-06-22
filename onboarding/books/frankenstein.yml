@@ -27,3 +27,10 @@ audiobook:
   rollback_approval_status:
   owner_legal_approval_status:
   refund_support_readiness: false
+audiobook_sync:
+  enabled: true
+  chapter: 1
+  language: en
+  model_candidate: kokoro
+  sync_level: sentence
+  public_release_target: false

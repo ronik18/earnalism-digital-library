@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import shutil
 from pathlib import Path
+
+import pytest
 
 from scripts.orchestrate_english_book_onboarding import (
     PUBLIC_AUDIO_RELEASE_BLOCKED,
@@ -9,6 +12,21 @@ from scripts.orchestrate_english_book_onboarding import (
     run_orchestration,
     write_reports,
 )
+
+
+@pytest.fixture(autouse=True)
+def cleanup_internal_sync_test_outputs():
+    root = Path.cwd() / "internal" / "audiobook_lab"
+    slugs = {"test-book", "frankenstein", "jane-eyre", "latest-book"}
+    for slug in slugs:
+        target = root / slug
+        if target.exists():
+            shutil.rmtree(target)
+    yield
+    for slug in slugs:
+        target = root / slug
+        if target.exists():
+            shutil.rmtree(target)
 
 
 def write_config(tmp_path: Path, content: str) -> Path:
@@ -65,6 +83,13 @@ audiobook:
   rollback_approval_status:
   owner_legal_approval_status:
   refund_support_readiness: false
+audiobook_sync:
+  enabled: true
+  chapter: 1
+  language: en
+  model_candidate: kokoro
+  sync_level: sentence
+  public_release_target: false
 """
 
 
@@ -124,6 +149,57 @@ def test_audio_release_remains_blocked(tmp_path: Path):
     assert result.audiobook_gate["public_audio_publish_allowed"] is False
     assert result.audiobook_gate["listen_now_cta"] is False
     assert result.audiobook_gate["audio_object_metadata"] is False
+    assert result.audiobook_gate["sync_status"] in {"INTERNAL_DRY_RUN_ONLY", "HOLD_SYNC_QA_REQUIRED"}
+
+
+def test_orchestrator_includes_sync_dry_run_stage(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    result = run_orchestration(config_path)
+    sync_stage = stage(result, "audiobook_sync_dry_run_stage")
+
+    assert sync_stage.status in {"INTERNAL_DRY_RUN_ONLY", "HOLD_SYNC_QA_REQUIRED"}
+    assert sync_stage.details["public_audio_release_status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert sync_stage.details["public_audio_allowed"] is False
+    assert sync_stage.details["listen_now_cta"] is False
+    assert sync_stage.details["audio_object_metadata"] is False
+    assert sync_stage.details["internal_sync_manifest_path"].endswith("sync_manifest.json")
+    assert sync_stage.details["scoped_sync_manifest_path"] == "output/onboarding/frankenstein/audiobook_sync/sync_manifest.json"
+
+
+def test_sync_manifest_path_is_recorded_in_slug_scoped_output(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    result = run_orchestration(config_path)
+    paths = write_reports(result, tmp_path / "onboarding", write_root_reports=False)
+    sync_manifest = tmp_path / "onboarding" / "frankenstein" / "audiobook_sync" / "sync_manifest.json"
+
+    assert sync_manifest.exists()
+    assert paths["output/onboarding/frankenstein/audiobook_sync/sync_manifest.json"] == sync_manifest
+    assert "placeholder-no-audio-generated" in sync_manifest.read_text(encoding="utf-8")
+
+
+def test_missing_sync_qa_cannot_produce_audiobook_go(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path))
+    result = run_orchestration(config_path)
+
+    assert result.audiobook_gate["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert result.audiobook_gate["public_audio_publish_allowed"] is False
+    assert any("public audiobook release is blocked" in blocker for blocker in result.audiobook_gate["blockers"])
+
+
+def test_missing_model_license_keeps_audio_hold(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, model_voice_license_status=""))
+    result = run_orchestration(config_path)
+
+    assert result.audiobook_gate["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert any("model/voice license evidence is missing" in blocker for blocker in result.audiobook_gate["blockers"])
+
+
+def test_missing_derivative_rights_keeps_audio_hold(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, derivative_rights_status=""))
+    result = run_orchestration(config_path)
+
+    assert result.audiobook_gate["status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert any("derivative audiobook rights evidence is missing" in blocker for blocker in result.audiobook_gate["blockers"])
 
 
 def test_generated_reports_say_hold_not_go_when_evidence_incomplete(tmp_path: Path):
@@ -148,6 +224,17 @@ def test_no_public_audio_files_are_created(tmp_path: Path):
     after = ensure_no_public_audio_files()
 
     assert before == after == []
+
+
+def test_no_listen_now_or_audioobject_metadata_is_generated(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    result = run_orchestration(config_path)
+    paths = write_reports(result, tmp_path / "reports", write_root_reports=False)
+    combined = "\n".join(path.read_text(encoding="utf-8") for path in paths.values() if path.is_file())
+
+    assert "Listen Now" not in combined
+    assert "AudioObject" not in combined
+    assert "public_audio_allowed\": true" not in combined
 
 
 def test_no_unsupported_accessibility_claims_are_generated(tmp_path: Path):
@@ -183,6 +270,7 @@ def test_slug_scoped_output_directory_contains_all_reports(tmp_path: Path):
         "next_codex_prompt.md",
     }
     assert expected_files.issubset({path.name for path in scoped_dir.iterdir()})
+    assert (scoped_dir / "audiobook_sync" / "sync_manifest.json").exists()
     assert "Frankenstein" in (scoped_dir / "BOOK_ONBOARDING_ORCHESTRATION_REPORT.md").read_text(encoding="utf-8")
 
 

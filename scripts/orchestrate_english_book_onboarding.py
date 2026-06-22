@@ -19,8 +19,16 @@ from pathlib import Path
 from typing import Any
 from urllib.request import urlopen
 
-
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.audiobook_generation_sync_pipeline import (
+    PUBLIC_AUDIO_RELEASE_BLOCKED as SYNC_PUBLIC_AUDIO_RELEASE_BLOCKED,
+    run_pipeline as run_audiobook_sync_pipeline,
+)
+
+
 DEFAULT_OUTPUT_DIR = ROOT / "output" / "onboarding"
 LATEST_OUTPUT_DIR = ROOT / "output" / "english_book_onboarding"
 CODEX_PROMPT_PATH = ROOT / "output" / "codex_prompts" / "next_english_book_onboarding_prompt.md"
@@ -397,6 +405,69 @@ def audiobook_planning_packet(config: dict[str, Any]) -> StageResult:
     )
 
 
+def audiobook_sync_dry_run_stage(config: dict[str, Any]) -> StageResult:
+    sync_config = config.get("audiobook_sync") if isinstance(config.get("audiobook_sync"), dict) else {}
+    enabled = sync_config.get("enabled", True)
+    if enabled is False:
+        return StageResult(
+            "audiobook_sync_dry_run_stage",
+            "SKIPPED",
+            warnings=["audiobook_sync.enabled is false; sync dry-run evidence was not generated."],
+            details={"public_audio_release_status": PUBLIC_AUDIO_RELEASE_BLOCKED, "public_audio_allowed": False},
+        )
+
+    slug = safe_slug(config.get("slug"))
+    chapter = str(sync_config.get("chapter") or "1")
+    language = str(sync_config.get("language") or "en").strip().lower()
+    model_candidate = safe_slug(str(sync_config.get("model_candidate") or "kokoro"))
+    output_dir = ROOT / "internal" / "audiobook_lab" / slug / language / str(int(chapter))
+    result = run_audiobook_sync_pipeline(
+        book_slug=slug,
+        chapter=chapter,
+        language=language,
+        model_candidate=model_candidate,
+        mode="dry-run",
+        output_dir=output_dir,
+        no_network=True,
+        write_root_reports=False,
+    )
+    blockers = []
+    if result.status != "DRY_RUN_COMPLETE":
+        blockers.append(f"sync dry-run did not complete: {result.status}")
+    if result.blockers:
+        blockers.append("sync release evidence remains HOLD; public audio cannot be released.")
+    if SYNC_PUBLIC_AUDIO_RELEASE_BLOCKED != PUBLIC_AUDIO_RELEASE_BLOCKED:
+        blockers.append("sync pipeline public-audio status does not match onboarding gate.")
+
+    return StageResult(
+        "audiobook_sync_dry_run_stage",
+        "INTERNAL_DRY_RUN_ONLY" if not blockers else "HOLD_SYNC_QA_REQUIRED",
+        blockers,
+        warnings=result.warnings,
+        details={
+            "enabled": True,
+            "chapter": result.chapter,
+            "language": result.language,
+            "model_candidate": result.model_candidate,
+            "sync_level": str(sync_config.get("sync_level") or "sentence"),
+            "status": result.status,
+            "public_release_target": bool(sync_config.get("public_release_target", False)),
+            "public_audio_release_status": PUBLIC_AUDIO_RELEASE_BLOCKED,
+            "public_audio_allowed": False,
+            "listen_now_cta": False,
+            "audio_object_metadata": False,
+            "real_audio_generated": False,
+            "internal_output_dir": str(result.output_dir.relative_to(ROOT)),
+            "internal_sync_manifest_path": str(result.sync_manifest_path.relative_to(ROOT)),
+            "internal_qa_packet_path": str(result.qa_packet_path.relative_to(ROOT)),
+            "internal_release_gate_report_path": str(result.release_gate_report_path.relative_to(ROOT)),
+            "scoped_sync_manifest_path": f"output/onboarding/{slug}/audiobook_sync/sync_manifest.json",
+            "sync_item_count": len(result.sync_items),
+            "blocker_count": len(result.blockers),
+        },
+    )
+
+
 def narration_qa_gate(config: dict[str, Any]) -> StageResult:
     audiobook = config.get("audiobook") if isinstance(config.get("audiobook"), dict) else {}
     blockers = []
@@ -499,6 +570,7 @@ def audiobook_gate(stages: list[StageResult]) -> dict[str, Any]:
     ]
     return {
         "status": PUBLIC_AUDIO_RELEASE_BLOCKED,
+        "sync_status": sync_status(stages),
         "public_audio_publish_allowed": False,
         "audio_enabled": False,
         "listen_now_cta": False,
@@ -506,6 +578,13 @@ def audiobook_gate(stages: list[StageResult]) -> dict[str, Any]:
         "blocker_count": len(audio_blockers),
         "blockers": audio_blockers,
     }
+
+
+def sync_status(stages: list[StageResult]) -> str:
+    for stage in stages:
+        if stage.name == "audiobook_sync_dry_run_stage":
+            return stage.status
+    return "HOLD_SYNC_QA_REQUIRED"
 
 
 def report_header(config: dict[str, Any], result: OnboardingResult, title: str) -> str:
@@ -556,6 +635,31 @@ def result_to_json(result: OnboardingResult) -> dict[str, Any]:
     }
 
 
+def copy_audiobook_sync_artifacts(result: OnboardingResult, scoped_output_dir: Path) -> dict[str, Path]:
+    sync_stage = next((stage for stage in result.stages if stage.name == "audiobook_sync_dry_run_stage"), None)
+    if not sync_stage:
+        return {}
+    sync_output_dir = scoped_output_dir / "audiobook_sync"
+    sync_output_dir.mkdir(parents=True, exist_ok=True)
+    copied: dict[str, Path] = {}
+    source_fields = {
+        "sync_manifest.json": "internal_sync_manifest_path",
+        "qa_packet.json": "internal_qa_packet_path",
+        "release_gate_report.json": "internal_release_gate_report_path",
+    }
+    for filename, detail_key in source_fields.items():
+        relative_path = sync_stage.details.get(detail_key)
+        if not relative_path:
+            continue
+        source_path = ROOT / str(relative_path)
+        if not source_path.exists():
+            continue
+        target_path = sync_output_dir / filename
+        target_path.write_text(source_path.read_text(encoding="utf-8"), encoding="utf-8")
+        copied[f"output/onboarding/{safe_slug(result.book.get('slug'))}/audiobook_sync/{filename}"] = target_path
+    return copied
+
+
 def write_reports(
     result: OnboardingResult,
     output_dir: Path = DEFAULT_OUTPUT_DIR,
@@ -588,6 +692,7 @@ def write_reports(
         + f"- Publication status: `{result.final_gate['status']}`\n"
         + f"- Public publish allowed: `{str(result.final_gate['public_publish_allowed']).lower()}`\n"
         + f"- Public audio status: `{result.audiobook_gate['status']}`\n"
+        + f"- Audiobook sync status: `{result.audiobook_gate['sync_status']}`\n"
         + "\nThis orchestrator is dry-run/report-only and does not publish books, enable public audio, or change payment settings.\n"
     )
     rights = (
@@ -621,26 +726,28 @@ def write_reports(
     audio_gate = (
         report_header(config, result, "English Audiobook Release Gate Report")
         + f"- Status: `{result.audiobook_gate['status']}`\n"
+        + f"- Sync status: `{result.audiobook_gate['sync_status']}`\n"
         + f"- Public audio publish allowed: `{str(result.audiobook_gate['public_audio_publish_allowed']).lower()}`\n"
-        + f"- Listen Now CTA: `{str(result.audiobook_gate['listen_now_cta']).lower()}`\n"
-        + f"- AudioObject metadata: `{str(result.audiobook_gate['audio_object_metadata']).lower()}`\n"
+        + f"- Public listening CTA: `{str(result.audiobook_gate['listen_now_cta']).lower()}`\n"
+        + f"- Public audio JSON-LD metadata: `{str(result.audiobook_gate['audio_object_metadata']).lower()}`\n"
         + "\n## Blockers\n\n"
         + "\n".join(f"- {blocker}" for blocker in result.audiobook_gate["blockers"])
         + "\n"
     )
     qa_packet = (
         report_header(config, result, "English Audiobook QA Packet")
+        + f"- Highlighted-text sync status: `{result.audiobook_gate['sync_status']}`\n"
         + "- Human narration QA: HOLD, evidence missing or pending.\n"
         + "- Accessibility listening QA: HOLD, evidence missing or pending.\n"
         + "- Model/voice license review: HOLD unless explicit evidence is attached.\n"
-        + "- No public audio file, URL, player, Listen Now CTA, or AudioObject metadata is produced.\n"
+        + "- No public audio file, URL, player, listening CTA, or public audio JSON-LD metadata is produced.\n"
     )
     seo = (
         report_header(config, result, "English Book SEO Preview Report")
         + "- SEO/social metadata is draft-only.\n"
         + "- Sitemap inclusion is disabled until publication approval.\n"
         + "- Book JSON-LD is disabled until publication approval.\n"
-        + "- AudioObject metadata is disabled.\n"
+        + "- Public audio JSON-LD metadata is disabled.\n"
     )
     visual = (
         report_header(config, result, "English Book Visual Scorecard")
@@ -654,6 +761,7 @@ def write_reports(
         "Required next checks:\n"
         "- Attach complete source-rights evidence.\n"
         "- Add owner-approved cover provenance.\n"
+        "- Review the internal highlighted-text sync manifest before any audio release consideration.\n"
         "- Keep public audio blocked.\n"
         "- Run the publication, audio, SEO, social, payment-smoke, regression, and frontend build gates.\n"
     )
@@ -668,6 +776,7 @@ def write_reports(
         "ENGLISH_BOOK_VISUAL_SCORECARD.md": visual,
     }
     paths: dict[str, Path] = {}
+    paths.update(copy_audiobook_sync_artifacts(result, scoped_output_dir))
     for filename, text in root_reports.items():
         if write_root_reports:
             path = ROOT / filename
@@ -722,6 +831,7 @@ def run_orchestration(
             seo_social_metadata_draft(config),
             cover_asset_gate(config),
             audiobook_planning_packet(config),
+            audiobook_sync_dry_run_stage(config),
             narration_qa_gate(config),
             audiobook_legal_accessibility_gate(config),
             payment_publication_guardrails(config),

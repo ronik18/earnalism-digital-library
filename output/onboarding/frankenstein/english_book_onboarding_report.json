@@ -4,7 +4,7 @@
   "branch": "",
   "allow_network": false,
   "dry_run": true,
-  "generated_at": "2026-06-22T03:55:23+00:00",
+  "generated_at": "2026-06-22T05:40:55+00:00",
   "book": {
     "slug": "frankenstein",
     "title": "Frankenstein",
@@ -36,6 +36,14 @@
       "rollback_approval_status": "",
       "owner_legal_approval_status": "",
       "refund_support_readiness": false
+    },
+    "audiobook_sync": {
+      "enabled": true,
+      "chapter": "1",
+      "language": "en",
+      "model_candidate": "kokoro",
+      "sync_level": "sentence",
+      "public_release_target": false
     }
   },
   "stages": [
@@ -168,6 +176,38 @@
       }
     },
     {
+      "name": "audiobook_sync_dry_run_stage",
+      "status": "HOLD_SYNC_QA_REQUIRED",
+      "blockers": [
+        "sync release evidence remains HOLD; public audio cannot be released."
+      ],
+      "warnings": [
+        "No real audio generated.",
+        "Public audiobook release remains blocked."
+      ],
+      "details": {
+        "enabled": true,
+        "chapter": "1",
+        "language": "en",
+        "model_candidate": "kokoro",
+        "sync_level": "sentence",
+        "status": "DRY_RUN_COMPLETE",
+        "public_release_target": false,
+        "public_audio_release_status": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+        "public_audio_allowed": false,
+        "listen_now_cta": false,
+        "audio_object_metadata": false,
+        "real_audio_generated": false,
+        "internal_output_dir": "internal/audiobook_lab/frankenstein/en/1",
+        "internal_sync_manifest_path": "internal/audiobook_lab/frankenstein/en/1/sync_manifest.json",
+        "internal_qa_packet_path": "internal/audiobook_lab/frankenstein/en/1/qa_packet.json",
+        "internal_release_gate_report_path": "internal/audiobook_lab/frankenstein/en/1/release_gate_report.json",
+        "scoped_sync_manifest_path": "output/onboarding/frankenstein/audiobook_sync/sync_manifest.json",
+        "sync_item_count": 2,
+        "blocker_count": 7
+      }
+    },
+    {
       "name": "narration_qa_gate",
       "status": "BLOCKED",
       "blockers": [
@@ -246,13 +286,14 @@
     "start_reading_cta_allowed": false,
     "sitemap_inclusion_allowed": false,
     "owner_approval_status": "OWNER_APPROVAL_REQUIRED",
-    "blocker_count": 12,
+    "blocker_count": 13,
     "blockers": [
       "cover_asset_provenance_gate: owner-designed cover provenance is required before public use.",
       "cover_asset_provenance_gate: cover provenance note is required.",
       "cover_asset_provenance_gate: owner cover approval is required.",
       "audiobook_planning_packet: public audiobook release is blocked by default.",
       "audiobook_planning_packet: model/voice license evidence is missing.",
+      "audiobook_sync_dry_run_stage: sync release evidence remains HOLD; public audio cannot be released.",
       "narration_qa_gate: human narration QA is missing or not approved.",
       "narration_qa_gate: accessibility listening QA is missing or not approved.",
       "audiobook_legal_accessibility_compliance_gate: public audio remains PUBLIC_AUDIO_RELEASE_BLOCKED until separate owner/legal/accessibility release approval.",
@@ -264,14 +305,16 @@
   },
   "audiobook_gate": {
     "status": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+    "sync_status": "HOLD_SYNC_QA_REQUIRED",
     "public_audio_publish_allowed": false,
     "audio_enabled": false,
     "listen_now_cta": false,
     "audio_object_metadata": false,
-    "blocker_count": 8,
+    "blocker_count": 9,
     "blockers": [
       "public audiobook release is blocked by default.",
       "model/voice license evidence is missing.",
+      "sync release evidence remains HOLD; public audio cannot be released.",
       "human narration QA is missing or not approved.",
       "accessibility listening QA is missing or not approved.",
       "public audio remains PUBLIC_AUDIO_RELEASE_BLOCKED until separate owner/legal/accessibility release approval.",

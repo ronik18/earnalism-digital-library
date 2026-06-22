@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-22T03:55:23+00:00
+- Generated: 2026-06-22T05:40:55+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 | Item | Status | Notes |
@@ -16,6 +16,7 @@
 | seo_social_metadata_draft | PASS | No blocker. |
 | cover_asset_provenance_gate | BLOCKED | owner-designed cover provenance is required before public use.; cover provenance note is required.; owner cover approval is required. |
 | audiobook_planning_packet | BLOCKED | public audiobook release is blocked by default.; model/voice license evidence is missing. |
+| audiobook_sync_dry_run_stage | HOLD_SYNC_QA_REQUIRED | sync release evidence remains HOLD; public audio cannot be released. |
 | narration_qa_gate | BLOCKED | human narration QA is missing or not approved.; accessibility listening QA is missing or not approved. |
 | audiobook_legal_accessibility_compliance_gate | BLOCKED | public audio remains PUBLIC_AUDIO_RELEASE_BLOCKED until separate owner/legal/accessibility release approval.; rollback_approval_status is required before audiobook release.; owner_legal_approval_status is required before audiobook release. |
 | payment_publication_guardrails | BLOCKED | owner publication approval is required. |
@@ -28,5 +29,6 @@
 - Publication status: `HOLD_SOURCE_RIGHTS_QA_REQUIRED`
 - Public publish allowed: `false`
 - Public audio status: `PUBLIC_AUDIO_RELEASE_BLOCKED`
+- Audiobook sync status: `HOLD_SYNC_QA_REQUIRED`
 
 This orchestrator is dry-run/report-only and does not publish books, enable public audio, or change payment settings.
