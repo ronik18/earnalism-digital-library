@@ -1,0 +1,294 @@
+{
+  "config_path": "onboarding/books/frankenstein.yml",
+  "mode": "dry-run",
+  "branch": "",
+  "allow_network": false,
+  "dry_run": true,
+  "generated_at": "2026-06-22T03:55:23+00:00",
+  "book": {
+    "slug": "frankenstein",
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "language": "english",
+    "source_url": "https://www.gutenberg.org/ebooks/84",
+    "source_name": "Project Gutenberg",
+    "source_license": "Public Domain in the United States",
+    "source_license_url": "https://www.gutenberg.org/policy/license.html",
+    "commercial_use_evidence": "Public-domain source evidence requires owner/legal review before commercial public release.",
+    "local_source_path": "onboarding/books/frankenstein-source-sample.txt",
+    "rights_tier": "A",
+    "verification_status": "pending_owner_review",
+    "publication_region": "global",
+    "owner_approval_status": "OWNER_APPROVAL_REQUIRED",
+    "cover": {
+      "front_path": "",
+      "back_path": "",
+      "owner_designed": false,
+      "provenance_note": "",
+      "owner_approval_status": "OWNER_APPROVAL_REQUIRED"
+    },
+    "audiobook": {
+      "public_target": false,
+      "derivative_rights_status": "separate approval required",
+      "model_voice_license_status": "",
+      "human_review_status": "",
+      "accessibility_listening_status": "",
+      "rollback_approval_status": "",
+      "owner_legal_approval_status": "",
+      "refund_support_readiness": false
+    }
+  },
+  "stages": [
+    {
+      "name": "input_validation",
+      "status": "PASS",
+      "blockers": [],
+      "warnings": [],
+      "details": {}
+    },
+    {
+      "name": "source_url_license_validation",
+      "status": "PASS",
+      "blockers": [],
+      "warnings": [],
+      "details": {}
+    },
+    {
+      "name": "source_text_fetch_or_local_verification",
+      "status": "PASS",
+      "blockers": [],
+      "warnings": [],
+      "details": {
+        "source_text_loaded": true,
+        "source_text_method": "local",
+        "local_source_path": "onboarding/books/frankenstein-source-sample.txt",
+        "raw_text_characters": 585,
+        "raw_text_preview": "Chapter 1  I am by birth a Genevese; and my family is one of the most distinguished of that republic. My ancestors had been for many years counsellors and syndics; and my father had filled several public situations with honour and reputatio",
+        "raw_text": "Chapter 1\n\nI am by birth a Genevese; and my family is one of the most distinguished of\nthat republic. My ancestors had been for many years counsellors and syndics;\nand my father had filled several public situations with honour and reputation.\n\nChapter 2\n\nWhen I had attained the age of seventeen, my parents resolved that I should\nbecome a student at the university of Ingolstadt. I had hitherto attended the\nschools of Geneva; but my father thought it necessary, for the completion of my\neducation, that I should be made acquainted with other customs than those of my\nnative country.\n"
+      }
+    },
+    {
+      "name": "chapter_normalization_plan",
+      "status": "PASS",
+      "blockers": [],
+      "warnings": [],
+      "details": {
+        "chapter_count": 2,
+        "chapters": [
+          {
+            "index": 1,
+            "title": "Chapter 1",
+            "characters": 242,
+            "preview": "Chapter 1  I am by birth a Genevese; and my family is one of the most distinguished of that republic. My ancestors had been for many years counsellors and syndics; and my father ha"
+          },
+          {
+            "index": 2,
+            "title": "Chapter 2",
+            "characters": 340,
+            "preview": "Chapter 2  When I had attained the age of seventeen, my parents resolved that I should become a student at the university of Ingolstadt. I had hitherto attended the schools of Gene"
+          }
+        ],
+        "full_book_generation": false
+      }
+    },
+    {
+      "name": "draft_catalog_entry_generation",
+      "status": "PASS",
+      "blockers": [],
+      "warnings": [],
+      "details": {
+        "slug": "frankenstein",
+        "title": "Frankenstein",
+        "author": "Mary Shelley",
+        "language": "english",
+        "is_published": false,
+        "publication_status": "DRAFT_HOLD",
+        "audio_enabled": false,
+        "source_hash": "add218ea4e82d7aa923463cbcba1753a57f28c716281f2aa075991ab7b1b610c",
+        "content_hash": "ad04c96649045e45850343c405e2b93fa2a5b16061b6eb80eb94f3bf3aa1f558",
+        "provenance_hash": "e4737842a37c7cb842667fdaf859f79be2ef6f24cfa4a72169380309f55b6d35"
+      }
+    },
+    {
+      "name": "preview_chapter_gate",
+      "status": "PASS",
+      "blockers": [],
+      "warnings": [],
+      "details": {
+        "preview_chapter_index": 1,
+        "public_preview_enabled": false
+      }
+    },
+    {
+      "name": "seo_social_metadata_draft",
+      "status": "PASS",
+      "blockers": [],
+      "warnings": [],
+      "details": {
+        "title": "Frankenstein by Mary Shelley - Earnalism draft",
+        "description": "Draft onboarding metadata for Frankenstein. Publication remains gated until rights, QA, and owner approval pass.",
+        "og_type": "book",
+        "public": false,
+        "sitemap_included": false,
+        "book_json_ld_enabled": false,
+        "audio_object_enabled": false
+      }
+    },
+    {
+      "name": "cover_asset_provenance_gate",
+      "status": "BLOCKED",
+      "blockers": [
+        "owner-designed cover provenance is required before public use.",
+        "cover provenance note is required.",
+        "owner cover approval is required."
+      ],
+      "warnings": [
+        "front cover path is missing; placeholder draft only.",
+        "back cover path is missing; placeholder draft only."
+      ],
+      "details": {
+        "front_path": "",
+        "back_path": "",
+        "public_cover_enabled": false
+      }
+    },
+    {
+      "name": "audiobook_planning_packet",
+      "status": "BLOCKED",
+      "blockers": [
+        "public audiobook release is blocked by default.",
+        "model/voice license evidence is missing."
+      ],
+      "warnings": [],
+      "details": {
+        "audio_enabled": false,
+        "public_audio_release_status": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+        "listen_now_cta": false,
+        "audio_object_metadata": false
+      }
+    },
+    {
+      "name": "narration_qa_gate",
+      "status": "BLOCKED",
+      "blockers": [
+        "human narration QA is missing or not approved.",
+        "accessibility listening QA is missing or not approved."
+      ],
+      "warnings": [],
+      "details": {}
+    },
+    {
+      "name": "audiobook_legal_accessibility_compliance_gate",
+      "status": "BLOCKED",
+      "blockers": [
+        "public audio remains PUBLIC_AUDIO_RELEASE_BLOCKED until separate owner/legal/accessibility release approval.",
+        "rollback_approval_status is required before audiobook release.",
+        "owner_legal_approval_status is required before audiobook release.",
+        "refund_support_readiness is required before audiobook release."
+      ],
+      "warnings": [],
+      "details": {}
+    },
+    {
+      "name": "payment_publication_guardrails",
+      "status": "BLOCKED",
+      "blockers": [
+        "owner publication approval is required."
+      ],
+      "warnings": [],
+      "details": {
+        "payment_settings_changed": false,
+        "public_publish_actions": 0,
+        "razorpay_called": false
+      }
+    },
+    {
+      "name": "build_regression_command_runner",
+      "status": "PLAN_ONLY",
+      "blockers": [],
+      "warnings": [],
+      "details": {
+        "commands": [
+          "npm run controlled-publication:precheck",
+          "npm run catalog:audit",
+          "npm run launch:audio-audit",
+          "npm run audiobook:release-gate",
+          "npm run launch:seo-audit",
+          "npm run launch:social-preview-audit",
+          "npm run launch:payment-smoke:test-mode",
+          "npm run regression -- modules/11-seo.test.js modules/13-public-content-governance.test.js modules/14-ux-conversion-static.test.js",
+          "npm --prefix frontend run build"
+        ],
+        "executed": false
+      }
+    },
+    {
+      "name": "public_claims_audit",
+      "status": "PASS",
+      "blockers": [],
+      "warnings": [],
+      "details": {
+        "unsupported_accessibility_claims": false,
+        "listen_now_claim": false
+      }
+    }
+  ],
+  "hashes": {
+    "source_hash": "add218ea4e82d7aa923463cbcba1753a57f28c716281f2aa075991ab7b1b610c",
+    "content_hash": "ad04c96649045e45850343c405e2b93fa2a5b16061b6eb80eb94f3bf3aa1f558",
+    "provenance_hash": "e4737842a37c7cb842667fdaf859f79be2ef6f24cfa4a72169380309f55b6d35"
+  },
+  "final_gate": {
+    "status": "HOLD_SOURCE_RIGHTS_QA_REQUIRED",
+    "go_no_go": "HOLD",
+    "public_publish_allowed": false,
+    "is_published": false,
+    "start_reading_cta_allowed": false,
+    "sitemap_inclusion_allowed": false,
+    "owner_approval_status": "OWNER_APPROVAL_REQUIRED",
+    "blocker_count": 12,
+    "blockers": [
+      "cover_asset_provenance_gate: owner-designed cover provenance is required before public use.",
+      "cover_asset_provenance_gate: cover provenance note is required.",
+      "cover_asset_provenance_gate: owner cover approval is required.",
+      "audiobook_planning_packet: public audiobook release is blocked by default.",
+      "audiobook_planning_packet: model/voice license evidence is missing.",
+      "narration_qa_gate: human narration QA is missing or not approved.",
+      "narration_qa_gate: accessibility listening QA is missing or not approved.",
+      "audiobook_legal_accessibility_compliance_gate: public audio remains PUBLIC_AUDIO_RELEASE_BLOCKED until separate owner/legal/accessibility release approval.",
+      "audiobook_legal_accessibility_compliance_gate: rollback_approval_status is required before audiobook release.",
+      "audiobook_legal_accessibility_compliance_gate: owner_legal_approval_status is required before audiobook release.",
+      "audiobook_legal_accessibility_compliance_gate: refund_support_readiness is required before audiobook release.",
+      "payment_publication_guardrails: owner publication approval is required."
+    ]
+  },
+  "audiobook_gate": {
+    "status": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+    "public_audio_publish_allowed": false,
+    "audio_enabled": false,
+    "listen_now_cta": false,
+    "audio_object_metadata": false,
+    "blocker_count": 8,
+    "blockers": [
+      "public audiobook release is blocked by default.",
+      "model/voice license evidence is missing.",
+      "human narration QA is missing or not approved.",
+      "accessibility listening QA is missing or not approved.",
+      "public audio remains PUBLIC_AUDIO_RELEASE_BLOCKED until separate owner/legal/accessibility release approval.",
+      "rollback_approval_status is required before audiobook release.",
+      "owner_legal_approval_status is required before audiobook release.",
+      "refund_support_readiness is required before audiobook release."
+    ]
+  },
+  "reports": {
+    "orchestration": "BOOK_ONBOARDING_ORCHESTRATION_REPORT.md",
+    "rights": "ENGLISH_BOOK_RIGHTS_EVIDENCE_SCORECARD.md",
+    "publication": "ENGLISH_BOOK_PUBLICATION_GATE_REPORT.md",
+    "audiobook_release": "ENGLISH_AUDIOBOOK_RELEASE_GATE_REPORT.md",
+    "audiobook_qa": "ENGLISH_AUDIOBOOK_QA_PACKET.md",
+    "seo": "ENGLISH_BOOK_SEO_PREVIEW_REPORT.md",
+    "visual": "ENGLISH_BOOK_VISUAL_SCORECARD.md",
+    "codex_prompt": "output/codex_prompts/next_english_book_onboarding_prompt.md"
+  },
+  "codex_prompt": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/codex_prompts/next_english_book_onboarding_prompt.md"
+}

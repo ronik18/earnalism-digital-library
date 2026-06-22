@@ -21,7 +21,8 @@ from urllib.request import urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT_DIR = ROOT / "output" / "english_book_onboarding"
+DEFAULT_OUTPUT_DIR = ROOT / "output" / "onboarding"
+LATEST_OUTPUT_DIR = ROOT / "output" / "english_book_onboarding"
 CODEX_PROMPT_PATH = ROOT / "output" / "codex_prompts" / "next_english_book_onboarding_prompt.md"
 
 PUBLIC_AUDIO_RELEASE_BLOCKED = "PUBLIC_AUDIO_RELEASE_BLOCKED"
@@ -168,6 +169,11 @@ def truthy(value: Any) -> bool:
     if isinstance(value, bool):
         return value
     return str(value or "").strip().lower() in {"true", "yes", "approved", "pass", "passed"}
+
+
+def safe_slug(value: Any) -> str:
+    slug = re.sub(r"[^a-z0-9-]+", "-", str(value or "").strip().lower()).strip("-")
+    return slug or "unknown-book"
 
 
 def validate_inputs(config: dict[str, Any]) -> StageResult:
@@ -556,7 +562,11 @@ def write_reports(
     *,
     write_root_reports: bool = True,
 ) -> dict[str, Path]:
-    output_dir.mkdir(parents=True, exist_ok=True)
+    slug = safe_slug(result.book.get("slug"))
+    scoped_output_dir = output_dir / slug
+    scoped_output_dir.mkdir(parents=True, exist_ok=True)
+    latest_output_dir = LATEST_OUTPUT_DIR
+    latest_output_dir.mkdir(parents=True, exist_ok=True)
     if write_root_reports:
         CODEX_PROMPT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
@@ -663,15 +673,25 @@ def write_reports(
             path = ROOT / filename
             path.write_text(text, encoding="utf-8")
             paths[filename] = path
-        output_copy = output_dir / filename
-        output_copy.write_text(text, encoding="utf-8")
-        paths.setdefault(filename, output_copy)
-    prompt_path = CODEX_PROMPT_PATH if write_root_reports else output_dir / "next_english_book_onboarding_prompt.md"
+            latest_copy = latest_output_dir / filename
+            latest_copy.write_text(text, encoding="utf-8")
+        scoped_copy = scoped_output_dir / filename
+        scoped_copy.write_text(text, encoding="utf-8")
+        paths.setdefault(filename, scoped_copy)
+        paths[f"output/onboarding/{slug}/{filename}"] = scoped_copy
+    prompt_path = CODEX_PROMPT_PATH if write_root_reports else scoped_output_dir / "next_english_book_onboarding_prompt.md"
     prompt_path.write_text(prompt, encoding="utf-8")
     paths["output/codex_prompts/next_english_book_onboarding_prompt.md"] = prompt_path
-    json_path = output_dir / "english_book_onboarding_report.json"
-    json_path.write_text(json.dumps(result_to_json(result), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    paths["output/english_book_onboarding/english_book_onboarding_report.json"] = json_path
+    scoped_prompt_path = scoped_output_dir / "next_codex_prompt.md"
+    scoped_prompt_path.write_text(prompt, encoding="utf-8")
+    paths[f"output/onboarding/{slug}/next_codex_prompt.md"] = scoped_prompt_path
+    scoped_json_path = scoped_output_dir / "english_book_onboarding_report.json"
+    scoped_json_path.write_text(json.dumps(result_to_json(result), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    paths[f"output/onboarding/{slug}/english_book_onboarding_report.json"] = scoped_json_path
+    if write_root_reports:
+        latest_json_path = latest_output_dir / "english_book_onboarding_report.json"
+        latest_json_path.write_text(json.dumps(result_to_json(result), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        paths["output/english_book_onboarding/english_book_onboarding_report.json"] = latest_json_path
     return paths
 
 

@@ -12,6 +12,7 @@ from scripts.orchestrate_english_book_onboarding import (
 
 
 def write_config(tmp_path: Path, content: str) -> Path:
+    tmp_path.mkdir(parents=True, exist_ok=True)
     config_path = tmp_path / "candidate.yml"
     config_path.write_text(content, encoding="utf-8")
     return config_path
@@ -131,6 +132,7 @@ def test_generated_reports_say_hold_not_go_when_evidence_incomplete(tmp_path: Pa
     paths = write_reports(result, tmp_path / "reports", write_root_reports=False)
 
     assert result.final_gate["go_no_go"] == "HOLD"
+    assert (tmp_path / "reports" / "test-book").is_dir()
     report_text = paths["ENGLISH_BOOK_PUBLICATION_GATE_REPORT.md"].read_text(encoding="utf-8")
     orchestration_text = paths["BOOK_ONBOARDING_ORCHESTRATION_REPORT.md"].read_text(encoding="utf-8")
     assert "HOLD" in report_text
@@ -157,3 +159,69 @@ def test_no_unsupported_accessibility_claims_are_generated(tmp_path: Path):
     assert "WCAG compliant" not in combined
     assert "blind-user tested" not in combined
     assert "fully accessible" not in combined
+
+
+def test_slug_scoped_output_directory_contains_all_reports(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    result = run_orchestration(config_path)
+    paths = write_reports(result, tmp_path / "onboarding", write_root_reports=False)
+    scoped_dir = tmp_path / "onboarding" / "frankenstein"
+
+    assert scoped_dir.is_dir()
+    assert paths["output/onboarding/frankenstein/BOOK_ONBOARDING_ORCHESTRATION_REPORT.md"] == (
+        scoped_dir / "BOOK_ONBOARDING_ORCHESTRATION_REPORT.md"
+    )
+    expected_files = {
+        "BOOK_ONBOARDING_ORCHESTRATION_REPORT.md",
+        "ENGLISH_BOOK_RIGHTS_EVIDENCE_SCORECARD.md",
+        "ENGLISH_BOOK_PUBLICATION_GATE_REPORT.md",
+        "ENGLISH_AUDIOBOOK_RELEASE_GATE_REPORT.md",
+        "ENGLISH_AUDIOBOOK_QA_PACKET.md",
+        "ENGLISH_BOOK_SEO_PREVIEW_REPORT.md",
+        "ENGLISH_BOOK_VISUAL_SCORECARD.md",
+        "english_book_onboarding_report.json",
+        "next_codex_prompt.md",
+    }
+    assert expected_files.issubset({path.name for path in scoped_dir.iterdir()})
+    assert "Frankenstein" in (scoped_dir / "BOOK_ONBOARDING_ORCHESTRATION_REPORT.md").read_text(encoding="utf-8")
+
+
+def test_two_different_slugs_do_not_overwrite_each_other(tmp_path: Path):
+    first_config = write_config(tmp_path / "first", base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    second_config = write_config(tmp_path / "second", base_config(tmp_path, slug="jane-eyre", title="Jane Eyre"))
+    output_root = tmp_path / "onboarding"
+
+    first = run_orchestration(first_config)
+    second = run_orchestration(second_config)
+    write_reports(first, output_root, write_root_reports=False)
+    write_reports(second, output_root, write_root_reports=False)
+
+    first_report = output_root / "frankenstein" / "BOOK_ONBOARDING_ORCHESTRATION_REPORT.md"
+    second_report = output_root / "jane-eyre" / "BOOK_ONBOARDING_ORCHESTRATION_REPORT.md"
+    assert first_report.exists()
+    assert second_report.exists()
+    assert "Frankenstein" in first_report.read_text(encoding="utf-8")
+    assert "Jane Eyre" in second_report.read_text(encoding="utf-8")
+    assert first_report.read_text(encoding="utf-8") != second_report.read_text(encoding="utf-8")
+
+
+def test_top_level_latest_run_reports_still_work(tmp_path: Path, monkeypatch):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="latest-book", title="Latest Book"))
+    result = run_orchestration(config_path)
+    monkeypatch.setattr("scripts.orchestrate_english_book_onboarding.ROOT", tmp_path)
+    monkeypatch.setattr(
+        "scripts.orchestrate_english_book_onboarding.CODEX_PROMPT_PATH",
+        tmp_path / "output" / "codex_prompts" / "next_english_book_onboarding_prompt.md",
+    )
+    monkeypatch.setattr(
+        "scripts.orchestrate_english_book_onboarding.LATEST_OUTPUT_DIR",
+        tmp_path / "output" / "english_book_onboarding",
+    )
+
+    paths = write_reports(result, tmp_path / "output" / "onboarding", write_root_reports=True)
+
+    assert (tmp_path / "BOOK_ONBOARDING_ORCHESTRATION_REPORT.md").exists()
+    assert (tmp_path / "output" / "onboarding" / "latest-book" / "BOOK_ONBOARDING_ORCHESTRATION_REPORT.md").exists()
+    assert (tmp_path / "output" / "onboarding" / "latest-book" / "next_codex_prompt.md").exists()
+    assert (tmp_path / "output" / "codex_prompts" / "next_english_book_onboarding_prompt.md").exists()
+    assert paths["BOOK_ONBOARDING_ORCHESTRATION_REPORT.md"] == tmp_path / "BOOK_ONBOARDING_ORCHESTRATION_REPORT.md"
