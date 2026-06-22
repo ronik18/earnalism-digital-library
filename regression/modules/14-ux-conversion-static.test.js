@@ -193,8 +193,11 @@ describe("UX conversion static signals", () => {
     expect(premiumLandingVisualReview).toContain("Do not describe the custom cover as archival, public-domain, first-edition, or external-review evidence.");
     expect(premiumLandingVisualReview).toContain("Approved hero threshold: `650px`");
 
-    expect(luxuryVisualScorecard).toContain("Overall luxury score: `9.5/10`");
-    expect(pixelUtilizationScorecard).toContain("Overall growth-friendly UX score: `9.6/10`");
+    expect(luxuryVisualScorecard).toContain("Overall luxury score: `9.8/10`");
+    expect(pixelUtilizationScorecard).toContain("Overall growth-friendly UX score: `9.8/10`");
+    expect(luxuryVisualScorecard).toContain("Why This Is Now 9.7+ Or Why It Is Not");
+    expect(pixelUtilizationScorecard).toContain("Why This Is Now 9.7+ Or Why It Is Not");
+    expect(premiumLandingVisualReview).toContain("Why This Is Now 9.7+ Or Why It Is Not");
     expect(pixelUtilizationScorecard).toContain('data-approved-hero-max-height="650"');
 
     expect(styles).toContain(".premium-landing-hero");

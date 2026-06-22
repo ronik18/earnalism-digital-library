@@ -113,9 +113,9 @@ export default function Home() {
         data-testid="premium-landing-hero"
         data-approved-hero-max-height="650"
       >
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-5 pb-10 pt-11 sm:px-8 sm:pb-12 sm:pt-14 lg:grid-cols-12 lg:items-center lg:gap-8 lg:px-12 lg:py-14">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-5 px-5 pb-8 pt-8 sm:px-8 sm:pb-11 sm:pt-12 lg:grid-cols-12 lg:items-center lg:gap-8 lg:px-12 lg:py-14">
           <div className="lg:col-span-7">
-            <div className="mb-3 flex items-center justify-between gap-4 sm:mb-4">
+            <div className="mb-2 flex items-center justify-between gap-4 sm:mb-4">
               <div className="italic-eyebrow flex items-center gap-3 text-[var(--brand-gold-soft)]" data-testid="hero-overline">
                 <span className="h-px w-7 bg-[var(--brand-gold)]/70" />
                 <span>The Earnalism Digital Library</span>
@@ -125,27 +125,22 @@ export default function Home() {
               </div>
             </div>
             <h1
-              className="font-serif-light text-[2.45rem] leading-[1.01] tracking-normal text-[#FDFCF8] text-balance min-[390px]:text-[2.7rem] sm:text-[3.8rem] lg:text-[4.25rem] xl:text-[4.65rem]"
+              className="font-serif-light text-[2.24rem] leading-[1.01] tracking-normal text-[#FDFCF8] text-balance min-[390px]:text-[2.5rem] sm:text-[3.65rem] lg:text-[4.25rem] xl:text-[4.65rem]"
               data-testid="hero-headline"
               aria-label="Begin with Dracula."
             >
               Begin with <span className="italic-accent text-[var(--brand-gold-soft)]">Dracula.</span>
             </h1>
-            <p className="mt-3 max-w-xl font-serif-display text-base italic leading-snug text-[#F4EFEA]/90 min-[390px]:text-lg sm:text-2xl lg:mt-4">
+            <p className="mt-2 max-w-xl font-serif-display text-sm italic leading-snug text-[#F4EFEA]/90 min-[390px]:text-base sm:text-2xl lg:mt-4">
               A quiet digital reading room for timeless books.
             </p>
-            <p className="mt-3 max-w-2xl text-[0.92rem] font-light leading-[1.62] text-[#F4EFEA]/82 sm:text-[0.98rem] sm:leading-[1.68] lg:mt-4">
+            <p className="mt-2 max-w-2xl text-[0.84rem] font-light leading-[1.52] text-[#F4EFEA]/82 min-[390px]:text-[0.88rem] sm:text-[0.98rem] sm:leading-[1.68] lg:mt-4">
               The Earnalism controlled launch starts with one approved classic. Read Chapter 1 free. Continue with a 7-day reading pass. More books are coming through the rights-safe pipeline.
             </p>
-            <p className="mt-3 max-w-xl text-[0.74rem] uppercase tracking-[0.16em] text-[var(--brand-gold-soft)]/92">
-              Reading time is used only while you read.
+            <p className="mt-2 max-w-xl text-[0.68rem] uppercase tracking-[0.15em] text-[var(--brand-gold-soft)]/92 sm:mt-3 sm:text-[0.74rem]">
+              Chapter 1 is free. Reading time is used only while you read.
             </p>
-            <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-[0.64rem] uppercase tracking-[0.15em] text-[#FDFCF8]/88 sm:text-[0.68rem]" aria-label="Dracula launch facts">
-              <span className="inline-flex items-center gap-2"><ShieldCheck size={14} strokeWidth={1.6} /> {DRACULA_RIGHTS_NOTE}</span>
-              <span className="inline-flex items-center gap-2"><BookOpen size={14} strokeWidth={1.6} /> Chapter 1 free</span>
-              <span className="inline-flex items-center gap-2"><Headphones size={14} strokeWidth={1.6} /> Audio not available yet</span>
-            </div>
-            <div className="premium-hero-ctas mt-6" data-testid="hero-ctas">
+            <div className="premium-hero-ctas mt-4 sm:mt-6" data-testid="hero-ctas">
               <Link
                 to={`/reader/${LIVE_APPROVED_SLUG}`}
                 className="btn-primary premium-hero-cta-primary justify-center gap-2"
@@ -179,11 +174,16 @@ export default function Home() {
                 Explore Pipeline / Library <ArrowRight size={15} strokeWidth={1.7} />
               </Link>
             </div>
+            <div className="premium-launch-facts mt-3" aria-label="Dracula launch facts">
+              <span className="inline-flex items-center gap-2"><ShieldCheck size={14} strokeWidth={1.6} /> {DRACULA_RIGHTS_NOTE}</span>
+              <span className="inline-flex items-center gap-2"><BookOpen size={14} strokeWidth={1.6} /> Chapter 1 free</span>
+              <span className="inline-flex items-center gap-2"><Headphones size={14} strokeWidth={1.6} /> Audio not available yet</span>
+            </div>
           </div>
 
           <div className="hidden lg:col-span-5 lg:block">
-            <div className="premium-dracula-hero-card rounded-lg border border-[#FDFCF8]/16 p-4 shadow-[0_34px_80px_-42px_rgba(0,0,0,0.72)] backdrop-blur" data-testid="hero-dracula-card">
-              <div className="premium-dracula-cover-frame mx-auto aspect-[500/696] max-w-[208px] overflow-hidden rounded-md border border-[#FDFCF8]/18 bg-[#F4EFEA]" data-testid="hero-dracula-cover-frame">
+            <div className="premium-dracula-hero-card mx-auto max-w-[430px] rounded-lg border border-[#FDFCF8]/16 p-4 shadow-[0_34px_80px_-42px_rgba(0,0,0,0.72)] backdrop-blur" data-testid="hero-dracula-card">
+              <div className="premium-dracula-cover-frame mx-auto aspect-[500/696] max-w-[224px] overflow-hidden rounded-md border border-[#FDFCF8]/18 bg-[#F4EFEA]" data-testid="hero-dracula-cover-frame">
                 <BookCoverImage book={liveBook} alt="Custom Earnalism Dracula cover artwork" loading="eager" width={420} widths={[300, 420, 640]} sizes="(min-width: 1024px) 280px, 70vw" />
               </div>
               <div className="mt-3 text-center">
