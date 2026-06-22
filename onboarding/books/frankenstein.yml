@@ -1,0 +1,29 @@
+slug: frankenstein
+title: Frankenstein
+author: Mary Shelley
+language: english
+source_url: https://www.gutenberg.org/ebooks/84
+source_name: Project Gutenberg
+source_license: Public Domain in the United States
+source_license_url: https://www.gutenberg.org/policy/license.html
+commercial_use_evidence: Public-domain source evidence requires owner/legal review before commercial public release.
+local_source_path: onboarding/books/frankenstein-source-sample.txt
+rights_tier: A
+verification_status: pending_owner_review
+publication_region: global
+owner_approval_status: OWNER_APPROVAL_REQUIRED
+cover:
+  front_path:
+  back_path:
+  owner_designed: false
+  provenance_note:
+  owner_approval_status: OWNER_APPROVAL_REQUIRED
+audiobook:
+  public_target: false
+  derivative_rights_status: separate approval required
+  model_voice_license_status:
+  human_review_status:
+  accessibility_listening_status:
+  rollback_approval_status:
+  owner_legal_approval_status:
+  refund_support_readiness: false
