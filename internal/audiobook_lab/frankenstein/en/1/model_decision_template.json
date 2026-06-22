@@ -1,0 +1,49 @@
+{
+  "book_slug": "frankenstein",
+  "model_candidate": "kokoro",
+  "decision": "HOLD_LICENSE_AND_HUMAN_QA_REQUIRED",
+  "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "candidates": {
+    "kokoro": {
+      "display_name": "Kokoro",
+      "languages": [
+        "en"
+      ],
+      "license_status": "HOLD_LICENSE_REVIEW",
+      "license_note": "Evaluate only after local commercial-use and model-card review."
+    },
+    "melotts": {
+      "display_name": "MeloTTS",
+      "languages": [
+        "en"
+      ],
+      "license_status": "HOLD_LICENSE_REVIEW",
+      "license_note": "Evaluate only after model, voice, and dependency license review."
+    },
+    "piper": {
+      "display_name": "Piper",
+      "languages": [
+        "en"
+      ],
+      "license_status": "HOLD_GPL_CAUTION",
+      "license_note": "GPL/license obligations require manual legal review before production use."
+    },
+    "indic-parler-tts": {
+      "display_name": "Indic Parler-TTS",
+      "languages": [
+        "bn",
+        "en"
+      ],
+      "license_status": "HOLD_LICENSE_REVIEW",
+      "license_note": "Candidate for Bengali/English evaluation only after license and voice rights review."
+    },
+    "styletts2": {
+      "display_name": "StyleTTS2",
+      "languages": [
+        "en"
+      ],
+      "license_status": "HOLD_LICENSE_REVIEW_ONLY",
+      "license_note": "License-review candidate only; not approved for generation."
+    }
+  }
+}

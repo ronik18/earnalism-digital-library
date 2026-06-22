@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-22T03:55:23+00:00
+- Generated: 2026-06-22T05:40:55+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - Cover provenance gate remains required before public visual use.
