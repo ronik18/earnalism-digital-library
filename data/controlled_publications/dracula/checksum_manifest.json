@@ -146,8 +146,8 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "dcd5562938e4c5b51ac0c2d4e32514dfd085b7403e4b2ef4dc95fc88b27f0958",
-      "bytes": 13617
+      "sha256": "3114a35d60c818b89e7958b710f1d29562b0d6019ec3cb68b84bac6cd60ea1f7",
+      "bytes": 13948
     },
     {
       "file": "reader_manifest.json",
@@ -160,5 +160,5 @@
       "bytes": 46113
     }
   ],
-  "manifest_hash": "2391397fa1220aa1cf4470fb173bf21be6e7d0302d79710a071dc24656920c16"
+  "manifest_hash": "e87cdaa9ed2bff6bbabb8e7f2cb7b6b5721d92af5d6e4cf198fa460a3849971a"
 }

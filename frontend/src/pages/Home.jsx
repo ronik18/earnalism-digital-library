@@ -23,6 +23,7 @@ import { api, formatError } from "../lib/api";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import {
   DRACULA_CHAPTER_COUNT,
+  DRACULA_COVER_IMAGE,
   DRACULA_CTA_EVENTS,
   DRACULA_RIGHTS_NOTE,
   DRACULA_SOURCE_NOTE,
@@ -34,8 +35,6 @@ import {
   readingPassUrl,
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
-
-const HERO_IMG = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1920&q=90";
 
 const SOCIALS = [
   { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
@@ -71,8 +70,8 @@ export default function Home() {
     title: "Begin with Dracula | The Earnalism Digital Library",
     description:
       "Earnalism is live with Dracula as its first approved Tier A core reading release. Read Chapter 1 free, then continue with reading time as more classics move through a rights-safe pipeline.",
-    image: liveBook.cover_image_url || HERO_IMG,
-    imageAlt: "Dracula on Earnalism",
+    image: liveBook.cover_image_url || DRACULA_COVER_IMAGE,
+    imageAlt: "Custom Earnalism Dracula cover artwork",
     canonicalPath: "/",
   });
 
@@ -109,49 +108,47 @@ export default function Home() {
 
   return (
     <div data-testid="home-page">
-      <section className="relative isolate overflow-hidden bg-[#16090d] text-[#FDFCF8]">
-        <div className="absolute inset-0 -z-10">
-          <img
-            src={HERO_IMG}
-            alt=""
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            className="h-full w-full object-cover"
-            style={{ filter: "saturate(0.9) brightness(0.62)" }}
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,7,11,0.94)_0%,rgba(32,12,18,0.86)_50%,rgba(32,12,18,0.28)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,#F4EFEA_0%,rgba(244,239,234,0.62)_50%,transparent_100%)]" />
-        </div>
-
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 pb-24 pt-24 sm:px-8 sm:pt-32 lg:grid-cols-12 lg:px-12 lg:pb-32 lg:pt-36">
+      <section
+        className="premium-landing-hero relative isolate overflow-hidden text-[#FDFCF8]"
+        data-testid="premium-landing-hero"
+        data-approved-hero-max-height="650"
+      >
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-5 pb-10 pt-11 sm:px-8 sm:pb-12 sm:pt-14 lg:grid-cols-12 lg:items-center lg:gap-8 lg:px-12 lg:py-14">
           <div className="lg:col-span-7">
-            <div className="italic-eyebrow mb-6 flex items-center gap-3 text-[var(--brand-gold-soft)]" data-testid="hero-overline">
-              <span className="h-px w-10 bg-[var(--brand-gold)]/70" />
-              <span>The Earnalism Digital Library</span>
+            <div className="mb-3 flex items-center justify-between gap-4 sm:mb-4">
+              <div className="italic-eyebrow flex items-center gap-3 text-[var(--brand-gold-soft)]" data-testid="hero-overline">
+                <span className="h-px w-7 bg-[var(--brand-gold)]/70" />
+                <span>The Earnalism Digital Library</span>
+              </div>
+              <div className="premium-dracula-mobile-object lg:hidden" aria-hidden="true">
+                <BookCoverImage book={liveBook} alt="" loading="eager" width={180} widths={[120, 180, 240]} sizes="82px" />
+              </div>
             </div>
             <h1
-              className="font-serif-light text-[2.8rem] leading-[1.02] tracking-normal text-[#FDFCF8] text-balance sm:text-6xl lg:text-7xl"
+              className="font-serif-light text-[2.45rem] leading-[1.01] tracking-normal text-[#FDFCF8] text-balance min-[390px]:text-[2.7rem] sm:text-[3.8rem] lg:text-[4.25rem] xl:text-[4.65rem]"
               data-testid="hero-headline"
               aria-label="Begin with Dracula."
             >
               Begin with <span className="italic-accent text-[var(--brand-gold-soft)]">Dracula.</span>
             </h1>
-            <p className="mt-6 max-w-xl font-serif-display text-xl italic leading-snug text-[#F4EFEA]/90 sm:text-2xl">
+            <p className="mt-3 max-w-xl font-serif-display text-base italic leading-snug text-[#F4EFEA]/90 min-[390px]:text-lg sm:text-2xl lg:mt-4">
               A quiet digital reading room for timeless books.
             </p>
-            <p className="mt-6 max-w-2xl text-[1rem] font-light leading-[1.8] text-[#F4EFEA]/80">
+            <p className="mt-3 max-w-2xl text-[0.92rem] font-light leading-[1.62] text-[#F4EFEA]/82 sm:text-[0.98rem] sm:leading-[1.68] lg:mt-4">
               The Earnalism controlled launch starts with one approved classic. Read Chapter 1 free. Continue with a 7-day reading pass. More books are coming through the rights-safe pipeline.
             </p>
-            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-[0.74rem] uppercase tracking-[0.16em] text-[#FDFCF8]/90" aria-label="Dracula launch facts">
+            <p className="mt-3 max-w-xl text-[0.74rem] uppercase tracking-[0.16em] text-[var(--brand-gold-soft)]/92">
+              Reading time is used only while you read.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-[0.64rem] uppercase tracking-[0.15em] text-[#FDFCF8]/88 sm:text-[0.68rem]" aria-label="Dracula launch facts">
               <span className="inline-flex items-center gap-2"><ShieldCheck size={14} strokeWidth={1.6} /> {DRACULA_RIGHTS_NOTE}</span>
               <span className="inline-flex items-center gap-2"><BookOpen size={14} strokeWidth={1.6} /> Chapter 1 free</span>
               <span className="inline-flex items-center gap-2"><Headphones size={14} strokeWidth={1.6} /> Audio not available yet</span>
             </div>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap" data-testid="hero-ctas">
+            <div className="premium-hero-ctas mt-6" data-testid="hero-ctas">
               <Link
                 to={`/reader/${LIVE_APPROVED_SLUG}`}
-                className="btn-primary justify-center gap-2"
+                className="btn-primary premium-hero-cta-primary justify-center gap-2"
                 data-testid="hero-cta-read"
                 onClick={() => track(DRACULA_CTA_EVENTS.homepagePrimary, { cta: "read_chapter_1_free" })}
               >
@@ -175,7 +172,7 @@ export default function Home() {
               </Link>
               <Link
                 to="/library?category=pipeline"
-                className="btn-link justify-center !text-[#FDFCF8]"
+                className="btn-link hidden justify-center !text-[#FDFCF8] sm:inline-flex"
                 data-testid="hero-cta-pipeline"
                 onClick={() => track(DRACULA_CTA_EVENTS.notifyMe, { cta: "explore_pipeline_library" })}
               >
@@ -184,16 +181,16 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="lg:col-span-5">
-            <div className="rounded-lg border border-[#FDFCF8]/16 bg-[#FDFCF8]/[0.08] p-5 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.7)] backdrop-blur" data-testid="hero-dracula-card">
-              <div className="mx-auto aspect-[3/4] max-w-[280px] overflow-hidden rounded-md border border-[#FDFCF8]/18 bg-[#F4EFEA]">
-                <BookCoverImage book={liveBook} alt="Dracula by Bram Stoker cover" loading="eager" width={420} widths={[300, 420, 640]} sizes="(min-width: 1024px) 280px, 70vw" />
+          <div className="hidden lg:col-span-5 lg:block">
+            <div className="premium-dracula-hero-card rounded-lg border border-[#FDFCF8]/16 p-4 shadow-[0_34px_80px_-42px_rgba(0,0,0,0.72)] backdrop-blur" data-testid="hero-dracula-card">
+              <div className="premium-dracula-cover-frame mx-auto aspect-[500/696] max-w-[208px] overflow-hidden rounded-md border border-[#FDFCF8]/18 bg-[#F4EFEA]" data-testid="hero-dracula-cover-frame">
+                <BookCoverImage book={liveBook} alt="Custom Earnalism Dracula cover artwork" loading="eager" width={420} widths={[300, 420, 640]} sizes="(min-width: 1024px) 280px, 70vw" />
               </div>
-              <div className="mt-5 text-center">
-                <div className="text-[0.68rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]">Live controlled release</div>
-                <h2 className="mt-2 font-serif-display text-3xl text-[#FDFCF8]">Dracula</h2>
-                <p className="mt-2 text-[0.82rem] uppercase tracking-[0.14em] text-[#F4EFEA]/76">by Bram Stoker</p>
-                <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-[#F4EFEA]/72">
+              <div className="mt-3 text-center">
+                <div className="text-[0.62rem] uppercase tracking-[0.22em] text-[var(--brand-gold-soft)]">Live controlled release</div>
+                <h2 className="mt-1.5 font-serif-display text-[1.82rem] text-[#FDFCF8]">Dracula</h2>
+                <p className="mt-1.5 text-[0.72rem] uppercase tracking-[0.14em] text-[#F4EFEA]/76">by Bram Stoker</p>
+                <p className="mx-auto mt-3 max-w-sm text-[0.78rem] leading-relaxed text-[#F4EFEA]/72">
                   {DRACULA_CHAPTER_COUNT} chapters. Source: {DRACULA_SOURCE_NOTE}. Audio is not available yet.
                 </p>
               </div>

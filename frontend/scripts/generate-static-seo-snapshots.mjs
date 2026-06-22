@@ -17,7 +17,7 @@ const MANAGED_HEAD_START = "<!-- earnalism-static-seo:start -->";
 const MANAGED_HEAD_END = "<!-- earnalism-static-seo:end -->";
 const BRAND = "The Earnalism";
 const SITE_NAME = "The Earnalism";
-const DRACULA_IMAGE = `${siteUrl}/assets/shelves/gothic-fiction.jpg`;
+const DRACULA_IMAGE = `${siteUrl}/assets/books/dracula/dracula-front-cover.webp`;
 
 function escapeHtml(value = "") {
   return String(value)
@@ -356,7 +356,7 @@ function buildPages({ book, manifest }) {
         eyebrow: "Library - Controlled Launch",
         title: "Live Controlled Release: Dracula only.",
         body: "Coming Through the Rights-Safe Pipeline: future titles only. These books are not live products yet and have Notify Me CTAs only.",
-        facts: ["Unapproved books are not live reading products.", "No unapproved title offers Start Reading, Read Preview, or Listen Now."],
+        facts: ["Unapproved books are not live reading products.", "No unapproved title offers reader, preview, or listening CTAs."],
         links: [
           { href: "/book/dracula", label: "Open Dracula" },
           { href: "/reader/dracula", label: "Read Chapter 1 Free" },

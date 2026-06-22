@@ -92,6 +92,7 @@ describe("UX conversion static signals", () => {
   const firstBatchMatrixCsv = read("FIRST_BATCH_REAL_SOURCE_MATRIX.csv");
   const firstBatchBackfillTemplate = read("FIRST_BATCH_REAL_SOURCE_BACKFILL_INPUT.template.json");
   const header = read("frontend/src/components/Header.jsx");
+  const firstVisitSiteTour = read("frontend/src/components/FirstVisitSiteTour.jsx");
   const footer = read("frontend/src/components/Footer.jsx");
   const footerSocialLinks = read("frontend/src/components/FooterSocialLinks.jsx");
   const socialLinksConfig = read("frontend/src/config/socialLinks.js");
@@ -116,6 +117,9 @@ describe("UX conversion static signals", () => {
   const accessibilityClaimsPolicy = read("ACCESSIBILITY_CLAIMS_POLICY.md");
   const audiobookComplianceScorecard = read("AUDIOBOOK_COMPLIANCE_SCORECARD.md");
   const paymentRevenueConfidenceReport = read("PAYMENT_REVENUE_10X_CONFIDENCE_REPORT.md");
+  const premiumLandingVisualReview = read("PREMIUM_LANDING_PAGE_VISUAL_REVIEW_REPORT.md");
+  const luxuryVisualScorecard = read("LUXURY_VISUAL_AMBIENCE_SCORECARD.md");
+  const pixelUtilizationScorecard = read("LANDING_PIXEL_UTILIZATION_GROWTH_SCORECARD.md");
   const controlledPublicationPrecheck = read("scripts/controlled_publication_precheck.py");
   const internalAudiobookPrototype = read("frontend/src/components/Internal/InternalAudiobookPlayerPrototype.jsx");
   const accessibleAudiobookPrototypeReport = read("PREMIUM_ACCESSIBLE_AUDIOBOOK_PLAYER_REPORT.md");
@@ -129,6 +133,7 @@ describe("UX conversion static signals", () => {
     microStory,
     readerUpsell,
     header,
+    firstVisitSiteTour,
     footer,
     controlledLaunch,
     staticSnapshotGenerator,
@@ -157,6 +162,59 @@ describe("UX conversion static signals", () => {
     expect(home).not.toContain("Discover thoughtful books across");
     expect(home).not.toMatch(/\b105 reading rooms open\b/i);
     expect(home).not.toContain("reading rooms open");
+    expect(firstVisitSiteTour).toContain("A calm digital reading room beginning with Dracula by Bram Stoker");
+    expect(firstVisitSiteTour).toContain("Future titles stay Coming Soon or Notify Me");
+    expect(firstVisitSiteTour).not.toContain("Browse what is ready now");
+    expect(firstVisitSiteTour).not.toContain("Explore Bengali classics, literature, business, technology");
+  });
+
+  test("premium landing visual pass keeps hero efficient, local, and truthful", () => {
+    const heroThreshold = home.match(/data-approved-hero-max-height="(\d+)"/);
+    expect(heroThreshold).not.toBeNull();
+    expect(Number(heroThreshold[1])).toBeLessThanOrEqual(650);
+
+    expect(home).toContain('data-testid="premium-landing-hero"');
+    expect(home).toContain('data-testid="hero-dracula-cover-frame"');
+    expect(home).toContain("Custom Earnalism Dracula cover artwork");
+    expect(home).not.toContain("images.unsplash.com");
+    expect(home).not.toMatch(/lg:pt-36|lg:pb-32|sm:pt-32|pb-24/);
+
+    expect(controlledLaunch).toContain('DRACULA_COVER_IMAGE = "/assets/books/dracula/dracula-front-cover.webp"');
+    expect(controlledLaunch).toContain('DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cover.webp"');
+    expect(controlledLaunch).toContain("cover_image_url: DRACULA_COVER_IMAGE");
+    expect(controlledLaunch).toContain("back_cover_image_url: DRACULA_BACK_COVER_IMAGE");
+    expect(staticSnapshotGenerator).toContain("assets/books/dracula/dracula-front-cover.webp");
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-front-cover.webp"))).toBe(true);
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-back-cover.webp"))).toBe(true);
+
+    expect(premiumLandingVisualReview).toContain("USE_OWNER_DESIGNED_COVER_WITH_INTERNAL_PROVENANCE");
+    expect(premiumLandingVisualReview).toContain("Dracula - Front.png");
+    expect(premiumLandingVisualReview).toContain("Dracula - Back.png");
+    expect(premiumLandingVisualReview).toContain("Do not describe the custom cover as archival, public-domain, first-edition, or external-review evidence.");
+    expect(premiumLandingVisualReview).toContain("Approved hero threshold: `650px`");
+
+    expect(luxuryVisualScorecard).toContain("Overall luxury score: `9.5/10`");
+    expect(pixelUtilizationScorecard).toContain("Overall growth-friendly UX score: `9.6/10`");
+    expect(pixelUtilizationScorecard).toContain('data-approved-hero-max-height="650"');
+
+    expect(styles).toContain(".premium-landing-hero");
+    expect(styles).toContain(".premium-dracula-cover-frame");
+    expect(styles).not.toMatch(/letter-spacing:\s*-\d/);
+
+    const premiumLandingSources = [
+      home,
+      controlledLaunch,
+      premiumLandingVisualReview,
+      luxuryVisualScorecard,
+      pixelUtilizationScorecard,
+    ].join("\n");
+    expect(premiumLandingSources).not.toMatch(/\b(audio|audiobook)\s+(is|are)\s+(live|public|available|ready)\b/i);
+    expect(premiumLandingSources).not.toMatch(/\bListen Now\b/i);
+    expect(premiumLandingSources).not.toMatch(/\bKshudhita Pashan\b[\s\S]{0,160}\b(Start Reading|Read Preview|Listen Now|public reader|public audio)\b/i);
+    expect(premiumLandingSources).not.toMatch(/\b(all|every|100\+|105)\s+(books|classics|titles)\s+(are\s+)?(live|available|readable)\b/i);
+    expect(premiumLandingSources).not.toMatch(/\bWCAG compliant\b|\bblind[- ]user tested\b|\bfully accessible\b/i);
+    expect(premiumLandingSources).not.toMatch(/\b(buy|own|ownership|forever)\b[\s\S]{0,80}\b(book|classic|edition)\b/i);
+    expect(premiumLandingSources).not.toMatch(/\b(fashion|clothing|apparel|self-publishing|WooCommerce|Add to cart|Shop now)\b/i);
   });
 
   test("library and book pages expose only approved Dracula reading paths", () => {
