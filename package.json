@@ -33,6 +33,7 @@
     "observability:audit": "python3 scripts/observability_guardrails.py --sample",
     "first-batch:dry-run": "python3 scripts/first_batch_dry_run.py --sample",
     "onboard:english-book:dry-run": "python3 scripts/orchestrate_english_book_onboarding.py --config onboarding/books/frankenstein.yml --mode dry-run",
+    "tts:model-license-review": "python3 scripts/tts_model_license_review.py",
     "prod:dracula-diagnostic": "python3 scripts/prod_dracula_diagnostic.py",
     "prod:repair-dracula-record:dry-run": "python3 scripts/repair_dracula_production_record.py --dry-run",
     "prod:repair-dracula-record:apply": "python3 scripts/repair_dracula_production_record.py --apply",

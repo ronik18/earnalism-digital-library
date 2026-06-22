@@ -55,6 +55,7 @@ def base_config(tmp_path: Path, **overrides) -> str:
         "audiobook_public_target": "false",
         "derivative_rights_status": "separate approval required",
         "model_voice_license_status": "",
+        "selected_model_candidate": "kokoro",
     }
     values.update(overrides)
     return f"""slug: {values['slug']}
@@ -75,7 +76,11 @@ cover:
   provenance_note: {values['cover_provenance_note']}
   owner_approval_status: {values['cover_owner_approval_status']}
 audiobook:
+  desired_status: internal_only
   public_target: {values['audiobook_public_target']}
+  public_audio_target: {values['audiobook_public_target']}
+  selected_model_candidate: {values['selected_model_candidate']}
+  require_tts_model_license_review: true
   derivative_rights_status: {values['derivative_rights_status']}
   model_voice_license_status: {values['model_voice_license_status']}
   human_review_status:
@@ -90,6 +95,7 @@ audiobook_sync:
   model_candidate: kokoro
   sync_level: sentence
   public_release_target: false
+  require_model_eligibility: true
 """
 
 
@@ -164,6 +170,26 @@ def test_orchestrator_includes_sync_dry_run_stage(tmp_path: Path):
     assert sync_stage.details["audio_object_metadata"] is False
     assert sync_stage.details["internal_sync_manifest_path"].endswith("sync_manifest.json")
     assert sync_stage.details["scoped_sync_manifest_path"] == "output/onboarding/frankenstein/audiobook_sync/sync_manifest.json"
+
+
+def test_orchestrator_runs_model_license_stage_before_sync_stage(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    result = run_orchestration(config_path)
+    names = [item.name for item in result.stages]
+
+    assert "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW" in names
+    assert names.index("TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW") < names.index("audiobook_sync_dry_run_stage")
+
+
+def test_selected_model_decision_appears_in_orchestrator_json(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    result = run_orchestration(config_path)
+    paths = write_reports(result, tmp_path / "onboarding", write_root_reports=False)
+    report = paths["output/onboarding/frankenstein/english_book_onboarding_report.json"].read_text(encoding="utf-8")
+
+    assert '"selected_model_candidate": "kokoro"' in report
+    assert '"selected_model_decision": "HOLD_LICENSE_REVIEW"' in report
+    assert '"model_generation": "HOLD_LICENSE_REVIEW"' in report
 
 
 def test_sync_manifest_path_is_recorded_in_slug_scoped_output(tmp_path: Path):

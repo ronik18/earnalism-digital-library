@@ -27,6 +27,12 @@ from scripts.audiobook_generation_sync_pipeline import (
     PUBLIC_AUDIO_RELEASE_BLOCKED as SYNC_PUBLIC_AUDIO_RELEASE_BLOCKED,
     run_pipeline as run_audiobook_sync_pipeline,
 )
+from scripts.tts_model_license_review import (
+    decision_payload as tts_decision_payload,
+    review_candidates as review_tts_candidates,
+    selected_candidate_decision,
+    write_reports as write_tts_model_reports,
+)
 
 
 DEFAULT_OUTPUT_DIR = ROOT / "output" / "onboarding"
@@ -36,6 +42,7 @@ CODEX_PROMPT_PATH = ROOT / "output" / "codex_prompts" / "next_english_book_onboa
 PUBLIC_AUDIO_RELEASE_BLOCKED = "PUBLIC_AUDIO_RELEASE_BLOCKED"
 PUBLICATION_HOLD = "HOLD_SOURCE_RIGHTS_QA_REQUIRED"
 PUBLICATION_DRAFT_REVIEW = "READY_FOR_OWNER_PUBLICATION_REVIEW_DRAFT_ONLY"
+TTS_MODEL_LICENSE_STAGE = "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW"
 UNSUPPORTED_ACCESSIBILITY_CLAIMS = (
     "WCAG compliant",
     "blind-user tested",
@@ -386,7 +393,7 @@ def cover_asset_gate(config: dict[str, Any]) -> StageResult:
 def audiobook_planning_packet(config: dict[str, Any]) -> StageResult:
     audiobook = config.get("audiobook") if isinstance(config.get("audiobook"), dict) else {}
     blockers = ["public audiobook release is blocked by default."]
-    if truthy(audiobook.get("public_target")):
+    if truthy(audiobook.get("public_target")) or truthy(audiobook.get("public_audio_target")):
         blockers.append("public audiobook target is not allowed during English book onboarding.")
     if not present(audiobook.get("derivative_rights_status")):
         blockers.append("derivative audiobook rights evidence is missing.")
@@ -405,6 +412,51 @@ def audiobook_planning_packet(config: dict[str, Any]) -> StageResult:
     )
 
 
+def selected_model_candidate(config: dict[str, Any]) -> str:
+    audiobook = config.get("audiobook") if isinstance(config.get("audiobook"), dict) else {}
+    sync_config = config.get("audiobook_sync") if isinstance(config.get("audiobook_sync"), dict) else {}
+    return safe_slug(
+        audiobook.get("selected_model_candidate")
+        or sync_config.get("model_candidate")
+        or "kokoro"
+    )
+
+
+def tts_model_license_and_suitability_review(config: dict[str, Any]) -> StageResult:
+    audiobook = config.get("audiobook") if isinstance(config.get("audiobook"), dict) else {}
+    sync_config = config.get("audiobook_sync") if isinstance(config.get("audiobook_sync"), dict) else {}
+    require_review = truthy(audiobook.get("require_tts_model_license_review")) or truthy(
+        sync_config.get("require_model_eligibility")
+    )
+    decisions = review_tts_candidates()
+    selected_id = selected_model_candidate(config)
+    selected = selected_candidate_decision(selected_id, decisions)
+    blockers: list[str] = []
+    if require_review and selected.decision_status != "ELIGIBLE_INTERNAL_EVAL":
+        blockers.append(
+            f"selected model `{selected_id}` is not eligible for real internal generation: {selected.decision_status}."
+        )
+    blockers.extend(selected.issues)
+    details = {
+        "stage_name": TTS_MODEL_LICENSE_STAGE,
+        "selected_model_candidate": selected_id,
+        "selected_model_display_name": selected.candidate.get("display_name", selected_id),
+        "selected_model_decision": selected.decision_status,
+        "model_generation": selected.internal_generation_status,
+        "public_production_status": selected.public_production_status,
+        "public_audio_allowed": False,
+        "listen_now_cta_allowed": False,
+        "audio_object_metadata_allowed": False,
+        "candidate_count": len(decisions),
+        "eligible_internal_eval_count": sum(1 for decision in decisions if decision.decision_status == "ELIGIBLE_INTERNAL_EVAL"),
+        "hold_count": sum(1 for decision in decisions if decision.decision_status == "HOLD_LICENSE_REVIEW"),
+        "blocked_count": sum(1 for decision in decisions if decision.decision_status == "BLOCKED"),
+        "candidates": tts_decision_payload(decisions)["candidates"],
+    }
+    status = selected.decision_status if not blockers else "HOLD_LICENSE_REVIEW"
+    return StageResult(TTS_MODEL_LICENSE_STAGE, status, blockers, selected.warnings, details)
+
+
 def audiobook_sync_dry_run_stage(config: dict[str, Any]) -> StageResult:
     sync_config = config.get("audiobook_sync") if isinstance(config.get("audiobook_sync"), dict) else {}
     enabled = sync_config.get("enabled", True)
@@ -419,7 +471,7 @@ def audiobook_sync_dry_run_stage(config: dict[str, Any]) -> StageResult:
     slug = safe_slug(config.get("slug"))
     chapter = str(sync_config.get("chapter") or "1")
     language = str(sync_config.get("language") or "en").strip().lower()
-    model_candidate = safe_slug(str(sync_config.get("model_candidate") or "kokoro"))
+    model_candidate = selected_model_candidate(config)
     output_dir = ROOT / "internal" / "audiobook_lab" / slug / language / str(int(chapter))
     result = run_audiobook_sync_pipeline(
         book_slug=slug,
@@ -449,6 +501,7 @@ def audiobook_sync_dry_run_stage(config: dict[str, Any]) -> StageResult:
             "chapter": result.chapter,
             "language": result.language,
             "model_candidate": result.model_candidate,
+            "model_generation": "HOLD_LICENSE_REVIEW",
             "sync_level": str(sync_config.get("sync_level") or "sentence"),
             "status": result.status,
             "public_release_target": bool(sync_config.get("public_release_target", False)),
@@ -565,12 +618,15 @@ def audiobook_gate(stages: list[StageResult]) -> dict[str, Any]:
     audio_blockers = [
         blocker
         for stage in stages
-        if "audiobook" in stage.name or "narration" in stage.name
+        if "audiobook" in stage.name.lower() or "narration" in stage.name.lower() or stage.name == TTS_MODEL_LICENSE_STAGE
         for blocker in stage.blockers
     ]
     return {
         "status": PUBLIC_AUDIO_RELEASE_BLOCKED,
         "sync_status": sync_status(stages),
+        "model_generation": model_generation_status(stages),
+        "selected_model_candidate": selected_model_status(stages).get("selected_model_candidate"),
+        "selected_model_decision": selected_model_status(stages).get("selected_model_decision"),
         "public_audio_publish_allowed": False,
         "audio_enabled": False,
         "listen_now_cta": False,
@@ -585,6 +641,21 @@ def sync_status(stages: list[StageResult]) -> str:
         if stage.name == "audiobook_sync_dry_run_stage":
             return stage.status
     return "HOLD_SYNC_QA_REQUIRED"
+
+
+def selected_model_status(stages: list[StageResult]) -> dict[str, Any]:
+    for stage in stages:
+        if stage.name == TTS_MODEL_LICENSE_STAGE:
+            return stage.details
+    return {
+        "selected_model_candidate": "unknown",
+        "selected_model_decision": "HOLD_LICENSE_REVIEW",
+        "model_generation": "HOLD_LICENSE_REVIEW",
+    }
+
+
+def model_generation_status(stages: list[StageResult]) -> str:
+    return str(selected_model_status(stages).get("model_generation") or "HOLD_LICENSE_REVIEW")
 
 
 def report_header(config: dict[str, Any], result: OnboardingResult, title: str) -> str:
@@ -660,6 +731,11 @@ def copy_audiobook_sync_artifacts(result: OnboardingResult, scoped_output_dir: P
     return copied
 
 
+def write_tts_license_artifacts(scoped_output_dir: Path) -> dict[str, Path]:
+    decisions = review_tts_candidates()
+    return write_tts_model_reports(decisions, output_dir=scoped_output_dir)
+
+
 def write_reports(
     result: OnboardingResult,
     output_dir: Path = DEFAULT_OUTPUT_DIR,
@@ -693,6 +769,7 @@ def write_reports(
         + f"- Public publish allowed: `{str(result.final_gate['public_publish_allowed']).lower()}`\n"
         + f"- Public audio status: `{result.audiobook_gate['status']}`\n"
         + f"- Audiobook sync status: `{result.audiobook_gate['sync_status']}`\n"
+        + f"- Model generation status: `{result.audiobook_gate['model_generation']}`\n"
         + "\nThis orchestrator is dry-run/report-only and does not publish books, enable public audio, or change payment settings.\n"
     )
     rights = (
@@ -727,6 +804,9 @@ def write_reports(
         report_header(config, result, "English Audiobook Release Gate Report")
         + f"- Status: `{result.audiobook_gate['status']}`\n"
         + f"- Sync status: `{result.audiobook_gate['sync_status']}`\n"
+        + f"- Selected model: `{result.audiobook_gate['selected_model_candidate']}`\n"
+        + f"- Selected model decision: `{result.audiobook_gate['selected_model_decision']}`\n"
+        + f"- Model generation: `{result.audiobook_gate['model_generation']}`\n"
         + f"- Public audio publish allowed: `{str(result.audiobook_gate['public_audio_publish_allowed']).lower()}`\n"
         + f"- Public listening CTA: `{str(result.audiobook_gate['listen_now_cta']).lower()}`\n"
         + f"- Public audio JSON-LD metadata: `{str(result.audiobook_gate['audio_object_metadata']).lower()}`\n"
@@ -737,6 +817,9 @@ def write_reports(
     qa_packet = (
         report_header(config, result, "English Audiobook QA Packet")
         + f"- Highlighted-text sync status: `{result.audiobook_gate['sync_status']}`\n"
+        + f"- Selected model candidate: `{result.audiobook_gate['selected_model_candidate']}`\n"
+        + f"- Model license decision: `{result.audiobook_gate['selected_model_decision']}`\n"
+        + f"- Model generation status: `{result.audiobook_gate['model_generation']}`\n"
         + "- Human narration QA: HOLD, evidence missing or pending.\n"
         + "- Accessibility listening QA: HOLD, evidence missing or pending.\n"
         + "- Model/voice license review: HOLD unless explicit evidence is attached.\n"
@@ -761,6 +844,7 @@ def write_reports(
         "Required next checks:\n"
         "- Attach complete source-rights evidence.\n"
         "- Add owner-approved cover provenance.\n"
+        "- Complete TTS model license, voice, commercial-use, and owner approval evidence before real internal generation.\n"
         "- Review the internal highlighted-text sync manifest before any audio release consideration.\n"
         "- Keep public audio blocked.\n"
         "- Run the publication, audio, SEO, social, payment-smoke, regression, and frontend build gates.\n"
@@ -776,6 +860,7 @@ def write_reports(
         "ENGLISH_BOOK_VISUAL_SCORECARD.md": visual,
     }
     paths: dict[str, Path] = {}
+    paths.update(write_tts_license_artifacts(scoped_output_dir))
     paths.update(copy_audiobook_sync_artifacts(result, scoped_output_dir))
     for filename, text in root_reports.items():
         if write_root_reports:
@@ -831,6 +916,7 @@ def run_orchestration(
             seo_social_metadata_draft(config),
             cover_asset_gate(config),
             audiobook_planning_packet(config),
+            tts_model_license_and_suitability_review(config),
             audiobook_sync_dry_run_stage(config),
             narration_qa_gate(config),
             audiobook_legal_accessibility_gate(config),
@@ -851,6 +937,8 @@ def run_orchestration(
         "publication": "ENGLISH_BOOK_PUBLICATION_GATE_REPORT.md",
         "audiobook_release": "ENGLISH_AUDIOBOOK_RELEASE_GATE_REPORT.md",
         "audiobook_qa": "ENGLISH_AUDIOBOOK_QA_PACKET.md",
+        "tts_model_license_matrix": "TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md",
+        "tts_model_production_eligibility": "TTS_MODEL_PRODUCTION_ELIGIBILITY_REPORT.md",
         "seo": "ENGLISH_BOOK_SEO_PREVIEW_REPORT.md",
         "visual": "ENGLISH_BOOK_VISUAL_SCORECARD.md",
         "codex_prompt": "output/codex_prompts/next_english_book_onboarding_prompt.md",

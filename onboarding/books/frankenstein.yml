@@ -19,7 +19,11 @@ cover:
   provenance_note:
   owner_approval_status: OWNER_APPROVAL_REQUIRED
 audiobook:
+  desired_status: internal_only
   public_target: false
+  public_audio_target: false
+  selected_model_candidate: kokoro
+  require_tts_model_license_review: true
   derivative_rights_status: separate approval required
   model_voice_license_status:
   human_review_status:
@@ -34,3 +38,4 @@ audiobook_sync:
   model_candidate: kokoro
   sync_level: sentence
   public_release_target: false
+  require_model_eligibility: true
