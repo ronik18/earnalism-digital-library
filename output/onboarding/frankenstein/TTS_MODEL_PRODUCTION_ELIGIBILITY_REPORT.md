@@ -23,6 +23,10 @@ Issues:
 - speaker identity or voice provenance remains unresolved.
 - synthetic voice status remains unresolved.
 - internal_eval_allowed is not true.
+- selected voice synthetic or speaker-rights status remains unresolved.
+- selected voice real-person risk is unresolved or high.
+- owner selected-voice approval is required for internal evaluation.
+- legal selected-voice review is required for internal evaluation.
 - owner approval is required before production use.
 
 ### MeloTTS

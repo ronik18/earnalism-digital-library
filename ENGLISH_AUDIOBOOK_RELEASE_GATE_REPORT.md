@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-22T19:55:24+00:00
+- Generated: 2026-06-22T20:13:24+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - Status: `PUBLIC_AUDIO_RELEASE_BLOCKED`
@@ -25,6 +25,10 @@
 - speaker identity or voice provenance remains unresolved.
 - synthetic voice status remains unresolved.
 - internal_eval_allowed is not true.
+- selected voice synthetic or speaker-rights status remains unresolved.
+- selected voice real-person risk is unresolved or high.
+- owner selected-voice approval is required for internal evaluation.
+- legal selected-voice review is required for internal evaluation.
 - owner approval is required before production use.
 - selected model `kokoro` is not eligible for internal evaluation: HOLD_VOICE_RIGHTS.
 - voice_license is missing or requires review.
@@ -32,6 +36,10 @@
 - speaker identity or voice provenance remains unresolved.
 - synthetic voice status remains unresolved.
 - internal_eval_allowed is not true.
+- selected voice synthetic or speaker-rights status remains unresolved.
+- selected voice real-person risk is unresolved or high.
+- owner selected-voice approval is required for internal evaluation.
+- legal selected-voice review is required for internal evaluation.
 - sync release evidence remains HOLD; public audio cannot be released.
 - human narration QA is missing or not approved.
 - accessibility listening QA is missing or not approved.

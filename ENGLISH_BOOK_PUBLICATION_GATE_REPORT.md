@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-22T19:55:24+00:00
+- Generated: 2026-06-22T20:13:24+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - Gate status: `HOLD_SOURCE_RIGHTS_QA_REQUIRED`
@@ -23,6 +23,10 @@
 - TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: speaker identity or voice provenance remains unresolved.
 - TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: synthetic voice status remains unresolved.
 - TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: internal_eval_allowed is not true.
+- TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: selected voice synthetic or speaker-rights status remains unresolved.
+- TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: selected voice real-person risk is unresolved or high.
+- TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: owner selected-voice approval is required for internal evaluation.
+- TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: legal selected-voice review is required for internal evaluation.
 - TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW: owner approval is required before production use.
 - TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: selected model `kokoro` is not eligible for internal evaluation: HOLD_VOICE_RIGHTS.
 - TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: voice_license is missing or requires review.
@@ -30,6 +34,10 @@
 - TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: speaker identity or voice provenance remains unresolved.
 - TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: synthetic voice status remains unresolved.
 - TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: internal_eval_allowed is not true.
+- TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: selected voice synthetic or speaker-rights status remains unresolved.
+- TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: selected voice real-person risk is unresolved or high.
+- TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: owner selected-voice approval is required for internal evaluation.
+- TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: legal selected-voice review is required for internal evaluation.
 - audiobook_sync_dry_run_stage: sync release evidence remains HOLD; public audio cannot be released.
 - narration_qa_gate: human narration QA is missing or not approved.
 - narration_qa_gate: accessibility listening QA is missing or not approved.

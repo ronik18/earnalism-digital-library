@@ -15,6 +15,17 @@ This packet is part of the English onboarding orchestrator. It does not approve 
 - Voice rights summary: Upstream voice list is documented, including selectable Kokoro voices, but no Earnalism-reviewed evidence yet proves the selected voice is non-human/synthetic or otherwise cleared for internal generation. Owner/legal review must document selected-voice speaker provenance and commercial internal-eval permission.
 - Speaker identity status: `UNVERIFIED`
 - Synthetic voice status: `OPEN_WEIGHT_VOICE_UNVERIFIED`
+- Selected voice ID: `af_heart`
+- Selected voice source URL: https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md
+- Selected voice license evidence URL: https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md
+- Selected voice rights summary: Kokoro VOICES.md lists af_heart under American English with grade A, but it does not provide Earnalism-complete speaker identity, consent, synthetic/non-human proof, or commercial internal-eval approval for the selected voice.
+- Selected voice synthetic status: `UNVERIFIED`
+- Selected voice real-person risk: `UNRESOLVED`
+- Selected voice attribution: `MODEL_AND_DATASET_ATTRIBUTION_REVIEW_REQUIRED`
+- Selected voice internal-eval status: `HOLD_VOICE_RIGHTS`
+- Owner selected-voice approval: `OWNER_REVIEW_REQUIRED`
+- Legal selected-voice review: `LEGAL_REVIEW_REQUIRED`
+- Selected voice blockers: af_heart selected from official VOICES.md for review only; selected voice speaker provenance, consent or synthetic/non-human proof, owner approval, and legal internal-eval review remain incomplete.
 - Real-person voice clone risk: `MEDIUM`
 - Internal eval allowed: `False`
 - Owner internal-eval approval: `OWNER_REVIEW_REQUIRED`
@@ -30,6 +41,17 @@ This packet is part of the English onboarding orchestrator. It does not approve 
 - Voice rights summary: Model card lists English accent/speaker options, but Earnalism has not completed selected-speaker provenance, consent, or voice-rights review for internal generation.
 - Speaker identity status: `UNVERIFIED`
 - Synthetic voice status: `MODEL_CARD_SPEAKERS_UNVERIFIED`
+- Selected voice ID: `not selected`
+- Selected voice source URL: not selected
+- Selected voice license evidence URL: not selected
+- Selected voice rights summary: not selected
+- Selected voice synthetic status: `not selected`
+- Selected voice real-person risk: `not selected`
+- Selected voice attribution: `not selected`
+- Selected voice internal-eval status: `not selected`
+- Owner selected-voice approval: `not selected`
+- Legal selected-voice review: `not selected`
+- Selected voice blockers: not selected
 - Real-person voice clone risk: `MEDIUM`
 - Internal eval allowed: `False`
 - Owner internal-eval approval: `OWNER_REVIEW_REQUIRED`
@@ -45,6 +67,17 @@ This packet is part of the English onboarding orchestrator. It does not approve 
 - Voice rights summary: Voice catalog is public, but each voice requires separate provenance, commercial, and speaker-rights review.
 - Speaker identity status: `VARIES_BY_VOICE`
 - Synthetic voice status: `VOICE_DEPENDENT_REVIEW_REQUIRED`
+- Selected voice ID: `not selected`
+- Selected voice source URL: not selected
+- Selected voice license evidence URL: not selected
+- Selected voice rights summary: not selected
+- Selected voice synthetic status: `not selected`
+- Selected voice real-person risk: `not selected`
+- Selected voice attribution: `not selected`
+- Selected voice internal-eval status: `not selected`
+- Owner selected-voice approval: `not selected`
+- Legal selected-voice review: `not selected`
+- Selected voice blockers: not selected
 - Real-person voice clone risk: `MEDIUM`
 - Internal eval allowed: `False`
 - Owner internal-eval approval: `OWNER_REVIEW_REQUIRED`
@@ -60,6 +93,17 @@ This packet is part of the English onboarding orchestrator. It does not approve 
 - Voice rights summary: Gated model/dataset metadata prevents complete speaker-rights verification from local public evidence.
 - Speaker identity status: `UNVERIFIED_GATED_CARD`
 - Synthetic voice status: `INDIC_MODEL_VOICE_REVIEW_REQUIRED`
+- Selected voice ID: `not selected`
+- Selected voice source URL: not selected
+- Selected voice license evidence URL: not selected
+- Selected voice rights summary: not selected
+- Selected voice synthetic status: `not selected`
+- Selected voice real-person risk: `not selected`
+- Selected voice attribution: `not selected`
+- Selected voice internal-eval status: `not selected`
+- Owner selected-voice approval: `not selected`
+- Legal selected-voice review: `not selected`
+- Selected voice blockers: not selected
 - Real-person voice clone risk: `MEDIUM`
 - Internal eval allowed: `False`
 - Owner internal-eval approval: `OWNER_REVIEW_REQUIRED`
@@ -75,6 +119,17 @@ This packet is part of the English onboarding orchestrator. It does not approve 
 - Voice rights summary: Model card identifies datasets, but speaker consent and voice rights require manual review before internal generation.
 - Speaker identity status: `UNVERIFIED`
 - Synthetic voice status: `INDIC_MODEL_VOICE_REVIEW_REQUIRED`
+- Selected voice ID: `not selected`
+- Selected voice source URL: not selected
+- Selected voice license evidence URL: not selected
+- Selected voice rights summary: not selected
+- Selected voice synthetic status: `not selected`
+- Selected voice real-person risk: `not selected`
+- Selected voice attribution: `not selected`
+- Selected voice internal-eval status: `not selected`
+- Owner selected-voice approval: `not selected`
+- Legal selected-voice review: `not selected`
+- Selected voice blockers: not selected
 - Real-person voice clone risk: `MEDIUM`
 - Internal eval allowed: `False`
 - Owner internal-eval approval: `OWNER_REVIEW_REQUIRED`
@@ -90,6 +145,17 @@ This packet is part of the English onboarding orchestrator. It does not approve 
 - Voice rights summary: Official README includes pretrained voice-use restrictions and permission/disclosure requirements; Earnalism treats this as blocked for generation.
 - Speaker identity status: `CLONING_PERMISSION_REQUIRED`
 - Synthetic voice status: `PRETRAINED_MODEL_RESTRICTIONS`
+- Selected voice ID: `not selected`
+- Selected voice source URL: not selected
+- Selected voice license evidence URL: not selected
+- Selected voice rights summary: not selected
+- Selected voice synthetic status: `not selected`
+- Selected voice real-person risk: `not selected`
+- Selected voice attribution: `not selected`
+- Selected voice internal-eval status: `not selected`
+- Owner selected-voice approval: `not selected`
+- Legal selected-voice review: `not selected`
+- Selected voice blockers: not selected
 - Real-person voice clone risk: `HIGH`
 - Internal eval allowed: `False`
 - Owner internal-eval approval: `OWNER_REVIEW_REQUIRED`

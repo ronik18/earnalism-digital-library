@@ -192,6 +192,8 @@ def test_selected_model_decision_appears_in_orchestrator_json(tmp_path: Path):
     assert '"selected_model_candidate": "kokoro"' in report
     assert '"selected_model_decision": "HOLD_VOICE_RIGHTS"' in report
     assert '"selected_model_internal_eval_status": "HOLD_VOICE_RIGHTS"' in report
+    assert '"selected_voice_id": "af_heart"' in report
+    assert '"selected_voice_internal_eval_status": "HOLD_VOICE_RIGHTS"' in report
     assert '"model_generation": "HOLD_VOICE_RIGHTS"' in report
 
 
@@ -203,6 +205,9 @@ def test_voice_rights_internal_eval_stage_records_selected_candidate(tmp_path: P
     assert voice_stage.status == "HOLD_VOICE_RIGHTS"
     assert voice_stage.details["selected_model_candidate"] == "kokoro"
     assert voice_stage.details["selected_model_internal_eval_status"] == "HOLD_VOICE_RIGHTS"
+    assert voice_stage.details["selected_voice_id"] == "af_heart"
+    assert voice_stage.details["selected_voice_internal_eval_status"] == "HOLD_VOICE_RIGHTS"
+    assert "selected voice speaker provenance" in voice_stage.details["selected_voice_blockers"]
     assert voice_stage.details["public_audio_allowed"] is False
     assert voice_stage.details["real_audio_generation_allowed"] is False
     assert any("speaker" in blocker.lower() or "voice" in blocker.lower() for blocker in voice_stage.blockers)
@@ -215,6 +220,8 @@ def test_next_prompt_requests_voice_rights_evidence_before_audio_generation(tmp_
     prompt = paths["output/onboarding/frankenstein/next_codex_prompt.md"].read_text(encoding="utf-8")
 
     assert "Do not generate an audio sample yet" in prompt
+    assert "Current selected Kokoro voice: `af_heart`" in prompt
+    assert "Current selected voice internal-eval status: `HOLD_VOICE_RIGHTS`" in prompt
     assert "Collect owner/legal-reviewed selected voice or speaker-rights evidence" in prompt
     assert "future separate task may prepare an internal-only 2-3 minute" not in prompt
 

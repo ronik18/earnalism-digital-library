@@ -23,6 +23,8 @@ MATRIX_REPORT_PATH = ROOT / "TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md"
 ELIGIBILITY_REPORT_PATH = ROOT / "TTS_MODEL_PRODUCTION_ELIGIBILITY_REPORT.md"
 VOICE_RIGHTS_PACKET_PATH = ROOT / "TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md"
 INTERNAL_EVAL_SCORECARD_PATH = ROOT / "TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md"
+KOKORO_SELECTED_VOICE_PACKET_PATH = ROOT / "KOKORO_SELECTED_VOICE_INTERNAL_EVAL_PACKET.md"
+KOKORO_SELECTED_VOICE_SCORECARD_PATH = ROOT / "KOKORO_SELECTED_VOICE_RIGHTS_SCORECARD.md"
 
 ELIGIBLE_INTERNAL_EVAL = "ELIGIBLE_INTERNAL_EVAL"
 HOLD_LICENSE_REVIEW = "HOLD_LICENSE_REVIEW"
@@ -68,6 +70,20 @@ REQUIRED_FIELDS = (
     "owner_internal_eval_approval_status",
     "legal_internal_eval_review_status",
     "internal_eval_status",
+)
+SELECTED_VOICE_FIELDS = (
+    "selected_voice_id",
+    "selected_voice_display_name",
+    "selected_voice_source_url",
+    "selected_voice_license_evidence_url",
+    "selected_voice_rights_summary",
+    "selected_voice_synthetic_status",
+    "selected_voice_real_person_risk",
+    "selected_voice_attribution_requirement",
+    "selected_voice_internal_eval_status",
+    "owner_selected_voice_approval_status",
+    "legal_selected_voice_review_status",
+    "selected_voice_blockers",
 )
 
 
@@ -147,6 +163,11 @@ def normalized(value: Any) -> str:
     if value is None:
         return ""
     return str(value).strip()
+
+
+def display_value(value: Any, fallback: str = "not selected") -> str:
+    text = normalized(value)
+    return text if text else fallback
 
 
 def upper(value: Any) -> str:
@@ -237,6 +258,51 @@ def classify_candidate(candidate: dict[str, Any]) -> CandidateDecision:
     if legal_internal_eval_status == "BLOCKED":
         issues.append("legal internal-eval review is blocked.")
 
+    selected_voice_required = (
+        candidate_id == "kokoro"
+        or internal_eval_declared == ELIGIBLE_INTERNAL_EVAL
+        or production_status == ELIGIBLE_INTERNAL_EVAL
+        or bool(candidate.get("internal_eval_allowed"))
+    )
+    if selected_voice_required:
+        for field_name in SELECTED_VOICE_FIELDS:
+            if field_name not in candidate or is_unknown(candidate.get(field_name)):
+                issues.append(f"{field_name} is missing or requires review.")
+        if not has_url(candidate.get("selected_voice_source_url")):
+            issues.append("selected_voice_source_url must be an http(s) URL.")
+        if not has_url(candidate.get("selected_voice_license_evidence_url")):
+            issues.append("selected_voice_license_evidence_url must be an http(s) URL.")
+        selected_voice_eval_status = upper(candidate.get("selected_voice_internal_eval_status"))
+        if selected_voice_eval_status not in VALID_INTERNAL_EVAL_STATUS:
+            issues.append("selected_voice_internal_eval_status must be ELIGIBLE_INTERNAL_EVAL, HOLD_VOICE_RIGHTS, HOLD_OWNER_REVIEW, or BLOCKED.")
+        selected_voice_synthetic_status = upper(candidate.get("selected_voice_synthetic_status"))
+        if (
+            is_unknown(candidate.get("selected_voice_synthetic_status"))
+            or "UNVERIFIED" in selected_voice_synthetic_status
+            or "HOLD" in selected_voice_synthetic_status
+        ):
+            issues.append("selected voice synthetic or speaker-rights status remains unresolved.")
+        selected_voice_real_person_risk = upper(candidate.get("selected_voice_real_person_risk"))
+        if (
+            is_unknown(candidate.get("selected_voice_real_person_risk"))
+            or selected_voice_real_person_risk in {"HIGH", "UNRESOLVED", "HOLD_REVIEW", "MEDIUM_UNRESOLVED"}
+        ):
+            issues.append("selected voice real-person risk is unresolved or high.")
+        owner_selected_voice_status = upper(candidate.get("owner_selected_voice_approval_status"))
+        if owner_selected_voice_status != "APPROVED":
+            issues.append("owner selected-voice approval is required for internal evaluation.")
+        legal_selected_voice_status = upper(candidate.get("legal_selected_voice_review_status"))
+        if legal_selected_voice_status != "APPROVED":
+            issues.append("legal selected-voice review is required for internal evaluation.")
+        if is_unknown(candidate.get("selected_voice_blockers")):
+            issues.append("selected_voice_blockers must record the current selected-voice blocker set.")
+    else:
+        selected_voice_eval_status = upper(candidate.get("selected_voice_internal_eval_status"))
+        selected_voice_synthetic_status = upper(candidate.get("selected_voice_synthetic_status"))
+        selected_voice_real_person_risk = upper(candidate.get("selected_voice_real_person_risk"))
+        owner_selected_voice_status = upper(candidate.get("owner_selected_voice_approval_status"))
+        legal_selected_voice_status = upper(candidate.get("legal_selected_voice_review_status"))
+
     gpl_risk = "GPL" in upper(candidate.get("code_license")) or "GPL" in upper(candidate.get("license_name"))
     if gpl_risk:
         warnings.append("GPL/commercial obligations require manual legal review before production use.")
@@ -279,6 +345,19 @@ def classify_candidate(candidate: dict[str, Any]) -> CandidateDecision:
         and not is_unknown(candidate.get("internal_eval_blockers"))
         and owner_internal_eval_status in {"APPROVED", "OWNER_REVIEW_REQUIRED"}
         and legal_internal_eval_status not in {"", "UNKNOWN", "HOLD_REVIEW", "BLOCKED"}
+        and not is_unknown(candidate.get("selected_voice_id"))
+        and has_url(candidate.get("selected_voice_source_url"))
+        and has_url(candidate.get("selected_voice_license_evidence_url"))
+        and not is_unknown(candidate.get("selected_voice_rights_summary"))
+        and selected_voice_eval_status == ELIGIBLE_INTERNAL_EVAL
+        and not is_unknown(candidate.get("selected_voice_synthetic_status"))
+        and "UNVERIFIED" not in selected_voice_synthetic_status
+        and "HOLD" not in selected_voice_synthetic_status
+        and not is_unknown(candidate.get("selected_voice_real_person_risk"))
+        and selected_voice_real_person_risk not in {"HIGH", "UNRESOLVED", "HOLD_REVIEW", "MEDIUM_UNRESOLVED"}
+        and owner_selected_voice_status == "APPROVED"
+        and legal_selected_voice_status == "APPROVED"
+        and not is_unknown(candidate.get("selected_voice_blockers"))
         and not (gpl_risk and not owner_approved)
         and upper(candidate.get("voice_cloning_risk")) != "HIGH"
         and upper(candidate.get("real_person_voice_risk")) != "HIGH"
@@ -295,6 +374,8 @@ def classify_candidate(candidate: dict[str, Any]) -> CandidateDecision:
         or "high" in normalized(candidate.get("voice_cloning_risk")).lower()
         or clone_risk == "HIGH"
         or legal_internal_eval_status == "BLOCKED"
+        or selected_voice_eval_status == BLOCKED
+        or legal_selected_voice_status == "BLOCKED"
     ):
         internal_generation_status = BLOCKED
         decision_status = BLOCKED
@@ -397,6 +478,16 @@ def matrix_markdown(decisions: list[CandidateDecision]) -> str:
                 f"- Voice rights summary: {normalized(candidate.get('voice_rights_summary'))}",
                 f"- Speaker identity status: `{normalized(candidate.get('speaker_identity_status'))}`",
                 f"- Synthetic voice status: `{normalized(candidate.get('synthetic_voice_status'))}`",
+                f"- Selected voice ID: `{display_value(candidate.get('selected_voice_id'))}`",
+                f"- Selected voice source URL: {display_value(candidate.get('selected_voice_source_url'))}",
+                f"- Selected voice license evidence URL: {display_value(candidate.get('selected_voice_license_evidence_url'))}",
+                f"- Selected voice rights summary: {display_value(candidate.get('selected_voice_rights_summary'))}",
+                f"- Selected voice synthetic status: `{display_value(candidate.get('selected_voice_synthetic_status'))}`",
+                f"- Selected voice real-person risk: `{display_value(candidate.get('selected_voice_real_person_risk'))}`",
+                f"- Selected voice internal-eval status: `{display_value(candidate.get('selected_voice_internal_eval_status'))}`",
+                f"- Owner selected-voice approval: `{display_value(candidate.get('owner_selected_voice_approval_status'))}`",
+                f"- Legal selected-voice review: `{display_value(candidate.get('legal_selected_voice_review_status'))}`",
+                f"- Selected voice blockers: {display_value(candidate.get('selected_voice_blockers'))}",
                 f"- Local inference feasible: `{normalized(candidate.get('local_inference_possible'))}`",
                 f"- Network required: `{normalized(candidate.get('network_required'))}`",
                 f"- Real-person voice risk: `{normalized(candidate.get('real_person_voice_risk'))}`",
@@ -495,6 +586,17 @@ def voice_rights_packet_markdown(decisions: list[CandidateDecision]) -> str:
                 f"- Voice rights summary: {normalized(candidate.get('voice_rights_summary'))}",
                 f"- Speaker identity status: `{normalized(candidate.get('speaker_identity_status'))}`",
                 f"- Synthetic voice status: `{normalized(candidate.get('synthetic_voice_status'))}`",
+                f"- Selected voice ID: `{display_value(candidate.get('selected_voice_id'))}`",
+                f"- Selected voice source URL: {display_value(candidate.get('selected_voice_source_url'))}",
+                f"- Selected voice license evidence URL: {display_value(candidate.get('selected_voice_license_evidence_url'))}",
+                f"- Selected voice rights summary: {display_value(candidate.get('selected_voice_rights_summary'))}",
+                f"- Selected voice synthetic status: `{display_value(candidate.get('selected_voice_synthetic_status'))}`",
+                f"- Selected voice real-person risk: `{display_value(candidate.get('selected_voice_real_person_risk'))}`",
+                f"- Selected voice attribution: `{display_value(candidate.get('selected_voice_attribution_requirement'))}`",
+                f"- Selected voice internal-eval status: `{display_value(candidate.get('selected_voice_internal_eval_status'))}`",
+                f"- Owner selected-voice approval: `{display_value(candidate.get('owner_selected_voice_approval_status'))}`",
+                f"- Legal selected-voice review: `{display_value(candidate.get('legal_selected_voice_review_status'))}`",
+                f"- Selected voice blockers: {display_value(candidate.get('selected_voice_blockers'))}",
                 f"- Real-person voice clone risk: `{normalized(candidate.get('real_person_voice_clone_risk'))}`",
                 f"- Internal eval allowed: `{normalized(candidate.get('internal_eval_allowed'))}`",
                 f"- Owner internal-eval approval: `{normalized(candidate.get('owner_internal_eval_approval_status'))}`",
@@ -533,6 +635,80 @@ def internal_eval_scorecard_markdown(decisions: list[CandidateDecision]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def kokoro_decision(decisions: list[CandidateDecision]) -> CandidateDecision:
+    for decision in decisions:
+        if decision.candidate.get("candidate_id") == "kokoro":
+            return decision
+    return selected_candidate_decision("kokoro", decisions)
+
+
+def kokoro_selected_voice_packet_markdown(decisions: list[CandidateDecision]) -> str:
+    decision = kokoro_decision(decisions)
+    candidate = decision.candidate
+    return "\n".join(
+        [
+            "# Kokoro Selected Voice Internal-Eval Packet",
+            "",
+            "This packet is part of the English onboarding orchestrator and does not approve production audio.",
+            "",
+            f"- Model candidate: `{normalized(candidate.get('candidate_id'))}`",
+            f"- Selected voice ID: `{normalized(candidate.get('selected_voice_id'))}`",
+            f"- Selected voice display name: {normalized(candidate.get('selected_voice_display_name'))}",
+            f"- Selected voice source URL: {normalized(candidate.get('selected_voice_source_url'))}",
+            f"- Selected voice license evidence URL: {normalized(candidate.get('selected_voice_license_evidence_url'))}",
+            f"- Selected voice rights summary: {normalized(candidate.get('selected_voice_rights_summary'))}",
+            f"- Selected voice synthetic status: `{normalized(candidate.get('selected_voice_synthetic_status'))}`",
+            f"- Selected voice real-person risk: `{normalized(candidate.get('selected_voice_real_person_risk'))}`",
+            f"- Attribution requirement: `{normalized(candidate.get('selected_voice_attribution_requirement'))}`",
+            f"- Selected voice internal-eval status: `{normalized(candidate.get('selected_voice_internal_eval_status'))}`",
+            f"- Owner selected-voice approval: `{normalized(candidate.get('owner_selected_voice_approval_status'))}`",
+            f"- Legal selected-voice review: `{normalized(candidate.get('legal_selected_voice_review_status'))}`",
+            f"- Selected voice blockers: {normalized(candidate.get('selected_voice_blockers'))}",
+            f"- Model decision: `{decision.decision_status}`",
+            f"- Internal eval status: `{decision.internal_eval_status}`",
+            f"- Public production: `{decision.public_production_status}`",
+            "- Public audio status: `PUBLIC_AUDIO_RELEASE_BLOCKED`",
+            "- Real audio generated: `false`",
+            "- Model downloads or paid APIs: `false`",
+            "",
+            "## Required Before Eligibility",
+            "",
+            "- Owner-selected voice approval must be `APPROVED`.",
+            "- Legal selected-voice review must be `APPROVED`.",
+            "- Selected voice synthetic/non-human status or consent/provenance must be documented.",
+            "- Selected voice real-person risk must be resolved and not high.",
+            "- Public production must remain `PRODUCTION_BLOCKED`.",
+            "",
+        ]
+    )
+
+
+def kokoro_selected_voice_scorecard_markdown(decisions: list[CandidateDecision]) -> str:
+    decision = kokoro_decision(decisions)
+    candidate = decision.candidate
+    rows = [
+        ("Selected voice ID", normalized(candidate.get("selected_voice_id")), "Documented in Kokoro VOICES.md for review only."),
+        ("Selected voice source", "PASS" if has_url(candidate.get("selected_voice_source_url")) else "HOLD", normalized(candidate.get("selected_voice_source_url"))),
+        ("License evidence URL", "PASS" if has_url(candidate.get("selected_voice_license_evidence_url")) else "HOLD", normalized(candidate.get("selected_voice_license_evidence_url"))),
+        ("Synthetic/non-human proof", normalized(candidate.get("selected_voice_synthetic_status")), "Must be owner/legal reviewed before internal eval."),
+        ("Real-person risk", normalized(candidate.get("selected_voice_real_person_risk")), "Must be resolved before internal eval."),
+        ("Owner approval", normalized(candidate.get("owner_selected_voice_approval_status")), "Required before internal eval."),
+        ("Legal review", normalized(candidate.get("legal_selected_voice_review_status")), "Required before internal eval."),
+        ("Internal eval", decision.internal_eval_status, normalized(candidate.get("selected_voice_blockers"))),
+        ("Production approval", decision.public_production_status, "No production approval is granted."),
+    ]
+    lines = [
+        "# Kokoro Selected Voice Rights Scorecard",
+        "",
+        "| Check | Status | Notes |",
+        "| --- | --- | --- |",
+    ]
+    for check, status, notes in rows:
+        lines.append(f"| {check} | {status} | {notes.replace('|', '/')} |")
+    lines.extend(["", "- Public audio status: `PUBLIC_AUDIO_RELEASE_BLOCKED`", "- Audio files generated: `false`", ""])
+    return "\n".join(lines)
+
+
 def decision_payload(decisions: list[CandidateDecision]) -> dict[str, Any]:
     return {
         "generated_by": "scripts/tts_model_license_review.py",
@@ -562,14 +738,20 @@ def write_reports(decisions: list[CandidateDecision], *, output_dir: Path | None
     eligibility = eligibility_markdown(decisions)
     voice_rights_packet = voice_rights_packet_markdown(decisions)
     internal_eval_scorecard = internal_eval_scorecard_markdown(decisions)
+    kokoro_voice_packet = kokoro_selected_voice_packet_markdown(decisions)
+    kokoro_voice_scorecard = kokoro_selected_voice_scorecard_markdown(decisions)
     MATRIX_REPORT_PATH.write_text(matrix, encoding="utf-8")
     ELIGIBILITY_REPORT_PATH.write_text(eligibility, encoding="utf-8")
     VOICE_RIGHTS_PACKET_PATH.write_text(voice_rights_packet, encoding="utf-8")
     INTERNAL_EVAL_SCORECARD_PATH.write_text(internal_eval_scorecard, encoding="utf-8")
+    KOKORO_SELECTED_VOICE_PACKET_PATH.write_text(kokoro_voice_packet, encoding="utf-8")
+    KOKORO_SELECTED_VOICE_SCORECARD_PATH.write_text(kokoro_voice_scorecard, encoding="utf-8")
     paths[path_key(MATRIX_REPORT_PATH)] = MATRIX_REPORT_PATH
     paths[path_key(ELIGIBILITY_REPORT_PATH)] = ELIGIBILITY_REPORT_PATH
     paths[path_key(VOICE_RIGHTS_PACKET_PATH)] = VOICE_RIGHTS_PACKET_PATH
     paths[path_key(INTERNAL_EVAL_SCORECARD_PATH)] = INTERNAL_EVAL_SCORECARD_PATH
+    paths[path_key(KOKORO_SELECTED_VOICE_PACKET_PATH)] = KOKORO_SELECTED_VOICE_PACKET_PATH
+    paths[path_key(KOKORO_SELECTED_VOICE_SCORECARD_PATH)] = KOKORO_SELECTED_VOICE_SCORECARD_PATH
     if output_dir:
         if not output_dir.is_absolute():
             output_dir = ROOT / output_dir
@@ -578,16 +760,22 @@ def write_reports(decisions: list[CandidateDecision], *, output_dir: Path | None
         eligibility_path = output_dir / "TTS_MODEL_PRODUCTION_ELIGIBILITY_REPORT.md"
         voice_rights_packet_path = output_dir / "TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md"
         internal_eval_scorecard_path = output_dir / "TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md"
+        kokoro_voice_packet_path = output_dir / "KOKORO_SELECTED_VOICE_INTERNAL_EVAL_PACKET.md"
+        kokoro_voice_scorecard_path = output_dir / "KOKORO_SELECTED_VOICE_RIGHTS_SCORECARD.md"
         json_path = output_dir / "tts_model_license_review.json"
         matrix_path.write_text(matrix, encoding="utf-8")
         eligibility_path.write_text(eligibility, encoding="utf-8")
         voice_rights_packet_path.write_text(voice_rights_packet, encoding="utf-8")
         internal_eval_scorecard_path.write_text(internal_eval_scorecard, encoding="utf-8")
+        kokoro_voice_packet_path.write_text(kokoro_voice_packet, encoding="utf-8")
+        kokoro_voice_scorecard_path.write_text(kokoro_voice_scorecard, encoding="utf-8")
         json_path.write_text(json.dumps(decision_payload(decisions), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         paths[path_key(matrix_path)] = matrix_path
         paths[path_key(eligibility_path)] = eligibility_path
         paths[path_key(voice_rights_packet_path)] = voice_rights_packet_path
         paths[path_key(internal_eval_scorecard_path)] = internal_eval_scorecard_path
+        paths[path_key(kokoro_voice_packet_path)] = kokoro_voice_packet_path
+        paths[path_key(kokoro_voice_scorecard_path)] = kokoro_voice_scorecard_path
         paths[path_key(json_path)] = json_path
     return paths
 
