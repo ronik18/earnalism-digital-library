@@ -7,6 +7,7 @@ const frontendDir = path.resolve(__dirname, "..");
 const repoRoot = path.resolve(frontendDir, "..");
 const buildDir = path.join(frontendDir, "build");
 const indexPath = path.join(buildDir, "index.html");
+const publicIndexPath = path.join(frontendDir, "public", "index.html");
 const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const draculaBookPath = path.join(repoRoot, "data", "controlled_publications", "dracula", "public_book.json");
 const draculaManifestPath = path.join(repoRoot, "data", "controlled_publications", "dracula", "reader_manifest.json");
@@ -38,6 +39,17 @@ function absoluteUrl(route) {
 
 async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, "utf8"));
+}
+
+async function readSnapshotTemplate() {
+  try {
+    return await readFile(indexPath, "utf8");
+  } catch (error) {
+    if (error?.code === "ENOENT") {
+      return readFile(publicIndexPath, "utf8");
+    }
+    throw error;
+  }
 }
 
 async function loadDraculaArtifacts() {
@@ -459,7 +471,7 @@ async function writeSnapshot(page, template) {
 }
 
 async function main() {
-  const template = await readFile(indexPath, "utf8");
+  const template = await readSnapshotTemplate();
   const artifacts = await loadDraculaArtifacts();
   const pages = buildPages(artifacts);
   const written = [];

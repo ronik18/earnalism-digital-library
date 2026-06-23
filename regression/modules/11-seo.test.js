@@ -1,18 +1,37 @@
 const fs = require("fs");
 const path = require("path");
+const { execFileSync } = require("child_process");
 
 const ROOT = path.resolve(__dirname, "../..");
 const SITE_URL = "https://theearnalism.com";
+const STATIC_SNAPSHOT_ROUTES = ["/", "/book/dracula", "/library", "/pricing", "/reader/dracula"];
+
+function snapshotPath(route) {
+  return route === "/"
+    ? "frontend/build/index.html"
+    : `frontend/build/${route.replace(/^\/+/, "")}/index.html`;
+}
+
+function ensureStaticSeoSnapshots() {
+  const missing = STATIC_SNAPSHOT_ROUTES
+    .map(snapshotPath)
+    .filter((relativePath) => !fs.existsSync(path.join(ROOT, relativePath)));
+
+  if (missing.length === 0) return;
+
+  execFileSync(process.execPath, ["frontend/scripts/generate-static-seo-snapshots.mjs"], {
+    cwd: ROOT,
+    stdio: "inherit",
+  });
+}
 
 function read(relativePath) {
   return fs.readFileSync(path.join(ROOT, relativePath), "utf8");
 }
 
 function readSnapshot(route) {
-  const snapshotPath = route === "/"
-    ? "frontend/build/index.html"
-    : `frontend/build/${route.replace(/^\/+/, "")}/index.html`;
-  return read(snapshotPath);
+  ensureStaticSeoSnapshots();
+  return read(snapshotPath(route));
 }
 
 function metaContent(html, attr, value) {
