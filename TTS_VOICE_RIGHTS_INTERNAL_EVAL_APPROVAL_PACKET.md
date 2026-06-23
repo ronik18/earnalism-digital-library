@@ -6,6 +6,8 @@ This packet is part of the English onboarding orchestrator. It does not approve 
 - Production approval status: `PRODUCTION_BLOCKED` for every candidate
 - Real audio generation: `false`
 - Model downloads or paid APIs: `false`
+- Kokoro af_heart owner/legal review form: `KOKORO_AF_HEART_OWNER_LEGAL_REVIEW_FORM.md`
+- Kokoro af_heart evidence checklist: `KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md`
 
 ## Kokoro
 

@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-22T20:13:24+00:00
+- Generated: 2026-06-23T04:32:44+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - Gate status: `HOLD_SOURCE_RIGHTS_QA_REQUIRED`
@@ -38,6 +38,15 @@
 - TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: selected voice real-person risk is unresolved or high.
 - TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: owner selected-voice approval is required for internal evaluation.
 - TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW: legal selected-voice review is required for internal evaluation.
+- LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW: selected provider `elevenlabs` is not eligible for internal evaluation: HOLD_PROVIDER_REVIEW.
+- LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW: selected provider voice is not selected.
+- LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW: paid provider plan evidence is required before internal evaluation.
+- LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW: owner approval is required before provider internal evaluation.
+- LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW: legal/internal review is required before provider internal evaluation.
+- LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW: attribution requirements require owner/legal review.
+- LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW: voice rights status is missing or requires review.
+- LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW: selected provider voice license evidence is missing.
+- LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW: paid plan evidence is required before using this provider for internal evaluation.
 - audiobook_sync_dry_run_stage: sync release evidence remains HOLD; public audio cannot be released.
 - narration_qa_gate: human narration QA is missing or not approved.
 - narration_qa_gate: accessibility listening QA is missing or not approved.

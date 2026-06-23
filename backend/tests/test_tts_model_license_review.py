@@ -237,11 +237,18 @@ def test_kokoro_selected_voice_reports_are_written(tmp_path: Path):
 
     packet = (tmp_path / "KOKORO_SELECTED_VOICE_INTERNAL_EVAL_PACKET.md").read_text(encoding="utf-8")
     scorecard = (tmp_path / "KOKORO_SELECTED_VOICE_RIGHTS_SCORECARD.md").read_text(encoding="utf-8")
+    review_form = (tmp_path / "KOKORO_AF_HEART_OWNER_LEGAL_REVIEW_FORM.md").read_text(encoding="utf-8")
+    checklist = (tmp_path / "KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md").read_text(encoding="utf-8")
 
     assert "af_heart" in packet
     assert "PUBLIC_AUDIO_RELEASE_BLOCKED" in packet
     assert "PRODUCTION_BLOCKED" in packet
     assert "af_heart" in scorecard
+    assert "Owner reviewer name/date" in review_form
+    assert "Legal reviewer name/date" in review_form
+    assert "Decision: HOLD / ELIGIBLE_INTERNAL_EVAL_ONLY / BLOCKED" in review_form
+    assert "Voice/speaker provenance is documented" in checklist
+    assert "No audio files may be written" in checklist
 
 
 def test_missing_voice_rights_evidence_url_blocks_internal_eval():

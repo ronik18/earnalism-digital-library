@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-22T20:13:24+00:00
+- Generated: 2026-06-23T04:32:44+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - Highlighted-text sync status: `HOLD_SYNC_QA_REQUIRED`
@@ -10,7 +10,10 @@
 - Model license decision: `HOLD_VOICE_RIGHTS`
 - Model internal-eval status: `HOLD_VOICE_RIGHTS`
 - Model generation status: `HOLD_VOICE_RIGHTS`
+- Selected licensed provider: `elevenlabs`
+- Provider internal-eval status: `HOLD_PROVIDER_REVIEW`
 - Human narration QA: HOLD, evidence missing or pending.
 - Accessibility listening QA: HOLD, evidence missing or pending.
 - Model/voice license review: HOLD unless explicit evidence is attached.
+- Provider internal-eval review: HOLD unless commercial output, selected voice, owner, and legal evidence are attached.
 - No public audio file, URL, player, listening CTA, or public audio JSON-LD metadata is produced.

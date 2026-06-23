@@ -39,3 +39,13 @@ audiobook_sync:
   sync_level: sentence
   public_release_target: false
   require_model_eligibility: true
+audiobook_provider_eval:
+  enabled: true
+  preferred_provider: elevenlabs
+  selected_voice_id: OWNER_SELECTION_REQUIRED
+  paid_plan_evidence_required: true
+  commercial_use_evidence_required: true
+  beta_features_allowed: false
+  owner_approval_required: true
+  legal_review_required: true
+  public_release_target: false
