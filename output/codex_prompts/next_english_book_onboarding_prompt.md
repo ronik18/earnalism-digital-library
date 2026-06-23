@@ -10,8 +10,20 @@ Current selected voice internal-eval status: `HOLD_VOICE_RIGHTS`.
 Current model generation status: `HOLD_VOICE_RIGHTS`.
 
 Current selected licensed provider: `elevenlabs`.
+Current selected provider voice: `21m00Tcm4TlvDq8ikWAM`.
+Current selected provider voice type: `platform_voice`.
 Current licensed provider internal-eval status: `HOLD_PROVIDER_REVIEW`.
 Current licensed provider production status: `PRODUCTION_BLOCKED`.
+
+Current licensed provider blockers:
+- selected provider `elevenlabs` is not eligible for internal evaluation: HOLD_PROVIDER_REVIEW.
+- paid provider plan evidence is required before internal evaluation.
+- owner approval is required before provider internal evaluation.
+- legal/internal review is required before provider internal evaluation.
+- attribution requirements require owner/legal review.
+- beta feature exclusion evidence is missing or requires review.
+- selected voice attribution requirements require review.
+- selected voice restrictions require review.
 
 Required next checks:
 - Attach complete source-rights evidence.

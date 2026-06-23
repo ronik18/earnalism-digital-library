@@ -42,7 +42,9 @@ audiobook_sync:
 audiobook_provider_eval:
   enabled: true
   preferred_provider: elevenlabs
-  selected_voice_id: OWNER_SELECTION_REQUIRED
+  selected_voice_id: 21m00Tcm4TlvDq8ikWAM
+  selected_voice_display_name: Rachel
+  selected_voice_type: platform_voice
   paid_plan_evidence_required: true
   commercial_use_evidence_required: true
   beta_features_allowed: false

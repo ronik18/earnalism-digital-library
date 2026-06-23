@@ -580,11 +580,22 @@ def licensed_provider_tts_internal_eval_review(config: dict[str, Any]) -> StageR
         "selected_provider_voice_id": selected_voice_id,
         "selected_provider_voice_display_name": provider_config.get("selected_voice_display_name")
         or selected.provider.get("selected_voice_display_name", ""),
+        "selected_provider_voice_type": selected.provider.get("selected_voice_type", "unknown"),
+        "selected_provider_voice_rights_summary": selected.provider.get("selected_voice_rights_summary", ""),
+        "selected_provider_voice_attribution_requirement": selected.provider.get("selected_voice_attribution_requirement", ""),
+        "selected_provider_voice_restrictions": selected.provider.get("selected_voice_restrictions", ""),
         "standalone_audio_distribution_allowed": selected.provider.get("standalone_audio_distribution_allowed", ""),
+        "standalone_audio_distribution_evidence": selected.provider.get("standalone_audio_distribution_evidence", ""),
         "paid_plan_required": bool(selected.provider.get("paid_plan_required")),
+        "plan_evidence_status": selected.provider.get("plan_evidence_status", ""),
         "paid_plan_evidence_required": bool(provider_config.get("paid_plan_evidence_required", False)),
+        "commercial_internal_eval_permission": selected.provider.get("commercial_internal_eval_permission", ""),
         "commercial_use_evidence_required": bool(provider_config.get("commercial_use_evidence_required", False)),
         "beta_features_allowed": bool(provider_config.get("beta_features_allowed", False)),
+        "beta_features_excluded_evidence": selected.provider.get("beta_features_excluded_evidence", ""),
+        "provider_terms_review_status": selected.provider.get("provider_terms_review_status", ""),
+        "data_retention_review_status": selected.provider.get("data_retention_review_status", ""),
+        "provider_blockers": dedupe_strings(blockers),
         "public_release_target": bool(provider_config.get("public_release_target", False)),
         "public_audio_allowed": False,
         "listen_now_cta_allowed": False,
@@ -1050,6 +1061,14 @@ def write_reports(
     selected_model_candidate = str(result.audiobook_gate["selected_model_candidate"])
     selected_provider_internal_eval_status = str(result.audiobook_gate["provider_internal_eval_status"])
     selected_provider_id = str(result.audiobook_gate["selected_provider_id"])
+    selected_provider_details = selected_provider_status(result.stages)
+    selected_provider_voice_id = str(selected_provider_details.get("selected_provider_voice_id") or "OWNER_SELECTION_REQUIRED")
+    selected_provider_voice_type = str(selected_provider_details.get("selected_provider_voice_type") or "unknown")
+    selected_provider_blockers = selected_provider_details.get("provider_blockers") or []
+    if isinstance(selected_provider_blockers, list) and selected_provider_blockers:
+        provider_blocker_text = "\n".join(f"- {blocker}" for blocker in selected_provider_blockers[:8])
+    else:
+        provider_blocker_text = "- No provider blocker recorded."
     if selected_internal_eval_status == "ELIGIBLE_INTERNAL_EVAL":
         tts_next_action = (
             f"- Future separate task may prepare an internal-only 2-3 minute Dracula Chapter 1 sample with "
@@ -1090,8 +1109,13 @@ def write_reports(
             f"Current selected voice internal-eval status: `{result.audiobook_gate['selected_voice_internal_eval_status']}`.\n",
             f"Current model generation status: `{result.audiobook_gate['model_generation']}`.\n\n",
             f"Current selected licensed provider: `{result.audiobook_gate['selected_provider_id']}`.\n",
+            f"Current selected provider voice: `{selected_provider_voice_id}`.\n",
+            f"Current selected provider voice type: `{selected_provider_voice_type}`.\n",
             f"Current licensed provider internal-eval status: `{result.audiobook_gate['provider_internal_eval_status']}`.\n",
             f"Current licensed provider production status: `{result.audiobook_gate['selected_provider_production_status']}`.\n\n",
+            "Current licensed provider blockers:\n",
+            provider_blocker_text,
+            "\n\n",
             "Required next checks:\n",
             "- Attach complete source-rights evidence.\n",
             "- Add owner-approved cover provenance.\n",

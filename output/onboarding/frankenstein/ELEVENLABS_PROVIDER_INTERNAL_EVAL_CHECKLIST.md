@@ -13,11 +13,17 @@ ElevenLabs cannot be promoted to `ELIGIBLE_INTERNAL_EVAL_ONLY` unless every chec
 
 - [ ] Paid provider plan evidence is documented.
 - [ ] Official commercial-use evidence is owner/legal reviewed.
+- [ ] Commercial internal-evaluation permission is approved or allowed.
 - [ ] Standalone audio distribution permission is owner/legal reviewed.
 - [ ] Beta features remain excluded.
+- [ ] Beta exclusion evidence is approved or recorded.
 - [ ] Exact selected voice ID and display name are recorded.
+- [ ] Selected voice type is platform/provider voice or approved generated voice.
 - [ ] Selected voice license and voice-rights evidence are documented.
 - [ ] Attribution requirements are understood and recorded.
+- [ ] Selected voice restrictions are understood and recorded.
+- [ ] Provider terms review is approved.
+- [ ] Data retention review is approved.
 - [ ] Data/privacy and retention notes are reviewed.
 - [ ] Owner approval is recorded with reviewer name and date.
 - [ ] Legal/internal review is complete and not blocked.

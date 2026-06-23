@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-23T04:32:44+00:00
+- Generated: 2026-06-23T06:19:33+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - Status: `PUBLIC_AUDIO_RELEASE_BLOCKED`
@@ -45,14 +45,19 @@
 - owner selected-voice approval is required for internal evaluation.
 - legal selected-voice review is required for internal evaluation.
 - selected provider `elevenlabs` is not eligible for internal evaluation: HOLD_PROVIDER_REVIEW.
-- selected provider voice is not selected.
 - paid provider plan evidence is required before internal evaluation.
 - owner approval is required before provider internal evaluation.
 - legal/internal review is required before provider internal evaluation.
 - attribution requirements require owner/legal review.
-- voice rights status is missing or requires review.
-- selected provider voice license evidence is missing.
+- beta feature exclusion evidence is missing or requires review.
+- selected voice attribution requirements require review.
+- selected voice restrictions require review.
+- paid plan evidence status is missing or requires review.
 - paid plan evidence is required before using this provider for internal evaluation.
+- commercial internal-eval permission is missing or requires review.
+- standalone audio distribution evidence is missing or requires review.
+- provider terms review is missing or requires review.
+- data retention review is missing or requires review.
 - sync release evidence remains HOLD; public audio cannot be released.
 - human narration QA is missing or not approved.
 - accessibility listening QA is missing or not approved.
