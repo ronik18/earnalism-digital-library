@@ -33,6 +33,12 @@ from scripts.tts_model_license_review import (
     selected_candidate_decision,
     write_reports as write_tts_model_reports,
 )
+from scripts.tts_provider_internal_eval_review import (
+    decision_payload as provider_decision_payload,
+    review_provider_candidates,
+    selected_provider_decision,
+    write_reports as write_tts_provider_reports,
+)
 
 
 DEFAULT_OUTPUT_DIR = ROOT / "output" / "onboarding"
@@ -44,6 +50,7 @@ PUBLICATION_HOLD = "HOLD_SOURCE_RIGHTS_QA_REQUIRED"
 PUBLICATION_DRAFT_REVIEW = "READY_FOR_OWNER_PUBLICATION_REVIEW_DRAFT_ONLY"
 TTS_MODEL_LICENSE_STAGE = "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW"
 TTS_VOICE_RIGHTS_STAGE = "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW"
+TTS_PROVIDER_INTERNAL_EVAL_STAGE = "LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW"
 UNSUPPORTED_ACCESSIBILITY_CLAIMS = (
     "WCAG compliant",
     "blind-user tested",
@@ -423,6 +430,11 @@ def selected_model_candidate(config: dict[str, Any]) -> str:
     )
 
 
+def selected_provider_candidate(config: dict[str, Any]) -> str:
+    provider_config = config.get("audiobook_provider_eval") if isinstance(config.get("audiobook_provider_eval"), dict) else {}
+    return safe_slug(provider_config.get("preferred_provider") or "elevenlabs")
+
+
 def tts_model_license_and_suitability_review(config: dict[str, Any]) -> StageResult:
     audiobook = config.get("audiobook") if isinstance(config.get("audiobook"), dict) else {}
     sync_config = config.get("audiobook_sync") if isinstance(config.get("audiobook_sync"), dict) else {}
@@ -505,6 +517,95 @@ def tts_voice_rights_internal_eval_review(config: dict[str, Any]) -> StageResult
     }
     status = selected.internal_eval_status if not blockers else selected.internal_eval_status
     return StageResult(TTS_VOICE_RIGHTS_STAGE, status, dedupe_strings(blockers), selected.warnings, details)
+
+
+def licensed_provider_tts_internal_eval_review(config: dict[str, Any]) -> StageResult:
+    provider_config = config.get("audiobook_provider_eval") if isinstance(config.get("audiobook_provider_eval"), dict) else {}
+    if provider_config.get("enabled") is False:
+        return StageResult(
+            TTS_PROVIDER_INTERNAL_EVAL_STAGE,
+            "SKIPPED",
+            warnings=["audiobook_provider_eval.enabled is false; provider internal-eval evidence was not reviewed."],
+            details={
+                "public_audio_allowed": False,
+                "public_audio_release_status": PUBLIC_AUDIO_RELEASE_BLOCKED,
+                "public_production_status": "PRODUCTION_BLOCKED",
+            },
+        )
+
+    decisions = review_provider_candidates()
+    selected_id = selected_provider_candidate(config)
+    selected = selected_provider_decision(selected_id, decisions)
+    selected_voice_id = str(
+        provider_config.get("selected_voice_id") or selected.provider.get("selected_voice_id") or ""
+    ).strip()
+    blockers: list[str] = []
+
+    if selected.internal_eval_status != "ELIGIBLE_INTERNAL_EVAL":
+        blockers.append(
+            f"selected provider `{selected_id}` is not eligible for internal evaluation: {selected.internal_eval_status}."
+        )
+    if not selected_voice_id or selected_voice_id == "OWNER_SELECTION_REQUIRED":
+        blockers.append("selected provider voice is not selected.")
+    if truthy(provider_config.get("beta_features_allowed")):
+        blockers.append("beta provider features are not allowed for this stage.")
+    if truthy(provider_config.get("public_release_target")):
+        blockers.append("public provider-audio release target is not allowed during onboarding.")
+    if truthy(provider_config.get("paid_plan_evidence_required")) and not present(
+        selected.provider.get("paid_plan_evidence_url")
+    ):
+        blockers.append("paid provider plan evidence is required before internal evaluation.")
+    if truthy(provider_config.get("commercial_use_evidence_required")) and str(
+        selected.provider.get("standalone_audio_distribution_allowed", "")
+    ).upper() != "ALLOWED":
+        blockers.append("commercial standalone audio evidence is not approved.")
+    if truthy(provider_config.get("owner_approval_required")) and str(
+        selected.provider.get("owner_approval_status", "")
+    ).upper() != "APPROVED":
+        blockers.append("owner approval is required before provider internal evaluation.")
+    if truthy(provider_config.get("legal_review_required")) and str(
+        selected.provider.get("legal_review_status", "")
+    ).upper() != "APPROVED":
+        blockers.append("legal/internal review is required before provider internal evaluation.")
+    blockers.extend(selected.issues)
+
+    details = {
+        "stage_name": TTS_PROVIDER_INTERNAL_EVAL_STAGE,
+        "selected_provider_id": selected_id,
+        "selected_provider_display_name": selected.provider.get("display_name", selected_id),
+        "selected_provider_decision": selected.decision_status,
+        "selected_provider_internal_eval_status": selected.internal_eval_status,
+        "selected_provider_internal_generation_status": selected.internal_generation_status,
+        "selected_provider_production_status": selected.public_production_status,
+        "selected_provider_voice_id": selected_voice_id,
+        "selected_provider_voice_display_name": provider_config.get("selected_voice_display_name")
+        or selected.provider.get("selected_voice_display_name", ""),
+        "standalone_audio_distribution_allowed": selected.provider.get("standalone_audio_distribution_allowed", ""),
+        "paid_plan_required": bool(selected.provider.get("paid_plan_required")),
+        "paid_plan_evidence_required": bool(provider_config.get("paid_plan_evidence_required", False)),
+        "commercial_use_evidence_required": bool(provider_config.get("commercial_use_evidence_required", False)),
+        "beta_features_allowed": bool(provider_config.get("beta_features_allowed", False)),
+        "public_release_target": bool(provider_config.get("public_release_target", False)),
+        "public_audio_allowed": False,
+        "listen_now_cta_allowed": False,
+        "audio_object_metadata_allowed": False,
+        "real_audio_generation_allowed": False,
+        "paid_provider_api_called": False,
+        "provider_count": len(decisions),
+        "eligible_internal_eval_count": sum(
+            1 for decision in decisions if decision.internal_eval_status == "ELIGIBLE_INTERNAL_EVAL"
+        ),
+        "hold_count": sum(1 for decision in decisions if decision.internal_eval_status == "HOLD_PROVIDER_REVIEW"),
+        "blocked_count": sum(1 for decision in decisions if decision.internal_eval_status == "BLOCKED"),
+        "providers": provider_decision_payload(decisions)["providers"],
+    }
+    return StageResult(
+        TTS_PROVIDER_INTERNAL_EVAL_STAGE,
+        selected.internal_eval_status,
+        dedupe_strings(blockers),
+        selected.warnings,
+        details,
+    )
 
 
 def dedupe_strings(values: list[str]) -> list[str]:
@@ -682,10 +783,11 @@ def audiobook_gate(stages: list[StageResult]) -> dict[str, Any]:
         if (
             "audiobook" in stage.name.lower()
             or "narration" in stage.name.lower()
-            or stage.name in {TTS_MODEL_LICENSE_STAGE, TTS_VOICE_RIGHTS_STAGE}
+            or stage.name in {TTS_MODEL_LICENSE_STAGE, TTS_VOICE_RIGHTS_STAGE, TTS_PROVIDER_INTERNAL_EVAL_STAGE}
         )
         for blocker in stage.blockers
     ]
+    provider = selected_provider_status(stages)
     return {
         "status": PUBLIC_AUDIO_RELEASE_BLOCKED,
         "sync_status": sync_status(stages),
@@ -696,6 +798,11 @@ def audiobook_gate(stages: list[StageResult]) -> dict[str, Any]:
         "selected_voice_id": selected_model_status(stages).get("selected_voice_id"),
         "selected_voice_internal_eval_status": selected_model_status(stages).get("selected_voice_internal_eval_status"),
         "selected_voice_blockers": selected_model_status(stages).get("selected_voice_blockers"),
+        "provider_internal_eval_status": provider.get("selected_provider_internal_eval_status"),
+        "selected_provider_id": provider.get("selected_provider_id"),
+        "selected_provider_decision": provider.get("selected_provider_decision"),
+        "selected_provider_production_status": provider.get("selected_provider_production_status"),
+        "selected_provider_internal_generation_status": provider.get("selected_provider_internal_generation_status"),
         "public_audio_publish_allowed": False,
         "audio_enabled": False,
         "listen_now_cta": False,
@@ -724,6 +831,19 @@ def selected_model_status(stages: list[StageResult]) -> dict[str, Any]:
         "selected_voice_internal_eval_status": "HOLD_VOICE_RIGHTS",
         "selected_voice_blockers": "selected voice evidence is missing.",
         "model_generation": "HOLD_LICENSE_REVIEW",
+    }
+
+
+def selected_provider_status(stages: list[StageResult]) -> dict[str, Any]:
+    for stage in stages:
+        if stage.name == TTS_PROVIDER_INTERNAL_EVAL_STAGE:
+            return stage.details
+    return {
+        "selected_provider_id": "elevenlabs",
+        "selected_provider_decision": "HOLD_PROVIDER_REVIEW",
+        "selected_provider_internal_eval_status": "HOLD_PROVIDER_REVIEW",
+        "selected_provider_internal_generation_status": "HOLD_PROVIDER_REVIEW",
+        "selected_provider_production_status": "PRODUCTION_BLOCKED",
     }
 
 
@@ -809,6 +929,11 @@ def write_tts_license_artifacts(scoped_output_dir: Path) -> dict[str, Path]:
     return write_tts_model_reports(decisions, output_dir=scoped_output_dir)
 
 
+def write_tts_provider_artifacts(scoped_output_dir: Path) -> dict[str, Path]:
+    decisions = review_provider_candidates()
+    return write_tts_provider_reports(decisions, output_dir=scoped_output_dir)
+
+
 def write_reports(
     result: OnboardingResult,
     output_dir: Path = DEFAULT_OUTPUT_DIR,
@@ -843,6 +968,7 @@ def write_reports(
         + f"- Public audio status: `{result.audiobook_gate['status']}`\n"
         + f"- Audiobook sync status: `{result.audiobook_gate['sync_status']}`\n"
         + f"- Model generation status: `{result.audiobook_gate['model_generation']}`\n"
+        + f"- Provider internal-eval status: `{result.audiobook_gate['provider_internal_eval_status']}`\n"
         + "\nThis orchestrator is dry-run/report-only and does not publish books, enable public audio, or change payment settings.\n"
     )
     rights = (
@@ -881,6 +1007,10 @@ def write_reports(
         + f"- Selected model decision: `{result.audiobook_gate['selected_model_decision']}`\n"
         + f"- Selected model internal-eval status: `{result.audiobook_gate['selected_model_internal_eval_status']}`\n"
         + f"- Model generation: `{result.audiobook_gate['model_generation']}`\n"
+        + f"- Selected provider: `{result.audiobook_gate['selected_provider_id']}`\n"
+        + f"- Selected provider decision: `{result.audiobook_gate['selected_provider_decision']}`\n"
+        + f"- Provider internal-eval status: `{result.audiobook_gate['provider_internal_eval_status']}`\n"
+        + f"- Provider production status: `{result.audiobook_gate['selected_provider_production_status']}`\n"
         + f"- Public audio publish allowed: `{str(result.audiobook_gate['public_audio_publish_allowed']).lower()}`\n"
         + f"- Public listening CTA: `{str(result.audiobook_gate['listen_now_cta']).lower()}`\n"
         + f"- Public audio JSON-LD metadata: `{str(result.audiobook_gate['audio_object_metadata']).lower()}`\n"
@@ -895,9 +1025,12 @@ def write_reports(
         + f"- Model license decision: `{result.audiobook_gate['selected_model_decision']}`\n"
         + f"- Model internal-eval status: `{result.audiobook_gate['selected_model_internal_eval_status']}`\n"
         + f"- Model generation status: `{result.audiobook_gate['model_generation']}`\n"
+        + f"- Selected licensed provider: `{result.audiobook_gate['selected_provider_id']}`\n"
+        + f"- Provider internal-eval status: `{result.audiobook_gate['provider_internal_eval_status']}`\n"
         + "- Human narration QA: HOLD, evidence missing or pending.\n"
         + "- Accessibility listening QA: HOLD, evidence missing or pending.\n"
         + "- Model/voice license review: HOLD unless explicit evidence is attached.\n"
+        + "- Provider internal-eval review: HOLD unless commercial output, selected voice, owner, and legal evidence are attached.\n"
         + "- No public audio file, URL, player, listening CTA, or public audio JSON-LD metadata is produced.\n"
     )
     seo = (
@@ -915,6 +1048,8 @@ def write_reports(
     )
     selected_internal_eval_status = str(result.audiobook_gate["selected_model_internal_eval_status"])
     selected_model_candidate = str(result.audiobook_gate["selected_model_candidate"])
+    selected_provider_internal_eval_status = str(result.audiobook_gate["provider_internal_eval_status"])
+    selected_provider_id = str(result.audiobook_gate["selected_provider_id"])
     if selected_internal_eval_status == "ELIGIBLE_INTERNAL_EVAL":
         tts_next_action = (
             f"- Future separate task may prepare an internal-only 2-3 minute Dracula Chapter 1 sample with "
@@ -930,6 +1065,19 @@ def write_reports(
             "commercial internal-eval permission, synthetic/non-human or consent status, and real-person "
             "voice-cloning risk review.\n"
         )
+    if selected_provider_internal_eval_status == "ELIGIBLE_INTERNAL_EVAL":
+        provider_next_action = (
+            f"- Future separate task may prepare an internal-only 2-3 minute Dracula Chapter 1 sample with "
+            f"`{selected_provider_id}` after owner/legal/provider evidence remains attached and public audio remains blocked.\n"
+            "- Keep provider sample generation local/internal and outside `frontend/public` and `frontend/build`.\n"
+        )
+    else:
+        provider_next_action = (
+            f"- Do not generate a provider audio sample yet; `{selected_provider_id}` remains "
+            f"`{selected_provider_internal_eval_status}`.\n"
+            "- Complete ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md and "
+            "ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md before any provider eligibility change.\n"
+        )
 
     prompt = "".join(
         [
@@ -941,13 +1089,20 @@ def write_reports(
             f"Current selected TTS internal-eval status: `{result.audiobook_gate['selected_model_internal_eval_status']}`.\n",
             f"Current selected voice internal-eval status: `{result.audiobook_gate['selected_voice_internal_eval_status']}`.\n",
             f"Current model generation status: `{result.audiobook_gate['model_generation']}`.\n\n",
+            f"Current selected licensed provider: `{result.audiobook_gate['selected_provider_id']}`.\n",
+            f"Current licensed provider internal-eval status: `{result.audiobook_gate['provider_internal_eval_status']}`.\n",
+            f"Current licensed provider production status: `{result.audiobook_gate['selected_provider_production_status']}`.\n\n",
             "Required next checks:\n",
             "- Attach complete source-rights evidence.\n",
             "- Add owner-approved cover provenance.\n",
             "- Review TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md and TTS_MODEL_PRODUCTION_ELIGIBILITY_REPORT.md.\n",
             "- Review TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md and TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md.\n",
+            "- Complete KOKORO_AF_HEART_OWNER_LEGAL_REVIEW_FORM.md and KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md before any Kokoro af_heart eligibility change.\n",
+            "- Review TTS_PROVIDER_INTERNAL_EVAL_REVIEW.md and TTS_PROVIDER_COMMERCIAL_RIGHTS_SCORECARD.md.\n",
+            "- Complete ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md and ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md before any ElevenLabs eligibility change.\n",
             "- Complete TTS model license, voice, commercial-use, speaker-rights, and owner approval evidence before real internal generation.\n",
             tts_next_action,
+            provider_next_action,
             "- Review the internal highlighted-text sync manifest before any audio release consideration.\n",
             "- Keep public audio blocked.\n",
             "- Run the publication, audio, SEO, social, payment-smoke, regression, and frontend build gates.\n",
@@ -965,6 +1120,7 @@ def write_reports(
     }
     paths: dict[str, Path] = {}
     paths.update(write_tts_license_artifacts(scoped_output_dir))
+    paths.update(write_tts_provider_artifacts(scoped_output_dir))
     paths.update(copy_audiobook_sync_artifacts(result, scoped_output_dir))
     for filename, text in root_reports.items():
         if write_root_reports:
@@ -1022,6 +1178,7 @@ def run_orchestration(
             audiobook_planning_packet(config),
             tts_model_license_and_suitability_review(config),
             tts_voice_rights_internal_eval_review(config),
+            licensed_provider_tts_internal_eval_review(config),
             audiobook_sync_dry_run_stage(config),
             narration_qa_gate(config),
             audiobook_legal_accessibility_gate(config),
@@ -1046,6 +1203,10 @@ def run_orchestration(
         "tts_model_production_eligibility": "TTS_MODEL_PRODUCTION_ELIGIBILITY_REPORT.md",
         "tts_voice_rights_internal_eval_packet": "TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md",
         "tts_internal_eval_scorecard": "TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md",
+        "tts_provider_internal_eval_review": "TTS_PROVIDER_INTERNAL_EVAL_REVIEW.md",
+        "tts_provider_commercial_rights_scorecard": "TTS_PROVIDER_COMMERCIAL_RIGHTS_SCORECARD.md",
+        "elevenlabs_provider_owner_legal_review_form": "ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md",
+        "elevenlabs_provider_internal_eval_checklist": "ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md",
         "seo": "ENGLISH_BOOK_SEO_PREVIEW_REPORT.md",
         "visual": "ENGLISH_BOOK_VISUAL_SCORECARD.md",
         "codex_prompt": "output/codex_prompts/next_english_book_onboarding_prompt.md",

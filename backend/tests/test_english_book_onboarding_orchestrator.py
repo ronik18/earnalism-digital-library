@@ -8,6 +8,7 @@ import pytest
 from scripts.orchestrate_english_book_onboarding import (
     PUBLIC_AUDIO_RELEASE_BLOCKED,
     PUBLICATION_HOLD,
+    TTS_PROVIDER_INTERNAL_EVAL_STAGE,
     ensure_no_public_audio_files,
     run_orchestration,
     write_reports,
@@ -56,6 +57,8 @@ def base_config(tmp_path: Path, **overrides) -> str:
         "derivative_rights_status": "separate approval required",
         "model_voice_license_status": "",
         "selected_model_candidate": "kokoro",
+        "preferred_provider": "elevenlabs",
+        "selected_provider_voice_id": "OWNER_SELECTION_REQUIRED",
     }
     values.update(overrides)
     return f"""slug: {values['slug']}
@@ -96,6 +99,16 @@ audiobook_sync:
   sync_level: sentence
   public_release_target: false
   require_model_eligibility: true
+audiobook_provider_eval:
+  enabled: true
+  preferred_provider: {values['preferred_provider']}
+  selected_voice_id: {values['selected_provider_voice_id']}
+  paid_plan_evidence_required: true
+  commercial_use_evidence_required: true
+  beta_features_allowed: false
+  owner_approval_required: true
+  legal_review_required: true
+  public_release_target: false
 """
 
 
@@ -179,8 +192,32 @@ def test_orchestrator_runs_model_license_stage_before_sync_stage(tmp_path: Path)
 
     assert "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW" in names
     assert "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW" in names
+    assert TTS_PROVIDER_INTERNAL_EVAL_STAGE in names
     assert names.index("TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW") < names.index("audiobook_sync_dry_run_stage")
     assert names.index("TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW") < names.index("audiobook_sync_dry_run_stage")
+    assert names.index(TTS_PROVIDER_INTERNAL_EVAL_STAGE) < names.index("audiobook_sync_dry_run_stage")
+    assert names.index("TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW") < names.index(TTS_PROVIDER_INTERNAL_EVAL_STAGE)
+
+
+def test_provider_internal_eval_stage_records_elevenlabs_hold_before_sync(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    result = run_orchestration(config_path)
+    provider_stage = stage(result, TTS_PROVIDER_INTERNAL_EVAL_STAGE)
+    names = [item.name for item in result.stages]
+
+    assert provider_stage.status == "HOLD_PROVIDER_REVIEW"
+    assert provider_stage.details["selected_provider_id"] == "elevenlabs"
+    assert provider_stage.details["selected_provider_decision"] == "HOLD_PROVIDER_REVIEW"
+    assert provider_stage.details["selected_provider_internal_eval_status"] == "HOLD_PROVIDER_REVIEW"
+    assert provider_stage.details["selected_provider_production_status"] == "PRODUCTION_BLOCKED"
+    assert provider_stage.details["selected_provider_voice_id"] == "OWNER_SELECTION_REQUIRED"
+    assert provider_stage.details["paid_provider_api_called"] is False
+    assert provider_stage.details["public_audio_allowed"] is False
+    assert provider_stage.details["real_audio_generation_allowed"] is False
+    assert provider_stage.details["listen_now_cta_allowed"] is False
+    assert provider_stage.details["audio_object_metadata_allowed"] is False
+    assert any("selected provider voice" in blocker for blocker in provider_stage.blockers)
+    assert names.index(TTS_PROVIDER_INTERNAL_EVAL_STAGE) < names.index("audiobook_sync_dry_run_stage")
 
 
 def test_selected_model_decision_appears_in_orchestrator_json(tmp_path: Path):
@@ -195,6 +232,10 @@ def test_selected_model_decision_appears_in_orchestrator_json(tmp_path: Path):
     assert '"selected_voice_id": "af_heart"' in report
     assert '"selected_voice_internal_eval_status": "HOLD_VOICE_RIGHTS"' in report
     assert '"model_generation": "HOLD_VOICE_RIGHTS"' in report
+    assert '"selected_provider_id": "elevenlabs"' in report
+    assert '"selected_provider_decision": "HOLD_PROVIDER_REVIEW"' in report
+    assert '"provider_internal_eval_status": "HOLD_PROVIDER_REVIEW"' in report
+    assert '"selected_provider_production_status": "PRODUCTION_BLOCKED"' in report
 
 
 def test_voice_rights_internal_eval_stage_records_selected_candidate(tmp_path: Path):
@@ -222,7 +263,14 @@ def test_next_prompt_requests_voice_rights_evidence_before_audio_generation(tmp_
     assert "Do not generate an audio sample yet" in prompt
     assert "Current selected Kokoro voice: `af_heart`" in prompt
     assert "Current selected voice internal-eval status: `HOLD_VOICE_RIGHTS`" in prompt
+    assert "Current selected licensed provider: `elevenlabs`" in prompt
+    assert "Current licensed provider internal-eval status: `HOLD_PROVIDER_REVIEW`" in prompt
+    assert "KOKORO_AF_HEART_OWNER_LEGAL_REVIEW_FORM.md" in prompt
+    assert "KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md" in prompt
+    assert "ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md" in prompt
+    assert "ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md" in prompt
     assert "Collect owner/legal-reviewed selected voice or speaker-rights evidence" in prompt
+    assert "Do not generate a provider audio sample yet" in prompt
     assert "future separate task may prepare an internal-only 2-3 minute" not in prompt
 
 
@@ -326,6 +374,13 @@ def test_slug_scoped_output_directory_contains_all_reports(tmp_path: Path):
         "ENGLISH_AUDIOBOOK_QA_PACKET.md",
         "ENGLISH_BOOK_SEO_PREVIEW_REPORT.md",
         "ENGLISH_BOOK_VISUAL_SCORECARD.md",
+        "KOKORO_AF_HEART_OWNER_LEGAL_REVIEW_FORM.md",
+        "KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md",
+        "TTS_PROVIDER_INTERNAL_EVAL_REVIEW.md",
+        "TTS_PROVIDER_COMMERCIAL_RIGHTS_SCORECARD.md",
+        "ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md",
+        "ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md",
+        "tts_provider_internal_eval_review.json",
         "english_book_onboarding_report.json",
         "next_codex_prompt.md",
     }

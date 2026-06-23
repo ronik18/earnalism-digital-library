@@ -25,6 +25,8 @@ VOICE_RIGHTS_PACKET_PATH = ROOT / "TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKE
 INTERNAL_EVAL_SCORECARD_PATH = ROOT / "TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md"
 KOKORO_SELECTED_VOICE_PACKET_PATH = ROOT / "KOKORO_SELECTED_VOICE_INTERNAL_EVAL_PACKET.md"
 KOKORO_SELECTED_VOICE_SCORECARD_PATH = ROOT / "KOKORO_SELECTED_VOICE_RIGHTS_SCORECARD.md"
+KOKORO_AF_HEART_REVIEW_FORM_PATH = ROOT / "KOKORO_AF_HEART_OWNER_LEGAL_REVIEW_FORM.md"
+KOKORO_AF_HEART_CHECKLIST_PATH = ROOT / "KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md"
 
 ELIGIBLE_INTERNAL_EVAL = "ELIGIBLE_INTERNAL_EVAL"
 HOLD_LICENSE_REVIEW = "HOLD_LICENSE_REVIEW"
@@ -572,6 +574,8 @@ def voice_rights_packet_markdown(decisions: list[CandidateDecision]) -> str:
         "- Production approval status: `PRODUCTION_BLOCKED` for every candidate",
         "- Real audio generation: `false`",
         "- Model downloads or paid APIs: `false`",
+        "- Kokoro af_heart owner/legal review form: `KOKORO_AF_HEART_OWNER_LEGAL_REVIEW_FORM.md`",
+        "- Kokoro af_heart evidence checklist: `KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md`",
         "",
     ]
     for decision in decisions:
@@ -709,6 +713,127 @@ def kokoro_selected_voice_scorecard_markdown(decisions: list[CandidateDecision])
     return "\n".join(lines)
 
 
+def kokoro_af_heart_review_form_markdown(decisions: list[CandidateDecision]) -> str:
+    decision = kokoro_decision(decisions)
+    candidate = decision.candidate
+    return "\n".join(
+        [
+            "# Kokoro af_heart Owner/Legal Review Form",
+            "",
+            "This form is for manual evidence collection only. It does not approve internal generation, production use, public audio, or model downloads.",
+            "",
+            "## Current Gate State",
+            "",
+            f"- Model candidate: `{normalized(candidate.get('candidate_id'))}`",
+            f"- Voice ID: `{display_value(candidate.get('selected_voice_id'))}`",
+            f"- Voice display name: {display_value(candidate.get('selected_voice_display_name'))}",
+            f"- Current selected voice status: `{display_value(candidate.get('selected_voice_internal_eval_status'))}`",
+            f"- Current Kokoro decision: `{decision.decision_status}`",
+            f"- Public production status: `{decision.public_production_status}`",
+            "- Public audio status: `PUBLIC_AUDIO_RELEASE_BLOCKED`",
+            "- Real audio generated: `false`",
+            "- Decision must remain `HOLD` until every required field below is completed and reviewed.",
+            "- Decision: HOLD / ELIGIBLE_INTERNAL_EVAL_ONLY / BLOCKED",
+            "",
+            "## Evidence Fields",
+            "",
+            "| Field | Current / Required Value | Owner/Legal Entry |",
+            "| --- | --- | --- |",
+            f"| Official voice source URL | {display_value(candidate.get('selected_voice_source_url'))} |  |",
+            f"| Voice ID | `{display_value(candidate.get('selected_voice_id'))}` |  |",
+            f"| Voice display name | {display_value(candidate.get('selected_voice_display_name'))} |  |",
+            "| Speaker provenance | REQUIRED: identify voice origin, speaker type, dataset/source, and whether any human speaker is involved. |  |",
+            "| Synthetic/non-human status | REQUIRED: document synthetic/non-human proof or explain human-speaker consent basis. |  |",
+            "| Consent evidence | REQUIRED if any human speaker, performer, contributor, or derived voice is involved. |  |",
+            f"| Voice license evidence | {display_value(candidate.get('selected_voice_license_evidence_url'))} plus owner/legal notes. |  |",
+            "| Commercial internal-eval permission | REQUIRED: confirm local internal evaluation is allowed. |  |",
+            f"| Attribution requirements | {display_value(candidate.get('selected_voice_attribution_requirement'))} |  |",
+            "| Restrictions | REQUIRED: list disclosure, attribution, redistribution, output-use, or non-commercial restrictions. |  |",
+            f"| Real-person voice clone risk | Current: `{display_value(candidate.get('selected_voice_real_person_risk'))}`. Must be resolved and not high. |  |",
+            "| Owner reviewer name/date | REQUIRED before status can change. |  |",
+            "| Legal reviewer name/date | REQUIRED before status can change. |  |",
+            "| Decision | Choose one: HOLD / ELIGIBLE_INTERNAL_EVAL_ONLY / BLOCKED. | HOLD |",
+            "| Notes | REQUIRED: rationale and unresolved questions. |  |",
+            "| Required next action | REQUIRED: smallest next evidence or review step. |  |",
+            "",
+            "## Owner Review",
+            "",
+            "- Owner reviewer name:",
+            "- Owner review date:",
+            "- Owner decision: HOLD / ELIGIBLE_INTERNAL_EVAL_ONLY / BLOCKED",
+            "- Owner notes:",
+            "",
+            "## Legal/Internal Review",
+            "",
+            "- Legal reviewer name:",
+            "- Legal review date:",
+            "- Legal decision: HOLD / ELIGIBLE_INTERNAL_EVAL_ONLY / BLOCKED",
+            "- Legal notes:",
+            "",
+            "## Safety Confirmation",
+            "",
+            "- No audio may be generated from this form alone.",
+            "- No public audio URL, public listening CTA, or public audio JSON-LD metadata may be created.",
+            "- Production status remains `PRODUCTION_BLOCKED`.",
+            "- Public audio remains `PUBLIC_AUDIO_RELEASE_BLOCKED`.",
+            "",
+        ]
+    )
+
+
+def kokoro_af_heart_checklist_markdown(decisions: list[CandidateDecision]) -> str:
+    decision = kokoro_decision(decisions)
+    candidate = decision.candidate
+    return "\n".join(
+        [
+            "# Kokoro af_heart Evidence Collection Checklist",
+            "",
+            "af_heart cannot be promoted to `ELIGIBLE_INTERNAL_EVAL_ONLY` unless every checklist item is completed and reviewed.",
+            "",
+            "## Current Status",
+            "",
+            f"- Voice ID: `{display_value(candidate.get('selected_voice_id'))}`",
+            f"- Selected voice status: `{display_value(candidate.get('selected_voice_internal_eval_status'))}`",
+            f"- Kokoro model status: `{decision.internal_eval_status}`",
+            f"- Production approval: `{decision.public_production_status}`",
+            "- Public audio: `PUBLIC_AUDIO_RELEASE_BLOCKED`",
+            "- Eligible internal-eval candidates: `0`",
+            "",
+            "## Required Before Promotion",
+            "",
+            "- [ ] Voice/speaker provenance is documented.",
+            "- [ ] Consent evidence or synthetic/non-human status is documented.",
+            "- [ ] Voice/license evidence allows local internal evaluation.",
+            "- [ ] Attribution requirements are understood and recorded.",
+            "- [ ] Restrictions are understood and recorded.",
+            "- [ ] Real-person voice clone risk is resolved and not high.",
+            "- [ ] Owner approval is recorded with reviewer name and date.",
+            "- [ ] Legal/internal review is complete and not blocked.",
+            "- [ ] The decision is explicitly recorded as HOLD, ELIGIBLE_INTERNAL_EVAL_ONLY, or BLOCKED.",
+            "- [ ] The next action is recorded.",
+            "",
+            "## Non-Negotiable Blocks",
+            "",
+            "- If speaker provenance is missing, keep `HOLD_VOICE_RIGHTS`.",
+            "- If consent or synthetic/non-human status is missing, keep `HOLD_VOICE_RIGHTS`.",
+            "- If commercial internal-eval permission is unclear, keep `HOLD_VOICE_RIGHTS`.",
+            "- If real-person voice clone risk is unresolved or high, keep `HOLD_VOICE_RIGHTS` or `BLOCKED`.",
+            "- If owner approval is missing, keep `HOLD_VOICE_RIGHTS`.",
+            "- If legal/internal review is blocked, set `BLOCKED`.",
+            "- Do not mark production approved in this workflow.",
+            "- Do not generate audio in this workflow.",
+            "",
+            "## Output Safety",
+            "",
+            "- No audio files may be written to `frontend/public` or `frontend/build`.",
+            "- No public listening CTA may appear publicly.",
+            "- No public audio JSON-LD metadata may be emitted.",
+            "- Public audio remains `PUBLIC_AUDIO_RELEASE_BLOCKED`.",
+            "",
+        ]
+    )
+
+
 def decision_payload(decisions: list[CandidateDecision]) -> dict[str, Any]:
     return {
         "generated_by": "scripts/tts_model_license_review.py",
@@ -740,18 +865,24 @@ def write_reports(decisions: list[CandidateDecision], *, output_dir: Path | None
     internal_eval_scorecard = internal_eval_scorecard_markdown(decisions)
     kokoro_voice_packet = kokoro_selected_voice_packet_markdown(decisions)
     kokoro_voice_scorecard = kokoro_selected_voice_scorecard_markdown(decisions)
+    kokoro_review_form = kokoro_af_heart_review_form_markdown(decisions)
+    kokoro_checklist = kokoro_af_heart_checklist_markdown(decisions)
     MATRIX_REPORT_PATH.write_text(matrix, encoding="utf-8")
     ELIGIBILITY_REPORT_PATH.write_text(eligibility, encoding="utf-8")
     VOICE_RIGHTS_PACKET_PATH.write_text(voice_rights_packet, encoding="utf-8")
     INTERNAL_EVAL_SCORECARD_PATH.write_text(internal_eval_scorecard, encoding="utf-8")
     KOKORO_SELECTED_VOICE_PACKET_PATH.write_text(kokoro_voice_packet, encoding="utf-8")
     KOKORO_SELECTED_VOICE_SCORECARD_PATH.write_text(kokoro_voice_scorecard, encoding="utf-8")
+    KOKORO_AF_HEART_REVIEW_FORM_PATH.write_text(kokoro_review_form, encoding="utf-8")
+    KOKORO_AF_HEART_CHECKLIST_PATH.write_text(kokoro_checklist, encoding="utf-8")
     paths[path_key(MATRIX_REPORT_PATH)] = MATRIX_REPORT_PATH
     paths[path_key(ELIGIBILITY_REPORT_PATH)] = ELIGIBILITY_REPORT_PATH
     paths[path_key(VOICE_RIGHTS_PACKET_PATH)] = VOICE_RIGHTS_PACKET_PATH
     paths[path_key(INTERNAL_EVAL_SCORECARD_PATH)] = INTERNAL_EVAL_SCORECARD_PATH
     paths[path_key(KOKORO_SELECTED_VOICE_PACKET_PATH)] = KOKORO_SELECTED_VOICE_PACKET_PATH
     paths[path_key(KOKORO_SELECTED_VOICE_SCORECARD_PATH)] = KOKORO_SELECTED_VOICE_SCORECARD_PATH
+    paths[path_key(KOKORO_AF_HEART_REVIEW_FORM_PATH)] = KOKORO_AF_HEART_REVIEW_FORM_PATH
+    paths[path_key(KOKORO_AF_HEART_CHECKLIST_PATH)] = KOKORO_AF_HEART_CHECKLIST_PATH
     if output_dir:
         if not output_dir.is_absolute():
             output_dir = ROOT / output_dir
@@ -762,6 +893,8 @@ def write_reports(decisions: list[CandidateDecision], *, output_dir: Path | None
         internal_eval_scorecard_path = output_dir / "TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md"
         kokoro_voice_packet_path = output_dir / "KOKORO_SELECTED_VOICE_INTERNAL_EVAL_PACKET.md"
         kokoro_voice_scorecard_path = output_dir / "KOKORO_SELECTED_VOICE_RIGHTS_SCORECARD.md"
+        kokoro_review_form_path = output_dir / "KOKORO_AF_HEART_OWNER_LEGAL_REVIEW_FORM.md"
+        kokoro_checklist_path = output_dir / "KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md"
         json_path = output_dir / "tts_model_license_review.json"
         matrix_path.write_text(matrix, encoding="utf-8")
         eligibility_path.write_text(eligibility, encoding="utf-8")
@@ -769,6 +902,8 @@ def write_reports(decisions: list[CandidateDecision], *, output_dir: Path | None
         internal_eval_scorecard_path.write_text(internal_eval_scorecard, encoding="utf-8")
         kokoro_voice_packet_path.write_text(kokoro_voice_packet, encoding="utf-8")
         kokoro_voice_scorecard_path.write_text(kokoro_voice_scorecard, encoding="utf-8")
+        kokoro_review_form_path.write_text(kokoro_review_form, encoding="utf-8")
+        kokoro_checklist_path.write_text(kokoro_checklist, encoding="utf-8")
         json_path.write_text(json.dumps(decision_payload(decisions), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         paths[path_key(matrix_path)] = matrix_path
         paths[path_key(eligibility_path)] = eligibility_path
@@ -776,6 +911,8 @@ def write_reports(decisions: list[CandidateDecision], *, output_dir: Path | None
         paths[path_key(internal_eval_scorecard_path)] = internal_eval_scorecard_path
         paths[path_key(kokoro_voice_packet_path)] = kokoro_voice_packet_path
         paths[path_key(kokoro_voice_scorecard_path)] = kokoro_voice_scorecard_path
+        paths[path_key(kokoro_review_form_path)] = kokoro_review_form_path
+        paths[path_key(kokoro_checklist_path)] = kokoro_checklist_path
         paths[path_key(json_path)] = json_path
     return paths
 

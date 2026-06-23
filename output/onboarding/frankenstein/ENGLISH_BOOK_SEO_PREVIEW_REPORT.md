@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-22T20:13:24+00:00
+- Generated: 2026-06-23T04:32:44+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - SEO/social metadata is draft-only.
