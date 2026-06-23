@@ -57,7 +57,10 @@
         "production_status": "PRODUCTION_BLOCKED",
         "owner_approval_status": "OWNER_REVIEW_REQUIRED",
         "legal_review_status": "LEGAL_REVIEW_REQUIRED",
-        "blockers": "paid-plan evidence, provider terms review, selected voice rights review, attribution/restrictions review, owner approval, and legal review are incomplete."
+        "blockers": "ElevenLabs owner/legal evidence file exists, but internal-eval approval fields remain incomplete.",
+        "owner_evidence_path": "internal/legal/elevenlabs/creator-membership-internal-eval-evidence.md",
+        "owner_evidence_decision": "HOLD",
+        "owner_evidence_present": true
       }
     },
     {

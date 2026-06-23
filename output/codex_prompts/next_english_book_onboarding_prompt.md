@@ -33,11 +33,13 @@ Required next checks:
 - Complete KOKORO_AF_HEART_OWNER_LEGAL_REVIEW_FORM.md and KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md before any Kokoro af_heart eligibility change.
 - Review TTS_PROVIDER_INTERNAL_EVAL_REVIEW.md and TTS_PROVIDER_COMMERCIAL_RIGHTS_SCORECARD.md.
 - Complete ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md and ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md before any ElevenLabs eligibility change.
+- Complete internal/legal/elevenlabs/creator-membership-internal-eval-evidence.md before any ElevenLabs internal sample import is approved.
 - Complete TTS model license, voice, commercial-use, speaker-rights, and owner approval evidence before real internal generation.
 - Do not generate an audio sample yet; `kokoro` remains `HOLD_VOICE_RIGHTS`.
 - Collect owner/legal-reviewed selected voice or speaker-rights evidence, including provenance, commercial internal-eval permission, synthetic/non-human or consent status, and real-person voice-cloning risk review.
 - Do not generate a provider audio sample yet; `elevenlabs` remains `HOLD_PROVIDER_REVIEW`.
 - Complete ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md and ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md before any provider eligibility change.
 - Review the internal highlighted-text sync manifest before any audio release consideration.
+- If owner/legal approve ElevenLabs internal evaluation, manually generate only the Dracula 2-3 minute sample in the ElevenLabs UI and import it with npm run elevenlabs:sample-import.
 - Keep public audio blocked.
 - Run the publication, audio, SEO, social, payment-smoke, regression, and frontend build gates.

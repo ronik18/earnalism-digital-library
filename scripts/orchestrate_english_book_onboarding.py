@@ -27,6 +27,11 @@ from scripts.audiobook_generation_sync_pipeline import (
     PUBLIC_AUDIO_RELEASE_BLOCKED as SYNC_PUBLIC_AUDIO_RELEASE_BLOCKED,
     run_pipeline as run_audiobook_sync_pipeline,
 )
+from scripts.elevenlabs_internal_sample_import import (
+    HOLD_SYNC_QA_REQUIRED as ELEVENLABS_HOLD_SYNC_QA_REQUIRED,
+    INTERNAL_SAMPLE_ONLY,
+    run_import as run_elevenlabs_sample_import,
+)
 from scripts.tts_model_license_review import (
     decision_payload as tts_decision_payload,
     review_candidates as review_tts_candidates,
@@ -51,6 +56,9 @@ PUBLICATION_DRAFT_REVIEW = "READY_FOR_OWNER_PUBLICATION_REVIEW_DRAFT_ONLY"
 TTS_MODEL_LICENSE_STAGE = "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW"
 TTS_VOICE_RIGHTS_STAGE = "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW"
 TTS_PROVIDER_INTERNAL_EVAL_STAGE = "LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW"
+ELEVENLABS_INTERNAL_SAMPLE_STAGE = "ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT"
+ELEVENLABS_EVIDENCE_PATH = ROOT / "internal" / "legal" / "elevenlabs" / "creator-membership-internal-eval-evidence.md"
+ELEVENLABS_DRACULA_SAMPLE_DIR = ROOT / "internal" / "audiobook_lab" / "dracula" / "en" / "chapter-1-elevenlabs-sample"
 UNSUPPORTED_ACCESSIBILITY_CLAIMS = (
     "WCAG compliant",
     "blind-user tested",
@@ -58,6 +66,12 @@ UNSUPPORTED_ACCESSIBILITY_CLAIMS = (
     "fully accessible audiobook platform",
 )
 AUDIO_FILE_EXTENSIONS = {".aac", ".m4a", ".mp3", ".ogg", ".wav"}
+ELEVENLABS_SAMPLE_PREP_FILES = (
+    "sample_text.txt",
+    "elevenlabs_generation_brief.md",
+    "pronunciation_notes.md",
+    "cost_control_plan.md",
+)
 
 
 @dataclass(frozen=True)
@@ -619,6 +633,110 @@ def licensed_provider_tts_internal_eval_review(config: dict[str, Any]) -> StageR
     )
 
 
+def imported_elevenlabs_audio_files() -> list[Path]:
+    imported_dir = ELEVENLABS_DRACULA_SAMPLE_DIR / "imported_audio"
+    if not imported_dir.exists():
+        return []
+    return sorted(
+        path for path in imported_dir.rglob("*") if path.is_file() and path.suffix.lower() in AUDIO_FILE_EXTENSIONS
+    )
+
+
+def elevenlabs_internal_sample_prep_and_import(config: dict[str, Any]) -> StageResult:
+    provider_config = config.get("audiobook_provider_eval") if isinstance(config.get("audiobook_provider_eval"), dict) else {}
+    selected_provider_id = selected_provider_candidate(config)
+    if selected_provider_id != "elevenlabs":
+        return StageResult(
+            ELEVENLABS_INTERNAL_SAMPLE_STAGE,
+            "SKIPPED",
+            warnings=["selected provider is not ElevenLabs; Dracula ElevenLabs sample prep was skipped."],
+            details={"public_audio_allowed": False, "public_audio_release_status": PUBLIC_AUDIO_RELEASE_BLOCKED},
+        )
+
+    decisions = review_provider_candidates()
+    selected = selected_provider_decision("elevenlabs", decisions)
+    missing_prep_files = [
+        filename for filename in ELEVENLABS_SAMPLE_PREP_FILES if not (ELEVENLABS_DRACULA_SAMPLE_DIR / filename).exists()
+    ]
+    blockers: list[str] = []
+    if selected.internal_eval_status != "ELIGIBLE_INTERNAL_EVAL":
+        blockers.append(
+            f"ElevenLabs remains {selected.internal_eval_status}; complete owner/legal evidence before manual sample import approval."
+        )
+    blockers.extend(selected.issues)
+    if missing_prep_files:
+        blockers.append("sample prep files are missing: " + ", ".join(missing_prep_files))
+    if truthy(provider_config.get("public_release_target")):
+        blockers.append("public ElevenLabs sample release target is not allowed.")
+
+    audio_files = imported_elevenlabs_audio_files()
+    import_result: dict[str, Any] = {}
+    import_status = "NOT_IMPORTED_YET"
+    sync_status = ELEVENLABS_HOLD_SYNC_QA_REQUIRED
+    if audio_files:
+        try:
+            import_result = run_elevenlabs_sample_import(
+                book_slug="dracula",
+                chapter="1",
+                sample_dir=ELEVENLABS_DRACULA_SAMPLE_DIR,
+            )
+            import_status = str(import_result.get("status") or INTERNAL_SAMPLE_ONLY)
+            sync_status = str(import_result.get("sync_status") or ELEVENLABS_HOLD_SYNC_QA_REQUIRED)
+        except Exception as exc:  # noqa: BLE001 - stage records import validation failure as a blocker.
+            blockers.append(f"manual ElevenLabs audio import is invalid: {exc}")
+            import_status = "IMPORT_VALIDATION_FAILED"
+
+    status = "SAMPLE_PREP_ONLY"
+    if audio_files and not blockers:
+        status = INTERNAL_SAMPLE_ONLY
+    elif blockers:
+        status = "HOLD_PROVIDER_REVIEW"
+
+    return StageResult(
+        ELEVENLABS_INTERNAL_SAMPLE_STAGE,
+        status,
+        dedupe_strings(blockers),
+        selected.warnings,
+        {
+            "provider": "elevenlabs",
+            "provider_decision": selected.decision_status,
+            "provider_internal_eval_status": selected.internal_eval_status,
+            "provider_production_status": selected.public_production_status,
+            "evidence_path": str(ELEVENLABS_EVIDENCE_PATH.relative_to(ROOT)),
+            "evidence_file_exists": ELEVENLABS_EVIDENCE_PATH.exists(),
+            "selected_voice_name": "Rachel",
+            "selected_voice_id": "21m00Tcm4TlvDq8ikWAM",
+            "selected_voice_type": "platform_voice",
+            "sample_dir": str(ELEVENLABS_DRACULA_SAMPLE_DIR.relative_to(ROOT)),
+            "sample_prep_files": [
+                str((ELEVENLABS_DRACULA_SAMPLE_DIR / filename).relative_to(ROOT))
+                for filename in ELEVENLABS_SAMPLE_PREP_FILES
+                if (ELEVENLABS_DRACULA_SAMPLE_DIR / filename).exists()
+            ],
+            "missing_sample_prep_files": missing_prep_files,
+            "imported_audio_exists": bool(audio_files),
+            "imported_audio_count": len(audio_files),
+            "import_status": import_status,
+            "imported_audio_manifest_path": import_result.get("imported_audio_manifest_path"),
+            "audio_hash": import_result.get("audio_hash"),
+            "sync_status": sync_status,
+            "sync_manifest_path": import_result.get("sync_manifest_path"),
+            "qa_status": "HOLD_OWNER_LISTENING_QA_REQUIRED",
+            "sample_duration_target": "2-3 minutes",
+            "first_pass_duration_target": "30-45 seconds",
+            "provider_api_called": False,
+            "audio_generated_by_repo": False,
+            "full_chapter_generation_allowed": False,
+            "full_book_generation_allowed": False,
+            "public_audio_allowed": False,
+            "public_audio_release_status": PUBLIC_AUDIO_RELEASE_BLOCKED,
+            "production_status": "PRODUCTION_BLOCKED",
+            "listening_cta_allowed": False,
+            "audio_metadata_allowed": False,
+        },
+    )
+
+
 def dedupe_strings(values: list[str]) -> list[str]:
     seen: set[str] = set()
     result: list[str] = []
@@ -795,13 +913,19 @@ def audiobook_gate(stages: list[StageResult]) -> dict[str, Any]:
             "audiobook" in stage.name.lower()
             or "narration" in stage.name.lower()
             or stage.name in {TTS_MODEL_LICENSE_STAGE, TTS_VOICE_RIGHTS_STAGE, TTS_PROVIDER_INTERNAL_EVAL_STAGE}
+            or stage.name == ELEVENLABS_INTERNAL_SAMPLE_STAGE
         )
         for blocker in stage.blockers
     ]
     provider = selected_provider_status(stages)
+    elevenlabs_sample = elevenlabs_sample_status(stages)
     return {
         "status": PUBLIC_AUDIO_RELEASE_BLOCKED,
         "sync_status": sync_status(stages),
+        "elevenlabs_sample_status": elevenlabs_sample.get("status"),
+        "elevenlabs_sample_import_status": elevenlabs_sample.get("import_status"),
+        "elevenlabs_sample_sync_status": elevenlabs_sample.get("sync_status"),
+        "elevenlabs_sample_public_audio_allowed": False,
         "model_generation": model_generation_status(stages),
         "selected_model_candidate": selected_model_status(stages).get("selected_model_candidate"),
         "selected_model_decision": selected_model_status(stages).get("selected_model_decision"),
@@ -824,10 +948,26 @@ def audiobook_gate(stages: list[StageResult]) -> dict[str, Any]:
 
 
 def sync_status(stages: list[StageResult]) -> str:
+    sample = elevenlabs_sample_status(stages)
+    if sample.get("sync_status"):
+        return str(sample.get("sync_status"))
     for stage in stages:
         if stage.name == "audiobook_sync_dry_run_stage":
             return stage.status
     return "HOLD_SYNC_QA_REQUIRED"
+
+
+def elevenlabs_sample_status(stages: list[StageResult]) -> dict[str, Any]:
+    for stage in stages:
+        if stage.name == ELEVENLABS_INTERNAL_SAMPLE_STAGE:
+            details = dict(stage.details)
+            details["status"] = stage.status
+            return details
+    return {
+        "status": "NOT_CONFIGURED",
+        "import_status": "NOT_IMPORTED_YET",
+        "sync_status": "HOLD_SYNC_QA_REQUIRED",
+    }
 
 
 def selected_model_status(stages: list[StageResult]) -> dict[str, Any]:
@@ -1014,6 +1154,9 @@ def write_reports(
         report_header(config, result, "English Audiobook Release Gate Report")
         + f"- Status: `{result.audiobook_gate['status']}`\n"
         + f"- Sync status: `{result.audiobook_gate['sync_status']}`\n"
+        + f"- ElevenLabs sample status: `{result.audiobook_gate['elevenlabs_sample_status']}`\n"
+        + f"- ElevenLabs import status: `{result.audiobook_gate['elevenlabs_sample_import_status']}`\n"
+        + f"- ElevenLabs sample sync status: `{result.audiobook_gate['elevenlabs_sample_sync_status']}`\n"
         + f"- Selected model: `{result.audiobook_gate['selected_model_candidate']}`\n"
         + f"- Selected model decision: `{result.audiobook_gate['selected_model_decision']}`\n"
         + f"- Selected model internal-eval status: `{result.audiobook_gate['selected_model_internal_eval_status']}`\n"
@@ -1032,6 +1175,8 @@ def write_reports(
     qa_packet = (
         report_header(config, result, "English Audiobook QA Packet")
         + f"- Highlighted-text sync status: `{result.audiobook_gate['sync_status']}`\n"
+        + f"- ElevenLabs Dracula sample status: `{result.audiobook_gate['elevenlabs_sample_status']}`\n"
+        + f"- ElevenLabs Dracula import status: `{result.audiobook_gate['elevenlabs_sample_import_status']}`\n"
         + f"- Selected model candidate: `{result.audiobook_gate['selected_model_candidate']}`\n"
         + f"- Model license decision: `{result.audiobook_gate['selected_model_decision']}`\n"
         + f"- Model internal-eval status: `{result.audiobook_gate['selected_model_internal_eval_status']}`\n"
@@ -1043,6 +1188,59 @@ def write_reports(
         + "- Model/voice license review: HOLD unless explicit evidence is attached.\n"
         + "- Provider internal-eval review: HOLD unless commercial output, selected voice, owner, and legal evidence are attached.\n"
         + "- No public audio file, URL, player, listening CTA, or public audio JSON-LD metadata is produced.\n"
+    )
+    elevenlabs_sample_stage = elevenlabs_sample_status(result.stages)
+    elevenlabs_report = (
+        "# ElevenLabs Dracula Internal Sample Report\n\n"
+        "This report is for internal sample preparation and manual import only. It does not call ElevenLabs, "
+        "generate audio, publish audio, approve production, or expose public audio metadata.\n\n"
+        f"- Provider: `ElevenLabs`\n"
+        f"- Voice: `Rachel`\n"
+        f"- Voice ID: `21m00Tcm4TlvDq8ikWAM`\n"
+        f"- Evidence path: `{elevenlabs_sample_stage.get('evidence_path')}`\n"
+        f"- Provider internal-eval status: `{elevenlabs_sample_stage.get('provider_internal_eval_status')}`\n"
+        f"- Sample status: `{elevenlabs_sample_stage.get('status')}`\n"
+        f"- Import status: `{elevenlabs_sample_stage.get('import_status')}`\n"
+        f"- Sync status: `{elevenlabs_sample_stage.get('sync_status')}`\n"
+        f"- Public audio release: `{PUBLIC_AUDIO_RELEASE_BLOCKED}`\n"
+        f"- Production status: `PRODUCTION_BLOCKED`\n"
+        f"- Sample directory: `{elevenlabs_sample_stage.get('sample_dir')}`\n\n"
+        "## Manual Generation Instructions\n\n"
+        "Use `sample_text.txt`, `elevenlabs_generation_brief.md`, `pronunciation_notes.md`, and "
+        "`cost_control_plan.md` in the sample directory. Generate only a 30-45 second test if possible, "
+        "then at most one 2-3 minute internal sample. Place the owner-downloaded MP3 or WAV only under "
+        "`internal/audiobook_lab/dracula/en/chapter-1-elevenlabs-sample/imported_audio/`, then run "
+        "`npm run elevenlabs:sample-import`.\n"
+    )
+    elevenlabs_scorecard = (
+        "# ElevenLabs Dracula Sample QA Scorecard\n\n"
+        "Decision: `HOLD`\n\n"
+        "| QA Area | Status | Notes |\n"
+        "| --- | --- | --- |\n"
+        "| Voice clarity | HOLD | Requires owner listening review after manual import. |\n"
+        "| Literary tone | HOLD | Must stay calm, restrained, and premium. |\n"
+        "| Gothic restraint | HOLD | No melodramatic horror-trailer delivery. |\n"
+        "| Pronunciation | HOLD | Review names and places from pronunciation notes. |\n"
+        "| Pacing | HOLD | Confirm punctuation-aware pacing. |\n"
+        "| Pauses | HOLD | Confirm date/location and paragraph pauses. |\n"
+        "| Punctuation handling | HOLD | Manual QA required. |\n"
+        "| Emotional expression | HOLD | Restrained literary expression only. |\n"
+        "| Fatigue risk | HOLD | Listen for harshness or strain. |\n"
+        "| Noise/artifacts | HOLD | Check generated file locally after import. |\n"
+        "| Text fidelity | HOLD | Compare against `sample_text.txt`. |\n"
+        "| Sentence sync readiness | HOLD | Timing placeholders require QA. |\n"
+        "| Accessibility listening readiness | HOLD | Manual assistive listening review required. |\n"
+        "| Overall score | HOLD | No score until owner QA exists. |\n"
+        "| Decision | HOLD | `READY_FOR_FULL_CHAPTER_INTERNAL_ONLY` is blocked. |\n"
+    )
+    elevenlabs_sync_report = (
+        "# ElevenLabs Dracula Highlight Sync QA Report\n\n"
+        f"- Sync status: `{elevenlabs_sample_stage.get('sync_status')}`\n"
+        f"- Imported audio exists: `{str(elevenlabs_sample_stage.get('imported_audio_exists')).lower()}`\n"
+        f"- Audio hash: `{elevenlabs_sample_stage.get('audio_hash') or 'not imported'}`\n"
+        f"- Sync manifest path: `{elevenlabs_sample_stage.get('sync_manifest_path') or 'not imported'}`\n"
+        "- Sentence-level timing remains placeholder-only until a human sync QA pass is recorded.\n"
+        "- Public audio remains blocked.\n"
     )
     seo = (
         report_header(config, result, "English Book SEO Preview Report")
@@ -1124,10 +1322,12 @@ def write_reports(
             "- Complete KOKORO_AF_HEART_OWNER_LEGAL_REVIEW_FORM.md and KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md before any Kokoro af_heart eligibility change.\n",
             "- Review TTS_PROVIDER_INTERNAL_EVAL_REVIEW.md and TTS_PROVIDER_COMMERCIAL_RIGHTS_SCORECARD.md.\n",
             "- Complete ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md and ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md before any ElevenLabs eligibility change.\n",
+            "- Complete internal/legal/elevenlabs/creator-membership-internal-eval-evidence.md before any ElevenLabs internal sample import is approved.\n",
             "- Complete TTS model license, voice, commercial-use, speaker-rights, and owner approval evidence before real internal generation.\n",
             tts_next_action,
             provider_next_action,
             "- Review the internal highlighted-text sync manifest before any audio release consideration.\n",
+            "- If owner/legal approve ElevenLabs internal evaluation, manually generate only the Dracula 2-3 minute sample in the ElevenLabs UI and import it with npm run elevenlabs:sample-import.\n",
             "- Keep public audio blocked.\n",
             "- Run the publication, audio, SEO, social, payment-smoke, regression, and frontend build gates.\n",
         ]
@@ -1141,6 +1341,9 @@ def write_reports(
         "ENGLISH_AUDIOBOOK_QA_PACKET.md": qa_packet,
         "ENGLISH_BOOK_SEO_PREVIEW_REPORT.md": seo,
         "ENGLISH_BOOK_VISUAL_SCORECARD.md": visual,
+        "ELEVENLABS_DRACULA_INTERNAL_SAMPLE_REPORT.md": elevenlabs_report,
+        "ELEVENLABS_DRACULA_SAMPLE_QA_SCORECARD.md": elevenlabs_scorecard,
+        "ELEVENLABS_DRACULA_HIGHLIGHT_SYNC_QA_REPORT.md": elevenlabs_sync_report,
     }
     paths: dict[str, Path] = {}
     paths.update(write_tts_license_artifacts(scoped_output_dir))
@@ -1203,6 +1406,7 @@ def run_orchestration(
             tts_model_license_and_suitability_review(config),
             tts_voice_rights_internal_eval_review(config),
             licensed_provider_tts_internal_eval_review(config),
+            elevenlabs_internal_sample_prep_and_import(config),
             audiobook_sync_dry_run_stage(config),
             narration_qa_gate(config),
             audiobook_legal_accessibility_gate(config),
@@ -1231,6 +1435,9 @@ def run_orchestration(
         "tts_provider_commercial_rights_scorecard": "TTS_PROVIDER_COMMERCIAL_RIGHTS_SCORECARD.md",
         "elevenlabs_provider_owner_legal_review_form": "ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md",
         "elevenlabs_provider_internal_eval_checklist": "ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md",
+        "elevenlabs_dracula_internal_sample_report": "ELEVENLABS_DRACULA_INTERNAL_SAMPLE_REPORT.md",
+        "elevenlabs_dracula_sample_qa_scorecard": "ELEVENLABS_DRACULA_SAMPLE_QA_SCORECARD.md",
+        "elevenlabs_dracula_highlight_sync_qa_report": "ELEVENLABS_DRACULA_HIGHLIGHT_SYNC_QA_REPORT.md",
         "seo": "ENGLISH_BOOK_SEO_PREVIEW_REPORT.md",
         "visual": "ENGLISH_BOOK_VISUAL_SCORECARD.md",
         "codex_prompt": "output/codex_prompts/next_english_book_onboarding_prompt.md",

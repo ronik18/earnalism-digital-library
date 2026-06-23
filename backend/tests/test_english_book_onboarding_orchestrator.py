@@ -8,6 +8,7 @@ import pytest
 from scripts.orchestrate_english_book_onboarding import (
     PUBLIC_AUDIO_RELEASE_BLOCKED,
     PUBLICATION_HOLD,
+    ELEVENLABS_INTERNAL_SAMPLE_STAGE,
     TTS_PROVIDER_INTERNAL_EVAL_STAGE,
     ensure_no_public_audio_files,
     run_orchestration,
@@ -193,9 +194,11 @@ def test_orchestrator_runs_model_license_stage_before_sync_stage(tmp_path: Path)
     assert "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW" in names
     assert "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW" in names
     assert TTS_PROVIDER_INTERNAL_EVAL_STAGE in names
+    assert ELEVENLABS_INTERNAL_SAMPLE_STAGE in names
     assert names.index("TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW") < names.index("audiobook_sync_dry_run_stage")
     assert names.index("TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW") < names.index("audiobook_sync_dry_run_stage")
     assert names.index(TTS_PROVIDER_INTERNAL_EVAL_STAGE) < names.index("audiobook_sync_dry_run_stage")
+    assert names.index(ELEVENLABS_INTERNAL_SAMPLE_STAGE) < names.index("audiobook_sync_dry_run_stage")
     assert names.index("TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW") < names.index(TTS_PROVIDER_INTERNAL_EVAL_STAGE)
 
 
@@ -220,6 +223,48 @@ def test_provider_internal_eval_stage_records_elevenlabs_hold_before_sync(tmp_pa
     assert names.index(TTS_PROVIDER_INTERNAL_EVAL_STAGE) < names.index("audiobook_sync_dry_run_stage")
 
 
+def test_elevenlabs_internal_sample_stage_prepares_files_but_keeps_hold(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    result = run_orchestration(config_path)
+    sample_stage = stage(result, ELEVENLABS_INTERNAL_SAMPLE_STAGE)
+
+    assert sample_stage.status == "HOLD_PROVIDER_REVIEW"
+    assert sample_stage.details["provider"] == "elevenlabs"
+    assert sample_stage.details["provider_internal_eval_status"] == "HOLD_PROVIDER_REVIEW"
+    assert sample_stage.details["provider_production_status"] == "PRODUCTION_BLOCKED"
+    assert sample_stage.details["selected_voice_name"] == "Rachel"
+    assert sample_stage.details["selected_voice_id"] == "21m00Tcm4TlvDq8ikWAM"
+    assert sample_stage.details["evidence_file_exists"] is True
+    assert sample_stage.details["imported_audio_exists"] is False
+    assert sample_stage.details["import_status"] == "NOT_IMPORTED_YET"
+    assert sample_stage.details["sync_status"] == "HOLD_SYNC_QA_REQUIRED"
+    assert sample_stage.details["public_audio_allowed"] is False
+    assert sample_stage.details["provider_api_called"] is False
+    assert sample_stage.details["audio_generated_by_repo"] is False
+    assert sample_stage.details["full_chapter_generation_allowed"] is False
+    assert sample_stage.details["full_book_generation_allowed"] is False
+    assert len(sample_stage.details["sample_prep_files"]) == 4
+    assert any("sample_text.txt" in path for path in sample_stage.details["sample_prep_files"])
+
+
+def test_elevenlabs_sample_reports_are_written_to_slug_scoped_output(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    result = run_orchestration(config_path)
+    paths = write_reports(result, tmp_path / "onboarding", write_root_reports=False)
+    scoped_dir = tmp_path / "onboarding" / "frankenstein"
+
+    assert (scoped_dir / "ELEVENLABS_DRACULA_INTERNAL_SAMPLE_REPORT.md").exists()
+    assert (scoped_dir / "ELEVENLABS_DRACULA_SAMPLE_QA_SCORECARD.md").exists()
+    assert (scoped_dir / "ELEVENLABS_DRACULA_HIGHLIGHT_SYNC_QA_REPORT.md").exists()
+    assert "HOLD" in (scoped_dir / "ELEVENLABS_DRACULA_SAMPLE_QA_SCORECARD.md").read_text(encoding="utf-8")
+    assert "public audio remains blocked" in (
+        scoped_dir / "ELEVENLABS_DRACULA_HIGHLIGHT_SYNC_QA_REPORT.md"
+    ).read_text(encoding="utf-8").lower()
+    assert paths["output/onboarding/frankenstein/ELEVENLABS_DRACULA_INTERNAL_SAMPLE_REPORT.md"] == (
+        scoped_dir / "ELEVENLABS_DRACULA_INTERNAL_SAMPLE_REPORT.md"
+    )
+
+
 def test_selected_model_decision_appears_in_orchestrator_json(tmp_path: Path):
     config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
     result = run_orchestration(config_path)
@@ -236,6 +281,9 @@ def test_selected_model_decision_appears_in_orchestrator_json(tmp_path: Path):
     assert '"selected_provider_decision": "HOLD_PROVIDER_REVIEW"' in report
     assert '"provider_internal_eval_status": "HOLD_PROVIDER_REVIEW"' in report
     assert '"selected_provider_production_status": "PRODUCTION_BLOCKED"' in report
+    assert '"elevenlabs_sample_status": "HOLD_PROVIDER_REVIEW"' in report
+    assert '"elevenlabs_sample_import_status": "NOT_IMPORTED_YET"' in report
+    assert '"elevenlabs_sample_public_audio_allowed": false' in report
 
 
 def test_voice_rights_internal_eval_stage_records_selected_candidate(tmp_path: Path):
@@ -383,6 +431,9 @@ def test_slug_scoped_output_directory_contains_all_reports(tmp_path: Path):
         "TTS_PROVIDER_COMMERCIAL_RIGHTS_SCORECARD.md",
         "ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md",
         "ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md",
+        "ELEVENLABS_DRACULA_INTERNAL_SAMPLE_REPORT.md",
+        "ELEVENLABS_DRACULA_SAMPLE_QA_SCORECARD.md",
+        "ELEVENLABS_DRACULA_HIGHLIGHT_SYNC_QA_REPORT.md",
         "tts_provider_internal_eval_review.json",
         "english_book_onboarding_report.json",
         "next_codex_prompt.md",

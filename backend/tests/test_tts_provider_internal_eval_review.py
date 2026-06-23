@@ -2,7 +2,19 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from scripts import tts_provider_internal_eval_review as provider_review
+
+
+@pytest.fixture(autouse=True)
+def cleanup_provider_test_evidence():
+    evidence_dir = Path.cwd() / "internal" / "legal" / "elevenlabs"
+    for path in evidence_dir.glob("pytest-*-evidence.md"):
+        path.unlink()
+    yield
+    for path in evidence_dir.glob("pytest-*-evidence.md"):
+        path.unlink()
 
 
 def complete_provider(**overrides):
@@ -42,6 +54,14 @@ def complete_provider(**overrides):
     }
     provider.update(overrides)
     return provider
+
+
+def write_elevenlabs_evidence(name: str, body: str) -> Path:
+    evidence_dir = Path.cwd() / "internal" / "legal" / "elevenlabs"
+    evidence_dir.mkdir(parents=True, exist_ok=True)
+    path = evidence_dir / name
+    path.write_text(body, encoding="utf-8")
+    return path
 
 
 def test_provider_without_commercial_standalone_evidence_is_hold():
@@ -146,6 +166,69 @@ def test_repo_provider_config_has_no_eligible_or_production_approved_candidates(
     assert elevenlabs.provider["selected_voice_id"] == "21m00Tcm4TlvDq8ikWAM"
     assert elevenlabs.provider["selected_voice_type"] == "platform_voice"
     assert any("owner approval" in issue for issue in elevenlabs.issues)
+
+
+def test_incomplete_owner_evidence_keeps_elevenlabs_hold():
+    evidence_path = write_elevenlabs_evidence(
+        "pytest-incomplete-evidence.md",
+        "\n".join(
+            [
+                "# Test Evidence",
+                "- provider: ElevenLabs",
+                "- plan: Creator paid membership",
+                "- selected_voice_name: Rachel",
+                "- selected_voice_id: 21m00Tcm4TlvDq8ikWAM",
+                "- selected_voice_type: platform_voice",
+                "- beta_services_used: false",
+                "- voice_cloning_used: false",
+                "- elevenreader_used: false",
+                "- owner_approval_status: OWNER_REVIEW_REQUIRED",
+                "- legal_internal_review_status: LEGAL_REVIEW_REQUIRED",
+                "- decision: HOLD",
+            ]
+        ),
+    )
+    decisions = provider_review.review_provider_candidates(elevenlabs_evidence_path=evidence_path)
+    elevenlabs = provider_review.selected_provider_decision("elevenlabs", decisions)
+
+    assert elevenlabs.internal_eval_status == "HOLD_PROVIDER_REVIEW"
+    assert elevenlabs.public_production_status == "PRODUCTION_BLOCKED"
+    assert "evidence file exists" in elevenlabs.provider["blockers"]
+
+
+def test_complete_owner_evidence_allows_internal_eval_only_not_production():
+    evidence_path = write_elevenlabs_evidence(
+        "pytest-complete-evidence.md",
+        "\n".join(
+            [
+                "# Test Evidence",
+                "- provider: ElevenLabs",
+                "- plan: Creator paid membership",
+                "- owner_account_holder: Test Owner",
+                "- evidence_date: 2026-06-23",
+                "- selected_voice_name: Rachel",
+                "- selected_voice_id: 21m00Tcm4TlvDq8ikWAM",
+                "- selected_voice_type: platform_voice",
+                "- beta_services_used: false",
+                "- voice_cloning_used: false",
+                "- elevenreader_used: false",
+                "- commercial_internal_eval_permission_evidence: owner/legal reviewed for internal-only sample evaluation",
+                "- attribution_or_restrictions_notes: reviewed and recorded for internal-only use",
+                "- data_privacy_notes: owner reviewed manual UI data handling for this sample",
+                "- owner_approval_status: APPROVED",
+                "- legal_internal_review_status: APPROVED",
+                "- decision: ELIGIBLE_INTERNAL_EVAL_ONLY",
+            ]
+        ),
+    )
+    decisions = provider_review.review_provider_candidates(elevenlabs_evidence_path=evidence_path)
+    elevenlabs = provider_review.selected_provider_decision("elevenlabs", decisions)
+
+    assert elevenlabs.internal_eval_status == "ELIGIBLE_INTERNAL_EVAL"
+    assert elevenlabs.internal_generation_status == "ELIGIBLE_INTERNAL_EVAL_ONLY"
+    assert elevenlabs.public_production_status == "PRODUCTION_BLOCKED"
+    assert elevenlabs.provider["selected_voice_id"] == "21m00Tcm4TlvDq8ikWAM"
+    assert elevenlabs.provider["selected_voice_display_name"] == "Rachel"
 
 
 def test_write_reports_emits_scoped_provider_packet(tmp_path: Path, monkeypatch):

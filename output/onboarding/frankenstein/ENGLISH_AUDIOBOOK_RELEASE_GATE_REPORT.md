@@ -2,11 +2,14 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-23T06:19:33+00:00
+- Generated: 2026-06-23T14:22:40+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - Status: `PUBLIC_AUDIO_RELEASE_BLOCKED`
 - Sync status: `HOLD_SYNC_QA_REQUIRED`
+- ElevenLabs sample status: `HOLD_PROVIDER_REVIEW`
+- ElevenLabs import status: `NOT_IMPORTED_YET`
+- ElevenLabs sample sync status: `HOLD_SYNC_QA_REQUIRED`
 - Selected model: `kokoro`
 - Selected model decision: `HOLD_VOICE_RIGHTS`
 - Selected model internal-eval status: `HOLD_VOICE_RIGHTS`
@@ -52,6 +55,19 @@
 - beta feature exclusion evidence is missing or requires review.
 - selected voice attribution requirements require review.
 - selected voice restrictions require review.
+- paid plan evidence status is missing or requires review.
+- paid plan evidence is required before using this provider for internal evaluation.
+- commercial internal-eval permission is missing or requires review.
+- standalone audio distribution evidence is missing or requires review.
+- provider terms review is missing or requires review.
+- data retention review is missing or requires review.
+- ElevenLabs remains HOLD_PROVIDER_REVIEW; complete owner/legal evidence before manual sample import approval.
+- attribution requirements require owner/legal review.
+- beta feature exclusion evidence is missing or requires review.
+- selected voice attribution requirements require review.
+- selected voice restrictions require review.
+- owner approval is required before provider internal evaluation.
+- legal/internal review is required before provider internal evaluation.
 - paid plan evidence status is missing or requires review.
 - paid plan evidence is required before using this provider for internal evaluation.
 - commercial internal-eval permission is missing or requires review.

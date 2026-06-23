@@ -18,6 +18,9 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONFIG_PATH = ROOT / "audiobook" / "providers" / "tts_provider_candidates.yml"
 DEFAULT_SCOPED_OUTPUT_DIR = ROOT / "output" / "onboarding" / "frankenstein"
+DEFAULT_ELEVENLABS_EVIDENCE_PATH = (
+    ROOT / "internal" / "legal" / "elevenlabs" / "creator-membership-internal-eval-evidence.md"
+)
 PROVIDER_REVIEW_REPORT_PATH = ROOT / "TTS_PROVIDER_INTERNAL_EVAL_REVIEW.md"
 PROVIDER_SCORECARD_PATH = ROOT / "TTS_PROVIDER_COMMERCIAL_RIGHTS_SCORECARD.md"
 ELEVENLABS_REVIEW_FORM_PATH = ROOT / "ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md"
@@ -156,6 +159,22 @@ def has_url(value: Any) -> bool:
     return text.startswith("https://") or text.startswith("http://")
 
 
+def has_url_or_local_evidence(value: Any) -> bool:
+    text = normalized(value)
+    if has_url(text):
+        return True
+    if not text:
+        return False
+    path = Path(text)
+    if not path.is_absolute():
+        path = ROOT / path
+    try:
+        path.relative_to(ROOT)
+    except ValueError:
+        return False
+    return path.exists() and path.is_file()
+
+
 def is_approved(value: Any) -> bool:
     return upper(value) in {"APPROVED", "RECORDED", "ALLOWED", "NOT_REQUIRED"}
 
@@ -187,6 +206,123 @@ def dedupe(values: list[str]) -> list[str]:
         seen.add(value)
         result.append(value)
     return result
+
+
+def load_key_value_markdown(path: Path) -> dict[str, str]:
+    if not path.exists():
+        return {}
+    evidence: dict[str, str] = {}
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        text = raw_line.strip()
+        if not text or text.startswith("#"):
+            continue
+        if text.startswith("- "):
+            text = text[2:].strip()
+        if ":" not in text:
+            continue
+        key, value = text.split(":", 1)
+        normalized_key = re.sub(r"[^a-z0-9_]+", "_", key.strip().lower()).strip("_")
+        evidence[normalized_key] = value.strip()
+    return evidence
+
+
+def evidence_bool(value: Any) -> bool:
+    return normalized(value).lower() in {"true", "yes", "1"}
+
+
+def evidence_complete_for_internal_eval(evidence: dict[str, str]) -> bool:
+    required_present = (
+        "provider",
+        "plan",
+        "owner_account_holder",
+        "evidence_date",
+        "selected_voice_name",
+        "selected_voice_id",
+        "selected_voice_type",
+        "commercial_internal_eval_permission_evidence",
+        "attribution_or_restrictions_notes",
+        "data_privacy_notes",
+        "owner_approval_status",
+        "legal_internal_review_status",
+        "decision",
+    )
+    if any(is_unknown(evidence.get(field_name)) for field_name in required_present):
+        return False
+    if normalized(evidence.get("provider")).lower() != "elevenlabs":
+        return False
+    if normalized(evidence.get("selected_voice_id")) != "21m00Tcm4TlvDq8ikWAM":
+        return False
+    if normalized(evidence.get("selected_voice_type")).lower() != "platform_voice":
+        return False
+    if evidence_bool(evidence.get("beta_services_used")):
+        return False
+    if evidence_bool(evidence.get("voice_cloning_used")):
+        return False
+    if evidence_bool(evidence.get("elevenreader_used")):
+        return False
+    if upper(evidence.get("owner_approval_status")) != "APPROVED":
+        return False
+    if upper(evidence.get("legal_internal_review_status")) not in {"APPROVED", "LEGAL_APPROVED"}:
+        return False
+    if upper(evidence.get("decision")) != ELIGIBLE_INTERNAL_EVAL_ONLY:
+        return False
+    return True
+
+
+def apply_elevenlabs_owner_evidence(provider: dict[str, Any], evidence_path: Path) -> dict[str, Any]:
+    if normalized(provider.get("provider_id")) != "elevenlabs":
+        return provider
+    evidence = load_key_value_markdown(evidence_path)
+    if not evidence:
+        return provider
+
+    updated = dict(provider)
+    updated["owner_evidence_path"] = str(evidence_path.relative_to(ROOT)) if evidence_path.is_relative_to(ROOT) else str(evidence_path)
+    updated["owner_evidence_decision"] = normalized(evidence.get("decision")) or "HOLD"
+    updated["owner_evidence_present"] = True
+    updated["selected_voice_id"] = normalized(evidence.get("selected_voice_id")) or updated.get("selected_voice_id")
+    updated["selected_voice_display_name"] = normalized(evidence.get("selected_voice_name")) or updated.get(
+        "selected_voice_display_name"
+    )
+    updated["selected_voice_type"] = normalized(evidence.get("selected_voice_type")) or updated.get("selected_voice_type")
+
+    if upper(evidence.get("decision")) == BLOCKED:
+        updated["internal_eval_status"] = BLOCKED
+        updated["blockers"] = "Owner/legal evidence marks ElevenLabs blocked for internal evaluation."
+        return updated
+
+    if evidence_complete_for_internal_eval(evidence):
+        updated.update(
+            {
+                "plan_evidence_status": "APPROVED",
+                "paid_plan_evidence_url": updated["owner_evidence_path"],
+                "standalone_audio_distribution_evidence": "APPROVED",
+                "beta_features_excluded_evidence": "APPROVED",
+                "attribution_required": False,
+                "selected_voice_attribution_requirement": "APPROVED",
+                "selected_voice_restrictions": "APPROVED",
+                "commercial_internal_eval_permission": "APPROVED",
+                "provider_terms_review_status": "APPROVED",
+                "data_retention_review_status": "APPROVED",
+                "voice_rights_status": "APPROVED",
+                "selected_voice_license_evidence_url": updated.get("voice_license_evidence_url"),
+                "selected_voice_rights_summary": (
+                    "Owner/legal evidence confirms ElevenLabs Rachel platform voice may be used for "
+                    "internal-only evaluation. Public and production audio remain blocked."
+                ),
+                "internal_eval_status": ELIGIBLE_INTERNAL_EVAL,
+                "production_status": PRODUCTION_BLOCKED,
+                "owner_approval_status": "APPROVED",
+                "legal_review_status": "APPROVED",
+                "blockers": "No blocker for internal-only evaluation; production and public release remain blocked.",
+            }
+        )
+    else:
+        updated["internal_eval_status"] = HOLD_PROVIDER_REVIEW
+        updated["blockers"] = (
+            "ElevenLabs owner/legal evidence file exists, but internal-eval approval fields remain incomplete."
+        )
+    return updated
 
 
 def classify_provider(provider: dict[str, Any]) -> ProviderDecision:
@@ -259,7 +395,7 @@ def classify_provider(provider: dict[str, Any]) -> ProviderDecision:
 
     if bool(provider.get("paid_plan_required")) and not is_approved(provider.get("plan_evidence_status")):
         issues.append("paid plan evidence status is missing or requires review.")
-    if bool(provider.get("paid_plan_required")) and is_unknown(provider.get("paid_plan_evidence_url")):
+    if bool(provider.get("paid_plan_required")) and not has_url_or_local_evidence(provider.get("paid_plan_evidence_url")):
         issues.append("paid plan evidence is required before using this provider for internal evaluation.")
     if not is_approved(provider.get("commercial_internal_eval_permission")):
         issues.append("commercial internal-eval permission is missing or requires review.")
@@ -290,7 +426,7 @@ def classify_provider(provider: dict[str, Any]) -> ProviderDecision:
         and is_approved(provider.get("standalone_audio_distribution_evidence"))
         and is_approved(provider.get("provider_terms_review_status"))
         and is_approved(provider.get("data_retention_review_status"))
-        and (not bool(provider.get("paid_plan_required")) or has_url(provider.get("paid_plan_evidence_url")))
+        and (not bool(provider.get("paid_plan_required")) or has_url_or_local_evidence(provider.get("paid_plan_evidence_url")))
         and (not bool(provider.get("paid_plan_required")) or is_approved(provider.get("plan_evidence_status")))
         and owner_approved
         and legal_approved
@@ -323,8 +459,16 @@ def classify_provider(provider: dict[str, Any]) -> ProviderDecision:
     )
 
 
-def review_provider_candidates(config_path: Path = DEFAULT_CONFIG_PATH) -> list[ProviderDecision]:
-    return [classify_provider(provider) for provider in load_providers(config_path)]
+def review_provider_candidates(
+    config_path: Path = DEFAULT_CONFIG_PATH,
+    *,
+    elevenlabs_evidence_path: Path = DEFAULT_ELEVENLABS_EVIDENCE_PATH,
+) -> list[ProviderDecision]:
+    providers = [
+        apply_elevenlabs_owner_evidence(provider, elevenlabs_evidence_path)
+        for provider in load_providers(config_path)
+    ]
+    return [classify_provider(provider) for provider in providers]
 
 
 def markdown_link(label: str, value: Any) -> str:
@@ -651,9 +795,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG_PATH)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_SCOPED_OUTPUT_DIR)
+    parser.add_argument("--elevenlabs-evidence", type=Path, default=DEFAULT_ELEVENLABS_EVIDENCE_PATH)
     args = parser.parse_args()
 
-    decisions = review_provider_candidates(args.config)
+    decisions = review_provider_candidates(args.config, elevenlabs_evidence_path=args.elevenlabs_evidence)
     paths = write_reports(decisions, output_dir=args.output_dir)
     eligible = sum(1 for decision in decisions if decision.internal_eval_status == ELIGIBLE_INTERNAL_EVAL)
     hold = sum(1 for decision in decisions if decision.internal_eval_status == HOLD_PROVIDER_REVIEW)

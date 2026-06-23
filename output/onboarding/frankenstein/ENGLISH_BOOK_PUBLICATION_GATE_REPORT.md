@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-23T06:19:33+00:00
+- Generated: 2026-06-23T14:22:40+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - Gate status: `HOLD_SOURCE_RIGHTS_QA_REQUIRED`
@@ -52,6 +52,19 @@
 - LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW: standalone audio distribution evidence is missing or requires review.
 - LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW: provider terms review is missing or requires review.
 - LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW: data retention review is missing or requires review.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: ElevenLabs remains HOLD_PROVIDER_REVIEW; complete owner/legal evidence before manual sample import approval.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: attribution requirements require owner/legal review.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: beta feature exclusion evidence is missing or requires review.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: selected voice attribution requirements require review.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: selected voice restrictions require review.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: owner approval is required before provider internal evaluation.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: legal/internal review is required before provider internal evaluation.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: paid plan evidence status is missing or requires review.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: paid plan evidence is required before using this provider for internal evaluation.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: commercial internal-eval permission is missing or requires review.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: standalone audio distribution evidence is missing or requires review.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: provider terms review is missing or requires review.
+- ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT: data retention review is missing or requires review.
 - audiobook_sync_dry_run_stage: sync release evidence remains HOLD; public audio cannot be released.
 - narration_qa_gate: human narration QA is missing or not approved.
 - narration_qa_gate: accessibility listening QA is missing or not approved.
