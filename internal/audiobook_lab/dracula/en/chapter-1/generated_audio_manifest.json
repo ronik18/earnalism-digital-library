@@ -1,0 +1,105 @@
+{
+  "generated_by": "scripts/audiobook_chapter_pipeline.py",
+  "generated_at": "2026-06-23T19:26:11+00:00",
+  "book_slug": "dracula",
+  "chapter": 1,
+  "provider": "ElevenLabs",
+  "voice_name": "Rachel",
+  "voice_id": "21m00Tcm4TlvDq8ikWAM",
+  "mode": "generate-internal",
+  "execute": true,
+  "generation_status": "BLOCKED_UNTIL_EXPLICIT_EXECUTE_AND_PROVIDER_EVIDENCE",
+  "provider_api_called": false,
+  "audio_generated_by_repo": false,
+  "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "public_audio_allowed": false,
+  "production_status": "PRODUCTION_BLOCKED",
+  "chunks": [
+    {
+      "chunk_id": "c001",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "Chapter One. Jonathan Harker's Journal.\nKept in shorthand.\nMay the third.\nBistritz. Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour late.\nBuda-Pesth seems a wonderful place, from the glimpse which I got of it from the train and the little I could walk through the streets.\nI feared to go very far from the station, as we had arrived late and would start as near the correct time as possible.\nThe impression I had was that we were leaving the West and entering the East; the most western of splendid bridges over the Danube, which is here of noble width and depth, took us among the traditions of Turkish rule.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "12b118af69319bb1c2b140398b1f005368f6cdacbf14e9e182509733845881ee",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "db26faaea3f7fc574193eee690eb39d88a1e30f0ce5172e8cab2aba36aad6dbf",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c001.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c002",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "We left in pretty good time, and came after nightfall to Klausenburgh.\nHere I stopped for the night at the Hotel Royale.\nI had for dinner, or rather supper, a chicken done up some way with red pepper, which was very good but thirsty. Memorandum: get recipe for Mina. I asked the waiter, and he said it was called “paprika hendl,” and that, as it was a national dish, I should be able to get it anywhere along the Carpathians.\nI found my smattering of German very useful here; indeed, I don’t know how I should be able to get on without it.\nHaving had some time at my disposal when in London, I had visited the British Museum, and made search among the books and maps in the library regarding Transylvania; it had struck me that some foreknowledge of the country could hardly fail to have some importance in dealing with a nobleman of that country.\nI find that the district he named is in the extreme east of the country, just on the borders of three states, Transylvania, Moldavia and Bukovina, in the midst of the Carpathian mountains; one of the wildest and least known portions of Europe.\nI was not able to light on any map or work giving the exact locality of the Castle Dracula, as there are no maps of this country as yet to compare with our own Ordnance Survey maps; but I found that Bistritz, the post town named by Count Dracula, is a fairly well-known place.\nI shall enter here some of my notes, as they may refresh my memory when I talk over my travels with Mina.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "c061cc25883fbbf550b4e10edf879dbb2d379eb1af7b857d9a26c0c43f1e0430",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "7882c20dbdefabbe1267e7a00495809ce4a341ef8b1d93d4c6744878e693447d",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c002.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c003",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "In the population of Transylvania there are four distinct nationalities: Saxons in the South, and mixed with them the Wallachs, who are the descendants of the Dacians; Magyars in the West, and Szekelys in the East and North.\nI am going among the latter, who claim to be descended from Attila and the Huns.\nThis may be so, for when the Magyars conquered the country in the eleventh century they found the Huns settled in it.\nI read that every known superstition in the world is gathered into the horseshoe of the Carpathians, as if it were the centre of some sort of imaginative whirlpool; if so my stay may be very interesting. Memorandum: I must ask the Count all about them.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "f03883b30623e44874fe0b53b384036ec30ae96cd43e975d46051c85cdd55ba1",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "c208a37826e6cca5b03008224ed4c1bf0f1c6061753cb2a7d98522e9a0f7bcba",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c003.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    }
+  ],
+  "blockers": [
+    "ELEVENLABS_API_KEY is required for execute mode",
+    "provider evidence status must be ELIGIBLE_INTERNAL_EVAL_ONLY",
+    "owner approval file is required: owner_generation_approval.md"
+  ]
+}

@@ -27,6 +27,11 @@ from scripts.audiobook_generation_sync_pipeline import (
     PUBLIC_AUDIO_RELEASE_BLOCKED as SYNC_PUBLIC_AUDIO_RELEASE_BLOCKED,
     run_pipeline as run_audiobook_sync_pipeline,
 )
+from scripts.audiobook_chapter_pipeline import (
+    BLOCKED_REAL_GENERATION as CHAPTER_PIPELINE_BLOCKED_REAL_GENERATION,
+    DRY_RUN_READY as CHAPTER_PIPELINE_DRY_RUN_READY,
+    run_chapter_pipeline,
+)
 from scripts.elevenlabs_internal_sample_import import (
     HOLD_SYNC_QA_REQUIRED as ELEVENLABS_HOLD_SYNC_QA_REQUIRED,
     INTERNAL_SAMPLE_ONLY,
@@ -57,6 +62,7 @@ TTS_MODEL_LICENSE_STAGE = "TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW"
 TTS_VOICE_RIGHTS_STAGE = "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW"
 TTS_PROVIDER_INTERNAL_EVAL_STAGE = "LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW"
 ELEVENLABS_INTERNAL_SAMPLE_STAGE = "ELEVENLABS_INTERNAL_SAMPLE_PREP_AND_IMPORT"
+AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_STAGE = "AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_DRY_RUN"
 ELEVENLABS_EVIDENCE_PATH = ROOT / "internal" / "legal" / "elevenlabs" / "creator-membership-internal-eval-evidence.md"
 ELEVENLABS_DRACULA_SAMPLE_DIR = ROOT / "internal" / "audiobook_lab" / "dracula" / "en" / "chapter-1-elevenlabs-sample"
 UNSUPPORTED_ACCESSIBILITY_CLAIMS = (
@@ -674,17 +680,32 @@ def elevenlabs_internal_sample_prep_and_import(config: dict[str, Any]) -> StageR
     import_status = "NOT_IMPORTED_YET"
     sync_status = ELEVENLABS_HOLD_SYNC_QA_REQUIRED
     if audio_files:
-        try:
-            import_result = run_elevenlabs_sample_import(
-                book_slug="dracula",
-                chapter="1",
-                sample_dir=ELEVENLABS_DRACULA_SAMPLE_DIR,
-            )
-            import_status = str(import_result.get("status") or INTERNAL_SAMPLE_ONLY)
-            sync_status = str(import_result.get("sync_status") or ELEVENLABS_HOLD_SYNC_QA_REQUIRED)
-        except Exception as exc:  # noqa: BLE001 - stage records import validation failure as a blocker.
-            blockers.append(f"manual ElevenLabs audio import is invalid: {exc}")
-            import_status = "IMPORT_VALIDATION_FAILED"
+        imported_manifest_path = ELEVENLABS_DRACULA_SAMPLE_DIR / "imported_audio_manifest.json"
+        sync_manifest_path = ELEVENLABS_DRACULA_SAMPLE_DIR / "sync_manifest.json"
+        if imported_manifest_path.exists() and sync_manifest_path.exists():
+            imported_manifest = json.loads(imported_manifest_path.read_text(encoding="utf-8"))
+            sync_manifest = json.loads(sync_manifest_path.read_text(encoding="utf-8"))
+            import_status = str(imported_manifest.get("audio_status") or INTERNAL_SAMPLE_ONLY)
+            sync_status = str(sync_manifest.get("sync_status") or ELEVENLABS_HOLD_SYNC_QA_REQUIRED)
+            import_result = {
+                "status": import_status,
+                "sync_status": sync_status,
+                "audio_hash": imported_manifest.get("audio_hash"),
+                "imported_audio_manifest_path": str(imported_manifest_path.relative_to(ROOT)),
+                "sync_manifest_path": str(sync_manifest_path.relative_to(ROOT)),
+            }
+        else:
+            try:
+                import_result = run_elevenlabs_sample_import(
+                    book_slug="dracula",
+                    chapter="1",
+                    sample_dir=ELEVENLABS_DRACULA_SAMPLE_DIR,
+                )
+                import_status = str(import_result.get("status") or INTERNAL_SAMPLE_ONLY)
+                sync_status = str(import_result.get("sync_status") or ELEVENLABS_HOLD_SYNC_QA_REQUIRED)
+            except Exception as exc:  # noqa: BLE001 - stage records import validation failure as a blocker.
+                blockers.append(f"manual ElevenLabs audio import is invalid: {exc}")
+                import_status = "IMPORT_VALIDATION_FAILED"
 
     status = "SAMPLE_PREP_ONLY"
     if audio_files and not blockers:
@@ -733,6 +754,88 @@ def elevenlabs_internal_sample_prep_and_import(config: dict[str, Any]) -> StageR
             "production_status": "PRODUCTION_BLOCKED",
             "listening_cta_allowed": False,
             "audio_metadata_allowed": False,
+        },
+    )
+
+
+def automated_audiobook_chapter_pipeline_dry_run(config: dict[str, Any]) -> StageResult:
+    sync_config = config.get("audiobook_sync") if isinstance(config.get("audiobook_sync"), dict) else {}
+    provider_config = config.get("audiobook_provider_eval") if isinstance(config.get("audiobook_provider_eval"), dict) else {}
+    slug = safe_slug(config.get("slug"))
+    language = str(sync_config.get("language") or "en").strip().lower()
+    chapter = str(sync_config.get("chapter") or "1")
+    provider = safe_slug(provider_config.get("preferred_provider") or "elevenlabs")
+    selected_voice_id = str(provider_config.get("selected_voice_id") or "").strip()
+    if not selected_voice_id or selected_voice_id == "OWNER_SELECTION_REQUIRED":
+        selected_voice_id = "21m00Tcm4TlvDq8ikWAM"
+    selected_voice_name = str(provider_config.get("selected_voice_display_name") or "Rachel").strip() or "Rachel"
+
+    try:
+        result = run_chapter_pipeline(
+            book_slug=slug,
+            language=language,
+            chapter=chapter,
+            provider=provider,
+            voice_id=selected_voice_id,
+            voice_name=selected_voice_name,
+            mode="dry-run",
+            execute=False,
+            max_cost_inr=None,
+            max_chunks=None,
+            write_root_reports=False,
+        )
+    except Exception as exc:  # noqa: BLE001 - dry-run failure must be reported as a stage blocker.
+        return StageResult(
+            AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_STAGE,
+            "BLOCKED",
+            [f"automated audiobook chapter pipeline dry-run failed: {exc}"],
+            details={
+                "public_audio_release_status": PUBLIC_AUDIO_RELEASE_BLOCKED,
+                "public_audio_allowed": False,
+                "production_status": "PRODUCTION_BLOCKED",
+                "generation_status": CHAPTER_PIPELINE_BLOCKED_REAL_GENERATION,
+            },
+        )
+
+    blockers: list[str] = []
+    if result.status != CHAPTER_PIPELINE_DRY_RUN_READY:
+        blockers.append(f"chapter pipeline dry-run did not reach DRY_RUN_READY: {result.status}")
+    if result.public_release.get("frontend_public_audio_files") or result.public_release.get("frontend_build_audio_files"):
+        blockers.append("public/build audio-like files are present.")
+
+    return StageResult(
+        AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_STAGE,
+        CHAPTER_PIPELINE_DRY_RUN_READY if not blockers else "HOLD_AUDIOBOOK_PIPELINE_QA",
+        blockers,
+        details={
+            "book_slug": result.book_slug,
+            "language": result.language,
+            "chapter": result.chapter,
+            "provider": result.provider,
+            "voice_id": result.voice_id,
+            "voice_name": result.voice_name,
+            "output_dir": str(result.output_dir.relative_to(ROOT)),
+            "sanitation_status": "PASS",
+            "clean_narration_file_path": result.files.get("narration_text"),
+            "sync_source_file_path": result.files.get("sync_source"),
+            "sentence_map_path": result.files.get("sentence_map"),
+            "chunk_manifest_path": result.files.get("chunk_manifest"),
+            "generated_audio_manifest_path": result.files.get("generated_audio_manifest"),
+            "sync_manifest_path": result.files.get("sync_manifest"),
+            "qa_packet_path": result.files.get("qa_packet"),
+            "cost_estimate": result.cost_estimate,
+            "provider_gate_status": result.provider_gate.get("internal_generation_status"),
+            "provider_gate": result.provider_gate,
+            "generation_status": result.generation.get("generation_status"),
+            "provider_api_called": result.generation.get("provider_api_called"),
+            "audio_generated_by_repo": result.generation.get("audio_generated_by_repo"),
+            "sync_status": "HOLD_SYNC_QA_REQUIRED",
+            "public_release_status": PUBLIC_AUDIO_RELEASE_BLOCKED,
+            "public_audio_allowed": False,
+            "production_status": "PRODUCTION_BLOCKED",
+            "listening_cta_allowed": False,
+            "audio_metadata_allowed": False,
+            "full_book_generation_allowed": False,
         },
     )
 
@@ -914,6 +1017,7 @@ def audiobook_gate(stages: list[StageResult]) -> dict[str, Any]:
             or "narration" in stage.name.lower()
             or stage.name in {TTS_MODEL_LICENSE_STAGE, TTS_VOICE_RIGHTS_STAGE, TTS_PROVIDER_INTERNAL_EVAL_STAGE}
             or stage.name == ELEVENLABS_INTERNAL_SAMPLE_STAGE
+            or stage.name == AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_STAGE
         )
         for blocker in stage.blockers
     ]
@@ -1242,6 +1346,29 @@ def write_reports(
         "- Sentence-level timing remains placeholder-only until a human sync QA pass is recorded.\n"
         "- Public audio remains blocked.\n"
     )
+    chapter_pipeline_stage = next(
+        (stage for stage in result.stages if stage.name == AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_STAGE),
+        StageResult(AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_STAGE, "NOT_RUN", details={}),
+    )
+    chapter_pipeline_details = chapter_pipeline_stage.details
+    chapter_pipeline_report = (
+        "# Audiobook Chapter Pipeline Report\n\n"
+        "This report records the automated dry-run chapter pipeline. It does not call paid providers, "
+        "generate audio, publish audio, approve production, or change payment behavior.\n\n"
+        f"- Stage status: `{chapter_pipeline_stage.status}`\n"
+        f"- Output directory: `{chapter_pipeline_details.get('output_dir', 'not generated')}`\n"
+        f"- Clean narration file: `{chapter_pipeline_details.get('clean_narration_file_path', 'not generated')}`\n"
+        f"- Chunk manifest: `{chapter_pipeline_details.get('chunk_manifest_path', 'not generated')}`\n"
+        f"- Cost estimate: `{chapter_pipeline_details.get('cost_estimate', {}).get('estimated_cost_inr', 'not generated')}` INR\n"
+        f"- Provider gate: `{chapter_pipeline_details.get('provider_gate_status', 'not generated')}`\n"
+        f"- Generation status: `{chapter_pipeline_details.get('generation_status', 'not generated')}`\n"
+        f"- Sync status: `{chapter_pipeline_details.get('sync_status', 'HOLD_SYNC_QA_REQUIRED')}`\n"
+        f"- Public audio release: `{chapter_pipeline_details.get('public_release_status', PUBLIC_AUDIO_RELEASE_BLOCKED)}`\n"
+        f"- Public audio allowed: `{str(chapter_pipeline_details.get('public_audio_allowed', False)).lower()}`\n"
+        f"- Production status: `{chapter_pipeline_details.get('production_status', 'PRODUCTION_BLOCKED')}`\n"
+        f"- Provider API called: `{str(chapter_pipeline_details.get('provider_api_called', False)).lower()}`\n"
+        f"- Repo-generated audio: `{str(chapter_pipeline_details.get('audio_generated_by_repo', False)).lower()}`\n"
+    )
     seo = (
         report_header(config, result, "English Book SEO Preview Report")
         + "- SEO/social metadata is draft-only.\n"
@@ -1324,6 +1451,7 @@ def write_reports(
             "- Complete ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md and ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md before any ElevenLabs eligibility change.\n",
             "- Complete internal/legal/elevenlabs/creator-membership-internal-eval-evidence.md before any ElevenLabs internal sample import is approved.\n",
             "- Complete TTS model license, voice, commercial-use, speaker-rights, and owner approval evidence before real internal generation.\n",
+            "- Review AUDIOBOOK_CHAPTER_PIPELINE_REPORT.md for the automated dry-run narration, chunking, cost, provider, sync, and public-release gate evidence.\n",
             tts_next_action,
             provider_next_action,
             "- Review the internal highlighted-text sync manifest before any audio release consideration.\n",
@@ -1344,6 +1472,7 @@ def write_reports(
         "ELEVENLABS_DRACULA_INTERNAL_SAMPLE_REPORT.md": elevenlabs_report,
         "ELEVENLABS_DRACULA_SAMPLE_QA_SCORECARD.md": elevenlabs_scorecard,
         "ELEVENLABS_DRACULA_HIGHLIGHT_SYNC_QA_REPORT.md": elevenlabs_sync_report,
+        "AUDIOBOOK_CHAPTER_PIPELINE_REPORT.md": chapter_pipeline_report,
     }
     paths: dict[str, Path] = {}
     paths.update(write_tts_license_artifacts(scoped_output_dir))
@@ -1407,6 +1536,7 @@ def run_orchestration(
             tts_voice_rights_internal_eval_review(config),
             licensed_provider_tts_internal_eval_review(config),
             elevenlabs_internal_sample_prep_and_import(config),
+            automated_audiobook_chapter_pipeline_dry_run(config),
             audiobook_sync_dry_run_stage(config),
             narration_qa_gate(config),
             audiobook_legal_accessibility_gate(config),
@@ -1438,6 +1568,7 @@ def run_orchestration(
         "elevenlabs_dracula_internal_sample_report": "ELEVENLABS_DRACULA_INTERNAL_SAMPLE_REPORT.md",
         "elevenlabs_dracula_sample_qa_scorecard": "ELEVENLABS_DRACULA_SAMPLE_QA_SCORECARD.md",
         "elevenlabs_dracula_highlight_sync_qa_report": "ELEVENLABS_DRACULA_HIGHLIGHT_SYNC_QA_REPORT.md",
+        "audiobook_chapter_pipeline_report": "AUDIOBOOK_CHAPTER_PIPELINE_REPORT.md",
         "seo": "ENGLISH_BOOK_SEO_PREVIEW_REPORT.md",
         "visual": "ENGLISH_BOOK_VISUAL_SCORECARD.md",
         "codex_prompt": "output/codex_prompts/next_english_book_onboarding_prompt.md",

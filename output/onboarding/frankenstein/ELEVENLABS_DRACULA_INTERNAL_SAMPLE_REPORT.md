@@ -8,7 +8,7 @@ This report is for internal sample preparation and manual import only. It does n
 - Evidence path: `internal/legal/elevenlabs/creator-membership-internal-eval-evidence.md`
 - Provider internal-eval status: `HOLD_PROVIDER_REVIEW`
 - Sample status: `HOLD_PROVIDER_REVIEW`
-- Import status: `NOT_IMPORTED_YET`
+- Import status: `INTERNAL_SAMPLE_ONLY`
 - Sync status: `HOLD_SYNC_QA_REQUIRED`
 - Public audio release: `PUBLIC_AUDIO_RELEASE_BLOCKED`
 - Production status: `PRODUCTION_BLOCKED`
