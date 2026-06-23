@@ -35,6 +35,7 @@ Required next checks:
 - Complete ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md and ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md before any ElevenLabs eligibility change.
 - Complete internal/legal/elevenlabs/creator-membership-internal-eval-evidence.md before any ElevenLabs internal sample import is approved.
 - Complete TTS model license, voice, commercial-use, speaker-rights, and owner approval evidence before real internal generation.
+- Review AUDIOBOOK_CHAPTER_PIPELINE_REPORT.md for the automated dry-run narration, chunking, cost, provider, sync, and public-release gate evidence.
 - Do not generate an audio sample yet; `kokoro` remains `HOLD_VOICE_RIGHTS`.
 - Collect owner/legal-reviewed selected voice or speaker-rights evidence, including provenance, commercial internal-eval permission, synthetic/non-human or consent status, and real-person voice-cloning risk review.
 - Do not generate a provider audio sample yet; `elevenlabs` remains `HOLD_PROVIDER_REVIEW`.

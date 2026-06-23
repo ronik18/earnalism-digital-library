@@ -111,11 +111,14 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def is_full_chapter_workflow(sample_dir: Path) -> bool:
-    return (sample_dir / "full_chapter_text.txt").exists()
+    return (sample_dir / "full_chapter_sync_source_with_ids.txt").exists() or (sample_dir / "full_chapter_text.txt").exists()
 
 
 def text_path_for(sample_dir: Path) -> Path:
     if is_full_chapter_workflow(sample_dir):
+        sync_source = sample_dir / "full_chapter_sync_source_with_ids.txt"
+        if sync_source.exists():
+            return sync_source
         return sample_dir / "full_chapter_text.txt"
     return sample_dir / "sample_text.txt"
 

@@ -2,12 +2,12 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-23T14:22:40+00:00
+- Generated: 2026-06-23T19:25:36+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 - Highlighted-text sync status: `HOLD_SYNC_QA_REQUIRED`
 - ElevenLabs Dracula sample status: `HOLD_PROVIDER_REVIEW`
-- ElevenLabs Dracula import status: `NOT_IMPORTED_YET`
+- ElevenLabs Dracula import status: `INTERNAL_SAMPLE_ONLY`
 - Selected model candidate: `kokoro`
 - Model license decision: `HOLD_VOICE_RIGHTS`
 - Model internal-eval status: `HOLD_VOICE_RIGHTS`

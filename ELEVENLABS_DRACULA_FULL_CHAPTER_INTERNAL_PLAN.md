@@ -28,12 +28,17 @@ This plan prepares a manual, chunked, internal-only full Chapter 1 generation/im
 ## Internal Workflow Directory
 
 - Workflow directory: `internal/audiobook_lab/dracula/en/chapter-1-elevenlabs-full/`
-- Full chapter text: `full_chapter_text.txt`
-- Chunk manifest: `chunk_manifest.json`
+- Clean full-chapter narration text: `full_chapter_narration_text.txt`
+- Sync/source draft with sentence IDs: `full_chapter_sync_source_with_ids.txt`
+- Compatibility sync/source draft: `full_chapter_text.txt`
+- Sentence map: `sentence_map.json`
+- Chunk manifest with clean `narration_text`: `chunk_manifest.json`
 - Generation brief: `elevenlabs_full_chapter_generation_brief.md`
 - Pronunciation notes: `pronunciation_notes.md`
 - Cost controls: `cost_control_plan.md`
 - Import location: `imported_audio/`
+
+Only `full_chapter_narration_text.txt` or an individual chunk's clean `narration_text` may be pasted into ElevenLabs. The sync/source files and sentence map preserve alignment evidence only.
 
 ## Chunking Plan
 
@@ -46,10 +51,17 @@ This plan prepares a manual, chunked, internal-only full Chapter 1 generation/im
 - Text hash per chunk: required
 - Settings hash per chunk: required
 - Paragraph boundaries: preserved by chunk metadata; long paragraphs are split only at sentence boundaries when needed
+- Non-narrated source separators are represented as pause metadata, not spoken text.
 
 ## Import Command
 
-Run only after the owner manually downloads all chunk audio files into the internal import directory:
+Validate narration text before any manual generation:
+
+```bash
+npm run elevenlabs:validate-narration-text
+```
+
+Run import only after the owner manually downloads all chunk audio files into the internal import directory:
 
 ```bash
 npm run elevenlabs:full-chapter-import
@@ -73,3 +85,4 @@ Expected import state:
 - No frontend/build audio.
 - No production approval.
 - No full-book generation.
+- No sentence IDs, source comments, markdown, or sync-source text in ElevenLabs generation input.

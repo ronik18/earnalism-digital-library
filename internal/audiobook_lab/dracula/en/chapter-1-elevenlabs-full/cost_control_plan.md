@@ -5,6 +5,7 @@ This plan is for one internal-only full Chapter 1 generation pass after the samp
 ## Limits
 
 - Generate manually in chunks from `chunk_manifest.json`.
+- Paste only `chunks[].narration_text` into ElevenLabs for chunk generation.
 - Chunk count: `27`.
 - Recommended chunk length: 45-120 seconds where text boundaries allow it.
 - Regenerate only failed chunks, not the full chapter.
@@ -23,13 +24,15 @@ This plan is for one internal-only full Chapter 1 generation pass after the samp
 
 ## Import And QA Sequence
 
-1. Place manually downloaded chunk audio only under `internal/audiobook_lab/dracula/en/chapter-1-elevenlabs-full/imported_audio/`.
-2. Run `npm run elevenlabs:full-chapter-import`.
-3. Confirm `audio_status=INTERNAL_FULL_CHAPTER_ONLY`.
-4. Confirm `public_audio_allowed=false`.
-5. Complete full chapter listening QA.
-6. Complete sentence-level sync QA.
-7. Keep public release blocked until separate owner/legal/accessibility approval.
+1. Run `npm run elevenlabs:validate-narration-text`.
+2. Paste only `full_chapter_narration_text.txt` or a clean chunk `narration_text` into ElevenLabs.
+3. Place manually downloaded chunk audio only under `internal/audiobook_lab/dracula/en/chapter-1-elevenlabs-full/imported_audio/`.
+4. Run `npm run elevenlabs:full-chapter-import`.
+5. Confirm `audio_status=INTERNAL_FULL_CHAPTER_ONLY`.
+6. Confirm `public_audio_allowed=false`.
+7. Complete full chapter listening QA.
+8. Complete sentence-level sync QA.
+9. Keep public release blocked until separate owner/legal/accessibility approval.
 
 ## Safety
 
@@ -40,3 +43,4 @@ This plan is for one internal-only full Chapter 1 generation pass after the samp
 - No Listen Now CTA.
 - No AudioObject metadata.
 - No file under `frontend/public` or `frontend/build`.
+- No sentence IDs, source comments, markdown, or sync-source text pasted into ElevenLabs.

@@ -1,0 +1,76 @@
+{
+  "generated_by": "scripts/audiobook_chapter_pipeline.py",
+  "generated_at": "2026-06-23T19:26:11+00:00",
+  "book_slug": "dracula",
+  "chapter": 1,
+  "decision": "BLOCKED_UNTIL_EXPLICIT_EXECUTE_AND_PROVIDER_EVIDENCE",
+  "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "production_status": "PRODUCTION_BLOCKED",
+  "listen_now_cta_allowed": false,
+  "audio_object_metadata_allowed": false,
+  "sync_status": "HOLD_SYNC_QA_REQUIRED",
+  "qa_required": [
+    "human_listening_qa",
+    "text_fidelity_qa",
+    "sentence_sync_qa",
+    "accessibility_listening_qa"
+  ],
+  "pronunciation_dictionary_terms": [
+    {
+      "term": "Harker",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "Bistritz",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "Buda-Pesth",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "Klausenburgh",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "paprika hendl",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "Carpathians",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "Transylvania",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "Moldavia",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "Bukovina",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "Borgo Pass",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "Mina",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "Dracula",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "slivovitz",
+      "note": "owner_review_required"
+    },
+    {
+      "term": "calèche",
+      "note": "owner_review_required"
+    }
+  ]
+}

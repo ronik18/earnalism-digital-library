@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 from scripts.orchestrate_english_book_onboarding import (
+    AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_STAGE,
     PUBLIC_AUDIO_RELEASE_BLOCKED,
     PUBLICATION_HOLD,
     ELEVENLABS_INTERNAL_SAMPLE_STAGE,
@@ -19,16 +20,21 @@ from scripts.orchestrate_english_book_onboarding import (
 @pytest.fixture(autouse=True)
 def cleanup_internal_sync_test_outputs():
     root = Path.cwd() / "internal" / "audiobook_lab"
-    slugs = {"test-book", "frankenstein", "jane-eyre", "latest-book"}
+    slugs = {"test-book", "jane-eyre", "latest-book"}
     for slug in slugs:
         target = root / slug
         if target.exists():
             shutil.rmtree(target)
+    generated_frankenstein_pipeline = root / "frankenstein" / "en" / "chapter-1"
+    if generated_frankenstein_pipeline.exists():
+        shutil.rmtree(generated_frankenstein_pipeline)
     yield
     for slug in slugs:
         target = root / slug
         if target.exists():
             shutil.rmtree(target)
+    if generated_frankenstein_pipeline.exists():
+        shutil.rmtree(generated_frankenstein_pipeline)
 
 
 def write_config(tmp_path: Path, content: str) -> Path:
@@ -195,10 +201,13 @@ def test_orchestrator_runs_model_license_stage_before_sync_stage(tmp_path: Path)
     assert "TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW" in names
     assert TTS_PROVIDER_INTERNAL_EVAL_STAGE in names
     assert ELEVENLABS_INTERNAL_SAMPLE_STAGE in names
+    assert AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_STAGE in names
     assert names.index("TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW") < names.index("audiobook_sync_dry_run_stage")
     assert names.index("TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW") < names.index("audiobook_sync_dry_run_stage")
     assert names.index(TTS_PROVIDER_INTERNAL_EVAL_STAGE) < names.index("audiobook_sync_dry_run_stage")
     assert names.index(ELEVENLABS_INTERNAL_SAMPLE_STAGE) < names.index("audiobook_sync_dry_run_stage")
+    assert names.index(ELEVENLABS_INTERNAL_SAMPLE_STAGE) < names.index(AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_STAGE)
+    assert names.index(AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_STAGE) < names.index("audiobook_sync_dry_run_stage")
     assert names.index("TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW") < names.index(TTS_PROVIDER_INTERNAL_EVAL_STAGE)
 
 
@@ -235,8 +244,12 @@ def test_elevenlabs_internal_sample_stage_prepares_files_but_keeps_hold(tmp_path
     assert sample_stage.details["selected_voice_name"] == "Rachel"
     assert sample_stage.details["selected_voice_id"] == "21m00Tcm4TlvDq8ikWAM"
     assert sample_stage.details["evidence_file_exists"] is True
-    assert sample_stage.details["imported_audio_exists"] is False
-    assert sample_stage.details["import_status"] == "NOT_IMPORTED_YET"
+    assert sample_stage.details["imported_audio_exists"] in {False, True}
+    if sample_stage.details["imported_audio_exists"]:
+        assert sample_stage.details["import_status"] == "INTERNAL_SAMPLE_ONLY"
+        assert sample_stage.details["public_audio_allowed"] is False
+    else:
+        assert sample_stage.details["import_status"] == "NOT_IMPORTED_YET"
     assert sample_stage.details["sync_status"] == "HOLD_SYNC_QA_REQUIRED"
     assert sample_stage.details["public_audio_allowed"] is False
     assert sample_stage.details["provider_api_called"] is False
@@ -245,6 +258,26 @@ def test_elevenlabs_internal_sample_stage_prepares_files_but_keeps_hold(tmp_path
     assert sample_stage.details["full_book_generation_allowed"] is False
     assert len(sample_stage.details["sample_prep_files"]) == 4
     assert any("sample_text.txt" in path for path in sample_stage.details["sample_prep_files"])
+
+
+def test_orchestrator_includes_automated_audiobook_chapter_pipeline_stage(tmp_path: Path):
+    config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
+    result = run_orchestration(config_path)
+    pipeline_stage = stage(result, AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_STAGE)
+
+    assert pipeline_stage.status == "DRY_RUN_READY"
+    assert pipeline_stage.details["sanitation_status"] == "PASS"
+    assert pipeline_stage.details["clean_narration_file_path"].endswith("full_chapter_narration_text.txt")
+    assert pipeline_stage.details["chunk_manifest_path"].endswith("chunk_manifest.json")
+    assert pipeline_stage.details["cost_estimate"]["estimated_cost_inr"] >= 0
+    assert pipeline_stage.details["provider_gate_status"] == "HOLD_PROVIDER_REVIEW"
+    assert pipeline_stage.details["generation_status"] == "DRY_RUN_ONLY"
+    assert pipeline_stage.details["sync_status"] == "HOLD_SYNC_QA_REQUIRED"
+    assert pipeline_stage.details["public_release_status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert pipeline_stage.details["public_audio_allowed"] is False
+    assert pipeline_stage.details["provider_api_called"] is False
+    assert pipeline_stage.details["audio_generated_by_repo"] is False
+    assert pipeline_stage.details["full_book_generation_allowed"] is False
 
 
 def test_elevenlabs_sample_reports_are_written_to_slug_scoped_output(tmp_path: Path):
@@ -260,6 +293,8 @@ def test_elevenlabs_sample_reports_are_written_to_slug_scoped_output(tmp_path: P
     assert "public audio remains blocked" in (
         scoped_dir / "ELEVENLABS_DRACULA_HIGHLIGHT_SYNC_QA_REPORT.md"
     ).read_text(encoding="utf-8").lower()
+    assert (scoped_dir / "AUDIOBOOK_CHAPTER_PIPELINE_REPORT.md").exists()
+    assert "DRY_RUN_READY" in (scoped_dir / "AUDIOBOOK_CHAPTER_PIPELINE_REPORT.md").read_text(encoding="utf-8")
     assert paths["output/onboarding/frankenstein/ELEVENLABS_DRACULA_INTERNAL_SAMPLE_REPORT.md"] == (
         scoped_dir / "ELEVENLABS_DRACULA_INTERNAL_SAMPLE_REPORT.md"
     )
@@ -282,8 +317,13 @@ def test_selected_model_decision_appears_in_orchestrator_json(tmp_path: Path):
     assert '"provider_internal_eval_status": "HOLD_PROVIDER_REVIEW"' in report
     assert '"selected_provider_production_status": "PRODUCTION_BLOCKED"' in report
     assert '"elevenlabs_sample_status": "HOLD_PROVIDER_REVIEW"' in report
-    assert '"elevenlabs_sample_import_status": "NOT_IMPORTED_YET"' in report
+    assert (
+        '"elevenlabs_sample_import_status": "NOT_IMPORTED_YET"' in report
+        or '"elevenlabs_sample_import_status": "INTERNAL_SAMPLE_ONLY"' in report
+    )
     assert '"elevenlabs_sample_public_audio_allowed": false' in report
+    assert '"name": "AUTOMATED_AUDIOBOOK_CHAPTER_PIPELINE_DRY_RUN"' in report
+    assert '"generation_status": "DRY_RUN_ONLY"' in report
 
 
 def test_voice_rights_internal_eval_stage_records_selected_candidate(tmp_path: Path):
@@ -320,6 +360,7 @@ def test_next_prompt_requests_voice_rights_evidence_before_audio_generation(tmp_
     assert "KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md" in prompt
     assert "ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md" in prompt
     assert "ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md" in prompt
+    assert "AUDIOBOOK_CHAPTER_PIPELINE_REPORT.md" in prompt
     assert "Collect owner/legal-reviewed selected voice or speaker-rights evidence" in prompt
     assert "Do not generate a provider audio sample yet" in prompt
     assert "future separate task may prepare an internal-only 2-3 minute" not in prompt
@@ -434,6 +475,7 @@ def test_slug_scoped_output_directory_contains_all_reports(tmp_path: Path):
         "ELEVENLABS_DRACULA_INTERNAL_SAMPLE_REPORT.md",
         "ELEVENLABS_DRACULA_SAMPLE_QA_SCORECARD.md",
         "ELEVENLABS_DRACULA_HIGHLIGHT_SYNC_QA_REPORT.md",
+        "AUDIOBOOK_CHAPTER_PIPELINE_REPORT.md",
         "tts_provider_internal_eval_review.json",
         "english_book_onboarding_report.json",
         "next_codex_prompt.md",

@@ -18,10 +18,14 @@ This brief permits manual internal-only full Chapter 1 generation preparation. I
 
 ## Source Files
 
-- Full chapter text: `full_chapter_text.txt`
-- Chunk manifest: `chunk_manifest.json`
+- Clean full-chapter narration text: `full_chapter_narration_text.txt`
+- Clean chunk narration text: `chunk_manifest.json` `chunks[].narration_text`
+- Sync/source draft with sentence IDs: `full_chapter_sync_source_with_ids.txt`
+- Sentence map: `sentence_map.json`
 - Pronunciation notes: `pronunciation_notes.md`
 - Cost controls: `cost_control_plan.md`
+
+Only `full_chapter_narration_text.txt` or the clean `narration_text` field from an individual chunk may be pasted into ElevenLabs. `full_chapter_text.txt`, `full_chapter_sync_source_with_ids.txt`, and `sentence_map.json` preserve sync/source evidence and must not be used as generation text.
 
 ## Chunked Manual Generation Workflow
 
@@ -29,12 +33,13 @@ This brief permits manual internal-only full Chapter 1 generation preparation. I
 2. Open ElevenLabs UI/Studio manually in the owner account.
 3. Select Rachel, voice ID `21m00Tcm4TlvDq8ikWAM`.
 4. Select only a stable non-beta TTS model.
-5. Generate each `chunk_manifest.json` chunk separately; do not paste the entire chapter as one giant generation.
+5. Generate each `chunk_manifest.json` chunk separately from its clean `narration_text`; do not paste the entire chapter as one giant generation.
 6. Keep each chunk near the recommended 45-120 second range where the text allows it.
-7. Preserve paragraph boundaries and stable sentence IDs from `full_chapter_text.txt`.
+7. Preserve paragraph boundaries and stable sentence IDs through `sentence_ids` metadata, not by pasting IDs into ElevenLabs.
 8. Download each generated MP3 or WAV manually.
 9. Save downloads only under `internal/audiobook_lab/dracula/en/chapter-1-elevenlabs-full/imported_audio/` using the `audio_filename` values in `chunk_manifest.json`.
-10. Run `npm run elevenlabs:full-chapter-import` after all chunks are present.
+10. Run `npm run elevenlabs:validate-narration-text` before generation and again before import.
+11. Run `npm run elevenlabs:full-chapter-import` after all chunks are present.
 
 ## Absolute Guardrails
 
@@ -46,3 +51,4 @@ This brief permits manual internal-only full Chapter 1 generation preparation. I
 - Do not publish audio.
 - Do not mark production approved.
 - Do not generate a full book.
+- Do not paste sentence IDs, source comments, markdown, or sync-only text into ElevenLabs.

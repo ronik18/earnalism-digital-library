@@ -1,7 +1,6 @@
-# Dracula Chapter 1 ElevenLabs Full Sync Source With IDs
+# dracula chapter 1 sync/source with IDs
 # NOT FOR ELEVENLABS GENERATION.
 # Use full_chapter_narration_text.txt or chunk_manifest.json narration_text only.
-# Sentence IDs are preserved solely for internal sync/highlight alignment.
 
 [s001] CHAPTER I. JONATHAN HARKER’S JOURNAL
 [s002] (_Kept in shorthand._)

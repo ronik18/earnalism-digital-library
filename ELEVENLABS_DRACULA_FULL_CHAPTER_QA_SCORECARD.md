@@ -27,7 +27,7 @@ This scorecard is for the future full Chapter 1 internal import only. It does no
 | Emotional expression | HOLD | Expressive but controlled. |
 | Noise/artifacts | HOLD | No clicks, clipping, gaps, or chunk-boundary artifacts. |
 | Fatigue risk | HOLD | Confirm comfortable long-form listening. |
-| Text fidelity | HOLD | Compare imported audio against `full_chapter_text.txt`. |
+| Text fidelity | HOLD | Compare imported audio against `full_chapter_narration_text.txt` and confirm `sentence_map.json` preserves source alignment. |
 | Sync readiness | HOLD | Sentence timings remain placeholder-only until sync QA. |
 | Accessibility listening readiness | HOLD | Requires separate accessibility listening review. |
 | Overall score | HOLD | Score after full chapter import and listening QA. |
@@ -37,6 +37,7 @@ This scorecard is for the future full Chapter 1 internal import only. It does no
 
 - No Listen Now CTA.
 - No AudioObject metadata.
+- No sentence IDs, source comments, markdown, or sync-source text in generated audio input.
 - No public audio URL.
 - No public player.
 - No production approval.

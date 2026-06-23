@@ -22,6 +22,8 @@ Use restrained literary narration. The voice should sound calm, intelligent, pre
 
 ## Delivery Notes
 
+- Use these notes only with `full_chapter_narration_text.txt` or clean chunk `narration_text` from `chunk_manifest.json`.
+- Never paste sentence IDs, source comments, markdown, or sync-source text into ElevenLabs.
 - Pause briefly after diary dates, locations, and letter/signature lines.
 - Keep journal entries intimate and controlled.
 - Keep quoted speech clear without theatrical character acting.
