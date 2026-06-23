@@ -1,0 +1,19 @@
+{
+  "generated_by": "scripts/elevenlabs_internal_sample_import.py",
+  "generated_at": "2026-06-23T16:37:43+00:00",
+  "book_slug": "dracula",
+  "chapter": 1,
+  "provider": "ElevenLabs",
+  "voice_name": "Rachel",
+  "voice_id": "21m00Tcm4TlvDq8ikWAM",
+  "audio_status": "INTERNAL_SAMPLE_ONLY",
+  "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "public_audio_allowed": false,
+  "production_approved": false,
+  "provider_api_called": false,
+  "audio_generated_by_repo": false,
+  "audio_path": "internal/audiobook_lab/dracula/en/chapter-1-elevenlabs-sample/imported_audio/dracula-chapter-1-elevenlabs-rachel-internal-sample.mp3",
+  "audio_hash": "fad97e83e4590adea2cd2b597ca0625765b1b04c9a99a3abd4ea820e0138309a",
+  "text_hash": "b64b8e04c45f79de2ebe6552eb08c43915edb3f38632b01c3d966d41bd2a84c6",
+  "sample_dir": "internal/audiobook_lab/dracula/en/chapter-1-elevenlabs-sample"
+}
