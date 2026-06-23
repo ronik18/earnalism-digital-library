@@ -6,19 +6,30 @@ providers:
     commercial_use_evidence_url: https://help.elevenlabs.io/hc/en-us/articles/13313564663441-Can-I-publish-the-content-I-generate-on-the-platform
     voice_license_evidence_url: https://elevenlabs.io/terms
     paid_plan_required: true
+    plan_evidence_status: HOLD_REVIEW
     beta_feature_allowed: false
+    beta_features_allowed: false
+    beta_features_excluded_evidence: General-availability provider use only; beta, experimental, or preview voice features are excluded unless separately approved.
     standalone_audio_distribution_allowed: ALLOWED
+    standalone_audio_distribution_evidence: HOLD_REVIEW
     attribution_required: HOLD_REVIEW
+    selected_voice_attribution_requirement: HOLD_REVIEW
+    selected_voice_restrictions: HOLD_REVIEW
+    commercial_internal_eval_permission: HOLD_REVIEW
+    provider_terms_review_status: HOLD_REVIEW
+    data_retention_review_status: HOLD_REVIEW
     data_retention_notes: Account, privacy, voice-library, and data-retention settings require owner/legal review before internal generation.
     voice_rights_status: HOLD_REVIEW
-    selected_voice_id: OWNER_SELECTION_REQUIRED
-    selected_voice_display_name: OWNER_SELECTION_REQUIRED
-    selected_voice_license_evidence_url: OWNER_SELECTION_REQUIRED
+    selected_voice_id: 21m00Tcm4TlvDq8ikWAM
+    selected_voice_display_name: Rachel
+    selected_voice_type: platform_voice
+    selected_voice_license_evidence_url: https://elevenlabs.io/terms
+    selected_voice_rights_summary: Proposed ElevenLabs platform voice for owner/legal review only; internal evaluation is blocked until selected voice rights, plan, attribution, restrictions, and account terms are manually approved.
     internal_eval_status: HOLD_PROVIDER_REVIEW
     production_status: PRODUCTION_BLOCKED
     owner_approval_status: OWNER_REVIEW_REQUIRED
     legal_review_status: LEGAL_REVIEW_REQUIRED
-    blockers: selected voice, paid-plan evidence, standalone output evidence, attribution rules, owner approval, and legal review are incomplete.
+    blockers: paid-plan evidence, provider terms review, selected voice rights review, attribution/restrictions review, owner approval, and legal review are incomplete.
   - provider_id: openai-api-tts-realtime
     display_name: OpenAI API TTS and Realtime Voices
     provider_strategy_status: REVIEW_ONLY
@@ -26,14 +37,25 @@ providers:
     commercial_use_evidence_url: https://openai.com/policies/terms-of-use
     voice_license_evidence_url: https://platform.openai.com/docs/guides/text-to-speech
     paid_plan_required: true
+    plan_evidence_status: HOLD_REVIEW
     beta_feature_allowed: false
+    beta_features_allowed: false
+    beta_features_excluded_evidence: Beta/realtime/preview features excluded unless separately approved.
     standalone_audio_distribution_allowed: HOLD_REVIEW
+    standalone_audio_distribution_evidence: HOLD_REVIEW
     attribution_required: HOLD_REVIEW
+    selected_voice_attribution_requirement: HOLD_REVIEW
+    selected_voice_restrictions: HOLD_REVIEW
+    commercial_internal_eval_permission: HOLD_REVIEW
+    provider_terms_review_status: HOLD_REVIEW
+    data_retention_review_status: HOLD_REVIEW
     data_retention_notes: API terms, voice-output restrictions, retention, and commercial audiobook distribution require owner/legal review.
     voice_rights_status: HOLD_REVIEW
     selected_voice_id: OWNER_SELECTION_REQUIRED
     selected_voice_display_name: OWNER_SELECTION_REQUIRED
+    selected_voice_type: unknown
     selected_voice_license_evidence_url: OWNER_SELECTION_REQUIRED
+    selected_voice_rights_summary: HOLD_REVIEW
     internal_eval_status: HOLD_PROVIDER_REVIEW
     production_status: PRODUCTION_BLOCKED
     owner_approval_status: OWNER_REVIEW_REQUIRED
@@ -46,14 +68,25 @@ providers:
     commercial_use_evidence_url: https://cloud.google.com/text-to-speech/docs/create-audio
     voice_license_evidence_url: https://cloud.google.com/text-to-speech/docs/voices
     paid_plan_required: true
+    plan_evidence_status: HOLD_REVIEW
     beta_feature_allowed: false
+    beta_features_allowed: false
+    beta_features_excluded_evidence: Beta/preview voice features excluded unless separately approved.
     standalone_audio_distribution_allowed: HOLD_REVIEW
+    standalone_audio_distribution_evidence: HOLD_REVIEW
     attribution_required: HOLD_REVIEW
+    selected_voice_attribution_requirement: HOLD_REVIEW
+    selected_voice_restrictions: HOLD_REVIEW
+    commercial_internal_eval_permission: HOLD_REVIEW
+    provider_terms_review_status: HOLD_REVIEW
+    data_retention_review_status: HOLD_REVIEW
     data_retention_notes: Cloud account, data processing, voice selection, and output distribution rights require owner/legal review.
     voice_rights_status: HOLD_REVIEW
     selected_voice_id: OWNER_SELECTION_REQUIRED
     selected_voice_display_name: OWNER_SELECTION_REQUIRED
+    selected_voice_type: unknown
     selected_voice_license_evidence_url: OWNER_SELECTION_REQUIRED
+    selected_voice_rights_summary: HOLD_REVIEW
     internal_eval_status: HOLD_PROVIDER_REVIEW
     production_status: PRODUCTION_BLOCKED
     owner_approval_status: OWNER_REVIEW_REQUIRED
@@ -66,14 +99,25 @@ providers:
     commercial_use_evidence_url: https://learn.microsoft.com/en-us/azure/ai-services/speech-service/
     voice_license_evidence_url: https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support
     paid_plan_required: true
+    plan_evidence_status: HOLD_REVIEW
     beta_feature_allowed: false
+    beta_features_allowed: false
+    beta_features_excluded_evidence: Beta/preview voice features excluded unless separately approved.
     standalone_audio_distribution_allowed: HOLD_REVIEW
+    standalone_audio_distribution_evidence: HOLD_REVIEW
     attribution_required: HOLD_REVIEW
+    selected_voice_attribution_requirement: HOLD_REVIEW
+    selected_voice_restrictions: HOLD_REVIEW
+    commercial_internal_eval_permission: HOLD_REVIEW
+    provider_terms_review_status: HOLD_REVIEW
+    data_retention_review_status: HOLD_REVIEW
     data_retention_notes: Azure account, voice terms, data retention, and output distribution rights require owner/legal review.
     voice_rights_status: HOLD_REVIEW
     selected_voice_id: OWNER_SELECTION_REQUIRED
     selected_voice_display_name: OWNER_SELECTION_REQUIRED
+    selected_voice_type: unknown
     selected_voice_license_evidence_url: OWNER_SELECTION_REQUIRED
+    selected_voice_rights_summary: HOLD_REVIEW
     internal_eval_status: HOLD_PROVIDER_REVIEW
     production_status: PRODUCTION_BLOCKED
     owner_approval_status: OWNER_REVIEW_REQUIRED
@@ -86,14 +130,25 @@ providers:
     commercial_use_evidence_url: https://aws.amazon.com/polly/
     voice_license_evidence_url: https://docs.aws.amazon.com/polly/latest/dg/voicelist.html
     paid_plan_required: true
+    plan_evidence_status: HOLD_REVIEW
     beta_feature_allowed: false
+    beta_features_allowed: false
+    beta_features_excluded_evidence: Beta/preview voice features excluded unless separately approved.
     standalone_audio_distribution_allowed: HOLD_REVIEW
+    standalone_audio_distribution_evidence: HOLD_REVIEW
     attribution_required: HOLD_REVIEW
+    selected_voice_attribution_requirement: HOLD_REVIEW
+    selected_voice_restrictions: HOLD_REVIEW
+    commercial_internal_eval_permission: HOLD_REVIEW
+    provider_terms_review_status: HOLD_REVIEW
+    data_retention_review_status: HOLD_REVIEW
     data_retention_notes: AWS account, service terms, selected voice terms, and audiobook output distribution require owner/legal review.
     voice_rights_status: HOLD_REVIEW
     selected_voice_id: OWNER_SELECTION_REQUIRED
     selected_voice_display_name: OWNER_SELECTION_REQUIRED
+    selected_voice_type: unknown
     selected_voice_license_evidence_url: OWNER_SELECTION_REQUIRED
+    selected_voice_rights_summary: HOLD_REVIEW
     internal_eval_status: HOLD_PROVIDER_REVIEW
     production_status: PRODUCTION_BLOCKED
     owner_approval_status: OWNER_REVIEW_REQUIRED
@@ -106,14 +161,25 @@ providers:
     commercial_use_evidence_url: https://theearnalism.com/contact
     voice_license_evidence_url: https://theearnalism.com/contact
     paid_plan_required: false
+    plan_evidence_status: NOT_REQUIRED
     beta_feature_allowed: false
+    beta_features_allowed: false
+    beta_features_excluded_evidence: Not applicable to owned narrator workflow.
     standalone_audio_distribution_allowed: HOLD_REVIEW
+    standalone_audio_distribution_evidence: HOLD_REVIEW
     attribution_required: false
+    selected_voice_attribution_requirement: HOLD_REVIEW
+    selected_voice_restrictions: HOLD_REVIEW
+    commercial_internal_eval_permission: HOLD_REVIEW
+    provider_terms_review_status: HOLD_REVIEW
+    data_retention_review_status: HOLD_REVIEW
     data_retention_notes: Requires direct owner/narrator agreement, consent, recording release, and internal legal review before internal evaluation.
     voice_rights_status: OWNER_REVIEW_REQUIRED
     selected_voice_id: OWNER_SELECTION_REQUIRED
     selected_voice_display_name: OWNER_SELECTION_REQUIRED
+    selected_voice_type: unknown
     selected_voice_license_evidence_url: OWNER_SELECTION_REQUIRED
+    selected_voice_rights_summary: HOLD_REVIEW
     internal_eval_status: HOLD_PROVIDER_REVIEW
     production_status: PRODUCTION_BLOCKED
     owner_approval_status: OWNER_REVIEW_REQUIRED

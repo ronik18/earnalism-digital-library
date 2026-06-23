@@ -2,7 +2,7 @@
 
 - Book: Frankenstein
 - Slug: `frankenstein`
-- Generated: 2026-06-23T04:32:44+00:00
+- Generated: 2026-06-23T06:19:33+00:00
 - Mode: `dry-run`
 - Dry run: `true`
 | Item | Status | Notes |
@@ -18,7 +18,7 @@
 | audiobook_planning_packet | BLOCKED | public audiobook release is blocked by default.; model/voice license evidence is missing. |
 | TTS_MODEL_LICENSE_AND_SUITABILITY_REVIEW | HOLD_VOICE_RIGHTS | selected model `kokoro` is not eligible for real internal generation: HOLD_VOICE_RIGHTS.; voice_license is missing or requires review.; voice rights evidence is missing or varies by voice. |
 | TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW | HOLD_VOICE_RIGHTS | selected model `kokoro` is not eligible for internal evaluation: HOLD_VOICE_RIGHTS.; voice_license is missing or requires review.; voice rights evidence is missing or varies by voice. |
-| LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW | HOLD_PROVIDER_REVIEW | selected provider `elevenlabs` is not eligible for internal evaluation: HOLD_PROVIDER_REVIEW.; selected provider voice is not selected.; paid provider plan evidence is required before internal evaluation. |
+| LICENSED_PROVIDER_TTS_INTERNAL_EVAL_REVIEW | HOLD_PROVIDER_REVIEW | selected provider `elevenlabs` is not eligible for internal evaluation: HOLD_PROVIDER_REVIEW.; paid provider plan evidence is required before internal evaluation.; owner approval is required before provider internal evaluation. |
 | audiobook_sync_dry_run_stage | HOLD_SYNC_QA_REQUIRED | sync release evidence remains HOLD; public audio cannot be released. |
 | narration_qa_gate | BLOCKED | human narration QA is missing or not approved.; accessibility listening QA is missing or not approved. |
 | audiobook_legal_accessibility_compliance_gate | BLOCKED | public audio remains PUBLIC_AUDIO_RELEASE_BLOCKED until separate owner/legal/accessibility release approval.; rollback_approval_status is required before audiobook release.; owner_legal_approval_status is required before audiobook release. |

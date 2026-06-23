@@ -31,6 +31,7 @@ PRODUCTION_BLOCKED = "PRODUCTION_BLOCKED"
 UNKNOWN_VALUES = {"", "unknown", "owner_selection_required", "tbd", "todo", "missing", "none"}
 VALID_STANDALONE_OUTPUT = {"UNKNOWN", "ALLOWED", "BLOCKED", "HOLD_REVIEW"}
 VALID_INTERNAL_EVAL = {ELIGIBLE_INTERNAL_EVAL, HOLD_PROVIDER_REVIEW, BLOCKED}
+VALID_SELECTED_VOICE_TYPES = {"platform_voice", "cloned_voice", "generated_voice", "unknown"}
 REQUIRED_FIELDS = (
     "provider_id",
     "display_name",
@@ -38,11 +39,22 @@ REQUIRED_FIELDS = (
     "commercial_use_evidence_url",
     "voice_license_evidence_url",
     "paid_plan_required",
+    "plan_evidence_status",
     "beta_feature_allowed",
+    "beta_features_allowed",
+    "beta_features_excluded_evidence",
     "standalone_audio_distribution_allowed",
+    "standalone_audio_distribution_evidence",
     "attribution_required",
+    "selected_voice_attribution_requirement",
+    "selected_voice_restrictions",
+    "commercial_internal_eval_permission",
+    "provider_terms_review_status",
+    "data_retention_review_status",
     "data_retention_notes",
     "voice_rights_status",
+    "selected_voice_type",
+    "selected_voice_rights_summary",
     "internal_eval_status",
     "production_status",
     "owner_approval_status",
@@ -144,6 +156,23 @@ def has_url(value: Any) -> bool:
     return text.startswith("https://") or text.startswith("http://")
 
 
+def is_approved(value: Any) -> bool:
+    return upper(value) in {"APPROVED", "RECORDED", "ALLOWED", "NOT_REQUIRED"}
+
+
+def beta_features_enabled(provider: dict[str, Any]) -> bool:
+    return bool(provider.get("beta_feature_allowed")) or bool(provider.get("beta_features_allowed"))
+
+
+def explicit_clone_rights_evidence(provider: dict[str, Any]) -> bool:
+    summary = normalized(provider.get("selected_voice_rights_summary")).lower()
+    return (
+        upper(provider.get("voice_rights_status")) in {"APPROVED", "LICENSED"}
+        and has_url(provider.get("selected_voice_license_evidence_url"))
+        and any(token in summary for token in ("consent", "licensed", "approved", "explicit"))
+    )
+
+
 def display_value(value: Any, fallback: str = "not selected") -> str:
     text = normalized(value)
     return text if text else fallback
@@ -188,20 +217,38 @@ def classify_provider(provider: dict[str, Any]) -> ProviderDecision:
         issues.append("internal_eval_status must be ELIGIBLE_INTERNAL_EVAL, HOLD_PROVIDER_REVIEW, or BLOCKED.")
     if upper(provider.get("production_status")) != PRODUCTION_BLOCKED:
         issues.append("production_status must remain PRODUCTION_BLOCKED.")
-    if bool(provider.get("beta_feature_allowed")):
+    if beta_features_enabled(provider):
         issues.append("beta features are blocked for this internal-evaluation path.")
+    if not is_approved(provider.get("beta_features_excluded_evidence")):
+        issues.append("beta feature exclusion evidence is missing or requires review.")
     if is_unknown(provider.get("voice_rights_status")) or upper(provider.get("voice_rights_status")) not in {
         "APPROVED",
         "LICENSED",
         "OWNER_REVIEW_REQUIRED",
+        "HOLD_REVIEW",
     }:
         issues.append("voice rights status is missing or requires review.")
 
     selected_voice_id = normalized(provider.get("selected_voice_id"))
     if not selected_voice_id or selected_voice_id == "OWNER_SELECTION_REQUIRED":
         issues.append("selected provider voice is not selected.")
+    selected_voice_type = normalized(provider.get("selected_voice_type")).lower()
+    if selected_voice_type not in VALID_SELECTED_VOICE_TYPES:
+        issues.append("selected_voice_type must be platform_voice, cloned_voice, generated_voice, or unknown.")
+    if selected_voice_type == "unknown":
+        issues.append("selected voice type is unknown.")
+    if selected_voice_type == "cloned_voice" and not explicit_clone_rights_evidence(provider):
+        issues.append("cloned voice requires explicit voice-rights, consent, and license evidence.")
+    if selected_voice_type not in {"platform_voice", "generated_voice"}:
+        issues.append("selected voice must be a provider/platform voice or generated voice before internal evaluation.")
     if is_unknown(provider.get("selected_voice_license_evidence_url")) or not has_url(provider.get("selected_voice_license_evidence_url")):
         issues.append("selected provider voice license evidence is missing.")
+    if is_unknown(provider.get("selected_voice_rights_summary")):
+        issues.append("selected provider voice rights summary is missing.")
+    if upper(provider.get("selected_voice_attribution_requirement")) == "HOLD_REVIEW":
+        issues.append("selected voice attribution requirements require review.")
+    if upper(provider.get("selected_voice_restrictions")) == "HOLD_REVIEW":
+        issues.append("selected voice restrictions require review.")
 
     owner_approved = upper(provider.get("owner_approval_status")) == "APPROVED"
     legal_approved = upper(provider.get("legal_review_status")) == "APPROVED"
@@ -210,21 +257,41 @@ def classify_provider(provider: dict[str, Any]) -> ProviderDecision:
     if not legal_approved:
         issues.append("legal/internal review is required before provider internal evaluation.")
 
+    if bool(provider.get("paid_plan_required")) and not is_approved(provider.get("plan_evidence_status")):
+        issues.append("paid plan evidence status is missing or requires review.")
     if bool(provider.get("paid_plan_required")) and is_unknown(provider.get("paid_plan_evidence_url")):
         issues.append("paid plan evidence is required before using this provider for internal evaluation.")
+    if not is_approved(provider.get("commercial_internal_eval_permission")):
+        issues.append("commercial internal-eval permission is missing or requires review.")
+    if not is_approved(provider.get("standalone_audio_distribution_evidence")):
+        issues.append("standalone audio distribution evidence is missing or requires review.")
+    if not is_approved(provider.get("provider_terms_review_status")):
+        issues.append("provider terms review is missing or requires review.")
+    if not is_approved(provider.get("data_retention_review_status")):
+        issues.append("data retention review is missing or requires review.")
     if is_unknown(provider.get("blockers")):
         issues.append("blockers must record the current provider blocker set.")
 
     complete_internal_evidence = (
         declared_internal_eval == ELIGIBLE_INTERNAL_EVAL
         and standalone == "ALLOWED"
-        and not bool(provider.get("beta_feature_allowed"))
+        and not beta_features_enabled(provider)
+        and is_approved(provider.get("beta_features_excluded_evidence"))
         and upper(provider.get("production_status")) == PRODUCTION_BLOCKED
         and upper(provider.get("voice_rights_status")) in {"APPROVED", "LICENSED"}
+        and selected_voice_type in {"platform_voice", "generated_voice"}
         and selected_voice_id
         and selected_voice_id != "OWNER_SELECTION_REQUIRED"
         and has_url(provider.get("selected_voice_license_evidence_url"))
+        and not is_unknown(provider.get("selected_voice_rights_summary"))
+        and is_approved(provider.get("selected_voice_attribution_requirement"))
+        and is_approved(provider.get("selected_voice_restrictions"))
+        and is_approved(provider.get("commercial_internal_eval_permission"))
+        and is_approved(provider.get("standalone_audio_distribution_evidence"))
+        and is_approved(provider.get("provider_terms_review_status"))
+        and is_approved(provider.get("data_retention_review_status"))
         and (not bool(provider.get("paid_plan_required")) or has_url(provider.get("paid_plan_evidence_url")))
+        and (not bool(provider.get("paid_plan_required")) or is_approved(provider.get("plan_evidence_status")))
         and owner_approved
         and legal_approved
     )
@@ -233,7 +300,7 @@ def classify_provider(provider: dict[str, Any]) -> ProviderDecision:
         decision_status = ELIGIBLE_INTERNAL_EVAL
         internal_eval_status = ELIGIBLE_INTERNAL_EVAL
         internal_generation_status = ELIGIBLE_INTERNAL_EVAL_ONLY
-    elif bool(provider.get("beta_feature_allowed")) or standalone == "BLOCKED" or declared_internal_eval == BLOCKED:
+    elif beta_features_enabled(provider) or standalone == "BLOCKED" or declared_internal_eval == BLOCKED:
         decision_status = BLOCKED
         internal_eval_status = BLOCKED
         internal_generation_status = BLOCKED
@@ -315,15 +382,26 @@ def review_markdown(decisions: list[ProviderDecision]) -> str:
                 f"- Commercial-use evidence: {markdown_link('commercial evidence', provider.get('commercial_use_evidence_url'))}",
                 f"- Voice license evidence: {markdown_link('voice evidence', provider.get('voice_license_evidence_url'))}",
                 f"- Paid plan required: `{normalized(provider.get('paid_plan_required'))}`",
+                f"- Paid plan evidence status: `{display_value(provider.get('plan_evidence_status'), 'missing')}`",
                 f"- Paid plan evidence URL: {display_value(provider.get('paid_plan_evidence_url'), 'missing')}",
                 f"- Beta features allowed: `{normalized(provider.get('beta_feature_allowed'))}`",
+                f"- Beta features allowed alias: `{normalized(provider.get('beta_features_allowed'))}`",
+                f"- Beta features excluded evidence: {display_value(provider.get('beta_features_excluded_evidence'), 'missing')}",
                 f"- Standalone audio distribution: `{normalized(provider.get('standalone_audio_distribution_allowed'))}`",
+                f"- Standalone audio distribution evidence: `{display_value(provider.get('standalone_audio_distribution_evidence'), 'missing')}`",
                 f"- Attribution required: `{normalized(provider.get('attribution_required'))}`",
+                f"- Commercial internal-eval permission: `{display_value(provider.get('commercial_internal_eval_permission'), 'missing')}`",
+                f"- Provider terms review status: `{display_value(provider.get('provider_terms_review_status'), 'missing')}`",
+                f"- Data retention review status: `{display_value(provider.get('data_retention_review_status'), 'missing')}`",
                 f"- Data/privacy notes: {normalized(provider.get('data_retention_notes'))}",
                 f"- Voice rights status: `{normalized(provider.get('voice_rights_status'))}`",
                 f"- Selected voice ID: `{display_value(provider.get('selected_voice_id'))}`",
                 f"- Selected voice display name: {display_value(provider.get('selected_voice_display_name'))}",
+                f"- Selected voice type: `{display_value(provider.get('selected_voice_type'), 'unknown')}`",
                 f"- Selected voice license evidence: {display_value(provider.get('selected_voice_license_evidence_url'), 'missing')}",
+                f"- Selected voice rights summary: {display_value(provider.get('selected_voice_rights_summary'), 'missing')}",
+                f"- Selected voice attribution: `{display_value(provider.get('selected_voice_attribution_requirement'), 'missing')}`",
+                f"- Selected voice restrictions: `{display_value(provider.get('selected_voice_restrictions'), 'missing')}`",
                 f"- Owner approval: `{normalized(provider.get('owner_approval_status'))}`",
                 f"- Legal/internal review: `{normalized(provider.get('legal_review_status'))}`",
                 f"- Internal-eval decision: `{decision.internal_eval_status}`",
@@ -346,16 +424,18 @@ def scorecard_markdown(decisions: list[ProviderDecision]) -> str:
     lines = [
         "# TTS Provider Commercial Rights Scorecard",
         "",
-        "| Provider | Commercial evidence | Selected voice | Owner approval | Legal review | Internal eval | Production |",
-        "| --- | --- | --- | --- | --- | --- | --- |",
+        "| Provider | Commercial eval | Standalone evidence | Selected voice | Voice type | Owner approval | Legal review | Internal eval | Production |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for decision in decisions:
         provider = decision.provider
         lines.append(
-            "| {display} | {commercial} | {voice} | {owner} | {legal} | {internal_eval} | {production} |".format(
+            "| {display} | {commercial_eval} | {standalone} | {voice} | {voice_type} | {owner} | {legal} | {internal_eval} | {production} |".format(
                 display=normalized(provider.get("display_name")),
-                commercial=normalized(provider.get("standalone_audio_distribution_allowed")),
+                commercial_eval=display_value(provider.get("commercial_internal_eval_permission"), "missing"),
+                standalone=normalized(provider.get("standalone_audio_distribution_evidence")),
                 voice=display_value(provider.get("selected_voice_id")),
+                voice_type=display_value(provider.get("selected_voice_type"), "unknown"),
                 owner=normalized(provider.get("owner_approval_status")),
                 legal=normalized(provider.get("legal_review_status")),
                 internal_eval=decision.internal_eval_status,
@@ -404,11 +484,20 @@ def elevenlabs_review_form_markdown(decisions: list[ProviderDecision]) -> str:
             "| Field | Current / Required Value | Owner/Legal Entry |",
             "| --- | --- | --- |",
             f"| Provider account/plan | Paid plan required: `{normalized(provider.get('paid_plan_required'))}`. Attach plan evidence URL or invoice reference. |  |",
+            f"| Plan evidence status | Current: `{display_value(provider.get('plan_evidence_status'), 'missing')}`. Must become APPROVED or RECORDED. |  |",
             f"| Selected voice | Current: `{display_value(provider.get('selected_voice_id'))}`. Select exact voice ID and display name. |  |",
+            f"| Selected voice type | Current: `{display_value(provider.get('selected_voice_type'), 'unknown')}`. Must be platform/provider voice or approved generated voice. |  |",
+            f"| Selected voice rights summary | Current: {display_value(provider.get('selected_voice_rights_summary'), 'missing')}. Must be owner/legal reviewed. |  |",
             f"| Official commercial-use evidence | {display_value(provider.get('commercial_use_evidence_url'), 'missing')} plus owner/legal notes. |  |",
             f"| Beta features excluded | Current: `{normalized(provider.get('beta_feature_allowed'))}`. Must remain false. |  |",
-            f"| Standalone audio distribution evidence | Current: `{normalized(provider.get('standalone_audio_distribution_allowed'))}`. Attach reviewed evidence. |  |",
+            f"| Beta exclusion evidence | Current: {display_value(provider.get('beta_features_excluded_evidence'), 'missing')}. Must become APPROVED or RECORDED. |  |",
+            f"| Standalone audio distribution evidence | Current: `{display_value(provider.get('standalone_audio_distribution_evidence'), 'missing')}`. Attach reviewed evidence. |  |",
+            f"| Commercial internal-eval permission | Current: `{display_value(provider.get('commercial_internal_eval_permission'), 'missing')}`. Must become APPROVED or ALLOWED. |  |",
             f"| Attribution rules | Current: `{display_value(provider.get('attribution_required'), 'HOLD_REVIEW')}`. Record exact requirement. |  |",
+            f"| Selected voice attribution | Current: `{display_value(provider.get('selected_voice_attribution_requirement'), 'missing')}`. Record exact requirement. |  |",
+            f"| Selected voice restrictions | Current: `{display_value(provider.get('selected_voice_restrictions'), 'missing')}`. Record exact restrictions. |  |",
+            f"| Provider terms review | Current: `{display_value(provider.get('provider_terms_review_status'), 'missing')}`. Must become APPROVED. |  |",
+            f"| Data retention review | Current: `{display_value(provider.get('data_retention_review_status'), 'missing')}`. Must become APPROVED. |  |",
             f"| Data/privacy notes | {normalized(provider.get('data_retention_notes'))} |  |",
             f"| Voice license evidence | {display_value(provider.get('voice_license_evidence_url'), 'missing')} plus selected voice evidence. |  |",
             "| Owner approval | REQUIRED: reviewer name, date, and decision. |  |",
@@ -449,11 +538,17 @@ def elevenlabs_checklist_markdown(decisions: list[ProviderDecision]) -> str:
             "",
             "- [ ] Paid provider plan evidence is documented.",
             "- [ ] Official commercial-use evidence is owner/legal reviewed.",
+            "- [ ] Commercial internal-evaluation permission is approved or allowed.",
             "- [ ] Standalone audio distribution permission is owner/legal reviewed.",
             "- [ ] Beta features remain excluded.",
+            "- [ ] Beta exclusion evidence is approved or recorded.",
             "- [ ] Exact selected voice ID and display name are recorded.",
+            "- [ ] Selected voice type is platform/provider voice or approved generated voice.",
             "- [ ] Selected voice license and voice-rights evidence are documented.",
             "- [ ] Attribution requirements are understood and recorded.",
+            "- [ ] Selected voice restrictions are understood and recorded.",
+            "- [ ] Provider terms review is approved.",
+            "- [ ] Data retention review is approved.",
             "- [ ] Data/privacy and retention notes are reviewed.",
             "- [ ] Owner approval is recorded with reviewer name and date.",
             "- [ ] Legal/internal review is complete and not blocked.",

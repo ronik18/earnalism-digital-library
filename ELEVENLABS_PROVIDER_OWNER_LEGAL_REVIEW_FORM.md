@@ -19,11 +19,20 @@ This form is for manual evidence collection only. It does not approve internal g
 | Field | Current / Required Value | Owner/Legal Entry |
 | --- | --- | --- |
 | Provider account/plan | Paid plan required: `True`. Attach plan evidence URL or invoice reference. |  |
-| Selected voice | Current: `OWNER_SELECTION_REQUIRED`. Select exact voice ID and display name. |  |
+| Plan evidence status | Current: `HOLD_REVIEW`. Must become APPROVED or RECORDED. |  |
+| Selected voice | Current: `21m00Tcm4TlvDq8ikWAM`. Select exact voice ID and display name. |  |
+| Selected voice type | Current: `platform_voice`. Must be platform/provider voice or approved generated voice. |  |
+| Selected voice rights summary | Current: Proposed ElevenLabs platform voice for owner/legal review only; internal evaluation is blocked until selected voice rights, plan, attribution, restrictions, and account terms are manually approved.. Must be owner/legal reviewed. |  |
 | Official commercial-use evidence | https://help.elevenlabs.io/hc/en-us/articles/13313564663441-Can-I-publish-the-content-I-generate-on-the-platform plus owner/legal notes. |  |
 | Beta features excluded | Current: `False`. Must remain false. |  |
-| Standalone audio distribution evidence | Current: `ALLOWED`. Attach reviewed evidence. |  |
+| Beta exclusion evidence | Current: General-availability provider use only; beta, experimental, or preview voice features are excluded unless separately approved.. Must become APPROVED or RECORDED. |  |
+| Standalone audio distribution evidence | Current: `HOLD_REVIEW`. Attach reviewed evidence. |  |
+| Commercial internal-eval permission | Current: `HOLD_REVIEW`. Must become APPROVED or ALLOWED. |  |
 | Attribution rules | Current: `HOLD_REVIEW`. Record exact requirement. |  |
+| Selected voice attribution | Current: `HOLD_REVIEW`. Record exact requirement. |  |
+| Selected voice restrictions | Current: `HOLD_REVIEW`. Record exact restrictions. |  |
+| Provider terms review | Current: `HOLD_REVIEW`. Must become APPROVED. |  |
+| Data retention review | Current: `HOLD_REVIEW`. Must become APPROVED. |  |
 | Data/privacy notes | Account, privacy, voice-library, and data-retention settings require owner/legal review before internal generation. |  |
 | Voice license evidence | https://elevenlabs.io/terms plus selected voice evidence. |  |
 | Owner approval | REQUIRED: reviewer name, date, and decision. |  |

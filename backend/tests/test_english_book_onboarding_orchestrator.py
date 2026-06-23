@@ -264,7 +264,10 @@ def test_next_prompt_requests_voice_rights_evidence_before_audio_generation(tmp_
     assert "Current selected Kokoro voice: `af_heart`" in prompt
     assert "Current selected voice internal-eval status: `HOLD_VOICE_RIGHTS`" in prompt
     assert "Current selected licensed provider: `elevenlabs`" in prompt
+    assert "Current selected provider voice: `OWNER_SELECTION_REQUIRED`" in prompt
+    assert "Current selected provider voice type: `platform_voice`" in prompt
     assert "Current licensed provider internal-eval status: `HOLD_PROVIDER_REVIEW`" in prompt
+    assert "Current licensed provider blockers:" in prompt
     assert "KOKORO_AF_HEART_OWNER_LEGAL_REVIEW_FORM.md" in prompt
     assert "KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md" in prompt
     assert "ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md" in prompt
