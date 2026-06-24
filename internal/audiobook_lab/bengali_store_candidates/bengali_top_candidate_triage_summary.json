@@ -1,0 +1,413 @@
+{
+  "generated_at": "2026-06-23T19:51:47+00:00",
+  "generated_by": "scripts/triage_bengali_audiobook_candidates.py",
+  "human_qa_required": true,
+  "input_dir": "internal/audiobook_lab/bengali_store_candidates",
+  "limit": 5,
+  "mode": "remaster-top",
+  "public_audio_files": [],
+  "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+  "remaster_results": {
+    "book-0deb35c750": {
+      "after_objective_audio_score": 9.0,
+      "before_objective_audio_score": 8.8,
+      "clipping_risk": "LOW_AFTER_INTERNAL_LOUDNORM_REVIEW_COPY",
+      "ffprobe_after": {
+        "analysis_status": "PASS",
+        "bitrate_bps": 128007,
+        "channels": 1,
+        "clipping_risk": "LOW_AFTER_INTERNAL_LOUDNORM_REVIEW_COPY",
+        "codec_name": "mp3",
+        "duration_seconds": 849.455,
+        "format": "mp3",
+        "issues": [],
+        "objective_audio_score": 9.0,
+        "sample_rate_hz": 48000
+      },
+      "human_qa_still_required": true,
+      "loudness_improvement": "internal review copy normalized with ffmpeg loudnorm target I=-18 TP=-2 LRA=11",
+      "objective_score_reaches_9_5": false,
+      "original_source_hash_unchanged": true,
+      "output_path": "internal/audiobook_lab/bengali_store_candidates/book-0deb35c750/improved_internal/audio/book-0deb35c750_internal_remaster_review.mp3",
+      "output_sha256": "b8d3efa640edf1c37caac099de36c15530d515ec6c055895c6734815a101c1c7",
+      "silence_trim_result": "leading/trailing silence trim filter applied with conservative -45dB threshold",
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-0deb35c750/book-0deb35c750.mp3",
+      "source_sha256": "85eead9bbd512161d2c9fb58ffde4c2689012c813cb84ee0c387000201a394dc",
+      "status": "INTERNAL_REMASTER_REVIEW_COPY_CREATED"
+    },
+    "book-2e468c4990": {
+      "after_objective_audio_score": 9.0,
+      "before_objective_audio_score": 8.8,
+      "clipping_risk": "LOW_AFTER_INTERNAL_LOUDNORM_REVIEW_COPY",
+      "ffprobe_after": {
+        "analysis_status": "PASS",
+        "bitrate_bps": 128005,
+        "channels": 1,
+        "clipping_risk": "LOW_AFTER_INTERNAL_LOUDNORM_REVIEW_COPY",
+        "codec_name": "mp3",
+        "duration_seconds": 1211.831,
+        "format": "mp3",
+        "issues": [],
+        "objective_audio_score": 9.0,
+        "sample_rate_hz": 48000
+      },
+      "human_qa_still_required": true,
+      "loudness_improvement": "internal review copy normalized with ffmpeg loudnorm target I=-18 TP=-2 LRA=11",
+      "objective_score_reaches_9_5": false,
+      "original_source_hash_unchanged": true,
+      "output_path": "internal/audiobook_lab/bengali_store_candidates/book-2e468c4990/improved_internal/audio/book-2e468c4990_internal_remaster_review.mp3",
+      "output_sha256": "f257a7bfb3835f7c2efc3adf2c09ddb1eb2c2a99cba64e0b0825cf558a2beee1",
+      "silence_trim_result": "leading/trailing silence trim filter applied with conservative -45dB threshold",
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-2e468c4990/book-2e468c4990.mp3",
+      "source_sha256": "1987ce077c674799250188c855eaecba5e8d71087bbba5e63f071c916ce23a3f",
+      "status": "INTERNAL_REMASTER_REVIEW_COPY_CREATED"
+    },
+    "book-5704b31005": {
+      "after_objective_audio_score": 9.0,
+      "before_objective_audio_score": 8.8,
+      "clipping_risk": "LOW_AFTER_INTERNAL_LOUDNORM_REVIEW_COPY",
+      "ffprobe_after": {
+        "analysis_status": "PASS",
+        "bitrate_bps": 128007,
+        "channels": 1,
+        "clipping_risk": "LOW_AFTER_INTERNAL_LOUDNORM_REVIEW_COPY",
+        "codec_name": "mp3",
+        "duration_seconds": 1103.816,
+        "format": "mp3",
+        "issues": [],
+        "objective_audio_score": 9.0,
+        "sample_rate_hz": 48000
+      },
+      "human_qa_still_required": true,
+      "loudness_improvement": "internal review copy normalized with ffmpeg loudnorm target I=-18 TP=-2 LRA=11",
+      "objective_score_reaches_9_5": false,
+      "original_source_hash_unchanged": true,
+      "output_path": "internal/audiobook_lab/bengali_store_candidates/book-5704b31005/improved_internal/audio/book-5704b31005_internal_remaster_review.mp3",
+      "output_sha256": "b0c2b4dc9a09e9ad3ac788d67e164831726a7a6d64cd0cc319837324d767765b",
+      "silence_trim_result": "leading/trailing silence trim filter applied with conservative -45dB threshold",
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-5704b31005/book-5704b31005.mp3",
+      "source_sha256": "58de0bfdf5f61f5034ad9899bbd3ea7e2f952d9672e7ef9573bfef5f123a3041",
+      "status": "INTERNAL_REMASTER_REVIEW_COPY_CREATED"
+    },
+    "book-88ded9b47c": {
+      "after_objective_audio_score": 9.0,
+      "before_objective_audio_score": 8.8,
+      "clipping_risk": "LOW_AFTER_INTERNAL_LOUDNORM_REVIEW_COPY",
+      "ffprobe_after": {
+        "analysis_status": "PASS",
+        "bitrate_bps": 128005,
+        "channels": 1,
+        "clipping_risk": "LOW_AFTER_INTERNAL_LOUDNORM_REVIEW_COPY",
+        "codec_name": "mp3",
+        "duration_seconds": 1600.153,
+        "format": "mp3",
+        "issues": [],
+        "objective_audio_score": 9.0,
+        "sample_rate_hz": 48000
+      },
+      "human_qa_still_required": true,
+      "loudness_improvement": "internal review copy normalized with ffmpeg loudnorm target I=-18 TP=-2 LRA=11",
+      "objective_score_reaches_9_5": false,
+      "original_source_hash_unchanged": true,
+      "output_path": "internal/audiobook_lab/bengali_store_candidates/book-88ded9b47c/improved_internal/audio/book-88ded9b47c_internal_remaster_review.mp3",
+      "output_sha256": "bc25ea0816b5e125249751ca11ec551bb402b3b3dbd35bafd94c968e3dd12cb2",
+      "silence_trim_result": "leading/trailing silence trim filter applied with conservative -45dB threshold",
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-88ded9b47c/book-88ded9b47c.mp3",
+      "source_sha256": "daf304f568e34ef1b3632ffbfe9429223725e2f4a68cac91fe23062becefa530",
+      "status": "INTERNAL_REMASTER_REVIEW_COPY_CREATED"
+    },
+    "book-b9d47814a8": {
+      "after_objective_audio_score": 9.0,
+      "before_objective_audio_score": 8.8,
+      "clipping_risk": "LOW_AFTER_INTERNAL_LOUDNORM_REVIEW_COPY",
+      "ffprobe_after": {
+        "analysis_status": "PASS",
+        "bitrate_bps": 128004,
+        "channels": 1,
+        "clipping_risk": "LOW_AFTER_INTERNAL_LOUDNORM_REVIEW_COPY",
+        "codec_name": "mp3",
+        "duration_seconds": 1865.296,
+        "format": "mp3",
+        "issues": [],
+        "objective_audio_score": 9.0,
+        "sample_rate_hz": 48000
+      },
+      "human_qa_still_required": true,
+      "loudness_improvement": "internal review copy normalized with ffmpeg loudnorm target I=-18 TP=-2 LRA=11",
+      "objective_score_reaches_9_5": false,
+      "original_source_hash_unchanged": true,
+      "output_path": "internal/audiobook_lab/bengali_store_candidates/book-b9d47814a8/improved_internal/audio/book-b9d47814a8_internal_remaster_review.mp3",
+      "output_sha256": "dc81d98760d9ccfcb21777709e944ec4099a78c0d07ec3e189437b72a3d1a951",
+      "silence_trim_result": "leading/trailing silence trim filter applied with conservative -45dB threshold",
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-b9d47814a8/book-b9d47814a8.mp3",
+      "source_sha256": "b22cac34b5b38c9be536c8d281481d20d3102662c36450f0b3b16f47884fab10",
+      "status": "INTERNAL_REMASTER_REVIEW_COPY_CREATED"
+    }
+  },
+  "sync_results": {
+    "book-0deb35c750": {
+      "actions": [
+        {
+          "action": "normalized_json_formatting",
+          "content_invented": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-0deb35c750/improved_internal/sync/book-0deb35c750_chapters.json",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-0deb35c750/book-0deb35c750_chapters.json"
+        },
+        {
+          "action": "safe_vtt_format_and_order_repair",
+          "content_invented": false,
+          "cue_content_preserved": true,
+          "cue_count_after": 1566,
+          "cue_count_before": 1566,
+          "ordering_changed": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-0deb35c750/improved_internal/sync/book-0deb35c750_highlight.vtt",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-0deb35c750/book-0deb35c750_highlight.vtt"
+        },
+        {
+          "action": "normalized_json_formatting",
+          "content_invented": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-0deb35c750/improved_internal/sync/book-0deb35c750_timestamps.json",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-0deb35c750/book-0deb35c750_timestamps.json"
+        }
+      ],
+      "after_sync_usability_score": 8.6,
+      "before_sync_usability_score": 8.0,
+      "content_invented": false,
+      "human_sync_qa_still_required": true,
+      "status": "SYNC_SIDECAR_REPAIR_WRITTEN",
+      "sync_score_reaches_9_5": false
+    },
+    "book-2e468c4990": {
+      "actions": [
+        {
+          "action": "normalized_json_formatting",
+          "content_invented": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-2e468c4990/improved_internal/sync/book-2e468c4990_chapters.json",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-2e468c4990/book-2e468c4990_chapters.json"
+        },
+        {
+          "action": "safe_vtt_format_and_order_repair",
+          "content_invented": false,
+          "cue_content_preserved": true,
+          "cue_count_after": 2297,
+          "cue_count_before": 2297,
+          "ordering_changed": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-2e468c4990/improved_internal/sync/book-2e468c4990_highlight.vtt",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-2e468c4990/book-2e468c4990_highlight.vtt"
+        },
+        {
+          "action": "normalized_json_formatting",
+          "content_invented": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-2e468c4990/improved_internal/sync/book-2e468c4990_timestamps.json",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-2e468c4990/book-2e468c4990_timestamps.json"
+        }
+      ],
+      "after_sync_usability_score": 8.6,
+      "before_sync_usability_score": 8.0,
+      "content_invented": false,
+      "human_sync_qa_still_required": true,
+      "status": "SYNC_SIDECAR_REPAIR_WRITTEN",
+      "sync_score_reaches_9_5": false
+    },
+    "book-5704b31005": {
+      "actions": [
+        {
+          "action": "normalized_json_formatting",
+          "content_invented": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-5704b31005/improved_internal/sync/book-5704b31005_chapters.json",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-5704b31005/book-5704b31005_chapters.json"
+        },
+        {
+          "action": "safe_vtt_format_and_order_repair",
+          "content_invented": false,
+          "cue_content_preserved": true,
+          "cue_count_after": 2022,
+          "cue_count_before": 2022,
+          "ordering_changed": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-5704b31005/improved_internal/sync/book-5704b31005_highlight.vtt",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-5704b31005/book-5704b31005_highlight.vtt"
+        },
+        {
+          "action": "normalized_json_formatting",
+          "content_invented": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-5704b31005/improved_internal/sync/book-5704b31005_timestamps.json",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-5704b31005/book-5704b31005_timestamps.json"
+        }
+      ],
+      "after_sync_usability_score": 8.6,
+      "before_sync_usability_score": 8.0,
+      "content_invented": false,
+      "human_sync_qa_still_required": true,
+      "status": "SYNC_SIDECAR_REPAIR_WRITTEN",
+      "sync_score_reaches_9_5": false
+    },
+    "book-88ded9b47c": {
+      "actions": [
+        {
+          "action": "normalized_json_formatting",
+          "content_invented": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-88ded9b47c/improved_internal/sync/book-88ded9b47c_chapters.json",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-88ded9b47c/book-88ded9b47c_chapters.json"
+        },
+        {
+          "action": "safe_vtt_format_and_order_repair",
+          "content_invented": false,
+          "cue_content_preserved": true,
+          "cue_count_after": 2917,
+          "cue_count_before": 2917,
+          "ordering_changed": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-88ded9b47c/improved_internal/sync/book-88ded9b47c_highlight.vtt",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-88ded9b47c/book-88ded9b47c_highlight.vtt"
+        },
+        {
+          "action": "normalized_json_formatting",
+          "content_invented": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-88ded9b47c/improved_internal/sync/book-88ded9b47c_timestamps.json",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-88ded9b47c/book-88ded9b47c_timestamps.json"
+        }
+      ],
+      "after_sync_usability_score": 8.6,
+      "before_sync_usability_score": 8.0,
+      "content_invented": false,
+      "human_sync_qa_still_required": true,
+      "status": "SYNC_SIDECAR_REPAIR_WRITTEN",
+      "sync_score_reaches_9_5": false
+    },
+    "book-b9d47814a8": {
+      "actions": [
+        {
+          "action": "normalized_json_formatting",
+          "content_invented": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-b9d47814a8/improved_internal/sync/book-b9d47814a8_chapters.json",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-b9d47814a8/book-b9d47814a8_chapters.json"
+        },
+        {
+          "action": "safe_vtt_format_and_order_repair",
+          "content_invented": false,
+          "cue_content_preserved": true,
+          "cue_count_after": 3514,
+          "cue_count_before": 3514,
+          "ordering_changed": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-b9d47814a8/improved_internal/sync/book-b9d47814a8_highlight.vtt",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-b9d47814a8/book-b9d47814a8_highlight.vtt"
+        },
+        {
+          "action": "normalized_json_formatting",
+          "content_invented": false,
+          "output_path": "internal/audiobook_lab/bengali_store_candidates/book-b9d47814a8/improved_internal/sync/book-b9d47814a8_timestamps.json",
+          "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-b9d47814a8/book-b9d47814a8_timestamps.json"
+        }
+      ],
+      "after_sync_usability_score": 8.6,
+      "before_sync_usability_score": 8.0,
+      "content_invented": false,
+      "human_sync_qa_still_required": true,
+      "status": "SYNC_SIDECAR_REPAIR_WRITTEN",
+      "sync_score_reaches_9_5": false
+    }
+  },
+  "top_candidates": [
+    {
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "candidate_slug": "book-0deb35c750",
+      "composite_score": 8.2259,
+      "duration_readability_score": 10.0,
+      "duration_seconds": 851.304,
+      "improvement_potential_score": 7.97,
+      "missing_blocker_score": 5.05,
+      "missing_required_files": [],
+      "objective_audio_score": 8.8,
+      "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+      "rank": 1,
+      "release_blocker_count": 9,
+      "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+      "rights_evidence_score": 0.0,
+      "sidecar_completeness_score": 10.0,
+      "store_value_score": 10.0,
+      "sync_usability_score": 8.0,
+      "title": "খাতা"
+    },
+    {
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "candidate_slug": "book-2e468c4990",
+      "composite_score": 8.2259,
+      "duration_readability_score": 10.0,
+      "duration_seconds": 1213.392,
+      "improvement_potential_score": 7.97,
+      "missing_blocker_score": 5.05,
+      "missing_required_files": [],
+      "objective_audio_score": 8.8,
+      "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+      "rank": 2,
+      "release_blocker_count": 9,
+      "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+      "rights_evidence_score": 0.0,
+      "sidecar_completeness_score": 10.0,
+      "store_value_score": 10.0,
+      "sync_usability_score": 8.0,
+      "title": "কাবুলিওয়ালা"
+    },
+    {
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "candidate_slug": "book-5704b31005",
+      "composite_score": 8.2259,
+      "duration_readability_score": 10.0,
+      "duration_seconds": 1105.656,
+      "improvement_potential_score": 7.97,
+      "missing_blocker_score": 5.05,
+      "missing_required_files": [],
+      "objective_audio_score": 8.8,
+      "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+      "rank": 3,
+      "release_blocker_count": 9,
+      "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+      "rights_evidence_score": 0.0,
+      "sidecar_completeness_score": 10.0,
+      "store_value_score": 10.0,
+      "sync_usability_score": 8.0,
+      "title": "বিচারক"
+    },
+    {
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "candidate_slug": "book-88ded9b47c",
+      "composite_score": 8.2259,
+      "duration_readability_score": 10.0,
+      "duration_seconds": 1602.024,
+      "improvement_potential_score": 7.97,
+      "missing_blocker_score": 5.05,
+      "missing_required_files": [],
+      "objective_audio_score": 8.8,
+      "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+      "rank": 4,
+      "release_blocker_count": 9,
+      "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+      "rights_evidence_score": 0.0,
+      "sidecar_completeness_score": 10.0,
+      "store_value_score": 10.0,
+      "sync_usability_score": 8.0,
+      "title": "মানভঞ্জন"
+    },
+    {
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "candidate_slug": "book-b9d47814a8",
+      "composite_score": 8.2259,
+      "duration_readability_score": 10.0,
+      "duration_seconds": 1867.128,
+      "improvement_potential_score": 7.97,
+      "missing_blocker_score": 5.05,
+      "missing_required_files": [],
+      "objective_audio_score": 8.8,
+      "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+      "rank": 5,
+      "release_blocker_count": 9,
+      "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+      "rights_evidence_score": 0.0,
+      "sidecar_completeness_score": 10.0,
+      "store_value_score": 10.0,
+      "sync_usability_score": 8.0,
+      "title": "নিশীথে"
+    }
+  ],
+  "total_candidates_ranked": 47
+}

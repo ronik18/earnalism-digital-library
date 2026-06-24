@@ -1,0 +1,37 @@
+{
+  "candidate_slug": "muchiram-gurer-jibanchorit",
+  "files": [
+    {
+      "entry_count": 2,
+      "highlight_usability_score": 8.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_chapters.json",
+      "status": "PASS"
+    },
+    {
+      "bengali_cue_count": 916,
+      "coverage_ratio": 1.0,
+      "coverage_seconds": 548.424,
+      "cue_count": 921,
+      "highlight_usability_score": 8.8,
+      "issues": [
+        "empty cue text at 00:00:01.248 --> 00:00:01.426",
+        "empty cue text at 00:05:37.073 --> 00:05:37.202"
+      ],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_highlight.vtt",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "coverage_ratio": 1.0,
+      "entry_count": 921,
+      "highlight_usability_score": 10.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_timestamps.json",
+      "status": "PASS"
+    }
+  ],
+  "generated_at": "2026-06-23T19:36:08+00:00",
+  "sidecar_file_count": 3,
+  "sidecar_integrity_status": "REVIEW_REQUIRED",
+  "sync_usability_score": 8.0
+}

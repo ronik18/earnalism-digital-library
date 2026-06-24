@@ -1,0 +1,68 @@
+{
+  "audio_files": [
+    "lokrahasya/lokrahasya.mp3"
+  ],
+  "candidate_slug": "lokrahasya",
+  "cover_files": [],
+  "duplicate_audio_files": [],
+  "files": [
+    {
+      "category": "audio",
+      "extension": ".mp3",
+      "path": "lokrahasya/lokrahasya.mp3",
+      "sha256": "250fb094ccd825586ce0a2d4a5d4f64cd2c5c096e786e3b7e5e1a3339feb336f",
+      "size_bytes": 94953892,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/lokrahasya/lokrahasya.mp3"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".json",
+      "path": "lokrahasya/lokrahasya_chapters.json",
+      "sha256": "87cc5eb41b5fabd393061b2e9dca99d1d85bfaf2efb7ce558c0fe9a748184323",
+      "size_bytes": 1592,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/lokrahasya/lokrahasya_chapters.json"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".vtt",
+      "path": "lokrahasya/lokrahasya_highlight.vtt",
+      "sha256": "2dd3a0b6d97250e20f39384e01fa930faaebcd7ff939d04e8eb83fb43301df5d",
+      "size_bytes": 1077887,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/lokrahasya/lokrahasya_highlight.vtt"
+    },
+    {
+      "category": "metadata",
+      "extension": ".json",
+      "path": "lokrahasya/lokrahasya_meta.json",
+      "sha256": "8d9c151a0d81953b348b12bc6122d9681f5fe27fda8bb2535ac4604123b67485",
+      "size_bytes": 3955,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/lokrahasya/lokrahasya_meta.json"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".json",
+      "path": "lokrahasya/lokrahasya_timestamps.json",
+      "sha256": "067b562a50db1cfe21a93dc3942613d9c743ddd483de4f8c0d5d1180595d3904",
+      "size_bytes": 1800340,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/lokrahasya/lokrahasya_timestamps.json"
+    }
+  ],
+  "input_root": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben",
+  "inventory_generated_at": "2026-06-23T19:36:08+00:00",
+  "metadata_files": [
+    "lokrahasya/lokrahasya_meta.json"
+  ],
+  "missing_required_files": [],
+  "orphan_sidecars": [],
+  "public_serving_status": "BLOCKED",
+  "sidecar_files": [
+    "lokrahasya/lokrahasya_chapters.json",
+    "lokrahasya/lokrahasya_highlight.vtt",
+    "lokrahasya/lokrahasya_timestamps.json"
+  ],
+  "source_dir": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/lokrahasya",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "transcript_files": [],
+  "unexpected_files": [],
+  "upload_status": "NOT_UPLOADED"
+}

@@ -1,0 +1,20 @@
+{
+  "audio_files": [
+    {
+      "relative_source_path": "book-bfc51280b3/book-bfc51280b3.mp3",
+      "sha256": "2a7e3728ae4cb7dd1545d805efaec379cc10b8b7d5c5c46fa75809a53c4f9708",
+      "size_bytes": 21533092,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-bfc51280b3/book-bfc51280b3.mp3",
+      "storage_status": "LOCAL_SOURCE_ONLY"
+    }
+  ],
+  "candidate_slug": "book-bfc51280b3",
+  "copy_internal_requested": false,
+  "frontend_build_audio_files": [],
+  "frontend_public_audio_files": [],
+  "generated_at": "2026-06-23T19:36:07+00:00",
+  "internal_copies": [],
+  "public_serving_status": "BLOCKED",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "upload_status": "NOT_UPLOADED"
+}

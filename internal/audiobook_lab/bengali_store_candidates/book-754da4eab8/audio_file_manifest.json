@@ -1,0 +1,20 @@
+{
+  "audio_files": [
+    {
+      "relative_source_path": "book-754da4eab8/book-754da4eab8.mp3",
+      "sha256": "4c1e779f06b134e012600122e69908f3d4b9cec1aa588ee8e151b6467ac31f84",
+      "size_bytes": 8262470,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-754da4eab8/book-754da4eab8.mp3",
+      "storage_status": "LOCAL_SOURCE_ONLY"
+    }
+  ],
+  "candidate_slug": "book-754da4eab8",
+  "copy_internal_requested": false,
+  "frontend_build_audio_files": [],
+  "frontend_public_audio_files": [],
+  "generated_at": "2026-06-23T19:36:07+00:00",
+  "internal_copies": [],
+  "public_serving_status": "BLOCKED",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "upload_status": "NOT_UPLOADED"
+}

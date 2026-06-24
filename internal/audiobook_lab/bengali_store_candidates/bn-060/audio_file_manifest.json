@@ -1,0 +1,20 @@
+{
+  "audio_files": [
+    {
+      "relative_source_path": "bn-060/bn-060.mp3",
+      "sha256": "aef49ba57915a0ee83e3d0d826ccf70e3410279db7bd427cb56a06ec46d5f15d",
+      "size_bytes": 26063978,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/bn-060/bn-060.mp3",
+      "storage_status": "LOCAL_SOURCE_ONLY"
+    }
+  ],
+  "candidate_slug": "bn-060",
+  "copy_internal_requested": false,
+  "frontend_build_audio_files": [],
+  "frontend_public_audio_files": [],
+  "generated_at": "2026-06-23T19:36:06+00:00",
+  "internal_copies": [],
+  "public_serving_status": "BLOCKED",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "upload_status": "NOT_UPLOADED"
+}

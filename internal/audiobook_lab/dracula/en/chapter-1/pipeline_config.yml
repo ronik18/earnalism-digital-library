@@ -1,6 +1,7 @@
 book_slug: dracula
 language: en
 chapter: 1
+narration_mode: premium_audiobook
 provider: elevenlabs
 voice_id: 21m00Tcm4TlvDq8ikWAM
 voice_name: Rachel
@@ -11,8 +12,8 @@ stability: 0.5
 similarity_boost: 0.75
 style_exaggeration: 0.0
 speaker_boost: true
-max_cost_inr: 500.0
-max_chunks: 3
+max_cost_inr: null
+max_chunks: null
 chunk_duration_target_seconds: 90
 beta_services_allowed: false
 voice_cloning_allowed: false

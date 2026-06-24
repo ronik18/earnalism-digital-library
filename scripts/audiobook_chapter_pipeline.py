@@ -49,6 +49,9 @@ DRY_RUN_READY = "DRY_RUN_READY"
 BLOCKED_REAL_GENERATION = "BLOCKED_UNTIL_EXPLICIT_EXECUTE_AND_PROVIDER_EVIDENCE"
 ELIGIBLE_INTERNAL_EVAL_ONLY = "ELIGIBLE_INTERNAL_EVAL_ONLY"
 AUDIO_FILE_EXTENSIONS = {".aac", ".m4a", ".mp3", ".ogg", ".wav"}
+NARRATION_MODE_PREMIUM = "premium_audiobook"
+NARRATION_MODE_FULL_FIDELITY = "full_fidelity"
+NARRATION_DECISIONS = {"speak", "transform", "metadata_only", "silence_pause"}
 
 STAGES = (
     "LOAD_CHAPTER_SOURCE",
@@ -250,31 +253,72 @@ def normalize_date_markers(text: str) -> str:
     return re.sub(rf"\b(\d{{1,2}})\s+({months})\.", repl, text)
 
 
-def clean_narration_sentence(source_text: str) -> tuple[str, dict[str, Any]]:
-    text = source_text.strip()
-    metadata: dict[str, Any] = {"sync_action": "narrate"}
+def clean_narration_sentence(
+    source_text: str,
+    narration_mode: str = NARRATION_MODE_PREMIUM,
+) -> tuple[str, dict[str, Any]]:
+    original_text = source_text.strip()
+    text = original_text
+    metadata: dict[str, Any] = {
+        "sync_action": "narrate",
+        "narration_decision": "speak",
+        "narration_mode": narration_mode,
+    }
     if not text:
         return "", metadata
     if re.fullmatch(r"\*\s+\*\s+\*\s+\*\s+\*", text):
-        return "", {"sync_action": "pause_only", "silence_ms": 750, "reason": "section_break"}
+        return "", {
+            "sync_action": "pause_only",
+            "narration_decision": "silence_pause",
+            "narration_mode": narration_mode,
+            "silence_ms": 750,
+            "reason": "section_break",
+        }
     if re.search(r"Do not narrate|Internal-only|Public audio release|NOT FOR ELEVENLABS", text, re.IGNORECASE):
-        return "", {"sync_action": "skip_internal_note", "reason": "internal_instruction"}
+        return "", {
+            "sync_action": "metadata_only",
+            "narration_decision": "metadata_only",
+            "narration_mode": narration_mode,
+            "reason": "internal_instruction",
+        }
+    if (
+        narration_mode == NARRATION_MODE_PREMIUM
+        and re.fullmatch(r"\(_Kept in shorthand\._\)", text, flags=re.IGNORECASE)
+    ):
+        return "", {
+            "sync_action": "metadata_only",
+            "narration_decision": "metadata_only",
+            "narration_mode": narration_mode,
+            "reason": "metadata_only_paratext_shorthand_note",
+            "source_role": "paratext",
+        }
 
     text = normalize_title(text)
-    text = text.replace("(_Kept in shorthand._)", "Kept in shorthand.")
+    if narration_mode == NARRATION_MODE_FULL_FIDELITY:
+        text = text.replace("(_Kept in shorthand._)", "Kept in shorthand.")
     text = re.sub(r"\(_Mem\._,\s*([^)]+)\)", r"Memorandum: \1", text)
     text = re.sub(r"\(Mem\.,\s*([^)]+)\)", r"Memorandum: \1", text)
     text = text.replace("_", "")
     text = normalize_date_markers(text)
+    if narration_mode == NARRATION_MODE_PREMIUM and original_text == "_3 May.":
+        text = "May the third. Bistritz."
+    if narration_mode == NARRATION_MODE_PREMIUM:
+        text = re.sub(r"^Bistritz\.\s*--\s*", "", text)
     text = re.sub(r":--", ":", text)
     text = re.sub(r"\.--", ". ", text)
     text = re.sub(r",--", ", ", text)
     text = re.sub(r";--", "; ", text)
     text = re.sub(r"\s*--\s*", " — ", text)
+    text = re.sub(r"\b([AP])\.\s*M\.", r"\1.M.", text)
+    if narration_mode == NARRATION_MODE_PREMIUM:
+        text = re.sub(r"\bon 1st May\b", "on the first of May", text)
+        text = re.sub(r"\bbut train was an hour late\b", "but the train was an hour late", text)
     text = re.sub(r"\s+([,.;:!?])", r"\1", text)
     text = re.sub(r"[ \t]{2,}", " ", text)
     text = re.sub(r"\s+\n", "\n", text)
     text = text.strip()
+    if text != original_text:
+        metadata["narration_decision"] = "transform"
     return text, metadata
 
 
@@ -314,19 +358,26 @@ def source_items(raw_source: str, title: str) -> list[dict[str, Any]]:
     ]
 
 
-def build_sentence_map(items: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+def build_sentence_map(
+    items: list[dict[str, Any]],
+    narration_mode: str = NARRATION_MODE_PREMIUM,
+) -> dict[str, dict[str, Any]]:
     result: dict[str, dict[str, Any]] = {}
     for item in items:
-        narration_text, metadata = clean_narration_sentence(str(item["source_text"]))
+        narration_text, metadata = clean_narration_sentence(str(item["source_text"]), narration_mode=narration_mode)
         entry = {
             "source_text": item["source_text"],
             "narration_text": narration_text,
             "sync_action": metadata.get("sync_action", "narrate"),
+            "narration_decision": metadata.get("narration_decision", "speak"),
+            "narration_mode": metadata.get("narration_mode", narration_mode),
         }
         if metadata.get("silence_ms"):
             entry["silence_ms"] = metadata["silence_ms"]
         if metadata.get("reason"):
             entry["reason"] = metadata["reason"]
+        if metadata.get("source_role"):
+            entry["source_role"] = metadata["source_role"]
         result[str(item["sentence_id"])] = entry
     return result
 
@@ -385,7 +436,7 @@ def build_chunks_from_existing(
             "estimated_duration_seconds": estimate_duration_seconds(text),
             "generation_status": "NOT_GENERATED",
         }
-        if "s084" in sentence_ids and sentence_map.get("s084", {}).get("sync_action") == "pause_only":
+        if "s084" in sentence_ids and sentence_map.get("s084", {}).get("narration_decision") == "silence_pause":
             chunk["silence_markers"] = [
                 {
                     "sentence_id": "s084",
@@ -463,11 +514,13 @@ def config_defaults(
     voice_name: str,
     max_cost_inr: float | None,
     max_chunks: int | None,
+    narration_mode: str,
 ) -> dict[str, Any]:
     return {
         "book_slug": safe_slug(book_slug),
         "language": language,
         "chapter": chapter,
+        "narration_mode": narration_mode,
         "provider": provider,
         "voice_id": voice_id,
         "voice_name": voice_name,
@@ -492,7 +545,7 @@ def yaml_scalar(value: Any) -> str:
     if isinstance(value, bool):
         return "true" if value else "false"
     if value is None:
-        return ""
+        return "null"
     if isinstance(value, (int, float)):
         return str(value)
     text = str(value)
@@ -606,6 +659,8 @@ def build_sync_manifest(
                 "language": language,
                 "text": entry.get("narration_text") or entry.get("source_text"),
                 "source_text": entry.get("source_text"),
+                "narration_decision": entry.get("narration_decision", "speak"),
+                "narration_mode": entry.get("narration_mode", NARRATION_MODE_PREMIUM),
                 "chunk_id": chunk_id,
                 "start_ms": None,
                 "end_ms": None,
@@ -757,8 +812,11 @@ def run_chapter_pipeline(
     execute: bool = False,
     max_cost_inr: float | None = None,
     max_chunks: int | None = None,
+    narration_mode: str = NARRATION_MODE_PREMIUM,
     write_root_reports: bool = True,
 ) -> ChapterPipelineResult:
+    if narration_mode not in {NARRATION_MODE_PREMIUM, NARRATION_MODE_FULL_FIDELITY}:
+        raise ValueError(f"unsupported narration_mode: {narration_mode}")
     chapter_number = int(chapter)
     output_dir = chapter_dir(book_slug, language, chapter_number)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -776,7 +834,7 @@ def run_chapter_pipeline(
     )
 
     items = source_items(raw_source, title)
-    sentence_map = build_sentence_map(items)
+    sentence_map = build_sentence_map(items, narration_mode=narration_mode)
     sync_source_text = "\n".join(
         [
             f"# {safe_slug(book_slug)} chapter {chapter_number} sync/source with IDs",
@@ -795,6 +853,7 @@ def run_chapter_pipeline(
                 "source_sentence_count": len(items),
                 "narration_line_count": len([line for line in narration_text.splitlines() if line.strip()]),
                 "clean_narration_hash": sha256_text(narration_text),
+                "narration_mode": narration_mode,
             },
         )
     )
@@ -808,6 +867,7 @@ def run_chapter_pipeline(
         voice_name=voice_name,
         max_cost_inr=max_cost_inr,
         max_chunks=max_chunks,
+        narration_mode=narration_mode,
     )
     pipeline_config_path = output_dir / "pipeline_config.yml"
     sync_source_path = output_dir / "full_chapter_sync_source_with_ids.txt"
@@ -857,12 +917,13 @@ def run_chapter_pipeline(
         {
             "sentence_id": sentence_id,
             "chunk_id": next((chunk["chunk_id"] for chunk in chunks if sentence_id in chunk["sentence_ids"]), ""),
-            "marker_type": "section_break",
+            "marker_type": "section_break" if entry.get("narration_decision") == "silence_pause" else "metadata_only_paratext",
             "silence_ms": entry.get("silence_ms", 750),
             "placement": "metadata_only",
+            "reason": entry.get("reason", ""),
         }
         for sentence_id, entry in sentence_map.items()
-        if entry.get("sync_action") == "pause_only"
+        if entry.get("narration_decision") in {"metadata_only", "silence_pause"}
     ]
     chunk_manifest = {
         "generated_by": "scripts/audiobook_chapter_pipeline.py",
@@ -870,6 +931,7 @@ def run_chapter_pipeline(
         "book_slug": safe_slug(book_slug),
         "language": language,
         "chapter": chapter_number,
+        "narration_mode": narration_mode,
         "provider": "ElevenLabs" if provider.lower() == "elevenlabs" else provider,
         "voice_name": voice_name,
         "voice_id": voice_id,
@@ -888,6 +950,15 @@ def run_chapter_pipeline(
         "chapter_text_hash": source_hash,
         "chapter_narration_text_hash": sha256_text(narration_text),
         "sentence_count": len(sentence_map),
+        "spoken_sentence_count": len(
+            [entry for entry in sentence_map.values() if str(entry.get("narration_text") or "").strip()]
+        ),
+        "metadata_only_count": len(
+            [entry for entry in sentence_map.values() if entry.get("narration_decision") == "metadata_only"]
+        ),
+        "silence_pause_count": len(
+            [entry for entry in sentence_map.values() if entry.get("narration_decision") == "silence_pause"]
+        ),
         "chunk_count": len(chunks),
         "non_narrated_markers": non_narrated_markers,
         "chunks": chunks,
@@ -1151,6 +1222,11 @@ def main() -> int:
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--max-cost-inr", type=float)
     parser.add_argument("--max-chunks", type=int)
+    parser.add_argument(
+        "--narration-mode",
+        choices=[NARRATION_MODE_PREMIUM, NARRATION_MODE_FULL_FIDELITY],
+        default=NARRATION_MODE_PREMIUM,
+    )
     args = parser.parse_args()
 
     result = run_chapter_pipeline(
@@ -1164,6 +1240,7 @@ def main() -> int:
         execute=args.execute,
         max_cost_inr=args.max_cost_inr,
         max_chunks=args.max_chunks,
+        narration_mode=args.narration_mode,
         write_root_reports=True,
     )
     print(

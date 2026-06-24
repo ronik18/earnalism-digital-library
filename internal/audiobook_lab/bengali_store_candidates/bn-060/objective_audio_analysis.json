@@ -1,0 +1,33 @@
+{
+  "analysis_generated_at": "2026-06-23T19:36:06+00:00",
+  "audio_file_count": 1,
+  "audio_files": [
+    {
+      "abrupt_start_end_risk": "REVIEW_REQUIRED",
+      "analysis_status": "PASS",
+      "bitrate_bps": 64001,
+      "channels": 1,
+      "clipping_risk": "NOT_MEASURED_FAST_REVIEW",
+      "codec_name": "mp3",
+      "corruption_readability": "READABLE",
+      "duration_seconds": 3257.904,
+      "format": "mp3",
+      "issues": [],
+      "leading_silence_seconds": null,
+      "long_pauses": [],
+      "loudness_integrated_lufs": null,
+      "objective_audio_score": 8.8,
+      "peak_level_db": null,
+      "sample_rate_hz": 22050,
+      "sha256": "aef49ba57915a0ee83e3d0d826ccf70e3410279db7bd427cb56a06ec46d5f15d",
+      "silence_ratio": null,
+      "size_bytes": 26063978,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/bn-060/bn-060.mp3",
+      "trailing_silence_seconds": null
+    }
+  ],
+  "candidate_slug": "bn-060",
+  "duration_seconds": 3257.904,
+  "ffprobe_status": "PASS",
+  "objective_audio_score": 8.8
+}

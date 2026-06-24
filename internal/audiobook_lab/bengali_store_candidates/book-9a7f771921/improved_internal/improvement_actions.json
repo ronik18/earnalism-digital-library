@@ -1,0 +1,22 @@
+[
+  {
+    "action": "normalized_json_formatting",
+    "output": "internal/audiobook_lab/bengali_store_candidates/book-9a7f771921/improved_internal/sidecars/book-9a7f771921_chapters.json",
+    "source": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-9a7f771921/book-9a7f771921_chapters.json"
+  },
+  {
+    "action": "repaired_vtt_line_formatting",
+    "output": "internal/audiobook_lab/bengali_store_candidates/book-9a7f771921/improved_internal/sidecars/book-9a7f771921_highlight.vtt",
+    "source": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-9a7f771921/book-9a7f771921_highlight.vtt"
+  },
+  {
+    "action": "normalized_json_formatting",
+    "output": "internal/audiobook_lab/bengali_store_candidates/book-9a7f771921/improved_internal/sidecars/book-9a7f771921_meta.json",
+    "source": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-9a7f771921/book-9a7f771921_meta.json"
+  },
+  {
+    "action": "normalized_json_formatting",
+    "output": "internal/audiobook_lab/bengali_store_candidates/book-9a7f771921/improved_internal/sidecars/book-9a7f771921_timestamps.json",
+    "source": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-9a7f771921/book-9a7f771921_timestamps.json"
+  }
+]

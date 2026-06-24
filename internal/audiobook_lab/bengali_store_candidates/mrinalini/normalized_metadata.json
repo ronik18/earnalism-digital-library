@@ -1,0 +1,18 @@
+{
+  "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+  "candidate_slug": "mrinalini",
+  "chapter_count": 46,
+  "duration_seconds": 19494.481,
+  "language": "Bengali",
+  "language_code": "ben",
+  "narrator_or_model_source": "bn-IN-TanishaaNeural",
+  "provider_used": "command",
+  "public_serving_status": "BLOCKED",
+  "qa_status": "HOLD_HUMAN_QA_REQUIRED",
+  "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+  "rights_status": "HOLD_RIGHTS_EVIDENCE_REQUIRED",
+  "source_metadata_path": "mrinalini/mrinalini_meta.json",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "title": "মৃণালিনী",
+  "upload_status": "NOT_UPLOADED"
+}

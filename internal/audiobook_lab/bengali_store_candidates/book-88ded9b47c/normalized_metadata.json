@@ -1,0 +1,18 @@
+{
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "candidate_slug": "book-88ded9b47c",
+  "chapter_count": 1,
+  "duration_seconds": 1602.024,
+  "language": "Bengali",
+  "language_code": "ben",
+  "narrator_or_model_source": "bn-IN-TanishaaNeural",
+  "provider_used": "command",
+  "public_serving_status": "BLOCKED",
+  "qa_status": "HOLD_HUMAN_QA_REQUIRED",
+  "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+  "rights_status": "HOLD_RIGHTS_EVIDENCE_REQUIRED",
+  "source_metadata_path": "book-88ded9b47c/book-88ded9b47c_meta.json",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "title": "মানভঞ্জন",
+  "upload_status": "NOT_UPLOADED"
+}

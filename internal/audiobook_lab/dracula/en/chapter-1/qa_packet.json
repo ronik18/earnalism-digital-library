@@ -1,9 +1,9 @@
 {
   "generated_by": "scripts/audiobook_chapter_pipeline.py",
-  "generated_at": "2026-06-23T19:26:11+00:00",
+  "generated_at": "2026-06-24T16:34:45+00:00",
   "book_slug": "dracula",
   "chapter": 1,
-  "decision": "BLOCKED_UNTIL_EXPLICIT_EXECUTE_AND_PROVIDER_EVIDENCE",
+  "decision": "DRY_RUN_READY",
   "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
   "production_status": "PRODUCTION_BLOCKED",
   "listen_now_cta_allowed": false,

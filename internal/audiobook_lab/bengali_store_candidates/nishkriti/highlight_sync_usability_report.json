@@ -1,0 +1,47 @@
+{
+  "audio_duration_seconds": 7429.344,
+  "candidate_slug": "nishkriti",
+  "files": [
+    {
+      "entry_count": 9,
+      "highlight_usability_score": 8.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/nishkriti/nishkriti_chapters.json",
+      "status": "PASS"
+    },
+    {
+      "bengali_cue_count": 13867,
+      "coverage_ratio": 1.0,
+      "coverage_seconds": 7429.344,
+      "cue_count": 13877,
+      "highlight_usability_score": 4.0,
+      "issues": [
+        "empty cue text at 00:00:00.725 --> 00:00:00.829",
+        "empty cue text at 00:13:30.920 --> 00:13:31.032",
+        "empty cue text at 00:24:36.147 --> 00:24:36.266",
+        "empty cue text at 00:38:56.282 --> 00:38:56.389",
+        "empty cue text at 00:52:48.190 --> 00:52:48.296",
+        "empty cue text at 01:06:51.373 --> 01:06:51.630",
+        "empty cue text at 01:08:24.087 --> 01:08:24.215",
+        "empty cue text at 01:23:24.202 --> 01:23:24.314",
+        "empty cue text at 01:34:51.185 --> 01:34:51.299",
+        "empty cue text at 01:46:39.691 --> 01:46:39.806"
+      ],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/nishkriti/nishkriti_highlight.vtt",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "coverage_ratio": 1.0,
+      "entry_count": 13877,
+      "highlight_usability_score": 10.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/nishkriti/nishkriti_timestamps.json",
+      "status": "PASS"
+    }
+  ],
+  "generated_at": "2026-06-23T19:36:08+00:00",
+  "human_sync_review_required": true,
+  "release_blocker": "Human Bengali sync/highlight QA >= 9.5 is required before public release candidacy.",
+  "sync_status": "HOLD_SYNC_QA_REQUIRED",
+  "sync_usability_score": 4.0
+}

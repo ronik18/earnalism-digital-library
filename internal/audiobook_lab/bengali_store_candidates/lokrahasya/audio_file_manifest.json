@@ -1,0 +1,20 @@
+{
+  "audio_files": [
+    {
+      "relative_source_path": "lokrahasya/lokrahasya.mp3",
+      "sha256": "250fb094ccd825586ce0a2d4a5d4f64cd2c5c096e786e3b7e5e1a3339feb336f",
+      "size_bytes": 94953892,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/lokrahasya/lokrahasya.mp3",
+      "storage_status": "LOCAL_SOURCE_ONLY"
+    }
+  ],
+  "candidate_slug": "lokrahasya",
+  "copy_internal_requested": false,
+  "frontend_build_audio_files": [],
+  "frontend_public_audio_files": [],
+  "generated_at": "2026-06-23T19:36:08+00:00",
+  "internal_copies": [],
+  "public_serving_status": "BLOCKED",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "upload_status": "NOT_UPLOADED"
+}

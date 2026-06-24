@@ -1,0 +1,45 @@
+{
+  "candidate_slug": "yugalanguriya",
+  "files": [
+    {
+      "entry_count": 10,
+      "highlight_usability_score": 8.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/yugalanguriya/yugalanguriya_chapters.json",
+      "status": "PASS"
+    },
+    {
+      "bengali_cue_count": 4338,
+      "coverage_ratio": 1.0,
+      "coverage_seconds": 2576.592,
+      "cue_count": 4348,
+      "highlight_usability_score": 4.0,
+      "issues": [
+        "empty cue text at 00:00:00.808 --> 00:00:00.924",
+        "empty cue text at 00:06:28.786 --> 00:06:28.894",
+        "empty cue text at 00:09:36.401 --> 00:09:36.509",
+        "empty cue text at 00:14:41.578 --> 00:14:41.685",
+        "empty cue text at 00:17:37.016 --> 00:17:37.122",
+        "empty cue text at 00:20:11.544 --> 00:20:11.660",
+        "empty cue text at 00:24:42.183 --> 00:24:42.299",
+        "empty cue text at 00:26:58.241 --> 00:26:58.360",
+        "empty cue text at 00:30:14.514 --> 00:30:14.633",
+        "empty cue text at 00:34:21.165 --> 00:34:21.409"
+      ],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/yugalanguriya/yugalanguriya_highlight.vtt",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "coverage_ratio": 1.0,
+      "entry_count": 4348,
+      "highlight_usability_score": 10.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/yugalanguriya/yugalanguriya_timestamps.json",
+      "status": "PASS"
+    }
+  ],
+  "generated_at": "2026-06-23T19:36:08+00:00",
+  "sidecar_file_count": 3,
+  "sidecar_integrity_status": "REVIEW_REQUIRED",
+  "sync_usability_score": 4.0
+}

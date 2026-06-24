@@ -1,0 +1,50 @@
+{
+  "candidate_slug": "bn-031",
+  "files": [
+    {
+      "entry_count": 3,
+      "highlight_usability_score": 8.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/bn-031/bn-031_chapters.json",
+      "status": "PASS"
+    },
+    {
+      "bengali_cue_count": 3339,
+      "coverage_ratio": 1.0,
+      "coverage_seconds": 1740.024,
+      "cue_count": 3354,
+      "highlight_usability_score": 4.0,
+      "issues": [
+        "empty cue text at 00:00:02.426 --> 00:00:02.773",
+        "empty cue text at 00:00:02.773 --> 00:00:03.120",
+        "empty cue text at 00:00:04.990 --> 00:00:05.457",
+        "empty cue text at 00:00:05.691 --> 00:00:06.042",
+        "empty cue text at 00:00:06.509 --> 00:00:06.860",
+        "empty cue text at 00:12:07.837 --> 00:12:07.950",
+        "empty cue text at 00:12:07.950 --> 00:12:08.064",
+        "empty cue text at 00:12:09.937 --> 00:12:10.405",
+        "empty cue text at 00:12:10.639 --> 00:12:10.990",
+        "empty cue text at 00:12:11.459 --> 00:12:11.810",
+        "empty cue text at 00:18:46.029 --> 00:18:46.126",
+        "empty cue text at 00:18:46.126 --> 00:18:46.224",
+        "empty cue text at 00:18:48.048 --> 00:18:48.504",
+        "empty cue text at 00:18:48.732 --> 00:18:49.075",
+        "empty cue text at 00:18:49.531 --> 00:18:49.873"
+      ],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/bn-031/bn-031_highlight.vtt",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "coverage_ratio": 1.0,
+      "entry_count": 3354,
+      "highlight_usability_score": 10.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/bn-031/bn-031_timestamps.json",
+      "status": "PASS"
+    }
+  ],
+  "generated_at": "2026-06-23T19:36:05+00:00",
+  "sidecar_file_count": 3,
+  "sidecar_integrity_status": "REVIEW_REQUIRED",
+  "sync_usability_score": 4.0
+}

@@ -1,0 +1,68 @@
+{
+  "audio_files": [
+    "radharani/radharani.mp3"
+  ],
+  "candidate_slug": "radharani",
+  "cover_files": [],
+  "duplicate_audio_files": [],
+  "files": [
+    {
+      "category": "audio",
+      "extension": ".mp3",
+      "path": "radharani/radharani.mp3",
+      "sha256": "4de991f9afc420037ec09683aa4b53e4e62de8a4ae782ebdfb766ec48bb18a56",
+      "size_bytes": 28690434,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/radharani/radharani.mp3"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".json",
+      "path": "radharani/radharani_chapters.json",
+      "sha256": "74425d9e9ca5eb5babf172f28e8d9c783f164fb381b63e196e6573705e2dcffa",
+      "size_bytes": 816,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/radharani/radharani_chapters.json"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".vtt",
+      "path": "radharani/radharani_highlight.vtt",
+      "sha256": "c408f63b645ead89384cc0e69982e6f930b34a29cc3ba2d1f57b29efd1a85ad5",
+      "size_bytes": 311708,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/radharani/radharani_highlight.vtt"
+    },
+    {
+      "category": "metadata",
+      "extension": ".json",
+      "path": "radharani/radharani_meta.json",
+      "sha256": "58c8675f751d473b470fa0a74d39d9d24709aaaf70b1d0ebb412b2e5753442ad",
+      "size_bytes": 1006,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/radharani/radharani_meta.json"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".json",
+      "path": "radharani/radharani_timestamps.json",
+      "sha256": "17afd2a7256f6a6e6dcc13f35c217027cf8ab70451e619b5db41812ff2b811a9",
+      "size_bytes": 518677,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/radharani/radharani_timestamps.json"
+    }
+  ],
+  "input_root": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben",
+  "inventory_generated_at": "2026-06-23T19:36:08+00:00",
+  "metadata_files": [
+    "radharani/radharani_meta.json"
+  ],
+  "missing_required_files": [],
+  "orphan_sidecars": [],
+  "public_serving_status": "BLOCKED",
+  "sidecar_files": [
+    "radharani/radharani_chapters.json",
+    "radharani/radharani_highlight.vtt",
+    "radharani/radharani_timestamps.json"
+  ],
+  "source_dir": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/radharani",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "transcript_files": [],
+  "unexpected_files": [],
+  "upload_status": "NOT_UPLOADED"
+}

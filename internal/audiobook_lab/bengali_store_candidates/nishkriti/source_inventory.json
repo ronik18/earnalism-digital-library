@@ -1,0 +1,68 @@
+{
+  "audio_files": [
+    "nishkriti/nishkriti.mp3"
+  ],
+  "candidate_slug": "nishkriti",
+  "cover_files": [],
+  "duplicate_audio_files": [],
+  "files": [
+    {
+      "category": "audio",
+      "extension": ".mp3",
+      "path": "nishkriti/nishkriti.mp3",
+      "sha256": "80dc9c627130a8cdbc00d4ee2b2b1e28a04dc4b6f54004cdbb02d670e1450c21",
+      "size_bytes": 59435511,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/nishkriti/nishkriti.mp3"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".json",
+      "path": "nishkriti/nishkriti_chapters.json",
+      "sha256": "65052c016d239befd7f6235febcf2f91b400767fb665f5b68c1300116b05f8b4",
+      "size_bytes": 623,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/nishkriti/nishkriti_chapters.json"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".vtt",
+      "path": "nishkriti/nishkriti_highlight.vtt",
+      "sha256": "3401ec8e3f05db62f9cb689e18c56080b944beafa3da698aa230afa079451bbe",
+      "size_bytes": 717938,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/nishkriti/nishkriti_highlight.vtt"
+    },
+    {
+      "category": "metadata",
+      "extension": ".json",
+      "path": "nishkriti/nishkriti_meta.json",
+      "sha256": "f30d2d7c12aab782ad02a3459a4d7a7c04ed965c37308317a99ed7c6a997d192",
+      "size_bytes": 933,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/nishkriti/nishkriti_meta.json"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".json",
+      "path": "nishkriti/nishkriti_timestamps.json",
+      "sha256": "393425fbeecded789d0ef98a5811adaeacde57422c0a2a2902659b1c752c845c",
+      "size_bytes": 1196762,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/nishkriti/nishkriti_timestamps.json"
+    }
+  ],
+  "input_root": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben",
+  "inventory_generated_at": "2026-06-23T19:36:08+00:00",
+  "metadata_files": [
+    "nishkriti/nishkriti_meta.json"
+  ],
+  "missing_required_files": [],
+  "orphan_sidecars": [],
+  "public_serving_status": "BLOCKED",
+  "sidecar_files": [
+    "nishkriti/nishkriti_chapters.json",
+    "nishkriti/nishkriti_highlight.vtt",
+    "nishkriti/nishkriti_timestamps.json"
+  ],
+  "source_dir": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/nishkriti",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "transcript_files": [],
+  "unexpected_files": [],
+  "upload_status": "NOT_UPLOADED"
+}

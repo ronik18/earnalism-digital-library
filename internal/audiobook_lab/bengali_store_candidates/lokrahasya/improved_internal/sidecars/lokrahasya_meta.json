@@ -1,0 +1,232 @@
+{
+  "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+  "chapters": 16,
+  "duration_ms": 11869129,
+  "generated_at": "2026-06-12T18:44:00.759Z",
+  "highlight_available": true,
+  "language": "ben",
+  "mime_type": "audio/mpeg",
+  "provider_used": "command",
+  "qa_threshold": 9.3,
+  "size": 94953892,
+  "slug": "lokrahasya",
+  "source_text_modified": false,
+  "text_preparation": {
+    "average_pause_ms": 224,
+    "hyphen_minus_normalization_applied": true,
+    "lexicon_coverage": 0,
+    "max_pause_ms": 650,
+    "mixed_english_terms": [
+      {
+        "count": 87,
+        "term": "the"
+      },
+      {
+        "count": 72,
+        "term": "of"
+      },
+      {
+        "count": 69,
+        "term": "to"
+      },
+      {
+        "count": 68,
+        "term": "a"
+      },
+      {
+        "count": 43,
+        "term": "and"
+      },
+      {
+        "count": 43,
+        "term": "is"
+      },
+      {
+        "count": 34,
+        "term": "be"
+      },
+      {
+        "count": 32,
+        "term": "in"
+      },
+      {
+        "count": 29,
+        "term": "I"
+      },
+      {
+        "count": 26,
+        "term": "shall"
+      },
+      {
+        "count": 25,
+        "term": "you"
+      },
+      {
+        "count": 22,
+        "term": "or"
+      },
+      {
+        "count": 21,
+        "term": "by"
+      },
+      {
+        "count": 21,
+        "term": "that"
+      },
+      {
+        "count": 20,
+        "term": "not"
+      },
+      {
+        "count": 15,
+        "term": "A"
+      },
+      {
+        "count": 14,
+        "term": "with"
+      },
+      {
+        "count": 13,
+        "term": "as"
+      },
+      {
+        "count": 13,
+        "term": "wife"
+      },
+      {
+        "count": 12,
+        "term": "are"
+      },
+      {
+        "count": 12,
+        "term": "do"
+      },
+      {
+        "count": 12,
+        "term": "The"
+      },
+      {
+        "count": 12,
+        "term": "this"
+      },
+      {
+        "count": 11,
+        "term": "for"
+      },
+      {
+        "count": 11,
+        "term": "his"
+      },
+      {
+        "count": 11,
+        "term": "offence"
+      },
+      {
+        "count": 11,
+        "term": "which"
+      },
+      {
+        "count": 10,
+        "term": "man"
+      },
+      {
+        "count": 10,
+        "term": "was"
+      },
+      {
+        "count": 9,
+        "term": "an"
+      },
+      {
+        "count": 9,
+        "term": "has"
+      },
+      {
+        "count": 9,
+        "term": "husband"
+      },
+      {
+        "count": 9,
+        "term": "it"
+      },
+      {
+        "count": 9,
+        "term": "punished"
+      },
+      {
+        "count": 9,
+        "term": "state"
+      },
+      {
+        "count": 9,
+        "term": "subject"
+      },
+      {
+        "count": 9,
+        "term": "Whoever"
+      },
+      {
+        "count": 8,
+        "term": "liable"
+      },
+      {
+        "count": 8,
+        "term": "married"
+      },
+      {
+        "count": 8,
+        "term": "OF"
+      },
+      {
+        "count": 8,
+        "term": "on"
+      },
+      {
+        "count": 8,
+        "term": "woman"
+      },
+      {
+        "count": 7,
+        "term": "at"
+      },
+      {
+        "count": 7,
+        "term": "C"
+      },
+      {
+        "count": 7,
+        "term": "can"
+      },
+      {
+        "count": 7,
+        "term": "EXPLANATION"
+      },
+      {
+        "count": 7,
+        "term": "He"
+      },
+      {
+        "count": 7,
+        "term": "him"
+      },
+      {
+        "count": 7,
+        "term": "other"
+      },
+      {
+        "count": 6,
+        "term": "Mr"
+      }
+    ],
+    "pause_profile_used": "natural-expressive",
+    "pitch_used": "+2Hz",
+    "punctuation_normalized": true,
+    "rate_used": "+22%",
+    "ssml_pause_markers": true,
+    "ssml_profile_used": "azure-command-natural-expressive",
+    "total_inserted_pauses": 5129
+  },
+  "title": "লোকরহস্য",
+  "total_words": 20838,
+  "voice": "bn-IN-TanishaaNeural"
+}

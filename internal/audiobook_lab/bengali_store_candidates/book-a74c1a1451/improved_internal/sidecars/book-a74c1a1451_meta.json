@@ -1,0 +1,36 @@
+{
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "chapters": 1,
+  "duration_ms": 1197576,
+  "generated_at": "2026-06-12T10:39:36.826Z",
+  "highlight_available": true,
+  "language": "ben",
+  "mime_type": "audio/mpeg",
+  "provider_used": "command",
+  "qa_threshold": 9.3,
+  "size": 9581340,
+  "slug": "book-a74c1a1451",
+  "source_text_modified": false,
+  "text_preparation": {
+    "average_pause_ms": 211,
+    "hyphen_minus_normalization_applied": true,
+    "lexicon_coverage": 0,
+    "max_pause_ms": 320,
+    "mixed_english_terms": [
+      {
+        "count": 1,
+        "term": "x27"
+      }
+    ],
+    "pause_profile_used": "natural-expressive",
+    "pitch_used": "+2Hz",
+    "punctuation_normalized": true,
+    "rate_used": "+6%",
+    "ssml_pause_markers": true,
+    "ssml_profile_used": "azure-command-natural-expressive",
+    "total_inserted_pauses": 453
+  },
+  "title": "দালিয়া",
+  "total_words": 2229,
+  "voice": "bn-IN-TanishaaNeural"
+}

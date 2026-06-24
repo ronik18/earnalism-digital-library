@@ -1,0 +1,78 @@
+{
+  "generated_by": "scripts/prepare_elevenlabs_manual_generation.py",
+  "generated_at": "2026-06-24T16:34:45+00:00",
+  "book_slug": "dracula",
+  "language": "en",
+  "chapter": 1,
+  "provider": "ElevenLabs",
+  "voice_name": "Rachel",
+  "voice_id": "21m00Tcm4TlvDq8ikWAM",
+  "source_chunk_manifest": "internal/audiobook_lab/dracula/en/chapter-1/chunk_manifest.json",
+  "manual_chunk_dir": "internal/audiobook_lab/dracula/en/chapter-1/manual_elevenlabs_chunks",
+  "imported_audio_dir": "internal/audiobook_lab/dracula/en/chapter-1/imported_audio",
+  "provider_api_called": false,
+  "audio_generated_by_repo": false,
+  "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "public_audio_allowed": false,
+  "production_approved": false,
+  "chunks": [
+    {
+      "chunk_id": "c001",
+      "audio_filename": "dracula-chapter-1-elevenlabs-rachel-c001.mp3",
+      "expected_audio_path": "internal/audiobook_lab/dracula/en/chapter-1/imported_audio/dracula-chapter-1-elevenlabs-rachel-c001.mp3",
+      "chunk_text_path": "internal/audiobook_lab/dracula/en/chapter-1/manual_elevenlabs_chunks/c001.txt",
+      "sentence_ids": [
+        "s001",
+        "s002",
+        "s003",
+        "s004",
+        "s005",
+        "s006",
+        "s007"
+      ],
+      "text_hash": "00232ce3b85cfca56a65028f1f9c9fc41a00943561f8a6fa09a1083741817880",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "estimated_duration_seconds": 50.3,
+      "generation_status": "PENDING_MANUAL_UI_GENERATION",
+      "public": false
+    },
+    {
+      "chunk_id": "c002",
+      "audio_filename": "dracula-chapter-1-elevenlabs-rachel-c002.mp3",
+      "expected_audio_path": "internal/audiobook_lab/dracula/en/chapter-1/imported_audio/dracula-chapter-1-elevenlabs-rachel-c002.mp3",
+      "chunk_text_path": "internal/audiobook_lab/dracula/en/chapter-1/manual_elevenlabs_chunks/c002.txt",
+      "sentence_ids": [
+        "s008",
+        "s009",
+        "s010",
+        "s011",
+        "s012",
+        "s013",
+        "s014",
+        "s015"
+      ],
+      "text_hash": "7882c20dbdefabbe1267e7a00495809ce4a341ef8b1d93d4c6744878e693447d",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "estimated_duration_seconds": 107.6,
+      "generation_status": "PENDING_MANUAL_UI_GENERATION",
+      "public": false
+    },
+    {
+      "chunk_id": "c003",
+      "audio_filename": "dracula-chapter-1-elevenlabs-rachel-c003.mp3",
+      "expected_audio_path": "internal/audiobook_lab/dracula/en/chapter-1/imported_audio/dracula-chapter-1-elevenlabs-rachel-c003.mp3",
+      "chunk_text_path": "internal/audiobook_lab/dracula/en/chapter-1/manual_elevenlabs_chunks/c003.txt",
+      "sentence_ids": [
+        "s016",
+        "s017",
+        "s018",
+        "s019"
+      ],
+      "text_hash": "c208a37826e6cca5b03008224ed4c1bf0f1c6061753cb2a7d98522e9a0f7bcba",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "estimated_duration_seconds": 47.6,
+      "generation_status": "PENDING_MANUAL_UI_GENERATION",
+      "public": false
+    }
+  ]
+}

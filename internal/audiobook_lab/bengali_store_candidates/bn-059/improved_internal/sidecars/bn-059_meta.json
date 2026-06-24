@@ -1,0 +1,224 @@
+{
+  "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+  "chapters": 13,
+  "duration_ms": 10405801,
+  "generated_at": "2026-06-12T18:28:31.221Z",
+  "highlight_available": true,
+  "language": "ben",
+  "mime_type": "audio/mpeg",
+  "provider_used": "command",
+  "qa_threshold": 9.3,
+  "size": 83247273,
+  "slug": "bn-059",
+  "source_text_modified": false,
+  "text_preparation": {
+    "average_pause_ms": 199,
+    "hyphen_minus_normalization_applied": true,
+    "lexicon_coverage": 0,
+    "max_pause_ms": 650,
+    "mixed_english_terms": [
+      {
+        "count": 3,
+        "term": "AND"
+      },
+      {
+        "count": 3,
+        "term": "OF"
+      },
+      {
+        "count": 3,
+        "term": "THE"
+      },
+      {
+        "count": 2,
+        "term": "x27"
+      },
+      {
+        "count": 1,
+        "term": "A"
+      },
+      {
+        "count": 1,
+        "term": "ALL"
+      },
+      {
+        "count": 1,
+        "term": "Anatomical"
+      },
+      {
+        "count": 1,
+        "term": "and"
+      },
+      {
+        "count": 1,
+        "term": "Assortment"
+      },
+      {
+        "count": 1,
+        "term": "BREAK"
+      },
+      {
+        "count": 1,
+        "term": "CURTAILED"
+      },
+      {
+        "count": 1,
+        "term": "D"
+      },
+      {
+        "count": 1,
+        "term": "DENTAL"
+      },
+      {
+        "count": 1,
+        "term": "DISLOCATE"
+      },
+      {
+        "count": 1,
+        "term": "ESTABLISHED"
+      },
+      {
+        "count": 1,
+        "term": "Experimental"
+      },
+      {
+        "count": 1,
+        "term": "FIELD"
+      },
+      {
+        "count": 1,
+        "term": "HAVING"
+      },
+      {
+        "count": 1,
+        "term": "ILLOGICAL"
+      },
+      {
+        "count": 1,
+        "term": "IN"
+      },
+      {
+        "count": 1,
+        "term": "JAWS"
+      },
+      {
+        "count": 1,
+        "term": "Large"
+      },
+      {
+        "count": 1,
+        "term": "LOGICAL"
+      },
+      {
+        "count": 1,
+        "term": "Lost"
+      },
+      {
+        "count": 1,
+        "term": "Lunatic"
+      },
+      {
+        "count": 1,
+        "term": "METAPHYSICAL"
+      },
+      {
+        "count": 1,
+        "term": "NEED"
+      },
+      {
+        "count": 1,
+        "term": "NUT"
+      },
+      {
+        "count": 1,
+        "term": "NUTS"
+      },
+      {
+        "count": 1,
+        "term": "of"
+      },
+      {
+        "count": 1,
+        "term": "offer"
+      },
+      {
+        "count": 1,
+        "term": "ON"
+      },
+      {
+        "count": 1,
+        "term": "P"
+      },
+      {
+        "count": 1,
+        "term": "PHYSICAL"
+      },
+      {
+        "count": 1,
+        "term": "Public"
+      },
+      {
+        "count": 1,
+        "term": "researches"
+      },
+      {
+        "count": 1,
+        "term": "Researches"
+      },
+      {
+        "count": 1,
+        "term": "STAND"
+      },
+      {
+        "count": 1,
+        "term": "SUFFICIENT"
+      },
+      {
+        "count": 1,
+        "term": "SUPERFLUITIES"
+      },
+      {
+        "count": 1,
+        "term": "SUPPLIERS"
+      },
+      {
+        "count": 1,
+        "term": "TEETE"
+      },
+      {
+        "count": 1,
+        "term": "the"
+      },
+      {
+        "count": 1,
+        "term": "THEIR"
+      },
+      {
+        "count": 1,
+        "term": "to"
+      },
+      {
+        "count": 1,
+        "term": "TO"
+      },
+      {
+        "count": 1,
+        "term": "WHO"
+      },
+      {
+        "count": 1,
+        "term": "YOUTHS"
+      }
+    ],
+    "pause_profile_used": "natural-expressive",
+    "pitch_used": "+2Hz",
+    "punctuation_normalized": true,
+    "rate_used": "+22%",
+    "ssml_pause_markers": true,
+    "ssml_profile_used": "azure-command-natural-expressive",
+    "total_inserted_pauses": 4588
+  },
+  "title": "কমলাকান্তের দপ্তর",
+  "total_words": 19251,
+  "voice": "bn-IN-TanishaaNeural"
+}

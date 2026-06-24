@@ -1,0 +1,68 @@
+{
+  "audio_files": [
+    "book-a74c1a1451/book-a74c1a1451.mp3"
+  ],
+  "candidate_slug": "book-a74c1a1451",
+  "cover_files": [],
+  "duplicate_audio_files": [],
+  "files": [
+    {
+      "category": "audio",
+      "extension": ".mp3",
+      "path": "book-a74c1a1451/book-a74c1a1451.mp3",
+      "sha256": "1d7aca7e2879bb14c034180c7f9fc55d4586a4e46f37269b6394ff5d05121146",
+      "size_bytes": 9581340,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-a74c1a1451/book-a74c1a1451.mp3"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".json",
+      "path": "book-a74c1a1451/book-a74c1a1451_chapters.json",
+      "sha256": "0e92a2dcb7096739797acd3b1db1c693da63adaa5bd481e579e9174857685515",
+      "size_bytes": 56,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-a74c1a1451/book-a74c1a1451_chapters.json"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".vtt",
+      "path": "book-a74c1a1451/book-a74c1a1451_highlight.vtt",
+      "sha256": "718ceb2b2e5dc0f59f1a043e4c6c3fb4622adf834fd4454b3706d413426baf30",
+      "size_bytes": 115543,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-a74c1a1451/book-a74c1a1451_highlight.vtt"
+    },
+    {
+      "category": "metadata",
+      "extension": ".json",
+      "path": "book-a74c1a1451/book-a74c1a1451_meta.json",
+      "sha256": "3bf01e02d2ff53a153cada1819f0b0369512c3f2b0310f939055067aeba068e1",
+      "size_bytes": 978,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-a74c1a1451/book-a74c1a1451_meta.json"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".json",
+      "path": "book-a74c1a1451/book-a74c1a1451_timestamps.json",
+      "sha256": "574469a5752981bc9f9575859dbee3a3801d3c4508a80f2b2e0573e9637fed3c",
+      "size_bytes": 190459,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-a74c1a1451/book-a74c1a1451_timestamps.json"
+    }
+  ],
+  "input_root": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben",
+  "inventory_generated_at": "2026-06-23T19:36:07+00:00",
+  "metadata_files": [
+    "book-a74c1a1451/book-a74c1a1451_meta.json"
+  ],
+  "missing_required_files": [],
+  "orphan_sidecars": [],
+  "public_serving_status": "BLOCKED",
+  "sidecar_files": [
+    "book-a74c1a1451/book-a74c1a1451_chapters.json",
+    "book-a74c1a1451/book-a74c1a1451_highlight.vtt",
+    "book-a74c1a1451/book-a74c1a1451_timestamps.json"
+  ],
+  "source_dir": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-a74c1a1451",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "transcript_files": [],
+  "unexpected_files": [],
+  "upload_status": "NOT_UPLOADED"
+}

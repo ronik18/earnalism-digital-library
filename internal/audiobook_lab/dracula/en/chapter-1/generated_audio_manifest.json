@@ -1,14 +1,14 @@
 {
   "generated_by": "scripts/audiobook_chapter_pipeline.py",
-  "generated_at": "2026-06-23T19:26:11+00:00",
+  "generated_at": "2026-06-24T16:34:45+00:00",
   "book_slug": "dracula",
   "chapter": 1,
   "provider": "ElevenLabs",
   "voice_name": "Rachel",
   "voice_id": "21m00Tcm4TlvDq8ikWAM",
-  "mode": "generate-internal",
-  "execute": true,
-  "generation_status": "BLOCKED_UNTIL_EXPLICIT_EXECUTE_AND_PROVIDER_EVIDENCE",
+  "mode": "dry-run",
+  "execute": false,
+  "generation_status": "DRY_RUN_ONLY",
   "provider_api_called": false,
   "audio_generated_by_repo": false,
   "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
@@ -23,7 +23,7 @@
       "model_id": "eleven_multilingual_v2",
       "output_format": "mp3_44100_128",
       "request_body": {
-        "text": "Chapter One. Jonathan Harker's Journal.\nKept in shorthand.\nMay the third.\nBistritz. Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour late.\nBuda-Pesth seems a wonderful place, from the glimpse which I got of it from the train and the little I could walk through the streets.\nI feared to go very far from the station, as we had arrived late and would start as near the correct time as possible.\nThe impression I had was that we were leaving the West and entering the East; the most western of splendid bridges over the Danube, which is here of noble width and depth, took us among the traditions of Turkish rule.",
+        "text": "Chapter One. Jonathan Harker's Journal.\nMay the third. Bistritz.\nLeft Munich at 8:35 P.M., on the first of May, arriving at Vienna early next morning; should have arrived at 6:46, but the train was an hour late.\nBuda-Pesth seems a wonderful place, from the glimpse which I got of it from the train and the little I could walk through the streets.\nI feared to go very far from the station, as we had arrived late and would start as near the correct time as possible.\nThe impression I had was that we were leaving the West and entering the East; the most western of splendid bridges over the Danube, which is here of noble width and depth, took us among the traditions of Turkish rule.",
         "model_id": "eleven_multilingual_v2",
         "voice_settings": {
           "speed": 1.0,
@@ -33,9 +33,9 @@
           "use_speaker_boost": true
         }
       },
-      "request_body_hash": "12b118af69319bb1c2b140398b1f005368f6cdacbf14e9e182509733845881ee",
+      "request_body_hash": "ef85bbc68fd923a8c4cf02433e3e885f338a774e1338851dcd0787cd8ee7c021",
       "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
-      "text_hash": "db26faaea3f7fc574193eee690eb39d88a1e30f0ce5172e8cab2aba36aad6dbf",
+      "text_hash": "00232ce3b85cfca56a65028f1f9c9fc41a00943561f8a6fa09a1083741817880",
       "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c001.mp3",
       "generation_status": "DRY_RUN_ONLY",
       "provider_api_called": false,
@@ -95,11 +95,655 @@
       "provider_api_called": false,
       "audio_hash": "",
       "generated_at": ""
+    },
+    {
+      "chunk_id": "c004",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "I did not sleep well, though my bed was comfortable enough, for I had all sorts of queer dreams.\nThere was a dog howling all night under my window, which may have had something to do with it; or it may have been the paprika, for I had to drink up all the water in my carafe, and was still thirsty.\nTowards morning I slept and was wakened by the continuous knocking at my door, so I guess I must have been sleeping soundly then.\nI had for breakfast more paprika, and a sort of porridge of maize flour which they said was “mamaliga,” and egg-plant stuffed with forcemeat, a very excellent dish, which they call “impletata.” Memorandum: get recipe for this also. I had to hurry breakfast, for the train started a little before eight, or rather it ought to have done so, for after rushing to the station at 7:30 I had to sit in the carriage for more than an hour before we began to move.\nIt seems to me that the further east you go the more unpunctual are the trains.\nWhat ought they to be in China?",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "32193f9a1dbfebf867af31a4e69a6e6ead45aec60b2fe2b7e25caa851feaaa9d",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "b2a80b2513caa3fd0d2a07a01b37dacaae66842f65e8324afeb8a18d549cdaa2",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c004.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c005",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "All day long we seemed to dawdle through a country which was full of beauty of every kind.\nSometimes we saw little towns or castles on the top of steep hills such as we see in old missals; sometimes we ran by rivers and streams which seemed from the wide stony margin on each side of them to be subject to great floods.\nIt takes a lot of water, and running strong, to sweep the outside edge of a river clear.\nAt every station there were groups of people, sometimes crowds, and in all sorts of attire.\nSome of them were just like the peasants at home or those I saw coming through France and Germany, with short jackets and round hats and home-made trousers; but others were very picturesque.\nThe women looked pretty, except when you got near them, but they were very clumsy about the waist.\nThey had all full white sleeves of some kind or other, and most of them had big belts with a lot of strips of something fluttering from them like the dresses in a ballet, but of course there were petticoats under them.\nThe strangest figures we saw were the Slovaks, who were more barbarian than the rest, with their big cow-boy hats, great baggy dirty-white trousers, white linen shirts, and enormous heavy leather belts, nearly a foot wide, all studded over with brass nails.\nThey wore high boots, with their trousers tucked into them, and had long black hair and heavy black moustaches.\nThey are very picturesque, but do not look prepossessing.\nOn the stage they would be set down at once as some old Oriental band of brigands.\nThey are, however, I am told, very harmless and rather wanting in natural self-assertion.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "2c2ba4edfe3964f2ff50bd12f9b19b5f65a030220c9d812005d2235632d3eca3",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "d05949f8936d16e9a196f3e133e9e6b248bf65127cfc048dc3786dac8274e026",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c005.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c006",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "It was on the dark side of twilight when we got to Bistritz, which is a very interesting old place.\nBeing practically on the frontier — for the Borgo Pass leads from it into Bukovina — it has had a very stormy existence, and it certainly shows marks of it.\nFifty years ago a series of great fires took place, which made terrible havoc on five separate occasions.\nAt the very beginning of the seventeenth century it underwent a siege of three weeks and lost 13,000 people, the casualties of war proper being assisted by famine and disease.\nCount Dracula had directed me to go to the Golden Krone Hotel, which I found, to my great delight, to be thoroughly old-fashioned, for of course I wanted to see all I could of the ways of the country.\nI was evidently expected, for when I got near the door I faced a cheery-looking elderly woman in the usual peasant dress — white undergarment with long double apron, front, and back, of coloured stuff fitting almost too tight for modesty.\nWhen I came close she bowed and said, “The Herr Englishman?” “Yes,” I said, “Jonathan Harker.” She smiled, and gave some message to an elderly man in white shirt-sleeves, who had followed her to the door.\nHe went, but immediately returned with a letter:",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "c8ffccda1268558e448713bf090453d9c30dd6facafb18f5ef3a4151d55f933d",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "4282ea3554446158cb2528990382172c44a901e2f695e1eeac4510ca716fd7b6",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c006.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c007",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "“My Friend. Welcome to the Carpathians.\nI am anxiously expecting you.\nSleep well to-night.\nAt three to-morrow the diligence will start for Bukovina; a place on it is kept for you.\nAt the Borgo Pass my carriage will await you and will bring you to me.\nI trust that your journey from London has been a happy one, and that you will enjoy your stay in my beautiful land.\n“Your friend,\n“DRACULA.”\nMay the fourth. I found that my landlord had got a letter from the Count, directing him to secure the best place on the coach for me; but on making inquiries as to details he seemed somewhat reticent, and pretended that he could not understand my German.\nThis could not be true, because up to then he had understood it perfectly; at least, he answered my questions exactly as if he did.\nHe and his wife, the old lady who had received me, looked at each other in a frightened sort of way.\nHe mumbled out that the money had been sent in a letter, and that was all he knew.\nWhen I asked him if he knew Count Dracula, and could tell me anything of his castle, both he and his wife crossed themselves, and, saying that they knew nothing at all, simply refused to speak further.\nIt was so near the time of starting that I had no time to ask any one else, for it was all very mysterious and not by any means comforting.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "2698617ad9b18553c1ca333f8d924c8c40031bd1887112b2ace1b935f08eccdb",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "dc2093a5ae1b0de430f6ebf4678a659be61633625f3d10759931cc93f0d441b2",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c007.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c008",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "Just before I was leaving, the old lady came up to my room and said in a very hysterical way:\n“Must you go?\nOh! young Herr, must you go?” She was in such an excited state that she seemed to have lost her grip of what German she knew, and mixed it all up with some other language which I did not know at all.\nI was just able to follow her by asking many questions.\nWhen I told her that I must go at once, and that I was engaged on important business, she asked again:\n“Do you know what day it is?” I answered that it was the fourth of May.\nShe shook her head as she said again:",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "d0bd580e4aaedc7c56e30d07eea095d19c3d6eb79e8747445c0010e88688f79b",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "aa4d9db4e5ae01dd7b665af26b417e1985893531c5395387e3b9d20278f75e4c",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c008.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c009",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "“Oh, yes!\nI know that!\nI know that, but do you know what day it is?” On my saying that I did not understand, she went on:\n“It is the eve of St. George’s Day.\nDo you not know that to-night, when the clock strikes midnight, all the evil things in the world will have full sway?\nDo you know where you are going, and what you are going to?” She was in such evident distress that I tried to comfort her, but without effect.\nFinally she went down on her knees and implored me not to go; at least to wait a day or two before starting.\nIt was all very ridiculous but I did not feel comfortable.\nHowever, there was business to be done, and I could allow nothing to interfere with it.\nI therefore tried to raise her up, and said, as gravely as I could, that I thanked her, but my duty was imperative, and that I must go.\nShe then rose and dried her eyes, and taking a crucifix from her neck offered it to me.\nI did not know what to do, for, as an English Churchman, I have been taught to regard such things as in some measure idolatrous, and yet it seemed so ungracious to refuse an old lady meaning so well and in such a state of mind.\nShe saw, I suppose, the doubt in my face, for she put the rosary round my neck, and said, “For your mother’s sake,” and went out of the room.\nI am writing up this part of the diary whilst I am waiting for the coach, which is, of course, late; and the crucifix is still round my neck.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "3eed20d6ed5978f68cfe3818eb4d9b7105548db56ee8bed86d090ca97ba21415",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "299745409593220925bff272c6c665c40b64efc2ef7d0b2352839383660792c9",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c009.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c010",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "Whether it is the old lady’s fear, or the many ghostly traditions of this place, or the crucifix itself, I do not know, but I am not feeling nearly as easy in my mind as usual.\nIf this book should ever reach Mina before I do, let it bring my good-bye.\nHere comes the coach!\nMay the fifth.\nThe Castle. The grey of the morning has passed, and the sun is high over the distant horizon, which seems jagged, whether with trees or hills I know not, for it is so far off that big things and little are mixed.\nI am not sleepy, and, as I am not to be called till I awake, naturally I write till sleep comes.\nThere are many odd things to put down, and, lest who reads them may fancy that I dined too well before I left Bistritz, let me put down my dinner exactly.\nI dined on what they called “robber steak” — bits of bacon, onion, and beef, seasoned with red pepper, and strung on sticks and roasted over the fire, in the simple style of the London cat’s meat!\nThe wine was Golden Mediasch, which produces a queer sting on the tongue, which is, however, not disagreeable.\nI had only a couple of glasses of this, and nothing else.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "270a72819427fc0c6b02d5513aba1226dffe63e55fa6574cdc2536af5c81021c",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "474f04727a76e55e996a9e80433bd61b4a6d0d49c25b14019e332851e8c942ab",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c010.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c011",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "When I got on the coach the driver had not taken his seat, and I saw him talking with the landlady.\nThey were evidently talking of me, for every now and then they looked at me, and some of the people who were sitting on the bench outside the door — which they call by a name meaning “word-bearer” — came and listened, and then looked at me, most of them pityingly.\nI could hear a lot of words often repeated, queer words, for there were many nationalities in the crowd; so I quietly got my polyglot dictionary from my bag and looked them out.\nI must say they were not cheering to me, for amongst them were “Ordog” — Satan, “pokol” — hell, “stregoica” — witch, “vrolok” and “vlkoslak” — both of which mean the same thing, one being Slovak and the other Servian for something that is either were-wolf or vampire. Memorandum: I must ask the Count about these superstitions",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "83eec5c59df70f65242e44076c08121c5ba606703dcaf056cfe871fb752ca8be",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "06f5f46c4494ef45fcff1dbf6037eeb7810ffcd69323f23413f2fe6f2eac767f",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c011.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c012",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "When we started, the crowd round the inn door, which had by this time swelled to a considerable size, all made the sign of the cross and pointed two fingers towards me.\nWith some difficulty I got a fellow-passenger to tell me what they meant; he would not answer at first, but on learning that I was English, he explained that it was a charm or guard against the evil eye.\nThis was not very pleasant for me, just starting for an unknown place to meet an unknown man; but every one seemed so kind-hearted, and so sorrowful, and so sympathetic that I could not but be touched.\nI shall never forget the last glimpse which I had of the inn-yard and its crowd of picturesque figures, all crossing themselves, as they stood round the wide archway, with its background of rich foliage of oleander and orange trees in green tubs clustered in the centre of the yard.\nThen our driver, whose wide linen drawers covered the whole front of the box-seat — “gotza” they call them — cracked his big whip over his four small horses, which ran abreast, and we set off on our journey.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "2b7404b3a6c3343e5d48fad5845f9370a13a4a2299ae26619fd05e024b6a1297",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "44f05d8d71606e8cfada2e602fe4fcc4b53af20cda82592ae8cdda7dd96cb542",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c012.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c013",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "I soon lost sight and recollection of ghostly fears in the beauty of the scene as we drove along, although had I known the language, or rather languages, which my fellow-passengers were speaking, I might not have been able to throw them off so easily.\nBefore us lay a green sloping land full of forests and woods, with here and there steep hills, crowned with clumps of trees or with farmhouses, the blank gable end to the road.\nThere was everywhere a bewildering mass of fruit blossom — apple, plum, pear, cherry; and as we drove by I could see the green grass under the trees spangled with the fallen petals.\nIn and out amongst these green hills of what they call here the “Mittel Land” ran the road, losing itself as it swept round the grassy curve, or was shut out by the straggling ends of pine woods, which here and there ran down the hillsides like tongues of flame.\nThe road was rugged, but still we seemed to fly over it with a feverish haste.\nI could not understand then what the haste meant, but the driver was evidently bent on losing no time in reaching Borgo Prund.\nI was told that this road is in summertime excellent, but that it had not yet been put in order after the winter snows.\nIn this respect it is different from the general run of roads in the Carpathians, for it is an old tradition that they are not to be kept in too good order.\nOf old the Hospadars would not repair them, lest the Turk should think that they were preparing to bring in foreign troops, and so hasten the war which was always really at loading point.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "91923380e8ce32cb0470bc6844e4555247ad6dbcc26e17b44cde2d0bb548f392",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "7b2bdbaf993876f6bb13fb6fdf77eafab16ed9c3e24b2c7a7fae7c408c4457d4",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c013.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c014",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "Beyond the green swelling hills of the Mittel Land rose mighty slopes of forest up to the lofty steeps of the Carpathians themselves.\nRight and left of us they towered, with the afternoon sun falling full upon them and bringing out all the glorious colours of this beautiful range, deep blue and purple in the shadows of the peaks, green and brown where grass and rock mingled, and an endless perspective of jagged rock and pointed crags, till these were themselves lost in the distance, where the snowy peaks rose grandly.\nHere and there seemed mighty rifts in the mountains, through which, as the sun began to sink, we saw now and again the white gleam of falling water.\nOne of my companions touched my arm as we swept round the base of a hill and opened up the lofty, snow-covered peak of a mountain, which seemed, as we wound on our serpentine way, to be right before us:",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "2b296b3d871654ec4d9ba582ceef0fba8650fc9586a0e82b570afb95d3903f5a",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "a965ccf077be044a35edf6a1dafe42e3896d6cd0e27c95e1e6fad4aa92be784f",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c014.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c015",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "“Look!\nIsten szek!” — “God’s seat!” — and he crossed himself reverently.\nAs we wound on our endless way, and the sun sank lower and lower behind us, the shadows of the evening began to creep round us.\nThis was emphasised by the fact that the snowy mountain-top still held the sunset, and seemed to glow out with a delicate cool pink.\nHere and there we passed Cszeks and Slovaks, all in picturesque attire, but I noticed that goitre was painfully prevalent.\nBy the roadside were many crosses, and as we swept by, my companions all crossed themselves.\nHere and there was a peasant man or woman kneeling before a shrine, who did not even turn round as we approached, but seemed in the self-surrender of devotion to have neither eyes nor ears for the outer world.\nThere were many things new to me: for instance, hay-ricks in the trees, and here and there very beautiful masses of weeping birch, their white stems shining like silver through the delicate green of the leaves.\nNow and again we passed a leiter-wagon — the ordinary peasant’s cart — with its long, snake-like vertebra, calculated to suit the inequalities of the road.\nOn this were sure to be seated quite a group of home-coming peasants, the Cszeks with their white, and the Slovaks with their coloured, sheepskins, the latter carrying lance-fashion their long staves, with axe at end.\nAs the evening fell it began to get very cold, and the growing twilight seemed to merge into one dark mistiness the gloom of the trees, oak, beech, and pine, though in the valleys which ran deep between the spurs of the hills, as we ascended through the Pass, the dark firs stood out here and there against the background of late-lying snow.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "70151e2085bdaa06bdd88b64b2ce3862d176536af342b272352ca2e4128f2c18",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "9e54ef15f1a7f9238a2a0ab3665b514cc0128d71cf4980124e1a844d9a15ca69",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c015.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c016",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "Sometimes, as the road was cut through the pine woods that seemed in the darkness to be closing down upon us, great masses of greyness, which here and there bestrewed the trees, produced a peculiarly weird and solemn effect, which carried on the thoughts and grim fancies engendered earlier in the evening, when the falling sunset threw into strange relief the ghost-like clouds which amongst the Carpathians seem to wind ceaselessly through the valleys.\nSometimes the hills were so steep that, despite our driver’s haste, the horses could only go slowly.\nI wished to get down and walk up them, as we do at home, but the driver would not hear of it.\n“No, no,” he said; “you must not walk here; the dogs are too fierce”; and then he added, with what he evidently meant for grim pleasantry — for he looked round to catch the approving smile of the rest — “and you may have enough of such matters before you go to sleep.” The only stop he would make was a moment’s pause to light his lamps.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "aea413828995b2d05fae60efa79675ad51339586bd5614d148f834af901fb45b",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "1f6ad441f222afa91758f6fa5bfe2dc6c38b5604e756263c0b2d7006f78204ae",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c016.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c017",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "When it grew dark there seemed to be some excitement amongst the passengers, and they kept speaking to him, one after the other, as though urging him to further speed.\nHe lashed the horses unmercifully with his long whip, and with wild cries of encouragement urged them on to further exertions.\nThen through the darkness I could see a sort of patch of grey light ahead of us, as though there were a cleft in the hills.\nThe excitement of the passengers grew greater; the crazy coach rocked on its great leather springs, and swayed like a boat tossed on a stormy sea.\nI had to hold on.\nThe road grew more level, and we appeared to fly along.\nThen the mountains seemed to come nearer to us on each side and to frown down upon us; we were entering on the Borgo Pass.\nOne by one several of the passengers offered me gifts, which they pressed upon me with an earnestness which would take no denial; these were certainly of an odd and varied kind, but each was given in simple good faith, with a kindly word, and a blessing, and that strange mixture of fear-meaning movements which I had seen outside the hotel at Bistritz — the sign of the cross and the guard against the evil eye.\nThen, as we flew along, the driver leaned forward, and on each side the passengers, craning over the edge of the coach, peered eagerly into the darkness.\nIt was evident that something very exciting was either happening or expected, but though I asked each passenger, no one would give me the slightest explanation.\nThis state of excitement kept on for some little time; and at last we saw before us the Pass opening out on the eastern side.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "a681d5ef0315721246a099e350de5caef38ca1ac0e0a5952c6a93f1fed1f3c85",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "7e5223cee62a04452d6724ce7f332530b5bb5682053d0038e289acb242ea7db4",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c017.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c018",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "There were dark, rolling clouds overhead, and in the air the heavy, oppressive sense of thunder.\nIt seemed as though the mountain range had separated two atmospheres, and that now we had got into the thunderous one.\nI was now myself looking out for the conveyance which was to take me to the Count.\nEach moment I expected to see the glare of lamps through the blackness; but all was dark.\nThe only light was the flickering rays of our own lamps, in which the steam from our hard-driven horses rose in a white cloud.\nWe could see now the sandy road lying white before us, but there was on it no sign of a vehicle.\nThe passengers drew back with a sigh of gladness, which seemed to mock my own disappointment.\nI was already thinking what I had best do, when the driver, looking at his watch, said to the others something which I could hardly hear, it was spoken so quietly and in so low a tone; I thought it was “An hour less than the time.” Then turning to me, he said in German worse than my own:",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "3e3269c7e0004a99a65efd53fe141f3d0444e3b701812e787bb8d6de2e13d34e",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "09e134a99bfe0ec8a3feef94842178c6ec8153a4257aaeb575092cc52755609e",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c018.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c019",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "“There is no carriage here.\nThe Herr is not expected after all.\nHe will now come on to Bukovina, and return to-morrow or the next day; better the next day.” Whilst he was speaking the horses began to neigh and snort and plunge wildly, so that the driver had to hold them up.\nThen, amongst a chorus of screams from the peasants and a universal crossing of themselves, a calèche, with four horses, drove up behind us, overtook us, and drew up beside the coach.\nI could see from the flash of our lamps, as the rays fell on them, that the horses were coal-black and splendid animals.\nThey were driven by a tall man, with a long brown beard and a great black hat, which seemed to hide his face from us.\nI could only see the gleam of a pair of very bright eyes, which seemed red in the lamplight, as he turned to us.\nHe said to the driver:",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "3063fef07496a549a31a021cd1264681f1bd3263f778e73ca67500435499aa28",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "c235c689ba7a6d165d0df39fa5edaaa676f93650edf6cacc9156e852381018f3",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c019.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c020",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "“You are early to-night, my friend.” The man stammered in reply:\n“The English Herr was in a hurry,” to which the stranger replied:\n“That is why, I suppose, you wished him to go on to Bukovina.\nYou cannot deceive me, my friend; I know too much, and my horses are swift.” As he spoke he smiled, and the lamplight fell on a hard-looking mouth, with very red lips and sharp-looking teeth, as white as ivory.\nOne of my companions whispered to another the line from Burger’s “Lenore”:\n“Denn die Todten reiten schnell” — (“For the dead travel fast.”)\nThe strange driver evidently heard the words, for he looked up with a gleaming smile.\nThe passenger turned his face away, at the same time putting out his two fingers and crossing himself.\n“Give me the Herr’s luggage,” said the driver; and with exceeding alacrity my bags were handed out and put in the calèche.\nThen I descended from the side of the coach, as the calèche was close alongside, the driver helping me with a hand which caught my arm in a grip of steel; his strength must have been prodigious.\nWithout a word he shook his reins, the horses turned, and we swept into the darkness of the Pass.\nAs I looked back I saw the steam from the horses of the coach by the light of the lamps, and projected against it the figures of my late companions crossing themselves.\nThen the driver cracked his whip and called to his horses, and off they swept on their way to Bukovina.\nAs they sank into the darkness I felt a strange chill, and a lonely feeling came over me; but a cloak was thrown over my shoulders, and a rug across my knees, and the driver said in excellent German:",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "1f0711f5ddc42985f881cde08ffc1b7dfec098ecfa856e52723bb145a97503ed",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "987e22724b497e8fa3cd7e85e821c273670e266beca60cf2179ee69db3d729ac",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c020.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c021",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "“The night is chill, mein Herr, and my master the Count bade me take all care of you.\nThere is a flask of slivovitz (the plum brandy of the country) underneath the seat, if you should require it.” I did not take any, but it was a comfort to know it was there all the same.\nI felt a little strangely, and not a little frightened.\nI think had there been any alternative I should have taken it, instead of prosecuting that unknown night journey.\nThe carriage went at a hard pace straight along, then we made a complete turn and went along another straight road.\nIt seemed to me that we were simply going over and over the same ground again; and so I took note of some salient point, and found that this was so.\nI would have liked to have asked the driver what this all meant, but I really feared to do so, for I thought that, placed as I was, any protest would have had no effect in case there had been an intention to delay.\nBy-and-by, however, as I was curious to know how time was passing, I struck a match, and by its flame looked at my watch; it was within a few minutes of midnight.\nThis gave me a sort of shock, for I suppose the general superstition about midnight was increased by my recent experiences.\nI waited with a sick feeling of suspense.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "579e646e9f91535cf48628808c9c0a1554f8da68a52eda9de5e7d003b41908a9",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "38b6bbc01eca7474ca7fa8b00eb251dafe6266d673a4ee33192633214693414a",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c021.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c022",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "Then a dog began to howl somewhere in a farmhouse far down the road — a long, agonised wailing, as if from fear.\nThe sound was taken up by another dog, and then another and another, till, borne on the wind which now sighed softly through the Pass, a wild howling began, which seemed to come from all over the country, as far as the imagination could grasp it through the gloom of the night.\nAt the first howl the horses began to strain and rear, but the driver spoke to them soothingly, and they quieted down, but shivered and sweated as though after a runaway from sudden fright.\nThen, far off in the distance, from the mountains on each side of us began a louder and a sharper howling — that of wolves — which affected both the horses and myself in the same way — for I was minded to jump from the calèche and run, whilst they reared again and plunged madly, so that the driver had to use all his great strength to keep them from bolting.\nIn a few minutes, however, my own ears got accustomed to the sound, and the horses so far became quiet that the driver was able to descend and to stand before them.\nHe petted and soothed them, and whispered something in their ears, as I have heard of horse-tamers doing, and with extraordinary effect, for under his caresses they became quite manageable again, though they still trembled.\nThe driver again took his seat, and shaking his reins, started off at a great pace.\nThis time, after going to the far side of the Pass, he suddenly turned down a narrow roadway which ran sharply to the right.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "34c89f6fc741f3f0e4b45923fc14c89cd722fb4e8ee787aadff94020bd63c4b0",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "b206e4603959294cdd9c44adcacafec42bb3b098764e6780b467afe736016f9d",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c022.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c023",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "Soon we were hemmed in with trees, which in places arched right over the roadway till we passed as through a tunnel; and again great frowning rocks guarded us boldly on either side.\nThough we were in shelter, we could hear the rising wind, for it moaned and whistled through the rocks, and the branches of the trees crashed together as we swept along.\nIt grew colder and colder still, and fine, powdery snow began to fall, so that soon we and all around us were covered with a white blanket.\nThe keen wind still carried the howling of the dogs, though this grew fainter as we went on our way.\nThe baying of the wolves sounded nearer and nearer, as though they were closing round on us from every side.\nI grew dreadfully afraid, and the horses shared my fear.\nThe driver, however, was not in the least disturbed; he kept turning his head to left and right, but I could not see anything through the darkness.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "38cafe72196c1036581cd9ddbd2d62b8b0eea16ea5cfaec225cb68b2169a41ea",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "ac225a5e77baa012db330e34ac931a7b2d6bca0d7da7a2ef88ec2a92fa6ae35e",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c023.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c024",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "Suddenly, away on our left, I saw a faint flickering blue flame.\nThe driver saw it at the same moment; he at once checked the horses, and, jumping to the ground, disappeared into the darkness.\nI did not know what to do, the less as the howling of the wolves grew closer; but while I wondered the driver suddenly appeared again, and without a word took his seat, and we resumed our journey.\nI think I must have fallen asleep and kept dreaming of the incident, for it seemed to be repeated endlessly, and now looking back, it is like a sort of awful nightmare.\nOnce the flame appeared so near the road, that even in the darkness around us I could watch the driver’s motions.\nHe went rapidly to where the blue flame arose — it must have been very faint, for it did not seem to illumine the place around it at all — and gathering a few stones, formed them into some device.\nOnce there appeared a strange optical effect: when he stood between me and the flame he did not obstruct it, for I could see its ghostly flicker all the same.\nThis startled me, but as the effect was only momentary, I took it that my eyes deceived me straining through the darkness.\nThen for a time there were no blue flames, and we sped onwards through the gloom, with the howling of the wolves around us, as though they were following in a moving circle.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "9c55f97ec184353e69ca5c4413c366befcf04da4e0dd9357038af4ca34a4f110",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "80523a75674bafcb0076320359a776b24ae257ea72a437954c7938f54c91fd73",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c024.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c025",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "At last there came a time when the driver went further afield than he had yet gone, and during his absence, the horses began to tremble worse than ever and to snort and scream with fright.\nI could not see any cause for it, for the howling of the wolves had ceased altogether; but just then the moon, sailing through the black clouds, appeared behind the jagged crest of a beetling, pine-clad rock, and by its light I saw around us a ring of wolves, with white teeth and lolling red tongues, with long, sinewy limbs and shaggy hair.\nThey were a hundred times more terrible in the grim silence which held them than even when they howled.\nFor myself, I felt a sort of paralysis of fear.\nIt is only when a man feels himself face to face with such horrors that he can understand their true import.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "e103553a9e0aadf2f29318f572a5f768912ca6819239a808a573a8ea1c0ce3c5",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "723131baa8e6ed376ec6764cc7fa1bb504269c2126f042aea62841c37d382352",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c025.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c026",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "All at once the wolves began to howl as though the moonlight had had some peculiar effect on them.\nThe horses jumped about and reared, and looked helplessly round with eyes that rolled in a way painful to see; but the living ring of terror encompassed them on every side; and they had perforce to remain within it.\nI called to the coachman to come, for it seemed to me that our only chance was to try to break out through the ring and to aid his approach.\nI shouted and beat the side of the calèche, hoping by the noise to scare the wolves from that side, so as to give him a chance of reaching the trap.\nHow he came there, I know not, but I heard his voice raised in a tone of imperious command, and looking towards the sound, saw him stand in the roadway.\nAs he swept his long arms, as though brushing aside some impalpable obstacle, the wolves fell back and back further still.\nJust then a heavy cloud passed across the face of the moon, so that we were again in darkness.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "31474f0c10aaeee623208f8079b55c683f6a31ca676ca407c3e6b0e73f88cddd",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "93b649df8af97cc1701fde40ebcc14b7b480071a233e81888366f5e7d68ec6f5",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c026.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
+    },
+    {
+      "chunk_id": "c027",
+      "provider": "ElevenLabs",
+      "voice_name": "Rachel",
+      "voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "request_body": {
+        "text": "When I could see again the driver was climbing into the calèche, and the wolves had disappeared.\nThis was all so strange and uncanny that a dreadful fear came upon me, and I was afraid to speak or move.\nThe time seemed interminable as we swept on our way, now in almost complete darkness, for the rolling clouds obscured the moon.\nWe kept on ascending, with occasional periods of quick descent, but in the main always ascending.\nSuddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.",
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {
+          "speed": 1.0,
+          "stability": 0.5,
+          "similarity_boost": 0.75,
+          "style": 0.0,
+          "use_speaker_boost": true
+        }
+      },
+      "request_body_hash": "bf21505d9eab4983f38d8ec07b8fb9605694fa9a2b5b9e4d32bddf533430d0a0",
+      "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
+      "text_hash": "a48f70fcecf861ef63aea4f82f955534eb4b0efc782f3ad9fcabc65a139d0f16",
+      "output_path": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio/dracula-chapter-1-elevenlabs-rachel-c027.mp3",
+      "generation_status": "DRY_RUN_ONLY",
+      "provider_api_called": false,
+      "audio_hash": "",
+      "generated_at": ""
     }
   ],
-  "blockers": [
-    "ELEVENLABS_API_KEY is required for execute mode",
-    "provider evidence status must be ELIGIBLE_INTERNAL_EVAL_ONLY",
-    "owner approval file is required: owner_generation_approval.md"
-  ]
+  "blockers": []
 }

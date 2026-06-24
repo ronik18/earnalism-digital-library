@@ -1,0 +1,20 @@
+{
+  "audio_files": [
+    {
+      "relative_source_path": "nishkriti/nishkriti.mp3",
+      "sha256": "80dc9c627130a8cdbc00d4ee2b2b1e28a04dc4b6f54004cdbb02d670e1450c21",
+      "size_bytes": 59435511,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/nishkriti/nishkriti.mp3",
+      "storage_status": "LOCAL_SOURCE_ONLY"
+    }
+  ],
+  "candidate_slug": "nishkriti",
+  "copy_internal_requested": false,
+  "frontend_build_audio_files": [],
+  "frontend_public_audio_files": [],
+  "generated_at": "2026-06-23T19:36:08+00:00",
+  "internal_copies": [],
+  "public_serving_status": "BLOCKED",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "upload_status": "NOT_UPLOADED"
+}

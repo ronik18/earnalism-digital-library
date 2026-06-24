@@ -1,0 +1,33 @@
+{
+  "analysis_generated_at": "2026-06-23T19:36:07+00:00",
+  "audio_file_count": 1,
+  "audio_files": [
+    {
+      "abrupt_start_end_risk": "REVIEW_REQUIRED",
+      "analysis_status": "PASS",
+      "bitrate_bps": 64005,
+      "channels": 1,
+      "clipping_risk": "NOT_MEASURED_FAST_REVIEW",
+      "codec_name": "mp3",
+      "corruption_readability": "READABLE",
+      "duration_seconds": 1027.104,
+      "format": "mp3",
+      "issues": [],
+      "leading_silence_seconds": null,
+      "long_pauses": [],
+      "loudness_integrated_lufs": null,
+      "objective_audio_score": 8.8,
+      "peak_level_db": null,
+      "sample_rate_hz": 22050,
+      "sha256": "5c90929983842b1bde5b827a70a7aa59abad30106afadd2771e3ba5a63e1e298",
+      "silence_ratio": null,
+      "size_bytes": 8217539,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-63afd5e9be/book-63afd5e9be.mp3",
+      "trailing_silence_seconds": null
+    }
+  ],
+  "candidate_slug": "book-63afd5e9be",
+  "duration_seconds": 1027.104,
+  "ffprobe_status": "PASS",
+  "objective_audio_score": 8.8
+}

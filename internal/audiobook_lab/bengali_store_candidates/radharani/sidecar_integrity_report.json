@@ -1,0 +1,45 @@
+{
+  "candidate_slug": "radharani",
+  "files": [
+    {
+      "entry_count": 8,
+      "highlight_usability_score": 8.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/radharani/radharani_chapters.json",
+      "status": "PASS"
+    },
+    {
+      "bengali_cue_count": 5977,
+      "coverage_ratio": 1.0,
+      "coverage_seconds": 3586.2,
+      "cue_count": 5988,
+      "highlight_usability_score": 4.0,
+      "issues": [
+        "empty cue text at 00:00:00.835 --> 00:00:00.954",
+        "empty cue text at 00:11:58.954 --> 00:11:59.081",
+        "empty cue text at 00:17:32.594 --> 00:17:32.712",
+        "empty cue text at 00:22:38.237 --> 00:22:38.342",
+        "empty cue text at 00:22:47.266 --> 00:22:47.499",
+        "empty cue text at 00:22:47.499 --> 00:22:47.732",
+        "empty cue text at 00:24:42.050 --> 00:24:42.166",
+        "empty cue text at 00:40:18.283 --> 00:40:18.402",
+        "empty cue text at 00:45:30.485 --> 00:45:30.604",
+        "empty cue text at 00:54:29.243 --> 00:54:29.412"
+      ],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/radharani/radharani_highlight.vtt",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "coverage_ratio": 1.0,
+      "entry_count": 5988,
+      "highlight_usability_score": 10.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/radharani/radharani_timestamps.json",
+      "status": "PASS"
+    }
+  ],
+  "generated_at": "2026-06-23T19:36:08+00:00",
+  "sidecar_file_count": 3,
+  "sidecar_integrity_status": "REVIEW_REQUIRED",
+  "sync_usability_score": 4.0
+}

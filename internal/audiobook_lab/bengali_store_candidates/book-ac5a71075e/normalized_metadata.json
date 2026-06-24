@@ -1,0 +1,18 @@
+{
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "candidate_slug": "book-ac5a71075e",
+  "chapter_count": 1,
+  "duration_seconds": 916.848,
+  "language": "Bengali",
+  "language_code": "ben",
+  "narrator_or_model_source": "bn-IN-TanishaaNeural",
+  "provider_used": "command",
+  "public_serving_status": "BLOCKED",
+  "qa_status": "HOLD_HUMAN_QA_REQUIRED",
+  "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+  "rights_status": "HOLD_RIGHTS_EVIDENCE_REQUIRED",
+  "source_metadata_path": "book-ac5a71075e/book-ac5a71075e_meta.json",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "title": "পোস্টমাস্টার",
+  "upload_status": "NOT_UPLOADED"
+}

@@ -1,0 +1,68 @@
+{
+  "audio_files": [
+    "yugalanguriya/yugalanguriya.mp3"
+  ],
+  "candidate_slug": "yugalanguriya",
+  "cover_files": [],
+  "duplicate_audio_files": [],
+  "files": [
+    {
+      "category": "audio",
+      "extension": ".mp3",
+      "path": "yugalanguriya/yugalanguriya.mp3",
+      "sha256": "7c2a6205a2c0ceca60e9993724a10a379af16150d9cd4b9ca581acc245c53c78",
+      "size_bytes": 20613581,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/yugalanguriya/yugalanguriya.mp3"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".json",
+      "path": "yugalanguriya/yugalanguriya_chapters.json",
+      "sha256": "9c4c3e3cb07b4673174ef9785a30a7a7f6e7168b08c2d5595ac9e3f8c6fc384c",
+      "size_bytes": 1005,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/yugalanguriya/yugalanguriya_chapters.json"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".vtt",
+      "path": "yugalanguriya/yugalanguriya_highlight.vtt",
+      "sha256": "7f05809caeb4c7006b783636b77fb67ff99e87bddfd4dca3b3cedab2ffc6c3af",
+      "size_bytes": 228889,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/yugalanguriya/yugalanguriya_highlight.vtt"
+    },
+    {
+      "category": "metadata",
+      "extension": ".json",
+      "path": "yugalanguriya/yugalanguriya_meta.json",
+      "sha256": "aa56661854e0cd850e7d8d44a67cc981a892da5a321773a8ae6071d3ab57d672",
+      "size_bytes": 961,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/yugalanguriya/yugalanguriya_meta.json"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".json",
+      "path": "yugalanguriya/yugalanguriya_timestamps.json",
+      "sha256": "3b8c5eda3e2eb20f7fed4f777057c778407339418954b74eec85b0ef2457a277",
+      "size_bytes": 378418,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/yugalanguriya/yugalanguriya_timestamps.json"
+    }
+  ],
+  "input_root": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben",
+  "inventory_generated_at": "2026-06-23T19:36:08+00:00",
+  "metadata_files": [
+    "yugalanguriya/yugalanguriya_meta.json"
+  ],
+  "missing_required_files": [],
+  "orphan_sidecars": [],
+  "public_serving_status": "BLOCKED",
+  "sidecar_files": [
+    "yugalanguriya/yugalanguriya_chapters.json",
+    "yugalanguriya/yugalanguriya_highlight.vtt",
+    "yugalanguriya/yugalanguriya_timestamps.json"
+  ],
+  "source_dir": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/yugalanguriya",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "transcript_files": [],
+  "unexpected_files": [],
+  "upload_status": "NOT_UPLOADED"
+}

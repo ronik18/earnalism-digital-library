@@ -1,0 +1,40 @@
+{
+  "audio_duration_seconds": 1590.312,
+  "candidate_slug": "book-ef193ffc52",
+  "files": [
+    {
+      "entry_count": 1,
+      "highlight_usability_score": 8.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-ef193ffc52/book-ef193ffc52_chapters.json",
+      "status": "PASS"
+    },
+    {
+      "bengali_cue_count": 2976,
+      "coverage_ratio": 1.0,
+      "coverage_seconds": 1590.312,
+      "cue_count": 2979,
+      "highlight_usability_score": 8.2,
+      "issues": [
+        "empty cue text at 00:00:02.652 --> 00:00:03.045",
+        "empty cue text at 00:00:03.241 --> 00:00:03.438",
+        "empty cue text at 00:00:03.831 --> 00:00:04.126"
+      ],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-ef193ffc52/book-ef193ffc52_highlight.vtt",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "coverage_ratio": 1.0,
+      "entry_count": 2979,
+      "highlight_usability_score": 10.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-ef193ffc52/book-ef193ffc52_timestamps.json",
+      "status": "PASS"
+    }
+  ],
+  "generated_at": "2026-06-23T19:36:08+00:00",
+  "human_sync_review_required": true,
+  "release_blocker": "Human Bengali sync/highlight QA >= 9.5 is required before public release candidacy.",
+  "sync_status": "HOLD_SYNC_QA_REQUIRED",
+  "sync_usability_score": 8.0
+}

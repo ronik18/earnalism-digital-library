@@ -1,0 +1,39 @@
+{
+  "candidate_slug": "book-9a7f771921",
+  "files": [
+    {
+      "entry_count": 1,
+      "highlight_usability_score": 8.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-9a7f771921/book-9a7f771921_chapters.json",
+      "status": "PASS"
+    },
+    {
+      "bengali_cue_count": 9721,
+      "coverage_ratio": 1.0,
+      "coverage_seconds": 5934.72,
+      "cue_count": 9725,
+      "highlight_usability_score": 7.6,
+      "issues": [
+        "empty cue text at 00:00:05.259 --> 00:00:05.855",
+        "empty cue text at 00:00:07.195 --> 00:00:07.642",
+        "empty cue text at 00:43:55.872 --> 00:43:56.168",
+        "empty cue text at 01:38:54.163 --> 01:38:54.720"
+      ],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-9a7f771921/book-9a7f771921_highlight.vtt",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "coverage_ratio": 1.0,
+      "entry_count": 9725,
+      "highlight_usability_score": 10.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-9a7f771921/book-9a7f771921_timestamps.json",
+      "status": "PASS"
+    }
+  ],
+  "generated_at": "2026-06-23T19:36:07+00:00",
+  "sidecar_file_count": 3,
+  "sidecar_integrity_status": "REVIEW_REQUIRED",
+  "sync_usability_score": 7.6
+}

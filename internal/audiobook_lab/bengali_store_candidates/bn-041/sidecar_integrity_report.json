@@ -1,0 +1,59 @@
+{
+  "candidate_slug": "bn-041",
+  "files": [
+    {
+      "entry_count": 6,
+      "highlight_usability_score": 8.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/bn-041/bn-041_chapters.json",
+      "status": "PASS"
+    },
+    {
+      "bengali_cue_count": 5145,
+      "coverage_ratio": 1.0,
+      "coverage_seconds": 2830.32,
+      "cue_count": 5171,
+      "highlight_usability_score": 4.0,
+      "issues": [
+        "empty cue text at 00:00:00.807 --> 00:00:00.922",
+        "empty cue text at 00:00:01.960 --> 00:00:02.421",
+        "empty cue text at 00:00:02.652 --> 00:00:02.883",
+        "empty cue text at 00:00:03.344 --> 00:00:03.574",
+        "empty cue text at 00:05:56.803 --> 00:05:56.906",
+        "empty cue text at 00:05:57.934 --> 00:05:58.345",
+        "empty cue text at 00:05:58.551 --> 00:05:58.757",
+        "empty cue text at 00:05:59.168 --> 00:05:59.374",
+        "empty cue text at 00:09:27.068 --> 00:09:27.171",
+        "empty cue text at 00:09:28.276 --> 00:09:28.730",
+        "empty cue text at 00:09:28.958 --> 00:09:29.185",
+        "empty cue text at 00:09:29.640 --> 00:09:29.868",
+        "empty cue text at 00:17:34.484 --> 00:17:34.599",
+        "empty cue text at 00:17:35.742 --> 00:17:36.198",
+        "empty cue text at 00:17:36.426 --> 00:17:36.654",
+        "empty cue text at 00:17:37.110 --> 00:17:37.338",
+        "empty cue text at 00:21:23.765 --> 00:21:23.879",
+        "empty cue text at 00:21:25.154 --> 00:21:25.622",
+        "empty cue text at 00:21:25.856 --> 00:21:26.090",
+        "empty cue text at 00:21:26.557 --> 00:21:26.791",
+        "empty cue text at 00:36:30.863 --> 00:36:30.977",
+        "empty cue text at 00:36:32.186 --> 00:36:32.682",
+        "empty cue text at 00:36:32.930 --> 00:36:33.177",
+        "empty cue text at 00:36:33.673 --> 00:36:33.920"
+      ],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/bn-041/bn-041_highlight.vtt",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "coverage_ratio": 1.0,
+      "entry_count": 5171,
+      "highlight_usability_score": 10.0,
+      "issues": [],
+      "path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/bn-041/bn-041_timestamps.json",
+      "status": "PASS"
+    }
+  ],
+  "generated_at": "2026-06-23T19:36:05+00:00",
+  "sidecar_file_count": 3,
+  "sidecar_integrity_status": "REVIEW_REQUIRED",
+  "sync_usability_score": 4.0
+}

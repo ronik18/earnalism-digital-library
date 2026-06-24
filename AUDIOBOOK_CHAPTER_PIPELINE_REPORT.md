@@ -3,9 +3,9 @@
 - Book: `dracula`
 - Language: `en`
 - Chapter: `1`
-- Status: `BLOCKED_UNTIL_EXPLICIT_EXECUTE_AND_PROVIDER_EVIDENCE`
-- Mode: `generate-internal`
-- Execute: `true`
+- Status: `DRY_RUN_READY`
+- Mode: `dry-run`
+- Execute: `false`
 - Public audio: `PUBLIC_AUDIO_RELEASE_BLOCKED`
 - Production: `PRODUCTION_BLOCKED`
 
@@ -17,8 +17,8 @@
 | BUILD_SENTENCE_MAP | PASS | No blocker. |
 | BUILD_CHUNK_MANIFEST | PASS | No blocker. |
 | COST_ESTIMATE_AND_BUDGET_GATE | PASS | No blocker. |
-| PROVIDER_EVIDENCE_GATE | BLOCKED | attribution requirements require owner/legal review.; beta feature exclusion evidence is missing or requires review. |
-| ELEVENLABS_GENERATION_DRY_RUN_OR_EXECUTE | BLOCKED | ELEVENLABS_API_KEY is required for execute mode; provider evidence status must be ELIGIBLE_INTERNAL_EVAL_ONLY |
+| PROVIDER_EVIDENCE_GATE | DRY_RUN_HOLD | No blocker. |
+| ELEVENLABS_GENERATION_DRY_RUN_OR_EXECUTE | PASS | No blocker. |
 | IMPORT_AND_HASH_AUDIO | DRY_RUN_NO_AUDIO | No blocker. |
 | BUILD_SYNC_MANIFEST | PASS | No blocker. |
 | BUILD_QA_PACKETS | PASS | No blocker. |

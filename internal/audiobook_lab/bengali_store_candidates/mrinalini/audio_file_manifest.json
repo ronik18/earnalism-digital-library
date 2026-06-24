@@ -1,0 +1,20 @@
+{
+  "audio_files": [
+    {
+      "relative_source_path": "mrinalini/mrinalini.mp3",
+      "sha256": "5308b0b1ba15df2c51203f1571a2d7de7ed1e962495c17b0cef03cd178eaebd4",
+      "size_bytes": 155956706,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/mrinalini/mrinalini.mp3",
+      "storage_status": "LOCAL_SOURCE_ONLY"
+    }
+  ],
+  "candidate_slug": "mrinalini",
+  "copy_internal_requested": false,
+  "frontend_build_audio_files": [],
+  "frontend_public_audio_files": [],
+  "generated_at": "2026-06-23T19:36:08+00:00",
+  "internal_copies": [],
+  "public_serving_status": "BLOCKED",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "upload_status": "NOT_UPLOADED"
+}

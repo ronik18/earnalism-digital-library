@@ -21,6 +21,7 @@ BANNED_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("raw underscore or markdown italic marker", re.compile(r"_|\*[^*\n]+\*")),
     ("asterism separator", re.compile(r"\*\s+\*\s+\*\s+\*\s+\*")),
     ("raw memorandum markup", re.compile(r"\(_Mem\._", re.IGNORECASE)),
+    ("metadata-only paratext", re.compile(r"\bKept in shorthand\.", re.IGNORECASE)),
     ("raw double-hyphen punctuation", re.compile(r"--")),
     (
         "internal instruction",
@@ -113,10 +114,14 @@ def validate_sentence_map(sample_dir: Path) -> tuple[dict[str, Any], list[str]]:
             continue
         narration_text = str(entry.get("narration_text") or "")
         sync_action = str(entry.get("sync_action") or "narrate")
-        if sync_action == "pause_only":
+        narration_decision = str(entry.get("narration_decision") or ("silence_pause" if sync_action == "pause_only" else "speak"))
+        if narration_decision not in {"speak", "transform", "metadata_only", "silence_pause"}:
+            failures.append(f"{path}: {sentence_id} has invalid narration_decision {narration_decision!r}")
+            continue
+        if narration_decision in {"metadata_only", "silence_pause"}:
             if narration_text.strip():
-                failures.append(f"{path}: {sentence_id} pause_only entry must not include narration_text")
-            if not entry.get("silence_ms"):
+                failures.append(f"{path}: {sentence_id} {narration_decision} entry must not include narration_text")
+            if narration_decision == "silence_pause" and not entry.get("silence_ms"):
                 failures.append(f"{path}: {sentence_id} pause_only entry must include silence_ms")
             continue
         failures.extend(validate_text(f"{path}:{sentence_id}.narration_text", narration_text))

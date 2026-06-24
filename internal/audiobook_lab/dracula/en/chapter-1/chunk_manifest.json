@@ -1,9 +1,10 @@
 {
   "generated_by": "scripts/audiobook_chapter_pipeline.py",
-  "generated_at": "2026-06-23T19:26:11+00:00",
+  "generated_at": "2026-06-24T16:34:45+00:00",
   "book_slug": "dracula",
   "language": "en",
   "chapter": 1,
+  "narration_mode": "premium_audiobook",
   "provider": "ElevenLabs",
   "voice_name": "Rachel",
   "voice_id": "21m00Tcm4TlvDq8ikWAM",
@@ -20,16 +21,28 @@
   "narration_text_file": "full_chapter_narration_text.txt",
   "sentence_map_file": "sentence_map.json",
   "chapter_text_hash": "d94ff79699f44efcdb56bda03711cd3abf2656303151a33b2da1c6def90c52fd",
-  "chapter_narration_text_hash": "667ba2b7203a9a1ba54c8dad9a61768b63c0a62af4e28595699f4f318343ad70",
+  "chapter_narration_text_hash": "c428e7f5587125810cccdcc40c14ff008918613af75c493bd4304bdd22de85e5",
   "sentence_count": 220,
+  "spoken_sentence_count": 218,
+  "metadata_only_count": 1,
+  "silence_pause_count": 1,
   "chunk_count": 27,
   "non_narrated_markers": [
+    {
+      "sentence_id": "s002",
+      "chunk_id": "c001",
+      "marker_type": "metadata_only_paratext",
+      "silence_ms": 750,
+      "placement": "metadata_only",
+      "reason": "metadata_only_paratext_shorthand_note"
+    },
     {
       "sentence_id": "s084",
       "chunk_id": "c010",
       "marker_type": "section_break",
       "silence_ms": 750,
-      "placement": "metadata_only"
+      "placement": "metadata_only",
+      "reason": "section_break"
     }
   ],
   "chunks": [
@@ -53,8 +66,8 @@
       "recommended_seconds_max": 120,
       "preserve_paragraph_boundaries": true,
       "audio_filename": "dracula-chapter-1-elevenlabs-rachel-c001.mp3",
-      "narration_text": "Chapter One. Jonathan Harker's Journal.\nKept in shorthand.\nMay the third.\nBistritz. Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour late.\nBuda-Pesth seems a wonderful place, from the glimpse which I got of it from the train and the little I could walk through the streets.\nI feared to go very far from the station, as we had arrived late and would start as near the correct time as possible.\nThe impression I had was that we were leaving the West and entering the East; the most western of splendid bridges over the Danube, which is here of noble width and depth, took us among the traditions of Turkish rule.",
-      "text_hash": "db26faaea3f7fc574193eee690eb39d88a1e30f0ce5172e8cab2aba36aad6dbf",
+      "narration_text": "Chapter One. Jonathan Harker's Journal.\nMay the third. Bistritz.\nLeft Munich at 8:35 P.M., on the first of May, arriving at Vienna early next morning; should have arrived at 6:46, but the train was an hour late.\nBuda-Pesth seems a wonderful place, from the glimpse which I got of it from the train and the little I could walk through the streets.\nI feared to go very far from the station, as we had arrived late and would start as near the correct time as possible.\nThe impression I had was that we were leaving the West and entering the East; the most western of splendid bridges over the Danube, which is here of noble width and depth, took us among the traditions of Turkish rule.",
+      "text_hash": "00232ce3b85cfca56a65028f1f9c9fc41a00943561f8a6fa09a1083741817880",
       "settings_hash": "b55c0a23236c780a92c9424dd9fa95c8e4906fa8025c5b40be506f65379fe16f",
       "estimated_duration_seconds": 50.3,
       "generation_status": "NOT_GENERATED"

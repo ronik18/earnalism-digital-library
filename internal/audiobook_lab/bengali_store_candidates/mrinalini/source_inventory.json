@@ -1,0 +1,68 @@
+{
+  "audio_files": [
+    "mrinalini/mrinalini.mp3"
+  ],
+  "candidate_slug": "mrinalini",
+  "cover_files": [],
+  "duplicate_audio_files": [],
+  "files": [
+    {
+      "category": "audio",
+      "extension": ".mp3",
+      "path": "mrinalini/mrinalini.mp3",
+      "sha256": "5308b0b1ba15df2c51203f1571a2d7de7ed1e962495c17b0cef03cd178eaebd4",
+      "size_bytes": 155956706,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/mrinalini/mrinalini.mp3"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".json",
+      "path": "mrinalini/mrinalini_chapters.json",
+      "sha256": "c3742d8f11b7e30e849ebb0c297f5781fb16cf0f0976fb909c55205f03fd3943",
+      "size_bytes": 6342,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/mrinalini/mrinalini_chapters.json"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".vtt",
+      "path": "mrinalini/mrinalini_highlight.vtt",
+      "sha256": "ecc5aadabfd469c049a81edfc995769f60608f9e9d47e848063582da154c8c9e",
+      "size_bytes": 1628028,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/mrinalini/mrinalini_highlight.vtt"
+    },
+    {
+      "category": "metadata",
+      "extension": ".json",
+      "path": "mrinalini/mrinalini_meta.json",
+      "sha256": "04c237889889d1ce73a45c36f5ce6f4b2a40745f1fd5e17244f4df10db94e0c9",
+      "size_bytes": 1077,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/mrinalini/mrinalini_meta.json"
+    },
+    {
+      "category": "sidecar",
+      "extension": ".json",
+      "path": "mrinalini/mrinalini_timestamps.json",
+      "sha256": "ec53b9dc851c86930fd10d3ead8ae2ade7d3d8d910bb76d387ba7fe5d412ab18",
+      "size_bytes": 2694737,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/mrinalini/mrinalini_timestamps.json"
+    }
+  ],
+  "input_root": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben",
+  "inventory_generated_at": "2026-06-23T19:36:08+00:00",
+  "metadata_files": [
+    "mrinalini/mrinalini_meta.json"
+  ],
+  "missing_required_files": [],
+  "orphan_sidecars": [],
+  "public_serving_status": "BLOCKED",
+  "sidecar_files": [
+    "mrinalini/mrinalini_chapters.json",
+    "mrinalini/mrinalini_highlight.vtt",
+    "mrinalini/mrinalini_timestamps.json"
+  ],
+  "source_dir": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/mrinalini",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "transcript_files": [],
+  "unexpected_files": [],
+  "upload_status": "NOT_UPLOADED"
+}

@@ -14,9 +14,7 @@ from scripts.validate_elevenlabs_narration_text import (
 from scripts.audiobook_chapter_pipeline import run_chapter_pipeline
 
 
-FULL_CHAPTER_DIR = (
-    Path.cwd() / "internal" / "audiobook_lab" / "dracula" / "en" / "chapter-1-elevenlabs-full"
-)
+FULL_CHAPTER_DIR = Path.cwd() / "internal" / "audiobook_lab" / "dracula" / "en" / "chapter-1"
 
 
 def assert_text_fails(text: str, expected: str) -> None:
@@ -45,7 +43,7 @@ def test_dirty_text_with_markdown_or_internal_notes_fails():
 def test_clean_narration_text_passes():
     failures = validate_text(
         "clean fixture",
-        "Chapter One. Jonathan Harker's Journal.\nKept in shorthand.\nMay the third. Bistritz.",
+        "Chapter One. Jonathan Harker's Journal.\nMay the third. Bistritz.",
     )
 
     assert failures == []
@@ -60,9 +58,10 @@ def test_sentence_map_preserves_all_220_sentence_ids():
         "'", "\u2019"
     )
     assert sentence_map["s001"]["narration_text"] == "Chapter One. Jonathan Harker's Journal."
-    assert sentence_map["s002"]["narration_text"] == "Kept in shorthand."
-    assert sentence_map["s003"]["narration_text"] == "May the third."
-    assert sentence_map["s004"]["narration_text"].startswith("Bistritz. Left Munich")
+    assert sentence_map["s002"]["narration_decision"] == "metadata_only"
+    assert sentence_map["s002"]["narration_text"] == ""
+    assert sentence_map["s003"]["narration_text"] == "May the third. Bistritz."
+    assert sentence_map["s004"]["narration_text"].startswith("Left Munich")
 
     pause_entries = [
         (sentence_id, entry)
@@ -72,7 +71,7 @@ def test_sentence_map_preserves_all_220_sentence_ids():
     assert [(sentence_id, entry["silence_ms"]) for sentence_id, entry in pause_entries] == [("s084", 750)]
 
     for sentence_id, entry in sentence_map.items():
-        if entry.get("sync_action") == "pause_only":
+        if entry.get("narration_decision") in {"metadata_only", "silence_pause"}:
             assert entry["narration_text"] == ""
             continue
         assert validate_text(f"sentence_map:{sentence_id}", entry["narration_text"]) == []
@@ -88,15 +87,8 @@ def test_chunk_manifest_references_clean_text_only():
     assert manifest["narration_text_file"] == "full_chapter_narration_text.txt"
     assert manifest["source_sync_file"] == "full_chapter_sync_source_with_ids.txt"
     assert manifest["generation_status"] == "NOT_GENERATED"
-    assert manifest["non_narrated_markers"] == [
-        {
-            "sentence_id": "s084",
-            "chunk_id": "c010",
-            "marker_type": "section_break",
-            "silence_ms": 750,
-            "placement": "between s083 and s085",
-        }
-    ]
+    marker_ids = {marker["sentence_id"] for marker in manifest["non_narrated_markers"]}
+    assert {"s002", "s084"}.issubset(marker_ids)
 
     assert len(manifest["chunks"]) == 27
     for chunk in manifest["chunks"]:

@@ -1,0 +1,18 @@
+{
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "candidate_slug": "book-d2fe532e1c",
+  "chapter_count": 1,
+  "duration_seconds": 1612.536,
+  "language": "Bengali",
+  "language_code": "ben",
+  "narrator_or_model_source": "bn-IN-TanishaaNeural",
+  "provider_used": "command",
+  "public_serving_status": "BLOCKED",
+  "qa_status": "HOLD_HUMAN_QA_REQUIRED",
+  "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+  "rights_status": "HOLD_RIGHTS_EVIDENCE_REQUIRED",
+  "source_metadata_path": "book-d2fe532e1c/book-d2fe532e1c_meta.json",
+  "storage_status": "LOCAL_SOURCE_ONLY",
+  "title": "স্বর্ণমৃগ",
+  "upload_status": "NOT_UPLOADED"
+}

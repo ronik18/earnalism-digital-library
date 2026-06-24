@@ -1,0 +1,40 @@
+{
+  "accessibility_qa_required": true,
+  "blockers": [
+    "objective_audio_score_9_5",
+    "sync_usability_score_9_5",
+    "bengali_human_listening_qa_9_5",
+    "accessibility_listening_qa_9_5",
+    "source_text_rights_evidence_exists",
+    "derivative_audiobook_rights_evidence_exists",
+    "owner_approval_exists",
+    "legal_internal_review_exists",
+    "rollback_plan_exists"
+  ],
+  "candidate_slug": "book-0986aeb7e3",
+  "frontend_build_audio_files": [],
+  "frontend_public_audio_files": [],
+  "gates": {
+    "accessibility_listening_qa_9_5": false,
+    "bengali_human_listening_qa_9_5": false,
+    "derivative_audiobook_rights_evidence_exists": false,
+    "legal_internal_review_exists": false,
+    "no_frontend_public_or_build_audio": true,
+    "no_pre_release_public_audio_cta": true,
+    "no_public_audio_object_metadata": true,
+    "objective_audio_score_9_5": false,
+    "owner_approval_exists": false,
+    "rollback_plan_exists": false,
+    "source_text_rights_evidence_exists": false,
+    "sync_usability_score_9_5": false
+  },
+  "generated_at": "2026-06-23T19:36:06+00:00",
+  "human_qa_required": true,
+  "legal_review_required": true,
+  "production_approved": false,
+  "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "public_serving_status": "BLOCKED",
+  "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+  "rights_review_required": true,
+  "upload_status": "NOT_UPLOADED"
+}

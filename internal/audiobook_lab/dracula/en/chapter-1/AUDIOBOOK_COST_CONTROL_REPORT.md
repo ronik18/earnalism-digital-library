@@ -1,8 +1,8 @@
 # Audiobook Cost Control Report
 
-- Estimated characters: `2840`
-- Estimated cost INR: `5.68`
-- Max cost INR: `500.0`
-- Max chunks: `3`
-- Within budget: `true`
+- Estimated characters: `30651`
+- Estimated cost INR: `61.3`
+- Max cost INR: `None`
+- Max chunks: `None`
+- Within budget: `false`
 - Real generation requires explicit execute, eligible provider evidence, owner approval, and budget caps.

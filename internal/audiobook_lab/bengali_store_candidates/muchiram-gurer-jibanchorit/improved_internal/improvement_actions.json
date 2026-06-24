@@ -1,0 +1,22 @@
+[
+  {
+    "action": "normalized_json_formatting",
+    "output": "internal/audiobook_lab/bengali_store_candidates/muchiram-gurer-jibanchorit/improved_internal/sidecars/muchiram-gurer-jibanchorit_chapters.json",
+    "source": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_chapters.json"
+  },
+  {
+    "action": "repaired_vtt_line_formatting",
+    "output": "internal/audiobook_lab/bengali_store_candidates/muchiram-gurer-jibanchorit/improved_internal/sidecars/muchiram-gurer-jibanchorit_highlight.vtt",
+    "source": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_highlight.vtt"
+  },
+  {
+    "action": "normalized_json_formatting",
+    "output": "internal/audiobook_lab/bengali_store_candidates/muchiram-gurer-jibanchorit/improved_internal/sidecars/muchiram-gurer-jibanchorit_meta.json",
+    "source": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_meta.json"
+  },
+  {
+    "action": "normalized_json_formatting",
+    "output": "internal/audiobook_lab/bengali_store_candidates/muchiram-gurer-jibanchorit/improved_internal/sidecars/muchiram-gurer-jibanchorit_timestamps.json",
+    "source": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_timestamps.json"
+  }
+]

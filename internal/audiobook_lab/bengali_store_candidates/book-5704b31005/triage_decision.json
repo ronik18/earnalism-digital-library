@@ -1,0 +1,107 @@
+{
+  "accessibility_qa_required": true,
+  "audio_object_metadata_allowed": false,
+  "candidate_slug": "book-5704b31005",
+  "composite_score": 8.2259,
+  "generated_at": "2026-06-23T19:50:55+00:00",
+  "human_qa_required": true,
+  "listen_now_cta_allowed": false,
+  "objective_audio_score": 8.8,
+  "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "release_path": {
+    "blockers": [
+      "objective_audio_score_9_5",
+      "sync_usability_score_9_5",
+      "bengali_human_listening_qa_9_5",
+      "accessibility_listening_qa_9_5",
+      "source_text_rights_evidence_exists",
+      "derivative_audiobook_rights_evidence_exists",
+      "owner_approval_exists",
+      "legal_internal_review_exists",
+      "rollback_plan_exists"
+    ],
+    "candidate_slug": "book-5704b31005",
+    "gates": {
+      "accessibility_listening_qa_9_5": false,
+      "bengali_human_listening_qa_9_5": false,
+      "derivative_audiobook_rights_evidence_exists": false,
+      "legal_internal_review_exists": false,
+      "no_frontend_public_or_build_audio": true,
+      "no_public_audio_object_metadata": true,
+      "no_public_listen_now_cta": true,
+      "objective_audio_score_9_5": false,
+      "owner_approval_exists": false,
+      "rollback_plan_exists": false,
+      "source_text_rights_evidence_exists": false,
+      "sync_usability_score_9_5": false
+    },
+    "production_approved": false,
+    "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+    "ready_for_public_release_candidate": false,
+    "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED"
+  },
+  "release_status": "HOLD_BENGALI_AUDIOBOOK_QA_REQUIRED",
+  "remaster_result": {
+    "after_objective_audio_score": 9.0,
+    "before_objective_audio_score": 8.8,
+    "clipping_risk": "LOW_AFTER_INTERNAL_LOUDNORM_REVIEW_COPY",
+    "ffprobe_after": {
+      "analysis_status": "PASS",
+      "bitrate_bps": 128007,
+      "channels": 1,
+      "clipping_risk": "LOW_AFTER_INTERNAL_LOUDNORM_REVIEW_COPY",
+      "codec_name": "mp3",
+      "duration_seconds": 1103.816,
+      "format": "mp3",
+      "issues": [],
+      "objective_audio_score": 9.0,
+      "sample_rate_hz": 48000
+    },
+    "human_qa_still_required": true,
+    "loudness_improvement": "internal review copy normalized with ffmpeg loudnorm target I=-18 TP=-2 LRA=11",
+    "objective_score_reaches_9_5": false,
+    "original_source_hash_unchanged": true,
+    "output_path": "internal/audiobook_lab/bengali_store_candidates/book-5704b31005/improved_internal/audio/book-5704b31005_internal_remaster_review.mp3",
+    "output_sha256": "b0c2b4dc9a09e9ad3ac788d67e164831726a7a6d64cd0cc319837324d767765b",
+    "silence_trim_result": "leading/trailing silence trim filter applied with conservative -45dB threshold",
+    "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-5704b31005/book-5704b31005.mp3",
+    "source_sha256": "58de0bfdf5f61f5034ad9899bbd3ea7e2f952d9672e7ef9573bfef5f123a3041",
+    "status": "INTERNAL_REMASTER_REVIEW_COPY_CREATED"
+  },
+  "rights_legal_owner_approval_required": true,
+  "sync_repair_result": {
+    "actions": [
+      {
+        "action": "normalized_json_formatting",
+        "content_invented": false,
+        "output_path": "internal/audiobook_lab/bengali_store_candidates/book-5704b31005/improved_internal/sync/book-5704b31005_chapters.json",
+        "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-5704b31005/book-5704b31005_chapters.json"
+      },
+      {
+        "action": "safe_vtt_format_and_order_repair",
+        "content_invented": false,
+        "cue_content_preserved": true,
+        "cue_count_after": 2022,
+        "cue_count_before": 2022,
+        "ordering_changed": false,
+        "output_path": "internal/audiobook_lab/bengali_store_candidates/book-5704b31005/improved_internal/sync/book-5704b31005_highlight.vtt",
+        "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-5704b31005/book-5704b31005_highlight.vtt"
+      },
+      {
+        "action": "normalized_json_formatting",
+        "content_invented": false,
+        "output_path": "internal/audiobook_lab/bengali_store_candidates/book-5704b31005/improved_internal/sync/book-5704b31005_timestamps.json",
+        "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-5704b31005/book-5704b31005_timestamps.json"
+      }
+    ],
+    "after_sync_usability_score": 8.6,
+    "before_sync_usability_score": 8.0,
+    "content_invented": false,
+    "human_sync_qa_still_required": true,
+    "status": "SYNC_SIDECAR_REPAIR_WRITTEN",
+    "sync_score_reaches_9_5": false
+  },
+  "sync_usability_score": 8.0,
+  "triage_decision": "TOP_CANDIDATE_INTERNAL_REMASTER_REVIEW",
+  "triage_rank": 3
+}

@@ -1,0 +1,36 @@
+{
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "chapters": 1,
+  "duration_ms": 2469720,
+  "generated_at": "2026-06-12T11:21:11.902Z",
+  "highlight_available": true,
+  "language": "ben",
+  "mime_type": "audio/mpeg",
+  "provider_used": "command",
+  "qa_threshold": 9.3,
+  "size": 19758437,
+  "slug": "book-0fbdaa730e",
+  "source_text_modified": false,
+  "text_preparation": {
+    "average_pause_ms": 218,
+    "hyphen_minus_normalization_applied": true,
+    "lexicon_coverage": 0,
+    "max_pause_ms": 650,
+    "mixed_english_terms": [
+      {
+        "count": 1,
+        "term": "x27"
+      }
+    ],
+    "pause_profile_used": "natural-expressive",
+    "pitch_used": "+2Hz",
+    "punctuation_normalized": true,
+    "rate_used": "+6%",
+    "ssml_pause_markers": true,
+    "ssml_profile_used": "azure-command-natural-expressive",
+    "total_inserted_pauses": 812
+  },
+  "title": "গুপ্তধন",
+  "total_words": 4661,
+  "voice": "bn-IN-TanishaaNeural"
+}

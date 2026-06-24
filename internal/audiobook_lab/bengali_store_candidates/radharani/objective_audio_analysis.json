@@ -1,0 +1,33 @@
+{
+  "analysis_generated_at": "2026-06-23T19:36:08+00:00",
+  "audio_file_count": 1,
+  "audio_files": [
+    {
+      "abrupt_start_end_risk": "REVIEW_REQUIRED",
+      "analysis_status": "PASS",
+      "bitrate_bps": 64001,
+      "channels": 1,
+      "clipping_risk": "NOT_MEASURED_FAST_REVIEW",
+      "codec_name": "mp3",
+      "corruption_readability": "READABLE",
+      "duration_seconds": 3586.2,
+      "format": "mp3",
+      "issues": [],
+      "leading_silence_seconds": null,
+      "long_pauses": [],
+      "loudness_integrated_lufs": null,
+      "objective_audio_score": 8.8,
+      "peak_level_db": null,
+      "sample_rate_hz": 22050,
+      "sha256": "4de991f9afc420037ec09683aa4b53e4e62de8a4ae782ebdfb766ec48bb18a56",
+      "silence_ratio": null,
+      "size_bytes": 28690434,
+      "source_path": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/radharani/radharani.mp3",
+      "trailing_silence_seconds": null
+    }
+  ],
+  "candidate_slug": "radharani",
+  "duration_seconds": 3586.2,
+  "ffprobe_status": "PASS",
+  "objective_audio_score": 8.8
+}

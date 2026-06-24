@@ -2,1103 +2,1545 @@
   "s001": {
     "source_text": "CHAPTER I. JONATHAN HARKER’S JOURNAL",
     "narration_text": "Chapter One. Jonathan Harker's Journal.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s002": {
     "source_text": "(_Kept in shorthand._)",
-    "narration_text": "Kept in shorthand.",
-    "sync_action": "narrate"
+    "narration_text": "",
+    "sync_action": "metadata_only",
+    "narration_decision": "metadata_only",
+    "narration_mode": "premium_audiobook",
+    "reason": "metadata_only_paratext_shorthand_note",
+    "source_role": "paratext"
   },
   "s003": {
     "source_text": "_3 May.",
-    "narration_text": "May the third.",
-    "sync_action": "narrate"
+    "narration_text": "May the third. Bistritz.",
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s004": {
     "source_text": "Bistritz._--Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour late.",
-    "narration_text": "Bistritz. Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour late.",
-    "sync_action": "narrate"
+    "narration_text": "Left Munich at 8:35 P.M., on the first of May, arriving at Vienna early next morning; should have arrived at 6:46, but the train was an hour late.",
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s005": {
     "source_text": "Buda-Pesth seems a wonderful place, from the glimpse which I got of it from the train and the little I could walk through the streets.",
     "narration_text": "Buda-Pesth seems a wonderful place, from the glimpse which I got of it from the train and the little I could walk through the streets.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s006": {
     "source_text": "I feared to go very far from the station, as we had arrived late and would start as near the correct time as possible.",
     "narration_text": "I feared to go very far from the station, as we had arrived late and would start as near the correct time as possible.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s007": {
     "source_text": "The impression I had was that we were leaving the West and entering the East; the most western of splendid bridges over the Danube, which is here of noble width and depth, took us among the traditions of Turkish rule.",
     "narration_text": "The impression I had was that we were leaving the West and entering the East; the most western of splendid bridges over the Danube, which is here of noble width and depth, took us among the traditions of Turkish rule.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s008": {
     "source_text": "We left in pretty good time, and came after nightfall to Klausenburgh.",
     "narration_text": "We left in pretty good time, and came after nightfall to Klausenburgh.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s009": {
     "source_text": "Here I stopped for the night at the Hotel Royale.",
     "narration_text": "Here I stopped for the night at the Hotel Royale.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s010": {
     "source_text": "I had for dinner, or rather supper, a chicken done up some way with red pepper, which was very good but thirsty. (_Mem._, get recipe for Mina.) I asked the waiter, and he said it was called “paprika hendl,” and that, as it was a national dish, I should be able to get it anywhere along the Carpathians.",
     "narration_text": "I had for dinner, or rather supper, a chicken done up some way with red pepper, which was very good but thirsty. Memorandum: get recipe for Mina. I asked the waiter, and he said it was called “paprika hendl,” and that, as it was a national dish, I should be able to get it anywhere along the Carpathians.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s011": {
     "source_text": "I found my smattering of German very useful here; indeed, I don’t know how I should be able to get on without it.",
     "narration_text": "I found my smattering of German very useful here; indeed, I don’t know how I should be able to get on without it.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s012": {
     "source_text": "Having had some time at my disposal when in London, I had visited the British Museum, and made search among the books and maps in the library regarding Transylvania; it had struck me that some foreknowledge of the country could hardly fail to have some importance in dealing with a nobleman of that country.",
     "narration_text": "Having had some time at my disposal when in London, I had visited the British Museum, and made search among the books and maps in the library regarding Transylvania; it had struck me that some foreknowledge of the country could hardly fail to have some importance in dealing with a nobleman of that country.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s013": {
     "source_text": "I find that the district he named is in the extreme east of the country, just on the borders of three states, Transylvania, Moldavia and Bukovina, in the midst of the Carpathian mountains; one of the wildest and least known portions of Europe.",
     "narration_text": "I find that the district he named is in the extreme east of the country, just on the borders of three states, Transylvania, Moldavia and Bukovina, in the midst of the Carpathian mountains; one of the wildest and least known portions of Europe.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s014": {
     "source_text": "I was not able to light on any map or work giving the exact locality of the Castle Dracula, as there are no maps of this country as yet to compare with our own Ordnance Survey maps; but I found that Bistritz, the post town named by Count Dracula, is a fairly well-known place.",
     "narration_text": "I was not able to light on any map or work giving the exact locality of the Castle Dracula, as there are no maps of this country as yet to compare with our own Ordnance Survey maps; but I found that Bistritz, the post town named by Count Dracula, is a fairly well-known place.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s015": {
     "source_text": "I shall enter here some of my notes, as they may refresh my memory when I talk over my travels with Mina.",
     "narration_text": "I shall enter here some of my notes, as they may refresh my memory when I talk over my travels with Mina.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s016": {
     "source_text": "In the population of Transylvania there are four distinct nationalities: Saxons in the South, and mixed with them the Wallachs, who are the descendants of the Dacians; Magyars in the West, and Szekelys in the East and North.",
     "narration_text": "In the population of Transylvania there are four distinct nationalities: Saxons in the South, and mixed with them the Wallachs, who are the descendants of the Dacians; Magyars in the West, and Szekelys in the East and North.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s017": {
     "source_text": "I am going among the latter, who claim to be descended from Attila and the Huns.",
     "narration_text": "I am going among the latter, who claim to be descended from Attila and the Huns.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s018": {
     "source_text": "This may be so, for when the Magyars conquered the country in the eleventh century they found the Huns settled in it.",
     "narration_text": "This may be so, for when the Magyars conquered the country in the eleventh century they found the Huns settled in it.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s019": {
     "source_text": "I read that every known superstition in the world is gathered into the horseshoe of the Carpathians, as if it were the centre of some sort of imaginative whirlpool; if so my stay may be very interesting. (_Mem._, I must ask the Count all about them.)",
     "narration_text": "I read that every known superstition in the world is gathered into the horseshoe of the Carpathians, as if it were the centre of some sort of imaginative whirlpool; if so my stay may be very interesting. Memorandum: I must ask the Count all about them.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s020": {
     "source_text": "I did not sleep well, though my bed was comfortable enough, for I had all sorts of queer dreams.",
     "narration_text": "I did not sleep well, though my bed was comfortable enough, for I had all sorts of queer dreams.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s021": {
     "source_text": "There was a dog howling all night under my window, which may have had something to do with it; or it may have been the paprika, for I had to drink up all the water in my carafe, and was still thirsty.",
     "narration_text": "There was a dog howling all night under my window, which may have had something to do with it; or it may have been the paprika, for I had to drink up all the water in my carafe, and was still thirsty.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s022": {
     "source_text": "Towards morning I slept and was wakened by the continuous knocking at my door, so I guess I must have been sleeping soundly then.",
     "narration_text": "Towards morning I slept and was wakened by the continuous knocking at my door, so I guess I must have been sleeping soundly then.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s023": {
     "source_text": "I had for breakfast more paprika, and a sort of porridge of maize flour which they said was “mamaliga,” and egg-plant stuffed with forcemeat, a very excellent dish, which they call “impletata.” (_Mem._, get recipe for this also.) I had to hurry breakfast, for the train started a little before eight, or rather it ought to have done so, for after rushing to the station at 7:30 I had to sit in the carriage for more than an hour before we began to move.",
     "narration_text": "I had for breakfast more paprika, and a sort of porridge of maize flour which they said was “mamaliga,” and egg-plant stuffed with forcemeat, a very excellent dish, which they call “impletata.” Memorandum: get recipe for this also. I had to hurry breakfast, for the train started a little before eight, or rather it ought to have done so, for after rushing to the station at 7:30 I had to sit in the carriage for more than an hour before we began to move.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s024": {
     "source_text": "It seems to me that the further east you go the more unpunctual are the trains.",
     "narration_text": "It seems to me that the further east you go the more unpunctual are the trains.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s025": {
     "source_text": "What ought they to be in China?",
     "narration_text": "What ought they to be in China?",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s026": {
     "source_text": "All day long we seemed to dawdle through a country which was full of beauty of every kind.",
     "narration_text": "All day long we seemed to dawdle through a country which was full of beauty of every kind.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s027": {
     "source_text": "Sometimes we saw little towns or castles on the top of steep hills such as we see in old missals; sometimes we ran by rivers and streams which seemed from the wide stony margin on each side of them to be subject to great floods.",
     "narration_text": "Sometimes we saw little towns or castles on the top of steep hills such as we see in old missals; sometimes we ran by rivers and streams which seemed from the wide stony margin on each side of them to be subject to great floods.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s028": {
     "source_text": "It takes a lot of water, and running strong, to sweep the outside edge of a river clear.",
     "narration_text": "It takes a lot of water, and running strong, to sweep the outside edge of a river clear.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s029": {
     "source_text": "At every station there were groups of people, sometimes crowds, and in all sorts of attire.",
     "narration_text": "At every station there were groups of people, sometimes crowds, and in all sorts of attire.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s030": {
     "source_text": "Some of them were just like the peasants at home or those I saw coming through France and Germany, with short jackets and round hats and home-made trousers; but others were very picturesque.",
     "narration_text": "Some of them were just like the peasants at home or those I saw coming through France and Germany, with short jackets and round hats and home-made trousers; but others were very picturesque.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s031": {
     "source_text": "The women looked pretty, except when you got near them, but they were very clumsy about the waist.",
     "narration_text": "The women looked pretty, except when you got near them, but they were very clumsy about the waist.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s032": {
     "source_text": "They had all full white sleeves of some kind or other, and most of them had big belts with a lot of strips of something fluttering from them like the dresses in a ballet, but of course there were petticoats under them.",
     "narration_text": "They had all full white sleeves of some kind or other, and most of them had big belts with a lot of strips of something fluttering from them like the dresses in a ballet, but of course there were petticoats under them.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s033": {
     "source_text": "The strangest figures we saw were the Slovaks, who were more barbarian than the rest, with their big cow-boy hats, great baggy dirty-white trousers, white linen shirts, and enormous heavy leather belts, nearly a foot wide, all studded over with brass nails.",
     "narration_text": "The strangest figures we saw were the Slovaks, who were more barbarian than the rest, with their big cow-boy hats, great baggy dirty-white trousers, white linen shirts, and enormous heavy leather belts, nearly a foot wide, all studded over with brass nails.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s034": {
     "source_text": "They wore high boots, with their trousers tucked into them, and had long black hair and heavy black moustaches.",
     "narration_text": "They wore high boots, with their trousers tucked into them, and had long black hair and heavy black moustaches.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s035": {
     "source_text": "They are very picturesque, but do not look prepossessing.",
     "narration_text": "They are very picturesque, but do not look prepossessing.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s036": {
     "source_text": "On the stage they would be set down at once as some old Oriental band of brigands.",
     "narration_text": "On the stage they would be set down at once as some old Oriental band of brigands.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s037": {
     "source_text": "They are, however, I am told, very harmless and rather wanting in natural self-assertion.",
     "narration_text": "They are, however, I am told, very harmless and rather wanting in natural self-assertion.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s038": {
     "source_text": "It was on the dark side of twilight when we got to Bistritz, which is a very interesting old place.",
     "narration_text": "It was on the dark side of twilight when we got to Bistritz, which is a very interesting old place.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s039": {
     "source_text": "Being practically on the frontier--for the Borgo Pass leads from it into Bukovina--it has had a very stormy existence, and it certainly shows marks of it.",
     "narration_text": "Being practically on the frontier — for the Borgo Pass leads from it into Bukovina — it has had a very stormy existence, and it certainly shows marks of it.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s040": {
     "source_text": "Fifty years ago a series of great fires took place, which made terrible havoc on five separate occasions.",
     "narration_text": "Fifty years ago a series of great fires took place, which made terrible havoc on five separate occasions.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s041": {
     "source_text": "At the very beginning of the seventeenth century it underwent a siege of three weeks and lost 13,000 people, the casualties of war proper being assisted by famine and disease.",
     "narration_text": "At the very beginning of the seventeenth century it underwent a siege of three weeks and lost 13,000 people, the casualties of war proper being assisted by famine and disease.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s042": {
     "source_text": "Count Dracula had directed me to go to the Golden Krone Hotel, which I found, to my great delight, to be thoroughly old-fashioned, for of course I wanted to see all I could of the ways of the country.",
     "narration_text": "Count Dracula had directed me to go to the Golden Krone Hotel, which I found, to my great delight, to be thoroughly old-fashioned, for of course I wanted to see all I could of the ways of the country.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s043": {
     "source_text": "I was evidently expected, for when I got near the door I faced a cheery-looking elderly woman in the usual peasant dress--white undergarment with long double apron, front, and back, of coloured stuff fitting almost too tight for modesty.",
     "narration_text": "I was evidently expected, for when I got near the door I faced a cheery-looking elderly woman in the usual peasant dress — white undergarment with long double apron, front, and back, of coloured stuff fitting almost too tight for modesty.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s044": {
     "source_text": "When I came close she bowed and said, “The Herr Englishman?” “Yes,” I said, “Jonathan Harker.” She smiled, and gave some message to an elderly man in white shirt-sleeves, who had followed her to the door.",
     "narration_text": "When I came close she bowed and said, “The Herr Englishman?” “Yes,” I said, “Jonathan Harker.” She smiled, and gave some message to an elderly man in white shirt-sleeves, who had followed her to the door.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s045": {
     "source_text": "He went, but immediately returned with a letter:--",
     "narration_text": "He went, but immediately returned with a letter:",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s046": {
     "source_text": "“My Friend.--Welcome to the Carpathians.",
     "narration_text": "“My Friend. Welcome to the Carpathians.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s047": {
     "source_text": "I am anxiously expecting you.",
     "narration_text": "I am anxiously expecting you.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s048": {
     "source_text": "Sleep well to-night.",
     "narration_text": "Sleep well to-night.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s049": {
     "source_text": "At three to-morrow the diligence will start for Bukovina; a place on it is kept for you.",
     "narration_text": "At three to-morrow the diligence will start for Bukovina; a place on it is kept for you.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s050": {
     "source_text": "At the Borgo Pass my carriage will await you and will bring you to me.",
     "narration_text": "At the Borgo Pass my carriage will await you and will bring you to me.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s051": {
     "source_text": "I trust that your journey from London has been a happy one, and that you will enjoy your stay in my beautiful land.",
     "narration_text": "I trust that your journey from London has been a happy one, and that you will enjoy your stay in my beautiful land.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s052": {
     "source_text": "“Your friend,",
     "narration_text": "“Your friend,",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s053": {
     "source_text": "“DRACULA.”",
     "narration_text": "“DRACULA.”",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s054": {
     "source_text": "_4 May._--I found that my landlord had got a letter from the Count, directing him to secure the best place on the coach for me; but on making inquiries as to details he seemed somewhat reticent, and pretended that he could not understand my German.",
     "narration_text": "May the fourth. I found that my landlord had got a letter from the Count, directing him to secure the best place on the coach for me; but on making inquiries as to details he seemed somewhat reticent, and pretended that he could not understand my German.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s055": {
     "source_text": "This could not be true, because up to then he had understood it perfectly; at least, he answered my questions exactly as if he did.",
     "narration_text": "This could not be true, because up to then he had understood it perfectly; at least, he answered my questions exactly as if he did.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s056": {
     "source_text": "He and his wife, the old lady who had received me, looked at each other in a frightened sort of way.",
     "narration_text": "He and his wife, the old lady who had received me, looked at each other in a frightened sort of way.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s057": {
     "source_text": "He mumbled out that the money had been sent in a letter, and that was all he knew.",
     "narration_text": "He mumbled out that the money had been sent in a letter, and that was all he knew.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s058": {
     "source_text": "When I asked him if he knew Count Dracula, and could tell me anything of his castle, both he and his wife crossed themselves, and, saying that they knew nothing at all, simply refused to speak further.",
     "narration_text": "When I asked him if he knew Count Dracula, and could tell me anything of his castle, both he and his wife crossed themselves, and, saying that they knew nothing at all, simply refused to speak further.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s059": {
     "source_text": "It was so near the time of starting that I had no time to ask any one else, for it was all very mysterious and not by any means comforting.",
     "narration_text": "It was so near the time of starting that I had no time to ask any one else, for it was all very mysterious and not by any means comforting.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s060": {
     "source_text": "Just before I was leaving, the old lady came up to my room and said in a very hysterical way:",
     "narration_text": "Just before I was leaving, the old lady came up to my room and said in a very hysterical way:",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s061": {
     "source_text": "“Must you go?",
     "narration_text": "“Must you go?",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s062": {
     "source_text": "Oh! young Herr, must you go?” She was in such an excited state that she seemed to have lost her grip of what German she knew, and mixed it all up with some other language which I did not know at all.",
     "narration_text": "Oh! young Herr, must you go?” She was in such an excited state that she seemed to have lost her grip of what German she knew, and mixed it all up with some other language which I did not know at all.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s063": {
     "source_text": "I was just able to follow her by asking many questions.",
     "narration_text": "I was just able to follow her by asking many questions.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s064": {
     "source_text": "When I told her that I must go at once, and that I was engaged on important business, she asked again:",
     "narration_text": "When I told her that I must go at once, and that I was engaged on important business, she asked again:",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s065": {
     "source_text": "“Do you know what day it is?” I answered that it was the fourth of May.",
     "narration_text": "“Do you know what day it is?” I answered that it was the fourth of May.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s066": {
     "source_text": "She shook her head as she said again:",
     "narration_text": "She shook her head as she said again:",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s067": {
     "source_text": "“Oh, yes!",
     "narration_text": "“Oh, yes!",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s068": {
     "source_text": "I know that!",
     "narration_text": "I know that!",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s069": {
     "source_text": "I know that, but do you know what day it is?” On my saying that I did not understand, she went on:",
     "narration_text": "I know that, but do you know what day it is?” On my saying that I did not understand, she went on:",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s070": {
     "source_text": "“It is the eve of St. George’s Day.",
     "narration_text": "“It is the eve of St. George’s Day.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s071": {
     "source_text": "Do you not know that to-night, when the clock strikes midnight, all the evil things in the world will have full sway?",
     "narration_text": "Do you not know that to-night, when the clock strikes midnight, all the evil things in the world will have full sway?",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s072": {
     "source_text": "Do you know where you are going, and what you are going to?” She was in such evident distress that I tried to comfort her, but without effect.",
     "narration_text": "Do you know where you are going, and what you are going to?” She was in such evident distress that I tried to comfort her, but without effect.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s073": {
     "source_text": "Finally she went down on her knees and implored me not to go; at least to wait a day or two before starting.",
     "narration_text": "Finally she went down on her knees and implored me not to go; at least to wait a day or two before starting.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s074": {
     "source_text": "It was all very ridiculous but I did not feel comfortable.",
     "narration_text": "It was all very ridiculous but I did not feel comfortable.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s075": {
     "source_text": "However, there was business to be done, and I could allow nothing to interfere with it.",
     "narration_text": "However, there was business to be done, and I could allow nothing to interfere with it.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s076": {
     "source_text": "I therefore tried to raise her up, and said, as gravely as I could, that I thanked her, but my duty was imperative, and that I must go.",
     "narration_text": "I therefore tried to raise her up, and said, as gravely as I could, that I thanked her, but my duty was imperative, and that I must go.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s077": {
     "source_text": "She then rose and dried her eyes, and taking a crucifix from her neck offered it to me.",
     "narration_text": "She then rose and dried her eyes, and taking a crucifix from her neck offered it to me.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s078": {
     "source_text": "I did not know what to do, for, as an English Churchman, I have been taught to regard such things as in some measure idolatrous, and yet it seemed so ungracious to refuse an old lady meaning so well and in such a state of mind.",
     "narration_text": "I did not know what to do, for, as an English Churchman, I have been taught to regard such things as in some measure idolatrous, and yet it seemed so ungracious to refuse an old lady meaning so well and in such a state of mind.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s079": {
     "source_text": "She saw, I suppose, the doubt in my face, for she put the rosary round my neck, and said, “For your mother’s sake,” and went out of the room.",
     "narration_text": "She saw, I suppose, the doubt in my face, for she put the rosary round my neck, and said, “For your mother’s sake,” and went out of the room.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s080": {
     "source_text": "I am writing up this part of the diary whilst I am waiting for the coach, which is, of course, late; and the crucifix is still round my neck.",
     "narration_text": "I am writing up this part of the diary whilst I am waiting for the coach, which is, of course, late; and the crucifix is still round my neck.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s081": {
     "source_text": "Whether it is the old lady’s fear, or the many ghostly traditions of this place, or the crucifix itself, I do not know, but I am not feeling nearly as easy in my mind as usual.",
     "narration_text": "Whether it is the old lady’s fear, or the many ghostly traditions of this place, or the crucifix itself, I do not know, but I am not feeling nearly as easy in my mind as usual.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s082": {
     "source_text": "If this book should ever reach Mina before I do, let it bring my good-bye.",
     "narration_text": "If this book should ever reach Mina before I do, let it bring my good-bye.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s083": {
     "source_text": "Here comes the coach!",
     "narration_text": "Here comes the coach!",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s084": {
     "source_text": "* * * * *",
     "narration_text": "",
     "sync_action": "pause_only",
+    "narration_decision": "silence_pause",
+    "narration_mode": "premium_audiobook",
     "silence_ms": 750,
     "reason": "section_break"
   },
   "s085": {
     "source_text": "_5 May.",
     "narration_text": "May the fifth.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s086": {
     "source_text": "The Castle._--The grey of the morning has passed, and the sun is high over the distant horizon, which seems jagged, whether with trees or hills I know not, for it is so far off that big things and little are mixed.",
     "narration_text": "The Castle. The grey of the morning has passed, and the sun is high over the distant horizon, which seems jagged, whether with trees or hills I know not, for it is so far off that big things and little are mixed.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s087": {
     "source_text": "I am not sleepy, and, as I am not to be called till I awake, naturally I write till sleep comes.",
     "narration_text": "I am not sleepy, and, as I am not to be called till I awake, naturally I write till sleep comes.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s088": {
     "source_text": "There are many odd things to put down, and, lest who reads them may fancy that I dined too well before I left Bistritz, let me put down my dinner exactly.",
     "narration_text": "There are many odd things to put down, and, lest who reads them may fancy that I dined too well before I left Bistritz, let me put down my dinner exactly.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s089": {
     "source_text": "I dined on what they called “robber steak”--bits of bacon, onion, and beef, seasoned with red pepper, and strung on sticks and roasted over the fire, in the simple style of the London cat’s meat!",
     "narration_text": "I dined on what they called “robber steak” — bits of bacon, onion, and beef, seasoned with red pepper, and strung on sticks and roasted over the fire, in the simple style of the London cat’s meat!",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s090": {
     "source_text": "The wine was Golden Mediasch, which produces a queer sting on the tongue, which is, however, not disagreeable.",
     "narration_text": "The wine was Golden Mediasch, which produces a queer sting on the tongue, which is, however, not disagreeable.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s091": {
     "source_text": "I had only a couple of glasses of this, and nothing else.",
     "narration_text": "I had only a couple of glasses of this, and nothing else.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s092": {
     "source_text": "When I got on the coach the driver had not taken his seat, and I saw him talking with the landlady.",
     "narration_text": "When I got on the coach the driver had not taken his seat, and I saw him talking with the landlady.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s093": {
     "source_text": "They were evidently talking of me, for every now and then they looked at me, and some of the people who were sitting on the bench outside the door--which they call by a name meaning “word-bearer”--came and listened, and then looked at me, most of them pityingly.",
     "narration_text": "They were evidently talking of me, for every now and then they looked at me, and some of the people who were sitting on the bench outside the door — which they call by a name meaning “word-bearer” — came and listened, and then looked at me, most of them pityingly.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s094": {
     "source_text": "I could hear a lot of words often repeated, queer words, for there were many nationalities in the crowd; so I quietly got my polyglot dictionary from my bag and looked them out.",
     "narration_text": "I could hear a lot of words often repeated, queer words, for there were many nationalities in the crowd; so I quietly got my polyglot dictionary from my bag and looked them out.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s095": {
     "source_text": "I must say they were not cheering to me, for amongst them were “Ordog”--Satan, “pokol”--hell, “stregoica”--witch, “vrolok” and “vlkoslak”--both of which mean the same thing, one being Slovak and the other Servian for something that is either were-wolf or vampire. (_Mem._, I must ask the Count about these superstitions)",
     "narration_text": "I must say they were not cheering to me, for amongst them were “Ordog” — Satan, “pokol” — hell, “stregoica” — witch, “vrolok” and “vlkoslak” — both of which mean the same thing, one being Slovak and the other Servian for something that is either were-wolf or vampire. Memorandum: I must ask the Count about these superstitions",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s096": {
     "source_text": "When we started, the crowd round the inn door, which had by this time swelled to a considerable size, all made the sign of the cross and pointed two fingers towards me.",
     "narration_text": "When we started, the crowd round the inn door, which had by this time swelled to a considerable size, all made the sign of the cross and pointed two fingers towards me.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s097": {
     "source_text": "With some difficulty I got a fellow-passenger to tell me what they meant; he would not answer at first, but on learning that I was English, he explained that it was a charm or guard against the evil eye.",
     "narration_text": "With some difficulty I got a fellow-passenger to tell me what they meant; he would not answer at first, but on learning that I was English, he explained that it was a charm or guard against the evil eye.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s098": {
     "source_text": "This was not very pleasant for me, just starting for an unknown place to meet an unknown man; but every one seemed so kind-hearted, and so sorrowful, and so sympathetic that I could not but be touched.",
     "narration_text": "This was not very pleasant for me, just starting for an unknown place to meet an unknown man; but every one seemed so kind-hearted, and so sorrowful, and so sympathetic that I could not but be touched.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s099": {
     "source_text": "I shall never forget the last glimpse which I had of the inn-yard and its crowd of picturesque figures, all crossing themselves, as they stood round the wide archway, with its background of rich foliage of oleander and orange trees in green tubs clustered in the centre of the yard.",
     "narration_text": "I shall never forget the last glimpse which I had of the inn-yard and its crowd of picturesque figures, all crossing themselves, as they stood round the wide archway, with its background of rich foliage of oleander and orange trees in green tubs clustered in the centre of the yard.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s100": {
     "source_text": "Then our driver, whose wide linen drawers covered the whole front of the box-seat--“gotza” they call them--cracked his big whip over his four small horses, which ran abreast, and we set off on our journey.",
     "narration_text": "Then our driver, whose wide linen drawers covered the whole front of the box-seat — “gotza” they call them — cracked his big whip over his four small horses, which ran abreast, and we set off on our journey.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s101": {
     "source_text": "I soon lost sight and recollection of ghostly fears in the beauty of the scene as we drove along, although had I known the language, or rather languages, which my fellow-passengers were speaking, I might not have been able to throw them off so easily.",
     "narration_text": "I soon lost sight and recollection of ghostly fears in the beauty of the scene as we drove along, although had I known the language, or rather languages, which my fellow-passengers were speaking, I might not have been able to throw them off so easily.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s102": {
     "source_text": "Before us lay a green sloping land full of forests and woods, with here and there steep hills, crowned with clumps of trees or with farmhouses, the blank gable end to the road.",
     "narration_text": "Before us lay a green sloping land full of forests and woods, with here and there steep hills, crowned with clumps of trees or with farmhouses, the blank gable end to the road.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s103": {
     "source_text": "There was everywhere a bewildering mass of fruit blossom--apple, plum, pear, cherry; and as we drove by I could see the green grass under the trees spangled with the fallen petals.",
     "narration_text": "There was everywhere a bewildering mass of fruit blossom — apple, plum, pear, cherry; and as we drove by I could see the green grass under the trees spangled with the fallen petals.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s104": {
     "source_text": "In and out amongst these green hills of what they call here the “Mittel Land” ran the road, losing itself as it swept round the grassy curve, or was shut out by the straggling ends of pine woods, which here and there ran down the hillsides like tongues of flame.",
     "narration_text": "In and out amongst these green hills of what they call here the “Mittel Land” ran the road, losing itself as it swept round the grassy curve, or was shut out by the straggling ends of pine woods, which here and there ran down the hillsides like tongues of flame.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s105": {
     "source_text": "The road was rugged, but still we seemed to fly over it with a feverish haste.",
     "narration_text": "The road was rugged, but still we seemed to fly over it with a feverish haste.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s106": {
     "source_text": "I could not understand then what the haste meant, but the driver was evidently bent on losing no time in reaching Borgo Prund.",
     "narration_text": "I could not understand then what the haste meant, but the driver was evidently bent on losing no time in reaching Borgo Prund.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s107": {
     "source_text": "I was told that this road is in summertime excellent, but that it had not yet been put in order after the winter snows.",
     "narration_text": "I was told that this road is in summertime excellent, but that it had not yet been put in order after the winter snows.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s108": {
     "source_text": "In this respect it is different from the general run of roads in the Carpathians, for it is an old tradition that they are not to be kept in too good order.",
     "narration_text": "In this respect it is different from the general run of roads in the Carpathians, for it is an old tradition that they are not to be kept in too good order.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s109": {
     "source_text": "Of old the Hospadars would not repair them, lest the Turk should think that they were preparing to bring in foreign troops, and so hasten the war which was always really at loading point.",
     "narration_text": "Of old the Hospadars would not repair them, lest the Turk should think that they were preparing to bring in foreign troops, and so hasten the war which was always really at loading point.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s110": {
     "source_text": "Beyond the green swelling hills of the Mittel Land rose mighty slopes of forest up to the lofty steeps of the Carpathians themselves.",
     "narration_text": "Beyond the green swelling hills of the Mittel Land rose mighty slopes of forest up to the lofty steeps of the Carpathians themselves.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s111": {
     "source_text": "Right and left of us they towered, with the afternoon sun falling full upon them and bringing out all the glorious colours of this beautiful range, deep blue and purple in the shadows of the peaks, green and brown where grass and rock mingled, and an endless perspective of jagged rock and pointed crags, till these were themselves lost in the distance, where the snowy peaks rose grandly.",
     "narration_text": "Right and left of us they towered, with the afternoon sun falling full upon them and bringing out all the glorious colours of this beautiful range, deep blue and purple in the shadows of the peaks, green and brown where grass and rock mingled, and an endless perspective of jagged rock and pointed crags, till these were themselves lost in the distance, where the snowy peaks rose grandly.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s112": {
     "source_text": "Here and there seemed mighty rifts in the mountains, through which, as the sun began to sink, we saw now and again the white gleam of falling water.",
     "narration_text": "Here and there seemed mighty rifts in the mountains, through which, as the sun began to sink, we saw now and again the white gleam of falling water.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s113": {
     "source_text": "One of my companions touched my arm as we swept round the base of a hill and opened up the lofty, snow-covered peak of a mountain, which seemed, as we wound on our serpentine way, to be right before us:--",
     "narration_text": "One of my companions touched my arm as we swept round the base of a hill and opened up the lofty, snow-covered peak of a mountain, which seemed, as we wound on our serpentine way, to be right before us:",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s114": {
     "source_text": "“Look!",
     "narration_text": "“Look!",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s115": {
     "source_text": "Isten szek!”--“God’s seat!”--and he crossed himself reverently.",
     "narration_text": "Isten szek!” — “God’s seat!” — and he crossed himself reverently.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s116": {
     "source_text": "As we wound on our endless way, and the sun sank lower and lower behind us, the shadows of the evening began to creep round us.",
     "narration_text": "As we wound on our endless way, and the sun sank lower and lower behind us, the shadows of the evening began to creep round us.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s117": {
     "source_text": "This was emphasised by the fact that the snowy mountain-top still held the sunset, and seemed to glow out with a delicate cool pink.",
     "narration_text": "This was emphasised by the fact that the snowy mountain-top still held the sunset, and seemed to glow out with a delicate cool pink.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s118": {
     "source_text": "Here and there we passed Cszeks and Slovaks, all in picturesque attire, but I noticed that goitre was painfully prevalent.",
     "narration_text": "Here and there we passed Cszeks and Slovaks, all in picturesque attire, but I noticed that goitre was painfully prevalent.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s119": {
     "source_text": "By the roadside were many crosses, and as we swept by, my companions all crossed themselves.",
     "narration_text": "By the roadside were many crosses, and as we swept by, my companions all crossed themselves.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s120": {
     "source_text": "Here and there was a peasant man or woman kneeling before a shrine, who did not even turn round as we approached, but seemed in the self-surrender of devotion to have neither eyes nor ears for the outer world.",
     "narration_text": "Here and there was a peasant man or woman kneeling before a shrine, who did not even turn round as we approached, but seemed in the self-surrender of devotion to have neither eyes nor ears for the outer world.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s121": {
     "source_text": "There were many things new to me: for instance, hay-ricks in the trees, and here and there very beautiful masses of weeping birch, their white stems shining like silver through the delicate green of the leaves.",
     "narration_text": "There were many things new to me: for instance, hay-ricks in the trees, and here and there very beautiful masses of weeping birch, their white stems shining like silver through the delicate green of the leaves.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s122": {
     "source_text": "Now and again we passed a leiter-wagon--the ordinary peasant’s cart--with its long, snake-like vertebra, calculated to suit the inequalities of the road.",
     "narration_text": "Now and again we passed a leiter-wagon — the ordinary peasant’s cart — with its long, snake-like vertebra, calculated to suit the inequalities of the road.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s123": {
     "source_text": "On this were sure to be seated quite a group of home-coming peasants, the Cszeks with their white, and the Slovaks with their coloured, sheepskins, the latter carrying lance-fashion their long staves, with axe at end.",
     "narration_text": "On this were sure to be seated quite a group of home-coming peasants, the Cszeks with their white, and the Slovaks with their coloured, sheepskins, the latter carrying lance-fashion their long staves, with axe at end.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s124": {
     "source_text": "As the evening fell it began to get very cold, and the growing twilight seemed to merge into one dark mistiness the gloom of the trees, oak, beech, and pine, though in the valleys which ran deep between the spurs of the hills, as we ascended through the Pass, the dark firs stood out here and there against the background of late-lying snow.",
     "narration_text": "As the evening fell it began to get very cold, and the growing twilight seemed to merge into one dark mistiness the gloom of the trees, oak, beech, and pine, though in the valleys which ran deep between the spurs of the hills, as we ascended through the Pass, the dark firs stood out here and there against the background of late-lying snow.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s125": {
     "source_text": "Sometimes, as the road was cut through the pine woods that seemed in the darkness to be closing down upon us, great masses of greyness, which here and there bestrewed the trees, produced a peculiarly weird and solemn effect, which carried on the thoughts and grim fancies engendered earlier in the evening, when the falling sunset threw into strange relief the ghost-like clouds which amongst the Carpathians seem to wind ceaselessly through the valleys.",
     "narration_text": "Sometimes, as the road was cut through the pine woods that seemed in the darkness to be closing down upon us, great masses of greyness, which here and there bestrewed the trees, produced a peculiarly weird and solemn effect, which carried on the thoughts and grim fancies engendered earlier in the evening, when the falling sunset threw into strange relief the ghost-like clouds which amongst the Carpathians seem to wind ceaselessly through the valleys.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s126": {
     "source_text": "Sometimes the hills were so steep that, despite our driver’s haste, the horses could only go slowly.",
     "narration_text": "Sometimes the hills were so steep that, despite our driver’s haste, the horses could only go slowly.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s127": {
     "source_text": "I wished to get down and walk up them, as we do at home, but the driver would not hear of it.",
     "narration_text": "I wished to get down and walk up them, as we do at home, but the driver would not hear of it.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s128": {
     "source_text": "“No, no,” he said; “you must not walk here; the dogs are too fierce”; and then he added, with what he evidently meant for grim pleasantry--for he looked round to catch the approving smile of the rest--“and you may have enough of such matters before you go to sleep.” The only stop he would make was a moment’s pause to light his lamps.",
     "narration_text": "“No, no,” he said; “you must not walk here; the dogs are too fierce”; and then he added, with what he evidently meant for grim pleasantry — for he looked round to catch the approving smile of the rest — “and you may have enough of such matters before you go to sleep.” The only stop he would make was a moment’s pause to light his lamps.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s129": {
     "source_text": "When it grew dark there seemed to be some excitement amongst the passengers, and they kept speaking to him, one after the other, as though urging him to further speed.",
     "narration_text": "When it grew dark there seemed to be some excitement amongst the passengers, and they kept speaking to him, one after the other, as though urging him to further speed.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s130": {
     "source_text": "He lashed the horses unmercifully with his long whip, and with wild cries of encouragement urged them on to further exertions.",
     "narration_text": "He lashed the horses unmercifully with his long whip, and with wild cries of encouragement urged them on to further exertions.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s131": {
     "source_text": "Then through the darkness I could see a sort of patch of grey light ahead of us, as though there were a cleft in the hills.",
     "narration_text": "Then through the darkness I could see a sort of patch of grey light ahead of us, as though there were a cleft in the hills.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s132": {
     "source_text": "The excitement of the passengers grew greater; the crazy coach rocked on its great leather springs, and swayed like a boat tossed on a stormy sea.",
     "narration_text": "The excitement of the passengers grew greater; the crazy coach rocked on its great leather springs, and swayed like a boat tossed on a stormy sea.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s133": {
     "source_text": "I had to hold on.",
     "narration_text": "I had to hold on.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s134": {
     "source_text": "The road grew more level, and we appeared to fly along.",
     "narration_text": "The road grew more level, and we appeared to fly along.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s135": {
     "source_text": "Then the mountains seemed to come nearer to us on each side and to frown down upon us; we were entering on the Borgo Pass.",
     "narration_text": "Then the mountains seemed to come nearer to us on each side and to frown down upon us; we were entering on the Borgo Pass.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s136": {
     "source_text": "One by one several of the passengers offered me gifts, which they pressed upon me with an earnestness which would take no denial; these were certainly of an odd and varied kind, but each was given in simple good faith, with a kindly word, and a blessing, and that strange mixture of fear-meaning movements which I had seen outside the hotel at Bistritz--the sign of the cross and the guard against the evil eye.",
     "narration_text": "One by one several of the passengers offered me gifts, which they pressed upon me with an earnestness which would take no denial; these were certainly of an odd and varied kind, but each was given in simple good faith, with a kindly word, and a blessing, and that strange mixture of fear-meaning movements which I had seen outside the hotel at Bistritz — the sign of the cross and the guard against the evil eye.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s137": {
     "source_text": "Then, as we flew along, the driver leaned forward, and on each side the passengers, craning over the edge of the coach, peered eagerly into the darkness.",
     "narration_text": "Then, as we flew along, the driver leaned forward, and on each side the passengers, craning over the edge of the coach, peered eagerly into the darkness.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s138": {
     "source_text": "It was evident that something very exciting was either happening or expected, but though I asked each passenger, no one would give me the slightest explanation.",
     "narration_text": "It was evident that something very exciting was either happening or expected, but though I asked each passenger, no one would give me the slightest explanation.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s139": {
     "source_text": "This state of excitement kept on for some little time; and at last we saw before us the Pass opening out on the eastern side.",
     "narration_text": "This state of excitement kept on for some little time; and at last we saw before us the Pass opening out on the eastern side.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s140": {
     "source_text": "There were dark, rolling clouds overhead, and in the air the heavy, oppressive sense of thunder.",
     "narration_text": "There were dark, rolling clouds overhead, and in the air the heavy, oppressive sense of thunder.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s141": {
     "source_text": "It seemed as though the mountain range had separated two atmospheres, and that now we had got into the thunderous one.",
     "narration_text": "It seemed as though the mountain range had separated two atmospheres, and that now we had got into the thunderous one.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s142": {
     "source_text": "I was now myself looking out for the conveyance which was to take me to the Count.",
     "narration_text": "I was now myself looking out for the conveyance which was to take me to the Count.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s143": {
     "source_text": "Each moment I expected to see the glare of lamps through the blackness; but all was dark.",
     "narration_text": "Each moment I expected to see the glare of lamps through the blackness; but all was dark.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s144": {
     "source_text": "The only light was the flickering rays of our own lamps, in which the steam from our hard-driven horses rose in a white cloud.",
     "narration_text": "The only light was the flickering rays of our own lamps, in which the steam from our hard-driven horses rose in a white cloud.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s145": {
     "source_text": "We could see now the sandy road lying white before us, but there was on it no sign of a vehicle.",
     "narration_text": "We could see now the sandy road lying white before us, but there was on it no sign of a vehicle.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s146": {
     "source_text": "The passengers drew back with a sigh of gladness, which seemed to mock my own disappointment.",
     "narration_text": "The passengers drew back with a sigh of gladness, which seemed to mock my own disappointment.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s147": {
     "source_text": "I was already thinking what I had best do, when the driver, looking at his watch, said to the others something which I could hardly hear, it was spoken so quietly and in so low a tone; I thought it was “An hour less than the time.” Then turning to me, he said in German worse than my own:--",
     "narration_text": "I was already thinking what I had best do, when the driver, looking at his watch, said to the others something which I could hardly hear, it was spoken so quietly and in so low a tone; I thought it was “An hour less than the time.” Then turning to me, he said in German worse than my own:",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s148": {
     "source_text": "“There is no carriage here.",
     "narration_text": "“There is no carriage here.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s149": {
     "source_text": "The Herr is not expected after all.",
     "narration_text": "The Herr is not expected after all.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s150": {
     "source_text": "He will now come on to Bukovina, and return to-morrow or the next day; better the next day.” Whilst he was speaking the horses began to neigh and snort and plunge wildly, so that the driver had to hold them up.",
     "narration_text": "He will now come on to Bukovina, and return to-morrow or the next day; better the next day.” Whilst he was speaking the horses began to neigh and snort and plunge wildly, so that the driver had to hold them up.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s151": {
     "source_text": "Then, amongst a chorus of screams from the peasants and a universal crossing of themselves, a calèche, with four horses, drove up behind us, overtook us, and drew up beside the coach.",
     "narration_text": "Then, amongst a chorus of screams from the peasants and a universal crossing of themselves, a calèche, with four horses, drove up behind us, overtook us, and drew up beside the coach.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s152": {
     "source_text": "I could see from the flash of our lamps, as the rays fell on them, that the horses were coal-black and splendid animals.",
     "narration_text": "I could see from the flash of our lamps, as the rays fell on them, that the horses were coal-black and splendid animals.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s153": {
     "source_text": "They were driven by a tall man, with a long brown beard and a great black hat, which seemed to hide his face from us.",
     "narration_text": "They were driven by a tall man, with a long brown beard and a great black hat, which seemed to hide his face from us.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s154": {
     "source_text": "I could only see the gleam of a pair of very bright eyes, which seemed red in the lamplight, as he turned to us.",
     "narration_text": "I could only see the gleam of a pair of very bright eyes, which seemed red in the lamplight, as he turned to us.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s155": {
     "source_text": "He said to the driver:--",
     "narration_text": "He said to the driver:",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s156": {
     "source_text": "“You are early to-night, my friend.” The man stammered in reply:--",
     "narration_text": "“You are early to-night, my friend.” The man stammered in reply:",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s157": {
     "source_text": "“The English Herr was in a hurry,” to which the stranger replied:--",
     "narration_text": "“The English Herr was in a hurry,” to which the stranger replied:",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s158": {
     "source_text": "“That is why, I suppose, you wished him to go on to Bukovina.",
     "narration_text": "“That is why, I suppose, you wished him to go on to Bukovina.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s159": {
     "source_text": "You cannot deceive me, my friend; I know too much, and my horses are swift.” As he spoke he smiled, and the lamplight fell on a hard-looking mouth, with very red lips and sharp-looking teeth, as white as ivory.",
     "narration_text": "You cannot deceive me, my friend; I know too much, and my horses are swift.” As he spoke he smiled, and the lamplight fell on a hard-looking mouth, with very red lips and sharp-looking teeth, as white as ivory.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s160": {
     "source_text": "One of my companions whispered to another the line from Burger’s “Lenore”:--",
     "narration_text": "One of my companions whispered to another the line from Burger’s “Lenore”:",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s161": {
     "source_text": "“Denn die Todten reiten schnell”-- (“For the dead travel fast.”)",
     "narration_text": "“Denn die Todten reiten schnell” — (“For the dead travel fast.”)",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s162": {
     "source_text": "The strange driver evidently heard the words, for he looked up with a gleaming smile.",
     "narration_text": "The strange driver evidently heard the words, for he looked up with a gleaming smile.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s163": {
     "source_text": "The passenger turned his face away, at the same time putting out his two fingers and crossing himself.",
     "narration_text": "The passenger turned his face away, at the same time putting out his two fingers and crossing himself.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s164": {
     "source_text": "“Give me the Herr’s luggage,” said the driver; and with exceeding alacrity my bags were handed out and put in the calèche.",
     "narration_text": "“Give me the Herr’s luggage,” said the driver; and with exceeding alacrity my bags were handed out and put in the calèche.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s165": {
     "source_text": "Then I descended from the side of the coach, as the calèche was close alongside, the driver helping me with a hand which caught my arm in a grip of steel; his strength must have been prodigious.",
     "narration_text": "Then I descended from the side of the coach, as the calèche was close alongside, the driver helping me with a hand which caught my arm in a grip of steel; his strength must have been prodigious.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s166": {
     "source_text": "Without a word he shook his reins, the horses turned, and we swept into the darkness of the Pass.",
     "narration_text": "Without a word he shook his reins, the horses turned, and we swept into the darkness of the Pass.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s167": {
     "source_text": "As I looked back I saw the steam from the horses of the coach by the light of the lamps, and projected against it the figures of my late companions crossing themselves.",
     "narration_text": "As I looked back I saw the steam from the horses of the coach by the light of the lamps, and projected against it the figures of my late companions crossing themselves.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s168": {
     "source_text": "Then the driver cracked his whip and called to his horses, and off they swept on their way to Bukovina.",
     "narration_text": "Then the driver cracked his whip and called to his horses, and off they swept on their way to Bukovina.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s169": {
     "source_text": "As they sank into the darkness I felt a strange chill, and a lonely feeling came over me; but a cloak was thrown over my shoulders, and a rug across my knees, and the driver said in excellent German:--",
     "narration_text": "As they sank into the darkness I felt a strange chill, and a lonely feeling came over me; but a cloak was thrown over my shoulders, and a rug across my knees, and the driver said in excellent German:",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s170": {
     "source_text": "“The night is chill, mein Herr, and my master the Count bade me take all care of you.",
     "narration_text": "“The night is chill, mein Herr, and my master the Count bade me take all care of you.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s171": {
     "source_text": "There is a flask of slivovitz (the plum brandy of the country) underneath the seat, if you should require it.” I did not take any, but it was a comfort to know it was there all the same.",
     "narration_text": "There is a flask of slivovitz (the plum brandy of the country) underneath the seat, if you should require it.” I did not take any, but it was a comfort to know it was there all the same.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s172": {
     "source_text": "I felt a little strangely, and not a little frightened.",
     "narration_text": "I felt a little strangely, and not a little frightened.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s173": {
     "source_text": "I think had there been any alternative I should have taken it, instead of prosecuting that unknown night journey.",
     "narration_text": "I think had there been any alternative I should have taken it, instead of prosecuting that unknown night journey.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s174": {
     "source_text": "The carriage went at a hard pace straight along, then we made a complete turn and went along another straight road.",
     "narration_text": "The carriage went at a hard pace straight along, then we made a complete turn and went along another straight road.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s175": {
     "source_text": "It seemed to me that we were simply going over and over the same ground again; and so I took note of some salient point, and found that this was so.",
     "narration_text": "It seemed to me that we were simply going over and over the same ground again; and so I took note of some salient point, and found that this was so.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s176": {
     "source_text": "I would have liked to have asked the driver what this all meant, but I really feared to do so, for I thought that, placed as I was, any protest would have had no effect in case there had been an intention to delay.",
     "narration_text": "I would have liked to have asked the driver what this all meant, but I really feared to do so, for I thought that, placed as I was, any protest would have had no effect in case there had been an intention to delay.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s177": {
     "source_text": "By-and-by, however, as I was curious to know how time was passing, I struck a match, and by its flame looked at my watch; it was within a few minutes of midnight.",
     "narration_text": "By-and-by, however, as I was curious to know how time was passing, I struck a match, and by its flame looked at my watch; it was within a few minutes of midnight.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s178": {
     "source_text": "This gave me a sort of shock, for I suppose the general superstition about midnight was increased by my recent experiences.",
     "narration_text": "This gave me a sort of shock, for I suppose the general superstition about midnight was increased by my recent experiences.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s179": {
     "source_text": "I waited with a sick feeling of suspense.",
     "narration_text": "I waited with a sick feeling of suspense.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s180": {
     "source_text": "Then a dog began to howl somewhere in a farmhouse far down the road--a long, agonised wailing, as if from fear.",
     "narration_text": "Then a dog began to howl somewhere in a farmhouse far down the road — a long, agonised wailing, as if from fear.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s181": {
     "source_text": "The sound was taken up by another dog, and then another and another, till, borne on the wind which now sighed softly through the Pass, a wild howling began, which seemed to come from all over the country, as far as the imagination could grasp it through the gloom of the night.",
     "narration_text": "The sound was taken up by another dog, and then another and another, till, borne on the wind which now sighed softly through the Pass, a wild howling began, which seemed to come from all over the country, as far as the imagination could grasp it through the gloom of the night.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s182": {
     "source_text": "At the first howl the horses began to strain and rear, but the driver spoke to them soothingly, and they quieted down, but shivered and sweated as though after a runaway from sudden fright.",
     "narration_text": "At the first howl the horses began to strain and rear, but the driver spoke to them soothingly, and they quieted down, but shivered and sweated as though after a runaway from sudden fright.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s183": {
     "source_text": "Then, far off in the distance, from the mountains on each side of us began a louder and a sharper howling--that of wolves--which affected both the horses and myself in the same way--for I was minded to jump from the calèche and run, whilst they reared again and plunged madly, so that the driver had to use all his great strength to keep them from bolting.",
     "narration_text": "Then, far off in the distance, from the mountains on each side of us began a louder and a sharper howling — that of wolves — which affected both the horses and myself in the same way — for I was minded to jump from the calèche and run, whilst they reared again and plunged madly, so that the driver had to use all his great strength to keep them from bolting.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s184": {
     "source_text": "In a few minutes, however, my own ears got accustomed to the sound, and the horses so far became quiet that the driver was able to descend and to stand before them.",
     "narration_text": "In a few minutes, however, my own ears got accustomed to the sound, and the horses so far became quiet that the driver was able to descend and to stand before them.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s185": {
     "source_text": "He petted and soothed them, and whispered something in their ears, as I have heard of horse-tamers doing, and with extraordinary effect, for under his caresses they became quite manageable again, though they still trembled.",
     "narration_text": "He petted and soothed them, and whispered something in their ears, as I have heard of horse-tamers doing, and with extraordinary effect, for under his caresses they became quite manageable again, though they still trembled.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s186": {
     "source_text": "The driver again took his seat, and shaking his reins, started off at a great pace.",
     "narration_text": "The driver again took his seat, and shaking his reins, started off at a great pace.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s187": {
     "source_text": "This time, after going to the far side of the Pass, he suddenly turned down a narrow roadway which ran sharply to the right.",
     "narration_text": "This time, after going to the far side of the Pass, he suddenly turned down a narrow roadway which ran sharply to the right.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s188": {
     "source_text": "Soon we were hemmed in with trees, which in places arched right over the roadway till we passed as through a tunnel; and again great frowning rocks guarded us boldly on either side.",
     "narration_text": "Soon we were hemmed in with trees, which in places arched right over the roadway till we passed as through a tunnel; and again great frowning rocks guarded us boldly on either side.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s189": {
     "source_text": "Though we were in shelter, we could hear the rising wind, for it moaned and whistled through the rocks, and the branches of the trees crashed together as we swept along.",
     "narration_text": "Though we were in shelter, we could hear the rising wind, for it moaned and whistled through the rocks, and the branches of the trees crashed together as we swept along.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s190": {
     "source_text": "It grew colder and colder still, and fine, powdery snow began to fall, so that soon we and all around us were covered with a white blanket.",
     "narration_text": "It grew colder and colder still, and fine, powdery snow began to fall, so that soon we and all around us were covered with a white blanket.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s191": {
     "source_text": "The keen wind still carried the howling of the dogs, though this grew fainter as we went on our way.",
     "narration_text": "The keen wind still carried the howling of the dogs, though this grew fainter as we went on our way.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s192": {
     "source_text": "The baying of the wolves sounded nearer and nearer, as though they were closing round on us from every side.",
     "narration_text": "The baying of the wolves sounded nearer and nearer, as though they were closing round on us from every side.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s193": {
     "source_text": "I grew dreadfully afraid, and the horses shared my fear.",
     "narration_text": "I grew dreadfully afraid, and the horses shared my fear.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s194": {
     "source_text": "The driver, however, was not in the least disturbed; he kept turning his head to left and right, but I could not see anything through the darkness.",
     "narration_text": "The driver, however, was not in the least disturbed; he kept turning his head to left and right, but I could not see anything through the darkness.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s195": {
     "source_text": "Suddenly, away on our left, I saw a faint flickering blue flame.",
     "narration_text": "Suddenly, away on our left, I saw a faint flickering blue flame.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s196": {
     "source_text": "The driver saw it at the same moment; he at once checked the horses, and, jumping to the ground, disappeared into the darkness.",
     "narration_text": "The driver saw it at the same moment; he at once checked the horses, and, jumping to the ground, disappeared into the darkness.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s197": {
     "source_text": "I did not know what to do, the less as the howling of the wolves grew closer; but while I wondered the driver suddenly appeared again, and without a word took his seat, and we resumed our journey.",
     "narration_text": "I did not know what to do, the less as the howling of the wolves grew closer; but while I wondered the driver suddenly appeared again, and without a word took his seat, and we resumed our journey.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s198": {
     "source_text": "I think I must have fallen asleep and kept dreaming of the incident, for it seemed to be repeated endlessly, and now looking back, it is like a sort of awful nightmare.",
     "narration_text": "I think I must have fallen asleep and kept dreaming of the incident, for it seemed to be repeated endlessly, and now looking back, it is like a sort of awful nightmare.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s199": {
     "source_text": "Once the flame appeared so near the road, that even in the darkness around us I could watch the driver’s motions.",
     "narration_text": "Once the flame appeared so near the road, that even in the darkness around us I could watch the driver’s motions.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s200": {
     "source_text": "He went rapidly to where the blue flame arose--it must have been very faint, for it did not seem to illumine the place around it at all--and gathering a few stones, formed them into some device.",
     "narration_text": "He went rapidly to where the blue flame arose — it must have been very faint, for it did not seem to illumine the place around it at all — and gathering a few stones, formed them into some device.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "transform",
+    "narration_mode": "premium_audiobook"
   },
   "s201": {
     "source_text": "Once there appeared a strange optical effect: when he stood between me and the flame he did not obstruct it, for I could see its ghostly flicker all the same.",
     "narration_text": "Once there appeared a strange optical effect: when he stood between me and the flame he did not obstruct it, for I could see its ghostly flicker all the same.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s202": {
     "source_text": "This startled me, but as the effect was only momentary, I took it that my eyes deceived me straining through the darkness.",
     "narration_text": "This startled me, but as the effect was only momentary, I took it that my eyes deceived me straining through the darkness.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s203": {
     "source_text": "Then for a time there were no blue flames, and we sped onwards through the gloom, with the howling of the wolves around us, as though they were following in a moving circle.",
     "narration_text": "Then for a time there were no blue flames, and we sped onwards through the gloom, with the howling of the wolves around us, as though they were following in a moving circle.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s204": {
     "source_text": "At last there came a time when the driver went further afield than he had yet gone, and during his absence, the horses began to tremble worse than ever and to snort and scream with fright.",
     "narration_text": "At last there came a time when the driver went further afield than he had yet gone, and during his absence, the horses began to tremble worse than ever and to snort and scream with fright.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s205": {
     "source_text": "I could not see any cause for it, for the howling of the wolves had ceased altogether; but just then the moon, sailing through the black clouds, appeared behind the jagged crest of a beetling, pine-clad rock, and by its light I saw around us a ring of wolves, with white teeth and lolling red tongues, with long, sinewy limbs and shaggy hair.",
     "narration_text": "I could not see any cause for it, for the howling of the wolves had ceased altogether; but just then the moon, sailing through the black clouds, appeared behind the jagged crest of a beetling, pine-clad rock, and by its light I saw around us a ring of wolves, with white teeth and lolling red tongues, with long, sinewy limbs and shaggy hair.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s206": {
     "source_text": "They were a hundred times more terrible in the grim silence which held them than even when they howled.",
     "narration_text": "They were a hundred times more terrible in the grim silence which held them than even when they howled.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s207": {
     "source_text": "For myself, I felt a sort of paralysis of fear.",
     "narration_text": "For myself, I felt a sort of paralysis of fear.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s208": {
     "source_text": "It is only when a man feels himself face to face with such horrors that he can understand their true import.",
     "narration_text": "It is only when a man feels himself face to face with such horrors that he can understand their true import.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s209": {
     "source_text": "All at once the wolves began to howl as though the moonlight had had some peculiar effect on them.",
     "narration_text": "All at once the wolves began to howl as though the moonlight had had some peculiar effect on them.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s210": {
     "source_text": "The horses jumped about and reared, and looked helplessly round with eyes that rolled in a way painful to see; but the living ring of terror encompassed them on every side; and they had perforce to remain within it.",
     "narration_text": "The horses jumped about and reared, and looked helplessly round with eyes that rolled in a way painful to see; but the living ring of terror encompassed them on every side; and they had perforce to remain within it.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s211": {
     "source_text": "I called to the coachman to come, for it seemed to me that our only chance was to try to break out through the ring and to aid his approach.",
     "narration_text": "I called to the coachman to come, for it seemed to me that our only chance was to try to break out through the ring and to aid his approach.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s212": {
     "source_text": "I shouted and beat the side of the calèche, hoping by the noise to scare the wolves from that side, so as to give him a chance of reaching the trap.",
     "narration_text": "I shouted and beat the side of the calèche, hoping by the noise to scare the wolves from that side, so as to give him a chance of reaching the trap.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s213": {
     "source_text": "How he came there, I know not, but I heard his voice raised in a tone of imperious command, and looking towards the sound, saw him stand in the roadway.",
     "narration_text": "How he came there, I know not, but I heard his voice raised in a tone of imperious command, and looking towards the sound, saw him stand in the roadway.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s214": {
     "source_text": "As he swept his long arms, as though brushing aside some impalpable obstacle, the wolves fell back and back further still.",
     "narration_text": "As he swept his long arms, as though brushing aside some impalpable obstacle, the wolves fell back and back further still.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s215": {
     "source_text": "Just then a heavy cloud passed across the face of the moon, so that we were again in darkness.",
     "narration_text": "Just then a heavy cloud passed across the face of the moon, so that we were again in darkness.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s216": {
     "source_text": "When I could see again the driver was climbing into the calèche, and the wolves had disappeared.",
     "narration_text": "When I could see again the driver was climbing into the calèche, and the wolves had disappeared.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s217": {
     "source_text": "This was all so strange and uncanny that a dreadful fear came upon me, and I was afraid to speak or move.",
     "narration_text": "This was all so strange and uncanny that a dreadful fear came upon me, and I was afraid to speak or move.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s218": {
     "source_text": "The time seemed interminable as we swept on our way, now in almost complete darkness, for the rolling clouds obscured the moon.",
     "narration_text": "The time seemed interminable as we swept on our way, now in almost complete darkness, for the rolling clouds obscured the moon.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s219": {
     "source_text": "We kept on ascending, with occasional periods of quick descent, but in the main always ascending.",
     "narration_text": "We kept on ascending, with occasional periods of quick descent, but in the main always ascending.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   },
   "s220": {
     "source_text": "Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.",
     "narration_text": "Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.",
-    "sync_action": "narrate"
+    "sync_action": "narrate",
+    "narration_decision": "speak",
+    "narration_mode": "premium_audiobook"
   }
 }
