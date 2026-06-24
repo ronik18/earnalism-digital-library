@@ -34,7 +34,7 @@
     "first-batch:dry-run": "python3 scripts/first_batch_dry_run.py --sample",
     "onboard:english-book:dry-run": "python3 scripts/orchestrate_english_book_onboarding.py --config onboarding/books/frankenstein.yml --mode dry-run",
     "elevenlabs:sample-prep": "python3 scripts/orchestrate_english_book_onboarding.py --config onboarding/books/frankenstein.yml --mode dry-run",
-    "elevenlabs:sample-import": "python3 scripts/elevenlabs_internal_sample_import.py --book-slug dracula --chapter 1 --sample-dir internal/audiobook_lab/dracula/en/chapter-1-elevenlabs-sample",
+    "elevenlabs:sample-import": "python3 scripts/elevenlabs_internal_sample_import.py --book-slug dracula --chapter 1 --sample-dir internal/audiobook_lab/dracula/en/chapter-1",
     "elevenlabs:full-chapter-import": "python3 scripts/elevenlabs_internal_sample_import.py --book-slug dracula --chapter 1 --sample-dir internal/audiobook_lab/dracula/en/chapter-1-elevenlabs-full",
     "elevenlabs:validate-narration-text": "python3 scripts/validate_elevenlabs_narration_text.py --sample-dir internal/audiobook_lab/dracula/en/chapter-1",
     "elevenlabs:manual-prepare-first3": "python3 scripts/prepare_elevenlabs_manual_generation.py --book-slug dracula --language en --chapter 1 --chunks c001-c003",
