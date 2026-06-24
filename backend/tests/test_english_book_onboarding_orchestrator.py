@@ -211,35 +211,37 @@ def test_orchestrator_runs_model_license_stage_before_sync_stage(tmp_path: Path)
     assert names.index("TTS_VOICE_RIGHTS_INTERNAL_EVAL_REVIEW") < names.index(TTS_PROVIDER_INTERNAL_EVAL_STAGE)
 
 
-def test_provider_internal_eval_stage_records_elevenlabs_hold_before_sync(tmp_path: Path):
+def test_provider_internal_eval_stage_records_elevenlabs_internal_eval_only_before_sync(tmp_path: Path):
     config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
     result = run_orchestration(config_path)
     provider_stage = stage(result, TTS_PROVIDER_INTERNAL_EVAL_STAGE)
     names = [item.name for item in result.stages]
 
-    assert provider_stage.status == "HOLD_PROVIDER_REVIEW"
+    assert provider_stage.status == "ELIGIBLE_INTERNAL_EVAL"
     assert provider_stage.details["selected_provider_id"] == "elevenlabs"
-    assert provider_stage.details["selected_provider_decision"] == "HOLD_PROVIDER_REVIEW"
-    assert provider_stage.details["selected_provider_internal_eval_status"] == "HOLD_PROVIDER_REVIEW"
+    assert provider_stage.details["selected_provider_decision"] == "ELIGIBLE_INTERNAL_EVAL_ONLY"
+    assert provider_stage.details["selected_provider_internal_eval_status"] == "ELIGIBLE_INTERNAL_EVAL"
+    assert provider_stage.details["selected_provider_internal_generation_status"] == "ELIGIBLE_INTERNAL_EVAL_ONLY"
     assert provider_stage.details["selected_provider_production_status"] == "PRODUCTION_BLOCKED"
-    assert provider_stage.details["selected_provider_voice_id"] == "OWNER_SELECTION_REQUIRED"
+    assert provider_stage.details["selected_provider_voice_id"] == "21m00Tcm4TlvDq8ikWAM"
     assert provider_stage.details["paid_provider_api_called"] is False
     assert provider_stage.details["public_audio_allowed"] is False
     assert provider_stage.details["real_audio_generation_allowed"] is False
     assert provider_stage.details["listen_now_cta_allowed"] is False
     assert provider_stage.details["audio_object_metadata_allowed"] is False
-    assert any("selected provider voice" in blocker for blocker in provider_stage.blockers)
+    assert provider_stage.blockers == []
     assert names.index(TTS_PROVIDER_INTERNAL_EVAL_STAGE) < names.index("audiobook_sync_dry_run_stage")
 
 
-def test_elevenlabs_internal_sample_stage_prepares_files_but_keeps_hold(tmp_path: Path):
+def test_elevenlabs_internal_sample_stage_prepares_files_for_manual_internal_generation(tmp_path: Path):
     config_path = write_config(tmp_path, base_config(tmp_path, slug="frankenstein", title="Frankenstein"))
     result = run_orchestration(config_path)
     sample_stage = stage(result, ELEVENLABS_INTERNAL_SAMPLE_STAGE)
 
-    assert sample_stage.status == "HOLD_PROVIDER_REVIEW"
+    assert sample_stage.status == "SAMPLE_PREP_ONLY"
     assert sample_stage.details["provider"] == "elevenlabs"
-    assert sample_stage.details["provider_internal_eval_status"] == "HOLD_PROVIDER_REVIEW"
+    assert sample_stage.details["provider_decision"] == "ELIGIBLE_INTERNAL_EVAL_ONLY"
+    assert sample_stage.details["provider_internal_eval_status"] == "ELIGIBLE_INTERNAL_EVAL"
     assert sample_stage.details["provider_production_status"] == "PRODUCTION_BLOCKED"
     assert sample_stage.details["selected_voice_name"] == "Rachel"
     assert sample_stage.details["selected_voice_id"] == "21m00Tcm4TlvDq8ikWAM"
@@ -256,6 +258,8 @@ def test_elevenlabs_internal_sample_stage_prepares_files_but_keeps_hold(tmp_path
     assert sample_stage.details["audio_generated_by_repo"] is False
     assert sample_stage.details["full_chapter_generation_allowed"] is False
     assert sample_stage.details["full_book_generation_allowed"] is False
+    assert sample_stage.details["public_audio_release_status"] == PUBLIC_AUDIO_RELEASE_BLOCKED
+    assert sample_stage.blockers == []
     assert len(sample_stage.details["sample_prep_files"]) == 4
     assert any("sample_text.txt" in path for path in sample_stage.details["sample_prep_files"])
 
@@ -313,10 +317,11 @@ def test_selected_model_decision_appears_in_orchestrator_json(tmp_path: Path):
     assert '"selected_voice_internal_eval_status": "HOLD_VOICE_RIGHTS"' in report
     assert '"model_generation": "HOLD_VOICE_RIGHTS"' in report
     assert '"selected_provider_id": "elevenlabs"' in report
-    assert '"selected_provider_decision": "HOLD_PROVIDER_REVIEW"' in report
-    assert '"provider_internal_eval_status": "HOLD_PROVIDER_REVIEW"' in report
+    assert '"selected_provider_decision": "ELIGIBLE_INTERNAL_EVAL_ONLY"' in report
+    assert '"provider_internal_eval_status": "ELIGIBLE_INTERNAL_EVAL"' in report
+    assert '"selected_provider_internal_generation_status": "ELIGIBLE_INTERNAL_EVAL_ONLY"' in report
     assert '"selected_provider_production_status": "PRODUCTION_BLOCKED"' in report
-    assert '"elevenlabs_sample_status": "HOLD_PROVIDER_REVIEW"' in report
+    assert '"elevenlabs_sample_status": "SAMPLE_PREP_ONLY"' in report
     assert (
         '"elevenlabs_sample_import_status": "NOT_IMPORTED_YET"' in report
         or '"elevenlabs_sample_import_status": "INTERNAL_SAMPLE_ONLY"' in report
@@ -352,18 +357,18 @@ def test_next_prompt_requests_voice_rights_evidence_before_audio_generation(tmp_
     assert "Current selected Kokoro voice: `af_heart`" in prompt
     assert "Current selected voice internal-eval status: `HOLD_VOICE_RIGHTS`" in prompt
     assert "Current selected licensed provider: `elevenlabs`" in prompt
-    assert "Current selected provider voice: `OWNER_SELECTION_REQUIRED`" in prompt
+    assert "Current selected provider voice: `21m00Tcm4TlvDq8ikWAM`" in prompt
     assert "Current selected provider voice type: `platform_voice`" in prompt
-    assert "Current licensed provider internal-eval status: `HOLD_PROVIDER_REVIEW`" in prompt
+    assert "Current licensed provider internal-eval status: `ELIGIBLE_INTERNAL_EVAL`" in prompt
     assert "Current licensed provider blockers:" in prompt
+    assert "No provider blocker recorded." in prompt
     assert "KOKORO_AF_HEART_OWNER_LEGAL_REVIEW_FORM.md" in prompt
     assert "KOKORO_AF_HEART_EVIDENCE_COLLECTION_CHECKLIST.md" in prompt
     assert "ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md" in prompt
     assert "ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md" in prompt
     assert "AUDIOBOOK_CHAPTER_PIPELINE_REPORT.md" in prompt
     assert "Collect owner/legal-reviewed selected voice or speaker-rights evidence" in prompt
-    assert "Do not generate a provider audio sample yet" in prompt
-    assert "future separate task may prepare an internal-only 2-3 minute" not in prompt
+    assert "Future separate task may prepare an internal-only 2-3 minute" in prompt
 
 
 def test_sync_manifest_path_is_recorded_in_slug_scoped_output(tmp_path: Path):

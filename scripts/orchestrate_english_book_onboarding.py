@@ -556,9 +556,10 @@ def licensed_provider_tts_internal_eval_review(config: dict[str, Any]) -> StageR
     decisions = review_provider_candidates()
     selected_id = selected_provider_candidate(config)
     selected = selected_provider_decision(selected_id, decisions)
-    selected_voice_id = str(
-        provider_config.get("selected_voice_id") or selected.provider.get("selected_voice_id") or ""
-    ).strip()
+    configured_voice_id = str(provider_config.get("selected_voice_id") or "").strip()
+    selected_voice_id = configured_voice_id
+    if not selected_voice_id or selected_voice_id == "OWNER_SELECTION_REQUIRED":
+        selected_voice_id = str(selected.provider.get("selected_voice_id") or "").strip()
     blockers: list[str] = []
 
     if selected.internal_eval_status != "ELIGIBLE_INTERNAL_EVAL":
@@ -598,8 +599,9 @@ def licensed_provider_tts_internal_eval_review(config: dict[str, Any]) -> StageR
         "selected_provider_internal_generation_status": selected.internal_generation_status,
         "selected_provider_production_status": selected.public_production_status,
         "selected_provider_voice_id": selected_voice_id,
-        "selected_provider_voice_display_name": provider_config.get("selected_voice_display_name")
-        or selected.provider.get("selected_voice_display_name", ""),
+        "selected_provider_voice_display_name": (
+            provider_config.get("selected_voice_display_name") or selected.provider.get("selected_voice_display_name", "")
+        ),
         "selected_provider_voice_type": selected.provider.get("selected_voice_type", "unknown"),
         "selected_provider_voice_rights_summary": selected.provider.get("selected_voice_rights_summary", ""),
         "selected_provider_voice_attribution_requirement": selected.provider.get("selected_voice_attribution_requirement", ""),

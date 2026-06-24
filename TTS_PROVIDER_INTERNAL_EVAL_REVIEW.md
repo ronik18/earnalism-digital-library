@@ -4,13 +4,13 @@ This local review is part of the English onboarding orchestrator. It does not ca
 
 - Public audio status: `PUBLIC_AUDIO_RELEASE_BLOCKED`
 - Production approval status: `PRODUCTION_BLOCKED` for every provider
-- Internal-evaluation eligible providers: `0`
+- Internal-evaluation eligible providers: `1`
 - Real audio generated: `false`
 - Paid provider calls: `false`
 
 | Provider | Strategy | Standalone output | Voice rights | Internal eval | Production | Primary blocker |
 | --- | --- | --- | --- | --- | --- | --- |
-| ElevenLabs | REVIEW_ONLY | ALLOWED | HOLD_REVIEW | HOLD_PROVIDER_REVIEW | PRODUCTION_BLOCKED | attribution requirements require owner/legal review.; beta feature exclusion evidence is missing or requires review.; selected voice attribution requirements require review.; selected voice restrictions require review. |
+| ElevenLabs | REVIEW_ONLY | ALLOWED | APPROVED | ELIGIBLE_INTERNAL_EVAL | PRODUCTION_BLOCKED | Evidence is sufficient only for internal evaluation; production remains blocked. |
 | OpenAI API TTS and Realtime Voices | REVIEW_ONLY | HOLD_REVIEW | HOLD_REVIEW | HOLD_PROVIDER_REVIEW | PRODUCTION_BLOCKED | selected_voice_type is missing or requires review.; standalone audio distribution evidence is not approved.; attribution requirements require owner/legal review.; beta feature exclusion evidence is missing or requires review. |
 | Google Cloud Text-to-Speech | REVIEW_ONLY | HOLD_REVIEW | HOLD_REVIEW | HOLD_PROVIDER_REVIEW | PRODUCTION_BLOCKED | selected_voice_type is missing or requires review.; standalone audio distribution evidence is not approved.; attribution requirements require owner/legal review.; beta feature exclusion evidence is missing or requires review. |
 | Azure AI Speech | REVIEW_ONLY | HOLD_REVIEW | HOLD_REVIEW | HOLD_PROVIDER_REVIEW | PRODUCTION_BLOCKED | selected_voice_type is missing or requires review.; standalone audio distribution evidence is not approved.; attribution requirements require owner/legal review.; beta feature exclusion evidence is missing or requires review. |
@@ -26,45 +26,33 @@ This local review is part of the English onboarding orchestrator. It does not ca
 - Commercial-use evidence: [commercial evidence](https://help.elevenlabs.io/hc/en-us/articles/13313564663441-Can-I-publish-the-content-I-generate-on-the-platform)
 - Voice license evidence: [voice evidence](https://elevenlabs.io/terms)
 - Paid plan required: `True`
-- Paid plan evidence status: `HOLD_REVIEW`
-- Paid plan evidence URL: missing
+- Paid plan evidence status: `APPROVED`
+- Paid plan evidence URL: internal/legal/elevenlabs/creator-membership-internal-eval-evidence.md
 - Beta features allowed: `False`
 - Beta features allowed alias: `False`
-- Beta features excluded evidence: General-availability provider use only; beta, experimental, or preview voice features are excluded unless separately approved.
+- Beta features excluded evidence: APPROVED
 - Standalone audio distribution: `ALLOWED`
-- Standalone audio distribution evidence: `HOLD_REVIEW`
-- Attribution required: `HOLD_REVIEW`
-- Commercial internal-eval permission: `HOLD_REVIEW`
-- Provider terms review status: `HOLD_REVIEW`
-- Data retention review status: `HOLD_REVIEW`
+- Standalone audio distribution evidence: `APPROVED`
+- Attribution required: `False`
+- Commercial internal-eval permission: `APPROVED`
+- Provider terms review status: `APPROVED`
+- Data retention review status: `APPROVED`
 - Data/privacy notes: Account, privacy, voice-library, and data-retention settings require owner/legal review before internal generation.
-- Voice rights status: `HOLD_REVIEW`
+- Voice rights status: `APPROVED`
 - Selected voice ID: `21m00Tcm4TlvDq8ikWAM`
 - Selected voice display name: Rachel
 - Selected voice type: `platform_voice`
 - Selected voice license evidence: https://elevenlabs.io/terms
-- Selected voice rights summary: Proposed ElevenLabs platform voice for owner/legal review only; internal evaluation is blocked until selected voice rights, plan, attribution, restrictions, and account terms are manually approved.
-- Selected voice attribution: `HOLD_REVIEW`
-- Selected voice restrictions: `HOLD_REVIEW`
-- Owner approval: `OWNER_REVIEW_REQUIRED`
-- Legal/internal review: `LEGAL_REVIEW_REQUIRED`
-- Internal-eval decision: `HOLD_PROVIDER_REVIEW`
-- Internal generation status: `HOLD_PROVIDER_REVIEW`
+- Selected voice rights summary: Owner/legal evidence confirms ElevenLabs Rachel platform voice may be used for internal-only evaluation. Public and production audio remain blocked.
+- Selected voice attribution: `APPROVED`
+- Selected voice restrictions: `APPROVED`
+- Owner approval: `APPROVED`
+- Legal/internal review: `APPROVED`
+- Internal-eval decision: `ELIGIBLE_INTERNAL_EVAL`
+- Internal generation status: `ELIGIBLE_INTERNAL_EVAL_ONLY`
 - Public production status: `PRODUCTION_BLOCKED`
 
 Issues:
-- attribution requirements require owner/legal review.
-- beta feature exclusion evidence is missing or requires review.
-- selected voice attribution requirements require review.
-- selected voice restrictions require review.
-- owner approval is required before provider internal evaluation.
-- legal/internal review is required before provider internal evaluation.
-- paid plan evidence status is missing or requires review.
-- paid plan evidence is required before using this provider for internal evaluation.
-- commercial internal-eval permission is missing or requires review.
-- standalone audio distribution evidence is missing or requires review.
-- provider terms review is missing or requires review.
-- data retention review is missing or requires review.
 
 ### OpenAI API TTS and Realtime Voices
 

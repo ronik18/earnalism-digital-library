@@ -5,7 +5,7 @@ ElevenLabs cannot be promoted to `ELIGIBLE_INTERNAL_EVAL_ONLY` unless every chec
 ## Current Status
 
 - Provider ID: `elevenlabs`
-- Internal-eval status: `HOLD_PROVIDER_REVIEW`
+- Internal-eval status: `ELIGIBLE_INTERNAL_EVAL`
 - Production approval: `PRODUCTION_BLOCKED`
 - Public audio: `PUBLIC_AUDIO_RELEASE_BLOCKED`
 

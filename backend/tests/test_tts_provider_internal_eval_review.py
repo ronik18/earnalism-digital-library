@@ -154,18 +154,22 @@ def test_complete_provider_can_only_be_internal_eval_not_production():
     assert decision.public_production_status == "PRODUCTION_BLOCKED"
 
 
-def test_repo_provider_config_has_no_eligible_or_production_approved_candidates():
+def test_repo_provider_config_allows_elevenlabs_internal_eval_only_not_production():
     decisions = provider_review.review_provider_candidates()
 
     assert decisions
     assert all(decision.public_production_status == "PRODUCTION_BLOCKED" for decision in decisions)
-    assert sum(1 for decision in decisions if decision.internal_eval_status == "ELIGIBLE_INTERNAL_EVAL") == 0
+    assert sum(1 for decision in decisions if decision.internal_eval_status == "ELIGIBLE_INTERNAL_EVAL") == 1
     elevenlabs = provider_review.selected_provider_decision("elevenlabs", decisions)
-    assert elevenlabs.internal_eval_status == "HOLD_PROVIDER_REVIEW"
+    assert elevenlabs.decision_status == "ELIGIBLE_INTERNAL_EVAL_ONLY"
+    assert elevenlabs.internal_eval_status == "ELIGIBLE_INTERNAL_EVAL"
+    assert elevenlabs.internal_generation_status == "ELIGIBLE_INTERNAL_EVAL_ONLY"
     assert elevenlabs.public_production_status == "PRODUCTION_BLOCKED"
     assert elevenlabs.provider["selected_voice_id"] == "21m00Tcm4TlvDq8ikWAM"
     assert elevenlabs.provider["selected_voice_type"] == "platform_voice"
-    assert any("owner approval" in issue for issue in elevenlabs.issues)
+    assert elevenlabs.provider["public_audio_release"] == "PUBLIC_AUDIO_RELEASE_BLOCKED"
+    assert elevenlabs.provider["public_audio_allowed"] is False
+    assert elevenlabs.issues == []
 
 
 def test_incomplete_owner_evidence_keeps_elevenlabs_hold():
@@ -212,18 +216,26 @@ def test_complete_owner_evidence_allows_internal_eval_only_not_production():
                 "- beta_services_used: false",
                 "- voice_cloning_used: false",
                 "- elevenreader_used: false",
+                "- elevenlabs_api_used_from_repo: false",
+                "- manual_generation_only: true",
                 "- commercial_internal_eval_permission_evidence: owner/legal reviewed for internal-only sample evaluation",
                 "- attribution_or_restrictions_notes: reviewed and recorded for internal-only use",
                 "- data_privacy_notes: owner reviewed manual UI data handling for this sample",
-                "- owner_approval_status: APPROVED",
-                "- legal_internal_review_status: APPROVED",
+                "- owner_approval_status: APPROVED_FOR_INTERNAL_EVAL_ONLY",
+                "- legal_internal_review_status: INTERNAL_REVIEW_APPROVED_FOR_INTERNAL_EVAL_ONLY_EXTERNAL_COUNSEL_NOT_OBTAINED",
                 "- decision: ELIGIBLE_INTERNAL_EVAL_ONLY",
+                "- production_status: PRODUCTION_BLOCKED",
+                "- public_audio_status: PUBLIC_AUDIO_RELEASE_BLOCKED",
+                "- public_audio_allowed: false",
+                "- listen_now_cta_allowed: false",
+                "- audio_object_metadata_allowed: false",
             ]
         ),
     )
     decisions = provider_review.review_provider_candidates(elevenlabs_evidence_path=evidence_path)
     elevenlabs = provider_review.selected_provider_decision("elevenlabs", decisions)
 
+    assert elevenlabs.decision_status == "ELIGIBLE_INTERNAL_EVAL_ONLY"
     assert elevenlabs.internal_eval_status == "ELIGIBLE_INTERNAL_EVAL"
     assert elevenlabs.internal_generation_status == "ELIGIBLE_INTERNAL_EVAL_ONLY"
     assert elevenlabs.public_production_status == "PRODUCTION_BLOCKED"

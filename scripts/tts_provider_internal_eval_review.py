@@ -31,6 +31,7 @@ ELIGIBLE_INTERNAL_EVAL_ONLY = "ELIGIBLE_INTERNAL_EVAL_ONLY"
 HOLD_PROVIDER_REVIEW = "HOLD_PROVIDER_REVIEW"
 BLOCKED = "BLOCKED"
 PRODUCTION_BLOCKED = "PRODUCTION_BLOCKED"
+PUBLIC_AUDIO_RELEASE_BLOCKED = "PUBLIC_AUDIO_RELEASE_BLOCKED"
 UNKNOWN_VALUES = {"", "unknown", "owner_selection_required", "tbd", "todo", "missing", "none"}
 VALID_STANDALONE_OUTPUT = {"UNKNOWN", "ALLOWED", "BLOCKED", "HOLD_REVIEW"}
 VALID_INTERNAL_EVAL = {ELIGIBLE_INTERNAL_EVAL, HOLD_PROVIDER_REVIEW, BLOCKED}
@@ -230,7 +231,39 @@ def evidence_bool(value: Any) -> bool:
     return normalized(value).lower() in {"true", "yes", "1"}
 
 
-def evidence_complete_for_internal_eval(evidence: dict[str, str]) -> bool:
+def evidence_false(value: Any) -> bool:
+    return normalized(value).lower() in {"false", "no", "0"}
+
+
+def evidence_value_complete(evidence: dict[str, str], field_name: str) -> bool:
+    return not is_unknown(evidence.get(field_name))
+
+
+def evidence_plan_is_creator_paid_membership(value: Any) -> bool:
+    normalized_plan = re.sub(r"[^a-z0-9]+", " ", normalized(value).lower()).strip()
+    return normalized_plan == "creator paid membership"
+
+
+def evidence_internal_eval_owner_approved(value: Any) -> bool:
+    return upper(value) == "APPROVED_FOR_INTERNAL_EVAL_ONLY"
+
+
+def evidence_internal_eval_legal_approved(value: Any) -> bool:
+    status = upper(value)
+    return status in {
+        "APPROVED_FOR_INTERNAL_EVAL_ONLY",
+        "INTERNAL_REVIEW_APPROVED_FOR_INTERNAL_EVAL_ONLY",
+        "INTERNAL_REVIEW_APPROVED_FOR_INTERNAL_EVAL_ONLY_EXTERNAL_COUNSEL_NOT_OBTAINED",
+    }
+
+
+def evidence_public_audio_blocked(evidence: dict[str, str]) -> bool:
+    status = upper(evidence.get("public_audio_status") or evidence.get("public_audio_release"))
+    return status == PUBLIC_AUDIO_RELEASE_BLOCKED
+
+
+def elevenlabs_internal_eval_evidence_issues(evidence: dict[str, str]) -> list[str]:
+    issues: list[str] = []
     required_present = (
         "provider",
         "plan",
@@ -240,33 +273,56 @@ def evidence_complete_for_internal_eval(evidence: dict[str, str]) -> bool:
         "selected_voice_id",
         "selected_voice_type",
         "commercial_internal_eval_permission_evidence",
-        "attribution_or_restrictions_notes",
-        "data_privacy_notes",
         "owner_approval_status",
         "legal_internal_review_status",
         "decision",
+        "production_status",
     )
-    if any(is_unknown(evidence.get(field_name)) for field_name in required_present):
-        return False
+    for field_name in required_present:
+        if not evidence_value_complete(evidence, field_name):
+            issues.append(f"{field_name} is missing or requires review.")
+
     if normalized(evidence.get("provider")).lower() != "elevenlabs":
-        return False
+        issues.append("provider must be ElevenLabs.")
+    if not evidence_plan_is_creator_paid_membership(evidence.get("plan")):
+        issues.append("plan must be Creator paid membership.")
+    if normalized(evidence.get("selected_voice_name")).lower() != "rachel":
+        issues.append("selected_voice_name must be Rachel.")
     if normalized(evidence.get("selected_voice_id")) != "21m00Tcm4TlvDq8ikWAM":
-        return False
+        issues.append("selected_voice_id must be 21m00Tcm4TlvDq8ikWAM.")
     if normalized(evidence.get("selected_voice_type")).lower() != "platform_voice":
-        return False
-    if evidence_bool(evidence.get("beta_services_used")):
-        return False
-    if evidence_bool(evidence.get("voice_cloning_used")):
-        return False
-    if evidence_bool(evidence.get("elevenreader_used")):
-        return False
-    if upper(evidence.get("owner_approval_status")) != "APPROVED":
-        return False
-    if upper(evidence.get("legal_internal_review_status")) not in {"APPROVED", "LEGAL_APPROVED"}:
-        return False
+        issues.append("selected_voice_type must be platform_voice.")
+    if not evidence_false(evidence.get("beta_services_used")):
+        issues.append("beta_services_used must be false.")
+    if not evidence_false(evidence.get("voice_cloning_used")):
+        issues.append("voice_cloning_used must be false.")
+    if not evidence_false(evidence.get("elevenreader_used")):
+        issues.append("elevenreader_used must be false.")
+    if not evidence_false(evidence.get("elevenlabs_api_used_from_repo")):
+        issues.append("elevenlabs_api_used_from_repo must be false.")
+    if not evidence_bool(evidence.get("manual_generation_only")):
+        issues.append("manual_generation_only must be true.")
+    if not evidence_internal_eval_owner_approved(evidence.get("owner_approval_status")):
+        issues.append("owner_approval_status must be APPROVED_FOR_INTERNAL_EVAL_ONLY.")
+    if not evidence_internal_eval_legal_approved(evidence.get("legal_internal_review_status")):
+        issues.append("legal_internal_review_status must approve internal eval only.")
     if upper(evidence.get("decision")) != ELIGIBLE_INTERNAL_EVAL_ONLY:
-        return False
-    return True
+        issues.append("decision must be ELIGIBLE_INTERNAL_EVAL_ONLY.")
+    if upper(evidence.get("production_status")) != PRODUCTION_BLOCKED:
+        issues.append("production_status must remain PRODUCTION_BLOCKED.")
+    if not evidence_public_audio_blocked(evidence):
+        issues.append("public audio status must remain PUBLIC_AUDIO_RELEASE_BLOCKED.")
+    if evidence_bool(evidence.get("public_audio_allowed")):
+        issues.append("public_audio_allowed must be false.")
+    if evidence_bool(evidence.get("listen_now_cta_allowed")):
+        issues.append("listen_now_cta_allowed must be false.")
+    if evidence_bool(evidence.get("audio_object_metadata_allowed")):
+        issues.append("audio_object_metadata_allowed must be false.")
+    return dedupe(issues)
+
+
+def evidence_complete_for_internal_eval(evidence: dict[str, str]) -> bool:
+    return not elevenlabs_internal_eval_evidence_issues(evidence)
 
 
 def apply_elevenlabs_owner_evidence(provider: dict[str, Any], evidence_path: Path) -> dict[str, Any]:
@@ -280,6 +336,7 @@ def apply_elevenlabs_owner_evidence(provider: dict[str, Any], evidence_path: Pat
     updated["owner_evidence_path"] = str(evidence_path.relative_to(ROOT)) if evidence_path.is_relative_to(ROOT) else str(evidence_path)
     updated["owner_evidence_decision"] = normalized(evidence.get("decision")) or "HOLD"
     updated["owner_evidence_present"] = True
+    updated["owner_evidence_issues"] = elevenlabs_internal_eval_evidence_issues(evidence)
     updated["selected_voice_id"] = normalized(evidence.get("selected_voice_id")) or updated.get("selected_voice_id")
     updated["selected_voice_display_name"] = normalized(evidence.get("selected_voice_name")) or updated.get(
         "selected_voice_display_name"
@@ -312,6 +369,13 @@ def apply_elevenlabs_owner_evidence(provider: dict[str, Any], evidence_path: Pat
                 ),
                 "internal_eval_status": ELIGIBLE_INTERNAL_EVAL,
                 "production_status": PRODUCTION_BLOCKED,
+                "public_audio_release": PUBLIC_AUDIO_RELEASE_BLOCKED,
+                "public_audio_allowed": False,
+                "listen_now_cta_allowed": False,
+                "audio_object_metadata_allowed": False,
+                "manual_generation_only": True,
+                "owner_approval_scope": "APPROVED_FOR_INTERNAL_EVAL_ONLY",
+                "legal_internal_review_scope": normalized(evidence.get("legal_internal_review_status")),
                 "owner_approval_status": "APPROVED",
                 "legal_review_status": "APPROVED",
                 "blockers": "No blocker for internal-only evaluation; production and public release remain blocked.",
@@ -320,7 +384,8 @@ def apply_elevenlabs_owner_evidence(provider: dict[str, Any], evidence_path: Pat
     else:
         updated["internal_eval_status"] = HOLD_PROVIDER_REVIEW
         updated["blockers"] = (
-            "ElevenLabs owner/legal evidence file exists, but internal-eval approval fields remain incomplete."
+            "ElevenLabs owner/legal evidence file exists, but internal-eval approval fields remain incomplete: "
+            + "; ".join(updated["owner_evidence_issues"][:6])
         )
     return updated
 
@@ -433,7 +498,7 @@ def classify_provider(provider: dict[str, Any]) -> ProviderDecision:
     )
 
     if complete_internal_evidence:
-        decision_status = ELIGIBLE_INTERNAL_EVAL
+        decision_status = ELIGIBLE_INTERNAL_EVAL_ONLY
         internal_eval_status = ELIGIBLE_INTERNAL_EVAL
         internal_generation_status = ELIGIBLE_INTERNAL_EVAL_ONLY
     elif beta_features_enabled(provider) or standalone == "BLOCKED" or declared_internal_eval == BLOCKED:

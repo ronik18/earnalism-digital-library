@@ -12,18 +12,11 @@ Current model generation status: `HOLD_VOICE_RIGHTS`.
 Current selected licensed provider: `elevenlabs`.
 Current selected provider voice: `21m00Tcm4TlvDq8ikWAM`.
 Current selected provider voice type: `platform_voice`.
-Current licensed provider internal-eval status: `HOLD_PROVIDER_REVIEW`.
+Current licensed provider internal-eval status: `ELIGIBLE_INTERNAL_EVAL`.
 Current licensed provider production status: `PRODUCTION_BLOCKED`.
 
 Current licensed provider blockers:
-- selected provider `elevenlabs` is not eligible for internal evaluation: HOLD_PROVIDER_REVIEW.
-- paid provider plan evidence is required before internal evaluation.
-- owner approval is required before provider internal evaluation.
-- legal/internal review is required before provider internal evaluation.
-- attribution requirements require owner/legal review.
-- beta feature exclusion evidence is missing or requires review.
-- selected voice attribution requirements require review.
-- selected voice restrictions require review.
+- No provider blocker recorded.
 
 Required next checks:
 - Attach complete source-rights evidence.
@@ -38,8 +31,8 @@ Required next checks:
 - Review AUDIOBOOK_CHAPTER_PIPELINE_REPORT.md for the automated dry-run narration, chunking, cost, provider, sync, and public-release gate evidence.
 - Do not generate an audio sample yet; `kokoro` remains `HOLD_VOICE_RIGHTS`.
 - Collect owner/legal-reviewed selected voice or speaker-rights evidence, including provenance, commercial internal-eval permission, synthetic/non-human or consent status, and real-person voice-cloning risk review.
-- Do not generate a provider audio sample yet; `elevenlabs` remains `HOLD_PROVIDER_REVIEW`.
-- Complete ELEVENLABS_PROVIDER_OWNER_LEGAL_REVIEW_FORM.md and ELEVENLABS_PROVIDER_INTERNAL_EVAL_CHECKLIST.md before any provider eligibility change.
+- Future separate task may prepare an internal-only 2-3 minute Dracula Chapter 1 sample with `elevenlabs` after owner/legal/provider evidence remains attached and public audio remains blocked.
+- Keep provider sample generation local/internal and outside `frontend/public` and `frontend/build`.
 - Review the internal highlighted-text sync manifest before any audio release consideration.
 - If owner/legal approve ElevenLabs internal evaluation, manually generate only the Dracula 2-3 minute sample in the ElevenLabs UI and import it with npm run elevenlabs:sample-import.
 - Keep public audio blocked.
