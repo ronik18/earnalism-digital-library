@@ -1,0 +1,29 @@
+{
+  "provider": "elevenlabs",
+  "voice_name": "Rachel",
+  "voice_id": "21m00Tcm4TlvDq8ikWAM",
+  "model_id": "eleven_multilingual_v2",
+  "output_format": "mp3_44100_192",
+  "language_code": "en",
+  "voice_settings": {
+    "stability": 0.63,
+    "similarity_boost": 0.76,
+    "style": 0.08,
+    "speed": 0.3,
+    "use_speaker_boost": true
+  },
+  "api_endpoint": "POST /v1/text-to-speech/:voice_id/with-timestamps",
+  "request_behavior": {
+    "uses_with_timestamps_endpoint": true,
+    "passes_output_format_as_query_parameter": true,
+    "passes_language_code_when_supported": true,
+    "passes_previous_text_and_next_text_when_available": true,
+    "records_previous_request_id_when_returned": true,
+    "speed_and_style_are_kept_as_owner_ui_evidence": true
+  },
+  "beta_services_used": false,
+  "voice_cloning_used": false,
+  "elevenreader_used": false,
+  "production_status": "PRODUCTION_BLOCKED",
+  "public_audio_allowed": false
+}
