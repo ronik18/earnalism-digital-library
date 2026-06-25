@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -79,6 +80,22 @@ def static_snapshot_path(route: str) -> Path:
     if route == "/":
         return build_dir / "index.html"
     return build_dir / route.strip("/") / "index.html"
+
+
+def ensure_static_seo_snapshots() -> None:
+    expected_snapshots = [static_snapshot_path(route) for route in ROUTES]
+    if all(path.exists() for path in expected_snapshots):
+        return
+    script = ROOT / "frontend" / "scripts" / "generate-static-seo-snapshots.mjs"
+    if not script.exists():
+        return
+    subprocess.run(
+        ["node", str(script)],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
 
 
 def raw_html(route: str, base_url: str | None = None, timeout: int = 10) -> tuple[str, str]:
@@ -237,6 +254,8 @@ def report_markdown(payload: dict[str, Any]) -> str:
 
 
 def run(base_url: str | None = None, timeout: int = 10) -> dict[str, Any]:
+    if not base_url:
+        ensure_static_seo_snapshots()
     route_list = PRODUCTION_ROUTES if base_url else ROUTES
     routes = [audit_route(route, base_url=base_url, timeout=timeout) for route in route_list]
     status = "PASS" if all(route["status"] == "PASS" for route in routes) else "FAIL"

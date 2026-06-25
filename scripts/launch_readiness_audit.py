@@ -543,6 +543,27 @@ def static_snapshot_path(route: str) -> Path:
     return build_dir / route.strip("/") / "index.html"
 
 
+def ensure_static_seo_snapshots() -> None:
+    expected_snapshots = [
+        static_snapshot_path("/"),
+        static_snapshot_path("/book/dracula"),
+        static_snapshot_path("/library"),
+        static_snapshot_path("/reader/dracula"),
+    ]
+    if all(path.exists() for path in expected_snapshots):
+        return
+    script = ROOT / "frontend" / "scripts" / "generate-static-seo-snapshots.mjs"
+    if not script.exists() or not command_available("node"):
+        return
+    subprocess.run(
+        ["node", str(script)],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+
 def read_static_route_html(route: str) -> tuple[str, str]:
     snapshot = static_snapshot_path(route)
     if snapshot.exists():
@@ -632,6 +653,7 @@ def dracula_rights_evidence_approved() -> bool:
 
 def audit_seo() -> dict[str, Any]:
     issues: list[Issue] = []
+    ensure_static_seo_snapshots()
     urls = sitemap_urls()
     robots = read_text(ROOT / "frontend" / "public" / "robots.txt")
     index_html, index_html_source = read_static_route_html("/")
