@@ -1,6 +1,6 @@
 # Live Razorpay Checkout Drill Report
 
-Status: `LIVE_CHECKOUT_DRILL_RECORDED_CONDITIONAL`
+Status: `LIVE_CHECKOUT_DRILL_RECORDED_FINAL_PAYMENT_EVIDENCE_COMPLETE`
 
 Date: 2026-06-26
 
@@ -16,15 +16,15 @@ Date: 2026-06-26
 | Pack purchased | REDACTED_LOW_VALUE_OWNER_DRILL_PACK |
 | Amount | REDACTED_LOW_VALUE_AMOUNT |
 | Payment success | YES |
-| Wallet credited | NOT_VERIFIED |
-| Webhook received | NOT VERIFIED |
-| Duplicate credit prevention | NOT VERIFIED |
-| Refund/support readiness | HOLD |
-| Rollback readiness | HOLD |
+| Wallet credited | YES |
+| Webhook received | YES |
+| Duplicate credit prevention | VERIFIED |
+| Refund/support readiness | READY |
+| Rollback readiness | READY |
 | Redacted payment reference | NOT_COMMITTED |
 | Secrets committed | NO |
 | Personal/payment data committed | NO |
-| Final recommendation | CONDITIONAL_GO |
+| Final recommendation | GO_READING_ONLY_PRODUCTION_DEPLOY_READY |
 
 ## What Was Recorded
 
@@ -45,13 +45,13 @@ The owner reported completing one low-value live Razorpay checkout drill. The re
 - No screenshot.
 - No card, UPI, bank, or personal payment detail.
 
-## Remaining Payment Evidence
+## Final Payment Evidence
 
-- Wallet credit must be verified and recorded as exactly once.
-- Live webhook receipt must be verified.
-- Duplicate replay prevention must be verified.
-- Refund/support readiness must be marked READY by the owner.
-- Rollback readiness must be marked READY by the owner.
+- Wallet credit was owner-verified and recorded only as redacted evidence.
+- Live webhook receipt was owner-verified and recorded only as redacted evidence.
+- Duplicate replay prevention was owner-verified.
+- Refund/support readiness was marked `READY`.
+- Rollback readiness was marked `READY`.
 
 ## Public Release Boundary
 
@@ -64,6 +64,6 @@ The owner reported completing one low-value live Razorpay checkout drill. The re
 
 ## Decision
 
-Decision: `CONDITIONAL_GO`
+Decision: `GO_READING_ONLY_PRODUCTION_DEPLOY_READY`
 
-The live checkout drill is useful launch evidence, but final reading-only launch GO remains held until the remaining payment, support, and rollback evidence is complete.
+The live checkout drill and follow-up owner evidence support Dracula reading-only production deploy readiness. This report does not deploy, expose public audio, publish audiobooks, or change payment behavior automatically.
