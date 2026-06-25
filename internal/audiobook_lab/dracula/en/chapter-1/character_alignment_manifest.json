@@ -1,0 +1,22 @@
+{
+  "generated_by": "scripts/elevenlabs_full_chapter_generate.py",
+  "generated_at": "2026-06-25T08:51:34+00:00",
+  "book_slug": "dracula",
+  "language": "en",
+  "chapter": 1,
+  "provider": "ElevenLabs",
+  "sync_status": "HOLD_SYNC_QA_REQUIRED",
+  "public_audio_allowed": false,
+  "production_status": "PRODUCTION_BLOCKED",
+  "chunks": [
+    {
+      "chunk_id": "c001",
+      "text_hash": "00232ce3b85cfca56a65028f1f9c9fc41a00943561f8a6fa09a1083741817880",
+      "settings_hash": "18b5f07afb19fda6d321af118213c99c2aead69b7adebd9f4000ed521cf0a839",
+      "alignment_status": "NO_ALIGNMENT_FAILED_GENERATION",
+      "alignment_path": "",
+      "request_id": "unknown ElevenLabs generation failure",
+      "public": false
+    }
+  ]
+}

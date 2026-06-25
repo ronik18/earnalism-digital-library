@@ -181,6 +181,7 @@ def expected_audio_payload(
         "audio_generated_by_repo": False,
         "public_audio_release": PUBLIC_AUDIO_RELEASE_BLOCKED,
         "public_audio_allowed": False,
+        "production_status": "PRODUCTION_BLOCKED",
         "production_approved": False,
         "chunks": chunks,
     }
@@ -229,6 +230,13 @@ def checklist_text(expected: dict[str, Any]) -> str:
             "",
             "## Copy Order And Expected Filenames",
             "",
+            "- Use the ElevenLabs UI/Studio manually; this repo must not call the ElevenLabs API.",
+            "- Generate one chunk at a time, in the exact order below.",
+            "- Use voice Rachel / `21m00Tcm4TlvDq8ikWAM` for every chunk.",
+            "- Use no beta services, no voice cloning, and no ElevenReader.",
+            "- Download each generated audio file using the exact expected filename shown below.",
+            "- Regenerate only failed chunks after QA; do not regenerate chunks that already pass.",
+            "",
             *chunk_lines,
             "",
             "## Save Location",
@@ -236,6 +244,7 @@ def checklist_text(expected: dict[str, Any]) -> str:
             f"- Save downloads only under `{expected['imported_audio_dir']}/`.",
             "- Do not upload generated audio to `frontend/public` or `frontend/build`.",
             "- Keep this as internal review audio until every release gate is explicitly approved.",
+            "- Do not publish audio, add public listening calls to action, add structured audio metadata, or mark production approved.",
             "",
         ]
     )

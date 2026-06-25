@@ -27,6 +27,10 @@ INTERNAL_FULL_CHAPTER_ONLY = "INTERNAL_FULL_CHAPTER_ONLY"
 HOLD_SYNC_QA_REQUIRED = "HOLD_SYNC_QA_REQUIRED"
 PRODUCTION_BLOCKED = "PRODUCTION_BLOCKED"
 READY_FOR_INTERNAL_IMPORT = "READY_FOR_INTERNAL_IMPORT"
+HOLD_OWNER_LISTENING_QA_REQUIRED = "HOLD_OWNER_LISTENING_QA_REQUIRED"
+READY_FOR_INTERNAL_PLAYER_TEST = "READY_FOR_INTERNAL_PLAYER_TEST"
+READY_TO_PREPARE_INTERNAL_PLAYER_TEST = "READY_TO_PREPARE_INTERNAL_PLAYER_TEST"
+BLOCKED_PENDING_OWNER_LISTENING_QA = "BLOCKED_PENDING_OWNER_LISTENING_QA"
 
 
 def utc_now() -> str:
@@ -126,6 +130,82 @@ def is_manual_chunk_sample_workflow(sample_dir: Path) -> bool:
 
 def is_full_chapter_workflow(sample_dir: Path) -> bool:
     return (sample_dir / "full_chapter_sync_source_with_ids.txt").exists() or (sample_dir / "full_chapter_text.txt").exists()
+
+
+def owner_listening_qa(sample_dir: Path) -> dict[str, Any]:
+    form_path = sample_dir / "full_chapter_owner_listening_qa_form.md"
+    default = {
+        "owner_listening_qa_form_path": str(form_path.relative_to(ROOT)) if form_path.exists() else "",
+        "listening_qa_status": HOLD_OWNER_LISTENING_QA_REQUIRED,
+        "owner_listening_score": None,
+        "owner_listening_decision": "HOLD",
+        "owner_reviewer": "",
+        "owner_review_date": "",
+        "owner_listening_scores": {},
+        "owner_pacing_note": "",
+        "owner_notes": "",
+        "internal_player_test_status": BLOCKED_PENDING_OWNER_LISTENING_QA,
+        "public_release_approved": False,
+        "production_approved": False,
+    }
+    if not form_path.exists():
+        return default
+
+    text = form_path.read_text(encoding="utf-8")
+
+    def line_value(label: str) -> str:
+        match = re.search(rf"(?im)^-\s*{re.escape(label)}:\s*(.+?)\s*$", text)
+        return match.group(1).strip() if match else ""
+
+    scores: dict[str, float] = {}
+    for match in re.finditer(r"(?im)^-\s*([a-z][a-z /-]+):\s*([0-9]+(?:\.[0-9]+)?)/10\s*$", text):
+        label = re.sub(r"[^a-z0-9]+", "_", match.group(1).strip().lower()).strip("_")
+        scores[label] = float(match.group(2))
+
+    decision = "HOLD"
+    decision_match = re.search(r"(?is)^## Owner Decision\s+([A-Z0-9_]+)\s*(?:^##|\Z)", text, re.MULTILINE)
+    if decision_match:
+        decision = decision_match.group(1).strip()
+    selected_match = re.search(r"(?im)^Selected decision:\s*`?([A-Z0-9_]+)`?", text)
+    if selected_match:
+        decision = selected_match.group(1).strip()
+
+    owner_notes = ""
+    notes_match = re.search(r"(?is)^## Owner Notes\s+(.+?)\s*(?:^##|\Z)", text, re.MULTILINE)
+    if notes_match:
+        owner_notes = notes_match.group(1).strip()
+
+    reviewer_notes = line_value("Notes")
+    pacing_note = reviewer_notes
+    for sentence in re.split(r"(?<=[.!?])\s+", owner_notes):
+        if re.search(r"\b(pace|pacing)\b", sentence, re.IGNORECASE):
+            pacing_note = sentence.strip()
+            break
+
+    overall_score = scores.get("overall_score")
+    listening_status = (
+        READY_FOR_INTERNAL_PLAYER_TEST
+        if decision == READY_FOR_INTERNAL_PLAYER_TEST and overall_score is not None
+        else HOLD_OWNER_LISTENING_QA_REQUIRED
+    )
+    internal_player_status = (
+        READY_TO_PREPARE_INTERNAL_PLAYER_TEST
+        if listening_status == READY_FOR_INTERNAL_PLAYER_TEST
+        else BLOCKED_PENDING_OWNER_LISTENING_QA
+    )
+
+    return {
+        **default,
+        "listening_qa_status": listening_status,
+        "owner_listening_score": overall_score,
+        "owner_listening_decision": decision,
+        "owner_reviewer": line_value("Reviewer"),
+        "owner_review_date": line_value("Review date"),
+        "owner_listening_scores": scores,
+        "owner_pacing_note": pacing_note,
+        "owner_notes": owner_notes,
+        "internal_player_test_status": internal_player_status,
+    }
 
 
 def text_path_for(sample_dir: Path) -> Path:
@@ -314,6 +394,20 @@ def load_manual_chunk_audio(
     return chunks, combined_audio_hash, imported_audio_dir, validation_report_path, expected_manifest_path, expected_manifest
 
 
+def manual_workflow_is_full_chapter(sample_dir: Path, expected_manifest: dict[str, Any]) -> bool:
+    chunk_manifest_path = sample_dir / "chunk_manifest.json"
+    if not chunk_manifest_path.exists():
+        return False
+    chunk_manifest = load_json(chunk_manifest_path)
+    manifest_chunks = chunk_manifest.get("chunks") if isinstance(chunk_manifest, dict) else None
+    expected_chunks = expected_manifest.get("chunks") if isinstance(expected_manifest, dict) else None
+    if not isinstance(manifest_chunks, list) or not isinstance(expected_chunks, list):
+        return False
+    manifest_ids = [str(chunk.get("chunk_id")) for chunk in manifest_chunks]
+    expected_ids = [str(chunk.get("chunk_id")) for chunk in expected_chunks]
+    return bool(manifest_ids) and expected_ids == manifest_ids
+
+
 def load_chunk_audio(
     *,
     sample_dir: Path,
@@ -411,7 +505,11 @@ def run_import(*, book_slug: str, chapter: str, sample_dir: Path) -> dict[str, A
             expected_manifest_path,
             expected_manifest,
         ) = load_manual_chunk_audio(sample_dir=sample_dir, book_slug=book_slug, chapter=chapter)
-        audio_status = INTERNAL_SAMPLE_ONLY
+        audio_status = (
+            INTERNAL_FULL_CHAPTER_ONLY
+            if manual_workflow_is_full_chapter(sample_dir, expected_manifest)
+            else INTERNAL_SAMPLE_ONLY
+        )
     else:
         audio_files = find_imported_audio(imported_audio_dir)
         if not audio_files:
@@ -434,6 +532,7 @@ def run_import(*, book_slug: str, chapter: str, sample_dir: Path) -> dict[str, A
     sample_text = sample_text_path.read_text(encoding="utf-8") if sample_text_path.exists() else "\n".join(
         chunk.get("audio_filename", "") for chunk in chunks
     )
+    owner_qa = owner_listening_qa(sample_dir)
 
     imported_manifest = {
         "generated_by": "scripts/elevenlabs_internal_sample_import.py",
@@ -445,7 +544,12 @@ def run_import(*, book_slug: str, chapter: str, sample_dir: Path) -> dict[str, A
         "voice_id": "21m00Tcm4TlvDq8ikWAM",
         "audio_status": audio_status,
         "status": audio_status,
-        "import_workflow": "manual_chunk_sample" if manual_chunk_sample else ("full_chapter" if full_chapter else "single_file_sample"),
+        "import_workflow": (
+            "manual_full_chapter" if manual_chunk_sample and audio_status == INTERNAL_FULL_CHAPTER_ONLY
+            else "manual_chunk_sample" if manual_chunk_sample
+            else "full_chapter" if full_chapter
+            else "single_file_sample"
+        ),
         "public_audio_release": PUBLIC_AUDIO_RELEASE_BLOCKED,
         "public_audio_allowed": False,
         "production_status": PRODUCTION_BLOCKED,
@@ -458,6 +562,7 @@ def run_import(*, book_slug: str, chapter: str, sample_dir: Path) -> dict[str, A
         "audio_hash": audio_hash,
         "text_hash": sha256_text(sample_text),
         "sample_dir": str(sample_dir.relative_to(ROOT)),
+        **owner_qa,
     }
     if manual_chunk_sample:
         imported_manifest["chunks"] = chunks
@@ -488,6 +593,7 @@ def run_import(*, book_slug: str, chapter: str, sample_dir: Path) -> dict[str, A
         "public": False,
         "timing_qa_passed": False,
         "public_audio_allowed": False,
+        **owner_qa,
         "items": (
             manual_sentence_items(book_slug=book_slug, chapter=chapter, sample_dir=sample_dir, chunks=chunks)
             if manual_chunk_sample
@@ -517,8 +623,8 @@ def run_import(*, book_slug: str, chapter: str, sample_dir: Path) -> dict[str, A
             "voice": expected_manifest.get("voice_name") or "Rachel",
             "voice_name": expected_manifest.get("voice_name") or "Rachel",
             "voice_id": expected_manifest.get("voice_id") or "21m00Tcm4TlvDq8ikWAM",
-            "status": INTERNAL_SAMPLE_ONLY,
-            "audio_status": INTERNAL_SAMPLE_ONLY,
+            "status": audio_status,
+            "audio_status": audio_status,
             "sync_status": HOLD_SYNC_QA_REQUIRED,
             "chunk_count": len(chunks),
             "chunks": chunks,
@@ -532,6 +638,7 @@ def run_import(*, book_slug: str, chapter: str, sample_dir: Path) -> dict[str, A
             "listen_now_cta_allowed": False,
             "audio_object_metadata_allowed": False,
             "timing_qa_passed": False,
+            **owner_qa,
             "manual_download_validation_report_path": str(manual_validation_report_path.relative_to(ROOT)),
             "expected_audio_filenames_path": str(expected_manifest_path.relative_to(ROOT)),
             "imported_audio_manifest_path": str(imported_manifest_path.relative_to(ROOT)),
@@ -540,6 +647,61 @@ def run_import(*, book_slug: str, chapter: str, sample_dir: Path) -> dict[str, A
         combined_sample_manifest_path = sample_dir / "combined_sample_manifest.json"
         combined_sample_manifest_path.write_text(
             json.dumps(combined_sample_manifest, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+    if audio_status == INTERNAL_FULL_CHAPTER_ONLY:
+        full_chapter_audio_manifest = {
+            "generated_by": "scripts/elevenlabs_internal_sample_import.py",
+            "generated_at": generated_at,
+            "book_slug": book_slug,
+            "language": "en",
+            "chapter": int(chapter),
+            "provider": "ElevenLabs",
+            "voice": "Rachel",
+            "voice_name": "Rachel",
+            "voice_id": "21m00Tcm4TlvDq8ikWAM",
+            "audio_status": INTERNAL_FULL_CHAPTER_ONLY,
+            "generation_status": "IMPORTED_OWNER_MANUAL_DOWNLOAD",
+            "sync_status": HOLD_SYNC_QA_REQUIRED,
+            "chunk_count": len(chunks),
+            "generated_chunk_count": 0,
+            "imported_chunk_count": len(chunks),
+            "failed_chunk_count": 0,
+            "audio_hash": audio_hash,
+            "combined_audio_hash": audio_hash,
+            "public_audio_release": PUBLIC_AUDIO_RELEASE_BLOCKED,
+            "public_audio_allowed": False,
+            "production_status": PRODUCTION_BLOCKED,
+            "production_approved": False,
+            "listen_now_cta_allowed": False,
+            "audio_object_metadata_allowed": False,
+            "full_book_generation_allowed": False,
+            "timing_qa_passed": False,
+            "owner_listening_qa_status": owner_qa["listening_qa_status"],
+            "highlight_sync_qa_status": HOLD_SYNC_QA_REQUIRED,
+            **owner_qa,
+            "imported_audio_manifest_path": str(imported_manifest_path.relative_to(ROOT)),
+            "combined_sample_manifest_path": (
+                str(combined_sample_manifest_path.relative_to(ROOT)) if combined_sample_manifest_path else ""
+            ),
+            "sync_manifest_path": str(sync_manifest_path.relative_to(ROOT)),
+            "chunks": [
+                {
+                    "chunk_id": chunk["chunk_id"],
+                    "audio_path": chunk["audio_path"],
+                    "audio_hash": chunk["audio_hash"],
+                    "audio_filename": chunk.get("audio_filename", ""),
+                    "sentence_ids": chunk.get("sentence_ids", []),
+                    "sentence_count": chunk.get("sentence_count", 0),
+                    "generation_status": chunk.get("generation_status", "IMPORTED_OWNER_MANUAL_DOWNLOAD"),
+                    "public": False,
+                }
+                for chunk in chunks
+            ],
+        }
+        full_chapter_audio_manifest_path = sample_dir / "full_chapter_audio_manifest.json"
+        full_chapter_audio_manifest_path.write_text(
+            json.dumps(full_chapter_audio_manifest, indent=2, ensure_ascii=False) + "\n",
             encoding="utf-8",
         )
     return {
@@ -554,6 +716,8 @@ def run_import(*, book_slug: str, chapter: str, sample_dir: Path) -> dict[str, A
             str(combined_sample_manifest_path.relative_to(ROOT)) if combined_sample_manifest_path else None
         ),
         "public_audio_allowed": False,
+        "listening_qa_status": owner_qa["listening_qa_status"],
+        "internal_player_test_status": owner_qa["internal_player_test_status"],
     }
 
 
