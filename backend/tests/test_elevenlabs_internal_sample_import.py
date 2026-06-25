@@ -410,6 +410,8 @@ def test_dracula_full_chapter_import_evidence_and_qa_forms_remain_internal_only(
     sync_manifest_path = sample_dir / "sync_manifest.json"
     owner_qa_path = sample_dir / "full_chapter_owner_listening_qa_form.md"
     sync_qa_path = sample_dir / "full_chapter_highlight_sync_qa_form.md"
+    player_manifest_path = sample_dir / "internal_player_test_manifest.json"
+    player_qa_path = sample_dir / "internal_player_test_qa_form.md"
 
     run_import(book_slug="dracula", chapter="1", sample_dir=sample_dir)
 
@@ -420,6 +422,8 @@ def test_dracula_full_chapter_import_evidence_and_qa_forms_remain_internal_only(
         sync_manifest_path,
         owner_qa_path,
         sync_qa_path,
+        player_manifest_path,
+        player_qa_path,
     ):
         assert path.exists(), f"missing full chapter evidence file: {path}"
 
@@ -427,8 +431,10 @@ def test_dracula_full_chapter_import_evidence_and_qa_forms_remain_internal_only(
     combined = json.loads(combined_manifest_path.read_text(encoding="utf-8"))
     full_audio = json.loads(full_audio_manifest_path.read_text(encoding="utf-8"))
     sync = json.loads(sync_manifest_path.read_text(encoding="utf-8"))
+    player_manifest = json.loads(player_manifest_path.read_text(encoding="utf-8"))
     owner_qa = owner_qa_path.read_text(encoding="utf-8")
     sync_qa = sync_qa_path.read_text(encoding="utf-8")
+    player_qa = player_qa_path.read_text(encoding="utf-8")
 
     expected_audio_hash = "5cea977f3fcffca744f9fa71a8da249943462a9096580d6522b4d80c509bc2c0"
     assert imported["audio_status"] == INTERNAL_FULL_CHAPTER_ONLY
@@ -463,8 +469,26 @@ def test_dracula_full_chapter_import_evidence_and_qa_forms_remain_internal_only(
     assert sync["internal_player_test_status"] == "READY_TO_PREPARE_INTERNAL_PLAYER_TEST"
     assert sync.get("timing_qa_passed", False) is False
     assert len(sync["items"]) == 220
+    assert player_manifest["audio_status"] == INTERNAL_FULL_CHAPTER_ONLY
+    assert player_manifest["chunk_count"] == 27
+    assert player_manifest["audio_hash"] == expected_audio_hash
+    assert player_manifest["sync_status"] == HOLD_SYNC_QA_REQUIRED
+    assert player_manifest["listening_qa_status"] == "READY_FOR_INTERNAL_PLAYER_TEST"
+    assert player_manifest["player_test_status"] == "READY_FOR_INTERNAL_PLAYER_TEST"
+    assert player_manifest["public_audio_allowed"] is False
+    assert player_manifest["production_status"] == PRODUCTION_BLOCKED
+    assert player_manifest["listen_now_cta_allowed"] is False
+    assert player_manifest["audio_object_metadata_allowed"] is False
+    assert len(player_manifest["audio_paths_internal_only"]) == 27
+    assert player_manifest["sync_manifest_path"] == str(sync_manifest_path.relative_to(root))
+    assert player_manifest["qa_required_before_public_release"]
 
-    for payload in (imported, combined, full_audio, sync):
+    for audio_path in player_manifest["audio_paths_internal_only"]:
+        assert audio_path.startswith("internal/audiobook_lab/")
+        assert not audio_path.startswith("frontend/public/")
+        assert not audio_path.startswith("frontend/build/")
+
+    for payload in (imported, combined, full_audio, sync, player_manifest):
         assert payload["public_audio_allowed"] is False
         assert payload["production_status"] == PRODUCTION_BLOCKED
     assert imported["listen_now_cta_allowed"] is False
@@ -475,11 +499,20 @@ def test_dracula_full_chapter_import_evidence_and_qa_forms_remain_internal_only(
     assert "READY_FOR_INTERNAL_PLAYER_TEST" in owner_qa
     assert "overall score: 9.4/10" in owner_qa
     assert "Selected decision: `HOLD_SYNC_QA_REQUIRED`" in sync_qa
+    assert "Selected decision: `HOLD`" in player_qa
+    assert "Public audio allowed: `false`" in player_qa
+    assert "Production approved: `false`" in player_qa
     assert "PUBLIC_AUDIO_RELEASE_BLOCKED" in owner_qa
     assert "PRODUCTION_BLOCKED" in sync_qa
     assert "READY_FOR_INTERNAL_PLAYER_TEST" in (
         root / "ELEVENLABS_DRACULA_INTERNAL_PLAYER_TEST_READINESS_REPORT.md"
     ).read_text(encoding="utf-8")
+    player_plan = (root / "ELEVENLABS_DRACULA_INTERNAL_PLAYER_TEST_PLAN.md").read_text(encoding="utf-8")
+    player_report = (root / "ELEVENLABS_DRACULA_INTERNAL_PLAYER_QA_REPORT.md").read_text(encoding="utf-8")
+    assert "Internal test only" in player_plan
+    assert "No public audio URL" in player_plan
+    assert "Default player QA decision: `HOLD`" in player_report
+    assert "No public release" in player_report
     assert "No Listen Now CTA" in (root / "ELEVENLABS_DRACULA_FULL_CHAPTER_QA_SCORECARD.md").read_text(
         encoding="utf-8"
     )
@@ -504,3 +537,32 @@ def test_dracula_full_chapter_import_evidence_and_qa_forms_remain_internal_only(
     )
     assert check_ignore.returncode == 0
     assert tracked_audio.stdout.strip() == ""
+    tracked_any_internal_audio = subprocess.run(
+        [
+            "git",
+            "ls-files",
+            "internal/audiobook_lab/**/*.mp3",
+            "internal/audiobook_lab/**/*.wav",
+            "internal/audiobook_lab/**/*.m4a",
+            "internal/audiobook_lab/**/*.ogg",
+            "internal/audiobook_lab/**/*.aac",
+        ],
+        cwd=root,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    audio_extensions = ("*.mp3", "*.wav", "*.m4a", "*.ogg", "*.aac")
+    public_audio = [
+        path
+        for pattern in audio_extensions
+        for path in (root / "frontend" / "public").rglob(pattern)
+    ]
+    build_audio = [
+        path
+        for pattern in audio_extensions
+        for path in (root / "frontend" / "build").rglob(pattern)
+    ]
+    assert tracked_any_internal_audio.stdout.strip() == ""
+    assert public_audio == []
+    assert build_audio == []
