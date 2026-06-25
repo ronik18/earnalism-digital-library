@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import shutil
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -94,6 +95,7 @@ def make_manual_chunk_sample_dir(
     missing_chunk: str | None = None,
     unexpected_audio: bool = False,
     public_expected_path: bool = False,
+    include_full_chapter_manifest: bool = False,
 ) -> Path:
     sample_dir = Path.cwd() / "internal" / "audiobook_lab" / name
     manual_dir = sample_dir / "manual_elevenlabs_chunks"
@@ -162,6 +164,7 @@ def make_manual_chunk_sample_dir(
         "imported_audio_dir": str(imported_dir.relative_to(Path.cwd())),
         "public_audio_release": PUBLIC_AUDIO_RELEASE_BLOCKED,
         "public_audio_allowed": False,
+        "production_status": PRODUCTION_BLOCKED,
         "production_approved": False,
         "chunks": chunks,
     }
@@ -189,6 +192,27 @@ def make_manual_chunk_sample_dir(
         json.dumps(validation_report, indent=2) + "\n",
         encoding="utf-8",
     )
+    if include_full_chapter_manifest:
+        (sample_dir / "chunk_manifest.json").write_text(
+            json.dumps(
+                {
+                    "chunks": [
+                        {
+                            "chunk_id": chunk["chunk_id"],
+                            "sentence_ids": chunk["sentence_ids"],
+                            "text_hash": chunk["text_hash"],
+                            "settings_hash": chunk["settings_hash"],
+                            "estimated_duration_seconds": chunk["estimated_duration_seconds"],
+                            "audio_filename": chunk["audio_filename"],
+                        }
+                        for chunk in chunks
+                    ]
+                },
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
     return sample_dir
 
 
@@ -273,6 +297,37 @@ def test_manual_ready_validation_imports_three_chunks_successfully():
     assert [item["chunk_id"] for item in sync["items"]] == ["c001", "c002", "c003"]
 
 
+def test_manual_full_chapter_ready_validation_imports_internal_full_chapter():
+    sample_dir = make_manual_chunk_sample_dir(
+        "pytest-elevenlabs-manual-full-chapter",
+        include_full_chapter_manifest=True,
+    )
+
+    result = run_import(book_slug="dracula", chapter="1", sample_dir=sample_dir)
+    manifest = json.loads((sample_dir / "imported_audio_manifest.json").read_text(encoding="utf-8"))
+    combined = json.loads((sample_dir / "combined_sample_manifest.json").read_text(encoding="utf-8"))
+    sync = json.loads((sample_dir / "sync_manifest.json").read_text(encoding="utf-8"))
+
+    assert result["status"] == INTERNAL_FULL_CHAPTER_ONLY
+    assert manifest["import_workflow"] == "manual_full_chapter"
+    assert manifest["audio_status"] == INTERNAL_FULL_CHAPTER_ONLY
+    assert combined["audio_status"] == INTERNAL_FULL_CHAPTER_ONLY
+    assert combined["status"] == INTERNAL_FULL_CHAPTER_ONLY
+    assert manifest["production_status"] == PRODUCTION_BLOCKED
+    assert combined["production_status"] == PRODUCTION_BLOCKED
+    assert manifest["public_audio_allowed"] is False
+    assert combined["public_audio_allowed"] is False
+    assert manifest["listen_now_cta_allowed"] is False
+    assert combined["listen_now_cta_allowed"] is False
+    assert manifest["audio_object_metadata_allowed"] is False
+    assert combined["audio_object_metadata_allowed"] is False
+    assert all(len(chunk["audio_hash"]) == 64 for chunk in manifest["chunks"])
+    assert sync["audio_status"] == INTERNAL_FULL_CHAPTER_ONLY
+    assert sync["sync_status"] == HOLD_SYNC_QA_REQUIRED
+    assert sync["production_status"] == PRODUCTION_BLOCKED
+    assert sync["public_audio_allowed"] is False
+
+
 def test_manual_ready_validation_missing_chunk_fails():
     sample_dir = make_manual_chunk_sample_dir("pytest-elevenlabs-manual-missing", missing_chunk="c003")
 
@@ -344,3 +399,108 @@ def test_full_chapter_workflow_docs_keep_public_release_and_production_blocked()
     assert package_json["scripts"]["elevenlabs:full-chapter-import"].endswith(
         "--sample-dir internal/audiobook_lab/dracula/en/chapter-1-elevenlabs-full"
     )
+
+
+def test_dracula_full_chapter_import_evidence_and_qa_forms_remain_internal_only():
+    root = Path.cwd()
+    sample_dir = root / "internal" / "audiobook_lab" / "dracula" / "en" / "chapter-1"
+    imported_manifest_path = sample_dir / "imported_audio_manifest.json"
+    combined_manifest_path = sample_dir / "combined_sample_manifest.json"
+    full_audio_manifest_path = sample_dir / "full_chapter_audio_manifest.json"
+    sync_manifest_path = sample_dir / "sync_manifest.json"
+    owner_qa_path = sample_dir / "full_chapter_owner_listening_qa_form.md"
+    sync_qa_path = sample_dir / "full_chapter_highlight_sync_qa_form.md"
+
+    run_import(book_slug="dracula", chapter="1", sample_dir=sample_dir)
+
+    for path in (
+        imported_manifest_path,
+        combined_manifest_path,
+        full_audio_manifest_path,
+        sync_manifest_path,
+        owner_qa_path,
+        sync_qa_path,
+    ):
+        assert path.exists(), f"missing full chapter evidence file: {path}"
+
+    imported = json.loads(imported_manifest_path.read_text(encoding="utf-8"))
+    combined = json.loads(combined_manifest_path.read_text(encoding="utf-8"))
+    full_audio = json.loads(full_audio_manifest_path.read_text(encoding="utf-8"))
+    sync = json.loads(sync_manifest_path.read_text(encoding="utf-8"))
+    owner_qa = owner_qa_path.read_text(encoding="utf-8")
+    sync_qa = sync_qa_path.read_text(encoding="utf-8")
+
+    expected_audio_hash = "5cea977f3fcffca744f9fa71a8da249943462a9096580d6522b4d80c509bc2c0"
+    assert imported["audio_status"] == INTERNAL_FULL_CHAPTER_ONLY
+    assert imported["chunk_count"] == 27
+    assert len(imported["chunks"]) == 27
+    assert imported["audio_hash"] == expected_audio_hash
+    assert imported["listening_qa_status"] == "READY_FOR_INTERNAL_PLAYER_TEST"
+    assert imported["owner_listening_score"] == 9.4
+    assert imported["owner_listening_decision"] == "READY_FOR_INTERNAL_PLAYER_TEST"
+    assert imported["internal_player_test_status"] == "READY_TO_PREPARE_INTERNAL_PLAYER_TEST"
+    assert combined["status"] == INTERNAL_FULL_CHAPTER_ONLY
+    assert combined["chunk_count"] == 27
+    assert combined["combined_audio_hash"] == expected_audio_hash
+    assert combined["listening_qa_status"] == "READY_FOR_INTERNAL_PLAYER_TEST"
+    assert combined["owner_listening_score"] == 9.4
+    assert combined["owner_listening_decision"] == "READY_FOR_INTERNAL_PLAYER_TEST"
+    assert combined["internal_player_test_status"] == "READY_TO_PREPARE_INTERNAL_PLAYER_TEST"
+    assert full_audio["audio_status"] == INTERNAL_FULL_CHAPTER_ONLY
+    assert full_audio["chunk_count"] == 27
+    assert full_audio["audio_hash"] == expected_audio_hash
+    assert full_audio["sync_status"] == HOLD_SYNC_QA_REQUIRED
+    assert full_audio["listening_qa_status"] == "READY_FOR_INTERNAL_PLAYER_TEST"
+    assert full_audio["owner_listening_qa_status"] == "READY_FOR_INTERNAL_PLAYER_TEST"
+    assert full_audio["owner_listening_score"] == 9.4
+    assert full_audio["owner_listening_decision"] == "READY_FOR_INTERNAL_PLAYER_TEST"
+    assert full_audio["owner_reviewer"] == "Ronik Basak"
+    assert full_audio["owner_review_date"] == "24/06/2026"
+    assert full_audio["owner_listening_scores"]["pacing"] == 9.3
+    assert full_audio["internal_player_test_status"] == "READY_TO_PREPARE_INTERNAL_PLAYER_TEST"
+    assert sync["sync_status"] == HOLD_SYNC_QA_REQUIRED
+    assert sync["listening_qa_status"] == "READY_FOR_INTERNAL_PLAYER_TEST"
+    assert sync["internal_player_test_status"] == "READY_TO_PREPARE_INTERNAL_PLAYER_TEST"
+    assert sync.get("timing_qa_passed", False) is False
+    assert len(sync["items"]) == 220
+
+    for payload in (imported, combined, full_audio, sync):
+        assert payload["public_audio_allowed"] is False
+        assert payload["production_status"] == PRODUCTION_BLOCKED
+    assert imported["listen_now_cta_allowed"] is False
+    assert imported["audio_object_metadata_allowed"] is False
+    assert full_audio["listen_now_cta_allowed"] is False
+    assert full_audio["audio_object_metadata_allowed"] is False
+
+    assert "READY_FOR_INTERNAL_PLAYER_TEST" in owner_qa
+    assert "overall score: 9.4/10" in owner_qa
+    assert "Selected decision: `HOLD_SYNC_QA_REQUIRED`" in sync_qa
+    assert "PUBLIC_AUDIO_RELEASE_BLOCKED" in owner_qa
+    assert "PRODUCTION_BLOCKED" in sync_qa
+    assert "READY_FOR_INTERNAL_PLAYER_TEST" in (
+        root / "ELEVENLABS_DRACULA_INTERNAL_PLAYER_TEST_READINESS_REPORT.md"
+    ).read_text(encoding="utf-8")
+    assert "No Listen Now CTA" in (root / "ELEVENLABS_DRACULA_FULL_CHAPTER_QA_SCORECARD.md").read_text(
+        encoding="utf-8"
+    )
+    assert "No AudioObject metadata" in (root / "ELEVENLABS_DRACULA_FULL_CHAPTER_QA_SCORECARD.md").read_text(
+        encoding="utf-8"
+    )
+
+    audio_path = imported["chunks"][0]["audio_path"]
+    check_ignore = subprocess.run(
+        ["git", "check-ignore", audio_path],
+        cwd=root,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    tracked_audio = subprocess.run(
+        ["git", "ls-files", audio_path],
+        cwd=root,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert check_ignore.returncode == 0
+    assert tracked_audio.stdout.strip() == ""

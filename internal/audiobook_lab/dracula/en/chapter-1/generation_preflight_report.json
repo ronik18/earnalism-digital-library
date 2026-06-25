@@ -1,0 +1,46 @@
+{
+  "generated_by": "scripts/elevenlabs_full_chapter_generate.py",
+  "generated_at": "2026-06-25T08:51:32+00:00",
+  "mode": "generate",
+  "provider_evidence_status": "ELIGIBLE_INTERNAL_EVAL_ONLY",
+  "provider_evidence": {
+    "provider_id": "elevenlabs",
+    "decision_status": "ELIGIBLE_INTERNAL_EVAL_ONLY",
+    "internal_eval_status": "ELIGIBLE_INTERNAL_EVAL",
+    "internal_generation_status": "ELIGIBLE_INTERNAL_EVAL_ONLY",
+    "public_production_status": "PRODUCTION_BLOCKED",
+    "owner_evidence_path": "internal/legal/elevenlabs/creator-membership-internal-eval-evidence.md"
+  },
+  "production_status": "PRODUCTION_BLOCKED",
+  "production_blocked": true,
+  "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "public_audio_allowed": false,
+  "public_audio_blocked": true,
+  "voice_name": "Rachel",
+  "voice_id": "21m00Tcm4TlvDq8ikWAM",
+  "model_id": "eleven_multilingual_v2",
+  "output_format": "mp3_44100_192",
+  "chunk_selector": "one",
+  "chunk_id": "c001",
+  "chunk_count": 1,
+  "max_chunks": null,
+  "full_chapter_flag_enabled": false,
+  "api_key_present": true,
+  "api_key_value": "NEVER_PRINT",
+  "expected_request_fields": [
+    "language_code",
+    "model_id",
+    "text",
+    "voice_settings"
+  ],
+  "expected_voice_settings_fields": [
+    "similarity_boost",
+    "speed",
+    "stability",
+    "style",
+    "use_speaker_boost"
+  ],
+  "unsupported_fields_omitted": [],
+  "endpoint_path": "/v1/text-to-speech/{voice_id}/with-timestamps",
+  "output_format_location": "query_parameter"
+}

@@ -1,19 +1,28 @@
 {
   "generated_by": "scripts/elevenlabs_full_chapter_generate.py",
-  "generated_at": "2026-06-24T19:38:48+00:00",
-  "mode": "dry-run",
-  "chunk_selector": "all",
-  "chunk_count": 27,
-  "total_characters": 30651,
-  "estimated_generation_scope": "full Chapter 1 chunks only",
+  "generated_at": "2026-06-25T08:51:34+00:00",
+  "mode": "generate",
+  "chunk_selector": "one",
+  "chunk_count": 1,
+  "total_characters": 683,
+  "estimated_generation_scope": "one diagnostic chunk c001",
   "generated_chunk_count": 0,
   "skipped_cached_chunk_count": 0,
-  "failed_chunk_count": 0,
+  "failed_chunk_count": 1,
   "no_full_book_generation": true,
   "full_book_generation_allowed": false,
-  "full_chapter_generation_allowed": true,
+  "full_chapter_generation_allowed": false,
   "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
   "production_status": "PRODUCTION_BLOCKED",
   "audio_output_root": "internal/audiobook_lab/dracula/en/chapter-1/generated_audio",
-  "api_key_persisted": false
+  "api_key_persisted": false,
+  "preflight_report_path": "internal/audiobook_lab/dracula/en/chapter-1/generation_preflight_report.json",
+  "api_key_present": true,
+  "expected_request_fields": [
+    "language_code",
+    "model_id",
+    "text",
+    "voice_settings"
+  ],
+  "unsupported_fields_omitted": []
 }

@@ -19,7 +19,8 @@
     "passes_language_code_when_supported": true,
     "passes_previous_text_and_next_text_when_available": true,
     "records_previous_request_id_when_returned": true,
-    "speed_and_style_are_kept_as_owner_ui_evidence": true
+    "speed_and_style_are_kept_as_owner_ui_evidence": true,
+    "unsupported_request_fields": []
   },
   "beta_services_used": false,
   "voice_cloning_used": false,

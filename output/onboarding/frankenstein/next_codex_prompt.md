@@ -18,6 +18,17 @@ Current licensed provider production status: `PRODUCTION_BLOCKED`.
 Current licensed provider blockers:
 - No provider blocker recorded.
 
+Current Dracula Chapter 1 internal audiobook state:
+- Full Chapter 1 internal audio import: `INTERNAL_FULL_CHAPTER_ONLY`.
+- Imported chunks: `27`.
+- Owner listening QA status: `READY_FOR_INTERNAL_PLAYER_TEST`.
+- Owner listening score: `9.4/10`.
+- Internal player test status: `READY_TO_PREPARE_INTERNAL_PLAYER_TEST`.
+- Highlighted-text sync status: `HOLD_SYNC_QA_REQUIRED`.
+- Public audio release: `PUBLIC_AUDIO_RELEASE_BLOCKED`.
+- Production status: `PRODUCTION_BLOCKED`.
+- Next action: prepare internal-only highlighted-text player test using existing internal manifests and audio hashes; do not expose audio publicly.
+
 Required next checks:
 - Attach complete source-rights evidence.
 - Add owner-approved cover provenance.

@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import shutil
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -23,12 +24,20 @@ AUDIO_OBJECT_METADATA = "AudioObject " + "metadata"
 
 @pytest.fixture(autouse=True)
 def cleanup_pytest_internal_audio_lab():
-    test_root = ROOT / "internal" / "audiobook_lab" / "pytest-manual"
-    if test_root.exists():
-        shutil.rmtree(test_root)
+    internal_root = ROOT / "internal" / "audiobook_lab"
+    for test_root in internal_root.glob("pytest-manual*"):
+        if test_root.is_dir():
+            shutil.rmtree(test_root)
     yield
-    if test_root.exists():
-        shutil.rmtree(test_root)
+    for test_root in internal_root.glob("pytest-manual*"):
+        if test_root.is_dir():
+            shutil.rmtree(test_root)
+    prepare_manual_generation(
+        book_slug="dracula",
+        language="en",
+        chapter=1,
+        all_chunks=True,
+    )
 
 
 def test_first3_export_creates_clean_chunk_text_files():
@@ -63,12 +72,29 @@ def test_all_export_creates_expected_chunk_text_files():
     )
     manifest = json.loads((DRACULA_CHAPTER_DIR / "chunk_manifest.json").read_text(encoding="utf-8"))
 
+    manual_dir = DRACULA_CHAPTER_DIR / "manual_elevenlabs_chunks"
+    expected = json.loads((manual_dir / "expected_audio_filenames.json").read_text(encoding="utf-8"))
+    manifest_ids = [chunk["chunk_id"] for chunk in manifest["chunks"]]
+    expected_ids = [chunk["chunk_id"] for chunk in expected["chunks"]]
+    sentence_ids = [sentence_id for chunk in expected["chunks"] for sentence_id in chunk["sentence_ids"]]
+
     assert result["exported_chunk_count"] == len(manifest["chunks"]) == 27
+    assert expected_ids == manifest_ids
+    assert sentence_ids
+    assert len(sentence_ids) == len(set(sentence_ids)) == 220
+    assert expected["imported_audio_dir"] == "internal/audiobook_lab/dracula/en/chapter-1/imported_audio"
+    assert expected["public_audio_allowed"] is False
+    assert expected["production_approved"] is False
+    assert expected["production_status"] == "PRODUCTION_BLOCKED"
     for chunk in manifest["chunks"]:
         chunk_id = chunk["chunk_id"]
-        path = DRACULA_CHAPTER_DIR / "manual_elevenlabs_chunks" / f"{chunk_id}.txt"
+        path = manual_dir / f"{chunk_id}.txt"
+        expected_chunk = next(item for item in expected["chunks"] if item["chunk_id"] == chunk_id)
         assert path.exists()
         assert path.read_text(encoding="utf-8").strip() == chunk["narration_text"].strip()
+        assert expected_chunk["audio_filename"] == f"dracula-chapter-1-elevenlabs-rachel-{chunk_id}.mp3"
+        assert expected_chunk["expected_audio_path"].startswith("internal/audiobook_lab/")
+        assert 45 <= float(expected_chunk["estimated_duration_seconds"]) <= 120
 
 
 def test_checklist_contains_elevenlabs_settings_and_expected_filenames():
@@ -94,6 +120,10 @@ def test_checklist_contains_elevenlabs_settings_and_expected_filenames():
     assert "No beta services" in checklist
     assert "No voice cloning" in checklist
     assert "No ElevenReader" in checklist
+    assert "ElevenLabs UI/Studio manually" in checklist
+    assert "Generate one chunk at a time" in checklist
+    assert "exact expected filename" in checklist
+    assert "Regenerate only failed chunks" in checklist
     assert "frontend/public" in checklist
     assert "frontend/build" in checklist
     assert LISTEN_NOW_CTA not in checklist
@@ -127,14 +157,12 @@ def test_clipboard_helper_does_not_require_pbcopy_for_test_pass():
 
 
 def test_download_validator_reports_missing_chunks():
-    prepare_manual_generation(
-        book_slug="dracula",
-        language="en",
-        chapter=1,
-        chunks="c001-c003",
+    make_pytest_expected_manifest(
+        name="pytest-manual-missing-first3",
+        chunk_ids=("c001", "c002", "c003"),
     )
 
-    report = validate_manual_downloads(book_slug="dracula", language="en", chapter=1)
+    report = validate_manual_downloads(book_slug="pytest-manual-missing-first3", language="en", chapter=1)
 
     assert report["status"] == "HOLD_MANUAL_DOWNLOADS_REQUIRED"
     assert report["expected_chunk_count"] == 3
@@ -144,13 +172,33 @@ def test_download_validator_reports_missing_chunks():
     assert report["production_approved"] is False
 
 
-def make_pytest_expected_manifest() -> Path:
-    manual_dir = ROOT / "internal" / "audiobook_lab" / "pytest-manual" / "en" / "chapter-1" / "manual_elevenlabs_chunks"
+def test_download_validator_reports_full_chapter_missing_chunks():
+    make_pytest_expected_manifest(
+        name="pytest-manual-missing-full",
+        chunk_ids=tuple(f"c{index:03d}" for index in range(1, 28)),
+    )
+
+    report = validate_manual_downloads(book_slug="pytest-manual-missing-full", language="en", chapter=1)
+
+    assert report["status"] == "HOLD_MANUAL_DOWNLOADS_REQUIRED"
+    assert report["expected_chunk_count"] == 27
+    assert len(report["missing_audio"]) == 27
+    assert report["present_audio"] == []
+    assert report["unexpected_audio"] == []
+    assert "missing expected manual downloads" in report["blockers"]
+
+
+def make_pytest_expected_manifest(
+    *,
+    name: str = "pytest-manual",
+    chunk_ids: tuple[str, ...] = ("c001",),
+) -> Path:
+    manual_dir = ROOT / "internal" / "audiobook_lab" / name / "en" / "chapter-1" / "manual_elevenlabs_chunks"
     imported_audio_dir = manual_dir.parent / "imported_audio"
     manual_dir.mkdir(parents=True)
     imported_audio_dir.mkdir(parents=True)
     payload = {
-        "book_slug": "pytest-manual",
+        "book_slug": name,
         "language": "en",
         "chapter": 1,
         "provider_api_called": False,
@@ -159,10 +207,11 @@ def make_pytest_expected_manifest() -> Path:
         "production_approved": False,
         "chunks": [
             {
-                "chunk_id": "c001",
-                "audio_filename": "pytest-c001.mp3",
-                "expected_audio_path": "internal/audiobook_lab/pytest-manual/en/chapter-1/imported_audio/pytest-c001.mp3",
+                "chunk_id": chunk_id,
+                "audio_filename": f"pytest-{chunk_id}.mp3",
+                "expected_audio_path": f"internal/audiobook_lab/{name}/en/chapter-1/imported_audio/pytest-{chunk_id}.mp3",
             }
+            for chunk_id in chunk_ids
         ],
     }
     path = manual_dir / "expected_audio_filenames.json"
@@ -183,6 +232,21 @@ def test_download_validator_computes_hashes_for_fixture_audio():
     assert len(report["present_audio"]) == 1
     assert report["present_audio"][0]["audio_hash"] == hashlib.sha256(audio_bytes).hexdigest()
     assert report["present_audio"][0]["path"].startswith("internal/audiobook_lab/")
+
+
+def test_download_validator_rejects_unexpected_internal_audio():
+    manifest_path = make_pytest_expected_manifest()
+    audio_path = manifest_path.parent.parent / "imported_audio" / "pytest-c001.mp3"
+    unexpected_path = manifest_path.parent.parent / "imported_audio" / "pytest-c999.mp3"
+    audio_path.write_bytes(b"fake owner downloaded internal audio")
+    unexpected_path.write_bytes(b"unexpected internal audio")
+
+    report = validate_manual_downloads(book_slug="pytest-manual", language="en", chapter=1)
+
+    assert report["status"] == "HOLD_MANUAL_DOWNLOADS_REQUIRED"
+    assert len(report["present_audio"]) == 1
+    assert len(report["unexpected_audio"]) == 1
+    assert "unexpected audio files in imported_audio" in report["blockers"]
 
 
 def test_download_validator_rejects_frontend_public_and_build_audio_paths():
@@ -219,3 +283,14 @@ def test_no_public_audio_or_public_ui_metadata_is_enabled():
     assert AUDIO_OBJECT_METADATA not in readme
     assert LISTEN_NOW_CTA not in checklist
     assert AUDIO_OBJECT_METADATA not in checklist
+
+
+def test_internal_audiobook_mp3_files_are_gitignored():
+    result = subprocess.run(
+        ["git", "check-ignore", "internal/audiobook_lab/dracula/en/chapter-1/imported_audio/example.mp3"],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0

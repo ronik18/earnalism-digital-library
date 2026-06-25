@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import shutil
 import subprocess
 import sys
@@ -28,6 +29,43 @@ def chunk_text_path(book_slug: str, language: str, chapter: int | str, chunk: st
     path = chapter_dir(book_slug, language, chapter) / "manual_elevenlabs_chunks" / f"{chunk_id}.txt"
     ensure_internal_path(path.parent, "manual chunk directory")
     return path
+
+
+def manual_chunks_dir(book_slug: str, language: str, chapter: int | str) -> Path:
+    path = chapter_dir(book_slug, language, chapter) / "manual_elevenlabs_chunks"
+    ensure_internal_path(path, "manual chunk directory")
+    return path
+
+
+def list_manual_chunks(*, book_slug: str, language: str, chapter: int | str) -> list[dict[str, str | int]]:
+    manual_dir = manual_chunks_dir(book_slug, language, chapter)
+    expected_path = manual_dir / "expected_audio_filenames.json"
+    if not expected_path.exists():
+        raise FileNotFoundError(
+            f"Expected audio manifest not found: {relative_path(expected_path)}. "
+            "Run the manual preparation command first."
+        )
+    expected = json.loads(expected_path.read_text(encoding="utf-8"))
+    chunks = expected.get("chunks", [])
+    if not isinstance(chunks, list) or not chunks:
+        raise ValueError(f"{relative_path(expected_path)} does not contain a non-empty chunks list.")
+
+    rows: list[dict[str, str | int]] = []
+    for index, chunk in enumerate(chunks, start=1):
+        chunk_id = str(chunk.get("chunk_id") or "")
+        text_path = ROOT / str(chunk.get("chunk_text_path") or "")
+        ensure_internal_path(text_path.parent, "manual chunk text directory")
+        if not text_path.exists():
+            raise FileNotFoundError(f"Prepared chunk file not found: {relative_path(text_path)}")
+        rows.append(
+            {
+                "order": index,
+                "chunk_id": chunk_id,
+                "text_path": relative_path(text_path),
+                "expected_audio_filename": str(chunk.get("audio_filename") or ""),
+            }
+        )
+    return rows
 
 
 def copy_chunk_to_clipboard(
@@ -57,10 +95,22 @@ def main() -> int:
     parser.add_argument("--book-slug", required=True)
     parser.add_argument("--language", required=True)
     parser.add_argument("--chapter", required=True)
-    parser.add_argument("--chunk", required=True)
+    parser.add_argument("--chunk")
+    parser.add_argument("--list", action="store_true", help="List prepared manual chunks instead of copying one.")
     args = parser.parse_args()
 
     try:
+        if args.list:
+            rows = list_manual_chunks(book_slug=args.book_slug, language=args.language, chapter=args.chapter)
+            print("order\tchunk_id\ttext_path\texpected_audio_filename")
+            for row in rows:
+                print(
+                    f"{row['order']}\t{row['chunk_id']}\t{row['text_path']}\t"
+                    f"{row['expected_audio_filename']}"
+                )
+            return 0
+        if not args.chunk:
+            raise ValueError("--chunk is required unless --list is passed.")
         result = copy_chunk_to_clipboard(
             book_slug=args.book_slug,
             language=args.language,
