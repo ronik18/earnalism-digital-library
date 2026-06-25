@@ -117,6 +117,13 @@ describe("UX conversion static signals", () => {
   const accessibilityClaimsPolicy = read("ACCESSIBILITY_CLAIMS_POLICY.md");
   const audiobookComplianceScorecard = read("AUDIOBOOK_COMPLIANCE_SCORECARD.md");
   const paymentRevenueConfidenceReport = read("PAYMENT_REVENUE_10X_CONFIDENCE_REPORT.md");
+  const launchNowReadingOnlyDecision = read("LAUNCH_NOW_READING_ONLY_DECISION.md");
+  const revenueLaunchChecklist = read("REVENUE_LAUNCH_CHECKLIST.md");
+  const finalLivePaymentSwitchRunbook = read("FINAL_LIVE_PAYMENT_SWITCH_RUNBOOK.md");
+  const livePaymentGoNoGoChecklist = read("LIVE_PAYMENT_GO_NO_GO_CHECKLIST.md");
+  const liveRazorpayCheckoutDrillReport = read("LIVE_RAZORPAY_CHECKOUT_DRILL_REPORT.md");
+  const livePaymentFinalEvidenceReport = read("LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md");
+  const audiobookParallelTrackStatus = read("AUDIOBOOK_PARALLEL_TRACK_STATUS.md");
   const premiumLandingVisualReview = read("PREMIUM_LANDING_PAGE_VISUAL_REVIEW_REPORT.md");
   const luxuryVisualScorecard = read("LUXURY_VISUAL_AMBIENCE_SCORECARD.md");
   const pixelUtilizationScorecard = read("LANDING_PIXEL_UTILIZATION_GROWTH_SCORECARD.md");
@@ -137,6 +144,13 @@ describe("UX conversion static signals", () => {
     footer,
     controlledLaunch,
     staticSnapshotGenerator,
+  ].join("\n");
+  const livePaymentEvidenceDocs = [
+    finalLivePaymentSwitchRunbook,
+    livePaymentGoNoGoChecklist,
+    liveRazorpayCheckoutDrillReport,
+    livePaymentFinalEvidenceReport,
+    revenueLaunchChecklist,
   ].join("\n");
 
   test("homepage exposes Dracula-first reading and reading-time CTAs", () => {
@@ -268,6 +282,177 @@ describe("UX conversion static signals", () => {
     expect(renderedPricingSources).not.toMatch(/own forever|ownership forever|permanent ownership|autorenewing plan|recurring subscription/i);
     expect(renderedPricingSources).not.toMatch(/buy audiobook|audiobook pass|Listen Now/i);
     expect(alwaysVisibleLaunchCopy).not.toMatch(/data-testid=["'][^"']*listen|listen-now|href=["'][^"']*audio/i);
+  });
+
+  test("reading-only revenue launch decision keeps Dracula live and audiobook blocked", () => {
+    expect(launchNowReadingOnlyDecision).toContain("GO_READING_ONLY_LAUNCH_PREP");
+    expect(launchNowReadingOnlyDecision).toContain("Dracula core reading product only");
+    expect(launchNowReadingOnlyDecision).toContain("Chapter 1 free preview");
+    expect(launchNowReadingOnlyDecision).toContain("reading-time wallet/pass model");
+    expect(launchNowReadingOnlyDecision).toContain("GO_DRACULA_CORE_READING_ONLY");
+    expect(launchNowReadingOnlyDecision).toContain("PAYMENT_REVENUE_10X_CONFIDENCE_REPORT.md");
+    expect(launchNowReadingOnlyDecision).toContain("HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE");
+    expect(launchNowReadingOnlyDecision).toContain("LIVE_RAZORPAY_CHECKOUT_DRILL_REPORT.md");
+    expect(launchNowReadingOnlyDecision).toContain("LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md");
+    expect(launchNowReadingOnlyDecision).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
+    expect(launchNowReadingOnlyDecision).toContain("PRODUCTION_BLOCKED");
+    expect(launchNowReadingOnlyDecision).not.toMatch(/\bGO_PUBLIC_AUDIOBOOK_RELEASE\b/);
+    expect(launchNowReadingOnlyDecision).not.toMatch(/\bGO_BROAD_CATALOG_LAUNCH\b/);
+
+    expect(revenueLaunchChecklist).toContain("Razorpay Test-Mode Checks");
+    expect(revenueLaunchChecklist).toContain("Live Payment Switch Checklist");
+    expect(revenueLaunchChecklist).toContain("Refund And Support Checklist");
+    expect(revenueLaunchChecklist).toContain("Monitoring Checklist");
+    expect(revenueLaunchChecklist).toContain("Founder Launch Checklist");
+    expect(revenueLaunchChecklist).toContain("Rollback Checklist");
+    expect(revenueLaunchChecklist).toContain("No live payment switch without owner approval");
+    expect(revenueLaunchChecklist).toContain("Live low-value owner checkout drill: `COMPLETED_OWNER_REPORTED`");
+    expect(revenueLaunchChecklist).toContain("Final live payment GO: `HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE`");
+    expect(revenueLaunchChecklist).toContain("Final evidence file: `LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md`");
+    expect(revenueLaunchChecklist).toContain("Wallet credit evidence is not yet owner-verified in safe redacted form.");
+
+    expect(audiobookParallelTrackStatus).toContain("Audio status: `INTERNAL_FULL_CHAPTER_ONLY`");
+    expect(audiobookParallelTrackStatus).toContain("Owner listening QA score: `9.4/10`");
+    expect(audiobookParallelTrackStatus).toContain("Sync status: `HOLD_SYNC_QA_REQUIRED`");
+    expect(audiobookParallelTrackStatus).toContain("Public audio release: `PUBLIC_AUDIO_RELEASE_BLOCKED`");
+    expect(audiobookParallelTrackStatus).toContain("Production audio status: `PRODUCTION_BLOCKED`");
+  });
+
+  test("live Razorpay drill evidence is redacted and keeps final GO blocked until payment evidence is complete", () => {
+    expect(finalLivePaymentSwitchRunbook).toContain("READING_ONLY_LIVE_PAYMENT_SWITCH_CONDITIONAL");
+    expect(finalLivePaymentSwitchRunbook).toContain("CONDITIONAL_GO_AFTER_PAYMENT_EVIDENCE");
+    expect(finalLivePaymentSwitchRunbook).toContain("Wallet credit confirmed.");
+    expect(finalLivePaymentSwitchRunbook).toContain("Webhook delivery confirmed.");
+    expect(finalLivePaymentSwitchRunbook).toContain("Duplicate replay prevention confirmed.");
+    expect(finalLivePaymentSwitchRunbook).toContain("Keep public audio blocked.");
+
+    expect(livePaymentGoNoGoChecklist).toContain("HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE");
+    expect(livePaymentGoNoGoChecklist).toContain("[x] Owner completed one low-value live checkout drill with Razorpay.");
+    expect(livePaymentGoNoGoChecklist).toContain("| Wallet credited exactly once | NOT_VERIFIED | Must be YES |");
+    expect(livePaymentGoNoGoChecklist).toContain("| Webhook received | NOT_VERIFIED | Must be YES |");
+    expect(livePaymentGoNoGoChecklist).toContain("| Duplicate credit prevention | NOT_VERIFIED | Must be VERIFIED |");
+    expect(livePaymentGoNoGoChecklist).toContain("Current go/no-go: `HOLD`");
+
+    expect(liveRazorpayCheckoutDrillReport).toContain("LIVE_CHECKOUT_DRILL_RECORDED_CONDITIONAL");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Provider | Razorpay |");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Mode | LIVE |");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Payment success | YES |");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Wallet credited | NOT_VERIFIED |");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Webhook received | NOT VERIFIED |");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Duplicate credit prevention | NOT VERIFIED |");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Secrets committed | NO |");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Personal/payment data committed | NO |");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Final recommendation | CONDITIONAL_GO |");
+
+    expect(livePaymentFinalEvidenceReport).toContain("HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE");
+    expect(livePaymentFinalEvidenceReport).toContain("| Payment success | YES |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Wallet credit observed | NO |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Wallet credit evidence | REDACTED_REFERENCE_ONLY not yet provided |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Webhook received | NO |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Webhook evidence | REDACTED_REFERENCE_ONLY not yet provided |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Duplicate replay prevention | NOT_VERIFIED |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Refund/support readiness | HOLD |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Rollback readiness | HOLD |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Final payment decision | HOLD |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Secrets committed | NO |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Personal/payment data committed | NO |");
+    expect(livePaymentFinalEvidenceReport).toContain("This structural coverage supports readiness, but it is not a substitute for owner-redacted live evidence.");
+
+    expect(livePaymentEvidenceDocs).toContain("Dracula reading-only");
+    expect(livePaymentEvidenceDocs).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
+    expect(livePaymentEvidenceDocs).toContain("PRODUCTION_BLOCKED");
+    expect(livePaymentEvidenceDocs).not.toMatch(/\bGO_FINAL_LIVE_PAYMENT\b/i);
+    expect(livePaymentEvidenceDocs).not.toMatch(/\bGO_PUBLIC_AUDIOBOOK_RELEASE\b/i);
+    for (const line of livePaymentEvidenceDocs.split(/\r?\n/).filter((item) => /Listen Now|AudioObject/i.test(item))) {
+      expect(line).toMatch(/not allowed|No |does not approve/i);
+      expect(line).not.toMatch(/\b(is|are|CTA is|metadata is)\s+(allowed|available|live|shown|enabled)\b/i);
+    }
+    expect(livePaymentEvidenceDocs).toMatch(/\bListen Now CTA: not allowed\b/i);
+    expect(livePaymentEvidenceDocs).toMatch(/\bAudioObject metadata: not allowed\b/i);
+  });
+
+  test("live payment evidence docs do not contain likely secrets or personal payment data", () => {
+    const forbiddenPatterns = [
+      /\brzp_(?:live|test)_[A-Za-z0-9]{8,}\b/i,
+      /\b(?:pay|order|cust)_[A-Za-z0-9]{8,}\b/i,
+      /\bAuthorization\s*:\s*(?:Bearer|Basic)\s+[A-Za-z0-9._~+/=-]{12,}/i,
+      /\bBearer\s+[A-Za-z0-9._~+/=-]{12,}/i,
+      /\bxi-api-key\s*[:=]\s*[A-Za-z0-9._~+/=-]{12,}/i,
+      /\b(?:RAZORPAY_KEY_SECRET|RAZORPAY_WEBHOOK_SECRET|WEBHOOK_SECRET|API_KEY|SECRET|TOKEN)\s*[:=]\s*["']?[A-Za-z0-9_./+=-]{8,}/i,
+      /\b(?:\d[ -]*?){12,19}\b/,
+      /\b(?:UPI ID|VPA|IFSC|bank account|account number|invoice number)\b/i,
+      /\b(?:\+?\d{1,3}[-. ]?)?(?:\(?\d{3}\)?[-. ]?){2}\d{4}\b/,
+      /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i,
+    ];
+    for (const pattern of forbiddenPatterns) {
+      expect(livePaymentEvidenceDocs).not.toMatch(pattern);
+    }
+    expect(livePaymentEvidenceDocs).toContain("REDACTED_LOW_VALUE_OWNER_DRILL_PACK");
+    expect(livePaymentEvidenceDocs).toContain("REDACTED_LOW_VALUE_AMOUNT");
+    expect(livePaymentEvidenceDocs).toContain("REDACTED_REFERENCE_ONLY not yet provided");
+    expect(livePaymentEvidenceDocs).toContain("No payment ID, customer ID, card data, UPI data, bank data, invoice, screenshot, or secret is committed.");
+  });
+
+  test("reading-only launch public surfaces reject audio, catalog, accessibility, and ownership overclaims", () => {
+    const publicLaunchSources = [
+      home,
+      library,
+      bookDetail,
+      pricing,
+      login,
+      signup,
+      account,
+      reader,
+      header,
+      footer,
+      firstVisitSiteTour,
+      publicIndex,
+      staticSnapshotGenerator,
+      useSeo,
+      controlledLaunch,
+      publicationSafety,
+    ].join("\n");
+
+    expect(publicLaunchSources).toContain("Dracula");
+    expect(publicLaunchSources).toContain("Chapter 1");
+    expect(publicLaunchSources).toMatch(/reading time/i);
+    expect(publicLaunchSources).toContain("audiobook_enabled: false");
+    expect(publicLaunchSources).toContain("generate_audiobook: false");
+    expect(publicLaunchSources).not.toMatch(/\bListen Now\b/i);
+    expect(publicLaunchSources).not.toMatch(/\bAudioObject\b/i);
+    expect(publicLaunchSources).not.toMatch(/\bDracula audio is (live|available|ready|published)\b/i);
+    expect(publicLaunchSources).not.toMatch(/\b(full )?audiobook\s+(is|are)?\s*(live|available|ready|published)\b/i);
+    expect(publicLaunchSources).not.toMatch(/\b(buy|purchase|get)\s+(the\s+)?(full\s+)?audiobook\b/i);
+    expect(publicLaunchSources).not.toMatch(/\baudiobook pass\b/i);
+    expect(publicLaunchSources).not.toMatch(/\b(Kshudhita|Hungry Stones)\b[\s\S]{0,180}\b(Start Reading|Read Preview|Listen Now|public reader|public audio|available now)\b/i);
+    expect(publicLaunchSources).not.toMatch(/\b(all|every|100\+|105)\s+(books|classics|titles)\s+(are\s+)?(live|available|readable|ready)\b/i);
+    expect(publicLaunchSources).not.toMatch(/\b(WCAG compliant|blind[- ]user tested|fully accessible audiobook|screen-reader certified)\b/i);
+    expect(publicLaunchSources).not.toMatch(/\b(buy|own|ownership|forever)\b[\s\S]{0,100}\b(book|classic|edition|Dracula)\b/i);
+    expect(renderedPricingSources).toContain("No subscription or autorenewal");
+    expect(renderedPricingSources).toContain("Reading time is credited to your wallet after confirmation");
+    expect(renderedPricingSources).not.toMatch(/\b(own forever|ownership forever|permanent access|recurring subscription|autorenewing plan|buy audiobook|audiobook pass)\b/i);
+  });
+
+  test("reading-only launch keeps public static roots free of audio binaries", () => {
+    const audioExtensions = new Set([".mp3", ".wav", ".m4a", ".ogg", ".aac"]);
+    const publicRoots = ["frontend/public", "frontend/build"].map((relativePath) => path.join(ROOT, relativePath));
+    const audioFiles = [];
+    for (const publicRoot of publicRoots) {
+      if (!fs.existsSync(publicRoot)) continue;
+      const stack = [publicRoot];
+      while (stack.length) {
+        const current = stack.pop();
+        for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
+          const absolute = path.join(current, entry.name);
+          if (entry.isDirectory()) {
+            stack.push(absolute);
+          } else if (audioExtensions.has(path.extname(entry.name).toLowerCase())) {
+            audioFiles.push(path.relative(ROOT, absolute));
+          }
+        }
+      }
+    }
+    expect(audioFiles).toEqual([]);
   });
 
   test("product truth ledger preserves controlled-launch boundaries", () => {
