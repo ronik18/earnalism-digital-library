@@ -285,15 +285,15 @@ describe("UX conversion static signals", () => {
   });
 
   test("reading-only revenue launch decision keeps Dracula live and audiobook blocked", () => {
-    expect(launchNowReadingOnlyDecision).toContain("GO_READING_ONLY_LAUNCH_PREP");
+    expect(launchNowReadingOnlyDecision).toContain("GO_READING_ONLY_PRODUCTION_DEPLOY_READY");
     expect(launchNowReadingOnlyDecision).toContain("Dracula core reading product only");
     expect(launchNowReadingOnlyDecision).toContain("Chapter 1 free preview");
     expect(launchNowReadingOnlyDecision).toContain("reading-time wallet/pass model");
     expect(launchNowReadingOnlyDecision).toContain("GO_DRACULA_CORE_READING_ONLY");
     expect(launchNowReadingOnlyDecision).toContain("PAYMENT_REVENUE_10X_CONFIDENCE_REPORT.md");
-    expect(launchNowReadingOnlyDecision).toContain("HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE");
     expect(launchNowReadingOnlyDecision).toContain("LIVE_RAZORPAY_CHECKOUT_DRILL_REPORT.md");
     expect(launchNowReadingOnlyDecision).toContain("LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md");
+    expect(launchNowReadingOnlyDecision).toContain("wallet credit, webhook receipt, duplicate replay prevention, refund/support readiness, and rollback readiness are owner-verified");
     expect(launchNowReadingOnlyDecision).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
     expect(launchNowReadingOnlyDecision).toContain("PRODUCTION_BLOCKED");
     expect(launchNowReadingOnlyDecision).not.toMatch(/\bGO_PUBLIC_AUDIOBOOK_RELEASE\b/);
@@ -305,11 +305,13 @@ describe("UX conversion static signals", () => {
     expect(revenueLaunchChecklist).toContain("Monitoring Checklist");
     expect(revenueLaunchChecklist).toContain("Founder Launch Checklist");
     expect(revenueLaunchChecklist).toContain("Rollback Checklist");
-    expect(revenueLaunchChecklist).toContain("No live payment switch without owner approval");
+    expect(revenueLaunchChecklist).toContain("No automatic deploy from this checklist");
     expect(revenueLaunchChecklist).toContain("Live low-value owner checkout drill: `COMPLETED_OWNER_REPORTED`");
-    expect(revenueLaunchChecklist).toContain("Final live payment GO: `HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE`");
+    expect(revenueLaunchChecklist).toContain("Final live payment GO: `GO_READING_ONLY_PRODUCTION_DEPLOY_READY`");
     expect(revenueLaunchChecklist).toContain("Final evidence file: `LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md`");
-    expect(revenueLaunchChecklist).toContain("Wallet credit evidence is not yet owner-verified in safe redacted form.");
+    expect(revenueLaunchChecklist).toContain("No payment evidence blockers remain for Dracula reading-only production deploy readiness.");
+    expect(revenueLaunchChecklist).toContain("Confirm production environment has live Razorpay variables configured outside the repository.");
+    expect(revenueLaunchChecklist).toContain("Confirm no ElevenLabs generation variables are enabled in production.");
 
     expect(audiobookParallelTrackStatus).toContain("Audio status: `INTERNAL_FULL_CHAPTER_ONLY`");
     expect(audiobookParallelTrackStatus).toContain("Owner listening QA score: `9.4/10`");
@@ -318,50 +320,51 @@ describe("UX conversion static signals", () => {
     expect(audiobookParallelTrackStatus).toContain("Production audio status: `PRODUCTION_BLOCKED`");
   });
 
-  test("live Razorpay drill evidence is redacted and keeps final GO blocked until payment evidence is complete", () => {
-    expect(finalLivePaymentSwitchRunbook).toContain("READING_ONLY_LIVE_PAYMENT_SWITCH_CONDITIONAL");
-    expect(finalLivePaymentSwitchRunbook).toContain("CONDITIONAL_GO_AFTER_PAYMENT_EVIDENCE");
+  test("live Razorpay final evidence is redacted and marks reading-only deploy ready", () => {
+    expect(finalLivePaymentSwitchRunbook).toContain("READING_ONLY_LIVE_PAYMENT_SWITCH_READY");
+    expect(finalLivePaymentSwitchRunbook).toContain("GO_READING_ONLY_PRODUCTION_DEPLOY_READY");
     expect(finalLivePaymentSwitchRunbook).toContain("Wallet credit confirmed.");
     expect(finalLivePaymentSwitchRunbook).toContain("Webhook delivery confirmed.");
     expect(finalLivePaymentSwitchRunbook).toContain("Duplicate replay prevention confirmed.");
     expect(finalLivePaymentSwitchRunbook).toContain("Keep public audio blocked.");
 
-    expect(livePaymentGoNoGoChecklist).toContain("HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE");
+    expect(livePaymentGoNoGoChecklist).toContain("GO_READING_ONLY_PRODUCTION_DEPLOY_READY");
     expect(livePaymentGoNoGoChecklist).toContain("[x] Owner completed one low-value live checkout drill with Razorpay.");
-    expect(livePaymentGoNoGoChecklist).toContain("| Wallet credited exactly once | NOT_VERIFIED | Must be YES |");
-    expect(livePaymentGoNoGoChecklist).toContain("| Webhook received | NOT_VERIFIED | Must be YES |");
-    expect(livePaymentGoNoGoChecklist).toContain("| Duplicate credit prevention | NOT_VERIFIED | Must be VERIFIED |");
-    expect(livePaymentGoNoGoChecklist).toContain("Current go/no-go: `HOLD`");
+    expect(livePaymentGoNoGoChecklist).toContain("| Wallet credited exactly once | YES_OWNER_VERIFIED | Must be YES |");
+    expect(livePaymentGoNoGoChecklist).toContain("| Webhook received | YES_OWNER_VERIFIED | Must be YES |");
+    expect(livePaymentGoNoGoChecklist).toContain("| Duplicate credit prevention | VERIFIED | Must be VERIFIED |");
+    expect(livePaymentGoNoGoChecklist).toContain("Current go/no-go: `GO_READING_ONLY_PRODUCTION_DEPLOY_READY`");
+    expect(livePaymentGoNoGoChecklist).toContain("Owner payment evidence sign-off | YES");
 
-    expect(liveRazorpayCheckoutDrillReport).toContain("LIVE_CHECKOUT_DRILL_RECORDED_CONDITIONAL");
+    expect(liveRazorpayCheckoutDrillReport).toContain("LIVE_CHECKOUT_DRILL_RECORDED_FINAL_PAYMENT_EVIDENCE_COMPLETE");
     expect(liveRazorpayCheckoutDrillReport).toContain("| Provider | Razorpay |");
     expect(liveRazorpayCheckoutDrillReport).toContain("| Mode | LIVE |");
     expect(liveRazorpayCheckoutDrillReport).toContain("| Payment success | YES |");
-    expect(liveRazorpayCheckoutDrillReport).toContain("| Wallet credited | NOT_VERIFIED |");
-    expect(liveRazorpayCheckoutDrillReport).toContain("| Webhook received | NOT VERIFIED |");
-    expect(liveRazorpayCheckoutDrillReport).toContain("| Duplicate credit prevention | NOT VERIFIED |");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Wallet credited | YES |");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Webhook received | YES |");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Duplicate credit prevention | VERIFIED |");
     expect(liveRazorpayCheckoutDrillReport).toContain("| Secrets committed | NO |");
     expect(liveRazorpayCheckoutDrillReport).toContain("| Personal/payment data committed | NO |");
-    expect(liveRazorpayCheckoutDrillReport).toContain("| Final recommendation | CONDITIONAL_GO |");
+    expect(liveRazorpayCheckoutDrillReport).toContain("| Final recommendation | GO_READING_ONLY_PRODUCTION_DEPLOY_READY |");
 
-    expect(livePaymentFinalEvidenceReport).toContain("HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE");
+    expect(livePaymentFinalEvidenceReport).toContain("GO_READING_ONLY_PRODUCTION_DEPLOY_READY");
     expect(livePaymentFinalEvidenceReport).toContain("| Payment success | YES |");
-    expect(livePaymentFinalEvidenceReport).toContain("| Wallet credit observed | NO |");
-    expect(livePaymentFinalEvidenceReport).toContain("| Wallet credit evidence | REDACTED_REFERENCE_ONLY not yet provided |");
-    expect(livePaymentFinalEvidenceReport).toContain("| Webhook received | NO |");
-    expect(livePaymentFinalEvidenceReport).toContain("| Webhook evidence | REDACTED_REFERENCE_ONLY not yet provided |");
-    expect(livePaymentFinalEvidenceReport).toContain("| Duplicate replay prevention | NOT_VERIFIED |");
-    expect(livePaymentFinalEvidenceReport).toContain("| Refund/support readiness | HOLD |");
-    expect(livePaymentFinalEvidenceReport).toContain("| Rollback readiness | HOLD |");
-    expect(livePaymentFinalEvidenceReport).toContain("| Final payment decision | HOLD |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Wallet credit observed | YES |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Wallet credit evidence | REDACTED_REFERENCE_ONLY |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Webhook received | YES |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Webhook evidence | REDACTED_REFERENCE_ONLY |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Duplicate replay prevention | VERIFIED |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Refund/support readiness | READY |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Rollback readiness | READY |");
+    expect(livePaymentFinalEvidenceReport).toContain("| Final payment decision | GO |");
     expect(livePaymentFinalEvidenceReport).toContain("| Secrets committed | NO |");
     expect(livePaymentFinalEvidenceReport).toContain("| Personal/payment data committed | NO |");
-    expect(livePaymentFinalEvidenceReport).toContain("This structural coverage supports readiness, but it is not a substitute for owner-redacted live evidence.");
+    expect(livePaymentFinalEvidenceReport).toContain("This report intentionally stores no full payment IDs");
 
     expect(livePaymentEvidenceDocs).toContain("Dracula reading-only");
     expect(livePaymentEvidenceDocs).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
     expect(livePaymentEvidenceDocs).toContain("PRODUCTION_BLOCKED");
-    expect(livePaymentEvidenceDocs).not.toMatch(/\bGO_FINAL_LIVE_PAYMENT\b/i);
+    expect(livePaymentEvidenceDocs).toContain("GO_READING_ONLY_PRODUCTION_DEPLOY_READY");
     expect(livePaymentEvidenceDocs).not.toMatch(/\bGO_PUBLIC_AUDIOBOOK_RELEASE\b/i);
     for (const line of livePaymentEvidenceDocs.split(/\r?\n/).filter((item) => /Listen Now|AudioObject/i.test(item))) {
       expect(line).toMatch(/not allowed|No |does not approve/i);
@@ -378,6 +381,7 @@ describe("UX conversion static signals", () => {
       /\bAuthorization\s*:\s*(?:Bearer|Basic)\s+[A-Za-z0-9._~+/=-]{12,}/i,
       /\bBearer\s+[A-Za-z0-9._~+/=-]{12,}/i,
       /\bxi-api-key\s*[:=]\s*[A-Za-z0-9._~+/=-]{12,}/i,
+      /\bsk_[A-Za-z0-9]{16,}\b/i,
       /\b(?:RAZORPAY_KEY_SECRET|RAZORPAY_WEBHOOK_SECRET|WEBHOOK_SECRET|API_KEY|SECRET|TOKEN)\s*[:=]\s*["']?[A-Za-z0-9_./+=-]{8,}/i,
       /\b(?:\d[ -]*?){12,19}\b/,
       /\b(?:UPI ID|VPA|IFSC|bank account|account number|invoice number)\b/i,
@@ -389,7 +393,7 @@ describe("UX conversion static signals", () => {
     }
     expect(livePaymentEvidenceDocs).toContain("REDACTED_LOW_VALUE_OWNER_DRILL_PACK");
     expect(livePaymentEvidenceDocs).toContain("REDACTED_LOW_VALUE_AMOUNT");
-    expect(livePaymentEvidenceDocs).toContain("REDACTED_REFERENCE_ONLY not yet provided");
+    expect(livePaymentEvidenceDocs).toContain("REDACTED_REFERENCE_ONLY");
     expect(livePaymentEvidenceDocs).toContain("No payment ID, customer ID, card data, UPI data, bank data, invoice, screenshot, or secret is committed.");
   });
 

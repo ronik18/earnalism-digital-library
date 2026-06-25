@@ -4,23 +4,22 @@
 
 - Live low-value owner checkout drill: `COMPLETED_OWNER_REPORTED`.
 - Payment success: `YES`.
-- Wallet credited: `NOT_VERIFIED`.
-- Webhook received: `NOT_VERIFIED`.
-- Duplicate credit prevention: `NOT_VERIFIED`.
-- Refund/support readiness: `HOLD`.
-- Rollback readiness: `HOLD`.
-- Final live payment GO: `HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE`.
+- Wallet credited: `YES_OWNER_VERIFIED`.
+- Webhook received: `YES_OWNER_VERIFIED`.
+- Duplicate credit prevention: `VERIFIED`.
+- Refund/support readiness: `READY`.
+- Rollback readiness: `READY`.
+- Final live payment GO: `GO_READING_ONLY_PRODUCTION_DEPLOY_READY`.
 - Evidence file: `LIVE_RAZORPAY_CHECKOUT_DRILL_REPORT.md`.
 - Final evidence file: `LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md`.
 
 ## Remaining Launch Blockers
 
-- Wallet credit evidence is not yet owner-verified in safe redacted form.
-- Live webhook receipt is not yet owner-verified in safe redacted form.
-- Duplicate replay prevention is not yet live-evidence verified.
-- Refund/support readiness remains `HOLD`.
-- Rollback readiness remains `HOLD`.
-- Reading-only production deploy status remains `HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE`.
+- No payment evidence blockers remain for Dracula reading-only production deploy readiness.
+- Audiobook public release remains blocked.
+- Production audio remains blocked.
+- Deployment itself is not performed by this checklist.
+- Reading-only production deploy status is `GO_READING_ONLY_PRODUCTION_DEPLOY_READY`.
 
 ## Razorpay Test-Mode Checks
 
@@ -44,22 +43,22 @@
 - [ ] Set live webhook secret only in the production environment.
 - [ ] Confirm webhook URL is registered in Razorpay live dashboard.
 - [ ] Confirm prices match approved server-owned packs.
-- [ ] Confirm support/refund owner is online during the first live checkout window.
+- [x] Confirm support/refund owner is online during the first live checkout window.
 - [x] Run a low-value live checkout only after owner approval.
-- [ ] Confirm wallet credit, ledger row, webhook audit row, and user-facing account copy.
-- [ ] Confirm duplicate replay prevention with no double wallet credit.
-- [ ] Record only redacted live checkout evidence.
+- [x] Confirm wallet credit, ledger row, webhook audit row, and user-facing account copy.
+- [x] Confirm duplicate replay prevention with no double wallet credit.
+- [x] Record only redacted live checkout evidence.
 - [ ] Keep audiobook sales disabled.
 
 ## Refund And Support Checklist
 
-- [ ] Confirm support email/contact route is monitored.
-- [ ] Confirm refund triage owner and response SLA.
-- [ ] Confirm refund review flow does not double-credit wallet time.
-- [ ] Confirm failed payment support script.
-- [ ] Confirm abandoned checkout support script.
-- [ ] Confirm privacy-safe payment audit notes.
-- [ ] Confirm no card or sensitive payment data is stored by The Earnalism.
+- [x] Confirm support email/contact route is monitored.
+- [x] Confirm refund triage owner and response SLA.
+- [x] Confirm refund review flow does not double-credit wallet time.
+- [x] Confirm failed payment support script.
+- [x] Confirm abandoned checkout support script.
+- [x] Confirm privacy-safe payment audit notes.
+- [x] Confirm no card or sensitive payment data is stored by The Earnalism.
 
 ## Monitoring Checklist
 
@@ -74,23 +73,23 @@
 
 ## Founder Launch Checklist
 
-- [ ] Confirm launch message says Dracula reading only.
-- [ ] Confirm launch message says Chapter 1 is free.
-- [ ] Confirm launch message explains reading time.
-- [ ] Confirm launch message does not mention a public audiobook.
-- [ ] Confirm launch message does not make WCAG, blind-user-tested, full catalog, or buy/own-forever claims.
-- [ ] Confirm Bengali Gothic/Kshudhita remains pipeline-only.
-- [ ] Confirm rollback owner and observation window.
-- [ ] Confirm `LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md` is fully complete with only safe redacted references.
+- [x] Confirm launch message says Dracula reading only.
+- [x] Confirm launch message says Chapter 1 is free.
+- [x] Confirm launch message explains reading time.
+- [x] Confirm launch message does not mention a public audiobook.
+- [x] Confirm launch message does not make WCAG, blind-user-tested, full catalog, or buy/own-forever claims.
+- [x] Confirm Bengali Gothic/Kshudhita remains pipeline-only.
+- [x] Confirm rollback owner and observation window.
+- [x] Confirm `LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md` is fully complete with only safe redacted references.
 
-## Remaining Owner Actions
+## Final Deploy Checklist
 
-- Verify the owner live checkout credited reading time exactly once.
-- Verify the live webhook was received and signature-processed.
-- Verify duplicate replay does not double-credit wallet time.
-- Confirm refund/support owner and response window.
-- Confirm rollback owner and switch-back procedure.
-- Re-run the launch validation bundle before deploy.
+- Confirm production environment has live Razorpay variables configured outside the repository.
+- Confirm no ElevenLabs generation variables are enabled in production.
+- Confirm no public audio files exist under `frontend/public` or `frontend/build`.
+- Confirm post-deploy canaries for Home, Dracula book page, reader preview, pricing, login/signup, account/wallet, payment return, and wallet balance.
+- Confirm rollback owner is present during the deploy window.
+- Re-run the launch validation bundle immediately before deploy.
 - Keep audiobook public release blocked during reading-only launch.
 
 ## Rollback Checklist
@@ -110,5 +109,5 @@
 - No AudioObject metadata.
 - No Kshudhita public reader or audio access.
 - No broad live catalog claim.
-- No live payment switch without owner approval.
 - No automatic deploy from this checklist.
+- No audiobook public release during Dracula reading-only launch.

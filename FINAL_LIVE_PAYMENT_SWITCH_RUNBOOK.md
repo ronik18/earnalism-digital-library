@@ -1,6 +1,6 @@
 # Final Live Payment Switch Runbook
 
-Status: `READING_ONLY_LIVE_PAYMENT_SWITCH_CONDITIONAL`
+Status: `READING_ONLY_LIVE_PAYMENT_SWITCH_READY`
 
 Date: 2026-06-26
 
@@ -35,7 +35,7 @@ This runbook covers the final owner-controlled switch for Dracula reading-only r
 
 The owner has reported completing one low-value live checkout drill through Razorpay. This runbook records that as launch evidence only. It does not store payment IDs, customer data, bank data, card data, UPI data, account screenshots, invoices, or secrets.
 
-The drill is not enough for final GO until the remaining evidence is recorded:
+The owner has now verified the remaining evidence using safe redacted references only:
 
 - Wallet credit confirmed.
 - Webhook delivery confirmed.
@@ -67,6 +67,6 @@ The drill is not enough for final GO until the remaining evidence is recorded:
 
 ## Final Recommendation
 
-Recommendation: `CONDITIONAL_GO_AFTER_PAYMENT_EVIDENCE`
+Recommendation: `GO_READING_ONLY_PRODUCTION_DEPLOY_READY`
 
-The owner live drill is useful evidence, but final GO remains blocked until wallet credit, webhook, duplicate replay, refund/support, and rollback evidence are complete.
+The owner live drill and follow-up evidence support Dracula reading-only production deploy readiness. This runbook still does not deploy, expose audio, publish audiobooks, approve production audio, or change payment behavior automatically.

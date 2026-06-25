@@ -2,9 +2,9 @@
 
 ## Decision
 
-Recommendation: `GO_READING_ONLY_LAUNCH_PREP`.
+Recommendation: `GO_READING_ONLY_PRODUCTION_DEPLOY_READY`.
 
-The Earnalism should begin revenue-oriented production launch with the Dracula reading product only. Do not wait for public audiobook release. The full Dracula Chapter 1 audiobook remains internal until highlighted-text player testing, sync QA, accessibility QA, and release gates pass.
+The Earnalism should proceed with the Dracula reading product only. Do not wait for public audiobook release. The full Dracula Chapter 1 audiobook remains internal until highlighted-text player testing, sync QA, accessibility QA, and release gates pass.
 
 This decision does not deploy, publish new books, switch live payment keys, expose audio, or approve production audio.
 
@@ -15,6 +15,7 @@ This decision does not deploy, publish new books, switch live payment keys, expo
 - Free entry point: Chapter 1 free preview.
 - Paid path: reading-time wallet/pass model for continuing Dracula after the free preview.
 - Publication approval: `GO_DRACULA_CORE_READING_ONLY`.
+- Production deploy readiness: `GO_READING_ONLY_PRODUCTION_DEPLOY_READY`.
 - Revenue objective: validate paid reading-time conversion without waiting for audiobook readiness.
 
 ## What Is Live
@@ -29,7 +30,7 @@ This decision does not deploy, publish new books, switch live payment keys, expo
 | Account/wallet | Ready for wallet visibility | Wallet copy supports reading-time balance review. |
 | Library/continue reading | Ready for Dracula-only public release | Unapproved books stay Coming Soon / Notify Me. |
 | SEO/social previews | Ready for Dracula-first reading positioning | Must remain Dracula-first and reading-only. |
-| Payment smoke | Ready in test mode | Razorpay live switch still requires owner checklist completion. |
+| Payment smoke | Ready in test mode | Live payment evidence is owner-verified in redacted form. |
 | Controlled publication precheck | Ready | Current approval artifact is Dracula core reading only. |
 
 ## What Is Not Live
@@ -60,14 +61,14 @@ The revenue path sells time to continue reading. It does not sell an audiobook, 
 
 - Payment model: Razorpay-backed reading-time top-up.
 - Current confidence report: `PAYMENT_REVENUE_10X_CONFIDENCE_REPORT.md`.
-- Current live launch posture: `HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE`.
+- Current live launch posture: `GO_READING_ONLY_PRODUCTION_DEPLOY_READY`.
 - Payment smoke evidence: `launch:payment-smoke:test-mode`.
 - Wallet behavior: reading time is credited after confirmation and used only while reading.
 - Live drill evidence: `LIVE_RAZORPAY_CHECKOUT_DRILL_REPORT.md`.
 - Final payment evidence report: `LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md`.
 - Live drill result: owner reported one low-value Razorpay live checkout with payment success `YES`.
-- Remaining evidence before final deploy GO: wallet credit, webhook receipt, duplicate replay prevention, refund/support readiness, and rollback readiness.
-- Live switch requirement: owner must complete the go/no-go checklist in `LIVE_PAYMENT_GO_NO_GO_CHECKLIST.md`.
+- Final payment evidence: wallet credit, webhook receipt, duplicate replay prevention, refund/support readiness, and rollback readiness are owner-verified with safe redacted references only.
+- Live switch requirement: owner must complete the final deploy checklist in `LIVE_PAYMENT_GO_NO_GO_CHECKLIST.md`.
 
 Do not change live payment settings automatically in this launch prep.
 
@@ -101,26 +102,27 @@ Audiobook revenue remains blocked until player QA, sync QA, accessibility QA, le
 ## Final Owner Checklist
 
 - [ ] Confirm production domain and API URLs are correct.
+- [ ] Confirm production environment has live Razorpay variables configured outside the repository.
+- [ ] Confirm no ElevenLabs generation variables are enabled in production.
 - [ ] Confirm Dracula book page loads and Chapter 1 preview opens.
 - [ ] Confirm pricing packs display correct labels and INR amounts.
-- [ ] Run Razorpay test-mode checkout with a throwaway user.
-- [ ] Confirm wallet credit after successful test-mode payment.
-- [ ] Confirm failed/cancelled test payment does not credit wallet.
+- [ ] Confirm wallet credit after successful payment.
 - [ ] Confirm support/refund inbox and response owner.
 - [ ] Confirm rollback owner is available during launch window.
 - [ ] Confirm no public audio files exist under `frontend/public` or `frontend/build`.
 - [ ] Confirm no public audiobook claim, Listen Now CTA, or AudioObject metadata exists.
+- [ ] Confirm post-deploy canaries for Home, Dracula book page, reader preview, pricing, login/signup, account/wallet, payment return, and wallet balance.
 - [ ] Keep audiobook public release blocked.
 
 ## Go/No-Go Recommendation
 
 | Area | Decision |
 | --- | --- |
-| Dracula reading-only launch | `HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE` |
-| Revenue path | `GO_TEST_MODE_VALIDATED_READING_TIME_ONLY` |
+| Dracula reading-only launch | `GO_READING_ONLY_PRODUCTION_DEPLOY_READY` |
+| Revenue path | `GO_READING_TIME_PAYMENT_EVIDENCE_COMPLETE` |
 | Public audiobook | `NO_GO_PUBLIC_AUDIO_RELEASE_BLOCKED` |
 | Production audio | `NO_GO_PRODUCTION_BLOCKED` |
 | Kshudhita Pashan | `NO_GO_PIPELINE_ONLY` |
 | Broad catalog launch | `NO_GO_DRACULA_ONLY` |
 
-Proceed with Dracula reading revenue launch only after wallet credit, webhook receipt, duplicate replay, refund/support, and rollback evidence are complete. Keep audiobook release blocked.
+Proceed with Dracula reading-only production deploy after the final deployment checklist is completed by the owner. Keep audiobook release blocked.

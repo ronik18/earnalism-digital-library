@@ -4,6 +4,8 @@
 
 Dracula reading launch should proceed separately from audiobook release. The audiobook track remains internal and blocked from public release.
 
+Reading-only launch status: `GO_READING_ONLY_PRODUCTION_DEPLOY_READY`.
+
 ## Internal Chapter 1 Audio Status
 
 - Book: `dracula`
@@ -51,3 +53,5 @@ Prepare internal-only highlighted-text player test for Dracula Chapter 1 using t
 ## Revenue Track Relationship
 
 The reading-only revenue launch does not depend on public audiobook readiness. Audiobook work continues in parallel as an internal QA track and must not add public audio, public player routes, Listen Now CTA, AudioObject metadata, or production approval.
+
+The full Dracula Chapter 1 audio remains internal. Sync/player QA, accessibility QA, and public release approval remain a separate blocked track.
