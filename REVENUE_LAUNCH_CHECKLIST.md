@@ -11,6 +11,16 @@
 - Rollback readiness: `HOLD`.
 - Final live payment GO: `HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE`.
 - Evidence file: `LIVE_RAZORPAY_CHECKOUT_DRILL_REPORT.md`.
+- Final evidence file: `LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md`.
+
+## Remaining Launch Blockers
+
+- Wallet credit evidence is not yet owner-verified in safe redacted form.
+- Live webhook receipt is not yet owner-verified in safe redacted form.
+- Duplicate replay prevention is not yet live-evidence verified.
+- Refund/support readiness remains `HOLD`.
+- Rollback readiness remains `HOLD`.
+- Reading-only production deploy status remains `HOLD_FINAL_GO_PENDING_PAYMENT_EVIDENCE`.
 
 ## Razorpay Test-Mode Checks
 
@@ -71,6 +81,7 @@
 - [ ] Confirm launch message does not make WCAG, blind-user-tested, full catalog, or buy/own-forever claims.
 - [ ] Confirm Bengali Gothic/Kshudhita remains pipeline-only.
 - [ ] Confirm rollback owner and observation window.
+- [ ] Confirm `LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md` is fully complete with only safe redacted references.
 
 ## Remaining Owner Actions
 

@@ -20,6 +20,7 @@ Date: 2026-06-26
 - [x] Payment provider was Razorpay.
 - [x] Drill was owner-reported as payment successful.
 - [x] No payment ID, customer ID, card data, UPI data, bank data, invoice, screenshot, or secret is committed.
+- [x] Final evidence report created with safe redacted fields.
 - [ ] Wallet credit evidence recorded.
 - [ ] Webhook delivery evidence recorded.
 - [ ] Duplicate replay prevention evidence recorded.
@@ -40,6 +41,17 @@ Date: 2026-06-26
 | Personal/payment data committed | NO | Must be NO |
 | Public audio blocked | PUBLIC_AUDIO_RELEASE_BLOCKED | Must stay blocked |
 | Production audio blocked | PRODUCTION_BLOCKED | Must stay blocked |
+
+## Final Evidence Report
+
+- Report: `LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md`
+- Payment success: `YES`
+- Wallet credit observed: `NO`
+- Webhook received: `NO`
+- Duplicate replay prevention: `NOT_VERIFIED`
+- Refund/support readiness: `HOLD`
+- Rollback readiness: `HOLD`
+- Final payment decision: `HOLD`
 
 ## Decision
 

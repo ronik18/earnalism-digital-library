@@ -64,6 +64,7 @@ The revenue path sells time to continue reading. It does not sell an audiobook, 
 - Payment smoke evidence: `launch:payment-smoke:test-mode`.
 - Wallet behavior: reading time is credited after confirmation and used only while reading.
 - Live drill evidence: `LIVE_RAZORPAY_CHECKOUT_DRILL_REPORT.md`.
+- Final payment evidence report: `LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md`.
 - Live drill result: owner reported one low-value Razorpay live checkout with payment success `YES`.
 - Remaining evidence before final deploy GO: wallet credit, webhook receipt, duplicate replay prevention, refund/support readiness, and rollback readiness.
 - Live switch requirement: owner must complete the go/no-go checklist in `LIVE_PAYMENT_GO_NO_GO_CHECKLIST.md`.
