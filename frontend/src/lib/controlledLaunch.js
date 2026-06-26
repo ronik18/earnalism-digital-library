@@ -6,6 +6,8 @@ export const DRACULA_RIGHTS_NOTE = "Approved classic reading release";
 export const DRACULA_CHAPTER_COUNT = 27;
 export const DRACULA_COVER_IMAGE = "/assets/books/dracula/dracula-front-cover.webp";
 export const DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cover.webp";
+export const KSHUDHITA_PASHAN_FRONT_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp";
+export const KSHUDHITA_PASHAN_BACK_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp";
 
 export const DRACULA_FALLBACK_BOOK = {
   slug: LIVE_APPROVED_SLUG,
@@ -48,6 +50,10 @@ export const PIPELINE_BOOKS = [
     verification_status: "candidate_review",
     audio_preview_status: "AUDIO_PREVIEW_BLOCKED_UNTIL_PROVIDER_QA",
     audiobook_enabled: false,
+    cover_image_url: KSHUDHITA_PASHAN_FRONT_COVER_IMAGE,
+    thumbnail_url: KSHUDHITA_PASHAN_FRONT_COVER_IMAGE,
+    back_cover_image_url: KSHUDHITA_PASHAN_BACK_COVER_IMAGE,
+    back_cover_thumbnail_url: KSHUDHITA_PASHAN_BACK_COVER_IMAGE,
   },
   {
     slug: "frankenstein",
@@ -84,9 +90,12 @@ export const KSHUDHITA_PASHAN_PIPELINE = {
   titleBn: "ক্ষুধিত পাষাণ",
   titleEn: "The Hungry Stones",
   author: "Rabindranath Tagore",
-  headline: "Bengali Gothic Premiere: ক্ষুধিত পাষাণ",
-  subcopy: "After Dracula, enter a haunted Bengali palace.",
+  headline: "Pipeline classic: ক্ষুধিত পাষাণ",
+  subcopy: "A Bengali Gothic candidate in rights-safe preparation.",
   statusLabel: "Pipeline only: source, rights, CC BY-SA compliance, text QA, and audio provider QA are still gated.",
+  frontCoverImage: KSHUDHITA_PASHAN_FRONT_COVER_IMAGE,
+  backCoverImage: KSHUDHITA_PASHAN_BACK_COVER_IMAGE,
+  coverStatus: "OWNER_PROVIDED_COVER_READY",
 };
 
 export const DRACULA_CTA_EVENTS = {
