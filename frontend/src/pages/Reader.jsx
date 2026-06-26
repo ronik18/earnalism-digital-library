@@ -8,7 +8,7 @@ import ReaderUpsellPrompt from '../components/Funnel/ReaderUpsellPrompt';
 import SecureReader from '../components/SecureReader';
 import { trackFunnelEvent } from '../lib/funnelAnalytics';
 import { canShowReaderFinishPrompt, markReaderFinishPromptShown } from '../lib/funnelOffers';
-import { DRACULA_CTA_EVENTS, LIVE_APPROVED_SLUG } from '../lib/controlledLaunch';
+import { DRACULA_CTA_EVENTS, LIVE_APPROVED_SLUG, normalizeChapterDisplayTitle } from '../lib/controlledLaunch';
 import { useAuth } from '../context/AuthContext';
 import { optimizedImageUrl } from '../lib/images';
 import useSEO from '../hooks/useSEO';
@@ -68,7 +68,7 @@ function getAdminAuthHeaders() {
 }
 
 function getChapterAuthHeaders() {
-  const token = localStorage.getItem(USER_TOKEN_KEY) || localStorage.getItem(TOKEN_KEY) || localStorage.getItem('token');
+  const token = localStorage.getItem(USER_TOKEN_KEY);
   return authHeaders(token);
 }
 
@@ -823,11 +823,6 @@ async function fetchReaderBook(bookId, requestedAdminPreview = false) {
     response.adminPreview = false;
     return response;
   } catch (err) {
-    if (err.response?.status === 404 && adminToken) {
-      const response = await axios.get(`${API}/admin/books/${encodedBookId}`, { headers: getAdminAuthHeaders() });
-      response.adminPreview = true;
-      return response;
-    }
     throw err;
   }
 }
@@ -841,12 +836,16 @@ function readerSearchParams({ chapterId, adminPreview } = {}) {
 }
 
 async function fetchReaderChapter({ bookId, chapterId, adminPreview = false, version = '', useCache = true }) {
-  const token = adminPreview ? localStorage.getItem(TOKEN_KEY) : (localStorage.getItem(USER_TOKEN_KEY) || localStorage.getItem(TOKEN_KEY) || localStorage.getItem('token'));
+  const token = adminPreview ? localStorage.getItem(TOKEN_KEY) : localStorage.getItem(USER_TOKEN_KEY);
   const cacheKey = readerChapterCacheKey({ bookId, chapterId, version, adminPreview, token });
   if (useCache && readerChapterResponseCache.has(cacheKey)) {
     return readerChapterResponseCache.get(cacheKey);
   }
-  const url = `${API}/reader/chapter/${encodeURIComponent(bookId)}/${encodeURIComponent(chapterId)}${version ? `?v=${encodeURIComponent(version)}` : ''}`;
+  const params = new URLSearchParams();
+  if (version) params.set('v', version);
+  if (adminPreview) params.set('preview', 'admin');
+  const query = params.toString();
+  const url = `${API}/reader/chapter/${encodeURIComponent(bookId)}/${encodeURIComponent(chapterId)}${query ? `?${query}` : ''}`;
   const promise = axios.get(url, { headers: adminPreview ? getAdminAuthHeaders() : getChapterAuthHeaders() })
     .then((response) => response.data);
   boundedCacheSet(readerChapterResponseCache, cacheKey, promise);
@@ -890,7 +889,7 @@ function ReaderChapterIndex({ chapters = [], currentChapterId = '', bookId = '',
                 }}
               >
                 <span>{String(index + 1).padStart(2, '0')}</span>
-                <strong>{item.title}</strong>
+                <strong>{normalizeChapterDisplayTitle(item.title)}</strong>
               </a>
             </li>
           );
@@ -2449,7 +2448,7 @@ export default function Reader() {
 
         <div className="reader-topbar__center">
           <strong>{topbarPositionLabel}</strong>
-          <span>{chapter?.title && chapter.title !== 'Full Text' ? chapter.title : 'Reading edition'}</span>
+          <span>{chapter?.title && chapter.title !== 'Full Text' ? normalizeChapterDisplayTitle(chapter.title) : 'Reading edition'}</span>
         </div>
 
         <div className="reader-topbar__actions">

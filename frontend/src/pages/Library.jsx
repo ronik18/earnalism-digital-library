@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { BookOpen, Headphones, Search, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, Headphones, Search, ShieldCheck, Sparkles } from "lucide-react";
 import { api } from "../lib/api";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import BookCard from "../components/BookCard";
@@ -9,7 +9,6 @@ import {
   DRACULA_CHAPTER_COUNT,
   DRACULA_CTA_EVENTS,
   DRACULA_RIGHTS_NOTE,
-  DRACULA_SOURCE_NOTE,
   KSHUDHITA_PASHAN_PIPELINE,
   LIVE_APPROVED_SLUG,
   PIPELINE_BOOKS,
@@ -64,9 +63,10 @@ export default function Library() {
   };
 
   const normalizedQuery = q.trim().toLowerCase();
+  const kshudhitaBook = PIPELINE_BOOKS.find((book) => book.slug === KSHUDHITA_PASHAN_PIPELINE.slug);
   const visiblePipeline = useMemo(() => {
     if (!normalizedQuery) return PIPELINE_BOOKS;
-    return PIPELINE_BOOKS.filter((book) => `${book.title} ${book.author} ${book.category_slug}`.toLowerCase().includes(normalizedQuery));
+    return PIPELINE_BOOKS.filter((book) => `${book.title} ${book.title_en || ""} ${book.author} ${book.category_slug} ${book.short_description || ""}`.toLowerCase().includes(normalizedQuery));
   }, [normalizedQuery]);
   const showLive = ["all", "live"].includes(cat) && (!normalizedQuery || "dracula bram stoker gothic fiction".includes(normalizedQuery));
   const showPipeline = ["all", "pipeline"].includes(cat);
@@ -78,44 +78,134 @@ export default function Library() {
   };
 
   return (
-    <div data-testid="library-page">
-      <section className="mx-auto max-w-7xl px-5 pb-12 pt-20 sm:px-8 sm:pb-16 sm:pt-28 lg:px-12">
-        <div className="italic-eyebrow mb-4">The Library - Controlled Launch</div>
-        <h1 className="font-serif-light max-w-4xl text-4xl leading-[1.03] tracking-tight text-burgundy sm:text-6xl lg:text-[4.25rem]">
-          One live classic, with the next shelves moving carefully through review.
-        </h1>
-        <p className="mt-7 max-w-2xl text-charcoal-soft leading-[1.85] font-light">
-          Dracula is the only live approved core reading release today. Other titles appear only as Coming Soon until their rights, source, QA, and publication gates pass.
-        </p>
-        <div className="mt-7 grid gap-3 text-sm leading-relaxed text-charcoal-soft sm:grid-cols-2">
-          <div className="rounded-md border border-brand-soft bg-white/45 px-4 py-3">
-            <strong className="text-burgundy">Live Controlled Release:</strong> Dracula only.
+    <div className="library-room-page" data-testid="library-page">
+      <section
+        className="library-room-hero relative isolate overflow-hidden text-[#FDFCF8]"
+        data-testid="library-hero"
+        style={{ "--library-room-bg": 'url("/assets/hero/golden-hour-library-hero.webp")' }}
+      >
+        <div className="mx-auto grid max-w-7xl gap-9 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-12 lg:items-center lg:px-12 lg:py-20">
+          <div className="lg:col-span-7">
+            <div className="italic-eyebrow mb-4 flex items-center gap-3 text-[var(--brand-gold-soft)]">
+              <span className="h-px w-8 bg-[var(--brand-gold)]/70" />
+              <span>The Earnalism Library</span>
+            </div>
+            <h1 className="font-serif-light max-w-3xl text-[2.65rem] leading-[0.98] tracking-normal sm:text-6xl lg:text-[4.8rem]">
+              The live shelf begins with <span className="italic-accent text-[var(--brand-gold-soft)]">Dracula.</span>
+            </h1>
+            <p className="mt-5 max-w-2xl font-serif-display text-xl italic leading-snug text-[#F4EFEA]/88 sm:text-2xl">
+              A controlled reading room: one approved classic, every future shelf held until it earns the right to open.
+            </p>
+            <p className="mt-5 max-w-2xl text-sm font-light leading-[1.8] text-[#F4EFEA]/76 sm:text-base">
+              Chapter 1 opens free. Reading continuation uses reading time, not a public audiobook claim or a broad catalog promise.
+            </p>
+            <div className="library-hero-facts mt-6" aria-label="Library launch facts">
+              <span><ShieldCheck size={14} strokeWidth={1.6} /> Approved classic reading release</span>
+              <span><BookOpen size={14} strokeWidth={1.6} /> Chapter 1 free</span>
+              <span><Sparkles size={14} strokeWidth={1.6} /> Public-domain source verified</span>
+              <span><Headphones size={14} strokeWidth={1.6} /> Audiobook experience in private review</span>
+            </div>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link
+                to={`/reader/${LIVE_APPROVED_SLUG}`}
+                className="btn-primary justify-center"
+                data-testid="library-hero-read"
+                onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_hero_read" })}
+              >
+                <BookOpen size={15} /> Read Chapter 1 Free
+              </Link>
+              <Link
+                to={`/book/${LIVE_APPROVED_SLUG}`}
+                className="btn-secondary justify-center !border-[var(--brand-gold)] !text-[#FDFCF8] hover:!bg-[rgba(216,185,122,0.12)]"
+                data-testid="library-hero-start"
+                onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_hero_start" })}
+              >
+                Start Dracula
+              </Link>
+              <Link
+                to={readingPassUrl("library_hero")}
+                className="btn-link justify-center !text-[#FDFCF8]"
+                data-testid="library-hero-pass"
+                onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_hero_pass" })}
+              >
+                Get 7-Day Reading Pass <ArrowRight size={15} />
+              </Link>
+            </div>
+            <p className="mt-4 font-serif-display text-base italic text-[#F4EFEA]/70">
+              Reading time is used only while you read.
+            </p>
           </div>
-          <div className="rounded-md border border-brand-soft bg-white/45 px-4 py-3">
-            <strong className="text-burgundy">Coming Through the Rights-Safe Pipeline:</strong> future titles only. Unapproved titles show Coming Soon / Notify Me only.
+
+          <div className="lg:col-span-5">
+            <div className="library-hero-book-object mx-auto max-w-[360px]" data-testid="library-hero-dracula-object">
+              <div className="library-hero-cover-frame mx-auto aspect-[500/696] max-w-[245px] overflow-hidden">
+                <BookCoverImage
+                  book={liveBook}
+                  alt="Custom Earnalism Dracula cover artwork"
+                  loading="eager"
+                  fetchPriority="high"
+                  width={520}
+                  widths={[360, 520, 720]}
+                  sizes="(min-width: 1024px) 245px, 58vw"
+                  imgClassName="premium-dracula-cover-img"
+                />
+              </div>
+              <div className="mt-5 text-center">
+                <div className="text-[0.62rem] uppercase tracking-[0.22em] text-[var(--brand-gold-soft)]">Only live public reading release</div>
+                <h2 className="mt-2 font-serif-display text-[2rem] text-[#FDFCF8]">Dracula</h2>
+                <p className="mx-auto mt-3 max-w-xs text-[0.82rem] leading-relaxed text-[#F4EFEA]/72">
+                  {DRACULA_CHAPTER_COUNT} chapters. Chapter 1 free. Public audio remains blocked.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 pb-8 sm:px-8 lg:px-12" data-testid="library-bengali-gothic-pipeline">
-        <div className="rounded-lg border border-brand-soft bg-[#221017] px-6 py-7 text-[#FDFCF8] sm:px-8 sm:py-8">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 text-[0.64rem] uppercase tracking-[0.26em] text-[var(--brand-gold-soft)]">
-                <Sparkles size={14} strokeWidth={1.6} /> Rights-Safe Pipeline
+      <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-12 lg:px-12" data-testid="library-bengali-gothic-pipeline">
+        <div className="library-pipeline-feature">
+          <div className="library-pipeline-feature__covers" data-testid="library-kshudhita-cover-evidence">
+            {kshudhitaBook ? (
+              <div className="library-kshudhita-stack" data-cover-status={kshudhitaBook.cover_status}>
+                <img
+                  src={KSHUDHITA_PASHAN_PIPELINE.backCoverImage}
+                  alt=""
+                  className="library-kshudhita-stack__back"
+                  loading="lazy"
+                  width="1024"
+                  height="1536"
+                  aria-hidden="true"
+                />
+                <img
+                  src={KSHUDHITA_PASHAN_PIPELINE.frontCoverImage}
+                  alt="Owner-provided Kshudhita Pashan front cover artwork"
+                  className="library-kshudhita-stack__front"
+                  loading="lazy"
+                  width="1024"
+                  height="1536"
+                />
               </div>
-              <h2 className="mt-3 font-serif-light text-3xl leading-tight text-[#FDFCF8] sm:text-4xl">
-                {KSHUDHITA_PASHAN_PIPELINE.headline}
-              </h2>
-              <p className="mt-3 text-[#F4EFEA]/72 leading-[1.75] font-light">
-                {KSHUDHITA_PASHAN_PIPELINE.subcopy} This candidate remains in source, rights, CC BY-SA compliance,
-                pronunciation, and audio-preview planning only.
-              </p>
+            ) : (
+              <div className="library-pipeline-feature__placeholder">Pipeline cover pending</div>
+            )}
+          </div>
+          <div className="library-pipeline-feature__copy">
+            <div className="inline-flex items-center gap-2 text-[0.64rem] uppercase tracking-[0.26em] text-[var(--brand-gold-deep)]">
+              <Sparkles size={14} strokeWidth={1.6} /> Rights-safe pipeline
             </div>
-            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+            <h2 className="mt-3 font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">
+              The Hungry Stones is visible, not open.
+            </h2>
+            <p className="mt-2 text-sm uppercase tracking-[0.18em] text-charcoal-soft">
+              Bengali title: {KSHUDHITA_PASHAN_PIPELINE.titleBn}
+            </p>
+            <p className="mt-4 max-w-2xl text-charcoal-soft leading-[1.8] font-light">
+              {KSHUDHITA_PASHAN_PIPELINE.subcopy} The real front and back covers are shown as owner-provided pipeline evidence, while source, rights, CC BY-SA compliance, pronunciation, and QA gates stay closed.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
                 to={notifyUrl(KSHUDHITA_PASHAN_PIPELINE.slug)}
-                className="btn-secondary justify-center !border-[var(--brand-gold-soft)] !text-[#FDFCF8] hover:!bg-[rgba(216,185,122,0.12)]"
+                className="btn-secondary justify-center"
                 data-testid="library-pipeline-notify"
                 onClick={() => trackPipelineInterest("kshudhita_pashan_notify_click", "library-pipeline-notify")}
               >
@@ -123,19 +213,22 @@ export default function Library() {
               </Link>
               <button
                 type="button"
-                className="btn-link justify-center !text-[#FDFCF8]"
+                className="btn-link justify-center"
                 data-testid="library-pipeline-reading-circle"
                 onClick={() => trackPipelineInterest("bengali_gothic_reading_circle_click", "library-pipeline-reading-circle")}
               >
                 Reading Circle
               </button>
             </div>
+            <div className="mt-5 text-xs leading-relaxed text-charcoal-soft">
+              No reader, payment, or audio CTA is available for this pipeline-only title.
+            </div>
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 pb-8 sm:px-8 lg:px-12">
-        <div className="flex flex-col gap-6 border-y border-brand-soft py-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="library-shelf-toolbar flex flex-col gap-6 py-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-wrap gap-2" data-testid="category-filters">
             {FILTERS.map((filter) => (
               <button
@@ -197,14 +290,14 @@ export default function Library() {
                         <div><dt className="overline">Preview</dt><dd>Chapter 1 unlocked</dd></div>
                         <div><dt className="overline">Audio</dt><dd>Audiobook experience in private review</dd></div>
                         <div><dt className="overline">Rights</dt><dd>{DRACULA_RIGHTS_NOTE}</dd></div>
-                        <div><dt className="overline">Source</dt><dd>{DRACULA_SOURCE_NOTE}</dd></div>
+                        <div><dt className="overline">Source</dt><dd>Public-domain source verified</dd></div>
                       </dl>
                       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                         <Link to={`/reader/${LIVE_APPROVED_SLUG}`} className="btn-secondary justify-center" data-testid="library-dracula-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_preview" })}>
                           <BookOpen size={15} /> Read Chapter 1 Free
                         </Link>
                         <Link to={`/book/${LIVE_APPROVED_SLUG}`} className="btn-primary justify-center" data-testid="library-dracula-start" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_start" })}>
-                          Start Reading
+                          Start Dracula
                         </Link>
                         <Link to={readingPassUrl("library_live_shelf")} className="btn-link justify-center" data-testid="library-dracula-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_pass" })}>
                           Get 7-Day Reading Pass

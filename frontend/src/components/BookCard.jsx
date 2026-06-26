@@ -17,18 +17,25 @@ function BookCard({ book, priority = false }) {
   const isLiveApproved = status === "LIVE_APPROVED";
   const showPreview = canShowPreview(book);
   const showStartReading = canShowStartReading(book);
-  const statusLabel = isLiveApproved ? "Live controlled release" : "Coming Soon";
+  const statusLabel = isLiveApproved ? "Live controlled release" : "In preparation";
+  const displayTitle = book.title_en || book.title;
+  const secondaryTitle = book.title_en && book.title_en !== book.title ? book.title : "";
 
   const track = (event, metadata = {}) => {
     trackFunnelEvent(event, { book: book.slug, book_slug: book.slug, ...metadata });
   };
 
   return (
-    <div className="card-elegant overflow-hidden flex flex-col group" data-testid={`book-card-${book.slug}`} data-launch-status={status}>
+    <div
+      className={`card-elegant overflow-hidden flex flex-col group ${isLiveApproved ? "book-card--live" : "book-card--pipeline"}`}
+      data-testid={`book-card-${book.slug}`}
+      data-launch-status={status}
+      data-cover-status={book.cover_status || ""}
+    >
       <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className="block aspect-[3/4] bg-ivory-warm overflow-hidden relative">
         <BookCoverImage
           book={book}
-          alt={book.title}
+          alt={displayTitle}
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : "auto"}
           width={320}
@@ -40,8 +47,11 @@ function BookCard({ book, priority = false }) {
       <div className="p-7 sm:p-8 flex flex-col gap-3 flex-1">
         <span className="overline">{statusLabel}</span>
         <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className="group/title">
-          <h3 className="font-serif-display text-[1.55rem] sm:text-[1.65rem] text-burgundy leading-[1.15] group-hover/title:text-burgundy-soft transition-colors">{book.title}</h3>
+          <h3 className="font-serif-display text-[1.55rem] sm:text-[1.65rem] text-burgundy leading-[1.15] group-hover/title:text-burgundy-soft transition-colors">{displayTitle}</h3>
         </Link>
+        {secondaryTitle && (
+          <p className="book-card__secondary-title">{secondaryTitle}</p>
+        )}
         {book.author && (
           <p className="text-[0.85rem] tracking-[0.14em] uppercase text-charcoal-soft">by {book.author}</p>
         )}
@@ -79,7 +89,7 @@ function BookCard({ book, priority = false }) {
         ) : (
           <div className="mt-auto pt-5 border-t border-brand-soft">
             <p className="text-xs leading-relaxed text-charcoal-soft">
-              This title is in the rights-safe pipeline and is not readable yet.
+              This title is in the rights-safe pipeline and is not readable or listenable yet.
             </p>
             <Link
               to={notifyUrl(book.slug)}

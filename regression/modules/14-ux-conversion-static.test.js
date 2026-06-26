@@ -295,14 +295,15 @@ describe("UX conversion static signals", () => {
 
   test("library and book pages expose only approved Dracula reading paths", () => {
     expect(library).toContain("Live Controlled Release");
-    expect(library).toContain("Live Controlled Release:</strong> Dracula only.");
+    expect(library).toContain("The live shelf begins with");
+    expect(library).toContain("Only live public reading release");
     expect(library).toContain("Coming Through the Rights-Safe Pipeline");
-    expect(library).toContain("Coming Through the Rights-Safe Pipeline:</strong> future titles only.");
-    expect(library).toContain("Dracula is the only live approved core reading release today.");
+    expect(library).toContain("every future shelf held until it earns the right to open");
     expect(library).toContain("These books are not live products yet. They have Notify Me CTAs only.");
-    expect(library).toContain("Unapproved titles show Coming Soon / Notify Me only.");
+    expect(library).toContain("No reader, payment, or audio CTA is available for this pipeline-only title.");
     expect(library).toContain("Read Chapter 1 Free");
-    expect(library).toContain("Start Reading");
+    expect(library).toContain("Start Dracula");
+    expect(library).toContain("Public-domain source verified");
     expect(library).toContain("Notify Me");
     expect(bookDetail).toContain('data-testid="read-preview"');
     expect(bookDetail).toContain('data-testid="bottom-buy-reading-time"');
@@ -927,8 +928,48 @@ describe("UX conversion static signals", () => {
     expect(publicationSafety).toContain("KSHUDHITA_PASHAN_SLUG");
     expect(publicationSafety).toContain("QA_PASSED");
     expect(bookCard).toContain("Notify Me");
-    expect(bookCard).toContain("This title is in the rights-safe pipeline and is not readable yet.");
+    expect(bookCard).toContain("This title is in the rights-safe pipeline and is not readable or listenable yet.");
+    expect(bookCard).toContain("book.title_en || book.title");
+    expect(bookCard).toContain("book-card__secondary-title");
     expect(bookCard).toContain("isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)");
+  });
+
+  test("reader route does not borrow admin session for normal Dracula reading", () => {
+    const chapterAuthBlock = extractBetween(
+      reader,
+      "function getChapterAuthHeaders()",
+      "function getCurrentReaderPath()"
+    );
+    expect(chapterAuthBlock).toContain("localStorage.getItem(USER_TOKEN_KEY)");
+    expect(chapterAuthBlock).not.toContain("localStorage.getItem(TOKEN_KEY)");
+    expect(chapterAuthBlock).not.toContain("localStorage.getItem('token')");
+
+    const bookFetchBlock = extractBetween(
+      reader,
+      "async function fetchReaderBook",
+      "function readerSearchParams"
+    );
+    expect(bookFetchBlock).toContain("requestedAdminPreview && adminToken");
+    expect(bookFetchBlock).toContain("'?preview=admin'");
+    expect(bookFetchBlock).not.toContain("err.response?.status === 404 && adminToken");
+
+    const chapterFetchBlock = extractBetween(
+      reader,
+      "async function fetchReaderChapter",
+      "function ReaderChapterIndex"
+    );
+    expect(chapterFetchBlock).toContain("adminPreview ? localStorage.getItem(TOKEN_KEY) : localStorage.getItem(USER_TOKEN_KEY)");
+    expect(chapterFetchBlock).toContain("params.set('preview', 'admin')");
+    expect(chapterFetchBlock).toContain("adminPreview ? getAdminAuthHeaders() : getChapterAuthHeaders()");
+  });
+
+  test("Dracula chapter titles render clean display text without continuation junk", () => {
+    expect(controlledLaunch).toContain("export function normalizeChapterDisplayTitle");
+    expect(controlledLaunch).toContain(".replace(/\\s*[.:]?\\s*(?:--|—|-)\\s*continued");
+    expect(controlledLaunch).toContain("smartTitleCaseSegment(remainder)");
+    expect(reader).toContain("normalizeChapterDisplayTitle(item.title)");
+    expect(reader).toContain("normalizeChapterDisplayTitle(chapter.title)");
+    expect(bookDetail).toContain("normalizeChapterDisplayTitle(c.title)");
   });
 
   test("Bengali Gothic candidate is pipeline-only and not a live reading CTA", () => {
@@ -943,11 +984,16 @@ describe("UX conversion static signals", () => {
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp"))).toBe(true);
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp"))).toBe(true);
     expect(home).toContain("KSHUDHITA_PASHAN_PIPELINE.titleEn} is visible, not open.");
-    expect(controlledLaunch).toContain("Pipeline classic: ক্ষুধিত পাষাণ");
+    expect(controlledLaunch).toContain("Pipeline classic: The Hungry Stones");
     expect(controlledLaunch).toContain("A Bengali Gothic candidate in rights-safe preparation.");
     expect(library).toContain('data-testid="library-bengali-gothic-pipeline"');
-    expect(library).toContain("KSHUDHITA_PASHAN_PIPELINE.headline");
+    expect(library).toContain('data-testid="library-kshudhita-cover-evidence"');
+    expect(library).toContain("KSHUDHITA_PASHAN_PIPELINE.frontCoverImage");
+    expect(library).toContain("KSHUDHITA_PASHAN_PIPELINE.backCoverImage");
+    expect(library).toContain("The Hungry Stones is visible, not open.");
+    expect(library).toContain("Bengali title:");
     expect(library).toContain("KSHUDHITA_PASHAN_PIPELINE.subcopy");
+    expect(library).toContain("No reader, payment, or audio CTA is available for this pipeline-only title.");
 
     const homePipelineBlock = extractBetween(
       home,

@@ -13,6 +13,7 @@ import {
   DRACULA_SOURCE_NOTE,
   LIVE_APPROVED_SLUG,
   mergeDraculaBook,
+  normalizeChapterDisplayTitle,
   readingPassUrl,
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
@@ -253,7 +254,7 @@ export default function BookDetail() {
                 {(publicBook.chapters || []).map((c, i) => (
                   <li key={c.id} className="flex items-baseline gap-4 text-charcoal">
                     <span className="italic-accent text-gold-deep shrink-0 w-10">{String(i + 1).padStart(2, "0")}</span>
-                    <Link to={`/reader/${publicBook.slug}?c=${c.id}`} className="font-serif-display text-[1.15rem] hover:text-burgundy transition-colors">{c.title}</Link>
+                    <Link to={`/reader/${publicBook.slug}?c=${c.id}`} className="font-serif-display text-[1.15rem] hover:text-burgundy transition-colors">{normalizeChapterDisplayTitle(c.title)}</Link>
                   </li>
                 ))}
               </ol>

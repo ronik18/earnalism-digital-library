@@ -9,6 +9,39 @@ export const DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cove
 export const KSHUDHITA_PASHAN_FRONT_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp";
 export const KSHUDHITA_PASHAN_BACK_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp";
 
+function smartTitleCaseSegment(value = "") {
+  const text = String(value || "").trim();
+  const letters = text.match(/[A-Za-z]/g) || [];
+  const upperLetters = text.match(/[A-Z]/g) || [];
+  if (!letters.length || upperLetters.length / letters.length < 0.72) return text;
+  return text
+    .toLowerCase()
+    .replace(/\b([a-z])([a-z'’.]*)/g, (_match, first, rest) => `${first.toUpperCase()}${rest}`)
+    .replace(/\bDr\b\.?/g, "Dr.")
+    .replace(/\bMr\b\.?/g, "Mr.")
+    .replace(/\bMrs\b\.?/g, "Mrs.")
+    .replace(/\bMs\b\.?/g, "Ms.");
+}
+
+export function normalizeChapterDisplayTitle(title = "") {
+  const original = String(title || "").trim();
+  if (!original) return "";
+  const withoutContinuation = original
+    .replace(/[_*`]+/g, "")
+    .replace(/\s*[.:]?\s*(?:--|—|-)\s*continued\.?\s*$/i, "")
+    .replace(/\s+(?:continued)\.?\s*$/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const chapterMatch = withoutContinuation.match(/^chapter\s+([ivxlcdm]+|\d+)\.?\s*(.*)$/i);
+  if (!chapterMatch) return smartTitleCaseSegment(withoutContinuation);
+  const [, numeral, remainder] = chapterMatch;
+  const normalizedRemainder = smartTitleCaseSegment(remainder);
+  return normalizedRemainder
+    ? `Chapter ${String(numeral).toUpperCase()}. ${normalizedRemainder}`
+    : `Chapter ${String(numeral).toUpperCase()}`;
+}
+
 export const DRACULA_FALLBACK_BOOK = {
   slug: LIVE_APPROVED_SLUG,
   title: "Dracula",
@@ -45,11 +78,14 @@ export const PIPELINE_BOOKS = [
     author: "Rabindranath Tagore",
     category_slug: "bengali-gothic",
     statusLabel: "Tier A source-backed candidate with CC BY-SA attribution/share-alike compliance required",
+    short_description:
+      "A Bengali Gothic candidate in rights-safe preparation. It is not public reading inventory yet.",
     pipeline_stage: "PIPELINE_ONLY",
     rights_tier: "A",
     verification_status: "candidate_review",
     audio_preview_status: "AUDIO_PREVIEW_BLOCKED_UNTIL_PROVIDER_QA",
     audiobook_enabled: false,
+    cover_status: "OWNER_PROVIDED_LOCAL_COVER_READY",
     cover_image_url: KSHUDHITA_PASHAN_FRONT_COVER_IMAGE,
     thumbnail_url: KSHUDHITA_PASHAN_FRONT_COVER_IMAGE,
     back_cover_image_url: KSHUDHITA_PASHAN_BACK_COVER_IMAGE,
@@ -61,6 +97,9 @@ export const PIPELINE_BOOKS = [
     author: "Mary Wollstonecraft Shelley",
     category_slug: "gothic-fiction",
     statusLabel: "Coming through rights review",
+    short_description: "A future Gothic shelf candidate. Cover evidence remains pending, so this card stays in preparation.",
+    pipeline_stage: "PIPELINE_ONLY",
+    cover_status: "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   },
   {
     slug: "sherlock-holmes",
@@ -68,6 +107,9 @@ export const PIPELINE_BOOKS = [
     author: "Arthur Conan Doyle",
     category_slug: "classic-literature",
     statusLabel: "Logic workbook candidate",
+    short_description: "A reasoning and classic-detective candidate awaiting rights-safe production evidence.",
+    pipeline_stage: "PIPELINE_ONLY",
+    cover_status: "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   },
   {
     slug: "sultanas-dream",
@@ -75,6 +117,9 @@ export const PIPELINE_BOOKS = [
     author: "Rokeya Sakhawat Hossain",
     category_slug: "science-fiction",
     statusLabel: "Rights-safe pipeline",
+    short_description: "A science-fiction classic candidate held until source, rights, and QA gates are complete.",
+    pipeline_stage: "PIPELINE_ONLY",
+    cover_status: "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   },
   {
     slug: "calculus-made-easy",
@@ -82,6 +127,9 @@ export const PIPELINE_BOOKS = [
     author: "Silvanus P. Thompson",
     category_slug: "study-material",
     statusLabel: "Visual guide candidate",
+    short_description: "A study-material candidate for future guided reading, not a live paid reading product.",
+    pipeline_stage: "PIPELINE_ONLY",
+    cover_status: "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
   },
 ];
 
@@ -90,7 +138,7 @@ export const KSHUDHITA_PASHAN_PIPELINE = {
   titleBn: "ক্ষুধিত পাষাণ",
   titleEn: "The Hungry Stones",
   author: "Rabindranath Tagore",
-  headline: "Pipeline classic: ক্ষুধিত পাষাণ",
+  headline: "Pipeline classic: The Hungry Stones",
   subcopy: "A Bengali Gothic candidate in rights-safe preparation.",
   statusLabel: "Pipeline only: source, rights, CC BY-SA compliance, text QA, and audio provider QA are still gated.",
   frontCoverImage: KSHUDHITA_PASHAN_FRONT_COVER_IMAGE,

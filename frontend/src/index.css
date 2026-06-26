@@ -1104,6 +1104,222 @@ body::before {
   }
 }
 
+.library-room-page {
+  background:
+    radial-gradient(ellipse 44% 38% at 82% 7%, rgba(197, 160, 89, 0.14), transparent 70%),
+    linear-gradient(180deg, #f5eee5 0%, #efe3d5 44%, #f8f4ed 100%);
+  color: var(--brand-charcoal);
+}
+
+.library-room-hero {
+  min-height: min(590px, calc(100vh - 4.5rem));
+  background:
+    linear-gradient(90deg, rgba(12, 5, 6, 0.95) 0%, rgba(26, 10, 12, 0.88) 43%, rgba(63, 37, 20, 0.48) 74%, rgba(14, 6, 4, 0.62) 100%),
+    radial-gradient(ellipse 34% 46% at 82% 46%, rgba(236, 198, 112, 0.26), transparent 70%),
+    var(--library-room-bg) center center / cover no-repeat,
+    linear-gradient(118deg, #13070b 0%, #211016 46%, #3f171f 78%, #1b0b10 100%);
+}
+
+.library-room-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 58% 56% at 28% 42%, rgba(8, 3, 5, 0.08), rgba(8, 3, 5, 0.52) 78%, rgba(8, 3, 5, 0.76) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.42) 100%);
+}
+
+.library-room-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 18%;
+  z-index: -1;
+  background: linear-gradient(to top, rgba(245, 238, 229, 0.98) 0%, rgba(245, 238, 229, 0.58) 48%, transparent 100%);
+}
+
+.library-hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.75rem;
+  max-width: 45rem;
+}
+
+.library-hero-facts span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  border: 1px solid rgba(216, 185, 122, 0.22);
+  border-radius: 999px;
+  padding: 0.34rem 0.6rem;
+  background: rgba(253, 252, 248, 0.055);
+  color: rgba(244, 239, 234, 0.86);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.library-hero-book-object {
+  border: 1px solid rgba(216, 185, 122, 0.24);
+  border-radius: 8px;
+  padding: 1.25rem 1.15rem 1.35rem;
+  background:
+    linear-gradient(155deg, rgba(253, 252, 248, 0.13), rgba(253, 252, 248, 0.035)),
+    linear-gradient(180deg, rgba(55, 30, 18, 0.14), rgba(17, 7, 11, 0.52));
+  box-shadow:
+    0 34px 72px -54px rgba(0, 0, 0, 0.96),
+    inset 0 1px 0 rgba(253, 252, 248, 0.12);
+  backdrop-filter: blur(3px);
+}
+
+.library-hero-cover-frame {
+  border: 1px solid rgba(216, 185, 122, 0.36);
+  border-radius: 7px;
+  background: #14080c;
+  box-shadow:
+    0 30px 62px -34px rgba(0, 0, 0, 0.95),
+    0 0 0 7px rgba(253, 252, 248, 0.045),
+    0 0 58px -34px rgba(216, 185, 122, 0.9);
+}
+
+.library-room-page .premium-dracula-cover-img {
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.09);
+}
+
+.library-pipeline-feature {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  border: 1px solid rgba(74, 28, 39, 0.12);
+  border-radius: 8px;
+  padding: 1.25rem;
+  background:
+    radial-gradient(ellipse 52% 58% at 0% 0%, rgba(74, 28, 39, 0.1), transparent 72%),
+    linear-gradient(145deg, rgba(253, 252, 248, 0.86), rgba(244, 239, 234, 0.64));
+  box-shadow: 0 26px 62px -50px rgba(74, 28, 39, 0.5);
+}
+
+.library-pipeline-feature__covers {
+  display: flex;
+  justify-content: center;
+}
+
+.library-kshudhita-stack {
+  position: relative;
+  width: min(20rem, 78vw);
+  min-height: 22rem;
+  isolation: isolate;
+}
+
+.library-kshudhita-stack__front,
+.library-kshudhita-stack__back {
+  position: absolute;
+  display: block;
+  width: 62%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border: 1px solid rgba(216, 185, 122, 0.32);
+  border-radius: 7px;
+  box-shadow:
+    0 28px 58px -38px rgba(16, 9, 12, 0.88),
+    0 0 0 6px rgba(253, 252, 248, 0.62);
+}
+
+.library-kshudhita-stack__front {
+  z-index: 2;
+  left: 1.2rem;
+  top: 0.35rem;
+}
+
+.library-kshudhita-stack__back {
+  z-index: 1;
+  left: 6.2rem;
+  top: 1.45rem;
+  opacity: 0.78;
+  filter: saturate(0.9) brightness(0.85);
+  transform: rotate(3deg);
+}
+
+.library-pipeline-feature__placeholder {
+  display: grid;
+  min-height: 16rem;
+  width: min(20rem, 76vw);
+  place-items: center;
+  border: 1px solid rgba(216, 185, 122, 0.32);
+  border-radius: 8px;
+  color: rgba(74, 28, 39, 0.62);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.library-pipeline-feature__copy {
+  padding: 0.5rem;
+}
+
+.library-shelf-toolbar {
+  border-top: 1px solid rgba(74, 28, 39, 0.12);
+  border-bottom: 1px solid rgba(74, 28, 39, 0.12);
+}
+
+.book-card__secondary-title {
+  margin-top: -0.35rem;
+  color: rgba(74, 28, 39, 0.58);
+  font-family: 'Noto Serif Bengali', 'Cormorant Garamond', serif;
+  font-size: 0.96rem;
+  line-height: 1.35;
+}
+
+.book-card--pipeline {
+  background:
+    linear-gradient(180deg, rgba(253, 252, 248, 0.86), rgba(244, 239, 234, 0.68));
+}
+
+@media (min-width: 768px) {
+  .library-pipeline-feature {
+    grid-template-columns: 0.78fr 1.22fr;
+    padding: 1.65rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .library-room-hero {
+    min-height: auto;
+    background-position: 58% center, center center, 58% center, center center;
+  }
+  .library-room-hero::after {
+    height: 9%;
+  }
+  .library-hero-facts {
+    display: grid;
+    gap: 0.42rem;
+  }
+  .library-hero-facts span {
+    width: 100%;
+    font-size: 0.58rem;
+  }
+  .library-hero-book-object {
+    max-width: 18rem;
+  }
+  .library-kshudhita-stack {
+    min-height: 19rem;
+  }
+  .library-kshudhita-stack__front,
+  .library-kshudhita-stack__back {
+    width: 66%;
+  }
+  .library-kshudhita-stack__front {
+    left: 0.35rem;
+  }
+  .library-kshudhita-stack__back {
+    left: 4.9rem;
+  }
+}
+
 .book-cover-image {
   display: block;
   position: relative;
@@ -1144,17 +1360,90 @@ body::before {
 
 .book-cover-image__fallback {
   display: grid;
+  position: relative;
   width: 100%;
   height: 100%;
-  place-items: center;
-  padding: 1rem;
-  color: var(--brand-burgundy);
+  overflow: hidden;
+  align-content: end;
+  justify-items: start;
+  gap: 0.35rem;
+  padding: 1.1rem;
+  color: var(--brand-ivory);
   font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
-  font-size: clamp(3rem, 16vw, 5rem);
-  line-height: 1;
+  font-size: 1rem;
+  line-height: 1.08;
   background:
-    radial-gradient(ellipse 75% 55% at 50% 18%, rgba(253, 252, 248, 0.86), transparent 72%),
-    var(--brand-beige-deep);
+    linear-gradient(180deg, rgba(25, 10, 14, 0.08), rgba(25, 10, 14, 0.82)),
+    radial-gradient(ellipse 78% 42% at 28% 16%, rgba(216, 185, 122, 0.34), transparent 66%),
+    linear-gradient(145deg, #4a1c27 0%, #261015 48%, #6b4a24 100%);
+}
+
+.book-cover-image__fallback::before {
+  content: "";
+  position: absolute;
+  inset: 0.7rem;
+  border: 1px solid rgba(216, 185, 122, 0.38);
+  border-radius: 0.35rem;
+  pointer-events: none;
+}
+
+.book-cover-image__fallback::after {
+  content: "";
+  position: absolute;
+  inset: 1.05rem 1.05rem auto;
+  height: 0.26rem;
+  border-top: 1px solid rgba(216, 185, 122, 0.42);
+  border-bottom: 1px solid rgba(253, 252, 248, 0.15);
+  pointer-events: none;
+}
+
+.book-cover-image__fallback-mark {
+  position: absolute;
+  top: 1.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(216, 185, 122, 0.25);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.4rem, 14vw, 5.8rem);
+  line-height: 1;
+}
+
+.book-cover-image__fallback-title {
+  position: relative;
+  z-index: 1;
+  display: block;
+  color: var(--brand-ivory);
+  font-size: clamp(1.35rem, 5.2vw, 2rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.book-cover-image__fallback-author,
+.book-cover-image__fallback-status {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-family: 'Outfit', 'Noto Sans Bengali', sans-serif;
+  text-transform: uppercase;
+}
+
+.book-cover-image__fallback-author {
+  max-width: 100%;
+  overflow: hidden;
+  color: rgba(253, 252, 248, 0.74);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.book-cover-image__fallback-status {
+  margin-top: 0.5rem;
+  border-top: 1px solid rgba(216, 185, 122, 0.28);
+  padding-top: 0.62rem;
+  color: rgba(216, 185, 122, 0.86);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
 }
 
 /* ----------- Eyebrows / overlines ----------- */
