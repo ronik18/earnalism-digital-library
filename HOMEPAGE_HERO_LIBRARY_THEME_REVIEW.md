@@ -31,12 +31,22 @@ Before this pass, the hero cover used a zoomed crop inside the premium frame. Th
 
 This pass keeps the same premium frame, glow, and shadow treatment while changing the displayed cover image to a contained, top-aligned presentation. The full `Dracula` title is now visible, the jacket no longer feels cropped, and the cover remains the flagship conversion object beside the hero copy.
 
+## Provenance And License Evidence
+
+- Source evidence: owner-provided `Golden Hour Library Hero Banner.png`.
+- Rights status: `OWNER_PROVIDED_ASSET_APPROVED_FOR_HOMEPAGE_HERO_USE`.
+- Committed derivative: `frontend/public/assets/hero/golden-hour-library-hero.webp`.
+- Optimization evidence: local WebP, 2400 x 1200, approximately 127 KB.
+- External dependency status: `NO_HOTLINKING`; the page does not load the hero image from a remote image host.
+- Public provenance policy: do not expose private workstation paths or internal production notes in reader-facing copy.
+
 ## Hero Design Rationale
 
 - The Golden Hour Library banner establishes a quiet reading-room atmosphere before the user reads any copy.
 - The left content zone keeps the message simple: Earnalism, Dracula, one approved classic, free Chapter 1, reading-time continuation.
 - The owner-designed Dracula cover remains the featured object on the right and is framed as an editorial library artifact.
 - The hero avoids the old broad-shelf claim pattern while using a real library-room visual language.
+- The lamplit shelves and reading table feel classical and editorial rather than stock-photo ecommerce because the image is treated as atmosphere behind a restrained Dracula-first composition, not as a generic selling banner.
 
 ## Copy Used
 

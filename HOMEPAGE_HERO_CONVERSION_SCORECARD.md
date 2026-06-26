@@ -18,6 +18,15 @@ Public-claims safety score: `10/10`
 
 The helper line `Reading time is used only while you read.` explains the pass/wallet model without buy/own-forever language and without making the hero noisy.
 
+## CTA And Status Copy Verification
+
+- Primary CTA: `Read Chapter 1 Free`
+- Secondary CTA: `Start Dracula`
+- Tertiary CTA: `Get 7-Day Reading Pass`
+- Status copy retained: `Audiobook experience in private review`
+- Status copy retained: `Approved classic reading release`
+- Status copy retained: `Public-domain source verified`
+
 ## Mobile Efficiency
 
 The mobile hero keeps the Dracula cover compact, keeps the primary CTA above the trust/status chips, preserves readable copy contrast, and avoids a second competing Dracula card above the fold.
