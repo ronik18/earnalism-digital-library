@@ -124,6 +124,9 @@ describe("UX conversion static signals", () => {
   const liveRazorpayCheckoutDrillReport = read("LIVE_RAZORPAY_CHECKOUT_DRILL_REPORT.md");
   const livePaymentFinalEvidenceReport = read("LIVE_PAYMENT_FINAL_EVIDENCE_REPORT.md");
   const audiobookParallelTrackStatus = read("AUDIOBOOK_PARALLEL_TRACK_STATUS.md");
+  const productionReadingOnlyDeployRunbook = read("PRODUCTION_READING_ONLY_DEPLOY_RUNBOOK.md");
+  const postDeployReadingOnlyCanaryReport = read("POST_DEPLOY_READING_ONLY_CANARY_REPORT.md");
+  const postDeployReadingCanary = read("scripts/post_deploy_reading_canary.mjs");
   const premiumLandingVisualReview = read("PREMIUM_LANDING_PAGE_VISUAL_REVIEW_REPORT.md");
   const luxuryVisualScorecard = read("LUXURY_VISUAL_AMBIENCE_SCORECARD.md");
   const pixelUtilizationScorecard = read("LANDING_PIXEL_UTILIZATION_GROWTH_SCORECARD.md");
@@ -151,6 +154,8 @@ describe("UX conversion static signals", () => {
     liveRazorpayCheckoutDrillReport,
     livePaymentFinalEvidenceReport,
     revenueLaunchChecklist,
+    productionReadingOnlyDeployRunbook,
+    postDeployReadingOnlyCanaryReport,
   ].join("\n");
 
   test("homepage exposes Dracula-first reading and reading-time CTAs", () => {
@@ -395,6 +400,38 @@ describe("UX conversion static signals", () => {
     expect(livePaymentEvidenceDocs).toContain("REDACTED_LOW_VALUE_AMOUNT");
     expect(livePaymentEvidenceDocs).toContain("REDACTED_REFERENCE_ONLY");
     expect(livePaymentEvidenceDocs).toContain("No payment ID, customer ID, card data, UPI data, bank data, invoice, screenshot, or secret is committed.");
+  });
+
+  test("production reading-only deploy workflow stays post-deploy gated and audio blocked", () => {
+    expect(productionReadingOnlyDeployRunbook).toContain("READY_FOR_OWNER_CONTROLLED_DEPLOY");
+    expect(productionReadingOnlyDeployRunbook).toContain("GO_READING_ONLY_PRODUCTION_DEPLOY_READY");
+    expect(productionReadingOnlyDeployRunbook).toContain("HOLD_POST_DEPLOY_CANARY_REQUIRED");
+    expect(productionReadingOnlyDeployRunbook).toContain("Do not mark launch complete until post-deploy canaries pass against production.");
+    expect(productionReadingOnlyDeployRunbook).toContain("No `ELEVENLABS_API_KEY` or ElevenLabs generation enablement variables are active");
+    expect(productionReadingOnlyDeployRunbook).toContain("Do not run a live checkout from this runbook unless the owner explicitly performs it outside the repository.");
+    expect(productionReadingOnlyDeployRunbook).toContain("Public audio release: `PUBLIC_AUDIO_RELEASE_BLOCKED`");
+    expect(productionReadingOnlyDeployRunbook).toContain("Audiobook production: `PRODUCTION_BLOCKED`");
+    expect(productionReadingOnlyDeployRunbook).toContain("Kshudhita Pashan and future titles: pipeline-only.");
+
+    expect(postDeployReadingOnlyCanaryReport).toContain("TEMPLATE_PENDING_PRODUCTION_DEPLOY");
+    expect(postDeployReadingOnlyCanaryReport).toContain("HOLD_POST_DEPLOY_CANARY_REQUIRED");
+    expect(postDeployReadingOnlyCanaryReport).toContain("No Listen Now CTA");
+    expect(postDeployReadingOnlyCanaryReport).toContain("No AudioObject metadata");
+    expect(postDeployReadingOnlyCanaryReport).toContain("No Kshudhita public CTA");
+    expect(postDeployReadingOnlyCanaryReport).toContain("No unapproved book payment CTA");
+    expect(postDeployReadingOnlyCanaryReport).toContain("Does not execute live payment.");
+    expect(postDeployReadingOnlyCanaryReport).toContain("Does not mutate production data.");
+
+    expect(packageJson).toContain('"launch:post-deploy-canary": "node scripts/post_deploy_reading_canary.mjs"');
+    expect(postDeployReadingCanary).toContain("PRODUCTION_BASE_URL");
+    expect(postDeployReadingCanary).toContain("GET");
+    expect(postDeployReadingCanary).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
+    expect(postDeployReadingCanary).toContain("PRODUCTION_BLOCKED");
+    expect(postDeployReadingCanary).toContain("live_payment_executed: false");
+    expect(postDeployReadingCanary).not.toMatch(/\bmethod:\s*["']POST["']/);
+    expect(postDeployReadingCanary).not.toMatch(/process\.env\.RAZORPAY/i);
+    expect(postDeployReadingCanary).not.toMatch(/process\.env\.ELEVENLABS/i);
+    expect(postDeployReadingCanary).not.toMatch(/\bAuthorization\s*:/);
   });
 
   test("reading-only launch public surfaces reject audio, catalog, accessibility, and ownership overclaims", () => {

@@ -98,6 +98,7 @@
     "launch:audio-audit": "python3 scripts/launch_readiness_audit.py --mode audio",
     "launch:payment-smoke": "python3 scripts/launch_readiness_audit.py --mode payment-smoke",
     "launch:payment-smoke:test-mode": "python3 scripts/launch_readiness_audit.py --mode payment-smoke-test-mode",
+    "launch:post-deploy-canary": "node scripts/post_deploy_reading_canary.mjs",
     "launch:post-deploy-route-canary": "python3 scripts/post_deploy_route_canary.py",
     "launch:readiness": "python3 scripts/launch_readiness_audit.py --mode all",
     "launch:line-audit": "python3 scripts/line_by_line_launch_audit.py",
