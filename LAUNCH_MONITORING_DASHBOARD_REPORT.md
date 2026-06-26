@@ -8,6 +8,8 @@ Status: OWNER_ADMIN_ONLY_DASHBOARD_READY
 - Backend endpoint: `GET /api/admin/launch-monitor/summary`
 - Access control: existing admin auth gate
 - Public access: blocked by admin login requirement
+- Required post-deploy auth canary: fresh non-admin browser access to `/admin/launch-monitor` must redirect to or block behind `/admin/login`
+- Required post-deploy API canary: unauthenticated `GET /api/admin/launch-monitor/summary` must return `401` or `403`
 
 ## Implemented Signals
 
@@ -87,6 +89,8 @@ Core Web Vitals are captured only when the first-party performance flag is enabl
 - Confirm Railway backend logs for unexpected error spikes.
 - Confirm Vercel frontend dashboard for traffic and deployment health.
 - Run `PRODUCTION_BASE_URL="https://theearnalism.com" npm run launch:post-deploy-canary` after every production change.
+- For the dashboard deployment, run `PRODUCTION_BASE_URL="https://theearnalism.com" PRODUCTION_API_BASE_URL="https://api.theearnalism.com" npm run launch:post-deploy-canary` and confirm the unauthenticated admin summary endpoint returns `401` or `403`.
+- Manually verify `/admin/launch-monitor` in a fresh incognito/non-admin browser session shows the admin login gate and no launch-monitor metrics.
 
 ## Public Truth
 
