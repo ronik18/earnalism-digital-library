@@ -28,7 +28,7 @@ const TOUR_STEPS = [
     targetSelectors: ['[data-testid="hero-dracula-card"]', '[data-testid="home-live-dracula"]'],
     eyebrow: "Live controlled release",
     title: "Dracula is the open room",
-    body: "The custom Earnalism Dracula cover marks the one approved core reading release. Audio is not available yet.",
+    body: "The custom Earnalism Dracula cover marks the one approved classic reading release. Audiobook experience is in private review.",
   },
   {
     key: "shelves",

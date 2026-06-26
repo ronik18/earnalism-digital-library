@@ -7,10 +7,11 @@ import BookCoverImage from "../components/BookCoverImage";
 import JsonLd from "../components/JsonLd";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import {
+  DRACULA_AUDIO_PRIVATE_REVIEW_NOTE,
   DRACULA_CHAPTER_COUNT,
   DRACULA_CTA_EVENTS,
+  DRACULA_PUBLIC_SOURCE_NOTE,
   DRACULA_RIGHTS_NOTE,
-  DRACULA_SOURCE_NOTE,
   LIVE_APPROVED_SLUG,
   mergeDraculaBook,
   readingPassUrl,
@@ -40,7 +41,7 @@ export default function BookDetail() {
     description: bookNotFound
       ? "This Earnalism book is no longer available."
       : publicBook?.slug === LIVE_APPROVED_SLUG
-        ? "Preview Dracula by Bram Stoker on Earnalism. Read Chapter 1 free and continue the approved Tier A core reading release with flexible reading-time access."
+        ? "Preview Dracula by Bram Stoker on Earnalism. Read Chapter 1 free and continue the approved classic reading release with flexible reading-time access."
         : publicBook?.short_description || publicBook?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
     image: publicBook?.cover_image_url,
     imageAlt: publicBook?.slug === LIVE_APPROVED_SLUG ? "Custom Earnalism Dracula cover artwork" : publicBook?.title,
@@ -196,10 +197,10 @@ export default function BookDetail() {
             <div id="rights-note" className="mt-8 rounded-lg border border-brand-soft bg-ivory-warm p-5 sm:p-6" data-testid="dracula-rights-note">
               <div className="italic-eyebrow mb-3">Controlled release note</div>
               <div className="grid gap-4 text-sm leading-relaxed text-charcoal-soft sm:grid-cols-2">
-                <p><strong className="text-burgundy">Source:</strong> {DRACULA_SOURCE_NOTE}</p>
+                <p><strong className="text-burgundy">Source:</strong> {DRACULA_PUBLIC_SOURCE_NOTE}</p>
                 <p><strong className="text-burgundy">Rights status:</strong> {DRACULA_RIGHTS_NOTE}</p>
                 <p><strong className="text-burgundy">First published:</strong> 1897</p>
-                <p><strong className="text-burgundy">Audio:</strong> Not available yet</p>
+                <p><strong className="text-burgundy">Audio:</strong> {DRACULA_AUDIO_PRIVATE_REVIEW_NOTE}</p>
               </div>
             </div>
           )}
@@ -235,7 +236,7 @@ export default function BookDetail() {
               <div className="grid gap-4 text-sm leading-relaxed text-charcoal-soft sm:grid-cols-3">
                 <p><strong className="text-burgundy">Preview:</strong> Chapter 1 opens free so you can feel the room first.</p>
                 <p><strong className="text-burgundy">Reading pass:</strong> Later chapters use reading time from your wallet, not a subscription.</p>
-                <p><strong className="text-burgundy">Audio:</strong> Dracula audio is not available yet and no listening CTA is shown.</p>
+                <p><strong className="text-burgundy">Audio:</strong> Dracula audiobook remains in private review and no listening CTA is shown.</p>
               </div>
             </div>
           )}

@@ -15,6 +15,7 @@ import { trackFunnelEvent } from "../lib/funnelAnalytics";
 function BookCard({ book, priority = false }) {
   const status = bookLaunchStatus(book);
   const isLiveApproved = status === "LIVE_APPROVED";
+  const isDracula = book.slug === "dracula";
   const showPreview = canShowPreview(book);
   const showStartReading = canShowStartReading(book);
   const statusLabel = isLiveApproved ? "Live controlled release" : "Coming Soon";
@@ -25,7 +26,7 @@ function BookCard({ book, priority = false }) {
 
   return (
     <div className="card-elegant overflow-hidden flex flex-col group" data-testid={`book-card-${book.slug}`} data-launch-status={status}>
-      <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className="block aspect-[3/4] bg-ivory-warm overflow-hidden relative">
+      <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className={`block aspect-[3/4] overflow-hidden relative ${isDracula ? "bg-[#17080d]" : "bg-ivory-warm"}`}>
         <BookCoverImage
           book={book}
           alt={book.title}
@@ -35,6 +36,8 @@ function BookCard({ book, priority = false }) {
           widths={[240, 320, 420]}
           quality={80}
           sizes="(min-width: 1024px) 300px, (min-width: 640px) 44vw, 92vw"
+          className={isDracula ? "book-cover-image--dracula-editorial" : undefined}
+          imgClassName={isDracula ? "book-cover-image__img--dracula-editorial" : undefined}
         />
       </Link>
       <div className="p-7 sm:p-8 flex flex-col gap-3 flex-1">

@@ -1305,7 +1305,12 @@ def run_payment_smoke() -> dict[str, Any]:
         "wallet_truth_copy_detected": "used only while you read" in public_payment_copy and "wallet" in public_payment_copy.lower(),
         "no_subscription_autorenewal_copy_detected": "No subscription or autorenewal" in public_payment_copy,
         "no_permanent_ownership_claim_detected": not any(term in public_payment_copy.lower() for term in forbidden_payment_claims),
-        "no_public_audiobook_sale_detected": "PUBLIC_AUDIO_RELEASE_BLOCKED" in server or "Dracula audio is not available yet" in public_payment_copy,
+        "no_public_audiobook_sale_detected": (
+            "PUBLIC_AUDIO_RELEASE_BLOCKED" in server
+            or "Dracula audio is not available yet" in public_payment_copy
+            or "Audiobook experience in private review" in public_payment_copy
+            or "Dracula audiobook remains in private review" in public_payment_copy
+        ),
         "analytics_schema_has_payment_events": set(PAYMENT_SMOKE_EVENTS).issubset(schema_events),
     }
     blockers = [key for key, passed in checks.items() if not passed and key not in {"no_external_razorpay_call"}]

@@ -22,11 +22,12 @@ import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import {
+  DRACULA_AUDIO_PRIVATE_REVIEW_NOTE,
   DRACULA_CHAPTER_COUNT,
   DRACULA_COVER_IMAGE,
   DRACULA_CTA_EVENTS,
+  DRACULA_PUBLIC_SOURCE_NOTE,
   DRACULA_RIGHTS_NOTE,
-  DRACULA_SOURCE_NOTE,
   KSHUDHITA_PASHAN_PIPELINE,
   LIVE_APPROVED_SLUG,
   PIPELINE_BOOKS,
@@ -69,7 +70,7 @@ export default function Home() {
   useSEO({
     title: "Begin with Dracula | The Earnalism Digital Library",
     description:
-      "Earnalism is live with Dracula as its first approved Tier A core reading release. Read Chapter 1 free, then continue with reading time as more classics move through a rights-safe pipeline.",
+      "Earnalism is live with Dracula as its approved classic reading release. Read Chapter 1 free, then continue with reading time as more classics move through a rights-safe pipeline.",
     image: liveBook.cover_image_url || DRACULA_COVER_IMAGE,
     imageAlt: "Custom Earnalism Dracula cover artwork",
     canonicalPath: "/",
@@ -121,7 +122,16 @@ export default function Home() {
                 <span>The Earnalism Digital Library</span>
               </div>
               <div className="premium-dracula-mobile-object lg:hidden" aria-hidden="true">
-                <BookCoverImage book={liveBook} alt="" loading="eager" width={180} widths={[120, 180, 240]} sizes="82px" />
+                <BookCoverImage
+                  book={liveBook}
+                  alt=""
+                  loading="eager"
+                  width={180}
+                  widths={[120, 180, 240]}
+                  sizes="82px"
+                  className="book-cover-image--dracula-editorial"
+                  imgClassName="book-cover-image__img--dracula-editorial"
+                />
               </div>
             </div>
             <h1
@@ -135,7 +145,7 @@ export default function Home() {
               A quiet digital reading room for timeless books.
             </p>
             <p className="mt-2 max-w-2xl text-[0.84rem] font-light leading-[1.52] text-[#F4EFEA]/82 min-[390px]:text-[0.88rem] sm:text-[0.98rem] sm:leading-[1.68] lg:mt-4">
-              The Earnalism controlled launch starts with one approved classic. Read Chapter 1 free. Continue with a 7-day reading pass. More books are coming through the rights-safe pipeline.
+              Step into a restrained reading room built around one approved classic. Chapter 1 opens free; later chapters continue with a 7-day reading pass while future titles remain in rights-safe review.
             </p>
             <p className="mt-2 max-w-xl text-[0.68rem] uppercase tracking-[0.15em] text-[var(--brand-gold-soft)]/92 sm:mt-3 sm:text-[0.74rem]">
               Chapter 1 is free. Reading time is used only while you read.
@@ -177,21 +187,30 @@ export default function Home() {
             <div className="premium-launch-facts mt-3" aria-label="Dracula launch facts">
               <span className="inline-flex items-center gap-2"><ShieldCheck size={14} strokeWidth={1.6} /> {DRACULA_RIGHTS_NOTE}</span>
               <span className="inline-flex items-center gap-2"><BookOpen size={14} strokeWidth={1.6} /> Chapter 1 free</span>
-              <span className="inline-flex items-center gap-2"><Headphones size={14} strokeWidth={1.6} /> Audio not available yet</span>
+              <span className="inline-flex items-center gap-2"><Headphones size={14} strokeWidth={1.6} /> {DRACULA_AUDIO_PRIVATE_REVIEW_NOTE}</span>
             </div>
           </div>
 
           <div className="hidden lg:col-span-5 lg:block">
             <div className="premium-dracula-hero-card mx-auto max-w-[430px] rounded-lg border border-[#FDFCF8]/16 p-4 shadow-[0_34px_80px_-42px_rgba(0,0,0,0.72)] backdrop-blur" data-testid="hero-dracula-card">
-              <div className="premium-dracula-cover-frame mx-auto aspect-[500/696] max-w-[224px] overflow-hidden rounded-md border border-[#FDFCF8]/18 bg-[#F4EFEA]" data-testid="hero-dracula-cover-frame">
-                <BookCoverImage book={liveBook} alt="Custom Earnalism Dracula cover artwork" loading="eager" width={420} widths={[300, 420, 640]} sizes="(min-width: 1024px) 280px, 70vw" />
+              <div className="premium-dracula-cover-frame premium-dracula-cover-frame--editorial mx-auto aspect-[500/696] max-w-[224px] overflow-hidden rounded-md border border-[#FDFCF8]/18 bg-[#17080d]" data-testid="hero-dracula-cover-frame">
+                <BookCoverImage
+                  book={liveBook}
+                  alt="Custom Earnalism Dracula cover artwork"
+                  loading="eager"
+                  width={420}
+                  widths={[300, 420, 640]}
+                  sizes="(min-width: 1024px) 280px, 70vw"
+                  className="book-cover-image--dracula-editorial"
+                  imgClassName="book-cover-image__img--dracula-editorial"
+                />
               </div>
               <div className="mt-3 text-center">
-                <div className="text-[0.62rem] uppercase tracking-[0.22em] text-[var(--brand-gold-soft)]">Live controlled release</div>
+                <div className="text-[0.62rem] uppercase tracking-[0.22em] text-[var(--brand-gold-soft)]">{DRACULA_RIGHTS_NOTE}</div>
                 <h2 className="mt-1.5 font-serif-display text-[1.82rem] text-[#FDFCF8]">Dracula</h2>
                 <p className="mt-1.5 text-[0.72rem] uppercase tracking-[0.14em] text-[#F4EFEA]/76">by Bram Stoker</p>
                 <p className="mx-auto mt-3 max-w-sm text-[0.78rem] leading-relaxed text-[#F4EFEA]/72">
-                  {DRACULA_CHAPTER_COUNT} chapters. Source: {DRACULA_SOURCE_NOTE}. Audio is not available yet.
+                  {DRACULA_CHAPTER_COUNT} chapters. {DRACULA_PUBLIC_SOURCE_NOTE}. {DRACULA_AUDIO_PRIVATE_REVIEW_NOTE}.
                 </p>
               </div>
             </div>
@@ -243,7 +262,7 @@ export default function Home() {
               icon={ShieldCheck}
               eyebrow="Slide 2"
               title="Rights-safe source"
-              body={`Source: ${DRACULA_SOURCE_NOTE}. This launch is scoped to the approved core reading candidate only.`}
+              body={`${DRACULA_PUBLIC_SOURCE_NOTE}. This launch is scoped to the approved classic reading release only.`}
               primary={{ label: "View source note", to: `/book/${LIVE_APPROVED_SLUG}#rights-note`, event: DRACULA_CTA_EVENTS.bookView }}
             />
             <CarouselSlide
@@ -316,14 +335,23 @@ export default function Home() {
             <div className="overline mb-4">Live Controlled Release</div>
             <h2 className="font-serif-light text-4xl leading-tight text-burgundy sm:text-5xl">Dracula is the only open reading room.</h2>
             <p className="mt-5 text-charcoal-soft leading-[1.85]">
-              Earnalism is live, but intentionally narrow: one approved Tier A classic, one core reading experience, and a visible rights trail.
+              Earnalism is live, but intentionally narrow: one approved classic, one core reading experience, and a visible rights trail.
             </p>
           </div>
           <div className="lg:col-span-7">
             <div className="card-elegant p-7 sm:p-9" data-testid="home-live-dracula">
               <div className="flex flex-col gap-7 sm:flex-row">
-                <div className="w-full max-w-[180px] shrink-0 overflow-hidden rounded-md border border-brand-soft bg-ivory-warm">
-                  <BookCoverImage book={liveBook} alt="Dracula cover" loading="lazy" width={320} widths={[220, 320, 480]} sizes="180px" />
+                <div className="premium-dracula-shelf-cover w-full max-w-[180px] shrink-0 overflow-hidden rounded-md border border-brand-soft bg-[#17080d]">
+                  <BookCoverImage
+                    book={liveBook}
+                    alt="Dracula cover"
+                    loading="lazy"
+                    width={320}
+                    widths={[220, 320, 480]}
+                    sizes="180px"
+                    className="book-cover-image--dracula-editorial"
+                    imgClassName="book-cover-image__img--dracula-editorial"
+                  />
                 </div>
                 <div className="min-w-0 flex-1">
                   <span className="overline">Gothic fiction</span>
@@ -332,8 +360,8 @@ export default function Home() {
                   <ul className="mt-5 grid gap-2 text-sm leading-relaxed text-charcoal-soft sm:grid-cols-2">
                     <li className="inline-flex gap-2"><CheckCircle2 size={16} className="mt-0.5 text-gold" /> 27 chapters</li>
                     <li className="inline-flex gap-2"><CheckCircle2 size={16} className="mt-0.5 text-gold" /> Chapter 1 free</li>
-                    <li className="inline-flex gap-2"><CheckCircle2 size={16} className="mt-0.5 text-gold" /> Tier A approved</li>
-                    <li className="inline-flex gap-2"><LockKeyhole size={16} className="mt-0.5 text-gold" /> Audio not available yet</li>
+                    <li className="inline-flex gap-2"><CheckCircle2 size={16} className="mt-0.5 text-gold" /> {DRACULA_RIGHTS_NOTE}</li>
+                    <li className="inline-flex gap-2"><LockKeyhole size={16} className="mt-0.5 text-gold" /> {DRACULA_AUDIO_PRIVATE_REVIEW_NOTE}</li>
                   </ul>
                   <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                     <Link to={`/reader/${LIVE_APPROVED_SLUG}`} className="btn-secondary justify-center" data-testid="home-dracula-preview" onClick={() => track(DRACULA_CTA_EVENTS.previewStart, { cta: "live_shelf_preview" })}>
@@ -391,8 +419,8 @@ export default function Home() {
           </div>
           <div className="card-elegant p-7 sm:p-9" data-testid="audiobook-unavailable">
             <div className="overline mb-3">Audiobooks</div>
-            <h3 className="font-serif-display text-3xl text-burgundy">Audio is being prepared through QA.</h3>
-            <p className="mt-5 text-charcoal-soft leading-[1.8]">Dracula audiobook is not available yet. There are no play buttons, waveforms, or audiobook CTAs in this launch.</p>
+            <h3 className="font-serif-display text-3xl text-burgundy">Audiobook experience is in private review.</h3>
+            <p className="mt-5 text-charcoal-soft leading-[1.8]">The full Chapter 1 audiobook remains internal while highlighted-text sync, player QA, and accessibility review continue. No play buttons, waveforms, or public listening CTAs are part of this launch.</p>
           </div>
         </div>
       </section>

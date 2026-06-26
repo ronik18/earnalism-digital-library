@@ -165,9 +165,9 @@ describe("UX conversion static signals", () => {
     expect(home).toContain('aria-label="Begin with Dracula."');
     expect(home).toContain("Begin with");
     expect(home).toContain("Dracula.");
-    expect(home).toContain("The Earnalism controlled launch starts with one approved classic.");
-    expect(home).toContain("Read Chapter 1 free. Continue with a 7-day reading pass.");
-    expect(home).toContain("More books are coming through the rights-safe pipeline.");
+    expect(home).toContain("Step into a restrained reading room built around one approved classic.");
+    expect(home).toContain("Chapter 1 opens free; later chapters continue with a 7-day reading pass");
+    expect(home).toContain("future titles remain in rights-safe review.");
     expect(home).toContain("Read Chapter 1 Free");
     expect(home).toContain("Start Dracula");
     expect(home).toContain("Get 7-Day Reading Pass");
@@ -194,12 +194,21 @@ describe("UX conversion static signals", () => {
 
     expect(home).toContain('data-testid="premium-landing-hero"');
     expect(home).toContain('data-testid="hero-dracula-cover-frame"');
+    expect(home).toContain("book-cover-image--dracula-editorial");
     expect(home).toContain("Custom Earnalism Dracula cover artwork");
+    expect(home).toContain("DRACULA_AUDIO_PRIVATE_REVIEW_NOTE");
+    expect(home).toContain("DRACULA_RIGHTS_NOTE");
+    expect(home).toContain("DRACULA_PUBLIC_SOURCE_NOTE");
     expect(home).not.toContain("images.unsplash.com");
+    expect(home).not.toContain("Audio not available yet");
+    expect(home).not.toContain("Approved Tier A Core Reading Candidate");
     expect(home).not.toMatch(/lg:pt-36|lg:pb-32|sm:pt-32|pb-24/);
 
     expect(controlledLaunch).toContain('DRACULA_COVER_IMAGE = "/assets/books/dracula/dracula-front-cover.webp"');
     expect(controlledLaunch).toContain('DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cover.webp"');
+    expect(controlledLaunch).toContain('DRACULA_AUDIO_PRIVATE_REVIEW_NOTE = "Audiobook experience in private review"');
+    expect(controlledLaunch).toContain('DRACULA_RIGHTS_NOTE = "Approved classic reading release"');
+    expect(controlledLaunch).toContain('DRACULA_PUBLIC_SOURCE_NOTE = "Public-domain source verified"');
     expect(controlledLaunch).toContain("cover_image_url: DRACULA_COVER_IMAGE");
     expect(controlledLaunch).toContain("cover_url: DRACULA_COVER_IMAGE");
     expect(controlledLaunch).toContain("thumbnail_url: DRACULA_COVER_IMAGE");
@@ -232,6 +241,8 @@ describe("UX conversion static signals", () => {
 
     expect(styles).toContain(".premium-landing-hero");
     expect(styles).toContain(".premium-dracula-cover-frame");
+    expect(styles).toContain(".book-cover-image--dracula-editorial");
+    expect(styles).toContain(".book-cover-image__img--dracula-editorial");
     expect(styles).not.toMatch(/letter-spacing:\s*-\d/);
 
     const premiumLandingSources = [
@@ -241,7 +252,18 @@ describe("UX conversion static signals", () => {
       luxuryVisualScorecard,
       pixelUtilizationScorecard,
     ].join("\n");
+    const premiumPublicCopySources = [
+      home,
+      bookDetail,
+      library,
+      firstVisitSiteTour,
+      controlledLaunch,
+      staticSnapshotGenerator,
+    ].join("\n");
     expect(premiumLandingSources).not.toMatch(/\b(audio|audiobook)\s+(is|are)\s+(live|public|available|ready)\b/i);
+    expect(premiumPublicCopySources).not.toMatch(/\bAudio not available yet\b/i);
+    expect(premiumPublicCopySources).not.toMatch(/\bApproved Tier A Core Reading Candidate\b/i);
+    expect(premiumPublicCopySources).not.toMatch(/\bApproved Tier A core reading candidate\b/i);
     expect(premiumLandingSources).not.toMatch(/\bListen Now\b/i);
     expect(premiumLandingSources).not.toMatch(/\bKshudhita Pashan\b[\s\S]{0,160}\b(Start Reading|Read Preview|Listen Now|public reader|public audio)\b/i);
     expect(premiumLandingSources).not.toMatch(/\b(all|every|100\+|105)\s+(books|classics|titles)\s+(are\s+)?(live|available|readable)\b/i);
@@ -255,7 +277,7 @@ describe("UX conversion static signals", () => {
     expect(library).toContain("Live Controlled Release:</strong> Dracula only.");
     expect(library).toContain("Coming Through the Rights-Safe Pipeline");
     expect(library).toContain("Coming Through the Rights-Safe Pipeline:</strong> future titles only.");
-    expect(library).toContain("Dracula is the only live approved core reading release today.");
+    expect(library).toContain("Dracula is the only live approved classic reading release today.");
     expect(library).toContain("These books are not live products yet. They have Notify Me CTAs only.");
     expect(library).toContain("Unapproved titles show Coming Soon / Notify Me only.");
     expect(library).toContain("Read Chapter 1 Free");
@@ -263,13 +285,13 @@ describe("UX conversion static signals", () => {
     expect(library).toContain("Notify Me");
     expect(bookDetail).toContain('data-testid="read-preview"');
     expect(bookDetail).toContain('data-testid="bottom-buy-reading-time"');
-    expect(bookDetail).toContain("DRACULA_SOURCE_NOTE");
-    expect(bookDetail).toContain("Audio:</strong> Not available yet");
+    expect(bookDetail).toContain("DRACULA_PUBLIC_SOURCE_NOTE");
+    expect(bookDetail).toContain("Audio:</strong> {DRACULA_AUDIO_PRIVATE_REVIEW_NOTE}");
     expect(bookDetail).toContain("readingPassUrl(\"book_detail\")");
     expect(bookDetail).toContain('data-testid="dracula-reading-model-note"');
     expect(bookDetail).toContain("Chapter 1 opens free so you can feel the room first.");
     expect(bookDetail).toContain("Later chapters use reading time from your wallet, not a subscription.");
-    expect(bookDetail).toContain("Dracula audio is not available yet and no listening CTA is shown.");
+    expect(bookDetail).toContain("Dracula audiobook remains in private review and no listening CTA is shown.");
   });
 
   test("payment revenue confidence stays test-mode, wallet-time, and audio-blocked", () => {
@@ -781,6 +803,9 @@ describe("UX conversion static signals", () => {
     expect(alwaysVisibleLaunchCopy).not.toMatch(/\bfull audiobook\b[\s\S]{0,80}\b(available|live|ready|published)\b/i);
     expect(alwaysVisibleLaunchCopy).not.toMatch(/\baudiobooks are live\b/i);
     expect(alwaysVisibleLaunchCopy).not.toMatch(/\bDracula audio is available\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\bAudio not available yet\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\bApproved Tier A Core Reading Candidate\b/i);
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/\bApproved Tier A core reading candidate\b/i);
     expect(alwaysVisibleLaunchCopy).not.toMatch(/\bblind[- ]user tested\b/i);
     expect(alwaysVisibleLaunchCopy).not.toMatch(/\bWCAG compliant\b/i);
     expect(alwaysVisibleLaunchCopy).not.toMatch(/\bfully accessible audiobook platform\b/i);
@@ -1212,7 +1237,7 @@ describe("UX conversion static signals", () => {
     expect(metaContent(bookHtml, "name", "twitter:card")).toBe("summary_large_image");
     expect(bookHtml).toContain('"@type": "Book"');
     expect(bookHtml).toContain('"@type": "BreadcrumbList"');
-    expect(bookHtml).toContain("Project Gutenberg eBook #345");
+    expect(bookHtml).toContain("Public-domain source verified");
     expect(bookHtml).not.toMatch(/aggregateRating|"review"\s*:/i);
     expect(bookHtml).not.toMatch(/Listen Now|audiobook available/i);
     expect(bookHtml).not.toContain("Preview every book before you pay");

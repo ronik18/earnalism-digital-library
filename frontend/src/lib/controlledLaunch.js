@@ -2,7 +2,9 @@ export const LIVE_APPROVED_SLUG = "dracula";
 export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 
 export const DRACULA_SOURCE_NOTE = "Project Gutenberg eBook #345";
-export const DRACULA_RIGHTS_NOTE = "Approved Tier A core reading candidate";
+export const DRACULA_PUBLIC_SOURCE_NOTE = "Public-domain source verified";
+export const DRACULA_RIGHTS_NOTE = "Approved classic reading release";
+export const DRACULA_AUDIO_PRIVATE_REVIEW_NOTE = "Audiobook experience in private review";
 export const DRACULA_CHAPTER_COUNT = 27;
 export const DRACULA_COVER_IMAGE = "/assets/books/dracula/dracula-front-cover.webp";
 export const DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cover.webp";
@@ -16,7 +18,7 @@ export const DRACULA_FALLBACK_BOOK = {
   short_description:
     "Begin Bram Stoker's gothic classic in a quiet digital reading room. Chapter 1 is free; the full core reading experience continues with reading time.",
   description:
-    "Dracula is the first controlled Earnalism release: a Tier A approved core reading candidate with 27 chapters, a rights-safe source trail, and no audiobook enabled yet.",
+    "Dracula is the first controlled Earnalism release: an approved classic reading release with 27 chapters, verified public-domain source evidence, and an audiobook experience held in private review.",
   estimated_reading_time: "14 min",
   cover_image_url: DRACULA_COVER_IMAGE,
   thumbnail_url: DRACULA_COVER_IMAGE,

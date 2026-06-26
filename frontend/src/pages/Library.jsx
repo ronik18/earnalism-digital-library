@@ -8,8 +8,8 @@ import BookCoverImage from "../components/BookCoverImage";
 import {
   DRACULA_CHAPTER_COUNT,
   DRACULA_CTA_EVENTS,
+  DRACULA_PUBLIC_SOURCE_NOTE,
   DRACULA_RIGHTS_NOTE,
-  DRACULA_SOURCE_NOTE,
   KSHUDHITA_PASHAN_PIPELINE,
   LIVE_APPROVED_SLUG,
   PIPELINE_BOOKS,
@@ -38,7 +38,7 @@ export default function Library() {
   useSEO({
     title: "Library | Dracula Is Live on Earnalism",
     description:
-      "The Earnalism library is in controlled launch: Dracula is the only live approved core reading release. Future classics are shown as Coming Soon until rights and QA are complete.",
+      "The Earnalism library is in controlled launch: Dracula is the only live approved classic reading release. Future classics are shown as Coming Soon until rights and QA are complete.",
     image: liveBook.cover_image_url,
     imageAlt: "Dracula on Earnalism",
     canonicalPath: cat === "all" ? "/library" : `/library?category=${cat}`,
@@ -89,7 +89,7 @@ export default function Library() {
           One live classic, with the next shelves moving carefully through review.
         </h1>
         <p className="mt-7 max-w-2xl text-charcoal-soft leading-[1.85] font-light">
-          Dracula is the only live approved core reading release today. Other titles appear only as Coming Soon until their rights, source, QA, and publication gates pass.
+          Dracula is the only live approved classic reading release today. Other titles appear only as Coming Soon until their rights, source, QA, and publication gates pass.
         </p>
         <div className="mt-7 grid gap-3 text-sm leading-relaxed text-charcoal-soft sm:grid-cols-2">
           <div className="rounded-md border border-brand-soft bg-white/45 px-4 py-3">
@@ -201,7 +201,7 @@ export default function Library() {
                         <div><dt className="overline">Preview</dt><dd>Chapter 1 unlocked</dd></div>
                         <div><dt className="overline">Audio</dt><dd>Not available yet</dd></div>
                         <div><dt className="overline">Rights</dt><dd>{DRACULA_RIGHTS_NOTE}</dd></div>
-                        <div><dt className="overline">Source</dt><dd>{DRACULA_SOURCE_NOTE}</dd></div>
+                        <div><dt className="overline">Source</dt><dd>{DRACULA_PUBLIC_SOURCE_NOTE}</dd></div>
                       </dl>
                       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                         <Link to={`/reader/${LIVE_APPROVED_SLUG}`} className="btn-secondary justify-center" data-testid="library-dracula-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: LIVE_APPROVED_SLUG, cta: "library_preview" })}>
@@ -251,9 +251,9 @@ export default function Library() {
             {showAudiobooks && (
               <section className="card-elegant p-8 sm:p-10" data-testid="shelf-audiobooks">
                 <div className="overline mb-3">Shelf 4</div>
-                <h2 className="font-serif-display text-3xl text-burgundy">Audiobooks are not live in this launch.</h2>
+                <h2 className="font-serif-display text-3xl text-burgundy">Audiobook experience is in private review.</h2>
                 <p className="mt-5 max-w-2xl text-charcoal-soft leading-[1.8]">
-                  Audio is being prepared through rights and listening QA. Dracula audiobook is not available yet, so no play buttons or waveform controls are shown.
+                  Dracula audio remains internal while rights evidence, listening QA, player sync, and accessibility review continue. No play buttons or waveform controls are shown.
                 </p>
                 <div className="mt-6 inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-gold-deep">
                   <Headphones size={15} /> Audio QA pending
