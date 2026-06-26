@@ -10,6 +10,9 @@ const OUTPUT_DIR = path.join(ROOT, "output", "launch");
 
 const DEFAULT_BASE_URL = "https://theearnalism.com";
 const BASE_URL = normalizeBaseUrl(process.env.PRODUCTION_BASE_URL || DEFAULT_BASE_URL);
+const API_BASE_URL = process.env.PRODUCTION_API_BASE_URL
+  ? normalizeBaseUrl(process.env.PRODUCTION_API_BASE_URL)
+  : "";
 const TIMEOUT_MS = Number(process.env.POST_DEPLOY_CANARY_TIMEOUT_MS || 10000);
 const OPTIONAL_PAYMENT_STATUS_PATH = process.env.PUBLIC_PAYMENT_STATUS_PATH || "";
 
@@ -108,11 +111,11 @@ function joinUrl(baseUrl, routePath) {
   return `${baseUrl}${routePath.startsWith("/") ? routePath : `/${routePath}`}`;
 }
 
-async function fetchPublic(routePath, method = "GET") {
+async function fetchPublic(routePath, method = "GET", baseUrl = BASE_URL) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
-    const response = await fetch(joinUrl(BASE_URL, routePath), {
+    const response = await fetch(joinUrl(baseUrl, routePath), {
       method,
       redirect: "manual",
       signal: controller.signal,
@@ -124,7 +127,7 @@ async function fetchPublic(routePath, method = "GET") {
     const body = method === "HEAD" ? "" : await response.text();
     return {
       path: routePath,
-      url: joinUrl(BASE_URL, routePath),
+      url: joinUrl(baseUrl, routePath),
       status: response.status,
       ok: response.ok,
       redirected: response.status >= 300 && response.status < 400,
@@ -136,7 +139,7 @@ async function fetchPublic(routePath, method = "GET") {
   } catch (error) {
     return {
       path: routePath,
-      url: joinUrl(BASE_URL, routePath),
+      url: joinUrl(baseUrl, routePath),
       status: 0,
       ok: false,
       redirected: false,
@@ -254,6 +257,50 @@ async function evaluatePaymentStatusIfConfigured() {
   };
 }
 
+async function evaluateAdminLaunchMonitorApiGuard() {
+  const adminSummaryPath = "/api/admin/launch-monitor/summary";
+  if (!API_BASE_URL) {
+    return {
+      id: "admin_launch_monitor_api_auth_guard",
+      path: adminSummaryPath,
+      url: "",
+      status: 0,
+      ok: true,
+      redirected: false,
+      location: "",
+      contentType: "",
+      body: "",
+      error: "",
+      pass: true,
+      optional: true,
+      skipped: true,
+      issues: [
+        "Skipped because PRODUCTION_API_BASE_URL is not configured. Before deploying the dashboard, run this canary with the production backend origin and manually verify /admin/launch-monitor blocks non-admin users.",
+      ],
+    };
+  }
+
+  const response = await fetchPublic(adminSummaryPath, "GET", API_BASE_URL);
+  const issues = [];
+  if (![401, 403].includes(response.status)) {
+    issues.push(`Expected unauthenticated admin summary to return 401 or 403, got ${response.status || "no response"}. A 404 means the dashboard API is not deployed or PRODUCTION_API_BASE_URL is wrong.`);
+  }
+  if (/dashboard_status|funnel|payment_success_count|wallet_credit_count|webhook_received_count|OWNER_ADMIN_ONLY/i.test(response.body)) {
+    issues.push("Unauthenticated admin summary response appears to expose dashboard data.");
+  }
+  if (/rzp_(?:live|test)_|RAZORPAY_KEY_SECRET|RAZORPAY_WEBHOOK_SECRET|WEBHOOK_SECRET|pay_[A-Za-z0-9]{8,}|order_[A-Za-z0-9]{8,}|customer_email|customer_phone/i.test(response.body)) {
+    issues.push("Unauthenticated admin summary response appears to expose payment/customer data or secrets.");
+  }
+  return {
+    ...response,
+    id: "admin_launch_monitor_api_auth_guard",
+    pass: issues.length === 0,
+    optional: false,
+    skipped: false,
+    issues,
+  };
+}
+
 function scanLocalPublicAudio() {
   const roots = ["frontend/public", "frontend/build"].map((relativePath) => path.join(ROOT, relativePath));
   const found = [];
@@ -314,6 +361,7 @@ for (const routePath of LEGACY_TOMBSTONE_PATHS) {
   routeResults.push(await evaluateLegacyRoute(routePath));
 }
 routeResults.push(await evaluatePaymentStatusIfConfigured());
+routeResults.push(await evaluateAdminLaunchMonitorApiGuard());
 
 const localPublicAudioFiles = scanLocalPublicAudio();
 const status = routeResults.every((result) => result.pass) && localPublicAudioFiles.length === 0 ? "PASS" : "BLOCKED";

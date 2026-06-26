@@ -101,9 +101,18 @@ PRODUCTION_BASE_URL=https://theearnalism.com npm run launch:post-deploy-canary
 
 The canary performs public `GET`/`HEAD` checks only. It does not require secrets, execute live payment, mutate production data, or call private/internal routes.
 
+For the owner launch monitoring dashboard deployment, also run the canary with the production backend origin so the unauthenticated admin API guard is verified:
+
+```bash
+PRODUCTION_BASE_URL=https://theearnalism.com PRODUCTION_API_BASE_URL=https://api.theearnalism.com npm run launch:post-deploy-canary
+```
+
+The admin API guard must confirm `GET /api/admin/launch-monitor/summary` returns `401` or `403` without admin credentials. A `404` means the dashboard backend is not deployed or the backend URL is wrong, and any `200` response is a hard stop.
+
 Manual canaries must also be recorded in `POST_DEPLOY_READING_ONLY_CANARY_REPORT.md`:
 
 - `/`
+- `/admin/launch-monitor` in a fresh incognito/non-admin browser session redirects to or blocks behind `/admin/login`
 - `/book/dracula`
 - `/reader/dracula`
 - `/pricing`
@@ -115,6 +124,7 @@ Manual canaries must also be recorded in `POST_DEPLOY_READING_ONLY_CANARY_REPORT
 - social preview metadata
 - legacy tombstone routes
 - Razorpay payment status endpoint if available
+- unauthenticated `GET /api/admin/launch-monitor/summary` returns `401` or `403`
 - Dracula Chapter 1 free preview
 - locked/paid continuation behavior
 - wallet reading-time copy

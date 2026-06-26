@@ -128,6 +128,7 @@ describe("UX conversion static signals", () => {
   const productionReadingOnlyDeployRunbook = read("PRODUCTION_READING_ONLY_DEPLOY_RUNBOOK.md");
   const postDeployReadingOnlyCanaryReport = read("POST_DEPLOY_READING_ONLY_CANARY_REPORT.md");
   const postDeployReadingCanary = read("scripts/post_deploy_reading_canary.mjs");
+  const launchMonitoringDashboardReport = read("LAUNCH_MONITORING_DASHBOARD_REPORT.md");
   const productionMonitoringRunbook = read("PRODUCTION_24_48_HOUR_MONITORING_RUNBOOK.md");
   const seoRevenueReadinessReport = read("SEO_REVENUE_READINESS_REPORT.md");
   const revenueFunnelReadinessReport = read("REVENUE_FUNNEL_READINESS_REPORT.md");
@@ -1037,6 +1038,13 @@ describe("UX conversion static signals", () => {
     expect(backend).toContain('@api.get("/admin/launch-monitor/summary")');
     expect(backend).toContain("Depends(require_admin)");
     expect(backend).toContain("build_launch_monitor_summary");
+    expect(postDeployReadingCanary).toContain("PRODUCTION_API_BASE_URL");
+    expect(postDeployReadingCanary).toContain("/api/admin/launch-monitor/summary");
+    expect(postDeployReadingCanary).toContain("Expected unauthenticated admin summary to return 401 or 403");
+    expect(productionReadingOnlyDeployRunbook).toContain("/admin/launch-monitor` in a fresh incognito/non-admin browser session redirects to or blocks behind `/admin/login`");
+    expect(productionReadingOnlyDeployRunbook).toContain("unauthenticated `GET /api/admin/launch-monitor/summary` returns `401` or `403`");
+    expect(postDeployReadingOnlyCanaryReport).toContain("/admin/launch-monitor` non-admin browser check");
+    expect(launchMonitoringDashboardReport).toContain("Required post-deploy API canary: unauthenticated `GET /api/admin/launch-monitor/summary` must return `401` or `403`");
     const launchMonitorEndpoint = extractBetween(
       backend,
       '@api.get("/admin/launch-monitor/summary")',

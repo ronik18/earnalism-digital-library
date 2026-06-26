@@ -35,6 +35,8 @@ It does not approve public audiobook release, production audiobook status, Kshud
 | `/login` | Loads sign-in path | PENDING | HOLD |
 | `/signup` | Loads account creation path | PENDING | HOLD |
 | `/account` or wallet route | Redirects to sign-in or loads account safely if publicly reachable | PENDING | HOLD |
+| `/admin/launch-monitor` non-admin browser check | Redirects to or blocks behind `/admin/login`; no dashboard data visible | PENDING | HOLD |
+| unauthenticated `GET /api/admin/launch-monitor/summary` | Returns `401` or `403`; no aggregate dashboard, payment, wallet, webhook, or customer data visible | PENDING | HOLD |
 | `/sitemap.xml` | Includes approved public routes only | PENDING | HOLD |
 | `/robots.txt` | Keeps admin/API/private routes blocked and allows approved reader route as configured | PENDING | HOLD |
 | social preview metadata | Dracula reading-only metadata, no audiobook-live claim | PENDING | HOLD |
@@ -64,6 +66,12 @@ Run:
 PRODUCTION_BASE_URL=https://theearnalism.com npm run launch:post-deploy-canary
 ```
 
+For the owner launch monitoring dashboard deployment, include the production backend origin:
+
+```bash
+PRODUCTION_BASE_URL=https://theearnalism.com PRODUCTION_API_BASE_URL=https://api.theearnalism.com npm run launch:post-deploy-canary
+```
+
 Expected behavior:
 
 - Uses public `GET`/`HEAD` requests only.
@@ -71,6 +79,7 @@ Expected behavior:
 - Does not execute live payment.
 - Does not mutate production data.
 - Does not call internal audiobook paths.
+- Confirms unauthenticated `GET /api/admin/launch-monitor/summary` returns `401` or `403` when `PRODUCTION_API_BASE_URL` is supplied.
 - Writes local reports under `output/launch/`.
 
 ## Public Audio Status
