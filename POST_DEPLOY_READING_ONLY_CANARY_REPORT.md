@@ -83,6 +83,15 @@ Expected behavior:
 
 ## Final Decision
 
-Final launch completion decision: `HOLD_POST_DEPLOY_CANARY_REQUIRED`
+Final launch completion decision: `LIVE_VERIFIED`
 
-Do not mark launch complete until every production canary row is filled and passing.
+Production reading-only canary passed against the production base URL below. This does not approve public audiobook release, audiobook production, Kshudhita publication, future-title publication, public Listen Now CTA, AudioObject metadata, or public audio URLs.
+
+## Final Production Canary Result
+
+- production_base_url: https://theearnalism.com
+- canary_command: `PRODUCTION_BASE_URL="https://theearnalism.com" npm run launch:post-deploy-canary`
+- result: PASS
+- reading_launch_status: LIVE_VERIFIED
+- public_audio_status: PUBLIC_AUDIO_RELEASE_BLOCKED
+- audiobook_production_status: PRODUCTION_BLOCKED
