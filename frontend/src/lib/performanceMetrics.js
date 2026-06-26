@@ -1,4 +1,4 @@
-import { API } from "./api";
+import { trackFunnelEvent } from "./funnelAnalytics";
 
 const ENABLED = process.env.NODE_ENV === "development" || process.env.REACT_APP_PERF_METRICS_ENABLED === "true";
 
@@ -20,23 +20,7 @@ function sendMetric(name, value, extra = {}) {
   }
 
   if (process.env.REACT_APP_PERF_METRICS_ENABLED !== "true") return;
-
-  const body = JSON.stringify({ event: "web_vital", metadata });
-  try {
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon(`${API}/analytics/events`, new Blob([body], { type: "application/json" }));
-      return;
-    }
-  } catch {
-    // Opportunistic only.
-  }
-
-  fetch(`${API}/analytics/events`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body,
-    keepalive: true,
-  }).catch(() => {});
+  trackFunnelEvent("core_web_vital", metadata);
 }
 
 function rateMetric(name, value) {
@@ -99,5 +83,19 @@ export function initPerformanceMetrics() {
     }).observe({ type: "first-input", buffered: true });
   } catch {
     // FID not available.
+  }
+
+  try {
+    let maxDuration = 0;
+    new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        if (entry.interactionId && entry.duration > maxDuration) {
+          maxDuration = entry.duration;
+          sendMetric("INP", entry.duration);
+        }
+      }
+    }).observe({ type: "event", buffered: true, durationThreshold: 40 });
+  } catch {
+    // INP event timing not available.
   }
 }

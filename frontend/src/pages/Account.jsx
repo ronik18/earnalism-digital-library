@@ -5,6 +5,7 @@ import { userApi, formatMinutes } from "../lib/api";
 import { toast } from "sonner";
 import { LogOut, BookOpen, Clock, ArrowUpRight } from "lucide-react";
 import useSEO from "../hooks/useSEO";
+import { trackFunnelEvent } from "../lib/funnelAnalytics";
 
 const FALLBACK_SESSION_GAP_MS = 15 * 60 * 1000;
 
@@ -172,7 +173,15 @@ export default function Account() {
             <p className="mt-3 text-xs leading-relaxed text-charcoal-soft/80" data-testid="account-wallet-explainer">
               Use this wallet to continue Dracula after the free preview. Future titles remain locked until their own approval gates pass.
             </p>
-            <Link to="/pricing" className="inline-flex items-center gap-2 text-[0.72rem] tracking-[0.22em] uppercase text-burgundy mt-6 hover:opacity-70" data-testid="account-buy-time">
+            <Link
+              to="/pricing"
+              className="inline-flex items-center gap-2 text-[0.72rem] tracking-[0.22em] uppercase text-burgundy mt-6 hover:opacity-70"
+              data-testid="account-buy-time"
+              onClick={() => trackFunnelEvent("pricing_page_view", {
+                source: "account_wallet",
+                book_slug: "dracula",
+              })}
+            >
               Add reading time <ArrowUpRight size={13} strokeWidth={1.5} />
             </Link>
           </div>
@@ -185,7 +194,17 @@ export default function Account() {
               Continue Dracula from the live shelf. Your time begins only when the words do.
             </p>
             <div className="mt-auto pt-6">
-              <Link to="/library" className="btn-primary w-full sm:w-auto" data-testid="account-go-library">Open Dracula Shelf</Link>
+              <Link
+                to="/library"
+                className="btn-primary w-full sm:w-auto"
+                data-testid="account-go-library"
+                onClick={() => trackFunnelEvent("return_resume_reading_click", {
+                  source: "account_continue_reading",
+                  book_slug: "dracula",
+                })}
+              >
+                Open Dracula Shelf
+              </Link>
             </div>
           </div>
         </div>

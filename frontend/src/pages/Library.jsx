@@ -73,12 +73,8 @@ export default function Library() {
   const showReadingPaths = ["all", "reading-paths"].includes(cat);
   const showAudiobooks = ["all", "audiobooks"].includes(cat);
   const trackPipelineInterest = (event, ctaId) => {
-    trackFunnelEvent(event, {
-      source: "library_pipeline_shelf",
-      book_slug: KSHUDHITA_PASHAN_PIPELINE.slug,
-      cta_id: ctaId,
-      public: false,
-    });
+    void event;
+    void ctaId;
   };
 
   return (
@@ -199,18 +195,18 @@ export default function Library() {
                         <div><dt className="overline">Status</dt><dd>Live</dd></div>
                         <div><dt className="overline">Chapters</dt><dd>{DRACULA_CHAPTER_COUNT}</dd></div>
                         <div><dt className="overline">Preview</dt><dd>Chapter 1 unlocked</dd></div>
-                        <div><dt className="overline">Audio</dt><dd>Not available yet</dd></div>
+                        <div><dt className="overline">Audio</dt><dd>Audiobook experience in private review</dd></div>
                         <div><dt className="overline">Rights</dt><dd>{DRACULA_RIGHTS_NOTE}</dd></div>
                         <div><dt className="overline">Source</dt><dd>{DRACULA_SOURCE_NOTE}</dd></div>
                       </dl>
                       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                        <Link to={`/reader/${LIVE_APPROVED_SLUG}`} className="btn-secondary justify-center" data-testid="library-dracula-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: LIVE_APPROVED_SLUG, cta: "library_preview" })}>
+                        <Link to={`/reader/${LIVE_APPROVED_SLUG}`} className="btn-secondary justify-center" data-testid="library-dracula-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_preview" })}>
                           <BookOpen size={15} /> Read Chapter 1 Free
                         </Link>
-                        <Link to={`/book/${LIVE_APPROVED_SLUG}`} className="btn-primary justify-center" data-testid="library-dracula-start" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: LIVE_APPROVED_SLUG, cta: "library_start" })}>
+                        <Link to={`/book/${LIVE_APPROVED_SLUG}`} className="btn-primary justify-center" data-testid="library-dracula-start" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_start" })}>
                           Start Reading
                         </Link>
-                        <Link to={readingPassUrl("library_live_shelf")} className="btn-link justify-center" data-testid="library-dracula-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: LIVE_APPROVED_SLUG, cta: "library_pass" })}>
+                        <Link to={readingPassUrl("library_live_shelf")} className="btn-link justify-center" data-testid="library-dracula-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_pass" })}>
                           Get 7-Day Reading Pass
                         </Link>
                       </div>
@@ -253,7 +249,7 @@ export default function Library() {
                 <div className="overline mb-3">Shelf 4</div>
                 <h2 className="font-serif-display text-3xl text-burgundy">Audiobooks are not live in this launch.</h2>
                 <p className="mt-5 max-w-2xl text-charcoal-soft leading-[1.8]">
-                  Audio is being prepared through rights and listening QA. Dracula audiobook is not available yet, so no play buttons or waveform controls are shown.
+                  Audiobook experience is in private review through rights, sync, accessibility, and listening QA. No play buttons or waveform controls are shown.
                 </p>
                 <div className="mt-6 inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-gold-deep">
                   <Headphones size={15} /> Audio QA pending

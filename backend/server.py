@@ -228,6 +228,7 @@ RATE_LIMIT_READER_PER_MINUTE = _env_int("RATE_LIMIT_READER_PER_MINUTE", 15000)
 RATE_LIMIT_AUTH_PER_MINUTE = _env_int("RATE_LIMIT_AUTH_PER_MINUTE", 120)
 RATE_LIMIT_PAYMENT_PER_MINUTE = _env_int("RATE_LIMIT_PAYMENT_PER_MINUTE", 300)
 RATE_LIMIT_WEBHOOK_PER_MINUTE = _env_int("RATE_LIMIT_WEBHOOK_PER_MINUTE", 600)
+RATE_LIMIT_ANALYTICS_PER_MINUTE = _env_int("RATE_LIMIT_ANALYTICS_PER_MINUTE", 1800)
 RATE_LIMIT_UPLOAD_PER_MINUTE = _env_int("RATE_LIMIT_UPLOAD_PER_MINUTE", 60)
 _rate_limit_hits: Dict[str, Deque[float]] = defaultdict(deque)
 _rate_limit_next_sweep = 0.0
@@ -2589,7 +2590,11 @@ class ReaderMetricIn(BaseModel):
     tags: Dict[str, Any] = Field(default_factory=dict)
 
 class AnalyticsEventIn(BaseModel):
-    event: str
+    event: str = ""
+    event_name: str = ""
+    route: str = ""
+    book_slug: str = ""
+    anonymous_session_id: str = ""
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
 class SecureReaderEventIn(BaseModel):
@@ -2993,6 +2998,8 @@ async def initialize_database_indexes() -> None:
     await db.payment_webhook_events.create_index([("created_at", -1)])
 
     await db.analytics_events.create_index([("event", 1), ("created_at", -1)])
+    await db.analytics_events.create_index([("route", 1), ("created_at", -1)])
+    await db.analytics_events.create_index([("anonymous_session_id", 1), ("created_at", -1)])
 
     await db.reader_security_events.create_index([("event_type", 1), ("created_at", -1)])
     await db.reader_security_events.create_index([("session_id", 1), ("created_at", -1)])
@@ -3270,6 +3277,89 @@ if os.environ.get("JUDOSCALE_URL", "").strip():
     logger.info("Judoscale FastAPI request queue middleware enabled.")
 api = APIRouter(prefix="/api")
 
+APPROVED_LAUNCH_ANALYTICS_EVENTS = {
+    "homepage_view",
+    "first_time_site_tour_shown",
+    "first_time_site_tour_completed",
+    "first_time_site_tour_skipped",
+    "hero_read_chapter_free_click",
+    "dracula_book_page_view",
+    "start_dracula_click",
+    "reader_opened",
+    "reader_locked_state",
+    "reader_low_balance_state",
+    "pricing_page_view",
+    "reading_pack_selected",
+    "checkout_started",
+    "payment_success_return",
+    "payment_failed_or_cancelled",
+    "wallet_credited_visible",
+    "continue_reading_click",
+    "return_resume_reading_click",
+    "core_web_vital",
+}
+
+LAUNCH_MONITOR_FUNNEL_EVENTS = [
+    "homepage_view",
+    "first_time_site_tour_shown",
+    "first_time_site_tour_completed",
+    "first_time_site_tour_skipped",
+    "hero_read_chapter_free_click",
+    "dracula_book_page_view",
+    "start_dracula_click",
+    "reader_opened",
+    "reader_locked_state",
+    "reader_low_balance_state",
+    "pricing_page_view",
+    "reading_pack_selected",
+    "checkout_started",
+    "payment_success_return",
+    "payment_failed_or_cancelled",
+    "wallet_credited_visible",
+    "continue_reading_click",
+    "return_resume_reading_click",
+]
+
+ANALYTICS_BLOCKED_KEY_RE = re.compile(
+    r"(email|phone|customer|payment|order|razorpay|signature|token|secret|password|authorization|invoice|billing|card|upi|bank|address|name)",
+    re.IGNORECASE,
+)
+ANALYTICS_ALLOWED_SAFE_KEYS = {"payment_mode"}
+ANALYTICS_UNSAFE_VALUE_PATTERNS = [
+    re.compile(r"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}", re.IGNORECASE),
+    re.compile(r"\b(?:\+?91[-\s]?)?[6-9]\d{9}\b"),
+    re.compile(r"\b(?:rzp|pay|order|cust)_[A-Za-z0-9_-]{8,}\b", re.IGNORECASE),
+    re.compile(r"\bsk[-_][A-Za-z0-9_-]{12,}\b", re.IGNORECASE),
+    re.compile(r"\bBearer\s+[A-Za-z0-9._-]{12,}\b", re.IGNORECASE),
+    re.compile(r"\b(?:card|upi|bank|ifsc|account)\b", re.IGNORECASE),
+]
+
+
+def _safe_analytics_event_name(value: str) -> str:
+    event = re.sub(r"[^a-zA-Z0-9_.:-]", "_", str(value or "").strip())[:80]
+    return event if event in APPROVED_LAUNCH_ANALYTICS_EVENTS else ""
+
+
+def _analytics_metadata_violations(metadata: Dict[str, Any]) -> list[str]:
+    if not isinstance(metadata, dict):
+        return ["metadata must be an object"]
+    violations: list[str] = []
+    for raw_key, raw_value in list(metadata.items())[:50]:
+        key = str(raw_key or "")
+        if not key or (ANALYTICS_BLOCKED_KEY_RE.search(key) and key.lower() not in ANALYTICS_ALLOWED_SAFE_KEYS):
+            violations.append(f"blocked metadata field: {key or '<empty>'}")
+            continue
+        if isinstance(raw_value, (dict, list, tuple, set)):
+            violations.append(f"nested metadata is not allowed: {key}")
+            continue
+        value = "" if raw_value is None else str(raw_value)
+        if len(value) > 500:
+            violations.append(f"metadata value too long: {key}")
+            continue
+        if any(pattern.search(value) for pattern in ANALYTICS_UNSAFE_VALUE_PATTERNS):
+            violations.append(f"unsafe metadata value: {key}")
+    return violations
+
 
 def _safe_analytics_metadata(metadata: Dict[str, Any]) -> Dict[str, Any]:
     """Keep conversion analytics useful while avoiding secrets or large payloads."""
@@ -3290,6 +3380,276 @@ def _safe_analytics_metadata(metadata: Dict[str, Any]) -> Dict[str, Any]:
         else:
             safe[key] = str(raw_value)[:240]
     return safe
+
+
+def _safe_analytics_route(value: str) -> str:
+    route = str(value or "").strip()
+    if not route:
+        return ""
+    parsed = urlparse(route)
+    if parsed.scheme or parsed.netloc:
+        route = parsed.path or "/"
+    return re.sub(r"[^a-zA-Z0-9_./?=&:-]", "_", route)[:180]
+
+
+def _safe_analytics_session_id(value: str) -> str:
+    return re.sub(r"[^a-zA-Z0-9_.:-]", "_", str(value or "").strip())[:80]
+
+
+def _safe_analytics_book_slug(value: str) -> str:
+    return re.sub(r"[^a-zA-Z0-9_.:-]", "_", str(value or "").strip())[:80]
+
+
+def _analytics_event_document(payload: AnalyticsEventIn, request: Request, principal: Optional[dict]) -> dict:
+    event = _safe_analytics_event_name(payload.event_name or payload.event)
+    if not event:
+        raise HTTPException(status_code=400, detail="Unknown launch analytics event")
+
+    metadata = dict(payload.metadata or {})
+    route = _safe_analytics_route(payload.route or metadata.get("route") or metadata.get("path") or "")
+    if route:
+        metadata["route"] = route
+    book_slug = _safe_analytics_book_slug(payload.book_slug or metadata.get("book_slug") or metadata.get("book") or "")
+    if book_slug:
+        metadata["book_slug"] = book_slug
+    session_id = _safe_analytics_session_id(payload.anonymous_session_id or metadata.get("anonymous_session_id") or "")
+
+    violations = _analytics_metadata_violations(metadata)
+    if violations:
+        raise HTTPException(status_code=400, detail={"message": "Unsafe analytics metadata", "violations": violations[:5]})
+
+    return {
+        "id": str(uuid.uuid4()),
+        "event": event,
+        "metadata": _safe_analytics_metadata(metadata),
+        "route": route,
+        "book_slug": book_slug,
+        "anonymous_session_id": session_id,
+        "principal_role": principal.get("role") if principal else "guest",
+        "principal_id": principal.get("id") if principal else "",
+        "path": route or str(request.headers.get("referer", ""))[:240],
+        "user_agent": str(request.headers.get("user-agent", ""))[:180],
+        "created_at": now_iso(),
+    }
+
+
+def _launch_monitor_cutoff(hours: int) -> str:
+    return (datetime.now(timezone.utc) - timedelta(hours=hours)).isoformat()
+
+
+def _launch_monitor_today_cutoff() -> str:
+    now = datetime.now(timezone.utc)
+    return datetime(now.year, now.month, now.day, tzinfo=timezone.utc).isoformat()
+
+
+async def _count_since(collection_name: str, time_field: str, cutoff: str, extra: Optional[dict] = None) -> int:
+    query = dict(extra or {})
+    query[time_field] = {"$gte": cutoff}
+    try:
+        return int(await getattr(db, collection_name).count_documents(query))
+    except Exception:
+        logger.warning("Launch monitor count failed for %s", collection_name, exc_info=True)
+        return 0
+
+
+async def _group_counts_since(
+    collection_name: str,
+    field: str,
+    time_field: str,
+    cutoff: str,
+    extra: Optional[dict] = None,
+    limit: int = 200,
+) -> Dict[str, int]:
+    match = dict(extra or {})
+    match[time_field] = {"$gte": cutoff}
+    try:
+        rows = await getattr(db, collection_name).aggregate([
+            {"$match": match},
+            {"$group": {"_id": f"${field}", "count": {"$sum": 1}}},
+        ]).to_list(limit)
+    except Exception:
+        logger.warning("Launch monitor group failed for %s.%s", collection_name, field, exc_info=True)
+        return {}
+    counts: Dict[str, int] = {}
+    for row in rows:
+        key = str(row.get("_id") or "unknown")
+        counts[key] = int(row.get("count", 0) or 0)
+    return counts
+
+
+def _rate(numerator: int, denominator: int) -> float:
+    if denominator <= 0:
+        return 0.0
+    return round((int(numerator) / int(denominator)) * 100, 2)
+
+
+def _conversion_rates(counts: Dict[str, int]) -> dict:
+    return {
+        "homepage_to_dracula_cta_pct": _rate(counts.get("hero_read_chapter_free_click", 0), counts.get("homepage_view", 0)),
+        "dracula_to_reader_pct": _rate(counts.get("reader_opened", 0), counts.get("start_dracula_click", 0)),
+        "reader_locked_to_pricing_pct": _rate(
+            counts.get("pricing_page_view", 0),
+            counts.get("reader_locked_state", 0) + counts.get("reader_low_balance_state", 0),
+        ),
+        "pricing_to_checkout_pct": _rate(counts.get("checkout_started", 0), counts.get("pricing_page_view", 0)),
+        "checkout_to_payment_success_pct": _rate(counts.get("payment_success_return", 0), counts.get("checkout_started", 0)),
+        "payment_success_to_continue_reading_pct": _rate(counts.get("continue_reading_click", 0), counts.get("payment_success_return", 0)),
+    }
+
+
+async def _launch_monitor_funnel_window(cutoff: str) -> dict:
+    counts = await _group_counts_since(
+        "analytics_events",
+        "event",
+        "created_at",
+        cutoff,
+        {"event": {"$in": LAUNCH_MONITOR_FUNNEL_EVENTS}},
+    )
+    full_counts = {event: int(counts.get(event, 0)) for event in LAUNCH_MONITOR_FUNNEL_EVENTS}
+    return {
+        "counts": full_counts,
+        "conversion_rates": _conversion_rates(full_counts),
+    }
+
+
+async def _launch_monitor_payment_window(cutoff: str) -> dict:
+    status_counts = await _group_counts_since("topup_intents", "status", "created_at", cutoff)
+    webhook_status_counts = await _group_counts_since("payment_webhook_events", "status", "created_at", cutoff)
+    support_counts = await _group_counts_since("contacts", "status", "created_at", cutoff)
+    refund_counts = await _group_counts_since("wallet_refunds", "status", "created_at", cutoff)
+    return {
+        "payment_intents_created": await _count_since("topup_intents", "created_at", cutoff),
+        "payment_success_count": int(status_counts.get("credited", 0)),
+        "payment_failed_count": int(status_counts.get("failed", 0)),
+        "wallet_credit_count": await _count_since("wallet_ledger", "timestamp", cutoff, {"action": "topup_credit"}),
+        "webhook_received_count": await _count_since("payment_webhook_events", "created_at", cutoff),
+        "webhook_duplicate_replay_blocked_count": int(webhook_status_counts.get("duplicate_replay_blocked", 0)),
+        "topup_status_counts": status_counts,
+        "webhook_status_counts": webhook_status_counts,
+        "support_queue": support_counts,
+        "refund_queue": refund_counts,
+    }
+
+
+async def _launch_monitor_core_web_vitals(cutoff: str) -> dict:
+    try:
+        rows = await db.analytics_events.find(
+            {"event": "core_web_vital", "created_at": {"$gte": cutoff}},
+            {"_id": 0, "metadata": 1, "route": 1, "created_at": 1},
+        ).sort("created_at", -1).to_list(500)
+    except Exception:
+        logger.warning("Launch monitor Core Web Vitals query failed", exc_info=True)
+        rows = []
+
+    metrics: Dict[str, dict] = {}
+    for row in rows:
+        metadata = row.get("metadata") if isinstance(row.get("metadata"), dict) else {}
+        name = str(metadata.get("metric") or "unknown")
+        rating = str(metadata.get("rating") or "info")
+        try:
+            value = float(metadata.get("value"))
+        except (TypeError, ValueError):
+            continue
+        item = metrics.setdefault(name, {"count": 0, "sum": 0.0, "good": 0, "needs-improvement": 0, "poor": 0, "info": 0})
+        item["count"] += 1
+        item["sum"] += value
+        item[rating if rating in item else "info"] += 1
+
+    return {
+        "status": "COLLECTING" if rows else "NO_CORE_WEB_VITALS_EVENTS_YET",
+        "metrics": {
+            name: {
+                "count": data["count"],
+                "average_value": round(data["sum"] / data["count"], 2) if data["count"] else 0,
+                "ratings": {
+                    "good": data.get("good", 0),
+                    "needs_improvement": data.get("needs-improvement", 0),
+                    "poor": data.get("poor", 0),
+                    "info": data.get("info", 0),
+                },
+            }
+            for name, data in metrics.items()
+        },
+    }
+
+
+def _public_audio_leak_status() -> dict:
+    audio_exts = {".mp3", ".wav", ".m4a", ".ogg", ".aac"}
+    repo_root = ROOT_DIR.parent
+    public_dirs = [repo_root / "frontend" / "public", repo_root / "frontend" / "build"]
+    files: list[str] = []
+    for public_dir in public_dirs:
+        if not public_dir.exists():
+            continue
+        for path in public_dir.rglob("*"):
+            if path.is_file() and path.suffix.lower() in audio_exts:
+                files.append(str(path.relative_to(repo_root)))
+    return {
+        "status": "PASS_NO_PUBLIC_AUDIO_FILES" if not files else "BLOCKED_PUBLIC_AUDIO_FILES_DETECTED",
+        "public_audio_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+        "audiobook_production_status": "PRODUCTION_BLOCKED",
+        "files": files[:20],
+    }
+
+
+def _post_deploy_canary_status() -> dict:
+    repo_root = ROOT_DIR.parent
+    candidates = [
+        repo_root / "POST_DEPLOY_READING_ONLY_CANARY_REPORT.md",
+        repo_root / "output" / "launch" / "post_deploy_reading_canary.json",
+    ]
+    for path in candidates:
+        if not path.exists():
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except Exception:
+            continue
+        if "PASS" in text and "PUBLIC_AUDIO_RELEASE_BLOCKED" in text:
+            return {"status": "PASS_RECORDED", "source": str(path.relative_to(repo_root))}
+    return {"status": "NOT_RECORDED_IN_REPO", "source": ""}
+
+
+async def build_launch_monitor_summary() -> dict:
+    windows = {
+        "today": _launch_monitor_today_cutoff(),
+        "last_24h": _launch_monitor_cutoff(24),
+        "last_48h": _launch_monitor_cutoff(48),
+    }
+    funnel = {}
+    payment = {}
+    for label, cutoff in windows.items():
+        funnel[label] = await _launch_monitor_funnel_window(cutoff)
+        payment[label] = await _launch_monitor_payment_window(cutoff)
+
+    return {
+        "launch_status": "LIVE_VERIFIED",
+        "public_audio_status": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+        "audiobook_production_status": "PRODUCTION_BLOCKED",
+        "dashboard_status": "OWNER_ADMIN_ONLY",
+        "windows": list(windows.keys()),
+        "funnel": funnel,
+        "payment": payment,
+        "core_web_vitals": await _launch_monitor_core_web_vitals(windows["last_48h"]),
+        "ops_health": {
+            "backend_errors": {"status": "NOT_PERSISTED", "count": 0},
+            "post_deploy_canary": _post_deploy_canary_status(),
+            "public_audio_leak_check": _public_audio_leak_status(),
+        },
+        "action_checklist": [
+            "Monitor Razorpay dashboard for live checkout anomalies.",
+            "Confirm wallet credits match successful payments.",
+            "Check support and refund queues twice daily during the first 48 hours.",
+            "Run post-deploy canary after every production change.",
+            "Keep audiobook release blocked until separate sync, accessibility, and release gates pass.",
+        ],
+        "privacy": {
+            "pii_collected": False,
+            "payment_identifiers_collected": False,
+            "third_party_pixels": False,
+            "analytics_mode": "first_party_opt_in_minimal_events",
+        },
+    }
 
 
 def _safe_counter_map(counts: Dict[str, int]) -> Dict[str, int]:
@@ -3443,6 +3803,8 @@ def _rate_limit_scope(path: str) -> Tuple[str, int]:
         return "webhook", RATE_LIMIT_WEBHOOK_PER_MINUTE
     if path.startswith("/api/payments/"):
         return "payments", RATE_LIMIT_PAYMENT_PER_MINUTE
+    if path.startswith("/api/analytics/"):
+        return "analytics", RATE_LIMIT_ANALYTICS_PER_MINUTE
     if "upload" in path:
         return "upload", RATE_LIMIT_UPLOAD_PER_MINUTE
     return "api", RATE_LIMIT_DEFAULT_PER_MINUTE
@@ -3860,26 +4222,23 @@ async def get_home_books_page(limit: int = HOME_BOOK_PAGE_DEFAULT_LIMIT, offset:
     return await _home_books_page(limit, offset)
 
 
-@api.post("/analytics/events")
+@api.post("/analytics/event")
 async def record_analytics_event(
     payload: AnalyticsEventIn,
     request: Request,
     principal: Optional[dict] = Depends(optional_principal),
 ):
-    event = re.sub(r"[^a-zA-Z0-9_.:-]", "_", payload.event.strip())[:80]
-    if not event:
-        raise HTTPException(status_code=400, detail="Event name is required")
-    await db.analytics_events.insert_one({
-        "id": str(uuid.uuid4()),
-        "event": event,
-        "metadata": _safe_analytics_metadata(payload.metadata),
-        "principal_role": principal.get("role") if principal else "guest",
-        "principal_id": principal.get("id") if principal else "",
-        "path": str(request.headers.get("referer", ""))[:240],
-        "user_agent": str(request.headers.get("user-agent", ""))[:180],
-        "created_at": now_iso(),
-    })
+    await db.analytics_events.insert_one(_analytics_event_document(payload, request, principal))
     return {"ok": True}
+
+
+@api.post("/analytics/events")
+async def record_analytics_events_alias(
+    payload: AnalyticsEventIn,
+    request: Request,
+    principal: Optional[dict] = Depends(optional_principal),
+):
+    return await record_analytics_event(payload, request, principal)
 
 
 @api.post("/secure-reader/events")
@@ -6250,6 +6609,17 @@ async def payments_webhook(request: Request):
     if event_id:
         seen = await db.payment_webhook_events.find_one({"event_id": event_id}, {"_id": 0})
         if seen:
+            try:
+                await db.payment_webhook_events.insert_one({
+                    "id": str(uuid.uuid4()),
+                    "event_id": f"duplicate:{uuid.uuid4()}",
+                    "event": event or seen.get("event", ""),
+                    "status": "duplicate_replay_blocked",
+                    "event_id_hash": hashlib.sha256(str(event_id).encode("utf-8")).hexdigest()[:24],
+                    "created_at": now_iso(),
+                })
+            except Exception:
+                logger.warning("Could not persist duplicate Razorpay webhook metric", exc_info=True)
             return {"ok": True, "duplicate": True, "event_id": event_id}
 
     log_doc = {
@@ -6429,6 +6799,11 @@ async def admin_secure_reader_alerts(_=Depends(require_admin)):
         },
         "alerts": alerts,
     }
+
+
+@api.get("/admin/launch-monitor/summary")
+async def admin_launch_monitor_summary(_=Depends(require_admin)):
+    return await build_launch_monitor_summary()
 
 
 @api.post("/admin/payments/intents/{intent_id}/reconcile")

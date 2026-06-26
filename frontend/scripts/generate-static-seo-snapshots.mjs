@@ -275,7 +275,7 @@ function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
 
 function buildPages({ book, manifest }) {
   const homeDescription = "The Earnalism controlled launch begins with Dracula by Bram Stoker. Read Chapter 1 free, then continue with a reading pass. Bengali Gothic and other classics are moving through the rights-safe pipeline.";
-  const bookDescription = "Read Dracula by Bram Stoker in The Earnalism’s controlled digital reading room. Chapter 1 is free. Continue with a 7-day reading pass. Audio is not available yet.";
+  const bookDescription = "Read Dracula by Bram Stoker in The Earnalism’s controlled digital reading room. Chapter 1 is free. Continue with a 7-day reading pass. Audiobook experience is in private review.";
   const libraryDescription = "Live Controlled Release: Dracula only. Future classics are coming through The Earnalism rights-safe pipeline and are not live reading products yet.";
   const pricingDescription = "Choose your reading time for Dracula on The Earnalism. Chapter 1 is free, with premium reading-time packs and no subscription or autorenewal.";
   const journalDescription = "Launch notes from The Earnalism's Dracula-first controlled digital reading room and rights-safe publication pipeline.";
@@ -296,7 +296,7 @@ function buildPages({ book, manifest }) {
         eyebrow: "The Earnalism Digital Library",
         title: "Begin with Dracula.",
         body: homeDescription,
-        facts: ["Dracula is the only live approved core reading release today.", "Audio is not available yet.", "Kshudhita Pashan remains pipeline-only."],
+        facts: ["Dracula is the only live approved core reading release today.", "Audiobook experience is in private review.", "Kshudhita Pashan remains pipeline-only."],
         links: [
           { href: "/reader/dracula", label: "Read Chapter 1 Free" },
           { href: "/book/dracula", label: "Start Dracula" },
@@ -340,7 +340,7 @@ function buildPages({ book, manifest }) {
           "Chapter 1 is free.",
           "Source: Project Gutenberg eBook #345.",
           "Rights status: approved Tier A controlled core reading release.",
-          "Audio is not available yet.",
+          "Audiobook experience is in private review.",
         ],
         links: [
           { href: "/reader/dracula", label: "Read Chapter 1 Free" },
@@ -450,7 +450,7 @@ function buildPages({ book, manifest }) {
       staticBody: pageShell({
         eyebrow: "Reader Interface",
         title: "Read Dracula Chapter 1.",
-        body: "This reader page is noindex and canonicalized to the public Dracula book page. Audio is not available yet.",
+        body: "This reader page is noindex and canonicalized to the public Dracula book page. Audiobook experience is in private review.",
         facts: [`${manifest.chapter_count} chapters in the manifest.`, "Preview chapter unlocked.", "Audio controls hidden."],
         links: [
           { href: "/book/dracula", label: "Public Dracula Page" },

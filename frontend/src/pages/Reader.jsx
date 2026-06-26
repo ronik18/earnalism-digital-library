@@ -1039,6 +1039,12 @@ export default function Reader() {
         case 'low_balance':
           setWalletSeconds(wallet_seconds);
           setShowLowBalanceWarning(true);
+          trackFunnelEvent('reader_low_balance_state', {
+            book_slug: bookId,
+            chapter_id: activeChapterId || chapterId || chapter?.id || '',
+            wallet_seconds,
+            source: 'reader_pulse',
+          });
           break;
         case 'paused':
           setWalletSeconds(wallet_seconds);
@@ -1048,6 +1054,12 @@ export default function Reader() {
           clearInterval(pulseIntervalRef.current);
           setSavedScrollPosition(scrollContainerRef.current?.scrollTop || 0);
           setShowTopUpModal(true);
+          trackFunnelEvent('reader_locked_state', {
+            book_slug: bookId,
+            chapter_id: activeChapterId || chapterId || chapter?.id || '',
+            reason: 'wallet_empty',
+            source: 'reader_pulse',
+          });
           break;
         case 'session_invalid':
           clearInterval(pulseIntervalRef.current);
@@ -1060,7 +1072,7 @@ export default function Reader() {
     } catch (err) {
       // Reader heartbeats should not interrupt active reading on transient network errors.
     }
-  }, [sessionId, meteredSessionActive]);
+  }, [activeChapterId, bookId, chapter, chapterId, sessionId, meteredSessionActive]);
 
   useEffect(() => {
     const id = crypto.randomUUID();
@@ -1221,6 +1233,12 @@ export default function Reader() {
             message: gate.message || 'This chapter is locked.',
             chapter: loadedChapter,
           });
+          trackFunnelEvent('reader_locked_state', {
+            book_slug: bookId,
+            chapter_id: activeChapterId,
+            reason: gate.reason || 'LOCKED',
+            source: 'chapter_gate',
+          });
           timings.total_load_ms = Math.round(readerNowMs() - loadStartedAt);
           sendReaderMetric('reader_chapter_open', {
             session_id: sessionId,
@@ -1250,6 +1268,7 @@ export default function Reader() {
           readerStartedRef.current = true;
           trackFunnelEvent(DRACULA_CTA_EVENTS.readerStart, {
             book: LIVE_APPROVED_SLUG,
+            book_slug: LIVE_APPROVED_SLUG,
             chapter_id: activeChapterId,
             is_preview: Boolean(gate.is_preview),
           });
@@ -1285,6 +1304,12 @@ export default function Reader() {
           chapter_id: activeChapterId,
           is_preview: Boolean(gate.is_preview),
         });
+        trackFunnelEvent('reader_opened', {
+          book_slug: bookId,
+          chapter_id: activeChapterId,
+          is_preview: Boolean(gate.is_preview),
+          source: 'reader_load',
+        });
         setLoading(false);
       } catch (err) {
         if (!cancelled) {
@@ -1303,12 +1328,24 @@ export default function Reader() {
               message: 'Sign in to continue reading this chapter.',
               chapter: null,
             });
+            trackFunnelEvent('reader_locked_state', {
+              book_slug: bookId,
+              chapter_id: chapterId || '',
+              reason: 'AUTH_REQUIRED',
+              source: 'reader_error',
+            });
             setError(null);
           } else if (status === 402) {
             setLockedState({
               reason: 'INSUFFICIENT_READING_TIME',
               message: 'Your reading time has ended. Add reading time to continue.',
               chapter: null,
+            });
+            trackFunnelEvent('reader_locked_state', {
+              book_slug: bookId,
+              chapter_id: chapterId || '',
+              reason: 'INSUFFICIENT_READING_TIME',
+              source: 'reader_error',
             });
             setError(null);
           } else if (missingReaderResource) {
@@ -1616,6 +1653,7 @@ export default function Reader() {
     draculaChapterOneCompleteRef.current = currentKey;
     trackFunnelEvent(DRACULA_CTA_EVENTS.chapterOneComplete, {
       book: LIVE_APPROVED_SLUG,
+      book_slug: LIVE_APPROVED_SLUG,
       chapter_id: activeChapterId || chapterId || chapter?.id,
     });
   }, [activeChapterId, bookId, chapter, chapterId, currentIdx, effectiveReadProgress, loading, lockedState]);
@@ -2260,12 +2298,34 @@ export default function Reader() {
 
           <div className="mt-8 flex flex-col gap-3">
             {reason === 'AUTH_REQUIRED' && (
-              <button type="button" onClick={() => navigate(signInUrl)} className="btn-primary w-full justify-center">
+              <button
+                type="button"
+                onClick={() => {
+                  trackFunnelEvent('return_resume_reading_click', {
+                    book_slug: bookId,
+                    chapter_id: activeChapterId || chapterId || '',
+                    source: 'reader_locked_sign_in',
+                  });
+                  navigate(signInUrl);
+                }}
+                className="btn-primary w-full justify-center"
+              >
                 Sign In
               </button>
             )}
             {reason === 'INSUFFICIENT_READING_TIME' && (
-              <button type="button" onClick={() => navigate('/pricing')} className="btn-primary w-full justify-center">
+              <button
+                type="button"
+                onClick={() => {
+                  trackFunnelEvent('return_resume_reading_click', {
+                    book_slug: bookId,
+                    chapter_id: activeChapterId || chapterId || '',
+                    source: 'reader_locked_pricing',
+                  });
+                  navigate('/pricing');
+                }}
+                className="btn-primary w-full justify-center"
+              >
                 Add Reading Time
               </button>
             )}
@@ -2275,11 +2335,33 @@ export default function Reader() {
               </button>
             )}
             {canOpenPreview && (
-              <button type="button" onClick={() => navigate(`/reader/${bookId}?c=${previewChapter.id}`)} className="btn-secondary w-full justify-center">
+              <button
+                type="button"
+                onClick={() => {
+                  trackFunnelEvent('return_resume_reading_click', {
+                    book_slug: bookId,
+                    chapter_id: previewChapter.id,
+                    source: 'reader_locked_free_preview',
+                  });
+                  navigate(`/reader/${bookId}?c=${previewChapter.id}`);
+                }}
+                className="btn-secondary w-full justify-center"
+              >
                 Read Free Preview
               </button>
             )}
-            <button type="button" onClick={() => navigate(`/book/${bookId}`)} className="text-sm text-charcoal-soft underline decoration-[var(--brand-gold)]/60 underline-offset-4">
+            <button
+              type="button"
+              onClick={() => {
+                trackFunnelEvent('return_resume_reading_click', {
+                  book_slug: bookId,
+                  chapter_id: activeChapterId || chapterId || '',
+                  source: 'reader_locked_back_to_book',
+                });
+                navigate(`/book/${bookId}`);
+              }}
+              className="text-sm text-charcoal-soft underline decoration-[var(--brand-gold)]/60 underline-offset-4"
+            >
               Back to book
             </button>
           </div>

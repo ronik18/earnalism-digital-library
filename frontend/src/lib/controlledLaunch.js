@@ -2,7 +2,7 @@ export const LIVE_APPROVED_SLUG = "dracula";
 export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
 
 export const DRACULA_SOURCE_NOTE = "Project Gutenberg eBook #345";
-export const DRACULA_RIGHTS_NOTE = "Approved Tier A core reading candidate";
+export const DRACULA_RIGHTS_NOTE = "Approved classic reading release";
 export const DRACULA_CHAPTER_COUNT = 27;
 export const DRACULA_COVER_IMAGE = "/assets/books/dracula/dracula-front-cover.webp";
 export const DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cover.webp";
@@ -16,7 +16,7 @@ export const DRACULA_FALLBACK_BOOK = {
   short_description:
     "Begin Bram Stoker's gothic classic in a quiet digital reading room. Chapter 1 is free; the full core reading experience continues with reading time.",
   description:
-    "Dracula is the first controlled Earnalism release: a Tier A approved core reading candidate with 27 chapters, a rights-safe source trail, and no audiobook enabled yet.",
+    "Dracula is the first controlled Earnalism release: an approved classic reading release with 27 chapters, a rights-safe source trail, and an audiobook experience in private review.",
   estimated_reading_time: "14 min",
   cover_image_url: DRACULA_COVER_IMAGE,
   thumbnail_url: DRACULA_COVER_IMAGE,
@@ -90,14 +90,14 @@ export const KSHUDHITA_PASHAN_PIPELINE = {
 };
 
 export const DRACULA_CTA_EVENTS = {
-  homepagePrimary: "homepage_dracula_cta_click",
-  bookView: "dracula_book_view",
-  previewStart: "dracula_preview_start",
-  startReading: "dracula_start_reading_click",
-  readingPass: "dracula_reading_pass_click",
-  readerStart: "dracula_reader_start",
-  chapterOneComplete: "dracula_chapter_1_complete",
-  notifyMe: "dracula_notify_me_click",
+  homepagePrimary: "hero_read_chapter_free_click",
+  bookView: "dracula_book_page_view",
+  previewStart: "start_dracula_click",
+  startReading: "start_dracula_click",
+  readingPass: "pricing_page_view",
+  readerStart: "reader_opened",
+  chapterOneComplete: "continue_reading_click",
+  notifyMe: "",
 };
 
 function normalizedSlug(book = {}) {
