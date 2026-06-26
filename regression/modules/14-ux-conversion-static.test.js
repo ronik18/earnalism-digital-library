@@ -98,6 +98,7 @@ describe("UX conversion static signals", () => {
   const socialLinksConfig = read("frontend/src/config/socialLinks.js");
   const styles = read("frontend/src/index.css");
   const app = read("frontend/src/App.js");
+  const adminPage = read("frontend/src/pages/Admin.jsx");
   const siteTourVoiceover = read("EARNALISM_SITE_TOUR_VOICEOVER_SCRIPT.md");
   const siteTourFeatureReport = read("SITE_TOUR_FEATURE_HIGHLIGHT_REPORT.md");
   const siteTourScorecard = read("BRAND_SITE_TOUR_VIDEO_SCORECARD.md");
@@ -127,6 +128,14 @@ describe("UX conversion static signals", () => {
   const productionReadingOnlyDeployRunbook = read("PRODUCTION_READING_ONLY_DEPLOY_RUNBOOK.md");
   const postDeployReadingOnlyCanaryReport = read("POST_DEPLOY_READING_ONLY_CANARY_REPORT.md");
   const postDeployReadingCanary = read("scripts/post_deploy_reading_canary.mjs");
+  const productionMonitoringRunbook = read("PRODUCTION_24_48_HOUR_MONITORING_RUNBOOK.md");
+  const seoRevenueReadinessReport = read("SEO_REVENUE_READINESS_REPORT.md");
+  const revenueFunnelReadinessReport = read("REVENUE_FUNNEL_READINESS_REPORT.md");
+  const readingLaunchFunnelTrackingPlan = read("READING_LAUNCH_FUNNEL_TRACKING_PLAN.md");
+  const postLaunchFunnelBaselineReport = read("POST_LAUNCH_FUNNEL_BASELINE_REPORT.md");
+  const performanceRevenueReadinessReport = read("PERFORMANCE_REVENUE_READINESS_REPORT.md");
+  const autoscalingOperationsReadinessReport = read("AUTOSCALING_OPERATIONS_READINESS_REPORT.md");
+  const readingOnlyRevenueOperationsScorecard = read("READING_ONLY_REVENUE_OPERATIONS_SCORECARD.md");
   const premiumLandingVisualReview = read("PREMIUM_LANDING_PAGE_VISUAL_REVIEW_REPORT.md");
   const luxuryVisualScorecard = read("LUXURY_VISUAL_AMBIENCE_SCORECARD.md");
   const pixelUtilizationScorecard = read("LANDING_PIXEL_UTILIZATION_GROWTH_SCORECARD.md");
@@ -264,12 +273,12 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain('data-testid="read-preview"');
     expect(bookDetail).toContain('data-testid="bottom-buy-reading-time"');
     expect(bookDetail).toContain("DRACULA_SOURCE_NOTE");
-    expect(bookDetail).toContain("Audio:</strong> Not available yet");
+    expect(bookDetail).toContain("Audio:</strong> Audiobook experience in private review");
     expect(bookDetail).toContain("readingPassUrl(\"book_detail\")");
     expect(bookDetail).toContain('data-testid="dracula-reading-model-note"');
     expect(bookDetail).toContain("Chapter 1 opens free so you can feel the room first.");
     expect(bookDetail).toContain("Later chapters use reading time from your wallet, not a subscription.");
-    expect(bookDetail).toContain("Dracula audio is not available yet and no listening CTA is shown.");
+    expect(bookDetail).toContain("Audiobook experience in private review. No listening CTA is shown.");
   });
 
   test("payment revenue confidence stays test-mode, wallet-time, and audio-blocked", () => {
@@ -434,6 +443,61 @@ describe("UX conversion static signals", () => {
     expect(postDeployReadingCanary).not.toMatch(/\bAuthorization\s*:/);
   });
 
+  test("post-launch revenue, SEO, performance, and operations reports are evidence-led", () => {
+    expect(productionMonitoringRunbook).toContain("Launch status: LIVE_VERIFIED");
+    expect(productionMonitoringRunbook).toContain("SEO And Crawler Monitoring");
+    expect(productionMonitoringRunbook).toContain("Performance Monitoring");
+    expect(productionMonitoringRunbook).toContain("Backend Logs");
+    expect(productionMonitoringRunbook).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
+    expect(productionMonitoringRunbook).toContain("PRODUCTION_BLOCKED");
+
+    expect(seoRevenueReadinessReport).toContain("SEO revenue readiness: GO_MONITOR_AND_OPTIMIZE");
+    expect(seoRevenueReadinessReport).toContain("The generated sitemap currently contains 11 routes");
+    expect(seoRevenueReadinessReport).toContain("`/reader/dracula` | Noindex and canonicalized to `/book/dracula`");
+    expect(seoRevenueReadinessReport).toContain("No public audiobook metadata, Listen Now CTA, AudioObject schema");
+    expect(seoRevenueReadinessReport).toContain("Metadata quality | 9.4/10");
+    expect(seoRevenueReadinessReport).toContain("Owner dashboard verification required");
+    expect(seoRevenueReadinessReport).not.toMatch(/\bGO_PUBLIC_AUDIOBOOK_RELEASE\b/i);
+
+    expect(revenueFunnelReadinessReport).toContain("Revenue funnel readiness: GO_MONITOR_24_48_HOURS");
+    expect(revenueFunnelReadinessReport).toContain("Wallet credited | Backend/account | OWNER_VERIFIED");
+    expect(revenueFunnelReadinessReport).toContain("Public audiobook | BLOCKED");
+    expect(revenueFunnelReadinessReport).toContain("Kshudhita/future titles | BLOCKED_PIPELINE_ONLY");
+
+    expect(performanceRevenueReadinessReport).toContain("Performance readiness: GO_MONITOR_WITH_QUICK_WINS");
+    expect(performanceRevenueReadinessReport).toContain("`frontend/build` total | 7.7 MB");
+    expect(performanceRevenueReadinessReport).toContain("Largest shelf image is 747 KB");
+    expect(performanceRevenueReadinessReport).toContain("Performance readiness score: 8.8/10");
+    expect(performanceRevenueReadinessReport).not.toMatch(/\b10\/10\b/);
+
+    expect(autoscalingOperationsReadinessReport).toContain("Operations readiness: GO_WITH_OWNER_DASHBOARD_VERIFICATION_REQUIRED");
+    expect(autoscalingOperationsReadinessReport).toContain("OWNER_DASHBOARD_VERIFICATION_REQUIRED");
+    expect(autoscalingOperationsReadinessReport).toContain("This report does not claim autoscaling is fully verified.");
+    expect(autoscalingOperationsReadinessReport).not.toMatch(/\bAUTOSCALING_FULLY_VERIFIED\b|\bAutoscaling verified: YES\b/i);
+
+    expect(readingOnlyRevenueOperationsScorecard).toContain("Overall revenue launch readiness | 9.3/10");
+    expect(readingOnlyRevenueOperationsScorecard).toContain("Autoscaling/operations readiness | 8.2/10 | OWNER_DASHBOARD_VERIFICATION_REQUIRED");
+    expect(readingOnlyRevenueOperationsScorecard).toContain("Public audio: PUBLIC_AUDIO_RELEASE_BLOCKED");
+    expect(readingOnlyRevenueOperationsScorecard).toContain("Audiobook production: PRODUCTION_BLOCKED");
+    expect(readingOnlyRevenueOperationsScorecard).not.toMatch(/\b10\/10\b/);
+  });
+
+  test("post-launch funnel tracking plan stays first-party, disabled by default, and privacy safe", () => {
+    expect(readingLaunchFunnelTrackingPlan).toContain("Tracking approach: first-party, privacy-safe, opt-in");
+    expect(readingLaunchFunnelTrackingPlan).toContain("Network delivery is disabled unless `REACT_APP_ENABLE_LAUNCH_ANALYTICS=true`");
+    expect(readingLaunchFunnelTrackingPlan).toContain("No third-party pixel was added by this pass.");
+    expect(readingLaunchFunnelTrackingPlan).toContain("No PII.");
+    expect(readingLaunchFunnelTrackingPlan).toContain("No raw unredacted Razorpay payment IDs");
+    expect(readingLaunchFunnelTrackingPlan).toContain("No customer email, phone, payment ID, order ID");
+    expect(readingLaunchFunnelTrackingPlan).toContain("No public audio, Listen Now CTA, AudioObject metadata, or audiobook-live claim is introduced.");
+
+    expect(postLaunchFunnelBaselineReport).toContain("Tracking status: OPT_IN_READY");
+    expect(postLaunchFunnelBaselineReport).toContain("Events Implemented");
+    expect(postLaunchFunnelBaselineReport).toContain("Production conversion summary until opt-in analytics delivery is enabled and reviewed in `/admin/launch-monitor`.");
+    expect(postLaunchFunnelBaselineReport).toContain("Operations baseline | OWNER_DASHBOARD_VERIFICATION_REQUIRED");
+    expect(postLaunchFunnelBaselineReport).not.toMatch(/\b(customer email|customer phone|card number|UPI ID|invoice number)\s*:/i);
+  });
+
   test("reading-only launch public surfaces reject audio, catalog, accessibility, and ownership overclaims", () => {
     const publicLaunchSources = [
       home,
@@ -457,8 +521,13 @@ describe("UX conversion static signals", () => {
     expect(publicLaunchSources).toContain("Dracula");
     expect(publicLaunchSources).toContain("Chapter 1");
     expect(publicLaunchSources).toMatch(/reading time/i);
+    expect(publicLaunchSources).toContain("Approved classic reading release");
+    expect(publicLaunchSources).not.toContain("Approved Tier A core reading candidate");
     expect(publicLaunchSources).toContain("audiobook_enabled: false");
     expect(publicLaunchSources).toContain("generate_audiobook: false");
+    expect(publicLaunchSources).toContain("Audiobook experience in private review");
+    expect(publicLaunchSources).not.toMatch(/\bAudio (is )?not available yet\b/i);
+    expect(publicLaunchSources).not.toMatch(/\bDracula audiobook is not available yet\b/i);
     expect(publicLaunchSources).not.toMatch(/\bListen Now\b/i);
     expect(publicLaunchSources).not.toMatch(/\bAudioObject\b/i);
     expect(publicLaunchSources).not.toMatch(/\bDracula audio is (live|available|ready|published)\b/i);
@@ -892,20 +961,105 @@ describe("UX conversion static signals", () => {
     expect(pipelineBlock).not.toContain("Listen Now");
   });
 
-  test("Bengali Gothic analytics events are mock-safe and allowlisted", () => {
+  test("owner launch monitor analytics events are mock-safe and allowlisted", () => {
     const analytics = read("frontend/src/lib/funnelAnalytics.js");
     const launchAudit = read("scripts/launch_readiness_audit.py");
 
     [
-      "bengali_gothic_pipeline_view",
-      "kshudhita_pashan_notify_click",
-      "kshudhita_pashan_audio_interest_click",
-      "bengali_voice_sample_interest",
-      "bengali_gothic_reading_circle_click",
+      "homepage_view",
+      "first_time_site_tour_shown",
+      "first_time_site_tour_completed",
+      "first_time_site_tour_skipped",
+      "hero_read_chapter_free_click",
+      "dracula_book_page_view",
+      "start_dracula_click",
+      "reader_opened",
+      "reader_locked_state",
+      "reader_low_balance_state",
+      "pricing_page_view",
+      "reading_pack_selected",
+      "checkout_started",
+      "payment_success_return",
+      "payment_failed_or_cancelled",
+      "wallet_credited_visible",
+      "continue_reading_click",
+      "return_resume_reading_click",
+      "core_web_vital",
     ].forEach((event) => {
       expect(analytics).toContain(event);
       expect(launchAudit).toContain(event);
     });
+  });
+
+  test("reading launch funnel tracking is first-party, opt-in, and PII-safe", () => {
+    [
+      "homepage_view",
+      "first_time_site_tour_shown",
+      "first_time_site_tour_completed",
+      "first_time_site_tour_skipped",
+      "reader_opened",
+      "reader_locked_state",
+      "reader_low_balance_state",
+      "reading_pack_selected",
+      "checkout_started",
+      "payment_failed_or_cancelled",
+      "wallet_credited_visible",
+      "return_resume_reading_click",
+    ].forEach((event) => {
+      expect(analytics).toContain(event);
+      expect(launchAudit).toContain(event);
+    });
+
+    expect(analytics).toContain("analyticsNetworkEnabled");
+    expect(analytics).toContain("REACT_APP_ENABLE_LAUNCH_ANALYTICS");
+    expect(analytics).toContain("__EARNALISM_ENABLE_FUNNEL_ANALYTICS__");
+    expect(analytics).toContain("isUnsafeAnalyticsValue");
+    expect(analytics).toContain("customer_email");
+    expect(analytics).toContain("razorpay_order_id");
+    expect(analytics).toContain("razorpay_payment_id");
+    expect(analytics).toContain("webhook_secret");
+    expect(analytics).toContain("api_key");
+    expect(analytics).toContain("upi");
+    expect(analytics).toContain("bank");
+    expect(analytics).not.toMatch(/google-analytics|gtag|facebook pixel|fbq\(|hotjar|mixpanel|segment/i);
+    expect([home, firstVisitSiteTour, bookDetail, reader, pricing, account].join("\n")).not.toMatch(/trackFunnelEvent\([\s\S]{0,240}(razorpay_signature|razorpay_payment_id|razorpay_order_id|customer_email|customer_phone|email|phone|upi|card|bank)/i);
+  });
+
+  test("owner launch monitor dashboard is admin-only and aggregate-safe", () => {
+    expect(app).toContain('path="/admin/launch-monitor"');
+    expect(app).toContain('<Admin initialTab="launch-monitor" />');
+    expect(adminPage).toContain("launch-monitor");
+    expect(adminPage).toContain("/admin/launch-monitor/summary");
+    expect(adminPage).toContain("OWNER_ADMIN_ONLY");
+    expect(adminPage).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
+    expect(adminPage).toContain("PRODUCTION_BLOCKED");
+    expect(adminPage).toContain("No PII, payment ids, customer ids, or third-party pixels.");
+    expect(backend).toContain('@api.get("/admin/launch-monitor/summary")');
+    expect(backend).toContain("Depends(require_admin)");
+    expect(backend).toContain("build_launch_monitor_summary");
+    const launchMonitorEndpoint = extractBetween(
+      backend,
+      '@api.get("/admin/launch-monitor/summary")',
+      '@api.post("/admin/payments/intents/{intent_id}/reconcile")'
+    );
+    expect(launchMonitorEndpoint).not.toMatch(/user_email|razorpay_payment_id|razorpay_order_id|customer_email|customer_phone/i);
+  });
+
+  test("first-time site tour is mounted, forceable, dismissible, keyboard-aware, and premium-copy safe", () => {
+    expect(layout).toContain("<FirstVisitSiteTour />");
+    expect(firstVisitSiteTour).toContain('params.get("tour") === "1"');
+    expect(firstVisitSiteTour).toContain('window.localStorage.getItem(STORAGE_KEY) === "complete"');
+    expect(firstVisitSiteTour).toContain('window.localStorage.setItem(STORAGE_KEY, "complete")');
+    expect(firstVisitSiteTour).toContain('data-testid="first-visit-site-tour"');
+    expect(firstVisitSiteTour).toContain('aria-modal="true"');
+    expect(firstVisitSiteTour).toContain('event.key === "Escape"');
+    expect(firstVisitSiteTour).toContain('event.key !== "Tab"');
+    expect(firstVisitSiteTour).toContain('first_time_site_tour_shown');
+    expect(firstVisitSiteTour).toContain('first_time_site_tour_completed');
+    expect(firstVisitSiteTour).toContain('first_time_site_tour_skipped');
+    expect(firstVisitSiteTour).toContain("Audiobook experience in private review");
+    expect(firstVisitSiteTour).not.toMatch(/\bAudio (is )?not available yet\b/i);
+    expect(firstVisitSiteTour).not.toMatch(/\bListen Now\b|\bAudioObject\b/i);
   });
 
   test("pricing page has checkout CTA, payment trust copy, and support/refund copy", () => {
@@ -991,17 +1145,24 @@ describe("UX conversion static signals", () => {
     expect(useSeo).toContain("A quiet digital reading room beginning with Dracula by Bram Stoker.");
   });
 
-  test("pricing page tracks premium pricing funnel events with render semantics", () => {
+  test("pricing page tracks approved revenue funnel events without render-only noise", () => {
     for (const event of [
-      "pricing_pack_rendered",
-      "pricing_pack_cta_click",
-      "reading_time_explainer_rendered",
-      "dracula_continue_from_pricing_click",
+      "pricing_page_view",
+      "reading_pack_selected",
+      "checkout_started",
+      "payment_success_return",
+      "payment_failed_or_cancelled",
+      "wallet_credited_visible",
+      "continue_reading_click",
     ]) {
       expect(pricing).toContain(event);
       expect(analytics).toContain(event);
       expect(launchAudit).toContain(event);
     }
+    expect(pricing).not.toMatch(/trackFunnelEvent\("pricing_view"/);
+    expect(pricing).not.toMatch(/trackFunnelEvent\("checkout_start"/);
+    expect(pricing).not.toMatch(/trackFunnelEvent\("payment_success"/);
+    expect(pricing).not.toMatch(/trackFunnelEvent\("wallet_credited"/);
     expect(pricing).not.toContain("pricing_pack_view");
     expect(pricing).not.toContain("reading_time_explainer_view");
     expect(analytics).not.toContain("pricing_pack_view");

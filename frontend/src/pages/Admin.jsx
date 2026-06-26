@@ -12,16 +12,17 @@ import PublishingWorkflowPanel from "../components/Admin/PublishingWorkflowPanel
 import { normalizeImageUrl, optimizedImageUrl } from "../lib/images";
 import useSEO from "../hooks/useSEO";
 
-const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "settings", "account"];
+const TABS = ["books", "blog", "categories", "newsletter", "contacts", "users", "payments", "security", "launch-monitor", "settings", "account"];
 
-export default function Admin() {
+export default function Admin({ initialTab = "books" }) {
   useSEO({
     title: "Admin Dashboard — The Earnalism Digital Library",
     description: "Internal administration dashboard for The Earnalism Digital Library.",
     robots: "noindex, nofollow",
   });
   const { admin, logout } = useAuth();
-  const [tab, setTab] = useState("books");
+  const [tab, setTab] = useState(initialTab);
+  useEffect(() => { setTab(initialTab); }, [initialTab]);
 
   if (admin === null) return <div className="py-32 text-center text-charcoal-soft">Loading…</div>;
   if (!admin) return <Navigate to="/admin/login" replace />;
@@ -58,6 +59,7 @@ export default function Admin() {
         {tab === "users" && <UsersAdmin />}
         {tab === "payments" && <PaymentsAdmin />}
         {tab === "security" && <SecurityAlertsAdmin />}
+        {tab === "launch-monitor" && <LaunchMonitorAdmin />}
         {tab === "settings" && <SettingsTab />}
         {tab === "account" && <AccountTab />}
       </div>
@@ -171,6 +173,213 @@ function SecurityAlertsAdmin() {
       </div>
     </div>
   );
+}
+
+const launchMetricLabels = {
+  homepage_view: "Homepage visits",
+  first_time_site_tour_shown: "Tour shown",
+  first_time_site_tour_completed: "Tour completed",
+  first_time_site_tour_skipped: "Tour skipped",
+  hero_read_chapter_free_click: "Hero Chapter 1 clicks",
+  dracula_book_page_view: "Dracula page views",
+  start_dracula_click: "Start Dracula clicks",
+  reader_opened: "Reader opens",
+  reader_locked_state: "Locked reader states",
+  reader_low_balance_state: "Low-balance states",
+  pricing_page_view: "Pricing views",
+  reading_pack_selected: "Pack selections",
+  checkout_started: "Checkout starts",
+  payment_success_return: "Payment success returns",
+  payment_failed_or_cancelled: "Payment failed/cancelled",
+  wallet_credited_visible: "Wallet credit visible",
+  continue_reading_click: "Continue reading",
+  return_resume_reading_click: "Return/resume clicks",
+};
+
+const conversionLabels = {
+  homepage_to_dracula_cta_pct: "Homepage to CTA",
+  dracula_to_reader_pct: "Dracula to reader",
+  reader_locked_to_pricing_pct: "Locked reader to pricing",
+  pricing_to_checkout_pct: "Pricing to checkout",
+  checkout_to_payment_success_pct: "Checkout to success",
+  payment_success_to_continue_reading_pct: "Success to continue",
+};
+
+function LaunchMonitorAdmin() {
+  const [summary, setSummary] = useState(null);
+  const [windowKey, setWindowKey] = useState("last_24h");
+  const [loading, setLoading] = useState(true);
+  const [loadedAt, setLoadedAt] = useState("");
+
+  const load = async () => {
+    setLoading(true);
+    try {
+      const { data } = await api.get("/admin/launch-monitor/summary");
+      setSummary(data || {});
+      setLoadedAt(new Date().toLocaleString());
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail) || "Launch monitor could not be loaded.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => { load(); }, []);
+
+  const selectedFunnel = summary?.funnel?.[windowKey] || {};
+  const counts = selectedFunnel.counts || {};
+  const conversionRates = selectedFunnel.conversion_rates || {};
+  const payment = summary?.payment?.[windowKey] || {};
+  const ops = summary?.ops_health || {};
+  const cwv = summary?.core_web_vitals || {};
+
+  return (
+    <div className="space-y-6" data-testid="admin-launch-monitor">
+      <div className="card-elegant p-6 sm:p-8">
+        <div className="flex items-start justify-between gap-4 flex-wrap">
+          <div>
+            <div className="overline">Owner launch monitor</div>
+            <h2 className="font-serif-display text-2xl text-burgundy mt-1">Dracula reading-only launch</h2>
+            <p className="text-sm text-charcoal-soft mt-2 max-w-3xl">
+              First-party aggregate monitoring for the live reading funnel, payments, wallet credits, support queue, Core Web Vitals, canary state, and public-audio blockers.
+            </p>
+          </div>
+          <button onClick={load} className="btn-link text-xs" data-testid="launch-monitor-refresh">Refresh</button>
+        </div>
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
+          <StatusCard label="Reading launch" value={summary?.launch_status || "LIVE_VERIFIED"} tone="success" />
+          <StatusCard label="Public audio" value={summary?.public_audio_status || "PUBLIC_AUDIO_RELEASE_BLOCKED"} tone="hold" />
+          <StatusCard label="Audiobook production" value={summary?.audiobook_production_status || "PRODUCTION_BLOCKED"} tone="hold" />
+          <StatusCard label="Canary" value={ops.post_deploy_canary?.status || "LOADING"} tone={ops.post_deploy_canary?.status === "PASS_RECORDED" ? "success" : "hold"} />
+        </div>
+        <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-charcoal-soft">
+          <span>Dashboard access: {summary?.dashboard_status || "OWNER_ADMIN_ONLY"}</span>
+          <span aria-hidden="true">/</span>
+          <span>Last refresh: {loadedAt || "not loaded"}</span>
+          <span aria-hidden="true">/</span>
+          <span>No PII, payment ids, customer ids, or third-party pixels.</span>
+        </div>
+      </div>
+
+      <div className="card-elegant p-6 sm:p-8">
+        <div className="flex items-center justify-between gap-3 flex-wrap">
+          <div>
+            <div className="overline">Funnel window</div>
+            <h3 className="font-serif-display text-xl text-burgundy mt-1">Counts and conversion rates</h3>
+          </div>
+          <div className="flex gap-2" role="group" aria-label="Launch monitor time window">
+            {["today", "last_24h", "last_48h"].map((key) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setWindowKey(key)}
+                className={`rounded-full px-3 py-1.5 text-[0.65rem] uppercase tracking-[0.18em] ${windowKey === key ? "bg-burgundy text-[var(--brand-ivory)]" : "border border-brand-soft text-charcoal-soft"}`}
+              >
+                {key.replace(/_/g, " ")}
+              </button>
+            ))}
+          </div>
+        </div>
+        {loading ? <p className="mt-5 text-sm text-charcoal-soft">Loading launch metrics...</p> : (
+          <>
+            <div className="mt-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
+              {Object.entries(launchMetricLabels).map(([key, label]) => (
+                <MetricCard key={key} label={label} value={counts[key] || 0} />
+              ))}
+            </div>
+            <div className="mt-7 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+              {Object.entries(conversionLabels).map(([key, label]) => (
+                <MetricCard key={key} label={label} value={`${conversionRates[key] || 0}%`} />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        <div className="card-elegant p-6 sm:p-8">
+          <div className="overline">Revenue and wallet</div>
+          <h3 className="font-serif-display text-xl text-burgundy mt-1">Payment health</h3>
+          <div className="mt-5 grid grid-cols-2 gap-3">
+            <MetricCard label="Payment intents" value={payment.payment_intents_created || 0} />
+            <MetricCard label="Payment successes" value={payment.payment_success_count || 0} />
+            <MetricCard label="Payment failures" value={payment.payment_failed_count || 0} />
+            <MetricCard label="Wallet credits" value={payment.wallet_credit_count || 0} />
+            <MetricCard label="Webhooks received" value={payment.webhook_received_count || 0} />
+            <MetricCard label="Duplicate webhooks blocked" value={payment.webhook_duplicate_replay_blocked_count || 0} />
+          </div>
+        </div>
+
+        <div className="card-elegant p-6 sm:p-8">
+          <div className="overline">Ops health</div>
+          <h3 className="font-serif-display text-xl text-burgundy mt-1">Safety and queue state</h3>
+          <div className="mt-5 space-y-3 text-sm text-charcoal-soft">
+            <KeyValue label="Backend errors" value={`${ops.backend_errors?.count || 0} (${ops.backend_errors?.status || "NOT_PERSISTED"})`} />
+            <KeyValue label="Public audio leak check" value={ops.public_audio_leak_check?.status || "PASS_NO_PUBLIC_AUDIO_FILES"} />
+            <KeyValue label="Support queue statuses" value={summarizeCounts(payment.support_queue)} />
+            <KeyValue label="Refund queue statuses" value={summarizeCounts(payment.refund_queue)} />
+            <KeyValue label="Privacy mode" value={summary?.privacy?.analytics_mode || "first_party_opt_in_minimal_events"} />
+          </div>
+        </div>
+      </div>
+
+      <div className="card-elegant p-6 sm:p-8">
+        <div className="overline">Core Web Vitals</div>
+        <h3 className="font-serif-display text-xl text-burgundy mt-1">{cwv.status || "NO_CORE_WEB_VITALS_EVENTS_YET"}</h3>
+        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          {Object.keys(cwv.metrics || {}).length === 0 ? (
+            <p className="text-sm text-charcoal-soft">No Core Web Vitals have been collected yet. Enable the first-party performance flag to collect route-level metrics.</p>
+          ) : Object.entries(cwv.metrics).map(([metric, data]) => (
+            <MetricCard key={metric} label={metric} value={data.average_value} note={`${data.count} samples`} />
+          ))}
+        </div>
+      </div>
+
+      <div className="card-elegant p-6 sm:p-8">
+        <div className="overline">Action checklist</div>
+        <h3 className="font-serif-display text-xl text-burgundy mt-1">First 24-48 hours</h3>
+        <ul className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-charcoal-soft">
+          {(summary?.action_checklist || []).map((item) => (
+            <li key={item} className="rounded-md border border-brand-soft bg-white/50 px-4 py-3">{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function StatusCard({ label, value, tone = "hold" }) {
+  const toneClass = tone === "success" ? "bg-emerald-50 text-emerald-800 border-emerald-200" : "bg-amber-50 text-amber-900 border-amber-200";
+  return (
+    <div className={`rounded-lg border p-4 ${toneClass}`}>
+      <div className="text-[0.62rem] uppercase tracking-[0.18em] opacity-80">{label}</div>
+      <div className="mt-2 break-words font-serif-display text-lg leading-tight">{value}</div>
+    </div>
+  );
+}
+
+function MetricCard({ label, value, note = "" }) {
+  return (
+    <div className="rounded-lg border border-brand-soft bg-white/55 p-4">
+      <div className="text-[0.62rem] uppercase tracking-[0.18em] text-charcoal-soft">{label}</div>
+      <div className="mt-2 font-serif-display text-2xl text-burgundy">{value}</div>
+      {note && <div className="mt-1 text-xs text-charcoal-soft">{note}</div>}
+    </div>
+  );
+}
+
+function KeyValue({ label, value }) {
+  return (
+    <div className="flex items-start justify-between gap-4 rounded-md border border-brand-soft bg-white/45 px-4 py-3">
+      <span className="text-charcoal">{label}</span>
+      <span className="max-w-[60%] text-right text-charcoal-soft">{value || "none"}</span>
+    </div>
+  );
+}
+
+function summarizeCounts(value) {
+  if (!value || Object.keys(value).length === 0) return "none";
+  return Object.entries(value).map(([key, count]) => `${key}: ${count}`).join(", ");
 }
 
 const EMPTY_BOOK = { title: "", subtitle: "", author: "The Earnalism", category_slug: "business", short_description: "", description: "", cover_image_url: "", back_cover_image_url: "", estimated_reading_time: "", price_paperback: "", price_ebook: "", buy_url: "", formats: ["Ebook"], benefits: [], who_for: [], learnings: [], about_author: "", is_published: false };

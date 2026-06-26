@@ -20,7 +20,7 @@ function BookCard({ book, priority = false }) {
   const statusLabel = isLiveApproved ? "Live controlled release" : "Coming Soon";
 
   const track = (event, metadata = {}) => {
-    trackFunnelEvent(event, { book: book.slug, ...metadata });
+    trackFunnelEvent(event, { book: book.slug, book_slug: book.slug, ...metadata });
   };
 
   return (

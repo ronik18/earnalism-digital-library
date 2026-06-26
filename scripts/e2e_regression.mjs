@@ -103,7 +103,7 @@ function sameOriginHeaders() {
 function localFixtureFor(request) {
   const url = new URL(request.url());
   const pathname = url.pathname;
-  if (request.method() !== "GET" && pathname.endsWith("/analytics/events")) {
+  if (request.method() !== "GET" && (pathname.endsWith("/analytics/event") || pathname.endsWith("/analytics/events"))) {
     return { status: 200, body: { ok: true } };
   }
   if (request.method() !== "GET" && pathname.endsWith("/reader/metrics")) {

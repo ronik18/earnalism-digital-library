@@ -45,16 +45,12 @@ const SOCIALS = [
 ];
 
 function track(event, metadata = {}) {
-  trackFunnelEvent(event, { book: LIVE_APPROVED_SLUG, ...metadata });
+  trackFunnelEvent(event, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, ...metadata });
 }
 
 function trackPipelineInterest(event, ctaId) {
-  trackFunnelEvent(event, {
-    source: "home_pipeline_shelf",
-    book_slug: KSHUDHITA_PASHAN_PIPELINE.slug,
-    cta_id: ctaId,
-    public: false,
-  });
+  void event;
+  void ctaId;
 }
 
 export default function Home() {
@@ -76,10 +72,10 @@ export default function Home() {
   });
 
   useEffect(() => {
-    trackFunnelEvent("bengali_gothic_pipeline_view", {
-      source: "home",
-      book_slug: KSHUDHITA_PASHAN_PIPELINE.slug,
-      public: false,
+    trackFunnelEvent("homepage_view", {
+      path: "/",
+      launch_status: "LIVE_VERIFIED",
+      public_audio_status: "PUBLIC_AUDIO_RELEASE_BLOCKED",
     });
   }, []);
 
@@ -177,7 +173,7 @@ export default function Home() {
             <div className="premium-launch-facts mt-3" aria-label="Dracula launch facts">
               <span className="inline-flex items-center gap-2"><ShieldCheck size={14} strokeWidth={1.6} /> {DRACULA_RIGHTS_NOTE}</span>
               <span className="inline-flex items-center gap-2"><BookOpen size={14} strokeWidth={1.6} /> Chapter 1 free</span>
-              <span className="inline-flex items-center gap-2"><Headphones size={14} strokeWidth={1.6} /> Audio not available yet</span>
+              <span className="inline-flex items-center gap-2"><Headphones size={14} strokeWidth={1.6} /> Audiobook experience in private review</span>
             </div>
           </div>
 
@@ -191,7 +187,7 @@ export default function Home() {
                 <h2 className="mt-1.5 font-serif-display text-[1.82rem] text-[#FDFCF8]">Dracula</h2>
                 <p className="mt-1.5 text-[0.72rem] uppercase tracking-[0.14em] text-[#F4EFEA]/76">by Bram Stoker</p>
                 <p className="mx-auto mt-3 max-w-sm text-[0.78rem] leading-relaxed text-[#F4EFEA]/72">
-                  {DRACULA_CHAPTER_COUNT} chapters. Source: {DRACULA_SOURCE_NOTE}. Audio is not available yet.
+                  {DRACULA_CHAPTER_COUNT} chapters. Public-domain source verified. Audiobook experience is in private review.
                 </p>
               </div>
             </div>
@@ -332,8 +328,8 @@ export default function Home() {
                   <ul className="mt-5 grid gap-2 text-sm leading-relaxed text-charcoal-soft sm:grid-cols-2">
                     <li className="inline-flex gap-2"><CheckCircle2 size={16} className="mt-0.5 text-gold" /> 27 chapters</li>
                     <li className="inline-flex gap-2"><CheckCircle2 size={16} className="mt-0.5 text-gold" /> Chapter 1 free</li>
-                    <li className="inline-flex gap-2"><CheckCircle2 size={16} className="mt-0.5 text-gold" /> Tier A approved</li>
-                    <li className="inline-flex gap-2"><LockKeyhole size={16} className="mt-0.5 text-gold" /> Audio not available yet</li>
+                    <li className="inline-flex gap-2"><CheckCircle2 size={16} className="mt-0.5 text-gold" /> Approved classic reading release</li>
+                    <li className="inline-flex gap-2"><LockKeyhole size={16} className="mt-0.5 text-gold" /> Audiobook experience in private review</li>
                   </ul>
                   <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                     <Link to={`/reader/${LIVE_APPROVED_SLUG}`} className="btn-secondary justify-center" data-testid="home-dracula-preview" onClick={() => track(DRACULA_CTA_EVENTS.previewStart, { cta: "live_shelf_preview" })}>
@@ -391,8 +387,8 @@ export default function Home() {
           </div>
           <div className="card-elegant p-7 sm:p-9" data-testid="audiobook-unavailable">
             <div className="overline mb-3">Audiobooks</div>
-            <h3 className="font-serif-display text-3xl text-burgundy">Audio is being prepared through QA.</h3>
-            <p className="mt-5 text-charcoal-soft leading-[1.8]">Dracula audiobook is not available yet. There are no play buttons, waveforms, or audiobook CTAs in this launch.</p>
+            <h3 className="font-serif-display text-3xl text-burgundy">Audiobook experience is in private review.</h3>
+            <p className="mt-5 text-charcoal-soft leading-[1.8]">Dracula audiobook remains internal-only while highlighted-text sync, accessibility, and release gates continue. There are no play buttons, waveforms, or audiobook CTAs in this launch.</p>
           </div>
         </div>
       </section>

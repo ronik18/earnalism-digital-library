@@ -112,6 +112,7 @@ export default function App() {
               <Route path="/reader/:slug" element={<Reader />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/admin/launch-monitor" element={<Admin initialTab="launch-monitor" />} />
             </Routes>
           </Suspense>
           <AppToaster position="bottom-right" />
