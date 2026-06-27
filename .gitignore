@@ -65,6 +65,13 @@ output/**
 !output/onboarding/**
 !output/call_of_the_wild/
 !output/call_of_the_wild/go_live_qa_report.md
+# Signed-user UX recordings are owner-run evidence. Keep large media and traces out of git.
+output/ux-journey-recordings/**/*.webm
+output/ux-journey-recordings/**/*.mp4
+output/ux-journey-recordings/**/*.zip
+output/ux-journey-regression/**/*.webm
+output/ux-journey-regression/**/*.mp4
+output/ux-journey-regression/**/*.zip
 output/book_import/
 book_import_manifest.json
 frontend/book_import_manifest.json
