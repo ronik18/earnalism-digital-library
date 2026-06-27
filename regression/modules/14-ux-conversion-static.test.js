@@ -77,6 +77,7 @@ describe("UX conversion static signals", () => {
   const reader = read("frontend/src/pages/Reader.jsx");
   const launchAudit = read("scripts/launch_readiness_audit.py");
   const packageJson = read("package.json");
+  const gitignore = read(".gitignore");
   const frontendPackageJson = read("frontend/package.json");
   const staticSnapshotGenerator = read("frontend/scripts/generate-static-seo-snapshots.mjs");
   const socialPreviewAudit = read("scripts/social_preview_audit.py");
@@ -137,6 +138,15 @@ describe("UX conversion static signals", () => {
   const performanceRevenueReadinessReport = read("PERFORMANCE_REVENUE_READINESS_REPORT.md");
   const autoscalingOperationsReadinessReport = read("AUTOSCALING_OPERATIONS_READINESS_REPORT.md");
   const readingOnlyRevenueOperationsScorecard = read("READING_ONLY_REVENUE_OPERATIONS_SCORECARD.md");
+  const signedUserJourneyRecorder = read("scripts/record_signed_user_journey.mjs");
+  const signedUserRecordingReport = read("SIGNED_USER_FULL_JOURNEY_RECORDING_REPORT.md");
+  const signedUserRegressionReport = read("SIGNED_USER_JOURNEY_REGRESSION_REPORT.md");
+  const signedUserUxScorecard = read("SIGNED_USER_UX_10_10_SCORECARD.md");
+  const signedUserUxBacklog = read("SIGNED_USER_UX_ENHANCEMENT_BACKLOG.md");
+  const signedUserUxBeforeAfter = read("SIGNED_USER_UX_BEFORE_AFTER_REPORT.md");
+  const paymentReceiptAudit = read("PAYMENT_RECEIPT_AND_INVOICE_AUDIT.md");
+  const samplePaymentReceiptTemplate = read("SAMPLE_PAYMENT_RECEIPT_TEMPLATE.md");
+  const paymentReceiptEmailPlan = read("PAYMENT_RECEIPT_EMAIL_IMPLEMENTATION_PLAN.md");
   const premiumLandingVisualReview = read("PREMIUM_LANDING_PAGE_VISUAL_REVIEW_REPORT.md");
   const luxuryVisualScorecard = read("LUXURY_VISUAL_AMBIENCE_SCORECARD.md");
   const pixelUtilizationScorecard = read("LANDING_PIXEL_UTILIZATION_GROWTH_SCORECARD.md");
@@ -531,6 +541,118 @@ describe("UX conversion static signals", () => {
     expect(postLaunchFunnelBaselineReport).toContain("Production conversion summary until opt-in analytics delivery is enabled and reviewed in `/admin/launch-monitor`.");
     expect(postLaunchFunnelBaselineReport).toContain("Operations baseline | OWNER_DASHBOARD_VERIFICATION_REQUIRED");
     expect(postLaunchFunnelBaselineReport).not.toMatch(/\b(customer email|customer phone|card number|UPI ID|invoice number)\s*:/i);
+  });
+
+  test("signed-user journey recorder is manual-sign-in, privacy-safe, and launch-guarded", () => {
+    expect(packageJson).toContain('"ux:journey-smoke": "EARNALISM_JOURNEY_MODE=smoke node scripts/record_signed_user_journey.mjs"');
+    expect(packageJson).toContain('"ux:journey-record": "node scripts/record_signed_user_journey.mjs"');
+    expect(packageJson).toContain('"ux:journey-record:local": "EARNALISM_BASE_URL=http://localhost:3000 node scripts/record_signed_user_journey.mjs"');
+    expect(packageJson).toContain('"ux:journey-record:prod": "EARNALISM_BASE_URL=https://theearnalism.com node scripts/record_signed_user_journey.mjs"');
+    expect(packageJson).toContain('"ux:journey-regression-report": "EARNALISM_JOURNEY_MODE=regression-report node scripts/record_signed_user_journey.mjs"');
+    expect(packageJson).toContain('"regression:ci": "npm run ux:journey-smoke && CI=true REGRESSION_MODE=pr npm run regression -- --json --outputFile=regression/results.json"');
+
+    expect(signedUserJourneyRecorder).toContain("Please sign in manually in the opened browser");
+    expect(signedUserJourneyRecorder).toContain("Recording starts only after this confirmation");
+    expect(signedUserJourneyRecorder).toContain("EARNALISM_JOURNEY_MODE");
+    expect(signedUserJourneyRecorder).toContain("EARNALISM_JOURNEY_TEST_STORAGE_STATE");
+    expect(signedUserJourneyRecorder).toContain("journey_smoke_report.json");
+    expect(signedUserJourneyRecorder).toContain("journey_route_timings.json");
+    expect(signedUserJourneyRecorder).toContain("journey_failures.json");
+    expect(signedUserJourneyRecorder).toContain("output/ux-journey-regression");
+    expect(signedUserJourneyRecorder).toContain("recordVideo");
+    expect(signedUserJourneyRecorder).toContain("context.tracing.start");
+    expect(signedUserJourneyRecorder).toContain("redactSensitive");
+    expect(signedUserJourneyRecorder).toContain("payment_execution_skipped_by_design");
+    expect(signedUserJourneyRecorder).toContain("scanPublicAudioFiles");
+    expect(signedUserJourneyRecorder).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
+    expect(signedUserJourneyRecorder).toContain("PRODUCTION_BLOCKED");
+    expect(signedUserJourneyRecorder).toContain("output/ux-journey-recordings");
+    expect(signedUserJourneyRecorder).toContain("storageState");
+    expect(signedUserJourneyRecorder).not.toMatch(/writeFileSync\([^)]*storageState/i);
+    expect(signedUserJourneyRecorder).not.toMatch(/checkout\.razorpay\.com|api\.razorpay\.com|method:\s*["']POST["'][\s\S]{0,80}payments/i);
+    expect(signedUserJourneyRecorder).not.toMatch(/ELEVENLABS_API_KEY|RAZORPAY_KEY_SECRET|RAZORPAY_WEBHOOK_SECRET/);
+
+    expect(gitignore).toContain("output/ux-journey-recordings/**/*.webm");
+    expect(gitignore).toContain("output/ux-journey-recordings/**/*.mp4");
+    expect(gitignore).toContain("output/ux-journey-recordings/**/*.zip");
+    expect(gitignore).toContain("output/ux-journey-regression/**/*.webm");
+    expect(gitignore).toContain("output/ux-journey-regression/**/*.mp4");
+    expect(gitignore).toContain("output/ux-journey-regression/**/*.zip");
+
+    const signedUserReports = [
+      signedUserRecordingReport,
+      signedUserRegressionReport,
+      signedUserUxScorecard,
+      signedUserUxBacklog,
+      signedUserUxBeforeAfter,
+    ].join("\n");
+    expect(signedUserReports).toContain("TWO_TIER_JOURNEY_QA_READY");
+    expect(signedUserReports).toContain("CI-safe smoke");
+    expect(signedUserReports).toContain("CI integration: `npm run regression:ci` runs this smoke before the standard regression bundle.");
+    expect(signedUserReports).toContain("Owner-Operated Full Video Journey");
+    expect(signedUserReports).toContain("latest_smoke_status");
+    expect(signedUserReports).toContain("Manual full-video journey is required for major releases");
+    expect(signedUserReports).toContain("OWNER_RUN_READY");
+    expect(signedUserReports).toContain("OWNER_RECORDING_REQUIRED_BEFORE_FINAL_SCORE");
+    expect(signedUserReports).toContain("AWAITING_FIRST_OWNER_RECORDING");
+    expect(signedUserReports).toContain("does not ask for a password");
+    expect(signedUserReports).toContain("does not write cookies, tokens, or storage state to disk");
+    expect(signedUserReports).toContain("Live payment execution: `SKIPPED_BY_DESIGN`");
+    expect(signedUserReports).toContain("Public audio: `PUBLIC_AUDIO_RELEASE_BLOCKED`");
+    expect(signedUserReports).toContain("Audiobook production: `PRODUCTION_BLOCKED`");
+    expect(signedUserReports).toContain("A true 10/10 score is not claimed until the owner-run signed journey is recorded and reviewed.");
+    expect(signedUserReports).toContain("Overall signed-user journey | 10/10 only if proven");
+    expect(signedUserReports).not.toMatch(/\bGO_PUBLIC_AUDIOBOOK_RELEASE\b/i);
+    expect(signedUserReports).not.toMatch(/\bListen Now\b[\s\S]{0,80}\ballowed\b/i);
+    expect(signedUserReports).not.toMatch(/\bAudioObject\b[\s\S]{0,80}\benabled\b/i);
+  });
+
+  test("payment receipt and invoice docs are evidence-led, redacted, and non-overclaiming", () => {
+    const receiptDocs = [
+      paymentReceiptAudit,
+      samplePaymentReceiptTemplate,
+      paymentReceiptEmailPlan,
+    ].join("\n");
+
+    expect(paymentReceiptAudit).toContain("OWNER_DASHBOARD_VERIFICATION_REQUIRED");
+    expect(paymentReceiptAudit).toContain("Razorpay Orders + Checkout + server verify/webhook + Earnalism wallet ledger");
+    expect(paymentReceiptAudit).toContain("Razorpay Invoice API");
+    expect(paymentReceiptAudit).toContain("NOT_USED_IN_REPO");
+    expect(paymentReceiptAudit).toContain("Earnalism owned email receipt");
+    expect(paymentReceiptAudit).toContain("NOT_IMPLEMENTED_IN_REPO");
+    expect(paymentReceiptAudit).toContain("GST_TAX_INVOICE_NOT_VERIFIED");
+    expect(paymentReceiptAudit).toContain("Email Delivery Verification");
+    expect(paymentReceiptAudit).toContain("NOT_VERIFIED");
+
+    expect(samplePaymentReceiptTemplate).toContain("SAMPLE_ONLY_NOT_TAX_INVOICE");
+    expect(samplePaymentReceiptTemplate).toContain("This is a payment receipt, not a tax invoice unless explicitly marked as a tax invoice.");
+    expect(samplePaymentReceiptTemplate).toContain("RZP-REDACTED-REF");
+    expect(samplePaymentReceiptTemplate).toContain("REDACTED_LOW_VALUE_AMOUNT");
+    expect(samplePaymentReceiptTemplate).not.toMatch(/\b(?:pay|order|cust)_[A-Za-z0-9]{8,}\b/i);
+
+    expect(paymentReceiptEmailPlan).toContain("PLANNING_ONLY_NO_EMAIL_SENDING_ADDED");
+    expect(paymentReceiptEmailPlan).toContain("Razorpay Automated Receipt");
+    expect(paymentReceiptEmailPlan).toContain("Razorpay Invoice API");
+    expect(paymentReceiptEmailPlan).toContain("Earnalism-Owned Transactional Email Receipt");
+    expect(paymentReceiptEmailPlan).toContain("No email sending is implemented by this plan.");
+
+    const forbiddenPatterns = [
+      /\brzp_(?:live|test)_[A-Za-z0-9]{8,}\b/i,
+      /\b(?:pay|order|cust)_[A-Za-z0-9]{8,}\b/i,
+      /\bAuthorization\s*:\s*(?:Bearer|Basic)\s+[A-Za-z0-9._~+/=-]{12,}/i,
+      /\bBearer\s+[A-Za-z0-9._~+/=-]{12,}/i,
+      /\bsk_[A-Za-z0-9]{16,}\b/i,
+      /\b(?:RAZORPAY_KEY_SECRET|RAZORPAY_WEBHOOK_SECRET|WEBHOOK_SECRET|API_KEY|SECRET|TOKEN)\s*[:=]\s*["']?[A-Za-z0-9_./+=-]{8,}/i,
+      /\b(?:\d[ -]*?){12,19}\b/,
+      /\b(?:UPI ID|VPA|IFSC|bank account|account number)\b/i,
+      /\b(?:\+?\d{1,3}[-. ]?)?(?:\(?\d{3}\)?[-. ]?){2}\d{4}\b/,
+      /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i,
+    ];
+    for (const pattern of forbiddenPatterns) {
+      expect(receiptDocs).not.toMatch(pattern);
+    }
+    expect(receiptDocs).not.toMatch(/\b(GST|tax)\s+invoice\s+(is|will be|gets|generated automatically|sent automatically)\b/i);
+    expect(receiptDocs).not.toMatch(/\bemail receipt\s+(is|will be|gets|sent automatically)\b/i);
   });
 
   test("reading-only launch public surfaces reject audio, catalog, accessibility, and ownership overclaims", () => {
