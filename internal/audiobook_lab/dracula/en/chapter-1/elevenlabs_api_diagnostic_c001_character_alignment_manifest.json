@@ -1,0 +1,26 @@
+{
+  "generated_by": "scripts/elevenlabs_full_chapter_generate.py",
+  "generated_at": "2026-06-27T17:17:55+00:00",
+  "book_slug": "dracula",
+  "language": "en",
+  "chapter": 1,
+  "provider": "ElevenLabs",
+  "sync_status": "HOLD_SYNC_QA_REQUIRED",
+  "public_audio_allowed": false,
+  "production_status": "PRODUCTION_BLOCKED",
+  "chunks": [
+    {
+      "chunk_id": "c001",
+      "text_hash": "00232ce3b85cfca56a65028f1f9c9fc41a00943561f8a6fa09a1083741817880",
+      "settings_hash": "8b1c0e4495d02052d80f051b4beb46b4de81e19a0c9dddafa73416cf36f57d6b",
+      "alignment_status": "PLACEHOLDER_PENDING_GENERATION",
+      "alignment_path": "",
+      "cache_key": "f8170a9938dfbf83eb8cfb8a7a92e4a184a23e686e0d890c03135ec66363cce3",
+      "cache_status": "MISS",
+      "cache_audio_path": "internal/audiobook_lab/cache/elevenlabs/audio/f8170a9938dfbf83eb8cfb8a7a92e4a184a23e686e0d890c03135ec66363cce3.mp3",
+      "cache_alignment_path": "internal/audiobook_lab/cache/elevenlabs/alignment/f8170a9938dfbf83eb8cfb8a7a92e4a184a23e686e0d890c03135ec66363cce3.json",
+      "request_id": "",
+      "public": false
+    }
+  ]
+}

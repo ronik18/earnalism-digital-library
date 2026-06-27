@@ -38,6 +38,9 @@
     "observability:audit": "python3 scripts/observability_guardrails.py --sample",
     "first-batch:dry-run": "python3 scripts/first_batch_dry_run.py --sample",
     "onboard:english-book:dry-run": "python3 scripts/orchestrate_english_book_onboarding.py --config onboarding/books/frankenstein.yml --mode dry-run",
+    "book:factory:audiobook-dry-run": "python3 scripts/orchestrate_book_factory.py --config onboarding/books/dracula.yml --mode dry-run",
+    "book:factory:audiobook-generate-selected": "python3 scripts/orchestrate_book_factory.py --config onboarding/books/dracula.yml --mode generate --scope selected_chapters",
+    "book:factory:audiobook-status": "python3 scripts/orchestrate_book_factory.py --config onboarding/books/dracula.yml --mode status",
     "elevenlabs:sample-prep": "python3 scripts/orchestrate_english_book_onboarding.py --config onboarding/books/frankenstein.yml --mode dry-run",
     "elevenlabs:sample-import": "python3 scripts/elevenlabs_internal_sample_import.py --book-slug dracula --chapter 1 --sample-dir internal/audiobook_lab/dracula/en/chapter-1",
     "elevenlabs:full-chapter-import": "python3 scripts/elevenlabs_internal_sample_import.py --book-slug dracula --chapter 1 --sample-dir internal/audiobook_lab/dracula/en/chapter-1-elevenlabs-full",
@@ -77,8 +80,11 @@
     "elevenlabs:api-generate-c001": "python3 scripts/elevenlabs_full_chapter_generate.py --book-slug dracula --language en --chapter 1 --mode generate --chunks one --chunk-id c001",
     "elevenlabs:api-dry-run-first3": "python3 scripts/elevenlabs_full_chapter_generate.py --book-slug dracula --language en --chapter 1 --mode dry-run --chunks first3",
     "elevenlabs:api-generate-first3": "python3 scripts/elevenlabs_full_chapter_generate.py --book-slug dracula --language en --chapter 1 --mode generate --chunks first3",
+    "elevenlabs:api-generate-first3-parallel": "python3 scripts/elevenlabs_full_chapter_generate.py --book-slug dracula --language en --chapter 1 --mode generate --chunks first3 --concurrency 2 --max-retries 2",
     "elevenlabs:api-dry-run-all": "python3 scripts/elevenlabs_full_chapter_generate.py --book-slug dracula --language en --chapter 1 --mode dry-run --chunks all",
     "elevenlabs:api-generate-all": "python3 scripts/elevenlabs_full_chapter_generate.py --book-slug dracula --language en --chapter 1 --mode generate --chunks all --force --max-chunks 27",
+    "elevenlabs:api-generate-chapter-parallel": "python3 scripts/elevenlabs_full_chapter_generate.py --book-slug dracula --language en --chapter 1 --mode generate --chunks all --force --max-chunks 27 --concurrency 2 --max-retries 2",
+    "elevenlabs:api-resume-failed": "python3 scripts/elevenlabs_full_chapter_generate.py --book-slug dracula --language en --chapter 1 --mode generate --chunks all --force --max-chunks 27 --resume-failed --concurrency 2 --max-retries 2",
     "audiobook:chapter-pipeline:dry-run": "python3 scripts/audiobook_chapter_pipeline.py --book-slug dracula --language en --chapter 1 --provider elevenlabs --voice-id 21m00Tcm4TlvDq8ikWAM --voice-name Rachel --mode dry-run",
     "audiobook:chapter-pipeline:generate-internal": "python3 scripts/audiobook_chapter_pipeline.py --book-slug dracula --language en --chapter 1 --provider elevenlabs --voice-id 21m00Tcm4TlvDq8ikWAM --voice-name Rachel --mode generate-internal --execute --max-cost-inr 500 --max-chunks 3",
     "audiobook:bengali-store-candidates:review": "python3 scripts/ingest_bengali_audiobook_store_candidates.py --input-dir output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben --output-dir internal/audiobook_lab/bengali_store_candidates --mode review",
@@ -122,7 +128,9 @@
     "audio:backfill": "bash scripts/run_audiobook_backfill.sh",
     "loadtest": "k6 run scripts/k6_10x_spike.js",
     "load:100": "k6 run scripts/k6_load_100.js",
-    "load:10x": "bash scripts/run_10x_load_gate.sh"
+    "load:10x": "bash scripts/run_10x_load_gate.sh",
+    "elevenlabs:api-generate-c001-cached": "python3 scripts/elevenlabs_full_chapter_generate.py --book-slug dracula --language en --chapter 1 --mode generate --chunks one --chunk-id c001",
+    "elevenlabs:cache-status": "python3 scripts/elevenlabs_cache_status.py"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1065.0",

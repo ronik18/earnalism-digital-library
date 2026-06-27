@@ -1,4 +1,4 @@
-# ElevenLabs Dracula Full Chapter QA Scorecard
+# ElevenLabs Dracula Diagnostic Chunk QA Scorecard
 
 - Decision: `HOLD_OWNER_LISTENING_QA_REQUIRED`
 - Human listening QA score: `not filled`

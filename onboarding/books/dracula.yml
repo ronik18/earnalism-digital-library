@@ -1,0 +1,40 @@
+slug: dracula
+book_title: Dracula
+title: Dracula
+author: Bram Stoker
+language: english
+source_url: https://www.gutenberg.org/ebooks/345
+source_type: gutenberg
+source_name: Project Gutenberg
+source_license: Public Domain in the United States
+source_license_url: https://www.gutenberg.org/policy/license.html
+public_domain_basis: Public-domain source verified for the approved reading release.
+gutenberg_id: 345
+target_publication_status: reading_only_live_verified
+cover_strategy: existing_asset
+owner_approval_status: APPROVED_READING_ONLY
+audiobook:
+  provider: elevenlabs
+  voice_id: 21m00Tcm4TlvDq8ikWAM
+  voice_name: Rachel
+  model_id: eleven_multilingual_v2
+  output_format: mp3_44100_192
+  generation_mode: dry_run
+  scope: selected_chapters
+  selected_chapters:
+    - 1
+  concurrency: 1
+  max_concurrency: 3
+  retry_policy:
+    max_retries: 2
+    retry_base_seconds: 1.0
+    retry_max_seconds: 12.0
+  cache_enabled: true
+  desired_status: internal_only
+  public_target: false
+  public_audio_target: false
+  derivative_rights_status: internal review only
+  human_review_status: owner listening QA complete for internal player test only
+  accessibility_listening_status: HOLD_ACCESSIBILITY_QA_REQUIRED
+  rollback_approval_status: OWNER_REVIEW_REQUIRED
+  owner_legal_approval_status: INTERNAL_ONLY_APPROVED
