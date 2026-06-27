@@ -4,9 +4,32 @@ Status: `PASS_10_10_HERO_READY_WITH_POST_DEPLOY_REVIEW`
 
 Hero background asset: `frontend/public/assets/hero/golden-hour-library-hero.webp`
 
+Latest refinement: `LEFT_LIBRARY_DETAIL_RESTORED`
+
+Cover refinement: `DRACULA_TITLE_FULLY_VISIBLE`
+
 ## Summary
 
 The homepage hero now uses the owner-provided Golden Hour Library image as a full-bleed classical reading-room banner instead of a flat brown field. The committed asset is an optimized local WebP derived from the owner-provided image, so it is not hotlinked, does not imply broad catalog availability, and carries no third-party tracking or external dependency.
+
+## Background Treatment Refinement
+
+Before this pass, the left side of the hero used a broad near-opaque dark overlay. It kept text readable, but it also collapsed the bookshelves and wood texture into a flatter chocolate-brown panel.
+
+This pass replaces that heavy mask with a more refined layered treatment:
+
+- Reduced the broad left overlay opacity so bookshelf spines and wood grain remain visible behind the copy.
+- Added a localized text scrim behind the headline instead of masking the whole left half.
+- Kept a warm vignette at the edges for luxury depth without flattening the library image.
+- Kept mobile readability by using a viewport-specific layered contrast stack, not a generic opaque block.
+
+Result: the hero reads more immediately as a real classical library while preserving headline and CTA contrast.
+
+## Dracula Cover Treatment Refinement
+
+Before this pass, the hero cover used a zoomed crop inside the premium frame. The frame felt strong, but the top title area could read as accidentally cut off.
+
+This pass keeps the same premium frame, glow, and shadow treatment while changing the displayed cover image to a contained, top-aligned presentation. The full `Dracula` title is now visible, the jacket no longer feels cropped, and the cover remains the flagship conversion object beside the hero copy.
 
 ## Hero Design Rationale
 
@@ -31,11 +54,11 @@ The homepage hero now uses the owner-provided Golden Hour Library image as a ful
 
 ## Screenshot Evidence
 
-- Desktop 1440: `output/visual-review/homepage-hero-library-theme/desktop-1440.png`
-- Laptop 1280: `output/visual-review/homepage-hero-library-theme/laptop-1280.png`
-- Tablet 768: `output/visual-review/homepage-hero-library-theme/tablet-768.png`
-- Mobile 390: `output/visual-review/homepage-hero-library-theme/mobile-390.png`
-- Mobile 360: `output/visual-review/homepage-hero-library-theme/mobile-360.png`
+- Desktop 1440: `output/visual-review/homepage-hero-cover-polish/desktop-1440.png`
+- Laptop 1280: `output/visual-review/homepage-hero-cover-polish/laptop-1280.png`
+- Tablet 768: `output/visual-review/homepage-hero-cover-polish/tablet-768.png`
+- Mobile 390: `output/visual-review/homepage-hero-cover-polish/mobile-390.png`
+- Mobile 360: `output/visual-review/homepage-hero-cover-polish/mobile-360.png`
 
 ## Guardrail Status
 

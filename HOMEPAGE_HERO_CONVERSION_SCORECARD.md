@@ -20,7 +20,13 @@ The helper line `Reading time is used only while you read.` explains the pass/wa
 
 ## Mobile Efficiency
 
-The mobile hero keeps the Dracula cover compact, keeps the primary CTA above the trust/status chips, and avoids a second competing Dracula card above the fold.
+The mobile hero keeps the Dracula cover compact, keeps the primary CTA above the trust/status chips, preserves readable copy contrast, and avoids a second competing Dracula card above the fold.
+
+## Visual Conversion Note
+
+The refined overlay lets the library background carry more trust and ambience while preserving the three-action hierarchy. The image now supports conversion emotionally instead of becoming a flat decorative color field.
+
+The Dracula cover now shows the full top title rather than a cropped title area, so the flagship product object feels intentional and publication-ready while keeping the same conversion weight.
 
 ## Why This Is Marked 10/10
 

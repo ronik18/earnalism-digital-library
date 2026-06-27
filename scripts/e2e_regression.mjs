@@ -11,11 +11,9 @@ const outputDir = path.resolve(process.env.E2E_OUTPUT_DIR || "test-results/regre
 const isLocalFrontend = /^https?:\/\/(?:127\.0\.0\.1|localhost|\[::1\])/i.test(baseUrl);
 const liveApprovedSlug = "dracula";
 const expectedPipelineSlugs = [
-  "kshudhita-pashan",
   "frankenstein",
   "sherlock-holmes",
   "sultanas-dream",
-  "calculus-made-easy",
 ];
 const draculaFixtureBook = {
   id: "regression-dracula",
@@ -214,21 +212,23 @@ async function main() {
     return {
       viewportWidth: window.innerWidth,
       hasHeroCard: Boolean(document.querySelector('[data-testid="hero-dracula-card"]')),
-      hasControlledCarousel: Boolean(document.querySelector('[data-testid="controlled-carousel-section"]')),
-      hasDraculaShelf: Boolean(document.querySelector('[data-testid="home-live-dracula"]')),
+      hasPremiumHero: Boolean(document.querySelector('[data-testid="premium-landing-hero"]')),
+      hasReadingModel: Boolean(document.querySelector('[data-testid="dracula-reading-model"]')),
+      hasReadingModelPassCta: Boolean(document.querySelector('[data-testid="reading-model-pass-cta"]')),
+      hasKshudhitaPipeline: Boolean(document.querySelector('[data-testid="pipeline-kshudhita-pashan"]')),
+      hasKshudhitaCoverStack: Boolean(document.querySelector('[data-testid="pipeline-kshudhita-cover-stack"]')),
       hasPipelineShelf: Boolean(document.querySelector('[data-testid="pipeline-books"]')),
-      hasReadingPathDraft: Boolean(document.querySelector('[data-testid="reading-path-draft"]')),
-      hasAudioUnavailableNote: Boolean(document.querySelector('[data-testid="audiobook-unavailable"]')),
+      hasReadingCircle: Boolean(document.querySelector('[data-testid="reading-circle-section"]')),
       headline: document.querySelector('[data-testid="hero-headline"]')?.textContent?.replace(/\s+/g, " ").trim(),
       heroReadHref: document.querySelector('[data-testid="hero-cta-read"]')?.getAttribute("href"),
       heroStartHref: document.querySelector('[data-testid="hero-cta-start-dracula"]')?.getAttribute("href"),
       heroPassHref: document.querySelector('[data-testid="hero-cta-pricing"]')?.getAttribute("href"),
-      carouselReadHref: document.querySelector('[data-testid="carousel-read-chapter-1-free"]')?.getAttribute("href"),
-      livePreviewHref: document.querySelector('[data-testid="home-dracula-preview"]')?.getAttribute("href"),
-      liveStartHref: document.querySelector('[data-testid="home-dracula-start"]')?.getAttribute("href"),
-      livePassHref: document.querySelector('[data-testid="home-dracula-pass"]')?.getAttribute("href"),
+      readingModelPassHref: document.querySelector('[data-testid="reading-model-pass-cta"]')?.getAttribute("href"),
+      kshudhitaNotifyHref: document.querySelector('[data-testid="pipeline-kshudhita-notify"]')?.getAttribute("href"),
       pipelineCards,
       notifyLinks,
+      staleCarouselCount: document.querySelectorAll('[data-testid="controlled-carousel-section"]').length,
+      staleAudioUnavailableCount: document.querySelectorAll('[data-testid="audiobook-unavailable"]').length,
       legacyLiveCoverCount: document.querySelectorAll('[data-testid^="live-cover-preview-"]').length,
       legacyCategoryCardCount: document.querySelectorAll('[data-testid^="category-card-"]').length,
       legacyBroadReaderLinks: [...document.querySelectorAll('a[href^="/reader/"]')]
@@ -241,27 +241,26 @@ async function main() {
     };
   });
   assert(home.hasHeroCard, "Dracula hero card is missing");
-  assert(home.hasControlledCarousel, "controlled launch carousel is missing");
-  assert(home.hasDraculaShelf, "live Dracula shelf is missing");
+  assert(home.hasPremiumHero, "premium Dracula hero is missing");
+  assert(home.hasReadingModel, "reading-time revenue model section is missing");
+  assert(home.hasReadingModelPassCta, "reading-time pass CTA is missing");
+  assert(home.hasKshudhitaPipeline, "Kshudhita pipeline feature is missing");
+  assert(home.hasKshudhitaCoverStack, "Kshudhita pipeline cover stack is missing");
   assert(home.hasPipelineShelf, "pipeline shelf is missing");
-  assert(home.hasReadingPathDraft, "reading path draft section is missing");
-  assert(home.hasAudioUnavailableNote, "audiobook unavailable note is missing");
+  assert(home.hasReadingCircle, "reading circle section is missing");
   assert(/Begin with Dracula/i.test(home.headline || ""), `hero headline is not Dracula-first: ${home.headline}`);
   assert(home.heroReadHref === "/reader/dracula", `hero free-read CTA should open Dracula reader, got ${home.heroReadHref}`);
   assert(home.heroStartHref === "/book/dracula", `hero Start Dracula CTA should open Dracula detail, got ${home.heroStartHref}`);
   assert(home.heroPassHref === "/pricing?source=homepage_hero&book=dracula", `hero reading pass CTA mismatch: ${home.heroPassHref}`);
-  assert(home.carouselReadHref === "/reader/dracula", `carousel free-read CTA should open Dracula reader, got ${home.carouselReadHref}`);
-  assert(home.livePreviewHref === "/reader/dracula", `live shelf preview CTA should open Dracula reader, got ${home.livePreviewHref}`);
-  assert(home.liveStartHref === "/book/dracula", `live shelf start CTA should open Dracula detail, got ${home.liveStartHref}`);
-  assert(home.livePassHref === "/pricing?source=home_live_shelf&book=dracula", `live shelf reading pass CTA mismatch: ${home.livePassHref}`);
+  assert(home.readingModelPassHref === "/pricing?source=homepage_reading_model&book=dracula", `reading model pass CTA mismatch: ${home.readingModelPassHref}`);
+  assert(home.kshudhitaNotifyHref === "/contact?interest=kshudhita-pashan", `Kshudhita must remain notify-only, got ${home.kshudhitaNotifyHref}`);
   assert(
     JSON.stringify(home.pipelineCards) === JSON.stringify(expectedPipelineSlugs),
     `pipeline cards mismatch: ${JSON.stringify(home.pipelineCards)}`,
   );
-  assert(
-    home.notifyLinks.length === expectedPipelineSlugs.length && home.notifyLinks.every((href) => href?.startsWith("/contact?interest=")),
-    `pipeline titles must be notify-only: ${JSON.stringify(home.notifyLinks)}`,
-  );
+  assert(home.notifyLinks.length === 0, `mini pipeline cards must not expose reader/payment CTAs: ${JSON.stringify(home.notifyLinks)}`);
+  assert(home.staleCarouselCount === 0, "retired controlled launch carousel should not render in the luxury homepage");
+  assert(home.staleAudioUnavailableCount === 0, "stale audiobook unavailable note should not render");
   assert(home.legacyLiveCoverCount === 0, "retired live-cover preview cards should not render in Dracula-first launch");
   assert(home.legacyCategoryCardCount === 0, "retired broad category cards should not render in Dracula-first launch");
   assert(home.legacyBroadReaderLinks.length === 0, `non-Dracula reader links leaked: ${JSON.stringify(home.legacyBroadReaderLinks)}`);

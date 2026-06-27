@@ -829,15 +829,17 @@ body::before {
 .luxury-home-page .premium-landing-hero {
   min-height: min(620px, calc(100vh - 4.5rem));
   background:
-    linear-gradient(90deg, rgba(12, 5, 6, 0.95) 0%, rgba(23, 10, 10, 0.84) 39%, rgba(62, 32, 14, 0.42) 70%, rgba(14, 6, 4, 0.58) 100%),
-    radial-gradient(ellipse 36% 44% at 82% 44%, rgba(236, 198, 112, 0.34), transparent 70%),
+    radial-gradient(ellipse 48% 64% at 23% 46%, rgba(8, 3, 5, 0.52) 0%, rgba(8, 3, 5, 0.34) 44%, transparent 76%),
+    linear-gradient(90deg, rgba(12, 5, 6, 0.56) 0%, rgba(20, 9, 9, 0.46) 34%, rgba(62, 32, 14, 0.22) 70%, rgba(14, 6, 4, 0.38) 100%),
+    radial-gradient(ellipse 36% 44% at 82% 44%, rgba(236, 198, 112, 0.3), transparent 70%),
     var(--premium-hero-library-bg) center center / cover no-repeat,
     linear-gradient(118deg, #13070b 0%, #211016 46%, #3f171f 78%, #1b0b10 100%);
 }
 .luxury-home-page .premium-landing-hero::before {
   background:
-    radial-gradient(ellipse 68% 58% at 32% 42%, rgba(8, 3, 5, 0.1), rgba(8, 3, 5, 0.48) 76%, rgba(8, 3, 5, 0.76) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.02) 46%, rgba(0, 0, 0, 0.42) 100%);
+    radial-gradient(ellipse 94% 82% at 44% 48%, transparent 0%, rgba(8, 3, 5, 0.08) 58%, rgba(8, 3, 5, 0.42) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.01) 45%, rgba(0, 0, 0, 0.32) 100%),
+    repeating-linear-gradient(90deg, rgba(253, 252, 248, 0.018) 0 1px, transparent 1px 120px);
 }
 .luxury-home-page .premium-landing-hero::after {
   height: 18%;
@@ -866,9 +868,9 @@ body::before {
     0 0 58px -34px rgba(216, 185, 122, 0.95);
 }
 .luxury-home-page .premium-dracula-cover-img {
-  object-fit: cover;
-  object-position: center center;
-  transform: scale(1.09);
+  object-fit: contain;
+  object-position: center top;
+  transform: none;
 }
 .luxury-home-page .book-cover-image--loaded .premium-dracula-cover-img {
   opacity: 1;
@@ -1067,7 +1069,12 @@ body::before {
 @media (max-width: 767px) {
   .luxury-home-page .premium-landing-hero {
     min-height: auto;
-    background-position: 58% center, center center, 58% center, center center;
+    background:
+      radial-gradient(ellipse 72% 58% at 48% 34%, rgba(8, 3, 5, 0.62) 0%, rgba(8, 3, 5, 0.48) 50%, rgba(8, 3, 5, 0.2) 82%),
+      linear-gradient(180deg, rgba(12, 5, 6, 0.54) 0%, rgba(22, 9, 10, 0.44) 52%, rgba(14, 6, 4, 0.4) 100%),
+      radial-gradient(ellipse 42% 36% at 77% 20%, rgba(236, 198, 112, 0.24), transparent 72%),
+      var(--premium-hero-library-bg) 52% center / cover no-repeat,
+      linear-gradient(118deg, #13070b 0%, #211016 46%, #3f171f 78%, #1b0b10 100%);
   }
   .luxury-home-page .premium-landing-hero::after {
     height: 8%;
@@ -1184,9 +1191,9 @@ body::before {
 }
 
 .library-room-page .premium-dracula-cover-img {
-  object-fit: cover;
-  object-position: center center;
-  transform: scale(1.09);
+  object-fit: contain;
+  object-position: center top;
+  transform: none;
 }
 
 .library-pipeline-feature {
