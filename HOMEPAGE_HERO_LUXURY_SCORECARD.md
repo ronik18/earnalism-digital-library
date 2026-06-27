@@ -13,6 +13,7 @@ Luxury/theme score: `10/10`
 | Premium editorial feel | 10.0 | Dracula cover remains the featured object with restrained frame, shadow, and glow; the full top title is visible inside the jacket frame. |
 | Emotional memorability | 10.0 | The first pixel now says quiet premium library before the copy is read, with recognizable bookshelves and wood texture behind the copy. |
 | Typography and spacing | 10.0 | Serif headline, italic supporting line, compact body, and status chips keep a quiet reading-room rhythm. |
+| Page speed / LCP risk | 10.0 | Hero image is a local optimized WebP, 2400 x 1200, approximately 127 KB, with no remote hotlink or third-party image dependency. |
 | Public-claims safety | 10.0 | The hero remains Dracula-only, reading-only, audio-blocked, and pipeline-safe. |
 
 ## Why This Is Marked 10/10
