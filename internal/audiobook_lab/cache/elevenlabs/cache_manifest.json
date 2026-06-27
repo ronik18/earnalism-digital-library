@@ -1,0 +1,9 @@
+{
+  "generated_by": "scripts/elevenlabs_full_chapter_generate.py",
+  "cache_provider": "elevenlabs",
+  "cache_root": "internal/audiobook_lab/cache/elevenlabs",
+  "public_audio_allowed": false,
+  "production_status": "PRODUCTION_BLOCKED",
+  "entries": {},
+  "updated_at": "2026-06-27T19:00:40+00:00"
+}

@@ -9,7 +9,7 @@
     "stability": 0.63,
     "similarity_boost": 0.76,
     "style": 0.08,
-    "speed": 0.3,
+    "speed": 0.78,
     "use_speaker_boost": true
   },
   "api_endpoint": "POST /v1/text-to-speech/:voice_id/with-timestamps",
@@ -20,6 +20,8 @@
     "passes_previous_text_and_next_text_when_available": true,
     "records_previous_request_id_when_returned": true,
     "speed_and_style_are_kept_as_owner_ui_evidence": true,
+    "voice_settings_speed_0_78_is_owner_ui_slider_evidence": true,
+    "auto_omit_out_of_range_api_speed": true,
     "unsupported_request_fields": []
   },
   "beta_services_used": false,

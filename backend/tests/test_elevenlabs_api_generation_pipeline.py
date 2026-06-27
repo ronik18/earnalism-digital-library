@@ -14,15 +14,18 @@ import pytest
 from scripts.elevenlabs_full_chapter_generate import (
     GenerationSafetyError,
     build_request_body,
+    cache_alignment_path,
+    cache_key_for,
+    cache_manifest_path,
     load_manual_chunks,
     run_generation,
-    settings_hash,
     sha256_text,
 )
 
 
 ROOT = Path.cwd()
 TEST_ROOT = ROOT / "internal" / "audiobook_lab" / "pytest-elevenlabs-api" / "en" / "chapter-1"
+TEST_CACHE_ROOT = ROOT / "internal" / "audiobook_lab" / "pytest-elevenlabs-api" / "cache" / "elevenlabs"
 
 
 @pytest.fixture(autouse=True)
@@ -46,7 +49,7 @@ def api_config() -> dict:
             "stability": 0.63,
             "similarity_boost": 0.76,
             "style": 0.08,
-            "speed": 0.3,
+            "speed": 0.78,
             "use_speaker_boost": True,
         },
         "beta_services_used": False,
@@ -125,6 +128,7 @@ def run_fixture(**overrides):
         "chunks": "first3",
         "output_dir": sample_dir / "generated_audio",
         "config_path": sample_dir / "elevenlabs_api_generation_config.json",
+        "cache_dir": TEST_CACHE_ROOT,
     }
     kwargs.update(overrides)
     return run_generation(**kwargs)
@@ -139,6 +143,54 @@ def read_fixture_reports() -> str:
     if root_report.exists():
         texts.append(root_report.read_text(encoding="utf-8"))
     return "\n".join(texts)
+
+
+def diagnostic_path(sample_dir: Path, chunk_id: str, suffix: str) -> Path:
+    return sample_dir / f"elevenlabs_api_diagnostic_{chunk_id}_{suffix}"
+
+
+def fake_urlopen_with_audio(audio: bytes = b"fake internal generated audio", request_id: str = "req_fake_c001"):
+    class FakeResponse:
+        headers = {"x-request-id": request_id}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def read(self):
+            payload = {
+                "audio_base64": base64.b64encode(audio).decode("ascii"),
+                "alignment": {
+                    "characters": ["H"],
+                    "character_start_times_seconds": [0.0],
+                    "character_end_times_seconds": [0.1],
+                },
+            }
+            return json.dumps(payload).encode("utf-8")
+
+    def ok_response(_request, timeout):
+        return FakeResponse()
+
+    return ok_response
+
+
+def generate_c001_to_cache(monkeypatch, sample_dir: Path) -> dict:
+    monkeypatch.setenv("ELEVENLABS_API_KEY", "unit-test-cache-secret")
+    monkeypatch.setenv("EARNALISM_ALLOW_ELEVENLABS_GENERATION", "true")
+    return run_generation(
+        book_slug="pytest-elevenlabs-api",
+        language="en",
+        chapter=1,
+        mode="generate",
+        chunks="one",
+        chunk_id="c001",
+        output_dir=sample_dir / "generated_audio",
+        config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
+        urlopen_fn=fake_urlopen_with_audio(b"cached generated audio", "req_cache_c001"),
+    )
 
 
 def test_dry_run_does_not_require_api_key(monkeypatch):
@@ -167,6 +219,18 @@ def test_generate_mode_fails_without_explicit_environment_switch(monkeypatch):
 
     with pytest.raises(GenerationSafetyError, match="EARNALISM_ALLOW_ELEVENLABS_GENERATION"):
         run_fixture(mode="generate")
+
+
+def test_parallel_concurrency_limit_is_enforced():
+    with pytest.raises(GenerationSafetyError, match="--concurrency must not exceed --max-concurrency"):
+        run_fixture(concurrency=4)
+
+    with pytest.raises(GenerationSafetyError, match="--max-concurrency above"):
+        run_fixture(concurrency=4, max_concurrency=4)
+
+    result = run_fixture(concurrency=4, max_concurrency=4, allow_concurrency_override=True)
+
+    assert result["concurrency"] == 4
 
 
 def test_all_chunk_generation_requires_force_and_full_chapter_switch(monkeypatch):
@@ -231,33 +295,87 @@ def test_generated_audio_files_are_ignored_by_git():
     assert result.returncode == 0
 
 
-def test_cached_chunks_are_skipped_without_force():
+def test_identical_chunk_and_settings_reuse_cache_without_api_call(monkeypatch):
     sample_dir = make_fixture()
-    config = json.loads((sample_dir / "elevenlabs_api_generation_config.json").read_text(encoding="utf-8"))
-    expected = json.loads(
-        (sample_dir / "manual_elevenlabs_chunks" / "expected_audio_filenames.json").read_text(encoding="utf-8")
+    monkeypatch.setenv("ELEVENLABS_API_KEY", "unit-test-cache-secret")
+    monkeypatch.setenv("EARNALISM_ALLOW_ELEVENLABS_GENERATION", "true")
+
+    class FakeResponse:
+        headers = {"x-request-id": "req_cache_c001"}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def read(self):
+            payload = {
+                "audio_base64": base64.b64encode(b"cached generated audio").decode("ascii"),
+                "alignment": {
+                    "characters": ["H"],
+                    "character_start_times_seconds": [0.0],
+                    "character_end_times_seconds": [0.1],
+                },
+            }
+            return json.dumps(payload).encode("utf-8")
+
+    calls = {"count": 0}
+
+    def ok_response(_request, timeout):
+        calls["count"] += 1
+        return FakeResponse()
+
+    first = run_generation(
+        book_slug="pytest-elevenlabs-api",
+        language="en",
+        chapter=1,
+        mode="generate",
+        chunks="one",
+        chunk_id="c001",
+        output_dir=sample_dir / "generated_audio",
+        config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
+        urlopen_fn=ok_response,
     )
-    first = expected["chunks"][0]
-    audio_path = sample_dir / "generated_audio" / first["audio_filename"]
-    audio_path.parent.mkdir(parents=True, exist_ok=True)
-    audio_path.write_bytes(b"cached internal audio")
-    (sample_dir / "chunk_generation_manifest.json").write_text(
-        json.dumps(
-            {
-                "chunks": [
-                    {
-                        "chunk_id": "c001",
-                        "text_hash": first["text_hash"],
-                        "settings_hash": settings_hash(config),
-                        "audio_path": str(audio_path.relative_to(ROOT)),
-                        "audio_hash": "cached-hash",
-                        "generation_status": "GENERATED_INTERNAL_ONLY",
-                    }
-                ]
-            },
-            indent=2,
-        )
-        + "\n",
+    assert first["generated_chunk_count"] == 1
+    assert first["cache_miss_count"] == 1
+
+    def fail_if_called(*_args, **_kwargs):
+        raise AssertionError("ElevenLabs API should not be called on cache hit")
+
+    generated_audio = sample_dir / "generated_audio" / "pytest-elevenlabs-rachel-c001.mp3"
+    generated_alignment = sample_dir / "generated_alignment" / "c001.json"
+    generated_audio.unlink()
+    generated_alignment.unlink()
+    result = run_generation(
+        book_slug="pytest-elevenlabs-api",
+        language="en",
+        chapter=1,
+        mode="generate",
+        chunks="one",
+        chunk_id="c001",
+        output_dir=sample_dir / "generated_audio",
+        config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
+        urlopen_fn=fail_if_called,
+    )
+    manifest = json.loads(Path(result["chunk_generation_manifest_path"]).read_text(encoding="utf-8"))
+
+    assert calls["count"] == 1
+    assert result["skipped_cached_chunk_count"] == 1
+    assert result["cache_hit_count"] == 1
+    assert manifest["chunks"][0]["cache_status"] == "HIT"
+    assert manifest["chunks"][0]["provider_api_called"] is False
+    assert generated_audio.exists()
+    assert generated_alignment.exists()
+
+
+def test_changed_text_is_cache_miss(monkeypatch):
+    sample_dir = make_fixture()
+    generate_c001_to_cache(monkeypatch, sample_dir)
+    (sample_dir / "manual_elevenlabs_chunks" / "c001.txt").write_text(
+        "Chapter chunk 1 narration changed.\nThis is new text for cache miss.\n",
         encoding="utf-8",
     )
 
@@ -266,14 +384,97 @@ def test_cached_chunks_are_skipped_without_force():
         language="en",
         chapter=1,
         mode="dry-run",
-        chunks="first3",
+        chunks="one",
+        chunk_id="c001",
         output_dir=sample_dir / "generated_audio",
         config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
     )
-    manifest = json.loads((sample_dir / "chunk_generation_manifest.json").read_text(encoding="utf-8"))
+    manifest = json.loads(Path(result["chunk_generation_manifest_path"]).read_text(encoding="utf-8"))
 
-    assert result["skipped_cached_chunk_count"] == 1
-    assert manifest["chunks"][0]["generation_status"] == "SKIPPED_CACHED_INTERNAL_AUDIO"
+    assert result["cache_miss_count"] == 1
+    assert manifest["chunks"][0]["cache_status"] == "MISS"
+
+
+def test_changed_voice_settings_are_cache_miss(monkeypatch):
+    sample_dir = make_fixture()
+    generate_c001_to_cache(monkeypatch, sample_dir)
+    config = json.loads((sample_dir / "elevenlabs_api_generation_config.json").read_text(encoding="utf-8"))
+    config["voice_settings"]["stability"] = 0.71
+    (sample_dir / "elevenlabs_api_generation_config.json").write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
+
+    result = run_generation(
+        book_slug="pytest-elevenlabs-api",
+        language="en",
+        chapter=1,
+        mode="dry-run",
+        chunks="one",
+        chunk_id="c001",
+        output_dir=sample_dir / "generated_audio",
+        config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
+    )
+    manifest = json.loads(Path(result["chunk_generation_manifest_path"]).read_text(encoding="utf-8"))
+
+    assert result["cache_miss_count"] == 1
+    assert manifest["chunks"][0]["cache_status"] == "MISS"
+
+
+def test_missing_cached_alignment_is_stale_and_regenerates(monkeypatch):
+    sample_dir = make_fixture()
+    generate_c001_to_cache(monkeypatch, sample_dir)
+    config = json.loads((sample_dir / "elevenlabs_api_generation_config.json").read_text(encoding="utf-8"))
+    chunk = load_manual_chunks(sample_dir, "one", None, chunk_id="c001")[0]
+    cache_key = cache_key_for(chunk, config)
+    cache_alignment_path(TEST_CACHE_ROOT, cache_key).unlink()
+    calls = {"count": 0}
+
+    def regenerate(_request, timeout):
+        calls["count"] += 1
+        return fake_urlopen_with_audio(b"regenerated after stale alignment", "req_regen_c001")(_request, timeout)
+
+    result = run_generation(
+        book_slug="pytest-elevenlabs-api",
+        language="en",
+        chapter=1,
+        mode="generate",
+        chunks="one",
+        chunk_id="c001",
+        output_dir=sample_dir / "generated_audio",
+        config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
+        urlopen_fn=regenerate,
+    )
+    manifest = json.loads(Path(result["chunk_generation_manifest_path"]).read_text(encoding="utf-8"))
+
+    assert calls["count"] == 1
+    assert result["cache_stale_count"] == 1
+    assert result["generated_chunk_count"] == 1
+    assert manifest["chunks"][0]["cache_preflight_status"] == "STALE"
+    assert manifest["chunks"][0]["cache_status"] == "GENERATED"
+
+
+def test_cache_paths_stay_internal_and_audio_binaries_are_ignored(monkeypatch):
+    sample_dir = make_fixture()
+    generate_c001_to_cache(monkeypatch, sample_dir)
+    config = json.loads((sample_dir / "elevenlabs_api_generation_config.json").read_text(encoding="utf-8"))
+    chunk = load_manual_chunks(sample_dir, "one", None, chunk_id="c001")[0]
+    cache_key = cache_key_for(chunk, config)
+    manifest_path = cache_manifest_path(TEST_CACHE_ROOT)
+    cache_audio = TEST_CACHE_ROOT / "audio" / f"{cache_key}.mp3"
+
+    assert str(manifest_path.relative_to(ROOT)).startswith("internal/audiobook_lab/")
+    assert str(cache_audio.relative_to(ROOT)).startswith("internal/audiobook_lab/")
+
+    result = subprocess.run(
+        ["git", "check-ignore", str(cache_audio.relative_to(ROOT))],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+
+    assert result.returncode == 0
 
 
 def test_failed_http_response_records_sanitized_error_details(monkeypatch):
@@ -305,11 +506,12 @@ def test_failed_http_response_records_sanitized_error_details(monkeypatch):
             chunk_id="c001",
             output_dir=sample_dir / "generated_audio",
             config_path=sample_dir / "elevenlabs_api_generation_config.json",
+            cache_dir=TEST_CACHE_ROOT,
             urlopen_fn=fail_http,
         )
 
-    manifest = json.loads((sample_dir / "chunk_generation_manifest.json").read_text(encoding="utf-8"))
-    full = json.loads((sample_dir / "full_chapter_audio_manifest.json").read_text(encoding="utf-8"))
+    manifest = json.loads(diagnostic_path(sample_dir, "c001", "generation_manifest.json").read_text(encoding="utf-8"))
+    full = json.loads(diagnostic_path(sample_dir, "c001", "audio_manifest.json").read_text(encoding="utf-8"))
     chunk = manifest["chunks"][0]
     full_chunk = full["chunks"][0]
 
@@ -327,6 +529,128 @@ def test_failed_http_response_records_sanitized_error_details(monkeypatch):
     assert full["generation_status"] == "INTERNAL_GENERATION_FAILED_HOLD_QA"
     assert full_chunk["http_status"] == 400
     assert secret not in json.dumps(full)
+
+
+def test_retryable_http_response_retries_then_succeeds(monkeypatch):
+    sample_dir = make_fixture()
+    monkeypatch.setenv("ELEVENLABS_API_KEY", "unit-test-retry-secret")
+    monkeypatch.setenv("EARNALISM_ALLOW_ELEVENLABS_GENERATION", "true")
+    calls = {"count": 0}
+
+    def retry_once(request, timeout):
+        calls["count"] += 1
+        if calls["count"] == 1:
+            headers = Message()
+            headers["x-request-id"] = "req_retry_429"
+            body = json.dumps({"detail": {"status": "rate_limited", "message": "try again"}}).encode("utf-8")
+            raise HTTPError(request.full_url, 429, "Too Many Requests", headers, io.BytesIO(body))
+        return fake_urlopen_with_audio(b"retry recovered audio", "req_retry_success")(request, timeout)
+
+    result = run_generation(
+        book_slug="pytest-elevenlabs-api",
+        language="en",
+        chapter=1,
+        mode="generate",
+        chunks="one",
+        chunk_id="c001",
+        output_dir=sample_dir / "generated_audio",
+        config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
+        max_retries=2,
+        sleep_fn=lambda _seconds: None,
+        urlopen_fn=retry_once,
+    )
+    manifest = json.loads(diagnostic_path(sample_dir, "c001", "generation_manifest.json").read_text(encoding="utf-8"))
+    chunk = manifest["chunks"][0]
+
+    assert calls["count"] == 2
+    assert result["generated_chunk_count"] == 1
+    assert result["retry_count"] == 1
+    assert chunk["retry_count"] == 1
+    assert chunk["attempt_count"] == 2
+
+
+def test_non_retryable_http_response_does_not_retry(monkeypatch):
+    sample_dir = make_fixture()
+    monkeypatch.setenv("ELEVENLABS_API_KEY", "unit-test-no-retry-secret")
+    monkeypatch.setenv("EARNALISM_ALLOW_ELEVENLABS_GENERATION", "true")
+    calls = {"count": 0}
+
+    def fail_validation(request, timeout):
+        calls["count"] += 1
+        headers = Message()
+        headers["x-request-id"] = "req_no_retry_400"
+        body = json.dumps({"detail": {"status": "invalid_request", "message": "validation failed"}}).encode("utf-8")
+        raise HTTPError(request.full_url, 400, "Bad Request", headers, io.BytesIO(body))
+
+    with pytest.raises(GenerationSafetyError, match="one or more ElevenLabs generation chunks failed"):
+        run_generation(
+            book_slug="pytest-elevenlabs-api",
+            language="en",
+            chapter=1,
+            mode="generate",
+            chunks="one",
+            chunk_id="c001",
+            output_dir=sample_dir / "generated_audio",
+            config_path=sample_dir / "elevenlabs_api_generation_config.json",
+            cache_dir=TEST_CACHE_ROOT,
+            max_retries=3,
+            sleep_fn=lambda _seconds: None,
+            urlopen_fn=fail_validation,
+        )
+    manifest = json.loads(diagnostic_path(sample_dir, "c001", "generation_manifest.json").read_text(encoding="utf-8"))
+    chunk = manifest["chunks"][0]
+
+    assert calls["count"] == 1
+    assert chunk["http_status"] == 400
+    assert chunk["retryable"] is False
+    assert chunk["retry_count"] == 0
+    assert chunk["attempt_count"] == 1
+
+
+def test_failed_chunk_can_resume_with_resume_flag(monkeypatch):
+    sample_dir = make_fixture()
+    previous_manifest = sample_dir / "elevenlabs_api_diagnostic_c001_generation_manifest.json"
+    previous_manifest.write_text(
+        json.dumps(
+            {
+                "chunks": [
+                    {
+                        "chunk_id": "c001",
+                        "generation_status": "FAILED_INTERNAL_GENERATION",
+                        "cache_status": "FAILED",
+                    }
+                ]
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("ELEVENLABS_API_KEY", "unit-test-resume-secret")
+    monkeypatch.setenv("EARNALISM_ALLOW_ELEVENLABS_GENERATION", "true")
+
+    result = run_generation(
+        book_slug="pytest-elevenlabs-api",
+        language="en",
+        chapter=1,
+        mode="generate",
+        chunks="one",
+        chunk_id="c001",
+        output_dir=sample_dir / "generated_audio",
+        config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
+        resume_failed=True,
+        sleep_fn=lambda _seconds: None,
+        urlopen_fn=fake_urlopen_with_audio(b"resumed generated audio", "req_resume_c001"),
+    )
+    manifest = json.loads(previous_manifest.read_text(encoding="utf-8"))
+    chunk = manifest["chunks"][0]
+
+    assert result["generated_chunk_count"] == 1
+    assert result["resume_failed"] is True
+    assert chunk["resume_status"] == "PREVIOUS_FAILURE_RETRY"
+    assert chunk["cache_status"] == "GENERATED"
 
 
 def test_exception_records_failure_stage_and_sanitized_error(monkeypatch):
@@ -348,10 +672,11 @@ def test_exception_records_failure_stage_and_sanitized_error(monkeypatch):
             chunk_id="c001",
             output_dir=sample_dir / "generated_audio",
             config_path=sample_dir / "elevenlabs_api_generation_config.json",
+            cache_dir=TEST_CACHE_ROOT,
             urlopen_fn=explode,
         )
 
-    manifest_text = (sample_dir / "chunk_generation_manifest.json").read_text(encoding="utf-8")
+    manifest_text = diagnostic_path(sample_dir, "c001", "generation_manifest.json").read_text(encoding="utf-8")
     manifest = json.loads(manifest_text)
     chunk = manifest["chunks"][0]
 
@@ -364,11 +689,53 @@ def test_exception_records_failure_stage_and_sanitized_error(monkeypatch):
 
 def test_one_chunk_mode_selects_only_c001():
     result = run_fixture(chunks="one", chunk_id="c001")
-    manifest = json.loads((TEST_ROOT / "chunk_generation_manifest.json").read_text(encoding="utf-8"))
+    manifest = json.loads(Path(result["chunk_generation_manifest_path"]).read_text(encoding="utf-8"))
 
     assert result["chunk_count"] == 1
     assert result["chunk_id"] == "c001"
     assert [chunk["chunk_id"] for chunk in manifest["chunks"]] == ["c001"]
+    assert result["chunk_generation_manifest_path"].endswith(
+        "elevenlabs_api_diagnostic_c001_generation_manifest.json"
+    )
+
+
+def test_one_chunk_diagnostic_does_not_overwrite_full_chapter_import_manifests():
+    sample_dir = make_fixture()
+    full_manifest = sample_dir / "full_chapter_audio_manifest.json"
+    sync_manifest = sample_dir / "sync_manifest.json"
+    original_full = {
+        "generated_by": "scripts/elevenlabs_internal_sample_import.py",
+        "chunk_count": 27,
+        "audio_status": "INTERNAL_FULL_CHAPTER_ONLY",
+        "audio_hash": "existing-full-chapter-hash",
+        "public_audio_allowed": False,
+        "production_status": "PRODUCTION_BLOCKED",
+    }
+    original_sync = {
+        "sync_status": "HOLD_SYNC_QA_REQUIRED",
+        "items": [{"sentence_id": "s001"}],
+        "public_audio_allowed": False,
+        "production_status": "PRODUCTION_BLOCKED",
+    }
+    full_manifest.write_text(json.dumps(original_full, indent=2) + "\n", encoding="utf-8")
+    sync_manifest.write_text(json.dumps(original_sync, indent=2) + "\n", encoding="utf-8")
+
+    result = run_generation(
+        book_slug="pytest-elevenlabs-api",
+        language="en",
+        chapter=1,
+        mode="dry-run",
+        chunks="one",
+        chunk_id="c001",
+        output_dir=sample_dir / "generated_audio",
+        config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
+    )
+
+    assert json.loads(full_manifest.read_text(encoding="utf-8")) == original_full
+    assert json.loads(sync_manifest.read_text(encoding="utf-8")) == original_sync
+    assert Path(result["full_chapter_audio_manifest_path"]).name == "elevenlabs_api_diagnostic_c001_audio_manifest.json"
+    assert Path(result["sync_manifest_path"]).name == "elevenlabs_api_diagnostic_c001_sync_manifest.json"
 
 
 def test_first3_mode_selects_c001_to_c003():
@@ -381,6 +748,7 @@ def test_first3_mode_selects_c001_to_c003():
         chunks="first3",
         output_dir=TEST_ROOT / "generated_audio",
         config_path=TEST_ROOT / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
     )
     manifest = json.loads((TEST_ROOT / "chunk_generation_manifest.json").read_text(encoding="utf-8"))
 
@@ -398,6 +766,7 @@ def test_all_mode_selects_every_available_full_chapter_chunk():
         chunks="all",
         output_dir=TEST_ROOT / "generated_audio",
         config_path=TEST_ROOT / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
     )
     manifest = json.loads((TEST_ROOT / "chunk_generation_manifest.json").read_text(encoding="utf-8"))
 
@@ -425,8 +794,9 @@ def test_unsupported_fields_are_omitted_from_request_payload():
         chunk_id="c001",
         output_dir=sample_dir / "generated_audio",
         config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
     )
-    manifest = json.loads((sample_dir / "chunk_generation_manifest.json").read_text(encoding="utf-8"))
+    manifest = json.loads(diagnostic_path(sample_dir, "c001", "generation_manifest.json").read_text(encoding="utf-8"))
     shape = manifest["chunks"][0]["request_shape"]
 
     assert "language_code" not in shape["request_fields"]
@@ -437,6 +807,35 @@ def test_unsupported_fields_are_omitted_from_request_payload():
         "voice_settings.speed",
         "voice_settings.style",
     ]
+
+
+def test_out_of_range_ui_speed_is_auto_omitted_from_request_payload():
+    settings = dict(api_config()["voice_settings"])
+    settings["speed"] = 0.3
+    sample_dir = make_fixture(config_overrides={"voice_settings": settings})
+    config = json.loads((sample_dir / "elevenlabs_api_generation_config.json").read_text(encoding="utf-8"))
+    chunk = load_manual_chunks(sample_dir, "one", None, chunk_id="c001")[0]
+    body = build_request_body(chunk=chunk, previous_chunk=None, next_chunk=None, config=config)
+
+    assert config["voice_settings"]["speed"] == 0.3
+    assert "speed" not in body["voice_settings"]
+
+    result = run_generation(
+        book_slug="pytest-elevenlabs-api",
+        language="en",
+        chapter=1,
+        mode="dry-run",
+        chunks="one",
+        chunk_id="c001",
+        output_dir=sample_dir / "generated_audio",
+        config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
+    )
+    manifest = json.loads(Path(result["chunk_generation_manifest_path"]).read_text(encoding="utf-8"))
+    shape = manifest["chunks"][0]["request_shape"]
+
+    assert "speed" not in shape["voice_settings_fields"]
+    assert shape["auto_omitted_invalid_fields"] == ["voice_settings.speed"]
 
 
 def test_successful_mock_generation_does_not_persist_api_key(monkeypatch):
@@ -482,13 +881,72 @@ def test_successful_mock_generation_does_not_persist_api_key(monkeypatch):
         chunk_id="c001",
         output_dir=sample_dir / "generated_audio",
         config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
         urlopen_fn=ok_response,
     )
-    manifest_text = (sample_dir / "chunk_generation_manifest.json").read_text(encoding="utf-8")
+    manifest_text = diagnostic_path(sample_dir, "c001", "generation_manifest.json").read_text(encoding="utf-8")
 
     assert result["generated_chunk_count"] == 1
     assert secret not in manifest_text
     assert "xi-api-key" not in manifest_text
+
+
+def test_mock_generation_uses_with_timestamps_json_response_shape(monkeypatch):
+    sample_dir = make_fixture()
+    monkeypatch.setenv("ELEVENLABS_API_KEY", "unit-test-request-shape-secret")
+    monkeypatch.setenv("EARNALISM_ALLOW_ELEVENLABS_GENERATION", "true")
+    captured = {}
+
+    class FakeResponse:
+        headers = {"x-request-id": "req_shape_c001"}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def read(self):
+            return json.dumps(
+                {
+                    "audio_base64": base64.b64encode(b"shape audio").decode("ascii"),
+                    "alignment": {
+                        "characters": ["H"],
+                        "character_start_times_seconds": [0.0],
+                        "character_end_times_seconds": [0.1],
+                    },
+                }
+            ).encode("utf-8")
+
+    def capture_request(request, timeout):
+        captured["url"] = request.full_url
+        captured["body"] = json.loads(request.data.decode("utf-8"))
+        captured["headers"] = dict(request.header_items())
+        return FakeResponse()
+
+    result = run_generation(
+        book_slug="pytest-elevenlabs-api",
+        language="en",
+        chapter=1,
+        mode="generate",
+        chunks="one",
+        chunk_id="c001",
+        output_dir=sample_dir / "generated_audio",
+        config_path=sample_dir / "elevenlabs_api_generation_config.json",
+        cache_dir=TEST_CACHE_ROOT,
+        urlopen_fn=capture_request,
+    )
+
+    assert result["generated_chunk_count"] == 1
+    assert captured["url"].endswith(
+        "/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM/with-timestamps?output_format=mp3_44100_192"
+    )
+    assert "output_format" not in captured["body"]
+    assert captured["body"]["model_id"] == "eleven_multilingual_v2"
+    assert captured["body"]["language_code"] == "en"
+    assert captured["body"]["voice_settings"]["stability"] == 0.63
+    assert captured["body"]["voice_settings"]["speed"] == 0.78
+    assert captured["headers"]["Accept"] == "application/json"
 
 
 def test_existing_non_cached_audio_blocks_before_api_call(monkeypatch):
@@ -514,6 +972,7 @@ def test_existing_non_cached_audio_blocks_before_api_call(monkeypatch):
             chunks="first3",
             output_dir=sample_dir / "generated_audio",
             config_path=sample_dir / "elevenlabs_api_generation_config.json",
+            cache_dir=TEST_CACHE_ROOT,
             urlopen_fn=fail_if_called,
         )
 

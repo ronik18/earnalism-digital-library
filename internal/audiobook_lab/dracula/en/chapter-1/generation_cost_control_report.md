@@ -1,16 +1,26 @@
 # ElevenLabs Dracula Generation Cost-Control Report
 
-- Mode: `generate`
-- Chunk selector: `one`
-- Chunk count: `1`
-- Total characters: `683`
+- Mode: `dry-run`
+- Chunk selector: `all`
+- Chunk count: `27`
+- Total characters: `30651`
 - Generated chunks: `0`
 - Skipped cached chunks: `0`
-- Failed chunks: `1`
+- Retry count: `0`
+- Concurrency: `1`
+- Max retries: `2`
+- Resume failed mode: `false`
+- Elapsed seconds: `0.019`
+- Cache hits: `0`
+- Cache misses: `27`
+- Cache stale entries: `0`
+- Failed chunks: `0`
 - Full-book generation: `false`
 - Public audio: `PUBLIC_AUDIO_RELEASE_BLOCKED`
 - Production: `PRODUCTION_BLOCKED`
 - API key persisted: `false`
-- API key present: `true`
-- Expected request fields: `language_code, model_id, text, voice_settings`
+- API key present: `false`
+- Expected request fields: `language_code, model_id, next_text, text, voice_settings`
 - Unsupported fields omitted: `none`
+- Chunk generation manifest: `internal/audiobook_lab/dracula/en/chapter-1/chunk_generation_manifest.json`
+- Cache manifest: `internal/audiobook_lab/cache/elevenlabs/cache_manifest.json`
