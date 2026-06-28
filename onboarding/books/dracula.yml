@@ -13,6 +13,9 @@ gutenberg_id: 345
 target_publication_status: reading_only_live_verified
 cover_strategy: existing_asset
 owner_approval_status: APPROVED_READING_ONLY
+publishing_edition_required: true
+publishing_edition_config: onboarding/publishing_editions/dracula.yml
+publishing_edition_status: GO_LIVE_READER_READY
 audiobook:
   provider: elevenlabs
   voice_id: 21m00Tcm4TlvDq8ikWAM

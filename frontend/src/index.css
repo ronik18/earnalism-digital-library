@@ -3043,7 +3043,38 @@ textarea.input-elegant {
 }
 
 .reader-content p {
-  margin: 0 0 1.4em;
+  margin: 0 0 1.55em;
+}
+
+.reader-content .reader-scene-break {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2.35rem auto 2rem;
+  color: var(--reader-accent);
+  text-align: center;
+  text-indent: 0;
+}
+
+.reader-content .reader-scene-break::before,
+.reader-content .reader-scene-break::after {
+  content: "";
+  display: block;
+  width: min(6rem, 24vw);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+  opacity: 0.72;
+}
+
+.reader-content .reader-scene-break span {
+  display: inline-grid;
+  width: 0.66rem;
+  height: 0.66rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  box-shadow: 0 0 0 0.28rem color-mix(in srgb, currentColor 14%, transparent);
+  opacity: 0.92;
 }
 
 .reader-content h1,

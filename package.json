@@ -93,6 +93,8 @@
     "audiobook:bengali-candidates:remaster-top": "python3 scripts/triage_bengali_audiobook_candidates.py --input-dir internal/audiobook_lab/bengali_store_candidates --mode remaster-top --limit 5",
     "tts:model-license-review": "python3 scripts/tts_model_license_review.py",
     "tts:provider-internal-eval-review": "python3 scripts/tts_provider_internal_eval_review.py",
+    "publishing:dracula:dry-run": "python3 scripts/prepare_publishing_edition.py --book-slug dracula --mode dry-run --strict",
+    "publishing:dracula:apply": "python3 scripts/prepare_publishing_edition.py --book-slug dracula --mode apply --strict",
     "prod:dracula-diagnostic": "python3 scripts/prod_dracula_diagnostic.py",
     "prod:repair-dracula-record:dry-run": "python3 scripts/repair_dracula_production_record.py --dry-run",
     "prod:repair-dracula-record:apply": "python3 scripts/repair_dracula_production_record.py --apply",

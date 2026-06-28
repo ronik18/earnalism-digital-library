@@ -1,0 +1,198 @@
+{
+  "book_slug": "dracula",
+  "chapter_count": 27,
+  "publishing_edition_hash": "19010ff811ddcb332f0817ab75ab2a23e6c6255fc1e81a3f927bf6ce5b2c42d8",
+  "raw_source_hash": "bd5f3edbdd2564ac76c6c99fa12ccd60da0cc20519a49dfbcd8d44135e85e7c9",
+  "go_live_status": "GO_LIVE_READER_READY",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Chapter I. Jonathan Harker’s Journal",
+      "content_hash": "db8519c28c3e7282d14ac8d0a41dd358652962a625838fecd33c7c1ae35c26fc",
+      "word_count": 5736
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "title": "Chapter II. Jonathan Harker’s Journal",
+      "content_hash": "3bb7a169776e420d3505ca9dfc04eb15a7e063edd4ce01f0048dd6de3d1aa637",
+      "word_count": 5518
+    },
+    {
+      "id": "chapter-003",
+      "order": 3,
+      "title": "Chapter III. Jonathan Harker’s Journal",
+      "content_hash": "4f6f06de2f2cad6f0c5cb5d3123c0d49f3d2207651bc08a89f9cf5d3e41e5490",
+      "word_count": 5733
+    },
+    {
+      "id": "chapter-004",
+      "order": 4,
+      "title": "Chapter IV. Jonathan Harker’s Journal",
+      "content_hash": "9cebeadd2571eb77d5946f946221077ff1193ccc33a3d4b6cfec237060183292",
+      "word_count": 5864
+    },
+    {
+      "id": "chapter-005",
+      "order": 5,
+      "title": "Chapter V",
+      "content_hash": "97031f1bef6f0bf4634afa9b4c0816fbca27d0a511b9df8821f7c95d59321c31",
+      "word_count": 3625
+    },
+    {
+      "id": "chapter-006",
+      "order": 6,
+      "title": "Chapter VI. Mina Murray’s Journal",
+      "content_hash": "8ff893d73e8b4757e02c2768c692278f9eaf5109e5ac4e4152bef11f053ffab2",
+      "word_count": 5772
+    },
+    {
+      "id": "chapter-007",
+      "order": 7,
+      "title": "Chapter VII. Cutting From “The Dailygraph,” 8 August",
+      "content_hash": "41a66b5c2ffb04b17d094bf35e0d7315ba79701585ffb0fd6931fbe703dc8a12",
+      "word_count": 5610
+    },
+    {
+      "id": "chapter-008",
+      "order": 8,
+      "title": "Chapter VIII. Mina Murray’s Journal",
+      "content_hash": "d79d31410c52ef77cc65eeb6c83caa54ad041d1983ee82cc80901deaba3838df",
+      "word_count": 6345
+    },
+    {
+      "id": "chapter-009",
+      "order": 9,
+      "title": "Chapter IX",
+      "content_hash": "40b875e50720e0ca004468da294e88d1b6e8686056f1e447c8428bf3683ac698",
+      "word_count": 5963
+    },
+    {
+      "id": "chapter-010",
+      "order": 10,
+      "title": "Chapter X",
+      "content_hash": "dd5761364f926368ea35c72fee30871b117604cd9c1e37f350bb6c628911a07f",
+      "word_count": 5990
+    },
+    {
+      "id": "chapter-011",
+      "order": 11,
+      "title": "Chapter XI",
+      "content_hash": "c0738e301e6b25a0b62801b0eda313b05ef128d0eb8cd2d8f87bcf17b9aae631",
+      "word_count": 5241
+    },
+    {
+      "id": "chapter-012",
+      "order": 12,
+      "title": "Chapter XII. Dr. Seward’s Diary",
+      "content_hash": "9101f34692965391ff1f3be1f02e5a679ea033bed7a8d7429aed2c0e19775a23",
+      "word_count": 7368
+    },
+    {
+      "id": "chapter-013",
+      "order": 13,
+      "title": "Chapter XIII",
+      "content_hash": "338c4df57a0c1c7c614301160404225a94c025519f998bb11abc3520bcfecb43",
+      "word_count": 6666
+    },
+    {
+      "id": "chapter-014",
+      "order": 14,
+      "title": "Chapter XIV. Mina Harker’s Journal",
+      "content_hash": "4ec58ac981b4d8f152e573058fd6ac9d5cafc29bced9ef8afe50eed015c14924",
+      "word_count": 6507
+    },
+    {
+      "id": "chapter-015",
+      "order": 15,
+      "title": "Chapter XV",
+      "content_hash": "3cc92c2a3bd7f744e6961ecce4d675bf8ed955bfec6daa7cc51ac9dbbea0bc99",
+      "word_count": 5865
+    },
+    {
+      "id": "chapter-016",
+      "order": 16,
+      "title": "Chapter XVI. Dr. Seward’s Diary",
+      "content_hash": "a9c09cd9541ed2f36131c4e1a9edd9a524a6352f727e6dc3fdf647742b979750",
+      "word_count": 4608
+    },
+    {
+      "id": "chapter-017",
+      "order": 17,
+      "title": "Chapter XVII. Dr. Seward’s Diary",
+      "content_hash": "aa397a0211b2451e9c34f8bbc2eb981f7b7f33ae2b7d49f97225afbd73c41833",
+      "word_count": 5644
+    },
+    {
+      "id": "chapter-018",
+      "order": 18,
+      "title": "Chapter XVIII. Dr. Seward’s Diary",
+      "content_hash": "80aeacca9342e96aba82e8de4fed9adbe441b918c741f8323d729324a59d7bd5",
+      "word_count": 6992
+    },
+    {
+      "id": "chapter-019",
+      "order": 19,
+      "title": "Chapter XIX. Jonathan Harker’s Journal",
+      "content_hash": "2c3900d717a3f9bef2ab41b242f89c9f67dc2eb85ed82669f3071ca79a95aac9",
+      "word_count": 5722
+    },
+    {
+      "id": "chapter-020",
+      "order": 20,
+      "title": "Chapter XX. Jonathan Harker’s Journal",
+      "content_hash": "95cd5051ab3fbe5f4f31f5d2f96749079a374e68faad95b164bdd84e780625cd",
+      "word_count": 5997
+    },
+    {
+      "id": "chapter-021",
+      "order": 21,
+      "title": "Chapter XXI. Dr. Seward’s Diary",
+      "content_hash": "6f2a24820a2873e91e62bd3feaa26dccedf9752d036c6222900c2113b0a19709",
+      "word_count": 6242
+    },
+    {
+      "id": "chapter-022",
+      "order": 22,
+      "title": "Chapter XXII. Jonathan Harker’s Journal",
+      "content_hash": "9e53dd428a2d8d2ac732f21e79373b33c571f45cfa05e2d46ac21fdefa68ec95",
+      "word_count": 5493
+    },
+    {
+      "id": "chapter-023",
+      "order": 23,
+      "title": "Chapter XXIII. Dr. Seward’s Diary",
+      "content_hash": "3f837b3da428e359c6af626bc42c777c8644b0ae7e26d418e34d07a1f4a5fe2b",
+      "word_count": 5720
+    },
+    {
+      "id": "chapter-024",
+      "order": 24,
+      "title": "Chapter XXIV. Dr. Seward’s Phonograph Diary, Spoken By Van Helsing",
+      "content_hash": "c46f4175b5f9fcdf0ec62de33f1113ced9d73539ac7f40cb2b71149a2e812d86",
+      "word_count": 6338
+    },
+    {
+      "id": "chapter-025",
+      "order": 25,
+      "title": "Chapter XXV. Dr. Seward’s Diary",
+      "content_hash": "17a15c46711b6f277a991d10c7c433e0c4f7a2c032ede3004881992a48c20784",
+      "word_count": 6306
+    },
+    {
+      "id": "chapter-026",
+      "order": 26,
+      "title": "Chapter XXVI. Dr. Seward’s Diary",
+      "content_hash": "218c5fc9bcf016a39a130ed7478404bfe95181682736bed868cc588a98467c9b",
+      "word_count": 7190
+    },
+    {
+      "id": "chapter-027",
+      "order": 27,
+      "title": "Chapter XXVII. Mina Harker’s Journal",
+      "content_hash": "7a58ebc2034e9e14918526787b613f90f404bad785573da4be432ae58bd8c943",
+      "word_count": 8192
+    }
+  ]
+}

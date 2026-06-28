@@ -71,6 +71,7 @@ describe("UX conversion static signals", () => {
   const layout = read("frontend/src/components/Layout.jsx");
   const useSeo = read("frontend/src/hooks/useSEO.js");
   const backend = read("backend/server.py");
+  const orchestrateBookFactory = read("scripts/orchestrate_book_factory.py");
   const analytics = read("frontend/src/lib/funnelAnalytics.js");
   const microStory = read("frontend/src/pages/MicroStoryLanding.jsx");
   const readerUpsell = read("frontend/src/components/Funnel/ReaderUpsellPrompt.jsx");
@@ -1092,6 +1093,46 @@ describe("UX conversion static signals", () => {
     expect(reader).toContain("normalizeChapterDisplayTitle(item.title)");
     expect(reader).toContain("normalizeChapterDisplayTitle(chapter.title)");
     expect(bookDetail).toContain("normalizeChapterDisplayTitle(c.title)");
+  });
+
+  test("Dracula reader uses publishing edition artifacts before audio or release gates", () => {
+    const publishingScript = read("scripts/prepare_publishing_edition.py");
+    const publishingConfig = read("onboarding/publishing_editions/dracula.yml");
+    const publishingReport = read("READER_TEXT_QUALITY_AUDIT_REPORT.md");
+    const publishingChapter = JSON.parse(read("data/controlled_publications/dracula/publishing_edition/chapters/chapter-001.json"));
+    const publishingContent = publishingChapter.content;
+    const publishingText = publishingContent.replace(/<[^>]+>/g, "");
+
+    expect(publishingScript).toContain("PUBLISHING_EDITION_PREPARATION");
+    expect(publishingConfig).toContain("raw_source_preservation_required: true");
+    expect(orchestrateBookFactory).toContain('"PUBLISHING_EDITION_PREPARATION"');
+    expect(orchestrateBookFactory.indexOf('"PUBLISHING_EDITION_PREPARATION"')).toBeLessThan(
+      orchestrateBookFactory.indexOf('"AUDIOBOOK_CHUNK_HASHING"')
+    );
+    expect(backend).toContain("load_publishing_edition_chapter");
+    expect(backend).toContain("_public_publishing_edition_chapter");
+    expect(publishingReport).toContain("Dracula reader edition: `GO_LIVE_READER_READY`");
+    expect(publishingContent).toContain("reader-scene-break");
+    for (const artifact of [
+      "*****",
+      "_--",
+      ".--The",
+      "ishigh",
+      "aremixed",
+      "awake,naturally",
+      "whichproduces",
+      "notdisagreeable",
+      "himtalking",
+      "everynow",
+      "nationali-",
+    ]) {
+      expect(publishingContent).not.toContain(artifact);
+      expect(publishingText).not.toContain(artifact);
+    }
+    expect(publishingText).not.toMatch(/(^|[>(\s])_[A-Za-z0-9]/);
+    expect(packageJson).toContain("publishing:dracula:apply");
+    expect(backend).toContain("PUBLIC_AUDIO_RELEASE_BLOCKED");
+    expect(backend).not.toMatch(/AudioObject|Listen Now/);
   });
 
   test("Bengali Gothic candidate is pipeline-only and not a live reading CTA", () => {

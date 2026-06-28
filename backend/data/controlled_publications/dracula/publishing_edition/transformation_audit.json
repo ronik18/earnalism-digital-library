@@ -1,0 +1,1292 @@
+{
+  "generated_by": "scripts/prepare_publishing_edition.py",
+  "generated_at": "2026-06-28T02:32:10+00:00",
+  "book_slug": "dracula",
+  "mode": "apply",
+  "source_chapter_dir": "data/controlled_publications/dracula/chapters",
+  "output_dir": "data/controlled_publications/dracula/publishing_edition",
+  "backend_output_dir": "backend/data/controlled_publications/dracula/publishing_edition",
+  "expected_chapter_count": 27,
+  "chapter_count": 27,
+  "raw_source_hash": "bd5f3edbdd2564ac76c6c99fa12ccd60da0cc20519a49dfbcd8d44135e85e7c9",
+  "publishing_edition_hash": "19010ff811ddcb332f0817ab75ab2a23e6c6255fc1e81a3f927bf6ce5b2c42d8",
+  "transformations": [
+    {
+      "rule": "line_break_normalization",
+      "count": 417,
+      "before_sample": "_3 May. Bistritz._--Left Munich at 8:35 P. M., on 1st May, arriving at<br>Vienna early next morning; should have arrived at 6:46, but train was ",
+      "after_sample": "<p>(_Kept in shorthand._)</p><p>_3 May. Bistritz._--Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 1,
+      "before_sample": " Mina before I do, let it bring my good-bye. Here comes the coach!</p><p>* * * * *</p><p>_5 May. The Castle._--The grey of the morning has passed, and the s",
+      "after_sample": "<p>(_Kept in shorthand._)</p><p>_3 May. Bistritz._--Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "<p>(_Kept in shorthand._)</p><p>_3 May. Bistritz._--Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next m",
+      "after_sample": "<p>(_Kept in shorthand._)</p><p>_3 May. Bistritz. &mdash; Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was a"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 5,
+      "before_sample": "<p>(_Kept in shorthand._)</p><p>_3 May. Bistritz. &mdash; Left Munich at 8:35 P. M., on 1st Ma",
+      "after_sample": "<p>(Kept in shorthand.)</p><p>_3 May. Bistritz. &mdash; Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "<p>(Kept in shorthand.)</p><p>_3 May. Bistritz. &mdash; Left Munich at 8:35 P. M., on 1st May, arrivi",
+      "after_sample": "<p>(Kept in shorthand.)</p><p>3 May. Bistritz. &mdash; Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an h"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 1,
+      "before_sample": "r. He went, but immediately returned with a letter:--</p><p>“My Friend.--Welcome to the Carpathians. I am anxiously expecting you. Sleep well t",
+      "after_sample": "<p>(Kept in shorthand.)</p><p>3 May. Bistritz. &mdash; Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an h"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 35,
+      "before_sample": "ich is a very interesting old place. Being practically on the frontier--for the Borgo Pass leads from it into Bukovina--it has had a very stor",
+      "after_sample": "<p>(Kept in shorthand.)</p><p>3 May. Bistritz. &mdash; Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an h"
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 1,
+      "before_sample": "er’s “Lenore”: &mdash; </p><p>“Denn die Todten reiten schnell” &mdash;  (“For the dead travel fast.”)</p><p>The strange driver evidently heard",
+      "after_sample": "<p>(Kept in shorthand.)</p><p>3 May. Bistritz. &mdash; Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an h"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 8,
+      "before_sample": " to the door. He went, but immediately returned with a letter: &mdash; </p><p>“My Friend. &mdash; Welcome to the Carpathians. I am anxiously expe",
+      "after_sample": "<p>(Kept in shorthand.)</p><p>3 May. Bistritz. &mdash; Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an h"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 374,
+      "before_sample": "p>_5 May._--I must have been asleep, for certainly if I had been fully<br>awake I must have noticed the approach of such a remarkable place. In<",
+      "after_sample": "<p>_5 May._--I must have been asleep, for certainly if I had been fully awake I must have noticed the approach of such a remarkable place. In the gloom the courtyard looked of cons"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 2,
+      "before_sample": "y own soul. God keep me, if only for the sake of those dear to me!</p><p>* * * * *</p><p>_7 May._--It is again early morning, but I have rested and enjoyed ",
+      "after_sample": "<p>_5 May._--I must have been asleep, for certainly if I had been fully awake I must have noticed the approach of such a remarkable place. In the gloom the courtyard looked of cons"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "<p>_5 May._--I must have been asleep, for certainly if I had been fully awake I mus",
+      "after_sample": "<p>_5 May. &mdash; I must have been asleep, for certainly if I had been fully awake I must have noticed the approach of such a remarkable place. In the gloom the courtyard looked o"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 2,
+      "before_sample": "w me for a stranger. That is not enough for me. Here I am noble; I am _boyar_; the common people know me, and I am master. But a stranger in a stra",
+      "after_sample": "<p>_5 May. &mdash; I must have been asleep, for certainly if I had been fully awake I must have noticed the approach of such a remarkable place. In the gloom the courtyard looked o"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "<p>_5 May. &mdash; I must have been asleep, for certainly if I had been fu",
+      "after_sample": "<p>5 May. &mdash; I must have been asleep, for certainly if I had been fully awake I must have noticed the approach of such a remarkable place. In the gloom the courtyard looked of"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 1,
+      "before_sample": " written:--</p><p>“I have to be absent for a while. Do not wait for me.--D.” I set to and enjoyed a hearty meal. When I had done, I looked for ",
+      "after_sample": "<p>5 May. &mdash; I must have been asleep, for certainly if I had been fully awake I must have noticed the approach of such a remarkable place. In the gloom the courtyard looked of"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 45,
+      "before_sample": "to a foreigner? Solicitor’s clerk! Mina would not like that. Solicitor--for just before leaving London I got word that my examination was succ",
+      "after_sample": "<p>5 May. &mdash; I must have been asleep, for certainly if I had been fully awake I must have noticed the approach of such a remarkable place. In the gloom the courtyard looked of"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 19,
+      "before_sample": "e, saying in excellent English, but with a strange intonation: &mdash; </p><p>“Welcome to my house! Enter freely and of your own will!” He made n",
+      "after_sample": "<p>5 May. &mdash; I must have been asleep, for certainly if I had been fully awake I must have noticed the approach of such a remarkable place. In the gloom the courtyard looked of"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 401,
+      "before_sample": "hen I found that I was a prisoner a sort of wild feeling came over me.<br>I rushed up and down the stairs, trying every door and peering out of<",
+      "after_sample": "<p>When I found that I was a prisoner a sort of wild feeling came over me. I rushed up and down the stairs, trying every door and peering out of every window I could find; but afte"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 5,
+      "before_sample": " way. I must be very careful, however, not to awake his suspicion.</p><p>* * * * *</p><p>_Midnight._--I have had a long talk with the Count. I asked him a f",
+      "after_sample": "<p>When I found that I was a prisoner a sort of wild feeling came over me. I rushed up and down the stairs, trying every door and peering out of every window I could find; but afte"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 5,
+      "before_sample": "\"ornamental-divider\" aria-hidden=\"true\"><span></span></p><p>_Midnight._--I have had a long talk with the Count. I asked him a few questions on ",
+      "after_sample": "<p>When I found that I was a prisoner a sort of wild feeling came over me. I rushed up and down the stairs, trying every door and peering out of every window I could find; but afte"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "ing-token=\"ornamental-divider\" aria-hidden=\"true\"><span></span></p><p>_Midnight. &mdash; I have had a long talk with the Count. I asked him a few questions on Transylvania history, and he warmed up to the subject wonderfully. In his speaking of things and people, and especially of battles, he spoke as if he had been present at them all. This he afterwards explained by saying that to a _boyar_ the pride of his house and name is his own pride, that their gl",
+      "after_sample": "<p>When I found that I was a prisoner a sort of wild feeling came over me. I rushed up and down the stairs, trying every door and peering out of every window I could find; but afte"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 5,
+      "before_sample": "nt at them all. This he afterwards explained by saying that to a boyar_ the pride of his house and name is his own pride, that their glory is",
+      "after_sample": "<p>When I found that I was a prisoner a sort of wild feeling came over me. I rushed up and down the stairs, trying every door and peering out of every window I could find; but afte"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 29,
+      "before_sample": ", the conviction had come to me that I was helpless I sat down quietly--as quietly as I have ever done anything in my life--and began to think",
+      "after_sample": "<p>When I found that I was a prisoner a sort of wild feeling came over me. I rushed up and down the stairs, trying every door and peering out of every window I could find; but afte"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 12,
+      "before_sample": "early as I can; for it tells in its way the story of his race: &mdash; </p><p>“We Szekelys have a right to be proud, for in our veins flows the b",
+      "after_sample": "<p>When I found that I was a prisoner a sort of wild feeling came over me. I rushed up and down the stairs, trying every door and peering out of every window I could find; but afte"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 394,
+      "before_sample": ">I awoke in my own bed. If it be that I had not dreamt, the Count must<br>have carried me here. I tried to satisfy myself on the subject, but<br",
+      "after_sample": "<p>I awoke in my own bed. If it be that I had not dreamt, the Count must have carried me here. I tried to satisfy myself on the subject, but could not arrive at any unquestionable "
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 13,
+      "before_sample": " those awful women, who were--who _are_--waiting to suck my blood.</p><p>* * * * *</p><p>_18 May._--I have been down to look at that room again in daylight,",
+      "after_sample": "<p>I awoke in my own bed. If it be that I had not dreamt, the Count must have carried me here. I tried to satisfy myself on the subject, but could not arrive at any unquestionable "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 11,
+      "before_sample": "othing can be more dreadful than those awful women, who were--who _are_--waiting to suck my blood.</p><p class=\"reader-scene-break\" data-publis",
+      "after_sample": "<p>I awoke in my own bed. If it be that I had not dreamt, the Count must have carried me here. I tried to satisfy myself on the subject, but could not arrive at any unquestionable "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "ing-token=\"ornamental-divider\" aria-hidden=\"true\"><span></span></p><p>_18 May. &mdash; I have been down to look at that room again in daylight, for I _must_ know the truth. When I got to the doorway at the top of the stai",
+      "after_sample": "<p>I awoke in my own bed. If it be that I had not dreamt, the Count must have carried me here. I tried to satisfy myself on the subject, but could not arrive at any unquestionable "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 11,
+      "before_sample": "or nothing can be more dreadful than those awful women, who were--who _are &mdash; waiting to suck my blood.</p><p class=\"reader-scene-break\"",
+      "after_sample": "<p>I awoke in my own bed. If it be that I had not dreamt, the Count must have carried me here. I tried to satisfy myself on the subject, but could not arrive at any unquestionable "
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 24,
+      "before_sample": "ary, for nothing can be more dreadful than those awful women, who were--who are &mdash; waiting to suck my blood.</p><p class=\"reader-scene-br",
+      "after_sample": "<p>I awoke in my own bed. If it be that I had not dreamt, the Count must have carried me here. I tried to satisfy myself on the subject, but could not arrive at any unquestionable "
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 11,
+      "before_sample": "uld put on the letters. He calculated a minute, and then said: &mdash; </p><p>“The first should be June 12, the second June 19, and the third Jun",
+      "after_sample": "<p>I awoke in my own bed. If it be that I had not dreamt, the Count must have carried me here. I tried to satisfy myself on the subject, but could not arrive at any unquestionable "
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 235,
+      "before_sample": ">“Forgive my long delay in writing, but I have been simply overwhelmed<br>with work. The life of an assistant schoolmistress is sometimes trying",
+      "after_sample": "<p>_Letter from Miss Mina Murray to Miss Lucy Westenra._</p><p>“_9 May._</p><p>“My dearest Lucy,--</p><p>“Forgive my long delay in writing, but I have been simply overwhelmed with "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 1,
+      "before_sample": "</p><p>_Dr. Seward’s Diary._</p><p>(Kept in phonograph)</p><p>_25 May._--Ebb tide in appetite to-day. Cannot eat, cannot rest, so diary instead",
+      "after_sample": "<p>_Letter from Miss Mina Murray to Miss Lucy Westenra._</p><p>“_9 May._</p><p>“My dearest Lucy,--</p><p>“Forgive my long delay in writing, but I have been simply overwhelmed with "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 31,
+      "before_sample": "<p>_Letter from Miss Mina Murray to Miss Lucy Westenra._</p><p>“_9 May._</p><p>“My dearest Lucy,--</p><p>“Forgive my long dela",
+      "after_sample": "<p>Letter from Miss Mina Murray to Miss Lucy Westenra.</p><p>“9 May.</p><p>“My dearest Lucy,--</p><p>“Forgive my long delay in writing, but I have been simply overwhelmed with work"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 1,
+      "before_sample": "Good-bye.”</p><p>Dr. Seward’s Diary.</p><p>(Kept in phonograph)</p><p>_25 May. &mdash; Ebb tide in appetite to-day. Cannot eat, cannot rest, ",
+      "after_sample": "<p>Letter from Miss Mina Murray to Miss Lucy Westenra.</p><p>“9 May.</p><p>“My dearest Lucy,--</p><p>“Forgive my long delay in writing, but I have been simply overwhelmed with work"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 3,
+      "before_sample": "our prayers; and, Mina, pray for my happiness.</p><p>“LUCY.</p><p>“P.S.--I need not tell you this is a secret. Good-night again.</p><p>“L.”</p>",
+      "after_sample": "<p>Letter from Miss Mina Murray to Miss Lucy Westenra.</p><p>“9 May.</p><p>“My dearest Lucy,--</p><p>“Forgive my long delay in writing, but I have been simply overwhelmed with work"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 33,
+      "before_sample": "na Murray to Miss Lucy Westenra.</p><p>“9 May.</p><p>“My dearest Lucy,--</p><p>“Forgive my long delay in writing, but I have been simply overw",
+      "after_sample": "<p>Letter from Miss Mina Murray to Miss Lucy Westenra.</p><p>“9 May.</p><p>“My dearest Lucy, &mdash; </p><p>“Forgive my long delay in writing, but I have been simply overwhelmed wi"
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 2,
+      "before_sample": "ris telling us his stories, and Arthur never told any, and yet &mdash;  &mdash;  My dear, I am somewhat previous. Mr. Quincey P. Morris found ",
+      "after_sample": "<p>Letter from Miss Mina Murray to Miss Lucy Westenra.</p><p>“9 May.</p><p>“My dearest Lucy, &mdash; </p><p>“Forgive my long delay in writing, but I have been simply overwhelmed wi"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 10,
+      "before_sample": "y to Miss Lucy Westenra.</p><p>“9 May.</p><p>“My dearest Lucy, &mdash; </p><p>“Forgive my long delay in writing, but I have been simply overwhelm",
+      "after_sample": "<p>Letter from Miss Mina Murray to Miss Lucy Westenra.</p><p>“9 May.</p><p>“My dearest Lucy, &mdash;</p><p>“Forgive my long delay in writing, but I have been simply overwhelmed wit"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 391,
+      "before_sample": "<p>_24 July. Whitby._--Lucy met me at the station, looking sweeter and<br>lovelier than ever, and we drove up to the house at the Crescent in<br",
+      "after_sample": "<p>_24 July. Whitby._--Lucy met me at the station, looking sweeter and lovelier than ever, and we drove up to the house at the Crescent in which they have rooms. This is a lovely p"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 12,
+      "before_sample": "hey were only duty calls, I did not go. They will be home by this.</p><p>* * * * *</p><p>_1 August._--I came up here an hour ago with Lucy, and we had a mos",
+      "after_sample": "<p>_24 July. Whitby._--Lucy met me at the station, looking sweeter and lovelier than ever, and we drove up to the house at the Crescent in which they have rooms. This is a lovely p"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 15,
+      "before_sample": "<p>_24 July. Whitby._--Lucy met me at the station, looking sweeter and lovelier than ever, an",
+      "after_sample": "<p>_24 July. Whitby. &mdash; Lucy met me at the station, looking sweeter and lovelier than ever, and we drove up to the house at the Crescent in which they have rooms. This is a lo"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 4,
+      "before_sample": "es from here. This Braithwaite Lowrey--I knew his father, lost in the _Lively_ off Greenland in ’20; or Andrew Woodhouse, drowned in the same seas i",
+      "after_sample": "<p>_24 July. Whitby. &mdash; Lucy met me at the station, looking sweeter and lovelier than ever, and we drove up to the house at the Crescent in which they have rooms. This is a lo"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 15,
+      "before_sample": "<p>_24 July. Whitby. &mdash; Lucy met me at the station, looking sweeter a",
+      "after_sample": "<p>24 July. Whitby. &mdash; Lucy met me at the station, looking sweeter and lovelier than ever, and we drove up to the house at the Crescent in which they have rooms. This is a lov"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 39,
+      "before_sample": "it, unless you are near enough to see down. The houses of the old town--the side away from us--are all red-roofed, and seem piled up one over ",
+      "after_sample": "<p>24 July. Whitby. &mdash; Lucy met me at the station, looking sweeter and lovelier than ever, and we drove up to the house at the Crescent in which they have rooms. This is a lov"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 12,
+      "before_sample": "at sea and the White Lady at the abbey he said very brusquely: &mdash; </p><p>“I wouldn’t fash masel’ about them, miss. Them things be all wore o",
+      "after_sample": "<p>24 July. Whitby. &mdash; Lucy met me at the station, looking sweeter and lovelier than ever, and we drove up to the house at the Crescent in which they have rooms. This is a lov"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 404,
+      "before_sample": "/p><p>One of the greatest and suddenest storms on record has just been<br>experienced here, with results both strange and unique. The weather ha",
+      "after_sample": "<p>(_Pasted in Mina Murray’s Journal._)</p><p>From a Correspondent.</p><p>_Whitby_.</p><p>One of the greatest and suddenest storms on record has just been experienced here, with re"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 21,
+      "before_sample": "s torn away, and its belly was slit open as if with a savage claw.</p><p>* * * * *</p><p>_Later._--By the kindness of the Board of Trade inspector, I have b",
+      "after_sample": "<p>(_Pasted in Mina Murray’s Journal._)</p><p>From a Correspondent.</p><p>_Whitby_.</p><p>One of the greatest and suddenest storms on record has just been experienced here, with re"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 5,
+      "before_sample": "iraculously into harbour in the storm.</p><p>_Whitby_</p><p>_9 August._--The sequel to the strange arrival of the derelict in the storm last ni",
+      "after_sample": "<p>(_Pasted in Mina Murray’s Journal._)</p><p>From a Correspondent.</p><p>_Whitby_.</p><p>One of the greatest and suddenest storms on record has just been experienced here, with re"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 26,
+      "before_sample": "<p>(_Pasted in Mina Murray’s Journal._)</p><p>From a Correspondent.</p><p>_Whitby_.</p><p>One of the greates",
+      "after_sample": "<p>(Pasted in Mina Murray’s Journal.)</p><p>From a Correspondent.</p><p>Whitby.</p><p>One of the greatest and suddenest storms on record has just been experienced here, with result"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 5,
+      "before_sample": "t that the schooner is a Russian from Varna, and is called the Demeter_. She is almost entirely in ballast of silver sand, with only a small ",
+      "after_sample": "<p>(Pasted in Mina Murray’s Journal.)</p><p>From a Correspondent.</p><p>Whitby.</p><p>One of the greatest and suddenest storms on record has just been experienced here, with result"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 8,
+      "before_sample": "en=\"ornamental-divider\" aria-hidden=\"true\"><span></span></p><p>22 July.--Rough weather last three days, and all hands busy with sails--no time ",
+      "after_sample": "<p>(Pasted in Mina Murray’s Journal.)</p><p>From a Correspondent.</p><p>Whitby.</p><p>One of the greatest and suddenest storms on record has just been experienced here, with result"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 22,
+      "before_sample": "y, its downward way was marked by myriad clouds of every sunset-colour--flame, purple, pink, green, violet, and all the tints of gold; with he",
+      "after_sample": "<p>(Pasted in Mina Murray’s Journal.)</p><p>From a Correspondent.</p><p>Whitby.</p><p>One of the greatest and suddenest storms on record has just been experienced here, with result"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 435,
+      "before_sample": "Same day, 11 o’clock p. m._--Oh, but I am tired! If it were not that I<br>had made my diary a duty I should not open it to-night. We had a lovel",
+      "after_sample": "<p>_Same day, 11 o’clock p. m._--Oh, but I am tired! If it were not that I had made my diary a duty I should not open it to-night. We had a lovely walk. Lucy, after a while, was in"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 10,
+      "before_sample": "quite happy if I only knew if Jonathan.... God bless and keep him.</p><p>* * * * *</p><p>_11 August, 3 a. m._--Diary again. No sleep now, so I may as well w",
+      "after_sample": "<p>_Same day, 11 o’clock p. m._--Oh, but I am tired! If it were not that I had made my diary a duty I should not open it to-night. We had a lovely walk. Lucy, after a while, was in"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 13,
+      "before_sample": "<p>_Same day, 11 o’clock p. m._--Oh, but I am tired! If it were not that I had made my diary a duty I s",
+      "after_sample": "<p>_Same day, 11 o’clock p. m. &mdash; Oh, but I am tired! If it were not that I had made my diary a duty I should not open it to-night. We had a lovely walk. Lucy, after a while, "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 15,
+      "before_sample": "ing-token=\"ornamental-divider\" aria-hidden=\"true\"><span></span></p><p>_Same day, night. &mdash; We passed a happy day. The air was clear, and the sun bright, and there was a cool breeze. We took our lunch to Mulgrave Woods, Mrs. Westenra driving by the road and Lucy and I walking by the cliff-path and joining her at the gate. I felt a little sad myself, for I could not but feel how _absolutely_ happy it would have been had Jonathan been with me. But th",
+      "after_sample": "<p>_Same day, 11 o’clock p. m. &mdash; Oh, but I am tired! If it were not that I had made my diary a duty I should not open it to-night. We had a lovely walk. Lucy, after a while, "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 16,
+      "before_sample": "<p>_Same day, 11 o’clock p. m. &mdash; Oh, but I am tired! If it were not ",
+      "after_sample": "<p>Same day, 11 o’clock p. m. &mdash; Oh, but I am tired! If it were not that I had made my diary a duty I should not open it to-night. We had a lovely walk. Lucy, after a while, w"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 1,
+      "before_sample": "rs, with sympathy and all blessings,</p><p>“SISTER AGATHA.</p><p>“P. S.--My patient being asleep, I open this to let you know something more. H",
+      "after_sample": "<p>Same day, 11 o’clock p. m. &mdash; Oh, but I am tired! If it were not that I had made my diary a duty I should not open it to-night. We had a lovely walk. Lucy, after a while, w"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 34,
+      "before_sample": "ier I looked across the harbour to the East Cliff, in the hope or fear--I don’t know which--of seeing Lucy in our favourite seat. There was a ",
+      "after_sample": "<p>Same day, 11 o’clock p. m. &mdash; Oh, but I am tired! If it were not that I had made my diary a duty I should not open it to-night. We had a lovely walk. Lucy, after a while, w"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 11,
+      "before_sample": "lent for a while, and suddenly Lucy murmured as if to herself: &mdash; </p><p>“His red eyes again! They are just the same.” It was such an odd ex",
+      "after_sample": "<p>Same day, 11 o’clock p. m. &mdash; Oh, but I am tired! If it were not that I had made my diary a duty I should not open it to-night. We had a lovely walk. Lucy, after a while, w"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 394,
+      "before_sample": "><p>“I know you will be anxious to hear all that has happened since we<br>parted at the railway station at Whitby. Well, my dear, I got to Hull<",
+      "after_sample": "<p>_Letter, Mina Harker to Lucy Westenra._</p><p>“_Buda-Pesth, 24 August._</p><p>“My dearest Lucy,--</p><p>“I know you will be anxious to hear all that has happened since we parted"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 8,
+      "before_sample": "to let our wedding be this afternoon, and am waiting her reply....</p><p>* * * * *</p><p>“She has come and told me that the chaplain of the English mission ",
+      "after_sample": "<p>_Letter, Mina Harker to Lucy Westenra._</p><p>“_Buda-Pesth, 24 August._</p><p>“My dearest Lucy,--</p><p>“I know you will be anxious to hear all that has happened since we parted"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 11,
+      "before_sample": "arried on 28 September.”</p><p>_Dr. Seward’s Diary._</p><p>_20 August._--The case of Renfield grows even more interesting. He has now so far qu",
+      "after_sample": "<p>_Letter, Mina Harker to Lucy Westenra._</p><p>“_Buda-Pesth, 24 August._</p><p>“My dearest Lucy,--</p><p>“I know you will be anxious to hear all that has happened since we parted"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 30,
+      "before_sample": "<p>_Letter, Mina Harker to Lucy Westenra._</p><p>“_Buda-Pesth, 24 August._</p><p>“My dearest Lucy,--</p><p>“I kn",
+      "after_sample": "<p>Letter, Mina Harker to Lucy Westenra.</p><p>“Buda-Pesth, 24 August.</p><p>“My dearest Lucy,--</p><p>“I know you will be anxious to hear all that has happened since we parted at "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 11,
+      "before_sample": "e are to be married on 28 September.”</p><p>Dr. Seward’s Diary.</p><p>_20 August. &mdash; The case of Renfield grows even more interesting. H",
+      "after_sample": "<p>Letter, Mina Harker to Lucy Westenra.</p><p>“Buda-Pesth, 24 August.</p><p>“My dearest Lucy,--</p><p>“I know you will be anxious to hear all that has happened since we parted at "
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 2,
+      "before_sample": ". So no more just at present from your loving</p><p>“LUCY.</p><p>“P. S.--Mother sends her love. She seems better, poor dear. “P. P. S.--We are ",
+      "after_sample": "<p>Letter, Mina Harker to Lucy Westenra.</p><p>“Buda-Pesth, 24 August.</p><p>“My dearest Lucy,--</p><p>“I know you will be anxious to hear all that has happened since we parted at "
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 33,
+      "before_sample": "o Lucy Westenra.</p><p>“Buda-Pesth, 24 August.</p><p>“My dearest Lucy,--</p><p>“I know you will be anxious to hear all that has happened since",
+      "after_sample": "<p>Letter, Mina Harker to Lucy Westenra.</p><p>“Buda-Pesth, 24 August.</p><p>“My dearest Lucy, &mdash; </p><p>“I know you will be anxious to hear all that has happened since we par"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 12,
+      "before_sample": "estenra.</p><p>“Buda-Pesth, 24 August.</p><p>“My dearest Lucy, &mdash; </p><p>“I know you will be anxious to hear all that has happened since we ",
+      "after_sample": "<p>Letter, Mina Harker to Lucy Westenra.</p><p>“Buda-Pesth, 24 August.</p><p>“My dearest Lucy, &mdash;</p><p>“I know you will be anxious to hear all that has happened since we part"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 381,
+      "before_sample": "“My news to-day is not so good. Lucy this morning had gone back a bit.<br>There is, however, one good thing which has arisen from it; Mrs.<br>We",
+      "after_sample": "<p>_Letter, Dr. Seward to Hon. Arthur Holmwood._</p><p>“_6 September._</p><p>“My dear Art,--</p><p>“My news to-day is not so good. Lucy this morning had gone back a bit. There is, "
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 2,
+      "before_sample": " leaving by the night mail and would join me early in the morning.</p><p>* * * * *</p><p>_9 September_.--I was pretty tired and worn out when I got to Hilli",
+      "after_sample": "<p>_Letter, Dr. Seward to Hon. Arthur Holmwood._</p><p>“_6 September._</p><p>“My dear Art,--</p><p>“My news to-day is not so good. Lucy this morning had gone back a bit. There is, "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 6,
+      "before_sample": ",</p><p>“JOHN SEWARD.”</p><p>_Dr. Seward’s Diary._</p><p>_7 September._--The first thing Van Helsing said to me when we met at Liverpool Street",
+      "after_sample": "<p>_Letter, Dr. Seward to Hon. Arthur Holmwood._</p><p>“_6 September._</p><p>“My dear Art,--</p><p>“My news to-day is not so good. Lucy this morning had gone back a bit. There is, "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 8,
+      "before_sample": "<p>_Letter, Dr. Seward to Hon. Arthur Holmwood._</p><p>“_6 September._</p><p>“My dear Art,--</p><p>“My news to-day is ",
+      "after_sample": "<p>Letter, Dr. Seward to Hon. Arthur Holmwood.</p><p>“6 September.</p><p>“My dear Art,--</p><p>“My news to-day is not so good. Lucy this morning had gone back a bit. There is, howe"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 6,
+      "before_sample": "><p>“Yours ever,</p><p>“JOHN SEWARD.”</p><p>Dr. Seward’s Diary.</p><p>_7 September. &mdash; The first thing Van Helsing said to me when we me",
+      "after_sample": "<p>Letter, Dr. Seward to Hon. Arthur Holmwood.</p><p>“6 September.</p><p>“My dear Art,--</p><p>“My news to-day is not so good. Lucy this morning had gone back a bit. There is, howe"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 1,
+      "before_sample": "ornamental-divider\" aria-hidden=\"true\"><span></span></p><p>9 September.--I was pretty tired and worn out when I got to Hillingham. For two nigh",
+      "after_sample": "<p>Letter, Dr. Seward to Hon. Arthur Holmwood.</p><p>“6 September.</p><p>“My dear Art,--</p><p>“My news to-day is not so good. Lucy this morning had gone back a bit. There is, howe"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 49,
+      "before_sample": "eward to Hon. Arthur Holmwood.</p><p>“6 September.</p><p>“My dear Art,--</p><p>“My news to-day is not so good. Lucy this morning had gone back",
+      "after_sample": "<p>Letter, Dr. Seward to Hon. Arthur Holmwood.</p><p>“6 September.</p><p>“My dear Art, &mdash; </p><p>“My news to-day is not so good. Lucy this morning had gone back a bit. There i"
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 1,
+      "before_sample": " only knew how gladly I would die for her you would understand &mdash;  &mdash; ”</p><p>He stopped, with a sort of choke in his voice.</p><p>“",
+      "after_sample": "<p>Letter, Dr. Seward to Hon. Arthur Holmwood.</p><p>“6 September.</p><p>“My dear Art, &mdash; </p><p>“My news to-day is not so good. Lucy this morning had gone back a bit. There i"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 25,
+      "before_sample": " Hon. Arthur Holmwood.</p><p>“6 September.</p><p>“My dear Art, &mdash; </p><p>“My news to-day is not so good. Lucy this morning had gone back a b",
+      "after_sample": "<p>Letter, Dr. Seward to Hon. Arthur Holmwood.</p><p>“6 September.</p><p>“My dear Art, &mdash;</p><p>“My news to-day is not so good. Lucy this morning had gone back a bit. There is"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 346,
+      "before_sample": "2 September._--How good they all are to me. I quite love that dear Dr.<br>Van Helsing. I wonder why he was so anxious about these flowers. He<br",
+      "after_sample": "<p>_Lucy Westenra’s Diary._</p><p>_12 September._--How good they all are to me. I quite love that dear Dr. Van Helsing. I wonder why he was so anxious about these flowers. He posit"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 7,
+      "before_sample": "<p>_Lucy Westenra’s Diary._</p><p>_12 September._--How good they all are to me. I quite love that dear Dr. Van Helsing. I",
+      "after_sample": "<p>_Lucy Westenra’s Diary._</p><p>_12 September. &mdash; How good they all are to me. I quite love that dear Dr. Van Helsing. I wonder why he was so anxious about these flowers. He"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 10,
+      "before_sample": "<p>_Lucy Westenra’s Diary._</p><p>_12 September. &mdash; How good they all are to me. I quite lov",
+      "after_sample": "<p>Lucy Westenra’s Diary.</p><p>_12 September. &mdash; How good they all are to me. I quite love that dear Dr. Van Helsing. I wonder why he was so anxious about these flowers. He p"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 7,
+      "before_sample": "<p>Lucy Westenra’s Diary.</p><p>_12 September. &mdash; How good they all are to me. I quite love that d",
+      "after_sample": "<p>Lucy Westenra’s Diary.</p><p>12 September. &mdash; How good they all are to me. I quite love that dear Dr. Van Helsing. I wonder why he was so anxious about these flowers. He po"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 21,
+      "before_sample": "ng room. She is always an early riser. She greeted us warmly and said:--</p><p>“You will be glad to know that Lucy is better. The dear child i",
+      "after_sample": "<p>Lucy Westenra’s Diary.</p><p>12 September. &mdash; How good they all are to me. I quite love that dear Dr. Van Helsing. I wonder why he was so anxious about these flowers. He po"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 7,
+      "before_sample": " She is always an early riser. She greeted us warmly and said: &mdash; </p><p>“You will be glad to know that Lucy is better. The dear child is st",
+      "after_sample": "<p>Lucy Westenra’s Diary.</p><p>12 September. &mdash; How good they all are to me. I quite love that dear Dr. Van Helsing. I wonder why he was so anxious about these flowers. He po"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 484,
+      "before_sample": "<p>_18 September._--I drove at once to Hillingham and arrived early.<br>Keeping my cab at the gate, I went up the avenue alone. I knocked gent",
+      "after_sample": "<p>_18 September._--I drove at once to Hillingham and arrived early. Keeping my cab at the gate, I went up the avenue alone. I knocked gently and rang as quietly as possible, for I"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 1,
+      "before_sample": "sed, and his brows gathered as if in thought, but he said nothing.</p><p>* * * * *</p><p>_19 September._--All last night she slept fitfully, being always af",
+      "after_sample": "<p>_18 September._--I drove at once to Hillingham and arrived early. Keeping my cab at the gate, I went up the avenue alone. I knocked gently and rang as quietly as possible, for I"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "<p>_18 September._--I drove at once to Hillingham and arrived early. Keeping my cab at the",
+      "after_sample": "<p>_18 September. &mdash; I drove at once to Hillingham and arrived early. Keeping my cab at the gate, I went up the avenue alone. I knocked gently and rang as quietly as possible,"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 12,
+      "before_sample": " that--said, that time you two came into the room, that you must have _another_ transfusion of blood, and that both you and he were exhausted. Now I ",
+      "after_sample": "<p>_18 September. &mdash; I drove at once to Hillingham and arrived early. Keeping my cab at the gate, I went up the avenue alone. I knocked gently and rang as quietly as possible,"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "<p>_18 September. &mdash; I drove at once to Hillingham and arrived early.",
+      "after_sample": "<p>18 September. &mdash; I drove at once to Hillingham and arrived early. Keeping my cab at the gate, I went up the avenue alone. I knocked gently and rang as quietly as possible, "
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 1,
+      "before_sample": "Father still in same condition. Send me word how Lucy is. Do not delay.--HOLMWOOD.”</p><p>“I think I came just in the nick of time. You know yo",
+      "after_sample": "<p>18 September. &mdash; I drove at once to Hillingham and arrived early. Keeping my cab at the gate, I went up the avenue alone. I knocked gently and rang as quietly as possible, "
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 41,
+      "before_sample": "the laziness of the servants that they should lie abed at such an hour--for it was now ten o’clock--and so rang and knocked again, but more im",
+      "after_sample": "<p>18 September. &mdash; I drove at once to Hillingham and arrived early. Keeping my cab at the gate, I went up the avenue alone. I knocked gently and rang as quietly as possible, "
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 23,
+      "before_sample": " Helsing running up the avenue. When he saw me, he gasped out: &mdash; </p><p>“Then it was you, and just arrived. How is she? Are we too late? Di",
+      "after_sample": "<p>18 September. &mdash; I drove at once to Hillingham and arrived early. Keeping my cab at the gate, I went up the avenue alone. I knocked gently and rang as quietly as possible, "
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 430,
+      "before_sample": "The funeral was arranged for the next succeeding day, so that Lucy and<br>her mother might be buried together. I attended to all the ghastly<br>",
+      "after_sample": "<p>DR. SEWARD’S DIARY--_continued_.</p><p>The funeral was arranged for the next succeeding day, so that Lucy and her mother might be buried together. I attended to all the ghastly "
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 2,
+      "before_sample": "at the poor clay might not be lonely till laid to eternal rest....</p><p>* * * * *</p><p>I must have slept long and soundly, for it was broad daylight when ",
+      "after_sample": "<p>DR. SEWARD’S DIARY--_continued_.</p><p>The funeral was arranged for the next succeeding day, so that Lucy and her mother might be buried together. I attended to all the ghastly "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "ll into the night.</p><p>_Mina Harker’s Journal._</p><p>_22 September._--In the train to Exeter. Jonathan sleeping.</p><p>It seems only yesterd",
+      "after_sample": "<p>DR. SEWARD’S DIARY--_continued_.</p><p>The funeral was arranged for the next succeeding day, so that Lucy and her mother might be buried together. I attended to all the ghastly "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 11,
+      "before_sample": "<p>DR. SEWARD’S DIARY--_continued_.</p><p>The funeral was arranged for the next succeeding day, so that ",
+      "after_sample": "<p>DR. SEWARD’S DIARY--continued.</p><p>The funeral was arranged for the next succeeding day, so that Lucy and her mother might be buried together. I attended to all the ghastly fo"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "overpowering smell into the night.</p><p>Mina Harker’s Journal.</p><p>_22 September. &mdash; In the train to Exeter. Jonathan sleeping.</p><p",
+      "after_sample": "<p>DR. SEWARD’S DIARY--continued.</p><p>The funeral was arranged for the next succeeding day, so that Lucy and her mother might be buried together. I attended to all the ghastly fo"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 81,
+      "before_sample": "<p>DR. SEWARD’S DIARY--continued.</p><p>The funeral was arranged for the next succeeding day,",
+      "after_sample": "<p>DR. SEWARD’S DIARY &mdash; continued.</p><p>The funeral was arranged for the next succeeding day, so that Lucy and her mother might be buried together. I attended to all the gha"
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 1,
+      "before_sample": "e; but when we had lit our cigars he said &mdash; </p><p>“Lord &mdash;  &mdash; ”; but Arthur interrupted him: &mdash; </p><p>“No, no, not tha",
+      "after_sample": "<p>DR. SEWARD’S DIARY &mdash; continued.</p><p>The funeral was arranged for the next succeeding day, so that Lucy and her mother might be buried together. I attended to all the gha"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 28,
+      "before_sample": "rofessional way, when she had come out from the death-chamber: &mdash; </p><p>“She makes a very beautiful corpse, sir. It’s quite a privilege to ",
+      "after_sample": "<p>DR. SEWARD’S DIARY &mdash; continued.</p><p>The funeral was arranged for the next succeeding day, so that Lucy and her mother might be buried together. I attended to all the gha"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 407,
+      "before_sample": "3 September_.--Jonathan is better after a bad night. I am so glad that<br>he has plenty of work to do, for that keeps his mind off the terrible<",
+      "after_sample": "<p>_23 September_.--Jonathan is better after a bad night. I am so glad that he has plenty of work to do, for that keeps his mind off the terrible things; and oh, I am rejoiced that"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 2,
+      "before_sample": "s about Lucy, I can hand it to him; it will save much questioning.</p><p>* * * * *</p><p>_Later._--He has come and gone. Oh, what a strange meeting, and how",
+      "after_sample": "<p>_23 September_.--Jonathan is better after a bad night. I am so glad that he has plenty of work to do, for that keeps his mind off the terrible things; and oh, I am rejoiced that"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 5,
+      "before_sample": ".”</p><p>_Telegram, Mrs. Harker to Van Helsing._</p><p>“_25 September._--Come to-day by quarter-past ten train if you can catch it. Can see you",
+      "after_sample": "<p>_23 September_.--Jonathan is better after a bad night. I am so glad that he has plenty of work to do, for that keeps his mind off the terrible things; and oh, I am rejoiced that"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 20,
+      "before_sample": "<p>_23 September_.--Jonathan is better after a bad night. I am so glad that he has plen",
+      "after_sample": "<p>23 September.--Jonathan is better after a bad night. I am so glad that he has plenty of work to do, for that keeps his mind off the terrible things; and oh, I am rejoiced that h"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 5,
+      "before_sample": "><p>“VAN HELSING.”</p><p>Telegram, Mrs. Harker to Van Helsing.</p><p>“_25 September. &mdash; Come to-day by quarter-past ten train if you can",
+      "after_sample": "<p>23 September.--Jonathan is better after a bad night. I am so glad that he has plenty of work to do, for that keeps his mind off the terrible things; and oh, I am rejoiced that h"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 2,
+      "before_sample": "<p>23 September.--Jonathan is better after a bad night. I am so glad that he has plenty ",
+      "after_sample": "<p>23 September. &mdash; Jonathan is better after a bad night. I am so glad that he has plenty of work to do, for that keeps his mind off the terrible things; and oh, I am rejoiced"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 75,
+      "before_sample": "rs. Harker.</p><p>“24 September.</p><p>(Confidence)</p><p>“Dear Madam,--</p><p>“I pray you to pardon my writing, in that I am so far friend as",
+      "after_sample": "<p>23 September. &mdash; Jonathan is better after a bad night. I am so glad that he has plenty of work to do, for that keeps his mind off the terrible things; and oh, I am rejoiced"
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 2,
+      "before_sample": "nd of that poor lily girl must be good, but I had yet to learn &mdash;  &mdash; ” He finished his speech with a courtly bow. I asked him what ",
+      "after_sample": "<p>23 September. &mdash; Jonathan is better after a bad night. I am so glad that he has plenty of work to do, for that keeps his mind off the terrible things; and oh, I am rejoiced"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 24,
+      "before_sample": "er.</p><p>“24 September.</p><p>(Confidence)</p><p>“Dear Madam, &mdash; </p><p>“I pray you to pardon my writing, in that I am so far friend as tha",
+      "after_sample": "<p>23 September. &mdash; Jonathan is better after a bad night. I am so glad that he has plenty of work to do, for that keeps his mind off the terrible things; and oh, I am rejoiced"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 374,
+      "before_sample": "r a while sheer anger mastered me; it was as if he had during her life<br>struck Lucy on the face. I smote the table hard and rose up as I said ",
+      "after_sample": "<p>DR. SEWARD’S DIARY--_continued_.</p><p>For a while sheer anger mastered me; it was as if he had during her life struck Lucy on the face. I smote the table hard and rose up as I "
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 2,
+      "before_sample": "t noon. He insists that I shall go with him on another expedition.</p><p>* * * * *</p><p>_27 September._--It was two o’clock before we found a suitable oppo",
+      "after_sample": "<p>DR. SEWARD’S DIARY--_continued_.</p><p>For a while sheer anger mastered me; it was as if he had during her life struck Lucy on the face. I smote the table hard and rose up as I "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 2,
+      "before_sample": "amental-divider\" aria-hidden=\"true\"><span></span></p><p>_27 September._--It was two o’clock before we found a suitable opportunity for our atte",
+      "after_sample": "<p>DR. SEWARD’S DIARY--_continued_.</p><p>For a while sheer anger mastered me; it was as if he had during her life struck Lucy on the face. I smote the table hard and rose up as I "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 8,
+      "before_sample": "<p>DR. SEWARD’S DIARY--_continued_.</p><p>For a while sheer anger mastered me; it was as if he had durin",
+      "after_sample": "<p>DR. SEWARD’S DIARY--continued.</p><p>For a while sheer anger mastered me; it was as if he had during her life struck Lucy on the face. I smote the table hard and rose up as I sa"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 2,
+      "before_sample": "ing-token=\"ornamental-divider\" aria-hidden=\"true\"><span></span></p><p>_27 September. &mdash; It was two o’clock before we found a suitable op",
+      "after_sample": "<p>DR. SEWARD’S DIARY--continued.</p><p>For a while sheer anger mastered me; it was as if he had during her life struck Lucy on the face. I smote the table hard and rose up as I sa"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 53,
+      "before_sample": "<p>DR. SEWARD’S DIARY--continued.</p><p>For a while sheer anger mastered me; it was as if he ",
+      "after_sample": "<p>DR. SEWARD’S DIARY &mdash; continued.</p><p>For a while sheer anger mastered me; it was as if he had during her life struck Lucy on the face. I smote the table hard and rose up "
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 3,
+      "before_sample": "all tell him nothing, but only that we wish to learn. And then &mdash;  &mdash; ”</p><p>“And then?” He took a key from his pocket and held it ",
+      "after_sample": "<p>DR. SEWARD’S DIARY &mdash; continued.</p><p>For a while sheer anger mastered me; it was as if he had during her life struck Lucy on the face. I smote the table hard and rose up "
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 20,
+      "before_sample": "the face. I smote the table hard and rose up as I said to him: &mdash; </p><p>“Dr. Van Helsing, are you mad?” He raised his head and looked at me",
+      "after_sample": "<p>DR. SEWARD’S DIARY &mdash; continued.</p><p>For a while sheer anger mastered me; it was as if he had during her life struck Lucy on the face. I smote the table hard and rose up "
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 310,
+      "before_sample": "<p>It was just a quarter before twelve o’clock when we got into the<br>churchyard over the low wall. The night was dark with occasional gleam",
+      "after_sample": "<p>It was just a quarter before twelve o’clock when we got into the churchyard over the low wall. The night was dark with occasional gleams of moonlight between the rents of the he"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 1,
+      "before_sample": "nd were tired; so we all slept with more or less reality of sleep.</p><p>* * * * *</p><p>_29 September, night._--A little before twelve o’clock we three--Ar",
+      "after_sample": "<p>It was just a quarter before twelve o’clock when we got into the churchyard over the low wall. The night was dark with occasional gleams of moonlight between the rents of the he"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 1,
+      "before_sample": "-divider\" aria-hidden=\"true\"><span></span></p><p>_29 September, night._--A little before twelve o’clock we three--Arthur, Quincey Morris, and m",
+      "after_sample": "<p>It was just a quarter before twelve o’clock when we got into the churchyard over the low wall. The night was dark with occasional gleams of moonlight between the rents of the he"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 1,
+      "before_sample": "n your arms to her, you would in time, when you had died, have become _nosferatu_, as they call it in Eastern Europe, and would all time make more of t",
+      "after_sample": "<p>It was just a quarter before twelve o’clock when we got into the churchyard over the low wall. The night was dark with occasional gleams of moonlight between the rents of the he"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 1,
+      "before_sample": "ing-token=\"ornamental-divider\" aria-hidden=\"true\"><span></span></p><p>_29 September, night. &mdash; A little before twelve o’clock we three--",
+      "after_sample": "<p>It was just a quarter before twelve o’clock when we got into the churchyard over the low wall. The night was dark with occasional gleams of moonlight between the rents of the he"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 42,
+      "before_sample": "e coffin. Arthur stepped forward hesitatingly; Van Helsing said to me:--</p><p>“You were with me here yesterday. Was the body of Miss Lucy in ",
+      "after_sample": "<p>It was just a quarter before twelve o’clock when we got into the churchyard over the low wall. The night was dark with occasional gleams of moonlight between the rents of the he"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 18,
+      "before_sample": ". Arthur stepped forward hesitatingly; Van Helsing said to me: &mdash; </p><p>“You were with me here yesterday. Was the body of Miss Lucy in that",
+      "after_sample": "<p>It was just a quarter before twelve o’clock when we got into the churchyard over the low wall. The night was dark with occasional gleams of moonlight between the rents of the he"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 377,
+      "before_sample": "<p>When we arrived at the Berkeley Hotel, Van Helsing found a telegram<br>waiting for him:--</p><p>“Am coming up by train. Jonathan at Whitby. I",
+      "after_sample": "<p>When we arrived at the Berkeley Hotel, Van Helsing found a telegram waiting for him:--</p><p>“Am coming up by train. Jonathan at Whitby. Important news.--MINA HARKER.”</p><p>The"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 4,
+      "before_sample": "ut hardly the quiet, business-like gentleman who came here to-day.</p><p>* * * * *</p><p>_Later._--After lunch Harker and his wife went back to their own ro",
+      "after_sample": "<p>When we arrived at the Berkeley Hotel, Van Helsing found a telegram waiting for him:--</p><p>“Am coming up by train. Jonathan at Whitby. Important news.--MINA HARKER.”</p><p>The"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 10,
+      "before_sample": " her. Here she is!</p><p>_Mina Harker’s Journal._</p><p>_29 September._--After I had tidied myself, I went down to Dr. Seward’s study. At the d",
+      "after_sample": "<p>When we arrived at the Berkeley Hotel, Van Helsing found a telegram waiting for him:--</p><p>“Am coming up by train. Jonathan at Whitby. Important news.--MINA HARKER.”</p><p>The"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 12,
+      "before_sample": "r house, friend John. You must meet her at the station. Telegraph her _en route_, so that she may be prepared.”</p><p>When the wire was despatched he ",
+      "after_sample": "<p>When we arrived at the Berkeley Hotel, Van Helsing found a telegram waiting for him:--</p><p>“Am coming up by train. Jonathan at Whitby. Important news.--MINA HARKER.”</p><p>The"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 10,
+      "before_sample": " not to frighten her. Here she is!</p><p>Mina Harker’s Journal.</p><p>_29 September. &mdash; After I had tidied myself, I went down to Dr. Se",
+      "after_sample": "<p>When we arrived at the Berkeley Hotel, Van Helsing found a telegram waiting for him:--</p><p>“Am coming up by train. Jonathan at Whitby. Important news.--MINA HARKER.”</p><p>The"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 1,
+      "before_sample": "im:--</p><p>“Am coming up by train. Jonathan at Whitby. Important news.--MINA HARKER.”</p><p>The Professor was delighted. “Ah, that wonderful M",
+      "after_sample": "<p>When we arrived at the Berkeley Hotel, Van Helsing found a telegram waiting for him:--</p><p>“Am coming up by train. Jonathan at Whitby. Important news. &mdash; MINA HARKER.”</p"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 53,
+      "before_sample": "d at the Berkeley Hotel, Van Helsing found a telegram waiting for him:--</p><p>“Am coming up by train. Jonathan at Whitby. Important news. &md",
+      "after_sample": "<p>When we arrived at the Berkeley Hotel, Van Helsing found a telegram waiting for him: &mdash; </p><p>“Am coming up by train. Jonathan at Whitby. Important news. &mdash; MINA HARK"
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 2,
+      "before_sample": "</p><p>“I knew you from the description of poor dear Lucy; but &mdash;  &mdash; ” She stopped suddenly, and a quick blush overspread her face.",
+      "after_sample": "<p>When we arrived at the Berkeley Hotel, Van Helsing found a telegram waiting for him: &mdash; </p><p>“Am coming up by train. Jonathan at Whitby. Important news. &mdash; MINA HARK"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 18,
+      "before_sample": " Berkeley Hotel, Van Helsing found a telegram waiting for him: &mdash; </p><p>“Am coming up by train. Jonathan at Whitby. Important news. &mdash;",
+      "after_sample": "<p>When we arrived at the Berkeley Hotel, Van Helsing found a telegram waiting for him: &mdash;</p><p>“Am coming up by train. Jonathan at Whitby. Important news. &mdash; MINA HARKE"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 467,
+      "before_sample": ">_30 September._--I got home at five o’clock, and found that Godalming<br>and Morris had not only arrived, but had already studied the transcrip",
+      "after_sample": "<p>_30 September._--I got home at five o’clock, and found that Godalming and Morris had not only arrived, but had already studied the transcript of the various diaries and letters "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "<p>_30 September._--I got home at five o’clock, and found that Godalming and Morris had no",
+      "after_sample": "<p>_30 September. &mdash; I got home at five o’clock, and found that Godalming and Morris had not only arrived, but had already studied the transcript of the various diaries and le"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 7,
+      "before_sample": "<p>_30 September. &mdash; I got home at five o’clock, and found that Godalming and Morris had not only arrived, but had already studied the transcript of the various diaries and letters which Harker and his wonderful wife had made and arranged. Harker had not yet returned from his visit to the carriers’ men, of whom Dr. Hennessey had written to me. Mrs. Harker gave us a cup of tea, and I can honestly say that, for the first time since I have lived in it, this old house seemed like _home_. When we had finished, Mrs. Harker said:--</p><p>“Dr. Seward, ma",
+      "after_sample": "<p>30 September. &mdash; I got home at five o’clock, and found that Godalming and Morris had not only arrived, but had already studied the transcript of the various diaries and let"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "e first time since I have lived in it, this old house seemed like home_. When we had finished, Mrs. Harker said:--</p><p>“Dr. Seward, may I a",
+      "after_sample": "<p>30 September. &mdash; I got home at five o’clock, and found that Godalming and Morris had not only arrived, but had already studied the transcript of the various diaries and let"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 81,
+      "before_sample": "is old house seemed like home. When we had finished, Mrs. Harker said:--</p><p>“Dr. Seward, may I ask a favour? I want to see your patient, Mr",
+      "after_sample": "<p>30 September. &mdash; I got home at five o’clock, and found that Godalming and Morris had not only arrived, but had already studied the transcript of the various diaries and let"
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 1,
+      "before_sample": "ether any more have been removed. If the latter, we must trace &mdash;  &mdash; ”</p><p>Here we were interrupted in a very startling way. Outs",
+      "after_sample": "<p>30 September. &mdash; I got home at five o’clock, and found that Godalming and Morris had not only arrived, but had already studied the transcript of the various diaries and let"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 31,
+      "before_sample": "ouse seemed like home. When we had finished, Mrs. Harker said: &mdash; </p><p>“Dr. Seward, may I ask a favour? I want to see your patient, Mr. Re",
+      "after_sample": "<p>30 September. &mdash; I got home at five o’clock, and found that Godalming and Morris had not only arrived, but had already studied the transcript of the various diaries and let"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 394,
+      "before_sample": "_1 October, 5 a. m._--I went with the party to the search with an easy<br>mind, for I think I never saw Mina so absolutely strong and well. I am",
+      "after_sample": "<p>_1 October, 5 a. m._--I went with the party to the search with an easy mind, for I think I never saw Mina so absolutely strong and well. I am so glad that she consented to hold "
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 2,
+      "before_sample": "g that has happened. I rest on the sofa, so as not to disturb her.</p><p>* * * * *</p><p>_1 October, later._--I suppose it was natural that we should have a",
+      "after_sample": "<p>_1 October, 5 a. m._--I went with the party to the search with an easy mind, for I think I never saw Mina so absolutely strong and well. I am so glad that she consented to hold "
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 5,
+      "before_sample": "<p>_1 October, 5 a. m._--I went with the party to the search with an easy mind, for I think I n",
+      "after_sample": "<p>_1 October, 5 a. m. &mdash; I went with the party to the search with an easy mind, for I think I never saw Mina so absolutely strong and well. I am so glad that she consented to"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 7,
+      "before_sample": "was the first to move forward, and stepped into the open door.</p><p>“_In manus tuas, Domine!_” he said, crossing himself as he passed over the threshold. We closed",
+      "after_sample": "<p>_1 October, 5 a. m. &mdash; I went with the party to the search with an easy mind, for I think I never saw Mina so absolutely strong and well. I am so glad that she consented to"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 5,
+      "before_sample": "<p>_1 October, 5 a. m. &mdash; I went with the party to the search with an",
+      "after_sample": "<p>1 October, 5 a. m. &mdash; I went with the party to the search with an easy mind, for I think I never saw Mina so absolutely strong and well. I am so glad that she consented to "
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 22,
+      "before_sample": "ent till we got back to the study. Then Mr. Morris said to Dr. Seward:--</p><p>“Say, Jack, if that man wasn’t attempting a bluff, he is about ",
+      "after_sample": "<p>1 October, 5 a. m. &mdash; I went with the party to the search with an easy mind, for I think I never saw Mina so absolutely strong and well. I am so glad that she consented to "
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 9,
+      "before_sample": " we got back to the study. Then Mr. Morris said to Dr. Seward: &mdash; </p><p>“Say, Jack, if that man wasn’t attempting a bluff, he is about the ",
+      "after_sample": "<p>1 October, 5 a. m. &mdash; I went with the party to the search with an easy mind, for I think I never saw Mina so absolutely strong and well. I am so glad that she consented to "
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 393,
+      "before_sample": "_1 October, evening._--I found Thomas Snelling in his house at Bethnal<br>Green, but unhappily he was not in a condition to remember anything. T",
+      "after_sample": "<p>_1 October, evening._--I found Thomas Snelling in his house at Bethnal Green, but unhappily he was not in a condition to remember anything. The very prospect of beer which my ex"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 4,
+      "before_sample": "of the Count or his doings ever since we told her of our decision.</p><p>* * * * *</p><p>_2 October, evening._--A long and trying and exciting day. By the f",
+      "after_sample": "<p>_1 October, evening._--I found Thomas Snelling in his house at Bethnal Green, but unhappily he was not in a condition to remember anything. The very prospect of beer which my ex"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 6,
+      "before_sample": "<p>_1 October, evening._--I found Thomas Snelling in his house at Bethnal Green, but unhappily h",
+      "after_sample": "<p>_1 October, evening. &mdash; I found Thomas Snelling in his house at Bethnal Green, but unhappily he was not in a condition to remember anything. The very prospect of beer which"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 5,
+      "before_sample": "sing, we must search until we find them. Then shall we make our final _coup_, and hunt the wretch to his real death.” We all sat silent awhile and",
+      "after_sample": "<p>_1 October, evening. &mdash; I found Thomas Snelling in his house at Bethnal Green, but unhappily he was not in a condition to remember anything. The very prospect of beer which"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 6,
+      "before_sample": "<p>_1 October, evening. &mdash; I found Thomas Snelling in his house at Be",
+      "after_sample": "<p>1 October, evening. &mdash; I found Thomas Snelling in his house at Bethnal Green, but unhappily he was not in a condition to remember anything. The very prospect of beer which "
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 58,
+      "before_sample": "d west were surely never meant to be left out of his diabolical scheme--let alone the City itself and the very heart of fashionable London in ",
+      "after_sample": "<p>1 October, evening. &mdash; I found Thomas Snelling in his house at Bethnal Green, but unhappily he was not in a condition to remember anything. The very prospect of beer which "
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 3,
+      "before_sample": "; they would be no manner of use to me. I couldn’t eat them or &mdash;  &mdash; ” He suddenly stopped and the old cunning look spread over his",
+      "after_sample": "<p>1 October, evening. &mdash; I found Thomas Snelling in his house at Bethnal Green, but unhappily he was not in a condition to remember anything. The very prospect of beer which "
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 29,
+      "before_sample": " any other boxes had been taken from Carfax.</p><p>He replied: &mdash; </p><p>“Well, guv’nor, you’ve treated me wery ’an’some” &mdash; I had give",
+      "after_sample": "<p>1 October, evening. &mdash; I found Thomas Snelling in his house at Bethnal Green, but unhappily he was not in a condition to remember anything. The very prospect of beer which "
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 421,
+      "before_sample": "3 October._--Let me put down with exactness all that happened, as well<br>as I can remember it, since last I made an entry. Not a detail that I<",
+      "after_sample": "<p>_3 October._--Let me put down with exactness all that happened, as well as I can remember it, since last I made an entry. Not a detail that I can recall must be forgotten; in al"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 2,
+      "before_sample": "<p>_3 October._--Let me put down with exactness all that happened, as well as I can rem",
+      "after_sample": "<p>_3 October. &mdash; Let me put down with exactness all that happened, as well as I can remember it, since last I made an entry. Not a detail that I can recall must be forgotten;"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 1,
+      "before_sample": "save her. It cannot have gone too far yet. Guard her while I look for _him_!” His wife, through her terror and horror and distress, saw some sure",
+      "after_sample": "<p>_3 October. &mdash; Let me put down with exactness all that happened, as well as I can remember it, since last I made an entry. Not a detail that I can recall must be forgotten;"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 2,
+      "before_sample": "<p>_3 October. &mdash; Let me put down with exactness all that happened, a",
+      "after_sample": "<p>3 October. &mdash; Let me put down with exactness all that happened, as well as I can remember it, since last I made an entry. Not a detail that I can recall must be forgotten; "
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 73,
+      "before_sample": "t was horribly bruised, as though it had been beaten against the floor--indeed it was from the face wounds that the pool of blood originated. ",
+      "after_sample": "<p>3 October. &mdash; Let me put down with exactness all that happened, as well as I can remember it, since last I made an entry. Not a detail that I can recall must be forgotten; "
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 4,
+      "before_sample": "dy but, though he had been there, he had gone. He had, however &mdash;  &mdash; ” He stopped suddenly, looking at the poor drooping figure on ",
+      "after_sample": "<p>3 October. &mdash; Let me put down with exactness all that happened, as well as I can remember it, since last I made an entry. Not a detail that I can recall must be forgotten; "
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 40,
+      "before_sample": "was kneeling beside the body said to me as we turned him over: &mdash; </p><p>“I think, sir, his back is broken. See, both his right arm and leg ",
+      "after_sample": "<p>3 October. &mdash; Let me put down with exactness all that happened, as well as I can remember it, since last I made an entry. Not a detail that I can recall must be forgotten; "
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 362,
+      "before_sample": "_3 October._--As I must do something or go mad, I write this diary. It<br>is now six o’clock, and we are to meet in the study in half an hour an",
+      "after_sample": "<p>_3 October._--As I must do something or go mad, I write this diary. It is now six o’clock, and we are to meet in the study in half an hour and take something to eat; for Dr. Van"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 1,
+      "before_sample": "s we reached the platform.</p><p>I have written this in the train.</p><p>* * * * *</p><p>_Piccadilly, 12:30 o’clock._--Just before we reached Fenchurch Stre",
+      "after_sample": "<p>_3 October._--As I must do something or go mad, I write this diary. It is now six o’clock, and we are to meet in the study in half an hour and take something to eat; for Dr. Van"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 2,
+      "before_sample": "<p>_3 October._--As I must do something or go mad, I write this diary. It is now six o’",
+      "after_sample": "<p>_3 October. &mdash; As I must do something or go mad, I write this diary. It is now six o’clock, and we are to meet in the study in half an hour and take something to eat; for D"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 4,
+      "before_sample": "e find only an empty hole where his house had been. This was all done _en règle_; and in our work we shall be _en règle_ too. We shall not go so early",
+      "after_sample": "<p>_3 October. &mdash; As I must do something or go mad, I write this diary. It is now six o’clock, and we are to meet in the study in half an hour and take something to eat; for D"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 2,
+      "before_sample": "<p>_3 October. &mdash; As I must do something or go mad, I write this diar",
+      "after_sample": "<p>3 October. &mdash; As I must do something or go mad, I write this diary. It is now six o’clock, and we are to meet in the study in half an hour and take something to eat; for Dr"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 44,
+      "before_sample": " dear cheeks, that it is in trouble and trial that our faith is tested--that we must keep on trusting; and that God will aid us up to the end.",
+      "after_sample": "<p>3 October. &mdash; As I must do something or go mad, I write this diary. It is now six o’clock, and we are to meet in the study in half an hour and take something to eat; for Dr"
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 4,
+      "before_sample": "t this moment if it were best. Nay, were it safe! But my child &mdash;  &mdash; ” For a moment he seemed choked, and a great sob rose in his t",
+      "after_sample": "<p>3 October. &mdash; As I must do something or go mad, I write this diary. It is now six o’clock, and we are to meet in the study in half an hour and take something to eat; for Dr"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 15,
+      "before_sample": "g at her fixedly as she spoke, and said, suddenly but quietly: &mdash; </p><p>“But dear Madam Mina, are you not afraid; not for yourself, but for",
+      "after_sample": "<p>3 October. &mdash; As I must do something or go mad, I write this diary. It is now six o’clock, and we are to meet in the study in half an hour and take something to eat; for Dr"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 375,
+      "before_sample": "_3 October._--The time seemed terribly long whilst we were waiting for<br>the coming of Godalming and Quincey Morris. The Professor tried to kee",
+      "after_sample": "<p>_3 October._--The time seemed terribly long whilst we were waiting for the coming of Godalming and Quincey Morris. The Professor tried to keep our minds active by using them all"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 2,
+      "before_sample": "re is to-morrow to think of, and there is no rest for me until....</p><p>* * * * *</p><p>_Later._--I must have fallen asleep, for I was awaked by Mina, who ",
+      "after_sample": "<p>_3 October._--The time seemed terribly long whilst we were waiting for the coming of Godalming and Quincey Morris. The Professor tried to keep our minds active by using them all"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 4,
+      "before_sample": "<p>_3 October._--The time seemed terribly long whilst we were waiting for the coming of",
+      "after_sample": "<p>_3 October. &mdash; The time seemed terribly long whilst we were waiting for the coming of Godalming and Quincey Morris. The Professor tried to keep our minds active by using th"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 3,
+      "before_sample": "a man who has centuries before him can afford to wait and to go slow. _Festina lente_ may well be his motto.”</p><p>“I fail to understand,” said Harker wea",
+      "after_sample": "<p>_3 October. &mdash; The time seemed terribly long whilst we were waiting for the coming of Godalming and Quincey Morris. The Professor tried to keep our minds active by using th"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 4,
+      "before_sample": "<p>_3 October. &mdash; The time seemed terribly long whilst we were waitin",
+      "after_sample": "<p>3 October. &mdash; The time seemed terribly long whilst we were waiting for the coming of Godalming and Quincey Morris. The Professor tried to keep our minds active by using the"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 57,
+      "before_sample": "of life. Poor fellow, I thought my own trouble was bad enough, but his----! The Professor knows this well enough, and is doing his best to kee",
+      "after_sample": "<p>3 October. &mdash; The time seemed terribly long whilst we were waiting for the coming of Godalming and Quincey Morris. The Professor tried to keep our minds active by using the"
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 1,
+      "before_sample": " Poor fellow, I thought my own trouble was bad enough, but his &mdash;  &mdash; ! The Professor knows this well enough, and is doing his best ",
+      "after_sample": "<p>3 October. &mdash; The time seemed terribly long whilst we were waiting for the coming of Godalming and Quincey Morris. The Professor tried to keep our minds active by using the"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 25,
+      "before_sample": " of absorbing interest. So well as I can remember, here it is: &mdash; </p><p>“I have studied, over and over again since they came into my hands,",
+      "after_sample": "<p>3 October. &mdash; The time seemed terribly long whilst we were waiting for the coming of Godalming and Quincey Morris. The Professor tried to keep our minds active by using the"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 423,
+      "before_sample": "><p>You are to stay with your dear Madam Mina. We shall go to make our<br>search--if I can call it so, for it is not search but knowing, and we<",
+      "after_sample": "<p>This to Jonathan Harker.</p><p>You are to stay with your dear Madam Mina. We shall go to make our search--if I can call it so, for it is not search but knowing, and we seek conf"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 7,
+      "before_sample": " to one another, we shall decide on some definite cause of action.</p><p>* * * * *</p><p>I feel a wonderful peace and rest to-night. It is as if some haunti",
+      "after_sample": "<p>This to Jonathan Harker.</p><p>You are to stay with your dear Madam Mina. We shall go to make our search--if I can call it so, for it is not search but knowing, and we seek conf"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 10,
+      "before_sample": "p><p>VAN HELSING.</p><p>_Jonathan Harker’s Journal._</p><p>_4 October._--When I read to Mina, Van Helsing’s message in the phonograph, the poor",
+      "after_sample": "<p>This to Jonathan Harker.</p><p>You are to stay with your dear Madam Mina. We shall go to make our search--if I can call it so, for it is not search but knowing, and we seek conf"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 12,
+      "before_sample": "ght for his last resource--his last earth-work I might say did I wish _double entente_. He is clever, oh, so clever! he know that his game here was finish; ",
+      "after_sample": "<p>This to Jonathan Harker.</p><p>You are to stay with your dear Madam Mina. We shall go to make our search--if I can call it so, for it is not search but knowing, and we seek conf"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 10,
+      "before_sample": " we return.</p><p>VAN HELSING.</p><p>Jonathan Harker’s Journal.</p><p>_4 October. &mdash; When I read to Mina, Van Helsing’s message in the p",
+      "after_sample": "<p>This to Jonathan Harker.</p><p>You are to stay with your dear Madam Mina. We shall go to make our search--if I can call it so, for it is not search but knowing, and we seek conf"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 55,
+      "before_sample": " are to stay with your dear Madam Mina. We shall go to make our search--if I can call it so, for it is not search but knowing, and we seek con",
+      "after_sample": "<p>This to Jonathan Harker.</p><p>You are to stay with your dear Madam Mina. We shall go to make our search &mdash; if I can call it so, for it is not search but knowing, and we se"
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 1,
+      "before_sample": "ten dream. Here in the crisp autumn air in the bright sunlight &mdash;  &mdash; </p><p>Alas! how can I disbelieve! In the midst of my thought ",
+      "after_sample": "<p>This to Jonathan Harker.</p><p>You are to stay with your dear Madam Mina. We shall go to make our search &mdash; if I can call it so, for it is not search but knowing, and we se"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 20,
+      "before_sample": "m. Here in the crisp autumn air in the bright sunlight &mdash; &mdash; </p><p>Alas! how can I disbelieve! In the midst of my thought my eye fell ",
+      "after_sample": "<p>This to Jonathan Harker.</p><p>You are to stay with your dear Madam Mina. We shall go to make our search &mdash; if I can call it so, for it is not search but knowing, and we se"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 419,
+      "before_sample": "1 October, Evening._--Jonathan Harker has asked me to note this, as he<br>says he is hardly equal to the task, and he wants an exact record kept",
+      "after_sample": "<p>_11 October, Evening._--Jonathan Harker has asked me to note this, as he says he is hardly equal to the task, and he wants an exact record kept.</p><p>I think that none of us we"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 9,
+      "before_sample": "of the Dead. I--I cannot go on--words--and--v-voice--f-fail m-me!”</p><p>* * * * *</p><p>She was right in her instinct. Strange as it all was, bizarre as it",
+      "after_sample": "<p>_11 October, Evening._--Jonathan Harker has asked me to note this, as he says he is hardly equal to the task, and he wants an exact record kept.</p><p>I think that none of us we"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 12,
+      "before_sample": "<p>_11 October, Evening._--Jonathan Harker has asked me to note this, as he says he is hardly equ",
+      "after_sample": "<p>_11 October, Evening. &mdash; Jonathan Harker has asked me to note this, as he says he is hardly equal to the task, and he wants an exact record kept.</p><p>I think that none of"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 22,
+      "before_sample": "did not seem so full of despair to any of us as we had dreaded.</p><p>_Jonathan Harker’s Journal._</p><p>_15 October, Varna. &mdash; We left Charing Cross on the mornin",
+      "after_sample": "<p>_11 October, Evening. &mdash; Jonathan Harker has asked me to note this, as he says he is hardly equal to the task, and he wants an exact record kept.</p><p>I think that none of"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 12,
+      "before_sample": "<p>_11 October, Evening. &mdash; Jonathan Harker has asked me to note this",
+      "after_sample": "<p>11 October, Evening. &mdash; Jonathan Harker has asked me to note this, as he says he is hardly equal to the task, and he wants an exact record kept.</p><p>I think that none of "
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 1,
+      "before_sample": "ental-divider\" aria-hidden=\"true\"><span></span></p><p>25 October, Noon.--No news yet of the ship’s arrival. Mrs. Harker’s hypnotic report this ",
+      "after_sample": "<p>11 October, Evening. &mdash; Jonathan Harker has asked me to note this, as he says he is hardly equal to the task, and he wants an exact record kept.</p><p>I think that none of "
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 57,
+      "before_sample": " of us bring chairs up close. Taking her husband’s hand in hers began:--</p><p>“We are all here together in freedom, for perhaps the last time",
+      "after_sample": "<p>11 October, Evening. &mdash; Jonathan Harker has asked me to note this, as he says he is hardly equal to the task, and he wants an exact record kept.</p><p>I think that none of "
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 17,
+      "before_sample": "ring chairs up close. Taking her husband’s hand in hers began: &mdash; </p><p>“We are all here together in freedom, for perhaps the last time! I ",
+      "after_sample": "<p>11 October, Evening. &mdash; Jonathan Harker has asked me to note this, as he says he is hardly equal to the task, and he wants an exact record kept.</p><p>I think that none of "
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 482,
+      "before_sample": "_29 October._--This is written in the train from Varna to Galatz. Last<br>night we all assembled a little before the time of sunset. Each of us<",
+      "after_sample": "<p>_29 October._--This is written in the train from Varna to Galatz. Last night we all assembled a little before the time of sunset. Each of us had done his work as well as he coul"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 14,
+      "before_sample": "either or both may possibly throw more light on what is happening.</p><p>* * * * *</p><p>_Later._--Sunset has come and gone. Fortunately it came at a time w",
+      "after_sample": "<p>_29 October._--This is written in the train from Varna to Galatz. Last night we all assembled a little before the time of sunset. Each of us had done his work as well as he coul"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 24,
+      "before_sample": "<p>_29 October._--This is written in the train from Varna to Galatz. Last night we all a",
+      "after_sample": "<p>_29 October. &mdash; This is written in the train from Varna to Galatz. Last night we all assembled a little before the time of sunset. Each of us had done his work as well as h"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 24,
+      "before_sample": "ea; when she had gone Van Helsing said:--</p><p>“You see, my friends. _He_ is close to land: he has left his earth-chest. But he has yet to get ",
+      "after_sample": "<p>_29 October. &mdash; This is written in the train from Varna to Galatz. Last night we all assembled a little before the time of sunset. Each of us had done his work as well as h"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 24,
+      "before_sample": "<p>_29 October. &mdash; This is written in the train from Varna to Galatz.",
+      "after_sample": "<p>29 October. &mdash; This is written in the train from Varna to Galatz. Last night we all assembled a little before the time of sunset. Each of us had done his work as well as he"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 52,
+      "before_sample": "y resolutely, before we could learn anything; at last her answer came:--</p><p>“I can see nothing; we are still; there are no waves lapping, b",
+      "after_sample": "<p>29 October. &mdash; This is written in the train from Varna to Galatz. Last night we all assembled a little before the time of sunset. Each of us had done his work as well as he"
+    },
+    {
+      "rule": "repeated_space_normalization",
+      "count": 1,
+      "before_sample": ". Cattle low far off. There is another sound, a queer one like &mdash;  &mdash; ” She stopped and grew white, and whiter still.</p><p>“Go on; ",
+      "after_sample": "<p>29 October. &mdash; This is written in the train from Varna to Galatz. Last night we all assembled a little before the time of sunset. Each of us had done his work as well as he"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 18,
+      "before_sample": "tely, before we could learn anything; at last her answer came: &mdash; </p><p>“I can see nothing; we are still; there are no waves lapping, but o",
+      "after_sample": "<p>29 October. &mdash; This is written in the train from Varna to Galatz. Last night we all assembled a little before the time of sunset. Each of us had done his work as well as he"
+    },
+    {
+      "rule": "line_break_normalization",
+      "count": 549,
+      "before_sample": "1 November._--All day long we have travelled, and at a good speed. The<br>horses seem to know that they are being kindly treated, for they go<br",
+      "after_sample": "<p>_1 November._--All day long we have travelled, and at a good speed. The horses seem to know that they are being kindly treated, for they go willingly their full stage at best sp"
+    },
+    {
+      "rule": "scene_break_marker_to_ornamental_divider",
+      "count": 5,
+      "before_sample": " his strength will be needed.... All is ready; we are off shortly.</p><p>* * * * *</p><p>_2 November, morning._--I was successful, and we took turns driving",
+      "after_sample": "<p>_1 November._--All day long we have travelled, and at a good speed. The horses seem to know that they are being kindly treated, for they go willingly their full stage at best sp"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 10,
+      "before_sample": "<p>_1 November._--All day long we have travelled, and at a good speed. The horses seem t",
+      "after_sample": "<p>_1 November. &mdash; All day long we have travelled, and at a good speed. The horses seem to know that they are being kindly treated, for they go willingly their full stage at b"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 20,
+      "before_sample": "<p>_1 November. &mdash; All day long we have travelled, and at a good speed. The horses seem to know that they are being kindly treated, for they go willingly their full stage at best speed. We have now had so many changes and find the same thing so constantly that we are encouraged to think that the journey will be an easy one. Dr. Van Helsing is laconic; he tells the farmers that he is hurrying to Bistritz, and pays them well to make the exchange of horses. We get hot soup, or coffee, or tea; and off we go. It is a lovely country; full of beauties of all imaginable kinds, and the people are brave, and strong, and simple, and seem full of nice qualities. They are _very, very_ superstitious. In the first house where we stopped, when t",
+      "after_sample": "<p>1 November. &mdash; All day long we have travelled, and at a good speed. The horses seem to know that they are being kindly treated, for they go willingly their full stage at be"
+    },
+    {
+      "rule": "gutenberg_emphasis_underscore_cleanup",
+      "count": 10,
+      "before_sample": "rong, and simple, and seem full of nice qualities. They are very, very_ superstitious. In the first house where we stopped, when the woman wh",
+      "after_sample": "<p>1 November. &mdash; All day long we have travelled, and at a good speed. The horses seem to know that they are being kindly treated, for they go willingly their full stage at be"
+    },
+    {
+      "rule": "broken_dash_punctuation_cleanup",
+      "count": 44,
+      "before_sample": " is on us, bright though cold. There is a strange heaviness in the air--I say heaviness for want of a better word; I mean that it oppresses us",
+      "after_sample": "<p>1 November. &mdash; All day long we have travelled, and at a good speed. The horses seem to know that they are being kindly treated, for they go willingly their full stage at be"
+    },
+    {
+      "rule": "paragraph_spacing_normalization",
+      "count": 14,
+      "before_sample": "g power be in her manifested, for she point to a road and say: &mdash; </p><p>“This is the way.”</p><p>“How know you it?” I ask.</p><p>“Of course",
+      "after_sample": "<p>1 November. &mdash; All day long we have travelled, and at a good speed. The horses seem to know that they are being kindly treated, for they go willingly their full stage at be"
+    }
+  ],
+  "owner_review_items": [],
+  "artifact_hits": {
+    "*****": 0,
+    "_--": 0,
+    ".--The": 0,
+    "ishigh": 0,
+    "aremixed": 0,
+    "awake,naturally": 0,
+    "whichproduces": 0,
+    "notdisagreeable": 0,
+    "himtalking": 0,
+    "everynow": 0,
+    "nationali-": 0,
+    "-- continued": 0,
+    "— continued": 0,
+    "raw_leading_underscore": 0,
+    "literal_star_scene_break": 0
+  },
+  "output_paths": {},
+  "go_live_status": "GO_LIVE_READER_READY",
+  "public_audio_status": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "production_status": "PRODUCTION_BLOCKED",
+  "payment_behavior_changed": false
+}

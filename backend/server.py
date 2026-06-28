@@ -54,6 +54,7 @@ try:
         dracula_artifact_status,
         live_approved_mongo_query,
         load_dracula_artifact_book,
+        load_publishing_edition_chapter,
         public_book_projection,
     )
 except ImportError:  # pragma: no cover - supports package-style test imports
@@ -66,6 +67,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         dracula_artifact_status,
         live_approved_mongo_query,
         load_dracula_artifact_book,
+        load_publishing_edition_chapter,
         public_book_projection,
     )
 
@@ -252,7 +254,7 @@ _shutdown_state: dict = {"draining": False, "inflight": 0}
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "dracula-first-v3"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "dracula-first-v4-publishing-edition"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
@@ -1107,6 +1109,12 @@ def _dracula_artifact_doc(*, include_content: bool = False) -> Optional[dict]:
     return doc
 
 
+def _public_publishing_edition_chapter(slug: str, chapter_id: str) -> dict:
+    if not _is_controlled_public_slug(slug):
+        return {}
+    return load_publishing_edition_chapter(slug, chapter_id) or {}
+
+
 def _matches_public_filters(book: dict, *, category_filter: Optional[str] = None, q: str = "") -> bool:
     if category_filter and book.get("category_slug") != category_filter:
         return False
@@ -1410,6 +1418,10 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
         artifact = _dracula_artifact_doc(include_content=True) or {}
         target = next((chapter for chapter in artifact.get("chapters") or [] if chapter.get("id") == chapter_id), {})
         content = target.get("content", "")
+    if not admin_preview:
+        publishing_chapter = _public_publishing_edition_chapter(slug, chapter_id)
+        if publishing_chapter.get("content"):
+            content = publishing_chapter.get("content", "")
     await _redis_cache_set("reader-content", cache_key, content, READER_CHAPTER_CACHE_TTL_SECONDS)
     return content
 
@@ -1566,18 +1578,24 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
     chapters = []
     preview_ids = _free_preview_chapter_ids(doc)
     for chapter in sorted((doc.get("chapters") or []), key=lambda c: c.get("order", 0)):
-        version = _reader_chapter_content_version(chapter)
         chapter_id = chapter.get("id") or ""
+        publishing_chapter = {} if admin_preview or not chapter_id else _public_publishing_edition_chapter(slug, chapter_id)
+        serving_chapter = dict(chapter)
+        if publishing_chapter:
+            for key in ("title", "content", "content_hash", "word_count", "reading_minutes", "processing_status"):
+                if publishing_chapter.get(key) not in (None, ""):
+                    serving_chapter[key] = publishing_chapter.get(key)
+        version = _reader_chapter_content_version(serving_chapter)
         chapters.append({
             "id": chapter_id,
-            "title": chapter.get("title", ""),
-            "order": chapter.get("order", 0),
+            "title": serving_chapter.get("title", ""),
+            "order": serving_chapter.get("order", 0),
             "is_preview": chapter_id in preview_ids,
             "content_version": version,
-            "word_count": int(chapter.get("word_count", 0) or _reader_word_count(chapter.get("content", ""))),
-            "reading_minutes": int(chapter.get("reading_minutes", 0) or 0),
-            "processing_status": chapter.get("processing_status", "ready"),
-            "has_images": bool(chapter.get("has_images", False)),
+            "word_count": int(serving_chapter.get("word_count", 0) or _reader_word_count(serving_chapter.get("content", ""))),
+            "reading_minutes": int(serving_chapter.get("reading_minutes", 0) or 0),
+            "processing_status": serving_chapter.get("processing_status", "ready"),
+            "has_images": bool(serving_chapter.get("has_images", False)),
             "content_url": f"/api/reader/chapter/{slug}/{chapter_id}?v={version}" if chapter_id else "",
         })
 
@@ -4377,6 +4395,11 @@ async def get_book_chapter(slug: str, chapter_id: str):
         raise HTTPException(status_code=404, detail="Chapter not found")
 
     chapter = dict(target_meta)
+    publishing_chapter = _public_publishing_edition_chapter(slug, chapter_id)
+    if publishing_chapter:
+        for key in ("title", "content_hash", "word_count", "reading_minutes", "processing_status"):
+            if publishing_chapter.get(key) not in (None, ""):
+                chapter[key] = publishing_chapter.get(key)
     chapter["content"] = ""
     if _is_free_preview_chapter(book_meta, chapter_id):
         content_doc = await db.books.find_one(
@@ -4389,6 +4412,8 @@ async def get_book_chapter(slug: str, chapter_id: str):
             artifact = _dracula_artifact_doc(include_content=True) or {}
             target = next((c for c in artifact.get("chapters") or [] if c.get("id") == chapter_id), {})
             chapter["content"] = target.get("content", "")
+        if publishing_chapter.get("content"):
+            chapter["content"] = publishing_chapter.get("content", "")
     if not chapter:
         raise HTTPException(status_code=404, detail="Chapter not found")
     await _public_cache_set(cache_key, chapter)

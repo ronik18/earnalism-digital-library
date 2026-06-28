@@ -23,14 +23,43 @@ FIXTURE_SLUG = "factory-fixture"
 @pytest.fixture(autouse=True)
 def cleanup_factory_fixture():
     target = INTERNAL_AUDIOBOOK_ROOT / FIXTURE_SLUG
+    publishing_target = ROOT / "data" / "controlled_publications" / FIXTURE_SLUG
     if target.exists():
         shutil.rmtree(target)
+    if publishing_target.exists():
+        shutil.rmtree(publishing_target)
     yield
     if target.exists():
         shutil.rmtree(target)
+    if publishing_target.exists():
+        shutil.rmtree(publishing_target)
+
+
+def create_publishing_fixture(slug: str = FIXTURE_SLUG) -> Path:
+    publishing_dir = ROOT / "data" / "controlled_publications" / slug / "publishing_edition"
+    publishing_dir.mkdir(parents=True, exist_ok=True)
+    manifest = {
+        "book_slug": slug,
+        "chapter_count": 1,
+        "publishing_edition_hash": "factory-publishing-edition-hash",
+        "raw_source_hash": "factory-raw-source-hash",
+        "go_live_status": "GO_LIVE_READER_READY",
+        "chapters": [
+            {
+                "id": "chapter-001",
+                "order": 1,
+                "title": "Chapter I",
+                "content_hash": "factory-chapter-hash",
+                "word_count": 8,
+            }
+        ],
+    }
+    (publishing_dir / "publishing_edition_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    return publishing_dir
 
 
 def write_factory_config(tmp_path: Path, *, slug: str = FIXTURE_SLUG, generation_mode: str = "dry_run") -> Path:
+    create_publishing_fixture(slug)
     path = tmp_path / f"{slug}.yml"
     path.write_text(
         f"""slug: {slug}
@@ -232,6 +261,24 @@ def test_book_factory_cache_hit_skips_provider(tmp_path: Path):
     assert cache_stage.details["cache_hit_count"] == 1
     assert tts_stage.details["provider_api_called"] is False
     assert tts_stage.details["skipped_cached_chunk_count"] == 1
+
+
+def test_book_factory_generate_blocks_without_publishing_edition(tmp_path: Path):
+    slug = "missing-publishing-fixture"
+    config_path = write_factory_config(tmp_path, slug=slug, generation_mode="generate")
+    publishing_target = ROOT / "data" / "controlled_publications" / slug
+    shutil.rmtree(publishing_target)
+
+    def fake_generator(**_kwargs):
+        raise AssertionError("Provider should not be called when publishing edition QA is missing.")
+
+    result = run_factory(config_path=config_path, mode="generate", output_root=tmp_path / "output", generator_fn=fake_generator)
+    publishing_stage = stage(result, "PUBLISHING_EDITION_PREPARATION")
+    tts_stage = stage(result, "AUDIOBOOK_TTS_GENERATION")
+
+    assert publishing_stage.status == "HOLD_PUBLISHING_EDITION_QA"
+    assert tts_stage.status == "BLOCKED"
+    assert any("publishing edition manifest is missing" in blocker for blocker in tts_stage.blockers)
 
 
 def test_book_factory_failed_chunks_remain_hold(tmp_path: Path):

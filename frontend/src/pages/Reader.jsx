@@ -919,7 +919,7 @@ export default function Reader() {
   const [theme, setTheme] = useState('dark');
   const [fontSizeIdx, setFontSizeIdx] = useState(0);
   const [lineSpacingMode, setLineSpacingMode] = useState('comfortable');
-  const [fontFamilyMode, setFontFamilyMode] = useState('sans');
+  const [fontFamilyMode, setFontFamilyMode] = useState('serif');
   const [showSettings, setShowSettings] = useState(false);
   const [showTOC, setShowTOC] = useState(false);
   const [toolbarVisible, setToolbarVisible] = useState(true);

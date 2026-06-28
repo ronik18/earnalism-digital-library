@@ -44,6 +44,7 @@ PUBLIC_PATHS = (ROOT / "frontend" / "public", ROOT / "frontend" / "build")
 AUDIO_EXTENSIONS = {".mp3", ".wav", ".m4a", ".ogg", ".aac"}
 
 BOOK_FACTORY_AUDIOBOOK_STAGES = (
+    "PUBLISHING_EDITION_PREPARATION",
     "AUDIOBOOK_CHUNK_HASHING",
     "AUDIOBOOK_CACHE_LOOKUP",
     "AUDIOBOOK_TTS_GENERATION",
@@ -262,11 +263,47 @@ def result_stage_details(result: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def publishing_edition_stage(book_slug: str) -> StageResult:
+    manifest_path = ROOT / "data" / "controlled_publications" / book_slug / "publishing_edition" / "publishing_edition_manifest.json"
+    if not manifest_path.exists():
+        return StageResult(
+            "PUBLISHING_EDITION_PREPARATION",
+            "HOLD_PUBLISHING_EDITION_QA",
+            ["publishing edition manifest is missing."],
+            details={"manifest_path": str(manifest_path.relative_to(ROOT)), "required_before_audiobook": True},
+        )
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return StageResult(
+            "PUBLISHING_EDITION_PREPARATION",
+            "HOLD_PUBLISHING_EDITION_QA",
+            ["publishing edition manifest is invalid JSON."],
+            details={"manifest_path": str(manifest_path.relative_to(ROOT)), "required_before_audiobook": True},
+        )
+    status = str(manifest.get("go_live_status") or "")
+    chapter_count = int(manifest.get("chapter_count") or 0)
+    ready = status == "GO_LIVE_READER_READY" and chapter_count > 0
+    return StageResult(
+        "PUBLISHING_EDITION_PREPARATION",
+        "PASS" if ready else "HOLD_PUBLISHING_EDITION_QA",
+        [] if ready else ["publishing edition QA has not passed."],
+        details={
+            "manifest_path": str(manifest_path.relative_to(ROOT)),
+            "go_live_status": status,
+            "chapter_count": chapter_count,
+            "publishing_edition_hash": manifest.get("publishing_edition_hash", ""),
+            "required_before_audiobook": True,
+        },
+    )
+
+
 def build_stages_from_generation(
     *,
     audiobook: dict[str, Any],
     result: dict[str, Any] | None,
     generation_status: str,
+    publishing_stage: StageResult,
     blockers: list[str] | None = None,
 ) -> list[StageResult]:
     blockers = blockers or []
@@ -290,6 +327,7 @@ def build_stages_from_generation(
     generated_or_reused = int(details.get("generated_chunk_count") or 0) + int(details.get("skipped_cached_chunk_count") or 0)
     sync_status = HOLD_SYNC_QA_REQUIRED
     return [
+        publishing_stage,
         StageResult("AUDIOBOOK_CHUNK_HASHING", hash_status, blockers if hash_status == "BLOCKED" else [], details=details),
         StageResult("AUDIOBOOK_CACHE_LOOKUP", cache_status, blockers if cache_status == "BLOCKED" else [], details=details),
         StageResult(
@@ -329,8 +367,11 @@ def run_factory(
     result: dict[str, Any] | None = None
     generation_status = "SKIPPED"
     blockers: list[str] = []
+    publishing_stage = publishing_edition_stage(slug)
     if public_audio:
         blockers.append("public audio files are present under frontend/public or frontend/build.")
+    if mode == "generate" and publishing_stage.status != "PASS":
+        blockers.extend(publishing_stage.blockers or ["publishing edition QA must pass before audiobook generation."])
     if audiobook["provider"] != "elevenlabs" and audiobook["scope"] != "none":
         blockers.append("book factory audiobook automation currently supports elevenlabs only.")
     if audiobook["scope"] != "none" and not blockers and mode != "status":
@@ -380,6 +421,7 @@ def run_factory(
         audiobook=audiobook,
         result=result,
         generation_status=generation_status,
+        publishing_stage=publishing_stage,
         blockers=blockers,
     )
     final_gate = {

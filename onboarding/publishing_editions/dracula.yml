@@ -1,0 +1,70 @@
+book_slug: dracula
+book_title: Dracula
+author: Bram Stoker
+language: en
+expected_chapter_count: 27
+raw_source_evidence_path: data/controlled_publications/dracula/source_evidence.json
+source_chapter_dir: data/controlled_publications/dracula/chapters
+backend_source_chapter_dir: backend/data/controlled_publications/dracula/chapters
+publishing_output_dir: data/controlled_publications/dracula/publishing_edition
+backend_publishing_output_dir: backend/data/controlled_publications/dracula/publishing_edition
+raw_source_preservation_required: true
+reader_publication_uses_publishing_edition: true
+audiobook_chunking_uses_publishing_edition: true
+highlight_sync_uses_publishing_edition: true
+seo_snapshots_use_publishing_edition: true
+allowed_deterministic_transformations:
+  - scene_break_marker_to_ornamental_divider
+  - gutenberg_emphasis_underscore_cleanup
+  - diary_date_markup_cleanup
+  - broken_dash_punctuation_cleanup
+  - punctuation_spacing_cleanup
+  - known_missing_space_repair
+  - hyphenated_line_wrap_repair
+  - line_break_normalization
+  - chapter_display_title_cleanup
+  - repeated_space_normalization
+blocked_transformations:
+  - paraphrase_or_modernize_prose
+  - remove_author_intended_content
+  - alter_character_names
+  - change_dialogue_meaning
+  - change_plot_or_sequence
+ambiguous_rules_requiring_owner_review:
+  - suspected_non_artifact_word_split
+  - punctuation_change_that_can_change_meaning
+  - chapter_or_section_removal
+quality_thresholds:
+  max_known_artifact_hits: 0
+  max_owner_review_items_for_go_live: 0
+  expected_public_audio_allowed: false
+  expected_production_status: PRODUCTION_BLOCKED
+known_missing_space_repairs:
+  - ishigh => is high
+  - aremixed => are mixed
+  - awake,naturally => awake, naturally
+  - whichproduces => which produces
+  - notdisagreeable => not disagreeable
+  - himtalking => him talking
+  - everynow => ever now
+  - putdown => put down
+  - theycalled => they called
+  - anhour => an hour
+  - arrivedlate => arrived late
+  - redpepper => red pepper
+  - simplestyle => simple style
+  - sittingon => sitting on
+acceptance_artifact_patterns:
+  - "*****"
+  - "_--"
+  - ".--The"
+  - "ishigh"
+  - "aremixed"
+  - "awake,naturally"
+  - "whichproduces"
+  - "notdisagreeable"
+  - "himtalking"
+  - "everynow"
+  - "nationali-"
+  - "-- continued"
+  - "— continued"

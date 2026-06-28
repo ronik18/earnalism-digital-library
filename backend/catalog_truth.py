@@ -242,6 +242,41 @@ def _artifact_json(name: str, *, artifact_dir: str | Path | None = None) -> dict
     return read_json_file(_artifact_dir(artifact_dir) / name)
 
 
+def controlled_publication_artifact_dir(slug: str) -> Path:
+    safe_slug = normalize_slug(slug)
+    return first_existing_path(
+        ROOT / "data" / "controlled_publications" / safe_slug,
+        MODULE_DIR / "data" / "controlled_publications" / safe_slug,
+    )
+
+
+def load_publishing_edition_manifest(slug: str, *, artifact_dir: str | Path | None = None) -> dict[str, Any]:
+    base = Path(artifact_dir) if artifact_dir else controlled_publication_artifact_dir(slug)
+    return read_json_file(base / "publishing_edition" / "publishing_edition_manifest.json")
+
+
+def load_publishing_edition_chapter(
+    slug: str,
+    chapter_id: str,
+    *,
+    artifact_dir: str | Path | None = None,
+) -> dict[str, Any]:
+    base = Path(artifact_dir) if artifact_dir else controlled_publication_artifact_dir(slug)
+    payload = read_json_file(base / "publishing_edition" / "chapters" / f"{chapter_id}.json")
+    if not payload or normalize_text(payload.get("id")) != chapter_id:
+        return {}
+    return payload
+
+
+def publishing_edition_available(slug: str, *, artifact_dir: str | Path | None = None) -> bool:
+    manifest = load_publishing_edition_manifest(slug, artifact_dir=artifact_dir)
+    return (
+        normalize_slug(manifest.get("book_slug")) == normalize_slug(slug)
+        and normalize_text(manifest.get("go_live_status")) == "GO_LIVE_READER_READY"
+        and int(manifest.get("chapter_count") or 0) > 0
+    )
+
+
 @lru_cache(maxsize=8)
 def dracula_artifact_validation_issues(artifact_dir: str = "") -> tuple[str, ...]:
     base = _artifact_dir(artifact_dir or None)
@@ -386,10 +421,15 @@ def load_dracula_artifact_book(
     for chapter_meta in sorted(public_book.get("chapters") or [], key=lambda item: item.get("order", 0)):
         chapter_id = normalize_text(chapter_meta.get("id"))
         chapter = dict(chapter_meta)
+        publishing_payload = load_publishing_edition_chapter("dracula", chapter_id, artifact_dir=base) if chapter_id else {}
+        if publishing_payload:
+            for key in ("title", "content_hash", "word_count", "reading_minutes", "processing_status", "publishing_edition_status"):
+                if publishing_payload.get(key) not in (None, ""):
+                    chapter[key] = publishing_payload.get(key)
         if include_content and chapter_id:
             content_payload = read_json_file(base / "chapters" / f"{chapter_id}.json")
-            chapter["content"] = content_payload.get("content", "")
-            chapter["content_hash"] = content_payload.get("content_hash", "")
+            chapter["content"] = publishing_payload.get("content") or content_payload.get("content", "")
+            chapter["content_hash"] = publishing_payload.get("content_hash") or content_payload.get("content_hash", "")
         chapters.append(chapter)
 
     def evidence_value(key: str, default: Any = "") -> Any:
