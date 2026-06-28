@@ -859,6 +859,7 @@ body::before {
   backdrop-filter: blur(3px);
 }
 .luxury-home-page .premium-dracula-cover-frame {
+  aspect-ratio: 2 / 3;
   border: 1px solid rgba(216, 185, 122, 0.36);
   border-radius: 7px;
   background: #14080c;
@@ -866,6 +867,9 @@ body::before {
     0 30px 62px -34px rgba(0, 0, 0, 0.95),
     0 0 0 7px rgba(253, 252, 248, 0.045),
     0 0 58px -34px rgba(216, 185, 122, 0.95);
+}
+.luxury-home-page .premium-dracula-cover-frame .book-cover-image {
+  background-color: #080405;
 }
 .luxury-home-page .premium-dracula-cover-img {
   object-fit: contain;
