@@ -1,10 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Instagram, Facebook, Youtube, Linkedin, Twitter } from "lucide-react";
+import { Menu, X, Instagram, Facebook, Youtube, Linkedin, Mail, Twitter } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
 import { useAuth } from "../context/AuthContext";
 import BrandMark from "./BrandMark";
 import IndiaCraftBadge from "./IndiaCraftBadge";
+import { getEnabledSocialLinks } from "../config/socialLinks";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -14,13 +15,14 @@ const NAV = [
   { to: "/contact", label: "Contact" },
 ];
 
-const SOCIALS = [
-  { key: "instagram", label: "Instagram", Icon: Instagram },
-  { key: "facebook", label: "Facebook", Icon: Facebook },
-  { key: "youtube", label: "YouTube", Icon: Youtube },
-  { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
-  { key: "twitter", label: "X", Icon: Twitter },
-];
+const SOCIAL_ICONS = {
+  email: Mail,
+  facebook: Facebook,
+  instagram: Instagram,
+  linkedin: Linkedin,
+  x: Twitter,
+  youtube: Youtube,
+};
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -28,7 +30,11 @@ export default function Header() {
   const { social } = useSettings();
   const { user } = useAuth();
   useEffect(() => { setOpen(false); }, [loc.pathname]);
-  const activeSocials = useMemo(() => SOCIALS.filter((s) => social?.[s.key]), [social]);
+  const activeSocials = useMemo(() => (
+    getEnabledSocialLinks(social)
+      .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
+      .filter((item) => item.Icon)
+  ), [social]);
   const isAuthed = !!user && typeof user === "object";
   const accountHref = isAuthed ? "/account" : "/login";
   const accountLabel = isAuthed ? "Account" : "Sign In";
@@ -113,15 +119,15 @@ export default function Header() {
 
             {activeSocials.length > 0 && (
               <nav className="mt-7 pt-5 border-t border-brand-soft flex items-center justify-center gap-4" aria-label="Earnalism social links" data-testid="mobile-socials">
-                {activeSocials.map(({ key, label, Icon }) => (
+                {activeSocials.map(({ id, ariaLabel, external, Icon, url }) => (
                   <a
-                    key={key}
-                    href={social[key]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit Earnalism on ${label}`}
+                    key={id}
+                    href={url}
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noopener noreferrer" : undefined}
+                    aria-label={ariaLabel}
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-soft text-charcoal-soft transition-colors duration-300 hover:border-gold hover:text-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
-                    data-testid={`mobile-social-${key}`}
+                    data-testid={`mobile-social-${id}`}
                   >
                     <Icon size={17} strokeWidth={1.5} aria-hidden="true" />
                   </a>

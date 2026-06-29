@@ -3,24 +3,28 @@ import { toast } from "sonner";
 import { Mail, Instagram, Facebook, Youtube, Linkedin, Twitter } from "lucide-react";
 import { api, formatError } from "../lib/api";
 import { useSettings } from "../context/SettingsContext";
+import { getEnabledSocialLinks } from "../config/socialLinks";
 import useSEO from "../hooks/useSEO";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 
-const SOCIALS = [
-  { key: "instagram", label: "Instagram", Icon: Instagram },
-  { key: "facebook", label: "Facebook", Icon: Facebook },
-  { key: "youtube", label: "YouTube", Icon: Youtube },
-  { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
-  { key: "twitter", label: "X", Icon: Twitter },
-];
+const SOCIAL_ICONS = {
+  email: Mail,
+  facebook: Facebook,
+  instagram: Instagram,
+  linkedin: Linkedin,
+  x: Twitter,
+  youtube: Youtube,
+};
 
-const CONTACT_EMAIL = "sales@reoenterprise.org";
+const CONTACT_EMAIL = "sales@reoenterprise.in";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
   const { social } = useSettings();
-  const activeSocials = SOCIALS.filter((s) => social?.[s.key]);
+  const activeSocials = getEnabledSocialLinks(social)
+    .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
+    .filter((item) => item.Icon);
 
   useSEO({
     title: "Contact — The Earnalism",
@@ -59,15 +63,15 @@ export default function Contact() {
             </a>
             {activeSocials.length > 0 && (
               <nav className="flex items-center gap-3 text-charcoal-soft" aria-label="Earnalism social links" data-testid="contact-socials">
-                {activeSocials.map(({ key, label, Icon }) => (
+                {activeSocials.map(({ id, ariaLabel, external, Icon, url }) => (
                   <a
-                    key={key}
-                    href={social[key]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit Earnalism on ${label}`}
+                    key={id}
+                    href={url}
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noopener noreferrer" : undefined}
+                    aria-label={ariaLabel}
                     className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-brand-soft text-charcoal-soft transition-colors duration-300 hover:border-gold hover:text-burgundy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
-                    data-testid={`contact-social-${key}`}
+                    data-testid={`contact-social-${id}`}
                   >
                     <Icon size={17} strokeWidth={1.5} aria-hidden="true" />
                   </a>

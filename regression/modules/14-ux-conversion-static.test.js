@@ -38,6 +38,7 @@ function extractBetween(source, startMarker, endMarker) {
 
 function loadSocialLinks(env = {}) {
   const source = read("frontend/src/config/socialLinks.js")
+    .replace("export const OFFICIAL_SOCIAL_URLS =", "const OFFICIAL_SOCIAL_URLS =")
     .replace("export const SUPPORTED_SOCIAL_LINKS =", "const SUPPORTED_SOCIAL_LINKS =")
     .replace("export function normalizeSocialUrl", "function normalizeSocialUrl")
     .replace("export function getEnabledSocialLinks", "function getEnabledSocialLinks");
@@ -47,7 +48,7 @@ function loadSocialLinks(env = {}) {
     URL,
   };
   vm.runInNewContext(
-    `${source}\nmodule.exports = { SUPPORTED_SOCIAL_LINKS, normalizeSocialUrl, getEnabledSocialLinks };`,
+    `${source}\nmodule.exports = { OFFICIAL_SOCIAL_URLS, SUPPORTED_SOCIAL_LINKS, normalizeSocialUrl, getEnabledSocialLinks };`,
     context
   );
   return context.module.exports;
@@ -207,6 +208,13 @@ describe("UX conversion static signals", () => {
     expect(home).toContain("Chapter 1 is free. Reading time is used only while you read.");
     expect(home).toContain("Coming Through the Rights-Safe Pipeline");
     expect(home).toContain("These books are not live products yet. They have Notify Me CTAs only");
+    expect(home).toContain('data-testid="reading-time-library-path"');
+    expect(home).toContain("A revenue path that still feels like a library.");
+    expect(home).toContain("No fake urgency, no broad catalog claim, and no ownership promise.");
+    expect(home).toContain("See Reading Passes");
+    expect(home).toContain("Open the room");
+    expect(home).toContain("Add reading time");
+    expect(home).toContain("Return calmly");
     expect(home).not.toContain('data-testid="dracula-journey-map"');
     expect(home).not.toContain('data-testid="home-live-dracula"');
     expect(home).not.toContain('data-testid="controlled-carousel-section"');
@@ -1426,6 +1434,9 @@ describe("UX conversion static signals", () => {
     expect(indiaCraftBadge).toContain("india-origin-badge__flag-rim");
     expect(indiaCraftBadge).toContain("india-origin-badge__wheel");
     expect(styles).toContain(".header-brand-cluster");
+    expect(styles).toContain(".glass-header");
+    expect(styles).toContain("rgba(255, 252, 244, 0.98)");
+    expect(styles).toContain("rgba(249, 244, 234, 0.94)");
     expect(styles).toContain(".india-origin-badge");
     expect(styles).toContain("@media (max-width: 1279px)");
   });
@@ -1650,60 +1661,97 @@ describe("UX conversion static signals", () => {
     expect(canonicalHref(readerHtml)).toBe("https://theearnalism.com/book/dracula");
   });
 
-  test("footer social links render only real configured http links", () => {
-    const emptyConfig = loadSocialLinks({});
-    expect(emptyConfig.getEnabledSocialLinks()).toEqual([]);
-
-    const instagramConfig = loadSocialLinks({
-      REACT_APP_INSTAGRAM_URL: "https://instagram.com/theearnalism",
-    });
-    expect(instagramConfig.getEnabledSocialLinks().map((link) => link.id)).toEqual(["instagram"]);
-
-    const orderedConfig = loadSocialLinks({
-      REACT_APP_TELEGRAM_CHANNEL_URL: "https://t.me/theearnalism",
-      REACT_APP_LINKEDIN_URL: "https://www.linkedin.com/company/theearnalism",
-      REACT_APP_YOUTUBE_URL: "https://youtube.com/@theearnalism",
-    });
-    expect(orderedConfig.getEnabledSocialLinks().map((link) => link.id)).toEqual([
-      "youtube",
+  test("official social links render by default and survive empty runtime settings", () => {
+    const defaultConfig = loadSocialLinks({});
+    const defaultLinks = defaultConfig.getEnabledSocialLinks();
+    expect(defaultLinks.map((link) => link.id)).toEqual([
       "linkedin",
-      "telegram-channel",
+      "email",
+      "facebook",
+      "instagram",
+      "x",
+      "youtube",
     ]);
+    expect(defaultLinks.find((link) => link.id === "email")?.url).toBe("mailto:sales@reoenterprise.in");
+    expect(defaultLinks.find((link) => link.id === "facebook")?.url).toBe(
+      "https://www.facebook.com/profile.php?id=61591315384768"
+    );
+    expect(defaultLinks.find((link) => link.id === "x")?.url).toBe("https://x.com/earnalism");
+
+    const emptyRuntimeLinks = defaultConfig.getEnabledSocialLinks({
+      linkedin: "",
+      email: "",
+      facebook: "#",
+      instagram: "javascript:alert(1)",
+      twitter: "http://localhost:3000/social",
+      youtube: "data:text/plain,unsafe",
+    });
+    expect(emptyRuntimeLinks.map((link) => link.id)).toEqual(defaultLinks.map((link) => link.id));
+    expect(emptyRuntimeLinks.find((link) => link.id === "instagram")?.url).toBe(
+      "https://www.instagram.com/theearnalism/"
+    );
+
+    const validOverrides = defaultConfig.getEnabledSocialLinks({
+      twitter: "https://twitter.com/earnalism#",
+      instagram: "https://www.instagram.com/theearnalism/?hl=en#profile",
+    });
+    expect(validOverrides.find((link) => link.id === "x")?.url).toBe("https://twitter.com/earnalism");
+    expect(validOverrides.find((link) => link.id === "instagram")?.url).toBe(
+      "https://www.instagram.com/theearnalism/?hl=en"
+    );
 
     const unsafeLinks = [
       { id: "empty", url: "", enabled: true, order: 1 },
       { id: "hash", url: "#", enabled: true, order: 2 },
       { id: "script", url: "javascript:alert(1)", enabled: true, order: 3 },
-      { id: "mailto", url: "mailto:sales@reoenterprise.org", enabled: true, order: 4 },
-      { id: "disabled", url: "https://example.com", enabled: false, order: 5 },
+      { id: "insecure", url: "http://example.com", enabled: true, order: 4 },
+      { id: "localhost", url: "https://localhost/social", enabled: true, order: 5 },
+      { id: "disabled", url: "https://example.com", enabled: false, order: 6 },
+      { id: "email", url: "mailto:sales@reoenterprise.in", enabled: true, order: 7 },
     ];
-    expect(emptyConfig.getEnabledSocialLinks(unsafeLinks)).toEqual([]);
+    expect(defaultConfig.getEnabledSocialLinks(unsafeLinks).map((link) => link.id)).toEqual(["email"]);
   });
 
-  test("footer social component is accessible, secure, and placed below contact email", () => {
-    expect(socialLinksConfig).toContain("REACT_APP_INSTAGRAM_URL");
-    expect(socialLinksConfig).toContain("REACT_APP_WHATSAPP_CHANNEL_URL");
-    expect(socialLinksConfig).toContain("REACT_APP_TELEGRAM_CHANNEL_URL");
-    expect(socialLinksConfig).toContain("new URL(trimmed)");
-    expect(socialLinksConfig).toContain('["http:", "https:"]');
+  test("social components use official accessible links without placeholders", () => {
+    expect(socialLinksConfig).toContain("OFFICIAL_SOCIAL_URLS");
+    expect(socialLinksConfig).toContain("https://www.linkedin.com/company/earnalism-a-reo-enterprise-venture/");
+    expect(socialLinksConfig).toContain("mailto:sales@reoenterprise.in");
+    expect(socialLinksConfig).toContain("https://www.facebook.com/profile.php?id=61591315384768");
+    expect(socialLinksConfig).toContain("https://www.instagram.com/theearnalism/");
+    expect(socialLinksConfig).toContain("https://x.com/earnalism");
+    expect(socialLinksConfig).toContain("https://www.youtube.com/channel/UCw-UnAXdRzqij8_B2TlgQjQ");
+    expect(socialLinksConfig).toContain('parsed.protocol === "mailto:"');
+    expect(socialLinksConfig).toContain('["https:"]');
+    expect(socialLinksConfig).toContain("parsed.hash = \"\"");
+    expect(socialLinksConfig).not.toContain("REACT_APP_WHATSAPP_CHANNEL_URL");
+    expect(socialLinksConfig).not.toContain("REACT_APP_TELEGRAM_CHANNEL_URL");
+
     expect(footerSocialLinks).toContain("getEnabledSocialLinks");
     expect(footerSocialLinks).toContain("if (!enabledLinks.length) return null");
     expect(footerSocialLinks).toContain("Follow The Earnalism");
-    expect(footerSocialLinks).toContain('target="_blank"');
-    expect(footerSocialLinks).toContain('rel="noopener noreferrer"');
+    expect(footerSocialLinks).toContain('target={link.external ? "_blank" : undefined}');
+    expect(footerSocialLinks).toContain('rel={link.external ? "noopener noreferrer" : undefined}');
     expect(footerSocialLinks).toContain("aria-label={link.ariaLabel}");
+    expect(footerSocialLinks).toContain('data-testid={`footer-social-${link.id}`}');
     expect(footerSocialLinks).not.toContain('href="#"');
     expect(footerSocialLinks).not.toContain('href=""');
-    expect(home).toContain("normalizeSocialUrl(social?.[item.key])");
-    expect(home).toContain('data-testid="home-socials-owner-review"');
-    expect(home).toContain("No placeholder or fake social links are shown.");
-    expect(home).toContain('data-testid={`home-social-${key}`}');
+
+    expect(home).toContain("getEnabledSocialLinks(social)");
+    expect(home).toContain('data-testid="home-socials"');
+    expect(home).toContain('data-testid={`home-social-${id}`}');
+    expect(home).not.toContain("normalizeSocialUrl(social?.[item.key])");
     expect(home).not.toContain('href="#"');
     expect(home).not.toContain('href=""');
+    expect(contact).toContain("getEnabledSocialLinks(social)");
+    expect(contact).toContain('data-testid={`contact-social-${id}`}');
+    expect(contact).toContain("sales@reoenterprise.in");
+    expect(header).toContain("getEnabledSocialLinks(social)");
+    expect(header).toContain('data-testid={`mobile-social-${id}`}');
     expect(styles).toContain(".home-social-rail__link");
 
     expect(footer.indexOf("CONTACT_EMAIL")).toBeGreaterThanOrEqual(0);
     expect(footer.indexOf("<FooterSocialLinks />")).toBeGreaterThan(footer.indexOf("mailto:${CONTACT_EMAIL}"));
+    expect(footer).toContain("sales@reoenterprise.in");
     expect(footer).toContain("A quiet digital reading room beginning with Dracula by Bram Stoker.");
     expect(footer).toContain("Bengali Gothic and other classics are moving through the rights-safe pipeline.");
     expect(footer).not.toContain("A quiet digital reading room for Bengali classics, literary fiction, young readers");

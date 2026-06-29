@@ -2,6 +2,7 @@ import {
   Facebook,
   Instagram,
   Linkedin,
+  Mail,
   MessageCircle,
   Send,
   Twitter,
@@ -11,6 +12,7 @@ import { getEnabledSocialLinks } from "../config/socialLinks";
 
 const ICONS = {
   facebook: Facebook,
+  mail: Mail,
   instagram: Instagram,
   linkedin: Linkedin,
   telegram: Send,
@@ -33,8 +35,8 @@ export default function FooterSocialLinks({ links }) {
             <a
               key={link.id}
               href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
               aria-label={link.ariaLabel}
               className="footer-social__link"
               data-testid={`footer-social-${link.id}`}

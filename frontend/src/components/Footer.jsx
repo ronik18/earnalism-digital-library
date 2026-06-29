@@ -3,7 +3,7 @@ import { Mail } from "lucide-react";
 import BrandMark from "./BrandMark";
 import FooterSocialLinks from "./FooterSocialLinks";
 
-const CONTACT_EMAIL = "sales@reoenterprise.org";
+const CONTACT_EMAIL = "sales@reoenterprise.in";
 
 export default function Footer() {
   const year = new Date().getFullYear();

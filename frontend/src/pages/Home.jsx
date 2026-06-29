@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight,
   BookOpen,
+  CircleCheck,
   CreditCard,
   Facebook,
   Instagram,
@@ -17,7 +18,7 @@ import { toast } from "sonner";
 import BookCoverImage from "../components/BookCoverImage";
 import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
-import { normalizeSocialUrl } from "../config/socialLinks";
+import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import {
   DRACULA_COVER_IMAGE,
@@ -31,13 +32,14 @@ import {
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
 
-const SOCIALS = [
-  { key: "linkedin", label: "LinkedIn", Icon: Linkedin },
-  { key: "twitter", label: "X", Icon: Twitter },
-  { key: "instagram", label: "Instagram", Icon: Instagram },
-  { key: "facebook", label: "Facebook", Icon: Facebook },
-  { key: "youtube", label: "YouTube", Icon: Youtube },
-];
+const SOCIAL_ICONS = {
+  email: Mail,
+  facebook: Facebook,
+  instagram: Instagram,
+  linkedin: Linkedin,
+  x: Twitter,
+  youtube: Youtube,
+};
 
 function track(event, metadata = {}) {
   if (!event) return;
@@ -60,9 +62,9 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const activeSocials = useMemo(() => (
-    SOCIALS
-      .map((item) => ({ ...item, url: normalizeSocialUrl(social?.[item.key]) }))
-      .filter((item) => item.url)
+    getEnabledSocialLinks(social)
+      .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
+      .filter((item) => item.Icon)
   ), [social]);
   const liveBook = mergeDraculaBook(dracula);
 
@@ -259,6 +261,49 @@ export default function Home() {
         </div>
       </section>
 
+      <section
+        className="reference-reading-path"
+        data-testid="reading-time-library-path"
+        aria-labelledby="reading-time-library-path-title"
+      >
+        <div className="reference-reading-path__inner mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
+          <div className="reference-reading-path__copy">
+            <div className="overline mb-3">Reading time, clearly priced</div>
+            <h2 id="reading-time-library-path-title">
+              A revenue path that still feels like a library.
+            </h2>
+            <p>
+              No fake urgency, no broad catalog claim, and no ownership promise. The reader opens with a free first chapter; paid continuation uses the wallet only when someone chooses more quiet time with Dracula.
+            </p>
+            <Link
+              to={readingPassUrl("homepage_reading_path")}
+              className="btn-primary reference-reading-path__cta"
+              data-testid="reading-path-pricing-cta"
+              onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "see_reading_passes", source: "homepage_reading_path" })}
+            >
+              See Reading Passes <ArrowRight size={15} strokeWidth={1.7} />
+            </Link>
+          </div>
+          <div className="reference-reading-path__cards" aria-label="How Earnalism reading time works">
+            <article className="reference-reading-step">
+              <BookOpen size={18} strokeWidth={1.6} aria-hidden="true" />
+              <h3>Open the room</h3>
+              <p>Chapter 1 is free, so the first conversion is trust.</p>
+            </article>
+            <article className="reference-reading-step">
+              <CreditCard size={18} strokeWidth={1.6} aria-hidden="true" />
+              <h3>Add reading time</h3>
+              <p>Passes credit a wallet; time is spent only while reading.</p>
+            </article>
+            <article className="reference-reading-step">
+              <CircleCheck size={18} strokeWidth={1.6} aria-hidden="true" />
+              <h3>Return calmly</h3>
+              <p>Sign in to resume Dracula through account or library.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section className="relative overflow-hidden bg-[#1b0b10] text-[#FDFCF8]">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:px-12 lg:py-24">
           <div className="lg:col-span-6">
@@ -271,15 +316,15 @@ export default function Home() {
               <nav className="mt-9" aria-label="Earnalism social links" data-testid="home-socials">
                 <div className="text-[0.64rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]/90">Follow the reading room</div>
                 <div className="mt-4 flex flex-wrap items-center gap-3">
-                  {activeSocials.map(({ key, label, Icon, url }) => (
+                  {activeSocials.map(({ id, ariaLabel, external, Icon, url }) => (
                     <a
-                      key={key}
+                      key={id}
                       href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Visit Earnalism on ${label}`}
+                      target={external ? "_blank" : undefined}
+                      rel={external ? "noopener noreferrer" : undefined}
+                      aria-label={ariaLabel}
                       className="home-social-rail__link inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#FDFCF8]/18 bg-[#FDFCF8]/[0.045] text-[#F4EFEA]/78 transition-colors duration-300 hover:border-[var(--brand-gold-soft)]/70 hover:bg-[rgba(216,185,122,0.1)] hover:text-[var(--brand-gold-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand-gold-soft)]"
-                      data-testid={`home-social-${key}`}
+                      data-testid={`home-social-${id}`}
                     >
                       <Icon size={17} strokeWidth={1.55} aria-hidden="true" />
                     </a>
