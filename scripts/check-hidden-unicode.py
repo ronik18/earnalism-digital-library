@@ -21,6 +21,30 @@ BLOCKED_POINTS = {
     0xFEFF: "byte-order mark / zero-width no-break space",
 }
 
+BINARY_SUFFIXES = {
+    ".aac",
+    ".avif",
+    ".gif",
+    ".ico",
+    ".jpeg",
+    ".jpg",
+    ".m4a",
+    ".mov",
+    ".mp3",
+    ".mp4",
+    ".ogg",
+    ".pdf",
+    ".png",
+    ".wav",
+    ".webm",
+    ".webp",
+    ".zip",
+}
+
+
+def is_binary_path(path: Path) -> bool:
+    return path.suffix.lower() in BINARY_SUFFIXES
+
 
 def blocked_reason(codepoint: int) -> str | None:
     for blocked_range in BLOCKED_RANGES:
@@ -73,8 +97,14 @@ def main() -> int:
 
     paths = args.files or default_files()
     errors: list[str] = []
+    scanned = 0
+    skipped_binary = 0
     for path in paths:
         if path.is_file():
+            if is_binary_path(path):
+                skipped_binary += 1
+                continue
+            scanned += 1
             errors.extend(scan_file(path))
 
     if errors:
@@ -83,7 +113,8 @@ def main() -> int:
             print(f"- {error}", file=sys.stderr)
         return 1
 
-    print(f"Hidden Unicode / line-ending check passed for {len(paths)} file(s).")
+    suffix = f"; skipped {skipped_binary} binary file(s)" if skipped_binary else ""
+    print(f"Hidden Unicode / line-ending check passed for {scanned} file(s){suffix}.")
     return 0
 
 
