@@ -96,6 +96,7 @@ describe("UX conversion static signals", () => {
   const firstVisitSiteTour = read("frontend/src/components/FirstVisitSiteTour.jsx");
   const footer = read("frontend/src/components/Footer.jsx");
   const footerSocialLinks = read("frontend/src/components/FooterSocialLinks.jsx");
+  const indiaCraftBadge = read("frontend/src/components/IndiaCraftBadge.jsx");
   const socialLinksConfig = read("frontend/src/config/socialLinks.js");
   const styles = read("frontend/src/index.css");
   const app = read("frontend/src/App.js");
@@ -1387,11 +1388,25 @@ describe("UX conversion static signals", () => {
   });
 
   test("mobile navigation keeps a visible library CTA", () => {
+    expect(header).toContain('import IndiaCraftBadge from "./IndiaCraftBadge";');
+    expect(header).toContain('className="header-brand-cluster"');
+    expect(header).toContain("<IndiaCraftBadge />");
+    expect(header).toContain('data-testid="brand-logo"');
     expect(header).toContain('data-testid="mobile-cta-library"');
     expect(header).toContain("Start Dracula");
     expect(header).toContain("aria-expanded={open}");
     expect(header).toContain('aria-controls="mobile-menu"');
     expect(header).toContain('id="mobile-menu"');
+    expect(indiaCraftBadge).toContain('data-testid="india-origin-badge"');
+    expect(indiaCraftBadge).toContain('aria-label="Made in India"');
+    expect(indiaCraftBadge).toContain("Made in India");
+    expect(indiaCraftBadge).toContain("india-origin-badge__band--saffron");
+    expect(indiaCraftBadge).toContain("india-origin-badge__band--green");
+    expect(indiaCraftBadge).toContain("india-origin-badge__flag-rim");
+    expect(indiaCraftBadge).toContain("india-origin-badge__wheel");
+    expect(styles).toContain(".header-brand-cluster");
+    expect(styles).toContain(".india-origin-badge");
+    expect(styles).toContain("@media (max-width: 1279px)");
   });
 
   test("non-visual journey has skip link, focus indicators, and spoken loading states", () => {

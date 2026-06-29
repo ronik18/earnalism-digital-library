@@ -32,6 +32,19 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlparse, urlunparse
 from urllib.request import Request, urlopen
 
+try:
+    from publication_safety_mode import (
+        DRAFT_EDITORIAL_REVIEW_FLAGS,
+        apply_draft_editorial_review_flags,
+        validate_import_book_safety,
+    )
+except ImportError:  # pragma: no cover - package import path used by tests
+    from scripts.publication_safety_mode import (
+        DRAFT_EDITORIAL_REVIEW_FLAGS,
+        apply_draft_editorial_review_flags,
+        validate_import_book_safety,
+    )
+
 
 CURRENT_YEAR = datetime.now(timezone.utc).year
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -1256,9 +1269,13 @@ def metadata_defaults(book: dict[str, Any], word_count: int, warnings: list[str]
     if not about_author:
         warnings.append("about_author missing; left empty for human review.")
 
-    is_published = bool(book.get("is_published") is True and book.get("availability") == "published")
-    if book.get("is_published") is True and not is_published:
-        warnings.append("is_published requested but availability was not published; kept as draft.")
+    requested_publication = (
+        book.get("is_published") is True
+        or str(book.get("availability", "")).strip().lower() == "published"
+        or str(book.get("publicationStatus", "")).strip().lower() in {"live", "published"}
+    )
+    if requested_publication:
+        warnings.append("Public/live import flags were requested; publication safety mode kept the book as draft/editorial-review.")
 
     cover_image_url = first_nonempty(book, ["cover_image_url", "front_cover_image_url", "front_cover_url", "cover_url"])
     back_cover_image_url = first_nonempty(book, ["back_cover_image_url", "back_cover_url"])
@@ -1296,7 +1313,7 @@ def metadata_defaults(book: dict[str, Any], word_count: int, warnings: list[str]
         "about_author": about_author,
         "cover_image_url": cover_image_url,
         "back_cover_image_url": back_cover_image_url,
-        "is_published": is_published,
+        "is_published": False,
     }
 
 
@@ -1415,10 +1432,13 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
             "summary": chapter_summary(cleaned),
             "warnings": ["Single chapter requested by manifest."],
         }]
+    if book.get("audiobook_enabled") is True or book.get("generate_audiobook") is True:
+        result.warnings.append("Audiobook import flags were requested; publication safety mode kept audiobook generation disabled.")
+
     upload_object = {
         **metadata,
-        "audiobook_enabled": bool(book.get("audiobook_enabled") is True),
-        "generate_audiobook": bool(book.get("generate_audiobook") is True),
+        "audiobook_enabled": False,
+        "generate_audiobook": False,
         "rights_metadata": rights_metadata(book, rights_log, result.warnings),
         "chapters": chapters,
         "upload_notes": [
@@ -1426,6 +1446,7 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
             "Draft mode; human review required before publishing.",
         ],
     }
+    upload_object = apply_draft_editorial_review_flags(upload_object)
     if len(upload_object["chapters"]) == 1 and upload_object["chapters"][0].get("title") == "Full Text":
         upload_object["chapters"][0]["title"] = metadata.get("title") or "Full Text"
 
@@ -1438,6 +1459,7 @@ def prepare_book(index: int, book: dict[str, Any], out_dir: Path) -> PreparedBoo
     validation_warnings, validation_errors = validate_sanitization(upload_object, cleaned, forbidden, min_word_count)
     result.warnings.extend(validation_warnings)
     result.errors.extend(validation_errors)
+    result.errors.extend(validate_import_book_safety(upload_object))
 
     slug = slugify(metadata["title"], fallback=f"book-{index + 1}")
     sanitized_path = out_dir / "sanitized" / f"{slug}.txt"
@@ -1560,6 +1582,9 @@ def upload_book(
     if not result.upload_object:
         raise RuntimeError("No upload object prepared.")
     obj = result.upload_object
+    safety_issues = validate_import_book_safety(obj)
+    if safety_issues:
+        raise RuntimeError("Publication safety mode blocked upload: " + "; ".join(safety_issues))
     book_payload = {
         key: obj[key]
         for key in [
@@ -1568,6 +1593,7 @@ def upload_book(
             "estimated_reading_time", "formats", "benefits", "who_for",
             "learnings", "about_author", "rights_metadata", "audiobook_enabled",
             "generate_audiobook", "is_published", "slug",
+            *DRAFT_EDITORIAL_REVIEW_FLAGS.keys(),
         ]
         if key in obj
     }

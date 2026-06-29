@@ -1642,6 +1642,128 @@ textarea.input-elegant {
   -webkit-backdrop-filter: blur(18px) saturate(120%);
   border-bottom: 1px solid rgba(229, 220, 211, 0.55);
 }
+.header-brand-cluster {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.58rem;
+}
+.india-origin-badge {
+  position: relative;
+  display: inline-flex;
+  height: 2.24rem;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.38rem;
+  border: 1px solid rgba(197, 160, 89, 0.46);
+  border-radius: 999px;
+  padding: 0.16rem 0.62rem 0.16rem 0.24rem;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.94), transparent 42%),
+    linear-gradient(145deg, rgba(255, 252, 243, 0.9), rgba(244, 235, 219, 0.62)),
+    rgba(253, 252, 248, 0.76);
+  box-shadow:
+    0 14px 28px -22px rgba(74, 28, 39, 0.52),
+    0 0 0 1px rgba(255, 255, 255, 0.34) inset,
+    inset 0 1px 0 rgba(253, 252, 248, 0.92);
+  color: var(--brand-burgundy);
+}
+.india-origin-badge__mark {
+  width: 3.24rem;
+  height: 1.52rem;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+.india-origin-badge__flag-shadow {
+  fill: rgba(74, 28, 39, 0.2);
+  filter: drop-shadow(0 5px 7px rgba(74, 28, 39, 0.18));
+}
+.india-origin-badge__band--saffron {
+  fill: #e08a28;
+}
+.india-origin-badge__band--ivory {
+  fill: #fffaf0;
+}
+.india-origin-badge__band--green {
+  fill: #1f8a52;
+}
+.india-origin-badge__silk {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.34);
+  stroke-linecap: round;
+  stroke-width: 1.2;
+  mix-blend-mode: screen;
+}
+.india-origin-badge__flag-rim {
+  fill: none;
+  stroke: rgba(120, 78, 28, 0.38);
+  stroke-linejoin: round;
+  stroke-width: 1.15;
+}
+.india-origin-badge__wheel {
+  fill: rgba(255, 250, 240, 0.96);
+  stroke: #213d82;
+  stroke-width: 1.35;
+}
+.india-origin-badge__wheel-lines {
+  fill: none;
+  stroke: #213d82;
+  stroke-linecap: round;
+  stroke-width: 0.58;
+}
+.india-origin-badge__wheel-core {
+  fill: #213d82;
+}
+.india-origin-badge__text {
+  display: grid;
+  gap: 0.03rem;
+  line-height: 1;
+}
+.india-origin-badge__text strong {
+  color: var(--brand-burgundy);
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
+}
+.india-origin-badge__text small {
+  color: rgba(74, 28, 39, 0.66);
+  font-size: 0.46rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 1279px) {
+  .india-origin-badge {
+    width: 3.12rem;
+    justify-content: center;
+    padding-inline: 0.18rem;
+  }
+  .india-origin-badge__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 374px) {
+  .header-brand-cluster {
+    gap: 0.34rem;
+  }
+  .india-origin-badge {
+    width: 2.82rem;
+    height: 1.92rem;
+  }
+  .india-origin-badge__mark {
+    width: 2.62rem;
+  }
+}
 
 /* ----------- Image fade ----------- */
 .fade-img { transition: opacity .6s ease; }

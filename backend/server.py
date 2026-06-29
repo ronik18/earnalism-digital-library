@@ -2319,6 +2319,15 @@ class Book(BaseModel):
     audiobook_assets: Dict[str, str] = Field(default_factory=dict)
     audiobook: Dict[str, Any] = Field(default_factory=dict)
     rights_metadata: Dict[str, Any] = Field(default_factory=dict)
+    readerStatus: str = "ready_for_editorial_review"
+    publicationStatus: str = "draft"
+    isPublic: bool = False
+    isLive: bool = False
+    showInPublicLibrary: bool = False
+    showInHomepage: bool = False
+    allowPublicReading: bool = False
+    allowCheckout: bool = False
+    allowPayment: bool = False
     is_published: bool = True
     created_at: str = Field(default_factory=now_iso)
 
@@ -2414,6 +2423,15 @@ class BookIn(BaseModel):
     rights_metadata: Dict[str, Any] = Field(default_factory=dict)
     audiobook_enabled: bool = False
     generate_audiobook: bool = False
+    readerStatus: str = "ready_for_editorial_review"
+    publicationStatus: str = "draft"
+    isPublic: bool = False
+    isLive: bool = False
+    showInPublicLibrary: bool = False
+    showInHomepage: bool = False
+    allowPublicReading: bool = False
+    allowCheckout: bool = False
+    allowPayment: bool = False
     is_published: bool = True
     slug: Optional[str] = None
 

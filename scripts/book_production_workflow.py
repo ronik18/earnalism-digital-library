@@ -28,6 +28,11 @@ try:
 except ImportError as exc:  # pragma: no cover - local environment guard
     raise SystemExit("Missing dependency: requests. Install project/backend requirements first.") from exc
 
+try:
+    from publication_safety_mode import DRAFT_EDITORIAL_REVIEW_FLAGS, validate_import_book_safety
+except ImportError:  # pragma: no cover - package import path used by tests
+    from scripts.publication_safety_mode import DRAFT_EDITORIAL_REVIEW_FLAGS, validate_import_book_safety
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_API_URL = "https://api.theearnalism.com"
@@ -58,6 +63,7 @@ BOOK_IN_FIELDS = {
     "generate_audiobook",
     "is_published",
     "slug",
+    *DRAFT_EDITORIAL_REVIEW_FLAGS.keys(),
 }
 RIGHTS_METADATA_FIELDS = {
     "title",
@@ -338,6 +344,15 @@ class EarnalismApi:
     def set_publication_status(self, book: Dict[str, Any], rights_metadata: Dict[str, Any], is_published: bool) -> Dict[str, Any]:
         payload = {field: book.get(field) for field in BOOK_IN_FIELDS if field in book}
         payload["slug"] = book["slug"]
+        if is_published:
+            safety_issues = validate_import_book_safety(
+                {"slug": book["slug"], "is_published": True},
+                require_draft_fields=False,
+            )
+            if safety_issues:
+                raise RuntimeError("Publication safety allowlist blocks live publication: " + "; ".join(safety_issues))
+        else:
+            payload.update(DRAFT_EDITORIAL_REVIEW_FLAGS)
         payload["is_published"] = is_published
         payload["cover_image_url"] = book.get("cover_image_url") or book.get("cover_url") or ""
         payload["back_cover_image_url"] = book.get("back_cover_image_url") or book.get("back_cover_url") or ""
