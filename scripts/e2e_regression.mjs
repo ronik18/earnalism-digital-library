@@ -11,6 +11,7 @@ const outputDir = path.resolve(process.env.E2E_OUTPUT_DIR || "test-results/regre
 const isLocalFrontend = /^https?:\/\/(?:127\.0\.0\.1|localhost|\[::1\])/i.test(baseUrl);
 const liveApprovedSlug = "dracula";
 const expectedPipelineSlugs = [
+  "kshudhita-pashan",
   "frankenstein",
   "sherlock-holmes",
   "sultanas-dream",
@@ -213,20 +214,19 @@ async function main() {
       viewportWidth: window.innerWidth,
       hasHeroCard: Boolean(document.querySelector('[data-testid="hero-dracula-card"]')),
       hasPremiumHero: Boolean(document.querySelector('[data-testid="premium-landing-hero"]')),
-      hasReadingModel: Boolean(document.querySelector('[data-testid="dracula-reading-model"]')),
-      hasReadingModelPassCta: Boolean(document.querySelector('[data-testid="reading-model-pass-cta"]')),
-      hasKshudhitaPipeline: Boolean(document.querySelector('[data-testid="pipeline-kshudhita-pashan"]')),
-      hasKshudhitaCoverStack: Boolean(document.querySelector('[data-testid="pipeline-kshudhita-cover-stack"]')),
+      hasReadingTimeHelper: /reading time is used only while you read/i.test(document.body.innerText),
+      hasKshudhitaPipeline: Boolean(document.querySelector('[data-testid="pipeline-card-kshudhita-pashan"]')),
       hasPipelineShelf: Boolean(document.querySelector('[data-testid="pipeline-books"]')),
-      hasReadingCircle: Boolean(document.querySelector('[data-testid="reading-circle-section"]')),
       headline: document.querySelector('[data-testid="hero-headline"]')?.textContent?.replace(/\s+/g, " ").trim(),
       heroReadHref: document.querySelector('[data-testid="hero-cta-read"]')?.getAttribute("href"),
       heroStartHref: document.querySelector('[data-testid="hero-cta-start-dracula"]')?.getAttribute("href"),
       heroPassHref: document.querySelector('[data-testid="hero-cta-pricing"]')?.getAttribute("href"),
-      readingModelPassHref: document.querySelector('[data-testid="reading-model-pass-cta"]')?.getAttribute("href"),
-      kshudhitaNotifyHref: document.querySelector('[data-testid="pipeline-kshudhita-notify"]')?.getAttribute("href"),
+      kshudhitaNotifyHref: document.querySelector('[data-testid="pipeline-notify-kshudhita-pashan"]')?.getAttribute("href"),
       pipelineCards,
       notifyLinks,
+      unsafePipelineLinks: [...document.querySelectorAll('[data-testid^="pipeline-card-"] a')]
+        .map((link) => link.getAttribute("href") || "")
+        .filter((href) => href.startsWith("/reader/") || href.startsWith("/pricing") || /listen|audio/i.test(href)),
       staleCarouselCount: document.querySelectorAll('[data-testid="controlled-carousel-section"]').length,
       staleAudioUnavailableCount: document.querySelectorAll('[data-testid="audiobook-unavailable"]').length,
       legacyLiveCoverCount: document.querySelectorAll('[data-testid^="live-cover-preview-"]').length,
@@ -242,23 +242,23 @@ async function main() {
   });
   assert(home.hasHeroCard, "Dracula hero card is missing");
   assert(home.hasPremiumHero, "premium Dracula hero is missing");
-  assert(home.hasReadingModel, "reading-time revenue model section is missing");
-  assert(home.hasReadingModelPassCta, "reading-time pass CTA is missing");
+  assert(home.hasReadingTimeHelper, "reading-time helper line is missing");
   assert(home.hasKshudhitaPipeline, "Kshudhita pipeline feature is missing");
-  assert(home.hasKshudhitaCoverStack, "Kshudhita pipeline cover stack is missing");
   assert(home.hasPipelineShelf, "pipeline shelf is missing");
-  assert(home.hasReadingCircle, "reading circle section is missing");
-  assert(/Begin with Dracula/i.test(home.headline || ""), `hero headline is not Dracula-first: ${home.headline}`);
+  assert(/Step into the classics/i.test(home.headline || ""), `hero headline is not the current reference hero: ${home.headline}`);
   assert(home.heroReadHref === "/reader/dracula", `hero free-read CTA should open Dracula reader, got ${home.heroReadHref}`);
   assert(home.heroStartHref === "/book/dracula", `hero Start Dracula CTA should open Dracula detail, got ${home.heroStartHref}`);
   assert(home.heroPassHref === "/pricing?source=homepage_hero&book=dracula", `hero reading pass CTA mismatch: ${home.heroPassHref}`);
-  assert(home.readingModelPassHref === "/pricing?source=homepage_reading_model&book=dracula", `reading model pass CTA mismatch: ${home.readingModelPassHref}`);
   assert(home.kshudhitaNotifyHref === "/contact?interest=kshudhita-pashan", `Kshudhita must remain notify-only, got ${home.kshudhitaNotifyHref}`);
   assert(
     JSON.stringify(home.pipelineCards) === JSON.stringify(expectedPipelineSlugs),
     `pipeline cards mismatch: ${JSON.stringify(home.pipelineCards)}`,
   );
-  assert(home.notifyLinks.length === 0, `mini pipeline cards must not expose reader/payment CTAs: ${JSON.stringify(home.notifyLinks)}`);
+  assert(
+    home.notifyLinks.every((href) => typeof href === "string" && href.startsWith("/contact?interest=")),
+    `pipeline Notify Me links must point to contact interest capture only: ${JSON.stringify(home.notifyLinks)}`,
+  );
+  assert(home.unsafePipelineLinks.length === 0, `pipeline cards leaked reader/payment/audio links: ${JSON.stringify(home.unsafePipelineLinks)}`);
   assert(home.staleCarouselCount === 0, "retired controlled launch carousel should not render in the luxury homepage");
   assert(home.staleAudioUnavailableCount === 0, "stale audiobook unavailable note should not render");
   assert(home.legacyLiveCoverCount === 0, "retired live-cover preview cards should not render in Dracula-first launch");
