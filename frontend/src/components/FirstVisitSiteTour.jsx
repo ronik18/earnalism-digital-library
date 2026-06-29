@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, BookOpen, ChevronLeft, ChevronRight, Compass, Sparkles, X } from "lucide-react";
-import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import "./FirstVisitSiteTour.css";
 
 const STORAGE_KEY = "earnalism:first-visit-site-tour:v1";
@@ -26,10 +25,10 @@ const TOUR_STEPS = [
   {
     key: "covers",
     icon: Compass,
-    targetSelectors: ['[data-testid="hero-dracula-card"]', '[data-testid="dracula-reading-model"]'],
+    targetSelectors: ['[data-testid="hero-dracula-card"]', '[data-testid="home-live-dracula"]'],
     eyebrow: "Live controlled release",
     title: "Dracula is the open room",
-    body: "The custom Earnalism Dracula cover marks the one approved core reading release. Audiobook experience in private review.",
+    body: "The custom Earnalism Dracula cover marks the one approved core reading release. Audiobook experience is in private review.",
   },
   {
     key: "shelves",
@@ -58,23 +57,14 @@ export default function FirstVisitSiteTour() {
     return params.get("tour") === "1";
   }, [location.search]);
 
-  const completeTour = useCallback((outcome = "completed") => {
+  const completeTour = useCallback(() => {
     try {
       window.localStorage.setItem(STORAGE_KEY, "complete");
     } catch (_) {
       // Storage can be unavailable in private modes; closing the tour should still work.
     }
-    trackFunnelEvent(
-      outcome === "skipped" ? "first_time_site_tour_skipped" : "first_time_site_tour_completed",
-      {
-        source: forcedTour ? "forced_query" : "first_visit",
-        step_key: step?.key || "",
-        step_index: stepIndex + 1,
-        total_steps: totalSteps,
-      },
-    );
     setOpen(false);
-  }, [forcedTour, step?.key, stepIndex, totalSteps]);
+  }, []);
 
   const updateTargetRect = useCallback(() => {
     if (!open || !step) {
@@ -114,18 +104,13 @@ export default function FirstVisitSiteTour() {
 
     openTimerRef.current = window.setTimeout(() => {
       previousFocusRef.current = document.activeElement;
-      trackFunnelEvent("first_time_site_tour_shown", {
-        source: forcedTour ? "forced_query" : "first_visit",
-        path: location.pathname,
-        total_steps: totalSteps,
-      });
       setOpen(true);
     }, forcedTour ? 120 : 850);
 
     return () => {
       window.clearTimeout(openTimerRef.current);
     };
-  }, [forcedTour, location.pathname, totalSteps]);
+  }, [forcedTour, location.pathname]);
 
   useEffect(() => {
     if (!open) {
@@ -159,7 +144,7 @@ export default function FirstVisitSiteTour() {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        completeTour("skipped");
+        completeTour();
         return;
       }
 
@@ -206,7 +191,7 @@ export default function FirstVisitSiteTour() {
         type="button"
         className="site-tour__scrim"
         aria-label="Skip Earnalism site tour"
-        onClick={() => completeTour("skipped")}
+        onClick={completeTour}
       />
 
       {targetRect && <div className="site-tour__spotlight" style={spotlightStyle} aria-hidden="true" />}
@@ -225,7 +210,7 @@ export default function FirstVisitSiteTour() {
             <Icon size={15} strokeWidth={1.7} aria-hidden="true" />
             {step.eyebrow}
           </span>
-          <button type="button" className="site-tour__icon-button" onClick={() => completeTour("skipped")} aria-label="Skip site tour">
+          <button type="button" className="site-tour__icon-button" onClick={completeTour} aria-label="Skip site tour">
             <X size={17} strokeWidth={1.7} aria-hidden="true" />
           </button>
         </div>
@@ -244,7 +229,7 @@ export default function FirstVisitSiteTour() {
         <p id="site-tour-body" className="site-tour__body">{step.body}</p>
 
         <div className="site-tour__actions">
-          <button type="button" className="site-tour__skip" onClick={() => completeTour("skipped")}>
+          <button type="button" className="site-tour__skip" onClick={completeTour}>
             Skip tour
           </button>
           <div className="site-tour__nav">
@@ -258,7 +243,7 @@ export default function FirstVisitSiteTour() {
               <ChevronLeft size={16} strokeWidth={1.7} aria-hidden="true" />
             </button>
             {isLastStep ? (
-              <Link to="/library" className="site-tour__primary" onClick={() => completeTour("completed")}>
+              <Link to="/library" className="site-tour__primary" onClick={completeTour}>
                 Explore Library <ArrowRight size={14} strokeWidth={1.8} aria-hidden="true" />
               </Link>
             ) : (

@@ -1,32 +1,31 @@
 # Library Pipeline Cover Audit
 
-Status: READY_FOR_REVIEW_PENDING_VALIDATION
+## Scope
 
-## Summary
+This audit covers the pipeline covers used in the homepage Shelf 2 reference section.
 
-The library now distinguishes between real local cover evidence and designed placeholders. It does not pretend all pipeline titles have production-ready covers.
+## Cover Status
 
-## Cover Inventory
+| Title | Status | Public CTA |
+| --- | --- | --- |
+| Kshudhita Pashan | Local optimized cover added: `/assets/books/kshudhita-pashan/front-cover.webp` | Notify Me only |
+| Frankenstein | Local optimized cover added: `/assets/books/frankenstein/front-cover.webp` | Notify Me only |
+| Sherlock Holmes | Local optimized cover added: `/assets/books/sherlock-holmes/front-cover.webp` | Notify Me only |
+| Sultana's Dream | Premium placeholder used; no approved local cover located in this pass | Notify Me only |
 
-| Title | Slug | Public status | Cover source | Library treatment | Public CTA |
-| --- | --- | --- | --- | --- | --- |
-| Dracula | `dracula` | Live reading-only release | `frontend/public/assets/books/dracula/dracula-front-cover.webp` and back cover | Premium live reading object | Read Chapter 1 Free, Start Dracula, Get 7-Day Reading Pass |
-| The Hungry Stones / Kshudhita Pashan | `kshudhita-pashan` | Pipeline-only | `frontend/public/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp` and back cover | Real front/back covers shown as pipeline evidence | Notify Me, Reading Circle only |
-| Frankenstein | `frankenstein` | Pipeline-only | No safe local production cover found in current controlled pipeline | Designed Earnalism shelf placeholder | Notify Me only |
-| Sherlock Holmes | `sherlock-holmes` | Pipeline-only | No safe local production cover found in current controlled pipeline | Designed Earnalism shelf placeholder | Notify Me only |
-| Sultana's Dream | `sultanas-dream` | Pipeline-only | No safe local production cover found in current controlled pipeline | Designed Earnalism shelf placeholder | Notify Me only |
-| Calculus Made Easy | `calculus-made-easy` | Pipeline-only | No safe local production cover found in current controlled pipeline | Designed Earnalism shelf placeholder | Notify Me only |
+## Safety Result
 
-## Findings
+- No pipeline title is public.
+- No pipeline title has Start Reading.
+- No pipeline title has checkout/payment CTA.
+- No pipeline title has Listen Now or public audio.
+- No AudioObject metadata was added.
 
-- Pipeline cards previously risked feeling unfinished when no cover existed.
-- Kshudhita Pashan had local owner-provided cover assets available and now uses them in the library pipeline spotlight.
-- Other pipeline titles remain visibly in preparation instead of showing misleading live-style cover art.
-- No fake links, fake covers, or public reading CTAs were introduced.
+## Visual Result
 
-## Public Claims
+The Shelf 2 cards now read as compact, premium pipeline items rather than giant initials or live product cards. The remaining visual gap is an owner-approved Sultana's Dream cover.
 
-- Kshudhita Pashan is not public-readable.
-- Pipeline books do not show Start Reading, payment, or audio CTAs.
-- Public audiobook release remains blocked.
-- No broad catalog availability claim is introduced.
+## Owner Review Items
+
+- Provide or approve a Sultana's Dream cover if the Shelf 2 row should be fully cover-led.
+- Confirm the standardized public spelling remains Kshudhita Pashan.

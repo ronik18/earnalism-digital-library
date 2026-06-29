@@ -100,6 +100,7 @@ function withoutNegatedAudioSafetyCopy(value) {
   return String(value || "")
     .replace(/No unapproved title offers Start Reading, Read Preview, or Listen Now\./gi, "")
     .replace(/Audio is not available yet\./gi, "")
+    .replace(/Audiobook experience is in private review\./gi, "")
     .replace(/Audio controls hidden\./gi, "");
 }
 
@@ -176,7 +177,8 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
 
   test("homepage, library, and pricing snapshots stay Dracula-first and not broad-catalog", () => {
     expect(homeHtml).toContain("Begin with Dracula.");
-    expect(homeHtml).toContain("Dracula is the only live approved core reading release today.");
+    expect(homeHtml).toContain("Controlled launch begins with Dracula");
+    expect(homeHtml).toContain("Dracula is the only live approved classic reading release today.");
     expect(libraryHtml).toContain("Live Controlled Release: Dracula only.");
     expect(libraryHtml).toContain("No unapproved title offers reader, preview, or listening CTAs.");
     expect(pricingHtml).toContain("Choose your reading time. Return whenever the book calls.");

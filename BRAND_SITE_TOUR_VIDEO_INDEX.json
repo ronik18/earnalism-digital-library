@@ -16,7 +16,7 @@
     {
       "shot_id": "homepage_mobile",
       "title": "Homepage mobile - controlled launch",
-      "overlay": "Begin with Dracula",
+      "overlay": "Step into the classics",
       "caption": "The controlled launch keeps Dracula clear above the fold.",
       "source_video": "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-cb634-d-and-pipeline-titles-gated-chromium/video.webm"
     },

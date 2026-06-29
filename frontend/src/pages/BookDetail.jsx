@@ -13,7 +13,6 @@ import {
   DRACULA_SOURCE_NOTE,
   LIVE_APPROVED_SLUG,
   mergeDraculaBook,
-  normalizeChapterDisplayTitle,
   readingPassUrl,
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
@@ -41,7 +40,7 @@ export default function BookDetail() {
     description: bookNotFound
       ? "This Earnalism book is no longer available."
       : publicBook?.slug === LIVE_APPROVED_SLUG
-        ? "Preview Dracula by Bram Stoker on Earnalism. Read Chapter 1 free and continue the approved Tier A core reading release with flexible reading-time access."
+        ? "Preview Dracula by Bram Stoker on Earnalism. Read Chapter 1 free and continue the approved classic reading release with flexible reading-time access."
         : publicBook?.short_description || publicBook?.subtitle || "A curated digital title from The Earnalism Digital Library — for readers who value depth, beauty, and meaning.",
     image: publicBook?.cover_image_url,
     imageAlt: publicBook?.slug === LIVE_APPROVED_SLUG ? "Custom Earnalism Dracula cover artwork" : publicBook?.title,
@@ -78,7 +77,7 @@ export default function BookDetail() {
 
   useEffect(() => {
     if (!loading && book?.slug === LIVE_APPROVED_SLUG) {
-      trackFunnelEvent(DRACULA_CTA_EVENTS.bookView, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG });
+      trackFunnelEvent(DRACULA_CTA_EVENTS.bookView, { book: LIVE_APPROVED_SLUG });
     }
   }, [book, loading]);
 
@@ -224,10 +223,10 @@ export default function BookDetail() {
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center" data-testid="book-actions">
             {hasFreePreview && (
-              <Link to={readerHref} className="btn-secondary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, book_slug: publicBook.slug, cta: "book_detail_preview" })}>Read Chapter 1 Free</Link>
+              <Link to={readerHref} className="btn-secondary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, cta: "book_detail_preview" })}>Read Chapter 1 Free</Link>
             )}
-            <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, book_slug: publicBook.slug, cta: "book_detail_continue" })}>Continue Dracula</Link>
-            <Link to={passHref} className="btn-link justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: publicBook.slug, book_slug: publicBook.slug, cta: "book_detail_pass" })}>Get 7-Day Reading Pass</Link>
+            <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, cta: "book_detail_continue" })}>Continue Dracula</Link>
+            <Link to={passHref} className="btn-link justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: publicBook.slug, cta: "book_detail_pass" })}>Get 7-Day Reading Pass</Link>
           </div>
 
           {isDracula && (
@@ -236,7 +235,7 @@ export default function BookDetail() {
               <div className="grid gap-4 text-sm leading-relaxed text-charcoal-soft sm:grid-cols-3">
                 <p><strong className="text-burgundy">Preview:</strong> Chapter 1 opens free so you can feel the room first.</p>
                 <p><strong className="text-burgundy">Reading pass:</strong> Later chapters use reading time from your wallet, not a subscription.</p>
-                <p><strong className="text-burgundy">Audio:</strong> Audiobook experience in private review. No listening CTA is shown.</p>
+                <p><strong className="text-burgundy">Audio:</strong> Audiobook experience in private review, with no public listening CTA.</p>
               </div>
             </div>
           )}
@@ -254,7 +253,7 @@ export default function BookDetail() {
                 {(publicBook.chapters || []).map((c, i) => (
                   <li key={c.id} className="flex items-baseline gap-4 text-charcoal">
                     <span className="italic-accent text-gold-deep shrink-0 w-10">{String(i + 1).padStart(2, "0")}</span>
-                    <Link to={`/reader/${publicBook.slug}?c=${c.id}`} className="font-serif-display text-[1.15rem] hover:text-burgundy transition-colors">{normalizeChapterDisplayTitle(c.title)}</Link>
+                    <Link to={`/reader/${publicBook.slug}?c=${c.id}`} className="font-serif-display text-[1.15rem] hover:text-burgundy transition-colors">{c.title}</Link>
                   </li>
                 ))}
               </ol>
