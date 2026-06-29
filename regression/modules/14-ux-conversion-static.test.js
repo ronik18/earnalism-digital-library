@@ -274,7 +274,7 @@ describe("UX conversion static signals", () => {
     expect(homepageHeroLuxuryScorecard).toContain("Luxury/theme score: `10/10`");
     expect(homepageHeroConversionScorecard).toContain("Conversion clarity score: `10/10`");
     expect(homepageHeroConversionScorecard).toContain("Public-claims safety score: `10/10`");
-    expect(homepageReferenceHeroImplementationReport).toContain("Hero background asset: `frontend/public/assets/hero/golden-hour-library-hero.webp`");
+    expect(homepageReferenceHeroImplementationReport).toContain("Uses the local optimized `frontend/public/assets/hero/golden-hour-library-hero.webp`");
     expect(homepageReferenceHeroImplementationReport).toContain("display-only hard-copy object");
     expect(homepageReferenceHeroImplementationReport).toContain("0 opaque outer-edge pixels");
     expect(homepageReferenceHeroImplementationReport).toContain('data-approved-hero-max-height="650"');
@@ -351,7 +351,8 @@ describe("UX conversion static signals", () => {
     expect(packageJson).toContain('"launch:payment-smoke:test-mode": "python3 scripts/launch_readiness_audit.py --mode payment-smoke-test-mode"');
     expect(launchAudit).toContain('"stale_intent_expiry_detected"');
     expect(launchAudit).toContain('"no_public_audiobook_sale_detected"');
-    expect(alwaysVisibleLaunchCopy).toContain("Passes credit a wallet; time is spent only while reading.");
+    expect(alwaysVisibleLaunchCopy).toContain("Reading time stays with you");
+    expect(alwaysVisibleLaunchCopy).toContain("Chapter 1 is free. Reading time is used only while you read.");
     expect(renderedPricingSources).toContain("No subscription or autorenewal");
     expect(renderedPricingSources).not.toMatch(/own forever|ownership forever|permanent ownership|autorenewing plan|recurring subscription/i);
     expect(renderedPricingSources).not.toMatch(/buy audiobook|audiobook pass|Listen Now/i);
@@ -1111,17 +1112,24 @@ describe("UX conversion static signals", () => {
 
   test("Bengali Gothic candidate is pipeline-only and not a live reading CTA", () => {
     expect(home).toContain('data-testid="bengali-gothic-pipeline-shelf"');
-    expect(home).toContain('data-testid="pipeline-kshudhita-cover-stack"');
-    expect(home).toContain("KSHUDHITA_PASHAN_PIPELINE.coverStatus");
-    expect(home).toContain("KSHUDHITA_PASHAN_PIPELINE.frontCoverImage");
-    expect(home).toContain("KSHUDHITA_PASHAN_PIPELINE.backCoverImage");
+    expect(home).toContain("reference-pipeline-card");
+    expect(home).toContain('data-testid={`pipeline-card-${book.slug}`}');
+    expect(home).toContain('data-testid={`pipeline-cover-${book.slug}`}');
+    expect(home).toContain("Coming Through the Rights-Safe Pipeline");
+    expect(home).toContain("These books are not live products yet. They have Notify Me CTAs only");
     expect(home).not.toContain("kshudhita-cover-placeholder__title");
     expect(controlledLaunch).toContain('KSHUDHITA_PASHAN_FRONT_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp"');
     expect(controlledLaunch).toContain('KSHUDHITA_PASHAN_BACK_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp"');
+    expect(controlledLaunch).toContain('cover_image_url: "/assets/books/kshudhita-pashan/front-cover.webp"');
+    expect(controlledLaunch).toContain('cover_image_url: "/assets/books/frankenstein/front-cover.webp"');
+    expect(controlledLaunch).toContain('cover_image_url: "/assets/books/sherlock-holmes/front-cover.webp"');
+    expect(controlledLaunch).toContain('cover_status: "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER"');
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp"))).toBe(true);
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp"))).toBe(true);
-    expect(home).toContain("KSHUDHITA_PASHAN_PIPELINE.titleEn} is visible, not open.");
-    expect(controlledLaunch).toContain("Pipeline classic: The Hungry Stones");
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/kshudhita-pashan/front-cover.webp"))).toBe(true);
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/frankenstein/front-cover.webp"))).toBe(true);
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/sherlock-holmes/front-cover.webp"))).toBe(true);
+    expect(controlledLaunch).toContain('title_en: "The Hungry Stones"');
     expect(controlledLaunch).toContain("A Bengali Gothic candidate in rights-safe preparation.");
     expect(library).toContain('data-testid="library-bengali-gothic-pipeline"');
     expect(library).toContain('data-testid="library-kshudhita-cover-evidence"');
@@ -1135,7 +1143,7 @@ describe("UX conversion static signals", () => {
     const homePipelineBlock = extractBetween(
       home,
       'data-testid="bengali-gothic-pipeline-shelf"',
-      'data-testid="reading-circle-section"'
+      'data-testid="newsletter-card"'
     );
     const libraryPipelineBlock = extractBetween(
       library,
@@ -1145,7 +1153,6 @@ describe("UX conversion static signals", () => {
 
     for (const block of [homePipelineBlock, libraryPipelineBlock]) {
       expect(block).toContain("Notify Me");
-      expect(block).toContain("Reading Circle");
       expect(block).not.toContain("Start Reading");
       expect(block).not.toContain("Read Preview");
       expect(block).not.toContain("Listen Now");
@@ -1179,7 +1186,7 @@ describe("UX conversion static signals", () => {
     const pipelineBlock = extractBetween(
       home,
       'data-testid="pipeline-books"',
-      'data-testid="reading-circle-section"'
+      'data-testid="newsletter-card"'
     );
     expect(pipelineBlock).not.toContain("Start Reading");
     expect(pipelineBlock).not.toContain("Read Preview");
@@ -1543,7 +1550,7 @@ describe("UX conversion static signals", () => {
 
     [
       "The Earnalism Digital Library",
-      "Begin with Dracula",
+      "Step into the classics",
       "Chapter 1 is free",
       "27 chapters prepared for focused reading",
       "Audio is intentionally disabled until QA passes",
@@ -1629,13 +1636,14 @@ describe("UX conversion static signals", () => {
     const homeHtml = readOptional("frontend/build/index.html");
     const readerHtml = readOptional("frontend/build/reader/dracula/index.html");
     if (!homeHtml || !readerHtml) {
-      expect(staticSnapshotGenerator).toContain("Begin with Dracula");
+      expect(staticSnapshotGenerator).toContain("Step Into Dracula");
+      expect(staticSnapshotGenerator).toContain("Controlled launch begins with Dracula");
       return;
     }
 
-    expect(homeHtml).toContain("Begin with Dracula");
-    expect(homeHtml).toContain("quiet digital reading room");
-    expect(homeHtml).toContain("future classics remain in rights-safe preparation");
+    expect(homeHtml).toContain("Step Into Dracula");
+    expect(homeHtml).toContain("Controlled launch begins with Dracula");
+    expect(homeHtml).toContain("rights-safe pipeline");
     expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");
     expect(homeHtml).not.toContain("Preview every book before you pay");
     expect(metaContent(readerHtml, "name", "robots")).toContain("noindex");

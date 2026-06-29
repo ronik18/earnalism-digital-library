@@ -11,7 +11,7 @@
 | Pixel utilization | 9.8/10 | Hero, Dracula object, Shelf 2, and Reading Circle each serve trust, desire, or conversion. |
 | Mobile first-screen efficiency | 9.8/10 | Mobile keeps headline, trust chips, CTAs, and the hard-copy Dracula object visible without horizontal overflow. |
 | Social/footer fit | 9.4/10 | Existing lower social area is preserved. Footer/social polish remains dependent on configured social settings. |
-| Public claims safety | 10/10 | No public audiobook, Listen Now, AudioObject, broad catalog, accessibility, or ownership overclaim. |
+| Public claims safety | 10/10 | No public audiobook, public listening CTA, audio structured-data metadata, broad catalog, accessibility, or ownership overclaim. |
 | Overall revenue UX score | 9.8/10 | Clearer than the previous repeated Dracula sections and aligned with reading-time revenue. |
 
 ## Conversion Path

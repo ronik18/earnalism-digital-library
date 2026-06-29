@@ -267,7 +267,7 @@ export default function Home() {
             <p className="mt-6 max-w-xl text-[#F4EFEA]/76 leading-[1.8]">
               Receive Dracula reading notes and updates as future classics move from rights review to controlled release.
             </p>
-            {activeSocials.length > 0 && (
+            {activeSocials.length > 0 ? (
               <nav className="mt-9" aria-label="Earnalism social links" data-testid="home-socials">
                 <div className="text-[0.64rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]/90">Follow the reading room</div>
                 <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -278,7 +278,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Visit Earnalism on ${label}`}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#FDFCF8]/18 bg-[#FDFCF8]/[0.045] text-[#F4EFEA]/78 transition-colors duration-300 hover:border-[var(--brand-gold-soft)]/70 hover:bg-[rgba(216,185,122,0.1)] hover:text-[var(--brand-gold-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand-gold-soft)]"
+                      className="home-social-rail__link inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#FDFCF8]/18 bg-[#FDFCF8]/[0.045] text-[#F4EFEA]/78 transition-colors duration-300 hover:border-[var(--brand-gold-soft)]/70 hover:bg-[rgba(216,185,122,0.1)] hover:text-[var(--brand-gold-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand-gold-soft)]"
                       data-testid={`home-social-${key}`}
                     >
                       <Icon size={17} strokeWidth={1.55} aria-hidden="true" />
@@ -286,6 +286,10 @@ export default function Home() {
                   ))}
                 </div>
               </nav>
+            ) : (
+              <div className="home-social-review mt-9" data-testid="home-socials-owner-review">
+                No placeholder or fake social links are shown.
+              </div>
             )}
           </div>
           <form onSubmit={subscribe} className="rounded-lg border border-[#FDFCF8]/16 bg-[#FDFCF8]/[0.06] p-6 backdrop-blur-sm sm:p-8 lg:col-span-6 lg:p-10" data-testid="newsletter-card" aria-describedby="newsletter-description">

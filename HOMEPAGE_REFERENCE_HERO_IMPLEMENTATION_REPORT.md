@@ -63,8 +63,8 @@ The footer/contact social system was not redesigned in this pass. The homepage r
 Confirmed in the implementation and regression coverage:
 
 - No public audiobook availability claim.
-- No Listen Now CTA.
-- No AudioObject metadata.
+- No public listening CTA.
+- No public audio structured-data metadata.
 - No pipeline Start Reading, payment, or audio CTA.
 - No broad catalog live claim.
 - No unsupported accessibility/WCAG claim.

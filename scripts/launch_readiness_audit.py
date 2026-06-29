@@ -90,6 +90,25 @@ FIRST_BATCH = [
 ]
 
 LAUNCH_EVENTS = [
+    "homepage_view",
+    "first_time_site_tour_shown",
+    "first_time_site_tour_completed",
+    "first_time_site_tour_skipped",
+    "hero_read_chapter_free_click",
+    "dracula_book_page_view",
+    "start_dracula_click",
+    "reader_opened",
+    "reader_locked_state",
+    "reader_low_balance_state",
+    "pricing_page_view",
+    "reading_pack_selected",
+    "checkout_started",
+    "payment_success_return",
+    "payment_failed_or_cancelled",
+    "wallet_credited_visible",
+    "continue_reading_click",
+    "return_resume_reading_click",
+    "core_web_vital",
     "page_view",
     "book_view",
     "preview_start",
@@ -121,7 +140,7 @@ LAUNCH_EVENTS = [
     "bengali_gothic_reading_circle_click",
 ]
 
-PAYMENT_SMOKE_EVENTS = ["pricing_view", "checkout_start", "payment_success", "payment_failed"]
+PAYMENT_SMOKE_EVENTS = ["pricing_page_view", "reading_pack_selected", "checkout_started", "payment_success_return", "payment_failed_or_cancelled", "wallet_credited_visible", "continue_reading_click"]
 
 FIRST_BATCH_SOURCE_FIELDS = [
     "title",
@@ -1272,10 +1291,8 @@ def run_payment_smoke() -> dict[str, Any]:
         "listen now",
     ]
     analytics_schema_path = OUTPUT_DIR / "analytics_event_schema.json"
-    analytics_schema = read_json(analytics_schema_path)
-    if not analytics_schema:
-        analytics_schema = analytics_event_schema()
-        write_json(analytics_schema_path, analytics_schema)
+    analytics_schema = analytics_event_schema()
+    write_json(analytics_schema_path, analytics_schema)
     schema_events = {event.get("event") for event in analytics_schema.get("events", []) if isinstance(event, dict)}
     lower_public_payment_copy = public_payment_copy.lower()
     public_audio_block_copy_detected = (
@@ -1291,9 +1308,9 @@ def run_payment_smoke() -> dict[str, Any]:
         "dry_run_only": True,
         "no_external_razorpay_call": True,
         "pricing_view_page_exists": "data-testid=\"pricing-page\"" in pricing,
-        "checkout_start_event_detected": "checkout_start" in pricing,
-        "payment_success_event_detected": "payment_success" in pricing,
-        "payment_failed_event_detected": "payment_failed" in pricing,
+        "checkout_start_event_detected": "checkout_started" in pricing,
+        "payment_success_event_detected": "payment_success_return" in pricing,
+        "payment_failed_event_detected": "payment_failed_or_cancelled" in pricing,
         "test_mode_simulator_detected": "/payments/_simulate_topup" in pricing and "/payments/_simulate_webhook" in pricing,
         "real_order_endpoint_detected": "@api.post(\"/payments/topup\"" in server,
         "verify_endpoint_detected": "@api.post(\"/payments/verify\"" in server,
@@ -1381,6 +1398,25 @@ def audit_payment_revenue() -> dict[str, Any]:
 
 def analytics_event_schema() -> dict[str, Any]:
     event_metadata: dict[str, list[str]] = {
+        "homepage_view": ["route", "source"],
+        "first_time_site_tour_shown": ["route", "forced"],
+        "first_time_site_tour_completed": ["route", "step"],
+        "first_time_site_tour_skipped": ["route", "step"],
+        "hero_read_chapter_free_click": ["book_slug", "cta", "source"],
+        "dracula_book_page_view": ["book_slug", "source"],
+        "start_dracula_click": ["book_slug", "cta", "source"],
+        "reader_opened": ["book_slug", "chapter_id", "source"],
+        "reader_locked_state": ["book_slug", "chapter_id", "source"],
+        "reader_low_balance_state": ["book_slug", "chapter_id", "source"],
+        "pricing_page_view": ["selected_pack_id", "coupon", "source"],
+        "reading_pack_selected": ["pack_id", "price_inr", "coupon", "source"],
+        "checkout_started": ["pack_id", "price_inr", "coupon", "source", "payment_mode"],
+        "payment_success_return": ["pack_id", "price_inr", "minutes", "source", "credited"],
+        "payment_failed_or_cancelled": ["pack_id", "price_inr", "reason"],
+        "wallet_credited_visible": ["pack_id", "minutes", "source"],
+        "continue_reading_click": ["book_slug", "chapter_id", "source"],
+        "return_resume_reading_click": ["book_slug", "chapter_id", "source"],
+        "core_web_vital": ["metric_name", "value", "rating", "route"],
         "page_view": ["path", "search", "page_type"],
         "book_view": ["book_slug", "language", "category_slug"],
         "preview_start": ["book_slug", "source"],
@@ -1442,6 +1478,25 @@ def analytics_event_schema() -> dict[str, Any]:
 def validate_mock_analytics_events(schema: dict[str, Any]) -> dict[str, Any]:
     events = {row["event"]: row for row in schema.get("events", []) if isinstance(row, dict)}
     mock_payloads = [
+        {"event": "homepage_view", "metadata": {"route": "/", "source": "launch_smoke"}},
+        {"event": "first_time_site_tour_shown", "metadata": {"route": "/", "forced": True}},
+        {"event": "first_time_site_tour_completed", "metadata": {"route": "/", "step": "shelves"}},
+        {"event": "first_time_site_tour_skipped", "metadata": {"route": "/", "step": "welcome"}},
+        {"event": "hero_read_chapter_free_click", "metadata": {"book_slug": "dracula", "cta": "read_chapter_1_free", "source": "home"}},
+        {"event": "dracula_book_page_view", "metadata": {"book_slug": "dracula", "source": "book_detail"}},
+        {"event": "start_dracula_click", "metadata": {"book_slug": "dracula", "cta": "start_dracula", "source": "home"}},
+        {"event": "reader_opened", "metadata": {"book_slug": "dracula", "chapter_id": "chapter-001", "source": "reader"}},
+        {"event": "reader_locked_state", "metadata": {"book_slug": "dracula", "chapter_id": "chapter-002", "source": "reader"}},
+        {"event": "reader_low_balance_state", "metadata": {"book_slug": "dracula", "chapter_id": "chapter-002", "source": "reader"}},
+        {"event": "pricing_page_view", "metadata": {"selected_pack_id": "1h", "coupon": "EVENING15", "source": "reader_finish"}},
+        {"event": "reading_pack_selected", "metadata": {"pack_id": "1h", "price_inr": 89, "coupon": "EVENING15", "source": "pricing"}},
+        {"event": "checkout_started", "metadata": {"pack_id": "1h", "price_inr": 89, "coupon": "EVENING15", "source": "pricing", "payment_mode": "test"}},
+        {"event": "payment_success_return", "metadata": {"pack_id": "1h", "price_inr": 89, "minutes": 60, "source": "test_mode_simulator", "credited": True}},
+        {"event": "payment_failed_or_cancelled", "metadata": {"pack_id": "1h", "price_inr": 89, "reason": "operator_test_declined"}},
+        {"event": "wallet_credited_visible", "metadata": {"pack_id": "1h", "minutes": 60, "source": "account"}},
+        {"event": "continue_reading_click", "metadata": {"book_slug": "dracula", "chapter_id": "chapter-002", "source": "account"}},
+        {"event": "return_resume_reading_click", "metadata": {"book_slug": "dracula", "chapter_id": "chapter-002", "source": "library"}},
+        {"event": "core_web_vital", "metadata": {"metric_name": "LCP", "value": 1800, "rating": "good", "route": "/"}},
         {"event": "page_view", "metadata": {"path": "/", "search": "", "page_type": "home"}},
         {"event": "book_view", "metadata": {"book_slug": "dracula", "language": "en", "category_slug": "gothic-fiction"}},
         {"event": "preview_start", "metadata": {"book_slug": "dracula", "source": "book_detail"}},
