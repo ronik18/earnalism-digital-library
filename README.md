@@ -1215,6 +1215,24 @@ For production API during local frontend development:
 REACT_APP_BACKEND_URL=https://api.theearnalism.com npm start
 ```
 
+### Brand Logo Reveal
+
+Render the local, code-generated 5-second Earnalism logo reveal with:
+
+```bash
+npm run render:logo-reveal
+```
+
+The command uses `assets/branding/earnalism-logo.png`, Pillow from the Python requirements, and local `ffmpeg`.
+If needed, install prerequisites with:
+
+```bash
+python3 -m pip install -r requirements.txt
+brew install ffmpeg
+```
+
+The MP4 output is written to `output/branding/earnalism-logo-reveal-5s.mp4`. Temporary frames are written under `output/branding/tmp` and removed after a successful render.
+
 ## Testing And Regression
 
 Root scripts:
