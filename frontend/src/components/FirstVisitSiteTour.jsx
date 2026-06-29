@@ -26,7 +26,7 @@ const TOUR_STEPS = [
   {
     key: "covers",
     icon: Compass,
-    targetSelectors: ['[data-testid="hero-dracula-card"]', '[data-testid="dracula-reading-model"]'],
+    targetSelectors: ['[data-testid="hero-dracula-card"]', '[data-testid="home-live-dracula"]'],
     eyebrow: "Live controlled release",
     title: "Dracula is the open room",
     body: "The custom Earnalism Dracula cover marks the one approved core reading release. Audiobook experience in private review.",
@@ -49,6 +49,7 @@ export default function FirstVisitSiteTour() {
   const dialogRef = useRef(null);
   const previousFocusRef = useRef(null);
   const openTimerRef = useRef(null);
+  const shownTrackedRef = useRef(false);
   const step = TOUR_STEPS[stepIndex];
   const totalSteps = TOUR_STEPS.length;
   const Icon = step.icon;
@@ -58,23 +59,18 @@ export default function FirstVisitSiteTour() {
     return params.get("tour") === "1";
   }, [location.search]);
 
-  const completeTour = useCallback((outcome = "completed") => {
+  const completeTour = useCallback((status = "skipped") => {
     try {
       window.localStorage.setItem(STORAGE_KEY, "complete");
     } catch (_) {
       // Storage can be unavailable in private modes; closing the tour should still work.
     }
-    trackFunnelEvent(
-      outcome === "skipped" ? "first_time_site_tour_skipped" : "first_time_site_tour_completed",
-      {
-        source: forcedTour ? "forced_query" : "first_visit",
-        step_key: step?.key || "",
-        step_index: stepIndex + 1,
-        total_steps: totalSteps,
-      },
-    );
+    trackFunnelEvent(status === "completed" ? "first_time_site_tour_completed" : "first_time_site_tour_skipped", {
+      route: location.pathname,
+      step: step?.key,
+    });
     setOpen(false);
-  }, [forcedTour, step?.key, stepIndex, totalSteps]);
+  }, [location.pathname, step?.key]);
 
   const updateTargetRect = useCallback(() => {
     if (!open || !step) {
@@ -114,26 +110,27 @@ export default function FirstVisitSiteTour() {
 
     openTimerRef.current = window.setTimeout(() => {
       previousFocusRef.current = document.activeElement;
-      trackFunnelEvent("first_time_site_tour_shown", {
-        source: forcedTour ? "forced_query" : "first_visit",
-        path: location.pathname,
-        total_steps: totalSteps,
-      });
       setOpen(true);
     }, forcedTour ? 120 : 850);
 
     return () => {
       window.clearTimeout(openTimerRef.current);
     };
-  }, [forcedTour, location.pathname, totalSteps]);
+  }, [forcedTour, location.pathname]);
 
   useEffect(() => {
     if (!open) {
       setTargetRect(null);
+      shownTrackedRef.current = false;
       if (previousFocusRef.current?.focus) {
         previousFocusRef.current.focus({ preventScroll: true });
       }
       return undefined;
+    }
+
+    if (!shownTrackedRef.current) {
+      shownTrackedRef.current = true;
+      trackFunnelEvent("first_time_site_tour_shown", { route: location.pathname, forced: forcedTour });
     }
 
     dialogRef.current?.focus({ preventScroll: true });
@@ -151,7 +148,7 @@ export default function FirstVisitSiteTour() {
       window.removeEventListener("resize", handleViewportChange);
       window.removeEventListener("scroll", handleViewportChange, true);
     };
-  }, [open, step, updateTargetRect]);
+  }, [forcedTour, location.pathname, open, step, updateTargetRect]);
 
   useEffect(() => {
     if (!open) return undefined;

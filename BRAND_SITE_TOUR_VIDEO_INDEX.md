@@ -16,7 +16,7 @@ Final recommendation: `HOLD_ADS_PENDING_HUMAN_VIDEO_REVIEW`
   - Overlay: The Earnalism Digital Library
   - Caption: A quiet digital reading room beginning with Dracula.
 - `homepage_mobile` - Homepage mobile - controlled launch - `output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-cb634-d-and-pipeline-titles-gated-chromium/video.webm`
-  - Overlay: Begin with Dracula
+  - Overlay: Step into the classics
   - Caption: The controlled launch keeps Dracula clear above the fold.
 - `carousel` - Carousel and shelves - future rooms gated - `output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-3aea2-ile-future-rooms-stay-gated-chromium/video.webm`
   - Overlay: Bengali Gothic is moving through the rights-safe pipeline

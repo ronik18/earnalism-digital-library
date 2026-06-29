@@ -3,14 +3,13 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight,
   BookOpen,
-  CheckCircle2,
   CreditCard,
   Facebook,
-  Headphones,
   Instagram,
   Linkedin,
   Mail,
   ShieldCheck,
+  Sparkles,
   Twitter,
   Youtube,
 } from "lucide-react";
@@ -21,10 +20,8 @@ import { api, formatError } from "../lib/api";
 import { normalizeSocialUrl } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import {
-  DRACULA_CHAPTER_COUNT,
   DRACULA_COVER_IMAGE,
   DRACULA_CTA_EVENTS,
-  DRACULA_RIGHTS_NOTE,
   KSHUDHITA_PASHAN_PIPELINE,
   LIVE_APPROVED_SLUG,
   PIPELINE_BOOKS,
@@ -42,17 +39,18 @@ const SOCIALS = [
   { key: "youtube", label: "YouTube", Icon: Youtube },
 ];
 
-const FUTURE_STACK = PIPELINE_BOOKS.filter((book) => book.slug !== KSHUDHITA_PASHAN_PIPELINE.slug).slice(0, 3);
-const HERO_LIBRARY_BACKGROUND_IMAGE = "/assets/hero/golden-hour-library-hero.webp";
-
 function track(event, metadata = {}) {
   if (!event) return;
   trackFunnelEvent(event, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, ...metadata });
 }
 
-function trackPipelineInterest(event, ctaId) {
-  void event;
-  void ctaId;
+function trackPipelineInterest(event, ctaId, bookSlug = KSHUDHITA_PASHAN_PIPELINE.slug) {
+  trackFunnelEvent(event, {
+    source: "home_pipeline_shelf",
+    book_slug: bookSlug,
+    cta_id: ctaId,
+    public: false,
+  });
 }
 
 export default function Home() {
@@ -69,19 +67,19 @@ export default function Home() {
   const liveBook = mergeDraculaBook(dracula);
 
   useSEO({
-    title: "Begin with Dracula | The Earnalism Digital Library",
+    title: "Step Into Dracula | The Earnalism Digital Library",
     description:
-      "Begin with Dracula in The Earnalism's quiet digital reading room. Chapter 1 is free, reading-time passes support continuation, and future classics remain in rights-safe preparation.",
+      "Earnalism is live with Dracula as its first approved classic reading release. Read Chapter 1 free, then continue with reading time as more classics move through a rights-safe pipeline.",
     image: liveBook.cover_image_url || DRACULA_COVER_IMAGE,
     imageAlt: "Custom Earnalism Dracula cover artwork",
     canonicalPath: "/",
   });
 
   useEffect(() => {
-    trackFunnelEvent("homepage_view", {
-      path: "/",
-      launch_status: "LIVE_VERIFIED",
-      public_audio_status: "PUBLIC_AUDIO_RELEASE_BLOCKED",
+    trackFunnelEvent("bengali_gothic_pipeline_view", {
+      source: "home",
+      book_slug: KSHUDHITA_PASHAN_PIPELINE.slug,
+      public: false,
     });
   }, []);
 
@@ -109,45 +107,38 @@ export default function Home() {
   };
 
   return (
-    <div className="luxury-home-page" data-testid="home-page">
+    <div data-testid="home-page">
       <section
-        className="premium-landing-hero relative isolate overflow-hidden text-[#FDFCF8]"
+        className="premium-landing-hero reference-library-hero relative isolate overflow-hidden text-[#FDFCF8]"
         data-testid="premium-landing-hero"
-        data-approved-hero-max-height="620"
-        style={{ "--premium-hero-library-bg": `url("${HERO_LIBRARY_BACKGROUND_IMAGE}")` }}
+        data-approved-hero-max-height="650"
+        style={{ "--reference-hero-image": "url('/assets/hero/golden-hour-library-hero.webp')" }}
       >
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 pb-9 pt-8 sm:px-8 sm:pb-12 sm:pt-11 lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-12 lg:py-14">
-          <div className="premium-hero-copy-zone lg:col-span-7">
-            <div className="mb-3 flex items-center justify-between gap-4 sm:mb-4">
-              <div className="italic-eyebrow flex items-center gap-3 text-[var(--brand-gold-soft)]" data-testid="hero-overline">
-                <span className="h-px w-7 bg-[var(--brand-gold)]/70" />
-                <span>The Earnalism Digital Library</span>
-              </div>
-              <div className="premium-dracula-mobile-object lg:hidden" aria-hidden="true">
-                <BookCoverImage
-                  book={liveBook}
-                  alt=""
-                  loading="eager"
-                  width={220}
-                  widths={[160, 220, 320]}
-                  sizes="88px"
-                  imgClassName="premium-dracula-cover-img"
-                />
-              </div>
+        <div className="reference-hero-grid mx-auto grid max-w-7xl grid-cols-1 gap-7 px-5 py-8 sm:px-8 sm:py-11 lg:grid-cols-12 lg:items-center lg:px-12 lg:py-12">
+          <div className="reference-hero-copy lg:col-span-7">
+            <div className="italic-eyebrow flex items-center gap-3 text-[var(--brand-gold-soft)]" data-testid="hero-overline">
+              <span className="h-px w-7 bg-[var(--brand-gold)]/70" />
+              <span>The Earnalism Digital Library</span>
             </div>
             <h1
-              className="font-serif-light text-[2.36rem] leading-[0.99] tracking-normal text-[#FDFCF8] text-balance min-[390px]:text-[2.66rem] sm:text-[3.9rem] lg:text-[4.55rem] xl:text-[4.95rem]"
+              className="mt-4 font-serif-light text-[2.34rem] leading-[0.98] tracking-normal text-[#FDFCF8] text-balance min-[390px]:text-[2.62rem] sm:text-[3.75rem] lg:text-[4.45rem]"
               data-testid="hero-headline"
-              aria-label="Begin with Dracula."
+              aria-label="Step into the classics. Stay with the story."
             >
-              Begin with <span className="italic-accent text-[var(--brand-gold-soft)]">Dracula.</span>
+              Step into the classics.
+              <span className="block text-[var(--brand-gold-soft)]">Stay with the story.</span>
             </h1>
-            <p className="mt-3 max-w-xl font-serif-display text-base italic leading-snug text-[#F4EFEA]/92 min-[390px]:text-lg sm:text-2xl lg:mt-4">
-              A quiet digital reading room for timeless books.
+            <p className="mt-3 max-w-xl font-serif-display text-base italic leading-snug text-[#F4EFEA]/92 sm:text-2xl">
+              Timeless stories. Beautifully presented. Yours to read, reflect, and remember.
             </p>
-            <p className="mt-3 max-w-2xl text-[0.86rem] font-light leading-[1.6] text-[#F4EFEA]/82 min-[390px]:text-[0.92rem] sm:text-[1rem] sm:leading-[1.72] lg:mt-4">
+            <p className="mt-4 max-w-2xl text-[0.88rem] font-light leading-[1.65] text-[#F4EFEA]/82 sm:text-[0.98rem] sm:leading-[1.75]">
               The Earnalism launch begins with one approved classic. Read Chapter 1 free, continue with reading time, and return to your place whenever you wish.
             </p>
+            <div className="reference-hero-trust mt-5" aria-label="Earnalism launch trust signals">
+              <span><ShieldCheck size={16} strokeWidth={1.6} /> Rights-safe & ethical</span>
+              <span><BookOpen size={16} strokeWidth={1.6} /> Ad-free reading</span>
+              <span><CreditCard size={16} strokeWidth={1.6} /> Reading time stays with you</span>
+            </div>
             <div className="premium-hero-ctas mt-5 sm:mt-6" data-testid="hero-ctas">
               <Link
                 to={`/reader/${LIVE_APPROVED_SLUG}`}
@@ -174,167 +165,112 @@ export default function Home() {
                 Get 7-Day Reading Pass <ArrowRight size={15} strokeWidth={1.7} />
               </Link>
             </div>
-            <div className="premium-launch-facts mt-4" aria-label="Dracula launch facts">
-              <span className="inline-flex items-center gap-2"><ShieldCheck size={14} strokeWidth={1.6} /> {DRACULA_RIGHTS_NOTE}</span>
-              <span className="inline-flex items-center gap-2"><BookOpen size={14} strokeWidth={1.6} /> Chapter 1 free</span>
-              <span className="inline-flex items-center gap-2"><CheckCircle2 size={14} strokeWidth={1.6} /> Public-domain source verified</span>
-              <span className="inline-flex items-center gap-2"><Headphones size={14} strokeWidth={1.6} /> Audiobook experience in private review</span>
-            </div>
-            <p className="premium-hero-revenue-note mt-3">Reading time is used only while you read.</p>
+            <p className="mt-3 max-w-xl text-[0.66rem] uppercase tracking-[0.16em] text-[var(--brand-gold-soft)]/92 sm:text-[0.72rem]">
+              Chapter 1 is free. Reading time is used only while you read.
+            </p>
           </div>
 
-          <div className="hidden lg:col-span-5 lg:block">
-            <div className="premium-dracula-hero-card mx-auto max-w-[420px]" data-testid="hero-dracula-card">
-              <div className="premium-dracula-cover-frame mx-auto aspect-[500/696] max-w-[255px] overflow-hidden" data-testid="hero-dracula-cover-frame">
-                <BookCoverImage
-                  book={liveBook}
-                  alt="Custom Earnalism Dracula cover artwork"
+          <div className="reference-dracula-stage lg:col-span-5" data-testid="hero-dracula-card">
+            <div className="reference-dracula-book-object reference-dracula-book-object--hardcopy">
+              <div
+                className="reference-dracula-hardcopy-shell"
+                data-testid="hero-dracula-cover-frame"
+                data-no-white-edge="true"
+              >
+                <img
+                  src="/assets/books/dracula/dracula-hero-hardcopy.webp"
+                  alt="Hard-copy Dracula book object with approved classic reading release plaque"
                   loading="eager"
-                  width={520}
-                  widths={[360, 520, 720]}
-                  sizes="(min-width: 1024px) 255px, 74vw"
-                  imgClassName="premium-dracula-cover-img"
+                  fetchPriority="high"
+                  width="572"
+                  height="665"
+                  className="reference-dracula-hardcopy-img"
                 />
               </div>
-              <div className="mt-5 text-center">
-                <div className="text-[0.62rem] uppercase tracking-[0.22em] text-[var(--brand-gold-soft)]">Approved classic reading release</div>
-                <h2 className="mt-2 font-serif-display text-[2rem] text-[#FDFCF8]">Dracula</h2>
-                <p className="mt-1 text-[0.72rem] uppercase tracking-[0.14em] text-[#F4EFEA]/76">by Bram Stoker</p>
-                <p className="mx-auto mt-4 max-w-sm text-[0.82rem] leading-relaxed text-[#F4EFEA]/74">
-                  {DRACULA_CHAPTER_COUNT} chapters. Public-domain source verified. Audiobook experience is in private review.
-                </p>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="luxury-reading-model" data-testid="dracula-reading-model">
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:px-12 lg:py-16">
-          <div>
-            <div className="overline mb-3">Reading time, clearly priced</div>
-            <h2 className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">
-              A revenue path that still feels like a library.
-            </h2>
-            <p className="mt-5 max-w-xl text-sm leading-[1.85] text-charcoal-soft sm:text-base">
-              No fake urgency, no broad catalog claim, and no ownership promise. The reader opens with a free first chapter; paid continuation uses the wallet only when someone chooses more quiet time with Dracula.
-            </p>
-            <Link
-              to={readingPassUrl("homepage_reading_model")}
-              className="btn-primary mt-7"
-              data-testid="reading-model-pass-cta"
-              onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "reading_model_pass" })}
-            >
-              See Reading Passes <ArrowRight size={15} />
-            </Link>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            <ReadingModelCard
-              icon={BookOpen}
-              title="Open the room"
-              body="Chapter 1 is free, so the first conversion is trust."
-            />
-            <ReadingModelCard
-              icon={CreditCard}
-              title="Add reading time"
-              body="Passes credit a wallet; time is spent only while reading."
-            />
-            <ReadingModelCard
-              icon={CheckCircle2}
-              title="Return calmly"
-              body="Sign in to resume Dracula through account or library."
-            />
           </div>
         </div>
       </section>
 
       <section
-        className="luxury-pipeline-shelf"
+        className="reference-pipeline-shelf"
         data-testid="bengali-gothic-pipeline-shelf"
         aria-labelledby="bengali-gothic-pipeline-title"
       >
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-14 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:px-12 lg:py-16">
-          <div className="pipeline-object" data-testid="pipeline-kshudhita-pashan">
-            <div
-              className="kshudhita-cover-stack"
-              data-testid="pipeline-kshudhita-cover-stack"
-              data-cover-status={KSHUDHITA_PASHAN_PIPELINE.coverStatus}
-            >
-              <img
-                src={KSHUDHITA_PASHAN_PIPELINE.backCoverImage}
-                alt=""
-                loading="lazy"
-                width="1024"
-                height="1536"
-                className="kshudhita-cover-stack__back"
-                aria-hidden="true"
-              />
-              <img
-                src={KSHUDHITA_PASHAN_PIPELINE.frontCoverImage}
-                alt="Owner-provided Kshudhita Pashan front cover artwork"
-                loading="lazy"
-                width="1024"
-                height="1536"
-                className="kshudhita-cover-stack__front"
-              />
-            </div>
-          </div>
-          <div>
-            <div className="italic-eyebrow mb-4 text-[var(--brand-gold-deep)]">A quiet pipeline glimpse</div>
+        <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12 lg:py-12">
+          <div className="mb-7">
+            <div className="overline mb-2">Shelf 2</div>
             <h2 id="bengali-gothic-pipeline-title" className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">
-              {KSHUDHITA_PASHAN_PIPELINE.titleEn} is visible, not open.
+              Coming Through the Rights-Safe Pipeline
             </h2>
-            <p className="mt-4 max-w-2xl text-sm leading-[1.85] text-charcoal-soft sm:text-base">
-              {KSHUDHITA_PASHAN_PIPELINE.titleBn} stays in rights-safe preparation while attribution, share-alike compliance, text QA, pronunciation review, and audiobook provider QA remain gated.
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-charcoal-soft">
+              These books are not live products yet. They have Notify Me CTAs only, and no reader, checkout, or audiobook access.
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link
-                to={notifyUrl(KSHUDHITA_PASHAN_PIPELINE.slug)}
-                className="btn-secondary justify-center"
-                data-testid="pipeline-kshudhita-notify"
-                onClick={() => trackPipelineInterest("kshudhita_pashan_notify_click", "pipeline-kshudhita-notify")}
-              >
-                Notify Me
-              </Link>
-              <button
-                type="button"
-                className="btn-link justify-center"
-                data-testid="pipeline-reading-circle"
-                onClick={() => {
-                  trackPipelineInterest("bengali_gothic_reading_circle_click", "pipeline-reading-circle");
-                  toast.message("Reading Circle interest noted.");
-                }}
-              >
-                Reading Circle
-              </button>
-            </div>
-            <div className="pipeline-mini-stack mt-8" data-testid="pipeline-books">
-              {FUTURE_STACK.map((book) => (
-                <article key={book.slug} className="pipeline-mini-stack__item" data-testid={`pipeline-card-${book.slug}`}>
-                  <span>{book.category_slug.replace(/-/g, " ")}</span>
-                  <strong>{book.title}</strong>
-                  <em>{book.statusLabel}</em>
+          </div>
+          <div className="reference-pipeline-row" data-testid="pipeline-books">
+            {PIPELINE_BOOKS.slice(0, 4).map((book, index) => {
+              const title = book.displayTitle || book.title;
+              const hasCover = Boolean(book.cover_image_url || book.cover_url || book.thumbnail_url);
+              const isKshudhita = book.slug === KSHUDHITA_PASHAN_PIPELINE.slug;
+              return (
+                <article key={book.slug} className="reference-pipeline-card" data-testid={`pipeline-card-${book.slug}`}>
+                  <div className="reference-pipeline-cover" data-testid={`pipeline-cover-${book.slug}`}>
+                    {hasCover ? (
+                      <BookCoverImage
+                        book={book}
+                        alt={`${title} cover artwork`}
+                        loading={index < 4 ? "eager" : "lazy"}
+                        width={260}
+                        widths={[180, 260, 360]}
+                        sizes="(min-width: 1024px) 112px, 32vw"
+                        fallback={title.slice(0, 1)}
+                      />
+                    ) : (
+                      <div className="reference-pipeline-placeholder" aria-label={`${title} cover placeholder`}>
+                        <Sparkles size={22} strokeWidth={1.35} aria-hidden="true" />
+                        <span>{title}</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="reference-pipeline-copy">
+                    <div className="reference-pipeline-status">Coming Soon</div>
+                    <h3>{title}</h3>
+                    {book.titleNative && <p className="reference-pipeline-native">{book.titleNative}</p>}
+                    <p className="reference-pipeline-author">by {book.author}</p>
+                    <Link
+                      to={notifyUrl(book.slug)}
+                      className="reference-pipeline-notify"
+                      data-testid={`pipeline-notify-${book.slug}`}
+                      onClick={() => {
+                        if (isKshudhita) {
+                          trackPipelineInterest("kshudhita_pashan_notify_click", "pipeline-kshudhita-notify", book.slug);
+                        } else {
+                          track(DRACULA_CTA_EVENTS.notifyMe, { future_title: book.slug });
+                        }
+                      }}
+                    >
+                      Notify Me
+                    </Link>
+                  </div>
                 </article>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="luxury-reading-circle" data-testid="reading-circle-section">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 py-14 sm:px-8 lg:grid-cols-12 lg:px-12 lg:py-16">
-          <div className="lg:col-span-5">
-            <div className="italic-eyebrow mb-4 text-[var(--brand-gold-deep)]">Reading Circle</div>
-            <h2 className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">
-              Follow the launch without leaving the room.
-            </h2>
-            <p className="mt-5 max-w-xl text-sm leading-[1.85] text-charcoal-soft sm:text-base">
-              Receive Dracula reading notes and quiet pipeline updates. This form does not make audiobooks public, does not start a paid campaign, and does not publish future titles.
+      <section className="relative overflow-hidden bg-[#1b0b10] text-[#FDFCF8]">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:px-12 lg:py-24">
+          <div className="lg:col-span-6">
+            <div className="italic-eyebrow mb-4 text-[var(--brand-gold-soft)]">Reading Circle</div>
+            <h2 className="font-serif-light text-4xl leading-tight sm:text-5xl">Follow the controlled launch.</h2>
+            <p className="mt-6 max-w-xl text-[#F4EFEA]/76 leading-[1.8]">
+              Receive Dracula reading notes and updates as future classics move from rights review to controlled release.
             </p>
             {activeSocials.length > 0 ? (
-              <nav className="home-social-rail mt-8" aria-label="Earnalism social links" data-testid="home-socials">
-                <div className="home-social-rail__label">Follow Earnalism</div>
-                <div className="home-social-rail__links">
+              <nav className="mt-9" aria-label="Earnalism social links" data-testid="home-socials">
+                <div className="text-[0.64rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]/90">Follow the reading room</div>
+                <div className="mt-4 flex flex-wrap items-center gap-3">
                   {activeSocials.map(({ key, label, Icon, url }) => (
                     <a
                       key={key}
@@ -342,7 +278,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Visit Earnalism on ${label}`}
-                      className="home-social-rail__link"
+                      className="home-social-rail__link inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#FDFCF8]/18 bg-[#FDFCF8]/[0.045] text-[#F4EFEA]/78 transition-colors duration-300 hover:border-[var(--brand-gold-soft)]/70 hover:bg-[rgba(216,185,122,0.1)] hover:text-[var(--brand-gold-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand-gold-soft)]"
                       data-testid={`home-social-${key}`}
                     >
                       <Icon size={17} strokeWidth={1.55} aria-hidden="true" />
@@ -351,26 +287,26 @@ export default function Home() {
                 </div>
               </nav>
             ) : (
-              <div className="home-social-review mt-8" data-testid="home-socials-owner-review">
-                Social icons appear here after owner-reviewed profile URLs are configured. No placeholder or fake social links are shown.
+              <div className="home-social-review mt-9" data-testid="home-socials-owner-review">
+                No placeholder or fake social links are shown.
               </div>
             )}
           </div>
-          <form onSubmit={subscribe} className="reading-circle-card lg:col-span-7" data-testid="newsletter-card" aria-describedby="newsletter-description">
-            <div className="flex items-center gap-3 text-[0.68rem] uppercase tracking-[0.24em] text-[var(--brand-gold-deep)]">
+          <form onSubmit={subscribe} className="rounded-lg border border-[#FDFCF8]/16 bg-[#FDFCF8]/[0.06] p-6 backdrop-blur-sm sm:p-8 lg:col-span-6 lg:p-10" data-testid="newsletter-card" aria-describedby="newsletter-description">
+            <div className="flex items-center gap-3 text-[0.68rem] uppercase tracking-[0.24em] text-[var(--brand-gold-soft)]">
               <Mail size={15} strokeWidth={1.6} /> Private dispatch
             </div>
-            <p id="newsletter-description" className="mt-4 text-sm leading-relaxed text-charcoal-soft">
-              Join for Dracula notes and pipeline updates. Audiobook access stays private until release gates pass, and this form never publishes future titles.
+            <p id="newsletter-description" className="mt-4 text-sm leading-relaxed text-[#F4EFEA]/70">
+              Join for Dracula reading notes and pipeline updates. No audiobook or paid campaign is live from this form.
             </p>
             <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <label>
                 <span className="sr-only">Your name</span>
-                <input required value={name} onChange={(event) => setName(event.target.value)} placeholder="Your name" className="input-elegant" data-testid="newsletter-name" aria-label="Your name" />
+                <input required value={name} onChange={(event) => setName(event.target.value)} placeholder="Your name" className="input-elegant !border-b-[#FDFCF8]/30 !text-[#FDFCF8] placeholder:!text-[#FDFCF8]/45" data-testid="newsletter-name" aria-label="Your name" />
               </label>
               <label>
                 <span className="sr-only">Your email</span>
-                <input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Your email" className="input-elegant" data-testid="newsletter-email" aria-label="Your email" />
+                <input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Your email" className="input-elegant !border-b-[#FDFCF8]/30 !text-[#FDFCF8] placeholder:!text-[#FDFCF8]/45" data-testid="newsletter-email" aria-label="Your email" />
               </label>
             </div>
             <button type="submit" disabled={submitting} className="btn-primary mt-8 w-full justify-center" data-testid="newsletter-submit">
@@ -380,15 +316,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  );
-}
-
-function ReadingModelCard({ icon: Icon, title, body }) {
-  return (
-    <article className="luxury-model-card">
-      <Icon size={20} strokeWidth={1.55} className="text-gold-deep" aria-hidden="true" />
-      <h3>{title}</h3>
-      <p>{body}</p>
-    </article>
   );
 }

@@ -65,7 +65,7 @@ SOCIAL_ENV_KEYS = (
 
 REQUIRED_OVERLAYS = (
     "The Earnalism Digital Library",
-    "Begin with Dracula",
+    "Step into the classics",
     "Chapter 1 is free",
     "27 chapters prepared for focused reading",
     "Audio is intentionally disabled until QA passes",
@@ -133,15 +133,15 @@ SHOT_SEQUENCE = (
         "A quiet digital reading room beginning with Dracula.",
         7,
     ),
-    Shot(
-        "homepage_mobile",
-        "Homepage mobile - controlled launch",
-        ("homepage mobile", "pipeline titles gated"),
-        ("pipeline-titles-gated",),
-        "Begin with Dracula",
-        "The controlled launch keeps Dracula clear above the fold.",
-        6,
-    ),
+        Shot(
+            "homepage_mobile",
+            "Homepage mobile - controlled launch",
+            ("homepage mobile", "pipeline titles gated"),
+            ("pipeline-titles-gated",),
+            "Step into the classics",
+            "The controlled launch keeps Dracula clear above the fold.",
+            6,
+        ),
     Shot(
         "carousel",
         "Carousel and shelves - future rooms gated",

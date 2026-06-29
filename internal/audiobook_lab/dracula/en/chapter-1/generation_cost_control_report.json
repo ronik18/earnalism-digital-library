@@ -1,6 +1,6 @@
 {
   "generated_by": "scripts/elevenlabs_full_chapter_generate.py",
-  "generated_at": "2026-06-27T19:00:40+00:00",
+  "generated_at": "2026-06-29T06:13:46+00:00",
   "mode": "dry-run",
   "chunk_selector": "all",
   "chunk_count": 27,
@@ -13,7 +13,7 @@
   "max_concurrency": 3,
   "max_retries": 2,
   "resume_failed": false,
-  "elapsed_seconds": 0.019,
+  "elapsed_seconds": 0.022,
   "cache_hit_count": 0,
   "cache_miss_count": 27,
   "cache_stale_count": 0,

@@ -274,7 +274,7 @@ function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
 }
 
 function buildPages({ book, manifest }) {
-  const homeDescription = "Begin with Dracula in The Earnalism's quiet digital reading room. Chapter 1 is free, reading-time passes support continuation, and future classics remain in rights-safe preparation.";
+  const homeDescription = "Controlled launch begins with Dracula by Bram Stoker in The Earnalism's classical digital reading room. Read Chapter 1 free, then continue with reading time as future classics move through the rights-safe pipeline.";
   const bookDescription = "Read Dracula by Bram Stoker in The Earnalism’s controlled digital reading room. Chapter 1 is free. Continue with a 7-day reading pass. Audiobook experience is in private review.";
   const libraryDescription = "Live Controlled Release: Dracula only. Future classics are coming through The Earnalism rights-safe pipeline and are not live reading products yet.";
   const pricingDescription = "Choose your reading time for Dracula on The Earnalism. Chapter 1 is free, with premium reading-time packs and no subscription or autorenewal.";
@@ -285,23 +285,23 @@ function buildPages({ book, manifest }) {
   return [
     {
       path: "/",
-      title: "Begin with Dracula | The Earnalism Digital Library",
+      title: "Step Into Dracula | The Earnalism Digital Library",
       description: homeDescription,
       canonicalPath: "/",
-      ogTitle: "Begin with Dracula | The Earnalism",
-      ogDescription: "Chapter 1 is free. Continue with reading time while future classics remain in rights-safe preparation.",
+      ogTitle: "Step Into Dracula | The Earnalism",
+      ogDescription: "Chapter 1 is free. Continue with a reading pass as more classics move through the rights-safe pipeline.",
       imageAlt: "The Earnalism Dracula controlled launch",
-      jsonLd: [organizationJsonLd(), websiteJsonLd(homeDescription), webpageJsonLd({ title: "Begin with Dracula", description: homeDescription, path: "/" })],
+      jsonLd: [organizationJsonLd(), websiteJsonLd(homeDescription), webpageJsonLd({ title: "Begin with Dracula.", description: homeDescription, path: "/" })],
       staticBody: pageShell({
         eyebrow: "The Earnalism Digital Library",
         title: "Begin with Dracula.",
         body: homeDescription,
-        facts: ["Dracula is the only live approved core reading release today.", "Audiobook experience is in private review.", "Kshudhita Pashan remains pipeline-only."],
+        facts: ["Dracula is the only live approved classic reading release today.", "Audiobook experience is in private review.", "Pipeline titles remain Coming Soon with Notify Me only."],
         links: [
           { href: "/reader/dracula", label: "Read Chapter 1 Free" },
-          { href: "/book/dracula", label: "View Dracula details" },
+          { href: "/book/dracula", label: "Start Dracula" },
           { href: "/pricing?book=dracula", label: "Get 7-Day Reading Pass" },
-          { href: "/library?category=pipeline", label: "Pipeline preview" },
+          { href: "/library?category=pipeline", label: "Explore Pipeline / Library" },
         ],
       }),
     },

@@ -3,6 +3,425 @@
   "dry_run": true,
   "events": [
     {
+      "event": "homepage_view",
+      "required_metadata": [
+        "route",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "first_time_site_tour_shown",
+      "required_metadata": [
+        "route",
+        "forced"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "first_time_site_tour_completed",
+      "required_metadata": [
+        "route",
+        "step"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "first_time_site_tour_skipped",
+      "required_metadata": [
+        "route",
+        "step"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "hero_read_chapter_free_click",
+      "required_metadata": [
+        "book_slug",
+        "cta",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "dracula_book_page_view",
+      "required_metadata": [
+        "book_slug",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "start_dracula_click",
+      "required_metadata": [
+        "book_slug",
+        "cta",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "reader_opened",
+      "required_metadata": [
+        "book_slug",
+        "chapter_id",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "reader_locked_state",
+      "required_metadata": [
+        "book_slug",
+        "chapter_id",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "reader_low_balance_state",
+      "required_metadata": [
+        "book_slug",
+        "chapter_id",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "pricing_page_view",
+      "required_metadata": [
+        "selected_pack_id",
+        "coupon",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "reading_pack_selected",
+      "required_metadata": [
+        "pack_id",
+        "price_inr",
+        "coupon",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "checkout_started",
+      "required_metadata": [
+        "pack_id",
+        "price_inr",
+        "coupon",
+        "source",
+        "payment_mode"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "payment_success_return",
+      "required_metadata": [
+        "pack_id",
+        "price_inr",
+        "minutes",
+        "source",
+        "credited"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "payment_failed_or_cancelled",
+      "required_metadata": [
+        "pack_id",
+        "price_inr",
+        "reason"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "wallet_credited_visible",
+      "required_metadata": [
+        "pack_id",
+        "minutes",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "continue_reading_click",
+      "required_metadata": [
+        "book_slug",
+        "chapter_id",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "return_resume_reading_click",
+      "required_metadata": [
+        "book_slug",
+        "chapter_id",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "core_web_vital",
+      "required_metadata": [
+        "metric_name",
+        "value",
+        "rating",
+        "route"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
       "event": "page_view",
       "required_metadata": [
         "path",
@@ -68,11 +487,102 @@
       "provider_api_ids": []
     },
     {
+      "event": "dracula_preview_start",
+      "required_metadata": [
+        "book_slug",
+        "cta_id",
+        "source",
+        "public"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "dracula_start_reading_click",
+      "required_metadata": [
+        "book_slug",
+        "cta_id",
+        "source",
+        "public"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "dracula_reading_pass_click",
+      "required_metadata": [
+        "book_slug",
+        "cta_id",
+        "source",
+        "public"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
       "event": "reading_started",
       "required_metadata": [
         "book_slug",
         "chapter_id",
         "is_preview"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "chapter_1_completed",
+      "required_metadata": [
+        "book_slug",
+        "chapter_id",
+        "source"
       ],
       "blocked_metadata_fields": [
         "email",
@@ -116,6 +626,97 @@
       "required_metadata": [
         "selected_pack_id",
         "coupon",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "pricing_pack_rendered",
+      "required_metadata": [
+        "pack_id",
+        "label",
+        "minutes",
+        "price_inr",
+        "selected",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "pricing_pack_cta_click",
+      "required_metadata": [
+        "pack_id",
+        "price_inr",
+        "coupon",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "reading_time_explainer_rendered",
+      "required_metadata": [
+        "book_slug",
+        "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "dracula_continue_from_pricing_click",
+      "required_metadata": [
+        "book_slug",
+        "selected_pack_id",
         "source"
       ],
       "blocked_metadata_fields": [
@@ -284,6 +885,27 @@
       "provider_api_ids": []
     },
     {
+      "event": "support_complaint_created",
+      "required_metadata": [
+        "source",
+        "message_type"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
       "event": "audio_preview_played",
       "required_metadata": [
         "book_slug",
@@ -311,6 +933,120 @@
         "cta_id",
         "destination",
         "source"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "bengali_gothic_pipeline_view",
+      "required_metadata": [
+        "source",
+        "book_slug",
+        "public"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "kshudhita_pashan_notify_click",
+      "required_metadata": [
+        "source",
+        "book_slug",
+        "cta_id",
+        "public"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "kshudhita_pashan_audio_interest_click",
+      "required_metadata": [
+        "source",
+        "book_slug",
+        "cta_id",
+        "public"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "bengali_voice_sample_interest",
+      "required_metadata": [
+        "source",
+        "book_slug",
+        "cta_id",
+        "public"
+      ],
+      "blocked_metadata_fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "razorpay_signature",
+        "card",
+        "token",
+        "password",
+        "secret"
+      ],
+      "public": false,
+      "recipients": [],
+      "provider_api_ids": []
+    },
+    {
+      "event": "bengali_gothic_reading_circle_click",
+      "required_metadata": [
+        "source",
+        "book_slug",
+        "cta_id",
+        "public"
       ],
       "blocked_metadata_fields": [
         "email",

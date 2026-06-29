@@ -521,10 +521,15 @@ main:focus {
   --brand-border-soft: #EFE7DB;
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 400;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--brand-charcoal);
@@ -548,7 +553,11 @@ body::before {
   mix-blend-mode: multiply;
 }
 
-#root { position: relative; z-index: 2; }
+#root {
+  position: relative;
+  z-index: 2;
+  overflow-x: clip;
+}
 
 /* ----------- Typography ----------- */
 .font-serif-display {
@@ -665,9 +674,10 @@ body::before {
 
 .premium-landing-hero {
   background:
-    radial-gradient(circle at 76% 20%, rgba(216, 185, 122, 0.28), transparent 28rem),
-    radial-gradient(circle at 12% 6%, rgba(253, 252, 248, 0.14), transparent 24rem),
-    linear-gradient(115deg, #17080d 0%, #261016 47%, #46201f 100%);
+    linear-gradient(90deg, rgba(13, 5, 5, 0.78) 0%, rgba(19, 7, 7, 0.61) 43%, rgba(40, 18, 13, 0.22) 70%, rgba(11, 4, 4, 0.68) 100%),
+    radial-gradient(circle at 75% 42%, rgba(216, 185, 122, 0.24), transparent 22rem),
+    var(--reference-hero-image) center / cover no-repeat,
+    linear-gradient(115deg, #17080d 0%, #2b140f 55%, #5b301b 100%);
 }
 .premium-landing-hero::before {
   content: "";
@@ -676,34 +686,108 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(circle at 50% 45%, transparent 0 34%, rgba(10, 3, 5, 0.26) 74%, rgba(10, 3, 5, 0.42) 100%),
-    linear-gradient(90deg, rgba(20, 7, 10, 0.93) 0%, rgba(28, 11, 16, 0.86) 52%, rgba(74, 32, 31, 0.68) 100%),
-    repeating-linear-gradient(90deg, rgba(253, 252, 248, 0.032) 0 1px, transparent 1px 96px);
+    radial-gradient(ellipse at 53% 46%, transparent 0 32%, rgba(12, 4, 3, 0.22) 72%, rgba(8, 2, 2, 0.5) 100%),
+    linear-gradient(180deg, rgba(6, 2, 1, 0.34) 0%, transparent 28%, rgba(7, 2, 1, 0.44) 100%);
 }
 .premium-landing-hero::after {
   content: "";
   position: absolute;
   inset: auto 0 0;
   z-index: -1;
-  height: 30%;
+  height: 22%;
   pointer-events: none;
-  background: linear-gradient(to top, #f4efea 0%, rgba(244, 239, 234, 0.58) 48%, transparent 100%);
+  background: linear-gradient(to top, #f7efe1 0%, rgba(247, 239, 225, 0.18) 55%, transparent 100%);
 }
-.premium-dracula-hero-card {
+.reference-library-hero {
+  min-height: min(650px, calc(100svh - 4.25rem));
+}
+.reference-hero-grid {
+  min-height: min(650px, calc(100svh - 4.25rem));
+}
+.reference-hero-copy {
   position: relative;
-  background:
-    linear-gradient(150deg, rgba(253, 252, 248, 0.12), rgba(253, 252, 248, 0.045)),
-    linear-gradient(0deg, rgba(197, 160, 89, 0.08), transparent 46%),
-    rgba(253, 252, 248, 0.05);
+  z-index: 1;
 }
-.premium-dracula-hero-card::before {
+.reference-hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  max-width: 42rem;
+}
+.reference-hero-trust span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.52rem;
+  min-height: 2.55rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(216, 185, 122, 0.34);
+  border-radius: 999px;
+  background: rgba(11, 5, 5, 0.34);
+  box-shadow: inset 0 1px 0 rgba(253, 252, 248, 0.09);
+  color: rgba(253, 252, 248, 0.86);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+.reference-hero-trust svg {
+  color: var(--brand-gold-soft);
+  flex: 0 0 auto;
+}
+.reference-dracula-stage {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.reference-dracula-book-object {
+  position: relative;
+  width: min(100%, 21.5rem);
+  padding: 0 0.85rem 3.15rem;
+}
+.reference-dracula-book-object--hardcopy {
+  width: min(100%, 24.25rem);
+  padding: 0;
+}
+.reference-dracula-book-object::before {
   content: "";
   position: absolute;
-  inset: 0.7rem;
-  pointer-events: none;
-  border: 1px solid rgba(216, 185, 122, 0.2);
-  border-radius: 0.55rem;
-  mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%);
+  left: 12%;
+  right: 2%;
+  bottom: 2.25rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.72), transparent 70%);
+  filter: blur(10px);
+}
+.reference-dracula-book-object--hardcopy::before {
+  left: 17%;
+  right: 9%;
+  bottom: 1.1rem;
+  height: 2.1rem;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.62), transparent 72%);
+  filter: blur(12px);
+}
+.reference-dracula-hardcopy-shell {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 22.75rem);
+  margin-inline: auto;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  filter:
+    drop-shadow(0 32px 42px rgba(0, 0, 0, 0.34))
+    drop-shadow(0 0 25px rgba(216, 185, 122, 0.12));
+}
+.reference-dracula-hardcopy-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+  background: transparent;
+  object-fit: contain;
 }
 .premium-dracula-cover-frame {
   box-shadow:
@@ -711,26 +795,88 @@ body::before {
     0 0 0 6px rgba(253, 252, 248, 0.05),
     0 0 50px -25px rgba(216, 185, 122, 0.95);
 }
-.premium-dracula-mobile-object {
+.reference-dracula-cover-frame {
   position: relative;
-  width: clamp(4.35rem, 18vw, 6.6rem);
-  aspect-ratio: 2 / 3;
-  flex: 0 0 auto;
+  aspect-ratio: 500 / 696;
+  width: min(100%, 18.9rem);
+  margin-inline: auto;
   overflow: hidden;
-  border: 1px solid rgba(253, 252, 248, 0.2);
-  border-radius: 0.42rem;
-  background: #f4efea;
+  border: 1px solid rgba(216, 185, 122, 0.42);
+  border-radius: 0.36rem;
+  background:
+    linear-gradient(90deg, #120c0b 0 7px, transparent 7px calc(100% - 7px), #120c0b calc(100% - 7px) 100%),
+    #120c0b;
+  transform: perspective(1200px) rotateY(-5deg) rotateX(1.3deg);
+  transform-origin: center left;
   box-shadow:
-    0 18px 34px -25px rgba(0, 0, 0, 0.95),
-    0 0 0 5px rgba(253, 252, 248, 0.04),
-    0 0 34px -24px rgba(216, 185, 122, 0.95);
+    -13px 18px 0 -10px #1a1110,
+    -19px 25px 0 -15px rgba(91, 57, 35, 0.84),
+    0 30px 72px -34px rgba(0, 0, 0, 0.92),
+    0 0 54px -24px rgba(216, 185, 122, 0.9);
 }
-.premium-dracula-mobile-object::after {
+.reference-dracula-cover-frame::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 2;
   pointer-events: none;
-  box-shadow: inset 0 0 0 1px rgba(216, 185, 122, 0.2);
+  box-shadow:
+    inset 10px 0 18px -13px rgba(253, 252, 248, 0.58),
+    inset -14px 0 24px -14px rgba(0, 0, 0, 0.88),
+    inset 0 0 0 1px rgba(216, 185, 122, 0.18);
+}
+.reference-dracula-cover-img {
+  object-fit: contain;
+  transform: scaleX(1.038);
+  transform-origin: center center;
+}
+.reference-dracula-plaque {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: min(100%, 16.8rem);
+  margin: -0.8rem auto 0;
+  padding: 0.72rem 0.82rem;
+  border: 1px solid rgba(216, 185, 122, 0.34);
+  border-radius: 0.45rem;
+  background: rgba(14, 7, 5, 0.72);
+  box-shadow: 0 18px 35px -24px rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(6px);
+}
+.reference-dracula-plaque svg,
+.reference-dracula-audio-note svg {
+  color: var(--brand-gold-soft);
+  flex: 0 0 auto;
+}
+.reference-dracula-plaque span,
+.reference-dracula-plaque small {
+  display: block;
+}
+.reference-dracula-plaque span {
+  color: #fdfcf8;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+.reference-dracula-plaque small {
+  margin-top: 0.15rem;
+  color: rgba(244, 239, 234, 0.7);
+  font-size: 0.64rem;
+  letter-spacing: 0.02em;
+}
+.reference-dracula-audio-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  margin-top: 0.7rem;
+  color: rgba(244, 239, 234, 0.74);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 .premium-hero-ctas {
   display: grid;
@@ -820,510 +966,204 @@ body::before {
   }
 }
 
-.luxury-home-page {
+.reference-pipeline-shelf {
+  position: relative;
   background:
-    linear-gradient(180deg, #f7f2ea 0%, #efe4d7 52%, #f8f4ed 100%);
+    radial-gradient(circle at 8% 0%, rgba(216, 185, 122, 0.16), transparent 18rem),
+    linear-gradient(180deg, #fbf4e8 0%, #f3e7d5 100%);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.24);
   color: var(--brand-charcoal);
 }
-
-.luxury-home-page .premium-landing-hero {
-  min-height: min(620px, calc(100vh - 4.5rem));
-  background:
-    radial-gradient(ellipse 48% 64% at 23% 46%, rgba(8, 3, 5, 0.52) 0%, rgba(8, 3, 5, 0.34) 44%, transparent 76%),
-    linear-gradient(90deg, rgba(12, 5, 6, 0.56) 0%, rgba(20, 9, 9, 0.46) 34%, rgba(62, 32, 14, 0.22) 70%, rgba(14, 6, 4, 0.38) 100%),
-    radial-gradient(ellipse 36% 44% at 82% 44%, rgba(236, 198, 112, 0.3), transparent 70%),
-    var(--premium-hero-library-bg) center center / cover no-repeat,
-    linear-gradient(118deg, #13070b 0%, #211016 46%, #3f171f 78%, #1b0b10 100%);
+.reference-pipeline-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.15rem;
 }
-.luxury-home-page .premium-landing-hero::before {
-  background:
-    radial-gradient(ellipse 94% 82% at 44% 48%, transparent 0%, rgba(8, 3, 5, 0.08) 58%, rgba(8, 3, 5, 0.42) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.01) 45%, rgba(0, 0, 0, 0.32) 100%),
-    repeating-linear-gradient(90deg, rgba(253, 252, 248, 0.018) 0 1px, transparent 1px 120px);
+.reference-pipeline-card {
+  display: grid;
+  grid-template-columns: minmax(5.75rem, 7.2rem) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.95rem;
+  min-height: 9.2rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(197, 160, 89, 0.28);
+  border-radius: 0.7rem;
+  background: rgba(253, 252, 248, 0.5);
+  box-shadow: 0 22px 46px -38px rgba(74, 28, 39, 0.28);
 }
-.luxury-home-page .premium-landing-hero::after {
-  height: 18%;
-  background: linear-gradient(to top, rgba(247, 242, 234, 0.98) 0%, rgba(247, 242, 234, 0.58) 46%, transparent 100%);
-}
-.luxury-home-page .premium-dracula-hero-card {
-  border: 1px solid rgba(216, 185, 122, 0.22);
-  border-radius: 8px;
-  padding: 1.35rem 1.25rem 1.45rem;
-  background:
-    linear-gradient(155deg, rgba(253, 252, 248, 0.14), rgba(253, 252, 248, 0.035)),
-    linear-gradient(180deg, rgba(55, 30, 18, 0.16), rgba(17, 7, 11, 0.52));
-  box-shadow:
-    0 34px 70px -52px rgba(0, 0, 0, 0.96),
-    inset 0 1px 0 rgba(253, 252, 248, 0.12),
-    inset 0 -14px 34px rgba(72, 38, 19, 0.16);
-  backdrop-filter: blur(3px);
-}
-.luxury-home-page .premium-dracula-cover-frame {
-  border: 1px solid rgba(216, 185, 122, 0.36);
-  border-radius: 7px;
-  background: #14080c;
-  box-shadow:
-    0 30px 62px -34px rgba(0, 0, 0, 0.95),
-    0 0 0 7px rgba(253, 252, 248, 0.045),
-    0 0 58px -34px rgba(216, 185, 122, 0.95);
-}
-.luxury-home-page .premium-dracula-cover-img {
-  object-fit: contain;
-  object-position: center top;
-  transform: none;
-}
-.luxury-home-page .book-cover-image--loaded .premium-dracula-cover-img {
-  opacity: 1;
-}
-.luxury-home-page .premium-dracula-mobile-object {
-  border-radius: 7px;
-  background: #14080c;
-}
-.luxury-home-page .premium-launch-facts span {
-  border: 1px solid rgba(216, 185, 122, 0.2);
-  border-radius: 999px;
-  padding: 0.28rem 0.54rem;
-  background: rgba(253, 252, 248, 0.045);
-}
-.luxury-home-page .premium-hero-copy-zone {
-  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.42);
-}
-.premium-hero-revenue-note {
-  max-width: 36rem;
-  color: rgba(244, 239, 234, 0.72);
-  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
-  font-size: 0.98rem;
-  font-style: italic;
-  letter-spacing: 0.02em;
-}
-
-.luxury-reading-model,
-.luxury-pipeline-shelf,
-.luxury-reading-circle {
-  position: relative;
+.reference-pipeline-cover {
+  aspect-ratio: 2 / 3;
   overflow: hidden;
+  border-radius: 0.38rem;
+  background: #19130f;
+  box-shadow:
+    0 18px 34px -26px rgba(0, 0, 0, 0.82),
+    0 0 0 1px rgba(197, 160, 89, 0.22);
 }
-.luxury-reading-model {
-  background:
-    radial-gradient(ellipse 38% 44% at 86% 14%, rgba(197, 160, 89, 0.16), transparent 72%),
-    linear-gradient(180deg, #f7f2ea 0%, #efe4d7 100%);
-}
-.luxury-pipeline-shelf {
-  background:
-    radial-gradient(ellipse 42% 55% at 18% 18%, rgba(74, 28, 39, 0.08), transparent 70%),
-    linear-gradient(180deg, #efe4d7 0%, #f8f4ed 100%);
-}
-.luxury-reading-circle {
-  background:
-    linear-gradient(180deg, #f8f4ed 0%, #efe5da 100%);
-}
-.luxury-model-card,
-.pipeline-object,
-.reading-circle-card {
-  border: 1px solid rgba(74, 28, 39, 0.11);
-  border-radius: 8px;
-  background:
-    linear-gradient(145deg, rgba(253, 252, 248, 0.82), rgba(244, 239, 234, 0.58));
-  box-shadow: 0 22px 48px -42px rgba(74, 28, 39, 0.48);
-}
-.luxury-model-card {
-  min-height: 12rem;
-  padding: 1.15rem;
-}
-.luxury-model-card h3 {
-  margin-top: 1.2rem;
-  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
-  font-size: 1.45rem;
-  line-height: 1.05;
-  color: var(--brand-burgundy);
-}
-.luxury-model-card p {
-  margin-top: 0.85rem;
-  font-size: 0.88rem;
-  line-height: 1.68;
-  color: var(--brand-charcoal-soft);
-}
-.pipeline-object {
-  max-width: 22rem;
-  padding: 0.9rem;
-}
-.kshudhita-cover-stack {
-  position: relative;
-  min-height: 23rem;
-  isolation: isolate;
-}
-.kshudhita-cover-stack__front,
-.kshudhita-cover-stack__back {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 68%;
-  height: auto;
-  aspect-ratio: 2 / 3;
+.reference-pipeline-cover .book-cover-image__img {
   object-fit: cover;
-  border: 1px solid rgba(216, 185, 122, 0.32);
-  border-radius: 7px;
-  box-shadow:
-    0 28px 58px -38px rgba(16, 9, 12, 0.88),
-    0 0 0 6px rgba(253, 252, 248, 0.62);
 }
-.kshudhita-cover-stack__front {
-  z-index: 2;
-  left: 1.2rem;
-  top: 0.2rem;
-}
-.kshudhita-cover-stack__back {
-  z-index: 1;
-  left: 5.4rem;
-  top: 1.35rem;
-  opacity: 0.78;
-  filter: saturate(0.88) brightness(0.86);
-  transform: rotate(3deg);
-}
-.pipeline-mini-stack {
+.reference-pipeline-placeholder {
   display: grid;
-  gap: 0.75rem;
-}
-.pipeline-mini-stack__item {
-  display: grid;
-  grid-template-columns: minmax(7rem, 0.72fr) 1fr minmax(8rem, 1fr);
-  gap: 0.75rem;
-  align-items: center;
-  padding: 0.85rem 0;
-  border-top: 1px solid rgba(74, 28, 39, 0.12);
-}
-.pipeline-mini-stack__item span,
-.pipeline-mini-stack__item em {
-  font-size: 0.68rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(74, 28, 39, 0.62);
-}
-.pipeline-mini-stack__item strong {
-  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
-  font-size: 1.35rem;
-  font-weight: 500;
-  color: var(--brand-burgundy);
-}
-.pipeline-mini-stack__item em {
-  font-style: normal;
-  text-align: right;
-}
-.reading-circle-card {
-  padding: 1.25rem;
-}
-.home-social-rail__label {
-  margin-bottom: 0.85rem;
-  font-family: 'Outfit', 'Noto Sans Bengali', sans-serif;
-  font-size: 0.64rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--brand-gold-deep);
-}
-.home-social-rail__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-}
-.home-social-rail__link {
-  display: inline-flex;
-  width: 2.55rem;
-  height: 2.55rem;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(74, 28, 39, 0.18);
-  border-radius: 999px;
-  color: var(--brand-burgundy);
-  background: rgba(253, 252, 248, 0.54);
-  transition: border-color .25s ease, color .25s ease, transform .25s ease, background-color .25s ease;
-}
-.home-social-rail__link:hover,
-.home-social-rail__link:focus-visible {
-  border-color: rgba(197, 160, 89, 0.8);
-  color: var(--brand-gold-deep);
-  background: rgba(253, 252, 248, 0.82);
-  transform: translateY(-1px);
-}
-.home-social-rail__link:focus-visible {
-  outline: 2px solid rgba(197, 160, 89, 0.7);
-  outline-offset: 4px;
-}
-.home-social-review {
-  max-width: 28rem;
-  border-left: 1px solid rgba(197, 160, 89, 0.55);
-  padding-left: 1rem;
-  font-size: 0.82rem;
-  line-height: 1.7;
-  color: rgba(74, 28, 39, 0.66);
-}
-
-@media (min-width: 1024px) {
-  .luxury-home-page .premium-landing-hero {
-    min-height: 600px;
-  }
-  .luxury-home-page .premium-hero-ctas {
-    max-width: 42rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .luxury-home-page .premium-landing-hero {
-    min-height: auto;
-    background:
-      radial-gradient(ellipse 72% 58% at 48% 34%, rgba(8, 3, 5, 0.62) 0%, rgba(8, 3, 5, 0.48) 50%, rgba(8, 3, 5, 0.2) 82%),
-      linear-gradient(180deg, rgba(12, 5, 6, 0.54) 0%, rgba(22, 9, 10, 0.44) 52%, rgba(14, 6, 4, 0.4) 100%),
-      radial-gradient(ellipse 42% 36% at 77% 20%, rgba(236, 198, 112, 0.24), transparent 72%),
-      var(--premium-hero-library-bg) 52% center / cover no-repeat,
-      linear-gradient(118deg, #13070b 0%, #211016 46%, #3f171f 78%, #1b0b10 100%);
-  }
-  .luxury-home-page .premium-landing-hero::after {
-    height: 8%;
-  }
-  .luxury-home-page .premium-launch-facts span {
-    width: 100%;
-    background: rgba(253, 252, 248, 0.072);
-  }
-  .pipeline-mini-stack__item {
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
-  }
-  .pipeline-mini-stack__item em {
-    text-align: left;
-  }
-  .pipeline-object {
-    max-width: 19rem;
-  }
-  .kshudhita-cover-stack {
-    min-height: 19.5rem;
-  }
-  .kshudhita-cover-stack__front,
-  .kshudhita-cover-stack__back {
-    width: 69%;
-  }
-  .kshudhita-cover-stack__front {
-    left: 0.45rem;
-  }
-  .kshudhita-cover-stack__back {
-    left: 4.15rem;
-  }
-  .luxury-model-card {
-    min-height: auto;
-  }
-}
-
-.library-room-page {
-  background:
-    radial-gradient(ellipse 44% 38% at 82% 7%, rgba(197, 160, 89, 0.14), transparent 70%),
-    linear-gradient(180deg, #f5eee5 0%, #efe3d5 44%, #f8f4ed 100%);
-  color: var(--brand-charcoal);
-}
-
-.library-room-hero {
-  min-height: min(590px, calc(100vh - 4.5rem));
-  background:
-    linear-gradient(90deg, rgba(12, 5, 6, 0.95) 0%, rgba(26, 10, 12, 0.88) 43%, rgba(63, 37, 20, 0.48) 74%, rgba(14, 6, 4, 0.62) 100%),
-    radial-gradient(ellipse 34% 46% at 82% 46%, rgba(236, 198, 112, 0.26), transparent 70%),
-    var(--library-room-bg) center center / cover no-repeat,
-    linear-gradient(118deg, #13070b 0%, #211016 46%, #3f171f 78%, #1b0b10 100%);
-}
-
-.library-room-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(ellipse 58% 56% at 28% 42%, rgba(8, 3, 5, 0.08), rgba(8, 3, 5, 0.52) 78%, rgba(8, 3, 5, 0.76) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.42) 100%);
-}
-
-.library-room-hero::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 18%;
-  z-index: -1;
-  background: linear-gradient(to top, rgba(245, 238, 229, 0.98) 0%, rgba(245, 238, 229, 0.58) 48%, transparent 100%);
-}
-
-.library-hero-facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem 0.75rem;
-  max-width: 45rem;
-}
-
-.library-hero-facts span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.42rem;
-  border: 1px solid rgba(216, 185, 122, 0.22);
-  border-radius: 999px;
-  padding: 0.34rem 0.6rem;
-  background: rgba(253, 252, 248, 0.055);
-  color: rgba(244, 239, 234, 0.86);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.library-hero-book-object {
-  border: 1px solid rgba(216, 185, 122, 0.24);
-  border-radius: 8px;
-  padding: 1.25rem 1.15rem 1.35rem;
-  background:
-    linear-gradient(155deg, rgba(253, 252, 248, 0.13), rgba(253, 252, 248, 0.035)),
-    linear-gradient(180deg, rgba(55, 30, 18, 0.14), rgba(17, 7, 11, 0.52));
-  box-shadow:
-    0 34px 72px -54px rgba(0, 0, 0, 0.96),
-    inset 0 1px 0 rgba(253, 252, 248, 0.12);
-  backdrop-filter: blur(3px);
-}
-
-.library-hero-cover-frame {
-  border: 1px solid rgba(216, 185, 122, 0.36);
-  border-radius: 7px;
-  background: #14080c;
-  box-shadow:
-    0 30px 62px -34px rgba(0, 0, 0, 0.95),
-    0 0 0 7px rgba(253, 252, 248, 0.045),
-    0 0 58px -34px rgba(216, 185, 122, 0.9);
-}
-
-.library-room-page .premium-dracula-cover-img {
-  object-fit: contain;
-  object-position: center top;
-  transform: none;
-}
-
-.library-pipeline-feature {
-  display: grid;
-  gap: 2rem;
-  align-items: center;
-  border: 1px solid rgba(74, 28, 39, 0.12);
-  border-radius: 8px;
-  padding: 1.25rem;
-  background:
-    radial-gradient(ellipse 52% 58% at 0% 0%, rgba(74, 28, 39, 0.1), transparent 72%),
-    linear-gradient(145deg, rgba(253, 252, 248, 0.86), rgba(244, 239, 234, 0.64));
-  box-shadow: 0 26px 62px -50px rgba(74, 28, 39, 0.5);
-}
-
-.library-pipeline-feature__covers {
-  display: flex;
-  justify-content: center;
-}
-
-.library-kshudhita-stack {
-  position: relative;
-  width: min(20rem, 78vw);
-  min-height: 22rem;
-  isolation: isolate;
-}
-
-.library-kshudhita-stack__front,
-.library-kshudhita-stack__back {
-  position: absolute;
-  display: block;
-  width: 62%;
-  height: auto;
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
-  border: 1px solid rgba(216, 185, 122, 0.32);
-  border-radius: 7px;
-  box-shadow:
-    0 28px 58px -38px rgba(16, 9, 12, 0.88),
-    0 0 0 6px rgba(253, 252, 248, 0.62);
-}
-
-.library-kshudhita-stack__front {
-  z-index: 2;
-  left: 1.2rem;
-  top: 0.35rem;
-}
-
-.library-kshudhita-stack__back {
-  z-index: 1;
-  left: 6.2rem;
-  top: 1.45rem;
-  opacity: 0.78;
-  filter: saturate(0.9) brightness(0.85);
-  transform: rotate(3deg);
-}
-
-.library-pipeline-feature__placeholder {
-  display: grid;
-  min-height: 16rem;
-  width: min(20rem, 76vw);
+  height: 100%;
   place-items: center;
-  border: 1px solid rgba(216, 185, 122, 0.32);
-  border-radius: 8px;
-  color: rgba(74, 28, 39, 0.62);
+  padding: 0.85rem;
+  text-align: center;
+  background:
+    radial-gradient(circle at 52% 24%, rgba(216, 185, 122, 0.27), transparent 36%),
+    linear-gradient(160deg, #172a22 0%, #0c1613 100%);
+  color: #f7ead1;
+}
+.reference-pipeline-placeholder span {
+  display: block;
+  margin-top: 0.45rem;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
+  font-size: 1rem;
+  line-height: 1.05;
+}
+.reference-pipeline-copy {
+  min-width: 0;
+}
+.reference-pipeline-status {
+  margin-bottom: 0.45rem;
+  color: var(--brand-gold-deep);
+  font-size: 0.54rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.reference-pipeline-copy h3 {
+  color: var(--brand-burgundy);
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
+  font-size: 1.18rem;
+  line-height: 1.08;
+}
+.reference-pipeline-native {
+  margin-top: 0.26rem;
+  color: rgba(74, 28, 39, 0.72);
+  font-family: 'Noto Serif Bengali', serif;
   font-size: 0.72rem;
+  line-height: 1.3;
+}
+.reference-pipeline-author {
+  margin-top: 0.42rem;
+  color: var(--brand-charcoal-soft);
+  font-size: 0.58rem;
+  letter-spacing: 0.13em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+.reference-pipeline-notify {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.8rem;
+  min-height: 2rem;
+  padding: 0.45rem 0.86rem;
+  border: 1px solid rgba(197, 160, 89, 0.56);
+  border-radius: 999px;
+  color: var(--brand-burgundy);
+  font-size: 0.56rem;
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  transition: background .25s ease, border-color .25s ease, transform .25s ease;
+}
+.reference-pipeline-notify:hover {
+  border-color: var(--brand-gold-deep);
+  background: rgba(197, 160, 89, 0.12);
+  transform: translateY(-1px);
 }
 
-.library-pipeline-feature__copy {
-  padding: 0.5rem;
-}
-
-.library-shelf-toolbar {
-  border-top: 1px solid rgba(74, 28, 39, 0.12);
-  border-bottom: 1px solid rgba(74, 28, 39, 0.12);
-}
-
-.book-card__secondary-title {
-  margin-top: -0.35rem;
-  color: rgba(74, 28, 39, 0.58);
-  font-family: 'Noto Serif Bengali', 'Cormorant Garamond', serif;
-  font-size: 0.96rem;
+.home-social-review {
+  display: inline-flex;
+  border: 1px solid rgba(253, 252, 248, 0.16);
+  border-radius: 999px;
+  background: rgba(253, 252, 248, 0.055);
+  color: rgba(244, 239, 234, 0.72);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
   line-height: 1.35;
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
 }
 
-.book-card--pipeline {
-  background:
-    linear-gradient(180deg, rgba(253, 252, 248, 0.86), rgba(244, 239, 234, 0.68));
+.home-social-rail__link {
+  text-decoration: none;
 }
 
-@media (min-width: 768px) {
-  .library-pipeline-feature {
-    grid-template-columns: 0.78fr 1.22fr;
-    padding: 1.65rem;
+@media (max-width: 1180px) {
+  .reference-pipeline-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-
-@media (max-width: 767px) {
-  .library-room-hero {
+@media (max-width: 1023px) {
+  .reference-library-hero,
+  .reference-hero-grid {
     min-height: auto;
-    background-position: 58% center, center center, 58% center, center center;
   }
-  .library-room-hero::after {
-    height: 9%;
+  .reference-dracula-stage {
+    justify-content: flex-start;
   }
-  .library-hero-facts {
-    display: grid;
-    gap: 0.42rem;
+  .reference-dracula-book-object {
+    width: min(100%, 18rem);
+    margin-inline: auto;
+    padding-bottom: 2.75rem;
   }
-  .library-hero-facts span {
-    width: 100%;
-    font-size: 0.58rem;
+  .reference-dracula-book-object--hardcopy {
+    width: min(100%, 20rem);
+    padding-bottom: 0;
   }
-  .library-hero-book-object {
-    max-width: 18rem;
+  .reference-dracula-hardcopy-shell {
+    width: min(100%, 18.5rem);
   }
-  .library-kshudhita-stack {
-    min-height: 19rem;
+  .reference-dracula-cover-frame {
+    width: min(100%, 14.5rem);
+    transform: none;
   }
-  .library-kshudhita-stack__front,
-  .library-kshudhita-stack__back {
-    width: 66%;
+}
+@media (max-width: 639px) {
+  .premium-landing-hero {
+    background-position: 34% center;
   }
-  .library-kshudhita-stack__front {
-    left: 0.35rem;
+  .reference-hero-trust {
+    gap: 0.45rem;
   }
-  .library-kshudhita-stack__back {
-    left: 4.9rem;
+  .reference-hero-trust span {
+    min-height: 2.25rem;
+    padding: 0.45rem 0.62rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.08em;
+  }
+  .reference-dracula-book-object {
+    width: min(100%, 14.4rem);
+  }
+  .reference-dracula-book-object--hardcopy {
+    width: min(100%, 13.8rem);
+  }
+  .reference-dracula-hardcopy-shell {
+    width: min(100%, 13.8rem);
+  }
+  .reference-dracula-cover-frame {
+    width: min(100%, 10.8rem);
+  }
+  .reference-dracula-plaque {
+    width: min(100%, 13.2rem);
+    padding: 0.62rem 0.68rem;
+  }
+  .reference-dracula-plaque span {
+    font-size: 0.52rem;
+  }
+  .reference-dracula-plaque small,
+  .reference-dracula-audio-note {
+    font-size: 0.56rem;
+  }
+  .reference-pipeline-row {
+    grid-template-columns: 1fr;
+  }
+  .reference-pipeline-card {
+    grid-template-columns: minmax(5rem, 6.5rem) minmax(0, 1fr);
+    min-height: 8.65rem;
   }
 }
 
@@ -1367,90 +1207,17 @@ body::before {
 
 .book-cover-image__fallback {
   display: grid;
-  position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  align-content: end;
-  justify-items: start;
-  gap: 0.35rem;
-  padding: 1.1rem;
-  color: var(--brand-ivory);
+  place-items: center;
+  padding: 1rem;
+  color: var(--brand-burgundy);
   font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
-  font-size: 1rem;
-  line-height: 1.08;
-  background:
-    linear-gradient(180deg, rgba(25, 10, 14, 0.08), rgba(25, 10, 14, 0.82)),
-    radial-gradient(ellipse 78% 42% at 28% 16%, rgba(216, 185, 122, 0.34), transparent 66%),
-    linear-gradient(145deg, #4a1c27 0%, #261015 48%, #6b4a24 100%);
-}
-
-.book-cover-image__fallback::before {
-  content: "";
-  position: absolute;
-  inset: 0.7rem;
-  border: 1px solid rgba(216, 185, 122, 0.38);
-  border-radius: 0.35rem;
-  pointer-events: none;
-}
-
-.book-cover-image__fallback::after {
-  content: "";
-  position: absolute;
-  inset: 1.05rem 1.05rem auto;
-  height: 0.26rem;
-  border-top: 1px solid rgba(216, 185, 122, 0.42);
-  border-bottom: 1px solid rgba(253, 252, 248, 0.15);
-  pointer-events: none;
-}
-
-.book-cover-image__fallback-mark {
-  position: absolute;
-  top: 1.35rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(216, 185, 122, 0.25);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3.4rem, 14vw, 5.8rem);
+  font-size: clamp(3rem, 16vw, 5rem);
   line-height: 1;
-}
-
-.book-cover-image__fallback-title {
-  position: relative;
-  z-index: 1;
-  display: block;
-  color: var(--brand-ivory);
-  font-size: clamp(1.35rem, 5.2vw, 2rem);
-  font-weight: 500;
-  letter-spacing: 0.01em;
-}
-
-.book-cover-image__fallback-author,
-.book-cover-image__fallback-status {
-  position: relative;
-  z-index: 1;
-  display: block;
-  font-family: 'Outfit', 'Noto Sans Bengali', sans-serif;
-  text-transform: uppercase;
-}
-
-.book-cover-image__fallback-author {
-  max-width: 100%;
-  overflow: hidden;
-  color: rgba(253, 252, 248, 0.74);
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.book-cover-image__fallback-status {
-  margin-top: 0.5rem;
-  border-top: 1px solid rgba(216, 185, 122, 0.28);
-  padding-top: 0.62rem;
-  color: rgba(216, 185, 122, 0.86);
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
+  background:
+    radial-gradient(ellipse 75% 55% at 50% 18%, rgba(253, 252, 248, 0.86), transparent 72%),
+    var(--brand-beige-deep);
 }
 
 /* ----------- Eyebrows / overlines ----------- */
@@ -1641,6 +1408,128 @@ textarea.input-elegant {
   backdrop-filter: blur(18px) saturate(120%);
   -webkit-backdrop-filter: blur(18px) saturate(120%);
   border-bottom: 1px solid rgba(229, 220, 211, 0.55);
+}
+.header-brand-cluster {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.58rem;
+}
+.india-origin-badge {
+  position: relative;
+  display: inline-flex;
+  height: 2.24rem;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.38rem;
+  border: 1px solid rgba(197, 160, 89, 0.46);
+  border-radius: 999px;
+  padding: 0.16rem 0.62rem 0.16rem 0.24rem;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.94), transparent 42%),
+    linear-gradient(145deg, rgba(255, 252, 243, 0.9), rgba(244, 235, 219, 0.62)),
+    rgba(253, 252, 248, 0.76);
+  box-shadow:
+    0 14px 28px -22px rgba(74, 28, 39, 0.52),
+    0 0 0 1px rgba(255, 255, 255, 0.34) inset,
+    inset 0 1px 0 rgba(253, 252, 248, 0.92);
+  color: var(--brand-burgundy);
+}
+.india-origin-badge__mark {
+  width: 3.24rem;
+  height: 1.52rem;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+.india-origin-badge__flag-shadow {
+  fill: rgba(74, 28, 39, 0.2);
+  filter: drop-shadow(0 5px 7px rgba(74, 28, 39, 0.18));
+}
+.india-origin-badge__band--saffron {
+  fill: #e08a28;
+}
+.india-origin-badge__band--ivory {
+  fill: #fffaf0;
+}
+.india-origin-badge__band--green {
+  fill: #1f8a52;
+}
+.india-origin-badge__silk {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.34);
+  stroke-linecap: round;
+  stroke-width: 1.2;
+  mix-blend-mode: screen;
+}
+.india-origin-badge__flag-rim {
+  fill: none;
+  stroke: rgba(120, 78, 28, 0.38);
+  stroke-linejoin: round;
+  stroke-width: 1.15;
+}
+.india-origin-badge__wheel {
+  fill: rgba(255, 250, 240, 0.96);
+  stroke: #213d82;
+  stroke-width: 1.35;
+}
+.india-origin-badge__wheel-lines {
+  fill: none;
+  stroke: #213d82;
+  stroke-linecap: round;
+  stroke-width: 0.58;
+}
+.india-origin-badge__wheel-core {
+  fill: #213d82;
+}
+.india-origin-badge__text {
+  display: grid;
+  gap: 0.03rem;
+  line-height: 1;
+}
+.india-origin-badge__text strong {
+  color: var(--brand-burgundy);
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
+}
+.india-origin-badge__text small {
+  color: rgba(74, 28, 39, 0.66);
+  font-size: 0.46rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 1279px) {
+  .india-origin-badge {
+    width: 3.12rem;
+    justify-content: center;
+    padding-inline: 0.18rem;
+  }
+  .india-origin-badge__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 374px) {
+  .header-brand-cluster {
+    gap: 0.34rem;
+  }
+  .india-origin-badge {
+    width: 2.82rem;
+    height: 1.92rem;
+  }
+  .india-origin-badge__mark {
+    width: 2.62rem;
+  }
 }
 
 /* ----------- Image fade ----------- */

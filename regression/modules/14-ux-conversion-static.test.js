@@ -96,6 +96,7 @@ describe("UX conversion static signals", () => {
   const firstVisitSiteTour = read("frontend/src/components/FirstVisitSiteTour.jsx");
   const footer = read("frontend/src/components/Footer.jsx");
   const footerSocialLinks = read("frontend/src/components/FooterSocialLinks.jsx");
+  const indiaCraftBadge = read("frontend/src/components/IndiaCraftBadge.jsx");
   const socialLinksConfig = read("frontend/src/config/socialLinks.js");
   const styles = read("frontend/src/index.css");
   const app = read("frontend/src/App.js");
@@ -156,6 +157,9 @@ describe("UX conversion static signals", () => {
   const homepageHeroLibraryThemeReview = read("HOMEPAGE_HERO_LIBRARY_THEME_REVIEW.md");
   const homepageHeroLuxuryScorecard = read("HOMEPAGE_HERO_LUXURY_SCORECARD.md");
   const homepageHeroConversionScorecard = read("HOMEPAGE_HERO_CONVERSION_SCORECARD.md");
+  const homepageReferenceHeroImplementationReport = read("HOMEPAGE_REFERENCE_HERO_IMPLEMENTATION_REPORT.md");
+  const homepageReferenceLuxuryScorecard = read("HOMEPAGE_REFERENCE_LUXURY_SCORECARD.md");
+  const homepageReferenceRevenueUxScorecard = read("HOMEPAGE_REFERENCE_REVENUE_UX_SCORECARD.md");
   const controlledPublicationPrecheck = read("scripts/controlled_publication_precheck.py");
   const internalAudiobookPrototype = read("frontend/src/components/Internal/InternalAudiobookPlayerPrototype.jsx");
   const accessibleAudiobookPrototypeReport = read("PREMIUM_ACCESSIBLE_AUDIOBOOK_PLAYER_REPORT.md");
@@ -188,22 +192,21 @@ describe("UX conversion static signals", () => {
     expect(home).toContain('data-testid="hero-cta-read"');
     expect(home).toContain('data-testid="hero-cta-pricing"');
     expect(home).toContain("The Earnalism Digital Library");
-    expect(home).toContain('aria-label="Begin with Dracula."');
-    expect(home).toContain("Begin with");
-    expect(home).toContain("Dracula.");
-    expect(home).toContain("A quiet digital reading room for timeless books.");
+    expect(home).toContain('aria-label="Step into the classics. Stay with the story."');
+    expect(home).toContain("Step into the classics.");
+    expect(home).toContain("Stay with the story.");
+    expect(home).toContain("Timeless stories. Beautifully presented.");
     expect(home).toContain("The Earnalism launch begins with one approved classic.");
-    expect(home).toContain("future classics remain in rights-safe preparation");
-    expect(home).toContain("Audiobook experience in private review");
+    expect(home).toContain("Read Chapter 1 free, continue with reading time");
+    expect(home).toContain("Rights-safe & ethical");
+    expect(home).toContain("Ad-free reading");
+    expect(home).toContain("Reading time stays with you");
     expect(home).toContain("Read Chapter 1 Free");
     expect(home).toContain("Start Dracula");
     expect(home).toContain("Get 7-Day Reading Pass");
-    expect(home).toContain("Reading time is used only while you read.");
-    expect(home).toContain("Public-domain source verified");
-    expect(home).toContain('data-testid="dracula-reading-model"');
-    expect(home).toContain("A revenue path that still feels like a library.");
-    expect(home).toContain("Passes credit a wallet; time is spent only while reading.");
-    expect(home).toContain("KSHUDHITA_PASHAN_PIPELINE.titleEn} is visible, not open.");
+    expect(home).toContain("Chapter 1 is free. Reading time is used only while you read.");
+    expect(home).toContain("Coming Through the Rights-Safe Pipeline");
+    expect(home).toContain("These books are not live products yet. They have Notify Me CTAs only");
     expect(home).not.toContain('data-testid="dracula-journey-map"');
     expect(home).not.toContain('data-testid="home-live-dracula"');
     expect(home).not.toContain('data-testid="controlled-carousel-section"');
@@ -225,8 +228,15 @@ describe("UX conversion static signals", () => {
     expect(Number(heroThreshold[1])).toBeLessThanOrEqual(650);
 
     expect(home).toContain('data-testid="premium-landing-hero"');
+    expect(home).toContain("--reference-hero-image");
+    expect(styles).toContain('var(--reference-hero-image) center / cover no-repeat');
     expect(home).toContain('data-testid="hero-dracula-cover-frame"');
-    expect(home).toContain("Custom Earnalism Dracula cover artwork");
+    expect(home).toContain('data-no-white-edge="true"');
+    expect(home).toContain("/assets/books/dracula/dracula-hero-hardcopy.webp");
+    expect(home).toContain("Hard-copy Dracula book object with approved classic reading release plaque");
+    expect(styles).toContain(".reference-dracula-hardcopy-shell");
+    expect(styles).toContain("background: transparent");
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-hero-hardcopy.webp"))).toBe(true);
     expect(home).not.toContain("images.unsplash.com");
     expect(home).not.toMatch(/lg:pt-36|lg:pb-32|sm:pt-32|pb-24/);
 
@@ -261,10 +271,15 @@ describe("UX conversion static signals", () => {
     expect(homepageRevenuePixelScorecard).toContain("Revenue pixel-utilization score: `10/10`");
     expect(homepageSocialPipelineAudit).toContain("Kshudhita Pashan cover status: `OWNER_PROVIDED_COVER_READY`");
     expect(homepageSocialPipelineAudit).toContain("No fake social links are rendered");
-    expect(homepageHeroLibraryThemeReview).toContain("Hero background asset: `frontend/public/assets/hero/golden-hour-library-hero.webp`");
     expect(homepageHeroLuxuryScorecard).toContain("Luxury/theme score: `10/10`");
     expect(homepageHeroConversionScorecard).toContain("Conversion clarity score: `10/10`");
     expect(homepageHeroConversionScorecard).toContain("Public-claims safety score: `10/10`");
+    expect(homepageReferenceHeroImplementationReport).toContain("Uses the local optimized `frontend/public/assets/hero/golden-hour-library-hero.webp`");
+    expect(homepageReferenceHeroImplementationReport).toContain("display-only hard-copy object");
+    expect(homepageReferenceHeroImplementationReport).toContain("0 opaque outer-edge pixels");
+    expect(homepageReferenceHeroImplementationReport).toContain('data-approved-hero-max-height="650"');
+    expect(homepageReferenceLuxuryScorecard).toContain("Overall luxury/theme score | 9.8/10");
+    expect(homepageReferenceRevenueUxScorecard).toContain("Overall revenue UX score | 9.8/10");
     expect(luxuryVisualScorecard).toContain("Why This Is Now 10/10");
     expect(pixelUtilizationScorecard).toContain("Why This Is Now 10/10");
     expect(premiumLandingVisualReview).toContain("Why This Is Now 10/10");
@@ -273,11 +288,9 @@ describe("UX conversion static signals", () => {
     expect(styles).toContain(".premium-landing-hero");
     expect(home).toContain("golden-hour-library-hero.webp");
     expect(home).not.toContain("classical-library-reading-room.webp");
-    expect(styles).toContain("--premium-hero-library-bg");
-    expect(styles).toContain(".premium-dracula-cover-frame");
-    expect(styles).toContain(".premium-dracula-cover-img");
-    expect(styles).toContain(".luxury-pipeline-shelf");
-    expect(styles).toContain(".kshudhita-cover-stack__front");
+    expect(styles).toContain(".reference-dracula-hardcopy-img");
+    expect(styles).toContain(".reference-pipeline-shelf");
+    expect(styles).toContain(".reference-pipeline-card");
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/hero/golden-hour-library-hero.webp"))).toBe(true);
     expect(styles).not.toMatch(/letter-spacing:\s*-\d/);
 
@@ -293,6 +306,9 @@ describe("UX conversion static signals", () => {
       homepageHeroLibraryThemeReview,
       homepageHeroLuxuryScorecard,
       homepageHeroConversionScorecard,
+      homepageReferenceHeroImplementationReport,
+      homepageReferenceLuxuryScorecard,
+      homepageReferenceRevenueUxScorecard,
     ].join("\n");
     expect(premiumLandingSources).not.toMatch(/\b(audio|audiobook)\s+(is|are)\s+(live|public|available|ready)\b/i);
     expect(premiumLandingSources).not.toMatch(/\bListen Now\b/i);
@@ -309,7 +325,6 @@ describe("UX conversion static signals", () => {
     expect(library).toContain("Only live public reading release");
     expect(library).toContain("Coming Through the Rights-Safe Pipeline");
     expect(library).toContain("every future shelf held until it earns the right to open");
-    expect(library).toContain("These books are not live products yet. They have Notify Me CTAs only.");
     expect(library).toContain("No reader, payment, or audio CTA is available for this pipeline-only title.");
     expect(library).toContain("Read Chapter 1 Free");
     expect(library).toContain("Start Dracula");
@@ -323,7 +338,7 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain('data-testid="dracula-reading-model-note"');
     expect(bookDetail).toContain("Chapter 1 opens free so you can feel the room first.");
     expect(bookDetail).toContain("Later chapters use reading time from your wallet, not a subscription.");
-    expect(bookDetail).toContain("Audiobook experience in private review. No listening CTA is shown.");
+    expect(bookDetail).toContain("Audiobook experience in private review, with no public listening CTA.");
   });
 
   test("payment revenue confidence stays test-mode, wallet-time, and audio-blocked", () => {
@@ -336,7 +351,8 @@ describe("UX conversion static signals", () => {
     expect(packageJson).toContain('"launch:payment-smoke:test-mode": "python3 scripts/launch_readiness_audit.py --mode payment-smoke-test-mode"');
     expect(launchAudit).toContain('"stale_intent_expiry_detected"');
     expect(launchAudit).toContain('"no_public_audiobook_sale_detected"');
-    expect(alwaysVisibleLaunchCopy).toContain("Passes credit a wallet; time is spent only while reading.");
+    expect(alwaysVisibleLaunchCopy).toContain("Reading time stays with you");
+    expect(alwaysVisibleLaunchCopy).toContain("Chapter 1 is free. Reading time is used only while you read.");
     expect(renderedPricingSources).toContain("No subscription or autorenewal");
     expect(renderedPricingSources).not.toMatch(/own forever|ownership forever|permanent ownership|autorenewing plan|recurring subscription/i);
     expect(renderedPricingSources).not.toMatch(/buy audiobook|audiobook pass|Listen Now/i);
@@ -1096,17 +1112,24 @@ describe("UX conversion static signals", () => {
 
   test("Bengali Gothic candidate is pipeline-only and not a live reading CTA", () => {
     expect(home).toContain('data-testid="bengali-gothic-pipeline-shelf"');
-    expect(home).toContain('data-testid="pipeline-kshudhita-cover-stack"');
-    expect(home).toContain("KSHUDHITA_PASHAN_PIPELINE.coverStatus");
-    expect(home).toContain("KSHUDHITA_PASHAN_PIPELINE.frontCoverImage");
-    expect(home).toContain("KSHUDHITA_PASHAN_PIPELINE.backCoverImage");
+    expect(home).toContain("reference-pipeline-card");
+    expect(home).toContain('data-testid={`pipeline-card-${book.slug}`}');
+    expect(home).toContain('data-testid={`pipeline-cover-${book.slug}`}');
+    expect(home).toContain("Coming Through the Rights-Safe Pipeline");
+    expect(home).toContain("These books are not live products yet. They have Notify Me CTAs only");
     expect(home).not.toContain("kshudhita-cover-placeholder__title");
     expect(controlledLaunch).toContain('KSHUDHITA_PASHAN_FRONT_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp"');
     expect(controlledLaunch).toContain('KSHUDHITA_PASHAN_BACK_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp"');
+    expect(controlledLaunch).toContain('cover_image_url: "/assets/books/kshudhita-pashan/front-cover.webp"');
+    expect(controlledLaunch).toContain('cover_image_url: "/assets/books/frankenstein/front-cover.webp"');
+    expect(controlledLaunch).toContain('cover_image_url: "/assets/books/sherlock-holmes/front-cover.webp"');
+    expect(controlledLaunch).toContain('cover_status: "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER"');
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp"))).toBe(true);
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp"))).toBe(true);
-    expect(home).toContain("KSHUDHITA_PASHAN_PIPELINE.titleEn} is visible, not open.");
-    expect(controlledLaunch).toContain("Pipeline classic: The Hungry Stones");
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/kshudhita-pashan/front-cover.webp"))).toBe(true);
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/frankenstein/front-cover.webp"))).toBe(true);
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/sherlock-holmes/front-cover.webp"))).toBe(true);
+    expect(controlledLaunch).toContain('title_en: "The Hungry Stones"');
     expect(controlledLaunch).toContain("A Bengali Gothic candidate in rights-safe preparation.");
     expect(library).toContain('data-testid="library-bengali-gothic-pipeline"');
     expect(library).toContain('data-testid="library-kshudhita-cover-evidence"');
@@ -1120,7 +1143,7 @@ describe("UX conversion static signals", () => {
     const homePipelineBlock = extractBetween(
       home,
       'data-testid="bengali-gothic-pipeline-shelf"',
-      'data-testid="reading-circle-section"'
+      'data-testid="newsletter-card"'
     );
     const libraryPipelineBlock = extractBetween(
       library,
@@ -1130,7 +1153,6 @@ describe("UX conversion static signals", () => {
 
     for (const block of [homePipelineBlock, libraryPipelineBlock]) {
       expect(block).toContain("Notify Me");
-      expect(block).toContain("Reading Circle");
       expect(block).not.toContain("Start Reading");
       expect(block).not.toContain("Read Preview");
       expect(block).not.toContain("Listen Now");
@@ -1164,7 +1186,7 @@ describe("UX conversion static signals", () => {
     const pipelineBlock = extractBetween(
       home,
       'data-testid="pipeline-books"',
-      'data-testid="reading-circle-section"'
+      'data-testid="newsletter-card"'
     );
     expect(pipelineBlock).not.toContain("Start Reading");
     expect(pipelineBlock).not.toContain("Read Preview");
@@ -1387,11 +1409,25 @@ describe("UX conversion static signals", () => {
   });
 
   test("mobile navigation keeps a visible library CTA", () => {
+    expect(header).toContain('import IndiaCraftBadge from "./IndiaCraftBadge";');
+    expect(header).toContain('className="header-brand-cluster"');
+    expect(header).toContain("<IndiaCraftBadge />");
+    expect(header).toContain('data-testid="brand-logo"');
     expect(header).toContain('data-testid="mobile-cta-library"');
     expect(header).toContain("Start Dracula");
     expect(header).toContain("aria-expanded={open}");
     expect(header).toContain('aria-controls="mobile-menu"');
     expect(header).toContain('id="mobile-menu"');
+    expect(indiaCraftBadge).toContain('data-testid="india-origin-badge"');
+    expect(indiaCraftBadge).toContain('aria-label="Made in India"');
+    expect(indiaCraftBadge).toContain("Made in India");
+    expect(indiaCraftBadge).toContain("india-origin-badge__band--saffron");
+    expect(indiaCraftBadge).toContain("india-origin-badge__band--green");
+    expect(indiaCraftBadge).toContain("india-origin-badge__flag-rim");
+    expect(indiaCraftBadge).toContain("india-origin-badge__wheel");
+    expect(styles).toContain(".header-brand-cluster");
+    expect(styles).toContain(".india-origin-badge");
+    expect(styles).toContain("@media (max-width: 1279px)");
   });
 
   test("non-visual journey has skip link, focus indicators, and spoken loading states", () => {
@@ -1514,7 +1550,7 @@ describe("UX conversion static signals", () => {
 
     [
       "The Earnalism Digital Library",
-      "Begin with Dracula",
+      "Step into the classics",
       "Chapter 1 is free",
       "27 chapters prepared for focused reading",
       "Audio is intentionally disabled until QA passes",
@@ -1600,13 +1636,14 @@ describe("UX conversion static signals", () => {
     const homeHtml = readOptional("frontend/build/index.html");
     const readerHtml = readOptional("frontend/build/reader/dracula/index.html");
     if (!homeHtml || !readerHtml) {
-      expect(staticSnapshotGenerator).toContain("Begin with Dracula");
+      expect(staticSnapshotGenerator).toContain("Step Into Dracula");
+      expect(staticSnapshotGenerator).toContain("Controlled launch begins with Dracula");
       return;
     }
 
-    expect(homeHtml).toContain("Begin with Dracula");
-    expect(homeHtml).toContain("quiet digital reading room");
-    expect(homeHtml).toContain("future classics remain in rights-safe preparation");
+    expect(homeHtml).toContain("Step Into Dracula");
+    expect(homeHtml).toContain("Controlled launch begins with Dracula");
+    expect(homeHtml).toContain("rights-safe pipeline");
     expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");
     expect(homeHtml).not.toContain("Preview every book before you pay");
     expect(metaContent(readerHtml, "name", "robots")).toContain("noindex");

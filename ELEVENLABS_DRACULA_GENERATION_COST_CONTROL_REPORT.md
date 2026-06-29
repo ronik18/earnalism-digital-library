@@ -10,7 +10,7 @@
 - Concurrency: `1`
 - Max retries: `2`
 - Resume failed mode: `false`
-- Elapsed seconds: `0.019`
+- Elapsed seconds: `0.022`
 - Cache hits: `0`
 - Cache misses: `27`
 - Cache stale entries: `0`

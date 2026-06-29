@@ -37,10 +37,13 @@
   },
   "blocked_checks": [],
   "events_required": [
-    "pricing_view",
-    "checkout_start",
-    "payment_success",
-    "payment_failed"
+    "pricing_page_view",
+    "reading_pack_selected",
+    "checkout_started",
+    "payment_success_return",
+    "payment_failed_or_cancelled",
+    "wallet_credited_visible",
+    "continue_reading_click"
   ],
   "operator_follow_up": [
     "Run a separate controlled Razorpay test-mode checkout with a throwaway user before revenue launch.",
