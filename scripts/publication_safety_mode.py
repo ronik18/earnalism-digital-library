@@ -15,6 +15,19 @@ from typing import Any
 
 APPROVED_RELEASE_ALLOWLIST = ("dracula",)
 
+FIRST_BATCH_DRAFT_IMPORT_SLUGS = (
+    "anandamath-visual-study-companion",
+    "devdas-study-edition",
+    "abol-tabol-illustrated-reader",
+    "sultana-s-dream-feminist-sci-fi-edition",
+    "sherlock-holmes-logic-workbook",
+    "dracula-gothic-fiction-visual-guide",
+    "frankenstein-science-ethics-guide",
+    "tagore-short-stories-for-young-readers",
+    "calculus-made-easy-visual-guide",
+    "chander-pahar-adventure-companion",
+)
+
 DRAFT_EDITORIAL_REVIEW_FLAGS: dict[str, Any] = {
     "readerStatus": "ready_for_editorial_review",
     "publicationStatus": "draft",

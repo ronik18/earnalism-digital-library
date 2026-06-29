@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import importlib
 import subprocess
 import sys
 from pathlib import Path
@@ -9,6 +10,7 @@ from scripts import import_books
 from scripts.publication_safety_mode import (
     APPROVED_RELEASE_ALLOWLIST,
     DRAFT_EDITORIAL_REVIEW_FLAGS,
+    FIRST_BATCH_DRAFT_IMPORT_SLUGS,
     PUBLICATION_APPROVAL_CHECKLIST,
     apply_draft_editorial_review_flags,
     validate_import_book_safety,
@@ -64,17 +66,77 @@ def test_only_dracula_is_allowlisted_for_existing_live_release():
 def test_manifest_batch_of_10_new_books_passes_only_as_drafts():
     manifest = {
         "books": [
-            draft_book(f"draft-book-{index}")
-            for index in range(10)
+            draft_book(slug)
+            for slug in FIRST_BATCH_DRAFT_IMPORT_SLUGS
         ]
     }
 
+    assert len(FIRST_BATCH_DRAFT_IMPORT_SLUGS) == 10
     assert validate_manifest_payload(manifest) == []
 
     manifest["books"][3]["showInPublicLibrary"] = True
     issues = validate_manifest_payload(manifest)
 
-    assert any("draft-book-3" in issue and "showInPublicLibrary" in issue for issue in issues)
+    assert any(
+        FIRST_BATCH_DRAFT_IMPORT_SLUGS[3] in issue and "showInPublicLibrary" in issue
+        for issue in issues
+    )
+
+
+def test_first_batch_slugs_are_blocked_from_live_public_or_payment_flags():
+    for slug in FIRST_BATCH_DRAFT_IMPORT_SLUGS:
+        unsafe = draft_book(slug) | {
+            "publicationStatus": "live",
+            "isPublic": True,
+            "isLive": True,
+            "showInPublicLibrary": True,
+            "allowPublicReading": True,
+            "allowCheckout": True,
+            "allowPayment": True,
+            "is_published": True,
+        }
+
+        issues = validate_import_book_safety(unsafe)
+
+        assert issues, f"{slug} unexpectedly passed with live/public flags"
+        assert any("publicationStatus" in issue for issue in issues)
+        assert any("allowPayment" in issue for issue in issues)
+        assert any("is_published" in issue for issue in issues)
+
+
+def test_missing_public_flags_do_not_default_into_public_backend_state(monkeypatch):
+    monkeypatch.setenv("MONGODB_URL", "mongodb://localhost:27017/earnalism_publication_safety_test")
+    monkeypatch.setenv("JWT_SECRET", "publication-safety-test-secret")
+
+    server = importlib.import_module("backend.server")
+
+    book_input = server.BookIn(title="Draft Import", category_slug="literary-fiction")
+    book_model = server.Book(slug="draft-import", title="Draft Import", category_slug="literary-fiction")
+
+    assert book_input.readerStatus == "ready_for_editorial_review"
+    assert book_input.publicationStatus == "draft"
+    assert book_input.is_published is False
+    assert book_model.is_published is False
+
+
+def test_backend_publish_blocker_rejects_non_allowlisted_books(monkeypatch):
+    monkeypatch.setenv("MONGODB_URL", "mongodb://localhost:27017/earnalism_publication_safety_test")
+    monkeypatch.setenv("JWT_SECRET", "publication-safety-test-secret")
+
+    server = importlib.import_module("backend.server")
+
+    blockers = server._publish_blockers(
+        {
+            "slug": "frankenstein-science-ethics-guide",
+            "title": "Frankenstein Science & Ethics Guide",
+            "is_published": True,
+            "cover_image_url": "/assets/covers/frankenstein.webp",
+            "chapters": [],
+            "rights_metadata": {},
+        }
+    )
+
+    assert any("allowlist" in blocker for blocker in blockers)
 
 
 def test_importer_metadata_forces_draft_even_if_manifest_requests_publication():

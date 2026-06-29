@@ -1639,6 +1639,11 @@ def _publish_blockers(book: dict) -> List[str]:
         return []
 
     blockers: List[str] = []
+    slug = str(book.get("slug") or "").strip().lower()
+    if slug not in CONTROLLED_LIVE_BOOK_SLUGS:
+        blockers.append(
+            "Publication safety allowlist blocks live publication for non-approved books."
+        )
     if not (book.get("cover_image_url") or book.get("cover_url")):
         blockers.append("Front cover is required before publishing.")
 
@@ -2328,7 +2333,7 @@ class Book(BaseModel):
     allowPublicReading: bool = False
     allowCheckout: bool = False
     allowPayment: bool = False
-    is_published: bool = True
+    is_published: bool = False
     created_at: str = Field(default_factory=now_iso)
 
 
@@ -2381,7 +2386,7 @@ class PublicBookOut(BaseModel):
     learnings: List[str] = Field(default_factory=list)
     about_author: str = ""
     chapters: List[PublicChapterOut] = Field(default_factory=list)
-    is_published: bool = True
+    is_published: bool = False
     created_at: str = ""
     updated_at: str = ""
     publication_status: str = ""
@@ -2432,7 +2437,7 @@ class BookIn(BaseModel):
     allowPublicReading: bool = False
     allowCheckout: bool = False
     allowPayment: bool = False
-    is_published: bool = True
+    is_published: bool = False
     slug: Optional[str] = None
 
 
@@ -3182,9 +3187,21 @@ async def _run_startup_database_maintenance_once() -> None:
         {"chapters": {"$exists": False}},
         {"$set": {"chapters": []}},
     )
+    # Draft-safe by default: only explicit controlled-launch slugs inherit
+    # legacy live status when older rows are missing is_published.
     await db.books.update_many(
-        {"is_published": {"$exists": False}},
+        {
+            "is_published": {"$exists": False},
+            "slug": {"$in": list(CONTROLLED_LIVE_BOOK_SLUGS)},
+        },
         {"$set": {"is_published": True}},
+    )
+    await db.books.update_many(
+        {
+            "is_published": {"$exists": False},
+            "slug": {"$nin": list(CONTROLLED_LIVE_BOOK_SLUGS)},
+        },
+        {"$set": {"is_published": False}},
     )
 
     logger.info("Startup seeding complete")
