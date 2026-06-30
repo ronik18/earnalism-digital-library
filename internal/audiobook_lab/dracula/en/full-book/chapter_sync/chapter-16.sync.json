@@ -1,0 +1,74 @@
+{
+  "bookSlug": "dracula",
+  "chapterNumber": 16,
+  "chapterTitle": "CHAPTER XVI. DR. SEWARD’S DIARY-- continued",
+  "chunks": [
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-16-chunk-001.mp3",
+      "chunkId": "dracula-chapter-16-chunk-001",
+      "endMs": null,
+      "normalizedSha256": "6cc5c1f63b78209bd2aed17bbb16f783f22b8fbf67c124c41d7214f54d050146",
+      "sourceSha256": "6cc5c1f63b78209bd2aed17bbb16f783f22b8fbf67c124c41d7214f54d050146",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-16-chunk-002.mp3",
+      "chunkId": "dracula-chapter-16-chunk-002",
+      "endMs": null,
+      "normalizedSha256": "518ac4bebf97de4f3427fdb2a3b63060387f75f1856971ed70a46edcf8bb1194",
+      "sourceSha256": "518ac4bebf97de4f3427fdb2a3b63060387f75f1856971ed70a46edcf8bb1194",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-16-chunk-003.mp3",
+      "chunkId": "dracula-chapter-16-chunk-003",
+      "endMs": null,
+      "normalizedSha256": "cc4ee6d217d65bf21a4281e93390545f90dfcb60933f1a46a628c23bab1c22a6",
+      "sourceSha256": "cc4ee6d217d65bf21a4281e93390545f90dfcb60933f1a46a628c23bab1c22a6",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-16-chunk-004.mp3",
+      "chunkId": "dracula-chapter-16-chunk-004",
+      "endMs": null,
+      "normalizedSha256": "fc7dae1cbdfad35bac7021aba0a4220bbd8fb6da9808ebc931f8d5bf71183137",
+      "sourceSha256": "fc7dae1cbdfad35bac7021aba0a4220bbd8fb6da9808ebc931f8d5bf71183137",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-16-chunk-005.mp3",
+      "chunkId": "dracula-chapter-16-chunk-005",
+      "endMs": null,
+      "normalizedSha256": "e35c38c50e001407a3558a43e52e318bbc983514d09da34fac32af4fe2f3ad28",
+      "sourceSha256": "e35c38c50e001407a3558a43e52e318bbc983514d09da34fac32af4fe2f3ad28",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-16-chunk-006.mp3",
+      "chunkId": "dracula-chapter-16-chunk-006",
+      "endMs": null,
+      "normalizedSha256": "fabc1fd87fb73276df9e76de721d17ebbc341b84f30aa6e5a314b9a896969474",
+      "sourceSha256": "fabc1fd87fb73276df9e76de721d17ebbc341b84f30aa6e5a314b9a896969474",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-16-chunk-007.mp3",
+      "chunkId": "dracula-chapter-16-chunk-007",
+      "endMs": null,
+      "normalizedSha256": "4763044c38babe5a01ce4b50161fd965e3065a1f7c9103a6e443908d3cbbeff5",
+      "sourceSha256": "4763044c38babe5a01ce4b50161fd965e3065a1f7c9103a6e443908d3cbbeff5",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    }
+  ],
+  "public": false,
+  "publicAudioAllowed": false,
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED"
+}

@@ -1,0 +1,119 @@
+{
+  "bookSlug": "dracula",
+  "chapterNumber": 18,
+  "chapterTitle": "CHAPTER XVIII. DR. SEWARD’S DIARY",
+  "chunks": [
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-18-chunk-001.mp3",
+      "chunkId": "dracula-chapter-18-chunk-001",
+      "endMs": null,
+      "normalizedSha256": "bc49ed6282296ad6d3c873cd9f175f10b9e939c04480fdd7068803e05ea6028c",
+      "sourceSha256": "bc49ed6282296ad6d3c873cd9f175f10b9e939c04480fdd7068803e05ea6028c",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-18-chunk-002.mp3",
+      "chunkId": "dracula-chapter-18-chunk-002",
+      "endMs": null,
+      "normalizedSha256": "ed618017d65954df8600cd64ae65f6943d5102a41c2e8853f28d84d41f349bfc",
+      "sourceSha256": "ed618017d65954df8600cd64ae65f6943d5102a41c2e8853f28d84d41f349bfc",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-18-chunk-003.mp3",
+      "chunkId": "dracula-chapter-18-chunk-003",
+      "endMs": null,
+      "normalizedSha256": "a6820fdedc6035543eb8da816895484148fcc64e9f3962d14c58cea03e3d14b7",
+      "sourceSha256": "a6820fdedc6035543eb8da816895484148fcc64e9f3962d14c58cea03e3d14b7",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-18-chunk-004.mp3",
+      "chunkId": "dracula-chapter-18-chunk-004",
+      "endMs": null,
+      "normalizedSha256": "07bfc0e573e30a3ab9cb4b0861015addcbacb5d05e39e41afa98bdeee207d04c",
+      "sourceSha256": "07bfc0e573e30a3ab9cb4b0861015addcbacb5d05e39e41afa98bdeee207d04c",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-18-chunk-005.mp3",
+      "chunkId": "dracula-chapter-18-chunk-005",
+      "endMs": null,
+      "normalizedSha256": "3900e33f2f9546fec1173f5f80997eb27121c925ebb97c11588af267636e034d",
+      "sourceSha256": "3900e33f2f9546fec1173f5f80997eb27121c925ebb97c11588af267636e034d",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-18-chunk-006.mp3",
+      "chunkId": "dracula-chapter-18-chunk-006",
+      "endMs": null,
+      "normalizedSha256": "8976f4108c561a6856d959acde1820d86797f3eb472e2bb10a3e6d7571d274d6",
+      "sourceSha256": "8976f4108c561a6856d959acde1820d86797f3eb472e2bb10a3e6d7571d274d6",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-18-chunk-007.mp3",
+      "chunkId": "dracula-chapter-18-chunk-007",
+      "endMs": null,
+      "normalizedSha256": "6d79e6da15d5a5eaf49cd95031674597c6966e9714498f8f7e4d7d78877f5e62",
+      "sourceSha256": "6d79e6da15d5a5eaf49cd95031674597c6966e9714498f8f7e4d7d78877f5e62",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-18-chunk-008.mp3",
+      "chunkId": "dracula-chapter-18-chunk-008",
+      "endMs": null,
+      "normalizedSha256": "9b82bf8e25380b5c4396b4778699d7a94baba4141bfa1f4b662ba5eeac20a68b",
+      "sourceSha256": "9b82bf8e25380b5c4396b4778699d7a94baba4141bfa1f4b662ba5eeac20a68b",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-18-chunk-009.mp3",
+      "chunkId": "dracula-chapter-18-chunk-009",
+      "endMs": null,
+      "normalizedSha256": "542adb39a138247147923a6e44c1f0cfe9261d7c8de0da20c07016d12fd2c6ac",
+      "sourceSha256": "542adb39a138247147923a6e44c1f0cfe9261d7c8de0da20c07016d12fd2c6ac",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-18-chunk-010.mp3",
+      "chunkId": "dracula-chapter-18-chunk-010",
+      "endMs": null,
+      "normalizedSha256": "bc6a4e3ed0a0337e6bf0987402d0742b62b6aeecb3ba8a963eb9b1e8b77f749f",
+      "sourceSha256": "bc6a4e3ed0a0337e6bf0987402d0742b62b6aeecb3ba8a963eb9b1e8b77f749f",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-18-chunk-011.mp3",
+      "chunkId": "dracula-chapter-18-chunk-011",
+      "endMs": null,
+      "normalizedSha256": "d6df4eb97c23addca7b81bdabe15f59457ddd3d070d12d5920157e3d40875423",
+      "sourceSha256": "d6df4eb97c23addca7b81bdabe15f59457ddd3d070d12d5920157e3d40875423",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-18-chunk-012.mp3",
+      "chunkId": "dracula-chapter-18-chunk-012",
+      "endMs": null,
+      "normalizedSha256": "85bb0a483fe5b423e033afe45417b1fd5136755f55b8aae03ef2f3ec4db4b5bb",
+      "sourceSha256": "85bb0a483fe5b423e033afe45417b1fd5136755f55b8aae03ef2f3ec4db4b5bb",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    }
+  ],
+  "public": false,
+  "publicAudioAllowed": false,
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED"
+}

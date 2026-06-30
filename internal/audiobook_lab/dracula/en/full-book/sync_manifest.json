@@ -1,0 +1,174 @@
+{
+  "bookSlug": "dracula",
+  "chapterCount": 27,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-01.sync.json",
+      "chunkCount": 9,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 2,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-02.sync.json",
+      "chunkCount": 8,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 3,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-03.sync.json",
+      "chunkCount": 9,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 4,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-04.sync.json",
+      "chunkCount": 9,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 5,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-05.sync.json",
+      "chunkCount": 6,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 6,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-06.sync.json",
+      "chunkCount": 8,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 7,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-07.sync.json",
+      "chunkCount": 8,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 8,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-08.sync.json",
+      "chunkCount": 10,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 9,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-09.sync.json",
+      "chunkCount": 9,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 10,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-10.sync.json",
+      "chunkCount": 8,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 11,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-11.sync.json",
+      "chunkCount": 7,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 12,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-12.sync.json",
+      "chunkCount": 11,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 13,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-13.sync.json",
+      "chunkCount": 10,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 14,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-14.sync.json",
+      "chunkCount": 9,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 15,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-15.sync.json",
+      "chunkCount": 8,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 16,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-16.sync.json",
+      "chunkCount": 7,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 17,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-17.sync.json",
+      "chunkCount": 8,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 18,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-18.sync.json",
+      "chunkCount": 12,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 19,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-19.sync.json",
+      "chunkCount": 9,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 20,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-20.sync.json",
+      "chunkCount": 8,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 21,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-21.sync.json",
+      "chunkCount": 9,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 22,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-22.sync.json",
+      "chunkCount": 8,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 23,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-23.sync.json",
+      "chunkCount": 9,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 24,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-24.sync.json",
+      "chunkCount": 10,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 25,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-25.sync.json",
+      "chunkCount": 9,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 26,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-26.sync.json",
+      "chunkCount": 10,
+      "syncPrecision": "chunk"
+    },
+    {
+      "chapterNumber": 27,
+      "chapterSyncPath": "internal/audiobook_lab/dracula/en/full-book/chapter_sync/chapter-27.sync.json",
+      "chunkCount": 12,
+      "syncPrecision": "chunk"
+    }
+  ],
+  "chunkCount": 240,
+  "publicAudioAllowed": false,
+  "publicAudioRelease": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED",
+  "wordLevelTimestampsClaimed": false
+}

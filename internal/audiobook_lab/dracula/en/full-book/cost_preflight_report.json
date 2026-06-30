@@ -1,0 +1,25 @@
+{
+  "bookSlug": "dracula",
+  "flash": {
+    "estimatedCostUsd": "41.93",
+    "exactCostUsd": "41.93420",
+    "modelId": "eleven_flash_v2_5",
+    "rateUsdPer1000Characters": "0.05"
+  },
+  "formula": {
+    "flash": "total_characters / 1000 * 0.05",
+    "premium": "total_characters / 1000 * 0.10"
+  },
+  "premium": {
+    "estimatedCostUsd": "83.87",
+    "exactCostUsd": "83.86840",
+    "modelId": "eleven_multilingual_v2",
+    "rateUsdPer1000Characters": "0.10"
+  },
+  "samplePack": {
+    "characters": 3537,
+    "flashEstimateUsd": "0.18",
+    "premiumEstimateUsd": "0.35"
+  },
+  "totalCharacters": 838684
+}

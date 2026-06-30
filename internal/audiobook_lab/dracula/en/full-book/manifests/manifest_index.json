@@ -1,0 +1,14 @@
+{
+  "bookSlug": "dracula",
+  "internalOnly": true,
+  "manifests": [
+    "internal/audiobook_lab/dracula/en/full-book/chapter_manifest.json",
+    "internal/audiobook_lab/dracula/en/full-book/chunk_manifest.json",
+    "internal/audiobook_lab/dracula/en/full-book/character_count_report.json",
+    "internal/audiobook_lab/dracula/en/full-book/cost_preflight_report.json",
+    "internal/audiobook_lab/dracula/en/full-book/generation_preflight_report.json",
+    "internal/audiobook_lab/dracula/en/full-book/sync_manifest.json"
+  ],
+  "publicAudioAllowed": false,
+  "publicAudioRelease": "PUBLIC_AUDIO_RELEASE_BLOCKED"
+}

@@ -1,0 +1,73 @@
+{
+  "approval": {
+    "approval_env_present": false,
+    "blockers": [
+      "EARNALISM_APPROVE_PAID_DRACULA_AUDIOBOOK_GENERATION=1 is required",
+      "EARNALISM_DRACULA_AUDIOBOOK_MAX_COST_USD=<number> is required",
+      "ELEVENLABS_API_KEY or repo-supported ElevenLabs credential is required"
+    ],
+    "budget_cap_present": false,
+    "budget_cap_usd": "",
+    "full_flash_estimate_usd": "41.93",
+    "optional_approval_file": "data/audiobook_governance/dracula.full_audiobook_generation_approval.json",
+    "optional_approval_file_status": "missing_optional",
+    "paid_generation_allowed": false,
+    "provider_key_name": "",
+    "provider_key_present": false,
+    "sample_flash_estimate_usd": "0.18",
+    "sample_premium_estimate_usd": "0.35"
+  },
+  "audioObjectMetadataAllowed": false,
+  "bookSlug": "dracula",
+  "flashModelId": "eleven_flash_v2_5",
+  "language": "en",
+  "listenNowCtaAllowed": false,
+  "outputFormat": "mp3_44100_128",
+  "premiumModelId": "eleven_multilingual_v2",
+  "provider": "ElevenLabs",
+  "publicAudioAllowed": false,
+  "publicAudioRelease": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "samples": [
+    {
+      "chapterNumber": 1,
+      "chapterTitle": "CHAPTER I. JONATHAN HARKER’S JOURNAL",
+      "characterCount": 1227,
+      "generationStatus": "BLOCKED_PENDING_OWNER_APPROVAL",
+      "label": "Chapter 1 opening atmospheric passage",
+      "normalizedCharacterCount": 1227,
+      "normalizedSha256": "7bba444858b846212497cc27c54975020da94d0176dd34403004504b811a8ab9",
+      "sampleId": "chapter-01-opening-atmosphere",
+      "sourcePath": "data/controlled_publications/dracula/chapters/chapter-001.json",
+      "sourceSha256": "7bba444858b846212497cc27c54975020da94d0176dd34403004504b811a8ab9",
+      "text": "CHAPTER I. JONATHAN HARKER’S JOURNAL\n\n(_Kept in shorthand._)\n\n_3 May. Bistritz._--Left Munich at 8:35 P. M., on 1st May, arriving at\nVienna early next morning; should have arrived at 6:46, but train was an\nhour late. Buda-Pesth seems a wonderful place, from the glimpse which I\ngot of it from the train and the little I could walk through the\nstreets. I feared to go very far from the station, as we had arrived\nlate and would start as near the correct time as possible. The\nimpression I had was that we were leaving the West and entering the\nEast; the most western of splendid bridges over the Danube, which is\nhere of noble width and depth, took us among the traditions of Turkish\nrule.\n\nWe left in pretty good time, and came after nightfall to Klausenburgh.\nHere I stopped for the night at the Hotel Royale. I had for dinner, or\nrather supper, a chicken done up some way with red pepper, which was\nvery good but thirsty. (_Mem._, get recipe for Mina.) I asked the\nwaiter, and he said it was called “paprika hendl,” and that, as it was a\nnational dish, I should be able to get it anywhere along the\nCarpathians. I found my smattering of German very useful here; indeed, I\ndon’t know how I should be able to get on without it."
+    },
+    {
+      "chapterNumber": 13,
+      "chapterTitle": "CHAPTER XIII",
+      "characterCount": 2214,
+      "generationStatus": "BLOCKED_PENDING_OWNER_APPROVAL",
+      "label": "Dialogue-heavy passage",
+      "normalizedCharacterCount": 2214,
+      "normalizedSha256": "e5855985f162995244d8d254a28c592b7c94671cd0559f6b7e82aa67bdac6b89",
+      "sampleId": "dialogue-heavy-passage",
+      "sourcePath": "data/controlled_publications/dracula/chapters/chapter-013.json",
+      "sourceSha256": "e5855985f162995244d8d254a28c592b7c94671cd0559f6b7e82aa67bdac6b89",
+      "text": "_22 September._--It is all over. Arthur has gone back to Ring, and has\ntaken Quincey Morris with him. What a fine fellow is Quincey! I believe\nin my heart of hearts that he suffered as much about Lucy’s death as any\nof us; but he bore himself through it like a moral Viking. If America\ncan go on breeding men like that, she will be a power in the world\nindeed. Van Helsing is lying down, having a rest preparatory to his\njourney. He goes over to Amsterdam to-night, but says he returns\nto-morrow night; that he only wants to make some arrangements which can\nonly be made personally. He is to stop with me then, if he can; he says\nhe has work to do in London which may take him some time. Poor old\nfellow! I fear that the strain of the past week has broken down even his\niron strength. All the time of the burial he was, I could see, putting\nsome terrible restraint on himself. When it was all over, we were\nstanding beside Arthur, who, poor fellow, was speaking of his part in\nthe operation where his blood had been transfused to his Lucy’s veins; I\ncould see Van Helsing’s face grow white and purple by turns. Arthur was\nsaying that he felt since then as if they two had been really married\nand that she was his wife in the sight of God. None of us said a word of\nthe other operations, and none of us ever shall. Arthur and Quincey went\naway together to the station, and Van Helsing and I came on here. The\nmoment we were alone in the carriage he gave way to a regular fit of\nhysterics. He has denied to me since that it was hysterics, and insisted\nthat it was only his sense of humour asserting itself under very\nterrible conditions. He laughed till he cried, and I had to draw down\nthe blinds lest any one should see us and misjudge; and then he cried,\ntill he laughed again; and laughed and cried together, just as a woman\ndoes. I tried to be stern with him, as one is to a woman under the\ncircumstances; but it had no effect. Men and women are so different in\nmanifestations of nervous strength or weakness! Then when his face grew\ngrave and stern again I asked him why his mirth, and why at such a time.\nHis reply was in a way characteristic of him, for it was logical and\nforceful and mysterious. He said:--"
+    },
+    {
+      "chapterNumber": 5,
+      "chapterTitle": "CHAPTER V",
+      "characterCount": 96,
+      "generationStatus": "BLOCKED_PENDING_OWNER_APPROVAL",
+      "label": "Letter/journal-style passage",
+      "normalizedCharacterCount": 96,
+      "normalizedSha256": "47c4e508ea3d15cf14f5ebacbad372d3b55ec3435c586fbffda6659b0ec5ce4f",
+      "sampleId": "letter-journal-style-passage",
+      "sourcePath": "data/controlled_publications/dracula/chapters/chapter-005.json",
+      "sourceSha256": "47c4e508ea3d15cf14f5ebacbad372d3b55ec3435c586fbffda6659b0ec5ce4f",
+      "text": "CHAPTER V\n\n_Letter from Miss Mina Murray to Miss Lucy Westenra._\n\n“_9 May._\n\n“My dearest Lucy,--"
+    }
+  ],
+  "voiceId": "21m00Tcm4TlvDq8ikWAM",
+  "voiceName": "Rachel"
+}
