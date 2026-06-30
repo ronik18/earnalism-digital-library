@@ -174,21 +174,24 @@ export default function Home() {
 
           <div className="reference-dracula-stage lg:col-span-5" data-testid="hero-dracula-card">
             <div className="reference-dracula-book-object reference-dracula-book-object--hardcopy">
-              <div
+              <a
+                href="https://theearnalism.com/book/dracula"
                 className="reference-dracula-hardcopy-shell"
                 data-testid="hero-dracula-cover-frame"
                 data-no-white-edge="true"
+                aria-label="Open Dracula book page"
+                onClick={() => track(DRACULA_CTA_EVENTS.startReading, { cta: "hero_book_object" })}
               >
                 <img
                   src="/assets/books/dracula/dracula-hero-hardcopy.webp"
-                  alt="Hard-copy Dracula book object with approved classic reading release plaque"
+                  alt="Hard-copy Dracula book object"
                   loading="eager"
                   fetchPriority="high"
                   width="572"
                   height="665"
                   className="reference-dracula-hardcopy-img"
                 />
-              </div>
+              </a>
             </div>
           </div>
         </div>

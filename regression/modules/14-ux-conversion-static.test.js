@@ -240,10 +240,24 @@ describe("UX conversion static signals", () => {
     expect(styles).toContain('var(--reference-hero-image) center / cover no-repeat');
     expect(home).toContain('data-testid="hero-dracula-cover-frame"');
     expect(home).toContain('data-no-white-edge="true"');
+    expect(home).toContain('href="https://theearnalism.com/book/dracula"');
+    expect(home).toContain('aria-label="Open Dracula book page"');
     expect(home).toContain("/assets/books/dracula/dracula-hero-hardcopy.webp");
-    expect(home).toContain("Hard-copy Dracula book object with approved classic reading release plaque");
+    expect(home).toContain("Hard-copy Dracula book object");
     expect(styles).toContain(".reference-dracula-hardcopy-shell");
+    expect(styles).toContain("aspect-ratio: 499 / 572");
+    expect(styles).toContain("overflow: hidden");
     expect(styles).toContain("background: transparent");
+    expect(styles).toContain(".reference-dracula-stage::before");
+    expect(styles).toContain("rgba(255, 231, 181, 0.38)");
+    expect(styles).toContain(".reference-dracula-stage::after");
+    expect(styles).toContain("brightness(1.08)");
+    expect(styles).toContain("contrast(1.08)");
+    expect(styles).not.toContain(".reference-dracula-hardcopy-shell::after");
+    expect(styles).not.toContain(".reference-dracula-hardcopy-shell::before");
+    expect(styles).not.toContain("APPROVED CLASSIC READING RELEASE");
+    expect(styles).not.toContain("backdrop-filter: blur(9px)");
+    expect(styles).toContain("clip-path: inset(0 5.9% 14% 12.3%)");
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-hero-hardcopy.webp"))).toBe(true);
     expect(home).not.toContain("images.unsplash.com");
     expect(home).not.toMatch(/lg:pt-36|lg:pb-32|sm:pt-32|pb-24/);
@@ -1429,6 +1443,10 @@ describe("UX conversion static signals", () => {
     expect(indiaCraftBadge).toContain('data-testid="india-origin-badge"');
     expect(indiaCraftBadge).toContain('aria-label="Made in India"');
     expect(indiaCraftBadge).toContain("Made in India");
+    expect(indiaCraftBadge).toContain("india-origin-saffron-3d");
+    expect(indiaCraftBadge).toContain("india-origin-badge__sprinkles");
+    expect(indiaCraftBadge).toContain("india-origin-badge__flag-glow");
+    expect(indiaCraftBadge).toContain("india-origin-badge__flag-bevel");
     expect(indiaCraftBadge).toContain("india-origin-badge__band--saffron");
     expect(indiaCraftBadge).toContain("india-origin-badge__band--green");
     expect(indiaCraftBadge).toContain("india-origin-badge__flag-rim");
@@ -1438,6 +1456,9 @@ describe("UX conversion static signals", () => {
     expect(styles).toContain("rgba(255, 252, 244, 0.98)");
     expect(styles).toContain("rgba(249, 244, 234, 0.94)");
     expect(styles).toContain(".india-origin-badge");
+    expect(styles).toContain(".india-origin-badge__sprinkles");
+    expect(styles).toContain('fill: url("#india-origin-saffron-3d")');
+    expect(styles).toContain('fill: url("#india-origin-green-3d")');
     expect(styles).toContain("@media (max-width: 1279px)");
   });
 

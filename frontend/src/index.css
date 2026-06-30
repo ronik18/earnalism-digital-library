@@ -674,8 +674,9 @@ body::before {
 
 .premium-landing-hero {
   background:
-    linear-gradient(90deg, rgba(13, 5, 5, 0.78) 0%, rgba(19, 7, 7, 0.61) 43%, rgba(40, 18, 13, 0.22) 70%, rgba(11, 4, 4, 0.68) 100%),
-    radial-gradient(circle at 75% 42%, rgba(216, 185, 122, 0.24), transparent 22rem),
+    linear-gradient(90deg, rgba(13, 5, 5, 0.78) 0%, rgba(19, 7, 7, 0.6) 43%, rgba(40, 18, 13, 0.16) 70%, rgba(11, 4, 4, 0.52) 100%),
+    radial-gradient(circle at 79% 44%, rgba(255, 222, 162, 0.34), transparent 20rem),
+    radial-gradient(circle at 88% 34%, rgba(253, 252, 248, 0.12), transparent 15rem),
     var(--reference-hero-image) center / cover no-repeat,
     linear-gradient(115deg, #17080d 0%, #2b140f 55%, #5b301b 100%);
 }
@@ -738,7 +739,30 @@ body::before {
   display: flex;
   justify-content: center;
   position: relative;
+  isolation: isolate;
   z-index: 1;
+}
+.reference-dracula-stage::before {
+  content: "";
+  position: absolute;
+  inset: 7% -7% 1% 4%;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 57% 46%, rgba(255, 231, 181, 0.38), rgba(216, 185, 122, 0.18) 38%, transparent 68%);
+  filter: blur(18px);
+}
+.reference-dracula-stage::after {
+  content: "";
+  position: absolute;
+  inset: 18% 10% 9% 20%;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 50% 58%, rgba(5, 2, 2, 0.42), transparent 66%);
+  filter: blur(24px);
 }
 .reference-dracula-book-object {
   position: relative;
@@ -771,15 +795,24 @@ body::before {
 .reference-dracula-hardcopy-shell {
   position: relative;
   z-index: 1;
+  display: block;
   width: min(100%, 22.75rem);
+  aspect-ratio: 499 / 572;
   margin-inline: auto;
-  overflow: visible;
+  overflow: hidden;
   border: 0;
   background: transparent;
+  text-decoration: none;
   box-shadow: none;
   filter:
-    drop-shadow(0 32px 42px rgba(0, 0, 0, 0.34))
-    drop-shadow(0 0 25px rgba(216, 185, 122, 0.12));
+    drop-shadow(0 34px 46px rgba(0, 0, 0, 0.46))
+    drop-shadow(0 0 34px rgba(216, 185, 122, 0.22))
+    drop-shadow(0 0 10px rgba(253, 252, 248, 0.1));
+}
+.reference-dracula-hardcopy-shell:focus-visible {
+  outline: 2px solid var(--brand-gold-soft);
+  outline-offset: 0.45rem;
+  border-radius: 0.45rem;
 }
 .reference-dracula-hardcopy-img {
   display: block;
@@ -788,6 +821,12 @@ body::before {
   border: 0;
   background: transparent;
   object-fit: contain;
+  clip-path: inset(0 5.9% 14% 12.3%);
+  filter:
+    brightness(1.08)
+    contrast(1.08)
+    saturate(1.06)
+    drop-shadow(0 0 14px rgba(4, 2, 1, 0.14));
 }
 .premium-dracula-cover-frame {
   box-shadow:
@@ -1518,54 +1557,97 @@ textarea.input-elegant {
 .india-origin-badge {
   position: relative;
   display: inline-flex;
-  height: 2.24rem;
+  height: 2.34rem;
   flex: 0 0 auto;
   align-items: center;
-  gap: 0.38rem;
+  gap: 0.42rem;
   border: 1px solid rgba(197, 160, 89, 0.46);
   border-radius: 999px;
-  padding: 0.16rem 0.62rem 0.16rem 0.24rem;
+  padding: 0.14rem 0.66rem 0.14rem 0.22rem;
   background:
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.94), transparent 42%),
-    linear-gradient(145deg, rgba(255, 252, 243, 0.9), rgba(244, 235, 219, 0.62)),
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.98), transparent 40%),
+    radial-gradient(circle at 46% 82%, rgba(255, 153, 51, 0.13), transparent 38%),
+    radial-gradient(circle at 70% 18%, rgba(19, 136, 8, 0.1), transparent 34%),
+    linear-gradient(145deg, rgba(255, 252, 243, 0.94), rgba(244, 235, 219, 0.64)),
     rgba(253, 252, 248, 0.76);
   box-shadow:
-    0 14px 28px -22px rgba(74, 28, 39, 0.52),
-    0 0 0 1px rgba(255, 255, 255, 0.34) inset,
-    inset 0 1px 0 rgba(253, 252, 248, 0.92);
+    0 16px 30px -22px rgba(74, 28, 39, 0.58),
+    0 4px 14px -12px rgba(197, 160, 89, 0.72),
+    0 0 0 1px rgba(255, 255, 255, 0.38) inset,
+    inset 0 1px 0 rgba(253, 252, 248, 0.96),
+    inset 0 -1px 0 rgba(120, 78, 28, 0.1);
   color: var(--brand-burgundy);
 }
 .india-origin-badge__mark {
-  width: 3.24rem;
-  height: 1.52rem;
+  width: 3.78rem;
+  height: 1.72rem;
   flex: 0 0 auto;
   overflow: visible;
+  transform: perspective(90px) rotateY(-7deg) rotateZ(-1.5deg);
+  transform-origin: 45% 50%;
+}
+.india-origin-badge__sprinkles {
+  opacity: 1;
+  filter: drop-shadow(0 1px 1px rgba(74, 28, 39, 0.24));
+}
+.india-origin-badge__sprinkle--saffron {
+  fill: #ff9933;
+}
+.india-origin-badge__sprinkle--ivory {
+  fill: rgba(255, 252, 244, 0.98);
+  stroke: rgba(197, 160, 89, 0.22);
+  stroke-width: 0.35;
+}
+.india-origin-badge__sprinkle--green {
+  fill: #138808;
+}
+.india-origin-badge__sprinkle-stroke {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 1.05;
+}
+.india-origin-badge__sprinkle-stroke--saffron {
+  stroke: rgba(255, 153, 51, 0.78);
+}
+.india-origin-badge__sprinkle-stroke--green {
+  stroke: rgba(19, 136, 8, 0.72);
 }
 .india-origin-badge__flag-shadow {
-  fill: rgba(74, 28, 39, 0.2);
-  filter: drop-shadow(0 5px 7px rgba(74, 28, 39, 0.18));
+  fill: rgba(74, 28, 39, 0.27);
+  filter:
+    drop-shadow(0 7px 8px rgba(74, 28, 39, 0.28))
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.36));
 }
 .india-origin-badge__band--saffron {
-  fill: #e08a28;
+  fill: url("#india-origin-saffron-3d");
 }
 .india-origin-badge__band--ivory {
-  fill: #fffaf0;
+  fill: url("#india-origin-ivory-3d");
 }
 .india-origin-badge__band--green {
-  fill: #1f8a52;
+  fill: url("#india-origin-green-3d");
+}
+.india-origin-badge__flag-glow {
+  fill: url("#india-origin-flag-glow");
+  mix-blend-mode: screen;
+}
+.india-origin-badge__flag-bevel {
+  fill: rgba(28, 17, 9, 0.12);
+  mix-blend-mode: multiply;
 }
 .india-origin-badge__silk {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.34);
+  stroke: rgba(255, 255, 255, 0.42);
   stroke-linecap: round;
   stroke-width: 1.2;
   mix-blend-mode: screen;
 }
 .india-origin-badge__flag-rim {
   fill: none;
-  stroke: rgba(120, 78, 28, 0.38);
+  stroke: rgba(120, 78, 28, 0.46);
   stroke-linejoin: round;
   stroke-width: 1.15;
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.42));
 }
 .india-origin-badge__wheel {
   fill: rgba(255, 250, 240, 0.96);
