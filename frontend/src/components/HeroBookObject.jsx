@@ -22,6 +22,7 @@ export default function HeroBookObject({
         <span className="reference-hero-book__back-board" />
         <span className="reference-hero-book__top-pages" />
         <span className="reference-hero-book__page-block" />
+        <span className="reference-hero-book__bottom-pages" />
         <span className="reference-hero-book__face">
           <img
             src={coverSrc}
