@@ -276,7 +276,7 @@ function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
 function buildPages({ book, manifest }) {
   const homeDescription = "Controlled launch begins with Dracula by Bram Stoker in The Earnalism's classical digital reading room. Read Chapter 1 free, then continue with reading time as future classics move through the rights-safe pipeline.";
   const bookDescription = "Read Dracula by Bram Stoker in The Earnalism’s controlled digital reading room. Chapter 1 is free. Continue with a 7-day reading pass. Audiobook experience is in private review.";
-  const libraryDescription = "Live Controlled Release: Dracula only. Future classics are coming through The Earnalism rights-safe pipeline and are not live reading products yet.";
+  const libraryDescription = "Controlled reader-only releases on The Earnalism: Dracula remains the featured launch release, with validated public-domain classics opened only after source, sanitation, and reader QA gates pass.";
   const pricingDescription = "Choose your reading time for Dracula on The Earnalism. Chapter 1 is free, with premium reading-time packs and no subscription or autorenewal.";
   const journalDescription = "Launch notes from The Earnalism's Dracula-first controlled digital reading room and rights-safe publication pipeline.";
   const contactDescription = "Contact The Earnalism about Dracula reading-time access, support, refunds, school interest, and rights-safe publication questions.";
@@ -296,7 +296,7 @@ function buildPages({ book, manifest }) {
         eyebrow: "The Earnalism Digital Library",
         title: "Begin with Dracula.",
         body: homeDescription,
-        facts: ["Dracula is the only live approved classic reading release today.", "Audiobook experience is in private review.", "Pipeline titles remain Coming Soon with Notify Me only."],
+        facts: ["Dracula remains the featured live approved reading release.", "Audiobook experience is in private review.", "Additional classics open only after source, sanitation, and reader QA gates pass."],
         links: [
           { href: "/reader/dracula", label: "Read Chapter 1 Free" },
           { href: "/book/dracula", label: "Start Dracula" },
@@ -351,14 +351,14 @@ function buildPages({ book, manifest }) {
     },
     {
       path: "/library",
-      title: "Library | Dracula Is Live on The Earnalism",
+      title: "Library | Controlled Reader Releases on The Earnalism",
       description: libraryDescription,
       canonicalPath: "/library",
-      ogTitle: "Library | Dracula Is Live on The Earnalism",
-      ogDescription: "Dracula is the only live controlled reading release. Future books are pipeline-only until rights and QA pass.",
+      ogTitle: "Library | Controlled Reader Releases on The Earnalism",
+      ogDescription: "Dracula remains the featured release. Validated public-domain classics open as reader-only releases after rights, sanitation, and QA gates pass.",
       imageAlt: "The Earnalism controlled library",
       jsonLd: [
-        webpageJsonLd({ title: "Library | Dracula Is Live", description: libraryDescription, path: "/library" }),
+        webpageJsonLd({ title: "Library | Controlled Reader Releases", description: libraryDescription, path: "/library" }),
         breadcrumbsJsonLd([
           { name: "Home", path: "/" },
           { name: "Library", path: "/library" },
@@ -366,9 +366,9 @@ function buildPages({ book, manifest }) {
       ],
       staticBody: pageShell({
         eyebrow: "Library - Controlled Launch",
-        title: "Live Controlled Release: Dracula only.",
-        body: "Coming Through the Rights-Safe Pipeline: future titles only. These books are not live products yet and have Notify Me CTAs only.",
-        facts: ["Unapproved books are not live reading products.", "No unapproved title offers reader, preview, or listening CTAs."],
+        title: "Live Controlled Reader Releases.",
+        body: "Dracula remains the featured launch release. Additional classics appear only after source, sanitation, reader, and public-governance gates pass.",
+        facts: ["Unapproved books are not live reading products.", "Reader-only releases do not offer checkout, payment, or listening CTAs."],
         links: [
           { href: "/book/dracula", label: "Open Dracula" },
           { href: "/reader/dracula", label: "Read Chapter 1 Free" },

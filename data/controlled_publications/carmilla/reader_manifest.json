@@ -1,0 +1,30 @@
+{
+  "slug": "carmilla",
+  "title": "Carmilla",
+  "author": "J. Sheridan Le Fanu",
+  "language": "en",
+  "chapter_count": 1,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "CHAPTER XVI. Conclusion",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 28115,
+      "reading_minutes": 118,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-01T10:36:20Z",
+      "updated_at": "2026-07-01T10:36:20Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-01T10:36:20Z"
+}

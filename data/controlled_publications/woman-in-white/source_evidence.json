@@ -1,0 +1,13 @@
+{
+  "slug": "woman-in-white",
+  "source_url": "https://www.gutenberg.org/ebooks/583",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
+  "source_hash": "4cd6eea24d65d0aff7ff70e5b2ef74a0653d52a4e2eed8c6c3a9bd332e3ba9a1",
+  "content_hash": "de195bde3be096db2abcbebc33011f65e50239d2e3b225bfb951ed179c6872e3",
+  "provenance_hash": "bbbb9aea8e3edee66086d9fa4759626775d18b4d036f54cd773458e5b3961290",
+  "rights_basis": "public_domain",
+  "downloaded_at": "2026-07-01T10:36:20Z",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

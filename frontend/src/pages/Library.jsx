@@ -6,6 +6,7 @@ import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import BookCard from "../components/BookCard";
 import BookCoverImage from "../components/BookCoverImage";
 import {
+  BATCH_1_READER_ONLY_SLUGS,
   DRACULA_CHAPTER_COUNT,
   DRACULA_CTA_EVENTS,
   DRACULA_RIGHTS_NOTE,
@@ -29,15 +30,16 @@ const FILTERS = [
 export default function Library() {
   const [params, setParams] = useSearchParams();
   const [dracula, setDracula] = useState(null);
+  const [liveBooks, setLiveBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [q, setQ] = useState(params.get("q") || "");
   const cat = params.get("category") || "all";
-  const liveBook = mergeDraculaBook(dracula);
+  const liveBook = mergeDraculaBook(dracula || liveBooks.find((book) => book.slug === LIVE_APPROVED_SLUG));
 
   useSEO({
-    title: "Library | Dracula Is Live on Earnalism",
+    title: "Library | Controlled Reader Releases on Earnalism",
     description:
-      "The Earnalism library is in controlled launch: Dracula is the only live approved core reading release. Future classics are shown as Coming Soon until rights and QA are complete.",
+      "The Earnalism library is in controlled launch: Dracula remains the featured release, with validated reader-only public-domain classics opened only after source, sanitation, and QA gates pass.",
     image: liveBook.cover_image_url,
     imageAlt: "Dracula on Earnalism",
     canonicalPath: cat === "all" ? "/library" : `/library?category=${cat}`,
@@ -46,9 +48,14 @@ export default function Library() {
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
-    api.get(`/books/${LIVE_APPROVED_SLUG}`, { signal: controller.signal })
-      .then((response) => setDracula(response.data))
-      .catch(() => setDracula(null))
+    Promise.allSettled([
+      api.get(`/books/${LIVE_APPROVED_SLUG}`, { signal: controller.signal }),
+      api.get("/books", { signal: controller.signal }),
+    ])
+      .then(([draculaResult, booksResult]) => {
+        setDracula(draculaResult.status === "fulfilled" ? draculaResult.value.data : null);
+        setLiveBooks(booksResult.status === "fulfilled" && Array.isArray(booksResult.value.data) ? booksResult.value.data : []);
+      })
       .finally(() => {
         if (!controller.signal.aborted) setLoading(false);
       });
@@ -64,11 +71,28 @@ export default function Library() {
 
   const normalizedQuery = q.trim().toLowerCase();
   const kshudhitaBook = PIPELINE_BOOKS.find((book) => book.slug === KSHUDHITA_PASHAN_PIPELINE.slug);
+  const liveReaderBooks = useMemo(() => {
+    const bySlug = new Map();
+    for (const book of liveBooks) {
+      if (!book?.slug) continue;
+      bySlug.set(book.slug, book.slug === LIVE_APPROVED_SLUG ? mergeDraculaBook(book) : book);
+    }
+    bySlug.set(LIVE_APPROVED_SLUG, liveBook);
+    return Array.from(bySlug.values()).filter((book) => book?.publication_status === "LIVE_APPROVED" || book?.slug === LIVE_APPROVED_SLUG);
+  }, [liveBooks, liveBook]);
+  const matchesQuery = (book) => {
+    if (!normalizedQuery) return true;
+    return `${book.title || ""} ${book.title_en || ""} ${book.author || ""} ${book.category_slug || ""} ${book.short_description || ""}`
+      .toLowerCase()
+      .includes(normalizedQuery);
+  };
+  const otherLiveBooks = liveReaderBooks.filter((book) => book.slug !== LIVE_APPROVED_SLUG && matchesQuery(book));
   const visiblePipeline = useMemo(() => {
-    if (!normalizedQuery) return PIPELINE_BOOKS;
-    return PIPELINE_BOOKS.filter((book) => `${book.title} ${book.title_en || ""} ${book.author} ${book.category_slug} ${book.short_description || ""}`.toLowerCase().includes(normalizedQuery));
+    const pipelineOnlyBooks = PIPELINE_BOOKS.filter((book) => !BATCH_1_READER_ONLY_SLUGS.includes(book.slug));
+    if (!normalizedQuery) return pipelineOnlyBooks;
+    return pipelineOnlyBooks.filter((book) => `${book.title} ${book.title_en || ""} ${book.author} ${book.category_slug} ${book.short_description || ""}`.toLowerCase().includes(normalizedQuery));
   }, [normalizedQuery]);
-  const showLive = ["all", "live"].includes(cat) && (!normalizedQuery || "dracula bram stoker gothic fiction".includes(normalizedQuery));
+  const showLive = ["all", "live"].includes(cat) && liveReaderBooks.some(matchesQuery);
   const showPipeline = ["all", "pipeline"].includes(cat);
   const showReadingPaths = ["all", "reading-paths"].includes(cat);
   const showAudiobooks = ["all", "audiobooks"].includes(cat);
@@ -94,7 +118,7 @@ export default function Library() {
               The live shelf begins with <span className="italic-accent text-[var(--brand-gold-soft)]">Dracula.</span>
             </h1>
             <p className="mt-5 max-w-2xl font-serif-display text-xl italic leading-snug text-[#F4EFEA]/88 sm:text-2xl">
-              A controlled reading room: one approved classic, every future shelf held until it earns the right to open.
+              A controlled reading room: Dracula remains the featured release, and every additional classic opens only after source, sanitation, and reader QA gates pass.
             </p>
             <p className="mt-5 max-w-2xl text-sm font-light leading-[1.8] text-[#F4EFEA]/76 sm:text-base">
               Chapter 1 opens free. Reading continuation uses reading time, not a public audiobook claim or a broad catalog promise.
@@ -151,7 +175,7 @@ export default function Library() {
                 />
               </div>
               <div className="mt-5 text-center">
-                <div className="text-[0.62rem] uppercase tracking-[0.22em] text-[var(--brand-gold-soft)]">Only live public reading release</div>
+                <div className="text-[0.62rem] uppercase tracking-[0.22em] text-[var(--brand-gold-soft)]">Featured controlled reading release</div>
                 <h2 className="mt-2 font-serif-display text-[2rem] text-[#FDFCF8]">Dracula</h2>
                 <p className="mx-auto mt-3 max-w-xs text-[0.82rem] leading-relaxed text-[#F4EFEA]/72">
                   {DRACULA_CHAPTER_COUNT} chapters. Chapter 1 free. Public audio remains blocked.
@@ -266,9 +290,9 @@ export default function Library() {
                 <div className="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <div className="overline mb-3">Shelf 1</div>
-                    <h2 className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">Live Controlled Release</h2>
+                    <h2 className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">Live Controlled Releases</h2>
                   </div>
-                  <span className="inline-flex items-center gap-2 text-sm text-charcoal-soft"><ShieldCheck size={16} className="text-gold" /> Dracula only</span>
+                  <span className="inline-flex items-center gap-2 text-sm text-charcoal-soft"><ShieldCheck size={16} className="text-gold" /> Reader-only public-domain shelf</span>
                 </div>
                 <div className="card-elegant overflow-hidden">
                   <div className="grid grid-cols-1 gap-8 p-7 sm:p-9 lg:grid-cols-12 lg:items-center">
@@ -306,6 +330,13 @@ export default function Library() {
                     </div>
                   </div>
                 </div>
+                {otherLiveBooks.length > 0 && (
+                  <div className="mt-8 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4" data-testid="library-live-reader-only-grid">
+                    {otherLiveBooks.map((book) => (
+                      <BookCard key={book.slug} book={book} />
+                    ))}
+                  </div>
+                )}
               </section>
             )}
 

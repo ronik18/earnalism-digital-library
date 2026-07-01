@@ -1,0 +1,26 @@
+{
+  "slug": "carmilla",
+  "generated_at": "2026-07-01T10:36:20Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "5a01e4c097ede1a7d7edcfaf6153d3ed33c54371ef89c783fbc2bd4386a8ba50"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "09018497d7dcfe68ef8cf46d5f1ee79675a7681e71a8c3cee6d6d2976f18be61"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "03f705e249d9d7368c38e0404019b98aae1dbfbd8776c383a51d4e76fdd69a0a"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "eb68f9e65d6cea55e847c8edbd2442588adfef92385ff9854bb8f929611638d4"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "9404d42991bbbc93c8efd47e63eddf83e8a757e4bf7f164285207c96959b25ea"
+    }
+  ]
+}

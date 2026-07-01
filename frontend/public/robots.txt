@@ -3,7 +3,17 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 Disallow: /account
+Allow: /reader/carmilla
+Allow: /reader/devdas
 Allow: /reader/dracula
+Allow: /reader/eyesore-chokher-bali
+Allow: /reader/frankenstein
+Allow: /reader/hound-of-the-baskervilles
+Allow: /reader/hungry-stones
+Allow: /reader/jekyll-and-hyde
+Allow: /reader/pather-panchali
+Allow: /reader/picture-of-dorian-gray
+Allow: /reader/woman-in-white
 Disallow: /reader/
 Disallow: /secure-reader-test
 Disallow: /login

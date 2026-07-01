@@ -1,5 +1,18 @@
 export const LIVE_APPROVED_SLUG = "dracula";
 export const KSHUDHITA_PASHAN_SLUG = "kshudhita-pashan";
+export const BATCH_1_READER_ONLY_SLUGS = [
+  "frankenstein",
+  "jekyll-and-hyde",
+  "carmilla",
+  "hound-of-the-baskervilles",
+  "picture-of-dorian-gray",
+  "woman-in-white",
+  "hungry-stones",
+  "devdas",
+  "pather-panchali",
+  "eyesore-chokher-bali",
+];
+export const LIVE_APPROVED_READER_SLUGS = [LIVE_APPROVED_SLUG, ...BATCH_1_READER_ONLY_SLUGS];
 
 export const DRACULA_SOURCE_NOTE = "Project Gutenberg eBook #345";
 export const DRACULA_RIGHTS_NOTE = "Approved classic reading release";
@@ -181,18 +194,26 @@ function normalizedVerificationStatus(book = {}) {
 
 export function isLiveApprovedBook(book = {}) {
   const slug = normalizedSlug(book);
-  if (slug !== LIVE_APPROVED_SLUG) return false;
+  if (!LIVE_APPROVED_READER_SLUGS.includes(slug)) return false;
   const tier = normalizedRightsTier(book);
   const status = normalizedVerificationStatus(book);
   if (tier && tier !== "A") return false;
   if (status && !["approved", "published_core_reading_only"].includes(status)) return false;
+  if (slug !== LIVE_APPROVED_SLUG) {
+    const publicationStatus = String(book?.publication_status || book?.launch_status || book?.publicationStatus || "").trim().toUpperCase();
+    const readerEnabled = book?.reader_enabled !== false && book?.allowPublicReading !== false;
+    const published = book?.is_published !== false && book?.isPublic !== false && book?.isLive !== false;
+    const noCommerce = book?.allowCheckout !== true && book?.allowPayment !== true;
+    const noAudio = book?.audio_enabled !== true && book?.audiobook_enabled !== true && book?.generate_audiobook !== true;
+    return publicationStatus === "LIVE_APPROVED" && readerEnabled && published && noCommerce && noAudio;
+  }
   return true;
 }
 
 export function isPipelineCandidate(book = {}) {
   const slug = normalizedSlug(book);
   if (!slug) return false;
-  if (slug === LIVE_APPROVED_SLUG) return false;
+  if (isLiveApprovedBook(book)) return false;
   if (normalizedRightsTier(book) === "C") return false;
   return PIPELINE_BOOKS.some((candidate) => candidate.slug === slug)
     || String(book?.pipeline_stage || "").toUpperCase().includes("PIPELINE")
@@ -205,6 +226,10 @@ export function canShowStartReading(book = {}) {
 
 export function canShowPreview(book = {}) {
   return isLiveApprovedBook(book);
+}
+
+export function canShowReadingPass(book = {}) {
+  return normalizedSlug(book) === LIVE_APPROVED_SLUG && isLiveApprovedBook(book);
 }
 
 export function canShowAudioCTA(book = {}) {

@@ -1,5 +1,19 @@
 {
-  "live_approved_slugs": ["dracula"],
-  "pipeline_slugs": ["kshudhita-pashan"],
+  "live_approved_slugs": [
+    "dracula",
+    "frankenstein",
+    "jekyll-and-hyde",
+    "carmilla",
+    "hound-of-the-baskervilles",
+    "picture-of-dorian-gray",
+    "woman-in-white",
+    "hungry-stones",
+    "devdas",
+    "pather-panchali",
+    "eyesore-chokher-bali"
+  ],
+  "pipeline_slugs": [
+    "kshudhita-pashan"
+  ],
   "audio_enabled_slugs": []
 }

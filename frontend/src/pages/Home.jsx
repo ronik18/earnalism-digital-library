@@ -21,6 +21,7 @@ import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import {
+  BATCH_1_READER_ONLY_SLUGS,
   DRACULA_COVER_IMAGE,
   DRACULA_CTA_EVENTS,
   KSHUDHITA_PASHAN_PIPELINE,
@@ -67,6 +68,10 @@ export default function Home() {
       .filter((item) => item.Icon)
   ), [social]);
   const liveBook = mergeDraculaBook(dracula);
+  const homepagePipelineBooks = useMemo(
+    () => PIPELINE_BOOKS.filter((book) => !BATCH_1_READER_ONLY_SLUGS.includes(book.slug)).slice(0, 4),
+    [],
+  );
 
   useSEO({
     title: "Step Into Dracula | The Earnalism Digital Library",
@@ -213,7 +218,7 @@ export default function Home() {
             </p>
           </div>
           <div className="reference-pipeline-row" data-testid="pipeline-books">
-            {PIPELINE_BOOKS.slice(0, 4).map((book, index) => {
+            {homepagePipelineBooks.map((book, index) => {
               const title = book.displayTitle || book.title;
               const hasCover = Boolean(book.cover_image_url || book.cover_url || book.thumbnail_url);
               const isKshudhita = book.slug === KSHUDHITA_PASHAN_PIPELINE.slug;

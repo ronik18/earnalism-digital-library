@@ -21,6 +21,8 @@ BLOCKED_POINTS = {
     0xFEFF: "byte-order mark / zero-width no-break space",
 }
 
+BENGALI_RANGE = range(0x0980, 0x0A00)
+
 BINARY_SUFFIXES = {
     ".aac",
     ".avif",
@@ -53,6 +55,13 @@ def blocked_reason(codepoint: int) -> str | None:
     return BLOCKED_POINTS.get(codepoint)
 
 
+def has_bengali_neighbor(text: str, index: int) -> bool:
+    """Allow ZWNJ only when it is part of Bengali-script source text."""
+    start = max(0, index - 2)
+    end = min(len(text), index + 3)
+    return any(ord(character) in BENGALI_RANGE for character in text[start:index] + text[index + 1 : end])
+
+
 def default_files() -> list[Path]:
     result = subprocess.run(
         ["git", "diff", "--name-only", "--diff-filter=ACMRTUXB", "HEAD"],
@@ -82,6 +91,8 @@ def scan_file(path: Path) -> list[str]:
 
     text = data.decode("utf-8", errors="replace")
     for index, character in enumerate(text):
+        if ord(character) == 0x200C and has_bengali_neighbor(text, index):
+            continue
         reason = blocked_reason(ord(character))
         if reason:
             line_number, column_number = line_and_column(text, index)

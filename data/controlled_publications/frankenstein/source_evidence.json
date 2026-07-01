@@ -1,0 +1,13 @@
+{
+  "slug": "frankenstein",
+  "source_url": "https://www.gutenberg.org/ebooks/84",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
+  "source_hash": "a986f2697c793ce46b284185b654400a470b9c5145fd3524ff9d584c38726a9d",
+  "content_hash": "f112dc364e5eaac4ced48c46af457e4a307d8c8241e578c8661122e4328072c2",
+  "provenance_hash": "fbd6d931748083a65f4a87e886290ab0624a70912b1a18d0d18a7970799bb51d",
+  "rights_basis": "public_domain",
+  "downloaded_at": "2026-07-01T10:36:20Z",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

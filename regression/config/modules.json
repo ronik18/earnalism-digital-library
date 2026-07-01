@@ -82,5 +82,11 @@
     "moduleName": "UX Conversion Static Signals",
     "mandatory": true,
     "allowedSkipModes": []
+  },
+  {
+    "filePattern": "15-reader-content-quality",
+    "moduleName": "Reader Content Quality Batch 1",
+    "mandatory": true,
+    "allowedSkipModes": []
   }
 ]
