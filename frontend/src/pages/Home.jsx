@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import BookCoverImage from "../components/BookCoverImage";
+import HeroBookObject from "../components/HeroBookObject";
 import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
@@ -179,24 +180,14 @@ export default function Home() {
 
           <div className="reference-dracula-stage lg:col-span-5" data-testid="hero-dracula-card">
             <div className="reference-dracula-book-object reference-dracula-book-object--hardcopy">
-              <a
+              <HeroBookObject
                 href="https://theearnalism.com/book/dracula"
-                className="reference-dracula-hardcopy-shell"
-                data-testid="hero-dracula-cover-frame"
-                data-no-white-edge="true"
+                coverSrc="/assets/books/dracula/dracula-front-cover.webp"
+                alt="Dracula front cover"
+                testId="hero-dracula-cover-frame"
                 aria-label="Open Dracula book page"
                 onClick={() => track(DRACULA_CTA_EVENTS.startReading, { cta: "hero_book_object" })}
-              >
-                <img
-                  src="/assets/books/dracula/dracula-hero-hardcopy.webp"
-                  alt="Hard-copy Dracula book object"
-                  loading="eager"
-                  fetchPriority="high"
-                  width="572"
-                  height="665"
-                  className="reference-dracula-hardcopy-img"
-                />
-              </a>
+              />
             </div>
           </div>
         </div>
@@ -331,7 +322,7 @@ export default function Home() {
                       target={external ? "_blank" : undefined}
                       rel={external ? "noopener noreferrer" : undefined}
                       aria-label={ariaLabel}
-                      className="home-social-rail__link inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#FDFCF8]/18 bg-[#FDFCF8]/[0.045] text-[#F4EFEA]/78 transition-colors duration-300 hover:border-[var(--brand-gold-soft)]/70 hover:bg-[rgba(216,185,122,0.1)] hover:text-[var(--brand-gold-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand-gold-soft)]"
+                      className="home-social-rail__link"
                       data-testid={`home-social-${id}`}
                     >
                       <Icon size={17} strokeWidth={1.55} aria-hidden="true" />

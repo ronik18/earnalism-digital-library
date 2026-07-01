@@ -41,7 +41,7 @@ Covered automatically:
 ## Latest Smoke Result
 
 - latest_smoke_status: PASS
-- latest_smoke_output: output/ux-journey-regression/2026-07-01T10-41-34-897Z
+- latest_smoke_output: output/ux-journey-regression/2026-07-01T11-24-15-604Z
 - latest_test_auth_state_status: NOT_CONFIGURED
 - latest_failure_count: 0
 
