@@ -47,7 +47,7 @@ export default function BookDetail() {
     imageAlt: publicBook?.slug === LIVE_APPROVED_SLUG ? "Custom Earnalism Dracula cover artwork" : publicBook?.title,
     type: bookNotFound ? "website" : "book",
     robots: shouldNoindex ? "noindex, nofollow" : "index, follow",
-    canonicalPath: publicBook?.slug === LIVE_APPROVED_SLUG ? `/book/${LIVE_APPROVED_SLUG}` : undefined,
+    canonicalPath: publicBook?.slug ? `/book/${publicBook.slug}` : undefined,
   });
 
   useEffect(() => {
@@ -84,7 +84,7 @@ export default function BookDetail() {
 
   const bookLanguage = publicBook && BENGALI_RE.test(`${publicBook.title || ""} ${publicBook.description || ""} ${publicBook.short_description || ""}`) ? "bn" : "en";
   const rights = publicBook?.rights_metadata || publicBook?.rights || {};
-  const bookSchemaAllowed = publicBook?.slug === LIVE_APPROVED_SLUG || (
+  const bookSchemaAllowed = publicBook?.public_json_ld_enabled === true || publicBook?.slug === LIVE_APPROVED_SLUG || (
     rights?.rights_tier === "A"
     && rights?.verification_status === "approved"
     && !rights?.blocked_reason
@@ -107,7 +107,7 @@ export default function BookDetail() {
       "genre": "Gothic fiction",
       "isAccessibleForFree": true,
       "copyrightYear": 1897,
-    } : {}),
+    } : { "isAccessibleForFree": true }),
   } : null;
 
   if (loading) return <div className="max-w-7xl mx-auto px-6 py-32 text-center text-charcoal-soft">Loading…</div>;
@@ -137,7 +137,7 @@ export default function BookDetail() {
   const hasExplicitPreview = (publicBook.chapters || []).some((chapter) => chapter.is_preview === true);
   const hasFreePreview = hasExplicitPreview || chapterCount > 1;
   const readerHref = `/reader/${publicBook.slug}`;
-  const passHref = readingPassUrl("book_detail");
+  const passHref = isDracula ? readingPassUrl("book_detail") : "";
 
   return (
     <div data-testid="book-page">
@@ -223,11 +223,15 @@ export default function BookDetail() {
 
           {/* CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row gap-3 flex-wrap items-stretch sm:items-center" data-testid="book-actions">
-            {hasFreePreview && (
+            {isDracula && hasFreePreview && (
               <Link to={readerHref} className="btn-secondary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, cta: "book_detail_preview" })}>Read Chapter 1 Free</Link>
             )}
-            <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, cta: "book_detail_continue" })}>Continue Dracula</Link>
-            <Link to={passHref} className="btn-link justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: publicBook.slug, cta: "book_detail_pass" })}>Get 7-Day Reading Pass</Link>
+            <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, cta: isDracula ? "book_detail_continue" : "book_detail_reader" })}>
+              {isDracula ? "Continue Dracula" : "Read in Earnalism Reader"}
+            </Link>
+            {isDracula && (
+              <Link to={passHref} className="btn-link justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: publicBook.slug, cta: "book_detail_pass" })}>Get 7-Day Reading Pass</Link>
+            )}
           </div>
 
           {isDracula && (
@@ -306,6 +310,7 @@ export default function BookDetail() {
         </section>
       )}
 
+      {isDracula && (
       <section id="preview-payment" className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-6 pb-20 sm:pb-28" data-testid="preview-payment-section">
         <div className="preview-payment-shell">
           <div className="preview-payment-shell__cover" aria-hidden="true">
@@ -344,6 +349,7 @@ export default function BookDetail() {
           </div>
         </div>
       </section>
+      )}
     </div>
   );
 }

@@ -1,0 +1,70 @@
+{
+  "slug": "pather-panchali",
+  "generated_at": "2026-07-01T10:36:20Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "23a6855d067feffa24faee04d69e03d461cf2f6bd15df8a67d28595a7e7638e0"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "f8cd01d745c3de0206d8fe9ca5e07ca59ccd91f114908bfd29aedb25f9ee6e0e"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "ce1bd80e41d650d7efc95130e528e13275c59196da0581f58361b07f012c6054"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "263f8a8eeb651ab6dceeda1dbed4098328336eedbcc17d97b9162c1f28e04229"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "cce1207af2dd9bed78373a138402ccdd02af622e7684b86581815b1174d4fc31"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "e23efe4df4152de997c7c75560dea5e2d3c5198b1e5f0a2f96d1f3175d9a1685"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "6295ca9e7283951fd3a39ec2202be117527836b3fb698e14d5a895690aecaba7"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "23ea7391141a3d5b195b0ed5d88a86f6b90c2f04d56c2d99c15c00891b902425"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "fa4a57e46e21766171152113d962c194027bef22b3cef1fff506ffb115354b8e"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "ea0796201ddc528829430667b1027170cd7f6f6a20b8f1f10aeb038759b11f44"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "61b5c1ed17727417e70c3c6cc418b2ed47990f9ce66334d258dda0be96130fa9"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "6ab1e751377a6fb43336a9bc60936668d562b5805fdd220ce8cfeb4e93a0e176"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "dbf3df17727b5f870783fbab6c092589b533f48ae38f62b4dffe3f4272d79265"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "bcabc7c4f7d41cd22721294035b47d427a781dd4e86e2ddba8ac97de2c2dadb5"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "36f960a4555efd203ade4a9e75b1eba5d74ca5757b250a6cf83713e63cd2b755"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "1edbcee06a390de8b87b1e2bd3f33826ee24ce8cf85805181681b3be2ebfaf09"
+    }
+  ]
+}

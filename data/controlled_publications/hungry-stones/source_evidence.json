@@ -1,0 +1,13 @@
+{
+  "slug": "hungry-stones",
+  "source_url": "https://www.gutenberg.org/ebooks/2518",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
+  "source_hash": "45e3dd5a02b2de0fb77f694a2de16648d59b622aefc5facc34ba8b4dff5bb1c5",
+  "content_hash": "ec0aa0ad99a7784b2be3229f357f781d7ee4c00929eded08561c0ebec676b1e6",
+  "provenance_hash": "914f5193aa1a57e545963be3a2771662d79aa2e015a654a0338232bcd7859ec8",
+  "rights_basis": "public_domain",
+  "downloaded_at": "2026-07-01T10:36:20Z",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

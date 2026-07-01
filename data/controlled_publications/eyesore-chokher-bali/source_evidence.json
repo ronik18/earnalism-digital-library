@@ -1,0 +1,13 @@
+{
+  "slug": "eyesore-chokher-bali",
+  "source_url": "https://en.wikisource.org/wiki/Eyesore",
+  "source_name": "English Wikisource",
+  "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
+  "source_hash": "08ae59f2ce95ca9169a385d1d65a3a3e559d3f0cf6b3dd0b361310b4dac48fde",
+  "content_hash": "7488fbef832f79d697954e5a67e76a17c40959fd446f02bc42f385265d2a9e2c",
+  "provenance_hash": "d550101129cade852e3e7075d3579db6ad227fe77f98747465726cc01f34bc50",
+  "rights_basis": "public_domain",
+  "downloaded_at": "2026-07-01T10:36:20Z",
+  "source_format": "mediawiki-parse-api-html",
+  "reader_facing_boilerplate_removed": true
+}

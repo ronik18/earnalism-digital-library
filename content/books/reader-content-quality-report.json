@@ -1,0 +1,240 @@
+{
+  "batchId": "controlled-bilingual-book-release-batch-1",
+  "requiredScore": 100,
+  "totalBooksConfigured": 10,
+  "passingBooks": [
+    "frankenstein",
+    "jekyll-and-hyde",
+    "carmilla",
+    "hound-of-the-baskervilles",
+    "picture-of-dorian-gray",
+    "woman-in-white",
+    "hungry-stones",
+    "devdas",
+    "pather-panchali",
+    "eyesore-chokher-bali"
+  ],
+  "heldBooks": [],
+  "books": [
+    {
+      "slug": "frankenstein",
+      "title": "Frankenstein; or, The Modern Prometheus",
+      "language": "en",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/84",
+      "score": 100,
+      "status": "PASS_100",
+      "chapterCount": 28,
+      "wordCountApprox": 75037,
+      "routeStatus": "READY",
+      "bengaliRenderingStatus": "PASS",
+      "blockers": [],
+      "areaIssues": {
+        "sourceLegalCompleteness": [],
+        "boilerplateJunkRemoval": [],
+        "structuralIntegrity": [],
+        "textFidelity": [],
+        "bengaliRendering": [],
+        "readerUxRendering": [],
+        "publicGovernanceSafety": []
+      }
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+      "language": "en",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/43",
+      "score": 100,
+      "status": "PASS_100",
+      "chapterCount": 11,
+      "wordCountApprox": 25606,
+      "routeStatus": "READY",
+      "bengaliRenderingStatus": "PASS",
+      "blockers": [],
+      "areaIssues": {
+        "sourceLegalCompleteness": [],
+        "boilerplateJunkRemoval": [],
+        "structuralIntegrity": [],
+        "textFidelity": [],
+        "bengaliRendering": [],
+        "readerUxRendering": [],
+        "publicGovernanceSafety": []
+      }
+    },
+    {
+      "slug": "carmilla",
+      "title": "Carmilla",
+      "language": "en",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/10007",
+      "score": 100,
+      "status": "PASS_100",
+      "chapterCount": 1,
+      "wordCountApprox": 28115,
+      "routeStatus": "READY",
+      "bengaliRenderingStatus": "PASS",
+      "blockers": [],
+      "areaIssues": {
+        "sourceLegalCompleteness": [],
+        "boilerplateJunkRemoval": [],
+        "structuralIntegrity": [],
+        "textFidelity": [],
+        "bengaliRendering": [],
+        "readerUxRendering": [],
+        "publicGovernanceSafety": []
+      }
+    },
+    {
+      "slug": "hound-of-the-baskervilles",
+      "title": "The Hound of the Baskervilles",
+      "language": "en",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/2852",
+      "score": 100,
+      "status": "PASS_100",
+      "chapterCount": 15,
+      "wordCountApprox": 59233,
+      "routeStatus": "READY",
+      "bengaliRenderingStatus": "PASS",
+      "blockers": [],
+      "areaIssues": {
+        "sourceLegalCompleteness": [],
+        "boilerplateJunkRemoval": [],
+        "structuralIntegrity": [],
+        "textFidelity": [],
+        "bengaliRendering": [],
+        "readerUxRendering": [],
+        "publicGovernanceSafety": []
+      }
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "language": "en",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/174",
+      "score": 100,
+      "status": "PASS_100",
+      "chapterCount": 21,
+      "wordCountApprox": 79090,
+      "routeStatus": "READY",
+      "bengaliRenderingStatus": "PASS",
+      "blockers": [],
+      "areaIssues": {
+        "sourceLegalCompleteness": [],
+        "boilerplateJunkRemoval": [],
+        "structuralIntegrity": [],
+        "textFidelity": [],
+        "bengaliRendering": [],
+        "readerUxRendering": [],
+        "publicGovernanceSafety": []
+      }
+    },
+    {
+      "slug": "woman-in-white",
+      "title": "The Woman in White",
+      "language": "en",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/583",
+      "score": 100,
+      "status": "PASS_100",
+      "chapterCount": 25,
+      "wordCountApprox": 246744,
+      "routeStatus": "READY",
+      "bengaliRenderingStatus": "PASS",
+      "blockers": [],
+      "areaIssues": {
+        "sourceLegalCompleteness": [],
+        "boilerplateJunkRemoval": [],
+        "structuralIntegrity": [],
+        "textFidelity": [],
+        "bengaliRendering": [],
+        "readerUxRendering": [],
+        "publicGovernanceSafety": []
+      }
+    },
+    {
+      "slug": "hungry-stones",
+      "title": "Kshudhita Pashan / The Hungry Stones",
+      "language": "en",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/2518",
+      "score": 100,
+      "status": "PASS_100",
+      "chapterCount": 1,
+      "wordCountApprox": 4793,
+      "routeStatus": "READY",
+      "bengaliRenderingStatus": "PASS",
+      "blockers": [],
+      "areaIssues": {
+        "sourceLegalCompleteness": [],
+        "boilerplateJunkRemoval": [],
+        "structuralIntegrity": [],
+        "textFidelity": [],
+        "bengaliRendering": [],
+        "readerUxRendering": [],
+        "publicGovernanceSafety": []
+      }
+    },
+    {
+      "slug": "devdas",
+      "title": "দেবদাস / Devdas",
+      "language": "bn",
+      "sourceUrl": "https://bn.wikisource.org/wiki/দেবদাস_(শরৎচন্দ্র_চট্টোপাধ্যায়)",
+      "score": 100,
+      "status": "PASS_100",
+      "chapterCount": 16,
+      "wordCountApprox": 24988,
+      "routeStatus": "READY",
+      "bengaliRenderingStatus": "PASS",
+      "blockers": [],
+      "areaIssues": {
+        "sourceLegalCompleteness": [],
+        "boilerplateJunkRemoval": [],
+        "structuralIntegrity": [],
+        "textFidelity": [],
+        "bengaliRendering": [],
+        "readerUxRendering": [],
+        "publicGovernanceSafety": []
+      }
+    },
+    {
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী / Pather Panchali",
+      "language": "bn",
+      "sourceUrl": "https://bn.wikisource.org/wiki/পথের_পাঁচালী",
+      "score": 100,
+      "status": "PASS_100",
+      "chapterCount": 12,
+      "wordCountApprox": 20871,
+      "routeStatus": "READY",
+      "bengaliRenderingStatus": "PASS",
+      "blockers": [],
+      "areaIssues": {
+        "sourceLegalCompleteness": [],
+        "boilerplateJunkRemoval": [],
+        "structuralIntegrity": [],
+        "textFidelity": [],
+        "bengaliRendering": [],
+        "readerUxRendering": [],
+        "publicGovernanceSafety": []
+      }
+    },
+    {
+      "slug": "eyesore-chokher-bali",
+      "title": "Eyesore (Chokher Bali)",
+      "language": "en",
+      "sourceUrl": "https://en.wikisource.org/wiki/Eyesore",
+      "score": 100,
+      "status": "PASS_100",
+      "chapterCount": 39,
+      "wordCountApprox": 48588,
+      "routeStatus": "READY",
+      "bengaliRenderingStatus": "PASS",
+      "blockers": [],
+      "areaIssues": {
+        "sourceLegalCompleteness": [],
+        "boilerplateJunkRemoval": [],
+        "structuralIntegrity": [],
+        "textFidelity": [],
+        "bengaliRendering": [],
+        "readerUxRendering": [],
+        "publicGovernanceSafety": []
+      }
+    }
+  ]
+}

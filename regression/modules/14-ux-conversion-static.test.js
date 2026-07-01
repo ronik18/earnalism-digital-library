@@ -62,6 +62,7 @@ describe("UX conversion static signals", () => {
   const journal = read("frontend/src/pages/Journal.jsx");
   const publicIndex = read("frontend/public/index.html");
   const bookCard = read("frontend/src/components/BookCard.jsx");
+  const heroBookObject = read("frontend/src/components/HeroBookObject.jsx");
   const controlledLaunch = read("frontend/src/lib/controlledLaunch.js");
   const publicationSafety = read("frontend/src/lib/publicationSafety.js");
   const pricing = read("frontend/src/pages/Pricing.jsx");
@@ -238,27 +239,32 @@ describe("UX conversion static signals", () => {
     expect(home).toContain('data-testid="premium-landing-hero"');
     expect(home).toContain("--reference-hero-image");
     expect(styles).toContain('var(--reference-hero-image) center / cover no-repeat');
-    expect(home).toContain('data-testid="hero-dracula-cover-frame"');
-    expect(home).toContain('data-no-white-edge="true"');
+    expect(home).toContain('testId="hero-dracula-cover-frame"');
+    expect(heroBookObject).toContain('data-testid={testId}');
+    expect(heroBookObject).toContain('data-no-white-edge="true"');
     expect(home).toContain('href="https://theearnalism.com/book/dracula"');
     expect(home).toContain('aria-label="Open Dracula book page"');
-    expect(home).toContain("/assets/books/dracula/dracula-hero-hardcopy.webp");
-    expect(home).toContain("Hard-copy Dracula book object");
+    expect(home).toContain("/assets/books/dracula/dracula-front-cover.webp");
+    expect(home).toContain("Dracula front cover");
+    expect(home).toContain("HeroBookObject");
     expect(styles).toContain(".reference-dracula-hardcopy-shell");
-    expect(styles).toContain("aspect-ratio: 499 / 572");
-    expect(styles).toContain("overflow: hidden");
+    expect(styles).toContain("aspect-ratio: 2 / 3");
+    expect(styles).toContain("overflow: visible");
     expect(styles).toContain("background: transparent");
+    expect(styles).toContain(".reference-hero-book__face");
+    expect(styles).toContain(".reference-hero-book__page-block");
+    expect(styles).toContain(".reference-hero-book__top-pages");
     expect(styles).toContain(".reference-dracula-stage::before");
     expect(styles).toContain("rgba(255, 231, 181, 0.38)");
     expect(styles).toContain(".reference-dracula-stage::after");
-    expect(styles).toContain("brightness(1.08)");
-    expect(styles).toContain("contrast(1.08)");
+    expect(styles).toContain("brightness(1.12)");
+    expect(styles).toContain("contrast(1.11)");
     expect(styles).not.toContain(".reference-dracula-hardcopy-shell::after");
     expect(styles).not.toContain(".reference-dracula-hardcopy-shell::before");
     expect(styles).not.toContain("APPROVED CLASSIC READING RELEASE");
     expect(styles).not.toContain("backdrop-filter: blur(9px)");
-    expect(styles).toContain("clip-path: inset(0 5.9% 14% 12.3%)");
-    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-hero-hardcopy.webp"))).toBe(true);
+    expect(styles).not.toContain("clip-path: inset(0 5.9% 14% 12.3%)");
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-front-cover.webp"))).toBe(true);
     expect(home).not.toContain("images.unsplash.com");
     expect(home).not.toMatch(/lg:pt-36|lg:pb-32|sm:pt-32|pb-24/);
 
@@ -341,22 +347,25 @@ describe("UX conversion static signals", () => {
     expect(premiumLandingSources).not.toMatch(/\b(fashion|clothing|apparel|self-publishing|WooCommerce|Add to cart|Shop now)\b/i);
   });
 
-  test("library and book pages expose only approved Dracula reading paths", () => {
-    expect(library).toContain("Live Controlled Release");
+  test("library and book pages expose controlled reader-only paths without broad catalog or payment overclaim", () => {
+    expect(library).toContain("Live Controlled Releases");
     expect(library).toContain("The live shelf begins with");
-    expect(library).toContain("Only live public reading release");
+    expect(library).toContain("Reader-only public-domain shelf");
+    expect(library).toContain('data-testid="library-live-reader-only-grid"');
+    expect(library).toContain("Dracula remains the featured release");
     expect(library).toContain("Coming Through the Rights-Safe Pipeline");
-    expect(library).toContain("every future shelf held until it earns the right to open");
+    expect(library).toContain("source, sanitation, and reader QA gates pass");
     expect(library).toContain("No reader, payment, or audio CTA is available for this pipeline-only title.");
     expect(library).toContain("Read Chapter 1 Free");
     expect(library).toContain("Start Dracula");
     expect(library).toContain("Public-domain source verified");
     expect(library).toContain("Notify Me");
-    expect(bookDetail).toContain('data-testid="read-preview"');
-    expect(bookDetail).toContain('data-testid="bottom-buy-reading-time"');
+    expect(bookDetail).toContain('data-testid="start-reading"');
+    expect(bookDetail).toContain("Read in Earnalism Reader");
     expect(bookDetail).toContain("DRACULA_SOURCE_NOTE");
     expect(bookDetail).toContain("Audio:</strong> Audiobook experience in private review");
-    expect(bookDetail).toContain("readingPassUrl(\"book_detail\")");
+    expect(bookDetail).toContain('data-testid="book-reading-pass"');
+    expect(bookDetail).toContain("{isDracula && (");
     expect(bookDetail).toContain('data-testid="dracula-reading-model-note"');
     expect(bookDetail).toContain("Chapter 1 opens free so you can feel the room first.");
     expect(bookDetail).toContain("Later chapters use reading time from your wallet, not a subscription.");
@@ -730,7 +739,7 @@ describe("UX conversion static signals", () => {
     expect(publicLaunchSources).not.toMatch(/\b(full )?audiobook\s+(is|are)?\s*(live|available|ready|published)\b/i);
     expect(publicLaunchSources).not.toMatch(/\b(buy|purchase|get)\s+(the\s+)?(full\s+)?audiobook\b/i);
     expect(publicLaunchSources).not.toMatch(/\baudiobook pass\b/i);
-    expect(publicLaunchSources).not.toMatch(/\b(Kshudhita|Hungry Stones)\b[\s\S]{0,180}\b(Start Reading|Read Preview|Listen Now|public reader|public audio|available now)\b/i);
+    expect(publicLaunchSources).not.toMatch(/\b(Kshudhita Pashan|kshudhita-pashan)\b[\s\S]{0,180}\b(Start Reading|Read Preview|Listen Now|public reader|public audio|available now)\b/i);
     expect(publicLaunchSources).not.toMatch(/\b(all|every|100\+|105)\s+(books|classics|titles)\s+(are\s+)?(live|available|readable|ready)\b/i);
     expect(publicLaunchSources).not.toMatch(/\b(WCAG compliant|blind[- ]user tested|fully accessible audiobook|screen-reader certified)\b/i);
     expect(publicLaunchSources).not.toMatch(/\b(buy|own|ownership|forever)\b[\s\S]{0,100}\b(book|classic|edition|Dracula)\b/i);
@@ -1072,9 +1081,11 @@ describe("UX conversion static signals", () => {
   test("book card truth gate prevents unapproved reader CTAs", () => {
     expect(bookCard).toContain("canShowPreview");
     expect(bookCard).toContain("canShowStartReading");
+    expect(bookCard).toContain("canShowReadingPass");
     expect(controlledLaunch).toContain("isLiveApprovedBook");
     expect(controlledLaunch).toContain("isPipelineCandidate");
     expect(controlledLaunch).toContain("canShowAudioCTA");
+    expect(controlledLaunch).toContain("BATCH_1_READER_ONLY_SLUGS");
     expect(controlledLaunch).toContain("COMING_SOON_PIPELINE");
     for (const helper of [
       "isControlledLiveReadingBook",
@@ -1092,6 +1103,8 @@ describe("UX conversion static signals", () => {
     expect(bookCard).toContain("book.title_en || book.title");
     expect(bookCard).toContain("book-card__secondary-title");
     expect(bookCard).toContain("isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)");
+    expect(bookCard).toContain("showReadingPass &&");
+    expect(bookCard).toContain("card-details-${book.slug}");
   });
 
   test("reader route does not borrow admin session for normal Dracula reading", () => {
@@ -1143,13 +1156,11 @@ describe("UX conversion static signals", () => {
     expect(controlledLaunch).toContain('KSHUDHITA_PASHAN_FRONT_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp"');
     expect(controlledLaunch).toContain('KSHUDHITA_PASHAN_BACK_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp"');
     expect(controlledLaunch).toContain('cover_image_url: "/assets/books/kshudhita-pashan/front-cover.webp"');
-    expect(controlledLaunch).toContain('cover_image_url: "/assets/books/frankenstein/front-cover.webp"');
     expect(controlledLaunch).toContain('cover_image_url: "/assets/books/sherlock-holmes/front-cover.webp"');
     expect(controlledLaunch).toContain('cover_status: "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER"');
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp"))).toBe(true);
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp"))).toBe(true);
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/kshudhita-pashan/front-cover.webp"))).toBe(true);
-    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/frankenstein/front-cover.webp"))).toBe(true);
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/sherlock-holmes/front-cover.webp"))).toBe(true);
     expect(controlledLaunch).toContain('title_en: "The Hungry Stones"');
     expect(controlledLaunch).toContain("A Bengali Gothic candidate in rights-safe preparation.");
@@ -1760,6 +1771,7 @@ describe("UX conversion static signals", () => {
     expect(home).toContain("getEnabledSocialLinks(social)");
     expect(home).toContain('data-testid="home-socials"');
     expect(home).toContain('data-testid={`home-social-${id}`}');
+    expect(home).toContain('className="home-social-rail__link"');
     expect(home).not.toContain("normalizeSocialUrl(social?.[item.key])");
     expect(home).not.toContain('href="#"');
     expect(home).not.toContain('href=""');
@@ -1769,16 +1781,18 @@ describe("UX conversion static signals", () => {
     expect(header).toContain("getEnabledSocialLinks(social)");
     expect(header).toContain('data-testid={`mobile-social-${id}`}');
     expect(styles).toContain(".home-social-rail__link");
+    expect(styles).toContain("radial-gradient(circle at 34% 18%");
+    expect(styles).toContain(".home-social-rail__link::before");
+    expect(styles).toContain(".home-social-rail__link svg");
+    expect(styles).toContain("width: 2.95rem");
+    expect(styles).toContain("height: 2.95rem");
 
     expect(footer.indexOf("CONTACT_EMAIL")).toBeGreaterThanOrEqual(0);
-    expect(footer.indexOf("<FooterSocialLinks />")).toBeGreaterThan(footer.indexOf("mailto:${CONTACT_EMAIL}"));
+    expect(footer).not.toContain("FooterSocialLinks");
+    expect(footer).not.toContain("<FooterSocialLinks />");
     expect(footer).toContain("sales@reoenterprise.in");
     expect(footer).toContain("A quiet digital reading room beginning with Dracula by Bram Stoker.");
     expect(footer).toContain("Bengali Gothic and other classics are moving through the rights-safe pipeline.");
     expect(footer).not.toContain("A quiet digital reading room for Bengali classics, literary fiction, young readers");
-    expect(styles).toContain(".footer-social");
-    expect(styles).toContain("width: 2.75rem");
-    expect(styles).toContain("height: 2.75rem");
-    expect(styles).toContain(".footer-social__sr-label");
   });
 });

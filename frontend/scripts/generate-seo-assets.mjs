@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -139,6 +139,41 @@ async function fetchJson(endpoint) {
   }
 }
 
+async function loadLocalControlledBooks() {
+  const controlledDir = path.join(rootDir, "data", "controlled_publications");
+  const books = [];
+  let entries = [];
+  try {
+    entries = await readdir(controlledDir, { withFileTypes: true });
+  } catch {
+    return books;
+  }
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    const slug = entry.name.trim().toLowerCase();
+    if (!controlledLiveSlugs.has(slug)) continue;
+    try {
+      const book = JSON.parse(await readFile(path.join(controlledDir, slug, "public_book.json"), "utf8"));
+      if (
+        book?.slug
+        && book.is_published !== false
+        && book.publication_status === "LIVE_APPROVED"
+        && book.allowCheckout !== true
+        && book.allowPayment !== true
+        && book.audio_enabled !== true
+        && book.audiobook_enabled !== true
+      ) {
+        books.push(book);
+      }
+    } catch (error) {
+      console.warn(`[seo] Could not load local controlled book ${slug}: ${error.message}`);
+    }
+  }
+
+  return books;
+}
+
 function sitemapEntry({ path: pagePath, changefreq, priority, lastmod = today }) {
   return [
     "  <url>",
@@ -151,10 +186,16 @@ function sitemapEntry({ path: pagePath, changefreq, priority, lastmod = today })
 }
 
 async function main() {
-  const [books, posts] = await Promise.all([
+  const [remoteBooks, posts, localControlledBooks] = await Promise.all([
     fetchJson("/books"),
     fetchJson("/blog"),
+    loadLocalControlledBooks(),
   ]);
+  const booksBySlug = new Map();
+  for (const book of [...remoteBooks, ...localControlledBooks]) {
+    if (book?.slug) booksBySlug.set(book.slug, book);
+  }
+  const books = Array.from(booksBySlug.values());
 
   const publishedBooks = books.filter((book) => (
     book?.slug
@@ -221,7 +262,7 @@ async function main() {
     "Disallow: /admin",
     "Disallow: /admin/",
     "Disallow: /account",
-    "Allow: /reader/dracula",
+    ...Array.from(controlledLiveSlugs).sort().map((slug) => `Allow: /reader/${slug}`),
     "Disallow: /reader/",
     "Disallow: /secure-reader-test",
     "Disallow: /login",

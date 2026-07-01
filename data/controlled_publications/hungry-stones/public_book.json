@@ -1,0 +1,72 @@
+{
+  "id": "controlled-hungry-stones",
+  "slug": "hungry-stones",
+  "title": "Kshudhita Pashan / The Hungry Stones",
+  "subtitle": "",
+  "author": "Rabindranath Tagore",
+  "category_slug": "classic-literature",
+  "short_description": "A clean Earnalism reader edition of Kshudhita Pashan / The Hungry Stones, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
+  "description": "A clean Earnalism reader edition of Kshudhita Pashan / The Hungry Stones, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "20 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a cleaned public-domain text without source repository boilerplate.",
+    "Use the quiet Earnalism reader with chapter navigation.",
+    "Access the work in a clean, chaptered reader."
+  ],
+  "who_for": [
+    "Readers of public-domain classics",
+    "Students and careful rereaders"
+  ],
+  "learnings": [
+    "A source-faithful public-domain reading edition prepared for Earnalism."
+  ],
+  "about_author": "",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Hungry Stones",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 4793,
+      "reading_minutes": 20,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-01T10:36:20Z",
+      "updated_at": "2026-07-01T10:36:20Z"
+    }
+  ],
+  "source_hash": "45e3dd5a02b2de0fb77f694a2de16648d59b622aefc5facc34ba8b4dff5bb1c5",
+  "content_hash": "ec0aa0ad99a7784b2be3229f357f781d7ee4c00929eded08561c0ebec676b1e6",
+  "provenance_hash": "914f5193aa1a57e545963be3a2771662d79aa2e015a654a0338232bcd7859ec8",
+  "rights_basis": "public_domain",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_assets": {},
+  "audiobook": {},
+  "created_at": "2026-07-01T10:36:20Z",
+  "updated_at": "2026-07-01T10:36:22Z"
+}

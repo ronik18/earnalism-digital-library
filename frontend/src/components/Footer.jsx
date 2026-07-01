@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail } from "lucide-react";
 import BrandMark from "./BrandMark";
-import FooterSocialLinks from "./FooterSocialLinks";
 
 const CONTACT_EMAIL = "sales@reoenterprise.in";
 
@@ -36,7 +35,6 @@ export default function Footer() {
           <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-2 text-charcoal-soft hover:text-burgundy">
             <Mail size={16} /> {CONTACT_EMAIL}
           </a>
-          <FooterSocialLinks />
         </div>
       </div>
 

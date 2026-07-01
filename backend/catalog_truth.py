@@ -26,6 +26,10 @@ DRACULA_ARTIFACT_DIR = first_existing_path(
     ROOT / "data" / "controlled_publications" / "dracula",
     MODULE_DIR / "data" / "controlled_publications" / "dracula",
 )
+CONTROLLED_PUBLICATIONS_DIR = first_existing_path(
+    ROOT / "data" / "controlled_publications",
+    MODULE_DIR / "data" / "controlled_publications",
+)
 DRACULA_REQUIRED_ARTIFACT_FILES = (
     "public_book.json",
     "reader_manifest.json",
@@ -242,6 +246,12 @@ def _artifact_json(name: str, *, artifact_dir: str | Path | None = None) -> dict
     return read_json_file(_artifact_dir(artifact_dir) / name)
 
 
+def controlled_artifact_dir(slug: str) -> Path:
+    if normalize_slug(slug) == "dracula":
+        return DRACULA_ARTIFACT_DIR
+    return CONTROLLED_PUBLICATIONS_DIR / normalize_slug(slug)
+
+
 @lru_cache(maxsize=8)
 def dracula_artifact_validation_issues(artifact_dir: str = "") -> tuple[str, ...]:
     base = _artifact_dir(artifact_dir or None)
@@ -421,6 +431,135 @@ def load_dracula_artifact_book(
     }
 
 
+CONTROLLED_REQUIRED_ARTIFACT_FILES = DRACULA_REQUIRED_ARTIFACT_FILES
+
+
+@lru_cache(maxsize=64)
+def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> tuple[str, ...]:
+    normalized = normalize_slug(slug)
+    if normalized == "dracula":
+        return dracula_artifact_validation_issues(artifact_dir)
+    base = Path(artifact_dir) if artifact_dir else controlled_artifact_dir(normalized)
+    issues: list[str] = []
+    if normalized not in CONTROLLED_LIVE_BOOK_SLUGS:
+        issues.append(f"{normalized or 'unknown'} is not in the controlled live allowlist.")
+    if not base.exists():
+        return (f"Controlled publication artifact directory is missing for {normalized}.",)
+    for filename in CONTROLLED_REQUIRED_ARTIFACT_FILES:
+        if not (base / filename).exists():
+            issues.append(f"Missing required controlled artifact file for {normalized}: {filename}")
+    public_book = read_json_file(base / "public_book.json")
+    reader_manifest = read_json_file(base / "reader_manifest.json")
+    source_evidence = read_json_file(base / "source_evidence.json")
+    approval_evidence = read_json_file(base / "approval_evidence.json")
+    if normalize_slug(public_book.get("slug")) != normalized:
+        issues.append("public_book.json slug does not match artifact slug.")
+    if public_book.get("is_published") is not True:
+        issues.append("public_book.json is_published is not true.")
+    if public_book.get("isPublic") is not True or public_book.get("isLive") is not True:
+        issues.append("public_book.json public/live flags are not true.")
+    if public_book.get("showInHomepage") is not False:
+        issues.append("public_book.json showInHomepage must remain false for batch 1.")
+    if public_book.get("allowCheckout") is not False or public_book.get("allowPayment") is not False:
+        issues.append("public_book.json checkout/payment flags must remain false.")
+    if public_book.get("audio_enabled") is not False or public_book.get("audiobook_enabled") is not False:
+        issues.append("public_book.json audio flags are not disabled.")
+    if public_book.get("approved_to_publish") is not True:
+        issues.append("public_book.json approved_to_publish is not true.")
+    if normalize_text(public_book.get("verification_status")).lower() not in {"approved", "verified"}:
+        issues.append("public_book.json verification_status is not approved.")
+    if normalize_upper(public_book.get("qa_status")) not in {"QA_PASSED", "PASS", "PASSED"}:
+        issues.append("public_book.json qa_status is not QA_PASSED.")
+    if int(reader_manifest.get("chapter_count") or 0) <= 0:
+        issues.append("reader_manifest.json chapter_count must be greater than zero.")
+    if reader_manifest.get("audio_enabled") is not False or reader_manifest.get("audiobook_enabled") is not False:
+        issues.append("reader_manifest.json audio flags are not disabled.")
+    for key in ("source_hash", "content_hash", "provenance_hash"):
+        if not normalize_text(source_evidence.get(key)):
+            issues.append(f"source_evidence.json missing {key}.")
+    if not normalize_text(source_evidence.get("source_url")):
+        issues.append("source_evidence.json missing source_url.")
+    if approval_evidence.get("approved_to_publish") is not True:
+        issues.append("approval_evidence.json approved_to_publish is not true.")
+    return tuple(issues)
+
+
+def controlled_artifact_status(slug: str, *, artifact_dir: str | Path | None = None) -> dict[str, Any]:
+    normalized = normalize_slug(slug)
+    base = Path(artifact_dir) if artifact_dir else controlled_artifact_dir(normalized)
+    issues = list(controlled_artifact_validation_issues(normalized, str(base)))
+    public_book = read_json_file(base / "public_book.json")
+    reader_manifest = read_json_file(base / "reader_manifest.json")
+    artifact_book = load_controlled_artifact_book(normalized, include_content=False, artifact_dir=base) if not issues else None
+    self_contained_for_truth_gate = bool(artifact_book and is_live_approved_book(artifact_book))
+    return {
+        "available": not issues,
+        "artifact_dir": str(base),
+        "issues": issues,
+        "slug": normalize_slug(public_book.get("slug")),
+        "title": normalize_text(public_book.get("title")),
+        "chapter_count": int(reader_manifest.get("chapter_count") or 0),
+        "audio_enabled": bool(public_book.get("audio_enabled", False)),
+        "audiobook_enabled": bool(public_book.get("audiobook_enabled", False)),
+        "self_contained_for_truth_gate": self_contained_for_truth_gate,
+        "fallback_requires_legacy_output_evidence": False,
+    }
+
+
+def load_controlled_artifact_book(
+    slug: str,
+    *,
+    include_content: bool = False,
+    artifact_dir: str | Path | None = None,
+) -> dict[str, Any] | None:
+    normalized = normalize_slug(slug)
+    if normalized == "dracula":
+        return load_dracula_artifact_book(include_content=include_content, artifact_dir=artifact_dir)
+    base = Path(artifact_dir) if artifact_dir else controlled_artifact_dir(normalized)
+    if controlled_artifact_validation_issues(normalized, str(base)):
+        return None
+    public_book = read_json_file(base / "public_book.json")
+    approval_evidence = read_json_file(base / "approval_evidence.json")
+    source_evidence = read_json_file(base / "source_evidence.json")
+    chapters: list[dict[str, Any]] = []
+    for chapter_meta in sorted(public_book.get("chapters") or [], key=lambda item: item.get("order", 0)):
+        chapter_id = normalize_text(chapter_meta.get("id"))
+        chapter = dict(chapter_meta)
+        if include_content and chapter_id:
+            content_payload = read_json_file(base / "chapters" / f"{chapter_id}.json")
+            chapter["content"] = content_payload.get("content", "")
+            chapter["content_hash"] = content_payload.get("content_hash", "")
+        chapters.append(chapter)
+
+    def evidence_value(key: str, default: Any = "") -> Any:
+        for source in (approval_evidence, source_evidence, public_book):
+            if key in source and source.get(key) not in (None, ""):
+                return source.get(key)
+        return default
+
+    return {
+        **public_book,
+        "chapters": chapters,
+        "source_url": evidence_value("source_url"),
+        "source_name": evidence_value("source_name"),
+        "source_license": evidence_value("source_license"),
+        "source_hash": evidence_value("source_hash"),
+        "content_hash": evidence_value("content_hash"),
+        "provenance_hash": evidence_value("provenance_hash"),
+        "rights_basis": evidence_value("rights_basis"),
+        "approved_to_publish": bool(evidence_value("approved_to_publish", True)),
+        "publication_status": PUBLIC_STATUS_LIVE_APPROVED,
+        "rights_tier": evidence_value("rights_tier", "A"),
+        "verification_status": evidence_value("verification_status", "approved"),
+        "qa_status": evidence_value("qa_status", "QA_PASSED"),
+        "audio_enabled": False,
+        "audiobook_enabled": False,
+        "generate_audiobook": False,
+        "audiobook_assets": {},
+        "audiobook": {},
+    }
+
+
 def evidence_for_book(book: dict[str, Any]) -> dict[str, Any]:
     return dracula_approval_evidence() if normalize_slug(book.get("slug")) == LIVE_APPROVED_SLUG else {}
 
@@ -476,7 +615,7 @@ def source_metadata_present(book: dict[str, Any]) -> bool:
 
 
 def is_live_approved_book(book: dict[str, Any]) -> bool:
-    if normalize_slug(book.get("slug")) != LIVE_APPROVED_SLUG:
+    if normalize_slug(book.get("slug")) not in CONTROLLED_LIVE_BOOK_SLUGS:
         return False
     if book.get("is_published") is not True:
         return False
@@ -498,7 +637,7 @@ def is_live_approved_book(book: dict[str, Any]) -> bool:
 
 def is_pipeline_candidate(book: dict[str, Any]) -> bool:
     slug = normalize_slug(book.get("slug"))
-    if not slug or slug == LIVE_APPROVED_SLUG:
+    if not slug or slug in CONTROLLED_LIVE_BOOK_SLUGS:
         return False
     if slug in PIPELINE_CANDIDATE_SLUGS:
         return True
@@ -584,16 +723,30 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
             "preview_url": f"/reader/{slug}" if live else "",
             "audio_url": "",
             "audio_status": "NOT_AVAILABLE" if live else "BLOCKED_UNTIL_RIGHTS_QA",
-            "cta_label": "Start Dracula" if live else "Notify Me",
-            "secondary_cta_label": "Read Chapter 1 Free" if live else "Coming Soon",
+            "cta_label": (
+                "Start Dracula"
+                if live and slug == LIVE_APPROVED_SLUG
+                else "Read"
+                if live
+                else "Notify Me"
+            ),
+            "secondary_cta_label": (
+                "Read Chapter 1 Free"
+                if live and slug == LIVE_APPROVED_SLUG
+                else "Details"
+                if live
+                else "Coming Soon"
+            ),
             "public_json_ld_enabled": live,
             "source_note": (
                 "Source verified for the controlled Dracula reading launch."
+                if live and slug == LIVE_APPROVED_SLUG
+                else "Public-domain source verified for controlled reading."
                 if live
                 else "Source and rights verification are still in the pipeline."
             ),
             "rights_note": (
-                "Approved Tier A core reading candidate."
+                "Approved classic reading release."
                 if live
                 else "Not publicly readable until rights and QA approval are complete."
             ),
@@ -685,10 +838,7 @@ def catalog_truth_summary(
         "unapproved_audio_link_count": len(unapproved_audio),
         "unapproved_sitemap_count": len(unapproved_sitemap),
         "backend_frontend_truth_mismatch": backend_frontend_truth_mismatch,
-        "launch_blockers": [
-            "Non-Dracula live approved item detected" for row in live_rows if row["slug"] != LIVE_APPROVED_SLUG
-        ]
-        + ["Unapproved reader links detected"] * bool(unapproved_reader)
+        "launch_blockers": ["Unapproved reader links detected"] * bool(unapproved_reader)
         + ["Unapproved audio links detected"] * bool(unapproved_audio)
         + ["Unapproved sitemap entries detected"] * bool(unapproved_sitemap)
         + ["Backend/frontend controlled live slug mismatch"] * bool(backend_frontend_truth_mismatch is True),

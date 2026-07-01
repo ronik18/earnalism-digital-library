@@ -796,36 +796,111 @@ body::before {
   position: relative;
   z-index: 1;
   display: block;
-  width: min(100%, 22.75rem);
-  aspect-ratio: 499 / 572;
+  width: min(100%, 19.65rem);
+  aspect-ratio: 2 / 3;
   margin-inline: auto;
-  overflow: hidden;
+  overflow: visible;
   border: 0;
   background: transparent;
   text-decoration: none;
   box-shadow: none;
+  transform: perspective(1200px) rotateY(-4deg) rotateX(1.1deg);
+  transform-origin: center left;
+  transition: transform 180ms ease, filter 180ms ease;
   filter:
-    drop-shadow(0 34px 46px rgba(0, 0, 0, 0.46))
-    drop-shadow(0 0 34px rgba(216, 185, 122, 0.22))
-    drop-shadow(0 0 10px rgba(253, 252, 248, 0.1));
+    drop-shadow(0 34px 46px rgba(0, 0, 0, 0.48))
+    drop-shadow(0 0 38px rgba(216, 185, 122, 0.24))
+    drop-shadow(0 0 12px rgba(253, 252, 248, 0.12));
+}
+.reference-dracula-hardcopy-shell:hover,
+.reference-dracula-hardcopy-shell:focus-visible {
+  transform: perspective(1200px) rotateY(-2.7deg) rotateX(0.8deg) translateY(-0.12rem);
 }
 .reference-dracula-hardcopy-shell:focus-visible {
   outline: 2px solid var(--brand-gold-soft);
   outline-offset: 0.45rem;
   border-radius: 0.45rem;
 }
+.reference-hero-book__volume {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transform-style: preserve-3d;
+}
+.reference-hero-book__face {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: block;
+  overflow: hidden;
+  border-radius: 0.22rem;
+  background: #030201;
+  box-shadow:
+    inset 0 0 0 1px rgba(216, 185, 122, 0.42),
+    inset 12px 0 18px -16px rgba(253, 252, 248, 0.42),
+    inset -10px 0 18px -15px rgba(0, 0, 0, 0.78),
+    0 0 0 1px rgba(5, 2, 1, 0.82);
+}
+.reference-hero-book__back-board {
+  position: absolute;
+  top: 1.15%;
+  right: -6.6%;
+  bottom: 1.25%;
+  width: 10%;
+  z-index: 1;
+  border-radius: 0 0.34rem 0.34rem 0;
+  background:
+    linear-gradient(90deg, #0d0905 0 22%, rgba(48, 30, 18, 0.9) 62%, rgba(9, 5, 3, 0.96) 100%);
+  transform: skewY(-2deg);
+  box-shadow:
+    10px 13px 22px rgba(0, 0, 0, 0.45),
+    inset -2px 0 4px rgba(0, 0, 0, 0.68);
+}
+.reference-hero-book__page-block {
+  position: absolute;
+  top: 2.05%;
+  right: -7.85%;
+  bottom: 2.05%;
+  width: 8.6%;
+  z-index: 2;
+  border-radius: 0 0.28rem 0.28rem 0;
+  background:
+    linear-gradient(90deg, rgba(108, 74, 42, 0.42), rgba(239, 204, 139, 0.92) 18%, rgba(167, 110, 58, 0.88) 86%, rgba(54, 34, 19, 0.95)),
+    repeating-linear-gradient(90deg, rgba(255, 241, 198, 0.8) 0 1px, rgba(128, 82, 43, 0.78) 1px 2px, rgba(230, 190, 119, 0.72) 2px 4px);
+  transform: skewY(-1.7deg);
+  box-shadow:
+    inset 5px 0 7px rgba(255, 237, 181, 0.28),
+    inset -8px 0 11px rgba(0, 0, 0, 0.28);
+}
+.reference-hero-book__top-pages {
+  position: absolute;
+  top: -2.05%;
+  left: 6.2%;
+  right: -4.8%;
+  height: 3.15%;
+  z-index: 0;
+  opacity: 0.86;
+  border-radius: 0.2rem 0.42rem 0.04rem 0.04rem;
+  background:
+    linear-gradient(180deg, rgba(64, 49, 28, 0.78), rgba(207, 169, 93, 0.54) 34%, rgba(24, 18, 10, 0.82) 100%),
+    repeating-linear-gradient(90deg, rgba(255, 230, 170, 0.22) 0 1px, rgba(72, 45, 22, 0.18) 1px 3px);
+  transform: skewX(-58deg);
+  transform-origin: bottom left;
+  box-shadow:
+    0 -1px 0 rgba(255, 232, 177, 0.24),
+    5px 7px 12px rgba(0, 0, 0, 0.22);
+}
 .reference-dracula-hardcopy-img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   border: 0;
   background: transparent;
-  object-fit: contain;
-  clip-path: inset(0 5.9% 14% 12.3%);
+  object-fit: cover;
   filter:
-    brightness(1.08)
-    contrast(1.08)
-    saturate(1.06)
+    brightness(1.12)
+    contrast(1.11)
+    saturate(1.08)
     drop-shadow(0 0 14px rgba(4, 2, 1, 0.14));
 }
 .premium-dracula-cover-frame {
@@ -1150,7 +1225,7 @@ body::before {
   font-size: clamp(2.08rem, 4.1vw, 3.25rem);
   font-weight: 400;
   letter-spacing: 0;
-  line-height: 0.98;
+  line-height: 1.12;
 }
 .reference-reading-path__copy p {
   margin-top: 1.25rem;
@@ -1211,7 +1286,63 @@ body::before {
 }
 
 .home-social-rail__link {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.95rem;
+  height: 2.95rem;
+  border: 1px solid rgba(216, 185, 122, 0.42);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 34% 18%, rgba(255, 236, 185, 0.23), transparent 40%),
+    linear-gradient(145deg, rgba(98, 43, 52, 0.78), rgba(28, 10, 14, 0.94) 72%);
+  color: rgba(255, 244, 222, 0.9);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -12px 26px rgba(0, 0, 0, 0.24),
+    0 16px 30px -22px rgba(0, 0, 0, 0.94),
+    0 0 0 1px rgba(255, 233, 182, 0.035);
   text-decoration: none;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    color 220ms ease,
+    transform 220ms ease,
+    background-color 220ms ease;
+}
+.home-social-rail__link::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(255, 239, 204, 0.12);
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 54%);
+  pointer-events: none;
+  z-index: 0;
+}
+.home-social-rail__link svg {
+  position: relative;
+  z-index: 1;
+  width: 1.08rem;
+  height: 1.08rem;
+  stroke-width: 1.55;
+  filter: drop-shadow(0 0 8px rgba(216, 185, 122, 0.24));
+}
+.home-social-rail__link:hover {
+  border-color: rgba(235, 207, 148, 0.86);
+  color: var(--brand-gold-soft);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -12px 28px rgba(0, 0, 0, 0.18),
+    0 20px 34px -22px rgba(0, 0, 0, 0.95),
+    0 0 18px rgba(216, 185, 122, 0.12);
+}
+.home-social-rail__link:focus-visible {
+  outline: 2px solid var(--brand-gold-soft);
+  outline-offset: 4px;
 }
 
 @media (max-width: 1180px) {

@@ -5,6 +5,18 @@ const { execFileSync } = require("child_process");
 const ROOT = path.resolve(__dirname, "../..");
 const SITE_URL = "https://theearnalism.com";
 const STATIC_SNAPSHOT_ROUTES = ["/", "/book/dracula", "/library", "/pricing", "/reader/dracula"];
+const BATCH_1_READER_ONLY_SLUGS = [
+  "frankenstein",
+  "jekyll-and-hyde",
+  "carmilla",
+  "hound-of-the-baskervilles",
+  "picture-of-dorian-gray",
+  "woman-in-white",
+  "hungry-stones",
+  "devdas",
+  "pather-panchali",
+  "eyesore-chokher-bali",
+];
 
 function snapshotPath(route) {
   return route === "/"
@@ -178,9 +190,9 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
   test("homepage, library, and pricing snapshots stay Dracula-first and not broad-catalog", () => {
     expect(homeHtml).toContain("Begin with Dracula.");
     expect(homeHtml).toContain("Controlled launch begins with Dracula");
-    expect(homeHtml).toContain("Dracula is the only live approved classic reading release today.");
-    expect(libraryHtml).toContain("Live Controlled Release: Dracula only.");
-    expect(libraryHtml).toContain("No unapproved title offers reader, preview, or listening CTAs.");
+    expect(homeHtml).toContain("Dracula remains the featured live approved reading release.");
+    expect(libraryHtml).toContain("Live Controlled Reader Releases.");
+    expect(libraryHtml).toContain("Reader-only releases do not offer checkout, payment, or listening CTAs.");
     expect(pricingHtml).toContain("Choose your reading time. Return whenever the book calls.");
     for (const html of [homeHtml, libraryHtml, pricingHtml]) {
       expect(html).not.toMatch(/Preview every book before you pay|A quieter bookstore for readers who linger|Discover thoughtful books across/i);
@@ -192,8 +204,15 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(sitemap).toContain(`${SITE_URL}/library`);
     expect(sitemap).toContain(`${SITE_URL}/pricing`);
     expect(sitemap).not.toContain(`${SITE_URL}/reader/dracula`);
-    expect(sitemap).not.toMatch(/kshudhita|hungry-stones|bn-|book-|\/shop|\/product\/|\/blog\/|\/post\/|\/category\/|\/tag\//i);
+    for (const slug of BATCH_1_READER_ONLY_SLUGS) {
+      expect(sitemap).toContain(`${SITE_URL}/book/${slug}`);
+      expect(sitemap).not.toContain(`${SITE_URL}/reader/${slug}`);
+    }
+    expect(sitemap).not.toMatch(/kshudhita|bn-|\/reader\/|\/shop|\/product\/|\/blog\/|\/post\/|\/category\/|\/tag\//i);
     expect(robots).toContain("Allow: /reader/dracula");
+    for (const slug of BATCH_1_READER_ONLY_SLUGS) {
+      expect(robots).toContain(`Allow: /reader/${slug}`);
+    }
     expect(robots).toContain("Disallow: /reader/");
     expect(robots).toContain(`Sitemap: ${SITE_URL}/sitemap.xml`);
     expect(robots).not.toContain("Disallow: /shop");

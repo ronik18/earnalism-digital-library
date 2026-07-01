@@ -4,8 +4,10 @@ import { memo } from "react";
 import BookCoverImage from "./BookCoverImage";
 import {
   DRACULA_CTA_EVENTS,
+  LIVE_APPROVED_SLUG,
   bookLaunchStatus,
   canShowPreview,
+  canShowReadingPass,
   canShowStartReading,
   notifyUrl,
   readingPassUrl,
@@ -17,6 +19,8 @@ function BookCard({ book, priority = false }) {
   const isLiveApproved = status === "LIVE_APPROVED";
   const showPreview = canShowPreview(book);
   const showStartReading = canShowStartReading(book);
+  const showReadingPass = canShowReadingPass(book);
+  const isDracula = book.slug === LIVE_APPROVED_SLUG;
   const statusLabel = isLiveApproved ? "Live controlled release" : "In preparation";
   const displayTitle = book.title_en || book.title;
   const secondaryTitle = book.title_en && book.title_en !== book.title ? book.title : "";
@@ -72,10 +76,10 @@ function BookCard({ book, priority = false }) {
                 data-testid={`card-preview-${book.slug}`}
                 onClick={() => track(DRACULA_CTA_EVENTS.previewStart, { cta: "book_card_preview" })}
               >
-                Read Chapter 1
+                {isDracula ? "Read Chapter 1" : "Read"}
               </Link>
             )}
-            {showStartReading && (
+            {showStartReading && showReadingPass && (
               <Link
                 to={readingPassUrl("book_card")}
                 className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-burgundy text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
@@ -83,6 +87,16 @@ function BookCard({ book, priority = false }) {
                 onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "book_card_pass" })}
               >
                 Reading Pass
+              </Link>
+            )}
+            {showStartReading && !showReadingPass && (
+              <Link
+                to={`/book/${book.slug}`}
+                className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-burgundy text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
+                data-testid={`card-details-${book.slug}`}
+                onClick={() => track(DRACULA_CTA_EVENTS.startReading, { cta: "book_card_details" })}
+              >
+                Details
               </Link>
             )}
           </div>

@@ -1,0 +1,30 @@
+{
+  "slug": "hungry-stones",
+  "title": "Kshudhita Pashan / The Hungry Stones",
+  "author": "Rabindranath Tagore",
+  "language": "en",
+  "chapter_count": 1,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Hungry Stones",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 4793,
+      "reading_minutes": 20,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-01T10:36:20Z",
+      "updated_at": "2026-07-01T10:36:20Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-01T10:36:20Z"
+}

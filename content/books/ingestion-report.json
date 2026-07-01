@@ -1,0 +1,100 @@
+{
+  "batchId": "controlled-bilingual-book-release-batch-1",
+  "generatedAt": "2026-07-01T10:36:20Z",
+  "totalBooksConfigured": 10,
+  "booksImported": 10,
+  "booksReadyForEditorialReview": 10,
+  "booksBlockedForLegalReview": 0,
+  "books": [
+    {
+      "slug": "frankenstein",
+      "title": "Frankenstein; or, The Modern Prometheus",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/84",
+      "status": "ready_for_auto_publication",
+      "chapterCount": 28,
+      "wordCountApprox": 75037,
+      "issues": []
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/43",
+      "status": "ready_for_auto_publication",
+      "chapterCount": 11,
+      "wordCountApprox": 25606,
+      "issues": []
+    },
+    {
+      "slug": "carmilla",
+      "title": "Carmilla",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/10007",
+      "status": "ready_for_auto_publication",
+      "chapterCount": 1,
+      "wordCountApprox": 28115,
+      "issues": []
+    },
+    {
+      "slug": "hound-of-the-baskervilles",
+      "title": "The Hound of the Baskervilles",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/2852",
+      "status": "ready_for_auto_publication",
+      "chapterCount": 15,
+      "wordCountApprox": 59233,
+      "issues": []
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/174",
+      "status": "ready_for_auto_publication",
+      "chapterCount": 21,
+      "wordCountApprox": 79090,
+      "issues": []
+    },
+    {
+      "slug": "woman-in-white",
+      "title": "The Woman in White",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/583",
+      "status": "ready_for_auto_publication",
+      "chapterCount": 25,
+      "wordCountApprox": 246744,
+      "issues": []
+    },
+    {
+      "slug": "hungry-stones",
+      "title": "Kshudhita Pashan / The Hungry Stones",
+      "sourceUrl": "https://www.gutenberg.org/ebooks/2518",
+      "status": "ready_for_auto_publication",
+      "chapterCount": 1,
+      "wordCountApprox": 4793,
+      "issues": []
+    },
+    {
+      "slug": "devdas",
+      "title": "দেবদাস / Devdas",
+      "sourceUrl": "https://bn.wikisource.org/wiki/দেবদাস_(শরৎচন্দ্র_চট্টোপাধ্যায়)",
+      "status": "ready_for_auto_publication",
+      "chapterCount": 16,
+      "wordCountApprox": 24988,
+      "issues": []
+    },
+    {
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী / Pather Panchali",
+      "sourceUrl": "https://bn.wikisource.org/wiki/পথের_পাঁচালী",
+      "status": "ready_for_auto_publication",
+      "chapterCount": 12,
+      "wordCountApprox": 20871,
+      "issues": []
+    },
+    {
+      "slug": "eyesore-chokher-bali",
+      "title": "Eyesore (Chokher Bali)",
+      "sourceUrl": "https://en.wikisource.org/wiki/Eyesore",
+      "status": "ready_for_auto_publication",
+      "chapterCount": 39,
+      "wordCountApprox": 48588,
+      "issues": []
+    }
+  ]
+}

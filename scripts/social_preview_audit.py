@@ -197,9 +197,9 @@ def route_policy_checks(route: str, html: str) -> dict[str, bool]:
             }
         )
     if route == "/library":
-        checks["library_dracula_only"] = (
-            "dracula is the only live" in lowered
-            or "live controlled release: dracula only" in lowered
+        checks["library_controlled_reader_releases"] = (
+            "dracula remains the featured release" in lowered
+            and "validated public-domain classics open as reader-only releases" in lowered
         )
     if route == "/reader/dracula":
         robots = meta_content(html, "robots", "name").lower()

@@ -10,11 +10,12 @@ const apiUrl = (process.env.E2E_API_URL || "https://api.theearnalism.com").repla
 const outputDir = path.resolve(process.env.E2E_OUTPUT_DIR || "test-results/regression");
 const isLocalFrontend = /^https?:\/\/(?:127\.0\.0\.1|localhost|\[::1\])/i.test(baseUrl);
 const liveApprovedSlug = "dracula";
+// Batch-1 reader-only releases are intentionally not homepage-promoted.
 const expectedPipelineSlugs = [
   "kshudhita-pashan",
-  "frankenstein",
   "sherlock-holmes",
   "sultanas-dream",
+  "calculus-made-easy",
 ];
 const draculaFixtureBook = {
   id: "regression-dracula",

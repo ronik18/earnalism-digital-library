@@ -4,8 +4,8 @@ Status: `PASS`
 
 | Check | Value |
 | --- | --- |
-| Sitemap URL count | 11 |
-| Book URL count | 1 |
+| Sitemap URL count | 23 |
+| Book URL count | 11 |
 | Demo URL count | 0 |
 | Robots sitemap present | True |
 | Retired routes crawlable for deindexing | True |
@@ -60,6 +60,10 @@ Launch SEO remains HOLD only when the raw HTML checks below fail. Passing checks
 | /library |
 | /pricing |
 | /book/dracula |
+| /book/carmilla |
+| /book/devdas |
+| /book/eyesore-chokher-bali |
+| /book/frankenstein |
 
 Blocked reason: `none`
 
