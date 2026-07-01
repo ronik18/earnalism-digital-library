@@ -12,5 +12,7 @@
 - Public URLs in manifests: `false`
 - Listen Now CTA allowed: `false`
 - AudioObject metadata allowed: `false`
+- Reader-library invariant: multiple controlled reader-only books may now be live; Dracula remains the only public audiobook/audio-enabled release candidate.
+- Non-Dracula audio exposure allowed: `false`
 - Public audio remains blocked.
 - Payment behavior unchanged by this preflight.

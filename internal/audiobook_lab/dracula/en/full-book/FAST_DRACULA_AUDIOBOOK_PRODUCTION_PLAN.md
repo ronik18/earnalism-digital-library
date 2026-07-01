@@ -6,6 +6,8 @@
 - Public audio remains blocked.
 - Public audio release: `PUBLIC_AUDIO_RELEASE_BLOCKED`.
 - Audiobook public release remains blocked.
+- Multiple controlled reader-only books may now be live. Dracula remains the only public audiobook/audio-enabled release candidate.
+- No non-Dracula, draft, or pipeline title may expose public audio.
 - No Listen Now CTA, AudioObject metadata, public audiobook URLs, payment changes, pricing changes, deployment, or new book publication.
 
 ## Source
@@ -54,6 +56,7 @@
 - Confirm no missing chunks, zero-byte files, or missing checksums.
 - Confirm durations are plausible.
 - Confirm no public URLs, no frontend/public or frontend/build audio, no Listen Now CTA, and no AudioObject metadata.
+- Confirm non-Dracula reader-only books expose no audio flags, public audio manifests, audio player UI, or waveform UI.
 - Confirm public audio remains blocked and payment behavior is unchanged.
 
 ## Human Review Checklist

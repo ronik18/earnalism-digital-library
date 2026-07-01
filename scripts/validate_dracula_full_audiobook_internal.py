@@ -16,9 +16,6 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.publication_safety_mode import APPROVED_RELEASE_ALLOWLIST  # noqa: E402
-
-
 BOOK_SLUG = "dracula"
 EXPECTED_CHAPTER_COUNT = 27
 PUBLIC_AUDIO_RELEASE_BLOCKED = "PUBLIC_AUDIO_RELEASE_BLOCKED"
@@ -64,6 +61,42 @@ PAYMENT_OR_PRICING_PATTERNS = (
     "invoice",
     "receipt",
 )
+LIVE_READER_ONLY_ALLOWLIST = (
+    "dracula",
+    "frankenstein",
+    "jekyll-and-hyde",
+    "carmilla",
+    "hound-of-the-baskervilles",
+    "picture-of-dorian-gray",
+    "woman-in-white",
+    "hungry-stones",
+    "devdas",
+    "pather-panchali",
+    "eyesore-chokher-bali",
+)
+NON_DRACULA_AUDIO_FLAG_FIELDS = {
+    "audio_enabled",
+    "audioEnabled",
+    "audiobook_enabled",
+    "audiobookEnabled",
+    "allowPublicAudio",
+    "publicAudioAllowed",
+    "listenNowAllowed",
+}
+NON_DRACULA_AUDIO_REFERENCE_KEYS = {
+    "audioUrl",
+    "audio_url",
+    "audiobookUrl",
+    "audiobook_url",
+    "publicAudioUrl",
+    "public_audio_url",
+    "audioManifest",
+    "audio_manifest",
+    "publicAudioManifest",
+    "public_audio_manifest",
+    "waveformUrl",
+    "waveform_url",
+}
 
 
 def relative(path: Path) -> str:
@@ -137,6 +170,43 @@ def file_contains(pattern: str, roots: tuple[Path, ...]) -> list[str]:
     return sorted(set(matches))
 
 
+def walk_payload(payload: Any, prefix: str = "") -> list[tuple[str, Any]]:
+    entries: list[tuple[str, Any]] = []
+    if isinstance(payload, dict):
+        for key, value in payload.items():
+            path = f"{prefix}.{key}" if prefix else str(key)
+            entries.append((path, value))
+            entries.extend(walk_payload(value, path))
+    elif isinstance(payload, list):
+        for index, value in enumerate(payload):
+            path = f"{prefix}[{index}]"
+            entries.append((path, value))
+            entries.extend(walk_payload(value, path))
+    return entries
+
+
+def truthy_audio_value(value: Any) -> bool:
+    if value is True:
+        return True
+    if isinstance(value, str):
+        stripped = value.strip()
+        return bool(stripped) and stripped.lower() not in {"false", "none", "null", "internal_only"}
+    if isinstance(value, (list, dict)):
+        return bool(value)
+    return False
+
+
+def validate_non_dracula_audio_payload(slug: str, payload: Any, source: str, issues: list[str]) -> None:
+    if slug == BOOK_SLUG:
+        return
+    for key_path, value in walk_payload(payload):
+        key_name = key_path.split(".")[-1]
+        if key_name in NON_DRACULA_AUDIO_FLAG_FIELDS and value is True:
+            issues.append(f"Non-Dracula reader has public audio flag {source}:{key_path}=true: {slug}")
+        if key_name in NON_DRACULA_AUDIO_REFERENCE_KEYS and truthy_audio_value(value):
+            issues.append(f"Non-Dracula reader has audio reference {source}:{key_path}: {slug}")
+
+
 def manifest_public_urls() -> list[str]:
     matches: list[str] = []
     if not OUTPUT_ROOT.exists():
@@ -180,21 +250,25 @@ def validate_release_gate(issues: list[str]) -> None:
         issues.append("Audiobook release gate is not blocked/expected-blocked")
 
 
-def validate_only_dracula_live(issues: list[str]) -> None:
-    if APPROVED_RELEASE_ALLOWLIST != ("dracula",):
-        issues.append(f"Approved release allowlist changed: {APPROVED_RELEASE_ALLOWLIST!r}")
+def validate_reader_library_audio_safety(issues: list[str]) -> None:
     controlled_root = ROOT / "data" / "controlled_publications"
     live_slugs: list[str] = []
     for path in controlled_root.glob("*/public_book.json"):
         payload = load_json(path, issues)
         status = str(payload.get("publicationStatus") or payload.get("publication_status") or "").lower()
         if payload.get("is_published") is True or status in {"live", "published", "public", "published_core_reading_only"}:
-            live_slugs.append(path.parent.name)
-    non_dracula = sorted(slug for slug in live_slugs if slug != "dracula")
-    if non_dracula:
-        issues.append("Non-Dracula live controlled publication detected: " + ", ".join(non_dracula))
+            slug = path.parent.name
+            live_slugs.append(slug)
+            if slug not in LIVE_READER_ONLY_ALLOWLIST:
+                issues.append(f"Unexpected live reader slug outside audiobook safety allowlist: {slug}")
+            validate_non_dracula_audio_payload(slug, payload, relative(path), issues)
     if "dracula" not in live_slugs:
         issues.append("Dracula live controlled publication was not detected")
+    for path in sorted((ROOT / "content" / "books").glob("*/book.json")):
+        payload = load_json(path, issues)
+        slug = str(payload.get("slug") or path.parent.name)
+        if slug in LIVE_READER_ONLY_ALLOWLIST:
+            validate_non_dracula_audio_payload(slug, payload, relative(path), issues)
 
 
 def validate_preflight_files(issues: list[str]) -> dict[str, Any]:
@@ -361,7 +435,7 @@ def main(argv: list[str] | None = None) -> int:
     summary = validate_preflight_files(issues)
     validate_public_exposure(issues)
     validate_release_gate(issues)
-    validate_only_dracula_live(issues)
+    validate_reader_library_audio_safety(issues)
     validate_payment_unchanged(issues)
     if args.mode == "generated":
         summary.update(validate_generated(issues))

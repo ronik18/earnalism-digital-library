@@ -26,6 +26,7 @@
   "provider": "ElevenLabs",
   "publicAudioAllowed": false,
   "publicAudioRelease": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "readerLibraryInvariant": "Multiple controlled reader-only books may now be live. Dracula remains the only public audiobook/audio-enabled release candidate. No non-Dracula, draft, or pipeline title may expose public audio.",
   "resumeCommands": [
     "export EARNALISM_APPROVE_PAID_DRACULA_AUDIOBOOK_GENERATION=1",
     "export EARNALISM_DRACULA_AUDIOBOOK_MAX_COST_USD=41.93",
