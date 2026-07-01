@@ -244,7 +244,7 @@ describe("UX conversion static signals", () => {
     expect(heroBookObject).toContain('data-no-white-edge="true"');
     expect(home).toContain('href="https://theearnalism.com/book/dracula"');
     expect(home).toContain('aria-label="Open Dracula book page"');
-    expect(home).toContain("/assets/books/dracula/dracula-front-cover.webp");
+    expect(home).toContain("/assets/books/dracula/dracula-front-cover-hero-polished.webp");
     expect(home).toContain("Dracula front cover");
     expect(home).toContain("HeroBookObject");
     expect(styles).toContain(".reference-dracula-hardcopy-shell");
@@ -254,17 +254,20 @@ describe("UX conversion static signals", () => {
     expect(styles).toContain(".reference-hero-book__face");
     expect(styles).toContain(".reference-hero-book__page-block");
     expect(styles).toContain(".reference-hero-book__top-pages");
+    expect(styles).toContain(".reference-hero-book__bottom-pages");
     expect(styles).toContain(".reference-dracula-stage::before");
-    expect(styles).toContain("rgba(255, 231, 181, 0.38)");
+    expect(styles).toContain("rgba(255, 231, 181, 0.28)");
     expect(styles).toContain(".reference-dracula-stage::after");
-    expect(styles).toContain("brightness(1.12)");
-    expect(styles).toContain("contrast(1.11)");
+    expect(styles).toContain("brightness(1.16)");
+    expect(styles).toContain("contrast(1.12)");
     expect(styles).not.toContain(".reference-dracula-hardcopy-shell::after");
     expect(styles).not.toContain(".reference-dracula-hardcopy-shell::before");
     expect(styles).not.toContain("APPROVED CLASSIC READING RELEASE");
     expect(styles).not.toContain("backdrop-filter: blur(9px)");
     expect(styles).not.toContain("clip-path: inset(0 5.9% 14% 12.3%)");
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-front-cover.webp"))).toBe(true);
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-front-cover-hero-polished.webp"))).toBe(true);
+    expect(fs.existsSync(path.join(ROOT, "scripts/generate_dracula_hero_cover_polish.py"))).toBe(true);
     expect(home).not.toContain("images.unsplash.com");
     expect(home).not.toMatch(/lg:pt-36|lg:pb-32|sm:pt-32|pb-24/);
 

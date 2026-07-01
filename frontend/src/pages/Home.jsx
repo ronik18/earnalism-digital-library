@@ -182,7 +182,7 @@ export default function Home() {
             <div className="reference-dracula-book-object reference-dracula-book-object--hardcopy">
               <HeroBookObject
                 href="https://theearnalism.com/book/dracula"
-                coverSrc="/assets/books/dracula/dracula-front-cover.webp"
+                coverSrc="/assets/books/dracula/dracula-front-cover-hero-polished.webp"
                 alt="Dracula front cover"
                 testId="hero-dracula-cover-frame"
                 aria-label="Open Dracula book page"

@@ -745,24 +745,25 @@ body::before {
 .reference-dracula-stage::before {
   content: "";
   position: absolute;
-  inset: 7% -7% 1% 4%;
+  inset: 4% -3% 1% 11%;
   z-index: -1;
   pointer-events: none;
   border-radius: 50%;
   background:
-    radial-gradient(ellipse at 57% 46%, rgba(255, 231, 181, 0.38), rgba(216, 185, 122, 0.18) 38%, transparent 68%);
-  filter: blur(18px);
+    radial-gradient(ellipse at 50% 46%, rgba(255, 231, 181, 0.28), rgba(216, 185, 122, 0.14) 34%, transparent 66%);
+  filter: blur(20px);
 }
 .reference-dracula-stage::after {
   content: "";
   position: absolute;
-  inset: 18% 10% 9% 20%;
+  inset: 7% -4% 3% 13%;
   z-index: -1;
   pointer-events: none;
-  border-radius: 50%;
+  border-radius: 32% 44% 46% 34%;
   background:
-    radial-gradient(ellipse at 50% 58%, rgba(5, 2, 2, 0.42), transparent 66%);
-  filter: blur(24px);
+    radial-gradient(ellipse at 77% 44%, rgba(5, 2, 1, 0.46), transparent 44%),
+    linear-gradient(90deg, transparent 0 20%, rgba(6, 2, 1, 0.24) 62%, rgba(6, 2, 1, 0.44) 100%);
+  filter: blur(16px);
 }
 .reference-dracula-book-object {
   position: relative;
@@ -796,7 +797,7 @@ body::before {
   position: relative;
   z-index: 1;
   display: block;
-  width: min(100%, 19.65rem);
+  width: min(100%, 20.1rem);
   aspect-ratio: 2 / 3;
   margin-inline: auto;
   overflow: visible;
@@ -804,17 +805,17 @@ body::before {
   background: transparent;
   text-decoration: none;
   box-shadow: none;
-  transform: perspective(1200px) rotateY(-4deg) rotateX(1.1deg);
+  transform: perspective(1400px) rotateY(-6.8deg) rotateX(0.9deg) translateZ(0);
   transform-origin: center left;
   transition: transform 180ms ease, filter 180ms ease;
   filter:
-    drop-shadow(0 34px 46px rgba(0, 0, 0, 0.48))
-    drop-shadow(0 0 38px rgba(216, 185, 122, 0.24))
-    drop-shadow(0 0 12px rgba(253, 252, 248, 0.12));
+    drop-shadow(0 35px 45px rgba(0, 0, 0, 0.52))
+    drop-shadow(0 0 34px rgba(216, 185, 122, 0.2))
+    drop-shadow(0 0 10px rgba(253, 252, 248, 0.13));
 }
 .reference-dracula-hardcopy-shell:hover,
 .reference-dracula-hardcopy-shell:focus-visible {
-  transform: perspective(1200px) rotateY(-2.7deg) rotateX(0.8deg) translateY(-0.12rem);
+  transform: perspective(1400px) rotateY(-5.2deg) rotateX(0.7deg) translateY(-0.12rem);
 }
 .reference-dracula-hardcopy-shell:focus-visible {
   outline: 2px solid var(--brand-gold-soft);
@@ -830,65 +831,101 @@ body::before {
 .reference-hero-book__face {
   position: absolute;
   inset: 0;
-  z-index: 4;
+  z-index: 5;
   display: block;
   overflow: hidden;
-  border-radius: 0.22rem;
+  border-radius: 0.18rem;
   background: #030201;
+  transform: translateZ(2px);
   box-shadow:
-    inset 0 0 0 1px rgba(216, 185, 122, 0.42),
-    inset 12px 0 18px -16px rgba(253, 252, 248, 0.42),
-    inset -10px 0 18px -15px rgba(0, 0, 0, 0.78),
-    0 0 0 1px rgba(5, 2, 1, 0.82);
+    inset 0 0 0 1px rgba(230, 198, 126, 0.52),
+    inset 10px 0 16px -15px rgba(253, 252, 248, 0.42),
+    inset -12px 0 20px -15px rgba(0, 0, 0, 0.72),
+    0 0 0 1px rgba(5, 2, 1, 0.74);
+}
+.reference-hero-book__face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(100deg, rgba(255, 244, 203, 0.12) 0%, transparent 14%, transparent 72%, rgba(0, 0, 0, 0.26) 100%),
+    radial-gradient(ellipse at 42% 17%, rgba(255, 255, 255, 0.12), transparent 33%);
 }
 .reference-hero-book__back-board {
   position: absolute;
-  top: 1.15%;
-  right: -6.6%;
-  bottom: 1.25%;
-  width: 10%;
+  top: 0.08%;
+  right: -7.35%;
+  bottom: 0.12%;
+  width: 9.25%;
   z-index: 1;
-  border-radius: 0 0.34rem 0.34rem 0;
+  border-radius: 0 0.28rem 0.32rem 0;
   background:
-    linear-gradient(90deg, #0d0905 0 22%, rgba(48, 30, 18, 0.9) 62%, rgba(9, 5, 3, 0.96) 100%);
-  transform: skewY(-2deg);
+    linear-gradient(90deg, #070403 0 18%, rgba(39, 28, 18, 0.96) 48%, rgba(8, 5, 4, 0.98) 100%);
+  transform: skewY(-1.3deg) translateZ(-8px);
   box-shadow:
-    10px 13px 22px rgba(0, 0, 0, 0.45),
-    inset -2px 0 4px rgba(0, 0, 0, 0.68);
+    12px 14px 24px rgba(0, 0, 0, 0.44),
+    inset -3px 0 5px rgba(0, 0, 0, 0.66),
+    inset 2px 0 2px rgba(255, 226, 170, 0.08);
 }
 .reference-hero-book__page-block {
   position: absolute;
-  top: 2.05%;
-  right: -7.85%;
-  bottom: 2.05%;
-  width: 8.6%;
-  z-index: 2;
-  border-radius: 0 0.28rem 0.28rem 0;
+  top: 0.16%;
+  right: -7.12%;
+  bottom: 0.18%;
+  width: 7.15%;
+  z-index: 3;
+  border-radius: 0 0.24rem 0.26rem 0;
   background:
-    linear-gradient(90deg, rgba(108, 74, 42, 0.42), rgba(239, 204, 139, 0.92) 18%, rgba(167, 110, 58, 0.88) 86%, rgba(54, 34, 19, 0.95)),
-    repeating-linear-gradient(90deg, rgba(255, 241, 198, 0.8) 0 1px, rgba(128, 82, 43, 0.78) 1px 2px, rgba(230, 190, 119, 0.72) 2px 4px);
-  transform: skewY(-1.7deg);
+    linear-gradient(90deg, rgba(104, 72, 42, 0.34), rgba(252, 220, 154, 0.94) 18%, rgba(211, 156, 82, 0.9) 78%, rgba(71, 45, 25, 0.96)),
+    repeating-linear-gradient(90deg, rgba(255, 239, 195, 0.9) 0 1px, rgba(143, 96, 50, 0.72) 1px 2px, rgba(235, 194, 124, 0.7) 2px 4px);
+  transform: skewY(-1.15deg) translateZ(-2px);
   box-shadow:
-    inset 5px 0 7px rgba(255, 237, 181, 0.28),
-    inset -8px 0 11px rgba(0, 0, 0, 0.28);
+    inset 5px 0 7px rgba(255, 239, 184, 0.3),
+    inset -7px 0 10px rgba(0, 0, 0, 0.25),
+    4px 0 0 rgba(6, 4, 3, 0.44);
 }
 .reference-hero-book__top-pages {
   position: absolute;
-  top: -2.05%;
-  left: 6.2%;
-  right: -4.8%;
-  height: 3.15%;
-  z-index: 0;
-  opacity: 0.86;
-  border-radius: 0.2rem 0.42rem 0.04rem 0.04rem;
+  top: 0.02%;
+  left: 4.8%;
+  right: -5.55%;
+  height: 1.52%;
+  z-index: 4;
+  opacity: 0.88;
+  border-radius: 0.14rem 0.36rem 0.03rem 0.03rem;
   background:
-    linear-gradient(180deg, rgba(64, 49, 28, 0.78), rgba(207, 169, 93, 0.54) 34%, rgba(24, 18, 10, 0.82) 100%),
-    repeating-linear-gradient(90deg, rgba(255, 230, 170, 0.22) 0 1px, rgba(72, 45, 22, 0.18) 1px 3px);
-  transform: skewX(-58deg);
+    linear-gradient(
+      180deg,
+      rgba(255, 238, 196, 0.82) 0%,
+      rgba(196, 146, 76, 0.54) 52%,
+      rgba(78, 50, 30, 0.52) 100%
+    ),
+    repeating-linear-gradient(90deg, rgba(255, 242, 200, 0.35) 0 1px, rgba(95, 61, 30, 0.22) 1px 3px);
+  transform: skewX(-58deg) translateZ(-1px);
   transform-origin: bottom left;
   box-shadow:
-    0 -1px 0 rgba(255, 232, 177, 0.24),
-    5px 7px 12px rgba(0, 0, 0, 0.22);
+    0 -1px 0 rgba(255, 236, 183, 0.28),
+    3px 4px 8px rgba(0, 0, 0, 0.12);
+}
+.reference-hero-book__bottom-pages {
+  position: absolute;
+  left: 3.8%;
+  right: -5.4%;
+  bottom: -1.3%;
+  height: 2.32%;
+  z-index: 4;
+  opacity: 0.88;
+  border-radius: 0.03rem 0.03rem 0.28rem 0.18rem;
+  background:
+    linear-gradient(180deg, rgba(28, 18, 10, 0.84), rgba(198, 145, 73, 0.48) 36%, rgba(10, 6, 4, 0.8) 100%),
+    repeating-linear-gradient(90deg, rgba(255, 221, 151, 0.2) 0 1px, rgba(69, 42, 22, 0.28) 1px 3px);
+  transform: skewX(62deg) translateZ(-1px);
+  transform-origin: top left;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 230, 174, 0.16);
 }
 .reference-dracula-hardcopy-img {
   display: block;
@@ -898,10 +935,10 @@ body::before {
   background: transparent;
   object-fit: cover;
   filter:
-    brightness(1.12)
-    contrast(1.11)
-    saturate(1.08)
-    drop-shadow(0 0 14px rgba(4, 2, 1, 0.14));
+    brightness(1.16)
+    contrast(1.12)
+    saturate(1.07)
+    drop-shadow(0 0 12px rgba(4, 2, 1, 0.12));
 }
 .premium-dracula-cover-frame {
   box-shadow:
