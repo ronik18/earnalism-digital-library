@@ -21,6 +21,7 @@ import json
 import logging
 import math
 import re
+import os
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from io import BytesIO
@@ -165,7 +166,8 @@ class Pipeline:
         self.strict_gate_requirements = strict_gate_requirements
 
         self.api_sem = asyncio.Semaphore(max(1, self.max_api_concurrency))
-        self.openai_client = openai.AsyncOpenAI()
+        openai_key = os.getenv("OPENAI_API_KEY") or os.getenv("OPEN_AI_API_KEY")
+        self.openai_client = openai.AsyncOpenAI(api_key=openai_key) if openai_key else None
         self.encoder = tiktoken.get_encoding("cl100k_base")
 
         self.internal_root = ROOT / "internal" / "audiobook_lab"
@@ -232,6 +234,9 @@ class Pipeline:
         return self.sync_root / slug / f"{slug}_{suffix}.json"
 
     async def _openai_call(self, fn):
+        if self.openai_client is None:
+            raise RuntimeError("OpenAI client unavailable; OPENAI_API_KEY is not configured")
+
         async def wrapper():
             async with self.api_sem:
                 return await fn()
@@ -461,7 +466,7 @@ class Pipeline:
 
     async def gate2_enhancement(self, candidate: dict[str, Any], result: TitleResult) -> None:
         slug = result.slug
-        if not openai.api_key:
+        if self.openai_client is None:
             result.gate_2_enhancement = GATE_2_FAIL
             result.add_failure("OpenAI API key unavailable")
             logger.error("%s for %s: missing OPENAI_API_KEY", GATE_2_FAIL, slug)
@@ -967,9 +972,6 @@ class Pipeline:
                 release_payload["summary"]["gatesFailed"] += 1
 
             release_payload["titles"][result.slug] = result.to_manifest()
-
-        if not self.strict_gate_requirements:
-            blocked_titles = release_payload.get("blocked_titles", blocked_titles)
 
         release_payload["blocked_titles"] = blocked_titles
         release_payload["approved_for_live"] = approved_for_live
