@@ -17,6 +17,27 @@ X-Robots-Tag: noindex, nofollow, noarchive
 Generic shell: False
 Issues: none
 
+Path: /journal/the-quiet-power-of-a-premium-bookstore-brand
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /blog/lorem-ipsum
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /post/sample-product
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
 Path: /shop
 Status: 410
 Redirected: False
@@ -52,7 +73,56 @@ X-Robots-Tag: noindex, nofollow, noarchive
 Generic shell: False
 Issues: none
 
+Path: /category/fashion
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /tag/fashion
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /cart
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /checkout
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /my-account
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /woocommerce
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
 Path: /woocommerce/test
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /sample-product
 Status: 410
 Redirected: False
 X-Robots-Tag: noindex, nofollow, noarchive
@@ -66,7 +136,28 @@ X-Robots-Tag: noindex, nofollow, noarchive
 Generic shell: False
 Issues: none
 
+Path: /placeholder-product
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
 Path: /placeholder-product/test
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /lorem-ipsum
+Status: 410
+Redirected: False
+X-Robots-Tag: noindex, nofollow, noarchive
+Generic shell: False
+Issues: none
+
+Path: /wp-content/uploads/demo.jpg
 Status: 410
 Redirected: False
 X-Robots-Tag: noindex, nofollow, noarchive

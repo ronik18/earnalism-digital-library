@@ -10,13 +10,12 @@ import {
   Linkedin,
   Mail,
   ShieldCheck,
-  Sparkles,
   Twitter,
   Youtube,
 } from "lucide-react";
 import { toast } from "sonner";
-import BookCoverImage from "../components/BookCoverImage";
 import HeroBookObject from "../components/HeroBookObject";
+import ShelfTwoSlideshow from "../components/ShelfTwoSlideshow";
 import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
@@ -25,11 +24,9 @@ import {
   BATCH_1_READER_ONLY_SLUGS,
   DRACULA_COVER_IMAGE,
   DRACULA_CTA_EVENTS,
-  KSHUDHITA_PASHAN_PIPELINE,
   LIVE_APPROVED_SLUG,
   PIPELINE_BOOKS,
   mergeDraculaBook,
-  notifyUrl,
   readingPassUrl,
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
@@ -48,15 +45,6 @@ function track(event, metadata = {}) {
   trackFunnelEvent(event, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, ...metadata });
 }
 
-function trackPipelineInterest(event, ctaId, bookSlug = KSHUDHITA_PASHAN_PIPELINE.slug) {
-  trackFunnelEvent(event, {
-    source: "home_pipeline_shelf",
-    book_slug: bookSlug,
-    cta_id: ctaId,
-    public: false,
-  });
-}
-
 export default function Home() {
   const { social } = useSettings();
   const [dracula, setDracula] = useState(null);
@@ -70,8 +58,18 @@ export default function Home() {
   ), [social]);
   const liveBook = mergeDraculaBook(dracula);
   const homepagePipelineBooks = useMemo(
-    () => PIPELINE_BOOKS.filter((book) => !BATCH_1_READER_ONLY_SLUGS.includes(book.slug)).slice(0, 4),
+    () => PIPELINE_BOOKS.filter((book) => !BATCH_1_READER_ONLY_SLUGS.includes(book.slug)),
     [],
+  );
+  const shelfTwoBooks = useMemo(
+    () =>
+      homepagePipelineBooks.map((book) => ({
+        id: book.slug,
+        title: book.displayTitle || book.title,
+        coverUrl: book.cover_image_url || book.thumbnail_url || book.back_cover_image_url || book.back_cover_thumbnail_url || "",
+        status: "queued",
+      })),
+    [homepagePipelineBooks],
   );
 
   useSEO({
@@ -86,7 +84,7 @@ export default function Home() {
   useEffect(() => {
     trackFunnelEvent("bengali_gothic_pipeline_view", {
       source: "home",
-      book_slug: KSHUDHITA_PASHAN_PIPELINE.slug,
+      book_slug: LIVE_APPROVED_SLUG,
       public: false,
     });
   }, []);
@@ -208,55 +206,7 @@ export default function Home() {
               These books are not live products yet. They have Notify Me CTAs only, and no reader, checkout, or audiobook access.
             </p>
           </div>
-          <div className="reference-pipeline-row" data-testid="pipeline-books">
-            {homepagePipelineBooks.map((book, index) => {
-              const title = book.displayTitle || book.title;
-              const hasCover = Boolean(book.cover_image_url || book.cover_url || book.thumbnail_url);
-              const isKshudhita = book.slug === KSHUDHITA_PASHAN_PIPELINE.slug;
-              return (
-                <article key={book.slug} className="reference-pipeline-card" data-testid={`pipeline-card-${book.slug}`}>
-                  <div className="reference-pipeline-cover" data-testid={`pipeline-cover-${book.slug}`}>
-                    {hasCover ? (
-                      <BookCoverImage
-                        book={book}
-                        alt={`${title} cover artwork`}
-                        loading={index < 4 ? "eager" : "lazy"}
-                        width={260}
-                        widths={[180, 260, 360]}
-                        sizes="(min-width: 1024px) 112px, 32vw"
-                        fallback={title.slice(0, 1)}
-                      />
-                    ) : (
-                      <div className="reference-pipeline-placeholder" aria-label={`${title} cover placeholder`}>
-                        <Sparkles size={22} strokeWidth={1.35} aria-hidden="true" />
-                        <span>{title}</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="reference-pipeline-copy">
-                    <div className="reference-pipeline-status">Coming Soon</div>
-                    <h3>{title}</h3>
-                    {book.titleNative && <p className="reference-pipeline-native">{book.titleNative}</p>}
-                    <p className="reference-pipeline-author">by {book.author}</p>
-                    <Link
-                      to={notifyUrl(book.slug)}
-                      className="reference-pipeline-notify"
-                      data-testid={`pipeline-notify-${book.slug}`}
-                      onClick={() => {
-                        if (isKshudhita) {
-                          trackPipelineInterest("kshudhita_pashan_notify_click", "pipeline-kshudhita-notify", book.slug);
-                        } else {
-                          track(DRACULA_CTA_EVENTS.notifyMe, { future_title: book.slug });
-                        }
-                      }}
-                    >
-                      Notify Me
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+          <ShelfTwoSlideshow books={shelfTwoBooks} />
         </div>
       </section>
 
