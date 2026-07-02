@@ -1,0 +1,119 @@
+{
+  "bookSlug": "dracula",
+  "chapterNumber": 27,
+  "chapterTitle": "CHAPTER XXVII. MINA HARKER’S JOURNAL",
+  "chunks": [
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-27-chunk-001.mp3",
+      "chunkId": "dracula-chapter-27-chunk-001",
+      "endMs": null,
+      "normalizedSha256": "1d167cf733a6db130ed53ad8954e1fa1cd2fdc1eceb8ba44962beffecf676614",
+      "sourceSha256": "1d167cf733a6db130ed53ad8954e1fa1cd2fdc1eceb8ba44962beffecf676614",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-27-chunk-002.mp3",
+      "chunkId": "dracula-chapter-27-chunk-002",
+      "endMs": null,
+      "normalizedSha256": "f8cbf97db5dd80cafa7174d9a6434eea3d082ff04b96d8334507ee0aefb3ebaa",
+      "sourceSha256": "f8cbf97db5dd80cafa7174d9a6434eea3d082ff04b96d8334507ee0aefb3ebaa",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-27-chunk-003.mp3",
+      "chunkId": "dracula-chapter-27-chunk-003",
+      "endMs": null,
+      "normalizedSha256": "2c8cfa210b044d2710429b155fb7b5bff94be70b006992d092cabee231545382",
+      "sourceSha256": "2c8cfa210b044d2710429b155fb7b5bff94be70b006992d092cabee231545382",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-27-chunk-004.mp3",
+      "chunkId": "dracula-chapter-27-chunk-004",
+      "endMs": null,
+      "normalizedSha256": "a32d66bf4a66ab9be43b3e4d3efe13f06f4c4c02ebeb20f2c4455dba379fe634",
+      "sourceSha256": "a32d66bf4a66ab9be43b3e4d3efe13f06f4c4c02ebeb20f2c4455dba379fe634",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-27-chunk-005.mp3",
+      "chunkId": "dracula-chapter-27-chunk-005",
+      "endMs": null,
+      "normalizedSha256": "8697db9106d524d51e2cdcff4a7b0dbc3a7e8e8ade7d929d037bded2e57605f4",
+      "sourceSha256": "8697db9106d524d51e2cdcff4a7b0dbc3a7e8e8ade7d929d037bded2e57605f4",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-27-chunk-006.mp3",
+      "chunkId": "dracula-chapter-27-chunk-006",
+      "endMs": null,
+      "normalizedSha256": "82b36045c4eb115ea37d55c4187fb5ea03bfe5452d646ad3e9ffd5a8d07015a4",
+      "sourceSha256": "82b36045c4eb115ea37d55c4187fb5ea03bfe5452d646ad3e9ffd5a8d07015a4",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-27-chunk-007.mp3",
+      "chunkId": "dracula-chapter-27-chunk-007",
+      "endMs": null,
+      "normalizedSha256": "4466deb3ec92e332eaffb55afe890c9f96ca25633e3dd69fdf34a57a3dd1a774",
+      "sourceSha256": "4466deb3ec92e332eaffb55afe890c9f96ca25633e3dd69fdf34a57a3dd1a774",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-27-chunk-008.mp3",
+      "chunkId": "dracula-chapter-27-chunk-008",
+      "endMs": null,
+      "normalizedSha256": "2ebef9d121017f47f6a7ace7cd4bb510a6a574c3be7968c741dde0c996cb0cdd",
+      "sourceSha256": "2ebef9d121017f47f6a7ace7cd4bb510a6a574c3be7968c741dde0c996cb0cdd",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-27-chunk-009.mp3",
+      "chunkId": "dracula-chapter-27-chunk-009",
+      "endMs": null,
+      "normalizedSha256": "14787577d8811175e85cdd940f713e39b8e03d5df1a38d70dc5d7dfc369eb70c",
+      "sourceSha256": "14787577d8811175e85cdd940f713e39b8e03d5df1a38d70dc5d7dfc369eb70c",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-27-chunk-010.mp3",
+      "chunkId": "dracula-chapter-27-chunk-010",
+      "endMs": null,
+      "normalizedSha256": "556452df04f4355a7d043cfbf001a5dd5ea348421e95993f64b50f674ba60c26",
+      "sourceSha256": "556452df04f4355a7d043cfbf001a5dd5ea348421e95993f64b50f674ba60c26",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-27-chunk-011.mp3",
+      "chunkId": "dracula-chapter-27-chunk-011",
+      "endMs": null,
+      "normalizedSha256": "1c8aa31128567256bc75e9d4a0aaaab42949826ec0078ee93f40a5a1de43cce1",
+      "sourceSha256": "1c8aa31128567256bc75e9d4a0aaaab42949826ec0078ee93f40a5a1de43cce1",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-27-chunk-012.mp3",
+      "chunkId": "dracula-chapter-27-chunk-012",
+      "endMs": null,
+      "normalizedSha256": "76dec37dc4d7490174bc34c42952cc1b379c9e9efa5bf323070ed6c91a861249",
+      "sourceSha256": "76dec37dc4d7490174bc34c42952cc1b379c9e9efa5bf323070ed6c91a861249",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    }
+  ],
+  "public": false,
+  "publicAudioAllowed": false,
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED"
+}

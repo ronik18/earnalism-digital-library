@@ -1,0 +1,101 @@
+{
+  "bookSlug": "dracula",
+  "chapterNumber": 24,
+  "chapterTitle": "CHAPTER XXIV. DR. SEWARD’S PHONOGRAPH DIARY, SPOKEN BY VAN HELSING",
+  "chunks": [
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-24-chunk-001.mp3",
+      "chunkId": "dracula-chapter-24-chunk-001",
+      "endMs": null,
+      "normalizedSha256": "ffa4d4a5d8f7608a0c7cfac5369f48e10cd8c3cf1aeed22670756889e3ec1eb5",
+      "sourceSha256": "ffa4d4a5d8f7608a0c7cfac5369f48e10cd8c3cf1aeed22670756889e3ec1eb5",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-24-chunk-002.mp3",
+      "chunkId": "dracula-chapter-24-chunk-002",
+      "endMs": null,
+      "normalizedSha256": "decdcbbdd6789c1952d8cb5e2cea1d87bccd0962081424951a4fa797600cf893",
+      "sourceSha256": "decdcbbdd6789c1952d8cb5e2cea1d87bccd0962081424951a4fa797600cf893",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-24-chunk-003.mp3",
+      "chunkId": "dracula-chapter-24-chunk-003",
+      "endMs": null,
+      "normalizedSha256": "0888fef46310482ff1bb7003d6502859e888fa5f3af57ce16233cc3a27fda18d",
+      "sourceSha256": "0888fef46310482ff1bb7003d6502859e888fa5f3af57ce16233cc3a27fda18d",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-24-chunk-004.mp3",
+      "chunkId": "dracula-chapter-24-chunk-004",
+      "endMs": null,
+      "normalizedSha256": "2f938c0402f61c45ef381fed1e2ac23e97fd94af160c05d43a5dd885c99d6b15",
+      "sourceSha256": "2f938c0402f61c45ef381fed1e2ac23e97fd94af160c05d43a5dd885c99d6b15",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-24-chunk-005.mp3",
+      "chunkId": "dracula-chapter-24-chunk-005",
+      "endMs": null,
+      "normalizedSha256": "985a481fa8f59a10e39a091329956adb34d2f70904cacd9c8b5a72093e8b8035",
+      "sourceSha256": "985a481fa8f59a10e39a091329956adb34d2f70904cacd9c8b5a72093e8b8035",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-24-chunk-006.mp3",
+      "chunkId": "dracula-chapter-24-chunk-006",
+      "endMs": null,
+      "normalizedSha256": "755902532d7692abde57e13340c00fe7c155b765387b6f4a95103471be40cd1a",
+      "sourceSha256": "755902532d7692abde57e13340c00fe7c155b765387b6f4a95103471be40cd1a",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-24-chunk-007.mp3",
+      "chunkId": "dracula-chapter-24-chunk-007",
+      "endMs": null,
+      "normalizedSha256": "01b24a68b763536dedd11d7d9ee48d12a575d31c0f5c296b4740b3a3224f3f6d",
+      "sourceSha256": "01b24a68b763536dedd11d7d9ee48d12a575d31c0f5c296b4740b3a3224f3f6d",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-24-chunk-008.mp3",
+      "chunkId": "dracula-chapter-24-chunk-008",
+      "endMs": null,
+      "normalizedSha256": "6850aaad092913190e822a85bc1ddcad433a5aac37b8b8b0bea1f449d6d5f1ed",
+      "sourceSha256": "6850aaad092913190e822a85bc1ddcad433a5aac37b8b8b0bea1f449d6d5f1ed",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-24-chunk-009.mp3",
+      "chunkId": "dracula-chapter-24-chunk-009",
+      "endMs": null,
+      "normalizedSha256": "3fdbd2f9292060b82a2af81e26ae4a485e0ebc0dab71c5d780c3df92ded8fccb",
+      "sourceSha256": "3fdbd2f9292060b82a2af81e26ae4a485e0ebc0dab71c5d780c3df92ded8fccb",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-24-chunk-010.mp3",
+      "chunkId": "dracula-chapter-24-chunk-010",
+      "endMs": null,
+      "normalizedSha256": "5f8c58bac1c3ad139ec60c3a96ef0a4ea0a1110ad55d9930b66a7a13e81bc58d",
+      "sourceSha256": "5f8c58bac1c3ad139ec60c3a96ef0a4ea0a1110ad55d9930b66a7a13e81bc58d",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    }
+  ],
+  "public": false,
+  "publicAudioAllowed": false,
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED"
+}

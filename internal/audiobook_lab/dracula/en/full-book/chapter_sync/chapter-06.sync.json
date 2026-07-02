@@ -1,0 +1,83 @@
+{
+  "bookSlug": "dracula",
+  "chapterNumber": 6,
+  "chapterTitle": "CHAPTER VI. MINA MURRAY’S JOURNAL",
+  "chunks": [
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-06-chunk-001.mp3",
+      "chunkId": "dracula-chapter-06-chunk-001",
+      "endMs": null,
+      "normalizedSha256": "becd46890afca9013dbe2f8f739411c7ff8e1807a2af43fb4595880b40517372",
+      "sourceSha256": "becd46890afca9013dbe2f8f739411c7ff8e1807a2af43fb4595880b40517372",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-06-chunk-002.mp3",
+      "chunkId": "dracula-chapter-06-chunk-002",
+      "endMs": null,
+      "normalizedSha256": "aec01b0264d02e1a21bf52b0a955ef96850ff033c9a05185abcd7398cec287fa",
+      "sourceSha256": "aec01b0264d02e1a21bf52b0a955ef96850ff033c9a05185abcd7398cec287fa",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-06-chunk-003.mp3",
+      "chunkId": "dracula-chapter-06-chunk-003",
+      "endMs": null,
+      "normalizedSha256": "d65b8bbc9f2678688d86a6eccc79c6fa49d0a0495abe17d6ea311d80b9e3360b",
+      "sourceSha256": "d65b8bbc9f2678688d86a6eccc79c6fa49d0a0495abe17d6ea311d80b9e3360b",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-06-chunk-004.mp3",
+      "chunkId": "dracula-chapter-06-chunk-004",
+      "endMs": null,
+      "normalizedSha256": "b8d1036f0a0e446dbe5fbd20ca2483fb622edcba142c1aa87ba3fd27e63b1f21",
+      "sourceSha256": "b8d1036f0a0e446dbe5fbd20ca2483fb622edcba142c1aa87ba3fd27e63b1f21",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-06-chunk-005.mp3",
+      "chunkId": "dracula-chapter-06-chunk-005",
+      "endMs": null,
+      "normalizedSha256": "0038c4c22261038f634baaa70b987255edbe001ddce5f439c8eb7618dec03459",
+      "sourceSha256": "0038c4c22261038f634baaa70b987255edbe001ddce5f439c8eb7618dec03459",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-06-chunk-006.mp3",
+      "chunkId": "dracula-chapter-06-chunk-006",
+      "endMs": null,
+      "normalizedSha256": "fd9fe253e9d13b7e15b50e5d85e9912315a3bf9dcaf426743285f5a7da589ccd",
+      "sourceSha256": "fd9fe253e9d13b7e15b50e5d85e9912315a3bf9dcaf426743285f5a7da589ccd",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-06-chunk-007.mp3",
+      "chunkId": "dracula-chapter-06-chunk-007",
+      "endMs": null,
+      "normalizedSha256": "e7e75bac73030d78e629e0681634673fcd983e0d8d2f153b626251fca9da96d8",
+      "sourceSha256": "e7e75bac73030d78e629e0681634673fcd983e0d8d2f153b626251fca9da96d8",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-06-chunk-008.mp3",
+      "chunkId": "dracula-chapter-06-chunk-008",
+      "endMs": null,
+      "normalizedSha256": "1648758377149d3941e3d637d37df29904f504bba0aa399f7deb5dd4a4377046",
+      "sourceSha256": "1648758377149d3941e3d637d37df29904f504bba0aa399f7deb5dd4a4377046",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    }
+  ],
+  "public": false,
+  "publicAudioAllowed": false,
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED"
+}

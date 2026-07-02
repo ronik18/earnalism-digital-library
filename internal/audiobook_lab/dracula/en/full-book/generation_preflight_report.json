@@ -1,0 +1,41 @@
+{
+  "approval": {
+    "approval_env_present": false,
+    "blockers": [
+      "EARNALISM_APPROVE_PAID_DRACULA_AUDIOBOOK_GENERATION=1 is required",
+      "EARNALISM_DRACULA_AUDIOBOOK_MAX_COST_USD=<number> is required",
+      "ELEVENLABS_API_KEY or repo-supported ElevenLabs credential is required"
+    ],
+    "budget_cap_present": false,
+    "budget_cap_usd": "",
+    "full_flash_estimate_usd": "41.93",
+    "optional_approval_file": "data/audiobook_governance/dracula.full_audiobook_generation_approval.json",
+    "optional_approval_file_status": "missing_optional",
+    "paid_generation_allowed": false,
+    "provider_key_name": "",
+    "provider_key_present": false,
+    "sample_flash_estimate_usd": "0.18",
+    "sample_premium_estimate_usd": "0.35"
+  },
+  "bookSlug": "dracula",
+  "chapterCount": 27,
+  "chunkCount": 240,
+  "modelId": "eleven_flash_v2_5",
+  "outputFormat": "mp3_44100_128",
+  "paidApiCalled": false,
+  "provider": "ElevenLabs",
+  "publicAudioAllowed": false,
+  "publicAudioRelease": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "readerLibraryInvariant": "Multiple controlled reader-only books may now be live. Dracula remains the only public audiobook/audio-enabled release candidate. No non-Dracula, draft, or pipeline title may expose public audio.",
+  "resumeCommands": [
+    "export EARNALISM_APPROVE_PAID_DRACULA_AUDIOBOOK_GENERATION=1",
+    "export EARNALISM_DRACULA_AUDIOBOOK_MAX_COST_USD=41.93",
+    "export ELEVENLABS_API_KEY=<owner-provided-key>",
+    "python3 scripts/prepare_dracula_full_audiobook_internal.py --mode sample-pack",
+    "python3 scripts/prepare_dracula_full_audiobook_internal.py --mode generate",
+    "python3 scripts/validate_dracula_full_audiobook_internal.py --mode generated"
+  ],
+  "status": "BLOCKED_PENDING_OWNER_APPROVAL",
+  "voiceId": "21m00Tcm4TlvDq8ikWAM",
+  "voiceName": "Rachel"
+}

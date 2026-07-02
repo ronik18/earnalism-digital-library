@@ -1,0 +1,101 @@
+{
+  "bookSlug": "dracula",
+  "chapterNumber": 8,
+  "chapterTitle": "CHAPTER VIII. MINA MURRAY’S JOURNAL",
+  "chunks": [
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-08-chunk-001.mp3",
+      "chunkId": "dracula-chapter-08-chunk-001",
+      "endMs": null,
+      "normalizedSha256": "2667c1fbb11b78f4e1b030b416e3a826569db5b0a250f7f2126ea7d332c00930",
+      "sourceSha256": "2667c1fbb11b78f4e1b030b416e3a826569db5b0a250f7f2126ea7d332c00930",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-08-chunk-002.mp3",
+      "chunkId": "dracula-chapter-08-chunk-002",
+      "endMs": null,
+      "normalizedSha256": "07c050936893107b8f39980bce28420dfe8ab17e107fe167258fe3351b977980",
+      "sourceSha256": "07c050936893107b8f39980bce28420dfe8ab17e107fe167258fe3351b977980",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-08-chunk-003.mp3",
+      "chunkId": "dracula-chapter-08-chunk-003",
+      "endMs": null,
+      "normalizedSha256": "e0e2ace1b64e8b6b2380dfa96929cc65217ccc8fbdfdd79f8d7f104af7255423",
+      "sourceSha256": "e0e2ace1b64e8b6b2380dfa96929cc65217ccc8fbdfdd79f8d7f104af7255423",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-08-chunk-004.mp3",
+      "chunkId": "dracula-chapter-08-chunk-004",
+      "endMs": null,
+      "normalizedSha256": "1074251d883b790ca3e195d0788b3be7f8b4c3afaf7194a176b6cf7e46ae3b81",
+      "sourceSha256": "1074251d883b790ca3e195d0788b3be7f8b4c3afaf7194a176b6cf7e46ae3b81",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-08-chunk-005.mp3",
+      "chunkId": "dracula-chapter-08-chunk-005",
+      "endMs": null,
+      "normalizedSha256": "3bd0f9ea066114d9c49131936b18171046618bdded2c1f83e6e8c01083b93f06",
+      "sourceSha256": "3bd0f9ea066114d9c49131936b18171046618bdded2c1f83e6e8c01083b93f06",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-08-chunk-006.mp3",
+      "chunkId": "dracula-chapter-08-chunk-006",
+      "endMs": null,
+      "normalizedSha256": "2ac245b2218af1b778970606a6ee2b747f406d5a753af26b8f8da929aedab3ef",
+      "sourceSha256": "2ac245b2218af1b778970606a6ee2b747f406d5a753af26b8f8da929aedab3ef",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-08-chunk-007.mp3",
+      "chunkId": "dracula-chapter-08-chunk-007",
+      "endMs": null,
+      "normalizedSha256": "09e92e8e6c29ac78c92e5a89542d51ad2248f3a39eb1a096a1ef24ab0aae2bc9",
+      "sourceSha256": "09e92e8e6c29ac78c92e5a89542d51ad2248f3a39eb1a096a1ef24ab0aae2bc9",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-08-chunk-008.mp3",
+      "chunkId": "dracula-chapter-08-chunk-008",
+      "endMs": null,
+      "normalizedSha256": "6f731a5cd4c9acf770550406e6cb4694eaa978a8332dc33892982056a7ee904a",
+      "sourceSha256": "6f731a5cd4c9acf770550406e6cb4694eaa978a8332dc33892982056a7ee904a",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-08-chunk-009.mp3",
+      "chunkId": "dracula-chapter-08-chunk-009",
+      "endMs": null,
+      "normalizedSha256": "39819d655988e5428c31c63da55e320c19bff5f046bfad2ec51cda00d466d639",
+      "sourceSha256": "39819d655988e5428c31c63da55e320c19bff5f046bfad2ec51cda00d466d639",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-08-chunk-010.mp3",
+      "chunkId": "dracula-chapter-08-chunk-010",
+      "endMs": null,
+      "normalizedSha256": "f7be5465f642b749dfdb677b4ec14f1b0bb72e55a7ae5ff44c94d2a77a59d2b3",
+      "sourceSha256": "f7be5465f642b749dfdb677b4ec14f1b0bb72e55a7ae5ff44c94d2a77a59d2b3",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    }
+  ],
+  "public": false,
+  "publicAudioAllowed": false,
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED"
+}

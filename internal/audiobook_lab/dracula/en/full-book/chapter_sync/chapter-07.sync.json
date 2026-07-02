@@ -1,0 +1,83 @@
+{
+  "bookSlug": "dracula",
+  "chapterNumber": 7,
+  "chapterTitle": "CHAPTER VII. CUTTING FROM “THE DAILYGRAPH,” 8 AUGUST",
+  "chunks": [
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-07-chunk-001.mp3",
+      "chunkId": "dracula-chapter-07-chunk-001",
+      "endMs": null,
+      "normalizedSha256": "3168de0bf17e6467cce74678b28178543190298a8a452afd5653021d85e94e67",
+      "sourceSha256": "3168de0bf17e6467cce74678b28178543190298a8a452afd5653021d85e94e67",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-07-chunk-002.mp3",
+      "chunkId": "dracula-chapter-07-chunk-002",
+      "endMs": null,
+      "normalizedSha256": "5acf2496bc447c371cb2994e230e2e22dd95b24cde7053f8d10ba891ad341318",
+      "sourceSha256": "5acf2496bc447c371cb2994e230e2e22dd95b24cde7053f8d10ba891ad341318",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-07-chunk-003.mp3",
+      "chunkId": "dracula-chapter-07-chunk-003",
+      "endMs": null,
+      "normalizedSha256": "bd015486c070cb66d0ceb095f470c89aa5701208bd8a58d6d054f140bba83a26",
+      "sourceSha256": "bd015486c070cb66d0ceb095f470c89aa5701208bd8a58d6d054f140bba83a26",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-07-chunk-004.mp3",
+      "chunkId": "dracula-chapter-07-chunk-004",
+      "endMs": null,
+      "normalizedSha256": "4fddcd3f23021aa10a4e8d0bdf85d60c323dabeb44ea0649559cee052d66a59a",
+      "sourceSha256": "4fddcd3f23021aa10a4e8d0bdf85d60c323dabeb44ea0649559cee052d66a59a",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-07-chunk-005.mp3",
+      "chunkId": "dracula-chapter-07-chunk-005",
+      "endMs": null,
+      "normalizedSha256": "4d31beba83b088b25656790e0a21b2da5410adbcb658f72e12a6685d3437ee7a",
+      "sourceSha256": "4d31beba83b088b25656790e0a21b2da5410adbcb658f72e12a6685d3437ee7a",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-07-chunk-006.mp3",
+      "chunkId": "dracula-chapter-07-chunk-006",
+      "endMs": null,
+      "normalizedSha256": "7dd34e9427499ec9b4442471170641acfcf7dd060cc025d91f92f8f40f5ee580",
+      "sourceSha256": "7dd34e9427499ec9b4442471170641acfcf7dd060cc025d91f92f8f40f5ee580",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-07-chunk-007.mp3",
+      "chunkId": "dracula-chapter-07-chunk-007",
+      "endMs": null,
+      "normalizedSha256": "97272c8874001795603787b84263e9bf106ffcecc18d61702babe162c5b1edd6",
+      "sourceSha256": "97272c8874001795603787b84263e9bf106ffcecc18d61702babe162c5b1edd6",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-07-chunk-008.mp3",
+      "chunkId": "dracula-chapter-07-chunk-008",
+      "endMs": null,
+      "normalizedSha256": "25a6f308834717f5067e268d34d218feaaa3532e19240d765f38122dbb5ce71f",
+      "sourceSha256": "25a6f308834717f5067e268d34d218feaaa3532e19240d765f38122dbb5ce71f",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    }
+  ],
+  "public": false,
+  "publicAudioAllowed": false,
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED"
+}

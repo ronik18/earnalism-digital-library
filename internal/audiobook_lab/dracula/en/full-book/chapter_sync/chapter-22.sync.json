@@ -1,0 +1,83 @@
+{
+  "bookSlug": "dracula",
+  "chapterNumber": 22,
+  "chapterTitle": "CHAPTER XXII. JONATHAN HARKER’S JOURNAL",
+  "chunks": [
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-22-chunk-001.mp3",
+      "chunkId": "dracula-chapter-22-chunk-001",
+      "endMs": null,
+      "normalizedSha256": "75520a781a6fea219b93dd107cdadfb5e2ae98bec956abf981dfe2a53503ceca",
+      "sourceSha256": "75520a781a6fea219b93dd107cdadfb5e2ae98bec956abf981dfe2a53503ceca",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-22-chunk-002.mp3",
+      "chunkId": "dracula-chapter-22-chunk-002",
+      "endMs": null,
+      "normalizedSha256": "1d246ad471dd2416d3fd0f2097de96138cb851bcea2c7632ad7ea932ff4290c4",
+      "sourceSha256": "1d246ad471dd2416d3fd0f2097de96138cb851bcea2c7632ad7ea932ff4290c4",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-22-chunk-003.mp3",
+      "chunkId": "dracula-chapter-22-chunk-003",
+      "endMs": null,
+      "normalizedSha256": "4c66117a81a10c9fefe138b3ab5bb14851ce305b3f0c80510840c752d84c1c6b",
+      "sourceSha256": "4c66117a81a10c9fefe138b3ab5bb14851ce305b3f0c80510840c752d84c1c6b",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-22-chunk-004.mp3",
+      "chunkId": "dracula-chapter-22-chunk-004",
+      "endMs": null,
+      "normalizedSha256": "2bd9c119775300d305d3dcff4ce2c43934c90694d1c522833e6100a3c7149d6d",
+      "sourceSha256": "2bd9c119775300d305d3dcff4ce2c43934c90694d1c522833e6100a3c7149d6d",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-22-chunk-005.mp3",
+      "chunkId": "dracula-chapter-22-chunk-005",
+      "endMs": null,
+      "normalizedSha256": "a586500b38ad93791deb9bc07510eebc1f4c6c1f3758942eacd2b80be2f4c9a9",
+      "sourceSha256": "a586500b38ad93791deb9bc07510eebc1f4c6c1f3758942eacd2b80be2f4c9a9",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-22-chunk-006.mp3",
+      "chunkId": "dracula-chapter-22-chunk-006",
+      "endMs": null,
+      "normalizedSha256": "d7d5d1f4a83b6df7735c8424f730a22de245388ab0e97e1e629a4b0c1fb36f13",
+      "sourceSha256": "d7d5d1f4a83b6df7735c8424f730a22de245388ab0e97e1e629a4b0c1fb36f13",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-22-chunk-007.mp3",
+      "chunkId": "dracula-chapter-22-chunk-007",
+      "endMs": null,
+      "normalizedSha256": "705b80ffcbe0637a5438af64d1e4f32eab63203867b6030596ee97156d632c85",
+      "sourceSha256": "705b80ffcbe0637a5438af64d1e4f32eab63203867b6030596ee97156d632c85",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-22-chunk-008.mp3",
+      "chunkId": "dracula-chapter-22-chunk-008",
+      "endMs": null,
+      "normalizedSha256": "7d1876e847dd353742021dd894b4f76fc452b7fa052d55507de6c36bac016759",
+      "sourceSha256": "7d1876e847dd353742021dd894b4f76fc452b7fa052d55507de6c36bac016759",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    }
+  ],
+  "public": false,
+  "publicAudioAllowed": false,
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED"
+}

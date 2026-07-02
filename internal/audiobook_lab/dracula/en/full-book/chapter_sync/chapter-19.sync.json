@@ -1,0 +1,92 @@
+{
+  "bookSlug": "dracula",
+  "chapterNumber": 19,
+  "chapterTitle": "CHAPTER XIX. JONATHAN HARKER’S JOURNAL",
+  "chunks": [
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-19-chunk-001.mp3",
+      "chunkId": "dracula-chapter-19-chunk-001",
+      "endMs": null,
+      "normalizedSha256": "a3e81531c1e9732f88b66c8131e00f5c0664584b26b5baa229bb8b38b6caa218",
+      "sourceSha256": "a3e81531c1e9732f88b66c8131e00f5c0664584b26b5baa229bb8b38b6caa218",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-19-chunk-002.mp3",
+      "chunkId": "dracula-chapter-19-chunk-002",
+      "endMs": null,
+      "normalizedSha256": "cb28e2c2713367dfe615f3c3e4c9e46e52ff8da16ba28be10b6c92179fdfb440",
+      "sourceSha256": "cb28e2c2713367dfe615f3c3e4c9e46e52ff8da16ba28be10b6c92179fdfb440",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-19-chunk-003.mp3",
+      "chunkId": "dracula-chapter-19-chunk-003",
+      "endMs": null,
+      "normalizedSha256": "3a40a9ad9324cb66d5f829e56b6ba28935503ad55fe9cd9a57705cb87acb649e",
+      "sourceSha256": "3a40a9ad9324cb66d5f829e56b6ba28935503ad55fe9cd9a57705cb87acb649e",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-19-chunk-004.mp3",
+      "chunkId": "dracula-chapter-19-chunk-004",
+      "endMs": null,
+      "normalizedSha256": "a395390d8ec9e278fca86051540c16badb0091667c06eb6379d257d143bbb6eb",
+      "sourceSha256": "a395390d8ec9e278fca86051540c16badb0091667c06eb6379d257d143bbb6eb",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-19-chunk-005.mp3",
+      "chunkId": "dracula-chapter-19-chunk-005",
+      "endMs": null,
+      "normalizedSha256": "876d95c9f39839bd77f5fb5a1c473bbb54ba142fffd23086fe875587e48267f2",
+      "sourceSha256": "876d95c9f39839bd77f5fb5a1c473bbb54ba142fffd23086fe875587e48267f2",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-19-chunk-006.mp3",
+      "chunkId": "dracula-chapter-19-chunk-006",
+      "endMs": null,
+      "normalizedSha256": "0786de9ee098e60f8e81fabc47be25f7eb051910135bbb907f7fdaba40654beb",
+      "sourceSha256": "0786de9ee098e60f8e81fabc47be25f7eb051910135bbb907f7fdaba40654beb",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-19-chunk-007.mp3",
+      "chunkId": "dracula-chapter-19-chunk-007",
+      "endMs": null,
+      "normalizedSha256": "45941a0821883b0230837c8122a882bf3a26ab9f019a000fe4179caf87f96a55",
+      "sourceSha256": "45941a0821883b0230837c8122a882bf3a26ab9f019a000fe4179caf87f96a55",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-19-chunk-008.mp3",
+      "chunkId": "dracula-chapter-19-chunk-008",
+      "endMs": null,
+      "normalizedSha256": "15fbaaf4b4ad0100a95eaaa2e4f5af9caf3a3d8d5c235cddfc45424c65048c9d",
+      "sourceSha256": "15fbaaf4b4ad0100a95eaaa2e4f5af9caf3a3d8d5c235cddfc45424c65048c9d",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-19-chunk-009.mp3",
+      "chunkId": "dracula-chapter-19-chunk-009",
+      "endMs": null,
+      "normalizedSha256": "bfaab3e1c67043477b035b2bd380e33c1a6313dcd90ee361d15662cd62a69e63",
+      "sourceSha256": "bfaab3e1c67043477b035b2bd380e33c1a6313dcd90ee361d15662cd62a69e63",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    }
+  ],
+  "public": false,
+  "publicAudioAllowed": false,
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED"
+}

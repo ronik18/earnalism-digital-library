@@ -1,0 +1,83 @@
+{
+  "bookSlug": "dracula",
+  "chapterNumber": 20,
+  "chapterTitle": "CHAPTER XX. JONATHAN HARKER’S JOURNAL",
+  "chunks": [
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-20-chunk-001.mp3",
+      "chunkId": "dracula-chapter-20-chunk-001",
+      "endMs": null,
+      "normalizedSha256": "e4382b6522680e31f818724042be65fb5e6c2c5b0cc1178d6371360a86e1720d",
+      "sourceSha256": "e4382b6522680e31f818724042be65fb5e6c2c5b0cc1178d6371360a86e1720d",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-20-chunk-002.mp3",
+      "chunkId": "dracula-chapter-20-chunk-002",
+      "endMs": null,
+      "normalizedSha256": "a8c0cfcd58cf09acb2ee4fb131c4ad2a83919b6343e3328dbbac68ab111ad81a",
+      "sourceSha256": "a8c0cfcd58cf09acb2ee4fb131c4ad2a83919b6343e3328dbbac68ab111ad81a",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-20-chunk-003.mp3",
+      "chunkId": "dracula-chapter-20-chunk-003",
+      "endMs": null,
+      "normalizedSha256": "4fb042e8de11bd9caf56efba4cdc8d2ff36049fe15a015fe24ab18abb5ab79c5",
+      "sourceSha256": "4fb042e8de11bd9caf56efba4cdc8d2ff36049fe15a015fe24ab18abb5ab79c5",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-20-chunk-004.mp3",
+      "chunkId": "dracula-chapter-20-chunk-004",
+      "endMs": null,
+      "normalizedSha256": "48d81082cccadcb70d5fe53a4864539f6eaf5e22126628b97e86748ce7499527",
+      "sourceSha256": "48d81082cccadcb70d5fe53a4864539f6eaf5e22126628b97e86748ce7499527",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-20-chunk-005.mp3",
+      "chunkId": "dracula-chapter-20-chunk-005",
+      "endMs": null,
+      "normalizedSha256": "fedae52962c2b33473081cf3ecf30415a8f6a26913333f3f9bfa8e90066afe86",
+      "sourceSha256": "fedae52962c2b33473081cf3ecf30415a8f6a26913333f3f9bfa8e90066afe86",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-20-chunk-006.mp3",
+      "chunkId": "dracula-chapter-20-chunk-006",
+      "endMs": null,
+      "normalizedSha256": "7f043674caf0097e3b45b0b85e4e1ce07c62ea3299735aa7e7f0fa46919912c0",
+      "sourceSha256": "7f043674caf0097e3b45b0b85e4e1ce07c62ea3299735aa7e7f0fa46919912c0",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-20-chunk-007.mp3",
+      "chunkId": "dracula-chapter-20-chunk-007",
+      "endMs": null,
+      "normalizedSha256": "3cfc6c59fc84f29dc99ba8b908521b9eb98d8c5bc77ca645f20ecb8d1534e7c8",
+      "sourceSha256": "3cfc6c59fc84f29dc99ba8b908521b9eb98d8c5bc77ca645f20ecb8d1534e7c8",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-20-chunk-008.mp3",
+      "chunkId": "dracula-chapter-20-chunk-008",
+      "endMs": null,
+      "normalizedSha256": "4b221c4c99cfb0ab5aa72e4a0a3a5075a61e42aad922ff06ca7fd7bd9f2f6c07",
+      "sourceSha256": "4b221c4c99cfb0ab5aa72e4a0a3a5075a61e42aad922ff06ca7fd7bd9f2f6c07",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    }
+  ],
+  "public": false,
+  "publicAudioAllowed": false,
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED"
+}

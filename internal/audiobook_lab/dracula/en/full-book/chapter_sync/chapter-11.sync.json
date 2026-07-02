@@ -1,0 +1,74 @@
+{
+  "bookSlug": "dracula",
+  "chapterNumber": 11,
+  "chapterTitle": "CHAPTER XI",
+  "chunks": [
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-11-chunk-001.mp3",
+      "chunkId": "dracula-chapter-11-chunk-001",
+      "endMs": null,
+      "normalizedSha256": "ce9b93c5c79ab15f015d48f343d495f349f8dad7e7b06c402f9453f1c2925642",
+      "sourceSha256": "ce9b93c5c79ab15f015d48f343d495f349f8dad7e7b06c402f9453f1c2925642",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-11-chunk-002.mp3",
+      "chunkId": "dracula-chapter-11-chunk-002",
+      "endMs": null,
+      "normalizedSha256": "b05327ca58016a2abf24cbc55c7d80ccc2f631c62536d10dcd8ed6365e415e1a",
+      "sourceSha256": "b05327ca58016a2abf24cbc55c7d80ccc2f631c62536d10dcd8ed6365e415e1a",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-11-chunk-003.mp3",
+      "chunkId": "dracula-chapter-11-chunk-003",
+      "endMs": null,
+      "normalizedSha256": "87f3763705c3b22727170007fb37b0eceb9004eb14136b99048bb1c0144ab95e",
+      "sourceSha256": "87f3763705c3b22727170007fb37b0eceb9004eb14136b99048bb1c0144ab95e",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-11-chunk-004.mp3",
+      "chunkId": "dracula-chapter-11-chunk-004",
+      "endMs": null,
+      "normalizedSha256": "993be820e2f666069a2db7e5144ad2ec84d44ff1261beae320f79861516ac717",
+      "sourceSha256": "993be820e2f666069a2db7e5144ad2ec84d44ff1261beae320f79861516ac717",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-11-chunk-005.mp3",
+      "chunkId": "dracula-chapter-11-chunk-005",
+      "endMs": null,
+      "normalizedSha256": "fab2f8b10166c30d145d2bbad49d81f1ccc7ebf986a0fac2b60111bedf80a980",
+      "sourceSha256": "fab2f8b10166c30d145d2bbad49d81f1ccc7ebf986a0fac2b60111bedf80a980",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-11-chunk-006.mp3",
+      "chunkId": "dracula-chapter-11-chunk-006",
+      "endMs": null,
+      "normalizedSha256": "4e14abf454123b44ba6a7487a6f60defbbb008b1603a3a170059b6dafa246215",
+      "sourceSha256": "4e14abf454123b44ba6a7487a6f60defbbb008b1603a3a170059b6dafa246215",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-11-chunk-007.mp3",
+      "chunkId": "dracula-chapter-11-chunk-007",
+      "endMs": null,
+      "normalizedSha256": "86c18da92299732e72b4b50a3d789a87d8c8f758e25f1fbdaff26cf8002a3b09",
+      "sourceSha256": "86c18da92299732e72b4b50a3d789a87d8c8f758e25f1fbdaff26cf8002a3b09",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    }
+  ],
+  "public": false,
+  "publicAudioAllowed": false,
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED"
+}

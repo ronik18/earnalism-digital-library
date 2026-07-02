@@ -1,0 +1,92 @@
+{
+  "bookSlug": "dracula",
+  "chapterNumber": 21,
+  "chapterTitle": "CHAPTER XXI. DR. SEWARD’S DIARY",
+  "chunks": [
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-21-chunk-001.mp3",
+      "chunkId": "dracula-chapter-21-chunk-001",
+      "endMs": null,
+      "normalizedSha256": "f065c38005b4c9cf6643adb75ceda9c3984368729b8af7278a6f1fb34f0e4f9f",
+      "sourceSha256": "f065c38005b4c9cf6643adb75ceda9c3984368729b8af7278a6f1fb34f0e4f9f",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-21-chunk-002.mp3",
+      "chunkId": "dracula-chapter-21-chunk-002",
+      "endMs": null,
+      "normalizedSha256": "73e770b3c4fa3faf0a39de0770790f01bcc171e1b4a65ad80cf47a24b0931f7c",
+      "sourceSha256": "73e770b3c4fa3faf0a39de0770790f01bcc171e1b4a65ad80cf47a24b0931f7c",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-21-chunk-003.mp3",
+      "chunkId": "dracula-chapter-21-chunk-003",
+      "endMs": null,
+      "normalizedSha256": "ff2e44cdaa878ae26c2fcfada7091b4012b2734bb2018267049c474d59e732ff",
+      "sourceSha256": "ff2e44cdaa878ae26c2fcfada7091b4012b2734bb2018267049c474d59e732ff",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-21-chunk-004.mp3",
+      "chunkId": "dracula-chapter-21-chunk-004",
+      "endMs": null,
+      "normalizedSha256": "6e3c25176889998561949522e4aa8d0b19fd3b9f73853495f1ec34b649ac65d8",
+      "sourceSha256": "6e3c25176889998561949522e4aa8d0b19fd3b9f73853495f1ec34b649ac65d8",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-21-chunk-005.mp3",
+      "chunkId": "dracula-chapter-21-chunk-005",
+      "endMs": null,
+      "normalizedSha256": "983ff0e4dde3f38927506cffc133d87101777317105506c07a03f3da982889a4",
+      "sourceSha256": "983ff0e4dde3f38927506cffc133d87101777317105506c07a03f3da982889a4",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-21-chunk-006.mp3",
+      "chunkId": "dracula-chapter-21-chunk-006",
+      "endMs": null,
+      "normalizedSha256": "5f381504bea69aae838148b6373a1ee0ac260593370c3cb8b3d89b8d9145b809",
+      "sourceSha256": "5f381504bea69aae838148b6373a1ee0ac260593370c3cb8b3d89b8d9145b809",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-21-chunk-007.mp3",
+      "chunkId": "dracula-chapter-21-chunk-007",
+      "endMs": null,
+      "normalizedSha256": "0cfc750ebf5e2b5ee173b0cd210283f1786f2b9e19beed97254d27d9c6572aa5",
+      "sourceSha256": "0cfc750ebf5e2b5ee173b0cd210283f1786f2b9e19beed97254d27d9c6572aa5",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-21-chunk-008.mp3",
+      "chunkId": "dracula-chapter-21-chunk-008",
+      "endMs": null,
+      "normalizedSha256": "358f2c5fb75d241ccf34a2164845e23bcc46a764fccedbd9ea91e3bab3a4a577",
+      "sourceSha256": "358f2c5fb75d241ccf34a2164845e23bcc46a764fccedbd9ea91e3bab3a4a577",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    },
+    {
+      "audioPath": "internal/audiobook_lab/dracula/en/full-book/chunks/dracula-chapter-21-chunk-009.mp3",
+      "chunkId": "dracula-chapter-21-chunk-009",
+      "endMs": null,
+      "normalizedSha256": "e2f83e023abd749c5313c970bf70c9be9b65923afe78ff3b21bde820f8b71000",
+      "sourceSha256": "e2f83e023abd749c5313c970bf70c9be9b65923afe78ff3b21bde820f8b71000",
+      "startMs": null,
+      "timingStatus": "PENDING_AUDIO_GENERATION"
+    }
+  ],
+  "public": false,
+  "publicAudioAllowed": false,
+  "syncPrecision": "chunk",
+  "syncStatus": "HOLD_SYNC_QA_REQUIRED"
+}

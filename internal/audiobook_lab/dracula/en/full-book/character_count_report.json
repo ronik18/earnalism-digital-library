@@ -1,0 +1,230 @@
+{
+  "bookSlug": "dracula",
+  "chapterCount": 27,
+  "chunkCount": 240,
+  "combinedNormalizedSha256": "462e10ba17074aa50835ac578503a5c6525cbf6553aa090ea6bf827c8aab0c63",
+  "combinedSourceSha256": "462e10ba17074aa50835ac578503a5c6525cbf6553aa090ea6bf827c8aab0c63",
+  "perChapter": [
+    {
+      "chapterNumber": 1,
+      "normalizedCharacters": 30702,
+      "normalizedSha256": "7e1a3545a402e38977d2dcb5d1e7332bff4df6cdec98aae0d918f8fab6d190c0",
+      "sourceCharacters": 30702,
+      "sourceSha256": "7e1a3545a402e38977d2dcb5d1e7332bff4df6cdec98aae0d918f8fab6d190c0"
+    },
+    {
+      "chapterNumber": 2,
+      "normalizedCharacters": 28600,
+      "normalizedSha256": "0ed6f950dc0e6f6d22a231b6f8278143b550889c1a0c30e7120868c5b768961a",
+      "sourceCharacters": 28600,
+      "sourceSha256": "0ed6f950dc0e6f6d22a231b6f8278143b550889c1a0c30e7120868c5b768961a"
+    },
+    {
+      "chapterNumber": 3,
+      "normalizedCharacters": 29912,
+      "normalizedSha256": "6bdfe67a46f69721dfa063a6de4661b90d2281bdde5bc6c3ffb7eda4ea745ead",
+      "sourceCharacters": 29912,
+      "sourceSha256": "6bdfe67a46f69721dfa063a6de4661b90d2281bdde5bc6c3ffb7eda4ea745ead"
+    },
+    {
+      "chapterNumber": 4,
+      "normalizedCharacters": 30449,
+      "normalizedSha256": "78aa6e7eff70e59dc7b94cb441744330cd92a57f7d66cf19e77d03d366c62f88",
+      "sourceCharacters": 30449,
+      "sourceSha256": "78aa6e7eff70e59dc7b94cb441744330cd92a57f7d66cf19e77d03d366c62f88"
+    },
+    {
+      "chapterNumber": 5,
+      "normalizedCharacters": 18147,
+      "normalizedSha256": "432398785524154b3d8d02d94d47d41e0af59205863f159fe4b73e61e4a99b46",
+      "sourceCharacters": 18147,
+      "sourceSha256": "432398785524154b3d8d02d94d47d41e0af59205863f159fe4b73e61e4a99b46"
+    },
+    {
+      "chapterNumber": 6,
+      "normalizedCharacters": 29396,
+      "normalizedSha256": "92eca6ca0706ade951c187dbe2f5011d6e293e2dfb9777a3b9f7d4a78b90f5ad",
+      "sourceCharacters": 29396,
+      "sourceSha256": "92eca6ca0706ade951c187dbe2f5011d6e293e2dfb9777a3b9f7d4a78b90f5ad"
+    },
+    {
+      "chapterNumber": 7,
+      "normalizedCharacters": 30248,
+      "normalizedSha256": "fdd8664026557b58ba48cb29eb5fad388480dc4a512b002035d3e45ca1476d88",
+      "sourceCharacters": 30248,
+      "sourceSha256": "fdd8664026557b58ba48cb29eb5fad388480dc4a512b002035d3e45ca1476d88"
+    },
+    {
+      "chapterNumber": 8,
+      "normalizedCharacters": 32860,
+      "normalizedSha256": "ae0506a9ed3f34f6d860f7347ec9678df5557ce8b46f1f7ff6855173a95d6706",
+      "sourceCharacters": 32860,
+      "sourceSha256": "ae0506a9ed3f34f6d860f7347ec9678df5557ce8b46f1f7ff6855173a95d6706"
+    },
+    {
+      "chapterNumber": 9,
+      "normalizedCharacters": 30398,
+      "normalizedSha256": "cd249f1d452cd2a4300160111e741cc549b3597d222adfc78b1c9a6d371ed236",
+      "sourceCharacters": 30398,
+      "sourceSha256": "cd249f1d452cd2a4300160111e741cc549b3597d222adfc78b1c9a6d371ed236"
+    },
+    {
+      "chapterNumber": 10,
+      "normalizedCharacters": 30933,
+      "normalizedSha256": "b14bbe947bcc6c06037ebef46a6750ee4b796e4600691e46d5f7977d6ef19022",
+      "sourceCharacters": 30933,
+      "sourceSha256": "b14bbe947bcc6c06037ebef46a6750ee4b796e4600691e46d5f7977d6ef19022"
+    },
+    {
+      "chapterNumber": 11,
+      "normalizedCharacters": 27058,
+      "normalizedSha256": "67f7b9328e1cdb58da841e37e9298c67465f0d36c8adcc64deb84b859a27ac85",
+      "sourceCharacters": 27058,
+      "sourceSha256": "67f7b9328e1cdb58da841e37e9298c67465f0d36c8adcc64deb84b859a27ac85"
+    },
+    {
+      "chapterNumber": 12,
+      "normalizedCharacters": 38056,
+      "normalizedSha256": "fd5052400a563f29435a55dc836a1cd6dd2665cb63f4d0c11c73439fbbe162cb",
+      "sourceCharacters": 38056,
+      "sourceSha256": "fd5052400a563f29435a55dc836a1cd6dd2665cb63f4d0c11c73439fbbe162cb"
+    },
+    {
+      "chapterNumber": 13,
+      "normalizedCharacters": 34344,
+      "normalizedSha256": "16a5782aa057d068787a62b85fa30ceb0ea78e36bb7b1df94bf9f1d211cbbbcd",
+      "sourceCharacters": 34344,
+      "sourceSha256": "16a5782aa057d068787a62b85fa30ceb0ea78e36bb7b1df94bf9f1d211cbbbcd"
+    },
+    {
+      "chapterNumber": 14,
+      "normalizedCharacters": 32792,
+      "normalizedSha256": "ff49b5d008753326acaba89672b97b4fca4b9fba6426dedc046f1a9e117617ff",
+      "sourceCharacters": 32792,
+      "sourceSha256": "ff49b5d008753326acaba89672b97b4fca4b9fba6426dedc046f1a9e117617ff"
+    },
+    {
+      "chapterNumber": 15,
+      "normalizedCharacters": 29895,
+      "normalizedSha256": "7bba2cf8972e48e7978f9c27ed238e4fc1e5ea151e5e45b98f636fd02cc4fb0b",
+      "sourceCharacters": 29895,
+      "sourceSha256": "7bba2cf8972e48e7978f9c27ed238e4fc1e5ea151e5e45b98f636fd02cc4fb0b"
+    },
+    {
+      "chapterNumber": 16,
+      "normalizedCharacters": 23999,
+      "normalizedSha256": "f373a898e977e88e15f5498507bde722dbce6de3a3fa757694bc518d0caa089e",
+      "sourceCharacters": 23999,
+      "sourceSha256": "f373a898e977e88e15f5498507bde722dbce6de3a3fa757694bc518d0caa089e"
+    },
+    {
+      "chapterNumber": 17,
+      "normalizedCharacters": 29231,
+      "normalizedSha256": "bc58b19795183ed4d0791f6f0c47b76035b272f2d0f4876eb0c4dfda162221fe",
+      "sourceCharacters": 29231,
+      "sourceSha256": "bc58b19795183ed4d0791f6f0c47b76035b272f2d0f4876eb0c4dfda162221fe"
+    },
+    {
+      "chapterNumber": 18,
+      "normalizedCharacters": 36068,
+      "normalizedSha256": "539c71613457b04aa7813ad9cd4153c97e4e6991e00f23a86fce9bae7924d50e",
+      "sourceCharacters": 36068,
+      "sourceSha256": "539c71613457b04aa7813ad9cd4153c97e4e6991e00f23a86fce9bae7924d50e"
+    },
+    {
+      "chapterNumber": 19,
+      "normalizedCharacters": 29543,
+      "normalizedSha256": "3253afcc86e666aa9db31d315128c60f12f283c241d547ebbd8a89250571eadd",
+      "sourceCharacters": 29543,
+      "sourceSha256": "3253afcc86e666aa9db31d315128c60f12f283c241d547ebbd8a89250571eadd"
+    },
+    {
+      "chapterNumber": 20,
+      "normalizedCharacters": 31377,
+      "normalizedSha256": "5c947f769155a58cdb564043d5b6eeb033484e1569027661a1fbd33398ff8e37",
+      "sourceCharacters": 31377,
+      "sourceSha256": "5c947f769155a58cdb564043d5b6eeb033484e1569027661a1fbd33398ff8e37"
+    },
+    {
+      "chapterNumber": 21,
+      "normalizedCharacters": 32314,
+      "normalizedSha256": "34e31d7c787c2ee2c8ed7b8f5c30b0c73c5abc2eec815ccfd9cf4d0a509d9604",
+      "sourceCharacters": 32314,
+      "sourceSha256": "34e31d7c787c2ee2c8ed7b8f5c30b0c73c5abc2eec815ccfd9cf4d0a509d9604"
+    },
+    {
+      "chapterNumber": 22,
+      "normalizedCharacters": 28211,
+      "normalizedSha256": "d18708955072a2dfb1f0435ea5b1dca6cbd0bea63c933c72758cab7491b0acff",
+      "sourceCharacters": 28211,
+      "sourceSha256": "d18708955072a2dfb1f0435ea5b1dca6cbd0bea63c933c72758cab7491b0acff"
+    },
+    {
+      "chapterNumber": 23,
+      "normalizedCharacters": 29658,
+      "normalizedSha256": "1c8b533258b71e517873a1bdfccb10201ee07a5ba2503c11f2cc052058344f6c",
+      "sourceCharacters": 29658,
+      "sourceSha256": "1c8b533258b71e517873a1bdfccb10201ee07a5ba2503c11f2cc052058344f6c"
+    },
+    {
+      "chapterNumber": 24,
+      "normalizedCharacters": 32236,
+      "normalizedSha256": "81bf8856259524c26ad11d0eacc4108aa638ad96f2bf4185bd7420285eaf76fe",
+      "sourceCharacters": 32236,
+      "sourceSha256": "81bf8856259524c26ad11d0eacc4108aa638ad96f2bf4185bd7420285eaf76fe"
+    },
+    {
+      "chapterNumber": 25,
+      "normalizedCharacters": 32769,
+      "normalizedSha256": "46ade6cbb34b0aa5ba96bd6a874a06c065cb3877fa2bd39b501590ec45e6c439",
+      "sourceCharacters": 32769,
+      "sourceSha256": "46ade6cbb34b0aa5ba96bd6a874a06c065cb3877fa2bd39b501590ec45e6c439"
+    },
+    {
+      "chapterNumber": 26,
+      "normalizedCharacters": 37316,
+      "normalizedSha256": "a195b9c594e8e488aafaf6d100da041bcaf1d8b3969afa94f15120c54a972517",
+      "sourceCharacters": 37316,
+      "sourceSha256": "a195b9c594e8e488aafaf6d100da041bcaf1d8b3969afa94f15120c54a972517"
+    },
+    {
+      "chapterNumber": 27,
+      "normalizedCharacters": 42172,
+      "normalizedSha256": "be6b2712dacb81ed8e5f242dc620143a6fe13e2caa9d2a9ea9e061f33c204c01",
+      "sourceCharacters": 42172,
+      "sourceSha256": "be6b2712dacb81ed8e5f242dc620143a6fe13e2caa9d2a9ea9e061f33c204c01"
+    }
+  ],
+  "sourcePaths": [
+    "data/controlled_publications/dracula/chapters/chapter-001.json",
+    "data/controlled_publications/dracula/chapters/chapter-002.json",
+    "data/controlled_publications/dracula/chapters/chapter-003.json",
+    "data/controlled_publications/dracula/chapters/chapter-004.json",
+    "data/controlled_publications/dracula/chapters/chapter-005.json",
+    "data/controlled_publications/dracula/chapters/chapter-006.json",
+    "data/controlled_publications/dracula/chapters/chapter-007.json",
+    "data/controlled_publications/dracula/chapters/chapter-008.json",
+    "data/controlled_publications/dracula/chapters/chapter-009.json",
+    "data/controlled_publications/dracula/chapters/chapter-010.json",
+    "data/controlled_publications/dracula/chapters/chapter-011.json",
+    "data/controlled_publications/dracula/chapters/chapter-012.json",
+    "data/controlled_publications/dracula/chapters/chapter-013.json",
+    "data/controlled_publications/dracula/chapters/chapter-014.json",
+    "data/controlled_publications/dracula/chapters/chapter-015.json",
+    "data/controlled_publications/dracula/chapters/chapter-016.json",
+    "data/controlled_publications/dracula/chapters/chapter-017.json",
+    "data/controlled_publications/dracula/chapters/chapter-018.json",
+    "data/controlled_publications/dracula/chapters/chapter-019.json",
+    "data/controlled_publications/dracula/chapters/chapter-020.json",
+    "data/controlled_publications/dracula/chapters/chapter-021.json",
+    "data/controlled_publications/dracula/chapters/chapter-022.json",
+    "data/controlled_publications/dracula/chapters/chapter-023.json",
+    "data/controlled_publications/dracula/chapters/chapter-024.json",
+    "data/controlled_publications/dracula/chapters/chapter-025.json",
+    "data/controlled_publications/dracula/chapters/chapter-026.json",
+    "data/controlled_publications/dracula/chapters/chapter-027.json"
+  ],
+  "totalCharacters": 838684,
+  "totalNormalizedCharacters": 838684,
+  "totalWords": 161903
+}
