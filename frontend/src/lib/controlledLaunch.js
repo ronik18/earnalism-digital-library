@@ -21,6 +21,7 @@ export const DRACULA_COVER_IMAGE = "/assets/books/dracula/dracula-front-cover.we
 export const DRACULA_BACK_COVER_IMAGE = "/assets/books/dracula/dracula-back-cover.webp";
 export const KSHUDHITA_PASHAN_FRONT_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp";
 export const KSHUDHITA_PASHAN_BACK_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp";
+export const SULTANAS_DREAM_FRONT_COVER_IMAGE = "/assets/books/sultanas-dream/front-cover.svg";
 
 function smartTitleCaseSegment(value = "") {
   const text = String(value || "").trim();
@@ -141,7 +142,9 @@ export const PIPELINE_BOOKS = [
     statusLabel: "Rights-safe preparation",
     short_description: "A science-fiction classic candidate held until source, rights, and QA gates are complete.",
     pipeline_stage: "PIPELINE_ONLY",
-    cover_status: "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+    cover_status: "EDITORIAL_COVER_READY",
+    cover_image_url: SULTANAS_DREAM_FRONT_COVER_IMAGE,
+    thumbnail_url: SULTANAS_DREAM_FRONT_COVER_IMAGE,
     dominant_color: "#283E31",
   },
   {

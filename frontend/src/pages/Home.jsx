@@ -63,10 +63,16 @@ export default function Home() {
   );
   const shelfTwoBooks = useMemo(
     () =>
-      homepagePipelineBooks.map((book) => ({
+      homepagePipelineBooks.map((book, index) => ({
         id: book.slug,
+        slug: book.slug,
         title: book.displayTitle || book.title,
+        author: book.author,
         coverUrl: book.cover_image_url || book.thumbnail_url || book.back_cover_image_url || book.back_cover_thumbnail_url || "",
+        description: book.short_description || "",
+        statusLabel: book.statusLabel || "Rights-safe preparation",
+        dominantColor: book.dominant_color || "",
+        sequence: index + 1,
         status: "queued",
       })),
     [homepagePipelineBooks],
@@ -198,12 +204,15 @@ export default function Home() {
       >
         <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12 lg:py-12">
           <div className="mb-7">
-            <div className="overline mb-2">Shelf 2</div>
+            <div className="overline mb-2">Shelf II</div>
             <h2 id="bengali-gothic-pipeline-title" className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">
               Coming Through the Rights-Safe Pipeline
             </h2>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-charcoal-soft">
-              These books are not live products yet. They have Notify Me CTAs only, and no reader, checkout, or audiobook access.
+              A quieter second shelf for editions in preparation. These titles are visible as editorial promises only, with Notify Me CTAs and no reader, checkout, or audiobook access.
+            </p>
+            <p className="mt-3 max-w-2xl text-[0.68rem] uppercase tracking-[0.22em] text-[var(--brand-gold-deep)]/78">
+              Real cover-led presentation where available. No placeholder launch claims.
             </p>
           </div>
           <ShelfTwoSlideshow books={shelfTwoBooks} />
