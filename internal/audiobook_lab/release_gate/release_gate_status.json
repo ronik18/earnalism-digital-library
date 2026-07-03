@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T06:35:56+0000",
+  "generatedAt": "2026-07-03T06:42:13+0000",
   "command": "scripts/audiobook_production_pipeline.py --manifest internal/audiobook_lab/generated_candidate_restoration/restoration_manifest_20260702.json --title-limit 2",
   "summary": {
     "totalTitlesProcessed": 2,
@@ -80,11 +80,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Filled missing metadata 'title' in content/books/bn-031/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/bn-031/book.json from manifest",
         "Missing optional language metadata in content/books/bn-031/book.json"
       ]
     }
