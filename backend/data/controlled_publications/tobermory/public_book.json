@@ -1,0 +1,105 @@
+{
+  "id": "controlled-tobermory",
+  "slug": "tobermory",
+  "title": "Tobermory",
+  "subtitle": "",
+  "author": "Saki",
+  "category_slug": "adventure",
+  "short_description": "A scientist teaches a cat to speak — and the cat immediately reveals every secret it has overheard from its owners.",
+  "description": "Tobermory the cat can talk — and at a country house party, begins methodically exposing every guest's private hypocrisies and affairs. The guests' solution to the problem is elegantly dark. Saki's most socially devastating comedy.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "11 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Saki (H.H. Munro, 1870–1916) was a British author of darkly comic and macabre short stories.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Tobermory",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2723,
+      "reading_minutes": 12,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "source_hash": "c0abb8304ec61d1f36e5fec7972cac04bf3616016be5786927f7715b3f60923d",
+  "content_hash": "8918088acb7f9dd15022f86a8047cb7c6a6373273670491bb9048a3a76a01456",
+  "provenance_hash": "88cf527a80243e135ebb503f7ee1381abd3750d9a5716ebe6a89d4366f458c48",
+  "rights_basis": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "tobermory",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581098/earnalism/audiobooks/en/tobermory/tobermory.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581104/earnalism/audiobooks/en/tobermory/tobermory_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581105/earnalism/audiobooks/en/tobermory/tobermory_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581106/earnalism/audiobooks/en/tobermory/tobermory_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581107/earnalism/audiobooks/en/tobermory/tobermory_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581098/earnalism/audiobooks/en/tobermory/tobermory.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581098/earnalism/audiobooks/en/tobermory/tobermory.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581104/earnalism/audiobooks/en/tobermory/tobermory_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581105/earnalism/audiobooks/en/tobermory/tobermory_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581106/earnalism/audiobooks/en/tobermory/tobermory_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581107/earnalism/audiobooks/en/tobermory/tobermory_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:47Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z"
+}

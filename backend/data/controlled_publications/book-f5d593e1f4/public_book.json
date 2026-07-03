@@ -1,0 +1,105 @@
+{
+  "id": "controlled-book-f5d593e1f4",
+  "slug": "book-f5d593e1f4",
+  "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+  "subtitle": "",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "category_slug": "bengali-classics",
+  "short_description": "রবীন্দ্রনাথ ঠাকুরের একটি প্রারম্ভিক বাংলা ছোটগল্প।",
+  "description": "This cleaned Bengali text-only public-domain edition is prepared for structured digital reading on Earnalism.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944684/earnalism/covers/front/cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944684/earnalism/covers/front/cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944684/earnalism/covers/front/cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944684/earnalism/covers/front/cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944697/earnalism/covers/back/back_cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944697/earnalism/covers/back/back_cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944697/earnalism/covers/back/back_cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#24362E",
+  "estimated_reading_time": "6 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared Bengali classic.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe Bengali Unicode ebook."
+  ],
+  "who_for": [
+    "Bengali literature readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Engage with classic Bengali prose.",
+    "Understand the themes and narrative structure of the work.",
+    "Read the original Bengali text without modern adaptation material."
+  ],
+  "about_author": "রবীন্দ্রনাথ ঠাকুর ছিলেন বাংলা সাহিত্যের কবি, কথাসাহিত্যিক, নাট্যকার, প্রাবন্ধিক ও নোবেলজয়ী লেখক।",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Full Text",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 1407,
+      "reading_minutes": 6,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "source_hash": "f4bd2ecf4d9eb2dc5e3917bc45965c768463a34d9ced5f1dfe1e1f336b300827",
+  "content_hash": "44be13ff4842287ea358bc8ec0d2e90ea437abdd41dd9d527bb52e03d03a5cf0",
+  "provenance_hash": "96f13b64e75d574e6c94fa79a186f39f4bdeed875c52c7b9c6dacb55c1e06d5d",
+  "rights_basis": "Author died in 1941, so the original literary work is public domain in India under life plus 60 years. Original publication before 1931 supports U.S. public-domain status.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "book-f5d593e1f4",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780556631/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556632/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556633/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556633/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556634/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780556631/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780556631/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556632/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556633/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556633/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780556634/earnalism/audiobooks/ben/book-f5d593e1f4/book-f5d593e1f4_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:46Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
+  "created_at": "2026-07-03T20:07:46Z",
+  "updated_at": "2026-07-03T20:07:46Z"
+}

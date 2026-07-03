@@ -1,0 +1,13 @@
+{
+  "slug": "radharani",
+  "source_url": "https://bn.wikisource.org/wiki/%E0%A6%B0%E0%A6%BE%E0%A6%A7%E0%A6%BE%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A7%80_(%E0%A7%A7%E0%A7%AF%E0%A7%AA%E0%A7%A6)",
+  "source_name": "Bengali Wikisource",
+  "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
+  "source_hash": "e29154e89183d17245392bca25de332e4f58420c0977ba795d081a5ca36ae65e",
+  "content_hash": "4a3e2f9b0e0cdb6e2f4919c160573f0d4565559ce16ebb9aeb653f185b35e632",
+  "provenance_hash": "8c1eed1eb37a02d2ffe2c347043e1a7fed0442af22fc09ca9a7ce9ea6579759e",
+  "rights_basis": "Author died 1894. Original publication 1877. Public domain in India and the U.S.; source evidence kept internal/admin-only.",
+  "downloaded_at": "2026-06-03T08:51:47.797655+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

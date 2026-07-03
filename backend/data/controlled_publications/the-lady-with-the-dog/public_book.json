@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-lady-with-the-dog",
+  "slug": "the-lady-with-the-dog",
+  "title": "The Lady with the Dog",
+  "subtitle": "",
+  "author": "Anton Chekhov",
+  "category_slug": "literary-fiction",
+  "short_description": "A cynical womanizer falls genuinely and helplessly in love for the first time in his life.",
+  "description": "Gurov, a bored Moscow banker, begins an affair with Anna at a Black Sea resort — expecting nothing. But this time, something genuine happens to both of them, and the story ends not with resolution but with the terrifying truth of love just beginning.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "28 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Anton Chekhov (1860–1904) was a Russian physician and writer, the supreme master of the modern short story and one of the greatest playwrights in history.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Lady with the Dog",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 6628,
+      "reading_minutes": 28,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "source_hash": "ef9ab1135b609dfa39aac169c9ed8040ca003b939bc42b9146fd9f5187b147a8",
+  "content_hash": "a9ab87b91b94966ce08bd0bf12f90dc8c8a6d43a94eae87b66060b757d6f8913",
+  "provenance_hash": "36da7e420f971433c39a377d2156494d9e4c62d7aa767f6dfb4dfe8acc410bf8",
+  "rights_basis": "Anton Chekhov died 1904; first published 1899. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-lady-with-the-dog",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582791/earnalism/audiobooks/en/the-lady-with-the-dog/the-lady-with-the-dog.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582794/earnalism/audiobooks/en/the-lady-with-the-dog/the-lady-with-the-dog_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582795/earnalism/audiobooks/en/the-lady-with-the-dog/the-lady-with-the-dog_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582796/earnalism/audiobooks/en/the-lady-with-the-dog/the-lady-with-the-dog_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582797/earnalism/audiobooks/en/the-lady-with-the-dog/the-lady-with-the-dog_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582791/earnalism/audiobooks/en/the-lady-with-the-dog/the-lady-with-the-dog.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582791/earnalism/audiobooks/en/the-lady-with-the-dog/the-lady-with-the-dog.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582794/earnalism/audiobooks/en/the-lady-with-the-dog/the-lady-with-the-dog_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582795/earnalism/audiobooks/en/the-lady-with-the-dog/the-lady-with-the-dog_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582796/earnalism/audiobooks/en/the-lady-with-the-dog/the-lady-with-the-dog_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582797/earnalism/audiobooks/en/the-lady-with-the-dog/the-lady-with-the-dog_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:47Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z"
+}

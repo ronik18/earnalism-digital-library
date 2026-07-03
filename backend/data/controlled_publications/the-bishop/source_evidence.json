@@ -1,0 +1,13 @@
+{
+  "slug": "the-bishop",
+  "source_url": "https://www.gutenberg.org/ebooks/13419",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "706d537e20ed0eaeddb883abdd23d76a3fb4e68afe1221dbc04d63fb98314071",
+  "content_hash": "ccefe3574393cf2346a494eadfd2d7f8caf8c62dce483ada72923232a8c7bcf6",
+  "provenance_hash": "2892eb7ebd706d10de65ac92b95ca09cc9c258f591cc016148ec43253cbc46ef",
+  "rights_basis": "Anton Chekhov died 1904; first published 1902. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.890588+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "the-necklace",
+  "source_url": "https://www.gutenberg.org/ebooks/3080",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "bc5f461772b5583801472773e623c39ee14a218ae50b87715e24aa14b026549c",
+  "content_hash": "11dd5fc25c6413ce85715a6e09f717af89defd4ee69e13739275588e5d4a152c",
+  "provenance_hash": "647161385ead777380d68a8dd5ab420a248a85641e663ed72e7980d2426ba78d",
+  "rights_basis": "Guy de Maupassant died 1893; first published 1884. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.999223+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

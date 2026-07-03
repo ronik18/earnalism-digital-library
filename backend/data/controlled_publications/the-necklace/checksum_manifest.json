@@ -1,0 +1,34 @@
+{
+  "slug": "the-necklace",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "15faf85582c4909c0704cb3b395941d5a16d886e2d9b7436bb34fd454eab53d7"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "ff5ad23b596e1cefb422244058928c3eb29c02b62a4717e4fc13b7a7c05afce3"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "d64f8eed986ca81109bac99a967a74f8415f2d1888cd0822539ceabb75815024"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "3d44c29714dd380d9b85403eccc5193beb64d40cd95ef6523b4b35c58cec7ebf"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "970649ffc577d7b802bc31981bf7215c06e3bc57dbf4d24e7075774233ca0cdb"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "936199b64b84f7e30d2017959d706eae20de3854ae14ae7c184242a1d58635ff"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "ff0b4e463d678a5c7161e306db8f8f9da332df67db69d9bc481c84bacc3b1495"
+    }
+  ]
+}

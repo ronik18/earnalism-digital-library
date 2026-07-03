@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-bishop",
+  "slug": "the-bishop",
+  "title": "The Bishop",
+  "subtitle": "",
+  "author": "Anton Chekhov",
+  "category_slug": "literary-fiction",
+  "short_description": "A bishop, ill and dying, believes he sees his long-lost mother in the Easter congregation.",
+  "description": "Peter, a bishop conducting Easter services, sees a woman who may be his mother whom he has not seen in nine years. Illness, memory, holiness, and mortality blur in Chekhov's most quietly devastating story.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "27 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Anton Chekhov (1860–1904) was a Russian physician and writer, supreme master of the modern short story.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Bishop",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 6321,
+      "reading_minutes": 27,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "source_hash": "706d537e20ed0eaeddb883abdd23d76a3fb4e68afe1221dbc04d63fb98314071",
+  "content_hash": "ccefe3574393cf2346a494eadfd2d7f8caf8c62dce483ada72923232a8c7bcf6",
+  "provenance_hash": "2892eb7ebd706d10de65ac92b95ca09cc9c258f591cc016148ec43253cbc46ef",
+  "rights_basis": "Anton Chekhov died 1904; first published 1902. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-bishop",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582404/earnalism/audiobooks/en/the-bishop/the-bishop.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582407/earnalism/audiobooks/en/the-bishop/the-bishop_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582408/earnalism/audiobooks/en/the-bishop/the-bishop_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582409/earnalism/audiobooks/en/the-bishop/the-bishop_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582409/earnalism/audiobooks/en/the-bishop/the-bishop_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582404/earnalism/audiobooks/en/the-bishop/the-bishop.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582404/earnalism/audiobooks/en/the-bishop/the-bishop.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582407/earnalism/audiobooks/en/the-bishop/the-bishop_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582408/earnalism/audiobooks/en/the-bishop/the-bishop_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582409/earnalism/audiobooks/en/the-bishop/the-bishop_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582409/earnalism/audiobooks/en/the-bishop/the-bishop_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:47Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z"
+}

@@ -1,0 +1,105 @@
+{
+  "id": "controlled-book-b9d47814a8",
+  "slug": "book-b9d47814a8",
+  "title": "নিশীথে",
+  "subtitle": "",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "category_slug": "gothic-fiction",
+  "short_description": "গভীর রাতের অন্ধকারে এক অলৌকিক উপস্থিতির রহস্যময় ও শিহরণ জাগানো গল্প।",
+  "description": "In the dead of night, an unnamed narrator encounters a presence that may be supernatural or may be the projection of a guilty mind — Tagore's most atmospheric ghost story.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#24362E",
+  "estimated_reading_time": "15 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "নিশীথে",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 3512,
+      "reading_minutes": 15,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "source_hash": "6aa5605fb8527c091dc73ddc3ff7f857cd7d3e046e8da03750a9178a82f27b75",
+  "content_hash": "ee1ad578c70de41e5726395741bdbd61d5adbb058737b6c6c1feea2feb1484c2",
+  "provenance_hash": "5df1f60d195d79ab370b01099d7428775261f3be0631eaadc52490965ca532ba",
+  "rights_basis": "Author died 1941. Published 1895. Public domain in India and U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "book-b9d47814a8",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780572166/earnalism/audiobooks/ben/book-b9d47814a8/book-b9d47814a8.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572168/earnalism/audiobooks/ben/book-b9d47814a8/book-b9d47814a8_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572169/earnalism/audiobooks/ben/book-b9d47814a8/book-b9d47814a8_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572170/earnalism/audiobooks/ben/book-b9d47814a8/book-b9d47814a8_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572170/earnalism/audiobooks/ben/book-b9d47814a8/book-b9d47814a8_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780572166/earnalism/audiobooks/ben/book-b9d47814a8/book-b9d47814a8.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780572166/earnalism/audiobooks/ben/book-b9d47814a8/book-b9d47814a8.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572168/earnalism/audiobooks/ben/book-b9d47814a8/book-b9d47814a8_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572169/earnalism/audiobooks/ben/book-b9d47814a8/book-b9d47814a8_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572170/earnalism/audiobooks/ben/book-b9d47814a8/book-b9d47814a8_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572170/earnalism/audiobooks/ben/book-b9d47814a8/book-b9d47814a8_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:46Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
+  "created_at": "2026-07-03T20:07:46Z",
+  "updated_at": "2026-07-03T20:07:46Z"
+}

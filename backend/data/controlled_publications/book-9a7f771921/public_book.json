@@ -1,0 +1,105 @@
+{
+  "id": "controlled-book-9a7f771921",
+  "slug": "book-9a7f771921",
+  "title": "কর্মফল",
+  "subtitle": "",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "category_slug": "literary-fiction",
+  "short_description": "কর্মের ফল কীভাবে অপ্রত্যাশিত পথে ফিরে আসে তার রসময় ও দার্শনিক আখ্যান।",
+  "description": "A story of karmic irony — a man's actions return to him in ways he never anticipated, with Tagore's characteristic blend of humour and moral depth.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#24362E",
+  "estimated_reading_time": "40 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "কর্মফল",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 9636,
+      "reading_minutes": 41,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "source_hash": "3f3c089d1d1e2d5101210bbee5e39208f311bb193b92d2c80a085675f64a96ea",
+  "content_hash": "374e251418df4bbbde6b24fd9f42ebd845ecdf565870ac05cdd807a720884bde",
+  "provenance_hash": "fa83ecf75220478166c99b2041930f461b3e26ed7bb5b6926b8128dec5b45d68",
+  "rights_basis": "Author died 1941. Published 1895. Public domain in India and U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "book-9a7f771921",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780575836/earnalism/audiobooks/ben/book-9a7f771921/book-9a7f771921.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780575840/earnalism/audiobooks/ben/book-9a7f771921/book-9a7f771921_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780575840/earnalism/audiobooks/ben/book-9a7f771921/book-9a7f771921_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780575841/earnalism/audiobooks/ben/book-9a7f771921/book-9a7f771921_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780575842/earnalism/audiobooks/ben/book-9a7f771921/book-9a7f771921_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780575836/earnalism/audiobooks/ben/book-9a7f771921/book-9a7f771921.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780575836/earnalism/audiobooks/ben/book-9a7f771921/book-9a7f771921.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780575840/earnalism/audiobooks/ben/book-9a7f771921/book-9a7f771921_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780575840/earnalism/audiobooks/ben/book-9a7f771921/book-9a7f771921_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780575841/earnalism/audiobooks/ben/book-9a7f771921/book-9a7f771921_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780575842/earnalism/audiobooks/ben/book-9a7f771921/book-9a7f771921_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:46Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
+  "created_at": "2026-07-03T20:07:46Z",
+  "updated_at": "2026-07-03T20:07:46Z"
+}

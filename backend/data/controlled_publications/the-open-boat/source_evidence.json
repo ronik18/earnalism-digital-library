@@ -1,0 +1,13 @@
+{
+  "slug": "the-open-boat",
+  "source_url": "https://www.gutenberg.org/ebooks/45524",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "e7fa51d6106dd371a5600393fcab92df93df0faff629220a2020f78b7c067641",
+  "content_hash": "30022109ee7e0503e89495c105e8a7a3221a3ee8f04c38a90b27181f62d5e52a",
+  "provenance_hash": "381b7560800986250704937d0a5b765d32373241bcc5d3b8136f1a9a884fda6c",
+  "rights_basis": "Stephen Crane died 1900; first published 1897. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.159338+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

@@ -1,0 +1,62 @@
+{
+  "slug": "radharani",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "70033a19dd2602533f3d9a615088c58780c8316998a733cc54e98249ae1a98bf"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "99d60905465170aee59619d35edfce5a48d5ef14bc164fb4467518b512e241a7"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "e0f66981a3df09f6d2fd5052b98779ce8de72ea7eec6bb5477f3df2ce882af66"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "e92810669442c411e5d5fa8037251996c1360257900cee488b1597ce6904b538"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "44d18a1e78aaa49d81bb23d32d92c5f3573793ec3453bd54ec02efee9a64f555"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "10c6ac134a3b52f3277541183a026e73bbb9c6fc4c3b42526299a8ab27016fbe"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "7271c4ebc92d063108f6c607bc2e692d92050281e3dc6d9c4842bb1341732ca7"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "fc8063b99c98e6e01810c5158581d1ce510f8a0d2ab522290594c441f8a0df17"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "b62c932ad1d835194456f8da90b6de107ff0042c45846e5928856deeae2fb5e4"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "b596ebeaf548c4341b3ab57e437ccd5599859b2d212fad877bf82949736dd4f8"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "3573d1f217fe7594cd22baa84a3a1b8fc886e6409359b5252d4e65534ce6585d"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "62c64f1a551644b204cb9b3a3d433c06f269c772d2316cd36ce6c021071b762b"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "c7f149c71f489a1ed472f53b0063a1485f2a48f1ea148538d45bfd8619d8550b"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "60a3b81e22d84aefdfb6825673ecb5962b23f225de3f3d26c4adc3f25140426e"
+    }
+  ]
+}

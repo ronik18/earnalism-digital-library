@@ -1,0 +1,46 @@
+{
+  "slug": "muchiram-gurer-jibanchorit",
+  "title": "মুচিরাম গুড়ের জীবনচরিত",
+  "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+  "language": "ben",
+  "chapter_count": 2,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Chapter 1. প্রথম পরিচ্ছেদ",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 561,
+      "reading_minutes": 3,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "title": "Chapter 2. দ্বিতীয় পরিচ্ছেদ",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 352,
+      "reading_minutes": 2,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001",
+    "chapter-002"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:47Z"
+}

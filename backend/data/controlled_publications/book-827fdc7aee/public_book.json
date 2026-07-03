@@ -1,0 +1,105 @@
+{
+  "id": "controlled-book-827fdc7aee",
+  "slug": "book-827fdc7aee",
+  "title": "রাসমণির ছেলে",
+  "subtitle": "",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "category_slug": "literary-fiction",
+  "short_description": "এক দরিদ্র মায়ের পুত্রের উচ্চাকাঙ্ক্ষা ও তার বিচ্যুতির বেদনাদায়ক আখ্যান।",
+  "description": "Rasmoni's son rises from poverty into educated society — but success pulls him away from his roots and his mother in a story of class, ambition, and the price of belonging.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#24362E",
+  "estimated_reading_time": "44 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "রাসমণির ছেলে",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 10546,
+      "reading_minutes": 44,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "source_hash": "73789e5480cf2f077ad75c01ed713e5f350480f5e493d4886d4a1f8cabc22f2a",
+  "content_hash": "d06687a9cc39eaae8bb09cd5273c9a0047606893924392c225fa1db72a50863b",
+  "provenance_hash": "1346c562712008039c3581f121ef749ca1b540fd1a8db8ed11735b03eb6ccaf3",
+  "rights_basis": "Author died 1941. Published 1900. Public domain in India and U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "book-827fdc7aee",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780576458/earnalism/audiobooks/ben/book-827fdc7aee/book-827fdc7aee.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780576459/earnalism/audiobooks/ben/book-827fdc7aee/book-827fdc7aee_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780576460/earnalism/audiobooks/ben/book-827fdc7aee/book-827fdc7aee_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780576461/earnalism/audiobooks/ben/book-827fdc7aee/book-827fdc7aee_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780576462/earnalism/audiobooks/ben/book-827fdc7aee/book-827fdc7aee_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780576458/earnalism/audiobooks/ben/book-827fdc7aee/book-827fdc7aee.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780576458/earnalism/audiobooks/ben/book-827fdc7aee/book-827fdc7aee.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780576459/earnalism/audiobooks/ben/book-827fdc7aee/book-827fdc7aee_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780576460/earnalism/audiobooks/ben/book-827fdc7aee/book-827fdc7aee_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780576461/earnalism/audiobooks/ben/book-827fdc7aee/book-827fdc7aee_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780576462/earnalism/audiobooks/ben/book-827fdc7aee/book-827fdc7aee_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:46Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
+  "created_at": "2026-07-03T20:07:46Z",
+  "updated_at": "2026-07-03T20:07:46Z"
+}

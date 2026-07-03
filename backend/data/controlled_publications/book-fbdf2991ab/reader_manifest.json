@@ -1,0 +1,62 @@
+{
+  "slug": "book-fbdf2991ab",
+  "title": "সুভা",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "language": "ben",
+  "chapter_count": 3,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "২",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 439,
+      "reading_minutes": 2,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "title": "৩",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 374,
+      "reading_minutes": 2,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    },
+    {
+      "id": "chapter-003",
+      "order": 3,
+      "title": "৪",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 620,
+      "reading_minutes": 3,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001",
+    "chapter-002",
+    "chapter-003"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:46Z"
+}

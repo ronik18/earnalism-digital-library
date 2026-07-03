@@ -1,0 +1,105 @@
+{
+  "id": "controlled-a-mystery-of-heroism",
+  "slug": "a-mystery-of-heroism",
+  "title": "A Mystery of Heroism",
+  "subtitle": "",
+  "author": "Stephen Crane",
+  "category_slug": "gothic-fiction",
+  "short_description": "A soldier crosses a battlefield under fire to fetch water from a well — and the bucket is spilled in the final seconds.",
+  "description": "Fred Collins risks his life crossing an artillery-swept field to fetch water for his regiment. He returns with the bucket full — and two lieutenants, jostling each other in greeting, spill every drop. Crane's most ironic meditation on the nature of heroism.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "14 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Stephen Crane (1871–1900) was an American author and journalist, pioneer of naturalism in American fiction.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "A Mystery of Heroism",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 3413,
+      "reading_minutes": 15,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "source_hash": "f7dbf9d8194ae1cabc49bad7598b01e1094baae7fdbd294bf14369c0e822eccc",
+  "content_hash": "d17b7158385cf5f47704692be63189043372b91a143c9e02485d8b9cfe4e00fb",
+  "provenance_hash": "6e615167cdd7ffb8dc6a8d743a34f8b9184f80e8527ccf6e4b1f13d91c1f3628",
+  "rights_basis": "Stephen Crane died 1900; first published 1895. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "a-mystery-of-heroism",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581302/earnalism/audiobooks/en/a-mystery-of-heroism/a-mystery-of-heroism.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581303/earnalism/audiobooks/en/a-mystery-of-heroism/a-mystery-of-heroism_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581304/earnalism/audiobooks/en/a-mystery-of-heroism/a-mystery-of-heroism_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581305/earnalism/audiobooks/en/a-mystery-of-heroism/a-mystery-of-heroism_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581306/earnalism/audiobooks/en/a-mystery-of-heroism/a-mystery-of-heroism_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581302/earnalism/audiobooks/en/a-mystery-of-heroism/a-mystery-of-heroism.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581302/earnalism/audiobooks/en/a-mystery-of-heroism/a-mystery-of-heroism.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581303/earnalism/audiobooks/en/a-mystery-of-heroism/a-mystery-of-heroism_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581304/earnalism/audiobooks/en/a-mystery-of-heroism/a-mystery-of-heroism_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581305/earnalism/audiobooks/en/a-mystery-of-heroism/a-mystery-of-heroism_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581306/earnalism/audiobooks/en/a-mystery-of-heroism/a-mystery-of-heroism_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:47Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z"
+}

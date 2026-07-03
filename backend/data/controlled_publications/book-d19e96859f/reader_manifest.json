@@ -1,0 +1,30 @@
+{
+  "slug": "book-d19e96859f",
+  "title": "গিন্নি",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "language": "ben",
+  "chapter_count": 1,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Full Text",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 1007,
+      "reading_minutes": 5,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:46Z"
+}

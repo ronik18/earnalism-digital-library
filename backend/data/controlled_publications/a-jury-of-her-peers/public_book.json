@@ -1,0 +1,105 @@
+{
+  "id": "controlled-a-jury-of-her-peers",
+  "slug": "a-jury-of-her-peers",
+  "title": "A Jury of Her Peers",
+  "subtitle": "",
+  "author": "Susan Glaspell",
+  "category_slug": "literary-fiction",
+  "short_description": "Two women investigating a farmhouse murder find the evidence — and silently decide to hide it.",
+  "description": "While men search for motive in Minnie Wright's husband's murder, two women in the kitchen find it — a strangled canary, a broken birdcage, the evidence of a life of quiet cruelty. They pocket the evidence and say nothing. One of the great feminist stories in American literature.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "35 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Susan Glaspell (1876–1948) was an American playwright and author, a Pulitzer Prize winner and pioneering feminist voice.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "A Jury of Her Peers",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 8217,
+      "reading_minutes": 35,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "source_hash": "c19fcfb420fe99571e830c0794a0625d72ac2c74630ca7e4af2ec49202ec2b43",
+  "content_hash": "a9ef4839bef2ff5bf3c8f3ea7765dd131a04f0b3deda047c75efec96419b4325",
+  "provenance_hash": "5a10292b91d399e8422ccba67274a1cc3fb9c8d5667d2ca6d7212c4a3a6ccfc9",
+  "rights_basis": "Susan Glaspell died 1948; first published 1917. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "a-jury-of-her-peers",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584724/earnalism/audiobooks/en/a-jury-of-her-peers/a-jury-of-her-peers.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584725/earnalism/audiobooks/en/a-jury-of-her-peers/a-jury-of-her-peers_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584726/earnalism/audiobooks/en/a-jury-of-her-peers/a-jury-of-her-peers_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584727/earnalism/audiobooks/en/a-jury-of-her-peers/a-jury-of-her-peers_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584728/earnalism/audiobooks/en/a-jury-of-her-peers/a-jury-of-her-peers_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584724/earnalism/audiobooks/en/a-jury-of-her-peers/a-jury-of-her-peers.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780584724/earnalism/audiobooks/en/a-jury-of-her-peers/a-jury-of-her-peers.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584725/earnalism/audiobooks/en/a-jury-of-her-peers/a-jury-of-her-peers_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584726/earnalism/audiobooks/en/a-jury-of-her-peers/a-jury-of-her-peers_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584727/earnalism/audiobooks/en/a-jury-of-her-peers/a-jury-of-her-peers_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780584728/earnalism/audiobooks/en/a-jury-of-her-peers/a-jury-of-her-peers_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:47Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z"
+}

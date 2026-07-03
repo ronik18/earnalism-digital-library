@@ -1,0 +1,105 @@
+{
+  "id": "controlled-book-c85323409f",
+  "slug": "book-c85323409f",
+  "title": "জীবিত ও মৃত",
+  "subtitle": "",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "category_slug": "gothic-fiction",
+  "short_description": "মৃত বলে ধরে নেওয়া এক নারী জীবিত হয়ে ফিরলে সমাজ ও পরিবার কীভাবে সামলায় সেই বিব্রতকর পরিস্থিতির গল্প।",
+  "description": "Kadambini is declared dead and cremated — but she walks back into the world of the living. Society's inability to accept her survival, more than death itself, destroys her. A biting supernatural satire on social cruelty.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#24362E",
+  "estimated_reading_time": "15 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "জীবিত ও মৃত",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 3459,
+      "reading_minutes": 15,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "source_hash": "a3a670cd1107f63ab6b8df62ff5077d6245e4cfdcb772db39b78ca9e40c5a392",
+  "content_hash": "86f190d8981591db6470e84d7a543d9fb4b6c7079c033e71a026e2d949c6a2d2",
+  "provenance_hash": "c96d33fa58b0c2a7b57484c55e3484775b58ceea721f7500f23596e5d551e702",
+  "rights_basis": "Author died 1941. Published 1892. Public domain in India and U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "book-c85323409f",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780571718/earnalism/audiobooks/ben/book-c85323409f/book-c85323409f.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780571719/earnalism/audiobooks/ben/book-c85323409f/book-c85323409f_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780571720/earnalism/audiobooks/ben/book-c85323409f/book-c85323409f_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780571720/earnalism/audiobooks/ben/book-c85323409f/book-c85323409f_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780571721/earnalism/audiobooks/ben/book-c85323409f/book-c85323409f_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780571718/earnalism/audiobooks/ben/book-c85323409f/book-c85323409f.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780571718/earnalism/audiobooks/ben/book-c85323409f/book-c85323409f.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780571719/earnalism/audiobooks/ben/book-c85323409f/book-c85323409f_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780571720/earnalism/audiobooks/ben/book-c85323409f/book-c85323409f_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780571720/earnalism/audiobooks/ben/book-c85323409f/book-c85323409f_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780571721/earnalism/audiobooks/ben/book-c85323409f/book-c85323409f_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:46Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
+  "created_at": "2026-07-03T20:07:46Z",
+  "updated_at": "2026-07-03T20:07:46Z"
+}

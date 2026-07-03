@@ -1,0 +1,38 @@
+{
+  "slug": "muchiram-gurer-jibanchorit",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "7cb4e8248f7984bfadc3787b8be6eb7edb10a61db2ed9034deb83ef7dc5cdc49"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "70668eee5ad4d035034c25147fd51fdcb1a7ea91f4470b1adabed2b41db59d84"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "b1f7fda41647a4f3cb1b7bf2709a459355e59850e90e7e44239f13fdaa270f2e"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "b43fb86d49e355a1c11f660a43d798976dea9216fd0b710359e9f78506aa7fab"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "304fd60e3952495cfd1f9e4fd1c31994880ccd8144d8df05d5ec96a8d8eb3d53"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "b52ad326cec3bea4f1ea9381b2afcf7e27e394eb8b279e8a8dd926ac3f5847e8"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "c6a56abd3ca27dcb83417018f74e66ef45b491eacb83ed9d000bbb292f712da4"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "9172cf08cd6fe0009a376beb1911bfde55386e42385aa351f19388ee7e08834b"
+    }
+  ]
+}

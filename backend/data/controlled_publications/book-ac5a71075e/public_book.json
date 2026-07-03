@@ -1,0 +1,105 @@
+{
+  "id": "controlled-book-ac5a71075e",
+  "slug": "book-ac5a71075e",
+  "title": "পোস্টমাস্টার",
+  "subtitle": "",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "category_slug": "literary-fiction",
+  "short_description": "একজন তরুণ পোস্টমাস্টার ও তার এতিম সহায়িকার মধ্যে গড়ে ওঠা নিঃসঙ্গতার গল্প।",
+  "description": "A young postmaster posted to a remote village forms an unlikely bond with Ratan, an orphan girl who serves him. When he leaves, the asymmetry of their attachment becomes heartbreakingly clear.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#24362E",
+  "estimated_reading_time": "7 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি, ঔপন্যাসিক ও ছোটগল্পকার।",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "পোস্টমাস্টার",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 1697,
+      "reading_minutes": 8,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "source_hash": "b03136231d5436607a7b3c3ff298b1037d5061724e1042cf8fab24eb3bf94460",
+  "content_hash": "d9e2dab4904d87a1d516f1c668364f12d17087f781a572d8ee01c0e23cccc830",
+  "provenance_hash": "3ef4323bf1f198b0e48ad9c6913c497b02ab567b889fcdb0ae439ab003d4a5a3",
+  "rights_basis": "Author died 1941. Published 1891. Public domain in India and U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "book-ac5a71075e",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780561051/earnalism/audiobooks/ben/book-ac5a71075e/book-ac5a71075e.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780561053/earnalism/audiobooks/ben/book-ac5a71075e/book-ac5a71075e_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780561054/earnalism/audiobooks/ben/book-ac5a71075e/book-ac5a71075e_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780561055/earnalism/audiobooks/ben/book-ac5a71075e/book-ac5a71075e_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780561056/earnalism/audiobooks/ben/book-ac5a71075e/book-ac5a71075e_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780561051/earnalism/audiobooks/ben/book-ac5a71075e/book-ac5a71075e.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780561051/earnalism/audiobooks/ben/book-ac5a71075e/book-ac5a71075e.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780561053/earnalism/audiobooks/ben/book-ac5a71075e/book-ac5a71075e_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780561054/earnalism/audiobooks/ben/book-ac5a71075e/book-ac5a71075e_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780561055/earnalism/audiobooks/ben/book-ac5a71075e/book-ac5a71075e_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780561056/earnalism/audiobooks/ben/book-ac5a71075e/book-ac5a71075e_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:46Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
+  "created_at": "2026-07-03T20:07:46Z",
+  "updated_at": "2026-07-03T20:07:46Z"
+}

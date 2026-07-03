@@ -1,0 +1,120 @@
+{
+  "id": "controlled-muchiram-gurer-jibanchorit",
+  "slug": "muchiram-gurer-jibanchorit",
+  "title": "মুচিরাম গুড়ের জীবনচরিত",
+  "subtitle": "",
+  "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+  "category_slug": "literary-fiction",
+  "short_description": "ঔপনিবেশিক আমলের সুবিধাবাদী বাঙালি চরিত্রের নির্মম ব্যঙ্গচিত্র।",
+  "description": "The biography of Muchiram Gur — an opportunistic Bengali who rises through flattery, hypocrisy and collaboration with colonial power — Bankim's most savage satirical portrait of the compromised Bengali middle class.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#24362E",
+  "estimated_reading_time": "4 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৩৮–১৮৯৪) আধুনিক বাংলা সাহিত্যের জনক।",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Chapter 1. প্রথম পরিচ্ছেদ",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 561,
+      "reading_minutes": 3,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "title": "Chapter 2. দ্বিতীয় পরিচ্ছেদ",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 352,
+      "reading_minutes": 2,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "source_hash": "733466ffdadc8f5c0172023edd5c0ba7327387d65d0c46b1b881a26e303e800a",
+  "content_hash": "dea6e37479af7c2067c5929999da22f8b2f49aeb2d0abd9741da4e7f01e6ba48",
+  "provenance_hash": "5684356538fbb400de644b128c8ac1307bf46f737170d77dec156e1e1ac5f8a4",
+  "rights_basis": "Author died 1894. Original publication 1884. Public domain in India and the U.S.; source evidence kept internal/admin-only.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "muchiram-gurer-jibanchorit",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780555866/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780555867/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780555868/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780555868/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780555869/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780555866/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780555866/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780555867/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780555868/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780555868/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780555869/earnalism/audiobooks/ben/muchiram-gurer-jibanchorit/muchiram-gurer-jibanchorit_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:47Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z"
+}
