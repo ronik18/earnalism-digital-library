@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T10:01:54+0000",
+  "generatedAt": "2026-07-03T10:06:19+0000",
   "command": "scripts/audiobook_production_pipeline.py --manifest internal/audiobook_lab/generated_candidate_restoration/restoration_manifest_20260702.json",
   "summary": {
     "totalTitlesProcessed": 152,
@@ -13,7 +13,7 @@
     "fallbackAudioCount": 0,
     "autoEstimatedSyncCount": 0,
     "openaiFailures": 152,
-    "manualRequiredCount": 0
+    "manualRequiredCount": 152
   },
   "titles": {
     "bn-027": {
@@ -43,7 +43,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -77,7 +77,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -111,7 +111,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -145,7 +145,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -179,7 +179,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -213,7 +213,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -247,7 +247,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -281,7 +281,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -315,7 +315,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -349,7 +349,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -383,7 +383,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -417,7 +417,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -451,7 +451,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -485,7 +485,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -519,7 +519,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -553,7 +553,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -587,7 +587,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -621,7 +621,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -655,7 +655,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -689,7 +689,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -723,7 +723,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -757,7 +757,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -791,7 +791,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -825,7 +825,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -859,7 +859,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -893,7 +893,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -927,7 +927,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -961,7 +961,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -995,7 +995,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1029,7 +1029,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1063,7 +1063,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1097,7 +1097,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1131,7 +1131,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1165,7 +1165,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1199,7 +1199,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1233,7 +1233,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1267,7 +1267,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1301,7 +1301,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1335,7 +1335,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1369,7 +1369,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1403,7 +1403,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1437,7 +1437,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1471,7 +1471,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1505,7 +1505,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1539,7 +1539,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1573,7 +1573,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1607,7 +1607,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1641,7 +1641,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1675,7 +1675,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1709,7 +1709,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1743,7 +1743,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1778,7 +1778,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1812,7 +1812,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1846,7 +1846,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1880,7 +1880,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1914,7 +1914,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1948,7 +1948,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -1983,7 +1983,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2017,7 +2017,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2051,7 +2051,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2085,7 +2085,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2119,7 +2119,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2154,7 +2154,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2188,7 +2188,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2222,7 +2222,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2257,7 +2257,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2291,7 +2291,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2325,7 +2325,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2359,7 +2359,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2393,7 +2393,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2428,7 +2428,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2462,7 +2462,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2497,7 +2497,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2532,7 +2532,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2569,7 +2569,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2604,7 +2604,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2638,7 +2638,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2673,7 +2673,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2708,7 +2708,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2743,7 +2743,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2778,7 +2778,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2812,7 +2812,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2846,7 +2846,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2880,7 +2880,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2915,7 +2915,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2949,7 +2949,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -2984,7 +2984,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3018,7 +3018,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3053,7 +3053,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3087,7 +3087,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3121,7 +3121,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3155,7 +3155,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3189,7 +3189,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3223,7 +3223,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3258,7 +3258,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3292,7 +3292,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3326,7 +3326,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3361,7 +3361,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3395,7 +3395,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3430,7 +3430,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3465,7 +3465,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3499,7 +3499,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3533,7 +3533,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3567,7 +3567,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3602,7 +3602,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3636,7 +3636,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3670,7 +3670,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3704,7 +3704,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3738,7 +3738,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3773,7 +3773,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3807,7 +3807,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3842,7 +3842,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3876,7 +3876,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3910,7 +3910,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3945,7 +3945,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -3979,7 +3979,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4013,7 +4013,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4047,7 +4047,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4081,7 +4081,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4115,7 +4115,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4149,7 +4149,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4184,7 +4184,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4219,7 +4219,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4253,7 +4253,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4287,7 +4287,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4321,7 +4321,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4355,7 +4355,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4389,7 +4389,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4423,7 +4423,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4457,7 +4457,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4491,7 +4491,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4526,7 +4526,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4560,7 +4560,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4594,7 +4594,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4628,7 +4628,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4662,7 +4662,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4697,7 +4697,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4731,7 +4731,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4765,7 +4765,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4799,7 +4799,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4834,7 +4834,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4868,7 +4868,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4902,7 +4902,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4936,7 +4936,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -4970,7 +4970,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -5004,7 +5004,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -5038,7 +5038,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -5072,7 +5072,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -5107,7 +5107,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -5141,7 +5141,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -5175,7 +5175,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -5209,7 +5209,7 @@
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
@@ -6316,7 +6316,160 @@
     ]
   },
   "approvedForLive": [],
-  "manual_required_queue": [],
+  "manual_required_queue": [
+    "bn-027",
+    "bn-031",
+    "bn-035",
+    "bn-036",
+    "bn-041",
+    "bn-059",
+    "bn-060",
+    "bn-066",
+    "book-0986aeb7e3",
+    "book-0deb35c750",
+    "book-0fbdaa730e",
+    "book-1090573dff",
+    "book-2b9853ec52",
+    "book-2ddbed8293",
+    "book-2e468c4990",
+    "book-4968248842",
+    "book-4b944e64fa",
+    "book-5461971092",
+    "book-5704b31005",
+    "book-5aedda79fe",
+    "book-63afd5e9be",
+    "book-754da4eab8",
+    "book-827fdc7aee",
+    "book-88ded9b47c",
+    "book-95624627d5",
+    "book-9a7f771921",
+    "book-a23625bf36",
+    "book-a4a369483f",
+    "book-a74c1a1451",
+    "book-ac5a71075e",
+    "book-b9d47814a8",
+    "book-bfc51280b3",
+    "book-c307a57868",
+    "book-c7f3ce526c",
+    "book-c85323409f",
+    "book-d19e96859f",
+    "book-d2fe532e1c",
+    "book-edfcf810c5",
+    "book-ef193ffc52",
+    "book-f5d593e1f4",
+    "book-fbdf2991ab",
+    "lokrahasya",
+    "mrinalini",
+    "muchiram-gurer-jibanchorit",
+    "nishkriti",
+    "radharani",
+    "yugalanguriya",
+    "a-jury-of-her-peers",
+    "a-mystery-of-heroism",
+    "a-retrieved-reformation",
+    "berenice",
+    "boule-de-suif",
+    "love-of-life",
+    "pauls-case",
+    "rikki-tikki-tavi",
+    "the-art-of-money-getting",
+    "the-bishop",
+    "the-canterville-ghost",
+    "the-country-of-the-blind",
+    "the-darling",
+    "the-door-in-the-wall",
+    "the-lady-with-the-dog",
+    "the-lifted-veil",
+    "the-necklace",
+    "the-open-boat",
+    "the-stolen-white-elephant",
+    "the-tell-tale-heart",
+    "the-wonderful-wizard-of-oz",
+    "the-yellow-wallpaper",
+    "tobermory",
+    "ward-no-6",
+    "alices-adventures-in-wonderland",
+    "bharat-at-the-crossroads",
+    "dracula",
+    "frankenstein",
+    "great-expectations",
+    "jane-eyre",
+    "pride-and-prejudice",
+    "the-adventures-of-sherlock-holmes",
+    "the-call-of-the-wild",
+    "the-fall-of-the-house-of-usher",
+    "the-great-gatsby",
+    "the-man-who-would-be-king",
+    "the-monkeys-paw",
+    "the-picture-of-dorian-gray",
+    "the-secret-garden",
+    "the-strange-case-of-dr-jekyll-and-mr-hyde",
+    "the-time-machine",
+    "white-fang",
+    "a-ghost-story",
+    "a-horseman-in-the-sky",
+    "a-scandal-in-bohemia",
+    "a-wagner-matinee",
+    "a-white-heron",
+    "acres-of-diamonds",
+    "an-occurrence-at-owl-creek-bridge",
+    "dsires-baby",
+    "feathertop",
+    "markheim",
+    "my-life-and-work",
+    "rappaccinis-daughter",
+    "rip-van-winkle",
+    "sredni-vashtar",
+    "the-adventure-of-charles-augustus-milverton",
+    "the-adventure-of-the-abbey-grange",
+    "the-adventure-of-the-beryl-coronet",
+    "the-adventure-of-the-blue-carbuncle",
+    "the-adventure-of-the-copper-beeches",
+    "the-adventure-of-the-dancing-men",
+    "the-adventure-of-the-empty-house",
+    "the-adventure-of-the-engineers-thumb",
+    "the-adventure-of-the-final-problem",
+    "the-adventure-of-the-greek-interpreter",
+    "the-adventure-of-the-noble-bachelor",
+    "the-adventure-of-the-priory-school",
+    "the-adventure-of-the-second-stain",
+    "the-adventure-of-the-solitary-cyclist",
+    "the-ambitious-guest",
+    "the-bet",
+    "the-celebrated-jumping-frog-of-calaveras-county",
+    "the-cop-and-the-anthem",
+    "the-enchanted-april",
+    "the-five-orange-pips",
+    "the-furnished-room",
+    "the-gift-of-the-magi",
+    "the-happy-prince",
+    "the-imp-of-the-perverse",
+    "the-last-leaf",
+    "the-legend-of-sleepy-hollow",
+    "the-luck-of-roaring-camp",
+    "the-man-in-a-case",
+    "the-man-with-the-twisted-lip",
+    "the-masque-of-the-red-death",
+    "the-metamorphosis",
+    "the-ministers-black-veil",
+    "the-most-dangerous-game",
+    "the-murders-in-the-rue-morgue",
+    "the-open-window",
+    "the-outcasts-of-poker-flat",
+    "the-pit-and-the-pendulum",
+    "the-principles-of-scientific-management",
+    "the-purloined-letter",
+    "the-ransom-of-red-chief",
+    "the-red-headed-league",
+    "the-science-of-getting-rich",
+    "the-selfish-giant",
+    "the-speckled-band",
+    "the-student",
+    "the-suicide-club",
+    "the-withered-arm",
+    "to-build-a-fire",
+    "young-goodman-brown"
+  ],
   "estimated_total_api_cost_usd": 0.0,
   "sourceCandidateCount": 152,
   "retry_count_total": 152
