@@ -1,0 +1,105 @@
+{
+  "id": "controlled-bn-027",
+  "slug": "bn-027",
+  "title": "অপরিচিতা",
+  "subtitle": "",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "category_slug": "literary-fiction",
+  "short_description": "বিয়ের পিঁড়িতে বসেও যে মেয়ে নিজের সম্মান রক্ষায় অস্বীকার করতে পারে — সেই অসাধারণ নারীর গল্প।",
+  "description": "At her own wedding, Kalyani refuses to go through with the ceremony when her father is humiliated over dowry. Her act of dignified refusal becomes one of Bengali literature's most celebrated feminist moments.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_scale",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_scale",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_scale",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_scale",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_scale",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_scale",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_scale",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#24362E",
+  "estimated_reading_time": "17 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "অপরিচিতা",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 4054,
+      "reading_minutes": 17,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T18:46:48Z",
+      "updated_at": "2026-07-03T18:46:48Z"
+    }
+  ],
+  "source_hash": "c72dcc9a084a75b70c14ed578248cfeb7c57960bdd356abf9317f74828456015",
+  "content_hash": "8c5f7931df3930b2030f8ea5dcc8c3f697eacf52f220a181c953430d59843349",
+  "provenance_hash": "c1722bfea14cf52b8ca39358d9e408aced46d178092dac0dd2ca1857a1a07a7d",
+  "rights_basis": "Author died 1941. Published 1914. Public domain checks are enforced by the Earnalism import pipeline; source evidence kept internal/admin-only.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "cloudinary",
+  "audiobook_voice": "command:bn-IN-TanishaaNeural",
+  "audio_asset_slug": "bn-027",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781262669/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1.mp3.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262672/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262672/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262673/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262674/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781262669/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1.mp3.mp3",
+    "provider": "cloudinary",
+    "size": 17008057,
+    "duration_ms": 2125920,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781262669/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1.mp3.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262672/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262672/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262673/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262674/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_meta.json"
+    },
+    "updated_at": "2026-06-12T11:11:16.733092+00:00"
+  },
+  "audiobook_assets_updated_at": "2026-06-12T11:11:16.733129+00:00",
+  "created_at": "2026-07-03T18:46:48Z",
+  "updated_at": "2026-07-03T18:46:48Z"
+}

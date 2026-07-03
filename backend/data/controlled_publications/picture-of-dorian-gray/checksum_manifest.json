@@ -1,0 +1,106 @@
+{
+  "slug": "picture-of-dorian-gray",
+  "generated_at": "2026-07-01T10:36:20Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "f2ef686579fc637b62e5bd75faf12ebb57ce201311af4a9b5339ffd0b8fa0a92"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "5547693f484f9fdb86f7d1faed653d4162dc95bd737fbe9153d882f6a6520ed3"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "6a3738160ee211b613292358cc540739df73934996dab435ba596bc8bb09b77a"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "996991160e868b04024f0b4ddc2628ca51f70cbfc492889538a2ce4bdfc3aa03"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "6487441b21bcf50cd5cc731cb34c22e0d2cd87cf15a5e8b8b20730f843861fcd"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "c00e3e4a2f59f01fc8963de59d0722d4d055c434a860dc76a28535dd50d60efb"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "798b23aeea938fd8a96c7217aa7460842a3ebbcf73971d75c5839eb9cddfe470"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "ab1988ecbc9fce2c94acd1dc0f44ca54c504d1945134897a999a78679552edc3"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "b4a3ff8e7011b88f77fd88fe175e2b0dc1b332663abcffb30baa5abe7c480446"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "26c17a7dfdc7cb6db614aadef76f193655f7c2e9b059a9369d4c60eeaeeff98b"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "d5474191116090cbbaac1640f3fa627d4b48695f7b6d5ede6abdf84e2d76fb35"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "1c6f6a3e276ae96d649e87eefc85fae58f228de959c25f13e715d36ce7191e1e"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "210f36d67d28410b078c01d79e6d5d4e9d9c4a0426e1f4f4f96f05d4b3541034"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "f71c0098af48ccc577d1a11f447c7a68f8acaf6336e2768867f0343fc878908c"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "60f1324ef3e4765372457ce535f423571f12da3c86709159ce93695460927f3b"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "534135880dd7a50841a79483d637987332911b837afd8ad1d8fb8683258dc79f"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "4495b105909fa322feb938ed0b3f53d1f1100e2e71433b7dd015583c49125b0a"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "69e4ec0481d1fd3c8846036fd8a14eb4250af7601c5d557d581452d6855ebc22"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "fc94d7085095ffb3d2dae4d0826c7131684fb8335805b34b1008713db4b916ec"
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "b7b4080a01a28ade5071fe26bd8b9eb704b56e602a30c4fef9d40daaae37620a"
+    },
+    {
+      "file": "chapters/chapter-017.json",
+      "sha256": "6c627e2061a18169e38119603af3bb91974da4c4b432e7095ecbe67a9e555ff7"
+    },
+    {
+      "file": "chapters/chapter-018.json",
+      "sha256": "ebccc712de085c3272a59b8d2d8db9f3264a10cd0e268ff98ef2abf8f3987d85"
+    },
+    {
+      "file": "chapters/chapter-019.json",
+      "sha256": "e9841007c53dff7c9642ef477071a9fd67c3cfc9c0a54cba3ba32da911470c41"
+    },
+    {
+      "file": "chapters/chapter-020.json",
+      "sha256": "4781ee3dc6386db53e79fa7823f9212f4e051c29d1243fdf0d0f3d193ac8bff9"
+    },
+    {
+      "file": "chapters/chapter-021.json",
+      "sha256": "d2686aa55c9ecc0f1b3c0d367f69aa63bd452dfa5f9c9e375be22a825bafe485"
+    }
+  ]
+}

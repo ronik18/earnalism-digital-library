@@ -1,0 +1,30 @@
+{
+  "slug": "the-art-of-money-getting",
+  "title": "The Art of Money Getting",
+  "author": "P. T. Barnum",
+  "language": "en",
+  "chapter_count": 1,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Art of Money Getting",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 13564,
+      "reading_minutes": 57,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T18:46:49Z",
+      "updated_at": "2026-07-03T18:46:49Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T18:46:49Z"
+}

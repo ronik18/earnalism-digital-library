@@ -1,0 +1,72 @@
+{
+  "id": "controlled-carmilla",
+  "slug": "carmilla",
+  "title": "Carmilla",
+  "subtitle": "",
+  "author": "J. Sheridan Le Fanu",
+  "category_slug": "classic-literature",
+  "short_description": "A clean Earnalism reader edition of Carmilla, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
+  "description": "A clean Earnalism reader edition of Carmilla, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "118 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a cleaned public-domain text without source repository boilerplate.",
+    "Use the quiet Earnalism reader with chapter navigation.",
+    "Access the work in a clean, chaptered reader."
+  ],
+  "who_for": [
+    "Readers of public-domain classics",
+    "Students and careful rereaders"
+  ],
+  "learnings": [
+    "A source-faithful public-domain reading edition prepared for Earnalism."
+  ],
+  "about_author": "",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "CHAPTER XVI. Conclusion",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 28115,
+      "reading_minutes": 118,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-01T10:36:20Z",
+      "updated_at": "2026-07-01T10:36:20Z"
+    }
+  ],
+  "source_hash": "78e7f997e45a31d35a792805a1aec2800a896adee030c9b459f2357aee8db2c5",
+  "content_hash": "5b54ba7acab17ed4c6819f91a713736b22adaedf797fac9425e5d1ecbd90fa4b",
+  "provenance_hash": "212316f0e50b7ac69139ffd3e400ec93f73f1b2c270fb581e1cdf8d8d0a7f87e",
+  "rights_basis": "public_domain",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_assets": {},
+  "audiobook": {},
+  "created_at": "2026-07-01T10:36:20Z",
+  "updated_at": "2026-07-01T10:36:22Z"
+}

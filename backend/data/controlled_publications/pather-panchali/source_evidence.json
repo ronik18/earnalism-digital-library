@@ -1,0 +1,13 @@
+{
+  "slug": "pather-panchali",
+  "source_url": "https://bn.wikisource.org/wiki/পথের_পাঁচালী",
+  "source_name": "Bengali Wikisource",
+  "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
+  "source_hash": "0f3626226a1ecc776a89670b8a9e53d2a6c4ee373afab6be0fa387ae59f90c8f",
+  "content_hash": "51a3175817002fb99a5cdf88b6e51819855b6c92a985558071fe1df0bde33435",
+  "provenance_hash": "6bd378cf51938be88b825f1cfa3866a19868167db9792c22511a4797af5fef5a",
+  "rights_basis": "public_domain",
+  "downloaded_at": "2026-07-01T10:36:20Z",
+  "source_format": "mediawiki-parse-api-html",
+  "reader_facing_boilerplate_removed": true
+}

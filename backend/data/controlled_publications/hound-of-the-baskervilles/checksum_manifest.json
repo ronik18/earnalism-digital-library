@@ -1,0 +1,82 @@
+{
+  "slug": "hound-of-the-baskervilles",
+  "generated_at": "2026-07-01T10:36:20Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "f120918bd3ec3d5b47305a53414428c98038d04af7ebf15e585f36e7277bef7c"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "e7765a56bdc879b6420bf9bfad4508cc79c058e20037fa90032b6eb7a53d5762"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "a225b3dbe3b02e3d1ff2f95047740d19da0ce4b1cd93370ccdc9281bb93972ba"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "82154abb5d71c90f5888ffb64501e9a0707ed6e6a263a9fc81f4751df5d80ebb"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "20cb90808c8d9d42f8014d080540e9f5c813c429fd5c05b82ec9a2735e847902"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "61d5a7ea5fd4cb6f9e2f14d4a2438625e978b2277b54145199ddf69a8d5cb885"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "63d32531c0a1f13affb0c6915542bcdd8855ed77826bb456c2b5bd1fab887cc0"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "e7b5cd5c65fecaf807958f2e014895532378453ca7d15af690adc1be401ea467"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "6deaaac3b797aa13e3616f5c715bf6b8d36f0b82a9705bf397bb1b4aa65b169e"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "f893038df973cebc0fa75905ea6b28b705c43378d12c4518c16dba223b0fdf7d"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "754e92a895f7c1728010a7e158d81d3f77bb02987706e942942910d33ae959ce"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "fcc464b6c9f303084173d36b85009c2d721917f215724c82e7dfa28b5ee19bd1"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "bc6b3ca086f986e5b3eb43007d43d5f349ca3270d89273a4808957ef1d8b7b31"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "31710d85bb9bbddc2a53da76a664976a79dc65157fe68498fb09092aa3e08273"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "64e1db1b040be2ac6342caa975343951f0885f1acf7083c33b5a2b7b24ed02df"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "9f33d1fb2aa09e57564899c1f9f575979ae19c346be0a4b30ceb8f1dd257225f"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "5f6c88875632b7e983b936cec67a0b08139fb990040ac34d32c2fe4a0f825580"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "91e9854d8858a0d1d48dc15b4135affc65c56c5e758e48eb37b67794f396c4bd"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "3573a241494dc8de8432d41a382b8ec59d4085b54d16fd4bafd08b2f6ac2f782"
+    }
+  ]
+}

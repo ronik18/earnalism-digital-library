@@ -1,0 +1,13 @@
+{
+  "slug": "carmilla",
+  "source_url": "https://www.gutenberg.org/ebooks/10007",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
+  "source_hash": "78e7f997e45a31d35a792805a1aec2800a896adee030c9b459f2357aee8db2c5",
+  "content_hash": "5b54ba7acab17ed4c6819f91a713736b22adaedf797fac9425e5d1ecbd90fa4b",
+  "provenance_hash": "212316f0e50b7ac69139ffd3e400ec93f73f1b2c270fb581e1cdf8d8d0a7f87e",
+  "rights_basis": "public_domain",
+  "downloaded_at": "2026-07-01T10:36:20Z",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

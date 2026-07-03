@@ -1,0 +1,122 @@
+{
+  "slug": "the-wonderful-wizard-of-oz",
+  "generated_at": "2026-07-03T18:46:49Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "aafd564c1152337e87430645c9d58524de4d2f98e8ef3628f83b9548e2629045"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "32c5e5256e2584ee9acda5cc8a83ecd7dbccd7ba23a224339c0b9b34c5a753d2"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "134e6765e16a786f31d75b2b791dc97d199a40fca025f02c4bc8b556e7d94a2e"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "6e2af8711b1ca09c95333e54d08cf400b3c223046d007bdcd10260a937858296"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "abd2f08a6924833316c663399e4b135a75ccabbdc6ae388e552c652824213e33"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "a38532948200f9ab8d372ef06e6daa07471f845696dd431e7a87c5bdfe8e5c5f"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "95d7c99aecd3f38d0aa6acc99d58761521bfd481845a3d79122774e2047b2bff"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "7141e39c60e6529bc43dc1ec70e45e2bfc03e2f0806fda4856c274f1af729ff4"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "d5624a0b574720c9d7a60ec63818c390744cdc7758f8eee224967cbaa554484d"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "e97c72f3ad51efbf982fe4e982a6a7b6911470eb696f94d0e1a7bd0116b21d39"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "11958a08e902290f1a3f685e3bc3aed090015a04108655e54c6a800b2c94593a"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "2e2eb2e9ee9242627df13ef1453141da705c3ae21a1d04fa652654d1f1659a0e"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "3aaadee598721641a6107a134b409ced996abed0f9cef916fd960f725a8ee737"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "af86aa46b027fb54995bee218dfd5f49e85593f26dc9a8b5260ae60cbd4d6a6e"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "28d6bd9e0336276641be1ed0e122a7b60f83c7c95c3216d136abf14a38c47abe"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "3d47aa1205019727a434189ddacc5dc43426ac31405410c1e056db764116918c"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "f3740c25cc50bb37e0b1433f54e6bf0743ac4848bfabbbd2c95a243a65d924d6"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "13eb24617a8777f74e8e40086570109858a705376218d9f090f6a675887e1143"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "77eece192e4ad607f728196a129e6cd7ada6df4ab2400ad725cf20fe17237e7a"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "4ea65ba1cd4565acb63a2695982084bc4aaadda2828f386514597b32735824e2"
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "7e6c7d5347bfb2c9cef2b6e6adc2747322587a4ba5d7ffc5bc9a92d6a3d1cca2"
+    },
+    {
+      "file": "chapters/chapter-017.json",
+      "sha256": "766be34c5d94f247e84d58b87743333124f9defb2dc672ef0c86f902535cf71c"
+    },
+    {
+      "file": "chapters/chapter-018.json",
+      "sha256": "a80d7b0772b0808248f6079a0fe21d248e8fe9e1a341a260dcb5202d36544c89"
+    },
+    {
+      "file": "chapters/chapter-019.json",
+      "sha256": "44c26cbf2c821a08b83386e94c370ae095844a737a5b017adfe122433e7381b5"
+    },
+    {
+      "file": "chapters/chapter-020.json",
+      "sha256": "ce874838e5dc138e768617816bfe3da17632c6171bdd880126a50f71cc9be37b"
+    },
+    {
+      "file": "chapters/chapter-021.json",
+      "sha256": "c8f07a2e9a0f7111ea6adcbb78b6ca1f9edccf5efe9ae7c07e85a82ccc6f8782"
+    },
+    {
+      "file": "chapters/chapter-022.json",
+      "sha256": "d5b2f422d0e7fee959078bb81e551611fa71694819838911f905c4c35c028a24"
+    },
+    {
+      "file": "chapters/chapter-023.json",
+      "sha256": "a5e4bcb71a9bf0c7255cc9e5ce6a51da8e660c5e124a74de1185438e2dbb9567"
+    },
+    {
+      "file": "chapters/chapter-024.json",
+      "sha256": "b6d8b3eb5fecc3482bfd0a02e2a51cd53bc24191604347a52aba36ac3e38aabb"
+    }
+  ]
+}

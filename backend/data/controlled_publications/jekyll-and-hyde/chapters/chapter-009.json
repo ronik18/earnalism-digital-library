@@ -1,0 +1,20 @@
+{
+  "id": "chapter-009",
+  "bookSlug": "jekyll-and-hyde",
+  "order": 9,
+  "title": "“HENRY JEKYLL.”",
+  "language": "en",
+  "content": "“There was a third enclosure?” asked Utterson.\n\n“Here, sir,” said Poole, and gave into his hands a considerable packet sealed in several places.\n\nThe lawyer put it in his pocket. “I would say nothing of this paper. If your master has fled or is dead, we may at least save his credit. It is now ten; I must go home and read these documents in quiet; but I shall be back before midnight, when we shall send for the police.”\n\nThey went out, locking the door of the theatre behind them; and Utterson, once more leaving the servants gathered about the fire in the hall, trudged back to his office to read the two narratives in which this mystery was now to be explained.",
+  "content_hash": "eaea661690895f38c0bed71670c7535818c1823228f509bfb2e88b51ff29d4be",
+  "sourceSha256": "7e19df634b5db327f75392f934268bc232179bd17c44e52fc399b640a0375958",
+  "sanitizedSha256": "eaea661690895f38c0bed71670c7535818c1823228f509bfb2e88b51ff29d4be",
+  "word_count": 124,
+  "reading_minutes": 1,
+  "is_preview": true,
+  "has_images": false,
+  "image_count": 0,
+  "processing_status": "ready",
+  "processing_warnings": [],
+  "uploaded_at": "2026-07-01T10:36:20Z",
+  "updated_at": "2026-07-01T10:36:20Z"
+}

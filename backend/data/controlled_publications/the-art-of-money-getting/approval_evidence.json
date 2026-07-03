@@ -1,0 +1,12 @@
+{
+  "slug": "the-art-of-money-getting",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "historical_admin_import_reconstruction",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_PENDING_ASSET_MAPPING",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false
+}
