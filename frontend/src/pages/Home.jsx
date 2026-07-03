@@ -202,7 +202,7 @@ export default function Home() {
         data-testid="bengali-gothic-pipeline-shelf"
         aria-labelledby="bengali-gothic-pipeline-title"
       >
-        <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12 lg:py-12">
+        <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12 lg:py-12" data-testid="pipeline-books">
           <div className="mb-7">
             <div className="overline mb-2">Shelf II</div>
             <h2 id="bengali-gothic-pipeline-title" className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">
