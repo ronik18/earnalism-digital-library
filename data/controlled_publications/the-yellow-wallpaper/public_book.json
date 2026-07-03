@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-yellow-wallpaper",
+  "slug": "the-yellow-wallpaper",
+  "title": "The Yellow Wallpaper",
+  "subtitle": "",
+  "author": "Charlotte Perkins Gilman",
+  "category_slug": "gothic-fiction",
+  "short_description": "A woman confined to a room for rest cure becomes obsessed with the pattern in the yellow wallpaper — and the woman trapped behind it.",
+  "description": "Forbidden from writing or working, a woman descends into obsession with the yellow wallpaper of her room — seeing in it a woman trapped behind bars, creeping, creeping. Gilman's searing feminist indictment of the Victorian medical subjugation of women.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "26 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Charlotte Perkins Gilman (1860–1935) was an American author, lecturer, and feminist sociologist, one of the most influential figures in early American feminism.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Yellow Wallpaper",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 6225,
+      "reading_minutes": 26,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "source_hash": "ef4b3a11042ebd451e1abc73007c6d5f5fb9910ab2571db97d33457f1ddcfa00",
+  "content_hash": "5f145d1aff160976b72445c5f651d8030f3ede780aa1414a9c639afc2a4d7aae",
+  "provenance_hash": "5349c038b13af8d9809ae184e4d7ae4d54f3ad3ebce5ed13748776e22dd0a09c",
+  "rights_basis": "Author died 1935. Published 1892. Public domain in U.S. and worldwide.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-yellow-wallpaper",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582188/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582190/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582191/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582192/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582193/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582188/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780582188/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582190/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582191/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582192/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780582193/earnalism/audiobooks/en/the-yellow-wallpaper/the-yellow-wallpaper_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:47Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z"
+}

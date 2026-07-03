@@ -1,0 +1,105 @@
+{
+  "id": "controlled-book-95624627d5",
+  "slug": "book-95624627d5",
+  "title": "মধ্যবর্তিনী",
+  "subtitle": "",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "category_slug": "literary-fiction",
+  "short_description": "দুই বন্ধুর মাঝে এক নারীর উপস্থিতি তৈরি করে এক জটিল মানসিক দ্বন্দ্বের গল্প।",
+  "description": "A woman stands between two friends — not through her own will, but through the projections of desire and rivalry. A subtle psychological study of male friendship and its limits.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#24362E",
+  "estimated_reading_time": "15 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "মধ্যবর্তিনী",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 3585,
+      "reading_minutes": 15,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "source_hash": "12e68ccb1f58102856edb86d24bb700eb18bd1bda6dee53b8711895d5d73b6a8",
+  "content_hash": "b17c4f3d8928510f6a9012b3e9e9333e8bdefa213da3a51b87f1ab17e2c5d6b5",
+  "provenance_hash": "531807dbbf7b3dc9cc8fe1f91beb726ba5d86f8be99aef9d4ea2d2f4b42806a9",
+  "rights_basis": "Author died 1941. Published 1901. Public domain in India and U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "book-95624627d5",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780572393/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572394/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572394/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572395/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572396/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780572393/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780572393/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572394/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572394/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572395/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780572396/earnalism/audiobooks/ben/book-95624627d5/book-95624627d5_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:46Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
+  "created_at": "2026-07-03T20:07:46Z",
+  "updated_at": "2026-07-03T20:07:46Z"
+}

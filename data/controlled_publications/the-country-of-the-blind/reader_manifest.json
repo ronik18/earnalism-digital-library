@@ -1,0 +1,30 @@
+{
+  "slug": "the-country-of-the-blind",
+  "title": "The Country of the Blind",
+  "author": "H.G. Wells",
+  "language": "en",
+  "chapter_count": 1,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Country of the Blind",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 9570,
+      "reading_minutes": 40,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:47Z"
+}

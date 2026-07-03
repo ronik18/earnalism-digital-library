@@ -1,0 +1,105 @@
+{
+  "id": "controlled-the-tell-tale-heart",
+  "slug": "the-tell-tale-heart",
+  "title": "The Tell-Tale Heart",
+  "subtitle": "",
+  "author": "Edgar Allan Poe",
+  "category_slug": "gothic-fiction",
+  "short_description": "A murderer's guilty conscience manifests as the relentless beating of his victim's heart beneath the floorboards.",
+  "description": "A nameless narrator insists on his sanity while confessing to murder — but the dead man's heartbeat grows louder and louder until confession becomes inevitable. Poe's most claustrophobic psychological masterpiece.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "9 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Edgar Allan Poe (1809–1849) was an American writer, poet, and critic, the master of Gothic horror and the inventor of the modern detective story.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Tell-Tale Heart",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2155,
+      "reading_minutes": 9,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:47Z",
+      "updated_at": "2026-07-03T20:07:47Z"
+    }
+  ],
+  "source_hash": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+  "content_hash": "295d3308f015f1233c4368286360ea19d7a7f314cfae96997ea1fea6b10c0771",
+  "provenance_hash": "842f37156736790444d3edc2f38a4e1e1aa3689c723936dc9f2e38f0d063aa4b",
+  "rights_basis": "Edgar Allan Poe died 1849; first published 1843. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "the-tell-tale-heart",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580534/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580535/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580536/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580537/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580538/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580534/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780580534/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580535/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580536/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580537/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780580538/earnalism/audiobooks/en/the-tell-tale-heart/the-tell-tale-heart_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:47Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "created_at": "2026-07-03T20:07:47Z",
+  "updated_at": "2026-07-03T20:07:47Z"
+}

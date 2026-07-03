@@ -1,0 +1,34 @@
+{
+  "slug": "the-yellow-wallpaper",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "f46b5458b249fbcade1c80d0cebf2a76b6758fd0a702e2f5b4e11578167c0d2c"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "89381517c32e162fe447cf41a4d2293f70b8854c50696d44e4992321a0b3ea25"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "df82a75d89f2b84d23e8c5a72ce4ed160f8a25142cd1469bd07d957e3a342a4b"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "ad37586ac0ce69376940900ee8db0724db22663527503b0a4f1fb01b029fb7e9"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "4124fac958f1ab3c4729f52d96234e2560d1f98587b3386cb9a13c75c7f6ade4"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "5beb34f8788d0f5b5c4da0fbf331edef96e71d4874d102fa961b0b19124a637c"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "3a926569e8d46c8b198371f5d77bb633a6a41fa73d73e2f54ff5c636580cb8a4"
+    }
+  ]
+}

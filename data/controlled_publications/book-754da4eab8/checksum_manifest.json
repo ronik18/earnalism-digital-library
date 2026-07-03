@@ -1,0 +1,34 @@
+{
+  "slug": "book-754da4eab8",
+  "generated_at": "2026-07-03T20:07:46Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "d880aa0b52a627ae329cc48fe3ced0b35171dd30e529fd42b95ec9a1c7c9f20d"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "6ca32741043e8d8ce42d59166f00ee74df009f9b7cdd93c761d6fe03b47ab70a"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "65b9c33273bdee50d9d2e780c5d469aaf2ea63c16a3c360b4f83ffc3305e2c08"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "7b75ade5a33168742a8456d378a36c9337cab9aa020b5fe2237f443f48babff1"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "9ae8ae89c75d17a1548d00ec5f41a5ca3c768ecbc432003c842b6db82760c468"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "f272fc88e739990712c3584af67d0f459d7afd4da431ae01ef8e22fcfec69d38"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "d7b0e2f6881f0b7f384f5d13b8185addb6e949360572cbaa05718f710a75f027"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "the-tell-tale-heart",
+  "source_url": "https://www.gutenberg.org/ebooks/2148",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+  "content_hash": "295d3308f015f1233c4368286360ea19d7a7f314cfae96997ea1fea6b10c0771",
+  "provenance_hash": "842f37156736790444d3edc2f38a4e1e1aa3689c723936dc9f2e38f0d063aa4b",
+  "rights_basis": "Edgar Allan Poe died 1849; first published 1843. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.838758+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

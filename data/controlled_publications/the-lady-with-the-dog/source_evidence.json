@@ -1,0 +1,13 @@
+{
+  "slug": "the-lady-with-the-dog",
+  "source_url": "https://www.gutenberg.org/ebooks/13415",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "ef9ab1135b609dfa39aac169c9ed8040ca003b939bc42b9146fd9f5187b147a8",
+  "content_hash": "a9ab87b91b94966ce08bd0bf12f90dc8c8a6d43a94eae87b66060b757d6f8913",
+  "provenance_hash": "36da7e420f971433c39a377d2156494d9e4c62d7aa767f6dfb4dfe8acc410bf8",
+  "rights_basis": "Anton Chekhov died 1904; first published 1899. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.882627+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

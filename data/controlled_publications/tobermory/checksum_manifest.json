@@ -1,0 +1,34 @@
+{
+  "slug": "tobermory",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "f786548cc90242e76f12ac16f5fa953befed0f93f788fcfa5001fbff2b6e5ae1"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "20de5ece75b4829dfab45ef08a35aaa51dac8634c2010886e08cef49f99451b5"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "5cda10850eb97aa869714bb340e72760dfcd05cd8626acf449e08fc344c7294f"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "b940af4b316505d236c4af567932d3afa8a2fe3f8b24744b23d4bd7c24f7afae"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "d93e440deb3c2c140845c4bde39f66b2ecd27ece7ab929572a413f90b1623d94"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "dcf59588ae20ba6ec5d89616fbf5ecc111d3bfab5d7eaef6b94dc23aff1b9948"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "b00117523393fc5ac87acca8e57e34c88cfd56a99282d4a668234867c771a0cf"
+    }
+  ]
+}

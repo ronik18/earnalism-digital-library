@@ -1,0 +1,34 @@
+{
+  "slug": "a-jury-of-her-peers",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "8331d96cb874efae307edb87c6cf5bbaac8500316f9542e3ece99cf939ec2314"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "deb279236ad4828254633bd9de7a34b2a0edd37af71f61a23acf07fa3143c0e0"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "501b82a78639842255db1dd1e1133039a466fbdb0d28542b3060945ebf5866de"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "8b9194363c90cc4cbf20d9e4e9b51d1974dccc19a86ec794ef80d48c7318820b"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "166fda075f9846a733e0cba75ea3184bed741bfc609d4f932044c9757b60c805"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "6981129be89ede2062496a9e1838f638186886d10e87ee2ad08a64502cb388a4"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "12cc5306572184aef6faaac6d809b591659b31672ce70eeaf6cb1292de5c391a"
+    }
+  ]
+}

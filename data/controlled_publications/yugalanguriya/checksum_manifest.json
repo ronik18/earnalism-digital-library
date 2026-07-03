@@ -1,0 +1,70 @@
+{
+  "slug": "yugalanguriya",
+  "generated_at": "2026-07-03T20:07:47Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "3c33cbdda1fc82852e54b946ccc21006510cc204b964bf7fe085e3d4ccbdc4a3"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "6d0bbcac6717a803eb853a212357bdd93b630008493665b60fbc73c529deaa60"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "9468d188c504f5bbbddfa21d357e06bcf57b794d19e148b59e675c3855f4cc83"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "8f4c496eab8546cfc1c82675ddc9ed612308b92e17714e8507120e4ac1bdf121"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "223bc26bd96e342e2f4c94777482af07167d17c8d2253c5b30cc0eed573320b4"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "9ea84768cb6914dfef6e9778653fba480b8643efe2b238108e8d8e7beeadda1e"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "189031ac2e9f38e800248715d3e08cee6a1ddb7beaa650c5c57054ba4cc937ad"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "29379b6622f729d2183c2fb0c86315689f0ab8714ea37e8ab8010fc33b8cd3cf"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "a2b90b30408f0ab2d8301efd98972ff597fddf6619a5e787d3b337fb4524031a"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "3cb3a0cdd03fa61e71618b0353d74171a8ba9aec38e4fa3afa5644902a981840"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "6acb266f1c3893c3034f257a5863032177a702cf0b83887671f42f1ca06c8865"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "3d144cca7f29fd182b4d4bc2d204d083d7b2908cd4be59735df3e4e49c10fcc3"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "7f5568a2ec54f9267fa22dc877516eef04e4fe781fcc22cb913775b573af5f58"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "42805592705d1e1513e59a6697de91a957300dbf78ab50ff6faadaa7c7d2a9c1"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "70e414cd42af6485c40bec6e5e16d185fddf4812edd4cea68810ed01384862e4"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "54fe9c47222861360497ee8c67328ffdb014d105a78ec95b7d24f95b29fefbd3"
+    }
+  ]
+}

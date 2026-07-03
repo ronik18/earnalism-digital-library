@@ -1,0 +1,13 @@
+{
+  "slug": "tobermory",
+  "source_url": "https://www.gutenberg.org/ebooks/3688",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "c0abb8304ec61d1f36e5fec7972cac04bf3616016be5786927f7715b3f60923d",
+  "content_hash": "8918088acb7f9dd15022f86a8047cb7c6a6373273670491bb9048a3a76a01456",
+  "provenance_hash": "88cf527a80243e135ebb503f7ee1381abd3750d9a5716ebe6a89d4366f458c48",
+  "rights_basis": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.285290+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

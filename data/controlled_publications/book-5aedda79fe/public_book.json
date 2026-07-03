@@ -1,0 +1,105 @@
+{
+  "id": "controlled-book-5aedda79fe",
+  "slug": "book-5aedda79fe",
+  "title": "শাস্তি",
+  "subtitle": "",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "category_slug": "literary-fiction",
+  "short_description": "একটি অন্যায় শাস্তির বিরুদ্ধে এক নারীর নীরব প্রতিরোধের মর্মান্তিক গল্প।",
+  "description": "Chandara is sentenced to death for a crime her husband committed. Her refusal to appeal — her silent act of defiance — is one of the most devastating protests in Bengali literature.",
+  "cover_url": "",
+  "cover_image_url": "",
+  "coverImage": "",
+  "cover_image": "",
+  "back_cover_url": "",
+  "back_cover_image_url": "",
+  "backCoverImage": "",
+  "cover_status": "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+  "dominant_color": "#24362E",
+  "estimated_reading_time": "12 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "রবীন্দ্রনাথ ঠাকুর (১৮৬১–১৯৪১) বাংলা সাহিত্যের শ্রেষ্ঠ কবি ও ছোটগল্পকার।",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "শাস্তি",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2919,
+      "reading_minutes": 13,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "source_hash": "7d6e7fef47811ea27f5cf67005046a67bda3a16b1da2e4c4ae17d465b4684e75",
+  "content_hash": "7d6504abe60d1617e7e656c2ca9b3ba0c9a908e38c9f5026d1468ed777f464dd",
+  "provenance_hash": "f30f01be102d7e8bc6b8dcfb7fba23e44f0441a68bea11bd69b4cdc7c63f0f4a",
+  "rights_basis": "Author died 1941. Published 1893. Public domain in India and U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "historical_mapped_assets",
+  "audiobook_voice": "",
+  "audio_asset_slug": "book-5aedda79fe",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780570874/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570875/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570876/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570877/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570878/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780570874/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe.mp3",
+    "provider": "historical_mapped_assets",
+    "size": 0,
+    "duration_ms": 0,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780570874/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570875/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570876/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570877/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780570878/earnalism/audiobooks/ben/book-5aedda79fe/book-5aedda79fe_meta.json"
+    },
+    "updated_at": "2026-07-03T20:07:46Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-03T20:07:46Z",
+  "created_at": "2026-07-03T20:07:46Z",
+  "updated_at": "2026-07-03T20:07:46Z"
+}

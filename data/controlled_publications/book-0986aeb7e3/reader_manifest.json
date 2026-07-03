@@ -1,0 +1,30 @@
+{
+  "slug": "book-0986aeb7e3",
+  "title": "হৈমন্তী",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "language": "ben",
+  "chapter_count": 1,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "হৈমন্তী",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 3954,
+      "reading_minutes": 17,
+      "language_hint": "ben",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:46Z",
+      "updated_at": "2026-07-03T20:07:46Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:46Z"
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "the-yellow-wallpaper",
+  "source_url": "https://www.gutenberg.org/ebooks/1952",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain. Project Gutenberg transcription freely redistributable for any use including commercial.",
+  "source_hash": "ef4b3a11042ebd451e1abc73007c6d5f5fb9910ab2571db97d33457f1ddcfa00",
+  "content_hash": "5f145d1aff160976b72445c5f651d8030f3ede780aa1414a9c639afc2a4d7aae",
+  "provenance_hash": "5349c038b13af8d9809ae184e4d7ae4d54f3ad3ebce5ed13748776e22dd0a09c",
+  "rights_basis": "Author died 1935. Published 1892. Public domain in U.S. and worldwide.",
+  "downloaded_at": "2026-06-02T18:57:36.023195+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

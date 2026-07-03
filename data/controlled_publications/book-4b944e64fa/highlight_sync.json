@@ -1,6 +1,6 @@
 {
   "slug": "book-4b944e64fa",
-  "generatedAt": "2026-07-03T10:03:50+0000",
+  "generatedAt": "2026-07-03T16:05:02+0000",
   "source": "pipeline_gate3",
   "chapters": [
     {
@@ -8,7 +8,7 @@
       "chapter_id": "book-4b944e64fa-chapter-1",
       "title": "একরাত্রি",
       "start_ms": 0,
-      "duration_ms": 983304,
+      "duration_ms": 983303,
       "words": [
         {
           "word": "একরাত্রি",
@@ -138,11 +138,11 @@
         {
           "word": "বড়ো",
           "start_ms": 13574,
-          "end_ms": 14117
+          "end_ms": 14116
         },
         {
           "word": "যত্ন",
-          "start_ms": 14117,
+          "start_ms": 14116,
           "end_ms": 14659
         },
         {
@@ -268,11 +268,11 @@
         {
           "word": "যে",
           "start_ms": 27691,
-          "end_ms": 28234
+          "end_ms": 28233
         },
         {
           "word": "সর্বসাধারণের",
-          "start_ms": 28234,
+          "start_ms": 28233,
           "end_ms": 28776
         },
         {
@@ -398,11 +398,11 @@
         {
           "word": "না",
           "start_ms": 41808,
-          "end_ms": 42351
+          "end_ms": 42350
         },
         {
           "word": "করিতাম",
-          "start_ms": 42351,
+          "start_ms": 42350,
           "end_ms": 42893
         },
         {
@@ -528,11 +528,11 @@
         {
           "word": "গৌরব",
           "start_ms": 55925,
-          "end_ms": 56468
+          "end_ms": 56467
         },
         {
           "word": "ছিল",
-          "start_ms": 56468,
+          "start_ms": 56467,
           "end_ms": 57010
         },
         {
@@ -658,16 +658,16 @@
         {
           "word": "ছিলেন",
           "start_ms": 70042,
-          "end_ms": 70585
+          "end_ms": 70584
         },
         {
           "word": "তাঁহার",
-          "start_ms": 70585,
-          "end_ms": 71128
+          "start_ms": 70584,
+          "end_ms": 71127
         },
         {
           "word": "ইচ্ছা",
-          "start_ms": 71128,
+          "start_ms": 71127,
           "end_ms": 71670
         },
         {
@@ -788,16 +788,16 @@
         {
           "word": "পাড়ার",
           "start_ms": 84159,
-          "end_ms": 84702
+          "end_ms": 84701
         },
         {
           "word": "নীলরতন",
-          "start_ms": 84702,
-          "end_ms": 85245
+          "start_ms": 84701,
+          "end_ms": 85244
         },
         {
           "word": "যেমন",
-          "start_ms": 85245,
+          "start_ms": 85244,
           "end_ms": 85787
         },
         {
@@ -918,16 +918,16 @@
         {
           "word": "ক্লার্ক",
           "start_ms": 98276,
-          "end_ms": 98819
+          "end_ms": 98818
         },
         {
           "word": "হইব",
-          "start_ms": 98819,
-          "end_ms": 99362
+          "start_ms": 98818,
+          "end_ms": 99361
         },
         {
           "word": "ইহা",
-          "start_ms": 99362,
+          "start_ms": 99361,
           "end_ms": 99904
         },
         {
@@ -1043,21 +1043,21 @@
         {
           "word": "লইয়া",
           "start_ms": 111850,
-          "end_ms": 112393
+          "end_ms": 112392
         },
         {
           "word": "যে",
-          "start_ms": 112393,
-          "end_ms": 112936
+          "start_ms": 112392,
+          "end_ms": 112935
         },
         {
           "word": "তাঁহাদের",
-          "start_ms": 112936,
-          "end_ms": 113479
+          "start_ms": 112935,
+          "end_ms": 113478
         },
         {
           "word": "পূজার্চনা",
-          "start_ms": 113479,
+          "start_ms": 113478,
           "end_ms": 114021
         },
         {
@@ -1173,26 +1173,26 @@
         {
           "word": "দিয়াছিলাম",
           "start_ms": 125967,
-          "end_ms": 126510
+          "end_ms": 126509
         },
         {
           "word": "ইহারা",
-          "start_ms": 126510,
-          "end_ms": 127053
+          "start_ms": 126509,
+          "end_ms": 127052
         },
         {
           "word": "আমাদের",
-          "start_ms": 127053,
-          "end_ms": 127596
+          "start_ms": 127052,
+          "end_ms": 127595
         },
         {
           "word": "বাংলাদেশের",
-          "start_ms": 127596,
-          "end_ms": 128139
+          "start_ms": 127595,
+          "end_ms": 128138
         },
         {
           "word": "পূজ্য",
-          "start_ms": 128139,
+          "start_ms": 128138,
           "end_ms": 128681
         },
         {
@@ -1303,26 +1303,26 @@
         {
           "word": "সুতরাং",
           "start_ms": 140084,
-          "end_ms": 140627
+          "end_ms": 140626
         },
         {
           "word": "পূর্বে",
-          "start_ms": 140627,
-          "end_ms": 141170
+          "start_ms": 140626,
+          "end_ms": 141169
         },
         {
           "word": "গণেশের",
-          "start_ms": 141170,
-          "end_ms": 141713
+          "start_ms": 141169,
+          "end_ms": 141712
         },
         {
           "word": "যাহা",
-          "start_ms": 141713,
-          "end_ms": 142256
+          "start_ms": 141712,
+          "end_ms": 142255
         },
         {
           "word": "কিছু",
-          "start_ms": 142256,
+          "start_ms": 142255,
           "end_ms": 142798
         },
         {
@@ -1433,26 +1433,26 @@
         {
           "word": "আবশ্যক",
           "start_ms": 154201,
-          "end_ms": 154744
+          "end_ms": 154743
         },
         {
           "word": "এ",
-          "start_ms": 154744,
-          "end_ms": 155287
+          "start_ms": 154743,
+          "end_ms": 155286
         },
         {
           "word": "সম্বন্ধে",
-          "start_ms": 155287,
-          "end_ms": 155830
+          "start_ms": 155286,
+          "end_ms": 155829
         },
         {
           "word": "আমার",
-          "start_ms": 155830,
-          "end_ms": 156373
+          "start_ms": 155829,
+          "end_ms": 156372
         },
         {
           "word": "সন্দেহ",
-          "start_ms": 156373,
+          "start_ms": 156372,
           "end_ms": 156915
         },
         {
@@ -1563,26 +1563,26 @@
         {
           "word": "না",
           "start_ms": 168318,
-          "end_ms": 168861
+          "end_ms": 168860
         },
         {
           "word": "আমরা",
-          "start_ms": 168861,
-          "end_ms": 169404
+          "start_ms": 168860,
+          "end_ms": 169403
         },
         {
           "word": "পাড়াগেঁয়ে",
-          "start_ms": 169404,
-          "end_ms": 169947
+          "start_ms": 169403,
+          "end_ms": 169946
         },
         {
           "word": "ছেলে",
-          "start_ms": 169947,
-          "end_ms": 170490
+          "start_ms": 169946,
+          "end_ms": 170489
         },
         {
           "word": "কলিকাতার",
-          "start_ms": 170490,
+          "start_ms": 170489,
           "end_ms": 171032
         },
         {
@@ -1693,31 +1693,31 @@
         {
           "word": "আর",
           "start_ms": 182435,
-          "end_ms": 182978
+          "end_ms": 182977
         },
         {
           "word": "আমরা",
-          "start_ms": 182978,
-          "end_ms": 183521
+          "start_ms": 182977,
+          "end_ms": 183520
         },
         {
           "word": "চাঁদার",
-          "start_ms": 183521,
-          "end_ms": 184064
+          "start_ms": 183520,
+          "end_ms": 184063
         },
         {
           "word": "খাতা",
-          "start_ms": 184064,
-          "end_ms": 184607
+          "start_ms": 184063,
+          "end_ms": 184606
         },
         {
           "word": "লইয়া",
-          "start_ms": 184607,
-          "end_ms": 185150
+          "start_ms": 184606,
+          "end_ms": 185149
         },
         {
           "word": "না",
-          "start_ms": 185150,
+          "start_ms": 185149,
           "end_ms": 185692
         },
         {
@@ -1823,31 +1823,31 @@
         {
           "word": "চৌকি",
           "start_ms": 196552,
-          "end_ms": 197095
+          "end_ms": 197094
         },
         {
           "word": "সাজাইতাম",
-          "start_ms": 197095,
-          "end_ms": 197638
+          "start_ms": 197094,
+          "end_ms": 197637
         },
         {
           "word": "দলপতির",
-          "start_ms": 197638,
-          "end_ms": 198181
+          "start_ms": 197637,
+          "end_ms": 198180
         },
         {
           "word": "নামে",
-          "start_ms": 198181,
-          "end_ms": 198724
+          "start_ms": 198180,
+          "end_ms": 198723
         },
         {
           "word": "কেহ",
-          "start_ms": 198724,
-          "end_ms": 199267
+          "start_ms": 198723,
+          "end_ms": 199266
         },
         {
           "word": "একটা",
-          "start_ms": 199267,
+          "start_ms": 199266,
           "end_ms": 199809
         },
         {
@@ -1953,31 +1953,31 @@
         {
           "word": "আসিয়াছিলাম",
           "start_ms": 210669,
-          "end_ms": 211212
+          "end_ms": 211211
         },
         {
           "word": "কিন্তু",
-          "start_ms": 211212,
-          "end_ms": 211755
+          "start_ms": 211211,
+          "end_ms": 211754
         },
         {
           "word": "মাট্সীনি",
-          "start_ms": 211755,
-          "end_ms": 212298
+          "start_ms": 211754,
+          "end_ms": 212297
         },
         {
           "word": "গারিবাল্ডি",
-          "start_ms": 212298,
-          "end_ms": 212841
+          "start_ms": 212297,
+          "end_ms": 212840
         },
         {
           "word": "হইবার",
-          "start_ms": 212841,
-          "end_ms": 213384
+          "start_ms": 212840,
+          "end_ms": 213383
         },
         {
           "word": "আয়োজন",
-          "start_ms": 213384,
+          "start_ms": 213383,
           "end_ms": 213926
         },
         {
@@ -2078,36 +2078,36 @@
         {
           "word": "পনেরো",
           "start_ms": 224243,
-          "end_ms": 224786
+          "end_ms": 224785
         },
         {
           "word": "বৎসর",
-          "start_ms": 224786,
-          "end_ms": 225329
+          "start_ms": 224785,
+          "end_ms": 225328
         },
         {
           "word": "বয়সের",
-          "start_ms": 225329,
-          "end_ms": 225872
+          "start_ms": 225328,
+          "end_ms": 225871
         },
         {
           "word": "সময়",
-          "start_ms": 225872,
-          "end_ms": 226415
+          "start_ms": 225871,
+          "end_ms": 226414
         },
         {
           "word": "কলিকাতায়",
-          "start_ms": 226415,
-          "end_ms": 226958
+          "start_ms": 226414,
+          "end_ms": 226957
         },
         {
           "word": "পালাইয়া",
-          "start_ms": 226958,
-          "end_ms": 227501
+          "start_ms": 226957,
+          "end_ms": 227500
         },
         {
           "word": "আসি",
-          "start_ms": 227501,
+          "start_ms": 227500,
           "end_ms": 228043
         },
         {
@@ -2208,41 +2208,41 @@
         {
           "word": "আমি",
           "start_ms": 238360,
-          "end_ms": 238903
+          "end_ms": 238902
         },
         {
           "word": "মনে",
-          "start_ms": 238903,
-          "end_ms": 239446
+          "start_ms": 238902,
+          "end_ms": 239445
         },
         {
           "word": "মনে",
-          "start_ms": 239446,
-          "end_ms": 239989
+          "start_ms": 239445,
+          "end_ms": 239988
         },
         {
           "word": "প্রতিজ্ঞা",
-          "start_ms": 239989,
-          "end_ms": 240532
+          "start_ms": 239988,
+          "end_ms": 240531
         },
         {
           "word": "করিয়াছি",
-          "start_ms": 240532,
-          "end_ms": 241075
+          "start_ms": 240531,
+          "end_ms": 241074
         },
         {
           "word": "আজীবন",
-          "start_ms": 241075,
-          "end_ms": 241618
+          "start_ms": 241074,
+          "end_ms": 241617
         },
         {
           "word": "বিবাহ",
-          "start_ms": 241618,
-          "end_ms": 242161
+          "start_ms": 241617,
+          "end_ms": 242160
         },
         {
           "word": "না",
-          "start_ms": 242161,
+          "start_ms": 242160,
           "end_ms": 242703
         },
         {
@@ -2338,41 +2338,41 @@
         {
           "word": "খবর",
           "start_ms": 252477,
-          "end_ms": 253020
+          "end_ms": 253019
         },
         {
           "word": "পাইলাম",
-          "start_ms": 253020,
-          "end_ms": 253563
+          "start_ms": 253019,
+          "end_ms": 253562
         },
         {
           "word": "উকিল",
-          "start_ms": 253563,
-          "end_ms": 254106
+          "start_ms": 253562,
+          "end_ms": 254105
         },
         {
           "word": "রামলোচনবাবুর",
-          "start_ms": 254106,
-          "end_ms": 254649
+          "start_ms": 254105,
+          "end_ms": 254648
         },
         {
           "word": "সহিত",
-          "start_ms": 254649,
-          "end_ms": 255192
+          "start_ms": 254648,
+          "end_ms": 255191
         },
         {
           "word": "সুরবালার",
-          "start_ms": 255192,
-          "end_ms": 255735
+          "start_ms": 255191,
+          "end_ms": 255734
         },
         {
           "word": "বিবাহ",
-          "start_ms": 255735,
-          "end_ms": 256278
+          "start_ms": 255734,
+          "end_ms": 256277
         },
         {
           "word": "হইয়া",
-          "start_ms": 256278,
+          "start_ms": 256277,
           "end_ms": 256820
         },
         {
@@ -2468,41 +2468,41 @@
         {
           "word": "দিব",
           "start_ms": 266594,
-          "end_ms": 267137
+          "end_ms": 267136
         },
         {
           "word": "এমন",
-          "start_ms": 267137,
-          "end_ms": 267680
+          "start_ms": 267136,
+          "end_ms": 267679
         },
         {
           "word": "সময়",
-          "start_ms": 267680,
-          "end_ms": 268223
+          "start_ms": 267679,
+          "end_ms": 268222
         },
         {
           "word": "পিতার",
-          "start_ms": 268223,
-          "end_ms": 268766
+          "start_ms": 268222,
+          "end_ms": 268765
         },
         {
           "word": "মৃত্যু",
-          "start_ms": 268766,
-          "end_ms": 269309
+          "start_ms": 268765,
+          "end_ms": 269308
         },
         {
           "word": "হইল",
-          "start_ms": 269309,
-          "end_ms": 269852
+          "start_ms": 269308,
+          "end_ms": 269851
         },
         {
           "word": "সংসারে",
-          "start_ms": 269852,
-          "end_ms": 270395
+          "start_ms": 269851,
+          "end_ms": 270394
         },
         {
           "word": "কেবল",
-          "start_ms": 270395,
+          "start_ms": 270394,
           "end_ms": 270937
         },
         {
@@ -2598,41 +2598,41 @@
         {
           "word": "বিভাগের",
           "start_ms": 280711,
-          "end_ms": 281254
+          "end_ms": 281253
         },
         {
           "word": "একটি",
-          "start_ms": 281254,
-          "end_ms": 281797
+          "start_ms": 281253,
+          "end_ms": 281796
         },
         {
           "word": "ছোটো",
-          "start_ms": 281797,
-          "end_ms": 282340
+          "start_ms": 281796,
+          "end_ms": 282339
         },
         {
           "word": "শহরে",
-          "start_ms": 282340,
-          "end_ms": 282883
+          "start_ms": 282339,
+          "end_ms": 282882
         },
         {
           "word": "এন্ট্রেন্স্",
-          "start_ms": 282883,
-          "end_ms": 283426
+          "start_ms": 282882,
+          "end_ms": 283425
         },
         {
           "word": "স্কুলের",
-          "start_ms": 283426,
-          "end_ms": 283969
+          "start_ms": 283425,
+          "end_ms": 283968
         },
         {
           "word": "সেকেণ্ড্",
-          "start_ms": 283969,
-          "end_ms": 284512
+          "start_ms": 283968,
+          "end_ms": 284511
         },
         {
           "word": "মাস্টারি",
-          "start_ms": 284512,
+          "start_ms": 284511,
           "end_ms": 285054
         },
         {
@@ -2728,46 +2728,46 @@
         {
           "word": "এক",
           "start_ms": 294828,
-          "end_ms": 295371
+          "end_ms": 295370
         },
         {
           "word": "একটি",
-          "start_ms": 295371,
-          "end_ms": 295914
+          "start_ms": 295370,
+          "end_ms": 295913
         },
         {
           "word": "সেনাপতি",
-          "start_ms": 295914,
-          "end_ms": 296457
+          "start_ms": 295913,
+          "end_ms": 296456
         },
         {
           "word": "করিয়া",
-          "start_ms": 296457,
-          "end_ms": 297000
+          "start_ms": 296456,
+          "end_ms": 296999
         },
         {
           "word": "তুলিব",
-          "start_ms": 297000,
-          "end_ms": 297543
+          "start_ms": 296999,
+          "end_ms": 297542
         },
         {
           "word": "কাজ",
-          "start_ms": 297543,
-          "end_ms": 298086
+          "start_ms": 297542,
+          "end_ms": 298085
         },
         {
           "word": "আরম্ভ",
-          "start_ms": 298086,
-          "end_ms": 298629
+          "start_ms": 298085,
+          "end_ms": 298628
         },
         {
           "word": "করিয়া",
-          "start_ms": 298629,
-          "end_ms": 299172
+          "start_ms": 298628,
+          "end_ms": 299171
         },
         {
           "word": "দিলাম",
-          "start_ms": 299172,
+          "start_ms": 299171,
           "end_ms": 299714
         },
         {
@@ -2858,46 +2858,46 @@
         {
           "word": "রাগ",
           "start_ms": 308945,
-          "end_ms": 309488
+          "end_ms": 309487
         },
         {
           "word": "করে",
-          "start_ms": 309488,
-          "end_ms": 310031
+          "start_ms": 309487,
+          "end_ms": 310030
         },
         {
           "word": "মাস",
-          "start_ms": 310031,
-          "end_ms": 310574
+          "start_ms": 310030,
+          "end_ms": 310573
         },
         {
           "word": "দুয়েকের",
-          "start_ms": 310574,
-          "end_ms": 311117
+          "start_ms": 310573,
+          "end_ms": 311116
         },
         {
           "word": "মধ্যে",
-          "start_ms": 311117,
-          "end_ms": 311660
+          "start_ms": 311116,
+          "end_ms": 311659
         },
         {
           "word": "আমারও",
-          "start_ms": 311660,
-          "end_ms": 312203
+          "start_ms": 311659,
+          "end_ms": 312202
         },
         {
           "word": "উৎসাহ",
-          "start_ms": 312203,
-          "end_ms": 312746
+          "start_ms": 312202,
+          "end_ms": 312745
         },
         {
           "word": "নিস্তেজ",
-          "start_ms": 312746,
-          "end_ms": 313289
+          "start_ms": 312745,
+          "end_ms": 313288
         },
         {
           "word": "হইয়া",
-          "start_ms": 313289,
+          "start_ms": 313288,
           "end_ms": 313831
         },
         {
@@ -2988,46 +2988,46 @@
         {
           "word": "হইতে",
           "start_ms": 323062,
-          "end_ms": 323605
+          "end_ms": 323604
         },
         {
           "word": "লেজ",
-          "start_ms": 323605,
-          "end_ms": 324148
+          "start_ms": 323604,
+          "end_ms": 324147
         },
         {
           "word": "মলা",
-          "start_ms": 324148,
-          "end_ms": 324691
+          "start_ms": 324147,
+          "end_ms": 324690
         },
         {
           "word": "খাইয়া",
-          "start_ms": 324691,
-          "end_ms": 325234
+          "start_ms": 324690,
+          "end_ms": 325233
         },
         {
           "word": "নতশিরে",
-          "start_ms": 325234,
-          "end_ms": 325777
+          "start_ms": 325233,
+          "end_ms": 325776
         },
         {
           "word": "সহিষ্ণুভাবে",
-          "start_ms": 325777,
-          "end_ms": 326320
+          "start_ms": 325776,
+          "end_ms": 326319
         },
         {
           "word": "প্রাত্যহিক",
-          "start_ms": 326320,
-          "end_ms": 326863
+          "start_ms": 326319,
+          "end_ms": 326862
         },
         {
           "word": "মাটি",
-          "start_ms": 326863,
-          "end_ms": 327406
+          "start_ms": 326862,
+          "end_ms": 327405
         },
         {
           "word": "ভাঙার",
-          "start_ms": 327406,
+          "start_ms": 327405,
           "end_ms": 327948
         },
         {
@@ -3113,51 +3113,51 @@
         {
           "word": "অগ্নিদাহের",
           "start_ms": 336636,
-          "end_ms": 337179
+          "end_ms": 337178
         },
         {
           "word": "আশঙ্কায়",
-          "start_ms": 337179,
-          "end_ms": 337722
+          "start_ms": 337178,
+          "end_ms": 337721
         },
         {
           "word": "একজন",
-          "start_ms": 337722,
-          "end_ms": 338265
+          "start_ms": 337721,
+          "end_ms": 338264
         },
         {
           "word": "করিয়া",
-          "start_ms": 338265,
-          "end_ms": 338808
+          "start_ms": 338264,
+          "end_ms": 338807
         },
         {
           "word": "মাস্টার",
-          "start_ms": 338808,
-          "end_ms": 339351
+          "start_ms": 338807,
+          "end_ms": 339350
         },
         {
           "word": "স্কুলের",
-          "start_ms": 339351,
-          "end_ms": 339894
+          "start_ms": 339350,
+          "end_ms": 339893
         },
         {
           "word": "ঘরেতেই",
-          "start_ms": 339894,
-          "end_ms": 340437
+          "start_ms": 339893,
+          "end_ms": 340436
         },
         {
           "word": "বাস",
-          "start_ms": 340437,
-          "end_ms": 340980
+          "start_ms": 340436,
+          "end_ms": 340979
         },
         {
           "word": "করিত",
-          "start_ms": 340980,
-          "end_ms": 341523
+          "start_ms": 340979,
+          "end_ms": 341522
         },
         {
           "word": "আমি",
-          "start_ms": 341523,
+          "start_ms": 341522,
           "end_ms": 342065
         },
         {
@@ -3243,56 +3243,56 @@
         {
           "word": "স্কুলঘরটি",
           "start_ms": 350753,
-          "end_ms": 351296
+          "end_ms": 351295
         },
         {
           "word": "লোকালয়",
-          "start_ms": 351296,
-          "end_ms": 351839
+          "start_ms": 351295,
+          "end_ms": 351838
         },
         {
           "word": "হইতে",
-          "start_ms": 351839,
-          "end_ms": 352382
+          "start_ms": 351838,
+          "end_ms": 352381
         },
         {
           "word": "কিছু",
-          "start_ms": 352382,
-          "end_ms": 352925
+          "start_ms": 352381,
+          "end_ms": 352924
         },
         {
           "word": "দূরে",
-          "start_ms": 352925,
-          "end_ms": 353468
+          "start_ms": 352924,
+          "end_ms": 353467
         },
         {
           "word": "একটি",
-          "start_ms": 353468,
-          "end_ms": 354011
+          "start_ms": 353467,
+          "end_ms": 354010
         },
         {
           "word": "বড়",
-          "start_ms": 354011,
-          "end_ms": 354554
+          "start_ms": 354010,
+          "end_ms": 354553
         },
         {
           "word": "পুষ্করিণীর",
-          "start_ms": 354554,
-          "end_ms": 355097
+          "start_ms": 354553,
+          "end_ms": 355096
         },
         {
           "word": "ধারে",
-          "start_ms": 355097,
-          "end_ms": 355640
+          "start_ms": 355096,
+          "end_ms": 355639
         },
         {
           "word": "চারি",
-          "start_ms": 355640,
-          "end_ms": 356183
+          "start_ms": 355639,
+          "end_ms": 356182
         },
         {
           "word": "দিকে",
-          "start_ms": 356183,
+          "start_ms": 356182,
           "end_ms": 356725
         },
         {
@@ -3373,56 +3373,56 @@
         {
           "word": "গায়ে",
           "start_ms": 364870,
-          "end_ms": 365413
+          "end_ms": 365412
         },
         {
           "word": "সংলগ্ন",
-          "start_ms": 365413,
-          "end_ms": 365956
+          "start_ms": 365412,
+          "end_ms": 365955
         },
         {
           "word": "হইয়া",
-          "start_ms": 365956,
-          "end_ms": 366499
+          "start_ms": 365955,
+          "end_ms": 366498
         },
         {
           "word": "ছায়া",
-          "start_ms": 366499,
-          "end_ms": 367042
+          "start_ms": 366498,
+          "end_ms": 367041
         },
         {
           "word": "দান",
-          "start_ms": 367042,
-          "end_ms": 367585
+          "start_ms": 367041,
+          "end_ms": 367584
         },
         {
           "word": "করিতেছে",
-          "start_ms": 367585,
-          "end_ms": 368128
+          "start_ms": 367584,
+          "end_ms": 368127
         },
         {
           "word": "একটা",
-          "start_ms": 368128,
-          "end_ms": 368671
+          "start_ms": 368127,
+          "end_ms": 368670
         },
         {
           "word": "কথা",
-          "start_ms": 368671,
-          "end_ms": 369214
+          "start_ms": 368670,
+          "end_ms": 369213
         },
         {
           "word": "এতদিন",
-          "start_ms": 369214,
-          "end_ms": 369757
+          "start_ms": 369213,
+          "end_ms": 369756
         },
         {
           "word": "উল্লেখ",
-          "start_ms": 369757,
-          "end_ms": 370300
+          "start_ms": 369756,
+          "end_ms": 370299
         },
         {
           "word": "করি",
-          "start_ms": 370300,
+          "start_ms": 370299,
           "end_ms": 370842
         },
         {
@@ -3503,56 +3503,56 @@
         {
           "word": "স্কুলঘরের",
           "start_ms": 378987,
-          "end_ms": 379530
+          "end_ms": 379529
         },
         {
           "word": "অনতিদূরে",
-          "start_ms": 379530,
-          "end_ms": 380073
+          "start_ms": 379529,
+          "end_ms": 380072
         },
         {
           "word": "এবং",
-          "start_ms": 380073,
-          "end_ms": 380616
+          "start_ms": 380072,
+          "end_ms": 380615
         },
         {
           "word": "তাহার",
-          "start_ms": 380616,
-          "end_ms": 381159
+          "start_ms": 380615,
+          "end_ms": 381158
         },
         {
           "word": "সঙ্গে",
-          "start_ms": 381159,
-          "end_ms": 381702
+          "start_ms": 381158,
+          "end_ms": 381701
         },
         {
           "word": "তাঁহার",
-          "start_ms": 381702,
-          "end_ms": 382245
+          "start_ms": 381701,
+          "end_ms": 382244
         },
         {
           "word": "স্ত্রী",
-          "start_ms": 382245,
-          "end_ms": 382788
+          "start_ms": 382244,
+          "end_ms": 382787
         },
         {
           "word": "আমার",
-          "start_ms": 382788,
-          "end_ms": 383331
+          "start_ms": 382787,
+          "end_ms": 383330
         },
         {
           "word": "বাল্যসখী",
-          "start_ms": 383331,
-          "end_ms": 383874
+          "start_ms": 383330,
+          "end_ms": 383873
         },
         {
           "word": "সুরবালা",
-          "start_ms": 383874,
-          "end_ms": 384417
+          "start_ms": 383873,
+          "end_ms": 384416
         },
         {
           "word": "ছিল",
-          "start_ms": 384417,
+          "start_ms": 384416,
           "end_ms": 384959
         },
         {
@@ -3633,56 +3633,56 @@
         {
           "word": "নাই",
           "start_ms": 393104,
-          "end_ms": 393647
+          "end_ms": 393646
         },
         {
           "word": "কী",
-          "start_ms": 393647,
-          "end_ms": 394190
+          "start_ms": 393646,
+          "end_ms": 394189
         },
         {
           "word": "বিষয়ে",
-          "start_ms": 394190,
-          "end_ms": 394733
+          "start_ms": 394189,
+          "end_ms": 394732
         },
         {
           "word": "আলোচনা",
-          "start_ms": 394733,
-          "end_ms": 395276
+          "start_ms": 394732,
+          "end_ms": 395275
         },
         {
           "word": "হইতেছিল",
-          "start_ms": 395276,
-          "end_ms": 395819
+          "start_ms": 395275,
+          "end_ms": 395818
         },
         {
           "word": "বোধ",
-          "start_ms": 395819,
-          "end_ms": 396362
+          "start_ms": 395818,
+          "end_ms": 396361
         },
         {
           "word": "করি",
-          "start_ms": 396362,
-          "end_ms": 396905
+          "start_ms": 396361,
+          "end_ms": 396904
         },
         {
           "word": "বর্তমান",
-          "start_ms": 396905,
-          "end_ms": 397448
+          "start_ms": 396904,
+          "end_ms": 397447
         },
         {
           "word": "ভারতবর্ষের",
-          "start_ms": 397448,
-          "end_ms": 397991
+          "start_ms": 397447,
+          "end_ms": 397990
         },
         {
           "word": "দুরবস্থা",
-          "start_ms": 397991,
-          "end_ms": 398534
+          "start_ms": 397990,
+          "end_ms": 398533
         },
         {
           "word": "সম্বন্ধে",
-          "start_ms": 398534,
+          "start_ms": 398533,
           "end_ms": 399076
         },
         {
@@ -3763,61 +3763,61 @@
         {
           "word": "টানিতে",
           "start_ms": 407221,
-          "end_ms": 407764
+          "end_ms": 407763
         },
         {
           "word": "টানিতে",
-          "start_ms": 407764,
-          "end_ms": 408307
+          "start_ms": 407763,
+          "end_ms": 408306
         },
         {
           "word": "এ",
-          "start_ms": 408307,
-          "end_ms": 408850
+          "start_ms": 408306,
+          "end_ms": 408849
         },
         {
           "word": "সম্বন্ধে",
-          "start_ms": 408850,
-          "end_ms": 409393
+          "start_ms": 408849,
+          "end_ms": 409392
         },
         {
           "word": "ঘণ্টাখানেক",
-          "start_ms": 409393,
-          "end_ms": 409936
+          "start_ms": 409392,
+          "end_ms": 409935
         },
         {
           "word": "দেড়েক",
-          "start_ms": 409936,
-          "end_ms": 410479
+          "start_ms": 409935,
+          "end_ms": 410478
         },
         {
           "word": "অনর্গল",
-          "start_ms": 410479,
-          "end_ms": 411022
+          "start_ms": 410478,
+          "end_ms": 411021
         },
         {
           "word": "শখের",
-          "start_ms": 411022,
-          "end_ms": 411565
+          "start_ms": 411021,
+          "end_ms": 411564
         },
         {
           "word": "দুঃখ",
-          "start_ms": 411565,
-          "end_ms": 412108
+          "start_ms": 411564,
+          "end_ms": 412107
         },
         {
           "word": "করা",
-          "start_ms": 412108,
-          "end_ms": 412651
+          "start_ms": 412107,
+          "end_ms": 412650
         },
         {
           "word": "যাইতে",
-          "start_ms": 412651,
-          "end_ms": 413194
+          "start_ms": 412650,
+          "end_ms": 413193
         },
         {
           "word": "পারে",
-          "start_ms": 413194,
+          "start_ms": 413193,
           "end_ms": 413736
         },
         {
@@ -3893,61 +3893,61 @@
         {
           "word": "একটুখানি",
           "start_ms": 421338,
-          "end_ms": 421881
+          "end_ms": 421880
         },
         {
           "word": "শব্দ",
-          "start_ms": 421881,
-          "end_ms": 422424
+          "start_ms": 421880,
+          "end_ms": 422423
         },
         {
           "word": "শুনিতে",
-          "start_ms": 422424,
-          "end_ms": 422967
+          "start_ms": 422423,
+          "end_ms": 422966
         },
         {
           "word": "পাইলাম",
-          "start_ms": 422967,
-          "end_ms": 423510
+          "start_ms": 422966,
+          "end_ms": 423509
         },
         {
           "word": "বেশ",
-          "start_ms": 423510,
-          "end_ms": 424053
+          "start_ms": 423509,
+          "end_ms": 424052
         },
         {
           "word": "বুঝিতে",
-          "start_ms": 424053,
-          "end_ms": 424596
+          "start_ms": 424052,
+          "end_ms": 424595
         },
         {
           "word": "পারিলাম",
-          "start_ms": 424596,
-          "end_ms": 425139
+          "start_ms": 424595,
+          "end_ms": 425138
         },
         {
           "word": "জানালার",
-          "start_ms": 425139,
-          "end_ms": 425682
+          "start_ms": 425138,
+          "end_ms": 425681
         },
         {
           "word": "ফাঁক",
-          "start_ms": 425682,
-          "end_ms": 426225
+          "start_ms": 425681,
+          "end_ms": 426224
         },
         {
           "word": "দিয়া",
-          "start_ms": 426225,
-          "end_ms": 426768
+          "start_ms": 426224,
+          "end_ms": 426767
         },
         {
           "word": "কোনো",
-          "start_ms": 426768,
-          "end_ms": 427311
+          "start_ms": 426767,
+          "end_ms": 427310
         },
         {
           "word": "কৌতূহলপূর্ণ",
-          "start_ms": 427311,
+          "start_ms": 427310,
           "end_ms": 427853
         },
         {
@@ -4023,61 +4023,61 @@
         {
           "word": "শৈশবপ্রীতিতে",
           "start_ms": 435455,
-          "end_ms": 435998
+          "end_ms": 435997
         },
         {
           "word": "ঢলঢল",
-          "start_ms": 435998,
-          "end_ms": 436541
+          "start_ms": 435997,
+          "end_ms": 436540
         },
         {
           "word": "দুখানি",
-          "start_ms": 436541,
-          "end_ms": 437084
+          "start_ms": 436540,
+          "end_ms": 437083
         },
         {
           "word": "বড়ো",
-          "start_ms": 437084,
-          "end_ms": 437627
+          "start_ms": 437083,
+          "end_ms": 437626
         },
         {
           "word": "বড়ো",
-          "start_ms": 437627,
-          "end_ms": 438170
+          "start_ms": 437626,
+          "end_ms": 438169
         },
         {
           "word": "চোখ",
-          "start_ms": 438170,
-          "end_ms": 438713
+          "start_ms": 438169,
+          "end_ms": 438712
         },
         {
           "word": "কালো",
-          "start_ms": 438713,
-          "end_ms": 439256
+          "start_ms": 438712,
+          "end_ms": 439255
         },
         {
           "word": "কালো",
-          "start_ms": 439256,
-          "end_ms": 439799
+          "start_ms": 439255,
+          "end_ms": 439798
         },
         {
           "word": "তারা",
-          "start_ms": 439799,
-          "end_ms": 440342
+          "start_ms": 439798,
+          "end_ms": 440341
         },
         {
           "word": "ঘনকৃষ্ণ",
-          "start_ms": 440342,
-          "end_ms": 440885
+          "start_ms": 440341,
+          "end_ms": 440884
         },
         {
           "word": "পল্লব",
-          "start_ms": 440885,
-          "end_ms": 441428
+          "start_ms": 440884,
+          "end_ms": 441427
         },
         {
           "word": "স্থিরস্নিগ্ধ",
-          "start_ms": 441428,
+          "start_ms": 441427,
           "end_ms": 441970
         },
         {
@@ -4148,66 +4148,66 @@
         {
           "word": "ভিতরটা",
           "start_ms": 449029,
-          "end_ms": 449572
+          "end_ms": 449571
         },
         {
           "word": "টন্টন্",
-          "start_ms": 449572,
-          "end_ms": 450115
+          "start_ms": 449571,
+          "end_ms": 450114
         },
         {
           "word": "করিয়া",
-          "start_ms": 450115,
-          "end_ms": 450658
+          "start_ms": 450114,
+          "end_ms": 450657
         },
         {
           "word": "উঠিল",
-          "start_ms": 450658,
-          "end_ms": 451201
+          "start_ms": 450657,
+          "end_ms": 451200
         },
         {
           "word": "বাসায়",
-          "start_ms": 451201,
-          "end_ms": 451744
+          "start_ms": 451200,
+          "end_ms": 451743
         },
         {
           "word": "ফিরিয়া",
-          "start_ms": 451744,
-          "end_ms": 452287
+          "start_ms": 451743,
+          "end_ms": 452286
         },
         {
           "word": "আসিলাম",
-          "start_ms": 452287,
-          "end_ms": 452830
+          "start_ms": 452286,
+          "end_ms": 452829
         },
         {
           "word": "কিন্তু",
-          "start_ms": 452830,
-          "end_ms": 453373
+          "start_ms": 452829,
+          "end_ms": 453372
         },
         {
           "word": "সেই",
-          "start_ms": 453373,
-          "end_ms": 453916
+          "start_ms": 453372,
+          "end_ms": 453915
         },
         {
           "word": "ব্যথা",
-          "start_ms": 453916,
-          "end_ms": 454459
+          "start_ms": 453915,
+          "end_ms": 454458
         },
         {
           "word": "লাগিয়া",
-          "start_ms": 454459,
-          "end_ms": 455002
+          "start_ms": 454458,
+          "end_ms": 455001
         },
         {
           "word": "রহিল",
-          "start_ms": 455002,
-          "end_ms": 455545
+          "start_ms": 455001,
+          "end_ms": 455544
         },
         {
           "word": "লিখি",
-          "start_ms": 455545,
+          "start_ms": 455544,
           "end_ms": 456087
         },
         {
@@ -4278,71 +4278,71 @@
         {
           "word": "বোঝার",
           "start_ms": 463146,
-          "end_ms": 463689
+          "end_ms": 463688
         },
         {
           "word": "মতো",
-          "start_ms": 463689,
-          "end_ms": 464232
+          "start_ms": 463688,
+          "end_ms": 464231
         },
         {
           "word": "হইয়া",
-          "start_ms": 464232,
-          "end_ms": 464775
+          "start_ms": 464231,
+          "end_ms": 464774
         },
         {
           "word": "বুকের",
-          "start_ms": 464775,
-          "end_ms": 465318
+          "start_ms": 464774,
+          "end_ms": 465317
         },
         {
           "word": "শিরা",
-          "start_ms": 465318,
-          "end_ms": 465861
+          "start_ms": 465317,
+          "end_ms": 465860
         },
         {
           "word": "ধরিয়া",
-          "start_ms": 465861,
-          "end_ms": 466404
+          "start_ms": 465860,
+          "end_ms": 466403
         },
         {
           "word": "দুলিতে",
-          "start_ms": 466404,
-          "end_ms": 466947
+          "start_ms": 466403,
+          "end_ms": 466946
         },
         {
           "word": "লাগিল",
-          "start_ms": 466947,
-          "end_ms": 467490
+          "start_ms": 466946,
+          "end_ms": 467489
         },
         {
           "word": "সন্ধ্যাবেলায়",
-          "start_ms": 467490,
-          "end_ms": 468033
+          "start_ms": 467489,
+          "end_ms": 468032
         },
         {
           "word": "একটু",
-          "start_ms": 468033,
-          "end_ms": 468576
+          "start_ms": 468032,
+          "end_ms": 468575
         },
         {
           "word": "স্থির",
-          "start_ms": 468576,
-          "end_ms": 469119
+          "start_ms": 468575,
+          "end_ms": 469118
         },
         {
           "word": "হইয়া",
-          "start_ms": 469119,
-          "end_ms": 469662
+          "start_ms": 469118,
+          "end_ms": 469661
         },
         {
           "word": "ভাবিতে",
-          "start_ms": 469662,
-          "end_ms": 470205
+          "start_ms": 469661,
+          "end_ms": 470204
         },
         {
           "word": "লাগিলাম",
-          "start_ms": 470205,
+          "start_ms": 470204,
           "end_ms": 470747
         },
         {
@@ -4408,71 +4408,71 @@
         {
           "word": "গেল",
           "start_ms": 477263,
-          "end_ms": 477806
+          "end_ms": 477805
         },
         {
           "word": "আমি",
-          "start_ms": 477806,
-          "end_ms": 478349
+          "start_ms": 477805,
+          "end_ms": 478348
         },
         {
           "word": "প্রত্যুত্তরে",
-          "start_ms": 478349,
-          "end_ms": 478892
+          "start_ms": 478348,
+          "end_ms": 478891
         },
         {
           "word": "বলিলাম",
-          "start_ms": 478892,
-          "end_ms": 479435
+          "start_ms": 478891,
+          "end_ms": 479434
         },
         {
           "word": "আমি",
-          "start_ms": 479435,
-          "end_ms": 479978
+          "start_ms": 479434,
+          "end_ms": 479977
         },
         {
           "word": "তো",
-          "start_ms": 479978,
-          "end_ms": 480521
+          "start_ms": 479977,
+          "end_ms": 480520
         },
         {
           "word": "তাহাকে",
-          "start_ms": 480521,
-          "end_ms": 481064
+          "start_ms": 480520,
+          "end_ms": 481063
         },
         {
           "word": "ইচ্ছা",
-          "start_ms": 481064,
-          "end_ms": 481607
+          "start_ms": 481063,
+          "end_ms": 481606
         },
         {
           "word": "করিয়া",
-          "start_ms": 481607,
-          "end_ms": 482150
+          "start_ms": 481606,
+          "end_ms": 482149
         },
         {
           "word": "ছাড়িয়া",
-          "start_ms": 482150,
-          "end_ms": 482693
+          "start_ms": 482149,
+          "end_ms": 482692
         },
         {
           "word": "দিয়াছি",
-          "start_ms": 482693,
-          "end_ms": 483236
+          "start_ms": 482692,
+          "end_ms": 483235
         },
         {
           "word": "সে",
-          "start_ms": 483236,
-          "end_ms": 483779
+          "start_ms": 483235,
+          "end_ms": 483778
         },
         {
           "word": "কি",
-          "start_ms": 483779,
-          "end_ms": 484322
+          "start_ms": 483778,
+          "end_ms": 484321
         },
         {
           "word": "চিরকাল",
-          "start_ms": 484322,
+          "start_ms": 484321,
           "end_ms": 484864
         },
         {
@@ -4538,71 +4538,71 @@
         {
           "word": "পাইতে",
           "start_ms": 491380,
-          "end_ms": 491923
+          "end_ms": 491922
         },
         {
           "word": "পারিতে",
-          "start_ms": 491923,
-          "end_ms": 492466
+          "start_ms": 491922,
+          "end_ms": 492465
         },
         {
           "word": "এখন",
-          "start_ms": 492466,
-          "end_ms": 493009
+          "start_ms": 492465,
+          "end_ms": 493008
         },
         {
           "word": "মাথা",
-          "start_ms": 493009,
-          "end_ms": 493552
+          "start_ms": 493008,
+          "end_ms": 493551
         },
         {
           "word": "খুঁঁড়িয়া",
-          "start_ms": 493552,
-          "end_ms": 494095
+          "start_ms": 493551,
+          "end_ms": 494094
         },
         {
           "word": "মরিলেও",
-          "start_ms": 494095,
-          "end_ms": 494638
+          "start_ms": 494094,
+          "end_ms": 494637
         },
         {
           "word": "তাহাকে",
-          "start_ms": 494638,
-          "end_ms": 495181
+          "start_ms": 494637,
+          "end_ms": 495180
         },
         {
           "word": "একবার",
-          "start_ms": 495181,
-          "end_ms": 495724
+          "start_ms": 495180,
+          "end_ms": 495723
         },
         {
           "word": "চক্ষে",
-          "start_ms": 495724,
-          "end_ms": 496267
+          "start_ms": 495723,
+          "end_ms": 496266
         },
         {
           "word": "দেখিবার",
-          "start_ms": 496267,
-          "end_ms": 496810
+          "start_ms": 496266,
+          "end_ms": 496809
         },
         {
           "word": "অধিকারটুকুও",
-          "start_ms": 496810,
-          "end_ms": 497353
+          "start_ms": 496809,
+          "end_ms": 497352
         },
         {
           "word": "পাইবে",
-          "start_ms": 497353,
-          "end_ms": 497896
+          "start_ms": 497352,
+          "end_ms": 497895
         },
         {
           "word": "না",
-          "start_ms": 497896,
-          "end_ms": 498439
+          "start_ms": 497895,
+          "end_ms": 498438
         },
         {
           "word": "সেই",
-          "start_ms": 498439,
+          "start_ms": 498438,
           "end_ms": 498981
         },
         {
@@ -4668,71 +4668,71 @@
         {
           "word": "মাথাঘষার",
           "start_ms": 505497,
-          "end_ms": 506040
+          "end_ms": 506039
         },
         {
           "word": "গন্ধ",
-          "start_ms": 506040,
-          "end_ms": 506583
+          "start_ms": 506039,
+          "end_ms": 506582
         },
         {
           "word": "অনুভব",
-          "start_ms": 506583,
-          "end_ms": 507126
+          "start_ms": 506582,
+          "end_ms": 507125
         },
         {
           "word": "কর",
-          "start_ms": 507126,
-          "end_ms": 507669
+          "start_ms": 507125,
+          "end_ms": 507668
         },
         {
           "word": "কিন্তু",
-          "start_ms": 507669,
-          "end_ms": 508212
+          "start_ms": 507668,
+          "end_ms": 508211
         },
         {
           "word": "মাঝখানে",
-          "start_ms": 508212,
-          "end_ms": 508755
+          "start_ms": 508211,
+          "end_ms": 508754
         },
         {
           "word": "বরাবর",
-          "start_ms": 508755,
-          "end_ms": 509298
+          "start_ms": 508754,
+          "end_ms": 509297
         },
         {
           "word": "একখানি",
-          "start_ms": 509298,
-          "end_ms": 509841
+          "start_ms": 509297,
+          "end_ms": 509840
         },
         {
           "word": "করিয়া",
-          "start_ms": 509841,
-          "end_ms": 510384
+          "start_ms": 509840,
+          "end_ms": 510383
         },
         {
           "word": "দেয়াল",
-          "start_ms": 510384,
-          "end_ms": 510927
+          "start_ms": 510383,
+          "end_ms": 510926
         },
         {
           "word": "থাকিবে",
-          "start_ms": 510927,
-          "end_ms": 511470
+          "start_ms": 510926,
+          "end_ms": 511469
         },
         {
           "word": "আমি",
-          "start_ms": 511470,
-          "end_ms": 512013
+          "start_ms": 511469,
+          "end_ms": 512012
         },
         {
           "word": "বলিলাম",
-          "start_ms": 512013,
-          "end_ms": 512556
+          "start_ms": 512012,
+          "end_ms": 512555
         },
         {
           "word": "তা",
-          "start_ms": 512556,
+          "start_ms": 512555,
           "end_ms": 513098
         },
         {
@@ -4798,76 +4798,76 @@
         {
           "word": "কিন্তু",
           "start_ms": 519614,
-          "end_ms": 520157
+          "end_ms": 520156
         },
         {
           "word": "সুরবালা",
-          "start_ms": 520157,
-          "end_ms": 520700
+          "start_ms": 520156,
+          "end_ms": 520699
         },
         {
           "word": "তোমার",
-          "start_ms": 520700,
-          "end_ms": 521243
+          "start_ms": 520699,
+          "end_ms": 521242
         },
         {
           "word": "কী",
-          "start_ms": 521243,
-          "end_ms": 521786
+          "start_ms": 521242,
+          "end_ms": 521785
         },
         {
           "word": "না",
-          "start_ms": 521786,
-          "end_ms": 522329
+          "start_ms": 521785,
+          "end_ms": 522328
         },
         {
           "word": "হইতে",
-          "start_ms": 522329,
-          "end_ms": 522872
+          "start_ms": 522328,
+          "end_ms": 522871
         },
         {
           "word": "পারিত",
-          "start_ms": 522872,
-          "end_ms": 523415
+          "start_ms": 522871,
+          "end_ms": 523414
         },
         {
           "word": "সে",
-          "start_ms": 523415,
-          "end_ms": 523958
+          "start_ms": 523414,
+          "end_ms": 523957
         },
         {
           "word": "কথা",
-          "start_ms": 523958,
-          "end_ms": 524501
+          "start_ms": 523957,
+          "end_ms": 524500
         },
         {
           "word": "সত্য",
-          "start_ms": 524501,
-          "end_ms": 525044
+          "start_ms": 524500,
+          "end_ms": 525043
         },
         {
           "word": "সুরবালা",
-          "start_ms": 525044,
-          "end_ms": 525587
+          "start_ms": 525043,
+          "end_ms": 525586
         },
         {
           "word": "আমার",
-          "start_ms": 525587,
-          "end_ms": 526130
+          "start_ms": 525586,
+          "end_ms": 526129
         },
         {
           "word": "কী",
-          "start_ms": 526130,
-          "end_ms": 526673
+          "start_ms": 526129,
+          "end_ms": 526672
         },
         {
           "word": "না",
-          "start_ms": 526673,
-          "end_ms": 527216
+          "start_ms": 526672,
+          "end_ms": 527215
         },
         {
           "word": "হইতে",
-          "start_ms": 527216,
+          "start_ms": 527215,
           "end_ms": 527758
         },
         {
@@ -4928,76 +4928,76 @@
         {
           "word": "সমস্ত",
           "start_ms": 533731,
-          "end_ms": 534274
+          "end_ms": 534273
         },
         {
           "word": "সুখদুঃখভাগিনী",
-          "start_ms": 534274,
-          "end_ms": 534817
+          "start_ms": 534273,
+          "end_ms": 534816
         },
         {
           "word": "হইতে",
-          "start_ms": 534817,
-          "end_ms": 535360
+          "start_ms": 534816,
+          "end_ms": 535359
         },
         {
           "word": "পারিত",
-          "start_ms": 535360,
-          "end_ms": 535903
+          "start_ms": 535359,
+          "end_ms": 535902
         },
         {
           "word": "সে",
-          "start_ms": 535903,
-          "end_ms": 536446
+          "start_ms": 535902,
+          "end_ms": 536445
         },
         {
           "word": "আজ",
-          "start_ms": 536446,
-          "end_ms": 536989
+          "start_ms": 536445,
+          "end_ms": 536988
         },
         {
           "word": "এত",
-          "start_ms": 536989,
-          "end_ms": 537532
+          "start_ms": 536988,
+          "end_ms": 537531
         },
         {
           "word": "দূর",
-          "start_ms": 537532,
-          "end_ms": 538075
+          "start_ms": 537531,
+          "end_ms": 538074
         },
         {
           "word": "এত",
-          "start_ms": 538075,
-          "end_ms": 538618
+          "start_ms": 538074,
+          "end_ms": 538617
         },
         {
           "word": "পর",
-          "start_ms": 538618,
-          "end_ms": 539161
+          "start_ms": 538617,
+          "end_ms": 539160
         },
         {
           "word": "আজ",
-          "start_ms": 539161,
-          "end_ms": 539704
+          "start_ms": 539160,
+          "end_ms": 539703
         },
         {
           "word": "তাহাকে",
-          "start_ms": 539704,
-          "end_ms": 540247
+          "start_ms": 539703,
+          "end_ms": 540246
         },
         {
           "word": "দেখা",
-          "start_ms": 540247,
-          "end_ms": 540790
+          "start_ms": 540246,
+          "end_ms": 540789
         },
         {
           "word": "নিষেধ",
-          "start_ms": 540790,
-          "end_ms": 541333
+          "start_ms": 540789,
+          "end_ms": 541332
         },
         {
           "word": "তাহার",
-          "start_ms": 541333,
+          "start_ms": 541332,
           "end_ms": 541875
         },
         {
@@ -5053,81 +5053,81 @@
         {
           "word": "একটা",
           "start_ms": 547305,
-          "end_ms": 547848
+          "end_ms": 547847
         },
         {
           "word": "রামলোচন",
-          "start_ms": 547848,
-          "end_ms": 548391
+          "start_ms": 547847,
+          "end_ms": 548390
         },
         {
           "word": "কোথাও",
-          "start_ms": 548391,
-          "end_ms": 548934
+          "start_ms": 548390,
+          "end_ms": 548933
         },
         {
           "word": "কিছু",
-          "start_ms": 548934,
-          "end_ms": 549477
+          "start_ms": 548933,
+          "end_ms": 549476
         },
         {
           "word": "নাই",
-          "start_ms": 549477,
-          "end_ms": 550020
+          "start_ms": 549476,
+          "end_ms": 550019
         },
         {
           "word": "হঠাৎ",
-          "start_ms": 550020,
-          "end_ms": 550563
+          "start_ms": 550019,
+          "end_ms": 550562
         },
         {
           "word": "আসিয়া",
-          "start_ms": 550563,
-          "end_ms": 551106
+          "start_ms": 550562,
+          "end_ms": 551105
         },
         {
           "word": "উপস্থিত",
-          "start_ms": 551106,
-          "end_ms": 551649
+          "start_ms": 551105,
+          "end_ms": 551648
         },
         {
           "word": "কেবল",
-          "start_ms": 551649,
-          "end_ms": 552192
+          "start_ms": 551648,
+          "end_ms": 552191
         },
         {
           "word": "গোটা",
-          "start_ms": 552192,
-          "end_ms": 552735
+          "start_ms": 552191,
+          "end_ms": 552734
         },
         {
           "word": "দুয়েক",
-          "start_ms": 552735,
-          "end_ms": 553278
+          "start_ms": 552734,
+          "end_ms": 553277
         },
         {
           "word": "মুখস্থ",
-          "start_ms": 553278,
-          "end_ms": 553821
+          "start_ms": 553277,
+          "end_ms": 553820
         },
         {
           "word": "মন্ত্র",
-          "start_ms": 553821,
-          "end_ms": 554364
+          "start_ms": 553820,
+          "end_ms": 554363
         },
         {
           "word": "পড়িয়া",
-          "start_ms": 554364,
-          "end_ms": 554907
+          "start_ms": 554363,
+          "end_ms": 554906
         },
         {
           "word": "সুরবালাকে",
-          "start_ms": 554907,
-          "end_ms": 555450
+          "start_ms": 554906,
+          "end_ms": 555449
         },
         {
           "word": "পৃথিবীর",
-          "start_ms": 555450,
+          "start_ms": 555449,
           "end_ms": 555992
         },
         {
@@ -5183,81 +5183,81 @@
         {
           "word": "আমি",
           "start_ms": 561422,
-          "end_ms": 561965
+          "end_ms": 561964
         },
         {
           "word": "মানবসমাজে",
-          "start_ms": 561965,
-          "end_ms": 562508
+          "start_ms": 561964,
+          "end_ms": 562507
         },
         {
           "word": "নূতন",
-          "start_ms": 562508,
-          "end_ms": 563051
+          "start_ms": 562507,
+          "end_ms": 563050
         },
         {
           "word": "নীতি",
-          "start_ms": 563051,
-          "end_ms": 563594
+          "start_ms": 563050,
+          "end_ms": 563593
         },
         {
           "word": "প্রচার",
-          "start_ms": 563594,
-          "end_ms": 564137
+          "start_ms": 563593,
+          "end_ms": 564136
         },
         {
           "word": "করিতে",
-          "start_ms": 564137,
-          "end_ms": 564680
+          "start_ms": 564136,
+          "end_ms": 564679
         },
         {
           "word": "বসি",
-          "start_ms": 564680,
-          "end_ms": 565223
+          "start_ms": 564679,
+          "end_ms": 565222
         },
         {
           "word": "নাই",
-          "start_ms": 565223,
-          "end_ms": 565766
+          "start_ms": 565222,
+          "end_ms": 565765
         },
         {
           "word": "সমাজ",
-          "start_ms": 565766,
-          "end_ms": 566309
+          "start_ms": 565765,
+          "end_ms": 566308
         },
         {
           "word": "ভাঙিতে",
-          "start_ms": 566309,
-          "end_ms": 566852
+          "start_ms": 566308,
+          "end_ms": 566851
         },
         {
           "word": "আসি",
-          "start_ms": 566852,
-          "end_ms": 567395
+          "start_ms": 566851,
+          "end_ms": 567394
         },
         {
           "word": "নাই",
-          "start_ms": 567395,
-          "end_ms": 567938
+          "start_ms": 567394,
+          "end_ms": 567937
         },
         {
           "word": "বন্ধন",
-          "start_ms": 567938,
-          "end_ms": 568481
+          "start_ms": 567937,
+          "end_ms": 568480
         },
         {
           "word": "ছিঁঁড়িতে",
-          "start_ms": 568481,
-          "end_ms": 569024
+          "start_ms": 568480,
+          "end_ms": 569023
         },
         {
           "word": "চাই",
-          "start_ms": 569024,
-          "end_ms": 569567
+          "start_ms": 569023,
+          "end_ms": 569566
         },
         {
           "word": "না",
-          "start_ms": 569567,
+          "start_ms": 569566,
           "end_ms": 570109
         },
         {
@@ -5313,86 +5313,86 @@
         {
           "word": "যে",
           "start_ms": 575539,
-          "end_ms": 576082
+          "end_ms": 576081
         },
         {
           "word": "সকল",
-          "start_ms": 576082,
-          "end_ms": 576625
+          "start_ms": 576081,
+          "end_ms": 576624
         },
         {
           "word": "ভাব",
-          "start_ms": 576625,
-          "end_ms": 577168
+          "start_ms": 576624,
+          "end_ms": 577167
         },
         {
           "word": "উদয়",
-          "start_ms": 577168,
-          "end_ms": 577711
+          "start_ms": 577167,
+          "end_ms": 577710
         },
         {
           "word": "হয়",
-          "start_ms": 577711,
-          "end_ms": 578254
+          "start_ms": 577710,
+          "end_ms": 578253
         },
         {
           "word": "তাহার",
-          "start_ms": 578254,
-          "end_ms": 578797
+          "start_ms": 578253,
+          "end_ms": 578796
         },
         {
           "word": "কি",
-          "start_ms": 578797,
-          "end_ms": 579340
+          "start_ms": 578796,
+          "end_ms": 579339
         },
         {
           "word": "সবই",
-          "start_ms": 579340,
-          "end_ms": 579883
+          "start_ms": 579339,
+          "end_ms": 579882
         },
         {
           "word": "বিবেচনাসংগত",
-          "start_ms": 579883,
-          "end_ms": 580426
+          "start_ms": 579882,
+          "end_ms": 580425
         },
         {
           "word": "রামলোচনের",
-          "start_ms": 580426,
-          "end_ms": 580969
+          "start_ms": 580425,
+          "end_ms": 580968
         },
         {
           "word": "গৃহভিত্তির",
-          "start_ms": 580969,
-          "end_ms": 581512
+          "start_ms": 580968,
+          "end_ms": 581511
         },
         {
           "word": "আড়ালে",
-          "start_ms": 581512,
-          "end_ms": 582055
+          "start_ms": 581511,
+          "end_ms": 582054
         },
         {
           "word": "যে",
-          "start_ms": 582055,
-          "end_ms": 582598
+          "start_ms": 582054,
+          "end_ms": 582597
         },
         {
           "word": "সুরবালা",
-          "start_ms": 582598,
-          "end_ms": 583141
+          "start_ms": 582597,
+          "end_ms": 583140
         },
         {
           "word": "বিরাজ",
-          "start_ms": 583141,
-          "end_ms": 583684
+          "start_ms": 583140,
+          "end_ms": 583683
         },
         {
           "word": "করিতেছিল",
-          "start_ms": 583684,
-          "end_ms": 584227
+          "start_ms": 583683,
+          "end_ms": 584226
         },
         {
           "word": "সে",
-          "start_ms": 584227,
+          "start_ms": 584226,
           "end_ms": 584769
         },
         {
@@ -5443,86 +5443,86 @@
         {
           "word": "কিছুতেই",
           "start_ms": 589656,
-          "end_ms": 590199
+          "end_ms": 590198
         },
         {
           "word": "মন",
-          "start_ms": 590199,
-          "end_ms": 590742
+          "start_ms": 590198,
+          "end_ms": 590741
         },
         {
           "word": "হইতে",
-          "start_ms": 590742,
-          "end_ms": 591285
+          "start_ms": 590741,
+          "end_ms": 591284
         },
         {
           "word": "তাড়াইতে",
-          "start_ms": 591285,
-          "end_ms": 591828
+          "start_ms": 591284,
+          "end_ms": 591827
         },
         {
           "word": "পারিতেছিলাম",
-          "start_ms": 591828,
-          "end_ms": 592371
+          "start_ms": 591827,
+          "end_ms": 592370
         },
         {
           "word": "না",
-          "start_ms": 592371,
-          "end_ms": 592914
+          "start_ms": 592370,
+          "end_ms": 592913
         },
         {
           "word": "এরূপ",
-          "start_ms": 592914,
-          "end_ms": 593457
+          "start_ms": 592913,
+          "end_ms": 593456
         },
         {
           "word": "চিন্তা",
-          "start_ms": 593457,
-          "end_ms": 594000
+          "start_ms": 593456,
+          "end_ms": 593999
         },
         {
           "word": "নিতান্ত",
-          "start_ms": 594000,
-          "end_ms": 594543
+          "start_ms": 593999,
+          "end_ms": 594542
         },
         {
           "word": "অসংগত",
-          "start_ms": 594543,
-          "end_ms": 595086
+          "start_ms": 594542,
+          "end_ms": 595085
         },
         {
           "word": "এবং",
-          "start_ms": 595086,
-          "end_ms": 595629
+          "start_ms": 595085,
+          "end_ms": 595628
         },
         {
           "word": "অন্যায়",
-          "start_ms": 595629,
-          "end_ms": 596172
+          "start_ms": 595628,
+          "end_ms": 596171
         },
         {
           "word": "তাহা",
-          "start_ms": 596172,
-          "end_ms": 596715
+          "start_ms": 596171,
+          "end_ms": 596714
         },
         {
           "word": "স্বীকার",
-          "start_ms": 596715,
-          "end_ms": 597258
+          "start_ms": 596714,
+          "end_ms": 597257
         },
         {
           "word": "করি",
-          "start_ms": 597258,
-          "end_ms": 597801
+          "start_ms": 597257,
+          "end_ms": 597800
         },
         {
           "word": "কিন্তু",
-          "start_ms": 597801,
-          "end_ms": 598344
+          "start_ms": 597800,
+          "end_ms": 598343
         },
         {
           "word": "অস্বাভাবিক",
-          "start_ms": 598344,
+          "start_ms": 598343,
           "end_ms": 598886
         },
         {
@@ -5573,86 +5573,86 @@
         {
           "word": "না",
           "start_ms": 603773,
-          "end_ms": 604316
+          "end_ms": 604315
         },
         {
           "word": "দুপুরবেলায়",
-          "start_ms": 604316,
-          "end_ms": 604859
+          "start_ms": 604315,
+          "end_ms": 604858
         },
         {
           "word": "ক্লাসে",
-          "start_ms": 604859,
-          "end_ms": 605402
+          "start_ms": 604858,
+          "end_ms": 605401
         },
         {
           "word": "যখন",
-          "start_ms": 605402,
-          "end_ms": 605945
+          "start_ms": 605401,
+          "end_ms": 605944
         },
         {
           "word": "ছাত্রেরা",
-          "start_ms": 605945,
-          "end_ms": 606488
+          "start_ms": 605944,
+          "end_ms": 606487
         },
         {
           "word": "গুন্গুন্",
-          "start_ms": 606488,
-          "end_ms": 607031
+          "start_ms": 606487,
+          "end_ms": 607030
         },
         {
           "word": "করিতে",
-          "start_ms": 607031,
-          "end_ms": 607574
+          "start_ms": 607030,
+          "end_ms": 607573
         },
         {
           "word": "থাকিত",
-          "start_ms": 607574,
-          "end_ms": 608117
+          "start_ms": 607573,
+          "end_ms": 608116
         },
         {
           "word": "বাহিরে",
-          "start_ms": 608117,
-          "end_ms": 608660
+          "start_ms": 608116,
+          "end_ms": 608659
         },
         {
           "word": "সমস্ত",
-          "start_ms": 608660,
-          "end_ms": 609203
+          "start_ms": 608659,
+          "end_ms": 609202
         },
         {
           "word": "ঝাঁ",
-          "start_ms": 609203,
-          "end_ms": 609746
+          "start_ms": 609202,
+          "end_ms": 609745
         },
         {
           "word": "ঝাঁ",
-          "start_ms": 609746,
-          "end_ms": 610289
+          "start_ms": 609745,
+          "end_ms": 610288
         },
         {
           "word": "করিত",
-          "start_ms": 610289,
-          "end_ms": 610832
+          "start_ms": 610288,
+          "end_ms": 610831
         },
         {
           "word": "ঈষৎ",
-          "start_ms": 610832,
-          "end_ms": 611375
+          "start_ms": 610831,
+          "end_ms": 611374
         },
         {
           "word": "উত্তপ্ত",
-          "start_ms": 611375,
-          "end_ms": 611918
+          "start_ms": 611374,
+          "end_ms": 611917
         },
         {
           "word": "বাতাসে",
-          "start_ms": 611918,
-          "end_ms": 612461
+          "start_ms": 611917,
+          "end_ms": 612460
         },
         {
           "word": "নিম",
-          "start_ms": 612461,
+          "start_ms": 612460,
           "end_ms": 613003
         },
         {
@@ -5703,86 +5703,86 @@
         {
           "word": "কী",
           "start_ms": 617890,
-          "end_ms": 618433
+          "end_ms": 618432
         },
         {
           "word": "ইচ্ছা",
-          "start_ms": 618433,
-          "end_ms": 618976
+          "start_ms": 618432,
+          "end_ms": 618975
         },
         {
           "word": "করিত",
-          "start_ms": 618976,
-          "end_ms": 619519
+          "start_ms": 618975,
+          "end_ms": 619518
         },
         {
           "word": "জানি",
-          "start_ms": 619519,
-          "end_ms": 620062
+          "start_ms": 619518,
+          "end_ms": 620061
         },
         {
           "word": "না",
-          "start_ms": 620062,
-          "end_ms": 620605
+          "start_ms": 620061,
+          "end_ms": 620604
         },
         {
           "word": "এই",
-          "start_ms": 620605,
-          "end_ms": 621148
+          "start_ms": 620604,
+          "end_ms": 621147
         },
         {
           "word": "পর্যন্ত",
-          "start_ms": 621148,
-          "end_ms": 621691
+          "start_ms": 621147,
+          "end_ms": 621690
         },
         {
           "word": "বলিতে",
-          "start_ms": 621691,
-          "end_ms": 622234
+          "start_ms": 621690,
+          "end_ms": 622233
         },
         {
           "word": "পারি",
-          "start_ms": 622234,
-          "end_ms": 622777
+          "start_ms": 622233,
+          "end_ms": 622776
         },
         {
           "word": "ভারতবর্ষের",
-          "start_ms": 622777,
-          "end_ms": 623320
+          "start_ms": 622776,
+          "end_ms": 623319
         },
         {
           "word": "এই",
-          "start_ms": 623320,
-          "end_ms": 623863
+          "start_ms": 623319,
+          "end_ms": 623862
         },
         {
           "word": "সমস্ত",
-          "start_ms": 623863,
-          "end_ms": 624406
+          "start_ms": 623862,
+          "end_ms": 624405
         },
         {
           "word": "ভাবী",
-          "start_ms": 624406,
-          "end_ms": 624949
+          "start_ms": 624405,
+          "end_ms": 624948
         },
         {
           "word": "আশাস্পদদিগের",
-          "start_ms": 624949,
-          "end_ms": 625492
+          "start_ms": 624948,
+          "end_ms": 625491
         },
         {
           "word": "ব্যাকরণের",
-          "start_ms": 625492,
-          "end_ms": 626035
+          "start_ms": 625491,
+          "end_ms": 626034
         },
         {
           "word": "ভ্রম",
-          "start_ms": 626035,
-          "end_ms": 626578
+          "start_ms": 626034,
+          "end_ms": 626577
         },
         {
           "word": "সংশোধন",
-          "start_ms": 626578,
+          "start_ms": 626577,
           "end_ms": 627120
         },
         {
@@ -5833,91 +5833,91 @@
         {
           "word": "গেলে",
           "start_ms": 632007,
-          "end_ms": 632550
+          "end_ms": 632549
         },
         {
           "word": "আমার",
-          "start_ms": 632550,
-          "end_ms": 633093
+          "start_ms": 632549,
+          "end_ms": 633092
         },
         {
           "word": "বৃহৎ",
-          "start_ms": 633093,
-          "end_ms": 633636
+          "start_ms": 633092,
+          "end_ms": 633635
         },
         {
           "word": "ঘরে",
-          "start_ms": 633636,
-          "end_ms": 634179
+          "start_ms": 633635,
+          "end_ms": 634178
         },
         {
           "word": "একলা",
-          "start_ms": 634179,
-          "end_ms": 634722
+          "start_ms": 634178,
+          "end_ms": 634721
         },
         {
           "word": "থাকিতে",
-          "start_ms": 634722,
-          "end_ms": 635265
+          "start_ms": 634721,
+          "end_ms": 635264
         },
         {
           "word": "মন",
-          "start_ms": 635265,
-          "end_ms": 635808
+          "start_ms": 635264,
+          "end_ms": 635807
         },
         {
           "word": "টিঁকিত",
-          "start_ms": 635808,
-          "end_ms": 636351
+          "start_ms": 635807,
+          "end_ms": 636350
         },
         {
           "word": "না",
-          "start_ms": 636351,
-          "end_ms": 636894
+          "start_ms": 636350,
+          "end_ms": 636893
         },
         {
           "word": "অথচ",
-          "start_ms": 636894,
-          "end_ms": 637437
+          "start_ms": 636893,
+          "end_ms": 637436
         },
         {
           "word": "কোনো",
-          "start_ms": 637437,
-          "end_ms": 637980
+          "start_ms": 637436,
+          "end_ms": 637979
         },
         {
           "word": "ভদ্রলোক",
-          "start_ms": 637980,
-          "end_ms": 638523
+          "start_ms": 637979,
+          "end_ms": 638522
         },
         {
           "word": "দেখা",
-          "start_ms": 638523,
-          "end_ms": 639066
+          "start_ms": 638522,
+          "end_ms": 639065
         },
         {
           "word": "করিতে",
-          "start_ms": 639066,
-          "end_ms": 639609
+          "start_ms": 639065,
+          "end_ms": 639608
         },
         {
           "word": "আসিলেও",
-          "start_ms": 639609,
-          "end_ms": 640152
+          "start_ms": 639608,
+          "end_ms": 640151
         },
         {
           "word": "অসহ্য",
-          "start_ms": 640152,
-          "end_ms": 640695
+          "start_ms": 640151,
+          "end_ms": 640694
         },
         {
           "word": "বোধ",
-          "start_ms": 640695,
-          "end_ms": 641238
+          "start_ms": 640694,
+          "end_ms": 641237
         },
         {
           "word": "হইত",
-          "start_ms": 641238,
+          "start_ms": 641237,
           "end_ms": 641780
         },
         {
@@ -5963,91 +5963,91 @@
         {
           "word": "শুনিতে",
           "start_ms": 646124,
-          "end_ms": 646667
+          "end_ms": 646666
         },
         {
           "word": "ভাবিতাম",
-          "start_ms": 646667,
-          "end_ms": 647210
+          "start_ms": 646666,
+          "end_ms": 647209
         },
         {
           "word": "মনুষ্যসমাজ",
-          "start_ms": 647210,
-          "end_ms": 647753
+          "start_ms": 647209,
+          "end_ms": 647752
         },
         {
           "word": "একটা",
-          "start_ms": 647753,
-          "end_ms": 648296
+          "start_ms": 647752,
+          "end_ms": 648295
         },
         {
           "word": "জটিল",
-          "start_ms": 648296,
-          "end_ms": 648839
+          "start_ms": 648295,
+          "end_ms": 648838
         },
         {
           "word": "ভ্রমের",
-          "start_ms": 648839,
-          "end_ms": 649382
+          "start_ms": 648838,
+          "end_ms": 649381
         },
         {
           "word": "জাল",
-          "start_ms": 649382,
-          "end_ms": 649925
+          "start_ms": 649381,
+          "end_ms": 649924
         },
         {
           "word": "ঠিক",
-          "start_ms": 649925,
-          "end_ms": 650468
+          "start_ms": 649924,
+          "end_ms": 650467
         },
         {
           "word": "সময়ে",
-          "start_ms": 650468,
-          "end_ms": 651011
+          "start_ms": 650467,
+          "end_ms": 651010
         },
         {
           "word": "ঠিক",
-          "start_ms": 651011,
-          "end_ms": 651554
+          "start_ms": 651010,
+          "end_ms": 651553
         },
         {
           "word": "কাজ",
-          "start_ms": 651554,
-          "end_ms": 652097
+          "start_ms": 651553,
+          "end_ms": 652096
         },
         {
           "word": "করিতে",
-          "start_ms": 652097,
-          "end_ms": 652640
+          "start_ms": 652096,
+          "end_ms": 652639
         },
         {
           "word": "কাহারও",
-          "start_ms": 652640,
-          "end_ms": 653183
+          "start_ms": 652639,
+          "end_ms": 653182
         },
         {
           "word": "মনে",
-          "start_ms": 653183,
-          "end_ms": 653726
+          "start_ms": 653182,
+          "end_ms": 653725
         },
         {
           "word": "পড়ে",
-          "start_ms": 653726,
-          "end_ms": 654269
+          "start_ms": 653725,
+          "end_ms": 654268
         },
         {
           "word": "না",
-          "start_ms": 654269,
-          "end_ms": 654812
+          "start_ms": 654268,
+          "end_ms": 654811
         },
         {
           "word": "তাহার",
-          "start_ms": 654812,
-          "end_ms": 655355
+          "start_ms": 654811,
+          "end_ms": 655354
         },
         {
           "word": "পরে",
-          "start_ms": 655355,
+          "start_ms": 655354,
           "end_ms": 655897
         },
         {
@@ -6088,96 +6088,96 @@
         {
           "word": "মরে",
           "start_ms": 659698,
-          "end_ms": 660241
+          "end_ms": 660240
         },
         {
           "word": "তোমার",
-          "start_ms": 660241,
-          "end_ms": 660784
+          "start_ms": 660240,
+          "end_ms": 660783
         },
         {
           "word": "মতো",
-          "start_ms": 660784,
-          "end_ms": 661327
+          "start_ms": 660783,
+          "end_ms": 661326
         },
         {
           "word": "লোক",
-          "start_ms": 661327,
-          "end_ms": 661870
+          "start_ms": 661326,
+          "end_ms": 661869
         },
         {
           "word": "সুরবালার",
-          "start_ms": 661870,
-          "end_ms": 662413
+          "start_ms": 661869,
+          "end_ms": 662412
         },
         {
           "word": "স্বামীটি",
-          "start_ms": 662413,
-          "end_ms": 662956
+          "start_ms": 662412,
+          "end_ms": 662955
         },
         {
           "word": "হইয়া",
-          "start_ms": 662956,
-          "end_ms": 663499
+          "start_ms": 662955,
+          "end_ms": 663498
         },
         {
           "word": "বুড়াবয়স",
-          "start_ms": 663499,
-          "end_ms": 664042
+          "start_ms": 663498,
+          "end_ms": 664041
         },
         {
           "word": "পর্যন্ত",
-          "start_ms": 664042,
-          "end_ms": 664585
+          "start_ms": 664041,
+          "end_ms": 664584
         },
         {
           "word": "বেশ",
-          "start_ms": 664585,
-          "end_ms": 665128
+          "start_ms": 664584,
+          "end_ms": 665127
         },
         {
           "word": "সুখে",
-          "start_ms": 665128,
-          "end_ms": 665671
+          "start_ms": 665127,
+          "end_ms": 665670
         },
         {
           "word": "থাকিতে",
-          "start_ms": 665671,
-          "end_ms": 666214
+          "start_ms": 665670,
+          "end_ms": 666213
         },
         {
           "word": "পারিত",
-          "start_ms": 666214,
-          "end_ms": 666757
+          "start_ms": 666213,
+          "end_ms": 666756
         },
         {
           "word": "তুমি",
-          "start_ms": 666757,
-          "end_ms": 667300
+          "start_ms": 666756,
+          "end_ms": 667299
         },
         {
           "word": "কিনা",
-          "start_ms": 667300,
-          "end_ms": 667843
+          "start_ms": 667299,
+          "end_ms": 667842
         },
         {
           "word": "হইতে",
-          "start_ms": 667843,
-          "end_ms": 668386
+          "start_ms": 667842,
+          "end_ms": 668385
         },
         {
           "word": "গেলে",
-          "start_ms": 668386,
-          "end_ms": 668929
+          "start_ms": 668385,
+          "end_ms": 668928
         },
         {
           "word": "গারিবাল্ডি",
-          "start_ms": 668929,
-          "end_ms": 669472
+          "start_ms": 668928,
+          "end_ms": 669471
         },
         {
           "word": "এবং",
-          "start_ms": 669472,
+          "start_ms": 669471,
           "end_ms": 670014
         },
         {
@@ -6218,96 +6218,96 @@
         {
           "word": "আর",
           "start_ms": 673815,
-          "end_ms": 674358
+          "end_ms": 674357
         },
         {
           "word": "রামলোচন",
-          "start_ms": 674358,
-          "end_ms": 674901
+          "start_ms": 674357,
+          "end_ms": 674900
         },
         {
           "word": "রায়",
-          "start_ms": 674901,
-          "end_ms": 675444
+          "start_ms": 674900,
+          "end_ms": 675443
         },
         {
           "word": "উকিল",
-          "start_ms": 675444,
-          "end_ms": 675987
+          "start_ms": 675443,
+          "end_ms": 675986
         },
         {
           "word": "তাহার",
-          "start_ms": 675987,
-          "end_ms": 676530
+          "start_ms": 675986,
+          "end_ms": 676529
         },
         {
           "word": "বিশেষ",
-          "start_ms": 676530,
-          "end_ms": 677073
+          "start_ms": 676529,
+          "end_ms": 677072
         },
         {
           "word": "করিয়া",
-          "start_ms": 677073,
-          "end_ms": 677616
+          "start_ms": 677072,
+          "end_ms": 677615
         },
         {
           "word": "সুরবালারই",
-          "start_ms": 677616,
-          "end_ms": 678159
+          "start_ms": 677615,
+          "end_ms": 678158
         },
         {
           "word": "স্বামী",
-          "start_ms": 678159,
-          "end_ms": 678702
+          "start_ms": 678158,
+          "end_ms": 678701
         },
         {
           "word": "হইবার",
-          "start_ms": 678702,
-          "end_ms": 679245
+          "start_ms": 678701,
+          "end_ms": 679244
         },
         {
           "word": "কোনো",
-          "start_ms": 679245,
-          "end_ms": 679788
+          "start_ms": 679244,
+          "end_ms": 679787
         },
         {
           "word": "জরুরি",
-          "start_ms": 679788,
-          "end_ms": 680331
+          "start_ms": 679787,
+          "end_ms": 680330
         },
         {
           "word": "আবশ্যক",
-          "start_ms": 680331,
-          "end_ms": 680874
+          "start_ms": 680330,
+          "end_ms": 680873
         },
         {
           "word": "ছিল",
-          "start_ms": 680874,
-          "end_ms": 681417
+          "start_ms": 680873,
+          "end_ms": 681416
         },
         {
           "word": "না",
-          "start_ms": 681417,
-          "end_ms": 681960
+          "start_ms": 681416,
+          "end_ms": 681959
         },
         {
           "word": "বিবাহের",
-          "start_ms": 681960,
-          "end_ms": 682503
+          "start_ms": 681959,
+          "end_ms": 682502
         },
         {
           "word": "পূর্বমুহূর্ত",
-          "start_ms": 682503,
-          "end_ms": 683046
+          "start_ms": 682502,
+          "end_ms": 683045
         },
         {
           "word": "পর্যন্ত",
-          "start_ms": 683046,
-          "end_ms": 683589
+          "start_ms": 683045,
+          "end_ms": 683588
         },
         {
           "word": "তাহার",
-          "start_ms": 683589,
+          "start_ms": 683588,
           "end_ms": 684131
         },
         {
@@ -6348,101 +6348,101 @@
         {
           "word": "কিছুমাত্র",
           "start_ms": 687932,
-          "end_ms": 688475
+          "end_ms": 688474
         },
         {
           "word": "না",
-          "start_ms": 688475,
-          "end_ms": 689018
+          "start_ms": 688474,
+          "end_ms": 689017
         },
         {
           "word": "ভাবিয়া",
-          "start_ms": 689018,
-          "end_ms": 689561
+          "start_ms": 689017,
+          "end_ms": 689560
         },
         {
           "word": "চিন্তিয়া",
-          "start_ms": 689561,
-          "end_ms": 690104
+          "start_ms": 689560,
+          "end_ms": 690103
         },
         {
           "word": "বিবাহ",
-          "start_ms": 690104,
-          "end_ms": 690647
+          "start_ms": 690103,
+          "end_ms": 690646
         },
         {
           "word": "করিয়া",
-          "start_ms": 690647,
-          "end_ms": 691190
+          "start_ms": 690646,
+          "end_ms": 691189
         },
         {
           "word": "সরকারি",
-          "start_ms": 691190,
-          "end_ms": 691733
+          "start_ms": 691189,
+          "end_ms": 691732
         },
         {
           "word": "উকিল",
-          "start_ms": 691733,
-          "end_ms": 692276
+          "start_ms": 691732,
+          "end_ms": 692275
         },
         {
           "word": "হইয়া",
-          "start_ms": 692276,
-          "end_ms": 692819
+          "start_ms": 692275,
+          "end_ms": 692818
         },
         {
           "word": "দিব্য",
-          "start_ms": 692819,
-          "end_ms": 693362
+          "start_ms": 692818,
+          "end_ms": 693361
         },
         {
           "word": "পাঁচ",
-          "start_ms": 693362,
-          "end_ms": 693905
+          "start_ms": 693361,
+          "end_ms": 693904
         },
         {
           "word": "টাকা",
-          "start_ms": 693905,
-          "end_ms": 694448
+          "start_ms": 693904,
+          "end_ms": 694447
         },
         {
           "word": "রোজগার",
-          "start_ms": 694448,
-          "end_ms": 694991
+          "start_ms": 694447,
+          "end_ms": 694990
         },
         {
           "word": "করিতেছে",
-          "start_ms": 694991,
-          "end_ms": 695534
+          "start_ms": 694990,
+          "end_ms": 695533
         },
         {
           "word": "যেদিন",
-          "start_ms": 695534,
-          "end_ms": 696077
+          "start_ms": 695533,
+          "end_ms": 696076
         },
         {
           "word": "দুধে",
-          "start_ms": 696077,
-          "end_ms": 696620
+          "start_ms": 696076,
+          "end_ms": 696619
         },
         {
           "word": "ধোঁয়ার",
-          "start_ms": 696620,
-          "end_ms": 697163
+          "start_ms": 696619,
+          "end_ms": 697162
         },
         {
           "word": "গন্ধ",
-          "start_ms": 697163,
-          "end_ms": 697706
+          "start_ms": 697162,
+          "end_ms": 697705
         },
         {
           "word": "হয়",
-          "start_ms": 697706,
-          "end_ms": 698249
+          "start_ms": 697705,
+          "end_ms": 698248
         },
         {
           "word": "সেদিন",
-          "start_ms": 698249,
+          "start_ms": 698248,
           "end_ms": 698791
         },
         {
@@ -6478,101 +6478,101 @@
         {
           "word": "থাকে",
           "start_ms": 702049,
-          "end_ms": 702592
+          "end_ms": 702591
         },
         {
           "word": "সেদিন",
-          "start_ms": 702592,
-          "end_ms": 703135
+          "start_ms": 702591,
+          "end_ms": 703134
         },
         {
           "word": "সুরবালার",
-          "start_ms": 703135,
-          "end_ms": 703678
+          "start_ms": 703134,
+          "end_ms": 703677
         },
         {
           "word": "জন্য",
-          "start_ms": 703678,
-          "end_ms": 704221
+          "start_ms": 703677,
+          "end_ms": 704220
         },
         {
           "word": "গহনা",
-          "start_ms": 704221,
-          "end_ms": 704764
+          "start_ms": 704220,
+          "end_ms": 704763
         },
         {
           "word": "গড়াইতে",
-          "start_ms": 704764,
-          "end_ms": 705307
+          "start_ms": 704763,
+          "end_ms": 705306
         },
         {
           "word": "দেয়",
-          "start_ms": 705307,
-          "end_ms": 705850
+          "start_ms": 705306,
+          "end_ms": 705849
         },
         {
           "word": "বেশ",
-          "start_ms": 705850,
-          "end_ms": 706393
+          "start_ms": 705849,
+          "end_ms": 706392
         },
         {
           "word": "মোটাসোটা",
-          "start_ms": 706393,
-          "end_ms": 706936
+          "start_ms": 706392,
+          "end_ms": 706935
         },
         {
           "word": "চাপকান",
-          "start_ms": 706936,
-          "end_ms": 707479
+          "start_ms": 706935,
+          "end_ms": 707478
         },
         {
           "word": "পরা",
-          "start_ms": 707479,
-          "end_ms": 708022
+          "start_ms": 707478,
+          "end_ms": 708021
         },
         {
           "word": "কোনো",
-          "start_ms": 708022,
-          "end_ms": 708565
+          "start_ms": 708021,
+          "end_ms": 708564
         },
         {
           "word": "অসন্তোষ",
-          "start_ms": 708565,
-          "end_ms": 709108
+          "start_ms": 708564,
+          "end_ms": 709107
         },
         {
           "word": "নাই",
-          "start_ms": 709108,
-          "end_ms": 709651
+          "start_ms": 709107,
+          "end_ms": 709650
         },
         {
           "word": "পুষ্করিণীর",
-          "start_ms": 709651,
-          "end_ms": 710194
+          "start_ms": 709650,
+          "end_ms": 710193
         },
         {
           "word": "ধারে",
-          "start_ms": 710194,
-          "end_ms": 710737
+          "start_ms": 710193,
+          "end_ms": 710736
         },
         {
           "word": "বসিয়া",
-          "start_ms": 710737,
-          "end_ms": 711280
+          "start_ms": 710736,
+          "end_ms": 711279
         },
         {
           "word": "আকাশের",
-          "start_ms": 711280,
-          "end_ms": 711823
+          "start_ms": 711279,
+          "end_ms": 711822
         },
         {
           "word": "তারার",
-          "start_ms": 711823,
-          "end_ms": 712366
+          "start_ms": 711822,
+          "end_ms": 712365
         },
         {
           "word": "দিকে",
-          "start_ms": 712366,
+          "start_ms": 712365,
           "end_ms": 712908
         },
         {
@@ -6608,101 +6608,101 @@
         {
           "word": "না",
           "start_ms": 716166,
-          "end_ms": 716709
+          "end_ms": 716708
         },
         {
           "word": "রামলোচন",
-          "start_ms": 716709,
-          "end_ms": 717252
+          "start_ms": 716708,
+          "end_ms": 717251
         },
         {
           "word": "একটা",
-          "start_ms": 717252,
-          "end_ms": 717795
+          "start_ms": 717251,
+          "end_ms": 717794
         },
         {
           "word": "বড়ো",
-          "start_ms": 717795,
-          "end_ms": 718338
+          "start_ms": 717794,
+          "end_ms": 718337
         },
         {
           "word": "মকদ্দমায়",
-          "start_ms": 718338,
-          "end_ms": 718881
+          "start_ms": 718337,
+          "end_ms": 718880
         },
         {
           "word": "কিছুকালের",
-          "start_ms": 718881,
-          "end_ms": 719424
+          "start_ms": 718880,
+          "end_ms": 719423
         },
         {
           "word": "জন্য",
-          "start_ms": 719424,
-          "end_ms": 719967
+          "start_ms": 719423,
+          "end_ms": 719966
         },
         {
           "word": "অন্যত্র",
-          "start_ms": 719967,
-          "end_ms": 720510
+          "start_ms": 719966,
+          "end_ms": 720509
         },
         {
           "word": "গিয়াছে",
-          "start_ms": 720510,
-          "end_ms": 721053
+          "start_ms": 720509,
+          "end_ms": 721052
         },
         {
           "word": "আমার",
-          "start_ms": 721053,
-          "end_ms": 721596
+          "start_ms": 721052,
+          "end_ms": 721595
         },
         {
           "word": "স্কুলঘরে",
-          "start_ms": 721596,
-          "end_ms": 722139
+          "start_ms": 721595,
+          "end_ms": 722138
         },
         {
           "word": "আমি",
-          "start_ms": 722139,
-          "end_ms": 722682
+          "start_ms": 722138,
+          "end_ms": 722681
         },
         {
           "word": "যেমন",
-          "start_ms": 722682,
-          "end_ms": 723225
+          "start_ms": 722681,
+          "end_ms": 723224
         },
         {
           "word": "একলা",
-          "start_ms": 723225,
-          "end_ms": 723768
+          "start_ms": 723224,
+          "end_ms": 723767
         },
         {
           "word": "ছিলাম",
-          "start_ms": 723768,
-          "end_ms": 724311
+          "start_ms": 723767,
+          "end_ms": 724310
         },
         {
           "word": "সেদিন",
-          "start_ms": 724311,
-          "end_ms": 724854
+          "start_ms": 724310,
+          "end_ms": 724853
         },
         {
           "word": "সুরবালার",
-          "start_ms": 724854,
-          "end_ms": 725397
+          "start_ms": 724853,
+          "end_ms": 725396
         },
         {
           "word": "ঘরেও",
-          "start_ms": 725397,
-          "end_ms": 725940
+          "start_ms": 725396,
+          "end_ms": 725939
         },
         {
           "word": "সুরবালা",
-          "start_ms": 725940,
-          "end_ms": 726483
+          "start_ms": 725939,
+          "end_ms": 726482
         },
         {
           "word": "বোধ",
-          "start_ms": 726483,
+          "start_ms": 726482,
           "end_ms": 727025
         },
         {
@@ -6738,101 +6738,101 @@
         {
           "word": "সেদিন",
           "start_ms": 730283,
-          "end_ms": 730826
+          "end_ms": 730825
         },
         {
           "word": "সোমবার",
-          "start_ms": 730826,
-          "end_ms": 731369
+          "start_ms": 730825,
+          "end_ms": 731368
         },
         {
           "word": "সকাল",
-          "start_ms": 731369,
-          "end_ms": 731912
+          "start_ms": 731368,
+          "end_ms": 731911
         },
         {
           "word": "হইতেই",
-          "start_ms": 731912,
-          "end_ms": 732455
+          "start_ms": 731911,
+          "end_ms": 732454
         },
         {
           "word": "আকাশ",
-          "start_ms": 732455,
-          "end_ms": 732998
+          "start_ms": 732454,
+          "end_ms": 732997
         },
         {
           "word": "মেঘাচ্ছন্ন",
-          "start_ms": 732998,
-          "end_ms": 733541
+          "start_ms": 732997,
+          "end_ms": 733540
         },
         {
           "word": "হইয়া",
-          "start_ms": 733541,
-          "end_ms": 734084
+          "start_ms": 733540,
+          "end_ms": 734083
         },
         {
           "word": "আছে",
-          "start_ms": 734084,
-          "end_ms": 734627
+          "start_ms": 734083,
+          "end_ms": 734626
         },
         {
           "word": "বেলা",
-          "start_ms": 734627,
-          "end_ms": 735170
+          "start_ms": 734626,
+          "end_ms": 735169
         },
         {
           "word": "দশটা",
-          "start_ms": 735170,
-          "end_ms": 735713
+          "start_ms": 735169,
+          "end_ms": 735712
         },
         {
           "word": "হইতে",
-          "start_ms": 735713,
-          "end_ms": 736256
+          "start_ms": 735712,
+          "end_ms": 736255
         },
         {
           "word": "টিপ্",
-          "start_ms": 736256,
-          "end_ms": 736799
+          "start_ms": 736255,
+          "end_ms": 736798
         },
         {
           "word": "টিপ্",
-          "start_ms": 736799,
-          "end_ms": 737342
+          "start_ms": 736798,
+          "end_ms": 737341
         },
         {
           "word": "করিয়া",
-          "start_ms": 737342,
-          "end_ms": 737885
+          "start_ms": 737341,
+          "end_ms": 737884
         },
         {
           "word": "বৃষ্টি",
-          "start_ms": 737885,
-          "end_ms": 738428
+          "start_ms": 737884,
+          "end_ms": 738427
         },
         {
           "word": "পড়িতে",
-          "start_ms": 738428,
-          "end_ms": 738971
+          "start_ms": 738427,
+          "end_ms": 738970
         },
         {
           "word": "আরম্ভ",
-          "start_ms": 738971,
-          "end_ms": 739514
+          "start_ms": 738970,
+          "end_ms": 739513
         },
         {
           "word": "করিল",
-          "start_ms": 739514,
-          "end_ms": 740057
+          "start_ms": 739513,
+          "end_ms": 740056
         },
         {
           "word": "আকাশের",
-          "start_ms": 740057,
-          "end_ms": 740600
+          "start_ms": 740056,
+          "end_ms": 740599
         },
         {
           "word": "ভাবগতিক",
-          "start_ms": 740600,
+          "start_ms": 740599,
           "end_ms": 741142
         },
         {
@@ -6868,106 +6868,106 @@
         {
           "word": "ছুটি",
           "start_ms": 744400,
-          "end_ms": 744943
+          "end_ms": 744942
         },
         {
           "word": "দিলেন",
-          "start_ms": 744943,
-          "end_ms": 745486
+          "start_ms": 744942,
+          "end_ms": 745485
         },
         {
           "word": "খণ্ড",
-          "start_ms": 745486,
-          "end_ms": 746029
+          "start_ms": 745485,
+          "end_ms": 746028
         },
         {
           "word": "খণ্ড",
-          "start_ms": 746029,
-          "end_ms": 746572
+          "start_ms": 746028,
+          "end_ms": 746571
         },
         {
           "word": "কালো",
-          "start_ms": 746572,
-          "end_ms": 747115
+          "start_ms": 746571,
+          "end_ms": 747114
         },
         {
           "word": "মেঘ",
-          "start_ms": 747115,
-          "end_ms": 747658
+          "start_ms": 747114,
+          "end_ms": 747657
         },
         {
           "word": "যেন",
-          "start_ms": 747658,
-          "end_ms": 748201
+          "start_ms": 747657,
+          "end_ms": 748200
         },
         {
           "word": "একটা",
-          "start_ms": 748201,
-          "end_ms": 748744
+          "start_ms": 748200,
+          "end_ms": 748743
         },
         {
           "word": "কী",
-          "start_ms": 748744,
-          "end_ms": 749287
+          "start_ms": 748743,
+          "end_ms": 749286
         },
         {
           "word": "মহা",
-          "start_ms": 749287,
-          "end_ms": 749830
+          "start_ms": 749286,
+          "end_ms": 749829
         },
         {
           "word": "আয়োজনে",
-          "start_ms": 749830,
-          "end_ms": 750373
+          "start_ms": 749829,
+          "end_ms": 750372
         },
         {
           "word": "সমস্ত",
-          "start_ms": 750373,
-          "end_ms": 750916
+          "start_ms": 750372,
+          "end_ms": 750915
         },
         {
           "word": "দিন",
-          "start_ms": 750916,
-          "end_ms": 751459
+          "start_ms": 750915,
+          "end_ms": 751458
         },
         {
           "word": "আকাশময়",
-          "start_ms": 751459,
-          "end_ms": 752002
+          "start_ms": 751458,
+          "end_ms": 752001
         },
         {
           "word": "আনাগোনা",
-          "start_ms": 752002,
-          "end_ms": 752545
+          "start_ms": 752001,
+          "end_ms": 752544
         },
         {
           "word": "করিয়া",
-          "start_ms": 752545,
-          "end_ms": 753088
+          "start_ms": 752544,
+          "end_ms": 753087
         },
         {
           "word": "বেড়াইতে",
-          "start_ms": 753088,
-          "end_ms": 753631
+          "start_ms": 753087,
+          "end_ms": 753630
         },
         {
           "word": "লাগিল",
-          "start_ms": 753631,
-          "end_ms": 754174
+          "start_ms": 753630,
+          "end_ms": 754173
         },
         {
           "word": "তাহার",
-          "start_ms": 754174,
-          "end_ms": 754717
+          "start_ms": 754173,
+          "end_ms": 754716
         },
         {
           "word": "পরদিন",
-          "start_ms": 754717,
-          "end_ms": 755260
+          "start_ms": 754716,
+          "end_ms": 755259
         },
         {
           "word": "বিকালের",
-          "start_ms": 755260,
+          "start_ms": 755259,
           "end_ms": 755802
         },
         {
@@ -6998,106 +6998,106 @@
         {
           "word": "সঙ্গে",
           "start_ms": 758517,
-          "end_ms": 759060
+          "end_ms": 759059
         },
         {
           "word": "ঝড়",
-          "start_ms": 759060,
-          "end_ms": 759603
+          "start_ms": 759059,
+          "end_ms": 759602
         },
         {
           "word": "আরম্ভ",
-          "start_ms": 759603,
-          "end_ms": 760146
+          "start_ms": 759602,
+          "end_ms": 760145
         },
         {
           "word": "হইল",
-          "start_ms": 760146,
-          "end_ms": 760689
+          "start_ms": 760145,
+          "end_ms": 760688
         },
         {
           "word": "যত",
-          "start_ms": 760689,
-          "end_ms": 761232
+          "start_ms": 760688,
+          "end_ms": 761231
         },
         {
           "word": "রাত্রি",
-          "start_ms": 761232,
-          "end_ms": 761775
+          "start_ms": 761231,
+          "end_ms": 761774
         },
         {
           "word": "হইতে",
-          "start_ms": 761775,
-          "end_ms": 762318
+          "start_ms": 761774,
+          "end_ms": 762317
         },
         {
           "word": "লাগিল",
-          "start_ms": 762318,
-          "end_ms": 762861
+          "start_ms": 762317,
+          "end_ms": 762860
         },
         {
           "word": "বৃষ্টি",
-          "start_ms": 762861,
-          "end_ms": 763404
+          "start_ms": 762860,
+          "end_ms": 763403
         },
         {
           "word": "এবং",
-          "start_ms": 763404,
-          "end_ms": 763947
+          "start_ms": 763403,
+          "end_ms": 763946
         },
         {
           "word": "ঝড়ের",
-          "start_ms": 763947,
-          "end_ms": 764490
+          "start_ms": 763946,
+          "end_ms": 764489
         },
         {
           "word": "বেগ",
-          "start_ms": 764490,
-          "end_ms": 765033
+          "start_ms": 764489,
+          "end_ms": 765032
         },
         {
           "word": "বাড়িতে",
-          "start_ms": 765033,
-          "end_ms": 765576
+          "start_ms": 765032,
+          "end_ms": 765575
         },
         {
           "word": "চলিল",
-          "start_ms": 765576,
-          "end_ms": 766119
+          "start_ms": 765575,
+          "end_ms": 766118
         },
         {
           "word": "প্রথমে",
-          "start_ms": 766119,
-          "end_ms": 766662
+          "start_ms": 766118,
+          "end_ms": 766661
         },
         {
           "word": "পূর্ব",
-          "start_ms": 766662,
-          "end_ms": 767205
+          "start_ms": 766661,
+          "end_ms": 767204
         },
         {
           "word": "দিক",
-          "start_ms": 767205,
-          "end_ms": 767748
+          "start_ms": 767204,
+          "end_ms": 767747
         },
         {
           "word": "হইতে",
-          "start_ms": 767748,
-          "end_ms": 768291
+          "start_ms": 767747,
+          "end_ms": 768290
         },
         {
           "word": "বাতাস",
-          "start_ms": 768291,
-          "end_ms": 768834
+          "start_ms": 768290,
+          "end_ms": 768833
         },
         {
           "word": "বহিতেছিল",
-          "start_ms": 768834,
-          "end_ms": 769377
+          "start_ms": 768833,
+          "end_ms": 769376
         },
         {
           "word": "ক্রমে",
-          "start_ms": 769377,
+          "start_ms": 769376,
           "end_ms": 769919
         },
         {
@@ -7123,111 +7123,111 @@
         {
           "word": "বহিতে",
           "start_ms": 772091,
-          "end_ms": 772634
+          "end_ms": 772633
         },
         {
           "word": "লাগিল",
-          "start_ms": 772634,
-          "end_ms": 773177
+          "start_ms": 772633,
+          "end_ms": 773176
         },
         {
           "word": "এ",
-          "start_ms": 773177,
-          "end_ms": 773720
+          "start_ms": 773176,
+          "end_ms": 773719
         },
         {
           "word": "রাত্রে",
-          "start_ms": 773720,
-          "end_ms": 774263
+          "start_ms": 773719,
+          "end_ms": 774262
         },
         {
           "word": "ঘুমাইবার",
-          "start_ms": 774263,
-          "end_ms": 774806
+          "start_ms": 774262,
+          "end_ms": 774805
         },
         {
           "word": "চেষ্টা",
-          "start_ms": 774806,
-          "end_ms": 775349
+          "start_ms": 774805,
+          "end_ms": 775348
         },
         {
           "word": "করা",
-          "start_ms": 775349,
-          "end_ms": 775892
+          "start_ms": 775348,
+          "end_ms": 775891
         },
         {
           "word": "বৃথা",
-          "start_ms": 775892,
-          "end_ms": 776435
+          "start_ms": 775891,
+          "end_ms": 776434
         },
         {
           "word": "মনে",
-          "start_ms": 776435,
-          "end_ms": 776978
+          "start_ms": 776434,
+          "end_ms": 776977
         },
         {
           "word": "পড়িল",
-          "start_ms": 776978,
-          "end_ms": 777521
+          "start_ms": 776977,
+          "end_ms": 777520
         },
         {
           "word": "এই",
-          "start_ms": 777521,
-          "end_ms": 778064
+          "start_ms": 777520,
+          "end_ms": 778063
         },
         {
           "word": "দুর্যোগে",
-          "start_ms": 778064,
-          "end_ms": 778607
+          "start_ms": 778063,
+          "end_ms": 778606
         },
         {
           "word": "সুরবালা",
-          "start_ms": 778607,
-          "end_ms": 779150
+          "start_ms": 778606,
+          "end_ms": 779149
         },
         {
           "word": "ঘরে",
-          "start_ms": 779150,
-          "end_ms": 779693
+          "start_ms": 779149,
+          "end_ms": 779692
         },
         {
           "word": "একলা",
-          "start_ms": 779693,
-          "end_ms": 780236
+          "start_ms": 779692,
+          "end_ms": 780235
         },
         {
           "word": "আছে",
-          "start_ms": 780236,
-          "end_ms": 780779
+          "start_ms": 780235,
+          "end_ms": 780778
         },
         {
           "word": "আমাদের",
-          "start_ms": 780779,
-          "end_ms": 781322
+          "start_ms": 780778,
+          "end_ms": 781321
         },
         {
           "word": "স্কুলঘর",
-          "start_ms": 781322,
-          "end_ms": 781865
+          "start_ms": 781321,
+          "end_ms": 781864
         },
         {
           "word": "তাহাদের",
-          "start_ms": 781865,
-          "end_ms": 782408
+          "start_ms": 781864,
+          "end_ms": 782407
         },
         {
           "word": "ঘরের",
-          "start_ms": 782408,
-          "end_ms": 782951
+          "start_ms": 782407,
+          "end_ms": 782950
         },
         {
           "word": "অপেক্ষা",
-          "start_ms": 782951,
-          "end_ms": 783494
+          "start_ms": 782950,
+          "end_ms": 783493
         },
         {
           "word": "অনেক",
-          "start_ms": 783494,
+          "start_ms": 783493,
           "end_ms": 784036
         },
         {
@@ -7253,111 +7253,111 @@
         {
           "word": "তাহাকে",
           "start_ms": 786208,
-          "end_ms": 786751
+          "end_ms": 786750
         },
         {
           "word": "স্কুলঘরে",
-          "start_ms": 786751,
-          "end_ms": 787294
+          "start_ms": 786750,
+          "end_ms": 787293
         },
         {
           "word": "ডাকিয়া",
-          "start_ms": 787294,
-          "end_ms": 787837
+          "start_ms": 787293,
+          "end_ms": 787836
         },
         {
           "word": "আনিয়া",
-          "start_ms": 787837,
-          "end_ms": 788380
+          "start_ms": 787836,
+          "end_ms": 788379
         },
         {
           "word": "আমি",
-          "start_ms": 788380,
-          "end_ms": 788923
+          "start_ms": 788379,
+          "end_ms": 788922
         },
         {
           "word": "পুষ্করিণীর",
-          "start_ms": 788923,
-          "end_ms": 789466
+          "start_ms": 788922,
+          "end_ms": 789465
         },
         {
           "word": "পাড়ের",
-          "start_ms": 789466,
-          "end_ms": 790009
+          "start_ms": 789465,
+          "end_ms": 790008
         },
         {
           "word": "উপর",
-          "start_ms": 790009,
-          "end_ms": 790552
+          "start_ms": 790008,
+          "end_ms": 790551
         },
         {
           "word": "রাত্রিযাপন",
-          "start_ms": 790552,
-          "end_ms": 791095
+          "start_ms": 790551,
+          "end_ms": 791094
         },
         {
           "word": "করিব",
-          "start_ms": 791095,
-          "end_ms": 791638
+          "start_ms": 791094,
+          "end_ms": 791637
         },
         {
           "word": "কিন্তু",
-          "start_ms": 791638,
-          "end_ms": 792181
+          "start_ms": 791637,
+          "end_ms": 792180
         },
         {
           "word": "কিছুতেই",
-          "start_ms": 792181,
-          "end_ms": 792724
+          "start_ms": 792180,
+          "end_ms": 792723
         },
         {
           "word": "মন",
-          "start_ms": 792724,
-          "end_ms": 793267
+          "start_ms": 792723,
+          "end_ms": 793266
         },
         {
           "word": "স্থির",
-          "start_ms": 793267,
-          "end_ms": 793810
+          "start_ms": 793266,
+          "end_ms": 793809
         },
         {
           "word": "করিয়া",
-          "start_ms": 793810,
-          "end_ms": 794353
+          "start_ms": 793809,
+          "end_ms": 794352
         },
         {
           "word": "উঠিতে",
-          "start_ms": 794353,
-          "end_ms": 794896
+          "start_ms": 794352,
+          "end_ms": 794895
         },
         {
           "word": "পারিলাম",
-          "start_ms": 794896,
-          "end_ms": 795439
+          "start_ms": 794895,
+          "end_ms": 795438
         },
         {
           "word": "না",
-          "start_ms": 795439,
-          "end_ms": 795982
+          "start_ms": 795438,
+          "end_ms": 795981
         },
         {
           "word": "রাত্রি",
-          "start_ms": 795982,
-          "end_ms": 796525
+          "start_ms": 795981,
+          "end_ms": 796524
         },
         {
           "word": "যখন",
-          "start_ms": 796525,
-          "end_ms": 797068
+          "start_ms": 796524,
+          "end_ms": 797067
         },
         {
           "word": "একটা",
-          "start_ms": 797068,
-          "end_ms": 797611
+          "start_ms": 797067,
+          "end_ms": 797610
         },
         {
           "word": "দেড়টা",
-          "start_ms": 797611,
+          "start_ms": 797610,
           "end_ms": 798153
         },
         {
@@ -7383,116 +7383,116 @@
         {
           "word": "শোনা",
           "start_ms": 800325,
-          "end_ms": 800868
+          "end_ms": 800867
         },
         {
           "word": "গেল",
-          "start_ms": 800868,
-          "end_ms": 801411
+          "start_ms": 800867,
+          "end_ms": 801410
         },
         {
           "word": "সমুদ্র",
-          "start_ms": 801411,
-          "end_ms": 801954
+          "start_ms": 801410,
+          "end_ms": 801953
         },
         {
           "word": "ছুটিয়া",
-          "start_ms": 801954,
-          "end_ms": 802497
+          "start_ms": 801953,
+          "end_ms": 802496
         },
         {
           "word": "আসিতেছে",
-          "start_ms": 802497,
-          "end_ms": 803040
+          "start_ms": 802496,
+          "end_ms": 803039
         },
         {
           "word": "ঘর",
-          "start_ms": 803040,
-          "end_ms": 803583
+          "start_ms": 803039,
+          "end_ms": 803582
         },
         {
           "word": "ছাড়িয়া",
-          "start_ms": 803583,
-          "end_ms": 804126
+          "start_ms": 803582,
+          "end_ms": 804125
         },
         {
           "word": "বাহির",
-          "start_ms": 804126,
-          "end_ms": 804669
+          "start_ms": 804125,
+          "end_ms": 804668
         },
         {
           "word": "হইলাম",
-          "start_ms": 804669,
-          "end_ms": 805212
+          "start_ms": 804668,
+          "end_ms": 805211
         },
         {
           "word": "সুরবালার",
-          "start_ms": 805212,
-          "end_ms": 805755
+          "start_ms": 805211,
+          "end_ms": 805754
         },
         {
           "word": "বাড়ির",
-          "start_ms": 805755,
-          "end_ms": 806298
+          "start_ms": 805754,
+          "end_ms": 806297
         },
         {
           "word": "দিকে",
-          "start_ms": 806298,
-          "end_ms": 806841
+          "start_ms": 806297,
+          "end_ms": 806840
         },
         {
           "word": "চলিলাম",
-          "start_ms": 806841,
-          "end_ms": 807384
+          "start_ms": 806840,
+          "end_ms": 807383
         },
         {
           "word": "পথে",
-          "start_ms": 807384,
-          "end_ms": 807927
+          "start_ms": 807383,
+          "end_ms": 807926
         },
         {
           "word": "আমাদের",
-          "start_ms": 807927,
-          "end_ms": 808470
+          "start_ms": 807926,
+          "end_ms": 808469
         },
         {
           "word": "পুষ্করিণীর",
-          "start_ms": 808470,
-          "end_ms": 809013
+          "start_ms": 808469,
+          "end_ms": 809012
         },
         {
           "word": "পাড়",
-          "start_ms": 809013,
-          "end_ms": 809556
+          "start_ms": 809012,
+          "end_ms": 809555
         },
         {
           "word": "সে",
-          "start_ms": 809556,
-          "end_ms": 810099
+          "start_ms": 809555,
+          "end_ms": 810098
         },
         {
           "word": "পর্যন্ত",
-          "start_ms": 810099,
-          "end_ms": 810642
+          "start_ms": 810098,
+          "end_ms": 810641
         },
         {
           "word": "যাইতে",
-          "start_ms": 810642,
-          "end_ms": 811185
+          "start_ms": 810641,
+          "end_ms": 811184
         },
         {
           "word": "না",
-          "start_ms": 811185,
-          "end_ms": 811728
+          "start_ms": 811184,
+          "end_ms": 811727
         },
         {
           "word": "যাইতে",
-          "start_ms": 811728,
-          "end_ms": 812271
+          "start_ms": 811727,
+          "end_ms": 812270
         },
         {
           "word": "আমার",
-          "start_ms": 812271,
+          "start_ms": 812270,
           "end_ms": 812813
         },
         {
@@ -7513,116 +7513,116 @@
         {
           "word": "উপর",
           "start_ms": 814442,
-          "end_ms": 814985
+          "end_ms": 814984
         },
         {
           "word": "যখন",
-          "start_ms": 814985,
-          "end_ms": 815528
+          "start_ms": 814984,
+          "end_ms": 815527
         },
         {
           "word": "উঠিয়া",
-          "start_ms": 815528,
-          "end_ms": 816071
+          "start_ms": 815527,
+          "end_ms": 816070
         },
         {
           "word": "দাঁড়াইলাম",
-          "start_ms": 816071,
-          "end_ms": 816614
+          "start_ms": 816070,
+          "end_ms": 816613
         },
         {
           "word": "তখন",
-          "start_ms": 816614,
-          "end_ms": 817157
+          "start_ms": 816613,
+          "end_ms": 817156
         },
         {
           "word": "দ্বিতীয়",
-          "start_ms": 817157,
-          "end_ms": 817700
+          "start_ms": 817156,
+          "end_ms": 817699
         },
         {
           "word": "আর",
-          "start_ms": 817700,
-          "end_ms": 818243
+          "start_ms": 817699,
+          "end_ms": 818242
         },
         {
           "word": "একটা",
-          "start_ms": 818243,
-          "end_ms": 818786
+          "start_ms": 818242,
+          "end_ms": 818785
         },
         {
           "word": "তরঙ্গ",
-          "start_ms": 818786,
-          "end_ms": 819329
+          "start_ms": 818785,
+          "end_ms": 819328
         },
         {
           "word": "আসিয়া",
-          "start_ms": 819329,
-          "end_ms": 819872
+          "start_ms": 819328,
+          "end_ms": 819871
         },
         {
           "word": "উপস্থিত",
-          "start_ms": 819872,
-          "end_ms": 820415
+          "start_ms": 819871,
+          "end_ms": 820414
         },
         {
           "word": "হইল",
-          "start_ms": 820415,
-          "end_ms": 820958
+          "start_ms": 820414,
+          "end_ms": 820957
         },
         {
           "word": "আমাদের",
-          "start_ms": 820958,
-          "end_ms": 821501
+          "start_ms": 820957,
+          "end_ms": 821500
         },
         {
           "word": "পুকুরের",
-          "start_ms": 821501,
-          "end_ms": 822044
+          "start_ms": 821500,
+          "end_ms": 822043
         },
         {
           "word": "পাড়ের",
-          "start_ms": 822044,
-          "end_ms": 822587
+          "start_ms": 822043,
+          "end_ms": 822586
         },
         {
           "word": "একটা",
-          "start_ms": 822587,
-          "end_ms": 823130
+          "start_ms": 822586,
+          "end_ms": 823129
         },
         {
           "word": "অংশ",
-          "start_ms": 823130,
-          "end_ms": 823673
+          "start_ms": 823129,
+          "end_ms": 823672
         },
         {
           "word": "প্রায়",
-          "start_ms": 823673,
-          "end_ms": 824216
+          "start_ms": 823672,
+          "end_ms": 824215
         },
         {
           "word": "দশ",
-          "start_ms": 824216,
-          "end_ms": 824759
+          "start_ms": 824215,
+          "end_ms": 824758
         },
         {
           "word": "এগারো",
-          "start_ms": 824759,
-          "end_ms": 825302
+          "start_ms": 824758,
+          "end_ms": 825301
         },
         {
           "word": "হাত",
-          "start_ms": 825302,
-          "end_ms": 825845
+          "start_ms": 825301,
+          "end_ms": 825844
         },
         {
           "word": "উচ্চ",
-          "start_ms": 825845,
-          "end_ms": 826388
+          "start_ms": 825844,
+          "end_ms": 826387
         },
         {
           "word": "হইবে",
-          "start_ms": 826388,
+          "start_ms": 826387,
           "end_ms": 826930
         },
         {
@@ -7643,116 +7643,116 @@
         {
           "word": "যখন",
           "start_ms": 828559,
-          "end_ms": 829102
+          "end_ms": 829101
         },
         {
           "word": "উঠিলাম",
-          "start_ms": 829102,
-          "end_ms": 829645
+          "start_ms": 829101,
+          "end_ms": 829644
         },
         {
           "word": "বিপরীত",
-          "start_ms": 829645,
-          "end_ms": 830188
+          "start_ms": 829644,
+          "end_ms": 830187
         },
         {
           "word": "দিক",
-          "start_ms": 830188,
-          "end_ms": 830731
+          "start_ms": 830187,
+          "end_ms": 830730
         },
         {
           "word": "হইতে",
-          "start_ms": 830731,
-          "end_ms": 831274
+          "start_ms": 830730,
+          "end_ms": 831273
         },
         {
           "word": "আর",
-          "start_ms": 831274,
-          "end_ms": 831817
+          "start_ms": 831273,
+          "end_ms": 831816
         },
         {
           "word": "একটি",
-          "start_ms": 831817,
-          "end_ms": 832360
+          "start_ms": 831816,
+          "end_ms": 832359
         },
         {
           "word": "লোকও",
-          "start_ms": 832360,
-          "end_ms": 832903
+          "start_ms": 832359,
+          "end_ms": 832902
         },
         {
           "word": "উঠিল",
-          "start_ms": 832903,
-          "end_ms": 833446
+          "start_ms": 832902,
+          "end_ms": 833445
         },
         {
           "word": "লোকটি",
-          "start_ms": 833446,
-          "end_ms": 833989
+          "start_ms": 833445,
+          "end_ms": 833988
         },
         {
           "word": "কে",
-          "start_ms": 833989,
-          "end_ms": 834532
+          "start_ms": 833988,
+          "end_ms": 834531
         },
         {
           "word": "তাহা",
-          "start_ms": 834532,
-          "end_ms": 835075
+          "start_ms": 834531,
+          "end_ms": 835074
         },
         {
           "word": "আমার",
-          "start_ms": 835075,
-          "end_ms": 835618
+          "start_ms": 835074,
+          "end_ms": 835617
         },
         {
           "word": "সমস্ত",
-          "start_ms": 835618,
-          "end_ms": 836161
+          "start_ms": 835617,
+          "end_ms": 836160
         },
         {
           "word": "অন্তরাত্মা",
-          "start_ms": 836161,
-          "end_ms": 836704
+          "start_ms": 836160,
+          "end_ms": 836703
         },
         {
           "word": "আমার",
-          "start_ms": 836704,
-          "end_ms": 837247
+          "start_ms": 836703,
+          "end_ms": 837246
         },
         {
           "word": "মাথা",
-          "start_ms": 837247,
-          "end_ms": 837790
+          "start_ms": 837246,
+          "end_ms": 837789
         },
         {
           "word": "হইতে",
-          "start_ms": 837790,
-          "end_ms": 838333
+          "start_ms": 837789,
+          "end_ms": 838332
         },
         {
           "word": "পা",
-          "start_ms": 838333,
-          "end_ms": 838876
+          "start_ms": 838332,
+          "end_ms": 838875
         },
         {
           "word": "পর্যন্ত",
-          "start_ms": 838876,
-          "end_ms": 839419
+          "start_ms": 838875,
+          "end_ms": 839418
         },
         {
           "word": "বুঝিতে",
-          "start_ms": 839419,
-          "end_ms": 839962
+          "start_ms": 839418,
+          "end_ms": 839961
         },
         {
           "word": "পারিল",
-          "start_ms": 839962,
-          "end_ms": 840505
+          "start_ms": 839961,
+          "end_ms": 840504
         },
         {
           "word": "এবং",
-          "start_ms": 840505,
+          "start_ms": 840504,
           "end_ms": 841047
         },
         {
@@ -7773,116 +7773,116 @@
         {
           "word": "জানিতে",
           "start_ms": 842676,
-          "end_ms": 843219
+          "end_ms": 843218
         },
         {
           "word": "পারিল",
-          "start_ms": 843219,
-          "end_ms": 843762
+          "start_ms": 843218,
+          "end_ms": 843761
         },
         {
           "word": "তাহাতে",
-          "start_ms": 843762,
-          "end_ms": 844305
+          "start_ms": 843761,
+          "end_ms": 844304
         },
         {
           "word": "আমার",
-          "start_ms": 844305,
-          "end_ms": 844848
+          "start_ms": 844304,
+          "end_ms": 844847
         },
         {
           "word": "সন্দেহ",
-          "start_ms": 844848,
-          "end_ms": 845391
+          "start_ms": 844847,
+          "end_ms": 845390
         },
         {
           "word": "নাই",
-          "start_ms": 845391,
-          "end_ms": 845934
+          "start_ms": 845390,
+          "end_ms": 845933
         },
         {
           "word": "আর",
-          "start_ms": 845934,
-          "end_ms": 846477
+          "start_ms": 845933,
+          "end_ms": 846476
         },
         {
           "word": "সমস্ত",
-          "start_ms": 846477,
-          "end_ms": 847020
+          "start_ms": 846476,
+          "end_ms": 847019
         },
         {
           "word": "জলমগ্ন",
-          "start_ms": 847020,
-          "end_ms": 847563
+          "start_ms": 847019,
+          "end_ms": 847562
         },
         {
           "word": "হইয়া",
-          "start_ms": 847563,
-          "end_ms": 848106
+          "start_ms": 847562,
+          "end_ms": 848105
         },
         {
           "word": "গেছে",
-          "start_ms": 848106,
-          "end_ms": 848649
+          "start_ms": 848105,
+          "end_ms": 848648
         },
         {
           "word": "কেবল",
-          "start_ms": 848649,
-          "end_ms": 849192
+          "start_ms": 848648,
+          "end_ms": 849191
         },
         {
           "word": "হাত",
-          "start_ms": 849192,
-          "end_ms": 849735
+          "start_ms": 849191,
+          "end_ms": 849734
         },
         {
           "word": "পাঁচ",
-          "start_ms": 849735,
-          "end_ms": 850278
+          "start_ms": 849734,
+          "end_ms": 850277
         },
         {
           "word": "ছয়",
-          "start_ms": 850278,
-          "end_ms": 850821
+          "start_ms": 850277,
+          "end_ms": 850820
         },
         {
           "word": "দ্বীপের",
-          "start_ms": 850821,
-          "end_ms": 851364
+          "start_ms": 850820,
+          "end_ms": 851363
         },
         {
           "word": "উপর",
-          "start_ms": 851364,
-          "end_ms": 851907
+          "start_ms": 851363,
+          "end_ms": 851906
         },
         {
           "word": "আমরা",
-          "start_ms": 851907,
-          "end_ms": 852450
+          "start_ms": 851906,
+          "end_ms": 852449
         },
         {
           "word": "দুটি",
-          "start_ms": 852450,
-          "end_ms": 852993
+          "start_ms": 852449,
+          "end_ms": 852992
         },
         {
           "word": "প্রাণী",
-          "start_ms": 852993,
-          "end_ms": 853536
+          "start_ms": 852992,
+          "end_ms": 853535
         },
         {
           "word": "আসিয়া",
-          "start_ms": 853536,
-          "end_ms": 854079
+          "start_ms": 853535,
+          "end_ms": 854078
         },
         {
           "word": "দাঁড়াইলাম",
-          "start_ms": 854079,
-          "end_ms": 854622
+          "start_ms": 854078,
+          "end_ms": 854621
         },
         {
           "word": "তখন",
-          "start_ms": 854622,
+          "start_ms": 854621,
           "end_ms": 855164
         },
         {
@@ -7903,121 +7903,121 @@
         {
           "word": "তারার",
           "start_ms": 856793,
-          "end_ms": 857336
+          "end_ms": 857335
         },
         {
           "word": "আলো",
-          "start_ms": 857336,
-          "end_ms": 857879
+          "start_ms": 857335,
+          "end_ms": 857878
         },
         {
           "word": "ছিল",
-          "start_ms": 857879,
-          "end_ms": 858422
+          "start_ms": 857878,
+          "end_ms": 858421
         },
         {
           "word": "না",
-          "start_ms": 858422,
-          "end_ms": 858965
+          "start_ms": 858421,
+          "end_ms": 858964
         },
         {
           "word": "এবং",
-          "start_ms": 858965,
-          "end_ms": 859508
+          "start_ms": 858964,
+          "end_ms": 859507
         },
         {
           "word": "পৃথিবীর",
-          "start_ms": 859508,
-          "end_ms": 860051
+          "start_ms": 859507,
+          "end_ms": 860050
         },
         {
           "word": "সমস্ত",
-          "start_ms": 860051,
-          "end_ms": 860594
+          "start_ms": 860050,
+          "end_ms": 860593
         },
         {
           "word": "প্রদীপ",
-          "start_ms": 860594,
-          "end_ms": 861137
+          "start_ms": 860593,
+          "end_ms": 861136
         },
         {
           "word": "নিবিয়া",
-          "start_ms": 861137,
-          "end_ms": 861680
+          "start_ms": 861136,
+          "end_ms": 861679
         },
         {
           "word": "গেছে",
-          "start_ms": 861680,
-          "end_ms": 862223
+          "start_ms": 861679,
+          "end_ms": 862222
         },
         {
           "word": "তখন",
-          "start_ms": 862223,
-          "end_ms": 862766
+          "start_ms": 862222,
+          "end_ms": 862765
         },
         {
           "word": "একটা",
-          "start_ms": 862766,
-          "end_ms": 863309
+          "start_ms": 862765,
+          "end_ms": 863308
         },
         {
           "word": "কথা",
-          "start_ms": 863309,
-          "end_ms": 863852
+          "start_ms": 863308,
+          "end_ms": 863851
         },
         {
           "word": "বলিলেও",
-          "start_ms": 863852,
-          "end_ms": 864395
+          "start_ms": 863851,
+          "end_ms": 864394
         },
         {
           "word": "ক্ষতি",
-          "start_ms": 864395,
-          "end_ms": 864938
+          "start_ms": 864394,
+          "end_ms": 864937
         },
         {
           "word": "ছিল",
-          "start_ms": 864938,
-          "end_ms": 865481
+          "start_ms": 864937,
+          "end_ms": 865480
         },
         {
           "word": "না",
-          "start_ms": 865481,
-          "end_ms": 866024
+          "start_ms": 865480,
+          "end_ms": 866023
         },
         {
           "word": "কিন্তু",
-          "start_ms": 866024,
-          "end_ms": 866567
+          "start_ms": 866023,
+          "end_ms": 866566
         },
         {
           "word": "একটা",
-          "start_ms": 866567,
-          "end_ms": 867110
+          "start_ms": 866566,
+          "end_ms": 867109
         },
         {
           "word": "কথাও",
-          "start_ms": 867110,
-          "end_ms": 867653
+          "start_ms": 867109,
+          "end_ms": 867652
         },
         {
           "word": "বলা",
-          "start_ms": 867653,
-          "end_ms": 868196
+          "start_ms": 867652,
+          "end_ms": 868195
         },
         {
           "word": "গেল",
-          "start_ms": 868196,
-          "end_ms": 868739
+          "start_ms": 868195,
+          "end_ms": 868738
         },
         {
           "word": "না",
-          "start_ms": 868739,
-          "end_ms": 869282
+          "start_ms": 868738,
+          "end_ms": 869281
         },
         {
           "word": "কেহ",
-          "start_ms": 869282,
+          "start_ms": 869281,
           "end_ms": 869824
         },
         {
@@ -8033,121 +8033,121 @@
         {
           "word": "কুশলপ্রশ্নও",
           "start_ms": 870910,
-          "end_ms": 871453
+          "end_ms": 871452
         },
         {
           "word": "করিল",
-          "start_ms": 871453,
-          "end_ms": 871996
+          "start_ms": 871452,
+          "end_ms": 871995
         },
         {
           "word": "না",
-          "start_ms": 871996,
-          "end_ms": 872539
+          "start_ms": 871995,
+          "end_ms": 872538
         },
         {
           "word": "কেবল",
-          "start_ms": 872539,
-          "end_ms": 873082
+          "start_ms": 872538,
+          "end_ms": 873081
         },
         {
           "word": "দুইজনে",
-          "start_ms": 873082,
-          "end_ms": 873625
+          "start_ms": 873081,
+          "end_ms": 873624
         },
         {
           "word": "অন্ধকারের",
-          "start_ms": 873625,
-          "end_ms": 874168
+          "start_ms": 873624,
+          "end_ms": 874167
         },
         {
           "word": "দিকে",
-          "start_ms": 874168,
-          "end_ms": 874711
+          "start_ms": 874167,
+          "end_ms": 874710
         },
         {
           "word": "চাহিয়া",
-          "start_ms": 874711,
-          "end_ms": 875254
+          "start_ms": 874710,
+          "end_ms": 875253
         },
         {
           "word": "রহিলাম",
-          "start_ms": 875254,
-          "end_ms": 875797
+          "start_ms": 875253,
+          "end_ms": 875796
         },
         {
           "word": "পদতলে",
-          "start_ms": 875797,
-          "end_ms": 876340
+          "start_ms": 875796,
+          "end_ms": 876339
         },
         {
           "word": "গাঢ়",
-          "start_ms": 876340,
-          "end_ms": 876883
+          "start_ms": 876339,
+          "end_ms": 876882
         },
         {
           "word": "একরাত্রি",
-          "start_ms": 876883,
-          "end_ms": 877426
+          "start_ms": 876882,
+          "end_ms": 877425
         },
         {
           "word": "কৃষ্ণবর্ণ",
-          "start_ms": 877426,
-          "end_ms": 877969
+          "start_ms": 877425,
+          "end_ms": 877968
         },
         {
           "word": "উন্মত্ত",
-          "start_ms": 877969,
-          "end_ms": 878512
+          "start_ms": 877968,
+          "end_ms": 878511
         },
         {
           "word": "মৃত্যুস্রোত",
-          "start_ms": 878512,
-          "end_ms": 879055
+          "start_ms": 878511,
+          "end_ms": 879054
         },
         {
           "word": "গর্জন",
-          "start_ms": 879055,
-          "end_ms": 879598
+          "start_ms": 879054,
+          "end_ms": 879597
         },
         {
           "word": "করিয়া",
-          "start_ms": 879598,
-          "end_ms": 880141
+          "start_ms": 879597,
+          "end_ms": 880140
         },
         {
           "word": "ছুটিয়া",
-          "start_ms": 880141,
-          "end_ms": 880684
+          "start_ms": 880140,
+          "end_ms": 880683
         },
         {
           "word": "চলিল",
-          "start_ms": 880684,
-          "end_ms": 881227
+          "start_ms": 880683,
+          "end_ms": 881226
         },
         {
           "word": "আজ",
-          "start_ms": 881227,
-          "end_ms": 881770
+          "start_ms": 881226,
+          "end_ms": 881769
         },
         {
           "word": "সমস্ত",
-          "start_ms": 881770,
-          "end_ms": 882313
+          "start_ms": 881769,
+          "end_ms": 882312
         },
         {
           "word": "বিশ্বসংসার",
-          "start_ms": 882313,
-          "end_ms": 882856
+          "start_ms": 882312,
+          "end_ms": 882855
         },
         {
           "word": "ছাড়িয়া",
-          "start_ms": 882856,
-          "end_ms": 883399
+          "start_ms": 882855,
+          "end_ms": 883398
         },
         {
           "word": "সুরবালা",
-          "start_ms": 883399,
+          "start_ms": 883398,
           "end_ms": 883941
         },
         {
@@ -8158,126 +8158,126 @@
         {
           "word": "কাছে",
           "start_ms": 884484,
-          "end_ms": 885027
+          "end_ms": 885026
         },
         {
           "word": "আসিয়া",
-          "start_ms": 885027,
-          "end_ms": 885570
+          "start_ms": 885026,
+          "end_ms": 885569
         },
         {
           "word": "দাঁড়াইয়াছে",
-          "start_ms": 885570,
-          "end_ms": 886113
+          "start_ms": 885569,
+          "end_ms": 886112
         },
         {
           "word": "আজ",
-          "start_ms": 886113,
-          "end_ms": 886656
+          "start_ms": 886112,
+          "end_ms": 886655
         },
         {
           "word": "আমি",
-          "start_ms": 886656,
-          "end_ms": 887199
+          "start_ms": 886655,
+          "end_ms": 887198
         },
         {
           "word": "ছাড়া",
-          "start_ms": 887199,
-          "end_ms": 887742
+          "start_ms": 887198,
+          "end_ms": 887741
         },
         {
           "word": "সুরবালার",
-          "start_ms": 887742,
-          "end_ms": 888285
+          "start_ms": 887741,
+          "end_ms": 888284
         },
         {
           "word": "আর",
-          "start_ms": 888285,
-          "end_ms": 888828
+          "start_ms": 888284,
+          "end_ms": 888827
         },
         {
           "word": "কেহ",
-          "start_ms": 888828,
-          "end_ms": 889371
+          "start_ms": 888827,
+          "end_ms": 889370
         },
         {
           "word": "নাই",
-          "start_ms": 889371,
-          "end_ms": 889914
+          "start_ms": 889370,
+          "end_ms": 889913
         },
         {
           "word": "কবেকার",
-          "start_ms": 889914,
-          "end_ms": 890457
+          "start_ms": 889913,
+          "end_ms": 890456
         },
         {
           "word": "সেই",
-          "start_ms": 890457,
-          "end_ms": 891000
+          "start_ms": 890456,
+          "end_ms": 890999
         },
         {
           "word": "শৈশবে",
-          "start_ms": 891000,
-          "end_ms": 891543
+          "start_ms": 890999,
+          "end_ms": 891542
         },
         {
           "word": "সুরবালা",
-          "start_ms": 891543,
-          "end_ms": 892086
+          "start_ms": 891542,
+          "end_ms": 892085
         },
         {
           "word": "কোন্",
-          "start_ms": 892086,
-          "end_ms": 892629
+          "start_ms": 892085,
+          "end_ms": 892628
         },
         {
           "word": "এক",
-          "start_ms": 892629,
-          "end_ms": 893172
+          "start_ms": 892628,
+          "end_ms": 893171
         },
         {
           "word": "জন্মান্তর",
-          "start_ms": 893172,
-          "end_ms": 893715
+          "start_ms": 893171,
+          "end_ms": 893714
         },
         {
           "word": "কোন্",
-          "start_ms": 893715,
-          "end_ms": 894258
+          "start_ms": 893714,
+          "end_ms": 894257
         },
         {
           "word": "এক",
-          "start_ms": 894258,
-          "end_ms": 894801
+          "start_ms": 894257,
+          "end_ms": 894800
         },
         {
           "word": "পুরাতন",
-          "start_ms": 894801,
-          "end_ms": 895344
+          "start_ms": 894800,
+          "end_ms": 895343
         },
         {
           "word": "রহস্যন্ধকার",
-          "start_ms": 895344,
-          "end_ms": 895887
+          "start_ms": 895343,
+          "end_ms": 895886
         },
         {
           "word": "হইতে",
-          "start_ms": 895887,
-          "end_ms": 896430
+          "start_ms": 895886,
+          "end_ms": 896429
         },
         {
           "word": "ভাসিয়া",
-          "start_ms": 896430,
-          "end_ms": 896973
+          "start_ms": 896429,
+          "end_ms": 896972
         },
         {
           "word": "এই",
-          "start_ms": 896973,
-          "end_ms": 897516
+          "start_ms": 896972,
+          "end_ms": 897515
         },
         {
           "word": "সূর্যচন্দ্রালোকিত",
-          "start_ms": 897516,
+          "start_ms": 897515,
           "end_ms": 898058
         },
         {
@@ -8288,126 +8288,126 @@
         {
           "word": "পৃথিবীর",
           "start_ms": 898601,
-          "end_ms": 899144
+          "end_ms": 899143
         },
         {
           "word": "উপরে",
-          "start_ms": 899144,
-          "end_ms": 899687
+          "start_ms": 899143,
+          "end_ms": 899686
         },
         {
           "word": "আমারই",
-          "start_ms": 899687,
-          "end_ms": 900230
+          "start_ms": 899686,
+          "end_ms": 900229
         },
         {
           "word": "পার্শ্বে",
-          "start_ms": 900230,
-          "end_ms": 900773
+          "start_ms": 900229,
+          "end_ms": 900772
         },
         {
           "word": "আসিয়া",
-          "start_ms": 900773,
-          "end_ms": 901316
+          "start_ms": 900772,
+          "end_ms": 901315
         },
         {
           "word": "সংলগ্ন",
-          "start_ms": 901316,
-          "end_ms": 901859
+          "start_ms": 901315,
+          "end_ms": 901858
         },
         {
           "word": "হইয়াছিল",
-          "start_ms": 901859,
-          "end_ms": 902402
+          "start_ms": 901858,
+          "end_ms": 902401
         },
         {
           "word": "আর",
-          "start_ms": 902402,
-          "end_ms": 902945
+          "start_ms": 902401,
+          "end_ms": 902944
         },
         {
           "word": "আজ",
-          "start_ms": 902945,
-          "end_ms": 903488
+          "start_ms": 902944,
+          "end_ms": 903487
         },
         {
           "word": "কত",
-          "start_ms": 903488,
-          "end_ms": 904031
+          "start_ms": 903487,
+          "end_ms": 904030
         },
         {
           "word": "দিন",
-          "start_ms": 904031,
-          "end_ms": 904574
+          "start_ms": 904030,
+          "end_ms": 904573
         },
         {
           "word": "পরে",
-          "start_ms": 904574,
-          "end_ms": 905117
+          "start_ms": 904573,
+          "end_ms": 905116
         },
         {
           "word": "সেই",
-          "start_ms": 905117,
-          "end_ms": 905660
+          "start_ms": 905116,
+          "end_ms": 905659
         },
         {
           "word": "আলোকময়",
-          "start_ms": 905660,
-          "end_ms": 906203
+          "start_ms": 905659,
+          "end_ms": 906202
         },
         {
           "word": "লোকময়",
-          "start_ms": 906203,
-          "end_ms": 906746
+          "start_ms": 906202,
+          "end_ms": 906745
         },
         {
           "word": "পৃথিবী",
-          "start_ms": 906746,
-          "end_ms": 907289
+          "start_ms": 906745,
+          "end_ms": 907288
         },
         {
           "word": "ছাড়িয়া",
-          "start_ms": 907289,
-          "end_ms": 907832
+          "start_ms": 907288,
+          "end_ms": 907831
         },
         {
           "word": "এই",
-          "start_ms": 907832,
-          "end_ms": 908375
+          "start_ms": 907831,
+          "end_ms": 908374
         },
         {
           "word": "ভয়ংকর",
-          "start_ms": 908375,
-          "end_ms": 908918
+          "start_ms": 908374,
+          "end_ms": 908917
         },
         {
           "word": "জনশূন্য",
-          "start_ms": 908918,
-          "end_ms": 909461
+          "start_ms": 908917,
+          "end_ms": 909460
         },
         {
           "word": "প্রলয়ান্ধকারের",
-          "start_ms": 909461,
-          "end_ms": 910004
+          "start_ms": 909460,
+          "end_ms": 910003
         },
         {
           "word": "মধ্যে",
-          "start_ms": 910004,
-          "end_ms": 910547
+          "start_ms": 910003,
+          "end_ms": 910546
         },
         {
           "word": "সুরবালা",
-          "start_ms": 910547,
-          "end_ms": 911090
+          "start_ms": 910546,
+          "end_ms": 911089
         },
         {
           "word": "একাকিনী",
-          "start_ms": 911090,
-          "end_ms": 911633
+          "start_ms": 911089,
+          "end_ms": 911632
         },
         {
           "word": "আমারই",
-          "start_ms": 911633,
+          "start_ms": 911632,
           "end_ms": 912175
         },
         {
@@ -8418,655 +8418,655 @@
         {
           "word": "আসিয়া",
           "start_ms": 912718,
-          "end_ms": 913261
+          "end_ms": 913260
         },
         {
           "word": "উপনীত",
-          "start_ms": 913261,
-          "end_ms": 913804
+          "start_ms": 913260,
+          "end_ms": 913803
         },
         {
           "word": "হইয়াছে",
-          "start_ms": 913804,
-          "end_ms": 914347
+          "start_ms": 913803,
+          "end_ms": 914346
         },
         {
           "word": "জন্মস্রোতে",
-          "start_ms": 914347,
-          "end_ms": 914890
+          "start_ms": 914346,
+          "end_ms": 914889
         },
         {
           "word": "সেই",
-          "start_ms": 914890,
-          "end_ms": 915433
+          "start_ms": 914889,
+          "end_ms": 915432
         },
         {
           "word": "নবকলিকাকে",
-          "start_ms": 915433,
-          "end_ms": 915976
+          "start_ms": 915432,
+          "end_ms": 915975
         },
         {
           "word": "আমার",
-          "start_ms": 915976,
-          "end_ms": 916519
+          "start_ms": 915975,
+          "end_ms": 916518
         },
         {
           "word": "কাছে",
-          "start_ms": 916519,
-          "end_ms": 917062
+          "start_ms": 916518,
+          "end_ms": 917061
         },
         {
           "word": "আনিয়া",
-          "start_ms": 917062,
-          "end_ms": 917605
+          "start_ms": 917061,
+          "end_ms": 917604
         },
         {
           "word": "ফেলিয়াছিল",
-          "start_ms": 917605,
-          "end_ms": 918148
+          "start_ms": 917604,
+          "end_ms": 918147
         },
         {
           "word": "মৃত্যুস্রোতে",
-          "start_ms": 918148,
-          "end_ms": 918691
+          "start_ms": 918147,
+          "end_ms": 918690
         },
         {
           "word": "সেই",
-          "start_ms": 918691,
-          "end_ms": 919234
+          "start_ms": 918690,
+          "end_ms": 919233
         },
         {
           "word": "বিকশিত",
-          "start_ms": 919234,
-          "end_ms": 919777
+          "start_ms": 919233,
+          "end_ms": 919776
         },
         {
           "word": "পুষ্পটিকে",
-          "start_ms": 919777,
-          "end_ms": 920320
+          "start_ms": 919776,
+          "end_ms": 920319
         },
         {
           "word": "আমারই",
-          "start_ms": 920320,
-          "end_ms": 920863
+          "start_ms": 920319,
+          "end_ms": 920862
         },
         {
           "word": "কাছে",
-          "start_ms": 920863,
-          "end_ms": 921406
+          "start_ms": 920862,
+          "end_ms": 921405
         },
         {
           "word": "আনিয়া",
-          "start_ms": 921406,
-          "end_ms": 921949
+          "start_ms": 921405,
+          "end_ms": 921948
         },
         {
           "word": "ফেলিয়াছে",
-          "start_ms": 921949,
-          "end_ms": 922492
+          "start_ms": 921948,
+          "end_ms": 922491
         },
         {
           "word": "এখন",
-          "start_ms": 922492,
-          "end_ms": 923035
+          "start_ms": 922491,
+          "end_ms": 923034
         },
         {
           "word": "কেবল",
-          "start_ms": 923035,
-          "end_ms": 923578
+          "start_ms": 923034,
+          "end_ms": 923577
         },
         {
           "word": "আর",
-          "start_ms": 923578,
-          "end_ms": 924121
+          "start_ms": 923577,
+          "end_ms": 924120
         },
         {
           "word": "একটা",
-          "start_ms": 924121,
-          "end_ms": 924664
+          "start_ms": 924120,
+          "end_ms": 924663
         },
         {
           "word": "ঢেউ",
-          "start_ms": 924664,
-          "end_ms": 925207
+          "start_ms": 924663,
+          "end_ms": 925206
         },
         {
           "word": "আসিলেই",
-          "start_ms": 925207,
-          "end_ms": 925750
+          "start_ms": 925206,
+          "end_ms": 925749
         },
         {
           "word": "পৃথিবীর",
-          "start_ms": 925750,
-          "end_ms": 926293
+          "start_ms": 925749,
+          "end_ms": 926292
         },
         {
           "word": "এই",
-          "start_ms": 926293,
+          "start_ms": 926292,
           "end_ms": 926835
         },
         {
           "word": "প্রান্তটুকু",
           "start_ms": 926835,
-          "end_ms": 927378
+          "end_ms": 927377
         },
         {
           "word": "হইতে",
-          "start_ms": 927378,
-          "end_ms": 927921
+          "start_ms": 927377,
+          "end_ms": 927920
         },
         {
           "word": "বিচ্ছেদের",
-          "start_ms": 927921,
-          "end_ms": 928464
+          "start_ms": 927920,
+          "end_ms": 928463
         },
         {
           "word": "এই",
-          "start_ms": 928464,
-          "end_ms": 929007
+          "start_ms": 928463,
+          "end_ms": 929006
         },
         {
           "word": "বৃন্তটুকু",
-          "start_ms": 929007,
-          "end_ms": 929550
+          "start_ms": 929006,
+          "end_ms": 929549
         },
         {
           "word": "হইতে",
-          "start_ms": 929550,
-          "end_ms": 930093
+          "start_ms": 929549,
+          "end_ms": 930092
         },
         {
           "word": "খসিয়া",
-          "start_ms": 930093,
-          "end_ms": 930636
+          "start_ms": 930092,
+          "end_ms": 930635
         },
         {
           "word": "আমরা",
-          "start_ms": 930636,
-          "end_ms": 931179
+          "start_ms": 930635,
+          "end_ms": 931178
         },
         {
           "word": "দুজনে",
-          "start_ms": 931179,
-          "end_ms": 931722
+          "start_ms": 931178,
+          "end_ms": 931721
         },
         {
           "word": "এক",
-          "start_ms": 931722,
-          "end_ms": 932265
+          "start_ms": 931721,
+          "end_ms": 932264
         },
         {
           "word": "হইয়া",
-          "start_ms": 932265,
-          "end_ms": 932808
+          "start_ms": 932264,
+          "end_ms": 932807
         },
         {
           "word": "যাই",
-          "start_ms": 932808,
-          "end_ms": 933351
+          "start_ms": 932807,
+          "end_ms": 933350
         },
         {
           "word": "সে",
-          "start_ms": 933351,
-          "end_ms": 933894
+          "start_ms": 933350,
+          "end_ms": 933893
         },
         {
           "word": "ঢেউ",
-          "start_ms": 933894,
-          "end_ms": 934437
+          "start_ms": 933893,
+          "end_ms": 934436
         },
         {
           "word": "না",
-          "start_ms": 934437,
-          "end_ms": 934980
+          "start_ms": 934436,
+          "end_ms": 934979
         },
         {
           "word": "আসুক",
-          "start_ms": 934980,
-          "end_ms": 935523
+          "start_ms": 934979,
+          "end_ms": 935522
         },
         {
           "word": "স্বামীপুত্র",
-          "start_ms": 935523,
-          "end_ms": 936066
+          "start_ms": 935522,
+          "end_ms": 936065
         },
         {
           "word": "গৃহধনজন",
-          "start_ms": 936066,
-          "end_ms": 936609
+          "start_ms": 936065,
+          "end_ms": 936608
         },
         {
           "word": "লইয়া",
-          "start_ms": 936609,
-          "end_ms": 937152
+          "start_ms": 936608,
+          "end_ms": 937151
         },
         {
           "word": "সুরবালা",
-          "start_ms": 937152,
-          "end_ms": 937695
+          "start_ms": 937151,
+          "end_ms": 937694
         },
         {
           "word": "চিরদিন",
-          "start_ms": 937695,
-          "end_ms": 938238
+          "start_ms": 937694,
+          "end_ms": 938237
         },
         {
           "word": "সুখে",
-          "start_ms": 938238,
-          "end_ms": 938781
+          "start_ms": 938237,
+          "end_ms": 938780
         },
         {
           "word": "থাকুক",
-          "start_ms": 938781,
-          "end_ms": 939324
+          "start_ms": 938780,
+          "end_ms": 939323
         },
         {
           "word": "আমি",
-          "start_ms": 939324,
-          "end_ms": 939867
+          "start_ms": 939323,
+          "end_ms": 939866
         },
         {
           "word": "এই",
-          "start_ms": 939867,
-          "end_ms": 940410
+          "start_ms": 939866,
+          "end_ms": 940409
         },
         {
           "word": "এক",
-          "start_ms": 940410,
+          "start_ms": 940409,
           "end_ms": 940952
         },
         {
           "word": "রাত্রে",
           "start_ms": 940952,
-          "end_ms": 941495
+          "end_ms": 941494
         },
         {
           "word": "মহাপ্রলয়ের",
-          "start_ms": 941495,
-          "end_ms": 942038
+          "start_ms": 941494,
+          "end_ms": 942037
         },
         {
           "word": "তীরে",
-          "start_ms": 942038,
-          "end_ms": 942581
+          "start_ms": 942037,
+          "end_ms": 942580
         },
         {
           "word": "দাঁঁড়াইয়া",
-          "start_ms": 942581,
-          "end_ms": 943124
+          "start_ms": 942580,
+          "end_ms": 943123
         },
         {
           "word": "অনন্ত",
-          "start_ms": 943124,
-          "end_ms": 943667
+          "start_ms": 943123,
+          "end_ms": 943666
         },
         {
           "word": "আনন্দের",
-          "start_ms": 943667,
-          "end_ms": 944210
+          "start_ms": 943666,
+          "end_ms": 944209
         },
         {
           "word": "আস্বাদ",
-          "start_ms": 944210,
-          "end_ms": 944753
+          "start_ms": 944209,
+          "end_ms": 944752
         },
         {
           "word": "পাইয়াছি",
-          "start_ms": 944753,
-          "end_ms": 945296
+          "start_ms": 944752,
+          "end_ms": 945295
         },
         {
           "word": "রাত্রি",
-          "start_ms": 945296,
-          "end_ms": 945839
+          "start_ms": 945295,
+          "end_ms": 945838
         },
         {
           "word": "প্রায়",
-          "start_ms": 945839,
-          "end_ms": 946382
+          "start_ms": 945838,
+          "end_ms": 946381
         },
         {
           "word": "শেষ",
-          "start_ms": 946382,
-          "end_ms": 946925
+          "start_ms": 946381,
+          "end_ms": 946924
         },
         {
           "word": "হইয়া",
-          "start_ms": 946925,
-          "end_ms": 947468
+          "start_ms": 946924,
+          "end_ms": 947467
         },
         {
           "word": "আসিল",
-          "start_ms": 947468,
-          "end_ms": 948011
+          "start_ms": 947467,
+          "end_ms": 948010
         },
         {
           "word": "ঝড়",
-          "start_ms": 948011,
-          "end_ms": 948554
+          "start_ms": 948010,
+          "end_ms": 948553
         },
         {
           "word": "থামিয়া",
-          "start_ms": 948554,
-          "end_ms": 949097
+          "start_ms": 948553,
+          "end_ms": 949096
         },
         {
           "word": "গেল",
-          "start_ms": 949097,
-          "end_ms": 949640
+          "start_ms": 949096,
+          "end_ms": 949639
         },
         {
           "word": "জল",
-          "start_ms": 949640,
-          "end_ms": 950183
+          "start_ms": 949639,
+          "end_ms": 950182
         },
         {
           "word": "নামিয়া",
-          "start_ms": 950183,
-          "end_ms": 950726
+          "start_ms": 950182,
+          "end_ms": 950725
         },
         {
           "word": "গেল",
-          "start_ms": 950726,
-          "end_ms": 951269
+          "start_ms": 950725,
+          "end_ms": 951268
         },
         {
           "word": "সুরবালা",
-          "start_ms": 951269,
-          "end_ms": 951812
+          "start_ms": 951268,
+          "end_ms": 951811
         },
         {
           "word": "কোনো",
-          "start_ms": 951812,
-          "end_ms": 952355
+          "start_ms": 951811,
+          "end_ms": 952354
         },
         {
           "word": "কথা",
-          "start_ms": 952355,
-          "end_ms": 952898
+          "start_ms": 952354,
+          "end_ms": 952897
         },
         {
           "word": "না",
-          "start_ms": 952898,
-          "end_ms": 953441
+          "start_ms": 952897,
+          "end_ms": 953440
         },
         {
           "word": "বলিয়া",
-          "start_ms": 953441,
-          "end_ms": 953984
+          "start_ms": 953440,
+          "end_ms": 953983
         },
         {
           "word": "বাড়ি",
-          "start_ms": 953984,
-          "end_ms": 954527
+          "start_ms": 953983,
+          "end_ms": 954526
         },
         {
           "word": "চলিয়া",
-          "start_ms": 954527,
+          "start_ms": 954526,
           "end_ms": 955069
         },
         {
           "word": "গেল",
           "start_ms": 955069,
-          "end_ms": 955612
+          "end_ms": 955611
         },
         {
           "word": "আমিও",
-          "start_ms": 955612,
-          "end_ms": 956155
+          "start_ms": 955611,
+          "end_ms": 956154
         },
         {
           "word": "কোনো",
-          "start_ms": 956155,
-          "end_ms": 956698
+          "start_ms": 956154,
+          "end_ms": 956697
         },
         {
           "word": "কথা",
-          "start_ms": 956698,
-          "end_ms": 957241
+          "start_ms": 956697,
+          "end_ms": 957240
         },
         {
           "word": "না",
-          "start_ms": 957241,
-          "end_ms": 957784
+          "start_ms": 957240,
+          "end_ms": 957783
         },
         {
           "word": "বলিয়া",
-          "start_ms": 957784,
-          "end_ms": 958327
+          "start_ms": 957783,
+          "end_ms": 958326
         },
         {
           "word": "আমার",
-          "start_ms": 958327,
-          "end_ms": 958870
+          "start_ms": 958326,
+          "end_ms": 958869
         },
         {
           "word": "ঘরে",
-          "start_ms": 958870,
-          "end_ms": 959413
+          "start_ms": 958869,
+          "end_ms": 959412
         },
         {
           "word": "গেলাম",
-          "start_ms": 959413,
-          "end_ms": 959956
+          "start_ms": 959412,
+          "end_ms": 959955
         },
         {
           "word": "ভাবিলাম",
-          "start_ms": 959956,
-          "end_ms": 960499
+          "start_ms": 959955,
+          "end_ms": 960498
         },
         {
           "word": "আমি",
-          "start_ms": 960499,
-          "end_ms": 961042
+          "start_ms": 960498,
+          "end_ms": 961041
         },
         {
           "word": "নাজিরও",
-          "start_ms": 961042,
-          "end_ms": 961585
+          "start_ms": 961041,
+          "end_ms": 961584
         },
         {
           "word": "হই",
-          "start_ms": 961585,
-          "end_ms": 962128
+          "start_ms": 961584,
+          "end_ms": 962127
         },
         {
           "word": "নাই",
-          "start_ms": 962128,
-          "end_ms": 962671
+          "start_ms": 962127,
+          "end_ms": 962670
         },
         {
           "word": "সেরেস্তাদারও",
-          "start_ms": 962671,
-          "end_ms": 963214
+          "start_ms": 962670,
+          "end_ms": 963213
         },
         {
           "word": "হই",
-          "start_ms": 963214,
-          "end_ms": 963757
+          "start_ms": 963213,
+          "end_ms": 963756
         },
         {
           "word": "নাই",
-          "start_ms": 963757,
-          "end_ms": 964300
+          "start_ms": 963756,
+          "end_ms": 964299
         },
         {
           "word": "গারিবাল্ডিও",
-          "start_ms": 964300,
-          "end_ms": 964843
+          "start_ms": 964299,
+          "end_ms": 964842
         },
         {
           "word": "হই",
-          "start_ms": 964843,
-          "end_ms": 965386
+          "start_ms": 964842,
+          "end_ms": 965385
         },
         {
           "word": "নাই",
-          "start_ms": 965386,
-          "end_ms": 965929
+          "start_ms": 965385,
+          "end_ms": 965928
         },
         {
           "word": "আমি",
-          "start_ms": 965929,
-          "end_ms": 966472
+          "start_ms": 965928,
+          "end_ms": 966471
         },
         {
           "word": "এক",
-          "start_ms": 966472,
-          "end_ms": 967015
+          "start_ms": 966471,
+          "end_ms": 967014
         },
         {
           "word": "ভাঙা",
-          "start_ms": 967015,
-          "end_ms": 967558
+          "start_ms": 967014,
+          "end_ms": 967557
         },
         {
           "word": "স্কুলের",
-          "start_ms": 967558,
-          "end_ms": 968101
+          "start_ms": 967557,
+          "end_ms": 968100
         },
         {
           "word": "সেকেণ্ড্",
-          "start_ms": 968101,
-          "end_ms": 968644
+          "start_ms": 968100,
+          "end_ms": 968643
         },
         {
           "word": "মাস্টার",
-          "start_ms": 968644,
+          "start_ms": 968643,
           "end_ms": 969186
         },
         {
           "word": "আমার",
           "start_ms": 969186,
-          "end_ms": 969729
+          "end_ms": 969728
         },
         {
           "word": "সমস্ত",
-          "start_ms": 969729,
-          "end_ms": 970272
+          "start_ms": 969728,
+          "end_ms": 970271
         },
         {
           "word": "ইহজীবনে",
-          "start_ms": 970272,
-          "end_ms": 970815
+          "start_ms": 970271,
+          "end_ms": 970814
         },
         {
           "word": "কেবল",
-          "start_ms": 970815,
-          "end_ms": 971358
+          "start_ms": 970814,
+          "end_ms": 971357
         },
         {
           "word": "ক্ষণকালের",
-          "start_ms": 971358,
-          "end_ms": 971901
+          "start_ms": 971357,
+          "end_ms": 971900
         },
         {
           "word": "জন্য",
-          "start_ms": 971901,
-          "end_ms": 972444
+          "start_ms": 971900,
+          "end_ms": 972443
         },
         {
           "word": "একটি",
-          "start_ms": 972444,
-          "end_ms": 972987
+          "start_ms": 972443,
+          "end_ms": 972986
         },
         {
           "word": "অনন্তরাত্রির",
-          "start_ms": 972987,
-          "end_ms": 973530
+          "start_ms": 972986,
+          "end_ms": 973529
         },
         {
           "word": "উদয়",
-          "start_ms": 973530,
-          "end_ms": 974073
+          "start_ms": 973529,
+          "end_ms": 974072
         },
         {
           "word": "হইয়াছিল",
-          "start_ms": 974073,
-          "end_ms": 974616
+          "start_ms": 974072,
+          "end_ms": 974615
         },
         {
           "word": "আমার",
-          "start_ms": 974616,
-          "end_ms": 975159
+          "start_ms": 974615,
+          "end_ms": 975158
         },
         {
           "word": "পরমায়ুর",
-          "start_ms": 975159,
-          "end_ms": 975702
+          "start_ms": 975158,
+          "end_ms": 975701
         },
         {
           "word": "সমস্ত",
-          "start_ms": 975702,
-          "end_ms": 976245
+          "start_ms": 975701,
+          "end_ms": 976244
         },
         {
           "word": "দিনরাত্রির",
-          "start_ms": 976245,
-          "end_ms": 976788
+          "start_ms": 976244,
+          "end_ms": 976787
         },
         {
           "word": "মধ্যে",
-          "start_ms": 976788,
-          "end_ms": 977331
+          "start_ms": 976787,
+          "end_ms": 977330
         },
         {
           "word": "সেই",
-          "start_ms": 977331,
-          "end_ms": 977874
+          "start_ms": 977330,
+          "end_ms": 977873
         },
         {
           "word": "একটিমাত্র",
-          "start_ms": 977874,
-          "end_ms": 978417
+          "start_ms": 977873,
+          "end_ms": 978416
         },
         {
           "word": "রাত্রিই",
-          "start_ms": 978417,
-          "end_ms": 978960
+          "start_ms": 978416,
+          "end_ms": 978959
         },
         {
           "word": "আমার",
-          "start_ms": 978960,
-          "end_ms": 979503
+          "start_ms": 978959,
+          "end_ms": 979502
         },
         {
           "word": "তুচ্ছ",
-          "start_ms": 979503,
-          "end_ms": 980046
+          "start_ms": 979502,
+          "end_ms": 980045
         },
         {
           "word": "জীবনের",
-          "start_ms": 980046,
-          "end_ms": 980589
+          "start_ms": 980045,
+          "end_ms": 980588
         },
         {
           "word": "একমাত্র",
-          "start_ms": 980589,
-          "end_ms": 981132
+          "start_ms": 980588,
+          "end_ms": 981131
         },
         {
           "word": "চরম",
-          "start_ms": 981132,
-          "end_ms": 981675
+          "start_ms": 981131,
+          "end_ms": 981674
         },
         {
           "word": "সার্থকতা",
-          "start_ms": 981675,
-          "end_ms": 982218
+          "start_ms": 981674,
+          "end_ms": 982217
         },
         {
           "word": "জ্যৈষ্ঠ",
-          "start_ms": 982218,
-          "end_ms": 982761
+          "start_ms": 982217,
+          "end_ms": 982760
         },
         {
           "word": "১২৯৯",
-          "start_ms": 982761,
-          "end_ms": 983304
+          "start_ms": 982760,
+          "end_ms": 983303
         }
       ]
     }
   ],
-  "totalDurationMs": 983304
+  "totalDurationMs": 983303
 }

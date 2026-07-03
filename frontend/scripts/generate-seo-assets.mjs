@@ -161,8 +161,6 @@ async function loadLocalControlledBooks() {
         && book.publication_status === "LIVE_APPROVED"
         && book.allowCheckout !== true
         && book.allowPayment !== true
-        && book.audio_enabled !== true
-        && book.audiobook_enabled !== true
       ) {
         books.push(book);
       }
