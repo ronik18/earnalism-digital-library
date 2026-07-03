@@ -1,0 +1,42 @@
+<svg width="1200" height="1800" viewBox="0 0 1200 1800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="122" y1="88" x2="1096" y2="1706" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1C2E2A"/>
+      <stop offset="0.52" stop-color="#243936"/>
+      <stop offset="1" stop-color="#10201D"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(634 384) rotate(90) scale(514 462)">
+      <stop stop-color="#E6C982" stop-opacity="0.88"/>
+      <stop offset="0.48" stop-color="#C39A4A" stop-opacity="0.33"/>
+      <stop offset="1" stop-color="#C39A4A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="frame" x1="168" y1="180" x2="1034" y2="1628" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E4C87B"/>
+      <stop offset="1" stop-color="#8E6A31"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1800" fill="#0E1615"/>
+  <rect x="34" y="34" width="1132" height="1732" rx="36" fill="url(#bg)"/>
+  <rect x="34" y="34" width="1132" height="1732" rx="36" stroke="#E3C97E" stroke-opacity="0.34" stroke-width="8"/>
+  <rect x="98" y="98" width="1004" height="1604" rx="24" stroke="url(#frame)" stroke-opacity="0.62" stroke-width="3"/>
+  <ellipse cx="610" cy="352" rx="382" ry="252" fill="url(#glow)"/>
+  <path d="M602 242C652 185 749 174 815 228C884 285 892 379 847 439C799 502 696 529 604 588C510 529 407 502 360 439C315 379 323 285 392 228C458 174 555 185 602 242Z" fill="#F0D38D" fill-opacity="0.12"/>
+  <path d="M607 648C724 648 819 554 819 437C819 320 724 225 607 225C490 225 395 320 395 437C395 554 490 648 607 648Z" stroke="#E7CB82" stroke-opacity="0.42" stroke-width="2.5"/>
+  <path d="M608 303C651 358 724 417 824 454C724 489 651 548 608 603C565 548 492 489 392 454C492 417 565 358 608 303Z" fill="#F3D99D" fill-opacity="0.13"/>
+  <path d="M266 1067C345 960 495 920 614 965C529 1033 494 1162 518 1293C411 1260 312 1187 266 1067Z" fill="#CCB066" fill-opacity="0.16"/>
+  <path d="M938 1067C859 960 709 920 590 965C675 1033 710 1162 686 1293C793 1260 892 1187 938 1067Z" fill="#CCB066" fill-opacity="0.16"/>
+  <circle cx="336" cy="220" r="2.5" fill="#F2DEAE" fill-opacity="0.68"/>
+  <circle cx="938" cy="292" r="2.5" fill="#F2DEAE" fill-opacity="0.68"/>
+  <circle cx="862" cy="170" r="1.8" fill="#F2DEAE" fill-opacity="0.4"/>
+  <circle cx="298" cy="352" r="1.8" fill="#F2DEAE" fill-opacity="0.4"/>
+  <text x="600" y="146" text-anchor="middle" fill="#F3DCA9" font-family="Cormorant Garamond, Georgia, serif" font-size="38" letter-spacing="12">THE EARNALISM LIBRARY</text>
+  <text x="600" y="816" text-anchor="middle" fill="#F6E9C6" font-family="Cormorant Garamond, Georgia, serif" font-size="144" font-weight="500" letter-spacing="2">Sultana&apos;s</text>
+  <text x="600" y="942" text-anchor="middle" fill="#F6E9C6" font-family="Cormorant Garamond, Georgia, serif" font-size="144" font-weight="500" letter-spacing="2">Dream</text>
+  <text x="600" y="1024" text-anchor="middle" fill="#DDBF79" font-family="Cormorant Garamond, Georgia, serif" font-size="42" letter-spacing="8">A CURATED SCIENCE-FICTION CLASSIC</text>
+  <text x="600" y="1198" text-anchor="middle" fill="#F7EED9" font-family="Cormorant Garamond, Georgia, serif" font-size="58" font-style="italic" letter-spacing="1.5">Rokeya Sakhawat Hossain</text>
+  <text x="600" y="1330" text-anchor="middle" fill="#D7C59C" font-family="Cormorant Garamond, Georgia, serif" font-size="34" letter-spacing="7">EDITORIAL SHELF EDITION</text>
+  <text x="600" y="1400" text-anchor="middle" fill="#D7C59C" font-family="Cormorant Garamond, Georgia, serif" font-size="30" letter-spacing="5">VISIBLE IN THE PIPELINE, NOT YET OPEN FOR READING</text>
+  <path d="M432 1516H768" stroke="#E2C985" stroke-opacity="0.7" stroke-width="2"/>
+  <text x="600" y="1576" text-anchor="middle" fill="#F4EAD1" font-family="Cormorant Garamond, Georgia, serif" font-size="28" letter-spacing="6">RIGHTS-SAFE PREPARATION</text>
+  <text x="600" y="1650" text-anchor="middle" fill="#CDB88A" font-family="Cormorant Garamond, Georgia, serif" font-size="25" letter-spacing="4">Calm, luminous, and future-facing</text>
+</svg>

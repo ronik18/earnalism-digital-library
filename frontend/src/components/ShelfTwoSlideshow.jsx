@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 function chunkBooks(books) {
   const grouped = [];
@@ -8,6 +8,18 @@ function chunkBooks(books) {
   }
 
   return grouped;
+}
+
+function getPlaceholderMonogram(title = "") {
+  const letters = String(title || "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+
+  return letters || "EL";
 }
 
 function ArrowChevron({ direction }) {
@@ -45,6 +57,7 @@ function ArrowChevron({ direction }) {
 export default function ShelfTwoSlideshow({ books = [] }) {
   const slides = useMemo(() => chunkBooks(books), [books]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     if (!slides.length) {
@@ -56,6 +69,18 @@ export default function ShelfTwoSlideshow({ books = [] }) {
       setCurrentSlide(0);
     }
   }, [slides.length, currentSlide]);
+
+  useEffect(() => {
+    if (slides.length <= 1) return undefined;
+    if (isPaused) return undefined;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) return undefined;
+
+    const timer = window.setInterval(() => {
+      setCurrentSlide((index) => (index === slides.length - 1 ? 0 : index + 1));
+    }, 5200);
+
+    return () => window.clearInterval(timer);
+  }, [isPaused, slides.length]);
 
   const goToPrevSlide = () => {
     if (!slides.length) return;
@@ -70,8 +95,19 @@ export default function ShelfTwoSlideshow({ books = [] }) {
   const hasMultipleSlides = slides.length > 1;
 
   return (
-    <div className="shelf-two-shelf" aria-live="polite">
+    <div
+      className="shelf-two-shelf"
+      aria-live="polite"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={() => setIsPaused(false)}
+    >
       <div className="shelf-two-viewport">
+        <div className="shelf-two-stage-copy" aria-hidden="true">
+          <span className="shelf-two-stage-copy__eyebrow">Editorial shelf sequence</span>
+          <span className="shelf-two-stage-copy__count">{slides.length} curated page{slides.length === 1 ? "" : "s"}</span>
+        </div>
         <div
           className="shelf-two-track"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -82,13 +118,20 @@ export default function ShelfTwoSlideshow({ books = [] }) {
               className="shelf-two-slide"
               aria-label={`Shelf 2 page ${slideIndex + 1}`}
               aria-hidden={slideIndex !== currentSlide}
+              data-active={slideIndex === currentSlide ? "true" : "false"}
             >
               <div className="shelf-two-grid">
-                {slide.map((book) => {
+                {slide.map((book, bookIndex) => {
                   const isPublished = book.status === "published";
                   const statusClass = isPublished ? "published" : "queued";
+                  const sequenceLabel = String(book.sequence || (slideIndex * 5) + bookIndex + 1).padStart(2, "0");
+                  const statusLabel = book.statusLabel || (statusClass === "published" ? "Live" : "Rights-safe preparation");
                   return (
-                    <article key={book.id} className="shelf-two-book">
+                    <article
+                      key={book.id}
+                      className="shelf-two-book"
+                      style={{ "--shelf-two-order": bookIndex }}
+                    >
                       <div className="shelf-two-book__cover-wrap">
                         {book.coverUrl ? (
                           <img
@@ -98,36 +141,48 @@ export default function ShelfTwoSlideshow({ books = [] }) {
                             className="shelf-two-book__cover"
                           />
                         ) : (
-                          <div className="shelf-two-book__cover shelf-two-book__cover--placeholder" aria-label={`No cover available for ${book.title}`}>
-                            {book.title?.slice(0, 2).toUpperCase() || "B"}
+                          <div className="shelf-two-book__cover shelf-two-book__cover--placeholder" aria-label={`Cover in curation for ${book.title}`}>
+                            <span className="shelf-two-book__placeholder-kicker">Cover in curation</span>
+                            <span className="shelf-two-book__placeholder-monogram">{getPlaceholderMonogram(book.title)}</span>
+                            <span className="shelf-two-book__placeholder-divider" aria-hidden="true" />
+                            <span className="shelf-two-book__placeholder-caption">Editorial placeholder</span>
                           </div>
                         )}
+                        <span className={`shelf-two-book__status-pill shelf-two-book__status-pill--${statusClass}`}>
+                          {statusLabel}
+                        </span>
                       </div>
 
-                      <p className="shelf-two-book__title">{book.title}</p>
+                      <div className="shelf-two-book__copy">
+                        <div className="shelf-two-book__sequence">Shelf II . {sequenceLabel}</div>
+                        <p className="shelf-two-book__title">{book.title}</p>
+                        {book.author ? <p className="shelf-two-book__author">{book.author}</p> : null}
+                        {book.description ? <p className="shelf-two-book__description">{book.description}</p> : null}
+                      </div>
 
-                      {isPublished ? (
-                        <a
-                          className="shelf-two-book__cta shelf-two-book__cta--published"
-                          href={`/book/${book.id}`}
-                          aria-label={`Start reading ${book.title}`}
-                        >
-                          Start Reading
-                        </a>
-                      ) : (
-                        <button
-                          type="button"
-                          className="shelf-two-book__cta shelf-two-book__cta--queued"
-                          aria-label={`Notify me for ${book.title}`}
-                          onClick={(event) => event.preventDefault()}
-                        >
-                          Notify Me
-                        </button>
-                      )}
-
-                      <span className={`shelf-two-book__status shelf-two-book__status--${statusClass}`}>
-                        {statusClass === "published" ? "Live" : "Coming Soon"}
-                      </span>
+                      <div className="shelf-two-book__footer">
+                        {isPublished ? (
+                          <a
+                            className="shelf-two-book__cta shelf-two-book__cta--published"
+                            href={`/book/${book.id}`}
+                            aria-label={`Start reading ${book.title}`}
+                          >
+                            Start Reading
+                          </a>
+                        ) : (
+                          <button
+                            type="button"
+                            className="shelf-two-book__cta shelf-two-book__cta--queued"
+                            aria-label={`Notify me for ${book.title}`}
+                            onClick={(event) => event.preventDefault()}
+                          >
+                            Notify Me
+                          </button>
+                        )}
+                        <span className={`shelf-two-book__status shelf-two-book__status--${statusClass}`}>
+                          {statusClass === "published" ? "Live" : "Coming Soon"}
+                        </span>
+                      </div>
                     </article>
                   );
                 })}
