@@ -1,0 +1,19 @@
+{
+  "slug": "bn-036",
+  "createdAt": "2026-07-03T09:34:17+0000",
+  "source": "pipeline_gate2",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "bn-036-chapter-1",
+      "title": "মেজদিদি",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 4178912,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 4181412
+    }
+  ],
+  "totalDurationMs": 4181412
+}

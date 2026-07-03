@@ -1,0 +1,19 @@
+{
+  "slug": "bn-041",
+  "createdAt": "2026-07-03T09:24:10+0000",
+  "source": "pipeline_gate2",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "bn-041-chapter-1",
+      "title": "আঁধারে আলো",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 2581549,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 2584049
+    }
+  ],
+  "totalDurationMs": 2584049
+}

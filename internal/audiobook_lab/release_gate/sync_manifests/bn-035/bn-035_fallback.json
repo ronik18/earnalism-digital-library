@@ -1,14 +1,14 @@
 {
   "slug": "bn-035",
-  "generatedAt": "2026-07-03T05:47:12+0000",
+  "generatedAt": "2026-07-03T09:08:26+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/bn-035/bn-035.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "bn-035-chapter-1",
+      "title": "বড়দিদি",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 6771452,
       "introMs": 1500,

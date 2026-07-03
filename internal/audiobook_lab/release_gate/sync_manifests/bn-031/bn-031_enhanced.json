@@ -1,6 +1,6 @@
 {
   "slug": "bn-031",
-  "createdAt": "2026-07-03T07:10:22+0000",
+  "createdAt": "2026-07-03T09:19:17+0000",
   "source": "pipeline_gate2",
   "chapters": [
     {
@@ -9,11 +9,11 @@
       "title": "মহেশ",
       "paragraphCount": 1,
       "startMs": 0,
-      "contentMs": 1635786,
+      "contentMs": 1645962,
       "introMs": 1500,
       "outroMs": 1000,
-      "totalMs": 1638286
+      "totalMs": 1648462
     }
   ],
-  "totalDurationMs": 1638286
+  "totalDurationMs": 1648462
 }

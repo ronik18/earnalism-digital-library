@@ -1,0 +1,19 @@
+{
+  "slug": "bn-060",
+  "createdAt": "2026-07-03T09:39:25+0000",
+  "source": "pipeline_gate2",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "bn-060-chapter-1",
+      "title": "ইন্দিরা",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 2980297,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 2982797
+    }
+  ],
+  "totalDurationMs": 2982797
+}

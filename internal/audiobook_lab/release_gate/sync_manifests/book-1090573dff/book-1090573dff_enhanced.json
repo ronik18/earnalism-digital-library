@@ -1,0 +1,19 @@
+{
+  "slug": "book-1090573dff",
+  "createdAt": "2026-07-03T08:00:59+0000",
+  "source": "pipeline_gate2",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-1090573dff-chapter-1",
+      "title": "ছুটি",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 968847,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 971347
+    }
+  ],
+  "totalDurationMs": 971347
+}
