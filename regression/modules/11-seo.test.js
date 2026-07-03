@@ -17,6 +17,17 @@ const BATCH_1_READER_ONLY_SLUGS = [
   "pather-panchali",
   "eyesore-chokher-bali",
 ];
+const CLAIMABLE_LIVE_SLUGS = [
+  "alices-adventures-in-wonderland",
+  "bn-027",
+  "lokrahasya",
+  "mrinalini",
+  "nishkriti",
+  "the-wonderful-wizard-of-oz",
+  "bn-059",
+  "bn-066",
+  "the-art-of-money-getting",
+];
 
 function snapshotPath(route) {
   return route === "/"
@@ -208,9 +219,16 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
       expect(sitemap).toContain(`${SITE_URL}/book/${slug}`);
       expect(sitemap).not.toContain(`${SITE_URL}/reader/${slug}`);
     }
-    expect(sitemap).not.toMatch(/kshudhita|bn-|\/reader\/|\/shop|\/product\/|\/blog\/|\/post\/|\/category\/|\/tag\//i);
+    for (const slug of CLAIMABLE_LIVE_SLUGS) {
+      expect(sitemap).toContain(`${SITE_URL}/book/${slug}`);
+      expect(sitemap).not.toContain(`${SITE_URL}/reader/${slug}`);
+    }
+    expect(sitemap).not.toMatch(/kshudhita|\/reader\/|\/shop|\/product\/|\/blog\/|\/post\/|\/category\/|\/tag\//i);
     expect(robots).toContain("Allow: /reader/dracula");
     for (const slug of BATCH_1_READER_ONLY_SLUGS) {
+      expect(robots).toContain(`Allow: /reader/${slug}`);
+    }
+    for (const slug of CLAIMABLE_LIVE_SLUGS) {
       expect(robots).toContain(`Allow: /reader/${slug}`);
     }
     expect(robots).toContain("Disallow: /reader/");
