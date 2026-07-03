@@ -1,0 +1,943 @@
+{
+  "total": 152,
+  "restricted_image_count": 145,
+  "items": [
+    {
+      "slug": "a-ghost-story",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-horseman-in-the-sky",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-jury-of-her-peers",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-retrieved-reformation",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-wagner-matinee",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-white-heron",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "cover_candidates": [
+        "output/generated_business_covers/acres-of-diamonds_back.png",
+        "output/generated_business_covers/acres-of-diamonds_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "cover_candidates": [
+        "output/generated_covers/alices-adventures-in-wonderland_back.png",
+        "output/generated_covers/alices-adventures-in-wonderland_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "berenice",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "bharat-at-the-crossroads",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "bn-027",
+      "cover_candidates": [
+        "output/generated_bengali_covers/bn-027_back.png",
+        "output/generated_bengali_covers/bn-027_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "bn-031",
+      "cover_candidates": [
+        "output/generated_bengali_covers/bn-031_back.png",
+        "output/generated_bengali_covers/bn-031_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "bn-035",
+      "cover_candidates": [
+        "output/generated_bengali_covers/bn-035_back.png",
+        "output/generated_bengali_covers/bn-035_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "bn-036",
+      "cover_candidates": [
+        "output/generated_bengali_covers/bn-036_back.png",
+        "output/generated_bengali_covers/bn-036_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "bn-041",
+      "cover_candidates": [
+        "output/generated_bengali_covers/bn-041_back.png",
+        "output/generated_bengali_covers/bn-041_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "bn-059",
+      "cover_candidates": [
+        "output/generated_bengali_covers/bn-059_back.png",
+        "output/generated_bengali_covers/bn-059_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "bn-060",
+      "cover_candidates": [
+        "output/generated_bengali_covers/bn-060_back.png",
+        "output/generated_bengali_covers/bn-060_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "bn-066",
+      "cover_candidates": [
+        "output/generated_bengali_covers/bn-066_back.png",
+        "output/generated_bengali_covers/bn-066_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-0986aeb7e3",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-0986aeb7e3_back.png",
+        "output/generated_bengali_covers/book-0986aeb7e3_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-0deb35c750",
+      "cover_candidates": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/09-book-0deb35c750-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/09-book-0deb35c750-page1.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-0fbdaa730e",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-0fbdaa730e_back.png",
+        "output/generated_bengali_covers/book-0fbdaa730e_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-1090573dff",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-1090573dff_back.png",
+        "output/generated_bengali_covers/book-1090573dff_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-2b9853ec52",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-2b9853ec52_back.png",
+        "output/generated_bengali_covers/book-2b9853ec52_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-2ddbed8293",
+      "cover_candidates": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/10-book-2ddbed8293-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/10-book-2ddbed8293-page1.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-2e468c4990",
+      "cover_candidates": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/01-book-2e468c4990-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/01-book-2e468c4990-page1.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-4968248842",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-4968248842_back.png",
+        "output/generated_bengali_covers/book-4968248842_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-4b944e64fa_back.png",
+        "output/generated_bengali_covers/book-4b944e64fa_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-5461971092",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-5461971092_back.png",
+        "output/generated_bengali_covers/book-5461971092_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-5704b31005",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-5704b31005_back.png",
+        "output/generated_bengali_covers/book-5704b31005_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-5aedda79fe",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-5aedda79fe_back.png",
+        "output/generated_bengali_covers/book-5aedda79fe_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-63afd5e9be",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "book-754da4eab8",
+      "cover_candidates": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/05-book-754da4eab8-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/05-book-754da4eab8-page1.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-827fdc7aee",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-827fdc7aee_back.png",
+        "output/generated_bengali_covers/book-827fdc7aee_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-88ded9b47c",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-88ded9b47c_back.png",
+        "output/generated_bengali_covers/book-88ded9b47c_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-95624627d5",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-95624627d5_back.png",
+        "output/generated_bengali_covers/book-95624627d5_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-9a7f771921",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-9a7f771921_back.png",
+        "output/generated_bengali_covers/book-9a7f771921_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-a23625bf36",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-a23625bf36_back.png",
+        "output/generated_bengali_covers/book-a23625bf36_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-a4a369483f",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-a4a369483f_back.png",
+        "output/generated_bengali_covers/book-a4a369483f_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-a74c1a1451",
+      "cover_candidates": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/03-book-a74c1a1451-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/03-book-a74c1a1451-page1.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-ac5a71075e_back.png",
+        "output/generated_bengali_covers/book-ac5a71075e_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-b9d47814a8_back.png",
+        "output/generated_bengali_covers/book-b9d47814a8_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-bfc51280b3",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-bfc51280b3_back.png",
+        "output/generated_bengali_covers/book-bfc51280b3_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-c307a57868",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-c307a57868_back.png",
+        "output/generated_bengali_covers/book-c307a57868_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-c7f3ce526c",
+      "cover_candidates": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/07-book-c7f3ce526c-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/07-book-c7f3ce526c-page1.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-c85323409f",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-c85323409f_back.png",
+        "output/generated_bengali_covers/book-c85323409f_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-d19e96859f",
+      "cover_candidates": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/08-book-d19e96859f-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/08-book-d19e96859f-page1.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-d2fe532e1c",
+      "cover_candidates": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/02-book-d2fe532e1c-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/02-book-d2fe532e1c-page1.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-edfcf810c5_back.png",
+        "output/generated_bengali_covers/book-edfcf810c5_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-ef193ffc52",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-ef193ffc52_back.png",
+        "output/generated_bengali_covers/book-ef193ffc52_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "cover_candidates": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/04-book-f5d593e1f4-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/04-book-f5d593e1f4-page1.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "book-fbdf2991ab",
+      "cover_candidates": [
+        "output/generated_bengali_covers/book-fbdf2991ab_back.png",
+        "output/generated_bengali_covers/book-fbdf2991ab_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "boule-de-suif",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "dracula",
+      "cover_candidates": [
+        "frontend/public/assets/books/dracula/dracula-back-cover.jpg",
+        "frontend/public/assets/books/dracula/dracula-front-cover.jpg",
+        "output/generated_covers/dracula_back.png",
+        "output/generated_covers/dracula_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "dsires-baby",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "feathertop",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "frankenstein",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "great-expectations",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "jane-eyre",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "lokrahasya",
+      "cover_candidates": [
+        "output/bengali_source_repair/20260603T084835Z/covers/jpeg/lokrahasya_back.jpg",
+        "output/bengali_source_repair/20260603T084835Z/covers/jpeg/lokrahasya_front.jpg",
+        "output/bengali_source_repair/20260603T084835Z/covers/lokrahasya_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/lokrahasya_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "love-of-life",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "markheim",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "mrinalini",
+      "cover_candidates": [
+        "output/bengali_source_repair/20260603T084835Z/covers/jpeg/mrinalini_back.jpg",
+        "output/bengali_source_repair/20260603T084835Z/covers/jpeg/mrinalini_front.jpg",
+        "output/bengali_source_repair/20260603T084835Z/covers/mrinalini_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/mrinalini_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "cover_candidates": [
+        "output/bengali_source_repair/20260603T084835Z/covers/muchiram-gurer-jibanchorit_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/muchiram-gurer-jibanchorit_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "my-life-and-work",
+      "cover_candidates": [
+        "output/generated_business_covers/my-life-and-work_back.png",
+        "output/generated_business_covers/my-life-and-work_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "nishkriti",
+      "cover_candidates": [
+        "output/bengali_source_repair/20260603T084835Z/covers/nishkriti_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/nishkriti_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "pauls-case",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "cover_candidates": [
+        "output/generated_covers/pride-and-prejudice_back.png",
+        "output/generated_covers/pride-and-prejudice_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "radharani",
+      "cover_candidates": [
+        "output/bengali_source_repair/20260603T084835Z/covers/radharani_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/radharani_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "rappaccinis-daughter",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "rikki-tikki-tavi",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "rip-van-winkle",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "sredni-vashtar",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-abbey-grange",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-copper-beeches",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-dancing-men",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-empty-house",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-final-problem",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-priory-school",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-second-stain",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "cover_candidates": [
+        "output/generated_covers/the-adventures-of-sherlock-holmes_back.png",
+        "output/generated_covers/the-adventures-of-sherlock-holmes_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "the-ambitious-guest",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "cover_candidates": [
+        "output/generated_business_covers/the-art-of-money-getting_back.png",
+        "output/generated_business_covers/the-art-of-money-getting_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "the-bet",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-bishop",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-country-of-the-blind",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-darling",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-door-in-the-wall",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-enchanted-april",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-five-orange-pips",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-furnished-room",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-great-gatsby",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-happy-prince",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-imp-of-the-perverse",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-last-leaf",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-legend-of-sleepy-hollow",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-lifted-veil",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-luck-of-roaring-camp",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-man-in-a-case",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-man-with-the-twisted-lip",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-metamorphosis",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-ministers-black-veil",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-most-dangerous-game",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-murders-in-the-rue-morgue",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-necklace",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-open-boat",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-open-window",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-outcasts-of-poker-flat",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-picture-of-dorian-gray",
+      "cover_candidates": [
+        "output/generated_covers/the-picture-of-dorian-gray_back.png",
+        "output/generated_covers/the-picture-of-dorian-gray_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "cover_candidates": [
+        "output/generated_business_covers/the-principles-of-scientific-management_back.png",
+        "output/generated_business_covers/the-principles-of-scientific-management_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "the-purloined-letter",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-ransom-of-red-chief",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-red-headed-league",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "cover_candidates": [
+        "output/generated_business_covers/the-science-of-getting-rich_back.png",
+        "output/generated_business_covers/the-science-of-getting-rich_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "the-secret-garden",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-selfish-giant",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-speckled-band",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-student",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-suicide-club",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-time-machine",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-withered-arm",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "cover_candidates": [
+        "output/generated_covers/the-wonderful-wizard-of-oz_back.png",
+        "output/generated_covers/the-wonderful-wizard-of-oz_front.png"
+      ],
+      "mapped": true
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "to-build-a-fire",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "tobermory",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "ward-no-6",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "white-fang",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "young-goodman-brown",
+      "cover_candidates": [],
+      "mapped": false
+    },
+    {
+      "slug": "yugalanguriya",
+      "cover_candidates": [
+        "output/bengali_source_repair/20260603T084835Z/covers/yugalanguriya_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/yugalanguriya_front.png"
+      ],
+      "mapped": true
+    }
+  ]
+}

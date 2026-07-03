@@ -1,0 +1,19 @@
+{
+  "slug": "the-door-in-the-wall",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "chapter-1",
+      "title": "Chapter 1",
+      "paragraphCount": 0,
+      "startMs": 0,
+      "contentMs": 2967726,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 2970226
+    }
+  ],
+  "totalDurationMs": 2970226
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "book-88ded9b47c",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-88ded9b47c-chapter-1",
+      "title": "মানভঞ্জন",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1599563,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 1602063
+    }
+  ],
+  "totalDurationMs": 1602063
+}

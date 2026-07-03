@@ -1,0 +1,19 @@
+{
+  "slug": "the-country-of-the-blind",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "the-country-of-the-blind-chapter-1",
+      "title": "The Country of the Blind",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 3586933,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 3589433
+    }
+  ],
+  "totalDurationMs": 3589433
+}

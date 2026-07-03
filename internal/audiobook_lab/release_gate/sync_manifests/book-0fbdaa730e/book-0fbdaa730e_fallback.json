@@ -1,14 +1,14 @@
 {
   "slug": "book-0fbdaa730e",
-  "generatedAt": "2026-07-03T05:43:08+0000",
+  "generatedAt": "2026-07-03T15:58:43+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-0fbdaa730e/book-0fbdaa730e.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "book-0fbdaa730e-chapter-1",
+      "title": "গুপ্তধন",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 2467220,
       "introMs": 1500,

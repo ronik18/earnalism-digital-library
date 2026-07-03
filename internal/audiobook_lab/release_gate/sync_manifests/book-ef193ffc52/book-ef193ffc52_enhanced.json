@@ -1,0 +1,19 @@
+{
+  "slug": "book-ef193ffc52",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-ef193ffc52-chapter-1",
+      "title": "দিদি",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1587860,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 1590360
+    }
+  ],
+  "totalDurationMs": 1590360
+}

@@ -1,14 +1,14 @@
 {
   "slug": "book-fbdf2991ab",
-  "generatedAt": "2026-07-03T04:29:10+0000",
+  "generatedAt": "2026-07-03T17:08:58+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-fbdf2991ab/book-fbdf2991ab.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "book-fbdf2991ab-chapter-1",
+      "title": "সুভা",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 936068,
       "introMs": 1500,

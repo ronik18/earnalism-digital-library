@@ -1,0 +1,19 @@
+{
+  "slug": "book-ac5a71075e",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-ac5a71075e-chapter-1",
+      "title": "পোস্টমাস্টার",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 914397,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 916897
+    }
+  ],
+  "totalDurationMs": 916897
+}

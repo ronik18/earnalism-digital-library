@@ -1,14 +1,14 @@
 {
   "slug": "book-2b9853ec52",
-  "generatedAt": "2026-07-03T05:43:34+0000",
+  "generatedAt": "2026-07-03T16:03:22+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-2b9853ec52/book-2b9853ec52.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "book-2b9853ec52-chapter-1",
+      "title": "দুই বিঘা জমি",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 304316,
       "introMs": 1500,

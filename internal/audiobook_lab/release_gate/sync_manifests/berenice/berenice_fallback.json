@@ -1,14 +1,14 @@
 {
   "slug": "berenice",
-  "generatedAt": "2026-07-03T04:44:09+0000",
+  "generatedAt": "2026-07-03T17:20:45+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/english_audiobook_polish/english-polish-edge-below9-v1/bundles/en/berenice/berenice.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "berenice-chapter-1",
+      "title": "Berenice",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 1541612,
       "introMs": 1500,

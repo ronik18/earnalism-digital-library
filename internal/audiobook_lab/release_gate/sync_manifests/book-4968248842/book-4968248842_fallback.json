@@ -1,14 +1,14 @@
 {
   "slug": "book-4968248842",
-  "generatedAt": "2026-07-03T04:15:45+0000",
+  "generatedAt": "2026-07-03T16:03:56+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-4968248842/book-4968248842.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "book-4968248842-chapter-1",
+      "title": "বলাই",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 675644,
       "introMs": 1500,

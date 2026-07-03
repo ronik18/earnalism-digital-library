@@ -1,14 +1,14 @@
 {
   "slug": "book-5aedda79fe",
-  "generatedAt": "2026-07-03T04:17:53+0000",
+  "generatedAt": "2026-07-03T16:14:23+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-5aedda79fe/book-5aedda79fe.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "book-5aedda79fe-chapter-1",
+      "title": "শাস্তি",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 1549052,
       "introMs": 1500,

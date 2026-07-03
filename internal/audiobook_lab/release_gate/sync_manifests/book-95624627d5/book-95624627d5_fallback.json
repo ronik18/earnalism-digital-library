@@ -1,14 +1,14 @@
 {
   "slug": "book-95624627d5",
-  "generatedAt": "2026-07-03T04:20:58+0000",
+  "generatedAt": "2026-07-03T16:27:36+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-95624627d5/book-95624627d5.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "book-95624627d5-chapter-1",
+      "title": "মধ্যবর্তিনী",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 1845356,
       "introMs": 1500,

@@ -1,14 +1,14 @@
 {
   "slug": "book-edfcf810c5",
-  "generatedAt": "2026-07-03T04:28:14+0000",
+  "generatedAt": "2026-07-03T17:03:57+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-edfcf810c5/book-edfcf810c5.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "book-edfcf810c5-chapter-1",
+      "title": "ক্ষুধিত পাষাণ",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 1757372,
       "introMs": 1500,

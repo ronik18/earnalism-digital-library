@@ -1,0 +1,19 @@
+{
+  "slug": "rikki-tikki-tavi",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "rikki-tikki-tavi-chapter-1",
+      "title": "Rikki-Tikki-Tavi",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1255661,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 1258161
+    }
+  ],
+  "totalDurationMs": 1258161
+}

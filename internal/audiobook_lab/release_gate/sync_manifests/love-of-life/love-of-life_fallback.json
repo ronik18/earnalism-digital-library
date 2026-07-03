@@ -1,14 +1,14 @@
 {
   "slug": "love-of-life",
-  "generatedAt": "2026-07-03T04:46:53+0000",
+  "generatedAt": "2026-07-03T17:33:43+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/english_audiobook_polish/english-polish-edge-below9-v1/bundles/en/love-of-life/love-of-life.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "love-of-life-chapter-1",
+      "title": "Love of Life",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 3543572,
       "introMs": 1500,

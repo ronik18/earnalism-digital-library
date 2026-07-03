@@ -1,0 +1,19 @@
+{
+  "slug": "the-bishop",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "the-bishop-chapter-1",
+      "title": "The Bishop",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 2750571,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 2753071
+    }
+  ],
+  "totalDurationMs": 2753071
+}

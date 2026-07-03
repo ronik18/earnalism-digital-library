@@ -1,0 +1,19 @@
+{
+  "slug": "book-5461971092",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-5461971092-chapter-1",
+      "title": "মেঘ ও রৌদ্র",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 3961868,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 3964368
+    }
+  ],
+  "totalDurationMs": 3964368
+}

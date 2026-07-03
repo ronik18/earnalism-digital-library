@@ -1,0 +1,19 @@
+{
+  "slug": "book-edfcf810c5",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-edfcf810c5-chapter-1",
+      "title": "ক্ষুধিত পাষাণ",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1757421,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 1759921
+    }
+  ],
+  "totalDurationMs": 1759921
+}

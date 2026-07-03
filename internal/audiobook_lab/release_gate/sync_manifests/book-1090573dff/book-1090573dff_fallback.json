@@ -1,14 +1,14 @@
 {
   "slug": "book-1090573dff",
-  "generatedAt": "2026-07-03T05:43:27+0000",
+  "generatedAt": "2026-07-03T16:02:04+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-1090573dff/book-1090573dff.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "book-1090573dff-chapter-1",
+      "title": "ছুটি",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 974156,
       "introMs": 1500,

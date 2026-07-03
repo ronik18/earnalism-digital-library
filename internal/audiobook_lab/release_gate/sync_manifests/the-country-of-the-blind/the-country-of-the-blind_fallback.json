@@ -1,14 +1,14 @@
 {
   "slug": "the-country-of-the-blind",
-  "generatedAt": "2026-07-03T04:52:41+0000",
+  "generatedAt": "2026-07-03T17:57:35+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/english_audiobook_polish/english-polish-edge-below9-v1/bundles/en/the-country-of-the-blind/the-country-of-the-blind.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "the-country-of-the-blind-chapter-1",
+      "title": "The Country of the Blind",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 3586892,
       "introMs": 1500,

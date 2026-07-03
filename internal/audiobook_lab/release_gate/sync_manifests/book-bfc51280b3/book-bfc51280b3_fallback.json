@@ -1,14 +1,14 @@
 {
   "slug": "book-bfc51280b3",
-  "generatedAt": "2026-07-03T04:25:38+0000",
+  "generatedAt": "2026-07-03T16:53:36+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-bfc51280b3/book-bfc51280b3.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "book-bfc51280b3-chapter-1",
+      "title": "অতিথি",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 2689052,
       "introMs": 1500,

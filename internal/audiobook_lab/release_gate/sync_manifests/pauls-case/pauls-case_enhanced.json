@@ -1,0 +1,19 @@
+{
+  "slug": "pauls-case",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "pauls-case-chapter-1",
+      "title": "Paul's Case",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 3670237,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 3672737
+    }
+  ],
+  "totalDurationMs": 3672737
+}

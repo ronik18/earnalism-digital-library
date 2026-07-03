@@ -1,14 +1,14 @@
 {
   "slug": "a-jury-of-her-peers",
-  "generatedAt": "2026-07-03T04:42:54+0000",
+  "generatedAt": "2026-07-03T17:11:09+0000",
   "source": "pipeline_gate2_fallback",
   "sourceAudio": "output/english_audiobook_polish/english-polish-edge-below9-v1/bundles/en/a-jury-of-her-peers/a-jury-of-her-peers.mp3",
   "chapters": [
     {
       "index": 1,
-      "chapterId": "chapter-1",
-      "title": "Chapter 1",
-      "paragraphCount": 0,
+      "chapterId": "a-jury-of-her-peers-chapter-1",
+      "title": "A Jury of Her Peers",
+      "paragraphCount": 1,
       "startMs": 0,
       "contentMs": 3617733,
       "introMs": 1500,
