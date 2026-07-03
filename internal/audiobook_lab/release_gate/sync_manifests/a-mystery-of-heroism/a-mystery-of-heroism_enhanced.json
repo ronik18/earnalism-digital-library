@@ -1,0 +1,19 @@
+{
+  "slug": "a-mystery-of-heroism",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "a-mystery-of-heroism-chapter-1",
+      "title": "A Mystery of Heroism",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1506358,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 1508858
+    }
+  ],
+  "totalDurationMs": 1508858
+}

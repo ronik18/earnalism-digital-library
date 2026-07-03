@@ -1,0 +1,20 @@
+{
+  "slug": "book-827fdc7aee",
+  "generatedAt": "2026-07-03T16:17:45+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-827fdc7aee/book-827fdc7aee.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-827fdc7aee-chapter-1",
+      "title": "রাসমণির ছেলে",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 5498756,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 5501256
+    }
+  ],
+  "totalDurationMs": 5501256
+}

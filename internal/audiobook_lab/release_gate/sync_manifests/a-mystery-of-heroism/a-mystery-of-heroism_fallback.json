@@ -1,0 +1,20 @@
+{
+  "slug": "a-mystery-of-heroism",
+  "generatedAt": "2026-07-03T17:16:17+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/english_audiobook_polish/english-polish-edge-below9-v1/bundles/en/a-mystery-of-heroism/a-mystery-of-heroism.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "a-mystery-of-heroism-chapter-1",
+      "title": "A Mystery of Heroism",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1506332,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 1508832
+    }
+  ],
+  "totalDurationMs": 1508832
+}

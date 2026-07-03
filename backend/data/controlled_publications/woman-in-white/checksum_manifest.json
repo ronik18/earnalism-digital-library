@@ -1,0 +1,122 @@
+{
+  "slug": "woman-in-white",
+  "generated_at": "2026-07-01T10:36:20Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "d3638ec168a32093cd93a9740d2d6023044a7c4d6c1866b98621308efd63d895"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "209fb9b86acb5d5b88491277598131e50364fc3e2e765c0a18d4003c6ef9d52b"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "9730b296abbe379d51ffe8661eccf348e27a71bcb63e080018bae64f1b673a91"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "7e44eaefc904afdb4d62c8f2b30e42f123a175cfa8cf372ffb2f6ff31d99a3d0"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "e82e2f74e8321f13d3666d40b6cd1a01b68988155eeaf3c2c9d1308ff4f3626a"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "97770812b3fe30399ec1b65ba82e945987c7132884ae2d73401f5798ce296b25"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "d2b38e2a82c85d6a17350f969f0c3e0ab367c2bf3d3a26a6cf2cb9a591b75bc3"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "79f214df16768d0b7e0145b00d1a088b5519de9efeac37acaab84dc55ac17110"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "2aaa05c09654472fca83cfebb44cb5e2601f39bb3ece4245d88d18efe2194c4e"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "bf466d3c1d53368b353940231d59ad1665b473654323ed54a983f88e34cc34d2"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "ee95c8858a836aed21f56fea199189b8f33d68f6a6deabe0dff07410b135f489"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "9735ec2d028788e76916aef05c438133b424ee44ec870e5560432d1fc8de7327"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "52501a7cf9316562265a343d22f4561db73a0505900eee4089eaa445caf7d186"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "8fe4a8ebb3eae2711860455f69e8291bcbe439303192116f1c5963c0a10d8a83"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "c5cab5530314781fd8a158a6a5f50bf130ad57df70355e50477e355708567d70"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "08b7bd1c94298b866ef3776aa0244f5d760c8d6bda9560188c2047dfde98afe4"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "e82ed62617f4e0d420759453f35bf8c42710ae42d30290476b3e0516ede9e759"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "dce95f757f8b91b30b4d6f25881433cc8e68ec5f7a4d54ed0ec722bcf08d1330"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "16d9a8b0bf413271cc67df019718cbeb44044cca748de18de500d1c3f720ca47"
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "9abd0dda7b6df4a47fef44109905b7046e8073272b20b2b6bff452f43e0d242d"
+    },
+    {
+      "file": "chapters/chapter-017.json",
+      "sha256": "fe75ee9727aae0ee51bffb423c437256fdc1a8c00c0b4e96c74d53b58a551736"
+    },
+    {
+      "file": "chapters/chapter-018.json",
+      "sha256": "cbd065fd8f317b4704f4efe1a45de6670439f800575eaf6d15de17500d57107e"
+    },
+    {
+      "file": "chapters/chapter-019.json",
+      "sha256": "a11eb3644200da1177e1928d1169d6ca62b43472f6a1ffdcf03fd22241223758"
+    },
+    {
+      "file": "chapters/chapter-020.json",
+      "sha256": "7cc9345ed0f49bbf0149f1a54fd0ae59d6286ab5be05db81a2724d8c1c00a1a3"
+    },
+    {
+      "file": "chapters/chapter-021.json",
+      "sha256": "9a44262c1e861e9560f7400b9304a9f73fdacc9e43f51a2eccb2d9ba789cc975"
+    },
+    {
+      "file": "chapters/chapter-022.json",
+      "sha256": "1aad119774a433164dd7a919c26440d5f94394cbf16e8472edddeed3dee8bcac"
+    },
+    {
+      "file": "chapters/chapter-023.json",
+      "sha256": "07481c63c5ffc01ac4353ef154b5ec753816eae1705858245ce55409f6f6cf78"
+    },
+    {
+      "file": "chapters/chapter-024.json",
+      "sha256": "47ce7009c2fce1aed3b7dd3788648f65ea83450af754b9fe2b9159e22b9039b0"
+    },
+    {
+      "file": "chapters/chapter-025.json",
+      "sha256": "41535a504390ba11d27e1f777902e915a9ee730d238ac4cbfa57ce1a07388d6f"
+    }
+  ]
+}

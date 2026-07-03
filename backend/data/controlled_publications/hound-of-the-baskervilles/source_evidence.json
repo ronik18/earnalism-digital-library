@@ -1,0 +1,13 @@
+{
+  "slug": "hound-of-the-baskervilles",
+  "source_url": "https://www.gutenberg.org/ebooks/2852",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
+  "source_hash": "d3f65a1d363c9f72666a61e2a88f60696a8620a7d823dbf25e106ecc0655d251",
+  "content_hash": "4d5747626319130ea531bdf107b6e424bb7d7e7f5caeda6590b7ca42cc7a970f",
+  "provenance_hash": "e670e797cfe9b0f6b4f47e916492de8a731d557bec00bcb5f3a4e1352f40edab",
+  "rights_basis": "public_domain",
+  "downloaded_at": "2026-07-01T10:36:20Z",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

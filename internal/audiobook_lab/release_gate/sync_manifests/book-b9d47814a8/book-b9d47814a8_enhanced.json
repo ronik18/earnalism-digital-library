@@ -1,0 +1,19 @@
+{
+  "slug": "book-b9d47814a8",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-b9d47814a8-chapter-1",
+      "title": "নিশীথে",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1864654,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 1867154
+    }
+  ],
+  "totalDurationMs": 1867154
+}

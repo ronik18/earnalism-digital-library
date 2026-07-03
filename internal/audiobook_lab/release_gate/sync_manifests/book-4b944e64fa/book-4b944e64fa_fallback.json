@@ -1,0 +1,20 @@
+{
+  "slug": "book-4b944e64fa",
+  "generatedAt": "2026-07-03T16:05:02+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-4b944e64fa/book-4b944e64fa.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-4b944e64fa-chapter-1",
+      "title": "একরাত্রি",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 980803,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 983303
+    }
+  ],
+  "totalDurationMs": 983303
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "book-5704b31005",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-5704b31005-chapter-1",
+      "title": "বিচারক",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1103184,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 1105684
+    }
+  ],
+  "totalDurationMs": 1105684
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "boule-de-suif",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "boule-de-suif-chapter-1",
+      "title": "Boule de Suif",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 6482267,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 6484767
+    }
+  ],
+  "totalDurationMs": 6484767
+}

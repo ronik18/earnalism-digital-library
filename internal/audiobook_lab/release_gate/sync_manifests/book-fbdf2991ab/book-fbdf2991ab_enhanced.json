@@ -1,0 +1,19 @@
+{
+  "slug": "book-fbdf2991ab",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-fbdf2991ab-chapter-1",
+      "title": "সুভা",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 936105,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 938605
+    }
+  ],
+  "totalDurationMs": 938605
+}

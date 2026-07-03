@@ -1,0 +1,19 @@
+{
+  "slug": "the-darling",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "the-darling-chapter-1",
+      "title": "The Darling",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 2145261,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 2147761
+    }
+  ],
+  "totalDurationMs": 2147761
+}

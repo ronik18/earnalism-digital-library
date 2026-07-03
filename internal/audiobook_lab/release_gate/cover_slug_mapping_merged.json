@@ -1,0 +1,1689 @@
+{
+  "total": 152,
+  "mapped_count": 63,
+  "unmapped_count": 89,
+  "items": [
+    {
+      "slug": "a-ghost-story",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-horseman-in-the-sky",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-jury-of-her-peers",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-retrieved-reformation",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-wagner-matinee",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "a-white-heron",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "filename_hits": [
+        "output/generated_business_covers/acres-of-diamonds_back.png",
+        "output/generated_business_covers/acres-of-diamonds_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "filename_hits": [
+        "output/generated_covers/alices-adventures-in-wonderland_back.png",
+        "output/generated_covers/alices-adventures-in-wonderland_front.png"
+      ],
+      "metadata_hits": [
+        "output/chapter_title_audit/20260601T055136Z/before_alices-adventures-in-wonderland.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+        "output/chapter_title_audit/20260601T055136Z/before_alices-adventures-in-wonderland.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+        "output/chapter_title_audit/20260601T055136Z/before_alices-adventures-in-wonderland.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902735/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+        "output/chapter_title_audit/20260601T055136Z/before_alices-adventures-in-wonderland.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902735/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+        "output/chapter_title_audit/20260601T055136Z/before_alices-adventures-in-wonderland.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe",
+        "output/chapter_title_audit/20260601T055136Z/before_alices-adventures-in-wonderland.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe",
+        "output/chapter_title_audit/20260601T055136Z/after_alices-adventures-in-wonderland.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+        "output/chapter_title_audit/20260601T055136Z/after_alices-adventures-in-wonderland.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+        "output/chapter_title_audit/20260601T055136Z/after_alices-adventures-in-wonderland.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902735/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+        "output/chapter_title_audit/20260601T055136Z/after_alices-adventures-in-wonderland.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902735/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+        "output/chapter_title_audit/20260601T055136Z/after_alices-adventures-in-wonderland.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe",
+        "output/chapter_title_audit/20260601T055136Z/after_alices-adventures-in-wonderland.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "berenice",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "bharat-at-the-crossroads",
+      "filename_hits": [],
+      "metadata_hits": [
+        "output/bharat_at_the_crossroads/bharat-at-the-crossroads_production_backup_20260523T184925Z.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+        "output/bharat_at_the_crossroads/bharat-at-the-crossroads_production_backup_20260523T184925Z.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+        "output/bharat_at_the_crossroads/bharat-at-the-crossroads_production_backup_20260523T184925Z.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+        "output/bharat_at_the_crossroads/bharat-at-the-crossroads_production_backup_20260523T184925Z.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+        "output/bharat_at_the_crossroads/bharat-at-the-crossroads_production_backup_20260523T184925Z.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508",
+        "output/bharat_at_the_crossroads/bharat-at-the-crossroads_production_backup_20260523T184925Z.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "bn-027",
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-027_back.png",
+        "output/generated_bengali_covers/bn-027_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "bn-031",
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-031_back.png",
+        "output/generated_bengali_covers/bn-031_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "bn-035",
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-035_back.png",
+        "output/generated_bengali_covers/bn-035_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "bn-036",
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-036_back.png",
+        "output/generated_bengali_covers/bn-036_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "bn-041",
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-041_back.png",
+        "output/generated_bengali_covers/bn-041_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "bn-059",
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-059_back.png",
+        "output/generated_bengali_covers/bn-059_front.png"
+      ],
+      "metadata_hits": [
+        "output/kamalakanta_live_admin_before.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780687397/earnalism/covers/front/cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+        "output/kamalakanta_live_admin_before.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780687397/earnalism/covers/front/cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+        "output/kamalakanta_live_admin_before.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780687401/earnalism/covers/back/back_cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+        "output/kamalakanta_live_admin_before.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780687401/earnalism/covers/back/back_cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+        "output/kamalakanta_live_admin_before.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad",
+        "output/kamalakanta_live_admin_before.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad",
+        "output/kamalakanta_live_admin_after.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780687397/earnalism/covers/front/cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+        "output/kamalakanta_live_admin_after.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780687397/earnalism/covers/front/cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+        "output/kamalakanta_live_admin_after.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780687401/earnalism/covers/back/back_cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+        "output/kamalakanta_live_admin_after.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780687401/earnalism/covers/back/back_cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad.png",
+        "output/kamalakanta_live_admin_after.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad",
+        "output/kamalakanta_live_admin_after.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_4b3ab0ba-eeaa-4c8b-b186-72e03fd39cad"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "bn-060",
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-060_back.png",
+        "output/generated_bengali_covers/bn-060_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "bn-066",
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-066_back.png",
+        "output/generated_bengali_covers/bn-066_front.png"
+      ],
+      "metadata_hits": [
+        "output/anandamath_live_admin_before.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780682828/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+        "output/anandamath_live_admin_before.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780682828/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+        "output/anandamath_live_admin_before.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780682831/earnalism/covers/back/back_cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+        "output/anandamath_live_admin_before.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780682831/earnalism/covers/back/back_cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+        "output/anandamath_live_admin_before.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_e8c8daa1-3794-45eb-8e01-151456e9ead5",
+        "output/anandamath_live_admin_before.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_e8c8daa1-3794-45eb-8e01-151456e9ead5"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-0986aeb7e3",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-0986aeb7e3_back.png",
+        "output/generated_bengali_covers/book-0986aeb7e3_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-0deb35c750",
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/09-book-0deb35c750-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/09-book-0deb35c750-page1.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-0fbdaa730e",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-0fbdaa730e_back.png",
+        "output/generated_bengali_covers/book-0fbdaa730e_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-1090573dff",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-1090573dff_back.png",
+        "output/generated_bengali_covers/book-1090573dff_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-2b9853ec52",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-2b9853ec52_back.png",
+        "output/generated_bengali_covers/book-2b9853ec52_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-2ddbed8293",
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/10-book-2ddbed8293-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/10-book-2ddbed8293-page1.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-2e468c4990",
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/01-book-2e468c4990-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/01-book-2e468c4990-page1.png"
+      ],
+      "metadata_hits": [
+        "output/book_production/kabuliwala/admin_after_repair.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567427/earnalism/covers/front/cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_after_repair.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567427/earnalism/covers/front/cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_after_repair.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567469/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_after_repair.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567469/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_after_repair.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c",
+        "output/book_production/kabuliwala/admin_after_repair.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c",
+        "output/book_production/kabuliwala/admin_pre_publish_qa.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567427/earnalism/covers/front/cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_pre_publish_qa.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567427/earnalism/covers/front/cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_pre_publish_qa.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567469/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_pre_publish_qa.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567469/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_pre_publish_qa.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c",
+        "output/book_production/kabuliwala/admin_pre_publish_qa.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c",
+        "output/book_production/kabuliwala/admin_before_qa.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567427/earnalism/covers/front/cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_before_qa.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567427/earnalism/covers/front/cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_before_qa.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567469/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_before_qa.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c",
+        "output/book_production/kabuliwala/admin_before_qa.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c",
+        "output/book_production/kabuliwala/admin_before_repair.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567427/earnalism/covers/front/cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_before_repair.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567427/earnalism/covers/front/cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_before_repair.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779567469/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c.png",
+        "output/book_production/kabuliwala/admin_before_repair.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c",
+        "output/book_production/kabuliwala/admin_before_repair.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_b33ba9ce-28b1-462a-9721-01a012424e4c"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-4968248842",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-4968248842_back.png",
+        "output/generated_bengali_covers/book-4968248842_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-4b944e64fa_back.png",
+        "output/generated_bengali_covers/book-4b944e64fa_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-5461971092",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-5461971092_back.png",
+        "output/generated_bengali_covers/book-5461971092_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-5704b31005",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-5704b31005_back.png",
+        "output/generated_bengali_covers/book-5704b31005_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-5aedda79fe",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-5aedda79fe_back.png",
+        "output/generated_bengali_covers/book-5aedda79fe_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-63afd5e9be",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "book-754da4eab8",
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/05-book-754da4eab8-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/05-book-754da4eab8-page1.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-827fdc7aee",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-827fdc7aee_back.png",
+        "output/generated_bengali_covers/book-827fdc7aee_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-88ded9b47c",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-88ded9b47c_back.png",
+        "output/generated_bengali_covers/book-88ded9b47c_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-95624627d5",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-95624627d5_back.png",
+        "output/generated_bengali_covers/book-95624627d5_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-9a7f771921",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-9a7f771921_back.png",
+        "output/generated_bengali_covers/book-9a7f771921_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-a23625bf36",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-a23625bf36_back.png",
+        "output/generated_bengali_covers/book-a23625bf36_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-a4a369483f",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-a4a369483f_back.png",
+        "output/generated_bengali_covers/book-a4a369483f_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-a74c1a1451",
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/03-book-a74c1a1451-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/03-book-a74c1a1451-page1.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-ac5a71075e_back.png",
+        "output/generated_bengali_covers/book-ac5a71075e_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-b9d47814a8_back.png",
+        "output/generated_bengali_covers/book-b9d47814a8_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-bfc51280b3",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-bfc51280b3_back.png",
+        "output/generated_bengali_covers/book-bfc51280b3_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-c307a57868",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-c307a57868_back.png",
+        "output/generated_bengali_covers/book-c307a57868_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-c7f3ce526c",
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/07-book-c7f3ce526c-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/07-book-c7f3ce526c-page1.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-c85323409f",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-c85323409f_back.png",
+        "output/generated_bengali_covers/book-c85323409f_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-d19e96859f",
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/08-book-d19e96859f-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/08-book-d19e96859f-page1.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-d2fe532e1c",
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/02-book-d2fe532e1c-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/02-book-d2fe532e1c-page1.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-edfcf810c5_back.png",
+        "output/generated_bengali_covers/book-edfcf810c5_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-ef193ffc52",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-ef193ffc52_back.png",
+        "output/generated_bengali_covers/book-ef193ffc52_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/04-book-f5d593e1f4-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/04-book-f5d593e1f4-page1.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "book-fbdf2991ab",
+      "filename_hits": [
+        "output/generated_bengali_covers/book-fbdf2991ab_back.png",
+        "output/generated_bengali_covers/book-fbdf2991ab_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "boule-de-suif",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "dracula",
+      "filename_hits": [
+        "frontend/build/assets/books/dracula/dracula-back-cover.jpg",
+        "frontend/build/assets/books/dracula/dracula-front-cover.jpg",
+        "frontend/public/assets/books/dracula/dracula-back-cover.jpg",
+        "frontend/public/assets/books/dracula/dracula-front-cover.jpg",
+        "output/generated_covers/dracula_back.png",
+        "output/generated_covers/dracula_front.png",
+        "output/real-user-ux/evidence/carousel-featured-dracula-section.png",
+        "output/real-user-ux/evidence/dracula-book-page.png",
+        "output/real-user-ux/evidence/dracula-reader-page.png",
+        "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/visual-review/hero-dracula-book-polish/hero-dracula-book-closeup-no-tour.png",
+        "output/visual-review/hero-dracula-book-polish/hero-dracula-book-closeup.png",
+        "output/visual-review/homepage-dracula-top-spine-fix.png",
+        "output/visual-review/homepage-reference-hero-shelf/crop-candidates/dracula-hardcopy-tight1-on-dark.png",
+        "output/visual-review/homepage-reference-hero-shelf/crop-candidates/dracula-hardcopy-tight3-on-dark.png"
+      ],
+      "metadata_hits": [
+        "output/chapter_title_audit/20260601T055136Z/after_dracula.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946033/earnalism/covers/front/cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+        "output/chapter_title_audit/20260601T055136Z/after_dracula.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946033/earnalism/covers/front/cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+        "output/chapter_title_audit/20260601T055136Z/after_dracula.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946054/earnalism/covers/back/back_cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+        "output/chapter_title_audit/20260601T055136Z/after_dracula.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946054/earnalism/covers/back/back_cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+        "output/chapter_title_audit/20260601T055136Z/after_dracula.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_630df84e-eba7-491a-aedc-f857d29c9000",
+        "output/chapter_title_audit/20260601T055136Z/after_dracula.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_630df84e-eba7-491a-aedc-f857d29c9000",
+        "output/chapter_title_audit/20260601T055136Z/before_dracula.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946033/earnalism/covers/front/cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+        "output/chapter_title_audit/20260601T055136Z/before_dracula.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946033/earnalism/covers/front/cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+        "output/chapter_title_audit/20260601T055136Z/before_dracula.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946054/earnalism/covers/back/back_cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+        "output/chapter_title_audit/20260601T055136Z/before_dracula.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946054/earnalism/covers/back/back_cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+        "output/chapter_title_audit/20260601T055136Z/before_dracula.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_630df84e-eba7-491a-aedc-f857d29c9000",
+        "output/chapter_title_audit/20260601T055136Z/before_dracula.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_630df84e-eba7-491a-aedc-f857d29c9000",
+        "backend/data/controlled_publications/dracula/public_book.json::cover_url::https://theearnalism.com/assets/books/dracula/dracula-front-cover.webp",
+        "backend/data/controlled_publications/dracula/public_book.json::cover_image_url::https://theearnalism.com/assets/books/dracula/dracula-front-cover.webp",
+        "backend/data/controlled_publications/dracula/public_book.json::back_cover_url::https://theearnalism.com/assets/books/dracula/dracula-back-cover.webp",
+        "backend/data/controlled_publications/dracula/public_book.json::back_cover_image_url::https://theearnalism.com/assets/books/dracula/dracula-back-cover.webp",
+        "backend/data/controlled_publications/dracula/public_book.json::back_cover_thumbnail_url::https://theearnalism.com/assets/books/dracula/dracula-back-cover.webp",
+        "data/controlled_publications/dracula/public_book.json::cover_url::https://theearnalism.com/assets/books/dracula/dracula-front-cover.webp",
+        "data/controlled_publications/dracula/public_book.json::cover_image_url::https://theearnalism.com/assets/books/dracula/dracula-front-cover.webp",
+        "data/controlled_publications/dracula/public_book.json::back_cover_url::https://theearnalism.com/assets/books/dracula/dracula-back-cover.webp",
+        "data/controlled_publications/dracula/public_book.json::back_cover_image_url::https://theearnalism.com/assets/books/dracula/dracula-back-cover.webp",
+        "data/controlled_publications/dracula/public_book.json::back_cover_thumbnail_url::https://theearnalism.com/assets/books/dracula/dracula-back-cover.webp"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "dsires-baby",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "feathertop",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "frankenstein",
+      "filename_hits": [],
+      "metadata_hits": [
+        "output/book_production/frankenstein_from_scratch/frankenstein_admin_after_rebuild.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566127/earnalism/covers/front/cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+        "output/book_production/frankenstein_from_scratch/frankenstein_admin_after_rebuild.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566127/earnalism/covers/front/cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+        "output/book_production/frankenstein_from_scratch/frankenstein_admin_after_rebuild.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566151/earnalism/covers/back/back_cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+        "output/book_production/frankenstein_from_scratch/frankenstein_admin_after_rebuild.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566151/earnalism/covers/back/back_cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+        "output/book_production/frankenstein_from_scratch/frankenstein_admin_after_rebuild.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29",
+        "output/book_production/frankenstein_from_scratch/frankenstein_admin_after_rebuild.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29",
+        "output/book_production/frankenstein_from_scratch/frankenstein_admin_before_rebuild.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566127/earnalism/covers/front/cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+        "output/book_production/frankenstein_from_scratch/frankenstein_admin_before_rebuild.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566127/earnalism/covers/front/cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+        "output/book_production/frankenstein_from_scratch/frankenstein_admin_before_rebuild.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566151/earnalism/covers/back/back_cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+        "output/book_production/frankenstein_from_scratch/frankenstein_admin_before_rebuild.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566151/earnalism/covers/back/back_cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+        "output/book_production/frankenstein_from_scratch/frankenstein_admin_before_rebuild.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29",
+        "output/book_production/frankenstein_from_scratch/frankenstein_admin_before_rebuild.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "great-expectations",
+      "filename_hits": [],
+      "metadata_hits": [
+        "output/chapter_title_audit/20260601T060415Z/after_great-expectations.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292673/earnalism/covers/front/cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+        "output/chapter_title_audit/20260601T060415Z/after_great-expectations.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292673/earnalism/covers/front/cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+        "output/chapter_title_audit/20260601T060415Z/after_great-expectations.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292677/earnalism/covers/back/back_cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+        "output/chapter_title_audit/20260601T060415Z/after_great-expectations.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292677/earnalism/covers/back/back_cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+        "output/chapter_title_audit/20260601T060415Z/after_great-expectations.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0",
+        "output/chapter_title_audit/20260601T060415Z/after_great-expectations.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0",
+        "output/chapter_title_audit/20260601T060415Z/before_great-expectations.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292673/earnalism/covers/front/cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+        "output/chapter_title_audit/20260601T060415Z/before_great-expectations.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292673/earnalism/covers/front/cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+        "output/chapter_title_audit/20260601T060415Z/before_great-expectations.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292677/earnalism/covers/back/back_cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+        "output/chapter_title_audit/20260601T060415Z/before_great-expectations.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780292677/earnalism/covers/back/back_cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0.png",
+        "output/chapter_title_audit/20260601T060415Z/before_great-expectations.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0",
+        "output/chapter_title_audit/20260601T060415Z/before_great-expectations.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_ff32fe6a-9f1a-402b-935d-c5dff918b8a0"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "jane-eyre",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "lokrahasya",
+      "filename_hits": [
+        "output/bengali_source_repair/20260603T084835Z/covers/jpeg/lokrahasya_back.jpg",
+        "output/bengali_source_repair/20260603T084835Z/covers/jpeg/lokrahasya_front.jpg",
+        "output/bengali_source_repair/20260603T084835Z/covers/lokrahasya_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/lokrahasya_front.png"
+      ],
+      "metadata_hits": [
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482837/earnalism/covers/front/cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482876/earnalism/covers/back/back_cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482930/earnalism/covers/back/back_cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482943/earnalism/covers/front/cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482967/earnalism/covers/back/back_cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483038/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483096/earnalism/covers/back/back_cover_7450115f-db43-49ae-af14-feea82311d1f.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483110/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483134/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.png"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "love-of-life",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "markheim",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "mrinalini",
+      "filename_hits": [
+        "output/bengali_source_repair/20260603T084835Z/covers/jpeg/mrinalini_back.jpg",
+        "output/bengali_source_repair/20260603T084835Z/covers/jpeg/mrinalini_front.jpg",
+        "output/bengali_source_repair/20260603T084835Z/covers/mrinalini_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/mrinalini_front.png"
+      ],
+      "metadata_hits": [
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482837/earnalism/covers/front/cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482876/earnalism/covers/back/back_cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482930/earnalism/covers/back/back_cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482943/earnalism/covers/front/cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482967/earnalism/covers/back/back_cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483038/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483096/earnalism/covers/back/back_cover_7450115f-db43-49ae-af14-feea82311d1f.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483110/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483134/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.png"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "filename_hits": [
+        "output/bengali_source_repair/20260603T084835Z/covers/muchiram-gurer-jibanchorit_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/muchiram-gurer-jibanchorit_front.png"
+      ],
+      "metadata_hits": [
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482837/earnalism/covers/front/cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482876/earnalism/covers/back/back_cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482930/earnalism/covers/back/back_cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482943/earnalism/covers/front/cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482967/earnalism/covers/back/back_cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483038/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483096/earnalism/covers/back/back_cover_7450115f-db43-49ae-af14-feea82311d1f.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483110/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483134/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.png"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "my-life-and-work",
+      "filename_hits": [
+        "output/generated_business_covers/my-life-and-work_back.png",
+        "output/generated_business_covers/my-life-and-work_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "nishkriti",
+      "filename_hits": [
+        "output/bengali_source_repair/20260603T084835Z/covers/nishkriti_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/nishkriti_front.png"
+      ],
+      "metadata_hits": [
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482837/earnalism/covers/front/cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482876/earnalism/covers/back/back_cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482930/earnalism/covers/back/back_cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482943/earnalism/covers/front/cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482967/earnalism/covers/back/back_cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483038/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483096/earnalism/covers/back/back_cover_7450115f-db43-49ae-af14-feea82311d1f.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483110/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483134/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.png"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "pauls-case",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "filename_hits": [
+        "output/generated_covers/pride-and-prejudice_back.png",
+        "output/generated_covers/pride-and-prejudice_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "radharani",
+      "filename_hits": [
+        "output/bengali_source_repair/20260603T084835Z/covers/radharani_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/radharani_front.png"
+      ],
+      "metadata_hits": [
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482837/earnalism/covers/front/cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482876/earnalism/covers/back/back_cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482930/earnalism/covers/back/back_cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482943/earnalism/covers/front/cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482967/earnalism/covers/back/back_cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483038/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483096/earnalism/covers/back/back_cover_7450115f-db43-49ae-af14-feea82311d1f.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483110/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483134/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.png"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "rappaccinis-daughter",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "rikki-tikki-tavi",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "rip-van-winkle",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "sredni-vashtar",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-abbey-grange",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-copper-beeches",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-dancing-men",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-empty-house",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-final-problem",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-priory-school",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-second-stain",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "filename_hits": [
+        "output/generated_covers/the-adventures-of-sherlock-holmes_back.png",
+        "output/generated_covers/the-adventures-of-sherlock-holmes_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "the-ambitious-guest",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "filename_hits": [
+        "output/generated_business_covers/the-art-of-money-getting_back.png",
+        "output/generated_business_covers/the-art-of-money-getting_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "the-bet",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-bishop",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "filename_hits": [],
+      "metadata_hits": [
+        "output/call_of_the_wild/admin_before.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568766/earnalism/covers/front/cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+        "output/call_of_the_wild/admin_before.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568766/earnalism/covers/front/cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+        "output/call_of_the_wild/admin_before.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568843/earnalism/covers/back/back_cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+        "output/call_of_the_wild/admin_before.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568843/earnalism/covers/back/back_cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+        "output/call_of_the_wild/admin_before.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_32a20edc-5097-4d64-98d0-fb3d29487a9d",
+        "output/call_of_the_wild/admin_before.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_32a20edc-5097-4d64-98d0-fb3d29487a9d",
+        "output/call_of_the_wild/call_of_the_wild_manifest.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568766/earnalism/covers/front/cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+        "output/call_of_the_wild/call_of_the_wild_manifest.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568843/earnalism/covers/back/back_cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+        "output/call_of_the_wild/import_run/20260524T041331Z/metadata/the-call-of-the-wild.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568766/earnalism/covers/front/cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+        "output/call_of_the_wild/import_run/20260524T041331Z/metadata/the-call-of-the-wild.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568843/earnalism/covers/back/back_cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+        "output/call_of_the_wild/upload_run/20260524T041412Z/metadata/the-call-of-the-wild.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568766/earnalism/covers/front/cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+        "output/call_of_the_wild/upload_run/20260524T041412Z/metadata/the-call-of-the-wild.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568843/earnalism/covers/back/back_cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-country-of-the-blind",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-darling",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-door-in-the-wall",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-enchanted-april",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-five-orange-pips",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-furnished-room",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-great-gatsby",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-happy-prince",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-imp-of-the-perverse",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-last-leaf",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-legend-of-sleepy-hollow",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-lifted-veil",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-luck-of-roaring-camp",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-man-in-a-case",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-man-with-the-twisted-lip",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-metamorphosis",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-ministers-black-veil",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-most-dangerous-game",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-murders-in-the-rue-morgue",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-necklace",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-open-boat",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-open-window",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-outcasts-of-poker-flat",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-picture-of-dorian-gray",
+      "filename_hits": [
+        "output/generated_covers/the-picture-of-dorian-gray_back.png",
+        "output/generated_covers/the-picture-of-dorian-gray_front.png"
+      ],
+      "metadata_hits": [
+        "output/chapter_title_audit/20260601T055136Z/after_the-picture-of-dorian-gray.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291684/earnalism/covers/front/cover_00fe2fde-d7d3-4757-82a0-047cd94bf805.png",
+        "output/chapter_title_audit/20260601T055136Z/after_the-picture-of-dorian-gray.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291684/earnalism/covers/front/cover_00fe2fde-d7d3-4757-82a0-047cd94bf805.png",
+        "output/chapter_title_audit/20260601T055136Z/after_the-picture-of-dorian-gray.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291688/earnalism/covers/back/back_cover_00fe2fde-d7d3-4757-82a0-047cd94bf805.png",
+        "output/chapter_title_audit/20260601T055136Z/after_the-picture-of-dorian-gray.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291688/earnalism/covers/back/back_cover_00fe2fde-d7d3-4757-82a0-047cd94bf805.png",
+        "output/chapter_title_audit/20260601T055136Z/after_the-picture-of-dorian-gray.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_00fe2fde-d7d3-4757-82a0-047cd94bf805",
+        "output/chapter_title_audit/20260601T055136Z/after_the-picture-of-dorian-gray.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_00fe2fde-d7d3-4757-82a0-047cd94bf805",
+        "output/chapter_title_audit/20260601T055136Z/before_the-picture-of-dorian-gray.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291684/earnalism/covers/front/cover_00fe2fde-d7d3-4757-82a0-047cd94bf805.png",
+        "output/chapter_title_audit/20260601T055136Z/before_the-picture-of-dorian-gray.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291684/earnalism/covers/front/cover_00fe2fde-d7d3-4757-82a0-047cd94bf805.png",
+        "output/chapter_title_audit/20260601T055136Z/before_the-picture-of-dorian-gray.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291688/earnalism/covers/back/back_cover_00fe2fde-d7d3-4757-82a0-047cd94bf805.png",
+        "output/chapter_title_audit/20260601T055136Z/before_the-picture-of-dorian-gray.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291688/earnalism/covers/back/back_cover_00fe2fde-d7d3-4757-82a0-047cd94bf805.png",
+        "output/chapter_title_audit/20260601T055136Z/before_the-picture-of-dorian-gray.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_00fe2fde-d7d3-4757-82a0-047cd94bf805",
+        "output/chapter_title_audit/20260601T055136Z/before_the-picture-of-dorian-gray.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_00fe2fde-d7d3-4757-82a0-047cd94bf805"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "filename_hits": [
+        "output/generated_business_covers/the-principles-of-scientific-management_back.png",
+        "output/generated_business_covers/the-principles-of-scientific-management_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "the-purloined-letter",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-ransom-of-red-chief",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-red-headed-league",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "filename_hits": [
+        "output/generated_business_covers/the-science-of-getting-rich_back.png",
+        "output/generated_business_covers/the-science-of-getting-rich_front.png"
+      ],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "the-secret-garden",
+      "filename_hits": [],
+      "metadata_hits": [
+        "output/chapter_title_audit/20260601T055136Z/after_the-secret-garden.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947920/earnalism/covers/front/cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+        "output/chapter_title_audit/20260601T055136Z/after_the-secret-garden.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947920/earnalism/covers/front/cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+        "output/chapter_title_audit/20260601T055136Z/after_the-secret-garden.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947939/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+        "output/chapter_title_audit/20260601T055136Z/after_the-secret-garden.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947939/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+        "output/chapter_title_audit/20260601T055136Z/after_the-secret-garden.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c",
+        "output/chapter_title_audit/20260601T055136Z/after_the-secret-garden.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c",
+        "output/chapter_title_audit/20260601T055136Z/before_the-secret-garden.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947920/earnalism/covers/front/cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+        "output/chapter_title_audit/20260601T055136Z/before_the-secret-garden.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947920/earnalism/covers/front/cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+        "output/chapter_title_audit/20260601T055136Z/before_the-secret-garden.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947939/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+        "output/chapter_title_audit/20260601T055136Z/before_the-secret-garden.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947939/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+        "output/chapter_title_audit/20260601T055136Z/before_the-secret-garden.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c",
+        "output/chapter_title_audit/20260601T055136Z/before_the-secret-garden.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "the-selfish-giant",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-speckled-band",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-student",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-suicide-club",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-time-machine",
+      "filename_hits": [],
+      "metadata_hits": [
+        "output/time_machine/admin_before.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+        "output/time_machine/admin_before.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+        "output/time_machine/admin_before.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566887/earnalism/covers/back/back_cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+        "output/time_machine/admin_before.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821",
+        "output/time_machine/admin_before.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821",
+        "output/time_machine/time_machine_manifest.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+        "output/time_machine/import_run/20260524T044652Z/metadata/the-time-machine.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "the-withered-arm",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "filename_hits": [
+        "output/generated_covers/the-wonderful-wizard-of-oz_back.png",
+        "output/generated_covers/the-wonderful-wizard-of-oz_front.png"
+      ],
+      "metadata_hits": [
+        "output/chapter_title_audit/20260601T055136Z/before_the-wonderful-wizard-of-oz.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291629/earnalism/covers/front/cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+        "output/chapter_title_audit/20260601T055136Z/before_the-wonderful-wizard-of-oz.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291629/earnalism/covers/front/cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+        "output/chapter_title_audit/20260601T055136Z/before_the-wonderful-wizard-of-oz.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291632/earnalism/covers/back/back_cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+        "output/chapter_title_audit/20260601T055136Z/before_the-wonderful-wizard-of-oz.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291632/earnalism/covers/back/back_cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+        "output/chapter_title_audit/20260601T055136Z/before_the-wonderful-wizard-of-oz.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_f3e2e134-a431-49b3-a751-1762831a0b20",
+        "output/chapter_title_audit/20260601T055136Z/before_the-wonderful-wizard-of-oz.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_f3e2e134-a431-49b3-a751-1762831a0b20",
+        "output/chapter_title_audit/20260601T055136Z/after_the-wonderful-wizard-of-oz.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291629/earnalism/covers/front/cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+        "output/chapter_title_audit/20260601T055136Z/after_the-wonderful-wizard-of-oz.json::cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291629/earnalism/covers/front/cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+        "output/chapter_title_audit/20260601T055136Z/after_the-wonderful-wizard-of-oz.json::back_cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291632/earnalism/covers/back/back_cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+        "output/chapter_title_audit/20260601T055136Z/after_the-wonderful-wizard-of-oz.json::back_cover_image_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780291632/earnalism/covers/back/back_cover_f3e2e134-a431-49b3-a751-1762831a0b20.png",
+        "output/chapter_title_audit/20260601T055136Z/after_the-wonderful-wizard-of-oz.json::back_cover_thumbnail_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_f3e2e134-a431-49b3-a751-1762831a0b20",
+        "output/chapter_title_audit/20260601T055136Z/after_the-wonderful-wizard-of-oz.json::back_cover_blur_placeholder::https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,e_blur:2000,h_30,q_30,w_20/v1/earnalism/covers/back/back_cover_f3e2e134-a431-49b3-a751-1762831a0b20"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "to-build-a-fire",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "tobermory",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "ward-no-6",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "white-fang",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "young-goodman-brown",
+      "filename_hits": [],
+      "metadata_hits": [],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": false
+    },
+    {
+      "slug": "yugalanguriya",
+      "filename_hits": [
+        "output/bengali_source_repair/20260603T084835Z/covers/yugalanguriya_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/yugalanguriya_front.png"
+      ],
+      "metadata_hits": [
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482837/earnalism/covers/front/cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482876/earnalism/covers/back/back_cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482930/earnalism/covers/back/back_cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482943/earnalism/covers/front/cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482967/earnalism/covers/back/back_cover_e02efb80-25e1-4222-8fa8-5bc73fe25880.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483038/earnalism/covers/front/cover_7450115f-db43-49ae-af14-feea82311d1f.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483096/earnalism/covers/back/back_cover_7450115f-db43-49ae-af14-feea82311d1f.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483110/earnalism/covers/front/cover_89e10113-f181-4484-a021-eff76348710d.png",
+        "output/bengali_source_repair/20260603T084835Z/cover_upload_report.json::cover_url::https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483134/earnalism/covers/back/back_cover_89e10113-f181-4484-a021-eff76348710d.png"
+      ],
+      "cloud_hits": [],
+      "local_hits": [],
+      "mapped": true
+    }
+  ],
+  "unmapped": []
+}

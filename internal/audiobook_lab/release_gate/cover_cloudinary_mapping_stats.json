@@ -1,0 +1,11 @@
+{
+  "total_unique_slugs": 9,
+  "total_scanned_json": 4478,
+  "cloudinary_json_files_scanned": 101,
+  "cloud_files_without_inferable_slug": 62,
+  "mapped_any": 1,
+  "mapped_front": 1,
+  "mapped_back": 1,
+  "mapped_both": 1,
+  "missing": 8
+}

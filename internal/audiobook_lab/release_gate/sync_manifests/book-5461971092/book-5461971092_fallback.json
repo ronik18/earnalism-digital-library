@@ -1,0 +1,20 @@
+{
+  "slug": "book-5461971092",
+  "generatedAt": "2026-07-03T16:07:18+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-5461971092/book-5461971092.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-5461971092-chapter-1",
+      "title": "মেঘ ও রৌদ্র",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 3961820,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 3964320
+    }
+  ],
+  "totalDurationMs": 3964320
+}

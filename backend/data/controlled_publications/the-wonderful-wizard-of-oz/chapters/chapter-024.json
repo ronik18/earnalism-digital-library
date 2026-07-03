@@ -1,0 +1,20 @@
+{
+  "id": "chapter-024",
+  "bookSlug": "the-wonderful-wizard-of-oz",
+  "order": 24,
+  "title": "Chapter XXIV. Home Again",
+  "language": "en",
+  "content": "Aunt Em had just come out of the house to water the cabbages when she\n\nlooked up and saw Dorothy running toward her.\n\n“My darling child!” she cried, folding the little girl in her arms and\n\ncovering her face with kisses. “Where in the world did you come from?”\n\n“From the Land of Oz,” said Dorothy gravely. “And here is Toto, too.\n\nAnd oh, Aunt Em! I’m so glad to be at home again!”",
+  "content_hash": "7bc57e0cc9ae0e4ecc9fedd4f922f9a1df0ea7435d9b177a4fe8d8a2e8ae7a78",
+  "sourceSha256": "20b4fa5a47c6e23b6093c2eedbf5d0b2930c6eefe5c8646e009a98bd0131c85e",
+  "sanitizedSha256": "7bc57e0cc9ae0e4ecc9fedd4f922f9a1df0ea7435d9b177a4fe8d8a2e8ae7a78",
+  "word_count": 75,
+  "reading_minutes": 1,
+  "is_preview": true,
+  "has_images": false,
+  "image_count": 0,
+  "processing_status": "ready",
+  "processing_warnings": [],
+  "uploaded_at": "2026-07-03T18:46:49Z",
+  "updated_at": "2026-07-03T18:46:49Z"
+}

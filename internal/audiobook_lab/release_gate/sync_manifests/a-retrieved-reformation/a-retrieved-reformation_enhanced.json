@@ -1,0 +1,19 @@
+{
+  "slug": "a-retrieved-reformation",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "a-retrieved-reformation-chapter-1",
+      "title": "A Retrieved Reformation",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1318799,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 1321299
+    }
+  ],
+  "totalDurationMs": 1321299
+}

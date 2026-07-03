@@ -1,0 +1,19 @@
+{
+  "slug": "book-2b9853ec52",
+  "createdAt": "2026-07-03T08:02:49+0000",
+  "source": "pipeline_gate2",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-2b9853ec52-chapter-1",
+      "title": "দুই বিঘা জমি",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 269915,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 272415
+    }
+  ],
+  "totalDurationMs": 272415
+}

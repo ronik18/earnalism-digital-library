@@ -1,0 +1,19 @@
+{
+  "slug": "book-4b944e64fa",
+  "createdAt": "2026-07-03T08:38:57+0000",
+  "source": "pipeline_gate2",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-4b944e64fa-chapter-1",
+      "title": "একরাত্রি",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 979599,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 982099
+    }
+  ],
+  "totalDurationMs": 982099
+}

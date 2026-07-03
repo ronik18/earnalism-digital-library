@@ -82,8 +82,12 @@ export default function IndiaCraftBadge() {
         <circle className="india-origin-badge__wheel-core" cx="46.2" cy="22.4" r="1.1" />
       </svg>
       <span className="india-origin-badge__text">
+        <small className="india-origin-badge__eyebrow">Literary atelier</small>
         <strong>Made in India</strong>
-        <small>literary craft</small>
+        <span className="india-origin-badge__subline">
+          <span className="india-origin-badge__dot" aria-hidden="true" />
+          <span>Editorial craft</span>
+        </span>
       </span>
     </span>
   );

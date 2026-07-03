@@ -1,0 +1,13 @@
+{
+  "slug": "jekyll-and-hyde",
+  "source_url": "https://www.gutenberg.org/ebooks/43",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
+  "source_hash": "7e19df634b5db327f75392f934268bc232179bd17c44e52fc399b640a0375958",
+  "content_hash": "5389964e015bbbe9b3211c21468d429a52f7215814a4ff9933ac7e1ebab5e241",
+  "provenance_hash": "1a9fc066db1b218c06bd02fe1962b650872ae62c7c82a73c4baf5a663cd3539d",
+  "rights_basis": "public_domain",
+  "downloaded_at": "2026-07-01T10:36:20Z",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

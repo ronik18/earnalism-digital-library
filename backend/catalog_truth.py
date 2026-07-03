@@ -462,8 +462,13 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
         issues.append("public_book.json showInHomepage must remain false for batch 1.")
     if public_book.get("allowCheckout") is not False or public_book.get("allowPayment") is not False:
         issues.append("public_book.json checkout/payment flags must remain false.")
-    if public_book.get("audio_enabled") is not False or public_book.get("audiobook_enabled") is not False:
+    audio_allowed = normalized in AUDIO_ENABLED_SLUGS
+    if not audio_allowed and (public_book.get("audio_enabled") is not False or public_book.get("audiobook_enabled") is not False):
         issues.append("public_book.json audio flags are not disabled.")
+    if audio_allowed:
+        assets = public_book.get("audiobook_assets") if isinstance(public_book.get("audiobook_assets"), dict) else {}
+        if not assets.get("mp3") or not assets.get("timestamps"):
+            issues.append("public_book.json audiobook assets are incomplete for an audio-enabled slug.")
     if public_book.get("approved_to_publish") is not True:
         issues.append("public_book.json approved_to_publish is not true.")
     if normalize_text(public_book.get("verification_status")).lower() not in {"approved", "verified"}:
@@ -537,6 +542,21 @@ def load_controlled_artifact_book(
                 return source.get(key)
         return default
 
+    audio_allowed = normalized in AUDIO_ENABLED_SLUGS
+    artifact_audio_enabled = bool(public_book.get("audio_enabled", False)) if audio_allowed else False
+    artifact_audiobook_enabled = bool(public_book.get("audiobook_enabled", False)) if audio_allowed else False
+    artifact_generate_audiobook = bool(public_book.get("generate_audiobook", False)) if audio_allowed else False
+    artifact_audiobook_assets = (
+        dict(public_book.get("audiobook_assets"))
+        if audio_allowed and isinstance(public_book.get("audiobook_assets"), dict)
+        else {}
+    )
+    artifact_audiobook = (
+        dict(public_book.get("audiobook"))
+        if audio_allowed and isinstance(public_book.get("audiobook"), dict)
+        else {}
+    )
+
     return {
         **public_book,
         "chapters": chapters,
@@ -552,11 +572,15 @@ def load_controlled_artifact_book(
         "rights_tier": evidence_value("rights_tier", "A"),
         "verification_status": evidence_value("verification_status", "approved"),
         "qa_status": evidence_value("qa_status", "QA_PASSED"),
-        "audio_enabled": False,
-        "audiobook_enabled": False,
-        "generate_audiobook": False,
-        "audiobook_assets": {},
-        "audiobook": {},
+        "audio_enabled": artifact_audio_enabled,
+        "audiobook_enabled": artifact_audiobook_enabled,
+        "generate_audiobook": artifact_generate_audiobook,
+        "audiobook_provider": public_book.get("audiobook_provider", "") if audio_allowed else "",
+        "audiobook_voice": public_book.get("audiobook_voice", "") if audio_allowed else "",
+        "audio_asset_slug": public_book.get("audio_asset_slug", normalized) if audio_allowed else normalized,
+        "audiobook_assets_updated_at": public_book.get("audiobook_assets_updated_at", "") if audio_allowed else "",
+        "audiobook_assets": artifact_audiobook_assets,
+        "audiobook": artifact_audiobook,
     }
 
 

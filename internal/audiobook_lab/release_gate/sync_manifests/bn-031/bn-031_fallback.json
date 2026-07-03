@@ -1,0 +1,20 @@
+{
+  "slug": "bn-031",
+  "generatedAt": "2026-07-03T09:06:38+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/bn-031/bn-031.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "bn-031-chapter-1",
+      "title": "মহেশ",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1737523,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 1740023
+    }
+  ],
+  "totalDurationMs": 1740023
+}

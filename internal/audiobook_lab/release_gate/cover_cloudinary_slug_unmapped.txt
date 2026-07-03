@@ -1,0 +1,8 @@
+candidates
+generatedAt
+globalDecision
+repoRoot
+request
+safeNextSteps
+sourceInventory
+whyNotLive

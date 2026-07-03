@@ -1,0 +1,20 @@
+{
+  "slug": "boule-de-suif",
+  "generatedAt": "2026-07-03T17:24:29+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/english_audiobook_polish/english-polish-edge-below9-v1/bundles/en/boule-de-suif/boule-de-suif.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "boule-de-suif-chapter-1",
+      "title": "Boule de Suif",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 6482228,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 6484728
+    }
+  ],
+  "totalDurationMs": 6484728
+}

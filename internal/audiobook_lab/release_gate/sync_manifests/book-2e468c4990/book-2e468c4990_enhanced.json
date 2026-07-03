@@ -1,0 +1,19 @@
+{
+  "slug": "book-2e468c4990",
+  "createdAt": "2026-07-03T08:29:23+0000",
+  "source": "pipeline_gate2",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-2e468c4990-chapter-1",
+      "title": "কাবুলিওয়ালা",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1217671,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 1220171
+    }
+  ],
+  "totalDurationMs": 1220171
+}
