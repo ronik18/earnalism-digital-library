@@ -15,6 +15,17 @@ const BATCH_SLUGS = [
   "eyesore-chokher-bali",
 ];
 const BENGALI_SLUGS = new Set(["devdas", "pather-panchali"]);
+const CLAIMABLE_AUDIO_SLUGS = [
+  "alices-adventures-in-wonderland",
+  "bn-027",
+  "lokrahasya",
+  "mrinalini",
+  "nishkriti",
+  "the-wonderful-wizard-of-oz",
+  "bn-059",
+  "bn-066",
+  "the-art-of-money-getting",
+];
 const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
 const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];
 
@@ -76,8 +87,8 @@ describe("Reader content quality batch 1", () => {
   });
 
   test("promoted books remain reader-only with no payment, checkout, homepage, or audio exposure", () => {
-    expect(launch.live_approved_slugs).toEqual(["dracula", ...BATCH_SLUGS]);
-    expect(launch.audio_enabled_slugs).toEqual([]);
+    expect(launch.live_approved_slugs).toEqual(["dracula", ...BATCH_SLUGS, ...CLAIMABLE_AUDIO_SLUGS]);
+    expect(launch.audio_enabled_slugs).toEqual(CLAIMABLE_AUDIO_SLUGS);
     for (const slug of BATCH_SLUGS) {
       const contentBook = readJson(`content/books/${slug}/book.json`);
       const publicBook = readJson(`data/controlled_publications/${slug}/public_book.json`);

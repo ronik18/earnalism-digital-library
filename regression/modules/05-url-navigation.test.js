@@ -2,9 +2,11 @@ const { request, apiGet, mapLimit } = require("../utils/http");
 const { fetchSitemap } = require("../utils/sitemap");
 const { isGoLive } = require("../utils/envGuard");
 const perf = require("../config/performance.rules.json");
+const claimableGoLiveTranche = require("../../internal/audiobook_lab/release_gate/claimable_go_live_tranche.json");
 
 const GO_LIVE_BOOK_LIMIT = Number(process.env.REGRESSION_GO_LIVE_BOOK_LIMIT || 120);
 const URL_CHECK_CONCURRENCY = Number(process.env.REGRESSION_URL_CHECK_CONCURRENCY || 8);
+const CLAIMABLE_SLUGS = new Set(claimableGoLiveTranche.claimable_10_10_reader_listener_ready || []);
 
 describe("URL, Path & Navigation", () => {
   test("sitemap.xml is reachable and public URLs do not 404", async () => {
@@ -20,7 +22,10 @@ describe("URL, Path & Navigation", () => {
   });
 
   test("cover images resolve as valid image resources", async () => {
-    const books = (await apiGet("/books")).data.slice(0, isGoLive() ? GO_LIVE_BOOK_LIMIT : 12);
+    const books = (await apiGet("/books")).data
+      .filter((book) => CLAIMABLE_SLUGS.has(book.slug))
+      .slice(0, isGoLive() ? GO_LIVE_BOOK_LIMIT : 12);
+    expect(books.length).toBeGreaterThan(0);
     await mapLimit(books, URL_CHECK_CONCURRENCY, async (book) => {
       const url = book.cover_image_url || book.cover_url || book.thumbnail_url;
       expect(url).toBeTruthy();

@@ -208,7 +208,7 @@ describe("UX conversion static signals", () => {
     expect(home).toContain("Get 7-Day Reading Pass");
     expect(home).toContain("Chapter 1 is free. Reading time is used only while you read.");
     expect(home).toContain("Coming Through the Rights-Safe Pipeline");
-    expect(home).toContain("These books are not live products yet. They have Notify Me CTAs only");
+    expect(home).toContain("These titles are visible as editorial promises only, with Notify Me CTAs and no reader, checkout, or audiobook access.");
     expect(home).toContain('data-testid="reading-time-library-path"');
     expect(home).toContain("A revenue path that still feels like a library.");
     expect(home).toContain("No fake urgency, no broad catalog claim, and no ownership promise.");
@@ -1150,11 +1150,10 @@ describe("UX conversion static signals", () => {
 
   test("Bengali Gothic candidate is pipeline-only and not a live reading CTA", () => {
     expect(home).toContain('data-testid="bengali-gothic-pipeline-shelf"');
-    expect(home).toContain("reference-pipeline-card");
-    expect(home).toContain('data-testid={`pipeline-card-${book.slug}`}');
-    expect(home).toContain('data-testid={`pipeline-cover-${book.slug}`}');
+    expect(home).toContain('data-testid="pipeline-books"');
+    expect(home).toContain("<ShelfTwoSlideshow books={shelfTwoBooks} />");
     expect(home).toContain("Coming Through the Rights-Safe Pipeline");
-    expect(home).toContain("These books are not live products yet. They have Notify Me CTAs only");
+    expect(home).toContain("These titles are visible as editorial promises only, with Notify Me CTAs and no reader, checkout, or audiobook access.");
     expect(home).not.toContain("kshudhita-cover-placeholder__title");
     expect(controlledLaunch).toContain('KSHUDHITA_PASHAN_FRONT_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-front.webp"');
     expect(controlledLaunch).toContain('KSHUDHITA_PASHAN_BACK_COVER_IMAGE = "/assets/books/kshudhita-pashan/kshudhita-pashan-back.webp"');
@@ -1181,6 +1180,8 @@ describe("UX conversion static signals", () => {
       'data-testid="bengali-gothic-pipeline-shelf"',
       'data-testid="newsletter-card"'
     );
+    expect(homePipelineBlock).toContain('data-testid="pipeline-books"');
+    expect(homePipelineBlock).toContain("ShelfTwoSlideshow");
     const libraryPipelineBlock = extractBetween(
       library,
       'data-testid="library-bengali-gothic-pipeline"',
