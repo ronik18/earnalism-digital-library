@@ -1,0 +1,19 @@
+{
+  "slug": "bn-027",
+  "createdAt": "2026-07-03T07:00:27+0000",
+  "source": "pipeline_gate2",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "bn-027-chapter-1",
+      "title": "অপরিচিতা",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 2101682,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 2104182
+    }
+  ],
+  "totalDurationMs": 2104182
+}
