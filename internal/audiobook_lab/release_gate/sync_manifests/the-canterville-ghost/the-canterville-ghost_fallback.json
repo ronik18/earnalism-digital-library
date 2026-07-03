@@ -1,0 +1,20 @@
+{
+  "slug": "the-canterville-ghost",
+  "generatedAt": "2026-07-03T04:51:41+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/english_audiobook_polish/english-polish-edge-below9-v1/bundles/en/the-canterville-ghost/the-canterville-ghost.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "chapter-1",
+      "title": "Chapter 1",
+      "paragraphCount": 0,
+      "startMs": 0,
+      "contentMs": 4256588,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 4259088
+    }
+  ],
+  "totalDurationMs": 4259088
+}

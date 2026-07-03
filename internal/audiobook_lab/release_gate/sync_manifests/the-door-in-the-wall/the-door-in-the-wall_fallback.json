@@ -1,0 +1,20 @@
+{
+  "slug": "the-door-in-the-wall",
+  "generatedAt": "2026-07-03T04:54:07+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/english_audiobook_polish/english-polish-edge-below9-v1/bundles/en/the-door-in-the-wall/the-door-in-the-wall.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "chapter-1",
+      "title": "Chapter 1",
+      "paragraphCount": 0,
+      "startMs": 0,
+      "contentMs": 2967692,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 2970192
+    }
+  ],
+  "totalDurationMs": 2970192
+}

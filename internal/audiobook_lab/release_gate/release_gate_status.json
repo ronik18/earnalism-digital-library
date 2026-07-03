@@ -1,0 +1,115 @@
+{
+  "generatedAt": "2026-07-03T06:35:56+0000",
+  "command": "scripts/audiobook_production_pipeline.py --manifest internal/audiobook_lab/generated_candidate_restoration/restoration_manifest_20260702.json --title-limit 2",
+  "summary": {
+    "totalTitlesProcessed": 2,
+    "uniqueTitles": 152,
+    "duplicatesRemoved": 25,
+    "skippedTitles": 0,
+    "gatesClearedForHumanSignOff": 0,
+    "gatesFailed": 2,
+    "blockedTitles": 2,
+    "readyForLive": 0,
+    "fallbackAudioCount": 0,
+    "autoEstimatedSyncCount": 2,
+    "openaiFailures": 2,
+    "manualRequiredCount": 0
+  },
+  "titles": {
+    "bn-027": {
+      "slug": "bn-027",
+      "title": "অপরিচিতা",
+      "language": "ben",
+      "gate_0_quality": "GATE_0_WARN_MISSING_COVER",
+      "gate_1_rights": "GATE_1_PASS",
+      "gate_2_enhancement": "GATE_2_FAIL",
+      "gate_3_sync": "GATE_3_AUTO_ESTIMATED",
+      "gate_4_accessibility": "GATE_4_FAIL",
+      "gate_5_qa_sheet": "",
+      "gate_6_legal": "",
+      "enhanced_audio_path": null,
+      "highlight_sync_path": "data/controlled_publications/bn-027/highlight_sync.json",
+      "chapter_count": 0,
+      "total_paragraphs": 0,
+      "total_duration_ms": 0,
+      "estimated_api_cost_usd": 0.0,
+      "estimated_gpt_cost_usd": 0.0,
+      "estimated_tts_cost_usd": 0.0,
+      "failure_reasons": [
+        "TTS generation failed on chapter 1 paragraph 1: OpenAI API call failed: Error code: 400 - {'error': {'message': \"[{'type': 'string_too_long', 'loc': ('body', 'input'), 'msg': 'String should have at most 4096 characters', 'ctx': {'max_length': 4096}}]\", 'type': 'invalid_request_error', 'param': None, 'code': None}}",
+        "Gate 3 continuing after Gate 2 outcome for fallback sync estimation",
+        "Missing reader_manifest.json in data/controlled_publications",
+        "Enhanced MP3 missing",
+        "Gate 5 blocked: requires Gates 0-4 pass",
+        "Gate 6 blocked: QA sheet not generated"
+      ],
+      "cover_assets_missing": true,
+      "manual_required": false,
+      "book_json_updated": false,
+      "retry_count": 1,
+      "sanitation_warnings": [
+        "Missing optional language metadata in content/books/bn-027/book.json"
+      ]
+    },
+    "bn-031": {
+      "slug": "bn-031",
+      "title": "মহেশ",
+      "language": "ben",
+      "gate_0_quality": "GATE_0_WARN_MISSING_COVER",
+      "gate_1_rights": "GATE_1_PASS",
+      "gate_2_enhancement": "GATE_2_FAIL",
+      "gate_3_sync": "GATE_3_AUTO_ESTIMATED",
+      "gate_4_accessibility": "GATE_4_FAIL",
+      "gate_5_qa_sheet": "",
+      "gate_6_legal": "",
+      "enhanced_audio_path": null,
+      "highlight_sync_path": "data/controlled_publications/bn-031/highlight_sync.json",
+      "chapter_count": 0,
+      "total_paragraphs": 0,
+      "total_duration_ms": 0,
+      "estimated_api_cost_usd": 0.0,
+      "estimated_gpt_cost_usd": 0.0,
+      "estimated_tts_cost_usd": 0.0,
+      "failure_reasons": [
+        "TTS generation failed on chapter 1 paragraph 1: OpenAI API call failed: Error code: 400 - {'error': {'message': \"[{'type': 'string_too_long', 'loc': ('body', 'input'), 'msg': 'String should have at most 4096 characters', 'ctx': {'max_length': 4096}}]\", 'type': 'invalid_request_error', 'param': None, 'code': None}}",
+        "Gate 3 continuing after Gate 2 outcome for fallback sync estimation",
+        "Missing reader_manifest.json in data/controlled_publications",
+        "Enhanced MP3 missing",
+        "Gate 5 blocked: requires Gates 0-4 pass",
+        "Gate 6 blocked: QA sheet not generated"
+      ],
+      "cover_assets_missing": true,
+      "manual_required": false,
+      "book_json_updated": true,
+      "retry_count": 1,
+      "sanitation_warnings": [
+        "Filled missing metadata 'title' in content/books/bn-031/book.json from manifest",
+        "Filled missing metadata 'author' in content/books/bn-031/book.json from manifest",
+        "Missing optional language metadata in content/books/bn-031/book.json"
+      ]
+    }
+  },
+  "blocked_titles": {
+    "bn-027": [
+      "TTS generation failed on chapter 1 paragraph 1: OpenAI API call failed: Error code: 400 - {'error': {'message': \"[{'type': 'string_too_long', 'loc': ('body', 'input'), 'msg': 'String should have at most 4096 characters', 'ctx': {'max_length': 4096}}]\", 'type': 'invalid_request_error', 'param': None, 'code': None}}",
+      "Gate 3 continuing after Gate 2 outcome for fallback sync estimation",
+      "Missing reader_manifest.json in data/controlled_publications",
+      "Enhanced MP3 missing",
+      "Gate 5 blocked: requires Gates 0-4 pass",
+      "Gate 6 blocked: QA sheet not generated"
+    ],
+    "bn-031": [
+      "TTS generation failed on chapter 1 paragraph 1: OpenAI API call failed: Error code: 400 - {'error': {'message': \"[{'type': 'string_too_long', 'loc': ('body', 'input'), 'msg': 'String should have at most 4096 characters', 'ctx': {'max_length': 4096}}]\", 'type': 'invalid_request_error', 'param': None, 'code': None}}",
+      "Gate 3 continuing after Gate 2 outcome for fallback sync estimation",
+      "Missing reader_manifest.json in data/controlled_publications",
+      "Enhanced MP3 missing",
+      "Gate 5 blocked: requires Gates 0-4 pass",
+      "Gate 6 blocked: QA sheet not generated"
+    ]
+  },
+  "approvedForLive": [],
+  "manual_required_queue": [],
+  "estimated_total_api_cost_usd": 0.0,
+  "sourceCandidateCount": 2,
+  "retry_count_total": 2
+}

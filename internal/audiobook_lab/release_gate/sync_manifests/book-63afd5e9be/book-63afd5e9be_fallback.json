@@ -1,0 +1,20 @@
+{
+  "slug": "book-63afd5e9be",
+  "generatedAt": "2026-07-03T04:18:11+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-63afd5e9be/book-63afd5e9be.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "chapter-1",
+      "title": "Chapter 1",
+      "paragraphCount": 0,
+      "startMs": 0,
+      "contentMs": 1024603,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 1027103
+    }
+  ],
+  "totalDurationMs": 1027103
+}

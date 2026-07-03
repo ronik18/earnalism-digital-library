@@ -1,0 +1,20 @@
+{
+  "slug": "jane-eyre",
+  "generatedAt": "2026-07-02T22:13:00+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/english_audiobook_polish/english-polish-edge-queue-v1/bundles/en/jane-eyre/jane-eyre.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "chapter-1",
+      "title": "Chapter 1",
+      "paragraphCount": 0,
+      "startMs": 0,
+      "contentMs": 13467644,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 13470144
+    }
+  ],
+  "totalDurationMs": 13470144
+}
