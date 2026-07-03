@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T06:42:13+0000",
+  "generatedAt": "2026-07-03T06:43:17+0000",
   "command": "scripts/audiobook_production_pipeline.py --manifest internal/audiobook_lab/generated_candidate_restoration/restoration_manifest_20260702.json --title-limit 2",
   "summary": {
     "totalTitlesProcessed": 2,
@@ -10,10 +10,10 @@
     "gatesFailed": 2,
     "blockedTitles": 2,
     "readyForLive": 0,
-    "fallbackAudioCount": 0,
+    "fallbackAudioCount": 2,
     "autoEstimatedSyncCount": 2,
     "openaiFailures": 2,
-    "manualRequiredCount": 0
+    "manualRequiredCount": 2
   },
   "titles": {
     "bn-027": {
@@ -22,31 +22,29 @@
       "language": "ben",
       "gate_0_quality": "GATE_0_WARN_MISSING_COVER",
       "gate_1_rights": "GATE_1_PASS",
-      "gate_2_enhancement": "GATE_2_FAIL",
+      "gate_2_enhancement": "GATE_2_PASS_FALLBACK",
       "gate_3_sync": "GATE_3_AUTO_ESTIMATED",
       "gate_4_accessibility": "GATE_4_FAIL",
       "gate_5_qa_sheet": "",
       "gate_6_legal": "",
-      "enhanced_audio_path": null,
+      "enhanced_audio_path": "internal/audiobook_lab/enhanced_candidates/bn-027/bn-027_enhanced.mp3",
       "highlight_sync_path": "data/controlled_publications/bn-027/highlight_sync.json",
-      "chapter_count": 0,
-      "total_paragraphs": 0,
-      "total_duration_ms": 0,
+      "chapter_count": 1,
+      "total_paragraphs": 1,
+      "total_duration_ms": 2125920,
       "estimated_api_cost_usd": 0.0,
       "estimated_gpt_cost_usd": 0.0,
       "estimated_tts_cost_usd": 0.0,
       "failure_reasons": [
-        "TTS generation failed on chapter 1 paragraph 1: OpenAI API call failed: Error code: 400 - {'error': {'message': \"[{'type': 'string_too_long', 'loc': ('body', 'input'), 'msg': 'String should have at most 4096 characters', 'ctx': {'max_length': 4096}}]\", 'type': 'invalid_request_error', 'param': None, 'code': None}}",
-        "Gate 3 continuing after Gate 2 outcome for fallback sync estimation",
+        "Fallback audio used (non-premium TTS not generated)",
         "Missing reader_manifest.json in data/controlled_publications",
-        "Enhanced MP3 missing",
         "Gate 5 blocked: requires Gates 0-4 pass",
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
-      "retry_count": 1,
+      "retry_count": 0,
       "sanitation_warnings": [
         "Missing optional language metadata in content/books/bn-027/book.json"
       ]
@@ -57,31 +55,29 @@
       "language": "ben",
       "gate_0_quality": "GATE_0_WARN_MISSING_COVER",
       "gate_1_rights": "GATE_1_PASS",
-      "gate_2_enhancement": "GATE_2_FAIL",
+      "gate_2_enhancement": "GATE_2_PASS_FALLBACK",
       "gate_3_sync": "GATE_3_AUTO_ESTIMATED",
       "gate_4_accessibility": "GATE_4_FAIL",
       "gate_5_qa_sheet": "",
       "gate_6_legal": "",
-      "enhanced_audio_path": null,
+      "enhanced_audio_path": "internal/audiobook_lab/enhanced_candidates/bn-031/bn-031_enhanced.mp3",
       "highlight_sync_path": "data/controlled_publications/bn-031/highlight_sync.json",
-      "chapter_count": 0,
-      "total_paragraphs": 0,
-      "total_duration_ms": 0,
+      "chapter_count": 1,
+      "total_paragraphs": 1,
+      "total_duration_ms": 1740023,
       "estimated_api_cost_usd": 0.0,
       "estimated_gpt_cost_usd": 0.0,
       "estimated_tts_cost_usd": 0.0,
       "failure_reasons": [
-        "TTS generation failed on chapter 1 paragraph 1: OpenAI API call failed: Error code: 400 - {'error': {'message': \"[{'type': 'string_too_long', 'loc': ('body', 'input'), 'msg': 'String should have at most 4096 characters', 'ctx': {'max_length': 4096}}]\", 'type': 'invalid_request_error', 'param': None, 'code': None}}",
-        "Gate 3 continuing after Gate 2 outcome for fallback sync estimation",
+        "Fallback audio used (non-premium TTS not generated)",
         "Missing reader_manifest.json in data/controlled_publications",
-        "Enhanced MP3 missing",
         "Gate 5 blocked: requires Gates 0-4 pass",
         "Gate 6 blocked: QA sheet not generated"
       ],
       "cover_assets_missing": true,
-      "manual_required": false,
+      "manual_required": true,
       "book_json_updated": false,
-      "retry_count": 1,
+      "retry_count": 0,
       "sanitation_warnings": [
         "Missing optional language metadata in content/books/bn-031/book.json"
       ]
@@ -89,25 +85,24 @@
   },
   "blocked_titles": {
     "bn-027": [
-      "TTS generation failed on chapter 1 paragraph 1: OpenAI API call failed: Error code: 400 - {'error': {'message': \"[{'type': 'string_too_long', 'loc': ('body', 'input'), 'msg': 'String should have at most 4096 characters', 'ctx': {'max_length': 4096}}]\", 'type': 'invalid_request_error', 'param': None, 'code': None}}",
-      "Gate 3 continuing after Gate 2 outcome for fallback sync estimation",
+      "Fallback audio used (non-premium TTS not generated)",
       "Missing reader_manifest.json in data/controlled_publications",
-      "Enhanced MP3 missing",
       "Gate 5 blocked: requires Gates 0-4 pass",
       "Gate 6 blocked: QA sheet not generated"
     ],
     "bn-031": [
-      "TTS generation failed on chapter 1 paragraph 1: OpenAI API call failed: Error code: 400 - {'error': {'message': \"[{'type': 'string_too_long', 'loc': ('body', 'input'), 'msg': 'String should have at most 4096 characters', 'ctx': {'max_length': 4096}}]\", 'type': 'invalid_request_error', 'param': None, 'code': None}}",
-      "Gate 3 continuing after Gate 2 outcome for fallback sync estimation",
+      "Fallback audio used (non-premium TTS not generated)",
       "Missing reader_manifest.json in data/controlled_publications",
-      "Enhanced MP3 missing",
       "Gate 5 blocked: requires Gates 0-4 pass",
       "Gate 6 blocked: QA sheet not generated"
     ]
   },
   "approvedForLive": [],
-  "manual_required_queue": [],
+  "manual_required_queue": [
+    "bn-027",
+    "bn-031"
+  ],
   "estimated_total_api_cost_usd": 0.0,
   "sourceCandidateCount": 2,
-  "retry_count_total": 2
+  "retry_count_total": 0
 }
