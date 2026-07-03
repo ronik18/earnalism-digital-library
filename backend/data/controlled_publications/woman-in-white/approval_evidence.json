@@ -1,0 +1,11 @@
+{
+  "slug": "woman-in-white",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "reading_only_public_domain_batch_1",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_BLOCKED",
+  "allowCheckout": false,
+  "allowPayment": false
+}

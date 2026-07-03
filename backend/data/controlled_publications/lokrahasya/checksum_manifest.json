@@ -1,0 +1,94 @@
+{
+  "slug": "lokrahasya",
+  "generated_at": "2026-07-03T18:46:48Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "e2cf8dc171eee9c4b2ad49b6953e0f131f30163b942109b9cc54c1e2739abfe1"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "b3225b17584af543682665f615c7e12d9b1c4c40580457fdd14d8434eeb02f29"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "20a25ad5ac8fab0c2c3f1240e603d7cd95175c9127dc368bfeac5beed67a1d52"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "758a6a8cf5775198448a542a5ccbccd112a853bf8143facbcd6967e1f6fcc5f1"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "c8ca2b46eb7ccd2687a56c84cbfa1a3c2b96737d03f42112359e6b6c6e9b2456"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "e99a9ef00248bcb817d80a3a7a0668f0b7cf2a85945990ca12d719e0a0bcf3ca"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "8a40e20a813c22817ce3d068a0d8d9d3d0ce66fb73632df6037ff621e6473a09"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "8d9db4bfac0bd7c70d49285a7e86310e0365de55d510b2666a54e61922c446f5"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "5c54705ab30415790b33b8ec1e98f482b718ec9a63dd6bbd93b3a7be4b36e096"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "e789d1e31604dc30ca809bfcdb33af9d1aba031b73b51f48b5f0b19a7f791d4c"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "0fabd95de77b6ff54e48d6fdcd19e37dcc141c905eceb61a0b105e6fd4bf2b19"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "092aa47eadba66580128fe3c45a31230ac611c78d3233415fc4e55e6582027f3"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "ef0ff8b379cf8adeff8d4b8f108104258649a8b1d620fa0cedf4a7544679d181"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "3fa89d2dcd2f7de9ec351b816d93029e8d799dac78f20958e407b094af0e1c37"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "e2cf83b56b8237a82bc7920a3a65646b6e56c11e9020b0de2789094b43f33f48"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "f8cc5254cbe4275f63c81daffdbf16b4246af9da2c6cea725dd8b9cddfa4752b"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "bd410a540f7feceff4906a8a79421baaef472bb71c0620a101ff42ee4eddfcb4"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "986a6479ddd310191d2147cdd6b87a43e6a3e77a493215f1ca86426f5343f775"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "01030e93bb46bd1c8ed9c5c91e40b4acef2c4d3dfa720eb42392264a98321b7a"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "b0658e910c3203556c5bf011db6c50176ae58f72781a71462dd6309ce2e97b58"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "0c0d6dfb28ba6bf4f89620530ccd4863ddde3e071601ec40e7be555d142baafd"
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "7fa55a5fab0b9b84a18781a58ac3cc8062d0b0fb82d1457c278bd968496f6ee6"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "book-0deb35c750",
+  "createdAt": "2026-07-03T09:44:17+0000",
+  "source": "pipeline_gate2",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-0deb35c750-chapter-1",
+      "title": "খাতা",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 859699,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 862199
+    }
+  ],
+  "totalDurationMs": 862199
+}

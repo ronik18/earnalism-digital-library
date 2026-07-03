@@ -1,0 +1,20 @@
+{
+  "slug": "dracula",
+  "generatedAt": "2026-07-02T21:14:53+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/english_audiobook_polish/english-polish-edge-queue-v1/bundles/en/dracula/dracula.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "chapter-1",
+      "title": "Chapter 1",
+      "paragraphCount": 0,
+      "startMs": 0,
+      "contentMs": 69492286,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 69494786
+    }
+  ],
+  "totalDurationMs": 69494786
+}

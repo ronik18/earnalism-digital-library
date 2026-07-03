@@ -1,0 +1,13 @@
+{
+  "slug": "lokrahasya",
+  "source_url": "https://bn.wikisource.org/wiki/%E0%A6%B2%E0%A7%8B%E0%A6%95%E0%A6%B0%E0%A6%B9%E0%A6%B8%E0%A7%8D%E0%A6%AF_(%E0%A7%A7%E0%A7%AF%E0%A7%A9%E0%A7%AF)",
+  "source_name": "Bengali Wikisource",
+  "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
+  "source_hash": "260381cc03347b40db669d4de39b44e36807010b662b4ca9e02e0c5ae4100711",
+  "content_hash": "c9a08ae531d9158f05f71f07f343f165d3258519fcf180316fb6ef93c2055a77",
+  "provenance_hash": "df3b6e5a4f7028f73bdf0e473af7743f3f7b794ac95f21781780d3e491674b4e",
+  "rights_basis": "Author died 1894. Original publication 1874. Public domain in India and the U.S.; source evidence kept internal/admin-only.",
+  "downloaded_at": "2026-06-03T08:51:47.842258+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

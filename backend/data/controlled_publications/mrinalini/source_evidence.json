@@ -1,0 +1,13 @@
+{
+  "slug": "mrinalini",
+  "source_url": "https://bn.wikisource.org/wiki/%E0%A6%AE%E0%A7%83%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A7%80_(%E0%A7%A7%E0%A7%AE%E0%A7%AD%E0%A7%AA)",
+  "source_name": "Bengali Wikisource",
+  "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
+  "source_hash": "10521fb1355328e87b7cd91ea6dea76b3879861447ce0f0322725f519d8fc75b",
+  "content_hash": "193c208f03b3d962982824d90e4cbf7c45d9046532f1f1fc368b50564a6d1741",
+  "provenance_hash": "b05500820083927f8dba4600248b5e553d88ef9383d5e730e202903c31cf7de0",
+  "rights_basis": "Author died 1894. Original publication 1869. Public domain in India and the U.S.; source evidence kept internal/admin-only.",
+  "downloaded_at": "2026-06-03T08:51:47.896886+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

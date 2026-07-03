@@ -1,0 +1,13 @@
+{
+  "slug": "devdas",
+  "source_url": "https://bn.wikisource.org/wiki/দেবদাস_(শরৎচন্দ্র_চট্টোপাধ্যায়)",
+  "source_name": "Bengali Wikisource",
+  "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
+  "source_hash": "0091b1d4a93df523779db334ccc52e390a673ca7adf88fd716d954f4c0782fcb",
+  "content_hash": "752b8541f36e788ddcd7265a26fd37aba89035d364e8f920414da38a72ec27af",
+  "provenance_hash": "3e5be4dcdfd4d39e84b8e1c9555313032c83706379a0ab40d259691a7747f682",
+  "rights_basis": "public_domain",
+  "downloaded_at": "2026-07-01T10:36:20Z",
+  "source_format": "mediawiki-parse-api-html",
+  "reader_facing_boilerplate_removed": true
+}

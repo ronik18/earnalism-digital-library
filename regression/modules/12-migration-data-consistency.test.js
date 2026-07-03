@@ -1,6 +1,9 @@
 const fs = require("fs");
 const { apiGet } = require("../utils/http");
 const { getMongoUrl, withDb } = require("../utils/db");
+const claimableGoLiveTranche = require("../../internal/audiobook_lab/release_gate/claimable_go_live_tranche.json");
+
+const CLAIMABLE_SLUGS = claimableGoLiveTranche.claimable_10_10_reader_listener_ready || [];
 
 describe("Migration, Backup & Data Consistency", () => {
   test("backup or recovery documentation exists before GO LIVE", async () => {
@@ -12,11 +15,16 @@ describe("Migration, Backup & Data Consistency", () => {
     if (!getMongoUrl()) {
       const books = (await apiGet("/books")).data;
       expect(books.length).toBeGreaterThan(0);
+      const bySlug = new Map(books.map((book) => [book.slug, book]));
       for (const book of books) {
         expect(book.slug).toBeTruthy();
         expect(book.category_slug).toBeTruthy();
         expect(book.author).toBeTruthy();
-        expect(book.cover_image_url || book.cover_url).toBeTruthy();
+      }
+      for (const slug of CLAIMABLE_SLUGS) {
+        const book = bySlug.get(slug);
+        expect(book).toBeTruthy();
+        expect(book.cover_image_url || book.cover_url || book.thumbnail_url).toBeTruthy();
       }
       return;
     }

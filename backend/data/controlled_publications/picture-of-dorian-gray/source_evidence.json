@@ -1,0 +1,13 @@
+{
+  "slug": "picture-of-dorian-gray",
+  "source_url": "https://www.gutenberg.org/ebooks/174",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public-domain repository source; repository boilerplate removed from reader edition.",
+  "source_hash": "9e37dc7035cb6991073be62b6e8de858173cd8608a25ec5a5ca78c6608458932",
+  "content_hash": "c0b7a0fea241b7ad43427acb2b05822214fc20598580f0e3541516bf5587aea7",
+  "provenance_hash": "532afed1d7e68f6b2495b8b0d27c64d38fffda7a337b2ff47bdcec42f6aa8883",
+  "rights_basis": "public_domain",
+  "downloaded_at": "2026-07-01T10:36:20Z",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "the-bishop",
+  "generatedAt": "2026-07-03T17:46:32+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/english_audiobook_polish/english-polish-edge-below9-v1/bundles/en/the-bishop/the-bishop.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "the-bishop-chapter-1",
+      "title": "The Bishop",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 2750540,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 2753040
+    }
+  ],
+  "totalDurationMs": 2753040
+}

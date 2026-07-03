@@ -1,0 +1,7557 @@
+{
+  "slug": "the-student",
+  "generatedAt": "2026-07-03T10:06:14+0000",
+  "source": "pipeline_gate3",
+  "chapters": [
+    {
+      "chapter": 1,
+      "chapter_id": "the-student-chapter-1",
+      "title": "The Student",
+      "start_ms": 0,
+      "duration_ms": 661896,
+      "words": [
+        {
+          "word": "The",
+          "start_ms": 0,
+          "end_ms": 438
+        },
+        {
+          "word": "Student",
+          "start_ms": 438,
+          "end_ms": 877
+        },
+        {
+          "word": "AT",
+          "start_ms": 877,
+          "end_ms": 1316
+        },
+        {
+          "word": "first",
+          "start_ms": 1316,
+          "end_ms": 1755
+        },
+        {
+          "word": "the",
+          "start_ms": 1755,
+          "end_ms": 2194
+        },
+        {
+          "word": "weather",
+          "start_ms": 2194,
+          "end_ms": 2633
+        },
+        {
+          "word": "was",
+          "start_ms": 2633,
+          "end_ms": 3072
+        },
+        {
+          "word": "fine",
+          "start_ms": 3072,
+          "end_ms": 3511
+        },
+        {
+          "word": "and",
+          "start_ms": 3511,
+          "end_ms": 3950
+        },
+        {
+          "word": "still",
+          "start_ms": 3950,
+          "end_ms": 4389
+        },
+        {
+          "word": "The",
+          "start_ms": 4389,
+          "end_ms": 4828
+        },
+        {
+          "word": "thrushes",
+          "start_ms": 4828,
+          "end_ms": 5267
+        },
+        {
+          "word": "were",
+          "start_ms": 5267,
+          "end_ms": 5706
+        },
+        {
+          "word": "calling",
+          "start_ms": 5706,
+          "end_ms": 6144
+        },
+        {
+          "word": "and",
+          "start_ms": 6144,
+          "end_ms": 6583
+        },
+        {
+          "word": "in",
+          "start_ms": 6583,
+          "end_ms": 7022
+        },
+        {
+          "word": "the",
+          "start_ms": 7022,
+          "end_ms": 7461
+        },
+        {
+          "word": "swamps",
+          "start_ms": 7461,
+          "end_ms": 7900
+        },
+        {
+          "word": "close",
+          "start_ms": 7900,
+          "end_ms": 8339
+        },
+        {
+          "word": "by",
+          "start_ms": 8339,
+          "end_ms": 8778
+        },
+        {
+          "word": "something",
+          "start_ms": 8778,
+          "end_ms": 9217
+        },
+        {
+          "word": "alive",
+          "start_ms": 9217,
+          "end_ms": 9656
+        },
+        {
+          "word": "droned",
+          "start_ms": 9656,
+          "end_ms": 10095
+        },
+        {
+          "word": "pitifully",
+          "start_ms": 10095,
+          "end_ms": 10534
+        },
+        {
+          "word": "with",
+          "start_ms": 10534,
+          "end_ms": 10973
+        },
+        {
+          "word": "a",
+          "start_ms": 10973,
+          "end_ms": 11412
+        },
+        {
+          "word": "sound",
+          "start_ms": 11412,
+          "end_ms": 11850
+        },
+        {
+          "word": "like",
+          "start_ms": 11850,
+          "end_ms": 12289
+        },
+        {
+          "word": "blowing",
+          "start_ms": 12289,
+          "end_ms": 12728
+        },
+        {
+          "word": "into",
+          "start_ms": 12728,
+          "end_ms": 13167
+        },
+        {
+          "word": "an",
+          "start_ms": 13167,
+          "end_ms": 13606
+        },
+        {
+          "word": "empty",
+          "start_ms": 13606,
+          "end_ms": 14045
+        },
+        {
+          "word": "bottle",
+          "start_ms": 14045,
+          "end_ms": 14484
+        },
+        {
+          "word": "A",
+          "start_ms": 14484,
+          "end_ms": 14923
+        },
+        {
+          "word": "snipe",
+          "start_ms": 14923,
+          "end_ms": 15362
+        },
+        {
+          "word": "flew",
+          "start_ms": 15362,
+          "end_ms": 15801
+        },
+        {
+          "word": "by",
+          "start_ms": 15801,
+          "end_ms": 16240
+        },
+        {
+          "word": "and",
+          "start_ms": 16240,
+          "end_ms": 16679
+        },
+        {
+          "word": "the",
+          "start_ms": 16679,
+          "end_ms": 17118
+        },
+        {
+          "word": "shot",
+          "start_ms": 17118,
+          "end_ms": 17556
+        },
+        {
+          "word": "aimed",
+          "start_ms": 17556,
+          "end_ms": 17995
+        },
+        {
+          "word": "at",
+          "start_ms": 17995,
+          "end_ms": 18434
+        },
+        {
+          "word": "it",
+          "start_ms": 18434,
+          "end_ms": 18873
+        },
+        {
+          "word": "rang",
+          "start_ms": 18873,
+          "end_ms": 19312
+        },
+        {
+          "word": "out",
+          "start_ms": 19312,
+          "end_ms": 19751
+        },
+        {
+          "word": "with",
+          "start_ms": 19751,
+          "end_ms": 20190
+        },
+        {
+          "word": "a",
+          "start_ms": 20190,
+          "end_ms": 20629
+        },
+        {
+          "word": "gay",
+          "start_ms": 20629,
+          "end_ms": 21068
+        },
+        {
+          "word": "resounding",
+          "start_ms": 21068,
+          "end_ms": 21507
+        },
+        {
+          "word": "note",
+          "start_ms": 21507,
+          "end_ms": 21946
+        },
+        {
+          "word": "in",
+          "start_ms": 21946,
+          "end_ms": 22385
+        },
+        {
+          "word": "the",
+          "start_ms": 22385,
+          "end_ms": 22824
+        },
+        {
+          "word": "spring",
+          "start_ms": 22824,
+          "end_ms": 23262
+        },
+        {
+          "word": "air",
+          "start_ms": 23262,
+          "end_ms": 23701
+        },
+        {
+          "word": "But",
+          "start_ms": 23701,
+          "end_ms": 24140
+        },
+        {
+          "word": "when",
+          "start_ms": 24140,
+          "end_ms": 24579
+        },
+        {
+          "word": "it",
+          "start_ms": 24579,
+          "end_ms": 25018
+        },
+        {
+          "word": "began",
+          "start_ms": 25018,
+          "end_ms": 25457
+        },
+        {
+          "word": "to",
+          "start_ms": 25457,
+          "end_ms": 25896
+        },
+        {
+          "word": "get",
+          "start_ms": 25896,
+          "end_ms": 26335
+        },
+        {
+          "word": "dark",
+          "start_ms": 26335,
+          "end_ms": 26774
+        },
+        {
+          "word": "in",
+          "start_ms": 26774,
+          "end_ms": 27213
+        },
+        {
+          "word": "the",
+          "start_ms": 27213,
+          "end_ms": 27652
+        },
+        {
+          "word": "forest",
+          "start_ms": 27652,
+          "end_ms": 28091
+        },
+        {
+          "word": "a",
+          "start_ms": 28091,
+          "end_ms": 28530
+        },
+        {
+          "word": "cold",
+          "start_ms": 28530,
+          "end_ms": 28968
+        },
+        {
+          "word": "penetrating",
+          "start_ms": 28968,
+          "end_ms": 29407
+        },
+        {
+          "word": "wind",
+          "start_ms": 29407,
+          "end_ms": 29846
+        },
+        {
+          "word": "blew",
+          "start_ms": 29846,
+          "end_ms": 30285
+        },
+        {
+          "word": "inappropriately",
+          "start_ms": 30285,
+          "end_ms": 30724
+        },
+        {
+          "word": "from",
+          "start_ms": 30724,
+          "end_ms": 31163
+        },
+        {
+          "word": "the",
+          "start_ms": 31163,
+          "end_ms": 31602
+        },
+        {
+          "word": "east",
+          "start_ms": 31602,
+          "end_ms": 32041
+        },
+        {
+          "word": "and",
+          "start_ms": 32041,
+          "end_ms": 32480
+        },
+        {
+          "word": "everything",
+          "start_ms": 32480,
+          "end_ms": 32919
+        },
+        {
+          "word": "sank",
+          "start_ms": 32919,
+          "end_ms": 33358
+        },
+        {
+          "word": "into",
+          "start_ms": 33358,
+          "end_ms": 33797
+        },
+        {
+          "word": "silence",
+          "start_ms": 33797,
+          "end_ms": 34236
+        },
+        {
+          "word": "Needles",
+          "start_ms": 34236,
+          "end_ms": 34674
+        },
+        {
+          "word": "of",
+          "start_ms": 34674,
+          "end_ms": 35113
+        },
+        {
+          "word": "ice",
+          "start_ms": 35113,
+          "end_ms": 35552
+        },
+        {
+          "word": "stretched",
+          "start_ms": 35552,
+          "end_ms": 35991
+        },
+        {
+          "word": "across",
+          "start_ms": 35991,
+          "end_ms": 36430
+        },
+        {
+          "word": "the",
+          "start_ms": 36430,
+          "end_ms": 36869
+        },
+        {
+          "word": "pools",
+          "start_ms": 36869,
+          "end_ms": 37308
+        },
+        {
+          "word": "and",
+          "start_ms": 37308,
+          "end_ms": 37747
+        },
+        {
+          "word": "it",
+          "start_ms": 37747,
+          "end_ms": 38186
+        },
+        {
+          "word": "felt",
+          "start_ms": 38186,
+          "end_ms": 38625
+        },
+        {
+          "word": "cheerless",
+          "start_ms": 38625,
+          "end_ms": 39064
+        },
+        {
+          "word": "remote",
+          "start_ms": 39064,
+          "end_ms": 39503
+        },
+        {
+          "word": "and",
+          "start_ms": 39503,
+          "end_ms": 39942
+        },
+        {
+          "word": "lonely",
+          "start_ms": 39942,
+          "end_ms": 40380
+        },
+        {
+          "word": "in",
+          "start_ms": 40380,
+          "end_ms": 40819
+        },
+        {
+          "word": "the",
+          "start_ms": 40819,
+          "end_ms": 41258
+        },
+        {
+          "word": "forest",
+          "start_ms": 41258,
+          "end_ms": 41697
+        },
+        {
+          "word": "There",
+          "start_ms": 41697,
+          "end_ms": 42136
+        },
+        {
+          "word": "was",
+          "start_ms": 42136,
+          "end_ms": 42575
+        },
+        {
+          "word": "a",
+          "start_ms": 42575,
+          "end_ms": 43014
+        },
+        {
+          "word": "whiff",
+          "start_ms": 43014,
+          "end_ms": 43453
+        },
+        {
+          "word": "of",
+          "start_ms": 43453,
+          "end_ms": 43892
+        },
+        {
+          "word": "winter",
+          "start_ms": 43892,
+          "end_ms": 44331
+        },
+        {
+          "word": "Ivan",
+          "start_ms": 44331,
+          "end_ms": 44770
+        },
+        {
+          "word": "Velikopolsky",
+          "start_ms": 44770,
+          "end_ms": 45209
+        },
+        {
+          "word": "the",
+          "start_ms": 45209,
+          "end_ms": 45648
+        },
+        {
+          "word": "son",
+          "start_ms": 45648,
+          "end_ms": 46086
+        },
+        {
+          "word": "of",
+          "start_ms": 46086,
+          "end_ms": 46525
+        },
+        {
+          "word": "a",
+          "start_ms": 46525,
+          "end_ms": 46964
+        },
+        {
+          "word": "sacristan",
+          "start_ms": 46964,
+          "end_ms": 47403
+        },
+        {
+          "word": "and",
+          "start_ms": 47403,
+          "end_ms": 47842
+        },
+        {
+          "word": "a",
+          "start_ms": 47842,
+          "end_ms": 48281
+        },
+        {
+          "word": "student",
+          "start_ms": 48281,
+          "end_ms": 48720
+        },
+        {
+          "word": "of",
+          "start_ms": 48720,
+          "end_ms": 49159
+        },
+        {
+          "word": "the",
+          "start_ms": 49159,
+          "end_ms": 49598
+        },
+        {
+          "word": "clerical",
+          "start_ms": 49598,
+          "end_ms": 50037
+        },
+        {
+          "word": "academy",
+          "start_ms": 50037,
+          "end_ms": 50476
+        },
+        {
+          "word": "returning",
+          "start_ms": 50476,
+          "end_ms": 50915
+        },
+        {
+          "word": "home",
+          "start_ms": 50915,
+          "end_ms": 51354
+        },
+        {
+          "word": "from",
+          "start_ms": 51354,
+          "end_ms": 51792
+        },
+        {
+          "word": "shooting",
+          "start_ms": 51792,
+          "end_ms": 52231
+        },
+        {
+          "word": "walked",
+          "start_ms": 52231,
+          "end_ms": 52670
+        },
+        {
+          "word": "all",
+          "start_ms": 52670,
+          "end_ms": 53109
+        },
+        {
+          "word": "the",
+          "start_ms": 53109,
+          "end_ms": 53548
+        },
+        {
+          "word": "time",
+          "start_ms": 53548,
+          "end_ms": 53987
+        },
+        {
+          "word": "by",
+          "start_ms": 53987,
+          "end_ms": 54426
+        },
+        {
+          "word": "the",
+          "start_ms": 54426,
+          "end_ms": 54865
+        },
+        {
+          "word": "path",
+          "start_ms": 54865,
+          "end_ms": 55304
+        },
+        {
+          "word": "in",
+          "start_ms": 55304,
+          "end_ms": 55743
+        },
+        {
+          "word": "the",
+          "start_ms": 55743,
+          "end_ms": 56182
+        },
+        {
+          "word": "water",
+          "start_ms": 56182,
+          "end_ms": 56621
+        },
+        {
+          "word": "side",
+          "start_ms": 56621,
+          "end_ms": 57060
+        },
+        {
+          "word": "meadow",
+          "start_ms": 57060,
+          "end_ms": 57498
+        },
+        {
+          "word": "His",
+          "start_ms": 57498,
+          "end_ms": 57937
+        },
+        {
+          "word": "fingers",
+          "start_ms": 57937,
+          "end_ms": 58376
+        },
+        {
+          "word": "were",
+          "start_ms": 58376,
+          "end_ms": 58815
+        },
+        {
+          "word": "numb",
+          "start_ms": 58815,
+          "end_ms": 59254
+        },
+        {
+          "word": "and",
+          "start_ms": 59254,
+          "end_ms": 59693
+        },
+        {
+          "word": "his",
+          "start_ms": 59693,
+          "end_ms": 60132
+        },
+        {
+          "word": "face",
+          "start_ms": 60132,
+          "end_ms": 60571
+        },
+        {
+          "word": "was",
+          "start_ms": 60571,
+          "end_ms": 61010
+        },
+        {
+          "word": "burning",
+          "start_ms": 61010,
+          "end_ms": 61449
+        },
+        {
+          "word": "with",
+          "start_ms": 61449,
+          "end_ms": 61888
+        },
+        {
+          "word": "the",
+          "start_ms": 61888,
+          "end_ms": 62327
+        },
+        {
+          "word": "wind",
+          "start_ms": 62327,
+          "end_ms": 62766
+        },
+        {
+          "word": "It",
+          "start_ms": 62766,
+          "end_ms": 63204
+        },
+        {
+          "word": "seemed",
+          "start_ms": 63204,
+          "end_ms": 63643
+        },
+        {
+          "word": "to",
+          "start_ms": 63643,
+          "end_ms": 64082
+        },
+        {
+          "word": "him",
+          "start_ms": 64082,
+          "end_ms": 64521
+        },
+        {
+          "word": "that",
+          "start_ms": 64521,
+          "end_ms": 64960
+        },
+        {
+          "word": "the",
+          "start_ms": 64960,
+          "end_ms": 65399
+        },
+        {
+          "word": "cold",
+          "start_ms": 65399,
+          "end_ms": 65838
+        },
+        {
+          "word": "that",
+          "start_ms": 65838,
+          "end_ms": 66277
+        },
+        {
+          "word": "had",
+          "start_ms": 66277,
+          "end_ms": 66716
+        },
+        {
+          "word": "suddenly",
+          "start_ms": 66716,
+          "end_ms": 67155
+        },
+        {
+          "word": "come",
+          "start_ms": 67155,
+          "end_ms": 67594
+        },
+        {
+          "word": "on",
+          "start_ms": 67594,
+          "end_ms": 68033
+        },
+        {
+          "word": "had",
+          "start_ms": 68033,
+          "end_ms": 68472
+        },
+        {
+          "word": "destroyed",
+          "start_ms": 68472,
+          "end_ms": 68910
+        },
+        {
+          "word": "the",
+          "start_ms": 68910,
+          "end_ms": 69349
+        },
+        {
+          "word": "order",
+          "start_ms": 69349,
+          "end_ms": 69788
+        },
+        {
+          "word": "and",
+          "start_ms": 69788,
+          "end_ms": 70227
+        },
+        {
+          "word": "harmony",
+          "start_ms": 70227,
+          "end_ms": 70666
+        },
+        {
+          "word": "of",
+          "start_ms": 70666,
+          "end_ms": 71105
+        },
+        {
+          "word": "things",
+          "start_ms": 71105,
+          "end_ms": 71544
+        },
+        {
+          "word": "that",
+          "start_ms": 71544,
+          "end_ms": 71983
+        },
+        {
+          "word": "nature",
+          "start_ms": 71983,
+          "end_ms": 72422
+        },
+        {
+          "word": "itself",
+          "start_ms": 72422,
+          "end_ms": 72861
+        },
+        {
+          "word": "felt",
+          "start_ms": 72861,
+          "end_ms": 73300
+        },
+        {
+          "word": "ill",
+          "start_ms": 73300,
+          "end_ms": 73739
+        },
+        {
+          "word": "at",
+          "start_ms": 73739,
+          "end_ms": 74178
+        },
+        {
+          "word": "ease",
+          "start_ms": 74178,
+          "end_ms": 74616
+        },
+        {
+          "word": "and",
+          "start_ms": 74616,
+          "end_ms": 75055
+        },
+        {
+          "word": "that",
+          "start_ms": 75055,
+          "end_ms": 75494
+        },
+        {
+          "word": "was",
+          "start_ms": 75494,
+          "end_ms": 75933
+        },
+        {
+          "word": "why",
+          "start_ms": 75933,
+          "end_ms": 76372
+        },
+        {
+          "word": "the",
+          "start_ms": 76372,
+          "end_ms": 76811
+        },
+        {
+          "word": "evening",
+          "start_ms": 76811,
+          "end_ms": 77250
+        },
+        {
+          "word": "darkness",
+          "start_ms": 77250,
+          "end_ms": 77689
+        },
+        {
+          "word": "was",
+          "start_ms": 77689,
+          "end_ms": 78128
+        },
+        {
+          "word": "falling",
+          "start_ms": 78128,
+          "end_ms": 78567
+        },
+        {
+          "word": "more",
+          "start_ms": 78567,
+          "end_ms": 79006
+        },
+        {
+          "word": "rapidly",
+          "start_ms": 79006,
+          "end_ms": 79445
+        },
+        {
+          "word": "than",
+          "start_ms": 79445,
+          "end_ms": 79884
+        },
+        {
+          "word": "usual",
+          "start_ms": 79884,
+          "end_ms": 80322
+        },
+        {
+          "word": "All",
+          "start_ms": 80322,
+          "end_ms": 80761
+        },
+        {
+          "word": "around",
+          "start_ms": 80761,
+          "end_ms": 81200
+        },
+        {
+          "word": "it",
+          "start_ms": 81200,
+          "end_ms": 81639
+        },
+        {
+          "word": "was",
+          "start_ms": 81639,
+          "end_ms": 82078
+        },
+        {
+          "word": "deserted",
+          "start_ms": 82078,
+          "end_ms": 82517
+        },
+        {
+          "word": "and",
+          "start_ms": 82517,
+          "end_ms": 82956
+        },
+        {
+          "word": "peculiarly",
+          "start_ms": 82956,
+          "end_ms": 83395
+        },
+        {
+          "word": "gloomy",
+          "start_ms": 83395,
+          "end_ms": 83834
+        },
+        {
+          "word": "The",
+          "start_ms": 83834,
+          "end_ms": 84273
+        },
+        {
+          "word": "only",
+          "start_ms": 84273,
+          "end_ms": 84712
+        },
+        {
+          "word": "light",
+          "start_ms": 84712,
+          "end_ms": 85151
+        },
+        {
+          "word": "was",
+          "start_ms": 85151,
+          "end_ms": 85590
+        },
+        {
+          "word": "one",
+          "start_ms": 85590,
+          "end_ms": 86028
+        },
+        {
+          "word": "gleaming",
+          "start_ms": 86028,
+          "end_ms": 86467
+        },
+        {
+          "word": "in",
+          "start_ms": 86467,
+          "end_ms": 86906
+        },
+        {
+          "word": "the",
+          "start_ms": 86906,
+          "end_ms": 87345
+        },
+        {
+          "word": "widows",
+          "start_ms": 87345,
+          "end_ms": 87784
+        },
+        {
+          "word": "gardens",
+          "start_ms": 87784,
+          "end_ms": 88223
+        },
+        {
+          "word": "near",
+          "start_ms": 88223,
+          "end_ms": 88662
+        },
+        {
+          "word": "the",
+          "start_ms": 88662,
+          "end_ms": 89101
+        },
+        {
+          "word": "river",
+          "start_ms": 89101,
+          "end_ms": 89540
+        },
+        {
+          "word": "the",
+          "start_ms": 89540,
+          "end_ms": 89979
+        },
+        {
+          "word": "village",
+          "start_ms": 89979,
+          "end_ms": 90418
+        },
+        {
+          "word": "over",
+          "start_ms": 90418,
+          "end_ms": 90857
+        },
+        {
+          "word": "three",
+          "start_ms": 90857,
+          "end_ms": 91296
+        },
+        {
+          "word": "miles",
+          "start_ms": 91296,
+          "end_ms": 91734
+        },
+        {
+          "word": "away",
+          "start_ms": 91734,
+          "end_ms": 92173
+        },
+        {
+          "word": "and",
+          "start_ms": 92173,
+          "end_ms": 92612
+        },
+        {
+          "word": "everything",
+          "start_ms": 92612,
+          "end_ms": 93051
+        },
+        {
+          "word": "in",
+          "start_ms": 93051,
+          "end_ms": 93490
+        },
+        {
+          "word": "the",
+          "start_ms": 93490,
+          "end_ms": 93929
+        },
+        {
+          "word": "distance",
+          "start_ms": 93929,
+          "end_ms": 94368
+        },
+        {
+          "word": "all",
+          "start_ms": 94368,
+          "end_ms": 94807
+        },
+        {
+          "word": "round",
+          "start_ms": 94807,
+          "end_ms": 95246
+        },
+        {
+          "word": "was",
+          "start_ms": 95246,
+          "end_ms": 95685
+        },
+        {
+          "word": "plunged",
+          "start_ms": 95685,
+          "end_ms": 96124
+        },
+        {
+          "word": "in",
+          "start_ms": 96124,
+          "end_ms": 96563
+        },
+        {
+          "word": "the",
+          "start_ms": 96563,
+          "end_ms": 97001
+        },
+        {
+          "word": "cold",
+          "start_ms": 97001,
+          "end_ms": 97440
+        },
+        {
+          "word": "evening",
+          "start_ms": 97440,
+          "end_ms": 97879
+        },
+        {
+          "word": "mist",
+          "start_ms": 97879,
+          "end_ms": 98318
+        },
+        {
+          "word": "The",
+          "start_ms": 98318,
+          "end_ms": 98757
+        },
+        {
+          "word": "student",
+          "start_ms": 98757,
+          "end_ms": 99196
+        },
+        {
+          "word": "remembered",
+          "start_ms": 99196,
+          "end_ms": 99635
+        },
+        {
+          "word": "that",
+          "start_ms": 99635,
+          "end_ms": 100074
+        },
+        {
+          "word": "as",
+          "start_ms": 100074,
+          "end_ms": 100513
+        },
+        {
+          "word": "he",
+          "start_ms": 100513,
+          "end_ms": 100952
+        },
+        {
+          "word": "went",
+          "start_ms": 100952,
+          "end_ms": 101391
+        },
+        {
+          "word": "out",
+          "start_ms": 101391,
+          "end_ms": 101830
+        },
+        {
+          "word": "from",
+          "start_ms": 101830,
+          "end_ms": 102269
+        },
+        {
+          "word": "the",
+          "start_ms": 102269,
+          "end_ms": 102708
+        },
+        {
+          "word": "house",
+          "start_ms": 102708,
+          "end_ms": 103146
+        },
+        {
+          "word": "his",
+          "start_ms": 103146,
+          "end_ms": 103585
+        },
+        {
+          "word": "mother",
+          "start_ms": 103585,
+          "end_ms": 104024
+        },
+        {
+          "word": "was",
+          "start_ms": 104024,
+          "end_ms": 104463
+        },
+        {
+          "word": "sitting",
+          "start_ms": 104463,
+          "end_ms": 104902
+        },
+        {
+          "word": "barefoot",
+          "start_ms": 104902,
+          "end_ms": 105341
+        },
+        {
+          "word": "on",
+          "start_ms": 105341,
+          "end_ms": 105780
+        },
+        {
+          "word": "the",
+          "start_ms": 105780,
+          "end_ms": 106219
+        },
+        {
+          "word": "floor",
+          "start_ms": 106219,
+          "end_ms": 106658
+        },
+        {
+          "word": "in",
+          "start_ms": 106658,
+          "end_ms": 107097
+        },
+        {
+          "word": "the",
+          "start_ms": 107097,
+          "end_ms": 107536
+        },
+        {
+          "word": "entry",
+          "start_ms": 107536,
+          "end_ms": 107975
+        },
+        {
+          "word": "cleaning",
+          "start_ms": 107975,
+          "end_ms": 108414
+        },
+        {
+          "word": "the",
+          "start_ms": 108414,
+          "end_ms": 108852
+        },
+        {
+          "word": "samovar",
+          "start_ms": 108852,
+          "end_ms": 109291
+        },
+        {
+          "word": "while",
+          "start_ms": 109291,
+          "end_ms": 109730
+        },
+        {
+          "word": "his",
+          "start_ms": 109730,
+          "end_ms": 110169
+        },
+        {
+          "word": "father",
+          "start_ms": 110169,
+          "end_ms": 110608
+        },
+        {
+          "word": "lay",
+          "start_ms": 110608,
+          "end_ms": 111047
+        },
+        {
+          "word": "on",
+          "start_ms": 111047,
+          "end_ms": 111486
+        },
+        {
+          "word": "the",
+          "start_ms": 111486,
+          "end_ms": 111925
+        },
+        {
+          "word": "stove",
+          "start_ms": 111925,
+          "end_ms": 112364
+        },
+        {
+          "word": "coughing",
+          "start_ms": 112364,
+          "end_ms": 112803
+        },
+        {
+          "word": "as",
+          "start_ms": 112803,
+          "end_ms": 113242
+        },
+        {
+          "word": "it",
+          "start_ms": 113242,
+          "end_ms": 113681
+        },
+        {
+          "word": "was",
+          "start_ms": 113681,
+          "end_ms": 114120
+        },
+        {
+          "word": "Good",
+          "start_ms": 114120,
+          "end_ms": 114558
+        },
+        {
+          "word": "Friday",
+          "start_ms": 114558,
+          "end_ms": 114997
+        },
+        {
+          "word": "nothing",
+          "start_ms": 114997,
+          "end_ms": 115436
+        },
+        {
+          "word": "had",
+          "start_ms": 115436,
+          "end_ms": 115875
+        },
+        {
+          "word": "been",
+          "start_ms": 115875,
+          "end_ms": 116314
+        },
+        {
+          "word": "cooked",
+          "start_ms": 116314,
+          "end_ms": 116753
+        },
+        {
+          "word": "and",
+          "start_ms": 116753,
+          "end_ms": 117192
+        },
+        {
+          "word": "the",
+          "start_ms": 117192,
+          "end_ms": 117631
+        },
+        {
+          "word": "student",
+          "start_ms": 117631,
+          "end_ms": 118070
+        },
+        {
+          "word": "was",
+          "start_ms": 118070,
+          "end_ms": 118509
+        },
+        {
+          "word": "terribly",
+          "start_ms": 118509,
+          "end_ms": 118948
+        },
+        {
+          "word": "hungry",
+          "start_ms": 118948,
+          "end_ms": 119387
+        },
+        {
+          "word": "And",
+          "start_ms": 119387,
+          "end_ms": 119826
+        },
+        {
+          "word": "now",
+          "start_ms": 119826,
+          "end_ms": 120264
+        },
+        {
+          "word": "shrinking",
+          "start_ms": 120264,
+          "end_ms": 120703
+        },
+        {
+          "word": "from",
+          "start_ms": 120703,
+          "end_ms": 121142
+        },
+        {
+          "word": "the",
+          "start_ms": 121142,
+          "end_ms": 121581
+        },
+        {
+          "word": "cold",
+          "start_ms": 121581,
+          "end_ms": 122020
+        },
+        {
+          "word": "he",
+          "start_ms": 122020,
+          "end_ms": 122459
+        },
+        {
+          "word": "thought",
+          "start_ms": 122459,
+          "end_ms": 122898
+        },
+        {
+          "word": "that",
+          "start_ms": 122898,
+          "end_ms": 123337
+        },
+        {
+          "word": "just",
+          "start_ms": 123337,
+          "end_ms": 123776
+        },
+        {
+          "word": "such",
+          "start_ms": 123776,
+          "end_ms": 124215
+        },
+        {
+          "word": "a",
+          "start_ms": 124215,
+          "end_ms": 124654
+        },
+        {
+          "word": "wind",
+          "start_ms": 124654,
+          "end_ms": 125093
+        },
+        {
+          "word": "had",
+          "start_ms": 125093,
+          "end_ms": 125532
+        },
+        {
+          "word": "blown",
+          "start_ms": 125532,
+          "end_ms": 125970
+        },
+        {
+          "word": "in",
+          "start_ms": 125970,
+          "end_ms": 126409
+        },
+        {
+          "word": "the",
+          "start_ms": 126409,
+          "end_ms": 126848
+        },
+        {
+          "word": "days",
+          "start_ms": 126848,
+          "end_ms": 127287
+        },
+        {
+          "word": "of",
+          "start_ms": 127287,
+          "end_ms": 127726
+        },
+        {
+          "word": "Rurik",
+          "start_ms": 127726,
+          "end_ms": 128165
+        },
+        {
+          "word": "and",
+          "start_ms": 128165,
+          "end_ms": 128604
+        },
+        {
+          "word": "in",
+          "start_ms": 128604,
+          "end_ms": 129043
+        },
+        {
+          "word": "the",
+          "start_ms": 129043,
+          "end_ms": 129482
+        },
+        {
+          "word": "time",
+          "start_ms": 129482,
+          "end_ms": 129921
+        },
+        {
+          "word": "of",
+          "start_ms": 129921,
+          "end_ms": 130360
+        },
+        {
+          "word": "Ivan",
+          "start_ms": 130360,
+          "end_ms": 130799
+        },
+        {
+          "word": "the",
+          "start_ms": 130799,
+          "end_ms": 131238
+        },
+        {
+          "word": "Terrible",
+          "start_ms": 131238,
+          "end_ms": 131676
+        },
+        {
+          "word": "and",
+          "start_ms": 131676,
+          "end_ms": 132115
+        },
+        {
+          "word": "Peter",
+          "start_ms": 132115,
+          "end_ms": 132554
+        },
+        {
+          "word": "and",
+          "start_ms": 132554,
+          "end_ms": 132993
+        },
+        {
+          "word": "in",
+          "start_ms": 132993,
+          "end_ms": 133432
+        },
+        {
+          "word": "their",
+          "start_ms": 133432,
+          "end_ms": 133871
+        },
+        {
+          "word": "time",
+          "start_ms": 133871,
+          "end_ms": 134310
+        },
+        {
+          "word": "there",
+          "start_ms": 134310,
+          "end_ms": 134749
+        },
+        {
+          "word": "had",
+          "start_ms": 134749,
+          "end_ms": 135188
+        },
+        {
+          "word": "been",
+          "start_ms": 135188,
+          "end_ms": 135627
+        },
+        {
+          "word": "just",
+          "start_ms": 135627,
+          "end_ms": 136066
+        },
+        {
+          "word": "the",
+          "start_ms": 136066,
+          "end_ms": 136505
+        },
+        {
+          "word": "same",
+          "start_ms": 136505,
+          "end_ms": 136944
+        },
+        {
+          "word": "desperate",
+          "start_ms": 136944,
+          "end_ms": 137382
+        },
+        {
+          "word": "poverty",
+          "start_ms": 137382,
+          "end_ms": 137821
+        },
+        {
+          "word": "and",
+          "start_ms": 137821,
+          "end_ms": 138260
+        },
+        {
+          "word": "hunger",
+          "start_ms": 138260,
+          "end_ms": 138699
+        },
+        {
+          "word": "the",
+          "start_ms": 138699,
+          "end_ms": 139138
+        },
+        {
+          "word": "same",
+          "start_ms": 139138,
+          "end_ms": 139577
+        },
+        {
+          "word": "thatched",
+          "start_ms": 139577,
+          "end_ms": 140016
+        },
+        {
+          "word": "roofs",
+          "start_ms": 140016,
+          "end_ms": 140455
+        },
+        {
+          "word": "with",
+          "start_ms": 140455,
+          "end_ms": 140894
+        },
+        {
+          "word": "holes",
+          "start_ms": 140894,
+          "end_ms": 141333
+        },
+        {
+          "word": "in",
+          "start_ms": 141333,
+          "end_ms": 141772
+        },
+        {
+          "word": "them",
+          "start_ms": 141772,
+          "end_ms": 142211
+        },
+        {
+          "word": "ignorance",
+          "start_ms": 142211,
+          "end_ms": 142650
+        },
+        {
+          "word": "misery",
+          "start_ms": 142650,
+          "end_ms": 143088
+        },
+        {
+          "word": "the",
+          "start_ms": 143088,
+          "end_ms": 143527
+        },
+        {
+          "word": "same",
+          "start_ms": 143527,
+          "end_ms": 143966
+        },
+        {
+          "word": "desolation",
+          "start_ms": 143966,
+          "end_ms": 144405
+        },
+        {
+          "word": "around",
+          "start_ms": 144405,
+          "end_ms": 144844
+        },
+        {
+          "word": "the",
+          "start_ms": 144844,
+          "end_ms": 145283
+        },
+        {
+          "word": "same",
+          "start_ms": 145283,
+          "end_ms": 145722
+        },
+        {
+          "word": "darkness",
+          "start_ms": 145722,
+          "end_ms": 146161
+        },
+        {
+          "word": "the",
+          "start_ms": 146161,
+          "end_ms": 146600
+        },
+        {
+          "word": "same",
+          "start_ms": 146600,
+          "end_ms": 147039
+        },
+        {
+          "word": "feeling",
+          "start_ms": 147039,
+          "end_ms": 147478
+        },
+        {
+          "word": "of",
+          "start_ms": 147478,
+          "end_ms": 147917
+        },
+        {
+          "word": "oppression",
+          "start_ms": 147917,
+          "end_ms": 148356
+        },
+        {
+          "word": "all",
+          "start_ms": 148356,
+          "end_ms": 148794
+        },
+        {
+          "word": "these",
+          "start_ms": 148794,
+          "end_ms": 149233
+        },
+        {
+          "word": "had",
+          "start_ms": 149233,
+          "end_ms": 149672
+        },
+        {
+          "word": "existed",
+          "start_ms": 149672,
+          "end_ms": 150111
+        },
+        {
+          "word": "did",
+          "start_ms": 150111,
+          "end_ms": 150550
+        },
+        {
+          "word": "exist",
+          "start_ms": 150550,
+          "end_ms": 150989
+        },
+        {
+          "word": "and",
+          "start_ms": 150989,
+          "end_ms": 151428
+        },
+        {
+          "word": "would",
+          "start_ms": 151428,
+          "end_ms": 151867
+        },
+        {
+          "word": "exist",
+          "start_ms": 151867,
+          "end_ms": 152306
+        },
+        {
+          "word": "and",
+          "start_ms": 152306,
+          "end_ms": 152745
+        },
+        {
+          "word": "the",
+          "start_ms": 152745,
+          "end_ms": 153184
+        },
+        {
+          "word": "lapse",
+          "start_ms": 153184,
+          "end_ms": 153623
+        },
+        {
+          "word": "of",
+          "start_ms": 153623,
+          "end_ms": 154062
+        },
+        {
+          "word": "a",
+          "start_ms": 154062,
+          "end_ms": 154500
+        },
+        {
+          "word": "thousand",
+          "start_ms": 154500,
+          "end_ms": 154939
+        },
+        {
+          "word": "years",
+          "start_ms": 154939,
+          "end_ms": 155378
+        },
+        {
+          "word": "would",
+          "start_ms": 155378,
+          "end_ms": 155817
+        },
+        {
+          "word": "make",
+          "start_ms": 155817,
+          "end_ms": 156256
+        },
+        {
+          "word": "life",
+          "start_ms": 156256,
+          "end_ms": 156695
+        },
+        {
+          "word": "no",
+          "start_ms": 156695,
+          "end_ms": 157134
+        },
+        {
+          "word": "better",
+          "start_ms": 157134,
+          "end_ms": 157573
+        },
+        {
+          "word": "And",
+          "start_ms": 157573,
+          "end_ms": 158012
+        },
+        {
+          "word": "he",
+          "start_ms": 158012,
+          "end_ms": 158451
+        },
+        {
+          "word": "did",
+          "start_ms": 158451,
+          "end_ms": 158890
+        },
+        {
+          "word": "not",
+          "start_ms": 158890,
+          "end_ms": 159329
+        },
+        {
+          "word": "want",
+          "start_ms": 159329,
+          "end_ms": 159768
+        },
+        {
+          "word": "to",
+          "start_ms": 159768,
+          "end_ms": 160206
+        },
+        {
+          "word": "go",
+          "start_ms": 160206,
+          "end_ms": 160645
+        },
+        {
+          "word": "home",
+          "start_ms": 160645,
+          "end_ms": 161084
+        },
+        {
+          "word": "The",
+          "start_ms": 161084,
+          "end_ms": 161523
+        },
+        {
+          "word": "gardens",
+          "start_ms": 161523,
+          "end_ms": 161962
+        },
+        {
+          "word": "were",
+          "start_ms": 161962,
+          "end_ms": 162401
+        },
+        {
+          "word": "called",
+          "start_ms": 162401,
+          "end_ms": 162840
+        },
+        {
+          "word": "the",
+          "start_ms": 162840,
+          "end_ms": 163279
+        },
+        {
+          "word": "widows",
+          "start_ms": 163279,
+          "end_ms": 163718
+        },
+        {
+          "word": "because",
+          "start_ms": 163718,
+          "end_ms": 164157
+        },
+        {
+          "word": "they",
+          "start_ms": 164157,
+          "end_ms": 164596
+        },
+        {
+          "word": "were",
+          "start_ms": 164596,
+          "end_ms": 165035
+        },
+        {
+          "word": "kept",
+          "start_ms": 165035,
+          "end_ms": 165474
+        },
+        {
+          "word": "by",
+          "start_ms": 165474,
+          "end_ms": 165912
+        },
+        {
+          "word": "two",
+          "start_ms": 165912,
+          "end_ms": 166351
+        },
+        {
+          "word": "widows",
+          "start_ms": 166351,
+          "end_ms": 166790
+        },
+        {
+          "word": "mother",
+          "start_ms": 166790,
+          "end_ms": 167229
+        },
+        {
+          "word": "and",
+          "start_ms": 167229,
+          "end_ms": 167668
+        },
+        {
+          "word": "daughter",
+          "start_ms": 167668,
+          "end_ms": 168107
+        },
+        {
+          "word": "A",
+          "start_ms": 168107,
+          "end_ms": 168546
+        },
+        {
+          "word": "camp",
+          "start_ms": 168546,
+          "end_ms": 168985
+        },
+        {
+          "word": "fire",
+          "start_ms": 168985,
+          "end_ms": 169424
+        },
+        {
+          "word": "was",
+          "start_ms": 169424,
+          "end_ms": 169863
+        },
+        {
+          "word": "burning",
+          "start_ms": 169863,
+          "end_ms": 170302
+        },
+        {
+          "word": "brightly",
+          "start_ms": 170302,
+          "end_ms": 170741
+        },
+        {
+          "word": "with",
+          "start_ms": 170741,
+          "end_ms": 171180
+        },
+        {
+          "word": "a",
+          "start_ms": 171180,
+          "end_ms": 171618
+        },
+        {
+          "word": "crackling",
+          "start_ms": 171618,
+          "end_ms": 172057
+        },
+        {
+          "word": "sound",
+          "start_ms": 172057,
+          "end_ms": 172496
+        },
+        {
+          "word": "throwing",
+          "start_ms": 172496,
+          "end_ms": 172935
+        },
+        {
+          "word": "out",
+          "start_ms": 172935,
+          "end_ms": 173374
+        },
+        {
+          "word": "light",
+          "start_ms": 173374,
+          "end_ms": 173813
+        },
+        {
+          "word": "far",
+          "start_ms": 173813,
+          "end_ms": 174252
+        },
+        {
+          "word": "around",
+          "start_ms": 174252,
+          "end_ms": 174691
+        },
+        {
+          "word": "on",
+          "start_ms": 174691,
+          "end_ms": 175130
+        },
+        {
+          "word": "the",
+          "start_ms": 175130,
+          "end_ms": 175569
+        },
+        {
+          "word": "ploughed",
+          "start_ms": 175569,
+          "end_ms": 176008
+        },
+        {
+          "word": "earth",
+          "start_ms": 176008,
+          "end_ms": 176447
+        },
+        {
+          "word": "The",
+          "start_ms": 176447,
+          "end_ms": 176886
+        },
+        {
+          "word": "widow",
+          "start_ms": 176886,
+          "end_ms": 177324
+        },
+        {
+          "word": "Vasilisa",
+          "start_ms": 177324,
+          "end_ms": 177763
+        },
+        {
+          "word": "a",
+          "start_ms": 177763,
+          "end_ms": 178202
+        },
+        {
+          "word": "tall",
+          "start_ms": 178202,
+          "end_ms": 178641
+        },
+        {
+          "word": "fat",
+          "start_ms": 178641,
+          "end_ms": 179080
+        },
+        {
+          "word": "old",
+          "start_ms": 179080,
+          "end_ms": 179519
+        },
+        {
+          "word": "woman",
+          "start_ms": 179519,
+          "end_ms": 179958
+        },
+        {
+          "word": "in",
+          "start_ms": 179958,
+          "end_ms": 180397
+        },
+        {
+          "word": "a",
+          "start_ms": 180397,
+          "end_ms": 180836
+        },
+        {
+          "word": "man",
+          "start_ms": 180836,
+          "end_ms": 181275
+        },
+        {
+          "word": "s",
+          "start_ms": 181275,
+          "end_ms": 181714
+        },
+        {
+          "word": "coat",
+          "start_ms": 181714,
+          "end_ms": 182153
+        },
+        {
+          "word": "was",
+          "start_ms": 182153,
+          "end_ms": 182592
+        },
+        {
+          "word": "standing",
+          "start_ms": 182592,
+          "end_ms": 183030
+        },
+        {
+          "word": "by",
+          "start_ms": 183030,
+          "end_ms": 183469
+        },
+        {
+          "word": "and",
+          "start_ms": 183469,
+          "end_ms": 183908
+        },
+        {
+          "word": "looking",
+          "start_ms": 183908,
+          "end_ms": 184347
+        },
+        {
+          "word": "thoughtfully",
+          "start_ms": 184347,
+          "end_ms": 184786
+        },
+        {
+          "word": "into",
+          "start_ms": 184786,
+          "end_ms": 185225
+        },
+        {
+          "word": "the",
+          "start_ms": 185225,
+          "end_ms": 185664
+        },
+        {
+          "word": "fire",
+          "start_ms": 185664,
+          "end_ms": 186103
+        },
+        {
+          "word": "her",
+          "start_ms": 186103,
+          "end_ms": 186542
+        },
+        {
+          "word": "daughter",
+          "start_ms": 186542,
+          "end_ms": 186981
+        },
+        {
+          "word": "Lukerya",
+          "start_ms": 186981,
+          "end_ms": 187420
+        },
+        {
+          "word": "a",
+          "start_ms": 187420,
+          "end_ms": 187859
+        },
+        {
+          "word": "little",
+          "start_ms": 187859,
+          "end_ms": 188298
+        },
+        {
+          "word": "pock",
+          "start_ms": 188298,
+          "end_ms": 188736
+        },
+        {
+          "word": "marked",
+          "start_ms": 188736,
+          "end_ms": 189175
+        },
+        {
+          "word": "woman",
+          "start_ms": 189175,
+          "end_ms": 189614
+        },
+        {
+          "word": "with",
+          "start_ms": 189614,
+          "end_ms": 190053
+        },
+        {
+          "word": "a",
+          "start_ms": 190053,
+          "end_ms": 190492
+        },
+        {
+          "word": "stupid",
+          "start_ms": 190492,
+          "end_ms": 190931
+        },
+        {
+          "word": "looking",
+          "start_ms": 190931,
+          "end_ms": 191370
+        },
+        {
+          "word": "face",
+          "start_ms": 191370,
+          "end_ms": 191809
+        },
+        {
+          "word": "was",
+          "start_ms": 191809,
+          "end_ms": 192248
+        },
+        {
+          "word": "sitting",
+          "start_ms": 192248,
+          "end_ms": 192687
+        },
+        {
+          "word": "on",
+          "start_ms": 192687,
+          "end_ms": 193126
+        },
+        {
+          "word": "the",
+          "start_ms": 193126,
+          "end_ms": 193565
+        },
+        {
+          "word": "ground",
+          "start_ms": 193565,
+          "end_ms": 194003
+        },
+        {
+          "word": "washing",
+          "start_ms": 194003,
+          "end_ms": 194442
+        },
+        {
+          "word": "a",
+          "start_ms": 194442,
+          "end_ms": 194881
+        },
+        {
+          "word": "caldron",
+          "start_ms": 194881,
+          "end_ms": 195320
+        },
+        {
+          "word": "and",
+          "start_ms": 195320,
+          "end_ms": 195759
+        },
+        {
+          "word": "spoons",
+          "start_ms": 195759,
+          "end_ms": 196198
+        },
+        {
+          "word": "Apparently",
+          "start_ms": 196198,
+          "end_ms": 196637
+        },
+        {
+          "word": "they",
+          "start_ms": 196637,
+          "end_ms": 197076
+        },
+        {
+          "word": "had",
+          "start_ms": 197076,
+          "end_ms": 197515
+        },
+        {
+          "word": "just",
+          "start_ms": 197515,
+          "end_ms": 197954
+        },
+        {
+          "word": "had",
+          "start_ms": 197954,
+          "end_ms": 198393
+        },
+        {
+          "word": "supper",
+          "start_ms": 198393,
+          "end_ms": 198832
+        },
+        {
+          "word": "There",
+          "start_ms": 198832,
+          "end_ms": 199271
+        },
+        {
+          "word": "was",
+          "start_ms": 199271,
+          "end_ms": 199710
+        },
+        {
+          "word": "a",
+          "start_ms": 199710,
+          "end_ms": 200148
+        },
+        {
+          "word": "sound",
+          "start_ms": 200148,
+          "end_ms": 200587
+        },
+        {
+          "word": "of",
+          "start_ms": 200587,
+          "end_ms": 201026
+        },
+        {
+          "word": "men",
+          "start_ms": 201026,
+          "end_ms": 201465
+        },
+        {
+          "word": "s",
+          "start_ms": 201465,
+          "end_ms": 201904
+        },
+        {
+          "word": "voices",
+          "start_ms": 201904,
+          "end_ms": 202343
+        },
+        {
+          "word": "it",
+          "start_ms": 202343,
+          "end_ms": 202782
+        },
+        {
+          "word": "was",
+          "start_ms": 202782,
+          "end_ms": 203221
+        },
+        {
+          "word": "the",
+          "start_ms": 203221,
+          "end_ms": 203660
+        },
+        {
+          "word": "labourers",
+          "start_ms": 203660,
+          "end_ms": 204099
+        },
+        {
+          "word": "watering",
+          "start_ms": 204099,
+          "end_ms": 204538
+        },
+        {
+          "word": "their",
+          "start_ms": 204538,
+          "end_ms": 204977
+        },
+        {
+          "word": "horses",
+          "start_ms": 204977,
+          "end_ms": 205416
+        },
+        {
+          "word": "at",
+          "start_ms": 205416,
+          "end_ms": 205854
+        },
+        {
+          "word": "the",
+          "start_ms": 205854,
+          "end_ms": 206293
+        },
+        {
+          "word": "river",
+          "start_ms": 206293,
+          "end_ms": 206732
+        },
+        {
+          "word": "Here",
+          "start_ms": 206732,
+          "end_ms": 207171
+        },
+        {
+          "word": "you",
+          "start_ms": 207171,
+          "end_ms": 207610
+        },
+        {
+          "word": "have",
+          "start_ms": 207610,
+          "end_ms": 208049
+        },
+        {
+          "word": "winter",
+          "start_ms": 208049,
+          "end_ms": 208488
+        },
+        {
+          "word": "back",
+          "start_ms": 208488,
+          "end_ms": 208927
+        },
+        {
+          "word": "again",
+          "start_ms": 208927,
+          "end_ms": 209366
+        },
+        {
+          "word": "said",
+          "start_ms": 209366,
+          "end_ms": 209805
+        },
+        {
+          "word": "the",
+          "start_ms": 209805,
+          "end_ms": 210244
+        },
+        {
+          "word": "student",
+          "start_ms": 210244,
+          "end_ms": 210683
+        },
+        {
+          "word": "going",
+          "start_ms": 210683,
+          "end_ms": 211122
+        },
+        {
+          "word": "up",
+          "start_ms": 211122,
+          "end_ms": 211560
+        },
+        {
+          "word": "to",
+          "start_ms": 211560,
+          "end_ms": 211999
+        },
+        {
+          "word": "the",
+          "start_ms": 211999,
+          "end_ms": 212438
+        },
+        {
+          "word": "camp",
+          "start_ms": 212438,
+          "end_ms": 212877
+        },
+        {
+          "word": "fire",
+          "start_ms": 212877,
+          "end_ms": 213316
+        },
+        {
+          "word": "Good",
+          "start_ms": 213316,
+          "end_ms": 213755
+        },
+        {
+          "word": "evening",
+          "start_ms": 213755,
+          "end_ms": 214194
+        },
+        {
+          "word": "Vasilisa",
+          "start_ms": 214194,
+          "end_ms": 214633
+        },
+        {
+          "word": "started",
+          "start_ms": 214633,
+          "end_ms": 215072
+        },
+        {
+          "word": "but",
+          "start_ms": 215072,
+          "end_ms": 215511
+        },
+        {
+          "word": "at",
+          "start_ms": 215511,
+          "end_ms": 215950
+        },
+        {
+          "word": "once",
+          "start_ms": 215950,
+          "end_ms": 216389
+        },
+        {
+          "word": "recognized",
+          "start_ms": 216389,
+          "end_ms": 216828
+        },
+        {
+          "word": "him",
+          "start_ms": 216828,
+          "end_ms": 217266
+        },
+        {
+          "word": "and",
+          "start_ms": 217266,
+          "end_ms": 217705
+        },
+        {
+          "word": "smiled",
+          "start_ms": 217705,
+          "end_ms": 218144
+        },
+        {
+          "word": "cordially",
+          "start_ms": 218144,
+          "end_ms": 218583
+        },
+        {
+          "word": "I",
+          "start_ms": 218583,
+          "end_ms": 219022
+        },
+        {
+          "word": "did",
+          "start_ms": 219022,
+          "end_ms": 219461
+        },
+        {
+          "word": "not",
+          "start_ms": 219461,
+          "end_ms": 219900
+        },
+        {
+          "word": "know",
+          "start_ms": 219900,
+          "end_ms": 220339
+        },
+        {
+          "word": "you",
+          "start_ms": 220339,
+          "end_ms": 220778
+        },
+        {
+          "word": "God",
+          "start_ms": 220778,
+          "end_ms": 221217
+        },
+        {
+          "word": "bless",
+          "start_ms": 221217,
+          "end_ms": 221656
+        },
+        {
+          "word": "you",
+          "start_ms": 221656,
+          "end_ms": 222095
+        },
+        {
+          "word": "she",
+          "start_ms": 222095,
+          "end_ms": 222534
+        },
+        {
+          "word": "said",
+          "start_ms": 222534,
+          "end_ms": 222972
+        },
+        {
+          "word": "You",
+          "start_ms": 222972,
+          "end_ms": 223411
+        },
+        {
+          "word": "ll",
+          "start_ms": 223411,
+          "end_ms": 223850
+        },
+        {
+          "word": "be",
+          "start_ms": 223850,
+          "end_ms": 224289
+        },
+        {
+          "word": "rich",
+          "start_ms": 224289,
+          "end_ms": 224728
+        },
+        {
+          "word": "They",
+          "start_ms": 224728,
+          "end_ms": 225167
+        },
+        {
+          "word": "talked",
+          "start_ms": 225167,
+          "end_ms": 225606
+        },
+        {
+          "word": "Vasilisa",
+          "start_ms": 225606,
+          "end_ms": 226045
+        },
+        {
+          "word": "a",
+          "start_ms": 226045,
+          "end_ms": 226484
+        },
+        {
+          "word": "woman",
+          "start_ms": 226484,
+          "end_ms": 226923
+        },
+        {
+          "word": "of",
+          "start_ms": 226923,
+          "end_ms": 227362
+        },
+        {
+          "word": "experience",
+          "start_ms": 227362,
+          "end_ms": 227801
+        },
+        {
+          "word": "who",
+          "start_ms": 227801,
+          "end_ms": 228240
+        },
+        {
+          "word": "had",
+          "start_ms": 228240,
+          "end_ms": 228678
+        },
+        {
+          "word": "been",
+          "start_ms": 228678,
+          "end_ms": 229117
+        },
+        {
+          "word": "in",
+          "start_ms": 229117,
+          "end_ms": 229556
+        },
+        {
+          "word": "service",
+          "start_ms": 229556,
+          "end_ms": 229995
+        },
+        {
+          "word": "with",
+          "start_ms": 229995,
+          "end_ms": 230434
+        },
+        {
+          "word": "the",
+          "start_ms": 230434,
+          "end_ms": 230873
+        },
+        {
+          "word": "gentry",
+          "start_ms": 230873,
+          "end_ms": 231312
+        },
+        {
+          "word": "first",
+          "start_ms": 231312,
+          "end_ms": 231751
+        },
+        {
+          "word": "as",
+          "start_ms": 231751,
+          "end_ms": 232190
+        },
+        {
+          "word": "a",
+          "start_ms": 232190,
+          "end_ms": 232629
+        },
+        {
+          "word": "wet",
+          "start_ms": 232629,
+          "end_ms": 233068
+        },
+        {
+          "word": "nurse",
+          "start_ms": 233068,
+          "end_ms": 233507
+        },
+        {
+          "word": "afterwards",
+          "start_ms": 233507,
+          "end_ms": 233946
+        },
+        {
+          "word": "as",
+          "start_ms": 233946,
+          "end_ms": 234384
+        },
+        {
+          "word": "a",
+          "start_ms": 234384,
+          "end_ms": 234823
+        },
+        {
+          "word": "children",
+          "start_ms": 234823,
+          "end_ms": 235262
+        },
+        {
+          "word": "s",
+          "start_ms": 235262,
+          "end_ms": 235701
+        },
+        {
+          "word": "nurse",
+          "start_ms": 235701,
+          "end_ms": 236140
+        },
+        {
+          "word": "expressed",
+          "start_ms": 236140,
+          "end_ms": 236579
+        },
+        {
+          "word": "herself",
+          "start_ms": 236579,
+          "end_ms": 237018
+        },
+        {
+          "word": "with",
+          "start_ms": 237018,
+          "end_ms": 237457
+        },
+        {
+          "word": "refinement",
+          "start_ms": 237457,
+          "end_ms": 237896
+        },
+        {
+          "word": "and",
+          "start_ms": 237896,
+          "end_ms": 238335
+        },
+        {
+          "word": "a",
+          "start_ms": 238335,
+          "end_ms": 238774
+        },
+        {
+          "word": "soft",
+          "start_ms": 238774,
+          "end_ms": 239213
+        },
+        {
+          "word": "sedate",
+          "start_ms": 239213,
+          "end_ms": 239652
+        },
+        {
+          "word": "smile",
+          "start_ms": 239652,
+          "end_ms": 240090
+        },
+        {
+          "word": "never",
+          "start_ms": 240090,
+          "end_ms": 240529
+        },
+        {
+          "word": "left",
+          "start_ms": 240529,
+          "end_ms": 240968
+        },
+        {
+          "word": "her",
+          "start_ms": 240968,
+          "end_ms": 241407
+        },
+        {
+          "word": "face",
+          "start_ms": 241407,
+          "end_ms": 241846
+        },
+        {
+          "word": "her",
+          "start_ms": 241846,
+          "end_ms": 242285
+        },
+        {
+          "word": "daughter",
+          "start_ms": 242285,
+          "end_ms": 242724
+        },
+        {
+          "word": "Lukerya",
+          "start_ms": 242724,
+          "end_ms": 243163
+        },
+        {
+          "word": "a",
+          "start_ms": 243163,
+          "end_ms": 243602
+        },
+        {
+          "word": "village",
+          "start_ms": 243602,
+          "end_ms": 244041
+        },
+        {
+          "word": "peasant",
+          "start_ms": 244041,
+          "end_ms": 244480
+        },
+        {
+          "word": "woman",
+          "start_ms": 244480,
+          "end_ms": 244919
+        },
+        {
+          "word": "who",
+          "start_ms": 244919,
+          "end_ms": 245358
+        },
+        {
+          "word": "had",
+          "start_ms": 245358,
+          "end_ms": 245796
+        },
+        {
+          "word": "been",
+          "start_ms": 245796,
+          "end_ms": 246235
+        },
+        {
+          "word": "beaten",
+          "start_ms": 246235,
+          "end_ms": 246674
+        },
+        {
+          "word": "by",
+          "start_ms": 246674,
+          "end_ms": 247113
+        },
+        {
+          "word": "her",
+          "start_ms": 247113,
+          "end_ms": 247552
+        },
+        {
+          "word": "husband",
+          "start_ms": 247552,
+          "end_ms": 247991
+        },
+        {
+          "word": "simply",
+          "start_ms": 247991,
+          "end_ms": 248430
+        },
+        {
+          "word": "screwed",
+          "start_ms": 248430,
+          "end_ms": 248869
+        },
+        {
+          "word": "up",
+          "start_ms": 248869,
+          "end_ms": 249308
+        },
+        {
+          "word": "her",
+          "start_ms": 249308,
+          "end_ms": 249747
+        },
+        {
+          "word": "eyes",
+          "start_ms": 249747,
+          "end_ms": 250186
+        },
+        {
+          "word": "at",
+          "start_ms": 250186,
+          "end_ms": 250625
+        },
+        {
+          "word": "the",
+          "start_ms": 250625,
+          "end_ms": 251064
+        },
+        {
+          "word": "student",
+          "start_ms": 251064,
+          "end_ms": 251502
+        },
+        {
+          "word": "and",
+          "start_ms": 251502,
+          "end_ms": 251941
+        },
+        {
+          "word": "said",
+          "start_ms": 251941,
+          "end_ms": 252380
+        },
+        {
+          "word": "nothing",
+          "start_ms": 252380,
+          "end_ms": 252819
+        },
+        {
+          "word": "and",
+          "start_ms": 252819,
+          "end_ms": 253258
+        },
+        {
+          "word": "she",
+          "start_ms": 253258,
+          "end_ms": 253697
+        },
+        {
+          "word": "had",
+          "start_ms": 253697,
+          "end_ms": 254136
+        },
+        {
+          "word": "a",
+          "start_ms": 254136,
+          "end_ms": 254575
+        },
+        {
+          "word": "strange",
+          "start_ms": 254575,
+          "end_ms": 255014
+        },
+        {
+          "word": "expression",
+          "start_ms": 255014,
+          "end_ms": 255453
+        },
+        {
+          "word": "like",
+          "start_ms": 255453,
+          "end_ms": 255892
+        },
+        {
+          "word": "that",
+          "start_ms": 255892,
+          "end_ms": 256331
+        },
+        {
+          "word": "of",
+          "start_ms": 256331,
+          "end_ms": 256770
+        },
+        {
+          "word": "a",
+          "start_ms": 256770,
+          "end_ms": 257208
+        },
+        {
+          "word": "deaf",
+          "start_ms": 257208,
+          "end_ms": 257647
+        },
+        {
+          "word": "mute",
+          "start_ms": 257647,
+          "end_ms": 258086
+        },
+        {
+          "word": "At",
+          "start_ms": 258086,
+          "end_ms": 258525
+        },
+        {
+          "word": "just",
+          "start_ms": 258525,
+          "end_ms": 258964
+        },
+        {
+          "word": "such",
+          "start_ms": 258964,
+          "end_ms": 259403
+        },
+        {
+          "word": "a",
+          "start_ms": 259403,
+          "end_ms": 259842
+        },
+        {
+          "word": "fire",
+          "start_ms": 259842,
+          "end_ms": 260281
+        },
+        {
+          "word": "the",
+          "start_ms": 260281,
+          "end_ms": 260720
+        },
+        {
+          "word": "Apostle",
+          "start_ms": 260720,
+          "end_ms": 261159
+        },
+        {
+          "word": "Peter",
+          "start_ms": 261159,
+          "end_ms": 261598
+        },
+        {
+          "word": "warmed",
+          "start_ms": 261598,
+          "end_ms": 262037
+        },
+        {
+          "word": "himself",
+          "start_ms": 262037,
+          "end_ms": 262476
+        },
+        {
+          "word": "said",
+          "start_ms": 262476,
+          "end_ms": 262914
+        },
+        {
+          "word": "the",
+          "start_ms": 262914,
+          "end_ms": 263353
+        },
+        {
+          "word": "student",
+          "start_ms": 263353,
+          "end_ms": 263792
+        },
+        {
+          "word": "stretching",
+          "start_ms": 263792,
+          "end_ms": 264231
+        },
+        {
+          "word": "out",
+          "start_ms": 264231,
+          "end_ms": 264670
+        },
+        {
+          "word": "his",
+          "start_ms": 264670,
+          "end_ms": 265109
+        },
+        {
+          "word": "hands",
+          "start_ms": 265109,
+          "end_ms": 265548
+        },
+        {
+          "word": "to",
+          "start_ms": 265548,
+          "end_ms": 265987
+        },
+        {
+          "word": "the",
+          "start_ms": 265987,
+          "end_ms": 266426
+        },
+        {
+          "word": "fire",
+          "start_ms": 266426,
+          "end_ms": 266865
+        },
+        {
+          "word": "so",
+          "start_ms": 266865,
+          "end_ms": 267304
+        },
+        {
+          "word": "it",
+          "start_ms": 267304,
+          "end_ms": 267743
+        },
+        {
+          "word": "must",
+          "start_ms": 267743,
+          "end_ms": 268182
+        },
+        {
+          "word": "have",
+          "start_ms": 268182,
+          "end_ms": 268620
+        },
+        {
+          "word": "been",
+          "start_ms": 268620,
+          "end_ms": 269059
+        },
+        {
+          "word": "cold",
+          "start_ms": 269059,
+          "end_ms": 269498
+        },
+        {
+          "word": "then",
+          "start_ms": 269498,
+          "end_ms": 269937
+        },
+        {
+          "word": "too",
+          "start_ms": 269937,
+          "end_ms": 270376
+        },
+        {
+          "word": "Ah",
+          "start_ms": 270376,
+          "end_ms": 270815
+        },
+        {
+          "word": "what",
+          "start_ms": 270815,
+          "end_ms": 271254
+        },
+        {
+          "word": "a",
+          "start_ms": 271254,
+          "end_ms": 271693
+        },
+        {
+          "word": "terrible",
+          "start_ms": 271693,
+          "end_ms": 272132
+        },
+        {
+          "word": "night",
+          "start_ms": 272132,
+          "end_ms": 272571
+        },
+        {
+          "word": "it",
+          "start_ms": 272571,
+          "end_ms": 273010
+        },
+        {
+          "word": "must",
+          "start_ms": 273010,
+          "end_ms": 273449
+        },
+        {
+          "word": "have",
+          "start_ms": 273449,
+          "end_ms": 273888
+        },
+        {
+          "word": "been",
+          "start_ms": 273888,
+          "end_ms": 274326
+        },
+        {
+          "word": "granny",
+          "start_ms": 274326,
+          "end_ms": 274765
+        },
+        {
+          "word": "An",
+          "start_ms": 274765,
+          "end_ms": 275204
+        },
+        {
+          "word": "utterly",
+          "start_ms": 275204,
+          "end_ms": 275643
+        },
+        {
+          "word": "dismal",
+          "start_ms": 275643,
+          "end_ms": 276082
+        },
+        {
+          "word": "long",
+          "start_ms": 276082,
+          "end_ms": 276521
+        },
+        {
+          "word": "night",
+          "start_ms": 276521,
+          "end_ms": 276960
+        },
+        {
+          "word": "He",
+          "start_ms": 276960,
+          "end_ms": 277399
+        },
+        {
+          "word": "looked",
+          "start_ms": 277399,
+          "end_ms": 277838
+        },
+        {
+          "word": "round",
+          "start_ms": 277838,
+          "end_ms": 278277
+        },
+        {
+          "word": "at",
+          "start_ms": 278277,
+          "end_ms": 278716
+        },
+        {
+          "word": "the",
+          "start_ms": 278716,
+          "end_ms": 279155
+        },
+        {
+          "word": "darkness",
+          "start_ms": 279155,
+          "end_ms": 279594
+        },
+        {
+          "word": "shook",
+          "start_ms": 279594,
+          "end_ms": 280032
+        },
+        {
+          "word": "his",
+          "start_ms": 280032,
+          "end_ms": 280471
+        },
+        {
+          "word": "head",
+          "start_ms": 280471,
+          "end_ms": 280910
+        },
+        {
+          "word": "abruptly",
+          "start_ms": 280910,
+          "end_ms": 281349
+        },
+        {
+          "word": "and",
+          "start_ms": 281349,
+          "end_ms": 281788
+        },
+        {
+          "word": "asked",
+          "start_ms": 281788,
+          "end_ms": 282227
+        },
+        {
+          "word": "No",
+          "start_ms": 282227,
+          "end_ms": 282666
+        },
+        {
+          "word": "doubt",
+          "start_ms": 282666,
+          "end_ms": 283105
+        },
+        {
+          "word": "you",
+          "start_ms": 283105,
+          "end_ms": 283544
+        },
+        {
+          "word": "have",
+          "start_ms": 283544,
+          "end_ms": 283983
+        },
+        {
+          "word": "been",
+          "start_ms": 283983,
+          "end_ms": 284422
+        },
+        {
+          "word": "at",
+          "start_ms": 284422,
+          "end_ms": 284861
+        },
+        {
+          "word": "the",
+          "start_ms": 284861,
+          "end_ms": 285300
+        },
+        {
+          "word": "reading",
+          "start_ms": 285300,
+          "end_ms": 285738
+        },
+        {
+          "word": "of",
+          "start_ms": 285738,
+          "end_ms": 286177
+        },
+        {
+          "word": "the",
+          "start_ms": 286177,
+          "end_ms": 286616
+        },
+        {
+          "word": "Twelve",
+          "start_ms": 286616,
+          "end_ms": 287055
+        },
+        {
+          "word": "Gospels",
+          "start_ms": 287055,
+          "end_ms": 287494
+        },
+        {
+          "word": "Yes",
+          "start_ms": 287494,
+          "end_ms": 287933
+        },
+        {
+          "word": "I",
+          "start_ms": 287933,
+          "end_ms": 288372
+        },
+        {
+          "word": "have",
+          "start_ms": 288372,
+          "end_ms": 288811
+        },
+        {
+          "word": "answered",
+          "start_ms": 288811,
+          "end_ms": 289250
+        },
+        {
+          "word": "Vasilisa",
+          "start_ms": 289250,
+          "end_ms": 289689
+        },
+        {
+          "word": "If",
+          "start_ms": 289689,
+          "end_ms": 290128
+        },
+        {
+          "word": "you",
+          "start_ms": 290128,
+          "end_ms": 290567
+        },
+        {
+          "word": "remember",
+          "start_ms": 290567,
+          "end_ms": 291006
+        },
+        {
+          "word": "at",
+          "start_ms": 291006,
+          "end_ms": 291444
+        },
+        {
+          "word": "the",
+          "start_ms": 291444,
+          "end_ms": 291883
+        },
+        {
+          "word": "Last",
+          "start_ms": 291883,
+          "end_ms": 292322
+        },
+        {
+          "word": "Supper",
+          "start_ms": 292322,
+          "end_ms": 292761
+        },
+        {
+          "word": "Peter",
+          "start_ms": 292761,
+          "end_ms": 293200
+        },
+        {
+          "word": "said",
+          "start_ms": 293200,
+          "end_ms": 293639
+        },
+        {
+          "word": "to",
+          "start_ms": 293639,
+          "end_ms": 294078
+        },
+        {
+          "word": "Jesus",
+          "start_ms": 294078,
+          "end_ms": 294517
+        },
+        {
+          "word": "I",
+          "start_ms": 294517,
+          "end_ms": 294956
+        },
+        {
+          "word": "am",
+          "start_ms": 294956,
+          "end_ms": 295395
+        },
+        {
+          "word": "ready",
+          "start_ms": 295395,
+          "end_ms": 295834
+        },
+        {
+          "word": "to",
+          "start_ms": 295834,
+          "end_ms": 296273
+        },
+        {
+          "word": "go",
+          "start_ms": 296273,
+          "end_ms": 296712
+        },
+        {
+          "word": "with",
+          "start_ms": 296712,
+          "end_ms": 297150
+        },
+        {
+          "word": "Thee",
+          "start_ms": 297150,
+          "end_ms": 297589
+        },
+        {
+          "word": "into",
+          "start_ms": 297589,
+          "end_ms": 298028
+        },
+        {
+          "word": "darkness",
+          "start_ms": 298028,
+          "end_ms": 298467
+        },
+        {
+          "word": "and",
+          "start_ms": 298467,
+          "end_ms": 298906
+        },
+        {
+          "word": "unto",
+          "start_ms": 298906,
+          "end_ms": 299345
+        },
+        {
+          "word": "death",
+          "start_ms": 299345,
+          "end_ms": 299784
+        },
+        {
+          "word": "And",
+          "start_ms": 299784,
+          "end_ms": 300223
+        },
+        {
+          "word": "our",
+          "start_ms": 300223,
+          "end_ms": 300662
+        },
+        {
+          "word": "Lord",
+          "start_ms": 300662,
+          "end_ms": 301101
+        },
+        {
+          "word": "answered",
+          "start_ms": 301101,
+          "end_ms": 301540
+        },
+        {
+          "word": "him",
+          "start_ms": 301540,
+          "end_ms": 301979
+        },
+        {
+          "word": "thus",
+          "start_ms": 301979,
+          "end_ms": 302418
+        },
+        {
+          "word": "I",
+          "start_ms": 302418,
+          "end_ms": 302856
+        },
+        {
+          "word": "say",
+          "start_ms": 302856,
+          "end_ms": 303295
+        },
+        {
+          "word": "unto",
+          "start_ms": 303295,
+          "end_ms": 303734
+        },
+        {
+          "word": "thee",
+          "start_ms": 303734,
+          "end_ms": 304173
+        },
+        {
+          "word": "Peter",
+          "start_ms": 304173,
+          "end_ms": 304612
+        },
+        {
+          "word": "before",
+          "start_ms": 304612,
+          "end_ms": 305051
+        },
+        {
+          "word": "the",
+          "start_ms": 305051,
+          "end_ms": 305490
+        },
+        {
+          "word": "cock",
+          "start_ms": 305490,
+          "end_ms": 305929
+        },
+        {
+          "word": "croweth",
+          "start_ms": 305929,
+          "end_ms": 306368
+        },
+        {
+          "word": "thou",
+          "start_ms": 306368,
+          "end_ms": 306807
+        },
+        {
+          "word": "wilt",
+          "start_ms": 306807,
+          "end_ms": 307246
+        },
+        {
+          "word": "have",
+          "start_ms": 307246,
+          "end_ms": 307685
+        },
+        {
+          "word": "denied",
+          "start_ms": 307685,
+          "end_ms": 308124
+        },
+        {
+          "word": "Me",
+          "start_ms": 308124,
+          "end_ms": 308562
+        },
+        {
+          "word": "thrice",
+          "start_ms": 308562,
+          "end_ms": 309001
+        },
+        {
+          "word": "After",
+          "start_ms": 309001,
+          "end_ms": 309440
+        },
+        {
+          "word": "the",
+          "start_ms": 309440,
+          "end_ms": 309879
+        },
+        {
+          "word": "supper",
+          "start_ms": 309879,
+          "end_ms": 310318
+        },
+        {
+          "word": "Jesus",
+          "start_ms": 310318,
+          "end_ms": 310757
+        },
+        {
+          "word": "went",
+          "start_ms": 310757,
+          "end_ms": 311196
+        },
+        {
+          "word": "through",
+          "start_ms": 311196,
+          "end_ms": 311635
+        },
+        {
+          "word": "the",
+          "start_ms": 311635,
+          "end_ms": 312074
+        },
+        {
+          "word": "agony",
+          "start_ms": 312074,
+          "end_ms": 312513
+        },
+        {
+          "word": "of",
+          "start_ms": 312513,
+          "end_ms": 312952
+        },
+        {
+          "word": "death",
+          "start_ms": 312952,
+          "end_ms": 313391
+        },
+        {
+          "word": "in",
+          "start_ms": 313391,
+          "end_ms": 313830
+        },
+        {
+          "word": "the",
+          "start_ms": 313830,
+          "end_ms": 314268
+        },
+        {
+          "word": "garden",
+          "start_ms": 314268,
+          "end_ms": 314707
+        },
+        {
+          "word": "and",
+          "start_ms": 314707,
+          "end_ms": 315146
+        },
+        {
+          "word": "prayed",
+          "start_ms": 315146,
+          "end_ms": 315585
+        },
+        {
+          "word": "and",
+          "start_ms": 315585,
+          "end_ms": 316024
+        },
+        {
+          "word": "poor",
+          "start_ms": 316024,
+          "end_ms": 316463
+        },
+        {
+          "word": "Peter",
+          "start_ms": 316463,
+          "end_ms": 316902
+        },
+        {
+          "word": "was",
+          "start_ms": 316902,
+          "end_ms": 317341
+        },
+        {
+          "word": "weary",
+          "start_ms": 317341,
+          "end_ms": 317780
+        },
+        {
+          "word": "in",
+          "start_ms": 317780,
+          "end_ms": 318219
+        },
+        {
+          "word": "spirit",
+          "start_ms": 318219,
+          "end_ms": 318658
+        },
+        {
+          "word": "and",
+          "start_ms": 318658,
+          "end_ms": 319097
+        },
+        {
+          "word": "faint",
+          "start_ms": 319097,
+          "end_ms": 319536
+        },
+        {
+          "word": "his",
+          "start_ms": 319536,
+          "end_ms": 319974
+        },
+        {
+          "word": "eyelids",
+          "start_ms": 319974,
+          "end_ms": 320413
+        },
+        {
+          "word": "were",
+          "start_ms": 320413,
+          "end_ms": 320852
+        },
+        {
+          "word": "heavy",
+          "start_ms": 320852,
+          "end_ms": 321291
+        },
+        {
+          "word": "and",
+          "start_ms": 321291,
+          "end_ms": 321730
+        },
+        {
+          "word": "he",
+          "start_ms": 321730,
+          "end_ms": 322169
+        },
+        {
+          "word": "could",
+          "start_ms": 322169,
+          "end_ms": 322608
+        },
+        {
+          "word": "not",
+          "start_ms": 322608,
+          "end_ms": 323047
+        },
+        {
+          "word": "struggle",
+          "start_ms": 323047,
+          "end_ms": 323486
+        },
+        {
+          "word": "against",
+          "start_ms": 323486,
+          "end_ms": 323925
+        },
+        {
+          "word": "sleep",
+          "start_ms": 323925,
+          "end_ms": 324364
+        },
+        {
+          "word": "He",
+          "start_ms": 324364,
+          "end_ms": 324803
+        },
+        {
+          "word": "fell",
+          "start_ms": 324803,
+          "end_ms": 325242
+        },
+        {
+          "word": "asleep",
+          "start_ms": 325242,
+          "end_ms": 325680
+        },
+        {
+          "word": "Then",
+          "start_ms": 325680,
+          "end_ms": 326119
+        },
+        {
+          "word": "you",
+          "start_ms": 326119,
+          "end_ms": 326558
+        },
+        {
+          "word": "heard",
+          "start_ms": 326558,
+          "end_ms": 326997
+        },
+        {
+          "word": "how",
+          "start_ms": 326997,
+          "end_ms": 327436
+        },
+        {
+          "word": "Judas",
+          "start_ms": 327436,
+          "end_ms": 327875
+        },
+        {
+          "word": "the",
+          "start_ms": 327875,
+          "end_ms": 328314
+        },
+        {
+          "word": "same",
+          "start_ms": 328314,
+          "end_ms": 328753
+        },
+        {
+          "word": "night",
+          "start_ms": 328753,
+          "end_ms": 329192
+        },
+        {
+          "word": "kissed",
+          "start_ms": 329192,
+          "end_ms": 329631
+        },
+        {
+          "word": "Jesus",
+          "start_ms": 329631,
+          "end_ms": 330070
+        },
+        {
+          "word": "and",
+          "start_ms": 330070,
+          "end_ms": 330509
+        },
+        {
+          "word": "betrayed",
+          "start_ms": 330509,
+          "end_ms": 330948
+        },
+        {
+          "word": "Him",
+          "start_ms": 330948,
+          "end_ms": 331386
+        },
+        {
+          "word": "to",
+          "start_ms": 331386,
+          "end_ms": 331825
+        },
+        {
+          "word": "His",
+          "start_ms": 331825,
+          "end_ms": 332264
+        },
+        {
+          "word": "tormentors",
+          "start_ms": 332264,
+          "end_ms": 332703
+        },
+        {
+          "word": "They",
+          "start_ms": 332703,
+          "end_ms": 333142
+        },
+        {
+          "word": "took",
+          "start_ms": 333142,
+          "end_ms": 333581
+        },
+        {
+          "word": "Him",
+          "start_ms": 333581,
+          "end_ms": 334020
+        },
+        {
+          "word": "bound",
+          "start_ms": 334020,
+          "end_ms": 334459
+        },
+        {
+          "word": "to",
+          "start_ms": 334459,
+          "end_ms": 334898
+        },
+        {
+          "word": "the",
+          "start_ms": 334898,
+          "end_ms": 335337
+        },
+        {
+          "word": "high",
+          "start_ms": 335337,
+          "end_ms": 335776
+        },
+        {
+          "word": "priest",
+          "start_ms": 335776,
+          "end_ms": 336215
+        },
+        {
+          "word": "and",
+          "start_ms": 336215,
+          "end_ms": 336654
+        },
+        {
+          "word": "beat",
+          "start_ms": 336654,
+          "end_ms": 337092
+        },
+        {
+          "word": "Him",
+          "start_ms": 337092,
+          "end_ms": 337531
+        },
+        {
+          "word": "while",
+          "start_ms": 337531,
+          "end_ms": 337970
+        },
+        {
+          "word": "Peter",
+          "start_ms": 337970,
+          "end_ms": 338409
+        },
+        {
+          "word": "exhausted",
+          "start_ms": 338409,
+          "end_ms": 338848
+        },
+        {
+          "word": "worn",
+          "start_ms": 338848,
+          "end_ms": 339287
+        },
+        {
+          "word": "out",
+          "start_ms": 339287,
+          "end_ms": 339726
+        },
+        {
+          "word": "with",
+          "start_ms": 339726,
+          "end_ms": 340165
+        },
+        {
+          "word": "misery",
+          "start_ms": 340165,
+          "end_ms": 340604
+        },
+        {
+          "word": "and",
+          "start_ms": 340604,
+          "end_ms": 341043
+        },
+        {
+          "word": "alarm",
+          "start_ms": 341043,
+          "end_ms": 341482
+        },
+        {
+          "word": "hardly",
+          "start_ms": 341482,
+          "end_ms": 341921
+        },
+        {
+          "word": "awake",
+          "start_ms": 341921,
+          "end_ms": 342360
+        },
+        {
+          "word": "you",
+          "start_ms": 342360,
+          "end_ms": 342798
+        },
+        {
+          "word": "know",
+          "start_ms": 342798,
+          "end_ms": 343237
+        },
+        {
+          "word": "feeling",
+          "start_ms": 343237,
+          "end_ms": 343676
+        },
+        {
+          "word": "that",
+          "start_ms": 343676,
+          "end_ms": 344115
+        },
+        {
+          "word": "something",
+          "start_ms": 344115,
+          "end_ms": 344554
+        },
+        {
+          "word": "awful",
+          "start_ms": 344554,
+          "end_ms": 344993
+        },
+        {
+          "word": "was",
+          "start_ms": 344993,
+          "end_ms": 345432
+        },
+        {
+          "word": "just",
+          "start_ms": 345432,
+          "end_ms": 345871
+        },
+        {
+          "word": "going",
+          "start_ms": 345871,
+          "end_ms": 346310
+        },
+        {
+          "word": "to",
+          "start_ms": 346310,
+          "end_ms": 346749
+        },
+        {
+          "word": "happen",
+          "start_ms": 346749,
+          "end_ms": 347188
+        },
+        {
+          "word": "on",
+          "start_ms": 347188,
+          "end_ms": 347627
+        },
+        {
+          "word": "earth",
+          "start_ms": 347627,
+          "end_ms": 348066
+        },
+        {
+          "word": "followed",
+          "start_ms": 348066,
+          "end_ms": 348504
+        },
+        {
+          "word": "behind",
+          "start_ms": 348504,
+          "end_ms": 348943
+        },
+        {
+          "word": "He",
+          "start_ms": 348943,
+          "end_ms": 349382
+        },
+        {
+          "word": "loved",
+          "start_ms": 349382,
+          "end_ms": 349821
+        },
+        {
+          "word": "Jesus",
+          "start_ms": 349821,
+          "end_ms": 350260
+        },
+        {
+          "word": "passionately",
+          "start_ms": 350260,
+          "end_ms": 350699
+        },
+        {
+          "word": "intensely",
+          "start_ms": 350699,
+          "end_ms": 351138
+        },
+        {
+          "word": "and",
+          "start_ms": 351138,
+          "end_ms": 351577
+        },
+        {
+          "word": "now",
+          "start_ms": 351577,
+          "end_ms": 352016
+        },
+        {
+          "word": "he",
+          "start_ms": 352016,
+          "end_ms": 352455
+        },
+        {
+          "word": "saw",
+          "start_ms": 352455,
+          "end_ms": 352894
+        },
+        {
+          "word": "from",
+          "start_ms": 352894,
+          "end_ms": 353333
+        },
+        {
+          "word": "far",
+          "start_ms": 353333,
+          "end_ms": 353772
+        },
+        {
+          "word": "off",
+          "start_ms": 353772,
+          "end_ms": 354210
+        },
+        {
+          "word": "how",
+          "start_ms": 354210,
+          "end_ms": 354649
+        },
+        {
+          "word": "He",
+          "start_ms": 354649,
+          "end_ms": 355088
+        },
+        {
+          "word": "was",
+          "start_ms": 355088,
+          "end_ms": 355527
+        },
+        {
+          "word": "beaten",
+          "start_ms": 355527,
+          "end_ms": 355966
+        },
+        {
+          "word": "Lukerya",
+          "start_ms": 355966,
+          "end_ms": 356405
+        },
+        {
+          "word": "left",
+          "start_ms": 356405,
+          "end_ms": 356844
+        },
+        {
+          "word": "the",
+          "start_ms": 356844,
+          "end_ms": 357283
+        },
+        {
+          "word": "spoons",
+          "start_ms": 357283,
+          "end_ms": 357722
+        },
+        {
+          "word": "and",
+          "start_ms": 357722,
+          "end_ms": 358161
+        },
+        {
+          "word": "fixed",
+          "start_ms": 358161,
+          "end_ms": 358600
+        },
+        {
+          "word": "an",
+          "start_ms": 358600,
+          "end_ms": 359039
+        },
+        {
+          "word": "immovable",
+          "start_ms": 359039,
+          "end_ms": 359478
+        },
+        {
+          "word": "stare",
+          "start_ms": 359478,
+          "end_ms": 359916
+        },
+        {
+          "word": "upon",
+          "start_ms": 359916,
+          "end_ms": 360355
+        },
+        {
+          "word": "the",
+          "start_ms": 360355,
+          "end_ms": 360794
+        },
+        {
+          "word": "student",
+          "start_ms": 360794,
+          "end_ms": 361233
+        },
+        {
+          "word": "They",
+          "start_ms": 361233,
+          "end_ms": 361672
+        },
+        {
+          "word": "came",
+          "start_ms": 361672,
+          "end_ms": 362111
+        },
+        {
+          "word": "to",
+          "start_ms": 362111,
+          "end_ms": 362550
+        },
+        {
+          "word": "the",
+          "start_ms": 362550,
+          "end_ms": 362989
+        },
+        {
+          "word": "high",
+          "start_ms": 362989,
+          "end_ms": 363428
+        },
+        {
+          "word": "priest",
+          "start_ms": 363428,
+          "end_ms": 363867
+        },
+        {
+          "word": "s",
+          "start_ms": 363867,
+          "end_ms": 364306
+        },
+        {
+          "word": "he",
+          "start_ms": 364306,
+          "end_ms": 364745
+        },
+        {
+          "word": "went",
+          "start_ms": 364745,
+          "end_ms": 365184
+        },
+        {
+          "word": "on",
+          "start_ms": 365184,
+          "end_ms": 365622
+        },
+        {
+          "word": "they",
+          "start_ms": 365622,
+          "end_ms": 366061
+        },
+        {
+          "word": "began",
+          "start_ms": 366061,
+          "end_ms": 366500
+        },
+        {
+          "word": "to",
+          "start_ms": 366500,
+          "end_ms": 366939
+        },
+        {
+          "word": "question",
+          "start_ms": 366939,
+          "end_ms": 367378
+        },
+        {
+          "word": "Jesus",
+          "start_ms": 367378,
+          "end_ms": 367817
+        },
+        {
+          "word": "and",
+          "start_ms": 367817,
+          "end_ms": 368256
+        },
+        {
+          "word": "meantime",
+          "start_ms": 368256,
+          "end_ms": 368695
+        },
+        {
+          "word": "the",
+          "start_ms": 368695,
+          "end_ms": 369134
+        },
+        {
+          "word": "labourers",
+          "start_ms": 369134,
+          "end_ms": 369573
+        },
+        {
+          "word": "made",
+          "start_ms": 369573,
+          "end_ms": 370012
+        },
+        {
+          "word": "a",
+          "start_ms": 370012,
+          "end_ms": 370451
+        },
+        {
+          "word": "fire",
+          "start_ms": 370451,
+          "end_ms": 370889
+        },
+        {
+          "word": "in",
+          "start_ms": 370889,
+          "end_ms": 371328
+        },
+        {
+          "word": "the",
+          "start_ms": 371328,
+          "end_ms": 371767
+        },
+        {
+          "word": "yard",
+          "start_ms": 371767,
+          "end_ms": 372206
+        },
+        {
+          "word": "as",
+          "start_ms": 372206,
+          "end_ms": 372645
+        },
+        {
+          "word": "it",
+          "start_ms": 372645,
+          "end_ms": 373084
+        },
+        {
+          "word": "was",
+          "start_ms": 373084,
+          "end_ms": 373523
+        },
+        {
+          "word": "cold",
+          "start_ms": 373523,
+          "end_ms": 373962
+        },
+        {
+          "word": "and",
+          "start_ms": 373962,
+          "end_ms": 374401
+        },
+        {
+          "word": "warmed",
+          "start_ms": 374401,
+          "end_ms": 374840
+        },
+        {
+          "word": "themselves",
+          "start_ms": 374840,
+          "end_ms": 375279
+        },
+        {
+          "word": "Peter",
+          "start_ms": 375279,
+          "end_ms": 375718
+        },
+        {
+          "word": "too",
+          "start_ms": 375718,
+          "end_ms": 376157
+        },
+        {
+          "word": "stood",
+          "start_ms": 376157,
+          "end_ms": 376596
+        },
+        {
+          "word": "with",
+          "start_ms": 376596,
+          "end_ms": 377034
+        },
+        {
+          "word": "them",
+          "start_ms": 377034,
+          "end_ms": 377473
+        },
+        {
+          "word": "near",
+          "start_ms": 377473,
+          "end_ms": 377912
+        },
+        {
+          "word": "the",
+          "start_ms": 377912,
+          "end_ms": 378351
+        },
+        {
+          "word": "fire",
+          "start_ms": 378351,
+          "end_ms": 378790
+        },
+        {
+          "word": "and",
+          "start_ms": 378790,
+          "end_ms": 379229
+        },
+        {
+          "word": "warmed",
+          "start_ms": 379229,
+          "end_ms": 379668
+        },
+        {
+          "word": "himself",
+          "start_ms": 379668,
+          "end_ms": 380107
+        },
+        {
+          "word": "as",
+          "start_ms": 380107,
+          "end_ms": 380546
+        },
+        {
+          "word": "I",
+          "start_ms": 380546,
+          "end_ms": 380985
+        },
+        {
+          "word": "am",
+          "start_ms": 380985,
+          "end_ms": 381424
+        },
+        {
+          "word": "doing",
+          "start_ms": 381424,
+          "end_ms": 381863
+        },
+        {
+          "word": "A",
+          "start_ms": 381863,
+          "end_ms": 382302
+        },
+        {
+          "word": "woman",
+          "start_ms": 382302,
+          "end_ms": 382740
+        },
+        {
+          "word": "seeing",
+          "start_ms": 382740,
+          "end_ms": 383179
+        },
+        {
+          "word": "him",
+          "start_ms": 383179,
+          "end_ms": 383618
+        },
+        {
+          "word": "said",
+          "start_ms": 383618,
+          "end_ms": 384057
+        },
+        {
+          "word": "He",
+          "start_ms": 384057,
+          "end_ms": 384496
+        },
+        {
+          "word": "was",
+          "start_ms": 384496,
+          "end_ms": 384935
+        },
+        {
+          "word": "with",
+          "start_ms": 384935,
+          "end_ms": 385374
+        },
+        {
+          "word": "Jesus",
+          "start_ms": 385374,
+          "end_ms": 385813
+        },
+        {
+          "word": "too",
+          "start_ms": 385813,
+          "end_ms": 386252
+        },
+        {
+          "word": "that",
+          "start_ms": 386252,
+          "end_ms": 386691
+        },
+        {
+          "word": "is",
+          "start_ms": 386691,
+          "end_ms": 387130
+        },
+        {
+          "word": "as",
+          "start_ms": 387130,
+          "end_ms": 387569
+        },
+        {
+          "word": "much",
+          "start_ms": 387569,
+          "end_ms": 388007
+        },
+        {
+          "word": "as",
+          "start_ms": 388007,
+          "end_ms": 388446
+        },
+        {
+          "word": "to",
+          "start_ms": 388446,
+          "end_ms": 388885
+        },
+        {
+          "word": "say",
+          "start_ms": 388885,
+          "end_ms": 389324
+        },
+        {
+          "word": "that",
+          "start_ms": 389324,
+          "end_ms": 389763
+        },
+        {
+          "word": "he",
+          "start_ms": 389763,
+          "end_ms": 390202
+        },
+        {
+          "word": "too",
+          "start_ms": 390202,
+          "end_ms": 390641
+        },
+        {
+          "word": "should",
+          "start_ms": 390641,
+          "end_ms": 391080
+        },
+        {
+          "word": "be",
+          "start_ms": 391080,
+          "end_ms": 391519
+        },
+        {
+          "word": "taken",
+          "start_ms": 391519,
+          "end_ms": 391958
+        },
+        {
+          "word": "to",
+          "start_ms": 391958,
+          "end_ms": 392397
+        },
+        {
+          "word": "be",
+          "start_ms": 392397,
+          "end_ms": 392836
+        },
+        {
+          "word": "questioned",
+          "start_ms": 392836,
+          "end_ms": 393275
+        },
+        {
+          "word": "And",
+          "start_ms": 393275,
+          "end_ms": 393714
+        },
+        {
+          "word": "all",
+          "start_ms": 393714,
+          "end_ms": 394152
+        },
+        {
+          "word": "the",
+          "start_ms": 394152,
+          "end_ms": 394591
+        },
+        {
+          "word": "labourers",
+          "start_ms": 394591,
+          "end_ms": 395030
+        },
+        {
+          "word": "that",
+          "start_ms": 395030,
+          "end_ms": 395469
+        },
+        {
+          "word": "were",
+          "start_ms": 395469,
+          "end_ms": 395908
+        },
+        {
+          "word": "standing",
+          "start_ms": 395908,
+          "end_ms": 396347
+        },
+        {
+          "word": "near",
+          "start_ms": 396347,
+          "end_ms": 396786
+        },
+        {
+          "word": "the",
+          "start_ms": 396786,
+          "end_ms": 397225
+        },
+        {
+          "word": "fire",
+          "start_ms": 397225,
+          "end_ms": 397664
+        },
+        {
+          "word": "must",
+          "start_ms": 397664,
+          "end_ms": 398103
+        },
+        {
+          "word": "have",
+          "start_ms": 398103,
+          "end_ms": 398542
+        },
+        {
+          "word": "looked",
+          "start_ms": 398542,
+          "end_ms": 398981
+        },
+        {
+          "word": "sourly",
+          "start_ms": 398981,
+          "end_ms": 399420
+        },
+        {
+          "word": "and",
+          "start_ms": 399420,
+          "end_ms": 399858
+        },
+        {
+          "word": "suspiciously",
+          "start_ms": 399858,
+          "end_ms": 400297
+        },
+        {
+          "word": "at",
+          "start_ms": 400297,
+          "end_ms": 400736
+        },
+        {
+          "word": "him",
+          "start_ms": 400736,
+          "end_ms": 401175
+        },
+        {
+          "word": "because",
+          "start_ms": 401175,
+          "end_ms": 401614
+        },
+        {
+          "word": "he",
+          "start_ms": 401614,
+          "end_ms": 402053
+        },
+        {
+          "word": "was",
+          "start_ms": 402053,
+          "end_ms": 402492
+        },
+        {
+          "word": "confused",
+          "start_ms": 402492,
+          "end_ms": 402931
+        },
+        {
+          "word": "and",
+          "start_ms": 402931,
+          "end_ms": 403370
+        },
+        {
+          "word": "said",
+          "start_ms": 403370,
+          "end_ms": 403809
+        },
+        {
+          "word": "I",
+          "start_ms": 403809,
+          "end_ms": 404248
+        },
+        {
+          "word": "don",
+          "start_ms": 404248,
+          "end_ms": 404687
+        },
+        {
+          "word": "t",
+          "start_ms": 404687,
+          "end_ms": 405125
+        },
+        {
+          "word": "know",
+          "start_ms": 405125,
+          "end_ms": 405564
+        },
+        {
+          "word": "Him",
+          "start_ms": 405564,
+          "end_ms": 406003
+        },
+        {
+          "word": "A",
+          "start_ms": 406003,
+          "end_ms": 406442
+        },
+        {
+          "word": "little",
+          "start_ms": 406442,
+          "end_ms": 406881
+        },
+        {
+          "word": "while",
+          "start_ms": 406881,
+          "end_ms": 407320
+        },
+        {
+          "word": "after",
+          "start_ms": 407320,
+          "end_ms": 407759
+        },
+        {
+          "word": "again",
+          "start_ms": 407759,
+          "end_ms": 408198
+        },
+        {
+          "word": "someone",
+          "start_ms": 408198,
+          "end_ms": 408637
+        },
+        {
+          "word": "recognized",
+          "start_ms": 408637,
+          "end_ms": 409076
+        },
+        {
+          "word": "him",
+          "start_ms": 409076,
+          "end_ms": 409515
+        },
+        {
+          "word": "as",
+          "start_ms": 409515,
+          "end_ms": 409954
+        },
+        {
+          "word": "one",
+          "start_ms": 409954,
+          "end_ms": 410393
+        },
+        {
+          "word": "of",
+          "start_ms": 410393,
+          "end_ms": 410832
+        },
+        {
+          "word": "Jesus",
+          "start_ms": 410832,
+          "end_ms": 411270
+        },
+        {
+          "word": "disciples",
+          "start_ms": 411270,
+          "end_ms": 411709
+        },
+        {
+          "word": "and",
+          "start_ms": 411709,
+          "end_ms": 412148
+        },
+        {
+          "word": "said",
+          "start_ms": 412148,
+          "end_ms": 412587
+        },
+        {
+          "word": "Thou",
+          "start_ms": 412587,
+          "end_ms": 413026
+        },
+        {
+          "word": "too",
+          "start_ms": 413026,
+          "end_ms": 413465
+        },
+        {
+          "word": "art",
+          "start_ms": 413465,
+          "end_ms": 413904
+        },
+        {
+          "word": "one",
+          "start_ms": 413904,
+          "end_ms": 414343
+        },
+        {
+          "word": "of",
+          "start_ms": 414343,
+          "end_ms": 414782
+        },
+        {
+          "word": "them",
+          "start_ms": 414782,
+          "end_ms": 415221
+        },
+        {
+          "word": "but",
+          "start_ms": 415221,
+          "end_ms": 415660
+        },
+        {
+          "word": "again",
+          "start_ms": 415660,
+          "end_ms": 416099
+        },
+        {
+          "word": "he",
+          "start_ms": 416099,
+          "end_ms": 416538
+        },
+        {
+          "word": "denied",
+          "start_ms": 416538,
+          "end_ms": 416976
+        },
+        {
+          "word": "it",
+          "start_ms": 416976,
+          "end_ms": 417415
+        },
+        {
+          "word": "And",
+          "start_ms": 417415,
+          "end_ms": 417854
+        },
+        {
+          "word": "for",
+          "start_ms": 417854,
+          "end_ms": 418293
+        },
+        {
+          "word": "the",
+          "start_ms": 418293,
+          "end_ms": 418732
+        },
+        {
+          "word": "third",
+          "start_ms": 418732,
+          "end_ms": 419171
+        },
+        {
+          "word": "time",
+          "start_ms": 419171,
+          "end_ms": 419610
+        },
+        {
+          "word": "someone",
+          "start_ms": 419610,
+          "end_ms": 420049
+        },
+        {
+          "word": "turned",
+          "start_ms": 420049,
+          "end_ms": 420488
+        },
+        {
+          "word": "to",
+          "start_ms": 420488,
+          "end_ms": 420927
+        },
+        {
+          "word": "him",
+          "start_ms": 420927,
+          "end_ms": 421366
+        },
+        {
+          "word": "Why",
+          "start_ms": 421366,
+          "end_ms": 421805
+        },
+        {
+          "word": "did",
+          "start_ms": 421805,
+          "end_ms": 422244
+        },
+        {
+          "word": "I",
+          "start_ms": 422244,
+          "end_ms": 422682
+        },
+        {
+          "word": "not",
+          "start_ms": 422682,
+          "end_ms": 423121
+        },
+        {
+          "word": "see",
+          "start_ms": 423121,
+          "end_ms": 423560
+        },
+        {
+          "word": "thee",
+          "start_ms": 423560,
+          "end_ms": 423999
+        },
+        {
+          "word": "with",
+          "start_ms": 423999,
+          "end_ms": 424438
+        },
+        {
+          "word": "Him",
+          "start_ms": 424438,
+          "end_ms": 424877
+        },
+        {
+          "word": "in",
+          "start_ms": 424877,
+          "end_ms": 425316
+        },
+        {
+          "word": "the",
+          "start_ms": 425316,
+          "end_ms": 425755
+        },
+        {
+          "word": "garden",
+          "start_ms": 425755,
+          "end_ms": 426194
+        },
+        {
+          "word": "to",
+          "start_ms": 426194,
+          "end_ms": 426633
+        },
+        {
+          "word": "day",
+          "start_ms": 426633,
+          "end_ms": 427072
+        },
+        {
+          "word": "For",
+          "start_ms": 427072,
+          "end_ms": 427511
+        },
+        {
+          "word": "the",
+          "start_ms": 427511,
+          "end_ms": 427950
+        },
+        {
+          "word": "third",
+          "start_ms": 427950,
+          "end_ms": 428388
+        },
+        {
+          "word": "time",
+          "start_ms": 428388,
+          "end_ms": 428827
+        },
+        {
+          "word": "he",
+          "start_ms": 428827,
+          "end_ms": 429266
+        },
+        {
+          "word": "denied",
+          "start_ms": 429266,
+          "end_ms": 429705
+        },
+        {
+          "word": "it",
+          "start_ms": 429705,
+          "end_ms": 430144
+        },
+        {
+          "word": "And",
+          "start_ms": 430144,
+          "end_ms": 430583
+        },
+        {
+          "word": "immediately",
+          "start_ms": 430583,
+          "end_ms": 431022
+        },
+        {
+          "word": "after",
+          "start_ms": 431022,
+          "end_ms": 431461
+        },
+        {
+          "word": "that",
+          "start_ms": 431461,
+          "end_ms": 431900
+        },
+        {
+          "word": "time",
+          "start_ms": 431900,
+          "end_ms": 432339
+        },
+        {
+          "word": "the",
+          "start_ms": 432339,
+          "end_ms": 432778
+        },
+        {
+          "word": "cock",
+          "start_ms": 432778,
+          "end_ms": 433217
+        },
+        {
+          "word": "crowed",
+          "start_ms": 433217,
+          "end_ms": 433656
+        },
+        {
+          "word": "and",
+          "start_ms": 433656,
+          "end_ms": 434094
+        },
+        {
+          "word": "Peter",
+          "start_ms": 434094,
+          "end_ms": 434533
+        },
+        {
+          "word": "looking",
+          "start_ms": 434533,
+          "end_ms": 434972
+        },
+        {
+          "word": "from",
+          "start_ms": 434972,
+          "end_ms": 435411
+        },
+        {
+          "word": "afar",
+          "start_ms": 435411,
+          "end_ms": 435850
+        },
+        {
+          "word": "off",
+          "start_ms": 435850,
+          "end_ms": 436289
+        },
+        {
+          "word": "at",
+          "start_ms": 436289,
+          "end_ms": 436728
+        },
+        {
+          "word": "Jesus",
+          "start_ms": 436728,
+          "end_ms": 437167
+        },
+        {
+          "word": "remembered",
+          "start_ms": 437167,
+          "end_ms": 437606
+        },
+        {
+          "word": "the",
+          "start_ms": 437606,
+          "end_ms": 438045
+        },
+        {
+          "word": "words",
+          "start_ms": 438045,
+          "end_ms": 438484
+        },
+        {
+          "word": "He",
+          "start_ms": 438484,
+          "end_ms": 438923
+        },
+        {
+          "word": "had",
+          "start_ms": 438923,
+          "end_ms": 439362
+        },
+        {
+          "word": "said",
+          "start_ms": 439362,
+          "end_ms": 439800
+        },
+        {
+          "word": "to",
+          "start_ms": 439800,
+          "end_ms": 440239
+        },
+        {
+          "word": "him",
+          "start_ms": 440239,
+          "end_ms": 440678
+        },
+        {
+          "word": "in",
+          "start_ms": 440678,
+          "end_ms": 441117
+        },
+        {
+          "word": "the",
+          "start_ms": 441117,
+          "end_ms": 441556
+        },
+        {
+          "word": "evening",
+          "start_ms": 441556,
+          "end_ms": 441995
+        },
+        {
+          "word": "He",
+          "start_ms": 441995,
+          "end_ms": 442434
+        },
+        {
+          "word": "remembered",
+          "start_ms": 442434,
+          "end_ms": 442873
+        },
+        {
+          "word": "he",
+          "start_ms": 442873,
+          "end_ms": 443312
+        },
+        {
+          "word": "came",
+          "start_ms": 443312,
+          "end_ms": 443751
+        },
+        {
+          "word": "to",
+          "start_ms": 443751,
+          "end_ms": 444190
+        },
+        {
+          "word": "himself",
+          "start_ms": 444190,
+          "end_ms": 444629
+        },
+        {
+          "word": "went",
+          "start_ms": 444629,
+          "end_ms": 445068
+        },
+        {
+          "word": "out",
+          "start_ms": 445068,
+          "end_ms": 445506
+        },
+        {
+          "word": "of",
+          "start_ms": 445506,
+          "end_ms": 445945
+        },
+        {
+          "word": "the",
+          "start_ms": 445945,
+          "end_ms": 446384
+        },
+        {
+          "word": "yard",
+          "start_ms": 446384,
+          "end_ms": 446823
+        },
+        {
+          "word": "and",
+          "start_ms": 446823,
+          "end_ms": 447262
+        },
+        {
+          "word": "wept",
+          "start_ms": 447262,
+          "end_ms": 447701
+        },
+        {
+          "word": "bitterly",
+          "start_ms": 447701,
+          "end_ms": 448140
+        },
+        {
+          "word": "bitterly",
+          "start_ms": 448140,
+          "end_ms": 448579
+        },
+        {
+          "word": "In",
+          "start_ms": 448579,
+          "end_ms": 449018
+        },
+        {
+          "word": "the",
+          "start_ms": 449018,
+          "end_ms": 449457
+        },
+        {
+          "word": "Gospel",
+          "start_ms": 449457,
+          "end_ms": 449896
+        },
+        {
+          "word": "it",
+          "start_ms": 449896,
+          "end_ms": 450335
+        },
+        {
+          "word": "is",
+          "start_ms": 450335,
+          "end_ms": 450774
+        },
+        {
+          "word": "written",
+          "start_ms": 450774,
+          "end_ms": 451212
+        },
+        {
+          "word": "He",
+          "start_ms": 451212,
+          "end_ms": 451651
+        },
+        {
+          "word": "went",
+          "start_ms": 451651,
+          "end_ms": 452090
+        },
+        {
+          "word": "out",
+          "start_ms": 452090,
+          "end_ms": 452529
+        },
+        {
+          "word": "and",
+          "start_ms": 452529,
+          "end_ms": 452968
+        },
+        {
+          "word": "wept",
+          "start_ms": 452968,
+          "end_ms": 453407
+        },
+        {
+          "word": "bitterly",
+          "start_ms": 453407,
+          "end_ms": 453846
+        },
+        {
+          "word": "I",
+          "start_ms": 453846,
+          "end_ms": 454285
+        },
+        {
+          "word": "imagine",
+          "start_ms": 454285,
+          "end_ms": 454724
+        },
+        {
+          "word": "it",
+          "start_ms": 454724,
+          "end_ms": 455163
+        },
+        {
+          "word": "the",
+          "start_ms": 455163,
+          "end_ms": 455602
+        },
+        {
+          "word": "still",
+          "start_ms": 455602,
+          "end_ms": 456041
+        },
+        {
+          "word": "still",
+          "start_ms": 456041,
+          "end_ms": 456480
+        },
+        {
+          "word": "dark",
+          "start_ms": 456480,
+          "end_ms": 456918
+        },
+        {
+          "word": "dark",
+          "start_ms": 456918,
+          "end_ms": 457357
+        },
+        {
+          "word": "garden",
+          "start_ms": 457357,
+          "end_ms": 457796
+        },
+        {
+          "word": "and",
+          "start_ms": 457796,
+          "end_ms": 458235
+        },
+        {
+          "word": "in",
+          "start_ms": 458235,
+          "end_ms": 458674
+        },
+        {
+          "word": "the",
+          "start_ms": 458674,
+          "end_ms": 459113
+        },
+        {
+          "word": "stillness",
+          "start_ms": 459113,
+          "end_ms": 459552
+        },
+        {
+          "word": "faintly",
+          "start_ms": 459552,
+          "end_ms": 459991
+        },
+        {
+          "word": "audible",
+          "start_ms": 459991,
+          "end_ms": 460430
+        },
+        {
+          "word": "smothered",
+          "start_ms": 460430,
+          "end_ms": 460869
+        },
+        {
+          "word": "sobbing",
+          "start_ms": 460869,
+          "end_ms": 461308
+        },
+        {
+          "word": "T",
+          "start_ms": 461308,
+          "end_ms": 461747
+        },
+        {
+          "word": "he",
+          "start_ms": 461747,
+          "end_ms": 462186
+        },
+        {
+          "word": "student",
+          "start_ms": 462186,
+          "end_ms": 462624
+        },
+        {
+          "word": "sighed",
+          "start_ms": 462624,
+          "end_ms": 463063
+        },
+        {
+          "word": "and",
+          "start_ms": 463063,
+          "end_ms": 463502
+        },
+        {
+          "word": "sank",
+          "start_ms": 463502,
+          "end_ms": 463941
+        },
+        {
+          "word": "into",
+          "start_ms": 463941,
+          "end_ms": 464380
+        },
+        {
+          "word": "thought",
+          "start_ms": 464380,
+          "end_ms": 464819
+        },
+        {
+          "word": "Still",
+          "start_ms": 464819,
+          "end_ms": 465258
+        },
+        {
+          "word": "smiling",
+          "start_ms": 465258,
+          "end_ms": 465697
+        },
+        {
+          "word": "Vasilisa",
+          "start_ms": 465697,
+          "end_ms": 466136
+        },
+        {
+          "word": "suddenly",
+          "start_ms": 466136,
+          "end_ms": 466575
+        },
+        {
+          "word": "gave",
+          "start_ms": 466575,
+          "end_ms": 467014
+        },
+        {
+          "word": "a",
+          "start_ms": 467014,
+          "end_ms": 467453
+        },
+        {
+          "word": "gulp",
+          "start_ms": 467453,
+          "end_ms": 467892
+        },
+        {
+          "word": "big",
+          "start_ms": 467892,
+          "end_ms": 468330
+        },
+        {
+          "word": "tears",
+          "start_ms": 468330,
+          "end_ms": 468769
+        },
+        {
+          "word": "flowed",
+          "start_ms": 468769,
+          "end_ms": 469208
+        },
+        {
+          "word": "freely",
+          "start_ms": 469208,
+          "end_ms": 469647
+        },
+        {
+          "word": "down",
+          "start_ms": 469647,
+          "end_ms": 470086
+        },
+        {
+          "word": "her",
+          "start_ms": 470086,
+          "end_ms": 470525
+        },
+        {
+          "word": "cheeks",
+          "start_ms": 470525,
+          "end_ms": 470964
+        },
+        {
+          "word": "and",
+          "start_ms": 470964,
+          "end_ms": 471403
+        },
+        {
+          "word": "she",
+          "start_ms": 471403,
+          "end_ms": 471842
+        },
+        {
+          "word": "screened",
+          "start_ms": 471842,
+          "end_ms": 472281
+        },
+        {
+          "word": "her",
+          "start_ms": 472281,
+          "end_ms": 472720
+        },
+        {
+          "word": "face",
+          "start_ms": 472720,
+          "end_ms": 473159
+        },
+        {
+          "word": "from",
+          "start_ms": 473159,
+          "end_ms": 473598
+        },
+        {
+          "word": "the",
+          "start_ms": 473598,
+          "end_ms": 474036
+        },
+        {
+          "word": "fire",
+          "start_ms": 474036,
+          "end_ms": 474475
+        },
+        {
+          "word": "with",
+          "start_ms": 474475,
+          "end_ms": 474914
+        },
+        {
+          "word": "her",
+          "start_ms": 474914,
+          "end_ms": 475353
+        },
+        {
+          "word": "sleeve",
+          "start_ms": 475353,
+          "end_ms": 475792
+        },
+        {
+          "word": "as",
+          "start_ms": 475792,
+          "end_ms": 476231
+        },
+        {
+          "word": "though",
+          "start_ms": 476231,
+          "end_ms": 476670
+        },
+        {
+          "word": "ashamed",
+          "start_ms": 476670,
+          "end_ms": 477109
+        },
+        {
+          "word": "of",
+          "start_ms": 477109,
+          "end_ms": 477548
+        },
+        {
+          "word": "her",
+          "start_ms": 477548,
+          "end_ms": 477987
+        },
+        {
+          "word": "tears",
+          "start_ms": 477987,
+          "end_ms": 478426
+        },
+        {
+          "word": "and",
+          "start_ms": 478426,
+          "end_ms": 478865
+        },
+        {
+          "word": "Lukerya",
+          "start_ms": 478865,
+          "end_ms": 479304
+        },
+        {
+          "word": "staring",
+          "start_ms": 479304,
+          "end_ms": 479742
+        },
+        {
+          "word": "immovably",
+          "start_ms": 479742,
+          "end_ms": 480181
+        },
+        {
+          "word": "at",
+          "start_ms": 480181,
+          "end_ms": 480620
+        },
+        {
+          "word": "the",
+          "start_ms": 480620,
+          "end_ms": 481059
+        },
+        {
+          "word": "student",
+          "start_ms": 481059,
+          "end_ms": 481498
+        },
+        {
+          "word": "flushed",
+          "start_ms": 481498,
+          "end_ms": 481937
+        },
+        {
+          "word": "crimson",
+          "start_ms": 481937,
+          "end_ms": 482376
+        },
+        {
+          "word": "and",
+          "start_ms": 482376,
+          "end_ms": 482815
+        },
+        {
+          "word": "her",
+          "start_ms": 482815,
+          "end_ms": 483254
+        },
+        {
+          "word": "expression",
+          "start_ms": 483254,
+          "end_ms": 483693
+        },
+        {
+          "word": "became",
+          "start_ms": 483693,
+          "end_ms": 484132
+        },
+        {
+          "word": "strained",
+          "start_ms": 484132,
+          "end_ms": 484571
+        },
+        {
+          "word": "and",
+          "start_ms": 484571,
+          "end_ms": 485010
+        },
+        {
+          "word": "heavy",
+          "start_ms": 485010,
+          "end_ms": 485448
+        },
+        {
+          "word": "like",
+          "start_ms": 485448,
+          "end_ms": 485887
+        },
+        {
+          "word": "that",
+          "start_ms": 485887,
+          "end_ms": 486326
+        },
+        {
+          "word": "of",
+          "start_ms": 486326,
+          "end_ms": 486765
+        },
+        {
+          "word": "someone",
+          "start_ms": 486765,
+          "end_ms": 487204
+        },
+        {
+          "word": "enduring",
+          "start_ms": 487204,
+          "end_ms": 487643
+        },
+        {
+          "word": "intense",
+          "start_ms": 487643,
+          "end_ms": 488082
+        },
+        {
+          "word": "pain",
+          "start_ms": 488082,
+          "end_ms": 488521
+        },
+        {
+          "word": "The",
+          "start_ms": 488521,
+          "end_ms": 488960
+        },
+        {
+          "word": "labourers",
+          "start_ms": 488960,
+          "end_ms": 489399
+        },
+        {
+          "word": "came",
+          "start_ms": 489399,
+          "end_ms": 489838
+        },
+        {
+          "word": "back",
+          "start_ms": 489838,
+          "end_ms": 490277
+        },
+        {
+          "word": "from",
+          "start_ms": 490277,
+          "end_ms": 490716
+        },
+        {
+          "word": "the",
+          "start_ms": 490716,
+          "end_ms": 491154
+        },
+        {
+          "word": "river",
+          "start_ms": 491154,
+          "end_ms": 491593
+        },
+        {
+          "word": "and",
+          "start_ms": 491593,
+          "end_ms": 492032
+        },
+        {
+          "word": "one",
+          "start_ms": 492032,
+          "end_ms": 492471
+        },
+        {
+          "word": "of",
+          "start_ms": 492471,
+          "end_ms": 492910
+        },
+        {
+          "word": "them",
+          "start_ms": 492910,
+          "end_ms": 493349
+        },
+        {
+          "word": "riding",
+          "start_ms": 493349,
+          "end_ms": 493788
+        },
+        {
+          "word": "a",
+          "start_ms": 493788,
+          "end_ms": 494227
+        },
+        {
+          "word": "horse",
+          "start_ms": 494227,
+          "end_ms": 494666
+        },
+        {
+          "word": "was",
+          "start_ms": 494666,
+          "end_ms": 495105
+        },
+        {
+          "word": "quite",
+          "start_ms": 495105,
+          "end_ms": 495544
+        },
+        {
+          "word": "near",
+          "start_ms": 495544,
+          "end_ms": 495983
+        },
+        {
+          "word": "and",
+          "start_ms": 495983,
+          "end_ms": 496422
+        },
+        {
+          "word": "the",
+          "start_ms": 496422,
+          "end_ms": 496860
+        },
+        {
+          "word": "light",
+          "start_ms": 496860,
+          "end_ms": 497299
+        },
+        {
+          "word": "from",
+          "start_ms": 497299,
+          "end_ms": 497738
+        },
+        {
+          "word": "the",
+          "start_ms": 497738,
+          "end_ms": 498177
+        },
+        {
+          "word": "fire",
+          "start_ms": 498177,
+          "end_ms": 498616
+        },
+        {
+          "word": "quivered",
+          "start_ms": 498616,
+          "end_ms": 499055
+        },
+        {
+          "word": "upon",
+          "start_ms": 499055,
+          "end_ms": 499494
+        },
+        {
+          "word": "him",
+          "start_ms": 499494,
+          "end_ms": 499933
+        },
+        {
+          "word": "The",
+          "start_ms": 499933,
+          "end_ms": 500372
+        },
+        {
+          "word": "student",
+          "start_ms": 500372,
+          "end_ms": 500811
+        },
+        {
+          "word": "said",
+          "start_ms": 500811,
+          "end_ms": 501250
+        },
+        {
+          "word": "good",
+          "start_ms": 501250,
+          "end_ms": 501689
+        },
+        {
+          "word": "night",
+          "start_ms": 501689,
+          "end_ms": 502128
+        },
+        {
+          "word": "to",
+          "start_ms": 502128,
+          "end_ms": 502566
+        },
+        {
+          "word": "the",
+          "start_ms": 502566,
+          "end_ms": 503005
+        },
+        {
+          "word": "widows",
+          "start_ms": 503005,
+          "end_ms": 503444
+        },
+        {
+          "word": "and",
+          "start_ms": 503444,
+          "end_ms": 503883
+        },
+        {
+          "word": "went",
+          "start_ms": 503883,
+          "end_ms": 504322
+        },
+        {
+          "word": "on",
+          "start_ms": 504322,
+          "end_ms": 504761
+        },
+        {
+          "word": "And",
+          "start_ms": 504761,
+          "end_ms": 505200
+        },
+        {
+          "word": "again",
+          "start_ms": 505200,
+          "end_ms": 505639
+        },
+        {
+          "word": "the",
+          "start_ms": 505639,
+          "end_ms": 506078
+        },
+        {
+          "word": "darkness",
+          "start_ms": 506078,
+          "end_ms": 506517
+        },
+        {
+          "word": "was",
+          "start_ms": 506517,
+          "end_ms": 506956
+        },
+        {
+          "word": "about",
+          "start_ms": 506956,
+          "end_ms": 507395
+        },
+        {
+          "word": "him",
+          "start_ms": 507395,
+          "end_ms": 507834
+        },
+        {
+          "word": "and",
+          "start_ms": 507834,
+          "end_ms": 508272
+        },
+        {
+          "word": "his",
+          "start_ms": 508272,
+          "end_ms": 508711
+        },
+        {
+          "word": "fingers",
+          "start_ms": 508711,
+          "end_ms": 509150
+        },
+        {
+          "word": "began",
+          "start_ms": 509150,
+          "end_ms": 509589
+        },
+        {
+          "word": "to",
+          "start_ms": 509589,
+          "end_ms": 510028
+        },
+        {
+          "word": "be",
+          "start_ms": 510028,
+          "end_ms": 510467
+        },
+        {
+          "word": "numb",
+          "start_ms": 510467,
+          "end_ms": 510906
+        },
+        {
+          "word": "A",
+          "start_ms": 510906,
+          "end_ms": 511345
+        },
+        {
+          "word": "cruel",
+          "start_ms": 511345,
+          "end_ms": 511784
+        },
+        {
+          "word": "wind",
+          "start_ms": 511784,
+          "end_ms": 512223
+        },
+        {
+          "word": "was",
+          "start_ms": 512223,
+          "end_ms": 512662
+        },
+        {
+          "word": "blowing",
+          "start_ms": 512662,
+          "end_ms": 513101
+        },
+        {
+          "word": "winter",
+          "start_ms": 513101,
+          "end_ms": 513540
+        },
+        {
+          "word": "really",
+          "start_ms": 513540,
+          "end_ms": 513978
+        },
+        {
+          "word": "had",
+          "start_ms": 513978,
+          "end_ms": 514417
+        },
+        {
+          "word": "come",
+          "start_ms": 514417,
+          "end_ms": 514856
+        },
+        {
+          "word": "back",
+          "start_ms": 514856,
+          "end_ms": 515295
+        },
+        {
+          "word": "and",
+          "start_ms": 515295,
+          "end_ms": 515734
+        },
+        {
+          "word": "it",
+          "start_ms": 515734,
+          "end_ms": 516173
+        },
+        {
+          "word": "did",
+          "start_ms": 516173,
+          "end_ms": 516612
+        },
+        {
+          "word": "not",
+          "start_ms": 516612,
+          "end_ms": 517051
+        },
+        {
+          "word": "feel",
+          "start_ms": 517051,
+          "end_ms": 517490
+        },
+        {
+          "word": "as",
+          "start_ms": 517490,
+          "end_ms": 517929
+        },
+        {
+          "word": "though",
+          "start_ms": 517929,
+          "end_ms": 518368
+        },
+        {
+          "word": "Easter",
+          "start_ms": 518368,
+          "end_ms": 518807
+        },
+        {
+          "word": "would",
+          "start_ms": 518807,
+          "end_ms": 519246
+        },
+        {
+          "word": "be",
+          "start_ms": 519246,
+          "end_ms": 519684
+        },
+        {
+          "word": "the",
+          "start_ms": 519684,
+          "end_ms": 520123
+        },
+        {
+          "word": "day",
+          "start_ms": 520123,
+          "end_ms": 520562
+        },
+        {
+          "word": "after",
+          "start_ms": 520562,
+          "end_ms": 521001
+        },
+        {
+          "word": "to",
+          "start_ms": 521001,
+          "end_ms": 521440
+        },
+        {
+          "word": "morrow",
+          "start_ms": 521440,
+          "end_ms": 521879
+        },
+        {
+          "word": "Now",
+          "start_ms": 521879,
+          "end_ms": 522318
+        },
+        {
+          "word": "the",
+          "start_ms": 522318,
+          "end_ms": 522757
+        },
+        {
+          "word": "student",
+          "start_ms": 522757,
+          "end_ms": 523196
+        },
+        {
+          "word": "was",
+          "start_ms": 523196,
+          "end_ms": 523635
+        },
+        {
+          "word": "thinking",
+          "start_ms": 523635,
+          "end_ms": 524074
+        },
+        {
+          "word": "about",
+          "start_ms": 524074,
+          "end_ms": 524513
+        },
+        {
+          "word": "Vasilisa",
+          "start_ms": 524513,
+          "end_ms": 524952
+        },
+        {
+          "word": "since",
+          "start_ms": 524952,
+          "end_ms": 525390
+        },
+        {
+          "word": "she",
+          "start_ms": 525390,
+          "end_ms": 525829
+        },
+        {
+          "word": "had",
+          "start_ms": 525829,
+          "end_ms": 526268
+        },
+        {
+          "word": "shed",
+          "start_ms": 526268,
+          "end_ms": 526707
+        },
+        {
+          "word": "tears",
+          "start_ms": 526707,
+          "end_ms": 527146
+        },
+        {
+          "word": "all",
+          "start_ms": 527146,
+          "end_ms": 527585
+        },
+        {
+          "word": "that",
+          "start_ms": 527585,
+          "end_ms": 528024
+        },
+        {
+          "word": "had",
+          "start_ms": 528024,
+          "end_ms": 528463
+        },
+        {
+          "word": "happened",
+          "start_ms": 528463,
+          "end_ms": 528902
+        },
+        {
+          "word": "to",
+          "start_ms": 528902,
+          "end_ms": 529341
+        },
+        {
+          "word": "Peter",
+          "start_ms": 529341,
+          "end_ms": 529780
+        },
+        {
+          "word": "the",
+          "start_ms": 529780,
+          "end_ms": 530219
+        },
+        {
+          "word": "night",
+          "start_ms": 530219,
+          "end_ms": 530658
+        },
+        {
+          "word": "before",
+          "start_ms": 530658,
+          "end_ms": 531096
+        },
+        {
+          "word": "the",
+          "start_ms": 531096,
+          "end_ms": 531535
+        },
+        {
+          "word": "Crucifixion",
+          "start_ms": 531535,
+          "end_ms": 531974
+        },
+        {
+          "word": "must",
+          "start_ms": 531974,
+          "end_ms": 532413
+        },
+        {
+          "word": "have",
+          "start_ms": 532413,
+          "end_ms": 532852
+        },
+        {
+          "word": "some",
+          "start_ms": 532852,
+          "end_ms": 533291
+        },
+        {
+          "word": "relation",
+          "start_ms": 533291,
+          "end_ms": 533730
+        },
+        {
+          "word": "to",
+          "start_ms": 533730,
+          "end_ms": 534169
+        },
+        {
+          "word": "her",
+          "start_ms": 534169,
+          "end_ms": 534608
+        },
+        {
+          "word": "He",
+          "start_ms": 534608,
+          "end_ms": 535047
+        },
+        {
+          "word": "looked",
+          "start_ms": 535047,
+          "end_ms": 535486
+        },
+        {
+          "word": "round",
+          "start_ms": 535486,
+          "end_ms": 535925
+        },
+        {
+          "word": "The",
+          "start_ms": 535925,
+          "end_ms": 536364
+        },
+        {
+          "word": "solitary",
+          "start_ms": 536364,
+          "end_ms": 536802
+        },
+        {
+          "word": "light",
+          "start_ms": 536802,
+          "end_ms": 537241
+        },
+        {
+          "word": "was",
+          "start_ms": 537241,
+          "end_ms": 537680
+        },
+        {
+          "word": "still",
+          "start_ms": 537680,
+          "end_ms": 538119
+        },
+        {
+          "word": "gleaming",
+          "start_ms": 538119,
+          "end_ms": 538558
+        },
+        {
+          "word": "in",
+          "start_ms": 538558,
+          "end_ms": 538997
+        },
+        {
+          "word": "the",
+          "start_ms": 538997,
+          "end_ms": 539436
+        },
+        {
+          "word": "darkness",
+          "start_ms": 539436,
+          "end_ms": 539875
+        },
+        {
+          "word": "and",
+          "start_ms": 539875,
+          "end_ms": 540314
+        },
+        {
+          "word": "no",
+          "start_ms": 540314,
+          "end_ms": 540753
+        },
+        {
+          "word": "figures",
+          "start_ms": 540753,
+          "end_ms": 541192
+        },
+        {
+          "word": "could",
+          "start_ms": 541192,
+          "end_ms": 541631
+        },
+        {
+          "word": "be",
+          "start_ms": 541631,
+          "end_ms": 542070
+        },
+        {
+          "word": "seen",
+          "start_ms": 542070,
+          "end_ms": 542508
+        },
+        {
+          "word": "near",
+          "start_ms": 542508,
+          "end_ms": 542947
+        },
+        {
+          "word": "it",
+          "start_ms": 542947,
+          "end_ms": 543386
+        },
+        {
+          "word": "now",
+          "start_ms": 543386,
+          "end_ms": 543825
+        },
+        {
+          "word": "The",
+          "start_ms": 543825,
+          "end_ms": 544264
+        },
+        {
+          "word": "student",
+          "start_ms": 544264,
+          "end_ms": 544703
+        },
+        {
+          "word": "thought",
+          "start_ms": 544703,
+          "end_ms": 545142
+        },
+        {
+          "word": "again",
+          "start_ms": 545142,
+          "end_ms": 545581
+        },
+        {
+          "word": "that",
+          "start_ms": 545581,
+          "end_ms": 546020
+        },
+        {
+          "word": "if",
+          "start_ms": 546020,
+          "end_ms": 546459
+        },
+        {
+          "word": "Vasilisa",
+          "start_ms": 546459,
+          "end_ms": 546898
+        },
+        {
+          "word": "had",
+          "start_ms": 546898,
+          "end_ms": 547337
+        },
+        {
+          "word": "shed",
+          "start_ms": 547337,
+          "end_ms": 547776
+        },
+        {
+          "word": "tears",
+          "start_ms": 547776,
+          "end_ms": 548214
+        },
+        {
+          "word": "and",
+          "start_ms": 548214,
+          "end_ms": 548653
+        },
+        {
+          "word": "her",
+          "start_ms": 548653,
+          "end_ms": 549092
+        },
+        {
+          "word": "daughter",
+          "start_ms": 549092,
+          "end_ms": 549531
+        },
+        {
+          "word": "had",
+          "start_ms": 549531,
+          "end_ms": 549970
+        },
+        {
+          "word": "been",
+          "start_ms": 549970,
+          "end_ms": 550409
+        },
+        {
+          "word": "troubled",
+          "start_ms": 550409,
+          "end_ms": 550848
+        },
+        {
+          "word": "it",
+          "start_ms": 550848,
+          "end_ms": 551287
+        },
+        {
+          "word": "was",
+          "start_ms": 551287,
+          "end_ms": 551726
+        },
+        {
+          "word": "evident",
+          "start_ms": 551726,
+          "end_ms": 552165
+        },
+        {
+          "word": "that",
+          "start_ms": 552165,
+          "end_ms": 552604
+        },
+        {
+          "word": "what",
+          "start_ms": 552604,
+          "end_ms": 553043
+        },
+        {
+          "word": "he",
+          "start_ms": 553043,
+          "end_ms": 553482
+        },
+        {
+          "word": "had",
+          "start_ms": 553482,
+          "end_ms": 553920
+        },
+        {
+          "word": "just",
+          "start_ms": 553920,
+          "end_ms": 554359
+        },
+        {
+          "word": "been",
+          "start_ms": 554359,
+          "end_ms": 554798
+        },
+        {
+          "word": "telling",
+          "start_ms": 554798,
+          "end_ms": 555237
+        },
+        {
+          "word": "them",
+          "start_ms": 555237,
+          "end_ms": 555676
+        },
+        {
+          "word": "about",
+          "start_ms": 555676,
+          "end_ms": 556115
+        },
+        {
+          "word": "which",
+          "start_ms": 556115,
+          "end_ms": 556554
+        },
+        {
+          "word": "had",
+          "start_ms": 556554,
+          "end_ms": 556993
+        },
+        {
+          "word": "happened",
+          "start_ms": 556993,
+          "end_ms": 557432
+        },
+        {
+          "word": "nineteen",
+          "start_ms": 557432,
+          "end_ms": 557871
+        },
+        {
+          "word": "centuries",
+          "start_ms": 557871,
+          "end_ms": 558310
+        },
+        {
+          "word": "ago",
+          "start_ms": 558310,
+          "end_ms": 558749
+        },
+        {
+          "word": "had",
+          "start_ms": 558749,
+          "end_ms": 559188
+        },
+        {
+          "word": "a",
+          "start_ms": 559188,
+          "end_ms": 559626
+        },
+        {
+          "word": "relation",
+          "start_ms": 559626,
+          "end_ms": 560065
+        },
+        {
+          "word": "to",
+          "start_ms": 560065,
+          "end_ms": 560504
+        },
+        {
+          "word": "the",
+          "start_ms": 560504,
+          "end_ms": 560943
+        },
+        {
+          "word": "present",
+          "start_ms": 560943,
+          "end_ms": 561382
+        },
+        {
+          "word": "to",
+          "start_ms": 561382,
+          "end_ms": 561821
+        },
+        {
+          "word": "both",
+          "start_ms": 561821,
+          "end_ms": 562260
+        },
+        {
+          "word": "women",
+          "start_ms": 562260,
+          "end_ms": 562699
+        },
+        {
+          "word": "to",
+          "start_ms": 562699,
+          "end_ms": 563138
+        },
+        {
+          "word": "the",
+          "start_ms": 563138,
+          "end_ms": 563577
+        },
+        {
+          "word": "desolate",
+          "start_ms": 563577,
+          "end_ms": 564016
+        },
+        {
+          "word": "village",
+          "start_ms": 564016,
+          "end_ms": 564455
+        },
+        {
+          "word": "to",
+          "start_ms": 564455,
+          "end_ms": 564894
+        },
+        {
+          "word": "himself",
+          "start_ms": 564894,
+          "end_ms": 565332
+        },
+        {
+          "word": "to",
+          "start_ms": 565332,
+          "end_ms": 565771
+        },
+        {
+          "word": "all",
+          "start_ms": 565771,
+          "end_ms": 566210
+        },
+        {
+          "word": "people",
+          "start_ms": 566210,
+          "end_ms": 566649
+        },
+        {
+          "word": "The",
+          "start_ms": 566649,
+          "end_ms": 567088
+        },
+        {
+          "word": "old",
+          "start_ms": 567088,
+          "end_ms": 567527
+        },
+        {
+          "word": "woman",
+          "start_ms": 567527,
+          "end_ms": 567966
+        },
+        {
+          "word": "had",
+          "start_ms": 567966,
+          "end_ms": 568405
+        },
+        {
+          "word": "wept",
+          "start_ms": 568405,
+          "end_ms": 568844
+        },
+        {
+          "word": "not",
+          "start_ms": 568844,
+          "end_ms": 569283
+        },
+        {
+          "word": "because",
+          "start_ms": 569283,
+          "end_ms": 569722
+        },
+        {
+          "word": "he",
+          "start_ms": 569722,
+          "end_ms": 570161
+        },
+        {
+          "word": "could",
+          "start_ms": 570161,
+          "end_ms": 570600
+        },
+        {
+          "word": "tell",
+          "start_ms": 570600,
+          "end_ms": 571038
+        },
+        {
+          "word": "the",
+          "start_ms": 571038,
+          "end_ms": 571477
+        },
+        {
+          "word": "story",
+          "start_ms": 571477,
+          "end_ms": 571916
+        },
+        {
+          "word": "touchingly",
+          "start_ms": 571916,
+          "end_ms": 572355
+        },
+        {
+          "word": "but",
+          "start_ms": 572355,
+          "end_ms": 572794
+        },
+        {
+          "word": "because",
+          "start_ms": 572794,
+          "end_ms": 573233
+        },
+        {
+          "word": "Peter",
+          "start_ms": 573233,
+          "end_ms": 573672
+        },
+        {
+          "word": "was",
+          "start_ms": 573672,
+          "end_ms": 574111
+        },
+        {
+          "word": "near",
+          "start_ms": 574111,
+          "end_ms": 574550
+        },
+        {
+          "word": "to",
+          "start_ms": 574550,
+          "end_ms": 574989
+        },
+        {
+          "word": "her",
+          "start_ms": 574989,
+          "end_ms": 575428
+        },
+        {
+          "word": "because",
+          "start_ms": 575428,
+          "end_ms": 575867
+        },
+        {
+          "word": "her",
+          "start_ms": 575867,
+          "end_ms": 576306
+        },
+        {
+          "word": "whole",
+          "start_ms": 576306,
+          "end_ms": 576744
+        },
+        {
+          "word": "being",
+          "start_ms": 576744,
+          "end_ms": 577183
+        },
+        {
+          "word": "was",
+          "start_ms": 577183,
+          "end_ms": 577622
+        },
+        {
+          "word": "interested",
+          "start_ms": 577622,
+          "end_ms": 578061
+        },
+        {
+          "word": "in",
+          "start_ms": 578061,
+          "end_ms": 578500
+        },
+        {
+          "word": "what",
+          "start_ms": 578500,
+          "end_ms": 578939
+        },
+        {
+          "word": "was",
+          "start_ms": 578939,
+          "end_ms": 579378
+        },
+        {
+          "word": "passing",
+          "start_ms": 579378,
+          "end_ms": 579817
+        },
+        {
+          "word": "in",
+          "start_ms": 579817,
+          "end_ms": 580256
+        },
+        {
+          "word": "Peter",
+          "start_ms": 580256,
+          "end_ms": 580695
+        },
+        {
+          "word": "s",
+          "start_ms": 580695,
+          "end_ms": 581134
+        },
+        {
+          "word": "soul",
+          "start_ms": 581134,
+          "end_ms": 581573
+        },
+        {
+          "word": "And",
+          "start_ms": 581573,
+          "end_ms": 582012
+        },
+        {
+          "word": "joy",
+          "start_ms": 582012,
+          "end_ms": 582450
+        },
+        {
+          "word": "suddenly",
+          "start_ms": 582450,
+          "end_ms": 582889
+        },
+        {
+          "word": "stirred",
+          "start_ms": 582889,
+          "end_ms": 583328
+        },
+        {
+          "word": "in",
+          "start_ms": 583328,
+          "end_ms": 583767
+        },
+        {
+          "word": "his",
+          "start_ms": 583767,
+          "end_ms": 584206
+        },
+        {
+          "word": "soul",
+          "start_ms": 584206,
+          "end_ms": 584645
+        },
+        {
+          "word": "and",
+          "start_ms": 584645,
+          "end_ms": 585084
+        },
+        {
+          "word": "he",
+          "start_ms": 585084,
+          "end_ms": 585523
+        },
+        {
+          "word": "even",
+          "start_ms": 585523,
+          "end_ms": 585962
+        },
+        {
+          "word": "stopped",
+          "start_ms": 585962,
+          "end_ms": 586401
+        },
+        {
+          "word": "for",
+          "start_ms": 586401,
+          "end_ms": 586840
+        },
+        {
+          "word": "a",
+          "start_ms": 586840,
+          "end_ms": 587279
+        },
+        {
+          "word": "minute",
+          "start_ms": 587279,
+          "end_ms": 587718
+        },
+        {
+          "word": "to",
+          "start_ms": 587718,
+          "end_ms": 588156
+        },
+        {
+          "word": "take",
+          "start_ms": 588156,
+          "end_ms": 588595
+        },
+        {
+          "word": "breath",
+          "start_ms": 588595,
+          "end_ms": 589034
+        },
+        {
+          "word": "The",
+          "start_ms": 589034,
+          "end_ms": 589473
+        },
+        {
+          "word": "past",
+          "start_ms": 589473,
+          "end_ms": 589912
+        },
+        {
+          "word": "he",
+          "start_ms": 589912,
+          "end_ms": 590351
+        },
+        {
+          "word": "thought",
+          "start_ms": 590351,
+          "end_ms": 590790
+        },
+        {
+          "word": "is",
+          "start_ms": 590790,
+          "end_ms": 591229
+        },
+        {
+          "word": "linked",
+          "start_ms": 591229,
+          "end_ms": 591668
+        },
+        {
+          "word": "with",
+          "start_ms": 591668,
+          "end_ms": 592107
+        },
+        {
+          "word": "the",
+          "start_ms": 592107,
+          "end_ms": 592546
+        },
+        {
+          "word": "present",
+          "start_ms": 592546,
+          "end_ms": 592985
+        },
+        {
+          "word": "by",
+          "start_ms": 592985,
+          "end_ms": 593424
+        },
+        {
+          "word": "an",
+          "start_ms": 593424,
+          "end_ms": 593862
+        },
+        {
+          "word": "unbroken",
+          "start_ms": 593862,
+          "end_ms": 594301
+        },
+        {
+          "word": "chain",
+          "start_ms": 594301,
+          "end_ms": 594740
+        },
+        {
+          "word": "of",
+          "start_ms": 594740,
+          "end_ms": 595179
+        },
+        {
+          "word": "events",
+          "start_ms": 595179,
+          "end_ms": 595618
+        },
+        {
+          "word": "flowing",
+          "start_ms": 595618,
+          "end_ms": 596057
+        },
+        {
+          "word": "one",
+          "start_ms": 596057,
+          "end_ms": 596496
+        },
+        {
+          "word": "out",
+          "start_ms": 596496,
+          "end_ms": 596935
+        },
+        {
+          "word": "of",
+          "start_ms": 596935,
+          "end_ms": 597374
+        },
+        {
+          "word": "another",
+          "start_ms": 597374,
+          "end_ms": 597813
+        },
+        {
+          "word": "And",
+          "start_ms": 597813,
+          "end_ms": 598252
+        },
+        {
+          "word": "it",
+          "start_ms": 598252,
+          "end_ms": 598691
+        },
+        {
+          "word": "seemed",
+          "start_ms": 598691,
+          "end_ms": 599130
+        },
+        {
+          "word": "to",
+          "start_ms": 599130,
+          "end_ms": 599568
+        },
+        {
+          "word": "him",
+          "start_ms": 599568,
+          "end_ms": 600007
+        },
+        {
+          "word": "that",
+          "start_ms": 600007,
+          "end_ms": 600446
+        },
+        {
+          "word": "he",
+          "start_ms": 600446,
+          "end_ms": 600885
+        },
+        {
+          "word": "had",
+          "start_ms": 600885,
+          "end_ms": 601324
+        },
+        {
+          "word": "just",
+          "start_ms": 601324,
+          "end_ms": 601763
+        },
+        {
+          "word": "seen",
+          "start_ms": 601763,
+          "end_ms": 602202
+        },
+        {
+          "word": "both",
+          "start_ms": 602202,
+          "end_ms": 602641
+        },
+        {
+          "word": "ends",
+          "start_ms": 602641,
+          "end_ms": 603080
+        },
+        {
+          "word": "of",
+          "start_ms": 603080,
+          "end_ms": 603519
+        },
+        {
+          "word": "that",
+          "start_ms": 603519,
+          "end_ms": 603958
+        },
+        {
+          "word": "chain",
+          "start_ms": 603958,
+          "end_ms": 604397
+        },
+        {
+          "word": "that",
+          "start_ms": 604397,
+          "end_ms": 604836
+        },
+        {
+          "word": "when",
+          "start_ms": 604836,
+          "end_ms": 605274
+        },
+        {
+          "word": "he",
+          "start_ms": 605274,
+          "end_ms": 605713
+        },
+        {
+          "word": "touched",
+          "start_ms": 605713,
+          "end_ms": 606152
+        },
+        {
+          "word": "one",
+          "start_ms": 606152,
+          "end_ms": 606591
+        },
+        {
+          "word": "end",
+          "start_ms": 606591,
+          "end_ms": 607030
+        },
+        {
+          "word": "the",
+          "start_ms": 607030,
+          "end_ms": 607469
+        },
+        {
+          "word": "other",
+          "start_ms": 607469,
+          "end_ms": 607908
+        },
+        {
+          "word": "quivered",
+          "start_ms": 607908,
+          "end_ms": 608347
+        },
+        {
+          "word": "When",
+          "start_ms": 608347,
+          "end_ms": 608786
+        },
+        {
+          "word": "he",
+          "start_ms": 608786,
+          "end_ms": 609225
+        },
+        {
+          "word": "crossed",
+          "start_ms": 609225,
+          "end_ms": 609664
+        },
+        {
+          "word": "the",
+          "start_ms": 609664,
+          "end_ms": 610103
+        },
+        {
+          "word": "river",
+          "start_ms": 610103,
+          "end_ms": 610542
+        },
+        {
+          "word": "by",
+          "start_ms": 610542,
+          "end_ms": 610980
+        },
+        {
+          "word": "the",
+          "start_ms": 610980,
+          "end_ms": 611419
+        },
+        {
+          "word": "ferry",
+          "start_ms": 611419,
+          "end_ms": 611858
+        },
+        {
+          "word": "boat",
+          "start_ms": 611858,
+          "end_ms": 612297
+        },
+        {
+          "word": "and",
+          "start_ms": 612297,
+          "end_ms": 612736
+        },
+        {
+          "word": "afterwards",
+          "start_ms": 612736,
+          "end_ms": 613175
+        },
+        {
+          "word": "mounting",
+          "start_ms": 613175,
+          "end_ms": 613614
+        },
+        {
+          "word": "the",
+          "start_ms": 613614,
+          "end_ms": 614053
+        },
+        {
+          "word": "hill",
+          "start_ms": 614053,
+          "end_ms": 614492
+        },
+        {
+          "word": "looked",
+          "start_ms": 614492,
+          "end_ms": 614931
+        },
+        {
+          "word": "at",
+          "start_ms": 614931,
+          "end_ms": 615370
+        },
+        {
+          "word": "his",
+          "start_ms": 615370,
+          "end_ms": 615809
+        },
+        {
+          "word": "village",
+          "start_ms": 615809,
+          "end_ms": 616248
+        },
+        {
+          "word": "and",
+          "start_ms": 616248,
+          "end_ms": 616686
+        },
+        {
+          "word": "towards",
+          "start_ms": 616686,
+          "end_ms": 617125
+        },
+        {
+          "word": "the",
+          "start_ms": 617125,
+          "end_ms": 617564
+        },
+        {
+          "word": "west",
+          "start_ms": 617564,
+          "end_ms": 618003
+        },
+        {
+          "word": "where",
+          "start_ms": 618003,
+          "end_ms": 618442
+        },
+        {
+          "word": "the",
+          "start_ms": 618442,
+          "end_ms": 618881
+        },
+        {
+          "word": "cold",
+          "start_ms": 618881,
+          "end_ms": 619320
+        },
+        {
+          "word": "crimson",
+          "start_ms": 619320,
+          "end_ms": 619759
+        },
+        {
+          "word": "sunset",
+          "start_ms": 619759,
+          "end_ms": 620198
+        },
+        {
+          "word": "lay",
+          "start_ms": 620198,
+          "end_ms": 620637
+        },
+        {
+          "word": "a",
+          "start_ms": 620637,
+          "end_ms": 621076
+        },
+        {
+          "word": "narrow",
+          "start_ms": 621076,
+          "end_ms": 621515
+        },
+        {
+          "word": "streak",
+          "start_ms": 621515,
+          "end_ms": 621954
+        },
+        {
+          "word": "of",
+          "start_ms": 621954,
+          "end_ms": 622392
+        },
+        {
+          "word": "light",
+          "start_ms": 622392,
+          "end_ms": 622831
+        },
+        {
+          "word": "he",
+          "start_ms": 622831,
+          "end_ms": 623270
+        },
+        {
+          "word": "thought",
+          "start_ms": 623270,
+          "end_ms": 623709
+        },
+        {
+          "word": "that",
+          "start_ms": 623709,
+          "end_ms": 624148
+        },
+        {
+          "word": "truth",
+          "start_ms": 624148,
+          "end_ms": 624587
+        },
+        {
+          "word": "and",
+          "start_ms": 624587,
+          "end_ms": 625026
+        },
+        {
+          "word": "beauty",
+          "start_ms": 625026,
+          "end_ms": 625465
+        },
+        {
+          "word": "which",
+          "start_ms": 625465,
+          "end_ms": 625904
+        },
+        {
+          "word": "had",
+          "start_ms": 625904,
+          "end_ms": 626343
+        },
+        {
+          "word": "guided",
+          "start_ms": 626343,
+          "end_ms": 626782
+        },
+        {
+          "word": "human",
+          "start_ms": 626782,
+          "end_ms": 627221
+        },
+        {
+          "word": "life",
+          "start_ms": 627221,
+          "end_ms": 627660
+        },
+        {
+          "word": "there",
+          "start_ms": 627660,
+          "end_ms": 628098
+        },
+        {
+          "word": "in",
+          "start_ms": 628098,
+          "end_ms": 628537
+        },
+        {
+          "word": "the",
+          "start_ms": 628537,
+          "end_ms": 628976
+        },
+        {
+          "word": "garden",
+          "start_ms": 628976,
+          "end_ms": 629415
+        },
+        {
+          "word": "and",
+          "start_ms": 629415,
+          "end_ms": 629854
+        },
+        {
+          "word": "in",
+          "start_ms": 629854,
+          "end_ms": 630293
+        },
+        {
+          "word": "the",
+          "start_ms": 630293,
+          "end_ms": 630732
+        },
+        {
+          "word": "yard",
+          "start_ms": 630732,
+          "end_ms": 631171
+        },
+        {
+          "word": "of",
+          "start_ms": 631171,
+          "end_ms": 631610
+        },
+        {
+          "word": "the",
+          "start_ms": 631610,
+          "end_ms": 632049
+        },
+        {
+          "word": "high",
+          "start_ms": 632049,
+          "end_ms": 632488
+        },
+        {
+          "word": "priest",
+          "start_ms": 632488,
+          "end_ms": 632927
+        },
+        {
+          "word": "had",
+          "start_ms": 632927,
+          "end_ms": 633366
+        },
+        {
+          "word": "continued",
+          "start_ms": 633366,
+          "end_ms": 633804
+        },
+        {
+          "word": "without",
+          "start_ms": 633804,
+          "end_ms": 634243
+        },
+        {
+          "word": "interruption",
+          "start_ms": 634243,
+          "end_ms": 634682
+        },
+        {
+          "word": "to",
+          "start_ms": 634682,
+          "end_ms": 635121
+        },
+        {
+          "word": "this",
+          "start_ms": 635121,
+          "end_ms": 635560
+        },
+        {
+          "word": "day",
+          "start_ms": 635560,
+          "end_ms": 635999
+        },
+        {
+          "word": "and",
+          "start_ms": 635999,
+          "end_ms": 636438
+        },
+        {
+          "word": "had",
+          "start_ms": 636438,
+          "end_ms": 636877
+        },
+        {
+          "word": "evidently",
+          "start_ms": 636877,
+          "end_ms": 637316
+        },
+        {
+          "word": "always",
+          "start_ms": 637316,
+          "end_ms": 637755
+        },
+        {
+          "word": "been",
+          "start_ms": 637755,
+          "end_ms": 638194
+        },
+        {
+          "word": "the",
+          "start_ms": 638194,
+          "end_ms": 638633
+        },
+        {
+          "word": "chief",
+          "start_ms": 638633,
+          "end_ms": 639072
+        },
+        {
+          "word": "thing",
+          "start_ms": 639072,
+          "end_ms": 639510
+        },
+        {
+          "word": "in",
+          "start_ms": 639510,
+          "end_ms": 639949
+        },
+        {
+          "word": "human",
+          "start_ms": 639949,
+          "end_ms": 640388
+        },
+        {
+          "word": "life",
+          "start_ms": 640388,
+          "end_ms": 640827
+        },
+        {
+          "word": "and",
+          "start_ms": 640827,
+          "end_ms": 641266
+        },
+        {
+          "word": "in",
+          "start_ms": 641266,
+          "end_ms": 641705
+        },
+        {
+          "word": "all",
+          "start_ms": 641705,
+          "end_ms": 642144
+        },
+        {
+          "word": "earthly",
+          "start_ms": 642144,
+          "end_ms": 642583
+        },
+        {
+          "word": "life",
+          "start_ms": 642583,
+          "end_ms": 643022
+        },
+        {
+          "word": "indeed",
+          "start_ms": 643022,
+          "end_ms": 643461
+        },
+        {
+          "word": "and",
+          "start_ms": 643461,
+          "end_ms": 643900
+        },
+        {
+          "word": "the",
+          "start_ms": 643900,
+          "end_ms": 644339
+        },
+        {
+          "word": "feeling",
+          "start_ms": 644339,
+          "end_ms": 644778
+        },
+        {
+          "word": "of",
+          "start_ms": 644778,
+          "end_ms": 645216
+        },
+        {
+          "word": "youth",
+          "start_ms": 645216,
+          "end_ms": 645655
+        },
+        {
+          "word": "health",
+          "start_ms": 645655,
+          "end_ms": 646094
+        },
+        {
+          "word": "vigour",
+          "start_ms": 646094,
+          "end_ms": 646533
+        },
+        {
+          "word": "he",
+          "start_ms": 646533,
+          "end_ms": 646972
+        },
+        {
+          "word": "was",
+          "start_ms": 646972,
+          "end_ms": 647411
+        },
+        {
+          "word": "only",
+          "start_ms": 647411,
+          "end_ms": 647850
+        },
+        {
+          "word": "twenty",
+          "start_ms": 647850,
+          "end_ms": 648289
+        },
+        {
+          "word": "two",
+          "start_ms": 648289,
+          "end_ms": 648728
+        },
+        {
+          "word": "and",
+          "start_ms": 648728,
+          "end_ms": 649167
+        },
+        {
+          "word": "the",
+          "start_ms": 649167,
+          "end_ms": 649606
+        },
+        {
+          "word": "inexpressible",
+          "start_ms": 649606,
+          "end_ms": 650045
+        },
+        {
+          "word": "sweet",
+          "start_ms": 650045,
+          "end_ms": 650484
+        },
+        {
+          "word": "expectation",
+          "start_ms": 650484,
+          "end_ms": 650922
+        },
+        {
+          "word": "of",
+          "start_ms": 650922,
+          "end_ms": 651361
+        },
+        {
+          "word": "happiness",
+          "start_ms": 651361,
+          "end_ms": 651800
+        },
+        {
+          "word": "of",
+          "start_ms": 651800,
+          "end_ms": 652239
+        },
+        {
+          "word": "unknown",
+          "start_ms": 652239,
+          "end_ms": 652678
+        },
+        {
+          "word": "mysterious",
+          "start_ms": 652678,
+          "end_ms": 653117
+        },
+        {
+          "word": "happiness",
+          "start_ms": 653117,
+          "end_ms": 653556
+        },
+        {
+          "word": "took",
+          "start_ms": 653556,
+          "end_ms": 653995
+        },
+        {
+          "word": "possession",
+          "start_ms": 653995,
+          "end_ms": 654434
+        },
+        {
+          "word": "of",
+          "start_ms": 654434,
+          "end_ms": 654873
+        },
+        {
+          "word": "him",
+          "start_ms": 654873,
+          "end_ms": 655312
+        },
+        {
+          "word": "little",
+          "start_ms": 655312,
+          "end_ms": 655751
+        },
+        {
+          "word": "by",
+          "start_ms": 655751,
+          "end_ms": 656190
+        },
+        {
+          "word": "little",
+          "start_ms": 656190,
+          "end_ms": 656628
+        },
+        {
+          "word": "and",
+          "start_ms": 656628,
+          "end_ms": 657067
+        },
+        {
+          "word": "life",
+          "start_ms": 657067,
+          "end_ms": 657506
+        },
+        {
+          "word": "seemed",
+          "start_ms": 657506,
+          "end_ms": 657945
+        },
+        {
+          "word": "to",
+          "start_ms": 657945,
+          "end_ms": 658384
+        },
+        {
+          "word": "him",
+          "start_ms": 658384,
+          "end_ms": 658823
+        },
+        {
+          "word": "enchanting",
+          "start_ms": 658823,
+          "end_ms": 659262
+        },
+        {
+          "word": "marvellous",
+          "start_ms": 659262,
+          "end_ms": 659701
+        },
+        {
+          "word": "and",
+          "start_ms": 659701,
+          "end_ms": 660140
+        },
+        {
+          "word": "full",
+          "start_ms": 660140,
+          "end_ms": 660579
+        },
+        {
+          "word": "of",
+          "start_ms": 660579,
+          "end_ms": 661018
+        },
+        {
+          "word": "lofty",
+          "start_ms": 661018,
+          "end_ms": 661457
+        },
+        {
+          "word": "meaning",
+          "start_ms": 661457,
+          "end_ms": 661896
+        }
+      ]
+    }
+  ],
+  "totalDurationMs": 661896
+}

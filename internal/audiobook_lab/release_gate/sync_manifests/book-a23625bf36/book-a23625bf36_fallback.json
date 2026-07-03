@@ -1,0 +1,20 @@
+{
+  "slug": "book-a23625bf36",
+  "generatedAt": "2026-07-03T16:42:56+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-a23625bf36/book-a23625bf36.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-a23625bf36-chapter-1",
+      "title": "সমাপ্তি",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 2911652,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 2914152
+    }
+  ],
+  "totalDurationMs": 2914152
+}

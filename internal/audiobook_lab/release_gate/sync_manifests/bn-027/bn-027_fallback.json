@@ -1,0 +1,20 @@
+{
+  "slug": "bn-027",
+  "generatedAt": "2026-07-03T09:58:41+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/bn-027/bn-027.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "bn-027-chapter-1",
+      "title": "অপরিচিতা",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 2123420,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 2125920
+    }
+  ],
+  "totalDurationMs": 2125920
+}

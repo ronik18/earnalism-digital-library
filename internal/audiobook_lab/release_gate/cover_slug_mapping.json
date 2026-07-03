@@ -1,0 +1,1946 @@
+{
+  "manifest": "internal/audiobook_lab/generated_candidate_restoration/restoration_manifest_20260702.json",
+  "total_candidate_slugs": 152,
+  "total_image_files": 661,
+  "mapped_count": 57,
+  "unmapped_count": 95,
+  "items": [
+    {
+      "slug": "a-ghost-story",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/a-ghost-story",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "a-horseman-in-the-sky",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/a-horseman-in-the-sky",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "a-jury-of-her-peers",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/a-jury-of-her-peers",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/a-mystery-of-heroism",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "a-retrieved-reformation",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/a-retrieved-reformation",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "a-scandal-in-bohemia",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/a-scandal-in-bohemia",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "a-wagner-matinee",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/a-wagner-matinee",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "a-white-heron",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/a-white-heron",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "acres-of-diamonds",
+      "status": "MAPPED",
+      "book_dir": "content/books/acres-of-diamonds",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_business_covers/acres-of-diamonds_back.png",
+        "output/generated_business_covers/acres-of-diamonds_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "status": "MAPPED",
+      "book_dir": "content/books/alices-adventures-in-wonderland",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_covers/alices-adventures-in-wonderland_back.png",
+        "output/generated_covers/alices-adventures-in-wonderland_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "an-occurrence-at-owl-creek-bridge",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/an-occurrence-at-owl-creek-bridge",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "berenice",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/berenice",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "bharat-at-the-crossroads",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/bharat-at-the-crossroads",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "bn-027",
+      "status": "MAPPED",
+      "book_dir": "content/books/bn-027",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-027_back.png",
+        "output/generated_bengali_covers/bn-027_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "bn-031",
+      "status": "MAPPED",
+      "book_dir": "content/books/bn-031",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-031_back.png",
+        "output/generated_bengali_covers/bn-031_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "bn-035",
+      "status": "MAPPED",
+      "book_dir": "content/books/bn-035",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-035_back.png",
+        "output/generated_bengali_covers/bn-035_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "bn-036",
+      "status": "MAPPED",
+      "book_dir": "content/books/bn-036",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-036_back.png",
+        "output/generated_bengali_covers/bn-036_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "bn-041",
+      "status": "MAPPED",
+      "book_dir": "content/books/bn-041",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-041_back.png",
+        "output/generated_bengali_covers/bn-041_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "bn-059",
+      "status": "MAPPED",
+      "book_dir": "content/books/bn-059",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-059_back.png",
+        "output/generated_bengali_covers/bn-059_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "bn-060",
+      "status": "MAPPED",
+      "book_dir": "content/books/bn-060",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-060_back.png",
+        "output/generated_bengali_covers/bn-060_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "bn-066",
+      "status": "MAPPED",
+      "book_dir": "content/books/bn-066",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/bn-066_back.png",
+        "output/generated_bengali_covers/bn-066_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-0986aeb7e3",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-0986aeb7e3",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-0986aeb7e3_back.png",
+        "output/generated_bengali_covers/book-0986aeb7e3_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-0deb35c750",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-0deb35c750",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/09-book-0deb35c750-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/09-book-0deb35c750-page1.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-0fbdaa730e",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-0fbdaa730e",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-0fbdaa730e_back.png",
+        "output/generated_bengali_covers/book-0fbdaa730e_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-1090573dff",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-1090573dff",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-1090573dff_back.png",
+        "output/generated_bengali_covers/book-1090573dff_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-2b9853ec52",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-2b9853ec52",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-2b9853ec52_back.png",
+        "output/generated_bengali_covers/book-2b9853ec52_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-2ddbed8293",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-2ddbed8293",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/10-book-2ddbed8293-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/10-book-2ddbed8293-page1.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-2e468c4990",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-2e468c4990",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/01-book-2e468c4990-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/01-book-2e468c4990-page1.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-4968248842",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-4968248842",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-4968248842_back.png",
+        "output/generated_bengali_covers/book-4968248842_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-4b944e64fa",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-4b944e64fa_back.png",
+        "output/generated_bengali_covers/book-4b944e64fa_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-5461971092",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-5461971092",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-5461971092_back.png",
+        "output/generated_bengali_covers/book-5461971092_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-5704b31005",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-5704b31005",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-5704b31005_back.png",
+        "output/generated_bengali_covers/book-5704b31005_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-5aedda79fe",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-5aedda79fe",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-5aedda79fe_back.png",
+        "output/generated_bengali_covers/book-5aedda79fe_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-63afd5e9be",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/book-63afd5e9be",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-754da4eab8",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-754da4eab8",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/05-book-754da4eab8-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/05-book-754da4eab8-page1.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-827fdc7aee",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-827fdc7aee",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-827fdc7aee_back.png",
+        "output/generated_bengali_covers/book-827fdc7aee_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-88ded9b47c",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-88ded9b47c",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-88ded9b47c_back.png",
+        "output/generated_bengali_covers/book-88ded9b47c_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-95624627d5",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-95624627d5",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-95624627d5_back.png",
+        "output/generated_bengali_covers/book-95624627d5_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-9a7f771921",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-9a7f771921",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-9a7f771921_back.png",
+        "output/generated_bengali_covers/book-9a7f771921_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-a23625bf36",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-a23625bf36",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-a23625bf36_back.png",
+        "output/generated_bengali_covers/book-a23625bf36_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-a4a369483f",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-a4a369483f",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-a4a369483f_back.png",
+        "output/generated_bengali_covers/book-a4a369483f_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-a74c1a1451",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-a74c1a1451",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/03-book-a74c1a1451-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/03-book-a74c1a1451-page1.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-ac5a71075e",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-ac5a71075e_back.png",
+        "output/generated_bengali_covers/book-ac5a71075e_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-b9d47814a8",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-b9d47814a8_back.png",
+        "output/generated_bengali_covers/book-b9d47814a8_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-bfc51280b3",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-bfc51280b3",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-bfc51280b3_back.png",
+        "output/generated_bengali_covers/book-bfc51280b3_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-c307a57868",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-c307a57868",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-c307a57868_back.png",
+        "output/generated_bengali_covers/book-c307a57868_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-c7f3ce526c",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-c7f3ce526c",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/07-book-c7f3ce526c-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/07-book-c7f3ce526c-page1.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-c85323409f",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-c85323409f",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-c85323409f_back.png",
+        "output/generated_bengali_covers/book-c85323409f_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-d19e96859f",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-d19e96859f",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/08-book-d19e96859f-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/08-book-d19e96859f-page1.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-d2fe532e1c",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-d2fe532e1c",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/02-book-d2fe532e1c-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/02-book-d2fe532e1c-page1.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-edfcf810c5",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-edfcf810c5_back.png",
+        "output/generated_bengali_covers/book-edfcf810c5_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-ef193ffc52",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-ef193ffc52",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-ef193ffc52_back.png",
+        "output/generated_bengali_covers/book-ef193ffc52_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-f5d593e1f4",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/04-book-f5d593e1f4-last-page.png",
+        "output/bengali_publish_qa/20260521T040545Z/screenshots/04-book-f5d593e1f4-page1.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "book-fbdf2991ab",
+      "status": "MAPPED",
+      "book_dir": "content/books/book-fbdf2991ab",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_bengali_covers/book-fbdf2991ab_back.png",
+        "output/generated_bengali_covers/book-fbdf2991ab_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "boule-de-suif",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/boule-de-suif",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "dracula",
+      "status": "MAPPED",
+      "book_dir": "content/books/dracula",
+      "cover_entries": [],
+      "filename_hits": [
+        ".vercel/output/static/assets/books/dracula/dracula-back-cover.jpg",
+        ".vercel/output/static/assets/books/dracula/dracula-front-cover.jpg",
+        "frontend/build/assets/books/dracula/dracula-back-cover.jpg",
+        "frontend/build/assets/books/dracula/dracula-front-cover.jpg",
+        "frontend/public/assets/books/dracula/dracula-back-cover.jpg",
+        "frontend/public/assets/books/dracula/dracula-front-cover.jpg",
+        "output/generated_covers/dracula_back.png",
+        "output/generated_covers/dracula_front.png",
+        "output/real-user-ux/evidence/carousel-featured-dracula-section.png",
+        "output/real-user-ux/evidence/dracula-book-page.png",
+        "output/real-user-ux/evidence/dracula-reader-page.png",
+        "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/cta-start-dracula-click.png",
+        "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/dracula-book-detail.png",
+        "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/reader-dracula-after-slow-scroll.png",
+        "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/reader-dracula-comfort.png",
+        "output/visual-review/hero-dracula-book-polish/hero-dracula-book-closeup-no-tour.png",
+        "output/visual-review/hero-dracula-book-polish/hero-dracula-book-closeup.png",
+        "output/visual-review/homepage-dracula-top-spine-fix.png",
+        "output/visual-review/homepage-reference-hero-shelf/crop-candidates/dracula-hardcopy-tight1-on-dark.png",
+        "output/visual-review/homepage-reference-hero-shelf/crop-candidates/dracula-hardcopy-tight3-on-dark.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "dsires-baby",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/dsires-baby",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "feathertop",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/feathertop",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "frankenstein",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/frankenstein",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "great-expectations",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/great-expectations",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "jane-eyre",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/jane-eyre",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "lokrahasya",
+      "status": "MAPPED",
+      "book_dir": "content/books/lokrahasya",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_source_repair/20260603T084835Z/covers/jpeg/lokrahasya_back.jpg",
+        "output/bengali_source_repair/20260603T084835Z/covers/jpeg/lokrahasya_front.jpg",
+        "output/bengali_source_repair/20260603T084835Z/covers/lokrahasya_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/lokrahasya_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "love-of-life",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/love-of-life",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "markheim",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/markheim",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "mrinalini",
+      "status": "MAPPED",
+      "book_dir": "content/books/mrinalini",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_source_repair/20260603T084835Z/covers/jpeg/mrinalini_back.jpg",
+        "output/bengali_source_repair/20260603T084835Z/covers/jpeg/mrinalini_front.jpg",
+        "output/bengali_source_repair/20260603T084835Z/covers/mrinalini_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/mrinalini_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "status": "MAPPED",
+      "book_dir": "content/books/muchiram-gurer-jibanchorit",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_source_repair/20260603T084835Z/covers/muchiram-gurer-jibanchorit_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/muchiram-gurer-jibanchorit_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "my-life-and-work",
+      "status": "MAPPED",
+      "book_dir": "content/books/my-life-and-work",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_business_covers/my-life-and-work_back.png",
+        "output/generated_business_covers/my-life-and-work_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "nishkriti",
+      "status": "MAPPED",
+      "book_dir": "content/books/nishkriti",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_source_repair/20260603T084835Z/covers/nishkriti_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/nishkriti_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "pauls-case",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/pauls-case",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "status": "MAPPED",
+      "book_dir": "content/books/pride-and-prejudice",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_covers/pride-and-prejudice_back.png",
+        "output/generated_covers/pride-and-prejudice_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "radharani",
+      "status": "MAPPED",
+      "book_dir": "content/books/radharani",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_source_repair/20260603T084835Z/covers/radharani_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/radharani_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "rappaccinis-daughter",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/rappaccinis-daughter",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "rikki-tikki-tavi",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/rikki-tikki-tavi",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "rip-van-winkle",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/rip-van-winkle",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "sredni-vashtar",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/sredni-vashtar",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-charles-augustus-milverton",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-charles-augustus-milverton",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-abbey-grange",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-abbey-grange",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-beryl-coronet",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-beryl-coronet",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-blue-carbuncle",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-blue-carbuncle",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-copper-beeches",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-copper-beeches",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-dancing-men",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-dancing-men",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-empty-house",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-empty-house",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-engineers-thumb",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-engineers-thumb",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-final-problem",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-final-problem",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-greek-interpreter",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-greek-interpreter",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-noble-bachelor",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-noble-bachelor",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-priory-school",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-priory-school",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-second-stain",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-second-stain",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventure-of-the-solitary-cyclist",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-adventure-of-the-solitary-cyclist",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-adventures-of-sherlock-holmes",
+      "status": "MAPPED",
+      "book_dir": "content/books/the-adventures-of-sherlock-holmes",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_covers/the-adventures-of-sherlock-holmes_back.png",
+        "output/generated_covers/the-adventures-of-sherlock-holmes_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-ambitious-guest",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-ambitious-guest",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "status": "MAPPED",
+      "book_dir": "content/books/the-art-of-money-getting",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_business_covers/the-art-of-money-getting_back.png",
+        "output/generated_business_covers/the-art-of-money-getting_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-bet",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-bet",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-bishop",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-bishop",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-call-of-the-wild",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-canterville-ghost",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-canterville-ghost",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-celebrated-jumping-frog-of-calaveras-county",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-celebrated-jumping-frog-of-calaveras-county",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-cop-and-the-anthem",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-country-of-the-blind",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-country-of-the-blind",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-darling",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-darling",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-door-in-the-wall",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-door-in-the-wall",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-enchanted-april",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-enchanted-april",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-fall-of-the-house-of-usher",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-fall-of-the-house-of-usher",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-five-orange-pips",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-five-orange-pips",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-furnished-room",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-furnished-room",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-gift-of-the-magi",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-great-gatsby",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-great-gatsby",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-happy-prince",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-happy-prince",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-imp-of-the-perverse",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-imp-of-the-perverse",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-lady-with-the-dog",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-last-leaf",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-last-leaf",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-legend-of-sleepy-hollow",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-legend-of-sleepy-hollow",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-lifted-veil",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-lifted-veil",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-luck-of-roaring-camp",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-luck-of-roaring-camp",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-man-in-a-case",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-man-in-a-case",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-man-who-would-be-king",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-man-who-would-be-king",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-man-with-the-twisted-lip",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-man-with-the-twisted-lip",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-masque-of-the-red-death",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-metamorphosis",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-metamorphosis",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-ministers-black-veil",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-ministers-black-veil",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-monkeys-paw",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-most-dangerous-game",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-most-dangerous-game",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-murders-in-the-rue-morgue",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-murders-in-the-rue-morgue",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-necklace",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-necklace",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-open-boat",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-open-boat",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-open-window",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-open-window",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-outcasts-of-poker-flat",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-outcasts-of-poker-flat",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-picture-of-dorian-gray",
+      "status": "MAPPED",
+      "book_dir": "content/books/the-picture-of-dorian-gray",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_covers/the-picture-of-dorian-gray_back.png",
+        "output/generated_covers/the-picture-of-dorian-gray_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-pit-and-the-pendulum",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-pit-and-the-pendulum",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-principles-of-scientific-management",
+      "status": "MAPPED",
+      "book_dir": "content/books/the-principles-of-scientific-management",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_business_covers/the-principles-of-scientific-management_back.png",
+        "output/generated_business_covers/the-principles-of-scientific-management_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-purloined-letter",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-purloined-letter",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-ransom-of-red-chief",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-ransom-of-red-chief",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-red-headed-league",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-red-headed-league",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-science-of-getting-rich",
+      "status": "MAPPED",
+      "book_dir": "content/books/the-science-of-getting-rich",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_business_covers/the-science-of-getting-rich_back.png",
+        "output/generated_business_covers/the-science-of-getting-rich_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-secret-garden",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-secret-garden",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-selfish-giant",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-selfish-giant",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-speckled-band",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-speckled-band",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-stolen-white-elephant",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-stolen-white-elephant",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-strange-case-of-dr-jekyll-and-mr-hyde",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-student",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-student",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-suicide-club",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-suicide-club",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-tell-tale-heart",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-time-machine",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-time-machine",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-withered-arm",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-withered-arm",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "status": "MAPPED",
+      "book_dir": "content/books/the-wonderful-wizard-of-oz",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/generated_covers/the-wonderful-wizard-of-oz_back.png",
+        "output/generated_covers/the-wonderful-wizard-of-oz_front.png"
+      ],
+      "dir_hits": []
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/the-yellow-wallpaper",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "to-build-a-fire",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/to-build-a-fire",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "tobermory",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/tobermory",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "ward-no-6",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/ward-no-6",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "white-fang",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/white-fang",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "young-goodman-brown",
+      "status": "UNMAPPED",
+      "book_dir": "content/books/young-goodman-brown",
+      "cover_entries": [],
+      "filename_hits": [],
+      "dir_hits": []
+    },
+    {
+      "slug": "yugalanguriya",
+      "status": "MAPPED",
+      "book_dir": "content/books/yugalanguriya",
+      "cover_entries": [],
+      "filename_hits": [
+        "output/bengali_source_repair/20260603T084835Z/covers/yugalanguriya_back.png",
+        "output/bengali_source_repair/20260603T084835Z/covers/yugalanguriya_front.png"
+      ],
+      "dir_hits": []
+    }
+  ],
+  "unmapped_images": [
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/back.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/back_large.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/filesave.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/filesave_large.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/forward.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/forward_large.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/hand.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/help.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/help_large.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/home.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/home_large.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/matplotlib.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/matplotlib_large.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/move.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/move_large.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/qt4_editor_options.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/qt4_editor_options_large.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/subplots.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/subplots_large.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/zoom_to_rect.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/images/zoom_to_rect_large.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/sample_data/Minduka_Present_Blue_Pack.png",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/sample_data/grace_hopper.jpg",
+    ".venv-audio/lib/python3.12/site-packages/matplotlib/mpl-data/sample_data/logo2.png",
+    ".venv-audio/lib/python3.12/site-packages/networkx/drawing/tests/baseline/test_display_complex.png",
+    ".venv-audio/lib/python3.12/site-packages/networkx/drawing/tests/baseline/test_display_empty_graph.png",
+    ".venv-audio/lib/python3.12/site-packages/networkx/drawing/tests/baseline/test_display_house_with_colors.png",
+    ".venv-audio/lib/python3.12/site-packages/networkx/drawing/tests/baseline/test_display_labels_and_colors.png",
+    ".venv-audio/lib/python3.12/site-packages/networkx/drawing/tests/baseline/test_display_shortest_path.png",
+    ".venv-audio/lib/python3.12/site-packages/networkx/drawing/tests/baseline/test_house_with_colors.png",
+    ".venv-audio/lib/python3.12/site-packages/scipy/ndimage/tests/dots.png",
+    ".venv-audio/lib/python3.12/site-packages/sklearn/datasets/images/china.jpg",
+    ".venv-audio/lib/python3.12/site-packages/sklearn/datasets/images/flower.jpg",
+    ".venv-audio/lib/python3.12/site-packages/sympy/plotting/tests/test_region_and.png",
+    ".venv-audio/lib/python3.12/site-packages/sympy/plotting/tests/test_region_not.png",
+    ".venv-audio/lib/python3.12/site-packages/sympy/plotting/tests/test_region_or.png",
+    ".venv-audio/lib/python3.12/site-packages/sympy/plotting/tests/test_region_xor.png",
+    ".venv-audio/lib/python3.12/site-packages/werkzeug/debug/shared/console.png",
+    ".venv-audio/lib/python3.12/site-packages/werkzeug/debug/shared/less.png",
+    ".venv-audio/lib/python3.12/site-packages/werkzeug/debug/shared/more.png",
+    ".vercel/output/static/apple-touch-icon.png",
+    ".vercel/output/static/assets/books/agentic-ai-with-python/back-cover.jpg",
+    ".vercel/output/static/assets/books/agentic-ai-with-python/front-cover.jpg",
+    ".vercel/output/static/assets/brand/earnalism-logo-transparent.png",
+    ".vercel/output/static/assets/brand/earnalism-logo.png",
+    ".vercel/output/static/assets/shelves/adventure.jpg",
+    ".vercel/output/static/assets/shelves/bengali-classics.jpg",
+    ".vercel/output/static/assets/shelves/bengali.jpg",
+    ".vercel/output/static/assets/shelves/business.jpg",
+    ".vercel/output/static/assets/shelves/gothic-fiction.jpg",
+    ".vercel/output/static/assets/shelves/history-politics.jpg",
+    ".vercel/output/static/assets/shelves/history-strategy.jpg",
+    ".vercel/output/static/assets/shelves/literary-fiction.jpg",
+    ".vercel/output/static/assets/shelves/literature.jpg",
+    ".vercel/output/static/assets/shelves/science-fiction.jpg",
+    ".vercel/output/static/assets/shelves/self-growth.jpg",
+    ".vercel/output/static/assets/shelves/technology-ai.jpg",
+    ".vercel/output/static/assets/shelves/technology.jpg",
+    ".vercel/output/static/assets/shelves/young-readers.jpg",
+    ".vercel/output/static/favicon.png",
+    "frontend/build/apple-touch-icon.png",
+    "frontend/build/assets/books/agentic-ai-with-python/back-cover.jpg",
+    "frontend/build/assets/books/agentic-ai-with-python/front-cover.jpg",
+    "frontend/build/assets/brand/earnalism-logo-transparent.png",
+    "frontend/build/assets/brand/earnalism-logo.png",
+    "frontend/build/assets/shelves/adventure.jpg",
+    "frontend/build/assets/shelves/bengali-classics.jpg",
+    "frontend/build/assets/shelves/bengali.jpg",
+    "frontend/build/assets/shelves/business.jpg",
+    "frontend/build/assets/shelves/gothic-fiction.jpg",
+    "frontend/build/assets/shelves/history-politics.jpg",
+    "frontend/build/assets/shelves/history-strategy.jpg",
+    "frontend/build/assets/shelves/literary-fiction.jpg",
+    "frontend/build/assets/shelves/literature.jpg",
+    "frontend/build/assets/shelves/science-fiction.jpg",
+    "frontend/build/assets/shelves/self-growth.jpg",
+    "frontend/build/assets/shelves/technology-ai.jpg",
+    "frontend/build/assets/shelves/technology.jpg",
+    "frontend/build/assets/shelves/young-readers.jpg",
+    "frontend/build/favicon.png",
+    "frontend/node_modules/@jest/core/build/assets/jest_logo.png",
+    "frontend/node_modules/detect-port-alt/logo.png",
+    "frontend/node_modules/dotenv-expand/dotenv-expand.png",
+    "frontend/node_modules/istanbul-reports/lib/html-spa/assets/sort-arrow-sprite.png",
+    "frontend/node_modules/istanbul-reports/lib/html/assets/favicon.png",
+    "frontend/node_modules/istanbul-reports/lib/html/assets/sort-arrow-sprite.png",
+    "frontend/node_modules/renderkid/docs/images/bullets-1.png",
+    "frontend/node_modules/renderkid/docs/images/display.png",
+    "frontend/node_modules/renderkid/docs/images/usage.png",
+    "frontend/node_modules/serve-index/public/icons/application_xp.png",
+    "frontend/node_modules/serve-index/public/icons/application_xp_terminal.png",
+    "frontend/node_modules/serve-index/public/icons/box.png",
+    "frontend/node_modules/serve-index/public/icons/cd.png",
+    "frontend/node_modules/serve-index/public/icons/controller.png",
+    "frontend/node_modules/serve-index/public/icons/drive.png",
+    "frontend/node_modules/serve-index/public/icons/film.png",
+    "frontend/node_modules/serve-index/public/icons/folder.png",
+    "frontend/node_modules/serve-index/public/icons/font.png",
+    "frontend/node_modules/serve-index/public/icons/image.png",
+    "frontend/node_modules/serve-index/public/icons/map.png",
+    "frontend/node_modules/serve-index/public/icons/page.png",
+    "frontend/node_modules/serve-index/public/icons/page_add.png",
+    "frontend/node_modules/serve-index/public/icons/page_attach.png",
+    "frontend/node_modules/serve-index/public/icons/page_code.png",
+    "frontend/node_modules/serve-index/public/icons/page_copy.png",
+    "frontend/node_modules/serve-index/public/icons/page_delete.png",
+    "frontend/node_modules/serve-index/public/icons/page_edit.png",
+    "frontend/node_modules/serve-index/public/icons/page_error.png",
+    "frontend/node_modules/serve-index/public/icons/page_excel.png",
+    "frontend/node_modules/serve-index/public/icons/page_find.png",
+    "frontend/node_modules/serve-index/public/icons/page_gear.png",
+    "frontend/node_modules/serve-index/public/icons/page_go.png",
+    "frontend/node_modules/serve-index/public/icons/page_green.png",
+    "frontend/node_modules/serve-index/public/icons/page_key.png",
+    "frontend/node_modules/serve-index/public/icons/page_lightning.png",
+    "frontend/node_modules/serve-index/public/icons/page_link.png",
+    "frontend/node_modules/serve-index/public/icons/page_paintbrush.png",
+    "frontend/node_modules/serve-index/public/icons/page_paste.png",
+    "frontend/node_modules/serve-index/public/icons/page_red.png",
+    "frontend/node_modules/serve-index/public/icons/page_refresh.png",
+    "frontend/node_modules/serve-index/public/icons/page_save.png",
+    "frontend/node_modules/serve-index/public/icons/page_white.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_acrobat.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_actionscript.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_add.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_c.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_camera.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_cd.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_code.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_code_red.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_coldfusion.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_compressed.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_copy.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_cplusplus.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_csharp.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_cup.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_database.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_delete.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_dvd.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_edit.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_error.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_excel.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_find.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_flash.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_freehand.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_gear.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_get.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_go.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_h.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_horizontal.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_key.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_lightning.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_link.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_magnify.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_medal.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_office.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_paint.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_paintbrush.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_paste.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_php.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_picture.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_powerpoint.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_put.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_ruby.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_stack.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_star.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_swoosh.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_text.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_text_width.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_tux.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_vector.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_visualstudio.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_width.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_word.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_world.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_wrench.png",
+    "frontend/node_modules/serve-index/public/icons/page_white_zip.png",
+    "frontend/node_modules/serve-index/public/icons/page_word.png",
+    "frontend/node_modules/serve-index/public/icons/page_world.png",
+    "frontend/public/apple-touch-icon.png",
+    "frontend/public/assets/books/agentic-ai-with-python/back-cover.jpg",
+    "frontend/public/assets/books/agentic-ai-with-python/front-cover.jpg",
+    "frontend/public/assets/brand/earnalism-logo-transparent.png",
+    "frontend/public/assets/brand/earnalism-logo.png",
+    "frontend/public/assets/shelves/adventure.jpg",
+    "frontend/public/assets/shelves/bengali-classics.jpg",
+    "frontend/public/assets/shelves/bengali.jpg",
+    "frontend/public/assets/shelves/business.jpg",
+    "frontend/public/assets/shelves/gothic-fiction.jpg",
+    "frontend/public/assets/shelves/history-politics.jpg",
+    "frontend/public/assets/shelves/history-strategy.jpg",
+    "frontend/public/assets/shelves/literary-fiction.jpg",
+    "frontend/public/assets/shelves/literature.jpg",
+    "frontend/public/assets/shelves/science-fiction.jpg",
+    "frontend/public/assets/shelves/self-growth.jpg",
+    "frontend/public/assets/shelves/technology-ai.jpg",
+    "frontend/public/assets/shelves/technology.jpg",
+    "frontend/public/assets/shelves/young-readers.jpg",
+    "frontend/public/favicon.png",
+    "node_modules/@jest/reporters/assets/jest_logo.png",
+    "node_modules/istanbul-reports/lib/html-spa/assets/sort-arrow-sprite.png",
+    "node_modules/istanbul-reports/lib/html/assets/favicon.png",
+    "node_modules/istanbul-reports/lib/html/assets/sort-arrow-sprite.png",
+    "node_modules/playwright-core/lib/server/chromium/appIcon.png",
+    "node_modules/playwright-core/lib/tools/dashboard/appIcon.png",
+    "output/bengali_publish_qa/20260521T040545Z/node_modules/playwright-core/lib/server/chromium/appIcon.png",
+    "output/bengali_publish_qa/20260521T040545Z/node_modules/playwright-core/lib/tools/dashboard/appIcon.png",
+    "output/bengali_publish_qa/20260521T040545Z/screenshots/06-book-3fa996157b-last-page.png",
+    "output/bengali_publish_qa/20260521T040545Z/screenshots/06-book-3fa996157b-page1.png",
+    "output/bengali_source_repair/20260603T084835Z/covers/contact_sheet.jpg",
+    "output/brand-qa/home-desktop.png",
+    "output/brand-qa/home-lg-threshold.png",
+    "output/brand-qa/home-mobile.png",
+    "output/brand-site-tour/latest/overlays/01-homepage_desktop.png",
+    "output/brand-site-tour/latest/overlays/02-homepage_mobile.png",
+    "output/brand-site-tour/latest/overlays/03-carousel.png",
+    "output/brand-site-tour/latest/overlays/04-library_desktop.png",
+    "output/brand-site-tour/latest/overlays/05-library_mobile.png",
+    "output/brand-site-tour/latest/overlays/06-book_page.png",
+    "output/brand-site-tour/latest/overlays/07-reader.png",
+    "output/brand-site-tour/latest/overlays/08-pricing.png",
+    "output/brand-site-tour/latest/overlays/09-journal_contact.png",
+    "output/generated_bengali_covers/bn-058_back.png",
+    "output/generated_bengali_covers/bn-058_front.png",
+    "output/generated_bengali_covers/bn-070_back.png",
+    "output/generated_bengali_covers/bn-070_front.png",
+    "output/home-motif-desktop.png",
+    "output/home-motif-live-desktop.png",
+    "output/home-motif-mobile.png",
+    "output/landing_ux_after/hero_after.png",
+    "output/landing_ux_after/hero_after_desktop_final.png",
+    "output/landing_ux_after/hero_after_desktop_final_v2.png",
+    "output/landing_ux_after/hero_after_desktop_final_v3.png",
+    "output/landing_ux_after/hero_after_mobile.png",
+    "output/landing_ux_after/hero_after_mobile_final.png",
+    "output/landing_ux_after/hero_after_mobile_final_v2.png",
+    "output/landing_ux_after/hero_after_mobile_final_v3.png",
+    "output/landing_ux_audit/01_top_hero.png",
+    "output/landing_ux_audit/02_live_rail_junction.png",
+    "output/landing_ux_audit/03_shelves.png",
+    "output/landing_ux_audit/05_why_earnalism.png",
+    "output/landing_ux_audit/06_newsletter.png",
+    "output/reader_scroll_smoke_page.png",
+    "output/real-user-ux/evidence/contact-page.png",
+    "output/real-user-ux/evidence/homepage-desktop.png",
+    "output/real-user-ux/evidence/homepage-mobile.png",
+    "output/real-user-ux/evidence/journal-page.png",
+    "output/real-user-ux/evidence/library-desktop.png",
+    "output/real-user-ux/evidence/library-mobile.png",
+    "output/real-user-ux/evidence/pricing-page.png",
+    "output/real-user-ux/evidence/removed-demo-route-canary.png",
+    "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-0792b-g-time-packs-and-trust-copy-chromium/test-finished-1.png",
+    "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-25695--Dracula-first-and-truthful-chromium/test-finished-1.png",
+    "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-3aea2-ile-future-rooms-stay-gated-chromium/test-finished-1.png",
+    "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-43959-ithout-demo-catalog-leakage-chromium/test-finished-1.png",
+    "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-6a7a6-nly-live-controlled-release-chromium/test-finished-1.png",
+    "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-79e6e--without-audiobook-controls-chromium/test-finished-1.png",
+    "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-7da09-eview-and-reading-pass-CTAs-chromium/test-finished-1.png",
+    "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-8de83-approved-titles-notify-only-chromium/test-finished-1.png",
+    "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-be64a-the-generic-Earnalism-shell-chromium/test-finished-1.png",
+    "output/real-user-ux/playwright-artifacts/earnalism-real-user-journe-cb634-d-and-pipeline-titles-gated-chromium/test-finished-1.png",
+    "output/site-tour-qa/desktop-final-step.png",
+    "output/site-tour-qa/desktop-step-1.png",
+    "output/site-tour-qa/mobile-step-1.png",
+    "output/site_tour/frames/end.png",
+    "output/site_tour/frames/hero.png",
+    "output/site_tour/frames/mid.png",
+    "output/site_tour/premium_frames/01-home.jpg",
+    "output/site_tour/premium_frames/02-english-audio.jpg",
+    "output/site_tour/premium_frames/03-bengali-audio.jpg",
+    "output/site_tour/premium_frames/04-payment.jpg",
+    "output/site_tour/premium_frames_final/01-home.jpg",
+    "output/site_tour/premium_frames_final/02-english-audio.jpg",
+    "output/site_tour/premium_frames_final/03-bengali-audio.jpg",
+    "output/site_tour/premium_frames_final/04-payment.jpg",
+    "output/site_tour/premium_frames_v2/01-home.jpg",
+    "output/site_tour/premium_frames_v2/02-english-audio.jpg",
+    "output/site_tour/premium_frames_v2/03-bengali-audio.jpg",
+    "output/site_tour/premium_frames_v2/04-payment.jpg",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/about.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/account.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/admin-boundary.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/admin-launch-monitor-boundary.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/contact-social-links.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/contact.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/cta-get-7-day-reading-pass-click.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/cta-hero-read-chapter-free-click.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/home-cta-base.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/home-signed-in.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/home-tour-after-dismiss.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/home-tour-forced.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/journal.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/library-pipeline-cta-base.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/library.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/pipeline-notify-click.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/pricing-no-live-payment.png",
+    "output/ux-journey-regression/2026-06-29T17-10-32-431Z/journey_screenshots/pricing.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/about.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/account.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/admin-boundary.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/admin-launch-monitor-boundary.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/contact-social-links.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/contact.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/cta-get-7-day-reading-pass-click.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/cta-hero-read-chapter-free-click.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/home-cta-base.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/home-signed-in.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/home-tour-after-dismiss.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/home-tour-forced.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/journal.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/library-pipeline-cta-base.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/library.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/pipeline-notify-click.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/pricing-no-live-payment.png",
+    "output/ux-journey-regression/2026-06-29T18-05-42-660Z/journey_screenshots/pricing.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/about.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/account.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/admin-boundary.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/admin-launch-monitor-boundary.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/contact-social-links.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/contact.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/cta-get-7-day-reading-pass-click.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/cta-hero-read-chapter-free-click.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/home-cta-base.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/home-signed-in.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/home-tour-after-dismiss.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/home-tour-forced.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/journal.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/library-pipeline-cta-base.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/library.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/pipeline-notify-click.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/pricing-no-live-payment.png",
+    "output/ux-journey-regression/2026-07-01T10-16-48-209Z/journey_screenshots/pricing.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/about.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/account.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/admin-boundary.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/admin-launch-monitor-boundary.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/contact-social-links.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/contact.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/cta-get-7-day-reading-pass-click.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/cta-hero-read-chapter-free-click.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/home-cta-base.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/home-signed-in.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/home-tour-after-dismiss.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/home-tour-forced.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/journal.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/library-pipeline-cta-base.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/library.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/pipeline-notify-click.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/pricing-no-live-payment.png",
+    "output/ux-journey-regression/2026-07-01T10-25-27-020Z/journey_screenshots/pricing.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/about.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/account.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/admin-boundary.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/admin-launch-monitor-boundary.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/contact-social-links.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/contact.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/cta-get-7-day-reading-pass-click.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/cta-hero-read-chapter-free-click.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/home-cta-base.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/home-signed-in.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/home-tour-after-dismiss.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/home-tour-forced.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/journal.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/library-pipeline-cta-base.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/library.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/pipeline-notify-click.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/pricing-no-live-payment.png",
+    "output/ux-journey-regression/2026-07-01T10-41-34-897Z/journey_screenshots/pricing.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/about.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/account.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/admin-boundary.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/admin-launch-monitor-boundary.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/contact-social-links.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/contact.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/cta-get-7-day-reading-pass-click.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/cta-hero-read-chapter-free-click.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/home-cta-base.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/home-signed-in.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/home-tour-after-dismiss.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/home-tour-forced.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/journal.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/library-pipeline-cta-base.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/library.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/pipeline-notify-click.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/pricing-no-live-payment.png",
+    "output/ux-journey-regression/2026-07-01T11-24-15-604Z/journey_screenshots/pricing.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/about.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/account.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/admin-boundary.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/admin-launch-monitor-boundary.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/contact-social-links.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/contact.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/cta-get-7-day-reading-pass-click.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/cta-hero-read-chapter-free-click.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/home-cta-base.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/home-signed-in.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/home-tour-after-dismiss.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/home-tour-forced.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/journal.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/library-pipeline-cta-base.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/library.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/pipeline-notify-click.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/pricing-no-live-payment.png",
+    "output/ux-journey-regression/2026-07-01T16-24-06-229Z/journey_screenshots/pricing.png",
+    "output/visual-review/current-local-homepage/homepage-local-desktop-1440.png",
+    "output/visual-review/final-landing-acceptance/desktop-1440-home.png",
+    "output/visual-review/final-landing-acceptance/laptop-1280-home.png",
+    "output/visual-review/final-landing-acceptance/mobile-360-home.png",
+    "output/visual-review/final-landing-acceptance/mobile-390-home.png",
+    "output/visual-review/final-landing-acceptance/tablet-768-home.png",
+    "output/visual-review/header-contrast-hotfix/homepage-header-scroll-1440-no-tour.png",
+    "output/visual-review/header-contrast-hotfix/homepage-header-scroll-1440.png",
+    "output/visual-review/header-india-badge/header-india-badge-desktop-1440.png",
+    "output/visual-review/header-india-badge/header-india-badge-mobile-390.png",
+    "output/visual-review/header-india-craft-badge/homepage-header-india-3d-badge-1440-final.png",
+    "output/visual-review/header-india-craft-badge/homepage-header-india-3d-badge-1440.png",
+    "output/visual-review/hero-book-object-permanent-fix/homepage-desktop-1440-clean.png",
+    "output/visual-review/hero-book-object-permanent-fix/homepage-desktop-1440.png",
+    "output/visual-review/hero-book-top-edge-highlight/homepage-desktop-1440.png",
+    "output/visual-review/hero-dracula-book-object-fix/homepage-hero-1440-final.png",
+    "output/visual-review/hero-dracula-book-object-fix/homepage-hero-1440-v2.png",
+    "output/visual-review/hero-dracula-book-object-fix/homepage-hero-1440.png",
+    "output/visual-review/hero-dracula-book-object-fix/homepage-hero-book-clickable-no-plaque-1440-final.png",
+    "output/visual-review/hero-dracula-book-object-fix/homepage-hero-book-clickable-no-plaque-1440.png",
+    "output/visual-review/hero-dracula-book-object-fix/homepage-hero-book-standout-brightness-1440.png",
+    "output/visual-review/hero-dracula-book-object-fix/homepage-hero-no-plaque-1440-clean.png",
+    "output/visual-review/hero-dracula-book-object-fix/homepage-hero-no-plaque-1440.png",
+    "output/visual-review/hero-dracula-book-polish/homepage-desktop-1440-no-tour.png",
+    "output/visual-review/hero-dracula-book-polish/homepage-desktop-1440.png",
+    "output/visual-review/homepage-reading-path-row/reading-path-row-1440.png",
+    "output/visual-review/homepage-reference-hero-shelf/crop-candidates/book-plaque.png",
+    "output/visual-review/homepage-reference-hero-shelf/crop-candidates/book-ref.png",
+    "output/visual-review/homepage-reference-hero-shelf/crop-candidates/book-tight.png",
+    "output/visual-review/homepage-reference-hero-shelf/crop-candidates/crop-a.png",
+    "output/visual-review/homepage-reference-hero-shelf/crop-candidates/crop-b.png",
+    "output/visual-review/homepage-reference-hero-shelf/crop-candidates/crop-c.png",
+    "output/visual-review/homepage-reference-hero-shelf/crop-candidates/crop-d.png",
+    "output/visual-review/homepage-reference-hero-shelf/homepage-desktop-1440.png",
+    "output/visual-review/homepage-reference-hero-shelf/homepage-laptop-1280.png",
+    "output/visual-review/homepage-reference-hero-shelf/homepage-mobile-360.png",
+    "output/visual-review/homepage-reference-hero-shelf/homepage-mobile-390.png",
+    "output/visual-review/homepage-reference-hero-shelf/homepage-tablet-768.png",
+    "output/visual-review/homepage-reference-hero-shelf/library-desktop-1440.png",
+    "output/visual-review/premium-landing/desktop-1440-home.png",
+    "output/visual-review/premium-landing/laptop-1280-home.png",
+    "output/visual-review/premium-landing/mobile-360-home.png",
+    "output/visual-review/premium-landing/mobile-390-home.png",
+    "output/visual-review/premium-landing/tablet-768-home.png",
+    "output/visual-review/reading-path-heading-line-height/reading-path-desktop-1440.png",
+    "output/visual-review/social-links-visibility/social-links-home-1440.png",
+    "regression/artifacts/screenshots/home-1280.png",
+    "regression/artifacts/screenshots/home-1920.png",
+    "regression/artifacts/screenshots/home-375.png",
+    "regression/artifacts/screenshots/home-768.png",
+    "test-results/book-production-denapaona/debug-timeout-2.png",
+    "test-results/book-production-denapaona/debug-timeout.png",
+    "test-results/book-production-denapaona/prod-desktop-body.png",
+    "test-results/book-production-denapaona/prod-desktop-content.png",
+    "test-results/book-production-denapaona/prod-desktop-cover.png",
+    "test-results/book-production-denapaona/prod-desktop-verified.png",
+    "test-results/book-production-denapaona/prod-mobile-body.png",
+    "test-results/book-production-denapaona/prod-mobile-content.png",
+    "test-results/book-production-denapaona/prod-mobile-cover.png",
+    "test-results/book-production-denapaona/prod-mobile-verified.png",
+    "test-results/book-production-denapaona/prod-tablet-body.png",
+    "test-results/book-production-denapaona/prod-tablet-content.png",
+    "test-results/book-production-denapaona/prod-tablet-cover.png",
+    "test-results/book-production-denapaona/prod-tablet-verified.png",
+    "test-results/live-cover-showcase/desktop-home-band.png",
+    "test-results/live-cover-showcase/desktop-home-band2.png",
+    "test-results/live-cover-showcase/desktop-home-fullbleed.png",
+    "test-results/live-cover-showcase/desktop-home.png",
+    "test-results/live-cover-showcase/desktop-preview-payment.png",
+    "test-results/live-cover-showcase/local-card-preview-cta.png",
+    "test-results/live-cover-showcase/local-debug-home.png",
+    "test-results/live-cover-showcase/mobile-home-band.png",
+    "test-results/live-cover-showcase/mobile-home-band2.png",
+    "test-results/live-cover-showcase/mobile-home-fullbleed.png",
+    "test-results/live-cover-showcase/mobile-home.png",
+    "test-results/live-cover-showcase/production-card-preview-cta.png",
+    "test-results/live-cover-showcase/production-home-band-live.png",
+    "test-results/live-cover-showcase/production-home-fullbleed-live.png",
+    "test-results/live-cover-showcase/production-home-loaded.png",
+    "test-results/live-cover-showcase/production-home.png",
+    "test-results/live-cover-showcase/production-preview-payment-section.png",
+    "test-results/live-cover-showcase/production-preview-payment.png",
+    "test-results/live-cover-showcase/wide-home-fullbleed.png",
+    "test-results/post-publish-denapaona/desktop.png",
+    "test-results/post-publish-denapaona/mobile.png",
+    "test-results/post-publish-denapaona/tablet.png",
+    "test-results/regression/home.png",
+    "test-results/regression/reader-dark-content-default.png",
+    "test-results/regression/reader-dark-default.png",
+    "venv/lib/python3.9/site-packages/docx/templates/default-docx-template/docProps/thumbnail.jpeg",
+    "venv/lib/python3.9/site-packages/networkx/drawing/tests/baseline/test_house_with_colors.png",
+    "venv/lib/python3.9/site-packages/playwright/driver/package/lib/server/chromium/appIcon.png",
+    "venv/lib/python3.9/site-packages/sympy/plotting/tests/test_region_and.png",
+    "venv/lib/python3.9/site-packages/sympy/plotting/tests/test_region_not.png",
+    "venv/lib/python3.9/site-packages/sympy/plotting/tests/test_region_or.png",
+    "venv/lib/python3.9/site-packages/sympy/plotting/tests/test_region_xor.png"
+  ],
+  "ambiguous_images": {}
+}

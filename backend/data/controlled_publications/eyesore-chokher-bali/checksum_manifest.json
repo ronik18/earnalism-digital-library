@@ -1,0 +1,178 @@
+{
+  "slug": "eyesore-chokher-bali",
+  "generated_at": "2026-07-01T10:36:20Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "43e8cb5a4c00dcc9c5c303eaee994e9987b17dc21d65bcaa863fe31dd5b7009a"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "c40ababbfc65d6b8733741a51c51fc2983f6a90be27f5bd4727363aabc4e2ec9"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "0837ce6fac38fc0aecad7052b2be6c816b8d7c3eb8ceea010c8e3f79d688465b"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "f43920ad497ea3bf8335175bd013779ce6ef3ce69beaa6506c8759b23dc7db4d"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "9a3cd171b7750f4fddff9834dd72a43b3489e4e233378f9b786de626b28079ac"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "4b01aeb5b805290b620c0b1e18e79c707aa1a29c1f56ab457416fc20cdefa82e"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "16da11e98cc1b26d65ca34690a8035c581da115bba08559ff786ecfe2393e13d"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "9944aa03893053a268026bcd4ad7aa668d8e6eb1dc7277dfbb9ed63c9fdcb765"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "61079fc57ecfff06fa7beee9125d8fc9617d33dd88128a95f9c716fbe09328ca"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "85cd35b73ceb4b52099d988c2b56cce75080554a4adf684544be03055161d810"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "7a244a1fb1c780627da746e622341e0d331e5da09fd2ed70ec90bbe0b91c8e4c"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "3b278863466b3ffc06b98c5355482d8f0989aef62c8576337bc1500b89a0ecd5"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "44e8a0048c5a67c8ff0486858d4a21b05e28c5455c5e3dd0cdf69b37289af433"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "8ac8fcfb7d8eade88c0a692e15dcb7bbd8e0fcf3fd8c119160dbea016a188ff4"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "fd8dfd2ab5c2e96ff72eb3580d40cd86f4e30f8d5d61ce932f2d7691540e56a4"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "65639d6669983f9df3c677db1fcc757bdb59ace07cd29a67c4df3faf57ff02a6"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "993cbcfdd59bdade9b96df8fd57ab462bfec4c9d5816dc7ad5cb3da1017939f5"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "2ad122b0ede57648e570a40ef58fbdcc28b2d8a4035c6825e196898fd07ca123"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "b999a2766efb6e91e5c546ed28561533657172aebb4d694822f4aa7e365fec49"
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "1af7871f0de45a67738e23a3f78b04398ba9d078a7e04478f47b367ab3fac14f"
+    },
+    {
+      "file": "chapters/chapter-017.json",
+      "sha256": "81f0d650d159cf2366dc5e71adfe40c18e1b2ecd25a8fc542f7a339504b07133"
+    },
+    {
+      "file": "chapters/chapter-018.json",
+      "sha256": "f9320bbe1df34e633b30a484cfa44dd4b81cc0eced5d6ec9c8998975f766fc89"
+    },
+    {
+      "file": "chapters/chapter-019.json",
+      "sha256": "a8e3fc877e714c793135deb52fb1028eb75fc258bc479d7f69b8e3ebb12ddd82"
+    },
+    {
+      "file": "chapters/chapter-020.json",
+      "sha256": "ee41f6dde9e15dac9a7f03b3d1530bad0d6c9abe1b796652940a7d9c43baae44"
+    },
+    {
+      "file": "chapters/chapter-021.json",
+      "sha256": "086d44a3a2fb4652f290284218d476c693e86ec2e9fd1a12a288053dbaab43a9"
+    },
+    {
+      "file": "chapters/chapter-022.json",
+      "sha256": "3caa7e76bb36ef151c88a3c5664931218f0de35a5539f8855c008df6491206d6"
+    },
+    {
+      "file": "chapters/chapter-023.json",
+      "sha256": "0c112a82337a452c8099a999a29a5645138870c99b19fb36dab35d91a1890b0c"
+    },
+    {
+      "file": "chapters/chapter-024.json",
+      "sha256": "f42af1f7cb72444d63dbced89f7d5565ccdb9fcdfd446faeda6092cdde315695"
+    },
+    {
+      "file": "chapters/chapter-025.json",
+      "sha256": "39d888e3e5a5f753fa32b504161e0da52047e02153eb8077845ca59893864e54"
+    },
+    {
+      "file": "chapters/chapter-026.json",
+      "sha256": "4a11f68d6e1b1ee65c4fe4bd9d0e3d3e3b7954e3bba2d7479793cad11a78c7dc"
+    },
+    {
+      "file": "chapters/chapter-027.json",
+      "sha256": "9f4250c855ac5c44796cd1b6bec4f451723d9f26a44b54a7b1797b6f5d711d1e"
+    },
+    {
+      "file": "chapters/chapter-028.json",
+      "sha256": "bef0d5aa74fe8a12f008dd71afbafa7f7fd108e85b2d4c96128ca37043c736c5"
+    },
+    {
+      "file": "chapters/chapter-029.json",
+      "sha256": "5957c95f0cd9e252eeb2f57a2cd861abf0bade1849324b14ac35975491139155"
+    },
+    {
+      "file": "chapters/chapter-030.json",
+      "sha256": "55f17121a3adb8edb87cc993ee7ef8ad57b286c92e0fea693e91f2a5e3fc34dc"
+    },
+    {
+      "file": "chapters/chapter-031.json",
+      "sha256": "4c8c7a229bc56f62e6e45a52b8f1bd7e7d213a1f75c174c7310c59fc31d1b815"
+    },
+    {
+      "file": "chapters/chapter-032.json",
+      "sha256": "594dff3c748283507b0af3add5d8c71cd3cff17a34704dce04a62f73407dee05"
+    },
+    {
+      "file": "chapters/chapter-033.json",
+      "sha256": "1b4a94f0d370d2329c1ebf4b5cc1693b54a0736dd4531465898ec017a68c6bc7"
+    },
+    {
+      "file": "chapters/chapter-034.json",
+      "sha256": "078dcc58d414295b99e15314b5805a6bd7152082a02cf5d6ade2998df159a179"
+    },
+    {
+      "file": "chapters/chapter-035.json",
+      "sha256": "327c85d92f6a7c87203e2ca82ecedb08b766bf3570822ace267c6a9fa3bee434"
+    },
+    {
+      "file": "chapters/chapter-036.json",
+      "sha256": "c859960c99c43f29affc5317c3c55909ead5902b16c1af60193f270b5f94462b"
+    },
+    {
+      "file": "chapters/chapter-037.json",
+      "sha256": "49c91bea1bdfa9e835dc4e8be4062bdee4d47935efe66435b06f26b3fa79ef84"
+    },
+    {
+      "file": "chapters/chapter-038.json",
+      "sha256": "76a474c3e29fec79f3969cdea164ea1fb94a78f1267c5d5f0182aef39774431c"
+    },
+    {
+      "file": "chapters/chapter-039.json",
+      "sha256": "8f1eb108363e6b911af9263d29826b360dde6aedacf8cd1dc9160501dc28af14"
+    }
+  ]
+}

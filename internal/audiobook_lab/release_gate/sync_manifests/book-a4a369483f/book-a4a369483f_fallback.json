@@ -1,0 +1,20 @@
+{
+  "slug": "book-a4a369483f",
+  "generatedAt": "2026-07-03T16:46:58+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/bengali_audiobook_polish/bengali-polish-queue-v1/bundles/ben/book-a4a369483f/book-a4a369483f.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-a4a369483f-chapter-1",
+      "title": "সম্পত্তি সমর্পণ",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1259900,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 1262400
+    }
+  ],
+  "totalDurationMs": 1262400
+}

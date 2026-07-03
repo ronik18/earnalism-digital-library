@@ -3,6 +3,10 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 Disallow: /account
+Allow: /reader/alices-adventures-in-wonderland
+Allow: /reader/bn-027
+Allow: /reader/bn-059
+Allow: /reader/bn-066
 Allow: /reader/carmilla
 Allow: /reader/devdas
 Allow: /reader/dracula
@@ -11,8 +15,13 @@ Allow: /reader/frankenstein
 Allow: /reader/hound-of-the-baskervilles
 Allow: /reader/hungry-stones
 Allow: /reader/jekyll-and-hyde
+Allow: /reader/lokrahasya
+Allow: /reader/mrinalini
+Allow: /reader/nishkriti
 Allow: /reader/pather-panchali
 Allow: /reader/picture-of-dorian-gray
+Allow: /reader/the-art-of-money-getting
+Allow: /reader/the-wonderful-wizard-of-oz
 Allow: /reader/woman-in-white
 Disallow: /reader/
 Disallow: /secure-reader-test

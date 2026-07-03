@@ -1,0 +1,19 @@
+{
+  "slug": "a-jury-of-her-peers",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "a-jury-of-her-peers-chapter-1",
+      "title": "A Jury of Her Peers",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 3617784,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 3620284
+    }
+  ],
+  "totalDurationMs": 3620284
+}

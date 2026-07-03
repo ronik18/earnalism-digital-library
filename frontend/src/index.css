@@ -1235,15 +1235,45 @@ body::before {
 .shelf-two-viewport {
   position: relative;
   overflow: hidden;
-  border-radius: 0.8rem;
-  padding-inline: 0.85rem;
+  border-radius: 1.3rem;
+  padding: 1.15rem 1rem 0.3rem;
+  border: 1px solid rgba(139, 103, 38, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 252, 246, 0.72), rgba(247, 239, 224, 0.9)),
+    radial-gradient(circle at 50% -10%, rgba(212, 175, 55, 0.12), transparent 38%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 26px 48px -40px rgba(72, 41, 16, 0.4);
+}
+
+.shelf-two-stage-copy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 0.6rem 1.05rem;
+}
+
+.shelf-two-stage-copy__eyebrow,
+.shelf-two-stage-copy__count {
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.shelf-two-stage-copy__eyebrow {
+  color: rgba(96, 56, 21, 0.78);
+}
+
+.shelf-two-stage-copy__count {
+  color: rgba(104, 72, 28, 0.58);
 }
 
 .shelf-two-track {
   display: flex;
   width: 100%;
   transform: translateX(0);
-  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.92s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
@@ -1255,38 +1285,56 @@ body::before {
 .shelf-two-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1.02rem;
-  padding: 0.8rem 0.5rem 1.2rem;
+  gap: 1.08rem;
+  padding: 0.15rem 0.6rem 1.4rem;
 }
 
 .shelf-two-book {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.68rem;
-  min-height: 17rem;
-  padding: 0.72rem;
-  border-radius: 0.76rem;
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  gap: 0.88rem;
+  min-height: 25.75rem;
+  padding: 0.88rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(212, 175, 55, 0.22);
   background:
-    radial-gradient(circle at 10% 0%, rgba(212, 175, 55, 0.11), transparent 45%),
-    radial-gradient(circle at 90% 100%, rgba(255, 255, 255, 0.2), transparent 52%),
-    linear-gradient(165deg, rgba(250, 243, 230, 0.93), rgba(250, 239, 221, 0.86));
+    radial-gradient(circle at 10% 0%, rgba(212, 175, 55, 0.1), transparent 42%),
+    radial-gradient(circle at 90% 100%, rgba(255, 255, 255, 0.2), transparent 54%),
+    linear-gradient(165deg, rgba(253, 247, 238, 0.96), rgba(248, 239, 225, 0.92));
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    0 20px 38px -32px rgba(56, 35, 20, 0.35);
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    0 26px 42px -34px rgba(56, 35, 20, 0.38);
   overflow: hidden;
   transition: box-shadow 0.45s cubic-bezier(0.25, 1, 0.5, 1), transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.shelf-two-slide[data-active="true"] .shelf-two-book {
+  animation: shelf-two-card-enter 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--shelf-two-order, 0) * 70ms);
 }
 
 .shelf-two-book__cover-wrap {
   position: relative;
   width: 100%;
-  border-radius: 0.55rem;
+  border-radius: 0.82rem;
   aspect-ratio: 2 / 3;
   overflow: hidden;
-  border: 1px solid rgba(212, 175, 55, 0.32);
+  border: 1px solid rgba(212, 175, 55, 0.34);
   background: linear-gradient(145deg, #1d1612, #32211a);
+  box-shadow:
+    0 20px 34px -26px rgba(18, 10, 8, 0.78),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.shelf-two-book__cover-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 24%, transparent 76%, rgba(5, 3, 2, 0.16)),
+    radial-gradient(circle at 50% -8%, rgba(255, 244, 212, 0.14), transparent 34%);
 }
 
 .shelf-two-book__cover {
@@ -1297,16 +1345,95 @@ body::before {
   transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+.shelf-two-book__status-pill {
+  position: absolute;
+  left: 0.7rem;
+  right: 0.7rem;
+  bottom: 0.78rem;
+  padding: 0.5rem 0.62rem;
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.shelf-two-book__status-pill--queued {
+  background: rgba(14, 19, 18, 0.56);
+  color: #f3dfb2;
+  border: 1px solid rgba(212, 175, 55, 0.34);
+}
+
+.shelf-two-book__status-pill--published {
+  background: rgba(33, 31, 19, 0.58);
+  color: #fff3ca;
+  border: 1px solid rgba(212, 175, 55, 0.42);
+}
+
 .shelf-two-book__cover--placeholder {
-  display: grid;
-  place-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.68rem;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(212, 175, 55, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(57, 32, 27, 0.96), rgba(28, 16, 14, 0.98));
   color: #faefd5;
   font-family: "Cormorant Garamond", "Noto Serif Bengali", serif;
-  font-size: 1.18rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 1rem;
+  padding: 1.4rem 1rem 1.9rem;
   text-align: center;
+}
+
+.shelf-two-book__placeholder-kicker,
+.shelf-two-book__placeholder-caption {
+  font-size: 0.54rem;
+  font-family: inherit;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.shelf-two-book__placeholder-kicker {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  color: rgba(247, 231, 193, 0.72);
+}
+
+.shelf-two-book__placeholder-monogram {
+  display: inline-grid;
+  place-items: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, 0.38);
+  background: radial-gradient(circle at 50% 32%, rgba(255, 241, 208, 0.12), rgba(255, 241, 208, 0.02));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 16px 24px -18px rgba(0, 0, 0, 0.9);
+  font-size: 1.35rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.shelf-two-book__placeholder-divider {
+  width: 3rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.55), transparent);
+}
+
+.shelf-two-book__placeholder-caption {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 3.95rem;
+  color: rgba(245, 229, 196, 0.68);
+  line-height: 1.45;
 }
 
 .shelf-two-book:hover {
@@ -1317,29 +1444,68 @@ body::before {
 }
 
 .shelf-two-book:hover .shelf-two-book__cover {
-  transform: translateY(-5px);
+  transform: translateY(-4px) scale(1.018);
   box-shadow:
     0 18px 28px -24px rgba(0, 0, 0, 0.56),
     0 0 0 1px rgba(0, 0, 0, 0.35);
 }
 
+.shelf-two-book__copy {
+  display: grid;
+  gap: 0.36rem;
+}
+
+.shelf-two-book__sequence {
+  color: rgba(121, 85, 31, 0.78);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
 .shelf-two-book__title {
-  min-height: 2.9rem;
+  min-height: 3.2rem;
   color: #2d1e24;
   font-family: "Cormorant Garamond", "Noto Serif Bengali", serif;
-  font-size: 1.25rem;
-  line-height: 1.22;
+  font-size: 1.45rem;
+  line-height: 1.04;
   letter-spacing: 0.01em;
+}
+
+.shelf-two-book__author {
+  color: rgba(58, 42, 31, 0.76);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.shelf-two-book__description {
+  min-height: 5.05rem;
+  color: rgba(46, 33, 27, 0.8);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.shelf-two-book__footer {
+  margin-top: auto;
+  display: grid;
+  gap: 0.6rem;
+  padding-top: 0.88rem;
+  border-top: 1px solid rgba(130, 90, 39, 0.1);
 }
 
 .shelf-two-book__cta {
   width: 100%;
-  min-height: 2.1rem;
+  min-height: 2.4rem;
   border-radius: 999px;
-  font-size: 0.74rem;
+  font-size: 0.66rem;
   text-align: center;
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
@@ -1377,11 +1543,11 @@ body::before {
 }
 
 .shelf-two-book__status {
-  margin-top: auto;
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   font-weight: 600;
+  color: rgba(105, 75, 42, 0.88);
 }
 
 .shelf-two-book__status--published {
@@ -1450,15 +1616,15 @@ body::before {
 }
 
 .shelf-two-dots {
-  margin-top: 0.7rem;
+  margin-top: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.44rem;
+  gap: 0.5rem;
 }
 
 .shelf-two-dot {
-  width: 0.42rem;
+  width: 0.48rem;
   height: 0.42rem;
   border-radius: 999px;
   background: rgba(95, 72, 24, 0.28);
@@ -1466,13 +1632,29 @@ body::before {
 }
 
 .shelf-two-dot--active {
-  width: 1rem;
+  width: 1.35rem;
   background: #D4AF37;
+}
+
+@keyframes shelf-two-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 1023px) {
   .shelf-two-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .shelf-two-book {
+    min-height: 24.25rem;
   }
 
   .shelf-two-arrow {
@@ -1490,13 +1672,39 @@ body::before {
 }
 
 @media (max-width: 767px) {
+  .shelf-two-viewport {
+    padding: 1rem 0.82rem 0.22rem;
+  }
+
+  .shelf-two-stage-copy {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.36rem;
+  }
+
   .shelf-two-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.86rem;
+    padding: 0.05rem 0.12rem 1.2rem;
+  }
+
+  .shelf-two-book {
+    min-height: 22.9rem;
+    padding: 0.78rem;
   }
 
   .shelf-two-book__title {
-    min-height: 2.5rem;
-    font-size: 1.05rem;
+    min-height: 2.6rem;
+    font-size: 1.12rem;
+  }
+
+  .shelf-two-book__description {
+    min-height: 4.7rem;
+    font-size: 0.76rem;
+  }
+
+  .shelf-two-book__placeholder-caption {
+    bottom: 3.85rem;
   }
 
   .shelf-two-arrow {
@@ -1507,6 +1715,21 @@ body::before {
   .shelf-two-arrow svg {
     width: 1rem;
     height: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shelf-two-track,
+  .shelf-two-book,
+  .shelf-two-book__cover,
+  .shelf-two-book__cta,
+  .shelf-two-arrow,
+  .shelf-two-dot {
+    transition: none;
+  }
+
+  .shelf-two-slide[data-active="true"] .shelf-two-book {
+    animation: none;
   }
 }
 
@@ -2004,39 +2227,77 @@ textarea.input-elegant {
   display: flex;
   min-width: 0;
   align-items: center;
-  gap: 0.58rem;
+  gap: 0.72rem;
 }
 .india-origin-badge {
   position: relative;
   display: inline-flex;
-  height: 2.34rem;
+  height: 2.54rem;
   flex: 0 0 auto;
   align-items: center;
-  gap: 0.42rem;
-  border: 1px solid rgba(197, 160, 89, 0.46);
+  gap: 0.52rem;
+  border: 1px solid rgba(197, 160, 89, 0.52);
   border-radius: 999px;
-  padding: 0.14rem 0.66rem 0.14rem 0.22rem;
+  padding: 0.17rem 0.84rem 0.17rem 0.26rem;
   background:
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.98), transparent 40%),
-    radial-gradient(circle at 46% 82%, rgba(255, 153, 51, 0.13), transparent 38%),
-    radial-gradient(circle at 70% 18%, rgba(19, 136, 8, 0.1), transparent 34%),
-    linear-gradient(145deg, rgba(255, 252, 243, 0.94), rgba(244, 235, 219, 0.64)),
-    rgba(253, 252, 248, 0.76);
+    radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 1), transparent 38%),
+    radial-gradient(circle at 80% 18%, rgba(216, 185, 122, 0.22), transparent 33%),
+    radial-gradient(circle at 44% 86%, rgba(255, 153, 51, 0.14), transparent 36%),
+    radial-gradient(circle at 76% 80%, rgba(19, 136, 8, 0.11), transparent 34%),
+    linear-gradient(145deg, rgba(255, 252, 243, 0.97), rgba(241, 232, 216, 0.82)),
+    rgba(253, 252, 248, 0.82);
   box-shadow:
-    0 16px 30px -22px rgba(74, 28, 39, 0.58),
-    0 4px 14px -12px rgba(197, 160, 89, 0.72),
+    0 18px 34px -24px rgba(74, 28, 39, 0.48),
+    0 8px 18px -16px rgba(197, 160, 89, 0.82),
     0 0 0 1px rgba(255, 255, 255, 0.38) inset,
     inset 0 1px 0 rgba(253, 252, 248, 0.96),
-    inset 0 -1px 0 rgba(120, 78, 28, 0.1);
+    inset 0 -1px 0 rgba(120, 78, 28, 0.12);
   color: var(--brand-burgundy);
+  overflow: hidden;
+  transition:
+    transform 180ms ease,
+    box-shadow 240ms ease,
+    border-color 240ms ease;
+}
+.india-origin-badge::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  pointer-events: none;
+}
+.india-origin-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.6), transparent 28%, transparent 72%, rgba(133, 92, 35, 0.08)),
+    radial-gradient(circle at 20% 8%, rgba(255, 255, 255, 0.62), transparent 24%);
+  opacity: 0.72;
+}
+.india-origin-badge:hover {
+  transform: translateY(-1px);
+  border-color: rgba(197, 160, 89, 0.66);
+  box-shadow:
+    0 22px 38px -24px rgba(74, 28, 39, 0.54),
+    0 10px 18px -14px rgba(197, 160, 89, 0.88),
+    0 0 0 1px rgba(255, 255, 255, 0.42) inset,
+    inset 0 1px 0 rgba(253, 252, 248, 0.98),
+    inset 0 -1px 0 rgba(120, 78, 28, 0.14);
 }
 .india-origin-badge__mark {
-  width: 3.78rem;
-  height: 1.72rem;
+  position: relative;
+  z-index: 1;
+  width: 3.92rem;
+  height: 1.8rem;
   flex: 0 0 auto;
   overflow: visible;
-  transform: perspective(90px) rotateY(-7deg) rotateZ(-1.5deg);
+  transform: perspective(96px) rotateY(-6deg) rotateZ(-1.25deg);
   transform-origin: 45% 50%;
+  filter: drop-shadow(0 6px 10px rgba(74, 28, 39, 0.14));
 }
 .india-origin-badge__sprinkles {
   opacity: 1;
@@ -2117,24 +2378,45 @@ textarea.input-elegant {
 }
 .india-origin-badge__text {
   display: grid;
-  gap: 0.03rem;
+  position: relative;
+  z-index: 1;
+  gap: 0.08rem;
   line-height: 1;
+}
+.india-origin-badge__eyebrow {
+  color: rgba(120, 78, 28, 0.72);
+  font-size: 0.4rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 .india-origin-badge__text strong {
   color: var(--brand-burgundy);
   font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
-  font-size: 0.78rem;
+  font-size: 0.86rem;
   font-weight: 700;
-  letter-spacing: 0.015em;
+  letter-spacing: 0.025em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.52);
   white-space: nowrap;
 }
-.india-origin-badge__text small {
-  color: rgba(74, 28, 39, 0.66);
-  font-size: 0.46rem;
+.india-origin-badge__subline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  color: rgba(74, 28, 39, 0.7);
+  font-size: 0.43rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.17em;
   text-transform: uppercase;
   white-space: nowrap;
+}
+.india-origin-badge__dot {
+  width: 0.26rem;
+  height: 0.26rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #d8b97a, #b98530);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.45) inset;
 }
 
 @media (max-width: 1279px) {
@@ -2159,7 +2441,7 @@ textarea.input-elegant {
   }
   .india-origin-badge {
     width: 2.82rem;
-    height: 1.92rem;
+    height: 2rem;
   }
   .india-origin-badge__mark {
     width: 2.62rem;

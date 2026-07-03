@@ -1,0 +1,107 @@
+{
+  "id": "controlled-the-art-of-money-getting",
+  "slug": "the-art-of-money-getting",
+  "title": "The Art of Money Getting",
+  "subtitle": "Golden Rules for Making Money",
+  "author": "P. T. Barnum",
+  "category_slug": "business",
+  "short_description": "A clean digital reading edition of P. T. Barnum's business classic.",
+  "description": "A text-only reader edition prepared from a legally cleared public-domain source for business and entrepreneurship readers.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780951242/earnalism/covers/front/cover_6d240429-48f2-445c-92a4-336aaca79e98.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780951242/earnalism/covers/front/cover_6d240429-48f2-445c-92a4-336aaca79e98.png",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780951242/earnalism/covers/front/cover_6d240429-48f2-445c-92a4-336aaca79e98.png",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780951242/earnalism/covers/front/cover_6d240429-48f2-445c-92a4-336aaca79e98.png",
+  "thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/front/cover_6d240429-48f2-445c-92a4-336aaca79e98",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780951249/earnalism/covers/back/back_cover_6d240429-48f2-445c-92a4-336aaca79e98.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950220/earnalism/covers/back/back_cover_6d240429-48f2-445c-92a4-336aaca79e98.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780950220/earnalism/covers/back/back_cover_6d240429-48f2-445c-92a4-336aaca79e98.png",
+  "back_cover_thumbnail_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/c_fill,f_auto,h_450,q_auto:best,w_300/v1/earnalism/covers/back/back_cover_6d240429-48f2-445c-92a4-336aaca79e98",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "57 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a clean, boilerplate-free business classic.",
+    "Use a focused reader edition without source-file distractions.",
+    "Review practical reflections on earning, thrift, persistence, and enterprise."
+  ],
+  "who_for": [
+    "Business and entrepreneurship readers",
+    "Students of classic enterprise writing",
+    "Readers interested in historical advice on money and work"
+  ],
+  "learnings": [
+    "Classic views on saving, effort, and business judgment.",
+    "Historical language around enterprise and personal discipline.",
+    "A compact public-domain text prepared for web reading."
+  ],
+  "about_author": "P. T. Barnum was an American showman, promoter, and entrepreneur whose writings often turned personal business experience into practical advice.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Art of Money Getting",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 13564,
+      "reading_minutes": 57,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T18:46:49Z",
+      "updated_at": "2026-07-03T18:46:49Z"
+    }
+  ],
+  "source_hash": "0baf572e0ec351e47504ab1d49fb646be164ab6db13d0024cda7567b58dad287",
+  "content_hash": "907586f92b4df67b3576f66b89d9c1434bd09200aec7d25926d4fb8253a6761e",
+  "provenance_hash": "c49460dc49b55ce9b4340e04c2844835981ac4f7042ac2d31c830079fc679dc6",
+  "rights_basis": "Public domain; official catalog marks copyright status as Public domain in the USA; source text header permits reuse in the United States.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": false,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "cloudinary",
+  "audiobook_voice": "edge:en-IN-NeerjaNeural",
+  "audio_asset_slug": "the-art-of-money-getting",
+  "audiobook_assets": {
+    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781536100/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1.mp3.mp3",
+    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536104/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_timestamps.json",
+    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536105/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_highlight.vtt",
+    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536106/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_chapters.json",
+    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536107/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_meta.json"
+  },
+  "audiobook": {
+    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781536100/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1.mp3.mp3",
+    "provider": "cloudinary",
+    "size": 43537598,
+    "duration_ms": 5442096,
+    "assets": {
+      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781536100/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1.mp3.mp3",
+      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536104/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_timestamps.json",
+      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536105/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_highlight.vtt",
+      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536106/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_chapters.json",
+      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536107/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_meta.json"
+    },
+    "updated_at": "2026-06-15T15:08:30.227356+00:00"
+  },
+  "audiobook_assets_updated_at": "2026-06-15T15:08:30.227391+00:00",
+  "created_at": "2026-07-03T18:46:49Z",
+  "updated_at": "2026-07-03T18:46:49Z"
+}

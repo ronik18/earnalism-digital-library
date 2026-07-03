@@ -1,0 +1,20 @@
+{
+  "slug": "great-expectations",
+  "generatedAt": "2026-07-02T22:00:44+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/english_audiobook_polish/english-polish-edge-queue-v1/bundles/en/great-expectations/great-expectations.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "chapter-1",
+      "title": "Chapter 1",
+      "paragraphCount": 0,
+      "startMs": 0,
+      "contentMs": 79104791,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 79107291
+    }
+  ],
+  "totalDurationMs": 79107291
+}

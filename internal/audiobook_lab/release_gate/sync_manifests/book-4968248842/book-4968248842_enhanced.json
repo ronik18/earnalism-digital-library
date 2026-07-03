@@ -1,0 +1,19 @@
+{
+  "slug": "book-4968248842",
+  "createdAt": "2026-07-03T08:33:07+0000",
+  "source": "pipeline_gate2",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-4968248842-chapter-1",
+      "title": "বলাই",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 659879,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 662379
+    }
+  ],
+  "totalDurationMs": 662379
+}

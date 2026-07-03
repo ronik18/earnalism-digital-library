@@ -1,0 +1,20 @@
+{
+  "id": "chapter-003",
+  "bookSlug": "frankenstein",
+  "order": 3,
+  "title": "Letter 3. To Mrs. Saville, England",
+  "language": "en",
+  "content": "July 7th, 17—.\n\nMy dear Sister,\n\nI write a few lines in haste to say that I am safe—and well advanced\n\non my voyage. This letter will reach England by a merchantman now on\n\nits homeward voyage from Archangel; more fortunate than I, who may not\n\nsee my native land, perhaps, for many years. I am, however, in good\n\nspirits: my men are bold and apparently firm of purpose, nor do the\n\nfloating sheets of ice that continually pass us, indicating the dangers\n\nof the region towards which we are advancing, appear to dismay them. We\n\nhave already reached a very high latitude; but it is the height of\n\nsummer, and although not so warm as in England, the southern gales,\n\nwhich blow us speedily towards those shores which I so ardently desire\n\nto attain, breathe a degree of renovating warmth which I had not\n\nexpected.\n\nNo incidents have hitherto befallen us that would make a figure in a\n\nletter. One or two stiff gales and the springing of a leak are\n\naccidents which experienced navigators scarcely remember to record, and\n\nI shall be well content if nothing worse happen to us during our voyage.\n\nAdieu, my dear Margaret. Be assured that for my own sake, as well as\n\nyours, I will not rashly encounter danger. I will be cool,\n\npersevering, and prudent.\n\nBut success _shall_ crown my endeavours. Wherefore not? Thus far I\n\nhave gone, tracing a secure way over the pathless seas, the very stars\n\nthemselves being witnesses and testimonies of my triumph. Why not\n\nstill proceed over the untamed yet obedient element? What can stop the\n\ndetermined heart and resolved will of man?\n\nMy swelling heart involuntarily pours itself out thus. But I must\n\nfinish. Heaven bless my beloved sister!\n\nR.W.",
+  "content_hash": "fdb8b2539acbd036a7ce233d77dc0a798ea8ba6aa4245fadf922471d6103c9c7",
+  "sourceSha256": "b338859650bae7d8c9a83c4905cc794ef2ef03ada59aa725a41cdf429d8aa844",
+  "sanitizedSha256": "fdb8b2539acbd036a7ce233d77dc0a798ea8ba6aa4245fadf922471d6103c9c7",
+  "word_count": 296,
+  "reading_minutes": 2,
+  "is_preview": true,
+  "has_images": false,
+  "image_count": 0,
+  "processing_status": "ready",
+  "processing_warnings": [],
+  "uploaded_at": "2026-07-03T18:46:49Z",
+  "updated_at": "2026-07-03T18:46:49Z"
+}

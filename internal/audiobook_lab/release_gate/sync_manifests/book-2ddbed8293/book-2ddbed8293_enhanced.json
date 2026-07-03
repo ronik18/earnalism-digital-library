@@ -1,0 +1,19 @@
+{
+  "slug": "book-2ddbed8293",
+  "createdAt": "2026-07-03T08:07:44+0000",
+  "source": "pipeline_gate2",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "book-2ddbed8293-chapter-1",
+      "title": "ব্যবধান",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 722903,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 725403
+    }
+  ],
+  "totalDurationMs": 725403
+}

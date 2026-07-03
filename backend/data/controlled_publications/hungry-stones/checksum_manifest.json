@@ -1,0 +1,26 @@
+{
+  "slug": "hungry-stones",
+  "generated_at": "2026-07-01T10:36:20Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "670a6b6676d67d887ef93e45a873b8cf1c3f7e14a59623a8388b652ecee277a1"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "54fd7d63cff28d8c3ef929a1f989debb488e727f07c451f4571488092569fefe"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "3429caf619cc3b3e68d6d907a9c8b0a5cdebd31bcf1a92e457dc1b69e09a6b12"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "97f59f1cd3e360d8e6845bbb1f5a279103693ae6c745cb01d91b869c59dcb9df"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "f14c05f70ab9af0060b61682195341e17ee7f5638cb6196e15adb8e9c58292ca"
+    }
+  ]
+}

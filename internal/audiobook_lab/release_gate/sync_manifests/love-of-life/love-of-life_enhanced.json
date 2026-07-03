@@ -1,0 +1,19 @@
+{
+  "slug": "love-of-life",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "love-of-life-chapter-1",
+      "title": "Love of Life",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 3543622,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 3546122
+    }
+  ],
+  "totalDurationMs": 3546122
+}

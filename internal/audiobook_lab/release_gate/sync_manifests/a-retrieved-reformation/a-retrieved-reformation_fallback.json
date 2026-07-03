@@ -1,0 +1,20 @@
+{
+  "slug": "a-retrieved-reformation",
+  "generatedAt": "2026-07-03T17:18:37+0000",
+  "source": "pipeline_gate2_fallback",
+  "sourceAudio": "output/english_audiobook_polish/english-polish-edge-below9-v1/bundles/en/a-retrieved-reformation/a-retrieved-reformation.mp3",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "a-retrieved-reformation-chapter-1",
+      "title": "A Retrieved Reformation",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1318772,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "estimatedTotalMs": 1321272
+    }
+  ],
+  "totalDurationMs": 1321272
+}

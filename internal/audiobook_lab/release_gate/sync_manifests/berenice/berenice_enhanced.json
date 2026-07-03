@@ -1,0 +1,19 @@
+{
+  "slug": "berenice",
+  "createdAt": "2026-07-03T18:20:41+0000",
+  "source": "backfill_from_aligned_premium_audio",
+  "chapters": [
+    {
+      "index": 1,
+      "chapterId": "berenice-chapter-1",
+      "title": "Berenice",
+      "paragraphCount": 1,
+      "startMs": 0,
+      "contentMs": 1541650,
+      "introMs": 1500,
+      "outroMs": 1000,
+      "totalMs": 1544150
+    }
+  ],
+  "totalDurationMs": 1544150
+}
