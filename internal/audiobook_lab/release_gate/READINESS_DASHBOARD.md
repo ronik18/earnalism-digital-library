@@ -1,6 +1,6 @@
 # READINESS_DASHBOARD
 
-Run timestamp: 2026-07-03T09:56:59+0000
+Run timestamp: 2026-07-03T10:01:54+0000
 Pipeline command: scripts/audiobook_production_pipeline.py --manifest internal/audiobook_lab/generated_candidate_restoration/restoration_manifest_20260702.json
 Total source titles in manifest scope: 152
 Total unique titles: 152
@@ -948,18 +948,62 @@ Estimated total API cost: $0.0000
   - Render sample: -
   - Text sample: -
   - Highlights: data/controlled_publications/jane-eyre/highlight_sync.json
-- **young-goodman-brown** (en) | Words: 0 | Duration: 0.00s | TTS: failed | Sync: real | Warnings: Reconstructed reader_manifest.json for data/controlled_publications/young-goodman-brown/reader_manifest.json, Filled missing metadata 'title' in content/books/young-goodman-brown/book.json from manifest, Filled missing metadata 'author' in content/books/young-goodman-brown/book.json from manifest, Missing optional language metadata in content/books/young-goodman-brown/book.json
+- **young-goodman-brown** (en) | Words: 0 | Duration: 0.00s | TTS: failed | Sync: real | Warnings: Missing optional language metadata in content/books/young-goodman-brown/book.json
   - Render sample: -
   - Text sample: -
   - Highlights: data/controlled_publications/young-goodman-brown/highlight_sync.json
 
 ## Git Diff Summary
+- content/books/the-ambitious-guest/book.json
+- content/books/the-bet/book.json
+- content/books/the-celebrated-jumping-frog-of-calaveras-county/book.json
+- content/books/the-cop-and-the-anthem/book.json
+- content/books/the-enchanted-april/book.json
+- content/books/the-five-orange-pips/book.json
+- content/books/the-furnished-room/book.json
+- content/books/the-gift-of-the-magi/book.json
+- content/books/the-happy-prince/book.json
+- content/books/the-imp-of-the-perverse/book.json
+- content/books/the-last-leaf/book.json
+- content/books/the-legend-of-sleepy-hollow/book.json
+- content/books/the-luck-of-roaring-camp/book.json
+- content/books/the-man-in-a-case/book.json
+- content/books/the-man-with-the-twisted-lip/book.json
+- content/books/the-masque-of-the-red-death/book.json
+- content/books/the-metamorphosis/book.json
+- content/books/the-ministers-black-veil/book.json
+- content/books/the-most-dangerous-game/book.json
+- content/books/the-murders-in-the-rue-morgue/book.json
+- content/books/the-open-window/book.json
+- content/books/the-outcasts-of-poker-flat/book.json
+- content/books/the-pit-and-the-pendulum/book.json
+- content/books/the-principles-of-scientific-management/book.json
+- content/books/the-purloined-letter/book.json
+- content/books/the-ransom-of-red-chief/book.json
+- content/books/the-red-headed-league/book.json
+- content/books/the-science-of-getting-rich/book.json
+- content/books/the-selfish-giant/book.json
+- content/books/the-speckled-band/book.json
+- content/books/the-student/book.json
+- content/books/the-suicide-club/book.json
+- content/books/the-withered-arm/book.json
+- content/books/to-build-a-fire/book.json
+- content/books/young-goodman-brown/book.json
+- data/controlled_publications/a-ghost-story/highlight_sync.json
+- data/controlled_publications/a-horseman-in-the-sky/highlight_sync.json
+- data/controlled_publications/a-jury-of-her-peers/highlight_sync.json
+- data/controlled_publications/a-mystery-of-heroism/highlight_sync.json
+- data/controlled_publications/a-retrieved-reformation/highlight_sync.json
+- data/controlled_publications/a-scandal-in-bohemia/highlight_sync.json
+- data/controlled_publications/a-wagner-matinee/highlight_sync.json
+- data/controlled_publications/a-white-heron/highlight_sync.json
+- data/controlled_publications/acres-of-diamonds/highlight_sync.json
+- data/controlled_publications/alices-adventures-in-wonderland/highlight_sync.json
+- data/controlled_publications/an-occurrence-at-owl-creek-bridge/highlight_sync.json
+- data/controlled_publications/berenice/highlight_sync.json
+- data/controlled_publications/bharat-at-the-crossroads/highlight_sync.json
 - data/controlled_publications/bn-027/highlight_sync.json
 - data/controlled_publications/bn-031/highlight_sync.json
-- internal/audiobook_lab/release_gate/READINESS_DASHBOARD.md
-- internal/audiobook_lab/release_gate/release_gate_status.json
-- internal/audiobook_lab/release_gate/sync_manifests/bn-027/bn-027_enhanced.json
-- internal/audiobook_lab/release_gate/sync_manifests/bn-031/bn-031_enhanced.json
 
 ## Exact Command
 `scripts/audiobook_production_pipeline.py --manifest internal/audiobook_lab/generated_candidate_restoration/restoration_manifest_20260702.json`

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T09:56:59+0000",
+  "generatedAt": "2026-07-03T10:01:54+0000",
   "command": "scripts/audiobook_production_pipeline.py --manifest internal/audiobook_lab/generated_candidate_restoration/restoration_manifest_20260702.json",
   "summary": {
     "totalTitlesProcessed": 152,
@@ -4048,12 +4048,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-ambitious-guest/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-ambitious-guest/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-ambitious-guest/book.json from manifest",
         "Missing optional language metadata in content/books/the-ambitious-guest/book.json"
       ]
     },
@@ -4085,12 +4082,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-bet/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-bet/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-bet/book.json from manifest",
         "Missing optional language metadata in content/books/the-bet/book.json"
       ]
     },
@@ -4122,12 +4116,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-celebrated-jumping-frog-of-calaveras-county/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-celebrated-jumping-frog-of-calaveras-county/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-celebrated-jumping-frog-of-calaveras-county/book.json from manifest",
         "Missing optional language metadata in content/books/the-celebrated-jumping-frog-of-calaveras-county/book.json"
       ]
     },
@@ -4159,12 +4150,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-cop-and-the-anthem/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-cop-and-the-anthem/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-cop-and-the-anthem/book.json from manifest",
         "Missing optional language metadata in content/books/the-cop-and-the-anthem/book.json"
       ]
     },
@@ -4197,12 +4185,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-enchanted-april/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-enchanted-april/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-enchanted-april/book.json from manifest",
         "Missing optional language metadata in content/books/the-enchanted-april/book.json"
       ]
     },
@@ -4235,12 +4220,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-five-orange-pips/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-five-orange-pips/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-five-orange-pips/book.json from manifest",
         "Missing optional language metadata in content/books/the-five-orange-pips/book.json"
       ]
     },
@@ -4272,12 +4254,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-furnished-room/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-furnished-room/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-furnished-room/book.json from manifest",
         "Missing optional language metadata in content/books/the-furnished-room/book.json"
       ]
     },
@@ -4309,12 +4288,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-gift-of-the-magi/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-gift-of-the-magi/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-gift-of-the-magi/book.json from manifest",
         "Missing optional language metadata in content/books/the-gift-of-the-magi/book.json"
       ]
     },
@@ -4346,12 +4322,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-happy-prince/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-happy-prince/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-happy-prince/book.json from manifest",
         "Missing optional language metadata in content/books/the-happy-prince/book.json"
       ]
     },
@@ -4383,12 +4356,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-imp-of-the-perverse/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-imp-of-the-perverse/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-imp-of-the-perverse/book.json from manifest",
         "Missing optional language metadata in content/books/the-imp-of-the-perverse/book.json"
       ]
     },
@@ -4420,12 +4390,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-last-leaf/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-last-leaf/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-last-leaf/book.json from manifest",
         "Missing optional language metadata in content/books/the-last-leaf/book.json"
       ]
     },
@@ -4457,12 +4424,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-legend-of-sleepy-hollow/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-legend-of-sleepy-hollow/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-legend-of-sleepy-hollow/book.json from manifest",
         "Missing optional language metadata in content/books/the-legend-of-sleepy-hollow/book.json"
       ]
     },
@@ -4494,12 +4458,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-luck-of-roaring-camp/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-luck-of-roaring-camp/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-luck-of-roaring-camp/book.json from manifest",
         "Missing optional language metadata in content/books/the-luck-of-roaring-camp/book.json"
       ]
     },
@@ -4531,12 +4492,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-man-in-a-case/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-man-in-a-case/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-man-in-a-case/book.json from manifest",
         "Missing optional language metadata in content/books/the-man-in-a-case/book.json"
       ]
     },
@@ -4569,12 +4527,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-man-with-the-twisted-lip/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-man-with-the-twisted-lip/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-man-with-the-twisted-lip/book.json from manifest",
         "Missing optional language metadata in content/books/the-man-with-the-twisted-lip/book.json"
       ]
     },
@@ -4606,12 +4561,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-masque-of-the-red-death/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-masque-of-the-red-death/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-masque-of-the-red-death/book.json from manifest",
         "Missing optional language metadata in content/books/the-masque-of-the-red-death/book.json"
       ]
     },
@@ -4643,12 +4595,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-metamorphosis/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-metamorphosis/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-metamorphosis/book.json from manifest",
         "Missing optional language metadata in content/books/the-metamorphosis/book.json"
       ]
     },
@@ -4680,12 +4629,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-ministers-black-veil/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-ministers-black-veil/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-ministers-black-veil/book.json from manifest",
         "Missing optional language metadata in content/books/the-ministers-black-veil/book.json"
       ]
     },
@@ -4717,12 +4663,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-most-dangerous-game/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-most-dangerous-game/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-most-dangerous-game/book.json from manifest",
         "Missing optional language metadata in content/books/the-most-dangerous-game/book.json"
       ]
     },
@@ -4755,12 +4698,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-murders-in-the-rue-morgue/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-murders-in-the-rue-morgue/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-murders-in-the-rue-morgue/book.json from manifest",
         "Missing optional language metadata in content/books/the-murders-in-the-rue-morgue/book.json"
       ]
     },
@@ -4792,12 +4732,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-open-window/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-open-window/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-open-window/book.json from manifest",
         "Missing optional language metadata in content/books/the-open-window/book.json"
       ]
     },
@@ -4829,12 +4766,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-outcasts-of-poker-flat/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-outcasts-of-poker-flat/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-outcasts-of-poker-flat/book.json from manifest",
         "Missing optional language metadata in content/books/the-outcasts-of-poker-flat/book.json"
       ]
     },
@@ -4866,12 +4800,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-pit-and-the-pendulum/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-pit-and-the-pendulum/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-pit-and-the-pendulum/book.json from manifest",
         "Missing optional language metadata in content/books/the-pit-and-the-pendulum/book.json"
       ]
     },
@@ -4904,12 +4835,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-principles-of-scientific-management/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-principles-of-scientific-management/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-principles-of-scientific-management/book.json from manifest",
         "Missing optional language metadata in content/books/the-principles-of-scientific-management/book.json"
       ]
     },
@@ -4941,12 +4869,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-purloined-letter/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-purloined-letter/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-purloined-letter/book.json from manifest",
         "Missing optional language metadata in content/books/the-purloined-letter/book.json"
       ]
     },
@@ -4978,12 +4903,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-ransom-of-red-chief/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-ransom-of-red-chief/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-ransom-of-red-chief/book.json from manifest",
         "Missing optional language metadata in content/books/the-ransom-of-red-chief/book.json"
       ]
     },
@@ -5015,12 +4937,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-red-headed-league/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-red-headed-league/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-red-headed-league/book.json from manifest",
         "Missing optional language metadata in content/books/the-red-headed-league/book.json"
       ]
     },
@@ -5052,12 +4971,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-science-of-getting-rich/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-science-of-getting-rich/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-science-of-getting-rich/book.json from manifest",
         "Missing optional language metadata in content/books/the-science-of-getting-rich/book.json"
       ]
     },
@@ -5089,12 +5005,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-selfish-giant/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-selfish-giant/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-selfish-giant/book.json from manifest",
         "Missing optional language metadata in content/books/the-selfish-giant/book.json"
       ]
     },
@@ -5126,12 +5039,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-speckled-band/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-speckled-band/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-speckled-band/book.json from manifest",
         "Missing optional language metadata in content/books/the-speckled-band/book.json"
       ]
     },
@@ -5163,12 +5073,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-student/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-student/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-student/book.json from manifest",
         "Missing optional language metadata in content/books/the-student/book.json"
       ]
     },
@@ -5201,12 +5108,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-suicide-club/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-suicide-club/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-suicide-club/book.json from manifest",
         "Missing optional language metadata in content/books/the-suicide-club/book.json"
       ]
     },
@@ -5238,12 +5142,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/the-withered-arm/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/the-withered-arm/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/the-withered-arm/book.json from manifest",
         "Missing optional language metadata in content/books/the-withered-arm/book.json"
       ]
     },
@@ -5275,12 +5176,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/to-build-a-fire/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/to-build-a-fire/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/to-build-a-fire/book.json from manifest",
         "Missing optional language metadata in content/books/to-build-a-fire/book.json"
       ]
     },
@@ -5312,12 +5210,9 @@
       ],
       "cover_assets_missing": true,
       "manual_required": false,
-      "book_json_updated": true,
+      "book_json_updated": false,
       "retry_count": 1,
       "sanitation_warnings": [
-        "Reconstructed reader_manifest.json for data/controlled_publications/young-goodman-brown/reader_manifest.json",
-        "Filled missing metadata 'title' in content/books/young-goodman-brown/book.json from manifest",
-        "Filled missing metadata 'author' in content/books/young-goodman-brown/book.json from manifest",
         "Missing optional language metadata in content/books/young-goodman-brown/book.json"
       ]
     }
