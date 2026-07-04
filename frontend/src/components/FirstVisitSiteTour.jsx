@@ -99,19 +99,12 @@ export default function FirstVisitSiteTour() {
       return undefined;
     }
 
-    let alreadySeen = false;
-    try {
-      alreadySeen = window.localStorage.getItem(STORAGE_KEY) === "complete";
-    } catch (_) {
-      alreadySeen = false;
-    }
-
-    if (alreadySeen && !forcedTour) return undefined;
+    if (!forcedTour) return undefined;
 
     openTimerRef.current = window.setTimeout(() => {
       previousFocusRef.current = document.activeElement;
       setOpen(true);
-    }, forcedTour ? 120 : 850);
+    }, 120);
 
     return () => {
       window.clearTimeout(openTimerRef.current);
