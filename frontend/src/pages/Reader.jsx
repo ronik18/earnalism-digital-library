@@ -329,6 +329,23 @@ function readerPlainTextToHtml(value = '') {
     .join('');
 }
 
+function readerTextWithSoftBreaks(node) {
+  let text = '';
+  node.childNodes.forEach((child) => {
+    if (child.nodeType === Node.TEXT_NODE) {
+      text += child.textContent || '';
+      return;
+    }
+    if (child.nodeType !== Node.ELEMENT_NODE) return;
+    if (child.tagName === 'BR') {
+      text += ' ';
+      return;
+    }
+    text += readerTextWithSoftBreaks(child);
+  });
+  return text;
+}
+
 function normalizeReaderTypography(root) {
   const blockSelector = 'p, li, blockquote';
   root.querySelectorAll(blockSelector).forEach((node) => {
@@ -336,7 +353,7 @@ function normalizeReaderTypography(root) {
     const canReflow = childElements.every((child) => child.tagName === 'BR');
     if (!canReflow) return;
 
-    const text = normalizeInlineText(node.textContent || '');
+    const text = normalizeInlineText(readerTextWithSoftBreaks(node));
     if (!text) {
       node.remove();
       return;
@@ -788,25 +805,118 @@ function normalizeGeneratedTimestamps(raw, html = '', baseWord = 0) {
   return { words, offset };
 }
 
+const READER_PARAGRAPH_SPLIT_MIN_CHARS = 1050;
+const READER_PARAGRAPH_TARGET_CHARS = 820;
+const READER_PARAGRAPH_MAX_CHARS = 1040;
+const READER_ABBREVIATIONS = new Set([
+  'mr', 'mrs', 'ms', 'dr', 'prof', 'rev', 'st', 'sr', 'jr', 'capt', 'col', 'gen', 'lt',
+  'maj', 'hon', 'no', 'vol', 'ch', 'fig', 'etc', 'vs', 'p', 'm', 'a', 'd',
+]);
+
+function isReaderSentenceBoundary(text, index) {
+  const mark = text[index];
+  if (!/[.!?]/.test(mark)) return false;
+  const prefix = text.slice(0, index + 1);
+  const token = (prefix.match(/([\p{L}]\.?)+\.?$/u)?.[0] || '').replace(/\.$/, '').toLowerCase();
+  if (READER_ABBREVIATIONS.has(token)) return false;
+  if (/^[a-z]\.?$/i.test(token)) return false;
+  if (/\d$/.test(text[index - 1] || '') && /\d/.test(text[index + 1] || '')) return false;
+
+  let cursor = index + 1;
+  while (cursor < text.length && /[”’"')\]]/.test(text[cursor])) cursor += 1;
+  return cursor >= text.length || /\s/.test(text[cursor]);
+}
+
+function splitLongSentenceAtClause(text, target = READER_PARAGRAPH_TARGET_CHARS) {
+  const source = normalizeInlineText(text);
+  if (source.length <= READER_PARAGRAPH_MAX_CHARS) return [source];
+  const chunks = [];
+  let remaining = source;
+
+  while (remaining.length > READER_PARAGRAPH_MAX_CHARS) {
+    const searchStart = Math.max(240, Math.floor(target * 0.62));
+    const searchEnd = Math.min(remaining.length, READER_PARAGRAPH_MAX_CHARS);
+    const windowText = remaining.slice(searchStart, searchEnd);
+    const clauseMatch = [...windowText.matchAll(/[,;:—–-]\s+/g)].pop();
+    let splitAt = clauseMatch ? searchStart + clauseMatch.index + clauseMatch[0].length : -1;
+
+    if (splitAt < searchStart) {
+      const words = remaining.slice(0, searchEnd).split(/\s+/);
+      let built = '';
+      for (const word of words) {
+        const next = built ? `${built} ${word}` : word;
+        if (next.length > target && built) break;
+        built = next;
+      }
+      splitAt = Math.max(built.length, searchStart);
+    }
+
+    chunks.push(remaining.slice(0, splitAt).trim());
+    remaining = remaining.slice(splitAt).trim();
+  }
+
+  if (remaining) chunks.push(remaining);
+  return chunks.filter(Boolean);
+}
+
+function splitTextAtSentenceBoundaries(text) {
+  const source = normalizeInlineText(text);
+  if (!source) return [];
+  const sentences = [];
+  let start = 0;
+
+  for (let index = 0; index < source.length; index += 1) {
+    if (!isReaderSentenceBoundary(source, index)) continue;
+    let end = index + 1;
+    while (end < source.length && /[”’"')\]]/.test(source[end])) end += 1;
+    const sentence = source.slice(start, end).trim();
+    if (sentence) sentences.push(sentence);
+    while (end < source.length && /\s/.test(source[end])) end += 1;
+    start = end;
+    index = end - 1;
+  }
+
+  const tail = source.slice(start).trim();
+  if (tail) sentences.push(tail);
+  return sentences.length ? sentences : [source];
+}
+
+function paragraphTextFragments(text) {
+  const sentences = splitTextAtSentenceBoundaries(text);
+  const fragments = [];
+  let buffer = '';
+
+  sentences.forEach((sentence) => {
+    const sentenceParts = splitLongSentenceAtClause(sentence);
+    sentenceParts.forEach((part) => {
+      const next = buffer ? `${buffer} ${part}` : part;
+      if (buffer && next.length > READER_PARAGRAPH_TARGET_CHARS) {
+        fragments.push(buffer);
+        buffer = part;
+      } else {
+        buffer = next;
+      }
+    });
+  });
+
+  if (buffer) fragments.push(buffer);
+  return fragments.filter(Boolean);
+}
+
 function splitParagraphNode(node) {
   const text = (node.textContent || '').trim();
-  if (!text || text.length < 430) return [node];
-  const chunks = [];
-  const words = text.match(/\S+/g) || [];
-  let buffer = '';
-  words.forEach((word) => {
-    const next = buffer ? `${buffer} ${word}` : word;
-    if (next.length >= 360 && buffer) {
-      chunks.push(buffer);
-      buffer = word;
-    } else {
-      buffer = next;
-    }
-  });
-  if (buffer) chunks.push(buffer);
-  return chunks.map((chunk) => {
+  if (!text || text.length < READER_PARAGRAPH_SPLIT_MIN_CHARS) return [node];
+  const chunks = paragraphTextFragments(text);
+  if (chunks.length <= 1) return [node];
+  return chunks.map((chunk, index) => {
     const next = document.createElement(node.nodeName.toLowerCase());
-    next.textContent = chunk;
+    next.innerHTML = formatReaderInlineText(chunk);
+    next.className = [
+      node.className || '',
+      'reader-paragraph-fragment',
+      index > 0 ? 'reader-paragraph-continuation' : '',
+    ].filter(Boolean).join(' ');
+    if (index > 0) next.setAttribute('data-reader-continuation', 'true');
     return next;
   });
 }

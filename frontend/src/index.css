@@ -3834,6 +3834,15 @@ textarea.input-elegant {
   margin: 0 0 1.4em;
 }
 
+.reader-content .reader-paragraph-fragment {
+  margin-bottom: 1.05em;
+}
+
+.reader-content .reader-paragraph-continuation {
+  margin-top: -0.42em;
+  text-indent: 0;
+}
+
 .reader-content em {
   color: color-mix(in srgb, var(--reader-ink) 86%, var(--reader-accent));
   font-style: italic;
