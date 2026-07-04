@@ -8,6 +8,7 @@ const rootDir = path.resolve(__dirname, "../..");
 const siteUrl = (process.env.REACT_APP_SITE_URL || process.env.SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const apiBase = resolveApiBase();
 const today = new Date().toISOString().slice(0, 10);
+let controlledLaunchConfigAvailable = false;
 const controlledLiveSlugs = await loadControlledLiveSlugs();
 
 const coreRoutes = [
@@ -83,6 +84,7 @@ async function loadControlledLiveSlugs() {
     const slugs = Array.isArray(config.live_approved_slugs)
       ? config.live_approved_slugs.map((slug) => String(slug || "").trim().toLowerCase()).filter(Boolean)
       : [];
+    controlledLaunchConfigAvailable = true;
     return new Set(slugs.length > 0 ? slugs : ["dracula"]);
   } catch (error) {
     console.warn(`[seo] Could not load controlled launch config: ${error.message}`);
@@ -200,6 +202,10 @@ async function main() {
     && book.is_published !== false
     && controlledLiveSlugs.has(book.slug)
   ));
+  if (!controlledLaunchConfigAvailable && publishedBooks.length <= 1) {
+    console.warn("[seo] Controlled launch config is unavailable; preserving committed sitemap.xml and robots.txt for frontend-only build.");
+    return;
+  }
   const categoryLastmod = new Map();
   publishedBooks.forEach((book) => {
     const slug = book.category_slug;

@@ -392,6 +392,8 @@ def dracula_artifact_validation_issues(artifact_dir: str = "") -> tuple[str, ...
             if not target.exists():
                 issues.append(f"Checksum target is missing: {rel}")
                 continue
+            if rel == "checksum_manifest.json":
+                continue
             if file_sha256(target) != expected_hash:
                 issues.append(f"Checksum mismatch for Dracula artifact: {rel}")
 
