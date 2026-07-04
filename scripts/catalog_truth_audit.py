@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the Dracula-only backend catalog truth audit in dry-run mode."""
+"""Generate the multi-title backend catalog truth audit in dry-run mode."""
 
 from __future__ import annotations
 
@@ -22,6 +22,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from backend.catalog_truth import (  # noqa: E402
+    CONTROLLED_LIVE_BOOK_SLUGS,
     LIVE_APPROVED_SLUG,
     PIPELINE_CANDIDATE_SLUGS,
     PUBLIC_STATUS_COMING_SOON,
@@ -30,9 +31,11 @@ from backend.catalog_truth import (  # noqa: E402
     catalog_truth_row,
     catalog_truth_summary,
     dracula_approval_evidence,
+    load_controlled_artifact_book,
     normalize_slug,
     normalize_text,
     normalize_upper,
+    public_book_projection,
 )
 
 
@@ -269,8 +272,19 @@ def pipeline_candidate_records() -> list[dict[str, Any]]:
     ]
 
 
+def controlled_live_records() -> list[dict[str, Any]]:
+    records: list[dict[str, Any]] = []
+    for slug in CONTROLLED_LIVE_BOOK_SLUGS:
+        artifact = load_controlled_artifact_book(slug, include_content=False)
+        if artifact:
+            records.append(artifact)
+    if not any(normalize_slug(record.get("slug")) == LIVE_APPROVED_SLUG for record in records):
+        records.insert(0, dracula_record())
+    return records
+
+
 def audit_records() -> list[dict[str, Any]]:
-    return [dracula_record(), *pipeline_candidate_records()]
+    return [*controlled_live_records(), *pipeline_candidate_records()]
 
 
 def truthy(value: Any) -> bool:
@@ -403,10 +417,48 @@ def safe_field_issues(endpoint: str, payload: Any) -> list[str]:
     ]
 
 
-def verify_dracula_detail_payload(payload: Any) -> list[str]:
-    issues = safe_field_issues("/books/dracula", payload)
+def verify_live_detail_payload(endpoint: str, payload: Any, slug: str) -> list[str]:
+    normalized = normalize_slug(slug)
+    issues = safe_field_issues(endpoint, payload)
     if not isinstance(payload, dict):
-        return [*issues, "/books/dracula did not return a JSON object"]
+        return [*issues, f"{endpoint} did not return a JSON object"]
+
+    expected_values = {
+        "slug": normalized,
+        "publication_status": PUBLIC_STATUS_LIVE_APPROVED,
+        "launch_status": PUBLIC_STATUS_LIVE_APPROVED,
+        "reader_enabled": True,
+        "preview_enabled": True,
+        "audio_enabled": False,
+        "audiobook_enabled": False,
+        "public_route": f"/book/{normalized}",
+        "reader_url": f"/reader/{normalized}",
+        "preview_url": f"/reader/{normalized}",
+        "audio_url": "",
+        "public_json_ld_enabled": True,
+    }
+    for key, expected in expected_values.items():
+        if payload.get(key) != expected:
+            issues.append(f"{endpoint} {key} is {payload.get(key)!r}; expected {expected!r}")
+
+    if payload.get("audio_status") not in {"NOT_AVAILABLE", "DISABLED"}:
+        issues.append(
+            f"{endpoint} audio_status is {payload.get('audio_status')!r}; "
+            "expected 'NOT_AVAILABLE' or 'DISABLED'"
+        )
+    if not normalize_text(payload.get("source_note")):
+        issues.append(f"{endpoint} is missing a safe source_note")
+    if not normalize_text(payload.get("rights_note")):
+        issues.append(f"{endpoint} is missing a safe rights_note")
+    if "audiobook_assets" in payload or "audiobook" in payload:
+        issues.append(f"{endpoint} exposes raw audiobook fields")
+    return issues
+
+
+def verify_dracula_detail_payload(payload: Any) -> list[str]:
+    issues = verify_live_detail_payload("/books/dracula", payload, LIVE_APPROVED_SLUG)
+    if not isinstance(payload, dict):
+        return issues
 
     expected_values = {
         "slug": LIVE_APPROVED_SLUG,
@@ -425,18 +477,6 @@ def verify_dracula_detail_payload(payload: Any) -> list[str]:
     for key, expected in expected_values.items():
         if payload.get(key) != expected:
             issues.append(f"/books/dracula {key} is {payload.get(key)!r}; expected {expected!r}")
-
-    if payload.get("audio_status") not in {"NOT_AVAILABLE", "DISABLED"}:
-        issues.append(
-            f"/books/dracula audio_status is {payload.get('audio_status')!r}; "
-            "expected 'NOT_AVAILABLE' or 'DISABLED'"
-        )
-    if not normalize_text(payload.get("source_note")):
-        issues.append("/books/dracula is missing a safe source_note")
-    if not normalize_text(payload.get("rights_note")):
-        issues.append("/books/dracula is missing a safe rights_note")
-    if "audiobook_assets" in payload or "audiobook" in payload:
-        issues.append("/books/dracula exposes raw audiobook fields")
     return issues
 
 
@@ -491,11 +531,35 @@ def verify_dracula_manifest_payload(payload: Any) -> list[str]:
     return issues
 
 
+def verify_live_manifest_payload(endpoint: str, payload: Any, slug: str) -> list[str]:
+    if normalize_slug(slug) == LIVE_APPROVED_SLUG:
+        return verify_dracula_manifest_payload(payload)
+    issues = safe_field_issues(endpoint, payload)
+    if not isinstance(payload, dict):
+        return [*issues, f"{endpoint} did not return a JSON object"]
+    chapters = payload.get("chapters")
+    if not isinstance(chapters, list) or not chapters:
+        issues.append(f"{endpoint} does not contain chapter metadata")
+    elif not any(chapter.get("is_preview") is True for chapter in chapters if isinstance(chapter, dict)):
+        issues.append(f"{endpoint} does not unlock a preview chapter")
+    audio = payload.get("audio")
+    if isinstance(audio, dict):
+        if audio.get("enabled") is not False:
+            issues.append(f"{endpoint} audio.enabled is not false")
+        if audio.get("url") or audio.get("assets"):
+            issues.append(f"{endpoint} exposes audio URLs/assets")
+    book = payload.get("book")
+    if isinstance(book, dict):
+        issues.extend(verify_live_detail_payload(f"{endpoint}.book", book, slug))
+    return issues
+
+
 def verify_api_audit(
     *,
     books_rows: list[dict[str, Any]],
     all_rows: list[dict[str, Any]],
     endpoints: dict[str, EndpointResult],
+    controlled_live_slugs: list[str],
 ) -> list[str]:
     blockers: list[str] = []
     books_result = endpoints["/books"]
@@ -507,18 +571,23 @@ def verify_api_audit(
         for row in books_rows
         if row["classification"] == PUBLIC_STATUS_LIVE_APPROVED or row["reader_enabled"] or row["preview_enabled"]
     ]
-    live_readable_slugs = sorted(row["slug"] for row in live_readable)
-    if live_readable_slugs != [LIVE_APPROVED_SLUG]:
-        blockers.append(f"/books live readable slugs are {live_readable_slugs}; expected ['dracula']")
+    expected_live_slugs = sorted({normalize_slug(slug) for slug in controlled_live_slugs if normalize_slug(slug)})
+    live_readable_slugs = sorted({row["slug"] for row in live_readable})
+    missing_live = sorted(set(expected_live_slugs) - set(live_readable_slugs))
+    unexpected_live = sorted(set(live_readable_slugs) - set(expected_live_slugs))
+    if missing_live:
+        blockers.append(f"/books is missing controlled live slugs: {missing_live}")
+    if unexpected_live:
+        blockers.append(f"/books exposes unexpected live readable slugs: {unexpected_live}")
 
     if not any(row["slug"] == LIVE_APPROVED_SLUG and row in live_readable for row in books_rows):
         blockers.append("/books does not contain Dracula as the live readable item")
 
     for row in books_rows:
-        if row["slug"] != LIVE_APPROVED_SLUG and row["reader_enabled"]:
-            blockers.append(f"Non-Dracula reader exposure in /books: {row['slug']}")
-        if row["slug"] != LIVE_APPROVED_SLUG and row["preview_enabled"]:
-            blockers.append(f"Non-Dracula preview exposure in /books: {row['slug']}")
+        if row["slug"] not in expected_live_slugs and row["reader_enabled"]:
+            blockers.append(f"Unexpected reader exposure in /books: {row['slug']}")
+        if row["slug"] not in expected_live_slugs and row["preview_enabled"]:
+            blockers.append(f"Unexpected preview exposure in /books: {row['slug']}")
         if row["audio_enabled"]:
             blockers.append(f"Audio exposure detected in /books: {row['slug']}")
         if row["slug"] in PIPELINE_CANDIDATE_SLUGS and (
@@ -533,6 +602,25 @@ def verify_api_audit(
         blockers.append("/books/dracula did not return 200")
     else:
         blockers.extend(verify_dracula_detail_payload(endpoints["/books/dracula"].json_data))
+
+    for slug in expected_live_slugs:
+        detail_path = f"/books/{slug}"
+        if detail_path not in endpoints:
+            blockers.append(f"{detail_path} was not audited")
+            continue
+        if endpoints[detail_path].status != 200:
+            blockers.append(f"{detail_path} did not return 200")
+        elif slug != LIVE_APPROVED_SLUG:
+            blockers.extend(verify_live_detail_payload(detail_path, endpoints[detail_path].json_data, slug))
+
+        manifest_path = f"/reader/book/{slug}/manifest"
+        if manifest_path not in endpoints:
+            blockers.append(f"{manifest_path} was not audited")
+            continue
+        if endpoints[manifest_path].status != 200:
+            blockers.append(f"{manifest_path} did not return 200")
+        else:
+            blockers.extend(verify_live_manifest_payload(manifest_path, endpoints[manifest_path].json_data, slug))
 
     kshudhita_detail = endpoints["/books/kshudhita-pashan"]
     if kshudhita_detail.status == 200:
@@ -566,14 +654,22 @@ def api_audit_result(
     fetcher=fetch_api_endpoint,
 ) -> dict[str, Any]:
     urls = sitemap_urls(ROOT / "frontend" / "public" / "sitemap.xml")
-    endpoints = {
-        path: fetcher(api_url, path, timeout_ms=timeout_ms)
-        for path in API_AUDIT_PATHS
-    }
+    endpoints = {path: fetcher(api_url, path, timeout_ms=timeout_ms) for path in API_AUDIT_PATHS}
+    status_payload = endpoints["/controlled-launch/status"].json_data
+    status_slugs = []
+    if isinstance(status_payload, dict) and isinstance(status_payload.get("live_approved_slugs"), list):
+        status_slugs = [normalize_slug(slug) for slug in status_payload["live_approved_slugs"] if normalize_slug(slug)]
+    controlled_live_slugs = status_slugs or [normalize_slug(slug) for slug in CONTROLLED_LIVE_BOOK_SLUGS]
+    for slug in controlled_live_slugs:
+        for path in (f"/books/{slug}", f"/reader/book/{slug}/manifest"):
+            if path not in endpoints:
+                endpoints[path] = fetcher(api_url, path, timeout_ms=timeout_ms)
     books_rows = api_books_rows(endpoints["/books"].json_data, sitemap_urls=urls)
     rows = list(books_rows)
     seen_slugs = {row["slug"] for row in rows}
-    for path in ("/books/dracula", "/books/kshudhita-pashan"):
+    detail_paths = [f"/books/{slug}" for slug in controlled_live_slugs]
+    detail_paths.append("/books/kshudhita-pashan")
+    for path in detail_paths:
         if endpoints[path].status == 200:
             row = api_detail_row(endpoints[path].json_data, sitemap_urls=urls)
             if row and row["slug"] not in seen_slugs:
@@ -581,7 +677,12 @@ def api_audit_result(
                 seen_slugs.add(row["slug"])
 
     summary = catalog_truth_summary(rows, sitemap_urls=urls, frontend_live_slugs=frontend_controlled_live_slugs())
-    api_blockers = verify_api_audit(books_rows=books_rows, all_rows=rows, endpoints=endpoints)
+    api_blockers = verify_api_audit(
+        books_rows=books_rows,
+        all_rows=rows,
+        endpoints=endpoints,
+        controlled_live_slugs=controlled_live_slugs,
+    )
     summary["mode"] = "api"
     summary["api_url"] = api_url.rstrip("/")
     summary["api_endpoint_statuses"] = api_endpoint_statuses(endpoints)

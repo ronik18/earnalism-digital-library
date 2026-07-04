@@ -9,6 +9,22 @@ function fallbackText(book, fallback = "E") {
   return title ? title.slice(0, 1) : fallback;
 }
 
+function fallbackMonogram(book, fallback = "EL") {
+  const title = typeof book?.title_en === "string" && book.title_en.trim()
+    ? book.title_en.trim()
+    : typeof book?.title === "string"
+      ? book.title.trim()
+      : "";
+  const letters = title
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+  return letters || fallback;
+}
+
 function coverStatusLabel(book) {
   const status = String(book?.cover_status || book?.coverStatus || "").trim();
   if (status.includes("NO_SAFE_LOCAL_COVER")) return "Cover in preparation";
@@ -72,8 +88,10 @@ export default function BookCoverImage({
         />
       ) : (
         <span className={`book-cover-image__fallback ${fallbackClassName}`.trim()}>
-          <span className="book-cover-image__fallback-mark" aria-hidden="true">E</span>
-          <span className="book-cover-image__fallback-title">{book?.title || fallbackText(book, fallback)}</span>
+          <span className="book-cover-image__fallback-kicker">The Earnalism Library</span>
+          <span className="book-cover-image__fallback-seal" aria-hidden="true">{fallbackMonogram(book, fallbackText(book, fallback))}</span>
+          <span className="book-cover-image__fallback-rule" aria-hidden="true" />
+          <span className="book-cover-image__fallback-title">{book?.title_en || book?.title || fallbackText(book, fallback)}</span>
           {book?.author && <span className="book-cover-image__fallback-author">{book.author}</span>}
           <span className="book-cover-image__fallback-status">{coverStatusLabel(book)}</span>
         </span>

@@ -252,14 +252,25 @@ _health_cache: dict = {"expires_at": 0.0, "payload": None}
 _public_cache_generation = 0
 _shutdown_state: dict = {"draining": False, "inflight": 0}
 
-# Controlled-launch public truth gate. The production database can contain
-# older published records, but the public launch surface must expose only the
-# rights-approved Tier A core reading candidate until the next approval packet
-# is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "dracula-first-v3"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
+
+
+def _controlled_truth_gate_version() -> str:
+    payload = {
+        "live": list(CONTROLLED_LIVE_BOOK_SLUGS),
+        "pipeline": list(CONTROLLED_PIPELINE_SLUGS),
+        "audio": list(CONTROLLED_AUDIO_ENABLED_SLUGS),
+    }
+    digest = hashlib.sha256(_json.dumps(payload, sort_keys=True).encode("utf-8")).hexdigest()[:12]
+    return f"controlled-launch-v4-{digest}"
+
+
+# Controlled-launch public truth gate. The production database can contain
+# older published records, but the public launch surface must expose only the
+# rights-approved Tier A reading candidates from the merged launch packet.
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = _controlled_truth_gate_version()
 
 # Server-owned pack catalogue. Frontend cannot influence amount/minutes.
 # amount is in PAISE (Razorpay's smallest INR unit); minutes is integer minutes.
@@ -4170,17 +4181,27 @@ async def controlled_launch_status():
         include_artifact_content=False,
     )
     manifest = await _reader_book_manifest_doc("dracula")
+    dracula_artifact = controlled_artifact_status("dracula")
     dracula_book_available = bool(_safe_live_public_projection(dracula_doc))
     dracula_manifest_available = bool(manifest and len(manifest.get("chapters") or []) == 27)
     catalog_truth_status = "PASS" if dracula_book_available and dracula_manifest_available else "HOLD"
     return {
         "backend_healthy": True,
+        "truth_gate_version": CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION,
         "live_approved_slugs": list(CONTROLLED_LIVE_BOOK_SLUGS),
         "pipeline_slugs": list(CONTROLLED_PIPELINE_SLUGS),
         "audio_enabled_slugs": list(CONTROLLED_AUDIO_ENABLED_SLUGS),
         "dracula_book_available": dracula_book_available,
         "dracula_manifest_available": dracula_manifest_available,
         "dracula_source": dracula_source,
+        "dracula_artifact": {
+            "available": bool(dracula_artifact.get("available")),
+            "artifact_dir": dracula_artifact.get("artifact_dir", ""),
+            "issue_count": len(dracula_artifact.get("issues") or []),
+            "issues": dracula_artifact.get("issues") or [],
+            "chapter_count": dracula_artifact.get("chapter_count", 0),
+            "self_contained_for_truth_gate": bool(dracula_artifact.get("self_contained_for_truth_gate")),
+        },
         "catalog_truth_status": catalog_truth_status,
     }
 

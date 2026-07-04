@@ -4,8 +4,8 @@ import "./ShelfTwoSlideshow.css";
 function chunkBooks(books) {
   const grouped = [];
 
-  for (let i = 0; i < books.length; i += 5) {
-    grouped.push(books.slice(i, i + 5));
+  for (let i = 0; i < books.length; i += 3) {
+    grouped.push(books.slice(i, i + 3));
   }
 
   return grouped;
@@ -125,7 +125,7 @@ export default function ShelfTwoSlideshow({ books = [] }) {
                 {slide.map((book, bookIndex) => {
                   const isPublished = book.status === "published";
                   const statusClass = isPublished ? "published" : "queued";
-                  const sequenceLabel = String(book.sequence || (slideIndex * 5) + bookIndex + 1).padStart(2, "0");
+                  const sequenceLabel = String(book.sequence || (slideIndex * 3) + bookIndex + 1).padStart(2, "0");
                   const statusLabel = book.statusLabel || (statusClass === "published" ? "Live" : "Rights-safe preparation");
                   return (
                     <article

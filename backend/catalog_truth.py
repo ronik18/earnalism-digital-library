@@ -18,25 +18,65 @@ def first_existing_path(*paths: Path) -> Path:
     return paths[0]
 
 
-CONTROLLED_LAUNCH_CONFIG_PATH = first_existing_path(
-    ROOT / "data" / "controlled_launch.json",
-    MODULE_DIR / "data" / "controlled_launch.json",
-)
-DRACULA_ARTIFACT_DIR = first_existing_path(
-    ROOT / "data" / "controlled_publications" / "dracula",
-    MODULE_DIR / "data" / "controlled_publications" / "dracula",
-)
-CONTROLLED_PUBLICATIONS_DIR = first_existing_path(
-    ROOT / "data" / "controlled_publications",
-    MODULE_DIR / "data" / "controlled_publications",
-)
-DRACULA_REQUIRED_ARTIFACT_FILES = (
+CONTROLLED_ARTIFACT_REQUIRED_FILES = (
     "public_book.json",
     "reader_manifest.json",
     "approval_evidence.json",
     "source_evidence.json",
     "checksum_manifest.json",
 )
+
+
+def controlled_publications_root_candidates() -> tuple[Path, ...]:
+    candidates = (
+        ROOT / "data" / "controlled_publications",
+        MODULE_DIR / "data" / "controlled_publications",
+        Path.cwd() / "data" / "controlled_publications",
+        Path.cwd() / "backend" / "data" / "controlled_publications",
+    )
+    seen: set[str] = set()
+    unique: list[Path] = []
+    for candidate in candidates:
+        key = str(candidate.resolve()) if candidate.exists() else str(candidate)
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(candidate)
+    return tuple(unique)
+
+
+def first_controlled_publications_root() -> Path:
+    for candidate in controlled_publications_root_candidates():
+        if candidate.exists():
+            return candidate
+    return controlled_publications_root_candidates()[0]
+
+
+def controlled_artifact_dir_candidates(slug: str) -> tuple[Path, ...]:
+    normalized = normalize_slug(slug) if "normalize_slug" in globals() else str(slug or "").strip().lower()
+    return tuple(root / normalized for root in controlled_publications_root_candidates())
+
+
+def first_controlled_artifact_dir(slug: str) -> Path:
+    candidates = controlled_artifact_dir_candidates(slug)
+    for candidate in candidates:
+        if candidate.exists() and all((candidate / filename).exists() for filename in CONTROLLED_ARTIFACT_REQUIRED_FILES):
+            return candidate
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return candidates[0]
+
+
+CONTROLLED_LAUNCH_CONFIG_PATH = first_existing_path(
+    ROOT / "data" / "controlled_launch.json",
+    MODULE_DIR / "data" / "controlled_launch.json",
+    Path.cwd() / "data" / "controlled_launch.json",
+    Path.cwd() / "backend" / "data" / "controlled_launch.json",
+)
+DRACULA_ARTIFACT_DIR = first_controlled_artifact_dir("dracula")
+CONTROLLED_PUBLICATIONS_DIR = first_controlled_publications_root()
+DRACULA_REQUIRED_ARTIFACT_FILES = CONTROLLED_ARTIFACT_REQUIRED_FILES
 
 
 def controlled_launch_config() -> dict[str, Any]:
@@ -239,7 +279,7 @@ def dracula_approval_evidence() -> dict[str, Any]:
 
 
 def _artifact_dir(path: str | Path | None = None) -> Path:
-    return Path(path) if path else DRACULA_ARTIFACT_DIR
+    return Path(path) if path else first_controlled_artifact_dir("dracula")
 
 
 def _artifact_json(name: str, *, artifact_dir: str | Path | None = None) -> dict[str, Any]:
@@ -247,9 +287,7 @@ def _artifact_json(name: str, *, artifact_dir: str | Path | None = None) -> dict
 
 
 def controlled_artifact_dir(slug: str) -> Path:
-    if normalize_slug(slug) == "dracula":
-        return DRACULA_ARTIFACT_DIR
-    return CONTROLLED_PUBLICATIONS_DIR / normalize_slug(slug)
+    return first_controlled_artifact_dir(normalize_slug(slug))
 
 
 @lru_cache(maxsize=8)

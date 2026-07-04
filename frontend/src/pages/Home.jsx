@@ -185,7 +185,7 @@ export default function Home() {
           <div className="reference-dracula-stage lg:col-span-5" data-testid="hero-dracula-card">
             <div className="reference-dracula-book-object reference-dracula-book-object--hardcopy">
               <HeroBookObject
-                href="https://theearnalism.com/book/dracula"
+                href="/book/dracula"
                 coverSrc="/assets/books/dracula/dracula-front-cover-hero-polished.webp"
                 alt="Dracula front cover"
                 testId="hero-dracula-cover-frame"
