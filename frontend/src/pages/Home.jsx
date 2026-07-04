@@ -48,6 +48,7 @@ function track(event, metadata = {}) {
 export default function Home() {
   const { social } = useSettings();
   const [dracula, setDracula] = useState(null);
+  const [catalogBooks, setCatalogBooks] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -61,9 +62,37 @@ export default function Home() {
     () => PIPELINE_BOOKS.filter((book) => !BATCH_1_READER_ONLY_SLUGS.includes(book.slug)),
     [],
   );
+  const liveShelfBooks = useMemo(() => (
+    catalogBooks
+      .filter((book) => {
+        const slug = String(book?.slug || book?.id || "").trim();
+        if (!slug) return false;
+        const publicationStatus = String(book?.publication_status || book?.launch_status || "").trim().toUpperCase();
+        return publicationStatus === "LIVE_APPROVED"
+          && book?.reader_enabled !== false
+          && book?.is_published !== false;
+      })
+      .sort((a, b) => {
+        if (a.slug === LIVE_APPROVED_SLUG) return -1;
+        if (b.slug === LIVE_APPROVED_SLUG) return 1;
+        return String(a.title || "").localeCompare(String(b.title || ""));
+      })
+      .map((book, index) => ({
+        id: book.slug || book.id,
+        slug: book.slug || book.id,
+        title: book.title || book.displayTitle || "Untitled reader release",
+        author: book.author,
+        coverUrl: book.cover_image_url || book.cover_url || book.thumbnail_url || "",
+        description: book.short_description || book.description || "A live Earnalism controlled reading release.",
+        statusLabel: book.audio_enabled || book.audiobook_enabled ? "Live reader + audio" : "Live controlled release",
+        dominantColor: book.dominant_color || "",
+        sequence: index + 1,
+        status: "published",
+      }))
+  ), [catalogBooks]);
   const shelfTwoBooks = useMemo(
     () =>
-      homepagePipelineBooks.map((book, index) => ({
+      (liveShelfBooks.length ? liveShelfBooks : homepagePipelineBooks.map((book, index) => ({
         id: book.slug,
         slug: book.slug,
         title: book.displayTitle || book.title,
@@ -74,9 +103,10 @@ export default function Home() {
         dominantColor: book.dominant_color || "",
         sequence: index + 1,
         status: "queued",
-      })),
-    [homepagePipelineBooks],
+      }))),
+    [homepagePipelineBooks, liveShelfBooks],
   );
+  const shelfTwoHasLiveCatalog = liveShelfBooks.length > 0;
 
   useSEO({
     title: "Step Into Dracula | The Earnalism Digital Library",
@@ -100,6 +130,17 @@ export default function Home() {
     api.get(`/books/${LIVE_APPROVED_SLUG}`, { signal: controller.signal })
       .then((response) => setDracula(response.data))
       .catch(() => setDracula(null));
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    api.get("/books", { signal: controller.signal })
+      .then((response) => {
+        const books = Array.isArray(response.data) ? response.data : response.data?.books;
+        setCatalogBooks(Array.isArray(books) ? books : []);
+      })
+      .catch(() => setCatalogBooks([]));
     return () => controller.abort();
   }, []);
 
@@ -206,13 +247,17 @@ export default function Home() {
           <div className="mb-7">
             <div className="overline mb-2">Shelf II</div>
             <h2 id="bengali-gothic-pipeline-title" className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">
-              Coming Through the Rights-Safe Pipeline
+              {shelfTwoHasLiveCatalog ? "Live Controlled Reader Shelf" : "Coming Through the Rights-Safe Pipeline"}
             </h2>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-charcoal-soft">
-              A quieter second shelf for editions in preparation. These titles are visible as editorial promises only, with Notify Me CTAs and no reader, checkout, or audiobook access.
+              {shelfTwoHasLiveCatalog
+                ? "A wider live shelf of approved reader releases, drawn from the published catalog so newly launched titles do not disappear behind a static editorial carousel."
+                : "A quieter second shelf for editions in preparation. These titles are visible as editorial promises only, with Notify Me CTAs and no reader, checkout, or audiobook access."}
             </p>
             <p className="mt-3 max-w-2xl text-[0.68rem] uppercase tracking-[0.22em] text-[var(--brand-gold-deep)]/78">
-              Real cover-led presentation where available. No placeholder launch claims.
+              {shelfTwoHasLiveCatalog
+                ? "Live reader routes only. Cover-led where available. No hidden static cap."
+                : "Real cover-led presentation where available. No placeholder launch claims."}
             </p>
           </div>
           <ShelfTwoSlideshow books={shelfTwoBooks} />

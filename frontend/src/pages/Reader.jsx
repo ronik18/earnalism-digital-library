@@ -274,10 +274,91 @@ function selectNarrationVoice(voices = [], prefersBengali = false) {
   return { voice: preferredEnglish, exactLanguage: Boolean(preferredEnglish) };
 }
 
+function formatReaderInlineText(value = '') {
+  const escaped = escapeHtmlText(String(value || '').replace(/\s+/g, ' ').trim());
+  return escaped
+    .replace(/\(_([^_]{1,180})_\)/g, '<span class="reader-editorial-aside"><em>$1</em></span>')
+    .replace(/_([^_\n<>]{1,180})_/g, '<em>$1</em>')
+    .replace(/\s*--\s*/g, '&mdash;')
+    .replace(/\s+([,.;:?!])/g, '$1');
+}
+
+function readerPlainTextToHtml(value = '') {
+  const blocks = String(value || '')
+    .replace(/\r\n?/g, '\n')
+    .split(/\n{2,}/)
+    .map((block) => normalizeInlineText(block))
+    .filter(Boolean);
+  const paragraphs = [];
+  let current = [];
+  const flush = () => {
+    if (!current.length) return;
+    paragraphs.push({ type: 'paragraph', text: current.join(' ') });
+    current = [];
+  };
+
+  blocks.forEach((block) => {
+    if (/^[*•\-\s]{3,}$/.test(block)) {
+      flush();
+      paragraphs.push({ type: 'scene-break', text: '§' });
+      return;
+    }
+    if (/^\(_[^_]{1,180}_\)$/.test(block)) {
+      flush();
+      paragraphs.push({ type: 'editorial-note', text: block });
+      return;
+    }
+
+    current.push(block);
+    const likelyWrappedParagraphEnd = /[.!?。!”’)"\]]$/.test(block) && block.length < 62;
+    const likelyStandaloneLine = /^[“"']?[A-Z][A-Z\s.,'’-]{2,42}$/.test(block) || block.length < 28;
+    if (likelyWrappedParagraphEnd || likelyStandaloneLine) {
+      flush();
+    }
+  });
+  flush();
+
+  return paragraphs
+    .map((item) => {
+      if (item.type === 'scene-break') {
+        return '<div class="reader-scene-break" aria-hidden="true">§</div>';
+      }
+      const isStandaloneEditorialNote = item.type === 'editorial-note';
+      return `<p${isStandaloneEditorialNote ? ' class="reader-editorial-note"' : ''}>${formatReaderInlineText(item.text)}</p>`;
+    })
+    .join('');
+}
+
+function normalizeReaderTypography(root) {
+  const blockSelector = 'p, li, blockquote';
+  root.querySelectorAll(blockSelector).forEach((node) => {
+    const childElements = Array.from(node.children || []);
+    const canReflow = childElements.every((child) => child.tagName === 'BR');
+    if (!canReflow) return;
+
+    const text = normalizeInlineText(node.textContent || '');
+    if (!text) {
+      node.remove();
+      return;
+    }
+
+    const isStandaloneEditorialNote = /^\(_[^_]{1,180}_\)$/.test(text);
+    if (isStandaloneEditorialNote) node.classList.add('reader-editorial-note');
+    node.innerHTML = formatReaderInlineText(text);
+  });
+
+  root.querySelectorAll('br').forEach((node) => node.replaceWith(document.createTextNode(' ')));
+}
+
 function sanitizeReaderHtml(html) {
   if (typeof document === 'undefined') return html || '';
+  const rawHtml = String(html || '');
   const template = document.createElement('template');
-  template.innerHTML = html || '';
+  template.innerHTML = rawHtml;
+  const hasStructuredContent = template.content.querySelector('p, div, h1, h2, h3, blockquote, ul, ol, li, table, figure, img');
+  if (!hasStructuredContent && normalizeInlineText(template.content.textContent || '')) {
+    template.innerHTML = readerPlainTextToHtml(rawHtml);
+  }
   template.content.querySelectorAll('script,style,iframe,object,embed,form,input,button,meta,link').forEach((node) => node.remove());
   template.content.querySelectorAll('*').forEach((node) => {
     Array.from(node.attributes).forEach((attr) => {
@@ -291,6 +372,7 @@ function sanitizeReaderHtml(html) {
       node.classList.add('reader-img--error');
     }
   });
+  normalizeReaderTypography(template.content);
   return template.innerHTML;
 }
 
@@ -632,9 +714,11 @@ function isAgenticAiWithPython(book = {}, bookId = '') {
 }
 
 function isNarrationDisabledForBook(book = {}, bookId = '') {
-  if (bookId === LIVE_APPROVED_SLUG || book?.slug === LIVE_APPROVED_SLUG) return true;
   if (isAgenticAiWithPython(book, bookId)) return true;
   const assets = audiobookAssetsForBook(book);
+  const manifestAudio = manifestAudioForBook(book);
+  const hasGeneratedAssets = Boolean(assets?.mp3 || assets?.timestamps || assets?.manifest || manifestAudio?.assets?.mp3 || manifestAudio?.assets?.timestamps || manifestAudio?.assets?.manifest);
+  if ((book?.audio_enabled === false || manifestAudio?.enabled === false) && !hasGeneratedAssets) return true;
   if (book?.audiobook_enabled === false && book?.generate_audiobook === false && !assets?.mp3 && !assets?.timestamps) return true;
   return book?.audiobook_enabled === false
     && book?.generate_audiobook === false
@@ -706,17 +790,20 @@ function normalizeGeneratedTimestamps(raw, html = '', baseWord = 0) {
 
 function splitParagraphNode(node) {
   const text = (node.textContent || '').trim();
-  if (!text || text.length < 600) return [node];
+  if (!text || text.length < 430) return [node];
   const chunks = [];
-  let buffer = [];
-  textSegments(text).forEach((segment) => {
-    buffer.push(segment.text);
-    if (buffer.join(' ').length >= 520) {
-      chunks.push(buffer.join(' '));
-      buffer = [];
+  const words = text.match(/\S+/g) || [];
+  let buffer = '';
+  words.forEach((word) => {
+    const next = buffer ? `${buffer} ${word}` : word;
+    if (next.length >= 360 && buffer) {
+      chunks.push(buffer);
+      buffer = word;
+    } else {
+      buffer = next;
     }
   });
-  if (buffer.length) chunks.push(buffer.join(' '));
+  if (buffer) chunks.push(buffer);
   return chunks.map((chunk) => {
     const next = document.createElement(node.nodeName.toLowerCase());
     next.textContent = chunk;
@@ -725,8 +812,8 @@ function splitParagraphNode(node) {
 }
 
 function measurePageHeight() {
-  if (typeof window === 'undefined') return 760;
-  return Math.max(440, Math.min(780, window.innerHeight - 245));
+  if (typeof window === 'undefined') return 600;
+  return Math.max(360, Math.min(620, window.innerHeight - 330));
 }
 
 function paginateReaderHtml(html, { isBengali = false, fontSize = '17px' } = {}) {

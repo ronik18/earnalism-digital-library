@@ -4037,6 +4037,34 @@ textarea.input-elegant {
   margin: 0 0 1.4em;
 }
 
+.reader-content em {
+  color: color-mix(in srgb, var(--reader-ink) 86%, var(--reader-accent));
+  font-style: italic;
+  letter-spacing: 0.005em;
+}
+
+.reader-content .reader-editorial-note {
+  margin: 0 auto 1.65rem;
+  color: var(--reader-muted);
+  font-size: 0.92em;
+  letter-spacing: 0.035em;
+  text-align: center;
+}
+
+.reader-content .reader-editorial-aside {
+  color: var(--reader-muted);
+  font-size: 0.94em;
+}
+
+.reader-content .reader-scene-break {
+  margin: 1.9rem auto 2.1rem;
+  color: var(--reader-accent);
+  font-family: var(--reader-heading-font);
+  font-size: 1.05rem;
+  letter-spacing: 0.32em;
+  text-align: center;
+}
+
 .reader-content h1,
 .reader-content h2,
 .reader-content h3 {
