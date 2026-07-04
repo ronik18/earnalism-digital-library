@@ -203,11 +203,19 @@ async function expectPipelineLocatorOnly(locator, label) {
 }
 
 async function assertDraculaBackendTruth(request) {
+  const statusResponse = await request.get(`${API_URL}/controlled-launch/status`);
+  expect(statusResponse.status()).toBe(200);
+  const status = await statusResponse.json();
+  const controlledLiveSlugs = Array.isArray(status.live_approved_slugs) ? status.live_approved_slugs : ["dracula"];
+  expect(controlledLiveSlugs[0]).toBe("dracula");
+
   const booksResponse = await request.get(`${API_URL}/books`);
   expect(booksResponse.status()).toBe(200);
   const books = await booksResponse.json();
   expect(Array.isArray(books)).toBe(true);
-  expect(books.map((book) => book.slug)).toEqual(["dracula"]);
+  const bookSlugs = books.map((book) => book.slug);
+  expect(bookSlugs[0]).toBe("dracula");
+  expect(bookSlugs).toEqual(expect.arrayContaining(controlledLiveSlugs));
 
   const bookResponse = await request.get(`${API_URL}/books/dracula`);
   expect(bookResponse.status()).toBe(200);
@@ -285,15 +293,16 @@ test.describe("Earnalism real-user UX video audit", () => {
     await openJourneyPage(page, "/", "homepage-desktop");
 
     const text = await bodyText(page);
-    expectTextContains(text, "Begin with Dracula");
-    expectTextContains(text, "The Earnalism controlled launch starts with one approved classic");
+    expectTextContains(text, "Step into the classics");
+    expectTextContains(text, "Stay with the story");
+    expectTextContains(text, "The Earnalism launch begins with one approved classic");
     expectTextContains(text, "Read Chapter 1 Free");
     expectTextContains(text, "Start Dracula");
     expectTextContains(text, "Get 7-Day Reading Pass");
-    expectTextContains(text, "Live controlled release");
-    expectTextContains(text, "Audio not available yet");
+    expectTextContains(text, "Rights-safe & ethical");
+    expectTextContains(text, "Coming Through the Rights-Safe Pipeline");
     expectNoBroadCatalogClaims(text);
-    await expectPipelineLocatorOnly(page.getByTestId("pipeline-kshudhita-pashan"), "Kshudhita Pashan");
+    await expectPipelineLocatorOnly(page.getByTestId("pipeline-card-kshudhita-pashan"), "Kshudhita Pashan");
   });
 
   test("homepage mobile keeps Dracula above the fold and pipeline titles gated", async ({ page }) => {
@@ -301,41 +310,35 @@ test.describe("Earnalism real-user UX video audit", () => {
     await openJourneyPage(page, "/", "homepage-mobile");
 
     const text = await bodyText(page);
-    expectTextContains(text, "Begin with Dracula");
+    expectTextContains(text, "Step into the classics");
     expectTextContains(text, "Read Chapter 1 Free");
     expectTextContains(text, "Start Dracula");
     expectTextContains(text, "Get 7-Day Reading Pass");
     expectNoBroadCatalogClaims(text);
-    await expectPipelineLocatorOnly(page.getByTestId("pipeline-kshudhita-pashan"), "Kshudhita Pashan");
+    await expectPipelineLocatorOnly(page.getByTestId("pipeline-card-kshudhita-pashan"), "Kshudhita Pashan");
   });
 
-  test("carousel and featured shelves show Dracula live while future rooms stay gated", async ({ page }) => {
+  test("Shelf-II slideshow keeps future rooms gated", async ({ page }) => {
     await page.setViewportSize({ width: 1366, height: 900 });
-    await openJourneyPage(page, "/", "carousel-featured-dracula-section");
+    await openJourneyPage(page, "/", "shelf-two-pipeline-section");
 
-    await expect(page.getByTestId("controlled-carousel-section")).toContainText("One live room");
-    await expect(page.getByTestId("controlled-carousel-section")).toContainText("Dracula by Bram Stoker");
-    await expect(page.getByTestId("controlled-carousel-section")).toContainText("Read Chapter 1 Free");
-    await expect(page.getByTestId("dracula-shelves")).toContainText("Dracula is the only open reading room");
-    await expect(page.getByTestId("audiobook-unavailable")).toContainText("Audio is being prepared through QA");
-    await expectPipelineLocatorOnly(page.getByTestId("pipeline-card-frankenstein"), "Frankenstein");
+    await expect(page.getByTestId("bengali-gothic-pipeline-shelf")).toContainText("2 curated pages");
+    await expectPipelineLocatorOnly(page.getByTestId("pipeline-card-kshudhita-pashan"), "Kshudhita Pashan");
     await expectPipelineLocatorOnly(page.getByTestId("pipeline-card-sherlock-holmes"), "Sherlock Holmes");
+    await expectPipelineLocatorOnly(page.getByTestId("pipeline-card-sultanas-dream"), "Sultana's Dream");
   });
 
-  test("library desktop shows Dracula as the only live controlled release", async ({ page }) => {
+  test("library desktop shows controlled releases and gated pipeline", async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await openJourneyPage(page, "/library", "library-desktop");
 
     const text = await bodyText(page);
-    expectTextContains(text, "Live Controlled Release");
-    expectTextContains(text, "Dracula is the only live approved core reading release today");
+    expectTextContains(text, "Live Controlled Releases");
+    expectTextContains(text, "Dracula");
     expectTextContains(text, "Coming Through the Rights-Safe Pipeline");
-    expectTextContains(text, "These books are not live products yet. They have Notify Me CTAs only.");
-    expectTextContains(text, "Dracula only");
+    expectTextContains(text, "Reader-only public-domain shelf");
     expectNoBroadCatalogClaims(text);
     await expectPipelineLocatorOnly(page.getByTestId("library-bengali-gothic-pipeline"), "Kshudhita Pashan");
-    await expectPipelineLocatorOnly(page.getByTestId("book-card-frankenstein"), "Frankenstein");
-    expect(text.toLowerCase()).not.toContain("listen now");
   });
 
   test("library mobile keeps unapproved titles notify-only", async ({ page }) => {
@@ -343,11 +346,9 @@ test.describe("Earnalism real-user UX video audit", () => {
     await openJourneyPage(page, "/library", "library-mobile");
 
     const text = await bodyText(page);
-    expectTextContains(text, "Live Controlled Release");
-    expectTextContains(text, "Dracula only");
+    expectTextContains(text, "Live Controlled Releases");
     expectTextContains(text, "Notify Me");
     await expectPipelineLocatorOnly(page.getByTestId("library-bengali-gothic-pipeline"), "Kshudhita Pashan");
-    await expectPipelineLocatorOnly(page.getByTestId("book-card-sultanas-dream"), "Sultana's Dream");
   });
 
   test("Dracula book page exposes rights, source, preview, and reading pass CTAs", async ({ page }) => {
@@ -359,8 +360,8 @@ test.describe("Earnalism real-user UX video audit", () => {
     expectTextContains(text, "by Bram Stoker");
     expectTextContains(text, "27 chapters");
     expectTextContains(text, "Project Gutenberg eBook #345");
-    expectTextContains(text, "Approved Tier A core reading candidate");
-    expectTextContains(text, "Audio: Not available yet");
+    expectTextContains(text, "Approved classic reading release");
+    expectTextContains(text, "Audiobook experience in private review");
     expectTextContains(text, "Read Chapter 1 Free");
     expectTextContains(text, "Get Reading Pass");
   });
@@ -411,7 +412,7 @@ test.describe("Earnalism real-user UX video audit", () => {
     await openJourneyPage(page, "/contact", "contact-page");
     text = await bodyText(page);
     expect(text).toContain("Write to us");
-    expect(text).toContain("sales@reoenterprise.org");
+    expect(text).toContain("sales@reoenterprise.in");
     expectNoBroadCatalogClaims(text);
   });
 
@@ -420,8 +421,8 @@ test.describe("Earnalism real-user UX video audit", () => {
     expect([404, 410]).toContain(response?.status());
 
     const text = await bodyText(page);
-    expect(text).not.toContain("Begin with Dracula");
-    expect(text).not.toContain("The Earnalism controlled launch starts with one approved classic");
+    expect(text).not.toContain("Step into the classics");
+    expect(text).not.toContain("The Earnalism launch begins with one approved classic");
     expect(text).not.toContain("A quieter bookstore");
 
     const robots = response?.headers()["x-robots-tag"] || "";

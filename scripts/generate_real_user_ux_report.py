@@ -151,6 +151,7 @@ def backend_truth(api_url: str) -> dict[str, Any]:
     origin = api[:-4] if api.endswith("/api") else api
     probes = {
         "healthz": fetch_json(f"{origin}/healthz"),
+        "controlled_launch": fetch_json(f"{api}/controlled-launch/status"),
         "books": fetch_json(f"{api}/books"),
         "book": fetch_json(f"{api}/books/dracula"),
         "manifest": fetch_json(f"{api}/reader/book/dracula/manifest"),
@@ -160,6 +161,12 @@ def backend_truth(api_url: str) -> dict[str, Any]:
     books_body = probes["books"].get("body")
     books = books_body if isinstance(books_body, list) else []
     slugs = [book.get("slug") for book in books if isinstance(book, dict)]
+    status_body = probes["controlled_launch"].get("body")
+    expected_live_slugs = []
+    if isinstance(status_body, dict) and isinstance(status_body.get("live_approved_slugs"), list):
+        expected_live_slugs = [slug for slug in status_body["live_approved_slugs"] if isinstance(slug, str) and slug]
+    if not expected_live_slugs:
+        expected_live_slugs = ["dracula"]
 
     book = probes["book"].get("body") if isinstance(probes["book"].get("body"), dict) else {}
     manifest = probes["manifest"].get("body") if isinstance(probes["manifest"].get("body"), dict) else {}
@@ -180,8 +187,17 @@ def backend_truth(api_url: str) -> dict[str, Any]:
 
     if probes["books"].get("status") != 200:
         fail("books", probes["books"], "/api/books did not return 200.")
-    elif slugs != ["dracula"]:
-        fail("books", probes["books"], f"/api/books live slugs were {slugs!r}, expected ['dracula'].")
+    else:
+        missing_live = sorted(set(expected_live_slugs) - set(slugs))
+        unexpected_live = sorted(set(slugs) - set(expected_live_slugs))
+        if slugs[:1] != ["dracula"]:
+            fail("books", probes["books"], f"/api/books first slug was {slugs[:1]!r}, expected Dracula first.")
+        if missing_live or unexpected_live:
+            fail(
+                "books",
+                probes["books"],
+                f"/api/books live slugs mismatch. missing={missing_live!r}, unexpected={unexpected_live!r}.",
+            )
 
     expected_book_fields = {
         "publication_status": "LIVE_APPROVED",
@@ -224,6 +240,7 @@ def backend_truth(api_url: str) -> dict[str, Any]:
         "failures": failures,
         "probes": probes,
         "slugs": slugs,
+        "expected_live_slugs": expected_live_slugs,
         "chapter_count": len(chapters),
         "first_chapter_preview": bool(first.get("is_preview") or first.get("is_free_preview")),
         "replica": (probes["healthz"].get("body") or {}).get("replica") if isinstance(probes["healthz"].get("body"), dict) else "",

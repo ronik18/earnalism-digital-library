@@ -242,7 +242,7 @@ describe("UX conversion static signals", () => {
     expect(home).toContain('testId="hero-dracula-cover-frame"');
     expect(heroBookObject).toContain('data-testid={testId}');
     expect(heroBookObject).toContain('data-no-white-edge="true"');
-    expect(home).toContain('href="https://theearnalism.com/book/dracula"');
+    expect(home).toContain('href="/book/dracula"');
     expect(home).toContain('aria-label="Open Dracula book page"');
     expect(home).toContain("/assets/books/dracula/dracula-front-cover-hero-polished.webp");
     expect(home).toContain("Dracula front cover");
@@ -1324,7 +1324,7 @@ describe("UX conversion static signals", () => {
   test("first-time site tour is mounted, forceable, dismissible, keyboard-aware, and premium-copy safe", () => {
     expect(layout).toContain("<FirstVisitSiteTour />");
     expect(firstVisitSiteTour).toContain('params.get("tour") === "1"');
-    expect(firstVisitSiteTour).toContain('window.localStorage.getItem(STORAGE_KEY) === "complete"');
+    expect(firstVisitSiteTour).toContain("if (!forcedTour) return undefined");
     expect(firstVisitSiteTour).toContain('window.localStorage.setItem(STORAGE_KEY, "complete")');
     expect(firstVisitSiteTour).toContain('data-testid="first-visit-site-tour"');
     expect(firstVisitSiteTour).toContain('aria-modal="true"');
@@ -1456,12 +1456,10 @@ describe("UX conversion static signals", () => {
     expect(header).toContain('aria-controls="mobile-menu"');
     expect(header).toContain('id="mobile-menu"');
     expect(indiaCraftBadge).toContain('data-testid="india-origin-badge"');
-    expect(indiaCraftBadge).toContain('aria-label="Made in India"');
-    expect(indiaCraftBadge).toContain("Made in India");
-    expect(indiaCraftBadge).toContain("india-origin-saffron-3d");
-    expect(indiaCraftBadge).toContain("india-origin-badge__sprinkles");
-    expect(indiaCraftBadge).toContain("india-origin-badge__flag-glow");
-    expect(indiaCraftBadge).toContain("india-origin-badge__flag-bevel");
+    expect(indiaCraftBadge).toContain('aria-label="Made in India - Literary Atelier"');
+    expect(indiaCraftBadge).toContain("Made in India - Literary Atelier");
+    expect(indiaCraftBadge).toContain("india-origin-badge__flag-shadow");
+    expect(indiaCraftBadge).toContain("india-origin-badge__flag-rim");
     expect(indiaCraftBadge).toContain("india-origin-badge__band--saffron");
     expect(indiaCraftBadge).toContain("india-origin-badge__band--green");
     expect(indiaCraftBadge).toContain("india-origin-badge__flag-rim");

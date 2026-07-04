@@ -8,6 +8,7 @@ import csv
 import json
 import re
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -22,6 +23,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from backend.catalog_truth import (  # noqa: E402
+    AUDIO_ENABLED_SLUGS,
     CONTROLLED_LIVE_BOOK_SLUGS,
     LIVE_APPROVED_SLUG,
     PIPELINE_CANDIDATE_SLUGS,
@@ -175,6 +177,32 @@ def fetch_api_endpoint(api_url: str, path: str, *, timeout_ms: int = 10_000) -> 
         return EndpointResult(status=0, error=str(getattr(exc, "reason", exc)))
     except TimeoutError as exc:
         return EndpointResult(status=0, error=f"timeout: {exc}")
+
+
+def fetch_api_endpoints(
+    api_url: str,
+    paths: list[str],
+    *,
+    timeout_ms: int = 10_000,
+    fetcher=fetch_api_endpoint,
+) -> dict[str, EndpointResult]:
+    unique_paths = list(dict.fromkeys(paths))
+    if not unique_paths:
+        return {}
+    max_workers = min(16, max(1, len(unique_paths)))
+    results: dict[str, EndpointResult] = {}
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_path = {
+            executor.submit(fetcher, api_url, path, timeout_ms=timeout_ms): path
+            for path in unique_paths
+        }
+        for future in as_completed(future_to_path):
+            path = future_to_path[future]
+            try:
+                results[path] = future.result()
+            except Exception as exc:  # pragma: no cover - defensive canary capture.
+                results[path] = EndpointResult(status=0, error=str(exc))
+    return results
 
 
 def sitemap_urls(path: Path) -> set[str]:
@@ -531,7 +559,7 @@ def verify_dracula_manifest_payload(payload: Any) -> list[str]:
     return issues
 
 
-def verify_live_manifest_payload(endpoint: str, payload: Any, slug: str) -> list[str]:
+def verify_live_manifest_payload(endpoint: str, payload: Any, slug: str, *, audio_allowed: bool = False) -> list[str]:
     if normalize_slug(slug) == LIVE_APPROVED_SLUG:
         return verify_dracula_manifest_payload(payload)
     issues = safe_field_issues(endpoint, payload)
@@ -544,9 +572,15 @@ def verify_live_manifest_payload(endpoint: str, payload: Any, slug: str) -> list
         issues.append(f"{endpoint} does not unlock a preview chapter")
     audio = payload.get("audio")
     if isinstance(audio, dict):
-        if audio.get("enabled") is not False:
+        if audio_allowed:
+            if audio.get("enabled") is not True:
+                issues.append(f"{endpoint} audio.enabled is not true for an audio-enabled controlled slug")
+            assets = audio.get("assets") if isinstance(audio.get("assets"), dict) else {}
+            if not normalize_text(audio.get("url")) or not assets:
+                issues.append(f"{endpoint} is missing synced audiobook url/assets for an audio-enabled controlled slug")
+        elif audio.get("enabled") is not False:
             issues.append(f"{endpoint} audio.enabled is not false")
-        if audio.get("url") or audio.get("assets"):
+        if not audio_allowed and (audio.get("url") or audio.get("assets")):
             issues.append(f"{endpoint} exposes audio URLs/assets")
     book = payload.get("book")
     if isinstance(book, dict):
@@ -560,6 +594,7 @@ def verify_api_audit(
     all_rows: list[dict[str, Any]],
     endpoints: dict[str, EndpointResult],
     controlled_live_slugs: list[str],
+    audio_enabled_slugs: set[str],
 ) -> list[str]:
     blockers: list[str] = []
     books_result = endpoints["/books"]
@@ -588,7 +623,7 @@ def verify_api_audit(
             blockers.append(f"Unexpected reader exposure in /books: {row['slug']}")
         if row["slug"] not in expected_live_slugs and row["preview_enabled"]:
             blockers.append(f"Unexpected preview exposure in /books: {row['slug']}")
-        if row["audio_enabled"]:
+        if row["audio_enabled"] and row["slug"] not in audio_enabled_slugs:
             blockers.append(f"Audio exposure detected in /books: {row['slug']}")
         if row["slug"] in PIPELINE_CANDIDATE_SLUGS and (
             row["classification"] != PUBLIC_STATUS_PIPELINE_CANDIDATE
@@ -620,7 +655,14 @@ def verify_api_audit(
         if endpoints[manifest_path].status != 200:
             blockers.append(f"{manifest_path} did not return 200")
         else:
-            blockers.extend(verify_live_manifest_payload(manifest_path, endpoints[manifest_path].json_data, slug))
+            blockers.extend(
+                verify_live_manifest_payload(
+                    manifest_path,
+                    endpoints[manifest_path].json_data,
+                    slug,
+                    audio_allowed=slug in audio_enabled_slugs,
+                )
+            )
 
     kshudhita_detail = endpoints["/books/kshudhita-pashan"]
     if kshudhita_detail.status == 200:
@@ -654,16 +696,27 @@ def api_audit_result(
     fetcher=fetch_api_endpoint,
 ) -> dict[str, Any]:
     urls = sitemap_urls(ROOT / "frontend" / "public" / "sitemap.xml")
-    endpoints = {path: fetcher(api_url, path, timeout_ms=timeout_ms) for path in API_AUDIT_PATHS}
+    endpoints = fetch_api_endpoints(api_url, API_AUDIT_PATHS, timeout_ms=timeout_ms, fetcher=fetcher)
     status_payload = endpoints["/controlled-launch/status"].json_data
     status_slugs = []
+    status_audio_slugs = []
     if isinstance(status_payload, dict) and isinstance(status_payload.get("live_approved_slugs"), list):
         status_slugs = [normalize_slug(slug) for slug in status_payload["live_approved_slugs"] if normalize_slug(slug)]
+    if isinstance(status_payload, dict) and isinstance(status_payload.get("audio_enabled_slugs"), list):
+        status_audio_slugs = [
+            normalize_slug(slug)
+            for slug in status_payload["audio_enabled_slugs"]
+            if normalize_slug(slug)
+        ]
     controlled_live_slugs = status_slugs or [normalize_slug(slug) for slug in CONTROLLED_LIVE_BOOK_SLUGS]
-    for slug in controlled_live_slugs:
-        for path in (f"/books/{slug}", f"/reader/book/{slug}/manifest"):
-            if path not in endpoints:
-                endpoints[path] = fetcher(api_url, path, timeout_ms=timeout_ms)
+    audio_enabled_slugs = set(status_audio_slugs or [normalize_slug(slug) for slug in AUDIO_ENABLED_SLUGS])
+    live_paths = [
+        path
+        for slug in controlled_live_slugs
+        for path in (f"/books/{slug}", f"/reader/book/{slug}/manifest")
+        if path not in endpoints
+    ]
+    endpoints.update(fetch_api_endpoints(api_url, live_paths, timeout_ms=timeout_ms, fetcher=fetcher))
     books_rows = api_books_rows(endpoints["/books"].json_data, sitemap_urls=urls)
     rows = list(books_rows)
     seen_slugs = {row["slug"] for row in rows}
@@ -682,9 +735,11 @@ def api_audit_result(
         all_rows=rows,
         endpoints=endpoints,
         controlled_live_slugs=controlled_live_slugs,
+        audio_enabled_slugs=audio_enabled_slugs,
     )
     summary["mode"] = "api"
     summary["api_url"] = api_url.rstrip("/")
+    summary["audio_enabled_slugs"] = sorted(audio_enabled_slugs)
     summary["api_endpoint_statuses"] = api_endpoint_statuses(endpoints)
     summary["api_blockers"] = api_blockers
     summary["launch_blockers"] = [*summary.get("launch_blockers", []), *api_blockers]
@@ -729,10 +784,11 @@ def markdown_report(rows: list[dict[str, Any]], summary: dict[str, Any]) -> str:
         "",
         "## Launch Truth",
         "",
-        "- Dracula is the only live approved core reading candidate.",
-        "- Dracula audio is disabled.",
+        "- Controlled live slugs are governed by the backend controlled-launch status allowlist.",
+        "- Dracula remains the first controlled core reading release and its public audiobook stays disabled.",
+        "- Synced audiobook manifest access is allowed only for controlled audio-enabled slugs.",
         "- Kshudhita Pashan remains pipeline-only.",
-        "- No Tier B, Tier C, or unapproved title may expose reader/audio CTAs.",
+        "- No Tier B, Tier C, or unapproved title may expose reader or audio CTAs.",
         "",
         "## Summary",
         "",
