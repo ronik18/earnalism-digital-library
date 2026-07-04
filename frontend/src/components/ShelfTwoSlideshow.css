@@ -21,24 +21,16 @@
 .shelf-two-stage-copy {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
   padding: 0 0.6rem 1.05rem;
 }
 
-.shelf-two-stage-copy__eyebrow,
-.shelf-two-stage-copy__count {
+.shelf-two-stage-copy__eyebrow {
   font-size: 0.66rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-}
-
-.shelf-two-stage-copy__eyebrow {
   color: rgba(96, 56, 21, 0.78);
-}
-
-.shelf-two-stage-copy__count {
-  color: rgba(104, 72, 28, 0.58);
 }
 
 .shelf-two-track {
@@ -115,34 +107,6 @@
   object-fit: cover;
   display: block;
   transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.shelf-two-book__status-pill {
-  position: absolute;
-  left: 0.7rem;
-  right: 0.7rem;
-  bottom: 0.78rem;
-  padding: 0.5rem 0.62rem;
-  border-radius: 999px;
-  backdrop-filter: blur(10px);
-  font-size: 0.56rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-align: center;
-  text-transform: uppercase;
-  z-index: 1;
-}
-
-.shelf-two-book__status-pill--queued {
-  background: rgba(14, 19, 18, 0.56);
-  color: #f3dfb2;
-  border: 1px solid rgba(212, 175, 55, 0.34);
-}
-
-.shelf-two-book__status-pill--published {
-  background: rgba(33, 31, 19, 0.58);
-  color: #fff3ca;
-  border: 1px solid rgba(212, 175, 55, 0.42);
 }
 
 .shelf-two-book__cover--placeholder {
@@ -275,46 +239,60 @@
 }
 
 .shelf-two-book__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   min-height: 2.4rem;
+  padding: 0.75rem 1.65rem;
   border-radius: 999px;
-  font-size: 0.66rem;
+  font-family: "Outfit", "Noto Sans Bengali", sans-serif;
+  font-size: 0.74rem;
   text-align: center;
-  font-weight: 600;
+  text-indent: 0.18em;
+  font-weight: 500;
   letter-spacing: 0.18em;
+  line-height: 1;
+  text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .shelf-two-book__cta--published {
-  border: 1px solid #D4AF37;
-  background: linear-gradient(180deg, #e3c777, #c89d33);
-  color: #2b1a14;
-  font-weight: 600;
+  border: 1px solid var(--brand-burgundy);
+  background-color: var(--brand-burgundy);
+  color: var(--brand-ivory);
 }
 
 .shelf-two-book__cta--published:hover {
-  background: linear-gradient(180deg, #eed4a4, #d9af46);
-  box-shadow: 0 10px 24px -16px rgba(212, 175, 55, 0.9);
+  border-color: var(--brand-burgundy-deep);
+  background-color: var(--brand-burgundy-deep);
+  box-shadow: 0 14px 26px -20px rgba(74, 28, 39, 0.68);
   transform: translateY(-1px);
 }
 
 .shelf-two-book__cta--queued {
-  border: 1px solid rgba(212, 175, 55, 0.72);
-  background: rgba(212, 175, 55, 0.09);
-  color: #68441d;
+  border: 1px solid var(--brand-gold);
+  background-color: transparent;
+  color: var(--brand-burgundy);
 }
 
 .shelf-two-book__cta--queued:hover {
-  color: #3f2c11;
-  background: rgba(212, 175, 55, 0.2);
-  box-shadow: 0 8px 22px -16px rgba(212, 175, 55, 0.8);
+  border-color: var(--brand-gold-deep);
+  color: var(--brand-burgundy);
+  background-color: rgba(197, 160, 89, 0.1);
+  box-shadow: 0 10px 24px -18px rgba(197, 160, 89, 0.62);
   transform: translateY(-1px);
 }
 
 .shelf-two-book__cta:focus-visible {
-  outline: 2px solid #D4AF37;
+  outline: 2px solid var(--brand-gold);
   outline-offset: 3px;
 }
 

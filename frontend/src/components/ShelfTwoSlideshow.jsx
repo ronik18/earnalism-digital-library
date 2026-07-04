@@ -107,7 +107,6 @@ export default function ShelfTwoSlideshow({ books = [] }) {
       <div className="shelf-two-viewport">
         <div className="shelf-two-stage-copy" aria-hidden="true">
           <span className="shelf-two-stage-copy__eyebrow">Editorial shelf sequence</span>
-          <span className="shelf-two-stage-copy__count">{slides.length} curated page{slides.length === 1 ? "" : "s"}</span>
         </div>
         <div
           className="shelf-two-track"
@@ -126,7 +125,6 @@ export default function ShelfTwoSlideshow({ books = [] }) {
                   const isPublished = book.status === "published";
                   const statusClass = isPublished ? "published" : "queued";
                   const sequenceLabel = String(book.sequence || (slideIndex * 3) + bookIndex + 1).padStart(2, "0");
-                  const statusLabel = book.statusLabel || (statusClass === "published" ? "Live" : "Rights-safe preparation");
                   return (
                     <article
                       key={book.id}
@@ -150,9 +148,6 @@ export default function ShelfTwoSlideshow({ books = [] }) {
                             <span className="shelf-two-book__placeholder-caption">Editorial placeholder</span>
                           </div>
                         )}
-                        <span className={`shelf-two-book__status-pill shelf-two-book__status-pill--${statusClass}`}>
-                          {statusLabel}
-                        </span>
                       </div>
 
                       <div className="shelf-two-book__copy">
