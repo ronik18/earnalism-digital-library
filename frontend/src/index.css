@@ -2232,11 +2232,11 @@ textarea.input-elegant {
 .india-origin-badge {
   position: relative;
   display: inline-grid;
-  width: clamp(5.35rem, 6.75vw, 6.95rem);
+  width: clamp(4.6rem, 5.1vw, 5.25rem);
   height: 3.02rem;
   flex: 0 0 auto;
   place-items: center;
-  margin-left: -0.36rem;
+  margin-left: -0.24rem;
   overflow: visible;
   transition:
     transform 180ms ease,
@@ -2246,23 +2246,48 @@ textarea.input-elegant {
   transform: translateY(-1px);
   filter: saturate(1.06) contrast(1.03);
 }
+.india-origin-badge__plate {
+  position: absolute;
+  inset: 0.18rem 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(197, 160, 89, 0.42);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(255, 254, 249, 0.98), rgba(249, 239, 218, 0.78)),
+    radial-gradient(circle at 22% 20%, rgba(255, 255, 255, 0.92), transparent 2.2rem);
+  box-shadow:
+    0 10px 22px -18px rgba(74, 28, 39, 0.52),
+    0 1px 0 rgba(255, 255, 255, 0.82) inset,
+    0 -1px 0 rgba(178, 127, 47, 0.16) inset;
+}
+.india-origin-badge__plate::after {
+  content: "";
+  position: absolute;
+  inset: 0.18rem;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: inherit;
+  pointer-events: none;
+}
 .india-origin-badge__image {
   display: block;
   position: absolute;
-  inset: 0;
+  inset: 0.28rem 0.34rem;
   width: 100%;
-  height: 100%;
+  width: calc(100% - 0.68rem);
+  height: calc(100% - 0.56rem);
+  max-width: none;
   object-fit: contain;
   object-position: center;
-  transform: translateY(0.03rem);
-  filter:
-    drop-shadow(0 10px 14px rgba(74, 28, 39, 0.16))
-    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.72));
+  transform: translateY(0.01rem) scale(1.08);
+  mix-blend-mode: multiply;
+  filter: saturate(1.08) contrast(1.02);
 }
 
 @media (max-width: 1279px) {
   .india-origin-badge {
-    width: 4.9rem;
+    width: 4.45rem;
     height: 2.62rem;
   }
 }
@@ -2272,9 +2297,9 @@ textarea.input-elegant {
     gap: 0.34rem;
   }
   .india-origin-badge {
-    width: 4.35rem;
+    width: 4.05rem;
     height: 2.32rem;
-    margin-left: -0.44rem;
+    margin-left: -0.36rem;
   }
 }
 
