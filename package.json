@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "cost:audit": "python3 scripts/verify_railway_cost_controls.py",
     "regression": "jest --config regression/jest.config.js --runInBand",
     "regression:ci": "npm run ux:journey-smoke && CI=true REGRESSION_MODE=pr npm run regression -- --json --outputFile=regression/results.json",
     "regression:go-live": "CI=true REGRESSION_MODE=go-live npm run regression -- --json --outputFile=regression/results.json",

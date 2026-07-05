@@ -19,6 +19,7 @@ import secrets
 import uuid
 import logging
 import time
+import resource
 import bcrypt
 import jwt
 import unicodedata
@@ -79,6 +80,7 @@ ENVIRONMENT = os.environ.get("ENVIRONMENT", "production").strip().lower()
 LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO").strip().upper()
 logging.basicConfig(level=getattr(logging, LOG_LEVEL, logging.INFO), format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+_PROCESS_STARTED_AT = time.monotonic()
 
 
 class UTF8JSONResponse(JSONResponse):
@@ -114,6 +116,38 @@ def _env_float(name: str, default: float, minimum: float = 0.1) -> float:
         return default
 
 
+# Railway cost-control defaults are fail-closed: the web service serves API
+# traffic only unless an operator explicitly enables expensive jobs.
+COST_CONTROL_MODE = _env_bool("COST_CONTROL_MODE", ENVIRONMENT == "production")
+ENABLE_BACKGROUND_WORKERS = _env_bool("ENABLE_BACKGROUND_WORKERS", False)
+ENABLE_AUDIOBOOK_PIPELINE = _env_bool("ENABLE_AUDIOBOOK_PIPELINE", False)
+ENABLE_BOOK_RENDERING_JOBS = _env_bool("ENABLE_BOOK_RENDERING_JOBS", False)
+ENABLE_COVER_GENERATION = _env_bool("ENABLE_COVER_GENERATION", False)
+ENABLE_SCHEDULED_JOBS = _env_bool("ENABLE_SCHEDULED_JOBS", False)
+ENABLE_QUEUE_CONSUMER = _env_bool("ENABLE_QUEUE_CONSUMER", False)
+ENABLE_ADMIN_MEDIA_UPLOADS = _env_bool("ENABLE_ADMIN_MEDIA_UPLOADS", False)
+ENABLE_STARTUP_DB_MAINTENANCE = _env_bool("ENABLE_STARTUP_DB_MAINTENANCE", not COST_CONTROL_MODE)
+MAX_CONCURRENT_JOBS = _env_int("MAX_CONCURRENT_JOBS", 1)
+REQUEST_BODY_LIMIT_BYTES = _env_int(
+    "REQUEST_BODY_LIMIT_BYTES",
+    2 * 1024 * 1024 if COST_CONTROL_MODE else 8 * 1024 * 1024,
+)
+DOCX_UPLOAD_MAX_BYTES = _env_int(
+    "DOCX_UPLOAD_MAX_BYTES",
+    8 * 1024 * 1024 if COST_CONTROL_MODE else 50 * 1024 * 1024,
+)
+CHAPTER_UPLOAD_MAX_BYTES = _env_int(
+    "CHAPTER_UPLOAD_MAX_BYTES",
+    8 * 1024 * 1024 if COST_CONTROL_MODE else 50 * 1024 * 1024,
+)
+ADMIN_MEDIA_UPLOAD_MAX_BYTES = _env_int(
+    "ADMIN_MEDIA_UPLOAD_MAX_BYTES",
+    4 * 1024 * 1024 if COST_CONTROL_MODE else 10 * 1024 * 1024,
+)
+_expensive_job_state: Dict[str, Any] = {"active": 0, "started": defaultdict(int), "blocked": defaultdict(int)}
+_expensive_job_lock: Optional[asyncio.Lock] = None
+
+
 mongo_url = os.environ.get("MONGODB_URL") or os.environ.get("MONGO_URL")
 if not mongo_url:
     raise RuntimeError("MONGODB_URL is required")
@@ -123,7 +157,7 @@ def _database_name_from_mongo_url(url: str) -> str:
     db_name = parsed.path.lstrip("/").split("/", 1)[0]
     return db_name or "earnalism"
 
-MONGODB_MAX_POOL_SIZE = _env_int("MONGODB_MAX_POOL_SIZE", 25)
+MONGODB_MAX_POOL_SIZE = _env_int("MONGODB_MAX_POOL_SIZE", 8 if COST_CONTROL_MODE else 25)
 MONGODB_MIN_POOL_SIZE = _env_int("MONGODB_MIN_POOL_SIZE", 1, minimum=0)
 MONGODB_MAX_CONNECTING = _env_int("MONGODB_MAX_CONNECTING", 2)
 MONGODB_SERVER_SELECTION_TIMEOUT_MS = _env_int("MONGODB_SERVER_SELECTION_TIMEOUT_MS", 15000)
@@ -242,8 +276,8 @@ _rate_limit_next_sweep = 0.0
 # Redis so public cache reads and invalidation are shared across Railway replicas.
 PUBLIC_CACHE_ENABLED = _env_bool("PUBLIC_CACHE_ENABLED", True)
 PUBLIC_CACHE_TTL_SECONDS = _env_int("PUBLIC_CACHE_TTL_SECONDS", 300)
-PUBLIC_CACHE_MAX_ENTRIES = _env_int("PUBLIC_CACHE_MAX_ENTRIES", 256)
-HOME_BOOK_LIMIT = _env_int("HOME_BOOK_LIMIT", 500)
+PUBLIC_CACHE_MAX_ENTRIES = _env_int("PUBLIC_CACHE_MAX_ENTRIES", 96 if COST_CONTROL_MODE else 256)
+HOME_BOOK_LIMIT = _env_int("HOME_BOOK_LIMIT", 120 if COST_CONTROL_MODE else 500)
 HOME_BOOK_PAGE_DEFAULT_LIMIT = _env_int("HOME_BOOK_PAGE_DEFAULT_LIMIT", 8)
 HOME_BOOK_PAGE_MAX_LIMIT = _env_int("HOME_BOOK_PAGE_MAX_LIMIT", 24)
 HEALTH_CACHE_TTL_SECONDS = _env_int("HEALTH_CACHE_TTL_SECONDS", 5)
@@ -251,6 +285,110 @@ _public_cache: "OrderedDict[str, Tuple[float, Any]]" = OrderedDict()
 _health_cache: dict = {"expires_at": 0.0, "payload": None}
 _public_cache_generation = 0
 _shutdown_state: dict = {"draining": False, "inflight": 0}
+
+
+def _cloudinary_config_detected() -> bool:
+    return bool(
+        os.environ.get("CLOUDINARY_CLOUD_NAME")
+        and os.environ.get("CLOUDINARY_API_KEY")
+        and os.environ.get("CLOUDINARY_API_SECRET")
+    )
+
+
+def _cost_control_flags() -> Dict[str, Any]:
+    return {
+        "cost_control_mode": COST_CONTROL_MODE,
+        "background_workers_enabled": ENABLE_BACKGROUND_WORKERS,
+        "audiobook_pipeline_enabled": ENABLE_AUDIOBOOK_PIPELINE,
+        "book_rendering_jobs_enabled": ENABLE_BOOK_RENDERING_JOBS,
+        "cover_generation_enabled": ENABLE_COVER_GENERATION,
+        "scheduled_jobs_enabled": ENABLE_SCHEDULED_JOBS,
+        "queue_consumer_enabled": ENABLE_QUEUE_CONSUMER,
+        "admin_media_uploads_enabled": ENABLE_ADMIN_MEDIA_UPLOADS,
+        "startup_db_maintenance_enabled": ENABLE_STARTUP_DB_MAINTENANCE,
+        "max_concurrent_jobs": MAX_CONCURRENT_JOBS,
+        "request_body_limit_bytes": REQUEST_BODY_LIMIT_BYTES,
+        "docx_upload_max_bytes": DOCX_UPLOAD_MAX_BYTES,
+        "chapter_upload_max_bytes": CHAPTER_UPLOAD_MAX_BYTES,
+        "admin_media_upload_max_bytes": ADMIN_MEDIA_UPLOAD_MAX_BYTES,
+        "mongodb_max_pool_size": MONGODB_MAX_POOL_SIZE,
+        "public_cache_max_entries": PUBLIC_CACHE_MAX_ENTRIES,
+        "home_book_limit": HOME_BOOK_LIMIT,
+    }
+
+
+def _log_cost_control_startup() -> None:
+    logger.info(
+        "Railway cost-control startup: %s",
+        _json.dumps(
+            {
+                **_cost_control_flags(),
+                "openai_key_detected": bool(os.environ.get("OPENAI_API_KEY")),
+                "cloudinary_config_detected": _cloudinary_config_detected(),
+                "b2_storage_config_detected": _b2_is_configured() if "_b2_is_configured" in globals() else False,
+            },
+            sort_keys=True,
+            ensure_ascii=True,
+        ),
+    )
+
+
+def _request_body_limit_for_path(path: str) -> int:
+    if path in {"/api/upload_docx", "/api/admin/books/import-template"}:
+        return DOCX_UPLOAD_MAX_BYTES
+    if path.startswith("/api/admin/books/") and path.endswith("/cover"):
+        return ADMIN_MEDIA_UPLOAD_MAX_BYTES
+    if path.startswith("/api/admin/books/") and "/chapters/" in path and path.endswith("/upload"):
+        return CHAPTER_UPLOAD_MAX_BYTES
+    if path == "/api/admin/upload/image":
+        return ADMIN_MEDIA_UPLOAD_MAX_BYTES
+    return REQUEST_BODY_LIMIT_BYTES
+
+
+def _require_expensive_job_enabled(job_type: str, *, enabled: bool, confirm_expensive_job: bool) -> None:
+    if not enabled:
+        _expensive_job_state["blocked"][job_type] += 1
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                f"{job_type} is disabled on the production web service by cost-control mode. "
+                "Run the explicit manual worker/pipeline command with the matching ENABLE_* flag instead."
+            ),
+        )
+    if not confirm_expensive_job:
+        _expensive_job_state["blocked"][job_type] += 1
+        raise HTTPException(
+            status_code=400,
+            detail=f"Set confirm_expensive_job=true to run {job_type}.",
+        )
+
+
+def _expensive_job_lock_for_loop() -> asyncio.Lock:
+    global _expensive_job_lock
+    if _expensive_job_lock is None:
+        _expensive_job_lock = asyncio.Lock()
+    return _expensive_job_lock
+
+
+@asynccontextmanager
+async def _expensive_job_slot(job_type: str):
+    lock = _expensive_job_lock_for_loop()
+    async with lock:
+        active = int(_expensive_job_state.get("active", 0))
+        if active >= MAX_CONCURRENT_JOBS:
+            _expensive_job_state["blocked"][job_type] += 1
+            raise HTTPException(
+                status_code=429,
+                detail=f"Maximum expensive job concurrency reached ({MAX_CONCURRENT_JOBS}).",
+            )
+        _expensive_job_state["active"] = active + 1
+        _expensive_job_state["started"][job_type] += 1
+    try:
+        logger.warning("Starting explicitly confirmed expensive job: %s", job_type)
+        yield
+    finally:
+        async with lock:
+            _expensive_job_state["active"] = max(0, int(_expensive_job_state.get("active", 1)) - 1)
 
 # Controlled-launch public truth gate. The production database can contain
 # older published records, but the public launch surface must expose only the
@@ -2107,8 +2245,8 @@ async def _process_docx_upload(
     if not filename.lower().endswith(".docx") or content_type != DOCX_MIME:
         raise HTTPException(status_code=400, detail="Upload a valid .DOCX file with the correct Office Open XML MIME type.")
     body = await docx_file.read()
-    if len(body) > 50 * 1024 * 1024:
-        raise HTTPException(status_code=400, detail="DOCX upload must be under 50MB.")
+    if len(body) > DOCX_UPLOAD_MAX_BYTES:
+        raise HTTPException(status_code=400, detail=f"DOCX upload must be under {DOCX_UPLOAD_MAX_BYTES} bytes.")
 
     upload_id = str(uuid.uuid4())
     safe_filename = _safe_storage_filename(filename)
@@ -2155,14 +2293,21 @@ async def _process_docx_upload(
 
     import_id = f"docx-{upload_id[:12]}"
 
+    if front_cover or back_cover:
+        _require_expensive_job_enabled(
+            "cover_generation",
+            enabled=ENABLE_COVER_GENERATION,
+            confirm_expensive_job=True,
+        )
+
     async def process_import_cover(file: Optional[UploadFile], kind: str) -> Optional[dict]:
         if not file:
             return None
         if file.content_type not in _ALLOWED_COVER_TYPES:
             raise HTTPException(status_code=400, detail=f"Unsupported {kind} cover type. Use JPG, PNG, WebP, or GIF.")
         cover_body = await file.read()
-        if len(cover_body) > 10 * 1024 * 1024:
-            raise HTTPException(status_code=400, detail=f"{kind.title()} cover must be under 10MB")
+        if len(cover_body) > ADMIN_MEDIA_UPLOAD_MAX_BYTES:
+            raise HTTPException(status_code=400, detail=f"{kind.title()} cover must be under {ADMIN_MEDIA_UPLOAD_MAX_BYTES} bytes")
         _ensure_cloudinary()
         try:
             from utils.content_processor import process_book_cover  # type: ignore
@@ -3304,8 +3449,12 @@ async def _run_startup_database_maintenance() -> None:
 async def lifespan(_app: FastAPI):
     # ----- startup -----
     _install_sigterm_drain_marker()
+    _log_cost_control_startup()
     await initialize_replica_state_backends()
-    await _run_startup_database_maintenance()
+    if ENABLE_STARTUP_DB_MAINTENANCE:
+        await _run_startup_database_maintenance()
+    else:
+        logger.info("Startup database maintenance is disabled by cost-control mode.")
 
     yield
 
@@ -3994,6 +4143,24 @@ async def production_hardening_middleware(request: Request, call_next):
     started = time.perf_counter()
     status_code = 500
     path = request.url.path
+
+    if request.method in {"POST", "PUT", "PATCH"}:
+        raw_content_length = request.headers.get("content-length")
+        if raw_content_length:
+            try:
+                content_length = int(raw_content_length)
+            except ValueError:
+                content_length = 0
+            body_limit = _request_body_limit_for_path(path)
+            if content_length > body_limit:
+                response = _json_error_response(
+                    request,
+                    status_code=413,
+                    message="Request body too large for production cost-control limits",
+                    detail={"limit_bytes": body_limit, "content_length": content_length},
+                )
+                response.headers["X-Request-ID"] = request_id
+                return response
 
     if _shutdown_state.get("draining") and path not in {"/health", "/healthz", "/api/health", "/api/healthz"}:
         response = _json_error_response(
@@ -4717,15 +4884,28 @@ async def admin_upload_docx_validator(
     docx_file: UploadFile = File(...),
     front_cover: Optional[UploadFile] = File(default=None),
     back_cover: Optional[UploadFile] = File(default=None),
+    confirm_expensive_job: bool = False,
     admin=Depends(require_admin),
 ):
-    return await _process_docx_upload(
-        docx_file=docx_file,
-        request=request,
-        admin=admin,
-        front_cover=front_cover,
-        back_cover=back_cover,
+    _require_expensive_job_enabled(
+        "book_rendering_jobs",
+        enabled=ENABLE_BOOK_RENDERING_JOBS,
+        confirm_expensive_job=confirm_expensive_job,
     )
+    if front_cover or back_cover:
+        _require_expensive_job_enabled(
+            "cover_generation",
+            enabled=ENABLE_COVER_GENERATION,
+            confirm_expensive_job=confirm_expensive_job,
+        )
+    async with _expensive_job_slot("book_rendering_jobs"):
+        return await _process_docx_upload(
+            docx_file=docx_file,
+            request=request,
+            admin=admin,
+            front_cover=front_cover,
+            back_cover=back_cover,
+        )
 
 
 @api.post("/admin/books/import-template")
@@ -4734,15 +4914,28 @@ async def admin_import_book_template(
     docx_file: UploadFile = File(...),
     front_cover: Optional[UploadFile] = File(default=None),
     back_cover: Optional[UploadFile] = File(default=None),
+    confirm_expensive_job: bool = False,
     admin=Depends(require_admin),
 ):
-    return await _process_docx_upload(
-        docx_file=docx_file,
-        request=request,
-        admin=admin,
-        front_cover=front_cover,
-        back_cover=back_cover,
+    _require_expensive_job_enabled(
+        "book_rendering_jobs",
+        enabled=ENABLE_BOOK_RENDERING_JOBS,
+        confirm_expensive_job=confirm_expensive_job,
     )
+    if front_cover or back_cover:
+        _require_expensive_job_enabled(
+            "cover_generation",
+            enabled=ENABLE_COVER_GENERATION,
+            confirm_expensive_job=confirm_expensive_job,
+        )
+    async with _expensive_job_slot("book_rendering_jobs"):
+        return await _process_docx_upload(
+            docx_file=docx_file,
+            request=request,
+            admin=admin,
+            front_cover=front_cover,
+            back_cover=back_cover,
+        )
 
 
 @api.get("/credits/report")
@@ -4875,153 +5068,177 @@ _ALLOWED_CHAPTER_EXTS = {"docx", "md", "markdown", "html", "txt"}
 async def admin_upload_cover(
     slug: str,
     kind: str = "front",
+    confirm_expensive_job: bool = False,
     file: UploadFile = File(...),
     _=Depends(require_admin),
 ):
-    cover_kind = "back" if kind == "back" else "front"
-    if file.content_type not in _ALLOWED_COVER_TYPES:
-        raise HTTPException(status_code=400, detail="Unsupported image type. Use JPG, PNG, WebP, or GIF.")
-    body = await file.read()
-    if len(body) > 10 * 1024 * 1024:
-        raise HTTPException(status_code=400, detail="Cover must be under 10MB")
-    book = await _load_book_or_404(slug)
-    _assert_public_rights_approved(book, "Visual asset")
-    _ensure_cloudinary()
-    try:
-        from utils.content_processor import process_book_cover  # type: ignore
-    except Exception as e:
-        raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
-    status_field = "back_cover_processing_status" if cover_kind == "back" else "cover_processing_status"
-    error_field = "back_cover_processing_error" if cover_kind == "back" else "cover_processing_error"
-    await db.books.update_one({"slug": slug}, {"$set": {status_field: "processing", error_field: ""}})
-    try:
-        result = process_book_cover(body, book.get("id") or slug, kind=cover_kind)
-    except Exception as e:
-        await db.books.update_one({"slug": slug}, {"$set": {status_field: "failed", error_field: str(e)}})
-        raise HTTPException(status_code=400, detail=f"Cover processing failed: {e}")
-
-    if cover_kind == "back":
-        fields = {
-            "back_cover_url": result["cover_url"],
-            "back_cover_image_url": result["cover_url"],
-            "back_cover_thumbnail_url": result["thumbnail_url"],
-            "back_cover_blur_placeholder": result["blur_placeholder"],
-            "back_cover_dominant_color": result["dominant_color"],
-            "back_cover_processing_status": "ready",
-            "back_cover_processing_error": "",
-        }
-    else:
-        fields = {
-            "cover_url": result["cover_url"],
-            "cover_image_url": result["cover_url"],
-            "thumbnail_url": result["thumbnail_url"],
-            "blur_placeholder": result["blur_placeholder"],
-            "dominant_color": result["dominant_color"],
-            "cover_processing_status": "ready",
-            "cover_processing_error": "",
-        }
-    await db.books.update_one(
-        {"slug": slug},
-        {"$set": fields},
+    _require_expensive_job_enabled(
+        "cover_generation",
+        enabled=ENABLE_COVER_GENERATION,
+        confirm_expensive_job=confirm_expensive_job,
     )
-    return {"success": True, "kind": cover_kind, **result}
+    async with _expensive_job_slot("cover_generation"):
+        cover_kind = "back" if kind == "back" else "front"
+        if file.content_type not in _ALLOWED_COVER_TYPES:
+            raise HTTPException(status_code=400, detail="Unsupported image type. Use JPG, PNG, WebP, or GIF.")
+        body = await file.read()
+        if len(body) > ADMIN_MEDIA_UPLOAD_MAX_BYTES:
+            raise HTTPException(status_code=400, detail=f"Cover must be under {ADMIN_MEDIA_UPLOAD_MAX_BYTES} bytes")
+        book = await _load_book_or_404(slug)
+        _assert_public_rights_approved(book, "Visual asset")
+        _ensure_cloudinary()
+        try:
+            from utils.content_processor import process_book_cover  # type: ignore
+        except Exception as e:
+            raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
+        status_field = "back_cover_processing_status" if cover_kind == "back" else "cover_processing_status"
+        error_field = "back_cover_processing_error" if cover_kind == "back" else "cover_processing_error"
+        await db.books.update_one({"slug": slug}, {"$set": {status_field: "processing", error_field: ""}})
+        try:
+            result = process_book_cover(body, book.get("id") or slug, kind=cover_kind)
+        except Exception as e:
+            await db.books.update_one({"slug": slug}, {"$set": {status_field: "failed", error_field: str(e)}})
+            raise HTTPException(status_code=400, detail=f"Cover processing failed: {e}")
+
+        if cover_kind == "back":
+            fields = {
+                "back_cover_url": result["cover_url"],
+                "back_cover_image_url": result["cover_url"],
+                "back_cover_thumbnail_url": result["thumbnail_url"],
+                "back_cover_blur_placeholder": result["blur_placeholder"],
+                "back_cover_dominant_color": result["dominant_color"],
+                "back_cover_processing_status": "ready",
+                "back_cover_processing_error": "",
+            }
+        else:
+            fields = {
+                "cover_url": result["cover_url"],
+                "cover_image_url": result["cover_url"],
+                "thumbnail_url": result["thumbnail_url"],
+                "blur_placeholder": result["blur_placeholder"],
+                "dominant_color": result["dominant_color"],
+                "cover_processing_status": "ready",
+                "cover_processing_error": "",
+            }
+        await db.books.update_one(
+            {"slug": slug},
+            {"$set": fields},
+        )
+        return {"success": True, "kind": cover_kind, **result}
 
 
 @api.post("/admin/books/{slug}/chapters/{chapter_id}/upload")
 async def admin_upload_chapter_file(
     slug: str,
     chapter_id: str,
+    confirm_expensive_job: bool = False,
     file: UploadFile = File(...),
     _=Depends(require_admin),
 ):
-    ext = (file.filename or "").rsplit(".", 1)[-1].lower()
-    if ext not in _ALLOWED_CHAPTER_EXTS:
-        raise HTTPException(status_code=400, detail="Unsupported chapter format")
-    body = await file.read()
-    if len(body) > 50 * 1024 * 1024:
-        raise HTTPException(status_code=400, detail="Chapter file must be under 50MB")
-    book = await _load_book_or_404(slug)
-    _assert_public_rights_approved(book, "Source text")
-    chapters = book.get("chapters") or []
-    target = next((c for c in chapters if c.get("id") == chapter_id), None)
-    if not target:
-        raise HTTPException(status_code=404, detail="Chapter not found")
-    _ensure_cloudinary()
-    try:
-        from utils.content_processor import process_chapter_content  # type: ignore
-    except Exception as e:
-        raise HTTPException(status_code=503, detail=f"Content pipeline unavailable: {e}")
-    started_at = now_iso()
-    await db.books.update_one(
-        {"slug": slug, "chapters.id": chapter_id},
-        {"$set": {
-            "chapters.$.processing_status": "processing",
-            "chapters.$.processing_error": "",
-            "chapters.$.processing_warnings": [],
-            "chapters.$.source_filename": file.filename or "chapter",
-            "chapters.$.uploaded_at": started_at,
-            "chapters.$.updated_at": started_at,
-        }},
+    _require_expensive_job_enabled(
+        "book_rendering_jobs",
+        enabled=ENABLE_BOOK_RENDERING_JOBS,
+        confirm_expensive_job=confirm_expensive_job,
     )
-    try:
-        result = process_chapter_content(body, file.filename or "chapter", book.get("id") or slug)
-    except Exception as e:
+    async with _expensive_job_slot("book_rendering_jobs"):
+        ext = (file.filename or "").rsplit(".", 1)[-1].lower()
+        if ext not in _ALLOWED_CHAPTER_EXTS:
+            raise HTTPException(status_code=400, detail="Unsupported chapter format")
+        body = await file.read()
+        if len(body) > CHAPTER_UPLOAD_MAX_BYTES:
+            raise HTTPException(status_code=400, detail=f"Chapter file must be under {CHAPTER_UPLOAD_MAX_BYTES} bytes")
+        book = await _load_book_or_404(slug)
+        _assert_public_rights_approved(book, "Source text")
+        chapters = book.get("chapters") or []
+        target = next((c for c in chapters if c.get("id") == chapter_id), None)
+        if not target:
+            raise HTTPException(status_code=404, detail="Chapter not found")
+        _ensure_cloudinary()
+        try:
+            from utils.content_processor import process_chapter_content  # type: ignore
+        except Exception as e:
+            raise HTTPException(status_code=503, detail=f"Content pipeline unavailable: {e}")
+        started_at = now_iso()
         await db.books.update_one(
             {"slug": slug, "chapters.id": chapter_id},
             {"$set": {
-                "chapters.$.processing_status": "failed",
-                "chapters.$.processing_error": str(e),
-                "chapters.$.updated_at": now_iso(),
+                "chapters.$.processing_status": "processing",
+                "chapters.$.processing_error": "",
+                "chapters.$.processing_warnings": [],
+                "chapters.$.source_filename": file.filename or "chapter",
+                "chapters.$.uploaded_at": started_at,
+                "chapters.$.updated_at": started_at,
             }},
         )
-        raise HTTPException(status_code=400, detail=f"Chapter processing failed: {e}")
+        try:
+            result = process_chapter_content(body, file.filename or "chapter", book.get("id") or slug)
+        except Exception as e:
+            await db.books.update_one(
+                {"slug": slug, "chapters.id": chapter_id},
+                {"$set": {
+                    "chapters.$.processing_status": "failed",
+                    "chapters.$.processing_error": str(e),
+                    "chapters.$.updated_at": now_iso(),
+                }},
+            )
+            raise HTTPException(status_code=400, detail=f"Chapter processing failed: {e}")
 
-    warnings = result.get("warnings", [])
-    new_chapters = []
-    for c in chapters:
-        if c.get("id") == chapter_id:
-            c = dict(c)
-            c["content"] = result["content_html"]
-            c["has_images"] = result["has_images"]
-            c["image_count"] = result["image_count"]
-            c["word_count"] = result["word_count"]
-            c["reading_minutes"] = result["reading_minutes"]
-            c["language_hint"] = result.get("language_hint", "")
-            c["processing_status"] = "ready"
-            c["processing_error"] = ""
-            c["processing_warnings"] = warnings
-            c["source_filename"] = file.filename or "chapter"
-            c["uploaded_at"] = started_at
-            c["updated_at"] = now_iso()
-        new_chapters.append(c)
-    await db.books.update_one({"slug": slug}, {"$set": {"chapters": new_chapters}})
-    return {
-        "success": True,
-        "processing_status": "ready",
-        "word_count": result["word_count"],
-        "reading_minutes": result["reading_minutes"],
-        "has_images": result["has_images"],
-        "image_count": result["image_count"],
-        "language_hint": result.get("language_hint", ""),
-        "warnings": warnings,
-        "preview_html": result["content_html"],
-    }
+        warnings = result.get("warnings", [])
+        new_chapters = []
+        for c in chapters:
+            if c.get("id") == chapter_id:
+                c = dict(c)
+                c["content"] = result["content_html"]
+                c["has_images"] = result["has_images"]
+                c["image_count"] = result["image_count"]
+                c["word_count"] = result["word_count"]
+                c["reading_minutes"] = result["reading_minutes"]
+                c["language_hint"] = result.get("language_hint", "")
+                c["processing_status"] = "ready"
+                c["processing_error"] = ""
+                c["processing_warnings"] = warnings
+                c["source_filename"] = file.filename or "chapter"
+                c["uploaded_at"] = started_at
+                c["updated_at"] = now_iso()
+            new_chapters.append(c)
+        await db.books.update_one({"slug": slug}, {"$set": {"chapters": new_chapters}})
+        return {
+            "success": True,
+            "processing_status": "ready",
+            "word_count": result["word_count"],
+            "reading_minutes": result["reading_minutes"],
+            "has_images": result["has_images"],
+            "image_count": result["image_count"],
+            "language_hint": result.get("language_hint", ""),
+            "warnings": warnings,
+            "preview_html": result["content_html"],
+        }
 
 
 # ---------- Admin: Image upload (generic — for blog editor) ----------
 @api.post("/admin/upload/image")
-async def admin_upload_image(file: UploadFile = File(...), _=Depends(require_admin)):
-    if file.content_type not in _ALLOWED_COVER_TYPES:
-        raise HTTPException(status_code=400, detail="Unsupported image type")
-    body = await file.read()
-    if len(body) > 10 * 1024 * 1024:
-        raise HTTPException(status_code=400, detail="Image must be under 10MB")
-    _ensure_cloudinary()
-    try:
-        from config.cloudinary import upload_image  # type: ignore
-    except Exception as e:
-        raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
-    result = upload_image(body, folder="earnalism/journal")
+async def admin_upload_image(
+    file: UploadFile = File(...),
+    confirm_expensive_job: bool = False,
+    _=Depends(require_admin),
+):
+    _require_expensive_job_enabled(
+        "admin_media_uploads",
+        enabled=ENABLE_ADMIN_MEDIA_UPLOADS,
+        confirm_expensive_job=confirm_expensive_job,
+    )
+    async with _expensive_job_slot("admin_media_uploads"):
+        if file.content_type not in _ALLOWED_COVER_TYPES:
+            raise HTTPException(status_code=400, detail="Unsupported image type")
+        body = await file.read()
+        if len(body) > ADMIN_MEDIA_UPLOAD_MAX_BYTES:
+            raise HTTPException(status_code=400, detail=f"Image must be under {ADMIN_MEDIA_UPLOAD_MAX_BYTES} bytes")
+        _ensure_cloudinary()
+        try:
+            from config.cloudinary import upload_image  # type: ignore
+        except Exception as e:
+            raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {e}")
+        result = upload_image(body, folder="earnalism/journal")
     return {"url": result["url"], "width": result.get("width"), "height": result.get("height")}
 
 
@@ -6877,6 +7094,63 @@ async def admin_reconcile_intent(intent_id: str, payload: PaymentReconcileIn, ad
         f"admin_reconcile:{admin.get('email','')}:{payload.note[:80]}",
     )
     return {"ok": True, "intent": refreshed}
+
+
+def _current_rss_bytes() -> Optional[int]:
+    statm = Path("/proc/self/statm")
+    if not statm.exists():
+        return None
+    try:
+        parts = statm.read_text(encoding="utf-8").split()
+        if len(parts) < 2:
+            return None
+        page_size = os.sysconf("SC_PAGE_SIZE")
+        return int(parts[1]) * int(page_size)
+    except Exception:
+        return None
+
+
+def _process_memory_snapshot() -> Dict[str, Any]:
+    max_rss_raw = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    # Linux reports KiB; macOS reports bytes. Railway runs Linux, but keep local
+    # diagnostics readable on developer machines too.
+    max_rss_bytes = max_rss_raw if max_rss_raw > 10 * 1024 * 1024 else max_rss_raw * 1024
+    return {
+        "rss_bytes": _current_rss_bytes(),
+        "max_rss_bytes": max_rss_bytes,
+        "public_cache_entries": len(_public_cache),
+        "rate_limit_buckets": len(_rate_limit_hits),
+    }
+
+
+@api.get("/admin/system/cost-control")
+async def admin_system_cost_control(_=Depends(require_admin)):
+    return {
+        "environment": ENVIRONMENT,
+        "uptime_seconds": round(time.monotonic() - _PROCESS_STARTED_AT, 2),
+        "memory": _process_memory_snapshot(),
+        "flags": _cost_control_flags(),
+        "active_background_jobs": int(_expensive_job_state.get("active", 0)),
+        "expensive_jobs_started": dict(_expensive_job_state.get("started", {})),
+        "expensive_jobs_blocked": dict(_expensive_job_state.get("blocked", {})),
+        "runtime_keys_detected": {
+            "openai": bool(os.environ.get("OPENAI_API_KEY")),
+            "cloudinary": _cloudinary_config_detected(),
+            "b2_storage": _b2_is_configured(),
+            "redis": bool(REDIS_URL),
+        },
+        "notes": {
+            "secrets_exposed": False,
+            "heavy_jobs_default_disabled": (
+                not ENABLE_BACKGROUND_WORKERS
+                and not ENABLE_AUDIOBOOK_PIPELINE
+                and not ENABLE_BOOK_RENDERING_JOBS
+                and not ENABLE_COVER_GENERATION
+                and not ENABLE_SCHEDULED_JOBS
+                and not ENABLE_QUEUE_CONSUMER
+            ),
+        },
+    }
 
 
 @api.get("/admin/cache/status")
