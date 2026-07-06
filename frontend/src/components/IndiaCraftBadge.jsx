@@ -5,6 +5,7 @@ export default function IndiaCraftBadge() {
     <span
       className="india-origin-badge"
       data-testid="india-origin-badge"
+      role="img"
       aria-label="Made in India - Literary Atelier"
       title="Made in India - Literary Atelier"
     >

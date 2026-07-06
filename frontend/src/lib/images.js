@@ -1,3 +1,5 @@
+import { resolveBookCover } from "./bookCoverResolver";
+
 const LOCAL_ASSET_RE = /^\/?assets\//i;
 const IMAGE_EXTENSION_RE = /\.(avif|gif|jpe?g|png|svg|webp)(?:[?#].*)?$/i;
 const HEX_COLOR_RE = /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i;
@@ -84,19 +86,32 @@ function safeDominantColor(value) {
   return HEX_COLOR_RE.test(color) ? color : "";
 }
 
-export function bookCoverImageSources(book, { width = 420, widths, quality = 82 } = {}) {
+export function bookCoverImageSources(book, { width = 420, widths, quality = 82, forceFallback = false } = {}) {
   if (!book || typeof book !== "object") {
     return { src: "", srcSet: "", placeholder: "", backgroundColor: "", hasCover: false };
   }
 
-  const cover = normalizeImageUrl(book.cover_image_url || book.cover_url || "");
-  const thumbnail = normalizeImageUrl(book.thumbnail_url || "");
+  const resolved = forceFallback
+    ? {
+      ...resolveBookCover(
+        {
+          slug: book.slug,
+          id: book.id,
+          title: book.title,
+          author: book.author,
+        },
+      ),
+      isFallback: true,
+    }
+    : resolveBookCover(book);
+  const cover = normalizeImageUrl(resolved.src || "");
+  const thumbnail = forceFallback ? "" : normalizeImageUrl(book.thumbnail_url || "");
   const placeholder = normalizeImageUrl(book.blur_placeholder || "");
   const backgroundColor = safeDominantColor(book.dominant_color);
   const source = cover || thumbnail;
   const src = thumbnail || (source ? optimizedImageUrl(source, { width, quality }) : "");
   const responsiveWidths = normalizeWidthList(widths, width);
-  const srcSet = cover
+  const srcSet = cover && !resolved.isFallback
     ? responsiveWidths.map((candidateWidth) => (
       `${optimizedImageUrl(cover, { width: candidateWidth, quality })} ${candidateWidth}w`
     )).join(", ")
@@ -108,5 +123,7 @@ export function bookCoverImageSources(book, { width = 420, widths, quality = 82 
     placeholder,
     backgroundColor,
     hasCover: Boolean(src || srcSet),
+    isFallback: Boolean(resolved.isFallback),
+    coverSource: resolved.source,
   };
 }

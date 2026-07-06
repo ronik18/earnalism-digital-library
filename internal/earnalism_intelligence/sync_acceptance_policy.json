@@ -1,0 +1,28 @@
+{
+  "policy_version": "sync-tiered-2026-07-06",
+  "tiers": {
+    "WORD_OR_PHRASE_SYNC_FLAGSHIP": {
+      "allowed": true,
+      "require_audio_derived_or_measured": true
+    },
+    "PARAGRAPH_OR_STANZA_SYNC_PREMIUM": {
+      "allowed": true,
+      "require_audio_derived_or_measured": true,
+      "ui_must_not_claim_word_level": true
+    },
+    "CHAPTER_SYNC_LIMITED": {
+      "allowed": false,
+      "requires_explicit_product_exception": true
+    },
+    "ESTIMATED_SYNC_BLOCKED": {
+      "allowed": false
+    }
+  },
+  "blocked_conditions": [
+    "deterministic_estimated_sync",
+    "stale_sidecars",
+    "mismatched_audio",
+    "missing_coverage",
+    "frontmatter_in_sidecars"
+  ]
+}

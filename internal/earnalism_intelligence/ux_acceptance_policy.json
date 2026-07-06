@@ -1,0 +1,11 @@
+{
+  "policy_version": "ux-2026-07-06",
+  "hard_requirements": [
+    "no_unapproved_audiobook_controls",
+    "no_stale_or_blocked_audio_exposure",
+    "reader_only_books_must_not_look_broken",
+    "wcag_aa",
+    "no_critical_route_regressions",
+    "no_severe_performance_regression"
+  ]
+}

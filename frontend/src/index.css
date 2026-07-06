@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
-
 :root {
   --beige-canvas: #FAF7F0;
   --beige-surface: #F5F0E8;
@@ -272,11 +270,6 @@ main:focus {
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -514,7 +507,7 @@ main:focus {
   --brand-ivory-warm: #FBF6EE;
   --brand-gold: #C5A059;
   --brand-gold-soft: #D8B97A;
-  --brand-gold-deep: #A98646;
+  --brand-gold-deep: #765320;
   --brand-charcoal: #2C2C2C;
   --brand-charcoal-soft: #6A655F;
   --brand-border: #E5DCD3;
@@ -677,7 +670,6 @@ body::before {
     linear-gradient(90deg, rgba(13, 5, 5, 0.78) 0%, rgba(19, 7, 7, 0.6) 43%, rgba(40, 18, 13, 0.16) 70%, rgba(11, 4, 4, 0.52) 100%),
     radial-gradient(circle at 79% 44%, rgba(255, 222, 162, 0.34), transparent 20rem),
     radial-gradient(circle at 88% 34%, rgba(253, 252, 248, 0.12), transparent 15rem),
-    var(--reference-hero-image) center / cover no-repeat,
     linear-gradient(115deg, #17080d 0%, #2b140f 55%, #5b301b 100%);
 }
 .premium-landing-hero::before {
@@ -933,7 +925,7 @@ body::before {
   height: 100%;
   border: 0;
   background: transparent;
-  object-fit: cover;
+  object-fit: contain;
   filter:
     brightness(1.16)
     contrast(1.12)
@@ -1226,6 +1218,314 @@ body::before {
   transform: translateY(-1px);
 }
 
+.coming-soon-board-wrap {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.35rem, 5vw, 4.75rem) 0;
+  background:
+    radial-gradient(circle at 13% 16%, rgba(216, 185, 122, 0.2), transparent 18rem),
+    radial-gradient(circle at 86% 6%, rgba(74, 28, 39, 0.11), transparent 20rem),
+    linear-gradient(180deg, #fffaf0 0%, #f5ead8 100%);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.24);
+}
+.coming-soon-board-wrap--compact {
+  padding-top: clamp(1.8rem, 4vw, 3.25rem);
+  padding-bottom: clamp(1.8rem, 4vw, 3.25rem);
+}
+.coming-soon-board {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  gap: clamp(1.4rem, 4vw, 3.6rem);
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(1.35rem, 4vw, 3.25rem);
+  border: 1px solid rgba(197, 160, 89, 0.36);
+  border-radius: clamp(1.35rem, 4vw, 2.2rem);
+  background:
+    linear-gradient(135deg, rgba(255, 253, 247, 0.92), rgba(246, 235, 215, 0.82)),
+    radial-gradient(circle at 78% 50%, rgba(74, 28, 39, 0.08), transparent 28rem);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.86),
+    0 32px 70px -54px rgba(74, 28, 39, 0.62);
+}
+.coming-soon-board::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: min(20rem, 45%);
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(197, 160, 89, 0.18), transparent),
+    repeating-linear-gradient(110deg, rgba(197, 160, 89, 0.12) 0 1px, transparent 1px 18px);
+  opacity: 0.58;
+  z-index: -1;
+}
+.coming-soon-board::after {
+  content: "";
+  position: absolute;
+  right: clamp(1rem, 4vw, 3rem);
+  top: 50%;
+  width: clamp(11rem, 28vw, 22rem);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(216, 185, 122, 0.26), transparent 58%),
+    conic-gradient(from 16deg, rgba(216, 185, 122, 0.08), rgba(74, 28, 39, 0.08), rgba(216, 185, 122, 0.08));
+  filter: blur(1px);
+  pointer-events: none;
+  z-index: -1;
+}
+.coming-soon-board__copy,
+.coming-soon-board__panel {
+  position: relative;
+  z-index: 1;
+}
+.coming-soon-board__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--brand-gold-deep);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+.coming-soon-board__eyebrow span {
+  display: inline-block;
+  width: 2.6rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--brand-gold), transparent);
+}
+.coming-soon-board__title {
+  max-width: 12ch;
+  margin-top: 1rem;
+  color: var(--brand-burgundy);
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
+  font-size: clamp(2.4rem, 6vw, 5.35rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+.coming-soon-board__text {
+  max-width: 44rem;
+  margin-top: 1.25rem;
+  color: rgba(44, 24, 16, 0.76);
+  font-size: clamp(0.98rem, 1.4vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.85;
+}
+.coming-soon-board__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.75rem;
+}
+.coming-soon-board__primary,
+.coming-soon-board__secondary {
+  min-height: 3rem;
+  justify-content: center;
+}
+.coming-soon-board__primary {
+  gap: 0.5rem;
+}
+.coming-soon-board__panel {
+  padding: clamp(1rem, 3vw, 1.55rem);
+  border: 1px solid rgba(74, 28, 39, 0.16);
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(180deg, rgba(74, 28, 39, 0.94), rgba(31, 12, 17, 0.96)),
+    radial-gradient(circle at 50% 0%, rgba(216, 185, 122, 0.18), transparent 18rem);
+  color: #fdf8ed;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 24px 48px -36px rgba(31, 12, 17, 0.9);
+}
+.coming-soon-board__seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--brand-gold-soft);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.coming-soon-board__meter {
+  position: relative;
+  height: 0.45rem;
+  margin: 1.1rem 0 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(216, 185, 122, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.coming-soon-board__meter span {
+  display: block;
+  width: 68%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--brand-gold-deep), var(--brand-gold-soft));
+  box-shadow: 0 0 22px rgba(216, 185, 122, 0.32);
+}
+.coming-soon-board__gate-list {
+  display: grid;
+  gap: 0.85rem;
+}
+.coming-soon-board__gate {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+  padding: 0.9rem;
+  border: 1px solid rgba(216, 185, 122, 0.14);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.055);
+}
+.coming-soon-board__gate svg {
+  color: var(--brand-gold-soft);
+  margin-top: 0.18rem;
+}
+.coming-soon-board__gate h3 {
+  color: #fff8e8;
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+.coming-soon-board__gate p {
+  margin-top: 0.3rem;
+  color: rgba(253, 248, 237, 0.72);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.approved-audio-spotlight {
+  padding: clamp(1.75rem, 4vw, 3.5rem) 0;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(197, 160, 89, 0.18), transparent 19rem),
+    linear-gradient(180deg, #1f0c12 0%, #2a1018 100%);
+  color: #fff8ec;
+}
+.approved-audio-spotlight--compact {
+  padding: 0 0 1.4rem;
+  background: transparent;
+  color: inherit;
+}
+.approved-audio-spotlight__shell {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: center;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding: clamp(1.15rem, 3vw, 2rem);
+  border: 1px solid rgba(216, 185, 122, 0.28);
+  border-radius: 1.4rem;
+  background:
+    linear-gradient(135deg, rgba(255, 248, 236, 0.08), rgba(255, 248, 236, 0.035)),
+    radial-gradient(circle at 100% 50%, rgba(216, 185, 122, 0.14), transparent 24rem);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 28px 60px -48px rgba(0, 0, 0, 0.75);
+}
+.approved-audio-spotlight--compact .approved-audio-spotlight__shell {
+  max-width: none;
+  background:
+    linear-gradient(135deg, rgba(74, 28, 39, 0.96), rgba(31, 12, 17, 0.98)),
+    radial-gradient(circle at 90% 12%, rgba(216, 185, 122, 0.18), transparent 19rem);
+  color: #fff8ec;
+}
+.approved-audio-spotlight__seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.45rem;
+  height: 3.45rem;
+  border: 1px solid rgba(216, 185, 122, 0.42);
+  border-radius: 999px;
+  color: var(--brand-gold-soft);
+  background: rgba(255, 255, 255, 0.075);
+}
+.approved-audio-spotlight__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--brand-gold-soft);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.approved-audio-spotlight__copy h2 {
+  max-width: 16ch;
+  margin-top: 0.55rem;
+  color: #fff8ec;
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
+  font-size: clamp(2rem, 4vw, 3.9rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+}
+.approved-audio-spotlight__copy p {
+  max-width: 46rem;
+  margin-top: 0.7rem;
+  color: rgba(255, 248, 236, 0.74);
+  font-size: 0.96rem;
+  line-height: 1.75;
+}
+.approved-audio-spotlight__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: min(100%, 14rem);
+}
+.approved-audio-spotlight__actions .btn-primary,
+.approved-audio-spotlight__actions .btn-secondary {
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .coming-soon-board {
+    grid-template-columns: 1fr;
+  }
+  .approved-audio-spotlight__shell {
+    grid-template-columns: 1fr;
+  }
+  .approved-audio-spotlight__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .coming-soon-board__title {
+    max-width: 14ch;
+  }
+}
+
+@media (max-width: 540px) {
+  .approved-audio-spotlight__actions,
+  .approved-audio-spotlight__actions .btn-primary,
+  .approved-audio-spotlight__actions .btn-secondary {
+    width: 100%;
+  }
+  .coming-soon-board__actions,
+  .coming-soon-board__primary,
+  .coming-soon-board__secondary {
+    width: 100%;
+  }
+  .coming-soon-board__eyebrow {
+    align-items: flex-start;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+  }
+  .coming-soon-board__eyebrow span {
+    width: 1.6rem;
+    margin-top: 0.42rem;
+  }
+}
+
 .shelf-two-shelf {
   --shelf-two-gold: #D4AF37;
   position: relative;
@@ -1249,16 +1549,24 @@ body::before {
 .shelf-two-stage-copy {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 1rem;
   padding: 0 0.6rem 1.05rem;
 }
 
-.shelf-two-stage-copy__eyebrow {
+.shelf-two-stage-copy__eyebrow,
+.shelf-two-stage-copy__count {
   font-size: 0.66rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+.shelf-two-stage-copy__eyebrow {
   color: rgba(96, 56, 21, 0.78);
+}
+
+.shelf-two-stage-copy__count {
+  color: rgba(104, 72, 28, 0.58);
 }
 
 .shelf-two-track {
@@ -1335,6 +1643,34 @@ body::before {
   object-fit: cover;
   display: block;
   transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.shelf-two-book__status-pill {
+  position: absolute;
+  left: 0.7rem;
+  right: 0.7rem;
+  bottom: 0.78rem;
+  padding: 0.5rem 0.62rem;
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.shelf-two-book__status-pill--queued {
+  background: rgba(14, 19, 18, 0.56);
+  color: #f3dfb2;
+  border: 1px solid rgba(212, 175, 55, 0.34);
+}
+
+.shelf-two-book__status-pill--published {
+  background: rgba(33, 31, 19, 0.58);
+  color: #fff3ca;
+  border: 1px solid rgba(212, 175, 55, 0.42);
 }
 
 .shelf-two-book__cover--placeholder {
@@ -1463,60 +1799,46 @@ body::before {
 }
 
 .shelf-two-book__cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   min-height: 2.4rem;
-  padding: 0.75rem 1.65rem;
   border-radius: 999px;
-  font-family: "Outfit", "Noto Sans Bengali", sans-serif;
-  font-size: 0.74rem;
+  font-size: 0.66rem;
   text-align: center;
-  text-indent: 0.18em;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.18em;
-  line-height: 1;
-  text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
-  transition:
-    background-color 0.35s ease,
-    border-color 0.35s ease,
-    color 0.35s ease,
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .shelf-two-book__cta--published {
-  border: 1px solid var(--brand-burgundy);
-  background-color: var(--brand-burgundy);
-  color: var(--brand-ivory);
+  border: 1px solid #D4AF37;
+  background: linear-gradient(180deg, #e3c777, #c89d33);
+  color: #2b1a14;
+  font-weight: 600;
 }
 
 .shelf-two-book__cta--published:hover {
-  border-color: var(--brand-burgundy-deep);
-  background-color: var(--brand-burgundy-deep);
-  box-shadow: 0 14px 26px -20px rgba(74, 28, 39, 0.68);
+  background: linear-gradient(180deg, #eed4a4, #d9af46);
+  box-shadow: 0 10px 24px -16px rgba(212, 175, 55, 0.9);
   transform: translateY(-1px);
 }
 
 .shelf-two-book__cta--queued {
-  border: 1px solid var(--brand-gold);
-  background-color: transparent;
-  color: var(--brand-burgundy);
+  border: 1px solid rgba(212, 175, 55, 0.72);
+  background: rgba(212, 175, 55, 0.09);
+  color: #68441d;
 }
 
 .shelf-two-book__cta--queued:hover {
-  border-color: var(--brand-gold-deep);
-  color: var(--brand-burgundy);
-  background-color: rgba(197, 160, 89, 0.1);
-  box-shadow: 0 10px 24px -18px rgba(197, 160, 89, 0.62);
+  color: #3f2c11;
+  background: rgba(212, 175, 55, 0.2);
+  box-shadow: 0 8px 22px -16px rgba(212, 175, 55, 0.8);
   transform: translateY(-1px);
 }
 
 .shelf-two-book__cta:focus-visible {
-  outline: 2px solid var(--brand-gold);
+  outline: 2px solid #D4AF37;
   outline-offset: 3px;
 }
 
@@ -1917,13 +2239,24 @@ body::before {
     letter-spacing: 0.08em;
   }
   .reference-dracula-book-object {
-    width: min(100%, 14.4rem);
+    width: min(100%, 7.75rem);
   }
   .reference-dracula-book-object--hardcopy {
-    width: min(100%, 13.8rem);
+    width: min(100%, 7.25rem);
   }
   .reference-dracula-hardcopy-shell {
-    width: min(100%, 13.8rem);
+    width: min(100%, 7.25rem);
+  }
+  .reference-hero-book__face {
+    background:
+      radial-gradient(circle at 46% 24%, rgba(216, 185, 122, 0.2), transparent 30%),
+      linear-gradient(140deg, rgba(216, 185, 122, 0.18), transparent 33%),
+      linear-gradient(100deg, rgba(255, 244, 203, 0.12) 0%, transparent 18%, transparent 72%, rgba(0, 0, 0, 0.26) 100%),
+      linear-gradient(160deg, #481b26 0%, #1f0c11 58%, #050303 100%),
+      #030201;
+  }
+  .reference-dracula-hardcopy-img {
+    display: none;
   }
   .reference-dracula-cover-frame {
     width: min(100%, 10.8rem);
@@ -1993,18 +2326,61 @@ body::before {
 }
 
 .book-cover-image__fallback {
-  display: grid;
+  position: relative;
+  display: block;
   width: 100%;
   height: 100%;
-  place-items: center;
-  padding: 1rem;
-  color: var(--brand-burgundy);
-  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
-  font-size: clamp(3rem, 16vw, 5rem);
-  line-height: 1;
+  overflow: hidden;
   background:
-    radial-gradient(ellipse 75% 55% at 50% 18%, rgba(253, 252, 248, 0.86), transparent 72%),
-    var(--brand-beige-deep);
+    radial-gradient(ellipse 72% 44% at 36% 19%, rgba(216, 185, 122, 0.26), transparent 72%),
+    linear-gradient(156deg, #4A1C27 0%, #1d0c10 56%, #070504 100%);
+}
+
+.book-cover-image__fallback::before,
+.book-cover-image__fallback::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.book-cover-image__fallback::before {
+  inset: 6%;
+  border: 1px solid rgba(216, 185, 122, 0.26);
+  border-radius: 0.42rem;
+}
+
+.book-cover-image__fallback::after {
+  left: 21%;
+  right: 17%;
+  bottom: 16%;
+  height: 28%;
+  border-radius: 52% 48% 38% 44%;
+  border: 1px solid rgba(216, 185, 122, 0.24);
+  background:
+    linear-gradient(130deg, rgba(216, 185, 122, 0.18), transparent 62%),
+    radial-gradient(circle at 66% 28%, rgba(253, 252, 248, 0.16), transparent 44%);
+}
+
+.book-cover-image__fallback-orb {
+  position: absolute;
+  top: 18%;
+  left: 22%;
+  width: 32%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  border: 1px solid rgba(216, 185, 122, 0.38);
+  background: radial-gradient(circle at 42% 36%, rgba(253, 252, 248, 0.14), rgba(216, 185, 122, 0.08) 42%, transparent 70%);
+}
+
+.book-cover-image__fallback-river {
+  position: absolute;
+  left: 18%;
+  right: 14%;
+  top: 54%;
+  height: 20%;
+  border-top: 3px solid rgba(216, 185, 122, 0.28);
+  border-radius: 50%;
+  transform: rotate(-8deg);
 }
 
 /* ----------- Eyebrows / overlines ----------- */
@@ -2020,7 +2396,7 @@ body::before {
   font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 0.95rem;
+  font-size: 0.86rem;
   letter-spacing: 0.04em;
   color: var(--brand-gold-deep);
 }
@@ -2209,64 +2585,207 @@ textarea.input-elegant {
 }
 .india-origin-badge {
   position: relative;
-  display: inline-grid;
-  width: clamp(4.6rem, 5.1vw, 5.25rem);
-  height: 3.02rem;
+  display: inline-flex;
+  height: 2.54rem;
   flex: 0 0 auto;
-  place-items: center;
-  margin-left: -0.24rem;
-  overflow: visible;
+  align-items: center;
+  gap: 0.52rem;
+  border: 1px solid rgba(197, 160, 89, 0.52);
+  border-radius: 999px;
+  padding: 0.17rem 0.84rem 0.17rem 0.26rem;
+  background:
+    radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 1), transparent 38%),
+    radial-gradient(circle at 80% 18%, rgba(216, 185, 122, 0.22), transparent 33%),
+    radial-gradient(circle at 44% 86%, rgba(255, 153, 51, 0.14), transparent 36%),
+    radial-gradient(circle at 76% 80%, rgba(19, 136, 8, 0.11), transparent 34%),
+    linear-gradient(145deg, rgba(255, 252, 243, 0.97), rgba(241, 232, 216, 0.82)),
+    rgba(253, 252, 248, 0.82);
+  box-shadow:
+    0 18px 34px -24px rgba(74, 28, 39, 0.48),
+    0 8px 18px -16px rgba(197, 160, 89, 0.82),
+    0 0 0 1px rgba(255, 255, 255, 0.38) inset,
+    inset 0 1px 0 rgba(253, 252, 248, 0.96),
+    inset 0 -1px 0 rgba(120, 78, 28, 0.12);
+  color: var(--brand-burgundy);
+  overflow: hidden;
   transition:
     transform 180ms ease,
-    filter 240ms ease;
+    box-shadow 240ms ease,
+    border-color 240ms ease;
+}
+.india-origin-badge::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  pointer-events: none;
+}
+.india-origin-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.6), transparent 28%, transparent 72%, rgba(133, 92, 35, 0.08)),
+    radial-gradient(circle at 20% 8%, rgba(255, 255, 255, 0.62), transparent 24%);
+  opacity: 0.72;
 }
 .india-origin-badge:hover {
   transform: translateY(-1px);
-  filter: saturate(1.06) contrast(1.03);
-}
-.india-origin-badge__plate {
-  position: absolute;
-  inset: 0.18rem 0;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  border: 1px solid rgba(197, 160, 89, 0.42);
-  border-radius: 999px;
-  background:
-    linear-gradient(135deg, rgba(255, 254, 249, 0.98), rgba(249, 239, 218, 0.78)),
-    radial-gradient(circle at 22% 20%, rgba(255, 255, 255, 0.92), transparent 2.2rem);
+  border-color: rgba(197, 160, 89, 0.66);
   box-shadow:
-    0 10px 22px -18px rgba(74, 28, 39, 0.52),
-    0 1px 0 rgba(255, 255, 255, 0.82) inset,
-    0 -1px 0 rgba(178, 127, 47, 0.16) inset;
+    0 22px 38px -24px rgba(74, 28, 39, 0.54),
+    0 10px 18px -14px rgba(197, 160, 89, 0.88),
+    0 0 0 1px rgba(255, 255, 255, 0.42) inset,
+    inset 0 1px 0 rgba(253, 252, 248, 0.98),
+    inset 0 -1px 0 rgba(120, 78, 28, 0.14);
 }
-.india-origin-badge__plate::after {
-  content: "";
-  position: absolute;
-  inset: 0.18rem;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: inherit;
-  pointer-events: none;
+.india-origin-badge__mark {
+  position: relative;
+  z-index: 1;
+  width: 3.92rem;
+  height: 1.8rem;
+  flex: 0 0 auto;
+  overflow: visible;
+  transform: perspective(96px) rotateY(-6deg) rotateZ(-1.25deg);
+  transform-origin: 45% 50%;
+  filter: drop-shadow(0 6px 10px rgba(74, 28, 39, 0.14));
 }
-.india-origin-badge__image {
-  display: block;
-  position: absolute;
-  inset: 0.28rem 0.34rem;
-  width: 100%;
-  width: calc(100% - 0.68rem);
-  height: calc(100% - 0.56rem);
-  max-width: none;
-  object-fit: contain;
-  object-position: center;
-  transform: translateY(0.01rem) scale(1.08);
+.india-origin-badge__sprinkles {
+  opacity: 1;
+  filter: drop-shadow(0 1px 1px rgba(74, 28, 39, 0.24));
+}
+.india-origin-badge__sprinkle--saffron {
+  fill: #ff9933;
+}
+.india-origin-badge__sprinkle--ivory {
+  fill: rgba(255, 252, 244, 0.98);
+  stroke: rgba(197, 160, 89, 0.22);
+  stroke-width: 0.35;
+}
+.india-origin-badge__sprinkle--green {
+  fill: #138808;
+}
+.india-origin-badge__sprinkle-stroke {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 1.05;
+}
+.india-origin-badge__sprinkle-stroke--saffron {
+  stroke: rgba(255, 153, 51, 0.78);
+}
+.india-origin-badge__sprinkle-stroke--green {
+  stroke: rgba(19, 136, 8, 0.72);
+}
+.india-origin-badge__flag-shadow {
+  fill: rgba(74, 28, 39, 0.27);
+  filter:
+    drop-shadow(0 7px 8px rgba(74, 28, 39, 0.28))
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.36));
+}
+.india-origin-badge__band--saffron {
+  fill: url("#india-origin-saffron-3d");
+}
+.india-origin-badge__band--ivory {
+  fill: url("#india-origin-ivory-3d");
+}
+.india-origin-badge__band--green {
+  fill: url("#india-origin-green-3d");
+}
+.india-origin-badge__flag-glow {
+  fill: url("#india-origin-flag-glow");
+  mix-blend-mode: screen;
+}
+.india-origin-badge__flag-bevel {
+  fill: rgba(28, 17, 9, 0.12);
   mix-blend-mode: multiply;
-  filter: saturate(1.08) contrast(1.02);
+}
+.india-origin-badge__silk {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.42);
+  stroke-linecap: round;
+  stroke-width: 1.2;
+  mix-blend-mode: screen;
+}
+.india-origin-badge__flag-rim {
+  fill: none;
+  stroke: rgba(120, 78, 28, 0.46);
+  stroke-linejoin: round;
+  stroke-width: 1.15;
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.42));
+}
+.india-origin-badge__wheel {
+  fill: rgba(255, 250, 240, 0.96);
+  stroke: #213d82;
+  stroke-width: 1.35;
+}
+.india-origin-badge__wheel-lines {
+  fill: none;
+  stroke: #213d82;
+  stroke-linecap: round;
+  stroke-width: 0.58;
+}
+.india-origin-badge__wheel-core {
+  fill: #213d82;
+}
+.india-origin-badge__text {
+  display: grid;
+  position: relative;
+  z-index: 1;
+  gap: 0.08rem;
+  line-height: 1;
+}
+.india-origin-badge__eyebrow {
+  color: rgba(120, 78, 28, 0.72);
+  font-size: 0.4rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.india-origin-badge__text strong {
+  color: var(--brand-burgundy);
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.52);
+  white-space: nowrap;
+}
+.india-origin-badge__subline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  color: rgba(74, 28, 39, 0.7);
+  font-size: 0.43rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.india-origin-badge__dot {
+  width: 0.26rem;
+  height: 0.26rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #d8b97a, #b98530);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.45) inset;
 }
 
 @media (max-width: 1279px) {
   .india-origin-badge {
-    width: 4.45rem;
-    height: 2.62rem;
+    width: 3.12rem;
+    justify-content: center;
+    padding-inline: 0.18rem;
+  }
+  .india-origin-badge__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 }
 
@@ -2275,160 +2794,12 @@ textarea.input-elegant {
     gap: 0.34rem;
   }
   .india-origin-badge {
-    width: 4.05rem;
-    height: 2.32rem;
-    margin-left: -0.36rem;
+    width: 2.82rem;
+    height: 2rem;
   }
-}
-
-.premium-landing-hero,
-.library-room-hero {
-  background:
-    linear-gradient(90deg, rgba(15, 6, 7, 0.9) 0%, rgba(21, 8, 9, 0.78) 43%, rgba(38, 16, 13, 0.48) 72%, rgba(12, 5, 5, 0.72) 100%),
-    radial-gradient(circle at 79% 44%, rgba(255, 222, 162, 0.24), transparent 20rem),
-    var(--reference-hero-image, var(--library-room-bg)) center / cover no-repeat,
-    linear-gradient(115deg, #17080d 0%, #2b140f 55%, #5b301b 100%);
-}
-
-.premium-landing-hero::before,
-.library-room-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(6, 2, 1, 0.34), transparent 32%, rgba(7, 2, 1, 0.48)),
-    radial-gradient(ellipse at 28% 38%, rgba(0, 0, 0, 0.38), transparent 62%);
-}
-
-.book-cover-image__fallback {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  grid-template-rows: auto 1fr auto auto auto;
-  place-items: center;
-  gap: 0.42rem;
-  padding: 1.05rem 0.9rem 1rem;
-  color: #4a1c27;
-  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
-  font-size: 1rem;
-  line-height: 1.15;
-  text-align: center;
-  background:
-    linear-gradient(90deg, rgba(74, 28, 39, 0.18) 0 0.34rem, transparent 0.34rem),
-    radial-gradient(ellipse 70% 38% at 50% 18%, rgba(255, 255, 255, 0.82), transparent 70%),
-    linear-gradient(155deg, #fbf4e7, #efe0c8 58%, #e5d2b7);
-}
-
-.book-cover-image__fallback::after {
-  content: "";
-  position: absolute;
-  inset: 0.65rem;
-  border: 1px solid rgba(178, 127, 47, 0.34);
-  pointer-events: none;
-}
-
-.book-cover-image__fallback-kicker,
-.book-cover-image__fallback-status {
-  position: relative;
-  z-index: 1;
-  max-width: 100%;
-  color: rgba(121, 85, 31, 0.78);
-  font-family: 'Outfit', 'Noto Sans Bengali', sans-serif;
-  font-size: 0.48rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  line-height: 1.45;
-  text-transform: uppercase;
-}
-
-.book-cover-image__fallback-seal {
-  position: relative;
-  z-index: 1;
-  display: inline-grid;
-  place-items: center;
-  align-self: center;
-  width: 3.6rem;
-  height: 3.6rem;
-  border: 1px solid rgba(178, 127, 47, 0.44);
-  border-radius: 999px;
-  background: radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.65), rgba(216, 185, 122, 0.16));
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.74), 0 18px 30px -24px rgba(74,28,39,0.48);
-  color: #5a2330;
-  font-size: 1.18rem;
-  letter-spacing: 0.04em;
-}
-
-.book-cover-image__fallback-rule {
-  position: relative;
-  z-index: 1;
-  width: 42%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(178, 127, 47, 0.55), transparent);
-}
-
-.book-cover-image__fallback-title,
-.book-cover-image__fallback-author {
-  position: relative;
-  z-index: 1;
-  display: -webkit-box;
-  max-width: 100%;
-  overflow: hidden;
-  overflow-wrap: anywhere;
-  -webkit-box-orient: vertical;
-}
-
-.book-cover-image__fallback-title {
-  color: #4a1c27;
-  font-size: clamp(1.05rem, 2.4vw, 1.42rem);
-  line-height: 1.05;
-  -webkit-line-clamp: 3;
-}
-
-.book-cover-image__fallback-author {
-  color: rgba(61, 43, 32, 0.72);
-  font-family: 'Outfit', 'Noto Sans Bengali', sans-serif;
-  font-size: 0.56rem;
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  line-height: 1.35;
-  text-transform: uppercase;
-  -webkit-line-clamp: 2;
-}
-
-.glass-header [data-testid="header-cta-library"] {
-  min-width: 10.1rem;
-  justify-content: center;
-  white-space: nowrap;
-}
-
-.library-hero-facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.58rem;
-  max-width: 42rem;
-}
-
-.library-hero-facts span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.48rem;
-  min-height: 2.35rem;
-  padding: 0.5rem 0.68rem;
-  border: 1px solid rgba(216, 185, 122, 0.3);
-  border-radius: 999px;
-  background: rgba(10, 4, 4, 0.34);
-  color: rgba(253, 252, 248, 0.86);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  line-height: 1.22;
-  text-transform: uppercase;
-}
-
-.library-hero-facts svg {
-  color: var(--brand-gold-soft);
-  flex: 0 0 auto;
+  .india-origin-badge__mark {
+    width: 2.62rem;
+  }
 }
 
 /* ----------- Image fade ----------- */
@@ -3834,43 +4205,6 @@ textarea.input-elegant {
   margin: 0 0 1.4em;
 }
 
-.reader-content .reader-paragraph-fragment {
-  margin-bottom: 1.05em;
-}
-
-.reader-content .reader-paragraph-continuation {
-  margin-top: -0.42em;
-  text-indent: 0;
-}
-
-.reader-content em {
-  color: color-mix(in srgb, var(--reader-ink) 86%, var(--reader-accent));
-  font-style: italic;
-  letter-spacing: 0.005em;
-}
-
-.reader-content .reader-editorial-note {
-  margin: 0 auto 1.65rem;
-  color: var(--reader-muted);
-  font-size: 0.92em;
-  letter-spacing: 0.035em;
-  text-align: center;
-}
-
-.reader-content .reader-editorial-aside {
-  color: var(--reader-muted);
-  font-size: 0.94em;
-}
-
-.reader-content .reader-scene-break {
-  margin: 1.9rem auto 2.1rem;
-  color: var(--reader-accent);
-  font-family: var(--reader-heading-font);
-  font-size: 1.05rem;
-  letter-spacing: 0.32em;
-  text-align: center;
-}
-
 .reader-content h1,
 .reader-content h2,
 .reader-content h3 {
@@ -4563,4 +4897,159 @@ textarea.input-elegant {
   max-width: 100%;
   height: auto;
   -webkit-user-drag: none;
+}
+
+/* Luxury rebirth availability and trust states */
+.book-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--brand-gold-deep);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.book-card__badges span {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(197, 160, 89, 0.38);
+  border-radius: 999px;
+  padding: 0.38rem 0.56rem;
+  background: rgba(253, 252, 248, 0.72);
+}
+
+.book-card__badge--audio-live {
+  color: var(--brand-burgundy);
+  background: linear-gradient(135deg, rgba(216, 185, 122, 0.3), rgba(253, 252, 248, 0.88)) !important;
+}
+
+.book-card__badge--audio-hidden {
+  color: var(--brand-charcoal-soft);
+  border-color: rgba(122, 92, 98, 0.24) !important;
+  background: rgba(251, 246, 238, 0.55) !important;
+}
+
+.book-detail-skeleton {
+  display: grid;
+  grid-template-columns: minmax(180px, 340px) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.book-detail-skeleton__cover,
+.book-detail-skeleton__copy span,
+.book-detail-skeleton__copy strong,
+.book-detail-skeleton__copy p {
+  display: block;
+  border-radius: 18px;
+  background: linear-gradient(100deg, rgba(253, 252, 248, 0.68), rgba(216, 185, 122, 0.18), rgba(253, 252, 248, 0.82));
+  background-size: 220% 100%;
+  animation: luxurySkeletonSweep 1500ms ease-in-out infinite;
+}
+
+.book-detail-skeleton__cover {
+  aspect-ratio: 3 / 4;
+  border: 1px solid rgba(197, 160, 89, 0.26);
+  box-shadow: 0 34px 80px -48px rgba(74, 28, 39, 0.55);
+}
+
+.book-detail-skeleton__copy {
+  display: grid;
+  gap: 1rem;
+}
+
+.book-detail-skeleton__copy span {
+  width: 10rem;
+  height: 0.78rem;
+}
+
+.book-detail-skeleton__copy strong {
+  width: min(100%, 32rem);
+  height: clamp(3rem, 8vw, 5.8rem);
+}
+
+.book-detail-skeleton__copy p {
+  width: min(100%, 40rem);
+  height: 1rem;
+}
+
+.book-detail-skeleton__copy p:last-child {
+  width: min(82%, 31rem);
+}
+
+.book-experience-panel {
+  display: grid;
+  gap: 0.85rem;
+  border: 1px solid rgba(197, 160, 89, 0.28);
+  border-radius: 24px;
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+  background:
+    radial-gradient(circle at 14% 10%, rgba(216, 185, 122, 0.22), transparent 38%),
+    linear-gradient(135deg, rgba(253, 252, 248, 0.86), rgba(251, 246, 238, 0.64));
+  box-shadow: 0 28px 68px -58px rgba(74, 28, 39, 0.45);
+}
+
+.book-experience-panel__item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+  border-radius: 18px;
+  padding: 0.9rem;
+  color: var(--brand-charcoal-soft);
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.book-experience-panel__item svg {
+  color: var(--brand-gold-deep);
+  margin-top: 0.12rem;
+}
+
+.book-experience-panel__item strong {
+  display: block;
+  color: var(--brand-burgundy);
+  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.book-experience-panel__item p {
+  margin-top: 0.18rem;
+  color: var(--brand-charcoal-soft);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.reading-circle-eyebrow {
+  color: #f1d590;
+}
+
+@keyframes luxurySkeletonSweep {
+  0% { background-position: 120% 0; }
+  100% { background-position: -120% 0; }
+}
+
+@media (max-width: 720px) {
+  .book-detail-skeleton {
+    grid-template-columns: 1fr;
+  }
+
+  .book-detail-skeleton__cover {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-detail-skeleton__cover,
+  .book-detail-skeleton__copy span,
+  .book-detail-skeleton__copy strong,
+  .book-detail-skeleton__copy p {
+    animation: none;
+  }
 }

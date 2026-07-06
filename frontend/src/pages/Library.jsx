@@ -5,6 +5,8 @@ import { api } from "../lib/api";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import BookCard from "../components/BookCard";
 import BookCoverImage from "../components/BookCoverImage";
+import ComingSoonBoard from "../components/ComingSoonBoard";
+import ApprovedAudiobookSpotlight from "../components/ApprovedAudiobookSpotlight";
 import {
   BATCH_1_READER_ONLY_SLUGS,
   DRACULA_CHAPTER_COUNT,
@@ -106,18 +108,17 @@ export default function Library() {
       <section
         className="library-room-hero relative isolate overflow-hidden text-[#FDFCF8]"
         data-testid="library-hero"
-        style={{ "--library-room-bg": 'url("/assets/hero/golden-hour-library-hero.webp")' }}
       >
-        <div className="mx-auto grid max-w-7xl gap-9 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-12 lg:items-center lg:px-12 lg:py-20">
+        <div className="mx-auto grid max-w-7xl gap-9 px-5 py-10 sm:px-8 sm:py-14 lg:grid-cols-12 lg:items-center lg:px-12 lg:py-16">
           <div className="lg:col-span-7">
             <div className="italic-eyebrow mb-4 flex items-center gap-3 text-[var(--brand-gold-soft)]">
               <span className="h-px w-8 bg-[var(--brand-gold)]/70" />
               <span>The Earnalism Library</span>
             </div>
-            <h1 className="font-serif-light max-w-3xl text-[2.65rem] leading-[0.98] tracking-normal sm:text-6xl lg:text-[4.8rem]">
+            <h1 className="font-serif-light max-w-3xl text-[2.2rem] leading-[1.02] tracking-normal sm:text-[3.15rem] lg:text-[3.85rem]">
               The live shelf begins with <span className="italic-accent text-[var(--brand-gold-soft)]">Dracula.</span>
             </h1>
-            <p className="mt-5 max-w-2xl font-serif-display text-xl italic leading-snug text-[#F4EFEA]/88 sm:text-2xl">
+            <p className="mt-4 max-w-2xl font-serif-display text-[1.04rem] italic leading-snug text-[#F4EFEA]/88 sm:text-[1.35rem]">
               A controlled reading room: Dracula remains the featured release, and every additional classic opens only after source, sanitation, and reader QA gates pass.
             </p>
             <p className="mt-5 max-w-2xl text-sm font-light leading-[1.8] text-[#F4EFEA]/76 sm:text-base">
@@ -186,6 +187,8 @@ export default function Library() {
         </div>
       </section>
 
+      <ComingSoonBoard compact />
+
       <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-12 lg:px-12" data-testid="library-bengali-gothic-pipeline">
         <div className="library-pipeline-feature">
           <div className="library-pipeline-feature__covers" data-testid="library-kshudhita-cover-evidence">
@@ -217,7 +220,7 @@ export default function Library() {
             <div className="inline-flex items-center gap-2 text-[0.64rem] uppercase tracking-[0.26em] text-[var(--brand-gold-deep)]">
               <Sparkles size={14} strokeWidth={1.6} /> Rights-safe pipeline
             </div>
-            <h2 className="mt-3 font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">
+            <h2 className="mt-3 font-serif-light text-[1.85rem] leading-tight text-burgundy sm:text-[2.35rem]">
               The Hungry Stones is visible, not open.
             </h2>
             <p className="mt-2 text-sm uppercase tracking-[0.18em] text-charcoal-soft">
@@ -290,7 +293,7 @@ export default function Library() {
                 <div className="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <div className="overline mb-3">Shelf 1</div>
-                    <h2 className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">Live Controlled Releases</h2>
+                    <h2 className="font-serif-light text-[1.85rem] leading-tight text-burgundy sm:text-[2.35rem]">Live Controlled Releases</h2>
                   </div>
                   <span className="inline-flex items-center gap-2 text-sm text-charcoal-soft"><ShieldCheck size={16} className="text-gold" /> Reader-only public-domain shelf</span>
                 </div>
@@ -303,7 +306,7 @@ export default function Library() {
                     </div>
                     <div className="lg:col-span-8">
                       <span className="overline">Gothic fiction</span>
-                      <h3 className="mt-4 font-serif-display text-4xl leading-tight text-burgundy">Dracula</h3>
+                      <h3 className="mt-4 font-serif-display text-[2.15rem] leading-tight text-burgundy">Dracula</h3>
                       <p className="mt-2 text-[0.85rem] uppercase tracking-[0.14em] text-charcoal-soft">by Bram Stoker</p>
                       <p className="mt-6 max-w-2xl text-charcoal-soft leading-[1.85]">
                         {liveBook.short_description}
@@ -344,7 +347,7 @@ export default function Library() {
               <section data-testid="shelf-pipeline">
                 <div className="mb-7">
                   <div className="overline mb-3">Shelf 2</div>
-                  <h2 className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">Coming Through the Rights-Safe Pipeline</h2>
+                  <h2 className="font-serif-light text-[1.85rem] leading-tight text-burgundy sm:text-[2.35rem]">Coming Through the Rights-Safe Pipeline</h2>
                   <p className="mt-4 max-w-2xl text-charcoal-soft leading-[1.8]">These books are not live products yet. They have Notify Me CTAs only.</p>
                 </div>
                 {visiblePipeline.length > 0 ? (
@@ -360,7 +363,7 @@ export default function Library() {
             {showReadingPaths && (
               <section className="card-elegant p-8 sm:p-10" data-testid="shelf-reading-paths">
                 <div className="overline mb-3">Shelf 3</div>
-                <h2 className="font-serif-display text-3xl text-burgundy">Dracula 7-Day Reading Path</h2>
+                <h2 className="font-serif-display text-[1.85rem] text-burgundy">Dracula 7-Day Reading Path</h2>
                 <p className="mt-5 max-w-2xl text-charcoal-soft leading-[1.8]">The guided reading path is in draft. It is not a live product yet.</p>
                 <Link to={notifyUrl("dracula-reading-path")} className="btn-secondary mt-7" data-testid="reading-path-notify" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.notifyMe, { future_title: "dracula-reading-path" })}>
                   <Sparkles size={15} /> Notify Me
@@ -369,14 +372,17 @@ export default function Library() {
             )}
 
             {showAudiobooks && (
-              <section className="card-elegant p-8 sm:p-10" data-testid="shelf-audiobooks">
-                <div className="overline mb-3">Shelf 4</div>
-                <h2 className="font-serif-display text-3xl text-burgundy">Audiobooks are not live in this launch.</h2>
-                <p className="mt-5 max-w-2xl text-charcoal-soft leading-[1.8]">
-                  Audiobook experience is in private review through rights, sync, accessibility, and listening QA. No play buttons or waveform controls are shown.
-                </p>
-                <div className="mt-6 inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-gold-deep">
-                  <Headphones size={15} /> Audio QA pending
+              <section data-testid="shelf-audiobooks">
+                <ApprovedAudiobookSpotlight compact />
+                <div className="card-elegant p-8 sm:p-10">
+                  <div className="overline mb-3">Shelf 4</div>
+                  <h2 className="font-serif-display text-[1.85rem] text-burgundy">Audiobooks appear only after proof.</h2>
+                  <p className="mt-5 max-w-2xl text-charcoal-soft leading-[1.8]">
+                    If an approved listening room is available, it is shown above from the production reader manifest. Every other audiobook remains hidden through rights, sync, accessibility, and listening QA.
+                  </p>
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-gold-deep">
+                    <Headphones size={15} /> Release-gate controlled
+                  </div>
                 </div>
               </section>
             )}
@@ -395,7 +401,7 @@ function EmptyShelf({ title }) {
   return (
     <div className="card-elegant p-12 text-center" data-testid="library-empty">
       <div className="italic-eyebrow mb-4">Controlled shelf</div>
-      <h3 className="font-serif-light text-3xl text-burgundy">{title}</h3>
+      <h3 className="font-serif-light text-[1.85rem] text-burgundy">{title}</h3>
       <p className="mx-auto mt-5 max-w-md text-charcoal-soft leading-[1.8]">Try Dracula, or join the Reading Circle for future release updates.</p>
     </div>
   );

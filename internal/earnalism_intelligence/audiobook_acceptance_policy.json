@@ -1,0 +1,49 @@
+{
+  "policy_version": "tiered-2026-07-06",
+  "objective_gates_strict": true,
+  "objective_gates": [
+    "source_content_toc_integrity_pass",
+    "rights_metadata_pass",
+    "covers_pass",
+    "asr_manuscript_match_pass",
+    "first_and_last_spans_match",
+    "no_missing_duplicated_reordered_content",
+    "no_fallback_audio",
+    "no_placeholder_audio",
+    "no_stale_or_404_audio",
+    "upload_checksum_pass",
+    "metadata_approval_pass",
+    "browser_gate_pass"
+  ],
+  "listening_tiers": {
+    "FLAGSHIP_AUDIO": {
+      "overall_listening_score_min": 9.7,
+      "confidence_score_min": 0.95,
+      "fatal_flags_required_false": true
+    },
+    "PREMIUM_AUDIO_APPROVED": {
+      "overall_listening_score_min": 9.3,
+      "confidence_score_min": 0.9,
+      "fatal_flags_required_false": true,
+      "customer_experience": "premium acceptable"
+    },
+    "BORDERLINE_AUDIO_REPAIR_REQUIRED": {
+      "overall_listening_score_min": 9.0,
+      "overall_listening_score_max": 9.29,
+      "max_targeted_repair_attempts": 1
+    },
+    "AUDIO_DECOMMISSION_CANDIDATE": {
+      "overall_listening_score_below": 9.0,
+      "fatal_flags_trigger": true
+    }
+  },
+  "fatal_flags": [
+    "robotic_texture_detected",
+    "mechanical_cadence_detected",
+    "choppy_joins_detected",
+    "fallback_tts_detected",
+    "list_reading_rhythm_detected",
+    "placeholder_audio_detected"
+  ],
+  "reader_preservation_rule": "If reader/source/rights/covers pass, keep reader-only live when audiobook fails."
+}

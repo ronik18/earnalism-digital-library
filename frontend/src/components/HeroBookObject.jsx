@@ -3,11 +3,15 @@ import React from "react";
 export default function HeroBookObject({
   href,
   coverSrc,
+  coverSrcSet,
+  coverSizes,
   alt,
   ariaLabel,
   onClick,
   testId,
   className = "",
+  width = "500",
+  height = "666",
 }) {
   return (
     <a
@@ -26,11 +30,13 @@ export default function HeroBookObject({
         <span className="reference-hero-book__face">
           <img
             src={coverSrc}
+            srcSet={coverSrcSet}
+            sizes={coverSrcSet ? coverSizes : undefined}
             alt=""
             loading="eager"
             fetchPriority="high"
-            width="1024"
-            height="1536"
+            width={width}
+            height={height}
             className="reference-hero-book__cover reference-dracula-hardcopy-img"
           />
         </span>

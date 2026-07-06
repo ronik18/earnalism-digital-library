@@ -1,0 +1,25 @@
+{
+  "version": "2026-07-06",
+  "patterns": {
+    "bengali_local_audio_mismatch": {
+      "category": "bengali_audio_manuscript_mismatch",
+      "decision": "decommission_audio_path_preserve_reader_if_valid",
+      "retry": "do_not_retry_without_new_audio_source_or_provider_strategy"
+    },
+    "listening_provider_limit": {
+      "category": "audio_provider_quality_limit",
+      "decision": "reader_only_audio_hidden",
+      "retry": "provider_bakeoff_or_human_audio_only"
+    },
+    "rights_missing": {
+      "category": "metadata_rights",
+      "decision": "block_title_until_evidence",
+      "retry": "repair_only_with_deterministic_rights_evidence"
+    },
+    "cover_credentials_missing": {
+      "category": "cover_infrastructure",
+      "decision": "retry_on_railway_with_cloudinary_credentials",
+      "retry": "do_not_mark_book_quality_failure"
+    }
+  }
+}

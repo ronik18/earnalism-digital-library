@@ -14,6 +14,8 @@ import {
   Youtube,
 } from "lucide-react";
 import { toast } from "sonner";
+import ComingSoonBoard from "../components/ComingSoonBoard";
+import ApprovedAudiobookSpotlight from "../components/ApprovedAudiobookSpotlight";
 import HeroBookObject from "../components/HeroBookObject";
 import ShelfTwoSlideshow from "../components/ShelfTwoSlideshow";
 import { useSettings } from "../context/SettingsContext";
@@ -40,6 +42,29 @@ const SOCIAL_ICONS = {
   youtube: Youtube,
 };
 
+const DRACULA_HERO_HARDCOPY_SOURCES = [
+  "/assets/books/dracula/dracula-hero-hardcopy-320.webp 320w",
+  "/assets/books/dracula/dracula-hero-hardcopy-420.webp 420w",
+  "/assets/books/dracula/dracula-hero-hardcopy-500.webp 500w",
+].join(", ");
+const DRACULA_HERO_HARDCOPY_SIZES = "(max-width: 639px) 40vw, (max-width: 1023px) 320px, 380px";
+
+function runAfterFirstPaint(callback) {
+  if (typeof window === "undefined") return () => {};
+  let timeoutId;
+  let idleId;
+  const run = () => callback();
+  if ("requestIdleCallback" in window) {
+    idleId = window.requestIdleCallback(run, { timeout: 1800 });
+  } else {
+    timeoutId = window.setTimeout(run, 900);
+  }
+  return () => {
+    if (idleId && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
+    if (timeoutId) window.clearTimeout(timeoutId);
+  };
+}
+
 function track(event, metadata = {}) {
   if (!event) return;
   trackFunnelEvent(event, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, ...metadata });
@@ -48,7 +73,6 @@ function track(event, metadata = {}) {
 export default function Home() {
   const { social } = useSettings();
   const [dracula, setDracula] = useState(null);
-  const [catalogBooks, setCatalogBooks] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -62,51 +86,26 @@ export default function Home() {
     () => PIPELINE_BOOKS.filter((book) => !BATCH_1_READER_ONLY_SLUGS.includes(book.slug)),
     [],
   );
-  const liveShelfBooks = useMemo(() => (
-    catalogBooks
-      .filter((book) => {
-        const slug = String(book?.slug || book?.id || "").trim();
-        if (!slug) return false;
-        const publicationStatus = String(book?.publication_status || book?.launch_status || "").trim().toUpperCase();
-        return publicationStatus === "LIVE_APPROVED"
-          && book?.reader_enabled !== false
-          && book?.is_published !== false;
-      })
-      .sort((a, b) => {
-        if (a.slug === LIVE_APPROVED_SLUG) return -1;
-        if (b.slug === LIVE_APPROVED_SLUG) return 1;
-        return String(a.title || "").localeCompare(String(b.title || ""));
-      })
-      .map((book, index) => ({
-        id: book.slug || book.id,
-        slug: book.slug || book.id,
-        title: book.title || book.displayTitle || "Untitled reader release",
-        author: book.author,
-        coverUrl: book.cover_image_url || book.cover_url || book.thumbnail_url || "",
-        description: book.short_description || book.description || "A live Earnalism controlled reading release.",
-        statusLabel: book.audio_enabled || book.audiobook_enabled ? "Live reader + audio" : "Live controlled release",
-        dominantColor: book.dominant_color || "",
-        sequence: index + 1,
-        status: "published",
-      }))
-  ), [catalogBooks]);
   const shelfTwoBooks = useMemo(
     () =>
-      (liveShelfBooks.length ? liveShelfBooks : homepagePipelineBooks.map((book, index) => ({
+      homepagePipelineBooks.map((book, index) => ({
         id: book.slug,
         slug: book.slug,
         title: book.displayTitle || book.title,
         author: book.author,
         coverUrl: book.cover_image_url || book.thumbnail_url || book.back_cover_image_url || book.back_cover_thumbnail_url || "",
+        cover_image_url: book.cover_image_url || "",
+        thumbnail_url: book.thumbnail_url || "",
+        back_cover_image_url: book.back_cover_image_url || "",
+        back_cover_thumbnail_url: book.back_cover_thumbnail_url || "",
         description: book.short_description || "",
         statusLabel: book.statusLabel || "Rights-safe preparation",
         dominantColor: book.dominant_color || "",
         sequence: index + 1,
         status: "queued",
-      }))),
-    [homepagePipelineBooks, liveShelfBooks],
+      })),
+    [homepagePipelineBooks],
   );
-  const shelfTwoHasLiveCatalog = liveShelfBooks.length > 0;
 
   useSEO({
     title: "Step Into Dracula | The Earnalism Digital Library",
@@ -127,21 +126,15 @@ export default function Home() {
 
   useEffect(() => {
     const controller = new AbortController();
-    api.get(`/books/${LIVE_APPROVED_SLUG}`, { signal: controller.signal })
-      .then((response) => setDracula(response.data))
-      .catch(() => setDracula(null));
-    return () => controller.abort();
-  }, []);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    api.get("/books", { signal: controller.signal })
-      .then((response) => {
-        const books = Array.isArray(response.data) ? response.data : response.data?.books;
-        setCatalogBooks(Array.isArray(books) ? books : []);
-      })
-      .catch(() => setCatalogBooks([]));
-    return () => controller.abort();
+    const cancelIdle = runAfterFirstPaint(() => {
+      api.get(`/books/${LIVE_APPROVED_SLUG}`, { signal: controller.signal })
+        .then((response) => setDracula(response.data))
+        .catch(() => setDracula(null));
+    });
+    return () => {
+      cancelIdle();
+      controller.abort();
+    };
   }, []);
 
   const subscribe = async (event) => {
@@ -165,7 +158,6 @@ export default function Home() {
         className="premium-landing-hero reference-library-hero relative isolate overflow-hidden text-[#FDFCF8]"
         data-testid="premium-landing-hero"
         data-approved-hero-max-height="650"
-        style={{ "--reference-hero-image": "url('/assets/hero/golden-hour-library-hero.webp')" }}
       >
         <div className="reference-hero-grid mx-auto grid max-w-7xl grid-cols-1 gap-7 px-5 py-8 sm:px-8 sm:py-11 lg:grid-cols-12 lg:items-center lg:px-12 lg:py-12">
           <div className="reference-hero-copy lg:col-span-7">
@@ -174,14 +166,14 @@ export default function Home() {
               <span>The Earnalism Digital Library</span>
             </div>
             <h1
-              className="mt-4 font-serif-light text-[2.34rem] leading-[0.98] tracking-normal text-[#FDFCF8] text-balance min-[390px]:text-[2.62rem] sm:text-[3.75rem] lg:text-[4.45rem]"
+              className="mt-4 font-serif-light text-[2.12rem] leading-[1.02] tracking-normal text-[#FDFCF8] text-balance min-[390px]:text-[2.34rem] sm:text-[3.08rem] lg:text-[3.72rem]"
               data-testid="hero-headline"
               aria-label="Step into the classics. Stay with the story."
             >
               Step into the classics.
               <span className="block text-[var(--brand-gold-soft)]">Stay with the story.</span>
             </h1>
-            <p className="mt-3 max-w-xl font-serif-display text-base italic leading-snug text-[#F4EFEA]/92 sm:text-2xl">
+            <p className="mt-3 max-w-xl font-serif-display text-[1rem] italic leading-snug text-[#F4EFEA]/92 sm:text-[1.32rem]">
               Timeless stories. Beautifully presented. Yours to read, reflect, and remember.
             </p>
             <p className="mt-4 max-w-2xl text-[0.88rem] font-light leading-[1.65] text-[#F4EFEA]/82 sm:text-[0.98rem] sm:leading-[1.75]">
@@ -226,8 +218,10 @@ export default function Home() {
           <div className="reference-dracula-stage lg:col-span-5" data-testid="hero-dracula-card">
             <div className="reference-dracula-book-object reference-dracula-book-object--hardcopy">
               <HeroBookObject
-                href="/book/dracula"
-                coverSrc="/assets/books/dracula/dracula-front-cover-hero-polished.webp"
+                href="https://theearnalism.com/book/dracula"
+                coverSrc="/assets/books/dracula/dracula-hero-hardcopy-420.webp"
+                coverSrcSet={DRACULA_HERO_HARDCOPY_SOURCES}
+                coverSizes={DRACULA_HERO_HARDCOPY_SIZES}
                 alt="Dracula front cover"
                 testId="hero-dracula-cover-frame"
                 aria-label="Open Dracula book page"
@@ -238,26 +232,26 @@ export default function Home() {
         </div>
       </section>
 
+      <ComingSoonBoard />
+
+      <ApprovedAudiobookSpotlight />
+
       <section
         className="reference-pipeline-shelf"
         data-testid="bengali-gothic-pipeline-shelf"
         aria-labelledby="bengali-gothic-pipeline-title"
       >
-        <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12 lg:py-12" data-testid="pipeline-books">
+        <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12 lg:py-12">
           <div className="mb-7">
             <div className="overline mb-2">Shelf II</div>
-            <h2 id="bengali-gothic-pipeline-title" className="font-serif-light text-3xl leading-tight text-burgundy sm:text-4xl">
-              {shelfTwoHasLiveCatalog ? "Live Controlled Reader Shelf" : "Coming Through the Rights-Safe Pipeline"}
+            <h2 id="bengali-gothic-pipeline-title" className="font-serif-light text-[1.85rem] leading-tight text-burgundy sm:text-[2.35rem]">
+              Coming Through the Rights-Safe Pipeline
             </h2>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-charcoal-soft">
-              {shelfTwoHasLiveCatalog
-                ? "A wider live shelf of approved reader releases, drawn from the published catalog so newly launched titles do not disappear behind a static editorial carousel."
-                : "A quieter second shelf for editions in preparation. These titles are visible as editorial promises only, with Notify Me CTAs and no reader, checkout, or audiobook access."}
+              A quieter second shelf for editions in preparation. These titles are visible as editorial promises only, with Notify Me CTAs and no reader, checkout, or audiobook access.
             </p>
             <p className="mt-3 max-w-2xl text-[0.68rem] uppercase tracking-[0.22em] text-[var(--brand-gold-deep)]/78">
-              {shelfTwoHasLiveCatalog
-                ? "Live reader routes only. Cover-led where available. No hidden static cap."
-                : "Real cover-led presentation where available. No placeholder launch claims."}
+              Real cover-led presentation where available. No placeholder launch claims.
             </p>
           </div>
           <ShelfTwoSlideshow books={shelfTwoBooks} />
@@ -307,11 +301,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#1b0b10] text-[#FDFCF8]">
+      <section id="reading-circle" className="relative overflow-hidden bg-[#1b0b10] text-[#FDFCF8]">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:px-12 lg:py-24">
           <div className="lg:col-span-6">
-            <div className="italic-eyebrow mb-4 text-[var(--brand-gold-soft)]">Reading Circle</div>
-            <h2 className="font-serif-light text-4xl leading-tight sm:text-5xl">Follow the controlled launch.</h2>
+            <div className="italic-eyebrow reading-circle-eyebrow mb-4">Reading Circle</div>
+            <h2 className="font-serif-light text-[2rem] leading-tight sm:text-[2.7rem]">Follow the controlled launch.</h2>
             <p className="mt-6 max-w-xl text-[#F4EFEA]/76 leading-[1.8]">
               Receive Dracula reading notes and updates as future classics move from rights review to controlled release.
             </p>

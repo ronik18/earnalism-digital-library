@@ -1,0 +1,641 @@
+{
+  "version": "2026-07-06",
+  "titles": {
+    "bn-031": {
+      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-0deb35c750": {
+      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-2ddbed8293": {
+      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-2e468c4990": {
+      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-63afd5e9be": {
+      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-754da4eab8": {
+      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-a74c1a1451": {
+      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-c7f3ce526c": {
+      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-d19e96859f": {
+      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-d2fe532e1c": {
+      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-f5d593e1f4": {
+      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "muchiram-gurer-jibanchorit": {
+      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "bn-027": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "bn-035": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "bn-036": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "bn-041": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "bn-059": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "bn-060": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "bn-066": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-1090573dff": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-2b9853ec52": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-4968248842": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-4b944e64fa": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-5704b31005": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-ac5a71075e": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-fbdf2991ab": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "lokrahasya": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "mrinalini": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "nishkriti": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "radharani": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "yugalanguriya": {
+      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-007": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-010": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-014": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-023": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-029": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-032": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-033": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-034": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-037": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-038": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-039": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-040": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-042": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-043": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-044": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-046": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-047": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-048": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-049": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-050": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-051": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-052": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-053": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-054": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-055": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-058": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-061": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-063": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-064": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-065": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-069": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-070": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-071": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-072": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-075": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-076": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-078": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-079": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-080": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-081": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-082": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-085": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-086": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-087": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-088": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-089": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-090": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-091": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-092": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-093": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-094": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-095": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-096": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-097": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-098": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-099": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "BN-100": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-0986aeb7e3": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-0fbdaa730e": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-5461971092": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-5aedda79fe": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-827fdc7aee": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-88ded9b47c": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-95624627d5": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-9a7f771921": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-a23625bf36": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-a4a369483f": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-b9d47814a8": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-bfc51280b3": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-c307a57868": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-c85323409f": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-edfcf810c5": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "book-ef193ffc52": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "devdas": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    },
+    "pather-panchali": {
+      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "language": "bn"
+    }
+  }
+}

@@ -12,6 +12,7 @@ import { DRACULA_CTA_EVENTS, LIVE_APPROVED_SLUG, normalizeChapterDisplayTitle } 
 import { useAuth } from '../context/AuthContext';
 import { optimizedImageUrl } from '../lib/images';
 import useSEO from '../hooks/useSEO';
+import { canExposeAudiobookControls } from '../lib/audioReleaseSafety';
 
 const THEMES = {
   beige: { canvas: '#F5F0E8', surface: '#FDFAF4', text: '#2C1810', accent: '#6B1E2E', border: '#E8D5A3', label: 'Light' },
@@ -274,108 +275,10 @@ function selectNarrationVoice(voices = [], prefersBengali = false) {
   return { voice: preferredEnglish, exactLanguage: Boolean(preferredEnglish) };
 }
 
-function formatReaderInlineText(value = '') {
-  const escaped = escapeHtmlText(String(value || '').replace(/\s+/g, ' ').trim());
-  return escaped
-    .replace(/\(_([^_]{1,180})_\)/g, '<span class="reader-editorial-aside"><em>$1</em></span>')
-    .replace(/_([^_\n<>]{1,180})_/g, '<em>$1</em>')
-    .replace(/\s*--\s*/g, '&mdash;')
-    .replace(/\s+([,.;:?!])/g, '$1');
-}
-
-function readerPlainTextToHtml(value = '') {
-  const blocks = String(value || '')
-    .replace(/\r\n?/g, '\n')
-    .split(/\n{2,}/)
-    .map((block) => normalizeInlineText(block))
-    .filter(Boolean);
-  const paragraphs = [];
-  let current = [];
-  const flush = () => {
-    if (!current.length) return;
-    paragraphs.push({ type: 'paragraph', text: current.join(' ') });
-    current = [];
-  };
-
-  blocks.forEach((block) => {
-    if (/^[*•\-\s]{3,}$/.test(block)) {
-      flush();
-      paragraphs.push({ type: 'scene-break', text: '§' });
-      return;
-    }
-    if (/^\(_[^_]{1,180}_\)$/.test(block)) {
-      flush();
-      paragraphs.push({ type: 'editorial-note', text: block });
-      return;
-    }
-
-    current.push(block);
-    const likelyWrappedParagraphEnd = /[.!?。!”’)"\]]$/.test(block) && block.length < 62;
-    const likelyStandaloneLine = /^[“"']?[A-Z][A-Z\s.,'’-]{2,42}$/.test(block) || block.length < 28;
-    if (likelyWrappedParagraphEnd || likelyStandaloneLine) {
-      flush();
-    }
-  });
-  flush();
-
-  return paragraphs
-    .map((item) => {
-      if (item.type === 'scene-break') {
-        return '<div class="reader-scene-break" aria-hidden="true">§</div>';
-      }
-      const isStandaloneEditorialNote = item.type === 'editorial-note';
-      return `<p${isStandaloneEditorialNote ? ' class="reader-editorial-note"' : ''}>${formatReaderInlineText(item.text)}</p>`;
-    })
-    .join('');
-}
-
-function readerTextWithSoftBreaks(node) {
-  let text = '';
-  node.childNodes.forEach((child) => {
-    if (child.nodeType === Node.TEXT_NODE) {
-      text += child.textContent || '';
-      return;
-    }
-    if (child.nodeType !== Node.ELEMENT_NODE) return;
-    if (child.tagName === 'BR') {
-      text += ' ';
-      return;
-    }
-    text += readerTextWithSoftBreaks(child);
-  });
-  return text;
-}
-
-function normalizeReaderTypography(root) {
-  const blockSelector = 'p, li, blockquote';
-  root.querySelectorAll(blockSelector).forEach((node) => {
-    const childElements = Array.from(node.children || []);
-    const canReflow = childElements.every((child) => child.tagName === 'BR');
-    if (!canReflow) return;
-
-    const text = normalizeInlineText(readerTextWithSoftBreaks(node));
-    if (!text) {
-      node.remove();
-      return;
-    }
-
-    const isStandaloneEditorialNote = /^\(_[^_]{1,180}_\)$/.test(text);
-    if (isStandaloneEditorialNote) node.classList.add('reader-editorial-note');
-    node.innerHTML = formatReaderInlineText(text);
-  });
-
-  root.querySelectorAll('br').forEach((node) => node.replaceWith(document.createTextNode(' ')));
-}
-
 function sanitizeReaderHtml(html) {
   if (typeof document === 'undefined') return html || '';
-  const rawHtml = String(html || '');
   const template = document.createElement('template');
-  template.innerHTML = rawHtml;
-  const hasStructuredContent = template.content.querySelector('p, div, h1, h2, h3, blockquote, ul, ol, li, table, figure, img');
-  if (!hasStructuredContent && normalizeInlineText(template.content.textContent || '')) {
-    template.innerHTML = readerPlainTextToHtml(rawHtml);
-  }
+  template.innerHTML = html || '';
   template.content.querySelectorAll('script,style,iframe,object,embed,form,input,button,meta,link').forEach((node) => node.remove());
   template.content.querySelectorAll('*').forEach((node) => {
     Array.from(node.attributes).forEach((attr) => {
@@ -389,7 +292,6 @@ function sanitizeReaderHtml(html) {
       node.classList.add('reader-img--error');
     }
   });
-  normalizeReaderTypography(template.content);
   return template.innerHTML;
 }
 
@@ -731,11 +633,10 @@ function isAgenticAiWithPython(book = {}, bookId = '') {
 }
 
 function isNarrationDisabledForBook(book = {}, bookId = '') {
+  if (bookId === LIVE_APPROVED_SLUG || book?.slug === LIVE_APPROVED_SLUG) return true;
   if (isAgenticAiWithPython(book, bookId)) return true;
+  if (!canExposeAudiobookControls(book)) return true;
   const assets = audiobookAssetsForBook(book);
-  const manifestAudio = manifestAudioForBook(book);
-  const hasGeneratedAssets = Boolean(assets?.mp3 || assets?.timestamps || assets?.manifest || manifestAudio?.assets?.mp3 || manifestAudio?.assets?.timestamps || manifestAudio?.assets?.manifest);
-  if ((book?.audio_enabled === false || manifestAudio?.enabled === false) && !hasGeneratedAssets) return true;
   if (book?.audiobook_enabled === false && book?.generate_audiobook === false && !assets?.mp3 && !assets?.timestamps) return true;
   return book?.audiobook_enabled === false
     && book?.generate_audiobook === false
@@ -744,11 +645,11 @@ function isNarrationDisabledForBook(book = {}, bookId = '') {
 
 function hasGeneratedAudioEnabled(book = {}, bookId = '') {
   if (isNarrationDisabledForBook(book, bookId)) return false;
+  if (!canExposeAudiobookControls(book)) return false;
   const assets = audiobookAssetsForBook(book);
   if (assets?.mp3 && assets?.timestamps) return true;
   if (book?.audio_slug || book?.audio_asset_slug || book?.audioAssetSlug) return true;
-  if (book?.audiobook_enabled === true || book?.generate_audiobook === true || book?.narration_enabled === true) return true;
-  return hasLegacyGeneratedAudioAsset(book, bookId);
+  return false;
 }
 
 function rightsForBook(book = {}, userName = 'Reader') {
@@ -805,125 +706,29 @@ function normalizeGeneratedTimestamps(raw, html = '', baseWord = 0) {
   return { words, offset };
 }
 
-const READER_PARAGRAPH_SPLIT_MIN_CHARS = 1050;
-const READER_PARAGRAPH_TARGET_CHARS = 820;
-const READER_PARAGRAPH_MAX_CHARS = 1040;
-const READER_ABBREVIATIONS = new Set([
-  'mr', 'mrs', 'ms', 'dr', 'prof', 'rev', 'st', 'sr', 'jr', 'capt', 'col', 'gen', 'lt',
-  'maj', 'hon', 'no', 'vol', 'ch', 'fig', 'etc', 'vs', 'p', 'm', 'a', 'd',
-]);
-
-function isReaderSentenceBoundary(text, index) {
-  const mark = text[index];
-  if (!/[.!?]/.test(mark)) return false;
-  const prefix = text.slice(0, index + 1);
-  const token = (prefix.match(/([\p{L}]\.?)+\.?$/u)?.[0] || '').replace(/\.$/, '').toLowerCase();
-  if (READER_ABBREVIATIONS.has(token)) return false;
-  if (/^[a-z]\.?$/i.test(token)) return false;
-  if (/\d$/.test(text[index - 1] || '') && /\d/.test(text[index + 1] || '')) return false;
-
-  let cursor = index + 1;
-  while (cursor < text.length && /[”’"')\]]/.test(text[cursor])) cursor += 1;
-  return cursor >= text.length || /\s/.test(text[cursor]);
-}
-
-function splitLongSentenceAtClause(text, target = READER_PARAGRAPH_TARGET_CHARS) {
-  const source = normalizeInlineText(text);
-  if (source.length <= READER_PARAGRAPH_MAX_CHARS) return [source];
-  const chunks = [];
-  let remaining = source;
-
-  while (remaining.length > READER_PARAGRAPH_MAX_CHARS) {
-    const searchStart = Math.max(240, Math.floor(target * 0.62));
-    const searchEnd = Math.min(remaining.length, READER_PARAGRAPH_MAX_CHARS);
-    const windowText = remaining.slice(searchStart, searchEnd);
-    const clauseMatch = [...windowText.matchAll(/[,;:—–-]\s+/g)].pop();
-    let splitAt = clauseMatch ? searchStart + clauseMatch.index + clauseMatch[0].length : -1;
-
-    if (splitAt < searchStart) {
-      const words = remaining.slice(0, searchEnd).split(/\s+/);
-      let built = '';
-      for (const word of words) {
-        const next = built ? `${built} ${word}` : word;
-        if (next.length > target && built) break;
-        built = next;
-      }
-      splitAt = Math.max(built.length, searchStart);
-    }
-
-    chunks.push(remaining.slice(0, splitAt).trim());
-    remaining = remaining.slice(splitAt).trim();
-  }
-
-  if (remaining) chunks.push(remaining);
-  return chunks.filter(Boolean);
-}
-
-function splitTextAtSentenceBoundaries(text) {
-  const source = normalizeInlineText(text);
-  if (!source) return [];
-  const sentences = [];
-  let start = 0;
-
-  for (let index = 0; index < source.length; index += 1) {
-    if (!isReaderSentenceBoundary(source, index)) continue;
-    let end = index + 1;
-    while (end < source.length && /[”’"')\]]/.test(source[end])) end += 1;
-    const sentence = source.slice(start, end).trim();
-    if (sentence) sentences.push(sentence);
-    while (end < source.length && /\s/.test(source[end])) end += 1;
-    start = end;
-    index = end - 1;
-  }
-
-  const tail = source.slice(start).trim();
-  if (tail) sentences.push(tail);
-  return sentences.length ? sentences : [source];
-}
-
-function paragraphTextFragments(text) {
-  const sentences = splitTextAtSentenceBoundaries(text);
-  const fragments = [];
-  let buffer = '';
-
-  sentences.forEach((sentence) => {
-    const sentenceParts = splitLongSentenceAtClause(sentence);
-    sentenceParts.forEach((part) => {
-      const next = buffer ? `${buffer} ${part}` : part;
-      if (buffer && next.length > READER_PARAGRAPH_TARGET_CHARS) {
-        fragments.push(buffer);
-        buffer = part;
-      } else {
-        buffer = next;
-      }
-    });
-  });
-
-  if (buffer) fragments.push(buffer);
-  return fragments.filter(Boolean);
-}
-
 function splitParagraphNode(node) {
   const text = (node.textContent || '').trim();
-  if (!text || text.length < READER_PARAGRAPH_SPLIT_MIN_CHARS) return [node];
-  const chunks = paragraphTextFragments(text);
-  if (chunks.length <= 1) return [node];
-  return chunks.map((chunk, index) => {
+  if (!text || text.length < 600) return [node];
+  const chunks = [];
+  let buffer = [];
+  textSegments(text).forEach((segment) => {
+    buffer.push(segment.text);
+    if (buffer.join(' ').length >= 520) {
+      chunks.push(buffer.join(' '));
+      buffer = [];
+    }
+  });
+  if (buffer.length) chunks.push(buffer.join(' '));
+  return chunks.map((chunk) => {
     const next = document.createElement(node.nodeName.toLowerCase());
-    next.innerHTML = formatReaderInlineText(chunk);
-    next.className = [
-      node.className || '',
-      'reader-paragraph-fragment',
-      index > 0 ? 'reader-paragraph-continuation' : '',
-    ].filter(Boolean).join(' ');
-    if (index > 0) next.setAttribute('data-reader-continuation', 'true');
+    next.textContent = chunk;
     return next;
   });
 }
 
 function measurePageHeight() {
-  if (typeof window === 'undefined') return 600;
-  return Math.max(360, Math.min(620, window.innerHeight - 330));
+  if (typeof window === 'undefined') return 760;
+  return Math.max(440, Math.min(780, window.innerHeight - 245));
 }
 
 function paginateReaderHtml(html, { isBengali = false, fontSize = '17px' } = {}) {
@@ -1162,6 +967,10 @@ export default function Reader() {
   const synthRef = useRef(window.speechSynthesis);
   const lastScrollY = useRef(0);
   const wordsRef = useRef([]);
+  const wordMapRef = useRef(new Map());
+  const activeWordRef = useRef(null);
+  const highlightedWordIndexRef = useRef(-1);
+  const generatedHighlightRafRef = useRef(0);
   const ttsFallbackTimerRef = useRef(null);
   const ttsSegmentTimerRef = useRef(null);
   const pulseIntervalRef = useRef(null);
@@ -1185,6 +994,19 @@ export default function Reader() {
     robots: 'noindex, nofollow',
   });
 
+  const cacheReaderWords = useCallback(() => {
+    const words = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
+    const wordMap = new Map();
+    words.forEach((word) => {
+      const index = Number(word.dataset.word);
+      if (Number.isFinite(index)) wordMap.set(index, word);
+    });
+    wordsRef.current = words;
+    wordMapRef.current = wordMap;
+    activeWordRef.current = null;
+    highlightedWordIndexRef.current = -1;
+  }, []);
+
   const stopTTS = useCallback(() => {
     synthRef.current?.cancel?.();
     const audio = generatedAudioRef.current;
@@ -1200,7 +1022,9 @@ export default function Reader() {
     setGeneratedAudioActive(false);
     setTtsWordIndex(-1);
     setTtsHtml('');
-    wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
+    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
+    activeWordRef.current = null;
+    highlightedWordIndexRef.current = -1;
   }, []);
 
   useEffect(() => {
@@ -1216,6 +1040,13 @@ export default function Reader() {
       synth.removeEventListener?.('voiceschanged', refreshVoices);
       if (synth.onvoiceschanged === refreshVoices) synth.onvoiceschanged = null;
     };
+  }, []);
+
+  useEffect(() => () => {
+    if (generatedHighlightRafRef.current) {
+      window.cancelAnimationFrame(generatedHighlightRafRef.current);
+      generatedHighlightRafRef.current = 0;
+    }
   }, []);
 
   const sendPulse = useCallback(async () => {
@@ -1805,11 +1636,14 @@ export default function Reader() {
   useEffect(() => {
     setTtsHtml('');
     setTotalWords(countWordsInHtml(currentPageHtml));
+    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
+    activeWordRef.current = null;
+    highlightedWordIndexRef.current = -1;
   }, [currentPageHtml]);
 
   useEffect(() => {
-    wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
-  }, [displayedHtml]);
+    cacheReaderWords();
+  }, [cacheReaderWords, displayedHtml]);
 
   useEffect(() => {
     const el = scrollContainerRef.current;
@@ -1981,30 +1815,34 @@ export default function Reader() {
   };
 
   const highlightSpokenWord = useCallback((index) => {
-    wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
+    if (highlightedWordIndexRef.current === index) return;
     const current = wordsRef.current[index];
     if (!current) return;
 
+    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
     current.classList.add('active');
     current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    activeWordRef.current = current;
+    highlightedWordIndexRef.current = index;
     setTtsWordIndex(index);
   }, []);
 
   const highlightGeneratedWord = useCallback((globalIndex) => {
-    if (contentRef.current) {
-      wordsRef.current = Array.from(contentRef.current.querySelectorAll('.tts-word') || []);
-    }
-    wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
-    let current = wordsRef.current.find((word) => Number(word.dataset.word) === globalIndex);
+    if (highlightedWordIndexRef.current === globalIndex) return;
+    let current = wordMapRef.current.get(globalIndex);
     if ((!current || !current.isConnected) && contentRef.current) {
-      wordsRef.current = Array.from(contentRef.current.querySelectorAll('.tts-word') || []);
-      current = wordsRef.current.find((word) => Number(word.dataset.word) === globalIndex);
+      cacheReaderWords();
+      current = wordMapRef.current.get(globalIndex);
     }
     if (!current) return;
 
+    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
     current.classList.add('active');
     current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }, []);
+    activeWordRef.current = current;
+    highlightedWordIndexRef.current = globalIndex;
+    setTtsWordIndex(globalIndex);
+  }, [cacheReaderWords]);
 
   const wordIndexFromCharIndex = useCallback((charIndex) => {
     if (!Number.isFinite(charIndex) || charIndex < 0) return -1;
@@ -2217,38 +2055,13 @@ export default function Reader() {
       return;
     }
     if (isNarrationDisabledForBook(book, bookId)) {
-      toast.info('Audio is disabled for this book.');
+      toast.info('Audiobook controls stay hidden until the release gate approves this title.');
       return;
     }
     if (startGeneratedAudio()) return;
 
-    const synth = synthRef.current;
-    if (!synth?.speak || typeof SpeechSynthesisUtterance === 'undefined') {
-      toast.error('Audio reading is not available in this browser.');
-      return;
-    }
-
-    synth.cancel();
-    const speak = () => {
-      wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
-      // Use textContent because TTS word offsets are generated from text nodes.
-      // innerText inserts layout newlines, which breaks Bengali boundary matching.
-      const plainText = contentRef.current?.textContent || '';
-      const segments = textSegments(plainText);
-      speakSegments(segments, 0);
-    };
-
-    const pageHtml = currentPageHtml || readerHtml;
-    if (pageHtml && !pageHtml.includes('class="tts-word"')) {
-      const wrapped = wrapWordsInSpans(pageHtml);
-      setTtsHtml(wrapped.html);
-      setTotalWords(wrapped.totalWords);
-      window.requestAnimationFrame(() => window.requestAnimationFrame(speak));
-      return;
-    }
-
-    speak();
-  }, [book, bookId, currentPageHtml, isContentPage, readerHtml, speakSegments, startGeneratedAudio]);
+    toast.info('Approved audiobook audio is not available for this reader page yet.');
+  }, [book, bookId, isContentPage, startGeneratedAudio]);
 
   const pauseTTS = () => {
     clearTimeout(ttsFallbackTimerRef.current);
@@ -2294,11 +2107,22 @@ export default function Reader() {
 
   const handleGeneratedAudioTimeUpdate = useCallback(() => {
     if (ttsPaused) return;
-    syncGeneratedAudioHighlight();
+    if (generatedHighlightRafRef.current) return;
+    generatedHighlightRafRef.current = window.requestAnimationFrame(() => {
+      generatedHighlightRafRef.current = 0;
+      syncGeneratedAudioHighlight();
+    });
   }, [syncGeneratedAudioHighlight, ttsPaused]);
 
   const handleGeneratedAudioEnded = useCallback(() => {
+    if (generatedHighlightRafRef.current) {
+      window.cancelAnimationFrame(generatedHighlightRafRef.current);
+      generatedHighlightRafRef.current = 0;
+    }
     generatedPageEndRef.current = null;
+    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
+    activeWordRef.current = null;
+    highlightedWordIndexRef.current = -1;
     setGeneratedAudioActive(false);
     setTtsActive(false);
     setTtsPaused(false);
@@ -2441,7 +2265,7 @@ export default function Reader() {
           <div className="italic-eyebrow mb-3">Unavailable reader</div>
           <h1 className="font-serif-light text-3xl text-burgundy leading-tight">Reader not found</h1>
           <p className="mt-5 text-sm font-light leading-relaxed text-charcoal-soft">
-            This book has been removed from Earnalism, so the reader page is no longer available.
+            This reading room is not available from the production reader API right now. The library remains available, and no unapproved audio or fallback narration is exposed.
           </p>
           <div className="mt-8 flex flex-col gap-3">
             <button type="button" onClick={() => navigate('/library')} className="btn-primary w-full justify-center">
@@ -2823,7 +2647,7 @@ export default function Reader() {
 
           {narrationDisabledForBook ? (
             <div className="reader-audio-disabled" aria-label="Audio disabled for this book">
-              Audio disabled
+              Audio hidden until approved
             </div>
           ) : (
             <div className="reader-audio-control">
