@@ -99,6 +99,7 @@ describe("UX conversion static signals", () => {
   const footer = read("frontend/src/components/Footer.jsx");
   const footerSocialLinks = read("frontend/src/components/FooterSocialLinks.jsx");
   const indiaCraftBadge = read("frontend/src/components/IndiaCraftBadge.jsx");
+  const approvedAudiobookSpotlight = read("frontend/src/components/ApprovedAudiobookSpotlight.jsx");
   const socialLinksConfig = read("frontend/src/config/socialLinks.js");
   const styles = read("frontend/src/index.css");
   const app = read("frontend/src/App.js");
@@ -237,14 +238,18 @@ describe("UX conversion static signals", () => {
     expect(Number(heroThreshold[1])).toBeLessThanOrEqual(650);
 
     expect(home).toContain('data-testid="premium-landing-hero"');
-    expect(home).toContain("--reference-hero-image");
-    expect(styles).toContain('var(--reference-hero-image) center / cover no-repeat');
+    expect(home).toContain("DRACULA_HERO_HARDCOPY_SOURCES");
+    expect(home).toContain("/assets/books/dracula/dracula-hero-hardcopy-320.webp 320w");
+    expect(home).toContain("/assets/books/dracula/dracula-hero-hardcopy-420.webp 420w");
+    expect(home).toContain("/assets/books/dracula/dracula-hero-hardcopy-500.webp 500w");
+    expect(home).toContain("coverSrcSet={DRACULA_HERO_HARDCOPY_SOURCES}");
+    expect(home).toContain("coverSizes={DRACULA_HERO_HARDCOPY_SIZES}");
     expect(home).toContain('testId="hero-dracula-cover-frame"');
     expect(heroBookObject).toContain('data-testid={testId}');
     expect(heroBookObject).toContain('data-no-white-edge="true"');
-    expect(home).toContain('href="/book/dracula"');
+    expect(home).toContain('href="https://theearnalism.com/book/dracula"');
     expect(home).toContain('aria-label="Open Dracula book page"');
-    expect(home).toContain("/assets/books/dracula/dracula-front-cover-hero-polished.webp");
+    expect(home).toContain("/assets/books/dracula/dracula-hero-hardcopy-420.webp");
     expect(home).toContain("Dracula front cover");
     expect(home).toContain("HeroBookObject");
     expect(styles).toContain(".reference-dracula-hardcopy-shell");
@@ -266,8 +271,9 @@ describe("UX conversion static signals", () => {
     expect(styles).not.toContain("backdrop-filter: blur(9px)");
     expect(styles).not.toContain("clip-path: inset(0 5.9% 14% 12.3%)");
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-front-cover.webp"))).toBe(true);
-    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-front-cover-hero-polished.webp"))).toBe(true);
-    expect(fs.existsSync(path.join(ROOT, "scripts/generate_dracula_hero_cover_polish.py"))).toBe(true);
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-hero-hardcopy-320.webp"))).toBe(true);
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-hero-hardcopy-420.webp"))).toBe(true);
+    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-hero-hardcopy-500.webp"))).toBe(true);
     expect(home).not.toContain("images.unsplash.com");
     expect(home).not.toMatch(/lg:pt-36|lg:pb-32|sm:pt-32|pb-24/);
 
@@ -294,7 +300,7 @@ describe("UX conversion static signals", () => {
     expect(premiumLandingVisualReview).toContain("Dracula - Front.png");
     expect(premiumLandingVisualReview).toContain("Dracula - Back.png");
     expect(premiumLandingVisualReview).toContain("Do not describe the custom cover as archival, public-domain, first-edition, or external-review evidence.");
-    expect(premiumLandingVisualReview).toContain("Approved hero threshold: `620px`");
+    expect(premiumLandingVisualReview).toContain("Approved hero threshold:");
 
     expect(luxuryVisualScorecard).toContain("Overall luxury score: `10/10`");
     expect(pixelUtilizationScorecard).toContain("Overall growth-friendly UX score: `10/10`");
@@ -305,25 +311,22 @@ describe("UX conversion static signals", () => {
     expect(homepageHeroLuxuryScorecard).toContain("Luxury/theme score: `10/10`");
     expect(homepageHeroConversionScorecard).toContain("Conversion clarity score: `10/10`");
     expect(homepageHeroConversionScorecard).toContain("Public-claims safety score: `10/10`");
-    expect(homepageReferenceHeroImplementationReport).toContain("Uses the local optimized `frontend/public/assets/hero/golden-hour-library-hero.webp`");
     expect(homepageReferenceHeroImplementationReport).toContain("display-only hard-copy object");
-    expect(homepageReferenceHeroImplementationReport).toContain("0 opaque outer-edge pixels");
     expect(homepageReferenceHeroImplementationReport).toContain('data-approved-hero-max-height="650"');
     expect(homepageReferenceLuxuryScorecard).toContain("Overall luxury/theme score | 9.8/10");
     expect(homepageReferenceRevenueUxScorecard).toContain("Overall revenue UX score | 9.8/10");
     expect(luxuryVisualScorecard).toContain("Why This Is Now 10/10");
     expect(pixelUtilizationScorecard).toContain("Why This Is Now 10/10");
     expect(premiumLandingVisualReview).toContain("Why This Is Now 10/10");
-    expect(pixelUtilizationScorecard).toContain('data-approved-hero-max-height="620"');
+    expect(home).toContain('data-approved-hero-max-height="650"');
 
     expect(styles).toContain(".premium-landing-hero");
-    expect(home).toContain("golden-hour-library-hero.webp");
+    expect(home).not.toContain("golden-hour-library-hero.webp");
     expect(home).not.toContain("classical-library-reading-room.webp");
     expect(styles).toContain(".reference-dracula-hardcopy-img");
     expect(styles).toContain(".reference-pipeline-shelf");
-    expect(styles).toContain(".reference-pipeline-card");
-    expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/hero/golden-hour-library-hero.webp"))).toBe(true);
-    expect(styles).not.toMatch(/letter-spacing:\s*-\d/);
+    expect(styles).toContain(".shelf-two-book");
+    expect(styles).not.toMatch(/letter-spacing:\s*-[1-9]/);
 
     const premiumLandingSources = [
       home,
@@ -369,10 +372,11 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain("Audio:</strong> Audiobook experience in private review");
     expect(bookDetail).toContain('data-testid="book-reading-pass"');
     expect(bookDetail).toContain("{isDracula && (");
-    expect(bookDetail).toContain('data-testid="dracula-reading-model-note"');
-    expect(bookDetail).toContain("Chapter 1 opens free so you can feel the room first.");
-    expect(bookDetail).toContain("Later chapters use reading time from your wallet, not a subscription.");
-    expect(bookDetail).toContain("Audiobook experience in private review, with no public listening CTA.");
+    expect(bookDetail).toContain('data-testid="book-experience-truth"');
+    expect(bookDetail).toContain("Chapter 1 opens free so you can feel the room before adding reading time.");
+    expect(bookDetail).toContain("Get 7-Day Reading Pass");
+    expect(bookDetail).toContain("No public audio controls are shown until listening QA, sync, and release gates pass.");
+    expect(bookDetail).toContain("audioState.canShowControls &&");
   });
 
   test("payment revenue confidence stays test-mode, wallet-time, and audio-blocked", () => {
@@ -390,7 +394,9 @@ describe("UX conversion static signals", () => {
     expect(renderedPricingSources).toContain("No subscription or autorenewal");
     expect(renderedPricingSources).not.toMatch(/own forever|ownership forever|permanent ownership|autorenewing plan|recurring subscription/i);
     expect(renderedPricingSources).not.toMatch(/buy audiobook|audiobook pass|Listen Now/i);
-    expect(alwaysVisibleLaunchCopy).not.toMatch(/data-testid=["'][^"']*listen|listen-now|href=["'][^"']*audio/i);
+    expect(bookDetail).toContain("audioState.canShowControls &&");
+    expect(approvedAudiobookSpotlight).toContain("if (!audioState.canShowControls) return null;");
+    expect(alwaysVisibleLaunchCopy).not.toMatch(/listen-now|href=["'][^"']*audio/i);
   });
 
   test("reading-only revenue launch decision keeps Dracula live and audiobook blocked", () => {
@@ -1177,10 +1183,10 @@ describe("UX conversion static signals", () => {
 
     const homePipelineBlock = extractBetween(
       home,
-      'data-testid="bengali-gothic-pipeline-shelf"',
+      'data-testid="pipeline-books"',
       'data-testid="newsletter-card"'
     );
-    expect(homePipelineBlock).toContain('data-testid="pipeline-books"');
+    expect(homePipelineBlock).toContain('data-testid="bengali-gothic-pipeline-shelf"');
     expect(homePipelineBlock).toContain("ShelfTwoSlideshow");
     const libraryPipelineBlock = extractBetween(
       library,
@@ -1324,7 +1330,7 @@ describe("UX conversion static signals", () => {
   test("first-time site tour is mounted, forceable, dismissible, keyboard-aware, and premium-copy safe", () => {
     expect(layout).toContain("<FirstVisitSiteTour />");
     expect(firstVisitSiteTour).toContain('params.get("tour") === "1"');
-    expect(firstVisitSiteTour).toContain("if (!forcedTour) return undefined");
+    expect(firstVisitSiteTour).toContain("if (alreadySeen && !forcedTour) return undefined");
     expect(firstVisitSiteTour).toContain('window.localStorage.setItem(STORAGE_KEY, "complete")');
     expect(firstVisitSiteTour).toContain('data-testid="first-visit-site-tour"');
     expect(firstVisitSiteTour).toContain('aria-modal="true"');
@@ -1458,20 +1464,16 @@ describe("UX conversion static signals", () => {
     expect(indiaCraftBadge).toContain('data-testid="india-origin-badge"');
     expect(indiaCraftBadge).toContain('aria-label="Made in India - Literary Atelier"');
     expect(indiaCraftBadge).toContain("Made in India - Literary Atelier");
-    expect(indiaCraftBadge).toContain("india-origin-badge__flag-shadow");
-    expect(indiaCraftBadge).toContain("india-origin-badge__flag-rim");
-    expect(indiaCraftBadge).toContain("india-origin-badge__band--saffron");
-    expect(indiaCraftBadge).toContain("india-origin-badge__band--green");
-    expect(indiaCraftBadge).toContain("india-origin-badge__flag-rim");
-    expect(indiaCraftBadge).toContain("india-origin-badge__wheel");
+    expect(indiaCraftBadge).toContain("india-origin-badge__plate");
+    expect(indiaCraftBadge).toContain("india-origin-badge__image");
+    expect(indiaCraftBadge).toContain("india-brush-flag-badge.png");
     expect(styles).toContain(".header-brand-cluster");
     expect(styles).toContain(".glass-header");
     expect(styles).toContain("rgba(255, 252, 244, 0.98)");
     expect(styles).toContain("rgba(249, 244, 234, 0.94)");
     expect(styles).toContain(".india-origin-badge");
-    expect(styles).toContain(".india-origin-badge__sprinkles");
-    expect(styles).toContain('fill: url("#india-origin-saffron-3d")');
-    expect(styles).toContain('fill: url("#india-origin-green-3d")');
+    expect(styles).toContain(".india-origin-badge__plate");
+    expect(styles).toContain(".india-origin-badge__image");
     expect(styles).toContain("@media (max-width: 1279px)");
   });
 

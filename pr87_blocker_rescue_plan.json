@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-07-07T02:40:00+05:30",
+  "pr": 87,
+  "branch": "codex/clean-source-only-merge-20260706T191326Z",
+  "status": "blocker_rescue_in_progress",
+  "failing_checks": [
+    {
+      "check": "backend + frontend + browser regression",
+      "blocker": "Kshudhita pipeline feature selectors missing from current source-only UX package",
+      "suspected_files": [
+        "frontend/src/pages/Home.jsx",
+        "frontend/src/components/ShelfTwoSlideshow.jsx"
+      ],
+      "minimum_safe_fix": "restore legacy data-testid selectors and safe notify link without exposing reader/audio/payment access",
+      "risk": "low",
+      "validation_command": "PYTHON_BIN=python3 RUN_E2E=1 RUN_LOAD=0 FRONTEND_API_URL=https://api.theearnalism.com PLAYWRIGHT_PREFIX=/tmp/earnalism-playwright bash scripts/run_regression_suite.sh"
+    },
+    {
+      "check": "controlled-launch/catalog regression gate",
+      "blocker": "static regression tests had exact stale expectations incompatible with source-only reader-only/audio-hidden catalog policy",
+      "suspected_files": [
+        "regression/modules/05-url-navigation.test.js",
+        "regression/modules/12-migration-data-consistency.test.js",
+        "regression/modules/15-reader-content-quality.test.js",
+        "regression/modules/14-ux-conversion-static.test.js"
+      ],
+      "minimum_safe_fix": "keep strict release truth while allowing source-listed claimable/read-only states in PR mode",
+      "risk": "medium-low",
+      "validation_command": "npm run regression -- --runTestsByPath regression/modules/05-url-navigation.test.js regression/modules/12-migration-data-consistency.test.js regression/modules/14-ux-conversion-static.test.js regression/modules/15-reader-content-quality.test.js --runInBand"
+    },
+    {
+      "check": "Vercel preview",
+      "blocker": "frontend/vercel.json ignored non-main branches",
+      "suspected_files": [
+        "frontend/vercel.json"
+      ],
+      "minimum_safe_fix": "replace blanket ignore with fail-safe changed-file ignore script",
+      "risk": "low",
+      "validation_command": "VERCEL_ENV=preview VERCEL_GIT_COMMIT_REF=codex/clean-source-only-merge-20260706T191326Z node frontend/scripts/vercel-ignore-build.mjs"
+    },
+    {
+      "check": "visual smoke",
+      "blocker": "script could report PASS without real browser execution when Playwright/import/launch failed",
+      "suspected_files": [
+        "frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "minimum_safe_fix": "fail closed on missing target, Playwright import failure, browser launch failure, runner timeout, parse failure, or incomplete route checks",
+      "risk": "low",
+      "validation_command": "VISUAL_SMOKE_BASE_URL=http://127.0.0.1:4173 node frontend/scripts/visual-luxury-smoke.mjs"
+    }
+  ],
+  "rollback_plan": "Revert this blocker rescue patch only: visual smoke script, Vercel ignore helper/config, Kshudhita selector restoration, same-origin API override, and regression test expectation updates."
+}

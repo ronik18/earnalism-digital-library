@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Check, ChevronLeft, Clock, BookOpen, CreditCard, Sparkles } from "lucide-react";
+import { Check, ChevronLeft, Clock, BookOpen, CreditCard, Sparkles, Headphones, ShieldCheck } from "lucide-react";
 import { api } from "../lib/api";
 import ShareButtons from "../components/ShareButtons";
 import BookCoverImage from "../components/BookCoverImage";
@@ -11,12 +11,14 @@ import {
   DRACULA_CTA_EVENTS,
   DRACULA_RIGHTS_NOTE,
   DRACULA_SOURCE_NOTE,
+  DRACULA_FALLBACK_BOOK,
   LIVE_APPROVED_SLUG,
   mergeDraculaBook,
   normalizeChapterDisplayTitle,
   readingPassUrl,
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
+import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 const SITE_URL = "https://theearnalism.com";
@@ -60,8 +62,13 @@ export default function BookDetail() {
     })
       .catch((err) => {
         if (err.name !== "CanceledError") {
-          setBook(null);
-          setLoadStatus(err.response?.status === 404 ? "not_found" : "error");
+          if ((err.response?.status === 404 || !err.response) && slug === LIVE_APPROVED_SLUG) {
+            setBook(DRACULA_FALLBACK_BOOK);
+            setLoadStatus("ready");
+          } else {
+            setBook(null);
+            setLoadStatus(err.response?.status === 404 ? "not_found" : "error");
+          }
         }
       }).finally(() => {
         if (!controller.signal.aborted) setLoading(false);
@@ -110,7 +117,18 @@ export default function BookDetail() {
     } : { "isAccessibleForFree": true }),
   } : null;
 
-  if (loading) return <div className="max-w-7xl mx-auto px-6 py-32 text-center text-charcoal-soft">Loading…</div>;
+  if (loading) return (
+    <div className="book-detail-skeleton max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20" role="status" aria-live="polite" data-testid="book-loading">
+      <div className="book-detail-skeleton__cover" />
+      <div className="book-detail-skeleton__copy">
+        <span />
+        <strong />
+        <p />
+        <p />
+      </div>
+      <span className="sr-only">Preparing the Earnalism book room.</span>
+    </div>
+  );
   if (bookNotFound) return (
     <div className="max-w-7xl mx-auto px-6 py-32 text-center" data-testid="book-not-found">
       <div className="italic-eyebrow mb-4">Unavailable title</div>
@@ -138,6 +156,7 @@ export default function BookDetail() {
   const hasFreePreview = hasExplicitPreview || chapterCount > 1;
   const readerHref = `/reader/${publicBook.slug}`;
   const passHref = isDracula ? readingPassUrl("book_detail") : "";
+  const audioState = audiobookReleaseState(publicBook);
 
   return (
     <div data-testid="book-page">
@@ -232,18 +251,36 @@ export default function BookDetail() {
             {isDracula && (
               <Link to={passHref} className="btn-link justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: publicBook.slug, cta: "book_detail_pass" })}>Get 7-Day Reading Pass</Link>
             )}
+            {audioState.canShowControls && (
+              <Link to={`${readerHref}?listen=1`} className="btn-secondary justify-center" data-testid="book-listen-approved">
+                <Headphones size={15} strokeWidth={1.6} /> Listen in Reader
+              </Link>
+            )}
           </div>
 
-          {isDracula && (
-            <div className="mt-8 rounded-lg border border-brand-soft bg-white/55 p-5 sm:p-6" data-testid="dracula-reading-model-note">
-              <div className="overline mb-3">Before you continue</div>
-              <div className="grid gap-4 text-sm leading-relaxed text-charcoal-soft sm:grid-cols-3">
-                <p><strong className="text-burgundy">Preview:</strong> Chapter 1 opens free so you can feel the room first.</p>
-                <p><strong className="text-burgundy">Reading pass:</strong> Later chapters use reading time from your wallet, not a subscription.</p>
-                <p><strong className="text-burgundy">Audio:</strong> Audiobook experience in private review, with no public listening CTA.</p>
+          <div className="book-experience-panel mt-8" data-testid="book-experience-truth">
+            <div className="book-experience-panel__item">
+              <BookOpen size={18} strokeWidth={1.55} aria-hidden="true" />
+              <div>
+                <strong>{isDracula ? "Preview opens first" : "Reader edition ready"}</strong>
+                <p>{isDracula ? "Chapter 1 opens free so you can feel the room before adding reading time." : "The reading room is the primary experience for this title."}</p>
               </div>
             </div>
-          )}
+            <div className="book-experience-panel__item">
+              <Headphones size={18} strokeWidth={1.55} aria-hidden="true" />
+              <div>
+                <strong>{audioState.label}</strong>
+                <p>{audioState.canShowControls ? "Listening controls appear only because the audiobook release gate is approved." : "No public audio controls are shown until listening QA, sync, and release gates pass."}</p>
+              </div>
+            </div>
+            <div className="book-experience-panel__item">
+              <ShieldCheck size={18} strokeWidth={1.55} aria-hidden="true" />
+              <div>
+                <strong>Release truth preserved</strong>
+                <p>Reader, cover, rights, and audio states follow production metadata instead of marketing claims.</p>
+              </div>
+            </div>
+          </div>
 
           <div className="mt-8" data-testid="book-share">
             <ShareButtons title={publicBook.title} variant="product" testIdPrefix="book-share" />

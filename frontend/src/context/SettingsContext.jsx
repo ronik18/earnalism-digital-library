@@ -27,7 +27,16 @@ export function SettingsProvider({ children }) {
     }
   }, []);
 
-  useEffect(() => { refresh(); }, [refresh]);
+  useEffect(() => {
+    let timeoutId;
+    let idleId;
+    const load = () => refresh();
+    timeoutId = window.setTimeout(load, 4600);
+    return () => {
+      if (idleId && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
+      if (timeoutId) window.clearTimeout(timeoutId);
+    };
+  }, [refresh]);
 
   const value = useMemo(() => ({ social, brand, refresh }), [social, brand, refresh]);
 

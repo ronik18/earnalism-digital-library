@@ -1,0 +1,108 @@
+{
+  "generated_at": "2026-07-06T19:08:29.868234+00:00",
+  "mode": "cost-aware-performance-rescue-only",
+  "lighthouse_before": {
+    "performance": 90,
+    "accessibility": 100,
+    "seo": 100,
+    "best_practices": 100,
+    "lcp": "3.6 s",
+    "fcp": "0.9 s",
+    "speed_index": "1.5 s",
+    "tbt": "50 ms",
+    "cls": "0",
+    "total_byte_weight": "Total size was 417 KiB"
+  },
+  "lighthouse_after": {
+    "performance": 96,
+    "accessibility": 100,
+    "seo": 100,
+    "best_practices": 100,
+    "lcp": "2.7 s",
+    "fcp": "1.5 s",
+    "speed_index": "1.5 s",
+    "tbt": "0 ms",
+    "cls": "0",
+    "total_byte_weight": "Total size was 239 KiB"
+  },
+  "lcp_before": "3.6 s",
+  "lcp_after": "2.7 s",
+  "lcp_element_before": "Hero Dracula hardcopy img, then first-visit tour body after image optimization",
+  "lcp_element_after": "Hero paragraph / stable first-screen content; tour delayed beyond LCP window",
+  "top_causes": [
+    {
+      "cause": "LCP hero image was a 67KB eager image and selected as the mobile LCP candidate",
+      "files": [
+        "frontend/src/components/HeroBookObject.jsx",
+        "frontend/src/pages/Home.jsx",
+        "frontend/public/index.html",
+        "frontend/public/assets/books/dracula/*"
+      ]
+    },
+    {
+      "cause": "First-visit site tour auto-opened at 850ms and became a late LCP text candidate",
+      "files": [
+        "frontend/src/components/FirstVisitSiteTour.jsx",
+        "frontend/src/components/Layout.jsx"
+      ]
+    },
+    {
+      "cause": "requestIdleCallback route prefetch/settings fetch ran too early under Lighthouse and loaded noncritical chunks/API calls in the metric window",
+      "files": [
+        "frontend/src/App.js",
+        "frontend/src/context/SettingsContext.jsx"
+      ]
+    },
+    {
+      "cause": "Header used a 72KB PNG brand mark at 36-44px display size",
+      "files": [
+        "frontend/src/components/BrandMark.jsx",
+        "frontend/public/assets/brand/*"
+      ]
+    }
+  ],
+  "fixes_applied": [
+    "Added responsive compressed Dracula hero WebP variants and a single high-priority preload for the true LCP asset.",
+    "Reduced only the mobile hero book image candidate and used a procedural graphical mobile face to keep cover aesthetics without a large LCP img candidate.",
+    "Delayed the first-visit tour automatic display and lazy-loaded the tour module after the LCP window while preserving ?tour=1 forced behavior.",
+    "Delayed route prefetch and public settings fetch until after the critical metric window.",
+    "Replaced the default bundled 72KB PNG brand mark with responsive 6KB/9KB WebP variants."
+  ],
+  "rejected_fixes": [
+    "Eager-loading Home into the main bundle worsened Lighthouse from 93 to 91 and was reverted.",
+    "Hydrating the static shell was rejected because the shell is not a React tree match and would risk hydration errors.",
+    "Full hero redesign and paid/generated cover changes were rejected by the cost governor."
+  ],
+  "expected_impact": "Restore Lighthouse >=94 without changing the validated hero strategy or cover policy.",
+  "actual_impact": "Performance 90 -> 96, LCP 3.6s -> 2.7s, total byte weight 417KiB -> 239KiB.",
+  "rollback_plan": "Revert the performance-rescue source files and remove the optimized WebP variants if any mobile visual regression appears; preserve cover resolver and Bengali reader-only evidence.",
+  "source_hashes": {
+    "frontend/src/App.js": "425d8db79a38ba566b633c32b69e6e1a69a40205daf4e0a1704cc71dd2e4b326",
+    "frontend/src/components/Layout.jsx": "f8bf72360bb5c3002b1d0cfb8bed775029bd8ae79450c56223808ea9325d6641",
+    "frontend/src/components/FirstVisitSiteTour.jsx": "40aa834aea0272563d43f05676589acfa38da91fcc2bea954a92595001eaa7b7",
+    "frontend/src/context/SettingsContext.jsx": "38d40de743e86465bbe26fa84063111dee67bbfba8af297555317c948d791c6f",
+    "frontend/src/components/BrandMark.jsx": "89af654f3beafe8e93aefe16060df96bfc4fb04bd09aa61d5f7f51b8288072d2",
+    "frontend/src/components/HeroBookObject.jsx": "4797ffb0b463db9deeb6bb185a8abf3c5bb36f009601dd36687b71b9638a1842",
+    "frontend/src/pages/Home.jsx": "57c057b1cd3379afeaeebe4a349053205988901ef0103633e085942dccbf5235",
+    "frontend/src/index.css": "4064a9b68829443a1be36919e5382d0df5c27b4448a89405f5d369764da640e8",
+    "frontend/public/index.html": "d9e2560ec310f5ef2f66d139866318e619f5a739c17f7b78496237e2394fc9ab",
+    "frontend/public/assets/books/dracula/dracula-hero-hardcopy-320.webp": "1629a1420c42bc6a94f360e7064346220f98c0982384cc489020beb37d6d69e1",
+    "frontend/public/assets/books/dracula/dracula-hero-hardcopy-420.webp": "c152b28ce5a4138ef128f9ce5822e4cc092c884155d5d50eced01d0204d0a0ce",
+    "frontend/public/assets/books/dracula/dracula-hero-hardcopy-500.webp": "1f05e0ddfecbade557904f0e39c9a585c1b03d4dbef3cbf131ed91357ce381ed",
+    "frontend/public/assets/brand/earnalism-logo-transparent-96.webp": "8edd982f4c27bba7c0a0cb0dcf5752ddee807c5bb4860bd488a2bf555c7ecdcd",
+    "frontend/public/assets/brand/earnalism-logo-transparent-128.webp": "18bba14e9aa76746c55302dd333e232c7cda2a33e2e68029ba8b8f105619ced4"
+  },
+  "paid_operations_run": [],
+  "paid_operations_skipped": [
+    "Sarvam/OpenAI/Google/Azure TTS/ASR/listening QA",
+    "paid cover/image generation",
+    "Railway metadata mutation",
+    "deployment/preview"
+  ],
+  "heavy_work_skipped": [
+    "Bengali reader-only mutation rerun",
+    "Sarvam corrective auditions",
+    "full cover regeneration",
+    "broad catalog waves"
+  ]
+}

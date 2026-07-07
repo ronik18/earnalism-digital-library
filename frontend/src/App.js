@@ -71,10 +71,8 @@ function useHighIntentRoutePrefetch() {
         pageImports.Login,
       ].forEach((load) => load().catch(() => {}));
     };
-    const idle = window.requestIdleCallback || ((callback) => window.setTimeout(callback, 1600));
-    const cancelIdle = window.cancelIdleCallback || window.clearTimeout;
-    const id = idle(prefetch, { timeout: 3000 });
-    return () => cancelIdle(id);
+    const id = window.setTimeout(prefetch, 5600);
+    return () => window.clearTimeout(id);
   }, []);
 }
 

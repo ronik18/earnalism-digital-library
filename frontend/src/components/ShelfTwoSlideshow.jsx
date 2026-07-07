@@ -1,26 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
-import "./ShelfTwoSlideshow.css";
+import BookCoverImage from "./BookCoverImage";
 
 function chunkBooks(books) {
   const grouped = [];
 
-  for (let i = 0; i < books.length; i += 3) {
-    grouped.push(books.slice(i, i + 3));
+  for (let i = 0; i < books.length; i += 5) {
+    grouped.push(books.slice(i, i + 5));
   }
 
   return grouped;
-}
-
-function getPlaceholderMonogram(title = "") {
-  const letters = String(title || "")
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((word) => word[0])
-    .join("")
-    .toUpperCase();
-
-  return letters || "EL";
 }
 
 function ArrowChevron({ direction }) {
@@ -107,6 +95,7 @@ export default function ShelfTwoSlideshow({ books = [] }) {
       <div className="shelf-two-viewport">
         <div className="shelf-two-stage-copy" aria-hidden="true">
           <span className="shelf-two-stage-copy__eyebrow">Editorial shelf sequence</span>
+          <span className="shelf-two-stage-copy__count">{slides.length} curated page{slides.length === 1 ? "" : "s"}</span>
         </div>
         <div
           className="shelf-two-track"
@@ -124,7 +113,8 @@ export default function ShelfTwoSlideshow({ books = [] }) {
                 {slide.map((book, bookIndex) => {
                   const isPublished = book.status === "published";
                   const statusClass = isPublished ? "published" : "queued";
-                  const sequenceLabel = String(book.sequence || (slideIndex * 3) + bookIndex + 1).padStart(2, "0");
+                  const sequenceLabel = String(book.sequence || (slideIndex * 5) + bookIndex + 1).padStart(2, "0");
+                  const statusLabel = book.statusLabel || (statusClass === "published" ? "Live" : "Rights-safe preparation");
                   return (
                     <article
                       key={book.id}
@@ -133,21 +123,23 @@ export default function ShelfTwoSlideshow({ books = [] }) {
                       style={{ "--shelf-two-order": bookIndex }}
                     >
                       <div className="shelf-two-book__cover-wrap">
-                        {book.coverUrl ? (
-                          <img
-                            src={book.coverUrl}
-                            alt={`${book.title} cover`}
-                            loading="lazy"
-                            className="shelf-two-book__cover"
-                          />
-                        ) : (
-                          <div className="shelf-two-book__cover shelf-two-book__cover--placeholder" aria-label={`Cover in curation for ${book.title}`}>
-                            <span className="shelf-two-book__placeholder-kicker">Cover in curation</span>
-                            <span className="shelf-two-book__placeholder-monogram">{getPlaceholderMonogram(book.title)}</span>
-                            <span className="shelf-two-book__placeholder-divider" aria-hidden="true" />
-                            <span className="shelf-two-book__placeholder-caption">Editorial placeholder</span>
-                          </div>
-                        )}
+                        <BookCoverImage
+                          book={{
+                            ...book,
+                            cover_image_url: book.coverUrl || book.cover_image_url,
+                            thumbnail_url: book.thumbnail_url || book.coverUrl,
+                          }}
+                          alt={`${book.title} cover`}
+                          loading="lazy"
+                          width={260}
+                          height={390}
+                          widths={[220, 260, 360]}
+                          sizes="(min-width: 1024px) 17vw, (min-width: 768px) 30vw, 42vw"
+                          className="shelf-two-book__cover"
+                        />
+                        <span className={`shelf-two-book__status-pill shelf-two-book__status-pill--${statusClass}`}>
+                          {statusLabel}
+                        </span>
                       </div>
 
                       <div className="shelf-two-book__copy">

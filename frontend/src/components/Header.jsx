@@ -43,7 +43,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 glass-header" data-testid="site-header">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between gap-4">
         <div className="header-brand-cluster">
-          <Link to="/" className="flex items-center min-w-0" data-testid="brand-logo" aria-label="Earnalism — Home">
+          <Link to="/" className="flex items-center min-w-0" data-testid="brand-logo" aria-label="Earnalism Where Learning Becomes Earning — Home">
             <BrandMark variant="header" />
           </Link>
           <IndiaCraftBadge />

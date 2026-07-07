@@ -1,0 +1,208 @@
+{
+  "generated_at": "2026-07-06T19:08:29.868234+00:00",
+  "policy": "achievement-aware-cost-governor-v1",
+  "global_rules": {
+    "skip_achieved_when_inputs_unchanged": true,
+    "paid_operations_require_explicit_env": true,
+    "no_duplicate_production_mutation": true,
+    "validation_tiers": [
+      "tier1_hash_json_diff_unit",
+      "tier2_build_targeted_visual",
+      "tier3_lighthouse_provider_deploy"
+    ]
+  },
+  "source_hashes": {
+    "ux_home_library_visual": {
+      "frontend/src/pages/Home.jsx": "ef8e7591ff164962376e9dd6512704d1883d846da7a00371811bf624778ffe9d",
+      "frontend/src/pages/Library.jsx": "38f569066a0e523819b6dbddb3b940c34dd970d7b072973cb0eec42801f0a2c0",
+      "frontend/src/index.css": "99007b0490392adffdb9339b3881646145b6e78e49d8c256908727a0c55be6b0",
+      "frontend/src/components/BookCard.jsx": "a59cca3d6a1568240781f12eb4bed92a2958fdf474b49549a58d9ef5eb51631b",
+      "frontend/src/components/BookCoverImage.jsx": "53594c8ba17532eca28b4641ee2bb9a91d7bdeb58b4d59d89ca456423cf989f8",
+      "frontend/src/components/ShelfTwoSlideshow.jsx": "fed8537c971fa3bb5e9020a26ecc97a44096e518d2f62a9a931c8b9ec5d2d529",
+      "frontend/public/index.html": "c4e496b035759998d10153126698f56e6ff6d16efb3aa6e7710b855ad8184437",
+      "frontend/src/lib/api.js": "6af4c958efff58f77f354b835d8d346590118fc6268d31e75b81265d800fb6d5"
+    },
+    "cover_system": {
+      "frontend/src/lib/bookCoverResolver.js": "71edfdff60c57ddef3be6c2fe2497e4acb23d1ab54ca5b6aa03b50d8f6847ce6",
+      "frontend/src/lib/images.js": "a8037c4a6329ee794609888d1d78c074b355646ead57cf20c7f5093355e7e4eb",
+      "frontend/src/components/BookCoverImage.jsx": "53594c8ba17532eca28b4641ee2bb9a91d7bdeb58b4d59d89ca456423cf989f8",
+      "frontend/scripts/audit-book-covers.mjs": "987b041b9707c8b638fc11d2c4d817328fe00d15c976da8c094d78afc6abe6a1",
+      "frontend/scripts/visual-luxury-smoke.mjs": "825687909fc979feaa52f2c2285fb637e574d70f0297f00ac44ec9abd8b96103",
+      "internal/earnalism_intelligence/cover_acceptance_policy.json": "db09fc34a416d99c2ad3283ba320e6198cc42007f6fb19c8f78468466a714f32"
+    },
+    "audio_safety": {
+      "frontend/src/lib/audioReleaseSafety.js": "cf9e59a24c49186de51b246e8b9105913c8aff1aeae6c74224975ff5a5c8b179",
+      "frontend/src/lib/audioReleaseSafety.test.js": "7e1b3c988c9372350c23313f6bbdec61b446d2078b9dbd7e94544b9b83dbdade"
+    },
+    "bengali_reader_only_backend": {
+      "backend/server.py": "82aa8a429b9db182c2e39771de9a65ec7f959397dfee857baab43e15f5cd7250",
+      "backend/catalog_truth.py": "6d66bbfe8857ecb73f49743f8535d73e717486986e949fb464320b125db59d09",
+      "backend/data/controlled_launch.json": "b8b32671851aac208e32f62f4a01312ceaa9cfab11db5b47f3434127ae867ac3",
+      "data/controlled_launch.json": "c2c970177e207d49457cdefb69b08d6061787c93b5dc82f55442ad2eb21f4493",
+      "internal/audiobook_lab/scripts/release_catalog_factory.py": "b8f1f51f290dc06274c96c9fcb52b823b90f0250d520b7f857da51c18adc2555"
+    },
+    "sprint_reports": {
+      "sprint_go_live_dashboard.md": "6c1069edd49b04139fb032bb68b71d7f9078d41f1ecfbcf9f8ae8fc9c79f7f66",
+      "repo_cleanup_report.md": "40f58b8275cbe81ee95a55b9fd4a9882c8a774e39f041a39f0bd50813cdfbed5",
+      "frontend_luxury_sprint_report.md": "f1bbd48c744ab64aad92619a2195d4792253385fb09806a9a8094093aea7a2e0",
+      "ux_rebirth_evidence.md": "e45506efdfcbb5096bc9fe0e27c99e64e2f4dd475070cfbcfe23b000d84a6022",
+      "home_conversion_ux_evidence.md": "3ab75e83501fed258484f307172f96e29c98d578c25b3a819ae5b8df584e9ece",
+      "graphical_covers_repo_cleanup.md": "2d9d625a95ee3b0a430ccbe12052a8524c4ebf2a02ed341d92c42d4581b1d7bb"
+    },
+    "bengali_latest_dashboard": {
+      "/private/tmp/earnalism-sprint-integration-clean/internal/audiobook_lab/release_gate/catalog_20260706T100008Z/bengali_go_live_dashboard.json": "0423dfdd6ad85af943936365c4f1b0bd1c46fe213512671cfec355782b38935f"
+    },
+    "performance_rescue_inputs": {
+      "frontend/src/pages/Home.jsx": "ef8e7591ff164962376e9dd6512704d1883d846da7a00371811bf624778ffe9d",
+      "frontend/src/index.css": "99007b0490392adffdb9339b3881646145b6e78e49d8c256908727a0c55be6b0",
+      "frontend/src/lib/bookCoverResolver.js": "71edfdff60c57ddef3be6c2fe2497e4acb23d1ab54ca5b6aa03b50d8f6847ce6",
+      "frontend/src/components/BookCoverImage.jsx": "53594c8ba17532eca28b4641ee2bb9a91d7bdeb58b4d59d89ca456423cf989f8",
+      "frontend/public/index.html": "c4e496b035759998d10153126698f56e6ff6d16efb3aa6e7710b855ad8184437",
+      "book_cover_audit_report.json": "1306c99989fe385dc7245cca4b863402a8d6f137b36317f475cb991fe5bec968",
+      "ux_visual_regression_report.json": "e727fbc08a71122b8a735401ad1bacf908fd7afbb9f62e0f2afee53f9d17d5a7"
+    }
+  },
+  "goals": {
+    "homepage_library_visual_regression_fixed": {
+      "status": "ACHIEVED_CONFIRMED",
+      "evidence_path": "ux_visual_regression_report.json",
+      "last_validation_command": "node frontend/scripts/visual-luxury-smoke.mjs and browser smoke against http://127.0.0.1:4173",
+      "inputs_changed_since_validation": false,
+      "rework_allowed": false,
+      "cheapest_next_action": "Skip redesign; rerun visual smoke only if Home/Library/CSS/cover source changes.",
+      "cost_governor_freeze_reason": "Frozen by performance-rescue addendum; no source/evidence regression found before LCP rescue."
+    },
+    "home_conversion_ux_green_baseline": {
+      "status": "ACHIEVED_NEEDS_LIGHT_REVERIFY",
+      "evidence_path": "home_conversion_ux_evidence.md; earnalism_luxury_ux_index.json",
+      "last_validation_command": "Lighthouse/local route matrix from previous home conversion run; latest post-cover index reports performance guardrail partial.",
+      "inputs_changed_since_validation": true,
+      "rework_allowed": "only targeted performance fix, no hero redesign",
+      "cheapest_next_action": "Do not chase vanity score. If GREEN claim needed, fix CRA/home LCP from current performance 90/LCP 3.6 without changing validated hero strategy."
+    },
+    "graphical_covers_no_typography_only": {
+      "status": "ACHIEVED_CONFIRMED",
+      "evidence_path": "book_cover_audit_report.json; graphical_cover_generation_report.json",
+      "last_validation_command": "node frontend/scripts/audit-book-covers.mjs",
+      "inputs_changed_since_validation": false,
+      "rework_allowed": false,
+      "cheapest_next_action": "Skip cover generation; rerun audit only if cover resolver/assets/card/detail/reader source changes.",
+      "cost_governor_freeze_reason": "Frozen by performance-rescue addendum; no source/evidence regression found before LCP rescue."
+    },
+    "calm_typography_pass": {
+      "status": "ACHIEVED_CONFIRMED",
+      "evidence_path": "graphical_covers_repo_cleanup.md; ux_visual_regression_report.json",
+      "last_validation_command": "visual-luxury-smoke source+browser",
+      "inputs_changed_since_validation": false,
+      "rework_allowed": false,
+      "cheapest_next_action": "Skip typography redesign; preserve current calm type unless visual smoke fails."
+    },
+    "frontend_performance_green_after_cover_pass": {
+      "status": "ACHIEVED_CONFIRMED",
+      "evidence_path": "performance_rescue_diagnosis.json; /tmp/earnalism-performance-rescue/lighthouse-final.json",
+      "last_validation_command": "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build && npx --yes lighthouse http://127.0.0.1:4173/ --output=json --output-path=/tmp/earnalism-performance-rescue/lighthouse-final.json --chrome-flags=\"--headless=new --no-sandbox\" --quiet",
+      "inputs_changed_since_validation": false,
+      "rework_allowed": false,
+      "cheapest_next_action": "Skip performance work unless performance-sensitive source changes. Next required action is clean source-only merge package."
+    },
+    "audio_release_safety": {
+      "status": "ACHIEVED_CONFIRMED",
+      "evidence_path": "graphical_covers_repo_cleanup.md",
+      "last_validation_command": "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+      "inputs_changed_since_validation": false,
+      "rework_allowed": false,
+      "cheapest_next_action": "Skip test unless audio visibility code changes.",
+      "cost_governor_freeze_reason": "Frozen by performance-rescue addendum; no source/evidence regression found before LCP rescue."
+    },
+    "bengali_reader_only_31_approved_audio_hidden": {
+      "status": "ACHIEVED_CONFIRMED",
+      "evidence_path": "/private/tmp/earnalism-sprint-integration-clean/internal/audiobook_lab/release_gate/catalog_20260706T100008Z/bengali_go_live_dashboard.json",
+      "last_validation_command": "Railway-backed reader-only/audio-hidden mutation and verification from integration dashboard",
+      "inputs_changed_since_validation": false,
+      "rework_allowed": false,
+      "cheapest_next_action": "Skip all 31 mutations; sample verify only if production metadata or backend schema changes.",
+      "cost_governor_freeze_reason": "Frozen by performance-rescue addendum; no source/evidence regression found before LCP rescue."
+    },
+    "bengali_audiobook_provider_lane": {
+      "status": "BLOCKED",
+      "evidence_path": "sprint_go_live_dashboard.md; provider_performance_memory.json",
+      "last_validation_command": "Sarvam/OpenAI prior auditions only; no current paid path approved",
+      "inputs_changed_since_validation": false,
+      "rework_allowed": false,
+      "cheapest_next_action": "Do not run Sarvam/OpenAI auditions unless EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS=true and cheaper sprint blockers are closed.",
+      "cost_governor_freeze_reason": "Frozen by performance-rescue addendum; no source/evidence regression found before LCP rescue."
+    },
+    "clean_source_only_merge_package": {
+      "status": "NOT_ACHIEVED",
+      "evidence_path": "git status --short",
+      "last_validation_command": "git status --short; git diff --stat; git diff --name-status; git ls-files --others --exclude-standard",
+      "inputs_changed_since_validation": true,
+      "rework_allowed": true,
+      "cheapest_next_action": "Create clean worktree from origin/main and copy only reusable source/docs; do not clean dirty branch in place."
+    }
+  },
+  "paid_operation_gates": {
+    "paid_cover_generation": {
+      "required_env": [
+        "EARNALISM_APPROVE_PAID_COVER_GENERATION",
+        "EARNALISM_COVER_GENERATION_MAX_ESTIMATED_USD"
+      ],
+      "status": "SKIPPED_NOT_NEEDED"
+    },
+    "paid_openai_tts": {
+      "required_env": [
+        "EARNALISM_APPROVE_PAID_OPENAI_TTS"
+      ],
+      "status": "SKIPPED_NOT_NEEDED"
+    },
+    "sarvam_corrective_auditions": {
+      "required_env": [
+        "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS"
+      ],
+      "status": "SKIPPED_NOT_PRIORITY"
+    },
+    "openai_listening_qa": {
+      "required_env": [
+        "EARNALISM_ENABLE_OPENAI_LISTENING_QA"
+      ],
+      "status": "SKIPPED_NOT_NEEDED"
+    },
+    "bengali_full_pilot_tts": {
+      "required_env": [
+        "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS"
+      ],
+      "status": "SKIPPED_BLOCKED_BY_PROVIDER_QUALITY"
+    },
+    "performance_rescue": {
+      "paid_calls_allowed": false,
+      "provider_calls_allowed": false,
+      "deployment_calls_allowed": false,
+      "scope": "local build/lighthouse/source patch only"
+    }
+  },
+  "cost_avoidance": {
+    "production_mutations_skipped": 31,
+    "full_screenshot_matrix_skipped": true,
+    "lighthouse_rerun_skipped": true,
+    "paid_cover_generation_skipped": true,
+    "tts_asr_listening_provider_calls_skipped": true,
+    "deployment_calls_skipped": true,
+    "estimated_credits_cost_avoided_usd": "unmetered local/deploy/provider calls avoided; no paid APIs invoked",
+    "paid_operations_run": [],
+    "paid_operations_skipped": [
+      "cover generation",
+      "TTS",
+      "ASR",
+      "listening QA",
+      "Sarvam corrective auditions",
+      "Railway metadata mutation"
+    ],
+    "heavy_validations_skipped": [
+      "Bengali mutation rerun",
+      "provider auditions",
+      "full catalog wave"
+    ],
+    "performance_heavy_validation_run": "single-route Lighthouse only because active blocker was home LCP"
+  },
+  "active_mode": "performance_rescue_complete"
+}

@@ -9,22 +9,6 @@ function fallbackText(book, fallback = "E") {
   return title ? title.slice(0, 1) : fallback;
 }
 
-function fallbackMonogram(book, fallback = "EL") {
-  const title = typeof book?.title_en === "string" && book.title_en.trim()
-    ? book.title_en.trim()
-    : typeof book?.title === "string"
-      ? book.title.trim()
-      : "";
-  const letters = title
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((word) => word[0])
-    .join("")
-    .toUpperCase();
-  return letters || fallback;
-}
-
 function coverStatusLabel(book) {
   const status = String(book?.cover_status || book?.coverStatus || "").trim();
   if (status.includes("NO_SAFE_LOCAL_COVER")) return "Cover in preparation";
@@ -43,14 +27,16 @@ export default function BookCoverImage({
   sizes = DEFAULT_SIZES,
   widths = DEFAULT_WIDTHS,
   width = 420,
+  height,
   quality = 82,
   draggable,
   fallback = "E",
 }) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
-  const sources = bookCoverImageSources(book, { width, widths, quality });
-  const showImage = sources.hasCover && !failed;
+  const intrinsicHeight = height || Math.round(Number(width || 420) * 4 / 3);
+  const sources = bookCoverImageSources(book, { width, widths, quality, forceFallback: failed });
+  const showImage = Boolean(sources.hasCover);
   const coverAlt = typeof alt === "string" ? alt : (book?.title || "Book cover");
   const style = sources.backgroundColor ? { backgroundColor: sources.backgroundColor } : undefined;
   const wrapperClass = [
@@ -78,6 +64,8 @@ export default function BookCoverImage({
           srcSet={sources.srcSet || undefined}
           sizes={sources.srcSet ? sizes : undefined}
           alt={coverAlt}
+          width={width}
+          height={intrinsicHeight}
           loading={loading}
           fetchPriority={fetchPriority}
           decoding="async"
@@ -88,12 +76,9 @@ export default function BookCoverImage({
         />
       ) : (
         <span className={`book-cover-image__fallback ${fallbackClassName}`.trim()}>
-          <span className="book-cover-image__fallback-kicker">The Earnalism Library</span>
-          <span className="book-cover-image__fallback-seal" aria-hidden="true">{fallbackMonogram(book, fallbackText(book, fallback))}</span>
-          <span className="book-cover-image__fallback-rule" aria-hidden="true" />
-          <span className="book-cover-image__fallback-title">{book?.title_en || book?.title || fallbackText(book, fallback)}</span>
-          {book?.author && <span className="book-cover-image__fallback-author">{book.author}</span>}
-          <span className="book-cover-image__fallback-status">{coverStatusLabel(book)}</span>
+          <span className="book-cover-image__fallback-orb" aria-hidden="true" />
+          <span className="book-cover-image__fallback-river" aria-hidden="true" />
+          <span className="sr-only">{book?.title || fallbackText(book, fallback)} graphical cover fallback. {coverStatusLabel(book)}</span>
         </span>
       )}
     </span>

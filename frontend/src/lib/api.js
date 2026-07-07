@@ -1,8 +1,6 @@
 import axios from "axios";
 import { toast } from "sonner";
 
-const PRODUCTION_API_URL = "https://api.theearnalism.com";
-
 function resolveBackendUrl() {
   const configured = (
     process.env.REACT_APP_BACKEND_URL ||
@@ -11,16 +9,18 @@ function resolveBackendUrl() {
   ).trim();
 
   if (process.env.NODE_ENV !== "production") return configured;
+  if (configured === "/api" || configured === "/api/") return "";
+  if (configured.startsWith("/")) return configured.replace(/\/api\/?$/, "");
   if (!configured || configured.includes("<") || configured.includes("yourdomain.com")) {
-    return PRODUCTION_API_URL;
+    return "";
   }
   try {
     const url = new URL(configured);
     if (["localhost", "127.0.0.1", "0.0.0.0"].includes(url.hostname)) {
-      return PRODUCTION_API_URL;
+      return "";
     }
   } catch {
-    return PRODUCTION_API_URL;
+    return "";
   }
   return configured;
 }
