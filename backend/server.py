@@ -1365,6 +1365,10 @@ def _audiobook_release_metadata_supported(book: dict) -> bool:
     return True
 
 
+def _runtime_audio_materialization_allowed(slug: str) -> bool:
+    return str(slug or "").strip().lower() in CONTROLLED_AUDIO_MATERIALIZATION_SLUGS
+
+
 def _dracula_artifact_doc(*, include_content: bool = False) -> Optional[dict]:
     return _controlled_artifact_doc("dracula", include_content=include_content)
 
@@ -1764,7 +1768,11 @@ def _reader_audio_asset_url(book: dict, slug: str, key: str, url: str) -> str:
 
 def _reader_manifest_audio(book: dict, slug: str) -> dict:
     book = _book_with_controlled_artifact_evidence(book, slug) or book
-    if not can_expose_audio({**book, "slug": slug}) or not _audiobook_release_metadata_supported(book):
+    if (
+        not _runtime_audio_materialization_allowed(slug)
+        or not can_expose_audio({**book, "slug": slug})
+        or not _audiobook_release_metadata_supported(book)
+    ):
         version = _stable_digest({
             "enabled": False,
             "slug": slug,
@@ -6049,7 +6057,12 @@ async def _reader_book_audiobook_asset(
         },
     )
     book = _book_with_controlled_artifact_evidence(book, slug)
-    if not book or not can_expose_audio({**book, "slug": slug}) or not _audiobook_release_metadata_supported(book):
+    if (
+        not book
+        or not _runtime_audio_materialization_allowed(slug)
+        or not can_expose_audio({**book, "slug": slug})
+        or not _audiobook_release_metadata_supported(book)
+    ):
         raise HTTPException(status_code=404, detail="Audiobook asset not found")
     asset_url = _book_audiobook_asset_url(book, normalized_key)
     if not _audio_asset_looks_like_b2(asset_url):

@@ -32,6 +32,6 @@
 ## Bengali Pilot Endpoint Materialization - 2026-07-07
 
 - Production admin metadata for `book-2b9853ec52` can have approved audiobook assets while omitting top-level source/provenance hash fields.
-- The safe backend fix is not to fall back to static artifact audio. Instead, merge controlled artifact source/provenance evidence into the DB book only for explicit `audio_materialization_slugs`, preserving the admin-approved Sarvam/B2 audio URLs.
+- The safe backend fix is not to fall back to static artifact audio. Instead, require explicit `audio_materialization_slugs` for runtime audio and merge controlled artifact source/provenance evidence into the DB book only for those slugs, preserving the admin-approved Sarvam/B2 audio URLs.
 - `bengali_audiobook_acceptance_v2_92` and `PARAGRAPH_OR_STANZA_SYNC_PREMIUM` are accepted metadata values; estimated sync and unknown policy/tier values remain blocked.
 - Do not deploy this from the dirty sprint workspace. Deploy the clean endpoint-materialization branch, then run endpoint/browser gates only.

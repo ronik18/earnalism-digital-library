@@ -24,5 +24,5 @@
   "bengali_audio_intentionally_broadly_blocked": true,
   "paragraph_stanza_sync_tier_recognized": true,
   "policy_bengali_audiobook_acceptance_v2_92_recognized": true,
-  "exact_source_change_required": "Use audio_materialization_slugs to allow controlled artifact evidence fallback only for book-2b9853ec52 while keeping DB/admin audiobook assets as the only audio source."
+  "exact_source_change_required": "Use audio_materialization_slugs to allow runtime audio exposure and controlled artifact evidence fallback only for book-2b9853ec52 while keeping DB/admin audiobook assets as the only audio source."
 }

@@ -20,7 +20,7 @@ Use explicit `git add` paths only. Do not use `git add .`.
 
 - Clean worktree: `/private/tmp/earnalism-bengali-endpoint-materialization`.
 - Changed source/config: `backend/catalog_truth.py`, `backend/server.py`, `data/controlled_launch.json`, `backend/data/controlled_launch.json`.
-- Added test: `backend/tests/test_bengali_pilot_endpoint_materialization.py`.
+- Added test: `backend/tests/test_bengali_pilot_endpoint_materialization.py`, including non-pilot Bengali manifest audio-hidden coverage.
 - Added concise reports: `book_2b9853ec52_endpoint_materialization_plan.json`, `book_2b9853ec52_controlled_launch_source_report.json`, `bengali_endpoint_source_promotion_report.json`.
 - Excluded generated artifacts: release_gate folders, generated audio, sidecars, logs, traces, screenshots, caches, signed URLs, secrets.
 - Validation: backend py_compile PASS; targeted endpoint materialization/safety pytest PASS; `git diff --check` PASS.

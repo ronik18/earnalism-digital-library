@@ -22,5 +22,5 @@
     "signed URLs",
     "secrets"
   ],
-  "risk": "Narrow. Only book-2b9853ec52 receives controlled artifact evidence fallback; unlisted Bengali audio remains hidden."
+  "risk": "Narrow. Only book-2b9853ec52 receives runtime audio materialization and controlled artifact evidence fallback; unlisted Bengali audio remains hidden."
 }

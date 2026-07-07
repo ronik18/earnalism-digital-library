@@ -116,6 +116,7 @@ def test_non_materialized_bengali_audio_remains_hidden(monkeypatch):
         asyncio.run(server._reader_book_audiobook_asset(slug, "mp3", request))
 
     assert exc.value.status_code == 404
+    assert server._reader_manifest_audio(book, slug)["enabled"] is False
 
 
 def test_reader_manifest_audio_accepts_paragraph_stanza_sync_for_pilot():
