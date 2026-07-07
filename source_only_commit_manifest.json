@@ -1,0 +1,625 @@
+{
+  "generated_at": "2026-07-07T12:15:12Z",
+  "branch": "codex/source-only-clean-integration",
+  "files_staged_count": 98,
+  "files_staged": [
+    {
+      "status": "M",
+      "path": ".gitignore",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "AGENTS.md",
+      "category": "POLICY_MEMORY_KEEP",
+      "reason": "Earnalism intelligence/policy memory needed for release-gate truth and future autonomous runs."
+    },
+    {
+      "status": "M",
+      "path": "backend/data/controlled_launch.json",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "backend/server.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "backend/tests/test_b2_audiobook_routing.py",
+      "category": "TEST_KEEP",
+      "reason": "Regression coverage for source-only integration, release gates, routing, or safety."
+    },
+    {
+      "status": "M",
+      "path": "backend/tests/test_redis_cache_policy.py",
+      "category": "TEST_KEEP",
+      "reason": "Regression coverage for source-only integration, release gates, routing, or safety."
+    },
+    {
+      "status": "A",
+      "path": "clean_integration_promotion_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "dirty_workspace_cleanup_dryrun_report.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "M",
+      "path": "earnalism_luxury_ux_index.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "figma_10_ux_scorecard.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "figma_component_inventory.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "figma_earnalism_design_tokens.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "figma_home_library_reader_master_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "figma_home_screen_spec.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "figma_interaction_spec.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "figma_library_screen_spec.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "figma_reader_audiobook_screen_spec.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "figma_responsive_spec.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "figma_typography_system_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "figma_vs_live_gap_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "M",
+      "path": "frontend/public/index.html",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/scripts/audit-book-covers.mjs",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/scripts/generate-static-seo-snapshots.mjs",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/scripts/visual-luxury-smoke.mjs",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/components/AudioPlayer.css",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/components/BookCard.jsx",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/components/BookCoverImage.jsx",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/components/ComingSoonBoard.jsx",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/components/FirstVisitSiteTour.jsx",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/components/Footer.jsx",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/components/Header.jsx",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/components/ShelfTwoSlideshow.jsx",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/index.css",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/lib/api.js",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/lib/funnelAnalytics.js",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/lib/images.js",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/pages/BookDetail.jsx",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/pages/Home.jsx",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/pages/Library.jsx",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend/src/pages/Reader.jsx",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "M",
+      "path": "frontend_luxury_sprint_report.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "gitignore_hygiene_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "graphical_cover_generation_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "graphical_covers_calm_type_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "homepage_figma_live_gap_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "homepage_typography_figma_alignment_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/auto_premium_audiobook_qa.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/bengali_asr_normalization.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/bengali_asr_timestamp_projection.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/bengali_audiobook_campaign_controller.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/bengali_go_live_credit_optimizer.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/bengali_sync_by_construction.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/bengali_tts_provider_bakeoff.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/factory_hooks/asr_sync_hook.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/factory_hooks/browser_hook.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/factory_hooks/common.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/factory_hooks/cover_hook.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/factory_hooks/metadata_hook.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/factory_hooks/tts_hook.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/factory_hooks/upload_hook.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/generate_graphical_book_covers.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/providers/sarvam_tts_adapter.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/release_catalog_factory.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/test_asr_transcript_similarity.py",
+      "category": "TEST_KEEP",
+      "reason": "Regression coverage for source-only integration, release gates, routing, or safety."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/test_bengali_audiobook_campaign_controller.py",
+      "category": "TEST_KEEP",
+      "reason": "Regression coverage for source-only integration, release gates, routing, or safety."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/test_listening_qa_schema3.py",
+      "category": "TEST_KEEP",
+      "reason": "Regression coverage for source-only integration, release gates, routing, or safety."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+      "category": "TEST_KEEP",
+      "reason": "Regression coverage for source-only integration, release gates, routing, or safety."
+    },
+    {
+      "status": "A",
+      "path": "internal/audiobook_lab/scripts/test_sarvam_full_pilot_tts_hook.py",
+      "category": "TEST_KEEP",
+      "reason": "Regression coverage for source-only integration, release gates, routing, or safety."
+    },
+    {
+      "status": "M",
+      "path": "internal/earnalism_intelligence/achievement_ledger.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "reason": "Earnalism intelligence/policy memory needed for release-gate truth and future autonomous runs."
+    },
+    {
+      "status": "M",
+      "path": "internal/earnalism_intelligence/audiobook_acceptance_policy.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "reason": "Earnalism intelligence/policy memory needed for release-gate truth and future autonomous runs."
+    },
+    {
+      "status": "M",
+      "path": "internal/earnalism_intelligence/autonomous_prompt_chain.jsonl",
+      "category": "POLICY_MEMORY_KEEP",
+      "reason": "Earnalism intelligence/policy memory needed for release-gate truth and future autonomous runs."
+    },
+    {
+      "status": "A",
+      "path": "internal/earnalism_intelligence/bengali_audiobook_campaign_ledger.jsonl",
+      "category": "POLICY_MEMORY_KEEP",
+      "reason": "Earnalism intelligence/policy memory needed for release-gate truth and future autonomous runs."
+    },
+    {
+      "status": "A",
+      "path": "internal/earnalism_intelligence/bengali_audiobook_campaign_policy.md",
+      "category": "POLICY_MEMORY_KEEP",
+      "reason": "Earnalism intelligence/policy memory needed for release-gate truth and future autonomous runs."
+    },
+    {
+      "status": "A",
+      "path": "internal/earnalism_intelligence/bengali_audiobook_campaign_queue.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "reason": "Earnalism intelligence/policy memory needed for release-gate truth and future autonomous runs."
+    },
+    {
+      "status": "A",
+      "path": "internal/earnalism_intelligence/bengali_audiobook_campaign_state.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "reason": "Earnalism intelligence/policy memory needed for release-gate truth and future autonomous runs."
+    },
+    {
+      "status": "M",
+      "path": "internal/earnalism_intelligence/decision_ledger.jsonl",
+      "category": "POLICY_MEMORY_KEEP",
+      "reason": "Earnalism intelligence/policy memory needed for release-gate truth and future autonomous runs."
+    },
+    {
+      "status": "M",
+      "path": "internal/earnalism_intelligence/provider_performance_memory.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "reason": "Earnalism intelligence/policy memory needed for release-gate truth and future autonomous runs."
+    },
+    {
+      "status": "M",
+      "path": "internal/earnalism_intelligence/sprint_learnings.md",
+      "category": "POLICY_MEMORY_KEEP",
+      "reason": "Earnalism intelligence/policy memory needed for release-gate truth and future autonomous runs."
+    },
+    {
+      "status": "M",
+      "path": "internal/earnalism_intelligence/title_decision_history.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "reason": "Earnalism intelligence/policy memory needed for release-gate truth and future autonomous runs."
+    },
+    {
+      "status": "A",
+      "path": "main_cleanliness_finalization_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "M",
+      "path": "next_best_codex_prompt.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "original_workspace_cleanup_plan.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "package_lock_decision_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "M",
+      "path": "repo_cleanup_report.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "repo_hygiene_inventory.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "repo_hygiene_inventory.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "scripts/rebuild_release_packs_from_history.py",
+      "category": "SOURCE_KEEP",
+      "reason": "Reusable source/config/optimized production-safe asset for clean integration."
+    },
+    {
+      "status": "A",
+      "path": "sitemap_decision_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "source_promotion_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "M",
+      "path": "sprint_go_live_dashboard.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "typography_calm_polish_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "ux_97_recovery_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "ux_rebirth_audit.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "M",
+      "path": "ux_rebirth_evidence.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "visual_brand_repo_cleanup.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "visual_brand_system_hardening_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    },
+    {
+      "status": "A",
+      "path": "visual_brand_system_hardening_report.md",
+      "category": "DOC_REPORT_KEEP",
+      "reason": "Selected concise report/design/hygiene document for merge review."
+    }
+  ],
+  "self_manifest": {
+    "status": "A",
+    "path": "source_only_commit_manifest.json",
+    "category": "DOC_REPORT_KEEP",
+    "reason": "Records staged source-only scope and excluded artifacts."
+  },
+  "files_intentionally_excluded": [
+    "frontend/package-lock.json",
+    "frontend/public/sitemap.xml",
+    "frontend/build/**",
+    "internal/audiobook_lab/release_gate/**",
+    "audio files",
+    "sidecars",
+    "screenshots",
+    "traces/videos",
+    "logs",
+    "caches",
+    "signed URLs",
+    "secrets",
+    "imported content noise",
+    "generated dashboards",
+    "local_evidence_preservation_manifest.json",
+    "release evidence reports"
+  ],
+  "validation_results": {
+    "release_factory_py_compile": "PASS",
+    "factory_hooks_py_compile": "PASS",
+    "test_release_catalog_factory_stop_guards": "PASS",
+    "test_listening_qa_schema3": "PASS",
+    "npm_ci": "PASS",
+    "audioReleaseSafety": "PASS 4/4",
+    "frontend_build": "PASS",
+    "cover_audit": "PASS 0 typographic-only",
+    "visual_smoke": "PASS 72/72",
+    "git_diff_check": "PASS"
+  }
+}

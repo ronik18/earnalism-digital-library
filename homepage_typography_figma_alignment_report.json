@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-07-07T10:45:00Z",
+  "status": "CALMER_HOMEPAGE_AND_LIBRARY_TYPE_APPLIED",
+  "typography_goal": "smaller, calmer, more elegant, modern, readable, and less Dracula-first",
+  "before_after_key_elements": {
+    "nav_desktop": {
+      "before": "0.7rem uppercase with high tracking and Dracula CTA",
+      "after": "0.7rem uppercase retained for compact premium header; CTA changed to Browse Library"
+    },
+    "hero_eyebrow": {
+      "before": "The Earnalism Digital Library above Dracula-led launch copy",
+      "after": "The Earnalism Digital Library above neutral Bengali + English editorial headline"
+    },
+    "hero_headline": {
+      "before": "Dracula-led title in live static shell: Begin with Dracula.",
+      "after": "A calm digital reading room for timeless Bengali and English literature.",
+      "after_css": "font-serif-display text-[2.02rem] sm:text-[2.2rem] md:text-[2.76rem] lg:text-[3.24rem] xl:text-[3.38rem] leading-[1.04]"
+    },
+    "hero_subtitle": {
+      "before": "Controlled launch copy centered on one approved classic.",
+      "after": "Short release-safe library ambience copy with Bengali reader-only and English reading availability."
+    },
+    "hero_ctas": {
+      "before": "Read Chapter 1 Free, Start Dracula, Get 7-Day Reading Pass",
+      "after": "Explore the Library, Choose a Shelf"
+    },
+    "action_card_titles": {
+      "before": "Quality-gate board title used oversized clamp up to 5.35rem",
+      "after": "Curated action card titles use clamp(1.18rem, 2vw, 1.52rem); board title uses clamp(1.72rem, 3.2vw, 3.15rem)"
+    },
+    "action_card_body": {
+      "before": "Controlled-launch status board copy",
+      "after": "0.9rem calm explanatory copy with clear release state per card"
+    },
+    "shelf_headings": {
+      "before": "Pipeline-focused controlled launch framing",
+      "after": "Bengali and English library framing with no broad audio overclaim"
+    },
+    "library_hero": {
+      "before": "The live shelf begins with Dracula.",
+      "after": "Bengali and English classics, opened with release truth."
+    },
+    "book_detail": {
+      "before": "Invalid same-origin API HTML fallback could render an empty h1 in local production smoke.",
+      "after": "Invalid book payloads fail closed to Dracula fallback or unavailable state, preserving visible heading and route truth."
+    }
+  },
+  "accessibility_notes": [
+    "No text was reduced below readable body scale.",
+    "Headings remain semantic h1/h2 structure.",
+    "No white-on-pale hero text introduced.",
+    "Book detail unavailable states keep visible h1 copy."
+  ],
+  "performance_notes": [
+    "Removed stale Dracula hardcopy preload from public index shell.",
+    "No new libraries or heavy image assets added.",
+    "Homepage main bundle remained effectively unchanged; Lighthouse performance 98."
+  ],
+  "validation": {
+    "visual_smoke": "PASS_72_OF_72",
+    "lighthouse_performance": 98,
+    "lcp_ms": 2491.1598,
+    "accessibility": 100,
+    "seo": 100,
+    "audio_release_safety": "PASS_4_OF_4"
+  }
+}

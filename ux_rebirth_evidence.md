@@ -76,3 +76,46 @@ Screenshot files are intentionally ignored from git.
 - Browser visual smoke: PASS.
 - Lighthouse: performance 90, accessibility 100, SEO 100, best practices 100, LCP 3.6s, FCP 0.9s, CLS 0.
 - Status: PARTIAL because performance remains below the requested >=94 guardrail and the updated UX score is 9.66, not 9.7+.
+
+## Visual Brand System Hardening - 2026-07-07T04:54:30+00:00
+
+- Cover inventory: 164 active/public covers audited; 0 typography-only covers found; 0 remaining in customer UI.
+- Graphical coverage: 106 deterministic runtime graphical fallbacks; 164 effective front/back cover pairs.
+- Typography: home/library/book-card/book-detail scales reduced for calmer premium hierarchy without shrinking below readable sizes.
+- Validation: Lighthouse performance 96, LCP 2641.1ms, accessibility 100, SEO 100; visual smoke PASS with 72/72 checks; audio safety PASS 4/4.
+- Preview: protected Vercel preview remains blocked by login shell without `VERCEL_AUTOMATION_BYPASS_SECRET` or a shareable preview link; local same-origin proxy remains canonical evidence for this pass.
+
+## Homepage Figma-to-Live Correction - 2026-07-07T10:45:00Z
+
+Evidence paths:
+
+- `homepage_figma_live_gap_report.json`
+- `homepage_typography_figma_alignment_report.json`
+- `ux_visual_regression_report.json`
+- `book_cover_audit_report.json`
+- `/tmp/earnalism-homepage-figma-lighthouse.json`
+
+Validation:
+
+- Live inspection before source correction found `Begin with Dracula.` and `Step Into Dracula | The Earnalism Digital Library`.
+- Local production source after correction renders `A calm digital reading room for timeless Bengali and English literature.` with three curated action cards.
+- Dracula is no longer the main homepage hero; it remains one English Classics action card.
+- Bengali Classics appears in the curated action-card row with reader-only/live positioning and no audiobook promise.
+- Approved Audiobooks card remains gated and does not probe or advertise A Ghost Story audio by default.
+- Visual smoke: PASS, 72 route/viewport checks, 0 blockers.
+- Lighthouse: performance 98, LCP 2491.1598ms, accessibility 100, SEO 100, CLS 0, TBT 0.
+- Cover audit: 164 covers audited, 0 typographic-only covers remaining.
+- Audio safety: PASS 4/4.
+
+Limit:
+
+- The live production homepage is not updated until this source patch is pushed and deployed.
+## 2026-07-07 Figma Home/Library/Reader UX System Pass
+
+- Source now aligns the homepage to the approved hybrid editorial hero plus three curated action cards: Bengali Classics, English Classics, and Approved Audiobooks.
+- Dracula remains available as an English Classics tile and reader route, not the brand-level homepage hero.
+- Library now has recognition-first catalog controls: section, language, availability, sort, view, and general title/author/language search.
+- Reader now defaults to the ivory reading room, adds margin width, focus, reduced motion, and highlight intensity settings, and uses section-following narration language for approved audio.
+- Release-gate truth preserved: no A Ghost Story default audio probe, no browser/system speech fallback as audiobook, no unapproved audio controls, and no word-level sync claim for paragraph/stanza sync.
+- Validation: audioReleaseSafety 4/4 PASS, build PASS, cover audit 164/0 typography-only PASS, visual smoke 72/72 PASS, Lighthouse performance 97, accessibility 100, SEO 100, LCP 2554.18 ms, CLS 0, TBT 0, git diff --check PASS.
+- Live deployment gap: https://www.theearnalism.com/ still serves the old Dracula-first static shell until source promotion/deploy.

@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-07-07T10:59:00+05:30",
+  "scoring_basis": "local production-equivalent build, cover audit, audio safety test, browser visual smoke, Lighthouse JSON, and live static-shell scan",
+  "home": {
+    "overall": 9.82,
+    "premium_brand_identity": 9.8,
+    "visual_distinctiveness": 9.8,
+    "calmness": 9.9,
+    "typography_elegance": 9.8,
+    "color_consistency": 9.8,
+    "cover_quality": 10,
+    "information_hierarchy": 9.8,
+    "conversion_clarity": 9.8,
+    "release_gate_truth": 10,
+    "remaining_limit": "Production live shell still needs deploy to remove Dracula-first SEO fallback."
+  },
+  "library": {
+    "overall": 9.8,
+    "catalog_discovery": 9.8,
+    "information_hierarchy": 9.8,
+    "typography_elegance": 9.8,
+    "cover_quality": 10,
+    "Bengali_typography": 9.8,
+    "English_typography": 9.8,
+    "audiobook_gating": 10,
+    "mobile_experience": 9.8,
+    "remaining_limit": "Needs preview/live validation after deployment."
+  },
+  "reader": {
+    "overall": 9.78,
+    "reader_comfort": 9.8,
+    "settings_usefulness": 9.8,
+    "audiobook_experience": 9.7,
+    "paragraph_stanza_sync_ui_truth": 10,
+    "Bengali_typography": 9.8,
+    "English_typography": 9.7,
+    "mobile_experience": 9.8,
+    "release_gate_truth": 10,
+    "remaining_limit": "Approved Bengali pilot endpoint is a backend/materialization concern outside this frontend pass; UI stays gated until manifest evidence exists."
+  },
+  "lowest_category": {
+    "name": "reader_audiobook_experience",
+    "score": 9.7,
+    "reason": "Frontend is release-gate-safe and paragraph/stanza honest, but production approved-audiobook endpoint availability remains outside this UX-only change."
+  },
+  "hard_gates": {
+    "typographic_only_covers_remaining": 0,
+    "unapproved_audio_exposed": false,
+    "word_level_sync_claim_for_paragraph_stanza": false,
+    "lighthouse_performance": 97,
+    "accessibility": 100,
+    "seo": 100,
+    "visual_smoke": "PASS",
+    "audio_safety": "PASS"
+  },
+  "green_eligibility": "PARTIAL_UNTIL_PREVIEW_OR_LIVE_DEPLOY_VALIDATION"
+}

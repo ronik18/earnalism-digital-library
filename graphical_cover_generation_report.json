@@ -1,0 +1,252 @@
+{
+  "generated_at": "2026-07-07T12:11:32.631Z",
+  "generated_covers": [],
+  "reused_covers": [
+    "book-63afd5e9be",
+    "book-754da4eab8",
+    "book-a74c1a1451",
+    "book-c7f3ce526c",
+    "book-d19e96859f",
+    "book-d2fe532e1c",
+    "book-f5d593e1f4",
+    "dracula",
+    "muchiram-gurer-jibanchorit",
+    "radharani",
+    "yugalanguriya"
+  ],
+  "runtime_graphical_fallbacks": [
+    {
+      "slug": "a-jury-of-her-peers",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "a-mystery-of-heroism",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-0986aeb7e3",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-0fbdaa730e",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-1090573dff",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-2b9853ec52",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-4968248842",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-4b944e64fa",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-5461971092",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-5704b31005",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-5aedda79fe",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-827fdc7aee",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-88ded9b47c",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-95624627d5",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-9a7f771921",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-a23625bf36",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-a4a369483f",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-ac5a71075e",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-b9d47814a8",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-bfc51280b3",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-c307a57868",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-c85323409f",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-ef193ffc52",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "book-fbdf2991ab",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "calculus-made-easy",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "carmilla",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "devdas",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "eyesore-chokher-bali",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "frankenstein",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "hound-of-the-baskervilles",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "hungry-stones",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "pather-panchali",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "sherlock-holmes",
+      "front": false,
+      "back": true
+    },
+    {
+      "slug": "sultanas-dream",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "the-bishop",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "the-country-of-the-blind",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "the-lady-with-the-dog",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "the-necklace",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "the-open-boat",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "tobermory",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "woman-in-white",
+      "front": true,
+      "back": true
+    }
+  ],
+  "skipped": [],
+  "performance_budget_status": "PASS; no raster generation and no new heavy assets",
+  "manual_review_recommended": false
+}

@@ -1,0 +1,90 @@
+{
+  "generated_at": "2026-07-06T00:00:00Z",
+  "worktree": "/private/tmp/earnalism-luxury-ux-97-validation",
+  "branch": "sprint/luxury-ux-97-validation",
+  "current_score": 9.53,
+  "target_score": 9.7,
+  "status": "IN_PROGRESS",
+  "lowest_categories": [
+    {
+      "category": "no_regressions",
+      "score": 8.7,
+      "blocker": "Same-origin preview validation and Lighthouse/Core Web Vitals evidence were not run."
+    },
+    {
+      "category": "motion_and_microinteractions",
+      "score": 8.8,
+      "blocker": "Premium motion is present but not yet validated on deployed mobile and reduced-motion paths."
+    },
+    {
+      "category": "performance_core_web_vitals",
+      "score": 8.9,
+      "blocker": "No deployed Lighthouse/Core Web Vitals evidence yet."
+    },
+    {
+      "category": "catalog_discovery",
+      "score": 9.0,
+      "blocker": "Catalog discovery must be checked against same-origin API-backed data."
+    },
+    {
+      "category": "bengali_typography_quality",
+      "score": 9.0,
+      "blocker": "A same-origin Bengali reader/detail route must be validated for typography and audio-hidden state."
+    },
+    {
+      "category": "mobile_experience",
+      "score": 9.0,
+      "blocker": "Mobile route screenshots and interaction checks must pass on the preview URL."
+    },
+    {
+      "category": "seo_social_polish",
+      "score": 9.0,
+      "blocker": "Preview metadata, canonical behavior, and generated SEO snapshots must be checked after build."
+    }
+  ],
+  "exact_blockers_preventing_9_7": [
+    "Same-origin preview URL has not yet been deployed and tested.",
+    "Lighthouse/Core Web Vitals has not yet been run against a deployed preview.",
+    "No deployed browser route pass exists for API-backed detail/reader/audiobook pages.",
+    "No final repo-hygiene pass exists on this UX-only worktree."
+  ],
+  "routes_requiring_same_origin_validation": [
+    "/",
+    "/library",
+    "/book/dracula",
+    "/reader/dracula",
+    "/book/a-ghost-story",
+    "/reader/a-ghost-story",
+    "one reader-only Bengali book route",
+    "one audio-hidden Bengali book route",
+    "/404-or-equivalent-error-route"
+  ],
+  "quickest_score_improvements": [
+    "Validate from a clean UX-only branch and eliminate mixed book-factory diff risk.",
+    "Run npm ci, audio release safety tests, and production build from the clean worktree.",
+    "Deploy a Vercel same-origin preview from the linked project and run route/console/mobile/release-truth checks.",
+    "Run Lighthouse or the safest available performance audit on the preview.",
+    "Only implement additional small fixes if validation evidence shows a concrete route, accessibility, performance, typography, or release-truth defect."
+  ],
+  "risk_level": "MEDIUM",
+  "risk_notes": [
+    "Vercel repo linking succeeded for project earnalism under sales-8498s-projects; .vercel remains local-only and must not be committed.",
+    "Remote preview deployment may still fail because deployment env/config is external to the repo.",
+    "API-backed routes may expose issues that localhost could not reveal."
+  ],
+  "estimated_time": {
+    "local_validation": "10-20 minutes",
+    "preview_deploy": "5-20 minutes if Vercel project config is healthy",
+    "browser_lighthouse_validation": "20-45 minutes",
+    "targeted_fixes_if_needed": "30-90 minutes"
+  },
+  "exact_validation_command_plan": [
+    "npm ci --prefix frontend",
+    "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+    "npm --prefix frontend run build",
+    "npx --yes vercel@latest deploy --yes",
+    "Run browser smoke, console, mobile, accessibility, release-gate truth, and Lighthouse checks against the preview URL.",
+    "git diff --check",
+    "git status --short && git diff --stat && git diff --name-status && git ls-files --others --exclude-standard"
+  ]
+}

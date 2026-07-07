@@ -16,7 +16,6 @@ import {
 import { toast } from "sonner";
 import ComingSoonBoard from "../components/ComingSoonBoard";
 import ApprovedAudiobookSpotlight from "../components/ApprovedAudiobookSpotlight";
-import HeroBookObject from "../components/HeroBookObject";
 import ShelfTwoSlideshow from "../components/ShelfTwoSlideshow";
 import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
@@ -24,12 +23,8 @@ import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import {
   BATCH_1_READER_ONLY_SLUGS,
-  DRACULA_COVER_IMAGE,
-  DRACULA_CTA_EVENTS,
   LIVE_APPROVED_SLUG,
   PIPELINE_BOOKS,
-  mergeDraculaBook,
-  readingPassUrl,
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
 
@@ -42,29 +37,6 @@ const SOCIAL_ICONS = {
   youtube: Youtube,
 };
 
-const DRACULA_HERO_HARDCOPY_SOURCES = [
-  "/assets/books/dracula/dracula-hero-hardcopy-320.webp 320w",
-  "/assets/books/dracula/dracula-hero-hardcopy-420.webp 420w",
-  "/assets/books/dracula/dracula-hero-hardcopy-500.webp 500w",
-].join(", ");
-const DRACULA_HERO_HARDCOPY_SIZES = "(max-width: 639px) 40vw, (max-width: 1023px) 320px, 380px";
-
-function runAfterFirstPaint(callback) {
-  if (typeof window === "undefined") return () => {};
-  let timeoutId;
-  let idleId;
-  const run = () => callback();
-  if ("requestIdleCallback" in window) {
-    idleId = window.requestIdleCallback(run, { timeout: 1800 });
-  } else {
-    timeoutId = window.setTimeout(run, 900);
-  }
-  return () => {
-    if (idleId && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
-    if (timeoutId) window.clearTimeout(timeoutId);
-  };
-}
-
 function track(event, metadata = {}) {
   if (!event) return;
   trackFunnelEvent(event, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, ...metadata });
@@ -72,7 +44,6 @@ function track(event, metadata = {}) {
 
 export default function Home() {
   const { social } = useSettings();
-  const [dracula, setDracula] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -81,7 +52,6 @@ export default function Home() {
       .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
       .filter((item) => item.Icon)
   ), [social]);
-  const liveBook = mergeDraculaBook(dracula);
   const homepagePipelineBooks = useMemo(
     () => PIPELINE_BOOKS.filter((book) => !BATCH_1_READER_ONLY_SLUGS.includes(book.slug)),
     [],
@@ -108,11 +78,11 @@ export default function Home() {
   );
 
   useSEO({
-    title: "Step Into Dracula | The Earnalism Digital Library",
+    title: "Earnalism | Bengali and English Classics in a Calm Digital Library",
     description:
-      "Earnalism is live with Dracula as its first approved classic reading release. Read Chapter 1 free, then continue with reading time as more classics move through a rights-safe pipeline.",
-    image: liveBook.cover_image_url || DRACULA_COVER_IMAGE,
-    imageAlt: "Custom Earnalism Dracula cover artwork",
+      "Earnalism is a calm digital reading room for timeless Bengali and English literature, with reader-only classics, graphical covers, and release-gated audiobooks.",
+    image: "/assets/shelves/bengali-classics.jpg",
+    imageAlt: "Earnalism Bengali and English classics shelf artwork",
     canonicalPath: "/",
   });
 
@@ -122,19 +92,6 @@ export default function Home() {
       book_slug: LIVE_APPROVED_SLUG,
       public: false,
     });
-  }, []);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const cancelIdle = runAfterFirstPaint(() => {
-      api.get(`/books/${LIVE_APPROVED_SLUG}`, { signal: controller.signal })
-        .then((response) => setDracula(response.data))
-        .catch(() => setDracula(null));
-    });
-    return () => {
-      cancelIdle();
-      controller.abort();
-    };
   }, []);
 
   const subscribe = async (event) => {
@@ -166,67 +123,62 @@ export default function Home() {
               <span>The Earnalism Digital Library</span>
             </div>
             <h1
-              className="mt-4 font-serif-light text-[2.12rem] leading-[1.02] tracking-normal text-[#FDFCF8] text-balance min-[390px]:text-[2.34rem] sm:text-[3.08rem] lg:text-[3.72rem]"
+              className="mt-4 max-w-4xl font-serif-light text-[2.02rem] leading-[1.04] tracking-normal text-[#FDFCF8] text-balance min-[390px]:text-[2.2rem] sm:text-[2.76rem] lg:text-[3.24rem]"
               data-testid="hero-headline"
-              aria-label="Step into the classics. Stay with the story."
+              aria-label="A calm digital reading room for timeless Bengali and English literature."
             >
-              Step into the classics.
-              <span className="block text-[var(--brand-gold-soft)]">Stay with the story.</span>
+              A calm digital reading room for timeless Bengali and English literature.
             </h1>
-            <p className="mt-3 max-w-xl font-serif-display text-[1rem] italic leading-snug text-[#F4EFEA]/92 sm:text-[1.32rem]">
-              Timeless stories. Beautifully presented. Yours to read, reflect, and remember.
+            <p className="mt-3 max-w-2xl font-serif-display text-[0.96rem] italic leading-snug text-[#F4EFEA]/92 sm:text-[1.1rem]">
+              Graphical editions, restrained typography, and release truth for readers who want the classics to feel quiet, premium, and alive.
             </p>
-            <p className="mt-4 max-w-2xl text-[0.88rem] font-light leading-[1.65] text-[#F4EFEA]/82 sm:text-[0.98rem] sm:leading-[1.75]">
-              The Earnalism launch begins with one approved classic. Read Chapter 1 free, continue with reading time, and return to your place whenever you wish.
+            <p className="mt-4 max-w-2xl text-[0.88rem] font-light leading-[1.65] text-[#F4EFEA]/82 sm:text-[0.97rem] sm:leading-[1.75]">
+              Bengali classics are presented as reader-only where audio is still gated; English classics remain ready to read; approved listening rooms appear only after production evidence proves them.
             </p>
             <div className="reference-hero-trust mt-5" aria-label="Earnalism launch trust signals">
-              <span><ShieldCheck size={16} strokeWidth={1.6} /> Rights-safe & ethical</span>
-              <span><BookOpen size={16} strokeWidth={1.6} /> Ad-free reading</span>
-              <span><CreditCard size={16} strokeWidth={1.6} /> Reading time stays with you</span>
+              <span><ShieldCheck size={16} strokeWidth={1.6} /> Rights-safe releases</span>
+              <span><BookOpen size={16} strokeWidth={1.6} /> Bengali + English shelves</span>
+              <span><CreditCard size={16} strokeWidth={1.6} /> Audio gated by evidence</span>
             </div>
             <div className="premium-hero-ctas mt-5 sm:mt-6" data-testid="hero-ctas">
               <Link
-                to={`/reader/${LIVE_APPROVED_SLUG}`}
+                to="/library"
                 className="btn-primary premium-hero-cta-primary justify-center gap-2"
-                data-testid="hero-cta-read"
-                onClick={() => track(DRACULA_CTA_EVENTS.homepagePrimary, { cta: "read_chapter_1_free" })}
+                data-testid="hero-cta-library"
+                onClick={() => track("hero_primary_cta_click", { cta: "home_hero_start_reading" })}
               >
-                <BookOpen size={16} strokeWidth={1.7} /> Read Chapter 1 Free
+                <BookOpen size={16} strokeWidth={1.7} /> Start Reading
               </Link>
               <Link
-                to={`/book/${LIVE_APPROVED_SLUG}`}
+                to="#curated-action-cards-title"
                 className="btn-secondary justify-center !border-[var(--brand-gold)] !text-[#FDFCF8] hover:!bg-[var(--brand-gold)]/10"
-                data-testid="hero-cta-start-dracula"
-                onClick={() => track(DRACULA_CTA_EVENTS.startReading, { cta: "start_dracula" })}
+                data-testid="hero-cta-shelves"
+                onClick={() => track("hero_secondary_cta_click", { cta: "home_hero_browse_library" })}
               >
-                Start Dracula
-              </Link>
-              <Link
-                to={readingPassUrl("homepage_hero")}
-                className="btn-link justify-center !text-[#FDFCF8]"
-                data-testid="hero-cta-pricing"
-                onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "get_7_day_reading_pass" })}
-              >
-                Get 7-Day Reading Pass <ArrowRight size={15} strokeWidth={1.7} />
+                Browse Library <ArrowRight size={15} strokeWidth={1.7} />
               </Link>
             </div>
-            <p className="mt-3 max-w-xl text-[0.66rem] uppercase tracking-[0.16em] text-[var(--brand-gold-soft)]/92 sm:text-[0.72rem]">
-              Chapter 1 is free. Reading time is used only while you read.
+            <p className="mt-3 max-w-xl text-[0.66rem] uppercase tracking-[0.16em] text-[var(--brand-gold-soft)]/92 sm:text-[0.7rem]">
+              No unapproved audiobook controls. No typographic-only cover fallbacks.
             </p>
           </div>
 
-          <div className="reference-dracula-stage lg:col-span-5" data-testid="hero-dracula-card">
-            <div className="reference-dracula-book-object reference-dracula-book-object--hardcopy">
-              <HeroBookObject
-                href="https://theearnalism.com/book/dracula"
-                coverSrc="/assets/books/dracula/dracula-hero-hardcopy-420.webp"
-                coverSrcSet={DRACULA_HERO_HARDCOPY_SOURCES}
-                coverSizes={DRACULA_HERO_HARDCOPY_SIZES}
-                alt="Dracula front cover"
-                testId="hero-dracula-cover-frame"
-                aria-label="Open Dracula book page"
-                onClick={() => track(DRACULA_CTA_EVENTS.startReading, { cta: "hero_book_object" })}
-              />
+          <div className="reference-editorial-stage lg:col-span-5" data-testid="hero-editorial-index">
+            <div className="reference-editorial-card" aria-label="Earnalism library index">
+              <div className="reference-editorial-card__eyebrow">Live shelves</div>
+              <div className="reference-editorial-card__rows">
+                <span>Bengali classics</span>
+                <strong>Reader-only editions live</strong>
+              </div>
+              <div className="reference-editorial-card__rows">
+                <span>English classics</span>
+                <strong>Dracula and companion shelves</strong>
+              </div>
+              <div className="reference-editorial-card__rows">
+                <span>Audiobooks</span>
+                <strong>Visible only after release gates pass</strong>
+              </div>
+              <div className="reference-editorial-card__mark" aria-hidden="true">E</div>
             </div>
           </div>
         </div>
@@ -238,18 +190,17 @@ export default function Home() {
 
       <section
         className="reference-pipeline-shelf"
-        data-testid="pipeline-books"
-        data-legacy-testid="bengali-gothic-pipeline-shelf"
+        data-testid="bengali-gothic-pipeline-shelf"
         aria-labelledby="bengali-gothic-pipeline-title"
       >
-        <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12 lg:py-12" data-testid="bengali-gothic-pipeline-shelf">
+        <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12 lg:py-12">
           <div className="mb-7">
             <div className="overline mb-2">Shelf II</div>
-            <h2 id="bengali-gothic-pipeline-title" className="font-serif-light text-[1.85rem] leading-tight text-burgundy sm:text-[2.35rem]">
+            <h2 id="bengali-gothic-pipeline-title" className="font-serif-light text-[1.68rem] leading-tight text-burgundy sm:text-[2.12rem]">
               Coming Through the Rights-Safe Pipeline
             </h2>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-charcoal-soft">
-              A quieter second shelf for editions in preparation. These titles are visible as editorial promises only, with Notify Me CTAs and no reader, checkout, or audiobook access.
+              A quieter lower shelf for editions in preparation. Reader-only books stay intentional; unreleased titles remain editorial promises with no checkout or audiobook overclaim.
             </p>
             <p className="mt-3 max-w-2xl text-[0.68rem] uppercase tracking-[0.22em] text-[var(--brand-gold-deep)]/78">
               Real cover-led presentation where available. No placeholder launch claims.
@@ -271,13 +222,13 @@ export default function Home() {
               A revenue path that still feels like a library.
             </h2>
             <p>
-              No fake urgency, no broad catalog claim, and no ownership promise. The reader opens with a free first chapter; paid continuation uses the wallet only when someone chooses more quiet time with Dracula.
+              No fake urgency, no broad ownership promise, and no hidden audio overclaim. The reader opens calmly, and paid continuation uses a wallet only when someone chooses more quiet reading time.
             </p>
             <Link
-              to={readingPassUrl("homepage_reading_path")}
+              to="/pricing"
               className="btn-primary reference-reading-path__cta"
               data-testid="reading-path-pricing-cta"
-              onClick={() => track(DRACULA_CTA_EVENTS.readingPass, { cta: "see_reading_passes", source: "homepage_reading_path" })}
+              onClick={() => track("homepage_reading_path_click", { cta: "see_reading_passes", source: "homepage_reading_path" })}
             >
               See Reading Passes <ArrowRight size={15} strokeWidth={1.7} />
             </Link>
@@ -296,7 +247,7 @@ export default function Home() {
             <article className="reference-reading-step">
               <CircleCheck size={18} strokeWidth={1.6} aria-hidden="true" />
               <h3>Return calmly</h3>
-              <p>Sign in to resume Dracula through account or library.</p>
+              <p>Sign in to resume your place through account or library.</p>
             </article>
           </div>
         </div>
@@ -306,9 +257,9 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:px-12 lg:py-24">
           <div className="lg:col-span-6">
             <div className="italic-eyebrow reading-circle-eyebrow mb-4">Reading Circle</div>
-            <h2 className="font-serif-light text-[2rem] leading-tight sm:text-[2.7rem]">Follow the controlled launch.</h2>
+            <h2 className="font-serif-light text-[1.78rem] leading-tight sm:text-[2.24rem]">Follow the reading room.</h2>
             <p className="mt-6 max-w-xl text-[#F4EFEA]/76 leading-[1.8]">
-              Receive Dracula reading notes and updates as future classics move from rights review to controlled release.
+              Receive quiet notes as Bengali and English classics move from rights review to reader-ready release.
             </p>
             {activeSocials.length > 0 ? (
               <nav className="mt-9" aria-label="Earnalism social links" data-testid="home-socials">
@@ -340,7 +291,7 @@ export default function Home() {
               <Mail size={15} strokeWidth={1.6} /> Private dispatch
             </div>
             <p id="newsletter-description" className="mt-4 text-sm leading-relaxed text-[#F4EFEA]/70">
-              Join for Dracula reading notes and pipeline updates. No audiobook or paid campaign is live from this form.
+              Join for reading notes and release updates. No audiobook or paid campaign is live from this form.
             </p>
             <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2">
               <label>

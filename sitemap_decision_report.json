@@ -1,0 +1,8 @@
+{
+  "generated_at": "2026-07-07T12:11:02Z",
+  "sitemap_changed": false,
+  "decision": "restore_or_keep_origin_main_sitemap",
+  "action": "Do not commit regenerated sitemap churn. Restore frontend/public/sitemap.xml from origin/main after build validation if it changes.",
+  "determinism": "generate-seo-assets.mjs writes sitemap.xml during prebuild; previous memory and this sprint classify sitemap churn as generated validation side effect unless intentionally reviewed.",
+  "release_gate_safety": "No sitemap promotion is needed for Bengali audiobook exposure; audiobook endpoint is gated by backend/reader manifest, not sitemap."
+}

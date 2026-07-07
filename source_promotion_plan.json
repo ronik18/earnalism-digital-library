@@ -1,0 +1,2085 @@
+{
+  "generated_at": "2026-07-07T12:03:22Z",
+  "promotion_policy": "Promote SOURCE_KEEP, TEST_KEEP, POLICY_MEMORY_KEEP, and selected DOC_REPORT_KEEP into a clean origin/main worktree; never promote generated audio, release_gate outputs, build outputs, caches, imported content noise, signed URLs, secrets, or stale lockfile drift.",
+  "entry_count": 173,
+  "entries": [
+    {
+      "path": ".gitignore",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "AGENTS.md",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": " M",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "backend/data/controlled_launch.json",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "backend route tests if available",
+        "python3 -m py_compile backend/server.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "backend/server.py",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "backend route tests if available",
+        "python3 -m py_compile backend/server.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "backend/tests/test_b2_audiobook_routing.py",
+      "category": "TEST_KEEP",
+      "status": " M",
+      "reason_to_keep": "Regression test covering release gates, frontend safety, backend routing, or audiobook policy.",
+      "risk": "low",
+      "tests_covering_it": [
+        "backend route tests if available",
+        "python3 -m py_compile backend/server.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "backend/tests/test_redis_cache_policy.py",
+      "category": "TEST_KEEP",
+      "status": " M",
+      "reason_to_keep": "Regression test covering release gates, frontend safety, backend routing, or audiobook policy.",
+      "risk": "low",
+      "tests_covering_it": [
+        "backend route tests if available",
+        "python3 -m py_compile backend/server.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/public/index.html",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/public/robots.txt",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/scripts/generate-static-seo-snapshots.mjs",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/App.js",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/components/AudioPlayer.css",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/components/BookCard.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/components/BookCoverImage.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/components/BrandMark.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/components/FirstVisitSiteTour.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/components/Footer.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/components/Header.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/components/HeroBookObject.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/components/Layout.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/components/ShelfTwoSlideshow.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/context/SettingsContext.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/index.css",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/lib/api.js",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/lib/funnelAnalytics.js",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/lib/images.js",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/pages/BookDetail.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/pages/Home.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/pages/Library.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/pages/Reader.jsx",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "scripts/rank_go_live_readiness.py",
+      "category": "SOURCE_KEEP",
+      "status": " M",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "autonomous_sprint_recovery_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_audio_postprocess_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_audiobook_31_campaign_queue.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_audiobook_92_rescue_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_audiobook_acceptance_v2_92_policy_decision.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_audiobook_campaign_dashboard.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_audiobook_future_strategy.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_audiobook_next_actions.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_audiobook_pilot_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_audiobook_pilot_selection_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_next_3_canary_preflight.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_pilot_policy_patch_preservation_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_reader_only_final_sprint_status.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_representative_audition_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "bengali_tts_text_prep_comparison.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_bengali_asr_forensics_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_bengali_asr_provider_comparison.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_bengali_pilot_closeout.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_clean_asr_provider_comparison.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_clean_audiobook_text.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_clean_repair_closeout.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_clean_sync_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_clean_tts_repair_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_endpoint_404_closeout.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_endpoint_404_diagnosis.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_endpoint_materialization_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_final_audio_reassembly_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_final_gate_closeout.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_final_gate_preflight.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_goliveevidence.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_group_repair_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_2b9853ec52_tts_source_provenance_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "book_cover_art_briefs.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "clean_integration_promotion_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "dirty_workspace_cleanup_dryrun_ignored.txt",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "dirty_workspace_cleanup_dryrun_report.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "dirty_workspace_cleanup_dryrun_untracked.txt",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "earnalism_luxury_design_system.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "earnalism_luxury_ux_index.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "figma_10_ux_scorecard.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "figma_component_inventory.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "figma_earnalism_design_tokens.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "figma_home_library_reader_master_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "figma_home_screen_spec.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "figma_interaction_spec.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "figma_library_screen_spec.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "figma_reader_audiobook_screen_spec.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "figma_responsive_spec.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "figma_typography_system_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "figma_vs_live_gap_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/public/assets/books/dracula/dracula-hero-hardcopy-320.webp",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/public/assets/books/dracula/dracula-hero-hardcopy-420.webp",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/public/assets/books/dracula/dracula-hero-hardcopy-500.webp",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/public/assets/brand/earnalism-logo-transparent-128.webp",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/public/assets/brand/earnalism-logo-transparent-96.webp",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/scripts/audit-book-covers.mjs",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/scripts/visual-luxury-smoke.mjs",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/components/ApprovedAudiobookSpotlight.jsx",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/components/ComingSoonBoard.jsx",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/lib/audioReleaseSafety.js",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/lib/audioReleaseSafety.test.js",
+      "category": "TEST_KEEP",
+      "status": "??",
+      "reason_to_keep": "Regression test covering release gates, frontend safety, backend routing, or audiobook policy.",
+      "risk": "low",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend/src/lib/bookCoverResolver.js",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+        "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+        "node frontend/scripts/audit-book-covers.mjs",
+        "node frontend/scripts/visual-luxury-smoke.mjs"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend_bengali_audio_production_deploy_verification.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend_bengali_audio_ship_source_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "frontend_luxury_sprint_report.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "gitignore_hygiene_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "graphical_cover_generation_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "graphical_covers_calm_type_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "graphical_covers_repo_cleanup.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "home_conversion_ux_evidence.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "homepage_figma_live_gap_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "homepage_typography_figma_alignment_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/auto_premium_audiobook_qa.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/bengali_asr_normalization.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/bengali_asr_timestamp_projection.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/bengali_audiobook_campaign_controller.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/bengali_go_live_credit_optimizer.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/bengali_sync_by_construction.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/bengali_tts_provider_bakeoff.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/factory_hooks/asr_sync_hook.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/factory_hooks/browser_hook.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/factory_hooks/common.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/factory_hooks/cover_hook.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/factory_hooks/metadata_hook.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/factory_hooks/tts_hook.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/factory_hooks/upload_hook.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/generate_graphical_book_covers.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/providers/sarvam_tts_adapter.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/release_catalog_factory.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/test_asr_transcript_similarity.py",
+      "category": "TEST_KEEP",
+      "status": "??",
+      "reason_to_keep": "Regression test covering release gates, frontend safety, backend routing, or audiobook policy.",
+      "risk": "low",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/test_bengali_audiobook_campaign_controller.py",
+      "category": "TEST_KEEP",
+      "status": "??",
+      "reason_to_keep": "Regression test covering release gates, frontend safety, backend routing, or audiobook policy.",
+      "risk": "low",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/test_listening_qa_schema3.py",
+      "category": "TEST_KEEP",
+      "status": "??",
+      "reason_to_keep": "Regression test covering release gates, frontend safety, backend routing, or audiobook policy.",
+      "risk": "low",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+      "category": "TEST_KEEP",
+      "status": "??",
+      "reason_to_keep": "Regression test covering release gates, frontend safety, backend routing, or audiobook policy.",
+      "risk": "low",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/test_sarvam_full_pilot_tts_hook.py",
+      "category": "TEST_KEEP",
+      "status": "??",
+      "reason_to_keep": "Regression test covering release gates, frontend safety, backend routing, or audiobook policy.",
+      "risk": "low",
+      "tests_covering_it": [
+        "python3 -m py_compile internal/audiobook_lab/scripts/release_catalog_factory.py",
+        "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/*.py",
+        "python3 internal/audiobook_lab/scripts/test_release_catalog_factory_stop_guards.py",
+        "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/EARNALISM_OPERATING_DOCTRINE.md",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/achievement_ledger.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/architecture_decision_policy.md",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/audiobook_acceptance_policy.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/autonomous_prompt_chain.jsonl",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/bengali_audiobook_campaign_ledger.jsonl",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/bengali_audiobook_campaign_policy.md",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/bengali_audiobook_campaign_queue.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/bengali_audiobook_campaign_state.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/blocker_patterns.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/business_growth_policy.md",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/cover_acceptance_policy.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/decision_ledger.jsonl",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/decommission_policy.md",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/provider_performance_memory.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/release_decision_policy.md",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/sprint_learnings.md",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/sync_acceptance_policy.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/title_decision_history.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "internal/earnalism_intelligence/ux_acceptance_policy.json",
+      "category": "POLICY_MEMORY_KEEP",
+      "status": "??",
+      "reason_to_keep": "Autonomous intelligence policy/memory needed to preserve sprint decisions and release-gate truth.",
+      "risk": "low",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "local_evidence_preservation_manifest.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "next_best_codex_prompt.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "parallel_go_live_sprint_dashboard.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "parallel_go_live_sprint_dashboard.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "performance_rescue_diagnosis.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "repo_cleanup_report.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "repo_hygiene_inventory.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "repo_hygiene_inventory.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "sarvam_bengali_full_pilot_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "sarvam_bengali_pilot_goliveevidence.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "sarvam_corrective_audition_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "sarvam_full_pilot_asr_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "sarvam_full_pilot_execution_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "sarvam_full_pilot_listening_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "sarvam_full_pilot_sync_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "sarvam_full_pilot_tts_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "sarvam_seed_rescue_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "scripts/rebuild_release_packs_from_history.py",
+      "category": "SOURCE_KEEP",
+      "status": "??",
+      "reason_to_keep": "Reusable source/config/optimized production asset required for frontend, backend, audiobook, or release validation.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "source_promotion_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "sprint_go_live_dashboard.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "sprint_integration_report.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "typography_calm_polish_report.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "ux_97_recovery_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "ux_rebirth_audit.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "ux_rebirth_evidence.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "ux_rebirth_repo_cleanup.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "visual_brand_repo_cleanup.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "visual_brand_system_hardening_plan.json",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    },
+    {
+      "path": "visual_brand_system_hardening_report.md",
+      "category": "DOC_REPORT_KEEP",
+      "status": "??",
+      "reason_to_keep": "Concise sprint/report document selected for source-only integration evidence.",
+      "risk": "medium",
+      "tests_covering_it": [
+        "git diff --check"
+      ],
+      "staged": false
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-07-07T04:54:30+00:00",
+  "current_branch": "sprint/luxury-ux-rebirth",
+  "current_ux_score": 9.73,
+  "current_visual_risks": [
+    "Physical cover sources are incomplete for many controlled books, so customer UI must use deterministic graphical runtime fallbacks.",
+    "Preview validation is blocked by Vercel Deployment Protection and must not be counted as real app browser evidence.",
+    "Prior home/library typography was perceived as oversized and claustrophobic."
+  ],
+  "cover_risks": [
+    "Missing physical front/back cover source files could otherwise look plain or typographic.",
+    "Generated raster covers would risk asset weight and review burden; runtime SVG fallbacks avoid this for now.",
+    "Cover fallback must never imply audiobook approval."
+  ],
+  "typography_risks": [
+    "Reducing font sizes too far could harm accessibility; changes keep readable clamp ranges and line-height.",
+    "Book detail and card hierarchy must remain clear after calmer scale reductions."
+  ],
+  "performance_risks": [
+    "Large cover assets or eager shelf rendering could regress LCP; noncritical covers remain lazy/runtime lightweight.",
+    "Visual smoke must use same-origin proxy, not plain static server, because API fallback-to-index masks data errors."
+  ],
+  "release_gate_risks": [
+    "Audio CTA remains gated; A Ghost Story spotlight no longer defaults on without explicit approved evidence slug.",
+    "Cover and typography changes do not mutate production metadata or audio state."
+  ],
+  "source_files_likely_to_change": [
+    "frontend/src/lib/images.js",
+    "frontend/src/components/BookCoverImage.jsx",
+    "frontend/src/pages/BookDetail.jsx",
+    "frontend/src/pages/Reader.jsx",
+    "frontend/src/pages/Home.jsx",
+    "frontend/src/pages/Library.jsx",
+    "frontend/src/components/BookCard.jsx",
+    "frontend/src/components/ApprovedAudiobookSpotlight.jsx",
+    "frontend/scripts/audit-book-covers.mjs",
+    "frontend/scripts/visual-luxury-smoke.mjs",
+    "frontend/src/lib/bookCoverResolver.js"
+  ],
+  "generated_files_to_exclude": [
+    "frontend/build/",
+    "/tmp/earnalism-visual-brand-smoke/",
+    "/tmp/earnalism-visual-brand-lighthouse-home.json",
+    "screenshots",
+    "Playwright traces/videos",
+    "release_gate outputs",
+    "audio",
+    "sidecars",
+    "logs",
+    "signed URLs",
+    "secrets"
+  ],
+  "validation_plan": [
+    "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+    "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+    "node frontend/scripts/audit-book-covers.mjs",
+    "VISUAL_SMOKE_BASE_URL=http://127.0.0.1:4173 node frontend/scripts/visual-luxury-smoke.mjs",
+    "npx --yes lighthouse http://127.0.0.1:4173/ --chrome-flags=\"--headless=new --no-sandbox\" --quiet",
+    "git diff --check"
+  ],
+  "rollback_plan": [
+    "Revert cover resolver/image source changes if fallback behavior regresses UI or performance.",
+    "Revert typography clamp reductions if accessibility or layout regressions appear.",
+    "Keep audio release safety code unchanged unless a release-gate regression is found."
+  ],
+  "validation_results": {
+    "lighthouse": {
+      "performance": 96,
+      "accessibility": 100,
+      "seo": 100,
+      "best_practices": 100,
+      "lcp_ms": 2641.1,
+      "fcp_ms": 902.4,
+      "cls": 0,
+      "tbt_ms": 0,
+      "speed_index_ms": 2683.8,
+      "total_byte_weight": 261125
+    },
+    "visual_smoke": {
+      "status": "PASS",
+      "routes_attempted": 72,
+      "routes_completed": 72,
+      "failed_subchecks": 0,
+      "critical_blockers": 0,
+      "playwright_import_status": "passed",
+      "browser_launch_status": "passed"
+    },
+    "cover_audit": {
+      "generated_at": "2026-07-07T04:51:33.012Z",
+      "total_books_scanned": 164,
+      "total_visible_or_controlled_covers_audited": 164,
+      "typography_only_covers_found": 0,
+      "typography_only_covers_remaining_in_customer_ui": 0,
+      "graphical_covers_generated_runtime": 106,
+      "front_back_cover_pairs_available_effectively": 164,
+      "missing_physical_cover_sources_using_graphical_fallback": 106,
+      "broken_cover_sources": 0,
+      "too_heavy_local_covers": 0,
+      "performance_policy": "Runtime SVG cover fallback is deterministic, lightweight, text-free, and lazy-loaded through BookCoverImage for non-LCP surfaces.",
+      "release_gate_policy": "Cover fallback does not change reader/audiobook release state and does not expose audio controls."
+    },
+    "preview": {
+      "status": "EXTERNAL_ACTION_REQUIRED",
+      "reason": "Vercel Deployment Protection redirects browser/curl validation to the login shell without VERCEL_AUTOMATION_BYPASS_SECRET or shareable preview link.",
+      "url": "https://earnalism-git-codex-clean-source-on-6b7ae3-sales-8498s-projects.vercel.app",
+      "safe_validation_used": "local production-equivalent same-origin proxy at http://127.0.0.1:4173",
+      "required_owner_action": "Provide VERCEL_AUTOMATION_BYPASS_SECRET or a shareable preview link, then rerun visual smoke against the preview with the bypass header."
+    }
+  }
+}

@@ -7,8 +7,8 @@
       "notes": "Technical sync can pass, but narration repeatedly sounded robotic/flat below premium threshold."
     },
     "sarvam": {
-      "status": "seed_rescue_pending_corrective_representative_audition",
-      "best_observed_overall": 9.4,
+      "status": "bengali_pilot_live",
+      "best_observed_overall": 9.3,
       "best_observed_confidence": 0.95,
       "notes": "Synthesis works; full schema-3 judging was interrupted by OpenAI listening-QA quota in prior bakeoff.",
       "model": "bulbul:v3",
@@ -18,21 +18,189 @@
         "passage_type": "emotional",
         "overall_score": 9.6,
         "confidence": 0.95,
-        "fatal_flags": false
+        "fatal_flags": false,
+        "release_sufficient": false,
+        "reason": "isolated sample did not generalize across representative passages"
       },
-      "best_representative_overall": 8.1,
-      "best_representative_confidence": 0.9,
-      "generalization_confirmed": false,
-      "full_pilot_generated": false,
-      "audiobook_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_UNTIL_SEED_RESCUE_PASSES",
-      "next_action": "Run narrow Sarvam seed-rescue representative audition with pooja seed and close variants only after approval env is present.",
-      "updated_at": "2026-07-06T19:12:13Z"
+      "best_representative_overall": 9.3,
+      "best_representative_confidence": 0.95,
+      "generalization_confirmed": true,
+      "full_pilot_generated": true,
+      "audiobook_lane_status": "BENGALI_AUDIOBOOK_PILOT_LIVE",
+      "next_action": "Do not rerun the pilot. Prepare the 3-title canary only after source/report cleanup and owner approval.",
+      "updated_at": "2026-07-07T11:48:33Z",
+      "seed_rescue_run": {
+        "run_dir": "internal/audiobook_lab/release_gate/bengali_tts_provider_bakeoff_20260706T192224Z",
+        "voice": "pooja",
+        "styles_tested": [
+          "dialogue_human_touch",
+          "literary_warm_pacing",
+          "punctuation_aware_emotional"
+        ],
+        "representative_score": 7.9,
+        "representative_confidence": 0.85,
+        "red_flags": [
+          "list_reading_rhythm_detected",
+          "mechanical_cadence_detected"
+        ],
+        "seed_generalized": false,
+        "cost_estimate_usd": 0.1699,
+        "actual_cost_if_available": "not_available",
+        "report_path": "sarvam_corrective_audition_report.json"
+      },
+      "voice_tested_for_seed_rescue": "pooja",
+      "styles_tested_for_seed_rescue": [
+        "dialogue_human_touch",
+        "literary_warm_pacing",
+        "punctuation_aware_emotional"
+      ],
+      "representative_red_flags": [
+        "list_reading_rhythm_detected",
+        "mechanical_cadence_detected"
+      ],
+      "automated_spend_paused": false,
+      "active_rescue_policy": "bengali_audiobook_acceptance_v2_92",
+      "active_rescue_budget": {
+        "representative_audition_max_estimated_usd": 15,
+        "full_pilot_max_estimated_usd": 25,
+        "broad_catalog_wave_allowed": false
+      },
+      "future_reopening_criteria": [
+        "new Bengali provider/model with representative audition evidence >=9.2 and confidence >=0.90 under bengali_audiobook_acceptance_v2_92",
+        "human/professional narration workflow with representative audition pass",
+        "licensed audiobook import with rights, provenance, ASR/manuscript match, and measured sync",
+        "manually approved exceptional sample set that covers opening, dialogue, emotional, punctuation-heavy, and ending-style passages",
+        "improved Sarvam model/voice with fresh capability evidence and no mechanical/list-reading flags"
+      ],
+      "latest_92_rescue_run": {
+        "run_dir": "internal/audiobook_lab/release_gate/bengali_tts_provider_bakeoff_20260706T212141Z",
+        "provider": "sarvam",
+        "model": "bulbul:v3",
+        "voice": "ratan",
+        "style": "literary_warm_pacing",
+        "representative_score": 9.3,
+        "representative_confidence": 0.95,
+        "red_flags": [],
+        "representative_passed_9_2": true,
+        "pilot_slug": "book-2b9853ec52",
+        "full_pilot_generated": false,
+        "report_path": "bengali_representative_audition_report.json"
+      },
+      "full_pilot_published": true,
+      "full_pilot_result": {
+        "slug": "book-2b9853ec52",
+        "model": "bulbul:v3",
+        "voice": "ratan",
+        "style": "literary_warm_pacing",
+        "representative_score": 9.3,
+        "representative_confidence": 0.95,
+        "generated_duration_seconds": 330.061917,
+        "asr_score": 7.0199,
+        "required_asr_score": 9.7,
+        "sync_tier": null,
+        "published": false,
+        "blockers": [
+          "BENGALI_AUDIO_MANUSCRIPT_MISMATCH: ASR transcript match score below threshold: 7.0199 < 9.7",
+          "BENGALI_AUDIO_MANUSCRIPT_MISMATCH: ASR first narrated words do not match the manuscript opening.",
+          "BENGALI_AUDIO_MANUSCRIPT_MISMATCH: ASR last narrated words do not match the manuscript ending.",
+          "BENGALI_AUDIO_MANUSCRIPT_MISMATCH: ASR did not return word/segment timestamps."
+        ],
+        "evidence": "sarvam_bengali_pilot_goliveevidence.json"
+      },
+      "latest_asr_forensics": {
+        "updated_at": "2026-07-07T05:06:15.040184+00:00",
+        "slug": "book-2b9853ec52",
+        "title": "দুই বিঘা জমি",
+        "provider": "sarvam",
+        "model": "bulbul:v3",
+        "voice": "ratan",
+        "style": "literary_warm_pacing",
+        "representative_score": 9.3,
+        "representative_confidence": 0.95,
+        "asr_score": 7.0199,
+        "diagnosis": "current full-pilot audio blocked because TTS input includes frontmatter/source metadata; ASR also lacks timestamps and is weak for Bengali normalization",
+        "tts_input_coverage_percent": 100.0,
+        "canonical_to_tts_input_match_score": 0.9885,
+        "tts_by_construction_verified": false,
+        "full_listening_qa_status": "NOT_RUN_BLOCKED_BY_TTS_INPUT_MISMATCH",
+        "published": false,
+        "provenance_report_path": "book_2b9853ec52_tts_source_provenance_report.json",
+        "asr_provider_comparison_path": "book_2b9853ec52_bengali_asr_provider_comparison.json",
+        "closeout_path": "book_2b9853ec52_bengali_pilot_closeout.json",
+        "next_action": "Run one repaired pilot using same frozen arm after stripping frontmatter/source metadata from TTS input; regenerate only affected groups if hook supports group-level repair, otherwise one full repaired pilot. Then rerun ASR/provenance/sync/listening gates."
+      },
+      "latest_clean_repair_plan": {
+        "slug": "book-2b9853ec52",
+        "title": "দুই বিঘা জমি",
+        "provider": "sarvam",
+        "model": "bulbul:v3",
+        "voice": "ratan",
+        "style": "literary_warm_pacing",
+        "contaminated_groups_requiring_regeneration": [
+          0
+        ],
+        "groups_reusable": [
+          1,
+          2
+        ],
+        "tts_input_clean": true,
+        "tts_by_construction_verified_for_planned_sequence": true,
+        "tts_input_coverage_percent": 100.0,
+        "estimated_group_repair_cost_usd": 0.008,
+        "approval_blocker": "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS / budget / stop-on-budget envs missing locally",
+        "repair_plan_path": "book_2b9853ec52_clean_tts_repair_plan.json",
+        "group_repair_report_path": "book_2b9853ec52_group_repair_report.json"
+      },
+      "final_gate_result": {
+        "slug": "book-2b9853ec52",
+        "provider": "sarvam",
+        "model": "bulbul:v3",
+        "voice": "ratan",
+        "style": "literary_warm_pacing",
+        "listening_score": 9.4,
+        "listening_confidence": 0.95,
+        "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+        "upload_checksum_status": "PASS",
+        "metadata_api_status": "PASS",
+        "audiobook_endpoint_status": 200,
+        "browser_status": "PASS",
+        "published": true,
+        "report_path": "book_2b9853ec52_goliveevidence.json",
+        "public_book_status": 200,
+        "reader_manifest_status": 200,
+        "endpoint_materialization_report": "frontend_bengali_audio_production_deploy_verification.json"
+      }
     },
     "google": {
       "status": "credentials_or_adc_reauth_needed"
     },
     "azure": {
       "status": "synthesis_cancellation_needs_diagnosis"
+    },
+    "automated_audiobook_lane_status": "BENGALI_9_2_PATH_FOUND_PILOT_READY",
+    "automated_audiobook_lane_paused_at": "2026-07-06T20:36:38Z",
+    "automated_audiobook_lane_pause_reason": "OpenAI failed premium threshold; Sarvam bulbul:v3 pooja seed had isolated high samples but representative audition scored 7.9/confidence 0.85 with list-reading/mechanical cadence flags.",
+    "automated_audiobook_lane_reopened_at": "2026-07-07T00:00:00Z",
+    "automated_audiobook_lane_reopen_reason": "Owner approved Bengali-specific 9.2 release threshold while preserving fatal-flag and objective release gates.",
+    "automated_audiobook_lane_latest_result": "representative_passed; full pilot not generated; objective gates not run",
+    "audiobook_completion_campaign": {
+      "status": "BENGALI_AUDIOBOOK_CAMPAIGN_ACTIVE",
+      "policy_version": "bengali_audiobook_acceptance_v2_92",
+      "total_campaign_titles": 31,
+      "published_bengali_audiobooks": 0,
+      "titles_with_representative_gte_9_2": 1,
+      "best_settings": {
+        "provider": "sarvam",
+        "model": "bulbul:v3",
+        "voice": "ratan",
+        "style_profile": "literary_warm_pacing",
+        "representative_score": 9.3,
+        "confidence": 0.95
+      },
+      "scale_rule": "one full pilot must publish before 3-title canary",
+      "updated_at": "2026-07-06T21:54:41Z",
+      "state_path": "internal/earnalism_intelligence/bengali_audiobook_campaign_state.json",
+      "queue_path": "internal/earnalism_intelligence/bengali_audiobook_campaign_queue.json"
     }
   },
   "english": {

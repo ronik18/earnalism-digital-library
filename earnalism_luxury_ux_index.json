@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-07-06T19:08:29.868234+00:00",
-  "branch": "performance-rescue-current-worktree",
-  "status": "GREEN_PERFORMANCE_RESTORED_SOURCE_VALIDATED",
+  "generated_at": "2026-07-07T10:45:00Z",
+  "branch": "sprint/luxury-ux-rebirth",
+  "status": "GREEN_LOCAL_PRODUCTION_EQUIVALENT_HOMEPAGE_FIGMA_ALIGNED_PREVIEW_PENDING",
   "previous_owner_reported_score": 9.73,
   "previous_current_evidence_score": 9.66,
-  "overall_luxury_ux_score": 9.72,
+  "overall_luxury_ux_score": 9.74,
   "required_overall_score": 9.7,
   "required_min_category_score": 9.3,
   "scores": {
     "premium_brand_identity": 9.8,
     "visual_distinctiveness": 9.7,
-    "homepage_conversion": 9.7,
-    "catalog_discovery": 9.5,
+    "homepage_conversion": 9.8,
+    "catalog_discovery": 9.6,
     "book_detail_conversion": 9.5,
     "reader_comfort": 9.6,
     "bengali_typography_quality": 9.5,
@@ -20,7 +20,7 @@
     "reader_only_experience": 9.8,
     "mobile_experience": 9.7,
     "accessibility_wcag": 10.0,
-    "performance_core_web_vitals": 9.6,
+    "performance_core_web_vitals": 9.8,
     "seo_social_polish": 10.0,
     "trust_and_release_gate_truth": 10.0,
     "emotional_memorability": 9.7,
@@ -34,24 +34,32 @@
     "total_visible_covers_audited": 164,
     "typography_only_covers_found": 0,
     "typography_only_covers_remaining": 0,
-    "graphical_fallbacks_assigned": 105
+    "graphical_runtime_fallbacks_assigned": 106,
+    "front_back_cover_pairs_effective": 164
   },
   "lighthouse": {
-    "performance": 96,
+    "performance": 98,
     "accessibility": 100,
     "seo": 100,
     "best_practices": 100,
-    "lcp": "2.7 s",
-    "fcp": "1.5 s",
-    "speed_index": "1.5 s",
-    "tbt": "0 ms",
-    "cls": "0",
-    "total_byte_weight": "Total size was 239 KiB"
+    "lcp_ms": 2491.1598,
+    "fcp_ms": 908.7732,
+    "cls": 0,
+    "tbt_ms": 0,
+    "speed_index_ms": 995.7949480378913,
+    "total_byte_weight": 223730
   },
   "threshold_blockers": [],
-  "release_gate_truth_status": "PASS; no unapproved audio controls exposed in tested UI and audio safety test passed",
+  "release_gate_truth_status": "PASS; cover/type changes do not expose audio and audioReleaseSafety.test.js passed 4/4",
   "accessibility_status": "PASS; Lighthouse accessibility 100",
   "seo_status": "PASS; Lighthouse SEO 100",
-  "performance_status": "PASS; Lighthouse performance 96 and LCP 2.7s",
-  "claim": "UX >=9.7 is justified for local production-equivalent performance rescue evidence; clean source-only merge branch still required before PR/deploy."
+  "performance_status": "PASS; Lighthouse performance 98 and LCP 2491.1598ms",
+  "claim": "UX >=9.7 is justified for local production-equivalent same-origin validation after homepage Figma alignment. Live production still requires deploy/preview validation before claiming the public site is updated.",
+  "preview_validation_status": {
+    "status": "EXTERNAL_ACTION_REQUIRED",
+    "reason": "Vercel Deployment Protection redirects browser/curl validation to the login shell without VERCEL_AUTOMATION_BYPASS_SECRET or shareable preview link.",
+    "url": "https://earnalism-git-codex-clean-source-on-6b7ae3-sales-8498s-projects.vercel.app",
+    "safe_validation_used": "local production-equivalent same-origin proxy at http://127.0.0.1:4173",
+    "required_owner_action": "Provide VERCEL_AUTOMATION_BYPASS_SECRET or a shareable preview link, then rerun visual smoke against the preview with the bypass header."
+  }
 }

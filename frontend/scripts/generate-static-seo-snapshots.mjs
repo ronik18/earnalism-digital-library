@@ -19,6 +19,7 @@ const MANAGED_HEAD_END = "<!-- earnalism-static-seo:end -->";
 const BRAND = "The Earnalism";
 const SITE_NAME = "The Earnalism";
 const DRACULA_IMAGE = `${siteUrl}/assets/books/dracula/dracula-front-cover.webp`;
+const HOME_IMAGE = `${siteUrl}/assets/brand/earnalism-logo.png`;
 
 function escapeHtml(value = "") {
   return String(value)
@@ -41,36 +42,6 @@ async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, "utf8"));
 }
 
-function fallbackDraculaArtifacts(reason = "") {
-  const suffix = reason ? ` ${reason}` : "";
-  console.warn(`[static-seo] Controlled Dracula artifacts unavailable; using committed public SEO fallback.${suffix}`);
-  return {
-    book: {
-      slug: "dracula",
-      title: "Dracula",
-      author: "Bram Stoker",
-      cover_image_url: DRACULA_IMAGE,
-      publication_status: "LIVE_APPROVED",
-      is_published: true,
-    },
-    manifest: {
-      slug: "dracula",
-      title: "Dracula",
-      chapter_count: 27,
-    },
-    source: {
-      source_url: "https://www.gutenberg.org/ebooks/345",
-      source_name: "Project Gutenberg eBook #345",
-    },
-    approval: {
-      approved_to_publish: true,
-      rights_tier: "A",
-      verification_status: "approved",
-      qa_status: "QA_PASSED",
-    },
-  };
-}
-
 async function readSnapshotTemplate() {
   try {
     return await readFile(indexPath, "utf8");
@@ -83,31 +54,20 @@ async function readSnapshotTemplate() {
 }
 
 async function loadDraculaArtifacts() {
-  let book;
-  let manifest;
-  let source;
-  let approval;
+  const [book, manifest, source, approval] = await Promise.all([
+    readJson(draculaBookPath),
+    readJson(draculaManifestPath),
+    readJson(draculaSourcePath),
+    readJson(draculaApprovalPath),
+  ]);
 
-  try {
-    [book, manifest, source, approval] = await Promise.all([
-      readJson(draculaBookPath),
-      readJson(draculaManifestPath),
-      readJson(draculaSourcePath),
-      readJson(draculaApprovalPath),
-    ]);
-  } catch (error) {
-    if (error?.code === "ENOENT") {
-      return fallbackDraculaArtifacts(error.message);
-    }
-    throw error;
-  }
-
+  const sourceName = String(source.source_name || "").trim();
   const approved = approval.approved_to_publish === true
     && approval.rights_tier === "A"
     && approval.verification_status === "approved"
     && approval.qa_status === "QA_PASSED"
     && source.source_url === "https://www.gutenberg.org/ebooks/345"
-    && source.source_name === "Project Gutenberg eBook #345";
+    && /^Project Gutenberg(?: eBook #345)?$/i.test(sourceName);
 
   if (!approved) {
     throw new Error("Dracula controlled-publication artifacts are not approved for static SEO snapshots.");
@@ -316,9 +276,9 @@ function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
 }
 
 function buildPages({ book, manifest }) {
-  const homeDescription = "Controlled launch begins with Dracula by Bram Stoker in The Earnalism's classical digital reading room. Read Chapter 1 free, then continue with reading time as future classics move through the rights-safe pipeline.";
+  const homeDescription = "The Earnalism is a calm digital reading room for timeless Bengali and English literature, with reader-ready classics and release-gated audiobooks.";
   const bookDescription = "Read Dracula by Bram Stoker in The Earnalism’s controlled digital reading room. Chapter 1 is free. Continue with a 7-day reading pass. Audiobook experience is in private review.";
-  const libraryDescription = "Controlled reader-only releases on The Earnalism: Dracula remains the featured launch release, with validated public-domain classics opened only after source, sanitation, and reader QA gates pass.";
+  const libraryDescription = "Browse Earnalism's Bengali and English classics. Reader-only releases stay visible, and audiobooks appear only after source, listening, sync, and browser gates pass.";
   const pricingDescription = "Choose your reading time for Dracula on The Earnalism. Chapter 1 is free, with premium reading-time packs and no subscription or autorenewal.";
   const journalDescription = "Launch notes from The Earnalism's Dracula-first controlled digital reading room and rights-safe publication pipeline.";
   const contactDescription = "Contact The Earnalism about Dracula reading-time access, support, refunds, school interest, and rights-safe publication questions.";
@@ -327,23 +287,23 @@ function buildPages({ book, manifest }) {
   return [
     {
       path: "/",
-      title: "Step Into Dracula | The Earnalism Digital Library",
+      title: "Earnalism | Bengali and English Classics",
       description: homeDescription,
       canonicalPath: "/",
-      ogTitle: "Step Into Dracula | The Earnalism",
-      ogDescription: "Chapter 1 is free. Continue with a reading pass as more classics move through the rights-safe pipeline.",
-      imageAlt: "The Earnalism Dracula controlled launch",
-      jsonLd: [organizationJsonLd(), websiteJsonLd(homeDescription), webpageJsonLd({ title: "Begin with Dracula.", description: homeDescription, path: "/" })],
+      ogTitle: "Earnalism | Bengali and English Classics",
+      ogDescription: "Read timeless Bengali and English literature in a quieter, richer digital library.",
+      image: HOME_IMAGE,
+      imageAlt: "The Earnalism brand mark",
+      jsonLd: [organizationJsonLd(), websiteJsonLd(homeDescription), webpageJsonLd({ title: "A calm digital reading room for timeless Bengali and English literature.", description: homeDescription, path: "/" })],
       staticBody: pageShell({
         eyebrow: "The Earnalism Digital Library",
-        title: "Begin with Dracula.",
+        title: "A calm digital reading room for timeless Bengali and English literature.",
         body: homeDescription,
-        facts: ["Dracula remains the featured live approved reading release.", "Audiobook experience is in private review.", "Additional classics open only after source, sanitation, and reader QA gates pass."],
+        facts: ["Bengali classics are reader-ready where approved.", "Dracula appears as a refined English classics reading tile.", "Audiobooks remain hidden unless release-gate evidence approves them."],
         links: [
-          { href: "/reader/dracula", label: "Read Chapter 1 Free" },
-          { href: "/book/dracula", label: "Start Dracula" },
-          { href: "/pricing?book=dracula", label: "Get 7-Day Reading Pass" },
-          { href: "/library?category=pipeline", label: "Explore Pipeline / Library" },
+          { href: "/library?category=live", label: "Explore Bengali Library" },
+          { href: "/reader/dracula", label: "Read Dracula" },
+          { href: "/library", label: "Explore Library" },
         ],
       }),
     },
@@ -396,8 +356,8 @@ function buildPages({ book, manifest }) {
       title: "Library | Controlled Reader Releases on The Earnalism",
       description: libraryDescription,
       canonicalPath: "/library",
-      ogTitle: "Library | Controlled Reader Releases on The Earnalism",
-      ogDescription: "Dracula remains the featured release. Validated public-domain classics open as reader-only releases after rights, sanitation, and QA gates pass.",
+      ogTitle: "Library | Bengali and English Classics on The Earnalism",
+      ogDescription: "Reader-ready Bengali and English classics with release-gated audiobook availability.",
       imageAlt: "The Earnalism controlled library",
       jsonLd: [
         webpageJsonLd({ title: "Library | Controlled Reader Releases", description: libraryDescription, path: "/library" }),
@@ -407,13 +367,13 @@ function buildPages({ book, manifest }) {
         ]),
       ],
       staticBody: pageShell({
-        eyebrow: "Library - Controlled Launch",
-        title: "Live Controlled Reader Releases.",
-        body: "Dracula remains the featured launch release. Additional classics appear only after source, sanitation, reader, and public-governance gates pass.",
-        facts: ["Unapproved books are not live reading products.", "Reader-only releases do not offer checkout, payment, or listening CTAs."],
+        eyebrow: "Library",
+        title: "Reader-ready classics, release-gated audio.",
+        body: "Browse Bengali and English classics without audio overclaim. Reader-only releases stay intentional and premium.",
+        facts: ["Unapproved audiobooks stay hidden.", "Reader-only releases do not offer listening CTAs."],
         links: [
+          { href: "/library?category=live", label: "Bengali Classics" },
           { href: "/book/dracula", label: "Open Dracula" },
-          { href: "/reader/dracula", label: "Read Chapter 1 Free" },
         ],
       }),
     },

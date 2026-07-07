@@ -20,6 +20,13 @@ export const LAUNCH_ANALYTICS_EVENTS = [
   "continue_reading_click",
   "return_resume_reading_click",
   "core_web_vital",
+  "hero_primary_cta_click",
+  "hero_secondary_cta_click",
+  "bengali_card_click",
+  "english_card_click",
+  "approved_audio_card_click",
+  "book_card_read_click",
+  "book_card_listen_click",
 ];
 
 export const LAUNCH_ANALYTICS_EVENT_ALIASES = {

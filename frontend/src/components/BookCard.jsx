@@ -15,6 +15,8 @@ import {
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 
+const BENGALI_RE = /[\u0980-\u09FF]/;
+
 function BookCard({ book, priority = false }) {
   const status = bookLaunchStatus(book);
   const isLiveApproved = status === "LIVE_APPROVED";
@@ -22,10 +24,21 @@ function BookCard({ book, priority = false }) {
   const showStartReading = canShowStartReading(book);
   const showReadingPass = canShowReadingPass(book);
   const isDracula = book.slug === LIVE_APPROVED_SLUG;
-  const statusLabel = isLiveApproved ? "Live controlled release" : "In preparation";
   const displayTitle = book.title_en || book.title;
   const secondaryTitle = book.title_en && book.title_en !== book.title ? book.title : "";
   const audioState = audiobookReleaseState(book);
+  const isBengali = BENGALI_RE.test(`${book.title || ""} ${book.author || ""}`);
+  const languageLabel = isBengali ? "Bengali" : "English";
+  const availabilityLabel = audioState.canShowControls
+    ? "Audiobook Approved"
+    : isLiveApproved
+      ? "Reader Ready"
+      : "In Review";
+  const audioLabel = audioState.canShowControls
+    ? "Listen approved"
+    : isLiveApproved
+      ? "Audio hidden"
+      : "No audio CTA";
 
   const track = (event, metadata = {}) => {
     trackFunnelEvent(event, { book: book.slug, book_slug: book.slug, ...metadata });
@@ -52,19 +65,20 @@ function BookCard({ book, priority = false }) {
       </Link>
       <div className="p-6 sm:p-7 flex flex-col gap-3 flex-1">
         <div className="book-card__badges" aria-label={`${displayTitle} availability`}>
-          <span>{statusLabel}</span>
+          <span>{availabilityLabel}</span>
+          <span>{languageLabel}</span>
           <span className={audioState.canShowControls ? "book-card__badge--audio-live" : "book-card__badge--audio-hidden"}>
-            {audioState.canShowControls ? "Listen approved" : "Audio hidden"}
+            {audioLabel}
           </span>
         </div>
         <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className="group/title">
-          <h3 className="font-serif-display text-[1.28rem] sm:text-[1.38rem] text-burgundy leading-[1.18] group-hover/title:text-burgundy-soft transition-colors">{displayTitle}</h3>
+          <h3 className="font-serif-display text-[1.12rem] sm:text-[1.22rem] text-burgundy leading-[1.24] group-hover/title:text-burgundy-soft transition-colors">{displayTitle}</h3>
         </Link>
         {secondaryTitle && (
           <p className="book-card__secondary-title">{secondaryTitle}</p>
         )}
         {book.author && (
-          <p className="text-[0.85rem] tracking-[0.14em] uppercase text-charcoal-soft">by {book.author}</p>
+          <p className="text-[0.78rem] tracking-[0.12em] uppercase text-charcoal-soft">by {book.author}</p>
         )}
         {book.short_description && (
           <p className="text-sm text-charcoal-soft leading-relaxed line-clamp-3 font-light">{book.short_description}</p>
@@ -74,16 +88,29 @@ function BookCard({ book, priority = false }) {
             <Clock size={12} strokeWidth={1.5} /> {book.estimated_reading_time}
           </div>
         )}
-        {showPreview || showStartReading ? (
+        {showPreview || showStartReading || audioState.canShowControls ? (
           <div className="mt-auto flex flex-col sm:flex-row gap-2 sm:gap-3 pt-5 border-t border-brand-soft">
             {showPreview && (
               <Link
                 to={`/reader/${book.slug}`}
                 className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase text-burgundy border border-[var(--brand-gold)] hover:bg-[var(--brand-gold)]/10 transition-colors"
                 data-testid={`card-preview-${book.slug}`}
-                onClick={() => track(DRACULA_CTA_EVENTS.previewStart, { cta: "book_card_preview" })}
+                onClick={() => {
+                  track("book_card_read_click", { cta: "book_card_preview", release_state: status });
+                  track(DRACULA_CTA_EVENTS.previewStart, { cta: "book_card_preview" });
+                }}
               >
                 {isDracula ? "Read Chapter 1" : "Read"}
+              </Link>
+            )}
+            {audioState.canShowControls && (
+              <Link
+                to={`/reader/${book.slug}?listen=1`}
+                className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-[var(--brand-charcoal)] text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
+                data-testid={`card-listen-${book.slug}`}
+                onClick={() => track("book_card_listen_click", { cta: "book_card_listen", release_state: audioState.status })}
+              >
+                Listen
               </Link>
             )}
             {showStartReading && showReadingPass && (
@@ -101,7 +128,10 @@ function BookCard({ book, priority = false }) {
                 to={`/book/${book.slug}`}
                 className="flex-1 inline-flex items-center justify-center px-3 py-2 rounded-full text-[0.68rem] tracking-[0.22em] uppercase bg-burgundy text-[var(--brand-ivory)] hover:bg-burgundy-deep transition-colors"
                 data-testid={`card-details-${book.slug}`}
-                onClick={() => track(DRACULA_CTA_EVENTS.startReading, { cta: "book_card_details" })}
+                onClick={() => {
+                  track("book_card_read_click", { cta: "book_card_details", release_state: status });
+                  track(DRACULA_CTA_EVENTS.startReading, { cta: "book_card_details" });
+                }}
               >
                 Details
               </Link>

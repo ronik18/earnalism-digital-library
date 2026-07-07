@@ -23,6 +23,10 @@ import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 const BENGALI_RE = /[\u0980-\u09FF]/;
 const SITE_URL = "https://theearnalism.com";
 
+function isValidBookPayload(value) {
+  return Boolean(value && typeof value === "object" && !Array.isArray(value) && value.slug);
+}
+
 export default function BookDetail() {
   const { slug } = useParams();
   const [book, setBook] = useState(null);
@@ -57,8 +61,18 @@ export default function BookDetail() {
     setLoading(true);
     setLoadStatus("loading");
     api.get(`/books/${slug}`, { signal: controller.signal }).then((r) => {
-      setBook(r.data);
-      setLoadStatus("ready");
+      if (isValidBookPayload(r.data)) {
+        setBook(r.data);
+        setLoadStatus("ready");
+        return;
+      }
+      if (slug === LIVE_APPROVED_SLUG) {
+        setBook(DRACULA_FALLBACK_BOOK);
+        setLoadStatus("ready");
+        return;
+      }
+      setBook(null);
+      setLoadStatus("not_found");
     })
       .catch((err) => {
         if (err.name !== "CanceledError") {
@@ -180,35 +194,27 @@ export default function BookDetail() {
               sizes="(min-width: 1024px) 420px, (min-width: 640px) 52vw, 90vw"
             />
           </div>
-          {publicBook.back_cover_image_url && (
-            <div className="mt-5 max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
-              <div className="overline mb-2">Back cover</div>
-              <div className="aspect-[3/4] rounded-lg overflow-hidden border border-brand-soft bg-ivory-warm">
-                <BookCoverImage
-                  book={{
-                    ...publicBook,
-                    cover_image_url: publicBook.back_cover_image_url,
-                    cover_url: publicBook.back_cover_url,
-                    thumbnail_url: publicBook.back_cover_thumbnail_url,
-                    blur_placeholder: publicBook.back_cover_blur_placeholder,
-                    dominant_color: publicBook.back_cover_dominant_color,
-                  }}
-                  alt={`${publicBook.title} back cover`}
-                  loading="lazy"
-                  width={640}
-                  widths={[420, 640, 900]}
-                  sizes="(min-width: 1024px) 420px, (min-width: 640px) 52vw, 90vw"
-                />
-              </div>
+          <div className="mt-5 max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
+            <div className="overline mb-2">Back cover</div>
+            <div className="aspect-[3/4] rounded-lg overflow-hidden border border-brand-soft bg-ivory-warm">
+              <BookCoverImage
+                book={publicBook}
+                kind="back"
+                alt={`${publicBook.title} back cover`}
+                loading="lazy"
+                width={640}
+                widths={[420, 640, 900]}
+                sizes="(min-width: 1024px) 420px, (min-width: 640px) 52vw, 90vw"
+              />
             </div>
-          )}
+          </div>
         </div>
 
         <div className="lg:col-span-7">
           <div className="overline mb-5">{publicBook.category_slug?.replace(/-/g, ' ')}</div>
-          <h1 className="font-serif-light text-4xl sm:text-5xl lg:text-[3.75rem] text-burgundy leading-[1.02] tracking-tight">{publicBook.title}</h1>
+          <h1 className="font-serif-light text-[2.12rem] sm:text-[2.82rem] lg:text-[3.35rem] text-burgundy leading-[1.05] tracking-tight">{publicBook.title}</h1>
           {publicBook.author && <p className="text-[0.85rem] tracking-[0.14em] uppercase text-charcoal-soft mt-4">by {publicBook.author}</p>}
-          {publicBook.subtitle && <p className="font-serif-display italic text-xl sm:text-2xl text-burgundy-soft mt-5 leading-snug">{publicBook.subtitle}</p>}
+          {publicBook.subtitle && <p className="font-serif-display italic text-lg sm:text-[1.32rem] text-burgundy-soft mt-5 leading-snug">{publicBook.subtitle}</p>}
           <div className="gold-rule-thin mt-8" />
           <p className="text-charcoal-soft mt-7 leading-[1.85] font-light">{publicBook.description}</p>
 
@@ -290,7 +296,7 @@ export default function BookDetail() {
           {chapterCount > 0 && (
             <div className="mt-14" data-testid="chapter-list">
               <div className="italic-eyebrow mb-3">Table of Contents</div>
-              <h3 className="font-serif-light text-[1.65rem] sm:text-[1.85rem] text-burgundy mb-6 leading-snug">Chapters</h3>
+            <h3 className="font-serif-light text-[1.48rem] sm:text-[1.68rem] text-burgundy mb-6 leading-snug">Chapters</h3>
               <ol className="space-y-3">
                 {(publicBook.chapters || []).map((c, i) => (
                   <li key={c.id} className="flex items-baseline gap-4 text-charcoal">
@@ -305,7 +311,7 @@ export default function BookDetail() {
           {publicBook.benefits?.length > 0 && (
             <div className="mt-14">
               <div className="italic-eyebrow mb-3">For the reader</div>
-              <h3 className="font-serif-light text-[1.65rem] sm:text-[1.85rem] text-burgundy mb-6 leading-snug">What waits inside</h3>
+              <h3 className="font-serif-light text-[1.48rem] sm:text-[1.68rem] text-burgundy mb-6 leading-snug">What waits inside</h3>
               <ul className="space-y-4">
                 {publicBook.benefits.map((b) => (
                   <li key={b} className="flex items-start gap-3 text-charcoal-soft leading-relaxed font-light">
@@ -322,7 +328,7 @@ export default function BookDetail() {
         {publicBook.who_for?.length > 0 && (
           <div className="card-elegant p-9 sm:p-11" data-testid="who-for">
             <div className="italic-eyebrow mb-3">Who this book is for</div>
-            <h3 className="font-serif-light text-[1.65rem] text-burgundy mb-6 leading-snug">Written for the careful builder</h3>
+            <h3 className="font-serif-light text-[1.48rem] text-burgundy mb-6 leading-snug">Written for the careful builder</h3>
             <ul className="space-y-4 text-charcoal-soft leading-relaxed font-light">
               {publicBook.who_for.map((w) => <li key={w} className="flex gap-3"><span className="text-gold">—</span>{w}</li>)}
             </ul>
@@ -331,7 +337,7 @@ export default function BookDetail() {
         {publicBook.learnings?.length > 0 && (
           <div className="card-elegant p-9 sm:p-11" data-testid="learnings">
             <div className="italic-eyebrow mb-3">What you will learn</div>
-            <h3 className="font-serif-light text-[1.65rem] text-burgundy mb-6 leading-snug">A practical inheritance</h3>
+            <h3 className="font-serif-light text-[1.48rem] text-burgundy mb-6 leading-snug">A practical inheritance</h3>
             <ul className="space-y-4 text-charcoal-soft leading-relaxed font-light">
               {publicBook.learnings.map((l) => <li key={l} className="flex gap-3"><span className="text-gold">—</span>{l}</li>)}
             </ul>
@@ -342,7 +348,7 @@ export default function BookDetail() {
       {publicBook.about_author && (
         <section className="max-w-3xl mx-auto px-5 sm:px-8 lg:px-12 py-16 text-center" data-testid="about-author">
           <div className="italic-eyebrow mb-4">About the author / publisher</div>
-          <p className="font-serif-display italic text-xl sm:text-2xl lg:text-[1.65rem] text-burgundy leading-[1.45]">{publicBook.about_author}</p>
+          <p className="font-serif-display italic text-lg sm:text-xl lg:text-[1.42rem] text-burgundy leading-[1.52]">{publicBook.about_author}</p>
           <div className="gold-rule mx-auto mt-8" />
         </section>
       )}

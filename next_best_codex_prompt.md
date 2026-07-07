@@ -1,34 +1,12 @@
-You are the Earnalism Clean Source-Only Merge Governor.
+# Next Best Codex Prompt
 
-The performance rescue is complete: Lighthouse performance 96, LCP 2.7s, accessibility 100, SEO 100, visual smoke PASS, cover audit 164/0 typography-only, audio safety PASS. Do not redesign, do not rerun Bengali mutations, do not run Sarvam/provider work.
+Continue the Bengali audiobook pilot only if the owner explicitly approves a second repaired full-pilot generation.
 
-Create a clean branch/worktree from origin/main and promote only reusable source/config/test/docs from the dirty sprint workspace. Include the performance-rescue source files and optimized production assets only:
-- frontend/src/App.js
-- frontend/src/components/Layout.jsx
-- frontend/src/components/FirstVisitSiteTour.jsx
-- frontend/src/context/SettingsContext.jsx
-- frontend/src/components/BrandMark.jsx
-- frontend/src/components/HeroBookObject.jsx
-- frontend/src/pages/Home.jsx
-- frontend/src/index.css
-- frontend/public/index.html
-- frontend/public/assets/books/dracula/dracula-hero-hardcopy-320.webp
-- frontend/public/assets/books/dracula/dracula-hero-hardcopy-420.webp
-- frontend/public/assets/books/dracula/dracula-hero-hardcopy-500.webp
-- frontend/public/assets/brand/earnalism-logo-transparent-96.webp
-- frontend/public/assets/brand/earnalism-logo-transparent-128.webp
-- reusable cover resolver/audit/visual smoke source files from the graphical-cover pass
-- intelligence/policy docs and concise sprint reports only
+Current truth:
+- Pilot `book-2b9853ec52` generated with Sarvam `bulbul:v3` / `ratan` / `literary_warm_pacing`.
+- TTS generation passed, duration ~330.06 seconds.
+- ASR/manuscript gate failed: score `7.0199 < 9.7`, first/last boundary checks failed, and no word/segment timestamps were returned.
+- Upload, metadata, browser, and public audio exposure were not run.
+- Source has been patched so future TTS-only Bengali preparation strips source/frontmatter lines before generation.
 
-Exclude release_gate outputs, dashboards, screenshots, Lighthouse JSON under /tmp, frontend/build, caches, audio, sidecars, logs, signed URLs, rollback payloads, and imported book/content noise.
-
-Validate in the clean worktree:
-- npm ci --prefix frontend
-- npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false
-- REACT_APP_BACKEND_URL=/api npm --prefix frontend run build
-- node frontend/scripts/audit-book-covers.mjs
-- node frontend/scripts/visual-luxury-smoke.mjs
-- npx --yes lighthouse http://127.0.0.1:4173/ --chrome-flags="--headless=new --no-sandbox" --quiet
-- git diff --check
-
-Final output must include explicit staged files, excluded artifacts, tests passed/failed, merge readiness, deploy readiness, and next PR command.
+If owner approves a repaired second pilot despite the one-pilot guard, run the same guarded Railway command after confirming the TTS-prep hash changed and no stale audio cache is reused. Otherwise, keep Bengali audio hidden and continue PR/ship work.

@@ -1,0 +1,70 @@
+{
+  "generated_at": "2026-07-07T10:59:00+05:30",
+  "status": "CALM_TYPOGRAPHY_SYSTEM_IMPLEMENTED",
+  "global_tokens_added": [
+    "--type-nav",
+    "--type-eyebrow",
+    "--type-hero",
+    "--type-card-title",
+    "--type-shelf-title",
+    "--type-book-title"
+  ],
+  "before_after": {
+    "nav": {
+      "before": "0.7rem with 0.26em uppercase tracking",
+      "after": "0.88rem with 0.12em tracking",
+      "assessment": "closer to requested 14-15px and less compressed"
+    },
+    "hero_headline": {
+      "before": "calm source headline already set; live static shell still used larger Dracula-first headline",
+      "after": "source keeps calm clamp-based literary headline and Start Reading/Browse Library CTAs",
+      "assessment": "aligned after deploy"
+    },
+    "hero_subtitle": {
+      "before": "release-safe but launch/Dracula oriented on live",
+      "after": "Bengali and English reader-ready positioning with gated-audio trust line",
+      "assessment": "aligned in source"
+    },
+    "action_card_titles": {
+      "before": "one card labeled Dracula, refined",
+      "after": "English Classics card with Dracula as a tile",
+      "assessment": "Dracula no longer owns the card taxonomy"
+    },
+    "library_filters": {
+      "before": "category-only chips plus Dracula-specific search placeholder",
+      "after": "language, availability, sort, view, and general title/author/language search",
+      "assessment": "recognition-first catalog"
+    },
+    "book_card_titles": {
+      "before": "1.55rem-1.65rem",
+      "after": "1.12rem-1.22rem",
+      "assessment": "smaller and calmer"
+    },
+    "book_card_metadata": {
+      "before": "0.85rem uppercase metadata",
+      "after": "0.78rem metadata and compact availability badges",
+      "assessment": "less visually loud"
+    },
+    "reader_body_english": {
+      "before": "16px default setting and dark theme default",
+      "after": "16px small option with ivory default, larger options available",
+      "assessment": "calm default; user can increase"
+    },
+    "reader_body_bengali": {
+      "before": "Bengali line-height support existed",
+      "after": "Bengali line-height preserved at 1.9+ and Bengali font mode retained",
+      "assessment": "comfort preserved"
+    },
+    "reader_settings": {
+      "before": "font size, line spacing, theme, font, narration speed",
+      "after": "adds margin width, focus, reduced motion, and highlight intensity",
+      "assessment": "closer to Figma reader/listener settings target"
+    }
+  },
+  "accessibility_result": {
+    "initial_lighthouse_accessibility_after_changes": 96,
+    "issue": "small muted-gold footer/brand text contrast and brand link accessible name",
+    "fix": "brand-gold-deep made contrast-safe and brand link aria-label now includes visible text",
+    "final_lighthouse_accessibility": 100
+  }
+}

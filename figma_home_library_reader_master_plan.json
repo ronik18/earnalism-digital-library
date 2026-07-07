@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-07-07T00:00:00+05:30",
+  "scope": "Home, Library, and Reader/Audiobook frontend UX only",
+  "current_live_ux_gaps": [
+    {
+      "surface": "home",
+      "status": "mostly_aligned_in_source",
+      "gap": "Source already uses the hybrid editorial hero and three curated action cards, but CTAs and nav labels need final Figma naming and analytics alignment."
+    },
+    {
+      "surface": "library",
+      "status": "partial",
+      "gap": "Library still has Dracula-heavy hero CTAs and category-only filtering instead of a premium recognition-first catalog with language, availability, sort, and view controls."
+    },
+    {
+      "surface": "reader",
+      "status": "partial",
+      "gap": "Reader has a strong secure shell, but audio microcopy can imply generic synced audio and settings lack explicit margin, focus, reduced-motion, and highlight controls."
+    }
+  ],
+  "current_source_files_responsible": [
+    "frontend/src/components/Header.jsx",
+    "frontend/src/components/ComingSoonBoard.jsx",
+    "frontend/src/components/BookCard.jsx",
+    "frontend/src/pages/Home.jsx",
+    "frontend/src/pages/Library.jsx",
+    "frontend/src/pages/Reader.jsx",
+    "frontend/src/index.css",
+    "frontend/public/index.html",
+    "frontend/src/lib/audioReleaseSafety.js",
+    "frontend/src/lib/bookCoverResolver.js"
+  ],
+  "target_figma_ux_architecture": {
+    "home": "Compact header, calm editorial hero, three curated action cards, release-gated approved-audio area, Bengali and English shelves below fold.",
+    "library": "Premium catalog with compact hero, search, language chips, availability chips, sort selector, view mode selector, graphical cards, and intentional reader-only states.",
+    "reader": "Reading-first shell with toolbar, calm page surface, mobile-safe settings sheet, optional approved-audiobook mini player, and paragraph/stanza sync wording when appropriate."
+  },
+  "component_inventory": [
+    "AppHeader",
+    "HeroEditorial",
+    "CuratedActionCard",
+    "BookCoverTile",
+    "BookCard",
+    "BookShelf",
+    "FilterRail",
+    "StatusBadge",
+    "ReaderShell",
+    "ReaderToolbar",
+    "ReaderSettingsPanel",
+    "AudiobookMiniPlayer",
+    "ParagraphSyncHighlight",
+    "PremiumUnavailableState"
+  ],
+  "fixed_color_palette": {
+    "color.ivory": "#F7F0E3",
+    "color.ivorySoft": "#FBF6EC",
+    "color.paper": "#EFE2CC",
+    "color.sepia": "#D8C2A0",
+    "color.espresso": "#241713",
+    "color.charcoal": "#332821",
+    "color.burgundy": "#5A1F2B",
+    "color.burgundyDeep": "#351018",
+    "color.gold": "#B58A45",
+    "color.goldMuted": "#9E7435",
+    "color.sage": "#546A55",
+    "color.indigoInk": "#26324A",
+    "color.success": "#315F4B",
+    "color.warning": "#8A5B21",
+    "color.danger": "#8A2D32",
+    "color.focus": "#D7A84E"
+  },
+  "typography_scale": {
+    "nav": "14-15px",
+    "eyebrow": "11-12px",
+    "hero_headline_desktop": "42-52px",
+    "hero_headline_mobile": "30-36px",
+    "hero_subtitle": "16-18px",
+    "card_title": "18-22px",
+    "card_body": "14-16px",
+    "shelf_title": "24-30px",
+    "book_card_title": "15-17px",
+    "metadata": "12-14px",
+    "reader_body_english": "18-20px default",
+    "reader_body_bengali": "19-21px default with 1.8-2.0 line-height"
+  },
+  "cover_system_requirements": [
+    "No public cover may be typographic-only.",
+    "Use the existing graphical cover resolver and audit script.",
+    "Do not add paid image-generation or heavy client-side image libraries.",
+    "Preserve alt text, aspect ratios, lazy loading, and no cover clipping."
+  ],
+  "release_gate_risks": [
+    "Reader controls must remain hidden unless canExposeAudiobookControls returns true.",
+    "A Ghost Story must not be probed or shown as audio by default.",
+    "Paragraph/stanza sync must not be labeled as word-level sync.",
+    "Browser/system speech fallback must not be presented as an audiobook."
+  ],
+  "performance_risks": [
+    "Extra catalog controls must not add heavy dependencies.",
+    "Below-fold shelves must remain lazy/idle friendly.",
+    "No new large raster cover assets should be introduced.",
+    "Typography and layout changes must preserve CLS and mobile overflow constraints."
+  ],
+  "implementation_plan": [
+    "Align header nav and homepage CTA labels to final Figma language.",
+    "Upgrade Library to include language, availability, sort, and view controls with calm compact styling.",
+    "Refine BookCard availability badges and listen CTA gating.",
+    "Add Reader settings for margin, focus, reduced motion, and highlight intensity; clarify approved-audio and unavailable-audio microcopy.",
+    "Add CSS design tokens matching the fixed palette and calm typography scale.",
+    "Create Figma-ready spec and scorecard artifacts."
+  ],
+  "validation_plan": [
+    "npm ci --prefix frontend",
+    "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+    "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+    "node frontend/scripts/audit-book-covers.mjs",
+    "node frontend/scripts/visual-luxury-smoke.mjs",
+    "npx --yes lighthouse http://127.0.0.1:4173/ --chrome-flags=\"--headless=new --no-sandbox\" --quiet",
+    "git diff --check"
+  ],
+  "rollback_plan": [
+    "Revert only frontend UX source files changed in this pass.",
+    "Keep audioReleaseSafety and backend/publishing logic untouched unless a release-gate regression is found.",
+    "Do not revert unrelated dirty worktree changes."
+  ]
+}
