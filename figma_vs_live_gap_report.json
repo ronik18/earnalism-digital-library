@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-07-07T10:59:00+05:30",
+  "live_url_checked": "https://www.theearnalism.com/",
+  "live_snapshot_method": "curl static shell scan",
+  "live_headline": "Begin with Dracula.",
+  "live_static_title": "Step Into Dracula | The Earnalism Digital Library",
+  "source_headline_after_patch": "A calm digital reading room for timeless Bengali and English literature.",
+  "homepage_still_dracula_first_on_live": true,
+  "homepage_dracula_first_in_source_after_patch": false,
+  "three_curated_action_cards_exist_in_source": true,
+  "bengali_classics_visible_in_source": true,
+  "approved_audio_gated_in_source": true,
+  "a_ghost_story_default_audio_probe": false,
+  "same_origin_api_expected": true,
+  "typography_oversized_risk_after_patch": "LOW",
+  "cover_clipping_risk_after_patch": "LOW",
+  "typographic_only_cover_risk_after_audit": "NONE_DETECTED",
+  "reader_paragraph_stanza_sync_wording": "SOURCE_ALIGNED",
+  "unapproved_audio_hidden": "PASS_BY_AUDIO_RELEASE_SAFETY_TEST",
+  "exact_source_files_responsible": [
+    "frontend/src/pages/Home.jsx",
+    "frontend/src/components/ComingSoonBoard.jsx",
+    "frontend/src/components/Header.jsx",
+    "frontend/src/pages/Library.jsx",
+    "frontend/src/pages/Reader.jsx",
+    "frontend/src/components/BookCard.jsx",
+    "frontend/src/index.css",
+    "frontend/public/index.html",
+    "frontend/src/lib/funnelAnalytics.js"
+  ],
+  "validation_summary": {
+    "npm_ci": "PASS_WITH_EXISTING_WARNINGS",
+    "audio_release_safety": "PASS_4_OF_4",
+    "build": "PASS",
+    "cover_audit": "PASS_164_TOTAL_0_TYPOGRAPHIC_ONLY",
+    "visual_smoke": "PASS_72_OF_72",
+    "lighthouse_performance": 97,
+    "lighthouse_accessibility": 100,
+    "lighthouse_seo": 100,
+    "lcp_ms": 2554.1784,
+    "cls": 0,
+    "tbt_ms": 0,
+    "git_diff_check": "PASS"
+  },
+  "remaining_live_gap": "Production still serves the old Dracula-first static shell until this source is promoted and deployed.",
+  "correction_plan": [
+    "Promote source-only frontend/report changes through the clean PR branch.",
+    "Deploy preview or production after approval.",
+    "Validate live no longer contains Begin with Dracula static SEO shell.",
+    "Run protected preview/live visual smoke before merge/deploy signoff."
+  ]
+}

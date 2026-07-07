@@ -28,6 +28,7 @@ export default function BookCoverImage({
   widths = DEFAULT_WIDTHS,
   width = 420,
   height,
+  kind = "front",
   quality = 82,
   draggable,
   fallback = "E",
@@ -35,7 +36,7 @@ export default function BookCoverImage({
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
   const intrinsicHeight = height || Math.round(Number(width || 420) * 4 / 3);
-  const sources = bookCoverImageSources(book, { width, widths, quality, forceFallback: failed });
+  const sources = bookCoverImageSources(book, { width, widths, quality, forceFallback: failed, kind });
   const showImage = Boolean(sources.hasCover);
   const coverAlt = typeof alt === "string" ? alt : (book?.title || "Book cover");
   const style = sources.backgroundColor ? { backgroundColor: sources.backgroundColor } : undefined;

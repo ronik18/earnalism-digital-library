@@ -139,6 +139,15 @@
       "inputs_changed_since_validation": true,
       "rework_allowed": true,
       "cheapest_next_action": "Create clean worktree from origin/main and copy only reusable source/docs; do not clean dirty branch in place."
+    },
+    "bengali_automated_audio_lane_closed_for_now": {
+      "status": "ACHIEVED_CONFIRMED",
+      "evidence_path": "sarvam_corrective_audition_report.json",
+      "source_file_hashes_involved": [],
+      "last_validation_command": "read sarvam_corrective_audition_report.json and Bengali reader-only dashboard; no provider calls",
+      "inputs_changed_since_validation": false,
+      "rework_allowed": false,
+      "cheapest_next_action": "Skip automated Bengali TTS; revisit only after materially new provider/model/human/licensed audio evidence."
     }
   },
   "paid_operation_gates": {

@@ -1,4 +1,5 @@
 import importlib
+import asyncio
 import sys
 from pathlib import Path
 
@@ -16,6 +17,7 @@ def _server(monkeypatch):
 
 def test_reader_manifest_rewrites_b2_mp3_to_api_proxy(monkeypatch):
     server = _server(monkeypatch)
+    monkeypatch.setattr(server, "can_expose_audio", lambda book: True)
     book = {
         "audiobook_provider": "b2",
         "audio_asset_slug": "dracula",
@@ -45,6 +47,7 @@ def test_reader_manifest_rewrites_b2_mp3_to_api_proxy(monkeypatch):
 
 def test_reader_manifest_audio_slug_alone_does_not_enable_audio(monkeypatch):
     server = _server(monkeypatch)
+    monkeypatch.setattr(server, "can_expose_audio", lambda book: True)
     book = {
         "audio_asset_slug": "dracula",
         "audiobook_enabled": False,
@@ -75,3 +78,39 @@ def test_b2_key_and_range_helpers(monkeypatch):
     assert status == 206
     assert server._content_range_header(byte_range, 1000) == "bytes 100-199/1000"
     assert server._range_content_length(byte_range, 1000) == 100
+
+
+def test_audio_asset_cache_policy_keeps_audio_browser_hot(monkeypatch):
+    server = _server(monkeypatch)
+
+    assert "max-age=600" in server._audio_asset_cache_control("mp3")
+    assert "stale-while-revalidate=3600" in server._audio_asset_cache_control("mp3")
+    assert "max-age=3600" in server._audio_asset_cache_control("timestamps")
+
+
+def test_b2_wrappers_preserve_kwargs_while_running_off_event_loop(monkeypatch):
+    server = _server(monkeypatch)
+
+    class FakeS3:
+        def __init__(self):
+            self.calls = []
+
+        def head_object(self, **kwargs):
+            self.calls.append(("head", kwargs))
+            return {"ContentLength": 10}
+
+        def get_object(self, **kwargs):
+            self.calls.append(("get", kwargs))
+            return {"ContentLength": 4, "Body": object()}
+
+    fake = FakeS3()
+
+    head = asyncio.run(server._b2_head_object(fake, bucket="bucket", key="book.mp3"))
+    obj = asyncio.run(server._b2_get_object(fake, bucket="bucket", key="book.mp3", byte_range="bytes=0-3"))
+
+    assert head["ContentLength"] == 10
+    assert obj["ContentLength"] == 4
+    assert fake.calls == [
+        ("head", {"Bucket": "bucket", "Key": "book.mp3"}),
+        ("get", {"Bucket": "bucket", "Key": "book.mp3", "Range": "bytes=0-3"}),
+    ]

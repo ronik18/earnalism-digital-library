@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-07-07T10:45:00Z",
+  "status": "LOCAL_SOURCE_ALIGNED_PREVIEW_NOT_DEPLOYED",
+  "live_url_inspected": "https://www.theearnalism.com/",
+  "live_headline_before": "Begin with Dracula.",
+  "live_browser_title_before": "Step Into Dracula | The Earnalism Digital Library",
+  "source_headline_after": "A calm digital reading room for timeless Bengali and English literature.",
+  "source_browser_title_after": "Earnalism | Bengali and English Classics in a Calm Digital Library",
+  "live_hero_structure_before": "Dracula-first static shell and controlled-launch fallback copy.",
+  "source_hero_structure_after": "Hybrid editorial hero with neutral library positioning and three curated action cards.",
+  "dracula_is_main_hero_before": true,
+  "dracula_is_main_hero_after": false,
+  "dracula_current_role_after": "English Classics action card only; global header CTA is Browse Library.",
+  "three_action_cards_exist": true,
+  "action_cards": [
+    {
+      "name": "Bengali Classics",
+      "positioning": "reader-only/live",
+      "cta": "Explore Bengali Library",
+      "audio_claim": "none"
+    },
+    {
+      "name": "English Classics",
+      "positioning": "Dracula as one refined reading tile",
+      "cta": "Read Dracula",
+      "audio_claim": "none"
+    },
+    {
+      "name": "Approved Audiobooks",
+      "positioning": "gated listening releases",
+      "cta": "none unless configured/evidence-backed",
+      "audio_claim": "release-gate safe"
+    }
+  ],
+  "bengali_classics_visible_in_first_fold_source": true,
+  "approved_audiobook_cta_gated": true,
+  "a_ghost_story_audio_cta_present": false,
+  "graphical_covers_used": true,
+  "typographic_only_covers_remaining": 0,
+  "duplicate_hero_content_removed": true,
+  "oversized_claustrophobic_copy_reduced": true,
+  "exact_source_files_responsible": [
+    "frontend/src/pages/Home.jsx",
+    "frontend/src/components/ComingSoonBoard.jsx",
+    "frontend/src/components/Header.jsx",
+    "frontend/src/pages/Library.jsx",
+    "frontend/src/pages/BookDetail.jsx",
+    "frontend/src/components/Footer.jsx",
+    "frontend/src/components/FirstVisitSiteTour.jsx",
+    "frontend/src/index.css",
+    "frontend/public/index.html",
+    "frontend/scripts/generate-static-seo-snapshots.mjs"
+  ],
+  "correction_plan_completed": [
+    "Removed Dracula-first homepage headline and static SEO fallback from source.",
+    "Replaced homepage hero with neutral Bengali + English editorial positioning.",
+    "Reframed Dracula as a single English Classics action card.",
+    "Added Bengali Classics action card with reader-only/live copy.",
+    "Kept audiobook card gated with no default A Ghost Story probe or CTA.",
+    "Removed Dracula hardcopy preload from the public shell.",
+    "Validated invalid same-origin API payloads fail closed on book detail pages."
+  ],
+  "validation": {
+    "npm_ci": "PASS_WITH_EXISTING_PEER_WARNINGS",
+    "audio_release_safety": "PASS_4_OF_4",
+    "build": "PASS",
+    "cover_audit": "PASS_164_COVERS_0_TYPOGRAPHIC_ONLY",
+    "visual_smoke": "PASS_72_OF_72",
+    "lighthouse": {
+      "performance": 98,
+      "lcp_ms": 2491.1598,
+      "accessibility": 100,
+      "seo": 100,
+      "cls": 0,
+      "tbt_ms": 0
+    },
+    "git_diff_check": "PASS"
+  },
+  "preview_validation_status": "NOT_RUN_FOR_THIS_PATCH",
+  "preview_blocker_or_next_action": "Deploy/push this source patch to a preview and run visual smoke with VERCEL_AUTOMATION_BYPASS_SECRET if Deployment Protection is enabled.",
+  "release_gate_truth": "PASS; no unapproved audio controls or audiobook claims were introduced."
+}

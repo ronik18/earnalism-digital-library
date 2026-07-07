@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-07-07T11:55:10Z",
+  "updated": true,
+  "required_patterns_checked": [
+    "internal/audiobook_lab/release_gate/",
+    "frontend/build/",
+    "output/**",
+    "**/screenshots/",
+    "**/traces/",
+    "**/videos/",
+    ".pycache-local/",
+    "*.mp3",
+    "*.wav",
+    "*.flac",
+    "book_cover_audit_*",
+    "ux_visual_regression_report.json"
+  ],
+  "present_patterns": {
+    "internal/audiobook_lab/release_gate/": true,
+    "frontend/build/": true,
+    "output/**": true,
+    "**/screenshots/": true,
+    "**/traces/": true,
+    "**/videos/": true,
+    ".pycache-local/": true,
+    "*.mp3": true,
+    "*.wav": true,
+    "*.flac": true,
+    "book_cover_audit_*": true,
+    "ux_visual_regression_report.json": true
+  },
+  "notes": [
+    "Release-gate timestamped runs remain local audit evidence and are excluded from source commits.",
+    "Frontend build output and generated visual/cover audit files are excluded.",
+    "Audio binaries and VTT sidecars are blocked globally unless intentionally reviewed through a source promotion plan."
+  ]
+}

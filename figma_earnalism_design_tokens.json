@@ -1,0 +1,47 @@
+{
+  "name": "Earnalism Premium Literary System",
+  "version": "figma_home_library_reader_v1",
+  "colors": {
+    "ivory": "#F7F0E3",
+    "ivorySoft": "#FBF6EC",
+    "paper": "#EFE2CC",
+    "sepia": "#D8C2A0",
+    "espresso": "#241713",
+    "charcoal": "#332821",
+    "burgundy": "#5A1F2B",
+    "burgundyDeep": "#351018",
+    "gold": "#B58A45",
+    "goldMuted": "#9E7435",
+    "sage": "#546A55",
+    "indigoInk": "#26324A",
+    "success": "#315F4B",
+    "warning": "#8A5B21",
+    "danger": "#8A2D32",
+    "focus": "#D7A84E"
+  },
+  "typography": {
+    "display": "Cormorant Garamond / Playfair Display / Noto Serif Bengali",
+    "body": "Lora / Noto Serif Bengali / Georgia",
+    "ui": "Outfit / Noto Sans Bengali / system sans",
+    "nav": "clamp(0.875rem, 0.82rem + 0.12vw, 0.9375rem)",
+    "eyebrow": "clamp(0.6875rem, 0.66rem + 0.08vw, 0.75rem)",
+    "heroHeadline": "clamp(1.875rem, 1.2rem + 3vw, 3.25rem)",
+    "heroSubtitle": "clamp(1rem, 0.92rem + 0.35vw, 1.125rem)",
+    "cardTitle": "clamp(1.125rem, 1rem + 0.45vw, 1.375rem)",
+    "shelfTitle": "clamp(1.5rem, 1.22rem + 1vw, 1.875rem)",
+    "bookCardTitle": "clamp(0.95rem, 0.9rem + 0.22vw, 1.0625rem)",
+    "metadata": "clamp(0.75rem, 0.72rem + 0.08vw, 0.875rem)",
+    "readerEnglish": "18px default, 1.65-1.8 line-height",
+    "readerBengali": "19px default, 1.8-2.0 line-height"
+  },
+  "radius": {
+    "card": "18px",
+    "panel": "26px",
+    "pill": "999px",
+    "cover": "14px"
+  },
+  "shadows": {
+    "softPanel": "0 24px 60px -42px rgba(53, 16, 24, 0.48)",
+    "cover": "0 18px 34px -24px rgba(36, 23, 19, 0.55)"
+  }
+}

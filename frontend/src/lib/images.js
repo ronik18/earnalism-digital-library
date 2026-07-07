@@ -86,7 +86,7 @@ function safeDominantColor(value) {
   return HEX_COLOR_RE.test(color) ? color : "";
 }
 
-export function bookCoverImageSources(book, { width = 420, widths, quality = 82, forceFallback = false } = {}) {
+export function bookCoverImageSources(book, { width = 420, widths, quality = 82, forceFallback = false, kind = "front" } = {}) {
   if (!book || typeof book !== "object") {
     return { src: "", srcSet: "", placeholder: "", backgroundColor: "", hasCover: false };
   }
@@ -100,14 +100,17 @@ export function bookCoverImageSources(book, { width = 420, widths, quality = 82,
           title: book.title,
           author: book.author,
         },
+        { kind },
       ),
       isFallback: true,
     }
-    : resolveBookCover(book);
+    : resolveBookCover(book, { kind });
   const cover = normalizeImageUrl(resolved.src || "");
-  const thumbnail = forceFallback ? "" : normalizeImageUrl(book.thumbnail_url || "");
-  const placeholder = normalizeImageUrl(book.blur_placeholder || "");
-  const backgroundColor = safeDominantColor(book.dominant_color);
+  const thumbnail = forceFallback
+    ? ""
+    : normalizeImageUrl(kind === "back" ? (book.back_cover_thumbnail_url || "") : (book.thumbnail_url || ""));
+  const placeholder = normalizeImageUrl(kind === "back" ? (book.back_cover_blur_placeholder || "") : (book.blur_placeholder || ""));
+  const backgroundColor = safeDominantColor(kind === "back" ? (book.back_cover_dominant_color || book.dominant_color) : book.dominant_color);
   const source = cover || thumbnail;
   const src = thumbnail || (source ? optimizedImageUrl(source, { width, quality }) : "");
   const responsiveWidths = normalizeWidthList(widths, width);

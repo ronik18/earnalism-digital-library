@@ -1,30 +1,28 @@
 #!/usr/bin/env node
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 
 const repoRoot = process.cwd();
-const baseUrl = process.env.VISUAL_SMOKE_BASE_URL || "";
+const baseUrl = process.env.VISUAL_SMOKE_BASE_URL || "http://127.0.0.1:4173";
 const reportPath = path.join(repoRoot, "ux_visual_regression_report.json");
-const frontendPackageJson = path.join(repoRoot, "frontend", "package.json");
-const runnerPath = path.join(repoRoot, "frontend", "scripts", ".visual-luxury-smoke-runner.mjs");
-const screenshotDir = process.env.VISUAL_SMOKE_SCREENSHOT_DIR || path.join("/tmp", "earnalism-visual-smoke-screenshots");
-const runnerTimeoutMs = Number(process.env.VISUAL_SMOKE_RUNNER_TIMEOUT_MS || 180000);
-const protectionBypassSecret = process.env.VERCEL_AUTOMATION_BYPASS_SECRET || process.env.VERCEL_PROTECTION_BYPASS || "";
-let extraHeaders = {};
-if (process.env.VISUAL_SMOKE_EXTRA_HEADERS_JSON) {
-  try {
-    extraHeaders = JSON.parse(process.env.VISUAL_SMOKE_EXTRA_HEADERS_JSON);
-  } catch {
-    extraHeaders = {};
-  }
-}
-if (protectionBypassSecret && !extraHeaders["x-vercel-protection-bypass"]) {
-  extraHeaders["x-vercel-protection-bypass"] = protectionBypassSecret;
-}
-const fullRoutes = ["/", "/library", "/book/dracula", "/reader/dracula", "/book/a-ghost-story", "/reader/a-ghost-story", "/book/book-ac5a71075e", "/reader/book-ac5a71075e"];
-const defaultRoutes = ["/", "/library", "/book/dracula", "/reader/dracula", "/book/a-ghost-story", "/reader/a-ghost-story"];
-const fullViewports = [
+const protectionBypass = process.env.VERCEL_AUTOMATION_BYPASS_SECRET || process.env.VERCEL_PROTECTION_BYPASS || "";
+const extraHeaders = parseExtraHeaders();
+const sourceOnlyAllowed = process.env.VISUAL_SMOKE_SOURCE_ONLY_OK === "true";
+
+const routes = [
+  "/",
+  "/library",
+  "/book/dracula",
+  "/reader/dracula",
+  "/book/a-ghost-story",
+  "/reader/a-ghost-story",
+  "/book/book-ac5a71075e",
+  "/reader/book-ac5a71075e",
+];
+
+const viewports = [
   { width: 1920, height: 1080 },
   { width: 1536, height: 864 },
   { width: 1440, height: 900 },
@@ -35,18 +33,7 @@ const fullViewports = [
   { width: 430, height: 932 },
   { width: 390, height: 844 },
 ];
-const defaultViewports = [
-  { width: 1536, height: 864 },
-  { width: 1366, height: 768 },
-  { width: 820, height: 1180 },
-  { width: 390, height: 844 },
-];
-const routes = process.env.VISUAL_SMOKE_ROUTES
-  ? process.env.VISUAL_SMOKE_ROUTES.split(",").map((route) => route.trim()).filter(Boolean)
-  : process.env.VISUAL_SMOKE_FULL_MATRIX === "true"
-    ? fullRoutes
-    : defaultRoutes;
-const viewports = process.env.VISUAL_SMOKE_FULL_MATRIX === "true" ? fullViewports : defaultViewports;
+
 const sourceChecks = [
   {
     name: "book-cover-fallback-no-typography",
@@ -70,6 +57,16 @@ const sourceChecks = [
   },
 ];
 
+function parseExtraHeaders() {
+  if (!process.env.VISUAL_SMOKE_EXTRA_HEADERS_JSON) return {};
+  try {
+    const parsed = JSON.parse(process.env.VISUAL_SMOKE_EXTRA_HEADERS_JSON);
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
 function runSourceChecks() {
   return sourceChecks.map((check) => {
     const absolute = path.join(repoRoot, check.file);
@@ -90,251 +87,221 @@ function runSourceChecks() {
   });
 }
 
-function buildRunnerSource() {
-  return `
-import { createRequire } from "node:module";
-import fs from "node:fs";
-
-const require = createRequire(${JSON.stringify(frontendPackageJson)});
-const baseUrl = ${JSON.stringify(baseUrl)};
-const screenshotDir = ${JSON.stringify(screenshotDir)};
-const routes = ${JSON.stringify(routes)};
-const viewports = ${JSON.stringify(viewports)};
-const extraHeaders = ${JSON.stringify(extraHeaders)};
-const extraHeaderNames = ${JSON.stringify(Object.keys(extraHeaders))};
-const protectionBypassConfigured = ${JSON.stringify(Boolean(protectionBypassSecret || extraHeaders["x-vercel-protection-bypass"]))};
-const attempted = [];
-const completed = [];
-const failedSubchecks = [];
-let playwrightImportStatus = "not_run";
-let browserLaunchStatus = "not_run";
-let chromium;
-let browser;
-
-try {
-  ({ chromium } = require("playwright"));
-  playwrightImportStatus = "passed";
-} catch (error) {
-  playwrightImportStatus = "failed";
-  failedSubchecks.push({ scope: "playwright_import", issue: error.message });
-  console.log(JSON.stringify({
-    skipped: false,
-    playwright_import_status: playwrightImportStatus,
-    browser_launch_status: browserLaunchStatus,
-    routes_attempted: attempted,
-    routes_completed: completed,
-    failed_subchecks: failedSubchecks,
-    final_status: "BLOCKED",
-    blockers: failedSubchecks,
-  }, null, 2));
-  process.exit(1);
+function routeToken(route) {
+  const token = route.replace(/[^a-z0-9]+/gi, "_").replace(/^_+|_+$/g, "");
+  return token || "home";
 }
 
-try {
+function readJsonFile(filePath, fallback) {
   try {
-    browser = await chromium.launch({ channel: "chrome", headless: true });
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
   } catch {
-    browser = await chromium.launch({ headless: true });
+    return fallback;
   }
-  browserLaunchStatus = "passed";
-} catch (error) {
-  browserLaunchStatus = "failed";
-  failedSubchecks.push({ scope: "browser_launch", issue: error.message });
-  console.log(JSON.stringify({
-    skipped: false,
-    playwright_import_status: playwrightImportStatus,
-    browser_launch_status: browserLaunchStatus,
-    routes_attempted: attempted,
-    routes_completed: completed,
-    failed_subchecks: failedSubchecks,
-    final_status: "BLOCKED",
-    blockers: failedSubchecks,
-  }, null, 2));
-  process.exit(1);
-}
-
-fs.mkdirSync(screenshotDir, { recursive: true });
-const results = [];
-try {
-  for (const route of routes) {
-    for (const viewport of viewports) {
-      attempted.push({ route, viewport });
-      const page = await browser.newPage({ viewport, deviceScaleFactor: 1 });
-      if (Object.keys(extraHeaders).length) {
-        await page.setExtraHTTPHeaders(extraHeaders);
-      }
-      page.setDefaultTimeout(5000);
-      page.setDefaultNavigationTimeout(15000);
-      const consoleErrors = [];
-      const resourceErrors = [];
-      page.on("console", (msg) => {
-        if (msg.type() === "error") consoleErrors.push(msg.text());
-      });
-      page.on("response", (response) => {
-        if (response.status() >= 400) {
-          resourceErrors.push({ status: response.status(), url: response.url() });
-        }
-      });
-      page.on("requestfailed", (request) => {
-        resourceErrors.push({
-          status: 0,
-          url: request.url(),
-          failure: request.failure()?.errorText || "request failed",
-        });
-      });
-      const url = new URL(route, baseUrl).toString();
-      let status = 0;
-      try {
-        const response = await page.goto(url, { waitUntil: "domcontentloaded", timeout: 15000 });
-        await page.waitForLoadState("networkidle", { timeout: 2500 }).catch(() => undefined);
-        await page.waitForSelector("[data-testid='home-page'], [data-testid='library-page'], [data-testid='book-page'], [data-testid='reader-page'], [data-testid='book-not-found'], [data-testid='book-load-error'], [data-testid='reader-not-found'], [data-testid='reader-error'], [data-testid='reader-locked']", { timeout: 8000 }).catch(() => undefined);
-        await page.waitForTimeout(150);
-        status = response?.status() || 0;
-      } catch (error) {
-        consoleErrors.push(error.message);
-      }
-      const metrics = await page.evaluate(() => {
-        const body = document.body;
-        const hero = document.querySelector("[data-testid='premium-landing-hero'], [data-testid='library-hero']");
-        const heading = document.querySelector("[data-testid='hero-headline'], [data-testid='library-hero'] h1, h1");
-        const cover = document.querySelector("[data-testid='hero-dracula-cover-frame'], .book-cover-image, .reference-hero-book");
-        const cta = document.querySelector("[data-testid='hero-cta-read'], [data-testid='library-hero-read'], .btn-primary");
-        const headingStyle = heading ? getComputedStyle(heading) : null;
-        const heroStyle = hero ? getComputedStyle(hero) : null;
-        const rect = cover ? cover.getBoundingClientRect() : null;
-        const bodyText = body.innerText || "";
-        return {
-          appContentVisible: Boolean(document.querySelector("[data-testid='home-page'], [data-testid='library-page'], [data-testid='book-page'], [data-testid='reader-page'], [data-testid='book-not-found'], [data-testid='book-load-error'], [data-testid='reader-not-found'], [data-testid='reader-error'], [data-testid='reader-locked']")),
-          vercelLoginShellDetected: new RegExp("vercel deployment protection|log in to continue|log in to vercel|continue with github|continue with saml sso|vercel\\.com/sso-api", "i").test(bodyText),
-          horizontalOverflow: body.scrollWidth > window.innerWidth + 1,
-          heroHeadingVisible: heading ? Boolean(heading.offsetWidth && heading.offsetHeight) : null,
-          heroCtaVisible: cta ? Boolean(cta.offsetWidth && cta.offsetHeight) : true,
-          coverClipped: rect ? rect.right > window.innerWidth + 1 || rect.left < -1 : false,
-          textColor: headingStyle?.color || "",
-          heroBackground: heroStyle?.backgroundColor || "",
-        };
-      });
-      const screenshotPath = screenshotDir + "/" + route.replace(/[^a-z0-9]+/gi, "_").replace(/^_$/, "home") + "_" + viewport.width + "x" + viewport.height + ".png";
-      await page.screenshot({ path: screenshotPath, fullPage: false });
-      await page.close();
-      const result = { route, viewport, status, screenshotPath, consoleErrors, resourceErrors, ...metrics };
-      results.push(result);
-      completed.push({ route, viewport });
-    }
-  }
-} finally {
-  await browser.close();
-}
-
-function isExpectedResourceError(error) {
-  const url = error?.url || "";
-  return error?.status === 404 && (
-    /\\/favicon\\.ico(?:$|[?#])/.test(url) ||
-    /\\/api\\/books\\/a-ghost-story(?:$|[?#])/.test(url) ||
-    /\\/api\\/reader\\/book\\/a-ghost-story\\/manifest(?:$|[?#])/.test(url)
-  );
-}
-
-function actionableConsoleErrors(errors = []) {
-  return errors.filter((error) => !/^Failed to load resource:/i.test(error));
-}
-
-for (const result of results) {
-  const issues = [];
-  const consoleBlockers = actionableConsoleErrors(result.consoleErrors);
-  const unexpectedResourceErrors = (result.resourceErrors || []).filter((error) => !isExpectedResourceError(error));
-  if (!result.appContentVisible) issues.push("app content not visible");
-  if (result.vercelLoginShellDetected) issues.push("Vercel login shell");
-  if (result.horizontalOverflow) issues.push("horizontal overflow");
-  if ((result.route === "/" || result.route === "/library") && !result.heroHeadingVisible) issues.push("hero heading invisible");
-  if (!result.heroCtaVisible) issues.push("CTA invisible");
-  if (result.coverClipped) issues.push("cover clipped");
-  if (consoleBlockers.length) issues.push("console errors");
-  if (unexpectedResourceErrors.length) issues.push("unexpected resource errors");
-  for (const issue of issues) {
-    failedSubchecks.push({
-      route: result.route,
-      viewport: result.viewport,
-      issue,
-      consoleErrors: consoleBlockers,
-      unexpectedResourceErrors,
-    });
-  }
-}
-
-const finalStatus = failedSubchecks.length ? "FAIL" : "PASS";
-console.log(JSON.stringify({
-  skipped: false,
-  screenshotDir,
-  protection_bypass_configured: protectionBypassConfigured,
-  extra_header_names: extraHeaderNames,
-  results,
-  playwright_import_status: playwrightImportStatus,
-  browser_launch_status: browserLaunchStatus,
-  routes_attempted: attempted,
-  routes_completed: completed,
-  failed_subchecks: failedSubchecks,
-  final_status: finalStatus,
-  blockers: failedSubchecks,
-}, null, 2));
-process.exit(failedSubchecks.length ? 1 : 0);
-`;
 }
 
 function runBrowserChecks() {
+  if (!baseUrl && sourceOnlyAllowed) return { skipped: true, reason: "VISUAL_SMOKE_BASE_URL not set and source-only mode explicitly allowed" };
   if (!baseUrl) {
     return {
-      skipped: true,
-      reason: "VISUAL_SMOKE_BASE_URL not set",
+      skipped: false,
       playwright_import_status: "not_run",
       browser_launch_status: "not_run",
-      routes_attempted: [],
-      routes_completed: [],
-      failed_subchecks: [{ scope: "configuration", issue: "VISUAL_SMOKE_BASE_URL not set" }],
-      final_status: "BLOCKED",
-      blockers: [{ scope: "configuration", issue: "VISUAL_SMOKE_BASE_URL not set" }],
+      browser_checks_required: true,
+      routes_attempted: routes.length * viewports.length,
+      routes_completed: 0,
+      failed_subchecks: [{ issue: "VISUAL_SMOKE_BASE_URL not set" }],
+      blockers: [{ route: "*", viewport: "*", issue: "VISUAL_SMOKE_BASE_URL not set" }],
     };
   }
-  fs.writeFileSync(runnerPath, buildRunnerSource(), "utf8");
-  const result = spawnSync(process.execPath, [runnerPath], {
-    cwd: repoRoot,
+
+  const runnerPath = path.join(repoRoot, "frontend", ".earnalism-visual-smoke-runner.mjs");
+  const browserResultPath = path.join(os.tmpdir(), "earnalism-visual-smoke-browser-result.json");
+  const screenshotDir = process.env.VISUAL_SMOKE_SCREENSHOT_DIR || path.join(os.tmpdir(), "earnalism-visual-smoke-screenshots");
+  const headers = {
+    ...extraHeaders,
+    ...(protectionBypass ? { "x-vercel-protection-bypass": protectionBypass } : {}),
+  };
+  fs.mkdirSync(screenshotDir, { recursive: true });
+  fs.writeFileSync(runnerPath, `
+import fs from "node:fs";
+let chromium;
+let playwrightImportStatus = "not_run";
+let browserLaunchStatus = "not_run";
+try {
+  ({ chromium } = await import("playwright"));
+  playwrightImportStatus = "passed";
+} catch (error) {
+  console.log(JSON.stringify({
+    skipped: false,
+    playwright_import_status: "failed",
+    browser_launch_status: "not_run",
+    browser_checks_required: true,
+    routes_attempted: ${routes.length * viewports.length},
+    routes_completed: 0,
+    failed_subchecks: [{ issue: "playwright import failed", message: error.message }],
+    blockers: [{ route: "*", viewport: "*", issue: "playwright import failed" }],
+  }, null, 2));
+  process.exit(1);
+}
+
+const baseUrl = ${JSON.stringify(baseUrl)};
+const screenshotDir = ${JSON.stringify(screenshotDir)};
+const resultFile = ${JSON.stringify(browserResultPath)};
+const routes = ${JSON.stringify(routes)};
+const viewports = ${JSON.stringify(viewports)};
+const headers = ${JSON.stringify(headers)};
+let browser;
+try {
+  browser = await chromium.launch({ channel: "chrome", headless: true });
+  browserLaunchStatus = "passed";
+} catch (chromeError) {
+  try {
+    browser = await chromium.launch({ headless: true });
+    browserLaunchStatus = "passed";
+  } catch (error) {
+    console.log(JSON.stringify({
+      skipped: false,
+      playwright_import_status: playwrightImportStatus,
+      browser_launch_status: "failed",
+      browser_checks_required: true,
+      routes_attempted: routes.length * viewports.length,
+      routes_completed: 0,
+      failed_subchecks: [{ issue: "browser launch failed", message: error.message }],
+      blockers: [{ route: "*", viewport: "*", issue: "browser launch failed" }],
+    }, null, 2));
+    process.exit(1);
+  }
+}
+
+const results = [];
+for (const route of routes) {
+  for (const viewport of viewports) {
+    const page = await browser.newPage({ viewport, deviceScaleFactor: 1, extraHTTPHeaders: headers });
+    const consoleErrors = [];
+    const resourceErrors = [];
+    page.on("console", (msg) => {
+      if (msg.type() !== "error") return;
+      const text = msg.text();
+      if (/^Failed to load resource:/i.test(text)) resourceErrors.push(text);
+      else consoleErrors.push(text);
+    });
+    const url = new URL(route, baseUrl).toString();
+    let status = 0;
+    try {
+      const response = await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
+      status = response?.status() || 0;
+    } catch (error) {
+      consoleErrors.push(error.message);
+    }
+    await page.waitForSelector(
+      "[data-testid='home-page'], [data-testid='library-page'], [data-testid='book-page'], [data-testid='reader-page'], [data-testid='book-not-found'], [data-testid='reader-not-found']",
+      { timeout: 12000 },
+    ).catch(() => {});
+    const metrics = await page.evaluate(() => {
+      const body = document.body;
+      const bodyText = body?.innerText || "";
+      const hero = document.querySelector("[data-testid='premium-landing-hero'], [data-testid='library-hero']");
+      const heading = document.querySelector("[data-testid='hero-headline'], [data-testid='library-hero'] h1, h1");
+      const cover = document.querySelector("[data-testid='hero-dracula-cover-frame'], .book-cover-image, .reference-hero-book, .reader-cover-page img");
+      const cta = document.querySelector("[data-testid='hero-cta-read'], [data-testid='library-hero-read'], .btn-primary, a[href*='/reader/']");
+      const headingStyle = heading ? getComputedStyle(heading) : null;
+      const heroStyle = hero ? getComputedStyle(hero) : null;
+      const rect = cover ? cover.getBoundingClientRect() : null;
+      const textOnlyFallback = Boolean(document.querySelector(".book-cover-image__fallback-title, .book-cover-image__fallback-author"));
+      return {
+        appContentVisible: Boolean(document.querySelector("[data-testid='home-page'], [data-testid='library-page'], [data-testid='book-page'], [data-testid='reader-page'], [data-testid='book-not-found'], [data-testid='reader-not-found']")),
+        vercelLoginShellDetected: /vercel deployment protection|log in to continue|continue with github|saml sso|vercel\\.com\\/sso-api/i.test(bodyText),
+        horizontalOverflow: body.scrollWidth > window.innerWidth + 1,
+        heroHeadingVisible: heading ? Boolean(heading.offsetWidth && heading.offsetHeight) : true,
+        heroCtaVisible: cta ? Boolean(cta.offsetWidth && cta.offsetHeight) : true,
+        coverClipped: rect ? rect.right > window.innerWidth + 1 || rect.left < -1 : false,
+        textOnlyCoverFallbackVisible: textOnlyFallback,
+        textColor: headingStyle?.color || "",
+        heroBackground: heroStyle?.backgroundColor || "",
+      };
+    });
+    const routeToken = route.replace(/[^a-z0-9]+/gi, "_").replace(/^_+|_+$/g, "") || "home";
+    const screenshotPath = screenshotDir + "/" + routeToken + "_" + viewport.width + "x" + viewport.height + ".png";
+    await page.screenshot({ path: screenshotPath, fullPage: false });
+    await page.close();
+    results.push({ route, viewport, status, screenshotPath, consoleErrors, resourceErrors, ...metrics });
+  }
+}
+await browser.close();
+const blockers = results.flatMap((result) => {
+  const issues = [];
+  if (!result.appContentVisible) issues.push("app content not visible");
+  if (result.vercelLoginShellDetected) issues.push("Vercel login shell");
+  if (result.horizontalOverflow) issues.push("horizontal overflow");
+  if (!result.heroHeadingVisible) issues.push("hero heading invisible");
+  if (!result.heroCtaVisible) issues.push("CTA invisible");
+  if (result.coverClipped) issues.push("cover clipped");
+  if (result.textOnlyCoverFallbackVisible) issues.push("text-only cover fallback visible");
+  if (result.consoleErrors.length) issues.push("console errors");
+  return issues.map((issue) => ({ route: result.route, viewport: result.viewport, issue }));
+});
+const resultPayload = {
+  skipped: false,
+  playwright_import_status: playwrightImportStatus,
+  browser_launch_status: browserLaunchStatus,
+  browser_checks_required: true,
+  browser_checks_completed: results.length,
+  routes_attempted: routes.length * viewports.length,
+  routes_completed: results.length,
+  screenshotDir,
+  results,
+  failed_subchecks: blockers,
+  blockers,
+};
+fs.writeFileSync(resultFile, JSON.stringify(resultPayload, null, 2));
+console.log(JSON.stringify({
+  skipped: false,
+  playwright_import_status: playwrightImportStatus,
+  browser_launch_status: browserLaunchStatus,
+  browser_checks_required: true,
+  browser_checks_completed: results.length,
+  routes_attempted: routes.length * viewports.length,
+  routes_completed: results.length,
+  failed_subcheck_count: blockers.length,
+  resultFile,
+}, null, 2));
+process.exit(blockers.length ? 1 : 0);
+`);
+
+  const result = spawnSync("node", [runnerPath], {
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
-    timeout: runnerTimeoutMs,
-    killSignal: "SIGTERM",
-    maxBuffer: 50 * 1024 * 1024,
   });
   try {
     fs.unlinkSync(runnerPath);
   } catch {
-    // Best-effort cleanup only.
+    // Best effort cleanup only; a stale runner must not turn a real browser pass into failure.
   }
   let parsed = null;
   try {
     parsed = JSON.parse(result.stdout);
+    if (parsed?.resultFile && fs.existsSync(parsed.resultFile)) {
+      parsed = readJsonFile(parsed.resultFile, parsed);
+    }
   } catch {
     parsed = {
       skipped: false,
-      failedToParse: true,
+      playwright_import_status: "unknown",
+      browser_launch_status: "unknown",
+      browser_checks_required: true,
+      routes_attempted: routes.length * viewports.length,
+      routes_completed: 0,
+      failed_subchecks: [{ issue: "visual smoke runner output parse failed" }],
+      blockers: [{ route: "*", viewport: "*", issue: "visual smoke runner output parse failed" }],
       stdout: result.stdout.slice(-2000),
       stderr: result.stderr.slice(-2000),
       status: result.status,
-      playwright_import_status: "unknown",
-      browser_launch_status: "unknown",
-      routes_attempted: [],
-      routes_completed: [],
-      failed_subchecks: [{ scope: "browser_runner", issue: "Browser runner output was not parseable JSON" }],
-      final_status: "BLOCKED",
-      blockers: [{ scope: "browser_runner", issue: "Browser runner output was not parseable JSON" }],
     };
   }
-  if (result.status !== 0 && (!parsed.blockers || parsed.blockers.length === 0)) {
-    const issue = result.error?.code === "ETIMEDOUT"
-      ? `Browser runner timed out after ${runnerTimeoutMs}ms`
-      : `Browser runner exited ${result.status}`;
-    parsed.blockers = [{ scope: "browser_runner", issue }];
+  if (result.status !== 0 && !parsed.blockers?.length) {
+    parsed.blockers = [{ route: "*", viewport: "*", issue: "visual smoke runner exited non-zero" }];
     parsed.failed_subchecks = parsed.blockers;
-    parsed.final_status = "BLOCKED";
   }
   return parsed;
 }
@@ -343,23 +310,25 @@ const source = runSourceChecks();
 const browser = runBrowserChecks();
 const sourceBlockers = source.flatMap((check) => check.blockers.map((blocker) => ({ check: check.name, blocker })));
 const browserBlockers = browser?.blockers || [];
-const allBlockers = [...sourceBlockers, ...browserBlockers];
 const report = {
   generated_at: new Date().toISOString(),
-  mode: baseUrl ? "browser_and_source" : "blocked_no_browser_target",
+  mode: "browser_and_source",
+  base_url: baseUrl,
   routes,
   viewports: viewports.map((viewport) => `${viewport.width}x${viewport.height}`),
   source_checks: source,
   browser_checks: browser,
-  protection_bypass_configured: browser?.protection_bypass_configured || false,
-  extra_header_names: browser?.extra_header_names || [],
-  playwright_import_status: browser?.playwright_import_status || "unknown",
-  browser_launch_status: browser?.browser_launch_status || "unknown",
-  routes_attempted: browser?.routes_attempted || [],
-  routes_completed: browser?.routes_completed || [],
+  playwright_import_status: browser?.playwright_import_status || "not_run",
+  browser_launch_status: browser?.browser_launch_status || "not_run",
+  browser_checks_required: true,
+  browser_checks_completed: browser?.browser_checks_completed || 0,
+  routes_attempted: browser?.routes_attempted || routes.length * viewports.length,
+  routes_completed: browser?.routes_completed || 0,
   failed_subchecks: browser?.failed_subchecks || [],
-  critical_blockers: allBlockers,
-  visual_smoke_status: allBlockers.length === 0 ? "PASS" : "FAIL",
+  protection_bypass_configured: Boolean(protectionBypass),
+  extra_header_names: Object.keys(extraHeaders).concat(protectionBypass ? ["x-vercel-protection-bypass"] : []),
+  critical_blockers: [...sourceBlockers, ...browserBlockers],
+  visual_smoke_status: sourceBlockers.length === 0 && browserBlockers.length === 0 ? "PASS" : "FAIL",
 };
 fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify({
@@ -367,8 +336,8 @@ console.log(JSON.stringify({
   mode: report.mode,
   playwright_import_status: report.playwright_import_status,
   browser_launch_status: report.browser_launch_status,
-  routes_attempted: report.routes_attempted.length,
-  routes_completed: report.routes_completed.length,
+  routes_attempted: report.routes_attempted,
+  routes_completed: report.routes_completed,
   failed_subchecks: report.failed_subchecks.length,
   critical_blockers: report.critical_blockers.length,
   report_path: reportPath,

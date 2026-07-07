@@ -8,11 +8,11 @@ import IndiaCraftBadge from "./IndiaCraftBadge";
 import { getEnabledSocialLinks } from "../config/socialLinks";
 
 const NAV = [
-  { to: "/", label: "Home" },
   { to: "/library", label: "Library" },
-  { to: "/journal", label: "Journal" },
+  { to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" },
+  { to: "/library?language=en", label: "English Classics" },
+  { to: "/library?availability=reader-ready", label: "Reader" },
   { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
 ];
 
 const SOCIAL_ICONS = {
@@ -57,7 +57,7 @@ export default function Header() {
               end={n.to === "/"}
               data-testid={`nav-${n.label.toLowerCase().replace(/\s/g, '-')}`}
               className={({ isActive }) =>
-                `text-[0.7rem] tracking-[0.26em] uppercase transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
+                `text-[0.88rem] tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
               }
             >
               {n.label}
@@ -67,7 +67,7 @@ export default function Header() {
             to={accountHref}
             data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
             className={({ isActive }) =>
-              `text-[0.7rem] tracking-[0.26em] uppercase transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
+              `text-[0.88rem] tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
             }
           >
             {accountLabel}
@@ -75,7 +75,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <Link to="/book/dracula" className="btn-secondary" data-testid="header-cta-library">Start Dracula</Link>
+          <Link to="/library" className="btn-secondary" data-testid="header-cta-library">Enter Library</Link>
         </div>
 
         <button
@@ -115,7 +115,7 @@ export default function Header() {
             >
               {accountLabel}
             </NavLink>
-            <Link to="/book/dracula" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Start Dracula</Link>
+            <Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Enter Library</Link>
 
             {activeSocials.length > 0 && (
               <nav className="mt-7 pt-5 border-t border-brand-soft flex items-center justify-center gap-4" aria-label="Earnalism social links" data-testid="mobile-socials">

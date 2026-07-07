@@ -11,6 +11,7 @@ import { canShowReaderFinishPrompt, markReaderFinishPromptShown } from '../lib/f
 import { DRACULA_CTA_EVENTS, LIVE_APPROVED_SLUG, normalizeChapterDisplayTitle } from '../lib/controlledLaunch';
 import { useAuth } from '../context/AuthContext';
 import { optimizedImageUrl } from '../lib/images';
+import { resolveBookCover } from '../lib/bookCoverResolver';
 import useSEO from '../hooks/useSEO';
 import { canExposeAudiobookControls } from '../lib/audioReleaseSafety';
 
@@ -42,6 +43,18 @@ const LINE_SPACING_OPTIONS = [
   { label: 'Comfortable', value: 'comfortable', english: 1.75, bengali: 1.9 },
   { label: 'Relaxed', value: 'relaxed', english: 1.9, bengali: 2.05 },
   { label: 'Airy', value: 'airy', english: 2.05, bengali: 2.2 },
+];
+
+const READER_MARGIN_OPTIONS = [
+  { label: 'Narrow', value: 'narrow', measure: '600px' },
+  { label: 'Classic', value: 'classic', measure: '680px' },
+  { label: 'Wide', value: 'wide', measure: '760px' },
+];
+
+const HIGHLIGHT_INTENSITY_OPTIONS = [
+  { label: 'Low', value: 'low' },
+  { label: 'Medium', value: 'medium' },
+  { label: 'High', value: 'high' },
 ];
 
 const LOW_BALANCE_THRESHOLD = 300;
@@ -509,9 +522,7 @@ function audioAssetUrl(book, lang, slug, suffix) {
 }
 
 function readerCoverUrl(book = {}, kind = 'front') {
-  const src = kind === 'back'
-    ? (book?.back_cover_image_url || book?.back_cover_url || '')
-    : (book?.cover_image_url || book?.cover_url || '');
+  const src = resolveBookCover(book, { kind })?.src || '';
   return optimizedImageUrl(src, { width: 1400 });
 }
 
@@ -918,10 +929,14 @@ export default function Reader() {
   const [notFound, setNotFound] = useState(false);
   const [lockedState, setLockedState] = useState(null);
 
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('beige');
   const [fontSizeIdx, setFontSizeIdx] = useState(0);
   const [lineSpacingMode, setLineSpacingMode] = useState('comfortable');
+  const [marginMode, setMarginMode] = useState('classic');
   const [fontFamilyMode, setFontFamilyMode] = useState('sans');
+  const [focusMode, setFocusMode] = useState(false);
+  const [reducedMotionMode, setReducedMotionMode] = useState(false);
+  const [highlightIntensity, setHighlightIntensity] = useState('medium');
   const [showSettings, setShowSettings] = useState(false);
   const [showTOC, setShowTOC] = useState(false);
   const [toolbarVisible, setToolbarVisible] = useState(true);
@@ -2391,6 +2406,7 @@ export default function Reader() {
   }
 
   const colors = THEMES[theme];
+  const marginSetting = READER_MARGIN_OPTIONS.find((item) => item.value === marginMode) || READER_MARGIN_OPTIONS[1];
   const lowBalance = walletSeconds > 0 && walletSeconds <= LOW_BALANCE_THRESHOLD;
   const voiceButtonLabel = !ttsActive
     ? (isBengali ? 'Listen in Bengali' : 'Listen')
@@ -2415,7 +2431,13 @@ export default function Reader() {
       ? Math.max(1, Math.ceil(((100 - effectiveReadProgress) / 100) * (totalWords / 220)))
       : null;
   const contentLineHeight = isBengali ? lineSpacing.bengali : lineSpacing.english;
-  const readerThemeClass = `premium-reader premium-reader--${theme}`;
+  const readerThemeClass = [
+    'premium-reader',
+    `premium-reader--${theme}`,
+    focusMode ? 'premium-reader--focus' : '',
+    reducedMotionMode ? 'premium-reader--reduced-motion' : '',
+    `premium-reader--highlight-${highlightIntensity}`,
+  ].filter(Boolean).join(' ');
   const contentClassName = [
     'reader-content',
     isBengali ? 'reader-content--bengali' : 'reader-content--english',
@@ -2439,6 +2461,7 @@ export default function Reader() {
       style={{
         '--reader-font-size': FONT_SIZES[fontSizeIdx].size,
         '--reader-line-height': contentLineHeight,
+        '--reader-measure': marginSetting.measure,
         '--reader-body-font': readerFontFamily,
         '--reader-heading-font': isBengali ? BENGALI_SERIF : READER_DISPLAY,
         '--reader-canvas': colors.canvas,
@@ -2646,8 +2669,9 @@ export default function Reader() {
           </button>
 
           {narrationDisabledForBook ? (
-            <div className="reader-audio-disabled" aria-label="Audio disabled for this book">
-              Audio hidden until approved
+            <div className="reader-audio-unavailable" aria-label="Audio unavailable for this reading edition">
+              <strong>Reading edition available.</strong>
+              <span>Audio will appear only after narration, sync, and browser gates pass.</span>
             </div>
           ) : (
             <div className="reader-audio-control">
@@ -2689,9 +2713,12 @@ export default function Reader() {
                 {audioDisabledForPage
                   ? 'Audio starts on reading pages'
                   : generatedAudioAvailable
-                  ? (ttsActive && !ttsPaused ? 'Synced audiobook' : 'Synced audio ready')
+                  ? (ttsActive && !ttsPaused ? 'Section-following narration' : 'Section audio ready')
                   : (ttsActive && !ttsPaused ? 'Narrating' : 'Resume anytime')}
               </span>
+              {generatedAudioAvailable && (
+                <span className="reader-audio-control__sync-label">Paragraph/Stanza Sync</span>
+              )}
             </div>
           )}
 
@@ -2845,10 +2872,48 @@ export default function Reader() {
           </div>
 
           <div className="reader-setting-group">
+            <span className="reader-setting-label">Margin width</span>
+            <div className="reader-segmented-control">
+              {READER_MARGIN_OPTIONS.map((item) => (
+                <button key={item.value} type="button" onClick={() => setMarginMode(item.value)} aria-pressed={marginMode === item.value}>
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="reader-setting-group">
             <span className="reader-setting-label">Font</span>
             <div className="reader-segmented-control">
               <button type="button" onClick={() => setFontFamilyMode('serif')} aria-pressed={fontFamilyMode === 'serif'}>Serif</button>
               <button type="button" onClick={() => setFontFamilyMode('sans')} aria-pressed={fontFamilyMode === 'sans'}>Sans</button>
+            </div>
+          </div>
+
+          <div className="reader-setting-group">
+            <span className="reader-setting-label">Reading focus</span>
+            <div className="reader-segmented-control">
+              <button type="button" onClick={() => setFocusMode(false)} aria-pressed={!focusMode}>Normal</button>
+              <button type="button" onClick={() => setFocusMode(true)} aria-pressed={focusMode}>Focus</button>
+            </div>
+          </div>
+
+          <div className="reader-setting-group">
+            <span className="reader-setting-label">Motion</span>
+            <div className="reader-segmented-control">
+              <button type="button" onClick={() => setReducedMotionMode(false)} aria-pressed={!reducedMotionMode}>Calm</button>
+              <button type="button" onClick={() => setReducedMotionMode(true)} aria-pressed={reducedMotionMode}>Reduced</button>
+            </div>
+          </div>
+
+          <div className="reader-setting-group">
+            <span className="reader-setting-label">Highlight intensity</span>
+            <div className="reader-segmented-control">
+              {HIGHLIGHT_INTENSITY_OPTIONS.map((item) => (
+                <button key={item.value} type="button" onClick={() => setHighlightIntensity(item.value)} aria-pressed={highlightIntensity === item.value}>
+                  {item.label}
+                </button>
+              ))}
             </div>
           </div>
 

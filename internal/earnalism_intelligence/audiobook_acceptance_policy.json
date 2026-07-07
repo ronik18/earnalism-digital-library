@@ -27,6 +27,19 @@
       "fatal_flags_required_false": true,
       "customer_experience": "premium acceptable"
     },
+    "BENGALI_AUDIO_RELEASE_APPROVED": {
+      "policy_version": "bengali_audiobook_acceptance_v2_92",
+      "language_scope": "ben",
+      "overall_listening_score_min": 9.2,
+      "confidence_score_min": 0.9,
+      "fatal_flags_required_false": true,
+      "customer_experience": "Bengali release-approved when representative/full-book listening is natural and all objective gates pass"
+    },
+    "BORDERLINE_REPAIR_REQUIRED": {
+      "overall_listening_score_min": 8.8,
+      "overall_listening_score_max": 9.19,
+      "max_targeted_repair_attempts": 1
+    },
     "BORDERLINE_AUDIO_REPAIR_REQUIRED": {
       "overall_listening_score_min": 9.0,
       "overall_listening_score_max": 9.29,
@@ -45,5 +58,35 @@
     "list_reading_rhythm_detected",
     "placeholder_audio_detected"
   ],
-  "reader_preservation_rule": "If reader/source/rights/covers pass, keep reader-only live when audiobook fails."
+  "reader_preservation_rule": "If reader/source/rights/covers pass, keep reader-only live when audiobook fails.",
+  "bengali_audiobook_acceptance_v2_92": {
+    "status": "ACTIVE_BY_OWNER_POLICY_UPDATE",
+    "effective_date": "2026-07-07",
+    "language_scope": "ben",
+    "representative_or_full_book_listening_score_min": 9.2,
+    "confidence_score_min": 0.9,
+    "fatal_flags_blocking": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected"
+    ],
+    "objective_gates_remain_strict": true,
+    "scale_rule": "Generate exactly one Bengali pilot first; do not start 31-title expansion until the pilot passes every objective gate."
+  },
+  "automated_bengali_audio_pause_policy": {
+    "status": "REOPENED_FOR_BENGALI_9_2_RESCUE",
+    "updated_at": "2026-07-07T00:00:00Z",
+    "no_more_automated_bengali_tts_this_sprint": false,
+    "representative_audition_required_before_full_pilot": true,
+    "isolated_sample_not_sufficient_for_full_pilot": true,
+    "future_reopening_criteria": [
+      "new Bengali provider/model with representative audition evidence >=9.3 and confidence >=0.90",
+      "human/professional narration workflow with representative audition pass",
+      "licensed audiobook import with rights, provenance, ASR/manuscript match, and measured sync",
+      "manually approved exceptional sample set that covers opening, dialogue, emotional, punctuation-heavy, and ending-style passages",
+      "improved Sarvam model/voice with fresh capability evidence and no mechanical/list-reading flags"
+    ]
+  }
 }

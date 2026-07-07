@@ -1,0 +1,9 @@
+{
+  "generated_at": "2026-07-07T12:11:02Z",
+  "package_json_changed": false,
+  "package_lock_changed": false,
+  "decision": "restore_or_keep_origin_main_package_lock",
+  "action": "No package-lock change is present in clean worktree. Keep origin/main lockfile and do not promote dirty-workspace lockfile drift.",
+  "validation": "npm ci --prefix frontend will be rerun after this decision.",
+  "risk": "Promoting the dirty workspace lockfile previously broke npm ci by dropping Playwright lock entries while package.json requires Playwright."
+}

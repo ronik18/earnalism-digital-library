@@ -1,0 +1,93 @@
+{
+  "generated_at": "2026-07-07T04:54:30+00:00",
+  "status": "PASS_LOCAL_PRODUCTION_EQUIVALENT",
+  "principles": [
+    "Use calmer clamp-based type scales instead of oversized hero/display text.",
+    "Keep body/card text readable while reducing visual claustrophobia.",
+    "Use spacing, color, and weight for hierarchy before large font jumps.",
+    "Preserve Bengali/English readability and release-gate truth."
+  ],
+  "before_after_computed_source_sizes": {
+    "nav": {
+      "before": "quiet fixed header text, unchanged core size",
+      "after": "unchanged readable nav; spacing preserved"
+    },
+    "hero_eyebrow": {
+      "before": "small uppercase tracking",
+      "after": "unchanged small premium label; no extra letter-spacing added"
+    },
+    "home_hero_title": {
+      "before": "2.12rem / 2.34rem / 3.08rem / 3.72rem",
+      "after": "2.02rem / 2.22rem / 2.82rem / 3.38rem"
+    },
+    "home_hero_subtitle": {
+      "before": "up to 1.24rem italic",
+      "after": "up to 1.16rem italic with controlled max-width"
+    },
+    "library_hero_title": {
+      "before": "up to 3.85rem",
+      "after": "up to 3.42rem"
+    },
+    "library_hero_subtitle": {
+      "before": "up to 1.26rem",
+      "after": "up to 1.18rem"
+    },
+    "action_cards": {
+      "before": "large display card hierarchy",
+      "after": "card titles stay compact; cover art carries more visual weight"
+    },
+    "shelf_titles": {
+      "before": "1.85rem / 2.35rem",
+      "after": "1.68rem / 2.12rem"
+    },
+    "library_filters": {
+      "before": "unchanged compact controls",
+      "after": "unchanged; no cramped regression detected"
+    },
+    "book_card_title": {
+      "before": "1.28rem / 1.38rem",
+      "after": "1.12rem / 1.22rem"
+    },
+    "book_card_metadata": {
+      "before": "0.85rem, 0.14em tracking",
+      "after": "0.78rem, 0.12em tracking"
+    },
+    "book_detail_title": {
+      "before": "up to 3.75rem",
+      "after": "up to 3.35rem"
+    },
+    "book_detail_section_title": {
+      "before": "1.65rem / 1.85rem",
+      "after": "1.48rem / 1.68rem"
+    },
+    "reader_controls": {
+      "before": "existing comfortable reader controls",
+      "after": "unchanged; reader cover resolver hardened for graphical fallback"
+    }
+  },
+  "validation": {
+    "lighthouse": {
+      "performance": 96,
+      "accessibility": 100,
+      "seo": 100,
+      "best_practices": 100,
+      "lcp_ms": 2641.1,
+      "fcp_ms": 902.4,
+      "cls": 0,
+      "tbt_ms": 0,
+      "speed_index_ms": 2683.8,
+      "total_byte_weight": 261125
+    },
+    "visual_smoke": {
+      "status": "PASS",
+      "routes_attempted": 72,
+      "routes_completed": 72,
+      "failed_subchecks": 0,
+      "critical_blockers": 0,
+      "playwright_import_status": "passed",
+      "browser_launch_status": "passed"
+    },
+    "accessibility": "PASS by Lighthouse 100 and visual smoke no overflow/clipping",
+    "audio_release_safety": "PASS 4/4"
+  }
+}

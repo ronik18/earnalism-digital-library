@@ -41,3 +41,13 @@ def test_redis_cache_rejects_media_binaries_and_data_uris(monkeypatch):
     assert server._redis_cache_payload_is_media({"cover_image": "data:image/png;base64,AAAA"}) is True
     assert server._redis_cache_payload_is_media({"audio": {"mp3": "data:audio/mpeg;base64,AAAA"}}) is True
     assert server._cache_payload_encode_for_redis("test-policy", {"audio": b"ID3"}) is None
+
+
+def test_client_etag_matching_supports_weak_validators(monkeypatch):
+    server = _server(monkeypatch)
+
+    class Request:
+        headers = {"if-none-match": 'W/"reader-manifest-a", "other"'}
+
+    assert server._client_etag_matches(Request(), 'W/"reader-manifest-a"') is True
+    assert server._client_etag_matches(Request(), 'W/"reader-manifest-b"') is False

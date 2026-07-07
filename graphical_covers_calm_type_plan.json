@@ -1,0 +1,80 @@
+{
+  "generated_at": "2026-07-06T00:00:00Z",
+  "workstream": "graphical_covers_calm_typography",
+  "current_visual_risks": [
+    "Missing or placeholder covers can render as typography-only fallback surfaces in customer-facing cards.",
+    "Homepage and library hero type ramps remain large enough to feel claustrophobic on laptop viewports.",
+    "Separate shelf placeholder logic can diverge from the shared production cover component.",
+    "Adding graphical covers as heavy raster assets could regress Lighthouse and LCP."
+  ],
+  "cover_audit_strategy": {
+    "script": "frontend/scripts/audit-book-covers.mjs",
+    "scope": [
+      "controlled publication public_book metadata",
+      "controlled launch pipeline books",
+      "homepage shelf cards",
+      "library cards",
+      "detail and reader cover consumers through shared BookCoverImage"
+    ],
+    "classification": [
+      "missing",
+      "broken",
+      "typography_only_plain",
+      "graphical_content_themed",
+      "too_heavy",
+      "front_back_pair"
+    ]
+  },
+  "typography_audit_strategy": {
+    "routes": ["/", "/library", "/book/dracula", "/reader/dracula", "/book/a-ghost-story", "/reader/a-ghost-story"],
+    "checks": [
+      "hero heading max size reduced",
+      "library heading max size reduced",
+      "card titles calmer",
+      "overline size reduced",
+      "no horizontal overflow",
+      "contrast preserved"
+    ]
+  },
+  "performance_budget": {
+    "lighthouse_performance_minimum": 94,
+    "preferred_lighthouse_performance": 96,
+    "card_thumbnail_target_kb": 80,
+    "feature_image_target_kb": 180,
+    "fallback_strategy": "runtime SVG data URI with no network request and no text baked into art",
+    "no_new_heavy_libraries": true
+  },
+  "affected_routes_components": [
+    "frontend/src/lib/bookCoverResolver.js",
+    "frontend/src/lib/images.js",
+    "frontend/src/components/BookCoverImage.jsx",
+    "frontend/src/components/ShelfTwoSlideshow.jsx",
+    "frontend/src/components/BookCard.jsx",
+    "frontend/src/pages/Home.jsx",
+    "frontend/src/pages/Library.jsx",
+    "frontend/src/index.css"
+  ],
+  "rollback_plan": [
+    "Revert BookCoverImage/images resolver changes to restore previous cover selection.",
+    "Revert Home/Library/BookCard typography class reductions if visual density regresses.",
+    "Remove audit/smoke scripts if they create false positives."
+  ],
+  "validation_plan": [
+    "npm ci --prefix frontend",
+    "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+    "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+    "node frontend/scripts/audit-book-covers.mjs",
+    "node frontend/scripts/visual-luxury-smoke.mjs",
+    "python3 internal/audiobook_lab/scripts/generate_graphical_book_covers.py",
+    "git diff --check",
+    "Lighthouse on local production build if tooling/server is available"
+  ],
+  "business_reason": "Graphical, content-themed covers improve premium merchandising and trust while avoiding fake availability or heavy decorative debt.",
+  "customer_experience_reason": "Readers should see collectible literary objects, not plain placeholders, and first-screen typography should feel calm and readable at normal zoom.",
+  "risk_score": "medium",
+  "risk_notes": [
+    "Some controlled publications still lack approved cover URLs; resolver fallback prevents typography-only UI but does not replace need for future approved art.",
+    "Remote cover byte sizes can be unknown from local audit without live HEAD requests.",
+    "Current worktree has unrelated dirty files; selective staging remains required."
+  ]
+}

@@ -81,3 +81,30 @@ Then run same-origin browser, axe, and Lighthouse checks against the preview URL
 - Cover audit remains PASS: 164 covers, 0 typography-only covers.
 - Visual smoke remains PASS. Audio safety remains PASS. Accessibility and SEO remain 100.
 - No paid operations, provider calls, Bengali mutations, deployments, or broad catalog waves were run.
+
+## Visual Brand System Hardening - 2026-07-07T04:54:30+00:00
+
+- Cover inventory: 164 active/public covers audited; 0 typography-only covers found; 0 remaining in customer UI.
+- Graphical coverage: 106 deterministic runtime graphical fallbacks; 164 effective front/back cover pairs.
+- Typography: home/library/book-card/book-detail scales reduced for calmer premium hierarchy without shrinking below readable sizes.
+- Validation: Lighthouse performance 96, LCP 2641.1ms, accessibility 100, SEO 100; visual smoke PASS with 72/72 checks; audio safety PASS 4/4.
+- Preview: protected Vercel preview remains blocked by login shell without `VERCEL_AUTOMATION_BYPASS_SECRET` or a shareable preview link; local same-origin proxy remains canonical evidence for this pass.
+
+## Homepage Figma Alignment - 2026-07-07T10:45:00Z
+
+- Corrected the homepage source away from the live Dracula-first shell: main headline is now `A calm digital reading room for timeless Bengali and English literature.`
+- Added/verified the approved hybrid editorial hero plus three curated action cards: Bengali Classics, English Classics/Dracula, and release-gated Approved Audiobooks.
+- Removed the global `Start Dracula` header CTA and replaced it with `Browse Library`; Dracula remains available as one English Classics action tile.
+- Updated `frontend/public/index.html` and `frontend/scripts/generate-static-seo-snapshots.mjs` so postbuild static SEO/fallback output no longer reintroduces `Begin with Dracula.`
+- Validation: `npm ci --prefix frontend` PASS with existing peer warnings; audio safety PASS 4/4; build PASS; cover audit PASS 164/0 typographic-only; visual smoke PASS 72/72; Lighthouse performance 98, LCP 2491.1598ms, accessibility 100, SEO 100.
+- Preview/live deployment was not performed; production will remain stale until this source patch is pushed and deployed.
+## 2026-07-07 Figma-Grade UX System Update
+
+Home, Library, and Reader source were updated toward the final premium Figma target without broad redesign or release-gate changes.
+
+- Home: final CTA language is `Start Reading` and `Browse Library`; curated cards are Bengali Classics, English Classics, and Approved Audiobooks.
+- Library: added language, availability, sort, and view controls; search is no longer Dracula-specific; live shelf no longer forces Dracula when filters select Bengali reader-ready books.
+- Reader: default theme is ivory, new settings cover margin width, focus, reduced motion, and highlight intensity; unavailable audio uses release-safe copy; approved audio uses `Section-following narration` and `Paragraph/Stanza Sync`.
+- Covers: 164 visible/controlled covers audited, 0 typographic-only covers.
+- Validation: npm ci PASS with existing warnings, audio safety PASS 4/4, build PASS, visual smoke PASS 72/72, Lighthouse 97/100/100, git diff --check PASS.
+- Remaining blocker: production/live still needs source promotion and deploy validation; live static shell remains Dracula-first until deployed.
