@@ -678,6 +678,19 @@ function collectSmokeFailures() {
 function isHardSmokeNetworkFailure(item) {
   if (item.status >= 500) return true;
   if (item.type !== "requestfailed") return false;
+  const failureText = String(item.failure || "").toLowerCase();
+  const urlPath = (() => {
+    try {
+      return new URL(item.url).pathname.toLowerCase();
+    } catch {
+      return String(item.url || "").toLowerCase();
+    }
+  })();
+  const isAbort = failureText.includes("err_aborted") || failureText === "aborted";
+  const isStaticAsset =
+    ["script", "stylesheet", "image", "font", "media"].includes(item.resource_type) ||
+    /\.(?:js|css|png|jpe?g|webp|avif|svg|ico|woff2?|ttf|mp4|webm)(?:$|\?)/i.test(urlPath);
+  if (isAbort && isStaticAsset) return false;
   if (["document", "fetch", "xhr", "script"].includes(item.resource_type)) return true;
   return false;
 }
