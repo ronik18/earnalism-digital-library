@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-07-07T02:50:00+05:30",
+  "pr": 87,
+  "branch": "codex/clean-source-only-merge-20260706T191326Z",
+  "exact_blockers": [
+    "GitHub backend + frontend + browser regression failed because Kshudhita pipeline card/selectors were missing after UX refactor.",
+    "GitHub controlled-launch/catalog regression failed because tests required stale exact catalog equality instead of truthful reader-only/audio-hidden source state.",
+    "Vercel preview was canceled/skipped by frontend/vercel.json ignoreCommand on non-main branches.",
+    "visual-luxury-smoke could pass without proving Playwright browser execution."
+  ],
+  "likely_source_files": [
+    "frontend/src/pages/Home.jsx",
+    "frontend/src/components/ShelfTwoSlideshow.jsx",
+    "frontend/scripts/visual-luxury-smoke.mjs",
+    "frontend/scripts/vercel-ignore-build.mjs",
+    "frontend/vercel.json",
+    "frontend/src/lib/api.js",
+    "regression/modules/05-url-navigation.test.js",
+    "regression/modules/12-migration-data-consistency.test.js",
+    "regression/modules/14-ux-conversion-static.test.js",
+    "regression/modules/15-reader-content-quality.test.js"
+  ],
+  "minimum_safe_fix": [
+    "Restore stable Kshudhita pipeline test ids and safe notify CTA without exposing reader/audio access.",
+    "Update catalog regressions to enforce inclusion, no duplicates, reader-only/audio-hidden truth, and source-controlled PR fallback without approving audiobooks.",
+    "Add fail-safe Vercel ignore helper that builds PR branches with frontend/config changes and skips only clear no-op preview changes.",
+    "Make visual smoke fail closed on no target, Playwright import failure, browser launch failure, timeout, parse failure, or incomplete route checks.",
+    "Allow production-equivalent REACT_APP_BACKEND_URL=/api builds to validate same-origin locally instead of calling production API cross-origin."
+  ],
+  "tests_to_run": [
+    "npm ci --prefix frontend",
+    "npm --prefix frontend test -- --runTestsByPath src/lib/audioReleaseSafety.test.js --watchAll=false",
+    "REACT_APP_BACKEND_URL=/api npm --prefix frontend run build",
+    "node frontend/scripts/audit-book-covers.mjs",
+    "node frontend/scripts/visual-luxury-smoke.mjs (expected fail-closed without VISUAL_SMOKE_BASE_URL)",
+    "VISUAL_SMOKE_BASE_URL=http://127.0.0.1:4173 node frontend/scripts/visual-luxury-smoke.mjs",
+    "npx --yes lighthouse http://127.0.0.1:4173/ --chrome-flags=\"--headless=new --no-sandbox\" --quiet",
+    "npm run regression -- --runTestsByPath regression/modules/05-url-navigation.test.js regression/modules/12-migration-data-consistency.test.js regression/modules/14-ux-conversion-static.test.js regression/modules/15-reader-content-quality.test.js --runInBand",
+    "PYTHON_BIN=python3 RUN_E2E=1 RUN_LOAD=0 FRONTEND_API_URL=https://api.theearnalism.com PLAYWRIGHT_PREFIX=/tmp/earnalism-playwright bash scripts/run_regression_suite.sh",
+    "pytest -q backend/tests/test_publication_safety_mode.py",
+    "git diff --check"
+  ],
+  "preview_deploy_strategy": "Commit and push the blocker rescue patch to the existing PR branch, then let Vercel Git integration rerun preview. If manual CLI validation is needed, prefer npx --yes vercel@latest inspect <deployment-url> rather than the outdated global CLI.",
+  "rollback_plan": "Revert the blocker rescue commit only. No production metadata, Bengali audio, generated cover assets, release_gate outputs, or destructive changes are included."
+}

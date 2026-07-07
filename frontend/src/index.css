@@ -2642,6 +2642,22 @@ textarea.input-elegant {
     inset 0 1px 0 rgba(253, 252, 248, 0.98),
     inset 0 -1px 0 rgba(120, 78, 28, 0.14);
 }
+.india-origin-badge__plate {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.9rem;
+  height: 1.92rem;
+}
+.india-origin-badge__image {
+  display: block;
+  width: auto;
+  height: 1.92rem;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 10px rgba(74, 28, 39, 0.14));
+}
 .india-origin-badge__mark {
   position: relative;
   z-index: 1;

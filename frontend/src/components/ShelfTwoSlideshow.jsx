@@ -119,6 +119,7 @@ export default function ShelfTwoSlideshow({ books = [] }) {
                     <article
                       key={book.id}
                       className="shelf-two-book"
+                      data-testid={`pipeline-card-${book.slug || book.id}`}
                       style={{ "--shelf-two-order": bookIndex }}
                     >
                       <div className="shelf-two-book__cover-wrap">
@@ -158,14 +159,14 @@ export default function ShelfTwoSlideshow({ books = [] }) {
                             Start Reading
                           </a>
                         ) : (
-                          <button
-                            type="button"
+                          <a
                             className="shelf-two-book__cta shelf-two-book__cta--queued"
+                            data-testid={`pipeline-notify-${book.slug || book.id}`}
+                            href={book.notifyHref || `/contact?interest=${book.slug || book.id}`}
                             aria-label={`Notify me for ${book.title}`}
-                            onClick={(event) => event.preventDefault()}
                           >
                             Notify Me
-                          </button>
+                          </a>
                         )}
                         <span className={`shelf-two-book__status shelf-two-book__status--${statusClass}`}>
                           {statusClass === "published" ? "Live" : "Coming Soon"}

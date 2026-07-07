@@ -21,3 +21,11 @@
 - The LCP regression was not caused by paid/generated covers. The solvable causes were the mobile hero image candidate, automatic first-visit tour timing, early idle prefetch/settings work, and an oversized header logo asset.
 - Eager-loading Home into the main bundle was tested and rejected because it worsened Lighthouse; delaying noncritical work restored performance with less risk.
 - Final local production-equivalent evidence: Lighthouse performance 96, LCP 2.7s, accessibility 100, SEO 100, cover audit 164/0 typography-only, visual smoke PASS, audio safety PASS.
+
+## PR87 Blocker Rescue - 2026-07-07
+
+- Visual smoke must fail closed when Playwright import, browser launch, runner parse, timeout, or route completion fails. A source-only script that passes without a browser is not release evidence.
+- Local production-equivalent validation needs same-origin `/api` override support. Production builds must not force relative `/api` back to `https://api.theearnalism.com`.
+- Vercel ignore commands should fail safe by building when branch/change detection is uncertain. Non-main PR branches must not be blanket-canceled.
+- Browser regression selectors for queued pipeline cards are compatibility contracts; preserving them does not require exposing reader, payment, or audiobook access.
+- Catalog regression tests should enforce release truth and no duplicate/audio-overclaim states, not stale exact equality that blocks source-only reader/audio-hidden policy updates.

@@ -11,6 +11,8 @@ function resolveBackendUrl() {
   ).trim();
 
   if (process.env.NODE_ENV !== "production") return configured;
+  if (configured === "/api" || configured === "/api/") return "";
+  if (configured.startsWith("/")) return configured.replace(/\/api\/?$/, "");
   if (!configured || configured.includes("<") || configured.includes("yourdomain.com")) {
     return PRODUCTION_API_URL;
   }

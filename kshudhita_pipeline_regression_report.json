@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-07-07T02:40:00+05:30",
+  "failing_expectation": [
+    "[data-testid=\"pipeline-books\"]",
+    "[data-testid=\"pipeline-card-kshudhita-pashan\"]",
+    "[data-testid=\"pipeline-notify-kshudhita-pashan\"] with href /contact?interest=kshudhita-pashan"
+  ],
+  "root_cause": "The clean UX package preserved the Bengali Gothic shelf visually but did not preserve the legacy pipeline selectors expected by the browser regression suite.",
+  "fix_applied": [
+    "Restored data-testid=\"pipeline-books\" on the Home pipeline section while preserving the current shelf test id as an inner wrapper.",
+    "Restored pipeline-card slug test ids in ShelfTwoSlideshow.",
+    "Changed queued pipeline CTA to a safe notify/contact link instead of a disabled button."
+  ],
+  "files_changed": [
+    "frontend/src/pages/Home.jsx",
+    "frontend/src/components/ShelfTwoSlideshow.jsx"
+  ],
+  "source_safe": true,
+  "release_truth_impact": "No reader, payment, or audiobook access is exposed for queued books.",
+  "validation": {
+    "regression_suite": "PASS",
+    "targeted_browser_result": "pipelineCards: 4"
+  },
+  "risk": "low"
+}

@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-07-07T02:40:00+05:30",
+  "preview_status": "PENDING_COMMIT_PUSH_RERUN",
+  "vercel_ignore_status": "fixed_locally",
+  "same_origin_preview_validation": "not_yet_available_until_branch_is_pushed_and_vercel_rebuilds",
+  "local_production_equivalent_validation": {
+    "base_url": "http://127.0.0.1:4173",
+    "visual_smoke": "PASS, Playwright import passed, browser launch passed, 24/24 route viewport checks completed",
+    "lighthouse": {
+      "performance": 96,
+      "accessibility": 100,
+      "seo": 100,
+      "lcp_ms": 2802.55035,
+      "cls": 0,
+      "tbt_ms": 0
+    }
+  },
+  "routes_validated_locally": [
+    "/",
+    "/library",
+    "/book/dracula",
+    "/reader/dracula",
+    "/book/a-ghost-story",
+    "/reader/a-ghost-story"
+  ],
+  "exact_next_preview_command": "git push origin codex/clean-source-only-merge-20260706T191326Z",
+  "next_preview_action": "Commit and push blocker rescue changes, then rerun Vercel preview deployment/checks for PR #87.",
+  "vercel_cli_note": "If manual inspection is needed, prefer npx --yes vercel@latest inspect <deployment-url>. The global Vercel CLI is known to be outdated in this environment."
+}
