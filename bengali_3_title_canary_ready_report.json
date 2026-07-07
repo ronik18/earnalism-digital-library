@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-07-07T13:08:25Z",
+  "status": "CANARY_COMMAND_PREPARED_DO_NOT_RUN",
+  "do_not_run_yet": true,
+  "prerequisites_before_run": [
+    "PR #88 merged and deployed to production",
+    "book-2b9853ec52 detail page production copy no longer says Audiobook held for QA",
+    "pilot endpoint/manifest/browser remain PASS",
+    "production_metadata.lock absent or owned by this run",
+    "paid_tts.lock absent or owned by this run",
+    "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS=true present",
+    "budget env vars present and within cap"
+  ],
+  "selected_slugs": [
+    "muchiram-gurer-jibanchorit",
+    "book-d19e96859f",
+    "book-f5d593e1f4"
+  ],
+  "preflight_status": {
+    "muchiram-gurer-jibanchorit": "READY",
+    "book-d19e96859f": "READY",
+    "book-f5d593e1f4": "READY"
+  },
+  "skipped_candidates": [
+    {
+      "slug": "book-2ddbed8293",
+      "reason": "Missing public controlled-publication source/API visibility in the clean integration branch."
+    },
+    {
+      "slug": "book-4968248842",
+      "reason": "Possible title/body mismatch; clean narration opens with সংস্কার while public title is বলাই."
+    }
+  ],
+  "estimated_cost_usd": 0.04,
+  "known_risks": [
+    "book-f5d593e1f4 is medium risk due longer estimated duration than the two lower-risk candidates.",
+    "Canary must stop after any systemic frontmatter, sync, endpoint, or browser failure.",
+    "Do not promote generated release_gate artifacts into git."
+  ],
+  "rollback_strategy": [
+    "Each title must produce a metadata reset payload before metadata approval.",
+    "If any title exposes unsafe audio, apply only that title's reset payload and verify audio-hidden state.",
+    "Do not delete uploaded artifacts during rollback; remove public metadata references first."
+  ],
+  "locks_required": [
+    "internal/earnalism_intelligence/locks/production_metadata.lock",
+    "internal/earnalism_intelligence/locks/paid_tts.lock",
+    "internal/earnalism_intelligence/locks/backend_deploy.lock only if endpoint materialization requires deploy"
+  ],
+  "provider_settings": {
+    "provider": "Sarvam",
+    "model": "bulbul:v3",
+    "voice": "ratan",
+    "style": "literary_warm_pacing",
+    "listening_policy": "bengali_audiobook_acceptance_v2_92",
+    "sync_policy": "tiered_sync_acceptance_v1",
+    "sync_target": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM"
+  },
+  "exact_command": "cd /Users/ronikbasak/Documents/GitHub/earnalism-digital-library && source ~/.zshrc && railway run --project a8533934-35c4-463e-9f43-577a9ac391ee --service 5af42e7e-f518-4f6a-b602-d9950866501f --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 -- env EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS=true EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD=24 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio EARNALISM_LISTENING_POLICY_VERSION=bengali_audiobook_acceptance_v2_92 EARNALISM_SYNC_POLICY_VERSION=tiered_sync_acceptance_v1 EARNALISM_BENGALI_TTS_PROVIDER=sarvam EARNALISM_BENGALI_TTS_MODEL=bulbul:v3 EARNALISM_BENGALI_TTS_VOICE=ratan EARNALISM_BENGALI_TTS_STYLE=literary_warm_pacing python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.json --slugs muchiram-gurer-jibanchorit,book-d19e96859f,book-f5d593e1f4 --languages ben --max-books-active 3 --max-preflight-workers 3 --max-cover-workers 1 --max-audio-reuse-workers 0 --max-tts-workers 1 --max-paid-workers 1 --max-asr-workers 1 --max-upload-workers 1 --max-metadata-workers 1 --max-browser-workers 1 --max-attempts 2 --publish-approved --resume-from-latest --fail-closed --stop-after-published 3 --stop-after-terminal-books 3 --max-run-minutes 180"
+}

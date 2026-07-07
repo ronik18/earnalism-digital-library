@@ -1,22 +1,38 @@
 {
-  "generated_at": "2026-07-07T12:40:00Z",
+  "generated_at": "2026-07-07T13:08:25Z",
   "source_only_base": {
     "branch": "codex/source-only-clean-integration",
     "commit": "3bd423c608f9f8db437175475fe06a1d7e66fb73",
-    "merged_into_origin_main": false
+    "pr_url": "https://github.com/ronik18/earnalism-digital-library/pull/89",
+    "pr_number": 89,
+    "merged_into_origin_main": true,
+    "merge_commit": "04583c6a5d762d6f880ed68038102e0cdf332af4",
+    "post_merge_checks_status": "FAILED_BY_STALE_HOMEPAGE_REGRESSION_ASSERTION"
   },
   "stabilization": {
     "branch": "codex/bengali-post-live-stabilization",
-    "commit": "75b1c22a0fa832eee24e343058b79e724097b8f1",
+    "commit": "85f1f4025cf4e2e86c74e4b3c65f372c47e979ad",
     "pr_url": "https://github.com/ronik18/earnalism-digital-library/pull/88",
     "pr_number": 88,
     "based_on_source_only_base": true,
-    "recommended_pr_base": "codex/source-only-clean-integration",
-    "direct_main_pr_safe": false,
-    "direct_main_pr_risk": "origin/main...codex/bengali-post-live-stabilization includes the full source-only integration base plus the stabilization patch until 3bd423c6 is merged."
+    "current_pr_base": "codex/source-only-clean-integration",
+    "recommended_pr_base": "main",
+    "direct_main_pr_safe": true,
+    "direct_main_pr_reason": "origin/main now contains 3bd423c608f9f8db437175475fe06a1d7e66fb73 through merge commit 04583c6a5d762d6f880ed68038102e0cdf332af4."
   },
   "dependency_order": [
-    "Merge/review codex/source-only-clean-integration into main first, or keep the stabilization PR stacked on that branch.",
-    "Do not merge codex/bengali-post-live-stabilization into main before the source-only base unless GitHub diff is explicitly reviewed and accepted."
-  ]
+    "Source-only base is merged into main.",
+    "Update PR #88 base to main after pushing the regression assertion fix.",
+    "Wait for PR #88 checks to rerun and pass.",
+    "Do not merge PR #88 without EARNALISM_APPROVE_BENGALI_POST_LIVE_MERGE=true."
+  ],
+  "current_blocker": "PR #88 regression check was failing because scripts/e2e_regression.mjs still expected the retired Dracula-first homepage test id hero-dracula-card.",
+  "local_fix": "Update the browser regression assertions to validate the approved hybrid editorial hero, three curated action cards, Bengali classics prominence, Dracula as an English Classics card, and release-gate-safe audiobook card behavior.",
+  "validation": {
+    "scripts_run": [
+      "bash scripts/run_regression_suite.sh"
+    ],
+    "result": "PASS",
+    "generated_artifacts_excluded": true
+  }
 }

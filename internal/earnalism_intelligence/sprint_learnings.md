@@ -163,3 +163,10 @@
 - `book-4968248842` is skipped for canary until source/title provenance is reviewed because its clean audiobook body opens with `সংস্কার` while the public title is `বলাই`.
 - PR #88 is open at `https://github.com/ronik18/earnalism-digital-library/pull/88`, stacked on `codex/source-only-clean-integration`. Do not merge/deploy stabilization before resolving the source-only base and owner approval.
 - Do not run canary TTS until PR #88 production verification passes and owner approval/budget env vars are present.
+
+## 2026-07-07 PR88 Dependency + Canary Readiness
+
+- Source-only base PR #89 is merged into `main` at `04583c6a5d762d6f880ed68038102e0cdf332af4`; PR #88 can now target `main` after its regression patch is pushed.
+- The failing PR #88 regression was a stale test expectation, not a homepage source regression: `scripts/e2e_regression.mjs` still waited for retired Dracula-first selector `hero-dracula-card`.
+- The regression gate now checks the approved current homepage contract: hybrid editorial hero, three curated action cards, Bengali Classics visible, Dracula as an English Classics action tile, and release-gate-safe Approved Audiobooks copy.
+- The 3-title Bengali canary remains prepared-only: `muchiram-gurer-jibanchorit`, `book-d19e96859f`, and `book-f5d593e1f4`. Do not run canary TTS until PR #88 is merged/deployed and production detail-copy verification passes.

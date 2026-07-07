@@ -903,3 +903,10 @@ Generated/local evidence intentionally excluded:
 No production metadata mutation, TTS, ASR, sync, upload, or canary run was performed in this stabilization pass.
 - PR status: PR #88 is open from `codex/bengali-post-live-stabilization` to `codex/source-only-clean-integration`; no generated artifacts are staged for the PR-readiness update.
 - Canary readiness: prepared-only candidate list is `muchiram-gurer-jibanchorit`, `book-d19e96859f`, and `book-f5d593e1f4`; skipped candidates are documented in `bengali_canary_candidate_selection_report.json`.
+
+## 2026-07-07 PR88 Dependency Cleanup
+
+- Source-only base PR #89 is merged to `main`; PR #88 should now target `main`.
+- The only new source change for PR88 readiness is `scripts/e2e_regression.mjs`, updating stale Dracula-first browser assertions to the current editorial homepage/action-card contract.
+- Generated validation side effects were excluded/restored: `frontend/public/sitemap.xml`, `graphical_cover_generation_report.json`, `frontend/build/**`, visual smoke output, and cover audit output.
+- New source-safe reports: `pr88_dependency_status_report.json` and `bengali_3_title_canary_ready_report.json`.

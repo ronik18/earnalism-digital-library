@@ -374,3 +374,10 @@ rg -n "pipeline-card-kshudhita-pashan|pipeline-books|live_approved_slugs|visual-
 - Source preservation: `release_catalog_factory.py` and `factory_hooks/browser_hook.py` in the clean integration branch match the original workspace hashes.
 - PR readiness: PR #88 is open as a stacked PR on `codex/source-only-clean-integration`; production stale detail copy remains until the source-only base and stabilization PR are merged/deployed.
 - Canary preflight: `muchiram-gurer-jibanchorit`, `book-d19e96859f`, and `book-f5d593e1f4` are prepared for a future owner-approved canary; `book-2ddbed8293` is blocked by missing public source/API visibility, and `book-4968248842` is skipped pending source/title provenance review.
+
+## PR88 Dependency + Canary Readiness - 2026-07-07T13:08:25Z
+
+- Source-only base: MERGED to `main` via PR #89 / `04583c6a5d762d6f880ed68038102e0cdf332af4`.
+- PR88: open; should be retargeted from `codex/source-only-clean-integration` to `main` after the regression assertion fix is pushed.
+- Regression blocker: stale browser test expected Dracula-first `hero-dracula-card`; local source fix validates the current Figma-aligned homepage contract.
+- Canary: command prepared only for `muchiram-gurer-jibanchorit`, `book-d19e96859f`, and `book-f5d593e1f4`; no TTS/ASR/sync/upload/metadata mutation run.
