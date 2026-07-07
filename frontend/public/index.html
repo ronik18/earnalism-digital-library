@@ -23,19 +23,22 @@
         <meta name="twitter:description" content="Step into the classics with Dracula. Read Chapter 1 free, then continue with reading time while future books move through the rights-safe pipeline." />
         <meta name="twitter:image" content="https://theearnalism.com/assets/books/dracula/dracula-front-cover.webp" />
         <meta name="twitter:image:alt" content="Owner-designed Earnalism Dracula cover artwork" />
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <link rel="dns-prefetch" href="//res.cloudinary.com" />
         <link rel="dns-prefetch" href="//api.theearnalism.com" />
         <link rel="dns-prefetch" href="//checkout.razorpay.com" />
         <link rel="dns-prefetch" href="//accounts.google.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="preconnect" href="https://api.theearnalism.com" />
         <link rel="preconnect" href="https://checkout.razorpay.com" />
         <link rel="preconnect" href="https://accounts.google.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet" />
+        <link
+            rel="preload"
+            as="image"
+            href="%PUBLIC_URL%/assets/books/dracula/dracula-hero-hardcopy-420.webp"
+            imagesrcset="%PUBLIC_URL%/assets/books/dracula/dracula-hero-hardcopy-320.webp 320w, %PUBLIC_URL%/assets/books/dracula/dracula-hero-hardcopy-420.webp 420w, %PUBLIC_URL%/assets/books/dracula/dracula-hero-hardcopy-500.webp 500w"
+            imagesizes="(max-width: 639px) 40vw, (max-width: 1023px) 320px, 380px"
+            fetchpriority="high"
+        />
         <link rel="canonical" href="https://theearnalism.com/" />
         <link rel="icon" type="image/png" sizes="64x64" href="%PUBLIC_URL%/favicon.png?v=20260610-transparent" />
         <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png?v=20260610-transparent" />
@@ -102,6 +105,15 @@
             </main>
         </noscript>
         <div id="root"></div>
+        <script>
+            (function () {
+                var path = window.location.pathname.replace(/\/+$/, "") || "/";
+                if (path !== "/") return;
+                var root = document.getElementById("root");
+                if (!root) return;
+                root.innerHTML = '<section aria-label="Earnalism loading preview" style="min-height:min(650px,calc(100svh - 4.25rem));background:linear-gradient(90deg,rgba(13,5,5,.82),rgba(19,7,7,.64) 44%,rgba(44,18,13,.52)),radial-gradient(circle at 78% 40%,rgba(255,222,162,.24),transparent 20rem),linear-gradient(115deg,#17080d,#2b140f 55%,#5b301b);color:#fdfcf8;overflow:hidden"><div style="max-width:76rem;margin:0 auto;display:grid;gap:1.75rem;grid-template-columns:minmax(0,1fr);padding:2rem 1.25rem"><div style="max-width:42rem"><p style="margin:0 0 .9rem;color:#e6c982;font:italic 1rem Georgia,serif">The Earnalism Digital Library</p><h1 style="margin:0;font:400 clamp(2.1rem,9vw,3.72rem)/1.02 Georgia,serif;letter-spacing:-.01em">Step into the classics.<span style="display:block;color:#e6c982">Stay with the story.</span></h1><p style="max-width:34rem;margin:.9rem 0 0;color:rgba(244,239,234,.9);font:italic 1.12rem/1.35 Georgia,serif">Timeless stories. Beautifully presented. Yours to read, reflect, and remember.</p><p style="max-width:39rem;margin:1rem 0 0;color:rgba(244,239,234,.82);font:300 .95rem/1.7 system-ui,sans-serif">The Earnalism launch begins with one approved classic. Read Chapter 1 free, continue with reading time, and return to your place whenever you wish.</p></div></div></section>';
+            })();
+        </script>
         <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -114,7 +126,8 @@
     -->
         <script>
             var posthogKey = "%REACT_APP_POSTHOG_KEY%";
-            if (posthogKey && posthogKey.indexOf("REACT_APP_") === -1) {
+            var posthogEnabled = "%REACT_APP_ENABLE_POSTHOG%" === "true";
+            if (posthogEnabled && posthogKey && posthogKey.indexOf("REACT_APP_") === -1) {
             !(function (t, e) {
                 var o, n, p, r;
                 e.__SV ||

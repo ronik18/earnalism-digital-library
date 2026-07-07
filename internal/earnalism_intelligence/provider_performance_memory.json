@@ -1,0 +1,43 @@
+{
+  "version": "2026-07-06",
+  "bengali": {
+    "openai": {
+      "status": "quality_limited_for_bengali_literary_audiobook",
+      "best_observed_overall": 8.3,
+      "notes": "Technical sync can pass, but narration repeatedly sounded robotic/flat below premium threshold."
+    },
+    "sarvam": {
+      "status": "seed_rescue_pending_corrective_representative_audition",
+      "best_observed_overall": 9.4,
+      "best_observed_confidence": 0.95,
+      "notes": "Synthesis works; full schema-3 judging was interrupted by OpenAI listening-QA quota in prior bakeoff.",
+      "model": "bulbul:v3",
+      "best_isolated_seed": {
+        "voice": "pooja",
+        "style": "dialogue_human_touch",
+        "passage_type": "emotional",
+        "overall_score": 9.6,
+        "confidence": 0.95,
+        "fatal_flags": false
+      },
+      "best_representative_overall": 8.1,
+      "best_representative_confidence": 0.9,
+      "generalization_confirmed": false,
+      "full_pilot_generated": false,
+      "audiobook_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_UNTIL_SEED_RESCUE_PASSES",
+      "next_action": "Run narrow Sarvam seed-rescue representative audition with pooja seed and close variants only after approval env is present.",
+      "updated_at": "2026-07-06T19:12:13Z"
+    },
+    "google": {
+      "status": "credentials_or_adc_reauth_needed"
+    },
+    "azure": {
+      "status": "synthesis_cancellation_needs_diagnosis"
+    }
+  },
+  "english": {
+    "openai": {
+      "status": "usable_but_must_pass_asr_sync_and_listening"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-07-07T02:50:00+05:30",
+  "script": "frontend/scripts/visual-luxury-smoke.mjs",
+  "required_behavior": {
+    "playwright_import_failure": "BLOCKED/FAILED",
+    "browser_launch_failure": "BLOCKED/FAILED",
+    "missing_browser_target": "BLOCKED/FAILED",
+    "runner_timeout_or_parse_failure": "BLOCKED/FAILED",
+    "incomplete_route_checks": "BLOCKED/FAILED",
+    "exit_code_on_browser_execution_failure": "non-zero"
+  },
+  "new_report_fields": [
+    "playwright_import_status",
+    "browser_launch_status",
+    "browser_checks_required",
+    "browser_checks_completed",
+    "routes_attempted",
+    "routes_completed",
+    "failed_subchecks",
+    "final_status"
+  ],
+  "validation": [
+    {
+      "command": "node frontend/scripts/visual-luxury-smoke.mjs",
+      "expected": "fail closed without VISUAL_SMOKE_BASE_URL",
+      "result": "PASS: command exited non-zero and reported blocked_no_browser_target"
+    },
+    {
+      "command": "VISUAL_SMOKE_BASE_URL=http://127.0.0.1:4173 node frontend/scripts/visual-luxury-smoke.mjs",
+      "expected": "pass only with real browser execution",
+      "result": "PASS: Playwright import passed, browser launch passed, routes attempted 24, routes completed 24, failed subchecks 0"
+    }
+  ],
+  "dependency_change": "playwright added as a frontend devDependency so clean installs can execute the browser smoke deterministically",
+  "source_safe": true
+}

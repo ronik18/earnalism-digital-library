@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-07-07T02:40:00+05:30",
+  "old_behavior": "frontend/vercel.json ignoreCommand skipped non-main branches, canceling PR preview deployment.",
+  "new_behavior": "frontend/vercel.json delegates to frontend/scripts/vercel-ignore-build.mjs.",
+  "branches_allowed_to_build": [
+    "main",
+    "production deployments",
+    "pull request branches",
+    "preview branches with frontend/config/source changes",
+    "codex/clean-source-only-merge-20260706T191326Z"
+  ],
+  "skip_conditions": [
+    "preview branch only",
+    "changed-file detection succeeds",
+    "changed files are limited to safe non-frontend documentation/no-op files"
+  ],
+  "local_simulations": [
+    {
+      "command": "VERCEL_ENV=preview VERCEL_GIT_COMMIT_REF=codex/clean-source-only-merge-20260706T191326Z node frontend/scripts/vercel-ignore-build.mjs",
+      "exit_code": 1,
+      "meaning": "build preview"
+    },
+    {
+      "command": "VERCEL_ENV=production VERCEL_GIT_COMMIT_REF=main node frontend/scripts/vercel-ignore-build.mjs",
+      "exit_code": 1,
+      "meaning": "build production"
+    },
+    {
+      "command": "VERCEL_ENV=preview VERCEL_GIT_COMMIT_REF=docs-only EARNALISM_CHANGED_FILES=README.md node frontend/scripts/vercel-ignore-build.mjs",
+      "exit_code": 0,
+      "meaning": "skip safe docs-only preview"
+    }
+  ],
+  "preview_status": "can_be_triggered_after_commit_and_push",
+  "exact_next_preview_command": "git push origin codex/clean-source-only-merge-20260706T191326Z",
+  "manual_cli_inspection_command": "npx --yes vercel@latest inspect <deployment-url>",
+  "global_cli_note": "The installed global Vercel CLI is outdated; if using global CLI, upgrade with npm i -g vercel@latest or pnpm add -g vercel@latest.",
+  "risk_notes": "The helper fails safe by building if branch context or changed-file detection is uncertain."
+}

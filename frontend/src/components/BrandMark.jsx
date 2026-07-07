@@ -1,7 +1,12 @@
 import { useSettings } from "../context/SettingsContext";
 
 const ALT = "Earnalism logo";
-const DEFAULT_LOGO = `${process.env.PUBLIC_URL || ""}/assets/brand/earnalism-logo-transparent.png`;
+const PUBLIC_URL = process.env.PUBLIC_URL || "";
+const DEFAULT_LOGO = `${PUBLIC_URL}/assets/brand/earnalism-logo-transparent-96.webp`;
+const DEFAULT_LOGO_SRC_SET = [
+  `${PUBLIC_URL}/assets/brand/earnalism-logo-transparent-96.webp 96w`,
+  `${PUBLIC_URL}/assets/brand/earnalism-logo-transparent-128.webp 128w`,
+].join(", ");
 const BRAND_LINE = "Where Learning Becomes Earning";
 const VENTURE_LINE = "A Reo Enterprise Venture";
 
@@ -18,6 +23,7 @@ const VENTURE_LINE = "A Reo Enterprise Venture";
 export default function BrandMark({ variant = "header", className = "" }) {
   const { brand } = useSettings();
   const logo = brand?.logo_url || DEFAULT_LOGO;
+  const useBundledLogo = !brand?.logo_url;
 
   const wrapperClass = {
     header: "inline-flex items-center gap-2.5 sm:gap-3 text-left",
@@ -58,6 +64,8 @@ export default function BrandMark({ variant = "header", className = "" }) {
     <span className={`${wrapperClass} min-w-0 ${className}`} data-testid="brand-mark">
       <img
         src={logo}
+        srcSet={useBundledLogo ? DEFAULT_LOGO_SRC_SET : undefined}
+        sizes={variant === "footer" || variant === "auth" ? "64px" : "44px"}
         alt={ALT}
         loading={variant === "header" ? "eager" : "lazy"}
         decoding="async"

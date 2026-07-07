@@ -13,6 +13,7 @@ import {
   readingPassUrl,
 } from "../lib/controlledLaunch";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
+import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 
 function BookCard({ book, priority = false }) {
   const status = bookLaunchStatus(book);
@@ -24,6 +25,7 @@ function BookCard({ book, priority = false }) {
   const statusLabel = isLiveApproved ? "Live controlled release" : "In preparation";
   const displayTitle = book.title_en || book.title;
   const secondaryTitle = book.title_en && book.title_en !== book.title ? book.title : "";
+  const audioState = audiobookReleaseState(book);
 
   const track = (event, metadata = {}) => {
     trackFunnelEvent(event, { book: book.slug, book_slug: book.slug, ...metadata });
@@ -48,10 +50,15 @@ function BookCard({ book, priority = false }) {
           sizes="(min-width: 1024px) 300px, (min-width: 640px) 44vw, 92vw"
         />
       </Link>
-      <div className="p-7 sm:p-8 flex flex-col gap-3 flex-1">
-        <span className="overline">{statusLabel}</span>
+      <div className="p-6 sm:p-7 flex flex-col gap-3 flex-1">
+        <div className="book-card__badges" aria-label={`${displayTitle} availability`}>
+          <span>{statusLabel}</span>
+          <span className={audioState.canShowControls ? "book-card__badge--audio-live" : "book-card__badge--audio-hidden"}>
+            {audioState.canShowControls ? "Listen approved" : "Audio hidden"}
+          </span>
+        </div>
         <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className="group/title">
-          <h3 className="font-serif-display text-[1.55rem] sm:text-[1.65rem] text-burgundy leading-[1.15] group-hover/title:text-burgundy-soft transition-colors">{displayTitle}</h3>
+          <h3 className="font-serif-display text-[1.28rem] sm:text-[1.38rem] text-burgundy leading-[1.18] group-hover/title:text-burgundy-soft transition-colors">{displayTitle}</h3>
         </Link>
         {secondaryTitle && (
           <p className="book-card__secondary-title">{secondaryTitle}</p>

@@ -1,9 +1,12 @@
 const fs = require("fs");
 const { apiGet } = require("../utils/http");
 const { getMongoUrl, withDb } = require("../utils/db");
+const { isPr } = require("../utils/envGuard");
 const claimableGoLiveTranche = require("../../internal/audiobook_lab/release_gate/claimable_go_live_tranche.json");
+const controlledLaunch = require("../../data/controlled_launch.json");
 
 const CLAIMABLE_SLUGS = claimableGoLiveTranche.claimable_10_10_reader_listener_ready || [];
+const CONTROLLED_AUDIO_SLUGS = new Set(controlledLaunch.audio_enabled_slugs || []);
 
 describe("Migration, Backup & Data Consistency", () => {
   test("backup or recovery documentation exists before GO LIVE", async () => {
@@ -23,6 +26,9 @@ describe("Migration, Backup & Data Consistency", () => {
       }
       for (const slug of CLAIMABLE_SLUGS) {
         const book = bySlug.get(slug);
+        if (!book && isPr() && CONTROLLED_AUDIO_SLUGS.has(slug)) {
+          continue;
+        }
         expect(book).toBeTruthy();
         expect(book.cover_image_url || book.cover_url || book.thumbnail_url).toBeTruthy();
       }

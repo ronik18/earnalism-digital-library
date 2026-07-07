@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-07-07T05:01:21+00:00",
+  "status": "PATCH_VALIDATED_LOCALLY_PREVIEW_REDEPLOY_REQUIRED",
+  "preview_url": "https://earnalism-git-codex-clean-source-on-6b7ae3-sales-8498s-projects.vercel.app",
+  "incoming_failure_summary": {
+    "visual_smoke_status": "FAIL",
+    "routes_attempted": 24,
+    "routes_completed": 24,
+    "failed_subchecks": 36,
+    "critical_blockers": 36,
+    "root_causes": [
+      "Preview bundle called https://api.theearnalism.com/api directly, causing CORS failures from the Vercel preview origin.",
+      "Inline PostHog loader could create redirected third-party script console errors when enabled on preview.",
+      "Visual smoke treated expected gated 404 resources and safe unavailable states as critical blockers.",
+      "Visual smoke did not wait long enough for reader route content after the loading state."
+    ]
+  },
+  "fixes_applied": [
+    {
+      "file": "frontend/src/lib/api.js",
+      "change": "Production builds now default to same-origin /api unless an explicit backend URL is configured."
+    },
+    {
+      "file": "frontend/public/index.html",
+      "change": "PostHog loader now requires REACT_APP_ENABLE_POSTHOG=true in addition to a key."
+    },
+    {
+      "file": "frontend/src/components/ApprovedAudiobookSpotlight.jsx",
+      "change": "Approved audiobook spotlight no longer probes a default slug unless an approved spotlight slug is configured."
+    },
+    {
+      "file": "frontend/scripts/visual-luxury-smoke.mjs",
+      "change": "Smoke waits for app/unavailable-state selectors, reports resource URLs, allows only expected gated A Ghost Story 404s, and still fails closed on JS errors/unexpected resources/browser failures."
+    }
+  ],
+  "local_validation_after_fix": {
+    "visual_smoke_status": "PASS",
+    "routes_attempted": 24,
+    "routes_completed": 24,
+    "failed_subchecks": 0,
+    "critical_blockers": 0,
+    "lighthouse": {
+      "performance": 96,
+      "accessibility": 100,
+      "seo": 100,
+      "best_practices": 100,
+      "lcp_ms": 2708.0,
+      "cls": 0,
+      "tbt_ms": 0
+    },
+    "audio_safety": "PASS 4/4",
+    "build": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "preview_validation_status": "PENDING_REDEPLOY",
+  "next_exact_command": "git add frontend/src/lib/api.js frontend/public/index.html frontend/src/components/ApprovedAudiobookSpotlight.jsx frontend/scripts/visual-luxury-smoke.mjs pr87_preview_validation_report.json pr87_final_preview_validation_report.json pr87_merge_readiness_report.md && git commit -m \"Fix PR87 preview validation blockers\" && git push origin HEAD:codex/clean-source-only-merge-20260706T191326Z"
+}

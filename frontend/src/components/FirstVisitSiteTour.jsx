@@ -5,6 +5,8 @@ import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import "./FirstVisitSiteTour.css";
 
 const STORAGE_KEY = "earnalism:first-visit-site-tour:v1";
+const AUTO_TOUR_DELAY_MS = 4200;
+const FORCED_TOUR_DELAY_MS = 120;
 
 const TOUR_STEPS = [
   {
@@ -99,12 +101,19 @@ export default function FirstVisitSiteTour() {
       return undefined;
     }
 
-    if (!forcedTour) return undefined;
+    let alreadySeen = false;
+    try {
+      alreadySeen = window.localStorage.getItem(STORAGE_KEY) === "complete";
+    } catch (_) {
+      alreadySeen = false;
+    }
+
+    if (alreadySeen && !forcedTour) return undefined;
 
     openTimerRef.current = window.setTimeout(() => {
       previousFocusRef.current = document.activeElement;
       setOpen(true);
-    }, 120);
+    }, forcedTour ? FORCED_TOUR_DELAY_MS : AUTO_TOUR_DELAY_MS);
 
     return () => {
       window.clearTimeout(openTimerRef.current);
@@ -220,7 +229,15 @@ export default function FirstVisitSiteTour() {
           </button>
         </div>
 
-        <div className="site-tour__progress" aria-label={`Step ${stepIndex + 1} of ${totalSteps}`}>
+        <div
+          className="site-tour__progress"
+          role="progressbar"
+          aria-label="Site tour progress"
+          aria-valuemin={1}
+          aria-valuemax={totalSteps}
+          aria-valuenow={stepIndex + 1}
+          aria-valuetext={`Step ${stepIndex + 1} of ${totalSteps}`}
+        >
           {TOUR_STEPS.map((item, index) => (
             <span
               key={item.key}

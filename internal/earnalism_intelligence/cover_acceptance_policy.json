@@ -1,0 +1,54 @@
+{
+  "policy_name": "earnalism_graphical_cover_acceptance_v1",
+  "effective_date": "2026-07-06",
+  "status": "ACTIVE",
+  "objective": "Every customer-facing book presentation should use graphical, content-themed cover art or a graphical fallback, never a plain typography-only cover.",
+  "hard_rules": {
+    "no_typography_only_plain_covers": true,
+    "front_cover_required_for_production_ready_books": true,
+    "back_cover_required_when_ui_uses_back_cover": true,
+    "no_ai_text_inside_generated_images": true,
+    "title_author_text_must_be_deterministic_overlay": true,
+    "no_unlicensed_external_art": true,
+    "explicit_dimensions_required": true,
+    "no_lighthouse_regression_allowed": true,
+    "no_release_gate_truth_regression_allowed": true
+  },
+  "source_priority": [
+    "approved_graphical_production_cover",
+    "approved_generated_graphical_cover",
+    "approved_legacy_graphical_cover",
+    "earnalism_graphical_fallback"
+  ],
+  "performance_budget": {
+    "card_thumbnail_target_kb": 80,
+    "feature_image_target_kb": 180,
+    "lazy_load_non_lcp_covers": true,
+    "preload_only_true_lcp_image": true,
+    "use_width_height_or_aspect_ratio": true,
+    "avoid_large_base64_in_js_or_css": true
+  },
+  "aesthetic_direction": [
+    "premium_literary",
+    "calm",
+    "collectible",
+    "content_inspired",
+    "modern_timeless",
+    "not_noisy",
+    "not_childish",
+    "not_stock_photo_like"
+  ],
+  "fallback_policy": {
+    "fallback_allowed": true,
+    "fallback_must_be_graphical": true,
+    "fallback_must_not_render_title_or_author_inside_image": true,
+    "fallback_should_be_marked_in_audit": true
+  },
+  "review_requirements": [
+    "cover audit report",
+    "visual smoke at normal browser zoom",
+    "build pass",
+    "audio release safety pass",
+    "Lighthouse/performance guardrail when available"
+  ]
+}
