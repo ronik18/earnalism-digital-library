@@ -1,0 +1,28 @@
+{
+  "slug": "book-2b9853ec52",
+  "files_inspected": [
+    "backend/catalog_truth.py",
+    "backend/server.py",
+    "data/controlled_launch.json",
+    "backend/data/controlled_launch.json",
+    "backend/data/controlled_publications/book-2b9853ec52/public_book.json",
+    "backend/data/controlled_publications/book-2b9853ec52/source_evidence.json",
+    "backend/data/controlled_publications/book-2b9853ec52/approval_evidence.json"
+  ],
+  "resolver_path": [
+    "backend/server.py:_reader_book_audiobook_asset",
+    "backend/server.py:_reader_manifest_audio",
+    "backend/server.py:_safe_live_public_projection",
+    "backend/catalog_truth.py:can_expose_audio",
+    "backend/catalog_truth.py:is_live_approved_book"
+  ],
+  "allowlist_paths": [
+    "data/controlled_launch.json",
+    "backend/data/controlled_launch.json"
+  ],
+  "book_absent_from_packaged_allowlist": false,
+  "bengali_audio_intentionally_broadly_blocked": true,
+  "paragraph_stanza_sync_tier_recognized": true,
+  "policy_bengali_audiobook_acceptance_v2_92_recognized": true,
+  "exact_source_change_required": "Use audio_materialization_slugs to allow controlled artifact evidence fallback only for book-2b9853ec52 while keeping DB/admin audiobook assets as the only audio source."
+}

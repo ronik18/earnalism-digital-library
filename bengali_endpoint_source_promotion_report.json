@@ -1,0 +1,26 @@
+{
+  "slug": "book-2b9853ec52",
+  "origin_main_contains_allowlist_slug": true,
+  "dirty_workspace_source_promoted": false,
+  "promoted_files": [],
+  "reason_no_dirty_promotion_needed": "The clean origin/main backend already contains the pilot in packaged controlled-launch live/audio allowlists. The missing source behavior was narrow runtime materialization of DB metadata with controlled artifact evidence.",
+  "source_files_changed": [
+    "backend/catalog_truth.py",
+    "backend/server.py",
+    "data/controlled_launch.json",
+    "backend/data/controlled_launch.json",
+    "backend/tests/test_bengali_pilot_endpoint_materialization.py"
+  ],
+  "generated_artifacts_copied": false,
+  "excluded_artifacts": [
+    "release_gate outputs",
+    "generated audio",
+    "sidecars",
+    "logs",
+    "caches",
+    "screenshots",
+    "signed URLs",
+    "secrets"
+  ],
+  "risk": "Narrow. Only book-2b9853ec52 receives controlled artifact evidence fallback; unlisted Bengali audio remains hidden."
+}

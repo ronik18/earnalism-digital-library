@@ -67,6 +67,9 @@
   "pipeline_slugs": [
     "kshudhita-pashan"
   ],
+  "audio_materialization_slugs": [
+    "book-2b9853ec52"
+  ],
   "audio_enabled_slugs": [
     "alices-adventures-in-wonderland",
     "bn-027",

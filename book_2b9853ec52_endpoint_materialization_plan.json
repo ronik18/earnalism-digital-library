@@ -1,0 +1,40 @@
+{
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "expected_audiobook_endpoint": "https://api.theearnalism.com/api/reader/book/book-2b9853ec52/audiobook",
+  "current_404_diagnosis": "Production admin metadata and uploaded B2 assets exist, but the public audiobook endpoint is hidden by backend truth gates. The clean origin/main source already contains the pilot in live/audio allowlists, but production is on an older deployment and the DB metadata response lacks top-level source/provenance hash fields required by can_expose_audio().",
+  "source_config_files_responsible": [
+    "backend/data/controlled_launch.json",
+    "data/controlled_launch.json",
+    "backend/catalog_truth.py",
+    "backend/server.py"
+  ],
+  "controlled_launch_allowlist_behavior": {
+    "live_approved_slugs_contains_pilot": true,
+    "audio_enabled_slugs_contains_pilot": true,
+    "audio_materialization_slugs_contains_only_pilot": true,
+    "materialization_scope": "Merge controlled artifact evidence only for explicitly listed materialization slugs; preserve admin-approved audiobook URLs from production DB metadata."
+  },
+  "minimal_fix_required": "Add a one-slug audio_materialization_slugs config and merge controlled artifact source/provenance evidence into the DB book for this pilot only. Keep can_expose_audio(), approved metadata/assets, and optional policy/sync metadata checks strict.",
+  "deploy_restart_plan": "Deploy the clean worktree branch to Railway backend. Do not deploy from the dirty main workspace. After deploy health is online, probe public detail, reader manifest, audiobook endpoint, final audio URL, and sidecar URLs.",
+  "rollback_plan": {
+    "code_rollback": "Revert the endpoint materialization commit or redeploy the previous Railway deployment.",
+    "metadata_rollback": "Only if unsafe public audio exposure appears, apply internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_audiobook_reset_payload.json through the admin audiobook endpoint. Do not delete uploaded objects without explicit cleanup approval."
+  },
+  "verification_plan": [
+    "Run Python compile checks for backend source.",
+    "Run targeted endpoint materialization regression tests.",
+    "Run git diff --check.",
+    "Deploy/restart backend from clean worktree.",
+    "Probe /api/books/book-2b9853ec52, /api/reader/book/book-2b9853ec52/manifest, and /api/reader/book/book-2b9853ec52/audiobook.",
+    "Resume metadata/browser gates only with TTS/ASR/sync/upload workers disabled."
+  ],
+  "forbidden_actions": [
+    "No TTS regeneration",
+    "No ASR rerun",
+    "No sync rerun",
+    "No audio reupload",
+    "No 3-title canary",
+    "No dirty-workspace deploy"
+  ]
+}

@@ -129,6 +129,9 @@ PIPELINE_CANDIDATE_SLUGS = set(
     normalized_slug_tuple(CONTROLLED_LAUNCH_CONFIG.get("pipeline_slugs"), ("kshudhita-pashan",))
 )
 AUDIO_ENABLED_SLUGS = set(normalized_slug_tuple(CONTROLLED_LAUNCH_CONFIG.get("audio_enabled_slugs"), ()))
+AUDIO_MATERIALIZATION_SLUGS = set(
+    normalized_slug_tuple(CONTROLLED_LAUNCH_CONFIG.get("audio_materialization_slugs"), ())
+)
 
 PUBLIC_STATUS_LIVE_APPROVED = "LIVE_APPROVED"
 PUBLIC_STATUS_PIPELINE_CANDIDATE = "PIPELINE_CANDIDATE"

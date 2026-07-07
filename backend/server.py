@@ -49,6 +49,7 @@ try:
     from catalog_truth import (
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
+        AUDIO_MATERIALIZATION_SLUGS as CATALOG_TRUTH_AUDIO_MATERIALIZATION_SLUGS,
         PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
         can_expose_audio,
         can_expose_reader,
@@ -63,6 +64,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.catalog_truth import (
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
+        AUDIO_MATERIALIZATION_SLUGS as CATALOG_TRUTH_AUDIO_MATERIALIZATION_SLUGS,
         PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
         can_expose_audio,
         can_expose_reader,
@@ -392,6 +394,7 @@ async def _expensive_job_slot(job_type: str):
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
+CONTROLLED_AUDIO_MATERIALIZATION_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_MATERIALIZATION_SLUGS))
 
 
 def _controlled_truth_gate_version() -> str:
@@ -399,6 +402,7 @@ def _controlled_truth_gate_version() -> str:
         "live": list(CONTROLLED_LIVE_BOOK_SLUGS),
         "pipeline": list(CONTROLLED_PIPELINE_SLUGS),
         "audio": list(CONTROLLED_AUDIO_ENABLED_SLUGS),
+        "audio_materialization": list(CONTROLLED_AUDIO_MATERIALIZATION_SLUGS),
     }
     digest = hashlib.sha256(_json.dumps(payload, sort_keys=True).encode("utf-8")).hexdigest()[:12]
     return f"controlled-launch-v4-{digest}"
@@ -1241,6 +1245,7 @@ def _public_projection_is_live(projected: Optional[dict]) -> bool:
 
 
 def _safe_live_public_projection(book: Optional[dict]) -> Optional[dict]:
+    book = _book_with_controlled_artifact_evidence(book)
     projected = public_book_projection(_strip_all_chapter_content(book)) if book else None
     return projected if _public_projection_is_live(projected) else None
 
@@ -1260,6 +1265,104 @@ def _controlled_artifact_doc(slug: str, *, include_content: bool = False) -> Opt
     if not _public_projection_is_live(projected):
         return None
     return doc
+
+
+CONTROLLED_ARTIFACT_EVIDENCE_FIELDS = (
+    "source_hash",
+    "content_hash",
+    "provenance_hash",
+    "source_url",
+    "source_name",
+    "source_license",
+    "rights_tier",
+    "verification_status",
+    "publication_status",
+    "approved_to_publish",
+)
+
+SUPPORTED_AUDIOBOOK_LISTENING_POLICIES = {
+    "bengali_audiobook_acceptance_v2_92",
+    "tiered_audiobook_acceptance_v1",
+    "tiered-2026-07-06",
+}
+
+SUPPORTED_AUDIOBOOK_SYNC_POLICIES = {
+    "tiered_sync_acceptance_v1",
+    "sync-tiered-2026-07-06",
+}
+
+SUPPORTED_AUDIOBOOK_SYNC_TIERS = {
+    "WORD_OR_PHRASE_SYNC_FLAGSHIP",
+    "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+}
+
+SUPPORTED_AUDIOBOOK_SYNC_GRANULARITIES = {
+    "word",
+    "phrase",
+    "word_or_phrase",
+    "paragraph",
+    "stanza",
+    "paragraph_or_stanza",
+}
+
+
+def _blank_public_truth_value(value: Any) -> bool:
+    return value is None or value == ""
+
+
+def _book_with_controlled_artifact_evidence(book: Optional[dict], slug: Optional[str] = None) -> Optional[dict]:
+    if not book:
+        return book
+    normalized_slug = str(slug or book.get("slug") or "").strip().lower()
+    if normalized_slug not in CONTROLLED_AUDIO_MATERIALIZATION_SLUGS:
+        return book
+    artifact = _controlled_artifact_doc(normalized_slug, include_content=False)
+    if not artifact:
+        return book
+    merged = dict(book)
+    for field in CONTROLLED_ARTIFACT_EVIDENCE_FIELDS:
+        if _blank_public_truth_value(merged.get(field)) and not _blank_public_truth_value(artifact.get(field)):
+            merged[field] = artifact.get(field)
+    return merged
+
+
+def _first_audiobook_metadata(book: dict, *keys: str) -> str:
+    nested_value = book.get("audiobook")
+    nested = nested_value if isinstance(nested_value, dict) else {}
+    candidates: list[dict] = [book, nested]
+    for container_key in ("release_gate", "metadata", "sync"):
+        value = nested.get(container_key)
+        if isinstance(value, dict):
+            candidates.append(value)
+    for candidate in candidates:
+        for key in keys:
+            value = candidate.get(key)
+            if value not in (None, ""):
+                return str(value).strip()
+    return ""
+
+
+def _audiobook_release_metadata_supported(book: dict) -> bool:
+    listening_policy = _first_audiobook_metadata(book, "listening_policy_version", "policy_version")
+    if listening_policy and listening_policy not in SUPPORTED_AUDIOBOOK_LISTENING_POLICIES:
+        return False
+
+    sync_policy = _first_audiobook_metadata(book, "sync_policy_version")
+    if sync_policy and sync_policy not in SUPPORTED_AUDIOBOOK_SYNC_POLICIES:
+        return False
+
+    sync_tier = _first_audiobook_metadata(book, "sync_tier", "sync_release_tier")
+    if sync_tier and sync_tier not in SUPPORTED_AUDIOBOOK_SYNC_TIERS:
+        return False
+
+    sync_granularity = _first_audiobook_metadata(book, "sync_granularity")
+    if sync_granularity and sync_granularity not in SUPPORTED_AUDIOBOOK_SYNC_GRANULARITIES:
+        return False
+
+    auto_estimated_sync = _first_audiobook_metadata(book, "auto_estimated_sync")
+    if auto_estimated_sync.lower() == "true":
+        return False
+    return True
 
 
 def _dracula_artifact_doc(*, include_content: bool = False) -> Optional[dict]:
@@ -1548,6 +1651,8 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
         query,
         READER_ACCESS_PROJECTION,
     )
+    if doc and not admin_preview:
+        doc = _book_with_controlled_artifact_evidence(doc, slug)
     if doc and not admin_preview and not can_expose_reader(doc):
         doc = None
     if not doc and not admin_preview:
@@ -1658,7 +1763,8 @@ def _reader_audio_asset_url(book: dict, slug: str, key: str, url: str) -> str:
 
 
 def _reader_manifest_audio(book: dict, slug: str) -> dict:
-    if not can_expose_audio({**book, "slug": slug}):
+    book = _book_with_controlled_artifact_evidence(book, slug) or book
+    if not can_expose_audio({**book, "slug": slug}) or not _audiobook_release_metadata_supported(book):
         version = _stable_digest({
             "enabled": False,
             "slug": slug,
@@ -1726,6 +1832,8 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
 
     query = {"slug": slug} if admin_preview else _controlled_public_book_query({"slug": slug})
     doc = await db.books.find_one(query, {"_id": 0, "rights_metadata": 0})
+    if doc and not admin_preview:
+        doc = _book_with_controlled_artifact_evidence(doc, slug)
     if doc and not admin_preview and not can_expose_reader(doc):
         doc = None
     if not doc and not admin_preview:
@@ -5940,7 +6048,8 @@ async def _reader_book_audiobook_asset(
             "approved_to_publish": 1,
         },
     )
-    if not book or not can_expose_audio({**book, "slug": slug}):
+    book = _book_with_controlled_artifact_evidence(book, slug)
+    if not book or not can_expose_audio({**book, "slug": slug}) or not _audiobook_release_metadata_supported(book):
         raise HTTPException(status_code=404, detail="Audiobook asset not found")
     asset_url = _book_audiobook_asset_url(book, normalized_key)
     if not _audio_asset_looks_like_b2(asset_url):

@@ -13,3 +13,13 @@
 ## Next Action
 
 Commit and push the PR87 blocker rescue patch, then verify Vercel preview and required GitHub checks.
+## Bengali Audiobook Pilot Endpoint Materialization
+
+- Pilot: `book-2b9853ec52` / `দুই বিঘা জমি`.
+- Current source status: narrow backend materialization patch prepared in clean worktree.
+- Upload/checksum: PASS.
+- Metadata API: PASS.
+- Endpoint before deploy: 404.
+- Root cause: deployed backend truth gate cannot materialize the approved DB audio record because production source/deploy lacks the narrow materialization path and DB metadata lacks top-level source/provenance hashes.
+- Fix summary: `audio_materialization_slugs=["book-2b9853ec52"]`, controlled artifact evidence fallback for that slug only, DB/admin audio URLs preserved, estimated/unknown sync blocked.
+- Next gate: clean Railway backend deploy, endpoint probe, then metadata/browser-only resume.
