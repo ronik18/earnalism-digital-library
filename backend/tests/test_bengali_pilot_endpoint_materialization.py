@@ -127,6 +127,25 @@ def test_reader_manifest_audio_accepts_paragraph_stanza_sync_for_pilot():
     assert audio["url"] == "https://cdn.example.test/book-2b9853ec52.mp3"
 
 
+def test_public_projection_exposes_only_sanitized_pilot_audio_fields():
+    projected = server._safe_live_public_projection(pilot_db_book())
+
+    assert projected["audio_enabled"] is True
+    assert projected["audiobook_enabled"] is True
+    assert projected["audio_status"] == "AVAILABLE"
+    assert projected["audio_url"] == f"/api/reader/book/{PILOT_SLUG}/audiobook"
+    assert projected["audiobook_assets"] == {
+        "mp3": f"/api/reader/book/{PILOT_SLUG}/audiobook",
+        "timestamps": f"/api/reader/book/{PILOT_SLUG}/audiobook/timestamps",
+        "vtt": f"/api/reader/book/{PILOT_SLUG}/audiobook/vtt",
+        "chapters": f"/api/reader/book/{PILOT_SLUG}/audiobook/chapters",
+        "meta": f"/api/reader/book/{PILOT_SLUG}/audiobook/meta",
+    }
+    assert projected["audiobook_release_gate"] == "APPROVED"
+    assert projected["audio_qa_status"] == "QA_PASSED"
+    assert "https://cdn.example.test/book-2b9853ec52.mp3" not in str(projected)
+
+
 def test_estimated_sync_blocks_pilot_audio_exposure():
     book = pilot_db_book(audiobook={**pilot_db_book()["audiobook"], "auto_estimated_sync": True})
 

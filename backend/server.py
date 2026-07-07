@@ -1248,7 +1248,9 @@ def _public_projection_is_live(projected: Optional[dict]) -> bool:
 def _safe_live_public_projection(book: Optional[dict]) -> Optional[dict]:
     book = _book_with_controlled_artifact_evidence(book)
     projected = public_book_projection(_strip_all_chapter_content(book)) if book else None
-    return projected if _public_projection_is_live(projected) else None
+    if not _public_projection_is_live(projected):
+        return None
+    return _with_materialized_audio_public_projection(book, projected)
 
 
 def _slug_is_dracula(slug: str) -> bool:
@@ -1368,6 +1370,47 @@ def _audiobook_release_metadata_supported(book: dict) -> bool:
 
 def _runtime_audio_materialization_allowed(slug: str) -> bool:
     return str(slug or "").strip().lower() in CONTROLLED_AUDIO_MATERIALIZATION_SLUGS
+
+
+def _with_materialized_audio_public_projection(book: Optional[dict], projected: Optional[dict]) -> Optional[dict]:
+    """Expose sanitized public audio fields only for explicitly materialized pilots."""
+    if not book or not projected:
+        return projected
+    slug = str(projected.get("slug") or book.get("slug") or "").strip().lower()
+    if (
+        not _runtime_audio_materialization_allowed(slug)
+        or not can_expose_audio({**book, "slug": slug})
+        or not _audiobook_release_metadata_supported(book)
+    ):
+        return projected
+
+    raw_assets = book.get("audiobook_assets") if isinstance(book.get("audiobook_assets"), dict) else {}
+    nested = book.get("audiobook") if isinstance(book.get("audiobook"), dict) else {}
+    if not raw_assets.get("mp3") and not nested.get("url") and not book.get("audiobook_url"):
+        return projected
+
+    public_assets = {"mp3": f"/api/reader/book/{slug}/audiobook"}
+    for key in ("timestamps", "vtt", "chapters", "meta"):
+        if raw_assets.get(key):
+            public_assets[key] = f"/api/reader/book/{slug}/audiobook/{key}"
+
+    public = dict(projected)
+    public.update(
+        {
+            "audio_enabled": True,
+            "audiobook_enabled": True,
+            "audio_status": "AVAILABLE",
+            "audio_url": public_assets["mp3"],
+            "audiobook_assets": public_assets,
+            "audiobook_release_gate": "APPROVED",
+            "audio_qa_status": "QA_PASSED",
+            "audiobook_provider": str(book.get("audiobook_provider") or nested.get("provider") or ""),
+            "audiobook_voice": str(book.get("audiobook_voice") or nested.get("voice") or ""),
+            "audio_asset_slug": slug,
+            "generate_audiobook": False,
+        }
+    )
+    return public
 
 
 def _dracula_artifact_doc(*, include_content: bool = False) -> Optional[dict]:
@@ -1872,6 +1915,8 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
     book_public = public_book_projection(_strip_all_chapter_content(doc)) or {}
     if not admin_preview and not _public_projection_is_live(book_public):
         return None
+    if not admin_preview:
+        book_public = _with_materialized_audio_public_projection(doc, book_public) or book_public
     book_public["chapters"] = chapters
     manifest_version = _stable_digest({
         "slug": slug,
