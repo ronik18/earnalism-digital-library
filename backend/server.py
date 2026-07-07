@@ -406,7 +406,7 @@ def _controlled_truth_gate_version() -> str:
         "runtime_audio_requires_materialization": True,
     }
     digest = hashlib.sha256(_json.dumps(payload, sort_keys=True).encode("utf-8")).hexdigest()[:12]
-    return f"controlled-launch-v4-{digest}"
+    return f"controlled-launch-v5-{digest}"
 
 
 # Controlled-launch public truth gate. The production database can contain
