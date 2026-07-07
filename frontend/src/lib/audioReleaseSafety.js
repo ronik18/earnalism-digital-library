@@ -36,6 +36,7 @@ export function audiobookReleaseState(book = {}) {
     assets.mp3
       || assets.audio
       || assets.url
+      || manifestAudio?.url
       || book?.final_audio_url
       || book?.audio_url
       || book?.audiobook?.final_audio_url
@@ -59,7 +60,7 @@ export function audiobookReleaseState(book = {}) {
     return {
       status: "approved",
       canShowControls: true,
-      label: "Audiobook approved",
+      label: "Audiobook available",
       reason: hasReaderManifestApproval && !(hasReleaseApproval && hasQaApproval)
         ? "Reader manifest exposes an approved provider-backed audiobook endpoint."
         : "Release gate, listening QA, and audio asset are approved.",
@@ -78,8 +79,8 @@ export function audiobookReleaseState(book = {}) {
     return {
       status: "private_review",
       canShowControls: false,
-      label: "Audiobook held for QA",
-      reason: "Audio exists or is configured, but public release approval is incomplete.",
+      label: "Reader edition available",
+      reason: "Audio will appear only after narration, sync, and browser gates pass.",
       releaseGate,
       qaStatus,
       audioUrl,

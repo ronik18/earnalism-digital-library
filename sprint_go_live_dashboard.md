@@ -364,3 +364,12 @@ rg -n "pipeline-card-kshudhita-pashan|pipeline-books|live_approved_slugs|visual-
 - Production verification: pilot reader manifest exposes approved audio and the audiobook endpoint returns audio; sample unapproved Bengali title `book-ac5a71075e` remains audio-hidden.
 - Catalog final gate: `CATALOG GO LIVE READY`, published this run `1`, total audiobook-live count `2`, Bengali audiobook-live count `1`.
 - Do not start the 3-title Bengali canary until owner approval; recommended candidates remain `muchiram-gurer-jibanchorit`, `book-d19e96859f`, and `book-2ddbed8293`.
+
+## Bengali Post-Go-Live Stabilization - 2026-07-07T12:30:00Z
+
+- Status: source stabilization branch in progress, no production mutation and no TTS/ASR/sync/upload reruns.
+- Pilot live status: `book-2b9853ec52` remains live by prior endpoint/manifest/browser evidence.
+- Detail copy fix: source now merges reader-manifest evidence into `BookDetail` and recognizes `manifest.audio.url`; approved copy is `Audiobook available`, with paragraph/stanza sync represented as section-following narration.
+- Unapproved Bengali audio: remains hidden; incomplete audio evidence returns reader-safe copy and no controls.
+- Source preservation: `release_catalog_factory.py` and `factory_hooks/browser_hook.py` in the clean integration branch match the original workspace hashes.
+- Canary preflight: `muchiram-gurer-jibanchorit` and `book-d19e96859f` are preflight-ready for a future owner-approved canary; `book-2ddbed8293` is blocked by missing public source/API visibility and should be replaced or promoted from a real source package before canary TTS.

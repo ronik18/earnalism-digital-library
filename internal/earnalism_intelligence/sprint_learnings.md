@@ -152,3 +152,12 @@
 - Do not promote dirty `frontend/package-lock.json` drift without reviewing `package.json`; in this run it broke `npm ci` by removing Playwright lock entries required by `origin/main`.
 - `frontend/public/sitemap.xml` is a generated validation side effect. Restore it before source-only promotion unless intentionally reviewed.
 - Future deploys and production mutations must run from clean source-only worktrees. The original workspace may retain local evidence, rollback payloads, and imported content inputs, but it must not be used for deploy unless `git status --short` is source-only and intentionally staged.
+
+## 2026-07-07 Bengali Post-Go-Live Stabilization
+
+- `book-2b9853ec52` remains the first live Bengali audiobook: endpoint/manifest/sidecars/browser were already PASS, with Sarvam `bulbul:v3` / `ratan` / `literary_warm_pacing`, listening `9.4`, confidence `0.95`, and `PARAGRAPH_OR_STANZA_SYNC_PREMIUM`.
+- The stale detail-page copy was a frontend evidence-merge bug: `/books/book-2b9853ec52` exposes `audiobook_enabled=true`, while release/QA/audio endpoint evidence lives in `/reader/book/book-2b9853ec52/manifest`.
+- Source fix: `BookDetail` now enriches the book detail payload from the reader manifest, and `audioReleaseSafety` treats `manifest.audio.url` as a valid approved audio asset. Approved detail copy becomes `Audiobook available`; unapproved Bengali editions keep reader-safe copy.
+- Source preservation is complete for the reported factory/browser hook files: hashes in the clean integration branch match the original workspace, so no additional source promotion was required.
+- Canary preflight remains partial: `muchiram-gurer-jibanchorit` and `book-d19e96859f` pass source/reader/API preflight for a future owner-approved TTS canary, but `book-2ddbed8293` is blocked because the clean branch lacks a public controlled-publication source package and production API returns `404`.
+- Do not run canary TTS until exactly three candidates pass preflight and owner approval/budget env vars are present.

@@ -27,6 +27,27 @@ function isValidBookPayload(value) {
   return Boolean(value && typeof value === "object" && !Array.isArray(value) && value.slug);
 }
 
+function mergeReaderManifestIntoBook(book, manifest) {
+  if (!book || !manifest || typeof manifest !== "object") return book;
+  const manifestBook = manifest.book && typeof manifest.book === "object" ? manifest.book : {};
+  const manifestAudio = manifest.audio && typeof manifest.audio === "object" ? manifest.audio : {};
+  return {
+    ...book,
+    ...manifestBook,
+    _readerManifest: manifest,
+    audiobook_enabled: manifestAudio.enabled ?? manifestBook.audiobook_enabled ?? book.audiobook_enabled,
+    audiobook_release_gate: manifestBook.audiobook_release_gate || manifestAudio.release_gate || book.audiobook_release_gate,
+    audio_qa_status: manifestBook.audio_qa_status || manifestAudio.qa_status || book.audio_qa_status,
+    sync_mode: manifestBook.sync_mode || manifestAudio.sync_mode || book.sync_mode,
+    highlight_sync_enabled: manifestBook.highlight_sync_enabled ?? manifestAudio.highlight_sync_enabled ?? book.highlight_sync_enabled,
+    audiobook_assets: {
+      ...(book.audiobook_assets || {}),
+      ...(manifestBook.audiobook_assets || {}),
+      ...(manifestAudio.assets || {}),
+    },
+  };
+}
+
 export default function BookDetail() {
   const { slug } = useParams();
   const [book, setBook] = useState(null);
@@ -60,9 +81,22 @@ export default function BookDetail() {
     const controller = new AbortController();
     setLoading(true);
     setLoadStatus("loading");
-    api.get(`/books/${slug}`, { signal: controller.signal }).then((r) => {
+    api.get(`/books/${slug}`, { signal: controller.signal }).then(async (r) => {
       if (isValidBookPayload(r.data)) {
-        setBook(r.data);
+        let nextBook = r.data;
+        try {
+          const manifestResponse = await api.get(`/reader/book/${slug}/manifest`, {
+            signal: controller.signal,
+            skipAuthRedirect: true,
+          });
+          nextBook = mergeReaderManifestIntoBook(nextBook, manifestResponse.data);
+        } catch (manifestErr) {
+          if (controller.signal.aborted) return;
+          if (![401, 403, 404].includes(manifestErr.response?.status)) {
+            // Detail pages remain reader-safe if manifest enrichment fails; controls stay hidden.
+          }
+        }
+        setBook(nextBook);
         setLoadStatus("ready");
         return;
       }

@@ -1,0 +1,32 @@
+{
+  "slug": "book-2b9853ec52",
+  "route_tested": "https://www.theearnalism.com/book/book-2b9853ec52",
+  "current_visible_copy": "Audiobook held for QA (reported live production stale copy)",
+  "expected_copy": "Audiobook available; section-following narration available from the reader when manifest evidence passes",
+  "diagnosis": {
+    "book_api": {
+      "url": "https://api.theearnalism.com/api/books/book-2b9853ec52",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8"
+    },
+    "reader_manifest_api": {
+      "url": "https://api.theearnalism.com/api/reader/book/book-2b9853ec52/manifest",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8"
+    },
+    "responsible_source_files": [
+      "frontend/src/pages/BookDetail.jsx",
+      "frontend/src/lib/audioReleaseSafety.js"
+    ],
+    "root_cause": "/books/{slug} exposes audiobook_enabled without enough release/QA/asset evidence; BookDetail did not enrich from reader manifest, and audioReleaseSafety ignored manifest.audio.url as an audio asset.",
+    "fix_type": "frontend_source_fix_required; no metadata mutation required",
+    "cache_invalidation_required": "production deploy/cache refresh required after merge; source branch does not mutate live bundle"
+  },
+  "fixed_behavior": {
+    "approved_live_audio_label": "Audiobook available",
+    "approved_live_audio_cta": "Listen in Reader",
+    "paragraph_stanza_customer_language": "section-following narration",
+    "unapproved_bengali_copy": "Reader edition available. Audio will appear only after narration, sync, and browser gates pass.",
+    "word_level_sync_claim": false
+  }
+}

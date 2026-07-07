@@ -864,3 +864,40 @@ Owner-review items remaining in the original workspace:
 Validation summary in clean integration worktree: release factory py_compile PASS, factory hook py_compile PASS, stop-guard tests PASS, listening QA schema PASS, backend route tests PASS 8/8, `npm ci` PASS, audioReleaseSafety PASS 4/4, frontend build PASS, cover audit PASS with 0 typographic-only covers, visual smoke PASS with Playwright browser execution 72/72, and `git diff --check` PASS.
 
 Operating rule: future deploys and production mutations must run from clean source-only worktrees. The original workspace may retain local evidence, rollback payloads, and imported content inputs, but it must not be used for deploy unless `git status --short` is source-only and intentionally staged.
+
+## 2026-07-07 Bengali Post-Go-Live Stabilization Hygiene
+
+Clean source worktree:
+
+- `/private/tmp/earnalism-source-only-clean-integration`
+- Branch: `codex/bengali-post-live-stabilization`
+
+Source files intentionally changed:
+
+- `frontend/src/pages/BookDetail.jsx`
+- `frontend/src/lib/audioReleaseSafety.js`
+- `frontend/src/lib/audioReleaseSafety.test.js`
+
+Reports/memory intentionally changed:
+
+- `bengali_post_live_stabilization_plan.json`
+- `book_2b9853ec52_stale_detail_copy_report.json`
+- `bengali_source_preservation_report.json`
+- `bengali_next_3_canary_preflight.json`
+- `internal/earnalism_intelligence/decision_ledger.jsonl`
+- `internal/earnalism_intelligence/provider_performance_memory.json`
+- `internal/earnalism_intelligence/title_decision_history.json`
+- `internal/earnalism_intelligence/sprint_learnings.md`
+- `sprint_go_live_dashboard.md`
+- `repo_cleanup_report.md`
+
+Generated/local evidence intentionally excluded:
+
+- `internal/audiobook_lab/release_gate/**`
+- generated audio and sidecars
+- `frontend/build/**`
+- screenshots, traces/videos, logs, caches
+- signed URLs and secrets
+- unselected local evidence reports in the clean worktree
+
+No production metadata mutation, TTS, ASR, sync, upload, or canary run was performed in this stabilization pass.

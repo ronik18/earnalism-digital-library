@@ -1,0 +1,60 @@
+{
+  "status": "IN_PROGRESS_SOURCE_STABILIZATION",
+  "live_pilot_status": {
+    "slug": "book-2b9853ec52",
+    "title": "দুই বিঘা জমি",
+    "total_audiobook_live_count": 2,
+    "bengali_audiobook_live_count": 1,
+    "endpoint_manifest_sidecars_browser": "PASS_REPORTED"
+  },
+  "stale_detail_copy_diagnosis": "BookDetail loaded only /books/{slug}; live book payload has audiobook_enabled=true but lacks release/QA/manifest URL evidence, causing audioReleaseSafety private_review copy.",
+  "source_preservation_gaps": [
+    "Verify factory/browser hook hashes against original workspace and preserve in clean branch if changed."
+  ],
+  "canary_preflight_gaps": {
+    "muchiram-gurer-jibanchorit": "needs no source repair from current clean text extractor",
+    "book-d19e96859f": "frontmatter stripped by existing TTS prep; starts at clean title/body",
+    "book-2ddbed8293": "blocked: no public controlled-publication book/chapter package in clean source branch and production API returns 404"
+  },
+  "clean_integration_status": {
+    "worktree": "/private/tmp/earnalism-source-only-clean-integration",
+    "base_branch": "codex/source-only-clean-integration",
+    "working_branch": "codex/bengali-post-live-stabilization",
+    "dirty_items": "local evidence reports remain untracked and excluded from staging"
+  },
+  "exact_files_that_must_be_promoted": [
+    "frontend/src/lib/audioReleaseSafety.js",
+    "frontend/src/lib/audioReleaseSafety.test.js",
+    "frontend/src/pages/BookDetail.jsx",
+    "bengali_post_live_stabilization_plan.json",
+    "book_2b9853ec52_stale_detail_copy_report.json",
+    "bengali_source_preservation_report.json",
+    "bengali_next_3_canary_preflight.json",
+    "internal/earnalism_intelligence/decision_ledger.jsonl",
+    "internal/earnalism_intelligence/provider_performance_memory.json",
+    "internal/earnalism_intelligence/title_decision_history.json",
+    "internal/earnalism_intelligence/sprint_learnings.md",
+    "sprint_go_live_dashboard.md",
+    "repo_cleanup_report.md"
+  ],
+  "exact_files_that_must_remain_local_or_generated": [
+    "internal/audiobook_lab/release_gate/**",
+    "generated audio and sidecars",
+    "screenshots/traces/logs/caches",
+    "signed URLs and secrets",
+    "local evidence closeout reports not selected for this patch"
+  ],
+  "validation_plan": [
+    "py_compile factory and hooks",
+    "release factory stop guards",
+    "Sarvam full-pilot hook tests",
+    "listening QA schema tests",
+    "npm ci",
+    "audioReleaseSafety.test.js",
+    "frontend build",
+    "cover audit",
+    "visual smoke",
+    "git diff --check"
+  ],
+  "rollback_plan": "Revert the stabilization commit; no production metadata was mutated and no audio artifacts were regenerated."
+}
