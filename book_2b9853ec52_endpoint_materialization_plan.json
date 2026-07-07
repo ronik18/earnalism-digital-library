@@ -15,7 +15,7 @@
     "audio_materialization_slugs_contains_only_pilot": true,
     "materialization_scope": "Runtime audio exposure is allowed only for explicitly listed materialization slugs; preserve admin-approved audiobook URLs from production DB metadata."
   },
-  "minimal_fix_required": "Add a one-slug audio_materialization_slugs config, require runtime audio slugs to appear in that list, and merge controlled artifact source/provenance evidence into the DB book for this pilot only. Keep can_expose_audio(), approved metadata/assets, and optional policy/sync metadata checks strict.",
+  "minimal_fix_required": "Add a one-slug audio_materialization_slugs config, require runtime audio slugs to appear in that list, bump the truth-gate cache discriminator for this rule, and merge controlled artifact source/provenance evidence into the DB book for this pilot only. Keep can_expose_audio(), approved metadata/assets, and optional policy/sync metadata checks strict.",
   "deploy_restart_plan": "Deploy the clean worktree branch to Railway backend. Do not deploy from the dirty main workspace. After deploy health is online, probe public detail, reader manifest, audiobook endpoint, final audio URL, and sidecar URLs.",
   "rollback_plan": {
     "code_rollback": "Revert the endpoint materialization commit or redeploy the previous Railway deployment.",

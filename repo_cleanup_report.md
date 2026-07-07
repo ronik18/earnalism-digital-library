@@ -24,4 +24,5 @@ Use explicit `git add` paths only. Do not use `git add .`.
 - Added concise reports: `book_2b9853ec52_endpoint_materialization_plan.json`, `book_2b9853ec52_controlled_launch_source_report.json`, `bengali_endpoint_source_promotion_report.json`.
 - Excluded generated artifacts: release_gate folders, generated audio, sidecars, logs, traces, screenshots, caches, signed URLs, secrets.
 - Validation: backend py_compile PASS; targeted endpoint materialization/safety pytest PASS; `git diff --check` PASS.
+- Production cache note: reader-manifest cache version includes `runtime_audio_requires_materialization=true` so stale non-pilot audio manifests are bypassed after deploy.
 - Known unrelated test debt: older catalog tests still assert Dracula-only launch and fail against the current 63-title controlled-launch data.

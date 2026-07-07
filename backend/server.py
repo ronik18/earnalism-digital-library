@@ -403,6 +403,7 @@ def _controlled_truth_gate_version() -> str:
         "pipeline": list(CONTROLLED_PIPELINE_SLUGS),
         "audio": list(CONTROLLED_AUDIO_ENABLED_SLUGS),
         "audio_materialization": list(CONTROLLED_AUDIO_MATERIALIZATION_SLUGS),
+        "runtime_audio_requires_materialization": True,
     }
     digest = hashlib.sha256(_json.dumps(payload, sort_keys=True).encode("utf-8")).hexdigest()[:12]
     return f"controlled-launch-v4-{digest}"
