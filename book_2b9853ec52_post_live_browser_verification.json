@@ -1,0 +1,108 @@
+{
+  "generated_at": "2026-07-07T12:29:37.413Z",
+  "validation_mode": "local_build_with_same_origin_api_forwarded_to_production_api",
+  "pilot_detail_pass": true,
+  "pilot_reader_checked": "LOCKED_BY_READING_ACCESS_IN_UNAUTHENTICATED_LOCAL_PROXY",
+  "unapproved_audio_hidden": true,
+  "no_word_level_claim": true,
+  "results": [
+    {
+      "route": "/book/book-2b9853ec52",
+      "status": "CHECKED",
+      "stale_held_for_qa_copy": false,
+      "audiobook_available_copy": true,
+      "section_following_copy": false,
+      "paragraph_stanza_label": false,
+      "word_level_claim": false,
+      "detail_listen_link_count": 1,
+      "reader_audio_count": 0,
+      "reader_audio_controls_count": 0,
+      "console_errors": [],
+      "ignored_expected_console_errors": [],
+      "network_errors": []
+    },
+    {
+      "route": "/reader/book-2b9853ec52?listen=1",
+      "status": "CHECKED",
+      "stale_held_for_qa_copy": false,
+      "audiobook_available_copy": false,
+      "section_following_copy": false,
+      "paragraph_stanza_label": false,
+      "word_level_claim": false,
+      "detail_listen_link_count": 0,
+      "reader_audio_count": 0,
+      "reader_audio_controls_count": 0,
+      "console_errors": [],
+      "ignored_expected_console_errors": [
+        "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)",
+        "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      ],
+      "network_errors": []
+    },
+    {
+      "route": "/book/muchiram-gurer-jibanchorit",
+      "status": "CHECKED",
+      "stale_held_for_qa_copy": false,
+      "audiobook_available_copy": false,
+      "section_following_copy": false,
+      "paragraph_stanza_label": false,
+      "word_level_claim": false,
+      "detail_listen_link_count": 0,
+      "reader_audio_count": 0,
+      "reader_audio_controls_count": 0,
+      "console_errors": [],
+      "ignored_expected_console_errors": [],
+      "network_errors": []
+    },
+    {
+      "route": "/reader/muchiram-gurer-jibanchorit",
+      "status": "CHECKED",
+      "stale_held_for_qa_copy": false,
+      "audiobook_available_copy": false,
+      "section_following_copy": false,
+      "paragraph_stanza_label": false,
+      "word_level_claim": false,
+      "detail_listen_link_count": 0,
+      "reader_audio_count": 0,
+      "reader_audio_controls_count": 0,
+      "console_errors": [],
+      "ignored_expected_console_errors": [
+        "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)",
+        "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+      ],
+      "network_errors": []
+    },
+    {
+      "route": "/book/book-d19e96859f",
+      "status": "CHECKED",
+      "stale_held_for_qa_copy": false,
+      "audiobook_available_copy": false,
+      "section_following_copy": false,
+      "paragraph_stanza_label": false,
+      "word_level_claim": false,
+      "detail_listen_link_count": 0,
+      "reader_audio_count": 0,
+      "reader_audio_controls_count": 0,
+      "console_errors": [],
+      "ignored_expected_console_errors": [],
+      "network_errors": []
+    }
+  ],
+  "book_api": {
+    "url": "https://api.theearnalism.com/api/books/book-2b9853ec52",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8"
+  },
+  "reader_manifest": {
+    "url": "https://api.theearnalism.com/api/reader/book/book-2b9853ec52/manifest",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8"
+  },
+  "audiobook_endpoint": {
+    "url": "https://api.theearnalism.com/api/reader/book/book-2b9853ec52/audiobook",
+    "status": 206,
+    "content_type": "audio/mpeg"
+  },
+  "pilot_reader_gate_context": "Prior production final browser gate is recorded as PASS; this local unauthenticated check validates no word-level claim and no unapproved audio exposure, but cannot exercise the unlocked player without reader access.",
+  "source_copy_fix_status": "PASS_DETAIL_PAGE_LOCAL_BUILD_WITH_PRODUCTION_API_FORWARDING"
+}

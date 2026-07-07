@@ -1,0 +1,33 @@
+{
+  "files_compared": [
+    {
+      "path": "internal/audiobook_lab/scripts/release_catalog_factory.py",
+      "clean_integration_sha256": "195a013c2f8ccc51c6b1fc1c9d7e710cbad09c36d507fc784c6a769ada010613",
+      "original_workspace_sha256": "195a013c2f8ccc51c6b1fc1c9d7e710cbad09c36d507fc784c6a769ada010613",
+      "matched_original_workspace": true,
+      "promoted": false,
+      "decision": "skipped; clean integration already contains the same source bytes",
+      "tests_covering_change": [
+        "py_compile factory/hooks",
+        "test_release_catalog_factory_stop_guards.py",
+        "test_sarvam_full_pilot_tts_hook.py"
+      ]
+    },
+    {
+      "path": "internal/audiobook_lab/scripts/factory_hooks/browser_hook.py",
+      "clean_integration_sha256": "82b1b8265b8b2e64053caa0afd91494d573a05df0480077eb276b285485be00d",
+      "original_workspace_sha256": "82b1b8265b8b2e64053caa0afd91494d573a05df0480077eb276b285485be00d",
+      "matched_original_workspace": true,
+      "promoted": false,
+      "decision": "skipped; clean integration already contains the same source bytes",
+      "tests_covering_change": [
+        "py_compile factory/hooks",
+        "test_release_catalog_factory_stop_guards.py",
+        "test_sarvam_full_pilot_tts_hook.py"
+      ]
+    }
+  ],
+  "generated_files_excluded": true,
+  "unresolved_owner_review_items": [],
+  "source_preservation_status": "PRESERVED"
+}

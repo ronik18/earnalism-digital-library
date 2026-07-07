@@ -7,7 +7,7 @@
       "notes": "Technical sync can pass, but narration repeatedly sounded robotic/flat below premium threshold."
     },
     "sarvam": {
-      "status": "bengali_pilot_live",
+      "status": "bengali_pilot_live_post_live_pr_open",
       "best_observed_overall": 9.3,
       "best_observed_confidence": 0.95,
       "notes": "Synthesis works; full schema-3 judging was interrupted by OpenAI listening-QA quota in prior bakeoff.",
@@ -27,8 +27,8 @@
       "generalization_confirmed": true,
       "full_pilot_generated": true,
       "audiobook_lane_status": "BENGALI_AUDIOBOOK_PILOT_LIVE",
-      "next_action": "Do not rerun the pilot. Prepare the 3-title canary only after source/report cleanup and owner approval.",
-      "updated_at": "2026-07-07T11:48:33Z",
+      "next_action": "Review stacked PR #88, merge/deploy only after source-only base and owner approval, then verify production detail copy before starting the prepared 3-title canary.",
+      "updated_at": "2026-07-07T12:55:00Z",
       "seed_rescue_run": {
         "run_dir": "internal/audiobook_lab/release_gate/bengali_tts_provider_bakeoff_20260706T192224Z",
         "voice": "pooja",
@@ -169,7 +169,15 @@
         "public_book_status": 200,
         "reader_manifest_status": 200,
         "endpoint_materialization_report": "frontend_bengali_audio_production_deploy_verification.json"
-      }
+      },
+      "live_pilot_slug": "book-2b9853ec52",
+      "live_pilot_title": "দুই বিঘা জমি",
+      "live_pilot_voice": "ratan",
+      "live_pilot_style": "literary_warm_pacing",
+      "live_pilot_listening_score": 9.4,
+      "live_pilot_listening_confidence": 0.95,
+      "live_pilot_sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+      "detail_page_stale_copy_fix": "frontend source now merges reader manifest and treats manifest audio.url as approved asset evidence"
     },
     "google": {
       "status": "credentials_or_adc_reauth_needed"

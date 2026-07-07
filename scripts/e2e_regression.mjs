@@ -203,7 +203,8 @@ async function main() {
   await installApiProxy(page);
 
   await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });
-  await page.waitForSelector('[data-testid="hero-dracula-card"]', { timeout: 30000 });
+  await page.waitForSelector('[data-testid="premium-landing-hero"]', { timeout: 30000 });
+  await page.waitForSelector('[data-testid="curated-action-cards"]', { timeout: 30000 });
   await page.waitForTimeout(900);
   const home = await page.evaluate(() => {
     const pipelineCards = [...document.querySelectorAll('[data-testid^="pipeline-card-"]')]
@@ -215,17 +216,30 @@ async function main() {
       viewportWidth: window.innerWidth,
       hasHeroCard: Boolean(document.querySelector('[data-testid="hero-dracula-card"]')),
       hasPremiumHero: Boolean(document.querySelector('[data-testid="premium-landing-hero"]')),
-      hasReadingTimeHelper: /reading time is used only while you read/i.test(document.body.innerText),
-      hasKshudhitaPipeline: Boolean(document.querySelector('[data-testid="pipeline-card-kshudhita-pashan"]')),
-      hasPipelineShelf: Boolean(document.querySelector('[data-testid="pipeline-books"]')),
+      hasCuratedActionCards: Boolean(document.querySelector('[data-testid="curated-action-cards"]')),
+      hasReadingTimePath: Boolean(document.querySelector('[data-testid="reading-time-library-path"]')),
+      readingPathPricingHref: document.querySelector('[data-testid="reading-path-pricing-cta"]')?.getAttribute("href"),
+      hasKshudhitaPipeline: /Kshudhita Pashan|ক্ষুধিত পাষাণ/i.test(document.querySelector('[data-testid="bengali-gothic-pipeline-shelf"]')?.textContent || ""),
+      hasPipelineShelf: Boolean(document.querySelector('[data-testid="bengali-gothic-pipeline-shelf"] .shelf-two-shelf')),
       headline: document.querySelector('[data-testid="hero-headline"]')?.textContent?.replace(/\s+/g, " ").trim(),
-      heroReadHref: document.querySelector('[data-testid="hero-cta-read"]')?.getAttribute("href"),
-      heroStartHref: document.querySelector('[data-testid="hero-cta-start-dracula"]')?.getAttribute("href"),
-      heroPassHref: document.querySelector('[data-testid="hero-cta-pricing"]')?.getAttribute("href"),
-      kshudhitaNotifyHref: document.querySelector('[data-testid="pipeline-notify-kshudhita-pashan"]')?.getAttribute("href"),
+      heroLibraryHref: document.querySelector('[data-testid="hero-cta-library"]')?.getAttribute("href"),
+      heroShelvesHref: document.querySelector('[data-testid="hero-cta-shelves"]')?.getAttribute("href"),
+      hasBengaliClassicsCard: /Bengali Classics/i.test(document.querySelector('[data-testid="curated-action-cards"]')?.textContent || ""),
+      hasEnglishClassicsCard: /English Classics/i.test(document.querySelector('[data-testid="curated-action-cards"]')?.textContent || ""),
+      hasApprovedAudiobooksCard: /Approved Audiobooks/i.test(document.querySelector('[data-testid="curated-action-cards"]')?.textContent || ""),
+      bengaliCardHref: [...document.querySelectorAll('[data-testid="curated-action-cards"] a')]
+        .map((link) => link.getAttribute("href") || "")
+        .find((href) => href.includes("language=bn")),
+      draculaCardHref: [...document.querySelectorAll('[data-testid="curated-action-cards"] a')]
+        .map((link) => link.getAttribute("href") || "")
+        .find((href) => href === "/reader/dracula"),
+      approvedAudioCardLinks: [...document.querySelectorAll('[data-testid="curated-action-cards"] a')]
+        .map((link) => link.getAttribute("href") || "")
+        .filter((href) => /audio|listen|audiobook/i.test(href)),
+      pipelineNotifyButtonCount: document.querySelectorAll('[data-testid="bengali-gothic-pipeline-shelf"] button[aria-label^="Notify me"]').length,
       pipelineCards,
       notifyLinks,
-      unsafePipelineLinks: [...document.querySelectorAll('[data-testid^="pipeline-card-"] a')]
+      unsafePipelineLinks: [...document.querySelectorAll('[data-testid="bengali-gothic-pipeline-shelf"] a')]
         .map((link) => link.getAttribute("href") || "")
         .filter((href) => href.startsWith("/reader/") || href.startsWith("/pricing") || /listen|audio/i.test(href)),
       staleCarouselCount: document.querySelectorAll('[data-testid="controlled-carousel-section"]').length,
@@ -241,24 +255,27 @@ async function main() {
       railLibraryCount: document.querySelectorAll('[data-testid="live-cover-library"]').length,
     };
   });
-  assert(home.hasHeroCard, "Dracula hero card is missing");
-  assert(home.hasPremiumHero, "premium Dracula hero is missing");
-  assert(home.hasReadingTimeHelper, "reading-time helper line is missing");
+  assert(!home.hasHeroCard, "retired Dracula-first hero card should not render");
+  assert(home.hasPremiumHero, "premium editorial hero is missing");
+  assert(home.hasCuratedActionCards, "curated action cards are missing");
+  assert(home.hasReadingTimePath, "reading-time library path section is missing");
+  assert(home.readingPathPricingHref === "/pricing", `reading path pricing CTA mismatch: ${home.readingPathPricingHref}`);
   assert(home.hasKshudhitaPipeline, "Kshudhita pipeline feature is missing");
   assert(home.hasPipelineShelf, "pipeline shelf is missing");
-  assert(/Step into the classics/i.test(home.headline || ""), `hero headline is not the current reference hero: ${home.headline}`);
-  assert(home.heroReadHref === "/reader/dracula", `hero free-read CTA should open Dracula reader, got ${home.heroReadHref}`);
-  assert(home.heroStartHref === "/book/dracula", `hero Start Dracula CTA should open Dracula detail, got ${home.heroStartHref}`);
-  assert(home.heroPassHref === "/pricing?source=homepage_hero&book=dracula", `hero reading pass CTA mismatch: ${home.heroPassHref}`);
-  assert(home.kshudhitaNotifyHref === "/contact?interest=kshudhita-pashan", `Kshudhita must remain notify-only, got ${home.kshudhitaNotifyHref}`);
+  assert(/calm digital reading room/i.test(home.headline || ""), `hero headline is not the editorial library hero: ${home.headline}`);
+  assert(!/Begin with Dracula|Step into Dracula/i.test(home.headline || ""), `homepage regressed to Dracula-first headline: ${home.headline}`);
+  assert(home.heroLibraryHref === "/library", `hero Start Reading CTA should open library, got ${home.heroLibraryHref}`);
   assert(
-    JSON.stringify(home.pipelineCards) === JSON.stringify(expectedPipelineSlugs),
-    `pipeline cards mismatch: ${JSON.stringify(home.pipelineCards)}`,
+    ["#curated-action-cards-title", "/#curated-action-cards-title"].includes(home.heroShelvesHref),
+    `hero Browse Library CTA should jump to action cards, got ${home.heroShelvesHref}`,
   );
-  assert(
-    home.notifyLinks.every((href) => typeof href === "string" && href.startsWith("/contact?interest=")),
-    `pipeline Notify Me links must point to contact interest capture only: ${JSON.stringify(home.notifyLinks)}`,
-  );
+  assert(home.hasBengaliClassicsCard, "Bengali Classics action card is missing");
+  assert(home.hasEnglishClassicsCard, "English Classics action card is missing");
+  assert(home.hasApprovedAudiobooksCard, "Approved Audiobooks action card is missing");
+  assert(home.bengaliCardHref === "/library?language=bn&availability=reader-ready", `Bengali card CTA mismatch: ${home.bengaliCardHref}`);
+  assert(home.draculaCardHref === "/reader/dracula", `Dracula should be a refined English Classics card CTA, got ${home.draculaCardHref}`);
+  assert(home.approvedAudioCardLinks.length === 0, `approved audio card leaked an unevidenced audio link: ${JSON.stringify(home.approvedAudioCardLinks)}`);
+  assert(home.pipelineNotifyButtonCount > 0, "pipeline shelf should keep unreleased titles notify-only");
   assert(home.unsafePipelineLinks.length === 0, `pipeline cards leaked reader/payment/audio links: ${JSON.stringify(home.unsafePipelineLinks)}`);
   assert(home.staleCarouselCount === 0, "retired controlled launch carousel should not render in the luxury homepage");
   assert(home.staleAudioUnavailableCount === 0, "stale audiobook unavailable note should not render");
