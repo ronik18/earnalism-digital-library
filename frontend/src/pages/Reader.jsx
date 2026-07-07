@@ -560,6 +560,13 @@ function manifestAudioForBook(book = {}) {
   return book?._readerManifest?.audio || {};
 }
 
+function approvedManifestAudioUrlForBook(book = {}) {
+  if (!canExposeAudiobookControls(book)) return '';
+  const audio = manifestAudioForBook(book);
+  const assets = audiobookAssetsForBook(book);
+  return resolveAssetUrl(audio?.url || audio?.assets?.mp3 || assets?.mp3 || '');
+}
+
 function audioManifestUrlForBook(book, lang, slug) {
   const audio = manifestAudioForBook(book);
   const explicit = audio?.assets?.manifest || audiobookAssetsForBook(book)?.manifest;
@@ -2300,6 +2307,7 @@ export default function Reader() {
     const canOpenPreview = previewChapter?.id && previewChapter.id !== activeChapterId;
     const title = lockedState.chapter?.title || chapter?.title || 'Chapter locked';
     const signInUrl = `/login?next=${encodeURIComponent(getCurrentReaderPath())}`;
+    const lockedAudioUrl = approvedManifestAudioUrlForBook(book);
 
     return (
       <div className="flex min-h-screen items-center justify-center px-5 py-14 text-center" style={{ background: THEMES.beige.canvas }} data-testid="reader-locked">
@@ -2315,6 +2323,21 @@ export default function Reader() {
           <p className="mt-3 text-xs font-light leading-relaxed text-charcoal-soft/80" data-testid="reader-locked-wallet-note">
             Chapter 1 remains free. Later Dracula chapters ask for sign-in and reading time from your wallet.
           </p>
+
+          {lockedAudioUrl && (
+            <div className="reader-locked-audio" data-testid="approved-locked-audiobook">
+              <div className="reader-locked-audio__label">Approved audiobook</div>
+              <audio
+                src={lockedAudioUrl}
+                controls
+                preload="metadata"
+                data-testid="generated-audiobook"
+              />
+              <p>
+                Section-following narration is approved for this title. Sign in to read the protected text alongside the audio.
+              </p>
+            </div>
+          )}
 
           <div className="mt-8 flex flex-col gap-3">
             {reason === 'AUTH_REQUIRED' && (

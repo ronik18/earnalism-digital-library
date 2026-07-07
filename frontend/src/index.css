@@ -4620,6 +4620,37 @@ textarea.input-elegant {
   text-transform: uppercase;
 }
 
+.reader-locked-audio {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid rgba(107, 30, 46, 0.18);
+  border-radius: 1.1rem;
+  background: rgba(247, 240, 227, 0.78);
+  text-align: left;
+}
+
+.reader-locked-audio__label {
+  margin-bottom: 0.6rem;
+  color: var(--brand-burgundy);
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.reader-locked-audio audio {
+  display: block;
+  width: 100%;
+}
+
+.reader-locked-audio p {
+  margin-top: 0.65rem;
+  color: var(--brand-charcoal);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
 .reader-waveform {
   display: inline-flex;
   align-items: end;
