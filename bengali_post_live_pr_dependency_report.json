@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-07-07T12:40:00Z",
+  "source_only_base": {
+    "branch": "codex/source-only-clean-integration",
+    "commit": "3bd423c608f9f8db437175475fe06a1d7e66fb73",
+    "merged_into_origin_main": false
+  },
+  "stabilization": {
+    "branch": "codex/bengali-post-live-stabilization",
+    "commit": "75b1c22a0fa832eee24e343058b79e724097b8f1",
+    "pr_url": "https://github.com/ronik18/earnalism-digital-library/pull/88",
+    "pr_number": 88,
+    "based_on_source_only_base": true,
+    "recommended_pr_base": "codex/source-only-clean-integration",
+    "direct_main_pr_safe": false,
+    "direct_main_pr_risk": "origin/main...codex/bengali-post-live-stabilization includes the full source-only integration base plus the stabilization patch until 3bd423c6 is merged."
+  },
+  "dependency_order": [
+    "Merge/review codex/source-only-clean-integration into main first, or keep the stabilization PR stacked on that branch.",
+    "Do not merge codex/bengali-post-live-stabilization into main before the source-only base unless GitHub diff is explicitly reviewed and accepted."
+  ]
+}

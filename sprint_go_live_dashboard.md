@@ -372,4 +372,5 @@ rg -n "pipeline-card-kshudhita-pashan|pipeline-books|live_approved_slugs|visual-
 - Detail copy fix: source now merges reader-manifest evidence into `BookDetail` and recognizes `manifest.audio.url`; approved copy is `Audiobook available`, with paragraph/stanza sync represented as section-following narration.
 - Unapproved Bengali audio: remains hidden; incomplete audio evidence returns reader-safe copy and no controls.
 - Source preservation: `release_catalog_factory.py` and `factory_hooks/browser_hook.py` in the clean integration branch match the original workspace hashes.
-- Canary preflight: `muchiram-gurer-jibanchorit` and `book-d19e96859f` are preflight-ready for a future owner-approved canary; `book-2ddbed8293` is blocked by missing public source/API visibility and should be replaced or promoted from a real source package before canary TTS.
+- PR readiness: PR #88 is open as a stacked PR on `codex/source-only-clean-integration`; production stale detail copy remains until the source-only base and stabilization PR are merged/deployed.
+- Canary preflight: `muchiram-gurer-jibanchorit`, `book-d19e96859f`, and `book-f5d593e1f4` are prepared for a future owner-approved canary; `book-2ddbed8293` is blocked by missing public source/API visibility, and `book-4968248842` is skipped pending source/title provenance review.

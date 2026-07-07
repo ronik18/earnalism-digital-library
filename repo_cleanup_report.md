@@ -901,3 +901,5 @@ Generated/local evidence intentionally excluded:
 - unselected local evidence reports in the clean worktree
 
 No production metadata mutation, TTS, ASR, sync, upload, or canary run was performed in this stabilization pass.
+- PR status: PR #88 is open from `codex/bengali-post-live-stabilization` to `codex/source-only-clean-integration`; no generated artifacts are staged for the PR-readiness update.
+- Canary readiness: prepared-only candidate list is `muchiram-gurer-jibanchorit`, `book-d19e96859f`, and `book-f5d593e1f4`; skipped candidates are documented in `bengali_canary_candidate_selection_report.json`.

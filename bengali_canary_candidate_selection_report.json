@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-07-07T12:55:00Z",
+  "status": "CANARY_PREFLIGHT_READY_NO_TTS_RUN",
+  "paid_operations_run": false,
+  "final_3_selected_slugs": [
+    "muchiram-gurer-jibanchorit",
+    "book-d19e96859f",
+    "book-f5d593e1f4"
+  ],
+  "selection_policy": [
+    "content/source pass",
+    "rights pass",
+    "cover pass",
+    "reader route pass",
+    "book API and reader manifest visible",
+    "audiobook-clean text extraction pass",
+    "frontmatter stripped",
+    "shortest/lowest-risk candidates first",
+    "no known terminal audio blocker",
+    "no generated release_gate artifact promotion"
+  ],
+  "selected_candidates": [
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "risk_score": "LOW",
+      "estimated_cost_usd": 0.01,
+      "expected_provider_model_voice_style": "Sarvam / bulbul:v3 / ratan / literary_warm_pacing",
+      "reason_selected": "Rank-2 Bengali campaign candidate with complete controlled-publication source, public book API 200, reader manifest 200, clean audiobook text hash, and no known blockers."
+    },
+    {
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "risk_score": "LOW",
+      "estimated_cost_usd": 0.01,
+      "expected_provider_model_voice_style": "Sarvam / bulbul:v3 / ratan / literary_warm_pacing",
+      "reason_selected": "Rank-3 Bengali campaign candidate with complete controlled-publication source, public book API 200, reader manifest 200, frontmatter-stripped audiobook-clean text, and no known blockers."
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "risk_score": "MEDIUM",
+      "estimated_cost_usd": 0.02,
+      "expected_provider_model_voice_style": "Sarvam / bulbul:v3 / ratan / literary_warm_pacing",
+      "reason_selected": "Next safe ranked replacement after skipped candidates; complete source/API/manifest visibility and clean audiobook text extraction pass."
+    }
+  ],
+  "skipped_slugs": [
+    {
+      "slug": "book-2ddbed8293",
+      "title": "ব্যবধান",
+      "blocker": "Missing public controlled-publication source/API visibility in clean integration branch; production book API and reader manifest return 404.",
+      "repair_path": "Promote only a real public controlled-publication source package if one exists. Do not copy generated release_gate audio, sidecars, or store-candidate artifacts."
+    },
+    {
+      "slug": "book-4968248842",
+      "title": "বলাই",
+      "blocker": "Source package exists, but clean audiobook text opens with সংস্কার while public title is বলাই, indicating a possible title/body mismatch.",
+      "repair_path": "Run source/title provenance review before any audiobook canary use."
+    }
+  ],
+  "estimated_total_cost_usd": 0.04,
+  "expected_sarvam_settings": {
+    "provider": "Sarvam",
+    "model": "bulbul:v3",
+    "voice": "ratan",
+    "style": "literary_warm_pacing",
+    "listening_policy": "bengali_audiobook_acceptance_v2_92",
+    "sync_policy": "tiered_sync_acceptance_v1",
+    "sync_target": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM"
+  },
+  "next_exact_canary_command": "Do not run yet. After PR #88 is merged/deployed and production detail-copy verification passes, run the Railway 3-title command with slugs muchiram-gurer-jibanchorit,book-d19e96859f,book-f5d593e1f4 and explicit EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS plus budget env vars."
+}

@@ -159,5 +159,7 @@
 - The stale detail-page copy was a frontend evidence-merge bug: `/books/book-2b9853ec52` exposes `audiobook_enabled=true`, while release/QA/audio endpoint evidence lives in `/reader/book/book-2b9853ec52/manifest`.
 - Source fix: `BookDetail` now enriches the book detail payload from the reader manifest, and `audioReleaseSafety` treats `manifest.audio.url` as a valid approved audio asset. Approved detail copy becomes `Audiobook available`; unapproved Bengali editions keep reader-safe copy.
 - Source preservation is complete for the reported factory/browser hook files: hashes in the clean integration branch match the original workspace, so no additional source promotion was required.
-- Canary preflight remains partial: `muchiram-gurer-jibanchorit` and `book-d19e96859f` pass source/reader/API preflight for a future owner-approved TTS canary, but `book-2ddbed8293` is blocked because the clean branch lacks a public controlled-publication source package and production API returns `404`.
-- Do not run canary TTS until exactly three candidates pass preflight and owner approval/budget env vars are present.
+- Canary preflight is now prepared-only ready with `muchiram-gurer-jibanchorit`, `book-d19e96859f`, and `book-f5d593e1f4`. `book-2ddbed8293` remains skipped because the clean branch lacks a public controlled-publication source package and production API returns `404`.
+- `book-4968248842` is skipped for canary until source/title provenance is reviewed because its clean audiobook body opens with `সংস্কার` while the public title is `বলাই`.
+- PR #88 is open at `https://github.com/ronik18/earnalism-digital-library/pull/88`, stacked on `codex/source-only-clean-integration`. Do not merge/deploy stabilization before resolving the source-only base and owner approval.
+- Do not run canary TTS until PR #88 production verification passes and owner approval/budget env vars are present.

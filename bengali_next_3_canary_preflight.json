@@ -1,5 +1,5 @@
 {
-  "status": "PREFLIGHT_PARTIAL_NO_TTS_RUN",
+  "status": "PREFLIGHT_READY_NO_TTS_RUN",
   "provider_defaults": {
     "provider": "Sarvam",
     "model": "bulbul:v3",
@@ -13,6 +13,8 @@
   "titles": [
     {
       "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
       "content_source_status": "PASS",
       "rights_status": "PASS_SOURCE_EVIDENCE_PRESENT",
       "cover_status": "CLOUDINARY_ASSIGNED",
@@ -32,20 +34,20 @@
         "content_type": "application/json; charset=utf-8"
       },
       "audiobook_clean_text_extraction_status": "PASS",
-      "frontmatter_stripped": false,
-      "clean_audiobook_text_hash": "0e9455b19181966cd83886298b223030bd427f8e9c54aaaafd69aba4c0b743e6",
-      "expected_opening_words": "মুচিরাম গুড় মহাশয় এই জগৎ পবিত্র করিবার জন্য, কোন্ শকে জন্মগ্রহণ করিয়াছিলেন, ইতিহাসে তাহা লেখে না। ইতিহাস এরূপ অনেকপ্রকার বদমাইসি করিয়া থাকে। এ দেশে ইতিহাসের সাক্ষাৎ পাওয়া যায়",
-      "expected_ending_words": "বে। যশোদা যাত্রাওয়ালার দুঃখ জানিত না। অগত্যা পাঁচ টাকা মাসিক বেতন রফা করিয়া যশোদা মুচিরামকে হারাণ অধিকারীর হস্তে সমর্পণ করিল। তার পর আছাড়িয়া পড়িয়া স্বামীর জন্য কাঁদিতে লাগিল।",
+      "frontmatter_stripped": true,
+      "clean_audiobook_text_hash": "41c425e1d27d8978de75cb5ae06d6fc729fd5dc2ed7e44db256e14e9b3403932",
+      "expected_opening_words": "মুচিরাম গুড় মহাশয় এই জগৎ পবিত্র করিবার জন্য, কোন্ শকে জন্মগ্রহণ করিয়াছিলেন, ইতিহাসে তাহা লেখে না। ইতিহাস এরূপ অনেকপ্রকার বদমাইসি করিয়া থাকে। এ দেশে ইতিহাসের সাক্ষাৎ পাওয়া যায় না",
+      "expected_ending_words": "যশোদা যাত্রাওয়ালার দুঃখ জানিত না। অগত্যা পাঁচ টাকা মাসিক বেতন রফা করিয়া যশোদা মুচিরামকে হারাণ অধিকারীর হস্তে সমর্পণ করিল। তার পর আছাড়িয়া পড়িয়া স্বামীর জন্য কাঁদিতে লাগিল।",
       "estimated_cost_usd": 0.01,
       "safe_for_canary_tts": true,
       "exact_blocker": "",
-      "title": "মুচিরাম গুড়ের জীবনচরিত",
-      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
       "chapter_count": 2,
       "estimated_duration_minutes": 6.1
     },
     {
       "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
       "content_source_status": "PASS",
       "rights_status": "PASS_SOURCE_EVIDENCE_PRESENT",
       "cover_status": "CLOUDINARY_ASSIGNED",
@@ -66,53 +68,68 @@
       },
       "audiobook_clean_text_extraction_status": "PASS",
       "frontmatter_stripped": true,
-      "clean_audiobook_text_hash": "e7b5104e17fd409004761dd53de9c27a0e3a519228160da5abd8efd5ba31a17c",
-      "expected_opening_words": "গিন্নি\n\nছাত্রবৃত্তি ক্লাসের দুই-তিন শ্রেণী নীচে আমাদের পণ্ডিত ছিলেন শিবনাথ। তাঁহার গোঁফদাড়ি কামানো, চুল ছাঁটা এবং টিকিটি হ্রস্ব। তাঁহাকে দেখিলেই বালকদের অন্তরাত্মা শুকাইয়া যাইত।\n",
-      "expected_ending_words": "র ছোটোবোনের সহিত খেলা জীবনের একটি সর্বপ্রধান লজ্জাজনক ভ্রম বলিয়া আশুর কাছে বোধ হইতে লাগিল, পৃথিবীর লোক কোনো কালেও যে সে দিনের কথা ভুলিয়া যাইবে, এ তাহার মনে বিশ্বাস হইল না।\n\n১২৯৮?",
+      "clean_audiobook_text_hash": "f90a341ed434a4928032baf636f42495bac5ef565d3b26181dd25090acf12a7f",
+      "expected_opening_words": "গিন্নি\n\nছাত্রবৃত্তি ক্লাসের দুই-তিন শ্রেণী নীচে আমাদের পণ্ডিত ছিলেন শিবনাথ। তাঁহার গোঁফদাড়ি কামানো, চুল ছাঁটা এবং টিকিটি হ্রস্ব। তাঁহাকে দেখিলেই বালকদের অন্তরাত্মা শুকাইয়া যাইত।",
+      "expected_ending_words": "সেই ছুটির দিনের ছোটোবোনের সহিত খেলা জীবনের একটি সর্বপ্রধান লজ্জাজনক ভ্রম বলিয়া আশুর কাছে বোধ হইতে লাগিল, পৃথিবীর লোক কোনো কালেও যে সে দিনের কথা ভুলিয়া যাইবে, এ তাহার মনে বিশ্বাস হইল না।\n\n১২৯৮?",
       "estimated_cost_usd": 0.01,
       "safe_for_canary_tts": true,
       "exact_blocker": "",
-      "title": "গিন্নি",
-      "author": "রবীন্দ্রনাথ ঠাকুর",
       "chapter_count": 1,
       "estimated_duration_minutes": 6.9
     },
     {
-      "slug": "book-2ddbed8293",
-      "content_source_status": "MISSING_CONTROLLED_PUBLICATION_SOURCE",
-      "rights_status": "UNKNOWN",
-      "cover_status": "UNKNOWN",
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "content_source_status": "PASS",
+      "rights_status": "PASS_SOURCE_EVIDENCE_PRESENT",
+      "cover_status": "CLOUDINARY_ASSIGNED",
       "reader_route_status": {
-        "url": "https://www.theearnalism.com/reader/book-2ddbed8293",
+        "url": "https://www.theearnalism.com/reader/book-f5d593e1f4",
         "status": 200,
         "content_type": "text/html; charset=utf-8"
       },
       "book_api_status": {
-        "url": "https://api.theearnalism.com/api/books/book-2ddbed8293",
-        "status": 404,
-        "error": "HTTPError"
+        "url": "https://api.theearnalism.com/api/books/book-f5d593e1f4",
+        "status": 200,
+        "content_type": "application/json; charset=utf-8"
       },
       "reader_manifest_status": {
-        "url": "https://api.theearnalism.com/api/reader/book/book-2ddbed8293/manifest",
-        "status": 404,
-        "error": "HTTPError"
+        "url": "https://api.theearnalism.com/api/reader/book/book-f5d593e1f4/manifest",
+        "status": 200,
+        "content_type": "application/json; charset=utf-8"
       },
-      "audiobook_clean_text_extraction_status": "NOT_RUN_SOURCE_MISSING",
-      "frontmatter_stripped": null,
-      "clean_audiobook_text_hash": null,
-      "expected_opening_words": "",
-      "expected_ending_words": "",
-      "estimated_cost_usd": null,
-      "safe_for_canary_tts": false,
-      "exact_blocker": "No controlled-publication source package available in clean integration branch."
+      "audiobook_clean_text_extraction_status": "PASS",
+      "frontmatter_stripped": true,
+      "clean_audiobook_text_hash": "9fe83e6811304e27738dba209f48dd89a3578f473503a7dec5b0bb0af6c37b82",
+      "expected_opening_words": "রামকানাইয়ের নির্বুদ্ধিতা\n\nযাহারা বলে, গুরুচরণের মৃত্যুকালে তাঁহার দ্বিতীয় পক্ষের সংসারটি অন্তঃপুরে বসিয়া তাস খেলিতেছিলেন, তাহারা বিশ্বনিন্দুক, তাহারা তিলকে তাল করিয়া তোলে।",
+      "expected_ending_words": "পুত্রের নাম উচ্চারণ করিতে করিতে এই নির্বোধ, সর্বকর্মপণ্ডকারী, নবদ্বীপের অনাবশ্যক বাপ পৃথিবী হইতে অপসৃত হইয়া গেল; আত্মীয়দের মধ্যে কেহ কেহ কহিল ‘আর কিছুদিন পূর্বে গেলেই ভালো হইত’— কিন্তু তাহাদের নাম করিতে চাহি না।\n\n১২৯৮?",
+      "estimated_cost_usd": 0.02,
+      "safe_for_canary_tts": true,
+      "exact_blocker": "",
+      "chapter_count": 1,
+      "estimated_duration_minutes": 9.7
     }
   ],
   "ready_slugs": [
     "muchiram-gurer-jibanchorit",
-    "book-d19e96859f"
+    "book-d19e96859f",
+    "book-f5d593e1f4"
   ],
   "blocked_slugs": [
     "book-2ddbed8293"
   ],
-  "recommendation": "Do not start the 3-title canary until exactly three candidates pass preflight. Current set has blocked candidates."
+  "skipped_or_replaced_slugs": [
+    {
+      "slug": "book-2ddbed8293",
+      "status": "REPLACED_FOR_CANARY",
+      "reason": "Missing public controlled-publication source/API visibility in the clean source-only branch; do not promote from generated release_gate/store-candidate artifacts."
+    },
+    {
+      "slug": "book-4968248842",
+      "status": "SKIPPED_FOR_CANARY",
+      "reason": "Complete source package exists, but public title/content inspection suggests a title/body mismatch: public title is বলাই while clean narration opens with সংস্কার."
+    }
+  ],
+  "recommendation": "Canary preflight has exactly three prepared candidates. Do not run TTS until the post-live stabilization PR is merged/deployed, production copy is verified, and owner approval/budget env vars are present."
 }
