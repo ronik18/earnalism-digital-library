@@ -10,6 +10,18 @@ const frontendPackageJson = path.join(repoRoot, "frontend", "package.json");
 const runnerPath = path.join(repoRoot, "frontend", "scripts", ".visual-luxury-smoke-runner.mjs");
 const screenshotDir = process.env.VISUAL_SMOKE_SCREENSHOT_DIR || path.join("/tmp", "earnalism-visual-smoke-screenshots");
 const runnerTimeoutMs = Number(process.env.VISUAL_SMOKE_RUNNER_TIMEOUT_MS || 180000);
+const protectionBypassSecret = process.env.VERCEL_AUTOMATION_BYPASS_SECRET || process.env.VERCEL_PROTECTION_BYPASS || "";
+let extraHeaders = {};
+if (process.env.VISUAL_SMOKE_EXTRA_HEADERS_JSON) {
+  try {
+    extraHeaders = JSON.parse(process.env.VISUAL_SMOKE_EXTRA_HEADERS_JSON);
+  } catch {
+    extraHeaders = {};
+  }
+}
+if (protectionBypassSecret && !extraHeaders["x-vercel-protection-bypass"]) {
+  extraHeaders["x-vercel-protection-bypass"] = protectionBypassSecret;
+}
 const fullRoutes = ["/", "/library", "/book/dracula", "/reader/dracula", "/book/a-ghost-story", "/reader/a-ghost-story", "/book/book-ac5a71075e", "/reader/book-ac5a71075e"];
 const defaultRoutes = ["/", "/library", "/book/dracula", "/reader/dracula", "/book/a-ghost-story", "/reader/a-ghost-story"];
 const fullViewports = [
@@ -88,6 +100,9 @@ const baseUrl = ${JSON.stringify(baseUrl)};
 const screenshotDir = ${JSON.stringify(screenshotDir)};
 const routes = ${JSON.stringify(routes)};
 const viewports = ${JSON.stringify(viewports)};
+const extraHeaders = ${JSON.stringify(extraHeaders)};
+const extraHeaderNames = ${JSON.stringify(Object.keys(extraHeaders))};
+const protectionBypassConfigured = ${JSON.stringify(Boolean(protectionBypassSecret || extraHeaders["x-vercel-protection-bypass"]))};
 const attempted = [];
 const completed = [];
 const failedSubchecks = [];
@@ -145,17 +160,34 @@ try {
     for (const viewport of viewports) {
       attempted.push({ route, viewport });
       const page = await browser.newPage({ viewport, deviceScaleFactor: 1 });
+      if (Object.keys(extraHeaders).length) {
+        await page.setExtraHTTPHeaders(extraHeaders);
+      }
       page.setDefaultTimeout(5000);
       page.setDefaultNavigationTimeout(15000);
       const consoleErrors = [];
+      const resourceErrors = [];
       page.on("console", (msg) => {
         if (msg.type() === "error") consoleErrors.push(msg.text());
+      });
+      page.on("response", (response) => {
+        if (response.status() >= 400) {
+          resourceErrors.push({ status: response.status(), url: response.url() });
+        }
+      });
+      page.on("requestfailed", (request) => {
+        resourceErrors.push({
+          status: 0,
+          url: request.url(),
+          failure: request.failure()?.errorText || "request failed",
+        });
       });
       const url = new URL(route, baseUrl).toString();
       let status = 0;
       try {
         const response = await page.goto(url, { waitUntil: "domcontentloaded", timeout: 15000 });
         await page.waitForLoadState("networkidle", { timeout: 2500 }).catch(() => undefined);
+        await page.waitForSelector("[data-testid='home-page'], [data-testid='library-page'], [data-testid='book-page'], [data-testid='reader-page'], [data-testid='book-not-found'], [data-testid='book-load-error'], [data-testid='reader-not-found'], [data-testid='reader-error'], [data-testid='reader-locked']", { timeout: 8000 }).catch(() => undefined);
         await page.waitForTimeout(150);
         status = response?.status() || 0;
       } catch (error) {
@@ -170,9 +202,10 @@ try {
         const headingStyle = heading ? getComputedStyle(heading) : null;
         const heroStyle = hero ? getComputedStyle(hero) : null;
         const rect = cover ? cover.getBoundingClientRect() : null;
+        const bodyText = body.innerText || "";
         return {
-          appContentVisible: Boolean(document.querySelector("[data-testid='home-page'], [data-testid='library-page'], [data-testid='book-page'], [data-testid='reader-page']")),
-          vercelLoginShellDetected: /vercel deployment protection|log in to continue/i.test(body.innerText || ""),
+          appContentVisible: Boolean(document.querySelector("[data-testid='home-page'], [data-testid='library-page'], [data-testid='book-page'], [data-testid='reader-page'], [data-testid='book-not-found'], [data-testid='book-load-error'], [data-testid='reader-not-found'], [data-testid='reader-error'], [data-testid='reader-locked']")),
+          vercelLoginShellDetected: new RegExp("vercel deployment protection|log in to continue|log in to vercel|continue with github|continue with saml sso|vercel\\.com/sso-api", "i").test(bodyText),
           horizontalOverflow: body.scrollWidth > window.innerWidth + 1,
           heroHeadingVisible: heading ? Boolean(heading.offsetWidth && heading.offsetHeight) : null,
           heroCtaVisible: cta ? Boolean(cta.offsetWidth && cta.offsetHeight) : true,
@@ -184,7 +217,7 @@ try {
       const screenshotPath = screenshotDir + "/" + route.replace(/[^a-z0-9]+/gi, "_").replace(/^_$/, "home") + "_" + viewport.width + "x" + viewport.height + ".png";
       await page.screenshot({ path: screenshotPath, fullPage: false });
       await page.close();
-      const result = { route, viewport, status, screenshotPath, consoleErrors, ...metrics };
+      const result = { route, viewport, status, screenshotPath, consoleErrors, resourceErrors, ...metrics };
       results.push(result);
       completed.push({ route, viewport });
     }
@@ -193,17 +226,39 @@ try {
   await browser.close();
 }
 
+function isExpectedResourceError(error) {
+  const url = error?.url || "";
+  return error?.status === 404 && (
+    /\\/favicon\\.ico(?:$|[?#])/.test(url) ||
+    /\\/api\\/books\\/a-ghost-story(?:$|[?#])/.test(url) ||
+    /\\/api\\/reader\\/book\\/a-ghost-story\\/manifest(?:$|[?#])/.test(url)
+  );
+}
+
+function actionableConsoleErrors(errors = []) {
+  return errors.filter((error) => !/^Failed to load resource:/i.test(error));
+}
+
 for (const result of results) {
   const issues = [];
+  const consoleBlockers = actionableConsoleErrors(result.consoleErrors);
+  const unexpectedResourceErrors = (result.resourceErrors || []).filter((error) => !isExpectedResourceError(error));
   if (!result.appContentVisible) issues.push("app content not visible");
   if (result.vercelLoginShellDetected) issues.push("Vercel login shell");
   if (result.horizontalOverflow) issues.push("horizontal overflow");
   if ((result.route === "/" || result.route === "/library") && !result.heroHeadingVisible) issues.push("hero heading invisible");
   if (!result.heroCtaVisible) issues.push("CTA invisible");
   if (result.coverClipped) issues.push("cover clipped");
-  if (result.consoleErrors.length) issues.push("console errors");
+  if (consoleBlockers.length) issues.push("console errors");
+  if (unexpectedResourceErrors.length) issues.push("unexpected resource errors");
   for (const issue of issues) {
-    failedSubchecks.push({ route: result.route, viewport: result.viewport, issue });
+    failedSubchecks.push({
+      route: result.route,
+      viewport: result.viewport,
+      issue,
+      consoleErrors: consoleBlockers,
+      unexpectedResourceErrors,
+    });
   }
 }
 
@@ -211,6 +266,8 @@ const finalStatus = failedSubchecks.length ? "FAIL" : "PASS";
 console.log(JSON.stringify({
   skipped: false,
   screenshotDir,
+  protection_bypass_configured: protectionBypassConfigured,
+  extra_header_names: extraHeaderNames,
   results,
   playwright_import_status: playwrightImportStatus,
   browser_launch_status: browserLaunchStatus,
@@ -294,6 +351,8 @@ const report = {
   viewports: viewports.map((viewport) => `${viewport.width}x${viewport.height}`),
   source_checks: source,
   browser_checks: browser,
+  protection_bypass_configured: browser?.protection_bypass_configured || false,
+  extra_header_names: browser?.extra_header_names || [],
   playwright_import_status: browser?.playwright_import_status || "unknown",
   browser_launch_status: browser?.browser_launch_status || "unknown",
   routes_attempted: browser?.routes_attempted || [],

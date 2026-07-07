@@ -4,7 +4,7 @@ import { Headphones, ShieldCheck, Sparkles } from "lucide-react";
 import { api } from "../lib/api";
 import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 
-const DEFAULT_SLUG = "a-ghost-story";
+const DEFAULT_SLUG = process.env.REACT_APP_APPROVED_AUDIO_SPOTLIGHT_SLUG || "";
 
 function runAfterIdle(callback) {
   if (typeof window === "undefined") return () => {};
@@ -45,6 +45,10 @@ export default function ApprovedAudiobookSpotlight({ slug = DEFAULT_SLUG, compac
   const [book, setBook] = useState(null);
 
   useEffect(() => {
+    if (!slug) {
+      setBook(null);
+      return undefined;
+    }
     const controller = new AbortController();
     const cancelIdle = runAfterIdle(() => {
       api.get(`/reader/book/${slug}/manifest`, { signal: controller.signal, skipAuthRedirect: true })

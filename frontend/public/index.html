@@ -126,7 +126,8 @@
     -->
         <script>
             var posthogKey = "%REACT_APP_POSTHOG_KEY%";
-            if (posthogKey && posthogKey.indexOf("REACT_APP_") === -1) {
+            var posthogEnabled = "%REACT_APP_ENABLE_POSTHOG%" === "true";
+            if (posthogEnabled && posthogKey && posthogKey.indexOf("REACT_APP_") === -1) {
             !(function (t, e) {
                 var o, n, p, r;
                 e.__SV ||
