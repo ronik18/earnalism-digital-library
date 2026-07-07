@@ -26,3 +26,6 @@ Use explicit `git add` paths only. Do not use `git add .`.
 - Validation: backend py_compile PASS; targeted endpoint materialization/safety pytest PASS; `git diff --check` PASS.
 - Production cache note: reader-manifest cache version includes `runtime_audio_requires_materialization=true` so stale non-pilot audio manifests are bypassed after deploy.
 - Known unrelated test debt: older catalog tests still assert Dracula-only launch and fail against the current 63-title controlled-launch data.
+- Additional endpoint/browser reports kept source-only: `book_2b9853ec52_endpoint_materialization_verification.json`, `book_2b9853ec52_browser_gate_frontend_blocker.json`.
+- Backend deploys were run from `/private/tmp/earnalism-bengali-endpoint-materialization/backend`, not from the dirty sprint workspace.
+- Generated release-gate outputs, audio, sidecars, logs, screenshots, caches, signed URLs, and secrets remain excluded.

@@ -1,0 +1,29 @@
+{
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "generated_at": "2026-07-07T10:20:00Z",
+  "blocker": "PRODUCTION_FRONTEND_BUNDLE_STALE_FOR_BENGALI_AUDIO_CONTROLS",
+  "backend_endpoint_materialized": true,
+  "audiobook_endpoint_status": 206,
+  "metadata_status": "PASS",
+  "upload_checksum_status": "PASS",
+  "factory_browser_gate_status": "BLOCKED",
+  "factory_browser_gate_blockers": [
+    "Audio controls were not visible in the reader page.",
+    "Playwright could not measure reader audio start latency."
+  ],
+  "production_frontend_bundle": "https://theearnalism.com/static/js/main.601f9ab8.js",
+  "production_bundle_missing_markers": [
+    "_readerManifest",
+    "generated-audiobook",
+    "reader-audio-button",
+    "Reader manifest exposes",
+    "audiobook_enabled"
+  ],
+  "diagnosis": "The backend now exposes approved pilot audio through the detail API, reader manifest, range audiobook endpoint, and sidecars. The production frontend served by theearnalism.com is an older bundle that lacks the current Reader manifest-audio support, so it cannot render the approved audio element or controls.",
+  "safe_next_action": "Deploy or merge the frontend bundle containing frontend/src/pages/Reader.jsx reader-manifest audio support and frontend/src/lib/audioReleaseSafety.js provider-backed manifest approval logic, then rerun the metadata/browser-only final gate.",
+  "no_audio_regeneration_required": true,
+  "no_asr_or_sync_required": true,
+  "no_upload_required": true,
+  "rollback_recommendation": "Do not rollback unless endpoint-only access is considered unacceptable before frontend deploy; audio itself is approved and endpoint materialization is narrow. Rollback payload remains available at internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_audiobook_reset_payload.json."
+}

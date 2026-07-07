@@ -1,0 +1,54 @@
+{
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "generated_at": "2026-07-07T10:20:00Z",
+  "clean_worktree": "/private/tmp/earnalism-bengali-endpoint-materialization",
+  "branch": "sprint/bengali-endpoint-materialization",
+  "pushed_branch": "codex/bengali-endpoint-materialization-book-2b9853ec52",
+  "deployed_commit": "bfadecca",
+  "railway_deploy_id": "9f39fb50-26e1-47a7-b339-91fe217cff3c",
+  "backend_deploy_status": "SUCCESS",
+  "controlled_launch_fix_summary": "Added explicit audio_materialization_slugs for book-2b9853ec52 and backend runtime checks that merge controlled artifact source/provenance evidence only for that slug while preserving admin-approved Sarvam/B2 audio URLs. Unknown policies, unknown sync tiers, estimated sync, and non-materialized Bengali audiobooks remain hidden.",
+  "public_detail_api": {
+    "url": "https://api.theearnalism.com/api/books/book-2b9853ec52",
+    "http_status": 200,
+    "audio_enabled": true,
+    "audiobook_enabled": true,
+    "audio_status": "AVAILABLE",
+    "audio_url": "/api/reader/book/book-2b9853ec52/audiobook",
+    "raw_storage_url_exposed": false
+  },
+  "reader_manifest_api": {
+    "url": "https://api.theearnalism.com/api/reader/book/book-2b9853ec52/manifest",
+    "http_status": 200,
+    "audio_enabled": true,
+    "book_audio_enabled": true,
+    "book_audiobook_enabled": true,
+    "audio_url": "/api/reader/book/book-2b9853ec52/audiobook",
+    "sidecar_keys": ["chapters", "meta", "mp3", "timestamps", "vtt"]
+  },
+  "audiobook_endpoint": {
+    "url": "https://api.theearnalism.com/api/reader/book/book-2b9853ec52/audiobook",
+    "status": 206,
+    "content_type": "audio/mpeg",
+    "content_range": "bytes 0-1/5233965"
+  },
+  "sidecars": {
+    "timestamps": 200,
+    "vtt": 200,
+    "chapters": 200,
+    "meta": 200
+  },
+  "non_pilot_sample": {
+    "slug": "book-ac5a71075e",
+    "manifest_status": 200,
+    "audio_enabled": false,
+    "book_audio_enabled": false,
+    "audiobook_endpoint_status": 404
+  },
+  "upload_checksum_status": "PASS",
+  "metadata_status": "PASS",
+  "browser_status": "BLOCKED_BY_PRODUCTION_FRONTEND_BUNDLE",
+  "published": false,
+  "rollback_payload": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/metadata_audiobook_reset_payload.json"
+}
