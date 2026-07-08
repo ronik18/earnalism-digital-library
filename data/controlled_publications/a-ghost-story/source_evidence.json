@@ -1,0 +1,19 @@
+{
+  "slug": "a-ghost-story",
+  "source_url": "https://www.gutenberg.org/ebooks/3189",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
+  "content_hash": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
+  "provenance_hash": "3c0d7f93b1e730b2d89a6c6ac926c5838e28254a3228571cfe40cb0797018ba6",
+  "rights_basis": "Mark Twain died 1910; first published 1875. Public domain in India and the U.S.",
+  "downloaded_at": "2026-07-08T20:40:04Z",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true,
+  "text_extraction": {
+    "start_marker": "A GHOST STORY",
+    "end_marker": "THE CAPITOLINE VENUS",
+    "body_start_offset": 1,
+    "word_count": 2450
+  }
+}

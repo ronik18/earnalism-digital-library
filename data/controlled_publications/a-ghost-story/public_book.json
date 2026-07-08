@@ -1,0 +1,83 @@
+{
+  "id": "controlled-a-ghost-story",
+  "slug": "a-ghost-story",
+  "title": "A Ghost Story",
+  "subtitle": "A Mark Twain comic haunting",
+  "author": "Mark Twain",
+  "category_slug": "gothic-fiction",
+  "short_description": "A new tenant meets a midnight visitor who turns out to be less terrifying than embarrassed.",
+  "description": "Mark Twain turns a haunted-room setup into a comic encounter with the Cardiff Giant legend. This reader-first edition keeps the story publicly readable while audio remains unavailable.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "11 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a compact classic comic ghost story in a clean digital edition.",
+    "Explore Twain's satire without public audiobook claims or stale audio links."
+  ],
+  "who_for": [
+    "Classic short-story readers",
+    "Fans of comic gothic fiction"
+  ],
+  "learnings": [
+    "Comic inversion of ghost-story conventions",
+    "Cardiff Giant cultural satire"
+  ],
+  "about_author": "Mark Twain was the pen name of Samuel Langhorne Clemens, the American humorist and novelist whose satire shaped nineteenth-century literary comedy.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "A Ghost Story",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2450,
+      "reading_minutes": 11,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-08T20:40:04Z",
+      "updated_at": "2026-07-08T20:40:04Z"
+    }
+  ],
+  "source_hash": "b0fd571999c9b517084935c612f1f5c9cc24b80d3cd69f50f83b21977b3bb27f",
+  "content_hash": "a5e57a88bdfbe99bc5ea6047d519e05e3f2c943ed368e5268813658030056bb2",
+  "provenance_hash": "3c0d7f93b1e730b2d89a6c6ac926c5838e28254a3228571cfe40cb0797018ba6",
+  "rights_basis": "Mark Twain died 1910; first published 1875. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "LIVE_APPROVED",
+  "publicationStatus": "LIVE_APPROVED",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
+  "audiobook_voice": "",
+  "audio_asset_slug": "a-ghost-story",
+  "audiobook_assets": {},
+  "audiobook": {},
+  "audiobook_assets_updated_at": "",
+  "created_at": "2026-07-08T20:40:04Z",
+  "updated_at": "2026-07-08T20:40:04Z"
+}

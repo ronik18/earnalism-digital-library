@@ -1,0 +1,26 @@
+{
+  "slug": "a-ghost-story",
+  "generated_at": "2026-07-08T20:40:04Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "86b514234523add14a4d1c7185f0625498babc04854f83f4e047ff8f51b8131a"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "868167f9777148a320e6f6d88e7c5ab2da1be3e82717dfa4d7354698c2fb84c2"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "f5fc69c7ac9b3bdc61bce73ffacbad59527e8a8a947d43d9d7c59ff27deed74f"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "dd5c833640460ae700d954e30453b99e973d85c2c77aa409f6786721a56ae2a9"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "6e8b4423b0639373131a4e0111d13690bfa788495e8d0349f28e3eb00570c8a1"
+    }
+  ]
+}

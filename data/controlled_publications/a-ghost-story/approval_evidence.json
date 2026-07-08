@@ -1,0 +1,12 @@
+{
+  "slug": "a-ghost-story",
+  "approved_to_publish": true,
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approval_scope": "stage_t_reader_routability_repair",
+  "audio_public_release": "PAID_LISTEN_HOLD_PENDING_PRODUCTION_ROUTE_MANIFEST_PLAYER_PROOF",
+  "allowCheckout": false,
+  "allowPayment": false,
+  "audiobook_enabled": false
+}
