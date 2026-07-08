@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-07-07T13:08:25Z",
+  "pr88": {
+    "url": "https://github.com/ronik18/earnalism-digital-library/pull/88",
+    "number": 88,
+    "head_branch": "codex/bengali-post-live-stabilization",
+    "head_commit_before_local_fix": "85f1f4025cf4e2e86c74e4b3c65f372c47e979ad",
+    "current_base": "codex/source-only-clean-integration",
+    "recommended_base": "main",
+    "checks_before_local_fix": {
+      "backend_frontend_browser_regression": "FAIL",
+      "vercel": "PASS",
+      "vercel_preview_comments": "PASS"
+    },
+    "failing_check_root_cause": "The browser regression still waited for the retired Dracula-first homepage test id hero-dracula-card even though the approved source now renders premium-landing-hero plus curated-action-cards.",
+    "local_fix_summary": "Updated scripts/e2e_regression.mjs to assert the Figma-aligned homepage: hybrid editorial hero, three action cards, Bengali Classics visibility, Dracula as a refined English Classics action tile, and release-gate-safe approved-audiobook copy."
+  },
+  "source_only_base": {
+    "branch": "codex/source-only-clean-integration",
+    "commit": "3bd423c608f9f8db437175475fe06a1d7e66fb73",
+    "pr_url": "https://github.com/ronik18/earnalism-digital-library/pull/89",
+    "pr_number": 89,
+    "state": "MERGED",
+    "merge_commit": "04583c6a5d762d6f880ed68038102e0cdf332af4",
+    "origin_main_contains_base_commit": true,
+    "post_merge_checks": "FAILED_BY_SAME_STALE_HOMEPAGE_REGRESSION_ASSERTION"
+  },
+  "merge_order_recommendation": [
+    "Source-only base is now on main.",
+    "Push the PR88 regression assertion fix.",
+    "Change PR88 base to main.",
+    "Wait for GitHub regression checks to pass.",
+    "Merge PR88 only if EARNALISM_APPROVE_BENGALI_POST_LIVE_MERGE=true is present."
+  ],
+  "production_status": {
+    "stale_detail_copy_fixed_in_production": false,
+    "reason": "PR88 source is not merged/deployed yet.",
+    "pilot_live_verification_status": "PRIOR_PASS_NOT_MUTATED_IN_THIS_RUN"
+  },
+  "canary_status": {
+    "do_not_run_yet": true,
+    "final_candidate_slugs": [
+      "muchiram-gurer-jibanchorit",
+      "book-d19e96859f",
+      "book-f5d593e1f4"
+    ],
+    "canary_command_prepared": true,
+    "canary_blocker": "Wait until PR88 is merged/deployed and production detail copy is verified."
+  },
+  "generated_artifacts_excluded": true
+}

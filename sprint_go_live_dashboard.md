@@ -364,3 +364,20 @@ rg -n "pipeline-card-kshudhita-pashan|pipeline-books|live_approved_slugs|visual-
 - Production verification: pilot reader manifest exposes approved audio and the audiobook endpoint returns audio; sample unapproved Bengali title `book-ac5a71075e` remains audio-hidden.
 - Catalog final gate: `CATALOG GO LIVE READY`, published this run `1`, total audiobook-live count `2`, Bengali audiobook-live count `1`.
 - Do not start the 3-title Bengali canary until owner approval; recommended candidates remain `muchiram-gurer-jibanchorit`, `book-d19e96859f`, and `book-2ddbed8293`.
+
+## Bengali Post-Go-Live Stabilization - 2026-07-07T12:30:00Z
+
+- Status: source stabilization branch in progress, no production mutation and no TTS/ASR/sync/upload reruns.
+- Pilot live status: `book-2b9853ec52` remains live by prior endpoint/manifest/browser evidence.
+- Detail copy fix: source now merges reader-manifest evidence into `BookDetail` and recognizes `manifest.audio.url`; approved copy is `Audiobook available`, with paragraph/stanza sync represented as section-following narration.
+- Unapproved Bengali audio: remains hidden; incomplete audio evidence returns reader-safe copy and no controls.
+- Source preservation: `release_catalog_factory.py` and `factory_hooks/browser_hook.py` in the clean integration branch match the original workspace hashes.
+- PR readiness: PR #88 is open as a stacked PR on `codex/source-only-clean-integration`; production stale detail copy remains until the source-only base and stabilization PR are merged/deployed.
+- Canary preflight: `muchiram-gurer-jibanchorit`, `book-d19e96859f`, and `book-f5d593e1f4` are prepared for a future owner-approved canary; `book-2ddbed8293` is blocked by missing public source/API visibility, and `book-4968248842` is skipped pending source/title provenance review.
+
+## PR88 Dependency + Canary Readiness - 2026-07-07T13:08:25Z
+
+- Source-only base: MERGED to `main` via PR #89 / `04583c6a5d762d6f880ed68038102e0cdf332af4`.
+- PR88: open; should be retargeted from `codex/source-only-clean-integration` to `main` after the regression assertion fix is pushed.
+- Regression blocker: stale browser test expected Dracula-first `hero-dracula-card`; local source fix validates the current Figma-aligned homepage contract.
+- Canary: command prepared only for `muchiram-gurer-jibanchorit`, `book-d19e96859f`, and `book-f5d593e1f4`; no TTS/ASR/sync/upload/metadata mutation run.
