@@ -264,7 +264,7 @@ export default function BookDetail() {
                 <p><strong className="text-burgundy">Source:</strong> {DRACULA_SOURCE_NOTE}</p>
                 <p><strong className="text-burgundy">Rights status:</strong> {DRACULA_RIGHTS_NOTE}</p>
                 <p><strong className="text-burgundy">First published:</strong> 1897</p>
-                <p><strong className="text-burgundy">Audio:</strong> Audiobook experience in private review</p>
+                <p><strong className="text-burgundy">Audio:</strong> Audiobooks appear only after release-gate evidence approves them.</p>
               </div>
             </div>
           )}

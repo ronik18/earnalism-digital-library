@@ -280,7 +280,7 @@ function buildPages({ book, manifest }) {
   const bookDescription = "Read Dracula by Bram Stoker in The Earnalism’s controlled digital reading room. Chapter 1 is free. Continue with a 7-day reading pass. Audiobook experience is in private review.";
   const libraryDescription = "Browse Earnalism's Bengali and English classics. Reader-only releases stay visible, and audiobooks appear only after source, listening, sync, and browser gates pass.";
   const pricingDescription = "Choose your reading time for Dracula on The Earnalism. Chapter 1 is free, with premium reading-time packs and no subscription or autorenewal.";
-  const journalDescription = "Launch notes from The Earnalism's Dracula-first controlled digital reading room and rights-safe publication pipeline.";
+  const journalDescription = "Launch notes from The Earnalism's Bengali and English digital reading room and rights-safe publication pipeline.";
   const contactDescription = "Contact The Earnalism about Dracula reading-time access, support, refunds, school interest, and rights-safe publication questions.";
   const readerDescription = "The Dracula reader is the reading interface for approved Earnalism access. Search engines should use the public Dracula book page instead.";
 
@@ -402,16 +402,16 @@ function buildPages({ book, manifest }) {
     },
     {
       path: "/journal",
-      title: "Journal | The Earnalism Dracula Launch Notes",
+      title: "Journal | The Earnalism Launch Notes",
       description: journalDescription,
       canonicalPath: "/journal",
       ogTitle: "Journal | The Earnalism",
-      ogDescription: "Notes from the Dracula-first controlled launch and rights-safe reading pipeline.",
+      ogDescription: "Notes from the Bengali and English reading room and rights-safe release pipeline.",
       imageAlt: "Earnalism journal",
       jsonLd: [webpageJsonLd({ title: "Journal | The Earnalism", description: journalDescription, path: "/journal" })],
       staticBody: pageShell({
         eyebrow: "Journal",
-        title: "Notes from a Dracula-first reading room.",
+        title: "Notes from a Bengali and English reading room.",
         body: journalDescription,
         links: [
           { href: "/book/dracula", label: "Open Dracula" },

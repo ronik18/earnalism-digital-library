@@ -137,7 +137,7 @@ function BookCard({ book, priority = false }) {
               data-testid={`card-notify-${book.slug}`}
               onClick={() => track(DRACULA_CTA_EVENTS.notifyMe, { future_title: book.slug })}
             >
-              Notify Me
+              Request Update
             </Link>
           </div>
         )}

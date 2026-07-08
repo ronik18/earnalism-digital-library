@@ -292,7 +292,7 @@ export default function Library() {
                 data-testid="library-pipeline-notify"
                 onClick={() => trackPipelineInterest("kshudhita_pashan_notify_click", "library-pipeline-notify")}
               >
-                Notify Me
+                Request Update
               </Link>
               <button
                 type="button"
@@ -514,7 +514,7 @@ export default function Library() {
                 <div className="mb-7">
                   <div className="overline mb-3">Shelf 2</div>
                   <h2 className="font-serif-light text-[1.68rem] leading-tight text-burgundy sm:text-[2.12rem]">Coming Through the Rights-Safe Pipeline</h2>
-                  <p className="mt-4 max-w-2xl text-charcoal-soft leading-[1.8]">These books are not live products yet. They have Notify Me CTAs only.</p>
+                  <p className="mt-4 max-w-2xl text-charcoal-soft leading-[1.8]">These books are not live products yet. They use Request Update contact links only.</p>
                 </div>
                 {visiblePipeline.length > 0 ? (
                   <div className={`grid grid-cols-1 gap-7 sm:grid-cols-2 ${view === "compact" ? "lg:grid-cols-5" : "lg:grid-cols-4"}`} data-view={view}>
@@ -532,7 +532,7 @@ export default function Library() {
                 <h2 className="font-serif-display text-[1.68rem] text-burgundy">Guided Reading Paths</h2>
                 <p className="mt-5 max-w-2xl text-charcoal-soft leading-[1.8]">Curated reading paths are in draft. They are not live products yet.</p>
                 <Link to={notifyUrl("dracula-reading-path")} className="btn-secondary mt-7" data-testid="reading-path-notify" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.notifyMe, { future_title: "dracula-reading-path" })}>
-                  <Sparkles size={15} /> Notify Me
+                  <Sparkles size={15} /> Request Update
                 </Link>
               </section>
             )}
