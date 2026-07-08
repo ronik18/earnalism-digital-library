@@ -19,7 +19,7 @@ export default function Journal() {
 
   useSEO({
     title: "The Journal — Notes from The Earnalism Reading Room",
-    description: "Notes from The Earnalism on Dracula, rights-safe publication, literary attention, and the quiet craft of reading well.",
+    description: "Notes from The Earnalism on Bengali and English literature, rights-safe publication, literary attention, and the quiet craft of reading well.",
     image: JOURNAL_OG,
   });
 

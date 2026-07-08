@@ -14,8 +14,7 @@ import {
 } from "../lib/controlledLaunch";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { audiobookReleaseState } from "../lib/audioReleaseSafety";
-
-const BENGALI_RE = /[\u0980-\u09FF]/;
+import { libraryPresentationForBook } from "../lib/libraryCatalog";
 
 function BookCard({ book, priority = false }) {
   const status = bookLaunchStatus(book);
@@ -27,18 +26,7 @@ function BookCard({ book, priority = false }) {
   const displayTitle = book.title_en || book.title;
   const secondaryTitle = book.title_en && book.title_en !== book.title ? book.title : "";
   const audioState = audiobookReleaseState(book);
-  const isBengali = BENGALI_RE.test(`${book.title || ""} ${book.author || ""}`);
-  const languageLabel = isBengali ? "Bengali" : "English";
-  const availabilityLabel = audioState.canShowControls
-    ? "Audiobook Approved"
-    : isLiveApproved
-      ? "Reader Ready"
-      : "In Review";
-  const audioLabel = audioState.canShowControls
-    ? "Listen approved"
-    : isLiveApproved
-      ? "Audio hidden"
-      : "No audio CTA";
+  const presentation = libraryPresentationForBook(book);
 
   const track = (event, metadata = {}) => {
     trackFunnelEvent(event, { book: book.slug, book_slug: book.slug, ...metadata });
@@ -65,10 +53,10 @@ function BookCard({ book, priority = false }) {
       </Link>
       <div className="p-6 sm:p-7 flex flex-col gap-3 flex-1">
         <div className="book-card__badges" aria-label={`${displayTitle} availability`}>
-          <span>{availabilityLabel}</span>
-          <span>{languageLabel}</span>
+          <span>{presentation.availabilityLabel}</span>
+          <span>{presentation.languageLabel}</span>
           <span className={audioState.canShowControls ? "book-card__badge--audio-live" : "book-card__badge--audio-hidden"}>
-            {audioLabel}
+            {presentation.audioBadgeLabel}
           </span>
         </div>
         <Link to={isLiveApproved ? `/book/${book.slug}` : notifyUrl(book.slug)} className="group/title">
@@ -88,6 +76,7 @@ function BookCard({ book, priority = false }) {
             <Clock size={12} strokeWidth={1.5} /> {book.estimated_reading_time}
           </div>
         )}
+        <p className="book-card__availability-note">{presentation.availabilityNote}</p>
         {showPreview || showStartReading || audioState.canShowControls ? (
           <div className="mt-auto flex flex-col sm:flex-row gap-2 sm:gap-3 pt-5 border-t border-brand-soft">
             {showPreview && (

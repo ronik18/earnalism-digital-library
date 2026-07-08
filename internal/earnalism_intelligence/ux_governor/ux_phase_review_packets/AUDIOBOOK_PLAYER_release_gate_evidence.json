@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-07-08T07:13:35Z",
+  "phase": "AUDIOBOOK_PLAYER",
+  "release_gate_truth": "PASS_FAIL_CLOSED",
+  "paid_tts_lock_status": "ACTIVE_LEGITIMATE_NO_PAID_AUDIO_ALLOWED",
+  "structured_data_status": "Book-only; no AudioObject emitted in audited routes.",
+  "static_audio_status": "Same-origin static audiobook assets are rejected by audioReleaseSafety and no static audio src appeared in smoke.",
+  "sync_copy_status": "No word-level sync copy. Approved context uses section-following narration.",
+  "title_matrix": [
+    {
+      "slug": "book-2b9853ec52",
+      "public_audio_status": "APPROVED_ONLY_WHEN_MANIFEST_EVIDENCE_PRESENT",
+      "book_detail_cta": "VISIBLE_IN_APPROVED_SMOKE_FIXTURE_ONLY",
+      "reader_controls": "VISIBLE_IN_APPROVED_SMOKE_FIXTURE_ONLY",
+      "paid_listen_status": "NOT_APPROVED_BY_THIS_PHASE"
+    },
+    {
+      "slug": "a-ghost-story",
+      "public_audio_status": "HOLD_PENDING_PRODUCTION_ROUTE_MANIFEST_PLAYER_PROOF",
+      "book_detail_cta": "HIDDEN",
+      "reader_controls": "HIDDEN",
+      "paid_listen_status": "HOLD"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "public_audio_status": "BLOCKED_ASR_SOURCE_REPAIR_PENDING",
+      "book_detail_cta": "HIDDEN",
+      "reader_controls": "HIDDEN",
+      "paid_listen_status": "BLOCKED"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "public_audio_status": "BLOCKED_ASR_SOURCE_REPAIR_PENDING",
+      "book_detail_cta": "HIDDEN",
+      "reader_controls": "HIDDEN",
+      "paid_listen_status": "BLOCKED"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "public_audio_status": "REPRESENTATIVE_TIMEOUT_REPAIR_PENDING",
+      "book_detail_cta": "HIDDEN_BY_SHARED_RELEASE_GATE",
+      "reader_controls": "HIDDEN_BY_SHARED_RELEASE_GATE",
+      "paid_listen_status": "BLOCKED"
+    },
+    {
+      "slug": "pather-panchali",
+      "public_audio_status": "AUDIOBOOK_NO_GO_UNTIL_SOURCE_RIGHTS_COVER_SCOPE_PASS",
+      "book_detail_cta": "HIDDEN",
+      "reader_controls": "HIDDEN",
+      "paid_listen_status": "BLOCKED"
+    },
+    {
+      "slug": "bn-066",
+      "public_audio_status": "STAGE_1_READY_ONLY_REPRESENTATIVE_AUDITION_BLOCKED_BY_PAID_TTS_LOCK",
+      "book_detail_cta": "HIDDEN_BY_SHARED_RELEASE_GATE",
+      "reader_controls": "HIDDEN_BY_SHARED_RELEASE_GATE",
+      "paid_listen_status": "BLOCKED"
+    },
+    {
+      "slug": "the-last-leaf",
+      "public_audio_status": "READER_FIRST",
+      "book_detail_cta": "HIDDEN",
+      "reader_controls": "HIDDEN",
+      "paid_listen_status": "BLOCKED"
+    }
+  ],
+  "tests": [
+    "AudioPlayer.releaseTruth.test.js proves no static path derivation, no word sync copy, no browser speech fallback, and no controls without approved evidence.",
+    "audioReleaseSafety.test.js proves same-origin static audiobook assets cannot become release approval evidence."
+  ]
+}

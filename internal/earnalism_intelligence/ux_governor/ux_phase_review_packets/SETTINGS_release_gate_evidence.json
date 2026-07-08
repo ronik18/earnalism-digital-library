@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-07-08T10:14:19Z",
+  "phase": "SETTINGS",
+  "release_truth_status": "PASS_FAIL_CLOSED_NO_AUDIO_RELEASE_MUTATION",
+  "checks": {
+    "no_listen_cta_in_settings": true,
+    "no_audio_player_controls_in_settings": true,
+    "no_static_audio_src_visible": true,
+    "no_word_level_sync_copy": true,
+    "no_browser_speech_fallback_copy": true,
+    "no_audio_object_structured_data": true,
+    "paid_tts_lock_untouched": true,
+    "release_gates_unchanged": true
+  },
+  "title_status": [
+    {
+      "slug": "book-2b9853ec52",
+      "status": "AUDIO_EVIDENCE_GATED_ONLY"
+    },
+    {
+      "slug": "a-ghost-story",
+      "status": "PAID_LISTEN_HOLD"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "status": "NO_AUDIO_UI_REPAIR_PENDING"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "status": "NO_AUDIO_UI_REPAIR_PENDING"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "status": "NO_AUDIO_UI_TIMEOUT_REPAIR_PENDING"
+    },
+    {
+      "slug": "pather-panchali",
+      "status": "NO_AUDIO_UI_AUDIOBOOK_NO_GO"
+    },
+    {
+      "slug": "bn-066",
+      "status": "NO_AUDIO_UI_PAID_TTS_LOCK_ACTIVE"
+    }
+  ]
+}

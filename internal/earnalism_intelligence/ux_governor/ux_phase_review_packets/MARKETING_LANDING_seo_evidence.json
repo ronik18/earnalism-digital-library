@@ -1,0 +1,40 @@
+{
+  "phase": "MARKETING_LANDING",
+  "generated_at": "2026-07-08T12:45:05.104Z",
+  "default_seo": {
+    "file": "frontend/src/hooks/useSEO.js",
+    "description": "A calm Bengali and English digital library for reader-ready classics, graphical editions, and evidence-gated audiobooks.",
+    "dracula_first_removed": true
+  },
+  "about_seo": {
+    "file": "frontend/src/pages/About.jsx",
+    "title": "About Earnalism — Bengali and English Digital Library",
+    "description_balanced_bengali_english": true,
+    "dracula_first_removed": true
+  },
+  "journal_seo": {
+    "file": "frontend/src/pages/Journal.jsx",
+    "description_balanced_bengali_english": true
+  },
+  "controlled_launch_copy": {
+    "file": "frontend/src/lib/controlledLaunch.js",
+    "private_review_wording_removed": true,
+    "replacement": "Audio availability remains evidence-gated and hidden unless release approval is proven."
+  },
+  "support_contact": {
+    "canonical_public_email": "sales@reoenterprise.org",
+    "pricing_domain_matches_contact": true,
+    "org_domain_remaining_in_marketing_surfaces": false
+  },
+  "structured_data": {
+    "marketing_routes_emit_audio_object": false,
+    "audio_claims_added": false,
+    "static_audio_url_added": false,
+    "word_level_sync_claim_added": false
+  },
+  "notify_me_affordance": {
+    "fake_notify_me_removed": true,
+    "replacement": "Request Update",
+    "target": "/contact?interest=<book>"
+  }
+}

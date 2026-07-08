@@ -6,6 +6,10 @@ function upper(value = "") {
   return clean(value).toUpperCase();
 }
 
+export function isStaticAudiobookAssetPath(value = "") {
+  return /^\/audio\//i.test(clean(value));
+}
+
 export function audiobookAssetsForBook(book = {}) {
   return book?.audiobook_assets
     || book?.audiobookAssets
@@ -46,11 +50,13 @@ export function audiobookReleaseState(book = {}) {
     || manifestAudio?.enabled === true;
   const hasReleaseApproval = releaseGate === "APPROVED";
   const hasQaApproval = ["QA_PASSED", "APPROVED", "PASS"].includes(qaStatus);
-  const hasAudioAsset = Boolean(audioUrl);
+  const hasStaticAudioAsset = isStaticAudiobookAssetPath(audioUrl);
+  const hasAudioAsset = Boolean(audioUrl) && !hasStaticAudioAsset;
   const hasReaderManifestApproval = manifestAudio?.enabled === true
     && Boolean(manifestAudio?.provider)
     && Boolean(manifestAudio?.version)
-    && Boolean(assets.mp3 || manifestAudio?.url);
+    && Boolean(assets.mp3 || manifestAudio?.url)
+    && !hasStaticAudioAsset;
   const blocked = upper(book?.audio_status) === "BLOCKED"
     || book?.audio_disabled === true
     || upper(book?.audiobook?.status) === "BLOCKED";
@@ -74,12 +80,14 @@ export function audiobookReleaseState(book = {}) {
     };
   }
 
-  if (enabled || hasAudioAsset || releaseGate || qaStatus) {
+  if (enabled || audioUrl || releaseGate || qaStatus) {
     return {
       status: "private_review",
       canShowControls: false,
       label: "Audiobook held for QA",
-      reason: "Audio exists or is configured, but public release approval is incomplete.",
+      reason: hasStaticAudioAsset
+        ? "Same-origin static audiobook assets are not public release evidence."
+        : "Audio exists or is configured, but public release approval is incomplete.",
       releaseGate,
       qaStatus,
       audioUrl,

@@ -245,7 +245,7 @@ export default function Pricing() {
           </h1>
           <div className="gold-rule-thin mx-auto mt-7" />
           <p className="text-charcoal-soft text-base sm:text-lg font-light leading-[1.9] mt-7 max-w-2xl mx-auto">
-            Start with Chapter 1 free. When you are ready to continue Dracula, add reading time to your wallet. Your time is used only while you read.
+            Start with a free preview. When you are ready to continue a reader-ready classic, add reading time to your wallet. Your time is used only while you read.
           </p>
           <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -311,7 +311,7 @@ export default function Pricing() {
           <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
             <BookOpen size={18} strokeWidth={1.55} className="text-gold" />
             <h2 className="mt-4 font-serif-display text-xl text-burgundy">Chapter 1 stays free</h2>
-            <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">Use the preview to decide whether Dracula has earned your next hour.</p>
+            <p className="mt-3 text-sm leading-[1.75] text-charcoal-soft">Use the preview to decide whether the book has earned your next hour.</p>
           </div>
           <div className="rounded-lg border border-brand-soft bg-white/55 p-5">
             <CreditCard size={18} strokeWidth={1.55} className="text-gold" />

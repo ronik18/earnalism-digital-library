@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-07-08T07:13:35Z",
+  "phase": "AUDIOBOOK_PLAYER",
+  "mode": "audiobook_player_browser_and_source",
+  "status": "PASS",
+  "routes_attempted": 108,
+  "routes_completed": 108,
+  "browser_checks_completed": 108,
+  "failed_subchecks": 0,
+  "critical_blockers": 0,
+  "routes": [
+    "/book/book-2b9853ec52",
+    "/reader/book-2b9853ec52",
+    "/book/a-ghost-story",
+    "/reader/a-ghost-story",
+    "/book/book-d19e96859f",
+    "/reader/book-d19e96859f",
+    "/book/book-f5d593e1f4",
+    "/reader/book-f5d593e1f4",
+    "/book/pather-panchali",
+    "/reader/pather-panchali",
+    "/book/the-last-leaf",
+    "/reader/the-last-leaf"
+  ],
+  "viewports": [
+    "1920x1080",
+    "1536x864",
+    "1440x900",
+    "1366x768",
+    "1280x800",
+    "1024x768",
+    "820x1180",
+    "430x932",
+    "390x844"
+  ],
+  "screenshot_dir": "/tmp/earnalism-ux-review/AUDIOBOOK_PLAYER",
+  "contact_sheet": "/tmp/earnalism-ux-review/AUDIOBOOK_PLAYER/AUDIOBOOK_PLAYER_contact_sheet.png",
+  "source_checks": {
+    "audio_player_no_static_audio_or_fake_sync": "PASS",
+    "audio_player_duplicate_quarantined": "PASS",
+    "service_worker_no_static_audio_cache": "PASS",
+    "audio_release_safety_blocks_static_audio_paths": "PASS",
+    "reader_no_browser_speech_fallback": "PASS",
+    "reader_no_static_audio_derivation": "PASS"
+  }
+}

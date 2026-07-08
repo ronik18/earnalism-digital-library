@@ -3,9 +3,9 @@ import { useSettings } from "../context/SettingsContext";
 
 const SITE_URL = (process.env.REACT_APP_SITE_URL || "https://theearnalism.com").replace(/\/+$/, "");
 const DEFAULT_TITLE = "The Earnalism Digital Library";
-const DEFAULT_DESCRIPTION = "A quiet digital reading room beginning with Dracula by Bram Stoker. Read Chapter 1 free, then continue with reading time when you are ready.";
+const DEFAULT_DESCRIPTION = "A calm Bengali and English digital library for reader-ready classics, graphical editions, and evidence-gated audiobooks.";
 // Owner-designed Dracula cover used as the fallback OG image for the
-// Dracula-first controlled launch until a separate approved brand share image exists.
+// controlled launch until a separate approved brand share image exists.
 const FALLBACK_OG_IMAGE =
   `${SITE_URL}/assets/books/dracula/dracula-front-cover.webp`;
 const TRACKING_PARAMS = [

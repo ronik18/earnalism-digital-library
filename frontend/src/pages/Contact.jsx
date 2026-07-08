@@ -16,7 +16,7 @@ const SOCIAL_ICONS = {
   youtube: Youtube,
 };
 
-const CONTACT_EMAIL = "sales@reoenterprise.in";
+const CONTACT_EMAIL = "sales@reoenterprise.org";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });

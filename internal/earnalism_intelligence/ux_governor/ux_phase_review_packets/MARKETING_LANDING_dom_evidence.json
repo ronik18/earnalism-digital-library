@@ -1,0 +1,94 @@
+{
+  "phase": "MARKETING_LANDING",
+  "generated_at": "2026-07-08T12:45:05.104Z",
+  "routes": [
+    {
+      "route": "/",
+      "status_codes": [200],
+      "viewport_checks": 4,
+      "horizontal_overflow": false,
+      "primary_cta_visible": true,
+      "bengali_representation_visible": true,
+      "english_representation_visible": true,
+      "dracula_first_copy_visible": false,
+      "unapproved_listen_cta_visible": false,
+      "notify_me_visible": false,
+      "domain_mismatch_visible": false,
+      "static_audio_path_visible": false,
+      "audio_object_structured_data_visible": false,
+      "screenshots": [
+        "/tmp/earnalism-ux-review/MARKETING_LANDING/home_1440x900.png",
+        "/tmp/earnalism-ux-review/MARKETING_LANDING/home_1536x864.png",
+        "/tmp/earnalism-ux-review/MARKETING_LANDING/home_430x932.png",
+        "/tmp/earnalism-ux-review/MARKETING_LANDING/home_390x844.png"
+      ]
+    },
+    {
+      "route": "/about",
+      "status_codes": [200],
+      "viewport_checks": 4,
+      "horizontal_overflow": false,
+      "bengali_representation_visible": true,
+      "english_representation_visible": true,
+      "dracula_first_copy_visible": false,
+      "unapproved_listen_cta_visible": false,
+      "notify_me_visible": false,
+      "domain_mismatch_visible": false,
+      "static_audio_path_visible": false,
+      "audio_object_structured_data_visible": false,
+      "screenshots": [
+        "/tmp/earnalism-ux-review/MARKETING_LANDING/about_1440x900.png",
+        "/tmp/earnalism-ux-review/MARKETING_LANDING/about_1536x864.png",
+        "/tmp/earnalism-ux-review/MARKETING_LANDING/about_430x932.png",
+        "/tmp/earnalism-ux-review/MARKETING_LANDING/about_390x844.png"
+      ]
+    },
+    {
+      "route": "/pricing",
+      "status_codes": [200],
+      "viewport_checks": 4,
+      "horizontal_overflow": false,
+      "primary_cta_visible": true,
+      "dracula_first_copy_visible": false,
+      "unapproved_listen_cta_visible": false,
+      "notify_me_visible": false,
+      "domain_mismatch_visible": false,
+      "static_audio_path_visible": false,
+      "audio_object_structured_data_visible": false,
+      "screenshots": [
+        "/tmp/earnalism-ux-review/MARKETING_LANDING/pricing_1440x900.png",
+        "/tmp/earnalism-ux-review/MARKETING_LANDING/pricing_1536x864.png",
+        "/tmp/earnalism-ux-review/MARKETING_LANDING/pricing_430x932.png",
+        "/tmp/earnalism-ux-review/MARKETING_LANDING/pricing_390x844.png"
+      ]
+    },
+    {
+      "route": "/contact",
+      "status_codes": [200],
+      "viewport_checks": 4,
+      "horizontal_overflow": false,
+      "domain_mismatch_visible": false,
+      "static_audio_path_visible": false,
+      "audio_object_structured_data_visible": false
+    },
+    {
+      "route": "/journal",
+      "status_codes": [200],
+      "viewport_checks": 4,
+      "horizontal_overflow": false,
+      "dracula_first_copy_visible": false,
+      "static_audio_path_visible": false,
+      "audio_object_structured_data_visible": false
+    },
+    {
+      "route": "/micro-story",
+      "status_codes": [200],
+      "viewport_checks": 4,
+      "horizontal_overflow": false,
+      "primary_cta_visible": true,
+      "static_audio_path_visible": false,
+      "audio_object_structured_data_visible": false
+    }
+  ],
+  "contact_sheet": "/tmp/earnalism-ux-review/MARKETING_LANDING/MARKETING_LANDING_contact_sheet.png"
+}

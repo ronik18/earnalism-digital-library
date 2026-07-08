@@ -1,0 +1,35 @@
+{
+  "colors": {
+    "ivory": "#F7F0E3",
+    "ivorySoft": "#FBF6EC",
+    "paper": "#EFE2CC",
+    "sepia": "#D8C2A0",
+    "espresso": "#241713",
+    "charcoal": "#332821",
+    "burgundy": "#5A1F2B",
+    "burgundyDeep": "#351018",
+    "gold": "#B58A45",
+    "goldMuted": "#9E7435",
+    "sage": "#546A55",
+    "indigoInk": "#26324A",
+    "success": "#315F4B",
+    "warning": "#8A5B21",
+    "danger": "#8A2D32",
+    "focus": "#D7A84E"
+  },
+  "typography": {
+    "nav": "14px-15px",
+    "eyebrow": "11px-12px",
+    "heroDesktop": "42px-52px",
+    "heroLaptop": "36px-46px",
+    "heroMobile": "30px-36px",
+    "subtitle": "16px-18px",
+    "cardTitle": "18px-22px",
+    "cardBody": "14px-16px",
+    "shelfTitle": "24px-30px",
+    "bookCardTitle": "15px-17px",
+    "metadata": "12px-14px",
+    "readerEnglish": "18px-20px",
+    "readerBengali": "19px-21px"
+  }
+}

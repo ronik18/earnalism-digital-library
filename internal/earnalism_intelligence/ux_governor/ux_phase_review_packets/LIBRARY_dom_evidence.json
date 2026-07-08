@@ -1,0 +1,227 @@
+{
+  "generated_at": "2026-07-08T03:12:59Z",
+  "before": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "heroTitle": "Bengali and English classics, opened with release truth.",
+      "searchVisible": true,
+      "languageFilters": [
+        "All",
+        "Bengali",
+        "English"
+      ],
+      "availabilityFilters": [
+        "All",
+        "Reader Ready",
+        "Approved Audiobook",
+        "Audio Hidden",
+        "In Preparation"
+      ],
+      "hasReaderReadyText": true,
+      "hasAudioHiddenText": true,
+      "hasApprovedAudiobookText": false,
+      "hasInPreparationText": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 1536,
+        "height": 864
+      },
+      "heroTitle": "Bengali and English classics, opened with release truth.",
+      "searchVisible": true,
+      "languageFilters": [
+        "All",
+        "Bengali",
+        "English"
+      ],
+      "availabilityFilters": [
+        "All",
+        "Reader Ready",
+        "Approved Audiobook",
+        "Audio Hidden",
+        "In Preparation"
+      ],
+      "hasReaderReadyText": true,
+      "hasAudioHiddenText": true,
+      "hasApprovedAudiobookText": false,
+      "hasInPreparationText": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "heroTitle": "Bengali and English classics, opened with release truth.",
+      "searchVisible": true,
+      "languageFilters": [
+        "All",
+        "Bengali",
+        "English"
+      ],
+      "availabilityFilters": [
+        "All",
+        "Reader Ready",
+        "Approved Audiobook",
+        "Audio Hidden",
+        "In Preparation"
+      ],
+      "hasReaderReadyText": true,
+      "hasAudioHiddenText": true,
+      "hasApprovedAudiobookText": false,
+      "hasInPreparationText": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "heroTitle": "Bengali and English classics, opened with release truth.",
+      "searchVisible": true,
+      "languageFilters": [
+        "All",
+        "Bengali",
+        "English"
+      ],
+      "availabilityFilters": [
+        "All",
+        "Reader Ready",
+        "Approved Audiobook",
+        "Audio Hidden",
+        "In Preparation"
+      ],
+      "hasReaderReadyText": true,
+      "hasAudioHiddenText": true,
+      "hasApprovedAudiobookText": false,
+      "hasInPreparationText": true,
+      "horizontalOverflow": false
+    }
+  ],
+  "after": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "heroTitle": "Bengali and English classics, opened with release truth.",
+      "searchVisible": true,
+      "languageFilters": [
+        "All",
+        "Bengali",
+        "English"
+      ],
+      "availabilityFilters": [
+        "All",
+        "Reader Ready",
+        "Approved Audiobook",
+        "Audio Hidden",
+        "In Preparation"
+      ],
+      "bengaliShelfVisible": true,
+      "englishShelfVisible": true,
+      "bengaliCardCount": 3,
+      "englishCardCount": 1,
+      "listenCtas": [],
+      "hiddenAudioBadges": 1,
+      "readerReadyBadges": 2,
+      "inPreparationBadges": 1,
+      "approvedAudiobookBadges": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 1536,
+        "height": 864
+      },
+      "heroTitle": "Bengali and English classics, opened with release truth.",
+      "searchVisible": true,
+      "languageFilters": [
+        "All",
+        "Bengali",
+        "English"
+      ],
+      "availabilityFilters": [
+        "All",
+        "Reader Ready",
+        "Approved Audiobook",
+        "Audio Hidden",
+        "In Preparation"
+      ],
+      "bengaliShelfVisible": true,
+      "englishShelfVisible": true,
+      "bengaliCardCount": 3,
+      "englishCardCount": 1,
+      "listenCtas": [],
+      "hiddenAudioBadges": 1,
+      "readerReadyBadges": 2,
+      "inPreparationBadges": 1,
+      "approvedAudiobookBadges": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "heroTitle": "Bengali and English classics, opened with release truth.",
+      "searchVisible": true,
+      "languageFilters": [
+        "All",
+        "Bengali",
+        "English"
+      ],
+      "availabilityFilters": [
+        "All",
+        "Reader Ready",
+        "Approved Audiobook",
+        "Audio Hidden",
+        "In Preparation"
+      ],
+      "bengaliShelfVisible": true,
+      "englishShelfVisible": true,
+      "bengaliCardCount": 3,
+      "englishCardCount": 1,
+      "listenCtas": [],
+      "hiddenAudioBadges": 1,
+      "readerReadyBadges": 2,
+      "inPreparationBadges": 1,
+      "approvedAudiobookBadges": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "heroTitle": "Bengali and English classics, opened with release truth.",
+      "searchVisible": true,
+      "languageFilters": [
+        "All",
+        "Bengali",
+        "English"
+      ],
+      "availabilityFilters": [
+        "All",
+        "Reader Ready",
+        "Approved Audiobook",
+        "Audio Hidden",
+        "In Preparation"
+      ],
+      "bengaliShelfVisible": true,
+      "englishShelfVisible": true,
+      "bengaliCardCount": 3,
+      "englishCardCount": 1,
+      "listenCtas": [],
+      "hiddenAudioBadges": 1,
+      "readerReadyBadges": 2,
+      "inPreparationBadges": 1,
+      "approvedAudiobookBadges": 0,
+      "horizontalOverflow": false
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-07-08T05:36:56Z",
+  "phase": "BOOK_DETAIL",
+  "visual_smoke_status": "PASS",
+  "mode": "book_detail_browser_and_source",
+  "base_url": "http://127.0.0.1:4173",
+  "routes": [
+    "/book/book-2b9853ec52",
+    "/book/a-ghost-story",
+    "/book/book-d19e96859f",
+    "/book/book-f5d593e1f4",
+    "/book/muchiram-gurer-jibanchorit",
+    "/book/pather-panchali",
+    "/book/bn-066",
+    "/book/dracula",
+    "/book/radharani",
+    "/book/nishkriti",
+    "/book/the-last-leaf",
+    "/book/the-masque-of-the-red-death"
+  ],
+  "viewports": [
+    "1920x1080",
+    "1536x864",
+    "1440x900",
+    "1366x768",
+    "1280x800",
+    "1024x768",
+    "820x1180",
+    "430x932",
+    "390x844"
+  ],
+  "routes_attempted": 108,
+  "routes_completed": 108,
+  "failed_subchecks": [],
+  "critical_blockers": [],
+  "screenshot_dir": "/tmp/earnalism-ux-review/BOOK_DETAIL",
+  "contact_sheet": "/tmp/earnalism-ux-review/BOOK_DETAIL/BOOK_DETAIL_contact_sheet.png",
+  "full_route_smoke": "NOT_WEAKENED_DEFAULT_STRICT_MODE_REMAINS_SEPARATE"
+}

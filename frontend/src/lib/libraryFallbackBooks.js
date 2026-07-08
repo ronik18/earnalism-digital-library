@@ -1,0 +1,38 @@
+export const LOCAL_LIBRARY_FALLBACK_BOOKS = [
+  {
+    slug: "book-2b9853ec52",
+    title: "দুই বিঘা জমি",
+    author: "রবীন্দ্রনাথ ঠাকুর",
+    short_description: "দুই বিঘা জমি হারানো এক কৃষকের মর্মান্তিক বিচ্ছেদের কাব্যকাহিনি।",
+    publication_status: "LIVE_APPROVED",
+    estimated_reading_time: "2 min",
+    category_slug: "bengali-classics",
+  },
+  {
+    slug: "devdas",
+    title: "দেবদাস / Devdas",
+    author: "Sarat Chandra Chattopadhyay",
+    short_description: "A clean Earnalism reader edition of দেবদাস / Devdas, prepared from a legally cleared public-domain Bengali source with source boilerplate removed.",
+    publication_status: "LIVE_APPROVED",
+    estimated_reading_time: "105 min",
+    category_slug: "bengali-classics",
+  },
+  {
+    slug: "pather-panchali",
+    title: "পথের পাঁচালী / Pather Panchali",
+    author: "Bibhutibhushan Bandyopadhyay",
+    short_description: "A clean Earnalism reader edition of পথের পাঁচালী / Pather Panchali, prepared from a legally cleared public-domain Bengali source with source boilerplate removed.",
+    publication_status: "LIVE_APPROVED",
+    estimated_reading_time: "87 min",
+    category_slug: "bengali-classics",
+  },
+  {
+    slug: "hungry-stones",
+    title: "Kshudhita Pashan / The Hungry Stones",
+    author: "Rabindranath Tagore",
+    short_description: "A clean Earnalism reader edition of Kshudhita Pashan / The Hungry Stones, prepared from a legally cleared public-domain classic source with source boilerplate removed.",
+    publication_status: "LIVE_APPROVED",
+    estimated_reading_time: "20 min",
+    category_slug: "bengali-classics",
+  },
+];

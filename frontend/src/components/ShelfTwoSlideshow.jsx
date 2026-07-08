@@ -158,14 +158,13 @@ export default function ShelfTwoSlideshow({ books = [] }) {
                             Start Reading
                           </a>
                         ) : (
-                          <button
-                            type="button"
+                          <a
+                            href={`/contact?interest=${encodeURIComponent(book.id || book.slug || book.title)}`}
                             className="shelf-two-book__cta shelf-two-book__cta--queued"
-                            aria-label={`Notify me for ${book.title}`}
-                            onClick={(event) => event.preventDefault()}
+                            aria-label={`Request an update for ${book.title}`}
                           >
-                            Notify Me
-                          </button>
+                            Request Update
+                          </a>
                         )}
                         <span className={`shelf-two-book__status shelf-two-book__status--${statusClass}`}>
                           {statusClass === "published" ? "Live" : "Coming Soon"}

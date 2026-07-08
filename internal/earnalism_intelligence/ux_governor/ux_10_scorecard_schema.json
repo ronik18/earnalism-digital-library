@@ -1,0 +1,45 @@
+{
+  "green_requirements": {
+    "page_overall_min": 9.8,
+    "category_min": 9.6,
+    "no_release_gate_failure": true,
+    "no_accessibility_failure": true,
+    "no_typographic_only_public_cover": true,
+    "no_unapproved_audio_exposure": true,
+    "release_gate_failure_allowed": false,
+    "accessibility_failure_allowed": false,
+    "severe_performance_regression_allowed": false,
+    "typographic_only_public_cover_allowed": false,
+    "unapproved_audio_exposure_allowed": false
+  },
+  "categories": [
+    "premium_brand_identity",
+    "visual_distinctiveness",
+    "calmness",
+    "typography_elegance",
+    "color_consistency",
+    "cover_quality",
+    "information_hierarchy",
+    "conversion_clarity",
+    "catalog_discovery",
+    "reader_comfort",
+    "audiobook_experience",
+    "settings_usefulness",
+    "Bengali_typography",
+    "English_typography",
+    "mobile_experience",
+    "accessibility",
+    "performance",
+    "SEO",
+    "release_gate_truth",
+    "no_regressions"
+  ],
+  "hard_caps": {
+    "unapproved_audio_exposure": 6.0,
+    "fake_or_stale_audiobook_cta": 6.0,
+    "word_level_sync_claim_for_paragraph_stanza": 7.0,
+    "public_typographic_only_cover": 8.0,
+    "critical_accessibility_failure": 8.0,
+    "severe_mobile_layout_break": 8.0
+  }
+}

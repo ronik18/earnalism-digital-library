@@ -7,7 +7,6 @@ import BookCard from "../components/BookCard";
 import BookCoverImage from "../components/BookCoverImage";
 import ComingSoonBoard from "../components/ComingSoonBoard";
 import ApprovedAudiobookSpotlight from "../components/ApprovedAudiobookSpotlight";
-import { audiobookReleaseState } from "../lib/audioReleaseSafety";
 import {
   BATCH_1_READER_ONLY_SLUGS,
   DRACULA_CHAPTER_COUNT,
@@ -20,6 +19,8 @@ import {
   notifyUrl,
   readingPassUrl,
 } from "../lib/controlledLaunch";
+import { languageOfBook, matchesLibraryFacets, sortLibraryBooks } from "../lib/libraryCatalog";
+import { LOCAL_LIBRARY_FALLBACK_BOOKS } from "../lib/libraryFallbackBooks";
 import useSEO from "../hooks/useSEO";
 
 const FILTERS = [
@@ -57,54 +58,6 @@ const VIEW_MODES = [
   { slug: "compact", name: "Compact" },
 ];
 
-const BENGALI_RE = /[\u0980-\u09FF]/;
-
-function languageOfBook(book = {}) {
-  const explicit = String(book.language || book.language_code || book.lang || book.locale || "").toLowerCase();
-  if (explicit.startsWith("bn") || explicit.startsWith("ben")) return "bn";
-  if (explicit.startsWith("en") || explicit.startsWith("eng")) return "en";
-  return BENGALI_RE.test(`${book.title || ""} ${book.title_en || ""} ${book.author || ""}`) ? "bn" : "en";
-}
-
-function availabilityOfBook(book = {}) {
-  const audioState = audiobookReleaseState(book);
-  if (audioState.canShowControls) return "approved-audiobook";
-  if (book.publication_status === "LIVE_APPROVED" || book.status === "LIVE_APPROVED" || BATCH_1_READER_ONLY_SLUGS.includes(book.slug)) {
-    return "reader-ready";
-  }
-  return "in-preparation";
-}
-
-function matchesLibraryFacets(book = {}, language = "all", availability = "all") {
-  const bookLanguage = languageOfBook(book);
-  const bookAvailability = availabilityOfBook(book);
-  const audioState = audiobookReleaseState(book);
-  if (language !== "all" && bookLanguage !== language) return false;
-  if (availability === "all") return true;
-  if (availability === "audio-hidden") return !audioState.canShowControls && bookAvailability === "reader-ready";
-  return bookAvailability === availability;
-}
-
-function normalizedBookTitle(book = {}) {
-  return String(book.title_en || book.title || "").toLocaleLowerCase();
-}
-
-function sortLibraryBooks(books = [], sort = "recently-approved") {
-  const next = [...books];
-  if (sort === "title") {
-    next.sort((a, b) => normalizedBookTitle(a).localeCompare(normalizedBookTitle(b)));
-  } else if (sort === "author") {
-    next.sort((a, b) => String(a.author || "").localeCompare(String(b.author || "")));
-  } else if (sort === "short-reads") {
-    next.sort((a, b) => {
-      const aMinutes = Number(String(a.estimated_reading_time || "").match(/\d+/)?.[0] || a.word_count || 999999);
-      const bMinutes = Number(String(b.estimated_reading_time || "").match(/\d+/)?.[0] || b.word_count || 999999);
-      return aMinutes - bMinutes;
-    });
-  }
-  return next;
-}
-
 export default function Library() {
   const [params, setParams] = useSearchParams();
   const [dracula, setDracula] = useState(null);
@@ -136,7 +89,11 @@ export default function Library() {
     ])
       .then(([draculaResult, booksResult]) => {
         setDracula(draculaResult.status === "fulfilled" ? draculaResult.value.data : null);
-        setLiveBooks(booksResult.status === "fulfilled" && Array.isArray(booksResult.value.data) ? booksResult.value.data : []);
+        setLiveBooks(
+          booksResult.status === "fulfilled" && Array.isArray(booksResult.value.data) && booksResult.value.data.length > 0
+            ? booksResult.value.data
+            : LOCAL_LIBRARY_FALLBACK_BOOKS,
+        );
       })
       .finally(() => {
         if (!controller.signal.aborted) setLoading(false);
@@ -183,7 +140,8 @@ export default function Library() {
     [availability, language, liveReaderBooks, matchesQuery, sort],
   );
   const showFeaturedEnglishClassic = filteredLiveReaderBooks.some((book) => book.slug === LIVE_APPROVED_SLUG);
-  const otherLiveBooks = filteredLiveReaderBooks.filter((book) => book.slug !== LIVE_APPROVED_SLUG);
+  const bengaliLiveBooks = filteredLiveReaderBooks.filter((book) => languageOfBook(book) === "bn");
+  const englishLiveBooks = filteredLiveReaderBooks.filter((book) => languageOfBook(book) === "en" && book.slug !== LIVE_APPROVED_SLUG);
   const visiblePipeline = useMemo(() => {
     const pipelineOnlyBooks = PIPELINE_BOOKS.filter((book) => !BATCH_1_READER_ONLY_SLUGS.includes(book.slug));
     const filtered = pipelineOnlyBooks.filter((book) => {
@@ -465,53 +423,87 @@ export default function Library() {
                 <div className="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <div className="overline mb-3">Shelf 1</div>
-                    <h2 className="font-serif-light text-[1.68rem] leading-tight text-burgundy sm:text-[2.12rem]">Reader-Ready Releases</h2>
+                    <h2 className="font-serif-light text-[1.68rem] leading-tight text-burgundy sm:text-[2.12rem]">Curated Reader-Ready Shelves</h2>
+                    <p className="mt-4 max-w-2xl text-charcoal-soft leading-[1.8]">
+                      Bengali reader editions stay visibly premium, English classics stay editorial, and listening appears only when the approved reader manifest proves it.
+                    </p>
                   </div>
                   <span className="inline-flex items-center gap-2 text-sm text-charcoal-soft"><ShieldCheck size={16} className="text-gold" /> Reader-only public-domain shelf</span>
                 </div>
-                {showFeaturedEnglishClassic && (
-                  <div className="card-elegant overflow-hidden">
-                  <div className="grid grid-cols-1 gap-8 p-7 sm:p-9 lg:grid-cols-12 lg:items-center">
-                    <div className="lg:col-span-4">
-                      <div className="mx-auto aspect-[3/4] max-w-[260px] overflow-hidden rounded-lg border border-brand-soft bg-ivory-warm">
-                        <BookCoverImage book={liveBook} alt="Dracula by Bram Stoker cover" loading="eager" width={420} widths={[300, 420, 640]} sizes="260px" />
+                {bengaliLiveBooks.length > 0 && (
+                  <div className="library-curated-shelf mb-10" data-testid="library-bengali-classics-shelf">
+                    <div className="library-curated-shelf__header">
+                      <div>
+                        <div className="overline mb-2">Bengali classics</div>
+                        <h3>Reader editions live with audio hidden until approved.</h3>
                       </div>
-                    </div>
-                    <div className="lg:col-span-8">
-                      <span className="overline">Gothic fiction</span>
-                      <h3 className="mt-4 font-serif-display text-[1.86rem] leading-tight text-burgundy">Dracula</h3>
-                      <p className="mt-2 text-[0.85rem] uppercase tracking-[0.14em] text-charcoal-soft">by Bram Stoker</p>
-                      <p className="mt-6 max-w-2xl text-charcoal-soft leading-[1.85]">
-                        {liveBook.short_description}
+                      <p>
+                        These books are intentionally premium reading editions. Narration remains hidden until source, listening, sync, endpoint, and browser evidence all pass.
                       </p>
-                      <dl className="mt-6 grid gap-3 text-sm text-charcoal-soft sm:grid-cols-2">
-                        <div><dt className="overline">Status</dt><dd>Live</dd></div>
-                        <div><dt className="overline">Chapters</dt><dd>{DRACULA_CHAPTER_COUNT}</dd></div>
-                        <div><dt className="overline">Preview</dt><dd>Chapter 1 unlocked</dd></div>
-                        <div><dt className="overline">Audio</dt><dd>Audio hidden until approved</dd></div>
-                        <div><dt className="overline">Rights</dt><dd>{DRACULA_RIGHTS_NOTE}</dd></div>
-                        <div><dt className="overline">Source</dt><dd>Public-domain source verified</dd></div>
-                      </dl>
-                      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                        <Link to={`/reader/${LIVE_APPROVED_SLUG}`} className="btn-secondary justify-center" data-testid="library-dracula-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_preview" })}>
-                          <BookOpen size={15} /> Read Chapter 1 Free
-                        </Link>
-                        <Link to={`/book/${LIVE_APPROVED_SLUG}`} className="btn-primary justify-center" data-testid="library-dracula-start" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_start" })}>
-                          Read English Classic
-                        </Link>
-                        <Link to={readingPassUrl("library_live_shelf")} className="btn-link justify-center" data-testid="library-dracula-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_pass" })}>
-                          Get 7-Day Reading Pass
-                        </Link>
-                      </div>
                     </div>
-                  </div>
+                    <div className={`grid grid-cols-1 gap-7 sm:grid-cols-2 ${view === "compact" ? "lg:grid-cols-5" : "lg:grid-cols-4"}`} data-testid="library-bengali-reader-grid" data-view={view}>
+                      {bengaliLiveBooks.map((book) => (
+                        <BookCard key={book.slug} book={book} />
+                      ))}
+                    </div>
                   </div>
                 )}
-                {otherLiveBooks.length > 0 && (
-                  <div className={`mt-8 grid grid-cols-1 gap-7 sm:grid-cols-2 ${view === "compact" ? "lg:grid-cols-5" : view === "grid" ? "lg:grid-cols-4" : "lg:grid-cols-4"}`} data-testid="library-live-reader-only-grid" data-view={view}>
-                    {otherLiveBooks.map((book) => (
-                      <BookCard key={book.slug} book={book} />
-                    ))}
+                {(showFeaturedEnglishClassic || englishLiveBooks.length > 0) && (
+                  <div className="library-curated-shelf" data-testid="library-english-classics-shelf">
+                    <div className="library-curated-shelf__header">
+                      <div>
+                        <div className="overline mb-2">English classics</div>
+                        <h3>Editorial reading routes, with Dracula as one refined classic.</h3>
+                      </div>
+                      <p>
+                        English shelves stay grounded in classic reading comfort. Dracula remains a featured route, not the whole library identity.
+                      </p>
+                    </div>
+                    {showFeaturedEnglishClassic && (
+                      <div className="card-elegant overflow-hidden">
+                        <div className="grid grid-cols-1 gap-8 p-7 sm:p-9 lg:grid-cols-12 lg:items-center">
+                          <div className="lg:col-span-4">
+                            <div className="mx-auto aspect-[3/4] max-w-[260px] overflow-hidden rounded-lg border border-brand-soft bg-ivory-warm">
+                              <BookCoverImage book={liveBook} alt="Dracula by Bram Stoker cover" loading="eager" width={420} widths={[300, 420, 640]} sizes="260px" />
+                            </div>
+                          </div>
+                          <div className="lg:col-span-8">
+                            <span className="overline">Gothic fiction</span>
+                            <h3 className="mt-4 font-serif-display text-[1.86rem] leading-tight text-burgundy">Dracula</h3>
+                            <p className="mt-2 text-[0.85rem] uppercase tracking-[0.14em] text-charcoal-soft">by Bram Stoker</p>
+                            <p className="mt-6 max-w-2xl text-charcoal-soft leading-[1.85]">
+                              {liveBook.short_description}
+                            </p>
+                            <dl className="mt-6 grid gap-3 text-sm text-charcoal-soft sm:grid-cols-2">
+                              <div><dt className="overline">Status</dt><dd>Reader Ready</dd></div>
+                              <div><dt className="overline">Chapters</dt><dd>{DRACULA_CHAPTER_COUNT}</dd></div>
+                              <div><dt className="overline">Preview</dt><dd>Chapter 1 unlocked</dd></div>
+                              <div><dt className="overline">Audio</dt><dd>Audio hidden until approved</dd></div>
+                              <div><dt className="overline">Rights</dt><dd>{DRACULA_RIGHTS_NOTE}</dd></div>
+                              <div><dt className="overline">Source</dt><dd>Public-domain source verified</dd></div>
+                            </dl>
+                            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                              <Link to={`/reader/${LIVE_APPROVED_SLUG}`} className="btn-secondary justify-center" data-testid="library-dracula-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_preview" })}>
+                                <BookOpen size={15} /> Read Chapter 1 Free
+                              </Link>
+                              <Link to={`/book/${LIVE_APPROVED_SLUG}`} className="btn-primary justify-center" data-testid="library-dracula-start" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_start" })}>
+                                Read English Classic
+                              </Link>
+                              <Link to={readingPassUrl("library_live_shelf")} className="btn-link justify-center" data-testid="library-dracula-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: LIVE_APPROVED_SLUG, book_slug: LIVE_APPROVED_SLUG, cta: "library_pass" })}>
+                                Get 7-Day Reading Pass
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {englishLiveBooks.length > 0 && (
+                      <div className={`mt-8 grid grid-cols-1 gap-7 sm:grid-cols-2 ${view === "compact" ? "lg:grid-cols-5" : "lg:grid-cols-4"}`} data-testid="library-english-reader-grid" data-view={view}>
+                        {englishLiveBooks.map((book) => (
+                          <BookCard key={book.slug} book={book} />
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
               </section>

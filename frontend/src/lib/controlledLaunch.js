@@ -65,7 +65,7 @@ export const DRACULA_FALLBACK_BOOK = {
   short_description:
     "Begin Bram Stoker's gothic classic in a quiet digital reading room. Chapter 1 is free; the full core reading experience continues with reading time.",
   description:
-    "Dracula is the first controlled Earnalism release: an approved classic reading release with 27 chapters, a rights-safe source trail, and an audiobook experience in private review.",
+    "Dracula is an approved classic reading release with 27 chapters and a rights-safe source trail. Audio availability remains evidence-gated and hidden unless release approval is proven.",
   estimated_reading_time: "14 min",
   cover_image_url: DRACULA_COVER_IMAGE,
   thumbnail_url: DRACULA_COVER_IMAGE,

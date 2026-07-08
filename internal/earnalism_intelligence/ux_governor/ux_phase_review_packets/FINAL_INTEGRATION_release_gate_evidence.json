@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-07-08T13:45:10Z",
+  "status": "PASS_NO_PUBLIC_RISK_FOUND",
+  "policy": "Audiobook UI must fail closed unless approved manifest and release evidence prove availability.",
+  "source_scan_summary": {
+    "public_risk_count": 0,
+    "static_audio_public_exposure": "NOT_FOUND",
+    "browser_speech_fallback": "NOT_FOUND",
+    "word_level_sync_claim": "NOT_FOUND_IN_PUBLIC_COPY",
+    "audio_object_for_non_approved_audio": "NOT_FOUND",
+    "unapproved_listen_cta": "NOT_FOUND_IN_STRICT_SMOKE",
+    "narrator_duration_waveform_progress_for_non_approved": "NOT_FOUND_IN_STRICT_SMOKE"
+  },
+  "classifications": [
+    {
+      "pattern": "Listen",
+      "classification": "APPROVED_EVIDENCE_GATED",
+      "evidence": "BookCard and BookDetail paths use audiobookReleaseState/canShowControls. Strict smoke found zero visible Listen CTA instances across final matrix."
+    },
+    {
+      "pattern": "AudioObject",
+      "classification": "SAFE_TEST_OR_INTERNAL_EVIDENCE_ONLY",
+      "evidence": "Active JsonLd routes emit Book/Article only; tests and packets assert AudioObject absence for non-approved audio."
+    },
+    {
+      "pattern": "/audio/",
+      "classification": "TEST_ONLY_OR_BLOCKED",
+      "evidence": "Static same-origin /audio/ appears in release-safety tests as a blocked case. Service worker source check forbids static /audio/ caching."
+    },
+    {
+      "pattern": "speechSynthesis",
+      "classification": "TEST_ONLY_ABSENCE_ASSERTION",
+      "evidence": "No active Reader or player source exposes browser/system speech fallback."
+    },
+    {
+      "pattern": "word-level / word sync",
+      "classification": "TEST_ONLY_ABSENCE_ASSERTION",
+      "evidence": "Public copy uses section-following narration where audio is approved; tests assert no word-level sync copy."
+    },
+    {
+      "pattern": "narrator / duration / waveform / progress",
+      "classification": "APPROVED_EVIDENCE_GATED",
+      "evidence": "AudioPlayer returns null without audiobookReleaseState approval. Reader waveform/progress controls are behind canExposeAudiobookControls. Strict smoke found zero non-approved visible metadata/control instances."
+    },
+    {
+      "pattern": "InternalAudiobookPlayerPrototype",
+      "classification": "INTERNAL_ONLY",
+      "evidence": "Component exists under frontend/src/components/Internal and is not imported by public routes."
+    },
+    {
+      "pattern": "Library Notify Me",
+      "classification": "SAFE_CONTACT_INTEREST_LINK",
+      "evidence": "Remaining Library/BookCard Notify Me links route to /contact?interest=... and are separated from audio/listening claims."
+    }
+  ],
+  "title_truth_table": {
+    "book-2b9853ec52": "EVIDENCE_GATED_ONLY",
+    "a-ghost-story": "PAID_LISTEN_HOLD_PENDING_PRODUCTION_ROUTE_MANIFEST_PLAYER_PROOF",
+    "book-d19e96859f": "NO_PUBLIC_AUDIO_UI",
+    "book-f5d593e1f4": "NO_PUBLIC_AUDIO_UI",
+    "muchiram-gurer-jibanchorit": "NO_PUBLIC_AUDIO_UI_REPRESENTATIVE_TIMEOUT_REPAIR_PENDING",
+    "pather-panchali": "AUDIOBOOK_NO_GO",
+    "bn-066": "STAGE_1_ONLY_NO_AUDIO_UI_WHILE_PAID_TTS_LOCK_ACTIVE"
+  },
+  "paid_tts_lock": {
+    "status": "ACTIVE_LEGITIMATE",
+    "current_holder": "none",
+    "allowed_next_holders": [],
+    "paid_audio_work_authorized": false
+  }
+}
