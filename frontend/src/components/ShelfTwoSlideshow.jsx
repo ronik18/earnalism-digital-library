@@ -1,14 +1,21 @@
 import { useEffect, useMemo, useState } from "react";
 import BookCoverImage from "./BookCoverImage";
 
-function chunkBooks(books) {
+export const SHELF_TWO_ITEMS_PER_SLIDE = 5;
+export const SHELF_TWO_AUTOPLAY_INTERVAL_MS = 5200;
+
+export function chunkBooks(books, size = SHELF_TWO_ITEMS_PER_SLIDE) {
   const grouped = [];
 
-  for (let i = 0; i < books.length; i += 5) {
-    grouped.push(books.slice(i, i + 5));
+  for (let i = 0; i < books.length; i += size) {
+    grouped.push(books.slice(i, i + size));
   }
 
   return grouped;
+}
+
+export function shouldAutoplayShelfTwo({ slideCount, isPaused, prefersReducedMotion }) {
+  return slideCount > 1 && !isPaused && !prefersReducedMotion;
 }
 
 function ArrowChevron({ direction }) {
@@ -43,10 +50,17 @@ function ArrowChevron({ direction }) {
   );
 }
 
-export default function ShelfTwoSlideshow({ books = [] }) {
+function prefersReducedMotion() {
+  return Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
+}
+
+export default function ShelfTwoSlideshow({ books = [], autoplayIntervalMs = SHELF_TWO_AUTOPLAY_INTERVAL_MS }) {
   const slides = useMemo(() => chunkBooks(books), [books]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(() => (
+    typeof window === "undefined" ? false : prefersReducedMotion()
+  ));
 
   useEffect(() => {
     if (!slides.length) {
@@ -60,16 +74,24 @@ export default function ShelfTwoSlideshow({ books = [] }) {
   }, [slides.length, currentSlide]);
 
   useEffect(() => {
-    if (slides.length <= 1) return undefined;
-    if (isPaused) return undefined;
-    if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) return undefined;
+    const media = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+    if (!media) return undefined;
+
+    const syncReducedMotion = () => setIsReducedMotion(Boolean(media.matches));
+    syncReducedMotion();
+    media.addEventListener?.("change", syncReducedMotion);
+    return () => media.removeEventListener?.("change", syncReducedMotion);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldAutoplayShelfTwo({ slideCount: slides.length, isPaused, prefersReducedMotion: isReducedMotion })) return undefined;
 
     const timer = window.setInterval(() => {
       setCurrentSlide((index) => (index === slides.length - 1 ? 0 : index + 1));
-    }, 5200);
+    }, autoplayIntervalMs);
 
     return () => window.clearInterval(timer);
-  }, [isPaused, slides.length]);
+  }, [autoplayIntervalMs, isPaused, isReducedMotion, slides.length]);
 
   const goToPrevSlide = () => {
     if (!slides.length) return;
@@ -87,6 +109,8 @@ export default function ShelfTwoSlideshow({ books = [] }) {
     <div
       className="shelf-two-shelf"
       aria-live="polite"
+      aria-atomic="true"
+      data-testid="shelf-two-slideshow"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}
@@ -99,6 +123,7 @@ export default function ShelfTwoSlideshow({ books = [] }) {
         </div>
         <div
           className="shelf-two-track"
+          data-testid="shelf-two-track"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
           {slides.map((slide, slideIndex) => (
@@ -108,6 +133,7 @@ export default function ShelfTwoSlideshow({ books = [] }) {
               aria-label={`Shelf 2 page ${slideIndex + 1}`}
               aria-hidden={slideIndex !== currentSlide}
               data-active={slideIndex === currentSlide ? "true" : "false"}
+              data-testid="shelf-two-slide"
             >
               <div className="shelf-two-grid">
                 {slide.map((book, bookIndex) => {
@@ -152,7 +178,7 @@ export default function ShelfTwoSlideshow({ books = [] }) {
                         {isPublished ? (
                           <a
                             className="shelf-two-book__cta shelf-two-book__cta--published"
-                            href={`/book/${book.id}`}
+                            href={`/book/${book.id || book.slug}`}
                             aria-label={`Start reading ${book.title}`}
                           >
                             Start Reading
@@ -177,6 +203,12 @@ export default function ShelfTwoSlideshow({ books = [] }) {
             </section>
           ))}
         </div>
+
+        {slides[currentSlide]?.[0]?.title ? (
+          <span className="sr-only" data-testid="shelf-two-live-status">
+            Showing Shelf II page {currentSlide + 1} starting with {slides[currentSlide][0].title}.
+          </span>
+        ) : null}
 
         {hasMultipleSlides ? (
           <>

@@ -21,11 +21,8 @@ import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
-import {
-  BATCH_1_READER_ONLY_SLUGS,
-  LIVE_APPROVED_SLUG,
-  PIPELINE_BOOKS,
-} from "../lib/controlledLaunch";
+import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
+import { buildShelfTwoBooks } from "../lib/shelfTwoBooks";
 import useSEO from "../hooks/useSEO";
 
 const SOCIAL_ICONS = {
@@ -52,30 +49,7 @@ export default function Home() {
       .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
       .filter((item) => item.Icon)
   ), [social]);
-  const homepagePipelineBooks = useMemo(
-    () => PIPELINE_BOOKS.filter((book) => !BATCH_1_READER_ONLY_SLUGS.includes(book.slug)),
-    [],
-  );
-  const shelfTwoBooks = useMemo(
-    () =>
-      homepagePipelineBooks.map((book, index) => ({
-        id: book.slug,
-        slug: book.slug,
-        title: book.displayTitle || book.title,
-        author: book.author,
-        coverUrl: book.cover_image_url || book.thumbnail_url || book.back_cover_image_url || book.back_cover_thumbnail_url || "",
-        cover_image_url: book.cover_image_url || "",
-        thumbnail_url: book.thumbnail_url || "",
-        back_cover_image_url: book.back_cover_image_url || "",
-        back_cover_thumbnail_url: book.back_cover_thumbnail_url || "",
-        description: book.short_description || "",
-        statusLabel: book.statusLabel || "Rights-safe preparation",
-        dominantColor: book.dominant_color || "",
-        sequence: index + 1,
-        status: "queued",
-      })),
-    [homepagePipelineBooks],
-  );
+  const shelfTwoBooks = useMemo(() => buildShelfTwoBooks(), []);
 
   useSEO({
     title: "Earnalism | Bengali and English Classics in a Calm Digital Library",
