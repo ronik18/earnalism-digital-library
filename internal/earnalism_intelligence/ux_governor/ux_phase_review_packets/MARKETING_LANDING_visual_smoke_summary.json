@@ -1,0 +1,45 @@
+{
+  "phase": "MARKETING_LANDING",
+  "generated_at": "2026-07-08T12:45:05.104Z",
+  "status": "PASS",
+  "mode": "marketing_landing_browser_and_source",
+  "base_url": "http://127.0.0.1:4173",
+  "routes": [
+    "/",
+    "/about",
+    "/pricing",
+    "/contact",
+    "/journal",
+    "/micro-story"
+  ],
+  "viewports": [
+    "1440x900",
+    "1536x864",
+    "430x932",
+    "390x844"
+  ],
+  "routes_attempted": 24,
+  "routes_completed": 24,
+  "critical_blockers": 0,
+  "failed_subchecks": 0,
+  "source_checks": {
+    "marketing-default-seo-balanced": "PASS",
+    "marketing-about-not-dracula-first": "PASS",
+    "marketing-controlled-launch-audio-evidence-gated": "PASS",
+    "marketing-support-domain-consistent": "PASS",
+    "marketing-pipeline-interest-cta-truthful": "PASS"
+  },
+  "phase_scoped_behavior": {
+    "spa_fallback_for_local_static_routes": true,
+    "marketing_api_mocks": [
+      "/api/payments/packs",
+      "/api/payments/config",
+      "/api/blog"
+    ],
+    "full_route_smoke_weakened": false,
+    "default_smoke_mode_unchanged": true
+  },
+  "screenshot_dir": "/tmp/earnalism-ux-review/MARKETING_LANDING",
+  "contact_sheet": "/tmp/earnalism-ux-review/MARKETING_LANDING/MARKETING_LANDING_contact_sheet.png",
+  "raw_report_path": "ux_visual_regression_report.json"
+}

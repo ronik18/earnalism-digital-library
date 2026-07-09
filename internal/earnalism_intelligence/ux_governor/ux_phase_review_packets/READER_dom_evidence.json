@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-07-08T06:31:11Z",
+  "phase": "READER",
+  "route_matrix": [
+    "/reader/book-2b9853ec52",
+    "/reader/a-ghost-story",
+    "/reader/dracula",
+    "/reader/radharani",
+    "/reader/nishkriti",
+    "/reader/book-d19e96859f",
+    "/reader/book-f5d593e1f4",
+    "/reader/muchiram-gurer-jibanchorit",
+    "/reader/pather-panchali",
+    "/reader/the-last-leaf"
+  ],
+  "viewports": [
+    "1920x1080",
+    "1536x864",
+    "1440x900",
+    "1366x768",
+    "1280x800",
+    "1024x768",
+    "820x1180",
+    "430x932",
+    "390x844"
+  ],
+  "routes_checked": 10,
+  "viewport_checks": 90,
+  "reader_page_visible_all": true,
+  "reader_text_visible_all": true,
+  "reader_settings_reachable_all": true,
+  "reader_contents_reachable_all": true,
+  "audio_hidden_or_reader_ready_copy_all": true,
+  "horizontal_overflow_any": false,
+  "console_errors": 0,
+  "settings_controls": {
+    "font_size": true,
+    "line_spacing": true,
+    "reading_width": true,
+    "theme_light": true,
+    "theme_sepia": true,
+    "theme_night": true,
+    "bengali_font_mode": true,
+    "english_font_mode": true,
+    "highlight_intensity": true,
+    "reduced_motion": true,
+    "focus_mode": true
+  },
+  "accessibility_evidence": {
+    "settings_dialog_labelled": true,
+    "settings_groups_labelled": true,
+    "toc_dialog_labelled": true,
+    "settings_buttons_have_accessible_labels": true,
+    "state_controls_use_aria_pressed": true
+  },
+  "screenshot_directory": "/tmp/earnalism-ux-review/READER/",
+  "contact_sheet": "/tmp/earnalism-ux-review/READER/READER_contact_sheet.png"
+}

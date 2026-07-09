@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-07-08T03:12:59Z",
+  "mode": "library_browser_and_source",
+  "visual_smoke_status": "PASS",
+  "routes_attempted": 9,
+  "routes_completed": 9,
+  "critical_blockers": 0,
+  "failed_subchecks": 0,
+  "report_path": "ux_visual_regression_report.json"
+}

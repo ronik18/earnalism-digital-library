@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-07-08T10:14:19Z",
+  "phase": "SETTINGS",
+  "semantic_dialog": {
+    "passed": true,
+    "evidence": "Settings panel uses role=dialog, aria-modal=true, aria-labelledby, and aria-describedby."
+  },
+  "focus_management": {
+    "passed": true,
+    "evidence": "Visual smoke verified panel focus containment in 90/90 route-viewport checks and Escape close on the representative opening check."
+  },
+  "keyboard_reachability": {
+    "passed": true,
+    "evidence": "Segmented controls and reset are buttons/range input with accessible names and visible focus styles."
+  },
+  "state_exposure": {
+    "passed": true,
+    "evidence": "Controls retain aria-pressed selected state; screen-reader live copy summarizes current settings."
+  },
+  "reset_behavior": {
+    "passed": true,
+    "evidence": "Reset comfort defaults is visible in 90/90 smoke checks and restores sanitized defaults through readerSettings helpers."
+  },
+  "reduced_motion": {
+    "passed": true,
+    "evidence": "Reduced motion remains a visible setting and reader CSS respects reduced motion classes and media preference."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "slug": "a-ghost-story",
+  "title": "A Ghost Story",
+  "author": "Mark Twain",
+  "language": "en",
+  "chapter_count": 1,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "A Ghost Story",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2450,
+      "reading_minutes": 11,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-08T20:40:04Z",
+      "updated_at": "2026-07-08T20:40:04Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-08T20:40:04Z"
+}

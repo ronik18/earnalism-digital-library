@@ -1,0 +1,466 @@
+{
+  "generated_at": "2026-07-08T05:36:56Z",
+  "phase": "BOOK_DETAIL",
+  "source_report": "ux_visual_regression_report.json",
+  "routes_checked": 12,
+  "viewport_checks": 108,
+  "required_viewports": [
+    "1440x900",
+    "1536x864",
+    "390x844",
+    "430x932"
+  ],
+  "routes": [
+    {
+      "route": "/book/book-2b9853ec52",
+      "slug": "book-2b9853ec52",
+      "statuses": [
+        200
+      ],
+      "book_titles": [
+        "দুই বিঘা জমি"
+      ],
+      "primary_cta_texts": [
+        "Start Reading"
+      ],
+      "reader_status_texts": [
+        "Reader Ready"
+      ],
+      "audio_status_texts": [
+        "Audio Hidden"
+      ],
+      "listen_cta_visible_any": false,
+      "narrator_metadata_visible_any": false,
+      "duration_metadata_visible_any": false,
+      "waveform_visible_any": false,
+      "progress_ui_visible_any": false,
+      "audio_object_structured_data_any": false,
+      "word_level_sync_copy_visible_any": false,
+      "speech_fallback_copy_visible_any": false,
+      "text_only_cover_fallback_visible_any": false,
+      "horizontal_overflow_any": false,
+      "console_errors": [],
+      "resource_errors": [],
+      "required_screenshots": {
+        "1536x864": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_book_2b9853ec52_1536x864.png",
+        "1440x900": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_book_2b9853ec52_1440x900.png",
+        "430x932": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_book_2b9853ec52_430x932.png",
+        "390x844": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_book_2b9853ec52_390x844.png"
+      }
+    },
+    {
+      "route": "/book/a-ghost-story",
+      "slug": "a-ghost-story",
+      "statuses": [
+        200
+      ],
+      "book_titles": [
+        "A Ghost Story"
+      ],
+      "primary_cta_texts": [
+        "Start Reading"
+      ],
+      "reader_status_texts": [
+        "Reader Ready"
+      ],
+      "audio_status_texts": [
+        "Audio Hidden"
+      ],
+      "listen_cta_visible_any": false,
+      "narrator_metadata_visible_any": false,
+      "duration_metadata_visible_any": false,
+      "waveform_visible_any": false,
+      "progress_ui_visible_any": false,
+      "audio_object_structured_data_any": false,
+      "word_level_sync_copy_visible_any": false,
+      "speech_fallback_copy_visible_any": false,
+      "text_only_cover_fallback_visible_any": false,
+      "horizontal_overflow_any": false,
+      "console_errors": [],
+      "resource_errors": [],
+      "required_screenshots": {
+        "1536x864": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_a_ghost_story_1536x864.png",
+        "1440x900": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_a_ghost_story_1440x900.png",
+        "430x932": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_a_ghost_story_430x932.png",
+        "390x844": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_a_ghost_story_390x844.png"
+      }
+    },
+    {
+      "route": "/book/book-d19e96859f",
+      "slug": "book-d19e96859f",
+      "statuses": [
+        200
+      ],
+      "book_titles": [
+        "গিন্নি"
+      ],
+      "primary_cta_texts": [
+        "Start Reading"
+      ],
+      "reader_status_texts": [
+        "Reader Ready"
+      ],
+      "audio_status_texts": [
+        "Audio Hidden"
+      ],
+      "listen_cta_visible_any": false,
+      "narrator_metadata_visible_any": false,
+      "duration_metadata_visible_any": false,
+      "waveform_visible_any": false,
+      "progress_ui_visible_any": false,
+      "audio_object_structured_data_any": false,
+      "word_level_sync_copy_visible_any": false,
+      "speech_fallback_copy_visible_any": false,
+      "text_only_cover_fallback_visible_any": false,
+      "horizontal_overflow_any": false,
+      "console_errors": [],
+      "resource_errors": [],
+      "required_screenshots": {
+        "1536x864": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_book_d19e96859f_1536x864.png",
+        "1440x900": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_book_d19e96859f_1440x900.png",
+        "430x932": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_book_d19e96859f_430x932.png",
+        "390x844": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_book_d19e96859f_390x844.png"
+      }
+    },
+    {
+      "route": "/book/book-f5d593e1f4",
+      "slug": "book-f5d593e1f4",
+      "statuses": [
+        200
+      ],
+      "book_titles": [
+        "রামকানাইয়ের নির্বুদ্ধিতা"
+      ],
+      "primary_cta_texts": [
+        "Start Reading"
+      ],
+      "reader_status_texts": [
+        "Reader Ready"
+      ],
+      "audio_status_texts": [
+        "Audio Hidden"
+      ],
+      "listen_cta_visible_any": false,
+      "narrator_metadata_visible_any": false,
+      "duration_metadata_visible_any": false,
+      "waveform_visible_any": false,
+      "progress_ui_visible_any": false,
+      "audio_object_structured_data_any": false,
+      "word_level_sync_copy_visible_any": false,
+      "speech_fallback_copy_visible_any": false,
+      "text_only_cover_fallback_visible_any": false,
+      "horizontal_overflow_any": false,
+      "console_errors": [],
+      "resource_errors": [],
+      "required_screenshots": {
+        "1536x864": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_book_f5d593e1f4_1536x864.png",
+        "1440x900": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_book_f5d593e1f4_1440x900.png",
+        "430x932": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_book_f5d593e1f4_430x932.png",
+        "390x844": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_book_f5d593e1f4_390x844.png"
+      }
+    },
+    {
+      "route": "/book/muchiram-gurer-jibanchorit",
+      "slug": "muchiram-gurer-jibanchorit",
+      "statuses": [
+        200
+      ],
+      "book_titles": [
+        "মুচিরাম গুড়ের জীবনচরিত"
+      ],
+      "primary_cta_texts": [
+        "Start Reading"
+      ],
+      "reader_status_texts": [
+        "Reader Ready"
+      ],
+      "audio_status_texts": [
+        "Audio Hidden"
+      ],
+      "listen_cta_visible_any": false,
+      "narrator_metadata_visible_any": false,
+      "duration_metadata_visible_any": false,
+      "waveform_visible_any": false,
+      "progress_ui_visible_any": false,
+      "audio_object_structured_data_any": false,
+      "word_level_sync_copy_visible_any": false,
+      "speech_fallback_copy_visible_any": false,
+      "text_only_cover_fallback_visible_any": false,
+      "horizontal_overflow_any": false,
+      "console_errors": [],
+      "resource_errors": [],
+      "required_screenshots": {
+        "1536x864": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_muchiram_gurer_jibanchorit_1536x864.png",
+        "1440x900": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_muchiram_gurer_jibanchorit_1440x900.png",
+        "430x932": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_muchiram_gurer_jibanchorit_430x932.png",
+        "390x844": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_muchiram_gurer_jibanchorit_390x844.png"
+      }
+    },
+    {
+      "route": "/book/pather-panchali",
+      "slug": "pather-panchali",
+      "statuses": [
+        200
+      ],
+      "book_titles": [
+        "পথের পাঁচালী / Pather Panchali"
+      ],
+      "primary_cta_texts": [
+        "Start Reading"
+      ],
+      "reader_status_texts": [
+        "Reader Ready"
+      ],
+      "audio_status_texts": [
+        "Audio Hidden"
+      ],
+      "listen_cta_visible_any": false,
+      "narrator_metadata_visible_any": false,
+      "duration_metadata_visible_any": false,
+      "waveform_visible_any": false,
+      "progress_ui_visible_any": false,
+      "audio_object_structured_data_any": false,
+      "word_level_sync_copy_visible_any": false,
+      "speech_fallback_copy_visible_any": false,
+      "text_only_cover_fallback_visible_any": false,
+      "horizontal_overflow_any": false,
+      "console_errors": [],
+      "resource_errors": [],
+      "required_screenshots": {
+        "1536x864": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_pather_panchali_1536x864.png",
+        "1440x900": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_pather_panchali_1440x900.png",
+        "430x932": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_pather_panchali_430x932.png",
+        "390x844": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_pather_panchali_390x844.png"
+      }
+    },
+    {
+      "route": "/book/bn-066",
+      "slug": "bn-066",
+      "statuses": [
+        200
+      ],
+      "book_titles": [
+        "আনন্দমঠ"
+      ],
+      "primary_cta_texts": [
+        "Start Reading"
+      ],
+      "reader_status_texts": [
+        "Reader Ready"
+      ],
+      "audio_status_texts": [
+        "Audio Hidden"
+      ],
+      "listen_cta_visible_any": false,
+      "narrator_metadata_visible_any": false,
+      "duration_metadata_visible_any": false,
+      "waveform_visible_any": false,
+      "progress_ui_visible_any": false,
+      "audio_object_structured_data_any": false,
+      "word_level_sync_copy_visible_any": false,
+      "speech_fallback_copy_visible_any": false,
+      "text_only_cover_fallback_visible_any": false,
+      "horizontal_overflow_any": false,
+      "console_errors": [],
+      "resource_errors": [],
+      "required_screenshots": {
+        "1536x864": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_bn_066_1536x864.png",
+        "1440x900": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_bn_066_1440x900.png",
+        "430x932": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_bn_066_430x932.png",
+        "390x844": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_bn_066_390x844.png"
+      }
+    },
+    {
+      "route": "/book/dracula",
+      "slug": "dracula",
+      "statuses": [
+        200
+      ],
+      "book_titles": [
+        "Dracula"
+      ],
+      "primary_cta_texts": [
+        "Continue Dracula"
+      ],
+      "reader_status_texts": [
+        "Reader Ready"
+      ],
+      "audio_status_texts": [
+        "Audio Hidden"
+      ],
+      "listen_cta_visible_any": false,
+      "narrator_metadata_visible_any": false,
+      "duration_metadata_visible_any": false,
+      "waveform_visible_any": false,
+      "progress_ui_visible_any": false,
+      "audio_object_structured_data_any": false,
+      "word_level_sync_copy_visible_any": false,
+      "speech_fallback_copy_visible_any": false,
+      "text_only_cover_fallback_visible_any": false,
+      "horizontal_overflow_any": false,
+      "console_errors": [],
+      "resource_errors": [],
+      "required_screenshots": {
+        "1536x864": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_dracula_1536x864.png",
+        "1440x900": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_dracula_1440x900.png",
+        "430x932": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_dracula_430x932.png",
+        "390x844": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_dracula_390x844.png"
+      }
+    },
+    {
+      "route": "/book/radharani",
+      "slug": "radharani",
+      "statuses": [
+        200
+      ],
+      "book_titles": [
+        "রাধারাণী"
+      ],
+      "primary_cta_texts": [
+        "Start Reading"
+      ],
+      "reader_status_texts": [
+        "Reader Ready"
+      ],
+      "audio_status_texts": [
+        "Audio Hidden"
+      ],
+      "listen_cta_visible_any": false,
+      "narrator_metadata_visible_any": false,
+      "duration_metadata_visible_any": false,
+      "waveform_visible_any": false,
+      "progress_ui_visible_any": false,
+      "audio_object_structured_data_any": false,
+      "word_level_sync_copy_visible_any": false,
+      "speech_fallback_copy_visible_any": false,
+      "text_only_cover_fallback_visible_any": false,
+      "horizontal_overflow_any": false,
+      "console_errors": [],
+      "resource_errors": [],
+      "required_screenshots": {
+        "1536x864": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_radharani_1536x864.png",
+        "1440x900": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_radharani_1440x900.png",
+        "430x932": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_radharani_430x932.png",
+        "390x844": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_radharani_390x844.png"
+      }
+    },
+    {
+      "route": "/book/nishkriti",
+      "slug": "nishkriti",
+      "statuses": [
+        200
+      ],
+      "book_titles": [
+        "নিষ্কৃতি"
+      ],
+      "primary_cta_texts": [
+        "Start Reading"
+      ],
+      "reader_status_texts": [
+        "Reader Ready"
+      ],
+      "audio_status_texts": [
+        "Audio Hidden"
+      ],
+      "listen_cta_visible_any": false,
+      "narrator_metadata_visible_any": false,
+      "duration_metadata_visible_any": false,
+      "waveform_visible_any": false,
+      "progress_ui_visible_any": false,
+      "audio_object_structured_data_any": false,
+      "word_level_sync_copy_visible_any": false,
+      "speech_fallback_copy_visible_any": false,
+      "text_only_cover_fallback_visible_any": false,
+      "horizontal_overflow_any": false,
+      "console_errors": [],
+      "resource_errors": [],
+      "required_screenshots": {
+        "1536x864": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_nishkriti_1536x864.png",
+        "1440x900": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_nishkriti_1440x900.png",
+        "430x932": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_nishkriti_430x932.png",
+        "390x844": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_nishkriti_390x844.png"
+      }
+    },
+    {
+      "route": "/book/the-last-leaf",
+      "slug": "the-last-leaf",
+      "statuses": [
+        200
+      ],
+      "book_titles": [
+        "The Last Leaf"
+      ],
+      "primary_cta_texts": [
+        "Start Reading"
+      ],
+      "reader_status_texts": [
+        "Reader Ready"
+      ],
+      "audio_status_texts": [
+        "Audio Hidden"
+      ],
+      "listen_cta_visible_any": false,
+      "narrator_metadata_visible_any": false,
+      "duration_metadata_visible_any": false,
+      "waveform_visible_any": false,
+      "progress_ui_visible_any": false,
+      "audio_object_structured_data_any": false,
+      "word_level_sync_copy_visible_any": false,
+      "speech_fallback_copy_visible_any": false,
+      "text_only_cover_fallback_visible_any": false,
+      "horizontal_overflow_any": false,
+      "console_errors": [],
+      "resource_errors": [],
+      "required_screenshots": {
+        "1536x864": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_the_last_leaf_1536x864.png",
+        "1440x900": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_the_last_leaf_1440x900.png",
+        "430x932": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_the_last_leaf_430x932.png",
+        "390x844": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_the_last_leaf_390x844.png"
+      }
+    },
+    {
+      "route": "/book/the-masque-of-the-red-death",
+      "slug": "the-masque-of-the-red-death",
+      "statuses": [
+        200
+      ],
+      "book_titles": [
+        "The Masque of the Red Death"
+      ],
+      "primary_cta_texts": [
+        "Start Reading"
+      ],
+      "reader_status_texts": [
+        "Reader Ready"
+      ],
+      "audio_status_texts": [
+        "Audio Hidden"
+      ],
+      "listen_cta_visible_any": false,
+      "narrator_metadata_visible_any": false,
+      "duration_metadata_visible_any": false,
+      "waveform_visible_any": false,
+      "progress_ui_visible_any": false,
+      "audio_object_structured_data_any": false,
+      "word_level_sync_copy_visible_any": false,
+      "speech_fallback_copy_visible_any": false,
+      "text_only_cover_fallback_visible_any": false,
+      "horizontal_overflow_any": false,
+      "console_errors": [],
+      "resource_errors": [],
+      "required_screenshots": {
+        "1536x864": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_the_masque_of_the_red_death_1536x864.png",
+        "1440x900": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_the_masque_of_the_red_death_1440x900.png",
+        "430x932": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_the_masque_of_the_red_death_430x932.png",
+        "390x844": "/tmp/earnalism-ux-review/BOOK_DETAIL/book_the_masque_of_the_red_death_390x844.png"
+      }
+    }
+  ],
+  "dom_acceptance": {
+    "book_titles_rendered": true,
+    "primary_read_cta_rendered": false,
+    "status_badges_rendered": true,
+    "no_mobile_horizontal_overflow": true,
+    "no_typographic_only_cover_visible": true
+  }
+}

@@ -20,6 +20,19 @@ describe("audiobook release safety", () => {
     })).toBe(true);
   });
 
+  test("blocks same-origin static audio paths even with approval-shaped metadata", () => {
+    const state = audiobookReleaseState({
+      audiobook_enabled: true,
+      audiobook_release_gate: "APPROVED",
+      audio_qa_status: "PASS",
+      audiobook_assets: { mp3: "/audio/a-ghost-story.mp3" },
+    });
+
+    expect(state.canShowControls).toBe(false);
+    expect(state.status).toBe("private_review");
+    expect(state.reason).toMatch(/static audiobook assets/i);
+  });
+
   test("allows provider-backed reader manifest audio from production reader endpoint", () => {
     const state = audiobookReleaseState({
       _readerManifest: {

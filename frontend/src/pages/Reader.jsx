@@ -14,11 +14,12 @@ import { optimizedImageUrl } from '../lib/images';
 import { resolveBookCover } from '../lib/bookCoverResolver';
 import useSEO from '../hooks/useSEO';
 import { canExposeAudiobookControls } from '../lib/audioReleaseSafety';
+import { READER_SETTINGS_DEFAULTS, loadReaderSettings, saveReaderSettings } from '../lib/readerSettings';
 
 const THEMES = {
-  beige: { canvas: '#F5F0E8', surface: '#FDFAF4', text: '#2C1810', accent: '#6B1E2E', border: '#E8D5A3', label: 'Light' },
-  sepia: { canvas: '#EDE0C8', surface: '#F5E8D0', text: '#3B2A1A', accent: '#6B1E2E', border: '#D7BD7A', label: 'Sepia' },
-  dark: { canvas: '#14090D', surface: '#250B13', text: '#D9C793', accent: '#CDB158', border: 'rgba(205,177,88,0.34)', label: 'Dark' },
+  beige: { canvas: '#F7F0E3', surface: '#FBF6EC', text: '#241713', accent: '#5A1F2B', border: '#D8C2A0', label: 'Light' },
+  sepia: { canvas: '#EFE2CC', surface: '#F7F0E3', text: '#332821', accent: '#5A1F2B', border: '#B58A45', label: 'Sepia' },
+  dark: { canvas: '#241713', surface: '#351018', text: '#F7F0E3', accent: '#D7A84E', border: 'rgba(181,138,69,0.42)', label: 'Night' },
 };
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
@@ -56,6 +57,19 @@ const HIGHLIGHT_INTENSITY_OPTIONS = [
   { label: 'Medium', value: 'medium' },
   { label: 'High', value: 'high' },
 ];
+
+const FONT_MODE_LABELS = {
+  bengali: {
+    group: 'Bengali font mode',
+    serif: 'Literary Bengali serif',
+    sans: 'Clear Bengali sans',
+  },
+  english: {
+    group: 'English font mode',
+    serif: 'Editorial serif',
+    sans: 'Clean sans',
+  },
+};
 
 const LOW_BALANCE_THRESHOLD = 300;
 const READING_PULSE_MS = 30000;
@@ -260,32 +274,6 @@ function extractReaderFrontMatter(html = '', book = {}, chapter = {}) {
     storyTitle: storyTitle || firstParagraphText(html) || 'Chapter',
     subtitle: subtitle && !textEquals(subtitle, [collection]) ? subtitle : '',
   };
-}
-
-function normalizeVoiceLang(value = '') {
-  return String(value || '').toLowerCase().replace('_', '-');
-}
-
-function isBengaliVoice(voice) {
-  const lang = normalizeVoiceLang(voice?.lang);
-  const name = String(voice?.name || '');
-  return lang.startsWith('bn') || /bengali|bangla/i.test(name);
-}
-
-function selectNarrationVoice(voices = [], prefersBengali = false) {
-  const available = Array.from(voices || []).filter(Boolean);
-  if (prefersBengali) {
-    const bengaliVoice = available.find(isBengaliVoice);
-    return { voice: bengaliVoice || null, exactLanguage: Boolean(bengaliVoice) };
-  }
-
-  const preferredEnglish = available.find((voice) => /Samantha|Karen|Moira|Daniel/i.test(voice.name))
-    || available.find((voice) => normalizeVoiceLang(voice.lang) === 'en-us')
-    || available.find((voice) => normalizeVoiceLang(voice.lang).startsWith('en'))
-    || available[0]
-    || null;
-
-  return { voice: preferredEnglish, exactLanguage: Boolean(preferredEnglish) };
 }
 
 function sanitizeReaderHtml(html) {
@@ -505,8 +493,7 @@ function audiobookAssetsForBook(book = {}) {
   return book?.audiobook_assets || book?.audiobookAssets || book?.audio_assets || {};
 }
 
-function audioAssetUrl(book, lang, slug, suffix) {
-  if (!slug) return '';
+function audioAssetUrl(book, suffix) {
   const keyBySuffix = {
     '.mp3': 'mp3',
     '_timestamps.json': 'timestamps',
@@ -517,8 +504,7 @@ function audioAssetUrl(book, lang, slug, suffix) {
   };
   const mapped = audiobookAssetsForBook(book)?.[keyBySuffix[suffix]];
   if (mapped) return resolveAssetUrl(mapped);
-  const path = `/audio/${lang}/${slug}${suffix}`;
-  return AUDIO_ASSET_BASE_URL ? `${AUDIO_ASSET_BASE_URL}${path}` : path;
+  return '';
 }
 
 function readerCoverUrl(book = {}, kind = 'front') {
@@ -571,52 +557,61 @@ function manifestAudioForBook(book = {}) {
   return book?._readerManifest?.audio || {};
 }
 
-function audioManifestUrlForBook(book, lang, slug) {
+function audioManifestUrlForBook(book) {
   const audio = manifestAudioForBook(book);
   const explicit = audio?.assets?.manifest || audiobookAssetsForBook(book)?.manifest;
   if (explicit) return resolveAssetUrl(explicit);
-  return audioAssetUrl(book, lang, slug, '_manifest.json');
+  return '';
 }
 
-function normalizeAudioTrack(raw = {}, lang = 'en', slug = '') {
-  const audioUrl = raw.audio_url || raw.audioUrl || raw.mp3 || raw.src || '';
-  const timestampsUrl = raw.timestamps_url || raw.timestampsUrl || raw.timestamps || '';
+function firstExplicitAsset(source = {}, keys = []) {
+  for (const key of keys) {
+    if (source?.[key]) return source[key];
+  }
+  return '';
+}
+
+function normalizeAudioTrack(raw = {}) {
+  const explicitAudioSource = firstExplicitAsset(raw, ['audio_url', 'audioUrl', 'mp3', 'src']);
+  const explicitTimestampSource = firstExplicitAsset(raw, ['timestamps_url', 'timestampsUrl', 'timestamps']);
   const chunks = Array.isArray(raw.chunks || raw.pages || raw.timestamp_chunks)
     ? (raw.chunks || raw.pages || raw.timestamp_chunks).map((chunk) => ({
       startWord: Number(chunk.start_word ?? chunk.startWord ?? chunk.word_start ?? 0) || 0,
       endWord: Number(chunk.end_word ?? chunk.endWord ?? chunk.word_end ?? Number.MAX_SAFE_INTEGER) || Number.MAX_SAFE_INTEGER,
-      audioUrl: resolveAssetUrl(chunk.audio_url || chunk.audioUrl || audioUrl),
-      timestampsUrl: resolveAssetUrl(chunk.timestamps_url || chunk.timestampsUrl || chunk.timestamps || timestampsUrl),
+      audioUrl: resolveAssetUrl(firstExplicitAsset(chunk, ['audio_url', 'audioUrl', 'mp3', 'src']) || explicitAudioSource),
+      timestampsUrl: resolveAssetUrl(firstExplicitAsset(chunk, ['timestamps_url', 'timestampsUrl', 'timestamps']) || explicitTimestampSource),
       version: chunk.version || chunk.hash || raw.version || '',
-    })).filter((chunk) => chunk.timestampsUrl || chunk.audioUrl)
+    })).filter((chunk) => Boolean(chunk.timestampsUrl) || Boolean(chunk.audioUrl))
     : [];
   return {
     chapterId: raw.chapter_id || raw.chapterId || raw.id || '',
     startWord: Number(raw.start_word ?? raw.startWord ?? 0) || 0,
     endWord: Number(raw.end_word ?? raw.endWord ?? Number.MAX_SAFE_INTEGER) || Number.MAX_SAFE_INTEGER,
-    audioUrl: resolveAssetUrl(audioUrl || `/audio/${lang}/${slug}.mp3`),
-    timestampsUrl: resolveAssetUrl(timestampsUrl || `/audio/${lang}/${slug}_timestamps.json`),
+    audioUrl: resolveAssetUrl(explicitAudioSource),
+    timestampsUrl: resolveAssetUrl(explicitTimestampSource),
     version: raw.version || raw.hash || '',
     chunks,
   };
 }
 
-function normalizeAudioManifest(raw = {}, lang = 'en', slug = '') {
+function normalizeAudioManifest(raw = {}) {
   const tracks = raw.tracks || raw.chapters || raw.items || [];
   return {
     version: raw.version || raw.hash || '',
-    tracks: Array.isArray(tracks) ? tracks.map((track) => normalizeAudioTrack(track, lang, slug)) : [],
+    tracks: Array.isArray(tracks)
+      ? tracks.map((track) => normalizeAudioTrack(track)).filter((track) => track.audioUrl && track.timestampsUrl)
+      : [],
   };
 }
 
-function selectAudioTrack({ manifest, chapterId, currentWordOffset = 0, legacyAudioUrl, legacyTimestampsUrl }) {
+function selectAudioTrack({ manifest, chapterId, currentWordOffset = 0, approvedAudioUrl, approvedTimestampsUrl }) {
   const tracks = manifest?.tracks || [];
   const track = tracks.find((item) => item.chapterId && item.chapterId === chapterId) || tracks[0];
   if (track) {
     const chunk = (track.chunks || []).find((item) => currentWordOffset >= item.startWord && currentWordOffset <= item.endWord);
     return {
-      audioUrl: chunk?.audioUrl || track.audioUrl,
-      timestampsUrl: chunk?.timestampsUrl || track.timestampsUrl,
+      audioUrl: chunk?.audioUrl ? chunk.audioUrl : track.audioUrl,
+      timestampsUrl: chunk?.timestampsUrl ? chunk.timestampsUrl : track.timestampsUrl,
       startWord: chunk?.startWord ?? track.startWord ?? 0,
       endWord: chunk?.endWord ?? track.endWord ?? Number.MAX_SAFE_INTEGER,
       version: chunk?.version || track.version || manifest.version || '',
@@ -624,18 +619,13 @@ function selectAudioTrack({ manifest, chapterId, currentWordOffset = 0, legacyAu
     };
   }
   return {
-    audioUrl: legacyAudioUrl,
-    timestampsUrl: legacyTimestampsUrl,
+    audioUrl: approvedAudioUrl,
+    timestampsUrl: approvedTimestampsUrl,
     startWord: 0,
     endWord: Number.MAX_SAFE_INTEGER,
     version: '',
     chunked: false,
   };
-}
-
-function hasLegacyGeneratedAudioAsset(book = {}, bookId = '') {
-  return bookId === 'bharat-at-the-crossroads'
-    || /bharat at the crossroads/i.test(book?.title || '');
 }
 
 function isAgenticAiWithPython(book = {}, bookId = '') {
@@ -644,7 +634,6 @@ function isAgenticAiWithPython(book = {}, bookId = '') {
 }
 
 function isNarrationDisabledForBook(book = {}, bookId = '') {
-  if (bookId === LIVE_APPROVED_SLUG || book?.slug === LIVE_APPROVED_SLUG) return true;
   if (isAgenticAiWithPython(book, bookId)) return true;
   if (!canExposeAudiobookControls(book)) return true;
   const assets = audiobookAssetsForBook(book);
@@ -929,14 +918,20 @@ export default function Reader() {
   const [notFound, setNotFound] = useState(false);
   const [lockedState, setLockedState] = useState(null);
 
-  const [theme, setTheme] = useState('beige');
-  const [fontSizeIdx, setFontSizeIdx] = useState(0);
-  const [lineSpacingMode, setLineSpacingMode] = useState('comfortable');
-  const [marginMode, setMarginMode] = useState('classic');
-  const [fontFamilyMode, setFontFamilyMode] = useState('sans');
-  const [focusMode, setFocusMode] = useState(false);
-  const [reducedMotionMode, setReducedMotionMode] = useState(false);
-  const [highlightIntensity, setHighlightIntensity] = useState('medium');
+  const initialReaderSettingsRef = useRef(null);
+  if (initialReaderSettingsRef.current === null) {
+    initialReaderSettingsRef.current = loadReaderSettings();
+  }
+  const initialReaderSettings = initialReaderSettingsRef.current;
+
+  const [theme, setTheme] = useState(initialReaderSettings.theme);
+  const [fontSizeIdx, setFontSizeIdx] = useState(initialReaderSettings.fontSizeIdx);
+  const [lineSpacingMode, setLineSpacingMode] = useState(initialReaderSettings.lineSpacingMode);
+  const [marginMode, setMarginMode] = useState(initialReaderSettings.marginMode);
+  const [fontFamilyMode, setFontFamilyMode] = useState(initialReaderSettings.fontFamilyMode);
+  const [focusMode, setFocusMode] = useState(initialReaderSettings.focusMode);
+  const [reducedMotionMode, setReducedMotionMode] = useState(initialReaderSettings.reducedMotionMode);
+  const [highlightIntensity, setHighlightIntensity] = useState(initialReaderSettings.highlightIntensity);
   const [showSettings, setShowSettings] = useState(false);
   const [showTOC, setShowTOC] = useState(false);
   const [toolbarVisible, setToolbarVisible] = useState(true);
@@ -945,8 +940,7 @@ export default function Reader() {
   const [ttsActive, setTtsActive] = useState(false);
   const [ttsPaused, setTtsPaused] = useState(false);
   const [ttsWordIndex, setTtsWordIndex] = useState(-1);
-  const [ttsSpeed, setTtsSpeed] = useState(0.85);
-  const [ttsVoices, setTtsVoices] = useState([]);
+  const [ttsSpeed, setTtsSpeed] = useState(initialReaderSettings.ttsSpeed);
   const [generatedAudioAvailable, setGeneratedAudioAvailable] = useState(false);
   const [generatedAudioActive, setGeneratedAudioActive] = useState(false);
   const [generatedAudioManifest, setGeneratedAudioManifest] = useState(null);
@@ -978,26 +972,23 @@ export default function Reader() {
   const generatedTimestampsRef = useRef([]);
   const generatedAudioWordOffsetRef = useRef(0);
   const generatedPageEndRef = useRef(null);
-  const utteranceRef = useRef(null);
-  const synthRef = useRef(window.speechSynthesis);
   const lastScrollY = useRef(0);
   const wordsRef = useRef([]);
   const wordMapRef = useRef(new Map());
   const activeWordRef = useRef(null);
   const highlightedWordIndexRef = useRef(-1);
   const generatedHighlightRafRef = useRef(0);
-  const ttsFallbackTimerRef = useRef(null);
-  const ttsSegmentTimerRef = useRef(null);
   const pulseIntervalRef = useRef(null);
   const scrollContainerRef = useRef(null);
   const completionReportedRef = useRef('');
   const draculaChapterOneCompleteRef = useRef('');
   const readerStartedRef = useRef(false);
   const upsellShownRef = useRef('');
-  const ttsWarningShownRef = useRef(false);
   const lastReaderActivityRef = useRef(Date.now());
   const readerMetricsRef = useRef({ loadStartedAt: 0, timings: {} });
   const audioIntentStartedAtRef = useRef(0);
+  const settingsButtonRef = useRef(null);
+  const settingsSheetRef = useRef(null);
 
   useSEO({
     title: notFound
@@ -1023,15 +1014,12 @@ export default function Reader() {
   }, []);
 
   const stopTTS = useCallback(() => {
-    synthRef.current?.cancel?.();
     const audio = generatedAudioRef.current;
     if (audio) {
       audio.pause();
       audio.currentTime = 0;
     }
     generatedPageEndRef.current = null;
-    clearTimeout(ttsFallbackTimerRef.current);
-    clearTimeout(ttsSegmentTimerRef.current);
     setTtsActive(false);
     setTtsPaused(false);
     setGeneratedAudioActive(false);
@@ -1042,20 +1030,82 @@ export default function Reader() {
     highlightedWordIndexRef.current = -1;
   }, []);
 
+  const currentReaderSettings = useMemo(() => ({
+    theme,
+    fontSizeIdx,
+    lineSpacingMode,
+    marginMode,
+    fontFamilyMode,
+    focusMode,
+    reducedMotionMode,
+    highlightIntensity,
+    ttsSpeed,
+  }), [fontFamilyMode, focusMode, fontSizeIdx, highlightIntensity, lineSpacingMode, marginMode, reducedMotionMode, theme, ttsSpeed]);
+
   useEffect(() => {
-    const synth = synthRef.current;
-    if (!synth?.getVoices) return undefined;
+    saveReaderSettings(currentReaderSettings);
+  }, [currentReaderSettings]);
 
-    const refreshVoices = () => setTtsVoices(synth.getVoices());
-    refreshVoices();
-    synth.addEventListener?.('voiceschanged', refreshVoices);
-    synth.onvoiceschanged = refreshVoices;
-
-    return () => {
-      synth.removeEventListener?.('voiceschanged', refreshVoices);
-      if (synth.onvoiceschanged === refreshVoices) synth.onvoiceschanged = null;
-    };
+  const resetReaderSettings = useCallback(() => {
+    setTheme(READER_SETTINGS_DEFAULTS.theme);
+    setFontSizeIdx(READER_SETTINGS_DEFAULTS.fontSizeIdx);
+    setLineSpacingMode(READER_SETTINGS_DEFAULTS.lineSpacingMode);
+    setMarginMode(READER_SETTINGS_DEFAULTS.marginMode);
+    setFontFamilyMode(READER_SETTINGS_DEFAULTS.fontFamilyMode);
+    setFocusMode(READER_SETTINGS_DEFAULTS.focusMode);
+    setReducedMotionMode(READER_SETTINGS_DEFAULTS.reducedMotionMode);
+    setHighlightIntensity(READER_SETTINGS_DEFAULTS.highlightIntensity);
+    setTtsSpeed(READER_SETTINGS_DEFAULTS.ttsSpeed);
   }, []);
+
+  useEffect(() => {
+    if (!showSettings) return undefined;
+    const sheet = settingsSheetRef.current;
+    const opener = settingsButtonRef.current;
+    const previouslyFocused = document.activeElement;
+    const focusableSelector = [
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      'a[href]',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+
+    const focusInitialControl = window.setTimeout(() => {
+      const initial = sheet?.querySelector('[data-reader-settings-initial-focus]') || sheet;
+      initial?.focus?.();
+    }, 0);
+
+    const handleSettingsKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setShowSettings(false);
+        return;
+      }
+      if (event.key !== 'Tab' || !sheet) return;
+      const focusable = Array.from(sheet.querySelectorAll(focusableSelector))
+        .filter((element) => element.offsetWidth || element.offsetHeight || element === document.activeElement);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    sheet?.addEventListener('keydown', handleSettingsKeyDown);
+    return () => {
+      window.clearTimeout(focusInitialControl);
+      sheet?.removeEventListener('keydown', handleSettingsKeyDown);
+      const target = opener || previouslyFocused;
+      if (target && typeof target.focus === 'function') target.focus();
+    };
+  }, [showSettings]);
 
   useEffect(() => () => {
     if (generatedHighlightRafRef.current) {
@@ -1555,19 +1605,18 @@ export default function Reader() {
     () => (hasGeneratedAudioEnabled(book, bookId) ? audioAssetSlugForBook(book, bookId) : ''),
     [book, bookId],
   );
-  const generatedAudioLang = isBengali ? 'ben' : 'en';
-  const legacyGeneratedAudioUrl = audioAssetUrl(book, generatedAudioLang, generatedAudioSlug, '.mp3');
-  const legacyGeneratedTimestampsUrl = audioAssetUrl(book, generatedAudioLang, generatedAudioSlug, '_timestamps.json');
-  const generatedAudioManifestUrl = generatedAudioSlug ? audioManifestUrlForBook(book, generatedAudioLang, generatedAudioSlug) : '';
+  const approvedGeneratedAudioUrl = audioAssetUrl(book, '.mp3');
+  const approvedGeneratedTimestampsUrl = audioAssetUrl(book, '_timestamps.json');
+  const generatedAudioManifestUrl = generatedAudioSlug ? audioManifestUrlForBook(book) : '';
   const selectedGeneratedAudioTrack = useMemo(
     () => selectAudioTrack({
       manifest: generatedAudioManifest,
       chapterId: activeChapterId || chapterId || chapter?.id,
       currentWordOffset: currentPageWordOffset,
-      legacyAudioUrl: legacyGeneratedAudioUrl,
-      legacyTimestampsUrl: legacyGeneratedTimestampsUrl,
+      approvedAudioUrl: approvedGeneratedAudioUrl,
+      approvedTimestampsUrl: approvedGeneratedTimestampsUrl,
     }),
-    [activeChapterId, chapter, chapterId, currentPageWordOffset, generatedAudioManifest, legacyGeneratedAudioUrl, legacyGeneratedTimestampsUrl],
+    [activeChapterId, chapter, chapterId, currentPageWordOffset, generatedAudioManifest, approvedGeneratedAudioUrl, approvedGeneratedTimestampsUrl],
   );
   const generatedAudioUrl = selectedGeneratedAudioTrack.audioUrl;
   const generatedTimestampsUrl = selectedGeneratedAudioTrack.timestampsUrl;
@@ -1583,7 +1632,7 @@ export default function Reader() {
       })
       .then((raw) => {
         if (!cancelled) {
-          setGeneratedAudioManifest(normalizeAudioManifest(raw, generatedAudioLang, generatedAudioSlug));
+          setGeneratedAudioManifest(normalizeAudioManifest(raw));
         }
       })
       .catch(() => {
@@ -1592,7 +1641,7 @@ export default function Reader() {
     return () => {
       cancelled = true;
     };
-  }, [generatedAudioLang, generatedAudioManifestUrl, generatedAudioSlug, lockedState]);
+  }, [generatedAudioManifestUrl, generatedAudioSlug, lockedState]);
 
   useEffect(() => {
     let cancelled = false;
@@ -1829,19 +1878,6 @@ export default function Reader() {
     }
   };
 
-  const highlightSpokenWord = useCallback((index) => {
-    if (highlightedWordIndexRef.current === index) return;
-    const current = wordsRef.current[index];
-    if (!current) return;
-
-    activeWordRef.current?.classList.remove('active', 'tts-word--fallback');
-    current.classList.add('active');
-    current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    activeWordRef.current = current;
-    highlightedWordIndexRef.current = index;
-    setTtsWordIndex(index);
-  }, []);
-
   const highlightGeneratedWord = useCallback((globalIndex) => {
     if (highlightedWordIndexRef.current === globalIndex) return;
     let current = wordMapRef.current.get(globalIndex);
@@ -1859,134 +1895,14 @@ export default function Reader() {
     setTtsWordIndex(globalIndex);
   }, [cacheReaderWords]);
 
-  const wordIndexFromCharIndex = useCallback((charIndex) => {
-    if (!Number.isFinite(charIndex) || charIndex < 0) return -1;
-    const exact = wordsRef.current.findIndex((word) => {
-      const start = Number(word.dataset.start);
-      const end = Number(word.dataset.end);
-      return Number.isFinite(start) && Number.isFinite(end) && start <= charIndex && charIndex < end;
-    });
-    if (exact >= 0) return exact;
-    return wordsRef.current.findIndex((word) => Number(word.dataset.start) >= charIndex);
-  }, []);
-
-  const fallbackHighlightSegment = useCallback((segment) => {
-    clearTimeout(ttsFallbackTimerRef.current);
-    const inRange = wordsRef.current.filter((word) => {
-      const start = Number(word.dataset.start);
-      const end = Number(word.dataset.end);
-      return Number.isFinite(start) && Number.isFinite(end) && start >= segment.start && end <= segment.end;
-    });
-    if (!inRange.length) return;
-    let index = 0;
-    const stepMs = Math.max(isBengali ? 520 : 380, (isBengali ? 690 : 520) / Math.max(0.65, ttsSpeed));
-    const tick = () => {
-      inRange.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
-      const current = inRange[index];
-      if (current) {
-        current.classList.add('active', 'tts-word--fallback');
-        current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTtsWordIndex(Number(current.dataset.word) || 0);
-      }
-      index += 1;
-      if (index < inRange.length) {
-        ttsFallbackTimerRef.current = window.setTimeout(tick, stepMs);
-      }
-    };
-    tick();
-  }, [isBengali, ttsSpeed]);
-
-  const buildUtterance = useCallback((segment, onDone) => {
-    if (typeof SpeechSynthesisUtterance === 'undefined') return null;
-    const spokenText = String(segment?.text || '').trim();
-    if (!spokenText) return null;
-
-    const utter = new SpeechSynthesisUtterance(spokenText);
-    utter.rate = isBengali ? Math.min(ttsSpeed, 0.88) : ttsSpeed;
-    utter.pitch = isBengali ? 0.96 : 1;
-    utter.volume = 1;
-    utter.lang = isBengali ? 'bn-BD' : 'en-US';
-
-    const voices = ttsVoices.length ? ttsVoices : (synthRef.current?.getVoices?.() || []);
-    const preferred = selectNarrationVoice(voices, isBengali);
-
-    if (preferred.voice) utter.voice = preferred.voice;
-    if (isBengali && !preferred.exactLanguage && !ttsWarningShownRef.current) {
-      ttsWarningShownRef.current = true;
-      toast.warning('Bengali narration depends on your browser voice pack. If pronunciation sounds off, add a Bengali voice in system settings.');
-    }
-
-    let boundarySeen = false;
-    ttsFallbackTimerRef.current = window.setTimeout(() => {
-      if (!boundarySeen) fallbackHighlightSegment(segment);
-    }, 850);
-
-    utter.onboundary = (event) => {
-      boundarySeen = true;
-      clearTimeout(ttsFallbackTimerRef.current);
-      if (event.name === 'word') {
-        const index = wordIndexFromCharIndex(segment.start + (event.charIndex || 0));
-        if (index >= 0) highlightSpokenWord(index);
-        return;
-      }
-
-      const index = wordIndexFromCharIndex(segment.start + event.charIndex);
-      if (index >= 0) {
-        highlightSpokenWord(index);
-      }
-    };
-
-    const resetTTS = () => {
-      clearTimeout(ttsFallbackTimerRef.current);
-      setTtsActive(false);
-      setTtsPaused(false);
-      setTtsWordIndex(-1);
-      wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
-    };
-
-    utter.onend = () => {
-      clearTimeout(ttsFallbackTimerRef.current);
-      onDone?.();
-    };
-    utter.onerror = (event) => {
-      resetTTS();
-      if (event.error && event.error !== 'interrupted' && event.error !== 'canceled') {
-        toast.error('Audio reading could not start in this browser.');
-      }
-    };
-
-    return utter;
-  }, [fallbackHighlightSegment, highlightSpokenWord, isBengali, ttsSpeed, ttsVoices, wordIndexFromCharIndex]);
-
-  const speakSegments = useCallback((segments, index = 0) => {
-    const synth = synthRef.current;
-    if (!segments[index]) {
-      setTtsActive(false);
-      setTtsPaused(false);
-      setTtsWordIndex(-1);
-      wordsRef.current.forEach((word) => word.classList.remove('active', 'tts-word--fallback'));
-      return;
-    }
-
-    const segment = segments[index];
-    const onDone = () => {
-      ttsSegmentTimerRef.current = window.setTimeout(() => speakSegments(segments, index + 1), segment.pauseMs || 220);
-    };
-    const utter = buildUtterance(segment, onDone);
-    if (!utter) return;
-    utteranceRef.current = utter;
-    synth.speak(utter);
-    setTtsActive(true);
-    setTtsPaused(false);
-  }, [buildUtterance]);
-
   const primeGeneratedAudio = useCallback(() => {
     const audio = generatedAudioRef.current;
     if (!audio || !generatedAudioAvailable || !generatedAudioUrl) return;
     if (!audioIntentStartedAtRef.current) audioIntentStartedAtRef.current = readerNowMs();
     audio.preload = 'auto';
+    audio.playbackRate = Math.max(0.7, Math.min(1.8, Number(ttsSpeed) || 1));
     if (audio.readyState === 0) audio.load();
-  }, [generatedAudioAvailable, generatedAudioUrl]);
+  }, [generatedAudioAvailable, generatedAudioUrl, ttsSpeed]);
 
   const startGeneratedAudio = useCallback(() => {
     const audio = generatedAudioRef.current;
@@ -1996,7 +1912,6 @@ export default function Reader() {
 
     audioIntentStartedAtRef.current = readerNowMs();
     primeGeneratedAudio();
-    synthRef.current?.cancel?.();
     const wrapped = wrapWordsInSpans(pageHtml, currentPageWordOffset);
     const firstWord = currentPageWordOffset;
     const lastWord = currentPageWordOffset + Math.max(0, wrapped.totalWords - 1);
@@ -2079,11 +1994,8 @@ export default function Reader() {
   }, [book, bookId, isContentPage, startGeneratedAudio]);
 
   const pauseTTS = () => {
-    clearTimeout(ttsFallbackTimerRef.current);
     if (generatedAudioActive) {
       generatedAudioRef.current?.pause?.();
-    } else {
-      synthRef.current?.pause?.();
     }
     setTtsPaused(true);
   };
@@ -2091,8 +2003,8 @@ export default function Reader() {
   const resumeTTS = () => {
     if (generatedAudioActive) {
       generatedAudioRef.current?.play?.().catch(() => toast.error('Generated audiobook could not resume.'));
-    } else {
-      synthRef.current?.resume?.();
+      setTtsPaused(false);
+      return;
     }
     setTtsPaused(false);
   };
@@ -2191,8 +2103,8 @@ export default function Reader() {
           manifest: generatedAudioManifest,
           chapterId: nextChapter.id,
           currentWordOffset: 0,
-          legacyAudioUrl: legacyGeneratedAudioUrl,
-          legacyTimestampsUrl: legacyGeneratedTimestampsUrl,
+          approvedAudioUrl: approvedGeneratedAudioUrl,
+          approvedTimestampsUrl: approvedGeneratedTimestampsUrl,
         });
         // Keep MP3 loading under the audio element so metadata/range requests do not become full-file prefetches.
         prefetchAsset(nextTrack.timestampsUrl);
@@ -2207,8 +2119,8 @@ export default function Reader() {
     generatedAudioManifest,
     generatedAudioManifestUrl,
     generatedAudioSlug,
-    legacyGeneratedAudioUrl,
-    legacyGeneratedTimestampsUrl,
+    approvedGeneratedAudioUrl,
+    approvedGeneratedTimestampsUrl,
     loading,
     lockedState,
     narrationDisabledForBook,
@@ -2409,8 +2321,9 @@ export default function Reader() {
   const marginSetting = READER_MARGIN_OPTIONS.find((item) => item.value === marginMode) || READER_MARGIN_OPTIONS[1];
   const lowBalance = walletSeconds > 0 && walletSeconds <= LOW_BALANCE_THRESHOLD;
   const voiceButtonLabel = !ttsActive
-    ? (isBengali ? 'Listen in Bengali' : 'Listen')
+    ? (isBengali ? 'Start Bengali narration' : 'Start narration')
     : ttsPaused ? 'Resume narration' : 'Pause narration';
+  const fontModeLabels = isBengali ? FONT_MODE_LABELS.bengali : FONT_MODE_LABELS.english;
   const showBookHeader = isContentPage && currentIdx <= 0 && currentPageData?.contentIndex === 0;
   const showStoryHeader = isContentPage && (!hasPages || currentPageData?.contentIndex === 0);
   const currentPageLabel = currentPageData?.type === 'front-cover'
@@ -2508,7 +2421,15 @@ export default function Reader() {
           <button type="button" onClick={() => setShowTOC(true)} className="reader-icon-button" aria-label="Open contents">
             <List size={19} />
           </button>
-          <button type="button" onClick={() => setShowSettings((value) => !value)} className="reader-icon-button" aria-label="Open reading settings">
+          <button
+            ref={settingsButtonRef}
+            type="button"
+            onClick={() => setShowSettings((value) => !value)}
+            className="reader-icon-button"
+            aria-label="Open reading settings"
+            aria-expanded={showSettings}
+            aria-controls="reader-settings-panel"
+          >
             <Settings size={19} />
           </button>
         </div>
@@ -2714,7 +2635,7 @@ export default function Reader() {
                   ? 'Audio starts on reading pages'
                   : generatedAudioAvailable
                   ? (ttsActive && !ttsPaused ? 'Section-following narration' : 'Section audio ready')
-                  : (ttsActive && !ttsPaused ? 'Narrating' : 'Resume anytime')}
+                  : (ttsActive && !ttsPaused ? 'Narrating' : 'Approved audio pending for this page')}
               </span>
               {generatedAudioAvailable && (
                 <span className="reader-audio-control__sync-label">Paragraph/Stanza Sync</span>
@@ -2829,123 +2750,166 @@ export default function Reader() {
       )}
 
       {showSettings && (
-        <div className="reader-settings-sheet" role="dialog" aria-modal="false" aria-label="Reading settings">
+        <div
+          ref={settingsSheetRef}
+          id="reader-settings-panel"
+          className="reader-settings-sheet"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="reader-settings-title"
+          aria-describedby="reader-settings-summary"
+          tabIndex="-1"
+          data-testid="reader-settings-panel"
+        >
           <div className="reader-settings-sheet__handle" aria-hidden="true" />
           <div className="reader-settings-sheet__header">
-            <span>Reading Settings</span>
-            <button type="button" onClick={() => setShowSettings(false)} className="reader-icon-button" aria-label="Close reading settings">
+            <div>
+              <span id="reader-settings-title">Reading Settings</span>
+              <p id="reader-settings-summary">Comfort controls are saved on this device and can be reset at any time.</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowSettings(false)}
+              className="reader-icon-button"
+              aria-label="Close reading settings"
+              data-reader-settings-initial-focus
+            >
               <X size={16} />
             </button>
           </div>
 
-          <div className="reader-setting-group">
-            <span className="reader-setting-label">Font size</span>
-            <div className="reader-segmented-control">
-              {FONT_SIZES.map((font, index) => (
-                <button key={font.label} type="button" onClick={() => setFontSizeIdx(index)} aria-pressed={fontSizeIdx === index}>
-                  {font.label}
-                </button>
-              ))}
-            </div>
-          </div>
+          <p className="sr-only" aria-live="polite">
+            Reading settings saved. Theme {colors.label}. Font size {FONT_SIZES[fontSizeIdx].label}. Line spacing {lineSpacing.label}. Reading width {marginSetting.label}. {fontModeLabels.group} {fontFamilyMode === 'serif' ? fontModeLabels.serif : fontModeLabels.sans}. Focus {focusMode ? 'on' : 'off'}. Reduced motion {reducedMotionMode ? 'on' : 'off'}. Highlight intensity {highlightIntensity}.
+          </p>
 
-          <div className="reader-setting-group">
-            <span className="reader-setting-label">Line spacing</span>
-            <div className="reader-segmented-control">
-              {LINE_SPACING_OPTIONS.map((item) => (
-                <button key={item.value} type="button" onClick={() => setLineSpacingMode(item.value)} aria-pressed={lineSpacingMode === item.value}>
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="reader-setting-group">
-            <span className="reader-setting-label">Theme</span>
-            <div className="reader-segmented-control reader-segmented-control--theme">
-              {Object.entries(THEMES).map(([key, item]) => (
-                <button key={key} type="button" onClick={() => setTheme(key)} aria-pressed={theme === key}>
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="reader-setting-group">
-            <span className="reader-setting-label">Margin width</span>
-            <div className="reader-segmented-control">
-              {READER_MARGIN_OPTIONS.map((item) => (
-                <button key={item.value} type="button" onClick={() => setMarginMode(item.value)} aria-pressed={marginMode === item.value}>
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="reader-setting-group">
-            <span className="reader-setting-label">Font</span>
-            <div className="reader-segmented-control">
-              <button type="button" onClick={() => setFontFamilyMode('serif')} aria-pressed={fontFamilyMode === 'serif'}>Serif</button>
-              <button type="button" onClick={() => setFontFamilyMode('sans')} aria-pressed={fontFamilyMode === 'sans'}>Sans</button>
-            </div>
-          </div>
-
-          <div className="reader-setting-group">
-            <span className="reader-setting-label">Reading focus</span>
-            <div className="reader-segmented-control">
-              <button type="button" onClick={() => setFocusMode(false)} aria-pressed={!focusMode}>Normal</button>
-              <button type="button" onClick={() => setFocusMode(true)} aria-pressed={focusMode}>Focus</button>
-            </div>
-          </div>
-
-          <div className="reader-setting-group">
-            <span className="reader-setting-label">Motion</span>
-            <div className="reader-segmented-control">
-              <button type="button" onClick={() => setReducedMotionMode(false)} aria-pressed={!reducedMotionMode}>Calm</button>
-              <button type="button" onClick={() => setReducedMotionMode(true)} aria-pressed={reducedMotionMode}>Reduced</button>
-            </div>
-          </div>
-
-          <div className="reader-setting-group">
-            <span className="reader-setting-label">Highlight intensity</span>
-            <div className="reader-segmented-control">
-              {HIGHLIGHT_INTENSITY_OPTIONS.map((item) => (
-                <button key={item.value} type="button" onClick={() => setHighlightIntensity(item.value)} aria-pressed={highlightIntensity === item.value}>
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {!narrationDisabledForBook && (
+          <section className="reader-setting-section" aria-labelledby="reader-tone-section-label">
+            <h3 id="reader-tone-section-label">Reading tone</h3>
             <div className="reader-setting-group">
-              <span className="reader-setting-label">Narration speed: {ttsSpeed}×</span>
-              <input
-                className="reader-range"
-                type="range"
-                min="0.7"
-                max="1.8"
-                step="0.1"
-                value={ttsSpeed}
-                onChange={(event) => {
-                  setTtsSpeed(parseFloat(event.target.value));
-                  if (ttsActive) {
-                    stopTTS();
-                    setTimeout(startTTS, 150);
-                  }
-                }}
-              />
+              <span className="reader-setting-label" id="reader-theme-label">Theme</span>
+              <div className="reader-segmented-control reader-segmented-control--theme" role="group" aria-labelledby="reader-theme-label">
+                {Object.entries(THEMES).map(([key, item]) => (
+                  <button key={key} type="button" onClick={() => setTheme(key)} aria-pressed={theme === key} aria-label={`Use ${item.label} theme`}>
+                    {item.label}
+                  </button>
+                ))}
+              </div>
             </div>
-          )}
+          </section>
+
+          <section className="reader-setting-section" aria-labelledby="reader-type-section-label">
+            <h3 id="reader-type-section-label">Typography</h3>
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-font-size-label">Font size</span>
+              <div className="reader-segmented-control" role="group" aria-labelledby="reader-font-size-label">
+                {FONT_SIZES.map((font, index) => (
+                  <button key={font.label} type="button" onClick={() => setFontSizeIdx(index)} aria-pressed={fontSizeIdx === index} aria-label={`Set font size to ${font.label}`}>
+                    {font.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-line-spacing-label">Line comfort</span>
+              <div className="reader-segmented-control" role="group" aria-labelledby="reader-line-spacing-label">
+                {LINE_SPACING_OPTIONS.map((item) => (
+                  <button key={item.value} type="button" onClick={() => setLineSpacingMode(item.value)} aria-pressed={lineSpacingMode === item.value} aria-label={`Set line comfort to ${item.label}`}>
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-margin-label">Page width</span>
+              <div className="reader-segmented-control" role="group" aria-labelledby="reader-margin-label">
+                {READER_MARGIN_OPTIONS.map((item) => (
+                  <button key={item.value} type="button" onClick={() => setMarginMode(item.value)} aria-pressed={marginMode === item.value} aria-label={`Set page width to ${item.label}`}>
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="reader-setting-section" aria-labelledby="reader-bengali-section-label">
+            <h3 id="reader-bengali-section-label">Bengali comfort</h3>
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-font-mode-label">{fontModeLabels.group}</span>
+              <div className="reader-segmented-control reader-segmented-control--long" role="group" aria-labelledby="reader-font-mode-label">
+                <button type="button" onClick={() => setFontFamilyMode('serif')} aria-pressed={fontFamilyMode === 'serif'} aria-label={`Use ${fontModeLabels.serif}`}>{fontModeLabels.serif}</button>
+                <button type="button" onClick={() => setFontFamilyMode('sans')} aria-pressed={fontFamilyMode === 'sans'} aria-label={`Use ${fontModeLabels.sans}`}>{fontModeLabels.sans}</button>
+              </div>
+            </div>
+          </section>
+
+          <section className="reader-setting-section" aria-labelledby="reader-focus-section-label">
+            <h3 id="reader-focus-section-label">Focus and motion</h3>
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-focus-label">Reading focus</span>
+              <div className="reader-segmented-control" role="group" aria-labelledby="reader-focus-label">
+                <button type="button" onClick={() => setFocusMode(false)} aria-pressed={!focusMode} aria-label="Use normal reading focus">Normal</button>
+                <button type="button" onClick={() => setFocusMode(true)} aria-pressed={focusMode} aria-label="Use distraction-reduced focus mode">Focus</button>
+              </div>
+            </div>
+
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-motion-label">Motion</span>
+              <div className="reader-segmented-control" role="group" aria-labelledby="reader-motion-label">
+                <button type="button" onClick={() => setReducedMotionMode(false)} aria-pressed={!reducedMotionMode} aria-label="Use calm reader motion">Calm</button>
+                <button type="button" onClick={() => setReducedMotionMode(true)} aria-pressed={reducedMotionMode} aria-label="Reduce reader motion">Reduced</button>
+              </div>
+            </div>
+          </section>
+
+          <section className="reader-setting-section" aria-labelledby="reader-highlight-section-label">
+            <h3 id="reader-highlight-section-label">Highlights</h3>
+            <div className="reader-setting-group">
+              <span className="reader-setting-label" id="reader-highlight-label">Highlight intensity</span>
+              <div className="reader-segmented-control" role="group" aria-labelledby="reader-highlight-label">
+                {HIGHLIGHT_INTENSITY_OPTIONS.map((item) => (
+                  <button key={item.value} type="button" onClick={() => setHighlightIntensity(item.value)} aria-pressed={highlightIntensity === item.value} aria-label={`Set highlight intensity to ${item.label}`}>
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {!narrationDisabledForBook && (
+              <div className="reader-setting-group">
+                <label className="reader-setting-label" htmlFor="reader-narration-speed">Narration speed: {ttsSpeed}x</label>
+                <input
+                  id="reader-narration-speed"
+                  className="reader-range"
+                  type="range"
+                  min="0.7"
+                  max="1.8"
+                  step="0.1"
+                  value={ttsSpeed}
+                  onChange={(event) => {
+                    setTtsSpeed(parseFloat(event.target.value));
+                    if (ttsActive) {
+                      stopTTS();
+                      setTimeout(startTTS, 150);
+                    }
+                  }}
+                />
+              </div>
+            )}
+          </section>
+
+          <button type="button" className="reader-settings-reset" onClick={resetReaderSettings} aria-label="Reset reading settings to comfort defaults">
+            Reset comfort defaults
+          </button>
         </div>
       )}
 
       {showTOC && (
         <div className="fixed inset-0 z-[80] flex">
           <div className="absolute inset-0 bg-black/40" style={{ backdropFilter: 'blur(4px)' }} onClick={() => setShowTOC(false)} />
-          <div className="relative right-0 ml-auto w-72 h-full overflow-y-auto py-6 px-5 animate-slide-up" style={{ background: colors.surface }}>
-            <div className="flex justify-between items-center mb-6">
-              <span style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_DISPLAY, fontSize: 20, color: colors.text }}>
+          <div className="reader-toc-drawer animate-slide-up" role="dialog" aria-modal="true" aria-labelledby="reader-toc-title" style={{ background: colors.surface }}>
+            <div className="reader-toc-drawer__header">
+              <span id="reader-toc-title" style={{ fontFamily: isBengali ? BENGALI_SERIF : READER_DISPLAY, fontSize: 20, color: colors.text }}>
                 Contents
               </span>
               <button type="button" onClick={() => setShowTOC(false)} aria-label="Close contents">

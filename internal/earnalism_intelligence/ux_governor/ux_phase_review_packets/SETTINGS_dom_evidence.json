@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-07-08T10:14:19Z",
+  "phase": "SETTINGS",
+  "routes_checked": 10,
+  "viewport_checks": 90,
+  "settings_panel_visible": {
+    "passed": true,
+    "count": 90
+  },
+  "settings_reset_visible": {
+    "passed": true,
+    "count": 90
+  },
+  "theme_controls": {
+    "passed": true,
+    "button_count_per_check": 3,
+    "labels": ["Light", "Sepia", "Night"]
+  },
+  "selected_state": {
+    "passed": true,
+    "pressed_controls_per_check": 8
+  },
+  "mobile_overflow": {
+    "passed": true,
+    "horizontal_overflow_count": 0,
+    "mobile_viewports": ["390x844", "430x932"]
+  },
+  "reader_content": {
+    "passed": true,
+    "settings_open_without_content_loss": true
+  }
+}

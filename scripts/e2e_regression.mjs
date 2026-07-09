@@ -210,8 +210,12 @@ async function main() {
     const pipelineCards = [...document.querySelectorAll('[data-testid^="pipeline-card-"]')]
       .map((card) => card.getAttribute("data-testid")?.replace(/^pipeline-card-/, ""))
       .filter(Boolean);
-    const notifyLinks = [...document.querySelectorAll('[data-testid^="pipeline-notify-"]')]
-      .map((link) => link.getAttribute("href"));
+    const requestUpdateLinks = [...document.querySelectorAll('[data-testid="bengali-gothic-pipeline-shelf"] a[href^="/contact?interest="]')]
+      .map((link) => ({
+        href: link.getAttribute("href"),
+        label: link.textContent?.replace(/\s+/g, " ").trim() || "",
+        ariaLabel: link.getAttribute("aria-label") || "",
+      }));
     return {
       viewportWidth: window.innerWidth,
       hasHeroCard: Boolean(document.querySelector('[data-testid="hero-dracula-card"]')),
@@ -236,9 +240,9 @@ async function main() {
       approvedAudioCardLinks: [...document.querySelectorAll('[data-testid="curated-action-cards"] a')]
         .map((link) => link.getAttribute("href") || "")
         .filter((href) => /audio|listen|audiobook/i.test(href)),
-      pipelineNotifyButtonCount: document.querySelectorAll('[data-testid="bengali-gothic-pipeline-shelf"] button[aria-label^="Notify me"]').length,
+      pipelineRequestUpdateLinkCount: requestUpdateLinks.length,
       pipelineCards,
-      notifyLinks,
+      requestUpdateLinks,
       unsafePipelineLinks: [...document.querySelectorAll('[data-testid="bengali-gothic-pipeline-shelf"] a')]
         .map((link) => link.getAttribute("href") || "")
         .filter((href) => href.startsWith("/reader/") || href.startsWith("/pricing") || /listen|audio/i.test(href)),
@@ -275,12 +279,15 @@ async function main() {
   assert(home.bengaliCardHref === "/library?language=bn&availability=reader-ready", `Bengali card CTA mismatch: ${home.bengaliCardHref}`);
   assert(home.draculaCardHref === "/reader/dracula", `Dracula should be a refined English Classics card CTA, got ${home.draculaCardHref}`);
   assert(home.approvedAudioCardLinks.length === 0, `approved audio card leaked an unevidenced audio link: ${JSON.stringify(home.approvedAudioCardLinks)}`);
-  assert(home.pipelineNotifyButtonCount > 0, "pipeline shelf should keep unreleased titles notify-only");
+  assert(
+    home.pipelineRequestUpdateLinkCount > 0,
+    "pipeline shelf should keep unreleased titles on truthful Request Update contact links",
+  );
   assert(home.unsafePipelineLinks.length === 0, `pipeline cards leaked reader/payment/audio links: ${JSON.stringify(home.unsafePipelineLinks)}`);
   assert(home.staleCarouselCount === 0, "retired controlled launch carousel should not render in the luxury homepage");
   assert(home.staleAudioUnavailableCount === 0, "stale audiobook unavailable note should not render");
-  assert(home.legacyLiveCoverCount === 0, "retired live-cover preview cards should not render in Dracula-first launch");
-  assert(home.legacyCategoryCardCount === 0, "retired broad category cards should not render in Dracula-first launch");
+  assert(home.legacyLiveCoverCount === 0, "retired live-cover preview cards should not render in the approved landing");
+  assert(home.legacyCategoryCardCount === 0, "retired broad category cards should not render in the approved landing");
   assert(home.legacyBroadReaderLinks.length === 0, `non-Dracula reader links leaked: ${JSON.stringify(home.legacyBroadReaderLinks)}`);
   assert(home.heroCurrentPayCount === 0, "hero Preview & Pay CTA should not render");
   assert(home.railPrimaryPreviewCount === 0, "rail-level Read Preview CTA should not render");

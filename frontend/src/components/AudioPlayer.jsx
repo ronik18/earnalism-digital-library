@@ -1,261 +1,224 @@
-import { useEffect, useRef, useState, useCallback } from "react";
-import { Play, Pause, Volume2, VolumeX } from "lucide-react";
-import { useSettings } from "../context/SettingsContext";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Pause, Play, ShieldCheck, Volume2, VolumeX } from "lucide-react";
+import {
+  audiobookAssetsForBook,
+  audiobookReleaseState,
+} from "../lib/audioReleaseSafety";
 import "./AudioPlayer.css";
 
-/**
- * AudioPlayer with real-time text highlight sync.
- *
- * Features:
- * - Loads audio from Cloudinary CDN
- * - Fetches word-level timestamps
- * - Highlights active word during playback
- * - Persists playback position
- * - Keyboard controls (Space = play/pause)
- */
+function firstText(...values) {
+  return values.map((value) => String(value || "").trim()).find(Boolean) || "";
+}
+
+function formatClock(seconds) {
+  if (!Number.isFinite(seconds) || seconds <= 0) return "0:00";
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = Math.floor(seconds % 60);
+  return `${minutes}:${String(remainingSeconds).padStart(2, "0")}`;
+}
+
+function hasSectionTimingEvidence(book = {}) {
+  const assets = audiobookAssetsForBook(book);
+  return Boolean(
+    assets.timestamps ||
+      assets.vtt ||
+      assets.highlight_vtt ||
+      assets.chapters ||
+      assets.meta ||
+      assets.manifest ||
+      book?._readerManifest?.audio?.assets?.timestamps ||
+      book?._readerManifest?.audio?.assets?.vtt
+  );
+}
+
+export function audioPlayerPresentationForBook(book = {}) {
+  const releaseState = audiobookReleaseState(book);
+
+  if (!releaseState.canShowControls || !releaseState.audioUrl) {
+    return {
+      canRender: false,
+      releaseState,
+      reason: releaseState.reason || "Approved audiobook evidence is missing.",
+    };
+  }
+
+  const title = firstText(
+    book.public_title,
+    book.display_title,
+    book.title,
+    book.name,
+    "Approved audiobook"
+  );
+  const author = firstText(book.author, book.author_name, book.creator);
+  const sectionTiming = hasSectionTimingEvidence(book);
+
+  return {
+    canRender: true,
+    audioUrl: releaseState.audioUrl,
+    title,
+    author,
+    releaseState,
+    sectionTiming,
+    syncLabel: "Section-following narration",
+    syncDescription: sectionTiming
+      ? "Measured paragraph or stanza timing is attached to this approved audiobook."
+      : "Playback is available from approved release evidence; section timing appears when approved sidecars are present.",
+  };
+}
+
 export default function AudioPlayer({
-  bookSlug,
-  title,
-  lang = "en",
-  onSyncReady = null,
+  book,
   className = "",
+  onPlaybackStateChange = null,
 }) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [timestamps, setTimestamps] = useState([]);
-  const [currentWordIndex, setCurrentWordIndex] = useState(-1);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [mediaReady, setMediaReady] = useState(false);
+  const presentation = audioPlayerPresentationForBook(book);
 
-  // Load timestamps
   useEffect(() => {
-    const loadTimestamps = async () => {
-      try {
-        setIsLoading(true);
-        // Fetch from Cloudinary CDN
-        const response = await fetch(
-          `/audio/${lang}/${bookSlug}_timestamps.json`,
-          { cache: "force-cache" }
-        );
+    onPlaybackStateChange?.(isPlaying ? "playing" : "paused");
+  }, [isPlaying, onPlaybackStateChange]);
 
-        if (!response.ok) {
-          throw new Error(`Timestamps not found for ${bookSlug}`);
-        }
-
-        const data = await response.json();
-        setTimestamps(data.words || []);
-        onSyncReady?.(true);
-      } catch (err) {
-        console.error("Failed to load timestamps:", err);
-        setError(err.message);
-        onSyncReady?.(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    if (bookSlug && lang) {
-      loadTimestamps();
-    }
-  }, [bookSlug, lang, onSyncReady]);
-
-  // Update current word on playback
-  useEffect(() => {
-    if (!timestamps.length) return;
-
-    const currentTimeMs = currentTime * 1000;
-    let wordIndex = -1;
-
-    for (let i = 0; i < timestamps.length; i++) {
-      if (
-        currentTimeMs >= timestamps[i].start_ms &&
-        currentTimeMs < timestamps[i].end_ms
-      ) {
-        wordIndex = i;
-        break;
-      }
-    }
-
-    if (wordIndex !== currentWordIndex) {
-      setCurrentWordIndex(wordIndex);
-
-      // Highlight active word if mounted in reader
-      if (wordIndex >= 0) {
-        const wordSpan = document.querySelector(
-          `[data-word-index="${wordIndex}"]`
-        );
-        if (wordSpan) {
-          wordSpan.classList.add("active");
-          wordSpan.scrollIntoView({ behavior: "smooth", block: "nearest" });
-
-          // Clear previous highlight
-          const prevSpan = document.querySelector(
-            `[data-word-index="${wordIndex - 1}"]`
-          );
-          if (prevSpan) prevSpan.classList.remove("active");
-        }
-      }
-    }
-  }, [currentTime, timestamps, currentWordIndex]);
-
-  // Audio event listeners
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio) return undefined;
 
-    const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
+    const handleLoadedMetadata = () => {
+      setDuration(Number.isFinite(audio.duration) ? audio.duration : 0);
+      setMediaReady(true);
+    };
+    const handleTimeUpdate = () => setCurrentTime(audio.currentTime || 0);
     const handleEnded = () => setIsPlaying(false);
-    const handleDurationChange = () => setDuration(audio.duration);
     const handlePlay = () => setIsPlaying(true);
     const handlePause = () => setIsPlaying(false);
 
+    audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+    audio.addEventListener("durationchange", handleLoadedMetadata);
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("ended", handleEnded);
-    audio.addEventListener("durationchange", handleDurationChange);
     audio.addEventListener("play", handlePlay);
     audio.addEventListener("pause", handlePause);
 
     return () => {
+      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      audio.removeEventListener("durationchange", handleLoadedMetadata);
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("ended", handleEnded);
-      audio.removeEventListener("durationchange", handleDurationChange);
       audio.removeEventListener("play", handlePlay);
       audio.removeEventListener("pause", handlePause);
     };
-  }, []);
-
-  // Keyboard controls
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      if (e.key === " " && audioRef.current) {
-        e.preventDefault();
-        audioRef.current[isPlaying ? "pause" : "play"]();
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyPress);
-    return () => document.removeEventListener("keydown", handleKeyPress);
-  }, [isPlaying]);
+  }, [presentation.audioUrl]);
 
   const togglePlayPause = useCallback(() => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) {
+      audio.pause();
+      return;
     }
+    audio.play().catch(() => setIsPlaying(false));
   }, [isPlaying]);
 
   const toggleMute = useCallback(() => {
-    if (audioRef.current) {
-      audioRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  }, [isMuted]);
+    const audio = audioRef.current;
+    if (!audio) return;
+    const nextMuted = !audio.muted;
+    audio.muted = nextMuted;
+    setIsMuted(nextMuted);
+  }, []);
 
-  const formatTime = (seconds) => {
-    if (!seconds || isNaN(seconds)) return "0:00";
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, "0")}`;
-  };
+  const handleSeek = useCallback((event) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const nextTime = Number(event.target.value) || 0;
+    audio.currentTime = nextTime;
+    setCurrentTime(nextTime);
+  }, []);
 
-  if (error) {
-    return (
-      <div className={`audio-player audio-player--error ${className}`}>
-        <div className="audio-player__error-message">
-          Audio sync unavailable: {error}
-        </div>
-      </div>
-    );
-  }
+  if (!presentation.canRender) return null;
+
+  const progressPercent = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
+  const labelTitle = presentation.title || "approved audiobook";
 
   return (
-    <div className={`audio-player ${className}`} role="region" aria-label={`Audio player for ${title}`}>
+    <section
+      className={`audio-player ${className}`.trim()}
+      aria-label={`Approved audiobook player for ${labelTitle}`}
+      data-testid="approved-audiobook-player"
+    >
       <audio
         ref={audioRef}
-        src={`/audio/${lang}/${bookSlug}.mp3`}
+        src={presentation.audioUrl}
         preload="metadata"
+        data-testid="approved-audiobook-audio"
       />
 
+      <div className="audio-player__header">
+        <div className="audio-player__copy">
+          <span className="audio-player__eyebrow">
+            <ShieldCheck size={14} aria-hidden="true" />
+            Approved audiobook
+          </span>
+          <h2 className="audio-player__title">{presentation.title}</h2>
+          {presentation.author && (
+            <p className="audio-player__summary">Narration for {presentation.author}</p>
+          )}
+        </div>
+        <span className="audio-player__sync-badge" data-testid="approved-audiobook-sync">
+          {presentation.syncLabel}
+        </span>
+      </div>
+
+      <p className="audio-player__status">{presentation.syncDescription}</p>
+
       <div className="audio-player__controls">
-        {/* Play/Pause Button */}
         <button
+          type="button"
           onClick={togglePlayPause}
           className="audio-player__btn audio-player__btn--play"
-          aria-label={isPlaying ? "Pause" : "Play"}
-          disabled={isLoading || error}
+          aria-label={isPlaying ? "Pause approved audiobook" : "Play approved audiobook"}
         >
-          {isPlaying ? (
-            <Pause size={20} strokeWidth={1.5} />
-          ) : (
-            <Play size={20} strokeWidth={1.5} />
-          )}
+          {isPlaying ? <Pause size={20} strokeWidth={1.5} /> : <Play size={20} strokeWidth={1.5} />}
         </button>
 
-        {/* Time Display */}
-        <div className="audio-player__time">
-          <span className="audio-player__time-current">
-            {formatTime(currentTime)}
-          </span>
-          <span className="audio-player__time-separator">/</span>
-          <span className="audio-player__time-duration">
-            {formatTime(duration)}
-          </span>
+        <div className="audio-player__time" aria-live="off">
+          <span>{formatClock(currentTime)}</span>
+          <span aria-hidden="true">/</span>
+          <span>{formatClock(duration)}</span>
         </div>
 
-        {/* Progress Bar */}
         <div className="audio-player__progress-container">
           <input
             type="range"
             min="0"
             max={duration || 0}
-            value={currentTime}
-            onChange={(e) => {
-              const audio = audioRef.current;
-              if (audio) audio.currentTime = parseFloat(e.target.value);
-            }}
+            step="0.1"
+            value={Math.min(currentTime, duration || currentTime)}
+            onChange={handleSeek}
             className="audio-player__progress"
-            aria-label="Seek"
-            disabled={!duration}
+            aria-label="Seek within approved audiobook"
+            disabled={!mediaReady || !duration}
           />
           <div
             className="audio-player__progress-fill"
-            style={{ width: `${duration ? (currentTime / duration) * 100 : 0}%` }}
+            style={{ width: `${progressPercent}%` }}
+            aria-hidden="true"
           />
         </div>
 
-        {/* Mute Button */}
         <button
+          type="button"
           onClick={toggleMute}
           className="audio-player__btn audio-player__btn--mute"
-          aria-label={isMuted ? "Unmute" : "Mute"}
+          aria-label={isMuted ? "Unmute approved audiobook" : "Mute approved audiobook"}
         >
-          {isMuted ? (
-            <VolumeX size={20} strokeWidth={1.5} />
-          ) : (
-            <Volume2 size={20} strokeWidth={1.5} />
-          )}
+          {isMuted ? <VolumeX size={20} strokeWidth={1.5} /> : <Volume2 size={20} strokeWidth={1.5} />}
         </button>
-
-        {/* Loading Indicator */}
-        {isLoading && (
-          <div className="audio-player__loading" aria-busy="true">
-            Loading audio...
-          </div>
-        )}
       </div>
-
-      {/* Sync Status */}
-      <div className="audio-player__sync-info">
-        <div className="audio-player__sync-badge">
-          {timestamps.length > 0 ? "✓ Text sync enabled" : "Audio only"}
-        </div>
-      </div>
-    </div>
+    </section>
   );
 }

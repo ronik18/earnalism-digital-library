@@ -1,0 +1,118 @@
+{
+  "generated_at": "2026-07-08T06:31:11Z",
+  "phase": "READER",
+  "release_truth_status": "PASS_LOCAL_PHASE_SMOKE_FAIL_CLOSED",
+  "source_guardrails": {
+    "speech_synthesis_fallback_public": false,
+    "speech_synthesis_terms_in_reader_source": false,
+    "static_audio_derivation_in_reader_source": false,
+    "word_level_sync_copy_in_reader_source": false,
+    "audio_controls_use_shared_approval_gate": true,
+    "approved_audio_copy_uses_section_following_narration": true
+  },
+  "local_fixture_policy": "Reader smoke fixtures intentionally mark every audited route as reader-ready and audio-hidden. This verifies the Reader does not expose audio UI from slug, language, title, static path, or local fallback metadata.",
+  "per_route": [
+    {
+      "slug": "book-2b9853ec52",
+      "expected_public_audio_state": "approved_only_when_manifest_evidence_present",
+      "reader_smoke_audio_button_visible": false,
+      "reader_smoke_audio_element_visible": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "status": "PASS_FAIL_CLOSED_IN_LOCAL_READER_FIXTURE"
+    },
+    {
+      "slug": "a-ghost-story",
+      "expected_public_audio_state": "paid_listen_hold_until_production_route_manifest_player_proof",
+      "reader_smoke_audio_button_visible": false,
+      "reader_smoke_audio_element_visible": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "status": "PASS_NO_READER_AUDIO_UI"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "expected_public_audio_state": "no_listen_asr_source_repair_pending",
+      "reader_smoke_audio_button_visible": false,
+      "reader_smoke_audio_element_visible": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "status": "PASS_NO_READER_AUDIO_UI"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "expected_public_audio_state": "no_listen_asr_source_repair_pending",
+      "reader_smoke_audio_button_visible": false,
+      "reader_smoke_audio_element_visible": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "status": "PASS_NO_READER_AUDIO_UI"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "expected_public_audio_state": "no_listen_representative_timeout_repair_pending",
+      "reader_smoke_audio_button_visible": false,
+      "reader_smoke_audio_element_visible": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "status": "PASS_NO_READER_AUDIO_UI"
+    },
+    {
+      "slug": "pather-panchali",
+      "expected_public_audio_state": "audiobook_no_go_until_source_rights_cover_scope_pass",
+      "reader_smoke_audio_button_visible": false,
+      "reader_smoke_audio_element_visible": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "status": "PASS_NO_READER_AUDIO_UI"
+    },
+    {
+      "slug": "bn-066",
+      "expected_public_audio_state": "stage_1_only_no_paid_audio_while_paid_tts_lock_active",
+      "reader_smoke_audio_button_visible": "not_in_reader_route_matrix",
+      "reader_smoke_audio_element_visible": "not_in_reader_route_matrix",
+      "static_audio_src_visible": "not_in_reader_route_matrix",
+      "word_level_sync_copy_visible": "not_in_reader_route_matrix",
+      "status": "NO_READER_AUDIO_APPROVAL_GRANTED"
+    },
+    {
+      "slug": "dracula",
+      "expected_public_audio_state": "reader_first_flagship_no_audio_claim",
+      "reader_smoke_audio_button_visible": false,
+      "reader_smoke_audio_element_visible": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "status": "PASS_NO_READER_AUDIO_UI"
+    },
+    {
+      "slug": "radharani",
+      "expected_public_audio_state": "reader_first_no_audio_claim",
+      "reader_smoke_audio_button_visible": false,
+      "reader_smoke_audio_element_visible": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "status": "PASS_NO_READER_AUDIO_UI"
+    },
+    {
+      "slug": "nishkriti",
+      "expected_public_audio_state": "reader_first_no_audio_claim",
+      "reader_smoke_audio_button_visible": false,
+      "reader_smoke_audio_element_visible": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "status": "PASS_NO_READER_AUDIO_UI"
+    },
+    {
+      "slug": "the-last-leaf",
+      "expected_public_audio_state": "reader_first_short_story_no_audio_claim",
+      "reader_smoke_audio_button_visible": false,
+      "reader_smoke_audio_element_visible": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "status": "PASS_NO_READER_AUDIO_UI"
+    }
+  ],
+  "paid_tts_lock_status": "ACTIVE_LEGITIMATE_NO_PAID_AUDIO_RUN",
+  "publication_mutation": false,
+  "marketing_audio_approval_changed": false
+}

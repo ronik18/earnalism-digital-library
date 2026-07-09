@@ -2,7 +2,7 @@ const env = process.env || {};
 
 export const OFFICIAL_SOCIAL_URLS = {
   linkedin: "https://www.linkedin.com/company/earnalism-a-reo-enterprise-venture/",
-  email: "mailto:sales@reoenterprise.in",
+  email: "mailto:sales@reoenterprise.org",
   facebook: "https://www.facebook.com/profile.php?id=61591315384768",
   instagram: "https://www.instagram.com/theearnalism/",
   x: "https://x.com/earnalism",

@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-07-08T09:45:51Z",
+  "phase": "BRAND_HEADER_LOGO",
+  "status": "PASS",
+  "mode": "brand_header_logo_browser_and_source",
+  "routes": [
+    "/",
+    "/library",
+    "/book/dracula"
+  ],
+  "viewports": [
+    "1920x1080",
+    "1536x864",
+    "1440x900",
+    "1366x768",
+    "1280x800",
+    "1024x768",
+    "820x1180",
+    "430x932",
+    "390x844"
+  ],
+  "routes_attempted": 27,
+  "routes_completed": 27,
+  "failed_subchecks": 0,
+  "critical_blockers": 0,
+  "source_checks_passed": true,
+  "brand_header_checks_passed": true,
+  "screenshot_dir": "/tmp/earnalism-ux-review/BRAND_HEADER_LOGO",
+  "contact_sheet": "/tmp/earnalism-ux-review/BRAND_HEADER_LOGO/BRAND_HEADER_LOGO_contact_sheet.png",
+  "strict_default_full_route_smoke_weakened": false
+}

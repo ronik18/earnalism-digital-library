@@ -18,7 +18,7 @@ import {
   readingPassUrl,
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
-import { audiobookReleaseState } from "../lib/audioReleaseSafety";
+import { bookDetailPresentationForBook } from "../lib/bookDetailPresentation";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 const SITE_URL = "https://theearnalism.com";
@@ -204,10 +204,10 @@ export default function BookDetail() {
   const hasFreePreview = hasExplicitPreview || chapterCount > 1;
   const readerHref = `/reader/${publicBook.slug}`;
   const passHref = isDracula ? readingPassUrl("book_detail") : "";
-  const audioState = audiobookReleaseState(publicBook);
+  const detailPresentation = bookDetailPresentationForBook(publicBook);
 
   return (
-    <div data-testid="book-page">
+    <div className="book-detail-page" data-testid="book-page">
       {bookSchemaAllowed && bookSchema && <JsonLd id="book" data={bookSchema} />}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-10">
         <Link to="/library" className="inline-flex items-center gap-1 text-xs tracking-[0.18em] uppercase text-charcoal-soft hover:text-burgundy" data-testid="back-to-library">
@@ -215,9 +215,9 @@ export default function BookDetail() {
         </Link>
       </div>
 
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <section className="book-detail-hero max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         <div className="lg:col-span-5 lg:sticky lg:top-28">
-          <div className="aspect-[3/4] rounded-xl overflow-hidden border border-brand-soft bg-ivory-warm shadow-[0_50px_90px_-40px_rgba(74,28,39,0.45)] max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
+          <div className="book-detail-cover-frame aspect-[3/4] overflow-hidden max-w-[320px] sm:max-w-sm mx-auto lg:max-w-none">
             <BookCoverImage
               book={publicBook}
               alt={isDracula ? "Custom Earnalism Dracula cover artwork" : publicBook.title}
@@ -246,9 +246,14 @@ export default function BookDetail() {
 
         <div className="lg:col-span-7">
           <div className="overline mb-5">{publicBook.category_slug?.replace(/-/g, ' ')}</div>
-          <h1 className="font-serif-light text-[2.12rem] sm:text-[2.82rem] lg:text-[3.35rem] text-burgundy leading-[1.05] tracking-tight">{publicBook.title}</h1>
+          <h1 className={detailPresentation.titleClassName}>{publicBook.title}</h1>
           {publicBook.author && <p className="text-[0.85rem] tracking-[0.14em] uppercase text-charcoal-soft mt-4">by {publicBook.author}</p>}
           {publicBook.subtitle && <p className="font-serif-display italic text-lg sm:text-[1.32rem] text-burgundy-soft mt-5 leading-snug">{publicBook.subtitle}</p>}
+          <div className="book-detail-status-row" data-testid="book-detail-status">
+            <span data-testid="book-detail-reader-status">{detailPresentation.readerStateLabel}</span>
+            <span data-testid="book-detail-audio-status">{detailPresentation.audioBadgeLabel}</span>
+            <span data-testid="book-detail-language-status">{detailPresentation.languageLabel}</span>
+          </div>
           <div className="gold-rule-thin mt-8" />
           <p className="text-charcoal-soft mt-7 leading-[1.85] font-light">{publicBook.description}</p>
 
@@ -259,7 +264,7 @@ export default function BookDetail() {
                 <p><strong className="text-burgundy">Source:</strong> {DRACULA_SOURCE_NOTE}</p>
                 <p><strong className="text-burgundy">Rights status:</strong> {DRACULA_RIGHTS_NOTE}</p>
                 <p><strong className="text-burgundy">First published:</strong> 1897</p>
-                <p><strong className="text-burgundy">Audio:</strong> Audiobook experience in private review</p>
+                <p><strong className="text-burgundy">Audio:</strong> Audiobooks appear only after release-gate evidence approves them.</p>
               </div>
             </div>
           )}
@@ -286,14 +291,14 @@ export default function BookDetail() {
               <Link to={readerHref} className="btn-secondary justify-center" data-testid="read-preview" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.previewStart, { book: publicBook.slug, cta: "book_detail_preview" })}>Read Chapter 1 Free</Link>
             )}
             <Link to={readerHref} className="btn-primary justify-center" data-testid="start-reading" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.startReading, { book: publicBook.slug, cta: isDracula ? "book_detail_continue" : "book_detail_reader" })}>
-              {isDracula ? "Continue Dracula" : "Read in Earnalism Reader"}
+              {isDracula ? "Continue Dracula" : detailPresentation.primaryReadLabel}
             </Link>
             {isDracula && (
               <Link to={passHref} className="btn-link justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: publicBook.slug, cta: "book_detail_pass" })}>Get 7-Day Reading Pass</Link>
             )}
-            {audioState.canShowControls && (
+            {detailPresentation.listenCtaVisible && (
               <Link to={`${readerHref}?listen=1`} className="btn-secondary justify-center" data-testid="book-listen-approved">
-                <Headphones size={15} strokeWidth={1.6} /> Listen in Reader
+                <Headphones size={15} strokeWidth={1.6} /> {detailPresentation.listenCtaLabel}
               </Link>
             )}
           </div>
@@ -303,14 +308,17 @@ export default function BookDetail() {
               <BookOpen size={18} strokeWidth={1.55} aria-hidden="true" />
               <div>
                 <strong>{isDracula ? "Preview opens first" : "Reader edition ready"}</strong>
-                <p>{isDracula ? "Chapter 1 opens free so you can feel the room before adding reading time." : "The reading room is the primary experience for this title."}</p>
+                <p>{isDracula ? "Chapter 1 opens free so you can feel the room before adding reading time." : detailPresentation.readerBody}</p>
               </div>
             </div>
             <div className="book-experience-panel__item">
               <Headphones size={18} strokeWidth={1.55} aria-hidden="true" />
               <div>
-                <strong>{audioState.label}</strong>
-                <p>{audioState.canShowControls ? "Listening controls appear only because the audiobook release gate is approved." : "No public audio controls are shown until listening QA, sync, and release gates pass."}</p>
+                <strong data-testid="book-detail-audio-heading">{detailPresentation.audioHeading}</strong>
+                <p>{detailPresentation.audioBody}</p>
+                {detailPresentation.syncCopy && (
+                  <p className="book-experience-panel__sync" data-testid="book-detail-sync-copy">{detailPresentation.syncCopy}</p>
+                )}
               </div>
             </div>
             <div className="book-experience-panel__item">

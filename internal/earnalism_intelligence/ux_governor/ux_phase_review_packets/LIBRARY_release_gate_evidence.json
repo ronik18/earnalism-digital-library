@@ -1,0 +1,25 @@
+{
+  "route": "/library",
+  "approvedAudiobookSpotlightVisible": false,
+  "listenLinkCount": 0,
+  "listenLinks": [],
+  "readerButtons": [
+    "card-preview-devdas",
+    "card-details-devdas",
+    "card-preview-pather-panchali",
+    "card-details-pather-panchali",
+    "library-dracula-preview",
+    "library-dracula-start",
+    "card-preview-hungry-stones",
+    "card-details-hungry-stones"
+  ],
+  "audiobookApprovedBadgeCount": 0,
+  "audioHiddenBadgeCount": 1,
+  "pipelineCardCount": 5,
+  "narratorMetadataVisible": false,
+  "durationMetadataVisible": false,
+  "waveformVisible": false,
+  "progressUiVisible": false,
+  "readerOnlyPremiumCopyVisible": true,
+  "releaseTruthSummary": "No public Listen CTA rendered on /library without approved manifest evidence."
+}

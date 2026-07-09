@@ -198,15 +198,16 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
     expect(audioLikeFiles("frontend/build")).toEqual([]);
   });
 
-  test("homepage, library, and pricing snapshots stay Dracula-first and not broad-catalog", () => {
-    expect(homeHtml).toContain("Begin with Dracula.");
-    expect(homeHtml).toContain("Controlled launch begins with Dracula");
-    expect(homeHtml).toContain("Dracula remains the featured live approved reading release.");
-    expect(libraryHtml).toContain("Live Controlled Reader Releases.");
-    expect(libraryHtml).toContain("Reader-only releases do not offer checkout, payment, or listening CTAs.");
+  test("homepage, library, and pricing snapshots stay bilingual, premium, and release-truth safe", () => {
+    expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
+    expect(homeHtml).toContain("Bengali classics are reader-ready where approved.");
+    expect(homeHtml).toContain("Dracula appears as a refined English classics reading tile.");
+    expect(homeHtml).toContain("Audiobooks remain hidden unless release-gate evidence approves them.");
+    expect(libraryHtml).toContain("Reader-ready classics, release-gated audio.");
+    expect(libraryHtml).toContain("Reader-only releases do not offer listening CTAs.");
     expect(pricingHtml).toContain("Choose your reading time. Return whenever the book calls.");
     for (const html of [homeHtml, libraryHtml, pricingHtml]) {
-      expect(html).not.toMatch(/Preview every book before you pay|A quieter bookstore for readers who linger|Discover thoughtful books across/i);
+      expect(html).not.toMatch(/Begin with Dracula|Controlled launch begins with Dracula|Dracula remains the featured live approved reading release|Preview every book before you pay|A quieter bookstore for readers who linger|Discover thoughtful books across/i);
     }
   });
 

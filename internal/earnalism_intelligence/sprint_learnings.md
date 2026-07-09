@@ -153,6 +153,121 @@
 - `frontend/public/sitemap.xml` is a generated validation side effect. Restore it before source-only promotion unless intentionally reviewed.
 - Future deploys and production mutations must run from clean source-only worktrees. The original workspace may retain local evidence, rollback payloads, and imported content inputs, but it must not be used for deploy unless `git status --short` is source-only and intentionally staged.
 
+## 2026-07-08 Parallel Prelaunch Unblock
+
+- Created a lock-aware prelaunch daemon state without running paid TTS.
+- `bn-066` remains representative-audition-ready only; full TTS still requires representative pass and explicit full-TTS approval.
+- `pather-panchali` remains blocked for audiobook by source-scope and cover repair gates.
+- HOME UX is the only approved phase; LIBRARY requires a new owner approval record.
+## 2026-07-07T20:15:11Z - HOME UX review stabilization
+
+HOME owner-review validation should use phase-scoped visual smoke (`EARNALISM_VISUAL_PHASE=HOME`) when reviewing only `/`. Full route smoke remains required before final integration, but local plain static servers can 404 deep links without proving production route failure. Paid TTS stayed blocked by active `paid_tts.lock`.
+## 2026-07-07T20:18:27Z - HOME validation rerun
+
+HOME-scoped visual smoke rerun passed 9/9 viewport checks with zero blockers. Full multi-route smoke remains a separate final-integration check against production-like routing, because plain static servers can 404 deep links. Paid TTS remained blocked by active lock.
+## 2026-07-08T03:12:59Z - LIBRARY phase local review pattern
+
+The Library phase can preserve truthful Bengali visibility in a static owner-review build by using deterministic local reader-only fallback metadata sourced from canonical public_book records. This keeps release truth intact while `/api/books` is unavailable. Phase-scoped smoke for `LIBRARY` should remain separate from the default full-route smoke.
+
+## 2026-07-08T03:50:54Z - LIBRARY approval gate
+
+LIBRARY owner approval must be recorded as a phase transition, not a launch-green claim. The next phase is BOOK_DETAIL discovery only; full preview/production route validation, paid Listen campaign approval, and paid TTS remain separate gates.
+
+## 2026-07-08T05:37:51Z - BOOK_DETAIL phase local review
+
+- Book Detail should use shared `audiobookReleaseState(publicBook)`-backed presentation logic, not ad hoc slug/title/language/static-URL inference.
+- Local Book Detail review fixtures must fail closed for audio; production-approved audio display remains dependent on the detail API carrying approved evidence or a future shared manifest evidence path.
+- Reader-first detail pages should frame availability as a complete reading edition, not a missing audiobook.
+- BOOK_DETAIL-scoped visual smoke passed 108 route/viewport checks with zero blockers, but full preview/production validation and paid Listen evidence remain separate gates.
+
+## 2026-07-08T05:55:30Z - BOOK_DETAIL approval and READER discovery
+
+- BOOK_DETAIL owner approval is a phase-transition approval only: it freezes HOME, LIBRARY, and BOOK_DETAIL for progression, activates READER discovery, and does not approve launch, paid Listen, paid TTS, or production mutation.
+- Reader discovery found two release-truth risks to address before review: browser/system speech fallback code remains in `Reader.jsx`, and static `/audio/...` derivation must not expose stale audio without explicit approved manifest assets.
+- The background audiobook lane is read-only blocked by active legitimate `paid_tts.lock`. A historical `.audiobook_pipeline.run.lock` records PID `40472`, but that process is not running; do not classify this as safe to resume while paid_tts.lock has no allowed next holders.
+
+## 2026-07-08T06:31:11Z - READER implementation ready for owner review
+
+- Reader release truth must be source-enforced: remove public browser/system speech fallback and static `/audio/...` derivation instead of merely hiding controls.
+- Reader local smoke should use explicit reader fixtures that fail closed for audio; validated state is no audio controls, no generated audio element, no static audio source, visible reader-ready/audio-hidden copy, settings reachable, TOC reachable, and no mobile horizontal overflow.
+- Mobile Reader may collapse long audio-hidden explanatory copy into a compact "Reading edition available" chip, but smoke must still require an audio-unavailable element and keep audio controls/elements/static sources fail-closed.
+- READER visual smoke passed 90/90 route/viewport checks. AUDIOBOOK_PLAYER remains blocked until explicit owner approval.
+
+## 2026-07-08T06:48:52Z - READER approval and AUDIOBOOK_PLAYER discovery
+
+- READER owner approval is a phase-transition approval only; it freezes READER for progression and activates AUDIOBOOK_PLAYER discovery without approving launch, paid Listen, paid TTS, production mutation, or player implementation.
+- Active Reader, Book Detail, Book Card, and Approved Audiobook Spotlight paths are release-state gated; no new audio UI was introduced in the approval transition.
+- Legacy `AudioPlayer.jsx` and `AudioPlayer 2.jsx` remain static `/audio/...` and word-level timestamp risks if reconnected. The AUDIOBOOK_PLAYER implementation phase should quarantine or rewrite them before adding any public player UI.
+- `paid_tts.lock` remains active and legitimate, with no allowed next holders; no Sarvam/TTS/audition/canary/publish work was run.
+
+## 2026-07-08T07:13:35Z - AUDIOBOOK_PLAYER implementation ready for owner review
+
+- Public player code must be approval-evidence-driven and fail closed; static same-origin audiobook paths are explicitly rejected by `audioReleaseSafety`.
+- `AudioPlayer 2.jsx` was removed, and `AudioPlayer.jsx` no longer derives slug/language static audio paths, claims word-level sync, or exposes browser/system speech fallback.
+- The service worker must not cache `/audio/...` as a static asset; approved audio should come from current manifest/release evidence.
+- AUDIOBOOK_PLAYER visual smoke passed 108/108 route/viewport checks with zero blockers; only the approved pilot fixture exposed audio controls, while A Ghost Story, Bengali canaries, Pather Panchali, and reader-first titles remained audio-hidden.
+
+## 2026-07-08T07:36:52Z - BRAND_HEADER_LOGO experiment ready for owner review
+
+- Brand/header work should remain a separate `BRAND_HEADER_EXPERIMENT`, not a SETTINGS or AUDIOBOOK_PLAYER phase transition.
+- The public header now uses deterministic text for a proofreader-style `LEarnalism` lockup and preserves the existing bundled icon asset as the fixed left anchor.
+- The default public badge is a safer India-inspired tricolor literary badge; the exact Indian flag variant exists only for owner/compliance review and is not the production default.
+- BRAND_HEADER_LOGO visual smoke passed 27/27 route/viewport checks across Home, Library, and Book Detail with zero blockers, and no paid audio, release-gate, or audiobook exposure behavior changed.
+
+## 2026-07-08T10:02:29Z - AUDIOBOOK_PLAYER approval and SETTINGS discovery
+
+- AUDIOBOOK_PLAYER owner approval is a phase-transition approval only; it freezes AUDIOBOOK_PLAYER and activates SETTINGS discovery without approving launch, paid Listen, paid TTS, or production mutation.
+- SETTINGS discovery found Reader settings inline in `Reader.jsx`, with theme, font size, line spacing, reading width, Bengali/English font mode, focus mode, reduced motion, and highlight intensity already represented.
+- Next SETTINGS implementation should address preference persistence, settings-sheet focus management, mobile wrapping/overflow, and state announcement before owner review.
+- `paid_tts.lock` remains active and legitimate with no allowed next holders; no Sarvam/TTS/audition/canary/publish work was run.
+
+## 2026-07-08T10:14:19Z - SETTINGS implementation ready for owner review
+
+- Reader Settings can stay inline for this phase, but persistence belongs in a pure helper (`readerSettings.js`) so invalid local values are sanitized before reaching UI state.
+- Settings owner review should verify calm grouping: Reading tone, Typography, Bengali comfort, Focus and motion, and Highlights.
+- SETTINGS smoke now opens the panel across reader routes, verifies focus containment, selected states, reset visibility, mobile overflow safety, and no audio leakage.
+- MARKETING_LANDING remains blocked until explicit SETTINGS owner approval; no preview/deploy or Vercel work was run.
+
+## 2026-07-08T10:36:13Z - BRAND_HEADER_LOGO approval recorded
+
+- BRAND_HEADER_LOGO approval is a scoped brand experiment approval, not a UX phase transition or launch approval.
+- The Editorial Proofreader lockup is approved with the safer tricolor literary badge as the public default.
+- The exact Indian national flag variant remains compliance-review-only and is not approved for production default.
+- SETTINGS remains the active owner-review-gated phase; no audio release gates, paid TTS, paid Listen, deploy, preview, or publication state changed.
+
+## 2026-07-08T11:26:02Z - SETTINGS approval and MARKETING_LANDING discovery
+
+- SETTINGS approval is a phase-transition approval only; it freezes SETTINGS and activates MARKETING_LANDING discovery without approving launch, paid Listen, paid TTS, preview/deploy, or production mutation.
+- MARKETING_LANDING discovery found Home, Micro-story, Pricing, About, Contact, Journal, Header/Footer, SEO, JsonLd, controlled launch fallback, and Approved Audiobook Spotlight as the relevant marketing surfaces.
+- Current release-truth copy is mostly safe, but implementation should fix stale Dracula-first SEO/About language, the controlled-launch "audiobook private review" wording if surfaced, the support email mismatch, and any nonfunctional Notify Me affordance.
+- `paid_tts.lock` remains active and legitimate with no allowed next holders; no Sarvam/TTS/audition/canary/publish work was run.
+
+## 2026-07-08T12:32:38Z - MARKETING_LANDING ready for owner review
+
+- Marketing copy should convert through bilingual literary trust, not Dracula-first positioning; default SEO and About now name Bengali and English classics directly.
+- Public audio language on marketing surfaces should say evidence-gated/hidden unless approved, not private-review playable.
+- Fake conversion affordances are release-truth risks: the Shelf II `Notify Me` button was replaced with a real `Request Update` contact path.
+- MARKETING_LANDING smoke needs local static SPA fallback and harmless marketing API mocks for review builds, but full/default smoke remains strict.
+- MARKETING_LANDING is ready for owner review; FINAL_INTEGRATION remains blocked until explicit approval.
+
+## 2026-07-08T12:45:05Z - MARKETING_LANDING contact truth correction
+
+- Owner-confirmed `sales@reoenterprise.org` is the canonical public contact/sales email; `sales@reoenterprise.in` is a trust blocker and must not remain in public contact paths.
+- Public contact, footer, pricing support copy, social mailto defaults, marketing truth tests, visual smoke source checks, and MARKETING_LANDING SEO evidence now use `.org`.
+- This correction does not approve MARKETING_LANDING, FINAL_INTEGRATION, preview/deploy, paid Listen campaigns, paid TTS, or release-gate mutation.
+
+## 2026-07-08T12:55:46Z - MARKETING_LANDING approval and FINAL_INTEGRATION discovery
+
+- MARKETING_LANDING owner approval is a phase-transition approval only; it freezes MARKETING_LANDING and activates FINAL_INTEGRATION discovery without approving preview/deploy, production validation, paid Listen, paid TTS, or launch-wide 10/10.
+- FINAL_INTEGRATION must reconcile source-only staging, generated artifact exclusion, full-route smoke, preview/production route proof, Lighthouse/accessibility/SEO, release-gate truth, public contact email, and Vercel readiness.
+- Vercel CLI was discovered at `54.15.1`; upgrade to the latest CLI should happen later before preview/production validation, not during this discovery-only gate.
+## 2026-07-08 - FINAL_INTEGRATION Stage A source-only validation
+
+- FINAL_INTEGRATION strict/default visual smoke was strengthened to cover the release-candidate route matrix rather than relying on phase-scoped smoke.
+- Local source-only validation passed: npm ci, frontend tests, build, cover audit, UX governor check, strict full-route smoke 189/189, and git diff whitespace checks.
+- Preview/production validation remains unproven and must stay a separate owner-authorized gate.
+- Vercel CLI remains outdated at 54.15.1; upgrade to latest/54.21.1+ should happen before preview/production validation, not during source-only reconciliation.
+- `frontend/public/sitemap.xml` is generated by build and should be explicitly reviewed or excluded before source-only staging.
 ## 2026-07-07 Bengali Post-Go-Live Stabilization
 
 - `book-2b9853ec52` remains the first live Bengali audiobook: endpoint/manifest/sidecars/browser were already PASS, with Sarvam `bulbul:v3` / `ratan` / `literary_warm_pacing`, listening `9.4`, confidence `0.95`, and `PARAGRAPH_OR_STANZA_SYNC_PREMIUM`.

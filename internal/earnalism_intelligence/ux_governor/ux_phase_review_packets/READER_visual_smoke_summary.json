@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-07-08T06:31:11Z",
+  "phase": "READER",
+  "status": "PASS",
+  "mode": "reader_browser_and_source",
+  "base_url": "http://127.0.0.1:4173",
+  "routes_attempted": 90,
+  "routes_completed": 90,
+  "failed_subchecks": 0,
+  "critical_blockers": 0,
+  "playwright_import_status": "passed",
+  "browser_launch_status": "passed",
+  "source_checks": {
+    "reader_no_browser_speech_fallback": "PASS",
+    "reader_no_static_audio_derivation": "PASS",
+    "reader_settings_premium_baseline": "PASS",
+    "cover_fallback_no_typography": "PASS",
+    "home_and_library_calm_type_regression_checks": "PASS"
+  },
+  "routes": [
+    "/reader/book-2b9853ec52",
+    "/reader/a-ghost-story",
+    "/reader/dracula",
+    "/reader/radharani",
+    "/reader/nishkriti",
+    "/reader/book-d19e96859f",
+    "/reader/book-f5d593e1f4",
+    "/reader/muchiram-gurer-jibanchorit",
+    "/reader/pather-panchali",
+    "/reader/the-last-leaf"
+  ],
+  "viewports": [
+    "1920x1080",
+    "1536x864",
+    "1440x900",
+    "1366x768",
+    "1280x800",
+    "1024x768",
+    "820x1180",
+    "430x932",
+    "390x844"
+  ],
+  "screenshot_directory": "/tmp/earnalism-ux-review/READER/",
+  "contact_sheet": "/tmp/earnalism-ux-review/READER/READER_contact_sheet.png",
+  "report_path": "ux_visual_regression_report.json",
+  "full_route_smoke_default_weakened": false,
+  "note": "READER phase route matrix is explicit. Default full-route smoke remains strict unless a phase or route matrix env is supplied."
+}

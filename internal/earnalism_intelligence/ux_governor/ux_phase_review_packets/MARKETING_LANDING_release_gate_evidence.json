@@ -1,0 +1,68 @@
+{
+  "phase": "MARKETING_LANDING",
+  "generated_at": "2026-07-08T12:45:05.104Z",
+  "paid_tts_lock": {
+    "status": "ACTIVE_LEGITIMATE",
+    "current_holder": "none",
+    "allowed_next_holders": [],
+    "paid_audio_authorized": false
+  },
+  "global_audio_marketing_truth": {
+    "unapproved_listen_cta_visible": false,
+    "audio_player_controls_visible_for_non_approved_titles": false,
+    "narrator_duration_waveform_progress_visible_from_partial_metadata": false,
+    "audio_object_for_non_approved_audio": false,
+    "static_audio_path_visible": false,
+    "word_level_sync_claim_visible": false,
+    "browser_speech_fallback_visible": false,
+    "paid_listen_campaign_approved": false
+  },
+  "title_truth_table": [
+    {
+      "slug": "book-2b9853ec52",
+      "status": "EVIDENCE_GATED_ONLY",
+      "marketing_landing_exposure": "No new marketing Listen CTA or paid campaign claim."
+    },
+    {
+      "slug": "a-ghost-story",
+      "status": "PAID_LISTEN_HOLD",
+      "marketing_landing_exposure": "No paid Listen-ready claim without production route, manifest, and player proof."
+    },
+    {
+      "slug": "book-d19e96859f",
+      "status": "NO_PUBLIC_AUDIO_UI",
+      "marketing_landing_exposure": "Not marketed as live audio."
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "status": "NO_PUBLIC_AUDIO_UI",
+      "marketing_landing_exposure": "Not marketed as live audio."
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "status": "NO_PUBLIC_AUDIO_UI",
+      "marketing_landing_exposure": "Not marketed as live audio."
+    },
+    {
+      "slug": "pather-panchali",
+      "status": "AUDIOBOOK_NO_GO",
+      "marketing_landing_exposure": "Not marketed as audiobook."
+    },
+    {
+      "slug": "bn-066",
+      "status": "STAGE_1_ONLY_PAID_LOCK_ACTIVE",
+      "marketing_landing_exposure": "No live audio claim while paid_tts.lock remains active."
+    },
+    {
+      "slug": "dracula",
+      "status": "READER_FIRST_CONTROLLED_CLASSIC",
+      "marketing_landing_exposure": "Not brand-dominant after About/default SEO cleanup."
+    }
+  ],
+  "phase_transition": {
+    "final_integration_started": false,
+    "owner_approval_required": true,
+    "preview_or_production_validation_claimed": false,
+    "launch_wide_10_of_10_claimed": false
+  }
+}

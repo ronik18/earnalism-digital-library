@@ -1,0 +1,59 @@
+{
+  "phase": "FINAL_INTEGRATION",
+  "approved": false,
+  "status": "DISCOVERY_ACTIVE",
+  "discovery_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/FINAL_INTEGRATION_discovery.md",
+  "review_packet": "",
+  "owner_summary": "",
+  "contact_sheet": "",
+  "next_phase": "PREVIEW_PRODUCTION_VALIDATION",
+  "next_phase_blocked_until_owner_approval": true,
+  "approval_choices": [
+    "APPROVE_FINAL_INTEGRATION_AND_BEGIN_PREVIEW_VALIDATION",
+    "REQUEST_FINAL_INTEGRATION_CHANGES",
+    "HOLD_UX_WORK"
+  ],
+  "last_approved_phase": "MARKETING_LANDING",
+  "last_owner_decision": "APPROVE_MARKETING_LANDING_AND_PROCEED_TO_FINAL_INTEGRATION",
+  "last_approval_scope": "MARKETING_LANDING frozen as owner-approved for phase progression; FINAL_INTEGRATION discovery is allowed only. No full launch, Vercel preview/deploy, paid Listen, paid TTS, production approval, or release-gate mutation is approved.",
+  "marketing_landing_approval_evidence": {
+    "owner_decision": "APPROVE_MARKETING_LANDING_AND_PROCEED_TO_FINAL_INTEGRATION",
+    "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/MARKETING_LANDING_review.md",
+    "owner_summary": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/MARKETING_LANDING_owner_approval_summary.md",
+    "dom_evidence": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/MARKETING_LANDING_dom_evidence.json",
+    "seo_evidence": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/MARKETING_LANDING_seo_evidence.json",
+    "release_gate_evidence": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/MARKETING_LANDING_release_gate_evidence.json",
+    "visual_smoke_summary": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/MARKETING_LANDING_visual_smoke_summary.json",
+    "contact_sheet": "/tmp/earnalism-ux-review/MARKETING_LANDING/MARKETING_LANDING_contact_sheet.png",
+    "public_contact_email": "sales@reoenterprise.org",
+    "approved_at": "2026-07-08T12:55:46Z"
+  },
+  "settings_approval_evidence": {
+    "owner_decision": "APPROVE_SETTINGS_AND_PROCEED_TO_MARKETING_LANDING",
+    "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/SETTINGS_review.md",
+    "owner_summary": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/SETTINGS_owner_approval_summary.md",
+    "dom_evidence": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/SETTINGS_dom_evidence.json",
+    "accessibility_evidence": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/SETTINGS_accessibility_evidence.json",
+    "release_gate_evidence": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/SETTINGS_release_gate_evidence.json",
+    "visual_smoke_summary": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/SETTINGS_visual_smoke_summary.json",
+    "contact_sheet": "/tmp/earnalism-ux-review/SETTINGS/SETTINGS_contact_sheet.png",
+    "approved_at": "2026-07-08T11:26:02Z"
+  },
+  "brand_experiment_approval": {
+    "experiment": "BRAND_HEADER_LOGO",
+    "approved": true,
+    "status": "APPROVED_PUBLIC_TRICOLOR_DEFAULT",
+    "owner_decision": "APPROVE_BRAND_HEADER_LOGO_PUBLIC_TRICOLOR_AND_RETURN_TO_SETTINGS",
+    "approval_scope": "Editorial Proofreader wordmark approved with safer tricolor literary badge as the public default. Existing icon remains unchanged. Exact Indian national flag variant remains compliance-review-only and is not approved for production default.",
+    "review_packet": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/BRAND_HEADER_LOGO_review.md",
+    "owner_summary": "internal/earnalism_intelligence/ux_governor/ux_phase_review_packets/BRAND_HEADER_LOGO_owner_approval_summary.md",
+    "contact_sheet": "/tmp/earnalism-ux-review/BRAND_HEADER_LOGO/BRAND_HEADER_LOGO_contact_sheet.png",
+    "settings_phase_remains_active": false,
+    "marketing_landing_phase_remains_active": false,
+    "final_integration_phase_remains_active": true,
+    "release_gate_truth_status": "UNCHANGED_NO_AUDIO_RELEASE_MUTATION",
+    "paid_tts_lock_status": "ACTIVE_LEGITIMATE_NO_PAID_AUDIO_ALLOWED",
+    "updated_at": "2026-07-08T10:36:13Z"
+  },
+  "updated_at": "2026-07-08T12:55:46Z"
+}

@@ -1,0 +1,140 @@
+{
+  "generated_at": "2026-07-08T07:13:35Z",
+  "phase": "AUDIOBOOK_PLAYER",
+  "status": "PASS",
+  "evidence_basis": "AUDIOBOOK_PLAYER scoped visual smoke at 1440x900 plus source checks; full matrix passed 108/108.",
+  "route_evidence_1440x900": [
+    {
+      "route": "/book/book-2b9853ec52",
+      "http_status": 200,
+      "listen_cta_visible": true,
+      "reader_audio_button_visible": false,
+      "audio_object_structured_data": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "speech_fallback_copy_visible": false,
+      "horizontal_overflow": false
+    },
+    {
+      "route": "/reader/book-2b9853ec52",
+      "http_status": 200,
+      "listen_cta_visible": false,
+      "reader_audio_button_visible": true,
+      "audio_object_structured_data": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "speech_fallback_copy_visible": false,
+      "horizontal_overflow": false
+    },
+    {
+      "route": "/book/a-ghost-story",
+      "http_status": 200,
+      "listen_cta_visible": false,
+      "reader_audio_button_visible": false,
+      "audio_object_structured_data": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "speech_fallback_copy_visible": false,
+      "horizontal_overflow": false
+    },
+    {
+      "route": "/reader/a-ghost-story",
+      "http_status": 200,
+      "listen_cta_visible": false,
+      "reader_audio_button_visible": false,
+      "audio_object_structured_data": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "speech_fallback_copy_visible": false,
+      "horizontal_overflow": false
+    },
+    {
+      "route": "/book/book-d19e96859f",
+      "http_status": 200,
+      "listen_cta_visible": false,
+      "reader_audio_button_visible": false,
+      "audio_object_structured_data": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "speech_fallback_copy_visible": false,
+      "horizontal_overflow": false
+    },
+    {
+      "route": "/reader/book-d19e96859f",
+      "http_status": 200,
+      "listen_cta_visible": false,
+      "reader_audio_button_visible": false,
+      "audio_object_structured_data": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "speech_fallback_copy_visible": false,
+      "horizontal_overflow": false
+    },
+    {
+      "route": "/book/book-f5d593e1f4",
+      "http_status": 200,
+      "listen_cta_visible": false,
+      "reader_audio_button_visible": false,
+      "audio_object_structured_data": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "speech_fallback_copy_visible": false,
+      "horizontal_overflow": false
+    },
+    {
+      "route": "/reader/book-f5d593e1f4",
+      "http_status": 200,
+      "listen_cta_visible": false,
+      "reader_audio_button_visible": false,
+      "audio_object_structured_data": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "speech_fallback_copy_visible": false,
+      "horizontal_overflow": false
+    },
+    {
+      "route": "/book/pather-panchali",
+      "http_status": 200,
+      "listen_cta_visible": false,
+      "reader_audio_button_visible": false,
+      "audio_object_structured_data": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "speech_fallback_copy_visible": false,
+      "horizontal_overflow": false
+    },
+    {
+      "route": "/reader/pather-panchali",
+      "http_status": 200,
+      "listen_cta_visible": false,
+      "reader_audio_button_visible": false,
+      "audio_object_structured_data": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "speech_fallback_copy_visible": false,
+      "horizontal_overflow": false
+    },
+    {
+      "route": "/book/the-last-leaf",
+      "http_status": 200,
+      "listen_cta_visible": false,
+      "reader_audio_button_visible": false,
+      "audio_object_structured_data": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "speech_fallback_copy_visible": false,
+      "horizontal_overflow": false
+    },
+    {
+      "route": "/reader/the-last-leaf",
+      "http_status": 200,
+      "listen_cta_visible": false,
+      "reader_audio_button_visible": false,
+      "audio_object_structured_data": false,
+      "static_audio_src_visible": false,
+      "word_level_sync_copy_visible": false,
+      "speech_fallback_copy_visible": false,
+      "horizontal_overflow": false
+    }
+  ]
+}

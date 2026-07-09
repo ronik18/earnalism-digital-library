@@ -1,0 +1,63 @@
+{
+  "generated_at": "2026-07-08T13:45:10Z",
+  "phase": "FINAL_INTEGRATION",
+  "stage": "SOURCE_ONLY_RECONCILIATION_LOCAL_LAUNCH_GATE",
+  "status": "PASS_WITH_PREVIEW_PRODUCTION_PENDING",
+  "commands": {
+    "npm_ci": {
+      "command": "npm ci --prefix frontend --legacy-peer-deps --no-audit --no-fund",
+      "status": "PASS"
+    },
+    "frontend_tests": {
+      "command": "npm test --prefix frontend -- --watchAll=false",
+      "status": "PASS",
+      "suites": 10,
+      "tests": 53
+    },
+    "build": {
+      "command": "REACT_APP_BACKEND_URL=/api npm run build --prefix frontend",
+      "status": "PASS",
+      "notes": [
+        "Build completed successfully.",
+        "SEO generator warned about missing local controlled_publications JSON for several known local-review slugs."
+      ]
+    },
+    "cover_audit": {
+      "command": "node frontend/scripts/audit-book-covers.mjs",
+      "status": "PASS",
+      "total_books_scanned": 57,
+      "typography_only_covers_found": 0,
+      "broken_cover_sources": 0
+    },
+    "ux_governor_check": {
+      "command": "python3 internal/earnalism_intelligence/ux_governor/run_ux_governor_check.py",
+      "status": "PASS"
+    },
+    "strict_full_route_visual_smoke": {
+      "command": "node frontend/scripts/visual-luxury-smoke.mjs",
+      "status": "PASS",
+      "phase_scoped": false,
+      "routes_attempted": 189,
+      "routes_completed": 189,
+      "critical_blockers": 0,
+      "failed_subchecks": 0
+    },
+    "git_diff_check": {
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  },
+  "missing_frontend_npm_aliases": [
+    "lint",
+    "typecheck",
+    "test:e2e",
+    "test:a11y",
+    "lighthouse",
+    "audit-book-covers",
+    "visual-smoke"
+  ],
+  "preview_production_validation": "NOT_RUN_NOT_APPROVED",
+  "vercel_preview_deploy": "NOT_RUN",
+  "vercel_cli_upgrade": "NOT_RUN_DEFERRED",
+  "launch_wide_10_10": "NOT_CLAIMED"
+}
