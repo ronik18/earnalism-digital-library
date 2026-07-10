@@ -22,10 +22,12 @@ from common import (  # noqa: E402
     fetch_url,
     ffprobe_duration,
     finish,
+    iso_now,
     load_clean_manuscript,
     load_public_book,
     normalize_text,
     parser,
+    read_json,
     rel,
     run_cmd,
     sha256_file,
@@ -39,6 +41,15 @@ from common import (  # noqa: E402
 
 ASR_MODEL = os.environ.get("EARNALISM_FACTORY_ASR_MODEL", "whisper-1")
 ASR_CHUNK_SECONDS = int(os.environ.get("EARNALISM_FACTORY_ASR_CHUNK_SECONDS", "300"))
+ASR_SYNC_MAX_ESTIMATED_USD_ENV = "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD"
+ASR_RETRY_MAX_ESTIMATED_USD_ENV = "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD"
+ASR_SYNC_ESTIMATED_USD_PER_MINUTE_ENV = "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE"
+ASR_SYNC_DEFAULT_ESTIMATED_USD_PER_MINUTE = 0.008
+ASR_REQUEST_TIMEOUT_SECONDS_ENV = "EARNALISM_ASR_REQUEST_TIMEOUT_SECONDS"
+ASR_MAX_RETRIES_PER_CHUNK_ENV = "EARNALISM_ASR_MAX_RETRIES_PER_CHUNK"
+ASR_RESUME_FROM_CHECKPOINTS_ENV = "EARNALISM_ASR_RESUME_FROM_CHECKPOINTS"
+ASR_FORCE_RETRANSCRIBE_ENV = "EARNALISM_ASR_FORCE_RETRANSCRIBE"
+PRIOR_ESTIMATED_SPEND_USD_ENV = "EARNALISM_PRIOR_ESTIMATED_SPEND_USD"
 LISTENING_QA_SCHEMA_VERSION = 3
 LISTENING_QA_RUBRIC_VERSION = "earnalism_listening_quality_v1"
 LISTENING_QA_HOOK_VERSION = "asr_sync_hook_listening_schema3_v1"
@@ -219,6 +230,317 @@ def openai_listening_qa_budget_guard(*, sample_count: int = 1, total_estimated_u
         "total_budget_cap_usd": total_cap,
         "total_estimated_usd": total_estimate,
         "sample_count": count,
+    }
+
+
+def asr_sync_prior_estimated_usd(run_dir: Path) -> float:
+    raw = os.environ.get(PRIOR_ESTIMATED_SPEND_USD_ENV, "").strip()
+    if raw:
+        try:
+            return max(float(raw), 0.0)
+        except ValueError:
+            return 0.0
+    for path in [
+        run_dir / "sarvam_full_pilot_tts_report.json",
+        run_dir / "cost_optimization_decision.json",
+        run_dir / "tts_hook_result.json",
+        run_dir / "stage_result.json",
+    ]:
+        payload = read_json(path, {})
+        if not isinstance(payload, dict):
+            continue
+        candidates = [
+            payload.get("estimated_cost_usd"),
+            (payload.get("cost_estimate") or {}).get("estimated_cost_usd"),
+            (payload.get("metrics") or {}).get("tts_estimated_cost"),
+        ]
+        for value in candidates:
+            try:
+                if value is not None:
+                    return max(float(value), 0.0)
+            except (TypeError, ValueError):
+                continue
+    return 0.0
+
+
+def env_bool(name: str, default: bool = False) -> bool:
+    raw = os.environ.get(name, "").strip().lower()
+    if not raw:
+        return default
+    return raw not in {"0", "false", "no", "off"}
+
+
+def _nonnegative_int_env(name: str, default: int) -> int:
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return default
+    try:
+        value = int(raw)
+    except ValueError:
+        return default
+    return max(value, 0)
+
+
+def _positive_int_env(name: str, default: int) -> int:
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return default
+    try:
+        value = int(raw)
+    except ValueError:
+        return default
+    return max(value, 1)
+
+
+def asr_request_timeout_seconds() -> int:
+    return _positive_int_env(ASR_REQUEST_TIMEOUT_SECONDS_ENV, 180)
+
+
+def asr_max_retries_per_chunk() -> int:
+    return _nonnegative_int_env(ASR_MAX_RETRIES_PER_CHUNK_ENV, 1)
+
+
+def asr_resume_from_checkpoints() -> bool:
+    return env_bool(ASR_RESUME_FROM_CHECKPOINTS_ENV, True)
+
+
+def asr_force_retranscribe(args) -> bool:
+    return bool(getattr(args, "force", False)) or env_bool(ASR_FORCE_RETRANSCRIBE_ENV, False)
+
+
+def asr_estimated_cost_for_duration(duration_seconds: float) -> float:
+    rate_raw = os.environ.get(ASR_SYNC_ESTIMATED_USD_PER_MINUTE_ENV, "").strip()
+    try:
+        rate = float(rate_raw) if rate_raw else ASR_SYNC_DEFAULT_ESTIMATED_USD_PER_MINUTE
+    except ValueError:
+        rate = ASR_SYNC_DEFAULT_ESTIMATED_USD_PER_MINUTE
+    return round((max(float(duration_seconds or 0.0), 0.0) / 60.0) * max(rate, 0.0), 4)
+
+
+def asr_checkpoint_id(chunk: dict, fallback_index: int = 0) -> str:
+    for key in ("chunk_id", "id", "group_id"):
+        value = str(chunk.get(key) or "").strip()
+        if value:
+            return re.sub(r"[^A-Za-z0-9_.-]+", "_", value)
+    if chunk.get("index") is not None:
+        try:
+            return f"group_{int(chunk.get('index')):04d}"
+        except (TypeError, ValueError):
+            pass
+    path_value = str(chunk.get("path") or "").strip()
+    if path_value:
+        stem = Path(path_value).stem
+        if stem:
+            return re.sub(r"[^A-Za-z0-9_.-]+", "_", stem)
+    return f"group_{fallback_index:04d}"
+
+
+def asr_checkpoint_path(run_dir: Path, chunk: dict, fallback_index: int = 0) -> Path:
+    return run_dir / "asr_checkpoints" / f"{asr_checkpoint_id(chunk, fallback_index)}.json"
+
+
+def checkpoint_payload_to_transcription_payload(checkpoint: dict) -> dict:
+    return {
+        "text": str(checkpoint.get("transcript_text") or ""),
+        "words": checkpoint.get("words") if isinstance(checkpoint.get("words"), list) else [],
+        "segments": checkpoint.get("segments") if isinstance(checkpoint.get("segments"), list) else [],
+    }
+
+
+def successful_asr_checkpoint(checkpoint: dict) -> bool:
+    return (
+        isinstance(checkpoint, dict)
+        and checkpoint.get("status") == "PASS"
+        and bool(str(checkpoint.get("transcript_text") or "").strip())
+    )
+
+
+def asr_timeout_exception(exc: Exception) -> bool:
+    name = exc.__class__.__name__.lower()
+    message = str(exc).lower()
+    return "timeout" in name or "timed out" in message or "timeout" in message
+
+
+def asr_checkpoint_summary(run_dir: Path, chunks: list[dict]) -> dict:
+    completed_count = 0
+    remaining_count = 0
+    completed_duration = 0.0
+    remaining_duration = 0.0
+    completed_estimated_cost = 0.0
+    existing_checkpoints: list[str] = []
+    missing_checkpoints: list[str] = []
+    for index, chunk in enumerate(chunks):
+        duration = float(chunk.get("duration_seconds") or 0.0)
+        checkpoint_path = asr_checkpoint_path(run_dir, chunk, index)
+        checkpoint = read_json(checkpoint_path, {})
+        if successful_asr_checkpoint(checkpoint):
+            completed_count += 1
+            completed_duration += duration or float(checkpoint.get("duration_seconds") or 0.0)
+            try:
+                completed_estimated_cost += float(checkpoint.get("estimated_cost_usd") or 0.0)
+            except (TypeError, ValueError):
+                completed_estimated_cost += asr_estimated_cost_for_duration(duration)
+            existing_checkpoints.append(rel(checkpoint_path))
+        else:
+            remaining_count += 1
+            remaining_duration += duration
+            missing_checkpoints.append(rel(checkpoint_path))
+    return {
+        "checkpoint_dir": rel(run_dir / "asr_checkpoints"),
+        "total_chunks": len(chunks),
+        "completed_chunks": completed_count,
+        "remaining_chunks": remaining_count,
+        "completed_duration_seconds": round(completed_duration, 3),
+        "remaining_duration_seconds": round(remaining_duration, 3),
+        "completed_estimated_asr_cost_usd": round(completed_estimated_cost, 4),
+        "existing_checkpoints": existing_checkpoints,
+        "missing_checkpoints": missing_checkpoints,
+    }
+
+
+def asr_cap_for_retry() -> tuple[float | None, str, str]:
+    retry_raw = os.environ.get(ASR_RETRY_MAX_ESTIMATED_USD_ENV, "").strip()
+    if retry_raw:
+        cap, error = _nonnegative_usd_env(ASR_RETRY_MAX_ESTIMATED_USD_ENV)
+        return cap, error, ASR_RETRY_MAX_ESTIMATED_USD_ENV
+    cap, error = _nonnegative_usd_env(ASR_SYNC_MAX_ESTIMATED_USD_ENV)
+    return cap, error, ASR_SYNC_MAX_ESTIMATED_USD_ENV
+
+
+def asr_sync_budget_guard(
+    *,
+    duration_seconds: float,
+    prior_estimated_usd: float = 0.0,
+    completed_duration_seconds: float = 0.0,
+    prior_asr_estimated_usd: float = 0.0,
+    completed_chunk_count: int | None = None,
+    remaining_chunk_count: int | None = None,
+    total_chunk_count: int | None = None,
+) -> dict:
+    """Fail closed before ASR/transcription calls unless bounded by env caps."""
+    cap, cap_error, cap_env = asr_cap_for_retry()
+    total_cap, total_cap_error = _nonnegative_usd_env("MAX_TTS_BUDGET_USD")
+    rate_raw = os.environ.get(ASR_SYNC_ESTIMATED_USD_PER_MINUTE_ENV, "").strip()
+    if rate_raw:
+        try:
+            rate = float(rate_raw)
+        except ValueError:
+            return {
+                "ok": False,
+                "code": "ASR_SYNC_BUDGET_GATE_INVALID",
+                "blocker": f"ASR_SYNC_BUDGET_GATE_INVALID: {ASR_SYNC_ESTIMATED_USD_PER_MINUTE_ENV} must be numeric.",
+                "cap_env": cap_env,
+                "rate_env": ASR_SYNC_ESTIMATED_USD_PER_MINUTE_ENV,
+            }
+        if rate < 0:
+            return {
+                "ok": False,
+                "code": "ASR_SYNC_BUDGET_GATE_INVALID",
+                "blocker": f"ASR_SYNC_BUDGET_GATE_INVALID: {ASR_SYNC_ESTIMATED_USD_PER_MINUTE_ENV} must be nonnegative.",
+                "cap_env": cap_env,
+                "rate_env": ASR_SYNC_ESTIMATED_USD_PER_MINUTE_ENV,
+            }
+    else:
+        rate = ASR_SYNC_DEFAULT_ESTIMATED_USD_PER_MINUTE
+    total_duration = max(float(duration_seconds or 0.0), 0.0)
+    completed_duration = min(max(float(completed_duration_seconds or 0.0), 0.0), total_duration)
+    remaining_duration = max(total_duration - completed_duration, 0.0)
+    minutes = remaining_duration / 60.0
+    asr_estimate = round(minutes * rate, 4)
+    prior = max(float(prior_estimated_usd or 0.0), 0.0)
+    prior_asr = max(float(prior_asr_estimated_usd or 0.0), 0.0)
+    total_estimate = round(prior + prior_asr + asr_estimate, 4)
+    if cap is None:
+        return {
+            "ok": False,
+            "code": "ASR_SYNC_BUDGET_GATE_MISSING",
+            "blocker": f"ASR_SYNC_BUDGET_GATE_MISSING: {cap_error}; set {ASR_SYNC_MAX_ESTIMATED_USD_ENV} or {ASR_RETRY_MAX_ESTIMATED_USD_ENV} before ASR/transcription.",
+            "cap_env": cap_env,
+            "duration_seconds": total_duration,
+            "remaining_duration_seconds": remaining_duration,
+            "completed_duration_seconds": completed_duration,
+            "estimated_asr_cost_usd": asr_estimate,
+            "prior_estimated_usd": prior,
+            "prior_asr_estimated_usd": prior_asr,
+            "total_estimated_usd": total_estimate,
+            "completed_chunk_count": completed_chunk_count,
+            "remaining_chunk_count": remaining_chunk_count,
+            "total_chunk_count": total_chunk_count,
+        }
+    if total_cap is None:
+        return {
+            "ok": False,
+            "code": "ASR_SYNC_TOTAL_BUDGET_GATE_MISSING",
+            "blocker": f"ASR_SYNC_TOTAL_BUDGET_GATE_MISSING: {total_cap_error}; set MAX_TTS_BUDGET_USD before ASR/transcription.",
+            "cap_env": cap_env,
+            "duration_seconds": total_duration,
+            "remaining_duration_seconds": remaining_duration,
+            "completed_duration_seconds": completed_duration,
+            "estimated_asr_cost_usd": asr_estimate,
+            "asr_cap_usd": cap,
+            "prior_estimated_usd": prior,
+            "prior_asr_estimated_usd": prior_asr,
+            "total_estimated_usd": total_estimate,
+            "completed_chunk_count": completed_chunk_count,
+            "remaining_chunk_count": remaining_chunk_count,
+            "total_chunk_count": total_chunk_count,
+        }
+    if asr_estimate > cap:
+        return {
+            "ok": False,
+            "code": "ASR_SYNC_BUDGET_EXCEEDED",
+            "blocker": f"ASR_SYNC_BUDGET_EXCEEDED: estimated ASR/transcription cost ${asr_estimate:.4f} exceeds cap ${cap:.4f}.",
+            "cap_env": cap_env,
+            "duration_seconds": total_duration,
+            "remaining_duration_seconds": remaining_duration,
+            "completed_duration_seconds": completed_duration,
+            "estimated_asr_cost_usd": asr_estimate,
+            "asr_cap_usd": cap,
+            "prior_estimated_usd": prior,
+            "prior_asr_estimated_usd": prior_asr,
+            "total_estimated_usd": total_estimate,
+            "completed_chunk_count": completed_chunk_count,
+            "remaining_chunk_count": remaining_chunk_count,
+            "total_chunk_count": total_chunk_count,
+        }
+    if total_estimate > total_cap:
+        return {
+            "ok": False,
+            "code": "ASR_SYNC_TOTAL_BUDGET_EXCEEDED",
+            "blocker": f"ASR_SYNC_TOTAL_BUDGET_EXCEEDED: estimated prior spend plus ASR ${total_estimate:.4f} exceeds total cap ${total_cap:.4f}.",
+            "cap_env": cap_env,
+            "duration_seconds": total_duration,
+            "remaining_duration_seconds": remaining_duration,
+            "completed_duration_seconds": completed_duration,
+            "estimated_asr_cost_usd": asr_estimate,
+            "asr_cap_usd": cap,
+            "prior_estimated_usd": prior,
+            "prior_asr_estimated_usd": prior_asr,
+            "total_budget_cap_usd": total_cap,
+            "total_estimated_usd": total_estimate,
+            "completed_chunk_count": completed_chunk_count,
+            "remaining_chunk_count": remaining_chunk_count,
+            "total_chunk_count": total_chunk_count,
+        }
+    return {
+        "ok": True,
+        "code": "ASR_SYNC_BUDGET_OK",
+        "cap_env": cap_env,
+        "rate_env": ASR_SYNC_ESTIMATED_USD_PER_MINUTE_ENV,
+        "estimated_usd_per_minute": rate,
+        "duration_seconds": total_duration,
+        "remaining_duration_seconds": remaining_duration,
+        "completed_duration_seconds": completed_duration,
+        "duration_minutes": round(minutes, 4),
+        "estimated_asr_cost_usd": asr_estimate,
+        "asr_cap_usd": cap,
+        "prior_estimated_usd": prior,
+        "prior_asr_estimated_usd": prior_asr,
+        "total_budget_cap_usd": total_cap,
+        "total_estimated_usd": total_estimate,
+        "completed_chunk_count": completed_chunk_count,
+        "remaining_chunk_count": remaining_chunk_count,
+        "total_chunk_count": total_chunk_count,
     }
 
 
@@ -478,6 +800,116 @@ def transcribe_file(client, path: Path, args) -> dict:
     if isinstance(result, dict):
         return result
     return json.loads(result.json())
+
+
+def transcribe_chunk_with_checkpoint(
+    client,
+    path: Path,
+    args,
+    chunk: dict,
+    run_dir: Path,
+    *,
+    fallback_index: int = 0,
+    resume: bool | None = None,
+    force: bool | None = None,
+    max_retries: int | None = None,
+) -> dict:
+    checkpoint_path = asr_checkpoint_path(run_dir, chunk, fallback_index)
+    checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+    existing = read_json(checkpoint_path, {})
+    should_resume = asr_resume_from_checkpoints() if resume is None else bool(resume)
+    should_force = asr_force_retranscribe(args) if force is None else bool(force)
+    duration = float(chunk.get("duration_seconds") or ffprobe_duration(path) or 0.0)
+    chunk_id = asr_checkpoint_id(chunk, fallback_index)
+    provider = "openai"
+    model = ASR_MODEL
+    if should_resume and not should_force and successful_asr_checkpoint(existing):
+        return {
+            "status": "SKIPPED_EXISTING",
+            "checkpoint_path": checkpoint_path,
+            "checkpoint": existing,
+            "payload": checkpoint_payload_to_transcription_payload(existing),
+            "attempts": int(existing.get("attempts") or 0),
+        }
+
+    retry_limit = asr_max_retries_per_chunk() if max_retries is None else max(int(max_retries), 0)
+    max_attempts = retry_limit + 1
+    existing_attempts = 0
+    if isinstance(existing, dict) and existing.get("status") in {"FAILED", "PROVIDER_TIMEOUT"}:
+        try:
+            existing_attempts = int(existing.get("attempts") or 0)
+        except (TypeError, ValueError):
+            existing_attempts = 0
+    if should_resume and not should_force and existing_attempts >= max_attempts:
+        existing.setdefault("status", "FAILED")
+        return {
+            "status": str(existing.get("status") or "FAILED"),
+            "checkpoint_path": checkpoint_path,
+            "checkpoint": existing,
+            "payload": {},
+            "attempts": existing_attempts,
+        }
+
+    last_checkpoint: dict = {}
+    for attempt in range(existing_attempts + 1, max_attempts + 1):
+        started_at = iso_now()
+        try:
+            payload = transcribe_file(client, path, args)
+            text, _ = asr_words(payload, 0.0)
+            checkpoint = {
+                "slug": args.slug,
+                "chunk_id": chunk_id,
+                "chunk_audio_path": rel(path),
+                "status": "PASS",
+                "attempts": attempt,
+                "transcript_text": text,
+                "transcript_chars": len(text),
+                "duration_seconds": duration,
+                "provider": provider,
+                "model": model,
+                "started_at": started_at,
+                "completed_at": iso_now(),
+                "error": None,
+                "estimated_cost_usd": asr_estimated_cost_for_duration(duration),
+                "words": payload.get("words") if isinstance(payload.get("words"), list) else [],
+                "segments": payload.get("segments") if isinstance(payload.get("segments"), list) else [],
+            }
+            write_json(checkpoint_path, checkpoint)
+            return {
+                "status": "PASS",
+                "checkpoint_path": checkpoint_path,
+                "checkpoint": checkpoint,
+                "payload": payload,
+                "attempts": attempt,
+            }
+        except Exception as exc:  # noqa: BLE001
+            status = "PROVIDER_TIMEOUT" if asr_timeout_exception(exc) else "FAILED"
+            last_checkpoint = {
+                "slug": args.slug,
+                "chunk_id": chunk_id,
+                "chunk_audio_path": rel(path),
+                "status": status,
+                "attempts": attempt,
+                "transcript_text": "",
+                "transcript_chars": 0,
+                "duration_seconds": duration,
+                "provider": provider,
+                "model": model,
+                "started_at": started_at,
+                "completed_at": iso_now(),
+                "error": str(exc)[:1000],
+                "estimated_cost_usd": asr_estimated_cost_for_duration(duration),
+            }
+            write_json(checkpoint_path, last_checkpoint)
+            if status == "PROVIDER_TIMEOUT":
+                break
+    return {
+        "status": str(last_checkpoint.get("status") or "FAILED"),
+        "checkpoint_path": checkpoint_path,
+        "checkpoint": last_checkpoint,
+        "payload": {},
+        "attempts": int(last_checkpoint.get("attempts") or max_attempts),
+    }
 
 
 def split_audio_chunks(audio_path: Path, run_dir: Path, *, chunk_seconds: int = ASR_CHUNK_SECONDS) -> tuple[list[dict], dict]:
@@ -1375,7 +1807,12 @@ def run_openai_listening_judge(args, audio_path: Path, run_dir: Path, samples: l
         return None
     if not os.environ.get("OPENAI_API_KEY"):
         return {"_external_judge_error": "LISTENING_QA_NOT_RUN: OPENAI_API_KEY missing; OpenAI listening QA cannot run."}
-    budget_guard = openai_listening_qa_budget_guard(sample_count=len(samples) or 1)
+    asr_budget = read_json(run_dir / "asr_sync_budget_guard.json", {})
+    total_before_listening = asr_sync_prior_estimated_usd(run_dir) + safe_float(
+        asr_budget.get("estimated_asr_cost_usd") if isinstance(asr_budget, dict) else 0.0,
+        0.0,
+    )
+    budget_guard = openai_listening_qa_budget_guard(sample_count=len(samples) or 1, total_estimated_usd=total_before_listening)
     if not budget_guard.get("ok"):
         return {"_external_judge_error": budget_guard.get("blocker", "LISTENING_QA_BUDGET_BLOCKED"), "listening_qa_budget_guard": budget_guard}
     try:
@@ -1577,21 +2014,7 @@ def main() -> int:
             },
         )
 
-    if not os.environ.get("OPENAI_API_KEY"):
-        return finish(args, "asr_sync", started, status="BLOCKED", blocker_category="asr", blockers=["OPENAI_API_KEY is required for ASR transcript validation."], retryable=True)
-
-    try:
-        from openai import OpenAI
-
-        client = OpenAI()
-    except Exception as exc:  # noqa: BLE001
-        return finish(args, "asr_sync", started, status="BLOCKED", blocker_category="asr", blockers=[f"OpenAI SDK unavailable: {exc}"], retryable=True)
-
     chunk_manifest = load_chunk_manifest(run_dir)
-    transcript_parts: list[str] = []
-    words: list[dict] = []
-    asr_chunks = []
-    offset = 0.0
     chunks = chunk_manifest.get("chunks") or []
     split_report: dict = {"status": "NOT_RUN"}
     if not chunks:
@@ -1608,23 +2031,161 @@ def main() -> int:
                 retryable=True,
                 metrics=split_report,
             )
+    if not chunks:
+        chunks = [{"index": 0, "path": rel(final_audio), "duration_seconds": ffprobe_duration(final_audio) or 0.0, "offset_seconds": 0.0}]
+
+    duration_for_budget = sum(float(chunk.get("duration_seconds") or 0.0) for chunk in chunks) or ffprobe_duration(final_audio) or 0.0
+    prior_estimate = asr_sync_prior_estimated_usd(run_dir)
+    checkpoint_summary = asr_checkpoint_summary(run_dir, chunks)
+    budget_guard = asr_sync_budget_guard(
+        duration_seconds=duration_for_budget,
+        prior_estimated_usd=prior_estimate,
+        completed_duration_seconds=float(checkpoint_summary.get("completed_duration_seconds") or 0.0),
+        prior_asr_estimated_usd=float(checkpoint_summary.get("completed_estimated_asr_cost_usd") or 0.0),
+        completed_chunk_count=int(checkpoint_summary.get("completed_chunks") or 0),
+        remaining_chunk_count=int(checkpoint_summary.get("remaining_chunks") or 0),
+        total_chunk_count=int(checkpoint_summary.get("total_chunks") or 0),
+    )
+    budget_guard["checkpoint_summary"] = checkpoint_summary
+    budget_guard["resume_from_checkpoints"] = asr_resume_from_checkpoints()
+    budget_guard["force_retranscribe"] = asr_force_retranscribe(args)
+    budget_guard["request_timeout_seconds"] = asr_request_timeout_seconds()
+    budget_guard["max_retries_per_chunk"] = asr_max_retries_per_chunk()
+    budget_guard_path = run_dir / "asr_sync_budget_guard.json"
+    write_json(budget_guard_path, budget_guard)
+    if not budget_guard.get("ok"):
+        return finish(
+            args,
+            "asr_sync",
+            started,
+            status="BLOCKED",
+            ready_for_next_stage=False,
+            blocker_category="asr_budget",
+            blockers=[budget_guard.get("blocker", "ASR_SYNC_BUDGET_BLOCKED")],
+            retryable=False,
+            artifacts={"asr_sync_budget_guard": rel(budget_guard_path)},
+            metrics=budget_guard,
+        )
+
+    if not os.environ.get("OPENAI_API_KEY"):
+        return finish(args, "asr_sync", started, status="BLOCKED", blocker_category="asr", blockers=["OPENAI_API_KEY is required for ASR transcript validation."], retryable=True)
+
+    try:
+        from openai import OpenAI
+
+        request_timeout = asr_request_timeout_seconds()
+        try:
+            client = OpenAI(timeout=request_timeout, max_retries=0)
+        except TypeError:
+            client = OpenAI(timeout=request_timeout)
+    except Exception as exc:  # noqa: BLE001
+        return finish(args, "asr_sync", started, status="BLOCKED", blocker_category="asr", blockers=[f"OpenAI SDK unavailable: {exc}"], retryable=True)
+
+    transcript_parts: list[str] = []
+    words: list[dict] = []
+    asr_chunks = []
+    offset = 0.0
     if chunks:
-        for chunk in chunks:
+        for index, chunk in enumerate(chunks):
             path = resolve_artifact(chunk.get("path", ""), run_dir)
             duration = float(chunk.get("duration_seconds") or ffprobe_duration(path) or 0)
-            payload = transcribe_file(client, path, args)
+            checkpoint_result = transcribe_chunk_with_checkpoint(
+                client,
+                path,
+                args,
+                chunk,
+                run_dir,
+                fallback_index=index,
+                resume=asr_resume_from_checkpoints(),
+                force=asr_force_retranscribe(args),
+                max_retries=asr_max_retries_per_chunk(),
+            )
+            checkpoint_status = checkpoint_result.get("status")
+            if checkpoint_status not in {"PASS", "SKIPPED_EXISTING"}:
+                checkpoint_path = checkpoint_result.get("checkpoint_path")
+                return finish(
+                    args,
+                    "asr_sync",
+                    started,
+                    status="BLOCKED",
+                    ready_for_next_stage=False,
+                    blocker_category="asr_timeout" if checkpoint_status == "PROVIDER_TIMEOUT" else "asr",
+                    blockers=[
+                        f"ASR_CHECKPOINT_{checkpoint_status}: {asr_checkpoint_id(chunk, index)} did not complete; resume after owner-approved bounded retry."
+                    ],
+                    retryable=True,
+                    artifacts={
+                        "asr_checkpoint": rel(checkpoint_path) if checkpoint_path else "",
+                        "asr_sync_budget_guard": rel(budget_guard_path),
+                    },
+                    metrics={
+                        "checkpoint": checkpoint_result.get("checkpoint"),
+                        "budget_guard": budget_guard,
+                    },
+                )
+            payload = checkpoint_result["payload"]
             chunk_offset = float(chunk.get("offset_seconds", offset) or 0.0)
             text, chunk_words = asr_words(payload, chunk_offset)
             transcript_parts.append(text)
             words.extend(chunk_words)
-            asr_chunks.append({"index": chunk.get("index"), "path": rel(path), "duration_seconds": duration, "word_count": len(chunk_words), "text": text[:300]})
+            asr_chunks.append(
+                {
+                    "index": chunk.get("index"),
+                    "chunk_id": asr_checkpoint_id(chunk, index),
+                    "path": rel(path),
+                    "duration_seconds": duration,
+                    "word_count": len(chunk_words),
+                    "text": text[:300],
+                    "checkpoint": rel(checkpoint_result.get("checkpoint_path")),
+                    "checkpoint_status": checkpoint_status,
+                    "checkpoint_attempts": checkpoint_result.get("attempts"),
+                }
+            )
             offset = chunk_offset + duration if chunk.get("offset_seconds") is not None else offset + duration
     else:
-        payload = transcribe_file(client, final_audio, args)
+        chunk = {"index": 0, "path": rel(final_audio), "duration_seconds": ffprobe_duration(final_audio) or 0.0, "offset_seconds": 0.0}
+        checkpoint_result = transcribe_chunk_with_checkpoint(
+            client,
+            final_audio,
+            args,
+            chunk,
+            run_dir,
+            fallback_index=0,
+            resume=asr_resume_from_checkpoints(),
+            force=asr_force_retranscribe(args),
+            max_retries=asr_max_retries_per_chunk(),
+        )
+        if checkpoint_result.get("status") not in {"PASS", "SKIPPED_EXISTING"}:
+            return finish(
+                args,
+                "asr_sync",
+                started,
+                status="BLOCKED",
+                ready_for_next_stage=False,
+                blocker_category="asr_timeout" if checkpoint_result.get("status") == "PROVIDER_TIMEOUT" else "asr",
+                blockers=["ASR_CHECKPOINT_FAILED: full-audio transcription did not complete; resume after owner-approved bounded retry."],
+                retryable=True,
+                artifacts={
+                    "asr_checkpoint": rel(checkpoint_result.get("checkpoint_path")),
+                    "asr_sync_budget_guard": rel(budget_guard_path),
+                },
+                metrics={"checkpoint": checkpoint_result.get("checkpoint"), "budget_guard": budget_guard},
+            )
+        payload = checkpoint_result["payload"]
         text, file_words = asr_words(payload, 0.0)
         transcript_parts.append(text)
         words.extend(file_words)
-        asr_chunks.append({"path": rel(final_audio), "word_count": len(file_words), "text": text[:300]})
+        asr_chunks.append(
+            {
+                "path": rel(final_audio),
+                "chunk_id": asr_checkpoint_id(chunk, 0),
+                "word_count": len(file_words),
+                "text": text[:300],
+                "checkpoint": rel(checkpoint_result.get("checkpoint_path")),
+                "checkpoint_status": checkpoint_result.get("status"),
+                "checkpoint_attempts": checkpoint_result.get("attempts"),
+            }
+        )
 
     transcript = "\n".join(transcript_parts)
     transcript_path = run_dir / "asr_transcript.txt"
@@ -1635,6 +2196,8 @@ def main() -> int:
     metrics["asr_chunks"] = asr_chunks
     metrics["asr_language"] = asr_language_code(args.language)
     metrics["asr_split_report"] = split_report
+    metrics["asr_sync_budget_guard"] = budget_guard
+    metrics["asr_checkpoint_summary"] = asr_checkpoint_summary(run_dir, chunks)
     metrics["word_timestamp_count"] = len(words)
     diagnosis_path = run_dir / "asr_alignment_diagnosis.json"
     write_json(diagnosis_path, metrics)

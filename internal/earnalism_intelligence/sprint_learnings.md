@@ -264,3 +264,9 @@
 - `bn-066` ran one Sarvam `pooja` / `literary_warm_pacing` representative audition under `MAX_TTS_BUDGET_USD=5` and listening-QA cap `1`.
 - The generated 45 second sample passed schema-3 QA under `bengali_audiobook_acceptance_v2_92`: overall `9.3`, confidence `0.95`, no fatal flags, and no frontmatter.
 - Estimated total spend is `0.0619 USD`; actual provider billing was not reported. `bn-066` is ready for full-book TTS owner approval, but public Listen/upload/release gates remain blocked until full objective gates pass.
+
+- 2026-07-10T10:54:33Z: Stage 2 generated private full-book `bn-066` Sarvam/pooja audio under the 5 USD cap (`1.2226 USD` estimated, actual billing not reported). Keep release gates closed until bounded ASR/source alignment and full-book listening QA pass.
+
+- 2026-07-10T17:18:06Z: Stage 3 added an ASR budget gate and attempted bounded full-book ASR for `bn-066`, but OpenAI transcription stalled around `group_0079`/152. Keep release gates closed and add resumable per-chunk ASR checkpointing before retry.
+
+- 2026-07-10T17:34:29Z: Stage 3B reclassified the `bn-066` ASR state as `ASR_CHECKPOINT_REPAIR_REQUIRED`, added per-chunk ASR checkpoints, request timeout, bounded retry controls, and remaining-chunk budget estimation. No provider calls ran; keep release gates closed until an owner-approved bounded checkpoint resume completes ASR/source alignment and listening QA.

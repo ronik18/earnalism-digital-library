@@ -16,6 +16,7 @@ sys.path.insert(0, str(HOOK_DIR))
 from asr_sync_hook import (  # noqa: E402
     BENGALI_AUDIOBOOK_92_POLICY,
     BENGALI_PREMIUM_MVP_POLICY,
+    asr_sync_budget_guard,
     evaluate_listening_evidence,
     judge_audio_sample_with_openai,
     openai_listening_qa_budget_guard,
@@ -399,6 +400,47 @@ def assert_openai_call_not_made_before_budget_gate() -> None:
     assert judged["blocker_reason"] == "LISTENING_QA_BUDGET_GATE_MISSING", judged
 
 
+def assert_asr_budget_gate_blocks_when_missing() -> None:
+    with temporary_env(EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD=None, MAX_TTS_BUDGET_USD="5"):
+        guard = asr_sync_budget_guard(duration_seconds=21449.85075, prior_estimated_usd=1.2226)
+    assert not guard["ok"], guard
+    assert guard["code"] == "ASR_SYNC_BUDGET_GATE_MISSING", guard
+
+
+def assert_asr_budget_gate_blocks_over_cap() -> None:
+    with temporary_env(
+        EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD="1",
+        EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE="0.008",
+        MAX_TTS_BUDGET_USD="5",
+    ):
+        guard = asr_sync_budget_guard(duration_seconds=21449.85075, prior_estimated_usd=1.2226)
+    assert not guard["ok"], guard
+    assert guard["code"] == "ASR_SYNC_BUDGET_EXCEEDED", guard
+
+
+def assert_asr_budget_gate_blocks_total_budget() -> None:
+    with temporary_env(
+        EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD="3",
+        EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE="0.008",
+        MAX_TTS_BUDGET_USD="3",
+    ):
+        guard = asr_sync_budget_guard(duration_seconds=21449.85075, prior_estimated_usd=1.2226)
+    assert not guard["ok"], guard
+    assert guard["code"] == "ASR_SYNC_TOTAL_BUDGET_EXCEEDED", guard
+
+
+def assert_asr_budget_gate_allows_within_cap() -> None:
+    with temporary_env(
+        EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD="3",
+        EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE="0.008",
+        MAX_TTS_BUDGET_USD="5",
+    ):
+        guard = asr_sync_budget_guard(duration_seconds=21449.85075, prior_estimated_usd=1.2226)
+    assert guard["ok"], guard
+    assert guard["estimated_asr_cost_usd"] == 2.86, guard
+    assert guard["total_estimated_usd"] == 4.0826, guard
+
+
 def main() -> int:
     assert_missing_schema_blocks()
     assert_complete_schema_passes()
@@ -414,6 +456,10 @@ def main() -> int:
     assert_listening_qa_budget_gate_blocks_over_cap()
     assert_listening_qa_budget_gate_allows_within_cap()
     assert_openai_call_not_made_before_budget_gate()
+    assert_asr_budget_gate_blocks_when_missing()
+    assert_asr_budget_gate_blocks_over_cap()
+    assert_asr_budget_gate_blocks_total_budget()
+    assert_asr_budget_gate_allows_within_cap()
     print("listening QA schema 3 regression checks PASS")
     return 0
 
