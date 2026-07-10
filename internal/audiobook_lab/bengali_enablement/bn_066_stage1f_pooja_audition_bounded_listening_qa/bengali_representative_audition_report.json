@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-07-10T09:31:23Z",
+  "status": "PASS",
+  "pass_fail_decision": "BENGALI_AUDIO_PATH_FOUND",
+  "release_policy": "bengali_audiobook_acceptance_v2_92",
+  "policy_decision_path": "internal/audiobook_lab/release_gate/bengali_audiobook_acceptance_v2_92_policy_decision.json",
+  "candidate_source": "explicit_candidate_slugs",
+  "pilot_candidate_selected": "bn-066",
+  "provider": "sarvam",
+  "model": "bulbul:v3",
+  "voice": "pooja",
+  "best_style_profile": "literary_warm_pacing",
+  "representative_score": 9.3,
+  "confidence": 0.95,
+  "any_audition_passed": true,
+  "representative_passed_9_2": true,
+  "fatal_flags_required": {
+    "robotic_texture_detected": false,
+    "mechanical_cadence_detected": false,
+    "choppy_joins_detected": false,
+    "fallback_tts_detected": false,
+    "list_reading_rhythm_detected": false,
+    "repeated_identical_sentence_endings_detected": false,
+    "abrupt_tts_resets_detected": false,
+    "placeholder_audio_detected": false
+  },
+  "passage_scores": [
+    {
+      "provider": "sarvam",
+      "model": "bulbul:v3",
+      "voice": "pooja",
+      "style_profile": "literary_warm_pacing",
+      "passage_id": "narrative_opening",
+      "passage_slug": "bn-066",
+      "overall_listening_score": 9.3,
+      "confidence_score": 0.95,
+      "naturalness_score": 9.5,
+      "pronunciation_score": 9.4,
+      "emotional_expression_score": 9.3,
+      "punctuation_pause_score": 9.2,
+      "pacing_score": 9.1,
+      "continuity_score": 9.4,
+      "red_flags": {},
+      "status": "PASS",
+      "blockers": []
+    }
+  ],
+  "style_summary": [
+    {
+      "provider": "sarvam",
+      "voice": "pooja",
+      "model": "bulbul:v3",
+      "style": "literary_warm_pacing",
+      "representative_score": 9.3,
+      "representative_confidence": 0.95,
+      "red_flags": [],
+      "passage_count": 1,
+      "expected_passage_count": 1,
+      "status": "PASS",
+      "blockers": []
+    }
+  ],
+  "adaptive_early_stop_events": [],
+  "cost_estimate": {
+    "estimated_cost_usd": 0.0119,
+    "budget_usd": 5.0,
+    "actual_cost_if_available": "not_available"
+  },
+  "recommendation": "Generate one guarded Bengali pilot with the selected provider/voice under the recorded release policy.",
+  "report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_tts_provider_bakeoff_report.json"
+}

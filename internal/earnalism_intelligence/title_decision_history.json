@@ -1,0 +1,1055 @@
+{
+    "version": "2026-07-06",
+    "titles": {
+        "bn-031": {
+            "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+            "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-0deb35c750": {
+            "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+            "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-2ddbed8293": {
+            "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+            "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+            "updated_at": "2026-07-07T12:08:38Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_CANARY_PREFLIGHT_REPAIR",
+            "bengali_audiobook_campaign_next_action": "Repair audiobook-clean frontmatter before paid canary.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-2e468c4990": {
+            "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+            "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-63afd5e9be": {
+            "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+            "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-754da4eab8": {
+            "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+            "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-a74c1a1451": {
+            "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+            "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-c7f3ce526c": {
+            "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+            "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-d19e96859f": {
+            "latest_decision": "BENGALI_CANARY_GROUP_ONLY_REPAIR_REQUIRED_READER_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "Full Sarvam canary TTS is not publishable because final group contains standalone source year ১২৯৮?; source verifier false-positive on পৃ was fixed, but group 4 must be regenerated and all downstream gates rerun.",
+            "updated_at": "2026-07-07T19:08:13Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "GROUP_ONLY_SOURCE_REPAIR_REQUIRED",
+            "audiobook_next_action": "regenerate only group 4 with Sarvam, then rerun TTS-by-construction, ASR diagnostic, listening, measured sync, upload, metadata, endpoint, and browser gates",
+            "bengali_audiobook_campaign_state": "READY_FOR_GROUP_ONLY_REPAIR",
+            "bengali_audiobook_campaign_next_action": "Run group-only repair command with EARNALISM_SARVAM_GROUP_REPAIR_MANIFEST pointing at the 20260707T155229Z manifest.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-d2fe532e1c": {
+            "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+            "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-f5d593e1f4": {
+            "latest_decision": "BENGALI_CANARY_GROUP_ONLY_REPAIR_REQUIRED_READER_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "Full Sarvam canary TTS is not publishable because final group contains standalone source year ১২৯৮?; source verifier false-positive on পৃ was fixed, but group 7 must be regenerated and all downstream gates rerun.",
+            "updated_at": "2026-07-07T19:08:13Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "GROUP_ONLY_SOURCE_REPAIR_REQUIRED",
+            "audiobook_next_action": "regenerate only group 7 with Sarvam, then rerun TTS-by-construction, ASR diagnostic, listening, measured sync, upload, metadata, endpoint, and browser gates",
+            "bengali_audiobook_campaign_state": "READY_FOR_GROUP_ONLY_REPAIR",
+            "bengali_audiobook_campaign_next_action": "Run group-only repair command with EARNALISM_SARVAM_GROUP_REPAIR_MANIFEST pointing at the 20260707T155229Z manifest.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "muchiram-gurer-jibanchorit": {
+            "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
+            "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
+            "updated_at": "2026-07-07T12:08:38Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "CANARY_PREFLIGHT_CLEAN_TEXT_PASS",
+            "bengali_audiobook_campaign_next_action": "Eligible for representative audition after locks/source preservation clear.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "bn-027": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "bn-035": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "bn-036": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "bn-041": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "bn-059": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "bn-060": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "bn-066": {
+            "latest_decision": "BENGALI_STAGE1F_REPRESENTATIVE_AUDITION_PASS_AUDIO_HIDDEN",
+            "decision_reason": "Stage 1F added a bounded OpenAI listening-QA budget gate and ran one bn-066 Sarvam pooja representative sample. The sample passed schema-3 Bengali audiobook 9.2 policy with overall score 9.3, confidence 0.95, no fatal flags, and no frontmatter. Public audio remains hidden until full-book objective gates pass.",
+            "updated_at": "2026-07-10T09:31:50Z",
+            "language": "ben",
+            "public_title": "আনন্দমঠ",
+            "bengali_title": "আনন্দমঠ",
+            "english_transliteration": "Anandamath",
+            "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+            "bengali_audio_lane_status": "REPRESENTATIVE_AUDITION_PASSED_AUDIO_HIDDEN",
+            "audiobook_next_action": "Request owner approval for guarded full-book bn-066 TTS only; do not publish or expose Listen until full source/listening/sync/upload/metadata/endpoint/browser gates pass.",
+            "bengali_audiobook_campaign_state": "REPRESENTATIVE_AUDITION_PASSED",
+            "bengali_audiobook_campaign_next_action": "Prepare a guarded full-book TTS owner-approval prompt for bn-066 with Sarvam pooja literary_warm_pacing and strict release gates.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_representative_full_source_listening_sync_upload_metadata_endpoint_browser_gates_pass",
+            "latest_prelaunch_evidence": {
+                "resolution": "bengali_prelaunch_two_title_resolution.json",
+                "rights_source": "bn-066_prelaunch_rights_source_audit.json",
+                "content": "bn-066_content_integrity_report.json",
+                "cover": "bn-066_cover_readiness_report.json",
+                "clean_text": "bn-066_audiobook_clean_text_report.json",
+                "audition": "internal/audiobook_lab/bengali_enablement/bn_066_stage1_audition/bengali_tts_provider_bakeoff_report.json",
+                "stage_1c": "internal/audiobook_lab/bengali_enablement/bn_066_stage1c_supported_voice_retry_report.md",
+                "stage_1d": "internal/audiobook_lab/bengali_enablement/bn_066_stage1d_pooja_audition_report.md",
+                "stage_1e": "internal/audiobook_lab/bengali_enablement/bn_066_stage1e_pooja_audition_with_listening_qa_report.md",
+                "stage_1f": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_tts_provider_bakeoff_report.json"
+            }
+        },
+        "book-1090573dff": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-2b9853ec52": {
+            "latest_decision": "BENGALI_AUDIOBOOK_LIVE",
+            "decision_reason": "First Bengali audiobook passed source/TTS-by-construction, listening, measured paragraph/stanza sync, upload, metadata, endpoint, and browser gates.",
+            "updated_at": "2026-07-07T12:08:38Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "BENGALI_AUDIOBOOK_LIVE",
+            "audiobook_next_action": "Do not rerun this pilot. Prepare the 3-title Bengali canary only after owner approval.",
+            "latest_audio_evidence_path": "book_2b9853ec52_goliveevidence.json",
+            "bengali_audiobook_campaign_state": "BENGALI_AUDIOBOOK_LIVE",
+            "bengali_audiobook_campaign_next_action": "Recommend, but do not start, the next 3-title canary.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "APPROVED_AND_LIVE",
+            "published": true,
+            "bengali_audiobook_forensics": {
+                "representative_score": 9.3,
+                "asr_score": 7.0199,
+                "tts_by_construction_verified": false,
+                "source_provenance_report_path": "book_2b9853ec52_tts_source_provenance_report.json",
+                "asr_provider_comparison_path": "book_2b9853ec52_bengali_asr_provider_comparison.json",
+                "closeout_path": "book_2b9853ec52_bengali_pilot_closeout.json"
+            },
+            "bengali_audiobook_repair": {
+                "planned_regenerated_groups": [
+                    0
+                ],
+                "planned_reused_groups": [
+                    1,
+                    2
+                ],
+                "tts_input_clean": true,
+                "tts_by_construction_verified_for_planned_sequence": true,
+                "report_paths": [
+                    "book_2b9853ec52_clean_tts_repair_plan.json",
+                    "book_2b9853ec52_clean_audiobook_text.json",
+                    "book_2b9853ec52_group_repair_report.json",
+                    "book_2b9853ec52_tts_source_provenance_report.json",
+                    "book_2b9853ec52_clean_repair_closeout.json"
+                ]
+            },
+            "provider": "sarvam",
+            "model": "bulbul:v3",
+            "voice": "ratan",
+            "style": "literary_warm_pacing",
+            "listening_score": 9.4,
+            "listening_confidence": 0.95,
+            "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+            "upload_checksum_status": "PASS",
+            "metadata_api_status": "PASS",
+            "audiobook_endpoint_status": 200,
+            "public_book_status": 200,
+            "reader_manifest_status": 200,
+            "source_verification": "TTS_BY_CONSTRUCTION_WITH_SUPPORTING_ASR",
+            "post_golive_verification": "PASS_WITH_DETAIL_COPY_MISMATCH",
+            "next_action": "Do not regenerate pilot audio; fix detail copy/source preservation before canary."
+        },
+        "book-4968248842": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-4b944e64fa": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-5704b31005": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-ac5a71075e": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "book-fbdf2991ab": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "lokrahasya": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "mrinalini": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "nishkriti": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "radharani": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "yugalanguriya": {
+            "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
+            "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
+            "updated_at": "2026-07-06T21:54:41Z",
+            "language": "ben",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+            "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+            "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+        },
+        "BN-007": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-010": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-014": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-023": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-029": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-032": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-033": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-034": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-037": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-038": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-039": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-040": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-042": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-043": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-044": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-046": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-047": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-048": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-049": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-050": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-051": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-052": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-053": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-054": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-055": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-058": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-061": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-063": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-064": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-065": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-069": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-070": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-071": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-072": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-075": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-076": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-078": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-079": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-080": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-081": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-082": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-085": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-086": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-087": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-088": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-089": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-090": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-091": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-092": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-093": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-094": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-095": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-096": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-097": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-098": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-099": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "BN-100": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-0986aeb7e3": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-0fbdaa730e": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-5461971092": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-5aedda79fe": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-827fdc7aee": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-88ded9b47c": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-95624627d5": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-9a7f771921": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-a23625bf36": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-a4a369483f": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-b9d47814a8": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-bfc51280b3": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-c307a57868": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-c85323409f": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-edfcf810c5": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "book-ef193ffc52": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "devdas": {
+            "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
+            "decision_reason": "repair missing content/rights/covers before reader-only go-live",
+            "updated_at": "2026-07-06T09:14:16.592489+00:00",
+            "language": "bn",
+            "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
+            "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+        },
+        "pather-panchali": {
+            "latest_decision": "BENGALI_PRELAUNCH_AUDIOBOOK_BLOCKED_SOURCE_SCOPE_AND_COVER",
+            "decision_reason": "Pather Panchali resolves to pather-panchali with ambiguity: local reader exists, but full-work source completeness cannot be proven from local artifacts, source-rights has owner/editor review caveat, and approved front/back cover URLs are missing.",
+            "updated_at": "2026-07-08T00:00:00+05:30",
+            "language": "bn",
+            "public_title": "পথের পাঁচালী / Pather Panchali",
+            "bengali_title": "পথের পাঁচালী",
+            "english_transliteration": "Pather Panchali",
+            "author": "Bibhutibhushan Bandyopadhyay",
+            "bengali_audio_lane_status": "PRELAUNCH_CANDIDATE_AUDIO_BLOCKED",
+            "audiobook_next_action": "Resolve full-work source scope and rights-review caveat, repair graphical front/back covers, then run representative audition only if those gates pass.",
+            "bengali_audiobook_campaign_state": "PRELAUNCH_BLOCKED_SOURCE_SCOPE_AND_COVER",
+            "bengali_audiobook_campaign_next_action": "Do not generate audio until source completeness and cover gates are fixed.",
+            "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
+            "bengali_audiobook_release_gate": "not_approved_until_source_cover_representative_full_source_listening_sync_upload_metadata_endpoint_browser_gates_pass",
+            "latest_prelaunch_evidence": {
+                "resolution": "bengali_prelaunch_two_title_resolution.json",
+                "rights_source": "pather-panchali_prelaunch_rights_source_audit.json",
+                "content": "pather-panchali_content_integrity_report.json",
+                "cover": "pather-panchali_cover_readiness_report.json",
+                "clean_text": "pather-panchali_audiobook_clean_text_report.json",
+                "audition": "pather-panchali_sarvam_representative_audition_report.json"
+            }
+        }
+    },
+    "bengali_audio_lane_status": "BENGALI_AUDIOBOOK_FULL_PILOT_BLOCKED",
+    "bengali_audiobook_campaign_status": "PILOT_LIVE_CANARY_NO_GO_PREFLIGHT",
+    "bengali_audiobook_campaign_updated_at": "2026-07-07T12:08:38Z"
+}
