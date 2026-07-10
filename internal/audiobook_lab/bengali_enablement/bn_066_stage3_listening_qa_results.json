@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-07-10T17:34:29Z",
+  "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3B_FULL_BOOK_LISTENING_QA_HELD_FOR_ASR_CHECKPOINT_REPAIR",
+  "slug": "bn-066",
+  "status": "NOT_RUN_ASR_SOURCE_ALIGNMENT_BLOCKED",
+  "classification": "LISTENING_QA_NOT_RUN",
+  "reason": "Full-book ASR/source alignment did not complete; listening QA was not run to avoid compounding provider spend without source-alignment evidence. Stage 3B repaired the ASR hook for checkpointed resume preparation only and did not run provider calls.",
+  "planned_samples": [
+    "opening",
+    "middle",
+    "dialogue_or_difficult_phrase",
+    "ending"
+  ],
+  "budget_gate": {
+    "env": "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD",
+    "cap_usd": 0.75,
+    "estimated_qa_cost_usd": 0.3
+  },
+  "results": {
+    "overall_listening_score": null,
+    "confidence": null,
+    "fatal_flags": "NOT_RUN",
+    "pronunciation": "NOT_RUN",
+    "pacing": "NOT_RUN",
+    "tone": "NOT_RUN",
+    "clipping_noise": "NOT_RUN",
+    "missing_or_duplicated_content": "NOT_RUN",
+    "bengali_naturalness": "NOT_RUN"
+  },
+  "blockers": [
+    "ASR_CHECKPOINT_REPAIR_REQUIRED",
+    "ASR_SOURCE_ALIGNMENT_NOT_PROVEN",
+    "LISTENING_QA_NOT_RUN"
+  ],
+  "next_action": "Run bounded listening QA only after ASR/source alignment produces a complete transcript or owner authorizes a sampled-QA diagnostic path."
+}

@@ -1,350 +1,496 @@
 {
-    "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_1F_BOUNDED_LISTENING_QA_GATE_AND_BN_066_POOJA_AUDITION_RETRY",
-    "owner_decision": "AUTHORIZE_STAGE_1F_BOUNDED_LISTENING_QA_GATE_AND_BN_066_POOJA_AUDITION_RETRY",
-    "generated_at": "2026-07-10T09:31:50Z",
-    "status": "AUDITION_PASS",
-    "summary": "Stage 1F added a fail-closed OpenAI listening-QA budget gate, verified command-scoped TTS/listening-QA env caps and provider keys, acquired paid_tts.lock, and ran exactly one bn-066 Sarvam/pooja literary_warm_pacing representative sample. Sarvam generated a 45 second sample and schema-3 listening QA passed under bengali_audiobook_acceptance_v2_92 with overall_listening_score 9.3 and confidence 0.95. No public release gate, upload, publication, or Listen CTA changed.",
-    "budget": {
-        "authorized_cap_usd": 5.0,
-        "max_tts_budget_env": "5",
-        "repo_representative_budget_envs": {
-            "EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD": "5",
-            "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE": "2",
-            "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "true",
-            "EARNALISM_OPENAI_LISTENING_QA_MODEL": "gpt-audio",
-            "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "1"
-        },
-        "estimated_spend_usd": 0.0619,
-        "actual_spend_usd": "not_available",
-        "budget_remaining_usd": 4.9381,
-        "listening_qa_budget_gate_status": "PASS",
-        "estimated_tts_cost_usd": 0.0119,
-        "estimated_listening_qa_cost_usd": 0.05,
-        "provider_actual_cost_status": "not_reported_by_provider"
+  "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3B_RESUMABLE_ASR_CHECKPOINTING_PREPARATION",
+  "owner_decision": "AUTHORIZE_BENGALI_AUDIOBOOK_STAGE_3B_RESUMABLE_PER_CHUNK_ASR_CHECKPOINTING_AND_BOUNDED_RETRY_PREPARATION",
+  "generated_at": "2026-07-10T17:34:29Z",
+  "status": "ASR_CHECKPOINT_REPAIR_REQUIRED",
+  "summary": "Stage 3 attempted bounded full-book ASR for bn-066 and stalled around group_0079/152. Stage 3B reclassifies that as a resumability/checkpointing repair, adds per-chunk ASR checkpoints, request timeout, bounded retry controls, and remaining-chunk budget estimation before any future ASR provider retry. No provider calls ran in Stage 3B.",
+  "budget": {
+    "prior_tts_estimated_usd": 1.2226,
+    "full_asr_estimated_usd": 2.86,
+    "partial_asr_attempted_estimate_usd": 1.4863,
+    "actual_asr_spend_usd": "not_reported_by_provider_tools",
+    "configured_total_cap_usd": 5.0,
+    "budget_remaining_usd": "unknown_after_partial_asr_calls"
+  },
+  "provider_credentials_presence": {
+    "SARVAM_API_KEY": true,
+    "GOOGLE_APPLICATION_CREDENTIALS": true,
+    "GOOGLE_CLOUD_PROJECT": true,
+    "OPENAI_API_KEY": true,
+    "ELEVENLABS_API_KEY": false
+  },
+  "required_paid_env_gates": {
+    "MAX_TTS_BUDGET_USD": true,
+    "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS": true,
+    "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": true,
+    "EARNALISM_STOP_ON_BUDGET_EXCEEDED": true,
+    "EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD": true,
+    "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE": true,
+    "EARNALISM_ENABLE_OPENAI_LISTENING_QA": true,
+    "EARNALISM_OPENAI_LISTENING_QA_MODEL": true,
+    "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "NOT_REQUIRED_FOR_STAGE_1_REPRESENTATIVE_ONLY",
+    "EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN": "NOT_REQUIRED_AND_OUT_OF_SCOPE",
+    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": true
+  },
+  "lock": {
+    "before": "active/current_holder none",
+    "during": "audiobook_enablement_sprint_3_bn_066_asr_qa",
+    "after": {
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "last_closeout_status": "ASR_SYNC_INTERRUPTED_PROVIDER_RESPONSE_TIMEOUT_AT_GROUP_0079"
+    }
+  },
+  "stage3b_checkpoint_repair": {
+    "classification": "ASR_CHECKPOINT_REPAIR_REQUIRED",
+    "provider_calls_ran": false,
+    "checkpoint_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/asr_checkpoints",
+    "source_files": [
+      "internal/audiobook_lab/scripts/factory_hooks/asr_sync_hook.py",
+      "internal/audiobook_lab/scripts/factory_hooks/common.py",
+      "internal/audiobook_lab/scripts/test_asr_checkpointing.py"
+    ],
+    "env_controls": {
+      "resume": "EARNALISM_ASR_RESUME_FROM_CHECKPOINTS=true",
+      "timeout": "EARNALISM_ASR_REQUEST_TIMEOUT_SECONDS",
+      "max_retries": "EARNALISM_ASR_MAX_RETRIES_PER_CHUNK",
+      "retry_budget_cap": "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD",
+      "force_override": "--force or EARNALISM_ASR_FORCE_RETRANSCRIBE=true"
     },
-    "provider_credentials_presence": {
+    "validation": [
+      "python3 -m py_compile internal/audiobook_lab/scripts/factory_hooks/asr_sync_hook.py internal/audiobook_lab/scripts/factory_hooks/common.py internal/audiobook_lab/scripts/test_asr_checkpointing.py",
+      "python3 internal/audiobook_lab/scripts/test_asr_checkpointing.py",
+      "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
+    ],
+    "next_action": "Run owner-approved bounded ASR resume with checkpointing enabled and explicit retry cap; keep bn-066 audio hidden until ASR/source alignment and listening QA pass."
+  },
+  "candidate_preflight": [
+    {
+      "slug": "bn-066",
+      "role": "PRIMARY_CANDIDATE",
+      "title": "Anandamath",
+      "status": "AUDITION_PASS",
+      "reader_public_status": "controlled-publication reader data present",
+      "rights_status": "PASS",
+      "source_status": "PASS",
+      "text_cleanliness": "NEEDS_TTS_SAMPLE_CLEANING",
+      "evidence": [
+        "content/books/bn-066/source-rights.md",
+        "data/controlled_publications/bn-066/source_evidence.json",
+        "backend/data/controlled_publications/bn-066/source_evidence.json"
+      ],
+      "estimated_total_chars": 203672,
+      "sample_strategy": [
+        "opening prose after stripping source/page boilerplate",
+        "mid-book prose sample",
+        "dialogue or difficult phrase sample if budget remains"
+      ],
+      "paid_execution_status": "PASS_REPRESENTATIVE_AUDITION_ONLY",
+      "next_action": "Request owner approval for guarded bn-066 full-book TTS only; do not publish or expose Listen until full objective gates pass."
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "role": "CONDITIONAL_CANDIDATE",
+      "title": "Muchiram Gurer Jibanchorit",
+      "status": "NEEDS_SEGMENTATION_REPAIR",
+      "reader_public_status": "reader data present in root controlled-publication tree",
+      "rights_status": "PASS",
+      "source_status": "PASS",
+      "text_cleanliness": "COMPACT_SAMPLE_PREFERRED",
+      "evidence": [
+        "content/books/muchiram-gurer-jibanchorit/source-rights.md",
+        "data/controlled_publications/muchiram-gurer-jibanchorit/source_evidence.json",
+        "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T150228Z"
+      ],
+      "estimated_total_chars": 5968,
+      "paid_execution_status": "SKIPPED_UNTIL_TIMEOUT_SAMPLE_SPLIT",
+      "next_action": "Split opening sample into smaller chunks before any paid retry."
+    },
+    {
+      "slug": "book-d19e96859f",
+      "role": "REPAIR_DIAGNOSTIC_CANDIDATE",
+      "title": "Ginni",
+      "status": "NEEDS_ASR_SOURCE_REPAIR_DIAGNOSTIC",
+      "reader_public_status": "reader data present in root controlled-publication tree",
+      "rights_status": "PASS",
+      "source_status": "PASS",
+      "text_cleanliness": "KNOWN_SOURCE_FRONTMATTER_RISK",
+      "evidence": [
+        "content/books/book-d19e96859f/source-rights.md",
+        "data/controlled_publications/book-d19e96859f/source_evidence.json",
+        "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150228Z"
+      ],
+      "estimated_total_chars": 6515,
+      "paid_execution_status": "SKIPPED_PENDING_TARGETED_REPAIR_SAMPLE",
+      "next_action": "Run one small group-only repair diagnostic only after the cleaned target sample is defined and budget gates are present."
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "role": "REPAIR_DIAGNOSTIC_CANDIDATE",
+      "title": "Ramkanaiyer Nirbuddhita",
+      "status": "NEEDS_ASR_SOURCE_REPAIR_DIAGNOSTIC",
+      "reader_public_status": "reader data present in root controlled-publication tree",
+      "rights_status": "PASS",
+      "source_status": "PASS",
+      "text_cleanliness": "KNOWN_SOURCE_FRONTMATTER_RISK",
+      "evidence": [
+        "content/books/book-f5d593e1f4/source-rights.md",
+        "data/controlled_publications/book-f5d593e1f4/source_evidence.json",
+        "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T150741Z"
+      ],
+      "estimated_total_chars": 9493,
+      "paid_execution_status": "SKIPPED_PENDING_TARGETED_REPAIR_SAMPLE",
+      "next_action": "Run one small group-only repair diagnostic only after the cleaned target sample is defined and budget gates are present."
+    },
+    {
+      "slug": "pather-panchali",
+      "role": "RIGHTS_SOURCE_COVER_REPAIR_TRACK",
+      "title": "Pather Panchali",
+      "status": "NO_PAID_AUDIO_UNTIL_RIGHTS_SOURCE_SCOPE_AND_COVER_REPAIR_PASS",
+      "reader_public_status": "reader data present but launch scope remains repair-gated",
+      "rights_status": "NEEDS_OWNER_SCOPE_REVIEW_BEFORE_AUDIO",
+      "source_status": "NEEDS_SCOPE_REVIEW_BEFORE_AUDIO",
+      "paid_execution_status": "SKIPPED",
+      "next_action": "Finish rights/source/cover repair packet before any paid audition."
+    },
+    {
+      "slug": "a-ghost-story",
+      "role": "LOW_PRIORITY_ENGLISH_AUDIO_CANDIDATE",
+      "title": "A Ghost Story",
+      "status": "READER_FIRST_AUDIO_HIDDEN_FOR_THIS_SPRINT",
+      "reader_public_status": "reader route restored in prior sprint",
+      "rights_status": "PASS",
+      "source_status": "PASS",
+      "paid_execution_status": "SKIPPED_BENGALI_PRIORITY_AND_NO_REMAINING_JUSTIFICATION",
+      "next_action": "Keep reader-first/audio-hidden unless a separate English-audio audition sprint is authorized."
+    }
+  ],
+  "auditions": [
+    {
+      "slug": "bn-066",
+      "provider": "sarvam",
+      "requested_voice": "ratan",
+      "requested_style": "literary_warm_pacing",
+      "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1_audition",
+      "report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1_audition/bengali_tts_provider_bakeoff_report.json",
+      "status": "BLOCKED_BEFORE_PAID_AUDITION",
+      "blockers": [
+        "No supported Bengali TTS provider voices are available in this environment."
+      ],
+      "voices_listed": [
+        "pooja"
+      ],
+      "voice_filter_used": "sarvam:ratan",
+      "estimated_cost_usd": 0.0119,
+      "actual_cost_if_available": "not_available",
+      "actual_spend_usd": 0.0,
+      "output_path": null
+    },
+    {
+      "slug": "bn-066",
+      "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_1C_BN_066_SUPPORTED_VOICE_RETRY",
+      "provider": "sarvam",
+      "preferred_voice": "ratan",
+      "fallback_voice": "pooja",
+      "selected_voice": null,
+      "requested_style": "literary_warm_pacing",
+      "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1_audition_supported_voice_retry",
+      "status": "BLOCKED_BEFORE_PROVIDER_CALL",
+      "blockers": [
+        "MAX_TTS_BUDGET_USD missing or not equal to 5",
+        "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS missing",
+        "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF missing",
+        "EARNALISM_STOP_ON_BUDGET_EXCEEDED missing",
+        "EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD missing",
+        "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE missing"
+      ],
+      "prior_supported_voices": [
+        "pooja"
+      ],
+      "ratan_available": false,
+      "pooja_available_from_stage_1b_probe": true,
+      "estimated_cost_usd": 0.0,
+      "actual_cost_if_available": "not_run",
+      "actual_spend_usd": 0.0,
+      "output_path": null
+    },
+    {
+      "slug": "bn-066",
+      "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_1D_BN_066_POOJA_REPRESENTATIVE_AUDITION",
+      "provider": "sarvam",
+      "preferred_voice": "pooja",
+      "selected_voice": "pooja",
+      "requested_style": "literary_warm_pacing",
+      "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1d_pooja_audition",
+      "report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1d_pooja_audition/bengali_tts_provider_bakeoff_report.json",
+      "status": "BLOCKED_BEFORE_SYNTHESIS",
+      "blockers": [
+        "LISTENING_QA_NOT_AVAILABLE: OpenAI listening-QA must be available before provider auditions can continue."
+      ],
+      "voices_tested": [
+        {
+          "provider": "sarvam",
+          "voice": "pooja",
+          "language_code": "bn-IN"
+        }
+      ],
+      "passage_ids": [
+        "narrative_opening"
+      ],
+      "sample_text_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1d_pooja_audition/bakeoff_passages.json",
+      "text_hash": "bffb26c0d4bf09387f87b2885e5d89c87a37fabee8631cf834f8d34c10c0555a",
+      "estimated_cost_usd": 0.0119,
+      "actual_cost_if_available": "not_available",
+      "actual_spend_usd": 0.0,
+      "output_path": null,
+      "new_samples_generated": 0
+    },
+    {
+      "slug": "bn-066",
+      "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_1E_BN_066_POOJA_AUDITION_WITH_LISTENING_QA",
+      "provider": "sarvam",
+      "preferred_voice": "pooja",
+      "selected_voice": "pooja",
+      "requested_style": "literary_warm_pacing",
+      "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1e_pooja_audition_with_listening_qa",
+      "status": "BLOCKED_BEFORE_LOCK_AND_PROVIDER_CALL",
+      "blockers": [
+        "LISTENING_QA_BUDGET_GATE_MISSING: EARNALISM_ENABLE_OPENAI_LISTENING_QA and EARNALISM_OPENAI_LISTENING_QA_MODEL were present, but no repo-enforced bounded OpenAI/listening-QA USD cap was found."
+      ],
+      "provider_keys_present": {
         "SARVAM_API_KEY": true,
-        "GOOGLE_APPLICATION_CREDENTIALS": true,
-        "GOOGLE_CLOUD_PROJECT": true,
-        "OPENAI_API_KEY": true,
-        "ELEVENLABS_API_KEY": false
+        "OPENAI_API_KEY": true
+      },
+      "model_env": {
+        "EARNALISM_OPENAI_LISTENING_QA_MODEL": "gpt-audio"
+      },
+      "passage_ids": [
+        "narrative_opening"
+      ],
+      "sample_text_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1d_pooja_audition/bakeoff_passages.json",
+      "estimated_cost_usd": 0.0119,
+      "actual_cost_if_available": "not_run",
+      "actual_spend_usd": 0.0,
+      "output_path": null,
+      "new_samples_generated": 0
     },
-    "required_paid_env_gates": {
-        "MAX_TTS_BUDGET_USD": true,
-        "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS": true,
-        "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": true,
-        "EARNALISM_STOP_ON_BUDGET_EXCEEDED": true,
-        "EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD": true,
-        "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE": true,
-        "EARNALISM_ENABLE_OPENAI_LISTENING_QA": true,
-        "EARNALISM_OPENAI_LISTENING_QA_MODEL": true,
-        "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "NOT_REQUIRED_FOR_STAGE_1_REPRESENTATIVE_ONLY",
-        "EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN": "NOT_REQUIRED_AND_OUT_OF_SCOPE",
-        "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": true
-    },
-    "lock": {
-        "path": "internal/earnalism_intelligence/locks/paid_tts.lock",
-        "before": {
-            "status": "active",
-            "current_holder": "none",
-            "allowed_next_holders": []
-        },
-        "temporary_holder": "audiobook_enablement_sprint_1",
-        "holder_started_at": "2026-07-10T09:30:45Z",
-        "holder_closed_at": "2026-07-10T09:31:50Z",
-        "holder_scope": "Stage 1F representative audition for bn-066 only; Sarvam pooja literary_warm_pacing; one 45 second sample; OpenAI listening QA bounded by 1 USD sub-cap and 5 USD total cap.",
-        "closeout_required": false
-    },
-    "candidate_preflight": [
+    {
+      "slug": "bn-066",
+      "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_1F_BOUNDED_LISTENING_QA_GATE_AND_BN_066_POOJA_AUDITION_RETRY",
+      "provider": "sarvam",
+      "selected_voice": "pooja",
+      "requested_style": "literary_warm_pacing",
+      "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa",
+      "report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_tts_provider_bakeoff_report.json",
+      "status": "PASS",
+      "release_policy": "bengali_audiobook_acceptance_v2_92",
+      "voices_tested": [
         {
-            "slug": "bn-066",
-            "role": "PRIMARY_CANDIDATE",
-            "title": "Anandamath",
-            "status": "AUDITION_PASS",
-            "reader_public_status": "controlled-publication reader data present",
-            "rights_status": "PASS",
-            "source_status": "PASS",
-            "text_cleanliness": "NEEDS_TTS_SAMPLE_CLEANING",
-            "evidence": [
-                "content/books/bn-066/source-rights.md",
-                "data/controlled_publications/bn-066/source_evidence.json",
-                "backend/data/controlled_publications/bn-066/source_evidence.json"
-            ],
-            "estimated_total_chars": 203672,
-            "sample_strategy": [
-                "opening prose after stripping source/page boilerplate",
-                "mid-book prose sample",
-                "dialogue or difficult phrase sample if budget remains"
-            ],
-            "paid_execution_status": "PASS_REPRESENTATIVE_AUDITION_ONLY",
-            "next_action": "Request owner approval for guarded bn-066 full-book TTS only; do not publish or expose Listen until full objective gates pass."
-        },
-        {
-            "slug": "muchiram-gurer-jibanchorit",
-            "role": "CONDITIONAL_CANDIDATE",
-            "title": "Muchiram Gurer Jibanchorit",
-            "status": "NEEDS_SEGMENTATION_REPAIR",
-            "reader_public_status": "reader data present in root controlled-publication tree",
-            "rights_status": "PASS",
-            "source_status": "PASS",
-            "text_cleanliness": "COMPACT_SAMPLE_PREFERRED",
-            "evidence": [
-                "content/books/muchiram-gurer-jibanchorit/source-rights.md",
-                "data/controlled_publications/muchiram-gurer-jibanchorit/source_evidence.json",
-                "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T150228Z"
-            ],
-            "estimated_total_chars": 5968,
-            "paid_execution_status": "SKIPPED_UNTIL_TIMEOUT_SAMPLE_SPLIT",
-            "next_action": "Split opening sample into smaller chunks before any paid retry."
-        },
-        {
-            "slug": "book-d19e96859f",
-            "role": "REPAIR_DIAGNOSTIC_CANDIDATE",
-            "title": "Ginni",
-            "status": "NEEDS_ASR_SOURCE_REPAIR_DIAGNOSTIC",
-            "reader_public_status": "reader data present in root controlled-publication tree",
-            "rights_status": "PASS",
-            "source_status": "PASS",
-            "text_cleanliness": "KNOWN_SOURCE_FRONTMATTER_RISK",
-            "evidence": [
-                "content/books/book-d19e96859f/source-rights.md",
-                "data/controlled_publications/book-d19e96859f/source_evidence.json",
-                "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150228Z"
-            ],
-            "estimated_total_chars": 6515,
-            "paid_execution_status": "SKIPPED_PENDING_TARGETED_REPAIR_SAMPLE",
-            "next_action": "Run one small group-only repair diagnostic only after the cleaned target sample is defined and budget gates are present."
-        },
-        {
-            "slug": "book-f5d593e1f4",
-            "role": "REPAIR_DIAGNOSTIC_CANDIDATE",
-            "title": "Ramkanaiyer Nirbuddhita",
-            "status": "NEEDS_ASR_SOURCE_REPAIR_DIAGNOSTIC",
-            "reader_public_status": "reader data present in root controlled-publication tree",
-            "rights_status": "PASS",
-            "source_status": "PASS",
-            "text_cleanliness": "KNOWN_SOURCE_FRONTMATTER_RISK",
-            "evidence": [
-                "content/books/book-f5d593e1f4/source-rights.md",
-                "data/controlled_publications/book-f5d593e1f4/source_evidence.json",
-                "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T150741Z"
-            ],
-            "estimated_total_chars": 9493,
-            "paid_execution_status": "SKIPPED_PENDING_TARGETED_REPAIR_SAMPLE",
-            "next_action": "Run one small group-only repair diagnostic only after the cleaned target sample is defined and budget gates are present."
-        },
-        {
-            "slug": "pather-panchali",
-            "role": "RIGHTS_SOURCE_COVER_REPAIR_TRACK",
-            "title": "Pather Panchali",
-            "status": "NO_PAID_AUDIO_UNTIL_RIGHTS_SOURCE_SCOPE_AND_COVER_REPAIR_PASS",
-            "reader_public_status": "reader data present but launch scope remains repair-gated",
-            "rights_status": "NEEDS_OWNER_SCOPE_REVIEW_BEFORE_AUDIO",
-            "source_status": "NEEDS_SCOPE_REVIEW_BEFORE_AUDIO",
-            "paid_execution_status": "SKIPPED",
-            "next_action": "Finish rights/source/cover repair packet before any paid audition."
-        },
-        {
-            "slug": "a-ghost-story",
-            "role": "LOW_PRIORITY_ENGLISH_AUDIO_CANDIDATE",
-            "title": "A Ghost Story",
-            "status": "READER_FIRST_AUDIO_HIDDEN_FOR_THIS_SPRINT",
-            "reader_public_status": "reader route restored in prior sprint",
-            "rights_status": "PASS",
-            "source_status": "PASS",
-            "paid_execution_status": "SKIPPED_BENGALI_PRIORITY_AND_NO_REMAINING_JUSTIFICATION",
-            "next_action": "Keep reader-first/audio-hidden unless a separate English-audio audition sprint is authorized."
+          "provider": "sarvam",
+          "voice": "pooja",
+          "language_code": "bn-IN"
         }
-    ],
-    "auditions": [
-        {
-            "slug": "bn-066",
-            "provider": "sarvam",
-            "requested_voice": "ratan",
-            "requested_style": "literary_warm_pacing",
-            "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1_audition",
-            "report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1_audition/bengali_tts_provider_bakeoff_report.json",
-            "status": "BLOCKED_BEFORE_PAID_AUDITION",
-            "blockers": [
-                "No supported Bengali TTS provider voices are available in this environment."
-            ],
-            "voices_listed": [
-                "pooja"
-            ],
-            "voice_filter_used": "sarvam:ratan",
-            "estimated_cost_usd": 0.0119,
-            "actual_cost_if_available": "not_available",
-            "actual_spend_usd": 0.0,
-            "output_path": null
-        },
-        {
-            "slug": "bn-066",
-            "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_1C_BN_066_SUPPORTED_VOICE_RETRY",
-            "provider": "sarvam",
-            "preferred_voice": "ratan",
-            "fallback_voice": "pooja",
-            "selected_voice": null,
-            "requested_style": "literary_warm_pacing",
-            "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1_audition_supported_voice_retry",
-            "status": "BLOCKED_BEFORE_PROVIDER_CALL",
-            "blockers": [
-                "MAX_TTS_BUDGET_USD missing or not equal to 5",
-                "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS missing",
-                "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF missing",
-                "EARNALISM_STOP_ON_BUDGET_EXCEEDED missing",
-                "EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD missing",
-                "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE missing"
-            ],
-            "prior_supported_voices": [
-                "pooja"
-            ],
-            "ratan_available": false,
-            "pooja_available_from_stage_1b_probe": true,
-            "estimated_cost_usd": 0.0,
-            "actual_cost_if_available": "not_run",
-            "actual_spend_usd": 0.0,
-            "output_path": null
-        },
-        {
-            "slug": "bn-066",
-            "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_1D_BN_066_POOJA_REPRESENTATIVE_AUDITION",
-            "provider": "sarvam",
-            "preferred_voice": "pooja",
-            "selected_voice": "pooja",
-            "requested_style": "literary_warm_pacing",
-            "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1d_pooja_audition",
-            "report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1d_pooja_audition/bengali_tts_provider_bakeoff_report.json",
-            "status": "BLOCKED_BEFORE_SYNTHESIS",
-            "blockers": [
-                "LISTENING_QA_NOT_AVAILABLE: OpenAI listening-QA must be available before provider auditions can continue."
-            ],
-            "voices_tested": [
-                {
-                    "provider": "sarvam",
-                    "voice": "pooja",
-                    "language_code": "bn-IN"
-                }
-            ],
-            "passage_ids": [
-                "narrative_opening"
-            ],
-            "sample_text_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1d_pooja_audition/bakeoff_passages.json",
-            "text_hash": "bffb26c0d4bf09387f87b2885e5d89c87a37fabee8631cf834f8d34c10c0555a",
-            "estimated_cost_usd": 0.0119,
-            "actual_cost_if_available": "not_available",
-            "actual_spend_usd": 0.0,
-            "output_path": null,
-            "new_samples_generated": 0
-        },
-        {
-            "slug": "bn-066",
-            "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_1E_BN_066_POOJA_AUDITION_WITH_LISTENING_QA",
-            "provider": "sarvam",
-            "preferred_voice": "pooja",
-            "selected_voice": "pooja",
-            "requested_style": "literary_warm_pacing",
-            "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1e_pooja_audition_with_listening_qa",
-            "status": "BLOCKED_BEFORE_LOCK_AND_PROVIDER_CALL",
-            "blockers": [
-                "LISTENING_QA_BUDGET_GATE_MISSING: EARNALISM_ENABLE_OPENAI_LISTENING_QA and EARNALISM_OPENAI_LISTENING_QA_MODEL were present, but no repo-enforced bounded OpenAI/listening-QA USD cap was found."
-            ],
-            "provider_keys_present": {
-                "SARVAM_API_KEY": true,
-                "OPENAI_API_KEY": true
-            },
-            "model_env": {
-                "EARNALISM_OPENAI_LISTENING_QA_MODEL": "gpt-audio"
-            },
-            "passage_ids": [
-                "narrative_opening"
-            ],
-            "sample_text_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1d_pooja_audition/bakeoff_passages.json",
-            "estimated_cost_usd": 0.0119,
-            "actual_cost_if_available": "not_run",
-            "actual_spend_usd": 0.0,
-            "output_path": null,
-            "new_samples_generated": 0
-        },
-        {
-            "slug": "bn-066",
-            "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_1F_BOUNDED_LISTENING_QA_GATE_AND_BN_066_POOJA_AUDITION_RETRY",
-            "provider": "sarvam",
-            "selected_voice": "pooja",
-            "requested_style": "literary_warm_pacing",
-            "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa",
-            "report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_tts_provider_bakeoff_report.json",
-            "status": "PASS",
-            "release_policy": "bengali_audiobook_acceptance_v2_92",
-            "voices_tested": [
-                {
-                    "provider": "sarvam",
-                    "voice": "pooja",
-                    "language_code": "bn-IN"
-                }
-            ],
-            "passage_ids": [
-                "narrative_opening"
-            ],
-            "sample_text_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bakeoff_passages.json",
-            "output_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/auditions/sarvam/pooja/narrative_opening_0b81b0844d4d_clipped.mp3",
-            "source_audio_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/auditions/sarvam/pooja/narrative_opening_0b81b0844d4d.wav",
-            "duration_seconds": 45.0,
-            "audio_hash": "99ca5cffad8b6cb4767b51fee9458377ad8b47e93b50487d6800e2c35abe3c3a",
-            "text_hash": "bffb26c0d4bf09387f87b2885e5d89c87a37fabee8631cf834f8d34c10c0555a",
-            "tts_text_hash": "f119c1e6c98d046f3181c24e72c570a2c6ea42907547ead96fe5876ec06eb83b",
-            "estimated_tts_cost_usd": 0.0119,
-            "estimated_listening_qa_cost_usd": 0.05,
-            "estimated_total_cost_usd": 0.0619,
-            "actual_cost_if_available": "not_available",
-            "new_samples_generated": 1,
-            "listening_qa": {
-                "status": "PASS",
-                "overall_listening_score": 9.3,
-                "confidence_score": 0.95,
-                "scores": {
-                    "naturalness_score": 9.5,
-                    "pronunciation_score": 9.4,
-                    "emotional_expression_score": 9.3,
-                    "punctuation_pause_score": 9.2,
-                    "pacing_score": 9.1,
-                    "continuity_score": 9.4,
-                    "anti_robotic_texture_score": 9.6,
-                    "anti_choppy_join_score": 9.5,
-                    "listener_enjoyment_score": 9.3,
-                    "overall_listening_score": 9.3,
-                    "confidence_score": 0.95
-                },
-                "frontmatter_present": false,
-                "judge_blockers": [],
-                "fatal_flags": {
-                    "robotic_texture_detected": false,
-                    "mechanical_cadence_detected": false,
-                    "choppy_joins_detected": false,
-                    "fallback_tts_detected": false,
-                    "list_reading_rhythm_detected": false,
-                    "repeated_identical_sentence_endings_detected": false,
-                    "abrupt_tts_resets_detected": false,
-                    "placeholder_audio_detected": false
-                }
-            }
-        }
-    ],
-    "qa": {
+      ],
+      "passage_ids": [
+        "narrative_opening"
+      ],
+      "sample_text_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bakeoff_passages.json",
+      "output_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/auditions/sarvam/pooja/narrative_opening_0b81b0844d4d_clipped.mp3",
+      "source_audio_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/auditions/sarvam/pooja/narrative_opening_0b81b0844d4d.wav",
+      "duration_seconds": 45.0,
+      "audio_hash": "99ca5cffad8b6cb4767b51fee9458377ad8b47e93b50487d6800e2c35abe3c3a",
+      "text_hash": "bffb26c0d4bf09387f87b2885e5d89c87a37fabee8631cf834f8d34c10c0555a",
+      "tts_text_hash": "f119c1e6c98d046f3181c24e72c570a2c6ea42907547ead96fe5876ec06eb83b",
+      "estimated_tts_cost_usd": 0.0119,
+      "estimated_listening_qa_cost_usd": 0.05,
+      "estimated_total_cost_usd": 0.0619,
+      "actual_cost_if_available": "not_available",
+      "new_samples_generated": 1,
+      "listening_qa": {
         "status": "PASS",
-        "reason": "Stage 1F generated one bounded Sarvam/pooja sample and schema-3 OpenAI listening QA passed under bengali_audiobook_acceptance_v2_92.",
-        "classifications": {
-            "bn-066": "AUDITION_PASS"
+        "overall_listening_score": 9.3,
+        "confidence_score": 0.95,
+        "scores": {
+          "naturalness_score": 9.5,
+          "pronunciation_score": 9.4,
+          "emotional_expression_score": 9.3,
+          "punctuation_pause_score": 9.2,
+          "pacing_score": 9.1,
+          "continuity_score": 9.4,
+          "anti_robotic_texture_score": 9.6,
+          "anti_choppy_join_score": 9.5,
+          "listener_enjoyment_score": 9.3,
+          "overall_listening_score": 9.3,
+          "confidence_score": 0.95
+        },
+        "frontmatter_present": false,
+        "judge_blockers": [],
+        "fatal_flags": {
+          "robotic_texture_detected": false,
+          "mechanical_cadence_detected": false,
+          "choppy_joins_detected": false,
+          "fallback_tts_detected": false,
+          "list_reading_rhythm_detected": false,
+          "repeated_identical_sentence_endings_detected": false,
+          "abrupt_tts_resets_detected": false,
+          "placeholder_audio_detected": false
         }
+      }
+    }
+  ],
+  "qa": {
+    "manifest_validation": "PASS",
+    "audio_file_non_empty": true,
+    "chapter_or_group_count": 152,
+    "asr_source_alignment": "NOT_RUN_ASR_BUDGET_GATE_MISSING",
+    "first_words_check": "PASS_PREPARED_TEXT_TO_CHUNK_MANIFEST",
+    "last_words_check": "PASS_PREPARED_TEXT_TO_CHUNK_MANIFEST",
+    "bengali_normalization_score": "NOT_RUN_ASR_BUDGET_GATE_MISSING",
+    "phonetic_shadow_score": "NOT_RUN_ASR_BUDGET_GATE_MISSING",
+    "full_book_listening_qa": "NOT_RUN_PENDING_BOUNDED_FULL_BOOK_QA_STAGE",
+    "pronunciation_notes": "pending bounded full-book listening QA",
+    "pacing_notes": "pending bounded full-book listening QA"
+  },
+  "release_gate_truth": {
+    "public_audio_approval": "NONE",
+    "listen_cta_exposed": false,
+    "player_ui_exposed": false,
+    "upload_or_publication": false,
+    "release_gate_mutation": false,
+    "static_audio_fallback": false,
+    "browser_speech_fallback": false,
+    "word_level_sync_claim": false,
+    "audio_object_for_non_approved_audio": false,
+    "paid_listen_approval": false,
+    "launch_wide_10_10_claim": false
+  },
+  "next_exact_command": "Run owner-approved bounded ASR resume for bn-066 with checkpointing, request timeout, max retries, and retry ASR cap set.",
+  "full_book_tts": {
+    "status": "PASS",
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "pooja",
+    "style": "literary_warm_pacing",
+    "chunk_count": 152,
+    "group_count": 152,
+    "cache_hits": 0,
+    "cache_misses": 152,
+    "fallback_tts_used": false,
+    "local_audio_reused": false,
+    "stale_audio_reused": false,
+    "audio_regenerated": true,
+    "final_audio_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bn-066_sarvam_bulbul_v3_pooja_literary_warm_pacing_final.mp3",
+    "chunk_manifest": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/tts_chunk_manifest.json",
+    "sarvam_full_pilot_tts_report": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/sarvam_full_pilot_tts_report.json",
+    "cost_optimization_decision": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/cost_optimization_decision.json",
+    "content_integrity_recovery": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/tts_content_integrity_recovery.json"
+  },
+  "asr_source_alignment": {
+      "generated_at": "2026-07-10T17:34:29Z",
+      "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3B_RESUMABLE_ASR_CHECKPOINT_REPAIR",
+      "slug": "bn-066",
+      "status": "BLOCKED_ASR_CHECKPOINT_REPAIR_REQUIRED",
+      "classification": "ASR_CHECKPOINT_REPAIR_REQUIRED",
+    "pipeline": {
+      "entrypoint": "internal/audiobook_lab/scripts/factory_hooks/asr_sync_hook.py",
+      "provider": "openai_audio_transcriptions",
+      "model": "whisper-1",
+      "audio_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bn-066_sarvam_bulbul_v3_pooja_literary_warm_pacing_final.mp3",
+      "chunk_manifest": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/tts_chunk_manifest.json"
     },
-    "release_gate_truth": {
-        "public_audio_approvals": [],
-        "new_listen_ctas": false,
-        "audio_upload_or_publication": false,
-        "release_gate_mutation": false,
-        "static_audio_fallback": false,
-        "browser_speech_fallback": false,
-        "word_level_sync_claim": false,
-        "audio_object_for_non_approved_audio": false
+    "budget_gate": {
+      "gate_added": true,
+      "env": "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD",
+      "guard_artifact": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/asr_sync_budget_guard.json",
+      "guard": {
+        "ok": true,
+        "code": "ASR_SYNC_BUDGET_OK",
+        "cap_env": "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD",
+        "rate_env": "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE",
+        "estimated_usd_per_minute": 0.008,
+        "duration_seconds": 21449.85075,
+        "duration_minutes": 357.4975,
+        "estimated_asr_cost_usd": 2.86,
+        "asr_cap_usd": 3.0,
+        "prior_estimated_usd": 1.2226,
+        "total_budget_cap_usd": 5.0,
+        "total_estimated_usd": 4.0826
+      },
+      "listening_qa_cap_env": "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD",
+      "listening_qa_cap_usd": 0.75
     },
-    "next_exact_command": "cd /Users/ronikbasak/Documents/GitHub/earnalism-digital-library && python3 -m json.tool internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_tts_provider_bakeoff_report.json | sed -n '1,220p'"
+    "execution": {
+      "ran": true,
+      "completed": false,
+      "stopped_by_operator": true,
+      "reason": "OpenAI transcription request stalled during full-book chunked ASR; process was interrupted fail-closed to restore paid_tts.lock.",
+      "last_observed_group": "group_0079",
+      "last_observed_index": 79,
+      "total_groups": 152,
+      "attempted_fraction_approx": 0.5197,
+      "transcript_artifact_written": false,
+      "alignment_diagnosis_written": false
+    },
+    "results": {
+      "source_alignment_score": null,
+      "normalized_bengali_score": null,
+      "phonetic_shadow_score": null,
+      "first_words_match": null,
+      "last_words_match": null,
+      "per_chunk_health": "NOT_AVAILABLE_NO_COMPLETE_TRANSCRIPT",
+      "mismatch_diagnosis": "NOT_AVAILABLE_NO_COMPLETE_TRANSCRIPT"
+    },
+    "spend": {
+      "prior_tts_estimated_usd": 1.2226,
+      "full_asr_estimated_usd": 2.86,
+      "partial_asr_attempted_estimate_usd": 1.4863,
+      "actual_asr_spend_usd": "not_reported_by_provider_tools",
+      "configured_total_cap_usd": 5.0,
+      "budget_remaining_usd": "unknown_after_partial_asr_calls"
+    },
+    "blockers": [
+        "ASR_CHECKPOINT_REPAIR_REQUIRED",
+        "NO_COMPLETE_ASR_TRANSCRIPT_WRITTEN",
+      "SOURCE_ALIGNMENT_NOT_PROVEN",
+      "FIRST_LAST_ASR_MATCH_NOT_PROVEN",
+      "FULL_BOOK_LISTENING_QA_NOT_RUN"
+    ],
+      "next_action": "Run owner-approved bounded ASR resume from checkpoints with EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD, EARNALISM_ASR_REQUEST_TIMEOUT_SECONDS, EARNALISM_ASR_MAX_RETRIES_PER_CHUNK, and EARNALISM_ASR_RESUME_FROM_CHECKPOINTS=true set."
+  },
+  "listening_qa": {
+    "generated_at": "2026-07-10T17:18:06Z",
+    "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3_FULL_BOOK_LISTENING_QA",
+    "slug": "bn-066",
+    "status": "NOT_RUN_ASR_SOURCE_ALIGNMENT_BLOCKED",
+    "classification": "LISTENING_QA_NOT_RUN",
+    "reason": "Full-book ASR/source alignment did not complete; listening QA was not run to avoid compounding provider spend without source-alignment evidence.",
+    "planned_samples": [
+      "opening",
+      "middle",
+      "dialogue_or_difficult_phrase",
+      "ending"
+    ],
+    "budget_gate": {
+      "env": "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD",
+      "cap_usd": 0.75,
+      "estimated_qa_cost_usd": 0.3
+    },
+    "results": {
+      "overall_listening_score": null,
+      "confidence": null,
+      "fatal_flags": "NOT_RUN",
+      "pronunciation": "NOT_RUN",
+      "pacing": "NOT_RUN",
+      "tone": "NOT_RUN",
+      "clipping_noise": "NOT_RUN",
+      "missing_or_duplicated_content": "NOT_RUN",
+      "bengali_naturalness": "NOT_RUN"
+    },
+    "blockers": [
+      "ASR_SOURCE_ALIGNMENT_NOT_PROVEN",
+      "LISTENING_QA_NOT_RUN"
+    ],
+    "next_action": "Run bounded listening QA only after ASR/source alignment produces a complete transcript or owner authorizes a sampled-QA diagnostic path."
+  }
 }

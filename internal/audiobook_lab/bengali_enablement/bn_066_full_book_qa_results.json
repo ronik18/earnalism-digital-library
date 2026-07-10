@@ -1,0 +1,102 @@
+{
+  "generated_at": "2026-07-10T17:34:29Z",
+  "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_2_FULL_BOOK_TTS_PREFLIGHT_AND_BOUNDED_GENERATION",
+  "slug": "bn-066",
+  "title": "Anandamath",
+  "status": "FULL_BOOK_TTS_PASS_ASR_CHECKPOINT_REPAIR_REQUIRED",
+  "classification": "ASR_CHECKPOINT_REPAIR_REQUIRED",
+  "audio_files": [
+    {
+      "path": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bn-066_sarvam_bulbul_v3_pooja_literary_warm_pacing_final.mp3",
+      "exists": true,
+      "size_bytes": 343198509,
+      "duration_seconds": 21449.85075,
+      "provider": "sarvam",
+      "model": "bulbul:v3",
+      "voice": "pooja",
+      "style": "literary_warm_pacing",
+      "private_internal_only": true
+    }
+  ],
+  "generation": {
+    "status": "PASS",
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "pooja",
+    "style": "literary_warm_pacing",
+    "chunk_count": 152,
+    "group_count": 152,
+    "cache_hits": 0,
+    "cache_misses": 152,
+    "fallback_tts_used": false,
+    "local_audio_reused": false,
+    "stale_audio_reused": false,
+    "audio_regenerated": true,
+    "final_audio_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/bn-066_sarvam_bulbul_v3_pooja_literary_warm_pacing_final.mp3",
+    "chunk_manifest": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/tts_chunk_manifest.json",
+    "sarvam_full_pilot_tts_report": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/sarvam_full_pilot_tts_report.json",
+    "cost_optimization_decision": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/cost_optimization_decision.json",
+    "content_integrity_recovery": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/tts_content_integrity_recovery.json"
+  },
+  "budget": {
+    "authorized_cap_usd": 5.0,
+    "estimated_tts_cost_usd": 1.2226,
+    "estimated_listening_qa_cost_usd": 0.0,
+    "estimated_total_spend_usd": 1.2226,
+    "actual_spend_usd": "not_available",
+    "budget_remaining_usd": 3.7774
+  },
+  "text_integrity": {
+    "tts_prepared_text_hash": "687617f80f086bf0c569e4069fddfad596349a4f4d84749ef9e0db7333753722",
+    "report_prepared_text_hash": "687617f80f086bf0c569e4069fddfad596349a4f4d84749ef9e0db7333753722",
+    "prepared_text_matches_report_hash": true,
+    "source_terms_in_prepared_text": [],
+    "source_terms_in_chunk_text": [],
+    "first_words_match_prepared_to_chunks": true,
+    "last_words_match_prepared_to_chunks": true,
+    "empty_chunks": [],
+    "missing_chunk_paths": [],
+    "raw_content_integrity_status": "FAIL_PAGE_NUMBER_LINES_ONLY",
+    "tts_content_integrity_recovery": "PASS_PAGE_NUMBER_LINES_STRIPPED_BEFORE_PROVIDER_CALLS"
+  },
+  "qa_results": {
+    "manifest_validation": "PASS",
+    "audio_file_non_empty": true,
+    "chapter_or_group_count": 152,
+    "asr_source_alignment": "ASR_CHECKPOINT_REPAIR_REQUIRED",
+    "first_words_check": "PASS_PREPARED_TEXT_TO_CHUNK_MANIFEST",
+    "last_words_check": "PASS_PREPARED_TEXT_TO_CHUNK_MANIFEST",
+    "bengali_normalization_score": "NOT_RUN_ASR_BUDGET_GATE_MISSING",
+    "phonetic_shadow_score": "NOT_RUN_ASR_BUDGET_GATE_MISSING",
+    "full_book_listening_qa": "NOT_RUN_ASR_SOURCE_ALIGNMENT_BLOCKED",
+    "pronunciation_notes": "pending bounded full-book listening QA",
+    "pacing_notes": "pending bounded full-book listening QA",
+    "release_gate_readiness": "BLOCKED_CHECKPOINT_REPAIR_REQUIRED"
+  },
+  "ready_for_release_gate_owner_approval": false,
+  "blockers": [
+    "ASR_CHECKPOINT_REPAIR_REQUIRED",
+    "NO_COMPLETE_ASR_TRANSCRIPT_WRITTEN",
+    "SOURCE_ALIGNMENT_NOT_PROVEN",
+    "FIRST_LAST_ASR_MATCH_NOT_PROVEN",
+    "FULL_BOOK_LISTENING_QA_NOT_RUN",
+    "RELEASE_GATE_NOT_RUN",
+    "PUBLIC_AUDIO_APPROVAL_NOT_ALLOWED"
+  ],
+  "next_classification": "ASR_CHECKPOINT_REPAIR_REQUIRED_BEFORE_RELEASE_GATE_OWNER_APPROVAL",
+  "release_truth": {
+    "public_audio_approval": "NONE",
+    "listen_cta_exposed": false,
+    "player_ui_exposed": false,
+    "upload_or_publication": false,
+    "release_gate_mutation": false,
+    "static_audio_fallback": false,
+    "browser_speech_fallback": false,
+    "word_level_sync_claim": false,
+    "audio_object_for_non_approved_audio": false,
+    "paid_listen_approval": false,
+    "launch_wide_10_10_claim": false
+  },
+  "stage3_asr_source_alignment": "internal/audiobook_lab/bengali_enablement/bn_066_stage3_asr_source_alignment_results.json",
+  "stage3_listening_qa": "internal/audiobook_lab/bengali_enablement/bn_066_stage3_listening_qa_results.json"
+}
