@@ -218,18 +218,18 @@
             "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
         },
         "bn-066": {
-            "latest_decision": "BENGALI_STAGE1F_REPRESENTATIVE_AUDITION_PASS_AUDIO_HIDDEN",
-            "decision_reason": "Stage 1F added a bounded OpenAI listening-QA budget gate and ran one bn-066 Sarvam pooja representative sample. The sample passed schema-3 Bengali audiobook 9.2 policy with overall score 9.3, confidence 0.95, no fatal flags, and no frontmatter. Public audio remains hidden until full-book objective gates pass.",
-            "updated_at": "2026-07-10T09:31:50Z",
+            "latest_decision": "BENGALI_STAGE3D_ASR_LANGUAGE_AND_NORMALIZATION_REPAIR_AUDIO_HIDDEN",
+            "decision_reason": "Stage 3D repaired the fresh-generation group_repair verifier bug and proved full construction coverage, but the Devanagari-dominant mixed-script ASR transcript still scores 0.8403/10 against the required 9.7. True audio/source mismatch is not proven; public audio remains hidden.",
+            "updated_at": "2026-07-10T20:02:48Z",
             "language": "ben",
             "public_title": "আনন্দমঠ",
             "bengali_title": "আনন্দমঠ",
             "english_transliteration": "Anandamath",
             "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
-            "bengali_audio_lane_status": "REPRESENTATIVE_AUDITION_PASSED_AUDIO_HIDDEN",
-            "audiobook_next_action": "Request owner approval for guarded full-book bn-066 TTS only; do not publish or expose Listen until full source/listening/sync/upload/metadata/endpoint/browser gates pass.",
-            "bengali_audiobook_campaign_state": "REPRESENTATIVE_AUDITION_PASSED",
-            "bengali_audiobook_campaign_next_action": "Prepare a guarded full-book TTS owner-approval prompt for bn-066 with Sarvam pooja literary_warm_pacing and strict release gates.",
+            "bengali_audio_lane_status": "ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED_AUDIO_HIDDEN",
+            "audiobook_next_action": "Run an owner-authorized bounded ASR language/model recalibration on representative existing chunks; require Bengali-script output before any full alignment retry or listening QA.",
+            "bengali_audiobook_campaign_state": "FULL_PRIVATE_TTS_ASR_RECALIBRATION_REQUIRED",
+            "bengali_audiobook_campaign_next_action": "Do not regenerate TTS. Recalibrate ASR on a tiny existing-chunk sample, then repair normalization only if Bengali-script ASR remains below threshold.",
             "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
             "bengali_audiobook_release_gate": "not_approved_until_representative_full_source_listening_sync_upload_metadata_endpoint_browser_gates_pass",
             "latest_prelaunch_evidence": {
@@ -242,7 +242,11 @@
                 "stage_1c": "internal/audiobook_lab/bengali_enablement/bn_066_stage1c_supported_voice_retry_report.md",
                 "stage_1d": "internal/audiobook_lab/bengali_enablement/bn_066_stage1d_pooja_audition_report.md",
                 "stage_1e": "internal/audiobook_lab/bengali_enablement/bn_066_stage1e_pooja_audition_with_listening_qa_report.md",
-                "stage_1f": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_tts_provider_bakeoff_report.json"
+                "stage_1f": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_tts_provider_bakeoff_report.json",
+                "stage_2_full_book": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts_report.md",
+                "stage_3c_asr": "internal/audiobook_lab/bengali_enablement/bn_066_stage3_asr_source_alignment_results.json",
+                "stage_3c_release_readiness": "internal/audiobook_lab/bengali_enablement/bn_066_stage3_release_gate_readiness.md",
+                "stage_3d_diagnosis": "internal/audiobook_lab/bengali_enablement/bn_066_stage3d_asr_mismatch_diagnosis.json"
             }
         },
         "book-1090573dff": {

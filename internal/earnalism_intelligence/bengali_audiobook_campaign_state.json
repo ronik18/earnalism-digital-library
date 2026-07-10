@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-07-10T20:02:48Z",
+  "status": "BENGALI_AUDIOBOOK_CAMPAIGN_ACTIVE",
+  "policy_version": "bengali_audiobook_acceptance_v2_92",
+  "total_campaign_titles": 31,
+  "published_bengali_audiobooks": 0,
+  "titles_in_representative_audition": 0,
+  "titles_with_representative_gte_9_2": 1,
+  "titles_in_full_pilot": 0,
+  "titles_needing_human_narration": 0,
+  "titles_needing_licensed_audio": 0,
+  "state_counts": {
+    "REPRESENTATIVE_AUDITION_PASSED": 1,
+    "READY_FOR_REPRESENTATIVE_AUDITION": 30
+  },
+  "best_settings": {
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "ratan",
+    "style_profile": "literary_warm_pacing",
+    "representative_score": 9.3,
+    "confidence": 0.95
+  },
+  "full_pilot_score": null,
+  "asr_score": null,
+  "sync_tier": null,
+  "estimated_campaign_cost_policy": {
+    "campaign_max_env_present": false,
+    "per_title_max_env_present": false,
+    "default_recommended_campaign_cap_usd": 75,
+    "default_recommended_per_title_cap_usd": 8
+  },
+  "paid_gate_status": {
+    "all_required_present": false,
+    "boolean_gates": {
+      "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS": false,
+      "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": false,
+      "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": false,
+      "EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN": false,
+      "EARNALISM_STOP_ON_BUDGET_EXCEEDED": false
+    },
+    "value_gates_present": {
+      "EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD": false,
+      "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE": false
+    },
+    "missing": [
+      "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS",
+      "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF",
+      "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS",
+      "EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN",
+      "EARNALISM_STOP_ON_BUDGET_EXCEEDED",
+      "EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD",
+      "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE"
+    ]
+  },
+  "duplicate_attempts_avoided": 192,
+  "plateau_strategies_triggered": 0,
+  "campaign_dashboard_path": "bengali_audiobook_campaign_dashboard.json",
+  "campaign_queue_path": "bengali_audiobook_31_campaign_queue.json",
+  "next_best_codex_prompt_path": "next_best_codex_prompt.md",
+  "controller_args": {
+    "manifest": "book_import_manifest.json",
+    "target_reader_only_approved_31": true,
+    "goal_score": 9.2,
+    "policy": "bengali_audiobook_acceptance_v2_92",
+    "adaptive_optimizer": true,
+    "resume": true,
+    "fail_closed": true,
+    "max_run_minutes": 180
+  },
+  "text_prep_variants": [
+    "canonical_clean",
+    "punctuation_normalized",
+    "literary_pause_control",
+    "dialogue_human_touch",
+    "anti_list_reading_flow",
+    "anti_mechanical_cadence",
+    "stanza_paragraph_breathing",
+    "emotional_but_restrained",
+    "child_voice_avoidance",
+    "calm_literary_storyteller"
+  ],
+  "release_gates": {
+    "goal_score": 9.2,
+    "confidence_min": 0.9,
+    "asr_manuscript_min": 9.7,
+    "sync": "measured paragraph/stanza or better; estimated sync blocked",
+    "fatal_flags": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected"
+    ]
+  },
+  "bn_066_private_pilot_state": {
+    "status": "ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED",
+    "private_full_tts_exists": true,
+    "checkpoint_pass_count": 152,
+    "checkpoint_timeout_count": 0,
+    "checkpoint_failure_count": 0,
+    "asr_source_alignment_score": 0.8403,
+    "normalized_bengali_score": 0.0781,
+    "phonetic_shadow_score": 0.211,
+    "first_words_match": false,
+    "last_words_match": false,
+    "tts_by_construction_verified": true,
+    "tts_input_coverage_percent": 100.0,
+    "canonical_to_tts_clean_match_score": 1.0,
+    "full_transcript_bengali_ratio": 0.2801,
+    "full_transcript_devanagari_ratio": 0.7113,
+    "listening_qa": "NOT_RUN_ASR_SOURCE_GATE_FAILED",
+    "public_audio_approval": "NONE",
+    "next_action": "Run an owner-authorized bounded ASR language/model recalibration on representative existing chunks; keep audio hidden and do not regenerate TTS."
+  },
+  "next_exact_command": "cd /Users/ronikbasak/Documents/GitHub/earnalism-digital-library && python3 internal/audiobook_lab/scripts/test_asr_checkpointing.py && python3 internal/audiobook_lab/scripts/test_sarvam_full_pilot_tts_hook.py"
+}

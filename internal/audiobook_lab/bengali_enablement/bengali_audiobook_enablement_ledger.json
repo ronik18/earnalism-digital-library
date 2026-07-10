@@ -1,16 +1,19 @@
 {
-  "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3B_RESUMABLE_ASR_CHECKPOINTING_PREPARATION",
-  "owner_decision": "AUTHORIZE_BENGALI_AUDIOBOOK_STAGE_3B_RESUMABLE_PER_CHUNK_ASR_CHECKPOINTING_AND_BOUNDED_RETRY_PREPARATION",
-  "generated_at": "2026-07-10T17:34:29Z",
-  "status": "ASR_CHECKPOINT_REPAIR_REQUIRED",
-  "summary": "Stage 3 attempted bounded full-book ASR for bn-066 and stalled around group_0079/152. Stage 3B reclassifies that as a resumability/checkpointing repair, adds per-chunk ASR checkpoints, request timeout, bounded retry controls, and remaining-chunk budget estimation before any future ASR provider retry. No provider calls ran in Stage 3B.",
+  "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3D_ASR_MISMATCH_DIAGNOSIS_AND_VERIFIER_SEMANTICS_REPAIR",
+  "owner_decision": "DIAGNOSTIC_SOURCE_AND_TEST_REPAIR_ONLY_NO_PROVIDER_CALLS",
+  "generated_at": "2026-07-10T20:02:48Z",
+  "status": "ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED",
+  "summary": "Stage 3D repaired fresh-generation group_repair verifier semantics and diagnosed the 152-checkpoint ASR mismatch without provider calls. Construction evidence passes at 100% coverage and 1.0 canonical match, but Devanagari-dominant mixed-script ASR remains below the strict 9.7 source gate; listening QA and release readiness remain blocked.",
   "budget": {
     "prior_tts_estimated_usd": 1.2226,
     "full_asr_estimated_usd": 2.86,
-    "partial_asr_attempted_estimate_usd": 1.4863,
+    "prior_partial_asr_billing_usd": "unknown_owner_risk_accepted",
+    "stage3c_asr_estimated_usd": 2.86,
+    "stage3c_listening_qa_actual_usd": 0.0,
     "actual_asr_spend_usd": "not_reported_by_provider_tools",
     "configured_total_cap_usd": 5.0,
-    "budget_remaining_usd": "unknown_after_partial_asr_calls"
+    "estimated_stage2_tts_plus_stage3c_asr_usd": 4.0826,
+    "budget_remaining_usd": "0.9174_before_unknown_prior_partial_asr_billing"
   },
   "provider_credentials_presence": {
     "SARVAM_API_KEY": true,
@@ -34,12 +37,12 @@
   },
   "lock": {
     "before": "active/current_holder none",
-    "during": "audiobook_enablement_sprint_3_bn_066_asr_qa",
+    "during": "audiobook_enablement_sprint_3c_bn_066_asr_resume",
     "after": {
       "status": "active",
       "current_holder": "none",
       "allowed_next_holders": [],
-      "last_closeout_status": "ASR_SYNC_INTERRUPTED_PROVIDER_RESPONSE_TIMEOUT_AT_GROUP_0079"
+      "last_closeout_status": "ASR_SOURCE_MISMATCH_CHECKPOINTED_152_OF_152_LISTENING_QA_NOT_RUN"
     }
   },
   "stage3b_checkpoint_repair": {
@@ -64,6 +67,61 @@
       "python3 internal/audiobook_lab/scripts/test_listening_qa_schema3.py"
     ],
     "next_action": "Run owner-approved bounded ASR resume with checkpointing enabled and explicit retry cap; keep bn-066 audio hidden until ASR/source alignment and listening QA pass."
+  },
+  "stage3c_result": {
+    "classification": "ASR_SOURCE_MISMATCH",
+    "provider_calls_ran": true,
+    "checkpoint_total": 152,
+    "checkpoint_pass": 152,
+    "checkpoint_provider_timeout": 0,
+    "checkpoint_failed": 0,
+    "checkpoints_with_more_than_one_attempt": 0,
+    "source_alignment_score": 0.8403,
+    "required_source_alignment_score": 9.7,
+    "normalized_bengali_score": 0.0781,
+    "phonetic_shadow_score": 0.211,
+    "projection_confidence": 0.0188,
+    "first_words_match": false,
+    "last_words_match": false,
+    "tts_by_construction_verified": false,
+    "tts_input_coverage_percent": 100.0,
+    "canonical_to_tts_clean_match_score": 1.0,
+    "construction_blocker": "fresh full-generation manifest uses group_repair.status NOT_REQUESTED, which the verifier does not accept",
+    "listening_qa": "NOT_RUN_ASR_SOURCE_GATE_FAILED",
+    "public_audio_approval": "NONE",
+    "next_action": "Repair and test fresh-generation group_repair manifest semantics, then reuse all 152 checkpoints with --resume."
+  },
+  "stage3d_result": {
+    "classification": "ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED",
+    "provider_calls_ran": false,
+    "listening_qa_ran": false,
+    "checkpoint_total": 152,
+    "checkpoint_pass": 152,
+    "checkpoint_provider_timeout": 0,
+    "checkpoint_failed": 0,
+    "asr_source_alignment_score": 0.8403,
+    "required_source_alignment_score": 9.7,
+    "full_transcript_bengali_ratio": 0.2801,
+    "full_transcript_devanagari_ratio": 0.7113,
+    "tts_by_construction_verified": true,
+    "tts_input_coverage_percent": 100.0,
+    "canonical_to_tts_clean_match_score": 1.0,
+    "first_last_tts_input_boundary_pass": true,
+    "legacy_group_repair_status": "NOT_REQUESTED",
+    "legacy_group_repair_accepted": true,
+    "construction_evidence_status": "PASS_DIAGNOSTIC_ONLY",
+    "root_causes": [
+      "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED",
+      "ASR_MODEL_OUTPUT_MIXED_SCRIPT",
+      "ASR_NORMALIZATION_REPAIR_REQUIRED",
+      "SOURCE_ALIGNMENT_LAYER_MISMATCH",
+      "FIRST_LAST_EXPECTATION_LAYER_MISMATCH",
+      "GROUP_REPAIR_VERIFIER_SEMANTICS_BUG"
+    ],
+    "true_audio_source_mismatch": "NOT_PROVEN",
+    "listening_qa": "NOT_RUN_ASR_SOURCE_GATE_FAILED",
+    "public_audio_approval": "NONE",
+    "next_action": "Run an owner-authorized bounded ASR language/model recalibration on representative existing chunks before any full alignment retry."
   },
   "candidate_preflight": [
     {
@@ -343,14 +401,15 @@
     "manifest_validation": "PASS",
     "audio_file_non_empty": true,
     "chapter_or_group_count": 152,
-    "asr_source_alignment": "NOT_RUN_ASR_BUDGET_GATE_MISSING",
-    "first_words_check": "PASS_PREPARED_TEXT_TO_CHUNK_MANIFEST",
-    "last_words_check": "PASS_PREPARED_TEXT_TO_CHUNK_MANIFEST",
-    "bengali_normalization_score": "NOT_RUN_ASR_BUDGET_GATE_MISSING",
-    "phonetic_shadow_score": "NOT_RUN_ASR_BUDGET_GATE_MISSING",
-    "full_book_listening_qa": "NOT_RUN_PENDING_BOUNDED_FULL_BOOK_QA_STAGE",
-    "pronunciation_notes": "pending bounded full-book listening QA",
-    "pacing_notes": "pending bounded full-book listening QA"
+    "asr_checkpoint_completion": "PASS_152_OF_152",
+    "asr_source_alignment": "FAIL_SCORE_0_8403_BELOW_9_7",
+    "first_words_check": "FAIL_ASR_PASS_PREPARED_TEXT_TO_CHUNK_MANIFEST",
+    "last_words_check": "FAIL_ASR_PASS_PREPARED_TEXT_TO_CHUNK_MANIFEST",
+    "bengali_normalization_score": 0.0781,
+    "phonetic_shadow_score": 0.211,
+    "full_book_listening_qa": "NOT_RUN_ASR_SOURCE_GATE_FAILED",
+    "pronunciation_notes": "not run because ASR/source gate failed",
+    "pacing_notes": "not run because ASR/source gate failed"
   },
   "release_gate_truth": {
     "public_audio_approval": "NONE",
@@ -365,7 +424,7 @@
     "paid_listen_approval": false,
     "launch_wide_10_10_claim": false
   },
-  "next_exact_command": "Run owner-approved bounded ASR resume for bn-066 with checkpointing, request timeout, max retries, and retry ASR cap set.",
+  "next_exact_command": "cd /Users/ronikbasak/Documents/GitHub/earnalism-digital-library && rg -n 'group_repair|NOT_REQUESTED|NOT_NEEDED' internal/audiobook_lab/scripts/factory_hooks/tts_hook.py internal/audiobook_lab/scripts/factory_hooks/asr_sync_hook.py internal/audiobook_lab/scripts/test_sarvam_full_pilot_tts_hook.py",
   "full_book_tts": {
     "status": "PASS",
     "provider": "sarvam",
@@ -387,11 +446,11 @@
     "content_integrity_recovery": "internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts/tts_content_integrity_recovery.json"
   },
   "asr_source_alignment": {
-      "generated_at": "2026-07-10T17:34:29Z",
-      "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3B_RESUMABLE_ASR_CHECKPOINT_REPAIR",
+      "generated_at": "2026-07-10T19:16:02Z",
+      "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3C_BOUNDED_ASR_RESUME_WITH_CHECKPOINTING",
       "slug": "bn-066",
-      "status": "BLOCKED_ASR_CHECKPOINT_REPAIR_REQUIRED",
-      "classification": "ASR_CHECKPOINT_REPAIR_REQUIRED",
+      "status": "BLOCKED_ASR_SOURCE_MISMATCH",
+      "classification": "ASR_SOURCE_MISMATCH",
     "pipeline": {
       "entrypoint": "internal/audiobook_lab/scripts/factory_hooks/asr_sync_hook.py",
       "provider": "openai_audio_transcriptions",
@@ -406,7 +465,7 @@
       "guard": {
         "ok": true,
         "code": "ASR_SYNC_BUDGET_OK",
-        "cap_env": "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD",
+        "cap_env": "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD",
         "rate_env": "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE",
         "estimated_usd_per_minute": 0.008,
         "duration_seconds": 21449.85075,
@@ -422,49 +481,57 @@
     },
     "execution": {
       "ran": true,
-      "completed": false,
-      "stopped_by_operator": true,
-      "reason": "OpenAI transcription request stalled during full-book chunked ASR; process was interrupted fail-closed to restore paid_tts.lock.",
-      "last_observed_group": "group_0079",
-      "last_observed_index": 79,
+      "completed": true,
+      "stopped_by_operator": false,
+      "reason": "All checkpointed ASR chunks completed; source alignment failed strict release thresholds.",
+      "last_observed_group": "group_0151",
+      "last_observed_index": 151,
       "total_groups": 152,
-      "attempted_fraction_approx": 0.5197,
-      "transcript_artifact_written": false,
-      "alignment_diagnosis_written": false
+      "checkpoint_pass": 152,
+      "checkpoint_provider_timeout": 0,
+      "checkpoint_failed": 0,
+      "attempted_fraction_approx": 1.0,
+      "transcript_artifact_written": true,
+      "alignment_diagnosis_written": true
     },
     "results": {
-      "source_alignment_score": null,
-      "normalized_bengali_score": null,
-      "phonetic_shadow_score": null,
-      "first_words_match": null,
-      "last_words_match": null,
-      "per_chunk_health": "NOT_AVAILABLE_NO_COMPLETE_TRANSCRIPT",
-      "mismatch_diagnosis": "NOT_AVAILABLE_NO_COMPLETE_TRANSCRIPT"
+      "source_alignment_score": 0.8403,
+      "normalized_bengali_score": 0.0781,
+      "phonetic_shadow_score": 0.211,
+      "projection_confidence": 0.0188,
+      "first_words_match": false,
+      "last_words_match": false,
+      "per_chunk_health": "PASS_152_OF_152_CHECKPOINTS",
+      "mismatch_diagnosis": "MIXED_SCRIPT_ASR_TRANSCRIPT_AND_FIRST_LAST_MISMATCH",
+      "tts_by_construction_verified": false,
+      "tts_by_construction_blocker": "group_repair.status NOT_REQUESTED is not accepted by the verifier"
     },
     "spend": {
       "prior_tts_estimated_usd": 1.2226,
       "full_asr_estimated_usd": 2.86,
-      "partial_asr_attempted_estimate_usd": 1.4863,
+      "prior_partial_asr_billing_usd": "unknown_owner_risk_accepted",
+      "stage3c_asr_estimated_usd": 2.86,
       "actual_asr_spend_usd": "not_reported_by_provider_tools",
       "configured_total_cap_usd": 5.0,
-      "budget_remaining_usd": "unknown_after_partial_asr_calls"
+      "budget_remaining_usd": "0.9174_before_unknown_prior_partial_asr_billing"
     },
     "blockers": [
-        "ASR_CHECKPOINT_REPAIR_REQUIRED",
-        "NO_COMPLETE_ASR_TRANSCRIPT_WRITTEN",
-      "SOURCE_ALIGNMENT_NOT_PROVEN",
-      "FIRST_LAST_ASR_MATCH_NOT_PROVEN",
+      "ASR_SOURCE_MISMATCH",
+      "ASR_SCORE_BELOW_9_7",
+      "FIRST_LAST_ASR_MISMATCH",
+      "MIXED_SCRIPT_ASR_TRANSCRIPT",
+      "TTS_BY_CONSTRUCTION_GROUP_REPAIR_STATUS_NOT_PASS",
       "FULL_BOOK_LISTENING_QA_NOT_RUN"
     ],
-      "next_action": "Run owner-approved bounded ASR resume from checkpoints with EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD, EARNALISM_ASR_REQUEST_TIMEOUT_SECONDS, EARNALISM_ASR_MAX_RETRIES_PER_CHUNK, and EARNALISM_ASR_RESUME_FROM_CHECKPOINTS=true set."
+      "next_action": "Repair and test fresh full-generation group_repair manifest semantics, then reuse all 152 ASR checkpoints with --resume."
   },
   "listening_qa": {
-    "generated_at": "2026-07-10T17:18:06Z",
-    "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3_FULL_BOOK_LISTENING_QA",
+    "generated_at": "2026-07-10T19:16:02Z",
+    "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3C_BOUNDED_LISTENING_QA_HELD_AFTER_ASR_SOURCE_FAILURE",
     "slug": "bn-066",
-    "status": "NOT_RUN_ASR_SOURCE_ALIGNMENT_BLOCKED",
+    "status": "NOT_RUN_ASR_SOURCE_GATE_FAILED",
     "classification": "LISTENING_QA_NOT_RUN",
-    "reason": "Full-book ASR/source alignment did not complete; listening QA was not run to avoid compounding provider spend without source-alignment evidence.",
+    "reason": "Full-book ASR completed, but source alignment failed strict thresholds; listening QA was not run to avoid additional spend before source provenance repair.",
     "planned_samples": [
       "opening",
       "middle",
@@ -488,9 +555,11 @@
       "bengali_naturalness": "NOT_RUN"
     },
     "blockers": [
-      "ASR_SOURCE_ALIGNMENT_NOT_PROVEN",
+      "ASR_SOURCE_MISMATCH",
+      "FIRST_LAST_MISMATCH",
+      "TTS_BY_CONSTRUCTION_NOT_VERIFIED",
       "LISTENING_QA_NOT_RUN"
     ],
-    "next_action": "Run bounded listening QA only after ASR/source alignment produces a complete transcript or owner authorizes a sampled-QA diagnostic path."
+    "next_action": "Run bounded listening QA only after the source/construction gate passes; reuse the 152 checkpoints."
   }
 }

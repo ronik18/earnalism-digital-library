@@ -16,7 +16,10 @@ sys.path.insert(0, str(HOOK_DIR))
 
 from asr_sync_hook import (  # noqa: E402
     asr_checkpoint_path,
+    asr_source_gate_blockers,
     asr_sync_budget_guard,
+    transcript_script_profile,
+    transcript_similarity,
     transcribe_chunk_with_checkpoint,
 )
 
@@ -176,12 +179,52 @@ def assert_missing_asr_cap_blocks_before_provider_call() -> None:
     assert guard["code"] == "ASR_SYNC_BUDGET_GATE_MISSING", guard
 
 
+def assert_mixed_script_transcript_cannot_be_release_ready() -> None:
+    manuscript = "অতি বিস্তৃত অরণ্য। অরণ্যমধ্যে অধিকাংশ বৃক্ষই শাল।"
+    transcript = "ओती बिस्ट्रितो अरन्नो। अरन्नो मध्ये अधिकाम्षो ब्रिख्खोई शाल।"
+    metrics = transcript_similarity(manuscript, transcript)
+    metrics["frontmatter_absent"] = True
+    blockers = asr_source_gate_blockers(
+        metrics,
+        language="Bengali",
+        transcript=transcript,
+        words_available=True,
+    )
+    profile = transcript_script_profile(transcript)
+    assert profile["dominant_script"] == "devanagari", profile
+    assert profile["ratios"]["bengali"] == 0.0, profile
+    assert blockers, blockers
+    assert any("not predominantly Bengali script" in blocker for blocker in blockers), blockers
+
+
+def assert_low_asr_score_blocks_without_mutating_release_state() -> None:
+    metrics = {
+        "score": 0.8403,
+        "frontmatter_absent": True,
+        "first_words_match": False,
+        "last_words_match": False,
+        "public_audio_approved": False,
+    }
+    original = dict(metrics)
+    blockers = asr_source_gate_blockers(
+        metrics,
+        language="Bengali",
+        transcript="বাংলা প্রতিলিপি",
+        words_available=True,
+    )
+    assert any("below threshold" in blocker for blocker in blockers), blockers
+    assert metrics == original, (metrics, original)
+    assert metrics["public_audio_approved"] is False, metrics
+
+
 def main() -> int:
     assert_completed_checkpoint_is_skipped_on_resume()
     assert_timeout_writes_provider_timeout_checkpoint()
     assert_retry_count_is_bounded()
     assert_budget_estimate_uses_remaining_duration()
     assert_missing_asr_cap_blocks_before_provider_call()
+    assert_mixed_script_transcript_cannot_be_release_ready()
+    assert_low_asr_score_blocks_without_mutating_release_state()
     print("ASR checkpointing regression checks PASS")
     return 0
 

@@ -988,16 +988,20 @@ def transcript_similarity(manuscript: str, transcript: str) -> dict:
     transcript_token_list = word_tokens(transcript_norm)
     manuscript_tokens = set(manuscript_token_list)
     transcript_tokens = set(transcript_token_list)
-    char_similarity = (
-        SequenceMatcher(None, manuscript_norm, transcript_norm, autojunk=False).ratio()
-        if manuscript_norm and transcript_norm
-        else 0.0
-    )
-    token_order_similarity = (
-        SequenceMatcher(None, manuscript_token_list, transcript_token_list, autojunk=False).ratio()
-        if manuscript_token_list and transcript_token_list
-        else 0.0
-    )
+    if manuscript_norm and manuscript_norm == transcript_norm:
+        char_similarity = 1.0
+        token_order_similarity = 1.0
+    else:
+        char_similarity = (
+            SequenceMatcher(None, manuscript_norm, transcript_norm, autojunk=False).ratio()
+            if manuscript_norm and transcript_norm
+            else 0.0
+        )
+        token_order_similarity = (
+            SequenceMatcher(None, manuscript_token_list, transcript_token_list, autojunk=False).ratio()
+            if manuscript_token_list and transcript_token_list
+            else 0.0
+        )
     # Long literary transcripts are dominated by common spaces/punctuation after
     # ASR normalization. Token-order similarity is a better release signal than
     # raw character matching and still penalizes omissions, reordering, and
@@ -1017,6 +1021,41 @@ def transcript_similarity(manuscript: str, transcript: str) -> dict:
         "first_words_match_score": round(first_score, 4),
         "last_words_match_score": round(last_score, 4),
     }
+
+
+def transcript_script_profile(text: str) -> dict:
+    counts = {
+        "bengali": sum("\u0980" <= char <= "\u09ff" for char in text or ""),
+        "devanagari": sum("\u0900" <= char <= "\u097f" for char in text or ""),
+        "latin": sum(("A" <= char <= "Z") or ("a" <= char <= "z") for char in text or ""),
+    }
+    total = sum(counts.values())
+    ratios = {name: round(count / total, 4) if total else 0.0 for name, count in counts.items()}
+    active = [name for name, count in counts.items() if count]
+    dominant = max(active, key=lambda name: counts[name]) if active else "unknown"
+    return {"counts": counts, "ratios": ratios, "dominant_script": dominant, "script_total": total}
+
+
+def asr_source_gate_blockers(metrics: dict, *, language: str, transcript: str, words_available: bool) -> list[str]:
+    blockers: list[str] = []
+    if safe_float(metrics.get("score"), 0.0) < 9.7:
+        blockers.append(f"ASR transcript match score below threshold: {metrics.get('score')} < 9.7")
+    if not metrics.get("frontmatter_absent"):
+        blockers.append("ASR transcript contains source/frontmatter terms.")
+    if not metrics.get("first_words_match"):
+        blockers.append("ASR first narrated words do not match the manuscript opening.")
+    if not metrics.get("last_words_match"):
+        blockers.append("ASR last narrated words do not match the manuscript ending.")
+    if not words_available:
+        blockers.append("ASR did not return word/segment timestamps.")
+    if is_bengali_language(language):
+        profile = transcript_script_profile(transcript)
+        if profile["ratios"]["bengali"] < 0.9:
+            blockers.append(
+                "ASR transcript is not predominantly Bengali script "
+                f"({profile['ratios']['bengali']:.4f} Bengali ratio)."
+            )
+    return blockers
 
 
 def boundary_span_match(manuscript_tokens: list[str], transcript_tokens: list[str], *, start: bool) -> tuple[bool, float]:
@@ -1145,6 +1184,55 @@ def audiobook_clean_manuscript(args, manuscript: str) -> str:
         return manuscript
 
 
+def group_repair_was_requested(group_repair: dict) -> bool:
+    if not group_repair:
+        return False
+    explicit_flags = ("repair_requested", "repair_required", "attempted")
+    if any(group_repair.get(name) is True for name in explicit_flags):
+        return True
+    evidence_fields = (
+        "manifest_path",
+        "groups",
+        "regenerated_group_ids",
+        "reused_group_ids",
+        "failed_group_ids",
+        "repaired_group_sequence_hash",
+    )
+    return any(bool(group_repair.get(name)) for name in evidence_fields)
+
+
+def group_repair_semantics(group_repair: dict, *, construction_evidence_pass: bool) -> dict:
+    """Validate repair status without treating a fresh generation as a repair failure."""
+
+    if not group_repair:
+        return {
+            "status": "ABSENT",
+            "repair_requested": False,
+            "accepted": True,
+            "reason": "legacy_manifest_without_group_repair_metadata",
+        }
+    status = str(group_repair.get("status") or "").strip().upper()
+    repair_requested = group_repair_was_requested(group_repair)
+    if status == "PASS":
+        accepted = True
+        reason = "requested_repair_passed"
+    elif status == "NOT_NEEDED":
+        accepted = not repair_requested and construction_evidence_pass
+        reason = "fresh_generation_verified" if accepted else "not_needed_conflicts_with_repair_or_evidence"
+    elif status == "NOT_REQUESTED":
+        accepted = not repair_requested and construction_evidence_pass
+        reason = "legacy_fresh_generation_verified" if accepted else "not_requested_requires_complete_fresh_generation_evidence"
+    else:
+        accepted = False
+        reason = "repair_status_is_not_release_safe"
+    return {
+        "status": status or "MISSING",
+        "repair_requested": repair_requested,
+        "accepted": accepted,
+        "reason": reason,
+    }
+
+
 def bengali_tts_by_construction_verification(
     args,
     run_dir: Path,
@@ -1182,8 +1270,6 @@ def bengali_tts_by_construction_verification(
         blockers.append("TTS_BY_CONSTRUCTION_BLOCKED: TTS source sanitization did not confirm frontmatter stripping.")
     if sanitization.get("forbidden_source_terms_in_prepared_text"):
         blockers.append("TTS_BY_CONSTRUCTION_BLOCKED: forbidden source/frontmatter terms remain in prepared TTS text.")
-    if group_repair and group_repair.get("status") not in {"PASS", "NOT_NEEDED", None}:
-        blockers.append("TTS_BY_CONSTRUCTION_BLOCKED: group repair manifest is not PASS.")
     if not source_text:
         blockers.append("TTS_BY_CONSTRUCTION_BLOCKED: reconstructed TTS input text is empty.")
     if source_text and not frontmatter_absent(source_text):
@@ -1263,7 +1349,14 @@ def bengali_tts_by_construction_verification(
     source_tokens = word_tokens(source_norm)
     manuscript_tokens = word_tokens(manuscript_norm)
     coverage = len(set(manuscript_tokens) & set(source_tokens)) / len(set(manuscript_tokens)) if manuscript_tokens else 0.0
-    match_score = SequenceMatcher(None, manuscript_norm, source_norm, autojunk=False).ratio() if manuscript_norm and source_norm else 0.0
+    if manuscript_norm and manuscript_norm == source_norm:
+        match_score = 1.0
+    else:
+        match_score = (
+            SequenceMatcher(None, manuscript_norm, source_norm, autojunk=False).ratio()
+            if manuscript_norm and source_norm
+            else 0.0
+        )
     first_match, first_score = boundary_span_match(manuscript_tokens, source_tokens, start=True)
     last_match, last_score = boundary_span_match(manuscript_tokens, source_tokens, start=False)
     if coverage < 0.999:
@@ -1274,6 +1367,13 @@ def bengali_tts_by_construction_verification(
         blockers.append("TTS_BY_CONSTRUCTION_BLOCKED: first literary words are not present in first TTS group.")
     if not last_match:
         blockers.append("TTS_BY_CONSTRUCTION_BLOCKED: final literary words are not present in final TTS group.")
+
+    repair_semantics = group_repair_semantics(group_repair, construction_evidence_pass=not blockers)
+    if not repair_semantics["accepted"]:
+        blockers.append(
+            "TTS_BY_CONSTRUCTION_BLOCKED: group repair semantics are not release-safe "
+            f"({repair_semantics['status']}: {repair_semantics['reason']})."
+        )
 
     verified = not blockers
     report = {
@@ -1293,6 +1393,7 @@ def bengali_tts_by_construction_verification(
         "audiobook_clean_manuscript_hash": sha256_text(audiobook_manuscript),
         "tts_input_sequence_hash": source_sequence_hash,
         "expected_tts_input_sequence_hash": expected_sequence_hash,
+        "group_repair_semantics": repair_semantics,
         "final_audio_path": rel(final_audio),
         "final_audio_hash": final_audio_hash,
         "group_count": len(chunks),
@@ -2202,7 +2303,14 @@ def main() -> int:
     diagnosis_path = run_dir / "asr_alignment_diagnosis.json"
     write_json(diagnosis_path, metrics)
     bengali_report: dict | None = None
-    if is_bengali_language(args.language) and (metrics["score"] < 9.7 or not metrics["frontmatter_absent"] or not words):
+    source_gate_blockers = asr_source_gate_blockers(
+        metrics,
+        language=args.language,
+        transcript=transcript,
+        words_available=bool(words),
+    )
+    metrics["transcript_script_profile"] = transcript_script_profile(transcript)
+    if is_bengali_language(args.language) and source_gate_blockers:
         bengali_report = analyze_bengali_asr(
             slug=args.slug,
             title=args.title,
@@ -2265,24 +2373,14 @@ def main() -> int:
         if bengali_report.get("release_pass"):
             metrics["score"] = max(float(metrics.get("score") or 0), float(bengali_report.get("phonetic_projection_score") or 0))
 
-    if (
-        metrics["score"] < 9.7
-        or not metrics["frontmatter_absent"]
-        or not metrics.get("first_words_match")
-        or not metrics.get("last_words_match")
-        or not words
-    ):
-        blockers = []
-        if metrics["score"] < 9.7:
-            blockers.append(f"ASR transcript match score below threshold: {metrics['score']} < 9.7")
-        if not metrics["frontmatter_absent"]:
-            blockers.append("ASR transcript contains source/frontmatter terms.")
-        if not metrics.get("first_words_match"):
-            blockers.append("ASR first narrated words do not match the manuscript opening.")
-        if not metrics.get("last_words_match"):
-            blockers.append("ASR last narrated words do not match the manuscript ending.")
-        if not words:
-            blockers.append("ASR did not return word/segment timestamps.")
+    source_gate_blockers = asr_source_gate_blockers(
+        metrics,
+        language=args.language,
+        transcript=transcript,
+        words_available=bool(words),
+    )
+    if source_gate_blockers:
+        blockers = list(source_gate_blockers)
         blocker_category = "asr" if metrics["score"] < 9.7 or not metrics.get("first_words_match") or not metrics.get("last_words_match") else "sync"
         artifacts = {"asr_transcript": rel(transcript_path), "asr_alignment_diagnosis": rel(diagnosis_path)}
         updated_fields = {}
@@ -2334,6 +2432,13 @@ def main() -> int:
             artifacts["bengali_tts_by_construction_report"] = provenance_report.get("report_path")
             write_json(diagnosis_path, metrics)
             if provenance_report.get("tts_by_construction_verified") is True:
+                metrics["construction_source_evidence_status"] = "PASS_DIAGNOSTIC_ONLY"
+                blockers.append(
+                    "TTS construction evidence passed, but it does not override the failed ASR/source gate; "
+                    "listening QA remains blocked pending ASR language or normalization repair."
+                )
+                write_json(diagnosis_path, metrics)
+            if provenance_report.get("tts_by_construction_verified") is True and not source_gate_blockers:
                 sidecars = write_measured_group_sidecars(
                     args,
                     run_dir,
