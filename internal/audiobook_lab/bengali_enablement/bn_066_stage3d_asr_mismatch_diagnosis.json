@@ -1,0 +1,144 @@
+{
+  "generated_at": "2026-07-10T20:02:48Z",
+  "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_3D_ASR_MISMATCH_DIAGNOSIS_AND_VERIFIER_SEMANTICS_REPAIR",
+  "slug": "bn-066",
+  "title": "Anandamath",
+  "classification": "ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED",
+  "provider_calls_ran": false,
+  "listening_qa_ran": false,
+  "checkpoint_summary": {
+    "total": 152,
+    "pass": 152,
+    "provider_timeout": 0,
+    "failed": 0,
+    "retried": 0,
+    "provider": "openai",
+    "model": "whisper-1",
+    "requested_language_code": "",
+    "language_behavior": "per_chunk_auto_detection"
+  },
+  "full_transcript_script_profile": {
+    "bengali_characters": 22749,
+    "devanagari_characters": 57779,
+    "latin_characters": 700,
+    "script_total": 81228,
+    "bengali_ratio": 0.2801,
+    "devanagari_ratio": 0.7113,
+    "latin_ratio": 0.0086,
+    "classification": "mixed_devanagari_dominant"
+  },
+  "representative_checkpoints": [
+    {
+      "chunk_id": "group_0000",
+      "duration_seconds": 145.841179,
+      "transcript_chars": 1167,
+      "transcript_excerpt": "ओती बिस्ट्रितो अरन्नो। अरन्नो मद्दे अधिकाम्षो ब्रिख्खोई शाल...",
+      "expected_source_excerpt": "অতি বিস্তৃত অরণ্য। অরণ্যমধ্যে অধিকাংশ বৃক্ষই শাল...",
+      "dominant_script": "devanagari",
+      "bengali_ratio": 0.0,
+      "devanagari_ratio": 0.9968,
+      "latin_ratio": 0.0032,
+      "raw_character_similarity": 0.0757,
+      "punctuation_stripped_similarity": 0.0087,
+      "normalized_sequence_similarity": 0.6705,
+      "phonetic_sequence_similarity": 0.8283,
+      "obvious_mismatch_type": "phonetic_bengali_transcribed_in_devanagari",
+      "status": "MIXED_SCRIPT_NOT_RELEASE_PROOF"
+    },
+    {
+      "chunk_id": "group_0076",
+      "duration_seconds": 135.22127,
+      "transcript_chars": 1289,
+      "transcript_excerpt": "आज जहा लुठिया आनी आछी, ताहाई खाइब...",
+      "expected_source_excerpt": "আজ যাহা লুঠিয়া আনিয়াছি, তাহাই খাইব...",
+      "dominant_script": "devanagari",
+      "bengali_ratio": 0.0,
+      "devanagari_ratio": 0.9971,
+      "latin_ratio": 0.0029,
+      "raw_character_similarity": 0.0975,
+      "punctuation_stripped_similarity": 0.0175,
+      "normalized_sequence_similarity": 0.7817,
+      "phonetic_sequence_similarity": 0.9174,
+      "obvious_mismatch_type": "phonetic_bengali_transcribed_in_devanagari",
+      "status": "MIXED_SCRIPT_NOT_RELEASE_PROOF"
+    },
+    {
+      "chunk_id": "group_0151",
+      "duration_seconds": 66.628662,
+      "transcript_chars": 308,
+      "transcript_excerpt": "তী প্রকারে আশিলাম হাটিয এ বেশ কেনো...",
+      "expected_source_excerpt": "কি প্রকারে আসিলাম?—হাঁটিয়া। এ বেশ কেন?...",
+      "dominant_script": "bengali",
+      "bengali_ratio": 1.0,
+      "devanagari_ratio": 0.0,
+      "latin_ratio": 0.0,
+      "raw_character_similarity": 0.6683,
+      "punctuation_stripped_similarity": 0.7132,
+      "normalized_sequence_similarity": 0.7455,
+      "phonetic_sequence_similarity": 0.7918,
+      "obvious_mismatch_type": "bengali_script_with_asr_omissions_and_spelling_variants",
+      "status": "LOW_CONFIDENCE_NOT_RELEASE_PROOF"
+    }
+  ],
+  "source_layer_analysis": {
+    "display_clean_manuscript_chars": 203763,
+    "tts_prepared_manuscript_chars": 205532,
+    "reconstructed_chunk_text_chars": 205531,
+    "display_source_starts_with_page_boilerplate": true,
+    "tts_prepared_source_starts_with_literary_text": true,
+    "prepared_to_reconstructed_normalized_equal": true,
+    "prepared_to_reconstructed_score": 10.0,
+    "prepared_to_reconstructed_coverage": 1.0,
+    "prepared_to_reconstructed_first_words_match": true,
+    "prepared_to_reconstructed_last_words_match": true,
+    "raw_asr_first_words_match": false,
+    "raw_asr_last_words_match": false,
+    "projected_asr_first_words_match": true,
+    "projected_asr_last_words_match": true
+  },
+  "group_repair_semantics": {
+    "producer_before": "NOT_REQUESTED",
+    "producer_after": "NOT_NEEDED",
+    "legacy_status": "NOT_REQUESTED",
+    "repair_requested": false,
+    "construction_evidence_pass": true,
+    "legacy_status_accepted": true,
+    "acceptance_reason": "legacy_fresh_generation_verified",
+    "tts_input_coverage_percent": 100.0,
+    "canonical_to_tts_clean_match_score": 1.0,
+    "first_last_tts_input_boundary_pass": true,
+    "group_count": 152,
+    "verifier_blockers_after_repair": []
+  },
+  "root_cause_classification": {
+    "confirmed": [
+      "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED",
+      "ASR_MODEL_OUTPUT_MIXED_SCRIPT",
+      "ASR_NORMALIZATION_REPAIR_REQUIRED",
+      "SOURCE_ALIGNMENT_LAYER_MISMATCH",
+      "FIRST_LAST_EXPECTATION_LAYER_MISMATCH",
+      "GROUP_REPAIR_VERIFIER_SEMANTICS_BUG"
+    ],
+    "not_proven": [
+      "TRUE_AUDIO_SOURCE_MISMATCH",
+      "TTS_CHUNK_ORDER_MISMATCH",
+      "CHECKPOINT_TRANSCRIPT_CORRUPT"
+    ],
+    "reason": "Representative transcripts follow the expected chunk content phonetically, all checkpoints are complete, and the prepared manuscript reconstructs exactly from ordered hashed chunks; the dominant failure is inconsistent per-chunk ASR script plus weak normalization/alignment semantics."
+  },
+  "release_gate": {
+    "asr_source_score": 0.8403,
+    "required_score": 9.7,
+    "status": "BLOCKED",
+    "construction_evidence": "PASS_DIAGNOSTIC_ONLY",
+    "listening_qa": "NOT_RUN_ASR_SOURCE_GATE_FAILED",
+    "ready_for_release_gate_owner_approval": false,
+    "public_audio_approval": "NONE"
+  },
+  "lock": {
+    "status": "active",
+    "current_holder": "none",
+    "allowed_next_holders": []
+  },
+  "recommended_next_action": "Run an owner-authorized, bounded ASR language/model recalibration on a tiny representative set of existing chunks, requiring Bengali-script output before any full alignment retry. Then repair normalization/alignment only if Bengali-script ASR still misses source thresholds. Do not repair or regenerate TTS audio unless recalibrated ASR produces evidence of a true mismatch."
+}
