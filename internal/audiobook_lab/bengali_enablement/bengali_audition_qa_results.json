@@ -1,0 +1,90 @@
+{
+    "generated_at": "2026-07-10T09:31:50Z",
+    "stage": "BENGALI_AUDIOBOOK_ENABLEMENT_STAGE_1F_BOUNDED_LISTENING_QA_GATE_AND_BN_066_POOJA_AUDITION_RETRY",
+    "status": "AUDITION_QA_PASS",
+    "reason": "Stage 1F generated one bn-066 Sarvam/pooja representative sample and bounded schema-3 OpenAI listening QA passed.",
+    "budget": {
+        "authorized_cap_usd": 5.0,
+        "estimated_tts_cost_usd": 0.0119,
+        "estimated_listening_qa_cost_usd": 0.05,
+        "estimated_spend_usd": 0.0619,
+        "actual_spend_usd": "not_available",
+        "budget_remaining_usd": 4.9381
+    },
+    "results": [
+        {
+            "slug": "bn-066",
+            "classification": "AUDITION_PASS",
+            "qa_status": "PASS",
+            "provider": "sarvam",
+            "preferred_voice": "pooja",
+            "fallback_voice": null,
+            "selected_voice": "pooja",
+            "requested_style": "literary_warm_pacing",
+            "run_dir": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa",
+            "report_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bengali_tts_provider_bakeoff_report.json",
+            "blocker": "",
+            "sample_text_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/bakeoff_passages.json",
+            "audio_output_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/auditions/sarvam/pooja/narrative_opening_0b81b0844d4d_clipped.mp3",
+            "next_action": "Seek owner approval for guarded full-book TTS; do not publish or expose Listen until full objective release gates pass.",
+            "source_audio_path": "internal/audiobook_lab/bengali_enablement/bn_066_stage1f_pooja_audition_bounded_listening_qa/auditions/sarvam/pooja/narrative_opening_0b81b0844d4d.wav",
+            "duration_seconds": 45.0,
+            "scores": {
+                "naturalness_score": 9.5,
+                "pronunciation_score": 9.4,
+                "emotional_expression_score": 9.3,
+                "punctuation_pause_score": 9.2,
+                "pacing_score": 9.1,
+                "continuity_score": 9.4,
+                "anti_robotic_texture_score": 9.6,
+                "anti_choppy_join_score": 9.5,
+                "listener_enjoyment_score": 9.3,
+                "overall_listening_score": 9.3,
+                "confidence_score": 0.95
+            },
+            "fatal_flags": {
+                "robotic_texture_detected": false,
+                "mechanical_cadence_detected": false,
+                "choppy_joins_detected": false,
+                "fallback_tts_detected": false,
+                "list_reading_rhythm_detected": false,
+                "repeated_identical_sentence_endings_detected": false,
+                "abrupt_tts_resets_detected": false,
+                "placeholder_audio_detected": false
+            },
+            "frontmatter_present": false,
+            "judge_blockers": []
+        },
+        {
+            "slug": "muchiram-gurer-jibanchorit",
+            "classification": "NEEDS_SEGMENTATION_REPAIR",
+            "qa_status": "NOT_RUN_NO_AUDIO_GENERATED",
+            "next_action": "Split compact opening sample and retry only within budget after env gates are present."
+        },
+        {
+            "slug": "book-d19e96859f",
+            "classification": "NEEDS_TEXT_REPAIR",
+            "qa_status": "NOT_RUN_NO_AUDIO_GENERATED",
+            "next_action": "Define group-only cleaned diagnostic sample before paid repair."
+        },
+        {
+            "slug": "book-f5d593e1f4",
+            "classification": "NEEDS_TEXT_REPAIR",
+            "qa_status": "NOT_RUN_NO_AUDIO_GENERATED",
+            "next_action": "Define group-only cleaned diagnostic sample before paid repair."
+        },
+        {
+            "slug": "pather-panchali",
+            "classification": "NEEDS_RIGHTS_DOCUMENT",
+            "qa_status": "NOT_RUN_NO_AUDIO_GENERATED",
+            "next_action": "Finish rights/source/cover repair review before any paid audio."
+        },
+        {
+            "slug": "a-ghost-story",
+            "classification": "HOLD_WITH_NEXT_ACTION",
+            "qa_status": "NOT_RUN_NO_AUDIO_GENERATED",
+            "next_action": "Keep reader-first/audio-hidden until separate English-audio sprint is authorized."
+        }
+    ],
+    "public_audio_approval": "NONE"
+}
