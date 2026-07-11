@@ -91,6 +91,18 @@ def test_approved_bengali_pilot_still_exposes_evidence_gated_audio():
     assert audio["assets"]["mp3"]
 
 
+def test_approved_audio_version_changes_with_release_qa_semantics(monkeypatch):
+    artifact = catalog_truth.load_controlled_artifact_book("book-2b9853ec52")
+    assert artifact is not None
+
+    monkeypatch.setattr(server, "audio_release_qa_status", lambda _book: "QA_PASSED")
+    approved_version = server._reader_manifest_audio(artifact, "book-2b9853ec52")["version"]
+    monkeypatch.setattr(server, "audio_release_qa_status", lambda _book: "REPAIR_REQUIRED")
+    repair_version = server._reader_manifest_audio(artifact, "book-2b9853ec52")["version"]
+
+    assert approved_version != repair_version
+
+
 def test_bn_066_legacy_audio_endpoint_fails_closed(monkeypatch):
     monkeypatch.setattr(server, "db", SimpleNamespace(books=LegacyAudioBooks()))
     request = server.Request({"type": "http", "method": "GET", "headers": []})

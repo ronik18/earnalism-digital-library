@@ -1692,6 +1692,12 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
     nested = _book_audiobook_doc(book)
     provider = _book_audiobook_provider(book)
     audio_slug = slugify(book.get("audio_asset_slug") or slug, fallback=slug)
+    release_gate = "APPROVED"
+    qa_status = audio_release_qa_status({**book, "slug": slug})
+    sync_mode = book.get("sync_mode", nested.get("sync_mode", ""))
+    highlight_sync_enabled = bool(
+        book.get("highlight_sync_enabled", nested.get("highlight_sync_enabled", False))
+    )
     enabled = bool(
         book.get("audiobook_enabled")
         or book.get("generate_audiobook")
@@ -1705,6 +1711,11 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "voice": book.get("audiobook_voice", ""),
         "assets": assets,
         "audiobook": nested,
+        "release_gate": release_gate,
+        "qa_status": qa_status,
+        "sync_mode": sync_mode,
+        "highlight_sync_enabled": highlight_sync_enabled,
+        "truth_gate": CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION,
         "updated_at": book.get("audiobook_assets_updated_at", ""),
     })
     return {
@@ -1716,12 +1727,10 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "url": _reader_audio_asset_url(book, slug, "mp3", _book_audiobook_url(book)),
         "size": int(nested.get("size", 0) or 0),
         "duration_ms": int(nested.get("duration_ms", nested.get("duration", 0)) or 0),
-        "release_gate": "APPROVED",
-        "qa_status": audio_release_qa_status({**book, "slug": slug}),
-        "sync_mode": book.get("sync_mode", nested.get("sync_mode", "")),
-        "highlight_sync_enabled": bool(
-            book.get("highlight_sync_enabled", nested.get("highlight_sync_enabled", False))
-        ),
+        "release_gate": release_gate,
+        "qa_status": qa_status,
+        "sync_mode": sync_mode,
+        "highlight_sync_enabled": highlight_sync_enabled,
         "version": version,
         "updated_at": book.get("audiobook_assets_updated_at", ""),
     }
