@@ -16,6 +16,14 @@ BLOCKED_BENGALI_CANARIES = {
     "book-f5d593e1f4",
     "muchiram-gurer-jibanchorit",
 }
+SPRINT1_READER_ONLY_ADDITIONS = {
+    "book-d19e96859f",
+    "book-f5d593e1f4",
+    "muchiram-gurer-jibanchorit",
+    "radharani",
+    "the-call-of-the-wild",
+    "the-time-machine",
+}
 HISTORICAL_RECONSTRUCTION_AUDIO_HOLDS = {
     "alices-adventures-in-wonderland",
     "bn-027",
@@ -59,6 +67,15 @@ def test_root_controlled_launch_keeps_bn_066_reader_live_and_audio_hidden():
     assert PRIVATE_QA_AUDIO_HOLD in root_launch["live_approved_slugs"]
     assert PRIVATE_QA_AUDIO_HOLD not in root_launch["audio_enabled_slugs"]
     assert set(root_launch["audio_enabled_slugs"]) == {APPROVED_BENGALI_PILOT}
+
+
+def test_sprint1_reader_additions_are_live_in_both_trees_and_audio_hidden():
+    root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
+    backend_launch = load_json(BACKEND_CONTROLLED_LAUNCH)
+
+    for launch in (root_launch, backend_launch):
+        assert SPRINT1_READER_ONLY_ADDITIONS.issubset(launch["live_approved_slugs"])
+        assert set(launch["audio_enabled_slugs"]).isdisjoint(SPRINT1_READER_ONLY_ADDITIONS)
 
 
 def test_historical_reconstruction_evidence_does_not_approve_public_audio():
