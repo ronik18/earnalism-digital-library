@@ -16,6 +16,14 @@ BLOCKED_BENGALI_CANARIES = {
     "book-f5d593e1f4",
     "muchiram-gurer-jibanchorit",
 }
+HISTORICAL_RECONSTRUCTION_AUDIO_HOLDS = {
+    "alices-adventures-in-wonderland",
+    "bn-027",
+    "lokrahasya",
+    "mrinalini",
+    "nishkriti",
+    "the-wonderful-wizard-of-oz",
+}
 
 
 def load_json(path: Path) -> dict:
@@ -41,6 +49,8 @@ def test_backend_controlled_launch_preserves_audio_hold_states():
     assert PRIVATE_QA_AUDIO_HOLD in backend_launch["live_approved_slugs"]
     assert PRIVATE_QA_AUDIO_HOLD not in backend_audio
     assert backend_audio.isdisjoint(BLOCKED_BENGALI_CANARIES)
+    assert backend_audio.isdisjoint(HISTORICAL_RECONSTRUCTION_AUDIO_HOLDS)
+    assert backend_audio == {APPROVED_BENGALI_PILOT}
 
 
 def test_root_controlled_launch_keeps_bn_066_reader_live_and_audio_hidden():
@@ -48,6 +58,17 @@ def test_root_controlled_launch_keeps_bn_066_reader_live_and_audio_hidden():
 
     assert PRIVATE_QA_AUDIO_HOLD in root_launch["live_approved_slugs"]
     assert PRIVATE_QA_AUDIO_HOLD not in root_launch["audio_enabled_slugs"]
+    assert set(root_launch["audio_enabled_slugs"]) == {APPROVED_BENGALI_PILOT}
+
+
+def test_historical_reconstruction_evidence_does_not_approve_public_audio():
+    for slug in HISTORICAL_RECONSTRUCTION_AUDIO_HOLDS:
+        evidence = load_json(
+            ROOT / "backend" / "data" / "controlled_publications" / slug / "approval_evidence.json"
+        )
+        assert evidence["approval_scope"] == "historical_admin_import_reconstruction"
+        assert evidence["audio_public_release"] == "PUBLIC_AUDIO_RELEASE_BLOCKED_QA_REQUIRED"
+        assert evidence["audiobook_enabled"] is False
 
 
 def test_backend_controlled_launch_has_no_duplicate_slugs():

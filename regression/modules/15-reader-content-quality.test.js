@@ -15,7 +15,7 @@ const BATCH_SLUGS = [
   "eyesore-chokher-bali",
 ];
 const BENGALI_SLUGS = new Set(["devdas", "pather-panchali"]);
-const CLAIMABLE_AUDIO_SLUGS = [
+const HISTORICAL_AUDIO_HOLD_SLUGS = [
   "alices-adventures-in-wonderland",
   "bn-027",
   "lokrahasya",
@@ -25,8 +25,15 @@ const CLAIMABLE_AUDIO_SLUGS = [
   "bn-059",
   "the-art-of-money-getting",
 ];
+const APPROVED_PUBLIC_AUDIO_SLUGS = ["book-2b9853ec52"];
 const PRIVATE_QA_AUDIO_HOLD = "bn-066";
-const REQUIRED_LIVE_SLUGS = ["dracula", ...BATCH_SLUGS, ...CLAIMABLE_AUDIO_SLUGS, PRIVATE_QA_AUDIO_HOLD];
+const REQUIRED_LIVE_SLUGS = [
+  "dracula",
+  ...BATCH_SLUGS,
+  ...HISTORICAL_AUDIO_HOLD_SLUGS,
+  ...APPROVED_PUBLIC_AUDIO_SLUGS,
+  PRIVATE_QA_AUDIO_HOLD,
+];
 const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
 const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];
 
@@ -90,7 +97,8 @@ describe("Reader content quality batch 1", () => {
   test("promoted books remain reader-only with no payment, checkout, homepage, or audio exposure", () => {
     expect(launch.live_approved_slugs).toEqual(expect.arrayContaining(REQUIRED_LIVE_SLUGS));
     expect(new Set(launch.live_approved_slugs).size).toBe(launch.live_approved_slugs.length);
-    expect(launch.audio_enabled_slugs).toEqual(expect.arrayContaining(CLAIMABLE_AUDIO_SLUGS));
+    expect(launch.audio_enabled_slugs).toEqual(APPROVED_PUBLIC_AUDIO_SLUGS);
+    for (const slug of HISTORICAL_AUDIO_HOLD_SLUGS) expect(launch.audio_enabled_slugs).not.toContain(slug);
     expect(launch.audio_enabled_slugs).not.toContain(PRIVATE_QA_AUDIO_HOLD);
     expect(new Set(launch.audio_enabled_slugs).size).toBe(launch.audio_enabled_slugs.length);
     for (const slug of launch.audio_enabled_slugs) expect(launch.live_approved_slugs).toContain(slug);

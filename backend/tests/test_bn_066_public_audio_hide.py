@@ -120,3 +120,28 @@ def test_a_ghost_story_remains_reader_first_audio_hidden():
     assert catalog_truth.can_expose_reader(artifact) is True
     assert catalog_truth.can_expose_audio(artifact) is False
     assert server._reader_manifest_audio(artifact, "a-ghost-story")["enabled"] is False
+
+
+@pytest.mark.parametrize(
+    "slug",
+    [
+        "alices-adventures-in-wonderland",
+        "bn-027",
+        "lokrahasya",
+        "mrinalini",
+        "nishkriti",
+        "the-wonderful-wizard-of-oz",
+    ],
+)
+def test_historical_reconstruction_audio_fails_closed(slug):
+    artifact = catalog_truth.load_controlled_artifact_book(slug)
+
+    assert artifact is not None
+    assert catalog_truth.can_expose_reader(artifact) is True
+    assert catalog_truth.can_expose_audio(artifact) is False
+    audio = server._reader_manifest_audio(artifact, slug)
+    assert audio["enabled"] is False
+    assert audio["assets"] == {}
+    assert audio["url"] == ""
+    assert audio["release_gate"] == ""
+    assert audio["qa_status"] == ""
