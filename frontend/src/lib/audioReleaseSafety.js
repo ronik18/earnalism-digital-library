@@ -6,7 +6,7 @@ function upper(value = "") {
   return clean(value).toUpperCase();
 }
 
-export const READER_MANIFEST_RELEASE_TRUTH_VERSION = "audio-release-evidence-v5";
+export const READER_MANIFEST_RELEASE_TRUTH_VERSION = "audio-release-evidence-v6";
 
 export function readerManifestPath(slug, { adminPreview = false } = {}) {
   const params = new URLSearchParams({
