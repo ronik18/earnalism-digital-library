@@ -84,11 +84,22 @@ def test_approved_bengali_pilot_still_exposes_evidence_gated_audio():
 
     assert artifact is not None
     assert catalog_truth.can_expose_audio(artifact) is True
+    assert artifact["audiobook_provider"] == "b2"
+    assert artifact["audiobook_voice"] == "ratan"
+    assert artifact["audiobook_assets"]["mp3"].startswith(
+        "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/"
+    )
     audio = server._reader_manifest_audio(artifact, "book-2b9853ec52")
     assert audio["enabled"] is True
     assert audio["release_gate"] == "APPROVED"
     assert audio["qa_status"] == "QA_PASSED"
-    assert audio["assets"]["mp3"]
+    assert audio["provider"] == "b2"
+    assert audio["voice"] == "ratan"
+    assert audio["assets"]["mp3"] == "/api/reader/book/book-2b9853ec52/audiobook"
+    assert audio["assets"]["timestamps"] == "/api/reader/book/book-2b9853ec52/audiobook/timestamps"
+    assert audio["url"] == "/api/reader/book/book-2b9853ec52/audiobook"
+    assert audio["size"] == 5_233_965
+    assert audio["duration_ms"] == 327_069
 
 
 def test_approved_audio_version_changes_with_release_qa_semantics(monkeypatch):
