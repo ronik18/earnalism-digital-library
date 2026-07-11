@@ -49,8 +49,15 @@ def test_non_allowlisted_live_or_public_flags_are_blocked():
     assert any("allowPayment" in issue for issue in issues)
 
 
-def test_only_dracula_is_allowlisted_for_existing_live_release():
-    assert APPROVED_RELEASE_ALLOWLIST == ("dracula",)
+def test_publication_allowlist_requires_root_and_backend_controlled_launch_parity():
+    root = Path(__file__).resolve().parents[2]
+    root_launch = json.loads((root / "data" / "controlled_launch.json").read_text(encoding="utf-8"))
+    backend_launch = json.loads((root / "backend" / "data" / "controlled_launch.json").read_text(encoding="utf-8"))
+    expected = tuple(sorted(set(root_launch["live_approved_slugs"]) & set(backend_launch["live_approved_slugs"])))
+
+    assert APPROVED_RELEASE_ALLOWLIST == expected
+    assert "book-d19e96859f" in APPROVED_RELEASE_ALLOWLIST
+    assert "not-controlled" not in APPROVED_RELEASE_ALLOWLIST
     assert validate_import_book_safety(
         {
             "slug": "dracula",

@@ -13,7 +13,25 @@ from pathlib import Path
 from typing import Any
 
 
-APPROVED_RELEASE_ALLOWLIST = ("dracula",)
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def controlled_release_allowlist() -> tuple[str, ...]:
+    try:
+        root_launch = json.loads((ROOT / "data" / "controlled_launch.json").read_text(encoding="utf-8"))
+        backend_launch = json.loads(
+            (ROOT / "backend" / "data" / "controlled_launch.json").read_text(encoding="utf-8")
+        )
+        normalize = lambda value: re.sub(r"[^a-z0-9-]+", "-", str(value or "").strip().lower()).strip("-")
+        root_live = {normalize(slug) for slug in root_launch.get("live_approved_slugs", [])}
+        backend_live = {normalize(slug) for slug in backend_launch.get("live_approved_slugs", [])}
+        allowlist = tuple(sorted(root_live & backend_live))
+        return allowlist or ("dracula",)
+    except (OSError, TypeError, ValueError, json.JSONDecodeError):
+        return ("dracula",)
+
+
+APPROVED_RELEASE_ALLOWLIST = controlled_release_allowlist()
 
 FIRST_BATCH_DRAFT_IMPORT_SLUGS = (
     "anandamath-visual-study-companion",
