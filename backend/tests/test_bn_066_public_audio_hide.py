@@ -84,6 +84,8 @@ def test_approved_bengali_pilot_still_exposes_evidence_gated_audio():
 
     assert artifact is not None
     assert catalog_truth.can_expose_audio(artifact) is True
+    assert artifact["cover_image_url"].endswith("book-2b9853ec52_front_1600x2400.png")
+    assert artifact["back_cover_image_url"].endswith("book-2b9853ec52_back_1600x2400.png")
     assert artifact["audiobook_provider"] == "b2"
     assert artifact["audiobook_voice"] == "ratan"
     assert artifact["audiobook_assets"]["mp3"].startswith(
