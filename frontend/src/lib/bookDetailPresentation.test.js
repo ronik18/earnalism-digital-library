@@ -34,6 +34,8 @@ describe("bookDetailPresentation", () => {
           enabled: true,
           provider: "sarvam",
           version: "pilot-live",
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
           sync_mode: "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
           assets: { mp3: "/api/reader/book/book-2b9853ec52/audiobook" },
         },
@@ -44,6 +46,28 @@ describe("bookDetailPresentation", () => {
     expect(presentation.audioBadgeLabel).toBe("Audiobook Approved");
     expect(presentation.syncCopy).toBe("Section-following narration");
     expect(presentation.allowAudioStructuredData).toBe(true);
+  });
+
+  test("keeps bn-066 reader-first when a legacy manifest lacks release approval", () => {
+    const presentation = bookDetailPresentationForBook({
+      slug: "bn-066",
+      title: "আনন্দমঠ",
+      publication_status: "LIVE_APPROVED",
+      _readerManifest: {
+        audio: {
+          enabled: true,
+          provider: "b2",
+          version: "legacy-bn-066",
+          assets: { mp3: "/api/reader/book/bn-066/audiobook" },
+        },
+      },
+    });
+
+    expect(presentation.listenCtaVisible).toBe(false);
+    expect(presentation.audioBadgeLabel).toBe("Audio Hidden");
+    expect(presentation.audioHeading).toBe("Audio waits for release gates");
+    expect(presentation.syncCopy).toBe("");
+    expect(presentation.allowAudioStructuredData).toBe(false);
   });
 
   test("keeps A Ghost Story non-listenable without current approved evidence", () => {

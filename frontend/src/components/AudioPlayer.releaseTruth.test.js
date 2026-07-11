@@ -52,6 +52,8 @@ describe("AudioPlayer release truth", () => {
           enabled: true,
           provider: "sarvam",
           version: "approved-manifest-v1",
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
           sync_mode: "paragraph_stanza",
           assets: {
             mp3: "/api/reader/book/book-2b9853ec52/audiobook",
@@ -64,6 +66,28 @@ describe("AudioPlayer release truth", () => {
     expect(presentation.canRender).toBe(true);
     expect(presentation.audioUrl).toBe("/api/reader/book/book-2b9853ec52/audiobook");
     expect(presentation.syncLabel).toBe("Section-following narration");
+  });
+
+  test("legacy bn-066 manifest cannot render narration controls or sync copy", () => {
+    const presentation = audioPlayerPresentationForBook({
+      slug: "bn-066",
+      title: "আনন্দমঠ",
+      _readerManifest: {
+        audio: {
+          enabled: true,
+          provider: "b2",
+          version: "legacy-bn-066",
+          sync_mode: "paragraph_stanza",
+          assets: {
+            mp3: "/api/reader/book/bn-066/audiobook",
+            timestamps: "/api/reader/book/bn-066/audiobook/timestamps",
+          },
+        },
+      },
+    });
+
+    expect(presentation.canRender).toBe(false);
+    expect(presentation.syncLabel).toBeFalsy();
   });
 
   test.each([

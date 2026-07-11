@@ -50,6 +50,7 @@ try:
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
         PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
+        audio_release_qa_status,
         can_expose_audio,
         can_expose_reader,
         controlled_artifact_status,
@@ -64,6 +65,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         CONTROLLED_LIVE_BOOK_SLUGS as CATALOG_TRUTH_LIVE_BOOK_SLUGS,
         AUDIO_ENABLED_SLUGS as CATALOG_TRUTH_AUDIO_ENABLED_SLUGS,
         PIPELINE_CANDIDATE_SLUGS as CATALOG_TRUTH_PIPELINE_SLUGS,
+        audio_release_qa_status,
         can_expose_audio,
         can_expose_reader,
         controlled_artifact_status,
@@ -394,7 +396,7 @@ async def _expensive_job_slot(job_type: str):
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "dracula-first-v3"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-release-evidence-v4"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
@@ -1673,6 +1675,10 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
             "url": "",
             "size": 0,
             "duration_ms": 0,
+            "release_gate": "",
+            "qa_status": "",
+            "sync_mode": "",
+            "highlight_sync_enabled": False,
             "version": version,
             "updated_at": "",
         }
@@ -1710,6 +1716,12 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "url": _reader_audio_asset_url(book, slug, "mp3", _book_audiobook_url(book)),
         "size": int(nested.get("size", 0) or 0),
         "duration_ms": int(nested.get("duration_ms", nested.get("duration", 0)) or 0),
+        "release_gate": "APPROVED",
+        "qa_status": audio_release_qa_status({**book, "slug": slug}),
+        "sync_mode": book.get("sync_mode", nested.get("sync_mode", "")),
+        "highlight_sync_enabled": bool(
+            book.get("highlight_sync_enabled", nested.get("highlight_sync_enabled", False))
+        ),
         "version": version,
         "updated_at": book.get("audiobook_assets_updated_at", ""),
     }

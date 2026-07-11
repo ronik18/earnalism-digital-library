@@ -136,6 +136,8 @@ PUBLIC_STATUS_COMING_SOON = "COMING_SOON"
 PUBLIC_STATUS_RIGHTS_REVIEW = "RIGHTS_REVIEW"
 PUBLIC_STATUS_QUARANTINE = "QUARANTINE"
 PUBLIC_STATUS_HIDDEN = "HIDDEN"
+PUBLIC_AUDIO_RELEASE_APPROVED_STATUSES = {"APPROVED", "PUBLIC_AUDIO_RELEASE_APPROVED"}
+PUBLIC_AUDIO_QA_PASSED_STATUSES = {"APPROVED", "PASS", "PASSED", "QA_PASSED"}
 
 SAFE_PUBLIC_BOOK_FIELDS = {
     "id",
@@ -222,6 +224,37 @@ def normalize_upper(value: Any) -> str:
 def nested_dict(book: dict[str, Any], key: str) -> dict[str, Any]:
     value = book.get(key)
     return value if isinstance(value, dict) else {}
+
+
+@lru_cache(maxsize=64)
+def controlled_audio_release_evidence(slug: str) -> dict[str, Any]:
+    normalized = normalize_slug(slug)
+    if not normalized:
+        return {}
+    return read_json_file(first_controlled_artifact_dir(normalized) / "approval_evidence.json")
+
+
+def audio_public_release_status(book: dict[str, Any]) -> str:
+    evidence = controlled_audio_release_evidence(normalize_slug(book.get("slug")))
+    if evidence:
+        return normalize_upper(
+            evidence.get("audio_public_release") or evidence.get("public_audio_release")
+        )
+    audiobook = nested_dict(book, "audiobook")
+    return normalize_upper(
+        book.get("audio_public_release")
+        or book.get("public_audio_release")
+        or book.get("audiobook_release_gate")
+        or audiobook.get("release_gate")
+    )
+
+
+def audio_release_qa_status(book: dict[str, Any]) -> str:
+    evidence = controlled_audio_release_evidence(normalize_slug(book.get("slug")))
+    if evidence:
+        return normalize_upper(evidence.get("audio_qa_status") or evidence.get("qa_status"))
+    audiobook = nested_dict(book, "audiobook")
+    return normalize_upper(book.get("audio_qa_status") or audiobook.get("qa_status"))
 
 
 def safe_public_value(key: str, value: Any) -> Any:
@@ -734,7 +767,15 @@ def can_expose_preview(book: dict[str, Any]) -> bool:
 
 def can_expose_audio(book: dict[str, Any]) -> bool:
     slug = normalize_slug(book.get("slug"))
-    return slug in AUDIO_ENABLED_SLUGS and is_live_approved_book(book)
+    if slug not in AUDIO_ENABLED_SLUGS or not is_live_approved_book(book):
+        return False
+    evidence = controlled_audio_release_evidence(slug)
+    if evidence and evidence.get("audiobook_enabled") is not True:
+        return False
+    return (
+        audio_public_release_status(book) in PUBLIC_AUDIO_RELEASE_APPROVED_STATUSES
+        and audio_release_qa_status(book) in PUBLIC_AUDIO_QA_PASSED_STATUSES
+    )
 
 
 def public_pipeline_projection(book: dict[str, Any]) -> dict[str, Any]:

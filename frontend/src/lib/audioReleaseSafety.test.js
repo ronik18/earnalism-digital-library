@@ -40,6 +40,8 @@ describe("audiobook release safety", () => {
           enabled: true,
           provider: "openai",
           version: "78cae7c5e3a77ebb",
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
           assets: {
             mp3: "/api/reader/book/a-ghost-story/audiobook",
             timestamps: "/api/reader/book/a-ghost-story/audiobook/timestamps",
@@ -61,6 +63,8 @@ describe("audiobook release safety", () => {
           enabled: true,
           provider: "sarvam",
           version: "3880e703c76e41eb",
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
           url: "/api/reader/book/book-2b9853ec52/audiobook",
           assets: {
             chapters: "/api/reader/book/book-2b9853ec52/audiobook/chapters",
@@ -72,6 +76,23 @@ describe("audiobook release safety", () => {
     expect(state.canShowControls).toBe(true);
     expect(state.status).toBe("approved");
     expect(state.audioUrl).toBe("/api/reader/book/book-2b9853ec52/audiobook");
+  });
+
+  test("rejects legacy reader manifest assets without explicit release and QA approval", () => {
+    const state = audiobookReleaseState({
+      slug: "bn-066",
+      _readerManifest: {
+        audio: {
+          enabled: true,
+          provider: "b2",
+          version: "legacy-bn-066",
+          assets: { mp3: "/api/reader/book/bn-066/audiobook" },
+        },
+      },
+    });
+
+    expect(state.canShowControls).toBe(false);
+    expect(state.status).toBe("private_review");
   });
 
   test("does not allow blocked audio even when assets exist", () => {
