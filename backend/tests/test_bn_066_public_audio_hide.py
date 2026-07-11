@@ -33,6 +33,22 @@ class LegacyAudioBooks:
         }
 
 
+class StaleApprovedAudioBooks:
+    async def find_one(self, *_args, **_kwargs):
+        book = catalog_truth.load_controlled_artifact_book("book-2b9853ec52", include_content=True)
+        assert book is not None
+        book["audiobook_provider"] = "historical_mapped_assets"
+        book["audiobook_voice"] = ""
+        book["audiobook_assets"] = {
+            "mp3": "https://res.cloudinary.com/demo/video/upload/stale.mp3",
+        }
+        book["audiobook"] = {
+            "provider": "historical_mapped_assets",
+            "url": "https://res.cloudinary.com/demo/video/upload/stale.mp3",
+        }
+        return book
+
+
 async def no_cached_manifest(*_args, **_kwargs):
     return None
 
@@ -102,6 +118,29 @@ def test_approved_bengali_pilot_still_exposes_evidence_gated_audio():
     assert audio["url"] == "/api/reader/book/book-2b9853ec52/audiobook"
     assert audio["size"] == 5_233_965
     assert audio["duration_ms"] == 327_069
+
+
+def test_approved_manifest_prefers_controlled_artifact_over_stale_database_audio(monkeypatch):
+    monkeypatch.setattr(server, "db", SimpleNamespace(books=StaleApprovedAudioBooks()))
+    monkeypatch.setattr(server, "_redis_cache_get", no_cached_manifest)
+    monkeypatch.setattr(server, "_redis_cache_set", ignore_cached_manifest)
+
+    manifest = asyncio.run(server._reader_book_manifest_doc("book-2b9853ec52"))
+
+    assert manifest is not None
+    assert manifest["audio"]["enabled"] is True
+    assert manifest["audio"]["provider"] == "b2"
+    assert manifest["audio"]["voice"] == "ratan"
+    assert manifest["audio"]["url"] == "/api/reader/book/book-2b9853ec52/audiobook"
+    assert "cloudinary.com" not in str(manifest["audio"])
+
+
+def test_approved_audio_truth_fails_closed_when_artifact_is_unavailable(monkeypatch):
+    artifact = catalog_truth.load_controlled_artifact_book("book-2b9853ec52")
+    assert artifact is not None
+    monkeypatch.setattr(server, "_controlled_artifact_doc", lambda *_args, **_kwargs: None)
+
+    assert server._reader_audio_truth_doc(artifact, "book-2b9853ec52") is None
 
 
 def test_approved_audio_version_changes_with_release_qa_semantics(monkeypatch):

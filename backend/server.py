@@ -396,7 +396,7 @@ async def _expensive_job_slot(job_type: str):
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-release-evidence-v5"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-release-evidence-v6"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
@@ -1254,6 +1254,16 @@ def _controlled_artifact_doc(slug: str, *, include_content: bool = False) -> Opt
     return doc
 
 
+def _reader_audio_truth_doc(book: Optional[dict], slug: str) -> Optional[dict]:
+    normalized_slug = str(slug or "").strip().lower()
+    artifact = _controlled_artifact_doc(normalized_slug, include_content=False)
+    if artifact and can_expose_audio({**artifact, "slug": normalized_slug}):
+        return artifact
+    if normalized_slug in CATALOG_TRUTH_AUDIO_ENABLED_SLUGS:
+        return None
+    return book
+
+
 def _dracula_artifact_doc(*, include_content: bool = False) -> Optional[dict]:
     return _controlled_artifact_doc("dracula", include_content=include_content)
 
@@ -1772,7 +1782,8 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
             "content_url": f"/api/reader/chapter/{slug}/{chapter_id}?v={version}" if chapter_id else "",
         })
 
-    audio = _reader_manifest_audio(doc, slug)
+    audio_source = doc if admin_preview else (_reader_audio_truth_doc(doc, slug) or {})
+    audio = _reader_manifest_audio(audio_source, slug)
     book_public = public_book_projection(_strip_all_chapter_content(doc)) or {}
     if not admin_preview and not _public_projection_is_live(book_public):
         return None
@@ -6003,6 +6014,7 @@ async def _reader_book_audiobook_asset(
             "approved_to_publish": 1,
         },
     )
+    book = _reader_audio_truth_doc(book, slug)
     if not book or not can_expose_audio({**book, "slug": slug}):
         raise HTTPException(status_code=404, detail="Audiobook asset not found")
     asset_url = _book_audiobook_asset_url(book, normalized_key)
