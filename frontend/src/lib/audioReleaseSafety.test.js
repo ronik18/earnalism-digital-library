@@ -7,10 +7,10 @@ import {
 describe("audiobook release safety", () => {
   test("versions reader manifest requests when release semantics change", () => {
     expect(readerManifestPath("bn-066")).toBe(
-      "/reader/book/bn-066/manifest?release_truth=audio-release-evidence-v4",
+      "/reader/book/bn-066/manifest?release_truth=audio-release-evidence-v5",
     );
     expect(readerManifestPath("book / 2b", { adminPreview: true })).toBe(
-      "/reader/book/book%20%2F%202b/manifest?release_truth=audio-release-evidence-v4&preview=admin",
+      "/reader/book/book%20%2F%202b/manifest?release_truth=audio-release-evidence-v5&preview=admin",
     );
   });
 

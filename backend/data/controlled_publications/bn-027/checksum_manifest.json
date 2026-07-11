@@ -4,7 +4,7 @@
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "368adaa376f157de890dd4786ba27636307423e285a380827dc3f81132dd5d62"
+      "sha256": "27e47748c71fe5ea26a7b6380d04edd4c661240d1335f488f17024f125055d7d"
     },
     {
       "file": "checksum_manifest.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "3991a4a9d360fff59bba8c1abbe163e1c514932aec6afd7bf06d6f208bbf51f0"
+      "sha256": "adb3592182ea5c7d0feb8f5fe5da944ee548ac804fc8517833ce703e1651b68b"
     },
     {
       "file": "reader_manifest.json",
