@@ -1126,7 +1126,8 @@ describe("UX conversion static signals", () => {
       "function readerSearchParams"
     );
     expect(bookFetchBlock).toContain("requestedAdminPreview && adminToken");
-    expect(bookFetchBlock).toContain("'?preview=admin'");
+    expect(bookFetchBlock).toContain("readerManifestPath(bookId");
+    expect(bookFetchBlock).toContain("adminPreview: Boolean(requestedAdminPreview && adminToken)");
     expect(bookFetchBlock).not.toContain("err.response?.status === 404 && adminToken");
 
     const chapterFetchBlock = extractBetween(
