@@ -13,7 +13,7 @@ import { useAuth } from '../context/AuthContext';
 import { optimizedImageUrl } from '../lib/images';
 import { resolveBookCover } from '../lib/bookCoverResolver';
 import useSEO from '../hooks/useSEO';
-import { canExposeAudiobookControls } from '../lib/audioReleaseSafety';
+import { canExposeAudiobookControls, readerManifestPath } from '../lib/audioReleaseSafety';
 import { READER_SETTINGS_DEFAULTS, loadReaderSettings, saveReaderSettings } from '../lib/readerSettings';
 
 const THEMES = {
@@ -803,7 +803,9 @@ async function fetchReaderBook(bookId, requestedAdminPreview = false) {
   const adminToken = localStorage.getItem(TOKEN_KEY);
   const manifestHeaders = requestedAdminPreview && adminToken ? getAdminAuthHeaders() : getChapterAuthHeaders();
   try {
-    const manifestUrl = `${API}/reader/book/${encodedBookId}/manifest${requestedAdminPreview && adminToken ? '?preview=admin' : ''}`;
+    const manifestUrl = `${API}${readerManifestPath(bookId, {
+      adminPreview: Boolean(requestedAdminPreview && adminToken),
+    })}`;
     const response = await axios.get(manifestUrl, { headers: manifestHeaders });
     response.adminPreview = Boolean(response.data?.access?.admin_preview);
     response.readerManifest = response.data;

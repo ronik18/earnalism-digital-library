@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Headphones, ShieldCheck, Sparkles } from "lucide-react";
 import { api } from "../lib/api";
-import { audiobookReleaseState } from "../lib/audioReleaseSafety";
+import { audiobookReleaseState, readerManifestPath } from "../lib/audioReleaseSafety";
 
 const DEFAULT_SLUG = process.env.REACT_APP_APPROVED_AUDIO_SPOTLIGHT_SLUG || "";
 
@@ -51,7 +51,7 @@ export default function ApprovedAudiobookSpotlight({ slug = DEFAULT_SLUG, compac
     }
     const controller = new AbortController();
     const cancelIdle = runAfterIdle(() => {
-      api.get(`/reader/book/${slug}/manifest`, { signal: controller.signal, skipAuthRedirect: true })
+      api.get(readerManifestPath(slug), { signal: controller.signal, skipAuthRedirect: true })
         .then((response) => {
           const nextBook = bookFromReaderManifest(response.data);
           const state = audiobookReleaseState(nextBook || {});

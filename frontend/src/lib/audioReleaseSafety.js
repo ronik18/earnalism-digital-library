@@ -6,6 +6,16 @@ function upper(value = "") {
   return clean(value).toUpperCase();
 }
 
+export const READER_MANIFEST_RELEASE_TRUTH_VERSION = "audio-release-evidence-v4";
+
+export function readerManifestPath(slug, { adminPreview = false } = {}) {
+  const params = new URLSearchParams({
+    release_truth: READER_MANIFEST_RELEASE_TRUTH_VERSION,
+  });
+  if (adminPreview) params.set("preview", "admin");
+  return `/reader/book/${encodeURIComponent(clean(slug))}/manifest?${params.toString()}`;
+}
+
 export function isStaticAudiobookAssetPath(value = "") {
   return /^\/audio\//i.test(clean(value));
 }

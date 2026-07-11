@@ -19,6 +19,7 @@ import {
 } from "../lib/controlledLaunch";
 import useSEO from "../hooks/useSEO";
 import { bookDetailPresentationForBook } from "../lib/bookDetailPresentation";
+import { readerManifestPath } from "../lib/audioReleaseSafety";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 const SITE_URL = "https://theearnalism.com";
@@ -85,7 +86,7 @@ export default function BookDetail() {
       if (isValidBookPayload(r.data)) {
         let nextBook = r.data;
         try {
-          const manifestResponse = await api.get(`/reader/book/${slug}/manifest`, {
+          const manifestResponse = await api.get(readerManifestPath(slug), {
             signal: controller.signal,
             skipAuthRedirect: true,
           });
