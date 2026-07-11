@@ -285,3 +285,10 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - The failing PR #88 regression was a stale test expectation, not a homepage source regression: `scripts/e2e_regression.mjs` still waited for retired Dracula-first selector `hero-dracula-card`.
 - The regression gate now checks the approved current homepage contract: hybrid editorial hero, three curated action cards, Bengali Classics visible, Dracula as an English Classics action tile, and release-gate-safe Approved Audiobooks copy.
 - The 3-title Bengali canary remains prepared-only: `muchiram-gurer-jibanchorit`, `book-d19e96859f`, and `book-f5d593e1f4`. Do not run canary TTS until PR #88 is merged/deployed and production detail-copy verification passes.
+
+## 2026-07-11 bn-066 Public Audio Hide Hotfix
+
+- Public book metadata already hid `bn-066` audio, but the reader manifest still exposed legacy B2/Cloudinary assets because `can_expose_audio` trusted live/audio allowlists without checking `approval_evidence.json`.
+- Provider-backed assets and a manifest version are not release approval. Backend manifests and frontend controls now require explicit `PUBLIC_AUDIO_RELEASE_APPROVED` plus passing QA evidence.
+- Keep `bn-066` in the live reader allowlist while removing it from both audio allowlists and scrubbing legacy public audiobook fields; do not delete chapters or private QA artifacts.
+- Bump the controlled-publication truth-gate cache version whenever release semantics change so Redis cannot preserve stale public manifests after deployment.

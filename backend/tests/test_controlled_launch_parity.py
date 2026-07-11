@@ -10,6 +10,7 @@ ROOT_CONTROLLED_LAUNCH = ROOT / "data" / "controlled_launch.json"
 
 APPROVED_BENGALI_PILOT = "book-2b9853ec52"
 READER_ONLY_HOLD = "a-ghost-story"
+PRIVATE_QA_AUDIO_HOLD = "bn-066"
 BLOCKED_BENGALI_CANARIES = {
     "book-d19e96859f",
     "book-f5d593e1f4",
@@ -37,7 +38,16 @@ def test_backend_controlled_launch_preserves_audio_hold_states():
 
     assert READER_ONLY_HOLD in backend_launch["live_approved_slugs"]
     assert READER_ONLY_HOLD not in backend_audio
+    assert PRIVATE_QA_AUDIO_HOLD in backend_launch["live_approved_slugs"]
+    assert PRIVATE_QA_AUDIO_HOLD not in backend_audio
     assert backend_audio.isdisjoint(BLOCKED_BENGALI_CANARIES)
+
+
+def test_root_controlled_launch_keeps_bn_066_reader_live_and_audio_hidden():
+    root_launch = load_json(ROOT_CONTROLLED_LAUNCH)
+
+    assert PRIVATE_QA_AUDIO_HOLD in root_launch["live_approved_slugs"]
+    assert PRIVATE_QA_AUDIO_HOLD not in root_launch["audio_enabled_slugs"]
 
 
 def test_backend_controlled_launch_has_no_duplicate_slugs():

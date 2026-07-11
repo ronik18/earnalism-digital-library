@@ -57,17 +57,19 @@ export function audiobookReleaseState(book = {}) {
     && Boolean(manifestAudio?.provider)
     && Boolean(manifestAudio?.version)
     && Boolean(assets.mp3 || manifestAudio?.url)
+    && hasReleaseApproval
+    && hasQaApproval
     && !hasStaticAudioAsset;
   const blocked = upper(book?.audio_status) === "BLOCKED"
     || book?.audio_disabled === true
     || upper(book?.audiobook?.status) === "BLOCKED";
 
-  if (enabled && hasAudioAsset && !blocked && ((hasReleaseApproval && hasQaApproval) || hasReaderManifestApproval)) {
+  if (enabled && hasAudioAsset && !blocked && hasReleaseApproval && hasQaApproval) {
     return {
       status: "approved",
       canShowControls: true,
       label: "Audiobook available",
-      reason: hasReaderManifestApproval && !(hasReleaseApproval && hasQaApproval)
+      reason: hasReaderManifestApproval
         ? "Reader manifest exposes an approved provider-backed audiobook endpoint."
         : "Release gate, listening QA, and audio asset are approved.",
       releaseGate,

@@ -23,10 +23,10 @@ const CLAIMABLE_AUDIO_SLUGS = [
   "nishkriti",
   "the-wonderful-wizard-of-oz",
   "bn-059",
-  "bn-066",
   "the-art-of-money-getting",
 ];
-const REQUIRED_LIVE_SLUGS = ["dracula", ...BATCH_SLUGS, ...CLAIMABLE_AUDIO_SLUGS];
+const PRIVATE_QA_AUDIO_HOLD = "bn-066";
+const REQUIRED_LIVE_SLUGS = ["dracula", ...BATCH_SLUGS, ...CLAIMABLE_AUDIO_SLUGS, PRIVATE_QA_AUDIO_HOLD];
 const BOILERPLATE_RE = /Project Gutenberg|Gutenberg-tm|START OF THE PROJECT|END OF THE PROJECT|Wikisource|Category:|Creative Commons|Download as|Edit this page/i;
 const AUDIO_FIELDS = ["audio_enabled", "audiobook_enabled", "generate_audiobook"];
 
@@ -91,6 +91,7 @@ describe("Reader content quality batch 1", () => {
     expect(launch.live_approved_slugs).toEqual(expect.arrayContaining(REQUIRED_LIVE_SLUGS));
     expect(new Set(launch.live_approved_slugs).size).toBe(launch.live_approved_slugs.length);
     expect(launch.audio_enabled_slugs).toEqual(expect.arrayContaining(CLAIMABLE_AUDIO_SLUGS));
+    expect(launch.audio_enabled_slugs).not.toContain(PRIVATE_QA_AUDIO_HOLD);
     expect(new Set(launch.audio_enabled_slugs).size).toBe(launch.audio_enabled_slugs.length);
     for (const slug of launch.audio_enabled_slugs) expect(launch.live_approved_slugs).toContain(slug);
     for (const slug of BATCH_SLUGS) expect(launch.audio_enabled_slugs).not.toContain(slug);

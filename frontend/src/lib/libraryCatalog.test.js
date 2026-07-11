@@ -32,6 +32,8 @@ describe("libraryCatalog", () => {
           enabled: true,
           provider: "sarvam",
           version: "v1",
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
           assets: { mp3: "https://cdn.example.com/audio.mp3" },
         },
       },

@@ -218,14 +218,14 @@
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
     },
     "bn-066": {
-      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
-      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
-      "updated_at": "2026-07-06T21:54:41Z",
+      "latest_decision": "BENGALI_READER_LIVE_PUBLIC_AUDIO_HIDE_HOTFIX",
+      "decision_reason": "Production exposed legacy B2 audio through the reader manifest even though the controlled approval evidence remained PUBLIC_AUDIO_RELEASE_PENDING_ASSET_MAPPING. Keep the reader live, remove public audio metadata and controls, and retain private QA work outside the public release path.",
+      "updated_at": "2026-07-11T08:29:33+05:30",
       "language": "ben",
-      "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
-      "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
-      "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+      "bengali_audio_lane_status": "PRIVATE_QA_ONLY_PUBLIC_AUDIO_HIDDEN",
+      "audiobook_next_action": "Keep public audio hidden until every objective release gate passes; continue ASR diagnostics only in a separately authorized private tooling track.",
+      "bengali_audiobook_campaign_state": "PRIVATE_QA_RELEASE_GATES_PENDING",
+      "bengali_audiobook_campaign_next_action": "Revalidate the production manifest and UI after the hide-only hotfix; do not publish, upload, or regenerate audio.",
       "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
     },

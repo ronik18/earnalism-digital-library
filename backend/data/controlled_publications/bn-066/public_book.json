@@ -748,33 +748,14 @@
   "allowPayment": false,
   "is_published": true,
   "audio_enabled": false,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
-  "audiobook_provider": "b2",
-  "audiobook_voice": "command:bn-IN-TanishaaNeural",
-  "audio_asset_slug": "bn-066",
-  "audiobook_assets": {
-    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781286676/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781286679/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781286680/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781286681/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1_meta.json"
-  },
-  "audiobook": {
-    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1.mp3",
-    "provider": "b2",
-    "size": 156318450,
-    "duration_ms": 19539698,
-    "assets": {
-      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781286676/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781286679/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781286680/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781286681/earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1_meta.json"
-    },
-    "updated_at": "2026-06-12T17:51:24.612487+00:00"
-  },
-  "audiobook_assets_updated_at": "2026-06-12T17:51:24.612650+00:00",
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
+  "audiobook_voice": "",
+  "audio_asset_slug": "",
+  "audiobook_assets": {},
+  "audiobook": {},
+  "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T18:46:48Z",
   "updated_at": "2026-07-03T18:46:48Z"
 }
