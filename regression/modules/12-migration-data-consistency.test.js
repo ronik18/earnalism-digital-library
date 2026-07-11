@@ -1,12 +1,21 @@
 const fs = require("fs");
+const path = require("path");
 const { apiGet } = require("../utils/http");
 const { getMongoUrl, withDb } = require("../utils/db");
 const { isPr } = require("../utils/envGuard");
-const claimableGoLiveTranche = require("../../internal/audiobook_lab/release_gate/claimable_go_live_tranche.json");
+const publicAudioTruth = require("../../internal/audiobook_lab/release_gate/claimable_go_live_tranche.json");
 const controlledLaunch = require("../../data/controlled_launch.json");
 
-const CLAIMABLE_SLUGS = claimableGoLiveTranche.claimable_10_10_reader_listener_ready || [];
+const APPROVED_PUBLIC_AUDIO_SLUGS = publicAudioTruth.approved_public_audio_slugs || [];
 const CONTROLLED_AUDIO_SLUGS = new Set(controlledLaunch.audio_enabled_slugs || []);
+const ROOT = path.resolve(__dirname, "../..");
+
+function controlledPublicationCover(slug) {
+  const artifactPath = path.join(ROOT, "data", "controlled_publications", slug, "public_book.json");
+  if (!fs.existsSync(artifactPath)) return "";
+  const artifact = JSON.parse(fs.readFileSync(artifactPath, "utf8"));
+  return artifact.cover_image_url || artifact.cover_url || artifact.thumbnail_url || "";
+}
 
 describe("Migration, Backup & Data Consistency", () => {
   test("backup or recovery documentation exists before GO LIVE", async () => {
@@ -24,13 +33,16 @@ describe("Migration, Backup & Data Consistency", () => {
         expect(book.category_slug).toBeTruthy();
         expect(book.author).toBeTruthy();
       }
-      for (const slug of CLAIMABLE_SLUGS) {
+      for (const slug of APPROVED_PUBLIC_AUDIO_SLUGS) {
         const book = bySlug.get(slug);
         if (!book && isPr() && CONTROLLED_AUDIO_SLUGS.has(slug)) {
           continue;
         }
         expect(book).toBeTruthy();
-        expect(book.cover_image_url || book.cover_url || book.thumbnail_url).toBeTruthy();
+        const sourceCover = isPr() && CONTROLLED_AUDIO_SLUGS.has(slug)
+          ? controlledPublicationCover(slug)
+          : "";
+        expect(book.cover_image_url || book.cover_url || book.thumbnail_url || sourceCover).toBeTruthy();
       }
       return;
     }

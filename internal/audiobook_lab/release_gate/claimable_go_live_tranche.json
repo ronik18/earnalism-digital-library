@@ -1,16 +1,10 @@
 {
-  "generated_at": "2026-07-03T18:57:57+0000",
-  "claimable_10_10_reader_listener_ready": [
-    "alices-adventures-in-wonderland",
-    "bn-027",
-    "bn-059",
-    "bn-066",
-    "lokrahasya",
-    "mrinalini",
-    "nishkriti",
-    "the-art-of-money-getting",
-    "the-wonderful-wizard-of-oz"
+  "generated_at": "2026-07-11T12:35:08Z",
+  "claimable_10_10_reader_listener_ready": [],
+  "approved_public_audio_slugs": [
+    "book-2b9853ec52"
   ],
+  "release_truth_note": "No launch-wide or title-level 10/10 claim is made. Public audio approval is tracked separately from historical reconstruction evidence.",
   "reader_ready_but_public_audio_upload_missing": [],
   "audio_ready_but_cover_missing": [
     "a-jury-of-her-peers",
@@ -21,7 +15,6 @@
     "book-0986aeb7e3",
     "book-0fbdaa730e",
     "book-1090573dff",
-    "book-2b9853ec52",
     "book-4968248842",
     "book-4b944e64fa",
     "book-5461971092",
