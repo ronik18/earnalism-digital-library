@@ -292,3 +292,4 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Provider-backed assets and a manifest version are not release approval. Backend manifests and frontend controls now require explicit `PUBLIC_AUDIO_RELEASE_APPROVED` plus passing QA evidence.
 - Keep `bn-066` in the live reader allowlist while removing it from both audio allowlists and scrubbing legacy public audiobook fields; do not delete chapters or private QA artifacts.
 - Bump the controlled-publication truth-gate cache version whenever release semantics change so Redis cannot preserve stale public manifests after deployment.
+- Reader-manifest ETags must include release gate, QA, sync, and truth-gate semantics. Redis invalidation alone is insufficient because browsers can otherwise keep an older manifest body after a `304 Not Modified` response.
