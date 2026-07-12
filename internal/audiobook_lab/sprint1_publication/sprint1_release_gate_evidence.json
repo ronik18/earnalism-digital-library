@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T17:22:03Z",
+  "generated_at": "2026-07-12T18:04:44Z",
   "summary": {
     "total_sprint1_title_count": 34,
     "active_sprint1_title_count": 32,
@@ -61,8 +61,8 @@
     "actual_spend_usd": null,
     "sprint_target_status": "INCOMPLETE",
     "reader_repairs_merged_and_deployed": 17,
-    "estimated_spend_usd": 3.6328,
-    "budget_remaining_after_estimate_usd": 171.3672
+    "estimated_spend_usd": 4.2862,
+    "budget_remaining_after_estimate_usd": 170.7138
   },
   "titles": [
     {
@@ -1443,7 +1443,7 @@
         "source_rights": "PASS",
         "text_sanitation": "PASS",
         "text_normalization": "PASS",
-        "representative_audition": "FAIL_GOOGLE_STUDIO_C_TWILIGHT_TRANSITION_8.5_BELOW_9.4",
+        "representative_audition": "FAIL_GOOGLE_STUDIO_B_TWILIGHT_7.2_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS",
         "full_book_tts": "FAIL_DISALLOWED_PIPER_PROVENANCE_AND_SYNTHETIC_ALIGNMENT",
         "asr_source_alignment": "PASS_DIAGNOSTIC_9.7826_WITH_TITLE_PREFIXED_AUDIO_MANUSCRIPT",
         "first_words_match": "PASS_WITH_TITLE_PREFIXED_AUDIO_MANUSCRIPT",
@@ -1475,12 +1475,12 @@
       "audio_plan_status": "ACTIVE_SPRINT1_AUDIO_TARGET",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "AUDIO_HIDDEN_GOOGLE_STUDIO_C_TWILIGHT_TRANSITION_REPAIR_REQUIRED",
+      "final_status": "AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED",
       "existing_release_packet": "internal/audiobook_lab/release_gate/the-open-window_20260705T161042Z/goliveevidence.json",
-      "existing_release_status": "STAGE2D_REPLACEMENT_AUDITION_REPAIR_REQUIRED",
+      "existing_release_status": "STAGE2E_STUDIO_B_AUDITION_REPAIR_REQUIRED",
       "reason": "",
-      "next_action": "Obtain owner approval for one bounded Studio-B replacement audition; do not run full TTS until all representative passages pass.",
-      "next_command": "PYTHONDONTWRITEBYTECODE=1 SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=1 EARNALISM_GOOGLE_TTS_ESTIMATED_USD_PER_1K_CHARS=0.02 EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=2 EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD=0.05 EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio python3 internal/audiobook_lab/scripts/sprint1_stage2d_the_open_window_google_audition.py --voice en-GB-Studio-B --prior-sprint-estimated-spend-usd 4.0684 --prior-title-estimated-spend-usd 0.4356 --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root /tmp/earnalism-the-open-window-stage2d-google-audition",
+      "next_action": "Stop automated Google retries after the Studio-C and Studio-B failures. Prepare a source-bound human narration or licensed-audio candidate, then run every release gate before publication.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets",
       "stage2_production_book_http": 200,
       "stage2_production_manifest_http": 200,
       "stage2_manifest_audio_enabled": false,
@@ -1495,7 +1495,16 @@
       "stage2d_estimated_spend_usd": 0.4356,
       "stage2d_actual_provider_billing": "NOT_REPORTED",
       "stage2d_lock_restored": true,
-      "exact_blocker": "REPRESENTATIVE_AUDITION_TWILIGHT_TRANSITION_SCORE_8.5_BELOW_9.4"
+      "stage2e_report": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_stage2e_google_studio_b_report.md",
+      "stage2e_google_studio_b_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_stage2e_google_audition_en_gb_studio_b.json",
+      "stage2e_google_studio_b_scores": [9.4, 9.5, 7.2, 9.4],
+      "stage2e_minimum_confidence": 0.9,
+      "stage2e_fatal_flags": ["mechanical_cadence_detected", "robotic_texture_detected"],
+      "stage2e_estimated_spend_usd": 0.2178,
+      "stage2e_estimated_title_total_usd": 0.6534,
+      "stage2e_actual_provider_billing": "NOT_REPORTED",
+      "stage2e_lock_restored": true,
+      "exact_blocker": "REPRESENTATIVE_AUDITION_STUDIO_B_TWILIGHT_SCORE_7.2_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS"
     },
     {
       "slug": "sredni-vashtar",
@@ -2002,5 +2011,25 @@
     "production_audio_hidden": true,
     "paid_tts_lock_restored": true,
     "status": "AUDIO_HIDDEN_LISTENING_QA_REPAIR_REQUIRED"
+  },
+  "stage2e_the_open_window": {
+    "owner_decision": "AUTHORIZE_STAGE_2E_THE_OPEN_WINDOW_STUDIO_B_AUDITION_AND_PUBLICATION_IF_PASS",
+    "updated_at": "2026-07-12T18:04:44Z",
+    "source_rights": "PASS",
+    "text_sanitation": "PASS",
+    "provider_calls_ran": true,
+    "provider": "google",
+    "voice": "en-GB-Studio-B",
+    "scores": [9.4, 9.5, 7.2, 9.4],
+    "minimum_confidence": 0.9,
+    "fatal_flags": ["mechanical_cadence_detected", "robotic_texture_detected"],
+    "estimated_spend_usd": 0.2178,
+    "actual_spend_usd": null,
+    "actual_provider_billing": "NOT_REPORTED",
+    "can_publish_audio_now": false,
+    "public_audio_mutated": false,
+    "production_audio_hidden": true,
+    "paid_tts_lock_restored": true,
+    "status": "AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED"
   }
 }

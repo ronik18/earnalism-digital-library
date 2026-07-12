@@ -1,24 +1,27 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T17:22:03Z",
+  "generated_at": "2026-07-12T18:04:44Z",
   "budget_env": {
-    "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "SET_INLINE_STAGE2C_175",
-    "SPRINT1_MAX_USD_PER_TITLE": "SET_INLINE_STAGE2C_30",
-    "MAX_TTS_BUDGET_USD": "SET_INLINE_STAGE2C_175",
-    "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "SET_INLINE_STAGE2C_TRUE",
+    "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "SET_INLINE_STAGE2E_175",
+    "SPRINT1_MAX_USD_PER_TITLE": "SET_INLINE_STAGE2E_30",
+    "MAX_TTS_BUDGET_USD": "SET_INLINE_STAGE2E_175",
+    "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "SET_INLINE_STAGE2E_TRUE",
     "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2C_10",
     "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2C_10",
-    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2C_2",
-    "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "SET_INLINE_STAGE2C_0.05",
-    "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "SET_INLINE_STAGE2C_TRUE",
-    "EARNALISM_OPENAI_LISTENING_QA_MODEL": "SET_INLINE_STAGE2C_GPT_AUDIO"
+    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2E_2",
+    "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "SET_INLINE_STAGE2E_0.05",
+    "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "SET_INLINE_STAGE2E_TRUE",
+    "EARNALISM_OPENAI_LISTENING_QA_MODEL": "SET_INLINE_STAGE2E_GPT_AUDIO",
+    "EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS": "SET_INLINE_STAGE2E_TRUE",
+    "EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2E_1",
+    "EARNALISM_GOOGLE_TTS_ESTIMATED_USD_PER_1K_CHARS": "SET_INLINE_STAGE2E_0.02"
   },
   "missing_or_invalid_budget_gates": [],
   "provider_calls_ran": true,
   "actual_spend_usd": null,
-  "estimated_incremental_total_usd": 101.6408,
+  "estimated_incremental_total_usd": 101.8586,
   "removed_deferred_estimated_cost_usd": 35.2935,
-  "budget_comparison": "ESTIMATED_STAGE2B_THROUGH_STAGE2D_SPEND_3.6328_WITHIN_175_CAP; ACTUAL_PROVIDER_BILLING_NOT_REPORTED; ESTIMATED_REMAINING_171.3672",
+  "budget_comparison": "ESTIMATED_STAGE2B_THROUGH_STAGE2E_SPEND_4.2862_WITHIN_175_CAP; ACTUAL_PROVIDER_BILLING_NOT_REPORTED; ESTIMATED_REMAINING_170.7138",
   "summary": {
     "total_sprint1_title_count": 34,
     "active_sprint1_title_count": 32,
@@ -26,7 +29,7 @@
     "deferred_long_classics_count": 2,
     "current_yes_yes_count": 2,
     "remaining_non_yes_yes_count_excluding_dropped": 30,
-    "estimated_incremental_total_usd": 101.6408,
+    "estimated_incremental_total_usd": 101.8586,
     "removed_deferred_estimated_cost_usd": 35.2935,
     "highest_expected_english_cost_after_removal": {
       "slug": "dracula",
@@ -79,9 +82,9 @@
     "actual_spend_usd": null,
     "sprint_target_status": "INCOMPLETE",
     "reader_repairs_merged_and_deployed": 17,
-    "estimated_spend_usd": 4.0684,
+    "estimated_spend_usd": 4.2862,
     "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.5724,
-    "budget_remaining_after_estimate_usd": 170.9316,
+    "budget_remaining_after_estimate_usd": 170.7138,
     "a_ghost_remaining_repair_cost_usd": 0.0
   },
   "titles": [
@@ -858,18 +861,21 @@
       "estimated_incremental_cost_usd": 0.1155,
       "deferred_baseline_estimated_cost_usd": 0.0,
       "actual_spend_usd": null,
-      "budget_status": "ESTIMATED_PAID_AUDITIONS_0.4356_ACTUAL_NOT_REPORTED; REPAIR_REQUIRED",
+      "budget_status": "ESTIMATED_PAID_AUDITIONS_0.6534_ACTUAL_NOT_REPORTED; REPAIR_REQUIRED",
       "reason": "",
-      "next_action": "Obtain owner approval for one bounded Studio-B replacement audition; do not run full TTS until all representative passages pass.",
-      "next_command": "PYTHONDONTWRITEBYTECODE=1 SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=1 EARNALISM_GOOGLE_TTS_ESTIMATED_USD_PER_1K_CHARS=0.02 EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=2 EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD=0.05 EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio python3 internal/audiobook_lab/scripts/sprint1_stage2d_the_open_window_google_audition.py --voice en-GB-Studio-B --prior-sprint-estimated-spend-usd 4.0684 --prior-title-estimated-spend-usd 0.4356 --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root /tmp/earnalism-the-open-window-stage2d-google-audition",
+      "next_action": "Stop automated Google retries after the Studio-C and Studio-B failures. Prepare a source-bound human narration or licensed-audio candidate, then run every release gate before publication.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets",
       "title": "The Open Window",
       "language": "English",
       "source_rights_status": "PASS",
       "text_sanitation_status": "PASS",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "AUDIO_HIDDEN_GOOGLE_STUDIO_C_TWILIGHT_TRANSITION_REPAIR_REQUIRED",
-      "estimated_stage2d_spend_usd": 0.4356
+      "final_status": "AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED",
+      "exact_blocker": "REPRESENTATIVE_AUDITION_STUDIO_B_TWILIGHT_SCORE_7.2_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS",
+      "estimated_stage2d_spend_usd": 0.4356,
+      "estimated_stage2e_spend_usd": 0.2178,
+      "estimated_title_total_usd": 0.6534
     },
     {
       "slug": "sredni-vashtar",
@@ -1117,7 +1123,7 @@
     "max_usd_per_title": 30.0,
     "max_tts_budget_usd": 175.0
   },
-  "estimated_budget_headroom_usd": 73.3592,
+  "estimated_budget_headroom_usd": 73.1414,
   "stage2a_a_ghost_story": {
     "updated_at": "2026-07-12T08:16:11Z",
     "authorized_total_budget_usd": 175.0,
@@ -1127,8 +1133,8 @@
     "provider_calls_ran": false,
     "status": "BLOCKED_LIVE_SHELL_GATES_MISSING"
   },
-  "estimated_spend_usd": 4.0684,
-  "authorized_budget_remaining_after_estimate_usd": 170.9316,
+  "estimated_spend_usd": 4.2862,
+  "authorized_budget_remaining_after_estimate_usd": 170.7138,
   "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.5724,
   "stage2b_a_ghost_story": {
     "owner_decision": "AUTHORIZE_SPRINT1_STAGE_2B_A_GHOST_STORY_LISTENING_QA_AND_RELEASE_IF_PASS",
@@ -1209,5 +1215,27 @@
     "status": "AUDIO_HIDDEN_GOOGLE_STUDIO_C_TWILIGHT_TRANSITION_REPAIR_REQUIRED",
     "authorized_total_budget_usd": 175.0,
     "budget_remaining_after_estimate_usd": 170.9316
+  },
+  "stage2e_the_open_window": {
+    "owner_decision": "AUTHORIZE_STAGE_2E_THE_OPEN_WINDOW_STUDIO_B_AUDITION_AND_PUBLICATION_IF_PASS",
+    "updated_at": "2026-07-12T18:04:44Z",
+    "provider_calls_ran": true,
+    "provider": "google",
+    "voice": "en-GB-Studio-B",
+    "scores": [9.4, 9.5, 7.2, 9.4],
+    "minimum_confidence": 0.9,
+    "fatal_flags": ["mechanical_cadence_detected", "robotic_texture_detected"],
+    "weak_passage": "twilight_return",
+    "estimated_spend_usd": 0.2178,
+    "estimated_title_total_usd": 0.6534,
+    "estimated_sprint_total_usd": 4.2862,
+    "actual_spend_usd": null,
+    "actual_provider_billing": "NOT_REPORTED",
+    "full_tts_generated": false,
+    "public_audio_mutated": false,
+    "paid_tts_lock_restored": true,
+    "status": "AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED",
+    "authorized_total_budget_usd": 175.0,
+    "budget_remaining_after_estimate_usd": 170.7138
   }
 }

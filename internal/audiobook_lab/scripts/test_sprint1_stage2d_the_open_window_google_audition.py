@@ -67,7 +67,7 @@ class OpenWindowGoogleAuditionTests(unittest.TestCase):
             estimate = stage2d.budget_estimate([{"characters": 300}] * 4)
         self.assertEqual(estimate["status"], "PASS")
         self.assertEqual(estimate["estimated_current_usd"], 0.224)
-        self.assertEqual(estimate["estimated_sprint_total_usd"], 3.8568)
+        self.assertEqual(estimate["estimated_sprint_total_usd"], 4.2924)
 
     def test_retry_budget_includes_prior_title_and_sprint_attempt(self):
         with temporary_env(**self.valid_env()):
@@ -85,6 +85,16 @@ class OpenWindowGoogleAuditionTests(unittest.TestCase):
         with temporary_env(**env):
             errors = stage2d.runtime_gate_errors()
         self.assertIn("EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD must equal 1", errors)
+
+    def test_prosody_retry_requires_separate_approval(self):
+        env = self.valid_env()
+        env["EARNALISM_APPROVE_THE_OPEN_WINDOW_STUDIO_B_PROSODY_REPAIR"] = None
+        with temporary_env(**env):
+            errors = stage2d.runtime_gate_errors(prosody_repair=True)
+        self.assertIn(
+            "EARNALISM_APPROVE_THE_OPEN_WINDOW_STUDIO_B_PROSODY_REPAIR must equal true",
+            errors,
+        )
 
     def test_source_hash_mismatch_blocks(self):
         chapter = {
@@ -104,18 +114,32 @@ class OpenWindowGoogleAuditionTests(unittest.TestCase):
     def test_lock_scope_is_title_specific(self):
         payload = stage2d.acquired_lock_payload(
             {"status": "active", "current_holder": "none", "allowed_next_holders": []},
-            voice="en-GB-Studio-C",
+            voice="en-GB-Studio-B",
             estimate={"estimated_current_usd": 0.204},
             prosody_repair=False,
         )
-        self.assertEqual(payload["current_holder"], "sprint1_publication_stage2d")
+        self.assertEqual(payload["current_holder"], "sprint1_publication_stage2e_the_open_window")
         self.assertEqual(payload["allowed_slugs"], ["the-open-window"])
         self.assertEqual(payload["allowed_next_holders"], [])
+        self.assertEqual(payload["run_id"], "sprint1-stage2e-the-open-window-en-gb-studio-b")
+        self.assertIn("Stage 2E final", payload["approved_scope"])
+
+    def test_stage2e_authorization_is_studio_b_only(self):
+        self.assertEqual(
+            stage2d.OWNER_DECISION,
+            "AUTHORIZE_STAGE_2E_THE_OPEN_WINDOW_STUDIO_B_AUDITION_AND_PUBLICATION_IF_PASS",
+        )
+        self.assertEqual(stage2d.SUPPORTED_VOICES, {"en-GB-Studio-B"})
+        self.assertEqual(stage2d.LISTENING_POLICY, "schema3_universal_9_7")
+        self.assertIn(
+            "the-open-window_stage2e_google_audition_en_gb_studio_b.json",
+            str(stage2d.result_path("en-GB-Studio-B", False)),
+        )
 
     def test_fingerprint_changes_for_prosody_repair(self):
         passages = [{"text_hash": "abc"}]
-        baseline = stage2d.attempt_fingerprint(voice="en-GB-Studio-C", passages=passages, prosody_repair=False)
-        repaired = stage2d.attempt_fingerprint(voice="en-GB-Studio-C", passages=passages, prosody_repair=True)
+        baseline = stage2d.attempt_fingerprint(voice="en-GB-Studio-B", passages=passages, prosody_repair=False)
+        repaired = stage2d.attempt_fingerprint(voice="en-GB-Studio-B", passages=passages, prosody_repair=True)
         self.assertNotEqual(baseline, repaired)
 
 
