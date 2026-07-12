@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "slug": "a-ghost-story",
+  "owner_decision": "AUTHORIZE_SPRINT1_STAGE_2B_A_GHOST_STORY_LISTENING_QA_AND_RELEASE_IF_PASS",
+  "started_at": "2026-07-12T09:34:59Z",
+  "finished_at": "2026-07-12T09:35:33Z",
+  "historical_wrapper_process_returncode": 0,
+  "historical_wrapper_exit_semantics_bug": "BLOCKED hook was returned as shell success; source fixed after run",
+  "authoritative_hook_status": "BLOCKED",
+  "blocker_category": "audio_listening_quality_failed",
+  "provider_calls_ran": true,
+  "provider_call_scope": "six bounded OpenAI listening-QA samples only",
+  "tts_calls_ran": false,
+  "asr_calls_ran": false,
+  "audio_hash": "00190d747d2894a244545a260f10f4e06ccc597352d2767414acc4edfe6e5a55",
+  "asr_source_score": 9.7882,
+  "listening_qa": {
+    "status": "FAIL",
+    "model": "gpt-audio",
+    "sample_count": 6,
+    "minimum_overall_score": 8.3,
+    "minimum_confidence": 0.9,
+    "fatal_flags": [],
+    "weak_sample": {
+      "label": "middle_60s",
+      "start_seconds": 352.787,
+      "overall_score": 8.3,
+      "pacing_score": 7.9,
+      "emotional_expression_score": 8.2,
+      "confidence": 0.9
+    }
+  },
+  "budget": {
+    "authorized_total_usd": 175.0,
+    "listening_qa_cap_usd": 2.0,
+    "estimated_spend_usd": 0.3,
+    "actual_provider_billing": "NOT_REPORTED",
+    "remaining_after_estimate_usd": 174.7
+  },
+  "lock": {
+    "restored": true,
+    "status": "active",
+    "current_holder": "none",
+    "allowed_next_holders": [],
+    "sha256_after": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
+  },
+  "publication": {
+    "performed": false,
+    "production_state": "PUBLIC_READER_AUDIO_HIDDEN"
+  },
+  "listening_quality_report": "internal/audiobook_lab/release_gate/a-ghost-story_20260705T150049Z/listening_quality_report.json",
+  "next_command": "mkdir -p /tmp/earnalism-a-ghost-stage2c-middle-repair && ffmpeg -hide_banner -loglevel error -y -ss 352.787 -t 60 -i internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/a-ghost-story_existing_audio_candidate.mp3 /tmp/earnalism-a-ghost-stage2c-middle-repair/middle_60s_reference.mp3 && sed -n '173,240p' internal/audiobook_lab/release_gate/a-ghost-story_20260705T150049Z/clean_manuscript.txt > /tmp/earnalism-a-ghost-stage2c-middle-repair/middle_source.txt"
+}
