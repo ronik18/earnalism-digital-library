@@ -68,3 +68,15 @@ Generated: `2026-07-12T18:57:04Z`
 64. Added a D19 lock-safe preflight/execute wrapper. Non-paid preflight passed source, rights, sanitation, cover, reader, and representative gates; TTS `$0.0389`, ASR `$0.0544`, and configured QA `$0.0500` total `$0.1433` estimated.
 65. Both provider keys were present, but every required budget/approval/ASR/listening environment gate was absent. The wrapper stopped before lock acquisition; provider calls, spend, TTS, ASR, upload, publication, and release mutations remained zero.
 66. Production revalidation confirmed The Open Window, D19, and `bn-066` remain audio-disabled with `404` audiobook endpoints, while A Ghost Story and `book-2b9853ec52` remain `APPROVED / QA_PASSED` with `206` range responses.
+67. Started the parallel Yes+Yes coordinator from isolated `origin/main` commit `ed42790`; the dirty primary checkout was not modified.
+68. Launched six non-paid title/release-truth agents. Paid calls remain serialized and no agent may edit the paid lock or invoke providers.
+69. Live-shell verification found every required Sprint/TTS/ASR/listening budget and approval variable missing. Sarvam, OpenAI, and Google credentials plus Google ADC are available; ElevenLabs and Azure Speech credentials are absent.
+70. Reran D19's lock-safe non-paid preflight. All source/rights/sanitation/cover/reader/representative gates passed; the `$0.1433` paid pipeline stopped before lock acquisition and provider access.
+71. This run made zero provider calls, spent `$0.00`, published zero new audiobooks, and left the lock byte-for-byte at active/current-holder-none/empty-next-holders.
+72. The bn-066 private workspace produced a non-paid three-chunk/four-language calibration plan: six calls, 785.215 seconds, estimated `$0.1047`; execution remained blocked by missing caps and the unheld lock.
+73. Medium/long English preflight ranked nine reader-live/audio-hidden titles at `$85.7074` conditional total; no full generation is authorized before per-title representative auditions.
+74. Approved-audio guard reproduced a Reader timestamp schema regression: production uses seconds while the frontend consumed milliseconds. Both approved endpoints and hashes remained valid.
+75. Implemented timestamp normalization plus a browser gate that requires clicked playback to advance; focused frontend and Python tests pass.
+76. Production validation identified eight blocked titles with 88 direct storage URL occurrences in controlled publication packets. The repo fields were scrubbed fail-closed; approved book 2b and A Ghost Story packets were unchanged.
+77. Remote Cloudinary/B2 objects still require revocation or privacy changes because no storage credentials are present.
+78. Removed the legacy static `/audio/*` SPA/cache path by routing it to removed-content.

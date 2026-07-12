@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-12T19:35:15Z",
+  "owner_decision": "AUTHORIZE_PARALLEL_SPRINT1_PUBLIC_READER_AND_AUDIOBOOK_LIVE_EXECUTION_WITH_175_USD_CAP",
+  "objective": "Move every active Sprint 1 title toward public reader plus release-gated public audiobook without weakening release truth.",
+  "baseline": {
+    "commit": "ed42790",
+    "branch": "codex/sprint1-parallel-publication",
+    "active_titles": 32,
+    "public_readers": 32,
+    "public_audiobooks": 2,
+    "remaining_audio_targets": 30
+  },
+  "coordinator": {
+    "lane": 0,
+    "role": "Coordinator / Budget / Lock / Merge Governor",
+    "paid_calls_serialized": true,
+    "provider_calls_ran_this_sprint": false,
+    "publication_mutations_this_sprint": 0,
+    "status": "SOURCE_RELEASE_TRUTH_REPAIRS_IMPLEMENTED_PENDING_PR; PAID_EXECUTION_BLOCKED_RUNTIME_GATES_MISSING"
+  },
+  "runtime_gate_status": {
+    "required_budget_and_approval_gates": "MISSING",
+    "SARVAM_API_KEY": "SET",
+    "OPENAI_API_KEY": "SET",
+    "GOOGLE_APPLICATION_CREDENTIALS": "SET",
+    "GOOGLE_CLOUD_PROJECT": "SET",
+    "GOOGLE_ADC": "READY",
+    "ELEVENLABS_API_KEY": "MISSING",
+    "AZURE_SPEECH_KEY": "MISSING"
+  },
+  "lock": {
+    "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+    "preflight_status": "PASS",
+    "status": "active",
+    "current_holder": "none",
+    "allowed_next_holders": [],
+    "acquired_this_sprint": false,
+    "sha256": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
+  },
+  "lanes": [
+    {
+      "lane": 1,
+      "role": "Currently Approved Audio Guard",
+      "agent_id": "019f57d2-6c5c-7792-a11d-0c4468ac6226",
+      "agent_nickname": "Russell",
+      "mode": "NON_PAID_VALIDATION",
+      "status": "COMPLETED_P0_SOURCE_REPAIR_IMPLEMENTED",
+      "result_summary": "Both approved audio endpoints and hashes pass, but production timestamps use seconds while Reader consumed milliseconds. Reader normalization and a real-playback browser gate are implemented pending deployment.",
+      "titles": ["book-2b9853ec52", "a-ghost-story"]
+    },
+    {
+      "lane": 2,
+      "role": "Short Bengali High-ROI Lane",
+      "agent_id": "019f57d2-7210-7930-96bd-df620ee5d77d",
+      "agent_nickname": "Galileo",
+      "mode": "NON_PAID_PREFLIGHT",
+      "status": "COMPLETED_NON_PAID_PREFLIGHT",
+      "result_summary": "D19 is ready for one $0.1433 serialized pipeline after gates. F5 requires a fresh representative audition, Muchiram a split retry, Radharani a fresh source-bound path, and Nishkriti storage containment plus canonical source reconciliation.",
+      "titles": ["book-d19e96859f", "book-f5d593e1f4", "muchiram-gurer-jibanchorit", "radharani", "nishkriti"]
+    },
+    {
+      "lane": 3,
+      "role": "Short English Lane",
+      "agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
+      "agent_nickname": "Dalton",
+      "mode": "NON_PAID_PREFLIGHT",
+      "status": "COMPLETED_NON_PAID_PREFLIGHT",
+      "result_summary": "All twelve readers are live and audio-hidden. The Open Window is assigned to human narration; short-title legacy assets require recovery/hash checks or fresh source-bound auditions, with failed fingerprints preserved.",
+      "titles": ["the-open-window", "the-gift-of-the-magi", "the-tell-tale-heart", "sredni-vashtar", "dsires-baby", "the-cop-and-the-anthem", "the-last-leaf", "the-masque-of-the-red-death", "the-yellow-wallpaper", "the-monkeys-paw", "the-necklace", "jekyll-and-hyde"]
+    },
+    {
+      "lane": 4,
+      "role": "Medium/Long English Lane",
+      "agent_id": "019f57d2-7aed-7840-95b5-642a9a5ed578",
+      "agent_nickname": "Goodall",
+      "mode": "NON_PAID_PREFLIGHT",
+      "status": "COMPLETED_NON_PAID_PREFLIGHT",
+      "result_summary": "Nine of nine readers are live; all audio remains hidden. Rights and sanitation pass, auditions are unrun, and conditional remaining cost is $85.7074. Alice, Call of the Wild, and Time Machine private-asset reuse requires hash and structure proof.",
+      "titles": ["dracula", "pride-and-prejudice", "the-secret-garden", "picture-of-dorian-gray", "frankenstein", "white-fang", "the-time-machine", "the-call-of-the-wild", "alices-adventures-in-wonderland"]
+    },
+    {
+      "lane": 5,
+      "role": "Bengali Long / Repair Lane",
+      "agent_id": "019f57d2-7f7d-74e3-878b-e5d5b2bfc3e5",
+      "agent_nickname": "Newton",
+      "mode": "NON_PAID_DIAGNOSTIC",
+      "status": "COMPLETED_NON_PAID_DIAGNOSTIC",
+      "result_summary": "All four readers are live and audio-hidden. bn-066 dry-run calibration plans six calls at $0.1047 but the harness/private assets are not in main; Pather requires owner rights/source/cover documents; Devdas and book-edfcf810c5 require cover/private-asset preflight.",
+      "titles": ["bn-066", "devdas", "pather-panchali", "book-edfcf810c5"]
+    },
+    {
+      "lane": 6,
+      "role": "Production Validation / Release Truth Lane",
+      "agent_id": "019f57d2-83b6-7e00-8394-58d196e93e8f",
+      "agent_nickname": "Wegener",
+      "mode": "NON_PAID_PRODUCTION_VALIDATION",
+      "status": "COMPLETED_P0_CONTAINMENT_IMPLEMENTED",
+      "result_summary": "All 32 readers return 200; only two API audiobooks are approved. Eight blocked publication packets exposed 88 direct URL occurrences; repo fields are scrubbed, while remote object revocation remains credential-blocked.",
+      "titles": []
+    }
+  ],
+  "paid_execution_queue": [
+    {
+      "priority": 1,
+      "slug": "book-d19e96859f",
+      "lane": 2,
+      "estimated_pipeline_usd": 0.1433,
+      "status": "PROVIDER_RETRY_REQUIRED_RUNTIME_GATES_MISSING",
+      "next_command_source": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_preflight.json"
+    },
+    {
+      "priority": 2,
+      "slug": "book-f5d593e1f4",
+      "lane": 2,
+      "estimated_pipeline_usd": 0.1334,
+      "status": "FAILED_GROUP_REPAIR_PREFLIGHT_REQUIRED"
+    },
+    {
+      "priority": 3,
+      "slug": "muchiram-gurer-jibanchorit",
+      "lane": 2,
+      "estimated_pipeline_usd": 0.1447,
+      "status": "SPLIT_REPRESENTATIVE_AUDITION_REQUIRED"
+    },
+    {
+      "priority": 4,
+      "slug": "sredni-vashtar",
+      "lane": 3,
+      "estimated_pipeline_usd": 0.1474,
+      "status": "PRIVATE_ASSET_PROVENANCE_AND_QA_PREFLIGHT_REQUIRED"
+    },
+    {
+      "priority": 5,
+      "slug": "bn-066",
+      "lane": 5,
+      "estimated_pipeline_usd": 0.1547,
+      "status": "ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED"
+    }
+  ],
+  "guardrails": {
+    "no_publication_without_all_gates": true,
+    "no_static_audio_fallback": true,
+    "no_browser_speech_fallback": true,
+    "no_word_level_sync_claim": true,
+    "no_nonapproved_audio_object": true,
+    "no_duplicate_paid_work": true,
+    "no_long_full_tts_before_short_lane_stability": true
+  },
+  "release_truth_incidents": [
+    {
+      "severity": "P0",
+      "classification": "FRONTEND_READER_TIMING_SCHEMA_MISMATCH",
+      "affected_slugs": ["book-2b9853ec52", "a-ghost-story"],
+      "repair": "Normalize start/end seconds to milliseconds and require actual playback advancement in browser QA.",
+      "status": "IMPLEMENTED_TESTED_PENDING_DEPLOY"
+    },
+    {
+      "severity": "P0",
+      "classification": "PUBLIC_UNAPPROVED_STORAGE_OBJECT_REACHABLE",
+      "affected_slugs": ["alices-adventures-in-wonderland", "nishkriti", "bn-027", "lokrahasya", "mrinalini", "the-wonderful-wizard-of-oz", "bn-059", "the-art-of-money-getting"],
+      "repair": "Scrub direct URLs from controlled publication packets; revoke or privatize remote objects when storage credentials are supplied.",
+      "status": "REPO_CONTAINED_REMOTE_REVOCATION_REQUIRED"
+    },
+    {
+      "severity": "P1",
+      "classification": "STATIC_AUDIO_SPA_FALLBACK",
+      "affected_slugs": [],
+      "repair": "Route /audio/:path* to removed-content and remove immutable cache headers.",
+      "status": "IMPLEMENTED_TESTED_PENDING_DEPLOY"
+    }
+  ],
+  "sprint_target_status": "INCOMPLETE_RUNTIME_AND_EXTERNAL_GATES"
+}

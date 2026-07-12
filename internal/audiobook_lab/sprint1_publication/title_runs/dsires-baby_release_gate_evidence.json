@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-12T19:35:15Z",
+  "slug": "dsires-baby",
+  "title": "Désirée's Baby",
+  "language": "English",
+  "assigned_lane": {
+    "lane": 3,
+    "role": "Short English Lane",
+    "agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
+    "agent_nickname": "Dalton"
+  },
+  "publicly_rendered_book": "Yes",
+  "publicly_available_audiobook": "No",
+  "quality_score": "NOT_RUN",
+  "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
+  "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+  "estimated_remaining_cost_usd": 0.1669,
+  "evidence_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/dsires-baby.json",
+  "next_action": "Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied",
+  "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug dsires-baby --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+  "provider_calls_ran_this_sprint": false,
+  "release_gate_mutated_this_sprint": false,
+  "public_audio_approved_this_sprint": false
+}

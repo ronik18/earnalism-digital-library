@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-12T19:35:15Z",
+  "slug": "book-2b9853ec52",
+  "title": "দুই বিঘা জমি",
+  "language": "Bengali",
+  "assigned_lane": {
+    "lane": 1,
+    "role": "Currently Approved Audio Guard",
+    "agent_id": "019f57d2-6c5c-7792-a11d-0c4468ac6226",
+    "agent_nickname": "Russell"
+  },
+  "publicly_rendered_book": "Yes",
+  "publicly_available_audiobook": "Yes",
+  "quality_score": "9.4/10 listening, confidence 0.95; approved minimum passed, 10.0 not claimed",
+  "release_gate_state": "APPROVED_EXISTING_PUBLIC_AUDIO",
+  "exact_blocker": "NONE",
+  "estimated_remaining_cost_usd": 0.0,
+  "evidence_path": "internal/audiobook_lab/release_gate/book-2b9853ec52_20260707T053510Z/goliveevidence.json",
+  "next_action": "Continue the active Sprint 1 repair or release path",
+  "next_command": "curl -sS https://api.theearnalism.com/api/reader/book/book-2b9853ec52/manifest | jq '{enabled:.audio.enabled,release_gate:.audio.release_gate,qa_status:.audio.qa_status}'",
+  "provider_calls_ran_this_sprint": false,
+  "release_gate_mutated_this_sprint": false,
+  "public_audio_approved_this_sprint": false
+}

@@ -150,17 +150,22 @@ def best_audio_resource_latency(entries: list[dict[str, Any]]) -> float | None:
 
 
 def browser_audio_start_latency(audio_probe: dict[str, Any]) -> float | None:
-    """Measure user-perceived audio readiness, not stale preload resource cost.
+    """Measure a real reader-control playback start, not metadata readiness.
 
-    The reader intentionally preloads audiobook metadata. When Playwright probes
-    after page load and the audio element is already metadata-ready or playable,
-    the next user action can start without waiting for the older resource timing
-    entry that fetched the metadata. Keep resource timings in diagnostics, but
-    do not let them fail the browser gate when readyState already proves the
-    element is playable.
+    The reader preloads audiobook metadata, so readyState alone can pass while
+    timestamp or control logic still prevents playback. Playwright must click
+    the enabled narration control and observe currentTime advancing.
     """
     if not isinstance(audio_probe, dict) or not audio_probe.get("audio_found"):
         return None
+    if not audio_probe.get("playback_advanced"):
+        return None
+    click_latency = audio_probe.get("click_to_play_ms")
+    if click_latency is not None:
+        try:
+            return round(float(click_latency), 2)
+        except (TypeError, ValueError):
+            return None
     metadata_ms = audio_probe.get("metadata_event_ms")
     try:
         ready_before = int(audio_probe.get("ready_state_before", -1))
@@ -240,6 +245,33 @@ def run_playwright(args) -> dict[str, Any]:
             wait_for_audio_ui(page, timeout_ms=20_000)
         except Exception:
             pass
+        play_probe = {
+            "play_button_found": False,
+            "playback_advanced": False,
+            "click_to_play_ms": None,
+            "playback_error": "",
+        }
+        play_button = page.locator(".reader-audio-button:not([disabled])").first
+        if play_button.count() > 0:
+            play_probe["play_button_found"] = True
+            before_time = page.evaluate(
+                """() => document.querySelector('audio[data-testid="generated-audiobook"], audio')?.currentTime || 0"""
+            )
+            started_play = time.perf_counter()
+            try:
+                play_button.click(timeout=5_000)
+                page.wait_for_function(
+                    """(before) => {
+                      const audio = document.querySelector('audio[data-testid="generated-audiobook"], audio');
+                      return Boolean(audio && !audio.paused && audio.currentTime > before + 0.02);
+                    }""",
+                    arg=float(before_time or 0),
+                    timeout=5_000,
+                )
+                play_probe["playback_advanced"] = True
+                play_probe["click_to_play_ms"] = round((time.perf_counter() - started_play) * 1000, 2)
+            except Exception as exc:  # noqa: BLE001
+                play_probe["playback_error"] = str(exc)[:500]
         audio_probe = page.evaluate(
             """async () => {
               const entryPayload = () => performance.getEntriesByType('resource')
@@ -292,6 +324,7 @@ def run_playwright(args) -> dict[str, Any]:
               return out;
             }"""
         )
+        audio_probe.update(play_probe)
         button_count = page.locator("button").filter(has_text=re.compile(r"audio|play|listen", re.I)).count()
         audio_count = page.locator("audio").count()
         body_text = page.locator("body").inner_text(timeout=15_000)

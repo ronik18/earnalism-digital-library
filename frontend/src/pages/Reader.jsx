@@ -14,6 +14,7 @@ import { optimizedImageUrl } from '../lib/images';
 import { resolveBookCover } from '../lib/bookCoverResolver';
 import useSEO from '../hooks/useSEO';
 import { canExposeAudiobookControls, readerManifestPath } from '../lib/audioReleaseSafety';
+import { audioTimestampStartMs, normalizeAudioTimestamp } from '../lib/audioTimestampSchema';
 import { READER_SETTINGS_DEFAULTS, loadReaderSettings, saveReaderSettings } from '../lib/readerSettings';
 
 const THEMES = {
@@ -671,7 +672,7 @@ function timestampIndexAt(timestamps = [], nowMs = 0) {
   let hi = timestamps.length - 1;
   while (lo < hi) {
     const mid = (lo + hi + 1) >> 1;
-    if ((timestamps[mid]?.start_ms || 0) <= nowMs) lo = mid;
+    if (audioTimestampStartMs(timestamps[mid]) <= nowMs) lo = mid;
     else hi = mid - 1;
   }
   return lo;
@@ -700,7 +701,7 @@ function normalizeGeneratedTimestamps(raw, html = '', baseWord = 0) {
   if (!Array.isArray(source) || !source.length) return { words: [], offset: 0 };
   const offset = findTimestampWordOffset(source, html);
   const words = source.map((item, index) => ({
-    ...item,
+    ...normalizeAudioTimestamp(item),
     _word_index: baseWord + index - offset,
   }));
   return { words, offset };
@@ -1949,7 +1950,7 @@ export default function Reader() {
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {
         wordsRef.current = Array.from(contentRef.current?.querySelectorAll('.tts-word') || []);
-        audio.currentTime = Math.max(0, (firstTimestamp.start_ms || 0) / 1000);
+        audio.currentTime = audioTimestampStartMs(firstTimestamp) / 1000;
         tickGeneratedHighlight();
         audio.play().catch(() => {
           setGeneratedAudioActive(false);

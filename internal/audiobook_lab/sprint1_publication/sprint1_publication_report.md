@@ -112,3 +112,11 @@ PR `#109` was reviewed as evidence-only fail-closed work with source/test guardr
 For `book-d19e96859f`, the latest historical group-repair chunks cannot be verified or reused. The narration-only sanitizer was repaired to remove the trailing standalone source year without changing public reader text. The resulting 6,485-character manuscript hashes to `79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe` and forms five clean groups. Exact title-specific audition evidence confirms Sarvam `bulbul:v3` / `pooja` / `dialogue_human_touch` at `9.4`, confidence `0.95`, with no fatal flags.
 
 Fresh title-only TTS, ASR, and configured listening QA are estimated at `$0.1433`. Both provider keys are present, but all budget/approval/ASR/listening environment gates are absent, so the lock-safe wrapper stopped before acquisition and made zero provider calls. D19 remains public-reader/audio-hidden with classification `PROVIDER_RETRY_REQUIRED`; no release gate or public endpoint was changed.
+
+## Parallel Yes+Yes Sprint
+
+Six read-only/non-paid lanes were launched under one coordinator. Every active title is assigned exactly once to an analysis/repair lane, while paid provider execution remains serialized through `paid_tts.lock`.
+
+The live shell has Sarvam, OpenAI, and Google credentials plus valid Google ADC, but all Sprint budget, per-title budget, stop-on-budget, title approval, ASR cap, and listening-QA cap variables are missing. The coordinator therefore reran D19's non-paid preflight only: all cheap gates passed, the planned pipeline remains `$0.1433`, and the wrapper stopped before lock acquisition or provider access. Public audiobook truth remains exactly `book-2b9853ec52` and `a-ghost-story`.
+
+Parallel production validation also found two release-truth defects unrelated to provider generation. Both approved timestamp sidecars use seconds while Reader consumed milliseconds, and eight blocked title packets retained direct storage URLs. Source repairs now normalize timing, require real playback advancement in browser QA, scrub 88 URL occurrences, and fail closed the legacy `/audio/*` namespace. Deployment and remote storage revocation remain pending.

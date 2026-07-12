@@ -1,6 +1,17 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T18:57:04Z",
+  "generated_at": "2026-07-12T19:35:15Z",
+  "parallel_sprint": {
+    "execution_board": "internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json",
+    "approved_public_audio_slugs_at_start": [
+      "book-2b9853ec52",
+      "a-ghost-story"
+    ],
+    "new_public_audio_slugs": [],
+    "release_gate_mutations": 0,
+    "provider_calls_ran": false,
+    "runtime_gate_status": "MISSING_REQUIRED_BUDGET_AND_APPROVAL_GATES"
+  },
   "summary": {
     "total_sprint1_title_count": 34,
     "active_sprint1_title_count": 32,

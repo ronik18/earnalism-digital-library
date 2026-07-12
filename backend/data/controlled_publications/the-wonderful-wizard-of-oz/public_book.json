@@ -423,27 +423,6 @@
   "audiobook_provider": "b2",
   "audiobook_voice": "edge:en-IN-NeerjaNeural",
   "audio_asset_slug": "the-wonderful-wizard-of-oz",
-  "audiobook_assets": {
-    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-below9-v1.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781549958/earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-below9-v1_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781549959/earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-below9-v1_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781549959/earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-below9-v1_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781549960/earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-below9-v1_meta.json"
-  },
-  "audiobook": {
-    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-below9-v1.mp3",
-    "provider": "b2",
-    "size": 127143854,
-    "duration_ms": 15892874,
-    "assets": {
-      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-below9-v1.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781549958/earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-below9-v1_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781549959/earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-below9-v1_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781549959/earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-below9-v1_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781549960/earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-below9-v1_meta.json"
-    },
-    "updated_at": "2026-06-15T18:59:23.247841+00:00"
-  },
   "audiobook_assets_updated_at": "2026-06-15T18:59:23.247886+00:00",
   "created_at": "2026-07-03T18:46:49Z",
   "updated_at": "2026-07-03T18:46:49Z"
