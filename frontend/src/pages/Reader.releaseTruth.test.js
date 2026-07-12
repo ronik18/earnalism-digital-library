@@ -28,6 +28,12 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).toMatch(/Paragraph\/Stanza Sync/);
   });
 
+  test("normalizes approved production timestamps before playback", () => {
+    expect(readerSource).toMatch(/normalizeAudioTimestamp/);
+    expect(readerSource).toMatch(/audioTimestampStartMs\(timestamps\[mid\]\)/);
+    expect(readerSource).toMatch(/audioTimestampStartMs\(firstTimestamp\) \/ 1000/);
+  });
+
   test("represents premium reading settings for bilingual long-form reading", () => {
     expect(readerSource).toMatch(/label:\s*'Light'/);
     expect(readerSource).toMatch(/label:\s*'Sepia'/);

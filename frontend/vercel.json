@@ -272,6 +272,10 @@
       "destination": "/api/removed-content?path=/wp-json/:path*"
     },
     {
+      "source": "/audio/:path*",
+      "destination": "/api/removed-content?path=/audio/:path*"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "https://api.theearnalism.com/api/$1"
     },
@@ -312,15 +316,6 @@
     },
     {
       "source": "/static/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/audio/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

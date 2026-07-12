@@ -243,27 +243,6 @@
   "audiobook_provider": "cloudinary",
   "audiobook_voice": "edge:en-IN-NeerjaNeural",
   "audio_asset_slug": "alices-adventures-in-wonderland",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781438358/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1.mp3.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781438361/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781438362/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781438363/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781438363/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781438358/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1.mp3.mp3",
-    "provider": "cloudinary",
-    "size": 92078333,
-    "duration_ms": 11509704,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781438358/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1.mp3.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781438361/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781438362/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781438363/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781438363/earnalism/audiobooks-polished/en/alices-adventures-in-wonderland/alices-adventures-in-wonderland-english-polish-edge-queue-v1_meta.json"
-    },
-    "updated_at": "2026-06-14T11:59:26.191941+00:00"
-  },
   "audiobook_assets_updated_at": "2026-06-14T11:59:26.191969+00:00",
   "created_at": "2026-07-03T18:46:49Z",
   "updated_at": "2026-07-03T18:46:49Z"

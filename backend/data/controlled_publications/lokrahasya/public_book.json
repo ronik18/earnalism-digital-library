@@ -303,27 +303,6 @@
   "audiobook_provider": "cloudinary",
   "audiobook_voice": "command:bn-IN-TanishaaNeural",
   "audio_asset_slug": "lokrahasya",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781290879/earnalism/audiobooks-polished/ben/lokrahasya/lokrahasya-bengali-polish-queue-v1.mp3.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781290883/earnalism/audiobooks-polished/ben/lokrahasya/lokrahasya-bengali-polish-queue-v1_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781290884/earnalism/audiobooks-polished/ben/lokrahasya/lokrahasya-bengali-polish-queue-v1_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781290885/earnalism/audiobooks-polished/ben/lokrahasya/lokrahasya-bengali-polish-queue-v1_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781290886/earnalism/audiobooks-polished/ben/lokrahasya/lokrahasya-bengali-polish-queue-v1_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781290879/earnalism/audiobooks-polished/ben/lokrahasya/lokrahasya-bengali-polish-queue-v1.mp3.mp3",
-    "provider": "cloudinary",
-    "size": 94953892,
-    "duration_ms": 11869129,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781290879/earnalism/audiobooks-polished/ben/lokrahasya/lokrahasya-bengali-polish-queue-v1.mp3.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781290883/earnalism/audiobooks-polished/ben/lokrahasya/lokrahasya-bengali-polish-queue-v1_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781290884/earnalism/audiobooks-polished/ben/lokrahasya/lokrahasya-bengali-polish-queue-v1_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781290885/earnalism/audiobooks-polished/ben/lokrahasya/lokrahasya-bengali-polish-queue-v1_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781290886/earnalism/audiobooks-polished/ben/lokrahasya/lokrahasya-bengali-polish-queue-v1_meta.json"
-    },
-    "updated_at": "2026-06-12T19:01:28.596275+00:00"
-  },
   "audiobook_assets_updated_at": "2026-06-12T19:01:28.596450+00:00",
   "created_at": "2026-07-03T18:46:48Z",
   "updated_at": "2026-07-03T18:46:48Z"

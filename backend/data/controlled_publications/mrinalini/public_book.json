@@ -753,27 +753,6 @@
   "audiobook_provider": "b2",
   "audiobook_voice": "command:bn-IN-TanishaaNeural",
   "audio_asset_slug": "mrinalini",
-  "audiobook_assets": {
-    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781287387/earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781287390/earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781287391/earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781287391/earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1_meta.json"
-  },
-  "audiobook": {
-    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1.mp3",
-    "provider": "b2",
-    "size": 155956706,
-    "duration_ms": 19494481,
-    "assets": {
-      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781287387/earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781287390/earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781287391/earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781287391/earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1_meta.json"
-    },
-    "updated_at": "2026-06-12T18:03:14.757972+00:00"
-  },
   "audiobook_assets_updated_at": "2026-06-12T18:03:14.758014+00:00",
   "created_at": "2026-07-03T18:46:48Z",
   "updated_at": "2026-07-03T18:46:48Z"

@@ -359,3 +359,17 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 ```bash
 python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.json --book-slug the-necklace --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com
 ```
+
+## Parallel Sprint Runtime Blocker
+
+- State: `PAID_EXECUTION_BLOCKED_RUNTIME_GATES_MISSING`
+- Scope: all newly paid Sprint 1 TTS, ASR, and listening-QA work.
+- Provider credentials are present for Sarvam, OpenAI, and Google, but the required budget/approval variables are absent from the live shell.
+- The coordinator did not acquire `paid_tts.lock`, did not call a provider, and did not mutate any release gate.
+- First executable paid repair: `book-d19e96859f`, using the exact inline command in `internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_preflight.json`.
+
+## Release-Truth Containment
+
+- `book-2b9853ec52` and `a-ghost-story`: approved audio files, hashes, manifests, and range endpoints pass; production Reader playback requires the pending timestamp-schema frontend deploy.
+- Alice and Nishkriti plus six non-Sprint blocked titles: direct URLs were removed from current controlled-publication packets, but already-known Cloudinary/B2 objects remain reachable until storage credentials permit revocation/privacy changes.
+- `/audio/*`: source fix pending deployment routes this legacy namespace to removed-content rather than SPA HTML.

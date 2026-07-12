@@ -75,32 +75,11 @@
   "allowPayment": false,
   "is_published": true,
   "audio_enabled": false,
-  "audiobook_enabled": true,
+  "audiobook_enabled": false,
   "generate_audiobook": true,
   "audiobook_provider": "cloudinary",
   "audiobook_voice": "edge:en-IN-NeerjaNeural",
   "audio_asset_slug": "the-art-of-money-getting",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781536100/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1.mp3.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536104/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536105/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536106/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536107/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781536100/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1.mp3.mp3",
-    "provider": "cloudinary",
-    "size": 43537598,
-    "duration_ms": 5442096,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781536100/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1.mp3.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536104/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536105/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536106/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781536107/earnalism/audiobooks-polished/en/the-art-of-money-getting/the-art-of-money-getting-english-polish-edge-below9-v1_meta.json"
-    },
-    "updated_at": "2026-06-15T15:08:30.227356+00:00"
-  },
   "audiobook_assets_updated_at": "2026-06-15T15:08:30.227391+00:00",
   "created_at": "2026-07-03T18:46:49Z",
   "updated_at": "2026-07-03T18:46:49Z"

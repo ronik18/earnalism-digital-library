@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-12T19:52:18Z",
+  "mode": "EXECUTE",
+  "slugs": [
+    "alices-adventures-in-wonderland",
+    "nishkriti",
+    "bn-027",
+    "lokrahasya",
+    "mrinalini",
+    "the-wonderful-wizard-of-oz",
+    "bn-059",
+    "the-art-of-money-getting"
+  ],
+  "results": [
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "root": "backend/data/controlled_publications",
+      "status": "SCRUBBED",
+      "removed_keys": [
+        "audiobook",
+        "audiobook_assets"
+      ],
+      "removed_url_count": 11,
+      "remote_object_revocation_required": true
+    },
+    {
+      "slug": "nishkriti",
+      "root": "backend/data/controlled_publications",
+      "status": "SCRUBBED",
+      "removed_keys": [
+        "audiobook",
+        "audiobook_assets"
+      ],
+      "removed_url_count": 11,
+      "remote_object_revocation_required": true
+    },
+    {
+      "slug": "bn-027",
+      "root": "backend/data/controlled_publications",
+      "status": "SCRUBBED",
+      "removed_keys": [
+        "audiobook",
+        "audiobook_assets"
+      ],
+      "removed_url_count": 11,
+      "remote_object_revocation_required": true
+    },
+    {
+      "slug": "lokrahasya",
+      "root": "backend/data/controlled_publications",
+      "status": "SCRUBBED",
+      "removed_keys": [
+        "audiobook",
+        "audiobook_assets"
+      ],
+      "removed_url_count": 11,
+      "remote_object_revocation_required": true
+    },
+    {
+      "slug": "mrinalini",
+      "root": "backend/data/controlled_publications",
+      "status": "SCRUBBED",
+      "removed_keys": [
+        "audiobook",
+        "audiobook_assets"
+      ],
+      "removed_url_count": 11,
+      "remote_object_revocation_required": true
+    },
+    {
+      "slug": "the-wonderful-wizard-of-oz",
+      "root": "backend/data/controlled_publications",
+      "status": "SCRUBBED",
+      "removed_keys": [
+        "audiobook",
+        "audiobook_assets"
+      ],
+      "removed_url_count": 11,
+      "remote_object_revocation_required": true
+    },
+    {
+      "slug": "bn-059",
+      "root": "backend/data/controlled_publications",
+      "status": "SCRUBBED",
+      "removed_keys": [
+        "audiobook",
+        "audiobook_assets"
+      ],
+      "removed_url_count": 11,
+      "remote_object_revocation_required": true
+    },
+    {
+      "slug": "the-art-of-money-getting",
+      "root": "backend/data/controlled_publications",
+      "status": "SCRUBBED",
+      "removed_keys": [
+        "audiobook",
+        "audiobook_assets"
+      ],
+      "removed_url_count": 11,
+      "remote_object_revocation_required": true
+    }
+  ],
+  "scrubbed_file_count": 8,
+  "removed_url_count": 88,
+  "remote_object_revocation_required": true,
+  "provider_calls_ran": false,
+  "release_gate_approvals_added": 0
+}

@@ -1,6 +1,23 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T18:57:04Z",
+  "generated_at": "2026-07-12T19:35:15Z",
+  "parallel_sprint_budget": {
+    "ledger": "internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json",
+    "sprint_cap_usd": 175.0,
+    "per_title_cap_usd": 30.0,
+    "prior_estimated_spend_usd": 4.2862,
+    "this_run_estimated_spend_usd": 0.0,
+    "budget_remaining_after_estimated_spend_usd": 170.7138,
+    "remaining_hidden_title_work_estimate_usd": 100.8409,
+    "unsafe_reuse_adjustment_usd": 3.2374,
+    "unpriced_external_work": [
+      "The Open Window human narration or alternate provider",
+      "Remote storage object revocation/privacy enforcement",
+      "Pather Panchali owner documents"
+    ],
+    "runtime_gate_status": "MISSING_REQUIRED_BUDGET_AND_APPROVAL_GATES",
+    "provider_calls_ran": false
+  },
   "budget_env": {
     "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "SET_INLINE_STAGE2E_175",
     "SPRINT1_MAX_USD_PER_TITLE": "SET_INLINE_STAGE2E_30",

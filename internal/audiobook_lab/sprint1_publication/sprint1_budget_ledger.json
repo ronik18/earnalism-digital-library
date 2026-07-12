@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-12T19:35:15Z",
+  "currency": "USD",
+  "owner_decision": "AUTHORIZE_PARALLEL_SPRINT1_PUBLIC_READER_AND_AUDIOBOOK_LIVE_EXECUTION_WITH_175_USD_CAP",
+  "caps": {
+    "sprint_total_usd": 175.0,
+    "per_title_usd": 30.0
+  },
+  "accounting": {
+    "prior_estimated_spend_usd": 4.2862,
+    "this_run_estimated_spend_usd": 0.0,
+    "cumulative_estimated_spend_usd": 4.2862,
+    "actual_spend_usd": null,
+    "actual_billing_status": "NOT_REPORTED_BY_PROVIDERS",
+    "budget_remaining_after_estimated_spend_usd": 170.7138,
+    "remaining_hidden_title_work_estimate_usd": 100.8409,
+    "projected_total_if_current_estimates_hold_usd": 105.1271,
+    "projected_headroom_usd": 69.8729,
+    "unpriced_external_work": [
+      "The Open Window human narration or separately approved provider",
+      "Cloudinary/B2 remote object revocation or privacy enforcement",
+      "Pather Panchali owner rights/source/cover documentation"
+    ]
+  },
+  "entries": [
+    {
+      "entry_id": "prior-sprint-aggregate-through-stage2f",
+      "scope": "A Ghost Story release plus The Open Window bounded auditions and earlier Sprint 1 QA",
+      "estimated_spend_usd": 4.2862,
+      "actual_spend_usd": null,
+      "status": "RECORDED_FROM_REPO_EVIDENCE"
+    },
+    {
+      "entry_id": "parallel-sprint-d19-preflight",
+      "slug": "book-d19e96859f",
+      "scope": "Non-paid source, representative evidence, budget, and lock preflight",
+      "estimated_spend_usd": 0.0,
+      "actual_spend_usd": 0.0,
+      "planned_pipeline_usd": 0.1433,
+      "provider_calls_ran": false,
+      "lock_acquired": false,
+      "status": "BLOCKED_BEFORE_PROVIDER_RUNTIME_GATES_MISSING"
+    },
+    {
+      "entry_id": "parallel-sprint-bn066-calibration-dry-run",
+      "slug": "bn-066",
+      "scope": "Three-chunk, four-language-option ASR calibration planning only",
+      "estimated_spend_usd": 0.0,
+      "actual_spend_usd": 0.0,
+      "planned_pipeline_usd": 0.1047,
+      "planned_provider_calls": 6,
+      "provider_calls_ran": false,
+      "lock_acquired": false,
+      "status": "DRY_RUN_BLOCKED_PAID_GATES"
+    }
+  ],
+  "cost_reassessment": {
+    "previous_hidden_title_estimate_usd": 97.6035,
+    "unsafe_reuse_adjustment_usd": 3.2374,
+    "revised_known_hidden_title_estimate_usd": 100.8409,
+    "reason": "Missing private assets, failed historical ASR, or untracked release evidence require fresh source-bound paths for thirteen titles."
+  },
+  "runtime_gate_status": "MISSING_REQUIRED_BUDGET_AND_APPROVAL_GATES",
+  "paid_execution_serialized": true,
+  "lock_status_after_preflight": {
+    "status": "active",
+    "current_holder": "none",
+    "allowed_next_holders": []
+  }
+}

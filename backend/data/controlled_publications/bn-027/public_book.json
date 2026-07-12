@@ -80,27 +80,6 @@
   "audiobook_provider": "cloudinary",
   "audiobook_voice": "command:bn-IN-TanishaaNeural",
   "audio_asset_slug": "bn-027",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781262669/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1.mp3.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262672/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262672/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262673/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262674/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781262669/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1.mp3.mp3",
-    "provider": "cloudinary",
-    "size": 17008057,
-    "duration_ms": 2125920,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1781262669/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1.mp3.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262672/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262672/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262673/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1781262674/earnalism/audiobooks-polished/ben/bn-027/bn-027-bengali-polish-queue-v1_meta.json"
-    },
-    "updated_at": "2026-06-12T11:11:16.733092+00:00"
-  },
   "audiobook_assets_updated_at": "2026-06-12T11:11:16.733129+00:00",
   "created_at": "2026-07-03T18:46:48Z",
   "updated_at": "2026-07-03T18:46:48Z"
