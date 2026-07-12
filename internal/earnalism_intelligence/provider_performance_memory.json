@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-06",
+  "version": "2026-07-12",
   "bengali": {
     "openai": {
       "status": "quality_limited_for_bengali_literary_audiobook",
@@ -214,6 +214,20 @@
   "english": {
     "openai": {
       "status": "usable_but_must_pass_asr_sync_and_listening"
+    },
+    "google": {
+      "status": "title_specific_quality_validation_required",
+      "voice": "en-GB-Studio-C",
+      "a_ghost_story_result": "full release QA passed with six listening samples 9.4-9.5",
+      "the_open_window_baseline_scores": [9.4, 8.4, 8.0, 8.4],
+      "the_open_window_prosody_retry_scores": [9.5, 9.4, 8.5, 9.4],
+      "the_open_window_weak_passage": "twilight_return",
+      "the_open_window_fatal_flags": [],
+      "do_not_repeat_fingerprints": [
+        "cfde863f34962e2ebeb608b7b333565566ddf305b91356d6bd6cdb97572f73fb",
+        "a4ad393ef625f5c35b9e4939107fa53fb29556c29a59ca7d563a68ea857e6929"
+      ],
+      "next_action": "Test en-GB-Studio-B once under a fresh bounded owner approval; never infer catalog-wide suitability from the A Ghost Story pass."
     }
   }
 }

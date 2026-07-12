@@ -1,6 +1,6 @@
 # Sprint 1 Stage 2 Remaining Blockers
 
-Generated: `2026-07-12T17:00:00Z`
+Generated: `2026-07-12T17:22:03Z`
 
 No title is marked public audio without complete release evidence.
 
@@ -251,15 +251,17 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## the-open-window / The Open Window
 
-- Blocker: `DISALLOWED_PIPER_PROVENANCE_AND_SYNTHETIC_ALIGNMENT`
+- Blocker: `REPRESENTATIVE_AUDITION_TWILIGHT_TRANSITION_SCORE_8.5_BELOW_9.4`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
-- Non-paid ASR re-evaluation: `9.7826`; first/last pass when the legitimate spoken title is included in the audio manuscript.
-- Current asset: Piper with synthetic alignment; it cannot be released publicly.
+- Historical asset: Piper with synthetic alignment; it remains ineligible.
+- Google Studio-C baseline scores: `9.4`, `8.4`, `8.0`, `8.4`.
+- Single prosody retry scores: `9.5`, `9.4`, `8.5`, `9.4`; no fatal flags; lock restored.
+- Estimated audition spend: `$0.4356`; actual provider billing not reported.
 - Next command:
 
 ```bash
-gcloud auth application-default login
+PYTHONDONTWRITEBYTECODE=1 SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=1 EARNALISM_GOOGLE_TTS_ESTIMATED_USD_PER_1K_CHARS=0.02 EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=2 EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD=0.05 EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio python3 internal/audiobook_lab/scripts/sprint1_stage2d_the_open_window_google_audition.py --voice en-GB-Studio-B --prior-sprint-estimated-spend-usd 4.0684 --prior-title-estimated-spend-usd 0.4356 --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root /tmp/earnalism-the-open-window-stage2d-google-audition
 ```
 
 ## sredni-vashtar / Sredni Vashtar
