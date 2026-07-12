@@ -7421,7 +7421,9 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=[
         "Authorization",
+        "Cache-Control",
         "Content-Type",
+        "Pragma",
         "X-Request-ID",
         "X-Requested-With",
         "X-Razorpay-Event-Id",
