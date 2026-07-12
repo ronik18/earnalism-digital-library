@@ -1,21 +1,20 @@
 # Sprint 1 Stage 2 Remaining Blockers
 
-Generated: `2026-07-12T11:11:53Z`
+Generated: `2026-07-12T15:24:05Z`
 
 No title is marked public audio without complete release evidence.
 
-## a-ghost-story / A Ghost Story (Stage 2C)
+## a-ghost-story / A Ghost Story (Stage 2D resolved)
 
-- Status: `AUDIO_HIDDEN_ALTERNATE_PROVIDER_REPAIR_REQUIRED`
-- Blocker: final private candidate passed ASR/source at `9.928` and first/last checks, but listening QA fell to `8.3`, confidence `0.90`, with list-reading rhythm.
-- Repair evidence: sentence-safe 1,600-character chunks removed source omissions; the remaining blocker is OpenAI provider quality rather than source, sanitation, or segmentation.
-- Public truth: reader remains public; audio remains hidden; manifest audio disabled; audiobook endpoint `404`.
-- Repair policy: do not repeat OpenAI variants. Reauthenticate Google ADC and run one bounded alternate-provider literary audition.
-- Estimated Stage 2B plus Stage 2C spend: `$2.3295`; actual provider billing not reported.
+- Status: `RELEASE_GATES_PASS_SOURCE_PUBLICATION_READY`
+- Resolution: Google Studio-C full narration passed ASR/source `9.88`, first/last checks, and six listening samples at `9.4-9.5`, confidence `0.95`, with no fatal flags.
+- Upload evidence: five B2 artifacts resolve with matching local/remote SHA-256 and byte sizes; MP3 range request returned `206`.
+- Remaining operational step: normal PR deployment and production route validation.
+- Estimated Stage 2B through Stage 2D spend: `$3.6328`; actual provider billing not reported.
 - Next command:
 
 ```bash
-gcloud auth application-default login
+curl -sS https://api.theearnalism.com/api/reader/book/a-ghost-story/manifest | jq '.audio'
 ```
 
 ## bn-066 / আনন্দমঠ

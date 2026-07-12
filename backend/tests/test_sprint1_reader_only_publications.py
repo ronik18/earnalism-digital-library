@@ -7,6 +7,7 @@ from backend import catalog_truth
 
 
 ROOT = Path(__file__).resolve().parents[2]
+APPROVED_PUBLIC_AUDIO_SLUGS = {"book-2b9853ec52", "a-ghost-story"}
 READER_ONLY_SLUGS = (
     "book-edfcf810c5",
     "the-time-machine",
@@ -42,7 +43,7 @@ def read_json(path: Path) -> dict:
 def test_reader_only_publications_are_live_without_widening_audio_allowlist():
     for launch_path in (ROOT / "data/controlled_launch.json", ROOT / "backend/data/controlled_launch.json"):
         launch = read_json(launch_path)
-        assert launch["audio_enabled_slugs"] == ["book-2b9853ec52"]
+        assert set(launch["audio_enabled_slugs"]) == APPROVED_PUBLIC_AUDIO_SLUGS
         assert set(READER_ONLY_SLUGS).issubset(launch["live_approved_slugs"])
 
 

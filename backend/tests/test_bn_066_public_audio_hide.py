@@ -165,13 +165,18 @@ def test_bn_066_legacy_audio_endpoint_fails_closed(monkeypatch):
     assert exc_info.value.status_code == 404
 
 
-def test_a_ghost_story_remains_reader_first_audio_hidden():
+def test_a_ghost_story_release_does_not_change_bn_066_fail_closed_policy():
     artifact = catalog_truth.load_controlled_artifact_book("a-ghost-story")
 
     assert artifact is not None
     assert catalog_truth.can_expose_reader(artifact) is True
-    assert catalog_truth.can_expose_audio(artifact) is False
-    assert server._reader_manifest_audio(artifact, "a-ghost-story")["enabled"] is False
+    assert catalog_truth.can_expose_audio(artifact) is True
+    assert server._reader_manifest_audio(artifact, "a-ghost-story")["enabled"] is True
+
+    bn_066 = catalog_truth.load_controlled_artifact_book("bn-066")
+    assert bn_066 is not None
+    assert catalog_truth.can_expose_audio(bn_066) is False
+    assert server._reader_manifest_audio(bn_066, "bn-066")["enabled"] is False
 
 
 @pytest.mark.parametrize(

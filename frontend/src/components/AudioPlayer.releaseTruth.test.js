@@ -68,6 +68,28 @@ describe("AudioPlayer release truth", () => {
     expect(presentation.syncLabel).toBe("Section-following narration");
   });
 
+  test("approved A Ghost Story manifest renders section-following narration", () => {
+    const presentation = audioPlayerPresentationForBook({
+      title: "A Ghost Story",
+      _readerManifest: {
+        audio: {
+          enabled: true,
+          provider: "google",
+          voice: "en-GB-Studio-C",
+          version: "stage2d-approved",
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
+          sync_mode: "section_following",
+          assets: { mp3: "/api/reader/book/a-ghost-story/audiobook" },
+        },
+      },
+    });
+
+    expect(presentation.canRender).toBe(true);
+    expect(presentation.audioUrl).toBe("/api/reader/book/a-ghost-story/audiobook");
+    expect(presentation.syncLabel).toBe("Section-following narration");
+  });
+
   test("legacy bn-066 manifest cannot render narration controls or sync copy", () => {
     const presentation = audioPlayerPresentationForBook({
       slug: "bn-066",
@@ -91,7 +113,6 @@ describe("AudioPlayer release truth", () => {
   });
 
   test.each([
-    "a-ghost-story",
     "book-d19e96859f",
     "book-f5d593e1f4",
     "muchiram-gurer-jibanchorit",
@@ -101,8 +122,8 @@ describe("AudioPlayer release truth", () => {
     const presentation = audioPlayerPresentationForBook({
       slug,
       title: slug,
-      audiobook_enabled: slug === "a-ghost-story",
-      audiobook_assets: slug === "a-ghost-story" ? { mp3: "https://cdn.example.com/stale.mp3" } : {},
+      audiobook_enabled: false,
+      audiobook_assets: {},
     });
 
     expect(presentation.canRender).toBe(false);

@@ -1,0 +1,101 @@
+{
+  "status": "VERIFIED_UPLOAD_PASS",
+  "slug": "a-ghost-story",
+  "owner_decision": "AUTHORIZE_STAGE_2D_A_GHOST_STORY_ALTERNATE_PROVIDER_REPAIR_AND_PUBLICATION_IF_PASS",
+  "started_at": "2026-07-12T15:23:38Z",
+  "finished_at": "2026-07-12T15:24:05Z",
+  "release_evidence": {
+    "status": "PASS",
+    "slug": "a-ghost-story",
+    "audio_path": "/private/tmp/earnalism-a-ghost-stage2d-google-full-tts/a-ghost-story_google_studio_c_prosody_final.mp3",
+    "audio_hash": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+    "source_hash": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4",
+    "asr_source_score": 9.88,
+    "first_words_match": true,
+    "last_words_match": true,
+    "listening_gate": {
+      "passes": true,
+      "sample_count": 6,
+      "minimum_overall_score": 9.4,
+      "minimum_confidence": 0.95,
+      "fatal_flags": []
+    },
+    "fatal_flags": [],
+    "alignment_method": "openai_verbose_json_word_timestamps",
+    "auto_estimated_sync": false,
+    "blockers": []
+  },
+  "process_returncode": 0,
+  "hook_status": "PASS",
+  "hook_blockers": [],
+  "storage_backend": "b2_s3",
+  "urls": {
+    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_c0e52985ee1e.mp3",
+    "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_timestamps_f705f1832a8b.json",
+    "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_vtt_11f7c4689b94.vtt",
+    "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_chapters_ffe4267005f0.json",
+    "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_meta_0d8b16ee7c3d.json"
+  },
+  "checksums": {
+    "mp3": {
+      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_c0e52985ee1e.mp3",
+      "status": 200,
+      "resolves": true,
+      "local_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+      "remote_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+      "match": true,
+      "local_size": 7047789,
+      "remote_size": 7047789,
+      "content_type": "audio/mpeg"
+    },
+    "timestamps": {
+      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_timestamps_f705f1832a8b.json",
+      "status": 200,
+      "resolves": true,
+      "local_sha256": "f705f1832a8bca6e6a66b5e34b0689d7a3daf71cd79a6f076b6376305307dc44",
+      "remote_sha256": "f705f1832a8bca6e6a66b5e34b0689d7a3daf71cd79a6f076b6376305307dc44",
+      "match": true,
+      "local_size": 194998,
+      "remote_size": 194998,
+      "content_type": "application/octet-stream"
+    },
+    "vtt": {
+      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_vtt_11f7c4689b94.vtt",
+      "status": 200,
+      "resolves": true,
+      "local_sha256": "11f7c4689b94230d9125e77789efcf1ac15d3809859e847c013548d69a029517",
+      "remote_sha256": "11f7c4689b94230d9125e77789efcf1ac15d3809859e847c013548d69a029517",
+      "match": true,
+      "local_size": 99682,
+      "remote_size": 99682,
+      "content_type": "text/vtt"
+    },
+    "chapters": {
+      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_chapters_ffe4267005f0.json",
+      "status": 200,
+      "resolves": true,
+      "local_sha256": "ffe4267005f0b7120b0398cb6b9515a245afbdb759947fafbe0d79f94d9bbf87",
+      "remote_sha256": "ffe4267005f0b7120b0398cb6b9515a245afbdb759947fafbe0d79f94d9bbf87",
+      "match": true,
+      "local_size": 187,
+      "remote_size": 187,
+      "content_type": "application/octet-stream"
+    },
+    "meta": {
+      "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_meta_0d8b16ee7c3d.json",
+      "status": 200,
+      "resolves": true,
+      "local_sha256": "0d8b16ee7c3df5b7b4e9615efd7ad3430481f8c219eec80a0a29cb6a53c085ad",
+      "remote_sha256": "0d8b16ee7c3df5b7b4e9615efd7ad3430481f8c219eec80a0a29cb6a53c085ad",
+      "match": true,
+      "local_size": 550,
+      "remote_size": 550,
+      "content_type": "application/octet-stream"
+    }
+  },
+  "error": null,
+  "lock_restored": true,
+  "lock_sha256_after": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e",
+  "public_source_mutated": false,
+  "publication_performed": false
+}

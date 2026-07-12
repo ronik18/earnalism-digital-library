@@ -1,18 +1,18 @@
 # Sprint 1 Publication Stage 2 Report
 
-Generated: `2026-07-12T11:11:53Z`
+Generated: `2026-07-12T15:24:05Z`
 
 ## Outcome
 
 - Sprint target: `INCOMPLETE`
 - Current public readers: `32/32`
 - Reader repairs merged/deployed from PR #101: `17`
-- Current public audiobooks: `1/32`
-- New public audiobooks: `0`
-- Provider calls: bounded OpenAI selector, TTS, ASR, and listening-QA work for A Ghost Story only
-- Estimated Stage 2B plus Stage 2C spend: `$2.3295`; actual provider billing was not reported
-- Authorized budget remaining after estimate: `$172.6705`
-- Remaining known queue estimate excluding the now-unknown A Ghost Story repair: `$97.5724`
+- Current public audiobooks: `2/32` after the Stage 2D release source deploys
+- New public audiobooks: `1`
+- Provider calls: bounded Google auditions/full TTS and bounded OpenAI ASR/listening QA for A Ghost Story only
+- Estimated Stage 2B through Stage 2D spend: `$3.6328`; actual provider billing was not reported
+- Authorized budget remaining after estimate: `$171.3672`
+- Remaining known queue estimate: `$97.5724`
 - Production API: `32/32 book routes and 32/32 manifests HTTP 200`
 - Production browser: `132/132 desktop/mobile checks pass`
 
@@ -36,7 +36,7 @@ Stage 2B supplied every required cap in the same process and ran exactly six bou
 | `pather-panchali` | পথের পাঁচালী / Pather Panchali | Bengali | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/pather-panchali.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `devdas` | দেবদাস / Devdas | Bengali | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/devdas.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `book-edfcf810c5` | ক্ষুধিত পাষাণ | Bengali | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/book-edfcf810c5.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
-| `a-ghost-story` | A Ghost Story | English | Yes | No | ASR/source 9.928 PASS; first/last PASS; listening minimum 8.3, confidence 0.90, list-reading rhythm; FAIL | `internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_release_gate_evidence.json` | $2.3295 estimated; actual not reported | AUDIO_HIDDEN_ALTERNATE_PROVIDER_REPAIR_REQUIRED |
+| `a-ghost-story` | A Ghost Story | English | Yes | Yes | ASR/source 9.88; first/last PASS; six listening samples 9.4-9.5, confidence 0.95, no fatal flags; 10.0 not claimed | `internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_release_gate_evidence.json` | $3.6328 estimated; actual not reported | Yes, publicly rendered book + Yes, publicly available audiobook |
 | `dracula` | Dracula | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/dracula.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `frankenstein` | Frankenstein | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/frankenstein.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `jekyll-and-hyde` | The Strange Case of Dr. Jekyll and Mr. Hyde | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/jekyll-and-hyde.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
@@ -80,3 +80,9 @@ Google Cloud TTS capability discovery is blocked by expired Application Default 
 ## Stage 2C Queue Continuation
 
 The Open Window was processed non-paid. Production reader routes are healthy, sanitation and rights pass, and current ASR semantics score the historical transcript at `9.7826` when the legitimate spoken title is included in the audio manuscript. Its existing audio is Piper with synthetic alignment, which is disallowed public provenance. It remains audio-hidden pending the same alternate-provider capability repair.
+
+## Stage 2D: A Ghost Story
+
+Google ADC was restored. Baseline Studio-B and Studio-C auditions reproduced the weak middle cadence, while one source-preserving Studio-C prosody repair passed all three representative samples at `9.4`, confidence `0.95`, with no fatal flags. Because safe cross-provider segment splicing was unavailable, one new full Studio-C candidate was generated in nine sentence-safe chunks.
+
+Full QA passed at `9.88` ASR/source, first/last PASS, and six listening samples of `9.4-9.5` with minimum confidence `0.95` and no fatal flags. The existing upload hook then stored five B2 artifacts and verified every remote SHA-256 and byte size. A direct MP3 range request returned `206` and 1,024 bytes. The release source packet exposes only section-following narration and does not claim deterministic `10/10` or word-level sync.

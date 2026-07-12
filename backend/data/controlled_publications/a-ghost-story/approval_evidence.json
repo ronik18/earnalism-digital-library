@@ -4,9 +4,20 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "stage_t_reader_routability_repair",
-  "audio_public_release": "PAID_LISTEN_HOLD_PENDING_PRODUCTION_ROUTE_MANIFEST_PLAYER_PROOF",
+  "approval_scope": "stage2d_alternate_provider_release_gate",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "audio_qa_status": "QA_PASSED",
+  "asr_source_score": 9.88,
+  "first_words_match": true,
+  "last_words_match": true,
+  "listening_qa_minimum_score": 9.4,
+  "listening_qa_minimum_confidence": 0.95,
+  "listening_qa_fatal_flags": [],
+  "audio_sha256": "c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904",
+  "source_sha256": "0f1e3de7855169bddac8ddca288aa3a63f8d6a742ce63c0b91aa947e5e2786d4",
+  "upload_status": "UPLOADED_CHECKSUM_VERIFIED",
+  "quality_claim": "MEASURED_RELEASE_MINIMUM_PASS_NO_10_OF_10_CLAIM",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": true
 }
