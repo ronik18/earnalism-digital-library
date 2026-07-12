@@ -1,29 +1,36 @@
-# Human Narration Brief: The Open Window
+# Narration / Import Brief: The Open Window
 
-Author: Saki
-Language: English
+- Slug: `the-open-window`
+- Author: Saki
+- Language: `English (en)`
+- Candidate kind: `human_narration`
+- Source hash: `a107f7212542030d90e15e1b7daeeee6dcef9a77ea18887ce009afbf61457078`
+- Sanitized manuscript SHA-256: `f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be`
+- Public audio state: `AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES`
 
-## Pronunciation And Style Notes
-- Calm, intimate classic-story narration with understated tension and dry wit.
-- Keep Vera poised and controlled; do not overact the ghost-story reveal.
-- Avoid list-reading rhythm, mechanical cadence, rushed twilight transitions, and synthetic resets.
-- Preserve names and quoted dialogue exactly as written.
+Use only `clean_manuscript.txt`. Preserve every word, paragraph, and chapter in order.
+Do not add spoken credits, source notices, page numbers, music, effects, or text absent from the manuscript.
 
-## Target Narration Style
-Natural literary pacing, restrained emotional expression, clear dialogue changes, and deliberate punctuation pauses.
+## Pronunciation Checklist
 
-Use only `clean_manuscript.txt`. Preserve every word and paragraph in order.
-Do not add music, sound effects, source boilerplate, page numbers, or narration credits.
+- [ ] The Open Window
+- [ ] Saki
+- [ ] Recurring names/terms: Bertie, Framton, Her, Mrs, Nuttel, Poor, Sappleton
+- [ ] Confirm every proper noun and period-specific term before recording; preserve the written form.
 
-## Required Audio Format
-Deliver one clean WAV (PCM, 44.1/48 kHz, mono or stereo) or high-bitrate MP3 (44.1/48 kHz).
-No normalization clipping, denoising artifacts, music, room tone jumps, or lossy re-encoding chains.
+## Style And Performance
 
-## Chapter And Section Boundaries
-This controlled edition has one chapter. Preserve paragraph boundaries and leave natural silence at scene/paragraph transitions.
-Do not insert spoken chapter numbers, credits, source notices, or any text absent from the manuscript.
+- Use clear literary English with natural dialogue changes and deliberate punctuation pauses.
+- Preserve period diction, irony, tension, and humor without melodrama or character caricature.
+- Do not paraphrase names, quoted speech, spelling, or narrative transitions.
+- Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed transitions, and choppy joins.
 
-See `failed_tts_evidence_summary.md`, `delivery_checklist.md`, and `qa_release_checklist.md`.
+## Chapter Boundaries
 
-## Exact Validation Command After Delivery
-`PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav`
+- `chapter-001.json` / The Open Window: 6918 characters; `f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be`
+
+Pause naturally between chapters, but do not speak metadata-only chapter labels unless those words occur in the manuscript.
+
+## Exact Validation Command After Received Audio
+
+`PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-open-window --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav`

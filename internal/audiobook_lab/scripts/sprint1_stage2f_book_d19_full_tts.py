@@ -14,7 +14,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
+SCRIPT_DIR = ROOT / "internal" / "audiobook_lab" / "scripts"
 HOOK_DIR = ROOT / "internal" / "audiobook_lab" / "scripts" / "factory_hooks"
+sys.path.insert(0, str(SCRIPT_DIR))
 sys.path.insert(0, str(HOOK_DIR))
 
 import tts_hook  # noqa: E402
@@ -47,6 +49,45 @@ def write_json(path: Path, payload: dict) -> None:
 
 def sha256_text(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
+def prepare_content_integrity(run_dir: Path) -> dict:
+    """Build the same source-bound manuscript evidence used by the release factory."""
+    import release_catalog_factory as factory
+
+    chapters = factory.load_rendered_chapters(SLUG)
+    raw_text = "\n\n".join(chapter["text"].strip() for chapter in chapters if chapter["text"].strip()).strip()
+    clean_text = tts_hook.prepare_bengali_tts_text(raw_text).strip() + "\n"
+    state = factory.BookState(
+        slug=SLUG,
+        title=TITLE,
+        author=AUTHOR,
+        language="ben",
+        order=0,
+        catalog_dir=run_dir.parent,
+        run_dir=run_dir,
+    )
+    integrity = factory.content_integrity_report(state, chapters, clean_text)
+    run_dir.mkdir(parents=True, exist_ok=True)
+    (run_dir / "clean_manuscript.txt").write_text(clean_text, encoding="utf-8")
+    write_json(run_dir / "content_integrity_report.json", integrity)
+    return integrity
+
+
+def evaluate_tts_hook_result(returncode: int, run_dir: Path) -> dict:
+    hook = read_json(run_dir / "stage_result.json") if (run_dir / "stage_result.json").exists() else {}
+    status = str(hook.get("status") or "").upper()
+    metrics = hook.get("metrics") if isinstance(hook.get("metrics"), dict) else {}
+    passed = returncode == 0 and status == "PASS" and hook.get("ready_for_next_stage") is True
+    provider_calls_ran = bool(metrics.get("audio_regenerated") or metrics.get("cache_misses"))
+    return {
+        "passed": passed,
+        "provider_calls_ran": provider_calls_ran,
+        "hook_status": status or "MISSING",
+        "hook_ready_for_next_stage": hook.get("ready_for_next_stage") is True,
+        "hook_blockers": hook.get("blockers") or [],
+        "hook_result": hook,
+    }
 
 
 def required_runtime_gates() -> dict[str, str]:
@@ -279,11 +320,14 @@ def main() -> int:
     asset_root = args.asset_root.resolve()
     run_dir = args.run_dir if args.run_dir.is_absolute() else asset_root / args.run_dir
     source = source_preflight(asset_root)
+    integrity = prepare_content_integrity(run_dir)
     runtime = required_runtime_gates()
     missing = [key for key, value in runtime.items() if value != "SET"]
     lock_path = args.lock_path.resolve() if args.lock_path else asset_root / LOCK_REL
     lock = validate_lock(lock_path)
     blockers = list(source["blockers"])
+    if integrity.get("status") != "PASS":
+        blockers.extend(integrity.get("blocker_reasons") or ["CONTENT_INTEGRITY_REQUIRED"])
     if missing:
         blockers.append("PAID_RUNTIME_ENV_GATES_MISSING: " + ", ".join(missing))
     if lock.get("status") != "PASS":
@@ -297,6 +341,7 @@ def main() -> int:
         "status": status,
         "classification": status,
         "source_preflight": source,
+        "content_integrity": integrity,
         "runtime_gates": runtime,
         "runtime_gate_values_redacted": True,
         "lock_preflight": lock,
@@ -334,20 +379,24 @@ def main() -> int:
             "--fail-closed",
         ]
         completed = subprocess.run(command, cwd=asset_root, text=True, capture_output=True, check=False)
+        outcome = evaluate_tts_hook_result(completed.returncode, run_dir)
         report.update(
             {
-                "provider_calls_ran": True,
-                "paid_tts_ran": completed.returncode == 0,
+                "provider_calls_ran": outcome["provider_calls_ran"],
+                "paid_tts_ran": outcome["passed"],
                 "tts_returncode": completed.returncode,
+                "tts_hook_status": outcome["hook_status"],
+                "tts_hook_ready_for_next_stage": outcome["hook_ready_for_next_stage"],
+                "tts_hook_blockers": outcome["hook_blockers"],
                 "tts_stdout_tail": completed.stdout[-4000:],
                 "tts_stderr_tail": completed.stderr[-4000:],
                 "run_dir": str(run_dir.relative_to(asset_root)),
-                "status": "FULL_TTS_GENERATED_QA_REQUIRED" if completed.returncode == 0 else "PROVIDER_RETRY_REQUIRED",
-                "classification": "FULL_TTS_GENERATED_QA_REQUIRED" if completed.returncode == 0 else "PROVIDER_RETRY_REQUIRED",
+                "status": "FULL_TTS_GENERATED_QA_REQUIRED" if outcome["passed"] else "PROVIDER_RETRY_REQUIRED",
+                "classification": "FULL_TTS_GENERATED_QA_REQUIRED" if outcome["passed"] else "PROVIDER_RETRY_REQUIRED",
             }
         )
         write_json(report_path, report)
-        return completed.returncode
+        return 0 if outcome["passed"] else (completed.returncode or 3)
     finally:
         lock_path.write_bytes(original_lock)
 

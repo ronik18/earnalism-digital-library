@@ -1,174 +1,388 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-07-12T19:35:15Z",
+  "schema_version": 2,
+  "generated_at": "2026-07-12T22:08:44Z",
   "owner_decision": "AUTHORIZE_PARALLEL_SPRINT1_PUBLIC_READER_AND_AUDIOBOOK_LIVE_EXECUTION_WITH_175_USD_CAP",
-  "objective": "Move every active Sprint 1 title toward public reader plus release-gated public audiobook without weakening release truth.",
+  "objective": "Advance Sprint 1 titles without weakening release truth, repeating plateaued provider attempts, or running paid work in parallel.",
   "baseline": {
-    "commit": "ed42790",
-    "branch": "codex/sprint1-parallel-publication",
+    "commit": "b76f1e313299e4920eb8f732cbcb4dd8e8ee7fd5",
+    "branch": "codex/sprint1-paid-execution",
     "active_titles": 32,
     "public_readers": 32,
     "public_audiobooks": 2,
     "remaining_audio_targets": 30
   },
+  "evidence_cutoff": {
+    "timestamp": "2026-07-12T22:08:44Z",
+    "basis": "Latest completed serialized paid stage at the 9.75400 USD conservative checkpoint.",
+    "authoritative_checkpoint_source": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_openai_bn_asr_repair_calibration.json",
+    "prior_reconciliation_cutoff": "2026-07-12T21:25:46Z",
+    "prior_reconciled_estimated_spend_usd": 8.33828,
+    "post_cutoff_policy": "No completed paid stage through this cutoff remains unbooked. Later work requires a new coordinator assignment and reconciliation."
+  },
   "coordinator": {
     "lane": 0,
-    "role": "Coordinator / Budget / Lock / Merge Governor",
+    "role": "Coordinator / Budget / Serialization Governor",
+    "mode": "EVIDENCE_RECONCILIATION_ONLY",
     "paid_calls_serialized": true,
-    "provider_calls_ran_this_sprint": false,
-    "publication_mutations_this_sprint": 0,
-    "status": "SOURCE_RELEASE_TRUTH_REPAIRS_IMPLEMENTED_PENDING_PR; PAID_EXECUTION_BLOCKED_RUNTIME_GATES_MISSING"
+    "provider_calls_by_this_reconciliation": false,
+    "lock_inspected_or_touched_by_this_reconciliation": false,
+    "publication_mutations_by_this_reconciliation": 0,
+    "status": "COMPLETED_CHECKPOINT_RECONCILED_PLATEAUS_HELD_D19_ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED"
   },
-  "runtime_gate_status": {
-    "required_budget_and_approval_gates": "MISSING",
-    "SARVAM_API_KEY": "SET",
-    "OPENAI_API_KEY": "SET",
-    "GOOGLE_APPLICATION_CREDENTIALS": "SET",
-    "GOOGLE_CLOUD_PROJECT": "SET",
-    "GOOGLE_ADC": "READY",
-    "ELEVENLABS_API_KEY": "MISSING",
-    "AZURE_SPEECH_KEY": "MISSING"
+  "budget_checkpoint": {
+    "currency": "USD",
+    "sprint_cap_usd": 175.0,
+    "per_title_cap_usd": 30.0,
+    "conservative_estimated_spend_usd": 9.754,
+    "budget_remaining_usd": 165.246,
+    "actual_provider_billing_usd": null,
+    "actual_billing_status": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
+    "estimate_is_not_invoice_truth": true
   },
-  "lock": {
-    "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
-    "preflight_status": "PASS",
-    "status": "active",
-    "current_holder": "none",
-    "allowed_next_holders": [],
-    "acquired_this_sprint": false,
-    "sha256": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
+  "serialized_paid_call_rule": {
+    "status": "NO_PAID_CALL_AUTHORIZED_BY_THIS_RECONCILIATION",
+    "maximum_concurrent_paid_calls": 1,
+    "required_before_any_next_paid_call": [
+      "Coordinator assigns exactly one title and one bounded stage.",
+      "The prior conservative estimate is reconciled from the latest completed wrapper before adding the next stage estimate.",
+      "Sprint, per-title, provider, ASR, and listening-QA caps plus explicit approvals are present.",
+      "The existing paid-call runner acquires the existing lock and restores it byte-for-byte.",
+      "The provider/settings/text fingerprint is not a recorded failed or plateaued attempt.",
+      "The completed wrapper records provider-call status, estimate checkpoint, actual billing status, and release-mutation status before another paid stage starts."
+    ],
+    "current_paid_assignment": null
   },
   "lanes": [
     {
       "lane": 1,
-      "role": "Currently Approved Audio Guard",
-      "agent_id": "019f57d2-6c5c-7792-a11d-0c4468ac6226",
-      "agent_nickname": "Russell",
-      "mode": "NON_PAID_VALIDATION",
-      "status": "COMPLETED_P0_SOURCE_REPAIR_IMPLEMENTED",
-      "result_summary": "Both approved audio endpoints and hashes pass, but production timestamps use seconds while Reader consumed milliseconds. Reader normalization and a real-playback browser gate are implemented pending deployment.",
-      "titles": ["book-2b9853ec52", "a-ghost-story"]
+      "role": "Approved Public Audio Guard",
+      "mode": "MONITOR_ONLY",
+      "status": "TWO_APPROVED_AUDIOBOOKS_MONITOR_ONLY",
+      "titles": [
+        "book-2b9853ec52",
+        "a-ghost-story"
+      ],
+      "result_summary": "Both titles remain approved public audiobooks. This reconciliation performed no production request or mutation."
     },
     {
       "lane": 2,
-      "role": "Short Bengali High-ROI Lane",
-      "agent_id": "019f57d2-7210-7930-96bd-df620ee5d77d",
-      "agent_nickname": "Galileo",
-      "mode": "NON_PAID_PREFLIGHT",
-      "status": "COMPLETED_NON_PAID_PREFLIGHT",
-      "result_summary": "D19 is ready for one $0.1433 serialized pipeline after gates. F5 requires a fresh representative audition, Muchiram a split retry, Radharani a fresh source-bound path, and Nishkriti storage containment plus canonical source reconciliation.",
-      "titles": ["book-d19e96859f", "book-f5d593e1f4", "muchiram-gurer-jibanchorit", "radharani", "nishkriti"]
+      "role": "Short Bengali Completion / Escalation",
+      "mode": "NO_PROVIDER_CALLS_IN_THIS_RECONCILIATION",
+      "status": "D19_ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED_PRIVATE_TTS_PASS; MUCHIRAM_AND_F5_AUTOMATED_PLATEAU",
+      "titles": [
+        "book-d19e96859f",
+        "muchiram-gurer-jibanchorit",
+        "book-f5d593e1f4"
+      ],
+      "result_summary": "D19 private TTS, listening, and measured sync passed, but raw ASR/source 0.6838 fails the global 9.7 gate. It requires ASR language-configuration repair on the existing private audio and is not release-ready or published. Muchiram and F5 remain off automated paid retry."
     },
     {
       "lane": 3,
-      "role": "Short English Lane",
-      "agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
-      "agent_nickname": "Dalton",
-      "mode": "NON_PAID_PREFLIGHT",
-      "status": "COMPLETED_NON_PAID_PREFLIGHT",
-      "result_summary": "All twelve readers are live and audio-hidden. The Open Window is assigned to human narration; short-title legacy assets require recovery/hash checks or fresh source-bound auditions, with failed fingerprints preserved.",
-      "titles": ["the-open-window", "the-gift-of-the-magi", "the-tell-tale-heart", "sredni-vashtar", "dsires-baby", "the-cop-and-the-anthem", "the-last-leaf", "the-masque-of-the-red-death", "the-yellow-wallpaper", "the-monkeys-paw", "the-necklace", "jekyll-and-hyde"]
+      "role": "Short English Audition / Escalation",
+      "mode": "NO_PROVIDER_CALLS_IN_THIS_RECONCILIATION",
+      "status": "SREDNI_GIFT_TELL_BOUNDED_AUTOMATED_TTS_PLATEAUS",
+      "titles": [
+        "sredni-vashtar",
+        "the-gift-of-the-magi",
+        "the-tell-tale-heart"
+      ],
+      "result_summary": "Sredni failed Studio-C and Achird, Gift failed isolated Studio-C, isolated Aoede, and contextual Studio-C, and Tell failed contextual and slower contextual Studio-C. No full TTS or publication is authorized from these private auditions."
     },
     {
       "lane": 4,
-      "role": "Medium/Long English Lane",
-      "agent_id": "019f57d2-7aed-7840-95b5-642a9a5ed578",
-      "agent_nickname": "Goodall",
-      "mode": "NON_PAID_PREFLIGHT",
-      "status": "COMPLETED_NON_PAID_PREFLIGHT",
-      "result_summary": "Nine of nine readers are live; all audio remains hidden. Rights and sanitation pass, auditions are unrun, and conditional remaining cost is $85.7074. Alice, Call of the Wild, and Time Machine private-asset reuse requires hash and structure proof.",
-      "titles": ["dracula", "pride-and-prejudice", "the-secret-garden", "picture-of-dorian-gray", "frankenstein", "white-fang", "the-time-machine", "the-call-of-the-wild", "alices-adventures-in-wonderland"]
+      "role": "Medium / Long English",
+      "mode": "HOLD",
+      "status": "NO_NEW_PAID_ASSIGNMENT",
+      "titles": [
+        "dracula",
+        "pride-and-prejudice",
+        "the-secret-garden",
+        "picture-of-dorian-gray",
+        "frankenstein",
+        "white-fang",
+        "the-time-machine",
+        "the-call-of-the-wild",
+        "alices-adventures-in-wonderland"
+      ]
     },
     {
       "lane": 5,
-      "role": "Bengali Long / Repair Lane",
-      "agent_id": "019f57d2-7f7d-74e3-878b-e5d5b2bfc3e5",
-      "agent_nickname": "Newton",
-      "mode": "NON_PAID_DIAGNOSTIC",
-      "status": "COMPLETED_NON_PAID_DIAGNOSTIC",
-      "result_summary": "All four readers are live and audio-hidden. bn-066 dry-run calibration plans six calls at $0.1047 but the harness/private assets are not in main; Pather requires owner rights/source/cover documents; Devdas and book-edfcf810c5 require cover/private-asset preflight.",
-      "titles": ["bn-066", "devdas", "pather-panchali", "book-edfcf810c5"]
+      "role": "Bengali Long / Repair",
+      "mode": "HOLD",
+      "status": "NO_NEW_PAID_ASSIGNMENT",
+      "titles": [
+        "bn-066",
+        "devdas",
+        "pather-panchali",
+        "book-edfcf810c5"
+      ]
     },
     {
       "lane": 6,
-      "role": "Production Validation / Release Truth Lane",
-      "agent_id": "019f57d2-83b6-7e00-8394-58d196e93e8f",
-      "agent_nickname": "Wegener",
-      "mode": "NON_PAID_PRODUCTION_VALIDATION",
-      "status": "COMPLETED_P0_CONTAINMENT_IMPLEMENTED",
-      "result_summary": "All 32 readers return 200; only two API audiobooks are approved. Eight blocked publication packets exposed 88 direct URL occurrences; repo fields are scrubbed, while remote object revocation remains credential-blocked.",
+      "role": "Release Truth Validation",
+      "mode": "EVIDENCE_ONLY",
+      "status": "NO_RELEASE_GATE_OR_PUBLICATION_MUTATION",
       "titles": []
     }
   ],
-  "paid_execution_queue": [
+  "title_execution_states": [
     {
-      "priority": 1,
+      "slug": "book-2b9853ec52",
+      "lane": 1,
+      "state": "PUBLIC_AUDIO_APPROVED_MONITOR",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "PUBLIC_AUDIO_APPROVED",
+      "quality_evidence": "Listening 9.4, confidence 0.95, measured paragraph/stanza sync, endpoint and browser gates passed.",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-2b9853ec52_release_gate_evidence.json",
+      "exact_blockers": [],
+      "next_action": "Monitor the approved reader manifest without mutating release state.",
+      "next_command": "curl -sS https://api.theearnalism.com/api/reader/book/book-2b9853ec52/manifest | jq '{enabled:.audio.enabled,release_gate:.audio.release_gate,qa_status:.audio.qa_status}'",
+      "command_authorization": "MONITOR_ONLY"
+    },
+    {
+      "slug": "a-ghost-story",
+      "lane": 1,
+      "state": "YES_PLUS_YES_PRODUCTION_VALIDATED",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "PUBLIC_AUDIO_APPROVED",
+      "quality_evidence": "ASR/source 9.88; six listening samples 9.4-9.5 at confidence 0.95; production endpoint HTTP 206.",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_release_gate_evidence.json",
+      "exact_blockers": [],
+      "next_action": "Monitor the approved range endpoint without mutating release state.",
+      "next_command": "curl -sS -H 'Range: bytes=0-1023' -o /dev/null -w '%{http_code} %{size_download}\\n' https://api.theearnalism.com/api/reader/book/a-ghost-story/audiobook",
+      "command_authorization": "MONITOR_ONLY"
+    },
+    {
       "slug": "book-d19e96859f",
       "lane": 2,
-      "estimated_pipeline_usd": 0.1433,
-      "status": "PROVIDER_RETRY_REQUIRED_RUNTIME_GATES_MISSING",
-      "next_command_source": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_preflight.json"
+      "state": "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED_PRIVATE_TTS_PASS",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN",
+      "provider": "google",
+      "voice": "bn-IN-Chirp3-HD-Aoede",
+      "quality_evidence": "Private TTS passed; measured paragraph/stanza sync passed; six listening samples all scored 9.4 at confidence 0.95 with no fatal flags. Raw audio-derived ASR/source is 0.6838, below the global 9.7 gate. The 10.0 static TTS-source provenance audit does not satisfy the ASR gate.",
+      "estimated_title_total_usd": 0.4975,
+      "actual_provider_billing": "NOT_REPORTED",
+      "release_ready": false,
+      "evidence": [
+        "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_qa.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json"
+      ],
+      "qa_blockers": [
+        "RAW_ASR_SOURCE_SCORE_0_6838_BELOW_GLOBAL_9_7_GATE",
+        "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED"
+      ],
+      "exact_blockers": [
+        "RAW_ASR_SOURCE_SCORE_0_6838_BELOW_GLOBAL_9_7_GATE",
+        "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED",
+        "B2_OR_CLOUDINARY_CREDENTIALS_MISSING",
+        "UPLOAD_CHECKSUM_PROOF_NOT_RUN",
+        "ADMIN_CREDENTIALS_MISSING",
+        "METADATA_APPROVAL_NOT_RUN",
+        "PUBLIC_AUDIO_ENDPOINT_CURRENTLY_404",
+        "ENDPOINT_HASH_BINDING_NOT_PROVEN",
+        "BROWSER_GATE_NOT_RUN",
+        "RELEASE_PACKET_NOT_BUILT"
+      ],
+      "next_action": "Repair the conservative Bengali normalization/alignment layer and perform human alignment review from saved transcripts. Google latest_long/bn-IN is unsupported and OpenAI gpt-4o-transcribe/bn peaked at 6.7606; do not repeat either arm.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/bengali_asr_normalization.py --self-test",
+      "command_authorization": "NONPAID_NORMALIZATION_AND_HUMAN_ALIGNMENT_REVIEW_ONLY; NO TTS, ASR MODEL RETRY, LISTENING RETRY, UPLOAD, RELEASE MUTATION, OR PUBLICATION"
     },
     {
-      "priority": 2,
-      "slug": "book-f5d593e1f4",
-      "lane": 2,
-      "estimated_pipeline_usd": 0.1334,
-      "status": "FAILED_GROUP_REPAIR_PREFLIGHT_REQUIRED"
-    },
-    {
-      "priority": 3,
       "slug": "muchiram-gurer-jibanchorit",
       "lane": 2,
-      "estimated_pipeline_usd": 0.1447,
-      "status": "SPLIT_REPRESENTATIVE_AUDITION_REQUIRED"
+      "state": "AUTOMATED_TTS_PLATEAU_HUMAN_OR_LICENSED_PATH_REQUIRED",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN",
+      "quality_evidence": "Google full-book QA minimum 7.8 at confidence 0.85 with robotic, mechanical, and list-reading fatal flags; targeted Achird repair scored 7.4; final slower Aoede repair scored 7.8 at confidence 0.85 with the same fatal-flag family.",
+      "actual_provider_billing": "NOT_REPORTED",
+      "evidence": [
+        "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_full_qa.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_targeted_repair_audition/bengali_representative_audition_report.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_aoede_slow_repair_audition/bengali_representative_audition_report.json"
+      ],
+      "exact_blockers": [
+        "REPRESENTATIVE_SCORE_BELOW_9_2",
+        "CONFIDENCE_BELOW_0_90",
+        "ROBOTIC_TEXTURE_DETECTED",
+        "MECHANICAL_CADENCE_DETECTED",
+        "LIST_READING_RHYTHM_DETECTED",
+        "AUTOMATED_PROVIDER_SETTINGS_PLATEAU"
+      ],
+      "next_action": "Stop automated Google retries and create a source-bound Bengali human narration packet or licensed-audio import packet.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 -c \"from pathlib import Path; from internal.audiobook_lab.scripts.bengali_audiobook_campaign_controller import create_human_narration_packet; print(create_human_narration_packet('muchiram-gurer-jibanchorit', Path('internal/audiobook_lab/sprint1_publication/human_narration_packets/muchiram-gurer-jibanchorit')))\"",
+      "command_authorization": "NON_PROVIDER_HANDOFF_ONLY; DO_NOT_RUN_AUTOMATED_TTS_RETRY"
     },
     {
-      "priority": 4,
+      "slug": "book-f5d593e1f4",
+      "lane": 2,
+      "state": "CROSS_PROVIDER_TTS_PLATEAU_HUMAN_OR_LICENSED_PATH_REQUIRED",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN",
+      "quality_evidence": "Google Aoede and Sarvam Pooja representative auditions both bottomed at 7.8 with confidence 0.85 on the punctuation-heavy passage; Google also carried robotic and mechanical fatal flags.",
+      "actual_provider_billing": "NOT_REPORTED",
+      "evidence": [
+        "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_google_audition/bengali_representative_audition_report.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_sarvam_audition/bengali_representative_audition_report.json"
+      ],
+      "exact_blockers": [
+        "REPRESENTATIVE_SCORE_BELOW_9_2",
+        "CONFIDENCE_BELOW_0_90",
+        "PUNCTUATION_HEAVY_PASSAGE_FAILED_GOOGLE_AND_SARVAM",
+        "CROSS_PROVIDER_AUTOMATED_TTS_PLATEAU"
+      ],
+      "next_action": "Stop automated Google and Sarvam retries and create a source-bound Bengali human narration packet or licensed-audio import packet.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 -c \"from pathlib import Path; from internal.audiobook_lab.scripts.bengali_audiobook_campaign_controller import create_human_narration_packet; print(create_human_narration_packet('book-f5d593e1f4', Path('internal/audiobook_lab/sprint1_publication/human_narration_packets/book-f5d593e1f4')))\"",
+      "command_authorization": "NON_PROVIDER_HANDOFF_ONLY; DO_NOT_RUN_AUTOMATED_TTS_RETRY"
+    },
+    {
       "slug": "sredni-vashtar",
       "lane": 3,
-      "estimated_pipeline_usd": 0.1474,
-      "status": "PRIVATE_ASSET_PROVENANCE_AND_QA_PREFLIGHT_REQUIRED"
+      "state": "TWO_VOICE_AUTOMATED_TTS_PLATEAU_HUMAN_OR_LICENSED_PATH_REQUIRED",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN",
+      "provider": "google",
+      "failed_voices": [
+        "en-GB-Studio-C",
+        "en-GB-Chirp3-HD-Achird"
+      ],
+      "quality_evidence": "Studio-C scored 8.4, 9.4, 7.3, and 8.4 with mechanical and robotic fatal flags on dialogue/risk. Achird scored 9.4, 9.4, 8.5, and 9.4 with no fatal flags but still failed the 9.4 all-sample gate.",
+      "actual_provider_billing": "NOT_REPORTED",
+      "evidence": [
+        "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_audition_listening_lock_report.json",
+        "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/fd3f6a8020d44fb4/audition_listening_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_chirp_achird_listening_lock_report.json",
+        "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/3855fd15b4ecf50d/audition_listening_evidence.json"
+      ],
+      "exact_blockers": [
+        "EVERY_REPRESENTATIVE_SAMPLE_DID_NOT_PASS",
+        "STUDIO_C_DIALOGUE_OR_RISK_SCORE_7_3_WITH_FATAL_FLAGS",
+        "ACHIRD_DIALOGUE_OR_RISK_SCORE_8_5_BELOW_9_4_GATE",
+        "BOUNDED_TWO_VOICE_AUTOMATED_TTS_PLATEAU"
+      ],
+      "next_action": "Stop automated Google retries and move to a source-bound human narration or licensed-audio path.",
+      "command_authorization": "NON_PROVIDER_HANDOFF_ONLY; DO_NOT_RUN_AUTOMATED_TTS_RETRY"
     },
     {
-      "priority": 5,
-      "slug": "bn-066",
-      "lane": 5,
-      "estimated_pipeline_usd": 0.1547,
-      "status": "ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED"
+      "slug": "the-gift-of-the-magi",
+      "lane": 3,
+      "state": "THREE_ATTEMPT_AUTOMATED_TTS_PLATEAU_HUMAN_OR_LICENSED_PATH_REQUIRED",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN",
+      "provider": "google",
+      "attempts": [
+        "en-GB-Studio-C isolated at 0.90",
+        "en-GB-Chirp3-HD-Aoede isolated at 0.92",
+        "en-GB-Studio-C contextual at 0.90"
+      ],
+      "quality_evidence": "Isolated Studio-C scored 9.5, 9.4, 8.5, and 9.4. Isolated Aoede scored 9.4, 9.4, 7.2, and 9.5 with mechanical and robotic fatal flags. Contextual Studio-C scored 9.5, 9.4, 8.3, and 9.5. Every attempt failed the 9.4 all-sample gate.",
+      "actual_provider_billing": "NOT_REPORTED",
+      "evidence": [
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_studio_c_listening_lock_report.json",
+        "internal/audiobook_lab/private_runs/google_english/the-gift-of-the-magi/audition/75a6fbc43a06e181/audition_listening_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_chirp_aoede_listening_lock_report.json",
+        "internal/audiobook_lab/private_runs/google_english/the-gift-of-the-magi/audition/cda6b9c871c9751f/audition_listening_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_context_listening_lock_report.json",
+        "internal/audiobook_lab/private_runs/google_english/the-gift-of-the-magi/audition/716473a1705c4aa3/audition_listening_evidence.json"
+      ],
+      "exact_blockers": [
+        "EVERY_REPRESENTATIVE_SAMPLE_DID_NOT_PASS",
+        "DIALOGUE_OR_RISK_SCORE_REMAINED_BELOW_9_4_ACROSS_THREE_ATTEMPTS",
+        "AOEDE_MECHANICAL_CADENCE_DETECTED",
+        "AOEDE_ROBOTIC_TEXTURE_DETECTED",
+        "THREE_MATERIALLY_DIFFERENT_AUTOMATED_ATTEMPTS_PLATEAUED"
+      ],
+      "next_action": "Stop automated Google retries and move to a source-bound human narration or licensed-audio path.",
+      "command_authorization": "NON_PROVIDER_HANDOFF_ONLY; DO_NOT_RUN_AUTOMATED_TTS_RETRY"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "lane": 3,
+      "state": "TWO_RATE_CONTEXTUAL_TTS_PLATEAU_HUMAN_OR_LICENSED_PATH_REQUIRED",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN",
+      "provider": "google",
+      "attempts": [
+        "en-GB-Studio-C contextual at 0.88",
+        "en-GB-Studio-C slow contextual at 0.82"
+      ],
+      "quality_evidence": "Contextual Studio-C scored 9.4, 8.5, 9.4, and 8.8. The slower contextual attempt scored 9.5, 8.4, 9.4, and 9.6; slowing worsened the middle sample and did not clear the 9.4 all-sample gate.",
+      "actual_provider_billing": "NOT_REPORTED",
+      "evidence": [
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_context_listening_lock_report.json",
+        "internal/audiobook_lab/private_runs/google_english/the-tell-tale-heart/audition/fd54248900cc4c9c/audition_listening_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_slow_listening_lock_report.json",
+        "internal/audiobook_lab/private_runs/google_english/the-tell-tale-heart/audition/4f7b571d8625924e/audition_listening_evidence.json"
+      ],
+      "exact_blockers": [
+        "EVERY_REPRESENTATIVE_SAMPLE_DID_NOT_PASS",
+        "MIDDLE_SAMPLE_REMAINED_BELOW_9_4",
+        "SLOWER_RATE_DID_NOT_IMPROVE_THE_FAILED_MIDDLE_SAMPLE",
+        "BOUNDED_CONTEXT_AND_RATE_ATTEMPTS_PLATEAUED"
+      ],
+      "next_action": "Stop automated Google retries and move to a source-bound human narration or licensed-audio path.",
+      "command_authorization": "NON_PROVIDER_HANDOFF_ONLY; DO_NOT_RUN_AUTOMATED_TTS_RETRY"
     }
   ],
+  "paid_execution_queue": [],
+  "paid_execution_holds": [
+    {
+      "slug": "book-d19e96859f",
+      "reason": "Raw ASR/source is 0.6838 below the global 9.7 gate. Private TTS, listening, and measured sync passed, but static provenance 10.0 cannot substitute for audio-derived ASR; ASR language-configuration repair is required before any upload or release work."
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "reason": "Automated Google settings plateaued with repeated fatal quality flags."
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "reason": "Google and Sarvam both failed the punctuation-heavy representative passage."
+    },
+    {
+      "slug": "sredni-vashtar",
+      "reason": "Studio-C and Achird both failed the representative all-sample gate; automated Google retries are plateaued."
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "reason": "Isolated Studio-C, isolated Aoede, and contextual Studio-C all failed the representative all-sample gate; automated Google retries are plateaued."
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "reason": "Contextual and slower contextual Studio-C both failed the representative all-sample gate; the slower rate worsened the failed middle sample."
+    }
+  ],
+  "post_cutoff_unbooked_observations": [],
+  "completed_chain_lock_status": {
+    "all_six_tts_manifests_restored_lock_byte_for_byte": true,
+    "all_six_listening_wrappers_restored_lock_byte_for_byte": true,
+    "lock_sha256_before_and_after": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e",
+    "lock_touched_by_this_reconciliation": false
+  },
+  "release_outcome": {
+    "new_publications": 0,
+    "new_public_audio_approvals": 0,
+    "release_gate_mutations": 0,
+    "d19_status": "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED_PRIVATE_TTS_PASS_NOT_RELEASE_READY",
+    "short_english_status": "SREDNI_GIFT_TELL_AUTOMATED_TTS_PLATEAUS"
+  },
+  "next_serialized_action": {
+    "slug": "book-d19e96859f",
+    "stage": "NONPAID_ASR_NORMALIZATION_REPAIR_AND_HUMAN_ALIGNMENT_REVIEW",
+    "status": "AUTOMATED_ASR_ARMS_EXHAUSTED",
+    "authorization": "NONPAID REPAIR ONLY; NO TTS REGENERATION, ASR MODEL RETRY, LISTENING-QA RETRY, UPLOAD, METADATA MUTATION, PUBLIC AUDIO ENABLEMENT, DEPLOYMENT, OR PUBLICATION",
+    "exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/bengali_asr_normalization.py --self-test"
+  },
   "guardrails": {
     "no_publication_without_all_gates": true,
+    "no_publication_from_isolated_or_private_qa_alone": true,
     "no_static_audio_fallback": true,
     "no_browser_speech_fallback": true,
-    "no_word_level_sync_claim": true,
+    "no_estimated_sync": true,
     "no_nonapproved_audio_object": true,
     "no_duplicate_paid_work": true,
-    "no_long_full_tts_before_short_lane_stability": true
+    "no_paid_parallelism": true,
+    "no_retry_after_plateau": true
   },
-  "release_truth_incidents": [
-    {
-      "severity": "P0",
-      "classification": "FRONTEND_READER_TIMING_SCHEMA_MISMATCH",
-      "affected_slugs": ["book-2b9853ec52", "a-ghost-story"],
-      "repair": "Normalize start/end seconds to milliseconds and require actual playback advancement in browser QA.",
-      "status": "IMPLEMENTED_TESTED_PENDING_DEPLOY"
-    },
-    {
-      "severity": "P0",
-      "classification": "PUBLIC_UNAPPROVED_STORAGE_OBJECT_REACHABLE",
-      "affected_slugs": ["alices-adventures-in-wonderland", "nishkriti", "bn-027", "lokrahasya", "mrinalini", "the-wonderful-wizard-of-oz", "bn-059", "the-art-of-money-getting"],
-      "repair": "Scrub direct URLs from controlled publication packets; revoke or privatize remote objects when storage credentials are supplied.",
-      "status": "REPO_CONTAINED_REMOTE_REVOCATION_REQUIRED"
-    },
-    {
-      "severity": "P1",
-      "classification": "STATIC_AUDIO_SPA_FALLBACK",
-      "affected_slugs": [],
-      "repair": "Route /audio/:path* to removed-content and remove immutable cache headers.",
-      "status": "IMPLEMENTED_TESTED_PENDING_DEPLOY"
-    }
-  ],
-  "sprint_target_status": "INCOMPLETE_RUNTIME_AND_EXTERNAL_GATES"
+  "sprint_target_status": "INCOMPLETE_TWO_APPROVED_D19_ASR_REPAIR_REQUIRED_SHORT_ENGLISH_PLATEAUS_HELD",
+  "next_exact_command": "python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json >/dev/null && python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json >/dev/null && git diff --check -- internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_log.md internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json"
 }

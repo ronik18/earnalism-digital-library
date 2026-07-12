@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-07-12T20:42:18Z",
+  "slug": "book-d19e96859f",
+  "status": "CALIBRATION_REPAIR_REQUIRED",
+  "fingerprint": {
+    "slug": "book-d19e96859f",
+    "provider": "google",
+    "chunks": [
+      {
+        "chunk_id": "group_0000",
+        "audio_hash": "357ad518769d2c22be07cc97eb75141557945bde367c669092d4119661c928cf"
+      }
+    ],
+    "models": [
+      "latest_long"
+    ],
+    "languages": [
+      "bn-IN"
+    ]
+  },
+  "estimated_cost_usd": 0.0171,
+  "max_estimated_usd": 0.05,
+  "provider_calls_ran": true,
+  "results": [
+    {
+      "model": "latest_long",
+      "provider": "google",
+      "language": "bn-IN",
+      "chunk_id": "group_0000",
+      "audio_hash": "357ad518769d2c22be07cc97eb75141557945bde367c669092d4119661c928cf",
+      "duration_seconds": 128.340907,
+      "status": "ERROR",
+      "error": "RuntimeError: ERROR: (gcloud.ml.speech.recognize) PERMISSION_DENIED: Your application is authenticating by using local Application Default Credentials. The speech.googleapis.com API requires a quota project, which is not set by default. To learn how to set your quota project, see https://cloud.google.com/docs/authentication/adc-troubleshooting/user-creds . This command is authenticated with an access token from /var/folders/yd/zn1ydw_50ts7mj_ldjxbyd3m0000gn/T/earnalism-google-asr-4_keitg0/adc_access_token.txt specified by the [auth/access_token_file] property.\nYour application is authenticating by using local Application Default Credentials. The speech.googleapis.com API requires a quota project, which is not set by default. To learn how to set your quota project, see https://cloud.google.com/docs/authentication/adc-troubleshooting/user-creds .\n- '@type': type.googleapis.com/google.rpc.ErrorInfo\n  domain: googleapis.com\n  metadata:\n    consumer: projects/764086051850\n    service: speec"
+    }
+  ],
+  "best_arm": null,
+  "actual_provider_billing": "NOT_REPORTED",
+  "lock_restored": true
+}

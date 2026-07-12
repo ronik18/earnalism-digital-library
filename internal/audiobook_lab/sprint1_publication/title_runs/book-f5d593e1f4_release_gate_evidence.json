@@ -1,25 +1,61 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-07-12T19:35:15Z",
+  "schema_version": 2,
+  "generated_at": "2026-07-12T22:04:03Z",
   "slug": "book-f5d593e1f4",
   "title": "রামকানাইয়ের নির্বুদ্ধিতা",
   "language": "Bengali",
-  "assigned_lane": {
-    "lane": 2,
-    "role": "Short Bengali High-ROI Lane",
-    "agent_id": "019f57d2-7210-7930-96bd-df620ee5d77d",
-    "agent_nickname": "Galileo"
-  },
+  "classification": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+  "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
   "publicly_rendered_book": "Yes",
   "publicly_available_audiobook": "No",
-  "quality_score": "9.4/10 representative only; full-book source gate failed",
-  "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
-  "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
-  "estimated_remaining_cost_usd": 0.1334,
-  "evidence_path": "internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T150741Z/goliveevidence.json",
-  "next_action": "Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied",
-  "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs book-f5d593e1f4 --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
-  "provider_calls_ran_this_sprint": false,
-  "release_gate_mutated_this_sprint": false,
-  "public_audio_approved_this_sprint": false
+  "quality_score": "Google and Sarvam representative attempts both bottomed at 7.8/0.85",
+  "exact_blocker": "BOUNDED_GOOGLE_AND_SARVAM_AUDITIONS_FAILED; HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+  "blockers": [
+    "Google punctuation-heavy passage scored 7.8 with confidence 0.85 and fatal robotic/mechanical flags.",
+    "Sarvam punctuation-heavy passage scored 7.8 with confidence 0.85.",
+    "No full-book candidate has complete objective release-gate evidence."
+  ],
+  "source_binding": {
+    "controlled_source_hash": "f4bd2ecf4d9eb2dc5e3917bc45965c768463a34d9ced5f1dfe1e1f336b300827"
+  },
+  "provider_attempts": [
+    {
+      "scope": "representative_audition",
+      "provider": "google",
+      "model": "google-cloud-texttospeech",
+      "voice": "bn-IN-Chirp3-HD-Aoede",
+      "style_profile": "literary_warm_pacing",
+      "scores": [9.4, 9.5, 7.8, 9.4],
+      "representative_score": 7.8,
+      "minimum_confidence": 0.85,
+      "fatal_flags": [
+        "mechanical_cadence_detected",
+        "robotic_texture_detected"
+      ],
+      "status": "AUDIO_PROVIDER_QUALITY_LIMIT",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_google_audition/bengali_representative_audition_report.json",
+      "lock_report": "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_google_audition_lock_report.json"
+    },
+    {
+      "scope": "final_representative_audition",
+      "provider": "sarvam",
+      "model": "bulbul:v3",
+      "voice": "pooja",
+      "style_profile": "literary_warm_pacing",
+      "scores": [9.4, 9.4, 7.8, 9.4],
+      "representative_score": 7.8,
+      "minimum_confidence": 0.85,
+      "fatal_flags": [],
+      "status": "AUDIO_PROVIDER_QUALITY_LIMIT",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_sarvam_audition/bengali_representative_audition_report.json",
+      "lock_report": "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_sarvam_audition_lock_report.json"
+    }
+  ],
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-f5d593e1f4 --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "next_action": "Obtain source-bound human narration or separately approved licensed alternate-provider audio, then run the exact received-audio command and every downstream release gate.",
+  "historical_provider_calls_recorded": true,
+  "provider_calls_ran_this_task": false,
+  "release_gate_mutated_this_task": false,
+  "publication_performed_this_task": false,
+  "audio_copied_this_task": false
 }

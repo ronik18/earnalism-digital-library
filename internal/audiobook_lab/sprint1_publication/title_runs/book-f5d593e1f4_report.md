@@ -1,24 +1,24 @@
-# রামকানাইয়ের নির্বুদ্ধিতা Parallel Sprint Report
+# রামকানাইয়ের নির্বুদ্ধিতা Audio Handoff Report
 
-Generated: `2026-07-12T19:35:15Z`
+Generated: `2026-07-12T22:04:03Z`
 
 - Slug: `book-f5d593e1f4`
-- Language: `Bengali`
-- Assigned lane: `2 - Short Bengali High-ROI Lane`
-- Assigned agent: `Galileo (019f57d2-7210-7930-96bd-df620ee5d77d)`
+- Classification: `HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED`
 - Public reader: `Yes`
 - Public audiobook: `No`
-- Quality evidence: `9.4/10 representative only; full-book source gate failed`
-- Estimated remaining cost: `$0.1334`
-- Final state: `SPRINT_TARGET_INCOMPLETE`
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
-- Evidence: `internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T150741Z/goliveevidence.json`
-- Next action: Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied
+- Controlled source hash: `f4bd2ecf4d9eb2dc5e3917bc45965c768463a34d9ced5f1dfe1e1f336b300827`
 
-## Next Command
+## Existing Evidence
+
+- Google `bn-IN-Chirp3-HD-Aoede` scored `9.4, 9.5, 7.8, 9.4`; the `7.8` passage had confidence `0.85` plus `robotic_texture_detected` and `mechanical_cadence_detected`: `internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_google_audition/bengali_representative_audition_report.json`.
+- Final bounded Sarvam `bulbul:v3` / `pooja` scored `9.4, 9.4, 7.8, 9.4`, with minimum confidence `0.85`: `internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_sarvam_audition/bengali_representative_audition_report.json`.
+
+Both bounded provider paths missed the Bengali `9.2` / `0.90` gate, and no complete full-book release evidence exists. Public audio remains hidden.
+
+## Exact Received-Audio Validation Command
 
 ```bash
-python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs book-f5d593e1f4 --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-f5d593e1f4 --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav
 ```
 
-No provider call, release-gate mutation, or public audio exposure was performed by this materializer.
+No provider call, lock change, release mutation, publication, or audio copy was performed by this report task.

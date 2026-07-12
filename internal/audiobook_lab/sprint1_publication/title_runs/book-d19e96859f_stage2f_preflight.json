@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T19:34:41Z",
+  "generated_at": "2026-07-12T20:33:25Z",
   "slug": "book-d19e96859f",
   "title": "গিন্নি",
   "status": "PROVIDER_RETRY_REQUIRED",
@@ -40,6 +40,40 @@
     "prior_sprint_estimated_spend_usd": 4.2862,
     "blockers": []
   },
+  "content_integrity": {
+    "slug": "book-d19e96859f",
+    "title": "গিন্নি",
+    "author": "রবীন্দ্রনাথ ঠাকুর",
+    "language": "ben",
+    "source_of_truth_type": "controlled_publication_with_evidence",
+    "source_of_truth_path_or_reference": "data/controlled_publications/book-d19e96859f/source_evidence.json",
+    "source_chapter_count": 1,
+    "rendered_chapter_count": 1,
+    "source_word_count": 1020,
+    "rendered_word_count": 1010,
+    "word_count_delta_percent": -0.9804,
+    "missing_chapters": [],
+    "extra_chapters": [],
+    "duplicate_chapters": [],
+    "chapter_order_match": true,
+    "chapter_title_match": true,
+    "toc_exists": true,
+    "toc_entry_count": 1,
+    "toc_links_valid": true,
+    "broken_toc_links": [],
+    "orphan_chapters": [],
+    "duplicate_anchor_ids": [],
+    "body_junk_detected": [],
+    "frontmatter_in_body_detected": false,
+    "page_number_artifacts_detected": false,
+    "source_vs_rendered_similarity_score": 9.9628,
+    "completeness_score": 10.0,
+    "index_integrity_score": 10.0,
+    "chapter_consistency_score": 10.0,
+    "content_integrity_score": 9.9628,
+    "status": "PASS",
+    "blocker_reasons": []
+  },
   "runtime_gates": {
     "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "MISSING_OR_INVALID",
     "SPRINT1_MAX_USD_PER_TITLE": "MISSING_OR_INVALID",
@@ -66,15 +100,16 @@
   },
   "runtime_gate_values_redacted": true,
   "lock_preflight": {
-    "status": "PASS",
-    "blockers": []
+    "status": "BLOCKED",
+    "blocker": "paid_tts.lock is missing"
   },
   "provider_calls_ran": false,
   "paid_tts_ran": false,
   "public_audio_approved": false,
   "release_gate_mutated": false,
   "blockers": [
-    "PAID_RUNTIME_ENV_GATES_MISSING: SPRINT1_TOTAL_AUDIO_BUDGET_USD, SPRINT1_MAX_USD_PER_TITLE, MAX_TTS_BUDGET_USD, EARNALISM_STOP_ON_BUDGET_EXCEEDED, EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS, EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM, EARNALISM_BENGALI_FULL_PILOT_SLUG, EARNALISM_BENGALI_TTS_PROVIDER, EARNALISM_BENGALI_TTS_MODEL, EARNALISM_BENGALI_TTS_VOICE, EARNALISM_BENGALI_TTS_STYLE, EARNALISM_BENGALI_REPRESENTATIVE_EVIDENCE_PATH, EARNALISM_ENABLE_OPENAI_LISTENING_QA, EARNALISM_OPENAI_LISTENING_QA_MODEL, EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD, EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD, EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD, EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE, EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD, EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD"
+    "PAID_RUNTIME_ENV_GATES_MISSING: SPRINT1_TOTAL_AUDIO_BUDGET_USD, SPRINT1_MAX_USD_PER_TITLE, MAX_TTS_BUDGET_USD, EARNALISM_STOP_ON_BUDGET_EXCEEDED, EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS, EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM, EARNALISM_BENGALI_FULL_PILOT_SLUG, EARNALISM_BENGALI_TTS_PROVIDER, EARNALISM_BENGALI_TTS_MODEL, EARNALISM_BENGALI_TTS_VOICE, EARNALISM_BENGALI_TTS_STYLE, EARNALISM_BENGALI_REPRESENTATIVE_EVIDENCE_PATH, EARNALISM_ENABLE_OPENAI_LISTENING_QA, EARNALISM_OPENAI_LISTENING_QA_MODEL, EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD, EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD, EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD, EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE, EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD, EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD",
+    "paid_tts.lock is missing"
   ],
   "next_command": "SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 \\\n  SPRINT1_MAX_USD_PER_TITLE=30 \\\n  MAX_TTS_BUDGET_USD=175 \\\n  EARNALISM_STOP_ON_BUDGET_EXCEEDED=true \\\n  EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS=true \\\n  EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM=true \\\n  EARNALISM_BENGALI_FULL_PILOT_SLUG=book-d19e96859f \\\n  EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD=1 \\\n  EARNALISM_BENGALI_TTS_PROVIDER=sarvam \\\n  EARNALISM_BENGALI_TTS_MODEL=bulbul:v3 \\\n  EARNALISM_BENGALI_TTS_VOICE=pooja \\\n  EARNALISM_BENGALI_TTS_STYLE=dialogue_human_touch \\\n  EARNALISM_BENGALI_REPRESENTATIVE_EVIDENCE_PATH=internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_representative_audition_evidence.json \\\n  EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD=1 \\\n  EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD=1 \\\n  EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE=0.008 \\\n  EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=1 \\\n  EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD=0.05 \\\n  EARNALISM_ENABLE_OPENAI_LISTENING_QA=true \\\n  EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio \\\n  PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_stage2f_book_d19_full_tts.py --execute"
 }

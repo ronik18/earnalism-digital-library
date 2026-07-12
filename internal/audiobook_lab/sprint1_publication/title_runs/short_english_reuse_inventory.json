@@ -1,0 +1,774 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-12T21:00:48Z",
+  "scope": {
+    "inspection_type": "local_read_only_private_audio_reuse_inventory",
+    "original_repo": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library",
+    "original_repo_head": "b3abe331359245163ddb7863c15416e04cbca05e",
+    "original_repo_branch": "sprint/luxury-ux-rebirth",
+    "output_repo": "/private/tmp/earnalism-sprint1-paid-20260713-1",
+    "output_repo_head": "b76f1e313299e4920eb8f732cbcb4dd8e8ee7fd5",
+    "output_repo_branch": "codex/sprint1-paid-execution",
+    "slugs": [
+      "sredni-vashtar",
+      "the-gift-of-the-magi",
+      "dsires-baby",
+      "the-tell-tale-heart"
+    ],
+    "provider_calls_ran": false,
+    "audio_copied": false,
+    "release_state_mutated": false,
+    "assets_are_untracked_original_worktree_files": true,
+    "owned_output_files": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/short_english_reuse_inventory.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/short_english_reuse_inventory.md"
+    ]
+  },
+  "decision_basis": {
+    "fail_closed": true,
+    "private_reuse_qa_definition": "Offline or internal QA only; no provider call, upload, public mapping, release mutation, or release-readiness claim.",
+    "policy_evidence": [
+      "internal/earnalism_intelligence/EARNALISM_OPERATING_DOCTRINE.md",
+      "internal/earnalism_intelligence/audiobook_acceptance_policy.json",
+      "internal/earnalism_intelligence/sync_acceptance_policy.json",
+      "internal/earnalism_intelligence/release_decision_policy.md",
+      "internal/earnalism_intelligence/go_live_milestone_1_book_set.md"
+    ],
+    "active_title_state": "FAIL_CLOSED_AUDIO_HIDDEN",
+    "source_hash_rules": {
+      "exact_match": "A generation-time source SHA256 equals the current sanitized narration SHA256.",
+      "derived_normalized_match": "A local normalized body hash reconstructed from preserved source-derived sidecars matches the current sanitized body after removing only the spoken title prefix. This is supporting evidence, not a replacement for a generation-time source hash.",
+      "unbound": "No generation-time source hash or defensible source-derived binding is present."
+    },
+    "commercial_use_rule": "Public-domain text rights do not clear TTS provider, model, selected-voice, or standalone-output rights. Provider and voice evidence must independently permit internal evaluation."
+  },
+  "provider_rights_evidence": {
+    "piper": {
+      "reported_runtime": "piper",
+      "actual_voice_in_assets": "en_US-lessac-medium.onnx",
+      "evidence_paths": [
+        "TTS_MODEL_LICENSE_EVIDENCE_MATRIX.md",
+        "TTS_VOICE_RIGHTS_INTERNAL_EVAL_APPROVAL_PACKET.md",
+        "TTS_INTERNAL_EVAL_CANDIDATE_SCORECARD.md"
+      ],
+      "commercial_use_status": "HOLD_REVIEW",
+      "selected_voice_rights_status": "HOLD_VOICE_RIGHTS",
+      "internal_eval_allowed": false,
+      "reason": "The Piper code/metadata evidence is permissive, but the repository has no approved per-voice provenance, commercial-use, speaker-rights, owner, or legal review for en_US-lessac-medium.onnx."
+    },
+    "openai": {
+      "reported_runtime": "gpt-4o-mini-tts",
+      "actual_voices_in_assets": [
+        "verse",
+        "marin"
+      ],
+      "evidence_paths": [
+        "TTS_PROVIDER_INTERNAL_EVAL_REVIEW.md",
+        "TTS_PROVIDER_COMMERCIAL_RIGHTS_SCORECARD.md"
+      ],
+      "commercial_use_status": "HOLD_REVIEW",
+      "selected_voice_rights_status": "HOLD_REVIEW",
+      "internal_eval_status": "HOLD_PROVIDER_REVIEW",
+      "internal_eval_allowed": false,
+      "reason": "Repository review leaves standalone output, selected-voice evidence, attribution, plan evidence, owner approval, and legal review unresolved."
+    },
+    "command_azure_like": {
+      "reported_runtime": "command",
+      "actual_voice_in_assets": "en-IN-NeerjaNeural",
+      "reported_region": "centralindia",
+      "provider_attribution": "UNCONFIRMED_AZURE_LIKE",
+      "evidence_paths": [
+        "output/english_audiobook_polish/english-polish-queue-v1/english_audiobook_polish_report.json",
+        "TTS_PROVIDER_INTERNAL_EVAL_REVIEW.md",
+        "TTS_PROVIDER_COMMERCIAL_RIGHTS_SCORECARD.md"
+      ],
+      "commercial_use_status": "HOLD_REVIEW",
+      "internal_eval_status": "HOLD_PROVIDER_REVIEW",
+      "internal_eval_allowed": false,
+      "reason": "The job records only provider=command. Voice and region look Azure-like, but no exact invocation, account entitlement, selected-voice approval, or standalone-output evidence binds these files. Azure is also HOLD_REVIEW in the repository scorecard."
+    },
+    "edge": {
+      "reported_runtime": "edge",
+      "actual_voice_in_assets": "en-IN-NeerjaNeural",
+      "evidence_paths": [
+        "output/english_audiobook_polish/english-polish-edge-below9-v1/english_audiobook_polish_report.json"
+      ],
+      "commercial_use_status": "MISSING",
+      "internal_eval_status": "NOT_APPROVED",
+      "internal_eval_allowed": false,
+      "reason": "No repository commercial-use, selected-voice, account-entitlement, or standalone-output approval was found for the Edge-generated asset."
+    }
+  },
+  "evidence_conflicts": [
+    {
+      "conflict": "Historical reconstructed approval packets say PUBLIC_AUDIO_RELEASE_APPROVED, while current sprint and intelligence state say FAIL_CLOSED and AUDIO_HIDDEN.",
+      "resolution": "Use the newer active fail-closed state. Historical reconstruction is not authorization for reuse or release.",
+      "historical_paths": [
+        "data/controlled_publications/sredni-vashtar/approval_evidence.json",
+        "data/controlled_publications/the-gift-of-the-magi/approval_evidence.json",
+        "data/controlled_publications/dsires-baby/approval_evidence.json",
+        "data/controlled_publications/the-tell-tale-heart/approval_evidence.json"
+      ]
+    },
+    {
+      "conflict": "Each rights report records a source hash that differs from the current raw/source.txt byte hash.",
+      "resolution": "Treat text rights as documented but the current raw source file as not byte-bound to that historical rights hash. Use the separately verified sanitized narration hash for audio-source compatibility and keep provenance fail-closed."
+    }
+  ],
+  "titles": [
+    {
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "active_release_state": "INCOMPLETE_FAIL_CLOSED_AUDIO_HIDDEN",
+      "current_sanitized_source": {
+        "path": "internal/audiobook_lab/sprint1_publication/sanitized_text/sredni-vashtar.txt",
+        "report_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/sredni-vashtar.json",
+        "exists_in_original_repo": true,
+        "exists_in_output_clone": false,
+        "report_status": "PASS",
+        "sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+        "reported_word_count": 1825,
+        "normalized_token_count": 1825,
+        "normalized_body_sha256": "52ee5d4d109ab513fd5222a7232ab550255eb72cbe4f43842ddeffdffa9cf239"
+      },
+      "source_rights": {
+        "rights_report_path": "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/rights_metadata_report.json",
+        "source_evidence_path": "data/controlled_publications/sredni-vashtar/source_evidence.json",
+        "approval_evidence_path": "data/controlled_publications/sredni-vashtar/approval_evidence.json",
+        "rights_status": "PASS",
+        "public_domain": true,
+        "content_use_approved": true,
+        "audiobook_use_approved": true,
+        "commercial_text_use_evidence": "PASS",
+        "recorded_source_sha256": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
+        "current_raw_source_path": "content/books/sredni-vashtar/raw/source.txt",
+        "current_raw_source_sha256": "c67e54c5c139c8a4cd5ba59921df63cd30dea00c189d169f1900368a3116165f",
+        "recorded_source_matches_current_raw_source": false,
+        "binding_status": "HISTORICAL_RIGHTS_HASH_NOT_BOUND_TO_CURRENT_RAW_FILE"
+      },
+      "assets": [
+        {
+          "asset_id": "sredni-piper-historical",
+          "audio_paths": [
+            "output/open_source_audiobooks/en/sredni-vashtar.mp3",
+            "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/sredni-vashtar_existing_audio_candidate.mp3",
+            "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T195720Z/sredni-vashtar_existing_audio_candidate.mp3"
+          ],
+          "all_paths_exist": true,
+          "all_paths_byte_identical": true,
+          "sha256": "4c8e710e37b19b9a1855f59d2e0f05428a3c5af13a090bfeb11e8d491a8487ca",
+          "duration_seconds": 589.972608,
+          "size_bytes": 3540393,
+          "provider_key": "piper",
+          "provider": "piper",
+          "voice": "en_US-lessac-medium.onnx",
+          "provenance_status": "PROVIDER_AND_VOICE_RECORDED; GENERATION_SOURCE_SHA256_MISSING",
+          "provenance_paths": [
+            "output/open_source_audiobooks/en/sredni-vashtar_meta.json",
+            "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/tts_hook_result.json",
+            "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T181723Z/sredni_vashtar_audio_provenance_report.json"
+          ],
+          "source_compatibility": {
+            "status": "DERIVED_NORMALIZED_BODY_MATCH_NO_GENERATION_HASH",
+            "recorded_generation_source_sha256": null,
+            "exact_generation_source_sha256_match": null,
+            "derived_from": "source-derived timestamp words with spoken title prefix removed",
+            "derived_normalized_body_sha256": "52ee5d4d109ab513fd5222a7232ab550255eb72cbe4f43842ddeffdffa9cf239",
+            "derived_normalized_body_match": true,
+            "normalized_token_order_similarity": 1.0
+          },
+          "qa_history": {
+            "historical_asr_score": 1.4099,
+            "historical_first_words_match": false,
+            "historical_last_words_match": false,
+            "historical_decision": "EXISTING_AUDIO_REJECTED_FOR_RELEASE"
+          },
+          "technical_reuse_readiness": "CONDITIONAL_SOURCE_CONTENT_MATCH",
+          "safe_for_private_reuse_qa": false,
+          "blockers": [
+            "PIPER_SELECTED_VOICE_COMMERCIAL_AND_SPEAKER_RIGHTS_HOLD",
+            "GENERATION_SOURCE_SHA256_MISSING",
+            "HISTORICAL_AUDIO_ASR_RELEASE_GATE_FAILED"
+          ]
+        },
+        {
+          "asset_id": "sredni-command-polish",
+          "audio_paths": [
+            "output/english_audiobook_polish/english-polish-queue-v1/bundles/en/sredni-vashtar/sredni-vashtar.mp3"
+          ],
+          "all_paths_exist": true,
+          "sha256": "c93f03a7ed4a7406fcbd93aaa7cfcce9b15b30bc5bf26224def26dd7520720ea",
+          "duration_seconds": 811.583991,
+          "size_bytes": 6493457,
+          "provider_key": "command_azure_like",
+          "provider": "command",
+          "voice": "en-IN-NeerjaNeural",
+          "provenance_status": "OPAQUE_COMMAND_PROVIDER",
+          "provenance_paths": [
+            "output/english_audiobook_polish/english-polish-queue-v1/english_audiobook_polish_report.json",
+            "output/english_audiobook_polish/english-polish-queue-v1/bundles/en/sredni-vashtar/sredni-vashtar_meta.json"
+          ],
+          "source_compatibility": {
+            "status": "PREPARED_SOURCE_HASH_MISMATCH_WITH_PRONUNCIATION_TRANSFORMS",
+            "prepared_source_path": "output/english_audiobook_polish/english-polish-queue-v1/prepared/sredni-vashtar/sredni-vashtar.txt",
+            "prepared_source_sha256": "b6e182b4a3b6007b0f9319b59118bad07cb6546c932147b04fef219cf4dbe85f",
+            "exact_prepared_source_sha256_match": false,
+            "normalized_body_match_after_control_marker_removal": false,
+            "normalized_token_order_similarity": 0.9948
+          },
+          "qa_history": {
+            "heuristic_pipeline_score": 9.6,
+            "qa_type": "NON_RELEASE_HEURISTIC"
+          },
+          "technical_reuse_readiness": "BLOCKED_UNBOUND_TRANSFORMED_SOURCE",
+          "safe_for_private_reuse_qa": false,
+          "blockers": [
+            "PROVIDER_IMPLEMENTATION_OPAQUE",
+            "PROVIDER_COMMERCIAL_AND_SELECTED_VOICE_RIGHTS_HOLD",
+            "PREPARED_SOURCE_SHA256_MISMATCH"
+          ]
+        },
+        {
+          "asset_id": "sredni-openai-20260705",
+          "audio_paths": [
+            "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T195720Z/sredni-vashtar_openai_tts_final.mp3"
+          ],
+          "all_paths_exist": true,
+          "sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+          "duration_seconds": 636.84,
+          "size_bytes": 10190637,
+          "provider_key": "openai",
+          "provider": "openai",
+          "model": "gpt-4o-mini-tts",
+          "voice": "verse",
+          "provenance_status": "HASH_BOUND_TTS_MANIFEST_PRESENT",
+          "provenance_paths": [
+            "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T195720Z/tts_chunk_manifest.json",
+            "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T195720Z/tts_hook_result.json",
+            "internal/audiobook_lab/release_gate/sredni-vashtar_20260705T195720Z/sredni_vashtar_terminal_or_retry_report.json"
+          ],
+          "source_compatibility": {
+            "status": "EXACT_GENERATION_SOURCE_SHA256_MATCH",
+            "recorded_generation_source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+            "exact_generation_source_sha256_match": true
+          },
+          "qa_history": {
+            "historical_asr_score": 9.7997,
+            "historical_sync_score": 9.7997,
+            "estimated_sync": false,
+            "historical_listening_score": 9.4,
+            "historical_listening_confidence": 0.95,
+            "historical_decision": "TERMINAL_FOR_CURRENT_AUDIO_ATTEMPT_UNDER_SCHEMA3_9_7"
+          },
+          "technical_reuse_readiness": "SOURCE_BOUND_EXISTING_CANDIDATE",
+          "safe_for_private_reuse_qa": false,
+          "blockers": [
+            "OPENAI_PROVIDER_AND_SELECTED_VOICE_INTERNAL_EVAL_HOLD",
+            "HISTORICAL_LISTENING_QA_DID_NOT_CLEAR_ITS_APPLIED_GATE",
+            "DO_NOT_REPEAT_SAME_PROVIDER_SETTINGS_TEXT_HASH_ATTEMPT"
+          ]
+        }
+      ],
+      "technically_preferred_asset_id": "sredni-openai-20260705",
+      "private_reuse_qa_verdict": "BLOCKED",
+      "safe_for_private_reuse_qa": false,
+      "blockers": [
+        "NO_CANDIDATE_HAS_APPROVED_PROVIDER_AND_SELECTED_VOICE_INTERNAL_EVAL_RIGHTS",
+        "RIGHTS_PACKET_SOURCE_HASH_DOES_NOT_MATCH_CURRENT_RAW_SOURCE_FILE",
+        "ACTIVE_STATE_REMAINS_FAIL_CLOSED_AUDIO_HIDDEN"
+      ]
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "active_release_state": "INCOMPLETE_FAIL_CLOSED_AUDIO_HIDDEN",
+      "current_sanitized_source": {
+        "path": "internal/audiobook_lab/sprint1_publication/sanitized_text/the-gift-of-the-magi.txt",
+        "report_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-gift-of-the-magi.json",
+        "exists_in_original_repo": true,
+        "exists_in_output_clone": false,
+        "report_status": "PASS",
+        "sha256": "67c1074aea0203a04f3116f42fa85c01cdec12d9646a25f0b119c3834d921ea7",
+        "reported_word_count": 2117,
+        "normalized_token_count": 2117,
+        "normalized_body_sha256": "1de8ee3aaf41845d23459561c2bbd3951469c467e3c3df37ca012efe53d9910a"
+      },
+      "source_rights": {
+        "rights_report_path": "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z/rights_metadata_report.json",
+        "source_evidence_path": "data/controlled_publications/the-gift-of-the-magi/source_evidence.json",
+        "approval_evidence_path": "data/controlled_publications/the-gift-of-the-magi/approval_evidence.json",
+        "rights_status": "PASS",
+        "public_domain": true,
+        "content_use_approved": true,
+        "audiobook_use_approved": true,
+        "commercial_text_use_evidence": "PASS",
+        "recorded_source_sha256": "490b76d444db0d952f5286f60c4ec2834ab91731d47e42dc94a3639d9183d295",
+        "current_raw_source_path": "content/books/the-gift-of-the-magi/raw/source.txt",
+        "current_raw_source_sha256": "c85f9eb55e492e899f6525ce2070e1ff5ee607c7a68c6f52c248bf7f30839f95",
+        "recorded_source_matches_current_raw_source": false,
+        "binding_status": "HISTORICAL_RIGHTS_HASH_NOT_BOUND_TO_CURRENT_RAW_FILE"
+      },
+      "assets": [
+        {
+          "asset_id": "gift-piper-historical",
+          "audio_paths": [
+            "output/open_source_audiobooks/en/the-gift-of-the-magi.mp3",
+            "output/open_source_audiobooks_smoke/en/the-gift-of-the-magi.mp3",
+            "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z/the-gift-of-the-magi_existing_audio_candidate.mp3"
+          ],
+          "all_paths_exist": true,
+          "all_paths_byte_identical": true,
+          "sha256": "0062fd225d5fb5ed12e4f6223a9d37897bdf19484ffd08a0c067146aeb042594",
+          "duration_seconds": 652.109206,
+          "size_bytes": 3913265,
+          "provider_key": "piper",
+          "provider": "piper",
+          "voice": "en_US-lessac-medium.onnx",
+          "provenance_status": "PROVIDER_AND_VOICE_RECORDED; GENERATION_SOURCE_SHA256_MISSING",
+          "provenance_paths": [
+            "output/open_source_audiobooks/en/the-gift-of-the-magi_meta.json",
+            "internal/audiobook_lab/release_gate/the-gift-of-the-magi_20260705T181723Z/tts_hook_result.json"
+          ],
+          "source_compatibility": {
+            "status": "DERIVED_NORMALIZED_BODY_MATCH_NO_GENERATION_HASH",
+            "recorded_generation_source_sha256": null,
+            "exact_generation_source_sha256_match": null,
+            "derived_from": "source-derived timestamp words with spoken title prefix removed",
+            "derived_normalized_body_sha256": "1de8ee3aaf41845d23459561c2bbd3951469c467e3c3df37ca012efe53d9910a",
+            "derived_normalized_body_match": true,
+            "normalized_token_order_similarity": 1.0
+          },
+          "qa_history": {
+            "historical_asr_score": 6.7837,
+            "historical_first_words_match": false,
+            "historical_last_words_match": true,
+            "historical_decision": "BLOCKED"
+          },
+          "technical_reuse_readiness": "CONDITIONAL_SOURCE_CONTENT_MATCH",
+          "safe_for_private_reuse_qa": false,
+          "blockers": [
+            "PIPER_SELECTED_VOICE_COMMERCIAL_AND_SPEAKER_RIGHTS_HOLD",
+            "GENERATION_SOURCE_SHA256_MISSING",
+            "HISTORICAL_AUDIO_ASR_RELEASE_GATE_FAILED"
+          ]
+        },
+        {
+          "asset_id": "gift-command-polish",
+          "audio_paths": [
+            "output/english_audiobook_polish/english-polish-queue-v1/bundles/en/the-gift-of-the-magi/the-gift-of-the-magi.mp3"
+          ],
+          "all_paths_exist": true,
+          "sha256": "98171eee95140626309516a4d6fccf4eda4753417fd26da15e48d7c1759d2298",
+          "duration_seconds": 978.384036,
+          "size_bytes": 7827792,
+          "provider_key": "command_azure_like",
+          "provider": "command",
+          "voice": "en-IN-NeerjaNeural",
+          "provenance_status": "OPAQUE_COMMAND_PROVIDER",
+          "provenance_paths": [
+            "output/english_audiobook_polish/english-polish-queue-v1/english_audiobook_polish_report.json",
+            "output/english_audiobook_polish/english-polish-queue-v1/bundles/en/the-gift-of-the-magi/the-gift-of-the-magi_meta.json"
+          ],
+          "source_compatibility": {
+            "status": "PREPARED_SOURCE_HASH_MISMATCH_WITH_PRONUNCIATION_TRANSFORMS",
+            "prepared_source_path": "output/english_audiobook_polish/english-polish-queue-v1/prepared/the-gift-of-the-magi/the-gift-of-the-magi.txt",
+            "prepared_source_sha256": "78851f060e7f88da804bb20d75666181abb4729539240548b67e9c2e5c6d823a",
+            "exact_prepared_source_sha256_match": false,
+            "normalized_body_match_after_control_marker_removal": false,
+            "normalized_token_order_similarity": 0.9986
+          },
+          "qa_history": {
+            "heuristic_pipeline_score": 9.57,
+            "qa_type": "NON_RELEASE_HEURISTIC"
+          },
+          "technical_reuse_readiness": "BLOCKED_UNBOUND_TRANSFORMED_SOURCE",
+          "safe_for_private_reuse_qa": false,
+          "blockers": [
+            "PROVIDER_IMPLEMENTATION_OPAQUE",
+            "PROVIDER_COMMERCIAL_AND_SELECTED_VOICE_RIGHTS_HOLD",
+            "PREPARED_SOURCE_SHA256_MISMATCH"
+          ]
+        }
+      ],
+      "technically_preferred_asset_id": "gift-piper-historical",
+      "private_reuse_qa_verdict": "BLOCKED",
+      "safe_for_private_reuse_qa": false,
+      "blockers": [
+        "NO_CANDIDATE_HAS_APPROVED_PROVIDER_AND_SELECTED_VOICE_INTERNAL_EVAL_RIGHTS",
+        "NO_CANDIDATE_HAS_AN_EXACT_GENERATION_SOURCE_SHA256_MATCH",
+        "RIGHTS_PACKET_SOURCE_HASH_DOES_NOT_MATCH_CURRENT_RAW_SOURCE_FILE",
+        "ACTIVE_STATE_REMAINS_FAIL_CLOSED_AUDIO_HIDDEN"
+      ]
+    },
+    {
+      "slug": "dsires-baby",
+      "title": "Desiree's Baby",
+      "active_release_state": "INCOMPLETE_FAIL_CLOSED_AUDIO_HIDDEN",
+      "current_sanitized_source": {
+        "path": "internal/audiobook_lab/sprint1_publication/sanitized_text/dsires-baby.txt",
+        "report_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/dsires-baby.json",
+        "exists_in_original_repo": true,
+        "exists_in_output_clone": false,
+        "report_status": "PASS",
+        "sha256": "587455ed554ef64d19f0ea7dcd31940d242aa759f5132b6514b130efa4a64a89",
+        "reported_word_count": 2191,
+        "normalized_token_count": 2233,
+        "normalized_body_sha256": "f5e7ed418368a993688080411d462fe38ababa4fc4dd8a0999c7e0ad2ee2ff25"
+      },
+      "source_rights": {
+        "rights_report_path": "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z/rights_metadata_report.json",
+        "source_evidence_path": "data/controlled_publications/dsires-baby/source_evidence.json",
+        "approval_evidence_path": "data/controlled_publications/dsires-baby/approval_evidence.json",
+        "rights_status": "PASS",
+        "public_domain": true,
+        "content_use_approved": true,
+        "audiobook_use_approved": true,
+        "commercial_text_use_evidence": "PASS",
+        "recorded_source_sha256": "2006e24206b918744a8a8a7589e883389759ccd9cbef93ae8ce260d633dab5d9",
+        "current_raw_source_path": "content/books/dsires-baby/raw/source.txt",
+        "current_raw_source_sha256": "dec5d3e66b669f130d3d2aed2910e94fa8a57a8a3390ac8552627c4761970a10",
+        "recorded_source_matches_current_raw_source": false,
+        "binding_status": "HISTORICAL_RIGHTS_HASH_NOT_BOUND_TO_CURRENT_RAW_FILE"
+      },
+      "assets": [
+        {
+          "asset_id": "dsires-piper-historical",
+          "audio_paths": [
+            "output/open_source_audiobooks/en/dsires-baby.mp3",
+            "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z/dsires-baby_existing_audio_candidate.mp3"
+          ],
+          "all_paths_exist": true,
+          "all_paths_byte_identical": true,
+          "sha256": "b1848e8cd120a83d4d69e716735c43a412efe21fc8094d205d9884a6241bb98f",
+          "duration_seconds": 708.034467,
+          "size_bytes": 4248834,
+          "provider_key": "piper",
+          "provider": "piper",
+          "voice": "en_US-lessac-medium.onnx",
+          "provenance_status": "PROVIDER_AND_VOICE_RECORDED; GENERATION_SOURCE_SHA256_MISSING",
+          "provenance_paths": [
+            "output/open_source_audiobooks/en/dsires-baby_meta.json",
+            "internal/audiobook_lab/release_gate/dsires-baby_20260705T181723Z/tts_hook_result.json"
+          ],
+          "source_compatibility": {
+            "status": "DERIVED_NORMALIZED_BODY_MATCH_NO_GENERATION_HASH",
+            "recorded_generation_source_sha256": null,
+            "exact_generation_source_sha256_match": null,
+            "derived_from": "source-derived timestamp words with spoken title prefix removed",
+            "derived_normalized_body_sha256": "f5e7ed418368a993688080411d462fe38ababa4fc4dd8a0999c7e0ad2ee2ff25",
+            "derived_normalized_body_match": true,
+            "normalized_token_order_similarity": 1.0
+          },
+          "qa_history": {
+            "historical_asr_score": 9.4039,
+            "historical_first_words_match": false,
+            "historical_last_words_match": true,
+            "historical_decision": "BLOCKED"
+          },
+          "technical_reuse_readiness": "CONDITIONAL_SOURCE_CONTENT_MATCH",
+          "safe_for_private_reuse_qa": false,
+          "blockers": [
+            "PIPER_SELECTED_VOICE_COMMERCIAL_AND_SPEAKER_RIGHTS_HOLD",
+            "GENERATION_SOURCE_SHA256_MISSING",
+            "HISTORICAL_AUDIO_ASR_RELEASE_GATE_FAILED"
+          ]
+        },
+        {
+          "asset_id": "dsires-command-polish",
+          "audio_paths": [
+            "output/english_audiobook_polish/english-polish-queue-v1/bundles/en/dsires-baby/dsires-baby.mp3"
+          ],
+          "all_paths_exist": true,
+          "sha256": "0aca87e0726cbd623d571b2039c304d7bb17201253619593f4cbd1e38511e2c5",
+          "duration_seconds": 1025.375964,
+          "size_bytes": 8203746,
+          "provider_key": "command_azure_like",
+          "provider": "command",
+          "voice": "en-IN-NeerjaNeural",
+          "provenance_status": "OPAQUE_COMMAND_PROVIDER",
+          "provenance_paths": [
+            "output/english_audiobook_polish/english-polish-queue-v1/english_audiobook_polish_report.json",
+            "output/english_audiobook_polish/english-polish-queue-v1/bundles/en/dsires-baby/dsires-baby_meta.json"
+          ],
+          "source_compatibility": {
+            "status": "PREPARED_SOURCE_HASH_MISMATCH_BUT_NORMALIZED_BODY_MATCH",
+            "prepared_source_path": "output/english_audiobook_polish/english-polish-queue-v1/prepared/dsires-baby/dsires-baby.txt",
+            "prepared_source_sha256": "c17acfa5d2766dd88d20b612f1a347812137a38ff730e267e0f47c075399643f",
+            "exact_prepared_source_sha256_match": false,
+            "normalized_body_match_after_control_marker_removal": true,
+            "derived_normalized_body_sha256": "f5e7ed418368a993688080411d462fe38ababa4fc4dd8a0999c7e0ad2ee2ff25",
+            "normalized_token_order_similarity": 1.0
+          },
+          "qa_history": {
+            "heuristic_pipeline_score": 9.57,
+            "qa_type": "NON_RELEASE_HEURISTIC"
+          },
+          "technical_reuse_readiness": "CONDITIONAL_SOURCE_CONTENT_MATCH",
+          "safe_for_private_reuse_qa": false,
+          "blockers": [
+            "PROVIDER_IMPLEMENTATION_OPAQUE",
+            "PROVIDER_COMMERCIAL_AND_SELECTED_VOICE_RIGHTS_HOLD",
+            "GENERATION_SOURCE_SHA256_NOT_RECORDED"
+          ]
+        }
+      ],
+      "technically_preferred_asset_id": "dsires-piper-historical",
+      "private_reuse_qa_verdict": "BLOCKED",
+      "safe_for_private_reuse_qa": false,
+      "blockers": [
+        "NO_CANDIDATE_HAS_APPROVED_PROVIDER_AND_SELECTED_VOICE_INTERNAL_EVAL_RIGHTS",
+        "NO_CANDIDATE_HAS_AN_EXACT_GENERATION_SOURCE_SHA256_MATCH",
+        "RIGHTS_PACKET_SOURCE_HASH_DOES_NOT_MATCH_CURRENT_RAW_SOURCE_FILE",
+        "ACTIVE_STATE_REMAINS_FAIL_CLOSED_AUDIO_HIDDEN"
+      ]
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "active_release_state": "INCOMPLETE_FAIL_CLOSED_AUDIO_HIDDEN",
+      "current_sanitized_source": {
+        "path": "internal/audiobook_lab/sprint1_publication/sanitized_text/the-tell-tale-heart.txt",
+        "report_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-tell-tale-heart.json",
+        "exists_in_original_repo": true,
+        "exists_in_output_clone": false,
+        "report_status": "PASS",
+        "sha256": "8e725a8220dca763fdd5286315016d1ae3071cb5f068e830e1e2b8ed16037bdb",
+        "reported_word_count": 2157,
+        "normalized_token_count": 2156,
+        "normalized_body_sha256": "0262f07ce5b847034088fb4a944d98f60dc77e38295387bd58632ca95a0041fb"
+      },
+      "source_rights": {
+        "rights_report_path": "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/rights_metadata_report.json",
+        "source_evidence_path": "data/controlled_publications/the-tell-tale-heart/source_evidence.json",
+        "approval_evidence_path": "data/controlled_publications/the-tell-tale-heart/approval_evidence.json",
+        "rights_status": "PASS",
+        "public_domain": true,
+        "content_use_approved": true,
+        "audiobook_use_approved": true,
+        "commercial_text_use_evidence": "PASS",
+        "recorded_source_sha256": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+        "current_raw_source_path": "content/books/the-tell-tale-heart/raw/source.txt",
+        "current_raw_source_sha256": "20780b096474c0c584f780e2f515a528a3cf4a1e265425f9b2c20a6842e39526",
+        "recorded_source_matches_current_raw_source": false,
+        "binding_status": "HISTORICAL_RIGHTS_HASH_NOT_BOUND_TO_CURRENT_RAW_FILE"
+      },
+      "assets": [
+        {
+          "asset_id": "tell-piper-historical",
+          "audio_paths": [
+            "output/open_source_audiobooks/en/the-tell-tale-heart.mp3",
+            "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/the-tell-tale-heart_existing_audio_candidate.mp3"
+          ],
+          "all_paths_exist": true,
+          "all_paths_byte_identical": true,
+          "sha256": "e2b4632c8a3a97d19e952ae75910386ae1647a8529433c26885b72c02f3a7125",
+          "duration_seconds": 694.775873,
+          "size_bytes": 4169213,
+          "provider_key": "piper",
+          "provider": "piper",
+          "voice": "en_US-lessac-medium.onnx",
+          "provenance_status": "PROVIDER_AND_VOICE_RECORDED; GENERATION_SOURCE_SHA256_MISSING",
+          "provenance_paths": [
+            "output/open_source_audiobooks/en/the-tell-tale-heart_meta.json",
+            "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/english_asr_source_provenance_report.json"
+          ],
+          "source_compatibility": {
+            "status": "DERIVED_NORMALIZED_BODY_MATCH_NO_GENERATION_HASH",
+            "recorded_generation_source_sha256": null,
+            "exact_generation_source_sha256_match": null,
+            "derived_from": "source-derived timestamp words with spoken title prefix removed",
+            "derived_normalized_body_sha256": "0262f07ce5b847034088fb4a944d98f60dc77e38295387bd58632ca95a0041fb",
+            "derived_normalized_body_match": true,
+            "normalized_token_order_similarity": 1.0
+          },
+          "qa_history": {
+            "historical_asr_score": 9.5558,
+            "historical_decision": "REJECT_EXISTING_HISTORICAL_AUDIO_FOR_RELEASE"
+          },
+          "technical_reuse_readiness": "CONDITIONAL_SOURCE_CONTENT_MATCH",
+          "safe_for_private_reuse_qa": false,
+          "blockers": [
+            "PIPER_SELECTED_VOICE_COMMERCIAL_AND_SPEAKER_RIGHTS_HOLD",
+            "GENERATION_SOURCE_SHA256_MISSING",
+            "HISTORICAL_AUDIO_ASR_RELEASE_GATE_FAILED",
+            "SYNTHETIC_ALIGNMENT_NOT_RELEASE_VALID"
+          ]
+        },
+        {
+          "asset_id": "tell-command-polish",
+          "audio_paths": [
+            "output/english_audiobook_polish/english-polish-queue-v1/bundles/en/the-tell-tale-heart/the-tell-tale-heart.mp3"
+          ],
+          "all_paths_exist": true,
+          "sha256": "921a90b5c04d5b84478aaba2727f05fa3241769abc180854e0ead915b85d6eb4",
+          "duration_seconds": 1076.664989,
+          "size_bytes": 8614182,
+          "provider_key": "command_azure_like",
+          "provider": "command",
+          "voice": "en-IN-NeerjaNeural",
+          "provenance_status": "OPAQUE_COMMAND_PROVIDER",
+          "provenance_paths": [
+            "output/english_audiobook_polish/english-polish-queue-v1/english_audiobook_polish_report.json",
+            "output/english_audiobook_polish/english-polish-queue-v1/bundles/en/the-tell-tale-heart/the-tell-tale-heart_meta.json"
+          ],
+          "source_compatibility": {
+            "status": "PREPARED_SOURCE_HASH_MISMATCH_BUT_NORMALIZED_BODY_MATCH",
+            "prepared_source_path": "output/english_audiobook_polish/english-polish-queue-v1/prepared/the-tell-tale-heart/the-tell-tale-heart.txt",
+            "prepared_source_sha256": "4cc990763cf7954cc565b7b42e8aea10c6e94e3b9d0916a38e888a5deebbb39a",
+            "exact_prepared_source_sha256_match": false,
+            "normalized_body_match_after_control_marker_removal": true,
+            "derived_normalized_body_sha256": "0262f07ce5b847034088fb4a944d98f60dc77e38295387bd58632ca95a0041fb",
+            "normalized_token_order_similarity": 1.0
+          },
+          "qa_history": {
+            "heuristic_pipeline_score": 9.52,
+            "qa_type": "NON_RELEASE_HEURISTIC"
+          },
+          "technical_reuse_readiness": "CONDITIONAL_SOURCE_CONTENT_MATCH",
+          "safe_for_private_reuse_qa": false,
+          "blockers": [
+            "PROVIDER_IMPLEMENTATION_OPAQUE",
+            "PROVIDER_COMMERCIAL_AND_SELECTED_VOICE_RIGHTS_HOLD",
+            "GENERATION_SOURCE_SHA256_NOT_RECORDED"
+          ]
+        },
+        {
+          "asset_id": "tell-edge-polish",
+          "audio_paths": [
+            "output/english_audiobook_polish/english-polish-edge-below9-v1/bundles/en/the-tell-tale-heart/the-tell-tale-heart.mp3"
+          ],
+          "all_paths_exist": true,
+          "sha256": "056e5ad3b8943a79da8b06ea474b29b5858e0d11f14db526415bbe968764f8d3",
+          "duration_seconds": 855.672018,
+          "size_bytes": 6846215,
+          "provider_key": "edge",
+          "provider": "edge",
+          "voice": "en-IN-NeerjaNeural",
+          "provenance_status": "PROVIDER_LABEL_PRESENT; COMMERCIAL_PROVENANCE_MISSING",
+          "provenance_paths": [
+            "output/english_audiobook_polish/english-polish-edge-below9-v1/english_audiobook_polish_report.json",
+            "output/english_audiobook_polish/english-polish-edge-below9-v1/bundles/en/the-tell-tale-heart/the-tell-tale-heart_meta.json"
+          ],
+          "source_compatibility": {
+            "status": "PREPARED_SOURCE_HASH_MISMATCH_BUT_NORMALIZED_BODY_MATCH",
+            "prepared_source_path": "output/english_audiobook_polish/english-polish-edge-below9-v1/prepared/the-tell-tale-heart/the-tell-tale-heart.txt",
+            "prepared_source_sha256": "4cc990763cf7954cc565b7b42e8aea10c6e94e3b9d0916a38e888a5deebbb39a",
+            "exact_prepared_source_sha256_match": false,
+            "normalized_body_match_after_control_marker_removal": true,
+            "derived_normalized_body_sha256": "0262f07ce5b847034088fb4a944d98f60dc77e38295387bd58632ca95a0041fb",
+            "normalized_token_order_similarity": 1.0
+          },
+          "qa_history": {
+            "heuristic_pipeline_score": 9.4,
+            "qa_type": "NON_RELEASE_HEURISTIC"
+          },
+          "technical_reuse_readiness": "BLOCKED_PROVIDER_RIGHTS_MISSING",
+          "safe_for_private_reuse_qa": false,
+          "blockers": [
+            "EDGE_COMMERCIAL_AND_SELECTED_VOICE_RIGHTS_EVIDENCE_MISSING",
+            "GENERATION_SOURCE_SHA256_NOT_RECORDED"
+          ]
+        },
+        {
+          "asset_id": "tell-enhanced-derivative",
+          "audio_paths": [
+            "internal/audiobook_lab/enhanced_candidates/the-tell-tale-heart/the-tell-tale-heart_enhanced.mp3"
+          ],
+          "all_paths_exist": true,
+          "sha256": "4a086c07550a4191caca6f9e84a46b11d93f43030bb5a3a01bec6e5dd5cbc93c",
+          "duration_seconds": 855.672018,
+          "size_bytes": 20537931,
+          "provider_key": "edge",
+          "provider": "UNBOUND_DERIVATIVE_OF_EDGE_CANDIDATE",
+          "voice": "en-IN-NeerjaNeural",
+          "provenance_status": "DERIVATIVE_LABEL_ONLY; DIRECT_AUDIO_SOURCE_HASH_BINDING_MISSING",
+          "provenance_paths": [
+            "internal/audiobook_lab/release_gate/sync_manifests/the-tell-tale-heart/the-tell-tale-heart_enhanced.json",
+            "internal/audiobook_lab/release_gate/sync_manifests/the-tell-tale-heart/the-tell-tale-heart_fallback.json"
+          ],
+          "source_compatibility": {
+            "status": "INFERRED_FROM_EDGE_DERIVATIVE_NO_DIRECT_BINDING",
+            "recorded_generation_source_sha256": null,
+            "exact_generation_source_sha256_match": null
+          },
+          "qa_history": {
+            "status": "NO_HASH_BOUND_RELEASE_QA_FOUND"
+          },
+          "technical_reuse_readiness": "BLOCKED_UNBOUND_DERIVATIVE",
+          "safe_for_private_reuse_qa": false,
+          "blockers": [
+            "DIRECT_PROVIDER_AND_SOURCE_PROVENANCE_MISSING",
+            "EDGE_COMMERCIAL_AND_SELECTED_VOICE_RIGHTS_EVIDENCE_MISSING",
+            "HASH_BOUND_QA_EVIDENCE_MISSING"
+          ]
+        },
+        {
+          "asset_id": "tell-openai-20260705",
+          "audio_paths": [
+            "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/the-tell-tale-heart_openai_tts_final.mp3"
+          ],
+          "all_paths_exist": true,
+          "sha256": "cefb2d1ac40d4779b8571678ca41b3fd88fa21e69f139f8573f43c8c6433c2b1",
+          "duration_seconds": 699.768,
+          "size_bytes": 11197485,
+          "provider_key": "openai",
+          "provider": "openai",
+          "model": "gpt-4o-mini-tts",
+          "voice": "marin",
+          "provenance_status": "HASH_BOUND_TTS_MANIFEST_PRESENT",
+          "provenance_paths": [
+            "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/tts_chunk_manifest.json",
+            "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/tts_hook_result.json",
+            "internal/audiobook_lab/release_gate/the-tell-tale-heart_20260705T181723Z/the_tell_tale_heart_terminal_or_retry_report.json"
+          ],
+          "source_compatibility": {
+            "status": "EXACT_GENERATION_SOURCE_SHA256_MATCH",
+            "recorded_generation_source_sha256": "8e725a8220dca763fdd5286315016d1ae3071cb5f068e830e1e2b8ed16037bdb",
+            "exact_generation_source_sha256_match": true
+          },
+          "qa_history": {
+            "historical_asr_score": 9.9219,
+            "historical_first_words_match": true,
+            "historical_last_words_match": false,
+            "historical_sync_score": 9.9219,
+            "estimated_sync": false,
+            "historical_listening_score": 8.4,
+            "historical_listening_confidence": 0.9,
+            "historical_decision": "RETRYABLE_BLOCKED_NOT_PUBLISHED"
+          },
+          "technical_reuse_readiness": "SOURCE_BOUND_BUT_FAILED_EXISTING_QA",
+          "safe_for_private_reuse_qa": false,
+          "blockers": [
+            "OPENAI_PROVIDER_AND_SELECTED_VOICE_INTERNAL_EVAL_HOLD",
+            "ASR_LAST_WORD_GATE_FAILED",
+            "LISTENING_QA_FAILED",
+            "DO_NOT_REPEAT_SAME_PROVIDER_SETTINGS_TEXT_HASH_ATTEMPT"
+          ]
+        }
+      ],
+      "technically_preferred_asset_id": "tell-openai-20260705",
+      "private_reuse_qa_verdict": "BLOCKED",
+      "safe_for_private_reuse_qa": false,
+      "blockers": [
+        "NO_CANDIDATE_HAS_APPROVED_PROVIDER_AND_SELECTED_VOICE_INTERNAL_EVAL_RIGHTS",
+        "EXACTLY_SOURCE_BOUND_OPENAI_CANDIDATE_ALREADY_FAILED_HASH_BOUND_QA",
+        "RIGHTS_PACKET_SOURCE_HASH_DOES_NOT_MATCH_CURRENT_RAW_SOURCE_FILE",
+        "ACTIVE_STATE_REMAINS_FAIL_CLOSED_AUDIO_HIDDEN"
+      ]
+    }
+  ],
+  "summary": {
+    "titles_requested": 4,
+    "titles_with_existing_audio": 4,
+    "distinct_full_book_audio_candidates": 12,
+    "titles_with_exact_generation_source_sha256_candidate": 2,
+    "titles_with_derived_normalized_source_match_only": 2,
+    "titles_with_text_rights_pass": 4,
+    "titles_with_current_raw_source_hash_bound_to_rights_packet": 0,
+    "titles_with_approved_provider_and_selected_voice_internal_eval_rights": 0,
+    "titles_safe_for_private_reuse_qa": 0,
+    "final_verdict": "NO_POLICY_SAFE_PRIVATE_REUSE_QA_CANDIDATE",
+    "release_state": "UNCHANGED_FAIL_CLOSED_AUDIO_HIDDEN"
+  },
+  "next_exact_command": "jq -r '.titles[] | [.slug, .private_reuse_qa_verdict, .technically_preferred_asset_id, (.blockers | join(\"; \"))] | @tsv' internal/audiobook_lab/sprint1_publication/title_runs/short_english_reuse_inventory.json"
+}

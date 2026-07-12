@@ -1,0 +1,34 @@
+{
+  "slug": "muchiram-gurer-jibanchorit",
+  "source_sha256": "0e9455b19181966cd83886298b223030bd427f8e9c54aaaafd69aba4c0b743e6",
+  "passages": [
+    {
+      "passage_id": "opening",
+      "slug": "muchiram-gurer-jibanchorit",
+      "label": "opening control",
+      "text": "মুচিরাম গুড় মহাশয় এই জগৎ পবিত্র করিবার জন্য, কোন্ শকে জন্মগ্রহণ করিয়াছিলেন, ইতিহাসে তাহা লেখে না। ইতিহাস এরূপ অনেকপ্রকার বদমাইসি করিয়া থাকে। এ দেশে ইতিহাসের সাক্ষাৎ পাওয়া যায় না, নচেৎ উচিত ব্যবস্থা করা যাইত।",
+      "text_hash": "1ebd84cd348bb47004917e3efa98b812f64dc62693eb18f0b728e86f1c341f16"
+    },
+    {
+      "passage_id": "middle",
+      "slug": "muchiram-gurer-jibanchorit",
+      "label": "middle control",
+      "text": "নারিকেলসন্দেশ এবং অন্যান্য যে সকল জাতীয় সন্দেশের সঙ্গে ছানার সাক্ষাৎ বা অসাক্ষাৎ কোন প্রকার সম্বন্ধ নাই, যাহা সর্ব্বদা মুচিরামের ঘরে থাকিত, সে সকল মুচিরামের বিদ্যাভ্যাসের কারণ হইল।",
+      "text_hash": "25e7605af4679945eecf8a21d1b88303a5d7bfa973eb9e33a8ca172d8f568c42"
+    },
+    {
+      "passage_id": "failed_chunk_05",
+      "slug": "muchiram-gurer-jibanchorit",
+      "label": "previous list-reading failure section",
+      "text": "কাণে যাইতে যাইতে মনের ভিতর গেল,—মনের ভিতর গিয়া, কল্পনার সাহায্যে টাকার সিন্দুকের ভিতরেও প্রবেশ করিল। অধিকারী মহাশয়ের নিকট গলার আওয়াজ, টাকার আওয়াজে পরিণত হয়। সে দোষে অধিকারী মহাশয় একা দোষী নহেন—জিজ্ঞাসা করিলে অনেক উকীল মহাশয়েরা ইহার কিছু নিগূঢ় তত্ত্ব",
+      "text_hash": "064175c1557705105898cd0bc4638a6240023c4dc7a3e68beac373889a1e1740"
+    },
+    {
+      "passage_id": "ending",
+      "slug": "muchiram-gurer-jibanchorit",
+      "label": "previous mechanical ending section",
+      "text": "তার পর আছাড়িয়া পড়িয়া স্বামীর জন্য কাঁদিতে লাগিল।",
+      "text_hash": "ad708de1e10aac647fcded25cad1f57820d2b24818897fb31ff973d40546f620"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "author": "Edgar Allan Poe",
+  "candidate_kind": "human_narration",
+  "delivery": {
+    "accepted_formats": [
+      "wav_pcm_44.1_or_48_khz",
+      "flac_44.1_or_48_khz",
+      "mp3_128kbps_or_higher_44.1_or_48_khz"
+    ],
+    "single_complete_file_required": true
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-tell-tale-heart --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "language": {
+    "code": "en",
+    "name": "English"
+  },
+  "packet_fingerprint_sha256": "ad6d7132c5b3cc1006afa8d3dc412c2829e5c5e19cb7e406b23ce8cfde4d34f7",
+  "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
+  "prior_provider_evidence": {
+    "classification": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+    "evidence_paths": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_release_gate_evidence.json"
+    ],
+    "exact_blocker": "BOUNDED_GOOGLE_REPRESENTATIVE_AUDITIONS_FAILED; HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+    "failed_attempts": [
+      {
+        "attempt_fingerprint": "4f7b571d8625924e82cb32ab3e1e3d33ae5123fc61c05a548dd0c4f2e9b304c4",
+        "confidence": 0.9,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_release_gate_evidence.json",
+        "failed": true,
+        "fatal_flags": [],
+        "minimum_observed_score": 8.4,
+        "owner_minimum_score": 9.4,
+        "provider": "google",
+        "scope": "representative_audition_baseline",
+        "scores": [
+          9.5,
+          8.4,
+          9.4,
+          9.6
+        ],
+        "status": "BLOCKED_LISTENING_QA",
+        "voice": "en-GB-Studio-C"
+      },
+      {
+        "attempt_fingerprint": "fd54248900cc4c9cc174fe327635781ac7749625e1bfd3635c897fb126ab632b",
+        "confidence": 0.9,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_release_gate_evidence.json",
+        "failed": true,
+        "fatal_flags": [],
+        "minimum_observed_score": 8.5,
+        "owner_minimum_score": 9.4,
+        "provider": "google",
+        "scope": "representative_audition_single_prosody_retry",
+        "scores": [
+          9.4,
+          8.5,
+          9.4,
+          8.8
+        ],
+        "status": "BLOCKED_LISTENING_QA",
+        "voice": "en-GB-Studio-C"
+      }
+    ],
+    "non_release_passes": [],
+    "provider_attempts": [
+      {
+        "attempt_fingerprint": "4f7b571d8625924e82cb32ab3e1e3d33ae5123fc61c05a548dd0c4f2e9b304c4",
+        "confidence": 0.9,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_release_gate_evidence.json",
+        "failed": true,
+        "fatal_flags": [],
+        "minimum_observed_score": 8.4,
+        "owner_minimum_score": 9.4,
+        "provider": "google",
+        "scope": "representative_audition_baseline",
+        "scores": [
+          9.5,
+          8.4,
+          9.4,
+          9.6
+        ],
+        "status": "BLOCKED_LISTENING_QA",
+        "voice": "en-GB-Studio-C"
+      },
+      {
+        "attempt_fingerprint": "fd54248900cc4c9cc174fe327635781ac7749625e1bfd3635c897fb126ab632b",
+        "confidence": 0.9,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_release_gate_evidence.json",
+        "failed": true,
+        "fatal_flags": [],
+        "minimum_observed_score": 8.5,
+        "owner_minimum_score": 9.4,
+        "provider": "google",
+        "scope": "representative_audition_single_prosody_retry",
+        "scores": [
+          9.4,
+          8.5,
+          9.4,
+          8.8
+        ],
+        "status": "BLOCKED_LISTENING_QA",
+        "voice": "en-GB-Studio-C"
+      }
+    ],
+    "quality_summary": "Two Google Studio-C representative attempts missed the owner minimum 9.4; minima 8.4 and 8.5",
+    "release_evidence_found": true
+  },
+  "pronunciation_checkpoints": [
+    "The Tell-Tale Heart",
+    "Edgar Allan Poe",
+    "Recurring names/terms: And, But, For, God, His, Now, Yes, Yet, You",
+    "Confirm every proper noun and period-specific term before recording; preserve the written form."
+  ],
+  "release_requirements": {
+    "asr_manuscript_score_min": 9.7,
+    "blocker_list_must_be_empty": true,
+    "confidence_score_min": 0.9,
+    "fatal_flags_required_false": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "placeholder_audio_detected"
+    ],
+    "first_and_last_words_must_match": true,
+    "listening_score_min": 9.4,
+    "measured_sync_required": "paragraph_or_section",
+    "no_missing_duplicated_or_reordered_content": true,
+    "public_audio_must_remain_hidden_until_all_gates_pass": true,
+    "sync_may_not_be_estimated": true
+  },
+  "rights": {
+    "provenance_hash": "842f37156736790444d3edc2f38a4e1e1aa3689c723936dc9f2e38f0d063aa4b",
+    "rights_basis": "Edgar Allan Poe died 1849; first published 1843. Public domain in India and the U.S."
+  },
+  "safety": {
+    "audio_generated": false,
+    "provider_calls_ran": false,
+    "public_audio_status": "AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES",
+    "release_gate_mutated": false
+  },
+  "sanitization": {
+    "removed_fragments": [],
+    "sanitizer_version": "narration-import-sanitizer-v1",
+    "status": "PASS"
+  },
+  "schema_version": 2,
+  "slug": "the-tell-tale-heart",
+  "source_binding": {
+    "binding_sha256": "1e612f00893b7884566e95b9b97c376dc58f14b8bd2cc43a0b80f5fdaff556d9",
+    "chapters": [
+      {
+        "chapter": "chapter-001.json",
+        "chapter_title": "The Tell-Tale Heart",
+        "raw_characters": 11486,
+        "recorded_source_sha256": "be8259855845762a7a1c6e5e1bd45d43bbd04c7d769427b25132e2bf514af1f8",
+        "sanitized_characters": 11319,
+        "sanitized_sha256": "df1b85c210aab99b3b14c106e0a28c4305e7c4dbc8aa16aa11f1877bb9502981"
+      }
+    ],
+    "raw_manuscript_sha256": "be8259855845762a7a1c6e5e1bd45d43bbd04c7d769427b25132e2bf514af1f8",
+    "sanitized_manuscript_sha256": "df1b85c210aab99b3b14c106e0a28c4305e7c4dbc8aa16aa11f1877bb9502981",
+    "source_hash": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+    "status": "VERIFIED_SOURCE_AND_CHAPTER_HASHES"
+  },
+  "style_notes": [
+    "Use clear literary English with natural dialogue changes and deliberate punctuation pauses.",
+    "Preserve period diction, irony, tension, and humor without melodrama or character caricature.",
+    "Do not paraphrase names, quoted speech, spelling, or narrative transitions.",
+    "Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed transitions, and choppy joins."
+  ],
+  "style_profile": "english_literary_natural_dialogue",
+  "title": "The Tell-Tale Heart"
+}

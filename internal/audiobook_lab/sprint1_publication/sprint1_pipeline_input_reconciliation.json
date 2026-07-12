@@ -1,0 +1,1530 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-12T21:07:38Z",
+  "scope": {
+    "worktree": "/private/tmp/earnalism-sprint1-paid-20260713-1",
+    "active_title_source": "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json",
+    "active_title_filter": "titles[].sprint1_audio_target == true",
+    "excluded_deferred_slugs": [
+      "great-expectations",
+      "jane-eyre"
+    ],
+    "mode": "NON_PAID_RECONCILIATION_ONLY",
+    "concurrent_provider_evidence_observed": true
+  },
+  "methodology": {
+    "canonical_text_recipe": "Sort canonical chapters/*.json lexicographically; read content, else text, else body; strip each non-empty chapter; join with two LF characters; strip the joined value; append one LF; SHA-256 the UTF-8 bytes. Character count is Unicode code points in that exact value.",
+    "canonical_source_selection": "Use root data when root/backend manuscript hashes match. Use the complete backend packet when the root packet has no chapters. For Dracula, use the clean backend packet because the root packet contains raw HTML. Retain root precedence for Frankenstein but block audition because the complete backend packet has a different manuscript.",
+    "manifest_rule": "Report tracked book-import-manifest inclusion separately from controlled reader-manifest inclusion. Lack of a tracked import-manifest row is not by itself an audition blocker when the controlled packet has matching chapters plus Tier A source/approval evidence; current release factory inventory has a controlled-publication fallback.",
+    "cover_rule": "Pass direct non-placeholder front/back URLs or explicit graphical runtime fallback evidence. Newer title-specific Sprint1 cover blockers override the older generic fallback report.",
+    "sanitation_rule": "Require matrix PASS, reader_facing_boilerplate_removed=true, and a clean local scan of the selected canonical manuscript. Matrix links to nonexistent sanitized_text_reports were not treated as evidence.",
+    "readiness_rule": "ready_for_audition means all non-paid input gates pass and a provider audition is the next safe stage. It is false for already-approved audio, reuse-first/non-paid preflights, an already-passed representative audition, unresolved public-asset containment, source-loader/path conflicts, or decommissioned attempts.",
+    "tracked_import_manifests_inspected": [
+      "book_import_manifest.batch-1.json",
+      "book_import_manifests/business_entrepreneurship_public_domain_20260609.json"
+    ],
+    "default_manifest_present": false,
+    "provider_calls_ran_by_reconciliation": false,
+    "concurrent_provider_evidence_paths": [
+      "bengali_representative_audition_report.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_chirp_audition_lock_report.json"
+    ]
+  },
+  "summary": {
+    "active_title_count": 32,
+    "ready_for_audition_count": 5,
+    "blocked_for_audition_count": 27,
+    "ready_for_audition_slugs": [
+      "radharani",
+      "jekyll-and-hyde",
+      "picture-of-dorian-gray",
+      "pride-and-prejudice",
+      "the-secret-garden"
+    ],
+    "import_manifest_included_count": 5,
+    "controlled_reader_manifest_count": 32,
+    "rights_pass_count": 31,
+    "cover_pass_count": 25,
+    "sanitation_pass_count": 32,
+    "root_backend_source_match_count": 27,
+    "backend_canonical_source_count": 4,
+    "provider_calls_ran_by_reconciliation": false,
+    "concurrent_provider_evidence_observed": true,
+    "existing_files_mutated": false
+  },
+  "titles": [
+    {
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "language": "Bengali",
+      "matrix_cost_strategy": "REUSE_APPROVED_PUBLIC_AUDIO",
+      "canonical_source_path": "data/controlled_publications/book-2b9853ec52/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "788851c603ab1700f9e33bdfdc6a3e3c04f2ebb79890b88bc8c88f138270095d",
+      "canonical_source_chars": 3284,
+      "canonical_reader_manifest_path": "data/controlled_publications/book-2b9853ec52/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "788851c603ab1700f9e33bdfdc6a3e3c04f2ebb79890b88bc8c88f138270095d",
+      "root_source_chars": 3284,
+      "backend_source_sha256": "788851c603ab1700f9e33bdfdc6a3e3c04f2ebb79890b88bc8c88f138270095d",
+      "backend_source_chars": 3284,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/book-2b9853ec52/source_evidence.json",
+        "data/controlled_publications/book-2b9853ec52/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267849/earnalism/covers/front/book-2b9853ec52_front_1600x2400.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267851/earnalism/covers/back/book-2b9853ec52_back_1600x2400.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/book-2b9853ec52/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/book-2b9853ec52/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_REQUIRED: APPROVED_PUBLIC_AUDIO_ALREADY_EXISTS"
+    },
+    {
+      "slug": "bn-066",
+      "title": "আনন্দমঠ",
+      "language": "Bengali",
+      "matrix_cost_strategy": "REUSE_PRIVATE_FULL_AUDIO_THREE_CHUNK_ASR_CALIBRATION_THEN_QA",
+      "canonical_source_path": "backend/data/controlled_publications/bn-066/chapters",
+      "canonical_source_file_count": 46,
+      "canonical_source_sha256": "7501f43779da66a2fb871a905c3244c9d9c4503605e937c3d600b9d293842475",
+      "canonical_source_chars": 203763,
+      "canonical_reader_manifest_path": "backend/data/controlled_publications/bn-066/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "BACKEND_SELECTED_ROOT_PACKET_INCOMPLETE",
+      "root_source_sha256": null,
+      "root_source_chars": null,
+      "backend_source_sha256": "7501f43779da66a2fb871a905c3244c9d9c4503605e937c3d600b9d293842475",
+      "backend_source_chars": 203763,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": false,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "backend/data/controlled_publications/bn-066/source_evidence.json",
+        "backend/data/controlled_publications/bn-066/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780682828/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780682831/earnalism/covers/back/back_cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+      "cover_evidence_paths": [
+        "backend/data/controlled_publications/bn-066/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": "The standalone Bengali digit ২ in chapter-040 is a numbered literary section marker between verse stanzas, not page boilerplate.",
+      "sanitation_evidence_paths": [
+        "backend/data/controlled_publications/bn-066/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "PIPELINE_SOURCE_OVERRIDE_REQUIRED: CANONICAL_SOURCE_IS_UNDER_BACKEND_DATA_BUT_CURRENT_RELEASE_FACTORY_MANUSCRIPT_LOADER_READS_ROOT_DATA; AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_AUDIO_ASR_CALIBRATION_REQUIRED"
+    },
+    {
+      "slug": "radharani",
+      "title": "রাধারাণী",
+      "language": "Bengali",
+      "matrix_cost_strategy": "FRESH_SOURCE_BOUND_REPRESENTATIVE_AUDITION_THEN_FULL_QA",
+      "canonical_source_path": "data/controlled_publications/radharani/chapters",
+      "canonical_source_file_count": 8,
+      "canonical_source_sha256": "53b00ba494263f54f97c8c94bb64ed6e07e1819fc8060aafee90f57ea5a9541d",
+      "canonical_source_chars": 38022,
+      "canonical_reader_manifest_path": "data/controlled_publications/radharani/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "53b00ba494263f54f97c8c94bb64ed6e07e1819fc8060aafee90f57ea5a9541d",
+      "root_source_chars": 38022,
+      "backend_source_sha256": "53b00ba494263f54f97c8c94bb64ed6e07e1819fc8060aafee90f57ea5a9541d",
+      "backend_source_chars": 38022,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/radharani/source_evidence.json",
+        "data/controlled_publications/radharani/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482930/earnalism/covers/back/back_cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/radharani/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/radharani/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": true,
+      "exact_blocker": "NONE"
+    },
+    {
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "language": "Bengali",
+      "matrix_cost_strategy": "DECOMMISSION_LEGACY_PUBLIC_ASSET_THEN_FRESH_SOURCE_BOUND_PATH",
+      "canonical_source_path": "backend/data/controlled_publications/nishkriti/chapters",
+      "canonical_source_file_count": 9,
+      "canonical_source_sha256": "a36660028d968e39750206b4c186797ca9c53b2fe1ce18466556a307909ea384",
+      "canonical_source_chars": 83686,
+      "canonical_reader_manifest_path": "backend/data/controlled_publications/nishkriti/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "BACKEND_SELECTED_ROOT_PACKET_INCOMPLETE",
+      "root_source_sha256": null,
+      "root_source_chars": null,
+      "backend_source_sha256": "a36660028d968e39750206b4c186797ca9c53b2fe1ce18466556a307909ea384",
+      "backend_source_chars": 83686,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": false,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "backend/data/controlled_publications/nishkriti/source_evidence.json",
+        "backend/data/controlled_publications/nishkriti/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482837/earnalism/covers/front/cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482876/earnalism/covers/back/back_cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+      "cover_evidence_paths": [
+        "backend/data/controlled_publications/nishkriti/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "backend/data/controlled_publications/nishkriti/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "PIPELINE_SOURCE_OVERRIDE_REQUIRED: CANONICAL_SOURCE_IS_UNDER_BACKEND_DATA_BUT_CURRENT_RELEASE_FACTORY_MANUSCRIPT_LOADER_READS_ROOT_DATA; PUBLIC_UNAPPROVED_STORAGE_OBJECT_REVOCATION_REQUIRED"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "language": "Bengali",
+      "matrix_cost_strategy": "SPLIT_REPRESENTATIVE_AUDITION_THEN_DECIDE_REUSE_OR_FULL_TTS",
+      "canonical_source_path": "data/controlled_publications/muchiram-gurer-jibanchorit/chapters",
+      "canonical_source_file_count": 2,
+      "canonical_source_sha256": "b0c5e8602ff0e54593e677700bffe4b84cd7053bd2019c1ca71957fa43cd3216",
+      "canonical_source_chars": 5971,
+      "canonical_reader_manifest_path": "data/controlled_publications/muchiram-gurer-jibanchorit/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "b0c5e8602ff0e54593e677700bffe4b84cd7053bd2019c1ca71957fa43cd3216",
+      "root_source_chars": 5971,
+      "backend_source_sha256": "b0c5e8602ff0e54593e677700bffe4b84cd7053bd2019c1ca71957fa43cd3216",
+      "backend_source_chars": 5971,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/muchiram-gurer-jibanchorit/source_evidence.json",
+        "data/controlled_publications/muchiram-gurer-jibanchorit/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482980/earnalism/covers/front/cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780483024/earnalism/covers/back/back_cover_2768ace1-138c-4ce3-947b-03a8029bfb8e.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/muchiram-gurer-jibanchorit/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/muchiram-gurer-jibanchorit/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "superseding_evidence_paths": [
+        "bengali_representative_audition_report.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_chirp_audition_lock_report.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_NEXT_STAGE: REPRESENTATIVE_AUDITION_ALREADY_PASSED_2026-07-12T21:01:58Z_GOOGLE_BN-IN-CHIRP3-HD-AOEDE_SCORE_9.3_CONFIDENCE_0.95_NO_FATAL_FLAGS; NEXT_STAGE_IS_ONE_GUARDED_FULL_PILOT"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "language": "Bengali",
+      "matrix_cost_strategy": "FRESH_FULL_TITLE_REGENERATION_THEN_FULL_QA_MISSING_VERIFIABLE_GROUP_CHUNKS",
+      "canonical_source_path": "data/controlled_publications/book-d19e96859f/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "ad4532ec513d4241d852a83595c027390b6c8dd2a9196a6d58fdfb84cbed25bf",
+      "canonical_source_chars": 6516,
+      "canonical_reader_manifest_path": "data/controlled_publications/book-d19e96859f/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "ad4532ec513d4241d852a83595c027390b6c8dd2a9196a6d58fdfb84cbed25bf",
+      "root_source_chars": 6516,
+      "backend_source_sha256": "ad4532ec513d4241d852a83595c027390b6c8dd2a9196a6d58fdfb84cbed25bf",
+      "backend_source_chars": 6516,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/book-d19e96859f/source_evidence.json",
+        "data/controlled_publications/book-d19e96859f/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779342197/earnalism/covers/front/cover_ff96c6fb-bcad-4a11-aba2-f31f6fe69e41.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779342436/earnalism/covers/back/back_cover_ff96c6fb-bcad-4a11-aba2-f31f6fe69e41.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/book-d19e96859f/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/book-d19e96859f/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_NEXT_STAGE: REPRESENTATIVE_AUDITION_ALREADY_PASSED_FOR_PREPARED_SHA256_79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe; NEXT_STAGE_IS_GUARDED_FULL_TITLE_TTS"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "language": "Bengali",
+      "matrix_cost_strategy": "REGENERATE_FAILED_GROUP_7_ONLY_THEN_FULL_QA",
+      "canonical_source_path": "data/controlled_publications/book-f5d593e1f4/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "c522d934b4b141b0cd0e199749b6f75d8fe839c6894ce21aec47c61546f3760e",
+      "canonical_source_chars": 9494,
+      "canonical_reader_manifest_path": "data/controlled_publications/book-f5d593e1f4/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "c522d934b4b141b0cd0e199749b6f75d8fe839c6894ce21aec47c61546f3760e",
+      "root_source_chars": 9494,
+      "backend_source_sha256": "c522d934b4b141b0cd0e199749b6f75d8fe839c6894ce21aec47c61546f3760e",
+      "backend_source_chars": 9494,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/book-f5d593e1f4/source_evidence.json",
+        "data/controlled_publications/book-f5d593e1f4/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944684/earnalism/covers/front/cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779944697/earnalism/covers/back/back_cover_5dfb07a4-361f-4b48-aac7-a4a819e1c7b4.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/book-f5d593e1f4/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/book-f5d593e1f4/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_PLAN_CONFLICT: PUBLICATION_MATRIX_REQUIRES_FAILED_GROUP_7_REPAIR BUT_PARALLEL_BOARD_SAYS_FRESH_SOURCE_BOUND_REPRESENTATIVE_AUDITION"
+    },
+    {
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী / Pather Panchali",
+      "language": "Bengali",
+      "matrix_cost_strategy": "REPRESENTATIVE_AUDITION_THEN_COST_OPTIMIZED_FULL_TTS",
+      "canonical_source_path": "data/controlled_publications/pather-panchali/chapters",
+      "canonical_source_file_count": 12,
+      "canonical_source_sha256": "96a22ce7d7dbd2fff2cc18d358afb970e62275736e58815d11243e2cc3fc3681",
+      "canonical_source_chars": 125479,
+      "canonical_reader_manifest_path": "data/controlled_publications/pather-panchali/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "96a22ce7d7dbd2fff2cc18d358afb970e62275736e58815d11243e2cc3fc3681",
+      "root_source_chars": 125479,
+      "backend_source_sha256": "96a22ce7d7dbd2fff2cc18d358afb970e62275736e58815d11243e2cc3fc3681",
+      "backend_source_chars": 125479,
+      "manifest_inclusion": {
+        "status": "IMPORT_AND_CONTROLLED_READER_MANIFEST",
+        "import_manifest_included": true,
+        "import_manifest_paths": [
+          "book_import_manifest.batch-1.json"
+        ],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "BLOCKED_OWNER_DOCUMENT_REQUIRED",
+      "rights_evidence_paths": [
+        "data/controlled_publications/pather-panchali/source_evidence.json",
+        "data/controlled_publications/pather-panchali/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "BLOCKED_TITLE_SPECIFIC_PREFLIGHT",
+      "cover_front_url": null,
+      "cover_back_url": null,
+      "cover_evidence_paths": [
+        "data/controlled_publications/pather-panchali/public_book.json",
+        "graphical_cover_generation_report.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/pather-panchali/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "OWNER_DOCUMENT_REQUIRED_FOR_AUDIO_RIGHTS_SOURCE_COVER"
+    },
+    {
+      "slug": "devdas",
+      "title": "দেবদাস / Devdas",
+      "language": "Bengali",
+      "matrix_cost_strategy": "REPRESENTATIVE_AUDITION_THEN_COST_OPTIMIZED_FULL_TTS",
+      "canonical_source_path": "data/controlled_publications/devdas/chapters",
+      "canonical_source_file_count": 16,
+      "canonical_source_sha256": "beae74b36ef993e95682141c401f9376c185da87204243e8b8680024e8205e6c",
+      "canonical_source_chars": 152769,
+      "canonical_reader_manifest_path": "data/controlled_publications/devdas/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "beae74b36ef993e95682141c401f9376c185da87204243e8b8680024e8205e6c",
+      "root_source_chars": 152769,
+      "backend_source_sha256": "beae74b36ef993e95682141c401f9376c185da87204243e8b8680024e8205e6c",
+      "backend_source_chars": 152769,
+      "manifest_inclusion": {
+        "status": "IMPORT_AND_CONTROLLED_READER_MANIFEST",
+        "import_manifest_included": true,
+        "import_manifest_paths": [
+          "book_import_manifest.batch-1.json"
+        ],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/devdas/source_evidence.json",
+        "data/controlled_publications/devdas/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "BLOCKED_TITLE_SPECIFIC_PREFLIGHT",
+      "cover_front_url": null,
+      "cover_back_url": null,
+      "cover_evidence_paths": [
+        "data/controlled_publications/devdas/public_book.json",
+        "graphical_cover_generation_report.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/devdas/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "TITLE_SPECIFIC_COVER_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "title": "ক্ষুধিত পাষাণ",
+      "language": "Bengali",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/book-edfcf810c5/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "aefaba33524c79363c765ae74d6e315b6b53a524ebff2e114037aec8bf7ab383",
+      "canonical_source_chars": 22104,
+      "canonical_reader_manifest_path": "data/controlled_publications/book-edfcf810c5/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "aefaba33524c79363c765ae74d6e315b6b53a524ebff2e114037aec8bf7ab383",
+      "root_source_chars": 22104,
+      "backend_source_sha256": "aefaba33524c79363c765ae74d6e315b6b53a524ebff2e114037aec8bf7ab383",
+      "backend_source_chars": 22104,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/book-edfcf810c5/source_evidence.json",
+        "data/controlled_publications/book-edfcf810c5/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "BLOCKED_TITLE_SPECIFIC_PREFLIGHT",
+      "cover_front_url": null,
+      "cover_back_url": null,
+      "cover_evidence_paths": [
+        "data/controlled_publications/book-edfcf810c5/public_book.json",
+        "graphical_cover_generation_report.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/book-edfcf810c5/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "TITLE_SPECIFIC_COVER_PREFLIGHT_REQUIRED; AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHECKSUM_SOURCE_QA_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_AUDIO_RUN_LISTENING_ENDPOINT_AND_PLAYER_GATES",
+      "canonical_source_path": "data/controlled_publications/a-ghost-story/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "968351200b062cf31d6c33abaa40d30a4b5cc117163c160de175f8fe8c9bb093",
+      "canonical_source_chars": 13047,
+      "canonical_reader_manifest_path": "data/controlled_publications/a-ghost-story/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "968351200b062cf31d6c33abaa40d30a4b5cc117163c160de175f8fe8c9bb093",
+      "root_source_chars": 13047,
+      "backend_source_sha256": "968351200b062cf31d6c33abaa40d30a4b5cc117163c160de175f8fe8c9bb093",
+      "backend_source_chars": 13047,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/a-ghost-story/source_evidence.json",
+        "data/controlled_publications/a-ghost-story/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436737/earnalism/covers/back/back_cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/a-ghost-story/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/a-ghost-story/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_REQUIRED: APPROVED_PUBLIC_AUDIO_ALREADY_EXISTS"
+    },
+    {
+      "slug": "dracula",
+      "title": "Dracula",
+      "language": "English",
+      "matrix_cost_strategy": "REPRESENTATIVE_AUDITION_THEN_COST_OPTIMIZED_FULL_TTS",
+      "canonical_source_path": "backend/data/controlled_publications/dracula/chapters",
+      "canonical_source_file_count": 27,
+      "canonical_source_sha256": "3e7f5f40c82df29bca74745eab7afab200ee57318b813b118dc9b5b9c664aeb9",
+      "canonical_source_chars": 848683,
+      "canonical_reader_manifest_path": "backend/data/controlled_publications/dracula/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "BACKEND_SELECTED_ROOT_CONTAINS_RAW_HTML",
+      "root_source_sha256": "a9b4c970185b51e95c6904301b5d4273bf7058fd5aab37da9e5a88281c20273e",
+      "root_source_chars": 881120,
+      "backend_source_sha256": "3e7f5f40c82df29bca74745eab7afab200ee57318b813b118dc9b5b9c664aeb9",
+      "backend_source_chars": 848683,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "backend/data/controlled_publications/dracula/source_evidence.json",
+        "backend/data/controlled_publications/dracula/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946033/earnalism/covers/front/cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779946054/earnalism/covers/back/back_cover_630df84e-eba7-491a-aedc-f857d29c9000.png",
+      "cover_evidence_paths": [
+        "backend/data/controlled_publications/dracula/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "backend/data/controlled_publications/dracula/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "PIPELINE_SOURCE_OVERRIDE_REQUIRED: CANONICAL_SOURCE_IS_UNDER_BACKEND_DATA_BUT_CURRENT_RELEASE_FACTORY_MANUSCRIPT_LOADER_READS_ROOT_DATA; ROOT_BACKEND_MANUSCRIPT_DIVERGENCE: ROOT_SHA256_a9b4c970185b51e95c6904301b5d4273bf7058fd5aab37da9e5a88281c20273e_CHARS_881120_CONTAINS_RAW_HTML; BACKEND_CANONICAL_SHA256_3e7f5f40c82df29bca74745eab7afab200ee57318b813b118dc9b5b9c664aeb9_CHARS_848683_IS_CLEAN"
+    },
+    {
+      "slug": "frankenstein",
+      "title": "Frankenstein",
+      "language": "English",
+      "matrix_cost_strategy": "REPRESENTATIVE_AUDITION_THEN_COST_OPTIMIZED_FULL_TTS",
+      "canonical_source_path": "data/controlled_publications/frankenstein/chapters",
+      "canonical_source_file_count": 28,
+      "canonical_source_sha256": "e8f149a1b23a3685cadc719366afc66a4be48c869c7bce804ec9ed00d44f8028",
+      "canonical_source_chars": 418383,
+      "canonical_reader_manifest_path": "data/controlled_publications/frankenstein/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "BLOCKED_ROOT_BACKEND_MANUSCRIPTS_DIVERGE",
+      "root_source_sha256": "e8f149a1b23a3685cadc719366afc66a4be48c869c7bce804ec9ed00d44f8028",
+      "root_source_chars": 418383,
+      "backend_source_sha256": "abc8f3619bc79d5ab6e73a865bb76635028789d72e14c2387b40f6db59dfc35f",
+      "backend_source_chars": 423804,
+      "manifest_inclusion": {
+        "status": "IMPORT_AND_CONTROLLED_READER_MANIFEST",
+        "import_manifest_included": true,
+        "import_manifest_paths": [
+          "book_import_manifest.batch-1.json"
+        ],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/frankenstein/source_evidence.json",
+        "data/controlled_publications/frankenstein/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566127/earnalism/covers/front/cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566151/earnalism/covers/back/back_cover_3f8a6bb7-258b-4473-b14e-c68d2df58b29.png",
+      "cover_evidence_paths": [
+        "backend/data/controlled_publications/frankenstein/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/frankenstein/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "ROOT_BACKEND_CANONICAL_SOURCE_CONFLICT: ROOT_SHA256_e8f149a1b23a3685cadc719366afc66a4be48c869c7bce804ec9ed00d44f8028_CHARS_418383; BACKEND_SHA256_abc8f3619bc79d5ab6e73a865bb76635028789d72e14c2387b40f6db59dfc35f_CHARS_423804"
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+      "language": "English",
+      "matrix_cost_strategy": "REPRESENTATIVE_AUDITION_THEN_COST_OPTIMIZED_FULL_TTS",
+      "canonical_source_path": "data/controlled_publications/jekyll-and-hyde/chapters",
+      "canonical_source_file_count": 11,
+      "canonical_source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
+      "canonical_source_chars": 138182,
+      "canonical_reader_manifest_path": "data/controlled_publications/jekyll-and-hyde/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
+      "root_source_chars": 138182,
+      "backend_source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
+      "backend_source_chars": 138182,
+      "manifest_inclusion": {
+        "status": "IMPORT_AND_CONTROLLED_READER_MANIFEST",
+        "import_manifest_included": true,
+        "import_manifest_paths": [
+          "book_import_manifest.batch-1.json"
+        ],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/jekyll-and-hyde/source_evidence.json",
+        "data/controlled_publications/jekyll-and-hyde/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_GRAPHICAL_RUNTIME_FALLBACK",
+      "cover_front_url": null,
+      "cover_back_url": null,
+      "cover_evidence_paths": [
+        "graphical_cover_generation_report.json",
+        "internal/earnalism_intelligence/cover_acceptance_policy.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/jekyll-and-hyde/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": true,
+      "exact_blocker": "NONE"
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "language": "English",
+      "matrix_cost_strategy": "REPRESENTATIVE_AUDITION_THEN_COST_OPTIMIZED_FULL_TTS",
+      "canonical_source_path": "data/controlled_publications/picture-of-dorian-gray/chapters",
+      "canonical_source_file_count": 21,
+      "canonical_source_sha256": "fb64fa570b93f43f1c13973df889bd30e024fc27124a53a5a4427fd6de179d00",
+      "canonical_source_chars": 428577,
+      "canonical_reader_manifest_path": "data/controlled_publications/picture-of-dorian-gray/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "fb64fa570b93f43f1c13973df889bd30e024fc27124a53a5a4427fd6de179d00",
+      "root_source_chars": 428577,
+      "backend_source_sha256": "fb64fa570b93f43f1c13973df889bd30e024fc27124a53a5a4427fd6de179d00",
+      "backend_source_chars": 428577,
+      "manifest_inclusion": {
+        "status": "IMPORT_AND_CONTROLLED_READER_MANIFEST",
+        "import_manifest_included": true,
+        "import_manifest_paths": [
+          "book_import_manifest.batch-1.json"
+        ],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/picture-of-dorian-gray/source_evidence.json",
+        "data/controlled_publications/picture-of-dorian-gray/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_GRAPHICAL_RUNTIME_FALLBACK",
+      "cover_front_url": null,
+      "cover_back_url": null,
+      "cover_evidence_paths": [
+        "graphical_cover_generation_report.json",
+        "internal/earnalism_intelligence/cover_acceptance_policy.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/picture-of-dorian-gray/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": true,
+      "exact_blocker": "NONE"
+    },
+    {
+      "slug": "the-time-machine",
+      "title": "The Time Machine",
+      "language": "English",
+      "matrix_cost_strategy": "PRIVATE_ASSET_CHAPTER_COUNT_MISMATCH_PREFLIGHT_THEN_AUDITION",
+      "canonical_source_path": "data/controlled_publications/the-time-machine/chapters",
+      "canonical_source_file_count": 16,
+      "canonical_source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
+      "canonical_source_chars": 181242,
+      "canonical_reader_manifest_path": "data/controlled_publications/the-time-machine/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
+      "root_source_chars": 181242,
+      "backend_source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
+      "backend_source_chars": 181242,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/the-time-machine/source_evidence.json",
+        "data/controlled_publications/the-time-machine/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566887/earnalism/covers/back/back_cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/the-time-machine/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/the-time-machine/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHAPTER_COUNT_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "title": "The Call of the Wild",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/the-call-of-the-wild/chapters",
+      "canonical_source_file_count": 7,
+      "canonical_source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+      "canonical_source_chars": 177305,
+      "canonical_reader_manifest_path": "data/controlled_publications/the-call-of-the-wild/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+      "root_source_chars": 177305,
+      "backend_source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+      "backend_source_chars": 177305,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/the-call-of-the-wild/source_evidence.json",
+        "data/controlled_publications/the-call-of-the-wild/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568766/earnalism/covers/front/cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568843/earnalism/covers/back/back_cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/the-call-of-the-wild/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/the-call-of-the-wild/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHECKSUM_SOURCE_QA_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "white-fang",
+      "title": "White Fang",
+      "language": "English",
+      "matrix_cost_strategy": "REPRESENTATIVE_AUDITION_THEN_COST_OPTIMIZED_FULL_TTS",
+      "canonical_source_path": "data/controlled_publications/white-fang/chapters",
+      "canonical_source_file_count": 25,
+      "canonical_source_sha256": "1196a80b33f6fc76d5608f5e2420317801d8e7af838a698d1a8ec37138ec25dc",
+      "canonical_source_chars": 401043,
+      "canonical_reader_manifest_path": "data/controlled_publications/white-fang/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "1196a80b33f6fc76d5608f5e2420317801d8e7af838a698d1a8ec37138ec25dc",
+      "root_source_chars": 401043,
+      "backend_source_sha256": "1196a80b33f6fc76d5608f5e2420317801d8e7af838a698d1a8ec37138ec25dc",
+      "backend_source_chars": 401043,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/white-fang/source_evidence.json",
+        "data/controlled_publications/white-fang/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "BLOCKED_NO_APPROVED_FRONT_BACK_OR_EXPLICIT_FALLBACK",
+      "cover_front_url": null,
+      "cover_back_url": null,
+      "cover_evidence_paths": [
+        "data/controlled_publications/white-fang/public_book.json",
+        "graphical_cover_generation_report.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment_final.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/white-fang/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "APPROVED_FRONT_AND_BACK_COVER_EVIDENCE_REQUIRED"
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "title": "Pride and Prejudice",
+      "language": "English",
+      "matrix_cost_strategy": "REPRESENTATIVE_AUDITION_THEN_COST_OPTIMIZED_FULL_TTS",
+      "canonical_source_path": "data/controlled_publications/pride-and-prejudice/chapters",
+      "canonical_source_file_count": 61,
+      "canonical_source_sha256": "5691170107bb90c5911ca24588394c37973d4d277a6ede4e2d86d8be23ff479c",
+      "canonical_source_chars": 692224,
+      "canonical_reader_manifest_path": "data/controlled_publications/pride-and-prejudice/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "5691170107bb90c5911ca24588394c37973d4d277a6ede4e2d86d8be23ff479c",
+      "root_source_chars": 692224,
+      "backend_source_sha256": "5691170107bb90c5911ca24588394c37973d4d277a6ede4e2d86d8be23ff479c",
+      "backend_source_chars": 692224,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/pride-and-prejudice/source_evidence.json",
+        "data/controlled_publications/pride-and-prejudice/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293034/earnalism/covers/front/cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293039/earnalism/covers/back/back_cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/pride-and-prejudice/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/pride-and-prejudice/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": true,
+      "exact_blocker": "NONE"
+    },
+    {
+      "slug": "the-secret-garden",
+      "title": "The Secret Garden",
+      "language": "English",
+      "matrix_cost_strategy": "REPRESENTATIVE_AUDITION_THEN_COST_OPTIMIZED_FULL_TTS",
+      "canonical_source_path": "data/controlled_publications/the-secret-garden/chapters",
+      "canonical_source_file_count": 27,
+      "canonical_source_sha256": "4aac34ad4bda3586f1a062b24b3ca271a96edef7e4938d13042d0595f692f3a3",
+      "canonical_source_chars": 431542,
+      "canonical_reader_manifest_path": "data/controlled_publications/the-secret-garden/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "4aac34ad4bda3586f1a062b24b3ca271a96edef7e4938d13042d0595f692f3a3",
+      "root_source_chars": 431542,
+      "backend_source_sha256": "4aac34ad4bda3586f1a062b24b3ca271a96edef7e4938d13042d0595f692f3a3",
+      "backend_source_chars": 431542,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/the-secret-garden/source_evidence.json",
+        "data/controlled_publications/the-secret-garden/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947920/earnalism/covers/front/cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779947939/earnalism/covers/back/back_cover_2b4da5be-b494-42c1-bf4b-302011b3ae3c.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/the-secret-garden/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/the-secret-garden/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": true,
+      "exact_blocker": "NONE"
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "title": "Alice's Adventures in Wonderland",
+      "language": "English",
+      "matrix_cost_strategy": "REVOKE_LEGACY_PUBLIC_ASSET_THEN_SOURCE_BOUND_AUDITION",
+      "canonical_source_path": "backend/data/controlled_publications/alices-adventures-in-wonderland/chapters",
+      "canonical_source_file_count": 12,
+      "canonical_source_sha256": "c8cd98430bcaa621dd206b8d3c880b34ca3daf4776e4b89c8a10d8c5f84cb2d3",
+      "canonical_source_chars": 144843,
+      "canonical_reader_manifest_path": "backend/data/controlled_publications/alices-adventures-in-wonderland/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "BACKEND_SELECTED_ROOT_PACKET_INCOMPLETE",
+      "root_source_sha256": null,
+      "root_source_chars": null,
+      "backend_source_sha256": "c8cd98430bcaa621dd206b8d3c880b34ca3daf4776e4b89c8a10d8c5f84cb2d3",
+      "backend_source_chars": 144843,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": false,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "backend/data/controlled_publications/alices-adventures-in-wonderland/source_evidence.json",
+        "backend/data/controlled_publications/alices-adventures-in-wonderland/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902722/earnalism/covers/front/cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779902735/earnalism/covers/back/back_cover_b73e3b3d-bd2b-4d5a-b279-9e10fdae6dfe.png",
+      "cover_evidence_paths": [
+        "backend/data/controlled_publications/alices-adventures-in-wonderland/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "backend/data/controlled_publications/alices-adventures-in-wonderland/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "PIPELINE_SOURCE_OVERRIDE_REQUIRED: CANONICAL_SOURCE_IS_UNDER_BACKEND_DATA_BUT_CURRENT_RELEASE_FACTORY_MANUSCRIPT_LOADER_READS_ROOT_DATA; PUBLIC_UNAPPROVED_STORAGE_OBJECT_REVOCATION_REQUIRED"
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/the-gift-of-the-magi/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "67c1074aea0203a04f3116f42fa85c01cdec12d9646a25f0b119c3834d921ea7",
+      "canonical_source_chars": 11299,
+      "canonical_reader_manifest_path": "data/controlled_publications/the-gift-of-the-magi/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "67c1074aea0203a04f3116f42fa85c01cdec12d9646a25f0b119c3834d921ea7",
+      "root_source_chars": 11299,
+      "backend_source_sha256": "67c1074aea0203a04f3116f42fa85c01cdec12d9646a25f0b119c3834d921ea7",
+      "backend_source_chars": 11299,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/the-gift-of-the-magi/source_evidence.json",
+        "data/controlled_publications/the-gift-of-the-magi/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275487/earnalism/covers/back/the-gift-of-the-magi_back_1600x2400.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/the-gift-of-the-magi/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/the-gift-of-the-magi/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHECKSUM_SOURCE_QA_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/the-tell-tale-heart/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "8e725a8220dca763fdd5286315016d1ae3071cb5f068e830e1e2b8ed16037bdb",
+      "canonical_source_chars": 11487,
+      "canonical_reader_manifest_path": "data/controlled_publications/the-tell-tale-heart/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "8e725a8220dca763fdd5286315016d1ae3071cb5f068e830e1e2b8ed16037bdb",
+      "root_source_chars": 11487,
+      "backend_source_sha256": "8e725a8220dca763fdd5286315016d1ae3071cb5f068e830e1e2b8ed16037bdb",
+      "backend_source_chars": 11487,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/the-tell-tale-heart/source_evidence.json",
+        "data/controlled_publications/the-tell-tale-heart/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_GRAPHICAL_RUNTIME_FALLBACK",
+      "cover_front_url": null,
+      "cover_back_url": null,
+      "cover_evidence_paths": [
+        "graphical_cover_generation_report.json",
+        "internal/earnalism_intelligence/cover_acceptance_policy.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/the-tell-tale-heart/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHECKSUM_SOURCE_QA_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "the-open-window",
+      "title": "The Open Window",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/the-open-window/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "3e9f1a07afa3dcda9b56a0b8eec6f5f36f41502dc6ab75d5efefc85891fde3cb",
+      "canonical_source_chars": 6919,
+      "canonical_reader_manifest_path": "data/controlled_publications/the-open-window/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "3e9f1a07afa3dcda9b56a0b8eec6f5f36f41502dc6ab75d5efefc85891fde3cb",
+      "root_source_chars": 6919,
+      "backend_source_sha256": "3e9f1a07afa3dcda9b56a0b8eec6f5f36f41502dc6ab75d5efefc85891fde3cb",
+      "backend_source_chars": 6919,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/the-open-window/source_evidence.json",
+        "data/controlled_publications/the-open-window/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/the-open-window/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/the-open-window/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUTOMATED_AUDITION_NOT_APPROVED: LATEST STUDIO_B_TWILIGHT SAMPLE SCORED 7.2 WITH ROBOTIC_AND_MECHANICAL_FATAL_FLAGS; HUMAN_NARRATION_OR_EXPLICIT_ALTERNATE_PROVIDER_APPROVAL_REQUIRED"
+    },
+    {
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/sredni-vashtar/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+      "canonical_source_chars": 10374,
+      "canonical_reader_manifest_path": "data/controlled_publications/sredni-vashtar/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+      "root_source_chars": 10374,
+      "backend_source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+      "backend_source_chars": 10374,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/sredni-vashtar/source_evidence.json",
+        "data/controlled_publications/sredni-vashtar/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275477/earnalism/covers/back/sredni-vashtar_back_1600x2400.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/sredni-vashtar/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/sredni-vashtar/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHECKSUM_SOURCE_QA_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/dsires-baby/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "587455ed554ef64d19f0ea7dcd31940d242aa759f5132b6514b130efa4a64a89",
+      "canonical_source_chars": 11974,
+      "canonical_reader_manifest_path": "data/controlled_publications/dsires-baby/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "587455ed554ef64d19f0ea7dcd31940d242aa759f5132b6514b130efa4a64a89",
+      "root_source_chars": 11974,
+      "backend_source_sha256": "587455ed554ef64d19f0ea7dcd31940d242aa759f5132b6514b130efa4a64a89",
+      "backend_source_chars": 11974,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/dsires-baby/source_evidence.json",
+        "data/controlled_publications/dsires-baby/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275510/earnalism/covers/front/dsires-baby_front_1600x2400.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275514/earnalism/covers/back/dsires-baby_back_1600x2400.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/dsires-baby/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/dsires-baby/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHECKSUM_SOURCE_QA_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "title": "The Cop and the Anthem",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/the-cop-and-the-anthem/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "c0b36ffec25e389cd57133b025e9055ecf16e75c5a541380251f7c99d843ef9f",
+      "canonical_source_chars": 13233,
+      "canonical_reader_manifest_path": "data/controlled_publications/the-cop-and-the-anthem/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "c0b36ffec25e389cd57133b025e9055ecf16e75c5a541380251f7c99d843ef9f",
+      "root_source_chars": 13233,
+      "backend_source_sha256": "c0b36ffec25e389cd57133b025e9055ecf16e75c5a541380251f7c99d843ef9f",
+      "backend_source_chars": 13233,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/the-cop-and-the-anthem/source_evidence.json",
+        "data/controlled_publications/the-cop-and-the-anthem/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_DIRECT_FRONT_BACK",
+      "cover_front_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275534/earnalism/covers/front/the-cop-and-the-anthem_front_1600x2400.png",
+      "cover_back_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275537/earnalism/covers/back/the-cop-and-the-anthem_back_1600x2400.png",
+      "cover_evidence_paths": [
+        "data/controlled_publications/the-cop-and-the-anthem/public_book.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/the-cop-and-the-anthem/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHECKSUM_SOURCE_QA_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/the-last-leaf/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "f1281c55388f41893d10ecac60944c704ae0d0571cbdb7d09d67cd124ccd432d",
+      "canonical_source_chars": 12936,
+      "canonical_reader_manifest_path": "data/controlled_publications/the-last-leaf/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "f1281c55388f41893d10ecac60944c704ae0d0571cbdb7d09d67cd124ccd432d",
+      "root_source_chars": 12936,
+      "backend_source_sha256": "f1281c55388f41893d10ecac60944c704ae0d0571cbdb7d09d67cd124ccd432d",
+      "backend_source_chars": 12936,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/the-last-leaf/source_evidence.json",
+        "data/controlled_publications/the-last-leaf/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "BLOCKED_NO_APPROVED_FRONT_BACK_OR_EXPLICIT_FALLBACK",
+      "cover_front_url": null,
+      "cover_back_url": null,
+      "cover_evidence_paths": [
+        "data/controlled_publications/the-last-leaf/public_book.json",
+        "graphical_cover_generation_report.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment_final.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/the-last-leaf/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "APPROVED_FRONT_AND_BACK_COVER_EVIDENCE_REQUIRED; AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHECKSUM_SOURCE_QA_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/the-masque-of-the-red-death/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "4044f55c14bad61d0ba2af3ce8fa5c5d6e98878498f8976034a44f156d74fff8",
+      "canonical_source_chars": 13886,
+      "canonical_reader_manifest_path": "data/controlled_publications/the-masque-of-the-red-death/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "4044f55c14bad61d0ba2af3ce8fa5c5d6e98878498f8976034a44f156d74fff8",
+      "root_source_chars": 13886,
+      "backend_source_sha256": "4044f55c14bad61d0ba2af3ce8fa5c5d6e98878498f8976034a44f156d74fff8",
+      "backend_source_chars": 13886,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/the-masque-of-the-red-death/source_evidence.json",
+        "data/controlled_publications/the-masque-of-the-red-death/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "BLOCKED_NO_APPROVED_FRONT_BACK_OR_EXPLICIT_FALLBACK",
+      "cover_front_url": null,
+      "cover_back_url": null,
+      "cover_evidence_paths": [
+        "data/controlled_publications/the-masque-of-the-red-death/public_book.json",
+        "graphical_cover_generation_report.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment_final.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/the-masque-of-the-red-death/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "APPROVED_FRONT_AND_BACK_COVER_EVIDENCE_REQUIRED; AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHECKSUM_SOURCE_QA_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "title": "The Yellow Wallpaper",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/the-yellow-wallpaper/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "9fd5bcecd51b2033192b62a87b4278c630e12eaebf1cd7c9d5e6243e1c478a3e",
+      "canonical_source_chars": 31800,
+      "canonical_reader_manifest_path": "data/controlled_publications/the-yellow-wallpaper/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "9fd5bcecd51b2033192b62a87b4278c630e12eaebf1cd7c9d5e6243e1c478a3e",
+      "root_source_chars": 31800,
+      "backend_source_sha256": "9fd5bcecd51b2033192b62a87b4278c630e12eaebf1cd7c9d5e6243e1c478a3e",
+      "backend_source_chars": 31800,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/the-yellow-wallpaper/source_evidence.json",
+        "data/controlled_publications/the-yellow-wallpaper/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_GRAPHICAL_RUNTIME_FALLBACK",
+      "cover_front_url": null,
+      "cover_back_url": null,
+      "cover_evidence_paths": [
+        "graphical_cover_generation_report.json",
+        "internal/earnalism_intelligence/cover_acceptance_policy.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/the-yellow-wallpaper/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHECKSUM_SOURCE_QA_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "title": "The Monkey's Paw",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/the-monkeys-paw/chapters",
+      "canonical_source_file_count": 3,
+      "canonical_source_sha256": "dd2d51938751b06ab49f84e7734f9b195056cb5b3bb658778d479624035b8fbd",
+      "canonical_source_chars": 22076,
+      "canonical_reader_manifest_path": "data/controlled_publications/the-monkeys-paw/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "dd2d51938751b06ab49f84e7734f9b195056cb5b3bb658778d479624035b8fbd",
+      "root_source_chars": 22076,
+      "backend_source_sha256": "dd2d51938751b06ab49f84e7734f9b195056cb5b3bb658778d479624035b8fbd",
+      "backend_source_chars": 22076,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/the-monkeys-paw/source_evidence.json",
+        "data/controlled_publications/the-monkeys-paw/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "BLOCKED_NO_APPROVED_FRONT_BACK_OR_EXPLICIT_FALLBACK",
+      "cover_front_url": null,
+      "cover_back_url": null,
+      "cover_evidence_paths": [
+        "data/controlled_publications/the-monkeys-paw/public_book.json",
+        "graphical_cover_generation_report.json",
+        "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment_final.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/the-monkeys-paw/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "APPROVED_FRONT_AND_BACK_COVER_EVIDENCE_REQUIRED; AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHECKSUM_SOURCE_QA_PREFLIGHT_REQUIRED"
+    },
+    {
+      "slug": "the-necklace",
+      "title": "The Necklace",
+      "language": "English",
+      "matrix_cost_strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "canonical_source_path": "data/controlled_publications/the-necklace/chapters",
+      "canonical_source_file_count": 1,
+      "canonical_source_sha256": "1fcc13e8afa53c8a818623b3383a110f014063634ab8b1a16eb615e54f6ad0e7",
+      "canonical_source_chars": 16095,
+      "canonical_reader_manifest_path": "data/controlled_publications/the-necklace/reader_manifest.json",
+      "canonical_reader_manifest_chapter_count_match": true,
+      "source_reconciliation_status": "ROOT_BACKEND_MATCH",
+      "root_source_sha256": "1fcc13e8afa53c8a818623b3383a110f014063634ab8b1a16eb615e54f6ad0e7",
+      "root_source_chars": 16095,
+      "backend_source_sha256": "1fcc13e8afa53c8a818623b3383a110f014063634ab8b1a16eb615e54f6ad0e7",
+      "backend_source_chars": 16095,
+      "manifest_inclusion": {
+        "status": "CONTROLLED_READER_MANIFEST_ONLY",
+        "import_manifest_included": false,
+        "import_manifest_paths": [],
+        "root_reader_manifest_present": true,
+        "backend_reader_manifest_present": true
+      },
+      "rights_status": "PASS",
+      "rights_evidence_paths": [
+        "data/controlled_publications/the-necklace/source_evidence.json",
+        "data/controlled_publications/the-necklace/approval_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "cover_status": "PASS_GRAPHICAL_RUNTIME_FALLBACK",
+      "cover_front_url": null,
+      "cover_back_url": null,
+      "cover_evidence_paths": [
+        "graphical_cover_generation_report.json",
+        "internal/earnalism_intelligence/cover_acceptance_policy.json"
+      ],
+      "sanitation_status": "PASS",
+      "sanitation_scan_findings": [],
+      "sanitation_review_note": null,
+      "sanitation_evidence_paths": [
+        "data/controlled_publications/the-necklace/source_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/sprint1_publication_matrix.json"
+      ],
+      "ready_for_audition": false,
+      "exact_blocker": "AUDITION_NOT_NEXT_STAGE: NON_PAID_PRIVATE_ASSET_CHECKSUM_SOURCE_QA_PREFLIGHT_REQUIRED"
+    }
+  ]
+}

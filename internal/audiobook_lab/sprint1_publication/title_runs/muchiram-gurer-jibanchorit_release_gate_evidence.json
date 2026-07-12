@@ -1,25 +1,97 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-07-12T19:35:15Z",
+  "schema_version": 2,
+  "generated_at": "2026-07-12T22:04:03Z",
   "slug": "muchiram-gurer-jibanchorit",
   "title": "মুচিরাম গুড়ের জীবনচরিত",
   "language": "Bengali",
-  "assigned_lane": {
-    "lane": 2,
-    "role": "Short Bengali High-ROI Lane",
-    "agent_id": "019f57d2-7210-7930-96bd-df620ee5d77d",
-    "agent_nickname": "Galileo"
-  },
+  "classification": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+  "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
   "publicly_rendered_book": "Yes",
   "publicly_available_audiobook": "No",
-  "quality_score": "0.039/10 ASR-source; representative timed out",
-  "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
-  "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
-  "estimated_remaining_cost_usd": 0.1447,
-  "evidence_path": "internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T150228Z/goliveevidence.json",
-  "next_action": "Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied",
-  "next_command": "python3 internal/audiobook_lab/scripts/bengali_tts_provider_bakeoff.py --manifest book_import_manifest.batch-1.json --candidate-slugs muchiram-gurer-jibanchorit --max-passages 1 --max-seconds-per-sample 20 --providers sarvam --max-voices-per-provider 1 --voice-filter sarvam:ratan --style-profiles literary_warm_pacing --bengali-audiobook-92-rescue --fail-closed --run-dir internal/audiobook_lab/sprint1_publication/muchiram_split_audition",
-  "provider_calls_ran_this_sprint": false,
-  "release_gate_mutated_this_sprint": false,
-  "public_audio_approved_this_sprint": false
+  "quality_score": "Representative pass 9.3/0.95 did not survive full-book QA; full-book minimum 7.8/0.85 with fatal flags",
+  "exact_blocker": "AUTOMATED_PROVIDER_PATH_PLATEAUED; FULL_BOOK_LISTENING_GATE_FAILED; HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+  "blockers": [
+    "Full-book listening minimum 7.8 is below the Bengali owner minimum 9.2.",
+    "Full-book QA recorded robotic texture, mechanical cadence, and list-reading rhythm.",
+    "Two targeted repair auditions remained below threshold and repeated fatal delivery flags."
+  ],
+  "source_binding": {
+    "controlled_source_hash": "733466ffdadc8f5c0172023edd5c0ba7327387d65d0c46b1b881a26e303e800a",
+    "full_candidate_audio_sha256": "dcafb32f428da7cff43a7fadc1db7ca79eed80880886abab250f4f886dcdea1a"
+  },
+  "provider_attempts": [
+    {
+      "scope": "representative_audition_non_release_pass",
+      "provider": "google",
+      "model": "google-cloud-texttospeech",
+      "voice": "bn-IN-Chirp3-HD-Aoede",
+      "style_profile": "literary_warm_pacing",
+      "scores": [9.4, 9.5, 9.3, 9.5],
+      "representative_score": 9.3,
+      "minimum_confidence": 0.95,
+      "fatal_flags": [],
+      "status": "PASS_REPRESENTATIVE_ONLY_NOT_RELEASE_APPROVAL",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_chirp_audition/bengali_representative_audition_report.json",
+      "lock_report": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_chirp_audition_lock_report.json"
+    },
+    {
+      "scope": "full_book_qa",
+      "provider": "google",
+      "voice": "bn-IN-Chirp3-HD-Aoede",
+      "scores": [9.4, 9.5, 9.4, 9.4, 8.0, 7.8],
+      "minimum_score": 7.8,
+      "minimum_confidence": 0.85,
+      "fatal_flags": [
+        "list_reading_rhythm_detected",
+        "mechanical_cadence_detected",
+        "robotic_texture_detected"
+      ],
+      "audio_sha256": "dcafb32f428da7cff43a7fadc1db7ca79eed80880886abab250f4f886dcdea1a",
+      "status": "FULL_RELEASE_QA_BLOCKED",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_full_qa.json"
+    },
+    {
+      "scope": "targeted_repair_audition",
+      "provider": "google",
+      "model": "google-cloud-texttospeech",
+      "voice": "bn-IN-Chirp3-HD-Achird",
+      "style_profile": "literary_warm_pacing",
+      "scores": [9.5, 9.4, 7.4, 7.8],
+      "representative_score": 7.4,
+      "minimum_confidence": 0.85,
+      "fatal_flags": [
+        "list_reading_rhythm_detected",
+        "mechanical_cadence_detected",
+        "robotic_texture_detected"
+      ],
+      "status": "AUDIO_PROVIDER_QUALITY_LIMIT",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_targeted_repair_audition/bengali_representative_audition_report.json",
+      "lock_report": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_targeted_repair_audition_lock_report.json"
+    },
+    {
+      "scope": "final_targeted_repair_audition",
+      "provider": "google",
+      "model": "google-cloud-texttospeech",
+      "voice": "bn-IN-Chirp3-HD-Aoede",
+      "style_profile": "literary_warm_pacing",
+      "scores": [9.4, 9.4, 7.9, 7.8],
+      "representative_score": 7.8,
+      "minimum_confidence": 0.85,
+      "fatal_flags": [
+        "list_reading_rhythm_detected",
+        "mechanical_cadence_detected",
+        "robotic_texture_detected"
+      ],
+      "status": "AUDIO_PROVIDER_QUALITY_LIMIT",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_aoede_slow_repair_audition/bengali_representative_audition_report.json",
+      "lock_report": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_aoede_slow_repair_lock_report.json"
+    }
+  ],
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug muchiram-gurer-jibanchorit --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "next_action": "Obtain source-bound human narration or separately approved licensed alternate-provider audio, then run the exact received-audio command and every downstream release gate.",
+  "historical_provider_calls_recorded": true,
+  "provider_calls_ran_this_task": false,
+  "release_gate_mutated_this_task": false,
+  "publication_performed_this_task": false,
+  "audio_copied_this_task": false
 }

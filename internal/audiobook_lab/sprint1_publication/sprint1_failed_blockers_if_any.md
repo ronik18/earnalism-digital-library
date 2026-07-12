@@ -1,6 +1,6 @@
 # Sprint 1 Stage 2 Remaining Blockers
 
-Generated: `2026-07-12T18:57:04Z`
+Generated: `2026-07-12T22:00:32Z`
 
 No title is marked public audio without complete release evidence.
 
@@ -53,40 +53,47 @@ python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest boo
 
 ## muchiram-gurer-jibanchorit / মুচিরাম গুড়ের জীবনচরিত
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Status: `HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED`
+- Blocker: `AUTOMATED_NARRATION_PLATEAU: FULL_BOOK_MIN_7.8_CONFIDENCE_0.85_WITH_ROBOTIC_MECHANICAL_LIST_READING_FATAL_FLAGS; TARGETED_ACHIRD_MIN_7.4; TARGETED_AOEDE_SLOW_MIN_7.8`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
+- Conservative estimated spend: `$2.1834`; actual provider billing unknown.
+- The source-bound packet exists at `internal/audiobook_lab/sprint1_publication/human_narration_packets/muchiram-gurer-jibanchorit`. Automated paid retries stop.
 - Next command:
 
 ```bash
-python3 internal/audiobook_lab/scripts/bengali_tts_provider_bakeoff.py --manifest book_import_manifest.json --candidate-slugs muchiram-gurer-jibanchorit --max-passages 1 --max-seconds-per-sample 20 --providers sarvam --max-voices-per-provider 1 --voice-filter sarvam:ratan --style-profiles literary_warm_pacing --bengali-audiobook-92-rescue --fail-closed --run-dir internal/audiobook_lab/sprint1_publication/muchiram_split_audition
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug muchiram-gurer-jibanchorit --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav
 ```
 
 ## book-d19e96859f / গিন্নি
 
-- Status: `PROVIDER_RETRY_REQUIRED`
-- Blocker: `PAID_RUNTIME_ENV_GATES_MISSING; HISTORICAL_GROUP_REPAIR_CHUNKS_UNAVAILABLE`
+- Status: `AUTOMATED_ASR_ARMS_EXHAUSTED_NORMALIZATION_REPAIR_REQUIRED_PRIVATE_TTS_PASS`
+- Blocker: `RAW_ASR_SOURCE_0.6838_BELOW_REQUIRED_9.7; CONSTRUCTION_AUDIT_10.0_IS_NOT_AN_ASR_SUBSTITUTE; UPLOAD_RELEASE_PUBLICATION_BLOCKED`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Prepared narration: `6,485` characters, `998` words, SHA-256 `79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe`
-- Passed arm: Sarvam `bulbul:v3` / `pooja` / `dialogue_human_touch`, `9.4`, confidence `0.95`, no fatal flags
-- Fresh TTS + ASR + configured QA estimate: `$0.1433`
-- Exact inline caps and approvals are recorded in `title_runs/book-d19e96859f_stage2f_preflight.json`.
+- Private passes preserved separately: full Google TTS, six listening samples at `9.4` with confidence `0.95` and no fatal flags, and measured paragraph/stanza sync with `auto_estimated_sync=false`.
+- Objective ASR failure: raw ASR/source `0.6838` is below `9.7`; the construction audit `10.0` is provenance evidence only.
+- Conservative estimated spend: `$1.0408`; actual provider billing unknown.
+- Upload, release-packet, admin metadata, endpoint, browser-release, and publication actions are not next and remain blocked.
 - Next command:
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_stage2f_book_d19_full_tts.py --execute
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/bengali_asr_normalization.py --self-test
 ```
 
 ## book-f5d593e1f4 / রামকানাইয়ের নির্বুদ্ধিতা
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Status: `HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED`
+- Blocker: `GOOGLE_AOEDE_MIN_7.8_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS; SARVAM_POOJA_MIN_7.8_BELOW_BENGALI_9.2_GATE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
+- Conservative estimated spend: `$0.62788`; actual provider billing unknown.
+- The source-bound packet exists at `internal/audiobook_lab/sprint1_publication/human_narration_packets/book-f5d593e1f4`. Automated paid retries stop.
 - Next command:
 
 ```bash
-python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.json --slugs book-f5d593e1f4 --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-f5d593e1f4 --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav
 ```
 
 ## pather-panchali / পথের পাঁচালী / Pather Panchali
@@ -234,24 +241,28 @@ python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest boo
 
 ## the-gift-of-the-magi / The Gift of the Magi
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Status: `HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED`
+- Blocker: `STUDIO_C_MIN_8.5; CHIRP_AOEDE_MIN_7.2_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS; CONTEXTUAL_STUDIO_C_MIN_8.3`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
+- Conservative estimated spend: `$0.6734`; actual provider billing unknown.
 - Next command:
 
 ```bash
-python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.json --book-slug the-gift-of-the-magi --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-gift-of-the-magi --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets
 ```
 
 ## the-tell-tale-heart / The Tell-Tale Heart
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Status: `HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED`
+- Blocker: `CONTEXTUAL_STUDIO_C_MIN_8.5; SLOW_CONTEXTUAL_STUDIO_C_MIN_8.4`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
+- Conservative estimated spend: `$0.44604`; actual provider billing unknown.
 - Next command:
 
 ```bash
-python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.json --book-slug the-tell-tale-heart --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-tell-tale-heart --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets
 ```
 
 ## the-open-window / The Open Window
@@ -274,13 +285,15 @@ PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare
 
 ## sredni-vashtar / Sredni Vashtar
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Status: `HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED`
+- Blocker: `STUDIO_C_MIN_7.3_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS; CHIRP_ACHIRD_MIN_8.5_BELOW_ENGLISH_9.3_GATE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
+- Conservative estimated spend: `$0.42788`; actual provider billing unknown.
 - Next command:
 
 ```bash
-python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.json --book-slug sredni-vashtar --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug sredni-vashtar --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets
 ```
 
 ## dsires-baby / Désirée's Baby
@@ -360,16 +373,15 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.json --book-slug the-necklace --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com
 ```
 
-## Parallel Sprint Runtime Blocker
+## Conservative Spend Checkpoint
 
-- State: `PAID_EXECUTION_BLOCKED_RUNTIME_GATES_MISSING`
-- Scope: all newly paid Sprint 1 TTS, ASR, and listening-QA work.
-- Provider credentials are present for Sarvam, OpenAI, and Google, but the required budget/approval variables are absent from the live shell.
-- The coordinator did not acquire `paid_tts.lock`, did not call a provider, and did not mutate any release gate.
-- First executable paid repair: `book-d19e96859f`, using the exact inline command in `internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_preflight.json`.
+- Conservative estimated spend: `$9.75400 / $175`.
+- Estimated remaining budget: `$165.24600`.
+- Actual provider billing: `UNKNOWN_NOT_REPORTED_BY_PROVIDERS`.
+- No new publication or public release-state mutation is claimed by this reconciliation.
 
 ## Release-Truth Containment
 
-- `book-2b9853ec52` and `a-ghost-story`: approved audio files, hashes, manifests, and range endpoints pass; production Reader playback requires the pending timestamp-schema frontend deploy.
+- Public audiobooks remain exactly `book-2b9853ec52` and `a-ghost-story`; all other Sprint 1 titles remain audio-hidden.
 - Alice and Nishkriti plus six non-Sprint blocked titles: direct URLs were removed from current controlled-publication packets, but already-known Cloudinary/B2 objects remain reachable until storage credentials permit revocation/privacy changes.
 - `/audio/*`: source fix pending deployment routes this legacy namespace to removed-content rather than SPA HTML.

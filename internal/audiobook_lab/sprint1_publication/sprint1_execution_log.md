@@ -1,6 +1,6 @@
 # Sprint 1 Publication Stage 2 Execution Log
 
-Generated: `2026-07-12T18:57:04Z`
+Generated: `2026-07-12T22:00:32Z`
 
 1. Loaded active Earnalism intelligence, Sprint 1 matrices, release evidence, and lock state.
 2. Confirmed 32 active audio targets and 2 deferred long classics.
@@ -80,3 +80,14 @@ Generated: `2026-07-12T18:57:04Z`
 76. Production validation identified eight blocked titles with 88 direct storage URL occurrences in controlled publication packets. The repo fields were scrubbed fail-closed; approved book 2b and A Ghost Story packets were unchanged.
 77. Remote Cloudinary/B2 objects still require revocation or privacy changes because no storage credentials are present.
 78. Removed the legacy static `/audio/*` SPA/cache path by routing it to removed-content.
+79. Reconciled serialized evidence through the final D19 ASR repair checkpoint at a conservative estimated `$9.75400 / $175`; estimated remaining budget is `$165.24600`, while actual provider billing remains unknown.
+80. Confirmed release truth remains exactly 32 public readers and two public audiobooks: `book-2b9853ec52` and `a-ghost-story`. This reconciliation claims zero new publications and made no code, lock, audio, upload, metadata, endpoint, deployment, or release-state mutation.
+81. D19's later private Google candidate passes full TTS, six listening samples at `9.4` with confidence `0.95` and no fatal flags, and measured paragraph/stanza sync with `auto_estimated_sync=false`.
+82. Corrected D19's objective release truth: raw ASR/source is `0.6838`, below mandatory `9.7`. The construction audit `10.0` is source-provenance evidence only and is not an ASR substitute.
+83. Classified D19 as `AUTOMATED_ASR_ARMS_EXHAUSTED_NORMALIZATION_REPAIR_REQUIRED_PRIVATE_TTS_PASS`. Upload, release-packet construction, admin metadata mutation, endpoint enablement, browser release QA, and publication remain blocked.
+84. Muchiram's full private QA bottomed at `7.8`, confidence `0.85`, with robotic, mechanical, and list-reading fatal flags; targeted Achird and slower Aoede attempts bottomed at `7.4` and `7.8`. It moves to its prepared source-bound narration/licensed-audio packet.
+85. F5's Google Aoede and Sarvam Pooja bounded auditions both bottomed at `7.8`; the Google attempt carried robotic/mechanical fatal flags. It moves to its prepared source-bound narration/licensed-audio packet.
+86. Sredni Vashtar failed Studio-C at `7.3` with robotic/mechanical flags and Chirp Achird at `8.5`. The Gift of the Magi failed three bounded auditions at `8.5`, `7.2`, and `8.3`, with robotic/mechanical flags on Chirp Aoede. The Tell-Tale Heart failed contextual and slow-contextual Studio-C at `8.5` and `8.4`.
+87. Classified Sredni, Gift, and Tell as `HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED`; each next command builds a source-bound packet without provider or publication work.
+88. Preserved the two deferred long classics, every other title's exclusion/defer rule, and every unaffected per-title blocker and next command.
+89. Final D19 ASR probes: Google `latest_long`/`bn-IN` unsupported; OpenAI `gpt-4o-transcribe`/`bn` best `6.7606`. Next exact command: `PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/bengali_asr_normalization.py --self-test`.

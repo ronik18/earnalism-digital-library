@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T21:54:41Z",
+  "generated_at": "2026-07-12T22:08:41Z",
   "policy_version": "bengali_audiobook_acceptance_v2_92",
   "total_titles": 31,
   "source": "bengali_audiobook_pilot_selection_report.json",
@@ -44,12 +44,31 @@
       "cover_status": "PASS",
       "reader_route_status": "PASS",
       "prior_audio_status": "reader_only_audio_hidden",
-      "known_blockers": [],
+      "known_blockers": [
+        "full-book listening failed on late passages",
+        "targeted Achird and slower Aoede repairs repeated sub-threshold fatal delivery failures",
+        "human narration or licensed audio candidate required"
+      ],
       "candidate_rank": 2,
-      "selected_strategy": "adaptive_sarvam_after_pilot",
-      "current_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
-      "best_representative_settings": null,
-      "next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path."
+      "selected_strategy": "source_bound_human_narration_packet",
+      "current_campaign_state": "HUMAN_NARRATION_REQUIRED",
+      "best_representative_settings": {
+        "provider": "google",
+        "model": "google-cloud-texttospeech",
+        "voice": "bn-IN-Chirp3-HD-Aoede",
+        "style_profile": "literary_warm_pacing",
+        "score": 9.3,
+        "confidence": 0.95,
+        "full_book_generalized": false
+      },
+      "attempt_history": {
+        "full_private_listening_scores": [9.4, 9.5, 9.4, 9.4, 8.0, 7.8],
+        "full_private_fatal_flags": ["list_reading_rhythm_detected", "mechanical_cadence_detected", "robotic_texture_detected"],
+        "achird_targeted_repair_representative_score": 7.4,
+        "aoede_slow_repair_representative_score": 7.8
+      },
+      "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/muchiram-gurer-jibanchorit",
+      "next_action": "Obtain source-bound human narration through the prepared packet, then run complete source, listening, measured-sync, upload, metadata, endpoint, and browser validation."
     },
     {
       "slug": "book-d19e96859f",
@@ -65,22 +84,47 @@
       "reader_route_status": "PASS",
       "prior_audio_status": "reader_only_audio_hidden",
       "known_blockers": [
+        "raw audio-derived ASR/source 0.6838 is below the strict 9.7 gate",
+        "automated Bengali ASR arms exhausted; normalization and human alignment review required",
+        "checksum-verified upload proof not run",
+        "admin metadata approval not run",
+        "public endpoint remains 404 and hash binding is unproven",
+        "browser gate not run"
+      ],
+      "resolved_prior_blockers": [
         "paid runtime budget and approval gates missing",
         "historical group-repair chunks unavailable",
         "fresh full TTS and downstream release QA required"
       ],
       "candidate_rank": 3,
-      "selected_strategy": "fresh_full_title_sarvam_then_full_qa",
-      "current_campaign_state": "TITLE_SPECIFIC_REPRESENTATIVE_PASS_FULL_REGENERATION_RUNTIME_GATES_REQUIRED",
+      "selected_strategy": "nonpaid_bengali_normalization_repair_and_human_alignment_review_on_existing_google_aoede_private_audio",
+      "current_campaign_state": "PRIVATE_TTS_LISTENING_SYNC_PASS_AUTOMATED_ASR_ARMS_EXHAUSTED",
       "best_representative_settings": {
-        "provider": "sarvam",
-        "model": "bulbul:v3",
-        "voice": "pooja",
-        "style_profile": "dialogue_human_touch",
+        "provider": "google",
+        "model": "google-cloud-texttospeech",
+        "voice": "bn-IN-Chirp3-HD-Aoede",
+        "style_profile": "literary_warm_pacing",
         "score": 9.4,
         "confidence": 0.95
       },
-      "next_action": "Supply the Stage 2F inline caps and approvals, run one lock-safe fresh full-title regeneration, then complete every objective release gate."
+      "private_candidate_qa": {
+        "tts_listening_sync_status": "PASS",
+        "asr_gate_status": "FAIL_ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED",
+        "raw_audio_derived_asr_source_score": 0.6838,
+        "required_asr_source_score": 9.7,
+        "construction_audit_score": 10.0,
+        "construction_audit_satisfies_asr_gate": false,
+        "listening_scores": [9.4, 9.4, 9.4, 9.4, 9.4, 9.4],
+        "minimum_confidence": 0.95,
+        "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+        "auto_estimated_sync": false,
+        "publication_performed": false,
+        "public_audio_status": "AUDIO_HIDDEN_NOT_PUBLIC",
+        "evidence": "internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json",
+        "supporting_private_qa_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json"
+      },
+      "scale_gate": "NO_BENGALI_CANARY_SCALING_UNLESS_D19_RAW_ASR_REACHES_9_7_AND_D19_PUBLISHES",
+      "next_action": "Do not repeat Google default/latest_long or OpenAI mini/full transcription arms. Run non-paid normalization repair and human alignment review from saved transcripts; do not upload or publish unless audio-derived ASR/source reaches at least 9.7."
     },
     {
       "slug": "book-4968248842",
@@ -135,12 +179,24 @@
       "cover_status": "PASS",
       "reader_route_status": "PASS",
       "prior_audio_status": "reader_only_audio_hidden",
-      "known_blockers": [],
+      "known_blockers": [
+        "Google Aoede and Sarvam Pooja repeated the same sub-threshold punctuation-heavy passage",
+        "automated provider path plateaued",
+        "human narration or licensed audio candidate required"
+      ],
       "candidate_rank": 6,
-      "selected_strategy": "adaptive_sarvam_after_pilot",
-      "current_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+      "selected_strategy": "source_bound_human_narration_packet",
+      "current_campaign_state": "HUMAN_NARRATION_REQUIRED",
       "best_representative_settings": null,
-      "next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path."
+      "attempt_history": {
+        "google_aoede_representative_score": 7.8,
+        "google_aoede_confidence": 0.85,
+        "sarvam_pooja_representative_score": 7.8,
+        "sarvam_pooja_confidence": 0.85,
+        "repeated_weak_passage": "punctuation_heavy"
+      },
+      "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/book-f5d593e1f4",
+      "next_action": "Obtain source-bound human narration through the prepared packet, then run complete source, listening, measured-sync, upload, metadata, endpoint, and browser validation."
     },
     {
       "slug": "book-fbdf2991ab",
