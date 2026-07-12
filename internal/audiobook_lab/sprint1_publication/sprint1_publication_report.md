@@ -1,6 +1,6 @@
 # Sprint 1 Publication Stage 2 Report
 
-Generated: `2026-07-12T17:00:00Z`
+Generated: `2026-07-12T17:22:03Z`
 
 ## Outcome
 
@@ -10,8 +10,8 @@ Generated: `2026-07-12T17:00:00Z`
 - Current public audiobooks: `2/32` in production
 - New public audiobooks: `1`
 - Provider calls: bounded Google auditions/full TTS and bounded OpenAI ASR/listening QA for A Ghost Story only
-- Estimated Stage 2B through Stage 2D spend: `$3.6328`; actual provider billing was not reported
-- Authorized budget remaining after estimate: `$171.3672`
+- Estimated Stage 2B through Stage 2D plus The Open Window auditions: `$4.0684`; actual provider billing was not reported
+- Authorized budget remaining after estimate: `$170.9316`
 - Remaining known queue estimate: `$97.5724`
 - Production API: `32/32 book routes and 32/32 manifests HTTP 200`
 - Production browser: prior `132/132` desktop/mobile route checks pass; Stage 2D book and reader release-state checks pass
@@ -49,7 +49,7 @@ Stage 2B supplied every required cap in the same process and ran exactly six bou
 | `alices-adventures-in-wonderland` | Alice's Adventures in Wonderland | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/alices-adventures-in-wonderland.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `the-gift-of-the-magi` | The Gift of the Magi | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-gift-of-the-magi.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `the-tell-tale-heart` | The Tell-Tale Heart | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-tell-tale-heart.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
-| `the-open-window` | The Open Window | English | Yes | No | Non-paid ASR re-evaluation 9.7826 with title-prefixed audio manuscript; Piper/synthetic provenance blocked | `internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_release_gate_evidence.json` | $0.0000 | AUDIO_HIDDEN_DISALLOWED_PIPER_PROVENANCE_REPLACEMENT_REQUIRED |
+| `the-open-window` | The Open Window | English | Yes | No | Google Studio-C baseline 8.0-9.4; one prosody retry 8.5-9.5, confidence 0.90-0.95, no fatal flags; twilight transition remains below 9.4 | `internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_release_gate_evidence.json` | $0.4356 estimated; actual not reported | AUDIO_HIDDEN_GOOGLE_STUDIO_C_TWILIGHT_TRANSITION_REPAIR_REQUIRED |
 | `sredni-vashtar` | Sredni Vashtar | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/sredni-vashtar.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `dsires-baby` | Désirée's Baby | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/dsires-baby.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `the-cop-and-the-anthem` | The Cop and the Anthem | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-cop-and-the-anthem.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
@@ -92,3 +92,9 @@ Full QA passed at `9.88` ASR/source, first/last PASS, and six listening samples 
 Release PR `#105` and cache repair PR `#106` are merged. Railway deployment `8a14b747-b0f3-4da9-903c-96734ab58b2d` serves the approved A Ghost Story manifest and ranged audio proxy. Production UI shows the evidence-backed approval badge, Listen link, section-following narration control, and a fully buffered audio element. No static `/audio/...`, browser speech, word-level claim, or non-approved `AudioObject` is present.
 
 The in-app browser could not start media for either A Ghost Story or the existing approved `book-2b9853ec52` control, so this observation is isolated to that browser runtime rather than the new endpoint. The main regression and GO LIVE workflows pass. k6 recorded `32,808/32,808` functional checks with zero HTTP failures; only catalog p95 measured `1.28s` against its separate `1.20s` threshold. Performance work remains outside this audio repair authorization.
+
+## Stage 2D Queue Continuation: The Open Window
+
+The controlled reader source, rights, sanitation, and covers remain valid, while the historical Piper asset remains ineligible. A new lock-safe Google Studio-C wrapper bound four sub-30-second samples to the sanitized source hash and ran schema-3 listening QA. Baseline scores were `9.4`, `8.4`, `8.0`, and `8.4`. One source-preserving prosody retry improved them to `9.5`, `9.4`, `8.5`, and `9.4`, with no fatal flags.
+
+The twilight transition still failed the `9.4` owner minimum, so no full TTS, upload, manifest mutation, or publication ran. The title remains reader-public/audio-hidden with a separately owner-approved Studio-B audition as the exact next repair action.

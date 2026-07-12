@@ -1,6 +1,6 @@
 # Sprint 1 Publication Stage 2 Execution Log
 
-Generated: `2026-07-12T17:00:00Z`
+Generated: `2026-07-12T17:22:03Z`
 
 1. Loaded active Earnalism intelligence, Sprint 1 matrices, release evidence, and lock state.
 2. Confirmed 32 active audio targets and 2 deferred long classics.
@@ -47,3 +47,8 @@ Generated: `2026-07-12T17:00:00Z`
 43. Production book UI shows `Audiobook Approved`, `Listen in Reader`, and `Section-following narration`; the reader creates a fully buffered approved audio element with no static fallback, browser speech, word-level claim, or non-approved `AudioObject`.
 44. In-app media start was unavailable for both A Ghost Story and the existing approved `book-2b9853ec52` control, isolating the observation to that browser runtime rather than the new release endpoint.
 45. Main regression and GO LIVE workflows passed. k6 completed `32,808/32,808` checks with zero HTTP failures; only the separately scoped catalog p95 threshold missed at `1.28s` versus `1.20s`, with no performance code change made in this sprint.
+46. Three read-only sub-agent lanes audited The Open Window, the Bengali repair canaries, and Radharani/Nishkriti in parallel. They made no edits, provider calls, lock changes, or publication changes.
+47. Added a title-specific The Open Window Google audition wrapper with controlled-source hash binding, four sub-30-second story passages, cumulative title/sprint budget guards, repeat-attempt protection, and byte-for-byte lock restoration. Six focused tests and schema-3 regression checks pass.
+48. Google Studio-C baseline representative scores were `9.4`, `8.4`, `8.0`, and `8.4`; one authorized source-preserving prosody retry improved them to `9.5`, `9.4`, `8.5`, and `9.4`. No fatal flags were detected.
+49. The twilight transition remained below the `9.4` owner minimum, so The Open Window stayed audio-hidden. No full TTS, upload, release-gate mutation, or publication ran.
+50. Estimated The Open Window audition spend is `$0.4356`; cumulative Sprint 1 estimated spend is `$4.0684`, with `$170.9316` remaining. Actual provider billing was not reported, and the lock restored to its exact pre-run SHA-256 after both attempts.

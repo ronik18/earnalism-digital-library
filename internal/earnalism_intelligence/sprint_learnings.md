@@ -294,3 +294,12 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Bump the controlled-publication truth-gate cache version whenever release semantics change so Redis cannot preserve stale public manifests after deployment.
 - Reader-manifest ETags must include release gate, QA, sync, and truth-gate semantics. Redis invalidation alone is insufficient because browsers can otherwise keep an older manifest body after a `304 Not Modified` response.
 - Version frontend manifest request URLs with the release-truth schema. This gives deployed clients an immediate cache boundary when a legacy ETag has already escaped into browser caches.
+
+## 2026-07-12 A Ghost Story Production Release And The Open Window Queue Continuation
+
+- A Ghost Story reached production `Yes + Yes` only after Google Studio-C full narration passed ASR/source `9.88`, first/last checks, and six listening samples at `9.4-9.5`, then B2 checksum, ranged endpoint, manifest, frontend, and production gates passed.
+- When release semantics change, bump both backend truth-gate and frontend manifest-request cache versions; otherwise a valid new publication can remain hidden behind a stale manifest body.
+- Do not treat in-app media-start failure as title-specific when the same runtime behavior reproduces on an established approved control and both media elements are fully buffered with valid `206` endpoints.
+- The Open Window proves provider success is title-specific: Studio-C passed A Ghost Story but scored `8.0-9.4` on baseline Saki passages and `8.5-9.5` after one prosody retry.
+- The Open Window twilight transition remains the precise blocker. Do not repeat either Studio-C fingerprint, do not reuse the Piper asset, and do not start full TTS until a fresh representative voice passes every passage.
+- Parallel agents can safely audit rights, sanitation, existing assets, and repair commands, but paid provider lanes and publication metadata remain serialized through their locks and the governor must verify every returned gate.

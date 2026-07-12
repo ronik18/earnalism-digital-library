@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T11:12:26Z",
+  "generated_at": "2026-07-12T17:22:03Z",
   "slug": "the-open-window",
   "title": "The Open Window",
   "language": "English",
@@ -28,8 +28,31 @@
     "title_prefixed_first_words_match": true,
     "title_prefixed_last_words_match": true
   },
-  "classification": "AUDIO_HIDDEN_DISALLOWED_PIPER_PROVENANCE_REPLACEMENT_REQUIRED",
-  "provider_calls_ran": false,
+  "stage2d_replacement_auditions": {
+    "provider": "google",
+    "voice": "en-GB-Studio-C",
+    "baseline": {
+      "status": "AUDITION_REPAIR_REQUIRED",
+      "scores": [9.4, 8.4, 8.0, 8.4],
+      "minimum_confidence": 0.85,
+      "fatal_flags": [],
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_stage2d_google_audition_en_gb_studio_c.json"
+    },
+    "single_prosody_retry": {
+      "status": "AUDITION_REPAIR_REQUIRED",
+      "scores": [9.5, 9.4, 8.5, 9.4],
+      "minimum_confidence": 0.9,
+      "fatal_flags": [],
+      "weak_passage": "twilight_return",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_stage2d_google_audition_en_gb_studio_c_prosody_repair.json"
+    },
+    "estimated_spend_usd": 0.4356,
+    "actual_provider_billing": "NOT_REPORTED",
+    "lock_restored": true
+  },
+  "classification": "AUDIO_HIDDEN_GOOGLE_STUDIO_C_TWILIGHT_TRANSITION_REPAIR_REQUIRED",
+  "provider_calls_ran": true,
   "release_gate_mutated": false,
-  "next_command": "gcloud auth application-default login"
+  "next_action": "Obtain owner approval for one bounded Studio-B replacement audition; do not run full TTS until all representative passages pass.",
+  "next_command": "PYTHONDONTWRITEBYTECODE=1 SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=1 EARNALISM_GOOGLE_TTS_ESTIMATED_USD_PER_1K_CHARS=0.02 EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=2 EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD=0.05 EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio python3 internal/audiobook_lab/scripts/sprint1_stage2d_the_open_window_google_audition.py --voice en-GB-Studio-B --prior-sprint-estimated-spend-usd 4.0684 --prior-title-estimated-spend-usd 0.4356 --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root /tmp/earnalism-the-open-window-stage2d-google-audition"
 }
