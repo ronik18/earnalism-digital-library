@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-07-12T15:24:05Z",
+  "generated_at": "2026-07-12T17:00:00Z",
   "slug": "a-ghost-story",
   "title": "A Ghost Story",
   "language": "English",
@@ -22,15 +22,15 @@
     "manifest_validation": "PASS_LOCAL_CONTROLLED_ARTIFACT",
     "remote_upload_checksum": "PASS_ALL_5_ARTIFACTS",
     "range_request": "PASS_HTTP_206_1024_BYTES",
-    "endpoint_validation": "PENDING_NORMAL_DEPLOYMENT",
-    "frontend_release_state": "PASS_LOCAL_TESTS_PENDING_PRODUCTION",
-    "production_route_validation": "PENDING_NORMAL_DEPLOYMENT",
+    "endpoint_validation": "PASS_PRODUCTION_HTTP_206_RANGE_1024_BYTES",
+    "frontend_release_state": "PASS_PRODUCTION_APPROVED_BADGE_LISTEN_AND_SECTION_FOLLOWING_CONTROLS",
+    "production_route_validation": "PASS_PRODUCTION_BOOK_READER_MANIFEST_AND_AUDIO_PROXY",
     "owner_release_decision": "PASS_CONDITIONAL_AUTHORIZATION_TRIGGERED",
     "no_static_audio_fallback": "PASS",
     "no_browser_speech_fallback": "PASS",
     "no_word_level_sync_claim": "PASS",
     "no_nonapproved_audio_object": "PASS",
-    "no_broken_endpoint": "PENDING_NORMAL_DEPLOYMENT"
+    "no_broken_endpoint": "PASS_PRODUCTION_HTTP_206"
   },
   "measured_quality": {
     "quality_10_claimed": false,
@@ -64,11 +64,34 @@
     "restored": true,
     "sha256": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
   },
+  "production_validation": {
+    "validated_at": "2026-07-12T17:00:00Z",
+    "release_pr": 105,
+    "release_merge_commit": "684165108fa0fc6b9e87517f517ca10daf881fba",
+    "cache_repair_pr": 106,
+    "production_main_commit": "3d357bb164f850b081c13fd8fc23ccbd3896eee3",
+    "railway_deployment": "8a14b747-b0f3-4da9-903c-96734ab58b2d",
+    "manifest_audio_enabled": true,
+    "manifest_release_gate": "APPROVED",
+    "manifest_qa_status": "QA_PASSED",
+    "audio_proxy_http": 206,
+    "audio_proxy_range_bytes": 1024,
+    "book_page_approved_badge": true,
+    "book_page_listen_link": true,
+    "reader_audio_element_ready_state": 4,
+    "reader_copy": "Section-following narration",
+    "in_app_browser_playback_observation": "MEDIA_START_UNAVAILABLE_IN_BROWSER_RUNTIME_FOR_BOTH_A_GHOST_STORY_AND_EXISTING_APPROVED_BOOK_2B_CONTROL",
+    "functional_endpoint_regression": false,
+    "book_2b_still_approved": true,
+    "bn_066_still_audio_hidden": true,
+    "k6_functional_checks": "PASS_32808_OF_32808_ZERO_HTTP_FAILURES",
+    "k6_catalog_p95": "1.28s_OVER_1.20s_THRESHOLD_NONFUNCTIONAL_BACKLOG"
+  },
   "can_publish_audio_now": true,
-  "source_publication_status": "READY_FOR_PR",
-  "production_publication_status": "PENDING_NORMAL_DEPLOYMENT",
-  "final_status": "RELEASE_GATES_PASS_SOURCE_PUBLICATION_READY",
-  "exact_blocker": "NORMAL_PR_CHECKS_DEPLOYMENT_AND_PRODUCTION_VALIDATION_PENDING",
-  "next_action": "Open the focused release PR, merge after green checks, then validate production manifest, endpoint, range request, and UI.",
-  "next_command": "gh pr create --base main --head codex/a-ghost-story-alternate-provider --title 'Publish A Ghost Story audiobook after alternate-provider QA' --body-file /tmp/a-ghost-story-stage2d-pr-body.md"
+  "source_publication_status": "MERGED_PR_105",
+  "production_publication_status": "DEPLOYED_AND_VALIDATED",
+  "final_status": "YES_PLUS_YES_PRODUCTION_VALIDATED",
+  "exact_blocker": "NONE",
+  "next_action": "Monitor the approved endpoint and continue the Sprint 1 queue with The Open Window replacement-provider audition.",
+  "next_command": "curl -sS -H 'Range: bytes=0-1023' -o /dev/null -w '%{http_code} %{size_download}\\n' https://api.theearnalism.com/api/reader/book/a-ghost-story/audiobook"
 }

@@ -9,8 +9,8 @@ Owner decision: `AUTHORIZE_STAGE_2D_A_GHOST_STORY_ALTERNATE_PROVIDER_REPAIR_AND_
 - Public reader: `YES`
 - Alternate-provider release QA: `PASS`
 - Verified B2 upload: `PASS`
-- Public source packet: `READY_FOR_PR`
-- Production audiobook: `PENDING_NORMAL_DEPLOYMENT`
+- Public source packet: `MERGED_PR_105`
+- Production audiobook: `DEPLOYED_AND_VALIDATED`
 - Quality claim: measured release minimum passed; `10/10` is not claimed.
 
 ## Diagnosis And Repair
@@ -42,6 +42,18 @@ The existing upload hook stored the MP3, timestamps, VTT, chapters, and metadata
 
 No generated audio is stored under `frontend/public` or `frontend/build`.
 
+## Production Validation
+
+- Release PR `#105` merged as `684165108fa0fc6b9e87517f517ca10daf881fba`.
+- Manifest cache repair PR `#106` merged as `3d357bb164f850b081c13fd8fc23ccbd3896eee3`.
+- Railway deployment `8a14b747-b0f3-4da9-903c-96734ab58b2d` succeeded.
+- Production manifest reports `audio.enabled=true`, Google `en-GB-Studio-C`, `APPROVED`, and `QA_PASSED`.
+- Production audio proxy returned HTTP `206` and exactly `1,024` requested bytes.
+- Production book UI shows `Audiobook Approved`, `Listen in Reader`, and `Section-following narration`.
+- The reader creates a fully buffered approved audio element with no static `/audio/...`, browser speech, word-level claim, or non-approved `AudioObject`.
+- The in-app browser could not start media for either A Ghost Story or the existing approved `book-2b9853ec52` control. This is recorded as a browser-runtime limitation, not an A Ghost Story endpoint regression.
+- The main regression and GO LIVE workflows passed. k6 completed `32,808/32,808` checks with zero HTTP failures; its separate catalog p95 threshold measured `1.28s` against `1.20s` and remains an authorized performance backlog item.
+
 ## Budget
 
 - Authorized Sprint 1 cap: `$175.00`
@@ -60,5 +72,5 @@ No generated audio is stored under `frontend/public` or `frontend/build`.
 ## Next Command
 
 ```sh
-gh pr create --base main --head codex/a-ghost-story-alternate-provider --title "Publish A Ghost Story audiobook after alternate-provider QA" --body-file /tmp/a-ghost-story-stage2d-pr-body.md
+curl -sS -H 'Range: bytes=0-1023' -o /dev/null -w '%{http_code} %{size_download}\n' https://api.theearnalism.com/api/reader/book/a-ghost-story/audiobook
 ```

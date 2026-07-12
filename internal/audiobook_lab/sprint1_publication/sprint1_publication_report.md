@@ -1,20 +1,20 @@
 # Sprint 1 Publication Stage 2 Report
 
-Generated: `2026-07-12T15:24:05Z`
+Generated: `2026-07-12T17:00:00Z`
 
 ## Outcome
 
 - Sprint target: `INCOMPLETE`
 - Current public readers: `32/32`
 - Reader repairs merged/deployed from PR #101: `17`
-- Current public audiobooks: `2/32` after the Stage 2D release source deploys
+- Current public audiobooks: `2/32` in production
 - New public audiobooks: `1`
 - Provider calls: bounded Google auditions/full TTS and bounded OpenAI ASR/listening QA for A Ghost Story only
 - Estimated Stage 2B through Stage 2D spend: `$3.6328`; actual provider billing was not reported
 - Authorized budget remaining after estimate: `$171.3672`
 - Remaining known queue estimate: `$97.5724`
 - Production API: `32/32 book routes and 32/32 manifests HTTP 200`
-- Production browser: `132/132 desktop/mobile checks pass`
+- Production browser: prior `132/132` desktop/mobile route checks pass; Stage 2D book and reader release-state checks pass
 
 ## Reader Repair
 
@@ -86,3 +86,9 @@ The Open Window was processed non-paid. Production reader routes are healthy, sa
 Google ADC was restored. Baseline Studio-B and Studio-C auditions reproduced the weak middle cadence, while one source-preserving Studio-C prosody repair passed all three representative samples at `9.4`, confidence `0.95`, with no fatal flags. Because safe cross-provider segment splicing was unavailable, one new full Studio-C candidate was generated in nine sentence-safe chunks.
 
 Full QA passed at `9.88` ASR/source, first/last PASS, and six listening samples of `9.4-9.5` with minimum confidence `0.95` and no fatal flags. The existing upload hook then stored five B2 artifacts and verified every remote SHA-256 and byte size. A direct MP3 range request returned `206` and 1,024 bytes. The release source packet exposes only section-following narration and does not claim deterministic `10/10` or word-level sync.
+
+## Stage 2D Production Closeout
+
+Release PR `#105` and cache repair PR `#106` are merged. Railway deployment `8a14b747-b0f3-4da9-903c-96734ab58b2d` serves the approved A Ghost Story manifest and ranged audio proxy. Production UI shows the evidence-backed approval badge, Listen link, section-following narration control, and a fully buffered audio element. No static `/audio/...`, browser speech, word-level claim, or non-approved `AudioObject` is present.
+
+The in-app browser could not start media for either A Ghost Story or the existing approved `book-2b9853ec52` control, so this observation is isolated to that browser runtime rather than the new endpoint. The main regression and GO LIVE workflows pass. k6 recorded `32,808/32,808` functional checks with zero HTTP failures; only catalog p95 measured `1.28s` against its separate `1.20s` threshold. Performance work remains outside this audio repair authorization.
