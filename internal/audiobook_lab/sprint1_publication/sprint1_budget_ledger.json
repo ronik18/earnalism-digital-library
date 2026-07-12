@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-07-12T22:08:44Z",
+  "generated_at": "2026-07-12T22:56:24Z",
   "currency": "USD",
   "owner_decision": "AUTHORIZE_PARALLEL_SPRINT1_PUBLIC_READER_AND_AUDIOBOOK_LIVE_EXECUTION_WITH_175_USD_CAP",
   "caps": {
@@ -9,15 +9,15 @@
   },
   "accounting": {
     "prior_reconciled_estimated_spend_usd": 4.2862,
-    "estimated_increase_since_prior_reconciliation_usd": 5.4678,
-    "cumulative_conservative_estimated_spend_usd": 9.754,
-    "budget_remaining_after_estimated_spend_usd": 165.246,
-    "budget_used_percent": 5.57371,
+    "estimated_increase_since_prior_reconciliation_usd": 5.8904,
+    "cumulative_conservative_estimated_spend_usd": 10.1766,
+    "budget_remaining_after_estimated_spend_usd": 164.8234,
+    "budget_used_percent": 5.8152,
     "actual_spend_usd": null,
     "actual_billing_status": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
     "accounting_basis": "Latest completed serialized wrapper cumulative estimate; estimates are not provider invoices.",
-    "authoritative_checkpoint_source": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_openai_bn_asr_repair_calibration.json",
-    "authoritative_checkpoint_finished_at": "2026-07-12T22:08:44Z"
+    "authoritative_checkpoint_source": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2g_full_qa.json",
+    "authoritative_checkpoint_finished_at": "2026-07-12T22:56:24Z"
   },
   "entries": [
     {
@@ -36,6 +36,15 @@
       "actual_spend_usd": null,
       "actual_billing_status": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
       "status": "RECONCILED_FROM_LATEST_COMPLETED_SERIALIZED_CHECKPOINT"
+    },
+    {
+      "entry_id": "book-d19e96859f-stage2g-sarvam-tts-asr-listening-qa",
+      "scope": "Fresh title-only Sarvam full TTS plus bounded ASR and six-sample listening QA; release blocked",
+      "conservative_estimated_spend_usd": 0.4226,
+      "cumulative_conservative_estimated_spend_usd": 10.1766,
+      "actual_spend_usd": null,
+      "actual_billing_status": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
+      "status": "RECONCILED_STAGE2G_FAIL_CLOSED"
     }
   ],
   "checkpoint_chain_tail": [
@@ -266,18 +275,42 @@
       "lock_restored": true,
       "result": "BELOW_ASR_SOURCE_THRESHOLD_BEST_6_7606",
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_openai_bn_asr_repair_calibration.json"
+    },
+    {
+      "stage": "d19_stage2g_sarvam_full_tts",
+      "finished_at": "2026-07-12T22:54:11Z",
+      "prior_estimated_spend_usd": 9.754,
+      "estimated_stage_usd": 0.0389,
+      "estimated_cumulative_checkpoint_usd": 9.7929,
+      "provider_calls_ran": true,
+      "actual_provider_billing": "NOT_REPORTED",
+      "lock_restored": true,
+      "result": "PRIVATE_FULL_TTS_PASS_5_FRESH_GROUPS",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_preflight.json"
+    },
+    {
+      "stage": "d19_stage2g_asr_and_listening_qa",
+      "finished_at": "2026-07-12T22:56:24Z",
+      "prior_estimated_spend_usd": 9.7929,
+      "estimated_stage_usd": 0.3837,
+      "estimated_cumulative_checkpoint_usd": 10.1766,
+      "provider_calls_ran": true,
+      "actual_provider_billing": "NOT_REPORTED",
+      "lock_restored": true,
+      "result": "ASR_SOURCE_MISMATCH_AND_LISTENING_QA_REPAIR_REQUIRED",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2g_full_qa.json"
     }
   ],
   "overlapping_title_estimates_not_additive": [
     {
       "slug": "book-d19e96859f",
-      "estimated_title_total_usd": 0.4975,
-      "status": "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED_PRIVATE_TTS_PASS_NOT_RELEASE_READY",
-      "raw_asr_source_score": 0.6838,
+      "estimated_title_total_usd": 1.5318,
+      "status": "ASR_SOURCE_MISMATCH_LISTENING_QA_REPAIR_REQUIRED_AUDIO_HIDDEN",
+      "raw_asr_source_score": 1.3504,
       "global_asr_source_gate_min": 9.7,
-      "private_tts_listening_sync_passed": true,
+      "private_tts_listening_sync_passed": false,
       "actual_provider_billing": "NOT_REPORTED",
-      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_qa.json"
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2g_full_qa.json"
     },
     {
       "slug": "muchiram-gurer-jibanchorit",
@@ -292,11 +325,11 @@
     "paid_execution_serialized": true,
     "maximum_concurrent_paid_calls": 1,
     "next_paid_stage_authorized": false,
-    "prior_checkpoint_required_usd": 9.754,
+    "prior_checkpoint_required_usd": 10.1766,
     "actual_billing_must_remain_unknown_until_reported": true,
     "plateaued_attempts_must_not_repeat": true,
-    "lock_status": "RESTORED_BYTE_FOR_BYTE_AFTER_EVERY_RECONCILED_TTS_AND_LISTENING_QA_STAGE; NOT_TOUCHED_BY_THIS_RECONCILIATION",
-    "next_serialized_action": "NO_PAID_CALL; D19_NONPAID_BENGALI_ASR_NORMALIZATION_REPAIR_AND_HUMAN_ALIGNMENT_REVIEW"
+    "lock_status": "RESTORED_BYTE_FOR_BYTE_AFTER_STAGE2G_TTS_ASR_AND_LISTENING_QA",
+    "next_serialized_action": "NO_PAID_CALL; VALIDATE_SOURCE_BOUND_HUMAN_NARRATION_OR_LICENSED_AUDIO_WHEN_RECEIVED"
   },
   "reconciliation_invariants": {
     "prior_plus_increment_equals_checkpoint": true,
@@ -305,8 +338,10 @@
     "all_completed_chain_entries_through_cutoff_are_booked": true,
     "all_reconciled_tts_and_listening_wrappers_restored_lock": true,
     "no_new_publication_or_release_mutation": true,
-    "d19_raw_asr_0_6838_fails_global_9_7_gate": true,
+    "d19_raw_asr_1_3504_fails_global_9_7_gate": true,
+    "d19_listening_minimum_8_0_and_confidence_0_85_fail": true,
+    "d19_first_and_last_audio_boundaries_fail": true,
     "d19_not_release_ready": true
   },
-  "next_exact_command": "python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json >/dev/null && python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json >/dev/null && jq -e '.accounting.cumulative_conservative_estimated_spend_usd == 9.754 and .accounting.actual_spend_usd == null and .accounting.budget_remaining_after_estimated_spend_usd == 165.246 and ((.accounting.cumulative_conservative_estimated_spend_usd + .accounting.budget_remaining_after_estimated_spend_usd) == .caps.sprint_total_usd)' internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json >/dev/null"
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
 }

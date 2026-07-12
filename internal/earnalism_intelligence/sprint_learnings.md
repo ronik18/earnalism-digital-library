@@ -331,3 +331,11 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Contextual English risk sampling fixed false contextlessness in the judged sample selection, but it did not manufacture a pass; the sub-threshold scores remain release blockers.
 - Paid calls were serialized. Conservative estimated Sprint 1 spend is `$9.75400`; actual provider billing remains unknown. `paid_tts.lock` was restored byte-for-byte.
 - Next generated prompt: `Coordinator: assign one bounded ASR language-configuration repair on existing D19 private audio with an explicit ASR cap and an untried language/model fingerprint. Do not regenerate TTS, repeat listening QA, upload, mutate metadata, or publish; require raw audio-derived ASR/source >= 9.7 before proceeding.`
+
+## 2026-07-13 D19 Stage 2G Sarvam Full-TTS Fail-Closed QA
+
+- A passing representative audition does not guarantee full-title listening quality. D19's Sarvam Pooja full candidate passed generation but three of six samples scored `8.0`, confidence fell to `0.85`, and list-reading rhythm was fatal.
+- Raw audio-derived ASR must remain authoritative. The Stage 2G verifier now prevents a `10.0` construction audit or prepared-text boundary check from substituting for raw ASR/source `1.3504` and failed first/last boundaries.
+- After Google and Sarvam both fail distinct release gates, another automated retry is not the cheapest safe action. The durable next track is source-bound human narration or licensed audio with the same full QA contract.
+- Stage 2G estimated spend is `$0.4226`; cumulative Sprint estimate is `$10.1766 / $175`. Actual provider billing remains unknown.
+- No upload, publication, release-state mutation, or public Listen exposure occurred. The lock restored byte-for-byte.

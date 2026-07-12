@@ -19,6 +19,39 @@ SPEC.loader.exec_module(qa)
 
 
 class Stage2FD19QATests(unittest.TestCase):
+    def test_runtime_gate_accepts_tighter_positive_stage_caps(self) -> None:
+        env = dict(qa.EXPECTED_ENV)
+        env.update(
+            {
+                "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "1",
+                "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "1",
+                "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "1",
+                "OPENAI_API_KEY": "redacted-test-key",
+            }
+        )
+        with mock.patch.dict(qa.os.environ, env, clear=True):
+            self.assertEqual(qa.runtime_gate_errors(), [])
+
+    def test_runtime_gate_rejects_missing_or_nonpositive_stage_caps(self) -> None:
+        env = dict(qa.EXPECTED_ENV)
+        env.update(
+            {
+                "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "0",
+                "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "not-a-number",
+                "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "nan",
+                "OPENAI_API_KEY": "redacted-test-key",
+            }
+        )
+        with mock.patch.dict(qa.os.environ, env, clear=True):
+            errors = qa.runtime_gate_errors()
+        self.assertTrue(any("EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD" in error for error in errors))
+        self.assertTrue(any("EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD" in error for error in errors))
+        self.assertTrue(any("EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD" in error for error in errors))
+
+    def test_tts_cost_uses_sarvam_metric_without_default_drift(self) -> None:
+        self.assertEqual(qa.tts_cost_from_metrics({"metrics": {"tts_estimated_cost": 0.0389}}), 0.0389)
+        self.assertEqual(qa.tts_cost_from_metrics({"metrics": {"estimated_tts_usd": 0.02}}), 0.02)
+
     def test_lock_requires_closed_active_state(self) -> None:
         raw = json.dumps({"status": "active", "current_holder": "none", "allowed_next_holders": []}).encode()
         self.assertEqual(qa.load_lock(raw)["current_holder"], "none")
@@ -48,14 +81,23 @@ class Stage2FD19QATests(unittest.TestCase):
         samples[0]["judge_flags"]["robotic_texture_detected"] = True
         self.assertFalse(qa.owner_listening_gate(samples)["passes"])
 
-    def test_construction_source_gate_preserves_weak_raw_asr(self) -> None:
+    def test_construction_source_gate_cannot_replace_weak_raw_asr(self) -> None:
         hook = {"metrics": {"source_match_score": 10.0, "source_verification_method": "clean_tts_source_provenance_static_audit"}}
         diagnosis = {"score": 1.5, "first_words_match": False, "last_words_match": False}
         construction = {"tts_by_construction_verified": True, "first_last_tts_input_boundary_pass": True}
         result = qa.effective_source_gate(hook, diagnosis, construction)
+        self.assertFalse(result["passes"])
+        self.assertEqual(result["score"], 1.5)
+        self.assertEqual(result["construction_source_match_score"], 10.0)
+        self.assertTrue(result["construction_verified"])
+
+    def test_raw_asr_and_audio_boundaries_can_pass_with_construction_support(self) -> None:
+        hook = {"metrics": {"source_match_score": 10.0, "source_verification_method": "clean_tts_source_provenance_static_audit"}}
+        diagnosis = {"score": 9.8, "first_words_match": True, "last_words_match": True}
+        construction = {"tts_by_construction_verified": True, "first_last_tts_input_boundary_pass": True}
+        result = qa.effective_source_gate(hook, diagnosis, construction)
         self.assertTrue(result["passes"])
-        self.assertEqual(result["score"], 10.0)
-        self.assertEqual(diagnosis["score"], 1.5)
+        self.assertEqual(result["method"], "asr_transcript")
 
     def test_google_manifest_materializes_hash_checked_compatibility_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

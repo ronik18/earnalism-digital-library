@@ -91,3 +91,10 @@ Generated: `2026-07-12T22:00:32Z`
 87. Classified Sredni, Gift, and Tell as `HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED`; each next command builds a source-bound packet without provider or publication work.
 88. Preserved the two deferred long classics, every other title's exclusion/defer rule, and every unaffected per-title blocker and next command.
 89. Final D19 ASR probes: Google `latest_long`/`bn-IN` unsupported; OpenAI `gpt-4o-transcribe`/`bn` best `6.7606`. Next exact command: `PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/bengali_asr_normalization.py --self-test`.
+90. Stage 2G ran the owner-authorized title-only Sarvam `bulbul:v3` / `pooja` / `dialogue_human_touch` wrapper for D19 under `$1` title-pilot, ASR, and listening sub-caps. Five fresh groups produced a private `627.875833s` MP3 with no fallback, local, or stale reuse.
+91. The QA verifier now requires raw audio-derived ASR and explicit audio-derived first/last checks; the static construction audit can only support provenance and cannot satisfy the release gate.
+92. Raw ASR/source scored `1.3504 / 10`; first and last checks failed. Six listening samples scored `8.0`, `8.0`, `9.4`, `9.4`, `9.4`, and `8.0`; minimum confidence was `0.85`, with fatal list-reading rhythm.
+93. D19 is `ASR_SOURCE_MISMATCH` with secondary `LISTENING_QA_REPAIR_REQUIRED`. No upload, release packet, metadata mutation, endpoint enablement, deployment, or publication ran.
+94. Stage 2G estimated spend is `$0.4226`; cumulative Sprint estimate is `$10.1766 / $175`, leaving `$164.8234`. Actual provider billing remains unknown.
+95. The lock restored byte-for-byte to SHA-256 `ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e`, active with no holder or allowed next holders.
+96. Automated Google and Sarvam D19 retries stop. The next executable track is the generated source-bound human narration packet followed by received-audio validation and full release QA.

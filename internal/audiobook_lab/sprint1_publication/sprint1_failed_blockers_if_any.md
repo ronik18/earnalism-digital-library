@@ -67,19 +67,22 @@ PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration
 
 ## book-d19e96859f / গিন্নি
 
-- Status: `AUTOMATED_ASR_ARMS_EXHAUSTED_NORMALIZATION_REPAIR_REQUIRED_PRIVATE_TTS_PASS`
-- Blocker: `RAW_ASR_SOURCE_0.6838_BELOW_REQUIRED_9.7; CONSTRUCTION_AUDIT_10.0_IS_NOT_AN_ASR_SUBSTITUTE; UPLOAD_RELEASE_PUBLICATION_BLOCKED`
+- Status: `ASR_SOURCE_MISMATCH`
+- Secondary status: `LISTENING_QA_REPAIR_REQUIRED`
+- Blocker: `STAGE2G_RAW_ASR_SOURCE_1.3504_BELOW_REQUIRED_9.7; FIRST_LAST_ASR_WORDS_FAILED; LISTENING_MINIMUM_8.0_CONFIDENCE_0.85_WITH_FATAL_LIST_READING_RHYTHM`
 - Reader HTTP: `200`
-- Manifest HTTP: `200`
-- Prepared narration: `6,485` characters, `998` words, SHA-256 `79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe`
-- Private passes preserved separately: full Google TTS, six listening samples at `9.4` with confidence `0.95` and no fatal flags, and measured paragraph/stanza sync with `auto_estimated_sync=false`.
-- Objective ASR failure: raw ASR/source `0.6838` is below `9.7`; the construction audit `10.0` is provenance evidence only.
-- Conservative estimated spend: `$1.1092`; actual provider billing unknown.
-- Upload, release-packet, admin metadata, endpoint, browser-release, and publication actions are not next and remain blocked.
+- Manifest HTTP: `200`, audio disabled with zero assets.
+- Prepared narration: `6,485` characters, `998` words, SHA-256 `79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe`.
+- Fresh Sarvam full TTS: PASS, five groups, no fallback/local/stale reuse, private audio only.
+- Objective failures: raw ASR/source `1.3504 / 10`, first/last false, listening scores `8.0, 8.0, 9.4, 9.4, 9.4, 8.0`, confidence `0.85`, fatal list-reading rhythm.
+- Construction audit `10.0` is provenance evidence only and is not an ASR substitute.
+- Conservative estimated spend: `$1.5318` title cumulative; `$0.4226` Stage 2G; actual provider billing unknown.
+- Automated Google and Sarvam retries stop. The source-bound human narration packet is at `internal/audiobook_lab/sprint1_publication/human_narration_packets/book-d19e96859f`.
+- Upload, release packet, metadata, endpoint, browser release, and publication remain blocked.
 - Next command:
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/bengali_asr_normalization.py --self-test
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav
 ```
 
 ## book-f5d593e1f4 / রামকানাইয়ের নির্বুদ্ধিতা
@@ -375,8 +378,8 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## Conservative Spend Checkpoint
 
-- Conservative estimated spend: `$9.75400 / $175`.
-- Estimated remaining budget: `$165.24600`.
+- Conservative estimated spend: `$10.17660 / $175`.
+- Estimated remaining budget: `$164.82340`.
 - Actual provider billing: `UNKNOWN_NOT_REPORTED_BY_PROVIDERS`.
 - No new publication or public release-state mutation is claimed by this reconciliation.
 

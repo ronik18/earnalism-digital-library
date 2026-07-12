@@ -1,42 +1,41 @@
 {
-  "generated_at": "2026-07-12T22:08:44Z",
-  "status": "D19_AUTOMATED_ASR_ARMS_EXHAUSTED_NORMALIZATION_REPAIR_REQUIRED",
+  "generated_at": "2026-07-12T22:56:24Z",
+  "status": "D19_ASR_SOURCE_MISMATCH_HUMAN_NARRATION_REQUIRED",
   "policy_version": "bengali_audiobook_acceptance_v2_92",
   "total_campaign_titles": 31,
   "published_bengali_audiobooks": 0,
   "titles_in_representative_audition": 0,
   "titles_with_representative_gte_9_2": 3,
   "titles_in_full_pilot": 0,
-  "titles_with_private_tts_listening_sync_pass": 1,
-  "titles_needing_human_narration": 2,
+  "titles_with_private_tts_listening_sync_pass": 0,
+  "titles_needing_human_narration": 3,
   "titles_needing_licensed_audio": 0,
   "state_counts": {
     "REPRESENTATIVE_AUDITION_PASSED": 1,
-    "PRIVATE_TTS_LISTENING_SYNC_PASS_ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED": 1,
-    "HUMAN_NARRATION_REQUIRED": 2,
+    "HUMAN_NARRATION_REQUIRED": 3,
     "READY_FOR_REPRESENTATIVE_AUDITION": 27
   },
   "scale_gate": {
     "status": "BLOCKED_UNTIL_D19_RAW_ASR_REACHES_9_7_AND_D19_PUBLISHES",
     "pilot_slug": "book-d19e96859f",
     "next_scale_stage": "THREE_TITLE_CANARY",
-    "rule": "Do not start any Bengali canary or broader wave unless non-paid normalization repair or independently verified alignment reaches audio-derived source score >=9.7 and D19 then completes upload, admin metadata, endpoint hash binding, browser proof, and public publication."
+    "rule": "Do not start any Bengali canary or broader wave unless a source-bound human or licensed D19 candidate reaches audio-derived source score >=9.7, passes listening and boundaries, and completes upload, endpoint, browser, and publication proof."
   },
   "best_settings": {
-    "provider": "google",
-    "model": "google-cloud-texttospeech",
-    "voice": "bn-IN-Chirp3-HD-Aoede",
-    "style_profile": "literary_warm_pacing",
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "pooja",
+    "style_profile": "dialogue_human_touch",
     "representative_score": 9.4,
     "confidence": 0.95
   },
   "full_pilot_score": null,
-  "private_listening_score": 9.4,
-  "asr_score": 0.6838,
+  "private_listening_score": 8.0,
+  "asr_score": 1.3504,
   "asr_score_basis": "raw_audio_derived_asr_source_score",
   "construction_audit_score": 10.0,
   "construction_audit_satisfies_asr_gate": false,
-  "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+  "sync_tier": "NOT_RELEASE_ELIGIBLE_STAGE2G_QA_FAILED",
   "estimated_campaign_cost_policy": {
     "campaign_max_env_present": false,
     "per_title_max_env_present": false,
@@ -69,15 +68,16 @@
     ]
   },
   "duplicate_attempts_avoided": 192,
-  "plateau_strategies_triggered": 2,
+  "plateau_strategies_triggered": 3,
   "latest_paid_run": {
     "paid_calls_serialized": true,
-    "sprint1_conservative_estimated_spend_usd": 9.754,
+    "sprint1_conservative_estimated_spend_usd": 10.1766,
     "actual_provider_billing": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
     "paid_tts_lock_restored": true,
     "bengali_plateau_escalations": [
       "muchiram-gurer-jibanchorit",
-      "book-f5d593e1f4"
+      "book-f5d593e1f4",
+      "book-d19e96859f"
     ]
   },
   "campaign_dashboard_path": "bengali_audiobook_campaign_dashboard.json",
@@ -118,8 +118,8 @@
       "fallback_tts_detected"
     ]
   },
-  "next_exact_command": "python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json >/dev/null",
-  "next_generated_prompt": "Do not repeat the exhausted Google default/latest_long or OpenAI mini/full transcription arms. Repair the conservative Bengali normalization/alignment layer and perform human alignment review from saved transcripts; no upload or publication until audio-derived ASR/source reaches 9.7.",
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "next_generated_prompt": "Obtain source-bound human narration or licensed audio for D19. Validate the received candidate through ASR/source, first/last, listening, upload, endpoint, browser, and production gates; do not repeat failed Google or Sarvam arms.",
   "stage2f_book_d19e96859f": {
     "status": "AUTOMATED_ASR_ARMS_EXHAUSTED_NORMALIZATION_REPAIR_REQUIRED_PRIVATE_TTS_LISTENING_SYNC_PASS",
     "representative_score": 9.4,
@@ -159,5 +159,29 @@
     "supporting_private_qa_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json",
     "next_command": "python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json >/dev/null",
     "next_generated_prompt": "Coordinator: assign one bounded ASR language-configuration repair on existing D19 private audio with an explicit ASR cap and an untried language/model fingerprint. Do not regenerate TTS, repeat listening QA, upload, mutate metadata, or publish; require raw audio-derived ASR/source >= 9.7 before proceeding."
+  },
+  "stage2g_book_d19e96859f": {
+    "status": "ASR_SOURCE_MISMATCH_HUMAN_NARRATION_REQUIRED",
+    "selected_arm": "sarvam/bulbul:v3/pooja/dialogue_human_touch",
+    "full_tts_status": "PASS_PRIVATE_5_FRESH_GROUPS",
+    "raw_audio_derived_asr_source_score": 1.3504,
+    "required_asr_source_score": 9.7,
+    "first_words_match": false,
+    "last_words_match": false,
+    "listening_scores": [8.0, 8.0, 9.4, 9.4, 9.4, 8.0],
+    "minimum_confidence": 0.85,
+    "fatal_flags": ["list_reading_rhythm_detected"],
+    "construction_audit_score": 10.0,
+    "construction_audit_satisfies_asr_gate": false,
+    "estimated_stage2g_usd": 0.4226,
+    "sprint_cumulative_estimated_usd": 10.1766,
+    "actual_provider_billing": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
+    "publication_performed": false,
+    "upload_performed": false,
+    "public_audio_status": "AUDIO_HIDDEN_NOT_PUBLIC",
+    "lock_restored": true,
+    "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json",
+    "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/book-d19e96859f",
+    "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
   }
 }
