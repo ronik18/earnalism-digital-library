@@ -1,64 +1,227 @@
 {
-  "schema_version": 1,
+  "schema_version": 3,
+  "generated_at": "2026-07-12T21:48:24Z",
   "slug": "book-d19e96859f",
   "title": "গিন্নি",
-  "classification": "PROVIDER_RETRY_REQUIRED",
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "language": "ben",
+  "status": "PRIVATE_FULL_TTS_PASS_ASR_REPAIR_REQUIRED",
+  "classification": "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED_PRIVATE_TTS_PASS",
+  "owner_decision": "NO_PUBLICATION_UNTIL_ASR_SOURCE_ALIGNMENT_PASSES",
+  "authorization_scope": "Targeted private ASR and normalization repair only. This is not authorization to upload, publish, mutate production metadata, enable public audio, or claim endpoint proof.",
+  "auto_approval_decision": false,
   "public_reader": true,
   "public_audiobook": false,
-  "can_publish_audio_now": false,
-  "gates": {
-    "source_rights": "PASS",
-    "cover": "PASS",
-    "text_sanitation": "PASS",
-    "text_normalization": "PASS_TTS_ONLY_SOURCE_FRONTMATTER_AND_TRAILING_YEAR_REMOVED",
-    "representative_audition": "PASS_9.4_CONFIDENCE_0.95_NO_FATAL_FLAGS",
-    "full_book_tts": "NOT_RUN_RUNTIME_GATES_MISSING",
-    "asr_source_alignment": "NOT_RUN_FRESH_AUDIO_REQUIRED",
-    "first_words_match": "NOT_RUN_FRESH_AUDIO_REQUIRED",
-    "last_words_match": "NOT_RUN_FRESH_AUDIO_REQUIRED",
-    "listening_qa": "NOT_RUN_FRESH_AUDIO_REQUIRED",
-    "manifest_validation": "PASS_AUDIO_HIDDEN",
-    "endpoint_validation": "NOT_RUN",
-    "frontend_release_state": "PASS_AUDIO_HIDDEN",
-    "production_validation": "PASS_READER_AUDIO_HIDDEN",
-    "owner_release_decision": "CONDITIONAL_AFTER_ALL_GATES_PASS"
+  "publication_performed": false,
+  "upload_performed": false,
+  "release_packet_built": false,
+  "lock_restored": true,
+  "quality_10_claimed": false,
+  "provider": "google",
+  "model": "google-cloud-texttospeech",
+  "voice": "bn-IN-Chirp3-HD-Aoede",
+  "style": "literary_warm_pacing",
+  "hashes": {
+    "controlled_chapter_aggregate_sha256": "ad4532ec513d4241d852a83595c027390b6c8dd2a9196a6d58fdfb84cbed25bf",
+    "controlled_source_traceability_sha256": "44ddaba6e31e687d4eddeb70223d42ac78ab5240db01e4b7d77e8a7ca2e4c8ce",
+    "manuscript_sha256": "79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe",
+    "tts_input_sequence_sha256": "dfc5d4e20d43c740cf8c4ed134151134c3af8bdcbf2ac4ad7da7c4bcc1383971",
+    "audiobook_clean_sequence_sha256": "b75caa0e232a7a6ebb2f6274432fabd70a5f1c6f2f204e36f2856711bdbc809c",
+    "audio_sha256": "d8ccbdda0528ef9b0620638e944b12f5b5ed41d90cdbb0a5a99587fd4a340271",
+    "timestamps_sha256": "bd2497acf357a551b46e230ab4d66e970fe454bd53c891d1e751db838d708143",
+    "vtt_sha256": "8ac849e8391a84e3723f40a943d4bc6735af2394ca9cab46876f5956d1cdcdb8",
+    "chapters_sha256": "e264c7e870cb8b54ae075ed90655fa1098d57abd38c20ea8f1b59ee4d6c1ef0f",
+    "meta_sha256": "2c24bf4c45138874d96635b6f32238dd5706fa9b165370aa981677613db8b36d"
   },
-  "prepared_text": {
-    "characters": 6485,
-    "words": 998,
-    "sha256": "79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe",
-    "group_count": 5,
-    "source_terms": []
+  "source_sha256": "79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe",
+  "audio_hash": "d8ccbdda0528ef9b0620638e944b12f5b5ed41d90cdbb0a5a99587fd4a340271",
+  "source_evidence": {
+    "controlled_chapter_path": "data/controlled_publications/book-d19e96859f/chapters",
+    "controlled_chapter_file_count": 1,
+    "controlled_chapter_characters": 6516,
+    "sanitized_manuscript_path": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/sanitized_manuscript.txt",
+    "sanitized_manuscript_characters": 6485,
+    "sanitized_manuscript_utf8_bytes": 17171,
+    "tts_input_coverage_percent": 100.0,
+    "canonical_to_tts_clean_match_score": 0.9994,
+    "source_verification_method": "clean_tts_source_provenance_static_audit",
+    "tts_by_construction_verified": true
   },
-  "selected_arm": {
-    "provider": "sarvam",
-    "model": "bulbul:v3",
-    "voice": "pooja",
-    "style": "dialogue_human_touch"
+  "audio_size_bytes": 8256813,
+  "audio_duration_seconds": 515.976,
+  "audio": {
+    "private_path": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/book-d19e96859f_bn-in-chirp3-hd-aoede_private_full.mp3",
+    "chunk_count": 6,
+    "fallback_tts_used": false,
+    "local_audio_reused": false,
+    "stale_audio_reused": false
   },
-  "cost": {
-    "estimated_tts_usd": 0.0389,
-    "estimated_asr_usd": 0.0544,
-    "estimated_listening_qa_usd": 0.05,
-    "estimated_repair_pipeline_usd": 0.1433,
-    "actual_stage2f_spend_usd": 0.0
+  "sidecars": {
+    "timestamps": {
+      "path": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/timestamps.json",
+      "size_bytes": 38533
+    },
+    "vtt": {
+      "path": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/highlight.vtt",
+      "size_bytes": 17322
+    },
+    "chapters": {
+      "path": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/chapters.json",
+      "size_bytes": 243
+    },
+    "meta": {
+      "path": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/meta.json",
+      "size_bytes": 1203
+    }
   },
+  "release_gates": {
+    "source_content_toc_integrity_pass": "PASS_ROOT_BACKEND_MATCH",
+    "rights_metadata_pass": "PASS_TIER_A_APPROVED",
+    "covers_pass": "PASS_DIRECT_FRONT_BACK",
+    "asr_manuscript_match_pass": "FAIL_RAW_ASR_SOURCE_0.6838_BELOW_9.7_CONSTRUCTION_AUDIT_NOT_A_SUBSTITUTE",
+    "first_and_last_spans_match": "PASS",
+    "no_missing_duplicated_reordered_content": "PASS_TTS_INPUT_COVERAGE_100_PERCENT",
+    "no_fallback_audio": "PASS",
+    "no_placeholder_audio": "PASS",
+    "upload_checksum_pass": "NOT_RUN_STORAGE_CREDENTIALS_MISSING",
+    "no_stale_or_404_audio": "NOT_RUN_PUBLIC_ENDPOINT_CURRENTLY_404",
+    "metadata_approval_pass": "NOT_RUN_ADMIN_CREDENTIALS_MISSING",
+    "browser_gate_pass": "NOT_RUN_PUBLIC_AUDIO_REMAINS_DISABLED"
+  },
+  "source_match_score": 0.6838,
+  "construction_source_provenance_score": 10.0,
+  "source_verification_method": "clean_tts_source_provenance_static_audit",
+  "tts_by_construction_verified": true,
+  "diagnostic_asr": {
+    "release_status": "FAIL_RELEASE_THRESHOLD",
+    "raw_transcript_match_ratio": 0.6838,
+    "used_as_release_score": false,
+    "note": "The 10.0 static TTS-by-construction provenance audit cannot satisfy the required audio-derived ASR/source score of 9.7."
+  },
+  "first_words_match": true,
+  "last_words_match": true,
+  "owner_listening_gate": {
+    "passes": true,
+    "sample_count": 6,
+    "scores": [
+      9.4,
+      9.4,
+      9.4,
+      9.4,
+      9.4,
+      9.4
+    ],
+    "minimum_overall_score": 9.4,
+    "minimum_confidence": 0.95,
+    "fatal_flags": []
+  },
+  "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+  "sync_granularity": "paragraph_or_stanza",
+  "sync_method": "measured_group_audio_duration",
+  "sync_score": 10.0,
+  "vtt_alignment_score": 10.0,
+  "vtt_drift_ms": 0,
+  "auto_estimated_sync": false,
+  "cost_evidence": {
+    "estimated_google_full_tts_usd": 0.1287,
+    "estimated_current_asr_usd": 0.0688,
+    "estimated_current_listening_qa_usd": 0.3,
+    "estimated_current_qa_usd": 0.3688,
+    "estimated_current_google_tts_plus_qa_usd": 0.4975,
+    "tts_manifest_prior_title_estimated_spend_usd": 0.9724,
+    "tts_manifest_title_estimate_after_google_tts_usd": 1.1011,
+    "actual_provider_billing": "NOT_REPORTED",
+    "provider_calls_ran": true,
+    "cost_note": "The 0.4975 figure is the current Google full-TTS plus current QA estimate. The 1.1011 manifest figure adds only the 0.1287 Google TTS estimate to the manifest's prior title estimate; no unreported actual charge or synthetic cumulative total is claimed."
+  },
+  "paid_tts_lock": {
+    "restored": true,
+    "sha256_before": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e",
+    "sha256_after": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
+  },
+  "current_release_state": {
+    "root_controlled_launch_audio_enabled": false,
+    "backend_controlled_launch_audio_enabled": false,
+    "reader_manifest_audio_enabled": false,
+    "reader_manifest_audiobook_enabled": false,
+    "root_public_book_historical_audio_enabled": true,
+    "root_public_book_historical_audiobook_enabled": true,
+    "backend_public_book_historical_audio_enabled": true,
+    "backend_public_book_historical_audiobook_enabled": true,
+    "local_metadata_note": "The mirrored public_book files retain historical audio-enabled flags, but the reader manifest and both controlled-launch files keep the slug disabled. These historical flags are not endpoint or public-release proof and require release-packet reconciliation before any source mutation.",
+    "public_endpoint_url": "https://api.theearnalism.com/api/reader/book/book-d19e96859f/audiobook",
+    "observed_public_endpoint_http_status": 404,
+    "endpoint_hash_binding_verified": false,
+    "endpoint_proof_available": false,
+    "public_audio_status": "AUDIO_HIDDEN_NOT_PUBLIC"
+  },
+  "credential_preflight": {
+    "storage_backend_available": false,
+    "missing_b2_credentials": [
+      "B2_ACCESS_KEY_ID",
+      "B2_SECRET_ACCESS_KEY",
+      "B2_BUCKET",
+      "B2_S3_ENDPOINT",
+      "B2_REGION"
+    ],
+    "missing_cloudinary_credentials": [
+      "CLOUDINARY_URL",
+      "CLOUDINARY_CLOUD_NAME",
+      "CLOUDINARY_API_KEY",
+      "CLOUDINARY_API_SECRET"
+    ],
+    "missing_admin_credentials": [
+      "EARNALISM_ADMIN_TOKEN",
+      "ADMIN_EMAIL",
+      "ADMIN_PASSWORD"
+    ],
+    "storage_requirement": "Provide the complete B2 credential set or CLOUDINARY_URL, alternatively the complete CLOUDINARY_CLOUD_NAME plus CLOUDINARY_API_KEY plus CLOUDINARY_API_SECRET set.",
+    "admin_requirement": "Provide EARNALISM_ADMIN_TOKEN or both ADMIN_EMAIL and ADMIN_PASSWORD before metadata/endpoint mutation."
+  },
+  "blockers": [
+    "ASR_SOURCE_ALIGNMENT_0.6838_BELOW_9.7",
+    "FIRST_LAST_ASR_WORDS_NOT_PROVEN",
+    "ASR_LANGUAGE_AND_NORMALIZATION_REPAIR_REQUIRED"
+  ],
+  "hook_blockers": [],
+  "failure_reasons": [],
+  "external_release_blockers": [
+    "ASR_SOURCE_ALIGNMENT_GATE_FAILED",
+    "B2_OR_CLOUDINARY_CREDENTIALS_MISSING",
+    "UPLOAD_CHECKSUM_PROOF_NOT_RUN",
+    "ADMIN_CREDENTIALS_MISSING",
+    "METADATA_APPROVAL_NOT_RUN",
+    "PUBLIC_AUDIO_ENDPOINT_CURRENTLY_404",
+    "ENDPOINT_HASH_BINDING_NOT_PROVEN",
+    "BROWSER_GATE_NOT_RUN",
+    "HISTORICAL_LOCAL_PUBLIC_BOOK_AUDIO_FLAGS_REQUIRE_PACKET_RECONCILIATION",
+    "RELEASE_PACKET_NOT_BUILT"
+  ],
   "runtime": {
-    "provider_calls_ran": false,
-    "paid_tts_ran": false,
-    "lock_preflight": "PASS_UNCHANGED",
+    "provider_calls_ran": true,
+    "full_tts_finished_at": "2026-07-12T21:09:50Z",
+    "qa_process_returncode": 0,
     "release_gate_mutated": false,
     "public_audio_exposed": false
   },
   "evidence": {
-    "preflight": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_preflight.json",
-    "representative_audition": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_representative_audition_evidence.json",
-    "report": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_report.md"
+    "full_qa": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_qa.json",
+    "full_tts_manifest": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/google_bengali_full_tts_manifest.json",
+    "tts_hook": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/tts_hook_result.json",
+    "asr_sync_hook": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/asr_sync_hook_result.json",
+    "source_provenance_audit": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/bengali_tts_by_construction_report.json",
+    "listening_quality": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/listening_quality_report.json",
+    "alignment_diagnostics": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/alignment_diagnostics.json",
+    "release_packet_builder": "internal/audiobook_lab/scripts/sprint1_release_packet_builder.py"
   },
-  "blockers": [
-    "PAID_RUNTIME_ENV_GATES_MISSING",
-    "FRESH_FULL_TTS_AND_ALL_DOWNSTREAM_RELEASE_GATES_REQUIRED"
-  ],
-  "next_action": "Run one lock-safe fresh full-title Sarvam regeneration after every recorded runtime cap and approval is supplied.",
-  "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_stage2f_book_d19_full_tts.py --execute"
+  "continuation_commands": {
+    "storage_preflight": "python3 internal/audiobook_lab/scripts/factory_hooks/upload_hook.py --slug book-d19e96859f --run-dir internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts --catalog-run-dir internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts --manifest book_import_manifest.json --language ben --title 'গিন্নি' --author 'রবীন্দ্রনাথ ঠাকুর' --max-attempts 1 --dry-run --fail-closed",
+    "prepare_upload_approval": "cp internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/auto_premium_qa.json",
+    "verified_upload": "python3 internal/audiobook_lab/scripts/factory_hooks/upload_hook.py --slug book-d19e96859f --run-dir internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts --catalog-run-dir internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts --manifest book_import_manifest.json --language ben --title 'গিন্নি' --author 'রবীন্দ্রনাথ ঠাকুর' --max-attempts 1 --fail-closed",
+    "metadata_and_endpoint_after_separate_public_release_authorization": "python3 internal/audiobook_lab/scripts/factory_hooks/metadata_hook.py --slug book-d19e96859f --run-dir internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts --catalog-run-dir internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts --manifest book_import_manifest.json --language ben --title 'গিন্নি' --author 'রবীন্দ্রনাথ ঠাকুর' --max-attempts 1 --fail-closed",
+    "browser_gate_after_metadata_pass": "python3 internal/audiobook_lab/scripts/factory_hooks/browser_hook.py --slug book-d19e96859f --run-dir internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts --catalog-run-dir internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts --manifest book_import_manifest.json --language ben --title 'গিন্নি' --author 'রবীন্দ্রনাথ ঠাকুর' --max-attempts 1 --fail-closed",
+    "local_review_only_release_packet": "python3 internal/audiobook_lab/scripts/sprint1_release_packet_builder.py --qa-evidence internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json --upload-manifest internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/upload_manifest_release_evidence.json --endpoint-proof internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/endpoint_proof.json --output-dir /private/tmp/earnalism-book-d19e96859f-release-packet --source-root /private/tmp/earnalism-sprint1-paid-20260713-1"
+  },
+  "next_action": "Review the exhausted Google/default and OpenAI Bengali ASR calibration evidence, repair the conservative Bengali phonetic-normalization/alignment layer, and rerun alignment from saved transcripts before any upload.",
+  "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/bengali_asr_normalization.py --self-test"
 }

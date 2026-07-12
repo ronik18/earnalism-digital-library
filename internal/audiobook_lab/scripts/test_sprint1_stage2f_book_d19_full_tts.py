@@ -71,6 +71,34 @@ class Stage2FD19Tests(unittest.TestCase):
             path.write_bytes(snapshot)
             self.assertEqual(path.read_bytes(), original)
 
+    def test_zero_exit_blocked_hook_is_not_tts_success(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            run_dir = Path(tmp)
+            (run_dir / "stage_result.json").write_text(
+                json.dumps({"status": "BLOCKED", "ready_for_next_stage": False, "blockers": ["content required"]})
+            )
+            result = stage2f.evaluate_tts_hook_result(0, run_dir)
+        self.assertFalse(result["passed"])
+        self.assertFalse(result["provider_calls_ran"])
+        self.assertEqual(result["hook_status"], "BLOCKED")
+
+    def test_passed_hook_requires_ready_for_next_stage(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            run_dir = Path(tmp)
+            (run_dir / "stage_result.json").write_text(
+                json.dumps(
+                    {
+                        "status": "PASS",
+                        "ready_for_next_stage": True,
+                        "blockers": [],
+                        "metrics": {"audio_regenerated": True},
+                    }
+                )
+            )
+            result = stage2f.evaluate_tts_hook_result(0, run_dir)
+        self.assertTrue(result["passed"])
+        self.assertTrue(result["provider_calls_ran"])
+
 
 if __name__ == "__main__":
     unittest.main()

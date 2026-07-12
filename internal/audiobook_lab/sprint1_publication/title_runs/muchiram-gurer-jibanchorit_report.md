@@ -1,24 +1,27 @@
-# মুচিরাম গুড়ের জীবনচরিত Parallel Sprint Report
+# মুচিরাম গুড়ের জীবনচরিত Audio Handoff Report
 
-Generated: `2026-07-12T19:35:15Z`
+Generated: `2026-07-12T22:04:03Z`
 
 - Slug: `muchiram-gurer-jibanchorit`
-- Language: `Bengali`
-- Assigned lane: `2 - Short Bengali High-ROI Lane`
-- Assigned agent: `Galileo (019f57d2-7210-7930-96bd-df620ee5d77d)`
+- Classification: `HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED`
 - Public reader: `Yes`
 - Public audiobook: `No`
-- Quality evidence: `0.039/10 ASR-source; representative timed out`
-- Estimated remaining cost: `$0.1447`
-- Final state: `SPRINT_TARGET_INCOMPLETE`
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
-- Evidence: `internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T150228Z/goliveevidence.json`
-- Next action: Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied
+- Controlled source hash: `733466ffdadc8f5c0172023edd5c0ba7327387d65d0c46b1b881a26e303e800a`
+- Full private candidate audio SHA-256: `dcafb32f428da7cff43a7fadc1db7ca79eed80880886abab250f4f886dcdea1a`
 
-## Next Command
+## Existing Evidence
+
+- Google Aoede representative audition passed only at `9.3` / confidence `0.95`, with passage scores `9.4, 9.5, 9.3, 9.5`: `internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_chirp_audition/bengali_representative_audition_report.json`.
+- Full-book QA fell to `7.8` / confidence `0.85` and recorded `robotic_texture_detected`, `mechanical_cadence_detected`, and `list_reading_rhythm_detected`: `internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_full_qa.json`.
+- Achird targeted repair scored `9.5, 9.4, 7.4, 7.8`: `internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_targeted_repair_audition/bengali_representative_audition_report.json`.
+- Final Aoede repair scored `9.4, 9.4, 7.9, 7.8`: `internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_aoede_slow_repair_audition/bengali_representative_audition_report.json`.
+
+The isolated representative pass is not release approval. The full candidate and two bounded repair attempts establish an automated-provider plateau, so public audio remains hidden.
+
+## Exact Received-Audio Validation Command
 
 ```bash
-python3 internal/audiobook_lab/scripts/bengali_tts_provider_bakeoff.py --manifest book_import_manifest.batch-1.json --candidate-slugs muchiram-gurer-jibanchorit --max-passages 1 --max-seconds-per-sample 20 --providers sarvam --max-voices-per-provider 1 --voice-filter sarvam:ratan --style-profiles literary_warm_pacing --bengali-audiobook-92-rescue --fail-closed --run-dir internal/audiobook_lab/sprint1_publication/muchiram_split_audition
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug muchiram-gurer-jibanchorit --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav
 ```
 
-No provider call, release-gate mutation, or public audio exposure was performed by this materializer.
+No provider call, lock change, release mutation, publication, or audio copy was performed by this report task.

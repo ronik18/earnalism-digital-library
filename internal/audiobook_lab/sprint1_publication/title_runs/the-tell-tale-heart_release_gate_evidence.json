@@ -1,25 +1,90 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-07-12T19:35:15Z",
+  "schema_version": 2,
+  "generated_at": "2026-07-12T22:04:03Z",
   "slug": "the-tell-tale-heart",
   "title": "The Tell-Tale Heart",
   "language": "English",
-  "assigned_lane": {
-    "lane": 3,
-    "role": "Short English Lane",
-    "agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
-    "agent_nickname": "Dalton"
-  },
+  "classification": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+  "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
   "publicly_rendered_book": "Yes",
   "publicly_available_audiobook": "No",
-  "quality_score": "NOT_RUN",
-  "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
-  "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
-  "estimated_remaining_cost_usd": 0.165,
-  "evidence_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-tell-tale-heart.json",
-  "next_action": "Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied",
-  "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-tell-tale-heart --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
-  "provider_calls_ran_this_sprint": false,
-  "release_gate_mutated_this_sprint": false,
-  "public_audio_approved_this_sprint": false
+  "quality_score": "Two Google Studio-C representative attempts missed the owner minimum 9.4; minima 8.4 and 8.5",
+  "exact_blocker": "BOUNDED_GOOGLE_REPRESENTATIVE_AUDITIONS_FAILED; HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+  "blockers": [
+    "Every representative sample must meet owner minimum 9.4 with confidence at least 0.90 and no fatal flags.",
+    "Contextual Studio-C attempt bottomed at 8.4.",
+    "Slower contextual Studio-C retry bottomed at 8.5 and its ending scored 8.8."
+  ],
+  "source_binding": {
+    "controlled_source_hash": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+    "audition_sanitized_source_sha256": "8e725a8220dca763fdd5286315016d1ae3071cb5f068e830e1e2b8ed16037bdb",
+    "audition_input_manifest_sha256": "66338d5a5a4949a37ede477ec6b414d01ac664d2a0401f49d3a9effd9f63aa56"
+  },
+  "provider_attempts": [
+    {
+      "scope": "contextual_representative_audition",
+      "provider": "google",
+      "voice": "en-GB-Studio-C",
+      "attempt_fingerprint": "4f7b571d8625924e82cb32ab3e1e3d33ae5123fc61c05a548dd0c4f2e9b304c4",
+      "audition_manifest_sha256": "487aefeca19a52df80355e5205a03f50f27efb40cc9fb54a8b9e238c1b604d06",
+      "scores": [9.5, 8.4, 9.4, 9.6],
+      "minimum_score": 8.4,
+      "minimum_confidence": 0.9,
+      "fatal_flags": [],
+      "status": "BLOCKED_LISTENING_QA",
+      "attempt_record": "internal/audiobook_lab/private_runs/google_english/the-tell-tale-heart/attempts/4f7b571d8625924e82cb32ab3e1e3d33ae5123fc61c05a548dd0c4f2e9b304c4.json",
+      "evidence": "internal/audiobook_lab/private_runs/google_english/the-tell-tale-heart/audition/4f7b571d8625924e/audition_listening_evidence.json",
+      "lock_report": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_context_listening_lock_report.json"
+    },
+    {
+      "scope": "final_slow_contextual_representative_audition",
+      "provider": "google",
+      "voice": "en-GB-Studio-C",
+      "attempt_fingerprint": "fd54248900cc4c9cc174fe327635781ac7749625e1bfd3635c897fb126ab632b",
+      "audition_manifest_sha256": "5b3eeb1a6dc0d742d736a8fe4e297a0d108912c4cf71ede9c66e06d3121894d6",
+      "scores": [9.4, 8.5, 9.4, 8.8],
+      "minimum_score": 8.5,
+      "minimum_confidence": 0.9,
+      "fatal_flags": [],
+      "status": "BLOCKED_LISTENING_QA",
+      "attempt_record": "internal/audiobook_lab/private_runs/google_english/the-tell-tale-heart/attempts/fd54248900cc4c9cc174fe327635781ac7749625e1bfd3635c897fb126ab632b.json",
+      "evidence": "internal/audiobook_lab/private_runs/google_english/the-tell-tale-heart/audition/fd54248900cc4c9c/audition_listening_evidence.json",
+      "lock_report": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_slow_listening_lock_report.json"
+    }
+  ],
+  "stage2d_replacement_auditions": {
+    "baseline": {
+      "status": "BLOCKED_LISTENING_QA",
+      "provider": "google",
+      "voice": "en-GB-Studio-C",
+      "attempt_fingerprint": "4f7b571d8625924e82cb32ab3e1e3d33ae5123fc61c05a548dd0c4f2e9b304c4",
+      "scores": [9.5, 8.4, 9.4, 9.6],
+      "minimum_confidence": 0.9,
+      "fatal_flags": [],
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_release_gate_evidence.json"
+    },
+    "single_prosody_retry": {
+      "status": "BLOCKED_LISTENING_QA",
+      "provider": "google",
+      "voice": "en-GB-Studio-C",
+      "attempt_fingerprint": "fd54248900cc4c9cc174fe327635781ac7749625e1bfd3635c897fb126ab632b",
+      "scores": [9.4, 8.5, 9.4, 8.8],
+      "minimum_confidence": 0.9,
+      "fatal_flags": [],
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_release_gate_evidence.json"
+    }
+  },
+  "human_narration_packet": {
+    "path": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-tell-tale-heart",
+    "packet_fingerprint_sha256": "ad6d7132c5b3cc1006afa8d3dc412c2829e5c5e19cb7e406b23ce8cfde4d34f7",
+    "sanitized_manuscript_sha256": "df1b85c210aab99b3b14c106e0a28c4305e7c4dbc8aa16aa11f1877bb9502981",
+    "status": "NARRATION_IMPORT_PACKET_READY_AUDIO_HIDDEN"
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-tell-tale-heart --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "next_action": "Deliver source-bound human narration or separately approved licensed alternate-provider audio and run the exact received-audio command before full ASR, listening, sync, upload, metadata, endpoint, browser, and owner gates.",
+  "historical_provider_calls_recorded": true,
+  "provider_calls_ran_this_task": false,
+  "release_gate_mutated_this_task": false,
+  "publication_performed_this_task": false,
+  "audio_copied_this_task": false
 }

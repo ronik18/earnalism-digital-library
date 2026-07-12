@@ -274,6 +274,10 @@ def normalize_release_policy(value: str | None) -> str:
     return policy
 
 
+def final_bakeoff_exit_code(*, passing: bool, fail_closed: bool) -> int:
+    return 2 if fail_closed and not passing else 0
+
+
 def prioritize_mvp_voices(voices: list[ProviderVoice], release_policy: str, limit_per_provider: int) -> list[ProviderVoice]:
     if release_policy not in {BENGALI_PREMIUM_MVP_POLICY, BENGALI_AUDIOBOOK_92_POLICY}:
         return voices
@@ -525,6 +529,13 @@ def compact_passage(sentences: list[str], start: int, *, max_chars: int = 620) -
     selected: list[str] = []
     total = 0
     for sentence in sentences[start:]:
+        if not selected and len(sentence) > max_chars:
+            excerpt = sentence[:max_chars]
+            boundary = excerpt.rfind(" ")
+            if boundary >= max_chars // 2:
+                excerpt = excerpt[:boundary]
+            selected.append(excerpt.strip())
+            break
         if selected and total + len(sentence) > max_chars:
             break
         selected.append(sentence)
@@ -532,18 +543,79 @@ def compact_passage(sentences: list[str], start: int, *, max_chars: int = 620) -
     return " ".join(selected).strip()
 
 
-def find_passage(sentences: list[str], predicate, fallback_index: int, passage_id: str, slug: str, label: str) -> dict[str, str]:
+def find_passage(
+    sentences: list[str],
+    predicate,
+    fallback_index: int,
+    passage_id: str,
+    slug: str,
+    label: str,
+    *,
+    max_chars: int = 620,
+) -> dict[str, str]:
     match_index = next((index for index, sentence in enumerate(sentences) if predicate(sentence)), None)
     if match_index is None:
         match_index = min(max(fallback_index, 0), max(len(sentences) - 1, 0))
-    text = compact_passage(sentences, match_index)
+    text = compact_passage(sentences, match_index, max_chars=max_chars)
     return {"passage_id": passage_id, "slug": slug, "label": label, "text": text, "text_hash": sha256_text(text)}
 
 
-def build_passages(slugs: list[str], max_passages: int) -> list[dict[str, str]]:
+def build_passages(slugs: list[str], max_passages: int, *, max_chars: int = 620) -> list[dict[str, str]]:
     manuscripts = {slug: latest_clean_manuscript(slug) for slug in slugs}
     sentence_map = {slug: split_bengali_sentences(text) for slug, text in manuscripts.items()}
     passages: list[dict[str, str]] = []
+    if len(slugs) == 1:
+        slug = slugs[0]
+        sentences = sentence_map[slug]
+        if not sentences:
+            return []
+        dialogue_index = next(
+            (index for index, sentence in enumerate(sentences) if any(mark in sentence for mark in ["“", "”", "\""])),
+            min(len(sentences) // 3, len(sentences) - 1),
+        )
+        punctuation_index = next(
+            (
+                index
+                for index, sentence in enumerate(sentences)
+                if index != dialogue_index
+                and len(sentence) > 170
+                and (sentence.count(",") + sentence.count("।") + sentence.count(";") + sentence.count("—")) >= 3
+            ),
+            min(len(sentences) // 2, len(sentences) - 1),
+        )
+        ending_index = max(len(sentences) - 1, 0)
+        # A one-title audition still needs narrative, dialogue/risk, difficult
+        # punctuation, and ending coverage. The earlier cross-title selector
+        # silently omitted dialogue and emotional coverage for this case.
+        passages = [
+            {
+                "passage_id": "narrative_opening",
+                "slug": slug,
+                "label": "narrative opening",
+                "text": compact_passage(sentences, 0, max_chars=max_chars),
+            },
+            {
+                "passage_id": "dialogue",
+                "slug": slug,
+                "label": "dialogue or interaction passage",
+                "text": compact_passage(sentences, dialogue_index, max_chars=max_chars),
+            },
+            {
+                "passage_id": "punctuation_heavy",
+                "slug": slug,
+                "label": "difficult punctuation-heavy passage",
+                "text": compact_passage(sentences, punctuation_index, max_chars=max_chars),
+            },
+            {
+                "passage_id": "ending_style",
+                "slug": slug,
+                "label": "ending-style passage",
+                "text": compact_passage(sentences, ending_index, max_chars=max_chars),
+            },
+        ]
+        for passage in passages:
+            passage["text_hash"] = sha256_text(passage["text"])
+        return passages[:max_passages]
     if slugs:
         slug = slugs[0]
         passages.append(find_passage(sentence_map[slug], lambda _s: True, 0, "narrative_opening", slug, "narrative opening"))
@@ -579,6 +651,59 @@ def build_passages(slugs: list[str], max_passages: int) -> list[dict[str, str]]:
             seen.add(key)
             deduped.append(passage)
     return deduped[:max_passages]
+
+
+def load_passages_file(
+    path: Path,
+    slugs: list[str],
+    max_passages: int,
+    *,
+    max_chars: int,
+) -> tuple[list[dict[str, str]], list[str]]:
+    try:
+        payload = read_json(path, {})
+    except Exception as exc:  # noqa: BLE001
+        return [], [f"Passages file is unreadable: {exc}"]
+    raw_passages = payload.get("passages") if isinstance(payload, dict) else payload
+    if not isinstance(raw_passages, list):
+        return [], ["Passages file must contain a JSON array or a passages array."]
+    manuscripts = {
+        slug: re.sub(r"\s+", " ", latest_clean_manuscript(slug)).strip()
+        for slug in slugs
+    }
+    passages: list[dict[str, str]] = []
+    errors: list[str] = []
+    seen_hashes: set[str] = set()
+    for index, item in enumerate(raw_passages[:max_passages]):
+        if not isinstance(item, dict):
+            errors.append(f"Passage {index} must be an object.")
+            continue
+        slug = str(item.get("slug") or "").strip()
+        passage_id = str(item.get("passage_id") or "").strip()
+        label = str(item.get("label") or passage_id).strip()
+        text = re.sub(r"\s+", " ", str(item.get("text") or "")).strip()
+        text_hash = sha256_text(text) if text else ""
+        if slug not in manuscripts:
+            errors.append(f"Passage {index} slug is not in the selected candidate set.")
+        if not passage_id or not text:
+            errors.append(f"Passage {index} requires passage_id and text.")
+        if len(text) > max_chars:
+            errors.append(f"Passage {index} exceeds --max-chars-per-passage ({len(text)} > {max_chars}).")
+        if slug in manuscripts and text and text not in manuscripts[slug]:
+            errors.append(f"Passage {index} is not a source-bound substring of {slug}.")
+        supplied_hash = str(item.get("text_hash") or "").strip()
+        if supplied_hash and supplied_hash != text_hash:
+            errors.append(f"Passage {index} text_hash does not match its text.")
+        if text_hash in seen_hashes:
+            errors.append(f"Passage {index} duplicates an earlier passage text hash.")
+        if slug in manuscripts and passage_id and text and len(text) <= max_chars and text in manuscripts[slug] and text_hash not in seen_hashes:
+            seen_hashes.add(text_hash)
+            passages.append(
+                {"passage_id": passage_id, "slug": slug, "label": label, "text": text, "text_hash": text_hash}
+            )
+    if len(passages) != max_passages:
+        errors.append(f"Passages file must provide exactly {max_passages} valid unique passages.")
+    return passages, errors
 
 
 def write_pilot_selection_report(run_dir: Path, slugs: list[str], candidate_source: str, passages: list[dict[str, str]]) -> str:
@@ -1065,15 +1190,43 @@ def generate_openai_sample(provider_voice: ProviderVoice, text: str, instruction
     return {"status": "PASS", "model": DEFAULT_OPENAI_MODEL}
 
 
+def google_safe_tts_text(text: str, max_sentence_chars: int = 180) -> str:
+    """Insert sentence boundaries in overlong prose without changing words."""
+    prepared: list[str] = []
+    for sentence in re.split(r"(?<=[।!?])\s+", re.sub(r"\s+", " ", text or "").strip()):
+        remaining = sentence.strip()
+        while len(remaining) > max_sentence_chars:
+            window = remaining[: max_sentence_chars + 1]
+            split_at = max(window.rfind(mark) for mark in [",", ";", "—", ":", " "])
+            if split_at < max_sentence_chars // 2:
+                split_at = window.rfind(" ")
+            if split_at <= 0:
+                split_at = max_sentence_chars
+            chunk = remaining[:split_at].rstrip(" ,;—:")
+            if chunk:
+                prepared.append(chunk.rstrip("।!?") + "।")
+            remaining = remaining[split_at:].lstrip(" ,;—:")
+        if remaining:
+            prepared.append(remaining)
+    return " ".join(prepared)
+
+
 def generate_google_sample(provider_voice: ProviderVoice, text: str, instructions: str, out_path: Path) -> dict[str, Any]:
     from google.cloud import texttospeech
 
     client = texttospeech.TextToSpeechClient()
     # Google TTS has no universal natural-language instruction field. Keep the
     # manuscript text clean and use modest speaking-rate tuning only.
-    synthesis_input = texttospeech.SynthesisInput(text=text)
+    synthesis_input = texttospeech.SynthesisInput(text=google_safe_tts_text(text))
     voice = texttospeech.VoiceSelectionParams(language_code=provider_voice.language_code, name=provider_voice.voice)
-    audio_config = texttospeech.AudioConfig(audio_encoding=texttospeech.AudioEncoding.MP3, speaking_rate=0.94, pitch=0.0)
+    speaking_rate = float(os.environ.get("EARNALISM_GOOGLE_TTS_SPEAKING_RATE", "0.94"))
+    if not 0.75 <= speaking_rate <= 1.25:
+        raise ValueError("EARNALISM_GOOGLE_TTS_SPEAKING_RATE must be between 0.75 and 1.25")
+    audio_config = texttospeech.AudioConfig(
+        audio_encoding=texttospeech.AudioEncoding.MP3,
+        speaking_rate=speaking_rate,
+        pitch=0.0,
+    )
     response = client.synthesize_speech(input=synthesis_input, voice=voice, audio_config=audio_config)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_bytes(response.audio_content)
@@ -2020,6 +2173,8 @@ def main() -> int:
     parser.add_argument("--candidate-slugs", default="")
     parser.add_argument("--candidate-source", default="")
     parser.add_argument("--max-passages", type=int, default=5)
+    parser.add_argument("--max-chars-per-passage", type=int, default=620)
+    parser.add_argument("--passages-file", type=Path)
     parser.add_argument("--max-seconds-per-sample", type=float, default=75)
     parser.add_argument("--run-dir")
     parser.add_argument("--providers", default="sarvam,google,azure,openai")
@@ -2070,7 +2225,18 @@ def main() -> int:
     provider_order = parse_provider_filter(args.providers)
     provider_env = detect_provider_env()
     capability_probe = provider_capability_probe(provider_env, provider_order, run_dir)
-    passages = build_passages(slugs, max(1, args.max_passages))
+    passage_count = max(1, args.max_passages)
+    passage_char_cap = max(80, args.max_chars_per_passage)
+    if args.passages_file:
+        passages, passage_errors = load_passages_file(
+            args.passages_file,
+            slugs,
+            passage_count,
+            max_chars=passage_char_cap,
+        )
+    else:
+        passages = build_passages(slugs, passage_count, max_chars=passage_char_cap)
+        passage_errors = []
     write_json(run_dir / "bakeoff_passages.json", {"passages": passages, "candidate_slugs": slugs, "candidate_source": candidate_source})
     pilot_selection_report_path = write_pilot_selection_report(run_dir, slugs, candidate_source, passages)
     voice_filters = parse_voice_filter(args.voice_filter)
@@ -2143,6 +2309,7 @@ def main() -> int:
     write_json(run_dir / "bengali_provider_capability_probe.json", capability_probe)
     estimate = estimate_cost(passages, voices)
     blockers: list[str] = []
+    blockers.extend(passage_errors)
     if release_policy == BENGALI_PREMIUM_MVP_POLICY and not bool_env("EARNALISM_APPROVE_BENGALI_MVP_POLICY"):
         blockers.append("EARNALISM_APPROVE_BENGALI_MVP_POLICY=true is required to use bengali_premium_mvp_v1.")
     if args.generate_full_pilot_if_policy_pass and not bool_env("EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS"):
@@ -2504,7 +2671,7 @@ def main() -> int:
             ensure_ascii=False,
         )
     )
-    return 0
+    return final_bakeoff_exit_code(passing=bool(passing), fail_closed=args.fail_closed)
 
 
 if __name__ == "__main__":

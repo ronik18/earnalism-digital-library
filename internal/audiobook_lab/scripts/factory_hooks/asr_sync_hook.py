@@ -717,9 +717,16 @@ def boundary_span_match(manuscript_tokens: list[str], transcript_tokens: list[st
 
 
 def frontmatter_absent(text: str) -> bool:
-    banned = ["project gutenberg", "gutenberg.org", "wikisource", "repository", "source:", "গল্পগুচ্ছ", "পৃ", "পৃষ্ঠা"]
     lowered = text.lower()
-    return not any(item in lowered for item in banned)
+    banned_literals = ["project gutenberg", "gutenberg.org", "wikisource", "repository", "source:"]
+    if any(item in lowered for item in banned_literals):
+        return False
+    bengali_source_markers = (
+        r"(?im)^\s*গল্পগুচ্ছ\s*$",
+        r"(?im)^\s*পৃষ্ঠা(?:\s*[:.]?\s*[০-৯0-9]+(?:\s*[-–—]\s*[০-৯0-9]+)?)?\s*$",
+        r"(?im)(?:^|[\s(])পৃ\.?\s*[০-৯0-9]+(?:\s*[-–—]\s*[০-৯0-9]+)?(?:[\s)]|$)",
+    )
+    return not any(re.search(pattern, text) for pattern in bengali_source_markers)
 
 
 def vtt_time(seconds: float) -> str:
@@ -811,6 +818,49 @@ def audiobook_clean_manuscript(args, manuscript: str) -> str:
         return manuscript
 
 
+def group_repair_was_requested(group_repair: dict) -> bool:
+    if not group_repair:
+        return False
+    if any(group_repair.get(name) is True for name in ("repair_requested", "repair_required", "attempted")):
+        return True
+    evidence_fields = (
+        "manifest_path",
+        "groups",
+        "regenerated_group_ids",
+        "reused_group_ids",
+        "failed_group_ids",
+        "repaired_group_sequence_hash",
+    )
+    return any(bool(group_repair.get(name)) for name in evidence_fields)
+
+
+def group_repair_semantics(group_repair: dict, *, construction_evidence_pass: bool) -> dict:
+    if not group_repair:
+        return {
+            "status": "ABSENT",
+            "repair_requested": False,
+            "accepted": True,
+            "reason": "legacy_manifest_without_group_repair_metadata",
+        }
+    status = str(group_repair.get("status") or "").strip().upper()
+    repair_requested = group_repair_was_requested(group_repair)
+    if status == "PASS":
+        accepted = True
+        reason = "requested_repair_passed"
+    elif status in {"NOT_NEEDED", "NOT_REQUESTED"}:
+        accepted = not repair_requested and construction_evidence_pass
+        reason = "fresh_generation_verified" if accepted else "fresh_generation_evidence_or_repair_state_conflict"
+    else:
+        accepted = False
+        reason = "repair_status_is_not_release_safe"
+    return {
+        "status": status or "MISSING",
+        "repair_requested": repair_requested,
+        "accepted": accepted,
+        "reason": reason,
+    }
+
+
 def bengali_tts_by_construction_verification(
     args,
     run_dir: Path,
@@ -848,8 +898,6 @@ def bengali_tts_by_construction_verification(
         blockers.append("TTS_BY_CONSTRUCTION_BLOCKED: TTS source sanitization did not confirm frontmatter stripping.")
     if sanitization.get("forbidden_source_terms_in_prepared_text"):
         blockers.append("TTS_BY_CONSTRUCTION_BLOCKED: forbidden source/frontmatter terms remain in prepared TTS text.")
-    if group_repair and group_repair.get("status") not in {"PASS", "NOT_NEEDED", None}:
-        blockers.append("TTS_BY_CONSTRUCTION_BLOCKED: group repair manifest is not PASS.")
     if not source_text:
         blockers.append("TTS_BY_CONSTRUCTION_BLOCKED: reconstructed TTS input text is empty.")
     if source_text and not frontmatter_absent(source_text):
@@ -941,6 +989,13 @@ def bengali_tts_by_construction_verification(
     if not last_match:
         blockers.append("TTS_BY_CONSTRUCTION_BLOCKED: final literary words are not present in final TTS group.")
 
+    repair_semantics = group_repair_semantics(group_repair, construction_evidence_pass=not blockers)
+    if not repair_semantics["accepted"]:
+        blockers.append(
+            "TTS_BY_CONSTRUCTION_BLOCKED: group repair semantics are not release-safe "
+            f"({repair_semantics['status']}: {repair_semantics['reason']})."
+        )
+
     verified = not blockers
     report = {
         "slug": args.slug,
@@ -959,6 +1014,7 @@ def bengali_tts_by_construction_verification(
         "audiobook_clean_manuscript_hash": sha256_text(audiobook_manuscript),
         "tts_input_sequence_hash": source_sequence_hash,
         "expected_tts_input_sequence_hash": expected_sequence_hash,
+        "group_repair_semantics": repair_semantics,
         "final_audio_path": rel(final_audio),
         "final_audio_hash": final_audio_hash,
         "group_count": len(chunks),

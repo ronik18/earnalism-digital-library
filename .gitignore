@@ -182,6 +182,7 @@ test-results/
 
 # Local/generated sprint QA artifacts. Keep evidence locally, but do not commit generated runs.
 .pycache-local/
+internal/audiobook_lab/private_runs/
 book_cover_audit_*
 book_cover_visual_inventory.*
 graphical_cover_audit_report.json

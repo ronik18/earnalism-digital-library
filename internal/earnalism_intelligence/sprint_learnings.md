@@ -319,3 +319,15 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Bengali TTS sanitation must inspect both source frontmatter and trailing standalone edition years. D19's trailing `১২৯৮?` was source residue even though the prior sanitation summary said PASS.
 - A title-specific representative sample may authorize only its exact slug/provider/model/voice/style arm. Require explicit opt-in plus score `>=9.2`, confidence `>=0.90`, and no fatal flags; do not generalize the arm catalog-wide.
 - D19 non-paid preflight passed at 6,485 prepared characters and five groups; all paid runtime gates were absent, so no lock acquisition or provider call occurred.
+
+## 2026-07-13 Sprint 1 Paid Run Reconciliation
+
+- D19 (`book-d19e96859f`) Google `bn-IN-Chirp3-HD-Aoede` passed private TTS, listening, and measured paragraph/stanza sync: six listening samples scored `9.4` at confidence `0.95` with no fatal flags.
+- D19 raw audio-derived ASR/source is `0.6838`, below the strict `>=9.7` gate. The static TTS-by-construction audit score of `10.0` is provenance evidence only and must not be treated as an ASR pass.
+- D19 remains audio-hidden in `AUTOMATED_ASR_ARMS_EXHAUSTED_NORMALIZATION_REPAIR_REQUIRED`. Google `latest_long` is unsupported for `bn-IN`; OpenAI `gpt-4o-transcribe` with explicit `bn` peaked at `6.7606`; prior Google default and OpenAI mini arms also stayed below `9.7`. Do not repeat these fingerprints.
+- Do not start a Bengali three-title canary or broader wave unless D19 raw ASR/source reaches `>=9.7` and D19 then publishes through every remaining gate.
+- Muchiram plateaued after full-book weak passages and bounded targeted/slow repairs; `book-f5d593e1f4` repeated the same punctuation-heavy weakness with Google Aoede and Sarvam Pooja. Both are now `HUMAN_NARRATION_REQUIRED`, with reader-only/audio-hidden state preserved.
+- Sredni Vashtar, The Gift of the Magi, and The Tell-Tale Heart all plateaued across their current Google attempt families. No failed English audition authorizes full TTS or publication.
+- Contextual English risk sampling fixed false contextlessness in the judged sample selection, but it did not manufacture a pass; the sub-threshold scores remain release blockers.
+- Paid calls were serialized. Conservative estimated Sprint 1 spend is `$9.75400`; actual provider billing remains unknown. `paid_tts.lock` was restored byte-for-byte.
+- Next generated prompt: `Coordinator: assign one bounded ASR language-configuration repair on existing D19 private audio with an explicit ASR cap and an untried language/model fingerprint. Do not regenerate TTS, repeat listening QA, upload, mutate metadata, or publish; require raw audio-derived ASR/source >= 9.7 before proceeding.`

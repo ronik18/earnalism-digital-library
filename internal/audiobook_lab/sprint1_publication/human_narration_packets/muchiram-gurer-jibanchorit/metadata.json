@@ -1,0 +1,291 @@
+{
+  "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+  "candidate_kind": "human_narration",
+  "delivery": {
+    "accepted_formats": [
+      "wav_pcm_44.1_or_48_khz",
+      "flac_44.1_or_48_khz",
+      "mp3_128kbps_or_higher_44.1_or_48_khz"
+    ],
+    "single_complete_file_required": true
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug muchiram-gurer-jibanchorit --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "language": {
+    "code": "ben",
+    "name": "Bengali"
+  },
+  "packet_fingerprint_sha256": "e9d1f80488cf525a46ab0f5861a8cb9e6eb98d891ab79cb537becfa1c580fb17",
+  "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
+  "prior_provider_evidence": {
+    "classification": "INCOMPLETE_FAIL_CLOSED",
+    "evidence_paths": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram-gurer-jibanchorit_release_gate_evidence.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_aoede_slow_repair_audition/bengali_representative_audition_report.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_chirp_audition/bengali_representative_audition_report.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_full_qa.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_targeted_repair_audition/bengali_representative_audition_report.json"
+    ],
+    "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+    "failed_attempts": [
+      {
+        "confidence": 0.85,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_aoede_slow_repair_audition/bengali_representative_audition_report.json",
+        "failed": true,
+        "fatal_flags": [
+          "list_reading_rhythm_detected",
+          "mechanical_cadence_detected",
+          "robotic_texture_detected"
+        ],
+        "minimum_observed_score": 7.8,
+        "model": "google-cloud-texttospeech",
+        "provider": "google",
+        "representative_score": 7.8,
+        "scope": "representative_audition",
+        "scores": [
+          9.4,
+          9.4,
+          7.9,
+          7.8
+        ],
+        "status": "BLOCKED",
+        "style_profile": "literary_warm_pacing",
+        "voice": "bn-IN-Chirp3-HD-Aoede"
+      },
+      {
+        "confidence": 0.85,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_full_qa.json",
+        "failed": true,
+        "fatal_flags": [
+          "list_reading_rhythm_detected",
+          "mechanical_cadence_detected",
+          "robotic_texture_detected"
+        ],
+        "minimum_observed_score": 7.8,
+        "scope": "full_book_qa",
+        "scores": [
+          9.4,
+          9.5,
+          9.4,
+          9.4,
+          8.0,
+          7.8
+        ],
+        "status": "FULL_RELEASE_QA_BLOCKED"
+      },
+      {
+        "confidence": 0.85,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_targeted_repair_audition/bengali_representative_audition_report.json",
+        "failed": true,
+        "fatal_flags": [
+          "list_reading_rhythm_detected",
+          "mechanical_cadence_detected",
+          "robotic_texture_detected"
+        ],
+        "minimum_observed_score": 7.4,
+        "model": "google-cloud-texttospeech",
+        "provider": "google",
+        "representative_score": 7.4,
+        "scope": "representative_audition",
+        "scores": [
+          9.5,
+          9.4,
+          7.4,
+          7.8
+        ],
+        "status": "BLOCKED",
+        "style_profile": "literary_warm_pacing",
+        "voice": "bn-IN-Chirp3-HD-Achird"
+      }
+    ],
+    "non_release_passes": [
+      {
+        "confidence": 0.95,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_chirp_audition/bengali_representative_audition_report.json",
+        "failed": false,
+        "fatal_flags": [],
+        "minimum_observed_score": 9.3,
+        "model": "google-cloud-texttospeech",
+        "provider": "google",
+        "representative_score": 9.3,
+        "scope": "representative_audition",
+        "scores": [
+          9.4,
+          9.5,
+          9.3,
+          9.5
+        ],
+        "status": "PASS",
+        "style_profile": "literary_warm_pacing",
+        "voice": "bn-IN-Chirp3-HD-Aoede"
+      }
+    ],
+    "provider_attempts": [
+      {
+        "confidence": 0.85,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_aoede_slow_repair_audition/bengali_representative_audition_report.json",
+        "failed": true,
+        "fatal_flags": [
+          "list_reading_rhythm_detected",
+          "mechanical_cadence_detected",
+          "robotic_texture_detected"
+        ],
+        "minimum_observed_score": 7.8,
+        "model": "google-cloud-texttospeech",
+        "provider": "google",
+        "representative_score": 7.8,
+        "scope": "representative_audition",
+        "scores": [
+          9.4,
+          9.4,
+          7.9,
+          7.8
+        ],
+        "status": "BLOCKED",
+        "style_profile": "literary_warm_pacing",
+        "voice": "bn-IN-Chirp3-HD-Aoede"
+      },
+      {
+        "confidence": 0.95,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_chirp_audition/bengali_representative_audition_report.json",
+        "failed": false,
+        "fatal_flags": [],
+        "minimum_observed_score": 9.3,
+        "model": "google-cloud-texttospeech",
+        "provider": "google",
+        "representative_score": 9.3,
+        "scope": "representative_audition",
+        "scores": [
+          9.4,
+          9.5,
+          9.3,
+          9.5
+        ],
+        "status": "PASS",
+        "style_profile": "literary_warm_pacing",
+        "voice": "bn-IN-Chirp3-HD-Aoede"
+      },
+      {
+        "confidence": 0.85,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_full_qa.json",
+        "failed": true,
+        "fatal_flags": [
+          "list_reading_rhythm_detected",
+          "mechanical_cadence_detected",
+          "robotic_texture_detected"
+        ],
+        "minimum_observed_score": 7.8,
+        "scope": "full_book_qa",
+        "scores": [
+          9.4,
+          9.5,
+          9.4,
+          9.4,
+          8.0,
+          7.8
+        ],
+        "status": "FULL_RELEASE_QA_BLOCKED"
+      },
+      {
+        "confidence": 0.85,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_targeted_repair_audition/bengali_representative_audition_report.json",
+        "failed": true,
+        "fatal_flags": [
+          "list_reading_rhythm_detected",
+          "mechanical_cadence_detected",
+          "robotic_texture_detected"
+        ],
+        "minimum_observed_score": 7.4,
+        "model": "google-cloud-texttospeech",
+        "provider": "google",
+        "representative_score": 7.4,
+        "scope": "representative_audition",
+        "scores": [
+          9.5,
+          9.4,
+          7.4,
+          7.8
+        ],
+        "status": "BLOCKED",
+        "style_profile": "literary_warm_pacing",
+        "voice": "bn-IN-Chirp3-HD-Achird"
+      }
+    ],
+    "quality_summary": "0.039/10 ASR-source; representative timed out",
+    "release_evidence_found": true
+  },
+  "pronunciation_checkpoints": [
+    "মুচিরাম গুড়ের জীবনচরিত",
+    "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    "Mark every uncertain proper noun, archaic সাধু form, Sanskrit-derived word, and regional form before recording.",
+    "Preserve Bengali vowel length, conjunct consonants, and written spelling; do not Anglicize names."
+  ],
+  "release_requirements": {
+    "asr_manuscript_score_min": 9.7,
+    "blocker_list_must_be_empty": true,
+    "confidence_score_min": 0.9,
+    "fatal_flags_required_false": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "placeholder_audio_detected"
+    ],
+    "first_and_last_words_must_match": true,
+    "listening_score_min": 9.2,
+    "measured_sync_required": "paragraph_or_stanza",
+    "no_missing_duplicated_or_reordered_content": true,
+    "public_audio_must_remain_hidden_until_all_gates_pass": true,
+    "sync_may_not_be_estimated": true
+  },
+  "rights": {
+    "provenance_hash": "5684356538fbb400de644b128c8ac1307bf46f737170d77dec156e1e1ac5f8a4",
+    "rights_basis": "Author died 1894. Original publication 1884. Public domain in India and the U.S.; source evidence kept internal/admin-only."
+  },
+  "safety": {
+    "audio_generated": false,
+    "provider_calls_ran": false,
+    "public_audio_status": "AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES",
+    "release_gate_mutated": false
+  },
+  "sanitization": {
+    "removed_fragments": [],
+    "sanitizer_version": "narration-import-sanitizer-v1",
+    "status": "PASS"
+  },
+  "schema_version": 2,
+  "slug": "muchiram-gurer-jibanchorit",
+  "source_binding": {
+    "binding_sha256": "e4c19f7f430b4ef45b969b1a90d82a718d07e5cdf354a5504cbe858207185477",
+    "chapters": [
+      {
+        "chapter": "chapter-001.json",
+        "chapter_title": "Chapter 1. প্রথম পরিচ্ছেদ",
+        "raw_characters": 3708,
+        "recorded_source_sha256": "2da278011f7705b08e941479981aa83558e56b1c6a3d40f30b14fb8a6f23092e",
+        "sanitized_characters": 3708,
+        "sanitized_sha256": "2da278011f7705b08e941479981aa83558e56b1c6a3d40f30b14fb8a6f23092e"
+      },
+      {
+        "chapter": "chapter-002.json",
+        "chapter_title": "Chapter 2. দ্বিতীয় পরিচ্ছেদ",
+        "raw_characters": 2260,
+        "recorded_source_sha256": "9c57d79295766ee6651f2193a7d5266e5cfd816ace6621fbe77211cb8240df28",
+        "sanitized_characters": 2260,
+        "sanitized_sha256": "9c57d79295766ee6651f2193a7d5266e5cfd816ace6621fbe77211cb8240df28"
+      }
+    ],
+    "raw_manuscript_sha256": "0e9455b19181966cd83886298b223030bd427f8e9c54aaaafd69aba4c0b743e6",
+    "sanitized_manuscript_sha256": "0e9455b19181966cd83886298b223030bd427f8e9c54aaaafd69aba4c0b743e6",
+    "source_hash": "733466ffdadc8f5c0172023edd5c0ba7327387d65d0c46b1b881a26e303e800a",
+    "status": "VERIFIED_SOURCE_AND_CHAPTER_HASHES"
+  },
+  "style_notes": [
+    "Use idiomatic Bengali phrasing with measured literary pacing and natural sentence-final cadence.",
+    "Keep সাধু or archaic diction intact; do not modernize, paraphrase, translate, or flatten the register.",
+    "Differentiate dialogue lightly without caricature; preserve satire, irony, and emotional restraint.",
+    "Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed punctuation, and choppy joins."
+  ],
+  "style_profile": "classical_bengali_literary_natural_measured",
+  "title": "মুচিরাম গুড়ের জীবনচরিত"
+}

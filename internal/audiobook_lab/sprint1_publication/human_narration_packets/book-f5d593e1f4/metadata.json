@@ -1,0 +1,203 @@
+{
+  "author": "রবীন্দ্রনাথ ঠাকুর",
+  "candidate_kind": "human_narration",
+  "delivery": {
+    "accepted_formats": [
+      "wav_pcm_44.1_or_48_khz",
+      "flac_44.1_or_48_khz",
+      "mp3_128kbps_or_higher_44.1_or_48_khz"
+    ],
+    "single_complete_file_required": true
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-f5d593e1f4 --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "language": {
+    "code": "ben",
+    "name": "Bengali"
+  },
+  "packet_fingerprint_sha256": "e483c55a6a9b706296bbcb01157adda519eaab09071161b625c5fb6b8542034d",
+  "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
+  "prior_provider_evidence": {
+    "classification": "INCOMPLETE_FAIL_CLOSED",
+    "evidence_paths": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_google_audition/bengali_representative_audition_report.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_release_gate_evidence.json",
+      "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_sarvam_audition/bengali_representative_audition_report.json"
+    ],
+    "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+    "failed_attempts": [
+      {
+        "confidence": 0.85,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_google_audition/bengali_representative_audition_report.json",
+        "failed": true,
+        "fatal_flags": [
+          "mechanical_cadence_detected",
+          "robotic_texture_detected"
+        ],
+        "minimum_observed_score": 7.8,
+        "model": "google-cloud-texttospeech",
+        "provider": "google",
+        "representative_score": 7.8,
+        "scope": "representative_audition",
+        "scores": [
+          9.4,
+          9.5,
+          7.8,
+          9.4
+        ],
+        "status": "BLOCKED",
+        "style_profile": "literary_warm_pacing",
+        "voice": "bn-IN-Chirp3-HD-Aoede"
+      },
+      {
+        "confidence": 0.85,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_sarvam_audition/bengali_representative_audition_report.json",
+        "failed": true,
+        "fatal_flags": [],
+        "minimum_observed_score": 7.8,
+        "model": "bulbul:v3",
+        "provider": "sarvam",
+        "representative_score": 7.8,
+        "scope": "representative_audition",
+        "scores": [
+          9.4,
+          9.4,
+          7.8,
+          9.4
+        ],
+        "status": "BLOCKED",
+        "style_profile": "literary_warm_pacing",
+        "voice": "pooja"
+      }
+    ],
+    "non_release_passes": [],
+    "provider_attempts": [
+      {
+        "confidence": 0.85,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_google_audition/bengali_representative_audition_report.json",
+        "failed": true,
+        "fatal_flags": [
+          "mechanical_cadence_detected",
+          "robotic_texture_detected"
+        ],
+        "minimum_observed_score": 7.8,
+        "model": "google-cloud-texttospeech",
+        "provider": "google",
+        "representative_score": 7.8,
+        "scope": "representative_audition",
+        "scores": [
+          9.4,
+          9.5,
+          7.8,
+          9.4
+        ],
+        "status": "BLOCKED",
+        "style_profile": "literary_warm_pacing",
+        "voice": "bn-IN-Chirp3-HD-Aoede"
+      },
+      {
+        "confidence": 0.85,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-f5d593e1f4_sarvam_audition/bengali_representative_audition_report.json",
+        "failed": true,
+        "fatal_flags": [],
+        "minimum_observed_score": 7.8,
+        "model": "bulbul:v3",
+        "provider": "sarvam",
+        "representative_score": 7.8,
+        "scope": "representative_audition",
+        "scores": [
+          9.4,
+          9.4,
+          7.8,
+          9.4
+        ],
+        "status": "BLOCKED",
+        "style_profile": "literary_warm_pacing",
+        "voice": "pooja"
+      }
+    ],
+    "quality_summary": "9.4/10 representative only; full-book source gate failed",
+    "release_evidence_found": true
+  },
+  "pronunciation_checkpoints": [
+    "রামকানাইয়ের নির্বুদ্ধিতা",
+    "রবীন্দ্রনাথ ঠাকুর",
+    "Mark every uncertain proper noun, archaic সাধু form, Sanskrit-derived word, and regional form before recording.",
+    "Preserve Bengali vowel length, conjunct consonants, and written spelling; do not Anglicize names."
+  ],
+  "release_requirements": {
+    "asr_manuscript_score_min": 9.7,
+    "blocker_list_must_be_empty": true,
+    "confidence_score_min": 0.9,
+    "fatal_flags_required_false": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "placeholder_audio_detected"
+    ],
+    "first_and_last_words_must_match": true,
+    "listening_score_min": 9.2,
+    "measured_sync_required": "paragraph_or_stanza",
+    "no_missing_duplicated_or_reordered_content": true,
+    "public_audio_must_remain_hidden_until_all_gates_pass": true,
+    "sync_may_not_be_estimated": true
+  },
+  "rights": {
+    "provenance_hash": "96f13b64e75d574e6c94fa79a186f39f4bdeed875c52c7b9c6dacb55c1e06d5d",
+    "rights_basis": "Author died in 1941, so the original literary work is public domain in India under life plus 60 years. Original publication before 1931 supports U.S. public-domain status."
+  },
+  "safety": {
+    "audio_generated": false,
+    "provider_calls_ran": false,
+    "public_audio_status": "AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES",
+    "release_gate_mutated": false
+  },
+  "sanitization": {
+    "removed_fragments": [
+      {
+        "chapter": "chapter-001.json",
+        "characters": 73,
+        "location": "leading",
+        "reason": "frontmatter_through_exact_title",
+        "sha256": "011eaa5b77405f23e61c724cbbd80e17e0fc5efec492b220e5eed88c0befe883"
+      },
+      {
+        "chapter": "chapter-001.json",
+        "characters": 5,
+        "location": "trailing",
+        "reason": "standalone_edition_year",
+        "sha256": "208ba529d4b75c3b580eeb7bd962ea4be2dbd74b9310d8c525ea853ae1dfd17a"
+      }
+    ],
+    "sanitizer_version": "narration-import-sanitizer-v1",
+    "status": "PASS"
+  },
+  "schema_version": 2,
+  "slug": "book-f5d593e1f4",
+  "source_binding": {
+    "binding_sha256": "9c12b565b6e5d6af54744df5603c90f931a3b3ac1baa0e4e8649683dfa4ee79b",
+    "chapters": [
+      {
+        "chapter": "chapter-001.json",
+        "chapter_title": "Full Text",
+        "raw_characters": 9493,
+        "recorded_source_sha256": "f4bd2ecf4d9eb2dc5e3917bc45965c768463a34d9ced5f1dfe1e1f336b300827",
+        "sanitized_characters": 9411,
+        "sanitized_sha256": "94aa1e3f4446f201905cd31429d5ee1e61eecc227df548ddaf6ad6539843260e"
+      }
+    ],
+    "raw_manuscript_sha256": "f4bd2ecf4d9eb2dc5e3917bc45965c768463a34d9ced5f1dfe1e1f336b300827",
+    "sanitized_manuscript_sha256": "94aa1e3f4446f201905cd31429d5ee1e61eecc227df548ddaf6ad6539843260e",
+    "source_hash": "f4bd2ecf4d9eb2dc5e3917bc45965c768463a34d9ced5f1dfe1e1f336b300827",
+    "status": "VERIFIED_SOURCE_AND_CHAPTER_HASHES"
+  },
+  "style_notes": [
+    "Use idiomatic Bengali phrasing with measured literary pacing and natural sentence-final cadence.",
+    "Keep সাধু or archaic diction intact; do not modernize, paraphrase, translate, or flatten the register.",
+    "Differentiate dialogue lightly without caricature; preserve satire, irony, and emotional restraint.",
+    "Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed punctuation, and choppy joins."
+  ],
+  "style_profile": "classical_bengali_literary_natural_measured",
+  "title": "রামকানাইয়ের নির্বুদ্ধিতা"
+}

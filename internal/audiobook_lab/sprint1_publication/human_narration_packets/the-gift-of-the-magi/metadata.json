@@ -1,0 +1,220 @@
+{
+  "author": "O. Henry",
+  "candidate_kind": "human_narration",
+  "delivery": {
+    "accepted_formats": [
+      "wav_pcm_44.1_or_48_khz",
+      "flac_44.1_or_48_khz",
+      "mp3_128kbps_or_higher_44.1_or_48_khz"
+    ],
+    "single_complete_file_required": true
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-gift-of-the-magi --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "language": {
+    "code": "en",
+    "name": "English"
+  },
+  "packet_fingerprint_sha256": "dd28671d62a54782d8c313134e1d5a60d2ab9fba2f4b74f5593f57939c2ce604",
+  "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
+  "prior_provider_evidence": {
+    "classification": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+    "evidence_paths": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_release_gate_evidence.json"
+    ],
+    "exact_blocker": "BOUNDED_GOOGLE_REPRESENTATIVE_AUDITIONS_FAILED; HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
+    "failed_attempts": [
+      {
+        "attempt_fingerprint": "75a6fbc43a06e181677d1f4a2afc2508416d7f0b137d325f79948df48a04fabe",
+        "confidence": 0.9,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_release_gate_evidence.json",
+        "failed": true,
+        "fatal_flags": [],
+        "minimum_observed_score": 8.5,
+        "owner_minimum_score": 9.4,
+        "provider": "google",
+        "scope": "representative_audition_baseline",
+        "scores": [
+          9.5,
+          9.4,
+          8.5,
+          9.4
+        ],
+        "status": "BLOCKED_LISTENING_QA",
+        "voice": "en-GB-Studio-C"
+      },
+      {
+        "attempt_fingerprint": "cda6b9c871c9751f8ade43db4ec0c71b865c9ac0ba5ab5a63a49c6fbf2b13ddd",
+        "confidence": 0.9,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_release_gate_evidence.json",
+        "failed": true,
+        "fatal_flags": [
+          "mechanical_cadence_detected",
+          "robotic_texture_detected"
+        ],
+        "minimum_observed_score": 7.2,
+        "owner_minimum_score": 9.4,
+        "provider": "google",
+        "scope": "representative_audition_final",
+        "scores": [
+          9.4,
+          9.4,
+          7.2,
+          9.5
+        ],
+        "status": "BLOCKED_LISTENING_QA",
+        "voice": "en-GB-Chirp3-HD-Aoede"
+      },
+      {
+        "attempt_fingerprint": "716473a1705c4aa3e6ea718f2c117668875215ac368540f6402b4dab47932f43",
+        "confidence": 0.9,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_release_gate_evidence.json",
+        "failed": true,
+        "fatal_flags": [],
+        "minimum_observed_score": 8.3,
+        "owner_minimum_score": 9.4,
+        "provider": "google",
+        "scope": "representative_audition_single_prosody_retry",
+        "scores": [
+          9.5,
+          9.4,
+          8.3,
+          9.5
+        ],
+        "status": "BLOCKED_LISTENING_QA",
+        "voice": "en-GB-Studio-C"
+      }
+    ],
+    "non_release_passes": [],
+    "provider_attempts": [
+      {
+        "attempt_fingerprint": "75a6fbc43a06e181677d1f4a2afc2508416d7f0b137d325f79948df48a04fabe",
+        "confidence": 0.9,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_release_gate_evidence.json",
+        "failed": true,
+        "fatal_flags": [],
+        "minimum_observed_score": 8.5,
+        "owner_minimum_score": 9.4,
+        "provider": "google",
+        "scope": "representative_audition_baseline",
+        "scores": [
+          9.5,
+          9.4,
+          8.5,
+          9.4
+        ],
+        "status": "BLOCKED_LISTENING_QA",
+        "voice": "en-GB-Studio-C"
+      },
+      {
+        "attempt_fingerprint": "cda6b9c871c9751f8ade43db4ec0c71b865c9ac0ba5ab5a63a49c6fbf2b13ddd",
+        "confidence": 0.9,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_release_gate_evidence.json",
+        "failed": true,
+        "fatal_flags": [
+          "mechanical_cadence_detected",
+          "robotic_texture_detected"
+        ],
+        "minimum_observed_score": 7.2,
+        "owner_minimum_score": 9.4,
+        "provider": "google",
+        "scope": "representative_audition_final",
+        "scores": [
+          9.4,
+          9.4,
+          7.2,
+          9.5
+        ],
+        "status": "BLOCKED_LISTENING_QA",
+        "voice": "en-GB-Chirp3-HD-Aoede"
+      },
+      {
+        "attempt_fingerprint": "716473a1705c4aa3e6ea718f2c117668875215ac368540f6402b4dab47932f43",
+        "confidence": 0.9,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_release_gate_evidence.json",
+        "failed": true,
+        "fatal_flags": [],
+        "minimum_observed_score": 8.3,
+        "owner_minimum_score": 9.4,
+        "provider": "google",
+        "scope": "representative_audition_single_prosody_retry",
+        "scores": [
+          9.5,
+          9.4,
+          8.3,
+          9.5
+        ],
+        "status": "BLOCKED_LISTENING_QA",
+        "voice": "en-GB-Studio-C"
+      }
+    ],
+    "quality_summary": "Three Google representative attempts missed the owner minimum 9.4; minima 8.5, 8.3, and 7.2",
+    "release_evidence_found": true
+  },
+  "pronunciation_checkpoints": [
+    "The Gift of the Magi",
+    "O. Henry",
+    "Recurring names/terms: And, But, Christmas, Dell, Della, Della’s, Dillingham, Don’t, For, Give, Had, Her",
+    "Confirm every proper noun and period-specific term before recording; preserve the written form."
+  ],
+  "release_requirements": {
+    "asr_manuscript_score_min": 9.7,
+    "blocker_list_must_be_empty": true,
+    "confidence_score_min": 0.9,
+    "fatal_flags_required_false": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "placeholder_audio_detected"
+    ],
+    "first_and_last_words_must_match": true,
+    "listening_score_min": 9.4,
+    "measured_sync_required": "paragraph_or_section",
+    "no_missing_duplicated_or_reordered_content": true,
+    "public_audio_must_remain_hidden_until_all_gates_pass": true,
+    "sync_may_not_be_estimated": true
+  },
+  "rights": {
+    "provenance_hash": "8067e36d911e2bf1f9a00a711a899f9df5879de2a84a1bc6623aa4895364ad15",
+    "rights_basis": "O. Henry died 1910; first published 1905. Public domain in India and the U.S."
+  },
+  "safety": {
+    "audio_generated": false,
+    "provider_calls_ran": false,
+    "public_audio_status": "AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES",
+    "release_gate_mutated": false
+  },
+  "sanitization": {
+    "removed_fragments": [],
+    "sanitizer_version": "narration-import-sanitizer-v1",
+    "status": "PASS"
+  },
+  "schema_version": 2,
+  "slug": "the-gift-of-the-magi",
+  "source_binding": {
+    "binding_sha256": "389405e1ccc58c74af40edfde6802f4a2ec838e0f2efaa2d6750a8c0cc260f3c",
+    "chapters": [
+      {
+        "chapter": "chapter-001.json",
+        "chapter_title": "The Gift of the Magi",
+        "raw_characters": 11298,
+        "recorded_source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+        "sanitized_characters": 11298,
+        "sanitized_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e"
+      }
+    ],
+    "raw_manuscript_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+    "sanitized_manuscript_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+    "source_hash": "490b76d444db0d952f5286f60c4ec2834ab91731d47e42dc94a3639d9183d295",
+    "status": "VERIFIED_SOURCE_AND_CHAPTER_HASHES"
+  },
+  "style_notes": [
+    "Use clear literary English with natural dialogue changes and deliberate punctuation pauses.",
+    "Preserve period diction, irony, tension, and humor without melodrama or character caricature.",
+    "Do not paraphrase names, quoted speech, spelling, or narrative transitions.",
+    "Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed transitions, and choppy joins."
+  ],
+  "style_profile": "english_literary_natural_dialogue",
+  "title": "The Gift of the Magi"
+}

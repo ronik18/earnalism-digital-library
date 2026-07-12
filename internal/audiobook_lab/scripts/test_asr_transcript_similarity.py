@@ -11,7 +11,7 @@ HOOK_DIR = SCRIPTS_DIR / "factory_hooks"
 sys.path.insert(0, str(SCRIPTS_DIR))
 sys.path.insert(0, str(HOOK_DIR))
 
-from asr_sync_hook import transcript_similarity  # noqa: E402
+from asr_sync_hook import frontmatter_absent, group_repair_semantics, transcript_similarity  # noqa: E402
 
 
 def assert_punctuation_normalized_prose_passes() -> None:
@@ -63,12 +63,38 @@ def assert_boundary_allows_hyphenated_compound_join() -> None:
     assert metrics["last_words_match_score"] == 1.0, metrics
 
 
+def assert_bengali_literary_words_do_not_trigger_page_marker() -> None:
+    assert frontmatter_absent("পৃথিবীর সমস্ত মাধ্যাকর্ষণশক্তি বালককে টানিতে লাগিল।")
+    assert frontmatter_absent("পৃথিবীর লোক কোনো কালেও সে দিনের কথা ভুলিবে না।")
+
+
+def assert_bengali_source_markers_still_block() -> None:
+    assert not frontmatter_absent("১৯৫০ (পৃ. ৩৫-৩৯)\n\nগিন্নি")
+    assert not frontmatter_absent("পৃষ্ঠা ১২\n\nগিন্নি")
+    assert not frontmatter_absent("গল্পগুচ্ছ\n\nগিন্নি")
+
+
+def assert_not_requested_repair_requires_verified_fresh_generation() -> None:
+    accepted = group_repair_semantics({"status": "NOT_REQUESTED"}, construction_evidence_pass=True)
+    assert accepted["accepted"], accepted
+    required = group_repair_semantics(
+        {"status": "NOT_REQUESTED", "repair_required": True},
+        construction_evidence_pass=True,
+    )
+    assert not required["accepted"], required
+    incomplete = group_repair_semantics({"status": "NOT_REQUESTED"}, construction_evidence_pass=False)
+    assert not incomplete["accepted"], incomplete
+
+
 def main() -> int:
     assert_punctuation_normalized_prose_passes()
     assert_missing_content_blocks()
     assert_boundary_allows_single_asr_name_variant()
     assert_boundary_missing_ending_blocks()
     assert_boundary_allows_hyphenated_compound_join()
+    assert_bengali_literary_words_do_not_trigger_page_marker()
+    assert_bengali_source_markers_still_block()
+    assert_not_requested_repair_requires_verified_fresh_generation()
     print("ASR transcript similarity regression checks PASS")
     return 0
 

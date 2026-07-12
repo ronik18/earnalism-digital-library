@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-07-12T20:43:29Z",
+  "slug": "book-d19e96859f",
+  "status": "CALIBRATION_REPAIR_REQUIRED",
+  "fingerprint": {
+    "slug": "book-d19e96859f",
+    "provider": "google",
+    "chunks": [
+      {
+        "chunk_id": "group_0000",
+        "audio_hash": "357ad518769d2c22be07cc97eb75141557945bde367c669092d4119661c928cf"
+      }
+    ],
+    "models": [
+      "latest_long"
+    ],
+    "languages": [
+      "bn-IN"
+    ]
+  },
+  "estimated_cost_usd": 0.0171,
+  "max_estimated_usd": 0.05,
+  "provider_calls_ran": true,
+  "results": [
+    {
+      "model": "latest_long",
+      "provider": "google",
+      "language": "bn-IN",
+      "chunk_id": "group_0000",
+      "audio_hash": "357ad518769d2c22be07cc97eb75141557945bde367c669092d4119661c928cf",
+      "duration_seconds": 128.340907,
+      "status": "ERROR",
+      "error": "RuntimeError: ERROR: (gcloud.ml.speech.recognize) INVALID_ARGUMENT: Invalid recognition 'config': The requested model is currently not supported for language : bn-IN."
+    }
+  ],
+  "best_arm": null,
+  "actual_provider_billing": "NOT_REPORTED",
+  "lock_restored": true
+}

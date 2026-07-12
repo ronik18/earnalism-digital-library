@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-07-12T22:07:55Z",
+  "slug": "book-d19e96859f",
+  "status": "CALIBRATION_REPAIR_REQUIRED",
+  "fingerprint": {
+    "slug": "book-d19e96859f",
+    "provider": "google",
+    "chunks": [
+      {
+        "chunk_id": "group_0000",
+        "audio_hash": "8c9cdd54864e466144e9be4940898f98eb2943b2353a80e98b55dd0b8d420e09"
+      },
+      {
+        "chunk_id": "group_0002",
+        "audio_hash": "276d5899ae19f59e7f2dbb5fc194218d567eb443d39404f486c154dd7101500b"
+      },
+      {
+        "chunk_id": "group_0005",
+        "audio_hash": "23529d6ec674f53284a91af3bdf13bcaee55cc9af82aa69af8a63d578db71963"
+      }
+    ],
+    "models": [
+      "latest_long"
+    ],
+    "languages": [
+      "bn-IN"
+    ]
+  },
+  "estimated_cost_usd": 0.0342,
+  "max_estimated_usd": 0.25,
+  "provider_calls_ran": true,
+  "results": [
+    {
+      "model": "latest_long",
+      "provider": "google",
+      "language": "bn-IN",
+      "chunk_id": "group_0000",
+      "audio_hash": "8c9cdd54864e466144e9be4940898f98eb2943b2353a80e98b55dd0b8d420e09",
+      "duration_seconds": 91.176,
+      "status": "ERROR",
+      "error": "RuntimeError: ERROR: (gcloud.ml.speech.recognize) INVALID_ARGUMENT: Invalid recognition 'config': The requested model is currently not supported for language : bn-IN."
+    },
+    {
+      "model": "latest_long",
+      "provider": "google",
+      "language": "bn-IN",
+      "chunk_id": "group_0002",
+      "audio_hash": "276d5899ae19f59e7f2dbb5fc194218d567eb443d39404f486c154dd7101500b",
+      "duration_seconds": 95.352,
+      "status": "ERROR",
+      "error": "RuntimeError: ERROR: (gcloud.ml.speech.recognize) INVALID_ARGUMENT: Invalid recognition 'config': The requested model is currently not supported for language : bn-IN."
+    },
+    {
+      "model": "latest_long",
+      "provider": "google",
+      "language": "bn-IN",
+      "chunk_id": "group_0005",
+      "audio_hash": "23529d6ec674f53284a91af3bdf13bcaee55cc9af82aa69af8a63d578db71963",
+      "duration_seconds": 69.648,
+      "status": "ERROR",
+      "error": "RuntimeError: ERROR: (gcloud.ml.speech.recognize) INVALID_ARGUMENT: Invalid recognition 'config': The requested model is currently not supported for language : bn-IN."
+    }
+  ],
+  "best_arm": null,
+  "actual_provider_billing": "NOT_REPORTED",
+  "lock_restored": true
+}
