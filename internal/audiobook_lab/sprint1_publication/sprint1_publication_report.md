@@ -1,6 +1,6 @@
 # Sprint 1 Publication Stage 2 Report
 
-Generated: `2026-07-12T17:22:03Z`
+Generated: `2026-07-12T18:04:44Z`
 
 ## Outcome
 
@@ -9,9 +9,9 @@ Generated: `2026-07-12T17:22:03Z`
 - Reader repairs merged/deployed from PR #101: `17`
 - Current public audiobooks: `2/32` in production
 - New public audiobooks: `1`
-- Provider calls: bounded Google auditions/full TTS and bounded OpenAI ASR/listening QA for A Ghost Story only
-- Estimated Stage 2B through Stage 2D plus The Open Window auditions: `$4.0684`; actual provider billing was not reported
-- Authorized budget remaining after estimate: `$170.9316`
+- Provider calls: bounded A Ghost Story production plus bounded Google/OpenAI representative auditions for The Open Window; no Stage 2E full TTS or publication
+- Estimated Stage 2B through Stage 2E spend: `$4.2862`; actual provider billing was not reported
+- Authorized budget remaining after estimate: `$170.7138`
 - Remaining known queue estimate: `$97.5724`
 - Production API: `32/32 book routes and 32/32 manifests HTTP 200`
 - Production browser: prior `132/132` desktop/mobile route checks pass; Stage 2D book and reader release-state checks pass
@@ -49,7 +49,7 @@ Stage 2B supplied every required cap in the same process and ran exactly six bou
 | `alices-adventures-in-wonderland` | Alice's Adventures in Wonderland | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/alices-adventures-in-wonderland.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `the-gift-of-the-magi` | The Gift of the Magi | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-gift-of-the-magi.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `the-tell-tale-heart` | The Tell-Tale Heart | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-tell-tale-heart.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
-| `the-open-window` | The Open Window | English | Yes | No | Google Studio-C baseline 8.0-9.4; one prosody retry 8.5-9.5, confidence 0.90-0.95, no fatal flags; twilight transition remains below 9.4 | `internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_release_gate_evidence.json` | $0.4356 estimated; actual not reported | AUDIO_HIDDEN_GOOGLE_STUDIO_C_TWILIGHT_TRANSITION_REPAIR_REQUIRED |
+| `the-open-window` | The Open Window | English | Yes | No | Google Studio-C attempts 8.0-9.5; final Studio-B 7.2-9.5, confidence 0.90-0.95; twilight sample has robotic texture and mechanical cadence fatal flags; 10.0 not claimed | `internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_release_gate_evidence.json` | $0.6534 estimated; actual not reported | AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED |
 | `sredni-vashtar` | Sredni Vashtar | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/sredni-vashtar.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `dsires-baby` | Désirée's Baby | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/dsires-baby.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `the-cop-and-the-anthem` | The Cop and the Anthem | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-cop-and-the-anthem.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
@@ -98,3 +98,9 @@ The in-app browser could not start media for either A Ghost Story or the existin
 The controlled reader source, rights, sanitation, and covers remain valid, while the historical Piper asset remains ineligible. A new lock-safe Google Studio-C wrapper bound four sub-30-second samples to the sanitized source hash and ran schema-3 listening QA. Baseline scores were `9.4`, `8.4`, `8.0`, and `8.4`. One source-preserving prosody retry improved them to `9.5`, `9.4`, `8.5`, and `9.4`, with no fatal flags.
 
 The twilight transition still failed the `9.4` owner minimum, so no full TTS, upload, manifest mutation, or publication ran. The title remains reader-public/audio-hidden with a separately owner-approved Studio-B audition as the exact next repair action.
+
+## Stage 2E: The Open Window
+
+The final bounded `en-GB-Studio-B` audition ran against four source-bound passages. Opening, shooting-party, and ending samples scored `9.4`, `9.5`, and `9.4`; the twilight transition scored `7.2` at confidence `0.90` and triggered `robotic_texture_detected` plus `mechanical_cadence_detected`. The stricter `schema3_universal_9_7` policy therefore returned `AUDITION_REPAIR_REQUIRED`.
+
+No full audio, upload, manifest, endpoint, frontend release state, or production audio exposure was created. Estimated Stage 2E spend is `$0.2178`, title cumulative estimate is `$0.6534`, and Sprint 1 cumulative estimate is `$4.2862 / $175`. The lock restored byte-for-byte. Automated Google retries stop; the executable repair track is a source-bound human narration or licensed-audio packet followed by the complete release gate.

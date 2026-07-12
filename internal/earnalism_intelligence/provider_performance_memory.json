@@ -221,13 +221,18 @@
       "a_ghost_story_result": "full release QA passed with six listening samples 9.4-9.5",
       "the_open_window_baseline_scores": [9.4, 8.4, 8.0, 8.4],
       "the_open_window_prosody_retry_scores": [9.5, 9.4, 8.5, 9.4],
+      "the_open_window_studio_b_final_scores": [9.4, 9.5, 7.2, 9.4],
       "the_open_window_weak_passage": "twilight_return",
-      "the_open_window_fatal_flags": [],
+      "the_open_window_fatal_flags": [
+        "mechanical_cadence_detected",
+        "robotic_texture_detected"
+      ],
       "do_not_repeat_fingerprints": [
         "cfde863f34962e2ebeb608b7b333565566ddf305b91356d6bd6cdb97572f73fb",
-        "a4ad393ef625f5c35b9e4939107fa53fb29556c29a59ca7d563a68ea857e6929"
+        "a4ad393ef625f5c35b9e4939107fa53fb29556c29a59ca7d563a68ea857e6929",
+        "7d8546bba92729e05ba82f665d084c9d7e81cc30d567494ff21c300551dfa5f6"
       ],
-      "next_action": "Test en-GB-Studio-B once under a fresh bounded owner approval; never infer catalog-wide suitability from the A Ghost Story pass."
+      "next_action": "Stop automated Google retries for The Open Window and prepare source-bound human narration or licensed audio; never infer catalog-wide suitability from the A Ghost Story pass."
     }
   }
 }

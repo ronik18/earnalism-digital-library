@@ -18,16 +18,17 @@ sys.path.insert(0, str(SCRIPT_DIR))
 import sprint1_stage2d_a_ghost_story_google_audition as shared  # noqa: E402
 
 
-OWNER_DECISION = "AUTHORIZE_STAGE_2D_A_GHOST_STORY_ALTERNATE_PROVIDER_REPAIR_AND_PUBLICATION_IF_PASS"
+OWNER_DECISION = "AUTHORIZE_STAGE_2E_THE_OPEN_WINDOW_STUDIO_B_AUDITION_AND_PUBLICATION_IF_PASS"
 SLUG = "the-open-window"
 TITLE = "The Open Window"
 AUTHOR = "Saki"
-HOLDER = "sprint1_publication_stage2d"
+HOLDER = "sprint1_publication_stage2e_the_open_window"
 EXPECTED_SANITIZED_SHA256 = "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be"
-PRIOR_SPRINT_ESTIMATED_SPEND_USD = 3.6328
-SUPPORTED_VOICES = {"en-GB-Studio-B", "en-GB-Studio-C"}
+PRIOR_SPRINT_ESTIMATED_SPEND_USD = 4.0684
+SUPPORTED_VOICES = {"en-GB-Studio-B"}
 RESULT_DIR = ROOT / "internal/audiobook_lab/sprint1_publication/title_runs"
 MAX_SAMPLE_SECONDS = 30.0
+LISTENING_POLICY = "schema3_universal_9_7"
 
 
 def source_passages(manuscript: str) -> list[dict]:
@@ -134,6 +135,11 @@ def attempt_fingerprint(*, voice: str, passages: list[dict], prosody_repair: boo
     return hashlib.sha256(payload).hexdigest()
 
 
+def run_id(*, voice: str, prosody_repair: bool) -> str:
+    suffix = "-prosody-repair" if prosody_repair else ""
+    return f"sprint1-stage2e-the-open-window-{voice.lower()}{suffix}"
+
+
 def acquired_lock_payload(lock: dict, *, voice: str, estimate: dict, prosody_repair: bool) -> dict:
     payload = dict(lock)
     payload.update(
@@ -142,8 +148,10 @@ def acquired_lock_payload(lock: dict, *, voice: str, estimate: dict, prosody_rep
             "allowed_next_holders": [],
             "holder_started_at": shared.iso_now(),
             "budget_cap_usd": 175,
+            "run_id": run_id(voice=voice, prosody_repair=prosody_repair),
             "approved_scope": (
-                f"The Open Window Google representative audition only; {voice}; four passages up to 30 seconds; "
+                f"Stage 2E final The Open Window Google Studio-B representative audition only; {voice}; "
+                "four passages up to 30 seconds; "
                 f"prosody repair {prosody_repair}; estimated provider plus QA "
                 f"{estimate['estimated_current_usd']:.4f} USD; no full TTS, upload, publication, or release mutation."
             ),
@@ -164,18 +172,24 @@ def acquired_lock_payload(lock: dict, *, voice: str, estimate: dict, prosody_rep
 def result_path(voice: str, prosody_repair: bool) -> Path:
     suffix = "_prosody_repair" if prosody_repair else ""
     safe_voice = voice.lower().replace("-", "_")
-    return RESULT_DIR / f"the-open-window_stage2d_google_audition_{safe_voice}{suffix}.json"
+    return RESULT_DIR / f"the-open-window_stage2e_google_audition_{safe_voice}{suffix}.json"
 
 
-def runtime_gate_errors() -> list[str]:
-    return shared.runtime_gate_errors()
+def runtime_gate_errors(*, prosody_repair: bool = False) -> list[str]:
+    errors = shared.runtime_gate_errors()
+    if prosody_repair and os.environ.get("EARNALISM_APPROVE_THE_OPEN_WINDOW_STUDIO_B_PROSODY_REPAIR") != "true":
+        errors.append("EARNALISM_APPROVE_THE_OPEN_WINDOW_STUDIO_B_PROSODY_REPAIR must equal true")
+    return errors
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--voice", default="en-GB-Studio-C", choices=sorted(SUPPORTED_VOICES))
-    parser.add_argument("--asset-root", default=os.environ.get("EARNALISM_STAGE2D_ASSET_ROOT", str(ROOT)))
-    parser.add_argument("--output-root", default="/tmp/earnalism-the-open-window-stage2d-google-audition")
+    parser.add_argument("--voice", default="en-GB-Studio-B", choices=sorted(SUPPORTED_VOICES))
+    parser.add_argument(
+        "--asset-root",
+        default=os.environ.get("EARNALISM_STAGE2E_ASSET_ROOT", os.environ.get("EARNALISM_STAGE2D_ASSET_ROOT", str(ROOT))),
+    )
+    parser.add_argument("--output-root", default="/tmp/earnalism-the-open-window-stage2e-google-audition")
     parser.add_argument("--prior-sprint-estimated-spend-usd", type=float, default=PRIOR_SPRINT_ESTIMATED_SPEND_USD)
     parser.add_argument("--prior-title-estimated-spend-usd", type=float, default=0.0)
     parser.add_argument("--prosody-repair", action="store_true")
@@ -185,7 +199,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    errors = runtime_gate_errors()
+    errors = runtime_gate_errors(prosody_repair=args.prosody_repair)
     if errors:
         print(json.dumps({"status": "BLOCKED_RUNTIME_GATES", "errors": errors}, indent=2))
         return 2
@@ -224,6 +238,8 @@ def main() -> int:
         "author": AUTHOR,
         "provider": "google",
         "voice": args.voice,
+        "run_id": run_id(voice=args.voice, prosody_repair=args.prosody_repair),
+        "listening_policy": LISTENING_POLICY,
         "language_code": "en-GB",
         "speaking_rate": 0.88 if args.prosody_repair else 0.94,
         "prosody_repair": bool(args.prosody_repair),

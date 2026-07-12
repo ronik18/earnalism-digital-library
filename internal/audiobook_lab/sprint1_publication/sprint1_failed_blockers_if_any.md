@@ -251,17 +251,19 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## the-open-window / The Open Window
 
-- Blocker: `REPRESENTATIVE_AUDITION_TWILIGHT_TRANSITION_SCORE_8.5_BELOW_9.4`
+- Blocker: `REPRESENTATIVE_AUDITION_STUDIO_B_TWILIGHT_SCORE_7.2_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Historical asset: Piper with synthetic alignment; it remains ineligible.
 - Google Studio-C baseline scores: `9.4`, `8.4`, `8.0`, `8.4`.
 - Single prosody retry scores: `9.5`, `9.4`, `8.5`, `9.4`; no fatal flags; lock restored.
-- Estimated audition spend: `$0.4356`; actual provider billing not reported.
+- Final Google Studio-B scores: `9.4`, `9.5`, `7.2`, `9.4`; the twilight sample has robotic texture and mechanical cadence fatal flags.
+- Estimated audition spend: `$0.6534`; actual provider billing not reported.
+- Automated Google retries stop. The alternate track is source-bound human narration or licensed audio, followed by the full release gate.
 - Next command:
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=1 EARNALISM_GOOGLE_TTS_ESTIMATED_USD_PER_1K_CHARS=0.02 EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=2 EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD=0.05 EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio python3 internal/audiobook_lab/scripts/sprint1_stage2d_the_open_window_google_audition.py --voice en-GB-Studio-B --prior-sprint-estimated-spend-usd 4.0684 --prior-title-estimated-spend-usd 0.4356 --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root /tmp/earnalism-the-open-window-stage2d-google-audition
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets
 ```
 
 ## sredni-vashtar / Sredni Vashtar

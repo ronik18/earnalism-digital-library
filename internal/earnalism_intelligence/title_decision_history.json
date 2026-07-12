@@ -1015,20 +1015,21 @@
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
     },
     "the-open-window": {
-      "latest_decision": "AUDIO_HIDDEN_GOOGLE_STUDIO_C_TWILIGHT_TRANSITION_REPAIR_REQUIRED",
-      "decision_reason": "Google Studio-C baseline and one source-preserving prosody retry both left the twilight transition below the 9.4 representative minimum; no fatal flags",
-      "updated_at": "2026-07-12T17:22:03Z",
+      "latest_decision": "AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED",
+      "decision_reason": "Final Studio-B audition left the twilight transition at 7.2 with robotic texture and mechanical cadence fatal flags after Studio-C also failed the same passage",
+      "updated_at": "2026-07-12T18:04:44Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
       "sanitized_source_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
       "provider": "google",
-      "voice": "en-GB-Studio-C",
+      "voice": "en-GB-Studio-B",
       "baseline_scores": [9.4, 8.4, 8.0, 8.4],
       "prosody_retry_scores": [9.5, 9.4, 8.5, 9.4],
-      "fatal_flags": [],
-      "estimated_spend_usd": 0.4356,
-      "audiobook_next_action": "owner-approved bounded en-GB-Studio-B representative audition; no full TTS before all passages pass",
+      "studio_b_final_scores": [9.4, 9.5, 7.2, 9.4],
+      "fatal_flags": ["mechanical_cadence_detected", "robotic_texture_detected"],
+      "estimated_spend_usd": 0.6534,
+      "audiobook_next_action": "prepare source-bound human narration or licensed-audio candidate; run all release gates before public audio",
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_release_gate_evidence.json"
     }
   },

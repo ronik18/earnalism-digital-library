@@ -302,4 +302,12 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Do not treat in-app media-start failure as title-specific when the same runtime behavior reproduces on an established approved control and both media elements are fully buffered with valid `206` endpoints.
 - The Open Window proves provider success is title-specific: Studio-C passed A Ghost Story but scored `8.0-9.4` on baseline Saki passages and `8.5-9.5` after one prosody retry.
 - The Open Window twilight transition remains the precise blocker. Do not repeat either Studio-C fingerprint, do not reuse the Piper asset, and do not start full TTS until a fresh representative voice passes every passage.
+
+## 2026-07-12 The Open Window Studio-B Final Audition
+
+- The final bounded Studio-B representative audition scored `9.4`, `9.5`, `7.2`, and `9.4`; the twilight transition introduced robotic texture and mechanical cadence fatal flags.
+- Studio quality is title- and passage-specific. Studio-B did not solve the Studio-C twilight weakness and regressed that passage from `8.5` to `7.2`.
+- Do not repeat the Studio-B fingerprint `7d8546bba92729e05ba82f665d084c9d7e81cc30d567494ff21c300551dfa5f6` or publish any failed Google/Piper candidate.
+- Stop automated Google retries for The Open Window. The cheapest safe alternate path is a source-bound human narration or licensed-audio candidate followed by complete ASR, listening, manifest, endpoint, frontend, and production validation.
+- Estimated Stage 2E spend was `$0.2178`; actual provider billing was not reported; the lock restored byte-for-byte.
 - Parallel agents can safely audit rights, sanitation, existing assets, and repair commands, but paid provider lanes and publication metadata remain serialized through their locks and the governor must verify every returned gate.
