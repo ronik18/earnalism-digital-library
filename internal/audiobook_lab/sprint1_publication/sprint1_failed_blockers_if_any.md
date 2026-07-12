@@ -20,7 +20,7 @@ curl -sS -H 'Range: bytes=0-1023' -o /dev/null -w '%{http_code} %{size_download}
 
 ## bn-066 / আনন্দমঠ
 
-- Blocker: `ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -31,7 +31,7 @@ PYTHONPYCACHEPREFIX=/tmp/earnalism-pycache python3 internal/audiobook_lab/script
 
 ## radharani / রাধারাণী
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -42,7 +42,7 @@ python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest boo
 
 ## nishkriti / নিষ্কৃতি
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -98,7 +98,7 @@ PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration
 
 ## pather-panchali / পথের পাঁচালী / Pather Panchali
 
-- Blocker: `OWNER_DOCUMENT_REQUIRED_FOR_AUDIO_RIGHTS_SOURCE_COVER; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `OWNER_DOCUMENT_REQUIRED_FOR_AUDIO_RIGHTS_SOURCE_COVER`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -109,7 +109,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## devdas / দেবদাস / Devdas
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -120,7 +120,7 @@ python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest boo
 
 ## book-edfcf810c5 / ক্ষুধিত পাষাণ
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -131,7 +131,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## dracula / Dracula
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -142,7 +142,7 @@ python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest boo
 
 ## frankenstein / Frankenstein
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -153,7 +153,7 @@ python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest boo
 
 ## jekyll-and-hyde / The Strange Case of Dr. Jekyll and Mr. Hyde
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -164,7 +164,7 @@ python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest boo
 
 ## picture-of-dorian-gray / The Picture of Dorian Gray
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -175,7 +175,7 @@ python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest boo
 
 ## the-time-machine / The Time Machine
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -186,7 +186,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## the-call-of-the-wild / The Call of the Wild
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -197,7 +197,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## white-fang / White Fang
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -208,7 +208,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## pride-and-prejudice / Pride and Prejudice
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -219,7 +219,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## the-secret-garden / The Secret Garden
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -230,7 +230,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## alices-adventures-in-wonderland / Alice's Adventures in Wonderland
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -298,7 +298,7 @@ PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration
 
 ## dsires-baby / Désirée's Baby
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -309,7 +309,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## the-cop-and-the-anthem / The Cop and the Anthem
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -320,7 +320,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## the-last-leaf / The Last Leaf
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -331,7 +331,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## the-masque-of-the-red-death / The Masque of the Red Death
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -342,7 +342,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## the-yellow-wallpaper / The Yellow Wallpaper
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -353,7 +353,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## the-monkeys-paw / The Monkey's Paw
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
@@ -364,7 +364,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## the-necklace / The Necklace
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
 - Next command:
