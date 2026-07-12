@@ -1,0 +1,97 @@
+{
+  "id": "controlled-the-gift-of-the-magi",
+  "slug": "the-gift-of-the-magi",
+  "title": "The Gift of the Magi",
+  "subtitle": "",
+  "author": "O. Henry",
+  "category_slug": "literary-fiction",
+  "short_description": "A poor couple each secretly sell their most prized possession to buy a Christmas gift for the other.",
+  "description": "Della sells her hair to buy Jim a watch chain. Jim sells his watch to buy Della combs. O. Henry's perfect twist becomes an immortal meditation on love, sacrifice, and the gifts that matter most.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275486/earnalism/covers/front/the-gift-of-the-magi_front_1600x2400.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275487/earnalism/covers/back/the-gift-of-the-magi_back_1600x2400.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275487/earnalism/covers/back/the-gift-of-the-magi_back_1600x2400.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275487/earnalism/covers/back/the-gift-of-the-magi_back_1600x2400.png",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "9 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "O. Henry (1862–1910) was an American short story writer celebrated for his wit, wordplay, and surprise endings that illuminate ordinary American life.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Gift of the Magi",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2109,
+      "reading_minutes": 9,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "source_hash": "490b76d444db0d952f5286f60c4ec2834ab91731d47e42dc94a3639d9183d295",
+  "content_hash": "43f7c14de6be56f642476b78fd227fb0005d43909fc27e477646ec99b0900fcd",
+  "provenance_hash": "8067e36d911e2bf1f9a00a711a899f9df5879de2a84a1bc6623aa4895364ad15",
+  "rights_basis": "O. Henry died 1910; first published 1905. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
+  "audiobook_voice": "",
+  "audio_asset_slug": "",
+  "audiobook_assets": {},
+  "audiobook": {},
+  "audiobook_assets_updated_at": "",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-03T20:07:49Z",
+  "cover_dimensions": {
+    "front": [
+      1600,
+      2400
+    ],
+    "back": [
+      1600,
+      2400
+    ]
+  },
+  "cover_semantic_match_score": 9.8
+}

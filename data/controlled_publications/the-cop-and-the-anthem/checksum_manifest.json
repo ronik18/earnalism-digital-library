@@ -1,0 +1,34 @@
+{
+  "slug": "the-cop-and-the-anthem",
+  "generated_at": "2026-07-12T07:04:07Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "eba8dc9670d4b046092be624c851a9216c6a682ffab482a7dcf85e9cde3ea713"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "4a1928268536c62bc7e88dac7c742b7b0dae12416ea231c03f2aec4a01260ab7"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "193728619d202fad6d4f71dbf895c35d68190b7ae6663a77d19d02d774efd113"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "8579571f875d23ed1083e99a7a6338aa208baa61af82bb97fedad4a1d43e258f"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "a46c37d06a9623f73c0fe5598ece4d156d54ed0dfd526795105bfaa82a2ece22"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "6e89943557cd5e0b840586198fa824048ac0f0cfe2b015be5ddb99e12917fecc"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "5efa2347d8668dc8a3d1419cd5c253e70dee82c390e6038d5b59704e5fe857aa"
+    }
+  ]
+}

@@ -72,34 +72,15 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": true,
-  "audiobook_enabled": true,
-  "generate_audiobook": true,
-  "audiobook_provider": "historical_mapped_assets",
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
   "audiobook_voice": "",
-  "audio_asset_slug": "the-necklace",
-  "audiobook_assets": {
-    "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581052/earnalism/audiobooks/en/the-necklace/the-necklace.mp3",
-    "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581054/earnalism/audiobooks/en/the-necklace/the-necklace_timestamps.json",
-    "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581055/earnalism/audiobooks/en/the-necklace/the-necklace_highlight.vtt",
-    "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581055/earnalism/audiobooks/en/the-necklace/the-necklace_chapters.json",
-    "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581057/earnalism/audiobooks/en/the-necklace/the-necklace_meta.json"
-  },
-  "audiobook": {
-    "url": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581052/earnalism/audiobooks/en/the-necklace/the-necklace.mp3",
-    "provider": "historical_mapped_assets",
-    "size": 0,
-    "duration_ms": 0,
-    "assets": {
-      "mp3": "https://res.cloudinary.com/dzlrhlfpu/video/upload/v1780581052/earnalism/audiobooks/en/the-necklace/the-necklace.mp3",
-      "timestamps": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581054/earnalism/audiobooks/en/the-necklace/the-necklace_timestamps.json",
-      "vtt": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581055/earnalism/audiobooks/en/the-necklace/the-necklace_highlight.vtt",
-      "chapters": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581055/earnalism/audiobooks/en/the-necklace/the-necklace_chapters.json",
-      "meta": "https://res.cloudinary.com/dzlrhlfpu/raw/upload/v1780581057/earnalism/audiobooks/en/the-necklace/the-necklace_meta.json"
-    },
-    "updated_at": "2026-07-03T20:07:47Z"
-  },
-  "audiobook_assets_updated_at": "2026-07-03T20:07:47Z",
+  "audio_asset_slug": "",
+  "audiobook_assets": {},
+  "audiobook": {},
+  "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:47Z",
   "updated_at": "2026-07-03T20:07:47Z"
 }

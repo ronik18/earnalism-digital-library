@@ -1,0 +1,13 @@
+{
+  "slug": "the-masque-of-the-red-death",
+  "source_url": "https://www.gutenberg.org/ebooks/1064",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "2264be57608b30c4af99db7b1d430accae5a7c4d9da738ac04651f7ef74bc266",
+  "content_hash": "8e292e23a73729319a17d9aac397303b6311d97a0ede19a80514922c114c1dd0",
+  "provenance_hash": "fccc97a08521519d711236c769280c844fb91a421fca2976bfe8b149bbab6db1",
+  "rights_basis": "Edgar Allan Poe died 1849; first published 1842. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.858867+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "the-monkeys-paw",
+  "generated_at": "2026-07-12T07:04:07Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "775dd82ac69b238dba6a49ea4660c7417ecbcb3d24cdcf6734d435ffe0e0cbc5"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "38b14ef3cff92e10ef2f1bc631dc5578a2aa2d83935a88fac9b10dad3ee2cc95"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "18ff6d42955a67b58dcfbdc90c43393d875f11ce0ff7347fe37a67588b1b46a6"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "d37238e5dc93123ed7c85c3886968cc4ee939087fe434d1e4ab833af6bb87f36"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "32e4d6c97a2f17c7933b44a23cefa3ee58fcd63370d098e7096b9abea2ec9b00"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "9edd6a9c2fa925f9f6b7838d4a4f24e93d0dbeb8ba1d665be7d398614f2219e5"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "8460693188a589a723c6a7ed7bb193baff0f51f6f8820477a79c674e59600555"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "de67443eaa9bc98d86e44bc6b84bd82beda70ddd52c4bb10cf277d5c32d91fa5"
+    }
+  ]
+}

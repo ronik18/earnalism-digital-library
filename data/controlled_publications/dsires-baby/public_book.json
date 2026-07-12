@@ -1,0 +1,97 @@
+{
+  "id": "controlled-dsires-baby",
+  "slug": "dsires-baby",
+  "title": "Désirée's Baby",
+  "subtitle": "",
+  "author": "Kate Chopin",
+  "category_slug": "literary-fiction",
+  "short_description": "A Louisiana plantation wife is cast out when her baby shows signs of Black ancestry — but the truth points elsewhere.",
+  "description": "Désirée is abandoned by her husband Armand when their baby's appearance suggests African ancestry — but the letter he burns reveals the truth is the reverse. Chopin's most shattering story of racial prejudice and its ironic destruction of the bigot.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275510/earnalism/covers/front/dsires-baby_front_1600x2400.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275510/earnalism/covers/front/dsires-baby_front_1600x2400.png",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275510/earnalism/covers/front/dsires-baby_front_1600x2400.png",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275510/earnalism/covers/front/dsires-baby_front_1600x2400.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275514/earnalism/covers/back/dsires-baby_back_1600x2400.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275514/earnalism/covers/back/dsires-baby_back_1600x2400.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275514/earnalism/covers/back/dsires-baby_back_1600x2400.png",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "9 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Kate Chopin (1850–1904) was an American author whose pioneering fiction explored female consciousness, desire, and race in the American South.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "Désirée's Baby",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 2178,
+      "reading_minutes": 10,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "source_hash": "2006e24206b918744a8a8a7589e883389759ccd9cbef93ae8ce260d633dab5d9",
+  "content_hash": "d08d7e830b28474c5d8ac3595444f376074e1e48ee9c2f8cc774dc8a1a91882a",
+  "provenance_hash": "d8fbdf6d75f8e5260b619728efb926a71e9166fb659a93fcf7216cda9caaf44a",
+  "rights_basis": "Kate Chopin died 1904; first published 1893. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
+  "audiobook_voice": "",
+  "audio_asset_slug": "",
+  "audiobook_assets": {},
+  "audiobook": {},
+  "audiobook_assets_updated_at": "",
+  "created_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-03T20:07:48Z",
+  "cover_dimensions": {
+    "front": [
+      1600,
+      2400
+    ],
+    "back": [
+      1600,
+      2400
+    ]
+  },
+  "cover_semantic_match_score": 9.8
+}

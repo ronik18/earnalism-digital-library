@@ -1,0 +1,90 @@
+{
+  "slug": "the-time-machine",
+  "generated_at": "2026-07-12T07:04:07Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "25a44ca7f7beb7b06bbf2fbd75fa9983ce843ea5a19267790e248a8399fbe521"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "f44e860be451c72466a9c5d212caddd8630924b4a88493b26ac56554404a46f5"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "7897989ddd3e062ad5c2e43c6c3e15d609d7fd168121e890d7b6593cc804ed8b"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "6060790337140fea316ae120bbeedf6c736324ba1e4dcda8ba0f78baeca0338d"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "d8fa9acc8be24d685e8687d6febc6efa595ef7cb92020224539eb204cb9000e7"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "ec54e8d6abfbea5fa18a96a06cb68777151021fad0fb2511e084b68143bd7693"
+    },
+    {
+      "file": "chapters/chapter-002.json",
+      "sha256": "0d9b215765f1cf9bdba709a7d0475ff82b17082eb9cda61f444c507912ae2302"
+    },
+    {
+      "file": "chapters/chapter-003.json",
+      "sha256": "04fa6dbc3212e88f51b68643085bf11d53d81933f282332fe1eef681a3be1c35"
+    },
+    {
+      "file": "chapters/chapter-004.json",
+      "sha256": "06ac862eda572faa1bc221d4322d740cb113cd17834c39f6ea2f871edf06964c"
+    },
+    {
+      "file": "chapters/chapter-005.json",
+      "sha256": "cd148470d070a8ba9daaa288172a89114e9b48f79f27edb350dabac152cb4cab"
+    },
+    {
+      "file": "chapters/chapter-006.json",
+      "sha256": "09d45f9fab05ca1812124884442b5bcbbdd9ca143b46a36bb508310c87ad43cb"
+    },
+    {
+      "file": "chapters/chapter-007.json",
+      "sha256": "66bfc61f35303cae0828ff6053b04bc62655db0fd684976bcc72ed6af99f22da"
+    },
+    {
+      "file": "chapters/chapter-008.json",
+      "sha256": "cfe407cc5aa1d561ed463b4f589402670a72e8197a4f3b75d22cc3cb37de51cb"
+    },
+    {
+      "file": "chapters/chapter-009.json",
+      "sha256": "3bcd1ef377cd0a89d21699e9356512a16a8d90740fb6e28fceedc3b5d37e2b2d"
+    },
+    {
+      "file": "chapters/chapter-010.json",
+      "sha256": "5b7c4ff6d5544687d93d2176ac20f022713abba439bfe607c196a5daa747bd80"
+    },
+    {
+      "file": "chapters/chapter-011.json",
+      "sha256": "b6c05d934d24bf78cd9a1f34a87df9bb6d13a9f7f57e615dbec965474cd95d4c"
+    },
+    {
+      "file": "chapters/chapter-012.json",
+      "sha256": "4b00dc32f80a32858246ec194f1b45308e7d9e3778892f938948d2a185423a63"
+    },
+    {
+      "file": "chapters/chapter-013.json",
+      "sha256": "345db188fa16280e3115b2553cbed94b70252bff025a6b76b997c7a2ea272431"
+    },
+    {
+      "file": "chapters/chapter-014.json",
+      "sha256": "b9bf851c3546350b62c1c799d76b22e8fca38177180cafb921669a6fa49667c8"
+    },
+    {
+      "file": "chapters/chapter-015.json",
+      "sha256": "007c974179ab0abb7e79e4918f1b28828908ad2ddf86138c811792bb77e8d6f7"
+    },
+    {
+      "file": "chapters/chapter-016.json",
+      "sha256": "06d51ab9b8ad4f5837c2e4b15b66695e8683c5974c3d6337728a32006fedbf06"
+    }
+  ]
+}

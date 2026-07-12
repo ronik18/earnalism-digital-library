@@ -1,10 +1,10 @@
 {
   "slug": "the-tell-tale-heart",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-07-12T07:04:07Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "2a9ad87ef34f349a6239edaa20684e057b6465139c64acb7fee5360fe3974942"
+      "sha256": "de8d315ed722045999ba6117be591daf639165510f16d4668036e60b418dba4a"
     },
     {
       "file": "checksum_manifest.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "cbccb682733b557b489eff911c3a1d80c8912907f70d3a8cf1c3d420707d3c8d"
+      "sha256": "a9e064788e8bbb66cac937e783340053093fe26f764e7b60ef4d9bdb78e0decc"
     },
     {
       "file": "reader_manifest.json",

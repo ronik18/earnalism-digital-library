@@ -1,0 +1,13 @@
+{
+  "slug": "sredni-vashtar",
+  "source_url": "https://www.gutenberg.org/ebooks/3688",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
+  "content_hash": "adaad32e67a022024f647efcfd8b02639eab6716a526e6045e85d8d648fc529c",
+  "provenance_hash": "87eec37fc864c1d5b323d47468e1ed2547510c408ff97b400185fd13834a6c51",
+  "rights_basis": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.238513+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}
