@@ -265,7 +265,7 @@
       "publicly_available_audiobook": "No",
       "quality_score": "Private full TTS/listening/sync PASS: six listening samples 9.4, confidence 0.95, no fatal flags, measured paragraph/stanza sync; objective ASR/source FAIL at raw 0.6838 below required 9.7; construction audit 10.0 is provenance only, not an ASR substitute",
       "evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json",
-      "cost_used_usd": 1.0408,
+      "cost_used_usd": 1.1092,
       "sprint1_audio_target": true,
       "public_audiobook_required_for_sprint1": true,
       "public_reader_status": "PUBLIC_READER",

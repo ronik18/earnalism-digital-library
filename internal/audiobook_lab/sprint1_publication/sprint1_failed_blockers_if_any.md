@@ -74,7 +74,7 @@ PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration
 - Prepared narration: `6,485` characters, `998` words, SHA-256 `79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe`
 - Private passes preserved separately: full Google TTS, six listening samples at `9.4` with confidence `0.95` and no fatal flags, and measured paragraph/stanza sync with `auto_estimated_sync=false`.
 - Objective ASR failure: raw ASR/source `0.6838` is below `9.7`; the construction audit `10.0` is provenance evidence only.
-- Conservative estimated spend: `$1.0408`; actual provider billing unknown.
+- Conservative estimated spend: `$1.1092`; actual provider billing unknown.
 - Upload, release-packet, admin metadata, endpoint, browser-release, and publication actions are not next and remain blocked.
 - Next command:
 
