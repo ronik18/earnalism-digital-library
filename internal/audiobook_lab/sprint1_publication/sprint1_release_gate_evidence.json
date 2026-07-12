@@ -416,7 +416,7 @@
       "private_listening_fatal_flags": [],
       "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
       "auto_estimated_sync": false,
-      "conservative_estimated_spend_usd": 1.0408,
+      "conservative_estimated_spend_usd": 1.1092,
       "actual_provider_billing": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
       "provider_calls_ran": true,
       "upload_performed": false,
