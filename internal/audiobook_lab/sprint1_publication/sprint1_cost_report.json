@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T18:04:44Z",
+  "generated_at": "2026-07-12T18:57:04Z",
   "budget_env": {
     "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "SET_INLINE_STAGE2E_175",
     "SPRINT1_MAX_USD_PER_TITLE": "SET_INLINE_STAGE2E_30",
@@ -19,7 +19,7 @@
   "missing_or_invalid_budget_gates": [],
   "provider_calls_ran": true,
   "actual_spend_usd": null,
-  "estimated_incremental_total_usd": 101.8586,
+  "estimated_incremental_total_usd": 101.8897,
   "removed_deferred_estimated_cost_usd": 35.2935,
   "budget_comparison": "ESTIMATED_STAGE2B_THROUGH_STAGE2E_SPEND_4.2862_WITHIN_175_CAP; ACTUAL_PROVIDER_BILLING_NOT_REPORTED; ESTIMATED_REMAINING_170.7138",
   "summary": {
@@ -29,7 +29,7 @@
     "deferred_long_classics_count": 2,
     "current_yes_yes_count": 2,
     "remaining_non_yes_yes_count_excluding_dropped": 30,
-    "estimated_incremental_total_usd": 101.8586,
+    "estimated_incremental_total_usd": 101.8897,
     "removed_deferred_estimated_cost_usd": 35.2935,
     "highest_expected_english_cost_after_removal": {
       "slug": "dracula",
@@ -41,22 +41,18 @@
         "slug": "book-d19e96859f",
         "title": "গিন্নি",
         "language": "Bengali",
-        "estimated_incremental_cost_usd": 0.1122,
-        "strategy": "REGENERATE_FAILED_GROUP_4_ONLY_THEN_FULL_QA"
-      },
-      {
-        "slug": "the-open-window",
-        "title": "The Open Window",
-        "language": "English",
-        "estimated_incremental_cost_usd": 0.1155,
-        "strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS"
-      },
-      {
         "slug": "book-f5d593e1f4",
         "title": "রামকানাইয়ের নির্বুদ্ধিতা",
         "language": "Bengali",
         "estimated_incremental_cost_usd": 0.1334,
         "strategy": "REGENERATE_FAILED_GROUP_7_ONLY_THEN_FULL_QA"
+      },
+      {
+        "slug": "book-d19e96859f",
+        "title": "গিন্নি",
+        "language": "Bengali",
+        "estimated_incremental_cost_usd": 0.1433,
+        "strategy": "FRESH_FULL_TITLE_REGENERATION_THEN_FULL_QA_MISSING_VERIFIABLE_GROUP_CHUNKS"
       },
       {
         "slug": "muchiram-gurer-jibanchorit",
@@ -71,6 +67,13 @@
         "language": "English",
         "estimated_incremental_cost_usd": 0.1474,
         "strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS"
+      },
+      {
+        "slug": "bn-066",
+        "title": "আনন্দমঠ",
+        "language": "Bengali",
+        "estimated_incremental_cost_usd": 0.1547,
+        "strategy": "REUSE_PRIVATE_FULL_AUDIO_THREE_CHUNK_ASR_CALIBRATION_THEN_QA"
       }
     ],
     "generated_at": "2026-07-12T11:11:42Z",
@@ -83,7 +86,7 @@
     "sprint_target_status": "INCOMPLETE",
     "reader_repairs_merged_and_deployed": 17,
     "estimated_spend_usd": 4.2862,
-    "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.5724,
+    "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.6035,
     "budget_remaining_after_estimate_usd": 170.7138,
     "a_ghost_remaining_repair_cost_usd": 0.0
   },
@@ -240,33 +243,35 @@
     },
     {
       "slug": "book-d19e96859f",
-      "strategy": "REGENERATE_FAILED_GROUP_4_ONLY_THEN_FULL_QA",
+      "strategy": "FRESH_FULL_TITLE_REGENERATION_THEN_FULL_QA_MISSING_VERIFIABLE_GROUP_CHUNKS",
       "deferred_recommended_strategy": "",
       "sprint1_audio_target": true,
       "public_audiobook_required_for_sprint1": true,
       "sprint1_budget_included": true,
-      "characters": 6516,
-      "words": 1020,
+      "characters": 6485,
+      "words": 998,
       "estimated_duration_minutes": 6.8,
       "tts_rate_usd_per_1k_characters": 0.006,
-      "estimated_full_tts_usd": 0.0391,
+      "estimated_full_tts_usd": 0.0389,
       "estimated_full_asr_usd": 0.0544,
       "estimated_listening_qa_usd": 0.05,
-      "estimated_representative_audition_usd": 0.01,
-      "estimated_incremental_cost_usd": 0.1122,
+      "estimated_representative_audition_usd": 0.0,
+      "estimated_incremental_cost_usd": 0.1433,
       "deferred_baseline_estimated_cost_usd": 0.0,
       "actual_spend_usd": 0.0,
       "budget_status": "BLOCKED_RUNTIME_ENV_GATES_MISSING",
       "reason": "",
-      "next_action": "Continue the active Sprint 1 repair or release path",
-      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.json --slugs book-d19e96859f --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "next_action": "Run one lock-safe fresh full-title regeneration with the exact passed Sarvam/Pooja arm after all runtime gates are supplied",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_stage2f_book_d19_full_tts.py --execute",
       "title": "গিন্নি",
       "language": "Bengali",
       "source_rights_status": "PASS",
       "text_sanitation_status": "PASS",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "TARGET_INCOMPLETE_AUDIO_GATES_REQUIRED"
+      "final_status": "PROVIDER_RETRY_REQUIRED",
+      "prepared_text_sha256": "79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe",
+      "preflight_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_preflight.json"
     },
     {
       "slug": "book-f5d593e1f4",
@@ -863,15 +868,15 @@
       "actual_spend_usd": null,
       "budget_status": "ESTIMATED_PAID_AUDITIONS_0.6534_ACTUAL_NOT_REPORTED; REPAIR_REQUIRED",
       "reason": "",
-      "next_action": "Stop automated Google retries after the Studio-C and Studio-B failures. Prepare a source-bound human narration or licensed-audio candidate, then run every release gate before publication.",
-      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets",
+      "next_action": "Obtain human narration or approve another provider audition, then validate the received narration against the generated packet",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "title": "The Open Window",
       "language": "English",
       "source_rights_status": "PASS",
       "text_sanitation_status": "PASS",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED",
+      "final_status": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED",
       "exact_blocker": "REPRESENTATIVE_AUDITION_STUDIO_B_TWILIGHT_SCORE_7.2_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS",
       "estimated_stage2d_spend_usd": 0.4356,
       "estimated_stage2e_spend_usd": 0.2178,
@@ -1123,7 +1128,7 @@
     "max_usd_per_title": 30.0,
     "max_tts_budget_usd": 175.0
   },
-  "estimated_budget_headroom_usd": 73.1414,
+  "estimated_budget_headroom_usd": 73.1103,
   "stage2a_a_ghost_story": {
     "updated_at": "2026-07-12T08:16:11Z",
     "authorized_total_budget_usd": 175.0,
@@ -1135,7 +1140,7 @@
   },
   "estimated_spend_usd": 4.2862,
   "authorized_budget_remaining_after_estimate_usd": 170.7138,
-  "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.5724,
+  "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.6035,
   "stage2b_a_ghost_story": {
     "owner_decision": "AUTHORIZE_SPRINT1_STAGE_2B_A_GHOST_STORY_LISTENING_QA_AND_RELEASE_IF_PASS",
     "updated_at": "2026-07-12T09:35:33Z",
@@ -1234,8 +1239,30 @@
     "full_tts_generated": false,
     "public_audio_mutated": false,
     "paid_tts_lock_restored": true,
-    "status": "AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED",
+    "status": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED",
     "authorized_total_budget_usd": 175.0,
     "budget_remaining_after_estimate_usd": 170.7138
+  },
+  "stage2f_the_open_window": {
+    "owner_decision": "AUTHORIZE_STAGE_2F_CLOSE_THE_OPEN_WINDOW_REPAIR_TRACK_AND_CONTINUE_TO_BOOK_D19E96859F",
+    "provider_calls_ran": false,
+    "estimated_spend_usd": 0.0,
+    "actual_spend_usd": 0.0,
+    "human_narration_packet_status": "READY",
+    "public_audio_mutated": false,
+    "status": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED"
+  },
+  "stage2f_book_d19e96859f": {
+    "owner_decision": "AUTHORIZE_STAGE_2F_CLOSE_THE_OPEN_WINDOW_REPAIR_TRACK_AND_CONTINUE_TO_BOOK_D19E96859F",
+    "provider_calls_ran": false,
+    "estimated_spend_usd": 0.0,
+    "actual_spend_usd": 0.0,
+    "estimated_fresh_tts_usd": 0.0389,
+    "estimated_full_asr_usd": 0.0544,
+    "estimated_listening_qa_usd": 0.05,
+    "estimated_repair_pipeline_usd": 0.1433,
+    "public_audio_mutated": false,
+    "paid_tts_lock_preflight": "PASS_UNCHANGED",
+    "status": "PROVIDER_RETRY_REQUIRED_RUNTIME_GATES_MISSING"
   }
 }

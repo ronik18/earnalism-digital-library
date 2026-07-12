@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T18:04:44Z",
+  "generated_at": "2026-07-12T18:57:04Z",
   "sprint_target_status": "INCOMPLETE",
   "active_title_count": 32,
   "current_reader_yes_count": 32,
@@ -96,12 +96,13 @@
       "language": "Bengali",
       "publicly_rendered_book": "Yes",
       "publicly_available_audiobook": "No",
-      "quality_score": "9.4/10 representative only; full-book source gate failed",
-      "evidence_path": "internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150228Z/goliveevidence.json",
+      "quality_score": "9.4/10 representative, confidence 0.95; clean full-regeneration preflight PASS; full-book QA not run",
+      "evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_preflight.json",
       "cost_used_usd": 0.0,
-      "final_status": "SPRINT_TARGET_INCOMPLETE",
-      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
-      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.json --slugs book-d19e96859f --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "final_status": "PROVIDER_RETRY_REQUIRED",
+      "exact_blocker": "PAID_RUNTIME_ENV_GATES_MISSING; HISTORICAL_GROUP_REPAIR_CHUNKS_UNAVAILABLE",
+      "next_action": "Supply the recorded caps and approvals, run one lock-safe fresh Sarvam full-title regeneration with the exact passed Pooja arm, then run every downstream release gate.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_stage2f_book_d19_full_tts.py --execute",
       "production_book_http": 200,
       "production_manifest_http": 200,
       "release_gates_passed": false
@@ -413,15 +414,15 @@
       "quality_score": "Google Studio-C attempts 8.0-9.5; final Studio-B 7.2-9.5, confidence 0.90-0.95; twilight sample has robotic texture and mechanical cadence fatal flags; 10.0 not claimed",
       "evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_release_gate_evidence.json",
       "cost_used_usd": 0.6534,
-      "final_status": "AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED",
+      "final_status": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED",
       "exact_blocker": "REPRESENTATIVE_AUDITION_STUDIO_B_TWILIGHT_SCORE_7.2_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS",
-      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "production_book_http": 200,
       "production_manifest_http": 200,
       "release_gates_passed": false,
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "next_action": "Stop automated Google retries after the Studio-C and Studio-B failures. Prepare a source-bound human narration or licensed-audio candidate, then run every release gate before publication.",
+      "next_action": "Obtain source-bound human narration or approve another provider audition, then validate the received narration against the generated packet before release-gate QA.",
       "stage2c_nonpaid_preflight_status": "PASS_READER_RIGHTS_SANITATION; AUDIO_REPLACEMENT_REQUIRED",
       "stage2d_google_studio_c_baseline_scores": [9.4, 8.4, 8.0, 8.4],
       "stage2d_google_studio_c_prosody_scores": [9.5, 9.4, 8.5, 9.4],
@@ -434,7 +435,10 @@
       "stage2e_fatal_flags": ["mechanical_cadence_detected", "robotic_texture_detected"],
       "stage2e_estimated_spend_usd": 0.2178,
       "stage2e_estimated_title_total_usd": 0.6534,
-      "stage2e_lock_restored": true
+      "stage2e_lock_restored": true,
+      "stage2f_human_narration_packet_status": "READY",
+      "stage2f_human_narration_packet_path": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-open-window",
+      "stage2f_provider_calls_ran": false
     },
     {
       "slug": "sredni-vashtar",
@@ -606,6 +610,6 @@
     "public_audio_mutated": false,
     "production_audio_hidden": true,
     "paid_tts_lock_restored": true,
-    "status": "AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED"
+    "status": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED"
   }
 }

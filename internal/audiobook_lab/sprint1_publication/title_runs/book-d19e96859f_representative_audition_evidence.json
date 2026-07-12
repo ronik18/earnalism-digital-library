@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "slug": "book-d19e96859f",
+  "title": "গিন্নি",
+  "status": "PASS",
+  "pilot_candidate_selected": "book-d19e96859f",
+  "provider": "sarvam",
+  "model": "bulbul:v3",
+  "voice": "pooja",
+  "best_style_profile": "dialogue_human_touch",
+  "representative_passed_9_2": true,
+  "representative_score": 9.4,
+  "confidence": 0.95,
+  "fatal_flags_required": {
+    "robotic_texture_detected": false,
+    "mechanical_cadence_detected": false,
+    "choppy_joins_detected": false,
+    "fallback_tts_detected": false,
+    "list_reading_rhythm_detected": false,
+    "repeated_identical_sentence_endings_detected": false,
+    "abrupt_tts_resets_detected": false,
+    "placeholder_audio_detected": false
+  },
+  "sample": {
+    "passage_id": "emotional",
+    "duration_seconds": 46.155,
+    "source_audio_sha256": "bf4f7392d0728c2d805c8535232eafee452745e6189c5a9dd426b4b80e7e80dd",
+    "listening_qa_audio_sha256": "98258cf30a009e96c36b59e265a5c97d064552c90cc71940d812d07e24018d99",
+    "source_text_sha256": "cef13c2134ea080e13d1d476a5b58e8e5771211472ebf359588fcc4ceffa8357",
+    "tts_text_sha256": "114c14d1ab8dc76108eab1ed48676dffba414105d8a32ac1f956e13bb7179080"
+  },
+  "source_evidence": {
+    "report_path": "internal/audiobook_lab/release_gate/bengali_tts_provider_bakeoff_20260706T212141Z/bengali_representative_audition_report.json",
+    "report_sha256": "d87a6371d71ec46dd75e42131f23309fed1dc5c0e9a972bbb75ea288abbf8512",
+    "sample_results_path": "internal/audiobook_lab/release_gate/bengali_tts_provider_bakeoff_20260706T212141Z/bakeoff_sample_results.json",
+    "sample_results_sha256": "aee48f777232ec074197bc09c7c37d369d7f4e48e8dc1ae450c0cc7cabb6c696"
+  },
+  "release_truth": "Representative audition only. Full TTS, ASR/source, first/last, listening, manifest, endpoint, frontend, and production gates remain required.",
+  "public_audio_approved": false
+}

@@ -177,7 +177,21 @@
       "live_pilot_listening_score": 9.4,
       "live_pilot_listening_confidence": 0.95,
       "live_pilot_sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
-      "detail_page_stale_copy_fix": "frontend source now merges reader manifest and treats manifest audio.url as approved asset evidence"
+      "detail_page_stale_copy_fix": "frontend source now merges reader manifest and treats manifest audio.url as approved asset evidence",
+      "book_d19e96859f_stage2f": {
+        "status": "TITLE_SPECIFIC_REPRESENTATIVE_PASS_FULL_REGENERATION_RUNTIME_GATES_REQUIRED",
+        "provider": "sarvam",
+        "model": "bulbul:v3",
+        "voice": "pooja",
+        "style": "dialogue_human_touch",
+        "representative_score": 9.4,
+        "representative_confidence": 0.95,
+        "fatal_flags": [],
+        "prepared_text_sha256": "79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe",
+        "full_title_tts_generated": false,
+        "public_audio_approved": false,
+        "next_action": "Run the lock-safe Stage 2F title wrapper only after every budget, approval, ASR, and listening-QA gate is present."
+      }
     },
     "google": {
       "status": "credentials_or_adc_reauth_needed"
@@ -232,7 +246,7 @@
         "a4ad393ef625f5c35b9e4939107fa53fb29556c29a59ca7d563a68ea857e6929",
         "7d8546bba92729e05ba82f665d084c9d7e81cc30d567494ff21c300551dfa5f6"
       ],
-      "next_action": "Stop automated Google retries for The Open Window and prepare source-bound human narration or licensed audio; never infer catalog-wide suitability from the A Ghost Story pass."
+      "next_action": "Stop automated Google retries for The Open Window; use the generated source-bound human narration packet or a separately approved provider, then run every release gate."
     }
   }
 }

@@ -166,6 +166,150 @@ def test_bengali_tts_preparation_strips_source_frontmatter() -> None:
     assert_false("রবীন্দ্রনাথ ঠাকুর" in prepared, prepared)
 
 
+def test_bengali_tts_preparation_strips_trailing_source_year() -> None:
+    manuscript = """রবীন্দ্রনাথ ঠাকুর
+
+গল্পগুচ্ছ
+
+১৯৫০ (পৃ. ৩৫-৩৯)
+
+গিন্নি
+
+গল্পের প্রথম বাক্য।
+
+গল্পের শেষ বাক্য।
+
+১২৯৮?
+"""
+    prepared = tts_hook.prepare_bengali_tts_text(manuscript)
+    assert_true(prepared.startswith("গিন্নি"), prepared)
+    assert_true(prepared.rstrip().endswith("গল্পের শেষ বাক্য।"), prepared)
+    assert_false("১২৯৮" in prepared, prepared)
+
+
+def test_bengali_tts_preparation_preserves_standalone_year_without_source_wrapper() -> None:
+    manuscript = "ঘটনার সাল ছিল।\n\n১২৯৮?\n"
+    prepared = tts_hook.prepare_bengali_tts_text(manuscript)
+    assert_true(prepared.rstrip().endswith("১২৯৮?"), prepared)
+
+
+def test_title_specific_representative_pass_requires_exact_arm() -> None:
+    evidence = {
+        "passage_scores": [
+            {
+                "provider": "sarvam",
+                "model": "bulbul:v3",
+                "voice": "pooja",
+                "style_profile": "dialogue_human_touch",
+                "passage_id": "emotional",
+                "passage_slug": "book-d19e96859f",
+                "overall_listening_score": 9.4,
+                "confidence_score": 0.95,
+                "red_flags": {},
+                "status": "PASS",
+                "blockers": [],
+            }
+        ]
+    }
+    original = (
+        tts_hook.SARVAM_FULL_PILOT_MODEL,
+        tts_hook.SARVAM_FULL_PILOT_VOICE,
+        tts_hook.SARVAM_FULL_PILOT_STYLE,
+    )
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp) / "representative.json"
+        path.write_text(json.dumps(evidence), encoding="utf-8")
+        try:
+            tts_hook.SARVAM_FULL_PILOT_MODEL = "bulbul:v3"
+            tts_hook.SARVAM_FULL_PILOT_VOICE = "pooja"
+            tts_hook.SARVAM_FULL_PILOT_STYLE = "dialogue_human_touch"
+            with patched_env({"EARNALISM_BENGALI_REPRESENTATIVE_EVIDENCE_PATH": str(path)}):
+                result = tts_hook.matching_representative_pass(args(slug="book-d19e96859f"))
+                tts_hook.SARVAM_FULL_PILOT_VOICE = "ratan"
+                mismatch = tts_hook.matching_representative_pass(args(slug="book-d19e96859f"))
+        finally:
+            (
+                tts_hook.SARVAM_FULL_PILOT_MODEL,
+                tts_hook.SARVAM_FULL_PILOT_VOICE,
+                tts_hook.SARVAM_FULL_PILOT_STYLE,
+            ) = original
+    assert_true(result["status"] == "PASS", str(result))
+    assert_true(result["evidence_kind"] == "title_specific_passage", str(result))
+    assert_true(result["score"] == 9.4, str(result))
+    assert_true(mismatch["status"] == "BLOCKED", str(mismatch))
+
+
+def test_title_specific_arm_requires_explicit_opt_in() -> None:
+    original = (
+        tts_hook.SARVAM_FULL_PILOT_SLUG,
+        tts_hook.SARVAM_FULL_PILOT_VOICE,
+        tts_hook.SARVAM_FULL_PILOT_STYLE,
+    )
+    try:
+        tts_hook.SARVAM_FULL_PILOT_SLUG = "book-d19e96859f"
+        tts_hook.SARVAM_FULL_PILOT_VOICE = "pooja"
+        tts_hook.SARVAM_FULL_PILOT_STYLE = "dialogue_human_touch"
+        with patched_env(
+            {
+                "EARNALISM_BENGALI_TTS_PROVIDER": "sarvam",
+                "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "true",
+                "EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD": "1",
+                "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "true",
+                "EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM": None,
+                "SARVAM_API_KEY": "redacted-test-key",
+            }
+        ):
+            result = tts_hook.sarvam_full_pilot_preflight(args(slug="book-d19e96859f"), "গিন্নি\n\nগল্প।")
+    finally:
+        (
+            tts_hook.SARVAM_FULL_PILOT_SLUG,
+            tts_hook.SARVAM_FULL_PILOT_VOICE,
+            tts_hook.SARVAM_FULL_PILOT_STYLE,
+        ) = original
+    blockers = " ".join(result["blockers"])
+    assert_false(result["passes"], str(result))
+    assert_true("EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM" in blockers, blockers)
+
+
+def test_title_specific_arm_passes_with_exact_evidence_and_opt_in() -> None:
+    evidence_path = (
+        Path(__file__).resolve().parents[3]
+        / "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_representative_audition_evidence.json"
+    )
+    original = (
+        tts_hook.SARVAM_FULL_PILOT_SLUG,
+        tts_hook.SARVAM_FULL_PILOT_MODEL,
+        tts_hook.SARVAM_FULL_PILOT_VOICE,
+        tts_hook.SARVAM_FULL_PILOT_STYLE,
+    )
+    try:
+        tts_hook.SARVAM_FULL_PILOT_SLUG = "book-d19e96859f"
+        tts_hook.SARVAM_FULL_PILOT_MODEL = "bulbul:v3"
+        tts_hook.SARVAM_FULL_PILOT_VOICE = "pooja"
+        tts_hook.SARVAM_FULL_PILOT_STYLE = "dialogue_human_touch"
+        with patched_env(
+            {
+                "EARNALISM_BENGALI_TTS_PROVIDER": "sarvam",
+                "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "true",
+                "EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM": "true",
+                "EARNALISM_BENGALI_REPRESENTATIVE_EVIDENCE_PATH": str(evidence_path),
+                "EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD": "1",
+                "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "true",
+                "SARVAM_API_KEY": "redacted-test-key",
+            }
+        ):
+            result = tts_hook.sarvam_full_pilot_preflight(args(slug="book-d19e96859f"), "গিন্নি\n\nগল্প।")
+    finally:
+        (
+            tts_hook.SARVAM_FULL_PILOT_SLUG,
+            tts_hook.SARVAM_FULL_PILOT_MODEL,
+            tts_hook.SARVAM_FULL_PILOT_VOICE,
+            tts_hook.SARVAM_FULL_PILOT_STYLE,
+        ) = original
+    assert_true(result["passes"], str(result))
+    assert_true(result["representative_evidence"]["score"] == 9.4, str(result))
+
+
 def test_sarvam_group_repair_regenerates_only_contaminated_groups() -> None:
     manuscript = """রবীন্দ্রনাথ ঠাকুর
 
@@ -352,6 +496,11 @@ def main() -> int:
         test_metadata_hook_preserves_sarvam_provenance,
         test_metadata_hook_resets_partial_audiobook_state,
         test_bengali_tts_preparation_strips_source_frontmatter,
+        test_bengali_tts_preparation_strips_trailing_source_year,
+        test_bengali_tts_preparation_preserves_standalone_year_without_source_wrapper,
+        test_title_specific_representative_pass_requires_exact_arm,
+        test_title_specific_arm_requires_explicit_opt_in,
+        test_title_specific_arm_passes_with_exact_evidence_and_opt_in,
         test_sarvam_group_repair_regenerates_only_contaminated_groups,
         test_asr_transcription_retries_json_when_verbose_json_unsupported,
         test_bengali_tts_by_construction_blocks_frontmatter_manifest,

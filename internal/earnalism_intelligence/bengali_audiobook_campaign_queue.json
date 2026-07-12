@@ -56,7 +56,7 @@
       "title": "গিন্নি",
       "author": "রবীন্দ্রনাথ ঠাকুর",
       "language": "ben",
-      "content_length": 6432,
+      "content_length": 6485,
       "difficulty_estimate": "medium",
       "dialogue_density": 0.2591,
       "punctuation_complexity": 0.2236,
@@ -64,12 +64,23 @@
       "cover_status": "PASS",
       "reader_route_status": "PASS",
       "prior_audio_status": "reader_only_audio_hidden",
-      "known_blockers": [],
+      "known_blockers": [
+        "paid runtime budget and approval gates missing",
+        "historical group-repair chunks unavailable",
+        "fresh full TTS and downstream release QA required"
+      ],
       "candidate_rank": 3,
-      "selected_strategy": "adaptive_sarvam_after_pilot",
-      "current_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
-      "best_representative_settings": null,
-      "next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path."
+      "selected_strategy": "fresh_full_title_sarvam_then_full_qa",
+      "current_campaign_state": "TITLE_SPECIFIC_REPRESENTATIVE_PASS_FULL_REGENERATION_RUNTIME_GATES_REQUIRED",
+      "best_representative_settings": {
+        "provider": "sarvam",
+        "model": "bulbul:v3",
+        "voice": "pooja",
+        "style_profile": "dialogue_human_touch",
+        "score": 9.4,
+        "confidence": 0.95
+      },
+      "next_action": "Supply the Stage 2F inline caps and approvals, run one lock-safe fresh full-title regeneration, then complete every objective release gate."
     },
     {
       "slug": "book-4968248842",

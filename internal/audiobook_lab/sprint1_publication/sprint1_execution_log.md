@@ -1,6 +1,6 @@
 # Sprint 1 Publication Stage 2 Execution Log
 
-Generated: `2026-07-12T17:22:03Z`
+Generated: `2026-07-12T18:57:04Z`
 
 1. Loaded active Earnalism intelligence, Sprint 1 matrices, release evidence, and lock state.
 2. Confirmed 32 active audio targets and 2 deferred long classics.
@@ -59,3 +59,12 @@ Generated: `2026-07-12T17:22:03Z`
 55. The paid lock restored byte-for-byte to SHA-256 `ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e` with `current_holder=none` and `allowed_next_holders=[]`.
 56. Automated Google retries stop after the Studio-C and Studio-B failures. A non-provider source-bound human narration packet utility is the executable alternate path; the next queue item is an isolated, credential-stripped `book-d19e96859f` dry preflight.
 57. The credential-stripped `book-d19e96859f` dry preflight completed with zero paid operations, zero provider credentials, and no publication. Reader, rights, source, and cover preflight passed; audio reuse failed closed because no reusable approved audio evidence was found. The next paid repair remains separately gated.
+58. PR `#109` was classified `EVIDENCE_ONLY_FAIL_CLOSED` with source/test guardrails, no public release-state changes, and green checks; it was squash-merged as `5b20775` without deleting branches.
+59. Generated The Open Window human narration packet with sanitized manuscript, narrator brief, failed-TTS summary, audio-format/delivery requirements, QA/release checklist, deterministic hashes, and an exact received-audio validation command. No provider call or release mutation ran.
+60. Reclassified The Open Window as `HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED`; public reader remains enabled and public audio remains hidden.
+61. D19 diagnosis found the historical group-only repair chunks unavailable, so unverifiable group reuse was rejected. The cheapest safe path is fresh title-only regeneration rather than stale legacy audio reuse.
+62. Repaired Bengali TTS-only sanitation to remove D19's standalone trailing source year while leaving canonical reader text unchanged. Prepared text is 6,485 characters in five groups with SHA-256 `79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe`.
+63. Added exact title-specific representative evidence for Sarvam `bulbul:v3` / `pooja` / `dialogue_human_touch`: score `9.4`, confidence `0.95`, no fatal flags. The generic guard accepts it only when the selected slug/arm matches and explicit title-specific opt-in is present.
+64. Added a D19 lock-safe preflight/execute wrapper. Non-paid preflight passed source, rights, sanitation, cover, reader, and representative gates; TTS `$0.0389`, ASR `$0.0544`, and configured QA `$0.0500` total `$0.1433` estimated.
+65. Both provider keys were present, but every required budget/approval/ASR/listening environment gate was absent. The wrapper stopped before lock acquisition; provider calls, spend, TTS, ASR, upload, publication, and release mutations remained zero.
+66. Production revalidation confirmed The Open Window, D19, and `bn-066` remain audio-disabled with `404` audiobook endpoints, while A Ghost Story and `book-2b9853ec52` remain `APPROVED / QA_PASSED` with `206` range responses.

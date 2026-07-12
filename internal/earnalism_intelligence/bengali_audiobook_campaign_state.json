@@ -93,5 +93,16 @@
       "fallback_tts_detected"
     ]
   },
-  "next_exact_command": "railway run --project a8533934-35c4-463e-9f43-577a9ac391ee --service 5af42e7e-f518-4f6a-b602-d9950866501f --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 -- env EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS=true EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF=true EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS=true EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN=true EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD=75 EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE=8 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio EARNALISM_LISTENING_POLICY_VERSION=bengali_audiobook_acceptance_v2_92 python3 internal/audiobook_lab/scripts/bengali_audiobook_campaign_controller.py --manifest book_import_manifest.json --target-reader-only-approved-31 --goal-score 9.2 --policy bengali_audiobook_acceptance_v2_92 --adaptive-optimizer --resume --fail-closed --max-run-minutes 180"
+  "next_exact_command": "railway run --project a8533934-35c4-463e-9f43-577a9ac391ee --service 5af42e7e-f518-4f6a-b602-d9950866501f --environment 580b250c-80ee-48ad-bfbe-fa4e31a6b378 -- env EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS=true EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF=true EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS=true EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN=true EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD=75 EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE=8 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio EARNALISM_LISTENING_POLICY_VERSION=bengali_audiobook_acceptance_v2_92 python3 internal/audiobook_lab/scripts/bengali_audiobook_campaign_controller.py --manifest book_import_manifest.json --target-reader-only-approved-31 --goal-score 9.2 --policy bengali_audiobook_acceptance_v2_92 --adaptive-optimizer --resume --fail-closed --max-run-minutes 180",
+  "stage2f_book_d19e96859f": {
+    "status": "PROVIDER_RETRY_REQUIRED_RUNTIME_GATES_MISSING",
+    "representative_score": 9.4,
+    "representative_confidence": 0.95,
+    "selected_arm": "sarvam/bulbul:v3/pooja/dialogue_human_touch",
+    "prepared_text_sha256": "79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe",
+    "estimated_repair_pipeline_usd": 0.1433,
+    "provider_calls_ran": false,
+    "public_audio_approved": false,
+    "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_stage2f_book_d19_full_tts.py --execute"
+  }
 }

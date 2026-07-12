@@ -36,10 +36,14 @@ DEFAULT_TTS_ESTIMATED_USD_PER_1K_CHARS = float(os.environ.get("EARNALISM_TTS_EST
 OPENAI_MAX_CHARS_PER_CHUNK = int(os.environ.get("EARNALISM_OPENAI_TTS_MAX_CHARS_PER_CHUNK", "2600"))
 MIN_VALID_AUDIO_SECONDS = float(os.environ.get("EARNALISM_FACTORY_MIN_VALID_AUDIO_SECONDS", "3"))
 OPENAI_TTS_TIMEOUT_SECONDS = float(os.environ.get("EARNALISM_OPENAI_TTS_TIMEOUT_SECONDS", "180"))
-SARVAM_FULL_PILOT_SLUG = os.environ.get("EARNALISM_BENGALI_FULL_PILOT_SLUG", "book-2b9853ec52")
-SARVAM_FULL_PILOT_MODEL = os.environ.get("EARNALISM_BENGALI_TTS_MODEL", "bulbul:v3")
-SARVAM_FULL_PILOT_VOICE = os.environ.get("EARNALISM_BENGALI_TTS_VOICE", "ratan")
-SARVAM_FULL_PILOT_STYLE = os.environ.get("EARNALISM_BENGALI_TTS_STYLE", "literary_warm_pacing")
+DEFAULT_SARVAM_FULL_PILOT_SLUG = "book-2b9853ec52"
+DEFAULT_SARVAM_FULL_PILOT_MODEL = "bulbul:v3"
+DEFAULT_SARVAM_FULL_PILOT_VOICE = "ratan"
+DEFAULT_SARVAM_FULL_PILOT_STYLE = "literary_warm_pacing"
+SARVAM_FULL_PILOT_SLUG = os.environ.get("EARNALISM_BENGALI_FULL_PILOT_SLUG", DEFAULT_SARVAM_FULL_PILOT_SLUG)
+SARVAM_FULL_PILOT_MODEL = os.environ.get("EARNALISM_BENGALI_TTS_MODEL", DEFAULT_SARVAM_FULL_PILOT_MODEL)
+SARVAM_FULL_PILOT_VOICE = os.environ.get("EARNALISM_BENGALI_TTS_VOICE", DEFAULT_SARVAM_FULL_PILOT_VOICE)
+SARVAM_FULL_PILOT_STYLE = os.environ.get("EARNALISM_BENGALI_TTS_STYLE", DEFAULT_SARVAM_FULL_PILOT_STYLE)
 SARVAM_MAX_CHARS_PER_GROUP = int(os.environ.get("EARNALISM_SARVAM_TTS_MAX_CHARS", "1400"))
 SARVAM_TTS_ESTIMATED_USD_PER_1K_CHARS = float(os.environ.get("EARNALISM_SARVAM_ESTIMATED_USD_PER_1K_CHARS", "0.006"))
 SARVAM_CACHE_DIR = ROOT / "internal" / "audiobook_lab" / "cache" / "release_factory_sarvam_tts"
@@ -618,52 +622,80 @@ def sarvam_requested(args) -> bool:
 
 
 def matching_representative_pass(args) -> dict:
-    paths = [ROOT / "bengali_representative_audition_report.json"]
+    paths: list[Path] = []
+    override = os.environ.get("EARNALISM_BENGALI_REPRESENTATIVE_EVIDENCE_PATH", "").strip()
+    if override:
+        paths.append(resolve_optional_path(override))
+    paths.append(ROOT / "bengali_representative_audition_report.json")
     paths.extend(sorted((ROOT / "internal" / "audiobook_lab" / "release_gate").glob("bengali_tts_provider_bakeoff_*/bengali_representative_audition_report.json"), reverse=True))
     for path in paths:
         report = __import__("common").read_json(path, {})
         if not report:
             continue
-        style = str(report.get("best_style_profile") or report.get("style_profile") or "").strip()
-        fatal_flags = report.get("fatal_flags_required") if isinstance(report.get("fatal_flags_required"), dict) else {}
-        blockers: list[str] = []
-        if report.get("pilot_candidate_selected") != args.slug:
-            blockers.append("pilot candidate does not match requested slug")
-        if str(report.get("provider") or "").strip().lower() != "sarvam":
-            blockers.append("provider is not Sarvam")
-        if str(report.get("model") or "").strip() != SARVAM_FULL_PILOT_MODEL:
-            blockers.append("model does not match frozen arm")
-        if str(report.get("voice") or "").strip() != SARVAM_FULL_PILOT_VOICE:
-            blockers.append("voice does not match frozen arm")
-        if style != SARVAM_FULL_PILOT_STYLE:
-            blockers.append("style does not match frozen arm")
-        if report.get("representative_passed_9_2") is not True:
-            blockers.append("representative audition did not pass Bengali 9.2 policy")
-        try:
-            score = float(report.get("representative_score") or 0)
-            confidence = float(report.get("confidence") or 0)
-        except (TypeError, ValueError):
-            score = 0.0
-            confidence = 0.0
-        if score < 9.2:
-            blockers.append(f"representative score below 9.2: {score}")
-        if confidence < 0.90:
-            blockers.append(f"representative confidence below 0.90: {confidence}")
-        true_flags = [name for name, value in fatal_flags.items() if bool(value)]
-        if true_flags:
-            blockers.append(f"fatal representative flags present: {', '.join(sorted(true_flags))}")
-        if not blockers:
-            return {
-                "status": "PASS",
-                "path": rel(path),
-                "score": score,
-                "confidence": confidence,
-                "report": report,
+        candidates = [
+            {
+                "slug": report.get("pilot_candidate_selected"),
+                "provider": report.get("provider"),
+                "model": report.get("model"),
+                "voice": report.get("voice"),
+                "style": report.get("best_style_profile") or report.get("style_profile"),
+                "score": report.get("representative_score"),
+                "confidence": report.get("confidence"),
+                "fatal_flags": report.get("fatal_flags_required"),
+                "passed": report.get("representative_passed_9_2") is True,
+                "evidence_kind": "top_level_representative",
+                "passage_id": None,
             }
+        ]
+        for passage in report.get("passage_scores") or []:
+            if not isinstance(passage, dict):
+                continue
+            candidates.append(
+                {
+                    "slug": passage.get("passage_slug"),
+                    "provider": passage.get("provider"),
+                    "model": passage.get("model"),
+                    "voice": passage.get("voice"),
+                    "style": passage.get("style_profile"),
+                    "score": passage.get("overall_listening_score"),
+                    "confidence": passage.get("confidence_score"),
+                    "fatal_flags": passage.get("red_flags"),
+                    "passed": passage.get("status") == "PASS" and not (passage.get("blockers") or []),
+                    "evidence_kind": "title_specific_passage",
+                    "passage_id": passage.get("passage_id"),
+                }
+            )
+        for candidate in candidates:
+            try:
+                score = float(candidate.get("score") or 0)
+                confidence = float(candidate.get("confidence") or 0)
+            except (TypeError, ValueError):
+                continue
+            fatal_flags = candidate.get("fatal_flags") if isinstance(candidate.get("fatal_flags"), dict) else {}
+            true_flags = [name for name, value in fatal_flags.items() if bool(value)]
+            exact_arm = (
+                candidate.get("slug") == args.slug
+                and str(candidate.get("provider") or "").strip().lower() == "sarvam"
+                and str(candidate.get("model") or "").strip() == SARVAM_FULL_PILOT_MODEL
+                and str(candidate.get("voice") or "").strip() == SARVAM_FULL_PILOT_VOICE
+                and str(candidate.get("style") or "").strip() == SARVAM_FULL_PILOT_STYLE
+            )
+            if exact_arm and candidate.get("passed") and score >= 9.2 and confidence >= 0.90 and not true_flags:
+                return {
+                    "status": "PASS",
+                    "path": rel(path),
+                    "score": score,
+                    "confidence": confidence,
+                    "evidence_kind": candidate.get("evidence_kind"),
+                    "passage_id": candidate.get("passage_id"),
+                    "report": report,
+                }
     return {
         "status": "BLOCKED",
         "blockers": [
-            "No fresh representative audition evidence matches book-2b9853ec52 + Sarvam bulbul:v3 + ratan + literary_warm_pacing with score >=9.2/confidence >=0.90/no fatal flags."
+            "No representative audition evidence matches "
+            f"{args.slug} + Sarvam {SARVAM_FULL_PILOT_MODEL} + {SARVAM_FULL_PILOT_VOICE} + "
+            f"{SARVAM_FULL_PILOT_STYLE} with score >=9.2/confidence >=0.90/no fatal flags."
         ],
     }
 
@@ -676,11 +708,18 @@ def sarvam_full_pilot_preflight(args, manuscript: str) -> dict:
         blockers.append(f"Guarded Sarvam full-pilot TTS is limited to {SARVAM_FULL_PILOT_SLUG}; requested {args.slug}.")
     if os.environ.get("EARNALISM_BENGALI_TTS_PROVIDER", "").strip().lower() != "sarvam":
         blockers.append("EARNALISM_BENGALI_TTS_PROVIDER=sarvam is required.")
-    if SARVAM_FULL_PILOT_MODEL != "bulbul:v3":
+    if SARVAM_FULL_PILOT_MODEL != DEFAULT_SARVAM_FULL_PILOT_MODEL:
         blockers.append("Frozen Bengali pilot arm requires EARNALISM_BENGALI_TTS_MODEL=bulbul:v3.")
-    if SARVAM_FULL_PILOT_VOICE != "ratan":
+    title_specific_arm = (
+        args.slug != DEFAULT_SARVAM_FULL_PILOT_SLUG
+        or SARVAM_FULL_PILOT_VOICE != DEFAULT_SARVAM_FULL_PILOT_VOICE
+        or SARVAM_FULL_PILOT_STYLE != DEFAULT_SARVAM_FULL_PILOT_STYLE
+    )
+    if title_specific_arm and not bool_env("EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM"):
+        blockers.append("EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM=true is required for a non-default title/voice/style arm.")
+    if not title_specific_arm and SARVAM_FULL_PILOT_VOICE != DEFAULT_SARVAM_FULL_PILOT_VOICE:
         blockers.append("Frozen Bengali pilot arm requires EARNALISM_BENGALI_TTS_VOICE=ratan.")
-    if SARVAM_FULL_PILOT_STYLE != "literary_warm_pacing":
+    if not title_specific_arm and SARVAM_FULL_PILOT_STYLE != DEFAULT_SARVAM_FULL_PILOT_STYLE:
         blockers.append("Frozen Bengali pilot arm requires EARNALISM_BENGALI_TTS_STYLE=literary_warm_pacing.")
     if not bool_env("EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS"):
         blockers.append("EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS=true is required.")
@@ -758,6 +797,19 @@ def strip_bengali_tts_frontmatter(text: str) -> str:
     return "\n".join(lines[start_index:]).strip()
 
 
+def strip_bengali_tts_backmatter(text: str, *, source_frontmatter_removed: bool) -> str:
+    """Remove a trailing standalone edition year only for source-wrapped text."""
+
+    if not source_frontmatter_removed:
+        return text.strip()
+    lines = text.rstrip().splitlines()
+    while lines and not lines[-1].strip():
+        lines.pop()
+    if lines and re.fullmatch(r"[০-৯\d]{3,4}\s*[?？]?[।.]?", lines[-1].strip()):
+        lines.pop()
+    return "\n".join(lines).strip()
+
+
 def prepared_text_source_terms(text: str) -> list[str]:
     banned = ["wikisource", "gutenberg", "repository", "source:", "পৃষ্ঠা", "গল্পগুচ্ছ"]
     lowered = text.lower()
@@ -769,6 +821,7 @@ def prepared_text_source_terms(text: str) -> list[str]:
 
 def prepare_bengali_tts_text(text: str) -> str:
     prepared = strip_bengali_tts_frontmatter(text)
+    prepared = strip_bengali_tts_backmatter(prepared, source_frontmatter_removed=prepared.strip() != text.strip())
     prepared = re.sub(r"[\u200c\u200d]", "", prepared)
     prepared = re.sub(r"[ \t]+", " ", prepared)
     prepared = re.sub(r"\s+([।,;:!?])", r"\1", prepared)
@@ -1007,7 +1060,11 @@ def generate_sarvam_full_pilot(args, run_dir: Path, manuscript_path: Path, manus
                 "previous_duration_seconds": group.get("previous_duration_seconds"),
             }
         )
-    final_audio = run_dir / f"{args.slug}_sarvam_bulbul_v3_ratan_literary_warm_pacing_final.mp3"
+    arm_name = "_".join(
+        re.sub(r"[^a-zA-Z0-9_-]+", "_", value).strip("_")
+        for value in (SARVAM_FULL_PILOT_MODEL, SARVAM_FULL_PILOT_VOICE, SARVAM_FULL_PILOT_STYLE)
+    )
+    final_audio = run_dir / f"{args.slug}_sarvam_{arm_name}_final.mp3"
     concat = concat_audio_chunks(chunk_paths, final_audio)
     if not concat["ok"] or not final_audio.exists() or final_audio.stat().st_size <= 0:
         raise RuntimeError("Final Sarvam audio concatenation failed.")

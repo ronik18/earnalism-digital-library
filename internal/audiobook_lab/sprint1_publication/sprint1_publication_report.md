@@ -1,6 +1,6 @@
 # Sprint 1 Publication Stage 2 Report
 
-Generated: `2026-07-12T18:04:44Z`
+Generated: `2026-07-12T18:57:04Z`
 
 ## Outcome
 
@@ -12,7 +12,7 @@ Generated: `2026-07-12T18:04:44Z`
 - Provider calls: bounded A Ghost Story production plus bounded Google/OpenAI representative auditions for The Open Window; no Stage 2E full TTS or publication
 - Estimated Stage 2B through Stage 2E spend: `$4.2862`; actual provider billing was not reported
 - Authorized budget remaining after estimate: `$170.7138`
-- Remaining known queue estimate: `$97.5724`
+- Remaining known queue estimate: `$97.6035` after replacing unverifiable D19 group reuse with fresh full-title regeneration
 - Production API: `32/32 book routes and 32/32 manifests HTTP 200`
 - Production browser: prior `132/132` desktop/mobile route checks pass; Stage 2D book and reader release-state checks pass
 
@@ -31,7 +31,7 @@ Stage 2B supplied every required cap in the same process and ran exactly six bou
 | `radharani` | রাধারাণী | Bengali | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/radharani.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `nishkriti` | নিষ্কৃতি | Bengali | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/nishkriti.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `muchiram-gurer-jibanchorit` | মুচিরাম গুড়ের জীবনচরিত | Bengali | Yes | No | 0.039/10 ASR-source; representative timed out | `internal/audiobook_lab/release_gate/muchiram-gurer-jibanchorit_20260705T150228Z/goliveevidence.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
-| `book-d19e96859f` | গিন্নি | Bengali | Yes | No | 9.4/10 representative only; full-book source gate failed | `internal/audiobook_lab/release_gate/book-d19e96859f_20260705T150228Z/goliveevidence.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
+| `book-d19e96859f` | গিন্নি | Bengali | Yes | No | 9.4/10 representative, confidence 0.95; clean full-regeneration preflight PASS; full-book QA not run | `internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_preflight.json` | $0.0000 | PROVIDER_RETRY_REQUIRED |
 | `book-f5d593e1f4` | রামকানাইয়ের নির্বুদ্ধিতা | Bengali | Yes | No | 9.4/10 representative only; full-book source gate failed | `internal/audiobook_lab/release_gate/book-f5d593e1f4_20260705T150741Z/goliveevidence.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `pather-panchali` | পথের পাঁচালী / Pather Panchali | Bengali | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/pather-panchali.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `devdas` | দেবদাস / Devdas | Bengali | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/devdas.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
@@ -49,7 +49,7 @@ Stage 2B supplied every required cap in the same process and ran exactly six bou
 | `alices-adventures-in-wonderland` | Alice's Adventures in Wonderland | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/alices-adventures-in-wonderland.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `the-gift-of-the-magi` | The Gift of the Magi | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-gift-of-the-magi.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `the-tell-tale-heart` | The Tell-Tale Heart | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-tell-tale-heart.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
-| `the-open-window` | The Open Window | English | Yes | No | Google Studio-C attempts 8.0-9.5; final Studio-B 7.2-9.5, confidence 0.90-0.95; twilight sample has robotic texture and mechanical cadence fatal flags; 10.0 not claimed | `internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_release_gate_evidence.json` | $0.6534 estimated; actual not reported | AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED |
+| `the-open-window` | The Open Window | English | Yes | No | Google Studio-C attempts 8.0-9.5; final Studio-B 7.2-9.5, confidence 0.90-0.95; twilight sample has robotic texture and mechanical cadence fatal flags; 10.0 not claimed | `internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_human_narration_packet_report.md` | $0.6534 estimated; actual not reported | HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED |
 | `sredni-vashtar` | Sredni Vashtar | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/sredni-vashtar.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `dsires-baby` | Désirée's Baby | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/dsires-baby.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
 | `the-cop-and-the-anthem` | The Cop and the Anthem | English | Yes | No | NOT_RUN | `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-cop-and-the-anthem.json` | $0.0000 | SPRINT_TARGET_INCOMPLETE |
@@ -104,3 +104,11 @@ The twilight transition still failed the `9.4` owner minimum, so no full TTS, up
 The final bounded `en-GB-Studio-B` audition ran against four source-bound passages. Opening, shooting-party, and ending samples scored `9.4`, `9.5`, and `9.4`; the twilight transition scored `7.2` at confidence `0.90` and triggered `robotic_texture_detected` plus `mechanical_cadence_detected`. The stricter `schema3_universal_9_7` policy therefore returned `AUDITION_REPAIR_REQUIRED`.
 
 No full audio, upload, manifest, endpoint, frontend release state, or production audio exposure was created. Estimated Stage 2E spend is `$0.2178`, title cumulative estimate is `$0.6534`, and Sprint 1 cumulative estimate is `$4.2862 / $175`. The lock restored byte-for-byte. Automated Google retries stop; the executable repair track is a source-bound human narration or licensed-audio packet followed by the complete release gate.
+
+## Stage 2F: The Open Window And book-d19e96859f
+
+PR `#109` was reviewed as evidence-only fail-closed work with source/test guardrails and no public audio mutation, then squash-merged as `5b20775`. The Open Window now has a complete source-bound human narration packet containing the sanitized manuscript, narrator brief, failed-TTS summary, format/delivery checklist, QA/release checklist, hashes, and an executable received-audio preflight. Its durable classification is `HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED`; public audio remains hidden.
+
+For `book-d19e96859f`, the latest historical group-repair chunks cannot be verified or reused. The narration-only sanitizer was repaired to remove the trailing standalone source year without changing public reader text. The resulting 6,485-character manuscript hashes to `79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe` and forms five clean groups. Exact title-specific audition evidence confirms Sarvam `bulbul:v3` / `pooja` / `dialogue_human_touch` at `9.4`, confidence `0.95`, with no fatal flags.
+
+Fresh title-only TTS, ASR, and configured listening QA are estimated at `$0.1433`. Both provider keys are present, but all budget/approval/ASR/listening environment gates are absent, so the lock-safe wrapper stopped before acquisition and made zero provider calls. D19 remains public-reader/audio-hidden with classification `PROVIDER_RETRY_REQUIRED`; no release gate or public endpoint was changed.
