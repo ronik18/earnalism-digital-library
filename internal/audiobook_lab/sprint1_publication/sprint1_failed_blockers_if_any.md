@@ -1,20 +1,21 @@
 # Sprint 1 Stage 2 Remaining Blockers
 
-Generated: `2026-07-12T15:24:05Z`
+Generated: `2026-07-12T17:00:00Z`
 
 No title is marked public audio without complete release evidence.
 
 ## a-ghost-story / A Ghost Story (Stage 2D resolved)
 
-- Status: `RELEASE_GATES_PASS_SOURCE_PUBLICATION_READY`
+- Status: `YES_PLUS_YES_PRODUCTION_VALIDATED`
 - Resolution: Google Studio-C full narration passed ASR/source `9.88`, first/last checks, and six listening samples at `9.4-9.5`, confidence `0.95`, with no fatal flags.
 - Upload evidence: five B2 artifacts resolve with matching local/remote SHA-256 and byte sizes; MP3 range request returned `206`.
-- Remaining operational step: normal PR deployment and production route validation.
+- Production validation: manifest `APPROVED` / `QA_PASSED`, book UI approved badge and Listen link present, reader audio element ready, and ranged audio proxy returned HTTP `206` with `1,024` bytes.
+- Remaining blocker: none. The in-app browser media-start limitation reproduced on the existing approved `book-2b9853ec52` control and is not an A Ghost Story endpoint regression.
 - Estimated Stage 2B through Stage 2D spend: `$3.6328`; actual provider billing not reported.
 - Next command:
 
 ```bash
-curl -sS https://api.theearnalism.com/api/reader/book/a-ghost-story/manifest | jq '.audio'
+curl -sS -H 'Range: bytes=0-1023' -o /dev/null -w '%{http_code} %{size_download}\n' https://api.theearnalism.com/api/reader/book/a-ghost-story/audiobook
 ```
 
 ## bn-066 / আনন্দমঠ

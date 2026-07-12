@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T15:24:05Z",
+  "generated_at": "2026-07-12T17:00:00Z",
   "summary": {
     "total_sprint1_title_count": 34,
     "active_sprint1_title_count": 32,
@@ -381,8 +381,8 @@
       "final_status": "Yes, publicly rendered book + Yes, publicly available audiobook",
       "exact_blocker": "NONE",
       "reason": "",
-      "next_action": "Validate the normal production deployment and approved reader audio endpoint.",
-      "next_command": "curl -sS https://api.theearnalism.com/api/reader/book/a-ghost-story/manifest | jq '.audio'",
+      "next_action": "Monitor the approved endpoint and continue the Sprint 1 queue with The Open Window replacement-provider audition.",
+      "next_command": "curl -sS -H 'Range: bytes=0-1023' -o /dev/null -w '%{http_code} %{size_download}\\n' https://api.theearnalism.com/api/reader/book/a-ghost-story/audiobook",
       "sanitation_status": "PASS",
       "rights_status": "PASS",
       "reader_source_ready": true,
@@ -421,6 +421,12 @@
       "stage2d_fatal_flags": [],
       "stage2d_estimated_spend_usd": 3.6328,
       "stage2d_remote_checksum_status": "PASS",
+      "stage2d_production_manifest_audio_enabled": true,
+      "stage2d_production_release_gate": "APPROVED",
+      "stage2d_production_qa_status": "QA_PASSED",
+      "stage2d_production_audio_endpoint_http": 206,
+      "stage2d_production_ui_status": "PASS_APPROVED_BADGE_LISTEN_LINK_AND_READER_AUDIO_ELEMENT",
+      "stage2d_production_main_commit": "3d357bb164f850b081c13fd8fc23ccbd3896eee3",
       "release_gates_passed": true
     },
     {

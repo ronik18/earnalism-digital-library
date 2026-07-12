@@ -1,6 +1,6 @@
 # Sprint 1 Publication Stage 2 Execution Log
 
-Generated: `2026-07-12T15:24:05Z`
+Generated: `2026-07-12T17:00:00Z`
 
 1. Loaded active Earnalism intelligence, Sprint 1 matrices, release evidence, and lock state.
 2. Confirmed 32 active audio targets and 2 deferred long classics.
@@ -42,3 +42,8 @@ Generated: `2026-07-12T15:24:05Z`
 38. The B2 upload hook verified exact remote SHA-256 and byte-size parity for MP3, timestamps, VTT, chapters, and metadata. A direct 1,024-byte range request returned HTTP `206`.
 39. Root and Railway controlled-publication packets now contain identical A Ghost Story release evidence/assets; the controlled audio allowlist contains only `book-2b9853ec52` and `a-ghost-story`.
 40. The paid lock was restored byte-for-byte after every Stage 2D operation. No unrelated title, static audio fallback, browser speech fallback, or word-level sync claim was introduced.
+41. Release PR `#105` merged as `684165108fa0fc6b9e87517f517ca10daf881fba`; manifest cache repair PR `#106` merged as `3d357bb164f850b081c13fd8fc23ccbd3896eee3`.
+42. Railway deployment `8a14b747-b0f3-4da9-903c-96734ab58b2d` succeeded. Production now serves A Ghost Story manifest audio as Google `en-GB-Studio-C`, `APPROVED`, `QA_PASSED`, and the proxy returns HTTP `206` for the requested 1,024-byte range.
+43. Production book UI shows `Audiobook Approved`, `Listen in Reader`, and `Section-following narration`; the reader creates a fully buffered approved audio element with no static fallback, browser speech, word-level claim, or non-approved `AudioObject`.
+44. In-app media start was unavailable for both A Ghost Story and the existing approved `book-2b9853ec52` control, isolating the observation to that browser runtime rather than the new release endpoint.
+45. Main regression and GO LIVE workflows passed. k6 completed `32,808/32,808` checks with zero HTTP failures; only the separately scoped catalog p95 threshold missed at `1.28s` versus `1.20s`, with no performance code change made in this sprint.

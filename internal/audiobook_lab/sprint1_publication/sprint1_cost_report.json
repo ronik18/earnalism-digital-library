@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T15:24:05Z",
+  "generated_at": "2026-07-12T17:00:00Z",
   "budget_env": {
     "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "SET_INLINE_STAGE2C_175",
     "SPRINT1_MAX_USD_PER_TITLE": "SET_INLINE_STAGE2C_30",
@@ -18,7 +18,7 @@
   "actual_spend_usd": null,
   "estimated_incremental_total_usd": 101.2052,
   "removed_deferred_estimated_cost_usd": 35.2935,
-  "budget_comparison": "ESTIMATED_STAGE2B_AND_STAGE2C_SPEND_2.3295_WITHIN_175_CAP; ACTUAL_PROVIDER_BILLING_NOT_REPORTED; A_GHOST_ALTERNATE_PROVIDER_COST_TBD",
+  "budget_comparison": "ESTIMATED_STAGE2B_THROUGH_STAGE2D_SPEND_3.6328_WITHIN_175_CAP; ACTUAL_PROVIDER_BILLING_NOT_REPORTED; ESTIMATED_REMAINING_171.3672",
   "summary": {
     "total_sprint1_title_count": 34,
     "active_sprint1_title_count": 32,
@@ -1186,7 +1186,7 @@
     "actual_provider_billing": "NOT_REPORTED",
     "verified_b2_upload": true,
     "paid_tts_lock_restored": true,
-    "status": "RELEASE_GATES_PASS_SOURCE_PUBLICATION_READY",
+    "status": "YES_PLUS_YES_PRODUCTION_VALIDATED",
     "authorized_total_budget_usd": 175.0,
     "budget_remaining_after_estimate_usd": 171.3672
   }
