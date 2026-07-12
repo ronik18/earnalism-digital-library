@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import os
 import subprocess
 import sys
@@ -33,15 +34,17 @@ EXPECTED_ENV = {
     "SPRINT1_MAX_USD_PER_TITLE": "30",
     "MAX_TTS_BUDGET_USD": "175",
     "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "true",
-    "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "40",
-    "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "20",
     "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE": "0.008",
-    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "20",
     "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "0.05",
     "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "true",
     "EARNALISM_OPENAI_LISTENING_QA_MODEL": "gpt-audio",
     "EARNALISM_LISTENING_POLICY_VERSION": "bengali_audiobook_acceptance_v2_92",
 }
+POSITIVE_CAP_ENV = (
+    "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD",
+    "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD",
+    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD",
+)
 FATAL_FLAGS = {
     "robotic_texture_detected",
     "mechanical_cadence_detected",
@@ -71,6 +74,13 @@ def atomic_write(path: Path, payload: bytes) -> None:
 
 def runtime_gate_errors() -> list[str]:
     errors = [f"{name} must equal {expected}" for name, expected in EXPECTED_ENV.items() if os.environ.get(name) != expected]
+    for name in POSITIVE_CAP_ENV:
+        try:
+            value = float(os.environ.get(name, ""))
+            if not math.isfinite(value) or value <= 0:
+                errors.append(f"{name} must be a positive number")
+        except ValueError:
+            errors.append(f"{name} must be a positive number")
     if not os.environ.get("OPENAI_API_KEY"):
         errors.append("OPENAI_API_KEY is required")
     return errors
@@ -267,6 +277,11 @@ def budget_estimate(duration_seconds: float, tts_estimated_usd: float = 0.0) -> 
     }
 
 
+def tts_cost_from_metrics(tts: dict) -> float:
+    metrics = tts.get("metrics") if isinstance(tts.get("metrics"), dict) else {}
+    return float(metrics.get("estimated_tts_usd") or metrics.get("tts_estimated_cost") or 0)
+
+
 def owner_listening_gate(samples: list[dict]) -> dict:
     scores = [float((item.get("scores") or {}).get("overall_listening_score") or 0) for item in samples]
     confidences = [float((item.get("scores") or {}).get("confidence_score") or item.get("confidence") or 0) for item in samples]
@@ -286,15 +301,18 @@ def owner_listening_gate(samples: list[dict]) -> dict:
 def effective_source_gate(hook: dict, diagnosis: dict, construction: dict) -> dict:
     hook_metrics = hook.get("metrics") if isinstance(hook.get("metrics"), dict) else {}
     construction_pass = construction.get("tts_by_construction_verified") is True
-    score = float(hook_metrics.get("source_match_score") or 0) if construction_pass else float(diagnosis.get("score") or 0)
-    construction_boundary = construction.get("first_last_tts_input_boundary_pass") is True
+    score = float(diagnosis.get("score") or 0)
+    first_words_match = diagnosis.get("first_words_match") is True
+    last_words_match = diagnosis.get("last_words_match") is True
     return {
-        "passes": score >= 9.7 and bool(diagnosis.get("first_words_match") or construction_boundary) and bool(diagnosis.get("last_words_match") or construction_boundary),
+        "passes": score >= 9.7 and first_words_match and last_words_match,
         "score": score,
-        "method": hook_metrics.get("source_verification_method") if construction_pass else "asr_transcript",
+        "method": "asr_transcript",
         "construction_verified": construction_pass,
-        "first_words_match": bool(diagnosis.get("first_words_match") or construction_boundary),
-        "last_words_match": bool(diagnosis.get("last_words_match") or construction_boundary),
+        "construction_source_match_score": float(hook_metrics.get("source_match_score") or 0),
+        "construction_boundary_pass": construction.get("first_last_tts_input_boundary_pass") is True,
+        "first_words_match": first_words_match,
+        "last_words_match": last_words_match,
     }
 
 
@@ -316,7 +334,7 @@ def main() -> int:
     run_dir = args.run_dir.expanduser().resolve()
     tts, audio, audio_hash = tts_evidence(run_dir, args.slug, args.expected_google_voice)
     duration = audio_duration_seconds(audio)
-    estimate = budget_estimate(duration, float((tts.get("metrics") or {}).get("estimated_tts_usd") or 0.0391))
+    estimate = budget_estimate(duration, tts_cost_from_metrics(tts))
     if estimate["status"] != "PASS":
         print(json.dumps({"status": "BLOCKED_BUDGET", **estimate}, indent=2))
         return 3

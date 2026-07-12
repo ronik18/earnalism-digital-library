@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T22:00:32Z",
+  "generated_at": "2026-07-12T22:56:24Z",
   "parallel_sprint": {
     "execution_board": "internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json",
     "paid_calls_serialized": true,
@@ -130,13 +130,13 @@
       "language": "Bengali",
       "publicly_rendered_book": "Yes",
       "publicly_available_audiobook": "No",
-      "quality_score": "Private full TTS/listening/sync PASS: six listening samples 9.4, confidence 0.95, no fatal flags, measured paragraph/stanza sync; objective ASR/source FAIL at raw 0.6838 below required 9.7; construction audit 10.0 is provenance only, not an ASR substitute",
+      "quality_score": "Stage 2G Sarvam full TTS PASS; raw ASR/source 1.3504 below 9.7; first/last ASR checks FAIL; listening samples 8.0, 8.0, 9.4, 9.4, 9.4, 8.0 with minimum confidence 0.85 and fatal list-reading rhythm",
       "evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json",
-      "cost_used_usd": 1.1092,
-      "final_status": "AUTOMATED_ASR_ARMS_EXHAUSTED_NORMALIZATION_REPAIR_REQUIRED_PRIVATE_TTS_PASS",
-      "exact_blocker": "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED: RAW_ASR_SOURCE_0.6838_BELOW_REQUIRED_9.7; CONSTRUCTION_AUDIT_10.0_IS_NOT_AN_ASR_SUBSTITUTE; UPLOAD_RELEASE_PUBLICATION_BLOCKED",
-      "next_action": "Run a non-provider ASR language/model calibration preflight against representative chunks of the existing private Google audio; do not upload, build a release packet, mutate metadata, or publish.",
-      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/bengali_asr_normalization.py --self-test",
+      "cost_used_usd": 1.5318,
+      "final_status": "ASR_SOURCE_MISMATCH",
+      "exact_blocker": "STAGE2G_RAW_ASR_SOURCE_1.3504_BELOW_REQUIRED_9.7; FIRST_LAST_ASR_WORDS_FAILED; LISTENING_MINIMUM_8.0_CONFIDENCE_0.85_WITH_FATAL_LIST_READING_RHYTHM; UPLOAD_RELEASE_PUBLICATION_BLOCKED",
+      "next_action": "Stop automated Google and Sarvam retries; obtain source-bound human narration or licensed audio and validate it against the generated packet before rerunning full release QA.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "production_book_http": 200,
       "production_manifest_http": 200,
       "release_gates_passed": false,
@@ -739,8 +739,8 @@
     "release_gates_passed": false,
     "status": "SPRINT_TARGET_INCOMPLETE_RUNTIME_GATES_MISSING"
   },
-  "estimated_spend_usd": 9.754,
-  "estimated_budget_remaining_usd": 165.246,
+  "estimated_spend_usd": 10.1766,
+  "estimated_budget_remaining_usd": 164.8234,
   "actual_provider_billing": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
   "public_audiobook_slugs": [
     "book-2b9853ec52",

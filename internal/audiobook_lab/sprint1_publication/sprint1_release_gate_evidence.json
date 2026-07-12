@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T22:00:32Z",
+  "generated_at": "2026-07-12T22:56:24Z",
   "parallel_sprint": {
     "execution_board": "internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json",
     "approved_public_audio_slugs_at_start": [
@@ -11,9 +11,9 @@
     "release_gate_mutations": 0,
     "provider_calls_ran": true,
     "runtime_gate_status": "BOUNDED_PAID_EVIDENCE_RECONCILED_ACTUAL_BILLING_UNKNOWN",
-    "conservative_estimated_spend_usd": 9.754,
+    "conservative_estimated_spend_usd": 10.1766,
     "authorized_budget_usd": 175.0,
-    "estimated_budget_remaining_usd": 165.246,
+    "estimated_budget_remaining_usd": 164.8234,
     "actual_provider_billing": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS"
   },
   "summary": {
@@ -32,42 +32,42 @@
     },
     "cheapest_next_5_eligible_audio_candidates": [
       {
-        "slug": "book-f5d593e1f4",
-        "title": "রামকানাইয়ের নির্বুদ্ধিতা",
-        "language": "Bengali",
-        "estimated_incremental_cost_usd": 0.1334,
-        "strategy": "REGENERATE_FAILED_GROUP_7_ONLY_THEN_FULL_QA"
-      },
-      {
-        "slug": "book-d19e96859f",
-        "title": "গিন্নি",
-        "language": "Bengali",
-        "estimated_incremental_cost_usd": 0.1433,
-        "strategy": "FRESH_FULL_TITLE_REGENERATION_THEN_FULL_QA_MISSING_VERIFIABLE_GROUP_CHUNKS"
-      },
-      {
-        "slug": "muchiram-gurer-jibanchorit",
-        "title": "মুচিরাম গুড়ের জীবনচরিত",
-        "language": "Bengali",
-        "estimated_incremental_cost_usd": 0.1447,
-        "strategy": "SPLIT_REPRESENTATIVE_AUDITION_THEN_DECIDE_REUSE_OR_FULL_TTS"
-      },
-      {
-        "slug": "sredni-vashtar",
-        "title": "Sredni Vashtar",
-        "language": "English",
-        "estimated_incremental_cost_usd": 0.1474,
-        "strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS"
-      },
-      {
         "slug": "bn-066",
         "title": "আনন্দমঠ",
         "language": "Bengali",
         "estimated_incremental_cost_usd": 0.1547,
         "strategy": "REUSE_PRIVATE_FULL_AUDIO_THREE_CHUNK_ASR_CALIBRATION_THEN_QA"
+      },
+      {
+        "slug": "dsires-baby",
+        "title": "Désirée's Baby",
+        "language": "English",
+        "estimated_incremental_cost_usd": 0.1669,
+        "strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS"
+      },
+      {
+        "slug": "the-cop-and-the-anthem",
+        "title": "The Cop and the Anthem",
+        "language": "English",
+        "estimated_incremental_cost_usd": 0.1736,
+        "strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS"
+      },
+      {
+        "slug": "the-last-leaf",
+        "title": "The Last Leaf",
+        "language": "English",
+        "estimated_incremental_cost_usd": 0.1792,
+        "strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS"
+      },
+      {
+        "slug": "the-masque-of-the-red-death",
+        "title": "The Masque of the Red Death",
+        "language": "English",
+        "estimated_incremental_cost_usd": 0.1798,
+        "strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS"
       }
     ],
-    "generated_at": "2026-07-12T11:11:42Z",
+    "generated_at": "2026-07-12T22:56:24Z",
     "current_production_reader_yes_count": 32,
     "current_production_reader_no_count": 0,
     "reader_repairs_prepared_in_pr_101": 17,
@@ -76,8 +76,8 @@
     "actual_spend_usd": null,
     "sprint_target_status": "INCOMPLETE",
     "reader_repairs_merged_and_deployed": 17,
-    "estimated_spend_usd": 9.754,
-    "budget_remaining_after_estimate_usd": 165.246,
+    "estimated_spend_usd": 10.1766,
+    "budget_remaining_after_estimate_usd": 164.8234,
     "public_audiobook_slugs": [
       "book-2b9853ec52",
       "a-ghost-story"
@@ -356,11 +356,11 @@
         "text_sanitation": "PASS",
         "text_normalization": "PASS",
         "representative_audition": "PASS_9.4_CONFIDENCE_0.95",
-        "full_book_tts": "PASS_PRIVATE_GOOGLE_6_CHUNKS",
-        "asr_source_alignment": "FAIL_RAW_0.6838_BELOW_REQUIRED_9.7_CONSTRUCTION_AUDIT_NOT_SUBSTITUTE",
-        "first_words_match": "PASS_PRIVATE_SOURCE_BOUNDARY",
-        "last_words_match": "PASS_PRIVATE_SOURCE_BOUNDARY",
-        "listening_qa": "PASS_6_OF_6_AT_9.4_CONFIDENCE_0.95_NO_FATAL_FLAGS",
+        "full_book_tts": "PASS_PRIVATE_SARVAM_5_FRESH_GROUPS",
+        "asr_source_alignment": "FAIL_RAW_1.3504_BELOW_REQUIRED_9.7_CONSTRUCTION_AUDIT_NOT_SUBSTITUTE",
+        "first_words_match": "FAIL_AUDIO_DERIVED_ASR_BOUNDARY",
+        "last_words_match": "FAIL_AUDIO_DERIVED_ASR_BOUNDARY",
+        "listening_qa": "FAIL_SCORES_8.0_8.0_9.4_9.4_9.4_8.0_MIN_CONFIDENCE_0.85_FATAL_LIST_READING",
         "measured_sync": "PASS_PARAGRAPH_OR_STANZA_AUTO_ESTIMATED_FALSE",
         "upload_checksum": "NOT_RUN_BLOCKED_BY_ASR_GATE",
         "metadata_approval": "NOT_RUN_BLOCKED_BY_ASR_GATE",
@@ -378,6 +378,9 @@
       },
       "failed_or_pending_gates": [
         "asr_source_alignment",
+        "first_words_match",
+        "last_words_match",
+        "listening_qa",
         "upload_checksum",
         "metadata_approval",
         "endpoint_validation",
@@ -391,12 +394,12 @@
       "audio_plan_status": "ACTIVE_SPRINT1_AUDIO_TARGET",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "AUTOMATED_ASR_ARMS_EXHAUSTED_NORMALIZATION_REPAIR_REQUIRED_PRIVATE_TTS_PASS",
+      "final_status": "ASR_SOURCE_MISMATCH",
       "existing_release_packet": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json",
-      "existing_release_status": "PRIVATE_TTS_LISTENING_SYNC_PASS_ASR_GATE_FAIL",
+      "existing_release_status": "STAGE2G_SARVAM_TTS_PASS_ASR_AND_LISTENING_FAIL_AUDIO_HIDDEN",
       "reason": "",
-      "next_action": "Run a non-provider ASR language/model calibration preflight against representative chunks of the existing private Google audio; do not upload, build a release packet, mutate metadata, or publish.",
-      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/bengali_asr_normalization.py --self-test",
+      "next_action": "Stop automated Google and Sarvam retries; validate source-bound human narration or licensed audio before rerunning release QA.",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
       "stage2_production_book_http": 200,
       "stage2_production_manifest_http": 200,
       "stage2_manifest_audio_enabled": false,
@@ -406,22 +409,23 @@
       "stage2f_prepared_characters": 6485,
       "stage2f_group_count": 5,
       "private_google_tts_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_tts/google_bengali_full_tts_manifest.json",
-      "private_full_qa_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_google_full_qa.json",
-      "raw_asr_source_score": 0.6838,
+      "private_sarvam_tts_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_full_tts/sarvam_full_pilot_tts_report.json",
+      "private_full_qa_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2g_full_qa.json",
+      "raw_asr_source_score": 1.3504,
       "required_asr_source_score": 9.7,
       "construction_audit_score": 10.0,
       "construction_audit_role": "SOURCE_PROVENANCE_ONLY_NOT_ASR_SUBSTITUTE",
-      "private_listening_scores": [9.4, 9.4, 9.4, 9.4, 9.4, 9.4],
-      "private_listening_minimum_confidence": 0.95,
-      "private_listening_fatal_flags": [],
+      "private_listening_scores": [8.0, 8.0, 9.4, 9.4, 9.4, 8.0],
+      "private_listening_minimum_confidence": 0.85,
+      "private_listening_fatal_flags": ["list_reading_rhythm_detected"],
       "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
       "auto_estimated_sync": false,
-      "conservative_estimated_spend_usd": 1.1092,
+      "conservative_estimated_spend_usd": 1.5318,
       "actual_provider_billing": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
       "provider_calls_ran": true,
       "upload_performed": false,
       "publication_performed": false,
-      "exact_blocker": "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED: RAW_ASR_SOURCE_0.6838_BELOW_REQUIRED_9.7; CONSTRUCTION_AUDIT_10.0_IS_NOT_AN_ASR_SUBSTITUTE; UPLOAD_RELEASE_PUBLICATION_BLOCKED"
+      "exact_blocker": "STAGE2G_RAW_ASR_SOURCE_1.3504_BELOW_REQUIRED_9.7; FIRST_LAST_ASR_WORDS_FAILED; LISTENING_MINIMUM_8.0_CONFIDENCE_0.85_WITH_FATAL_LIST_READING_RHYTHM; UPLOAD_RELEASE_PUBLICATION_BLOCKED"
     },
     {
       "slug": "book-f5d593e1f4",
