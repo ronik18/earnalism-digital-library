@@ -43,6 +43,9 @@ LISTENING_QA_SCHEMA_VERSION = 3
 LISTENING_QA_RUBRIC_VERSION = "earnalism_listening_quality_v1"
 LISTENING_QA_HOOK_VERSION = "asr_sync_hook_listening_schema3_v1"
 OPENAI_LISTENING_QA_MODEL = os.environ.get("EARNALISM_OPENAI_LISTENING_QA_MODEL", "gpt-4o-audio-preview")
+OPENAI_LISTENING_QA_MAX_ESTIMATED_USD_ENV = "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD"
+OPENAI_LISTENING_QA_ESTIMATED_USD_ENV = "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD"
+OPENAI_LISTENING_QA_DEFAULT_ESTIMATED_USD = 0.05
 UNIVERSAL_LISTENING_POLICY = "schema3_universal_9_7"
 BENGALI_PREMIUM_MVP_POLICY = "bengali_premium_mvp_v1"
 BENGALI_AUDIOBOOK_92_POLICY = "bengali_audiobook_acceptance_v2_92"
@@ -123,6 +126,81 @@ def safe_float(value, default: float = 0.0) -> float:
         return float(value)
     except (TypeError, ValueError):
         return default
+
+
+def _nonnegative_usd_env(name: str) -> tuple[float | None, str]:
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return None, f"{name} missing"
+    try:
+        value = float(raw)
+    except ValueError:
+        return None, f"{name} must be numeric"
+    if value < 0:
+        return None, f"{name} must be nonnegative"
+    return value, ""
+
+
+def openai_listening_qa_budget_guard(*, sample_count: int = 1, prior_estimated_usd: float = 0.0) -> dict:
+    """Fail closed before OpenAI listening-QA calls unless both caps pass."""
+    cap, cap_error = _nonnegative_usd_env(OPENAI_LISTENING_QA_MAX_ESTIMATED_USD_ENV)
+    total_cap, total_cap_error = _nonnegative_usd_env("MAX_TTS_BUDGET_USD")
+    estimate, estimate_error = _nonnegative_usd_env(OPENAI_LISTENING_QA_ESTIMATED_USD_ENV)
+    if estimate is None and estimate_error.endswith(" missing"):
+        estimate = OPENAI_LISTENING_QA_DEFAULT_ESTIMATED_USD
+        estimate_error = ""
+    if estimate is None:
+        return {
+            "ok": False,
+            "code": "LISTENING_QA_BUDGET_GATE_INVALID",
+            "blocker": f"LISTENING_QA_BUDGET_GATE_INVALID: {estimate_error}.",
+        }
+
+    count = max(int(sample_count or 1), 1)
+    qa_estimate = round(estimate * count, 4)
+    total_estimate = round(max(safe_float(prior_estimated_usd), 0.0) + qa_estimate, 4)
+    if cap is None:
+        return {
+            "ok": False,
+            "code": "LISTENING_QA_BUDGET_GATE_MISSING",
+            "blocker": f"LISTENING_QA_BUDGET_GATE_MISSING: {cap_error}; set {OPENAI_LISTENING_QA_MAX_ESTIMATED_USD_ENV} before OpenAI listening QA.",
+            "estimated_qa_cost_usd": qa_estimate,
+        }
+    if total_cap is None:
+        return {
+            "ok": False,
+            "code": "LISTENING_QA_TOTAL_BUDGET_GATE_MISSING",
+            "blocker": f"LISTENING_QA_TOTAL_BUDGET_GATE_MISSING: {total_cap_error}; set MAX_TTS_BUDGET_USD before OpenAI listening QA.",
+            "estimated_qa_cost_usd": qa_estimate,
+            "listening_qa_cap_usd": cap,
+        }
+    if qa_estimate > cap:
+        return {
+            "ok": False,
+            "code": "LISTENING_QA_BUDGET_EXCEEDED",
+            "blocker": f"LISTENING_QA_BUDGET_EXCEEDED: estimated OpenAI listening QA cost ${qa_estimate:.4f} exceeds cap ${cap:.4f}.",
+            "estimated_qa_cost_usd": qa_estimate,
+            "listening_qa_cap_usd": cap,
+        }
+    if total_estimate > total_cap:
+        return {
+            "ok": False,
+            "code": "LISTENING_QA_TOTAL_BUDGET_EXCEEDED",
+            "blocker": f"LISTENING_QA_TOTAL_BUDGET_EXCEEDED: estimated spend ${total_estimate:.4f} exceeds total cap ${total_cap:.4f}.",
+            "estimated_qa_cost_usd": qa_estimate,
+            "listening_qa_cap_usd": cap,
+            "total_budget_cap_usd": total_cap,
+            "total_estimated_usd": total_estimate,
+        }
+    return {
+        "ok": True,
+        "code": "LISTENING_QA_BUDGET_OK",
+        "estimated_qa_cost_usd": qa_estimate,
+        "listening_qa_cap_usd": cap,
+        "total_budget_cap_usd": total_cap,
+        "total_estimated_usd": total_estimate,
+        "sample_count": count,
+    }
 
 
 def listening_policy_for(language: str, release_policy: str | None = None) -> dict:
@@ -281,7 +359,56 @@ def load_chunk_manifest(run_dir: Path) -> dict:
     return {}
 
 
-def existing_sidecar_reuse(args, run_dir: Path, public_book: dict, final_audio_path: Path) -> dict | None:
+def existing_sidecar_reuse(
+    args,
+    run_dir: Path,
+    public_book: dict,
+    final_audio_path: Path,
+    manuscript: str,
+) -> dict | None:
+    local_sidecars = {
+        "timestamps": run_dir / "reused_timestamps.json",
+        "vtt": run_dir / "reused_vtt.vtt",
+        "chapters": run_dir / "reused_chapters.json",
+        "meta": run_dir / "reused_meta.json",
+    }
+    if all(path.is_file() and path.stat().st_size > 0 for path in local_sidecars.values()):
+        meta = __import__("common").read_json(local_sidecars["meta"], {})
+        timestamps = __import__("common").read_json(local_sidecars["timestamps"], {})
+        chapters = __import__("common").read_json(local_sidecars["chapters"], {})
+        vtt_text = local_sidecars["vtt"].read_text(encoding="utf-8", errors="ignore").lstrip()
+        audio_hash = sha256_file(final_audio_path) if final_audio_path.exists() else ""
+        source_hash = sha256_text(manuscript)
+        sync_score = safe_float(meta.get("sync_score") or meta.get("vtt_alignment_score"))
+        transcript_score = safe_float(meta.get("transcript_match_score"))
+        if (
+            meta.get("slug") == args.slug
+            and timestamps.get("slug") == args.slug
+            and bool(timestamps.get("words"))
+            and timestamps.get("audio_hash") == audio_hash
+            and timestamps.get("source_text_hash") == source_hash
+            and timestamps.get("auto_estimated_sync") is False
+            and chapters.get("slug") == args.slug
+            and bool(chapters.get("chapters"))
+            and vtt_text.startswith("WEBVTT")
+            and "-->" in vtt_text
+            and meta.get("audio_hash") == audio_hash
+            and meta.get("source_text_hash") == source_hash
+            and meta.get("auto_estimated_sync") is False
+            and sync_score >= 9.7
+            and transcript_score >= 9.7
+        ):
+            return {
+                "status": "PASS",
+                "transcript_match_score": transcript_score,
+                "sync_score": sync_score,
+                "vtt_alignment_score": safe_float(meta.get("vtt_alignment_score") or sync_score),
+                "auto_estimated_sync": False,
+                "sidecars": {name: rel(path) for name, path in local_sidecars.items()},
+                "final_audio_hash": audio_hash,
+                "reuse_source": "local_hash_bound_release_grade_sidecars",
+            }
+
     assets = public_book.get("audiobook_assets") if isinstance(public_book.get("audiobook_assets"), dict) else {}
     required = ["timestamps", "vtt", "chapters", "meta"]
     if not all(assets.get(name) for name in required):
@@ -328,6 +455,10 @@ def asr_language_code(language: str) -> str:
 
 def is_bengali_language(language: str) -> bool:
     return (language or "").strip().lower() in {"ben", "bn", "bengali"}
+
+
+def listening_qa_only() -> bool:
+    return os.environ.get("EARNALISM_LISTENING_QA_ONLY", "").strip().lower() in {"1", "true", "yes"}
 
 
 def transcription_response_format_error(exc: Exception) -> bool:
@@ -1262,6 +1393,15 @@ def run_openai_listening_judge(args, audio_path: Path, run_dir: Path, samples: l
         return None
     if not os.environ.get("OPENAI_API_KEY"):
         return {"_external_judge_error": "LISTENING_QA_NOT_RUN: OPENAI_API_KEY missing; OpenAI listening QA cannot run."}
+    budget_guard = openai_listening_qa_budget_guard(
+        sample_count=len(samples) or 1,
+        prior_estimated_usd=safe_float(os.environ.get("EARNALISM_PRIOR_ESTIMATED_SPEND_USD")),
+    )
+    if not budget_guard.get("ok"):
+        return {
+            "_external_judge_error": budget_guard.get("blocker", "LISTENING_QA_BUDGET_BLOCKED"),
+            "listening_qa_budget_guard": budget_guard,
+        }
     try:
         from openai import OpenAI
     except Exception as exc:  # noqa: BLE001
@@ -1403,7 +1543,7 @@ def main() -> int:
 
     manuscript = load_clean_manuscript(args)
     public_book = load_public_book(args.slug)
-    reused = existing_sidecar_reuse(args, run_dir, public_book, final_audio)
+    reused = existing_sidecar_reuse(args, run_dir, public_book, final_audio, manuscript)
     if reused and reused["status"] == "PASS":
         listening_report, listening_pass, listening_blockers = build_or_load_listening_quality_report(args, run_dir, final_audio)
         listening_path = run_dir / "listening_quality_report.json"
@@ -1459,6 +1599,21 @@ def main() -> int:
                 "listening_qa_status": "PASS",
                 "listening_quality_report_path": rel(listening_path),
             },
+        )
+
+    if listening_qa_only():
+        return finish(
+            args,
+            "asr_sync",
+            started,
+            status="BLOCKED",
+            ready_for_next_stage=False,
+            blocker_category="sync",
+            blockers=[
+                "LISTENING_QA_ONLY_REUSE_REQUIRED: hash-bound local or approved remote sidecars did not pass; "
+                "ASR provider fallback is forbidden for this run."
+            ],
+            retryable=False,
         )
 
     if not os.environ.get("OPENAI_API_KEY"):
