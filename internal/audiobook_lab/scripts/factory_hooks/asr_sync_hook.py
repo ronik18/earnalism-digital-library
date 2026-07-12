@@ -39,6 +39,7 @@ from common import (  # noqa: E402
 
 ASR_MODEL = os.environ.get("EARNALISM_FACTORY_ASR_MODEL", "whisper-1")
 ASR_CHUNK_SECONDS = int(os.environ.get("EARNALISM_FACTORY_ASR_CHUNK_SECONDS", "300"))
+ASR_CHECKPOINT_VERSION = 1
 LISTENING_QA_SCHEMA_VERSION = 3
 LISTENING_QA_RUBRIC_VERSION = "earnalism_listening_quality_v1"
 LISTENING_QA_HOOK_VERSION = "asr_sync_hook_listening_schema3_v1"
@@ -359,6 +360,65 @@ def load_chunk_manifest(run_dir: Path) -> dict:
     return {}
 
 
+def load_asr_checkpoint(run_dir: Path, final_audio: Path, manuscript: str, args) -> dict | None:
+    checkpoint = __import__("common").read_json(run_dir / "asr_provider_checkpoint.json", {})
+    if not checkpoint:
+        return None
+    expected = {
+        "checkpoint_version": ASR_CHECKPOINT_VERSION,
+        "slug": args.slug,
+        "audio_hash": sha256_file(final_audio),
+        "source_text_hash": sha256_text(manuscript),
+        "provider": "openai",
+        "model": ASR_MODEL,
+        "language": asr_language_code(args.language),
+    }
+    if any(checkpoint.get(key) != value for key, value in expected.items()):
+        return None
+    if not str(checkpoint.get("transcript") or "").strip():
+        return None
+    if not isinstance(checkpoint.get("words"), list) or not checkpoint["words"]:
+        return None
+    if not isinstance(checkpoint.get("asr_chunks"), list) or not checkpoint["asr_chunks"]:
+        return None
+    return checkpoint
+
+
+def write_asr_checkpoint(
+    run_dir: Path,
+    final_audio: Path,
+    manuscript: str,
+    args,
+    *,
+    transcript: str,
+    words: list[dict],
+    asr_chunks: list[dict],
+    split_report: dict,
+) -> Path:
+    path = run_dir / "asr_provider_checkpoint.json"
+    write_json(
+        path,
+        {
+            "checkpoint_version": ASR_CHECKPOINT_VERSION,
+            "slug": args.slug,
+            "audio_hash": sha256_file(final_audio),
+            "source_text_hash": sha256_text(manuscript),
+            "provider": "openai",
+            "model": ASR_MODEL,
+            "language": asr_language_code(args.language),
+            "transcript": transcript,
+            "transcript_hash": sha256_text(transcript),
+            "words": words,
+            "word_timestamp_count": len(words),
+            "asr_chunks": asr_chunks,
+            "split_report": split_report,
+            "provider_calls_completed": True,
+            "contains_provider_secrets": False,
+        },
+    )
+    return path
+
+
 def existing_sidecar_reuse(
     args,
     run_dir: Path,
@@ -639,11 +699,21 @@ def boundary_span_match(manuscript_tokens: list[str], transcript_tokens: list[st
     expected_set = set(expected)
     observed_set = set(observed)
     coverage = len(expected_set & observed_set) / len(expected_set) if expected_set else 0.0
+    # ASR may join a hyphenated final word (for example, ``bath-tub`` ->
+    # ``bathtub``). Accept only an exact compact boundary in that case; this
+    # remains fail-closed for a genuinely missing opening or ending.
+    expected_compact = "".join(expected)
+    observed_compact = "".join(observed)
+    compact_boundary_match = (
+        observed_compact.startswith(expected_compact)
+        if start
+        else observed_compact.endswith(expected_compact)
+    )
     # Require either near-identical ordered tokens, or a strong mix of ordered
     # similarity and coverage so one ASR spelling variant cannot fail an
     # otherwise complete boundary.
     score = max(order_score, (order_score * 0.55) + (coverage * 0.45))
-    return score >= 0.86, score
+    return compact_boundary_match or score >= 0.86, max(score, 1.0 if compact_boundary_match else 0.0)
 
 
 def frontmatter_absent(text: str) -> bool:
@@ -1008,6 +1078,35 @@ def listening_sample_windows(duration: float, diagnostics: dict | None = None) -
     if duration <= 0:
         return []
     sample_duration = min(60.0, max(5.0, duration))
+    asr_chunks = (diagnostics or {}).get("asr_chunks") or []
+    chunk_starts = [
+        float(item.get("offset_seconds"))
+        for item in asr_chunks
+        if item.get("offset_seconds") is not None
+    ]
+    if len(chunk_starts) >= 6:
+        last = len(chunk_starts) - 1
+        selected_indices = []
+        for factor in (0.0, 0.2, 0.4, 0.6, 0.8, 1.0):
+            index = round(last * factor)
+            if index not in selected_indices:
+                selected_indices.append(index)
+        for index in range(len(chunk_starts)):
+            if len(selected_indices) >= 6:
+                break
+            if index not in selected_indices:
+                selected_indices.append(index)
+        selected_indices = sorted(selected_indices[:6])
+        labels = ["first_60s", "chunk_02", "middle_60s", "chunk_04", "chunk_05", "final_60s"]
+        return [
+            {
+                "sample_label": labels[position],
+                "start_time": round(chunk_starts[index], 3),
+                "duration": round(min(sample_duration, max(5.0, duration - chunk_starts[index])), 3),
+                "selection_method": "tts_chunk_boundary",
+            }
+            for position, index in enumerate(selected_indices)
+        ]
     starts: list[tuple[str, float]] = [
         ("first_60s", 0.0),
         ("middle_60s", max(0.0, (duration - sample_duration) / 2.0)),
@@ -1616,56 +1715,74 @@ def main() -> int:
             retryable=False,
         )
 
-    if not os.environ.get("OPENAI_API_KEY"):
-        return finish(args, "asr_sync", started, status="BLOCKED", blocker_category="asr", blockers=["OPENAI_API_KEY is required for ASR transcript validation."], retryable=True)
-
-    try:
-        from openai import OpenAI
-
-        client = OpenAI()
-    except Exception as exc:  # noqa: BLE001
-        return finish(args, "asr_sync", started, status="BLOCKED", blocker_category="asr", blockers=[f"OpenAI SDK unavailable: {exc}"], retryable=True)
-
     chunk_manifest = load_chunk_manifest(run_dir)
-    transcript_parts: list[str] = []
-    words: list[dict] = []
-    asr_chunks = []
-    offset = 0.0
-    chunks = chunk_manifest.get("chunks") or []
-    split_report: dict = {"status": "NOT_RUN"}
-    if not chunks:
-        chunks, split_report = split_audio_chunks(final_audio, run_dir)
-        if split_report.get("status") == "BLOCKED":
-            return finish(
-                args,
-                "asr_sync",
-                started,
-                status="BLOCKED",
-                ready_for_next_stage=False,
-                blocker_category="asr",
-                blockers=[split_report.get("reason") or "ASR audio chunking failed."],
-                retryable=True,
-                metrics=split_report,
-            )
-    if chunks:
-        for chunk in chunks:
-            path = resolve_artifact(chunk.get("path", ""), run_dir)
-            duration = float(chunk.get("duration_seconds") or ffprobe_duration(path) or 0)
-            payload = transcribe_file(client, path, args)
-            chunk_offset = float(chunk.get("offset_seconds", offset) or 0.0)
-            text, chunk_words = asr_words(payload, chunk_offset)
-            transcript_parts.append(text)
-            words.extend(chunk_words)
-            asr_chunks.append({"index": chunk.get("index"), "path": rel(path), "duration_seconds": duration, "word_count": len(chunk_words), "text": text[:300]})
-            offset = chunk_offset + duration if chunk.get("offset_seconds") is not None else offset + duration
+    checkpoint = load_asr_checkpoint(run_dir, final_audio, manuscript, args)
+    checkpoint_reused = checkpoint is not None
+    if checkpoint:
+        transcript = str(checkpoint["transcript"])
+        words = list(checkpoint["words"])
+        asr_chunks = list(checkpoint["asr_chunks"])
+        split_report = dict(checkpoint.get("split_report") or {"status": "CHECKPOINT_REUSED"})
     else:
-        payload = transcribe_file(client, final_audio, args)
-        text, file_words = asr_words(payload, 0.0)
-        transcript_parts.append(text)
-        words.extend(file_words)
-        asr_chunks.append({"path": rel(final_audio), "word_count": len(file_words), "text": text[:300]})
+        if not os.environ.get("OPENAI_API_KEY"):
+            return finish(args, "asr_sync", started, status="BLOCKED", blocker_category="asr", blockers=["OPENAI_API_KEY is required for ASR transcript validation."], retryable=True)
 
-    transcript = "\n".join(transcript_parts)
+        try:
+            from openai import OpenAI
+
+            client = OpenAI()
+        except Exception as exc:  # noqa: BLE001
+            return finish(args, "asr_sync", started, status="BLOCKED", blocker_category="asr", blockers=[f"OpenAI SDK unavailable: {exc}"], retryable=True)
+
+        transcript_parts: list[str] = []
+        words = []
+        asr_chunks = []
+        offset = 0.0
+        chunks = chunk_manifest.get("chunks") or []
+        split_report = {"status": "NOT_RUN"}
+        if not chunks:
+            chunks, split_report = split_audio_chunks(final_audio, run_dir)
+            if split_report.get("status") == "BLOCKED":
+                return finish(
+                    args,
+                    "asr_sync",
+                    started,
+                    status="BLOCKED",
+                    ready_for_next_stage=False,
+                    blocker_category="asr",
+                    blockers=[split_report.get("reason") or "ASR audio chunking failed."],
+                    retryable=True,
+                    metrics=split_report,
+                )
+        if chunks:
+            for chunk in chunks:
+                path = resolve_artifact(chunk.get("path", ""), run_dir)
+                duration = float(chunk.get("duration_seconds") or ffprobe_duration(path) or 0)
+                payload = transcribe_file(client, path, args)
+                chunk_offset = float(chunk.get("offset_seconds", offset) or 0.0)
+                text, chunk_words = asr_words(payload, chunk_offset)
+                transcript_parts.append(text)
+                words.extend(chunk_words)
+                asr_chunks.append({"index": chunk.get("index"), "path": rel(path), "offset_seconds": chunk_offset, "duration_seconds": duration, "word_count": len(chunk_words), "text": text[:300]})
+                offset = chunk_offset + duration if chunk.get("offset_seconds") is not None else offset + duration
+        else:
+            payload = transcribe_file(client, final_audio, args)
+            text, file_words = asr_words(payload, 0.0)
+            transcript_parts.append(text)
+            words.extend(file_words)
+            asr_chunks.append({"path": rel(final_audio), "word_count": len(file_words), "text": text[:300]})
+        transcript = "\n".join(transcript_parts)
+        write_asr_checkpoint(
+            run_dir,
+            final_audio,
+            manuscript,
+            args,
+            transcript=transcript,
+            words=words,
+            asr_chunks=asr_chunks,
+            split_report=split_report,
+        )
+
     transcript_path = run_dir / "asr_transcript.txt"
     write_text(transcript_path, transcript)
     metrics = transcript_similarity(manuscript, transcript)
@@ -1675,6 +1792,8 @@ def main() -> int:
     metrics["asr_language"] = asr_language_code(args.language)
     metrics["asr_split_report"] = split_report
     metrics["word_timestamp_count"] = len(words)
+    metrics["asr_provider_checkpoint_reused"] = checkpoint_reused
+    metrics["asr_provider_checkpoint"] = rel(run_dir / "asr_provider_checkpoint.json")
     diagnosis_path = run_dir / "asr_alignment_diagnosis.json"
     write_json(diagnosis_path, metrics)
     bengali_report: dict | None = None

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-12T11:12:26Z",
+  "slug": "the-open-window",
+  "title": "The Open Window",
+  "language": "English",
+  "public_reader": true,
+  "public_audio": false,
+  "production_book_http": 200,
+  "production_manifest_http": 200,
+  "production_manifest_audio_enabled": false,
+  "source_rights": "PASS",
+  "text_sanitation": "PASS",
+  "sanitized_characters": 6919,
+  "sanitized_words": 1229,
+  "existing_audio": {
+    "sha256": "5b9dfb75aa7dbda9af79553cef3164979b248e8e9502b69d6c8a58c6e0286aed",
+    "duration_seconds": 389.572789,
+    "provider": "piper",
+    "alignment_mode": "synthetic",
+    "public_release_eligible": false
+  },
+  "non_paid_asr_revalidation": {
+    "canonical_score": 9.7826,
+    "canonical_first_words_match": false,
+    "canonical_last_words_match": true,
+    "title_prefixed_audio_manuscript_score": 9.7826,
+    "title_prefixed_first_words_match": true,
+    "title_prefixed_last_words_match": true
+  },
+  "classification": "AUDIO_HIDDEN_DISALLOWED_PIPER_PROVENANCE_REPLACEMENT_REQUIRED",
+  "provider_calls_ran": false,
+  "release_gate_mutated": false,
+  "next_command": "gcloud auth application-default login"
+}

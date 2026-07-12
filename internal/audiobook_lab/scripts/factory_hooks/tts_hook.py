@@ -33,6 +33,7 @@ TTS_MODEL = os.environ.get("EARNALISM_FACTORY_TTS_MODEL", "gpt-4o-mini-tts")
 CACHE_DIR = ROOT / "internal" / "audiobook_lab" / "cache" / "release_factory_openai_tts"
 DEFAULT_MAX_CHARS = int(os.environ.get("EARNALISM_FACTORY_MAX_TTS_CHARS", "60000"))
 DEFAULT_TTS_ESTIMATED_USD_PER_1K_CHARS = float(os.environ.get("EARNALISM_TTS_ESTIMATED_USD_PER_1K_CHARS", "0.015"))
+OPENAI_MAX_CHARS_PER_CHUNK = int(os.environ.get("EARNALISM_OPENAI_TTS_MAX_CHARS_PER_CHUNK", "2600"))
 MIN_VALID_AUDIO_SECONDS = float(os.environ.get("EARNALISM_FACTORY_MIN_VALID_AUDIO_SECONDS", "3"))
 OPENAI_TTS_TIMEOUT_SECONDS = float(os.environ.get("EARNALISM_OPENAI_TTS_TIMEOUT_SECONDS", "180"))
 SARVAM_FULL_PILOT_SLUG = os.environ.get("EARNALISM_BENGALI_FULL_PILOT_SLUG", "book-2b9853ec52")
@@ -160,25 +161,56 @@ def preferred_voice(args) -> str:
 
 
 def chunk_text(text: str, max_chars: int = 2600) -> list[dict]:
-    paragraphs = [item.strip() for item in re.split(r"\n\s*\n", text) if item.strip()]
+    # Canonical texts may contain a blank line after every source-wrapped line.
+    # Treating those wraps as paragraph boundaries can reset a provider in the
+    # middle of a sentence. Flatten whitespace first, then split at literary
+    # sentence endings so every normal TTS chunk starts and ends on a complete
+    # sentence.
+    flattened = re.sub(r"\s+", " ", text or "").strip()
+    sentences = [item.strip() for item in re.split(r"(?<=[।.!?])\s+", flattened) if item.strip()]
+    units: list[str] = []
+    for sentence in sentences:
+        if len(sentence) <= max_chars:
+            units.append(sentence)
+            continue
+        clauses = [item.strip() for item in re.split(r"(?<=[,;:])\s+", sentence) if item.strip()]
+        current_clause: list[str] = []
+        current_clause_len = 0
+        for clause in clauses:
+            if current_clause and current_clause_len + len(clause) + 1 > max_chars:
+                units.append(" ".join(current_clause))
+                current_clause = []
+                current_clause_len = 0
+            if len(clause) > max_chars:
+                words = clause.split()
+                while words:
+                    part: list[str] = []
+                    part_len = 0
+                    while words and (not part or part_len + len(words[0]) + 1 <= max_chars):
+                        word = words.pop(0)
+                        part.append(word)
+                        part_len += len(word) + 1
+                    if part:
+                        units.append(" ".join(part))
+                continue
+            current_clause.append(clause)
+            current_clause_len += len(clause) + 1
+        if current_clause:
+            units.append(" ".join(current_clause))
+
     chunks: list[dict] = []
     current: list[str] = []
     current_len = 0
-    for paragraph in paragraphs:
-        if len(paragraph) > max_chars:
-            sentences = re.split(r"(?<=[।.!?])\s+", paragraph)
-        else:
-            sentences = [paragraph]
-        for sentence in sentences:
-            if current and current_len + len(sentence) + 2 > max_chars:
-                text_value = "\n\n".join(current).strip()
-                chunks.append({"index": len(chunks), "text": text_value, "text_hash": sha256_text(text_value)})
-                current = []
-                current_len = 0
-            current.append(sentence.strip())
-            current_len += len(sentence) + 2
+    for unit in units:
+        if current and current_len + len(unit) + 1 > max_chars:
+            text_value = " ".join(current).strip()
+            chunks.append({"index": len(chunks), "text": text_value, "text_hash": sha256_text(text_value)})
+            current = []
+            current_len = 0
+        current.append(unit)
+        current_len += len(unit) + 1
     if current:
-        text_value = "\n\n".join(current).strip()
+        text_value = " ".join(current).strip()
         chunks.append({"index": len(chunks), "text": text_value, "text_hash": sha256_text(text_value)})
     return chunks
 
@@ -1603,7 +1635,7 @@ def main() -> int:
     instructions = profile_instructions(args.language, selected["profile"])
     instruction_hash = sha256_text(instructions)
     source_hash = sha256_text(manuscript)
-    chunks = chunk_text(manuscript)
+    chunks = chunk_text(manuscript, max_chars=OPENAI_MAX_CHARS_PER_CHUNK)
     chunk_paths: list[Path] = []
     manifest_chunks = []
     for chunk in chunks:
@@ -1713,6 +1745,7 @@ def main() -> int:
             "word_count": manifest["word_count"],
             "duration_seconds": manifest["duration_seconds"],
             "chunk_count": len(chunks),
+            "max_chars_per_chunk": OPENAI_MAX_CHARS_PER_CHUNK,
         },
         updated_fields={"final_audio_path": rel(final_audio), "fallback_tts_used": False, "tts_model": TTS_MODEL, "tts_voice": selected["voice"]},
     )

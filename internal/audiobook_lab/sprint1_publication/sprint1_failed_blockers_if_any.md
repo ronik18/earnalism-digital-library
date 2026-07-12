@@ -1,20 +1,21 @@
 # Sprint 1 Stage 2 Remaining Blockers
 
-Generated: `2026-07-12T09:35:33Z`
+Generated: `2026-07-12T11:11:53Z`
 
 No title is marked public audio without complete release evidence.
 
-## a-ghost-story / A Ghost Story (Stage 2B)
+## a-ghost-story / A Ghost Story (Stage 2C)
 
-- Status: `AUDIO_HIDDEN_LISTENING_QA_REPAIR_REQUIRED`
-- Blocker: `middle_60s` scored `8.3/10` overall (`7.9` pacing, `8.2` emotional expression), below the owner minimum `9.4`.
-- Passing evidence: ASR/source `9.7882`, first/last checks pass, confidence `0.90`, and no fatal listening flags.
+- Status: `AUDIO_HIDDEN_ALTERNATE_PROVIDER_REPAIR_REQUIRED`
+- Blocker: final private candidate passed ASR/source at `9.928` and first/last checks, but listening QA fell to `8.3`, confidence `0.90`, with list-reading rhythm.
+- Repair evidence: sentence-safe 1,600-character chunks removed source omissions; the remaining blocker is OpenAI provider quality rather than source, sanitation, or segmentation.
 - Public truth: reader remains public; audio remains hidden; manifest audio disabled; audiobook endpoint `404`.
-- Repair policy: do not repeat the same audio hash/model QA. Prepare this weak passage for a separately authorized targeted literary-voice audition.
+- Repair policy: do not repeat OpenAI variants. Reauthenticate Google ADC and run one bounded alternate-provider literary audition.
+- Estimated Stage 2B plus Stage 2C spend: `$2.3295`; actual provider billing not reported.
 - Next command:
 
 ```bash
-mkdir -p /tmp/earnalism-a-ghost-stage2c-middle-repair && ffmpeg -hide_banner -loglevel error -y -ss 352.787 -t 60 -i internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/a-ghost-story_existing_audio_candidate.mp3 /tmp/earnalism-a-ghost-stage2c-middle-repair/middle_60s_reference.mp3 && sed -n '173,240p' internal/audiobook_lab/release_gate/a-ghost-story_20260705T150049Z/clean_manuscript.txt > /tmp/earnalism-a-ghost-stage2c-middle-repair/middle_source.txt
+gcloud auth application-default login
 ```
 
 ## bn-066 / আনন্দমঠ
@@ -114,21 +115,6 @@ python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest boo
 
 ```bash
 python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.json --book-slug book-edfcf810c5 --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com
-```
-
-## a-ghost-story / A Ghost Story
-
-- Blocker: `MIDDLE_60S_LISTENING_QA_FAIL_OVERALL_8.3_PACING_7.9_EXPRESSION_8.2`
-- Reader HTTP: `200`
-- Manifest HTTP: `200`
-- Current audio endpoint: `404` fail-closed
-- Existing audio/ASR: hash verified; `9.7882/10` source match; first/last `PASS`
-- Listening QA: six bounded samples; minimum `8.3`, confidence `0.90`, no fatal flags
-- Spend: `$0.30` estimated; actual provider billing not reported
-- Next command:
-
-```bash
-mkdir -p /tmp/earnalism-a-ghost-stage2c-middle-repair && ffmpeg -hide_banner -loglevel error -y -ss 352.787 -t 60 -i internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/a-ghost-story_existing_audio_candidate.mp3 /tmp/earnalism-a-ghost-stage2c-middle-repair/middle_60s_reference.mp3 && sed -n '173,240p' internal/audiobook_lab/release_gate/a-ghost-story_20260705T150049Z/clean_manuscript.txt > /tmp/earnalism-a-ghost-stage2c-middle-repair/middle_source.txt
 ```
 
 ## dracula / Dracula
@@ -265,13 +251,15 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## the-open-window / The Open Window
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Blocker: `DISALLOWED_PIPER_PROVENANCE_AND_SYNTHETIC_ALIGNMENT`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
+- Non-paid ASR re-evaluation: `9.7826`; first/last pass when the legitimate spoken title is included in the audio manuscript.
+- Current asset: Piper with synthetic alignment; it cannot be released publicly.
 - Next command:
 
 ```bash
-python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.json --book-slug the-open-window --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com
+gcloud auth application-default login
 ```
 
 ## sredni-vashtar / Sredni Vashtar

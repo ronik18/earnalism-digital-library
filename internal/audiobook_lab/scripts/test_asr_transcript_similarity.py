@@ -51,11 +51,24 @@ def assert_boundary_missing_ending_blocks() -> None:
     assert not metrics["last_words_match"], metrics
 
 
+def assert_boundary_allows_hyphenated_compound_join() -> None:
+    manuscript = (
+        "and sorrier still that he had carried off my red blanket and my bath-tub."
+    )
+    transcript = (
+        "poor fellow and sorrier still that he had carried off my red blanket and my bathtub."
+    )
+    metrics = transcript_similarity(manuscript, transcript)
+    assert metrics["last_words_match"], metrics
+    assert metrics["last_words_match_score"] == 1.0, metrics
+
+
 def main() -> int:
     assert_punctuation_normalized_prose_passes()
     assert_missing_content_blocks()
     assert_boundary_allows_single_asr_name_variant()
     assert_boundary_missing_ending_blocks()
+    assert_boundary_allows_hyphenated_compound_join()
     print("ASR transcript similarity regression checks PASS")
     return 0
 

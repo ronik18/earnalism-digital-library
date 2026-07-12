@@ -1,35 +1,24 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T09:35:33Z",
+  "generated_at": "2026-07-12T11:19:50Z",
   "budget_env": {
-    "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "MISSING",
-    "SPRINT1_MAX_USD_PER_TITLE": "MISSING",
-    "MAX_TTS_BUDGET_USD": "MISSING",
-    "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "MISSING",
-    "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "MISSING",
-    "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "MISSING",
-    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "MISSING",
-    "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "MISSING",
-    "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "MISSING",
-    "EARNALISM_OPENAI_LISTENING_QA_MODEL": "MISSING"
+    "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "SET_INLINE_STAGE2C_175",
+    "SPRINT1_MAX_USD_PER_TITLE": "SET_INLINE_STAGE2C_30",
+    "MAX_TTS_BUDGET_USD": "SET_INLINE_STAGE2C_175",
+    "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "SET_INLINE_STAGE2C_TRUE",
+    "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2C_10",
+    "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2C_10",
+    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2C_2",
+    "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "SET_INLINE_STAGE2C_0.05",
+    "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "SET_INLINE_STAGE2C_TRUE",
+    "EARNALISM_OPENAI_LISTENING_QA_MODEL": "SET_INLINE_STAGE2C_GPT_AUDIO"
   },
-  "missing_or_invalid_budget_gates": [
-    "SPRINT1_TOTAL_AUDIO_BUDGET_USD=175",
-    "SPRINT1_MAX_USD_PER_TITLE=30",
-    "MAX_TTS_BUDGET_USD=175",
-    "EARNALISM_STOP_ON_BUDGET_EXCEEDED=true",
-    "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD=10",
-    "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD=10",
-    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=2",
-    "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD=0.05",
-    "EARNALISM_ENABLE_OPENAI_LISTENING_QA=true",
-    "EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio"
-  ],
+  "missing_or_invalid_budget_gates": [],
   "provider_calls_ran": true,
   "actual_spend_usd": null,
-  "estimated_incremental_total_usd": 97.8724,
+  "estimated_incremental_total_usd": 99.9019,
   "removed_deferred_estimated_cost_usd": 35.2935,
-  "budget_comparison": "ESTIMATED_0.30_QA_SPEND_WITHIN_175_CAP; ACTUAL_PROVIDER_BILLING_NOT_REPORTED; REPAIR_COST_TBD",
+  "budget_comparison": "ESTIMATED_STAGE2B_AND_STAGE2C_SPEND_2.3295_WITHIN_175_CAP; ACTUAL_PROVIDER_BILLING_NOT_REPORTED; A_GHOST_ALTERNATE_PROVIDER_COST_TBD",
   "summary": {
     "total_sprint1_title_count": 34,
     "active_sprint1_title_count": 32,
@@ -37,7 +26,7 @@
     "deferred_long_classics_count": 2,
     "current_yes_yes_count": 1,
     "remaining_non_yes_yes_count_excluding_dropped": 31,
-    "estimated_incremental_total_usd": 97.8724,
+    "estimated_incremental_total_usd": 99.9019,
     "removed_deferred_estimated_cost_usd": 35.2935,
     "highest_expected_english_cost_after_removal": {
       "slug": "dracula",
@@ -45,13 +34,6 @@
       "estimated_incremental_cost_usd": 21.5103
     },
     "cheapest_next_5_eligible_audio_candidates": [
-      {
-        "slug": "a-ghost-story",
-        "title": "A Ghost Story",
-        "language": "English",
-        "estimated_incremental_cost_usd": 0.3,
-        "strategy": "REUSE_EXISTING_AUDIO_RUN_LISTENING_ENDPOINT_AND_PLAYER_GATES"
-      },
       {
         "slug": "book-d19e96859f",
         "title": "গিন্নি",
@@ -79,9 +61,16 @@
         "language": "Bengali",
         "estimated_incremental_cost_usd": 0.1447,
         "strategy": "SPLIT_REPRESENTATIVE_AUDITION_THEN_DECIDE_REUSE_OR_FULL_TTS"
+      },
+      {
+        "slug": "sredni-vashtar",
+        "title": "Sredni Vashtar",
+        "language": "English",
+        "estimated_incremental_cost_usd": 0.1474,
+        "strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS"
       }
     ],
-    "generated_at": "2026-07-12T07:44:15Z",
+    "generated_at": "2026-07-12T11:11:42Z",
     "current_production_reader_yes_count": 32,
     "current_production_reader_no_count": 0,
     "reader_repairs_prepared_in_pr_101": 17,
@@ -90,8 +79,10 @@
     "actual_spend_usd": null,
     "sprint_target_status": "INCOMPLETE",
     "reader_repairs_merged_and_deployed": 17,
-    "estimated_spend_usd": 0.3,
-    "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.5724
+    "estimated_spend_usd": 2.3295,
+    "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.5724,
+    "budget_remaining_after_estimate_usd": 172.6705,
+    "a_ghost_remaining_repair_cost_usd": "TBD_ALTERNATE_PROVIDER"
   },
   "titles": [
     {
@@ -396,7 +387,7 @@
     },
     {
       "slug": "a-ghost-story",
-      "strategy": "REUSE_EXISTING_AUDIO_RUN_LISTENING_ENDPOINT_AND_PLAYER_GATES",
+      "strategy": "ALTERNATE_PROVIDER_AUDITION_AFTER_OPENAI_QUALITY_PLATEAU",
       "deferred_recommended_strategy": "",
       "sprint1_audio_target": true,
       "public_audiobook_required_for_sprint1": true,
@@ -414,19 +405,20 @@
       "estimated_incremental_cost_usd": 0.3,
       "deferred_baseline_estimated_cost_usd": 0.0,
       "actual_spend_usd": null,
-      "budget_status": "QA_SPEND_ESTIMATED_ACTUAL_BILLING_NOT_REPORTED; REPAIR_REQUIRED",
+      "budget_status": "WITHIN_CAP_RELEASE_BLOCKED_BY_QUALITY",
       "reason": "",
-      "next_action": "Prepare the weak middle passage for a separately authorized targeted audition; do not repeat the failed QA attempt.",
-      "next_command": "mkdir -p /tmp/earnalism-a-ghost-stage2c-middle-repair && ffmpeg -hide_banner -loglevel error -y -ss 352.787 -t 60 -i internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/a-ghost-story_existing_audio_candidate.mp3 /tmp/earnalism-a-ghost-stage2c-middle-repair/middle_60s_reference.mp3 && sed -n '173,240p' internal/audiobook_lab/release_gate/a-ghost-story_20260705T150049Z/clean_manuscript.txt > /tmp/earnalism-a-ghost-stage2c-middle-repair/middle_source.txt",
+      "next_action": "Reauthenticate Google ADC and run one bounded alternate-provider literary audition.",
+      "next_command": "gcloud auth application-default login",
       "title": "A Ghost Story",
       "language": "English",
       "source_rights_status": "PASS",
       "text_sanitation_status": "PASS",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "AUDIO_HIDDEN_LISTENING_QA_REPAIR_REQUIRED",
+      "final_status": "AUDIO_HIDDEN_ALTERNATE_PROVIDER_REPAIR_REQUIRED",
       "estimated_spend_usd": 0.3,
-      "exact_blocker": "MIDDLE_60S_LISTENING_QA_FAIL: overall 8.3 < 9.4; pacing 7.9; emotional expression 8.2; confidence 0.90; no fatal flags"
+      "exact_blocker": "OPENAI_PROVIDER_QUALITY_PLATEAU: v3 ASR/source 9.928 passed, but listening QA minimum remained 8.3 with list-reading rhythm; alternate provider required",
+      "estimated_stage2b_and_stage2c_spend_usd": 2.3295
     },
     {
       "slug": "dracula",
@@ -850,7 +842,7 @@
     },
     {
       "slug": "the-open-window",
-      "strategy": "REUSE_EXISTING_PRIVATE_ASSET_IF_CHECKSUM_SOURCE_AND_QA_PASS",
+      "strategy": "REPLACE_DISALLOWED_PIPER_ASSET_AFTER_GOOGLE_ADC_REAUTH",
       "deferred_recommended_strategy": "",
       "sprint1_audio_target": true,
       "public_audiobook_required_for_sprint1": true,
@@ -866,17 +858,17 @@
       "estimated_incremental_cost_usd": 0.1155,
       "deferred_baseline_estimated_cost_usd": 0.0,
       "actual_spend_usd": 0.0,
-      "budget_status": "BLOCKED_RUNTIME_ENV_GATES_MISSING",
+      "budget_status": "BLOCKED_DISALLOWED_PIPER_AND_GOOGLE_ADC_REAUTH_REQUIRED",
       "reason": "",
-      "next_action": "Continue the active Sprint 1 repair or release path",
-      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.json --book-slug the-open-window --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "next_action": "Reauthenticate Google ADC and run one bounded replacement-provider audition.",
+      "next_command": "gcloud auth application-default login",
       "title": "The Open Window",
       "language": "English",
       "source_rights_status": "PASS",
       "text_sanitation_status": "PASS",
-      "public_reader_status": "FAIL_CLOSED",
+      "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "TARGET_INCOMPLETE_READER_DEPLOY_AND_AUDIO_GATES_REQUIRED"
+      "final_status": "AUDIO_HIDDEN_DISALLOWED_PIPER_PROVENANCE_REPLACEMENT_REQUIRED"
     },
     {
       "slug": "sredni-vashtar",
@@ -1124,7 +1116,7 @@
     "max_usd_per_title": 30.0,
     "max_tts_budget_usd": 175.0
   },
-  "estimated_budget_headroom_usd": 77.1276,
+  "estimated_budget_headroom_usd": 75.0981,
   "stage2a_a_ghost_story": {
     "updated_at": "2026-07-12T08:16:11Z",
     "authorized_total_budget_usd": 175.0,
@@ -1134,8 +1126,8 @@
     "provider_calls_ran": false,
     "status": "BLOCKED_LIVE_SHELL_GATES_MISSING"
   },
-  "estimated_spend_usd": 0.3,
-  "authorized_budget_remaining_after_estimate_usd": 174.7,
+  "estimated_spend_usd": 2.3295,
+  "authorized_budget_remaining_after_estimate_usd": 172.6705,
   "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.5724,
   "stage2b_a_ghost_story": {
     "owner_decision": "AUTHORIZE_SPRINT1_STAGE_2B_A_GHOST_STORY_LISTENING_QA_AND_RELEASE_IF_PASS",
@@ -1152,5 +1144,27 @@
     "status": "AUDIO_HIDDEN_LISTENING_QA_REPAIR_REQUIRED",
     "authorized_total_budget_usd": 175.0,
     "budget_remaining_after_estimate_usd": 174.7
+  },
+  "stage2c_a_ghost_story": {
+    "owner_decision": "AUTHORIZE_STAGE_2C_A_GHOST_STORY_AUDIO_REPAIR_AND_PUBLICATION_IF_QUALITY_10_TARGET_PASSES",
+    "updated_at": "2026-07-12T11:19:50Z",
+    "provider_calls_ran": true,
+    "private_tts_candidates_generated": 3,
+    "asr_source_best_score": 9.928,
+    "first_words_match": true,
+    "last_words_match": true,
+    "listening_qa_minimum_score": 8.3,
+    "listening_qa_minimum_confidence": 0.9,
+    "estimated_stage2c_spend_usd": 2.0295,
+    "estimated_stage2b_and_stage2c_spend_usd": 2.3295,
+    "actual_spend_usd": null,
+    "actual_provider_billing": "NOT_REPORTED",
+    "public_audio_mutated": false,
+    "production_audio_hidden": true,
+    "paid_tts_lock_restored": true,
+    "status": "AUDIO_HIDDEN_ALTERNATE_PROVIDER_REPAIR_REQUIRED",
+    "authorized_total_budget_usd": 175.0,
+    "budget_remaining_after_estimate_usd": 172.6705,
+    "remaining_alternate_provider_repair_cost_usd": "TBD"
   }
 }
