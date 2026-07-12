@@ -1,0 +1,30 @@
+{
+  "slug": "the-open-window",
+  "title": "The Open Window",
+  "author": "Saki",
+  "language": "en",
+  "chapter_count": 1,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Open Window",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 1219,
+      "reading_minutes": 6,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:49Z"
+}

@@ -1,0 +1,62 @@
+{
+  "slug": "the-monkeys-paw",
+  "title": "The Monkey's Paw",
+  "author": "W.W. Jacobs",
+  "language": "en",
+  "chapter_count": 3,
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "I",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 1770,
+      "reading_minutes": 8,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    },
+    {
+      "id": "chapter-002",
+      "order": 2,
+      "title": "II",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 957,
+      "reading_minutes": 4,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    },
+    {
+      "id": "chapter-003",
+      "order": 3,
+      "title": "III",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 1306,
+      "reading_minutes": 6,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:48Z",
+      "updated_at": "2026-07-03T20:07:48Z"
+    }
+  ],
+  "preview_chapter_ids": [
+    "chapter-001",
+    "chapter-002",
+    "chapter-003"
+  ],
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generated_at": "2026-07-03T20:07:48Z"
+}

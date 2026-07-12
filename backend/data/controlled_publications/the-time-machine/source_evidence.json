@@ -1,0 +1,13 @@
+{
+  "slug": "the-time-machine",
+  "source_url": "https://www.gutenberg.org/ebooks/35.txt.utf-8",
+  "source_name": "Earnalism historical import",
+  "source_license": "Underlying literary text is public domain in the United States; original work first published in 1895.",
+  "source_hash": "c7aeb98aa3143ae724283da3a0a74aef602537073f8c8f06ae0e1d22c0a38968",
+  "content_hash": "86f6463ed64691c02e7b927ae73e94d76027d3f3c4f82c6a18c17310020325ba",
+  "provenance_hash": "b7acc90769cf6bd7d1f99038cd336e48007db2e8d55469954243660d07d7efa6",
+  "rights_basis": "H. G. Wells died in 1946, so the original literary work is public domain in India under life plus 60 years. Original publication in 1895 supports U.S. public-domain status.",
+  "downloaded_at": "2026-05-24T04:46:57.262459+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

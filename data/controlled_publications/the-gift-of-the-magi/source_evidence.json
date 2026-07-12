@@ -1,0 +1,13 @@
+{
+  "slug": "the-gift-of-the-magi",
+  "source_url": "https://www.gutenberg.org/ebooks/7256",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "490b76d444db0d952f5286f60c4ec2834ab91731d47e42dc94a3639d9183d295",
+  "content_hash": "43f7c14de6be56f642476b78fd227fb0005d43909fc27e477646ec99b0900fcd",
+  "provenance_hash": "8067e36d911e2bf1f9a00a711a899f9df5879de2a84a1bc6623aa4895364ad15",
+  "rights_basis": "O. Henry died 1910; first published 1905. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:21.861751+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

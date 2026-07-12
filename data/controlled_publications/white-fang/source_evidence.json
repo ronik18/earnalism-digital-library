@@ -1,0 +1,13 @@
+{
+  "slug": "white-fang",
+  "source_url": "https://www.gutenberg.org/ebooks/910",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain. Project Gutenberg transcription freely redistributable for any use including commercial.",
+  "source_hash": "7cd371dc6727b650321d3b349e3aa042a822d7ece3c24a42ba06fc70322cbd90",
+  "content_hash": "fe9e370a06f2c5ee7acf689e3f129da95f648ebacf4de58e7bbea1a25c4bbf2f",
+  "provenance_hash": "3fdaafb25e6f3e2faec35687466070886f015977472d5bce88c2653b4dc2c912",
+  "rights_basis": "Author died 1916. Published 1906. Public domain in U.S. and worldwide.",
+  "downloaded_at": "2026-06-02T18:57:29.093079+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

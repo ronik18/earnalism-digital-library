@@ -1,0 +1,34 @@
+{
+  "slug": "the-gift-of-the-magi",
+  "generated_at": "2026-07-12T07:04:07Z",
+  "files": [
+    {
+      "file": "approval_evidence.json",
+      "sha256": "aa03e25260930245f1c66f3ab1afc8ffbd336ff9763b974a804b3ba4b9c25954"
+    },
+    {
+      "file": "checksum_manifest.json",
+      "sha256": "09768fd9d875f9167c6eb25aee70600dd4615b975b723bd261674866a373822f"
+    },
+    {
+      "file": "highlight_sync.json",
+      "sha256": "ce2bc8d93a400318f11a09c1a0ce7bc63b6c8f94cf6e11cfcf0ddef172ea17b9"
+    },
+    {
+      "file": "public_book.json",
+      "sha256": "e596345d435bd0db62ab05f4ca29e75996260e5e9d9fcb6b5177194d02bc0e01"
+    },
+    {
+      "file": "reader_manifest.json",
+      "sha256": "6b0df1f29ed5d28cccf725d3a703a564e52b412a61f7e506fae21289e89dba2f"
+    },
+    {
+      "file": "source_evidence.json",
+      "sha256": "3b19737c1b50c934ee703824547a390b34e6417ee376781c47ffeac4ac4ae638"
+    },
+    {
+      "file": "chapters/chapter-001.json",
+      "sha256": "05217284ea31cdaa6638e8404a394b80c230b2edf02ce9dfc392133c22e9c7ab"
+    }
+  ]
+}

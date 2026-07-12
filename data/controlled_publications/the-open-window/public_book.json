@@ -1,0 +1,97 @@
+{
+  "id": "controlled-the-open-window",
+  "slug": "the-open-window",
+  "title": "The Open Window",
+  "subtitle": "",
+  "author": "Saki",
+  "category_slug": "literary-fiction",
+  "short_description": "A self-possessed fifteen-year-old girl tells a nervous visitor a ghost story — and it works perfectly.",
+  "description": "Vera, a composed teenager, spins an elaborate ghost story about her aunt's dead husband and brothers walking in through an open window — and when they actually appear, drives a nervous man fleeing into the countryside. Three paragraphs of pure, cruel genius.",
+  "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+  "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+  "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+  "cover_image": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
+  "back_cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
+  "backCoverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
+  "cover_status": "CLOUDINARY_ASSIGNED",
+  "dominant_color": "#4A1C27",
+  "estimated_reading_time": "5 min",
+  "formats": [
+    "Ebook"
+  ],
+  "benefits": [
+    "Read a legally cleared digital text.",
+    "Enjoy a clean, structured reading format.",
+    "Access a render-safe ebook prepared for web reading."
+  ],
+  "who_for": [
+    "General readers",
+    "Students and lifelong learners",
+    "Users who prefer structured digital reading"
+  ],
+  "learnings": [
+    "Understand the major themes and structure of the work.",
+    "Engage with the text in a clean digital format.",
+    "Read without unrelated source-file boilerplate."
+  ],
+  "about_author": "Saki (H.H. Munro, 1870–1916) was a British author of darkly comic and macabre short stories.",
+  "chapters": [
+    {
+      "id": "chapter-001",
+      "order": 1,
+      "title": "The Open Window",
+      "is_preview": true,
+      "has_images": false,
+      "image_count": 0,
+      "word_count": 1219,
+      "reading_minutes": 6,
+      "language_hint": "en",
+      "processing_status": "ready",
+      "processing_warnings": [],
+      "uploaded_at": "2026-07-03T20:07:49Z",
+      "updated_at": "2026-07-03T20:07:49Z"
+    }
+  ],
+  "source_hash": "a107f7212542030d90e15e1b7daeeee6dcef9a77ea18887ce009afbf61457078",
+  "content_hash": "8a5f82edf94305333080dc160175cb82c865c6acb498216f15616ac90295042d",
+  "provenance_hash": "21e38f6081034d3d8731db585a96fdf014731375175eae0c279eca43415fe9a4",
+  "rights_basis": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
+  "rights_tier": "A",
+  "verification_status": "approved",
+  "qa_status": "QA_PASSED",
+  "approved_to_publish": true,
+  "publication_status": "LIVE_APPROVED",
+  "readerStatus": "reader_ready",
+  "publicationStatus": "live",
+  "isPublic": true,
+  "isLive": true,
+  "showInPublicLibrary": true,
+  "showInHomepage": false,
+  "allowPublicReading": true,
+  "allowCheckout": false,
+  "allowPayment": false,
+  "is_published": true,
+  "audio_enabled": false,
+  "audiobook_enabled": false,
+  "generate_audiobook": false,
+  "audiobook_provider": "",
+  "audiobook_voice": "",
+  "audio_asset_slug": "",
+  "audiobook_assets": {},
+  "audiobook": {},
+  "audiobook_assets_updated_at": "",
+  "created_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-03T20:07:49Z",
+  "cover_dimensions": {
+    "front": [
+      1600,
+      2400
+    ],
+    "back": [
+      1600,
+      2400
+    ]
+  },
+  "cover_semantic_match_score": 9.8
+}

@@ -1,10 +1,10 @@
 {
   "slug": "the-necklace",
-  "generated_at": "2026-07-03T20:07:47Z",
+  "generated_at": "2026-07-12T07:04:07Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "15faf85582c4909c0704cb3b395941d5a16d886e2d9b7436bb34fd454eab53d7"
+      "sha256": "4298df9ca6de14ddb2f8d09c16eae4be10861cc669446d61c7f42cf80633b955"
     },
     {
       "file": "checksum_manifest.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "3d44c29714dd380d9b85403eccc5193beb64d40cd95ef6523b4b35c58cec7ebf"
+      "sha256": "a17ac9c46b8762c24cc4096a1717ade26a9922913d0dc2fd0fd266a708e184ad"
     },
     {
       "file": "reader_manifest.json",

@@ -1,0 +1,13 @@
+{
+  "slug": "dsires-baby",
+  "source_url": "https://www.gutenberg.org/ebooks/160",
+  "source_name": "Project Gutenberg",
+  "source_license": "Project Gutenberg public-domain text; source evidence kept internal/admin-only.",
+  "source_hash": "2006e24206b918744a8a8a7589e883389759ccd9cbef93ae8ce260d633dab5d9",
+  "content_hash": "d08d7e830b28474c5d8ac3595444f376074e1e48ee9c2f8cc774dc8a1a91882a",
+  "provenance_hash": "d8fbdf6d75f8e5260b619728efb926a71e9166fb659a93fcf7216cda9caaf44a",
+  "rights_basis": "Kate Chopin died 1904; first published 1893. Public domain in India and the U.S.",
+  "downloaded_at": "2026-06-03T08:04:22.020126+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}

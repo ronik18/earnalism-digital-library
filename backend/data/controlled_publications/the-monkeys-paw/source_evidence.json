@@ -1,0 +1,13 @@
+{
+  "slug": "the-monkeys-paw",
+  "source_url": "https://www.gutenberg.org/ebooks/12122",
+  "source_name": "Project Gutenberg",
+  "source_license": "Public domain. Project Gutenberg transcription freely redistributable for any use including commercial.",
+  "source_hash": "e435de0511bd61d2373a445b0c5e054b747072357b5373e27b7a4b8a5b40cd01",
+  "content_hash": "249f95e4db53ad41f61ced9377faa84de5a03582a16a4981abb930a332b3f8b7",
+  "provenance_hash": "5b2327365f44a6dc03ee055a83af545ba77e65716a3a3b5e1032a0b25ef084b7",
+  "rights_basis": "Author died 1943. Published 1902. Pre-1928 publication supports U.S. public-domain status.",
+  "downloaded_at": "2026-06-02T18:57:41.204337+00:00",
+  "source_format": "text/plain",
+  "reader_facing_boilerplate_removed": true
+}
