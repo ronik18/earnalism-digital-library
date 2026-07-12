@@ -1,0 +1,80 @@
+{
+  "generated_at": "2026-07-12T19:07:34Z",
+  "slug": "book-d19e96859f",
+  "title": "গিন্নি",
+  "status": "PROVIDER_RETRY_REQUIRED",
+  "classification": "PROVIDER_RETRY_REQUIRED",
+  "source_preflight": {
+    "chapter_path": "data/controlled_publications/book-d19e96859f/chapters/chapter-001.json",
+    "source_characters": 6515,
+    "prepared_characters": 6485,
+    "prepared_words": 998,
+    "prepared_sha256": "79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe",
+    "group_count": 5,
+    "group_characters": [
+      1320,
+      1292,
+      1371,
+      1236,
+      1257
+    ],
+    "source_terms": [],
+    "rights_status": "PASS",
+    "sanitation_status": "PASS",
+    "public_reader_status": "PUBLIC_READER",
+    "cover_status": "PASS",
+    "representative_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_representative_audition_evidence.json",
+    "representative_score": 9.4,
+    "representative_confidence": 0.95,
+    "selected_arm": {
+      "provider": "sarvam",
+      "model": "bulbul:v3",
+      "voice": "pooja",
+      "style": "dialogue_human_touch"
+    },
+    "reuse_decision": "FRESH_FULL_TITLE_REGENERATION_REQUIRED_MISSING_VERIFIABLE_GROUP_CHUNKS",
+    "estimated_tts_usd": 0.0389,
+    "estimated_asr_usd": 0.0544,
+    "estimated_listening_qa_usd": 0.05,
+    "estimated_repair_pipeline_usd": 0.1433,
+    "prior_sprint_estimated_spend_usd": 4.2862,
+    "blockers": []
+  },
+  "runtime_gates": {
+    "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "MISSING_OR_INVALID",
+    "SPRINT1_MAX_USD_PER_TITLE": "MISSING_OR_INVALID",
+    "MAX_TTS_BUDGET_USD": "MISSING_OR_INVALID",
+    "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "MISSING_OR_INVALID",
+    "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "MISSING_OR_INVALID",
+    "EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM": "MISSING_OR_INVALID",
+    "EARNALISM_BENGALI_FULL_PILOT_SLUG": "MISSING_OR_INVALID",
+    "EARNALISM_BENGALI_TTS_PROVIDER": "MISSING_OR_INVALID",
+    "EARNALISM_BENGALI_TTS_MODEL": "MISSING_OR_INVALID",
+    "EARNALISM_BENGALI_TTS_VOICE": "MISSING_OR_INVALID",
+    "EARNALISM_BENGALI_TTS_STYLE": "MISSING_OR_INVALID",
+    "EARNALISM_BENGALI_REPRESENTATIVE_EVIDENCE_PATH": "MISSING_OR_INVALID",
+    "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "MISSING_OR_INVALID",
+    "EARNALISM_OPENAI_LISTENING_QA_MODEL": "MISSING_OR_INVALID",
+    "EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD": "MISSING_OR_INVALID",
+    "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "MISSING_OR_INVALID",
+    "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "MISSING_OR_INVALID",
+    "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE": "MISSING_OR_INVALID",
+    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "MISSING_OR_INVALID",
+    "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "MISSING_OR_INVALID",
+    "SARVAM_API_KEY": "SET",
+    "OPENAI_API_KEY": "SET"
+  },
+  "runtime_gate_values_redacted": true,
+  "lock_preflight": {
+    "status": "PASS",
+    "blockers": []
+  },
+  "provider_calls_ran": false,
+  "paid_tts_ran": false,
+  "public_audio_approved": false,
+  "release_gate_mutated": false,
+  "blockers": [
+    "PAID_RUNTIME_ENV_GATES_MISSING: SPRINT1_TOTAL_AUDIO_BUDGET_USD, SPRINT1_MAX_USD_PER_TITLE, MAX_TTS_BUDGET_USD, EARNALISM_STOP_ON_BUDGET_EXCEEDED, EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS, EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM, EARNALISM_BENGALI_FULL_PILOT_SLUG, EARNALISM_BENGALI_TTS_PROVIDER, EARNALISM_BENGALI_TTS_MODEL, EARNALISM_BENGALI_TTS_VOICE, EARNALISM_BENGALI_TTS_STYLE, EARNALISM_BENGALI_REPRESENTATIVE_EVIDENCE_PATH, EARNALISM_ENABLE_OPENAI_LISTENING_QA, EARNALISM_OPENAI_LISTENING_QA_MODEL, EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD, EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD, EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD, EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE, EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD, EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD"
+  ],
+  "next_command": "SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 \\\n  SPRINT1_MAX_USD_PER_TITLE=30 \\\n  MAX_TTS_BUDGET_USD=175 \\\n  EARNALISM_STOP_ON_BUDGET_EXCEEDED=true \\\n  EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS=true \\\n  EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM=true \\\n  EARNALISM_BENGALI_FULL_PILOT_SLUG=book-d19e96859f \\\n  EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD=1 \\\n  EARNALISM_BENGALI_TTS_PROVIDER=sarvam \\\n  EARNALISM_BENGALI_TTS_MODEL=bulbul:v3 \\\n  EARNALISM_BENGALI_TTS_VOICE=pooja \\\n  EARNALISM_BENGALI_TTS_STYLE=dialogue_human_touch \\\n  EARNALISM_BENGALI_REPRESENTATIVE_EVIDENCE_PATH=internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_representative_audition_evidence.json \\\n  EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD=1 \\\n  EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD=1 \\\n  EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE=0.008 \\\n  EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=1 \\\n  EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD=0.05 \\\n  EARNALISM_ENABLE_OPENAI_LISTENING_QA=true \\\n  EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio \\\n  PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_stage2f_book_d19_full_tts.py --execute"
+}

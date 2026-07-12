@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "slug": "book-d19e96859f",
+  "title": "গিন্নি",
+  "classification": "PROVIDER_RETRY_REQUIRED",
+  "public_reader": true,
+  "public_audiobook": false,
+  "can_publish_audio_now": false,
+  "gates": {
+    "source_rights": "PASS",
+    "cover": "PASS",
+    "text_sanitation": "PASS",
+    "text_normalization": "PASS_TTS_ONLY_SOURCE_FRONTMATTER_AND_TRAILING_YEAR_REMOVED",
+    "representative_audition": "PASS_9.4_CONFIDENCE_0.95_NO_FATAL_FLAGS",
+    "full_book_tts": "NOT_RUN_RUNTIME_GATES_MISSING",
+    "asr_source_alignment": "NOT_RUN_FRESH_AUDIO_REQUIRED",
+    "first_words_match": "NOT_RUN_FRESH_AUDIO_REQUIRED",
+    "last_words_match": "NOT_RUN_FRESH_AUDIO_REQUIRED",
+    "listening_qa": "NOT_RUN_FRESH_AUDIO_REQUIRED",
+    "manifest_validation": "PASS_AUDIO_HIDDEN",
+    "endpoint_validation": "NOT_RUN",
+    "frontend_release_state": "PASS_AUDIO_HIDDEN",
+    "production_validation": "PASS_READER_AUDIO_HIDDEN",
+    "owner_release_decision": "CONDITIONAL_AFTER_ALL_GATES_PASS"
+  },
+  "prepared_text": {
+    "characters": 6485,
+    "words": 998,
+    "sha256": "79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe",
+    "group_count": 5,
+    "source_terms": []
+  },
+  "selected_arm": {
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "pooja",
+    "style": "dialogue_human_touch"
+  },
+  "cost": {
+    "estimated_tts_usd": 0.0389,
+    "estimated_asr_usd": 0.0544,
+    "estimated_listening_qa_usd": 0.05,
+    "estimated_repair_pipeline_usd": 0.1433,
+    "actual_stage2f_spend_usd": 0.0
+  },
+  "runtime": {
+    "provider_calls_ran": false,
+    "paid_tts_ran": false,
+    "lock_preflight": "PASS_UNCHANGED",
+    "release_gate_mutated": false,
+    "public_audio_exposed": false
+  },
+  "evidence": {
+    "preflight": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_preflight.json",
+    "representative_audition": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_representative_audition_evidence.json",
+    "report": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2f_report.md"
+  },
+  "blockers": [
+    "PAID_RUNTIME_ENV_GATES_MISSING",
+    "FRESH_FULL_TTS_AND_ALL_DOWNSTREAM_RELEASE_GATES_REQUIRED"
+  ],
+  "next_action": "Run one lock-safe fresh full-title Sarvam regeneration after every recorded runtime cap and approval is supplied.",
+  "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_stage2f_book_d19_full_tts.py --execute"
+}

@@ -1,6 +1,6 @@
 # Sprint 1 Stage 2 Remaining Blockers
 
-Generated: `2026-07-12T17:22:03Z`
+Generated: `2026-07-12T18:57:04Z`
 
 No title is marked public audio without complete release evidence.
 
@@ -64,13 +64,18 @@ python3 internal/audiobook_lab/scripts/bengali_tts_provider_bakeoff.py --manifes
 
 ## book-d19e96859f / গিন্নি
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
+- Status: `PROVIDER_RETRY_REQUIRED`
+- Blocker: `PAID_RUNTIME_ENV_GATES_MISSING; HISTORICAL_GROUP_REPAIR_CHUNKS_UNAVAILABLE`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
+- Prepared narration: `6,485` characters, `998` words, SHA-256 `79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe`
+- Passed arm: Sarvam `bulbul:v3` / `pooja` / `dialogue_human_touch`, `9.4`, confidence `0.95`, no fatal flags
+- Fresh TTS + ASR + configured QA estimate: `$0.1433`
+- Exact inline caps and approvals are recorded in `title_runs/book-d19e96859f_stage2f_preflight.json`.
 - Next command:
 
 ```bash
-python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.json --slugs book-d19e96859f --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_stage2f_book_d19_full_tts.py --execute
 ```
 
 ## book-f5d593e1f4 / রামকানাইয়ের নির্বুদ্ধিতা
@@ -251,6 +256,7 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## the-open-window / The Open Window
 
+- Status: `HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED`
 - Blocker: `REPRESENTATIVE_AUDITION_STUDIO_B_TWILIGHT_SCORE_7.2_WITH_ROBOTIC_AND_MECHANICAL_FATAL_FLAGS`
 - Reader HTTP: `200`
 - Manifest HTTP: `200`
@@ -259,11 +265,11 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 - Single prosody retry scores: `9.5`, `9.4`, `8.5`, `9.4`; no fatal flags; lock restored.
 - Final Google Studio-B scores: `9.4`, `9.5`, `7.2`, `9.4`; the twilight sample has robotic texture and mechanical cadence fatal flags.
 - Estimated audition spend: `$0.6534`; actual provider billing not reported.
-- Automated Google retries stop. The alternate track is source-bound human narration or licensed audio, followed by the full release gate.
+- Automated Google retries stop. The generated packet at `internal/audiobook_lab/sprint1_publication/human_narration_packets/the-open-window` is the source-bound human narration or alternate-provider track.
 - Next command:
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav
 ```
 
 ## sredni-vashtar / Sredni Vashtar

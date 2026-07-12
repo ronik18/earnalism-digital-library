@@ -311,3 +311,11 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Stop automated Google retries for The Open Window. The cheapest safe alternate path is a source-bound human narration or licensed-audio candidate followed by complete ASR, listening, manifest, endpoint, frontend, and production validation.
 - Estimated Stage 2E spend was `$0.2178`; actual provider billing was not reported; the lock restored byte-for-byte.
 - Parallel agents can safely audit rights, sanitation, existing assets, and repair commands, but paid provider lanes and publication metadata remain serialized through their locks and the governor must verify every returned gate.
+
+## 2026-07-12 Stage 2F Human Narration Handoff And D19 Preflight
+
+- After repeated provider failures on the same passage, a complete source-bound human narration packet is a real executable repair state, not a dead-end audio-hidden status. It must include delivery, QA, provenance, and exact received-audio validation requirements.
+- Do not plan group-only regeneration when the prior chunk manifest and audio files are unavailable. Reject unverifiable reuse and re-estimate a clean full-title regeneration.
+- Bengali TTS sanitation must inspect both source frontmatter and trailing standalone edition years. D19's trailing `১২৯৮?` was source residue even though the prior sanitation summary said PASS.
+- A title-specific representative sample may authorize only its exact slug/provider/model/voice/style arm. Require explicit opt-in plus score `>=9.2`, confidence `>=0.90`, and no fatal flags; do not generalize the arm catalog-wide.
+- D19 non-paid preflight passed at 6,485 prepared characters and five groups; all paid runtime gates were absent, so no lock acquisition or provider call occurred.

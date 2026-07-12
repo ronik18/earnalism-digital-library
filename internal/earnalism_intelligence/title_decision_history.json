@@ -26,9 +26,9 @@
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
     },
     "book-2ddbed8293": {
-      "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
-      "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
-      "updated_at": "2026-07-07T12:30:00Z",
+      "latest_decision": "PROVIDER_RETRY_REQUIRED",
+      "decision_reason": "reader, rights, cover, clean TTS text, and title-specific 9.4/0.95 Sarvam Pooja audition pass; historical group chunks unavailable; all live paid runtime gates missing",
+      "updated_at": "2026-07-12T18:57:04Z",
       "language": "ben",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
       "audiobook_next_action": "Skipped for current canary; replace or promote a real public controlled-publication source package before any future TTS.",
@@ -103,11 +103,21 @@
       "updated_at": "2026-07-07T12:30:00Z",
       "language": "ben",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "Do not run TTS until canary preflight has exactly three passing candidates and owner approval.",
-      "bengali_audiobook_campaign_state": "READY_FOR_CANARY_TTS_AFTER_OWNER_APPROVAL",
-      "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
+      "audiobook_next_action": "Supply the recorded Stage 2F caps and approvals, then run one lock-safe fresh full-title Sarvam Pooja regeneration followed by every objective release gate.",
+      "bengali_audiobook_campaign_state": "TITLE_SPECIFIC_REPRESENTATIVE_PASS_FULL_REGENERATION_RUNTIME_GATES_REQUIRED",
+      "bengali_audiobook_campaign_next_action": "Run internal/audiobook_lab/scripts/sprint1_stage2f_book_d19_full_tts.py --execute only with all inline caps and approvals.",
       "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
-      "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+      "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass",
+      "prepared_text_sha256": "79b0deba6032c36ab919e4ef4786fc62aa55c9c53c328dfbcf49f03a0f7d05fe",
+      "selected_provider": "sarvam",
+      "selected_model": "bulbul:v3",
+      "selected_voice": "pooja",
+      "selected_style": "dialogue_human_touch",
+      "representative_score": 9.4,
+      "representative_confidence": 0.95,
+      "estimated_repair_pipeline_usd": 0.1433,
+      "provider_calls_ran_stage2f": false,
+      "public_audio_status": "AUDIO_HIDDEN"
     },
     "book-d2fe532e1c": {
       "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
@@ -1015,9 +1025,9 @@
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
     },
     "the-open-window": {
-      "latest_decision": "AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED",
-      "decision_reason": "Final Studio-B audition left the twilight transition at 7.2 with robotic texture and mechanical cadence fatal flags after Studio-C also failed the same passage",
-      "updated_at": "2026-07-12T18:04:44Z",
+      "latest_decision": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED",
+      "decision_reason": "Studio-C and Studio-B failed the same twilight passage; a complete source-bound human narration packet now makes the repair track executable without publishing failed audio",
+      "updated_at": "2026-07-12T18:57:04Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
@@ -1029,8 +1039,10 @@
       "studio_b_final_scores": [9.4, 9.5, 7.2, 9.4],
       "fatal_flags": ["mechanical_cadence_detected", "robotic_texture_detected"],
       "estimated_spend_usd": 0.6534,
-      "audiobook_next_action": "prepare source-bound human narration or licensed-audio candidate; run all release gates before public audio",
-      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_release_gate_evidence.json"
+      "audiobook_next_action": "obtain human narration or approve another provider, validate the received audio against the packet, then run all release gates before public audio",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_human_narration_packet_report.md",
+      "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-open-window",
+      "provider_calls_ran_stage2f": false
     }
   },
   "bengali_audio_lane_status": "BENGALI_AUDIOBOOK_FULL_PILOT_BLOCKED",

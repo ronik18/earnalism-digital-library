@@ -5,9 +5,11 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 SCRIPT = Path(__file__).with_name("sprint1_prepare_human_narration_packet.py")
@@ -62,6 +64,34 @@ class HumanNarrationPacketTests(unittest.TestCase):
             self.assertFalse(metadata["provider_calls_ran"])
             self.assertFalse(metadata["release_gate_mutated"])
             self.assertEqual(metadata["public_audio_status"], "AUDIO_HIDDEN_PENDING_FULL_RELEASE_GATES")
+            self.assertIn("--received-audio", metadata["validate_received_audio_command"])
+            self.assertTrue(Path(result["failed_tts_evidence"]).exists())
+            self.assertTrue(Path(result["delivery_checklist"]).exists())
+            self.assertTrue(Path(result["qa_release_checklist"]).exists())
+
+    def test_received_audio_preflight_records_hash_without_release_mutation(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self.fixture(root)
+            packet = human_packet.create_packet(slug="the-open-window", asset_root=root, output_root=root / "out")
+            audio = root / "received.wav"
+            audio.write_bytes(b"audio")
+            probe = subprocess.CompletedProcess(
+                args=[],
+                returncode=0,
+                stdout=json.dumps(
+                    {
+                        "streams": [{"codec_name": "pcm_s24le", "sample_rate": "48000", "channels": 1}],
+                        "format": {"duration": "390.5", "size": "5", "bit_rate": "1152000"},
+                    }
+                ),
+                stderr="",
+            )
+            with mock.patch.object(human_packet.subprocess, "run", return_value=probe):
+                result = human_packet.validate_received_audio(audio_path=audio, packet_dir=Path(packet["packet_dir"]))
+            self.assertEqual(result["status"], "RECEIVED_AUDIO_PREFLIGHT_PASS_FULL_RELEASE_QA_REQUIRED")
+            self.assertFalse(result["provider_calls_ran"])
+            self.assertFalse(result["release_gate_mutated"])
 
     def test_unclean_chapter_blocks_packet(self):
         with tempfile.TemporaryDirectory() as temporary:

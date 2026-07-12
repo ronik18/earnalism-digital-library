@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "slug": "the-open-window",
+  "title": "The Open Window",
+  "author": "Saki",
+  "language": "English",
+  "rights_basis": "Saki died 1916; first published 1911. Public domain in India and the U.S.",
+  "source_hash": "a107f7212542030d90e15e1b7daeeee6dcef9a77ea18887ce009afbf61457078",
+  "provenance_hash": "21e38f6081034d3d8731db585a96fdf014731375175eae0c279eca43415fe9a4",
+  "manuscript_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be",
+  "chapters": [
+    {
+      "chapter": "chapter-001.json",
+      "characters": 6918,
+      "sanitized_sha256": "f43d04cc2097668e91190ada89e283ad4908c360c4d7f6011a44b8f83d9659be"
+    }
+  ],
+  "failed_tts_evidence": {
+    "path": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_release_gate_evidence.json",
+    "classification": "AUDIO_HIDDEN_GOOGLE_STUDIO_B_AUDITION_FAILED_ALTERNATE_PATH_REQUIRED",
+    "stage2d": {
+      "provider": "google",
+      "voice": "en-GB-Studio-C",
+      "baseline": {
+        "status": "AUDITION_REPAIR_REQUIRED",
+        "scores": [
+          9.4,
+          8.4,
+          8.0,
+          8.4
+        ],
+        "minimum_confidence": 0.85,
+        "fatal_flags": [],
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_stage2d_google_audition_en_gb_studio_c.json"
+      },
+      "single_prosody_retry": {
+        "status": "AUDITION_REPAIR_REQUIRED",
+        "scores": [
+          9.5,
+          9.4,
+          8.5,
+          9.4
+        ],
+        "minimum_confidence": 0.9,
+        "fatal_flags": [],
+        "weak_passage": "twilight_return",
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_stage2d_google_audition_en_gb_studio_c_prosody_repair.json"
+      },
+      "estimated_spend_usd": 0.4356,
+      "actual_provider_billing": "NOT_REPORTED",
+      "lock_restored": true
+    },
+    "stage2e": {
+      "status": "AUDITION_REPAIR_REQUIRED",
+      "owner_decision": "AUTHORIZE_STAGE_2E_THE_OPEN_WINDOW_STUDIO_B_AUDITION_AND_PUBLICATION_IF_PASS",
+      "provider": "google",
+      "voice": "en-GB-Studio-B",
+      "scores": [
+        9.4,
+        9.5,
+        7.2,
+        9.4
+      ],
+      "minimum_confidence": 0.9,
+      "fatal_flags": [
+        "mechanical_cadence_detected",
+        "robotic_texture_detected"
+      ],
+      "weak_passage": "twilight_return",
+      "estimated_google_tts_usd": 0.0178,
+      "estimated_listening_qa_usd": 0.2,
+      "estimated_spend_usd": 0.2178,
+      "estimated_title_total_usd": 0.6534,
+      "estimated_sprint_total_usd": 4.2862,
+      "actual_provider_billing": "NOT_REPORTED",
+      "lock_restored": true,
+      "lock_sha256_before": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e",
+      "lock_sha256_after": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_stage2e_google_audition_en_gb_studio_b.json"
+    }
+  },
+  "target_narration_style": "calm_literary_understated_tension_natural_dialogue",
+  "required_audio_format": "WAV or high-bitrate MP3; 44.1/48 kHz; mono or stereo",
+  "validate_received_audio_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "provider_calls_ran": false,
+  "audio_generated": false,
+  "public_audio_status": "AUDIO_HIDDEN_PENDING_FULL_RELEASE_GATES",
+  "release_gate_mutated": false
+}
