@@ -1,0 +1,80 @@
+{
+  "status": "LISTENING_QA_BLOCKED",
+  "owner_decision": "AUTHORIZE_STAGE_2C_A_GHOST_STORY_AUDIO_REPAIR_AND_PUBLICATION_IF_QUALITY_10_TARGET_PASSES",
+  "slug": "a-ghost-story",
+  "root_cause": "SAMPLE_WINDOW_MISALIGNED",
+  "original_middle_start_seconds": 352.787,
+  "original_start_word_span_seconds": [
+    352.44,
+    353.46
+  ],
+  "corrected_middle_span_seconds": [
+    353.66,
+    409.68
+  ],
+  "audio_hash": "00190d747d2894a244545a260f10f4e06ccc597352d2767414acc4edfe6e5a55",
+  "audio_duration_seconds": 765.573515,
+  "sample_fingerprint": "90895d4d5278f5af4c619efbe64ef70ad735cfa50bd5abb7a8903ce5eef8639a",
+  "fresh_sample_count": 3,
+  "cached_random_sample_count": 3,
+  "budget_guard": {
+    "ok": true,
+    "code": "LISTENING_QA_BUDGET_OK",
+    "estimated_qa_cost_usd": 0.15,
+    "listening_qa_cap_usd": 2.0,
+    "total_budget_cap_usd": 175.0,
+    "total_estimated_usd": 0.15,
+    "sample_count": 3
+  },
+  "provider_calls_ran": true,
+  "tts_calls_ran": false,
+  "asr_calls_ran": false,
+  "publication_performed": false,
+  "lock_sha256_before": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e",
+  "started_at": "2026-07-12T10:28:20Z",
+  "finished_at": "2026-07-12T10:28:35Z",
+  "estimated_new_spend_usd": 0.15,
+  "actual_provider_billing": "NOT_REPORTED",
+  "repo_release_gate_pass": false,
+  "owner_minimum": {
+    "passes": false,
+    "minimum_overall_score": 6.8,
+    "minimum_confidence": 0.85,
+    "fatal_flags": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected"
+    ]
+  },
+  "listening_quality": {
+    "naturalness_score": 7.5,
+    "pronunciation_score": 8.0,
+    "emotional_expression_score": 7.0,
+    "punctuation_pause_score": 6.5,
+    "pacing_score": 6.0,
+    "continuity_score": 7.0,
+    "anti_robotic_texture_score": 6.5,
+    "anti_choppy_join_score": 7.0,
+    "listener_enjoyment_score": 6.5,
+    "overall_listening_score": 6.8,
+    "confidence_score": 0.85
+  },
+  "blockers": [
+    "AUDIO_LISTENING_QUALITY_FAILED: anti_choppy_join_score below schema3_universal_9_7 threshold: 7.0 < 9.7",
+    "AUDIO_LISTENING_QUALITY_FAILED: anti_robotic_texture_score below schema3_universal_9_7 threshold: 6.5 < 9.7",
+    "AUDIO_LISTENING_QUALITY_FAILED: confidence_score below schema3_universal_9_7 threshold: 0.85 < 0.95",
+    "AUDIO_LISTENING_QUALITY_FAILED: continuity_score below schema3_universal_9_7 threshold: 7.0 < 9.7",
+    "AUDIO_LISTENING_QUALITY_FAILED: emotional_expression_score below schema3_universal_9_7 threshold: 7.0 < 9.7",
+    "AUDIO_LISTENING_QUALITY_FAILED: listener_enjoyment_score below schema3_universal_9_7 threshold: 6.5 < 9.7",
+    "AUDIO_LISTENING_QUALITY_FAILED: mechanical_cadence_detected must be False.",
+    "AUDIO_LISTENING_QUALITY_FAILED: naturalness_score below schema3_universal_9_7 threshold: 7.5 < 9.7",
+    "AUDIO_LISTENING_QUALITY_FAILED: overall_listening_score below schema3_universal_9_7 threshold: 6.8 < 9.7",
+    "AUDIO_LISTENING_QUALITY_FAILED: pacing_score below schema3_universal_9_7 threshold: 6.0 < 9.7",
+    "AUDIO_LISTENING_QUALITY_FAILED: pronunciation_score below schema3_universal_9_7 threshold: 8.0 < 9.7",
+    "AUDIO_LISTENING_QUALITY_FAILED: punctuation_pause_score below schema3_universal_9_7 threshold: 6.5 < 9.7",
+    "AUDIO_LISTENING_QUALITY_FAILED: robotic_texture_detected must be False."
+  ],
+  "error": null,
+  "report_path": "/private/tmp/earnalism-a-ghost-stage2c-middle-repair/revalidation/stage2c_sentence_aligned_listening_quality_report.json",
+  "lock_restored": true,
+  "lock_sha256_after": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
+}

@@ -1,6 +1,6 @@
 # Sprint 1 Publication Stage 2 Execution Log
 
-Generated: `2026-07-12T07:44:15Z`
+Generated: `2026-07-12T11:11:53Z`
 
 1. Loaded active Earnalism intelligence, Sprint 1 matrices, release evidence, and lock state.
 2. Confirmed 32 active audio targets and 2 deferred long classics.
@@ -24,3 +24,15 @@ Generated: `2026-07-12T07:44:15Z`
 20. Listening QA blocked release: minimum sample score `8.3`, confidence `0.90`, with pacing `7.9` and emotional expression `8.2` on `middle_60s`; no fatal flags were detected.
 21. No TTS, ASR, upload, publication, deployment, or release-gate mutation occurred. A Ghost Story stayed reader-public/audio-hidden, and no later queue title was processed.
 22. The paid lock was restored byte-for-byte to active/current-holder-none/empty-next-holders. The wrapper now returns nonzero for a blocked hook and prevents repeating the same completed audio-hash/model QA attempt.
+23. Stage 2C corrected the original middle sample to sentence boundaries and confirmed the existing audio had a real weak section (`6.8`, confidence `0.85`, robotic/mechanical flags).
+24. Three bounded OpenAI selector arms were evaluated; `verse/mystery_suspense_narrator` was best at `9.5`, confidence `0.95`, with no fatal flags.
+25. Full candidate v1 passed ASR at `9.7719` but exposed five mid-sentence TTS chunk boundaries and listening quality `8.3` in the weak section.
+26. The boundary verifier now treats exact compound equivalence such as `bath-tub` and `bathtub` correctly while still rejecting missing endings.
+27. Full candidate v2 used sentence-terminal chunks but ASR proved a 50-token provider omission, so it was rejected before listening QA.
+28. Full candidate v3 used nine sentence-safe chunks capped at 1,600 characters. ASR/source passed at `9.928`, and first/last checks passed.
+29. V3 listening QA still blocked release: minimum `8.3`, confidence `0.90`, and list-reading rhythm detected. OpenAI was classified as a provider-quality plateau; no further OpenAI variant was run.
+30. Hash-bound ASR checkpointing now persists provider results before downstream gates, and six-sample selection now spans the actual full chunk sequence including the ending.
+31. Estimated Stage 2B plus Stage 2C provider spend is `$2.3295`; actual billing was not reported. The lock was restored byte-for-byte after every paid command.
+32. A Ghost Story remained reader-public/audio-hidden. No upload, publication, deployment, or release-gate mutation occurred.
+33. The Open Window non-paid continuation confirmed production reader `200/200`, rights and sanitation PASS, and diagnostic ASR `9.7826` with a title-prefixed audio manuscript. Its Piper/synthetic asset remains ineligible for public audio.
+34. Google Cloud TTS capability probing is blocked by ADC reauthentication, and ElevenLabs credentials are absent. Exact next command: `gcloud auth application-default login`.

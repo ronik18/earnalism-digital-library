@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T09:35:33Z",
+  "generated_at": "2026-07-12T11:10:22Z",
   "slug": "a-ghost-story",
   "title": "A Ghost Story",
   "language": "English",
-  "owner_decision": "AUTHORIZE_SPRINT1_STAGE_2B_A_GHOST_STORY_LISTENING_QA_AND_RELEASE_IF_PASS",
+  "owner_decision": "AUTHORIZE_STAGE_2C_A_GHOST_STORY_AUDIO_REPAIR_AND_PUBLICATION_IF_QUALITY_10_TARGET_PASSES",
   "runtime_gates": {
     "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "SET",
     "SPRINT1_MAX_USD_PER_TITLE": "SET",
@@ -22,7 +22,8 @@
     "SARVAM_API_KEY": "SET",
     "ELEVENLABS_API_KEY": "MISSING",
     "GOOGLE_APPLICATION_CREDENTIALS": "SET",
-    "GOOGLE_CLOUD_PROJECT": "SET"
+    "GOOGLE_CLOUD_PROJECT": "SET",
+    "GOOGLE_ADC_CAPABILITY": "REAUTH_REQUIRED_503"
   },
   "non_paid_preflight": {
     "status": "PASS",
@@ -33,24 +34,30 @@
     "provider_calls_ran": false
   },
   "existing_audio": {
-    "path": "internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/a-ghost-story_existing_audio_candidate.mp3",
+    "path": "/tmp/earnalism-a-ghost-stage2c-full-tts-v3/a-ghost-story_openai_tts_final.mp3",
     "exists": true,
-    "size_bytes": 4594121,
-    "duration_seconds": 765.573515,
-    "sha256": "00190d747d2894a244545a260f10f4e06ccc597352d2767414acc4edfe6e5a55",
+    "size_bytes": 13936941,
+    "duration_seconds": 870.984,
+    "sha256": "8524448cb77b63fa125e443e1e36469c3e887b058e77b5e4ae43dc7466612905",
+    "provider": "openai",
+    "model": "gpt-4o-mini-tts",
+    "voice": "verse",
+    "profile": "mystery_suspense_narrator",
+    "chunk_count": 9,
+    "max_chars_per_chunk": 1600,
     "fallback_tts_used": false,
-    "reuse_decision": "REUSE_FOR_BOUNDED_LISTENING_QA; DO_NOT_REGENERATE"
+    "reuse_decision": "PRIVATE_QA_ONLY; DO_NOT_PUBLISH"
   },
   "release_gates": {
     "source_rights": "PASS",
     "text_sanitation": "PASS",
     "text_normalization": "PASS",
-    "representative_audition": "NOT_REQUIRED_EXISTING_FULL_ASSET_REUSE",
-    "full_book_tts": "PASS_EXISTING_ASSET_HASH_VERIFIED",
-    "asr_source_alignment": "PASS_9.7882_OF_10",
+    "representative_audition": "PASS_SELECTOR_ONLY_9.5_CONFIDENCE_0.95_NO_FATAL_FLAGS",
+    "full_book_tts": "PASS_PRIVATE_V3_SENTENCE_SAFE_MAX_1600_CHARS",
+    "asr_source_alignment": "PASS_9.928_OF_10",
     "first_words_match": "PASS",
     "last_words_match": "PASS",
-    "listening_qa": "FAIL_MIN_SAMPLE_8.3_CONFIDENCE_0.90_NO_FATAL_FLAGS",
+    "listening_qa": "FAIL_MIN_SAMPLE_8.3_CONFIDENCE_0.90_LIST_READING_RHYTHM",
     "manifest_validation": "PASS_FAIL_CLOSED_AUDIO_HIDDEN; PUBLIC_AUDIO_MANIFEST_NOT_AUTHORIZED",
     "endpoint_validation": "PASS_FAIL_CLOSED_404; PUBLIC_AUDIO_ENDPOINT_NOT_AUTHORIZED",
     "frontend_release_state": "PASS_AUDIO_HIDDEN; LISTEN_NOT_AUTHORIZED",
@@ -84,7 +91,13 @@
     "sidecar_source_hash_bound": true,
     "asr_retranscription_required_for_next_run": false,
     "lock_safe_listening_qa_wrapper": "DRY_RUN_PASS",
-    "listening_qa_only_forbids_asr_provider_fallback": true
+    "listening_qa_only_forbids_asr_provider_fallback": true,
+    "compound_boundary_verifier": "PASS_TESTED",
+    "sentence_safe_tts_chunking": "PASS_TESTED",
+    "configurable_openai_chunk_limit": "PASS_TESTED_1600",
+    "hash_bound_asr_provider_checkpoint": "PASS_TESTED",
+    "full_book_chunk_sample_distribution": "PASS_TESTED_INCLUDES_ACTUAL_ENDING",
+    "no_repeat_openai_variant_after_plateau": true
   },
   "budget": {
     "authorized_cap_usd": 175.0,
@@ -93,10 +106,11 @@
     "estimated_stage2a_incremental_usd": 0.3,
     "listening_qa_budget_guard": "PASS_0.30_WITHIN_2.00_SUBCAP_AND_175.00_TOTAL_CAP",
     "actual_spend_usd": null,
-    "budget_remaining_usd": 175.0,
+    "budget_remaining_usd": null,
     "actual_provider_billing": "NOT_REPORTED",
     "estimated_stage2b_spend_usd": 0.3,
-    "budget_remaining_after_estimate_usd": 174.7
+    "budget_remaining_after_estimate_usd": 172.6705,
+    "estimated_stage2b_and_stage2c_spend_usd": 2.3295
   },
   "paid_tts_lock": {
     "status": "active",
@@ -104,12 +118,26 @@
     "allowed_next_holders": [],
     "mutated_in_stage2a": false,
     "sha256": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e",
-    "restored_after_stage2b": true
+    "restored_after_stage2b": true,
+    "restored_after_stage2c": true
   },
   "can_publish_audio_now": false,
-  "final_status": "AUDIO_HIDDEN_LISTENING_QA_REPAIR_REQUIRED",
-  "exact_blocker": "MIDDLE_60S_LISTENING_QA_FAIL: overall 8.3 < 9.4; pacing 7.9; emotional expression 8.2; confidence 0.90; no fatal flags",
-  "next_action": "Prepare a targeted middle-passage repair packet and seek separate audition authorization.",
-  "next_command": "mkdir -p /tmp/earnalism-a-ghost-stage2c-middle-repair && ffmpeg -hide_banner -loglevel error -y -ss 352.787 -t 60 -i internal/audiobook_lab/release_gate/a-ghost-story_20260705T044404Z/a-ghost-story_existing_audio_candidate.mp3 /tmp/earnalism-a-ghost-stage2c-middle-repair/middle_60s_reference.mp3 && sed -n '173,240p' internal/audiobook_lab/release_gate/a-ghost-story_20260705T150049Z/clean_manuscript.txt > /tmp/earnalism-a-ghost-stage2c-middle-repair/middle_source.txt",
-  "stage2b_listening_qa_report": "internal/audiobook_lab/release_gate/a-ghost-story_20260705T150049Z/listening_quality_report.json"
+  "final_status": "AUDIO_HIDDEN_ALTERNATE_PROVIDER_REPAIR_REQUIRED",
+  "exact_blocker": "OPENAI_PROVIDER_QUALITY_PLATEAU: v3 ASR/source 9.928 passed, but listening minimum 8.3 with list-reading rhythm; alternate provider required",
+  "next_action": "Reauthenticate Google ADC and run one bounded alternate-provider literary audition. Do not repeat OpenAI variants.",
+  "next_command": "gcloud auth application-default login",
+  "stage2b_listening_qa_report": "internal/audiobook_lab/release_gate/a-ghost-story_20260705T150049Z/listening_quality_report.json",
+  "stage2c": {
+    "report": "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_stage2c_middle_repair_report.md",
+    "runtime": "internal/audiobook_lab/sprint1_publication/title_runs/a-ghost-story_stage2c_full_qa_runtime.json",
+    "root_cause": "OPENAI_PROVIDER_QUALITY_PLATEAU_AFTER_SEGMENTATION_AND_OMISSION_REPAIRS",
+    "final_asr_source_score": 9.928,
+    "final_first_words_match": true,
+    "final_last_words_match": true,
+    "final_listening_minimum": 8.3,
+    "final_listening_confidence": 0.90,
+    "list_reading_rhythm_detected": true,
+    "publication_performed": false,
+    "sample_selector_evidence": "V3 paid report sampled the first six of nine chunk starts under the pre-fix selector; the 525.624s blocker is valid, but the actual ending was not re-judged because release was already blocked. The selector is now fixed and tested to include the actual ending."
+  }
 }
