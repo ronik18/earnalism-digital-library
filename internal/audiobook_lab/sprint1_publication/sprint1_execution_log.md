@@ -1,6 +1,6 @@
 # Sprint 1 Publication Stage 2 Execution Log
 
-Generated: `2026-07-12T11:11:53Z`
+Generated: `2026-07-12T15:24:05Z`
 
 1. Loaded active Earnalism intelligence, Sprint 1 matrices, release evidence, and lock state.
 2. Confirmed 32 active audio targets and 2 deferred long classics.
@@ -36,3 +36,9 @@ Generated: `2026-07-12T11:11:53Z`
 32. A Ghost Story remained reader-public/audio-hidden. No upload, publication, deployment, or release-gate mutation occurred.
 33. The Open Window non-paid continuation confirmed production reader `200/200`, rights and sanitation PASS, and diagnostic ASR `9.7826` with a title-prefixed audio manuscript. Its Piper/synthetic asset remains ineligible for public audio.
 34. Google Cloud TTS capability probing is blocked by ADC reauthentication, and ElevenLabs credentials are absent. Exact next command: `gcloud auth application-default login`.
+35. Stage 2D restored Google ADC and ran bounded Studio-B and Studio-C auditions. Baseline middle samples scored `8.3`; one source-preserving Studio-C prosody repair passed three representative samples at `9.4`, confidence `0.95`, with no fatal flags.
+36. One full Google Studio-C candidate was generated in nine sentence-safe chunks: `880.944s`, `7,047,789` bytes, SHA-256 `c0e52985ee1e3e178b81d83157189251a667d64ecbc22bbc0940e6e4fc7bf904`.
+37. Full ASR/source passed at `9.88`, first/last checks passed, and six listening samples scored `9.4-9.5` with confidence `0.95` and no fatal flags. No `10/10` claim is made.
+38. The B2 upload hook verified exact remote SHA-256 and byte-size parity for MP3, timestamps, VTT, chapters, and metadata. A direct 1,024-byte range request returned HTTP `206`.
+39. Root and Railway controlled-publication packets now contain identical A Ghost Story release evidence/assets; the controlled audio allowlist contains only `book-2b9853ec52` and `a-ghost-story`.
+40. The paid lock was restored byte-for-byte after every Stage 2D operation. No unrelated title, static audio fallback, browser speech fallback, or word-level sync claim was introduced.

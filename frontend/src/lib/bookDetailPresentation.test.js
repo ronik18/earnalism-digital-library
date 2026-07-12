@@ -82,6 +82,29 @@ describe("bookDetailPresentation", () => {
     expect(presentation.audioBadgeLabel).toBe("Audio Hidden");
   });
 
+  test("exposes A Ghost Story only with the approved Stage 2D manifest", () => {
+    const presentation = bookDetailPresentationForBook({
+      slug: "a-ghost-story",
+      title: "A Ghost Story",
+      _readerManifest: {
+        audio: {
+          enabled: true,
+          provider: "google",
+          voice: "en-GB-Studio-C",
+          version: "stage2d-approved",
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
+          sync_mode: "section_following",
+          assets: { mp3: "/api/reader/book/a-ghost-story/audiobook" },
+        },
+      },
+    });
+
+    expect(presentation.listenCtaVisible).toBe(true);
+    expect(presentation.audioBadgeLabel).toBe("Audiobook Approved");
+    expect(presentation.syncCopy).toBe("Section-following narration");
+  });
+
   test("keeps blocked Bengali canary and prelaunch titles audio-hidden", () => {
     for (const slug of blockedCanarySlugs) {
       const presentation = bookDetailPresentationForBook({

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T11:19:50Z",
+  "generated_at": "2026-07-12T15:24:05Z",
   "budget_env": {
     "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "SET_INLINE_STAGE2C_175",
     "SPRINT1_MAX_USD_PER_TITLE": "SET_INLINE_STAGE2C_30",
@@ -16,7 +16,7 @@
   "missing_or_invalid_budget_gates": [],
   "provider_calls_ran": true,
   "actual_spend_usd": null,
-  "estimated_incremental_total_usd": 99.9019,
+  "estimated_incremental_total_usd": 101.2052,
   "removed_deferred_estimated_cost_usd": 35.2935,
   "budget_comparison": "ESTIMATED_STAGE2B_AND_STAGE2C_SPEND_2.3295_WITHIN_175_CAP; ACTUAL_PROVIDER_BILLING_NOT_REPORTED; A_GHOST_ALTERNATE_PROVIDER_COST_TBD",
   "summary": {
@@ -24,9 +24,9 @@
     "active_sprint1_title_count": 32,
     "active_audiobook_target_count": 32,
     "deferred_long_classics_count": 2,
-    "current_yes_yes_count": 1,
-    "remaining_non_yes_yes_count_excluding_dropped": 31,
-    "estimated_incremental_total_usd": 99.9019,
+    "current_yes_yes_count": 2,
+    "remaining_non_yes_yes_count_excluding_dropped": 30,
+    "estimated_incremental_total_usd": 101.2052,
     "removed_deferred_estimated_cost_usd": 35.2935,
     "highest_expected_english_cost_after_removal": {
       "slug": "dracula",
@@ -74,15 +74,15 @@
     "current_production_reader_yes_count": 32,
     "current_production_reader_no_count": 0,
     "reader_repairs_prepared_in_pr_101": 17,
-    "new_public_audiobooks_this_run": 0,
+    "new_public_audiobooks_this_run": 1,
     "provider_calls_ran": true,
     "actual_spend_usd": null,
     "sprint_target_status": "INCOMPLETE",
     "reader_repairs_merged_and_deployed": 17,
-    "estimated_spend_usd": 2.3295,
+    "estimated_spend_usd": 3.6328,
     "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.5724,
-    "budget_remaining_after_estimate_usd": 172.6705,
-    "a_ghost_remaining_repair_cost_usd": "TBD_ALTERNATE_PROVIDER"
+    "budget_remaining_after_estimate_usd": 171.3672,
+    "a_ghost_remaining_repair_cost_usd": 0.0
   },
   "titles": [
     {
@@ -387,7 +387,7 @@
     },
     {
       "slug": "a-ghost-story",
-      "strategy": "ALTERNATE_PROVIDER_AUDITION_AFTER_OPENAI_QUALITY_PLATEAU",
+      "strategy": "GOOGLE_STUDIO_C_FULL_AUDIO_QA_AND_VERIFIED_B2_UPLOAD",
       "deferred_recommended_strategy": "",
       "sprint1_audio_target": true,
       "public_audiobook_required_for_sprint1": true,
@@ -405,20 +405,20 @@
       "estimated_incremental_cost_usd": 0.3,
       "deferred_baseline_estimated_cost_usd": 0.0,
       "actual_spend_usd": null,
-      "budget_status": "WITHIN_CAP_RELEASE_BLOCKED_BY_QUALITY",
+      "budget_status": "WITHIN_CAP_RELEASE_GATES_PASS_ACTUAL_BILLING_NOT_REPORTED",
       "reason": "",
-      "next_action": "Reauthenticate Google ADC and run one bounded alternate-provider literary audition.",
-      "next_command": "gcloud auth application-default login",
+      "next_action": "Validate the normal production deployment and approved reader audio endpoint.",
+      "next_command": "curl -sS https://api.theearnalism.com/api/reader/book/a-ghost-story/manifest | jq '.audio'",
       "title": "A Ghost Story",
       "language": "English",
       "source_rights_status": "PASS",
       "text_sanitation_status": "PASS",
       "public_reader_status": "PUBLIC_READER",
-      "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "AUDIO_HIDDEN_ALTERNATE_PROVIDER_REPAIR_REQUIRED",
-      "estimated_spend_usd": 0.3,
-      "exact_blocker": "OPENAI_PROVIDER_QUALITY_PLATEAU: v3 ASR/source 9.928 passed, but listening QA minimum remained 8.3 with list-reading rhythm; alternate provider required",
-      "estimated_stage2b_and_stage2c_spend_usd": 2.3295
+      "public_audio_status": "PUBLIC_AUDIO_APPROVED",
+      "final_status": "Yes, publicly rendered book + Yes, publicly available audiobook",
+      "estimated_spend_usd": 3.6328,
+      "exact_blocker": "NONE",
+      "estimated_stage2b_through_stage2d_spend_usd": 3.6328
     },
     {
       "slug": "dracula",
@@ -1116,7 +1116,7 @@
     "max_usd_per_title": 30.0,
     "max_tts_budget_usd": 175.0
   },
-  "estimated_budget_headroom_usd": 75.0981,
+  "estimated_budget_headroom_usd": 73.7948,
   "stage2a_a_ghost_story": {
     "updated_at": "2026-07-12T08:16:11Z",
     "authorized_total_budget_usd": 175.0,
@@ -1126,8 +1126,8 @@
     "provider_calls_ran": false,
     "status": "BLOCKED_LIVE_SHELL_GATES_MISSING"
   },
-  "estimated_spend_usd": 2.3295,
-  "authorized_budget_remaining_after_estimate_usd": 172.6705,
+  "estimated_spend_usd": 3.6328,
+  "authorized_budget_remaining_after_estimate_usd": 171.3672,
   "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.5724,
   "stage2b_a_ghost_story": {
     "owner_decision": "AUTHORIZE_SPRINT1_STAGE_2B_A_GHOST_STORY_LISTENING_QA_AND_RELEASE_IF_PASS",
@@ -1165,6 +1165,29 @@
     "status": "AUDIO_HIDDEN_ALTERNATE_PROVIDER_REPAIR_REQUIRED",
     "authorized_total_budget_usd": 175.0,
     "budget_remaining_after_estimate_usd": 172.6705,
-    "remaining_alternate_provider_repair_cost_usd": "TBD"
+    "remaining_alternate_provider_repair_cost_usd": 0.0
+  },
+  "stage2d_a_ghost_story": {
+    "owner_decision": "AUTHORIZE_STAGE_2D_A_GHOST_STORY_ALTERNATE_PROVIDER_REPAIR_AND_PUBLICATION_IF_PASS",
+    "updated_at": "2026-07-12T15:24:05Z",
+    "provider_calls_ran": true,
+    "provider": "google",
+    "voice": "en-GB-Studio-C",
+    "private_full_tts_generated": true,
+    "asr_source_score": 9.88,
+    "first_words_match": true,
+    "last_words_match": true,
+    "listening_qa_sample_count": 6,
+    "listening_qa_minimum_score": 9.4,
+    "listening_qa_minimum_confidence": 0.95,
+    "fatal_flags": [],
+    "estimated_stage2b_through_stage2d_spend_usd": 3.6328,
+    "actual_spend_usd": null,
+    "actual_provider_billing": "NOT_REPORTED",
+    "verified_b2_upload": true,
+    "paid_tts_lock_restored": true,
+    "status": "RELEASE_GATES_PASS_SOURCE_PUBLICATION_READY",
+    "authorized_total_budget_usd": 175.0,
+    "budget_remaining_after_estimate_usd": 171.3672
   }
 }

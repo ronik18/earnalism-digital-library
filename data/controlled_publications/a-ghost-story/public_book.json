@@ -6,7 +6,7 @@
   "author": "Mark Twain",
   "category_slug": "gothic-fiction",
   "short_description": "A new tenant meets a midnight visitor who turns out to be less terrifying than embarrassed.",
-  "description": "Mark Twain turns a haunted-room setup into a comic encounter with the Cardiff Giant legend. This reader-first edition keeps the story publicly readable while audio remains unavailable.",
+  "description": "Mark Twain turns a haunted-room setup into a comic encounter with the Cardiff Giant legend. This edition includes a release-gated, section-following narration.",
   "cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
   "cover_image_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
   "coverImage": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
@@ -18,11 +18,12 @@
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "11 min",
   "formats": [
-    "Ebook"
+    "Ebook",
+    "Audiobook"
   ],
   "benefits": [
     "Read a compact classic comic ghost story in a clean digital edition.",
-    "Explore Twain's satire without public audiobook claims or stale audio links."
+    "Listen through the approved section-following narration in the reader."
   ],
   "who_for": [
     "Classic short-story readers",
@@ -69,15 +70,38 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": false,
-  "audiobook_enabled": false,
-  "generate_audiobook": false,
-  "audiobook_provider": "",
-  "audiobook_voice": "",
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "google",
+  "audiobook_voice": "en-GB-Studio-C",
+  "audiobook_model": "google-cloud-texttospeech",
+  "audiobook_style_profile": "source_preserving_ssml_88_percent",
   "audio_asset_slug": "a-ghost-story",
-  "audiobook_assets": {},
-  "audiobook": {},
-  "audiobook_assets_updated_at": "",
+  "audiobook_assets": {
+    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_c0e52985ee1e.mp3",
+    "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_timestamps_f705f1832a8b.json",
+    "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_vtt_11f7c4689b94.vtt",
+    "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_chapters_ffe4267005f0.json",
+    "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_meta_0d8b16ee7c3d.json"
+  },
+  "audiobook": {
+    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_c0e52985ee1e.mp3",
+    "provider": "google",
+    "size": 7047789,
+    "duration_ms": 880944,
+    "sync_mode": "section_following",
+    "highlight_sync_enabled": false,
+    "assets": {
+      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_c0e52985ee1e.mp3",
+      "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_timestamps_f705f1832a8b.json",
+      "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_vtt_11f7c4689b94.vtt",
+      "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_chapters_ffe4267005f0.json",
+      "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/a-ghost-story/a-ghost-story_meta_0d8b16ee7c3d.json"
+    },
+    "updated_at": "2026-07-12T15:24:05Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-12T15:24:05Z",
   "created_at": "2026-07-08T20:40:04Z",
-  "updated_at": "2026-07-08T20:40:04Z"
+  "updated_at": "2026-07-12T15:24:05Z"
 }

@@ -1,8 +1,9 @@
 {
-  "generated_at": "2026-07-11T12:35:08Z",
+  "generated_at": "2026-07-12T15:24:05Z",
   "claimable_10_10_reader_listener_ready": [],
   "approved_public_audio_slugs": [
-    "book-2b9853ec52"
+    "book-2b9853ec52",
+    "a-ghost-story"
   ],
   "release_truth_note": "No launch-wide or title-level 10/10 claim is made. Public audio approval is tracked separately from historical reconstruction evidence.",
   "reader_ready_but_public_audio_upload_missing": [],

@@ -119,7 +119,7 @@ const shouldUseReaderMocks = routes === readerRoutes || routes === audiobookPlay
 const shouldUseAudiobookPlayerMocks = routes === audiobookPlayerRoutes;
 const shouldCheckSettingsPanel = routes === settingsRoutes;
 const shouldCheckMarketingLanding = routes === marketingLandingRoutes;
-const approvedAudiobookSmokeSlugs = new Set(["book-2b9853ec52"]);
+const approvedAudiobookSmokeSlugs = new Set(["book-2b9853ec52", "a-ghost-story"]);
 
 const allViewports = [
   { width: 1920, height: 1080 },
@@ -839,7 +839,8 @@ for (const route of routes) {
 await browser.close();
 const blockers = results.flatMap((result) => {
   const issues = [];
-  const approvedAudioRoute = shouldMockAudiobookPlayerApi && /book-2b9853ec52/.test(result.route);
+  const approvedAudioRoute = shouldMockAudiobookPlayerApi
+    && [...approvedAudiobookSmokeSlugs].some((slug) => result.route.includes(slug));
   const isReaderRoute = result.route.startsWith("/reader/");
   const marketingNeedsBilingualProof = ["/", "/about"].includes(result.route);
   const marketingNeedsPrimaryCta = ["/", "/pricing", "/micro-story"].includes(result.route);
@@ -868,7 +869,7 @@ const blockers = results.flatMap((result) => {
   if (${JSON.stringify(shouldCheckMarketingLanding)} && result.marketingStaticAudioPathVisible) issues.push("static audio path visible on marketing route");
   if (${JSON.stringify(shouldCheckMarketingLanding)} && result.marketingUnapprovedListenVisible) issues.push("unapproved Listen CTA visible on marketing route");
   if (shouldMockBookDetailApi && result.listenCtaVisible && !approvedAudioRoute) issues.push("book detail local fixture exposed Listen CTA");
-  if (shouldMockAudiobookPlayerApi && result.route.startsWith("/book/book-2b9853ec52") && !result.listenCtaVisible) issues.push("approved audiobook detail did not expose approved Listen CTA");
+  if (shouldMockAudiobookPlayerApi && approvedAudioRoute && result.route.startsWith("/book/") && !result.listenCtaVisible) issues.push("approved audiobook detail did not expose approved Listen CTA");
   if (result.audioObjectStructuredData) issues.push("AudioObject structured data visible");
   if (result.wordLevelSyncCopyVisible) issues.push("word-level sync copy visible");
   if (result.speechFallbackCopyVisible) issues.push("speech fallback copy visible");
@@ -884,7 +885,7 @@ const blockers = results.flatMap((result) => {
   if (shouldMockReaderApi && isReaderRoute && !result.readerContentsReachable) issues.push("reader contents not reachable");
   if (shouldMockReaderApi && isReaderRoute && result.readerAudioButtonVisible && !approvedAudioRoute) issues.push("reader local fixture exposed audio controls");
   if (shouldMockReaderApi && isReaderRoute && result.generatedAudioElementVisible && !approvedAudioRoute) issues.push("reader local fixture exposed audio element");
-  if (shouldMockAudiobookPlayerApi && result.route.startsWith("/reader/book-2b9853ec52") && !result.readerAudioButtonVisible) issues.push("approved audiobook reader controls missing");
+  if (shouldMockAudiobookPlayerApi && approvedAudioRoute && isReaderRoute && !result.readerAudioButtonVisible) issues.push("approved audiobook reader controls missing");
   if (shouldMockReaderApi && result.staticAudioSrcVisible) issues.push("reader static audio src visible");
   if (shouldMockReaderApi && isReaderRoute && !approvedAudioRoute && !result.readerAudioHiddenCopyVisible) issues.push("reader audio-hidden copy missing");
   if (result.consoleErrors.length) issues.push("console errors");
