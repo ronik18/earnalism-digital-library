@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-07-13T06:30:06Z",
+  "generated_at": "2026-07-13T07:54:58Z",
   "currency": "USD",
-  "owner_decision": "AUTHORIZE_AUTONOMOUS_SPRINT1_AUDIO_PUBLICATION_WITH_SELF_GOVERNING_DECISION_TREE_AND_175_USD_CAP",
+  "owner_decision": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
   "caps": {
     "sprint_total_usd": 175.0,
     "per_title_usd": 30.0
@@ -394,6 +394,14 @@
       "actual_spend_usd": null,
       "actual_billing_status": "UNKNOWN_NOT_REPORTED_BY_PROVIDER",
       "status": "REPRESENTATIVE_QA_FAILED_MIN_8_4_HUMAN_IMPORT_TRACK_LOCK_RESTORED"
+    },
+    {
+      "entry_id": "sprint1-autonomous-v3-intake-ranking-and-nonpaid-coordination",
+      "scope": "V3 provider-memory reconciliation, source-bound intake polling, and fail-closed queue ranking",
+      "conservative_estimated_spend_usd": 0.0,
+      "actual_spend_usd": 0.0,
+      "provider_calls_ran": false,
+      "status": "NON_PAID_COORDINATION_COMPLETE"
     }
   ],
   "checkpoint_chain_tail": [
@@ -594,7 +602,7 @@
       "finished_at": "2026-07-12T22:00:32Z",
       "prior_estimated_spend_usd": 9.4856,
       "estimated_stage_cap_usd": 0.2,
-      "estimated_cumulative_checkpoint_usd": 9.68560,
+      "estimated_cumulative_checkpoint_usd": 9.6856,
       "provider_command_started": true,
       "actual_provider_billing": "NOT_REPORTED",
       "lock_restored": true,
@@ -784,5 +792,12 @@
     "yellow_wallpaper_human_import_packet_ready": true,
     "yellow_wallpaper_release_state_unchanged": true
   },
-  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-monkeys-paw --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-monkeys-paw --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "autonomous_v3": {
+    "provider_calls_ran": false,
+    "estimated_incremental_spend_usd": 0.0,
+    "actual_incremental_spend_usd": 0.0,
+    "release_gate_mutated": false,
+    "execution": null
+  }
 }

@@ -9,6 +9,7 @@ from backend import catalog_truth
 ROOT = Path(__file__).resolve().parents[2]
 APPROVED_PUBLIC_AUDIO_SLUGS = {"book-2b9853ec52", "a-ghost-story"}
 READER_ONLY_SLUGS = (
+    "radharani",
     "book-d19e96859f",
     "book-edfcf810c5",
     "the-time-machine",

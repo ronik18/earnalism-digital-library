@@ -39,6 +39,24 @@ DEFAULT_API_URL = "https://api.theearnalism.com"
 CATALOG_LOCK_PATH = RELEASE_GATE_ROOT / ".release_catalog_factory.lock"
 REQUIRED_COVER_SIZE = [1600, 2400]
 QA_SCHEMA_VERSION = 3
+CONTROLLED_PUBLICATION_ROOTS = (
+    ROOT / "data" / "controlled_publications",
+    ROOT / "backend" / "data" / "controlled_publications",
+)
+
+
+def controlled_publication_base(slug: str) -> Path:
+    """Return the root-first controlled packet, falling back to backend data."""
+
+    for publication_root in CONTROLLED_PUBLICATION_ROOTS:
+        candidate = publication_root / slug
+        if (candidate / "public_book.json").is_file():
+            return candidate
+    for publication_root in CONTROLLED_PUBLICATION_ROOTS:
+        candidate = publication_root / slug
+        if candidate.is_dir():
+            return candidate
+    return CONTROLLED_PUBLICATION_ROOTS[0] / slug
 
 QUEUE_NAMES = [
     "inventory_queue",
@@ -965,8 +983,9 @@ class ReleaseCatalogFactory:
             slug = str(record["slug"])
             if slug in self.states:
                 continue
-            public_book = read_json(ROOT / "data" / "controlled_publications" / slug / "public_book.json", {})
-            reader = read_json(ROOT / "data" / "controlled_publications" / slug / "reader_manifest.json", {})
+            controlled_base = controlled_publication_base(slug)
+            public_book = read_json(controlled_base / "public_book.json", {})
+            reader = read_json(controlled_base / "reader_manifest.json", {})
             title = public_book.get("title") or reader.get("title") or record.get("title") or slug
             author = public_book.get("author") or reader.get("author") or record.get("author") or ""
             language = normalize_language(public_book.get("language") or reader.get("language") or record.get("language") or "")
@@ -1045,7 +1064,9 @@ class ReleaseCatalogFactory:
         public_book, reader, source_evidence, _ = load_book_payloads(slug)
         chapters = load_rendered_chapters(slug)
         word_count = sum(len(word_tokens(chapter["text"])) for chapter in chapters)
-        cover_ready = cover_inventory(public_book, dry_run=True)["status"] == "PASS"
+        cover_ready = (
+            cover_inventory(public_book, dry_run=True, slug=slug)["status"] == "PASS"
+        )
         source_ready = bool(source_evidence) or bool(any_source_path(slug))
         reader_ready = bool(chapters) or bool(reader.get("chapters"))
         audio_assets = public_book.get("audiobook_assets") if isinstance(public_book.get("audiobook_assets"), dict) else {}
@@ -1075,7 +1096,8 @@ class ReleaseCatalogFactory:
         subset = {normalize_slug(value) for value in (self.args.slugs or "").split(",") if normalize_slug(value)}
         controlled_slugs = {
             path.parent.name
-            for path in (ROOT / "data" / "controlled_publications").glob("*/public_book.json")
+            for publication_root in CONTROLLED_PUBLICATION_ROOTS
+            for path in publication_root.glob("*/public_book.json")
         }
         records: list[dict[str, Any]] = []
         seen: set[str] = set()
@@ -1114,7 +1136,7 @@ class ReleaseCatalogFactory:
             if slug in seen:
                 continue
             seen.add(slug)
-            records.append({"slug": slug, "_manifest_path": "data/controlled_publications"})
+            records.append({"slug": slug, "_manifest_path": rel(controlled_publication_base(slug))})
 
         if subset:
             missing = sorted(subset - seen)
@@ -1513,7 +1535,9 @@ class ReleaseCatalogFactory:
     def inventory_stage(self, state: BookState) -> tuple[BookState, str | None]:
         public_book, reader, source_evidence, release_gate = load_book_payloads(state.slug)
         chapter_paths = controlled_chapter_paths(state.slug)
-        cover_status = cover_inventory(public_book, dry_run=self.args.dry_run)
+        cover_status = cover_inventory(
+            public_book, dry_run=self.args.dry_run, slug=state.slug
+        )
         rights_report = rights_metadata_report(state)
         reader_ready = bool(reader.get("chapters")) and all(
             str(item.get("processing_status", "ready")).lower() in {"ready", "complete", "completed"}
@@ -1576,7 +1600,9 @@ class ReleaseCatalogFactory:
 
     def cover_stage(self, state: BookState) -> tuple[BookState, str | None]:
         public_book, _, _, _ = load_book_payloads(state.slug)
-        current = cover_inventory(public_book, dry_run=self.args.dry_run)
+        current = cover_inventory(
+            public_book, dry_run=self.args.dry_run, slug=state.slug
+        )
         brief = cover_brief_from_manuscript(state)
         write_text(state.run_dir / "cover_content_brief.md", brief)
         if current["status"] == "PASS":
@@ -2179,7 +2205,7 @@ def latest_book_evidence(slug: str) -> Path | None:
 
 
 def load_book_payloads(slug: str) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
-    base = ROOT / "data" / "controlled_publications" / slug
+    base = controlled_publication_base(slug)
     candidate = ROOT / "internal" / "audiobook_lab" / "bengali_store_candidates" / slug
     return (
         read_json(base / "public_book.json", {}),
@@ -2190,7 +2216,7 @@ def load_book_payloads(slug: str) -> tuple[dict[str, Any], dict[str, Any], dict[
 
 
 def controlled_chapter_paths(slug: str) -> list[Path]:
-    return sorted((ROOT / "data" / "controlled_publications" / slug / "chapters").glob("*.json"))
+    return sorted((controlled_publication_base(slug) / "chapters").glob("*.json"))
 
 
 def load_rendered_chapters(slug: str) -> list[dict[str, Any]]:
@@ -2249,21 +2275,43 @@ def source_of_truth(slug: str, rendered: list[dict[str, Any]]) -> tuple[str, str
     if raw_path.exists():
         text = sanitize_manuscript_text(raw_path.read_text(encoding="utf-8", errors="ignore"))
         return "curated_raw_source_file", rel(raw_path), [{"id": "source", "title": "Source", "text": text}], text
-    source_evidence = ROOT / "data" / "controlled_publications" / slug / "source_evidence.json"
-    checksum = ROOT / "data" / "controlled_publications" / slug / "checksum_manifest.json"
+    controlled_base = controlled_publication_base(slug)
+    source_evidence = controlled_base / "source_evidence.json"
+    checksum = controlled_base / "checksum_manifest.json"
     if source_evidence.exists() or checksum.exists():
         return "controlled_publication_with_evidence", rel(source_evidence if source_evidence.exists() else checksum), rendered, "\n\n".join(item["text"] for item in rendered)
     return "missing_reliable_source_of_truth", "", [], ""
 
 
-def cover_inventory(public_book: dict[str, Any], *, dry_run: bool) -> dict[str, Any]:
+def audited_graphical_cover_fallback(slug: str) -> dict[str, Any] | None:
+    """Return the accepted runtime cover pair from the canonical cover audit."""
+
+    report = read_json(ROOT / "book_cover_audit_report.json", {})
+    for item in report.get("covers", []):
+        if not isinstance(item, dict) or item.get("slug") != slug:
+            continue
+        accepted = (
+            item.get("front_back_pair_exists") is True
+            and item.get("front_cover_status") == "GRAPHICAL_COVER_APPROVED"
+            and item.get("back_cover_status") == "GRAPHICAL_COVER_APPROVED"
+            and item.get("cover_is_graphical_content_themed") is True
+            and item.get("cover_is_typography_only_plain") is False
+            and item.get("cover_broken_or_404") is False
+        )
+        return item if accepted else None
+    return None
+
+
+def cover_inventory(
+    public_book: dict[str, Any], *, dry_run: bool, slug: str = ""
+) -> dict[str, Any]:
     front = str(public_book.get("cover_url") or public_book.get("cover_image_url") or public_book.get("coverImage") or "")
     back = str(public_book.get("back_cover_url") or public_book.get("back_cover_image_url") or public_book.get("backCoverImage") or "")
     dimensions = public_book.get("cover_dimensions") if isinstance(public_book.get("cover_dimensions"), dict) else {}
     front_dim = dimensions.get("front")
     back_dim = dimensions.get("back")
     placeholder = bool(re.search(r"placeholder|cover-in-curation|missing", front + " " + back, re.I))
-    status = "PASS" if (
+    direct_pair_passes = bool(
         front
         and back
         and "res.cloudinary.com" in front
@@ -2271,7 +2319,9 @@ def cover_inventory(public_book: dict[str, Any], *, dry_run: bool) -> dict[str, 
         and not placeholder
         and (front_dim in (REQUIRED_COVER_SIZE, tuple(REQUIRED_COVER_SIZE), None))
         and (back_dim in (REQUIRED_COVER_SIZE, tuple(REQUIRED_COVER_SIZE), None))
-    ) else "FAIL"
+    )
+    graphical_fallback = audited_graphical_cover_fallback(slug) if slug else None
+    status = "PASS" if direct_pair_passes or graphical_fallback else "FAIL"
     remote = {}
     if not dry_run and front and back:
         for side, url in [("front", front), ("back", back)]:
@@ -2283,7 +2333,7 @@ def cover_inventory(public_book: dict[str, Any], *, dry_run: bool) -> dict[str, 
                 "sha256": hashlib.sha256(fetched["body"]).hexdigest() if fetched["body"] else None,
             }
         if any(remote[side].get("dimensions") != REQUIRED_COVER_SIZE for side in ("front", "back")):
-            status = "FAIL"
+            status = "PASS" if graphical_fallback else "FAIL"
     return {
         "status": status,
         "front_url": front,
@@ -2291,6 +2341,14 @@ def cover_inventory(public_book: dict[str, Any], *, dry_run: bool) -> dict[str, 
         "front_dimensions": front_dim,
         "back_dimensions": back_dim,
         "placeholder_detected": placeholder,
+        "effective_source": (
+            "DIRECT_FRONT_BACK"
+            if direct_pair_passes
+            else "GRAPHICAL_RUNTIME_FALLBACK"
+            if graphical_fallback
+            else "MISSING_OR_UNAPPROVED"
+        ),
+        "graphical_fallback_evidence": graphical_fallback or {},
         "remote": remote,
     }
 
@@ -2362,7 +2420,8 @@ def content_integrity_report(state: BookState, rendered_chapters: list[dict[str,
     toc_entry_count = len(rendered_chapters)
     chapter_order_match = not missing_chapters and not extra_chapters
     chapter_title_match = not missing_chapters and not extra_chapters
-    toc_links_valid = all((ROOT / "data" / "controlled_publications" / state.slug / "chapters" / f"{chapter['id']}.json").exists() or chapter.get("path") for chapter in rendered_chapters)
+    controlled_base = controlled_publication_base(state.slug)
+    toc_links_valid = all((controlled_base / "chapters" / f"{chapter['id']}.json").exists() or chapter.get("path") for chapter in rendered_chapters)
     orphan_chapters: list[str] = []
     duplicate_anchor_ids = [chapter_id for chapter_id, count in Counter(str(item["id"]) for item in rendered_chapters).items() if count > 1]
     blockers = []
@@ -2473,8 +2532,9 @@ def infer_year_from_text(text: str, *patterns: str) -> int | None:
 
 def rights_metadata_report(state: BookState) -> dict[str, Any]:
     public_book, _, source_evidence, _ = load_book_payloads(state.slug)
-    approval_evidence = read_json(ROOT / "data" / "controlled_publications" / state.slug / "approval_evidence.json", {})
-    checksum = read_json(ROOT / "data" / "controlled_publications" / state.slug / "checksum_manifest.json", {})
+    controlled_base = controlled_publication_base(state.slug)
+    approval_evidence = read_json(controlled_base / "approval_evidence.json", {})
+    checksum = read_json(controlled_base / "checksum_manifest.json", {})
     manifest = state.manifest_record or {}
     source_url = str(
         first_present(
@@ -2588,11 +2648,20 @@ def rights_metadata_report(state: BookState) -> dict[str, Any]:
     if not public_domain:
         blockers.append("Public-domain evidence is incomplete or not deterministic.")
     content_use_approved = not blockers and rights_tier == "A" and verification_status in {"approved", "verified"}
-    audiobook_use_approved = content_use_approved and bool(
-        approval_evidence.get("audiobook_enabled")
-        or approval_evidence.get("audio_public_release") == "PUBLIC_AUDIO_RELEASE_APPROVED"
-        or manifest_value(manifest, "audioallowed") is True
-    )
+    explicit_audiobook_use = approval_evidence.get("audiobook_use_approved")
+    if isinstance(explicit_audiobook_use, bool):
+        audiobook_use_approved = content_use_approved and explicit_audiobook_use
+        audiobook_use_approval_source = "approval_evidence.audiobook_use_approved"
+    else:
+        # Preserve legacy packets while new packets keep derivative-use approval
+        # separate from the public release gate.
+        audiobook_use_approved = content_use_approved and bool(
+            approval_evidence.get("audiobook_enabled")
+            or approval_evidence.get("audio_public_release")
+            == "PUBLIC_AUDIO_RELEASE_APPROVED"
+            or manifest_value(manifest, "audioallowed") is True
+        )
+        audiobook_use_approval_source = "legacy_release_or_manifest_evidence"
     if content_use_approved and not audiobook_use_approved:
         blockers.append("Audiobook use approval is missing from approval evidence or manifest.")
     production_metadata_ready = not blockers
@@ -2601,7 +2670,7 @@ def rights_metadata_report(state: BookState) -> dict[str, Any]:
         "title": state.title,
         "author": state.author,
         "language": state.language,
-        "source_of_truth_path_or_reference": rel(any_source_path(state.slug)) or rel(ROOT / "data" / "controlled_publications" / state.slug / "source_evidence.json"),
+        "source_of_truth_path_or_reference": rel(any_source_path(state.slug)) or rel(controlled_publication_base(state.slug) / "source_evidence.json"),
         "source_type": str(first_present(source_evidence.get("source_format") if isinstance(source_evidence, dict) else "", manifest_value(manifest, "sourcetype"), "controlled_publication_evidence")),
         "source_url": source_url,
         "source_hash": source_hash,
@@ -2613,13 +2682,14 @@ def rights_metadata_report(state: BookState) -> dict[str, Any]:
         "original_publication_year": original_publication_year,
         "author_death_year": author_death_year,
         "rights_evidence": {
-            "source_evidence_path": rel(ROOT / "data" / "controlled_publications" / state.slug / "source_evidence.json"),
-            "approval_evidence_path": rel(ROOT / "data" / "controlled_publications" / state.slug / "approval_evidence.json"),
-            "checksum_manifest_path": rel(ROOT / "data" / "controlled_publications" / state.slug / "checksum_manifest.json"),
+            "source_evidence_path": rel(controlled_publication_base(state.slug) / "source_evidence.json"),
+            "approval_evidence_path": rel(controlled_publication_base(state.slug) / "approval_evidence.json"),
+            "checksum_manifest_path": rel(controlled_publication_base(state.slug) / "checksum_manifest.json"),
         },
         "attribution_text": str(first_present(public_book.get("attribution_notice"), manifest_value(manifest, "attributionnotice"))),
         "content_use_approved": content_use_approved,
         "audiobook_use_approved": audiobook_use_approved,
+        "audiobook_use_approval_source": audiobook_use_approval_source,
         "production_metadata_ready": production_metadata_ready,
         "rights_metadata": rights_metadata,
         "missing_fields": missing_fields,

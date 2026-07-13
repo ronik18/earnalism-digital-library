@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-13T07:54:57Z",
+  "owner_decision": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
+  "intake_root": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake",
+  "expected_layout": "{slug}/received_audio/{one source-bound WAV, FLAC, or MP3}",
+  "title_count": 14,
+  "received_title_count": 0,
+  "titles": {
+    "book-d19e96859f": {
+      "slug": "book-d19e96859f",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/book-d19e96859f",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/book-d19e96859f/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "book-f5d593e1f4": {
+      "slug": "book-f5d593e1f4",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/book-f5d593e1f4",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/book-f5d593e1f4/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-f5d593e1f4 --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "dsires-baby": {
+      "slug": "dsires-baby",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/dsires-baby",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/dsires-baby/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug dsires-baby --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "muchiram-gurer-jibanchorit": {
+      "slug": "muchiram-gurer-jibanchorit",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/muchiram-gurer-jibanchorit",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/muchiram-gurer-jibanchorit/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug muchiram-gurer-jibanchorit --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "sredni-vashtar": {
+      "slug": "sredni-vashtar",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/sredni-vashtar",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/sredni-vashtar/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug sredni-vashtar --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "the-cop-and-the-anthem": {
+      "slug": "the-cop-and-the-anthem",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-cop-and-the-anthem",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/the-cop-and-the-anthem/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-cop-and-the-anthem --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "the-gift-of-the-magi": {
+      "slug": "the-gift-of-the-magi",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-gift-of-the-magi",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/the-gift-of-the-magi/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-gift-of-the-magi --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "the-last-leaf": {
+      "slug": "the-last-leaf",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-last-leaf",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/the-last-leaf/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-last-leaf --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "the-masque-of-the-red-death": {
+      "slug": "the-masque-of-the-red-death",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-masque-of-the-red-death",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/the-masque-of-the-red-death/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-masque-of-the-red-death --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "the-monkeys-paw": {
+      "slug": "the-monkeys-paw",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-monkeys-paw",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/the-monkeys-paw/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-monkeys-paw --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "the-necklace": {
+      "slug": "the-necklace",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-necklace",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/the-necklace/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-necklace --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "the-open-window": {
+      "slug": "the-open-window",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-open-window",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/the-open-window/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-open-window --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "the-tell-tale-heart": {
+      "slug": "the-tell-tale-heart",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-tell-tale-heart",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/the-tell-tale-heart/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-tell-tale-heart --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    },
+    "the-yellow-wallpaper": {
+      "slug": "the-yellow-wallpaper",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-yellow-wallpaper",
+      "packet_complete": true,
+      "intake_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_intake/the-yellow-wallpaper/received_audio",
+      "accepted_formats": [
+        "wav",
+        "flac",
+        "mp3"
+      ],
+      "candidate_kind": "human_narration",
+      "received_files": [],
+      "received_file_count": 0,
+      "received_preflight_path": null,
+      "status": "WAITING_EXTERNAL_SOURCE_BOUND_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-yellow-wallpaper --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "public_audio_allowed_now": false
+    }
+  }
+}

@@ -12,7 +12,15 @@ export const BATCH_1_READER_ONLY_SLUGS = [
   "pather-panchali",
   "eyesore-chokher-bali",
 ];
-export const LIVE_APPROVED_READER_SLUGS = [LIVE_APPROVED_SLUG, ...BATCH_1_READER_ONLY_SLUGS];
+export const PAID_ONLY_READER_SLUGS = [
+  "book-d19e96859f",
+  "book-f5d593e1f4",
+];
+export const LIVE_APPROVED_READER_SLUGS = [
+  LIVE_APPROVED_SLUG,
+  ...BATCH_1_READER_ONLY_SLUGS,
+  ...PAID_ONLY_READER_SLUGS,
+];
 
 export const DRACULA_SOURCE_NOTE = "Project Gutenberg eBook #345";
 export const DRACULA_RIGHTS_NOTE = "Approved classic reading release";
@@ -79,6 +87,10 @@ export const DRACULA_FALLBACK_BOOK = {
     order: index,
     is_preview: index === 0,
   })),
+  reader_enabled: true,
+  preview_enabled: true,
+  reader_url: `/reader/${LIVE_APPROVED_SLUG}`,
+  preview_url: `/reader/${LIVE_APPROVED_SLUG}`,
   audiobook_enabled: false,
   generate_audiobook: false,
   audiobook_assets: {},
@@ -204,7 +216,7 @@ export function isLiveApprovedBook(book = {}) {
   if (status && !["approved", "published_core_reading_only"].includes(status)) return false;
   if (slug !== LIVE_APPROVED_SLUG) {
     const publicationStatus = String(book?.publication_status || book?.launch_status || book?.publicationStatus || "").trim().toUpperCase();
-    const readerEnabled = book?.reader_enabled !== false && book?.allowPublicReading !== false;
+    const readerEnabled = book?.reader_enabled === true || book?.allowPublicReading === true;
     const published = book?.is_published !== false && book?.isPublic !== false && book?.isLive !== false;
     const noCommerce = book?.allowCheckout !== true && book?.allowPayment !== true;
     const noAudio = book?.audio_enabled !== true && book?.audiobook_enabled !== true && book?.generate_audiobook !== true;
@@ -228,7 +240,11 @@ export function canShowStartReading(book = {}) {
 }
 
 export function canShowPreview(book = {}) {
-  return isLiveApprovedBook(book);
+  if (!isLiveApprovedBook(book)) return false;
+  const hasExplicitPreview = Array.isArray(book?.chapters)
+    && book.chapters.some((chapter) => chapter?.id && chapter?.is_preview === true);
+  const previewUrl = String(book?.preview_url || "").trim();
+  return hasExplicitPreview && book?.preview_enabled === true && Boolean(previewUrl);
 }
 
 export function canShowReadingPass(book = {}) {

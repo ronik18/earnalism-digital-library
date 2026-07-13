@@ -221,6 +221,23 @@ def normalize_upper(value: Any) -> str:
     return normalize_text(value).upper()
 
 
+def explicit_preview_chapter_ids(book: dict[str, Any]) -> tuple[str, ...]:
+    """Return only chapter ids carrying an explicit preview approval marker."""
+    chapters = book.get("chapters")
+    if not isinstance(chapters, list):
+        return ()
+    preview_ids: list[str] = []
+    seen: set[str] = set()
+    for chapter in chapters:
+        if not isinstance(chapter, dict) or chapter.get("is_preview") is not True:
+            continue
+        chapter_id = normalize_text(chapter.get("id"))
+        if chapter_id and chapter_id not in seen:
+            seen.add(chapter_id)
+            preview_ids.append(chapter_id)
+    return tuple(preview_ids)
+
+
 def nested_dict(book: dict[str, Any], key: str) -> dict[str, Any]:
     value = book.get(key)
     return value if isinstance(value, dict) else {}
@@ -552,6 +569,17 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
         issues.append("reader_manifest.json chapter_count must be greater than zero.")
     if reader_manifest.get("audio_enabled") is not False or reader_manifest.get("audiobook_enabled") is not False:
         issues.append("reader_manifest.json audio flags are not disabled.")
+    manifest_preview_ids = {
+        normalize_text(chapter_id)
+        for chapter_id in (reader_manifest.get("preview_chapter_ids") or [])
+        if normalize_text(chapter_id)
+    }
+    manifest_chapter_preview_ids = set(explicit_preview_chapter_ids(reader_manifest))
+    public_chapter_preview_ids = set(explicit_preview_chapter_ids(public_book))
+    if manifest_preview_ids != manifest_chapter_preview_ids:
+        issues.append("reader_manifest.json preview_chapter_ids do not match explicit chapter preview markers.")
+    if manifest_chapter_preview_ids != public_chapter_preview_ids:
+        issues.append("public_book.json and reader_manifest.json explicit preview chapters do not match.")
     for key in ("source_hash", "content_hash", "provenance_hash"):
         if not normalize_text(source_evidence.get(key)):
             issues.append(f"source_evidence.json missing {key}.")
@@ -762,7 +790,7 @@ def can_expose_reader(book: dict[str, Any]) -> bool:
 
 
 def can_expose_preview(book: dict[str, Any]) -> bool:
-    return is_live_approved_book(book)
+    return is_live_approved_book(book) and bool(explicit_preview_chapter_ids(book))
 
 
 def can_expose_audio(book: dict[str, Any]) -> bool:
@@ -815,17 +843,18 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
     projected = safe_public_fields(book)
     slug = normalize_slug(book.get("slug"))
     live = status == PUBLIC_STATUS_LIVE_APPROVED
+    preview = live and can_expose_preview(book)
     projected.update(
         {
             "publication_status": status,
             "launch_status": status,
             "reader_enabled": live,
-            "preview_enabled": live,
+            "preview_enabled": preview,
             "audio_enabled": False,
             "audiobook_enabled": False,
             "public_route": f"/book/{slug}" if live else "",
             "reader_url": f"/reader/{slug}" if live else "",
-            "preview_url": f"/reader/{slug}" if live else "",
+            "preview_url": f"/reader/{slug}" if preview else "",
             "audio_url": "",
             "audio_status": "NOT_AVAILABLE" if live else "BLOCKED_UNTIL_RIGHTS_QA",
             "cta_label": (
@@ -837,7 +866,9 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
             ),
             "secondary_cta_label": (
                 "Read Chapter 1 Free"
-                if live and slug == LIVE_APPROVED_SLUG
+                if preview and slug == LIVE_APPROVED_SLUG
+                else "Read Free Preview"
+                if preview
                 else "Details"
                 if live
                 else "Coming Soon"

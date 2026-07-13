@@ -1424,7 +1424,7 @@ describe("UX conversion static signals", () => {
     expect(account).toContain("Use this wallet to continue Dracula after the free preview.");
     expect(account).toContain("Open Dracula Shelf");
     expect(reader).toContain('data-testid="reader-locked-wallet-note"');
-    expect(reader).toContain("Later Dracula chapters ask for sign-in and reading time from your wallet.");
+    expect(reader).toContain("Other chapters require sign-in and reading time from your wallet.");
     expect(useSeo).toContain("A calm Bengali and English digital library");
   });
 
