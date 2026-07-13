@@ -153,3 +153,20 @@ Next exact command:
 ```bash
 python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json >/dev/null && python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json >/dev/null && jq -e '.accounting.cumulative_conservative_estimated_spend_usd == 9.754 and .accounting.actual_spend_usd == null and .accounting.budget_remaining_after_estimated_spend_usd == 165.246' internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json >/dev/null && git diff --check
 ```
+
+## 2026-07-13 Parallel Acceleration Checkpoint
+
+- Coordinator worktree: clean `origin/main` commit `3709321` on `codex/sprint1-acceleration-evidence`.
+- Agents: six read-only lanes; paid calls and release mutations remained coordinator-only.
+- Runtime caps: owner-supplied values were passed inline because the parent shell did not persist exports.
+- Credentials: Sarvam, OpenAI, Google credential file, and Google project were set; `google.auth.default()` resolved successfully.
+- Serialized title: `dsires-baby`, the first untouched short English candidate after respecting prior attempt memory.
+- Preflight: rights/sanitation/source binding passed; four Studio-C passages; `$0.03616` bounded estimate.
+- Execute result: provider DNS unavailable before synthesis; zero synthesis calls, no audio, no listening QA, no release mutation, and zero booked spend.
+- Lock: restored byte-for-byte to the authoritative closed hash.
+- Release truth: 32 public readers, two approved public audiobooks, 30 audio-hidden titles.
+- Next serialized action: retry the same dsires fingerprint from a network-enabled shell; do not advance to full TTS until all representative samples pass.
+
+## D19 Tracked-Artifact Release-Truth Repair
+
+The approved-audio guard found stale D19 `public_book.json` and `approval_evidence.json` fields that contradicted its disabled reader manifest. Both controlled-publication mirrors are now prepared fail-closed: reader access remains live; audio flags, provider, slug, and asset objects are empty; approval is `PUBLIC_AUDIO_RELEASE_NOT_APPROVED`; and packet checksums match. Eleven unique audio URLs were removed from each mirror. Focused backend release-truth tests pass `35/35`. This is a local source/test repair pending commit, PR, merge, and normal deployment; it does not approve or publish D19 audio.

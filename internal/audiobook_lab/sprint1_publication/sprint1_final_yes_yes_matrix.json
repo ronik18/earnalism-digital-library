@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T22:56:24Z",
+  "generated_at": "2026-07-13T04:13:10Z",
   "parallel_sprint": {
     "execution_board": "internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json",
     "paid_calls_serialized": true,
@@ -82,7 +82,8 @@
       "parallel_lane": 2,
       "parallel_agent_role": "Short Bengali High-ROI Lane",
       "parallel_agent_id": "019f57d2-7210-7930-96bd-df620ee5d77d",
-      "parallel_agent_nickname": "Galileo"
+      "parallel_agent_nickname": "Galileo",
+      "controlled_publication_audio_truth_repair": "PREPARED_LOCAL_BOTH_MIRRORS_FAIL_CLOSED_PENDING_PR_DEPLOY"
     },
     {
       "slug": "nishkriti",
@@ -595,19 +596,19 @@
       "language": "English",
       "publicly_rendered_book": "Yes",
       "publicly_available_audiobook": "No",
-      "quality_score": "NOT_RUN",
-      "evidence_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/dsires-baby.json",
+      "quality_score": "NOT_RUN_NO_AUDIO_GENERATED; SOURCE_PREFLIGHT_PASS; GOOGLE_STUDIO_C_AUDITION_BLOCKED_BEFORE_SYNTHESIS_BY_DNS",
+      "evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_release_gate_evidence.json",
       "cost_used_usd": 0.0,
-      "final_status": "SPRINT_TARGET_INCOMPLETE",
-      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
-      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug dsires-baby --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "final_status": "PROVIDER_NETWORK_REACHABILITY_REQUIRED",
+      "exact_blocker": "GOOGLE_TTS_DNS_UNAVAILABLE_IN_CURRENT_EXECUTION_SANDBOX_BEFORE_SYNTHESIS",
+      "next_command": "SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=40 EARNALISM_APPROVE_GOOGLE_ENGLISH_PRIVATE_AUDITION=true PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py audition --sanitized-source /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/sanitized_source.txt --input-manifest /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /tmp/earnalism-dsires-stage-acceleration-private --voice en-GB-Studio-C --language-code en-GB --usd-per-million-chars 20 --run-budget-usd 1 --title-budget-usd 30 --sprint-budget-usd 175 --sprint-spend-usd 10.1766 --minimum-listening-score 9.4 --minimum-listening-confidence 0.9 --speaking-rate 0.94 --execute",
       "production_book_http": 200,
       "production_manifest_http": 200,
       "release_gates_passed": false,
       "parallel_lane": 3,
       "parallel_agent_role": "Short English Lane",
-      "parallel_agent_id": "019f57d2-767a-7c53-be1b-e101a6209a07",
-      "parallel_agent_nickname": "Dalton"
+      "parallel_agent_id": "019f59ac-9e6a-73d2-ae2e-1ea2b5b0468b",
+      "parallel_agent_nickname": "Pasteur"
     },
     {
       "slug": "the-cop-and-the-anthem",

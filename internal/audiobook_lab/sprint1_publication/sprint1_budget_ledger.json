@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-07-12T22:56:24Z",
+  "generated_at": "2026-07-13T04:13:10Z",
   "currency": "USD",
-  "owner_decision": "AUTHORIZE_PARALLEL_SPRINT1_PUBLIC_READER_AND_AUDIOBOOK_LIVE_EXECUTION_WITH_175_USD_CAP",
+  "owner_decision": "AUTHORIZE_PARALLEL_SPRINT1_YES_YES_EXECUTION_WITH_AUTONOMOUS_REPAIR_AND_PUBLICATION",
   "caps": {
     "sprint_total_usd": 175.0,
     "per_title_usd": 30.0
@@ -17,7 +17,8 @@
     "actual_billing_status": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
     "accounting_basis": "Latest completed serialized wrapper cumulative estimate; estimates are not provider invoices.",
     "authoritative_checkpoint_source": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2g_full_qa.json",
-    "authoritative_checkpoint_finished_at": "2026-07-12T22:56:24Z"
+    "authoritative_checkpoint_finished_at": "2026-07-12T22:56:24Z",
+    "latest_nonbillable_attempt": "dsires-baby Studio-C audition blocked before synthesis at 2026-07-13T04:13:10Z"
   },
   "entries": [
     {
@@ -45,6 +46,18 @@
       "actual_spend_usd": null,
       "actual_billing_status": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
       "status": "RECONCILED_STAGE2G_FAIL_CLOSED"
+    },
+    {
+      "entry_id": "dsires-baby-studio-c-audition-network-blocked",
+      "scope": "Source-bound private Google Studio-C representative audition; DNS failed before synthesis",
+      "attempted_stage_estimate_usd": 0.03616,
+      "conservative_estimated_spend_usd": 0.0,
+      "cumulative_conservative_estimated_spend_usd": 10.1766,
+      "provider_calls_ran": false,
+      "synthesis_calls": 0,
+      "actual_spend_usd": 0.0,
+      "actual_billing_status": "NO_SYNTHESIS_CALL_NOT_REPORTED",
+      "status": "BLOCKED_BEFORE_SYNTHESIS_NETWORK_DNS_LOCK_RESTORED"
     }
   ],
   "checkpoint_chain_tail": [
@@ -299,6 +312,20 @@
       "lock_restored": true,
       "result": "ASR_SOURCE_MISMATCH_AND_LISTENING_QA_REPAIR_REQUIRED",
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2g_full_qa.json"
+    },
+    {
+      "stage": "dsires_baby_studio_c_source_bound_audition",
+      "finished_at": "2026-07-13T04:13:10Z",
+      "prior_estimated_spend_usd": 10.1766,
+      "attempted_stage_estimate_usd": 0.03616,
+      "estimated_stage_usd_booked": 0.0,
+      "estimated_cumulative_checkpoint_usd": 10.1766,
+      "provider_calls_ran": false,
+      "synthesis_calls": 0,
+      "actual_provider_billing": "NO_SYNTHESIS_CALL_NOT_REPORTED",
+      "lock_restored": true,
+      "result": "BLOCKED_BEFORE_SYNTHESIS_PROVIDER_DNS_UNAVAILABLE",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_release_gate_evidence.json"
     }
   ],
   "overlapping_title_estimates_not_additive": [
@@ -320,7 +347,13 @@
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/muchiram_google_full_qa.json"
     }
   ],
-  "post_cutoff_unbooked_observations": [],
+  "post_cutoff_unbooked_observations": [
+    {
+      "slug": "dsires-baby",
+      "observation": "The bounded estimate was not booked because synthesis_calls=0 and provider_calls_ran=false.",
+      "retryable_attempt_fingerprint": "bccf002da4e9713e3870b602c07e65ae1ad0a49fbd1904e5730b823a0d605d4e"
+    }
+  ],
   "serialized_paid_call_rule": {
     "paid_execution_serialized": true,
     "maximum_concurrent_paid_calls": 1,
@@ -329,7 +362,7 @@
     "actual_billing_must_remain_unknown_until_reported": true,
     "plateaued_attempts_must_not_repeat": true,
     "lock_status": "RESTORED_BYTE_FOR_BYTE_AFTER_STAGE2G_TTS_ASR_AND_LISTENING_QA",
-    "next_serialized_action": "NO_PAID_CALL; VALIDATE_SOURCE_BOUND_HUMAN_NARRATION_OR_LICENSED_AUDIO_WHEN_RECEIVED"
+    "next_serialized_action": "RETRY DSIRES-BABY SOURCE-BOUND STUDIO-C AUDITION FROM A NETWORK-ENABLED SHELL"
   },
   "reconciliation_invariants": {
     "prior_plus_increment_equals_checkpoint": true,
@@ -341,7 +374,10 @@
     "d19_raw_asr_1_3504_fails_global_9_7_gate": true,
     "d19_listening_minimum_8_0_and_confidence_0_85_fail": true,
     "d19_first_and_last_audio_boundaries_fail": true,
-    "d19_not_release_ready": true
+    "d19_not_release_ready": true,
+    "dsires_attempt_booked_zero_spend": true,
+    "dsires_lock_restored_byte_for_byte": true,
+    "dsires_release_state_unchanged": true
   },
-  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
+  "next_exact_command": "See internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_report.md for the network-enabled serialized audition retry command."
 }

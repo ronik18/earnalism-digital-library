@@ -112,7 +112,12 @@
     "reader_manifest_audio_enabled": false,
     "reader_manifest_audio_assets": 0,
     "observed_public_endpoint_http_status": 404,
-    "public_audio_status": "AUDIO_HIDDEN_NOT_PUBLIC"
+    "public_audio_status": "AUDIO_HIDDEN_NOT_PUBLIC",
+    "controlled_publication_audio_truth_repair": "PREPARED_LOCAL_BOTH_MIRRORS_FAIL_CLOSED_PENDING_PR_DEPLOY",
+    "controlled_publication_audio_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+    "controlled_publication_audio_enabled": false,
+    "controlled_publication_audio_assets": 0,
+    "controlled_publication_audio_urls_removed": 11
   },
   "blockers": [
     "ASR_SOURCE_ALIGNMENT_1.3504_BELOW_9.7",

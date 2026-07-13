@@ -77,6 +77,7 @@ PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration
 - Objective failures: raw ASR/source `1.3504 / 10`, first/last false, listening scores `8.0, 8.0, 9.4, 9.4, 9.4, 8.0`, confidence `0.85`, fatal list-reading rhythm.
 - Construction audit `10.0` is provenance evidence only and is not an ASR substitute.
 - Conservative estimated spend: `$1.5318` title cumulative; `$0.4226` Stage 2G; actual provider billing unknown.
+- Repository release-truth repair prepared: both controlled-publication mirrors now say `PUBLIC_AUDIO_RELEASE_NOT_APPROVED`, expose zero audio assets, and contain no D19 audiobook URL. Reader access is unchanged; PR/deploy remains pending.
 - Automated Google and Sarvam retries stop. The source-bound human narration packet is at `internal/audiobook_lab/sprint1_publication/human_narration_packets/book-d19e96859f`.
 - Upload, release packet, metadata, endpoint, browser release, and publication remain blocked.
 - Next command:
@@ -301,13 +302,16 @@ PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration
 
 ## dsires-baby / Désirée's Baby
 
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE`
+- Repair state: `PROVIDER_NETWORK_REACHABILITY_REQUIRED`
+- Blocker: `GOOGLE_TTS_DNS_UNAVAILABLE_IN_CURRENT_EXECUTION_SANDBOX_BEFORE_SYNTHESIS`
 - Reader HTTP: `200`
-- Manifest HTTP: `200`
-- Next command:
+- Manifest HTTP: `200`; audio remains disabled.
+- Source preflight: `PASS`, 11,974 characters, rights/sanitation bound to SHA-256 `587455ed554ef64d19f0ea7dcd31940d242aa759f5132b6514b130efa4a64a89`.
+- Attempt: Studio-C fingerprint `bccf002da4e9713e3870b602c07e65ae1ad0a49fbd1904e5730b823a0d605d4e`; zero synthesis calls; `$0.00` booked; lock restored byte-for-byte.
+- Next command from a network-enabled shell:
 
 ```bash
-python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.json --book-slug dsires-baby --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com
+SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=40 EARNALISM_APPROVE_GOOGLE_ENGLISH_PRIVATE_AUDITION=true PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py audition --sanitized-source /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/sanitized_source.txt --input-manifest /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /tmp/earnalism-dsires-stage-acceleration-private --voice en-GB-Studio-C --language-code en-GB --usd-per-million-chars 20 --run-budget-usd 1 --title-budget-usd 30 --sprint-budget-usd 175 --sprint-spend-usd 10.1766 --minimum-listening-score 9.4 --minimum-listening-confidence 0.9 --speaking-rate 0.94 --execute
 ```
 
 ## the-cop-and-the-anthem / The Cop and the Anthem

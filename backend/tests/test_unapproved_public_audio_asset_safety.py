@@ -55,3 +55,22 @@ def test_known_approved_audiobooks_retain_provider_assets():
         public_book = read_json(title_dir / "public_book.json")
         assert audio_release_approved(approval, public_book)
         assert str(public_book["audiobook_assets"]["mp3"]).startswith("https://")
+
+
+def test_d19_failed_qa_packet_is_explicitly_audio_hidden():
+    title_dir = CONTROLLED_ROOT / "book-d19e96859f"
+    approval = read_json(title_dir / "approval_evidence.json")
+    public_book = read_json(title_dir / "public_book.json")
+
+    assert approval["audio_public_release"] == "PUBLIC_AUDIO_RELEASE_NOT_APPROVED"
+    assert approval["audiobook_enabled"] is False
+    assert public_book["audio_enabled"] is False
+    assert public_book["audiobook_enabled"] is False
+    assert public_book["generate_audiobook"] is False
+    assert public_book["audiobook_assets"] == {}
+    assert public_book["audiobook"] == {}
+    assert not [
+        url
+        for key in AUDIO_KEYS
+        for url in public_urls(public_book.get(key))
+    ]
