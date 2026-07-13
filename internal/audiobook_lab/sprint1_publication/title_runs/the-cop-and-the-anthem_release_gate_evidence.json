@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T19:35:15Z",
+  "generated_at": "2026-07-13T05:49:15Z",
   "slug": "the-cop-and-the-anthem",
   "title": "The Cop and the Anthem",
   "language": "English",
@@ -12,14 +12,43 @@
   },
   "publicly_rendered_book": "Yes",
   "publicly_available_audiobook": "No",
-  "quality_score": "NOT_RUN",
-  "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
-  "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
-  "estimated_remaining_cost_usd": 0.1736,
-  "evidence_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-cop-and-the-anthem.json",
-  "next_action": "Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied",
-  "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-cop-and-the-anthem --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
-  "provider_calls_ran_this_sprint": false,
+  "quality_score": "Studio-C 8.4,8.4,8.4,8.5; Chirp3-HD-Achird 8.4,9.4,8.5,8.5; minimum confidence 0.90; no fatal flags",
+  "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
+  "exact_blocker": "TWO_MATERIALLY_DIFFERENT_GOOGLE_VOICE_FAMILIES_FAILED_THE_ALL_SAMPLES_9.4_REPRESENTATIVE_GATE",
+  "estimated_spend_usd": 0.47452,
+  "actual_provider_billing": "NOT_REPORTED",
+  "estimated_remaining_cost_usd": null,
+  "evidence_path": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-cop-and-the-anthem/metadata.json",
+  "next_action": "Obtain source-bound human narration or licensed audio and validate it against the generated packet before full release QA.",
+  "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-cop-and-the-anthem --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "attempts": [
+    {
+      "provider": "google",
+      "voice": "en-GB-Studio-C",
+      "speaking_rate": 0.94,
+      "fingerprint": "bd4b31c2312dfa26",
+      "scores": [8.4, 8.4, 8.4, 8.5],
+      "minimum_confidence": 0.9,
+      "fatal_flags": [],
+      "status": "BLOCKED_LISTENING_QA"
+    },
+    {
+      "provider": "google",
+      "voice": "en-GB-Chirp3-HD-Achird",
+      "speaking_rate": 0.9,
+      "fingerprint": "9311f74b6465c550",
+      "scores": [8.4, 9.4, 8.5, 8.5],
+      "minimum_confidence": 0.9,
+      "fatal_flags": [],
+      "status": "BLOCKED_LISTENING_QA"
+    }
+  ],
+  "human_narration_packet": {
+    "status": "NARRATION_IMPORT_PACKET_READY_AUDIO_HIDDEN",
+    "packet_fingerprint_sha256": "d3c70edafe2cec09e6fd081dbf6e03b07214d424513ee9588d26ab7e6fe62202",
+    "sanitized_manuscript_sha256": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab"
+  },
+  "provider_calls_ran_this_sprint": true,
   "release_gate_mutated_this_sprint": false,
   "public_audio_approved_this_sprint": false
 }

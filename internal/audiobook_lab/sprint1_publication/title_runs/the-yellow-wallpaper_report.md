@@ -1,24 +1,18 @@
-# The Yellow Wallpaper Parallel Sprint Report
+# The Yellow Wallpaper Autonomous Sprint Report
 
-Generated: `2026-07-12T19:35:15Z`
+Generated: `2026-07-13T06:26:30Z`
 
-- Slug: `the-yellow-wallpaper`
-- Language: `English`
-- Assigned lane: `3 - Short English Lane`
-- Assigned agent: `Dalton (019f57d2-767a-7c53-be1b-e101a6209a07)`
 - Public reader: `Yes`
 - Public audiobook: `No`
-- Quality evidence: `NOT_RUN`
-- Estimated remaining cost: `$0.3834`
-- Final state: `SPRINT_TARGET_INCOMPLETE`
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
-- Evidence: `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-yellow-wallpaper.json`
-- Next action: Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied
+- Final state: `HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED`
+- Conservative estimated spend: `$0.47248`; actual provider billing was not reported
+
+Studio-C and Chirp3-HD-Achird each scored `8.4, 9.4, 8.4, 8.4` at the source-bound representative gate. Confidence remained at least `0.90` and no fatal flags were raised, but three of four samples missed the required `9.4`. Full TTS, ASR, upload, publication, and release mutation did not run.
 
 ## Next Command
 
 ```bash
-python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-yellow-wallpaper --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-yellow-wallpaper --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav
 ```
 
-No provider call, release-gate mutation, or public audio exposure was performed by this materializer.
+Both paid attempts restored `paid_tts.lock`; private audition audio remains outside public assets.

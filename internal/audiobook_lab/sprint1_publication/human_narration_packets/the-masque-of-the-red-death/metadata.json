@@ -1,0 +1,98 @@
+{
+  "author": "Edgar Allan Poe",
+  "candidate_kind": "human_narration",
+  "delivery": {
+    "accepted_formats": [
+      "wav_pcm_44.1_or_48_khz",
+      "flac_44.1_or_48_khz",
+      "mp3_128kbps_or_higher_44.1_or_48_khz"
+    ],
+    "single_complete_file_required": true
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-masque-of-the-red-death --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "language": {
+    "code": "en",
+    "name": "English"
+  },
+  "packet_fingerprint_sha256": "5bbdfc7aa00d70818ab65fdf829c47c4b69104eb7668131a9cd5c7eda84f2e97",
+  "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
+  "prior_provider_evidence": {
+    "classification": "INCOMPLETE_FAIL_CLOSED",
+    "evidence_paths": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/the-masque-of-the-red-death_release_gate_evidence.json"
+    ],
+    "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+    "failed_attempts": [],
+    "non_release_passes": [],
+    "provider_attempts": [],
+    "quality_summary": "NOT_RUN",
+    "release_evidence_found": true
+  },
+  "pronunciation_checkpoints": [
+    "The Masque of the Red Death",
+    "Edgar Allan Poe",
+    "Recurring names/terms: And, But, Death, His, Prince, Prospero, Red, These",
+    "Confirm every proper noun and period-specific term before recording; preserve the written form."
+  ],
+  "release_requirements": {
+    "asr_manuscript_score_min": 9.7,
+    "blocker_list_must_be_empty": true,
+    "confidence_score_min": 0.9,
+    "fatal_flags_required_false": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "placeholder_audio_detected"
+    ],
+    "first_and_last_words_must_match": true,
+    "listening_score_min": 9.3,
+    "measured_sync_required": "paragraph_or_section",
+    "no_missing_duplicated_or_reordered_content": true,
+    "public_audio_must_remain_hidden_until_all_gates_pass": true,
+    "sync_may_not_be_estimated": true
+  },
+  "rights": {
+    "provenance_hash": "fccc97a08521519d711236c769280c844fb91a421fca2976bfe8b149bbab6db1",
+    "rights_basis": "Edgar Allan Poe died 1849; first published 1842. Public domain in India and the U.S."
+  },
+  "safety": {
+    "audio_generated": false,
+    "provider_calls_ran": false,
+    "public_audio_status": "AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES",
+    "release_gate_mutated": false
+  },
+  "sanitization": {
+    "removed_fragments": [],
+    "sanitizer_version": "narration-import-sanitizer-v1",
+    "status": "PASS"
+  },
+  "schema_version": 2,
+  "slug": "the-masque-of-the-red-death",
+  "source_binding": {
+    "binding_sha256": "3a6b1f0cb7f6e9ec25f2763949daec2704dce33025ca5b5b2e7aef1156bb5129",
+    "chapters": [
+      {
+        "chapter": "chapter-001.json",
+        "chapter_title": "The Masque of the Red Death",
+        "raw_characters": 13885,
+        "recorded_source_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+        "sanitized_characters": 13885,
+        "sanitized_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3"
+      }
+    ],
+    "raw_manuscript_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+    "sanitized_manuscript_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+    "source_hash": "2264be57608b30c4af99db7b1d430accae5a7c4d9da738ac04651f7ef74bc266",
+    "status": "VERIFIED_SOURCE_AND_CHAPTER_HASHES"
+  },
+  "style_notes": [
+    "Use clear literary English with natural dialogue changes and deliberate punctuation pauses.",
+    "Preserve period diction, irony, tension, and humor without melodrama or character caricature.",
+    "Do not paraphrase names, quoted speech, spelling, or narrative transitions.",
+    "Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed transitions, and choppy joins."
+  ],
+  "style_profile": "english_literary_natural_dialogue",
+  "title": "The Masque of the Red Death"
+}

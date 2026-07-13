@@ -1,0 +1,98 @@
+{
+  "author": "Kate Chopin",
+  "candidate_kind": "human_narration",
+  "delivery": {
+    "accepted_formats": [
+      "wav_pcm_44.1_or_48_khz",
+      "flac_44.1_or_48_khz",
+      "mp3_128kbps_or_higher_44.1_or_48_khz"
+    ],
+    "single_complete_file_required": true
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug dsires-baby --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "language": {
+    "code": "en",
+    "name": "English"
+  },
+  "packet_fingerprint_sha256": "b085d4ca229d7d0633309c2b6bcc6c47a48ffbe7c29cf6fc142bf82c73dcde6e",
+  "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
+  "prior_provider_evidence": {
+    "classification": "ALTERNATE_VOICE_AUDITION_REQUIRED",
+    "evidence_paths": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_release_gate_evidence.json"
+    ],
+    "exact_blocker": "STUDIO_C_DIALOGUE_RISK_SCORE_7.5_CONFIDENCE_0.85_WITH_ROBOTIC_TEXTURE_AND_MECHANICAL_CADENCE; MIDDLE_SCORE_8.4_BELOW_9.4",
+    "failed_attempts": [],
+    "non_release_passes": [],
+    "provider_attempts": [],
+    "quality_summary": "",
+    "release_evidence_found": true
+  },
+  "pronunciation_checkpoints": [
+    "Désirée's Baby",
+    "Kate Chopin",
+    "Recurring names/terms: And, Armand, Aubigny, Aubigny’s, Blanche’s, But, Come, For, God, Look, L’Abri, Madame",
+    "Confirm every proper noun and period-specific term before recording; preserve the written form."
+  ],
+  "release_requirements": {
+    "asr_manuscript_score_min": 9.7,
+    "blocker_list_must_be_empty": true,
+    "confidence_score_min": 0.9,
+    "fatal_flags_required_false": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "placeholder_audio_detected"
+    ],
+    "first_and_last_words_must_match": true,
+    "listening_score_min": 9.3,
+    "measured_sync_required": "paragraph_or_section",
+    "no_missing_duplicated_or_reordered_content": true,
+    "public_audio_must_remain_hidden_until_all_gates_pass": true,
+    "sync_may_not_be_estimated": true
+  },
+  "rights": {
+    "provenance_hash": "d8fbdf6d75f8e5260b619728efb926a71e9166fb659a93fcf7216cda9caaf44a",
+    "rights_basis": "Kate Chopin died 1904; first published 1893. Public domain in India and the U.S."
+  },
+  "safety": {
+    "audio_generated": false,
+    "provider_calls_ran": false,
+    "public_audio_status": "AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES",
+    "release_gate_mutated": false
+  },
+  "sanitization": {
+    "removed_fragments": [],
+    "sanitizer_version": "narration-import-sanitizer-v1",
+    "status": "PASS"
+  },
+  "schema_version": 2,
+  "slug": "dsires-baby",
+  "source_binding": {
+    "binding_sha256": "7c79b4ad1ddc35287e5fbf0cb8cec31efd57c156a812d7a481fb8f825f723344",
+    "chapters": [
+      {
+        "chapter": "chapter-001.json",
+        "chapter_title": "Désirée's Baby",
+        "raw_characters": 11973,
+        "recorded_source_sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+        "sanitized_characters": 11973,
+        "sanitized_sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98"
+      }
+    ],
+    "raw_manuscript_sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+    "sanitized_manuscript_sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+    "source_hash": "2006e24206b918744a8a8a7589e883389759ccd9cbef93ae8ce260d633dab5d9",
+    "status": "VERIFIED_SOURCE_AND_CHAPTER_HASHES"
+  },
+  "style_notes": [
+    "Use clear literary English with natural dialogue changes and deliberate punctuation pauses.",
+    "Preserve period diction, irony, tension, and humor without melodrama or character caricature.",
+    "Do not paraphrase names, quoted speech, spelling, or narrative transitions.",
+    "Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed transitions, and choppy joins."
+  ],
+  "style_profile": "english_literary_natural_dialogue",
+  "title": "Désirée's Baby"
+}

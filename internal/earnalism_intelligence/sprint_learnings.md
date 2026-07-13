@@ -347,3 +347,12 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A successful provider API call is not a representative-audition pass. No full TTS, ASR, upload, release mutation, or publication followed the failed quality gate.
 - Stage 2H conservatively estimates `$0.23616` and raises the Sprint checkpoint to `$10.41276 / $175`; actual billing remains unknown and `paid_tts.lock` restored byte-for-byte.
 - The cheapest safe next action is one materially different `en-GB-Chirp3-HD-Achird` audition. If it fails, stop automated Google retries and create a source-bound human narration or licensed-audio packet.
+
+## 2026-07-13 Sprint 1 Autonomous V2 Short-Title Queue
+
+- Two materially different Google voice families can still plateau title-by-title. A clean API response or isolated `9.4` sample does not authorize full TTS when any representative passage is below the all-samples threshold.
+- Stop after two failed voice families. `the-cop-and-the-anthem`, `the-last-leaf`, `the-masque-of-the-red-death`, `dsires-baby`, `the-necklace`, and `the-yellow-wallpaper` now require source-bound human narration, licensed audio, or a genuinely new provider family; their completed fingerprints must not repeat.
+- `the-monkeys-paw` demonstrated why full-candidate QA remains necessary after a passing audition. Its ASR/source and first/last gates passed, but full listening failed; one targeted ending repair fixed the local defect and exposed two different weak samples. Do not publish or keep looping on isolated segments.
+- Private generated audio belongs outside the repository. Only manifests, lock reports, QA evidence, and narration/import packets are retained.
+- Paid execution stayed serialized and the shared lock restored byte-for-byte. Conservative estimated spend is `$14.90614 / $175`; actual provider billing remains unknown.
+- No new public audio was approved. Production truth remains exactly `book-2b9853ec52` and `a-ghost-story` until external candidates complete the full release pipeline.

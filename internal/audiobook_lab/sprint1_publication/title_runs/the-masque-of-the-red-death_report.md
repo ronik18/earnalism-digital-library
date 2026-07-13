@@ -1,6 +1,6 @@
 # The Masque of the Red Death Parallel Sprint Report
 
-Generated: `2026-07-12T19:35:15Z`
+Generated: `2026-07-13T05:57:00Z`
 
 - Slug: `the-masque-of-the-red-death`
 - Language: `English`
@@ -8,17 +8,17 @@ Generated: `2026-07-12T19:35:15Z`
 - Assigned agent: `Dalton (019f57d2-767a-7c53-be1b-e101a6209a07)`
 - Public reader: `Yes`
 - Public audiobook: `No`
-- Quality evidence: `NOT_RUN`
-- Estimated remaining cost: `$0.1798`
-- Final state: `SPRINT_TARGET_INCOMPLETE`
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
-- Evidence: `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-masque-of-the-red-death.json`
-- Next action: Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied
+- Quality evidence: Studio-C `8.4, 9.4, 9.4, 9.4`; Chirp3-HD-Achird `8.4, 8.4, 9.4, 9.4`; minimum confidence `0.90`; no fatal flags
+- Estimated spend: `$0.4594`; actual billing not reported
+- Final state: `HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED`
+- Blocker: two materially different Google voice families failed the all-samples `9.4` representative gate
+- Evidence: `internal/audiobook_lab/sprint1_publication/title_runs/the-masque-of-the-red-death_release_gate_evidence.json`
+- Next action: obtain source-bound human narration or licensed audio, then validate it against the generated packet
 
 ## Next Command
 
 ```bash
-python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-masque-of-the-red-death --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-masque-of-the-red-death --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav
 ```
 
-No provider call, release-gate mutation, or public audio exposure was performed by this materializer.
+Both private auditions and both bounded listening-QA runs restored `paid_tts.lock`. No full TTS, upload, release-gate mutation, Listen exposure, or public audio publication occurred.

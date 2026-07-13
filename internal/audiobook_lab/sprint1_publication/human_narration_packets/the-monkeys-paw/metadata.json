@@ -1,0 +1,114 @@
+{
+  "author": "W.W. Jacobs",
+  "candidate_kind": "human_narration",
+  "delivery": {
+    "accepted_formats": [
+      "wav_pcm_44.1_or_48_khz",
+      "flac_44.1_or_48_khz",
+      "mp3_128kbps_or_higher_44.1_or_48_khz"
+    ],
+    "single_complete_file_required": true
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-monkeys-paw --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "language": {
+    "code": "en",
+    "name": "English"
+  },
+  "packet_fingerprint_sha256": "4fb857eb2aec86dcf73a2c0dc03d0840fd8b99c587789dd45e78dbc20b1585d0",
+  "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
+  "prior_provider_evidence": {
+    "classification": "INCOMPLETE_FAIL_CLOSED",
+    "evidence_paths": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_release_gate_evidence.json"
+    ],
+    "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+    "failed_attempts": [],
+    "non_release_passes": [],
+    "provider_attempts": [],
+    "quality_summary": "NOT_RUN",
+    "release_evidence_found": true
+  },
+  "pronunciation_checkpoints": [
+    "The Monkey's Paw",
+    "W.W. Jacobs",
+    "Recurring names/terms: And, Better, But, Come, Get, God, Her, Herbert, His, How, India, It’s",
+    "Confirm every proper noun and period-specific term before recording; preserve the written form."
+  ],
+  "release_requirements": {
+    "asr_manuscript_score_min": 9.7,
+    "blocker_list_must_be_empty": true,
+    "confidence_score_min": 0.9,
+    "fatal_flags_required_false": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "placeholder_audio_detected"
+    ],
+    "first_and_last_words_must_match": true,
+    "listening_score_min": 9.3,
+    "measured_sync_required": "paragraph_or_section",
+    "no_missing_duplicated_or_reordered_content": true,
+    "public_audio_must_remain_hidden_until_all_gates_pass": true,
+    "sync_may_not_be_estimated": true
+  },
+  "rights": {
+    "provenance_hash": "5b2327365f44a6dc03ee055a83af545ba77e65716a3a3b5e1032a0b25ef084b7",
+    "rights_basis": "Author died 1943. Published 1902. Pre-1928 publication supports U.S. public-domain status."
+  },
+  "safety": {
+    "audio_generated": false,
+    "provider_calls_ran": false,
+    "public_audio_status": "AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES",
+    "release_gate_mutated": false
+  },
+  "sanitization": {
+    "removed_fragments": [],
+    "sanitizer_version": "narration-import-sanitizer-v1",
+    "status": "PASS"
+  },
+  "schema_version": 2,
+  "slug": "the-monkeys-paw",
+  "source_binding": {
+    "binding_sha256": "549e58b36dcb98e1ec9d39982e455d41d586b7149f6889caedb8471049edc597",
+    "chapters": [
+      {
+        "chapter": "chapter-001.json",
+        "chapter_title": "I",
+        "raw_characters": 9629,
+        "recorded_source_sha256": "1184a3e5b2d86508fc2c6bceac7519235581387e02e31a2c2dbfab03628ac942",
+        "sanitized_characters": 9629,
+        "sanitized_sha256": "1184a3e5b2d86508fc2c6bceac7519235581387e02e31a2c2dbfab03628ac942"
+      },
+      {
+        "chapter": "chapter-002.json",
+        "chapter_title": "II",
+        "raw_characters": 5330,
+        "recorded_source_sha256": "d0eafaa9c6af9c96bd56ce956a8f59ba94da1ec9e19b3e6cf38b4f8b206cc9ee",
+        "sanitized_characters": 5330,
+        "sanitized_sha256": "d0eafaa9c6af9c96bd56ce956a8f59ba94da1ec9e19b3e6cf38b4f8b206cc9ee"
+      },
+      {
+        "chapter": "chapter-003.json",
+        "chapter_title": "III",
+        "raw_characters": 7112,
+        "recorded_source_sha256": "7ad74f2ca75e5d2e5f1dbc0a43c440f9fb510cbcc32e739ec634b0cc21b30758",
+        "sanitized_characters": 7112,
+        "sanitized_sha256": "7ad74f2ca75e5d2e5f1dbc0a43c440f9fb510cbcc32e739ec634b0cc21b30758"
+      }
+    ],
+    "raw_manuscript_sha256": "993ea84df5163bddcb4d4579a78ee5fb4b5ad9002a9659f9ac2e2f73198ec6b7",
+    "sanitized_manuscript_sha256": "993ea84df5163bddcb4d4579a78ee5fb4b5ad9002a9659f9ac2e2f73198ec6b7",
+    "source_hash": "e435de0511bd61d2373a445b0c5e054b747072357b5373e27b7a4b8a5b40cd01",
+    "status": "VERIFIED_SOURCE_AND_CHAPTER_HASHES"
+  },
+  "style_notes": [
+    "Use clear literary English with natural dialogue changes and deliberate punctuation pauses.",
+    "Preserve period diction, irony, tension, and humor without melodrama or character caricature.",
+    "Do not paraphrase names, quoted speech, spelling, or narrative transitions.",
+    "Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed transitions, and choppy joins."
+  ],
+  "style_profile": "english_literary_natural_dialogue",
+  "title": "The Monkey's Paw"
+}

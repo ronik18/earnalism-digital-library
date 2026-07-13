@@ -1,0 +1,98 @@
+{
+  "author": "Guy de Maupassant",
+  "candidate_kind": "human_narration",
+  "delivery": {
+    "accepted_formats": [
+      "wav_pcm_44.1_or_48_khz",
+      "flac_44.1_or_48_khz",
+      "mp3_128kbps_or_higher_44.1_or_48_khz"
+    ],
+    "single_complete_file_required": true
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-necklace --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "language": {
+    "code": "en",
+    "name": "English"
+  },
+  "packet_fingerprint_sha256": "2312aa6ec8f792787b52f5706bacd11cca0cd202e839ccc1e6e1e1067a2a594d",
+  "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
+  "prior_provider_evidence": {
+    "classification": "INCOMPLETE_FAIL_CLOSED",
+    "evidence_paths": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/the-necklace_release_gate_evidence.json"
+    ],
+    "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+    "failed_attempts": [],
+    "non_release_passes": [],
+    "provider_attempts": [],
+    "quality_summary": "NOT_RUN",
+    "release_evidence_found": true
+  },
+  "pronunciation_checkpoints": [
+    "The Necklace",
+    "Guy de Maupassant",
+    "Recurring names/terms: All, And, But, Come, Every, Forestier, Her, How, Instruction, Loisel, Madame, Mathilde",
+    "Confirm every proper noun and period-specific term before recording; preserve the written form."
+  ],
+  "release_requirements": {
+    "asr_manuscript_score_min": 9.7,
+    "blocker_list_must_be_empty": true,
+    "confidence_score_min": 0.9,
+    "fatal_flags_required_false": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "placeholder_audio_detected"
+    ],
+    "first_and_last_words_must_match": true,
+    "listening_score_min": 9.3,
+    "measured_sync_required": "paragraph_or_section",
+    "no_missing_duplicated_or_reordered_content": true,
+    "public_audio_must_remain_hidden_until_all_gates_pass": true,
+    "sync_may_not_be_estimated": true
+  },
+  "rights": {
+    "provenance_hash": "647161385ead777380d68a8dd5ab420a248a85641e663ed72e7980d2426ba78d",
+    "rights_basis": "Guy de Maupassant died 1893; first published 1884. Public domain in India and the U.S."
+  },
+  "safety": {
+    "audio_generated": false,
+    "provider_calls_ran": false,
+    "public_audio_status": "AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES",
+    "release_gate_mutated": false
+  },
+  "sanitization": {
+    "removed_fragments": [],
+    "sanitizer_version": "narration-import-sanitizer-v1",
+    "status": "PASS"
+  },
+  "schema_version": 2,
+  "slug": "the-necklace",
+  "source_binding": {
+    "binding_sha256": "be769624a7bdfb83ad0e523b5d24a7c0d176867212a68f266390ebd464c7c589",
+    "chapters": [
+      {
+        "chapter": "chapter-001.json",
+        "chapter_title": "The Necklace",
+        "raw_characters": 16094,
+        "recorded_source_sha256": "ee0e443ea8e7cc6c5cbd9327e74f6bf3cdbf4aabcf92f345c79a07ab643a3ae3",
+        "sanitized_characters": 16092,
+        "sanitized_sha256": "0f4d8061191d56b12860a8997f26bd75939c766784b732a73526b8f8ccd00b7f"
+      }
+    ],
+    "raw_manuscript_sha256": "ee0e443ea8e7cc6c5cbd9327e74f6bf3cdbf4aabcf92f345c79a07ab643a3ae3",
+    "sanitized_manuscript_sha256": "0f4d8061191d56b12860a8997f26bd75939c766784b732a73526b8f8ccd00b7f",
+    "source_hash": "bc5f461772b5583801472773e623c39ee14a218ae50b87715e24aa14b026549c",
+    "status": "VERIFIED_SOURCE_AND_CHAPTER_HASHES"
+  },
+  "style_notes": [
+    "Use clear literary English with natural dialogue changes and deliberate punctuation pauses.",
+    "Preserve period diction, irony, tension, and humor without melodrama or character caricature.",
+    "Do not paraphrase names, quoted speech, spelling, or narrative transitions.",
+    "Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed transitions, and choppy joins."
+  ],
+  "style_profile": "english_literary_natural_dialogue",
+  "title": "The Necklace"
+}
