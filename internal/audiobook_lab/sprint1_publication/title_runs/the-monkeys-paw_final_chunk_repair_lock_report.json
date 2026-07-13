@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "started_at": "2026-07-13T06:18:33Z",
+  "finished_at": "2026-07-13T06:18:53Z",
+  "holder": "sprint1_autonomous_v2_the_monkeys_paw_final_chunk_repair",
+  "slug": "the-monkeys-paw",
+  "scope": "source_bound_final_chunk_google_achird_0_84_repair",
+  "estimated_stage_usd": 0.03018,
+  "prior_estimated_spend_usd": 13.91018,
+  "command": [
+    "python3",
+    "-c",
+    "import hashlib,json,sys; from pathlib import Path; sys.path.insert(0,\"internal/audiobook_lab/scripts\"); import sprint1_google_english_private_pipeline as p; run=Path(\"/tmp/earnalism-sprint1-autonomous-v2-private/alternates/the-monkeys-paw/the-monkeys-paw/full/5587b21dfa3da95c\"); source=(run/\"sanitized_source.txt\").read_text(); chunks=p.full_generation_chunks(source); unit=chunks[-1]; expected=json.loads((run/\"full_generation_manifest.json\").read_text())[\"generated_audio\"][-1]; assert unit[\"text_sha256\"]==expected[\"text_sha256\"] and unit[\"characters\"]==expected[\"characters\"]; provider=p.GoogleCloudTTSProvider(); audio=provider.synthesize(text=unit[\"text\"],voice=\"en-GB-Chirp3-HD-Achird\",language_code=\"en-GB\",speaking_rate=0.84,pitch=0.0); out=run/\"repairs\"/\"final_chunk_achird_0_84\"; out.mkdir(parents=True,exist_ok=True); audio_path=out/\"chunk_0013.mp3\"; audio_path.write_bytes(audio); evidence={\"status\":\"PASS\",\"slug\":\"the-monkeys-paw\",\"unit_id\":\"chunk_0013\",\"source_text_sha256\":unit[\"text_sha256\"],\"characters\":unit[\"characters\"],\"provider\":\"google\",\"voice\":\"en-GB-Chirp3-HD-Achird\",\"speaking_rate\":0.84,\"audio_path\":str(audio_path),\"audio_sha256\":hashlib.sha256(audio).hexdigest(),\"audio_size_bytes\":len(audio),\"estimated_usd\":0.03018,\"actual_provider_billing\":\"NOT_REPORTED\",\"public_release_approved\":False,\"upload_performed\":False}; (out/\"repair_evidence.json\").write_text(json.dumps(evidence,indent=2)+\"\\n\"); print(json.dumps(evidence,indent=2))"
+  ],
+  "provider_command_started": true,
+  "process_returncode": 0,
+  "timed_out": false,
+  "actual_provider_billing": "NOT_REPORTED",
+  "lock_restored": true,
+  "lock_sha256_before": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e",
+  "lock_sha256_after": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e",
+  "blockers": [],
+  "budget": {
+    "sprint_cap_usd": 175.0,
+    "per_title_cap_usd": 30.0,
+    "max_tts_cap_usd": 175.0,
+    "effective_total_cap_usd": 175.0,
+    "estimated_stage_usd": 0.03018,
+    "prior_estimated_spend_usd": 13.91018,
+    "estimated_cumulative_spend_usd": 13.94036
+  }
+}

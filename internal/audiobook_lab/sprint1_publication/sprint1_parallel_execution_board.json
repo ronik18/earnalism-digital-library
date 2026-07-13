@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-07-13T04:50:38Z",
-  "owner_decision": "AUTHORIZE_STAGE_2H_PUSH_ACCELERATION_EVIDENCE_AND_RETRY_DSIRES_BABY_IF_NETWORK_READY",
+  "generated_at": "2026-07-13T06:30:06Z",
+  "owner_decision": "AUTHORIZE_AUTONOMOUS_SPRINT1_AUDIO_PUBLICATION_WITH_SELF_GOVERNING_DECISION_TREE_AND_175_USD_CAP",
   "objective": "Advance Sprint 1 titles without weakening release truth, repeating plateaued provider attempts, or running paid work in parallel.",
   "baseline": {
     "commit": "3709321c543a28cf12ba6c6ba6515ccedd320588",
@@ -354,16 +354,7 @@
       "command_authorization": "NOT_AUTHORIZED_IN_STAGE2H; STUDIO_C_FINGERPRINT_MUST_NOT_REPEAT"
     }
   ],
-  "paid_execution_queue": [
-    {
-      "slug": "dsires-baby",
-      "stage": "SOURCE_BOUND_GOOGLE_CHIRP3_HD_ACHIRD_REPRESENTATIVE_AUDITION",
-      "status": "WAITING_OWNER_AUTHORIZATION",
-      "estimated_usd": 0.23616,
-      "prior_sprint_estimated_spend_usd": 10.41276,
-      "maximum_concurrent_paid_calls": 1
-    }
-  ],
+  "paid_execution_queue": [],
   "paid_execution_holds": [
     {
       "slug": "book-d19e96859f",
@@ -419,11 +410,11 @@
     "short_english_status": "SREDNI_GIFT_TELL_AUTOMATED_TTS_PLATEAUS; DSIRES_STUDIO_C_FAILED_ALTERNATE_VOICE_OR_HUMAN_PATH_REQUIRED"
   },
   "next_serialized_action": {
-    "slug": "dsires-baby",
-    "stage": "SOURCE_BOUND_GOOGLE_CHIRP3_HD_ACHIRD_REPRESENTATIVE_AUDITION",
-    "status": "WAITING_OWNER_AUTHORIZATION",
-    "authorization": "NO PAID RETRY AUTHORIZED BY STAGE2H; NO FULL TTS, UPLOAD, RELEASE MUTATION, OR PUBLICATION UNTIL REPRESENTATIVE LISTENING PASSES",
-    "exact_command": "See internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_report.md"
+    "slug": null,
+    "stage": "EXTERNAL_NARRATION_RIGHTS_OR_NEW_PROVIDER_INPUT_REQUIRED",
+    "status": "NO_SAFE_PAID_ACTION_AVAILABLE",
+    "authorization": "Do not repeat completed fingerprints. Resume only with a received source-bound narration, missing rights/source evidence, or a materially new provider family.",
+    "exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-monkeys-paw --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
   },
   "guardrails": {
     "no_publication_without_all_gates": true,
@@ -436,6 +427,15 @@
     "no_paid_parallelism": true,
     "no_retry_after_plateau": true
   },
-  "sprint_target_status": "INCOMPLETE_TWO_APPROVED_DSIRES_NETWORK_RETRY_REQUIRED_EXTERNAL_HUMAN_INPUT_TRACKS_REMAIN",
-  "next_exact_command": "python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json >/dev/null && python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json >/dev/null && git diff --check -- internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_log.md internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json"
+  "sprint_target_status": "INCOMPLETE_TWO_APPROVED_EXTERNAL_NARRATION_RIGHTS_SOURCE_OR_NEW_PROVIDER_INPUT_REQUIRED",
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-monkeys-paw --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "autonomous_v2_handoff": {
+    "authoritative_board": "internal/audiobook_lab/sprint1_publication/sprint1_autonomous_execution_board.json",
+    "conservative_estimated_spend_usd": 14.90614,
+    "estimated_budget_remaining_usd": 160.09386,
+    "processed_title_count": 7,
+    "new_publication_count": 0,
+    "human_narration_or_licensed_import_packets_created": 7,
+    "paid_tts_lock_restored": true
+  }
 }

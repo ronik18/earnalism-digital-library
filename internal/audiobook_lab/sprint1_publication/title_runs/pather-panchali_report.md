@@ -12,7 +12,7 @@ Generated: `2026-07-12T19:35:15Z`
 - Estimated remaining cost: `$1.9477`
 - Final state: `SPRINT_TARGET_INCOMPLETE`
 - Blocker: `OWNER_DOCUMENT_REQUIRED_FOR_AUDIO_RIGHTS_SOURCE_COVER; PAID_RUNTIME_ENV_GATES_MISSING`
-- Evidence: `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/pather-panchali.json`
+- Evidence: `internal/audiobook_lab/sprint1_publication/title_runs/pather-panchali_release_gate_evidence.json`
 - Next action: Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied
 
 ## Next Command

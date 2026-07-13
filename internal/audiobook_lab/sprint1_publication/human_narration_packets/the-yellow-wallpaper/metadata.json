@@ -1,0 +1,106 @@
+{
+  "author": "Charlotte Perkins Gilman",
+  "candidate_kind": "human_narration",
+  "delivery": {
+    "accepted_formats": [
+      "wav_pcm_44.1_or_48_khz",
+      "flac_44.1_or_48_khz",
+      "mp3_128kbps_or_higher_44.1_or_48_khz"
+    ],
+    "single_complete_file_required": true
+  },
+  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-yellow-wallpaper --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "language": {
+    "code": "en",
+    "name": "English"
+  },
+  "packet_fingerprint_sha256": "5701f376403fe632a10315ac23ef9bc7a83d9bc5f9441974794aa0ebce38e89d",
+  "packet_type": "SOURCE_BOUND_NARRATION_OR_AUDIO_IMPORT",
+  "prior_provider_evidence": {
+    "classification": "INCOMPLETE_FAIL_CLOSED",
+    "evidence_paths": [
+      "internal/audiobook_lab/sprint1_publication/title_runs/the-yellow-wallpaper_release_gate_evidence.json"
+    ],
+    "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+    "failed_attempts": [],
+    "non_release_passes": [],
+    "provider_attempts": [],
+    "quality_summary": "NOT_RUN",
+    "release_evidence_found": true
+  },
+  "pronunciation_checkpoints": [
+    "The Yellow Wallpaper",
+    "Charlotte Perkins Gilman",
+    "Recurring names/terms: And, Besides, But, Cousin, For, Henry, How, I’m, I’ve, Jennie, John, John’s",
+    "Confirm every proper noun and period-specific term before recording; preserve the written form."
+  ],
+  "release_requirements": {
+    "asr_manuscript_score_min": 9.7,
+    "blocker_list_must_be_empty": true,
+    "confidence_score_min": 0.9,
+    "fatal_flags_required_false": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "placeholder_audio_detected"
+    ],
+    "first_and_last_words_must_match": true,
+    "listening_score_min": 9.3,
+    "measured_sync_required": "paragraph_or_section",
+    "no_missing_duplicated_or_reordered_content": true,
+    "public_audio_must_remain_hidden_until_all_gates_pass": true,
+    "sync_may_not_be_estimated": true
+  },
+  "rights": {
+    "provenance_hash": "5349c038b13af8d9809ae184e4d7ae4d54f3ad3ebce5ed13748776e22dd0a09c",
+    "rights_basis": "Author died 1935. Published 1892. Public domain in U.S. and worldwide."
+  },
+  "safety": {
+    "audio_generated": false,
+    "provider_calls_ran": false,
+    "public_audio_status": "AUDIO_HIDDEN_PENDING_COMPLETE_RELEASE_GATES",
+    "release_gate_mutated": false
+  },
+  "sanitization": {
+    "removed_fragments": [
+      {
+        "chapter": "chapter-001.json",
+        "characters": 20,
+        "location": "leading",
+        "reason": "frontmatter_through_exact_title",
+        "sha256": "8690d16aeea7a0e51ab065c6a7f745a3c594c261efb7fcee1d294ba18c12bbe9"
+      }
+    ],
+    "sanitizer_version": "narration-import-sanitizer-v1",
+    "status": "PASS"
+  },
+  "schema_version": 2,
+  "slug": "the-yellow-wallpaper",
+  "source_binding": {
+    "binding_sha256": "6aa3da2daf5417fec5cd9a95e816bde0db5cfb8e8cac80cc06c175f891e472bf",
+    "chapters": [
+      {
+        "chapter": "chapter-001.json",
+        "chapter_title": "The Yellow Wallpaper",
+        "raw_characters": 31799,
+        "recorded_source_sha256": "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d",
+        "sanitized_characters": 31777,
+        "sanitized_sha256": "2dfdf07425d74f291d57ce25a755b373aef59c2066804b0b2c4c98ba7f9b6cc3"
+      }
+    ],
+    "raw_manuscript_sha256": "eb3707607672f6a9260383f8523dca5e089399e5121bd1a1961b34308c34273d",
+    "sanitized_manuscript_sha256": "2dfdf07425d74f291d57ce25a755b373aef59c2066804b0b2c4c98ba7f9b6cc3",
+    "source_hash": "ef4b3a11042ebd451e1abc73007c6d5f5fb9910ab2571db97d33457f1ddcfa00",
+    "status": "VERIFIED_SOURCE_AND_CHAPTER_HASHES"
+  },
+  "style_notes": [
+    "Use clear literary English with natural dialogue changes and deliberate punctuation pauses.",
+    "Preserve period diction, irony, tension, and humor without melodrama or character caricature.",
+    "Do not paraphrase names, quoted speech, spelling, or narrative transitions.",
+    "Avoid list-reading rhythm, mechanical cadence, robotic texture, rushed transitions, and choppy joins."
+  ],
+  "style_profile": "english_literary_natural_dialogue",
+  "title": "The Yellow Wallpaper"
+}

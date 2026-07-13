@@ -1,0 +1,37 @@
+{
+  "status": "SUBPROCESS_FAILED",
+  "started_at": "2026-07-13T05:58:49Z",
+  "finished_at": "2026-07-13T05:59:08Z",
+  "holder": "sprint1_autonomous_v2_dsires_baby_achird_listening_qa",
+  "slug": "dsires-baby",
+  "scope": "Four-sample bounded private Achird representative listening QA; no upload, publication, or release mutation",
+  "estimated_stage_usd": 0.2,
+  "prior_estimated_spend_usd": 11.85144,
+  "command": [
+    "python3",
+    "internal/audiobook_lab/scripts/sprint1_google_english_listening_qa.py",
+    "--evidence",
+    "/tmp/earnalism-dsires-stage-acceleration-private/dsires-baby/audition/dcef93a40f30b352/audition_listening_evidence.json",
+    "--output",
+    "/tmp/earnalism-dsires-stage-acceleration-private/dsires-baby/audition/dcef93a40f30b352/audition_listening_evidence.json"
+  ],
+  "provider_command_started": true,
+  "process_returncode": 3,
+  "timed_out": false,
+  "actual_provider_billing": "NOT_REPORTED",
+  "lock_restored": true,
+  "lock_sha256_before": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e",
+  "lock_sha256_after": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e",
+  "blockers": [
+    "paid subprocess exited with status 3"
+  ],
+  "budget": {
+    "sprint_cap_usd": 175.0,
+    "per_title_cap_usd": 30.0,
+    "max_tts_cap_usd": 175.0,
+    "effective_total_cap_usd": 175.0,
+    "estimated_stage_usd": 0.2,
+    "prior_estimated_spend_usd": 11.85144,
+    "estimated_cumulative_spend_usd": 12.05144
+  }
+}

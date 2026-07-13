@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T19:35:15Z",
+  "generated_at": "2026-07-13T05:57:00Z",
   "slug": "the-masque-of-the-red-death",
   "title": "The Masque of the Red Death",
   "language": "English",
@@ -12,14 +12,25 @@
   },
   "publicly_rendered_book": "Yes",
   "publicly_available_audiobook": "No",
-  "quality_score": "NOT_RUN",
-  "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
-  "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
-  "estimated_remaining_cost_usd": 0.1798,
-  "evidence_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-masque-of-the-red-death.json",
-  "next_action": "Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied",
-  "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-masque-of-the-red-death --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
-  "provider_calls_ran_this_sprint": false,
+  "quality_score": "Studio-C 8.4,9.4,9.4,9.4; Chirp3-HD-Achird 8.4,8.4,9.4,9.4; minimum confidence 0.90; no fatal flags",
+  "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
+  "exact_blocker": "TWO_MATERIALLY_DIFFERENT_GOOGLE_VOICE_FAMILIES_FAILED_THE_ALL_SAMPLES_9.4_REPRESENTATIVE_GATE",
+  "estimated_spend_usd": 0.4594,
+  "actual_provider_billing": "NOT_REPORTED",
+  "estimated_remaining_cost_usd": null,
+  "evidence_path": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-masque-of-the-red-death/metadata.json",
+  "next_action": "Obtain source-bound human narration or licensed audio and validate it against the generated packet before full release QA.",
+  "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-masque-of-the-red-death --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "attempts": [
+    {"provider": "google", "voice": "en-GB-Studio-C", "speaking_rate": 0.94, "fingerprint": "6f561b31503df395", "scores": [8.4, 9.4, 9.4, 9.4], "minimum_confidence": 0.9, "fatal_flags": [], "status": "BLOCKED_LISTENING_QA"},
+    {"provider": "google", "voice": "en-GB-Chirp3-HD-Achird", "speaking_rate": 0.9, "fingerprint": "c648177b25f4a6c4", "scores": [8.4, 8.4, 9.4, 9.4], "minimum_confidence": 0.9, "fatal_flags": [], "status": "BLOCKED_LISTENING_QA"}
+  ],
+  "human_narration_packet": {
+    "status": "NARRATION_IMPORT_PACKET_READY_AUDIO_HIDDEN",
+    "packet_fingerprint_sha256": "5bbdfc7aa00d70818ab65fdf829c47c4b69104eb7668131a9cd5c7eda84f2e97",
+    "sanitized_manuscript_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3"
+  },
+  "provider_calls_ran_this_sprint": true,
   "release_gate_mutated_this_sprint": false,
   "public_audio_approved_this_sprint": false
 }

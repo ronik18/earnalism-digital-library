@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T19:35:15Z",
+  "generated_at": "2026-07-13T06:03:00Z",
   "slug": "the-necklace",
   "title": "The Necklace",
   "language": "English",
@@ -12,14 +12,21 @@
   },
   "publicly_rendered_book": "Yes",
   "publicly_available_audiobook": "No",
-  "quality_score": "NOT_RUN",
-  "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
-  "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
-  "estimated_remaining_cost_usd": 0.2035,
-  "evidence_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-necklace.json",
-  "next_action": "Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied",
-  "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-necklace --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
-  "provider_calls_ran_this_sprint": false,
+  "quality_score": "Studio-C 8.4,8.4,7.0,9.4 with fatal robotic/mechanical flags; Chirp3-HD-Achird 8.6,8.5,9.4,9.5 without fatal flags",
+  "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
+  "exact_blocker": "TWO_MATERIALLY_DIFFERENT_GOOGLE_VOICE_FAMILIES_FAILED_THE_ALL_SAMPLES_9.4_REPRESENTATIVE_GATE",
+  "estimated_spend_usd": 0.4608,
+  "actual_provider_billing": "NOT_REPORTED",
+  "estimated_remaining_cost_usd": null,
+  "evidence_path": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-necklace/metadata.json",
+  "next_action": "Obtain source-bound human narration or licensed audio and validate it against the generated packet before full release QA.",
+  "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-necklace --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+  "attempts": [
+    {"provider": "google", "voice": "en-GB-Studio-C", "speaking_rate": 0.94, "fingerprint": "2fda4f2789d86388", "scores": [8.4, 8.4, 7.0, 9.4], "minimum_confidence": 0.9, "fatal_flags": ["mechanical_cadence_detected", "robotic_texture_detected"], "status": "BLOCKED_LISTENING_QA"},
+    {"provider": "google", "voice": "en-GB-Chirp3-HD-Achird", "speaking_rate": 0.9, "fingerprint": "8791b401758f5e9a", "scores": [8.6, 8.5, 9.4, 9.5], "minimum_confidence": 0.9, "fatal_flags": [], "status": "BLOCKED_LISTENING_QA"}
+  ],
+  "human_narration_packet": {"status": "NARRATION_IMPORT_PACKET_READY_AUDIO_HIDDEN", "packet_fingerprint_sha256": "2312aa6ec8f792787b52f5706bacd11cca0cd202e839ccc1e6e1e1067a2a594d", "sanitized_manuscript_sha256": "0f4d8061191d56b12860a8997f26bd75939c766784b732a73526b8f8ccd00b7f"},
+  "provider_calls_ran_this_sprint": true,
   "release_gate_mutated_this_sprint": false,
   "public_audio_approved_this_sprint": false
 }

@@ -1,24 +1,21 @@
-# The Monkey's Paw Parallel Sprint Report
+# The Monkey's Paw Autonomous Sprint Report
 
-Generated: `2026-07-12T19:35:15Z`
+Generated: `2026-07-13T06:22:19Z`
 
-- Slug: `the-monkeys-paw`
-- Language: `English`
-- Assigned lane: `3 - Short English Lane`
-- Assigned agent: `Dalton (019f57d2-767a-7c53-be1b-e101a6209a07)`
 - Public reader: `Yes`
 - Public audiobook: `No`
-- Quality evidence: `NOT_RUN`
-- Estimated remaining cost: `$0.2662`
-- Final state: `SPRINT_TARGET_INCOMPLETE`
-- Blocker: `TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING`
-- Evidence: `internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-monkeys-paw.json`
-- Next action: Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied
+- Final state: `HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED`
+- Conservative estimated spend: `$1.92142`; actual provider billing was not reported
+- Release mutation/upload: `none`
+
+Studio-C failed representative QA (`8.4, 9.4, 8.3, 9.4`). Chirp3-HD-Achird passed its representative gate (`9.4` for all four samples), so a 14-chunk private full candidate was generated. Its ASR/source score was `9.8333` with first/last checks passing, but the ending sample scored `7.5` with robotic/mechanical flags.
+
+One source-bound ending-only repair at `0.84` pacing raised the ending to `9.4`. The repaired candidate remained source-correct (`ASR/source 9.8519`, first/last PASS), but repeat full QA scored two other sections `8.4`. Since the all-samples `9.4` gate still failed after two voice families and a targeted repair, automated TTS attempts are closed for this title.
 
 ## Next Command
 
 ```bash
-python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-monkeys-paw --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com
+PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-monkeys-paw --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav
 ```
 
-No provider call, release-gate mutation, or public audio exposure was performed by this materializer.
+All paid wrappers restored `paid_tts.lock`. Private audio remains under `/tmp`; no generated media was added to public assets.

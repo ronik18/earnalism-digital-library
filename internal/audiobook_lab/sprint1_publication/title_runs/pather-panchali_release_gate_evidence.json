@@ -16,7 +16,7 @@
   "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
   "exact_blocker": "OWNER_DOCUMENT_REQUIRED_FOR_AUDIO_RIGHTS_SOURCE_COVER; PAID_RUNTIME_ENV_GATES_MISSING",
   "estimated_remaining_cost_usd": 1.9477,
-  "evidence_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/pather-panchali.json",
+  "evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/pather-panchali_report.md",
   "next_action": "Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied",
   "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug pather-panchali --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
   "provider_calls_ran_this_sprint": false,

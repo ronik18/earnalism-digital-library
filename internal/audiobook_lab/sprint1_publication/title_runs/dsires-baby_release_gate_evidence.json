@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-13T04:50:38Z",
-  "owner_decision": "AUTHORIZE_STAGE_2H_PUSH_ACCELERATION_EVIDENCE_AND_RETRY_DSIRES_BABY_IF_NETWORK_READY",
+  "generated_at": "2026-07-13T05:59:30Z",
+  "owner_decision": "AUTHORIZE_AUTONOMOUS_SPRINT1_AUDIO_PUBLICATION_WITH_SELF_GOVERNING_DECISION_TREE_AND_175_USD_CAP",
   "slug": "dsires-baby",
   "title": "Désirée's Baby",
   "language": "English",
   "publicly_rendered_book": "Yes",
   "publicly_available_audiobook": "No",
-  "release_gate_state": "ALTERNATE_VOICE_AUDITION_REQUIRED",
-  "exact_blocker": "STUDIO_C_DIALOGUE_RISK_SCORE_7.5_CONFIDENCE_0.85_WITH_ROBOTIC_TEXTURE_AND_MECHANICAL_CADENCE; MIDDLE_SCORE_8.4_BELOW_9.4",
+  "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_FAIL_CLOSED",
+  "exact_blocker": "STUDIO_C_AND_CHIRP3_HD_ACHIRD_DIALOGUE_RISK_SAMPLES_FAILED_WITH_FATAL_ROBOTIC_TEXTURE_AND_MECHANICAL_CADENCE",
   "source_preflight": {
     "status": "PASS",
     "characters": 11974,
@@ -43,9 +43,26 @@
     "actual_provider_billing": "NOT_REPORTED",
     "evidence_path": "/private/tmp/earnalism-dsires-stage-acceleration-private/dsires-baby/audition/bccf002da4e9713e/audition_listening_evidence_judged.json"
   },
-  "estimated_stage_spend_usd": 0.23616,
-  "estimated_sprint_spend_usd": 10.41276,
-  "estimated_sprint_budget_remaining_usd": 164.58724,
+  "alternate_voice_audition": {
+    "provider": "google",
+    "voice": "en-GB-Chirp3-HD-Achird",
+    "speaking_rate": 0.9,
+    "attempt_fingerprint": "dcef93a40f30b3529eb8958c039aaa309ae2753d44208e0fce5d3a4b754241fa",
+    "scores": [9.4, 9.4, 7.2, 9.4],
+    "minimum_confidence": 0.9,
+    "fatal_flags": ["mechanical_cadence_detected", "robotic_texture_detected"],
+    "estimated_tts_cost_usd": 0.03616,
+    "estimated_listening_qa_cost_usd": 0.2,
+    "status": "BLOCKED_LISTENING_QA"
+  },
+  "human_narration_packet": {
+    "status": "NARRATION_IMPORT_PACKET_READY_AUDIO_HIDDEN",
+    "packet_fingerprint_sha256": "b085d4ca229d7d0633309c2b6bcc6c47a48ffbe7c29cf6fc142bf82c73dcde6e",
+    "sanitized_manuscript_sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98"
+  },
+  "estimated_stage_spend_usd": 0.47232,
+  "estimated_sprint_spend_usd": 12.05144,
+  "estimated_sprint_budget_remaining_usd": 162.94856,
   "actual_provider_billing": "NOT_REPORTED",
   "paid_lock": {
     "holder_for_listening_qa": "sprint1_publication_stage2h_dsires_baby",
@@ -73,6 +90,6 @@
   "upload_performed": false,
   "publication_performed": false,
   "release_mutation_performed": false,
-  "next_action": "Run one materially different source-bound en-GB-Chirp3-HD-Achird audition; if it fails, stop automated Google retries and build a human narration or licensed-audio import packet.",
-  "next_command": "SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=1 EARNALISM_APPROVE_GOOGLE_ENGLISH_PRIVATE_AUDITION=true EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=2 EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD=0.05 EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py audition --sanitized-source /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/sanitized_source.txt --input-manifest /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /tmp/earnalism-dsires-stage-acceleration-private --voice en-GB-Chirp3-HD-Achird --language-code en-GB --usd-per-million-chars 20 --run-budget-usd 1 --title-budget-usd 30 --title-spend-usd 0.23616 --sprint-budget-usd 175 --sprint-spend-usd 10.41276 --minimum-listening-score 9.4 --minimum-listening-confidence 0.9 --speaking-rate 0.90 --execute"
+  "next_action": "Obtain source-bound human narration or licensed audio and validate it against the generated packet before full release QA.",
+  "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug dsires-baby --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
 }
