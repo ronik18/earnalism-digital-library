@@ -339,3 +339,11 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - After Google and Sarvam both fail distinct release gates, another automated retry is not the cheapest safe action. The durable next track is source-bound human narration or licensed audio with the same full QA contract.
 - Stage 2G estimated spend is `$0.4226`; cumulative Sprint estimate is `$10.1766 / $175`. Actual provider billing remains unknown.
 - No upload, publication, release-state mutation, or public Listen exposure occurred. The lock restored byte-for-byte.
+
+## 2026-07-13 Désirée's Baby Stage 2H Network Recovery And Representative QA
+
+- A provider attempt blocked before synthesis remains retryable; once network recovery produces audio, its completed provider/voice/rate/text fingerprint must be judged and then treated as non-repeatable if quality fails.
+- `dsires-baby` Google `en-GB-Studio-C` at `0.94` pacing generated four valid private source-bound samples, but listening scores were `9.4`, `8.4`, `7.5`, and `9.4`; minimum confidence was `0.85` and the risk passage triggered fatal robotic texture and mechanical cadence.
+- A successful provider API call is not a representative-audition pass. No full TTS, ASR, upload, release mutation, or publication followed the failed quality gate.
+- Stage 2H conservatively estimates `$0.23616` and raises the Sprint checkpoint to `$10.41276 / $175`; actual billing remains unknown and `paid_tts.lock` restored byte-for-byte.
+- The cheapest safe next action is one materially different `en-GB-Chirp3-HD-Achird` audition. If it fails, stop automated Google retries and create a source-bound human narration or licensed-audio packet.

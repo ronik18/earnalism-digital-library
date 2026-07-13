@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-13T04:13:10Z",
+  "generated_at": "2026-07-13T04:50:38Z",
   "parallel_sprint": {
     "execution_board": "internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json",
     "paid_calls_serialized": true,
     "provider_calls_ran": true,
     "new_public_audiobooks": 0,
-    "runtime_gate_status": "BOUNDED_PAID_EVIDENCE_RECONCILED_ACTUAL_BILLING_UNKNOWN"
+    "runtime_gate_status": "STAGE2H_INLINE_GATES_PASS_DSIRES_REPRESENTATIVE_QA_FAILED_ACTUAL_BILLING_UNKNOWN"
   },
   "sprint_target_status": "INCOMPLETE_EXTERNAL_ACTION_AND_RELEASE_EVIDENCE_REQUIRED",
   "active_title_count": 32,
@@ -596,12 +596,12 @@
       "language": "English",
       "publicly_rendered_book": "Yes",
       "publicly_available_audiobook": "No",
-      "quality_score": "NOT_RUN_NO_AUDIO_GENERATED; SOURCE_PREFLIGHT_PASS; GOOGLE_STUDIO_C_AUDITION_BLOCKED_BEFORE_SYNTHESIS_BY_DNS",
+      "quality_score": "STUDIO_C_REPRESENTATIVE_SCORES_9.4_8.4_7.5_9.4; MIN_CONFIDENCE_0.85; FATAL_ROBOTIC_TEXTURE_AND_MECHANICAL_CADENCE",
       "evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_release_gate_evidence.json",
-      "cost_used_usd": 0.0,
-      "final_status": "PROVIDER_NETWORK_REACHABILITY_REQUIRED",
-      "exact_blocker": "GOOGLE_TTS_DNS_UNAVAILABLE_IN_CURRENT_EXECUTION_SANDBOX_BEFORE_SYNTHESIS",
-      "next_command": "SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=40 EARNALISM_APPROVE_GOOGLE_ENGLISH_PRIVATE_AUDITION=true PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py audition --sanitized-source /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/sanitized_source.txt --input-manifest /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /tmp/earnalism-dsires-stage-acceleration-private --voice en-GB-Studio-C --language-code en-GB --usd-per-million-chars 20 --run-budget-usd 1 --title-budget-usd 30 --sprint-budget-usd 175 --sprint-spend-usd 10.1766 --minimum-listening-score 9.4 --minimum-listening-confidence 0.9 --speaking-rate 0.94 --execute",
+      "cost_used_usd": 0.23616,
+      "final_status": "ALTERNATE_VOICE_AUDITION_REQUIRED",
+      "exact_blocker": "STUDIO_C_DIALOGUE_RISK_SCORE_7.5_CONFIDENCE_0.85_WITH_ROBOTIC_TEXTURE_AND_MECHANICAL_CADENCE; MIDDLE_SCORE_8.4_BELOW_9.4",
+      "next_command": "SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=1 EARNALISM_APPROVE_GOOGLE_ENGLISH_PRIVATE_AUDITION=true EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=2 EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD=0.05 EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py audition --sanitized-source /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/sanitized_source.txt --input-manifest /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /tmp/earnalism-dsires-stage-acceleration-private --voice en-GB-Chirp3-HD-Achird --language-code en-GB --usd-per-million-chars 20 --run-budget-usd 1 --title-budget-usd 30 --title-spend-usd 0.23616 --sprint-budget-usd 175 --sprint-spend-usd 10.41276 --minimum-listening-score 9.4 --minimum-listening-confidence 0.9 --speaking-rate 0.90 --execute",
       "production_book_http": 200,
       "production_manifest_http": 200,
       "release_gates_passed": false,
@@ -740,8 +740,8 @@
     "release_gates_passed": false,
     "status": "SPRINT_TARGET_INCOMPLETE_RUNTIME_GATES_MISSING"
   },
-  "estimated_spend_usd": 10.1766,
-  "estimated_budget_remaining_usd": 164.8234,
+  "estimated_spend_usd": 10.41276,
+  "estimated_budget_remaining_usd": 164.58724,
   "actual_provider_billing": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
   "public_audiobook_slugs": [
     "book-2b9853ec52",
@@ -786,5 +786,25 @@
     "production_audio_hidden": true,
     "paid_tts_lock_restored": true,
     "status": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED"
+  },
+  "stage2h_dsires_baby": {
+    "owner_decision": "AUTHORIZE_STAGE_2H_PUSH_ACCELERATION_EVIDENCE_AND_RETRY_DSIRES_BABY_IF_NETWORK_READY",
+    "updated_at": "2026-07-13T04:50:38Z",
+    "provider_calls_ran": true,
+    "provider": "google",
+    "voice": "en-GB-Studio-C",
+    "scores": [9.4, 8.4, 7.5, 9.4],
+    "minimum_confidence": 0.85,
+    "fatal_flags": ["mechanical_cadence_detected", "robotic_texture_detected"],
+    "estimated_tts_spend_usd": 0.03616,
+    "estimated_listening_qa_spend_usd": 0.2,
+    "estimated_stage_spend_usd": 0.23616,
+    "estimated_sprint_total_usd": 10.41276,
+    "actual_spend_usd": null,
+    "actual_provider_billing": "NOT_REPORTED",
+    "public_audio_mutated": false,
+    "production_audio_hidden": true,
+    "paid_tts_lock_restored": true,
+    "status": "ALTERNATE_VOICE_AUDITION_REQUIRED"
   }
 }

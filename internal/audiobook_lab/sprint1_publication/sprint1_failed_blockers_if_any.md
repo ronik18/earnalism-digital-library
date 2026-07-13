@@ -302,16 +302,17 @@ PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration
 
 ## dsires-baby / Désirée's Baby
 
-- Repair state: `PROVIDER_NETWORK_REACHABILITY_REQUIRED`
-- Blocker: `GOOGLE_TTS_DNS_UNAVAILABLE_IN_CURRENT_EXECUTION_SANDBOX_BEFORE_SYNTHESIS`
+- Repair state: `ALTERNATE_VOICE_AUDITION_REQUIRED`
+- Blocker: Studio-C scores `9.4, 8.4, 7.5, 9.4`; minimum confidence `0.85`; the risk passage has fatal robotic texture and mechanical cadence.
 - Reader HTTP: `200`
 - Manifest HTTP: `200`; audio remains disabled.
 - Source preflight: `PASS`, 11,974 characters, rights/sanitation bound to SHA-256 `587455ed554ef64d19f0ea7dcd31940d242aa759f5132b6514b130efa4a64a89`.
-- Attempt: Studio-C fingerprint `bccf002da4e9713e3870b602c07e65ae1ad0a49fbd1904e5730b823a0d605d4e`; zero synthesis calls; `$0.00` booked; lock restored byte-for-byte.
-- Next command from a network-enabled shell:
+- Attempt: Studio-C fingerprint `bccf002da4e9713e3870b602c07e65ae1ad0a49fbd1904e5730b823a0d605d4e`; four synthesis calls completed; `$0.23616` conservatively estimated including listening QA; actual billing unknown; lock restored byte-for-byte.
+- Next action: run one materially different `en-GB-Chirp3-HD-Achird` audition. If it fails, stop automated Google retries and build a human narration or licensed-audio import packet.
+- Next command:
 
 ```bash
-SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=40 EARNALISM_APPROVE_GOOGLE_ENGLISH_PRIVATE_AUDITION=true PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py audition --sanitized-source /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/sanitized_source.txt --input-manifest /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /tmp/earnalism-dsires-stage-acceleration-private --voice en-GB-Studio-C --language-code en-GB --usd-per-million-chars 20 --run-budget-usd 1 --title-budget-usd 30 --sprint-budget-usd 175 --sprint-spend-usd 10.1766 --minimum-listening-score 9.4 --minimum-listening-confidence 0.9 --speaking-rate 0.94 --execute
+SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=1 EARNALISM_APPROVE_GOOGLE_ENGLISH_PRIVATE_AUDITION=true EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=2 EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD=0.05 EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py audition --sanitized-source /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/sanitized_source.txt --input-manifest /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /tmp/earnalism-dsires-stage-acceleration-private --voice en-GB-Chirp3-HD-Achird --language-code en-GB --usd-per-million-chars 20 --run-budget-usd 1 --title-budget-usd 30 --title-spend-usd 0.23616 --sprint-budget-usd 175 --sprint-spend-usd 10.41276 --minimum-listening-score 9.4 --minimum-listening-confidence 0.9 --speaking-rate 0.90 --execute
 ```
 
 ## the-cop-and-the-anthem / The Cop and the Anthem
@@ -382,8 +383,8 @@ python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.js
 
 ## Conservative Spend Checkpoint
 
-- Conservative estimated spend: `$10.17660 / $175`.
-- Estimated remaining budget: `$164.82340`.
+- Conservative estimated spend: `$10.41276 / $175`.
+- Estimated remaining budget: `$164.58724`.
 - Actual provider billing: `UNKNOWN_NOT_REPORTED_BY_PROVIDERS`.
 - No new publication or public release-state mutation is claimed by this reconciliation.
 

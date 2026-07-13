@@ -1093,6 +1093,23 @@
       "plateau_confirmed": true,
       "audiobook_next_action": "Do not repeat the current Google attempt families; use a materially different provider or source-bound human or licensed narration candidate before full TTS."
     },
+    "dsires-baby": {
+      "latest_decision": "ALTERNATE_VOICE_AUDITION_REQUIRED",
+      "decision_reason": "source-bound Google Studio-C representative listening failed at 7.5 minimum score and 0.85 minimum confidence with fatal robotic texture and mechanical cadence",
+      "updated_at": "2026-07-13T04:50:38Z",
+      "language": "en",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+      "provider": "google",
+      "voice": "en-GB-Studio-C",
+      "speaking_rate": 0.94,
+      "attempt_fingerprint": "bccf002da4e9713e3870b602c07e65ae1ad0a49fbd1904e5730b823a0d605d4e",
+      "listening_scores": [9.4, 8.4, 7.5, 9.4],
+      "minimum_confidence": 0.85,
+      "fatal_flags": ["mechanical_cadence_detected", "robotic_texture_detected"],
+      "attempt_must_not_repeat": true,
+      "audiobook_next_action": "Run one separately authorized source-bound en-GB-Chirp3-HD-Achird audition; if it fails, use human narration or licensed audio import."
+    },
     "the-gift-of-the-magi": {
       "latest_decision": "AUTOMATED_PROVIDER_PLATEAU_ALTERNATE_PATH_REQUIRED",
       "decision_reason": "Studio-C, Chirp Aoede, and contextual Studio-C representative auditions each retained a sub-threshold risk passage",

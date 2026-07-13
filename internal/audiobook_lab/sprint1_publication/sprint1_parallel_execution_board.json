@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-07-13T04:13:10Z",
-  "owner_decision": "AUTHORIZE_PARALLEL_SPRINT1_YES_YES_EXECUTION_WITH_AUTONOMOUS_REPAIR_AND_PUBLICATION",
+  "generated_at": "2026-07-13T04:50:38Z",
+  "owner_decision": "AUTHORIZE_STAGE_2H_PUSH_ACCELERATION_EVIDENCE_AND_RETRY_DSIRES_BABY_IF_NETWORK_READY",
   "objective": "Advance Sprint 1 titles without weakening release truth, repeating plateaued provider attempts, or running paid work in parallel.",
   "baseline": {
     "commit": "3709321c543a28cf12ba6c6ba6515ccedd320588",
@@ -12,35 +12,35 @@
     "remaining_audio_targets": 30
   },
   "evidence_cutoff": {
-    "timestamp": "2026-07-13T04:13:10Z",
-    "basis": "Latest completed serialized paid checkpoint remains 10.17660 USD; the later dsires-baby attempt made zero synthesis calls and books zero additional spend.",
-    "authoritative_checkpoint_source": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2g_full_qa.json",
+    "timestamp": "2026-07-13T04:50:38Z",
+    "basis": "Stage 2H completed four source-bound Studio-C synthesis calls and four-sample listening QA; 0.23616 USD is conservatively estimated and actual billing remains unknown.",
+    "authoritative_checkpoint_source": "internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_release_gate_evidence.json",
     "prior_reconciliation_cutoff": "2026-07-12T22:56:24Z",
-    "prior_reconciled_estimated_spend_usd": 10.1766,
-    "post_cutoff_policy": "The dsires-baby Studio-C fingerprint is retryable because DNS failed before synthesis; retry only from a network-enabled shell under the same serialized lock and caps."
+    "prior_reconciled_estimated_spend_usd": 10.41276,
+    "post_cutoff_policy": "Do not repeat the completed dsires-baby Studio-C fingerprint. The next paid action requires separate owner authorization for one materially different Chirp3-HD-Achird audition."
   },
   "coordinator": {
     "lane": 0,
     "role": "Coordinator / Budget / Serialization Governor",
     "mode": "ACTIVE_SERIALIZED_EXECUTION",
     "paid_calls_serialized": true,
-    "provider_calls_by_this_reconciliation": false,
+    "provider_calls_by_this_reconciliation": true,
     "lock_inspected_or_touched_by_this_reconciliation": true,
     "publication_mutations_by_this_reconciliation": 0,
-    "status": "DSIRES_PREFLIGHT_PASS_PROVIDER_NETWORK_BLOCKED_BEFORE_SYNTHESIS_LOCK_RESTORED"
+    "status": "DSIRES_STUDIO_C_REPRESENTATIVE_QA_FAILED_ALTERNATE_VOICE_REQUIRED_LOCK_RESTORED"
   },
   "budget_checkpoint": {
     "currency": "USD",
     "sprint_cap_usd": 175.0,
     "per_title_cap_usd": 30.0,
-    "conservative_estimated_spend_usd": 10.1766,
-    "budget_remaining_usd": 164.8234,
+    "conservative_estimated_spend_usd": 10.41276,
+    "budget_remaining_usd": 164.58724,
     "actual_provider_billing_usd": null,
     "actual_billing_status": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
     "estimate_is_not_invoice_truth": true
   },
   "serialized_paid_call_rule": {
-    "status": "ONE_DSIRES_AUDITION_ASSIGNED_BUT_BLOCKED_BEFORE_SYNTHESIS_BY_NETWORK",
+    "status": "STAGE2H_DSIRES_STUDIO_C_COMPLETE_REPRESENTATIVE_QA_FAILED_NEXT_PAID_STAGE_UNASSIGNED",
     "maximum_concurrent_paid_calls": 1,
     "required_before_any_next_paid_call": [
       "Coordinator assigns exactly one title and one bounded stage.",
@@ -52,11 +52,11 @@
     ],
     "current_paid_assignment": {
       "slug": "dsires-baby",
-      "stage": "SOURCE_BOUND_GOOGLE_STUDIO_C_REPRESENTATIVE_AUDITION",
-      "status": "WAITING_NETWORK_ENABLED_SHELL",
-      "estimated_usd": 0.03616,
+      "stage": "SOURCE_BOUND_GOOGLE_CHIRP3_HD_ACHIRD_REPRESENTATIVE_AUDITION",
+      "status": "WAITING_OWNER_AUTHORIZATION",
+      "estimated_usd": 0.23616,
       "booked_usd": 0.0,
-      "attempt_fingerprint": "bccf002da4e9713e3870b602c07e65ae1ad0a49fbd1904e5730b823a0d605d4e"
+      "prior_failed_attempt_fingerprint": "bccf002da4e9713e3870b602c07e65ae1ad0a49fbd1904e5730b823a0d605d4e"
     }
   },
   "lanes": [
@@ -334,32 +334,33 @@
     {
       "slug": "dsires-baby",
       "lane": 3,
-      "state": "PROVIDER_NETWORK_REACHABILITY_REQUIRED",
+      "state": "ALTERNATE_VOICE_AUDITION_REQUIRED",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
       "provider": "google",
       "voice": "en-GB-Studio-C",
-      "quality_evidence": "No quality score: source-bound preflight passed, but DNS failed before the first synthesis call.",
-      "estimated_stage_usd": 0.03616,
-      "booked_stage_usd": 0.0,
-      "actual_provider_billing": "NO_SYNTHESIS_CALL_NOT_REPORTED",
+      "quality_evidence": "Studio-C scores 9.4, 8.4, 7.5, and 9.4; minimum confidence 0.85; fatal robotic texture and mechanical cadence on the risk passage.",
+      "estimated_stage_usd": 0.23616,
+      "booked_stage_usd": 0.23616,
+      "actual_provider_billing": "NOT_REPORTED",
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_release_gate_evidence.json",
       "exact_blockers": [
-        "GOOGLE_TTS_DNS_UNAVAILABLE_IN_CURRENT_EXECUTION_SANDBOX_BEFORE_SYNTHESIS",
-        "REPRESENTATIVE_AUDITION_NOT_RUN",
+        "STUDIO_C_RISK_SAMPLE_7_5_BELOW_9_4",
+        "STUDIO_C_MINIMUM_CONFIDENCE_0_85_BELOW_0_9",
+        "ROBOTIC_TEXTURE_AND_MECHANICAL_CADENCE_FATAL_FLAGS",
         "FULL_TTS_AND_RELEASE_QA_NOT_RUN"
       ],
-      "next_action": "Retry the exact same source-bound Studio-C audition from a network-enabled shell.",
-      "command_authorization": "ONE_SERIALIZED_RETRY_ALLOWED; SAME FINGERPRINT REMAINS RETRYABLE BECAUSE SYNTHESIS_CALLS=0"
+      "next_action": "Run one materially different source-bound Chirp3-HD-Achird audition after explicit owner authorization; if it fails, create a human narration or licensed-audio packet.",
+      "command_authorization": "NOT_AUTHORIZED_IN_STAGE2H; STUDIO_C_FINGERPRINT_MUST_NOT_REPEAT"
     }
   ],
   "paid_execution_queue": [
     {
       "slug": "dsires-baby",
-      "stage": "SOURCE_BOUND_GOOGLE_STUDIO_C_REPRESENTATIVE_AUDITION",
-      "status": "WAITING_NETWORK_ENABLED_SHELL",
-      "estimated_usd": 0.03616,
-      "prior_sprint_estimated_spend_usd": 10.1766,
+      "stage": "SOURCE_BOUND_GOOGLE_CHIRP3_HD_ACHIRD_REPRESENTATIVE_AUDITION",
+      "status": "WAITING_OWNER_AUTHORIZATION",
+      "estimated_usd": 0.23616,
+      "prior_sprint_estimated_spend_usd": 10.41276,
       "maximum_concurrent_paid_calls": 1
     }
   ],
@@ -414,14 +415,14 @@
     "new_public_audio_approvals": 0,
     "release_gate_mutations": 0,
     "d19_status": "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED_PRIVATE_TTS_PASS_NOT_RELEASE_READY",
-    "d19_controlled_publication_audio_truth_repair": "PREPARED_LOCAL_FAIL_CLOSED_PENDING_PR_DEPLOY",
-    "short_english_status": "SREDNI_GIFT_TELL_AUTOMATED_TTS_PLATEAUS; DSIRES_PROVIDER_NETWORK_RETRY_REQUIRED"
+    "d19_controlled_publication_audio_truth_repair": "MERGED_AND_DEPLOYED_FAIL_CLOSED_PR_116",
+    "short_english_status": "SREDNI_GIFT_TELL_AUTOMATED_TTS_PLATEAUS; DSIRES_STUDIO_C_FAILED_ALTERNATE_VOICE_OR_HUMAN_PATH_REQUIRED"
   },
   "next_serialized_action": {
     "slug": "dsires-baby",
-    "stage": "SOURCE_BOUND_GOOGLE_STUDIO_C_REPRESENTATIVE_AUDITION_RETRY",
-    "status": "WAITING_NETWORK_ENABLED_SHELL",
-    "authorization": "ONE SERIALIZED PRIVATE AUDITION RETRY; NO FULL TTS, UPLOAD, RELEASE MUTATION, OR PUBLICATION UNTIL REPRESENTATIVE LISTENING PASSES",
+    "stage": "SOURCE_BOUND_GOOGLE_CHIRP3_HD_ACHIRD_REPRESENTATIVE_AUDITION",
+    "status": "WAITING_OWNER_AUTHORIZATION",
+    "authorization": "NO PAID RETRY AUTHORIZED BY STAGE2H; NO FULL TTS, UPLOAD, RELEASE MUTATION, OR PUBLICATION UNTIL REPRESENTATIVE LISTENING PASSES",
     "exact_command": "See internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_report.md"
   },
   "guardrails": {
