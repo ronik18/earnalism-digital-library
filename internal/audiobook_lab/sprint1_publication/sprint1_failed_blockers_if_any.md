@@ -409,3 +409,15 @@ The owner-authorized automated queue was exhausted without weakening the all-sam
 | `the-yellow-wallpaper` | `HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED` | `$0.47248` | `PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-yellow-wallpaper --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav` |
 
 The conservative Sprint checkpoint is `$14.90614 / $175`; estimated remaining budget is `$160.09386`. Actual provider billing is not reported. No additional paid action is currently safe without external narration, rights/source evidence, or a materially new provider family.
+
+## Autonomous V3 Closeout
+
+- Current public truth remains `2/32` YES+YES: `book-2b9853ec52` and `a-ghost-story`.
+- Fourteen exhausted-provider titles are now consistently classified as `HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED`; their complete packets and received-audio commands are indexed in `sprint1_human_narration_intake_board.json`.
+- No received narration or licensed-audio file is present, so no intake QA or publication can run yet.
+- `jekyll-and-hyde` is source-, rights-, sanitation-, and cover-ready, but Google ADC requires interactive reauthentication. Exact next command: `gcloud auth application-default login`.
+- `radharani`, `nishkriti`, `devdas`, and `book-edfcf810c5` passed non-paid reader/source/sanitation/cover preflight; Bengali campaign pilot and campaign-specific paid gates still prohibit scaling.
+- `bn-066` remains private-audio-only pending lock-safe three-chunk ASR language calibration with the private Stage 2 artifacts.
+- `pather-panchali` remains `OWNER_DOCUMENT_REQUIRED` for audiobook rights/source/cover proof.
+- Six non-approved titles have historical Cloudinary/B2 objects that are still directly reachable. Current API/UI state is fail-closed, but remote deletion or private migration is destructive and requires an explicit storage operation; see `sprint1_unapproved_remote_audio_exposure_audit.json`.
+- No provider call, upload, public release mutation, deployment, or paid-lock mutation occurred in V3. Estimated spend remains `$14.90614`; estimated remaining cap remains `$160.09386`.

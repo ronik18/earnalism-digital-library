@@ -5,8 +5,11 @@
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
   "approval_scope": "historical_admin_import_reconstruction",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
+  "audiobook_use_approved": true,
+  "audiobook_use_approval_source": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
+  "audiobook_use_approved_at": "2026-07-13T07:30:39Z",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": true
+  "audiobook_enabled": false
 }

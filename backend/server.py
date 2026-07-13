@@ -55,6 +55,7 @@ try:
         can_expose_reader,
         controlled_artifact_status,
         dracula_artifact_status,
+        explicit_preview_chapter_ids,
         live_approved_mongo_query,
         load_controlled_artifact_book,
         load_dracula_artifact_book,
@@ -70,6 +71,7 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         can_expose_reader,
         controlled_artifact_status,
         dracula_artifact_status,
+        explicit_preview_chapter_ids,
         live_approved_mongo_query,
         load_controlled_artifact_book,
         load_dracula_artifact_book,
@@ -396,7 +398,7 @@ async def _expensive_job_slot(job_type: str):
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-release-evidence-v7"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "preview-parity-v8"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
@@ -950,6 +952,8 @@ BOOK_SUMMARY_PROJECTION = {
     "content_hash": 1,
     "provenance_hash": 1,
     "qa_status": 1,
+    "chapters.id": 1,
+    "chapters.is_preview": 1,
 }
 PUBLIC_CACHE_PATHS = {
     "/api/home",
@@ -1221,12 +1225,14 @@ def _is_controlled_public_slug(slug: str) -> bool:
 
 
 def _public_projection_is_live(projected: Optional[dict]) -> bool:
+    preview_enabled = projected.get("preview_enabled") if projected else None
     return bool(
         projected
         and projected.get("slug") in CONTROLLED_LIVE_BOOK_SLUGS
         and projected.get("publication_status") == "LIVE_APPROVED"
         and projected.get("reader_enabled") is True
-        and projected.get("preview_enabled") is True
+        and isinstance(preview_enabled, bool)
+        and bool(projected.get("preview_url")) is preview_enabled
         and projected.get("audio_enabled") is False
         and projected.get("audiobook_enabled") is False
     )
@@ -3103,19 +3109,8 @@ def _wallet_refund_candidates(transactions: List[dict], refunded_candidate_ids: 
 
 
 def _free_preview_chapter_ids(book: dict) -> set[str]:
-    """Return chapter ids that should be free previews.
-
-    Existing chaptered books keep the historical first-chapter preview behavior.
-    Single full-text stories are paid by default unless a chapter is explicitly
-    marked as a preview, so a whole short story is not accidentally exposed.
-    """
-    chapters = sorted(book.get("chapters") or [], key=lambda c: c.get("order", 0))
-    explicit = {c.get("id") for c in chapters if c.get("is_preview") is True and c.get("id")}
-    if explicit:
-        return explicit
-    if len(chapters) > 1 and chapters[0].get("id"):
-        return {chapters[0]["id"]}
-    return set()
+    """Return only chapters with explicit preview approval evidence."""
+    return set(explicit_preview_chapter_ids(book))
 
 
 def _is_free_preview_chapter(book: dict, chapter_id: Optional[str]) -> bool:
@@ -3126,8 +3121,8 @@ def _is_free_preview_chapter(book: dict, chapter_id: Optional[str]) -> bool:
 
 def _strip_paid_chapter_content(book: dict) -> dict:
     """Return a shallow copy of `book` with non-preview chapter `content`
-    blanked. Preview chapter (order==0) keeps its content; everything later
-    is metadata-only. Used for PUBLIC `/api/books/*` endpoints so chapter
+    blanked. Explicit preview chapters keep content; every other chapter is
+    metadata-only. Used for PUBLIC `/api/books/*` endpoints so chapter
     bodies are never leaked to guests via the catalog API.
     """
     if not book:

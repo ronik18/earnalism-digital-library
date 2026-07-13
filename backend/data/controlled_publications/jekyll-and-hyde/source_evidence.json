@@ -6,7 +6,11 @@
   "source_hash": "7e19df634b5db327f75392f934268bc232179bd17c44e52fc399b640a0375958",
   "content_hash": "5389964e015bbbe9b3211c21468d429a52f7215814a4ff9933ac7e1ebab5e241",
   "provenance_hash": "1a9fc066db1b218c06bd02fe1962b650872ae62c7c82a73c4baf5a663cd3539d",
-  "rights_basis": "public_domain",
+  "rights_basis": "Author died 1894. Original publication 1886. Public domain in the United States and under the applicable life-plus-60 term.",
+  "rights_verification_sources": [
+    "https://www.gutenberg.org/ebooks/43",
+    "https://copyright.gov.in/Copyright_Act_1957/chapter_v.html"
+  ],
   "downloaded_at": "2026-07-01T10:36:20Z",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true

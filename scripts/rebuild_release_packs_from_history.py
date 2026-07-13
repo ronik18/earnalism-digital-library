@@ -412,6 +412,17 @@ def chapter_id(index: int) -> str:
     return f"chapter-{index:03d}"
 
 
+def chapter_is_explicit_preview(payload: dict[str, Any], chapter: dict[str, Any], generated_id: str) -> bool:
+    if chapter.get("is_preview") is True:
+        return True
+    configured_ids = payload.get("preview_chapter_ids")
+    if not isinstance(configured_ids, list):
+        return False
+    preview_ids = {str(value or "").strip() for value in configured_ids if str(value or "").strip()}
+    source_id = str(chapter.get("id") or "").strip()
+    return generated_id in preview_ids or bool(source_id and source_id in preview_ids)
+
+
 def rebuild_slug(
     slug: str,
     cover_map: dict[str, dict[str, str]],
@@ -452,6 +463,7 @@ def rebuild_slug(
             continue
         title = str(chapter.get("title") or f"Chapter {index}").strip() or f"Chapter {index}"
         cid = chapter_id(index)
+        is_preview = chapter_is_explicit_preview(payload, chapter, cid)
         words = word_count(plain)
         chapter_row = {
             "bookSlug": slug,
@@ -482,7 +494,7 @@ def rebuild_slug(
             "sanitizedSha256": chapter_row["sanitizedSha256"],
             "word_count": words,
             "reading_minutes": chapter_row["readingTimeMinutesApprox"],
-            "is_preview": True,
+            "is_preview": is_preview,
             "has_images": False,
             "image_count": 0,
             "processing_status": "ready",
@@ -496,7 +508,7 @@ def rebuild_slug(
                 "id": cid,
                 "order": index,
                 "title": title,
-                "is_preview": True,
+                "is_preview": is_preview,
                 "has_images": False,
                 "image_count": 0,
                 "word_count": words,
@@ -652,7 +664,7 @@ def rebuild_slug(
         "language": language,
         "chapter_count": len(public_chapters),
         "chapters": public_chapters,
-        "preview_chapter_ids": [chapter["id"] for chapter in public_chapters],
+        "preview_chapter_ids": [chapter["id"] for chapter in public_chapters if chapter["is_preview"]],
         "audio_enabled": False,
         "audiobook_enabled": False,
         "generated_at": now_iso(),

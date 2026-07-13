@@ -10,7 +10,7 @@
   "sanitizedSha256": "f4bd2ecf4d9eb2dc5e3917bc45965c768463a34d9ced5f1dfe1e1f336b300827",
   "word_count": 1407,
   "reading_minutes": 6,
-  "is_preview": true,
+  "is_preview": false,
   "has_images": false,
   "image_count": 0,
   "processing_status": "ready",

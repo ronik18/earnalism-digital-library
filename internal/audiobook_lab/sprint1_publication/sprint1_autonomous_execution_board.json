@@ -1,12 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-13T06:27:59+00:00",
-  "owner_decision": "AUTHORIZE_AUTONOMOUS_SPRINT1_AUDIO_PUBLICATION_WITH_SELF_GOVERNING_DECISION_TREE_AND_175_USD_CAP",
-  "execution_model": {
-    "non_paid_lanes_parallel": true,
+  "generated_at": "2026-07-13T07:54:58Z",
+  "owner_decision": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
+  "loop_state": "NON_PAID_REPAIR_QUEUE_REMAINS",
+  "safety": {
+    "free_form_evidence_commands_executed": false,
     "paid_calls_serialized": true,
-    "release_mutations_serialized": true,
-    "publication_requires_all_release_gates": true
+    "public_release_gate_mutated": false,
+    "repeat_failed_fingerprints_allowed": false
   },
   "runtime": {
     "fixed_caps": {
@@ -28,25 +29,68 @@
       "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": "true",
       "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "true"
     },
-    "fixed_caps_source": "OWNER_AUTHORIZED_AND_BOUND_INLINE_BY_ORCHESTRATOR",
+    "fixed_caps_enforcement": "BOUND_INLINE_FOR_EVERY_CHILD_PROCESS",
+    "fixed_caps_observed_in_parent": {
+      "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "MATCH",
+      "SPRINT1_MAX_USD_PER_TITLE": "MATCH",
+      "MAX_TTS_BUDGET_USD": "MATCH",
+      "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "MATCH",
+      "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "MATCH",
+      "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "MATCH",
+      "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "MATCH",
+      "EARNALISM_OPENAI_LISTENING_QA_MODEL": "MATCH",
+      "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "MATCH",
+      "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "MATCH",
+      "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE": "MATCH",
+      "EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS": "MATCH",
+      "EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD": "MATCH",
+      "EARNALISM_GOOGLE_TTS_ESTIMATED_USD_PER_1K_CHARS": "MATCH",
+      "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS": "MATCH",
+      "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": "MATCH",
+      "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "MATCH"
+    },
+    "credentials": {
+      "GOOGLE_APPLICATION_CREDENTIALS": "SET_AND_READABLE",
+      "GOOGLE_CLOUD_PROJECT": "SET",
+      "GOOGLE_ADC": "GOOGLE_ADC_REAUTH_REQUIRED",
+      "OPENAI_API_KEY": "SET",
+      "SARVAM_API_KEY": "SET"
+    },
     "providers": {
+      "google": false,
+      "openai_qa": true,
+      "sarvam": true
+    },
+    "provider_readiness": {
       "google": {
-        "available": true,
-        "credential_file": "SET_AND_READABLE",
-        "project": "SET"
-      },
-      "openai": {
-        "available": true,
-        "key": "SET"
-      },
-      "sarvam": {
-        "available": true,
-        "key": "SET"
+        "paid_ready": false,
+        "blocker": "GOOGLE_ADC_REAUTH_REQUIRED",
+        "credential_file_readable": true,
+        "adc_probe": {
+          "ready": false,
+          "status": "GOOGLE_ADC_REAUTH_REQUIRED",
+          "outcome": "NONZERO_EXIT",
+          "timeout_seconds": 8.0,
+          "token_output_exposed": false
+        }
       }
     },
-    "any_tts_provider_available": true,
-    "qa_provider_available": true,
+    "bengali_campaign_paid_gates": {
+      "ready": false,
+      "missing": [
+        "EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN",
+        "EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD",
+        "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE"
+      ],
+      "source": "internal/earnalism_intelligence/bengali_audiobook_campaign_policy.md"
+    },
     "secrets_printed": false
+  },
+  "reconciled_nonpaid_preflight": {
+    "present": true,
+    "path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/sprint1_v3_nonpaid_preflight_results.json",
+    "generated_at": "2026-07-13T07:30:39Z",
+    "matched_title_count": 7
   },
   "lock": {
     "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
@@ -55,803 +99,466 @@
     "current_holder": "none",
     "allowed_next_holders": [],
     "available": true,
+    "approved_scope": "Stage 3C bn-066 checkpointed ASR/source alignment resume on existing private audio, followed only by bounded listening QA after ASR completion; total MAX_TTS_BUDGET_USD=5; ASR retry cap=3; listening-QA cap=0.75; prior partial ASR billing risk explicitly accepted for this single retry; no TTS regeneration, upload, publication, public Listen, or release-gate mutation.",
+    "allowed_slugs": [
+      "bn-066"
+    ],
+    "budget_cap_usd": 5,
     "sha256": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
   },
   "budget": {
-    "authorized_total_usd": 175.0,
-    "estimated_checkpoint_usd": 14.90614,
+    "cap_usd": 175.0,
+    "per_title_cap_usd": 30.0,
+    "conservative_estimated_spend_usd": 14.90614,
     "estimated_remaining_usd": 160.09386,
-    "actual_provider_billing": "NOT_REPORTED_UNLESS_PROVIDER_RETURNS_IT"
+    "actual_spend_usd": null
   },
   "summary": {
     "active_titles": 32,
-    "public_readers": 32,
-    "public_audiobooks": 2,
-    "new_short_yes_yes_after_baseline": 0,
-    "paid_ready_titles": 0
+    "yes_yes": 2,
+    "received_audio_titles": 0,
+    "waiting_external_audio_titles": 14,
+    "owner_document_titles": 1,
+    "non_paid_repair_titles": 6,
+    "paid_ready_titles": 0,
+    "additional_short_yes_yes_since_v3_baseline": 0
   },
-  "lanes": {
-    "approved_audio_guard": [
-      "book-2b9853ec52",
-      "a-ghost-story"
-    ],
-    "short_bengali": [
-      "book-f5d593e1f4",
-      "muchiram-gurer-jibanchorit",
-      "radharani",
-      "nishkriti",
-      "book-d19e96859f"
-    ],
-    "short_english": [
-      "the-gift-of-the-magi",
-      "the-tell-tale-heart",
-      "sredni-vashtar",
-      "the-cop-and-the-anthem",
-      "the-last-leaf",
-      "the-masque-of-the-red-death",
-      "the-yellow-wallpaper",
-      "the-monkeys-paw",
-      "the-necklace",
-      "dsires-baby",
-      "the-open-window"
-    ],
-    "medium_long_english": [
-      "jekyll-and-hyde",
-      "alices-adventures-in-wonderland",
-      "the-time-machine",
-      "the-call-of-the-wild",
-      "white-fang",
-      "frankenstein",
-      "picture-of-dorian-gray",
-      "the-secret-garden",
-      "pride-and-prejudice",
-      "dracula"
-    ],
-    "bengali_long_repair": [
-      "bn-066",
-      "devdas",
-      "book-edfcf810c5",
-      "pather-panchali"
-    ]
+  "next_received_audio_action": null,
+  "next_non_paid_action": {
+    "slug": "radharani",
+    "title": "রাধারাণী",
+    "language": "Bengali",
+    "priority": 32,
+    "estimated_incremental_cost_usd": 0.3681,
+    "public_audio_allowed_now": false,
+    "release_gate_mutation_allowed": false,
+    "state": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_SCALE_GATE_BLOCKED",
+    "exact_blocker": "Bengali campaign policy does not authorize scaling before the pilot reaches raw ASR/source 9.7 and publication, and the campaign-specific paid caps are absent.",
+    "matrix_exact_blocker_overridden": "LEGACY_AUDIO_DECOMMISSIONED_DERIVATIVE_RIGHTS_AND_SYNC_FAIL; TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
+    "decision_source": "sprint1_v3_nonpaid_preflight_results",
+    "reconciled_preflight_evidence": "/private/tmp/earnalism-v3-preflight-radharani-reconciled/catalog_state.json",
+    "paid_execution_allowed": false,
+    "paid_execution_blocker": "RECONCILED_NONPAID_PREFLIGHT_ONLY",
+    "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs radharani --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1"
   },
+  "next_paid_action": null,
   "title_decisions": [
-    {
-      "slug": "book-2b9853ec52",
-      "title": "দুই বিঘা জমি",
-      "language": "Bengali",
-      "current_public_reader": "Yes",
-      "current_public_audio": "Yes",
-      "current_status": "Yes, publicly rendered book + Yes, publicly available audiobook",
-      "estimated_lifecycle_cost_usd": 0.0,
-      "decision": {
-        "state": "VALIDATE_APPROVED_AND_SKIP",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "bn-066",
-      "title": "আনন্দমঠ",
-      "language": "Bengali",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 0.1547,
-      "decision": {
-        "state": "NON_PAID_ASR_LANGUAGE_CALIBRATION",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "radharani",
-      "title": "রাধারাণী",
-      "language": "Bengali",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 0.3681,
-      "decision": {
-        "state": "BENGALI_NON_PAID_PREFLIGHT_OR_CALIBRATION",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "nishkriti",
-      "title": "নিষ্কৃতি",
-      "language": "Bengali",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 0.7886,
-      "decision": {
-        "state": "BENGALI_NON_PAID_PREFLIGHT_OR_CALIBRATION",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "muchiram-gurer-jibanchorit",
-      "title": "মুচিরাম গুড়ের জীবনচরিত",
-      "language": "Bengali",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "estimated_lifecycle_cost_usd": null,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug muchiram-gurer-jibanchorit --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "book-d19e96859f",
-      "title": "গিন্নি",
-      "language": "Bengali",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "ASR_SOURCE_MISMATCH",
-      "estimated_lifecycle_cost_usd": null,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "book-f5d593e1f4",
-      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
-      "language": "Bengali",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "estimated_lifecycle_cost_usd": null,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-f5d593e1f4 --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "pather-panchali",
-      "title": "পথের পাঁচালী / Pather Panchali",
-      "language": "Bengali",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 1.9477,
-      "decision": {
-        "state": "OWNER_DOCUMENT_REQUIRED",
-        "paid_ready": false,
-        "blocker": "OWNER_DOCUMENT_REQUIRED_FOR_AUDIO_RIGHTS_SOURCE_COVER"
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "devdas",
-      "title": "দেবদাস / Devdas",
-      "language": "Bengali",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 2.3297,
-      "decision": {
-        "state": "BENGALI_NON_PAID_PREFLIGHT_OR_CALIBRATION",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "book-edfcf810c5",
-      "title": "ক্ষুধিত পাষাণ",
-      "language": "Bengali",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 0.2304,
-      "decision": {
-        "state": "BENGALI_NON_PAID_PREFLIGHT_OR_CALIBRATION",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "a-ghost-story",
-      "title": "A Ghost Story",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "Yes",
-      "current_status": "Yes, publicly rendered book + Yes, publicly available audiobook",
-      "estimated_lifecycle_cost_usd": 0.3,
-      "decision": {
-        "state": "VALIDATE_APPROVED_AND_SKIP",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "dracula",
-      "title": "Dracula",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 21.5103,
-      "decision": {
-        "state": "WAITING_FOR_FIVE_NEW_SHORT_YES_YES",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "frankenstein",
-      "title": "Frankenstein",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 10.4242,
-      "decision": {
-        "state": "WAITING_FOR_FIVE_NEW_SHORT_YES_YES",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "jekyll-and-hyde",
-      "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 3.5121,
-      "decision": {
-        "state": "WAITING_FOR_FIVE_NEW_SHORT_YES_YES",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "picture-of-dorian-gray",
-      "title": "The Picture of Dorian Gray",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 10.7751,
-      "decision": {
-        "state": "WAITING_FOR_FIVE_NEW_SHORT_YES_YES",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "the-time-machine",
-      "title": "The Time Machine",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 1.797,
-      "decision": {
-        "state": "WAITING_FOR_FIVE_NEW_SHORT_YES_YES",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "the-call-of-the-wild",
-      "title": "The Call of the Wild",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 1.7706,
-      "decision": {
-        "state": "WAITING_FOR_FIVE_NEW_SHORT_YES_YES",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "white-fang",
-      "title": "White Fang",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 9.9961,
-      "decision": {
-        "state": "WAITING_FOR_FIVE_NEW_SHORT_YES_YES",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "pride-and-prejudice",
-      "title": "Pride and Prejudice",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 16.9774,
-      "decision": {
-        "state": "WAITING_FOR_FIVE_NEW_SHORT_YES_YES",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "the-secret-garden",
-      "title": "The Secret Garden",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 10.9514,
-      "decision": {
-        "state": "WAITING_FOR_FIVE_NEW_SHORT_YES_YES",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "alices-adventures-in-wonderland",
-      "title": "Alice's Adventures in Wonderland",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "SPRINT_TARGET_INCOMPLETE",
-      "estimated_lifecycle_cost_usd": 1.5053,
-      "decision": {
-        "state": "WAITING_FOR_FIVE_NEW_SHORT_YES_YES",
-        "paid_ready": false
-      },
-      "chance_per_dollar": 0.0
-    },
     {
       "slug": "the-gift-of-the-magi",
       "title": "The Gift of the Magi",
       "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "estimated_lifecycle_cost_usd": null,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-gift-of-the-magi --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets"
-      },
-      "chance_per_dollar": 0.0
+      "priority": 10,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-gift-of-the-magi --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-gift-of-the-magi"
     },
     {
       "slug": "the-tell-tale-heart",
       "title": "The Tell-Tale Heart",
       "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "estimated_lifecycle_cost_usd": null,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-tell-tale-heart --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets"
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "the-open-window",
-      "title": "The Open Window",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED",
-      "estimated_lifecycle_cost_usd": 0.1155,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_prepare_human_narration_packet.py --slug the-open-window --asset-root /Users/ronikbasak/Documents/GitHub/earnalism-digital-library --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
-      },
-      "chance_per_dollar": 0.0
+      "priority": 11,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-tell-tale-heart --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-tell-tale-heart"
     },
     {
       "slug": "sredni-vashtar",
       "title": "Sredni Vashtar",
       "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "estimated_lifecycle_cost_usd": null,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug sredni-vashtar --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets"
-      },
-      "chance_per_dollar": 0.0
-    },
-    {
-      "slug": "dsires-baby",
-      "title": "Désirée's Baby",
-      "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "estimated_lifecycle_cost_usd": 0.1669,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug dsires-baby --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
-      },
-      "chance_per_dollar": 0.0
+      "priority": 12,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug sredni-vashtar --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/sredni-vashtar"
     },
     {
       "slug": "the-cop-and-the-anthem",
       "title": "The Cop and the Anthem",
       "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "estimated_lifecycle_cost_usd": 0.1736,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-cop-and-the-anthem --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
-      },
-      "chance_per_dollar": 0.0
+      "priority": 13,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-cop-and-the-anthem --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-cop-and-the-anthem"
     },
     {
       "slug": "the-last-leaf",
       "title": "The Last Leaf",
       "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "estimated_lifecycle_cost_usd": 0.1792,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-last-leaf --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
-      },
-      "chance_per_dollar": 0.0
+      "priority": 14,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-last-leaf --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-last-leaf"
     },
     {
       "slug": "the-masque-of-the-red-death",
       "title": "The Masque of the Red Death",
       "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "estimated_lifecycle_cost_usd": 0.1798,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-masque-of-the-red-death --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
-      },
-      "chance_per_dollar": 0.0
+      "priority": 15,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-masque-of-the-red-death --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-masque-of-the-red-death"
     },
     {
       "slug": "the-yellow-wallpaper",
       "title": "The Yellow Wallpaper",
       "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "estimated_lifecycle_cost_usd": 0.3834,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-yellow-wallpaper --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
-      },
-      "chance_per_dollar": 0.0
+      "priority": 16,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-yellow-wallpaper --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-yellow-wallpaper"
     },
     {
       "slug": "the-monkeys-paw",
       "title": "The Monkey's Paw",
       "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "estimated_lifecycle_cost_usd": 0.2662,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-monkeys-paw --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
-      },
-      "chance_per_dollar": 0.0
+      "priority": 17,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-monkeys-paw --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-monkeys-paw"
     },
     {
       "slug": "the-necklace",
       "title": "The Necklace",
       "language": "English",
-      "current_public_reader": "Yes",
-      "current_public_audio": "No",
-      "current_status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "estimated_lifecycle_cost_usd": 0.2035,
-      "decision": {
-        "state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_TRACK",
-        "paid_ready": false,
-        "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-necklace --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
-      },
-      "chance_per_dollar": 0.0
-    }
-  ],
-  "serialized_paid_queue": [],
-  "next_paid_action": null,
-  "safety": {
-    "failed_audio_publication_allowed": false,
-    "static_audio_fallback_allowed": false,
-    "browser_speech_fallback_allowed": false,
-    "word_level_sync_claim_allowed": false,
-    "arbitrary_matrix_command_execution_allowed": false
-  },
-  "execution_history": [
-    {
-      "status": "AUDITION_GENERATION_COMPLETE_QA_PENDING",
-      "slug": "the-cop-and-the-anthem",
-      "provider": "google",
-      "voice": "en-GB-Studio-C",
-      "returncode": 0,
-      "completed_at": "2026-07-13T05:47:09+00:00",
-      "private_output_dir": "/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-cop-and-the-anthem",
-      "stdout_tail": "c7b67ce0b59727f666229db4c077cbbf\",\n  \"input_schema\": \"earnalism.google_english_private_input.v1\",\n  \"language_code\": \"en-GB\",\n  \"listening_evidence_path\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-cop-and-the-anthem/the-cop-and-the-anthem/audition/bd4b31c2312dfa26/audition_listening_evidence.json\",\n  \"mode\": \"audition\",\n  \"next_exact_command\": \"/Library/Developer/CommandLineTools/usr/bin/python3 /private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py full --sanitized-source /private/tmp/earnalism-sprint1-autonomous-v2-private/inputs/the-cop-and-the-anthem/sanitized_source.txt --input-manifest /private/tmp/earnalism-sprint1-autonomous-v2-private/inputs/the-cop-and-the-anthem/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-cop-and-the-anthem --voice en-GB-Studio-C --usd-per-million-chars 20.0 --run-budget-usd 1.0 --title-budget-usd 30.0 --title-spend-usd 0.03726 --sprint-budget-usd 175.0 --sprint-spend-usd 10.45002 --language-code en-GB --audition-evidence /private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-cop-and-the-anthem/the-cop-and-the-anthem/audition/bd4b31c2312dfa26/audition_listening_evidence.json --execute\",\n  \"paid_lock_restored_byte_for_byte\": true,\n  \"paid_lock_sha256_after\": \"ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e\",\n  \"paid_lock_sha256_before\": \"ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e\",\n  \"paid_lock_touched\": true,\n  \"pitch\": 0.0,\n  \"private_output_only\": true,\n  \"private_run_dir\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-cop-and-the-anthem/the-cop-and-the-anthem/audition/bd4b31c2312dfa26\",\n  \"provider\": \"google\",\n  \"provider_calls_ran\": true,\n  \"public_release_approved\": false,\n  \"publication_performed\": false,\n  \"release_mutation_performed\": false,\n  \"representative_passages\": [\n    {\n      \"characters\": 315,\n      \"passage_id\": \"opening\",\n      \"text_sha256\": \"eae5b4c918e1950b2e04d38cfc798db76353b39699f1e2ec23d6b5ed0b09dbbe\"\n    },\n    {\n      \"characters\": 929,\n      \"passage_id\": \"middle\",\n      \"text_sha256\": \"755cbd3e0021f1834437a2f7ba33b8358b6123d1bbe8a58b475f4c39cf858a0f\"\n    },\n    {\n      \"characters\": 424,\n      \"passage_id\": \"dialogue_or_risk\",\n      \"source_sentence_index\": 107,\n      \"source_sentence_indexes\": [\n        105,\n        106,\n        107,\n        108\n      ],\n      \"text_sha256\": \"06239fc37f9e0fbc79ac9195167738afa863edce9d5380a5675a3aa101ae4412\"\n    },\n    {\n      \"characters\": 195,\n      \"passage_id\": \"ending\",\n      \"text_sha256\": \"a8f9c16feac926637f8f78503f98948b1144f700320fd577182fd6e9a1e95bd7\"\n    }\n  ],\n  \"result_manifest_path\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-cop-and-the-anthem/the-cop-and-the-anthem/audition/bd4b31c2312dfa26/audition_manifest.json\",\n  \"sanitized_source_copy\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-cop-and-the-anthem/the-cop-and-the-anthem/audition/bd4b31c2312dfa26/sanitized_source.txt\",\n  \"schema_version\": \"earnalism.google_english_private_pipeline.v1\",\n  \"slug\": \"the-cop-and-the-anthem\",\n  \"source_sha256\": \"c0b36ffec25e389cd57133b025e9055ecf16e75c5a541380251f7c99d843ef9f\",\n  \"speaking_rate\": 0.94,\n  \"started_at\": \"2026-07-13T05:46:59Z\",\n  \"status\": \"AUDITION_AUDIO_READY_LISTENING_REVIEW_REQUIRED\",\n  \"synthesis_calls\": 4,\n  \"title\": \"The Cop and the Anthem\",\n  \"unit_count\": 4,\n  \"unit_hashes\": [\n    \"eae5b4c918e1950b2e04d38cfc798db76353b39699f1e2ec23d6b5ed0b09dbbe\",\n    \"755cbd3e0021f1834437a2f7ba33b8358b6123d1bbe8a58b475f4c39cf858a0f\",\n    \"06239fc37f9e0fbc79ac9195167738afa863edce9d5380a5675a3aa101ae4412\",\n    \"a8f9c16feac926637f8f78503f98948b1144f700320fd577182fd6e9a1e95bd7\"\n  ],\n  \"upload_performed\": false,\n  \"voice\": \"en-GB-Studio-C\"\n}\n",
-      "stderr_tail": "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.\n  warnings.warn(message, FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.\n  warnings.warn(eol_message.format(\"3.9\"), FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.\n  warnings.warn(eol_message.format(\"3.9\"), FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.cloud.texttospeech_v1 supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.cloud.texttospeech_v1.\n  warnings.warn(message, FutureWarning)\n",
-      "lock_after": {
-        "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
-        "status": "active",
-        "active": true,
-        "current_holder": "none",
-        "allowed_next_holders": [],
-        "available": true,
-        "sha256": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
-      },
-      "public_release_mutated": false
-    },
-    {
-      "status": "AUDITION_GENERATION_COMPLETE_QA_PENDING",
-      "slug": "the-last-leaf",
-      "provider": "google",
-      "voice": "en-GB-Studio-C",
-      "returncode": 0,
-      "completed_at": "2026-07-13T05:51:27+00:00",
-      "private_output_dir": "/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-last-leaf",
-      "stdout_tail": "ition/c0f5f836abe9976e/input_manifest.json\",\n  \"input_manifest_sha256\": \"3ea1574de899b5401c87611af6c6e8c68d39e87de3cee28d7216d1012d04255e\",\n  \"input_schema\": \"earnalism.google_english_private_input.v1\",\n  \"language_code\": \"en-GB\",\n  \"listening_evidence_path\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-last-leaf/the-last-leaf/audition/c0f5f836abe9976e/audition_listening_evidence.json\",\n  \"mode\": \"audition\",\n  \"next_exact_command\": \"/Library/Developer/CommandLineTools/usr/bin/python3 /private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py full --sanitized-source /private/tmp/earnalism-sprint1-autonomous-v2-private/inputs/the-last-leaf/sanitized_source.txt --input-manifest /private/tmp/earnalism-sprint1-autonomous-v2-private/inputs/the-last-leaf/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-last-leaf --voice en-GB-Studio-C --usd-per-million-chars 20.0 --run-budget-usd 1.0 --title-budget-usd 30.0 --title-spend-usd 0.0343 --sprint-budget-usd 175.0 --sprint-spend-usd 10.92158 --language-code en-GB --audition-evidence /private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-last-leaf/the-last-leaf/audition/c0f5f836abe9976e/audition_listening_evidence.json --execute\",\n  \"paid_lock_restored_byte_for_byte\": true,\n  \"paid_lock_sha256_after\": \"ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e\",\n  \"paid_lock_sha256_before\": \"ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e\",\n  \"paid_lock_touched\": true,\n  \"pitch\": 0.0,\n  \"private_output_only\": true,\n  \"private_run_dir\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-last-leaf/the-last-leaf/audition/c0f5f836abe9976e\",\n  \"provider\": \"google\",\n  \"provider_calls_ran\": true,\n  \"public_release_approved\": false,\n  \"publication_performed\": false,\n  \"release_mutation_performed\": false,\n  \"representative_passages\": [\n    {\n      \"characters\": 457,\n      \"passage_id\": \"opening\",\n      \"text_sha256\": \"72eba0ac0a58553019d58bc301314b6fc78fac7f0c925527d9abc8bc7dbcb0d7\"\n    },\n    {\n      \"characters\": 364,\n      \"passage_id\": \"middle\",\n      \"text_sha256\": \"d393761fd93bd326661d3519042ad5bc836cb887450a8045b160bce6c1cef617\"\n    },\n    {\n      \"characters\": 417,\n      \"passage_id\": \"dialogue_or_risk\",\n      \"source_sentence_index\": 37,\n      \"source_sentence_indexes\": [\n        34,\n        35,\n        36,\n        37,\n        38,\n        39,\n        40\n      ],\n      \"text_sha256\": \"5463f22730be5844b6e4bfa313e84f23d063630974b4a42b1a8891f30c795586\"\n    },\n    {\n      \"characters\": 477,\n      \"passage_id\": \"ending\",\n      \"text_sha256\": \"5bc116964f424c20e4d3b4a30a944c31606bba3867a143b3f00993d4a1d82f7b\"\n    }\n  ],\n  \"result_manifest_path\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-last-leaf/the-last-leaf/audition/c0f5f836abe9976e/audition_manifest.json\",\n  \"sanitized_source_copy\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-last-leaf/the-last-leaf/audition/c0f5f836abe9976e/sanitized_source.txt\",\n  \"schema_version\": \"earnalism.google_english_private_pipeline.v1\",\n  \"slug\": \"the-last-leaf\",\n  \"source_sha256\": \"f1281c55388f41893d10ecac60944c704ae0d0571cbdb7d09d67cd124ccd432d\",\n  \"speaking_rate\": 0.94,\n  \"started_at\": \"2026-07-13T05:51:18Z\",\n  \"status\": \"AUDITION_AUDIO_READY_LISTENING_REVIEW_REQUIRED\",\n  \"synthesis_calls\": 4,\n  \"title\": \"The Last Leaf\",\n  \"unit_count\": 4,\n  \"unit_hashes\": [\n    \"72eba0ac0a58553019d58bc301314b6fc78fac7f0c925527d9abc8bc7dbcb0d7\",\n    \"d393761fd93bd326661d3519042ad5bc836cb887450a8045b160bce6c1cef617\",\n    \"5463f22730be5844b6e4bfa313e84f23d063630974b4a42b1a8891f30c795586\",\n    \"5bc116964f424c20e4d3b4a30a944c31606bba3867a143b3f00993d4a1d82f7b\"\n  ],\n  \"upload_performed\": false,\n  \"voice\": \"en-GB-Studio-C\"\n}\n",
-      "stderr_tail": "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.\n  warnings.warn(message, FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.\n  warnings.warn(eol_message.format(\"3.9\"), FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.\n  warnings.warn(eol_message.format(\"3.9\"), FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.cloud.texttospeech_v1 supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.cloud.texttospeech_v1.\n  warnings.warn(message, FutureWarning)\n",
-      "lock_after": {
-        "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
-        "status": "active",
-        "active": true,
-        "current_holder": "none",
-        "allowed_next_holders": [],
-        "available": true,
-        "sha256": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
-      },
-      "public_release_mutated": false
-    },
-    {
-      "status": "AUDITION_GENERATION_COMPLETE_QA_PENDING",
-      "slug": "the-masque-of-the-red-death",
-      "provider": "google",
-      "voice": "en-GB-Studio-C",
-      "returncode": 0,
-      "completed_at": "2026-07-13T05:55:11+00:00",
-      "private_output_dir": "/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-masque-of-the-red-death",
-      "stdout_tail": ",\n  \"input_schema\": \"earnalism.google_english_private_input.v1\",\n  \"language_code\": \"en-GB\",\n  \"listening_evidence_path\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-masque-of-the-red-death/the-masque-of-the-red-death/audition/6f561b31503df395/audition_listening_evidence.json\",\n  \"mode\": \"audition\",\n  \"next_exact_command\": \"/Library/Developer/CommandLineTools/usr/bin/python3 /private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py full --sanitized-source /private/tmp/earnalism-sprint1-autonomous-v2-private/inputs/the-masque-of-the-red-death/sanitized_source.txt --input-manifest /private/tmp/earnalism-sprint1-autonomous-v2-private/inputs/the-masque-of-the-red-death/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-masque-of-the-red-death --voice en-GB-Studio-C --usd-per-million-chars 20.0 --run-budget-usd 1.0 --title-budget-usd 30.0 --title-spend-usd 0.0297 --sprint-budget-usd 175.0 --sprint-spend-usd 11.38558 --language-code en-GB --audition-evidence /private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-masque-of-the-red-death/the-masque-of-the-red-death/audition/6f561b31503df395/audition_listening_evidence.json --execute\",\n  \"paid_lock_restored_byte_for_byte\": true,\n  \"paid_lock_sha256_after\": \"ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e\",\n  \"paid_lock_sha256_before\": \"ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e\",\n  \"paid_lock_touched\": true,\n  \"pitch\": 0.0,\n  \"private_output_only\": true,\n  \"private_run_dir\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-masque-of-the-red-death/the-masque-of-the-red-death/audition/6f561b31503df395\",\n  \"provider\": \"google\",\n  \"provider_calls_ran\": true,\n  \"public_release_approved\": false,\n  \"publication_performed\": false,\n  \"release_mutation_performed\": false,\n  \"representative_passages\": [\n    {\n      \"characters\": 276,\n      \"passage_id\": \"opening\",\n      \"text_sha256\": \"d57a907ca2e301d3d2650396aadb0665bc0cc8328e72f890fa7da15835fe98a1\"\n    },\n    {\n      \"characters\": 214,\n      \"passage_id\": \"middle\",\n      \"text_sha256\": \"3d2554d9e7ce72ab2092cc2f32d56087fe16720b7b1307fbc9357e1625423b4f\"\n    },\n    {\n      \"characters\": 672,\n      \"passage_id\": \"dialogue_or_risk\",\n      \"source_sentence_index\": 90,\n      \"source_sentence_indexes\": [\n        90\n      ],\n      \"text_sha256\": \"dbc35d551378134cf75c45c6d62309ac090ff2837546bdf5438dd44cba64789b\"\n    },\n    {\n      \"characters\": 323,\n      \"passage_id\": \"ending\",\n      \"text_sha256\": \"ea492dc034f9dbdc2f27987360d1c8399bef9d228733a9a35de6cd7ba5779b5d\"\n    }\n  ],\n  \"result_manifest_path\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-masque-of-the-red-death/the-masque-of-the-red-death/audition/6f561b31503df395/audition_manifest.json\",\n  \"sanitized_source_copy\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-masque-of-the-red-death/the-masque-of-the-red-death/audition/6f561b31503df395/sanitized_source.txt\",\n  \"schema_version\": \"earnalism.google_english_private_pipeline.v1\",\n  \"slug\": \"the-masque-of-the-red-death\",\n  \"source_sha256\": \"4044f55c14bad61d0ba2af3ce8fa5c5d6e98878498f8976034a44f156d74fff8\",\n  \"speaking_rate\": 0.94,\n  \"started_at\": \"2026-07-13T05:55:02Z\",\n  \"status\": \"AUDITION_AUDIO_READY_LISTENING_REVIEW_REQUIRED\",\n  \"synthesis_calls\": 4,\n  \"title\": \"The Masque of the Red Death\",\n  \"unit_count\": 4,\n  \"unit_hashes\": [\n    \"d57a907ca2e301d3d2650396aadb0665bc0cc8328e72f890fa7da15835fe98a1\",\n    \"3d2554d9e7ce72ab2092cc2f32d56087fe16720b7b1307fbc9357e1625423b4f\",\n    \"dbc35d551378134cf75c45c6d62309ac090ff2837546bdf5438dd44cba64789b\",\n    \"ea492dc034f9dbdc2f27987360d1c8399bef9d228733a9a35de6cd7ba5779b5d\"\n  ],\n  \"upload_performed\": false,\n  \"voice\": \"en-GB-Studio-C\"\n}\n",
-      "stderr_tail": "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.\n  warnings.warn(message, FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.\n  warnings.warn(eol_message.format(\"3.9\"), FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.\n  warnings.warn(eol_message.format(\"3.9\"), FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.cloud.texttospeech_v1 supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.cloud.texttospeech_v1.\n  warnings.warn(message, FutureWarning)\n",
-      "lock_after": {
-        "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
-        "status": "active",
-        "active": true,
-        "current_holder": "none",
-        "allowed_next_holders": [],
-        "available": true,
-        "sha256": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
-      },
-      "public_release_mutated": false
-    },
-    {
-      "status": "AUDITION_GENERATION_COMPLETE_QA_PENDING",
-      "slug": "the-necklace",
-      "provider": "google",
-      "voice": "en-GB-Studio-C",
-      "returncode": 0,
-      "completed_at": "2026-07-13T06:01:21+00:00",
-      "private_output_dir": "/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-necklace",
-      "stdout_tail": "ace/audition/2fda4f2789d86388/input_manifest.json\",\n  \"input_manifest_sha256\": \"f7da012852823448e937b434609ae44dec4ef167fa4eae1b6335d7c835d4f84c\",\n  \"input_schema\": \"earnalism.google_english_private_input.v1\",\n  \"language_code\": \"en-GB\",\n  \"listening_evidence_path\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-necklace/the-necklace/audition/2fda4f2789d86388/audition_listening_evidence.json\",\n  \"mode\": \"audition\",\n  \"next_exact_command\": \"/Library/Developer/CommandLineTools/usr/bin/python3 /private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py full --sanitized-source /private/tmp/earnalism-sprint1-autonomous-v2-private/inputs/the-necklace/sanitized_source.txt --input-manifest /private/tmp/earnalism-sprint1-autonomous-v2-private/inputs/the-necklace/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-necklace --voice en-GB-Studio-C --usd-per-million-chars 20.0 --run-budget-usd 1.0 --title-budget-usd 30.0 --title-spend-usd 0.0304 --sprint-budget-usd 175.0 --sprint-spend-usd 12.08184 --language-code en-GB --audition-evidence /private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-necklace/the-necklace/audition/2fda4f2789d86388/audition_listening_evidence.json --execute\",\n  \"paid_lock_restored_byte_for_byte\": true,\n  \"paid_lock_sha256_after\": \"ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e\",\n  \"paid_lock_sha256_before\": \"ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e\",\n  \"paid_lock_touched\": true,\n  \"pitch\": 0.0,\n  \"private_output_only\": true,\n  \"private_run_dir\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-necklace/the-necklace/audition/2fda4f2789d86388\",\n  \"provider\": \"google\",\n  \"provider_calls_ran\": true,\n  \"public_release_approved\": false,\n  \"publication_performed\": false,\n  \"release_mutation_performed\": false,\n  \"representative_passages\": [\n    {\n      \"characters\": 748,\n      \"passage_id\": \"opening\",\n      \"text_sha256\": \"5ec553147d58c23d446c329f2b7e81a414f053b8b73959db378382219db48971\"\n    },\n    {\n      \"characters\": 141,\n      \"passage_id\": \"middle\",\n      \"text_sha256\": \"3d617d56c3db5405115e8a3e51ac720fbdc9b8d9a72666cb185f5bfb74f33bda\"\n    },\n    {\n      \"characters\": 485,\n      \"passage_id\": \"dialogue_or_risk\",\n      \"source_sentence_index\": 149,\n      \"source_sentence_indexes\": [\n        146,\n        147,\n        148,\n        149,\n        150,\n        151,\n        152\n      ],\n      \"text_sha256\": \"bbf5f48ab407f1ae1cec044dd7c32745cb03a01108ab3c0b81cea982274496fd\"\n    },\n    {\n      \"characters\": 146,\n      \"passage_id\": \"ending\",\n      \"text_sha256\": \"42ea243e598cfdc970a77058b5c08bb48c0724ff6201617f0f81532e490e1555\"\n    }\n  ],\n  \"result_manifest_path\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-necklace/the-necklace/audition/2fda4f2789d86388/audition_manifest.json\",\n  \"sanitized_source_copy\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-necklace/the-necklace/audition/2fda4f2789d86388/sanitized_source.txt\",\n  \"schema_version\": \"earnalism.google_english_private_pipeline.v1\",\n  \"slug\": \"the-necklace\",\n  \"source_sha256\": \"1fcc13e8afa53c8a818623b3383a110f014063634ab8b1a16eb615e54f6ad0e7\",\n  \"speaking_rate\": 0.94,\n  \"started_at\": \"2026-07-13T06:01:13Z\",\n  \"status\": \"AUDITION_AUDIO_READY_LISTENING_REVIEW_REQUIRED\",\n  \"synthesis_calls\": 4,\n  \"title\": \"The Necklace\",\n  \"unit_count\": 4,\n  \"unit_hashes\": [\n    \"5ec553147d58c23d446c329f2b7e81a414f053b8b73959db378382219db48971\",\n    \"3d617d56c3db5405115e8a3e51ac720fbdc9b8d9a72666cb185f5bfb74f33bda\",\n    \"bbf5f48ab407f1ae1cec044dd7c32745cb03a01108ab3c0b81cea982274496fd\",\n    \"42ea243e598cfdc970a77058b5c08bb48c0724ff6201617f0f81532e490e1555\"\n  ],\n  \"upload_performed\": false,\n  \"voice\": \"en-GB-Studio-C\"\n}\n",
-      "stderr_tail": "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.\n  warnings.warn(message, FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.\n  warnings.warn(eol_message.format(\"3.9\"), FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.\n  warnings.warn(eol_message.format(\"3.9\"), FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.cloud.texttospeech_v1 supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.cloud.texttospeech_v1.\n  warnings.warn(message, FutureWarning)\n",
-      "lock_after": {
-        "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
-        "status": "active",
-        "active": true,
-        "current_holder": "none",
-        "allowed_next_holders": [],
-        "available": true,
-        "sha256": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
-      },
-      "public_release_mutated": false
-    },
-    {
-      "status": "AUDITION_GENERATION_COMPLETE_QA_PENDING",
-      "slug": "the-monkeys-paw",
-      "provider": "google",
-      "voice": "en-GB-Studio-C",
-      "returncode": 0,
-      "completed_at": "2026-07-13T06:05:58+00:00",
-      "private_output_dir": "/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-monkeys-paw",
-      "stdout_tail": "671c0f3c569295/input_manifest.json\",\n  \"input_manifest_sha256\": \"8611aa8f7891e082d0a11e31abddf361326d58c1ca0fe62a3d69e70924b9876b\",\n  \"input_schema\": \"earnalism.google_english_private_input.v1\",\n  \"language_code\": \"en-GB\",\n  \"listening_evidence_path\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-monkeys-paw/the-monkeys-paw/audition/8b671c0f3c569295/audition_listening_evidence.json\",\n  \"mode\": \"audition\",\n  \"next_exact_command\": \"/Library/Developer/CommandLineTools/usr/bin/python3 /private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py full --sanitized-source /private/tmp/earnalism-sprint1-autonomous-v2-private/inputs/the-monkeys-paw/sanitized_source.txt --input-manifest /private/tmp/earnalism-sprint1-autonomous-v2-private/inputs/the-monkeys-paw/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-monkeys-paw --voice en-GB-Studio-C --usd-per-million-chars 20.0 --run-budget-usd 1.0 --title-budget-usd 30.0 --title-spend-usd 0.03612 --sprint-budget-usd 175.0 --sprint-spend-usd 12.54836 --language-code en-GB --audition-evidence /private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-monkeys-paw/the-monkeys-paw/audition/8b671c0f3c569295/audition_listening_evidence.json --execute\",\n  \"paid_lock_restored_byte_for_byte\": true,\n  \"paid_lock_sha256_after\": \"ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e\",\n  \"paid_lock_sha256_before\": \"ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e\",\n  \"paid_lock_touched\": true,\n  \"pitch\": 0.0,\n  \"private_output_only\": true,\n  \"private_run_dir\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-monkeys-paw/the-monkeys-paw/audition/8b671c0f3c569295\",\n  \"provider\": \"google\",\n  \"provider_calls_ran\": true,\n  \"public_release_approved\": false,\n  \"publication_performed\": false,\n  \"release_mutation_performed\": false,\n  \"representative_passages\": [\n    {\n      \"characters\": 534,\n      \"passage_id\": \"opening\",\n      \"text_sha256\": \"8bdd8778b6b9085c067301b925c02a5fac70cb3f21b7469bf6ae86e880eb658b\"\n    },\n    {\n      \"characters\": 358,\n      \"passage_id\": \"middle\",\n      \"text_sha256\": \"3d31c06425b593ccf6fcb2e9bf1f3d1cca4a5fc31223646579236d4522c3fd53\"\n    },\n    {\n      \"characters\": 538,\n      \"passage_id\": \"dialogue_or_risk\",\n      \"source_sentence_index\": 92,\n      \"source_sentence_indexes\": [\n        90,\n        91,\n        92,\n        93,\n        94\n      ],\n      \"text_sha256\": \"c5f14a117bc20814e7e5616743c6aef7ed10959d40ed82bc6246031d9da09254\"\n    },\n    {\n      \"characters\": 376,\n      \"passage_id\": \"ending\",\n      \"text_sha256\": \"6ca76aeddea670ebd06b3dcd91f585ed88b5c1a5888800dae0f2582f8632db8d\"\n    }\n  ],\n  \"result_manifest_path\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-monkeys-paw/the-monkeys-paw/audition/8b671c0f3c569295/audition_manifest.json\",\n  \"sanitized_source_copy\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-monkeys-paw/the-monkeys-paw/audition/8b671c0f3c569295/sanitized_source.txt\",\n  \"schema_version\": \"earnalism.google_english_private_pipeline.v1\",\n  \"slug\": \"the-monkeys-paw\",\n  \"source_sha256\": \"dd2d51938751b06ab49f84e7734f9b195056cb5b3bb658778d479624035b8fbd\",\n  \"speaking_rate\": 0.94,\n  \"started_at\": \"2026-07-13T06:05:49Z\",\n  \"status\": \"AUDITION_AUDIO_READY_LISTENING_REVIEW_REQUIRED\",\n  \"synthesis_calls\": 4,\n  \"title\": \"The Monkey's Paw\",\n  \"unit_count\": 4,\n  \"unit_hashes\": [\n    \"8bdd8778b6b9085c067301b925c02a5fac70cb3f21b7469bf6ae86e880eb658b\",\n    \"3d31c06425b593ccf6fcb2e9bf1f3d1cca4a5fc31223646579236d4522c3fd53\",\n    \"c5f14a117bc20814e7e5616743c6aef7ed10959d40ed82bc6246031d9da09254\",\n    \"6ca76aeddea670ebd06b3dcd91f585ed88b5c1a5888800dae0f2582f8632db8d\"\n  ],\n  \"upload_performed\": false,\n  \"voice\": \"en-GB-Studio-C\"\n}\n",
-      "stderr_tail": "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.\n  warnings.warn(message, FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.\n  warnings.warn(eol_message.format(\"3.9\"), FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.\n  warnings.warn(eol_message.format(\"3.9\"), FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.cloud.texttospeech_v1 supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.cloud.texttospeech_v1.\n  warnings.warn(message, FutureWarning)\n",
-      "lock_after": {
-        "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
-        "status": "active",
-        "active": true,
-        "current_holder": "none",
-        "allowed_next_holders": [],
-        "available": true,
-        "sha256": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
-      },
-      "public_release_mutated": false
-    },
-    {
-      "status": "AUDITION_GENERATION_COMPLETE_QA_PENDING",
-      "slug": "the-yellow-wallpaper",
-      "provider": "google",
-      "voice": "en-GB-Studio-C",
-      "returncode": 0,
-      "completed_at": "2026-07-13T06:24:52+00:00",
-      "private_output_dir": "/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-yellow-wallpaper",
-      "stdout_tail": "  \"input_manifest_sha256\": \"16354fcb69621cdbf336b01202d442e4d74aa785aed927348539d77c9c597c09\",\n  \"input_schema\": \"earnalism.google_english_private_input.v1\",\n  \"language_code\": \"en-GB\",\n  \"listening_evidence_path\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-yellow-wallpaper/the-yellow-wallpaper/audition/ac9895f1da771ed0/audition_listening_evidence.json\",\n  \"mode\": \"audition\",\n  \"next_exact_command\": \"/Library/Developer/CommandLineTools/usr/bin/python3 /private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py full --sanitized-source /private/tmp/earnalism-sprint1-autonomous-v2-private/inputs/the-yellow-wallpaper/sanitized_source.txt --input-manifest /private/tmp/earnalism-sprint1-autonomous-v2-private/inputs/the-yellow-wallpaper/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-yellow-wallpaper --voice en-GB-Studio-C --usd-per-million-chars 20.0 --run-budget-usd 1.0 --title-budget-usd 30.0 --title-spend-usd 0.03624 --sprint-budget-usd 175.0 --sprint-spend-usd 14.4699 --language-code en-GB --audition-evidence /private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-yellow-wallpaper/the-yellow-wallpaper/audition/ac9895f1da771ed0/audition_listening_evidence.json --execute\",\n  \"paid_lock_restored_byte_for_byte\": true,\n  \"paid_lock_sha256_after\": \"ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e\",\n  \"paid_lock_sha256_before\": \"ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e\",\n  \"paid_lock_touched\": true,\n  \"pitch\": 0.0,\n  \"private_output_only\": true,\n  \"private_run_dir\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-yellow-wallpaper/the-yellow-wallpaper/audition/ac9895f1da771ed0\",\n  \"provider\": \"google\",\n  \"provider_calls_ran\": true,\n  \"public_release_approved\": false,\n  \"publication_performed\": false,\n  \"release_mutation_performed\": false,\n  \"representative_passages\": [\n    {\n      \"characters\": 415,\n      \"passage_id\": \"opening\",\n      \"text_sha256\": \"e18568f37afe50d6805373800b17423ac293229b68d67f372d1a419cf9e680e5\"\n    },\n    {\n      \"characters\": 501,\n      \"passage_id\": \"middle\",\n      \"text_sha256\": \"a19d41bb3edce9b8e56cb4905aec9be7814ed1d356de33eb718058669783cd81\"\n    },\n    {\n      \"characters\": 530,\n      \"passage_id\": \"dialogue_or_risk\",\n      \"source_sentence_index\": 71,\n      \"source_sentence_indexes\": [\n        70,\n        71\n      ],\n      \"text_sha256\": \"d1a804ea3527e68c7dea5b77ab205aac48e75f2475cef48eff2dbff5c3381166\"\n    },\n    {\n      \"characters\": 366,\n      \"passage_id\": \"ending\",\n      \"text_sha256\": \"d95d04404e13c071b846ace4b6cd0ded10f731b6921df7f012e6fea04abd1a8f\"\n    }\n  ],\n  \"result_manifest_path\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-yellow-wallpaper/the-yellow-wallpaper/audition/ac9895f1da771ed0/audition_manifest.json\",\n  \"sanitized_source_copy\": \"/private/tmp/earnalism-sprint1-autonomous-v2-private/auditions/the-yellow-wallpaper/the-yellow-wallpaper/audition/ac9895f1da771ed0/sanitized_source.txt\",\n  \"schema_version\": \"earnalism.google_english_private_pipeline.v1\",\n  \"slug\": \"the-yellow-wallpaper\",\n  \"source_sha256\": \"9fd5bcecd51b2033192b62a87b4278c630e12eaebf1cd7c9d5e6243e1c478a3e\",\n  \"speaking_rate\": 0.94,\n  \"started_at\": \"2026-07-13T06:24:43Z\",\n  \"status\": \"AUDITION_AUDIO_READY_LISTENING_REVIEW_REQUIRED\",\n  \"synthesis_calls\": 4,\n  \"title\": \"The Yellow Wallpaper\",\n  \"unit_count\": 4,\n  \"unit_hashes\": [\n    \"e18568f37afe50d6805373800b17423ac293229b68d67f372d1a419cf9e680e5\",\n    \"a19d41bb3edce9b8e56cb4905aec9be7814ed1d356de33eb718058669783cd81\",\n    \"d1a804ea3527e68c7dea5b77ab205aac48e75f2475cef48eff2dbff5c3381166\",\n    \"d95d04404e13c071b846ace4b6cd0ded10f731b6921df7f012e6fea04abd1a8f\"\n  ],\n  \"upload_performed\": false,\n  \"voice\": \"en-GB-Studio-C\"\n}\n",
-      "stderr_tail": "/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.\n  warnings.warn(message, FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.\n  warnings.warn(eol_message.format(\"3.9\"), FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.\n  warnings.warn(eol_message.format(\"3.9\"), FutureWarning)\n/Users/ronikbasak/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.cloud.texttospeech_v1 supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.cloud.texttospeech_v1.\n  warnings.warn(message, FutureWarning)\n",
-      "lock_after": {
-        "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
-        "status": "active",
-        "active": true,
-        "current_holder": "none",
-        "allowed_next_holders": [],
-        "available": true,
-        "sha256": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e"
-      },
-      "public_release_mutated": false
-    }
-  ],
-  "matrix_rows": [
-    {
-      "slug": "book-2b9853ec52",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "bn-066",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "radharani",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "nishkriti",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "muchiram-gurer-jibanchorit",
-      "cost_used_usd": 2.1834
-    },
-    {
-      "slug": "book-d19e96859f",
-      "cost_used_usd": 1.5318
-    },
-    {
-      "slug": "book-f5d593e1f4",
-      "cost_used_usd": 0.62788
-    },
-    {
-      "slug": "pather-panchali",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "devdas",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "book-edfcf810c5",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "a-ghost-story",
-      "cost_used_usd": 3.6328
-    },
-    {
-      "slug": "dracula",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "frankenstein",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "jekyll-and-hyde",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "picture-of-dorian-gray",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "the-time-machine",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "the-call-of-the-wild",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "white-fang",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "great-expectations",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "jane-eyre",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "pride-and-prejudice",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "the-secret-garden",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "alices-adventures-in-wonderland",
-      "cost_used_usd": 0.0
-    },
-    {
-      "slug": "the-gift-of-the-magi",
-      "cost_used_usd": 0.6734
-    },
-    {
-      "slug": "the-tell-tale-heart",
-      "cost_used_usd": 0.44604
-    },
-    {
-      "slug": "the-open-window",
-      "cost_used_usd": 0.6534
-    },
-    {
-      "slug": "sredni-vashtar",
-      "cost_used_usd": 0.42788
+      "priority": 18,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-necklace --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-necklace"
     },
     {
       "slug": "dsires-baby",
-      "cost_used_usd": 0.47232
+      "title": "Désirée's Baby",
+      "language": "English",
+      "priority": 19,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug dsires-baby --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/dsires-baby"
     },
     {
-      "slug": "the-cop-and-the-anthem",
-      "cost_used_usd": 0.47452
+      "slug": "the-open-window",
+      "title": "The Open Window",
+      "language": "English",
+      "priority": 20,
+      "estimated_incremental_cost_usd": 0.1155,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug the-open-window --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/the-open-window"
     },
     {
-      "slug": "the-last-leaf",
-      "cost_used_usd": 0.4686
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "language": "Bengali",
+      "priority": 30,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-f5d593e1f4 --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/book-f5d593e1f4"
     },
     {
-      "slug": "the-masque-of-the-red-death",
-      "cost_used_usd": 0.4594
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "language": "Bengali",
+      "priority": 31,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug muchiram-gurer-jibanchorit --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/muchiram-gurer-jibanchorit"
     },
     {
-      "slug": "the-yellow-wallpaper",
-      "cost_used_usd": 0.47248
+      "slug": "radharani",
+      "title": "রাধারাণী",
+      "language": "Bengali",
+      "priority": 32,
+      "estimated_incremental_cost_usd": 0.3681,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_SCALE_GATE_BLOCKED",
+      "exact_blocker": "Bengali campaign policy does not authorize scaling before the pilot reaches raw ASR/source 9.7 and publication, and the campaign-specific paid caps are absent.",
+      "matrix_exact_blocker_overridden": "LEGACY_AUDIO_DECOMMISSIONED_DERIVATIVE_RIGHTS_AND_SYNC_FAIL; TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
+      "decision_source": "sprint1_v3_nonpaid_preflight_results",
+      "reconciled_preflight_evidence": "/private/tmp/earnalism-v3-preflight-radharani-reconciled/catalog_state.json",
+      "paid_execution_allowed": false,
+      "paid_execution_blocker": "RECONCILED_NONPAID_PREFLIGHT_ONLY",
+      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs radharani --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1"
     },
     {
-      "slug": "the-monkeys-paw",
-      "cost_used_usd": 1.92142
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "language": "Bengali",
+      "priority": 33,
+      "estimated_incremental_cost_usd": 0.7886,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "READY_FOR_REPRESENTATIVE_AUDITION_STORAGE_REVOCATION_AND_SCALE_GATE_BLOCKED",
+      "exact_blocker": "A legacy unapproved storage object remains externally reachable and Bengali campaign scaling remains closed.",
+      "matrix_exact_blocker_overridden": "PUBLIC_UNAPPROVED_STORAGE_OBJECT_REVOCATION_REQUIRED; CANONICAL_SOURCE_RECONCILIATION_REQUIRED; TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
+      "decision_source": "sprint1_v3_nonpaid_preflight_results",
+      "reconciled_preflight_evidence": "/private/tmp/earnalism-v3-preflight-nishkriti-reconciled/catalog_state.json",
+      "paid_execution_allowed": false,
+      "paid_execution_blocker": "RECONCILED_NONPAID_PREFLIGHT_ONLY",
+      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs nishkriti --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1"
     },
     {
-      "slug": "the-necklace",
-      "cost_used_usd": 0.4608
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "language": "Bengali",
+      "priority": 34,
+      "estimated_incremental_cost_usd": null,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "WAITING_EXTERNAL_SOURCE_BOUND_NARRATION_OR_LICENSED_AUDIO",
+      "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
+      "packet_path": "/private/tmp/earnalism-sprint1-autonomous-v2/internal/audiobook_lab/sprint1_publication/human_narration_packets/book-d19e96859f"
+    },
+    {
+      "slug": "bn-066",
+      "title": "আনন্দমঠ",
+      "language": "Bengali",
+      "priority": 40,
+      "estimated_incremental_cost_usd": 0.1547,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "PRIVATE_ARTIFACT_TRACKING_AND_LOCK_SAFE_ASR_CALIBRATION_REQUIRED",
+      "exact_blocker": "The calibration tool and 152 private chunks are not tracked on clean main; the current lock scope and Bengali campaign scale gate do not authorize a new paid calibration.",
+      "matrix_exact_blocker_overridden": "ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED",
+      "decision_source": "sprint1_v3_nonpaid_preflight_results",
+      "reconciled_preflight_evidence": "/private/tmp/bn_066_v3_asr_calibration_preflight.json",
+      "paid_execution_allowed": false,
+      "paid_execution_blocker": "RECONCILED_NONPAID_PREFLIGHT_ONLY",
+      "next_command": "PYTHONPYCACHEPREFIX=/tmp/earnalism-pycache python3 internal/audiobook_lab/scripts/bengali_asr_language_calibration.py --slug bn-066 --run-dir internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts --chunk-ids group_0000,group_0076,group_0151 --language-options auto,bn,ben,bengali --output internal/audiobook_lab/public_access/bn_066_asr_calibration_preflight.json"
+    },
+    {
+      "slug": "devdas",
+      "title": "দেবদাস / Devdas",
+      "language": "Bengali",
+      "priority": 41,
+      "estimated_incremental_cost_usd": 2.3297,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_POLICY_GATE_REQUIRED",
+      "exact_blocker": "Bengali campaign pilot and campaign-specific paid authorization gates remain closed.",
+      "matrix_exact_blocker_overridden": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
+      "decision_source": "sprint1_v3_nonpaid_preflight_results",
+      "reconciled_preflight_evidence": "/private/tmp/earnalism-v3-preflight-devdas-reconciled/catalog_state.json",
+      "paid_execution_allowed": false,
+      "paid_execution_blocker": "RECONCILED_NONPAID_PREFLIGHT_ONLY",
+      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs devdas --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "title": "ক্ষুধিত পাষাণ",
+      "language": "Bengali",
+      "priority": 42,
+      "estimated_incremental_cost_usd": 0.2304,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "READY_FOR_SOURCE_BOUND_AUDITION_CAMPAIGN_POLICY_GATE_REQUIRED",
+      "exact_blocker": "Bengali campaign pilot and campaign-specific paid authorization gates remain closed.",
+      "matrix_exact_blocker_overridden": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
+      "decision_source": "sprint1_v3_nonpaid_preflight_results",
+      "reconciled_preflight_evidence": "/private/tmp/earnalism-v3-preflight-book-edfcf810c5-reconciled/catalog_state.json",
+      "paid_execution_allowed": false,
+      "paid_execution_blocker": "RECONCILED_NONPAID_PREFLIGHT_ONLY",
+      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs book-edfcf810c5 --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1"
+    },
+    {
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "language": "English",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 0.3,
+      "public_audio_allowed_now": true,
+      "release_gate_mutation_allowed": false,
+      "state": "YES_YES_PRODUCTION_REVALIDATION",
+      "next_command": "curl -sS -H 'Range: bytes=0-1023' -o /dev/null -w '%{http_code} %{size_download}\\n' https://api.theearnalism.com/api/reader/book/a-ghost-story/audiobook"
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "title": "Alice's Adventures in Wonderland",
+      "language": "English",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 1.5053,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "LONG_TITLE_SEQUENCE_HOLD",
+      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs alices-adventures-in-wonderland --languages eng --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "hold_condition": "FIVE_ADDITIONAL_SHORT_OR_MEDIUM_YES_YES_REQUIRED"
+    },
+    {
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "language": "Bengali",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 0.0,
+      "public_audio_allowed_now": true,
+      "release_gate_mutation_allowed": false,
+      "state": "YES_YES_PRODUCTION_REVALIDATION",
+      "next_command": "curl -sS https://api.theearnalism.com/api/reader/book/book-2b9853ec52/manifest | jq '{enabled:.audio.enabled,release_gate:.audio.release_gate,qa_status:.audio.qa_status}'"
+    },
+    {
+      "slug": "dracula",
+      "title": "Dracula",
+      "language": "English",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 21.5103,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "LONG_TITLE_SEQUENCE_HOLD",
+      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs dracula --languages eng --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "hold_condition": "FIVE_ADDITIONAL_SHORT_OR_MEDIUM_YES_YES_REQUIRED"
+    },
+    {
+      "slug": "frankenstein",
+      "title": "Frankenstein",
+      "language": "English",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 10.4242,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "LONG_TITLE_SEQUENCE_HOLD",
+      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs frankenstein --languages eng --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "hold_condition": "FIVE_ADDITIONAL_SHORT_OR_MEDIUM_YES_YES_REQUIRED"
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+      "language": "English",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 3.5121,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "READY_FOR_REPRESENTATIVE_AUDITION_GOOGLE_ADC_REAUTH_REQUIRED",
+      "exact_blocker": "Google ADC token refresh requires interactive reauthentication; no Google provider call was attempted.",
+      "matrix_exact_blocker_overridden": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE",
+      "decision_source": "sprint1_v3_nonpaid_preflight_results",
+      "reconciled_preflight_evidence": "/private/tmp/earnalism-v3-jekyll-input/jekyll-and-hyde/input_manifest.json",
+      "paid_execution_allowed": false,
+      "paid_execution_blocker": "GOOGLE_ADC_REAUTH_REQUIRED",
+      "next_command": "gcloud auth application-default login"
+    },
+    {
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী / Pather Panchali",
+      "language": "Bengali",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 1.9477,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "OWNER_DOCUMENT_REQUIRED",
+      "exact_blocker": "Owner rights, source, and cover proof is not present in repository evidence.",
+      "matrix_exact_blocker_overridden": "OWNER_DOCUMENT_REQUIRED_FOR_AUDIO_RIGHTS_SOURCE_COVER",
+      "decision_source": "sprint1_v3_nonpaid_preflight_results",
+      "reconciled_preflight_evidence": "internal/audiobook_lab/public_access/pather_panchali_audio_repair_requirements.md",
+      "paid_execution_allowed": false,
+      "paid_execution_blocker": "RECONCILED_NONPAID_PREFLIGHT_ONLY",
+      "next_command": "cat internal/audiobook_lab/public_access/pather_panchali_audio_repair_requirements.md"
+    },
+    {
+      "slug": "picture-of-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "language": "English",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 10.7751,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "LONG_TITLE_SEQUENCE_HOLD",
+      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs picture-of-dorian-gray --languages eng --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1",
+      "hold_condition": "FIVE_ADDITIONAL_SHORT_OR_MEDIUM_YES_YES_REQUIRED"
+    },
+    {
+      "slug": "pride-and-prejudice",
+      "title": "Pride and Prejudice",
+      "language": "English",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 16.9774,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "LONG_TITLE_SEQUENCE_HOLD",
+      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug pride-and-prejudice --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "hold_condition": "FIVE_ADDITIONAL_SHORT_OR_MEDIUM_YES_YES_REQUIRED"
+    },
+    {
+      "slug": "the-call-of-the-wild",
+      "title": "The Call of the Wild",
+      "language": "English",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 1.7706,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "LONG_TITLE_SEQUENCE_HOLD",
+      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-call-of-the-wild --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "hold_condition": "FIVE_ADDITIONAL_SHORT_OR_MEDIUM_YES_YES_REQUIRED"
+    },
+    {
+      "slug": "the-secret-garden",
+      "title": "The Secret Garden",
+      "language": "English",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 10.9514,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "LONG_TITLE_SEQUENCE_HOLD",
+      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-secret-garden --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "hold_condition": "FIVE_ADDITIONAL_SHORT_OR_MEDIUM_YES_YES_REQUIRED"
+    },
+    {
+      "slug": "the-time-machine",
+      "title": "The Time Machine",
+      "language": "English",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 1.797,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "LONG_TITLE_SEQUENCE_HOLD",
+      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-time-machine --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "hold_condition": "FIVE_ADDITIONAL_SHORT_OR_MEDIUM_YES_YES_REQUIRED"
+    },
+    {
+      "slug": "white-fang",
+      "title": "White Fang",
+      "language": "English",
+      "priority": 100,
+      "estimated_incremental_cost_usd": 9.9961,
+      "public_audio_allowed_now": false,
+      "release_gate_mutation_allowed": false,
+      "state": "LONG_TITLE_SEQUENCE_HOLD",
+      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug white-fang --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "hold_condition": "FIVE_ADDITIONAL_SHORT_OR_MEDIUM_YES_YES_REQUIRED"
     }
   ]
 }

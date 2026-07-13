@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-13T07:30:39Z",
+  "owner_decision": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
+  "provider_calls_ran": false,
+  "public_release_gate_mutated": false,
+  "paid_tts_lock_mutated": false,
+  "results": [
+    {
+      "slug": "radharani",
+      "state": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_SCALE_GATE_BLOCKED",
+      "reader": "PASS",
+      "source_rights": "PASS",
+      "sanitation": "PASS",
+      "cover": "PASS_GRAPHICAL_DIRECT_PAIR",
+      "public_audio_allowed_now": false,
+      "blocker": "Bengali campaign policy does not authorize scaling before the pilot reaches raw ASR/source 9.7 and publication, and the campaign-specific paid caps are absent.",
+      "evidence": "/private/tmp/earnalism-v3-preflight-radharani-reconciled/catalog_state.json",
+      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs radharani --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1"
+    },
+    {
+      "slug": "nishkriti",
+      "state": "READY_FOR_REPRESENTATIVE_AUDITION_STORAGE_REVOCATION_AND_SCALE_GATE_BLOCKED",
+      "reader": "PASS",
+      "source_rights": "PASS",
+      "sanitation": "PASS",
+      "cover": "PASS_GRAPHICAL_DIRECT_PAIR",
+      "public_audio_allowed_now": false,
+      "blocker": "A legacy unapproved storage object remains externally reachable and Bengali campaign scaling remains closed.",
+      "evidence": "/private/tmp/earnalism-v3-preflight-nishkriti-reconciled/catalog_state.json",
+      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs nishkriti --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1"
+    },
+    {
+      "slug": "devdas",
+      "state": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_POLICY_GATE_REQUIRED",
+      "reader": "PASS",
+      "source_rights": "PASS_PUBLIC_DOMAIN_EVIDENCE_RECONCILED",
+      "sanitation": "PASS",
+      "cover": "PASS_GRAPHICAL_RUNTIME_PAIR",
+      "public_audio_allowed_now": false,
+      "blocker": "Bengali campaign pilot and campaign-specific paid authorization gates remain closed.",
+      "evidence": "/private/tmp/earnalism-v3-preflight-devdas-reconciled/catalog_state.json",
+      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs devdas --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "state": "READY_FOR_SOURCE_BOUND_AUDITION_CAMPAIGN_POLICY_GATE_REQUIRED",
+      "reader": "PASS",
+      "source_rights": "PASS",
+      "sanitation": "PASS",
+      "cover": "PASS_GRAPHICAL_RUNTIME_PAIR",
+      "public_audio_allowed_now": false,
+      "blocker": "Bengali campaign pilot and campaign-specific paid authorization gates remain closed.",
+      "evidence": "/private/tmp/earnalism-v3-preflight-book-edfcf810c5-reconciled/catalog_state.json",
+      "next_command": "python3 internal/audiobook_lab/scripts/release_catalog_factory.py --manifest book_import_manifest.batch-1.json --slugs book-edfcf810c5 --languages ben --max-books-active 1 --max-tts-workers 0 --max-paid-workers 0 --max-asr-workers 0 --max-upload-workers 0 --max-metadata-workers 0 --max-browser-workers 0 --max-attempts 1 --dry-run --fail-closed --stop-after-terminal-books 1"
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "state": "READY_FOR_REPRESENTATIVE_AUDITION_GOOGLE_ADC_REAUTH_REQUIRED",
+      "reader": "PASS",
+      "source_rights": "PASS_PUBLIC_DOMAIN_EVIDENCE_RECONCILED",
+      "sanitation": "PASS",
+      "cover": "PASS_GRAPHICAL_RUNTIME_PAIR",
+      "source_bound_input": "PASS_PRIVATE_INPUT_READY",
+      "source_character_count": 138182,
+      "source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
+      "public_audio_allowed_now": false,
+      "blocker": "Google ADC token refresh requires interactive reauthentication; no Google provider call was attempted.",
+      "evidence": "/private/tmp/earnalism-v3-jekyll-input/jekyll-and-hyde/input_manifest.json",
+      "next_command": "gcloud auth application-default login"
+    },
+    {
+      "slug": "bn-066",
+      "state": "PRIVATE_ARTIFACT_TRACKING_AND_LOCK_SAFE_ASR_CALIBRATION_REQUIRED",
+      "reader": "PASS",
+      "source_rights": "PASS",
+      "sanitation": "PASS",
+      "cover": "PASS",
+      "public_audio_allowed_now": false,
+      "blocker": "The calibration tool and 152 private chunks are not tracked on clean main; the current lock scope and Bengali campaign scale gate do not authorize a new paid calibration.",
+      "evidence": "/private/tmp/bn_066_v3_asr_calibration_preflight.json",
+      "next_command": "PYTHONPYCACHEPREFIX=/tmp/earnalism-pycache python3 internal/audiobook_lab/scripts/bengali_asr_language_calibration.py --slug bn-066 --run-dir internal/audiobook_lab/bengali_enablement/bn_066_stage2_full_book_tts --chunk-ids group_0000,group_0076,group_0151 --language-options auto,bn,ben,bengali --output internal/audiobook_lab/public_access/bn_066_asr_calibration_preflight.json"
+    },
+    {
+      "slug": "pather-panchali",
+      "state": "OWNER_DOCUMENT_REQUIRED",
+      "reader": "PASS",
+      "source_rights": "OWNER_DOCUMENT_REQUIRED",
+      "sanitation": "PASS",
+      "cover": "OWNER_DOCUMENT_REQUIRED",
+      "public_audio_allowed_now": false,
+      "blocker": "Owner rights, source, and cover proof is not present in repository evidence.",
+      "evidence": "internal/audiobook_lab/public_access/pather_panchali_audio_repair_requirements.md",
+      "next_command": "cat internal/audiobook_lab/public_access/pather_panchali_audio_repair_requirements.md"
+    }
+  ]
+}

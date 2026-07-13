@@ -16,11 +16,11 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "69c3b9cd787b0acaf22b1e1b40dc7f9a7acc277749da455c470ef89b10fa317c"
+      "sha256": "2bb5b89e0a3787d32060c220d8086066a134409488e629b5a8de0d9310f8a029"
     },
     {
       "file": "reader_manifest.json",
-      "sha256": "4491bbc72cae361532d427ee0e20d5c7e04c20f43a4a895cafdc5e3dea5874f1"
+      "sha256": "16cc15203a0bc4801edd5a4e0072bc159de4e3d698a671783d8bae76ed0b940b"
     },
     {
       "file": "source_evidence.json",
@@ -28,7 +28,7 @@
     },
     {
       "file": "chapters/chapter-001.json",
-      "sha256": "33be94634051a177ec5ef3b80edc9c2adfb96166b9dc976d3ff4cb593e3320f5"
+      "sha256": "0ead5f0fd48b372a02d9e1b5cdbba1f2213f7b5d8729877726361131070a8e68"
     }
   ]
 }

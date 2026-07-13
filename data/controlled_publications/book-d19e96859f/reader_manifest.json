@@ -9,7 +9,7 @@
       "id": "chapter-001",
       "order": 1,
       "title": "Full Text",
-      "is_preview": true,
+      "is_preview": false,
       "has_images": false,
       "image_count": 0,
       "word_count": 1007,
@@ -21,9 +21,7 @@
       "updated_at": "2026-07-03T20:07:46Z"
     }
   ],
-  "preview_chapter_ids": [
-    "chapter-001"
-  ],
+  "preview_chapter_ids": [],
   "audio_enabled": false,
   "audiobook_enabled": false,
   "generated_at": "2026-07-03T20:07:46Z"

@@ -4,11 +4,11 @@
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "1d9ab187827cb03d2bf476e70edde1b45c782e91662b3258630d4c8e43980479"
+      "sha256": "ea3ef30e4fc42ad0b6e4c96a20727c2cf9c9e5eeac9a79acc035c9173c21f278"
     },
     {
       "file": "public_book.json",
-      "sha256": "91d9acbc24d59d69c34abd63ce98b6e11f4c788bc0abf25405514cf8137f67be"
+      "sha256": "08e1cc4cace4b82dccdb2b8189e6297717477bce1f1ee271e5f5e126ca8a6019"
     },
     {
       "file": "reader_manifest.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "794495a02d7519ee1b6f945150eef1da5cf344238b84bcc140edea6a67cb8e8e"
+      "sha256": "f9afc2e7e51313207f9ff903219b8ebc62dc8d34fd39ba0f454cff54117aead3"
     },
     {
       "file": "chapters/chapter-001.json",

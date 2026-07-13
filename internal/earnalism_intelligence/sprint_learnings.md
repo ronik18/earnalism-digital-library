@@ -356,3 +356,13 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Private generated audio belongs outside the repository. Only manifests, lock reports, QA evidence, and narration/import packets are retained.
 - Paid execution stayed serialized and the shared lock restored byte-for-byte. Conservative estimated spend is `$14.90614 / $175`; actual provider billing remains unknown.
 - No new public audio was approved. Production truth remains exactly `book-2b9853ec52` and `a-ghost-story` until external candidates complete the full release pipeline.
+
+## 2026-07-13 Sprint 1 Autonomous V3 Reconciliation
+
+- A release-catalog dry run must distinguish audiobook-use authorization from public-audio release approval. Explicit owner scope can permit future source-bound production while `PUBLIC_AUDIO_RELEASE_NOT_APPROVED` keeps manifests and UI fail closed.
+- Runtime graphical cover evidence is acceptable only when the audited front/back pair is content-themed, non-typographic, present, and unbroken; a generic placeholder must not satisfy the cover gate.
+- Radharani's stale public audio metadata was failed closed. Nishkriti still has an externally reachable unapproved storage object even though API and UI exposure are disabled; storage revocation is a separate cleanup gate.
+- Devdas, Kshudhita Pashan, Radharani, and Nishkriti now pass non-paid source, rights, sanitation, and graphical-cover preflight. Bengali paid scaling remains prohibited until the D19 pilot gate and campaign-specific caps open.
+- Jekyll and Hyde now has a hash-bound private input with 138,182 characters, but Google ADC requires interactive reauthentication. No provider call, lock mutation, upload, or public release occurred.
+- The clean main baseline does not contain bn-066's private 152-chunk run or calibration tool. A private preflight planned six bounded ASR calls only; it did not execute them because the active lock scope and campaign policy do not authorize this branch to do so.
+- Removing stale audio URLs from controlled metadata is necessary but does not revoke a known direct storage URL. At least nine historical Cloudinary/B2 MP3 variants across six unapproved titles remain directly reachable and require a separately reviewed destructive-storage workflow.

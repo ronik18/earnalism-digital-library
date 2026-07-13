@@ -264,12 +264,12 @@
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
     },
     "bn-066": {
-      "latest_decision": "BENGALI_READER_LIVE_PUBLIC_AUDIO_HIDE_HOTFIX",
-      "decision_reason": "Production exposed legacy B2 audio through the reader manifest even though the controlled approval evidence remained PUBLIC_AUDIO_RELEASE_PENDING_ASSET_MAPPING. Keep the reader live, remove public audio metadata and controls, and retain private QA work outside the public release path.",
-      "updated_at": "2026-07-11T08:29:33+05:30",
+      "latest_decision": "PRIVATE_ARTIFACT_TRACKING_AND_LOCK_SAFE_ASR_CALIBRATION_REQUIRED",
+      "decision_reason": "The reader remains live and audio hidden. The clean baseline does not contain the private 152-chunk run or calibration tool, and the active lock/campaign policy does not authorize a fresh paid calibration from this branch.",
+      "updated_at": "2026-07-13T07:30:39Z",
       "language": "ben",
       "bengali_audio_lane_status": "PRIVATE_QA_ONLY_PUBLIC_AUDIO_HIDDEN",
-      "audiobook_next_action": "Keep public audio hidden until every objective release gate passes; continue ASR diagnostics only in a separately authorized private tooling track.",
+      "audiobook_next_action": "Track the private calibration tooling and artifacts in an authorized QA branch, then run the three-chunk language calibration through a compatible lock scope before any ASR resume.",
       "bengali_audiobook_campaign_state": "PRIVATE_QA_RELEASE_GATES_PENDING",
       "bengali_audiobook_campaign_next_action": "Revalidate the production manifest and UI after the hide-only hotfix; do not publish, upload, or regenerate audio.",
       "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
@@ -425,24 +425,24 @@
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
     },
     "nishkriti": {
-      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
-      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
-      "updated_at": "2026-07-06T21:54:41Z",
+      "latest_decision": "READY_FOR_AUDITION_STORAGE_REVOCATION_AND_SCALE_GATE_BLOCKED",
+      "decision_reason": "Source, rights, sanitation, and graphical cover preflight pass, but an unapproved legacy storage object remains reachable and the Bengali pilot scale gate remains closed.",
+      "updated_at": "2026-07-13T07:30:39Z",
       "language": "ben",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+      "audiobook_next_action": "revoke or privatize the unapproved storage object, preserve reader-only state, and wait for the Bengali pilot scale gate before a source-bound audition",
       "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
       "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
       "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
     },
     "radharani": {
-      "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
-      "decision_reason": "publish/keep reader-only; verify audio controls hidden; do not process audiobook until provider pilot passes",
-      "updated_at": "2026-07-06T21:54:41Z",
+      "latest_decision": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_SCALE_GATE_BLOCKED",
+      "decision_reason": "Source, rights, sanitation, and graphical cover preflight pass; stale public audio metadata was failed closed and no provider call ran.",
+      "updated_at": "2026-07-13T07:30:39Z",
       "language": "ben",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence",
+      "audiobook_next_action": "preserve reader-only state and run a source-bound representative audition only after Bengali pilot and campaign paid gates open",
       "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
       "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
       "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
@@ -1029,12 +1029,12 @@
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
     },
     "book-edfcf810c5": {
-      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
-      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
-      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "latest_decision": "READY_FOR_SOURCE_BOUND_AUDITION_CAMPAIGN_POLICY_GATE_REQUIRED",
+      "decision_reason": "The public reader, rights, sanitation, and audited graphical cover pair now pass non-paid preflight; audio remains hidden pending campaign policy gates and full QA.",
+      "updated_at": "2026-07-13T07:30:39Z",
       "language": "bn",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+      "audiobook_next_action": "run a source-bound representative audition after the Bengali pilot and campaign-specific paid gates open"
     },
     "book-ef193ffc52": {
       "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
@@ -1045,20 +1045,31 @@
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
     },
     "devdas": {
-      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
-      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
-      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "latest_decision": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_POLICY_GATE_REQUIRED",
+      "decision_reason": "Public-domain provenance, source, sanitation, and audited graphical cover preflight now pass; no paid call or audio release occurred.",
+      "updated_at": "2026-07-13T07:30:39Z",
       "language": "bn",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+      "audiobook_next_action": "run a source-bound representative audition after the Bengali pilot and campaign-specific paid gates open"
     },
     "pather-panchali": {
-      "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
-      "decision_reason": "repair missing content/rights/covers before reader-only go-live",
-      "updated_at": "2026-07-06T09:14:16.592489+00:00",
+      "latest_decision": "OWNER_DOCUMENT_REQUIRED",
+      "decision_reason": "Reader access and sanitation pass, but repository evidence does not establish the required audio rights, canonical source proof, and cover authorization.",
+      "updated_at": "2026-07-13T07:30:39Z",
       "language": "bn",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
+      "audiobook_next_action": "obtain the exact owner rights, source, and cover documents in the requirements packet before any paid audio work"
+    },
+    "jekyll-and-hyde": {
+      "latest_decision": "READY_FOR_REPRESENTATIVE_AUDITION_GOOGLE_ADC_REAUTH_REQUIRED",
+      "decision_reason": "Public reader, public-domain rights, sanitation, graphical cover, and a hash-bound 138182-character private source input pass; Google ADC cannot refresh non-interactively.",
+      "updated_at": "2026-07-13T07:30:39Z",
+      "language": "en",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+      "source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
+      "source_character_count": 138182,
+      "audiobook_next_action": "Run gcloud auth application-default login, then execute one bounded source-bound representative audition; do not run full TTS unless every audition passage passes."
     },
     "the-open-window": {
       "latest_decision": "HUMAN_NARRATION_OR_ALTERNATE_PROVIDER_REQUIRED",
@@ -1239,7 +1250,7 @@
       "audiobook_next_action": "Do not repeat the current Google attempt families; use a materially different provider or source-bound human or licensed narration candidate before full TTS."
     }
   },
-  "bengali_audio_lane_status": "D19_ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED_NO_SCALE",
-  "bengali_audiobook_campaign_status": "D19_RAW_ASR_BELOW_9_7_NO_PUBLICATION_NO_CANARY_SCALING",
-  "bengali_audiobook_campaign_updated_at": "2026-07-12T22:08:41Z"
+  "bengali_audio_lane_status": "D19_HUMAN_NARRATION_REQUIRED_NO_SCALE_V3_PREFLIGHT_RECONCILED",
+  "bengali_audiobook_campaign_status": "NO_NEW_BENGALI_PUBLICATION_NON_PAID_PREFLIGHT_ADVANCED",
+  "bengali_audiobook_campaign_updated_at": "2026-07-13T07:30:39Z"
 }

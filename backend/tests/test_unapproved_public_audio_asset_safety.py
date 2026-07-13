@@ -74,3 +74,22 @@ def test_d19_failed_qa_packet_is_explicitly_audio_hidden():
         for key in AUDIO_KEYS
         for url in public_urls(public_book.get(key))
     ]
+
+
+def test_radharani_legacy_assets_are_fail_closed_until_current_qa_passes():
+    title_dir = CONTROLLED_ROOT / "radharani"
+    approval = read_json(title_dir / "approval_evidence.json")
+    public_book = read_json(title_dir / "public_book.json")
+
+    assert approval["audio_public_release"] == "PUBLIC_AUDIO_RELEASE_NOT_APPROVED"
+    assert approval["audiobook_enabled"] is False
+    assert public_book["audio_enabled"] is False
+    assert public_book["audiobook_enabled"] is False
+    assert public_book["generate_audiobook"] is False
+    assert public_book["audiobook_assets"] == {}
+    assert public_book["audiobook"] == {}
+    assert not [
+        url
+        for key in AUDIO_KEYS
+        for url in public_urls(public_book.get(key))
+    ]

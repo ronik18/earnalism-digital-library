@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-07-13T07:45:00Z",
+  "status": "REMOTE_STORAGE_REVOCATION_OWNER_DECISION_REQUIRED",
+  "repository_exposure": "FAIL_CLOSED_NO_CURRENT_API_OR_UI_REFERENCE",
+  "remote_object_exposure": "FAIL_AT_LEAST_NINE_TRACKED_MP3_URLS_RETURN_HTTP_200",
+  "destructive_action_performed": false,
+  "provider_calls_ran": false,
+  "affected_titles": [
+    {
+      "slug": "bn-066",
+      "tracked_reachable_variants": 1,
+      "release_state": "AUDIO_HIDDEN_PRIVATE_QA_ONLY"
+    },
+    {
+      "slug": "nishkriti",
+      "tracked_reachable_variants": 1,
+      "release_state": "AUDIO_HIDDEN_NOT_APPROVED"
+    },
+    {
+      "slug": "alices-adventures-in-wonderland",
+      "tracked_reachable_variants": 2,
+      "release_state": "AUDIO_HIDDEN_NOT_APPROVED"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "tracked_reachable_variants": 2,
+      "release_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_REQUIRED"
+    },
+    {
+      "slug": "the-yellow-wallpaper",
+      "tracked_reachable_variants": 2,
+      "release_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_REQUIRED"
+    },
+    {
+      "slug": "the-necklace",
+      "tracked_reachable_variants": 1,
+      "release_state": "HUMAN_NARRATION_OR_LICENSED_AUDIO_REQUIRED"
+    }
+  ],
+  "evidence": {
+    "tracked_inventory": "internal/audiobook_lab/release_gate/cover_cloudinary_slug_assignment.json",
+    "repository_scrub_report": "internal/audiobook_lab/sprint1_publication/title_runs/unapproved_storage_asset_scrub_report.json",
+    "repository_scrubber": "internal/audiobook_lab/scripts/scrub_unapproved_public_audio_assets.py",
+    "historical_cleanup_tool": {
+      "path": "scripts/audio/cleanupAudiobookStorage.js",
+      "introduced_commit": "4373839",
+      "removed_by_revert": "e5b1255",
+      "available_now": false
+    }
+  },
+  "required_owner_decision": "Authorize a dedicated storage-revocation PR that restores and revalidates the reverted cleanup tool in dry-run-only mode, adds an explicit object allowlist covering all currently reachable variants and sidecars, proves private QA retention, and prohibits commit-delete until the generated report is owner-reviewed.",
+  "next_command": "git show 4373839:scripts/audio/cleanupAudiobookStorage.js | sed -n '1,240p'"
+}

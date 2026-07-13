@@ -2226,10 +2226,13 @@ export default function Reader() {
 
   if (lockedState) {
     const reason = lockedState.reason;
-    const previewChapter = chapters[0];
+    const previewChapter = chapters.find((candidate) => candidate?.id && candidate?.is_preview === true);
     const canOpenPreview = previewChapter?.id && previewChapter.id !== activeChapterId;
     const title = lockedState.chapter?.title || chapter?.title || 'Chapter locked';
     const signInUrl = `/login?next=${encodeURIComponent(getCurrentReaderPath())}`;
+    const lockedAccessNote = previewChapter
+      ? 'A free preview remains available. Other chapters require sign-in and reading time from your wallet.'
+      : 'This edition has no free preview. Sign in and add reading time to open the reader.';
 
     return (
       <div className="flex min-h-screen items-center justify-center px-5 py-14 text-center" style={{ background: THEMES.beige.canvas }} data-testid="reader-locked">
@@ -2243,7 +2246,7 @@ export default function Reader() {
             {lockedState.message || 'This chapter is locked.'}
           </p>
           <p className="mt-3 text-xs font-light leading-relaxed text-charcoal-soft/80" data-testid="reader-locked-wallet-note">
-            Chapter 1 remains free. Later Dracula chapters ask for sign-in and reading time from your wallet.
+            {lockedAccessNote}
           </p>
 
           <div className="mt-8 flex flex-col gap-3">

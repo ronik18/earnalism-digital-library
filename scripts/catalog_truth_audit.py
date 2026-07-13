@@ -33,6 +33,7 @@ from backend.catalog_truth import (  # noqa: E402
     catalog_truth_row,
     catalog_truth_summary,
     dracula_approval_evidence,
+    explicit_preview_chapter_ids,
     load_controlled_artifact_book,
     normalize_slug,
     normalize_text,
@@ -342,7 +343,7 @@ def api_reader_enabled(book: dict[str, Any]) -> bool:
 
 
 def api_preview_enabled(book: dict[str, Any]) -> bool:
-    return truthy(book.get("preview_enabled")) or bool(normalize_text(book.get("preview_url")))
+    return bool(explicit_preview_chapter_ids(book))
 
 
 def api_audio_enabled(book: dict[str, Any]) -> bool:
@@ -451,17 +452,18 @@ def verify_live_detail_payload(endpoint: str, payload: Any, slug: str) -> list[s
     if not isinstance(payload, dict):
         return [*issues, f"{endpoint} did not return a JSON object"]
 
+    preview_enabled = bool(explicit_preview_chapter_ids(payload))
     expected_values = {
         "slug": normalized,
         "publication_status": PUBLIC_STATUS_LIVE_APPROVED,
         "launch_status": PUBLIC_STATUS_LIVE_APPROVED,
         "reader_enabled": True,
-        "preview_enabled": True,
+        "preview_enabled": preview_enabled,
         "audio_enabled": False,
         "audiobook_enabled": False,
         "public_route": f"/book/{normalized}",
         "reader_url": f"/reader/{normalized}",
-        "preview_url": f"/reader/{normalized}",
+        "preview_url": f"/reader/{normalized}" if preview_enabled else "",
         "audio_url": "",
         "public_json_ld_enabled": True,
     }
@@ -568,8 +570,6 @@ def verify_live_manifest_payload(endpoint: str, payload: Any, slug: str, *, audi
     chapters = payload.get("chapters")
     if not isinstance(chapters, list) or not chapters:
         issues.append(f"{endpoint} does not contain chapter metadata")
-    elif not any(chapter.get("is_preview") is True for chapter in chapters if isinstance(chapter, dict)):
-        issues.append(f"{endpoint} does not unlock a preview chapter")
     audio = payload.get("audio")
     if isinstance(audio, dict):
         if audio_allowed:
@@ -584,6 +584,10 @@ def verify_live_manifest_payload(endpoint: str, payload: Any, slug: str, *, audi
             issues.append(f"{endpoint} exposes audio URLs/assets")
     book = payload.get("book")
     if isinstance(book, dict):
+        manifest_preview_ids = set(explicit_preview_chapter_ids(payload))
+        book_preview_ids = set(explicit_preview_chapter_ids(book))
+        if manifest_preview_ids != book_preview_ids:
+            issues.append(f"{endpoint} preview chapters do not match its projected book")
         issues.extend(verify_live_detail_payload(f"{endpoint}.book", book, slug))
     return issues
 
