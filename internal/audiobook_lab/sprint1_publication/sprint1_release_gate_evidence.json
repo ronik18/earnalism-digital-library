@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T22:56:24Z",
+  "generated_at": "2026-07-13T04:13:10Z",
   "parallel_sprint": {
     "execution_board": "internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json",
     "approved_public_audio_slugs_at_start": [
@@ -425,6 +425,11 @@
       "provider_calls_ran": true,
       "upload_performed": false,
       "publication_performed": false,
+      "controlled_publication_audio_truth_repair": "PREPARED_LOCAL_BOTH_MIRRORS_FAIL_CLOSED_PENDING_PR_DEPLOY",
+      "controlled_publication_audio_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+      "controlled_publication_audio_enabled": false,
+      "controlled_publication_audio_assets": 0,
+      "controlled_publication_audio_urls_removed": 11,
       "exact_blocker": "STAGE2G_RAW_ASR_SOURCE_1.3504_BELOW_REQUIRED_9.7; FIRST_LAST_ASR_WORDS_FAILED; LISTENING_MINIMUM_8.0_CONFIDENCE_0.85_WITH_FATAL_LIST_READING_RHYTHM; UPLOAD_RELEASE_PUBLICATION_BLOCKED"
     },
     {
@@ -641,7 +646,7 @@
       "audio_plan_status": "ACTIVE_SPRINT1_AUDIO_TARGET",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "TARGET_INCOMPLETE_READER_DEPLOY_AND_AUDIO_GATES_REQUIRED",
+      "final_status": "PROVIDER_NETWORK_REACHABILITY_REQUIRED",
       "existing_release_packet": "",
       "existing_release_status": "",
       "reason": "",
@@ -1679,11 +1684,20 @@
       "existing_release_packet": "",
       "existing_release_status": "",
       "reason": "",
-      "next_action": "Continue the active Sprint 1 repair or release path",
-      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.json --book-slug dsires-baby --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "next_action": "Retry the exact source-bound Studio-C representative audition from a network-enabled shell; no quality judgment exists because synthesis never started.",
+      "next_command": "See internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_report.md",
       "stage2_production_book_http": 200,
       "stage2_production_manifest_http": 200,
-      "stage2_manifest_audio_enabled": false
+      "stage2_manifest_audio_enabled": false,
+      "source_preflight": "PASS_11974_CHARACTERS_ONE_CHAPTER_RIGHTS_AND_SANITATION_BOUND",
+      "bounded_audition_status": "BLOCKED_BEFORE_SYNTHESIS_PROVIDER_DNS_UNAVAILABLE",
+      "bounded_audition_estimated_usd": 0.03616,
+      "bounded_audition_booked_spend_usd": 0.0,
+      "bounded_audition_provider_calls_ran": false,
+      "bounded_audition_synthesis_calls": 0,
+      "bounded_audition_fingerprint_retryable": true,
+      "paid_tts_lock_restored_byte_for_byte": true,
+      "exact_blocker": "GOOGLE_TTS_DNS_UNAVAILABLE_IN_CURRENT_EXECUTION_SANDBOX_BEFORE_SYNTHESIS"
     },
     {
       "slug": "the-cop-and-the-anthem",

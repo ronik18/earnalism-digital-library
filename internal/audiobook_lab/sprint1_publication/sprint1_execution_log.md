@@ -98,3 +98,13 @@ Generated: `2026-07-12T22:00:32Z`
 94. Stage 2G estimated spend is `$0.4226`; cumulative Sprint estimate is `$10.1766 / $175`, leaving `$164.8234`. Actual provider billing remains unknown.
 95. The lock restored byte-for-byte to SHA-256 `ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e`, active with no holder or allowed next holders.
 96. Automated Google and Sarvam D19 retries stop. The next executable track is the generated source-bound human narration packet followed by received-audio validation and full release QA.
+97. Started the parallel Yes+Yes acceleration from clean `origin/main` commit `3709321`; the dirty primary checkout remained untouched.
+98. Launched six read-only agents for approved controls, short Bengali, short English, medium/long English, Bengali long/repair, and release-truth validation. Agents made no paid calls or lock mutations.
+99. The parent shell lacked budget/approval exports, so the owner-supplied values were bound inline to the one serialized paid attempt. Sarvam, OpenAI, and Google credential variables were present; Google client-library default credentials resolved the configured project.
+100. `dsires-baby` passed private input preflight: 11,974 characters, one chapter, rights and sanitation pass, source SHA-256 `587455ed554ef64d19f0ea7dcd31940d242aa759f5132b6514b130efa4a64a89`.
+101. Its bounded Studio-C audition dry-run passed at `$0.03616` for 1,808 representative characters, but the execute step failed DNS resolution before synthesis. The result records zero synthesis calls and no generated audio; no listening QA or release mutation ran.
+102. The shared lock restored byte-for-byte to SHA-256 `ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e`, active with no holder and no allowed next holders.
+103. No additional spend was booked, so the conservative Sprint checkpoint remains `$10.1766 / $175` with `$164.8234` remaining. Public audiobook truth remains exactly `book-2b9853ec52` and `a-ghost-story`.
+104. The approved-audio regression lane found stale D19 controlled-publication metadata that still claimed public audio approval and retained 11 direct audiobook URLs per mirror despite its disabled reader manifest.
+105. Repaired both root and backend D19 packets fail-closed: reader access preserved, audio flags false, provider/asset fields empty, approval `PUBLIC_AUDIO_RELEASE_NOT_APPROVED`, and checksum manifests rebound.
+106. Added explicit D19 safety coverage and reader-only packet validation. The focused backend release-truth suite passes `35/35`; both packet mirrors are byte-identical and contain no audiobook URL.

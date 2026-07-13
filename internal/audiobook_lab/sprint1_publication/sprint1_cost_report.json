@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T22:56:24Z",
+  "generated_at": "2026-07-13T04:13:10Z",
   "parallel_sprint_budget": {
     "ledger": "internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json",
     "sprint_cap_usd": 175.0,
@@ -1333,8 +1333,23 @@
     "status": "ASR_SOURCE_MISMATCH",
     "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
   },
+  "parallel_acceleration_dsires_baby": {
+    "owner_decision": "AUTHORIZE_PARALLEL_SPRINT1_YES_YES_EXECUTION_WITH_AUTONOMOUS_REPAIR_AND_PUBLICATION",
+    "updated_at": "2026-07-13T04:13:10Z",
+    "source_preflight": "PASS",
+    "provider": "google",
+    "voice": "en-GB-Studio-C",
+    "attempted_audition_estimate_usd": 0.03616,
+    "booked_estimated_spend_usd": 0.0,
+    "provider_calls_ran": false,
+    "synthesis_calls": 0,
+    "actual_provider_billing": "NO_SYNTHESIS_CALL_NOT_REPORTED",
+    "paid_tts_lock_restored": true,
+    "public_audio_mutated": false,
+    "status": "PROVIDER_NETWORK_REACHABILITY_REQUIRED"
+  },
   "latest_reconciliation": {
-    "generated_at": "2026-07-12T22:56:24Z",
+    "generated_at": "2026-07-13T04:13:10Z",
     "conservative_estimated_spend_usd": 10.1766,
     "authorized_budget_usd": 175.0,
     "estimated_budget_remaining_usd": 164.8234,
@@ -1343,6 +1358,7 @@
       "book-2b9853ec52",
       "a-ghost-story"
     ],
-    "new_publications_claimed": 0
+    "new_publications_claimed": 0,
+    "latest_nonbillable_attempt": "dsires-baby Studio-C blocked before synthesis; zero spend booked"
   }
 }

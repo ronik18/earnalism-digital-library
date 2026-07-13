@@ -1,46 +1,46 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-07-12T22:08:44Z",
-  "owner_decision": "AUTHORIZE_PARALLEL_SPRINT1_PUBLIC_READER_AND_AUDIOBOOK_LIVE_EXECUTION_WITH_175_USD_CAP",
+  "generated_at": "2026-07-13T04:13:10Z",
+  "owner_decision": "AUTHORIZE_PARALLEL_SPRINT1_YES_YES_EXECUTION_WITH_AUTONOMOUS_REPAIR_AND_PUBLICATION",
   "objective": "Advance Sprint 1 titles without weakening release truth, repeating plateaued provider attempts, or running paid work in parallel.",
   "baseline": {
-    "commit": "b76f1e313299e4920eb8f732cbcb4dd8e8ee7fd5",
-    "branch": "codex/sprint1-paid-execution",
+    "commit": "3709321c543a28cf12ba6c6ba6515ccedd320588",
+    "branch": "codex/sprint1-acceleration-evidence",
     "active_titles": 32,
     "public_readers": 32,
     "public_audiobooks": 2,
     "remaining_audio_targets": 30
   },
   "evidence_cutoff": {
-    "timestamp": "2026-07-12T22:08:44Z",
-    "basis": "Latest completed serialized paid stage at the 9.75400 USD conservative checkpoint.",
-    "authoritative_checkpoint_source": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_openai_bn_asr_repair_calibration.json",
-    "prior_reconciliation_cutoff": "2026-07-12T21:25:46Z",
-    "prior_reconciled_estimated_spend_usd": 8.33828,
-    "post_cutoff_policy": "No completed paid stage through this cutoff remains unbooked. Later work requires a new coordinator assignment and reconciliation."
+    "timestamp": "2026-07-13T04:13:10Z",
+    "basis": "Latest completed serialized paid checkpoint remains 10.17660 USD; the later dsires-baby attempt made zero synthesis calls and books zero additional spend.",
+    "authoritative_checkpoint_source": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2g_full_qa.json",
+    "prior_reconciliation_cutoff": "2026-07-12T22:56:24Z",
+    "prior_reconciled_estimated_spend_usd": 10.1766,
+    "post_cutoff_policy": "The dsires-baby Studio-C fingerprint is retryable because DNS failed before synthesis; retry only from a network-enabled shell under the same serialized lock and caps."
   },
   "coordinator": {
     "lane": 0,
     "role": "Coordinator / Budget / Serialization Governor",
-    "mode": "EVIDENCE_RECONCILIATION_ONLY",
+    "mode": "ACTIVE_SERIALIZED_EXECUTION",
     "paid_calls_serialized": true,
     "provider_calls_by_this_reconciliation": false,
-    "lock_inspected_or_touched_by_this_reconciliation": false,
+    "lock_inspected_or_touched_by_this_reconciliation": true,
     "publication_mutations_by_this_reconciliation": 0,
-    "status": "COMPLETED_CHECKPOINT_RECONCILED_PLATEAUS_HELD_D19_ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED"
+    "status": "DSIRES_PREFLIGHT_PASS_PROVIDER_NETWORK_BLOCKED_BEFORE_SYNTHESIS_LOCK_RESTORED"
   },
   "budget_checkpoint": {
     "currency": "USD",
     "sprint_cap_usd": 175.0,
     "per_title_cap_usd": 30.0,
-    "conservative_estimated_spend_usd": 9.754,
-    "budget_remaining_usd": 165.246,
+    "conservative_estimated_spend_usd": 10.1766,
+    "budget_remaining_usd": 164.8234,
     "actual_provider_billing_usd": null,
     "actual_billing_status": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
     "estimate_is_not_invoice_truth": true
   },
   "serialized_paid_call_rule": {
-    "status": "NO_PAID_CALL_AUTHORIZED_BY_THIS_RECONCILIATION",
+    "status": "ONE_DSIRES_AUDITION_ASSIGNED_BUT_BLOCKED_BEFORE_SYNTHESIS_BY_NETWORK",
     "maximum_concurrent_paid_calls": 1,
     "required_before_any_next_paid_call": [
       "Coordinator assigns exactly one title and one bounded stage.",
@@ -50,7 +50,14 @@
       "The provider/settings/text fingerprint is not a recorded failed or plateaued attempt.",
       "The completed wrapper records provider-call status, estimate checkpoint, actual billing status, and release-mutation status before another paid stage starts."
     ],
-    "current_paid_assignment": null
+    "current_paid_assignment": {
+      "slug": "dsires-baby",
+      "stage": "SOURCE_BOUND_GOOGLE_STUDIO_C_REPRESENTATIVE_AUDITION",
+      "status": "WAITING_NETWORK_ENABLED_SHELL",
+      "estimated_usd": 0.03616,
+      "booked_usd": 0.0,
+      "attempt_fingerprint": "bccf002da4e9713e3870b602c07e65ae1ad0a49fbd1904e5730b823a0d605d4e"
+    }
   },
   "lanes": [
     {
@@ -80,13 +87,14 @@
       "lane": 3,
       "role": "Short English Audition / Escalation",
       "mode": "NO_PROVIDER_CALLS_IN_THIS_RECONCILIATION",
-      "status": "SREDNI_GIFT_TELL_BOUNDED_AUTOMATED_TTS_PLATEAUS",
+      "status": "SREDNI_GIFT_TELL_BOUNDED_AUTOMATED_TTS_PLATEAUS; DSIRES_NETWORK_RETRY_REQUIRED",
       "titles": [
         "sredni-vashtar",
         "the-gift-of-the-magi",
-        "the-tell-tale-heart"
+        "the-tell-tale-heart",
+        "dsires-baby"
       ],
-      "result_summary": "Sredni failed Studio-C and Achird, Gift failed isolated Studio-C, isolated Aoede, and contextual Studio-C, and Tell failed contextual and slower contextual Studio-C. No full TTS or publication is authorized from these private auditions."
+      "result_summary": "Sredni, Gift, and Tell remain human/licensed-audio tracks after bounded plateaus. Dsires passed source/rights/sanitation preflight; its first Studio-C attempt stopped before synthesis because provider DNS was unavailable, so the fingerprint remains retryable."
     },
     {
       "lane": 4,
@@ -322,9 +330,39 @@
       ],
       "next_action": "Stop automated Google retries and move to a source-bound human narration or licensed-audio path.",
       "command_authorization": "NON_PROVIDER_HANDOFF_ONLY; DO_NOT_RUN_AUTOMATED_TTS_RETRY"
+    },
+    {
+      "slug": "dsires-baby",
+      "lane": 3,
+      "state": "PROVIDER_NETWORK_REACHABILITY_REQUIRED",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN",
+      "provider": "google",
+      "voice": "en-GB-Studio-C",
+      "quality_evidence": "No quality score: source-bound preflight passed, but DNS failed before the first synthesis call.",
+      "estimated_stage_usd": 0.03616,
+      "booked_stage_usd": 0.0,
+      "actual_provider_billing": "NO_SYNTHESIS_CALL_NOT_REPORTED",
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_release_gate_evidence.json",
+      "exact_blockers": [
+        "GOOGLE_TTS_DNS_UNAVAILABLE_IN_CURRENT_EXECUTION_SANDBOX_BEFORE_SYNTHESIS",
+        "REPRESENTATIVE_AUDITION_NOT_RUN",
+        "FULL_TTS_AND_RELEASE_QA_NOT_RUN"
+      ],
+      "next_action": "Retry the exact same source-bound Studio-C audition from a network-enabled shell.",
+      "command_authorization": "ONE_SERIALIZED_RETRY_ALLOWED; SAME FINGERPRINT REMAINS RETRYABLE BECAUSE SYNTHESIS_CALLS=0"
     }
   ],
-  "paid_execution_queue": [],
+  "paid_execution_queue": [
+    {
+      "slug": "dsires-baby",
+      "stage": "SOURCE_BOUND_GOOGLE_STUDIO_C_REPRESENTATIVE_AUDITION",
+      "status": "WAITING_NETWORK_ENABLED_SHELL",
+      "estimated_usd": 0.03616,
+      "prior_sprint_estimated_spend_usd": 10.1766,
+      "maximum_concurrent_paid_calls": 1
+    }
+  ],
   "paid_execution_holds": [
     {
       "slug": "book-d19e96859f",
@@ -351,26 +389,40 @@
       "reason": "Contextual and slower contextual Studio-C both failed the representative all-sample gate; the slower rate worsened the failed middle sample."
     }
   ],
-  "post_cutoff_unbooked_observations": [],
+  "post_cutoff_unbooked_observations": [
+    {
+      "timestamp": "2026-07-13T04:13:10Z",
+      "slug": "dsires-baby",
+      "stage": "GOOGLE_STUDIO_C_AUDITION",
+      "result": "BLOCKED_BEFORE_SYNTHESIS_PROVIDER_DNS_UNAVAILABLE",
+      "provider_calls_ran": false,
+      "synthesis_calls": 0,
+      "estimated_spend_booked_usd": 0.0,
+      "lock_restored_byte_for_byte": true,
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_release_gate_evidence.json"
+    }
+  ],
   "completed_chain_lock_status": {
     "all_six_tts_manifests_restored_lock_byte_for_byte": true,
     "all_six_listening_wrappers_restored_lock_byte_for_byte": true,
     "lock_sha256_before_and_after": "ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e",
-    "lock_touched_by_this_reconciliation": false
+    "lock_touched_by_this_reconciliation": true,
+    "latest_attempt_lock_restored_byte_for_byte": true
   },
   "release_outcome": {
     "new_publications": 0,
     "new_public_audio_approvals": 0,
     "release_gate_mutations": 0,
     "d19_status": "ASR_LANGUAGE_CONFIG_REPAIR_REQUIRED_PRIVATE_TTS_PASS_NOT_RELEASE_READY",
-    "short_english_status": "SREDNI_GIFT_TELL_AUTOMATED_TTS_PLATEAUS"
+    "d19_controlled_publication_audio_truth_repair": "PREPARED_LOCAL_FAIL_CLOSED_PENDING_PR_DEPLOY",
+    "short_english_status": "SREDNI_GIFT_TELL_AUTOMATED_TTS_PLATEAUS; DSIRES_PROVIDER_NETWORK_RETRY_REQUIRED"
   },
   "next_serialized_action": {
-    "slug": "book-d19e96859f",
-    "stage": "NONPAID_ASR_NORMALIZATION_REPAIR_AND_HUMAN_ALIGNMENT_REVIEW",
-    "status": "AUTOMATED_ASR_ARMS_EXHAUSTED",
-    "authorization": "NONPAID REPAIR ONLY; NO TTS REGENERATION, ASR MODEL RETRY, LISTENING-QA RETRY, UPLOAD, METADATA MUTATION, PUBLIC AUDIO ENABLEMENT, DEPLOYMENT, OR PUBLICATION",
-    "exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/bengali_asr_normalization.py --self-test"
+    "slug": "dsires-baby",
+    "stage": "SOURCE_BOUND_GOOGLE_STUDIO_C_REPRESENTATIVE_AUDITION_RETRY",
+    "status": "WAITING_NETWORK_ENABLED_SHELL",
+    "authorization": "ONE SERIALIZED PRIVATE AUDITION RETRY; NO FULL TTS, UPLOAD, RELEASE MUTATION, OR PUBLICATION UNTIL REPRESENTATIVE LISTENING PASSES",
+    "exact_command": "See internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_report.md"
   },
   "guardrails": {
     "no_publication_without_all_gates": true,
@@ -383,6 +435,6 @@
     "no_paid_parallelism": true,
     "no_retry_after_plateau": true
   },
-  "sprint_target_status": "INCOMPLETE_TWO_APPROVED_D19_ASR_REPAIR_REQUIRED_SHORT_ENGLISH_PLATEAUS_HELD",
+  "sprint_target_status": "INCOMPLETE_TWO_APPROVED_DSIRES_NETWORK_RETRY_REQUIRED_EXTERNAL_HUMAN_INPUT_TRACKS_REMAIN",
   "next_exact_command": "python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json >/dev/null && python3 -m json.tool internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json >/dev/null && git diff --check -- internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_board.json internal/audiobook_lab/sprint1_publication/sprint1_parallel_execution_log.md internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json"
 }
