@@ -108,3 +108,11 @@ Generated: `2026-07-12T22:00:32Z`
 104. The approved-audio regression lane found stale D19 controlled-publication metadata that still claimed public audio approval and retained 11 direct audiobook URLs per mirror despite its disabled reader manifest.
 105. Repaired both root and backend D19 packets fail-closed: reader access preserved, audio flags false, provider/asset fields empty, approval `PUBLIC_AUDIO_RELEASE_NOT_APPROVED`, and checksum manifests rebound.
 106. Added explicit D19 safety coverage and reader-only packet validation. The focused backend release-truth suite passes `35/35`; both packet mirrors are byte-identical and contain no audiobook URL.
+107. DNS resolution recovered for GitHub, Google TTS, and OAuth; GitHub CLI authentication and Google ADC both validated without exposing credentials.
+108. Pushed `codex/sprint1-acceleration-evidence`, opened PR #116, verified its 21-file fail-closed evidence/guardrail diff, and squash-merged it as `a682215c6ee66fd2b64d77874f189c70818d334c`.
+109. Main Regression suite, GO LIVE gate, Vercel deploy, and production canary passed. Post-deploy k6 preserved `33,348/33,348` functional checks with `0%` failures but missed catalog p95 by `0.03s` (`1.23s` versus `1.20s`); no performance code change belongs in this audio sprint.
+110. Retried `dsires-baby` Studio-C only after the network and credential gates passed. Four source-bound samples synthesized from 1,808 characters for an estimated `$0.03616`; private output stayed under `/private/tmp`.
+111. Bounded four-sample listening QA scored `9.4`, `8.4`, `7.5`, and `9.4`; minimum confidence was `0.85`, with fatal robotic-texture and mechanical-cadence flags on the risk passage.
+112. The representative audition failed. No full TTS, ASR, upload, manifest mutation, endpoint enablement, frontend release exposure, or publication ran; the Studio-C fingerprint is now non-repeatable.
+113. Stage 2H conservatively estimates `$0.23616`, bringing Sprint estimated spend to `$10.41276 / $175` and leaving `$164.58724`; actual provider billing remains unknown.
+114. `paid_tts.lock` restored byte-for-byte to SHA-256 `ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e`, active with holder `none` and no allowed next holders.

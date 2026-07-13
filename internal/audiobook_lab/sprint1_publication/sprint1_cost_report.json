@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-13T04:13:10Z",
+  "generated_at": "2026-07-13T04:50:38Z",
   "parallel_sprint_budget": {
     "ledger": "internal/audiobook_lab/sprint1_publication/sprint1_budget_ledger.json",
     "sprint_cap_usd": 175.0,
     "per_title_cap_usd": 30.0,
     "prior_estimated_spend_usd": 4.2862,
-    "this_run_estimated_spend_usd": 5.8904,
-    "conservative_estimated_spend_usd": 10.1766,
-    "budget_remaining_after_estimated_spend_usd": 164.8234,
+    "this_run_estimated_spend_usd": 6.12656,
+    "conservative_estimated_spend_usd": 10.41276,
+    "budget_remaining_after_estimated_spend_usd": 164.58724,
     "remaining_hidden_title_work_estimate_usd": 100.8409,
     "unsafe_reuse_adjustment_usd": 3.2374,
     "unpriced_external_work": [
@@ -22,33 +22,33 @@
       "Remote storage object revocation/privacy enforcement",
       "Pather Panchali owner documents"
     ],
-    "runtime_gate_status": "STAGE2G_INLINE_GATES_PASS_RELEASE_QA_FAILED_ACTUAL_BILLING_UNKNOWN",
+    "runtime_gate_status": "STAGE2H_INLINE_GATES_PASS_DSIRES_REPRESENTATIVE_QA_FAILED_ACTUAL_BILLING_UNKNOWN",
     "provider_calls_ran": true,
     "actual_provider_billing": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS"
   },
   "budget_env": {
-    "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "SET_INLINE_STAGE2G_175",
-    "SPRINT1_MAX_USD_PER_TITLE": "SET_INLINE_STAGE2G_30",
-    "MAX_TTS_BUDGET_USD": "SET_INLINE_STAGE2G_175",
-    "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "SET_INLINE_STAGE2G_TRUE",
+    "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "SET_INLINE_STAGE2H_175",
+    "SPRINT1_MAX_USD_PER_TITLE": "SET_INLINE_STAGE2H_30",
+    "MAX_TTS_BUDGET_USD": "SET_INLINE_STAGE2H_175",
+    "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "SET_INLINE_STAGE2H_TRUE",
     "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "SET_INLINE_STAGE2G_TRUE",
     "EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2G_1",
     "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2G_1",
     "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2G_1",
-    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2G_1",
-    "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "SET_INLINE_STAGE2G_0.05",
-    "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "SET_INLINE_STAGE2G_TRUE",
-    "EARNALISM_OPENAI_LISTENING_QA_MODEL": "SET_INLINE_STAGE2G_GPT_AUDIO",
-    "EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS": "SET_INLINE_STAGE2E_TRUE",
-    "EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2E_1",
-    "EARNALISM_GOOGLE_TTS_ESTIMATED_USD_PER_1K_CHARS": "SET_INLINE_STAGE2E_0.02"
+    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2H_2",
+    "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "SET_INLINE_STAGE2H_0.05",
+    "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "SET_INLINE_STAGE2H_TRUE",
+    "EARNALISM_OPENAI_LISTENING_QA_MODEL": "SET_INLINE_STAGE2H_GPT_AUDIO",
+    "EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS": "SET_INLINE_STAGE2H_TRUE",
+    "EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD": "SET_INLINE_STAGE2H_1",
+    "EARNALISM_GOOGLE_TTS_ESTIMATED_USD_PER_1K_CHARS": "SET_INLINE_STAGE2H_0.02"
   },
   "missing_or_invalid_budget_gates": [],
   "provider_calls_ran": true,
   "actual_spend_usd": null,
   "estimated_incremental_total_usd": 101.8897,
   "removed_deferred_estimated_cost_usd": 35.2935,
-  "budget_comparison": "CONSERVATIVE_ESTIMATED_SPEND_10.17660_WITHIN_175_CAP; ACTUAL_PROVIDER_BILLING_UNKNOWN_NOT_REPORTED; ESTIMATED_REMAINING_164.82340",
+  "budget_comparison": "CONSERVATIVE_ESTIMATED_SPEND_10.41276_WITHIN_175_CAP; ACTUAL_PROVIDER_BILLING_UNKNOWN_NOT_REPORTED; ESTIMATED_REMAINING_164.58724",
   "summary": {
     "total_sprint1_title_count": 34,
     "active_sprint1_title_count": 32,
@@ -109,9 +109,9 @@
     "actual_spend_usd": null,
     "sprint_target_status": "INCOMPLETE",
     "reader_repairs_merged_and_deployed": 17,
-    "estimated_spend_usd": 10.1766,
+    "estimated_spend_usd": 10.41276,
     "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.6035,
-    "budget_remaining_after_estimate_usd": 164.8234,
+    "budget_remaining_after_estimate_usd": 164.58724,
     "a_ghost_remaining_repair_cost_usd": 0.0
   },
   "titles": [
@@ -965,18 +965,20 @@
       "estimated_representative_audition_usd": 0.01,
       "estimated_incremental_cost_usd": 0.1669,
       "deferred_baseline_estimated_cost_usd": 0.0,
-      "actual_spend_usd": 0.0,
-      "budget_status": "BLOCKED_RUNTIME_ENV_GATES_MISSING",
+      "actual_spend_usd": null,
+      "conservative_estimated_spend_usd": 0.23616,
+      "budget_status": "CONSERVATIVE_ESTIMATE_BOOKED_ACTUAL_BILLING_UNKNOWN",
       "reason": "",
-      "next_action": "Continue the active Sprint 1 repair or release path",
-      "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.json --book-slug dsires-baby --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
+      "next_action": "Run one materially different source-bound en-GB-Chirp3-HD-Achird audition; if it fails, stop automated Google retries and build a human narration or licensed-audio import packet.",
+      "next_command": "See internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_report.md",
       "title": "Désirée's Baby",
       "language": "English",
       "source_rights_status": "PASS",
       "text_sanitation_status": "PASS",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN",
-      "final_status": "TARGET_INCOMPLETE_READER_DEPLOY_AND_AUDIO_GATES_REQUIRED"
+      "final_status": "ALTERNATE_VOICE_AUDITION_REQUIRED",
+      "exact_blocker": "STUDIO_C_DIALOGUE_RISK_SCORE_7.5_CONFIDENCE_0.85_WITH_ROBOTIC_TEXTURE_AND_MECHANICAL_CADENCE; MIDDLE_SCORE_8.4_BELOW_9.4"
     },
     {
       "slug": "the-cop-and-the-anthem",
@@ -1174,8 +1176,8 @@
     "provider_calls_ran": false,
     "status": "BLOCKED_LIVE_SHELL_GATES_MISSING"
   },
-  "estimated_spend_usd": 10.1766,
-  "authorized_budget_remaining_after_estimate_usd": 164.8234,
+  "estimated_spend_usd": 10.41276,
+  "authorized_budget_remaining_after_estimate_usd": 164.58724,
   "remaining_known_queue_estimate_excluding_a_ghost_repair_usd": 97.6035,
   "stage2b_a_ghost_story": {
     "owner_decision": "AUTHORIZE_SPRINT1_STAGE_2B_A_GHOST_STORY_LISTENING_QA_AND_RELEASE_IF_PASS",
@@ -1334,31 +1336,36 @@
     "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
   },
   "parallel_acceleration_dsires_baby": {
-    "owner_decision": "AUTHORIZE_PARALLEL_SPRINT1_YES_YES_EXECUTION_WITH_AUTONOMOUS_REPAIR_AND_PUBLICATION",
-    "updated_at": "2026-07-13T04:13:10Z",
+    "owner_decision": "AUTHORIZE_STAGE_2H_PUSH_ACCELERATION_EVIDENCE_AND_RETRY_DSIRES_BABY_IF_NETWORK_READY",
+    "updated_at": "2026-07-13T04:50:38Z",
     "source_preflight": "PASS",
     "provider": "google",
     "voice": "en-GB-Studio-C",
     "attempted_audition_estimate_usd": 0.03616,
-    "booked_estimated_spend_usd": 0.0,
-    "provider_calls_ran": false,
-    "synthesis_calls": 0,
-    "actual_provider_billing": "NO_SYNTHESIS_CALL_NOT_REPORTED",
+    "booked_estimated_spend_usd": 0.23616,
+    "tts_estimated_spend_usd": 0.03616,
+    "listening_qa_estimated_spend_usd": 0.2,
+    "provider_calls_ran": true,
+    "synthesis_calls": 4,
+    "listening_scores": [9.4, 8.4, 7.5, 9.4],
+    "minimum_confidence": 0.85,
+    "fatal_flags": ["mechanical_cadence_detected", "robotic_texture_detected"],
+    "actual_provider_billing": "NOT_REPORTED",
     "paid_tts_lock_restored": true,
     "public_audio_mutated": false,
-    "status": "PROVIDER_NETWORK_REACHABILITY_REQUIRED"
+    "status": "ALTERNATE_VOICE_AUDITION_REQUIRED"
   },
   "latest_reconciliation": {
-    "generated_at": "2026-07-13T04:13:10Z",
-    "conservative_estimated_spend_usd": 10.1766,
+    "generated_at": "2026-07-13T04:50:38Z",
+    "conservative_estimated_spend_usd": 10.41276,
     "authorized_budget_usd": 175.0,
-    "estimated_budget_remaining_usd": 164.8234,
+    "estimated_budget_remaining_usd": 164.58724,
     "actual_provider_billing": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
     "public_audiobook_slugs": [
       "book-2b9853ec52",
       "a-ghost-story"
     ],
     "new_publications_claimed": 0,
-    "latest_nonbillable_attempt": "dsires-baby Studio-C blocked before synthesis; zero spend booked"
+    "latest_serialized_attempt": "dsires-baby Studio-C synthesis completed; representative listening QA failed; 0.23616 USD conservatively estimated; actual billing unknown"
   }
 }

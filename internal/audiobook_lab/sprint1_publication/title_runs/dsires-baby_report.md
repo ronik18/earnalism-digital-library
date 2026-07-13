@@ -1,34 +1,38 @@
-# Désirée's Baby Parallel Sprint Report
+# Désirée's Baby Stage 2H Report
 
-Generated: `2026-07-13T04:13:10Z`
+Generated: `2026-07-13T04:50:38Z`
 
 - Slug: `dsires-baby`
-- Language: `English`
-- Assigned lane: `3 - Short English Lane`
-- Assigned agent: `Pasteur (019f59ac-9e6a-73d2-ae2e-1ea2b5b0468b)`
 - Public reader: `Yes`
 - Public audiobook: `No`
-- Quality evidence: `NOT_RUN_NO_AUDIO_GENERATED`
-- Estimated remaining cost: `$0.1669`
-- Final state: `PROVIDER_NETWORK_REACHABILITY_REQUIRED`
-- Blocker: `GOOGLE_TTS_DNS_UNAVAILABLE_IN_CURRENT_EXECUTION_SANDBOX_BEFORE_SYNTHESIS`
-- Evidence: `internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_release_gate_evidence.json`
-- Next action: Retry the same source-bound bounded Studio-C audition from a network-enabled shell.
+- Source/rights/sanitation: `PASS`
+- Source: `11,974` characters, one chapter, SHA-256 `587455ed554ef64d19f0ea7dcd31940d242aa759f5132b6514b130efa4a64a89`
+- Provider/voice: Google Cloud TTS / `en-GB-Studio-C`
+- Audition fingerprint: `bccf002da4e9713e3870b602c07e65ae1ad0a49fbd1904e5730b823a0d605d4e`
+- Private audition manifest: `/private/tmp/earnalism-dsires-stage-acceleration-private/dsires-baby/audition/bccf002da4e9713e/audition_manifest.json`
+- TTS estimate: `$0.03616`; actual provider billing not reported
+- Listening-QA estimate: `$0.20`; actual provider billing not reported
+- Stage estimate: `$0.23616`
+- Lock: restored byte-for-byte to `active`, holder `none`, allowed next holders `[]`
+- Final state: `ALTERNATE_VOICE_AUDITION_REQUIRED`
 
-## Preflight And Attempt
+## Listening QA
 
-- Controlled source: `11,974` sanitized characters, one chapter, SHA-256 `587455ed554ef64d19f0ea7dcd31940d242aa759f5132b6514b130efa4a64a89`.
-- Rights and sanitation: `PASS`.
-- Historical Piper candidate: excluded because per-voice commercial/speaker rights remain on hold.
-- Google audition: four source-bound samples, `1,808` billable characters, estimated `$0.03616`.
-- Result: DNS resolution failed before synthesis; `provider_calls_ran=false`, `synthesis_calls=0`, no audio, no listening QA, no release mutation.
-- Lock: restored byte-for-byte to SHA-256 `ab57e15c5329256304014ea8a77e086b7ec5748a0fee6423f772f350ef58b50e`.
-- Spend booked: `$0.00`; actual provider billing is unavailable and no synthesis call occurred.
+| Passage | Score | Confidence | Fatal flags |
+| --- | ---: | ---: | --- |
+| opening | 9.4 | 0.95 | none |
+| middle | 8.4 | 0.90 | none |
+| dialogue_or_risk | 7.5 | 0.85 | robotic texture; mechanical cadence |
+| ending | 9.4 | 0.95 | none |
+
+The source-bound Studio-C candidate failed the required all-sample `9.4` and confidence `0.9` gates. The dialogue passage was rushed and mechanically delivered. Full TTS, ASR, upload, release-state mutation, and publication did not run. This exact Studio-C fingerprint must not be repeated.
 
 ## Next Command
 
+Run one materially different, source-bound Chirp3-HD-Achird audition. If it also fails, stop automated Google retries and create the human narration/licensed-audio packet.
+
 ```bash
-SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=40 EARNALISM_APPROVE_GOOGLE_ENGLISH_PRIVATE_AUDITION=true PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py audition --sanitized-source /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/sanitized_source.txt --input-manifest /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /tmp/earnalism-dsires-stage-acceleration-private --voice en-GB-Studio-C --language-code en-GB --usd-per-million-chars 20 --run-budget-usd 1 --title-budget-usd 30 --sprint-budget-usd 175 --sprint-spend-usd 10.1766 --minimum-listening-score 9.4 --minimum-listening-confidence 0.9 --speaking-rate 0.94 --execute
+SPRINT1_TOTAL_AUDIO_BUDGET_USD=175 SPRINT1_MAX_USD_PER_TITLE=30 MAX_TTS_BUDGET_USD=175 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_APPROVE_GOOGLE_TTS_AUDITIONS=true EARNALISM_GOOGLE_TTS_MAX_ESTIMATED_USD=1 EARNALISM_APPROVE_GOOGLE_ENGLISH_PRIVATE_AUDITION=true EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=2 EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD=0.05 EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_google_english_private_pipeline.py audition --sanitized-source /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/sanitized_source.txt --input-manifest /tmp/earnalism-dsires-stage-acceleration-input/dsires-baby/input_manifest.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --private-output-dir /tmp/earnalism-dsires-stage-acceleration-private --voice en-GB-Chirp3-HD-Achird --language-code en-GB --usd-per-million-chars 20 --run-budget-usd 1 --title-budget-usd 30 --title-spend-usd 0.23616 --sprint-budget-usd 175 --sprint-spend-usd 10.41276 --minimum-listening-score 9.4 --minimum-listening-confidence 0.9 --speaking-rate 0.90 --execute
 ```
 
-No provider call, release-gate mutation, or public audio exposure was performed by this materializer.
+No audio was uploaded, published, copied to a public frontend path, or approved for release.
