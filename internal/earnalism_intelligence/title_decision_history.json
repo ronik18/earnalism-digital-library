@@ -1,6 +1,16 @@
 {
-  "version": "2026-07-13",
+  "version": "2026-07-14",
   "titles": {
+    "alices-adventures-in-wonderland": {
+      "latest_decision": "SPRINT1_DIRECT_AUDIO_SOURCE_REMOVED_READER_LIVE",
+      "decision_reason": "Scoped storage containment completed and stale Cloudinary provider metadata was removed from deployable runtime source; no independent audiobook release gate has passed.",
+      "updated_at": "2026-07-14T05:03:43Z",
+      "language": "eng",
+      "audiobook_next_action": "Keep audio hidden until a source-bound candidate passes every release gate.",
+      "storage_bypass_status": "SPRINT1_STORAGE_BYPASS_CONTAINED",
+      "source_cleanup_status": "SPRINT1_DIRECT_AUDIO_SOURCE_REMOVED",
+      "public_audio_status": "AUDIO_HIDDEN"
+    },
     "bn-031": {
       "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
       "decision_reason": "hide/decommission stale audio; keep reader live if metadata confirms reader route and rights",
@@ -168,7 +178,9 @@
       "google_aoede_representative_score": 7.8,
       "sarvam_pooja_representative_score": 7.8,
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/book-f5d593e1f4",
-      "public_audio_status": "AUDIO_HIDDEN"
+      "public_audio_status": "AUDIO_HIDDEN",
+      "storage_bypass_status": "SPRINT1_STORAGE_BYPASS_CONTAINED",
+      "source_cleanup_status": "SPRINT1_DIRECT_AUDIO_SOURCE_REMOVED"
     },
     "muchiram-gurer-jibanchorit": {
       "latest_decision": "HUMAN_NARRATION_REQUIRED",
@@ -189,7 +201,9 @@
       "achird_targeted_repair_representative_score": 7.4,
       "aoede_slow_repair_representative_score": 7.8,
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/muchiram-gurer-jibanchorit",
-      "public_audio_status": "AUDIO_HIDDEN"
+      "public_audio_status": "AUDIO_HIDDEN",
+      "storage_bypass_status": "SPRINT1_STORAGE_BYPASS_CONTAINED",
+      "source_cleanup_status": "SPRINT1_DIRECT_AUDIO_SOURCE_REMOVED"
     },
     "bn-027": {
       "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
@@ -425,16 +439,19 @@
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
     },
     "nishkriti": {
-      "latest_decision": "READY_FOR_AUDITION_STORAGE_REVOCATION_AND_SCALE_GATE_BLOCKED",
-      "decision_reason": "Source, rights, sanitation, and graphical cover preflight pass, but an unapproved legacy storage object remains reachable and the Bengali pilot scale gate remains closed.",
-      "updated_at": "2026-07-13T07:30:39Z",
+      "latest_decision": "READY_FOR_AUDITION_CAMPAIGN_SCALE_GATE_BLOCKED",
+      "decision_reason": "Source, rights, sanitation, and graphical cover preflight pass; scoped storage containment and runtime source cleanup removed the legacy public-audio bypass, while the Bengali pilot scale gate remains closed.",
+      "updated_at": "2026-07-14T05:03:43Z",
       "language": "ben",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "revoke or privatize the unapproved storage object, preserve reader-only state, and wait for the Bengali pilot scale gate before a source-bound audition",
+      "audiobook_next_action": "Preserve reader-only state and wait for the Bengali pilot scale gate before a source-bound audition.",
       "bengali_audiobook_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
       "bengali_audiobook_campaign_next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path.",
       "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
-      "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+      "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass",
+      "storage_bypass_status": "SPRINT1_STORAGE_BYPASS_CONTAINED",
+      "source_cleanup_status": "SPRINT1_DIRECT_AUDIO_SOURCE_REMOVED",
+      "public_audio_status": "AUDIO_HIDDEN"
     },
     "radharani": {
       "latest_decision": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_SCALE_GATE_BLOCKED",

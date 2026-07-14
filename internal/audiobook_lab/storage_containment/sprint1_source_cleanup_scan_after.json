@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-14T05:03:43Z",
+  "scan_scope": "deployable Sprint 1 controlled-publication runtime source",
+  "active_sprint1_title_count": 32,
+  "classification_counts": {
+    "SPRINT1_RUNTIME_SOURCE_STALE_DIRECT_AUDIO": 0,
+    "APPROVED_CURRENT_AUDIO_RETAIN": 4,
+    "PRIVATE_EVIDENCE_RETAIN": 4,
+    "TEST_FIXTURE_SAFE": 1,
+    "NONSPRINT_DEFERRED": 471,
+    "HISTORICAL_LEDGER_SAFE": 2
+  },
+  "source_cleanup": {
+    "effective_checklist_record_count": 23,
+    "already_clean_record_count": 17,
+    "cleaned_record_count": 6,
+    "unapproved_active_direct_audio_file_count": 0,
+    "unapproved_active_direct_audio_url_count": 0,
+    "approved_direct_audio_record_count": 4
+  },
+  "approved_current_audio_records": [
+    "backend/data/controlled_publications/book-2b9853ec52/public_book.json",
+    "data/controlled_publications/book-2b9853ec52/public_book.json",
+    "backend/data/controlled_publications/a-ghost-story/public_book.json",
+    "data/controlled_publications/a-ghost-story/public_book.json"
+  ],
+  "approved_public_audio_slugs": [
+    "book-2b9853ec52",
+    "a-ghost-story"
+  ],
+  "hidden_audio_manifest_count": 30,
+  "hidden_audio_fields_empty": true,
+  "notes": [
+    "Two root checklist paths from the containment prompt are absent on the current main baseline.",
+    "Two corresponding backend mirror records were discovered and included, preserving an effective 23-record audit scope.",
+    "Approved direct source references remain only for the two evidence-gated public audiobook packages."
+  ]
+}
