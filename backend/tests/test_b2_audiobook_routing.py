@@ -86,6 +86,8 @@ def test_audio_asset_cache_policy_keeps_audio_browser_hot(monkeypatch):
     assert "max-age=600" in server._audio_asset_cache_control("mp3")
     assert "stale-while-revalidate=3600" in server._audio_asset_cache_control("mp3")
     assert "max-age=3600" in server._audio_asset_cache_control("timestamps")
+    assert server._audio_asset_content_type("timestamps", "application/octet-stream") == "application/json"
+    assert server._audio_asset_content_type("vtt", "application/octet-stream") == "text/vtt"
 
 
 def test_b2_wrappers_preserve_kwargs_while_running_off_event_loop(monkeypatch):

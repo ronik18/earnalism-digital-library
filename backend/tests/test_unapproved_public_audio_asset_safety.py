@@ -49,7 +49,7 @@ def test_unapproved_controlled_publications_expose_no_direct_audio_urls():
 
 
 def test_known_approved_audiobooks_retain_provider_assets():
-    for slug in ("book-2b9853ec52", "a-ghost-story"):
+    for slug in ("book-2b9853ec52", "a-ghost-story", "sredni-vashtar"):
         title_dir = CONTROLLED_ROOT / slug
         approval = read_json(title_dir / "approval_evidence.json")
         public_book = read_json(title_dir / "public_book.json")

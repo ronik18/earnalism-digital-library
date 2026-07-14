@@ -21,7 +21,7 @@ PACKET_ROOTS = (
     ROOT / "backend" / "data" / "controlled_publications",
     ROOT / "data" / "controlled_publications",
 )
-APPROVED_AUDIO_SLUGS = {"book-2b9853ec52", "a-ghost-story"}
+APPROVED_AUDIO_SLUGS = {"book-2b9853ec52", "a-ghost-story", "sredni-vashtar"}
 CLEANED_METADATA_SLUGS = {
     "alices-adventures-in-wonderland",
     "nishkriti",
@@ -39,6 +39,7 @@ HIDDEN_PROXY_SAMPLES = (
 APPROVED_MP3_SUFFIXES = {
     "book-2b9853ec52": "book-2b9853ec52_mp3_a974819392d7.mp3",
     "a-ghost-story": "a-ghost-story_mp3_c0e52985ee1e.mp3",
+    "sredni-vashtar": "sredni-vashtar_mp3_2b328a80b906.mp3",
 }
 
 
