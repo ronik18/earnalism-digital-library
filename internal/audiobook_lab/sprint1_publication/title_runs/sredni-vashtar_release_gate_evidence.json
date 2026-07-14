@@ -1,96 +1,97 @@
 {
-  "schema_version": 2,
-  "generated_at": "2026-07-12T22:04:03Z",
+  "schema_version": 1,
+  "generated_at": "2026-07-14T09:33:44Z",
   "slug": "sredni-vashtar",
   "title": "Sredni Vashtar",
-  "language": "English",
-  "classification": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
-  "release_gate_state": "HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
-  "publicly_rendered_book": "Yes",
-  "publicly_available_audiobook": "No",
-  "quality_score": "Two Google representative attempts missed the owner minimum 9.4; minima 7.3 and 8.5",
-  "exact_blocker": "BOUNDED_GOOGLE_REPRESENTATIVE_AUDITIONS_FAILED; HUMAN_NARRATION_OR_LICENSED_ALTERNATE_PROVIDER_REQUIRED",
-  "blockers": [
-    "Every representative sample must meet owner minimum 9.4 with confidence at least 0.90 and no fatal flags.",
-    "Studio-C bottomed at 7.3/0.80 with robotic and mechanical flags.",
-    "Chirp3-HD-Achird bottomed at 8.5/0.90."
-  ],
-  "source_binding": {
-    "controlled_source_hash": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
-    "audition_sanitized_source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
-    "audition_input_manifest_sha256": "aff2c4005a9c8af0a2c75a6a97f87ccc694dd07d1ee045863bb330d4add33fd4"
+  "owner_decision": "AUTHORIZE_EOD_GO_LIVE_FOR_SPRINT1_DIGITAL_READERS_AND_APPROVED_AUDIO_ONLY_WITH_ONE_BOUNDED_SREDNI_REUSE_STRETCH",
+  "status": "RELEASE_SOURCE_APPROVED_PRODUCTION_VALIDATION_PENDING",
+  "candidate": {
+    "candidate_id": "candidate-61355c7842dbcbae",
+    "dedup_group_id": "dedup-4fb10f2026b8c586",
+    "provider": "openai",
+    "model": "gpt-4o-mini-tts",
+    "voice": "verse",
+    "style": "classic_literary_narrator",
+    "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+    "source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+    "size_bytes": 10190637,
+    "duration_seconds": 636.84,
+    "new_tts_ran_this_stage": false
   },
-  "provider_attempts": [
-    {
-      "scope": "representative_audition",
-      "provider": "google",
-      "voice": "en-GB-Studio-C",
-      "attempt_fingerprint": "fd3f6a8020d44fb4c6bc59aa7c9488f078662e8bccb3e637b18c8984d69297bb",
-      "audition_manifest_sha256": "8925a3bea1d225ee0e34694ab0ca83c422eaa8cec774721ad6da4c973aa8d439",
-      "scores": [8.4, 9.4, 7.3, 8.4],
-      "minimum_score": 7.3,
-      "minimum_confidence": 0.8,
-      "fatal_flags": [
-        "mechanical_cadence_detected",
-        "robotic_texture_detected"
-      ],
-      "status": "BLOCKED_LISTENING_QA",
-      "attempt_record": "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/attempts/fd3f6a8020d44fb4c6bc59aa7c9488f078662e8bccb3e637b18c8984d69297bb.json",
-      "evidence": "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/fd3f6a8020d44fb4/audition_listening_evidence.json",
-      "lock_report": "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_audition_listening_lock_report.json"
+  "measured_quality": {
+    "asr_source_score": 9.8426,
+    "asr_source_threshold": 9.7,
+    "first_words_match": true,
+    "last_words_match": true,
+    "listening_sample_scores": [9.4, 9.4, 9.4, 9.5, 9.4, 9.4],
+    "minimum_listening_score": 9.4,
+    "minimum_confidence": 0.95,
+    "fatal_flags": [],
+    "sync_score": 9.7997,
+    "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+    "public_sync_mode": "section_following",
+    "auto_estimated_sync": false,
+    "deterministic_10_of_10_claimed": false
+  },
+  "sidecars": {
+    "timestamps": {
+      "sha256": "5eb7a6bddcdf62ebd16ce46c62c5553d40fd1475a657cc8f67ea4a0a818c388f",
+      "word_count": 1789,
+      "alignment_method": "openai_verbose_json_word_timestamps"
     },
-    {
-      "scope": "final_representative_audition",
-      "provider": "google",
-      "voice": "en-GB-Chirp3-HD-Achird",
-      "attempt_fingerprint": "3855fd15b4ecf50d4fc5ff20fab6f8ad1ea7329a6a374da3d4e9e762f40d547e",
-      "audition_manifest_sha256": "a94a55af6d9cf71e53401e510e476932be72c674ad782bf32772aec8d7c88ae9",
-      "scores": [9.4, 9.4, 8.5, 9.4],
-      "minimum_score": 8.5,
-      "minimum_confidence": 0.9,
-      "fatal_flags": [],
-      "status": "BLOCKED_LISTENING_QA",
-      "attempt_record": "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/attempts/3855fd15b4ecf50d4fc5ff20fab6f8ad1ea7329a6a374da3d4e9e762f40d547e.json",
-      "evidence": "internal/audiobook_lab/private_runs/google_english/sredni-vashtar/audition/3855fd15b4ecf50d/audition_listening_evidence.json",
-      "lock_report": "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_chirp_achird_listening_lock_report.json"
-    }
-  ],
-  "stage2d_replacement_auditions": {
-    "baseline": {
-      "status": "BLOCKED_LISTENING_QA",
-      "provider": "google",
-      "voice": "en-GB-Studio-C",
-      "attempt_fingerprint": "fd3f6a8020d44fb4c6bc59aa7c9488f078662e8bccb3e637b18c8984d69297bb",
-      "scores": [8.4, 9.4, 7.3, 8.4],
-      "minimum_confidence": 0.8,
-      "fatal_flags": [
-        "mechanical_cadence_detected",
-        "robotic_texture_detected"
-      ],
-      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_release_gate_evidence.json"
+    "vtt": {
+      "sha256": "700aa4ae0590f33403935a855c5a79c90bef22d7db75ffe294e26c92dc9c415d",
+      "cue_count": 1789
     },
-    "single_prosody_retry": {
-      "status": "BLOCKED_LISTENING_QA",
-      "provider": "google",
-      "voice": "en-GB-Chirp3-HD-Achird",
-      "attempt_fingerprint": "3855fd15b4ecf50d4fc5ff20fab6f8ad1ea7329a6a374da3d4e9e762f40d547e",
-      "scores": [9.4, 9.4, 8.5, 9.4],
-      "minimum_confidence": 0.9,
-      "fatal_flags": [],
-      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/sredni-vashtar_release_gate_evidence.json"
-    }
+    "chapters": {
+      "sha256": "ab141aae86e2360a38c97f14ad2ebf84066c740e799dd8ad23f83392ff10882a",
+      "chapter_count": 1
+    },
+    "meta": {
+      "sha256": "419d4bd104fedbe61d367c28e58c52ba428ecf84ef213c5fc4ec8a29f8b2eed0"
+    },
+    "stale_piper_sidecars_used": false,
+    "validation": "PASS"
   },
-  "human_narration_packet": {
-    "path": "internal/audiobook_lab/sprint1_publication/human_narration_packets/sredni-vashtar",
-    "packet_fingerprint_sha256": "ad621794b937bd94e82e71870c4768fff42ce79b2f98f22ea74a2e4e532c02a6",
-    "sanitized_manuscript_sha256": "7d3a52056069e59d30cc15d474a3612479800dc01345f06719447b060a54fe94",
-    "status": "NARRATION_IMPORT_PACKET_READY_AUDIO_HIDDEN"
+  "upload": {
+    "status": "UPLOADED_CHECKSUM_VERIFIED",
+    "storage_backend": "b2_s3",
+    "mp3_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
+    "all_five_remote_hashes_match": true,
+    "direct_range_http_status": 206,
+    "direct_range_bytes": 1024,
+    "estimated_cost_usd": 0.0
   },
-  "exact_received_audio_validation_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug sredni-vashtar --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-  "next_action": "Deliver source-bound human narration or separately approved licensed alternate-provider audio and run the exact received-audio command before full ASR, listening, sync, upload, metadata, endpoint, browser, and owner gates.",
-  "historical_provider_calls_recorded": true,
-  "provider_calls_ran_this_task": false,
-  "release_gate_mutated_this_task": false,
-  "publication_performed_this_task": false,
-  "audio_copied_this_task": false
+  "release_gates": {
+    "reader_route": "PASS",
+    "source_rights": "PASS",
+    "sanitation": "PASS",
+    "cover": "PASS",
+    "source_binding": "PASS",
+    "technical_audio_qa": "PASS",
+    "asr_source": "PASS",
+    "first_last": "PASS",
+    "listening_qa": "PASS",
+    "sidecars": "PASS",
+    "manifest": "PASS",
+    "upload_checksum": "PASS",
+    "direct_endpoint_range": "PASS",
+    "frontend_release_state_local": "PASS",
+    "production_api_ui": "PENDING_AFTER_MERGE"
+  },
+  "release_truth": {
+    "static_audio_fallback": false,
+    "browser_speech_fallback": false,
+    "word_level_sync_claim": false,
+    "nonapproved_audioobject": false,
+    "private_audio_committed_to_frontend": false
+  },
+  "paid_tts_lock": {
+    "status": "active",
+    "current_holder": "none",
+    "allowed_next_holders": [],
+    "restored_byte_for_byte": true
+  },
+  "blockers": [],
+  "next_command": "gh pr checks --watch"
 }

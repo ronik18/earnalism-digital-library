@@ -5945,7 +5945,7 @@ def _streaming_body_iterator(body):
 
 
 def _audio_asset_content_type(asset_key: str, fallback: str = "") -> str:
-    if fallback:
+    if fallback and fallback != "application/octet-stream":
         return fallback
     return {
         "mp3": "audio/mpeg",

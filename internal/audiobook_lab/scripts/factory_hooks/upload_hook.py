@@ -59,6 +59,7 @@ def b2_client():
 def content_type_for_key(key: str) -> str:
     return {
         "mp3": "audio/mpeg",
+        "json": "application/json",
         "timestamps": "application/json",
         "vtt": "text/vtt",
         "chapters": "application/json",
@@ -67,9 +68,32 @@ def content_type_for_key(key: str) -> str:
 
 
 def upload_b2(path: Path, *, key: str) -> dict[str, Any]:
+    from boto3.s3.transfer import TransferConfig
+
     bucket = os.environ["B2_BUCKET"]
     endpoint = os.environ["B2_S3_ENDPOINT"].rstrip("/")
     client = b2_client()
+    transfer_config = None
+    chunk_bytes = int(os.environ.get("EARNALISM_B2_MULTIPART_CHUNK_BYTES", "0") or 0)
+    if chunk_bytes:
+        if chunk_bytes < 5 * 1024 * 1024:
+            raise ValueError("EARNALISM_B2_MULTIPART_CHUNK_BYTES must be at least 5 MiB")
+        # Bound each request below long-request proxy reset windows while
+        # preserving the exact object bytes and sequential upload order.
+        transfer_config = TransferConfig(
+            multipart_threshold=chunk_bytes,
+            multipart_chunksize=chunk_bytes,
+            max_concurrency=1,
+            use_threads=False,
+        )
+    elif os.environ.get("EARNALISM_B2_FORCE_SINGLE_PART_UPLOAD", "").strip().lower() == "true":
+        # B2 application keys can allow object writes while multipart-upload
+        # capabilities are unavailable. Keep this explicit and title-scoped.
+        transfer_config = TransferConfig(
+            multipart_threshold=64 * 1024 * 1024,
+            max_concurrency=1,
+            use_threads=False,
+        )
     client.upload_file(
         str(path),
         bucket,
@@ -78,6 +102,7 @@ def upload_b2(path: Path, *, key: str) -> dict[str, Any]:
             "ContentType": content_type_for_key(key.rsplit(".", 1)[-1] if "." in key else key),
             "CacheControl": "private, max-age=600, stale-while-revalidate=3600" if key.endswith(".mp3") else "private, max-age=3600, stale-while-revalidate=86400",
         },
+        Config=transfer_config,
     )
     return {"secure_url": f"{endpoint}/{bucket}/{key}", "bucket": bucket, "key": key}
 

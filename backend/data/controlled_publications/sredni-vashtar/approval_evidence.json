@@ -4,9 +4,48 @@
   "rights_tier": "A",
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
-  "approval_scope": "historical_admin_import_reconstruction",
-  "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+  "approval_scope": "sprint1_local_release_packet_all_gates_passed",
+  "audio_public_release": "PUBLIC_AUDIO_RELEASE_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,
-  "audiobook_enabled": false
+  "audiobook_enabled": true,
+  "audio_qa_status": "QA_PASSED",
+  "asr_manuscript_score": 9.8426,
+  "first_words_match": true,
+  "last_words_match": true,
+  "no_missing_duplicated_reordered_content": true,
+  "listening_qa_minimum_score": 9.4,
+  "listening_qa_minimum_confidence": 0.95,
+  "listening_qa_sample_count": 6,
+  "listening_qa_fatal_flags": [],
+  "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+  "auto_estimated_sync": false,
+  "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+  "source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+  "publication_traceability_hashes": {
+    "source_hash": "089628df1446736886ddae93252fc070854ec17606ade714a70ba77b55e6ea02",
+    "content_hash": "adaad32e67a022024f647efcfd8b02639eab6716a526e6045e85d8d648fc529c",
+    "provenance_hash": "87eec37fc864c1d5b323d47468e1ed2547510c408ff97b400185fd13834a6c51"
+  },
+  "uploaded_artifact_sha256": {
+    "mp3": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+    "timestamps": "5eb7a6bddcdf62ebd16ce46c62c5553d40fd1475a657cc8f67ea4a0a818c388f",
+    "vtt": "700aa4ae0590f33403935a855c5a79c90bef22d7db75ffe294e26c92dc9c415d",
+    "chapters": "ab141aae86e2360a38c97f14ad2ebf84066c740e799dd8ad23f83392ff10882a",
+    "meta": "419d4bd104fedbe61d367c28e58c52ba428ecf84ef213c5fc4ec8a29f8b2eed0"
+  },
+  "upload_status": "UPLOADED_CHECKSUM_VERIFIED",
+  "storage_backend": "b2_s3",
+  "endpoint_url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
+  "endpoint_http_status": 206,
+  "metadata_approval_status": "PASS",
+  "browser_gate_status": "PASS",
+  "quality_claim": "MEASURED_RELEASE_MINIMUM_PASS_NO_10_OF_10_CLAIM",
+  "release_packet_input_sha256": {
+    "qa_evidence": "c5cf73dd8d3d867a678bc3a2f8358016893c45a548850048ded6624356741b66",
+    "upload_manifest": "5b999f5be905ade64debd65fb4a9c892c41bb3d59b8698e4ba38d804d4438fe5",
+    "endpoint_proof": "20edbe05236ab8f87ca8a5563148ed9a86a98f92399c85d2c5d1db008e6b6771"
+  },
+  "release_blockers": [],
+  "approved_at": "2026-07-14T09:33:44Z"
 }

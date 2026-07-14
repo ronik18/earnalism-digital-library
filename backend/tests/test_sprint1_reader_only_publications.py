@@ -7,7 +7,7 @@ from backend import catalog_truth
 
 
 ROOT = Path(__file__).resolve().parents[2]
-APPROVED_PUBLIC_AUDIO_SLUGS = {"book-2b9853ec52", "a-ghost-story"}
+APPROVED_PUBLIC_AUDIO_SLUGS = {"book-2b9853ec52", "a-ghost-story", "sredni-vashtar"}
 READER_ONLY_SLUGS = (
     "radharani",
     "book-d19e96859f",
@@ -20,7 +20,6 @@ READER_ONLY_SLUGS = (
     "the-gift-of-the-magi",
     "the-tell-tale-heart",
     "the-open-window",
-    "sredni-vashtar",
     "dsires-baby",
     "the-cop-and-the-anthem",
     "the-last-leaf",

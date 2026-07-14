@@ -18,7 +18,8 @@
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "8 min",
   "formats": [
-    "Ebook"
+    "Ebook",
+    "Audiobook"
   ],
   "benefits": [
     "Read a legally cleared digital text.",
@@ -72,17 +73,53 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": false,
-  "audiobook_enabled": false,
-  "generate_audiobook": false,
-  "audiobook_provider": "",
-  "audiobook_voice": "",
-  "audio_asset_slug": "",
-  "audiobook_assets": {},
-  "audiobook": {},
-  "audiobook_assets_updated_at": "",
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "openai",
+  "audiobook_voice": "verse",
+  "audio_asset_slug": "sredni-vashtar",
+  "audiobook_assets": {
+    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
+    "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_timestamps_5eb7a6bddcdf.json",
+    "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_vtt_700aa4ae0590.vtt",
+    "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_chapters_ab141aae86e2.json",
+    "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_meta_419d4bd104fe.json"
+  },
+  "audiobook": {
+    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
+    "provider": "openai",
+    "voice": "verse",
+    "model": "gpt-4o-mini-tts",
+    "style": "classic_literary_narrator",
+    "size": 10190637,
+    "duration_ms": 636840,
+    "sync_mode": "section_following",
+    "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+    "highlight_sync_enabled": false,
+    "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+    "source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+    "asset_sha256": {
+      "mp3": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+      "timestamps": "5eb7a6bddcdf62ebd16ce46c62c5553d40fd1475a657cc8f67ea4a0a818c388f",
+      "vtt": "700aa4ae0590f33403935a855c5a79c90bef22d7db75ffe294e26c92dc9c415d",
+      "chapters": "ab141aae86e2360a38c97f14ad2ebf84066c740e799dd8ad23f83392ff10882a",
+      "meta": "419d4bd104fedbe61d367c28e58c52ba428ecf84ef213c5fc4ec8a29f8b2eed0"
+    },
+    "assets": {
+      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_mp3_2b328a80b906.mp3",
+      "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_timestamps_5eb7a6bddcdf.json",
+      "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_vtt_700aa4ae0590.vtt",
+      "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_chapters_ab141aae86e2.json",
+      "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-audiobooks/earnalism/audiobooks/sredni-vashtar/sredni-vashtar_meta_419d4bd104fe.json"
+    },
+    "release_gate": "APPROVED",
+    "qa_status": "QA_PASSED",
+    "updated_at": "2026-07-14T09:33:44Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-14T09:33:44Z",
   "created_at": "2026-07-03T20:07:48Z",
-  "updated_at": "2026-07-03T20:07:48Z",
+  "updated_at": "2026-07-14T09:33:44Z",
   "cover_dimensions": {
     "front": [
       1600,
@@ -93,5 +130,7 @@
       2400
     ]
   },
-  "cover_semantic_match_score": 9.8
+  "cover_semantic_match_score": 9.8,
+  "audiobook_model": "gpt-4o-mini-tts",
+  "audiobook_style_profile": "classic_literary_narrator"
 }

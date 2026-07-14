@@ -119,7 +119,7 @@ const shouldUseReaderMocks = routes === readerRoutes || routes === audiobookPlay
 const shouldUseAudiobookPlayerMocks = routes === audiobookPlayerRoutes;
 const shouldCheckSettingsPanel = routes === settingsRoutes;
 const shouldCheckMarketingLanding = routes === marketingLandingRoutes;
-const approvedAudiobookSmokeSlugs = new Set(["book-2b9853ec52", "a-ghost-story"]);
+const approvedAudiobookSmokeSlugs = new Set(["book-2b9853ec52", "a-ghost-story", "sredni-vashtar"]);
 
 const allViewports = [
   { width: 1920, height: 1080 },

@@ -10,6 +10,7 @@ ROOT_CONTROLLED_LAUNCH = ROOT / "data" / "controlled_launch.json"
 
 APPROVED_BENGALI_PILOT = "book-2b9853ec52"
 APPROVED_ENGLISH_STORY = "a-ghost-story"
+APPROVED_REUSE_STORY = "sredni-vashtar"
 PRIVATE_QA_AUDIO_HOLD = "bn-066"
 BLOCKED_BENGALI_CANARIES = {
     "book-d19e96859f",
@@ -58,7 +59,7 @@ def test_backend_controlled_launch_preserves_audio_hold_states():
     assert PRIVATE_QA_AUDIO_HOLD not in backend_audio
     assert backend_audio.isdisjoint(BLOCKED_BENGALI_CANARIES)
     assert backend_audio.isdisjoint(HISTORICAL_RECONSTRUCTION_AUDIO_HOLDS)
-    assert backend_audio == {APPROVED_BENGALI_PILOT, APPROVED_ENGLISH_STORY}
+    assert backend_audio == {APPROVED_BENGALI_PILOT, APPROVED_ENGLISH_STORY, APPROVED_REUSE_STORY}
 
 
 def test_root_controlled_launch_keeps_bn_066_reader_live_and_audio_hidden():
@@ -66,7 +67,11 @@ def test_root_controlled_launch_keeps_bn_066_reader_live_and_audio_hidden():
 
     assert PRIVATE_QA_AUDIO_HOLD in root_launch["live_approved_slugs"]
     assert PRIVATE_QA_AUDIO_HOLD not in root_launch["audio_enabled_slugs"]
-    assert set(root_launch["audio_enabled_slugs"]) == {APPROVED_BENGALI_PILOT, APPROVED_ENGLISH_STORY}
+    assert set(root_launch["audio_enabled_slugs"]) == {
+        APPROVED_BENGALI_PILOT,
+        APPROVED_ENGLISH_STORY,
+        APPROVED_REUSE_STORY,
+    }
 
 
 def test_sprint1_reader_additions_are_live_in_both_trees_and_audio_hidden():
