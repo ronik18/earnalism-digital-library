@@ -375,3 +375,12 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Alice and Nishkriti had no remaining direct URL but retained stale provider, voice, and asset-slug metadata. Empty those fields so hidden manifests cannot inherit misleading provenance.
 - Preserve the exact evidence-gated B2 packages for `book-2b9853ec52` and `a-ghost-story`; approved source references are not part of the unapproved cleanup.
 - Post-cleanup controlled-publication serialization has exactly two enabled audio manifests and 30 hidden manifests with empty public audio fields.
+
+## 2026-07-14 EOD Go-Live Freeze And Sredni Reuse Stretch
+
+- A fully QA-passing reuse candidate is still not production-public until the merged backend reaches production and the manifest, proxy, Book UI, and Reader UI pass there. Source approval and production availability must remain separate states.
+- Sredni Vashtar passed reuse QA with ASR/source `9.8426`, six listening samples at `9.4-9.5`, confidence `0.95`, no fatal flags, measured sync `9.7997`, and verified sidecars/checksums without new TTS.
+- Railway archive upload HTTP `500` is a deployment blocker, not a reason to mutate release truth. Production correctly remains audio-disabled and proxy `404` while the source-ready package waits for retry.
+- EOD go-live can be approved for all public readers and existing approved audiobooks when every unapproved title remains fail-closed; incomplete audiobook backlog alone is not a P0 launch blocker.
+- Sprint 1 storage containment and source cleanup removed the earlier direct-object bypass blockers. Do not carry superseded revocation requirements forward in title matrices.
+- The k6 run had `18,792/18,792` functional checks and `0%` request failures; catalog and reader p95 misses are a separate non-P0 performance backlog and do not justify unrelated changes in an audio release closure.
