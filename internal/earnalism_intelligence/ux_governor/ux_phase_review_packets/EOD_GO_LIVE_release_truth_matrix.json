@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-14T09:58:11Z",
+  "decision": "EOD_GO_LIVE_APPROVED_WITH_AUDIO_LIMITATIONS",
+  "release_source_commit": "b337300763b874b434938ee09519208512be34bb",
+  "summary": {
+    "active_sprint1_titles": 32,
+    "public_readers": 32,
+    "public_audiobooks": 2,
+    "yes_yes_titles": 2,
+    "audio_hidden_titles": 30,
+    "deferred_excluded_titles": 2
+  },
+  "deferred_excluded_slugs": [
+    "great-expectations",
+    "jane-eyre"
+  ],
+  "approved_audio_controls": [
+    {
+      "slug": "book-2b9853ec52",
+      "manifest_enabled": true,
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "range_http": 206
+    },
+    {
+      "slug": "a-ghost-story",
+      "manifest_enabled": true,
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED",
+      "range_http": 206
+    }
+  ],
+  "storage_source_truth": {
+    "sprint1_storage_bypass": "CONTAINED",
+    "scoped_urls_inaccessible": "135/135",
+    "remaining_reachable_sprint1_direct_urls": 0,
+    "stale_runtime_public_audio_references": "REMOVED",
+    "non_sprint_remote_containment": "DEFERRED_BY_OWNER"
+  },
+  "workflow_truth": {
+    "release_pr": 121,
+    "release_pr_merged": true,
+    "regression": "PASS",
+    "go_live_gate": "PASS",
+    "vercel_deploy": "PASS",
+    "production_canary": "PASS",
+    "railway_backend_deploy": "UPLOAD_HTTP_500_RETRY_REQUIRED",
+    "k6_functional_checks": "18792/18792 PASS",
+    "k6_request_failures": "0%",
+    "k6_performance": "CATALOG_AND_READER_P95_BACKLOG"
+  },
+  "titles": [
+    {"slug": "book-2b9853ec52", "language": "Bengali", "public_reader": true, "public_audiobook": true, "status": "YES_YES_PRODUCTION"},
+    {"slug": "bn-066", "language": "Bengali", "public_reader": true, "public_audiobook": false, "status": "ASR_LANGUAGE_CONFIG_AND_NORMALIZATION_REPAIR_REQUIRED"},
+    {"slug": "radharani", "language": "Bengali", "public_reader": true, "public_audiobook": false, "status": "REPRESENTATIVE_AUDITION_PREFLIGHT_READY"},
+    {"slug": "nishkriti", "language": "Bengali", "public_reader": true, "public_audiobook": false, "status": "CANONICAL_SOURCE_RECONCILIATION_REQUIRED"},
+    {"slug": "muchiram-gurer-jibanchorit", "language": "Bengali", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"},
+    {"slug": "book-d19e96859f", "language": "Bengali", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"},
+    {"slug": "book-f5d593e1f4", "language": "Bengali", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"},
+    {"slug": "pather-panchali", "language": "Bengali", "public_reader": true, "public_audiobook": false, "status": "OWNER_DOCUMENT_REQUIRED"},
+    {"slug": "devdas", "language": "Bengali", "public_reader": true, "public_audiobook": false, "status": "REPRESENTATIVE_AUDITION_PREFLIGHT_READY"},
+    {"slug": "book-edfcf810c5", "language": "Bengali", "public_reader": true, "public_audiobook": false, "status": "REPRESENTATIVE_AUDITION_PREFLIGHT_READY"},
+    {"slug": "a-ghost-story", "language": "English", "public_reader": true, "public_audiobook": true, "status": "YES_YES_PRODUCTION"},
+    {"slug": "dracula", "language": "English", "public_reader": true, "public_audiobook": false, "status": "LONG_TITLE_RELEASE_PIPELINE_BACKLOG"},
+    {"slug": "frankenstein", "language": "English", "public_reader": true, "public_audiobook": false, "status": "LONG_TITLE_RELEASE_PIPELINE_BACKLOG"},
+    {"slug": "jekyll-and-hyde", "language": "English", "public_reader": true, "public_audiobook": false, "status": "LONG_TITLE_PREFLIGHT_READY"},
+    {"slug": "picture-of-dorian-gray", "language": "English", "public_reader": true, "public_audiobook": false, "status": "LONG_TITLE_RELEASE_PIPELINE_BACKLOG"},
+    {"slug": "the-time-machine", "language": "English", "public_reader": true, "public_audiobook": false, "status": "LONG_TITLE_RELEASE_PIPELINE_BACKLOG"},
+    {"slug": "the-call-of-the-wild", "language": "English", "public_reader": true, "public_audiobook": false, "status": "LONG_TITLE_RELEASE_PIPELINE_BACKLOG"},
+    {"slug": "white-fang", "language": "English", "public_reader": true, "public_audiobook": false, "status": "LONG_TITLE_RELEASE_PIPELINE_BACKLOG"},
+    {"slug": "pride-and-prejudice", "language": "English", "public_reader": true, "public_audiobook": false, "status": "LONG_TITLE_RELEASE_PIPELINE_BACKLOG"},
+    {"slug": "the-secret-garden", "language": "English", "public_reader": true, "public_audiobook": false, "status": "LONG_TITLE_RELEASE_PIPELINE_BACKLOG"},
+    {"slug": "alices-adventures-in-wonderland", "language": "English", "public_reader": true, "public_audiobook": false, "status": "LONG_TITLE_RELEASE_PIPELINE_BACKLOG"},
+    {"slug": "the-gift-of-the-magi", "language": "English", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"},
+    {"slug": "the-tell-tale-heart", "language": "English", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"},
+    {"slug": "the-open-window", "language": "English", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"},
+    {"slug": "sredni-vashtar", "language": "English", "public_reader": true, "public_audiobook": false, "status": "RELEASE_SOURCE_APPROVED_DEPLOYMENT_RETRY_REQUIRED"},
+    {"slug": "dsires-baby", "language": "English", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"},
+    {"slug": "the-cop-and-the-anthem", "language": "English", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"},
+    {"slug": "the-last-leaf", "language": "English", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"},
+    {"slug": "the-masque-of-the-red-death", "language": "English", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"},
+    {"slug": "the-yellow-wallpaper", "language": "English", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"},
+    {"slug": "the-monkeys-paw", "language": "English", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"},
+    {"slug": "the-necklace", "language": "English", "public_reader": true, "public_audiobook": false, "status": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED"}
+  ],
+  "release_truth_guards": {
+    "static_audio_fallback": false,
+    "browser_speech_fallback": false,
+    "word_level_sync_claim": false,
+    "nonapproved_audioobject": false,
+    "private_audio_in_frontend_public_or_build": false,
+    "paid_tts_lock_status": "active_current_holder_none"
+  }
+}

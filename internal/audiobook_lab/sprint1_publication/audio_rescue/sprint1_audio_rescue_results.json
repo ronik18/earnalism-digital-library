@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-14T09:58:11Z",
+  "owner_decision": "AUTHORIZE_EOD_GO_LIVE_FOR_SPRINT1_DIGITAL_READERS_AND_APPROVED_AUDIO_ONLY_WITH_ONE_BOUNDED_SREDNI_REUSE_STRETCH",
+  "processed_titles": [
+    "sredni-vashtar"
+  ],
+  "new_tts_ran": false,
+  "new_public_audiobooks": [],
+  "result": {
+    "slug": "sredni-vashtar",
+    "candidate_id": "candidate-61355c7842dbcbae",
+    "dedup_group_id": "dedup-4fb10f2026b8c586",
+    "audio_sha256": "2b328a80b90684ddf2fe3df1a1447481067c6cb277484f97432e882c7844d31a",
+    "source_sha256": "44e3bebedecc69c907b8739b5c6996932505df2cb140c05a4d55b9ca9d2bfd21",
+    "asr_source_score": 9.8426,
+    "first_last": "PASS",
+    "listening_scores": [9.4, 9.4, 9.4, 9.5, 9.4, 9.4],
+    "minimum_confidence": 0.95,
+    "fatal_flags": [],
+    "sync_score": 9.7997,
+    "sync_mode": "section_following",
+    "sidecar_validation": "PASS",
+    "manifest_validation": "PASS",
+    "upload_checksum_validation": "PASS",
+    "release_source_commit": "b337300763b874b434938ee09519208512be34bb",
+    "production_publication": false,
+    "production_manifest_audio_enabled": false,
+    "production_audiobook_proxy_http": 404,
+    "final_status": "RELEASE_SOURCE_APPROVED_DEPLOYMENT_RETRY_REQUIRED",
+    "exact_blocker": "RAILWAY_BACKEND_ARCHIVE_UPLOAD_RETURNED_HTTP_500",
+    "incremental_cost_usd": 0.0
+  },
+  "eod_decision": "EOD_GO_LIVE_APPROVED_WITH_AUDIO_LIMITATIONS",
+  "public_reader_count": 32,
+  "public_audiobook_count": 2,
+  "estimated_sprint_spend_usd": 14.90614,
+  "estimated_budget_remaining_usd": 160.09386,
+  "actual_provider_billing": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
+  "paid_tts_lock": {
+    "status": "active",
+    "current_holder": "none",
+    "allowed_next_holders": []
+  },
+  "next_command": "cd /tmp/earnalism-eod-go-live/backend && railway up . --path-as-root --project a8533934-35c4-463e-9f43-577a9ac391ee --environment production --service earnalism --ci --message 'Retry Sredni Vashtar approved reuse package b337300 from backend root'"
+}
