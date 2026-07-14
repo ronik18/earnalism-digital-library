@@ -366,3 +366,12 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Jekyll and Hyde now has a hash-bound private input with 138,182 characters, but Google ADC requires interactive reauthentication. No provider call, lock mutation, upload, or public release occurred.
 - The clean main baseline does not contain bn-066's private 152-chunk run or calibration tool. A private preflight planned six bounded ASR calls only; it did not execute them because the active lock scope and campaign policy do not authorize this branch to do so.
 - Removing stale audio URLs from controlled metadata is necessary but does not revoke a known direct storage URL. At least nine historical Cloudinary/B2 MP3 variants across six unapproved titles remain directly reachable and require a separately reviewed destructive-storage workflow.
+
+## 2026-07-14 Sprint 1 Direct Audio Source Cleanup
+
+- Sprint 1 retention-first storage containment completed before source cleanup; runtime cleanup did not perform remote mutation or audio production.
+- The 23-record authoritative checklist had baseline drift: two listed root mirrors were absent and two backend mirrors held the effective records. Reconcile the current tree before editing rather than manufacturing missing mirrors.
+- F5 and Muchiram contained stale direct MP3/sidecar packages plus historical approval flags that contradicted their actual hidden release state. Both runtime mirrors and approval mirrors now fail closed while their human-narration paths remain intact.
+- Alice and Nishkriti had no remaining direct URL but retained stale provider, voice, and asset-slug metadata. Empty those fields so hidden manifests cannot inherit misleading provenance.
+- Preserve the exact evidence-gated B2 packages for `book-2b9853ec52` and `a-ghost-story`; approved source references are not part of the unapproved cleanup.
+- Post-cleanup controlled-publication serialization has exactly two enabled audio manifests and 30 hidden manifests with empty public audio fields.

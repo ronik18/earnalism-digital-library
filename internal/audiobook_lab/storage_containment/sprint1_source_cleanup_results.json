@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-14T05:03:43Z",
+  "owner_decision": "AUTHORIZE_P0_REMOVE_SPRINT1_UNAPPROVED_DIRECT_AUDIO_REFERENCES_FROM_PUBLIC_SOURCE.",
+  "result": "SPRINT1_RUNTIME_AUDIO_SOURCE_FAIL_CLOSED",
+  "base_commit": "e4641f4",
+  "scope": {
+    "active_sprint1_titles": 32,
+    "approved_public_audio_titles": 2,
+    "hidden_audio_titles": 30,
+    "authoritative_checklist_records": 23,
+    "current_effective_checklist_records": 23,
+    "records_already_fail_closed": 17,
+    "stale_public_book_records_cleaned": 6,
+    "approval_evidence_records_fail_closed": 4,
+    "checksum_manifests_updated": 6
+  },
+  "slugs_affected": [
+    "alices-adventures-in-wonderland",
+    "book-f5d593e1f4",
+    "muchiram-gurer-jibanchorit",
+    "nishkriti"
+  ],
+  "runtime_files_changed": [
+    "backend/data/controlled_publications/alices-adventures-in-wonderland/public_book.json",
+    "backend/data/controlled_publications/book-f5d593e1f4/public_book.json",
+    "backend/data/controlled_publications/muchiram-gurer-jibanchorit/public_book.json",
+    "backend/data/controlled_publications/nishkriti/public_book.json",
+    "data/controlled_publications/book-f5d593e1f4/public_book.json",
+    "data/controlled_publications/muchiram-gurer-jibanchorit/public_book.json"
+  ],
+  "approval_files_changed": [
+    "backend/data/controlled_publications/book-f5d593e1f4/approval_evidence.json",
+    "backend/data/controlled_publications/muchiram-gurer-jibanchorit/approval_evidence.json",
+    "data/controlled_publications/book-f5d593e1f4/approval_evidence.json",
+    "data/controlled_publications/muchiram-gurer-jibanchorit/approval_evidence.json"
+  ],
+  "checksum_files_changed": [
+    "backend/data/controlled_publications/alices-adventures-in-wonderland/checksum_manifest.json",
+    "backend/data/controlled_publications/book-f5d593e1f4/checksum_manifest.json",
+    "backend/data/controlled_publications/muchiram-gurer-jibanchorit/checksum_manifest.json",
+    "backend/data/controlled_publications/nishkriti/checksum_manifest.json",
+    "data/controlled_publications/book-f5d593e1f4/checksum_manifest.json",
+    "data/controlled_publications/muchiram-gurer-jibanchorit/checksum_manifest.json"
+  ],
+  "fields_removed_or_neutralized": {
+    "direct_url_field_occurrences_removed": 44,
+    "unique_direct_urls_removed": 10,
+    "provider_values_cleared": 6,
+    "asset_slugs_cleared": 6,
+    "nested_audio_packages_cleared": 4,
+    "runtime_enablement_records_failed_closed": 4,
+    "approval_enablement_records_failed_closed": 4
+  },
+  "approved_assets_retained": [
+    {
+      "slug": "book-2b9853ec52",
+      "provider": "b2",
+      "mp3_suffix": "book-2b9853ec52_mp3_a974819392d7.mp3",
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED"
+    },
+    {
+      "slug": "a-ghost-story",
+      "provider": "b2",
+      "mp3_suffix": "a-ghost-story_mp3_c0e52985ee1e.mp3",
+      "release_gate": "APPROVED",
+      "qa_status": "QA_PASSED"
+    }
+  ],
+  "hidden_controls_verified": {
+    "manifest_count": 30,
+    "all_audio_disabled": true,
+    "all_provider_voice_url_assets_empty": true,
+    "sampled_proxy_404_slugs": [
+      "bn-066",
+      "book-d19e96859f",
+      "book-f5d593e1f4",
+      "muchiram-gurer-jibanchorit",
+      "the-open-window",
+      "dsires-baby"
+    ]
+  },
+  "non_sprint_residual": {
+    "reviewed_objects_deferred": 471,
+    "classification": "NONSPRINT_REMOTE_CONTAINMENT_DEFERRED_BY_OWNER",
+    "already_inaccessible_without_private_retention_evidence": 30
+  },
+  "test_results": {
+    "focused_source_cleanup_tests": "13 passed",
+    "backend_release_truth_tests": "62 passed",
+    "frontend_release_truth_test_suites": "5 passed",
+    "frontend_release_truth_tests": "39 passed",
+    "controlled_packet_checksums": "PASS",
+    "unapproved_sprint1_audio_source_scan": "PASS_ZERO",
+    "frontend_public_build_audio_file_scan": "PASS_ZERO",
+    "static_audio_route": "FAIL_CLOSED_REMOVED_CONTENT",
+    "browser_speech_fallback": "NOT_PRESENT",
+    "word_level_sync_claim": "NOT_PRESENT",
+    "non_approved_audio_object": "NOT_PRESENT",
+    "public_dot_in_contact_email": "NOT_PRESENT"
+  },
+  "release_gate_mutation_status": "FAIL_CLOSED_ONLY_NO_NEW_APPROVAL",
+  "new_listen_exposure": false,
+  "remote_storage_mutation": false,
+  "paid_tts_lock_touched": false
+}
