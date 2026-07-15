@@ -1,0 +1,59 @@
+{
+  "status": "BLOCKED",
+  "qa_schema_version": 3,
+  "release_policy": "tiered_audiobook_acceptance_v1",
+  "policy_decision_path": "",
+  "listening_thresholds_applied": {},
+  "started_at": "2026-07-15T08:26:04Z",
+  "finished_at": "2026-07-15T08:26:04Z",
+  "providers_requested": [
+    "sarvam"
+  ],
+  "providers_detected": {
+    "openai": {
+      "detected": true,
+      "env": {
+        "OPENAI_API_KEY": true
+      }
+    },
+    "google": {
+      "detected": true,
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": true,
+        "GOOGLE_CLOUD_PROJECT": true,
+        "GOOGLE_TTS_PROJECT": false
+      }
+    },
+    "azure": {
+      "detected": true,
+      "env": {
+        "AZURE_SPEECH_KEY": true,
+        "AZURE_SPEECH_REGION": true
+      }
+    },
+    "sarvam": {
+      "detected": true,
+      "env": {
+        "SARVAM_API_KEY": true
+      },
+      "status": "adapter_available"
+    },
+    "human_licensed_import": {
+      "detected": false,
+      "env": {
+        "EARNALISM_LICENSED_AUDIO_IMPORT_DIR": false,
+        "EARNALISM_HUMAN_AUDIO_IMPORT_DIR": false
+      }
+    }
+  },
+  "provider_capability_probe_path": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition/bengali_provider_capability_probe.json",
+  "cost_estimate": {},
+  "voice_results": [],
+  "auditions": [],
+  "best_provider": "",
+  "best_voice": "",
+  "best_score": 0,
+  "best_confidence": 0,
+  "any_audition_passed": false,
+  "recommendation": ""
+}

@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-07-15T08:26:04Z",
+  "candidate_source": "explicit_candidate_slugs",
+  "total_candidates": 1,
+  "selected_pilot_candidate": {
+    "rank": 1,
+    "slug": "nishkriti",
+    "title": "",
+    "author": "",
+    "language": "ben",
+    "manuscript_char_count": 0,
+    "reader_ready_evidence": "internal/earnalism_intelligence/title_decision_history.json",
+    "rights_status": "PASS",
+    "cover_status": "PASS",
+    "reader_route_status": "PASS",
+    "selection_reason": "shortest deterministic reader-ready Bengali title first"
+  },
+  "ranked_candidates": [
+    {
+      "rank": 1,
+      "slug": "nishkriti",
+      "title": "",
+      "author": "",
+      "language": "ben",
+      "manuscript_char_count": 0,
+      "reader_ready_evidence": "internal/earnalism_intelligence/title_decision_history.json",
+      "rights_status": "PASS",
+      "cover_status": "PASS",
+      "reader_route_status": "PASS",
+      "selection_reason": "shortest deterministic reader-ready Bengali title first"
+    }
+  ],
+  "representative_passages": [],
+  "rules": [
+    "shortest clean manuscript",
+    "reader-only approved",
+    "rights/covers/content already passing",
+    "no stale audio reuse",
+    "representative audition required before full pilot"
+  ]
+}

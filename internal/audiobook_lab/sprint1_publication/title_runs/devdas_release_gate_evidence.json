@@ -12,7 +12,7 @@
   },
   "result": {
     "slug": "devdas",
-    "started_at": "2026-07-15T05:44:19Z",
+    "started_at": "2026-07-15T08:26:04Z",
     "finished_at": null,
     "preflight": {
       "slug": "devdas",
@@ -33,6 +33,6 @@
     "status": "PREFLIGHT_BLOCKED",
     "blocker": "FRONT_COVER_LINKAGE_REQUIRED; BACK_COVER_LINKAGE_REQUIRED",
     "qa_scores": {},
-    "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/devdas_release_gate_evidence.json"
+    "evidence_path": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/devdas_release_gate_evidence.json"
   }
 }

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "run_id": "sprint1_next_two_fastpath_runner",
-  "started_at": "2026-07-15T05:43:12Z",
-  "finished_at": "2026-07-15T05:44:19Z",
+  "started_at": "2026-07-15T07:59:12Z",
+  "finished_at": "2026-07-15T08:26:04Z",
   "owner_decision": "AUTHORIZE_SPRINT1_NEXT_TWO_AUDIOBOOK_FASTPATH_RUNNER_AND_EXECUTE_IF_SAFE",
   "candidate_slugs": [
     "radharani",
@@ -26,6 +26,12 @@
       "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": "SET",
       "EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD": "SET",
       "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "SET",
+      "EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM": "SET",
+      "EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD": "SET",
+      "EARNALISM_BENGALI_TTS_PROVIDER": "SET",
+      "EARNALISM_BENGALI_TTS_MODEL": "SET",
+      "EARNALISM_BENGALI_TTS_VOICE": "SET",
+      "EARNALISM_BENGALI_TTS_STYLE": "SET",
       "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "SET",
       "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "SET",
       "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE": "SET",
@@ -256,7 +262,7 @@
   "processed_titles": [
     {
       "slug": "radharani",
-      "started_at": "2026-07-15T05:43:24Z",
+      "started_at": "2026-07-15T07:59:31Z",
       "finished_at": null,
       "preflight": {
         "slug": "radharani",
@@ -274,17 +280,18 @@
       "status": "FULL_PIPELINE_FAILED",
       "blocker": "RELEASE_FACTORY_RETURNED_2",
       "qa_scores": {},
-      "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/radharani_release_gate_evidence.json",
-      "reuse_first": "NO_RELEASE_READY_REUSE_CANDIDATE_FOUND_OR_PRIOR_REUSE_ASR_MISMATCH",
+      "evidence_path": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/radharani_release_gate_evidence.json",
+      "reuse_first": "REUSED_PASSING_REPRESENTATIVE_AUDITION_EVIDENCE",
       "representative_audition": {
         "status": "PASS",
-        "lock_report": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/radharani_fastpath_paid_bakeoff_lock_report.json",
-                "lock_restored": true,
-                "audition_report": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/radharani_representative_audition/bengali_tts_provider_bakeoff_report.json",
-                "estimated_cost_usd": 0.0237,
-                "representative_passed": true,
-                "blocker": ""
-            },
+        "lock_report": null,
+        "lock_restored": null,
+        "audition_report": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/radharani_representative_audition/bengali_tts_provider_bakeoff_report.json",
+        "estimated_cost_usd": 0.0,
+        "representative_passed": true,
+        "blocker": "",
+        "reused_existing_evidence": true
+      },
       "full_pipeline": {
         "status": "FAILED_OR_BLOCKED",
         "returncode": 2,
@@ -304,9 +311,9 @@
           "--prior-spend-usd",
           "15.90614",
           "--report",
-          "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/radharani_fastpath_full_factory_lock_report.json",
+          "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/radharani_fastpath_full_factory_lock_report.json",
           "--workdir",
-          "/private/tmp/earnalism-next-two-audiobooks-live",
+          "/private/tmp/earnalism-cloudinary-three-part-fastpath",
           "--timeout-seconds",
           "7200",
           "--",
@@ -343,14 +350,14 @@
           "1",
           "--publish-approved"
         ],
-        "lock_report": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/radharani_fastpath_full_factory_lock_report.json",
+        "lock_report": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/radharani_fastpath_full_factory_lock_report.json",
         "lock_restored": true,
         "blocker": "RELEASE_FACTORY_RETURNED_2"
       }
     },
     {
       "slug": "nishkriti",
-      "started_at": "2026-07-15T05:44:19Z",
+      "started_at": "2026-07-15T08:26:04Z",
       "finished_at": null,
       "preflight": {
         "slug": "nishkriti",
@@ -360,21 +367,30 @@
         "sanitation": "PASS",
         "cover": "PASS",
         "back_cover": "PASS",
-        "blockers": [
-          "PIPELINE_SOURCE_OVERRIDE_REQUIRED"
-        ],
-        "clean_for_paid_work": false
+        "blockers": [],
+        "clean_for_paid_work": true
       },
       "published": false,
       "new_public_audiobook": false,
-      "status": "PREFLIGHT_BLOCKED",
-      "blocker": "PIPELINE_SOURCE_OVERRIDE_REQUIRED",
+      "status": "REPRESENTATIVE_AUDITION_FAILED",
+      "blocker": "No representative Bengali passages could be built from the selected candidates.",
       "qa_scores": {},
-      "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/nishkriti_release_gate_evidence.json"
+      "evidence_path": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/nishkriti_release_gate_evidence.json",
+      "reuse_first": "NO_RELEASE_READY_REUSE_CANDIDATE_FOUND_OR_PRIOR_REUSE_ASR_MISMATCH",
+      "representative_audition": {
+        "status": "FAILED_OR_BLOCKED",
+        "lock_report": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/nishkriti_fastpath_paid_bakeoff_lock_report.json",
+        "lock_restored": true,
+        "audition_report": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition/bengali_tts_provider_bakeoff_report.json",
+        "estimated_cost_usd": 0.0,
+        "representative_passed": false,
+        "blocker": "No representative Bengali passages could be built from the selected candidates.",
+        "reused_existing_evidence": false
+      }
     },
     {
       "slug": "book-edfcf810c5",
-      "started_at": "2026-07-15T05:44:19Z",
+      "started_at": "2026-07-15T08:26:04Z",
       "finished_at": null,
       "preflight": {
         "slug": "book-edfcf810c5",
@@ -395,11 +411,11 @@
       "status": "PREFLIGHT_BLOCKED",
       "blocker": "FRONT_COVER_LINKAGE_REQUIRED; BACK_COVER_LINKAGE_REQUIRED",
       "qa_scores": {},
-      "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/book-edfcf810c5_release_gate_evidence.json"
+      "evidence_path": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/book-edfcf810c5_release_gate_evidence.json"
     },
     {
       "slug": "devdas",
-      "started_at": "2026-07-15T05:44:19Z",
+      "started_at": "2026-07-15T08:26:04Z",
       "finished_at": null,
       "preflight": {
         "slug": "devdas",
@@ -420,11 +436,11 @@
       "status": "PREFLIGHT_BLOCKED",
       "blocker": "FRONT_COVER_LINKAGE_REQUIRED; BACK_COVER_LINKAGE_REQUIRED",
       "qa_scores": {},
-      "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/devdas_release_gate_evidence.json"
+      "evidence_path": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/devdas_release_gate_evidence.json"
     },
     {
       "slug": "jekyll-and-hyde",
-      "started_at": "2026-07-15T05:44:19Z",
+      "started_at": "2026-07-15T08:26:04Z",
       "finished_at": null,
       "preflight": {
         "slug": "jekyll-and-hyde",
@@ -444,12 +460,12 @@
       "status": "PREFLIGHT_BLOCKED",
       "blocker": "FRONT_COVER_LINKAGE_REQUIRED",
       "qa_scores": {},
-      "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/jekyll-and-hyde_release_gate_evidence.json"
+      "evidence_path": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/jekyll-and-hyde_release_gate_evidence.json"
     }
   ],
-    "budget": {
-        "prior_estimated_spend_usd": 14.90614,
-        "this_run_estimated_spend_usd": 0.0237,
-        "actual_provider_billing": "not_available"
-    }
+  "budget": {
+    "prior_estimated_spend_usd": 14.90614,
+    "this_run_estimated_spend_usd": 0.0,
+    "actual_provider_billing": "not_available"
+  }
 }

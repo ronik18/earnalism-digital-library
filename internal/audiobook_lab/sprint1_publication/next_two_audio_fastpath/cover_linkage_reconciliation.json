@@ -1,0 +1,162 @@
+{
+  "generated_at": "2026-07-15T07:48:00Z",
+  "credential_contract": {
+    "preferred": [
+      "CLOUDINARY_CLOUD_NAME",
+      "CLOUDINARY_API_KEY",
+      "CLOUDINARY_API_SECRET"
+    ],
+    "fallback": "CLOUDINARY_URL",
+    "secrets_written": false
+  },
+  "summary": {
+    "candidate_count": 5,
+    "cover_lane_ready_count": 2,
+    "root_mirror_missing_count": 1,
+    "missing_linkage_count": 3
+  },
+  "records": [
+    {
+      "slug": "radharani",
+      "source_files": [
+        "data/controlled_publications/radharani/public_book.json",
+        "backend/data/controlled_publications/radharani/public_book.json"
+      ],
+      "front": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "status": 200,
+        "resolves": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "valid_6x9": true
+      },
+      "back": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482930/earnalism/covers/back/back_cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+        "status": 200,
+        "resolves": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "valid_6x9": true
+      },
+      "cover_lane_ready": true,
+      "action": "REUSE_EXISTING_LINKED_CLOUDINARY_COVERS",
+      "blockers": []
+    },
+    {
+      "slug": "nishkriti",
+      "source_files": [
+        "backend/data/controlled_publications/nishkriti/public_book.json"
+      ],
+      "front": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482837/earnalism/covers/front/cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "status": 200,
+        "resolves": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "valid_6x9": true
+      },
+      "back": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482876/earnalism/covers/back/back_cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+        "status": 200,
+        "resolves": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "valid_6x9": true
+      },
+      "cover_lane_ready": true,
+      "action": "ROOT_PUBLIC_BOOK_MIRROR_MISSING_FOR_FACTORY",
+      "blockers": [
+        "root data/controlled_publications public_book.json missing; factory hook resolves root data"
+      ]
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "source_files": [
+        "data/controlled_publications/book-edfcf810c5/public_book.json",
+        "backend/data/controlled_publications/book-edfcf810c5/public_book.json"
+      ],
+      "front": {
+        "url": "",
+        "status": 0,
+        "resolves": false,
+        "dimensions": null,
+        "valid_6x9": false
+      },
+      "back": {
+        "url": "",
+        "status": 0,
+        "resolves": false,
+        "dimensions": null,
+        "valid_6x9": false
+      },
+      "cover_lane_ready": false,
+      "action": "NO_CHANGE",
+      "blockers": [
+        "front cover URL missing",
+        "back cover URL missing"
+      ]
+    },
+    {
+      "slug": "devdas",
+      "source_files": [
+        "data/controlled_publications/devdas/public_book.json",
+        "backend/data/controlled_publications/devdas/public_book.json"
+      ],
+      "front": {
+        "url": "",
+        "status": 0,
+        "resolves": false,
+        "dimensions": null,
+        "valid_6x9": false
+      },
+      "back": {
+        "url": "",
+        "status": 0,
+        "resolves": false,
+        "dimensions": null,
+        "valid_6x9": false
+      },
+      "cover_lane_ready": false,
+      "action": "NO_CHANGE",
+      "blockers": [
+        "front cover URL missing",
+        "back cover URL missing"
+      ]
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "source_files": [
+        "data/controlled_publications/jekyll-and-hyde/public_book.json",
+        "backend/data/controlled_publications/jekyll-and-hyde/public_book.json"
+      ],
+      "front": {
+        "url": "",
+        "status": 0,
+        "resolves": false,
+        "dimensions": null,
+        "valid_6x9": false
+      },
+      "back": {
+        "url": "",
+        "status": 0,
+        "resolves": false,
+        "dimensions": null,
+        "valid_6x9": false
+      },
+      "cover_lane_ready": false,
+      "action": "NO_CHANGE",
+      "blockers": [
+        "front cover URL missing",
+        "back cover URL missing"
+      ]
+    }
+  ]
+}

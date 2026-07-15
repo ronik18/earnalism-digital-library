@@ -1,7 +1,7 @@
 # nishkriti Fast-Path Report
 
-Status: `PREFLIGHT_BLOCKED`
+Status: `REPRESENTATIVE_AUDITION_FAILED`
 
-Blocker: `PIPELINE_SOURCE_OVERRIDE_REQUIRED`
+Blocker: `No representative Bengali passages could be built from the selected candidates.`
 
 Published: `False`

@@ -2,8 +2,8 @@
   "schema_version": 1,
   "slug": "nishkriti",
   "public_audiobook": false,
-  "status": "PREFLIGHT_BLOCKED",
-  "blocker": "PIPELINE_SOURCE_OVERRIDE_REQUIRED",
+  "status": "REPRESENTATIVE_AUDITION_FAILED",
+  "blocker": "No representative Bengali passages could be built from the selected candidates.",
   "release_gate": {
     "asr_source_minimum": 9.7,
     "listening_sample_minimum": 9.4,
@@ -12,7 +12,7 @@
   },
   "result": {
     "slug": "nishkriti",
-    "started_at": "2026-07-15T05:44:19Z",
+    "started_at": "2026-07-15T08:26:04Z",
     "finished_at": null,
     "preflight": {
       "slug": "nishkriti",
@@ -22,16 +22,25 @@
       "sanitation": "PASS",
       "cover": "PASS",
       "back_cover": "PASS",
-      "blockers": [
-        "PIPELINE_SOURCE_OVERRIDE_REQUIRED"
-      ],
-      "clean_for_paid_work": false
+      "blockers": [],
+      "clean_for_paid_work": true
     },
     "published": false,
     "new_public_audiobook": false,
-    "status": "PREFLIGHT_BLOCKED",
-    "blocker": "PIPELINE_SOURCE_OVERRIDE_REQUIRED",
+    "status": "REPRESENTATIVE_AUDITION_FAILED",
+    "blocker": "No representative Bengali passages could be built from the selected candidates.",
     "qa_scores": {},
-    "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/nishkriti_release_gate_evidence.json"
+    "evidence_path": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/nishkriti_release_gate_evidence.json",
+    "reuse_first": "NO_RELEASE_READY_REUSE_CANDIDATE_FOUND_OR_PRIOR_REUSE_ASR_MISMATCH",
+    "representative_audition": {
+      "status": "FAILED_OR_BLOCKED",
+      "lock_report": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/nishkriti_fastpath_paid_bakeoff_lock_report.json",
+      "lock_restored": true,
+      "audition_report": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition/bengali_tts_provider_bakeoff_report.json",
+      "estimated_cost_usd": 0.0,
+      "representative_passed": false,
+      "blocker": "No representative Bengali passages could be built from the selected candidates.",
+      "reused_existing_evidence": false
+    }
   }
 }

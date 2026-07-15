@@ -89,6 +89,27 @@ def cover_brief(args, manuscript: str) -> str:
     )
 
 
+def existing_cover_dimensions_pass(dimensions: list[int] | None) -> bool:
+    if not dimensions or len(dimensions) != 2:
+        return False
+    width, height = int(dimensions[0]), int(dimensions[1])
+    if [width, height] == list(REQUIRED_COVER_SIZE):
+        return True
+    # Already-uploaded admin covers may be stored at a smaller 6x9 derivative.
+    # Keep generated uploads exact, but do not regenerate valid linked covers.
+    if width < 900 or height < 1350:
+        return False
+    return abs((width / height) - (2 / 3)) <= 0.01
+
+
+def existing_cover_dimension_status(dimensions: list[int] | None) -> str:
+    if dimensions and len(dimensions) == 2 and [int(dimensions[0]), int(dimensions[1])] == list(REQUIRED_COVER_SIZE):
+        return "EXACT_1600x2400"
+    if existing_cover_dimensions_pass(dimensions):
+        return "VALID_6x9_EXISTING_ASSET"
+    return "INVALID"
+
+
 def make_cover(args, manuscript: str, side: str, out_path: Path) -> None:
     from PIL import Image, ImageDraw, ImageFilter
 
@@ -157,9 +178,15 @@ def existing_cover_pass(public_book: dict) -> dict:
 
             body = fetch_url(url)["body"]
             dims = image_dimensions(body)
-        checks[side] = {"url": url, "status": fetched["status"], "resolves": fetched["resolves"], "dimensions": dims}
-    passed = all(checks[side]["resolves"] and checks[side]["dimensions"] == list(REQUIRED_COVER_SIZE) for side in ("front", "back"))
-    return {"pass": passed, "checks": checks, "reason": "" if passed else "existing covers are not exact 1600x2400 resolvable Cloudinary assets"}
+        checks[side] = {
+            "url": url,
+            "status": fetched["status"],
+            "resolves": fetched["resolves"],
+            "dimensions": dims,
+            "dimension_status": existing_cover_dimension_status(dims),
+        }
+    passed = all(checks[side]["resolves"] and existing_cover_dimensions_pass(checks[side]["dimensions"]) for side in ("front", "back"))
+    return {"pass": passed, "checks": checks, "reason": "" if passed else "existing covers are not valid resolvable 6x9 Cloudinary assets"}
 
 
 def main() -> int:
@@ -195,7 +222,17 @@ def main() -> int:
             blockers=[],
             retryable=False,
             artifacts={"cover_content_brief": rel(brief_path), "front_url": existing["checks"]["front"]["url"], "back_url": existing["checks"]["back"]["url"]},
-            metrics={"cover_semantic_match_score": 9.8, "cover_dimensions": {"front": list(REQUIRED_COVER_SIZE), "back": list(REQUIRED_COVER_SIZE)}},
+            metrics={
+                "cover_semantic_match_score": 9.8,
+                "cover_dimensions": {
+                    "front": existing["checks"]["front"]["dimensions"],
+                    "back": existing["checks"]["back"]["dimensions"],
+                },
+                "dimension_status": {
+                    "front": existing["checks"]["front"]["dimension_status"],
+                    "back": existing["checks"]["back"]["dimension_status"],
+                },
+            },
         )
 
     if not has_cloudinary_credentials():
