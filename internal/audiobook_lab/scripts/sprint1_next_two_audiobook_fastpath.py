@@ -57,6 +57,12 @@ PAID_ENV = {
     "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": "true",
     "EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD": "1",
     "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "true",
+    "EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM": "true",
+    "EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD": "5",
+    "EARNALISM_BENGALI_TTS_PROVIDER": "sarvam",
+    "EARNALISM_BENGALI_TTS_MODEL": "bulbul:v3",
+    "EARNALISM_BENGALI_TTS_VOICE": "ratan",
+    "EARNALISM_BENGALI_TTS_STYLE": "literary_warm_pacing",
     "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "40",
     "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "20",
     "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE": "0.008",
@@ -144,6 +150,16 @@ def controlled_book(asset_root: Path, slug: str) -> dict[str, Any]:
     return {}
 
 
+def factory_source_ready(asset_root: Path, slug: str) -> bool:
+    for base in (
+        asset_root / "data/controlled_publications" / slug,
+        asset_root / "backend/data/controlled_publications" / slug,
+    ):
+        if (base / "public_book.json").is_file() and any((base / "chapters").glob("*.json")):
+            return True
+    return False
+
+
 def has_cover(book: Mapping[str, Any]) -> bool:
     return bool(book.get("cover_url") or book.get("front_cover_url") or book.get("coverImage"))
 
@@ -168,7 +184,7 @@ def local_candidate_preflight(asset_root: Path, slug: str, release_row: Mapping[
         blockers.append("FRONT_COVER_LINKAGE_REQUIRED")
     if slug in {"book-edfcf810c5", "devdas"} and not has_back_cover(book):
         blockers.append("BACK_COVER_LINKAGE_REQUIRED")
-    if slug == "nishkriti":
+    if slug == "nishkriti" and not factory_source_ready(asset_root, slug):
         blockers.append("PIPELINE_SOURCE_OVERRIDE_REQUIRED")
     return {
         "slug": slug,
@@ -261,9 +277,16 @@ def lock_snapshot(path: Path) -> dict[str, Any]:
     }
 
 
-def paid_env(env: Mapping[str, str]) -> dict[str, str]:
+def representative_evidence_path(slug: str) -> str:
+    return str(FASTPATH_DIR / f"{slug}_representative_audition" / "bengali_representative_audition_report.json")
+
+
+def paid_env(env: Mapping[str, str], *, slug: str | None = None) -> dict[str, str]:
     child = dict(env)
     child.update(PAID_ENV)
+    if slug:
+        child["EARNALISM_BENGALI_FULL_PILOT_SLUG"] = slug
+        child["EARNALISM_BENGALI_REPRESENTATIVE_EVIDENCE_PATH"] = representative_evidence_path(slug)
     return child
 
 
@@ -344,6 +367,28 @@ def run_paid_bakeoff(
         "estimated_cost_usd": float(((audition.get("cost_estimate") or {}).get("estimated_cost_usd") or 0.0)) if audition else 0.0,
         "representative_passed": representative_gate_passed(audition),
         "blocker": "" if representative_gate_passed(audition) else representative_blocker(audition, completed.returncode),
+    }
+
+
+def existing_representative_audition(slug: str) -> dict[str, Any]:
+    audition_report_path = FASTPATH_DIR / f"{slug}_representative_audition" / "bengali_tts_provider_bakeoff_report.json"
+    if not audition_report_path.is_file():
+        return {
+            "status": "MISSING",
+            "audition_report": "",
+            "estimated_cost_usd": 0.0,
+            "representative_passed": False,
+            "blocker": "EXISTING_REPRESENTATIVE_AUDITION_REPORT_MISSING",
+        }
+    audition = load_json(audition_report_path)
+    passed = representative_gate_passed(audition)
+    return {
+        "status": "PASS" if passed else "FAILED_OR_BLOCKED",
+        "audition_report": str(audition_report_path),
+        "estimated_cost_usd": 0.0,
+        "representative_passed": passed,
+        "blocker": "" if passed else representative_blocker(audition, 0),
+        "reused_existing_evidence": True,
     }
 
 
@@ -445,7 +490,7 @@ def run_full_factory_if_allowed(slug: str, asset_root: Path, lock_path: Path, en
         "--",
         *command,
     ]
-    completed = subprocess.run(wrapped, cwd=asset_root, env=paid_env(env), check=False)
+    completed = subprocess.run(wrapped, cwd=asset_root, env=paid_env(env, slug=slug), check=False)
     lock_report = load_json(report_path) if report_path.is_file() else {}
     return {
         "status": "PASS" if completed.returncode == 0 else "FAILED_OR_BLOCKED",
@@ -483,7 +528,7 @@ def process_candidate(
     if preflight["blockers"]:
         write_title_reports(result)
         return result
-    runtime = runtime_gates(paid_env(env))
+    runtime = runtime_gates(paid_env(env, slug=slug))
     if not runtime["ready_for_bengali_paid_work"]:
         result.update(
             {
@@ -501,7 +546,14 @@ def process_candidate(
         return result
     if args.reuse_first:
         result["reuse_first"] = "NO_RELEASE_READY_REUSE_CANDIDATE_FOUND_OR_PRIOR_REUSE_ASR_MISMATCH"
-    paid = run_paid_bakeoff(slug=slug, asset_root=asset_root, lock_path=lock_path, env=env, execute=args.execute)
+    paid = existing_representative_audition(slug) if args.reuse_first else {
+        "status": "MISSING",
+        "representative_passed": False,
+    }
+    if paid.get("representative_passed"):
+        result["reuse_first"] = "REUSED_PASSING_REPRESENTATIVE_AUDITION_EVIDENCE"
+    else:
+        paid = run_paid_bakeoff(slug=slug, asset_root=asset_root, lock_path=lock_path, env=env, execute=args.execute)
     result["representative_audition"] = {
         "status": paid["status"],
         "lock_report": paid.get("lock_report"),
@@ -510,6 +562,7 @@ def process_candidate(
         "estimated_cost_usd": paid.get("estimated_cost_usd", 0.0),
         "representative_passed": paid.get("representative_passed"),
         "blocker": paid.get("blocker"),
+        "reused_existing_evidence": bool(paid.get("reused_existing_evidence")),
     }
     if not paid.get("representative_passed"):
         result.update({"status": "REPRESENTATIVE_AUDITION_FAILED", "blocker": paid.get("blocker") or "REPRESENTATIVE_AUDITION_FAILED"})

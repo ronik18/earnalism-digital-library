@@ -125,8 +125,22 @@ def word_tokens(text: str) -> list[str]:
     return re.findall(r"[\u0980-\u09FFA-Za-z0-9]+", text or "")
 
 
+def _controlled_dir_complete(path: Path) -> bool:
+    return (path / "public_book.json").is_file() and any((path / "chapters").glob("*.json"))
+
+
 def controlled_dir(slug: str) -> Path:
-    return ROOT / "data" / "controlled_publications" / slug
+    root_candidate = ROOT / "data" / "controlled_publications" / slug
+    backend_candidate = ROOT / "backend" / "data" / "controlled_publications" / slug
+    if _controlled_dir_complete(root_candidate):
+        return root_candidate
+    if _controlled_dir_complete(backend_candidate):
+        return backend_candidate
+    if (root_candidate / "public_book.json").is_file():
+        return root_candidate
+    if (backend_candidate / "public_book.json").is_file():
+        return backend_candidate
+    return root_candidate
 
 
 def public_book_path(slug: str) -> Path:
@@ -159,28 +173,51 @@ def write_clean_manuscript_if_missing(args: argparse.Namespace) -> Path:
 
 
 def has_cloudinary_credentials() -> bool:
-    return bool(
-        os.environ.get("CLOUDINARY_URL")
-        or (
-            os.environ.get("CLOUDINARY_CLOUD_NAME")
-            and os.environ.get("CLOUDINARY_API_KEY")
-            and os.environ.get("CLOUDINARY_API_SECRET")
-        )
-    )
+    return cloudinary_credential_source() != "missing"
+
+
+def cloudinary_credential_source() -> str:
+    """Return the safe credential source name without exposing secret values."""
+    if (
+        os.environ.get("CLOUDINARY_CLOUD_NAME")
+        and os.environ.get("CLOUDINARY_API_KEY")
+        and os.environ.get("CLOUDINARY_API_SECRET")
+    ):
+        return "three_part"
+    if os.environ.get("CLOUDINARY_URL"):
+        return "url"
+    return "missing"
+
+
+def cloudinary_credentials_status() -> dict[str, Any]:
+    """Report SET/MISSING only; never include Cloudinary secret values."""
+    keys = ("CLOUDINARY_CLOUD_NAME", "CLOUDINARY_API_KEY", "CLOUDINARY_API_SECRET")
+    return {
+        "source": cloudinary_credential_source(),
+        "CLOUDINARY_CLOUD_NAME": "SET" if os.environ.get("CLOUDINARY_CLOUD_NAME") else "MISSING",
+        "CLOUDINARY_API_KEY": "SET" if os.environ.get("CLOUDINARY_API_KEY") else "MISSING",
+        "CLOUDINARY_API_SECRET": "SET" if os.environ.get("CLOUDINARY_API_SECRET") else "MISSING",
+        "CLOUDINARY_URL": "SET" if os.environ.get("CLOUDINARY_URL") else "MISSING_OPTIONAL",
+        "three_part_ready": all(os.environ.get(key) for key in keys),
+    }
 
 
 def cloudinary_configure() -> None:
     import cloudinary
 
-    if os.environ.get("CLOUDINARY_URL"):
+    source = cloudinary_credential_source()
+    if source == "three_part":
+        cloudinary.config(
+            cloud_name=os.environ["CLOUDINARY_CLOUD_NAME"],
+            api_key=os.environ["CLOUDINARY_API_KEY"],
+            api_secret=os.environ["CLOUDINARY_API_SECRET"],
+            secure=True,
+        )
+        return
+    if source == "url":
         cloudinary.config(secure=True)
         return
-    cloudinary.config(
-        cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
-        api_key=os.environ.get("CLOUDINARY_API_KEY"),
-        api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
-        secure=True,
-    )
+    raise RuntimeError("CLOUDINARY_CREDENTIALS_MISSING")
 
 
 def verify_remote_checksum(url: str, local_path: Path) -> dict[str, Any]:

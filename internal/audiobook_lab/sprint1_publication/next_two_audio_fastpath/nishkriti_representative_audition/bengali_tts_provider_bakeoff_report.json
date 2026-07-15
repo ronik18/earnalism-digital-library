@@ -1,0 +1,174 @@
+{
+  "status": "BLOCKED",
+  "started_at": "2026-07-15T08:26:04Z",
+  "finished_at": "2026-07-15T08:26:04Z",
+  "run_dir": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition",
+  "release_policy": "tiered_audiobook_acceptance_v1",
+  "policy_decision_path": "",
+  "candidate_source": "explicit_candidate_slugs",
+  "pilot_selection_report_path": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition/bengali_audiobook_pilot_selection_report.json",
+  "text_prep_comparison_report_path": "",
+  "postprocess_report_path": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition/bengali_audio_postprocess_report.json",
+  "providers_requested": [
+    "sarvam"
+  ],
+  "providers_detected": {
+    "openai": {
+      "detected": true,
+      "env": {
+        "OPENAI_API_KEY": true
+      }
+    },
+    "google": {
+      "detected": true,
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": true,
+        "GOOGLE_CLOUD_PROJECT": true,
+        "GOOGLE_TTS_PROJECT": false
+      }
+    },
+    "azure": {
+      "detected": true,
+      "env": {
+        "AZURE_SPEECH_KEY": true,
+        "AZURE_SPEECH_REGION": true
+      }
+    },
+    "sarvam": {
+      "detected": true,
+      "env": {
+        "SARVAM_API_KEY": true
+      },
+      "status": "adapter_available"
+    },
+    "human_licensed_import": {
+      "detected": false,
+      "env": {
+        "EARNALISM_LICENSED_AUDIO_IMPORT_DIR": false,
+        "EARNALISM_HUMAN_AUDIO_IMPORT_DIR": false
+      }
+    }
+  },
+  "provider_capability_probe_path": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition/bengali_provider_capability_probe.json",
+  "provider_capability_probe": {
+    "sarvam": {
+      "provider": "sarvam",
+      "credentials_detected": true,
+      "auth_status": "detected",
+      "endpoint_used": "https://api.sarvam.ai/text-to-speech",
+      "region": "",
+      "voices_listed": [
+        "aditya",
+        "ritu",
+        "ashutosh",
+        "priya",
+        "neha",
+        "rahul",
+        "pooja",
+        "rohan",
+        "simran",
+        "kavya",
+        "amit",
+        "dev",
+        "ishita",
+        "shreya",
+        "ratan",
+        "varun",
+        "manan",
+        "sumit",
+        "roopa",
+        "kabir",
+        "aayan",
+        "shubh",
+        "advait",
+        "anand",
+        "tanya",
+        "tarun",
+        "sunny",
+        "mani",
+        "gokul",
+        "vijay",
+        "shruti",
+        "suhani",
+        "mohit",
+        "kavitha",
+        "rehan",
+        "soham",
+        "rupali",
+        "niharika"
+      ],
+      "bengali_voices_detected": [
+        "aditya",
+        "ritu",
+        "ashutosh",
+        "priya",
+        "neha",
+        "rahul",
+        "pooja",
+        "rohan",
+        "simran",
+        "kavya",
+        "amit",
+        "dev",
+        "ishita",
+        "shreya",
+        "ratan",
+        "varun",
+        "manan",
+        "sumit",
+        "roopa",
+        "kabir",
+        "aayan",
+        "shubh",
+        "advait",
+        "anand",
+        "tanya",
+        "tarun",
+        "sunny",
+        "mani",
+        "gokul",
+        "vijay",
+        "shruti",
+        "suhani",
+        "mohit",
+        "kavitha",
+        "rehan",
+        "soham",
+        "rupali",
+        "niharika"
+      ],
+      "sample_synthesis_succeeded": false,
+      "error_message_redacted": "",
+      "retryable": false,
+      "exact_next_fix": "",
+      "style_control": false
+    }
+  },
+  "providers_unavailable": [
+    {
+      "provider": "bakeoff_scheduler",
+      "reason": "voice-filter enabled; testing only requested provider voices.",
+      "voice_filter": [
+        "ratan"
+      ]
+    },
+    {
+      "provider": "bakeoff_scheduler",
+      "reason": "second-pass-polish enabled; testing/resummarizing near-pass voices with style/text-preparation variants only.",
+      "style_profiles": [
+        "literary_warm_pacing"
+      ]
+    }
+  ],
+  "voices_tested": [],
+  "passage_ids": [],
+  "estimated_cost_usd": 0.0,
+  "actual_cost_if_available": "not_available",
+  "blockers": [
+    "No representative Bengali passages could be built from the selected candidates."
+  ],
+  "pass_fail_decision": "BLOCKED_BEFORE_PAID_AUDITION",
+  "report_path": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition/bengali_tts_provider_bakeoff_report.json",
+  "status_path": "internal/audiobook_lab/release_gate/bengali_provider_bakeoff_status.json",
+  "bengali_provider_audition_report_path": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition/bengali_provider_audition_report.json"
+}

@@ -1,0 +1,53 @@
+{
+  "status": "SUBPROCESS_FAILED",
+  "started_at": "2026-07-15T08:26:04Z",
+  "finished_at": "2026-07-15T08:26:04Z",
+  "holder": "sprint1_next_two_fastpath_nishkriti",
+  "slug": "nishkriti",
+  "scope": "Sprint1 next-two fast-path representative audition for nishkriti; no upload, no publication.",
+  "estimated_stage_usd": 1.0,
+  "prior_estimated_spend_usd": 14.90614,
+  "command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "internal/audiobook_lab/scripts/bengali_tts_provider_bakeoff.py",
+    "--manifest",
+    "book_import_manifest.json",
+    "--candidate-slugs",
+    "nishkriti",
+    "--max-passages",
+    "2",
+    "--providers",
+    "sarvam",
+    "--max-voices-per-provider",
+    "1",
+    "--voice-filter",
+    "ratan",
+    "--second-pass-polish",
+    "--style-profiles",
+    "literary_warm_pacing",
+    "--policy",
+    "tiered",
+    "--run-dir",
+    "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition",
+    "--fail-closed"
+  ],
+  "provider_command_started": true,
+  "process_returncode": 2,
+  "timed_out": false,
+  "actual_provider_billing": "NOT_REPORTED",
+  "lock_restored": true,
+  "lock_sha256_before": "18757c4b267eace9ef99212cd3485ef503854997d7d7a3c6451b4993ce510fd9",
+  "lock_sha256_after": "18757c4b267eace9ef99212cd3485ef503854997d7d7a3c6451b4993ce510fd9",
+  "blockers": [
+    "paid subprocess exited with status 2"
+  ],
+  "budget": {
+    "sprint_cap_usd": 175.0,
+    "per_title_cap_usd": 30.0,
+    "max_tts_cap_usd": 175.0,
+    "effective_total_cap_usd": 175.0,
+    "estimated_stage_usd": 1.0,
+    "prior_estimated_spend_usd": 14.90614,
+    "estimated_cumulative_spend_usd": 15.90614
+  }
+}

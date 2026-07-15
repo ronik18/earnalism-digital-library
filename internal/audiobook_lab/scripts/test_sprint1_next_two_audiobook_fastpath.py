@@ -92,6 +92,62 @@ class NextTwoFastPathTests(unittest.TestCase):
             with mock.patch.object(MODULE, "ROOT", Path(directory)):
                 self.assertFalse(MODULE.representative_gate_passed({"sample_results_path": "samples.json"}))
 
+    def test_existing_representative_audition_reuses_passing_evidence(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            fastpath = root / "fastpath"
+            run_dir = fastpath / "radharani_representative_audition"
+            run_dir.mkdir(parents=True)
+            sample_path = root / "samples.json"
+            sample_path.write_text(
+                json.dumps(
+                    {
+                        "samples": [
+                            {
+                                "status": "PASS",
+                                "scores": {"overall_listening_score": 9.4, "confidence_score": 0.95},
+                                "judge_flags": {"list_reading_rhythm_detected": False},
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (run_dir / "bengali_tts_provider_bakeoff_report.json").write_text(
+                json.dumps({"sample_results_path": "samples.json"}),
+                encoding="utf-8",
+            )
+            with mock.patch.object(MODULE, "ROOT", root), mock.patch.object(MODULE, "FASTPATH_DIR", fastpath):
+                result = MODULE.existing_representative_audition("radharani")
+        self.assertEqual(result["status"], "PASS")
+        self.assertTrue(result["representative_passed"])
+        self.assertTrue(result["reused_existing_evidence"])
+
+    def test_nishkriti_preflight_uses_backend_source_package(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            backend = root / "backend/data/controlled_publications/nishkriti"
+            (backend / "chapters").mkdir(parents=True)
+            (backend / "public_book.json").write_text(
+                json.dumps({"cover_url": "front", "back_cover_url": "back"}),
+                encoding="utf-8",
+            )
+            (backend / "chapters/0001.json").write_text(json.dumps({"text": "chapter"}), encoding="utf-8")
+            release_row = {
+                "slug": "nishkriti",
+                "title": "Nishkriti",
+                "language": "Bengali",
+                "public_reader_status": "PUBLIC_READER",
+                "gates": {
+                    "source_rights": "PASS",
+                    "text_sanitation": "PASS",
+                    "text_normalization": "PASS",
+                },
+            }
+            result = MODULE.local_candidate_preflight(root, "nishkriti", release_row)
+        self.assertTrue(result["clean_for_paid_work"])
+        self.assertNotIn("PIPELINE_SOURCE_OVERRIDE_REQUIRED", result["blockers"])
+
     def test_honors_max_publications_by_skipping_after_limit(self):
         args = argparse.Namespace(
             asset_root=Path("/tmp/asset-root"),

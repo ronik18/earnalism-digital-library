@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-15T05:44:19Z",
+  "generated_at": "2026-07-15T08:26:04Z",
   "candidates": [
     {
       "rank": 1,
@@ -12,8 +12,8 @@
     {
       "rank": 2,
       "slug": "nishkriti",
-      "status": "PREFLIGHT_BLOCKED",
-      "blocker": "PIPELINE_SOURCE_OVERRIDE_REQUIRED",
+      "status": "REPRESENTATIVE_AUDITION_FAILED",
+      "blocker": "No representative Bengali passages could be built from the selected candidates.",
       "publishable_now": false
     },
     {

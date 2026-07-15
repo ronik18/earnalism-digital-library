@@ -446,21 +446,24 @@ def check_cover(url: str) -> dict[str, Any]:
 
 
 def cloudinary_upload_ready(env: dict[str, bool]) -> bool:
-    return bool(env.get("CLOUDINARY_URL") or (env.get("CLOUDINARY_CLOUD_NAME") and env.get("CLOUDINARY_API_KEY") and env.get("CLOUDINARY_API_SECRET")))
+    return bool((env.get("CLOUDINARY_CLOUD_NAME") and env.get("CLOUDINARY_API_KEY") and env.get("CLOUDINARY_API_SECRET")) or env.get("CLOUDINARY_URL"))
 
 
 def configure_cloudinary() -> None:
     import cloudinary
 
+    if os.environ.get("CLOUDINARY_CLOUD_NAME") and os.environ.get("CLOUDINARY_API_KEY") and os.environ.get("CLOUDINARY_API_SECRET"):
+        cloudinary.config(
+            cloud_name=os.environ["CLOUDINARY_CLOUD_NAME"],
+            api_key=os.environ["CLOUDINARY_API_KEY"],
+            api_secret=os.environ["CLOUDINARY_API_SECRET"],
+            secure=True,
+        )
+        return
     if os.environ.get("CLOUDINARY_URL"):
         cloudinary.config(secure=True)
         return
-    cloudinary.config(
-        cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
-        api_key=os.environ.get("CLOUDINARY_API_KEY"),
-        api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
-        secure=True,
-    )
+    raise RuntimeError("CLOUDINARY_CREDENTIALS_MISSING")
 
 
 def make_exact_cover_image(source_url: str, output: Path) -> dict[str, Any]:
@@ -2302,7 +2305,7 @@ def build_qa_report(
         "cover_semantic_gate_pass": cover_semantic.get("status") == "PASS",
         "production_metadata_approved": public_book.get("production_approved") is True and public_book.get("audiobook_release_gate") == "APPROVED",
         "runtime_openai_key_detected": env.get("OPENAI_API_KEY") is True,
-        "runtime_cloudinary_upload_key_detected": bool(env.get("CLOUDINARY_URL") or (env.get("CLOUDINARY_CLOUD_NAME") and env.get("CLOUDINARY_API_KEY") and env.get("CLOUDINARY_API_SECRET"))),
+        "runtime_cloudinary_upload_key_detected": cloudinary_upload_ready(env),
         "audio_judge_structured_samples_pass": audio_judging.get("status") == "PASS",
     }
     gates, blockers = gate_results(scores, hard_flags)
@@ -2328,7 +2331,7 @@ def build_qa_report(
     auto_approved = not blockers
     decision = "AUTO_APPROVED" if auto_approved else "AUTO_REPAIR_REQUIRED"
     next_command = (
-        "OPENAI_API_KEY=<set> CLOUDINARY_URL=<set> "
+        "OPENAI_API_KEY=<set> CLOUDINARY_CLOUD_NAME=<set> CLOUDINARY_API_KEY=<set> CLOUDINARY_API_SECRET=<set> "
         "python3 internal/audiobook_lab/scripts/auto_premium_audiobook_qa.py "
         f"--slug {TARGET_SLUG} --execute-openai-tts --execute-asr --execute-upload --max-attempts 4"
     )
