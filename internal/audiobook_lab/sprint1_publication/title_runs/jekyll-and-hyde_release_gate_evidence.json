@@ -1,30 +1,37 @@
 {
-  "schema_version": 2,
-  "generated_at": "2026-07-13T07:30:39Z",
+  "schema_version": 1,
   "slug": "jekyll-and-hyde",
-  "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
-  "language": "English",
-  "publicly_rendered_book": "Yes",
-  "publicly_available_audiobook": "No",
-  "quality_score": "NOT_RUN",
-  "release_gate_state": "READY_FOR_REPRESENTATIVE_AUDITION_GOOGLE_ADC_REAUTH_REQUIRED",
-  "can_publish_audio_now": false,
-  "source_rights": "PASS_PUBLIC_DOMAIN_EVIDENCE_RECONCILED",
-  "sanitation": "PASS",
-  "cover": "PASS_GRAPHICAL_RUNTIME_PAIR",
-  "source_preflight": {
-    "status": "PASS_PRIVATE_INPUT_READY",
-    "chapter_count": 11,
-    "character_count": 138182,
-    "source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
-    "input_manifest": "/private/tmp/earnalism-v3-jekyll-input/jekyll-and-hyde/input_manifest.json",
-    "sanitized_source": "/private/tmp/earnalism-v3-jekyll-input/jekyll-and-hyde/sanitized_source.txt"
+  "public_audiobook": false,
+  "status": "PREFLIGHT_BLOCKED",
+  "blocker": "FRONT_COVER_LINKAGE_REQUIRED",
+  "release_gate": {
+    "asr_source_minimum": 9.7,
+    "listening_sample_minimum": 9.4,
+    "listening_confidence_minimum": 0.9,
+    "passed": false
   },
-  "exact_blocker": "GOOGLE_ADC_REAUTH_REQUIRED; REPRESENTATIVE_AUDITION_AND_ALL_DOWNSTREAM_RELEASE_GATES_NOT_RUN",
-  "estimated_remaining_cost_usd": 3.5121,
-  "next_action": "Reauthenticate Google ADC, then run exactly one bounded source-bound representative audition before any full generation.",
-  "next_command": "gcloud auth application-default login",
-  "provider_calls_ran_this_sprint": false,
-  "release_gate_mutated_this_sprint": false,
-  "public_audio_approved_this_sprint": false
+  "result": {
+    "slug": "jekyll-and-hyde",
+    "started_at": "2026-07-15T05:44:19Z",
+    "finished_at": null,
+    "preflight": {
+      "slug": "jekyll-and-hyde",
+      "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+      "language": "English",
+      "source_rights": "PASS",
+      "sanitation": "PASS",
+      "cover": "FAIL",
+      "back_cover": "MISSING_OR_NOT_REQUIRED",
+      "blockers": [
+        "FRONT_COVER_LINKAGE_REQUIRED"
+      ],
+      "clean_for_paid_work": false
+    },
+    "published": false,
+    "new_public_audiobook": false,
+    "status": "PREFLIGHT_BLOCKED",
+    "blocker": "FRONT_COVER_LINKAGE_REQUIRED",
+    "qa_scores": {},
+    "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/jekyll-and-hyde_release_gate_evidence.json"
+  }
 }

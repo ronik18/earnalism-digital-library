@@ -1,0 +1,216 @@
+{
+  "status": "PASS",
+  "qa_schema_version": 3,
+  "release_policy": "tiered_audiobook_acceptance_v1",
+  "policy_decision_path": "",
+  "listening_thresholds_applied": {
+    "naturalness_score": 9.0,
+    "pronunciation_score": 9.0,
+    "emotional_expression_score": 9.0,
+    "punctuation_pause_score": 9.0,
+    "pacing_score": 9.0,
+    "continuity_score": 9.0,
+    "anti_robotic_texture_score": 9.0,
+    "anti_choppy_join_score": 9.0,
+    "listener_enjoyment_score": 9.0,
+    "overall_listening_score": 9.3,
+    "confidence_score": 0.9
+  },
+  "started_at": "2026-07-15T05:43:25Z",
+  "finished_at": "2026-07-15T05:44:10Z",
+  "providers_requested": [
+    "sarvam"
+  ],
+  "providers_detected": {
+    "openai": {
+      "detected": true,
+      "env": {
+        "OPENAI_API_KEY": true
+      }
+    },
+    "google": {
+      "detected": true,
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": true,
+        "GOOGLE_CLOUD_PROJECT": true,
+        "GOOGLE_TTS_PROJECT": false
+      }
+    },
+    "azure": {
+      "detected": false,
+      "env": {
+        "AZURE_SPEECH_KEY": false,
+        "AZURE_SPEECH_REGION": false
+      }
+    },
+    "sarvam": {
+      "detected": true,
+      "env": {
+        "SARVAM_API_KEY": true
+      },
+      "status": "adapter_available"
+    },
+    "human_licensed_import": {
+      "detected": false,
+      "env": {
+        "EARNALISM_LICENSED_AUDIO_IMPORT_DIR": false,
+        "EARNALISM_HUMAN_AUDIO_IMPORT_DIR": false
+      }
+    }
+  },
+  "provider_capability_probe_path": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/radharani_representative_audition/bengali_provider_capability_probe.json",
+  "cost_estimate": {
+    "estimated_cost_usd": 0.0237,
+    "budget_usd": 1.0,
+    "actual_cost_if_available": "not_available"
+  },
+  "voice_results": [
+    {
+      "provider": "sarvam",
+      "voice": "ratan",
+      "release_policy": "tiered_audiobook_acceptance_v1",
+      "listening_thresholds_applied": {
+        "naturalness_score": 9.0,
+        "pronunciation_score": 9.0,
+        "emotional_expression_score": 9.0,
+        "punctuation_pause_score": 9.0,
+        "pacing_score": 9.0,
+        "continuity_score": 9.0,
+        "anti_robotic_texture_score": 9.0,
+        "anti_choppy_join_score": 9.0,
+        "listener_enjoyment_score": 9.0,
+        "overall_listening_score": 9.3,
+        "confidence_score": 0.9
+      },
+      "language_code": "bn-IN",
+      "style_profile": "literary_warm_pacing",
+      "model": "bulbul:v3",
+      "style_control": false,
+      "endpoint_used": "https://api.sarvam.ai/text-to-speech",
+      "output_codec": "wav",
+      "sample_count": 2,
+      "expected_sample_count": 2,
+      "aggregate": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 9.6,
+        "emotional_expression_score": 9.4,
+        "punctuation_pause_score": 9.3,
+        "pacing_score": 9.2,
+        "continuity_score": 9.5,
+        "anti_robotic_texture_score": 9.6,
+        "anti_choppy_join_score": 9.7,
+        "listener_enjoyment_score": 9.4,
+        "overall_listening_score": 9.4,
+        "confidence_score": 0.95
+      },
+      "flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "overall_listening_score": 9.4,
+      "confidence_score": 0.95,
+      "status": "PASS",
+      "blockers": []
+    }
+  ],
+  "auditions": [
+    {
+      "provider": "sarvam",
+      "voice": "ratan",
+      "model": "bulbul:v3",
+      "style_profile": "literary_warm_pacing",
+      "style_control": false,
+      "passage_id": "narrative_opening",
+      "passage_slug": "radharani",
+      "sample_path": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/radharani_representative_audition/auditions/sarvam/ratan/narrative_opening_fdc67365174a.wav",
+      "sample_hash": "e771a19c0df2a37a8782360ef77ea05b3ae525d5d29116cb6843de4d9fda58f8",
+      "duration_seconds": 52.415,
+      "release_policy": "tiered_audiobook_acceptance_v1",
+      "listening_thresholds_applied": {
+        "naturalness_score": 9.0,
+        "pronunciation_score": 9.0,
+        "emotional_expression_score": 9.0,
+        "punctuation_pause_score": 9.0,
+        "pacing_score": 9.0,
+        "continuity_score": 9.0,
+        "anti_robotic_texture_score": 9.0,
+        "anti_choppy_join_score": 9.0,
+        "listener_enjoyment_score": 9.0,
+        "overall_listening_score": 9.3,
+        "confidence_score": 0.9
+      },
+      "scores": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 9.6,
+        "emotional_expression_score": 9.4,
+        "punctuation_pause_score": 9.3,
+        "pacing_score": 9.2,
+        "continuity_score": 9.5,
+        "anti_robotic_texture_score": 9.6,
+        "anti_choppy_join_score": 9.7,
+        "listener_enjoyment_score": 9.4,
+        "overall_listening_score": 9.4,
+        "confidence_score": 0.95
+      },
+      "confidence_score": 0.95,
+      "judge_notes": "The narration is smooth, with clear pronunciation and natural emotional expression. Pacing is pleasant and consistent. No robotic texture or choppy joins detected. The pauses around punctuation are well-placed, and the overall listening experience is engaging. Slight room for improvement in emotional depth and pacing variation, but overall high quality.",
+      "pass_fail": "PASS",
+      "blockers": []
+    },
+    {
+      "provider": "sarvam",
+      "voice": "ratan",
+      "model": "bulbul:v3",
+      "style_profile": "literary_warm_pacing",
+      "style_control": false,
+      "passage_id": "dialogue",
+      "passage_slug": "radharani",
+      "sample_path": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/radharani_representative_audition/auditions/sarvam/ratan/dialogue_bb935defbe8d.wav",
+      "sample_hash": "701cd0d58fd27977a186693f6fa9b564b65c81e1202eafdc772ba9112afabb3e",
+      "duration_seconds": 57.016,
+      "release_policy": "tiered_audiobook_acceptance_v1",
+      "listening_thresholds_applied": {
+        "naturalness_score": 9.0,
+        "pronunciation_score": 9.0,
+        "emotional_expression_score": 9.0,
+        "punctuation_pause_score": 9.0,
+        "pacing_score": 9.0,
+        "continuity_score": 9.0,
+        "anti_robotic_texture_score": 9.0,
+        "anti_choppy_join_score": 9.0,
+        "listener_enjoyment_score": 9.0,
+        "overall_listening_score": 9.3,
+        "confidence_score": 0.9
+      },
+      "scores": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 9.6,
+        "emotional_expression_score": 9.4,
+        "punctuation_pause_score": 9.3,
+        "pacing_score": 9.2,
+        "continuity_score": 9.5,
+        "anti_robotic_texture_score": 9.6,
+        "anti_choppy_join_score": 9.7,
+        "listener_enjoyment_score": 9.4,
+        "overall_listening_score": 9.4,
+        "confidence_score": 0.95
+      },
+      "confidence_score": 0.95,
+      "judge_notes": "The narration is smooth, with clear pronunciation and natural emotional expression. Pacing is pleasant and appropriate for the dialogue. No robotic or mechanical texture detected. The joins are seamless, and the overall listening experience is engaging. Minor room for improvement in emotional depth and pacing variation, but overall high quality.",
+      "pass_fail": "PASS",
+      "blockers": []
+    }
+  ],
+  "best_provider": "sarvam",
+  "best_voice": "ratan",
+  "best_score": 9.4,
+  "best_confidence": 0.95,
+  "any_audition_passed": true,
+  "recommendation": "Generate one guarded Bengali pilot with the selected provider/voice under the recorded release policy."
+}

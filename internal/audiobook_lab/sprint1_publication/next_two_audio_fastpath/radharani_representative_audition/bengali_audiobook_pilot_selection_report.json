@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-07-15T05:43:25Z",
+  "candidate_source": "explicit_candidate_slugs",
+  "total_candidates": 1,
+  "selected_pilot_candidate": {
+    "rank": 1,
+    "slug": "radharani",
+    "title": "রাধারাণী",
+    "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    "language": "ben",
+    "manuscript_char_count": 37776,
+    "reader_ready_evidence": "internal/earnalism_intelligence/title_decision_history.json",
+    "rights_status": "PASS",
+    "cover_status": "PASS",
+    "reader_route_status": "PASS",
+    "selection_reason": "shortest deterministic reader-ready Bengali title first"
+  },
+  "ranked_candidates": [
+    {
+      "rank": 1,
+      "slug": "radharani",
+      "title": "রাধারাণী",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "language": "ben",
+      "manuscript_char_count": 37776,
+      "reader_ready_evidence": "internal/earnalism_intelligence/title_decision_history.json",
+      "rights_status": "PASS",
+      "cover_status": "PASS",
+      "reader_route_status": "PASS",
+      "selection_reason": "shortest deterministic reader-ready Bengali title first"
+    }
+  ],
+  "representative_passages": [
+    {
+      "passage_id": "narrative_opening",
+      "slug": "radharani",
+      "label": "narrative opening",
+      "text_hash": "3841f5690ca66526c56cedaa6685d8ee3e754ceb10d77ce05cdb851fe18f05d3",
+      "character_count": 570
+    },
+    {
+      "passage_id": "dialogue",
+      "slug": "radharani",
+      "label": "dialogue or interaction passage",
+      "text_hash": "52e02f461862f782735b7222005ba85d9491ad74caa546524ec09f3099e32bc1",
+      "character_count": 615
+    }
+  ],
+  "rules": [
+    "shortest clean manuscript",
+    "reader-only approved",
+    "rights/covers/content already passing",
+    "no stale audio reuse",
+    "representative audition required before full pilot"
+  ]
+}
