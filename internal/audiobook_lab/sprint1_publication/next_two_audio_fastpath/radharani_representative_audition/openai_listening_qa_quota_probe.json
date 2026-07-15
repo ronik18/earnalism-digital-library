@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "available": true,
+  "quota_blocked": false,
+  "started_at": "2026-07-15T05:43:25Z",
+  "finished_at": "2026-07-15T05:43:31Z",
+  "openai_key_detected": true,
+  "listening_qa_enabled": true,
+  "model": "gpt-audio",
+  "probe_audio_path": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/radharani_representative_audition/openai_listening_qa_quota_probe_silence.mp3",
+  "probe_audio_source": "local_silence_probe",
+  "error_message_redacted": "",
+  "exact_next_fix": "",
+  "raw_probe_blocker_reason": "",
+  "raw_probe_notes": "The narration is generally clear with acceptable pronunciation and pacing. However, there is a noticeable list-reading rhythm in parts, and emotional expression could be improved. The pauses around punctuation could be more natural. Overall, it’s an acceptable draft quality but not ready for premium release without further refinement."
+}

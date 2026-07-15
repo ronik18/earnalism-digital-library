@@ -1,0 +1,455 @@
+{
+  "schema_version": 1,
+  "run_id": "sprint1_next_two_fastpath_runner",
+  "started_at": "2026-07-15T05:43:12Z",
+  "finished_at": "2026-07-15T05:44:19Z",
+  "owner_decision": "AUTHORIZE_SPRINT1_NEXT_TWO_AUDIOBOOK_FASTPATH_RUNNER_AND_EXECUTE_IF_SAFE",
+  "candidate_slugs": [
+    "radharani",
+    "nishkriti",
+    "book-edfcf810c5",
+    "devdas",
+    "jekyll-and-hyde"
+  ],
+  "max_new_publications": 2,
+  "reuse_first": true,
+  "publish_if_pass": true,
+  "execute": true,
+  "fail_closed": true,
+  "runtime_gates": {
+    "budget_env": {
+      "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "SET",
+      "SPRINT1_MAX_USD_PER_TITLE": "SET",
+      "MAX_TTS_BUDGET_USD": "SET",
+      "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "SET",
+      "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS": "SET",
+      "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": "SET",
+      "EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD": "SET",
+      "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "SET",
+      "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "SET",
+      "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "SET",
+      "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE": "SET",
+      "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "SET",
+      "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "SET",
+      "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "SET",
+      "EARNALISM_OPENAI_LISTENING_QA_MODEL": "SET"
+    },
+    "credentials": {
+      "SARVAM_API_KEY": "SET",
+      "OPENAI_API_KEY": "SET",
+      "GOOGLE_APPLICATION_CREDENTIALS": "SET",
+      "GOOGLE_CLOUD_PROJECT": "SET"
+    },
+    "ready_for_bengali_paid_work": true,
+    "missing_or_invalid": [],
+    "secrets_printed": false
+  },
+  "lock": {
+    "available": true,
+    "status": "active",
+    "current_holder": "none",
+    "allowed_next_holders": [],
+    "blocker": ""
+  },
+  "production_controls": {
+    "approved": [
+      {
+        "slug": "book-2b9853ec52",
+        "manifest_audio": {
+          "enabled": true,
+          "asset_slug": "book-2b9853ec52",
+          "provider": "b2",
+          "voice": "ratan",
+          "assets": {
+            "mp3": "/api/reader/book/book-2b9853ec52/audiobook",
+            "timestamps": "/api/reader/book/book-2b9853ec52/audiobook/timestamps",
+            "vtt": "/api/reader/book/book-2b9853ec52/audiobook/vtt",
+            "chapters": "/api/reader/book/book-2b9853ec52/audiobook/chapters",
+            "meta": "/api/reader/book/book-2b9853ec52/audiobook/meta"
+          },
+          "url": "/api/reader/book/book-2b9853ec52/audiobook",
+          "size": 5233965,
+          "duration_ms": 327069,
+          "release_gate": "APPROVED",
+          "qa_status": "QA_PASSED",
+          "sync_mode": "",
+          "highlight_sync_enabled": false,
+          "version": "6336f75b08470095",
+          "updated_at": "2026-07-07T07:20:32Z"
+        },
+        "audiobook_http": 206,
+        "ok": true
+      },
+      {
+        "slug": "a-ghost-story",
+        "manifest_audio": {
+          "enabled": true,
+          "asset_slug": "a-ghost-story",
+          "provider": "google",
+          "voice": "en-GB-Studio-C",
+          "assets": {
+            "mp3": "/api/reader/book/a-ghost-story/audiobook",
+            "timestamps": "/api/reader/book/a-ghost-story/audiobook/timestamps",
+            "vtt": "/api/reader/book/a-ghost-story/audiobook/vtt",
+            "chapters": "/api/reader/book/a-ghost-story/audiobook/chapters",
+            "meta": "/api/reader/book/a-ghost-story/audiobook/meta"
+          },
+          "url": "/api/reader/book/a-ghost-story/audiobook",
+          "size": 7047789,
+          "duration_ms": 880944,
+          "release_gate": "APPROVED",
+          "qa_status": "QA_PASSED",
+          "sync_mode": "section_following",
+          "highlight_sync_enabled": false,
+          "version": "b1b62da0a39ee392",
+          "updated_at": "2026-07-12T15:24:05Z"
+        },
+        "audiobook_http": 206,
+        "ok": true
+      },
+      {
+        "slug": "sredni-vashtar",
+        "manifest_audio": {
+          "enabled": true,
+          "asset_slug": "sredni-vashtar",
+          "provider": "openai",
+          "voice": "verse",
+          "assets": {
+            "mp3": "/api/reader/book/sredni-vashtar/audiobook",
+            "timestamps": "/api/reader/book/sredni-vashtar/audiobook/timestamps",
+            "vtt": "/api/reader/book/sredni-vashtar/audiobook/vtt",
+            "chapters": "/api/reader/book/sredni-vashtar/audiobook/chapters",
+            "meta": "/api/reader/book/sredni-vashtar/audiobook/meta"
+          },
+          "url": "/api/reader/book/sredni-vashtar/audiobook",
+          "size": 10190637,
+          "duration_ms": 636840,
+          "release_gate": "APPROVED",
+          "qa_status": "QA_PASSED",
+          "sync_mode": "section_following",
+          "highlight_sync_enabled": false,
+          "version": "d7798e0a1d58f5b2",
+          "updated_at": "2026-07-14T09:33:44Z"
+        },
+        "audiobook_http": 206,
+        "ok": true
+      }
+    ],
+    "hidden": [
+      {
+        "slug": "radharani",
+        "manifest_audio": {
+          "enabled": false,
+          "asset_slug": "",
+          "provider": "",
+          "voice": "",
+          "assets": {},
+          "url": "",
+          "size": 0,
+          "duration_ms": 0,
+          "release_gate": "",
+          "qa_status": "",
+          "sync_mode": "",
+          "highlight_sync_enabled": false,
+          "version": "f3133f80e3cd0065",
+          "updated_at": ""
+        },
+        "audiobook_http": 404,
+        "ok": true
+      },
+      {
+        "slug": "nishkriti",
+        "manifest_audio": {
+          "enabled": false,
+          "asset_slug": "",
+          "provider": "",
+          "voice": "",
+          "assets": {},
+          "url": "",
+          "size": 0,
+          "duration_ms": 0,
+          "release_gate": "",
+          "qa_status": "",
+          "sync_mode": "",
+          "highlight_sync_enabled": false,
+          "version": "bc9422aa1c1661a1",
+          "updated_at": ""
+        },
+        "audiobook_http": 404,
+        "ok": true
+      },
+      {
+        "slug": "book-edfcf810c5",
+        "manifest_audio": {
+          "enabled": false,
+          "asset_slug": "",
+          "provider": "",
+          "voice": "",
+          "assets": {},
+          "url": "",
+          "size": 0,
+          "duration_ms": 0,
+          "release_gate": "",
+          "qa_status": "",
+          "sync_mode": "",
+          "highlight_sync_enabled": false,
+          "version": "c35f21ae3a688fb1",
+          "updated_at": ""
+        },
+        "audiobook_http": 404,
+        "ok": true
+      },
+      {
+        "slug": "devdas",
+        "manifest_audio": {
+          "enabled": false,
+          "asset_slug": "",
+          "provider": "",
+          "voice": "",
+          "assets": {},
+          "url": "",
+          "size": 0,
+          "duration_ms": 0,
+          "release_gate": "",
+          "qa_status": "",
+          "sync_mode": "",
+          "highlight_sync_enabled": false,
+          "version": "a3542c8643efd9d4",
+          "updated_at": ""
+        },
+        "audiobook_http": 404,
+        "ok": true
+      },
+      {
+        "slug": "jekyll-and-hyde",
+        "manifest_audio": {
+          "enabled": false,
+          "asset_slug": "",
+          "provider": "",
+          "voice": "",
+          "assets": {},
+          "url": "",
+          "size": 0,
+          "duration_ms": 0,
+          "release_gate": "",
+          "qa_status": "",
+          "sync_mode": "",
+          "highlight_sync_enabled": false,
+          "version": "8df36e41a6da9de9",
+          "updated_at": ""
+        },
+        "audiobook_http": 404,
+        "ok": true
+      }
+    ],
+    "blockers": [],
+    "ok": true
+  },
+  "starting_yes_yes_count": 3,
+  "ending_yes_yes_count": 3,
+  "newly_public_audiobooks": [],
+  "current_public_audiobooks": [
+    "book-2b9853ec52",
+    "a-ghost-story",
+    "sredni-vashtar"
+  ],
+  "processed_titles": [
+    {
+      "slug": "radharani",
+      "started_at": "2026-07-15T05:43:24Z",
+      "finished_at": null,
+      "preflight": {
+        "slug": "radharani",
+        "title": "রাধারাণী",
+        "language": "Bengali",
+        "source_rights": "PASS",
+        "sanitation": "PASS",
+        "cover": "PASS",
+        "back_cover": "PASS",
+        "blockers": [],
+        "clean_for_paid_work": true
+      },
+      "published": false,
+      "new_public_audiobook": false,
+      "status": "FULL_PIPELINE_FAILED",
+      "blocker": "RELEASE_FACTORY_RETURNED_2",
+      "qa_scores": {},
+      "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/radharani_release_gate_evidence.json",
+      "reuse_first": "NO_RELEASE_READY_REUSE_CANDIDATE_FOUND_OR_PRIOR_REUSE_ASR_MISMATCH",
+      "representative_audition": {
+        "status": "PASS",
+        "lock_report": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/radharani_fastpath_paid_bakeoff_lock_report.json",
+                "lock_restored": true,
+                "audition_report": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/radharani_representative_audition/bengali_tts_provider_bakeoff_report.json",
+                "estimated_cost_usd": 0.0237,
+                "representative_passed": true,
+                "blocker": ""
+            },
+      "full_pipeline": {
+        "status": "FAILED_OR_BLOCKED",
+        "returncode": 2,
+        "command": [
+          "/Library/Developer/CommandLineTools/usr/bin/python3",
+          "internal/audiobook_lab/scripts/sprint1_paid_stage_runner.py",
+          "--lock-path",
+          "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+          "--holder",
+          "sprint1_next_two_fastpath_radharani_full_factory",
+          "--slug",
+          "radharani",
+          "--scope",
+          "Sprint1 next-two fast-path full factory run for radharani; publish only if all gates pass.",
+          "--estimated-usd",
+          "5",
+          "--prior-spend-usd",
+          "15.90614",
+          "--report",
+          "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/radharani_fastpath_full_factory_lock_report.json",
+          "--workdir",
+          "/private/tmp/earnalism-next-two-audiobooks-live",
+          "--timeout-seconds",
+          "7200",
+          "--",
+          "/Library/Developer/CommandLineTools/usr/bin/python3",
+          "internal/audiobook_lab/scripts/release_catalog_factory.py",
+          "--manifest",
+          "book_import_manifest.json",
+          "--slugs",
+          "radharani",
+          "--languages",
+          "ben",
+          "--max-books-active",
+          "1",
+          "--max-preflight-workers",
+          "1",
+          "--max-audio-reuse-workers",
+          "1",
+          "--max-tts-workers",
+          "1",
+          "--max-paid-workers",
+          "1",
+          "--max-asr-workers",
+          "1",
+          "--max-upload-workers",
+          "0",
+          "--max-metadata-workers",
+          "0",
+          "--max-browser-workers",
+          "0",
+          "--max-attempts",
+          "1",
+          "--fail-closed",
+          "--stop-after-terminal-books",
+          "1",
+          "--publish-approved"
+        ],
+        "lock_report": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/radharani_fastpath_full_factory_lock_report.json",
+        "lock_restored": true,
+        "blocker": "RELEASE_FACTORY_RETURNED_2"
+      }
+    },
+    {
+      "slug": "nishkriti",
+      "started_at": "2026-07-15T05:44:19Z",
+      "finished_at": null,
+      "preflight": {
+        "slug": "nishkriti",
+        "title": "নিষ্কৃতি",
+        "language": "Bengali",
+        "source_rights": "PASS",
+        "sanitation": "PASS",
+        "cover": "PASS",
+        "back_cover": "PASS",
+        "blockers": [
+          "PIPELINE_SOURCE_OVERRIDE_REQUIRED"
+        ],
+        "clean_for_paid_work": false
+      },
+      "published": false,
+      "new_public_audiobook": false,
+      "status": "PREFLIGHT_BLOCKED",
+      "blocker": "PIPELINE_SOURCE_OVERRIDE_REQUIRED",
+      "qa_scores": {},
+      "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/nishkriti_release_gate_evidence.json"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "started_at": "2026-07-15T05:44:19Z",
+      "finished_at": null,
+      "preflight": {
+        "slug": "book-edfcf810c5",
+        "title": "ক্ষুধিত পাষাণ",
+        "language": "Bengali",
+        "source_rights": "PASS",
+        "sanitation": "PASS",
+        "cover": "FAIL",
+        "back_cover": "MISSING_OR_NOT_REQUIRED",
+        "blockers": [
+          "FRONT_COVER_LINKAGE_REQUIRED",
+          "BACK_COVER_LINKAGE_REQUIRED"
+        ],
+        "clean_for_paid_work": false
+      },
+      "published": false,
+      "new_public_audiobook": false,
+      "status": "PREFLIGHT_BLOCKED",
+      "blocker": "FRONT_COVER_LINKAGE_REQUIRED; BACK_COVER_LINKAGE_REQUIRED",
+      "qa_scores": {},
+      "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/book-edfcf810c5_release_gate_evidence.json"
+    },
+    {
+      "slug": "devdas",
+      "started_at": "2026-07-15T05:44:19Z",
+      "finished_at": null,
+      "preflight": {
+        "slug": "devdas",
+        "title": "দেবদাস / Devdas",
+        "language": "Bengali",
+        "source_rights": "PASS",
+        "sanitation": "PASS",
+        "cover": "FAIL",
+        "back_cover": "MISSING_OR_NOT_REQUIRED",
+        "blockers": [
+          "FRONT_COVER_LINKAGE_REQUIRED",
+          "BACK_COVER_LINKAGE_REQUIRED"
+        ],
+        "clean_for_paid_work": false
+      },
+      "published": false,
+      "new_public_audiobook": false,
+      "status": "PREFLIGHT_BLOCKED",
+      "blocker": "FRONT_COVER_LINKAGE_REQUIRED; BACK_COVER_LINKAGE_REQUIRED",
+      "qa_scores": {},
+      "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/devdas_release_gate_evidence.json"
+    },
+    {
+      "slug": "jekyll-and-hyde",
+      "started_at": "2026-07-15T05:44:19Z",
+      "finished_at": null,
+      "preflight": {
+        "slug": "jekyll-and-hyde",
+        "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+        "language": "English",
+        "source_rights": "PASS",
+        "sanitation": "PASS",
+        "cover": "FAIL",
+        "back_cover": "MISSING_OR_NOT_REQUIRED",
+        "blockers": [
+          "FRONT_COVER_LINKAGE_REQUIRED"
+        ],
+        "clean_for_paid_work": false
+      },
+      "published": false,
+      "new_public_audiobook": false,
+      "status": "PREFLIGHT_BLOCKED",
+      "blocker": "FRONT_COVER_LINKAGE_REQUIRED",
+      "qa_scores": {},
+      "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/jekyll-and-hyde_release_gate_evidence.json"
+    }
+  ],
+    "budget": {
+        "prior_estimated_spend_usd": 14.90614,
+        "this_run_estimated_spend_usd": 0.0237,
+        "actual_provider_billing": "not_available"
+    }
+}

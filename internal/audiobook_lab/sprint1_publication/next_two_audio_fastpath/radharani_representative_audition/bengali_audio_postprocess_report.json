@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-07-15T05:43:25Z",
+  "test_postprocess_variants_requested": false,
+  "postprocess_applied_in_audition": false,
+  "decision": "Post-processing variants not requested.",
+  "allowed_future_full_pilot_postprocess": [
+    "loudness normalization",
+    "gentle compression",
+    "mild clarity EQ",
+    "de-click/de-noise when needed",
+    "fade in/out",
+    "silence trim",
+    "natural paragraph pauses"
+  ],
+  "not_allowed": [
+    "word alteration",
+    "fake synthetic emotion overlays",
+    "choppy splicing",
+    "unnatural speed changes",
+    "music/noise to hide defects",
+    "any change that damages ASR/manuscript match"
+  ]
+}

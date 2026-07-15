@@ -1,25 +1,38 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T19:35:15Z",
   "slug": "book-edfcf810c5",
-  "title": "ক্ষুধিত পাষাণ",
-  "language": "Bengali",
-  "assigned_lane": {
-    "lane": 5,
-    "role": "Bengali Long / Repair Lane",
-    "agent_id": "019f57d2-7f7d-74e3-878b-e5d5b2bfc3e5",
-    "agent_nickname": "Newton"
+  "public_audiobook": false,
+  "status": "PREFLIGHT_BLOCKED",
+  "blocker": "FRONT_COVER_LINKAGE_REQUIRED; BACK_COVER_LINKAGE_REQUIRED",
+  "release_gate": {
+    "asr_source_minimum": 9.7,
+    "listening_sample_minimum": 9.4,
+    "listening_confidence_minimum": 0.9,
+    "passed": false
   },
-  "publicly_rendered_book": "Yes",
-  "publicly_available_audiobook": "No",
-  "quality_score": "NOT_RUN",
-  "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
-  "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
-  "estimated_remaining_cost_usd": 0.2304,
-  "evidence_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/book-edfcf810c5.json",
-  "next_action": "Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied",
-  "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug book-edfcf810c5 --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
-  "provider_calls_ran_this_sprint": false,
-  "release_gate_mutated_this_sprint": false,
-  "public_audio_approved_this_sprint": false
+  "result": {
+    "slug": "book-edfcf810c5",
+    "started_at": "2026-07-15T05:44:19Z",
+    "finished_at": null,
+    "preflight": {
+      "slug": "book-edfcf810c5",
+      "title": "ক্ষুধিত পাষাণ",
+      "language": "Bengali",
+      "source_rights": "PASS",
+      "sanitation": "PASS",
+      "cover": "FAIL",
+      "back_cover": "MISSING_OR_NOT_REQUIRED",
+      "blockers": [
+        "FRONT_COVER_LINKAGE_REQUIRED",
+        "BACK_COVER_LINKAGE_REQUIRED"
+      ],
+      "clean_for_paid_work": false
+    },
+    "published": false,
+    "new_public_audiobook": false,
+    "status": "PREFLIGHT_BLOCKED",
+    "blocker": "FRONT_COVER_LINKAGE_REQUIRED; BACK_COVER_LINKAGE_REQUIRED",
+    "qa_scores": {},
+    "evidence_path": "/private/tmp/earnalism-next-two-audiobooks-live/internal/audiobook_lab/sprint1_publication/title_runs/book-edfcf810c5_release_gate_evidence.json"
+  }
 }

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-15T05:44:19Z",
+  "candidates": [
+    {
+      "rank": 1,
+      "slug": "radharani",
+      "status": "FULL_PIPELINE_FAILED",
+      "blocker": "RELEASE_FACTORY_RETURNED_2",
+      "publishable_now": false
+    },
+    {
+      "rank": 2,
+      "slug": "nishkriti",
+      "status": "PREFLIGHT_BLOCKED",
+      "blocker": "PIPELINE_SOURCE_OVERRIDE_REQUIRED",
+      "publishable_now": false
+    },
+    {
+      "rank": 3,
+      "slug": "book-edfcf810c5",
+      "status": "PREFLIGHT_BLOCKED",
+      "blocker": "FRONT_COVER_LINKAGE_REQUIRED; BACK_COVER_LINKAGE_REQUIRED",
+      "publishable_now": false
+    },
+    {
+      "rank": 4,
+      "slug": "devdas",
+      "status": "PREFLIGHT_BLOCKED",
+      "blocker": "FRONT_COVER_LINKAGE_REQUIRED; BACK_COVER_LINKAGE_REQUIRED",
+      "publishable_now": false
+    },
+    {
+      "rank": 5,
+      "slug": "jekyll-and-hyde",
+      "status": "PREFLIGHT_BLOCKED",
+      "blocker": "FRONT_COVER_LINKAGE_REQUIRED",
+      "publishable_now": false
+    }
+  ]
+}

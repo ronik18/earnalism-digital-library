@@ -1,0 +1,90 @@
+{
+  "generated_at": "2026-07-15T05:44:10Z",
+  "status": "PASS",
+  "pass_fail_decision": "BENGALI_AUDIO_PATH_FOUND",
+  "release_policy": "tiered_audiobook_acceptance_v1",
+  "policy_decision_path": "",
+  "candidate_source": "explicit_candidate_slugs",
+  "pilot_candidate_selected": "radharani",
+  "provider": "sarvam",
+  "model": "bulbul:v3",
+  "voice": "ratan",
+  "best_style_profile": "literary_warm_pacing",
+  "representative_score": 9.4,
+  "confidence": 0.95,
+  "any_audition_passed": true,
+  "representative_passed_9_2": true,
+  "fatal_flags_required": {
+    "robotic_texture_detected": false,
+    "mechanical_cadence_detected": false,
+    "choppy_joins_detected": false,
+    "fallback_tts_detected": false,
+    "list_reading_rhythm_detected": false,
+    "repeated_identical_sentence_endings_detected": false,
+    "abrupt_tts_resets_detected": false,
+    "placeholder_audio_detected": false
+  },
+  "passage_scores": [
+    {
+      "provider": "sarvam",
+      "model": "bulbul:v3",
+      "voice": "ratan",
+      "style_profile": "literary_warm_pacing",
+      "passage_id": "narrative_opening",
+      "passage_slug": "radharani",
+      "overall_listening_score": 9.4,
+      "confidence_score": 0.95,
+      "naturalness_score": 9.5,
+      "pronunciation_score": 9.6,
+      "emotional_expression_score": 9.4,
+      "punctuation_pause_score": 9.3,
+      "pacing_score": 9.2,
+      "continuity_score": 9.5,
+      "red_flags": {},
+      "status": "PASS",
+      "blockers": []
+    },
+    {
+      "provider": "sarvam",
+      "model": "bulbul:v3",
+      "voice": "ratan",
+      "style_profile": "literary_warm_pacing",
+      "passage_id": "dialogue",
+      "passage_slug": "radharani",
+      "overall_listening_score": 9.4,
+      "confidence_score": 0.95,
+      "naturalness_score": 9.5,
+      "pronunciation_score": 9.6,
+      "emotional_expression_score": 9.4,
+      "punctuation_pause_score": 9.3,
+      "pacing_score": 9.2,
+      "continuity_score": 9.5,
+      "red_flags": {},
+      "status": "PASS",
+      "blockers": []
+    }
+  ],
+  "style_summary": [
+    {
+      "provider": "sarvam",
+      "voice": "ratan",
+      "model": "bulbul:v3",
+      "style": "literary_warm_pacing",
+      "representative_score": 9.4,
+      "representative_confidence": 0.95,
+      "red_flags": [],
+      "passage_count": 2,
+      "expected_passage_count": 2,
+      "status": "PASS",
+      "blockers": []
+    }
+  ],
+  "adaptive_early_stop_events": [],
+  "cost_estimate": {
+    "estimated_cost_usd": 0.0237,
+    "budget_usd": 1.0,
+    "actual_cost_if_available": "not_available"
+  },
+  "recommendation": "Generate one guarded Bengali pilot with the selected provider/voice under the recorded release policy.",
+  "report_path": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/radharani_representative_audition/bengali_tts_provider_bakeoff_report.json"
+}
