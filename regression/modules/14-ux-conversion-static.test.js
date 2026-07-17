@@ -62,6 +62,7 @@ describe("UX conversion static signals", () => {
   const home = read("frontend/src/pages/Home.jsx");
   const premiumHero = read("frontend/src/components/PremiumHero.jsx");
   const premiumHeroStyles = read("frontend/src/components/PremiumHero.css");
+  const headerStyles = read("frontend/src/components/Header.css");
   const homeCurationClient = read("frontend/src/lib/homeCuration.js");
   const bookDetail = read("frontend/src/pages/BookDetail.jsx");
   const bookDetailPresentation = read("frontend/src/lib/bookDetailPresentation.js");
@@ -252,11 +253,14 @@ describe("UX conversion static signals", () => {
     expect(premiumHero).toContain("Calm Reading Modes");
     expect(premiumHero).toContain("book.front_cover_url");
     expect(premiumHero).toContain("book.cover_alt_text");
-    expect(premiumHero).toContain("approvedAudiobooks[0]");
-    expect(premiumHeroStyles).toContain(".premium-dynamic-hero");
-    expect(premiumHeroStyles).toContain(".premium-hero-cover-stack");
+    expect(premiumHero).toContain("approvedAudiobooks.find");
+    expect(premiumHero).toContain("data-book-slug");
+    expect(premiumHero).toContain("REFERENCE_HERO_IMAGE");
+    expect(premiumHeroStyles).toContain(".premium-reference-hero");
+    expect(premiumHeroStyles).toContain(".premium-reference-slot");
     expect(premiumHeroStyles).toContain("transform: perspective(");
-    expect(premiumHeroStyles).toMatch(/@media\s*\(max-width:\s*560px\)/);
+    expect(premiumHeroStyles).toMatch(/@media\s*\(min-width:\s*1024px\)/);
+    expect(headerStyles).toContain(".reference-home-header-hotspot--cta");
     expect(styles).not.toContain(".reference-dracula-hardcopy-shell::after");
     expect(styles).not.toContain(".reference-dracula-hardcopy-shell::before");
     expect(styles).not.toContain("APPROVED CLASSIC READING RELEASE");
