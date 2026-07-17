@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "generated_at": "2026-07-17T08:00:00Z",
-  "status": "SOURCE_VALIDATED_AWAITING_PR",
+  "status": "MERGED_FRONTEND_LIVE_BACKEND_DEPLOY_BLOCKED",
   "truth_source": "controlled_publications",
   "counts": {
     "sprint1_active": 32,
@@ -128,8 +128,17 @@
   },
   "deployment": {
     "pr": "https://github.com/ronik18/earnalism-digital-library/pull/125",
-    "merged": false,
+    "merge_commit": "fcedd09d26ceb1216b0fe61f4a1773eef01d21da",
+    "merged": true,
+    "vercel_production": "passed",
+    "production_canary": "passed",
+    "railway_backend": "blocked: two code snapshot HTTP 500 failures",
+    "railway_failed_deployments": [
+      "716910b9-0a56-47e9-9282-8d41bf6586d2",
+      "801282fb-e494-40da-be51-01f1385d76de"
+    ],
+    "home_curated_http_status": 404,
     "production_validated": false
   },
-  "next_exact_command": "python3 -m json.tool internal/earnalism_intelligence/catalog_truth/home_hero_catalog_truth_report.json >/dev/null && git diff --check"
+  "next_exact_command": "gh secret set RAILWAY_TOKEN --repo ronik18/earnalism-digital-library"
 }

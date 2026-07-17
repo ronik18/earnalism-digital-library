@@ -57,8 +57,10 @@ The combined legacy backend aggregate still has ten pre-existing assertions that
 
 ## Release state
 
-Source implementation and local validation are complete. Draft PR #125 is open; merge, deployment, and production validation remain gated on required checks. `paid_tts.lock` was not touched.
+PR #125 passed the backend/frontend/browser regression, GO LIVE regression, and Vercel preview; it merged to `main` as `fcedd09d`. The merged-sha pre-deploy gate, Vercel production deployment, and production canary passed. Crawler-visible premium homepage copy is live.
+
+Backend production is **not validated**. The GitHub Railway job skipped because `RAILWAY_TOKEN` or `RAILWAY_SERVICE_ID` is missing. Two explicitly scoped local Railway uploads then failed before build with `Failed to create code snapshot` / HTTP 500 (`716910b9-0a56-47e9-9282-8d41bf6586d2`, `801282fb-e494-40da-be51-01f1385d76de`). `/api/home/curated` therefore remains HTTP 404 and the live React hero fails closed without dynamic covers. Existing production audio truth remains intact: the three approved audiobook endpoints return 206 and the tested hidden-audio slugs return 404. `paid_tts.lock` was not touched.
 
 ## Next exact command
 
-`python3 -m json.tool internal/earnalism_intelligence/catalog_truth/home_hero_catalog_truth_report.json >/dev/null && git diff --check`
+`gh secret set RAILWAY_TOKEN --repo ronik18/earnalism-digital-library`

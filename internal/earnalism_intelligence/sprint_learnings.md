@@ -393,3 +393,10 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Mobile visual QA is strongest when the exact CSS viewport is measured for overflow and broken images, then paired with a fixed-size rendered frame screenshot.
 - The legacy Dracula-only backend catalog tests are stale against the current 32-reader baseline and should be modernized separately; do not distort the hero implementation to satisfy obsolete launch assumptions.
 - Browser regression fixtures must evolve with an owner-authorized hero contract: assert the exact dynamic headline, six canonical slugs, cover alt text, approved-audiobook collection route, and the single approved phone listening link instead of retaining a retired static-headline assertion.
+
+## 2026-07-17 Premium Home Hero Deployment Closeout
+
+- A green workflow wrapper is not proof that Railway deployed: the deploy job can pass after its secret check while checkout, CLI installation, and deployment are skipped.
+- Vercel production and its canary passed, but production hero completion must remain blocked while `/api/home/curated` is 404.
+- Repeated Railway `Failed to create code snapshot` HTTP 500 failures occur before build and do not replace the healthy production instances; stop rather than loop.
+- Production audio truth remained stable throughout: the three approved audiobook routes returned 206 and tested hidden-audio routes returned 404.

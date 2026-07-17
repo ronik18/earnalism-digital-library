@@ -89,3 +89,9 @@
 - The header can hold the deterministic proofreader wordmark, a visible tricolor literary medallion, and a full desktop navigation while collapsing to one accessible mobile menu.
 - The hero remains reader-facing when release-state details stay in the payload but never render as public copy.
 - Responsive evidence passed at 1440x900, 1536x864, 390x844, 430x932, and 768x1024 with no horizontal overflow or broken hero images.
+
+## 2026-07-17 Premium Home Hero Production Gate
+
+- Treat the production hero as incomplete when its canonical curation endpoint is unavailable, even if the static premium shell and Vercel canary are green.
+- The UI fails closed without fake titles, covers, or listening controls when curation fetch fails.
+- Railway snapshot failures did not change audiobook release truth or the prior healthy backend.
