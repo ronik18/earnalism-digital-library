@@ -50,13 +50,14 @@ The phone visual uses the approved and featured `sredni-vashtar` record. No hidd
 - Production frontend build: **compiled successfully** with `REACT_APP_BACKEND_URL=/api`.
 - Browser validation: 1672 × 941, 1440 × 900, 1536 × 864, 390 × 844, 430 × 932, and 768 × 1024; no horizontal overflow, broken hero image, fake metadata, or hidden-audio control.
 - Reference comparison outside the intentionally replaced catalog regions: **MAE 4.229**, **PSNR 29.76 dB**, **89.66%** of channels within 10 and **95.58%** within 20. Geometry is exact; WebP/browser color conversion accounts for the remaining pixel delta.
+- PR #127 checks: backend/frontend/browser regression **passed**, GO LIVE regression gate **passed**, and Vercel preview **passed** after the regression fixtures were aligned to the canonical snapshot.
 
 The legacy combined backend aggregate still contains ten obsolete Dracula-only assertions. Five B2 tests fail only after that legacy module closes the default event loop; B2 passes 5/5 in isolation. These known baseline tests were not rewritten for the hero.
 
 ## Release state
 
-Source is validated on `codex/reference-accurate-dynamic-hero`, based on `origin/main`. This reference-accurate follow-up is not yet merged or deployed. The existing PR #125 production shell is only the comparison baseline; it still receives HTTP 404 from production `/api/home/curated`, which is why this change includes a canonical boot snapshot.
+PR [#127](https://github.com/ronik18/earnalism-digital-library/pull/127) is open from `codex/reference-accurate-dynamic-hero` to `main`, and all required checks pass. It is not yet merged or deployed to production. The existing PR #125 production shell is only the comparison baseline; it still receives HTTP 404 from production `/api/home/curated`, which is why this change includes a canonical boot snapshot.
 
 ## Next exact command
 
-`python3 -m json.tool internal/earnalism_intelligence/catalog_truth/home_hero_catalog_truth_report.json >/dev/null && git diff --check`
+`gh pr ready 127 && gh pr merge 127 --squash --delete-branch`

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "generated_at": "2026-07-17T10:49:40Z",
-  "status": "SOURCE_VALIDATED_AWAITING_PR",
+  "status": "PR_OPEN_CHECKS_PASSED",
   "truth_source": "controlled_publications",
   "implementation": {
     "desktop_visual": "optimized supplied reference artwork with semantic transparent links and canonical catalog masks",
@@ -140,7 +140,10 @@
     "frontend_full": "18 suites, 92 tests passed",
     "cover_audit": "71 audited, 0 broken sources, 0 typography-only customer covers",
     "production_build": "passed",
-    "browser_viewports": "6 passed"
+    "browser_viewports": "6 passed",
+    "github_backend_frontend_browser_regression": "passed",
+    "github_go_live_regression_gate": "passed",
+    "vercel_preview": "passed"
   },
   "known_baseline_test_debt": [
     "Ten backend catalog tests still assert the superseded Dracula-only launch model.",
@@ -154,10 +157,13 @@
   "deployment": {
     "branch": "codex/reference-accurate-dynamic-hero",
     "base": "origin/main",
+    "pr": "https://github.com/ronik18/earnalism-digital-library/pull/127",
+    "required_checks": "passed",
+    "preview_deployment": "passed",
     "merged": false,
     "deployed": false,
     "prior_production_home_curated_http_status": 404,
     "boot_snapshot_prevents_empty_hero": true
   },
-  "next_exact_command": "python3 -m json.tool internal/earnalism_intelligence/catalog_truth/home_hero_catalog_truth_report.json >/dev/null && git diff --check"
+  "next_exact_command": "gh pr ready 127 && gh pr merge 127 --squash --delete-branch"
 }

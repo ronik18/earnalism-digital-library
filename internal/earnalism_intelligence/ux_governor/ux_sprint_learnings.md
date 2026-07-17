@@ -103,3 +103,4 @@
 - The closest honest match is exact geometry with intentional catalog-region replacements; claiming literal whole-frame equality would hide those required changes.
 - Mobile should use a purpose-built semantic layout instead of shrinking the desktop bitmap, preserving legibility and avoiding the desktop-art transfer.
 - The listening phone must be selected from the intersection of approved audio and visually featured books; this excludes hidden titles and cover-audit failures automatically.
+- Static and browser regressions must follow the current semantic contract (`data-book-slug`, reference-art geometry, and transparent hotspots) rather than preserve identifiers from the retired CSS-only hero.

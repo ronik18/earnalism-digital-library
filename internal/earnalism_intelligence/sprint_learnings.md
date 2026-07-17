@@ -408,3 +408,4 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - URL reachability does not prove cover semantics. Visual inspection caught the canonical `a-ghost-story` object identifying a different book, so the title stays audio-approved but is excluded from hero imagery.
 - A generated canonical boot snapshot gives deterministic first paint and prevents an unavailable curation endpoint from emptying the production hero; successful endpoint data still replaces the snapshot.
 - Synchronous `matchMedia` rendering prevents the 227 KB desktop reference WebP from being requested on mobile, while Cloudinary width transforms keep dynamic cover downloads proportional to their slots.
+- Browser regression fixtures should read the generated canonical home snapshot and assert `data-book-slug` placements; duplicating old featured-book arrays and retired CSS selectors creates false failures and can silently reintroduce rejected cover metadata.
