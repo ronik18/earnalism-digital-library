@@ -276,7 +276,7 @@ function pageShell({ eyebrow, title, body, links = [], facts = [] }) {
 }
 
 function buildPages({ book, manifest }) {
-  const homeDescription = "The Earnalism is a calm digital reading room for timeless Bengali and English literature, with reader-ready classics and release-gated audiobooks.";
+  const homeDescription = "Beautifully designed Bengali and English classics, immersive approved audiobooks, calm reading modes, and a curated literary experience.";
   const bookDescription = "Read Dracula by Bram Stoker in The Earnalism’s controlled digital reading room. Chapter 1 is free. Continue with a 7-day reading pass. Audiobook experience is in private review.";
   const libraryDescription = "Browse Earnalism's Bengali and English classics. Reader-only releases stay visible, and audiobooks appear only after source, listening, sync, and browser gates pass.";
   const pricingDescription = "Choose your reading time for Dracula on The Earnalism. Chapter 1 is free, with premium reading-time packs and no subscription or autorenewal.";
@@ -294,16 +294,16 @@ function buildPages({ book, manifest }) {
       ogDescription: "Read timeless Bengali and English literature in a quieter, richer digital library.",
       image: HOME_IMAGE,
       imageAlt: "The Earnalism brand mark",
-      jsonLd: [organizationJsonLd(), websiteJsonLd(homeDescription), webpageJsonLd({ title: "A calm digital reading room for timeless Bengali and English literature.", description: homeDescription, path: "/" })],
+      jsonLd: [organizationJsonLd(), websiteJsonLd(homeDescription), webpageJsonLd({ title: "A premium reading and listening sanctuary for timeless Bengali and English classics.", description: homeDescription, path: "/" })],
       staticBody: pageShell({
         eyebrow: "The Earnalism Digital Library",
-        title: "A calm digital reading room for timeless Bengali and English literature.",
+        title: "A premium reading and listening sanctuary for timeless Bengali and English classics.",
         body: homeDescription,
-        facts: ["Bengali classics are reader-ready where approved.", "Dracula appears as a refined English classics reading tile.", "Audiobooks remain hidden unless release-gate evidence approves them."],
+        facts: ["Curated Bengali and English classics.", "Beautiful graphical editions for calm reading.", "Three current listening rooms in the approved audiobook collection."],
         links: [
-          { href: "/library?category=live", label: "Explore Bengali Library" },
-          { href: "/reader/dracula", label: "Read Dracula" },
-          { href: "/library", label: "Explore Library" },
+          { href: "/library", label: "Start Reading" },
+          { href: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" },
+          { href: "/library?availability=approved-audiobook", label: "Explore Audiobooks" },
         ],
       }),
     },

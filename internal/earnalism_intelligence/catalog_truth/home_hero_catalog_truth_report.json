@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-07-17T08:00:00Z",
+  "status": "SOURCE_VALIDATED_AWAITING_PR",
+  "truth_source": "controlled_publications",
+  "counts": {
+    "sprint1_active": 32,
+    "reader_enabled": 32,
+    "approved_audiobooks": 3,
+    "cover_eligible": 19,
+    "omitted_visual": 13,
+    "hero_featured": 6
+  },
+  "featured_books": [
+    {
+      "rank": 1,
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "author": "রবীন্দ্রনাথ ঠাকুর",
+      "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267849/earnalism/covers/front/book-2b9853ec52_front_1600x2400.png",
+      "reader_enabled": true,
+      "audiobook_approved": true,
+      "cta_label": "Start Listening",
+      "cta_url": "/reader/book-2b9853ec52?listen=1"
+    },
+    {
+      "rank": 2,
+      "slug": "bn-066",
+      "title": "আনন্দমঠ",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780682828/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+      "reader_enabled": true,
+      "audiobook_approved": false,
+      "cta_label": "Start Reading",
+      "cta_url": "/reader/bn-066"
+    },
+    {
+      "rank": 3,
+      "slug": "radharani",
+      "title": "রাধারাণী",
+      "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+      "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+      "reader_enabled": true,
+      "audiobook_approved": false,
+      "cta_label": "Start Reading",
+      "cta_url": "/reader/radharani"
+    },
+    {
+      "rank": 4,
+      "slug": "a-ghost-story",
+      "title": "A Ghost Story",
+      "author": "Mark Twain",
+      "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+      "reader_enabled": true,
+      "audiobook_approved": true,
+      "cta_label": "Start Listening",
+      "cta_url": "/reader/a-ghost-story?listen=1"
+    },
+    {
+      "rank": 5,
+      "slug": "pride-and-prejudice",
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293034/earnalism/covers/front/cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
+      "reader_enabled": true,
+      "audiobook_approved": false,
+      "cta_label": "Start Reading",
+      "cta_url": "/reader/pride-and-prejudice"
+    },
+    {
+      "rank": 6,
+      "slug": "sredni-vashtar",
+      "title": "Sredni Vashtar",
+      "author": "Saki",
+      "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+      "reader_enabled": true,
+      "audiobook_approved": true,
+      "cta_label": "Start Listening",
+      "cta_url": "/reader/sredni-vashtar?listen=1"
+    }
+  ],
+  "approved_audiobook_slugs": [
+    "book-2b9853ec52",
+    "a-ghost-story",
+    "sredni-vashtar"
+  ],
+  "omitted_visual_books": [
+    { "slug": "pather-panchali", "reason": "canonical front cover is missing" },
+    { "slug": "devdas", "reason": "canonical front cover is missing" },
+    { "slug": "book-edfcf810c5", "reason": "canonical front cover is missing" },
+    { "slug": "frankenstein", "reason": "canonical front cover is missing" },
+    { "slug": "jekyll-and-hyde", "reason": "canonical front cover is missing" },
+    { "slug": "picture-of-dorian-gray", "reason": "canonical front cover is missing" },
+    { "slug": "white-fang", "reason": "canonical front cover is missing" },
+    { "slug": "the-tell-tale-heart", "reason": "canonical front cover is missing" },
+    { "slug": "the-last-leaf", "reason": "canonical front cover is missing" },
+    { "slug": "the-masque-of-the-red-death", "reason": "canonical front cover is missing" },
+    { "slug": "the-yellow-wallpaper", "reason": "canonical front cover is missing" },
+    { "slug": "the-monkeys-paw", "reason": "canonical front cover is missing" },
+    { "slug": "the-necklace", "reason": "canonical front cover is missing" }
+  ],
+  "screenshots": [
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-home-1440x900.png",
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-home-1536x864.png",
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-home-390x844.png",
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-home-430x932.png",
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-home-768x1024.png"
+  ],
+  "tests": {
+    "backend_home_curation": "8 passed",
+    "backend_current_audio_truth": "36 passed",
+    "backend_b2_isolated": "5 passed",
+    "frontend": "18 suites, 90 tests passed",
+    "cover_audit": "71 audited, 0 broken",
+    "production_build": "passed",
+    "fresh_browser_console": "0 errors"
+  },
+  "known_baseline_test_debt": [
+    "Ten backend catalog tests still assert the superseded Dracula-only launch model.",
+    "Five B2 tests need isolated execution because the legacy aggregate closes the default asyncio event loop."
+  ],
+  "release_mutations": {
+    "audiobook_gates_changed": false,
+    "tts_or_asr_run": false,
+    "paid_tts_lock_touched": false
+  },
+  "deployment": {
+    "pr": "pending",
+    "merged": false,
+    "production_validated": false
+  },
+  "next_exact_command": "python3 -m json.tool internal/earnalism_intelligence/catalog_truth/home_hero_catalog_truth_report.json >/dev/null && git diff --check"
+}

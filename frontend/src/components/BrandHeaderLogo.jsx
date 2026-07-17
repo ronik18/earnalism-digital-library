@@ -46,13 +46,21 @@ function TricolorLiteraryBadge() {
       data-testid="brand-header-logo-badge-tricolor"
       aria-hidden="true"
     >
-      <svg viewBox="0 0 30 20" focusable="false">
-        <path d="M5.2 3.8h10.7c2.7 0 5 2.2 5 5v7.5H10.1c-2.7 0-4.9-2.2-4.9-4.9V3.8Z" fill="#FBF6EC" />
-        <path d="M7.4 6.2h9.8" stroke="#FF9933" strokeWidth="1.6" strokeLinecap="round" />
-        <path d="M7.4 9.8h12.6" stroke="#B58A45" strokeWidth="1.15" strokeLinecap="round" />
-        <path d="M7.4 13.4h10.8" stroke="#138808" strokeWidth="1.6" strokeLinecap="round" />
-        <circle cx="22.9" cy="5.5" r="2.15" fill="none" stroke="#26324A" strokeWidth="0.75" />
-        <path d="M22.9 3.95v3.1M21.35 5.5h3.1" stroke="#26324A" strokeWidth="0.45" strokeLinecap="round" />
+      <svg viewBox="0 0 48 48" focusable="false">
+        <defs>
+          <linearGradient id="tricolor-medallion" x1="8" y1="4" x2="39" y2="45" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="#FF9933" />
+            <stop offset="0.46" stopColor="#FFF8E8" />
+            <stop offset="1" stopColor="#138808" />
+          </linearGradient>
+        </defs>
+        <circle cx="24" cy="24" r="21" fill="url(#tricolor-medallion)" />
+        <circle cx="24" cy="24" r="17.5" fill="#FFF9ED" stroke="#C69138" strokeWidth="1.2" />
+        <path d="M15.5 17.5h7.1c2.2 0 4 1.8 4 4v11.2h-7.1c-2.2 0-4-1.8-4-4V17.5Z" fill="#FFF4DB" stroke="#7A321E" strokeWidth="1.2" />
+        <path d="M32.5 17.5h-7.1c-2.2 0-4 1.8-4 4v11.2h7.1c2.2 0 4-1.8 4-4V17.5Z" fill="#FFF4DB" stroke="#7A321E" strokeWidth="1.2" />
+        <path d="M24 20.2v12.5" stroke="#26324A" strokeWidth="1" strokeLinecap="round" />
+        <circle cx="24" cy="12.4" r="2.6" fill="none" stroke="#26324A" strokeWidth="1" />
+        <path d="M24 9.8v5.2M21.4 12.4h5.2" stroke="#26324A" strokeWidth="0.6" strokeLinecap="round" />
       </svg>
     </span>
   );
@@ -70,7 +78,7 @@ export default function BrandHeaderLogo({
     <span
       className={`brand-header-logo brand-header-logo--${safeBadgeVariant} ${className}`.trim()}
       role="img"
-      aria-label="LEarnalism — Where Learning Becomes Earning"
+      aria-label="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"
       data-testid="brand-header-logo"
       data-badge-variant={safeBadgeVariant}
     >
@@ -88,10 +96,13 @@ export default function BrandHeaderLogo({
         <span className="brand-header-logo__proofread" data-testid="brand-header-logo-proofread">
           <span className="brand-header-logo__inserted-l">L</span>
           <span className="brand-header-logo__caret">^</span>
-          <span className="brand-header-logo__base">Earnalism</span>
+          <span className="brand-header-logo__base">earnalism</span>
         </span>
         <span className="brand-header-logo__tagline" data-testid="brand-header-logo-tagline">
           Where Learning Becomes Earning
+        </span>
+        <span className="brand-header-logo__venture" data-testid="brand-header-logo-venture">
+          A REO ENTERPRISE VENTURE
         </span>
       </span>
       {safeBadgeVariant === BRAND_HEADER_BADGE_VARIANTS.exactFlag && <ExactFlagBadge />}

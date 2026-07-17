@@ -78,6 +78,11 @@ except ImportError:  # pragma: no cover - supports package-style test imports
         public_book_projection,
     )
 
+try:
+    from home_curation import build_home_curated_payload
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.home_curation import build_home_curated_payload
+
 
 # ---------- Environment / DB ----------
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "production").strip().lower()
@@ -4555,6 +4560,12 @@ async def list_categories():
     docs = await db.categories.find({}, {"_id": 0}).sort("order", 1).to_list(200)
     await _public_cache_set(cache_key, docs)
     return docs
+
+
+@api.get("/home/curated")
+async def get_home_curated():
+    """Return the deterministic, file-backed Sprint 1 homepage projection."""
+    return build_home_curated_payload()
 
 
 # ---------- Public: Books ----------

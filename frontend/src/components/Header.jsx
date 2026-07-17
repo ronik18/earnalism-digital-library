@@ -5,12 +5,14 @@ import { useSettings } from "../context/SettingsContext";
 import { useAuth } from "../context/AuthContext";
 import BrandHeaderLogo from "./BrandHeaderLogo";
 import { getEnabledSocialLinks } from "../config/socialLinks";
+import "./Header.css";
 
 const NAV = [
   { to: "/library", label: "Library" },
   { to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" },
   { to: "/library?language=en", label: "English Classics" },
-  { to: "/library?availability=reader-ready", label: "Reader" },
+  { to: "/library?availability=approved-audiobook", label: "Audiobooks" },
+  { to: "/pricing", label: "Membership" },
   { to: "/about", label: "About" },
 ];
 
@@ -28,7 +30,7 @@ export default function Header() {
   const loc = useLocation();
   const { social } = useSettings();
   const { user } = useAuth();
-  useEffect(() => { setOpen(false); }, [loc.pathname]);
+  useEffect(() => { setOpen(false); }, [loc.pathname, loc.search]);
   const activeSocials = useMemo(() => (
     getEnabledSocialLinks(social)
       .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
@@ -39,15 +41,15 @@ export default function Header() {
   const accountLabel = isAuthed ? "Account" : "Sign In";
 
   return (
-    <header className="sticky top-0 z-50 glass-header" data-testid="site-header">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 glass-header premium-site-header" data-testid="site-header">
+      <div className="premium-header-inner max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-4">
         <div className="header-brand-cluster">
           <Link to="/" className="flex items-center min-w-0" data-testid="brand-logo">
             <BrandHeaderLogo badgeVariant="tricolor" />
           </Link>
         </div>
 
-        <nav className="hidden lg:flex items-center gap-7 xl:gap-9">
+        <nav className="premium-header-nav hidden xl:flex items-center gap-5 2xl:gap-7" aria-label="Primary navigation">
           {NAV.map((n) => (
             <NavLink
               key={n.to}
@@ -72,8 +74,8 @@ export default function Header() {
           </NavLink>
         </nav>
 
-        <div className="hidden lg:block">
-          <Link to="/library" className="btn-secondary" data-testid="header-cta-library">Enter Library</Link>
+        <div className="hidden xl:block">
+          <Link to="/library" className="premium-header-cta" data-testid="header-cta-library">Start Reading</Link>
         </div>
 
         <button
@@ -81,7 +83,7 @@ export default function Header() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
-          className="lg:hidden p-2 -mr-2 text-burgundy"
+          className="xl:hidden p-2 -mr-2 text-burgundy"
           data-testid="mobile-menu-toggle"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -89,7 +91,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div id="mobile-menu" className="lg:hidden border-t border-brand bg-ivory/95 backdrop-blur-xl" data-testid="mobile-menu">
+        <div id="mobile-menu" className="xl:hidden border-t border-brand bg-ivory/95 backdrop-blur-xl" data-testid="mobile-menu">
           <div className="px-5 py-5 flex flex-col">
             {NAV.map((n) => (
               <NavLink
@@ -113,7 +115,7 @@ export default function Header() {
             >
               {accountLabel}
             </NavLink>
-            <Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Enter Library</Link>
+            <Link to="/library" className="btn-primary mt-7 w-full justify-center" data-testid="mobile-cta-library">Start Reading</Link>
 
             {activeSocials.length > 0 && (
               <nav className="mt-7 pt-5 border-t border-brand-soft flex items-center justify-center gap-4" aria-label="Earnalism social links" data-testid="mobile-socials">
