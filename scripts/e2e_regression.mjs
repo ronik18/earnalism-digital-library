@@ -87,6 +87,109 @@ const paymentPacksFixture = [
   { id: "first_chapter", label: "The First Chapter", minutes: 30, amount_paise: 4900 },
   { id: "quiet_hour", label: "The Quiet Hour", minutes: 60, amount_paise: 8900 },
 ];
+const homeHeroFixtureBooks = [
+  {
+    slug: "book-2b9853ec52",
+    title: "দুই বিঘা জমি",
+    author: "রবীন্দ্রনাথ ঠাকুর",
+    language: "bn",
+    front_cover_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267849/earnalism/covers/front/book-2b9853ec52_front_1600x2400.png",
+    reader_enabled: true,
+    audiobook_enabled: true,
+    audiobook_release_gate: "PUBLIC_AUDIO_RELEASE_APPROVED",
+    audio_qa_status: "QA_PASSED",
+    audiobook_url: "/api/reader/book/book-2b9853ec52/audiobook",
+  },
+  {
+    slug: "bn-066",
+    title: "আনন্দমঠ",
+    author: "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    language: "bn",
+    front_cover_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780682828/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png",
+    reader_enabled: true,
+    audiobook_enabled: false,
+    audiobook_release_gate: "PUBLIC_AUDIO_RELEASE_PENDING_ASSET_MAPPING",
+    audio_qa_status: "QA_PASSED",
+  },
+  {
+    slug: "radharani",
+    title: "রাধারাণী",
+    author: "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+    language: "bn",
+    front_cover_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png",
+    reader_enabled: true,
+    audiobook_enabled: false,
+    audiobook_release_gate: "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+    audio_qa_status: "QA_PASSED",
+  },
+  {
+    slug: "a-ghost-story",
+    title: "A Ghost Story",
+    author: "Mark Twain",
+    language: "en",
+    front_cover_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
+    reader_enabled: true,
+    audiobook_enabled: true,
+    audiobook_release_gate: "PUBLIC_AUDIO_RELEASE_APPROVED",
+    audio_qa_status: "QA_PASSED",
+    audiobook_url: "/api/reader/book/a-ghost-story/audiobook",
+  },
+  {
+    slug: "pride-and-prejudice",
+    title: "Pride and Prejudice",
+    author: "Jane Austen",
+    language: "en",
+    front_cover_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293034/earnalism/covers/front/cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png",
+    reader_enabled: true,
+    audiobook_enabled: false,
+    audiobook_release_gate: "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+    audio_qa_status: "QA_PASSED",
+  },
+  {
+    slug: "sredni-vashtar",
+    title: "Sredni Vashtar",
+    author: "Saki",
+    language: "en",
+    front_cover_url: "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png",
+    reader_enabled: true,
+    audiobook_enabled: true,
+    audiobook_release_gate: "PUBLIC_AUDIO_RELEASE_APPROVED",
+    audio_qa_status: "QA_PASSED",
+    audiobook_url: "/api/reader/book/sredni-vashtar/audiobook",
+  },
+].map((book) => ({
+  ...book,
+  cover_alt_text: `${book.title} by ${book.author}`,
+  book_url: `/book/${book.slug}`,
+  reader_url: `/reader/${book.slug}`,
+  cta_label: book.audiobook_enabled ? "Start Listening" : "Start Reading",
+  cta_url: book.audiobook_enabled ? `/reader/${book.slug}?listen=1` : `/reader/${book.slug}`,
+  cta_kind: book.audiobook_enabled ? "listen" : "read",
+}));
+const expectedHeroSlugs = homeHeroFixtureBooks.map((book) => book.slug);
+const expectedApprovedAudioSlugs = ["book-2b9853ec52", "a-ghost-story", "sredni-vashtar"];
+const homeHeroFixture = {
+  hero: {
+    headline: "A premium reading and listening sanctuary for timeless Bengali and English classics.",
+    subheadline: "Beautifully designed editions. Immersive audiobooks. Calm reading modes. A curated literary experience that stays with you.",
+    primary_cta: { label: "Start Reading", url: "/library" },
+    secondary_cta: { label: "Explore Audiobooks", url: "/library?availability=approved-audiobook" },
+    featured_books: homeHeroFixtureBooks,
+  },
+  shelves: {
+    reader_favorites: homeHeroFixtureBooks,
+    bengali_classics: homeHeroFixtureBooks.filter((book) => book.language === "bn"),
+    english_classics: homeHeroFixtureBooks.filter((book) => book.language === "en"),
+    approved_audiobooks: homeHeroFixtureBooks.filter((book) => expectedApprovedAudioSlugs.includes(book.slug)),
+  },
+  source: {
+    generated_at: "2026-07-17T08:00:00Z",
+    truth_source: "controlled_publications",
+    sprint1_active_count: 32,
+    reader_enabled_count: 32,
+    approved_audiobook_count: 3,
+  },
+};
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -110,6 +213,7 @@ function localFixtureFor(request) {
     return { status: 200, body: { ok: true, recorded: false } };
   }
   if (request.method() !== "GET") return null;
+  if (pathname === "/api/home/curated") return { status: 200, body: homeHeroFixture };
   if (pathname === "/api/books") return { status: 200, body: [draculaFixtureBook] };
   if (pathname === "/api/books/dracula") return { status: 200, body: draculaFixtureBook };
   if (pathname === "/api/books/kshudhita-pashan") return { status: 404, body: { detail: "Book not found" } };
@@ -203,7 +307,7 @@ async function main() {
   await installApiProxy(page);
 
   await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });
-  await page.waitForSelector('[data-testid="premium-landing-hero"]', { timeout: 30000 });
+  await page.waitForSelector('[data-testid="premium-landing-hero"][data-catalog-state="ready"]', { timeout: 30000 });
   await page.waitForSelector('[data-testid="curated-action-cards"]', { timeout: 30000 });
   await page.waitForTimeout(900);
   const home = await page.evaluate(() => {
@@ -227,7 +331,15 @@ async function main() {
       hasPipelineShelf: Boolean(document.querySelector('[data-testid="bengali-gothic-pipeline-shelf"] .shelf-two-shelf')),
       headline: document.querySelector('[data-testid="hero-headline"]')?.textContent?.replace(/\s+/g, " ").trim(),
       heroLibraryHref: document.querySelector('[data-testid="hero-cta-library"]')?.getAttribute("href"),
-      heroShelvesHref: document.querySelector('[data-testid="hero-cta-shelves"]')?.getAttribute("href"),
+      heroAudiobooksHref: document.querySelector('[data-testid="hero-cta-audiobooks"]')?.getAttribute("href"),
+      heroCatalogState: document.querySelector('[data-testid="premium-landing-hero"]')?.getAttribute("data-catalog-state"),
+      heroFeaturedSlugs: [...document.querySelectorAll('[data-testid^="hero-book-"]')]
+        .map((card) => card.getAttribute("data-testid")?.replace(/^hero-book-/, ""))
+        .filter(Boolean),
+      heroFeaturedCoverAlts: [...document.querySelectorAll('[data-testid^="hero-book-"] img')]
+        .map((image) => image.getAttribute("alt") || ""),
+      heroListenLinks: [...document.querySelectorAll('[data-testid="premium-landing-hero"] a[href*="listen=1"]')]
+        .map((link) => link.getAttribute("href") || ""),
       hasBengaliClassicsCard: /Bengali Classics/i.test(document.querySelector('[data-testid="curated-action-cards"]')?.textContent || ""),
       hasEnglishClassicsCard: /English Classics/i.test(document.querySelector('[data-testid="curated-action-cards"]')?.textContent || ""),
       hasApprovedAudiobooksCard: /Approved Audiobooks/i.test(document.querySelector('[data-testid="curated-action-cards"]')?.textContent || ""),
@@ -251,6 +363,7 @@ async function main() {
       legacyLiveCoverCount: document.querySelectorAll('[data-testid^="live-cover-preview-"]').length,
       legacyCategoryCardCount: document.querySelectorAll('[data-testid^="category-card-"]').length,
       legacyBroadReaderLinks: [...document.querySelectorAll('a[href^="/reader/"]')]
+        .filter((link) => !link.closest('[data-testid="premium-landing-hero"]'))
         .map((link) => link.getAttribute("href"))
         .filter((href) => href !== "/reader/dracula"),
       heroCurrentPayCount: document.querySelectorAll('[data-testid="hero-current-pay"]').length,
@@ -266,12 +379,28 @@ async function main() {
   assert(home.readingPathPricingHref === "/pricing", `reading path pricing CTA mismatch: ${home.readingPathPricingHref}`);
   assert(home.hasKshudhitaPipeline, "Kshudhita pipeline feature is missing");
   assert(home.hasPipelineShelf, "pipeline shelf is missing");
-  assert(/calm digital reading room/i.test(home.headline || ""), `hero headline is not the editorial library hero: ${home.headline}`);
+  assert(
+    home.headline === "A premium reading and listening sanctuary for timeless Bengali and English classics.",
+    `hero headline does not match the approved premium catalog hero: ${home.headline}`,
+  );
   assert(!/Begin with Dracula|Step into Dracula/i.test(home.headline || ""), `homepage regressed to Dracula-first headline: ${home.headline}`);
   assert(home.heroLibraryHref === "/library", `hero Start Reading CTA should open library, got ${home.heroLibraryHref}`);
   assert(
-    ["#curated-action-cards-title", "/#curated-action-cards-title"].includes(home.heroShelvesHref),
-    `hero Browse Library CTA should jump to action cards, got ${home.heroShelvesHref}`,
+    home.heroAudiobooksHref === "/library?availability=approved-audiobook",
+    `hero audiobook CTA should open only the approved-audiobook collection, got ${home.heroAudiobooksHref}`,
+  );
+  assert(home.heroCatalogState === "ready", `hero catalog state should be ready, got ${home.heroCatalogState}`);
+  assert(
+    JSON.stringify(home.heroFeaturedSlugs) === JSON.stringify(expectedHeroSlugs),
+    `hero featured slugs do not match the canonical Sprint 1 fixture: ${JSON.stringify(home.heroFeaturedSlugs)}`,
+  );
+  assert(
+    home.heroFeaturedCoverAlts.every((alt, index) => alt === `${homeHeroFixtureBooks[index].title} by ${homeHeroFixtureBooks[index].author}`),
+    `hero cover alt text drifted from canonical title and author: ${JSON.stringify(home.heroFeaturedCoverAlts)}`,
+  );
+  assert(
+    JSON.stringify(home.heroListenLinks) === JSON.stringify(["/reader/book-2b9853ec52?listen=1"]),
+    `hero listening visual exposed a hidden or fake title: ${JSON.stringify(home.heroListenLinks)}`,
   );
   assert(home.hasBengaliClassicsCard, "Bengali Classics action card is missing");
   assert(home.hasEnglishClassicsCard, "English Classics action card is missing");

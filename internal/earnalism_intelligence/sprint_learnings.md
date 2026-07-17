@@ -392,3 +392,4 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - A listening mockup is safe only when it consumes the approved-audiobook shelf; the same UI must fall back to generic listening-room copy when no approved title exists.
 - Mobile visual QA is strongest when the exact CSS viewport is measured for overflow and broken images, then paired with a fixed-size rendered frame screenshot.
 - The legacy Dracula-only backend catalog tests are stale against the current 32-reader baseline and should be modernized separately; do not distort the hero implementation to satisfy obsolete launch assumptions.
+- Browser regression fixtures must evolve with an owner-authorized hero contract: assert the exact dynamic headline, six canonical slugs, cover alt text, approved-audiobook collection route, and the single approved phone listening link instead of retaining a retired static-headline assertion.

@@ -46,6 +46,7 @@ These reader-enabled Sprint 1 records were omitted because the canonical artifac
 - Current audiobook truth suites: **36 passed**.
 - B2 routing suite in isolation: **5 passed**.
 - Frontend full suite: **18 suites, 90 tests passed**.
+- Full repository regression: **27 backend tests, 90 frontend tests, production build, and browser e2e passed** after updating the retired headline assertion to the authorized dynamic-hero contract.
 - Cover audit: **71 audited, 0 broken, 0 typography-only customer covers**.
 - Production build: **compiled successfully** with `REACT_APP_BACKEND_URL=/api`.
 - Browser: dynamic payload loaded six hero books; no broken hero images; no hero engineering copy; fresh-tab console errors: none.
@@ -55,7 +56,7 @@ The combined legacy backend aggregate still has ten pre-existing assertions that
 
 ## Release state
 
-Source implementation and local validation are complete. PR, merge, deployment, and production validation are recorded separately after repository publishing. `paid_tts.lock` was not touched.
+Source implementation and local validation are complete. Draft PR #125 is open; merge, deployment, and production validation remain gated on required checks. `paid_tts.lock` was not touched.
 
 ## Next exact command
 

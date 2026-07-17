@@ -111,6 +111,7 @@
     "backend_current_audio_truth": "36 passed",
     "backend_b2_isolated": "5 passed",
     "frontend": "18 suites, 90 tests passed",
+    "full_regression_suite": "27 backend tests, 90 frontend tests, production build, and browser e2e passed",
     "cover_audit": "71 audited, 0 broken",
     "production_build": "passed",
     "fresh_browser_console": "0 errors"
@@ -125,7 +126,7 @@
     "paid_tts_lock_touched": false
   },
   "deployment": {
-    "pr": "pending",
+    "pr": "https://github.com/ronik18/earnalism-digital-library/pull/125",
     "merged": false,
     "production_validated": false
   },
