@@ -47,9 +47,9 @@ def test_featured_books_are_the_exact_admin_pinned_canonical_records():
         "book-2b9853ec52",
         "bn-066",
         "radharani",
-        "a-ghost-story",
         "pride-and-prejudice",
         "sredni-vashtar",
+        "nishkriti",
     ]
 
     for book in featured:
@@ -89,6 +89,19 @@ def test_audio_ctas_fail_closed_and_only_three_approved_books_can_listen():
             assert book["cta_kind"] == "read"
             assert "Listen" not in book["cta_label"]
             assert "audiobook_url" not in book
+
+
+def test_title_mismatched_cover_is_excluded_from_hero_without_changing_audio_gate():
+    evidence = home_curation_evidence()
+    featured_slugs = {book["slug"] for book in evidence["payload"]["hero"]["featured_books"]}
+    approved_slugs = {book["slug"] for book in evidence["payload"]["shelves"]["approved_audiobooks"]}
+
+    assert "a-ghost-story" not in featured_slugs
+    assert "a-ghost-story" in approved_slugs
+    assert any(
+        item["slug"] == "a-ghost-story" and "title-mismatched" in item["reason"]
+        for item in evidence["omitted"]
+    )
 
 
 def test_missing_cover_titles_are_omitted_from_every_visual_collection():
@@ -147,3 +160,11 @@ def test_server_registers_the_preferred_endpoint():
     source = (ROOT / "backend/server.py").read_text(encoding="utf-8")
     assert '@api.get("/home/curated")' in source
     assert "return build_home_curated_payload()" in source
+
+
+def test_frontend_boot_snapshot_exactly_matches_canonical_home_payload():
+    snapshot_path = ROOT / "frontend/src/data/homeCuratedSprint1.json"
+    snapshot = json.loads(snapshot_path.read_text(encoding="utf-8"))
+
+    assert snapshot == build_home_curated_payload()
+    assert {book["slug"] for book in snapshot["shelves"]["approved_audiobooks"]} == APPROVED_AUDIO_SLUGS

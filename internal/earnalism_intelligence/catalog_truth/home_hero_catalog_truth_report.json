@@ -1,14 +1,22 @@
 {
-  "schema_version": "1.0",
-  "generated_at": "2026-07-17T08:00:00Z",
-  "status": "MERGED_FRONTEND_LIVE_BACKEND_DEPLOY_BLOCKED",
+  "schema_version": "1.1",
+  "generated_at": "2026-07-17T10:49:40Z",
+  "status": "PR_OPEN_CHECKS_PASSED",
   "truth_source": "controlled_publications",
+  "implementation": {
+    "desktop_visual": "optimized supplied reference artwork with semantic transparent links and canonical catalog masks",
+    "mobile_visual": "responsive semantic React layout with canonical catalog covers",
+    "boot_data": "generated canonical Sprint 1 snapshot refreshed by GET /api/home/curated",
+    "reference_asset_bytes": 232064,
+    "reference_geometry": "1672x941"
+  },
   "counts": {
     "sprint1_active": 32,
     "reader_enabled": 32,
     "approved_audiobooks": 3,
     "cover_eligible": 19,
-    "omitted_visual": 13,
+    "missing_cover_omissions": 13,
+    "editorial_cover_exclusions": 1,
     "hero_featured": 6
   },
   "featured_books": [
@@ -47,17 +55,6 @@
     },
     {
       "rank": 4,
-      "slug": "a-ghost-story",
-      "title": "A Ghost Story",
-      "author": "Mark Twain",
-      "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png",
-      "reader_enabled": true,
-      "audiobook_approved": true,
-      "cta_label": "Start Listening",
-      "cta_url": "/reader/a-ghost-story?listen=1"
-    },
-    {
-      "rank": 5,
       "slug": "pride-and-prejudice",
       "title": "Pride and Prejudice",
       "author": "Jane Austen",
@@ -68,7 +65,7 @@
       "cta_url": "/reader/pride-and-prejudice"
     },
     {
-      "rank": 6,
+      "rank": 5,
       "slug": "sredni-vashtar",
       "title": "Sredni Vashtar",
       "author": "Saki",
@@ -77,45 +74,76 @@
       "audiobook_approved": true,
       "cta_label": "Start Listening",
       "cta_url": "/reader/sredni-vashtar?listen=1"
+    },
+    {
+      "rank": 6,
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "author": "শরৎচন্দ্র চট্টোপাধ্যায়",
+      "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482837/earnalism/covers/front/cover_196983c8-bb26-4a88-8fed-e229543d04eb.png",
+      "reader_enabled": true,
+      "audiobook_approved": false,
+      "cta_label": "Start Reading",
+      "cta_url": "/reader/nishkriti"
     }
   ],
+  "desktop_placements": {
+    "reader_tablet": "book-2b9853ec52",
+    "approved_listening_phone": "sredni-vashtar",
+    "desk_books": ["bn-066", "radharani", "pride-and-prejudice"]
+  },
   "approved_audiobook_slugs": [
     "book-2b9853ec52",
     "a-ghost-story",
     "sredni-vashtar"
   ],
   "omitted_visual_books": [
-    { "slug": "pather-panchali", "reason": "canonical front cover is missing" },
-    { "slug": "devdas", "reason": "canonical front cover is missing" },
-    { "slug": "book-edfcf810c5", "reason": "canonical front cover is missing" },
-    { "slug": "frankenstein", "reason": "canonical front cover is missing" },
-    { "slug": "jekyll-and-hyde", "reason": "canonical front cover is missing" },
-    { "slug": "picture-of-dorian-gray", "reason": "canonical front cover is missing" },
-    { "slug": "white-fang", "reason": "canonical front cover is missing" },
-    { "slug": "the-tell-tale-heart", "reason": "canonical front cover is missing" },
-    { "slug": "the-last-leaf", "reason": "canonical front cover is missing" },
-    { "slug": "the-masque-of-the-red-death", "reason": "canonical front cover is missing" },
-    { "slug": "the-yellow-wallpaper", "reason": "canonical front cover is missing" },
-    { "slug": "the-monkeys-paw", "reason": "canonical front cover is missing" },
-    { "slug": "the-necklace", "reason": "canonical front cover is missing" }
+    {
+      "slug": "a-ghost-story",
+      "reason": "canonical image is title-mismatched: it visibly identifies Bharat at the Crossroads by Ronik Basak"
+    },
+    {"slug": "pather-panchali", "reason": "canonical front cover is missing"},
+    {"slug": "devdas", "reason": "canonical front cover is missing"},
+    {"slug": "book-edfcf810c5", "reason": "canonical front cover is missing"},
+    {"slug": "frankenstein", "reason": "canonical front cover is missing"},
+    {"slug": "jekyll-and-hyde", "reason": "canonical front cover is missing"},
+    {"slug": "picture-of-dorian-gray", "reason": "canonical front cover is missing"},
+    {"slug": "white-fang", "reason": "canonical front cover is missing"},
+    {"slug": "the-tell-tale-heart", "reason": "canonical front cover is missing"},
+    {"slug": "the-last-leaf", "reason": "canonical front cover is missing"},
+    {"slug": "the-masque-of-the-red-death", "reason": "canonical front cover is missing"},
+    {"slug": "the-yellow-wallpaper", "reason": "canonical front cover is missing"},
+    {"slug": "the-monkeys-paw", "reason": "canonical front cover is missing"},
+    {"slug": "the-necklace", "reason": "canonical front cover is missing"}
   ],
   "screenshots": [
-    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-home-1440x900.png",
-    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-home-1536x864.png",
-    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-home-390x844.png",
-    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-home-430x932.png",
-    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-home-768x1024.png"
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-1672x941.png",
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-1440x900.png",
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-1536x864.png",
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-390x844.png",
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-430x932.png",
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-768x1024.png"
   ],
+  "visual_comparison": {
+    "comparison_scope": "desktop pixels outside intentional dynamic catalog masks",
+    "mean_absolute_error": 4.229,
+    "psnr_db": 29.76,
+    "channels_within_10_percent": 89.66,
+    "channels_within_20_percent": 95.58,
+    "geometry": "exact"
+  },
   "tests": {
-    "backend_home_curation": "8 passed",
-    "backend_current_audio_truth": "36 passed",
+    "backend_home_curation": "10 passed",
+    "backend_current_audio_truth": "81 passed",
     "backend_b2_isolated": "5 passed",
-    "frontend": "18 suites, 90 tests passed",
-    "full_regression_suite": "27 backend tests, 90 frontend tests, production build, and browser e2e passed",
-    "go_live_static_regression": "14 suites passed, 2 skipped; 123 tests passed, 4 skipped",
-    "cover_audit": "71 audited, 0 broken",
+    "frontend_focused": "18 passed",
+    "frontend_full": "18 suites, 92 tests passed",
+    "cover_audit": "71 audited, 0 broken sources, 0 typography-only customer covers",
     "production_build": "passed",
-    "fresh_browser_console": "0 errors"
+    "browser_viewports": "6 passed",
+    "github_backend_frontend_browser_regression": "passed",
+    "github_go_live_regression_gate": "passed",
+    "vercel_preview": "passed"
   },
   "known_baseline_test_debt": [
     "Ten backend catalog tests still assert the superseded Dracula-only launch model.",
@@ -127,18 +155,15 @@
     "paid_tts_lock_touched": false
   },
   "deployment": {
-    "pr": "https://github.com/ronik18/earnalism-digital-library/pull/125",
-    "merge_commit": "fcedd09d26ceb1216b0fe61f4a1773eef01d21da",
-    "merged": true,
-    "vercel_production": "passed",
-    "production_canary": "passed",
-    "railway_backend": "blocked: two code snapshot HTTP 500 failures",
-    "railway_failed_deployments": [
-      "716910b9-0a56-47e9-9282-8d41bf6586d2",
-      "801282fb-e494-40da-be51-01f1385d76de"
-    ],
-    "home_curated_http_status": 404,
-    "production_validated": false
+    "branch": "codex/reference-accurate-dynamic-hero",
+    "base": "origin/main",
+    "pr": "https://github.com/ronik18/earnalism-digital-library/pull/127",
+    "required_checks": "passed",
+    "preview_deployment": "passed",
+    "merged": false,
+    "deployed": false,
+    "prior_production_home_curated_http_status": 404,
+    "boot_snapshot_prevents_empty_hero": true
   },
-  "next_exact_command": "gh secret set RAILWAY_TOKEN --repo ronik18/earnalism-digital-library"
+  "next_exact_command": "gh pr ready 127 && gh pr merge 127 --squash --delete-branch"
 }

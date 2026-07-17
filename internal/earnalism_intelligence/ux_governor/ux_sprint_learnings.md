@@ -95,3 +95,12 @@
 - Treat the production hero as incomplete when its canonical curation endpoint is unavailable, even if the static premium shell and Vercel canary are green.
 - The UI fails closed without fake titles, covers, or listening controls when curation fetch fails.
 - Railway snapshot failures did not change audiobook release truth or the prior healthy backend.
+
+## 2026-07-17 Reference-Accurate Dynamic Hero Follow-up
+
+- Desktop can use the supplied artwork as a low-latency scene only when the interactive areas remain real focusable links and semantic copy remains accessible.
+- Canonical opaque cover overlays are necessary because the reference book/device titles are visual direction, not publication truth.
+- The closest honest match is exact geometry with intentional catalog-region replacements; claiming literal whole-frame equality would hide those required changes.
+- Mobile should use a purpose-built semantic layout instead of shrinking the desktop bitmap, preserving legibility and avoiding the desktop-art transfer.
+- The listening phone must be selected from the intersection of approved audio and visually featured books; this excludes hidden titles and cover-audit failures automatically.
+- Static and browser regressions must follow the current semantic contract (`data-book-slug`, reference-art geometry, and transparent hotspots) rather than preserve identifiers from the retired CSS-only hero.

@@ -16,6 +16,16 @@ const NAV = [
   { to: "/about", label: "About" },
 ];
 
+const REFERENCE_HOME_NAV = [
+  { key: "library", to: "/library", label: "Library" },
+  { key: "bengali", to: "/library?language=bn&availability=reader-ready", label: "Bengali Classics" },
+  { key: "english", to: "/library?language=en", label: "English Classics" },
+  { key: "audiobooks", to: "/library?availability=approved-audiobook", label: "Audiobooks" },
+  { key: "membership", to: "/pricing", label: "Membership" },
+  { key: "about", to: "/about", label: "About" },
+  { key: "search", to: "/library", label: "Search the library" },
+];
+
 const SOCIAL_ICONS = {
   email: Mail,
   facebook: Facebook,
@@ -39,9 +49,44 @@ export default function Header() {
   const isAuthed = !!user && typeof user === "object";
   const accountHref = isAuthed ? "/account" : "/login";
   const accountLabel = isAuthed ? "Account" : "Sign In";
+  const isReferenceHome = loc.pathname === "/";
 
   return (
-    <header className="sticky top-0 z-50 glass-header premium-site-header" data-testid="site-header">
+    <header
+      className={`sticky top-0 z-50 glass-header premium-site-header${isReferenceHome ? " premium-site-header--reference-home" : ""}`}
+      data-testid="site-header"
+    >
+      {isReferenceHome && (
+        <nav className="reference-home-header-hotspots" aria-label="Primary navigation">
+          <Link
+            to="/"
+            className="reference-home-header-hotspot reference-home-header-hotspot--brand"
+            aria-label="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"
+            data-testid="reference-home-brand-hotspot"
+          />
+          {REFERENCE_HOME_NAV.map((item) => (
+            <Link
+              key={item.key}
+              to={item.to}
+              className={`reference-home-header-hotspot reference-home-header-hotspot--${item.key}`}
+              aria-label={item.label}
+              data-testid={`reference-nav-${item.key}`}
+            />
+          ))}
+          <Link
+            to={accountHref}
+            className="reference-home-header-hotspot reference-home-header-hotspot--account"
+            aria-label={accountLabel}
+            data-testid={isAuthed ? "reference-nav-account" : "reference-nav-sign-in"}
+          />
+          <Link
+            to="/library"
+            className="reference-home-header-hotspot reference-home-header-hotspot--cta"
+            aria-label="Start Reading"
+            data-testid="header-cta-library"
+          />
+        </nav>
+      )}
       <div className="premium-header-inner max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-4">
         <div className="header-brand-cluster">
           <Link to="/" className="flex items-center min-w-0" data-testid="brand-logo">
@@ -74,9 +119,11 @@ export default function Header() {
           </NavLink>
         </nav>
 
-        <div className="hidden xl:block">
-          <Link to="/library" className="premium-header-cta" data-testid="header-cta-library">Start Reading</Link>
-        </div>
+        {!isReferenceHome && (
+          <div className="hidden xl:block">
+            <Link to="/library" className="premium-header-cta" data-testid="header-cta-library">Start Reading</Link>
+          </div>
+        )}
 
         <button
           aria-label={open ? "Close menu" : "Open menu"}

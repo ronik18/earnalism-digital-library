@@ -1,17 +1,16 @@
-# Premium Dynamic Sprint 1 Home Hero Catalog Truth Report
+# Reference-Accurate Dynamic Sprint 1 Home Hero Catalog Truth Report
 
 Generated: 2026-07-17
 Decision: `AUTHORIZE_PREMIUM_HOMEPAGE_HERO_DYNAMIC_SPRINT1_CATALOG_IMPLEMENTATION`
-Truth source: controlled publication artifacts resolved per slug through `backend/catalog_truth.py`
+Truth source: controlled-publication artifacts resolved per slug through `backend/catalog_truth.py`
 
 ## Result
 
-- Sprint 1 readers: **32 / 32**.
-- Public audiobooks: **3 / 32**.
-- Cover-eligible Sprint 1 titles: **19 / 32**.
-- Hero visual titles: **6**, all copied exactly from canonical controlled-publication records.
-- No title, author, or cover was synthesized.
-- No audio release state was changed. No TTS, ASR, audition, upload, or paid-provider action ran.
+- The supplied 1672 × 941 artwork is an optimized WebP desktop LCP layer with exact 16:9 geometry, semantic React content, real links, and keyboard focus retained above it.
+- Every title-specific mockup cover/device region is permanently covered by canonical Sprint 1 catalog imagery. No fake title, fake author, or generated public book cover is exposed.
+- The home page boots from a generated canonical snapshot and then refreshes from `GET /api/home/curated`; a temporarily unavailable backend no longer empties the hero.
+- Sprint 1 readers remain **32 / 32** and approved public audiobooks remain **3 / 32**.
+- No audiobook release gate changed. No TTS, ASR, audition, upload, provider call, or paid lock action ran.
 
 ## Selected hero books
 
@@ -20,47 +19,45 @@ Truth source: controlled publication artifacts resolved per slug through `backen
 | 1 | `book-2b9853ec52` | দুই বিঘা জমি | রবীন্দ্রনাথ ঠাকুর | `https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267849/earnalism/covers/front/book-2b9853ec52_front_1600x2400.png` | enabled | approved | Start Listening |
 | 2 | `bn-066` | আনন্দমঠ | বঙ্কিমচন্দ্র চট্টোপাধ্যায় | `https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780682828/earnalism/covers/front/cover_e8c8daa1-3794-45eb-8e01-151456e9ead5.png` | enabled | hidden | Start Reading |
 | 3 | `radharani` | রাধারাণী | বঙ্কিমচন্দ্র চট্টোপাধ্যায় | `https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482890/earnalism/covers/front/cover_2a2d7d9c-0f09-4e8a-a262-51c508dbebce.png` | enabled | hidden | Start Reading |
-| 4 | `a-ghost-story` | A Ghost Story | Mark Twain | `https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779436724/earnalism/covers/front/cover_446c5658-2bdd-4bd6-afbe-f5233f280508.png` | enabled | approved | Start Listening |
-| 5 | `pride-and-prejudice` | Pride and Prejudice | Jane Austen | `https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293034/earnalism/covers/front/cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png` | enabled | hidden | Start Reading |
-| 6 | `sredni-vashtar` | Sredni Vashtar | Saki | `https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png` | enabled | approved | Start Listening |
+| 4 | `pride-and-prejudice` | Pride and Prejudice | Jane Austen | `https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780293034/earnalism/covers/front/cover_e54439f8-2bfa-4d96-a4d1-bc7397e76f44.png` | enabled | hidden | Start Reading |
+| 5 | `sredni-vashtar` | Sredni Vashtar | Saki | `https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783275475/earnalism/covers/front/sredni-vashtar_front_1600x2400.png` | enabled | approved | Start Listening |
+| 6 | `nishkriti` | নিষ্কৃতি | শরৎচন্দ্র চট্টোপাধ্যায় | `https://res.cloudinary.com/dzlrhlfpu/image/upload/v1780482837/earnalism/covers/front/cover_196983c8-bb26-4a88-8fed-e229543d04eb.png` | enabled | hidden | Start Reading |
 
-Every public image alt is exactly `{title} by {author}`. The six front-cover URLs are byte-for-byte values from canonical records; the cover audit reported zero broken sources.
+The desktop art placements use দুই বিঘা জমি in the reading tablet, Sredni Vashtar in the listening phone, and আনন্দমঠ, রাধারাণী, and Pride and Prejudice on the desk. The rendered alt contract is exactly `{title} by {author}` and every source URL is retained as `data-canonical-cover-url`; Cloudinary width transforms are used only in `srcset` for faster delivery.
 
 ## Approved audiobook truth
 
-Only these slugs are returned in `shelves.approved_audiobooks` and only these receive an `audiobook_url`:
+Only these slugs remain in `shelves.approved_audiobooks` and only these receive an `audiobook_url`:
 
 - `book-2b9853ec52` → `/api/reader/book/book-2b9853ec52/audiobook`
 - `a-ghost-story` → `/api/reader/book/a-ghost-story/audiobook`
 - `sredni-vashtar` → `/api/reader/book/sredni-vashtar/audiobook`
 
-The phone visual uses `book-2b9853ec52`, the first approved audiobook in deterministic curation order. `bn-066`, `radharani`, and `pride-and-prejudice` remain reader-first with no Listen CTA or public audio URL. Great Expectations and Jane Eyre are absent from the 32-title Sprint 1 contract and cannot enter the approved audiobook shelf.
+The phone visual uses the approved and featured `sredni-vashtar` record. No hidden-audio title receives a play control, `?listen=1`, an audiobook URL, or a Listen CTA. Great Expectations and Jane Eyre are not represented as Sprint 1 approved audiobooks.
 
-## Omitted from visual placement
+## Omitted or excluded from visual placement
 
-These reader-enabled Sprint 1 records were omitted because the canonical artifact did not provide a safe front-cover URL: `pather-panchali`, `devdas`, `book-edfcf810c5`, `frankenstein`, `jekyll-and-hyde`, `picture-of-dorian-gray`, `white-fang`, `the-tell-tale-heart`, `the-last-leaf`, `the-masque-of-the-red-death`, `the-yellow-wallpaper`, `the-monkeys-paw`, and `the-necklace`.
+- `a-ghost-story` remains audio-approved, but its canonical cover object visibly says “BHARAT AT THE CROSSROADS — Ronik Basak.” It is therefore `do_not_feature: true` with a catalog evidence reason. This visual exclusion does not modify reader or audio truth.
+- These reader-enabled records have no safe canonical front cover and remain omitted: `pather-panchali`, `devdas`, `book-edfcf810c5`, `frankenstein`, `jekyll-and-hyde`, `picture-of-dorian-gray`, `white-fang`, `the-tell-tale-heart`, `the-last-leaf`, `the-masque-of-the-red-death`, `the-yellow-wallpaper`, `the-monkeys-paw`, and `the-necklace`.
 
 ## Validation
 
-- Backend home curation: **8 passed**.
-- Current audiobook truth suites: **36 passed**.
-- B2 routing suite in isolation: **5 passed**.
-- Frontend full suite: **18 suites, 90 tests passed**.
-- Full repository regression: **27 backend tests, 90 frontend tests, production build, and browser e2e passed** after updating the retired headline assertion to the authorized dynamic-hero contract.
-- GO LIVE static regression: **14 suites passed, 2 intentionally skipped; 123 tests passed, 4 skipped**. Legacy homepage-source assertions now validate `PremiumHero`, canonical curation fetches, approved-only listening URLs, responsive CSS, and crawler-visible premium copy.
-- Cover audit: **71 audited, 0 broken, 0 typography-only customer covers**.
-- Production build: **compiled successfully** with `REACT_APP_BACKEND_URL=/api`.
-- Browser: dynamic payload loaded six hero books; no broken hero images; no hero engineering copy; fresh-tab console errors: none.
-- Route checks: `/`, `/library`, and requested `/book/*` routes resolve through the SPA server. Great Expectations renders unavailable and has no audio CTA; `book-2b9853ec52` renders Listen; Pather Panchali renders reader-only/audio-hidden.
+- Backend home curation: **10 passed**.
+- Current audiobook release-truth suite: **81 passed**; B2 routing: **5 passed in isolation**.
+- Frontend focused hero/header/home-catalog tests: **18 passed**.
+- Frontend full suite: **18 suites, 92 tests passed**.
+- Cover audit: **71 audited, 0 broken sources, 0 typography-only customer covers**.
+- Production frontend build: **compiled successfully** with `REACT_APP_BACKEND_URL=/api`.
+- Browser validation: 1672 × 941, 1440 × 900, 1536 × 864, 390 × 844, 430 × 932, and 768 × 1024; no horizontal overflow, broken hero image, fake metadata, or hidden-audio control.
+- Reference comparison outside the intentionally replaced catalog regions: **MAE 4.229**, **PSNR 29.76 dB**, **89.66%** of channels within 10 and **95.58%** within 20. Geometry is exact; WebP/browser color conversion accounts for the remaining pixel delta.
+- PR #127 checks: backend/frontend/browser regression **passed**, GO LIVE regression gate **passed**, and Vercel preview **passed** after the regression fixtures were aligned to the canonical snapshot.
 
-The combined legacy backend aggregate still has ten pre-existing assertions that say Dracula is the only live title. Five B2 tests also fail only when run after that legacy module closes the default event loop; the same B2 file passes 5/5 in isolation. These baseline tests were not rewritten as part of the hero sprint.
+The legacy combined backend aggregate still contains ten obsolete Dracula-only assertions. Five B2 tests fail only after that legacy module closes the default event loop; B2 passes 5/5 in isolation. These known baseline tests were not rewritten for the hero.
 
 ## Release state
 
-PR #125 passed the backend/frontend/browser regression, GO LIVE regression, and Vercel preview; it merged to `main` as `fcedd09d`. The merged-sha pre-deploy gate, Vercel production deployment, and production canary passed. Crawler-visible premium homepage copy is live.
-
-Backend production is **not validated**. The GitHub Railway job skipped because `RAILWAY_TOKEN` or `RAILWAY_SERVICE_ID` is missing. Two explicitly scoped local Railway uploads then failed before build with `Failed to create code snapshot` / HTTP 500 (`716910b9-0a56-47e9-9282-8d41bf6586d2`, `801282fb-e494-40da-be51-01f1385d76de`). `/api/home/curated` therefore remains HTTP 404 and the live React hero fails closed without dynamic covers. Existing production audio truth remains intact: the three approved audiobook endpoints return 206 and the tested hidden-audio slugs return 404. `paid_tts.lock` was not touched.
+PR [#127](https://github.com/ronik18/earnalism-digital-library/pull/127) is open from `codex/reference-accurate-dynamic-hero` to `main`, and all required checks pass. It is not yet merged or deployed to production. The existing PR #125 production shell is only the comparison baseline; it still receives HTTP 404 from production `/api/home/curated`, which is why this change includes a canonical boot snapshot.
 
 ## Next exact command
 
-`gh secret set RAILWAY_TOKEN --repo ronik18/earnalism-digital-library`
+`gh pr ready 127 && gh pr merge 127 --squash --delete-branch`

@@ -8,14 +8,25 @@ describe("PremiumHero public contract", () => {
     expect(source).toContain("{books.map");
     expect(source).toContain("book.front_cover_url");
     expect(source).toContain("book.cover_alt_text");
-    expect(source).toContain("approvedAudiobooks[0]");
+    expect(source).toContain("approvedAudiobooks.find");
+    expect(source).toContain("data-canonical-cover-url={book.front_cover_url}");
     expect(source).not.toMatch(/Devdas|Pather Panchali|Great Expectations|Gitanjali|Jane Eyre/);
   });
 
   test("keeps the listening phone bound only to the approved audiobook shelf", () => {
-    expect(source).toContain("const listeningBook = approvedAudiobooks[0] || null");
-    expect(source).toContain("<ListeningPhone book={listeningBook}");
+    expect(source).toContain("approvedAudiobooks.find");
+    expect(source).toContain("featuredSlugs.has(book.slug)");
+    expect(source).toContain("to={listeningBook.cta_url}");
     expect(source).toContain("Premium Listening Rooms");
+  });
+
+  test("uses the owner reference as a high-priority visual layer with exact transparent CTA hotspots", () => {
+    const referenceAsset = path.join(process.cwd(), "public/assets/hero/premium-library-reference.webp");
+    expect(source).toContain("premium-library-reference.webp");
+    expect(source).toContain("fetchPriority=\"high\"");
+    expect(source).toContain("premium-hero-action--primary");
+    expect(source).toContain("premium-hero-action--secondary");
+    expect(fs.statSync(referenceAsset).size).toBeLessThan(600_000);
   });
 
   test("renders the owner-approved reader-facing feature copy", () => {

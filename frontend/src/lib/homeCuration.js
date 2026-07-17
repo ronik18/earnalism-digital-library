@@ -1,4 +1,5 @@
 import { api } from "./api";
+import sprint1HomeSnapshot from "../data/homeCuratedSprint1.json";
 
 const APPROVED_RELEASE_STATUSES = new Set(["APPROVED", "PUBLIC_AUDIO_RELEASE_APPROVED"]);
 const PASSED_AUDIO_QA_STATUSES = new Set(["APPROVED", "PASS", "PASSED", "QA_PASSED"]);
@@ -93,6 +94,12 @@ export function normalizeHomeCuration(payload = {}) {
     },
     source,
   };
+}
+
+const NORMALIZED_SPRINT1_HOME_SNAPSHOT = normalizeHomeCuration(sprint1HomeSnapshot);
+
+export function getHomeCurationSnapshot() {
+  return NORMALIZED_SPRINT1_HOME_SNAPSHOT;
 }
 
 export async function fetchHomeCuration(signal) {

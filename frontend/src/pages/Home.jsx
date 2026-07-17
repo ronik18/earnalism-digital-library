@@ -23,7 +23,7 @@ import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
 import { buildShelfTwoBooks } from "../lib/shelfTwoBooks";
-import { fetchHomeCuration } from "../lib/homeCuration";
+import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
 import useSEO from "../hooks/useSEO";
 
 const SOCIAL_ICONS = {
@@ -45,8 +45,7 @@ export default function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [homeCuration, setHomeCuration] = useState(null);
-  const [homeCurationState, setHomeCurationState] = useState("loading");
+  const [homeCuration, setHomeCuration] = useState(() => getHomeCurationSnapshot());
   const activeSocials = useMemo(() => (
     getEnabledSocialLinks(social)
       .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
@@ -73,17 +72,13 @@ export default function Home() {
 
   useEffect(() => {
     const controller = new AbortController();
-    setHomeCurationState("loading");
     fetchHomeCuration(controller.signal)
       .then((payload) => {
         if (controller.signal.aborted) return;
         setHomeCuration(payload);
-        setHomeCurationState("ready");
       })
       .catch((error) => {
         if (controller.signal.aborted || error?.name === "CanceledError" || error?.code === "ERR_CANCELED") return;
-        setHomeCuration(null);
-        setHomeCurationState("error");
       });
     return () => controller.abort();
   }, []);
@@ -107,8 +102,8 @@ export default function Home() {
     <div data-testid="home-page">
       <PremiumHero
         curation={homeCuration}
-        loading={homeCurationState === "loading"}
-        error={homeCurationState === "error"}
+        loading={!homeCuration}
+        error={!homeCuration}
         onTrack={track}
       />
 

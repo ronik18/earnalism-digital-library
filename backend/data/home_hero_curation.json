@@ -74,7 +74,8 @@
       "hero_pinned": true,
       "hero_rank": 4,
       "shelf_rank": 4,
-      "do_not_feature": false,
+      "do_not_feature": true,
+      "feature_exclusion_reason": "Canonical cover image is title-mismatched and cannot be shown in the public hero.",
       "editorial_badge": "English Classic",
       "updated_at": "2026-07-17T08:00:00Z",
       "updated_by": "owner"

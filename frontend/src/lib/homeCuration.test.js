@@ -1,5 +1,6 @@
 import {
   isApprovedHomeAudiobook,
+  getHomeCurationSnapshot,
   isSafeHeroCoverUrl,
   normalizeHomeBook,
   normalizeHomeCuration,
@@ -74,5 +75,20 @@ describe("homepage curation contract", () => {
     });
     expect(payload.hero.featured_books.map((book) => book.slug)).toEqual(["reader-book", "approved-book"]);
     expect(payload.shelves.approved_audiobooks.map((book) => book.slug)).toEqual(["approved-book"]);
+  });
+
+  test("ships an immediate truth-gated Sprint 1 snapshot while the live API hydrates", () => {
+    const snapshot = getHomeCurationSnapshot();
+    expect(snapshot.source).toMatchObject({
+      truth_source: "controlled_publications",
+      sprint1_active_count: 32,
+      approved_audiobook_count: 3,
+    });
+    expect(snapshot.hero.featured_books).toHaveLength(6);
+    expect(snapshot.shelves.approved_audiobooks.map((book) => book.slug).sort()).toEqual([
+      "a-ghost-story",
+      "book-2b9853ec52",
+      "sredni-vashtar",
+    ]);
   });
 });
