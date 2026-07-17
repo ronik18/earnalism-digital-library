@@ -199,10 +199,12 @@ describe("Crawler-visible Dracula SEO snapshots", () => {
   });
 
   test("homepage, library, and pricing snapshots stay bilingual, premium, and release-truth safe", () => {
-    expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("Bengali classics are reader-ready where approved.");
-    expect(homeHtml).toContain("Dracula appears as a refined English classics reading tile.");
-    expect(homeHtml).toContain("Audiobooks remain hidden unless release-gate evidence approves them.");
+    expect(homeHtml).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
+    expect(homeHtml).toContain("Curated Bengali and English classics.");
+    expect(homeHtml).toContain("Beautiful graphical editions for calm reading.");
+    expect(homeHtml).toContain("Three current listening rooms in the audiobook collection.");
+    expect(homeHtml).toContain('href="/library?availability=approved-audiobook"');
+    expect(homeHtml).not.toMatch(/release[- ]gate|QA_PASSED|APPROVED/);
     expect(libraryHtml).toContain("Reader-ready classics, release-gated audio.");
     expect(libraryHtml).toContain("Reader-only releases do not offer listening CTAs.");
     expect(pricingHtml).toContain("Choose your reading time. Return whenever the book calls.");

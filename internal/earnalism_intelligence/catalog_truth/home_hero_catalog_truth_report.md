@@ -47,6 +47,7 @@ These reader-enabled Sprint 1 records were omitted because the canonical artifac
 - B2 routing suite in isolation: **5 passed**.
 - Frontend full suite: **18 suites, 90 tests passed**.
 - Full repository regression: **27 backend tests, 90 frontend tests, production build, and browser e2e passed** after updating the retired headline assertion to the authorized dynamic-hero contract.
+- GO LIVE static regression: **14 suites passed, 2 intentionally skipped; 123 tests passed, 4 skipped**. Legacy homepage-source assertions now validate `PremiumHero`, canonical curation fetches, approved-only listening URLs, responsive CSS, and crawler-visible premium copy.
 - Cover audit: **71 audited, 0 broken, 0 typography-only customer covers**.
 - Production build: **compiled successfully** with `REACT_APP_BACKEND_URL=/api`.
 - Browser: dynamic payload loaded six hero books; no broken hero images; no hero engineering copy; fresh-tab console errors: none.

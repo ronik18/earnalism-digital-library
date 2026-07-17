@@ -112,6 +112,7 @@
     "backend_b2_isolated": "5 passed",
     "frontend": "18 suites, 90 tests passed",
     "full_regression_suite": "27 backend tests, 90 frontend tests, production build, and browser e2e passed",
+    "go_live_static_regression": "14 suites passed, 2 skipped; 123 tests passed, 4 skipped",
     "cover_audit": "71 audited, 0 broken",
     "production_build": "passed",
     "fresh_browser_console": "0 errors"
