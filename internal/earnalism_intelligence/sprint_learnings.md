@@ -384,3 +384,12 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - EOD go-live can be approved for all public readers and existing approved audiobooks when every unapproved title remains fail-closed; incomplete audiobook backlog alone is not a P0 launch blocker.
 - Sprint 1 storage containment and source cleanup removed the earlier direct-object bypass blockers. Do not carry superseded revocation requirements forward in title matrices.
 - The k6 run had `18,792/18,792` functional checks and `0%` request failures; catalog and reader p95 misses are a separate non-P0 performance backlog and do not justify unrelated changes in an audio release closure.
+
+## 2026-07-17 Premium Dynamic Sprint 1 Home Hero
+
+- Homepage curation should reference canonical slugs and project title, author, covers, reader availability, and audio approval at request time; editorial ordering must not duplicate catalog truth.
+- Cover eligibility is a separate hero-visual gate. Reader-enabled books with missing canonical covers stay readable but are omitted from premium visual placement.
+- A listening mockup is safe only when it consumes the approved-audiobook shelf; the same UI must fall back to generic listening-room copy when no approved title exists.
+- Mobile visual QA is strongest when the exact CSS viewport is measured for overflow and broken images, then paired with a fixed-size rendered frame screenshot.
+- The legacy Dracula-only backend catalog tests are stale against the current 32-reader baseline and should be modernized separately; do not distort the hero implementation to satisfy obsolete launch assumptions.
+- Browser regression fixtures must evolve with an owner-authorized hero contract: assert the exact dynamic headline, six canonical slugs, cover alt text, approved-audiobook collection route, and the single approved phone listening link instead of retaining a retired static-headline assertion.

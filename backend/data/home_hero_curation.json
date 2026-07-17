@@ -1,0 +1,101 @@
+{
+  "schema_version": "home-hero-curation-v1",
+  "updated_at": "2026-07-17T08:00:00Z",
+  "updated_by": "owner:PREMIUM_HOMEPAGE_HERO_DYNAMIC_SPRINT1_CATALOG_IMPLEMENTATION",
+  "sprint1_active_slugs": [
+    "book-2b9853ec52",
+    "bn-066",
+    "radharani",
+    "nishkriti",
+    "muchiram-gurer-jibanchorit",
+    "book-d19e96859f",
+    "book-f5d593e1f4",
+    "pather-panchali",
+    "devdas",
+    "book-edfcf810c5",
+    "a-ghost-story",
+    "dracula",
+    "frankenstein",
+    "jekyll-and-hyde",
+    "picture-of-dorian-gray",
+    "the-time-machine",
+    "the-call-of-the-wild",
+    "white-fang",
+    "pride-and-prejudice",
+    "the-secret-garden",
+    "alices-adventures-in-wonderland",
+    "the-gift-of-the-magi",
+    "the-tell-tale-heart",
+    "the-open-window",
+    "sredni-vashtar",
+    "dsires-baby",
+    "the-cop-and-the-anthem",
+    "the-last-leaf",
+    "the-masque-of-the-red-death",
+    "the-yellow-wallpaper",
+    "the-monkeys-paw",
+    "the-necklace"
+  ],
+  "limits": {
+    "featured_books": 6,
+    "reader_favorites": 10,
+    "bengali_classics": 8,
+    "english_classics": 8
+  },
+  "books": {
+    "book-2b9853ec52": {
+      "hero_pinned": true,
+      "hero_rank": 1,
+      "shelf_rank": 1,
+      "do_not_feature": false,
+      "editorial_badge": "Bengali Classic",
+      "updated_at": "2026-07-17T08:00:00Z",
+      "updated_by": "owner"
+    },
+    "bn-066": {
+      "hero_pinned": true,
+      "hero_rank": 2,
+      "shelf_rank": 2,
+      "do_not_feature": false,
+      "editorial_badge": "Bengali Classic",
+      "updated_at": "2026-07-17T08:00:00Z",
+      "updated_by": "owner"
+    },
+    "radharani": {
+      "hero_pinned": true,
+      "hero_rank": 3,
+      "shelf_rank": 3,
+      "do_not_feature": false,
+      "editorial_badge": "Bengali Classic",
+      "updated_at": "2026-07-17T08:00:00Z",
+      "updated_by": "owner"
+    },
+    "a-ghost-story": {
+      "hero_pinned": true,
+      "hero_rank": 4,
+      "shelf_rank": 4,
+      "do_not_feature": false,
+      "editorial_badge": "English Classic",
+      "updated_at": "2026-07-17T08:00:00Z",
+      "updated_by": "owner"
+    },
+    "pride-and-prejudice": {
+      "hero_pinned": true,
+      "hero_rank": 5,
+      "shelf_rank": 5,
+      "do_not_feature": false,
+      "editorial_badge": "English Classic",
+      "updated_at": "2026-07-17T08:00:00Z",
+      "updated_by": "owner"
+    },
+    "sredni-vashtar": {
+      "hero_pinned": true,
+      "hero_rank": 6,
+      "shelf_rank": 6,
+      "do_not_feature": false,
+      "editorial_badge": "English Classic",
+      "updated_at": "2026-07-17T08:00:00Z",
+      "updated_by": "owner"
+    }
+  }
+}

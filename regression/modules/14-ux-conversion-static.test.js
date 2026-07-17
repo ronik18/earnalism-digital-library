@@ -60,6 +60,9 @@ function trackFunnelEventSnippets(source) {
 
 describe("UX conversion static signals", () => {
   const home = read("frontend/src/pages/Home.jsx");
+  const premiumHero = read("frontend/src/components/PremiumHero.jsx");
+  const premiumHeroStyles = read("frontend/src/components/PremiumHero.css");
+  const homeCurationClient = read("frontend/src/lib/homeCuration.js");
   const bookDetail = read("frontend/src/pages/BookDetail.jsx");
   const bookDetailPresentation = read("frontend/src/lib/bookDetailPresentation.js");
   const library = read("frontend/src/pages/Library.jsx");
@@ -176,6 +179,7 @@ describe("UX conversion static signals", () => {
   const productTruthLedger = read("PRODUCT_TRUTH_LEDGER.md");
   const alwaysVisibleLaunchCopy = [
     home,
+    premiumHero,
     library,
     bookDetail,
     pricing,
@@ -198,21 +202,18 @@ describe("UX conversion static signals", () => {
   ].join("\n");
 
   test("homepage exposes approved bilingual library positioning and release-truth CTAs", () => {
-    expect(home).toContain('data-testid="hero-cta-library"');
-    expect(home).toContain('data-testid="hero-cta-shelves"');
-    expect(home).toContain("The Earnalism Digital Library");
-    expect(home).toContain('aria-label="A calm digital reading room for timeless Bengali and English literature."');
-    expect(home).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(home).toContain("Graphical editions, restrained typography, and release truth");
-    expect(home).toContain("Bengali classics are presented as reader-only where audio is still gated");
-    expect(home).toContain("English classics remain ready to read");
-    expect(home).toContain("approved listening rooms appear only after production evidence proves them");
-    expect(home).toContain("Rights-safe releases");
-    expect(home).toContain("Bengali + English shelves");
-    expect(home).toContain("Audio gated by evidence");
-    expect(home).toContain("Start Reading");
-    expect(home).toContain("Browse Library");
-    expect(home).toContain("No unapproved audiobook controls. No typographic-only cover fallbacks.");
+    expect(home).toContain("fetchHomeCuration");
+    expect(home).toContain("<PremiumHero");
+    expect(premiumHero).toContain('data-testid="hero-cta-library"');
+    expect(premiumHero).toContain('data-testid="hero-cta-audiobooks"');
+    expect(premiumHero).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
+    expect(premiumHero).toContain("Beautifully designed editions. Immersive audiobooks. Calm reading modes.");
+    expect(premiumHero).toContain("Start Reading");
+    expect(premiumHero).toContain("Explore Audiobooks");
+    expect(premiumHero).toContain("/library?availability=approved-audiobook");
+    expect(homeCurationClient).toContain('/home/curated');
+    expect(homeCurationClient).toContain('audiobookUrl === `/api/reader/book/${slug}/audiobook`');
+    expect(premiumHero).not.toMatch(/No unapproved audiobook controls|Audio gated by evidence|release gates|QA_PASSED|APPROVED/);
     expect(home).toContain("Coming Through the Rights-Safe Pipeline");
     expect(shelfTwoSlideshow).toContain("Request Update");
     expect(shelfTwoSlideshow).toContain("/contact?interest=");
@@ -242,20 +243,20 @@ describe("UX conversion static signals", () => {
   });
 
   test("premium landing visual pass keeps hero efficient, local, and truthful", () => {
-    const heroThreshold = home.match(/data-approved-hero-max-height="(\d+)"/);
-    expect(heroThreshold).not.toBeNull();
-    expect(Number(heroThreshold[1])).toBeLessThanOrEqual(650);
-
-    expect(home).toContain('data-testid="premium-landing-hero"');
-    expect(home).toContain('data-testid="hero-editorial-index"');
-    expect(home).toContain("reference-editorial-card");
-    expect(home).toContain("Bengali classics");
-    expect(home).toContain("English classics");
-    expect(home).toContain("Audiobooks");
-    expect(home).toContain("Visible only after release gates pass");
-    expect(styles).toContain(".reference-library-hero");
-    expect(styles).toContain(".reference-editorial-card");
-    expect(styles).toContain(".reference-editorial-card__rows");
+    expect(premiumHero).toContain('data-testid="premium-landing-hero"');
+    expect(premiumHero).toContain('data-testid="hero-catalog-visuals"');
+    expect(premiumHero).toContain('data-testid="premium-hero-feature-cards"');
+    expect(premiumHero).toContain("Curated Classics");
+    expect(premiumHero).toContain("Immersive Audiobooks");
+    expect(premiumHero).toContain("Beautiful Editions");
+    expect(premiumHero).toContain("Calm Reading Modes");
+    expect(premiumHero).toContain("book.front_cover_url");
+    expect(premiumHero).toContain("book.cover_alt_text");
+    expect(premiumHero).toContain("approvedAudiobooks[0]");
+    expect(premiumHeroStyles).toContain(".premium-dynamic-hero");
+    expect(premiumHeroStyles).toContain(".premium-hero-cover-stack");
+    expect(premiumHeroStyles).toContain("transform: perspective(");
+    expect(premiumHeroStyles).toMatch(/@media\s*\(max-width:\s*560px\)/);
     expect(styles).not.toContain(".reference-dracula-hardcopy-shell::after");
     expect(styles).not.toContain(".reference-dracula-hardcopy-shell::before");
     expect(styles).not.toContain("APPROVED CLASSIC READING RELEASE");
@@ -265,7 +266,7 @@ describe("UX conversion static signals", () => {
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-hero-hardcopy-320.webp"))).toBe(true);
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-hero-hardcopy-420.webp"))).toBe(true);
     expect(fs.existsSync(path.join(ROOT, "frontend/public/assets/books/dracula/dracula-hero-hardcopy-500.webp"))).toBe(true);
-    expect(home).not.toContain("images.unsplash.com");
+    expect(premiumHero).not.toContain("images.unsplash.com");
     expect(home).not.toMatch(/lg:pt-36|lg:pb-32|sm:pt-32|pb-24/);
 
     expect(controlledLaunch).toContain('DRACULA_COVER_IMAGE = "/assets/books/dracula/dracula-front-cover.webp"');
@@ -309,9 +310,6 @@ describe("UX conversion static signals", () => {
     expect(luxuryVisualScorecard).toContain("Why This Is Now 10/10");
     expect(pixelUtilizationScorecard).toContain("Why This Is Now 10/10");
     expect(premiumLandingVisualReview).toContain("Why This Is Now 10/10");
-    expect(home).toContain('data-approved-hero-max-height="650"');
-
-    expect(styles).toContain(".premium-landing-hero");
     expect(home).not.toContain("golden-hour-library-hero.webp");
     expect(home).not.toContain("classical-library-reading-room.webp");
     expect(styles).toContain(".reference-editorial-stage");
@@ -1077,7 +1075,7 @@ describe("UX conversion static signals", () => {
     }
     expect(about).toContain("reading room");
     expect(journal).toContain("notes from a reading room");
-    expect(publicIndex).toContain("A calm digital reading room for timeless Bengali and English literature.");
+    expect(publicIndex).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
     expect(publicIndex).not.toMatch(/beginning with Dracula by Bram Stoker|Dracula-first/i);
   });
 
@@ -1458,7 +1456,7 @@ describe("UX conversion static signals", () => {
     expect(header).toContain('<BrandHeaderLogo badgeVariant="tricolor" />');
     expect(header).toContain('data-testid="brand-logo"');
     expect(header).toContain('data-testid="mobile-cta-library"');
-    expect(header).toContain("Enter Library");
+    expect(header).toContain("Start Reading");
     expect(header).toContain("aria-expanded={open}");
     expect(header).toContain('aria-controls="mobile-menu"');
     expect(header).toContain('id="mobile-menu"');
@@ -1680,14 +1678,15 @@ describe("UX conversion static signals", () => {
     const homeHtml = readOptional("frontend/build/index.html");
     const readerHtml = readOptional("frontend/build/reader/dracula/index.html");
     if (!homeHtml || !readerHtml) {
-      expect(staticSnapshotGenerator).toContain("A calm digital reading room for timeless Bengali and English literature.");
-      expect(staticSnapshotGenerator).toContain("Bengali classics are reader-ready where approved.");
+      expect(staticSnapshotGenerator).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
+      expect(staticSnapshotGenerator).toContain("Three current listening rooms in the audiobook collection.");
       return;
     }
 
-    expect(homeHtml).toContain("A calm digital reading room for timeless Bengali and English literature.");
-    expect(homeHtml).toContain("Bengali classics are reader-ready where approved.");
-    expect(homeHtml).toContain("Audiobooks remain hidden unless release-gate evidence approves them.");
+    expect(homeHtml).toContain("A premium reading and listening sanctuary for timeless Bengali and English classics.");
+    expect(homeHtml).toContain("Curated Bengali and English classics.");
+    expect(homeHtml).toContain("Three current listening rooms in the audiobook collection.");
+    expect(homeHtml).not.toMatch(/release[- ]gate|QA_PASSED|APPROVED/);
     expect(homeHtml).not.toMatch(/Step Into Dracula|Controlled launch begins with Dracula|Begin with Dracula/i);
     expect(homeHtml).not.toContain("A quieter bookstore for readers who linger");
     expect(homeHtml).not.toContain("Preview every book before you pay");

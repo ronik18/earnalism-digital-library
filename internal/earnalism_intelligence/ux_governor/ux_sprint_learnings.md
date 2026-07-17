@@ -81,3 +81,11 @@
 - MARKETING_LANDING approval records phase progression only and does not approve preview/deploy, production validation, paid Listen, paid TTS, or launch-wide green status.
 - FINAL_INTEGRATION discovery should start from approved phase packets and focus on source-only reconciliation, release-gate truth, route/SEO/performance/accessibility validation, generated artifact exclusion, and Vercel readiness.
 - Vercel CLI upgrade is recommended for the later preview gate, but it was intentionally not run in this owner-review transition.
+
+## 2026-07-17 Premium Dynamic Sprint 1 Home Hero
+
+- Production HTML/CSS can reproduce the premium library ambience without turning a visual mockup into a static banner or inventing book metadata.
+- The most credible hero uses exact controlled-publication covers as the decoration; responsive perspective, device shells, and library atmosphere remain CSS-only.
+- The header can hold the deterministic proofreader wordmark, a visible tricolor literary medallion, and a full desktop navigation while collapsing to one accessible mobile menu.
+- The hero remains reader-facing when release-state details stay in the payload but never render as public copy.
+- Responsive evidence passed at 1440x900, 1536x864, 390x844, 430x932, and 768x1024 with no horizontal overflow or broken hero images.

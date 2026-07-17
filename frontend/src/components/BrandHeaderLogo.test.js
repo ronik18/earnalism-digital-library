@@ -17,12 +17,13 @@ describe("BrandHeaderLogo", () => {
     expect(componentSource).not.toMatch(/canvas|generated|ai-garbled|data:image/i);
   });
 
-  test("renders deterministic proofreader wordmark text with accessible LEarnalism label", () => {
-    expect(componentSource).toContain('aria-label="LEarnalism — Where Learning Becomes Earning"');
-    expect(componentSource).toContain("Earnalism");
+  test("renders deterministic proofreader wordmark text with the complete accessible brand label", () => {
+    expect(componentSource).toContain('aria-label="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"');
+    expect(componentSource).toContain('brand-header-logo__base">earnalism');
     expect(componentSource).toContain("brand-header-logo__inserted-l");
     expect(componentSource).toContain("brand-header-logo__caret");
     expect(componentSource).toContain("Where Learning Becomes Earning");
+    expect(componentSource).toContain("A REO ENTERPRISE VENTURE");
   });
 
   test("keeps all three requested badge variants available", () => {
@@ -35,6 +36,12 @@ describe("BrandHeaderLogo", () => {
   test("exact flag badge keeps a 3:2 vector shape and contains no inscription text", () => {
     expect(componentSource).toContain('viewBox="0 0 30 20"');
     expect(componentSource).not.toMatch(/<text\b/i);
+  });
+
+  test("default tricolor badge is a visible deterministic literary medallion", () => {
+    expect(componentSource).toContain('viewBox="0 0 48 48"');
+    expect(componentSource).toContain('id="tricolor-medallion"');
+    expect(componentSource).toContain("brand-header-logo__badge--tricolor");
   });
 
   test("public header uses the safer tricolor variant by default", () => {
