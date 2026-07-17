@@ -308,6 +308,14 @@ def home_curation_evidence(
         row = _public_book(contract)
         row["selected_for_hero"] = slug in selected_slugs
         rows.append(row)
+        if contract.get("do_not_feature") is True:
+            omitted.append({
+                "slug": slug,
+                "reason": str(
+                    curation_by_slug.get(slug, {}).get("feature_exclusion_reason")
+                    or "admin curation excluded this title from homepage hero placement"
+                ),
+            })
         if reason:
             omitted.append({"slug": slug, "reason": reason})
     return {"payload": selected_payload, "catalog": rows, "omitted": omitted}

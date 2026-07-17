@@ -400,3 +400,11 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Vercel production and its canary passed, but production hero completion must remain blocked while `/api/home/curated` is 404.
 - Repeated Railway `Failed to create code snapshot` HTTP 500 failures occur before build and do not replace the healthy production instances; stop rather than loop.
 - Production audio truth remained stable throughout: the three approved audiobook routes returned 206 and tested hidden-audio routes returned 404.
+
+## 2026-07-17 Reference-Accurate Dynamic Hero Follow-up
+
+- A supplied desktop artwork can be the fast LCP layer without sacrificing semantics: keep headings, alt text, real links, keyboard focus, and responsive mobile markup in React while using transparent hit areas over painted controls.
+- “Pixel-perfect” must yield at title-specific regions to catalog truth. Opaque canonical cover/device masks preserve the composition while preventing invented or mismatched books from leaking into public UI.
+- URL reachability does not prove cover semantics. Visual inspection caught the canonical `a-ghost-story` object identifying a different book, so the title stays audio-approved but is excluded from hero imagery.
+- A generated canonical boot snapshot gives deterministic first paint and prevents an unavailable curation endpoint from emptying the production hero; successful endpoint data still replaces the snapshot.
+- Synchronous `matchMedia` rendering prevents the 227 KB desktop reference WebP from being requested on mobile, while Cloudinary width transforms keep dynamic cover downloads proportional to their slots.

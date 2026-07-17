@@ -11,6 +11,7 @@ Each slug entry may use:
 - `hero_pinned`: place an eligible book ahead of unpinned books.
 - `hero_rank`: deterministic pinned order; lower values rank first.
 - `do_not_feature`: exclude an otherwise eligible title from hero and shelf selection.
+- `feature_exclusion_reason`: internal evidence explaining why `do_not_feature` is set, including a title/author mismatch discovered by visual cover inspection.
 - `shelf_rank`: deterministic fallback shelf order.
 - `popularity_score`: optional aggregate, privacy-safe popularity signal.
 - `editorial_badge`: optional reader-facing badge, with canonical language fallback.
@@ -34,10 +35,13 @@ Admin curation cannot:
 - approve or expose audio;
 - add an audiobook URL;
 - override rights or cover evidence;
+- override a semantic cover mismatch merely because the image URL is reachable;
 - synthesize a title, author, or public cover;
 - add a non-Sprint 1 slug to this contract.
 
 Audio fields are always projected from `backend/catalog_truth.py`. A title receives Listen only when canonical audio exposure passes, release state is approved, QA is passing, and the audiobook URL is the same-origin reader API route. All other titles receive Start Reading and omit `audiobook_url`.
+
+`do_not_feature` and `feature_exclusion_reason` affect editorial visual placement only. They cannot revoke or grant reader/audio availability. This distinction allows a title such as `a-ghost-story` to stay in the approved-audiobook shelf while its currently title-mismatched cover is excluded from the visual hero.
 
 ## Popularity readiness
 
