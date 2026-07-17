@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "generated_at": "2026-07-17T10:49:40Z",
-  "status": "PR_OPEN_CHECKS_PASSED",
+  "status": "MERGED_FRONTEND_PRODUCTION_VALIDATED_BACKEND_DEPLOY_SKIPPED",
   "truth_source": "controlled_publications",
   "implementation": {
     "desktop_visual": "optimized supplied reference artwork with semantic transparent links and canonical catalog masks",
@@ -122,7 +122,8 @@
     "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-1536x864.png",
     "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-390x844.png",
     "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-430x932.png",
-    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-768x1024.png"
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-768x1024.png",
+    "/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-production-1440x900.png"
   ],
   "visual_comparison": {
     "comparison_scope": "desktop pixels outside intentional dynamic catalog masks",
@@ -160,10 +161,22 @@
     "pr": "https://github.com/ronik18/earnalism-digital-library/pull/127",
     "required_checks": "passed",
     "preview_deployment": "passed",
-    "merged": false,
-    "deployed": false,
-    "prior_production_home_curated_http_status": 404,
+    "merge_commit": "205a50f9511afc144291906755a1e3f6d59c42dc",
+    "merged": true,
+    "vercel_production": "passed",
+    "production_canary": "passed",
+    "production_browser": "passed",
+    "railway_backend": "skipped: deployment secrets unavailable",
+    "production_home_curated_http_status": 404,
     "boot_snapshot_prevents_empty_hero": true
   },
-  "next_exact_command": "gh pr ready 127 && gh pr merge 127 --squash --delete-branch"
+  "production_audio_http": {
+    "book-2b9853ec52": 206,
+    "a-ghost-story": 206,
+    "sredni-vashtar": 206,
+    "bn-066": 404,
+    "pather-panchali": 404,
+    "the-open-window": 404
+  },
+  "next_exact_command": "gh secret set RAILWAY_TOKEN --repo ronik18/earnalism-digital-library"
 }

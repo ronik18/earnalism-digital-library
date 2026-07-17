@@ -56,8 +56,12 @@ The legacy combined backend aggregate still contains ten obsolete Dracula-only a
 
 ## Release state
 
-PR [#127](https://github.com/ronik18/earnalism-digital-library/pull/127) is open from `codex/reference-accurate-dynamic-hero` to `main`, and all required checks pass. It is not yet merged or deployed to production. The existing PR #125 production shell is only the comparison baseline; it still receives HTTP 404 from production `/api/home/curated`, which is why this change includes a canonical boot snapshot.
+PR [#127](https://github.com/ronik18/earnalism-digital-library/pull/127) merged to `main` as `205a50f9511afc144291906755a1e3f6d59c42dc`. The merged-sha GO LIVE regression, Vercel production deployment, and production canary passed.
+
+Production browser validation passed at 1440 × 900: the 1672 px reference image loaded, catalog state was ready, all five title-specific placements used canonical records, Sredni Vashtar was the only `?listen=1` link, zero hero images were broken, and document width equaled viewport width. Evidence: `/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-production-1440x900.png`.
+
+Backend production remains unchanged. The Railway job passed its secret check but skipped checkout and deployment because deploy secrets were unavailable; `/api/home/curated` remains HTTP 404. The canonical boot snapshot therefore supplies the production covers as designed. Approved audio routes for `book-2b9853ec52`, `a-ghost-story`, and `sredni-vashtar` return 206; sampled hidden routes `bn-066`, `pather-panchali`, and `the-open-window` return 404.
 
 ## Next exact command
 
-`gh pr ready 127 && gh pr merge 127 --squash --delete-branch`
+`gh secret set RAILWAY_TOKEN --repo ronik18/earnalism-digital-library`

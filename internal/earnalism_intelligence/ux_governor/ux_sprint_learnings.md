@@ -104,3 +104,4 @@
 - Mobile should use a purpose-built semantic layout instead of shrinking the desktop bitmap, preserving legibility and avoiding the desktop-art transfer.
 - The listening phone must be selected from the intersection of approved audio and visually featured books; this excludes hidden titles and cover-audit failures automatically.
 - Static and browser regressions must follow the current semantic contract (`data-book-slug`, reference-art geometry, and transparent hotspots) rather than preserve identifiers from the retired CSS-only hero.
+- The canonical boot snapshot is also a UX resilience layer: it kept the production hero complete and immediately populated while the backend curation endpoint remained unavailable.

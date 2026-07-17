@@ -33,4 +33,11 @@ Reference: `/Users/ronikbasak/Documents/Personal/b9db4805-66cd-440c-a53c-9afc778
 - The original deterministic BrandHeaderLogo and accessible mobile navigation remain active below 1024 px and on all non-home routes.
 - No hero engineering/release-gate copy or console error was observed. The local static server produced only expected API 404 warnings outside the snapshot-backed hero.
 
-Production validation is pending PR merge and deployment.
+## Production validation
+
+- PR #127 merged as `205a50f9511afc144291906755a1e3f6d59c42dc`; merged-sha GO LIVE regression, Vercel production deployment, and production canary passed.
+- At 1440 × 900, production loaded the 1672 px reference artwork, rendered catalog state `ready`, and had no broken hero image or horizontal overflow.
+- Production visual placements were `book-2b9853ec52`, `sredni-vashtar`, `bn-066`, `radharani`, and `pride-and-prejudice`.
+- The only production hero listening URL was `/reader/sredni-vashtar?listen=1`.
+- Screenshot: `/Users/ronikbasak/.codex/visualizations/2026/07/17/019f6ef7-752c-7d23-a0ef-49e3d86a68c5/premium-reference-dynamic-hero-production-1440x900.png`.
+- Railway did not deploy the backend because its deploy secrets were unavailable. `/api/home/curated` remains 404, and the canonical boot snapshot correctly preserves the populated hero.
