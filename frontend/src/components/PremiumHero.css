@@ -264,8 +264,9 @@
     height: 14.6%;
     align-items: center;
     padding: 0.8% 1.4% 0.8% 2.7%;
-    background: #fff8e8;
-    border-bottom: 1px solid rgba(174, 111, 33, 0.32);
+    background: transparent;
+    border: 0;
+    pointer-events: none;
   }
 
   .premium-reference-brand-overlay img {
