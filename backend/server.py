@@ -4470,6 +4470,43 @@ async def get_home_books_page(limit: int = HOME_BOOK_PAGE_DEFAULT_LIMIT, offset:
     return await _home_books_page(limit, offset)
 
 
+@api.get("/home/curated")
+async def get_home_curated_shelves():
+    """Return data-driven editorial shelves without granting release authority."""
+    page = await _home_books_page(200, 0)
+    shelves = {
+        "bengali-classics": {"id": "bengali-classics", "title": "Bengali classics", "kicker": "In the original rhythm", "description": "Stories shaped by soil, memory, and the Bengali imagination.", "books": []},
+        "gothic-classics": {"id": "gothic-classics", "title": "Gothic classics", "kicker": "For the late hour", "description": "Shadowed rooms, strange weather, and books that keep the light low.", "books": []},
+        "love-society-human-nature": {"id": "love-society-human-nature", "title": "Love, society, human nature", "kicker": "The human shelf", "description": "Tenderness, pressure, and the choices that reveal us.", "books": []},
+        "adventure-journeys": {"id": "adventure-journeys", "title": "Adventure and journeys", "kicker": "Go a little farther", "description": "A change of place, a widening horizon, a story in motion.", "books": []},
+        "short-masterpieces": {"id": "short-masterpieces", "title": "Short masterpieces", "kicker": "One sitting", "description": "Small books with a long afterlife.", "books": []},
+        "selected-listening": {"id": "selected-listening", "title": "Selected listening", "kicker": "Release-gated audio", "description": "Approved listening rooms, shown only when the canonical manifest says they are ready.", "books": []},
+    }
+    for book in page.get("books", []):
+        category = str(book.get("category_slug") or "").lower()
+        title = str(book.get("title") or "").lower()
+        shelf_ids = book.get("editorial_shelf_ids") or []
+        if not isinstance(shelf_ids, list): shelf_ids = []
+        if not shelf_ids:
+            if any(token in category or token in title for token in ("bengali", "bangla")): shelf_ids.append("bengali-classics")
+            elif any(token in category or token in title for token in ("gothic", "horror", "mystery")): shelf_ids.append("gothic-classics")
+            elif any(token in category or token in title for token in ("adventure", "journey", "travel")): shelf_ids.append("adventure-journeys")
+            else: shelf_ids.append("love-society-human-nature")
+        safe_book = {key: book.get(key, "") for key in ("slug", "title", "author", "short_description", "cover_url", "cover_image_url", "thumbnail_url", "category_slug")}
+        safe_book["front_cover_url"] = safe_book.get("cover_image_url") or safe_book.get("cover_url") or safe_book.get("thumbnail_url")
+        for shelf_id in shelf_ids:
+            if shelf_id in shelves and shelf_id != "selected-listening": shelves[shelf_id]["books"].append(safe_book)
+    for book in page.get("books", []):
+        slug = book.get("slug")
+        if not slug: continue
+        manifest = await _reader_book_manifest_doc(slug)
+        audio = (manifest or {}).get("audio") or {}
+        if manifest and audio.get("enabled") is True and audio.get("url"):
+            public_book = manifest.get("book") or {}
+            shelves["selected-listening"]["books"].append({"slug": slug, "title": public_book.get("title", book.get("title", "")), "author": public_book.get("author", book.get("author", "")), "short_description": public_book.get("short_description", ""), "front_cover_url": public_book.get("cover_image_url") or public_book.get("cover_url", ""), "audio_duration_ms": audio.get("duration_ms", 0), "audio_release": "APPROVED"})
+    return {"version": "home-curation-v1", "shelves": list(shelves.values())}
+
+
 @api.post("/analytics/event")
 async def record_analytics_event(
     payload: AnalyticsEventIn,
