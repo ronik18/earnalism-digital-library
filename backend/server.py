@@ -395,6 +395,7 @@ async def _expensive_job_slot(job_type: str):
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
 CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "dracula-first-v3"
+READER_CONTENT_RENDER_VERSION = "semantic-html-v1"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
@@ -1381,6 +1382,16 @@ async def _public_cache_clear() -> None:
     _public_cache.clear()
 
 
+def _client_etag_matches(request: Request, etag: str) -> bool:
+    if not etag:
+        return False
+    raw = request.headers.get("if-none-match", "")
+    if not raw:
+        return False
+    candidates = {item.strip() for item in raw.split(",") if item.strip()}
+    return "*" in candidates or etag in candidates
+
+
 def _is_public_cache_path(path: str) -> bool:
     return path in PUBLIC_CACHE_PATHS or any(path.startswith(prefix) for prefix in PUBLIC_CACHE_PREFIXES)
 
@@ -1551,7 +1562,7 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
     if not admin_preview and not _is_controlled_public_slug(slug):
         return ""
     generation = await _reader_content_cache_generation_value()
-    cache_key = f"chapter-content:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
+    cache_key = f"chapter-content:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{READER_CONTENT_RENDER_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
     cached = await _redis_cache_get("reader-content", cache_key)
     if cached is not None:
         return str(cached or "")
@@ -1570,8 +1581,9 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
         artifact = _controlled_artifact_doc(slug, include_content=True) or {}
         target = next((chapter for chapter in artifact.get("chapters") or [] if chapter.get("id") == chapter_id), {})
         content = target.get("content", "")
-    await _redis_cache_set("reader-content", cache_key, content, READER_CHAPTER_CACHE_TTL_SECONDS)
-    return content
+    rendered_content, _ = _manual_content_to_render_html(content)
+    await _redis_cache_set("reader-content", cache_key, rendered_content, READER_CHAPTER_CACHE_TTL_SECONDS)
+    return rendered_content
 
 
 def _stable_digest(value: Any, length: int = 16) -> str:
@@ -2593,6 +2605,18 @@ class BookIn(BaseModel):
     learnings: List[str] = Field(default_factory=list)
     about_author: str = ""
     rights_metadata: Dict[str, Any] = Field(default_factory=dict)
+    source_url: str = ""
+    source_name: str = ""
+    source_license: str = ""
+    source_hash: str = ""
+    content_hash: str = ""
+    provenance_hash: str = ""
+    rights_basis: str = ""
+    rights_tier: str = ""
+    verification_status: str = ""
+    qa_status: str = ""
+    approved_to_publish: bool = False
+    publication_status: str = ""
     audiobook_enabled: bool = False
     generate_audiobook: bool = False
     readerStatus: str = "ready_for_editorial_review"
@@ -5738,6 +5762,7 @@ async def user_claim_reader_reward(user=Depends(require_user)):
 @api.get("/reader/book/{slug}/manifest")
 async def reader_book_manifest(
     slug: str,
+    request: Request,
     response: Response,
     preview: Optional[str] = None,
     principal: Optional[dict] = Depends(optional_principal),
@@ -5772,12 +5797,22 @@ async def reader_book_manifest(
         })
 
     payload = {**manifest, "access": access}
-    response.headers["ETag"] = f'W/"reader-manifest-{manifest["version"]}"'
+    etag = f'W/"reader-manifest-{manifest["version"]}"'
+    response.headers["ETag"] = etag
     response.headers["X-Reader-Manifest-Version"] = manifest["version"]
     if access["role"] == "guest":
         response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=300"
     else:
         response.headers["Cache-Control"] = "private, max-age=20, stale-while-revalidate=60"
+    if _client_etag_matches(request, etag):
+        return Response(
+            status_code=304,
+            headers={
+                "ETag": etag,
+                "X-Reader-Manifest-Version": manifest["version"],
+                "Cache-Control": response.headers["Cache-Control"],
+            },
+        )
     return payload
 
 
@@ -5861,6 +5896,16 @@ def _range_content_length(byte_range: str, total_size: int) -> int:
     return max(0, int(match.group(2)) - int(match.group(1)) + 1)
 
 
+def _content_range_total_size(content_range: str) -> int:
+    match = re.search(r"/(\d+)$", content_range or "")
+    if not match:
+        return 0
+    try:
+        return int(match.group(1))
+    except ValueError:
+        return 0
+
+
 def _streaming_body_iterator(body):
     try:
         while True:
@@ -5885,6 +5930,25 @@ def _audio_asset_content_type(asset_key: str, fallback: str = "") -> str:
         "meta": "application/json",
         "manifest": "application/json",
     }.get(asset_key, "application/octet-stream")
+
+
+def _audio_asset_cache_control(asset_key: str) -> str:
+    # Browser-private because public audio remains separately gated; long enough
+    # to keep playback and sidecar navigation warm during a reading session.
+    if asset_key == "mp3":
+        return "private, max-age=600, stale-while-revalidate=3600"
+    return "private, max-age=3600, stale-while-revalidate=86400"
+
+
+async def _b2_head_object(s3, *, bucket: str, key: str) -> dict:
+    return await asyncio.to_thread(s3.head_object, Bucket=bucket, Key=key)
+
+
+async def _b2_get_object(s3, *, bucket: str, key: str, byte_range: Optional[str]) -> dict:
+    kwargs = {"Bucket": bucket, "Key": key}
+    if byte_range:
+        kwargs["Range"] = byte_range
+    return await asyncio.to_thread(s3.get_object, **kwargs)
 
 
 async def _reader_book_audiobook_asset(
@@ -5932,8 +5996,36 @@ async def _reader_book_audiobook_asset(
         raise HTTPException(status_code=404, detail="B2 audiobook asset key not found")
 
     s3 = _b2_client()
+    range_header = (request.headers.get("range") or "").strip()
+    if request.method != "HEAD" and range_header:
+        try:
+            obj = await _b2_get_object(s3, bucket=B2_BUCKET, key=key, byte_range=range_header)
+        except Exception as exc:
+            logger.warning("B2 audiobook asset ranged get failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
+            raise HTTPException(status_code=502, detail="Audiobook asset storage unavailable")
+        content_range = obj.get("ContentRange") or ""
+        content_type = _audio_asset_content_type(normalized_key, obj.get("ContentType") or "")
+        content_length = int(obj.get("ContentLength") or 0)
+        headers = {
+            "Accept-Ranges": "bytes",
+            "Content-Type": content_type,
+            "Cache-Control": _audio_asset_cache_control(normalized_key),
+            "Content-Length": str(content_length),
+        }
+        if content_range:
+            headers["Content-Range"] = content_range
+        etag = str(obj.get("ETag") or "").strip()
+        if etag:
+            headers["ETag"] = etag
+        return StreamingResponse(
+            _streaming_body_iterator(obj["Body"]),
+            status_code=206 if content_range else 200,
+            media_type=content_type,
+            headers=headers,
+        )
+
     try:
-        head = s3.head_object(Bucket=B2_BUCKET, Key=key)
+        head = await _b2_head_object(s3, bucket=B2_BUCKET, key=key)
     except Exception as exc:
         logger.warning("B2 audiobook asset head failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
         raise HTTPException(status_code=404, detail="Audiobook asset object not found")
@@ -5941,13 +6033,18 @@ async def _reader_book_audiobook_asset(
     total_size = int(head.get("ContentLength") or 0)
     content_type = _audio_asset_content_type(normalized_key, head.get("ContentType") or "")
     byte_range, status_code = _parse_byte_range(request.headers.get("range", ""), total_size)
+    etag = str(head.get("ETag") or "").strip()
     base_headers = {
         "Accept-Ranges": "bytes",
         "Content-Type": content_type,
-        "Cache-Control": "private, max-age=60",
+        "Cache-Control": _audio_asset_cache_control(normalized_key),
     }
+    if etag:
+        base_headers["ETag"] = etag
     if status_code == 416:
         return Response(status_code=416, headers={**base_headers, "Content-Range": f"bytes */{total_size}"})
+    if not byte_range and _client_etag_matches(request, etag):
+        return Response(status_code=304, headers=base_headers)
 
     if request.method == "HEAD":
         headers = {
@@ -5958,11 +6055,8 @@ async def _reader_book_audiobook_asset(
             headers["Content-Range"] = _content_range_header(byte_range, total_size)
         return Response(status_code=status_code, headers=headers)
 
-    get_kwargs = {"Bucket": B2_BUCKET, "Key": key}
-    if byte_range:
-        get_kwargs["Range"] = byte_range
     try:
-        obj = s3.get_object(**get_kwargs)
+        obj = await _b2_get_object(s3, bucket=B2_BUCKET, key=key, byte_range=byte_range)
     except Exception as exc:
         logger.warning("B2 audiobook asset get failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
         raise HTTPException(status_code=502, detail="Audiobook asset storage unavailable")
@@ -6385,6 +6479,7 @@ async def reading_packs():
 async def reader_get_chapter(
     slug: str,
     chapter_id: str,
+    request: Request,
     response: Response,
     v: Optional[str] = None,
     principal: Optional[dict] = Depends(optional_principal),
@@ -6414,6 +6509,19 @@ async def reader_get_chapter(
     response.headers["ETag"] = f'W/"reader-chapter-{content_version}"'
     response.headers["X-Reader-Chapter-Version"] = content_version
 
+    def not_modified_response(cache_control: str) -> Optional[Response]:
+        etag = response.headers["ETag"]
+        if not _client_etag_matches(request, etag):
+            return None
+        return Response(
+            status_code=304,
+            headers={
+                "ETag": etag,
+                "X-Reader-Chapter-Version": content_version,
+                "Cache-Control": cache_control,
+            },
+        )
+
     async def unlocked_chapter_response(preview: bool):
         content = await _reader_chapter_content(slug, chapter_id, admin_preview=is_admin_preview)
         return {
@@ -6424,18 +6532,24 @@ async def reader_get_chapter(
 
     # Free preview is open to everyone — no auth, no deduction.
     if is_preview and not is_admin_preview:
+        response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=300"
+        not_modified = not_modified_response(response.headers["Cache-Control"])
+        if not_modified:
+            return not_modified
         cache_key = _public_cache_key("reader_preview_chapter", slug=slug, chapter_id=chapter_id)
         cached = await _public_cache_get(cache_key)
         if cached is not None:
             return cached
         result = await unlocked_chapter_response(True)
         await _public_cache_set(cache_key, result)
-        response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=300"
         return result
 
     # Admin always has full access (admin reader preview).
     if is_admin_preview:
         response.headers["Cache-Control"] = "private, max-age=20"
+        not_modified = not_modified_response(response.headers["Cache-Control"])
+        if not_modified:
+            return not_modified
         return await unlocked_chapter_response(False)
 
     # Reader user
@@ -6449,6 +6563,9 @@ async def reader_get_chapter(
             }
         if await _cached_user_wallet_seconds(principal["id"]) > 0:
             response.headers["Cache-Control"] = "private, max-age=45, stale-while-revalidate=180"
+            not_modified = not_modified_response(response.headers["Cache-Control"])
+            if not_modified:
+                return not_modified
             return await unlocked_chapter_response(False)
         return {
             "locked": True,
