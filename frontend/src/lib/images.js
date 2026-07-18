@@ -4,6 +4,28 @@ const LOCAL_ASSET_RE = /^\/?assets\//i;
 const IMAGE_EXTENSION_RE = /\.(avif|gif|jpe?g|png|svg|webp)(?:[?#].*)?$/i;
 const HEX_COLOR_RE = /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i;
 const FALLBACK_EXTENSIONS = ["jpg", "png", "webp", "jpeg", "gif"];
+const LOCAL_RESPONSIVE_ASSETS = Object.freeze({
+  "/assets/books/dracula/dracula-front-cover.webp": {
+    220: "/assets/performance/dracula-front-cover-220.webp",
+    320: "/assets/performance/dracula-front-cover-320.webp",
+    420: "/assets/performance/dracula-front-cover-420.webp",
+  },
+  "/assets/shelves/bengali-classics.jpg": {
+    220: "/assets/performance/bengali-classics-220.webp",
+    320: "/assets/performance/bengali-classics-320.webp",
+    420: "/assets/performance/bengali-classics-420.webp",
+  },
+  "/assets/books/sherlock-holmes/front-cover.webp": {
+    220: "/assets/performance/sherlock-holmes-front-cover-220.webp",
+    260: "/assets/performance/sherlock-holmes-front-cover-260.webp",
+    360: "/assets/performance/sherlock-holmes-front-cover-360.webp",
+  },
+  "/assets/books/kshudhita-pashan/front-cover.webp": {
+    220: "/assets/performance/kshudhita-pashan-front-cover-220.webp",
+    260: "/assets/performance/kshudhita-pashan-front-cover-260.webp",
+    360: "/assets/performance/kshudhita-pashan-front-cover-360.webp",
+  },
+});
 
 function hasImageExtension(src) {
   return IMAGE_EXTENSION_RE.test(src);
@@ -71,6 +93,11 @@ export function optimizedImageUrl(src, { width = 900, quality = 82 } = {}) {
   return normalized;
 }
 
+function responsiveLocalAssetUrl(src, width) {
+  const normalized = normalizeImageUrl(src);
+  return LOCAL_RESPONSIVE_ASSETS[normalized]?.[width] || normalized;
+}
+
 function normalizeWidthList(widths, fallbackWidth) {
   const normalized = (Array.isArray(widths) && widths.length ? widths : [fallbackWidth])
     .map((value) => Number(value))
@@ -112,11 +139,13 @@ export function bookCoverImageSources(book, { width = 420, widths, quality = 82,
   const placeholder = normalizeImageUrl(kind === "back" ? (book.back_cover_blur_placeholder || "") : (book.blur_placeholder || ""));
   const backgroundColor = safeDominantColor(kind === "back" ? (book.back_cover_dominant_color || book.dominant_color) : book.dominant_color);
   const source = cover || thumbnail;
-  const src = thumbnail || (source ? optimizedImageUrl(source, { width, quality }) : "");
+  const src = thumbnail
+    ? responsiveLocalAssetUrl(thumbnail, width)
+    : (source ? optimizedImageUrl(responsiveLocalAssetUrl(source, width), { width, quality }) : "");
   const responsiveWidths = normalizeWidthList(widths, width);
   const srcSet = cover && !resolved.isFallback
     ? responsiveWidths.map((candidateWidth) => (
-      `${optimizedImageUrl(cover, { width: candidateWidth, quality })} ${candidateWidth}w`
+      `${optimizedImageUrl(responsiveLocalAssetUrl(cover, candidateWidth), { width: candidateWidth, quality })} ${candidateWidth}w`
     )).join(", ")
     : "";
 

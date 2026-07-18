@@ -40,4 +40,16 @@ describe("image URL helpers", () => {
     expect(sources.backgroundColor).toBe("#111A21");
     expect(sources.hasCover).toBe(true);
   });
+
+  test("uses local responsive derivatives when they are available", () => {
+    const sources = bookCoverImageSources({
+      title: "Dracula",
+      cover_image_url: "/assets/books/dracula/dracula-front-cover.webp",
+      thumbnail_url: "/assets/books/dracula/dracula-front-cover.webp",
+    }, { widths: [220, 420], width: 220 });
+
+    expect(sources.src).toBe("/assets/performance/dracula-front-cover-220.webp");
+    expect(sources.srcSet).toContain("/assets/performance/dracula-front-cover-220.webp 220w");
+    expect(sources.srcSet).toContain("/assets/performance/dracula-front-cover-420.webp 420w");
+  });
 });
