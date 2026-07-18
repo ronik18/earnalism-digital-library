@@ -20,6 +20,19 @@
 
 .premium-site-header .brand-header-logo::after { display: none; }
 .premium-site-header .brand-header-logo__icon { width: 3.35rem; height: 3.35rem; }
+.premium-site-header .brand-header-logo--custom {
+  display: inline-flex;
+  width: min(24rem, 44vw);
+  height: 3.85rem;
+  align-items: center;
+}
+.premium-site-header .brand-header-logo__custom {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
 .premium-site-header .brand-header-logo__text { gap: 0.1rem; }
 .premium-site-header .brand-header-logo__proofread { padding-top: 0.42rem; }
 .premium-site-header .brand-header-logo__base {
@@ -173,6 +186,7 @@
     gap: 0.45rem;
   }
   .premium-site-header .brand-header-logo__icon { width: 2.45rem; height: 2.45rem; }
+  .premium-site-header .brand-header-logo--custom { width: min(15rem, calc(100vw - 5.6rem)); height: 2.85rem; }
   .premium-site-header .brand-header-logo__base { font-size: 1.22rem; }
   .premium-site-header .brand-header-logo__inserted-l { font-size: 1.18rem; }
   .premium-site-header .brand-header-logo__tagline { display: block; max-width: 11rem; font-size: 0.49rem; }

@@ -3,7 +3,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { api, formatError, formatMinutes } from "../lib/api";
 import { toast } from "sonner";
-import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail, Clock, Ban, Check, ShieldAlert } from "lucide-react";
+import { LogOut, Plus, Trash2, Edit3, Star, X, KeyRound, Share2, Mail, Clock, Ban, Check, ShieldAlert, Upload } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
 import BrandMark from "../components/BrandMark";
 import ChapterUpload from "../components/Admin/ChapterUpload";
@@ -1041,6 +1041,7 @@ function SettingsTab() {
   const [brandForm, setBrandForm] = useState(brand);
   const [busy, setBusy] = useState(false);
   const [busyBrand, setBusyBrand] = useState(false);
+  const [uploadingLogo, setUploadingLogo] = useState(false);
 
   useEffect(() => { setForm(social); }, [social]);
   useEffect(() => { setBrandForm(brand); }, [brand]);
@@ -1069,6 +1070,35 @@ function SettingsTab() {
     } finally { setBusyBrand(false); }
   };
 
+  const uploadLogo = async (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+    const allowed = ["image/png", "image/webp", "image/jpeg"];
+    if (!allowed.includes(file.type)) {
+      toast.error("Export the Canva logo as a transparent PNG or WebP.");
+      return;
+    }
+    if (file.size > 4 * 1024 * 1024) {
+      toast.error("Logo must be under 4 MB.");
+      return;
+    }
+    setUploadingLogo(true);
+    try {
+      const body = new FormData();
+      body.append("file", file);
+      const { data } = await api.post("/admin/settings/brand/logo", body, {
+        params: { confirm_expensive_job: true },
+      });
+      setBrandForm((current) => ({ ...current, logo_url: data.url }));
+      toast.success("Logo uploaded. Review the preview, then save brand to publish it.");
+    } catch (err) {
+      toast.error(formatError(err.response?.data?.detail));
+    } finally {
+      setUploadingLogo(false);
+    }
+  };
+
   return (
     <div className="space-y-8" data-testid="settings-tab">
       <div className="card-elegant p-6 sm:p-10 max-w-2xl" data-testid="settings-brand">
@@ -1077,10 +1107,31 @@ function SettingsTab() {
           <h2 className="font-serif-display text-2xl text-burgundy ml-2">Brand identity</h2>
         </div>
         <p className="text-sm text-charcoal-soft mb-6">
-          Paste a hosted image URL for your logo and your social-share preview image.
-          Leave blank to keep the premium serif text mark and default hero image.
+          Export the complete logo lockup from Canva as a transparent PNG or WebP, upload it here,
+          review the live-size preview, then save. The saved asset updates the public header, auth,
+          and footer logo surfaces; the bundled lockup remains the fallback.
         </p>
         <form onSubmit={submitBrand} className="space-y-5">
+          <div className="rounded-lg border border-brand-soft bg-ivory/60 p-4 sm:p-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <div className="text-xs uppercase tracking-[0.18em] text-charcoal-soft">Canva logo export</div>
+                <p className="mt-1 text-sm text-charcoal-soft">Use transparent PNG/WebP, at least 32px, under 4 MB. SVG is intentionally not accepted.</p>
+              </div>
+              <label className="btn-secondary cursor-pointer inline-flex items-center gap-2" data-testid="brand-logo-upload-label">
+                <Upload size={15} />
+                {uploadingLogo ? "Uploading…" : "Upload logo"}
+                <input
+                  type="file"
+                  accept="image/png,image/webp,image/jpeg"
+                  className="sr-only"
+                  onChange={uploadLogo}
+                  disabled={uploadingLogo}
+                  data-testid="brand-logo-upload"
+                />
+              </label>
+            </div>
+          </div>
           <Field label="Logo URL" wide>
             <input
               type="url"
@@ -1092,8 +1143,8 @@ function SettingsTab() {
             />
           </Field>
           {brandForm.logo_url && (
-            <div className="border border-brand-soft rounded-sm p-4 bg-ivory/60 inline-flex">
-              <img src={brandForm.logo_url} alt="Logo preview" className="h-10 w-auto max-w-[240px] object-contain" data-testid="brand-logo-preview" onError={(e) => { e.currentTarget.style.display = "none"; }} />
+            <div className="border border-brand-soft rounded-sm p-4 bg-ivory/60 inline-flex min-h-20 max-w-full">
+              <img src={brandForm.logo_url} alt="Logo preview" className="max-h-16 w-auto max-w-[min(30rem,80vw)] object-contain" data-testid="brand-logo-preview" onError={(e) => { e.currentTarget.style.display = "none"; }} />
             </div>
           )}
           <Field label="Social-share image URL (Open Graph / Twitter Card)" wide>

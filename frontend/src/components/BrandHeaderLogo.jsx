@@ -1,4 +1,7 @@
+import { useSettings } from "../context/SettingsContext";
+
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
+const DEFAULT_BRAND_LOCKUP = `${PUBLIC_URL}/assets/brand/earnalism-brand-lockup.png`;
 const HEADER_LOGO_ICON = `${PUBLIC_URL}/assets/brand/earnalism-logo-transparent-96.webp`;
 const HEADER_LOGO_SRC_SET = [
   `${PUBLIC_URL}/assets/brand/earnalism-logo-transparent-96.webp 96w`,
@@ -70,9 +73,33 @@ export default function BrandHeaderLogo({
   badgeVariant = BRAND_HEADER_BADGE_VARIANTS.tricolor,
   className = "",
 }) {
+  const { brand } = useSettings();
   const safeBadgeVariant = Object.values(BRAND_HEADER_BADGE_VARIANTS).includes(badgeVariant)
     ? badgeVariant
     : BRAND_HEADER_BADGE_VARIANTS.tricolor;
+  const customLogo = brand?.logo_url?.trim();
+  const resolvedLogo = customLogo || DEFAULT_BRAND_LOCKUP;
+
+  if (resolvedLogo) {
+    return (
+      <span
+        className={`brand-header-logo brand-header-logo--custom ${className}`.trim()}
+        role="img"
+        aria-label="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"
+        data-testid="brand-header-logo"
+        data-badge-variant={safeBadgeVariant}
+        data-logo-source={customLogo ? "admin-setting" : "bundled-owner-asset"}
+      >
+        <img
+          src={resolvedLogo}
+          alt="Earnalism logo"
+          loading="eager"
+          decoding="async"
+          className="brand-header-logo__custom"
+        />
+      </span>
+    );
+  }
 
   return (
     <span

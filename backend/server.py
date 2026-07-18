@@ -83,6 +83,11 @@ try:
 except ImportError:  # pragma: no cover - supports package-style test imports
     from backend.home_curation import build_home_curated_payload
 
+try:
+    from config.brand_logo import validate_brand_logo
+except ImportError:  # pragma: no cover - supports package-style test imports
+    from backend.config.brand_logo import validate_brand_logo
+
 
 # ---------- Environment / DB ----------
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "production").strip().lower()
@@ -5394,6 +5399,44 @@ async def admin_set_social(payload: SocialIn, _=Depends(require_admin)):
 
 
 # ---------- Admin: Settings (brand identity) ----------
+@api.post("/admin/settings/brand/logo")
+async def admin_upload_brand_logo(
+    confirm_expensive_job: bool = False,
+    file: UploadFile = File(...),
+    _=Depends(require_admin),
+):
+    """Stage a Canva-exported logo in Cloudinary for an authenticated admin preview."""
+    _require_expensive_job_enabled(
+        "admin_media_uploads",
+        enabled=ENABLE_ADMIN_MEDIA_UPLOADS,
+        confirm_expensive_job=confirm_expensive_job,
+    )
+    async with _expensive_job_slot("admin_media_uploads"):
+        body = await file.read()
+        try:
+            image_meta = validate_brand_logo(
+                body,
+                file.content_type or "",
+                ADMIN_MEDIA_UPLOAD_MAX_BYTES,
+            )
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=str(exc))
+
+        _ensure_cloudinary()
+        try:
+            from config.cloudinary import upload_image  # type: ignore
+        except Exception as exc:
+            raise HTTPException(status_code=503, detail=f"Image pipeline unavailable: {exc}")
+        result = upload_image(body, folder="earnalism/brand")
+
+    return {
+        "ok": True,
+        "url": result["url"],
+        "public_id": result.get("public_id"),
+        **image_meta,
+    }
+
+
 @api.put("/admin/settings/brand")
 async def admin_set_brand(payload: BrandIn, _=Depends(require_admin)):
     data = payload.model_dump()
@@ -5402,6 +5445,7 @@ async def admin_set_brand(payload: BrandIn, _=Depends(require_admin)):
         {"$set": {"key": "brand", **data}},
         upsert=True,
     )
+    await _public_cache_clear()
     return {"ok": True, **data}
 
 
