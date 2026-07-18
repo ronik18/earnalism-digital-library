@@ -1,160 +1,36 @@
-import { api } from "./api";
-import sprint1HomeSnapshot from "../data/homeCuratedSprint1.json";
+export const HOME_SHELF_ORDER = [
+  "bengali-classics",
+  "gothic-classics",
+  "love-society-human-nature",
+  "adventure-journeys",
+  "short-masterpieces",
+  "selected-listening",
+];
 
-const APPROVED_RELEASE_STATUSES = new Set(["APPROVED", "PUBLIC_AUDIO_RELEASE_APPROVED"]);
-const PASSED_AUDIO_QA_STATUSES = new Set(["APPROVED", "PASS", "PASSED", "QA_PASSED"]);
-
-export function isSafeHeroCoverUrl(value) {
-  const url = String(value || "").trim();
-  if (!url || /placeholder/i.test(url) || /^(data|javascript):/i.test(url)) return false;
-  if (url.startsWith("/")) return !url.startsWith("/audio/");
-  try {
-    return new URL(url).protocol === "https:";
-  } catch {
-    return false;
-  }
+export function shelfMode(count) {
+  if (!count) return "Zero";
+  if (count === 1) return "Spotlight";
+  if (count === 2) return "Duo";
+  if (count <= 4) return "Trio";
+  if (count <= 7) return "Runway";
+  return "Overflow";
 }
 
-export function isEligibleCuratedCover(book = {}) {
-  const coverAuditStatus = String(book.cover_audit_status || "").trim().toUpperCase();
-  return Boolean(
-    isSafeHeroCoverUrl(book.front_cover_url)
-    && book.cover_valid !== false
-    && book.canonical_cover_match !== false
-    && book.is_placeholder !== true
-    && book.is_typographic_only !== true
-    && !coverAuditStatus.includes("PLACEHOLDER")
-    && !coverAuditStatus.includes("TYPOGRAPHIC")
-    && !coverAuditStatus.includes("MISSING")
-    && !coverAuditStatus.includes("REPAIR_REQUIRED"),
-  );
-}
-
-export function isApprovedHomeAudiobook(book = {}) {
-  const slug = String(book.slug || "").trim();
-  const releaseStatus = String(book.audiobook_release_gate || "").trim().toUpperCase();
-  const qaStatus = String(book.audio_qa_status || "").trim().toUpperCase();
-  const audiobookUrl = String(book.audiobook_url || "").trim();
-  return Boolean(
-    slug
-    && book.audiobook_enabled === true
-    && APPROVED_RELEASE_STATUSES.has(releaseStatus)
-    && PASSED_AUDIO_QA_STATUSES.has(qaStatus)
-    && audiobookUrl === `/api/reader/book/${slug}/audiobook`,
-  );
-}
-
-export function normalizeHomeBook(book = {}) {
-  const slug = String(book.slug || "").trim();
-  const title = String(book.title || "").trim();
-  const author = String(book.author || "").trim();
-  const frontCoverUrl = String(book.front_cover_url || "").trim();
-  if (!slug || !title || !author || book.reader_enabled !== true || !isSafeHeroCoverUrl(frontCoverUrl)) {
-    return null;
-  }
-
-  const audiobookEnabled = isApprovedHomeAudiobook(book);
-  const normalized = {
-    ...book,
-    slug,
-    title,
-    author,
-    language: String(book.language || "").trim().toLowerCase() === "bn" ? "bn" : "en",
-    front_cover_url: frontCoverUrl,
-    back_cover_url: isSafeHeroCoverUrl(book.back_cover_url) ? String(book.back_cover_url).trim() : "",
-    cover_alt_text: `${title} by ${author}`,
-    reader_enabled: true,
-    book_url: `/book/${slug}`,
-    reader_url: `/reader/${slug}`,
-    audiobook_enabled: audiobookEnabled,
-    cta_label: audiobookEnabled ? "Start Listening" : "Start Reading",
-    cta_url: audiobookEnabled ? `/reader/${slug}?listen=1` : `/reader/${slug}`,
-    cta_kind: audiobookEnabled ? "listen" : "read",
-  };
-
-  if (!audiobookEnabled) delete normalized.audiobook_url;
-  return normalized;
-}
-
-function normalizeBookList(value) {
-  const books = Array.isArray(value) ? value : [];
-  const bySlug = new Map();
-  for (const rawBook of books) {
-    const book = normalizeHomeBook(rawBook);
-    if (book && !bySlug.has(book.slug)) bySlug.set(book.slug, book);
-  }
-  return Array.from(bySlug.values());
-}
-
-function normalizeShelfGroups(value) {
-  const groups = Array.isArray(value) ? value : [];
-  return groups
-    .map((group) => {
-      if (!group || typeof group !== "object") return null;
-      const books = normalizeBookList(group.books).filter(isEligibleCuratedCover);
-      if (!books.length) return null;
-      return {
-        id: String(group.id || "").trim(),
-        title: String(group.title || "").trim(),
-        description: String(group.description || "").trim(),
-        book_count: Number.isFinite(Number(group.book_count)) ? Number(group.book_count) : books.length,
-        books,
-        cta_label: String(group.cta_label || "Explore the library").trim(),
-        cta_url: String(group.cta_url || "/library").trim(),
-        visual_variant: String(group.visual_variant || "medium").trim(),
-        accent: String(group.accent || "burgundy").trim(),
-        layout_area: String(group.layout_area || group.id || "shelf").trim(),
-        editorial_line: String(group.editorial_line || "").trim(),
-        icon: String(group.icon || "book-open").trim(),
-      };
-    })
-    .filter(Boolean);
+export function normalizeShelf(shelf = {}) {
+  const books = Array.from(new Map((shelf.books || [])
+    .filter((book) => book?.slug && (book.front_cover_url || book.cover_image_url || book.cover_url))
+    .map((book) => [book.slug, book])).values());
+  return { ...shelf, books, mode: shelfMode(books.length) };
 }
 
 export function normalizeHomeCuration(payload = {}) {
-  const hero = payload.hero && typeof payload.hero === "object" ? payload.hero : {};
-  const shelves = payload.shelves && typeof payload.shelves === "object" ? payload.shelves : {};
-  const shelfCollage = payload.shelf_collage && typeof payload.shelf_collage === "object"
-    ? payload.shelf_collage
-    : {};
-  const source = payload.source && typeof payload.source === "object" ? payload.source : {};
-  const approvedAudiobooks = normalizeBookList(shelves.approved_audiobooks)
-    .filter((book) => book.audiobook_enabled && isEligibleCuratedCover(book));
-  const collageAudiobooks = normalizeBookList(shelfCollage.selected_audiobooks)
-    .filter((book) => book.audiobook_enabled && isEligibleCuratedCover(book));
-
-  return {
-    hero: {
-      headline: String(hero.headline || "").trim(),
-      subheadline: String(hero.subheadline || "").trim(),
-      primary_cta: hero.primary_cta || {},
-      secondary_cta: hero.secondary_cta || {},
-      featured_books: normalizeBookList(hero.featured_books).slice(0, 6),
-    },
-    shelves: {
-      reader_favorites: normalizeBookList(shelves.reader_favorites),
-      bengali_classics: normalizeBookList(shelves.bengali_classics),
-      english_classics: normalizeBookList(shelves.english_classics),
-      approved_audiobooks: approvedAudiobooks,
-    },
-    shelf_collage: {
-      eyebrow: String(shelfCollage.eyebrow || "CURATED PATHS THROUGH THE LIBRARY").trim(),
-      title: String(shelfCollage.title || "A shelf for every kind of curiosity.").trim(),
-      description: String(shelfCollage.description || "").trim(),
-      groups: normalizeShelfGroups(shelfCollage.groups),
-      selected_audiobooks: collageAudiobooks.length ? collageAudiobooks : approvedAudiobooks,
-    },
-    source,
-  };
+  const shelves = (payload.shelves || [])
+    .map(normalizeShelf)
+    .sort((a, b) => HOME_SHELF_ORDER.indexOf(a.id) - HOME_SHELF_ORDER.indexOf(b.id));
+  return { ...payload, shelves };
 }
 
-const NORMALIZED_SPRINT1_HOME_SNAPSHOT = normalizeHomeCuration(sprint1HomeSnapshot);
-
-export function getHomeCurationSnapshot() {
-  return NORMALIZED_SPRINT1_HOME_SNAPSHOT;
-}
-
-export async function fetchHomeCuration(signal) {
-  const response = await api.get("/home/curated", { signal });
-  return normalizeHomeCuration(response.data);
+export function approvedListeningBooks(payload = {}) {
+  return (payload.shelves || [])
+    .find((shelf) => shelf.id === "selected-listening")?.books || [];
 }

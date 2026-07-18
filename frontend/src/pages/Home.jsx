@@ -9,18 +9,18 @@ import {
   Instagram,
   Linkedin,
   Mail,
+  ShieldCheck,
   Twitter,
   Youtube,
 } from "lucide-react";
 import { toast } from "sonner";
-import CuratedShelfCollage from "../components/CuratedShelfCollage";
-import PremiumHero from "../components/PremiumHero";
+import ComingSoonBoard from "../components/ComingSoonBoard";
+import HomeShelfArchitecture from "../components/HomeShelfArchitecture";
 import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
-import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
 import useSEO from "../hooks/useSEO";
 
 const SOCIAL_ICONS = {
@@ -42,7 +42,6 @@ export default function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [homeCuration, setHomeCuration] = useState(() => getHomeCurationSnapshot());
   const activeSocials = useMemo(() => (
     getEnabledSocialLinks(social)
       .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
@@ -52,7 +51,7 @@ export default function Home() {
   useSEO({
     title: "Earnalism | Bengali and English Classics in a Calm Digital Library",
     description:
-      "Beautifully designed Bengali and English classics, immersive approved audiobooks, calm reading modes, and a curated literary experience.",
+      "Earnalism is a calm digital reading room for timeless Bengali and English literature, with reader-only classics, graphical covers, and release-gated audiobooks.",
     image: "/assets/shelves/bengali-classics.jpg",
     imageAlt: "Earnalism Bengali and English classics shelf artwork",
     canonicalPath: "/",
@@ -64,19 +63,6 @@ export default function Home() {
       book_slug: LIVE_APPROVED_SLUG,
       public: false,
     });
-  }, []);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    fetchHomeCuration(controller.signal)
-      .then((payload) => {
-        if (controller.signal.aborted) return;
-        setHomeCuration(payload);
-      })
-      .catch((error) => {
-        if (controller.signal.aborted || error?.name === "CanceledError" || error?.code === "ERR_CANCELED") return;
-      });
-    return () => controller.abort();
   }, []);
 
   const subscribe = async (event) => {
@@ -96,14 +82,83 @@ export default function Home() {
 
   return (
     <div data-testid="home-page">
-      <PremiumHero
-        curation={homeCuration}
-        loading={!homeCuration}
-        error={!homeCuration}
-        onTrack={track}
-      />
+      <section
+        className="premium-landing-hero reference-library-hero relative isolate overflow-hidden text-[#FDFCF8]"
+        data-testid="premium-landing-hero"
+        data-approved-hero-max-height="650"
+      >
+        <div className="reference-hero-grid mx-auto grid max-w-7xl grid-cols-1 gap-7 px-5 py-8 sm:px-8 sm:py-11 lg:grid-cols-12 lg:items-center lg:px-12 lg:py-12">
+          <div className="reference-hero-copy lg:col-span-7">
+            <div className="italic-eyebrow flex items-center gap-3 text-[var(--brand-gold-soft)]" data-testid="hero-overline">
+              <span className="h-px w-7 bg-[var(--brand-gold)]/70" />
+              <span>The Earnalism Digital Library</span>
+            </div>
+            <h1
+              className="home-hero-title mt-4 max-w-4xl font-serif-light tracking-normal text-[#FDFCF8] text-balance"
+              data-testid="hero-headline"
+              aria-label="Step into the classics. Stay with the story."
+            >
+              Step into the classics.
+              <span className="home-hero-title__accent">Stay with the story.</span>
+            </h1>
+            <p className="home-hero-deck mt-3 max-w-2xl font-serif-display italic text-[#F4EFEA]/92">
+              A calm home for Bengali and English classics, with room to read, reflect, and return.
+            </p>
+            <p className="home-hero-description mt-4 max-w-2xl font-light text-[#F4EFEA]/82">
+              Graphical editions lead the way. Reader-only titles stay clearly marked, and approved listening rooms appear only after production evidence passes.
+            </p>
+            <div className="reference-hero-trust mt-5" aria-label="Earnalism launch trust signals">
+              <span><ShieldCheck size={16} strokeWidth={1.6} /> Rights-safe releases</span>
+              <span><BookOpen size={16} strokeWidth={1.6} /> Bengali + English shelves</span>
+              <span><CreditCard size={16} strokeWidth={1.6} /> Audio gated by evidence</span>
+            </div>
+            <div className="premium-hero-ctas mt-5 sm:mt-6" data-testid="hero-ctas">
+              <Link
+                to="/library"
+                className="btn-primary premium-hero-cta-primary justify-center gap-2"
+                data-testid="hero-cta-library"
+                onClick={() => track("hero_primary_cta_click", { cta: "home_hero_start_reading" })}
+              >
+                <BookOpen size={16} strokeWidth={1.7} /> Start Reading
+              </Link>
+              <Link
+                to="#curated-action-cards-title"
+                className="btn-secondary justify-center !border-[var(--brand-gold)] !text-[#FDFCF8] hover:!bg-[var(--brand-gold)]/10"
+                data-testid="hero-cta-shelves"
+                onClick={() => track("hero_secondary_cta_click", { cta: "home_hero_browse_library" })}
+              >
+                Browse Library <ArrowRight size={15} strokeWidth={1.7} />
+              </Link>
+            </div>
+            <p className="mt-3 max-w-xl text-[0.66rem] uppercase tracking-[0.16em] text-[var(--brand-gold-soft)]/92 sm:text-[0.7rem]">
+              No unapproved audiobook controls. No typographic-only cover fallbacks.
+            </p>
+          </div>
 
-      <CuratedShelfCollage curation={homeCuration?.shelf_collage} />
+          <div className="reference-editorial-stage lg:col-span-5" data-testid="hero-editorial-index">
+            <div className="reference-editorial-card" aria-label="Earnalism library index">
+              <div className="reference-editorial-card__eyebrow">Live shelves</div>
+              <div className="reference-editorial-card__rows">
+                <span>Bengali classics</span>
+                <strong>Reader-only editions live</strong>
+              </div>
+              <div className="reference-editorial-card__rows">
+                <span>English classics</span>
+                <strong>Dracula and companion shelves</strong>
+              </div>
+              <div className="reference-editorial-card__rows">
+                <span>Audiobooks</span>
+                <strong>Visible only after release gates pass</strong>
+              </div>
+              <div className="reference-editorial-card__mark" aria-hidden="true">E</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ComingSoonBoard />
+
+      <HomeShelfArchitecture />
 
       <section
         className="reference-reading-path"

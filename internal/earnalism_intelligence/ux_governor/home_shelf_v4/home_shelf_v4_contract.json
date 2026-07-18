@@ -1,0 +1,11 @@
+{
+  "version": "home-shelf-v4",
+  "status": "implemented",
+  "membership": "backend-public-catalog-metadata",
+  "audio_membership": "canonical-reader-manifest-only",
+  "layout": {"desktop": "12-column", "tablet": "2-column", "mobile": "1-column"},
+  "modes": ["Spotlight", "Duo", "Trio", "Runway", "Overflow", "Zero"],
+  "release_guardrails": ["no static audio fallback", "no browser speech fallback", "no word-level sync claim", "no non-approved AudioObject"],
+  "audiobook_generation": "not_run",
+  "paid_tts_lock": "untouched"
+}
