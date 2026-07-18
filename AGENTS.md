@@ -15,6 +15,14 @@ Always:
 
 # Earnalism Autonomous Intelligence Layer
 
+## Single Canonical Integration Branch
+
+- Use `codex/main-approved-integration` from `/tmp/earnalism-main-approved-integration` for all future changes, regardless of which thread or agent performs the work.
+- Do not create additional feature branches or parallel commit worktrees for routine implementation.
+- Keep one focused PR open at a time, merge it into `main`, and deploy only from the merged `origin/main` state.
+- Preserve existing dirty or historical worktrees; do not merge or delete them without explicit owner authorization.
+- Before editing, verify the canonical worktree is clean and aligned with `origin/main`; stop and report if it is not.
+
 Before book production, audiobook, catalog, publishing, or UX release work:
 
 - Read the active files under `internal/earnalism_intelligence/`.
