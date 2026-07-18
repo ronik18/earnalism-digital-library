@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/components/PremiumHero.jsx"), "utf8");
+const styles = fs.readFileSync(path.join(process.cwd(), "src/components/PremiumHero.css"), "utf8");
 
 describe("PremiumHero public contract", () => {
   test("uses dynamic catalog records rather than hardcoded public books", () => {
@@ -41,10 +42,14 @@ describe("PremiumHero public contract", () => {
     expect(source).not.toMatch(/release gates|QA_PASSED|PUBLIC_AUDIO|Audio gated by evidence|typographic-only cover fallback/i);
   });
 
-  test("supports a dynamic custom logo over the desktop reference header strip", () => {
+  test("replaces the baked reference wordmark while preserving the India badge", () => {
     expect(source).toContain("premium-reference-brand-overlay");
     expect(source).toContain("brand?.logo_url?.trim()");
     expect(source).toContain("earnalism-brand-lockup.png");
     expect(source).toContain('data-testid="premium-reference-brand-overlay"');
+    expect(source).toContain('alt="" aria-hidden="true"');
+    expect(styles).toContain("width: 24%;");
+    expect(styles).toContain("background: #fff8e8;");
+    expect(styles).toContain("pointer-events: none;");
   });
 });

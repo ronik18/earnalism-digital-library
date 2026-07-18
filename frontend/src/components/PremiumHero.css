@@ -260,11 +260,12 @@
     left: 0;
     z-index: 4;
     display: flex;
-    width: 31%;
+    width: 24%;
     height: 14.6%;
     align-items: center;
     padding: 0.8% 1.4% 0.8% 2.7%;
-    background: transparent;
+    /* Replace the logo baked into the reference art without covering its badge. */
+    background: #fff8e8;
     border: 0;
     pointer-events: none;
   }

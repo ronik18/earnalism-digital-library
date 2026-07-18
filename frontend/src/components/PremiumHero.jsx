@@ -264,7 +264,7 @@ export default function PremiumHero({ curation, loading = false, error = false, 
       ) : null}
       {isDesktopReference && customLogo ? (
         <div className="premium-reference-brand-overlay" data-testid="premium-reference-brand-overlay">
-          <img src={customLogo} alt="Earnalism logo" loading="eager" decoding="async" />
+          <img src={customLogo} alt="" aria-hidden="true" loading="eager" decoding="async" />
         </div>
       ) : null}
 
