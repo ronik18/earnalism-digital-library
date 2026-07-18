@@ -45,6 +45,11 @@ describe("BrandHeaderLogo", () => {
     expect(componentSource).toContain("brand-header-logo__badge--tricolor");
   });
 
+  test("keeps the selected India badge beside the latest lockup asset", () => {
+    expect(componentSource.match(/<TricolorLiteraryBadge \/>/g)).toHaveLength(2);
+    expect(componentSource).toContain('data-logo-source={customLogo ? "admin-setting" : "bundled-owner-asset"}');
+  });
+
   test("public header uses the safer tricolor variant by default", () => {
     expect(headerSource).toContain("BrandHeaderLogo");
     expect(headerSource).toContain('badgeVariant="tricolor"');

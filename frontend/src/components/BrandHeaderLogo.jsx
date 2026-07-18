@@ -97,6 +97,8 @@ export default function BrandHeaderLogo({
           decoding="async"
           className="brand-header-logo__custom"
         />
+        {safeBadgeVariant === BRAND_HEADER_BADGE_VARIANTS.exactFlag && <ExactFlagBadge />}
+        {safeBadgeVariant === BRAND_HEADER_BADGE_VARIANTS.tricolor && <TricolorLiteraryBadge />}
       </span>
     );
   }
