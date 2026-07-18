@@ -12,12 +12,10 @@ import {
   Sparkles,
 } from "lucide-react";
 import { optimizedImageUrl } from "../lib/images";
-import { useSettings } from "../context/SettingsContext";
 import "./PremiumHero.css";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
 const REFERENCE_HERO_IMAGE = `${PUBLIC_URL}/assets/hero/premium-library-reference.webp`;
-const DEFAULT_BRAND_LOCKUP = `${PUBLIC_URL}/assets/brand/earnalism-brand-lockup.png`;
 
 const DEFAULT_HEADLINE = "A premium reading and listening sanctuary for timeless Bengali and English classics.";
 const DEFAULT_SUBHEADLINE = "Beautifully designed editions. Immersive audiobooks. Calm reading modes. A curated literary experience that stays with you.";
@@ -224,8 +222,6 @@ function CoverStack({ books, loading }) {
 
 export default function PremiumHero({ curation, loading = false, error = false, onTrack }) {
   const isDesktopReference = useDesktopReference();
-  const { brand } = useSettings();
-  const customLogo = brand?.logo_url?.trim() || DEFAULT_BRAND_LOCKUP;
   const hero = curation?.hero || {};
   const shelves = curation?.shelves || {};
   const featuredBooks = Array.isArray(hero.featured_books) ? hero.featured_books.slice(0, 6) : [];
@@ -262,12 +258,6 @@ export default function PremiumHero({ curation, loading = false, error = false, 
           decoding="async"
         />
       ) : null}
-      {isDesktopReference && customLogo ? (
-        <div className="premium-reference-brand-overlay" data-testid="premium-reference-brand-overlay">
-          <img src={customLogo} alt="" aria-hidden="true" loading="eager" decoding="async" />
-        </div>
-      ) : null}
-
       <div className="premium-hero-copy">
         <div className="premium-hero-eyebrow">
           <Sparkles size={15} strokeWidth={1.6} aria-hidden="true" />
