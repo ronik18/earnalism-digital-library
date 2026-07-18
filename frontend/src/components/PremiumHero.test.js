@@ -40,4 +40,11 @@ describe("PremiumHero public contract", () => {
   test("contains no engineering status language in the public hero", () => {
     expect(source).not.toMatch(/release gates|QA_PASSED|PUBLIC_AUDIO|Audio gated by evidence|typographic-only cover fallback/i);
   });
+
+  test("supports a dynamic custom logo over the desktop reference header strip", () => {
+    expect(source).toContain("premium-reference-brand-overlay");
+    expect(source).toContain("brand?.logo_url?.trim()");
+    expect(source).toContain("earnalism-brand-lockup.png");
+    expect(source).toContain('data-testid="premium-reference-brand-overlay"');
+  });
 });

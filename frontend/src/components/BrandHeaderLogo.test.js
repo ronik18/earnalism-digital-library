@@ -14,6 +14,7 @@ describe("BrandHeaderLogo", () => {
   test("uses the existing bundled Earnalism icon asset unchanged", () => {
     expect(componentSource).toMatch(/earnalism-logo-transparent-96\.webp/);
     expect(componentSource).toMatch(/earnalism-logo-transparent-128\.webp/);
+    expect(componentSource).toMatch(/earnalism-brand-lockup\.png/);
     expect(componentSource).not.toMatch(/canvas|generated|ai-garbled|data:image/i);
   });
 

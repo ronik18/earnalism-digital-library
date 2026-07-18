@@ -602,6 +602,7 @@ Legacy aliases also exist under `/api/reader/session/start`, `/api/reader/heartb
 | `GET/PATCH` | `/api/admin/contacts...` | Contact inbox and status. |
 | `PUT` | `/api/admin/settings/social` | Social links. |
 | `PUT` | `/api/admin/settings/brand` | Brand logo and OG image. |
+| `POST` | `/api/admin/settings/brand/logo` | Authenticated Canva-exported PNG/WebP logo upload; stage, preview, then save with the brand settings route. |
 | `PUT` | `/api/admin/featured` | Featured book setting. |
 | `GET/PATCH` | `/api/admin/users...` | Reader list and status. |
 | `POST` | `/api/admin/users/{uid}/wallet/adjust` | Manual wallet adjustment. |
