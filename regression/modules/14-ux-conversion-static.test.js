@@ -260,7 +260,7 @@ describe("UX conversion static signals", () => {
     expect(premiumHeroStyles).toContain(".premium-reference-slot");
     expect(premiumHeroStyles).toContain("transform: perspective(");
     expect(premiumHeroStyles).toMatch(/@media\s*\(min-width:\s*1024px\)/);
-    expect(headerStyles).toContain(".reference-home-header-hotspot--cta");
+    expect(headerStyles).toContain(".premium-reference-home-cta-wrap");
     expect(styles).not.toContain(".reference-dracula-hardcopy-shell::after");
     expect(styles).not.toContain(".reference-dracula-hardcopy-shell::before");
     expect(styles).not.toContain("APPROVED CLASSIC READING RELEASE");

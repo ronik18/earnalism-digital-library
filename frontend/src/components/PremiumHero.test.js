@@ -42,14 +42,13 @@ describe("PremiumHero public contract", () => {
     expect(source).not.toMatch(/release gates|QA_PASSED|PUBLIC_AUDIO|Audio gated by evidence|typographic-only cover fallback/i);
   });
 
-  test("replaces the baked reference wordmark while preserving the India badge", () => {
-    expect(source).toContain("premium-reference-brand-overlay");
-    expect(source).toContain("brand?.logo_url?.trim()");
-    expect(source).toContain("earnalism-brand-lockup.png");
-    expect(source).toContain('data-testid="premium-reference-brand-overlay"');
-    expect(source).toContain('alt="" aria-hidden="true"');
-    expect(styles).toContain("width: 24%;");
-    expect(styles).toContain("background: #fff8e8;");
-    expect(styles).toContain("pointer-events: none;");
+  test("renders the live header above the cropped reference art and separates device surfaces", () => {
+    expect(source).toContain("premium-reference-hero__art");
+    expect(source).not.toContain("premium-reference-brand-overlay");
+    expect(styles).toContain("--reference-header-height: calc(100vw * 137 / 1672);");
+    expect(styles).toContain("height: calc(100% - var(--reference-header-height));");
+    expect(styles).toContain("object-position: center bottom;");
+    expect(styles).toContain("width: 12.7%;");
+    expect(styles).toContain("left: 58.15%;");
   });
 });

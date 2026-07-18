@@ -118,8 +118,6 @@
 .premium-header-cta:hover { transform: translateY(-1px); box-shadow: 0 16px 28px -16px rgba(85, 21, 17, 0.92); }
 .premium-header-cta:focus-visible { outline: 2px solid #8f5420; outline-offset: 3px; }
 
-.reference-home-header-hotspots { display: none; }
-
 @media (min-width: 1024px) {
   .premium-site-header--reference-home {
     position: absolute !important;
@@ -130,51 +128,108 @@
     height: calc(100vw * 137 / 1672);
     min-height: 0;
     border: 0;
-    background: transparent;
-    box-shadow: none;
+    background: linear-gradient(180deg, rgba(255, 251, 242, 0.99), rgba(250, 242, 228, 0.97));
+    border-bottom: 1px solid rgba(174, 111, 33, 0.48);
+    box-shadow: 0 14px 36px -30px rgba(70, 24, 10, 0.72), inset 0 1px rgba(255, 255, 255, 0.92);
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
   }
 
-  .premium-site-header--reference-home .premium-header-inner,
-  .premium-site-header--reference-home #mobile-menu {
-    display: none !important;
+  .premium-site-header--reference-home .premium-header-inner {
+    position: relative;
+    display: block !important;
+    width: 100%;
+    height: 100% !important;
+    min-height: 0;
+    max-width: none;
+    padding: 0;
   }
 
-  .reference-home-header-hotspots {
+  .premium-site-header--reference-home .header-brand-cluster {
     position: absolute;
-    inset: 0;
-    display: block;
+    top: 8%;
+    left: 2.7%;
+    display: flex;
+    width: 27%;
+    height: 82%;
+    align-items: center;
   }
 
-  .reference-home-header-hotspot {
+  .premium-site-header--reference-home .header-brand-cluster > a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+  }
+
+  .premium-site-header--reference-home .brand-header-logo--custom {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    align-items: center;
+  }
+
+  .premium-site-header--reference-home .brand-header-logo__custom {
+    width: min(20.8rem, 22vw);
+    max-width: none;
+    max-height: none;
+    height: auto;
+  }
+
+  .premium-site-header--reference-home .brand-header-logo__badge {
+    width: clamp(2.2rem, 3.3vw, 3.3rem);
+    height: clamp(2.2rem, 3.3vw, 3.3rem);
+    flex: 0 0 auto;
+    margin-left: clamp(0.6rem, 0.9vw, 1rem);
+  }
+
+  .premium-site-header--reference-home .premium-header-nav--reference-home {
     position: absolute;
-    display: block;
+    top: 0;
+    right: 20.7%;
+    left: 32.8%;
+    display: flex !important;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(0.55rem, 0.95vw, 1rem);
+  }
+
+  .premium-site-header--reference-home .premium-header-nav--reference-home a {
+    font-size: clamp(0.73rem, 0.92vw, 0.92rem) !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  .premium-site-header--reference-home .premium-header-nav--reference-home a::after {
+    bottom: -0.38rem;
+  }
+
+  .premium-site-header--reference-home .reference-home-header-icon {
+    display: inline-flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: #4c2a21;
+  }
+
+  .premium-site-header--reference-home .premium-reference-home-cta-wrap {
     border: 0;
-    border-radius: 0.55rem;
-    background: transparent;
+    position: absolute;
+    top: 0;
+    right: 2.7%;
+    display: flex;
+    height: 100%;
+    align-items: center;
   }
 
-  .reference-home-header-hotspot:hover {
-    background: rgba(128, 55, 23, 0.035);
+  .premium-site-header--reference-home .premium-reference-home-cta-wrap .premium-header-cta {
+    min-height: 2.9rem;
+    padding: 0.75rem 1.15rem;
+    white-space: nowrap;
   }
 
-  .reference-home-header-hotspot:focus-visible {
-    background: rgba(255, 246, 220, 0.18);
-    outline: 3px solid #8b4a20;
-    outline-offset: 2px;
-  }
-
-  .reference-home-header-hotspot--brand { top: 8%; left: 2.7%; width: 27%; height: 82%; }
-  .reference-home-header-hotspot--library { top: 28%; left: 32.8%; width: 6%; height: 50%; }
-  .reference-home-header-hotspot--bengali { top: 28%; left: 39.6%; width: 8.4%; height: 50%; }
-  .reference-home-header-hotspot--english { top: 28%; left: 48.6%; width: 9.4%; height: 50%; }
-  .reference-home-header-hotspot--audiobooks { top: 28%; left: 58.7%; width: 7.8%; height: 50%; }
-  .reference-home-header-hotspot--membership { top: 28%; left: 66.6%; width: 7.4%; height: 50%; }
-  .reference-home-header-hotspot--about { top: 28%; left: 74.2%; width: 4.5%; height: 50%; }
-  .reference-home-header-hotspot--search { top: 24%; left: 79.6%; width: 3.2%; height: 56%; }
-  .reference-home-header-hotspot--account { top: 24%; left: 83.1%; width: 3.1%; height: 56%; }
-  .reference-home-header-hotspot--cta { top: 27%; left: 87%; width: 11.2%; height: 48%; border-radius: 999px; }
 }
 
 @media (max-width: 640px) {

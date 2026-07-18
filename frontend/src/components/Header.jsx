@@ -1,6 +1,17 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Instagram, Facebook, Youtube, Linkedin, Mail, Twitter } from "lucide-react";
+import {
+  Menu,
+  X,
+  Instagram,
+  Facebook,
+  Youtube,
+  Linkedin,
+  Mail,
+  Twitter,
+  Search,
+  UserRound,
+} from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
 import { useAuth } from "../context/AuthContext";
 import BrandHeaderLogo from "./BrandHeaderLogo";
@@ -56,37 +67,6 @@ export default function Header() {
       className={`sticky top-0 z-50 glass-header premium-site-header${isReferenceHome ? " premium-site-header--reference-home" : ""}`}
       data-testid="site-header"
     >
-      {isReferenceHome && (
-        <nav className="reference-home-header-hotspots" aria-label="Primary navigation">
-          <Link
-            to="/"
-            className="reference-home-header-hotspot reference-home-header-hotspot--brand"
-            aria-label="Earnalism — Where Learning Becomes Earning, a Reo Enterprise venture"
-            data-testid="reference-home-brand-hotspot"
-          />
-          {REFERENCE_HOME_NAV.map((item) => (
-            <Link
-              key={item.key}
-              to={item.to}
-              className={`reference-home-header-hotspot reference-home-header-hotspot--${item.key}`}
-              aria-label={item.label}
-              data-testid={`reference-nav-${item.key}`}
-            />
-          ))}
-          <Link
-            to={accountHref}
-            className="reference-home-header-hotspot reference-home-header-hotspot--account"
-            aria-label={accountLabel}
-            data-testid={isAuthed ? "reference-nav-account" : "reference-nav-sign-in"}
-          />
-          <Link
-            to="/library"
-            className="reference-home-header-hotspot reference-home-header-hotspot--cta"
-            aria-label="Start Reading"
-            data-testid="header-cta-library"
-          />
-        </nav>
-      )}
       <div className="premium-header-inner max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-4">
         <div className="header-brand-cluster">
           <Link to="/" className="flex items-center min-w-0" data-testid="brand-logo">
@@ -94,10 +74,13 @@ export default function Header() {
           </Link>
         </div>
 
-        <nav className="premium-header-nav hidden xl:flex items-center gap-5 2xl:gap-7" aria-label="Primary navigation">
-          {NAV.map((n) => (
+        <nav
+          className={`premium-header-nav hidden xl:flex items-center gap-5 2xl:gap-7${isReferenceHome ? " premium-header-nav--reference-home" : ""}`}
+          aria-label="Primary navigation"
+        >
+          {(isReferenceHome ? REFERENCE_HOME_NAV.filter((item) => item.key !== "search") : NAV).map((n) => (
             <NavLink
-              key={n.to}
+              key={n.to || n.key}
               to={n.to}
               end={n.to === "/"}
               data-testid={`nav-${n.label.toLowerCase().replace(/\s/g, '-')}`}
@@ -108,22 +91,41 @@ export default function Header() {
               {n.label}
             </NavLink>
           ))}
-          <NavLink
-            to={accountHref}
-            data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
-            className={({ isActive }) =>
-              `text-[0.88rem] tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
-            }
-          >
-            {accountLabel}
-          </NavLink>
+          {isReferenceHome ? (
+            <>
+              <Link
+                to="/library"
+                className="reference-home-header-icon"
+                aria-label="Search the library"
+                data-testid="nav-search"
+              >
+                <Search size={22} strokeWidth={1.55} aria-hidden="true" />
+              </Link>
+              <Link
+                to={accountHref}
+                className="reference-home-header-icon"
+                aria-label={accountLabel}
+                data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
+              >
+                <UserRound size={22} strokeWidth={1.55} aria-hidden="true" />
+              </Link>
+            </>
+          ) : (
+            <NavLink
+              to={accountHref}
+              data-testid={isAuthed ? "nav-account" : "nav-sign-in"}
+              className={({ isActive }) =>
+                `text-[0.88rem] tracking-[0.12em] transition-colors whitespace-nowrap ${isActive ? "text-burgundy" : "text-charcoal-soft hover:text-burgundy"}`
+              }
+            >
+              {accountLabel}
+            </NavLink>
+          )}
         </nav>
 
-        {!isReferenceHome && (
-          <div className="hidden xl:block">
-            <Link to="/library" className="premium-header-cta" data-testid="header-cta-library">Start Reading</Link>
-          </div>
-        )}
+        <div className="hidden xl:block premium-reference-home-cta-wrap">
+          <Link to="/library" className="premium-header-cta" data-testid="header-cta-library">Start Reading</Link>
+        </div>
 
         <button
           aria-label={open ? "Close menu" : "Open menu"}
