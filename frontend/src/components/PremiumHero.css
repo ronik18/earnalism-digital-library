@@ -49,11 +49,11 @@
   max-width: 42rem;
   margin: 1rem 0 0;
   color: #fffaf0;
-  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', Georgia, serif;
-  font-size: clamp(2.35rem, 10.6vw, 3.15rem);
+  font-family: var(--font-display);
+  font-size: clamp(2.15rem, 9.6vw, 3rem);
   font-weight: 400;
   letter-spacing: -0.035em;
-  line-height: 1;
+  line-height: 1.06;
 }
 
 .premium-hero-copy h1 span {
@@ -64,7 +64,7 @@
   max-width: 38rem;
   margin: 1.15rem 0 0;
   color: rgba(255, 248, 232, 0.84);
-  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   line-height: 1.55;
 }
@@ -84,7 +84,7 @@
   border: 1px solid rgba(228, 180, 92, 0.74);
   border-radius: 0.9rem;
   padding: 0.8rem 1.2rem;
-  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.02rem;
   font-weight: 600;
 }
@@ -173,7 +173,7 @@
 .premium-hero-cards h2 {
   margin: 0;
   color: #fff7e8;
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.08rem;
   line-height: 1.05;
 }
@@ -205,7 +205,7 @@
 .premium-hero-rail svg { flex: 0 0 auto; color: var(--hero-gold); }
 .premium-hero-rail span {
   color: #fff5e2;
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 0.96rem;
   line-height: 1.05;
 }
@@ -233,7 +233,7 @@
 
 @media (min-width: 1024px) {
   .premium-reference-hero {
-    --reference-header-height: calc(100vw * 137 / 1672);
+    --reference-header-height: var(--site-header-height);
     width: 100%;
     min-height: 0;
     aspect-ratio: 1672 / 941;

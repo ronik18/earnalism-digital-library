@@ -4,11 +4,14 @@
   box-shadow: 0 14px 36px -30px rgba(70, 24, 10, 0.72), inset 0 1px rgba(255, 255, 255, 0.92);
 }
 
-.premium-header-inner { min-height: 5rem; }
+.premium-header-inner {
+  height: calc(var(--site-header-height) - 1px) !important;
+  min-height: calc(var(--site-header-height) - 1px);
+}
 
 .premium-site-header .brand-header-logo {
   grid-template-columns: auto minmax(0, 1fr) auto;
-  height: 4.15rem;
+  height: min(5.9rem, calc(var(--site-header-height) - 1.35rem));
   max-width: 23.8rem;
   padding: 0.22rem 0;
   border: 0;
@@ -23,7 +26,7 @@
 .premium-site-header .brand-header-logo--custom {
   display: inline-flex;
   width: min(24rem, 44vw);
-  height: 3.85rem;
+  height: min(5.9rem, calc(var(--site-header-height) - 1.35rem));
   align-items: center;
 }
 .premium-site-header .brand-header-logo__custom {
@@ -78,7 +81,7 @@
 
 .premium-header-nav a {
   position: relative;
-  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 0.92rem !important;
   font-weight: 600;
   letter-spacing: 0.025em !important;
@@ -109,7 +112,7 @@
   color: #fff8ea;
   background: linear-gradient(135deg, #6f1e22, #3b0e13);
   box-shadow: 0 12px 24px -16px rgba(85, 21, 17, 0.85), inset 0 1px rgba(255, 255, 255, 0.16);
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 0.98rem;
   font-weight: 600;
   transition: transform 180ms ease, box-shadow 180ms ease;
@@ -125,7 +128,7 @@
     right: 0;
     left: 0;
     z-index: 50;
-    height: calc(100vw * 137 / 1672);
+    height: var(--site-header-height);
     min-height: 0;
     border: 0;
     background: linear-gradient(180deg, rgba(255, 251, 242, 0.99), rgba(250, 242, 228, 0.97));
@@ -233,7 +236,10 @@
 }
 
 @media (max-width: 640px) {
-  .premium-header-inner { min-height: 4rem; }
+  .premium-header-inner {
+    height: calc(var(--site-header-height) - 1px) !important;
+    min-height: calc(var(--site-header-height) - 1px);
+  }
   .premium-site-header .brand-header-logo {
     grid-template-columns: auto minmax(0, 1fr) auto;
     height: 3.35rem;
