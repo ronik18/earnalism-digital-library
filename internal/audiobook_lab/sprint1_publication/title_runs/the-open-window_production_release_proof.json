@@ -53,7 +53,34 @@
   },
   "deployments": {
     "railway_backend": "94f3a6d9-427d-40fd-9206-e8015d5be6df",
-    "vercel_frontend": "dpl_QheBLC5YexLoAnkWkwbFK6WM1oGG"
+    "vercel_frontend": "dpl_QheBLC5YexLoAnkWkwbFK6WM1oGG",
+    "evidence_only_railway_snapshot_failures": [
+      "0db56483-c110-484a-b880-e6eca9c740c3",
+      "a64613be-5fa0-409c-8306-6ece9a162ca3"
+    ],
+    "evidence_sync_note": "Both later uploads failed before build; the healthy release deployment remained active and all customer-facing gates were revalidated."
+  },
+  "production_regression": {
+    "approved_audio_http_206": [
+      "book-2b9853ec52",
+      "a-ghost-story",
+      "sredni-vashtar",
+      "the-open-window"
+    ],
+    "hidden_audio_http_404": [
+      "bn-066",
+      "radharani",
+      "nishkriti",
+      "book-d19e96859f",
+      "book-f5d593e1f4",
+      "muchiram-gurer-jibanchorit",
+      "dsires-baby",
+      "pather-panchali"
+    ],
+    "static_audio_path_status": 404,
+    "home_curated_approved_audiobook_count": 4,
+    "mp3_hash_match": true,
+    "all_sidecar_hashes_match": true
   },
   "release_blockers": []
 }
