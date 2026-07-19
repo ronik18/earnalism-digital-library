@@ -18,7 +18,7 @@
 @media (min-width: 1024px) {
   /* Keep every desktop route aligned with the reference hero header. */
   :root {
-    --site-header-height: calc(100vw * 137 / 1672);
+    --site-header-height: clamp(4.5rem, 6.5vw, 6rem);
   }
 }
 

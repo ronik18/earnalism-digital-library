@@ -70,7 +70,7 @@ export default function Header() {
       <div className="premium-header-inner max-w-[1536px] mx-auto px-5 sm:px-8 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-4">
         <div className="header-brand-cluster">
           <Link to="/" className="flex items-center min-w-0" data-testid="brand-logo">
-            <BrandHeaderLogo badgeVariant="tricolor" />
+            <BrandHeaderLogo badgeVariant="none" />
           </Link>
         </div>
 

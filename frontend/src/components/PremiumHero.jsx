@@ -15,7 +15,7 @@ import { optimizedImageUrl } from "../lib/images";
 import "./PremiumHero.css";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
-const REFERENCE_HERO_IMAGE = `${PUBLIC_URL}/assets/hero/premium-library-reference.webp`;
+const REFERENCE_HERO_IMAGE = `${PUBLIC_URL}/assets/hero/premium-library-reference-art.webp`;
 
 const DEFAULT_HEADLINE = "A premium reading and listening sanctuary for timeless Bengali and English classics.";
 const DEFAULT_SUBHEADLINE = "Beautifully designed editions. Immersive audiobooks. Calm reading modes. A curated literary experience that stays with you.";
@@ -126,6 +126,52 @@ function CatalogCoverLink({
   );
 }
 
+function DecorativeCover({ book }) {
+  if (!book) return null;
+
+  return (
+    <div className="premium-reference-slot premium-reference-slot--reader-cover" aria-hidden="true">
+      <img
+        src={book.front_cover_url}
+        alt=""
+        width="240"
+        height="360"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  );
+}
+
+function ReaderScreenPreview() {
+  return (
+    <Link
+      to="/reader/dracula"
+      className="premium-reference-slot premium-reference-slot--reader"
+      aria-label="Open the Dracula reader"
+      data-testid="hero-reader-preview-dracula"
+      data-reader-preview-book="dracula"
+    >
+      <div className="premium-reader-screen-preview">
+        <div className="premium-reader-screen-preview__topbar">
+          <span>Dracula</span>
+          <span>Reader</span>
+        </div>
+        <div className="premium-reader-screen-preview__chapter">
+          <span>Chapter I</span>
+          <span>01 / 27</span>
+        </div>
+        <h3>Jonathan Harker&apos;s Journal</h3>
+        <div className="premium-reader-screen-preview__body">
+          <p>3 May. Bistritz. Left Munich at 8:35 P.M. on 1st May, arriving in Vienna early next morning.</p>
+          <p>The journey had been beautiful, and the quiet rhythm of the road made the pages feel close at hand.</p>
+        </div>
+        <span className="premium-reader-screen-preview__progress" aria-hidden="true"><i /></span>
+      </div>
+    </Link>
+  );
+}
+
 function ReferenceCatalogStage({ featuredBooks, approvedAudiobooks }) {
   const readingBook = featuredBooks[0] || null;
   const featuredSlugs = new Set(featuredBooks.map((book) => book.slug));
@@ -139,15 +185,8 @@ function ReferenceCatalogStage({ featuredBooks, approvedAudiobooks }) {
 
   return (
     <div className="premium-reference-catalog" aria-label="Featured Sprint 1 classics">
-      <CatalogCoverLink
-        book={readingBook}
-        destination="reader_url"
-        className="premium-reference-slot premium-reference-slot--reader"
-        sizes="13vw"
-        widths={[220, 440]}
-        eager
-        testId={readingBook ? `hero-reader-${readingBook.slug}` : undefined}
-      />
+      <DecorativeCover book={readingBook} />
+      <ReaderScreenPreview />
 
       {listeningBook ? (
         <Link
