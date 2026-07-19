@@ -126,29 +126,6 @@ function CatalogCoverLink({
   );
 }
 
-function DecorativeCover({ book }) {
-  if (!book) return null;
-
-  return (
-    <div
-      className="premium-reference-slot premium-reference-slot--reader-cover"
-      aria-hidden="true"
-      data-testid={`hero-reader-${book.slug}`}
-      data-book-slug={book.slug}
-    >
-      <img
-        src={book.front_cover_url}
-        alt={book.cover_alt_text}
-        data-canonical-cover-url={book.front_cover_url}
-        width="240"
-        height="360"
-        loading="eager"
-        decoding="async"
-      />
-    </div>
-  );
-}
-
 function ReaderScreenPreview() {
   return (
     <Link
@@ -228,22 +205,21 @@ function ReferenceDeviceGroup({ listeningBook }) {
 }
 
 function ReferenceCatalogStage({ featuredBooks, approvedAudiobooks }) {
-  const readingBook = featuredBooks[0] || null;
   const featuredSlugs = new Set(featuredBooks.map((book) => book.slug));
+  const primaryShelfSlug = featuredBooks[0]?.slug;
   const listeningBook = approvedAudiobooks.find((book) => (
-    book.slug !== readingBook?.slug && featuredSlugs.has(book.slug)
+    book.slug !== primaryShelfSlug && featuredSlugs.has(book.slug)
   ))
+    || approvedAudiobooks.find((book) => book.slug !== primaryShelfSlug)
     || approvedAudiobooks[0]
     || null;
-  const excludedSlugs = new Set([readingBook?.slug, listeningBook?.slug].filter(Boolean));
-  const deskBooks = featuredBooks.filter((book) => !excludedSlugs.has(book.slug)).slice(0, 3);
+  const deskBooks = featuredBooks.slice(0, 4);
 
   return (
     <div className="premium-reference-catalog" aria-label="Featured Sprint 1 classics">
-      <DecorativeCover book={readingBook} />
       <ReferenceDeviceGroup listeningBook={listeningBook} />
 
-      {[0, 1, 2].map((index) => (
+      {[0, 1, 2, 3].map((index) => (
         <CatalogCoverLink
           key={deskBooks[index]?.slug || `empty-${index}`}
           book={deskBooks[index]}
@@ -314,7 +290,7 @@ export default function PremiumHero({ curation, loading = false, error = false, 
           alt=""
           aria-hidden="true"
           width="1672"
-          height="941"
+          height="804"
           loading="eager"
           fetchPriority="high"
           decoding="async"

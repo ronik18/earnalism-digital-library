@@ -236,8 +236,9 @@
   .premium-reference-hero {
     --reference-header-height: var(--site-header-height);
     width: 100%;
+    height: calc(var(--reference-header-height) + 48.0861vw);
     min-height: 0;
-    aspect-ratio: 1672 / 941;
+    aspect-ratio: auto;
     border-bottom: 0;
     background: #090301;
   }
@@ -273,7 +274,7 @@
 
   .premium-hero-actions {
     position: absolute;
-    inset: 0;
+    inset: var(--reference-header-height) 0 0;
     z-index: 5;
     display: block;
     padding: 0;
@@ -296,14 +297,14 @@
   .premium-hero-action span { opacity: 0; }
 
   .premium-hero-action--primary {
-    top: 72.16%;
+    top: 70%;
     left: 5.32%;
     width: 15.56%;
     height: 7.18%;
   }
 
   .premium-hero-action--secondary {
-    top: 72.16%;
+    top: 70%;
     left: 21.89%;
     width: 15.62%;
     height: 7.18%;
@@ -322,7 +323,7 @@
 
   .premium-hero-catalog-shell {
     position: absolute;
-    inset: 0;
+    inset: var(--reference-header-height) 0 0;
     z-index: 4;
     pointer-events: none;
   }
@@ -357,20 +358,9 @@
     object-position: center;
   }
 
-  .premium-reference-slot--reader-cover {
-    top: 42.2%;
-    left: 43.72%;
-    z-index: 1;
-    width: 7.8%;
-    height: 20.8%;
-    border-radius: 0.12rem;
-    opacity: 0.9;
-    transform: rotate(-0.9deg);
-  }
-
   .premium-reference-tablet {
     position: absolute;
-    top: 33%;
+    top: 25.3%;
     left: 43.7%;
     z-index: 3;
     display: block;
@@ -503,11 +493,12 @@
   }
 
   .premium-reference-listening {
-    top: 46.12%;
-    left: 58.15%;
+    top: 35.5%;
+    left: 56.6%;
     z-index: 1;
-    width: 6.34%;
-    height: 26.89%;
+    width: 7.3%;
+    height: auto;
+    aspect-ratio: 0.42;
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
@@ -573,28 +564,37 @@
   .premium-reference-listening--generic svg { width: 26%; color: #ebbd67; }
 
   .premium-reference-slot--desk-1 {
-    top: 54.41%;
+    top: 46.3%;
     left: 65.95%;
     width: 8.02%;
-    height: 22.74%;
+    height: 29%;
     border-radius: 0.1rem 0.18rem 0.12rem 0.08rem;
     transform: perspective(900px) rotateY(1.4deg);
   }
 
   .premium-reference-slot--desk-2 {
-    top: 54.62%;
+    top: 46.55%;
     left: 73.86%;
     width: 8.97%;
-    height: 23.17%;
+    height: 29.3%;
     border-radius: 0.08rem;
     transform: perspective(900px) rotateY(-1.2deg);
   }
 
   .premium-reference-slot--desk-3 {
-    top: 55.15%;
+    top: 47.15%;
     left: 82.77%;
     width: 8.67%;
-    height: 23.38%;
+    height: 29.5%;
+    border-radius: 0.08rem 0.18rem 0.12rem 0.08rem;
+    transform: perspective(900px) rotateY(1deg);
+  }
+
+  .premium-reference-slot--desk-4 {
+    top: 47.45%;
+    left: 90.9%;
+    width: 7.15%;
+    height: 28.9%;
     border-radius: 0.08rem 0.18rem 0.12rem 0.08rem;
     transform: perspective(900px) rotateY(1deg);
   }
