@@ -130,10 +130,16 @@ function DecorativeCover({ book }) {
   if (!book) return null;
 
   return (
-    <div className="premium-reference-slot premium-reference-slot--reader-cover" aria-hidden="true">
+    <div
+      className="premium-reference-slot premium-reference-slot--reader-cover"
+      aria-hidden="true"
+      data-testid={`hero-reader-${book.slug}`}
+      data-book-slug={book.slug}
+    >
       <img
         src={book.front_cover_url}
-        alt=""
+        alt={book.cover_alt_text}
+        data-canonical-cover-url={book.front_cover_url}
         width="240"
         height="360"
         loading="eager"
