@@ -1,4 +1,7 @@
 :root {
+  --font-display: 'Cormorant Garamond', 'Noto Serif Bengali', Georgia, serif;
+  --font-ui: 'Outfit', 'Noto Sans Bengali', sans-serif;
+  --site-header-height: 4rem;
   --beige-canvas: #FAF7F0;
   --beige-surface: #F5F0E8;
   --burgundy-deep: #6B1020;
@@ -10,6 +13,13 @@
   --text-secondary: #7A5C62;
   --text-muted: #A88A8F;
   --border-soft: #E8DDD8;
+}
+
+@media (min-width: 1024px) {
+  /* Keep every desktop route aligned with the reference hero header. */
+  :root {
+    --site-header-height: calc(100vw * 137 / 1672);
+  }
 }
 
 .sr-only {
@@ -576,20 +586,30 @@ body::before {
 
 /* ----------- Typography ----------- */
 .font-serif-display {
-  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', 'Georgia', serif;
+  font-family: var(--font-display);
   font-feature-settings: "liga", "dlig";
   font-weight: 400;
   letter-spacing: 0;
 }
 .font-serif-light {
-  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', 'Georgia', serif;
+  font-family: var(--font-display);
   font-weight: 300;
   letter-spacing: 0;
 }
 .italic-accent {
-  font-family: 'Cormorant Garamond', 'Noto Serif Bengali', serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
+}
+
+/* Editorial headings share the same family as the hero and header navigation. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
 }
 
 .text-balance { text-wrap: balance; }
