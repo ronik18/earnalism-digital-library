@@ -36,6 +36,7 @@ describe("bookDetailPresentation", () => {
           version: "pilot-live",
           release_gate: "APPROVED",
           qa_status: "QA_PASSED",
+          narration_disclosure: "Narration: AI voice",
           sync_mode: "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
           assets: { mp3: "/api/reader/book/book-2b9853ec52/audiobook" },
         },
@@ -46,6 +47,7 @@ describe("bookDetailPresentation", () => {
     expect(presentation.audioBadgeLabel).toBe("Audiobook Approved");
     expect(presentation.syncCopy).toBe("Section-following narration");
     expect(presentation.allowAudioStructuredData).toBe(true);
+    expect(presentation.narrationDisclosure).toBe("Narration: AI voice");
   });
 
   test("keeps bn-066 reader-first when a legacy manifest lacks release approval", () => {

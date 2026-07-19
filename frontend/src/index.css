@@ -5106,6 +5106,15 @@ textarea.input-elegant {
   font-style: italic;
 }
 
+.reader-audio-control__disclosure {
+  color: color-mix(in srgb, var(--reader-ink) 58%, transparent);
+  font-family: Inter, sans-serif;
+  font-size: 0.64rem;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
 .reader-audio-disabled,
 .reader-audio-unavailable {
   justify-self: center;

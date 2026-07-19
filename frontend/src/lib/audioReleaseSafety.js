@@ -6,7 +6,7 @@ function upper(value = "") {
   return clean(value).toUpperCase();
 }
 
-export const READER_MANIFEST_RELEASE_TRUTH_VERSION = "audio-release-evidence-v7";
+export const READER_MANIFEST_RELEASE_TRUTH_VERSION = "audio-release-evidence-v8";
 
 export function readerManifestPath(slug, { adminPreview = false } = {}) {
   const params = new URLSearchParams({
@@ -27,6 +27,17 @@ export function audiobookAssetsForBook(book = {}) {
     || book?._readerManifest?.audio?.assets
     || book?.audiobook?.assets
     || {};
+}
+
+export function audiobookNarrationDisclosure(book = {}) {
+  const manifestAudio = book?._readerManifest?.audio || {};
+  return clean(
+    manifestAudio.narration_disclosure
+      || book?.audiobook?.narration_disclosure
+      || book?.audiobook?.ai_narration_disclosure
+      || book?.narration_disclosure
+      || "",
+  );
 }
 
 export function audiobookReleaseState(book = {}) {

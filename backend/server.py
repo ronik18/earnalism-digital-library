@@ -269,6 +269,31 @@ B2_REGION = os.environ.get("B2_REGION", "").strip()
 B2_BUCKET = (os.environ.get("B2_BUCKET") or os.environ.get("B2_BUCKET_NAME") or "").strip()
 B2_ACCESS_KEY_ID = (os.environ.get("B2_ACCESS_KEY_ID") or os.environ.get("B2_KEY_ID") or "").strip()
 B2_SECRET_ACCESS_KEY = (os.environ.get("B2_SECRET_ACCESS_KEY") or os.environ.get("B2_APP_KEY") or "").strip()
+B2_PRIVATE_AUDIO_S3_ENDPOINT = (
+    os.environ.get("B2_PRIVATE_AUDIO_S3_ENDPOINT")
+    or os.environ.get("B2_PRIVATE_QA_S3_ENDPOINT")
+    or ""
+).strip().rstrip("/")
+B2_PRIVATE_AUDIO_REGION = (
+    os.environ.get("B2_PRIVATE_AUDIO_REGION")
+    or os.environ.get("B2_PRIVATE_QA_REGION")
+    or ""
+).strip()
+B2_PRIVATE_AUDIO_BUCKET = (
+    os.environ.get("B2_PRIVATE_AUDIO_BUCKET")
+    or os.environ.get("B2_PRIVATE_QA_BUCKET")
+    or ""
+).strip()
+B2_PRIVATE_AUDIO_ACCESS_KEY_ID = (
+    os.environ.get("B2_PRIVATE_AUDIO_ACCESS_KEY_ID")
+    or os.environ.get("B2_PRIVATE_QA_ACCESS_KEY_ID")
+    or ""
+).strip()
+B2_PRIVATE_AUDIO_SECRET_ACCESS_KEY = (
+    os.environ.get("B2_PRIVATE_AUDIO_SECRET_ACCESS_KEY")
+    or os.environ.get("B2_PRIVATE_QA_SECRET_ACCESS_KEY")
+    or ""
+).strip()
 
 # Dependency-free per-process rate limits. For multi-instance scaling, move this
 # counter to Redis or an edge/WAF layer so limits are shared across replicas.
@@ -408,7 +433,7 @@ async def _expensive_job_slot(job_type: str):
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "preview-parity-v8"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "preview-parity-v9"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
@@ -1662,17 +1687,15 @@ def _book_audiobook_asset_url(book: dict, key: str) -> str:
 
 
 def _audio_asset_looks_like_b2(url: str) -> bool:
-    if not url:
-        return False
-    parsed = urlparse(url)
-    endpoint_host = urlparse(B2_S3_ENDPOINT or "").netloc
-    path_parts = [unquote(part) for part in parsed.path.split("/") if part]
+    # Keep legacy controlled-publication manifests proxy-shaped even in test or
+    # build environments where storage credentials are intentionally absent.
+    # The actual streaming endpoint resolves only exact configured stores.
+    parsed = urlparse(url or "")
     return bool(
-        parsed.scheme in {"http", "https"}
-        and (
-            (endpoint_host and parsed.netloc == endpoint_host and path_parts and path_parts[0] == B2_BUCKET)
-            or (B2_BUCKET and parsed.netloc.startswith(f"{B2_BUCKET}."))
-            or "backblazeb2.com" in parsed.netloc
+        _b2_storage_for_url(url) is not None
+        or (
+            parsed.scheme in {"http", "https"}
+            and parsed.netloc.endswith(".backblazeb2.com")
         )
     )
 
@@ -1705,6 +1728,7 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
             "qa_status": "",
             "sync_mode": "",
             "highlight_sync_enabled": False,
+            "narration_disclosure": "",
             "version": version,
             "updated_at": "",
         }
@@ -1721,6 +1745,11 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
     release_gate = "APPROVED"
     qa_status = audio_release_qa_status({**book, "slug": slug})
     sync_mode = book.get("sync_mode", nested.get("sync_mode", ""))
+    narration_disclosure = normalize_text(
+        book.get("narration_disclosure")
+        or nested.get("narration_disclosure")
+        or nested.get("ai_narration_disclosure")
+    ).strip()[:160]
     highlight_sync_enabled = bool(
         book.get("highlight_sync_enabled", nested.get("highlight_sync_enabled", False))
     )
@@ -1741,6 +1770,7 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "qa_status": qa_status,
         "sync_mode": sync_mode,
         "highlight_sync_enabled": highlight_sync_enabled,
+        "narration_disclosure": narration_disclosure,
         "truth_gate": CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION,
         "updated_at": book.get("audiobook_assets_updated_at", ""),
     })
@@ -1757,6 +1787,7 @@ def _reader_manifest_audio(book: dict, slug: str) -> dict:
         "qa_status": qa_status,
         "sync_mode": sync_mode,
         "highlight_sync_enabled": highlight_sync_enabled,
+        "narration_disclosure": narration_disclosure,
         "version": version,
         "updated_at": book.get("audiobook_assets_updated_at", ""),
     }
@@ -5896,45 +5927,103 @@ async def reader_book_manifest(
     return payload
 
 
-_b2_s3_client: Any = None
+_b2_s3_clients: Dict[str, Any] = {}
 
 
-def _b2_is_configured() -> bool:
-    return bool(B2_S3_ENDPOINT and B2_REGION and B2_BUCKET and B2_ACCESS_KEY_ID and B2_SECRET_ACCESS_KEY)
+def _b2_storage_configs() -> list[dict[str, str]]:
+    """Return only fully configured audiobook stores.
+
+    The private-audio store is intentionally separate from the legacy B2
+    bucket. Its objects remain anonymous-inaccessible and are served only
+    through the release-gated reader proxy.
+    """
+
+    stores = [
+        {
+            "name": "primary",
+            "endpoint": B2_S3_ENDPOINT,
+            "region": B2_REGION,
+            "bucket": B2_BUCKET,
+            "access_key_id": B2_ACCESS_KEY_ID,
+            "secret_access_key": B2_SECRET_ACCESS_KEY,
+        },
+        {
+            "name": "private_audio",
+            "endpoint": B2_PRIVATE_AUDIO_S3_ENDPOINT,
+            "region": B2_PRIVATE_AUDIO_REGION,
+            "bucket": B2_PRIVATE_AUDIO_BUCKET,
+            "access_key_id": B2_PRIVATE_AUDIO_ACCESS_KEY_ID,
+            "secret_access_key": B2_PRIVATE_AUDIO_SECRET_ACCESS_KEY,
+        },
+    ]
+    return [store for store in stores if all(store.get(field) for field in ("endpoint", "region", "bucket", "access_key_id", "secret_access_key"))]
 
 
-def _b2_client():
-    global _b2_s3_client
-    if _b2_s3_client is not None:
-        return _b2_s3_client
-    if not _b2_is_configured():
+def _b2_storage_for_url(url: str) -> Optional[dict[str, str]]:
+    parsed = urlparse(url or "")
+    if parsed.scheme not in {"http", "https"}:
+        return None
+    path_parts = [unquote(part) for part in parsed.path.split("/") if part]
+    for store in _b2_storage_configs():
+        endpoint_host = urlparse(store["endpoint"]).netloc
+        path_style = bool(
+            endpoint_host
+            and parsed.netloc == endpoint_host
+            and path_parts
+            and path_parts[0] == store["bucket"]
+        )
+        virtual_hosted = bool(
+            endpoint_host
+            and parsed.netloc == f"{store['bucket']}.{endpoint_host}"
+            and path_parts
+        )
+        if path_style or virtual_hosted:
+            return store
+    return None
+
+
+def _b2_is_configured(storage: Optional[dict[str, str]] = None) -> bool:
+    if storage is not None:
+        return all(storage.get(field) for field in ("endpoint", "region", "bucket", "access_key_id", "secret_access_key"))
+    return any(store.get("name") == "primary" for store in _b2_storage_configs())
+
+
+def _b2_client(storage: Optional[dict[str, str]] = None):
+    selected = storage or next((store for store in _b2_storage_configs() if store.get("name") == "primary"), None)
+    if not selected or not _b2_is_configured(selected):
         raise HTTPException(status_code=503, detail="B2 audiobook storage is not configured")
+    cache_key = str(selected["name"])
+    if cache_key in _b2_s3_clients:
+        return _b2_s3_clients[cache_key]
     try:
         import boto3  # type: ignore
         from botocore.config import Config  # type: ignore
     except Exception as exc:
         raise HTTPException(status_code=503, detail=f"B2 client unavailable: {exc}")
-    _b2_s3_client = boto3.client(
+    _b2_s3_clients[cache_key] = boto3.client(
         "s3",
-        endpoint_url=B2_S3_ENDPOINT,
-        region_name=B2_REGION,
-        aws_access_key_id=B2_ACCESS_KEY_ID,
-        aws_secret_access_key=B2_SECRET_ACCESS_KEY,
+        endpoint_url=selected["endpoint"],
+        region_name=selected["region"],
+        aws_access_key_id=selected["access_key_id"],
+        aws_secret_access_key=selected["secret_access_key"],
         config=Config(s3={"addressing_style": "path"}),
     )
-    return _b2_s3_client
+    return _b2_s3_clients[cache_key]
 
 
-def _b2_key_from_url(url: str) -> str:
+def _b2_key_from_url(url: str, storage: Optional[dict[str, str]] = None) -> str:
     parsed = urlparse(url or "")
     path_parts = [unquote(part) for part in parsed.path.split("/") if part]
     if not path_parts:
         return ""
-    if parsed.netloc.startswith(f"{B2_BUCKET}."):
+    selected = storage or _b2_storage_for_url(url)
+    bucket = str((selected or {}).get("bucket") or B2_BUCKET)
+    endpoint_host = urlparse(str((selected or {}).get("endpoint") or B2_S3_ENDPOINT)).netloc
+    if endpoint_host and parsed.netloc == f"{bucket}.{endpoint_host}":
         return "/".join(path_parts)
-    if path_parts[0] == B2_BUCKET:
+    if bucket and path_parts[0] == bucket:
         return "/".join(path_parts[1:])
-    return "/".join(path_parts)
+    return ""
 
 
 def _parse_byte_range(range_header: str, total_size: int) -> Tuple[Optional[str], int]:
@@ -6068,19 +6157,26 @@ async def _reader_book_audiobook_asset(
     if not book or not can_expose_audio({**book, "slug": slug}):
         raise HTTPException(status_code=404, detail="Audiobook asset not found")
     asset_url = _book_audiobook_asset_url(book, normalized_key)
-    if not _audio_asset_looks_like_b2(asset_url):
+    storage = _b2_storage_for_url(asset_url)
+    if storage is None:
+        # Never redirect a controlled audiobook to an unmatched Backblaze
+        # object. A missing/partial private-store configuration must fail
+        # closed so the raw private URL cannot become a public fallback.
+        if _audio_asset_looks_like_b2(asset_url):
+            raise HTTPException(status_code=503, detail="Audiobook storage is not configured for this asset")
         if asset_url:
             return RedirectResponse(asset_url, status_code=307)
         raise HTTPException(status_code=404, detail="Audiobook asset not found")
-    key = _b2_key_from_url(asset_url)
+    key = _b2_key_from_url(asset_url, storage)
     if not key:
         raise HTTPException(status_code=404, detail="B2 audiobook asset key not found")
 
-    s3 = _b2_client()
+    s3 = _b2_client(storage)
+    bucket = storage["bucket"]
     range_header = (request.headers.get("range") or "").strip()
     if request.method != "HEAD" and range_header:
         try:
-            obj = await _b2_get_object(s3, bucket=B2_BUCKET, key=key, byte_range=range_header)
+            obj = await _b2_get_object(s3, bucket=bucket, key=key, byte_range=range_header)
         except Exception as exc:
             logger.warning("B2 audiobook asset ranged get failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
             raise HTTPException(status_code=502, detail="Audiobook asset storage unavailable")
@@ -6106,7 +6202,7 @@ async def _reader_book_audiobook_asset(
         )
 
     try:
-        head = await _b2_head_object(s3, bucket=B2_BUCKET, key=key)
+        head = await _b2_head_object(s3, bucket=bucket, key=key)
     except Exception as exc:
         logger.warning("B2 audiobook asset head failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
         raise HTTPException(status_code=404, detail="Audiobook asset object not found")
@@ -6137,7 +6233,7 @@ async def _reader_book_audiobook_asset(
         return Response(status_code=status_code, headers=headers)
 
     try:
-        obj = await _b2_get_object(s3, bucket=B2_BUCKET, key=key, byte_range=byte_range)
+        obj = await _b2_get_object(s3, bucket=bucket, key=key, byte_range=byte_range)
     except Exception as exc:
         logger.warning("B2 audiobook asset get failed for %s/%s/%s: %s", slug, normalized_key, key, exc)
         raise HTTPException(status_code=502, detail="Audiobook asset storage unavailable")

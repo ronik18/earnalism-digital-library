@@ -1,11 +1,13 @@
 {
-  "generated_at": "2026-07-12T15:24:05Z",
+  "generated_at": "2026-07-19T11:15:27Z",
   "claimable_10_10_reader_listener_ready": [],
   "approved_public_audio_slugs": [
     "book-2b9853ec52",
-    "a-ghost-story"
+    "a-ghost-story",
+    "sredni-vashtar",
+    "the-open-window"
   ],
-  "release_truth_note": "No launch-wide or title-level 10/10 claim is made. Public audio approval is tracked separately from historical reconstruction evidence.",
+  "release_truth_note": "No launch-wide or title-level 10/10 claim is made. These four titles independently passed their release evidence; The Open Window listening score is 9.4 against the authorized 9.2 cutoff.",
   "reader_ready_but_public_audio_upload_missing": [],
   "audio_ready_but_cover_missing": [
     "a-jury-of-her-peers",

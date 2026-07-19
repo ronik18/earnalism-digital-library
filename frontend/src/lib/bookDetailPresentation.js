@@ -1,4 +1,4 @@
-import { audiobookReleaseState } from "./audioReleaseSafety";
+import { audiobookNarrationDisclosure, audiobookReleaseState } from "./audioReleaseSafety";
 
 const BENGALI_RE = /[\u0980-\u09FF]/;
 
@@ -48,6 +48,7 @@ export function bookDetailPresentationForBook(book = {}) {
     listenCtaLabel: "Listen in Reader",
     primaryReadLabel: readerReady ? "Start Reading" : "Back to Library",
     allowAudioStructuredData: audioApproved,
+    narrationDisclosure: audioApproved ? audiobookNarrationDisclosure(book) : "",
     audioState,
   };
 }

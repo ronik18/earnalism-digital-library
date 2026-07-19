@@ -13,7 +13,7 @@ import { useAuth } from '../context/AuthContext';
 import { optimizedImageUrl } from '../lib/images';
 import { resolveBookCover } from '../lib/bookCoverResolver';
 import useSEO from '../hooks/useSEO';
-import { canExposeAudiobookControls, readerManifestPath } from '../lib/audioReleaseSafety';
+import { audiobookNarrationDisclosure, audiobookReleaseState, canExposeAudiobookControls, readerManifestPath } from '../lib/audioReleaseSafety';
 import { audioTimestampStartMs, normalizeAudioTimestamp } from '../lib/audioTimestampSchema';
 import { READER_SETTINGS_DEFAULTS, loadReaderSettings, saveReaderSettings } from '../lib/readerSettings';
 
@@ -648,7 +648,7 @@ function hasGeneratedAudioEnabled(book = {}, bookId = '') {
   if (isNarrationDisabledForBook(book, bookId)) return false;
   if (!canExposeAudiobookControls(book)) return false;
   const assets = audiobookAssetsForBook(book);
-  if (assets?.mp3 && assets?.timestamps) return true;
+  if (assets?.mp3) return true;
   if (book?.audio_slug || book?.audio_asset_slug || book?.audioAssetSlug) return true;
   return false;
 }
@@ -1608,6 +1608,9 @@ export default function Reader() {
     () => (hasGeneratedAudioEnabled(book, bookId) ? audioAssetSlugForBook(book, bookId) : ''),
     [book, bookId],
   );
+  const generatedAudioReleaseState = useMemo(() => audiobookReleaseState(book || {}), [book]);
+  const generatedAudioDisclosure = useMemo(() => audiobookNarrationDisclosure(book || {}), [book]);
+  const generatedHighlightSyncEnabled = generatedAudioReleaseState.highlightSyncEnabled === true;
   const approvedGeneratedAudioUrl = audioAssetUrl(book, '.mp3');
   const approvedGeneratedTimestampsUrl = audioAssetUrl(book, '_timestamps.json');
   const generatedAudioManifestUrl = generatedAudioSlug ? audioManifestUrlForBook(book) : '';
@@ -1652,7 +1655,14 @@ export default function Reader() {
     generatedAudioWordOffsetRef.current = 0;
     setGeneratedAudioAvailable(false);
     setGeneratedAudioActive(false);
-    if (!generatedTimestampsUrl || !readerHtml || lockedState) return undefined;
+    if (!generatedAudioUrl || lockedState) return undefined;
+    if (!generatedHighlightSyncEnabled) {
+      // Approved MP3-only/paragraph-sync editions remain playable without
+      // pretending paragraph cues are token-highlight timestamps.
+      setGeneratedAudioAvailable(true);
+      return undefined;
+    }
+    if (!generatedTimestampsUrl || !readerHtml) return undefined;
 
     fetch(generatedTimestampsUrl, { cache: 'force-cache' })
       .then((response) => {
@@ -1691,7 +1701,7 @@ export default function Reader() {
     return () => {
       cancelled = true;
     };
-  }, [activeChapterId, bookId, chapter, chapterId, generatedTimestampsUrl, lockedState, readerHtml, selectedGeneratedAudioTrack, sessionId]);
+  }, [activeChapterId, bookId, chapter, chapterId, generatedAudioUrl, generatedHighlightSyncEnabled, generatedTimestampsUrl, lockedState, readerHtml, selectedGeneratedAudioTrack, sessionId]);
 
   useEffect(() => {
     const audio = generatedAudioRef.current;
@@ -1911,10 +1921,25 @@ export default function Reader() {
     const audio = generatedAudioRef.current;
     const timestamps = generatedTimestampsRef.current || [];
     const pageHtml = currentPageHtml || readerHtml;
-    if (!isContentPage || !audio || !generatedAudioAvailable || !timestamps.length || !pageHtml) return false;
+    if (!isContentPage || !audio || !generatedAudioAvailable || !pageHtml) return false;
 
     audioIntentStartedAtRef.current = readerNowMs();
     primeGeneratedAudio();
+    if (!generatedHighlightSyncEnabled) {
+      generatedPageEndRef.current = null;
+      setTtsHtml('');
+      setGeneratedAudioActive(true);
+      setTtsActive(true);
+      setTtsPaused(false);
+      audio.play().catch(() => {
+        setGeneratedAudioActive(false);
+        setTtsActive(false);
+        setTtsPaused(false);
+        toast.error('Generated audiobook could not start in this browser.');
+      });
+      return true;
+    }
+    if (!timestamps.length) return false;
     const wrapped = wrapWordsInSpans(pageHtml, currentPageWordOffset);
     const firstWord = currentPageWordOffset;
     const lastWord = currentPageWordOffset + Math.max(0, wrapped.totalWords - 1);
@@ -1961,7 +1986,7 @@ export default function Reader() {
       });
     });
     return true;
-  }, [currentPageHtml, currentPageWordOffset, generatedAudioAvailable, highlightGeneratedWord, isContentPage, primeGeneratedAudio, readerHtml]);
+  }, [currentPageHtml, currentPageWordOffset, generatedAudioAvailable, generatedHighlightSyncEnabled, highlightGeneratedWord, isContentPage, primeGeneratedAudio, readerHtml]);
 
   const handleGeneratedAudioMetadata = useCallback(() => {
     if (!audioIntentStartedAtRef.current) return;
@@ -2013,6 +2038,7 @@ export default function Reader() {
   };
 
   const syncGeneratedAudioHighlight = useCallback(() => {
+    if (!generatedHighlightSyncEnabled) return false;
     const audio = generatedAudioRef.current;
     const timestamps = generatedTimestampsRef.current || [];
     if (!audio || !timestamps.length) return false;
@@ -2033,7 +2059,7 @@ export default function Reader() {
       return true;
     }
     return false;
-  }, [currentPageWordOffset, highlightGeneratedWord]);
+  }, [currentPageWordOffset, generatedHighlightSyncEnabled, highlightGeneratedWord]);
 
   const handleGeneratedAudioTimeUpdate = useCallback(() => {
     if (ttsPaused) return;
@@ -2643,9 +2669,14 @@ export default function Reader() {
                   ? (ttsActive && !ttsPaused ? 'Section-following narration' : 'Section audio ready')
                   : (ttsActive && !ttsPaused ? 'Narrating' : 'Approved audio pending for this page')}
               </span>
-              {generatedAudioAvailable && (
-                <span className="reader-audio-control__sync-label">Paragraph/Stanza Sync</span>
-              )}
+                  {generatedAudioDisclosure && (
+                    <span className="reader-audio-control__disclosure" data-testid="reader-audio-disclosure">
+                      {generatedAudioDisclosure}
+                    </span>
+                  )}
+                  {generatedAudioAvailable && generatedHighlightSyncEnabled && (
+                    <span className="reader-audio-control__sync-label">Paragraph/Stanza Sync</span>
+                  )}
             </div>
           )}
 

@@ -743,6 +743,28 @@
         "cta_url": "/reader/sredni-vashtar?listen=1",
         "cta_kind": "listen",
         "audiobook_url": "/api/reader/book/sredni-vashtar/audiobook"
+      },
+      {
+        "slug": "the-open-window",
+        "title": "The Open Window",
+        "author": "Saki",
+        "language": "en",
+        "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267859/earnalism/covers/front/the-open-window_front_1600x2400.png",
+        "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783267861/earnalism/covers/back/the-open-window_back_1600x2400.png",
+        "cover_alt_text": "The Open Window by Saki",
+        "reader_enabled": true,
+        "book_url": "/book/the-open-window",
+        "reader_url": "/reader/the-open-window",
+        "audiobook_enabled": true,
+        "audiobook_release_gate": "PUBLIC_AUDIO_RELEASE_APPROVED",
+        "audio_qa_status": "QA_PASSED",
+        "popularity_score": null,
+        "admin_pinned": false,
+        "display_badge": "English Classic",
+        "cta_label": "Start Listening",
+        "cta_url": "/reader/the-open-window?listen=1",
+        "cta_kind": "listen",
+        "audiobook_url": "/api/reader/book/the-open-window/audiobook"
       }
     ]
   },
@@ -751,7 +773,7 @@
     "truth_source": "controlled_publications",
     "sprint1_active_count": 32,
     "reader_enabled_count": 32,
-    "approved_audiobook_count": 3,
+    "approved_audiobook_count": 4,
     "cover_eligible_count": 19,
     "omitted_visual_count": 13
   }

@@ -38,16 +38,48 @@ def playwright_available() -> tuple[bool, str]:
 
 def public_assets(args) -> dict[str, str]:
     book = load_public_book(args.slug)
-    assets = book.get("audiobook_assets") if isinstance(book.get("audiobook_assets"), dict) else {}
+    audiobook_proxy = f"{api_url()}/reader/book/{args.slug}/audiobook"
     return {
         "front_cover": str(book.get("cover_url") or book.get("cover_image_url") or ""),
         "back_cover": str(book.get("back_cover_url") or book.get("back_cover_image_url") or ""),
-        "mp3": str(assets.get("mp3") or ""),
-        "timestamps": str(assets.get("timestamps") or ""),
-        "vtt": str(assets.get("vtt") or ""),
-        "chapters": str(assets.get("chapters") or ""),
-        "meta": str(assets.get("meta") or ""),
+        "mp3": audiobook_proxy,
+        "timestamps": f"{audiobook_proxy}/timestamps",
+        "vtt": f"{audiobook_proxy}/vtt",
+        "chapters": f"{audiobook_proxy}/chapters",
+        "meta": f"{audiobook_proxy}/meta",
     }
+
+
+def private_origin_denial_checks(args) -> dict[str, Any]:
+    """Prove that release-gated private B2 objects still reject anonymous reads."""
+    book = load_public_book(args.slug)
+    assets = book.get("audiobook_assets") if isinstance(book.get("audiobook_assets"), dict) else {}
+    private_bucket = (os.environ.get("B2_PRIVATE_AUDIO_BUCKET") or os.environ.get("B2_PRIVATE_QA_BUCKET") or "earnalism-private-qa-audio").strip()
+    checks: dict[str, Any] = {}
+    for key in ("mp3", "timestamps", "vtt", "chapters", "meta"):
+        url = str(assets.get(key) or "")
+        if not url or not private_bucket or f"/{private_bucket}/" not in url:
+            continue
+        result = fetch_url(url, timeout=15, max_bytes=1)
+        status = int(result.get("status") or 0)
+        checks[key] = {
+            "url": url,
+            "status": status,
+            "anonymous_access_denied": status in {401, 403},
+            "error": result.get("error", ""),
+        }
+    return checks
+
+
+def expected_narration_disclosure(args) -> str:
+    book = load_public_book(args.slug)
+    audiobook = book.get("audiobook") if isinstance(book.get("audiobook"), dict) else {}
+    return str(
+        book.get("narration_disclosure")
+        or audiobook.get("narration_disclosure")
+        or audiobook.get("ai_narration_disclosure")
+        or ""
+    ).strip()
 
 
 def route_checks(args) -> dict[str, Any]:
@@ -116,7 +148,7 @@ def asset_checks(args) -> dict[str, Any]:
         if not url:
             checks[key] = {"url": "", "ok": False, "status": 0, "error": "missing_url"}
             continue
-        result = fetch_url(url, timeout=30, max_bytes=1024 * 1024)
+        result = fetch_audio_start(url) if key == "mp3" else fetch_url(url, timeout=30, max_bytes=1024 * 1024)
         checks[key] = {
             "url": url,
             "ok": bool(result.get("ok")),
@@ -228,6 +260,21 @@ def wait_for_audio_ui(page, timeout_ms: int = 20_000) -> None:
         page.wait_for_timeout(250)
 
 
+def advance_to_audio_page(page, max_steps: int = 8) -> int:
+    """Advance past covers/front matter until the approved audio control is enabled."""
+    steps = 0
+    while steps < max_steps:
+        if page.locator(".reader-audio-button:not([disabled])").count() > 0:
+            return steps
+        next_button = page.locator("button.reader-nav-button:not([disabled])").filter(has_text=re.compile(r"next", re.I)).first
+        if next_button.count() == 0:
+            return steps
+        next_button.click(timeout=5_000)
+        page.wait_for_timeout(400)
+        steps += 1
+    return steps
+
+
 def run_playwright(args) -> dict[str, Any]:
     from playwright.sync_api import sync_playwright
 
@@ -238,6 +285,14 @@ def run_playwright(args) -> dict[str, Any]:
         page = browser.new_page(viewport={"width": 1440, "height": 1200})
         page.on("console", lambda msg: console_errors.append(msg.text) if msg.type == "error" else None)
         detail_response = page.goto(f"{front}/book/{args.slug}", wait_until="domcontentloaded", timeout=45_000)
+        expected_disclosure = expected_narration_disclosure(args)
+        detail_disclosure = page.locator('[data-testid="book-audio-disclosure"]')
+        try:
+            detail_disclosure.first.wait_for(state="visible", timeout=20_000)
+        except Exception:
+            pass
+        detail_disclosure_visible = detail_disclosure.count() > 0 and detail_disclosure.first.is_visible()
+        detail_disclosure_text = detail_disclosure.first.inner_text().strip() if detail_disclosure.count() > 0 else ""
         reader_response = page.goto(f"{front}/reader/{args.slug}", wait_until="networkidle", timeout=60_000)
         page.wait_for_timeout(750)
         try:
@@ -250,7 +305,9 @@ def run_playwright(args) -> dict[str, Any]:
             "playback_advanced": False,
             "click_to_play_ms": None,
             "playback_error": "",
+            "content_page_advances": 0,
         }
+        play_probe["content_page_advances"] = advance_to_audio_page(page)
         play_button = page.locator(".reader-audio-button:not([disabled])").first
         if play_button.count() > 0:
             play_probe["play_button_found"] = True
@@ -260,16 +317,22 @@ def run_playwright(args) -> dict[str, Any]:
             started_play = time.perf_counter()
             try:
                 play_button.click(timeout=5_000)
-                page.wait_for_function(
-                    """(before) => {
-                      const audio = document.querySelector('audio[data-testid="generated-audiobook"], audio');
-                      return Boolean(audio && !audio.paused && audio.currentTime > before + 0.02);
-                    }""",
-                    arg=float(before_time or 0),
-                    timeout=5_000,
-                )
-                play_probe["playback_advanced"] = True
-                play_probe["click_to_play_ms"] = round((time.perf_counter() - started_play) * 1000, 2)
+                deadline = time.perf_counter() + 5
+                while time.perf_counter() < deadline:
+                    advanced = page.evaluate(
+                        """(before) => {
+                          const audio = document.querySelector('audio[data-testid="generated-audiobook"], audio');
+                          return Boolean(audio && !audio.paused && audio.currentTime > before + 0.02);
+                        }""",
+                        float(before_time or 0),
+                    )
+                    if advanced:
+                        play_probe["playback_advanced"] = True
+                        play_probe["click_to_play_ms"] = round((time.perf_counter() - started_play) * 1000, 2)
+                        break
+                    page.wait_for_timeout(50)
+                if not play_probe["playback_advanced"]:
+                    play_probe["playback_error"] = "audio currentTime did not advance within 5 seconds"
             except Exception as exc:  # noqa: BLE001
                 play_probe["playback_error"] = str(exc)[:500]
         audio_probe = page.evaluate(
@@ -328,6 +391,9 @@ def run_playwright(args) -> dict[str, Any]:
         button_count = page.locator("button").filter(has_text=re.compile(r"audio|play|listen", re.I)).count()
         audio_count = page.locator("audio").count()
         body_text = page.locator("body").inner_text(timeout=15_000)
+        reader_disclosure = page.locator('[data-testid="reader-audio-disclosure"]')
+        reader_disclosure_visible = reader_disclosure.count() > 0 and reader_disclosure.first.is_visible()
+        reader_disclosure_text = reader_disclosure.first.inner_text().strip() if reader_disclosure.count() > 0 else ""
         browser.close()
     resource_latency = best_audio_resource_latency(audio_probe.get("resource_entries_after") or audio_probe.get("resource_entries_before") or [])
     metadata_ms = audio_probe.get("metadata_event_ms")
@@ -340,6 +406,11 @@ def run_playwright(args) -> dict[str, Any]:
         "audio_resource_fetch_latency_ms": resource_latency,
         "audio_metadata_event_ms": metadata_ms,
         "audio_probe": audio_probe,
+        "expected_narration_disclosure": expected_disclosure,
+        "detail_disclosure_visible": detail_disclosure_visible,
+        "detail_disclosure_text": detail_disclosure_text,
+        "reader_disclosure_visible": reader_disclosure_visible,
+        "reader_disclosure_text": reader_disclosure_text,
         "console_errors": console_errors,
         "wcag_aa": "NOT_RUN_AXE_NOT_INSTALLED",
         "responsive": True,
@@ -430,11 +501,20 @@ def main() -> int:
 
     routes = route_checks(args)
     assets = asset_checks(args)
+    private_origin_checks = private_origin_denial_checks(args)
     blockers = []
     if not all(item.get("ok") for item in routes.values()):
         blockers.append("One or more production routes failed.")
     if not all(item.get("ok") for item in assets.values()):
         blockers.append("One or more cover/audio/sidecar asset URLs failed.")
+    audio_route = routes.get("audiobook", {})
+    if int(audio_route.get("status") or 0) != 206:
+        blockers.append(f"Audiobook proxy did not return ranged HTTP 206: {audio_route.get('status')}")
+    audio_headers = {str(key).lower(): str(value) for key, value in (audio_route.get("headers") or {}).items()}
+    if audio_headers.get("accept-ranges", "").lower() != "bytes" or not audio_headers.get("content-range", "").lower().startswith("bytes 0-"):
+        blockers.append("Audiobook proxy did not prove byte-range delivery.")
+    if private_origin_checks and not all(item.get("anonymous_access_denied") for item in private_origin_checks.values()):
+        blockers.append("One or more private B2 origin objects allowed anonymous access.")
     browser = {}
     if not available:
         blockers.append(f"Playwright browser tooling unavailable: {error}. Install with `python3 -m playwright install chromium`.")
@@ -445,6 +525,14 @@ def main() -> int:
                 blockers.append("Browser console warnings/errors detected.")
             if not browser.get("audio_control_visible"):
                 blockers.append("Audio controls were not visible in the reader page.")
+            expected_disclosure = browser.get("expected_narration_disclosure") or ""
+            if expected_disclosure and (
+                not browser.get("detail_disclosure_visible")
+                or not browser.get("reader_disclosure_visible")
+                or browser.get("detail_disclosure_text") != expected_disclosure
+                or browser.get("reader_disclosure_text") != expected_disclosure
+            ):
+                blockers.append("Required narration disclosure was not visible with exact copy on detail and reader pages.")
             audio_start_latency = browser.get("audio_start_latency_ms")
             if audio_start_latency is None:
                 blockers.append("Playwright could not measure reader audio start latency.")
@@ -469,7 +557,7 @@ def main() -> int:
             blockers=blockers,
             retryable=True,
             artifacts={"audio_latency_diagnosis": latency_diagnosis},
-            metrics={"routes": routes, "assets": assets, "browser": browser, "audio_start_latency_ms": browser.get("audio_start_latency_ms")},
+            metrics={"routes": routes, "assets": assets, "private_origin_checks": private_origin_checks, "browser": browser, "audio_start_latency_ms": browser.get("audio_start_latency_ms")},
         )
 
     return finish(
@@ -482,7 +570,7 @@ def main() -> int:
         blockers=[],
         retryable=False,
         artifacts={"audio_latency_diagnosis": latency_diagnosis},
-        metrics={"routes": routes, "assets": assets, "browser": browser, "audio_start_latency_ms": browser.get("audio_start_latency_ms")},
+        metrics={"routes": routes, "assets": assets, "private_origin_checks": private_origin_checks, "browser": browser, "audio_start_latency_ms": browser.get("audio_start_latency_ms")},
         updated_fields={"browser_gate_status": "PASS", "audio_start_latency_ms": browser.get("audio_start_latency_ms")},
     )
 

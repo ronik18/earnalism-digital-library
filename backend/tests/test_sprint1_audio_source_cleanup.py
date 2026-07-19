@@ -21,7 +21,7 @@ PACKET_ROOTS = (
     ROOT / "backend" / "data" / "controlled_publications",
     ROOT / "data" / "controlled_publications",
 )
-APPROVED_AUDIO_SLUGS = {"book-2b9853ec52", "a-ghost-story", "sredni-vashtar"}
+APPROVED_AUDIO_SLUGS = {"book-2b9853ec52", "a-ghost-story", "sredni-vashtar", "the-open-window"}
 CLEANED_METADATA_SLUGS = {
     "alices-adventures-in-wonderland",
     "nishkriti",
@@ -33,13 +33,13 @@ HIDDEN_PROXY_SAMPLES = (
     "book-d19e96859f",
     "book-f5d593e1f4",
     "muchiram-gurer-jibanchorit",
-    "the-open-window",
     "dsires-baby",
 )
 APPROVED_MP3_SUFFIXES = {
     "book-2b9853ec52": "book-2b9853ec52_mp3_a974819392d7.mp3",
     "a-ghost-story": "a-ghost-story_mp3_c0e52985ee1e.mp3",
     "sredni-vashtar": "sredni-vashtar_mp3_2b328a80b906.mp3",
+    "the-open-window": "the-open-window_mp3_b23e6720a243.mp3",
 }
 
 
@@ -141,6 +141,7 @@ def test_current_approved_packages_are_unchanged_and_evidence_gated():
             assert book["audio_enabled"] is True, path
             assert book["audiobook_enabled"] is True, path
             assert book["audiobook_assets"]["mp3"].endswith(expected_suffix), path
+            assert_checksum_manifest(path.parent)
 
         artifact = catalog_truth.load_controlled_artifact_book(slug)
         assert artifact is not None

@@ -410,3 +410,13 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Synchronous `matchMedia` rendering prevents the 227 KB desktop reference WebP from being requested on mobile, while Cloudinary width transforms keep dynamic cover downloads proportional to their slots.
 - Browser regression fixtures should read the generated canonical home snapshot and assert `data-book-slug` placements; duplicating old featured-book arrays and retired CSS selectors creates false failures and can silently reintroduce rejected cover metadata.
 - The production snapshot fallback behaved as intended: frontend deployment and canary passed, `/api/home/curated` remained 404 after Railway skipped deploy, and the customer hero still rendered its full truth-gated catalog stage.
+
+## 2026-07-19 The Open Window Production Audio Closeout
+
+- A 10.0 aspiration must not replace the authorized release contract. This title shipped on measured listening `9.4` against cutoff `9.2`, ASR/source `10.0`, coverage `1.0`, measured paragraph sync `10.0`, confidence `0.95`, and no fatal flags; no public 10.0 listening claim was made.
+- Private-object existence is not delivery proof. The release bound all five B2 objects to exact hashes and sizes, retained anonymous HTTP `401` at origin, and exposed them only through release-gated same-origin/API proxy routes.
+- Production reader-truth caches need an explicit version bump when controlled audio state changes; query-string cache busting alone did not invalidate the persisted generation cache.
+- Browser playback gates must advance past cover/front-matter pages before expecting an enabled Play control, and CSP-safe polling is required because production forbids `unsafe-eval`.
+- DOM visibility was insufficient: final proof required real Play interaction, `currentTime` advancement, `144.4 ms` click-to-play, exact AI narration disclosure on Book and Reader, and zero console errors.
+- Vercel protected previews can fail with identity-provider `403` while the application build is sound. Promote only the immutable READY deployment after source/unit/build validation, then run the definitive public-domain browser gate.
+- Railway code-snapshot failure can occur before build even for a minimized backend-only upload. After two identical pre-build failures, retain the healthy deployment, preserve the exact failure IDs, and publish the validated source/evidence branch instead of looping or weakening release truth.
