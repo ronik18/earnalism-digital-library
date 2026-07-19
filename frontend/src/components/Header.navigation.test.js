@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 const source = fs.readFileSync(path.join(process.cwd(), "src/components/Header.jsx"), "utf8");
+const styles = fs.readFileSync(path.join(process.cwd(), "src/components/Header.css"), "utf8");
 
 describe("premium header navigation", () => {
   test("uses only valid application routes and approved library filters", () => {
@@ -18,5 +19,13 @@ describe("premium header navigation", () => {
   test("uses a working library CTA on desktop and mobile", () => {
     expect(source).toContain('data-testid="header-cta-library">Start Reading');
     expect(source).toContain('data-testid="mobile-cta-library">Start Reading');
+  });
+
+  test("keeps the reference header readable and geometrically stable", () => {
+    expect(styles).toContain("font-synthesis: none;");
+    expect(styles).toContain("justify-content: flex-end;");
+    expect(styles).toContain("min-height: 2.75rem;");
+    expect(styles).toContain("min-width: 9rem;");
+    expect(styles).toContain("flex: 0 0 2.75rem;");
   });
 });
