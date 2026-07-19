@@ -153,28 +153,77 @@ function ReaderScreenPreview() {
   return (
     <Link
       to="/reader/dracula"
-      className="premium-reference-slot premium-reference-slot--reader"
+      className="premium-reference-tablet"
       aria-label="Open the Dracula reader"
       data-testid="hero-reader-preview-dracula"
       data-reader-preview-book="dracula"
     >
-      <div className="premium-reader-screen-preview">
-        <div className="premium-reader-screen-preview__topbar">
-          <span>Dracula</span>
-          <span>Reader</span>
-        </div>
-        <div className="premium-reader-screen-preview__chapter">
-          <span>Chapter I</span>
-          <span>01 / 27</span>
-        </div>
-        <h3>Jonathan Harker&apos;s Journal</h3>
-        <div className="premium-reader-screen-preview__body">
-          <p>3 May. Bistritz. Left Munich at 8:35 P.M. on 1st May, arriving in Vienna early next morning.</p>
-          <p>The journey had been beautiful, and the quiet rhythm of the road made the pages feel close at hand.</p>
-        </div>
-        <span className="premium-reader-screen-preview__progress" aria-hidden="true"><i /></span>
-      </div>
+      <span className="premium-reference-tablet__screen">
+        <span className="premium-reader-screen-preview">
+          <span className="premium-reader-screen-preview__topbar">
+            <span>Dracula</span>
+            <span>Reader</span>
+          </span>
+          <span className="premium-reader-screen-preview__chapter">
+            <span>Chapter I</span>
+            <span>01 / 27</span>
+          </span>
+          <span className="premium-reader-screen-preview__title">Jonathan Harker&apos;s Journal</span>
+          <span className="premium-reader-screen-preview__body">
+            <span>3 May. Bistritz. Left Munich at 8:35 P.M. on 1st May, arriving in Vienna early next morning.</span>
+            <span>The journey had been beautiful, and the quiet rhythm of the road made the pages feel close at hand.</span>
+          </span>
+          <span className="premium-reader-screen-preview__progress" aria-hidden="true"><i /></span>
+        </span>
+      </span>
     </Link>
+  );
+}
+
+function ListeningPhone({ listeningBook }) {
+  if (!listeningBook) {
+    return (
+      <div className="premium-reference-listening premium-reference-listening--generic" data-testid="hero-listening-visual">
+        <Headphones aria-hidden="true" />
+        <strong>Premium Listening Rooms</strong>
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      to={listeningBook.cta_url}
+      className="premium-reference-listening"
+      aria-label={`Listen to ${listeningBook.title} by ${listeningBook.author}`}
+      data-testid="hero-listening-visual"
+      data-book-slug={listeningBook.slug}
+    >
+      <span className="premium-reference-listening__eyebrow">Now listening</span>
+      <img
+        src={listeningBook.front_cover_url}
+        srcSet={responsiveCoverSources(listeningBook, [120, 240])}
+        sizes="6vw"
+        alt={listeningBook.cover_alt_text}
+        data-canonical-cover-url={listeningBook.front_cover_url}
+        width="120"
+        height="180"
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+      />
+      <strong>{listeningBook.title}</strong>
+      <small>{listeningBook.author}</small>
+      <span className="premium-reference-listening__wave" aria-hidden="true" />
+    </Link>
+  );
+}
+
+function ReferenceDeviceGroup({ listeningBook }) {
+  return (
+    <div className="premium-reference-device-group" aria-label="Reader and audiobook device preview">
+      <ListeningPhone listeningBook={listeningBook} />
+      <ReaderScreenPreview />
+    </div>
   );
 }
 
@@ -192,39 +241,7 @@ function ReferenceCatalogStage({ featuredBooks, approvedAudiobooks }) {
   return (
     <div className="premium-reference-catalog" aria-label="Featured Sprint 1 classics">
       <DecorativeCover book={readingBook} />
-      <ReaderScreenPreview />
-
-      {listeningBook ? (
-        <Link
-          to={listeningBook.cta_url}
-          className="premium-reference-listening"
-          aria-label={`Listen to ${listeningBook.title} by ${listeningBook.author}`}
-          data-testid="hero-listening-visual"
-          data-book-slug={listeningBook.slug}
-        >
-          <span className="premium-reference-listening__eyebrow">Now listening</span>
-          <img
-            src={listeningBook.front_cover_url}
-            srcSet={responsiveCoverSources(listeningBook, [120, 240])}
-            sizes="6vw"
-            alt={listeningBook.cover_alt_text}
-            data-canonical-cover-url={listeningBook.front_cover_url}
-            width="120"
-            height="180"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-          />
-          <strong>{listeningBook.title}</strong>
-          <small>{listeningBook.author}</small>
-          <span className="premium-reference-listening__wave" aria-hidden="true" />
-        </Link>
-      ) : (
-        <div className="premium-reference-listening premium-reference-listening--generic" data-testid="hero-listening-visual">
-          <Headphones aria-hidden="true" />
-          <strong>Premium Listening Rooms</strong>
-        </div>
-      )}
+      <ReferenceDeviceGroup listeningBook={listeningBook} />
 
       {[0, 1, 2].map((index) => (
         <CatalogCoverLink

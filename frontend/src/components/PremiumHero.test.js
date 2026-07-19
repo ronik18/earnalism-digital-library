@@ -44,15 +44,20 @@ describe("PremiumHero public contract", () => {
 
   test("renders the live header above the cropped reference art and separates device surfaces", () => {
     expect(source).toContain("premium-reference-hero__art");
+    expect(source).toContain("premium-reference-device-group");
+    expect(source).toContain("premium-reference-tablet__screen");
     expect(source).toContain("premium-reader-screen-preview");
     expect(source).toContain('to="/reader/dracula"');
     expect(source).not.toContain("premium-reference-brand-overlay");
     expect(styles).toContain("--reference-header-height: var(--site-header-height);");
     expect(styles).toContain("height: calc(100% - var(--reference-header-height));");
     expect(styles).toContain("object-fit: fill;");
+    expect(styles).toContain("aspect-ratio: 246 / 376;");
+    expect(styles).toContain("inset: 5.2% 7.7% 5% 7.7%;");
+    expect(styles).toContain("overflow: visible;");
+    expect(styles).toContain("overflow: hidden;");
     expect(styles).toContain("z-index: 3;");
     expect(styles).toContain("z-index: 1;");
-    expect(styles).toContain("width: 12.7%;");
     expect(styles).toContain("left: 58.15%;");
   });
 });
