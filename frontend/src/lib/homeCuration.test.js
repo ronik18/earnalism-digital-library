@@ -82,13 +82,14 @@ describe("homepage curation contract", () => {
     expect(snapshot.source).toMatchObject({
       truth_source: "controlled_publications",
       sprint1_active_count: 32,
-      approved_audiobook_count: 3,
+      approved_audiobook_count: 4,
     });
     expect(snapshot.hero.featured_books).toHaveLength(6);
     expect(snapshot.shelves.approved_audiobooks.map((book) => book.slug).sort()).toEqual([
       "a-ghost-story",
       "book-2b9853ec52",
       "sredni-vashtar",
+      "the-open-window",
     ]);
   });
 });
