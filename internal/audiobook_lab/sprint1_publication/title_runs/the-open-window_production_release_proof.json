@@ -3,7 +3,7 @@
   "title": "The Open Window",
   "author": "Saki",
   "status": "PUBLIC_AUDIO_RELEASE_PROVEN",
-  "generated_at": "2026-07-19T10:57:26Z",
+  "generated_at": "2026-07-19T11:15:27Z",
   "quality": {
     "policy_cutoff": 9.2,
     "listening_qa_score": 9.4,
@@ -44,7 +44,7 @@
     "play_button_found": true,
     "playback_advanced": true,
     "content_page_advances": 1,
-    "click_to_play_ms": 148.09,
+    "click_to_play_ms": 144.4,
     "audio_src": "https://theearnalism.com/api/reader/book/the-open-window/audiobook",
     "narration_disclosure": "Narration: AI voice",
     "book_detail_disclosure_visible": true,
@@ -53,7 +53,7 @@
   },
   "deployments": {
     "railway_backend": "94f3a6d9-427d-40fd-9206-e8015d5be6df",
-    "vercel_frontend": "dpl_8EMAooXZ8kLfUjbN65Z3ZJ85MTTw"
+    "vercel_frontend": "dpl_QheBLC5YexLoAnkWkwbFK6WM1oGG"
   },
   "release_blockers": []
 }

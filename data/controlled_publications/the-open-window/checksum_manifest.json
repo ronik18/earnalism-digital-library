@@ -1,10 +1,10 @@
 {
   "slug": "the-open-window",
-  "generated_at": "2026-07-19T10:57:26Z",
+  "generated_at": "2026-07-19T11:15:27Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "33b99c1adcded8c7bb063d74d13e1056d8c7ba37845f7bcf992d06b3c92d9c46"
+      "sha256": "d2bef9bea76efe3efbfe01aeeea762ee83f7ec2bf82de388b62c2650143a80db"
     },
     {
       "file": "chapters/chapter-001.json",

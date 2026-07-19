@@ -1091,7 +1091,7 @@
     "the-open-window": {
       "latest_decision": "PUBLIC_AUDIO_RELEASE_PROVEN",
       "decision_reason": "The Kokoro production candidate passed the authorized 9.2 listening gate and every objective, private-media, endpoint, disclosure, and real-browser playback gate without claiming a 10.0 listening score.",
-      "updated_at": "2026-07-19T10:57:26Z",
+      "updated_at": "2026-07-19T11:15:27Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "PUBLIC_AUDIO_RELEASE_APPROVED_AND_PROVEN",
@@ -1111,7 +1111,7 @@
       "storage_status": "PRIVATE_B2_ALL_FIVE_ORIGIN_OBJECTS_ANONYMOUS_DENIED",
       "endpoint_status": 206,
       "browser_gate_status": "PASS",
-      "browser_audio_start_latency_ms": 148.09,
+      "browser_audio_start_latency_ms": 144.4,
       "narration_disclosure": "Narration: AI voice",
       "ten_of_ten_claimed": false,
       "audiobook_next_action": "Monitor production playback and keep the exact hash-bound candidate immutable; do not regenerate or substitute without a new full gate run.",

@@ -417,5 +417,5 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Private-object existence is not delivery proof. The release bound all five B2 objects to exact hashes and sizes, retained anonymous HTTP `401` at origin, and exposed them only through release-gated same-origin/API proxy routes.
 - Production reader-truth caches need an explicit version bump when controlled audio state changes; query-string cache busting alone did not invalidate the persisted generation cache.
 - Browser playback gates must advance past cover/front-matter pages before expecting an enabled Play control, and CSP-safe polling is required because production forbids `unsafe-eval`.
-- DOM visibility was insufficient: final proof required real Play interaction, `currentTime` advancement, `148.09 ms` click-to-play, exact AI narration disclosure on Book and Reader, and zero console errors.
+- DOM visibility was insufficient: final proof required real Play interaction, `currentTime` advancement, `144.4 ms` click-to-play, exact AI narration disclosure on Book and Reader, and zero console errors.
 - Vercel protected previews can fail with identity-provider `403` while the application build is sound. Promote only the immutable READY deployment after source/unit/build validation, then run the definitive public-domain browser gate.

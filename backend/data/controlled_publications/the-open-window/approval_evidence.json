@@ -50,7 +50,7 @@
   "browser_gate_status": "PASS",
   "browser_audio_control_visible": true,
   "browser_playback_advanced": true,
-  "browser_audio_start_latency_ms": 148.09,
+  "browser_audio_start_latency_ms": 144.4,
   "browser_console_errors": [],
   "book_detail_disclosure_visible": true,
   "reader_disclosure_visible": true,
@@ -62,8 +62,8 @@
   "release_blockers": [],
   "production_deployments": {
     "railway_backend": "94f3a6d9-427d-40fd-9206-e8015d5be6df",
-    "vercel_frontend": "dpl_8EMAooXZ8kLfUjbN65Z3ZJ85MTTw"
+    "vercel_frontend": "dpl_QheBLC5YexLoAnkWkwbFK6WM1oGG"
   },
   "production_proof_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-open-window_production_release_proof.json",
-  "approved_at": "2026-07-19T10:57:26Z"
+  "approved_at": "2026-07-19T11:15:27Z"
 }
