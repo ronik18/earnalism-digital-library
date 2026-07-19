@@ -11,7 +11,7 @@ from backend.home_curation import (
 
 
 ROOT = Path(__file__).resolve().parents[2]
-APPROVED_AUDIO_SLUGS = {"book-2b9853ec52", "a-ghost-story", "sredni-vashtar"}
+APPROVED_AUDIO_SLUGS = {"book-2b9853ec52", "a-ghost-story", "sredni-vashtar", "the-open-window"}
 DEFERRED_AUDIO_SLUGS = {"great-expectations", "jane-eyre"}
 
 
@@ -32,7 +32,7 @@ def test_home_curated_payload_is_deterministic_and_tracks_32_reader_titles():
         "truth_source": "controlled_publications",
         "sprint1_active_count": 32,
         "reader_enabled_count": 32,
-        "approved_audiobook_count": 3,
+            "approved_audiobook_count": 4,
         "cover_eligible_count": 19,
         "omitted_visual_count": 13,
     }
@@ -69,7 +69,7 @@ def test_featured_books_are_the_exact_admin_pinned_canonical_records():
         assert is_safe_cover_url(book["front_cover_url"])
 
 
-def test_audio_ctas_fail_closed_and_only_three_approved_books_can_listen():
+def test_audio_ctas_fail_closed_and_only_approved_books_can_listen():
     payload = build_home_curated_payload()
     approved = payload["shelves"]["approved_audiobooks"]
     assert {book["slug"] for book in approved} == APPROVED_AUDIO_SLUGS

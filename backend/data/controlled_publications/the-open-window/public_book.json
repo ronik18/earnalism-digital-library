@@ -18,7 +18,8 @@
   "dominant_color": "#4A1C27",
   "estimated_reading_time": "5 min",
   "formats": [
-    "Ebook"
+    "Ebook",
+    "Audiobook"
   ],
   "benefits": [
     "Read a legally cleared digital text.",
@@ -72,17 +73,54 @@
   "allowCheckout": false,
   "allowPayment": false,
   "is_published": true,
-  "audio_enabled": false,
-  "audiobook_enabled": false,
-  "generate_audiobook": false,
-  "audiobook_provider": "",
-  "audiobook_voice": "",
-  "audio_asset_slug": "",
-  "audiobook_assets": {},
-  "audiobook": {},
-  "audiobook_assets_updated_at": "",
+  "audio_enabled": true,
+  "audiobook_enabled": true,
+  "generate_audiobook": true,
+  "audiobook_provider": "kokoro",
+  "audiobook_model": "Kokoro-82M 0.9.4",
+  "audiobook_voice": "af_bella",
+  "audio_asset_slug": "the-open-window",
+  "audiobook_assets": {
+    "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_mp3_b23e6720a243.mp3",
+    "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_timestamps_a3716705ce51.json",
+    "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_vtt_3302e9a0685f.vtt",
+    "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_chapters_e2a8ccb9e26c.json",
+    "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_meta_cf7500d033a2.json"
+  },
+  "audiobook": {
+    "url": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_mp3_b23e6720a243.mp3",
+    "provider": "kokoro",
+    "voice": "af_bella",
+    "model": "Kokoro-82M 0.9.4",
+    "size": 6283053,
+    "duration_ms": 392600,
+    "sync_mode": "section_following",
+    "sync_tier": "PARAGRAPH_OR_STANZA_SYNC_PREMIUM",
+    "highlight_sync_enabled": false,
+    "audio_sha256": "b23e6720a2434c5a90d2437abf630cf68b6cb4cd7305a827a0d88fe5e586d438",
+    "source_sha256": "3f491a3ae042f5c8716dfedba0edccfef5421a889689bf629867491dce219db8",
+    "asset_sha256": {
+      "mp3": "b23e6720a2434c5a90d2437abf630cf68b6cb4cd7305a827a0d88fe5e586d438",
+      "timestamps": "a3716705ce518cad513106a4bad9b48630310fed1df8a505e9615afc7ced606b",
+      "vtt": "3302e9a0685fbfcdf7431897776e60d037ba4f6046bae4e94adf463d493e5777",
+      "chapters": "e2a8ccb9e26ce52c9a665ffa2bad6b92a1bf70db46a5a71d1098ed680b599d9f",
+      "meta": "cf7500d033a2d15a022c8a3837450252e3e404ccbbe3ff282c87c4f9322366e7"
+    },
+    "assets": {
+      "mp3": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_mp3_b23e6720a243.mp3",
+      "timestamps": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_timestamps_a3716705ce51.json",
+      "vtt": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_vtt_3302e9a0685f.vtt",
+      "chapters": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_chapters_e2a8ccb9e26c.json",
+      "meta": "https://s3.us-west-004.backblazeb2.com/earnalism-private-qa-audio/earnalism/audiobooks/the-open-window/the-open-window_meta_cf7500d033a2.json"
+    },
+    "release_gate": "APPROVED",
+    "qa_status": "QA_PASSED",
+    "ai_narration_disclosure": "Narration: AI voice",
+    "updated_at": "2026-07-19T10:15:00Z"
+  },
+  "audiobook_assets_updated_at": "2026-07-19T10:15:00Z",
   "created_at": "2026-07-03T20:07:49Z",
-  "updated_at": "2026-07-03T20:07:49Z",
+  "updated_at": "2026-07-19T10:15:00Z",
   "cover_dimensions": {
     "front": [
       1600,

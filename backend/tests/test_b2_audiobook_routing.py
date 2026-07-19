@@ -281,3 +281,30 @@ def test_b2_wrappers_preserve_kwargs_while_running_off_event_loop(monkeypatch):
         ("head", {"Bucket": "bucket", "Key": "book.mp3"}),
         ("get", {"Bucket": "bucket", "Key": "book.mp3", "Range": "bytes=0-3"}),
     ]
+
+
+def test_open_window_controlled_release_exposes_only_proxy_assets_with_disclosure(monkeypatch):
+    server = _server(monkeypatch)
+    artifact = server.load_controlled_artifact_book("the-open-window")
+
+    assert artifact is not None
+    assert server.can_expose_audio({**artifact, "slug": "the-open-window"}) is True
+    audio = server._reader_manifest_audio(artifact, "the-open-window")
+
+    assert audio["enabled"] is True
+    assert audio["provider"] == "kokoro"
+    assert audio["voice"] == "af_bella"
+    assert audio["release_gate"] == "APPROVED"
+    assert audio["qa_status"] == "QA_PASSED"
+    assert audio["sync_mode"] == "section_following"
+    assert audio["highlight_sync_enabled"] is False
+    assert audio["narration_disclosure"] == "Narration: AI voice"
+    assert audio["size"] == 6283053
+    assert audio["duration_ms"] == 392600
+    assert audio["assets"] == {
+        "mp3": "/api/reader/book/the-open-window/audiobook",
+        "timestamps": "/api/reader/book/the-open-window/audiobook/timestamps",
+        "vtt": "/api/reader/book/the-open-window/audiobook/vtt",
+        "chapters": "/api/reader/book/the-open-window/audiobook/chapters",
+        "meta": "/api/reader/book/the-open-window/audiobook/meta",
+    }

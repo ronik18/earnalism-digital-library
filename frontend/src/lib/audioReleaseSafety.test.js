@@ -76,6 +76,35 @@ describe("audiobook release safety", () => {
     expect(state.label).toBe("Audiobook available");
   });
 
+  test("accepts the Open Window proxy manifest without claiming word-level sync", () => {
+    const book = {
+      slug: "the-open-window",
+      _readerManifest: {
+        audio: {
+          enabled: true,
+          provider: "kokoro",
+          voice: "af_bella",
+          version: "open-window-release-v1",
+          release_gate: "APPROVED",
+          qa_status: "QA_PASSED",
+          sync_mode: "section_following",
+          highlight_sync_enabled: false,
+          narration_disclosure: "Narration: AI voice",
+          assets: {
+            mp3: "/api/reader/book/the-open-window/audiobook",
+            timestamps: "/api/reader/book/the-open-window/audiobook/timestamps",
+          },
+        },
+      },
+    };
+    const state = audiobookReleaseState(book);
+
+    expect(state.canShowControls).toBe(true);
+    expect(state.syncMode).toBe("section_following");
+    expect(state.highlightSyncEnabled).toBe(false);
+    expect(audiobookNarrationDisclosure(book)).toBe("Narration: AI voice");
+  });
+
   test("allows approved reader manifest audio when the endpoint is supplied as audio.url", () => {
     const state = audiobookReleaseState({
       audiobook_enabled: true,
