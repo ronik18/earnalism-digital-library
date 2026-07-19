@@ -1457,7 +1457,7 @@ describe("UX conversion static signals", () => {
   test("mobile navigation keeps a visible library CTA", () => {
     expect(header).toContain('import BrandHeaderLogo from "./BrandHeaderLogo";');
     expect(header).toContain('className="header-brand-cluster"');
-    expect(header).toContain('<BrandHeaderLogo badgeVariant="tricolor" />');
+    expect(header).toContain('<BrandHeaderLogo badgeVariant="none" />');
     expect(header).toContain('data-testid="brand-logo"');
     expect(header).toContain('data-testid="mobile-cta-library"');
     expect(header).toContain("Start Reading");
