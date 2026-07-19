@@ -34,6 +34,19 @@ describe("Reader release-truth and reading-room guardrails", () => {
     expect(readerSource).toMatch(/audioTimestampStartMs\(firstTimestamp\) \/ 1000/);
   });
 
+  test("plays approved MP3-only editions without inventing highlight sync", () => {
+    expect(readerSource).toMatch(/if \(assets\?\.mp3\) return true/);
+    expect(readerSource).toMatch(/if \(!generatedHighlightSyncEnabled\)/);
+    expect(readerSource).toMatch(/setGeneratedAudioAvailable\(true\)/);
+    expect(readerSource).toMatch(/generatedAudioAvailable && generatedHighlightSyncEnabled/);
+  });
+
+  test("shows explicit AI narration disclosure beside approved controls", () => {
+    expect(readerSource).toMatch(/audiobookNarrationDisclosure/);
+    expect(readerSource).toMatch(/reader-audio-control__disclosure/);
+    expect(readerSource).toMatch(/reader-audio-disclosure/);
+  });
+
   test("represents premium reading settings for bilingual long-form reading", () => {
     expect(readerSource).toMatch(/label:\s*'Light'/);
     expect(readerSource).toMatch(/label:\s*'Sepia'/);

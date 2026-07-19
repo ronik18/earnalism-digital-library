@@ -39,6 +39,7 @@ function mergeReaderManifestIntoBook(book, manifest) {
     audiobook_enabled: manifestAudio.enabled ?? manifestBook.audiobook_enabled ?? book.audiobook_enabled,
     audiobook_release_gate: manifestBook.audiobook_release_gate || manifestAudio.release_gate || book.audiobook_release_gate,
     audio_qa_status: manifestBook.audio_qa_status || manifestAudio.qa_status || book.audio_qa_status,
+    narration_disclosure: manifestAudio.narration_disclosure || book.narration_disclosure,
     sync_mode: manifestBook.sync_mode || manifestAudio.sync_mode || book.sync_mode,
     highlight_sync_enabled: manifestBook.highlight_sync_enabled ?? manifestAudio.highlight_sync_enabled ?? book.highlight_sync_enabled,
     audiobook_assets: {
@@ -298,9 +299,16 @@ export default function BookDetail() {
               <Link to={passHref} className="btn-link justify-center" data-testid="book-reading-pass" onClick={() => trackFunnelEvent(DRACULA_CTA_EVENTS.readingPass, { book: publicBook.slug, cta: "book_detail_pass" })}>Get 7-Day Reading Pass</Link>
             )}
             {detailPresentation.listenCtaVisible && (
-              <Link to={`${readerHref}?listen=1`} className="btn-secondary justify-center" data-testid="book-listen-approved">
-                <Headphones size={15} strokeWidth={1.6} /> {detailPresentation.listenCtaLabel}
-              </Link>
+              <div className="flex flex-col items-center gap-1.5">
+                <Link to={`${readerHref}?listen=1`} className="btn-secondary justify-center" data-testid="book-listen-approved">
+                  <Headphones size={15} strokeWidth={1.6} /> {detailPresentation.listenCtaLabel}
+                </Link>
+                {detailPresentation.narrationDisclosure && (
+                  <small className="text-[0.68rem] tracking-[0.04em] text-charcoal-soft" data-testid="book-audio-disclosure">
+                    {detailPresentation.narrationDisclosure}
+                  </small>
+                )}
+              </div>
             )}
           </div>
 
