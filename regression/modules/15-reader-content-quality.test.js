@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const publicAudioTruth = require("../../internal/audiobook_lab/release_gate/claimable_go_live_tranche.json");
 
 const ROOT = path.resolve(__dirname, "../..");
 const BATCH_SLUGS = [
@@ -25,7 +26,7 @@ const HISTORICAL_AUDIO_HOLD_SLUGS = [
   "bn-059",
   "the-art-of-money-getting",
 ];
-const APPROVED_PUBLIC_AUDIO_SLUGS = ["book-2b9853ec52", "a-ghost-story", "sredni-vashtar"];
+const APPROVED_PUBLIC_AUDIO_SLUGS = publicAudioTruth.approved_public_audio_slugs || [];
 const PRIVATE_QA_AUDIO_HOLD = "bn-066";
 const REQUIRED_LIVE_SLUGS = [
   "dracula",
