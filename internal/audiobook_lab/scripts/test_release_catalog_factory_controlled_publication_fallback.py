@@ -143,6 +143,39 @@ class ControlledPublicationFallbackTests(unittest.TestCase):
             )
             self.assertEqual(result["status"], "PASS")
 
+    def test_secret_garden_rights_metadata_is_complete_but_audio_stays_hidden(self):
+        state = MODULE.BookState(
+            slug="the-secret-garden",
+            title="The Secret Garden",
+            author="Frances Hodgson Burnett",
+            language="eng",
+            order=1,
+            catalog_dir=MODULE.ROOT,
+            run_dir=MODULE.ROOT,
+        )
+        result = MODULE.rights_metadata_report(state)
+        public_book = json.loads(
+            (
+                MODULE.ROOT
+                / "data/controlled_publications/the-secret-garden/public_book.json"
+            ).read_text(encoding="utf-8")
+        )
+        approval = json.loads(
+            (
+                MODULE.ROOT
+                / "data/controlled_publications/the-secret-garden/approval_evidence.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(result["author_death_year"], 1924)
+        self.assertEqual(result["original_publication_year"], 1911)
+        self.assertTrue(result["content_use_approved"])
+        self.assertTrue(result["audiobook_use_approved"])
+        self.assertEqual(result["status"], "PASS")
+        self.assertIs(public_book["audiobook_enabled"], False)
+        self.assertEqual(
+            approval["audio_public_release"], "PUBLIC_AUDIO_RELEASE_NOT_APPROVED"
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

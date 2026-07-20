@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-12",
+  "version": "2026-07-20",
   "bengali": {
     "openai": {
       "status": "quality_limited_for_bengali_literary_audiobook",
@@ -592,6 +592,55 @@
           "internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_kokoro_bf_emma_listening_qa_v1.json"
         ],
         "next_action": "Do not repeat the closed af_bella or bf_emma synthesis, ASR-repair, targeted-resynthesis, or listening fingerprints. Keep audio hidden and use a genuinely different provider/voice or source-bound narration; objective 10.0 did not overcome the 8.3 listening minimum."
+      },
+      "the_secret_garden": {
+        "source_sha256": "4aac34ad4bda3586f1a062b24b3ca271a96edef7e4938d13042d0595f692f3a3",
+        "af_bella_voice_sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+        "af_bella_attempt_fingerprint": "85ea18462a896ab42f61cca055a8d6a24190077884c24fef9a80701e955d3a67",
+        "af_bella_asr_repair_fingerprint": "54c3054797c0c1ef9f193a63c2ec538759c3a23ced1f7b41610e10dc7da38692",
+        "af_bella_targeted_resynthesis_fingerprint": "3b59c99aabc0a7e68c1509452dd7996108658e6078fbff5ee163bd79fe857949",
+        "af_bella_targeted_audio_sha256": "c21d863ac52335289ec1ae89465f0b56d331bd9f05ef7c6ead6e23889fee8591",
+        "af_bella_final_representative_asr_scores": [
+          10.0,
+          9.393,
+          10.0,
+          10.0
+        ],
+        "af_bella_final_representative_coverages": [
+          1.0,
+          0.9423,
+          1.0,
+          1.0
+        ],
+        "af_bella_ordered_content_integrity_pass": false,
+        "af_bella_failed_passage": "yorkshire_dialogue",
+        "bf_emma_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+        "bf_emma_attempt_fingerprint": "32ae026cd0437f59d23df57ab90365ce3327ca7bb2fdc2e89eb95c9d24da9fc4",
+        "bf_emma_asr_repair_fingerprint": "a3e8fc338d235164ceea0c703856a09de42655e28611dd72acac96e53d2ecc1e",
+        "bf_emma_representative_asr_scores": [
+          9.9071,
+          9.359,
+          10.0,
+          9.9448
+        ],
+        "bf_emma_representative_coverages": [
+          0.9938,
+          0.9359,
+          1.0,
+          1.0
+        ],
+        "bf_emma_ordered_content_integrity_pass": false,
+        "listening_qa_run": false,
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "evidence_paths": [
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_af_bella_representative_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_af_bella_asr_repair_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_af_bella_targeted_resynthesis_v2.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_bf_emma_representative_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_bf_emma_asr_repair_v1.json"
+        ],
+        "next_action": "Do not repeat the closed af_bella or bf_emma fingerprints. Keep audio hidden; the Yorkshire dialect passage needs a genuinely different provider/voice family or source-bound narration before any new representative listening or full-title work."
       }
     },
     "openai": {

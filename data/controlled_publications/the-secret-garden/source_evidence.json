@@ -7,6 +7,10 @@
   "content_hash": "eb5f0ece1bc11cc989d1b801a925a85ffbd6b002ad2eaff26cdf19fbb12135ad",
   "provenance_hash": "b53587d5e59b45c73a64b03fd14fb82c2e9715c8df52d354733a569d5c9ec510",
   "rights_basis": "Public domain in India based on life plus 60 years; public domain in the U.S. based on original publication before 1931.",
+  "author_death_year": 1924,
+  "author_death_year_evidence_url": "https://www.loc.gov/item/11021580/",
+  "original_publication_year": 1911,
+  "original_publication_evidence_url": "https://www.loc.gov/item/11021580/",
   "downloaded_at": "2026-05-20T08:24:30.953321+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true

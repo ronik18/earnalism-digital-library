@@ -1,10 +1,10 @@
 {
   "slug": "the-secret-garden",
-  "generated_at": "2026-07-12T07:04:07Z",
+  "generated_at": "2026-07-20T09:51:26Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "910a7548f72e5dad340f952463fb2bfc9b158baf155b9dd3c96efaea5dfbb6ec"
+      "sha256": "bb0b315a3f02fa15d72d27e53f8a262956baaec2f66cb186632dc7dfe32a209d"
     },
     {
       "file": "checksum_manifest.json",
@@ -12,7 +12,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "e97d32b29f604b3004ca1846c41888c34f2d883c793c59a9c346e3b6448d4daf"
+      "sha256": "a0dfa5fa5cff672580b1d34062a472ba704838aba96107bf5f610d22251b994a"
     },
     {
       "file": "reader_manifest.json",
@@ -20,7 +20,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "b5078fac319498f64dd9486a06998b26ccd657f34ce843d7b2589da8d3cc50bb"
+      "sha256": "3d6309d38d1c1648d9427998430701ab0f9254cc4d64e7f26832a8438f0b982b"
     },
     {
       "file": "chapters/chapter-001.json",

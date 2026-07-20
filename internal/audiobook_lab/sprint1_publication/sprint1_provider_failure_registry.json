@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-07-13T07:54:57Z",
+  "generated_at": "2026-07-20T12:48:19Z",
   "owner_decision": "AUTHORIZE_SPRINT1_AUTONOMOUS_GO_LIVE_LOOP_V3_WITH_OPTIMIZED_DECISIONING_AND_175_USD_CAP",
   "policy": {
     "max_failed_distinct_families_before_external_audio": 2,
@@ -1996,27 +1996,203 @@
       "slug": "the-secret-garden",
       "title": "The Secret Garden",
       "language": "English",
-      "classification": "INCOMPLETE_FAIL_CLOSED",
-      "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
+      "classification": "REPRESENTATIVE_OBJECTIVE_FAIL_CLOSED",
+      "release_gate_state": "REPRESENTATIVE_OBJECTIVE_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_release_gate_evidence.json",
-      "decision_history_classification": null,
-      "attempts": [],
-      "blocked_attempt_fingerprints": [],
-      "blocked_registry_identities": [],
-      "distinct_failed_provider_voice_families": [],
-      "distinct_failed_family_count": 0,
-      "automated_tts_exhausted": false,
+      "decision_history_classification": "KOKORO_AF_BELLA_AND_BF_EMMA_REPRESENTATIVE_OBJECTIVE_FAIL_CONFIGURATIONS_CLOSED",
+      "attempts": [
+        {
+          "provider": "kokoro",
+          "model": "Kokoro-82M 0.9.4",
+          "voice": "bf_emma",
+          "style": null,
+          "style_profile": "secret-garden-bf-emma-v1",
+          "scope": "representative_audition",
+          "speaking_rate": 0.94,
+          "language": "English",
+          "text_sha256": null,
+          "prepared_text_sha256": null,
+          "source_sha256": "4aac34ad4bda3586f1a062b24b3ca271a96edef7e4938d13042d0595f692f3a3",
+          "prep_sha256": null,
+          "prep_identity": null,
+          "text_prep_variant": null,
+          "postprocess_sha256": null,
+          "postprocess_identity": null,
+          "postprocess_variant": null,
+          "status": "PRIVATE_REPRESENTATIVE_ASR_REPAIR_FAILED_FINGERPRINT_CLOSED",
+          "failed": true,
+          "minimum_observed_score": 9.359,
+          "confidence": null,
+          "fatal_flags": [],
+          "scores": [
+            9.9071,
+            9.359,
+            10.0,
+            9.9448
+          ],
+          "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_bf_emma_asr_repair_v1.json",
+          "evidence_kind": "canonical_title_release_evidence",
+          "family": "kokoro:kokoro-82m 0.9.4:bf_emma:secret-garden-bf-emma-v1:unknown:unknown:representative_audition",
+          "registry_identity_sha256": "f5f9501137cf8bf4c592c04310db4406805efae87dd16f4f379cda91976fdef2",
+          "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
+          "attempt_fingerprint": "32ae026cd0437f59d23df57ab90365ce3327ca7bb2fdc2e89eb95c9d24da9fc4",
+          "fingerprint_type": "full_sha256",
+          "fingerprint_is_evidence_native": true,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "fingerprint_provenance": {
+            "source": "canonical_title_release_evidence",
+            "field": "attempt_fingerprint",
+            "evidence_native": true,
+            "provider_native": false,
+            "synthetic": false
+          },
+          "evidence_paths": [
+            "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_bf_emma_asr_repair_v1.json"
+          ],
+          "evidence_kinds": [
+            "canonical_title_release_evidence"
+          ]
+        },
+        {
+          "provider": "kokoro",
+          "model": "Kokoro-82M 0.9.4",
+          "voice": "af_bella",
+          "style": null,
+          "style_profile": "secret-garden-af-bella-yorkshire-targeted-v2",
+          "scope": "targeted_representative_resynthesis",
+          "speaking_rate": 0.96,
+          "language": "English",
+          "text_sha256": null,
+          "prepared_text_sha256": "2aeae45c39f433ce2264b7e702e6985c06e5f28c469b2c44d9e793b63e939b46",
+          "source_sha256": "4aac34ad4bda3586f1a062b24b3ca271a96edef7e4938d13042d0595f692f3a3",
+          "prep_sha256": null,
+          "prep_identity": null,
+          "text_prep_variant": "lexical_preserving_yorkshire_punctuation_v2",
+          "postprocess_sha256": null,
+          "postprocess_identity": null,
+          "postprocess_variant": null,
+          "status": "PRIVATE_TARGETED_RESYNTHESIS_FAILED_FINGERPRINT_CLOSED",
+          "failed": true,
+          "minimum_observed_score": 9.393,
+          "confidence": null,
+          "fatal_flags": [],
+          "scores": [
+            10.0,
+            9.393,
+            10.0,
+            10.0
+          ],
+          "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_af_bella_targeted_resynthesis_v2.json",
+          "evidence_kind": "canonical_title_release_evidence",
+          "family": "kokoro:kokoro-82m 0.9.4:af_bella:secret-garden-af-bella-yorkshire-targeted-v2:lexical_preserving_yorkshire_punctuation_v2:unknown:targeted_representative_resynthesis",
+          "registry_identity_sha256": "ea7d5011bb621a886c3f99a1cf527e92249a9b1ef9347fcee4403ce45f0a80e8",
+          "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
+          "attempt_fingerprint": "3b59c99aabc0a7e68c1509452dd7996108658e6078fbff5ee163bd79fe857949",
+          "fingerprint_type": "full_sha256",
+          "fingerprint_is_evidence_native": true,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "fingerprint_provenance": {
+            "source": "canonical_title_release_evidence",
+            "field": "attempt_fingerprint",
+            "evidence_native": true,
+            "provider_native": false,
+            "synthetic": false
+          },
+          "evidence_paths": [
+            "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_af_bella_targeted_resynthesis_v2.json"
+          ],
+          "evidence_kinds": [
+            "canonical_title_release_evidence"
+          ]
+        },
+        {
+          "provider": "kokoro",
+          "model": "Kokoro-82M 0.9.4",
+          "voice": "af_bella",
+          "style": null,
+          "style_profile": "secret-garden-af-bella-v1",
+          "scope": "representative_audition",
+          "speaking_rate": 1.0,
+          "language": "English",
+          "text_sha256": null,
+          "prepared_text_sha256": null,
+          "source_sha256": "4aac34ad4bda3586f1a062b24b3ca271a96edef7e4938d13042d0595f692f3a3",
+          "prep_sha256": null,
+          "prep_identity": null,
+          "text_prep_variant": null,
+          "postprocess_sha256": null,
+          "postprocess_identity": null,
+          "postprocess_variant": null,
+          "status": "PRIVATE_REPRESENTATIVE_ASR_REPAIR_FAILED_FINGERPRINT_CLOSED",
+          "failed": true,
+          "minimum_observed_score": 9.5484,
+          "confidence": null,
+          "fatal_flags": [],
+          "scores": [
+            10.0,
+            9.5484,
+            10.0,
+            9.8889
+          ],
+          "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_af_bella_asr_repair_v1.json",
+          "evidence_kind": "canonical_title_release_evidence",
+          "family": "kokoro:kokoro-82m 0.9.4:af_bella:secret-garden-af-bella-v1:unknown:unknown:representative_audition",
+          "registry_identity_sha256": "b15407399038dfa828a090287508ad8836449f520f85f228d1911c22035105c4",
+          "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
+          "attempt_fingerprint": "85ea18462a896ab42f61cca055a8d6a24190077884c24fef9a80701e955d3a67",
+          "fingerprint_type": "full_sha256",
+          "fingerprint_is_evidence_native": true,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "fingerprint_provenance": {
+            "source": "canonical_title_release_evidence",
+            "field": "attempt_fingerprint",
+            "evidence_native": true,
+            "provider_native": false,
+            "synthetic": false
+          },
+          "evidence_paths": [
+            "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_af_bella_asr_repair_v1.json"
+          ],
+          "evidence_kinds": [
+            "canonical_title_release_evidence"
+          ]
+        }
+      ],
+      "blocked_attempt_fingerprints": [
+        "32ae026cd0437f59d23df57ab90365ce3327ca7bb2fdc2e89eb95c9d24da9fc4",
+        "3b59c99aabc0a7e68c1509452dd7996108658e6078fbff5ee163bd79fe857949",
+        "85ea18462a896ab42f61cca055a8d6a24190077884c24fef9a80701e955d3a67"
+      ],
+      "blocked_registry_identities": [
+        "b15407399038dfa828a090287508ad8836449f520f85f228d1911c22035105c4",
+        "ea7d5011bb621a886c3f99a1cf527e92249a9b1ef9347fcee4403ce45f0a80e8",
+        "f5f9501137cf8bf4c592c04310db4406805efae87dd16f4f379cda91976fdef2"
+      ],
+      "distinct_failed_provider_voice_families": [
+        "kokoro:kokoro-82m 0.9.4:af_bella:secret-garden-af-bella-v1:unknown:unknown:representative_audition",
+        "kokoro:kokoro-82m 0.9.4:af_bella:secret-garden-af-bella-yorkshire-targeted-v2:lexical_preserving_yorkshire_punctuation_v2:unknown:targeted_representative_resynthesis",
+        "kokoro:kokoro-82m 0.9.4:bf_emma:secret-garden-bf-emma-v1:unknown:unknown:representative_audition"
+      ],
+      "distinct_failed_family_count": 3,
+      "automated_tts_exhausted": true,
       "exhaustion_evidence": {
         "external_audio_terminal_state": false,
-        "failed_family_threshold_met": false,
+        "failed_family_threshold_met": true,
         "approved_release_override": false
       },
       "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
-      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "exact_blocker": "YORKSHIRE_DIALECT_REPRESENTATIVE_PASSAGE_FAILED_EXACT_ASR_SOURCE_INTEGRITY_FOR_AF_BELLA_AND_BF_EMMA",
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
-        "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_release_gate_evidence.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_af_bella_asr_repair_v1.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_af_bella_targeted_resynthesis_v2.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_bf_emma_asr_repair_v1.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_release_gate_evidence.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
       ],
       "retry_policy": "DO_NOT_REPEAT_BLOCKED_EVIDENCE_FINGERPRINTS_OR_IDENTITIES"
     },

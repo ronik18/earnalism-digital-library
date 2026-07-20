@@ -515,3 +515,13 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Objective fidelity cannot substitute for premium performance. `af_sarah` failed the active English screen and the owner exact-10 target, so its synthesis, projection, and listening fingerprints are closed without full-title generation or retry.
 - No full title, measured sync, upload, endpoint, browser proof, release mutation, or publication ran. The title remains reader-live and audio-hidden.
 - Four listening judgments were serialized and capped at `$0.20`; actual provider billing was not reported, and `paid_tts.lock` restored byte-for-byte to SHA-256 `f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3`.
+
+## 2026-07-20 The Secret Garden Kokoro Multi-Voice Objective Pilot
+
+- The controlled 27-chapter manuscript, public-domain metadata, front/back covers, root/backend parity, model, config, voice, Whisper, and paid-lock hashes were bound before synthesis. Both candidates used fallback-free G2P and private-only output.
+- The initial `af_bella` candidate reached exact `10.0/1.0` on the opening and emotional passages. A bounded retained-WAV repair left Yorkshire at `9.5484/0.9487` and the ending at `9.8889/0.9889`; the ending discrepancy was a one-occurrence ASR spelling of source-bound `Misselthwaite` as `Mizzlethwaite`.
+- A checksum-distinct British `bf_emma` candidate did not solve the title: repaired passage scores were `9.9071`, `9.359`, `10.0`, and `9.9448`. Only the emotional passage preserved exact ordered content.
+- One AF Bella Yorkshire-only resynthesis used six punctuation/apostrophe transformations with an unchanged lexical-token array, speed `0.96`, a new seed, and three new decoder arms. It preserved the opening boundary, but the best ASR result was only `9.393/0.9423`.
+- The remaining Yorkshire differences were substantive: `dress/dressed`, `Eh/Ay`, `tha/thou`, `thysen/thy son`, `an/and`, and `bein/being`. They were not normalized away. The source-bound ending spelling projection was separately hash-bound and produced exact `10.0/1.0` without deleting speech.
+- Because Yorkshire failed strict ordered source integrity, listening, full-title generation, measured sync, delivery, endpoint, browser, and publication stages were skipped. The AF Bella, BF Emma, ASR-repair, and targeted-resynthesis fingerprints are closed and the reader remains live with audio hidden.
+- Kokoro synthesis and Whisper ASR were local at `$0.00`; no paid listening call ran. `paid_tts.lock` remained byte-for-byte unchanged at SHA-256 `f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3`.
