@@ -15,7 +15,7 @@ import { optimizedImageUrl } from "../lib/images";
 import "./PremiumHero.css";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
-const REFERENCE_HERO_IMAGE = `${PUBLIC_URL}/assets/hero/premium-library-reference-art.webp`;
+const REFERENCE_HERO_IMAGE = `${PUBLIC_URL}/assets/hero/premium-library-reference-exact.webp`;
 
 const DEFAULT_HEADLINE = "A premium reading and listening sanctuary for timeless Bengali and English classics.";
 const DEFAULT_SUBHEADLINE = "Beautifully designed editions. Immersive audiobooks. Calm reading modes. A curated literary experience that stays with you.";
@@ -126,29 +126,6 @@ function CatalogCoverLink({
   );
 }
 
-function DecorativeCover({ book }) {
-  if (!book) return null;
-
-  return (
-    <div
-      className="premium-reference-slot premium-reference-slot--reader-cover"
-      aria-hidden="true"
-      data-testid={`hero-reader-${book.slug}`}
-      data-book-slug={book.slug}
-    >
-      <img
-        src={book.front_cover_url}
-        alt={book.cover_alt_text}
-        data-canonical-cover-url={book.front_cover_url}
-        width="240"
-        height="360"
-        loading="eager"
-        decoding="async"
-      />
-    </div>
-  );
-}
-
 function ReaderScreenPreview() {
   return (
     <Link
@@ -228,29 +205,26 @@ function ReferenceDeviceGroup({ listeningBook }) {
 }
 
 function ReferenceCatalogStage({ featuredBooks, approvedAudiobooks }) {
-  const readingBook = featuredBooks[0] || null;
   const featuredSlugs = new Set(featuredBooks.map((book) => book.slug));
+  const primaryShelfSlug = featuredBooks[0]?.slug;
   const listeningBook = approvedAudiobooks.find((book) => (
-    book.slug !== readingBook?.slug && featuredSlugs.has(book.slug)
+    book.slug !== primaryShelfSlug && featuredSlugs.has(book.slug)
   ))
+    || approvedAudiobooks.find((book) => book.slug !== primaryShelfSlug)
     || approvedAudiobooks[0]
     || null;
-  const excludedSlugs = new Set([readingBook?.slug, listeningBook?.slug].filter(Boolean));
-  const deskBooks = featuredBooks.filter((book) => !excludedSlugs.has(book.slug)).slice(0, 3);
 
   return (
-    <div className="premium-reference-catalog" aria-label="Featured Sprint 1 classics">
-      <DecorativeCover book={readingBook} />
+    <div className="premium-reference-catalog premium-reference-catalog--exact" aria-label="Featured Sprint 1 classics">
       <ReferenceDeviceGroup listeningBook={listeningBook} />
-
-      {[0, 1, 2].map((index) => (
+      {[0, 1, 2, 3].map((index) => (
         <CatalogCoverLink
-          key={deskBooks[index]?.slug || `empty-${index}`}
-          book={deskBooks[index]}
+          key={featuredBooks[index]?.slug || `empty-${index}`}
+          book={featuredBooks[index]}
           className={`premium-reference-slot premium-reference-slot--desk-${index + 1}`}
           sizes="9vw"
           widths={[160, 320]}
-          eager={index === 0}
+          eager={false}
         />
       ))}
     </div>
@@ -268,22 +242,31 @@ function CoverStack({ books, loading }) {
 
   return (
     <div className="premium-mobile-covers" aria-label="Featured Sprint 1 classics">
-      {books.map((book) => (
+      {books.map((book, index) => (
         <CatalogCoverLink
           key={book.slug}
           book={book}
           className="premium-mobile-cover"
-          sizes="(max-width: 520px) 29vw, 145px"
+          sizes="(max-width: 520px) calc((100vw - 3.45rem) / 4), 145px"
           widths={[180, 360]}
-          eager
+          eager={index === 0}
         />
       ))}
     </div>
   );
 }
 
-export default function PremiumHero({ curation, loading = false, error = false, onTrack }) {
+export default function PremiumHero({
+  curation,
+  loading = false,
+  error = false,
+  onTrack,
+  headerMode = "overlay",
+  analyticsNamespace = "home",
+  fallbackHeadline = DEFAULT_HEADLINE,
+}) {
   const isDesktopReference = useDesktopReference();
+  const [referenceArtFailed, setReferenceArtFailed] = useState(false);
   const hero = curation?.hero || {};
   const shelves = curation?.shelves || {};
   const featuredBooks = Array.isArray(hero.featured_books) ? hero.featured_books.slice(0, 6) : [];
@@ -292,7 +275,7 @@ export default function PremiumHero({ curation, loading = false, error = false, 
   const secondaryCta = hero.secondary_cta?.url
     ? hero.secondary_cta
     : { label: "Explore Audiobooks", url: "/library?availability=approved-audiobook" };
-  const headline = hero.headline || DEFAULT_HEADLINE;
+  const headline = hero.headline || fallbackHeadline;
   const subheadline = hero.subheadline || DEFAULT_SUBHEADLINE;
   const goldHeadline = "timeless Bengali and English classics.";
   const headlineLead = headline.includes(goldHeadline)
@@ -301,7 +284,7 @@ export default function PremiumHero({ curation, loading = false, error = false, 
 
   return (
     <section
-      className="premium-landing-hero premium-dynamic-hero premium-reference-hero"
+      className={`premium-landing-hero premium-dynamic-hero premium-reference-hero premium-reference-hero--exact${headerMode === "in-flow" ? " premium-reference-hero--in-flow" : ""}${referenceArtFailed ? " premium-reference-hero--art-failed" : ""}`}
       data-testid="premium-landing-hero"
       data-catalog-state={loading ? "loading" : error ? "unavailable" : "ready"}
       aria-label={headline}
@@ -313,11 +296,12 @@ export default function PremiumHero({ curation, loading = false, error = false, 
           src={REFERENCE_HERO_IMAGE}
           alt=""
           aria-hidden="true"
-          width="1672"
-          height="941"
+          width="2180"
+          height="1032"
           loading="eager"
           fetchPriority="high"
           decoding="async"
+          onError={() => setReferenceArtFailed(true)}
         />
       ) : null}
       <div className="premium-hero-copy">
@@ -330,6 +314,7 @@ export default function PremiumHero({ curation, loading = false, error = false, 
           {headline.includes(goldHeadline) ? <span>{goldHeadline}</span> : null}
         </h1>
         <p>{subheadline}</p>
+        <p className="sr-only">Reading time is used only while you read. Chapter 1 remains free to preview.</p>
       </div>
 
       <div className="premium-hero-actions" data-testid="hero-ctas">
@@ -337,7 +322,7 @@ export default function PremiumHero({ curation, loading = false, error = false, 
           to={primaryCta.url}
           className="premium-hero-action premium-hero-action--primary"
           data-testid="hero-cta-library"
-          onClick={() => track(onTrack, "hero_primary_cta_click", { cta: "home_hero_start_reading" })}
+          onClick={() => track(onTrack, "hero_primary_cta_click", { cta: `${analyticsNamespace}_hero_start_reading` })}
         >
           <BookOpen size={19} strokeWidth={1.55} aria-hidden="true" />
           <span>{primaryCta.label || "Start Reading"}</span>
@@ -347,7 +332,7 @@ export default function PremiumHero({ curation, loading = false, error = false, 
           to={secondaryCta.url}
           className="premium-hero-action premium-hero-action--secondary"
           data-testid="hero-cta-audiobooks"
-          onClick={() => track(onTrack, "hero_secondary_cta_click", { cta: "home_hero_approved_audiobooks" })}
+          onClick={() => track(onTrack, "hero_secondary_cta_click", { cta: `${analyticsNamespace}_hero_approved_audiobooks` })}
         >
           <Headphones size={18} strokeWidth={1.55} aria-hidden="true" />
           <span>{secondaryCta.label || "Explore Audiobooks"}</span>

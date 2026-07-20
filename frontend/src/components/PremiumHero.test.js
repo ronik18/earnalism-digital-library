@@ -22,12 +22,17 @@ describe("PremiumHero public contract", () => {
   });
 
   test("uses the owner reference as a high-priority visual layer with exact transparent CTA hotspots", () => {
-    const referenceAsset = path.join(process.cwd(), "public/assets/hero/premium-library-reference.webp");
-    expect(source).toContain("premium-library-reference-art.webp");
+    const referenceAsset = path.join(process.cwd(), "public/assets/hero/premium-library-reference-exact.webp");
+    expect(source).toContain("premium-library-reference-exact.webp");
+    expect(source).toContain('onError={() => setReferenceArtFailed(true)}');
+    expect(source).toContain('width="2180"');
+    expect(source).toContain('height="1032"');
     expect(source).toContain("fetchPriority=\"high\"");
+    expect(source).toContain("premium-reference-hero--exact");
+    expect(source).toContain("premium-reference-catalog--exact");
     expect(source).toContain("premium-hero-action--primary");
     expect(source).toContain("premium-hero-action--secondary");
-    expect(fs.statSync(referenceAsset).size).toBeLessThan(600_000);
+    expect(fs.statSync(referenceAsset).size).toBeLessThan(1_800_000);
   });
 
   test("renders the owner-approved reader-facing feature copy", () => {
@@ -51,6 +56,9 @@ describe("PremiumHero public contract", () => {
     expect(source).not.toContain("premium-reference-brand-overlay");
     expect(styles).toContain("--reference-header-height: var(--site-header-height);");
     expect(styles).toContain("height: calc(100% - var(--reference-header-height));");
+    expect(styles).toContain("height: min(calc(var(--reference-header-height) + 48.0861vw), 100vh);");
+    expect(styles).toContain("--reference-header-height: 0px;");
+    expect(styles).toContain("height: min(48.0861vw, calc(100vh - var(--site-header-height)));");
     expect(styles).toContain("object-fit: fill;");
     expect(styles).toContain("aspect-ratio: 246 / 376;");
     expect(styles).toContain("inset: 5.2% 7.7% 5% 7.7%;");
@@ -58,6 +66,16 @@ describe("PremiumHero public contract", () => {
     expect(styles).toContain("overflow: hidden;");
     expect(styles).toContain("z-index: 3;");
     expect(styles).toContain("z-index: 1;");
-    expect(styles).toContain("left: 58.15%;");
+    expect(styles).toContain("left: 56.6%;");
+    expect(source).toContain("[0, 1, 2, 3].map");
+    expect(source).toContain("featuredBooks.slice(0, 4)");
+    expect(source).not.toContain("premium-reference-slot--reader-cover");
+  });
+
+  test("keeps mobile cover loading light and analytics scoped by surface", () => {
+    expect(source).toContain("eager={index === 0}");
+    expect(source).toContain("calc((100vw - 3.45rem) / 4)");
+    expect(source).toContain("analyticsNamespace = \"home\"");
+    expect(source).toContain("headerMode === \"in-flow\"");
   });
 });
