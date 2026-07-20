@@ -1,0 +1,390 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-20T05:34:13Z",
+  "mode": "EXECUTE",
+  "plan_sha256": "4cdadb65e5e80092d3b5982b09ed5a7149a6ba4b3b44d464526c17d63799d27f",
+  "deleted_version_count": 42,
+  "deleted_bytes": 7396374442,
+  "deleted": [
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2443a0efab91d870_d20260612_m175025_c004_v0402027_t0046_u01781286625762",
+      "delete_marker": false,
+      "size_bytes": 156318450,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/ben/bn-066/bn-066-bengali-polish-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f43997a2d6ea9405c_d20260713_m200029_c004_v7007000_t0000_u01783972829204",
+      "delete_marker": true,
+      "size_bytes": 0,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2310b8cf321f789c_d20260612_m180216_c004_v0402033_t0000_u01781287336635",
+      "delete_marker": false,
+      "size_bytes": 155956706,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/ben/mrinalini/mrinalini-bengali-polish-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f424bbecb1bcd60fe_d20260713_m201051_c004_v7007000_t0000_u01783973451432",
+      "delete_marker": true,
+      "size_bytes": 0,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/acres-of-diamonds/acres-of-diamonds-english-polish-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f250346bd8a52ad0b_d20260612_m203202_c004_v0402003_t0033_u01781296322901",
+      "delete_marker": false,
+      "size_bytes": 152698715,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/bharat-at-the-crossroads/bharat-at-the-crossroads-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2214d6d56fa85d1a_d20260614_m114418_c004_v0402035_t0054_u01781437458941",
+      "delete_marker": false,
+      "size_bytes": 144817258,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/dracula/dracula-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f254140cf8a7f87dc_d20260614_m114015_c004_v0402006_t0016_u01781437215418",
+      "delete_marker": false,
+      "size_bytes": 555959110,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/dracula/dracula-english-polish-edge-queue-v1_timestamps.json",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f200a6ba9d8aa1c01_d20260614_m114315_c004_v0402028_t0038_u01781437395604",
+      "delete_marker": false,
+      "size_bytes": 12682342,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/frankenstein/frankenstein-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2214d6d56fa861aa_d20260614_m114734_c004_v0402026_t0056_u01781437654675",
+      "delete_marker": false,
+      "size_bytes": 263606483,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/great-expectations/great-expectations-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f243c6de5d4f2599a_d20260614_m191246_c004_v0402036_t0057_u01781464366371",
+      "delete_marker": false,
+      "size_bytes": 632859002,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/great-expectations/great-expectations-english-polish-edge-queue-v1_timestamps.json",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f20218f7b39aa1903_d20260614_m192510_c004_v0402034_t0058_u01781465110623",
+      "delete_marker": false,
+      "size_bytes": 14691680,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/jane-eyre/jane-eyre-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f223b0218997c4e10_d20260614_m125410_c004_v0402028_t0002_u01781441650859",
+      "delete_marker": false,
+      "size_bytes": 107761833,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/my-life-and-work/my-life-and-work-english-polish-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2372873e85f7905d_d20260612_m205358_c004_v0402035_t0035_u01781297638842",
+      "delete_marker": false,
+      "size_bytes": 350405947,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/pride-and-prejudice/pride-and-prejudice-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f213d9fa7b287b240_d20260615_m021710_c004_v0402036_t0022_u01781489830991",
+      "delete_marker": false,
+      "size_bytes": 434883230,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/the-adventures-of-sherlock-holmes/the-adventures-of-sherlock-holmes-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f234698e9b4b7c2b9_d20260614_m113733_c004_v0402027_t0053_u01781437053093",
+      "delete_marker": false,
+      "size_bytes": 357814692,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/the-call-of-the-wild/the-call-of-the-wild-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f203f859de6ed3720_d20260614_m122315_c004_v0402036_t0019_u01781439795566",
+      "delete_marker": false,
+      "size_bytes": 110863090,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/the-enchanted-april/the-enchanted-april-english-polish-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f23371d5b6ed0a5b6_d20260612_m234820_c004_v0402016_t0030_u01781308100159",
+      "delete_marker": false,
+      "size_bytes": 296929950,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/the-great-gatsby/the-great-gatsby-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2214d6d56fa85f4b_d20260614_m114644_c004_v0402025_t0046_u01781437604847",
+      "delete_marker": false,
+      "size_bytes": 172288253,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/the-picture-of-dorian-gray/the-picture-of-dorian-gray-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2554a2ba83fb2a39_d20260614_m113619_c004_v0402027_t0047_u01781436979686",
+      "delete_marker": false,
+      "size_bytes": 285786114,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/the-secret-garden/the-secret-garden-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f243c6de5d4e5c70f_d20260614_m115028_c004_v0402035_t0037_u01781437828666",
+      "delete_marker": false,
+      "size_bytes": 274464435,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/the-suicide-club/the-suicide-club-english-polish-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f210e2368b51d99e4_d20260613_m034348_c004_v0402034_t0011_u01781322228772",
+      "delete_marker": false,
+      "size_bytes": 99828132,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/the-time-machine/the-time-machine-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2119ea74262a0ce3_d20260614_m114846_c004_v0402018_t0001_u01781437726564",
+      "delete_marker": false,
+      "size_bytes": 115715387,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-below9-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2267abcb0b2f30f8_d20260615_m185852_c004_v0402032_t0002_u01781549932990",
+      "delete_marker": false,
+      "size_bytes": 127143854,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/the-wonderful-wizard-of-oz/the-wonderful-wizard-of-oz-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f213d9fa7b273ea75_d20260614_m113536_c004_v0402001_t0010_u01781436936358",
+      "delete_marker": false,
+      "size_bytes": 127143854,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks-polished/en/white-fang/white-fang-english-polish-edge-queue-v1.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f217cdd04b38b255e_d20260614_m113347_c004_v0402001_t0015_u01781436827645",
+      "delete_marker": false,
+      "size_bytes": 256015717,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/a-ghost-story/a-ghost-story_chapters_ac71009c4360.json",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f118d3c1c68d123ad_d20260705_m081854_c004_v0402016_t0001_u01783239534647",
+      "delete_marker": false,
+      "size_bytes": 190,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/a-ghost-story/a-ghost-story_meta_46edb6c41d19.json",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f1127b4da539129ea_d20260705_m081857_c004_v0402036_t0048_u01783239537641",
+      "delete_marker": false,
+      "size_bytes": 559,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/a-ghost-story/a-ghost-story_mp3_00190d747d28.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f106a9af4f455625e_d20260705_m081836_c004_v0402036_t0036_u01783239516110",
+      "delete_marker": false,
+      "size_bytes": 4594121,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/a-ghost-story/a-ghost-story_timestamps_07df83f07459.json",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f108093639905a0bf_d20260705_m081844_c004_v0402035_t0037_u01783239524561",
+      "delete_marker": false,
+      "size_bytes": 190744,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/a-ghost-story/a-ghost-story_vtt_64fa7a15a5a9.vtt",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f10508360073fab20_d20260705_m081849_c004_v0402014_t0055_u01783239529971",
+      "delete_marker": false,
+      "size_bytes": 100030,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/en/dracula/dracula.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f203402cda9c2c511_d20260610_m190803_c004_v0402011_t0003_u01781118483645",
+      "delete_marker": false,
+      "size_bytes": 301950868,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/en/dracula/dracula.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f254a4590c95a86ef_d20260610_m175701_c004_v0402012_t0012_u01781114221532",
+      "delete_marker": false,
+      "size_bytes": 301950868,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/en/dracula/dracula_timestamps.json",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f234a9238ec406fc6_d20260610_m195127_c004_v0402000_t0000_u01781121087127",
+      "delete_marker": false,
+      "size_bytes": 12997311,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/en/frankenstein/frankenstein.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2027aac7d5702ef6_d20260610_m195208_c004_v0402025_t0015_u01781121128592",
+      "delete_marker": false,
+      "size_bytes": 149655998,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/en/great-expectations/great-expectations.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f22811d023088be35_d20260610_m203938_c004_v0402026_t0027_u01781123978311",
+      "delete_marker": false,
+      "size_bytes": 353243081,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/en/great-expectations/great-expectations_timestamps.json",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2089d7eb75c83b9b_d20260610_m214659_c004_v0402033_t0007_u01781128019222",
+      "delete_marker": false,
+      "size_bytes": 14721507,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/en/my-life-and-work/my-life-and-work.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2243609fe8e10f94_d20260610_m174530_c004_v0402034_t0006_u01781113530415",
+      "delete_marker": false,
+      "size_bytes": 179120397,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/en/my-life-and-work/my-life-and-work.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f24434df67ca8e099_d20260610_m184132_c004_v0402034_t0057_u01781116892030",
+      "delete_marker": false,
+      "size_bytes": 179120397,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/en/pride-and-prejudice/pride-and-prejudice.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f254a4590c96460ed_d20260611_m021115_c004_v0402015_t0034_u01781143875405",
+      "delete_marker": false,
+      "size_bytes": 242358927,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/en/the-picture-of-dorian-gray/the-picture-of-dorian-gray.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2291de4e2f5c9a3a_d20260610_m175036_c004_v0402033_t0025_u01781113836008",
+      "delete_marker": false,
+      "size_bytes": 151534463,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/en/the-picture-of-dorian-gray/the-picture-of-dorian-gray.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f252614e8d8e14ebf_d20260610_m185416_c004_v0402035_t0013_u01781117656720",
+      "delete_marker": false,
+      "size_bytes": 151534463,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    },
+    {
+      "store": "primary",
+      "bucket": "earnalism-audiobooks",
+      "key": "earnalism/audiobooks/en/the-secret-garden/the-secret-garden.mp3",
+      "version_id": "4_zd203360e97b2bb1094e30e12_f2194d6122c46abe1_d20260610_m200620_c004_v0402022_t0004_u01781121980952",
+      "delete_marker": false,
+      "size_bytes": 146666284,
+      "classification": "DELETE_CANDIDATE_NONLIVE_PUBLIC_ORIGIN"
+    }
+  ],
+  "errors": [],
+  "status": "PASS"
+}
