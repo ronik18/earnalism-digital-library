@@ -265,6 +265,7 @@ export default function PremiumHero({
   onTrack,
   headerMode = "overlay",
   analyticsNamespace = "home",
+  fallbackHeadline = DEFAULT_HEADLINE,
 }) {
   const isDesktopReference = useDesktopReference();
   const [referenceArtFailed, setReferenceArtFailed] = useState(false);
@@ -276,7 +277,7 @@ export default function PremiumHero({
   const secondaryCta = hero.secondary_cta?.url
     ? hero.secondary_cta
     : { label: "Explore Audiobooks", url: "/library?availability=approved-audiobook" };
-  const headline = hero.headline || DEFAULT_HEADLINE;
+  const headline = hero.headline || fallbackHeadline;
   const subheadline = hero.subheadline || DEFAULT_SUBHEADLINE;
   const goldHeadline = "timeless Bengali and English classics.";
   const headlineLead = headline.includes(goldHeadline)

@@ -60,6 +60,8 @@ const VIEW_MODES = [
   { slug: "compact", name: "Compact" },
 ];
 
+const LIBRARY_HERO_FALLBACK_HEADLINE = "Bengali and English classics, opened with release truth.";
+
 export default function Library() {
   const [params, setParams] = useSearchParams();
   const [dracula, setDracula] = useState(null);
@@ -179,6 +181,7 @@ export default function Library() {
         error={homeCurationError}
         headerMode="in-flow"
         analyticsNamespace="library"
+        fallbackHeadline={LIBRARY_HERO_FALLBACK_HEADLINE}
         onTrack={(event, metadata) => trackFunnelEvent(event, { source: "library", ...metadata })}
       />
 
