@@ -1226,9 +1226,9 @@
       "audiobook_next_action": "Do not repeat completed Last Leaf fingerprints. Validate received source-bound narration, or authorize a genuinely different voice/provider representative lane, before full release QA."
     },
     "the-masque-of-the-red-death": {
-      "latest_decision": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
-      "decision_reason": "Studio-C and Chirp3-HD-Achird both failed the all-samples 9.4 representative listening gate",
-      "updated_at": "2026-07-13T06:30:06Z",
+      "latest_decision": "KOKORO_BF_EMMA_REPRESENTATIVE_ASR_REPAIR_FAILED_CONFIGURATION_CLOSED",
+      "decision_reason": "The materially different bf_emma pilot passed only one of four passages after bounded decoder repair; missing source words, unexpected trailing speech, and substantive word substitutions remain.",
+      "updated_at": "2026-07-20T04:29:45Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
@@ -1236,9 +1236,18 @@
       "studio_c_scores": [8.4, 9.4, 9.4, 9.4],
       "chirp_achird_fingerprint": "c648177b25f4a6c4",
       "chirp_achird_scores": [8.4, 8.4, 9.4, 9.4],
+      "kokoro_voice": "bf_emma",
+      "kokoro_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+      "kokoro_attempt_fingerprint": "dabff0b69632542f712b259fe039c9fa74092506141c71adb1d76b5afc21f33a",
+      "kokoro_asr_repair_fingerprint": "f727d85f6d50cf99038f56b2fe826260dc205bf691d3ac65689c32f46f30f133",
+      "kokoro_asr_scores": [9.7959, 10.0, 9.902, 9.8824],
+      "kokoro_source_coverages": [0.9796, 1.0, 0.9902, 0.9882],
+      "kokoro_ordered_content_integrity_pass": false,
+      "kokoro_listening_qa_run": false,
       "completed_attempts_must_not_repeat": true,
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-masque-of-the-red-death/metadata.json",
-      "audiobook_next_action": "Validate received source-bound narration or licensed audio against the packet before full release QA."
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-masque-of-the-red-death_kokoro_bf_emma_asr_repair_v1.json",
+      "audiobook_next_action": "Do not repeat the bf_emma synthesis or ASR-repair fingerprints. Validate received source-bound narration, or authorize a genuinely different voice/provider representative lane, before full release QA."
     },
     "the-necklace": {
       "latest_decision": "KOKORO_AF_SARAH_REPRESENTATIVE_ASR_REPAIR_FAILED_CONFIGURATION_CLOSED",
@@ -1298,9 +1307,9 @@
       "audiobook_next_action": "Validate received source-bound narration or licensed audio against the packet before full release QA."
     },
     "the-gift-of-the-magi": {
-      "latest_decision": "KOKORO_FULL_TITLE_OBJECTIVE_FAIL_CONFIGURATION_CLOSED",
-      "decision_reason": "The private 19-section af_bella full title reached aggregate ASR/source 9.9545 and numeric measured sync 9.8131, but eight sections failed exact ordered content or audio-derived timestamp binding. Aggregate scores cannot override missing/substituted words or invalid timestamps.",
-      "updated_at": "2026-07-20T03:15:11Z",
+      "latest_decision": "KOKORO_AF_BELLA_FULL_AND_BF_EMMA_REPRESENTATIVE_OBJECTIVE_FAIL_CONFIGURATIONS_CLOSED",
+      "decision_reason": "The af_bella full title retained eight exact source/timestamp failures. A materially different bf_emma representative then passed only two of four passages after bounded decoder repair, retaining proper-name/spelling substitutions and an omitted three-word source phrase.",
+      "updated_at": "2026-07-20T04:02:55Z",
       "language": "en",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
       "provider": "kokoro",
@@ -1334,6 +1343,13 @@
       "kokoro_full_title_sections_passed": 11,
       "kokoro_full_title_sections_failed": 8,
       "kokoro_full_title_listening_qa_run": false,
+      "kokoro_bf_emma_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+      "kokoro_bf_emma_attempt_fingerprint": "519fdef2999d9d8e9b7f01cd4b2cb571cff6e41a1457aab1925b45d0c30f9fe3",
+      "kokoro_bf_emma_asr_repair_fingerprint": "804d06f2f84ce24a2af4a5e92039d8c28019a782dbe11df958fef91c16647193",
+      "kokoro_bf_emma_asr_scores": [10.0, 9.6552, 10.0, 9.8776],
+      "kokoro_bf_emma_source_coverages": [1.0, 0.9655, 1.0, 0.9758],
+      "kokoro_bf_emma_ordered_content_integrity_pass": false,
+      "kokoro_bf_emma_listening_qa_run": false,
       "studio_c_scores": [9.5, 9.4, 8.5, 9.4],
       "chirp_aoede_scores": [9.4, 9.4, 7.2, 9.5],
       "contextual_studio_c_scores": [9.5, 9.4, 8.3, 9.5],
@@ -1341,13 +1357,13 @@
       "contextual_risk_sampling_result": "FALSE_CONTEXTLESSNESS_FIXED_NO_PASS_CREATED",
       "plateau_confirmed": false,
       "completed_attempts_must_not_repeat": true,
-      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_kokoro_af_bella_full_title_asr_repair_v1.json",
-      "audiobook_next_action": "Do not repeat completed representative, full-title generation, or ASR-repair fingerprints. Keep Gift audio-hidden and require a materially different voice/provider or source-bound narration before another title-bound pilot."
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_kokoro_bf_emma_asr_repair_v1.json",
+      "audiobook_next_action": "Do not repeat completed af_bella or bf_emma fingerprints. Keep Gift audio-hidden and require a genuinely different voice/provider or source-bound narration before another title-bound pilot."
     },
     "the-tell-tale-heart": {
-      "latest_decision": "AUTOMATED_PROVIDER_PLATEAU_ALTERNATE_PATH_REQUIRED",
-      "decision_reason": "contextual and slower contextual Studio-C representative auditions each retained sub-threshold passages",
-      "updated_at": "2026-07-12T22:03:03Z",
+      "latest_decision": "KOKORO_BF_EMMA_REPRESENTATIVE_ASR_REPAIR_FAILED_CONFIGURATION_CLOSED",
+      "decision_reason": "Three of four bf_emma passages reached exact ASR/source 10.0/1.0 after bounded decoder repair, but both finale decoders retained unexpected trailing phrase thanks for watching.",
+      "updated_at": "2026-07-20T04:29:45Z",
       "language": "en",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
       "provider": "google",
@@ -1356,7 +1372,17 @@
       "owner_minimum_score": 9.4,
       "contextual_risk_sampling_result": "FALSE_CONTEXTLESSNESS_FIXED_NO_PASS_CREATED",
       "plateau_confirmed": true,
-      "audiobook_next_action": "Do not repeat the current Google attempt families; use a materially different provider or source-bound human or licensed narration candidate before full TTS."
+      "kokoro_voice": "bf_emma",
+      "kokoro_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+      "kokoro_attempt_fingerprint": "5ab7a8abdc62cd901d16d7cb9fb6fe10094bb829d279574a6ccd6da88e1562f9",
+      "kokoro_asr_repair_fingerprint": "6377ce48f1d97e9f8e5cfdd602dce256332c6a6ced7767877a20774578d72533",
+      "kokoro_asr_scores": [10.0, 10.0, 10.0, 9.8605],
+      "kokoro_source_coverages": [1.0, 1.0, 1.0, 1.0],
+      "kokoro_ordered_content_integrity_pass": false,
+      "kokoro_listening_qa_run": false,
+      "completed_attempts_must_not_repeat": true,
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_kokoro_bf_emma_asr_repair_v1.json",
+      "audiobook_next_action": "Do not repeat the bf_emma synthesis or ASR-repair fingerprints and never delete unexpected decoded speech to manufacture a pass. Use a genuinely different provider/voice or validate source-bound narration before another representative lane."
     }
   },
   "bengali_audio_lane_status": "D19_HUMAN_NARRATION_REQUIRED_NO_SCALE_V3_PREFLIGHT_RECONCILED",

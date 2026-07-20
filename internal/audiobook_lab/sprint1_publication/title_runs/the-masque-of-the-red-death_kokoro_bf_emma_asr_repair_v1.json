@@ -1,0 +1,1496 @@
+{
+  "schema": "earnalism.kokoro.masque_bf_emma_asr_repair.v1",
+  "generated_at": "2026-07-20T04:16:05Z",
+  "status": "PRIVATE_REPRESENTATIVE_ASR_REPAIR_FAILED_FINGERPRINT_CLOSED",
+  "scope": {
+    "slug": "the-masque-of-the-red-death",
+    "title": "The Masque of the Red Death",
+    "author": "Edgar Allan Poe",
+    "language": "en",
+    "profile": "masque-bf-emma-gothic-restraint-v1",
+    "passage_count": 4,
+    "characters": 3077,
+    "representative_only": true,
+    "full_title_generated": false
+  },
+  "source": {
+    "chapter_path": "/private/tmp/earnalism-next-kokoro-pilot/data/controlled_publications/the-masque-of-the-red-death/chapters/chapter-001.json",
+    "source_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+    "passages": [
+      {
+        "passage_id": "opening_plague_and_prospero",
+        "characters": 544,
+        "text_sha256": "16e78152465fec59b1a45da95cad7eb8f7dffd7f0e845a372e3ff12e33809e48",
+        "risk": "opening authority, plague imagery, long clauses, and Prince Prospero"
+      },
+      {
+        "passage_id": "black_room_blood_light",
+        "characters": 1009,
+        "text_sha256": "4e908021ee2eb41c0897de247df3ec5b46f9f54206fef071ba7dc2dd00c19e0b",
+        "risk": "British spelling, architectural vocabulary, colour imagery, and suspense"
+      },
+      {
+        "passage_id": "ebony_clock_tension",
+        "characters": 558,
+        "text_sha256": "b23e8a225f916e6c56b810058cdf70f819a08f3ab155b71afcb1075f8d971227",
+        "risk": "measured clock cadence, semicolon phrasing, and controlled dread"
+      },
+      {
+        "passage_id": "final_confrontation_and_dominion",
+        "characters": 966,
+        "text_sha256": "3156906cde350ac6a1964dd686fa7b92475390b0db3f5fd13d2fca277c3b2335",
+        "risk": "climactic action, macabre vocabulary, repeated conjunctions, and final cadence"
+      }
+    ],
+    "origin_source_sha256": "2264be57608b30c4af99db7b1d430accae5a7c4d9da738ac04651f7ef74bc266",
+    "sanitized_source_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+    "normalized_source_sha256": "a5057ddc09428de32f2b7531cd4a82de1c081fb840ae47c172f730b179c80ab8",
+    "word_count": 2421,
+    "rights_basis_bound": true
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "package_version": "0.9.4",
+    "model_repo": "hexgrad/Kokoro-82M",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "bf_emma",
+    "voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+    "speed": 0.94,
+    "random_seed": 2026072001,
+    "sample_rate_hz": 24000,
+    "pronunciation_overrides": {
+      "Avatar": "ˈavətɑː",
+      "Prospero": "pɹˈɒspəɹˌQ",
+      "brazier": "bɹˈAzɪə",
+      "candelabrum": "kˌandɪlˈɑːbɹəm",
+      "cerements": "sˈɪəmᵊnts",
+      "harken": "hˈɑːkən",
+      "illimitable": "ɪlˈɪmɪtəbᵊl"
+    },
+    "g2p_fallback_enabled": false,
+    "attempt_fingerprint": "dabff0b69632542f712b259fe039c9fa74092506141c71adb1d76b5afc21f33a",
+    "known_failed_fingerprint_count": 2,
+    "pipeline_lang_code": "b",
+    "g2p_british": true
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "ordered_content_integrity_required": true
+  },
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/bf_emma.pt",
+      "sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+      "size_bytes": 523420
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "python_executable": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "deterministic_algorithms_required": true,
+    "torch_thread_count": 1,
+    "offline_local_artifacts_only": true
+  },
+  "rights": {
+    "source_text_rights_basis": "Edgar Allan Poe died 1849; first published 1842. Public domain in India and the U.S.",
+    "model_and_voicepack_license": "Apache-2.0",
+    "private_audition_allowed": true,
+    "title_scoped_production_risk_acceptance_bound": false,
+    "production_release_approved": false,
+    "public_disclosure_required_if_later_approved": "AI voice"
+  },
+  "safety": {
+    "provider_calls": 0,
+    "estimated_tts_provider_cost_usd": 0.0,
+    "paid_tts_lock": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_touched": false,
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-masque-of-the-red-death/f3ff3571-bf-emma-representative-v1",
+    "audio_generated": true,
+    "listening_provider_calls": 0,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false,
+    "paid_tts_lock_before": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_after": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_unchanged": true,
+    "asr_run": true,
+    "audio_generated_during_repair": false,
+    "resynthesis_performed": false,
+    "audio_edit_or_trim_performed": false,
+    "asr_only_repair": true,
+    "provider_calls_during_repair": 0,
+    "paid_tts_lock_before_sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+    "paid_tts_lock_after_sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+    "paid_tts_lock_touched_during_repair": false
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_ASR_REPAIR_FAILED",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "MASQUE_TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "PRIVATE_DELIVERY_MANIFEST_NOT_COMPLETE",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN",
+    "OWNER_10_TARGET_NOT_VERIFIED"
+  ],
+  "catalog_truth": {
+    "reader_status": "reader_ready",
+    "publication_status": "live",
+    "audiobook_enabled": false,
+    "audio_enabled": false,
+    "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED"
+  },
+  "prior_attempts": [
+    {
+      "provider": "google",
+      "voice": "en-GB-Studio-C",
+      "speaking_rate": 0.94,
+      "fingerprint": "6f561b31503df395",
+      "scores": [
+        8.4,
+        9.4,
+        9.4,
+        9.4
+      ],
+      "minimum_confidence": 0.9,
+      "fatal_flags": [],
+      "status": "BLOCKED_LISTENING_QA"
+    },
+    {
+      "provider": "google",
+      "voice": "en-GB-Chirp3-HD-Achird",
+      "speaking_rate": 0.9,
+      "fingerprint": "c648177b25f4a6c4",
+      "scores": [
+        8.4,
+        8.4,
+        9.4,
+        9.4
+      ],
+      "minimum_confidence": 0.9,
+      "fatal_flags": [],
+      "status": "BLOCKED_LISTENING_QA"
+    }
+  ],
+  "prior_attempt_audit": {
+    "canonical_release_evidence": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/title_runs/the-masque-of-the-red-death_release_gate_evidence.json",
+    "provider_failure_registry": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/sprint1_provider_failure_registry.json",
+    "failed_family_count": 2,
+    "kokoro_attempt_found_for_title": false,
+    "validated": true
+  },
+  "no_repeat_history": {
+    "inspected_paths": [
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/earnalism_intelligence/provider_performance_memory.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/earnalism_intelligence/title_decision_history.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/earnalism_intelligence/bengali_audiobook_campaign_state.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/sprint1_provider_failure_registry.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/title_runs/the-masque-of-the-red-death_release_gate_evidence.json"
+    ],
+    "prior_fingerprints": [
+      "6f561b31503df395",
+      "c648177b25f4a6c4"
+    ],
+    "exact_current_fingerprint_found": false,
+    "fail_closed_on_completed_fingerprint": true
+  },
+  "voice_selection": {
+    "selected_voice": "bf_emma",
+    "selected_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+    "selection_reason": "already-local British voice selected for restrained gothic narration; no prior Masque Kokoro attempt exists",
+    "pipeline_lang_code": "b",
+    "g2p_british": true,
+    "different_from_prior_google_provider_voice_families": true,
+    "different_from_other_local_kokoro_voice_assets": true,
+    "selected_asset_is_locally_installed_and_hash_verified": true,
+    "selected_asset_source_repo": "hexgrad/Kokoro-82M",
+    "selected_asset_source_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987"
+  },
+  "next_stage_contract": {
+    "status": "ASR_REPAIR_FINGERPRINT_CLOSED_OBJECTIVE_FAIL",
+    "repair_fingerprint": "f727d85f6d50cf99038f56b2fe826260dc205bf691d3ac65689c32f46f30f133",
+    "exact_execute_command": null,
+    "do_not_repeat_completed_fingerprint": true,
+    "listening_qa_allowed": false,
+    "full_title_generation_allowed": false,
+    "upload_allowed": false,
+    "publication_allowed": false,
+    "release_gate_mutation_allowed": false,
+    "next_action": "Use a materially different voice/provider or source-bound narration; do not repeat this synthesis or ASR-repair fingerprint."
+  },
+  "samples": [
+    {
+      "passage_id": "opening_plague_and_prospero",
+      "source_text_sha256": "16e78152465fec59b1a45da95cad7eb8f7dffd7f0e845a372e3ff12e33809e48",
+      "characters": 544,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-masque-of-the-red-death/f3ff3571-bf-emma-representative-v1/opening_plague_and_prospero.wav",
+      "phoneme_sha256": "74a9328cff42277fdbcad7c500fd5e13bb9a21a3709cbbec52903668ba36a3fc",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 30.75,
+      "size_bytes": 1476044,
+      "audio_sha256": "50ff80a37a6ec44a899a1d5e1c8485d711c01fa931903d465a9165df2c301d7d",
+      "peak_fraction": 0.605518,
+      "rms_fraction": 0.060569,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "black_room_blood_light",
+      "source_text_sha256": "4e908021ee2eb41c0897de247df3ec5b46f9f54206fef071ba7dc2dd00c19e0b",
+      "characters": 1009,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-masque-of-the-red-death/f3ff3571-bf-emma-representative-v1/black_room_blood_light.wav",
+      "phoneme_sha256": "6f7fc91422550051b2a11be5502684251878aa256ed0fcd97de6f74cbc7b61ad",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 58.35,
+      "size_bytes": 2800844,
+      "audio_sha256": "a1154d9771f17e88cb70ac874ca8e9a491d73ebc20c17f247689e43a2399e370",
+      "peak_fraction": 0.587176,
+      "rms_fraction": 0.060255,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "ebony_clock_tension",
+      "source_text_sha256": "b23e8a225f916e6c56b810058cdf70f819a08f3ab155b71afcb1075f8d971227",
+      "characters": 558,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-masque-of-the-red-death/f3ff3571-bf-emma-representative-v1/ebony_clock_tension.wav",
+      "phoneme_sha256": "491d75ab02cff7df7645ca093fa0c91b4fa8c6b5a37c5d81f05caf81b3bab173",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 31.725,
+      "size_bytes": 1522844,
+      "audio_sha256": "1a1451fbaa957ff5dfb7ead723d1107433c3266209ea64af787665946556a9bc",
+      "peak_fraction": 0.7734,
+      "rms_fraction": 0.059887,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "final_confrontation_and_dominion",
+      "source_text_sha256": "3156906cde350ac6a1964dd686fa7b92475390b0db3f5fd13d2fca277c3b2335",
+      "characters": 966,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-masque-of-the-red-death/f3ff3571-bf-emma-representative-v1/final_confrontation_and_dominion.wav",
+      "phoneme_sha256": "c53973903bd44f0c78ebf093c3bf20eb4cc92ac077c17bc85c688347e0346f21",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 54.95,
+      "size_bytes": 2637644,
+      "audio_sha256": "c383b4aaaa8978c7376cebe2816331cc479d5e62732975e0f96d2f53bfca4e37",
+      "peak_fraction": 0.611957,
+      "rms_fraction": 0.060498,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    }
+  ],
+  "asr": {
+    "status": "FAIL",
+    "mode": "ASR_ONLY_RETAINED_HASH_BOUND_AUDIO",
+    "audio_derived": true,
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "repair_fingerprint": "f727d85f6d50cf99038f56b2fe826260dc205bf691d3ac65689c32f46f30f133",
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "reports": [
+      {
+        "passage_id": "opening_plague_and_prospero",
+        "decoder_arm": "unprompted_beam_2",
+        "audio_sha256": "50ff80a37a6ec44a899a1d5e1c8485d711c01fa931903d465a9165df2c301d7d",
+        "source_text_sha256": "16e78152465fec59b1a45da95cad7eb8f7dffd7f0e845a372e3ff12e33809e48",
+        "raw_transcript": "The red death had long devastated the country. No pestilence had ever been so fatal or so hideous. Blood was its avatar and its seal, the redness and the horror of blood. There were sharp pains and sudden dizziness, and then profuse bleeding at the pores with dissolution. The scarlet stains upon the body and especially upon the face of the victim, were the pest ban which shut him out from the aid and from the sympathy of his fellow-men. And the whole seizure, progress and termination of the disease, were the incidents of half Thank you.",
+        "raw_transcript_sha256": "f4bc416313171a9c394b79cbb970af1d680bf15784e29e28d0f5806631eb8824",
+        "evaluated_transcript": "The red death had long devastated the country. No pestilence had ever been so fatal or so hideous. Blood was its avatar and its seal, the redness and the horror of blood. There were sharp pains and sudden dizziness, and then profuse bleeding at the pores with dissolution. The scarlet stains upon the body and especially upon the face of the victim, were the pest ban which shut him out from the aid and from the sympathy of his fellow-men. And the whole seizure, progress and termination of the disease, were the incidents of half Thank you.",
+        "evaluated_transcript_sha256": "f4bc416313171a9c394b79cbb970af1d680bf15784e29e28d0f5806631eb8824",
+        "source_equivalences_applied": [],
+        "missing_harken_normalized": false,
+        "trailing_unexpected_you_deleted_or_normalized": false,
+        "score": 9.7959,
+        "coverage": 0.9796,
+        "precision": 0.9796,
+        "source_token_count": 98,
+        "transcript_token_count": 98,
+        "equal_token_count": 96,
+        "first_words_match": true,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "an": 1,
+          "hour": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "thank": 1,
+          "you": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              96,
+              98
+            ],
+            "transcript_range": [
+              96,
+              98
+            ],
+            "source_tokens": [
+              "an",
+              "hour"
+            ],
+            "transcript_tokens": [
+              "thank",
+              "you"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "black_room_blood_light",
+        "decoder_arm": "unprompted_beam_2",
+        "audio_sha256": "a1154d9771f17e88cb70ac874ca8e9a491d73ebc20c17f247689e43a2399e370",
+        "source_text_sha256": "4e908021ee2eb41c0897de247df3ec5b46f9f54206fef071ba7dc2dd00c19e0b",
+        "raw_transcript": "But in this chamber only, the color of the windows failed to correspond with the decorations. The panes here were scarlet, a deep blood color. Now in no one of the seven apartments was there any lamp or candelabrum, amid the profusion of golden ornaments that lay scattered to and fro, or depended from the roof. There was no light of any kind emanating from lamp or candle within the suite of chambers. But in the corridors that followed the suite there stood, opposite to each window, a heavy tripod, bearing a brazier of fire, that projected its rays through the tinted glass and so glaringly illumined the room, and thus were produced a multitude of gaudy and fantastic appearances. But in the western or black chamber, the effect of the firelight that streamed upon the dark hangings through the blood-tinted panes, was ghastly in the extreme, and produced so wild a look upon the countenances of those who entered, that there were few of the company bold enough to set foot within its precincts at all.",
+        "raw_transcript_sha256": "7c4db44ef6204b8f77cc274b8b712cc976e96c5ba2a14b8dc2aed65ce9a4960c",
+        "evaluated_transcript": "But in this chamber only, the colour of the windows failed to correspond with the decorations. The panes here were scarlet, a deep blood colour. Now in no one of the seven apartments was there any lamp or candelabrum, amid the profusion of golden ornaments that lay scattered to and fro, or depended from the roof. There was no light of any kind emanating from lamp or candle within the suite of chambers. But in the corridors that followed the suite there stood, opposite to each window, a heavy tripod, bearing a brazier of fire, that projected its rays through the tinted glass and so glaringly illumined the room, and thus were produced a multitude of gaudy and fantastic appearances. But in the western or black chamber, the effect of the fire light that streamed upon the dark hangings through the blood-tinted panes, was ghastly in the extreme, and produced so wild a look upon the countenances of those who entered, that there were few of the company bold enough to set foot within its precincts at all.",
+        "evaluated_transcript_sha256": "e10818580a4406218590a140929b8010f6abba8d751d9867b38d8d814be73f67",
+        "source_equivalences_applied": [
+          {
+            "pattern": "\\bcolor\\b",
+            "replacement": "colour",
+            "observed_count": 2,
+            "reason": "American ASR spelling for the source British colour"
+          },
+          {
+            "pattern": "\\bfirelight\\b",
+            "replacement": "fire light",
+            "observed_count": 1,
+            "reason": "compound ASR tokenization for the source fire light"
+          }
+        ],
+        "missing_harken_normalized": false,
+        "trailing_unexpected_you_deleted_or_normalized": false,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 179,
+        "transcript_token_count": 179,
+        "equal_token_count": 179,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      },
+      {
+        "passage_id": "ebony_clock_tension",
+        "decoder_arm": "unprompted_beam_2",
+        "audio_sha256": "1a1451fbaa957ff5dfb7ead723d1107433c3266209ea64af787665946556a9bc",
+        "source_text_sha256": "b23e8a225f916e6c56b810058cdf70f819a08f3ab155b71afcb1075f8d971227",
+        "raw_transcript": "It was in this apartment also that there stood against the western wall, a gigantic clock of ebony. Its pendulum swung to and fro with a dull, heavy, monotonous clang, and when the minute hand made the circuit of the face, and the hour was to be stricken, there came from the brazen lungs of the clock a sound which was clear and loud and deep and exceedingly musical. But of so peculiar a note and emphasis that at each lapse of an hour, the musicians of the orchestra were constrained to pause, momentarily in their performance, to hearken to the sound.",
+        "raw_transcript_sha256": "72b03a7be35973ad757298183e66a07b819bd634ccc2b2ec50ee7dac87a3a5e6",
+        "evaluated_transcript": "It was in this apartment also that there stood against the western wall, a gigantic clock of ebony. Its pendulum swung to and fro with a dull, heavy, monotonous clang, and when the minute hand made the circuit of the face, and the hour was to be stricken, there came from the brazen lungs of the clock a sound which was clear and loud and deep and exceedingly musical. But of so peculiar a note and emphasis that at each lapse of an hour, the musicians of the orchestra were constrained to pause, momentarily in their performance, to hearken to the sound.",
+        "evaluated_transcript_sha256": "72b03a7be35973ad757298183e66a07b819bd634ccc2b2ec50ee7dac87a3a5e6",
+        "source_equivalences_applied": [],
+        "missing_harken_normalized": false,
+        "trailing_unexpected_you_deleted_or_normalized": false,
+        "score": 9.902,
+        "coverage": 0.9902,
+        "precision": 0.9902,
+        "source_token_count": 102,
+        "transcript_token_count": 102,
+        "equal_token_count": 101,
+        "first_words_match": true,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "harken": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "hearken": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              98,
+              99
+            ],
+            "transcript_range": [
+              98,
+              99
+            ],
+            "source_tokens": [
+              "harken"
+            ],
+            "transcript_tokens": [
+              "hearken"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "final_confrontation_and_dominion",
+        "decoder_arm": "unprompted_greedy",
+        "audio_sha256": "c383b4aaaa8978c7376cebe2816331cc479d5e62732975e0f96d2f53bfca4e37",
+        "source_text_sha256": "3156906cde350ac6a1964dd686fa7b92475390b0db3f5fd13d2fca277c3b2335",
+        "raw_transcript": "There was a sharp cry, and the dagger dropped gleaming upon the sable carpet, upon which, instantly afterwards, fell prostrate in death the Prince Prospero. Then summoning the wild courage of despair, a throng of the revelers at once threw themselves into the black apartment, and seizing the mamma whose tall figure stood erect and motionless within the shadow of the ebony clock, gasped in unutterable horror at finding the grave serments and corpse-like mask, which they handled with so violent a rudeness, untenanted by any tangible form, and now was acknowledged the presence of the Red Death. He had come like a thief in the night. And one by one dropped the revelers in the blood-bedewed halls of their revel, and died each in the despairing posture of his fall. And the life of the ebony clock went out with that of the last of the gay, and the flames of the tripods expired, and darkness and decay, and the Red Death held illimitable dominion over all.",
+        "raw_transcript_sha256": "17c9ad7bbd2bb0272d7329cbfce69a283fa62210d6e92df323142244f387ab08",
+        "evaluated_transcript": "There was a sharp cry, and the dagger dropped gleaming upon the sable carpet, upon which, instantly afterwards, fell prostrate in death the Prince Prospero. Then summoning the wild courage of despair, a throng of the revellers at once threw themselves into the black apartment, and seizing the mamma whose tall figure stood erect and motionless within the shadow of the ebony clock, gasped in unutterable horror at finding the grave serments and corpse-like mask, which they handled with so violent a rudeness, untenanted by any tangible form, and now was acknowledged the presence of the Red Death. He had come like a thief in the night. And one by one dropped the revellers in the blood-bedewed halls of their revel, and died each in the despairing posture of his fall. And the life of the ebony clock went out with that of the last of the gay, and the flames of the tripods expired, and darkness and decay, and the Red Death held illimitable dominion over all.",
+        "evaluated_transcript_sha256": "c435f724f3efd27f89c8f99a6e1719c1c9443e86ab7347a2b1cd40b35ef1fbd5",
+        "source_equivalences_applied": [
+          {
+            "pattern": "\\brevelers\\b",
+            "replacement": "revellers",
+            "observed_count": 2,
+            "reason": "American ASR spelling for the source British revellers"
+          }
+        ],
+        "missing_harken_normalized": false,
+        "trailing_unexpected_you_deleted_or_normalized": false,
+        "score": 9.8824,
+        "coverage": 0.9882,
+        "precision": 0.9882,
+        "source_token_count": 170,
+        "transcript_token_count": 170,
+        "equal_token_count": 168,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "mummer": 1,
+          "cerements": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "mamma": 1,
+          "serments": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              48,
+              49
+            ],
+            "transcript_range": [
+              48,
+              49
+            ],
+            "source_tokens": [
+              "mummer"
+            ],
+            "transcript_tokens": [
+              "mamma"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              71,
+              72
+            ],
+            "transcript_range": [
+              71,
+              72
+            ],
+            "source_tokens": [
+              "cerements"
+            ],
+            "transcript_tokens": [
+              "serments"
+            ]
+          }
+        ],
+        "pass": false
+      }
+    ]
+  },
+  "input_evidence": {
+    "path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/title_runs/the-masque-of-the-red-death_kokoro_bf_emma_representative_preflight_v1.json",
+    "sha256": "5380e1c4347e52be3857c3c17cc26ded88c88f9147a9fd0064dcce25f1d76c20",
+    "unchanged": true
+  },
+  "asr_prior_prompted_run": {
+    "status": "FAIL",
+    "mode": "ASR_REVERIFY_EXISTING_AUDIO_ONLY",
+    "config_fingerprint": "bcac5ecbe5afdbc64e042a2158e55793cdb79c4c1ac181cb56313a6c5fd369dc",
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "audio_derived": true,
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "prompt_policy": {
+      "opening_plague_and_prospero": "canonical_vocabulary_prompt",
+      "black_room_blood_light": "canonical_vocabulary_prompt",
+      "ebony_clock_tension": "canonical_vocabulary_prompt",
+      "final_confrontation_and_dominion": "canonical_vocabulary_prompt"
+    },
+    "source_equivalence_policy": {
+      "opening_plague_and_prospero": [],
+      "black_room_blood_light": [],
+      "ebony_clock_tension": [],
+      "final_confrontation_and_dominion": []
+    },
+    "unexpected_speech_may_be_normalized_or_discarded": false,
+    "reports": [
+      {
+        "passage_id": "opening_plague_and_prospero",
+        "audio_sha256": "50ff80a37a6ec44a899a1d5e1c8485d711c01fa931903d465a9165df2c301d7d",
+        "source_text_sha256": "16e78152465fec59b1a45da95cad7eb8f7dffd7f0e845a372e3ff12e33809e48",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "845530fbc2ba57e553d259e6bcc4d6443fd811427f4bfa08102eba659d02464f",
+        "transcript": "The Red Death had long devastated the country. No pestilence had ever been so fatal or so hideous. Blood was its avatar and its seal, the redness and the horror of blood. There were sharp pains and sudden dizziness, and then profuse bleeding at the pores with dissolution. The scarlet stains upon the body and especially upon the face of the victim, were the pest ban which shut him out from the aid and from the sympathy of his fellow-men. And the whole seizure, progress and termination of the disease, were the incidents of half an hour. you",
+        "transcript_sha256": "b6f5ad101ba672d06c3c4010d874c255c7688b15c73281fc6ffd3529befc4e82",
+        "evaluated_transcript": "The Red Death had long devastated the country. No pestilence had ever been so fatal or so hideous. Blood was its avatar and its seal, the redness and the horror of blood. There were sharp pains and sudden dizziness, and then profuse bleeding at the pores with dissolution. The scarlet stains upon the body and especially upon the face of the victim, were the pest ban which shut him out from the aid and from the sympathy of his fellow-men. And the whole seizure, progress and termination of the disease, were the incidents of half an hour. you",
+        "evaluated_transcript_sha256": "b6f5ad101ba672d06c3c4010d874c255c7688b15c73281fc6ffd3529befc4e82",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.500252,
+        "score": 9.9492,
+        "coverage": 1.0,
+        "precision": 0.9899,
+        "source_token_count": 98,
+        "transcript_token_count": 99,
+        "equal_token_count": 98,
+        "first_words_match": true,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "you": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "insert",
+            "source_range": [
+              98,
+              98
+            ],
+            "transcript_range": [
+              98,
+              99
+            ],
+            "source_tokens": [],
+            "transcript_tokens": [
+              "you"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "black_room_blood_light",
+        "audio_sha256": "a1154d9771f17e88cb70ac874ca8e9a491d73ebc20c17f247689e43a2399e370",
+        "source_text_sha256": "4e908021ee2eb41c0897de247df3ec5b46f9f54206fef071ba7dc2dd00c19e0b",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "845530fbc2ba57e553d259e6bcc4d6443fd811427f4bfa08102eba659d02464f",
+        "transcript": "But in this chamber only, the color of the windows failed to correspond with the decorations. The panes here were scarlet, a deep blood color. Now in no one of the seven apartments was there any lamp or candelabrum, amid the profusion of golden ornaments that lay scattered to and fro, or depended from the roof. There was no light of any kind emanating from lamp or candle within the suite of chambers. But in the corridors that followed the suite there stood, opposite to each window, a heavy tripod, bearing a brazier of fire, that projected its rays through the tinted glass and so glaringly illumined the room, and thus were produced a multitude of gaudy and fantastic appearances. But in the western or black chamber, the effect of the firelight that streamed upon the dark hangings through the blood-tinted panes, was ghastly in the extreme, and produced so wild a look upon the countenances of those who entered, that there were few of the company bold enough to set foot within its precincts at all.",
+        "transcript_sha256": "7c4db44ef6204b8f77cc274b8b712cc976e96c5ba2a14b8dc2aed65ce9a4960c",
+        "evaluated_transcript": "But in this chamber only, the color of the windows failed to correspond with the decorations. The panes here were scarlet, a deep blood color. Now in no one of the seven apartments was there any lamp or candelabrum, amid the profusion of golden ornaments that lay scattered to and fro, or depended from the roof. There was no light of any kind emanating from lamp or candle within the suite of chambers. But in the corridors that followed the suite there stood, opposite to each window, a heavy tripod, bearing a brazier of fire, that projected its rays through the tinted glass and so glaringly illumined the room, and thus were produced a multitude of gaudy and fantastic appearances. But in the western or black chamber, the effect of the firelight that streamed upon the dark hangings through the blood-tinted panes, was ghastly in the extreme, and produced so wild a look upon the countenances of those who entered, that there were few of the company bold enough to set foot within its precincts at all.",
+        "evaluated_transcript_sha256": "7c4db44ef6204b8f77cc274b8b712cc976e96c5ba2a14b8dc2aed65ce9a4960c",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.530001,
+        "score": 9.8039,
+        "coverage": 0.9777,
+        "precision": 0.9831,
+        "source_token_count": 179,
+        "transcript_token_count": 178,
+        "equal_token_count": 175,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "colour": 2,
+          "light": 1,
+          "fire": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "color": 2,
+          "firelight": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              6,
+              7
+            ],
+            "transcript_range": [
+              6,
+              7
+            ],
+            "source_tokens": [
+              "colour"
+            ],
+            "transcript_tokens": [
+              "color"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              24,
+              25
+            ],
+            "transcript_range": [
+              24,
+              25
+            ],
+            "source_tokens": [
+              "colour"
+            ],
+            "transcript_tokens": [
+              "color"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              131,
+              133
+            ],
+            "transcript_range": [
+              131,
+              132
+            ],
+            "source_tokens": [
+              "fire",
+              "light"
+            ],
+            "transcript_tokens": [
+              "firelight"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "ebony_clock_tension",
+        "audio_sha256": "1a1451fbaa957ff5dfb7ead723d1107433c3266209ea64af787665946556a9bc",
+        "source_text_sha256": "b23e8a225f916e6c56b810058cdf70f819a08f3ab155b71afcb1075f8d971227",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "845530fbc2ba57e553d259e6bcc4d6443fd811427f4bfa08102eba659d02464f",
+        "transcript": "It was in this apartment also that there stood against the western wall a gigantic clock of ebony. Its pendulum swung to and fro with a dull, heavy, monotonous clang, and when the minute hand made the circuit of the face and the hour was to be stricken, there came from the brazen lungs of the clock a sound which was clear and loud and deep and exceedingly musical. But of so peculiar a note and emphasis that at each lapse of an hour, the musicians of the orchestra were constrained to pause, momentarily in their performance, to to the sound.",
+        "transcript_sha256": "4ee570b4c41b6ba5603100afb8cfec0751a7322809c3d468860e03fcfb97385f",
+        "evaluated_transcript": "It was in this apartment also that there stood against the western wall a gigantic clock of ebony. Its pendulum swung to and fro with a dull, heavy, monotonous clang, and when the minute hand made the circuit of the face and the hour was to be stricken, there came from the brazen lungs of the clock a sound which was clear and loud and deep and exceedingly musical. But of so peculiar a note and emphasis that at each lapse of an hour, the musicians of the orchestra were constrained to pause, momentarily in their performance, to to the sound.",
+        "evaluated_transcript_sha256": "4ee570b4c41b6ba5603100afb8cfec0751a7322809c3d468860e03fcfb97385f",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.481965,
+        "score": 9.9507,
+        "coverage": 0.9902,
+        "precision": 1.0,
+        "source_token_count": 102,
+        "transcript_token_count": 101,
+        "equal_token_count": 101,
+        "first_words_match": true,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {
+          "harken": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [
+          {
+            "operation": "delete",
+            "source_range": [
+              98,
+              99
+            ],
+            "transcript_range": [
+              98,
+              98
+            ],
+            "source_tokens": [
+              "harken"
+            ],
+            "transcript_tokens": []
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "final_confrontation_and_dominion",
+        "audio_sha256": "c383b4aaaa8978c7376cebe2816331cc479d5e62732975e0f96d2f53bfca4e37",
+        "source_text_sha256": "3156906cde350ac6a1964dd686fa7b92475390b0db3f5fd13d2fca277c3b2335",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "845530fbc2ba57e553d259e6bcc4d6443fd811427f4bfa08102eba659d02464f",
+        "transcript": "There was a sharp cry, and the dagger dropped gleaming upon the sable carpet, upon which instantly afterwards fell prostrate in death the Prince Prospero. Then summoning the wild courage of despair, a throng of the revelers at once threw themselves into the black apartment, and seizing the mummer whose tall figure stood erect and motionless within the shadow of the ebony clock, gasped in unutterable horror at finding the grave-cerements and corpse-like mask, which they handled with so violent a rudeness, untenanted by any tangible form. And now was acknowledged the presence of the Red Death. He had come like a thief in the night. And one by one dropped the revelers in the blood-bedewed halls of their revel, and died each in the despairing posture of his fall. And the life of the ebony clock went out with that of the last of the gay. And the flames of the tripods expired. And darkness and decay and the Red Death held illimitable dominion over all.",
+        "transcript_sha256": "ba650938404ad815449123920e26655893a175d6a8fe93d6d51d1cb46540f8ca",
+        "evaluated_transcript": "There was a sharp cry, and the dagger dropped gleaming upon the sable carpet, upon which instantly afterwards fell prostrate in death the Prince Prospero. Then summoning the wild courage of despair, a throng of the revelers at once threw themselves into the black apartment, and seizing the mummer whose tall figure stood erect and motionless within the shadow of the ebony clock, gasped in unutterable horror at finding the grave-cerements and corpse-like mask, which they handled with so violent a rudeness, untenanted by any tangible form. And now was acknowledged the presence of the Red Death. He had come like a thief in the night. And one by one dropped the revelers in the blood-bedewed halls of their revel, and died each in the despairing posture of his fall. And the life of the ebony clock went out with that of the last of the gay. And the flames of the tripods expired. And darkness and decay and the Red Death held illimitable dominion over all.",
+        "evaluated_transcript_sha256": "ba650938404ad815449123920e26655893a175d6a8fe93d6d51d1cb46540f8ca",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.038132,
+        "score": 9.8824,
+        "coverage": 0.9882,
+        "precision": 0.9882,
+        "source_token_count": 170,
+        "transcript_token_count": 170,
+        "equal_token_count": 168,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "revellers": 2
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "revelers": 2
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              36,
+              37
+            ],
+            "transcript_range": [
+              36,
+              37
+            ],
+            "source_tokens": [
+              "revellers"
+            ],
+            "transcript_tokens": [
+              "revelers"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              114,
+              115
+            ],
+            "transcript_range": [
+              114,
+              115
+            ],
+            "source_tokens": [
+              "revellers"
+            ],
+            "transcript_tokens": [
+              "revelers"
+            ]
+          }
+        ],
+        "pass": false
+      }
+    ]
+  },
+  "asr_repair": {
+    "completed": true,
+    "repair_fingerprint": "f727d85f6d50cf99038f56b2fe826260dc205bf691d3ac65689c32f46f30f133",
+    "fingerprint_closed": true,
+    "prior_config_fingerprint": "bcac5ecbe5afdbc64e042a2158e55793cdb79c4c1ac181cb56313a6c5fd369dc",
+    "prior_transcript_hashes": {
+      "opening_plague_and_prospero": "b6f5ad101ba672d06c3c4010d874c255c7688b15c73281fc6ffd3529befc4e82",
+      "black_room_blood_light": "7c4db44ef6204b8f77cc274b8b712cc976e96c5ba2a14b8dc2aed65ce9a4960c",
+      "ebony_clock_tension": "4ee570b4c41b6ba5603100afb8cfec0751a7322809c3d468860e03fcfb97385f",
+      "final_confrontation_and_dominion": "ba650938404ad815449123920e26655893a175d6a8fe93d6d51d1cb46540f8ca"
+    },
+    "decoder_arms": [
+      {
+        "id": "unprompted_beam_2",
+        "initial_prompt": null,
+        "temperature": 0,
+        "condition_on_previous_text": false,
+        "word_timestamps": true,
+        "beam_size": 2,
+        "patience": 1,
+        "hallucination_silence_threshold": 0.5
+      },
+      {
+        "id": "unprompted_greedy",
+        "initial_prompt": null,
+        "temperature": 0,
+        "condition_on_previous_text": false,
+        "word_timestamps": true,
+        "beam_size": null,
+        "patience": null,
+        "hallucination_silence_threshold": 0.5
+      }
+    ],
+    "both_arms_run_for_every_passage": true,
+    "equivalence_policy": {
+      "opening_plague_and_prospero": [],
+      "black_room_blood_light": [
+        {
+          "pattern": "\\bcolor\\b",
+          "replacement": "colour",
+          "expected_count_when_observed": 2,
+          "reason": "American ASR spelling for the source British colour"
+        },
+        {
+          "pattern": "\\bfirelight\\b",
+          "replacement": "fire light",
+          "expected_count_when_observed": 1,
+          "reason": "compound ASR tokenization for the source fire light"
+        }
+      ],
+      "ebony_clock_tension": [],
+      "final_confrontation_and_dominion": [
+        {
+          "pattern": "\\brevelers\\b",
+          "replacement": "revellers",
+          "expected_count_when_observed": 2,
+          "reason": "American ASR spelling for the source British revellers"
+        }
+      ]
+    },
+    "forbidden_normalizations": [
+      "missing harken",
+      "trailing unexpected you",
+      "unexpected speech deletion"
+    ],
+    "all_candidates": {
+      "opening_plague_and_prospero": [
+        {
+          "passage_id": "opening_plague_and_prospero",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "50ff80a37a6ec44a899a1d5e1c8485d711c01fa931903d465a9165df2c301d7d",
+          "source_text_sha256": "16e78152465fec59b1a45da95cad7eb8f7dffd7f0e845a372e3ff12e33809e48",
+          "raw_transcript": "The red death had long devastated the country. No pestilence had ever been so fatal or so hideous. Blood was its avatar and its seal, the redness and the horror of blood. There were sharp pains and sudden dizziness, and then profuse bleeding at the pores with dissolution. The scarlet stains upon the body and especially upon the face of the victim, were the pest ban which shut him out from the aid and from the sympathy of his fellow-men. And the whole seizure, progress and termination of the disease, were the incidents of half Thank you.",
+          "raw_transcript_sha256": "f4bc416313171a9c394b79cbb970af1d680bf15784e29e28d0f5806631eb8824",
+          "evaluated_transcript": "The red death had long devastated the country. No pestilence had ever been so fatal or so hideous. Blood was its avatar and its seal, the redness and the horror of blood. There were sharp pains and sudden dizziness, and then profuse bleeding at the pores with dissolution. The scarlet stains upon the body and especially upon the face of the victim, were the pest ban which shut him out from the aid and from the sympathy of his fellow-men. And the whole seizure, progress and termination of the disease, were the incidents of half Thank you.",
+          "evaluated_transcript_sha256": "f4bc416313171a9c394b79cbb970af1d680bf15784e29e28d0f5806631eb8824",
+          "source_equivalences_applied": [],
+          "missing_harken_normalized": false,
+          "trailing_unexpected_you_deleted_or_normalized": false,
+          "score": 9.7959,
+          "coverage": 0.9796,
+          "precision": 0.9796,
+          "source_token_count": 98,
+          "transcript_token_count": 98,
+          "equal_token_count": 96,
+          "first_words_match": true,
+          "last_words_match": false,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "an": 1,
+            "hour": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "thank": 1,
+            "you": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                96,
+                98
+              ],
+              "transcript_range": [
+                96,
+                98
+              ],
+              "source_tokens": [
+                "an",
+                "hour"
+              ],
+              "transcript_tokens": [
+                "thank",
+                "you"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "opening_plague_and_prospero",
+          "decoder_arm": "unprompted_greedy",
+          "audio_sha256": "50ff80a37a6ec44a899a1d5e1c8485d711c01fa931903d465a9165df2c301d7d",
+          "source_text_sha256": "16e78152465fec59b1a45da95cad7eb8f7dffd7f0e845a372e3ff12e33809e48",
+          "raw_transcript": "The red death had long devastated the country. No pestilence had ever been so fatal or so hideous. Blood was its avatar and its seal, the redness and the horror of blood. There were sharp pains and sudden dizziness, and then profuse bleeding at the pores with dissolution. The scarlet stains upon the body and especially upon the face of the victim, were the pest ban which shut him out from the aid and from the sympathy of his fellow-men. And the whole seizure, progress and termination of the disease, were the incidents of half Thank you.",
+          "raw_transcript_sha256": "f4bc416313171a9c394b79cbb970af1d680bf15784e29e28d0f5806631eb8824",
+          "evaluated_transcript": "The red death had long devastated the country. No pestilence had ever been so fatal or so hideous. Blood was its avatar and its seal, the redness and the horror of blood. There were sharp pains and sudden dizziness, and then profuse bleeding at the pores with dissolution. The scarlet stains upon the body and especially upon the face of the victim, were the pest ban which shut him out from the aid and from the sympathy of his fellow-men. And the whole seizure, progress and termination of the disease, were the incidents of half Thank you.",
+          "evaluated_transcript_sha256": "f4bc416313171a9c394b79cbb970af1d680bf15784e29e28d0f5806631eb8824",
+          "source_equivalences_applied": [],
+          "missing_harken_normalized": false,
+          "trailing_unexpected_you_deleted_or_normalized": false,
+          "score": 9.7959,
+          "coverage": 0.9796,
+          "precision": 0.9796,
+          "source_token_count": 98,
+          "transcript_token_count": 98,
+          "equal_token_count": 96,
+          "first_words_match": true,
+          "last_words_match": false,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "an": 1,
+            "hour": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "thank": 1,
+            "you": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                96,
+                98
+              ],
+              "transcript_range": [
+                96,
+                98
+              ],
+              "source_tokens": [
+                "an",
+                "hour"
+              ],
+              "transcript_tokens": [
+                "thank",
+                "you"
+              ]
+            }
+          ],
+          "pass": false
+        }
+      ],
+      "black_room_blood_light": [
+        {
+          "passage_id": "black_room_blood_light",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "a1154d9771f17e88cb70ac874ca8e9a491d73ebc20c17f247689e43a2399e370",
+          "source_text_sha256": "4e908021ee2eb41c0897de247df3ec5b46f9f54206fef071ba7dc2dd00c19e0b",
+          "raw_transcript": "But in this chamber only, the color of the windows failed to correspond with the decorations. The panes here were scarlet, a deep blood color. Now in no one of the seven apartments was there any lamp or candelabrum, amid the profusion of golden ornaments that lay scattered to and fro, or depended from the roof. There was no light of any kind emanating from lamp or candle within the suite of chambers. But in the corridors that followed the suite there stood, opposite to each window, a heavy tripod, bearing a brazier of fire, that projected its rays through the tinted glass and so glaringly illumined the room, and thus were produced a multitude of gaudy and fantastic appearances. But in the western or black chamber, the effect of the firelight that streamed upon the dark hangings through the blood-tinted panes, was ghastly in the extreme, and produced so wild a look upon the countenances of those who entered, that there were few of the company bold enough to set foot within its precincts at all.",
+          "raw_transcript_sha256": "7c4db44ef6204b8f77cc274b8b712cc976e96c5ba2a14b8dc2aed65ce9a4960c",
+          "evaluated_transcript": "But in this chamber only, the colour of the windows failed to correspond with the decorations. The panes here were scarlet, a deep blood colour. Now in no one of the seven apartments was there any lamp or candelabrum, amid the profusion of golden ornaments that lay scattered to and fro, or depended from the roof. There was no light of any kind emanating from lamp or candle within the suite of chambers. But in the corridors that followed the suite there stood, opposite to each window, a heavy tripod, bearing a brazier of fire, that projected its rays through the tinted glass and so glaringly illumined the room, and thus were produced a multitude of gaudy and fantastic appearances. But in the western or black chamber, the effect of the fire light that streamed upon the dark hangings through the blood-tinted panes, was ghastly in the extreme, and produced so wild a look upon the countenances of those who entered, that there were few of the company bold enough to set foot within its precincts at all.",
+          "evaluated_transcript_sha256": "e10818580a4406218590a140929b8010f6abba8d751d9867b38d8d814be73f67",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bcolor\\b",
+              "replacement": "colour",
+              "observed_count": 2,
+              "reason": "American ASR spelling for the source British colour"
+            },
+            {
+              "pattern": "\\bfirelight\\b",
+              "replacement": "fire light",
+              "observed_count": 1,
+              "reason": "compound ASR tokenization for the source fire light"
+            }
+          ],
+          "missing_harken_normalized": false,
+          "trailing_unexpected_you_deleted_or_normalized": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 179,
+          "transcript_token_count": 179,
+          "equal_token_count": 179,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        },
+        {
+          "passage_id": "black_room_blood_light",
+          "decoder_arm": "unprompted_greedy",
+          "audio_sha256": "a1154d9771f17e88cb70ac874ca8e9a491d73ebc20c17f247689e43a2399e370",
+          "source_text_sha256": "4e908021ee2eb41c0897de247df3ec5b46f9f54206fef071ba7dc2dd00c19e0b",
+          "raw_transcript": "But in this chamber only, the color of the windows failed to correspond with the decorations. The panes here were scarlet, a deep blood color. Now in no one of the seven apartments was there any lamp or candelabrum, amid the profusion of golden ornaments that lay scattered to and fro, or depended from the roof. There was no light of any kind emanating from lamp or candle within the suite of chambers. But in the corridors that followed the suite there stood, opposite to each window, a heavy tripod, bearing a brazier of fire, that projected its rays through the tinted glass and so glaringly illumined the room, and thus were produced a multitude of gaudy and fantastic appearances. But in the western or black chamber, the effect of the firelight that streamed upon the dark hangings through the blood-tinted panes, was ghastly in the extreme, and produced so wild a look upon the countenances of those who entered, that there were few of the company bold enough to set foot within its precincts at all.",
+          "raw_transcript_sha256": "7c4db44ef6204b8f77cc274b8b712cc976e96c5ba2a14b8dc2aed65ce9a4960c",
+          "evaluated_transcript": "But in this chamber only, the colour of the windows failed to correspond with the decorations. The panes here were scarlet, a deep blood colour. Now in no one of the seven apartments was there any lamp or candelabrum, amid the profusion of golden ornaments that lay scattered to and fro, or depended from the roof. There was no light of any kind emanating from lamp or candle within the suite of chambers. But in the corridors that followed the suite there stood, opposite to each window, a heavy tripod, bearing a brazier of fire, that projected its rays through the tinted glass and so glaringly illumined the room, and thus were produced a multitude of gaudy and fantastic appearances. But in the western or black chamber, the effect of the fire light that streamed upon the dark hangings through the blood-tinted panes, was ghastly in the extreme, and produced so wild a look upon the countenances of those who entered, that there were few of the company bold enough to set foot within its precincts at all.",
+          "evaluated_transcript_sha256": "e10818580a4406218590a140929b8010f6abba8d751d9867b38d8d814be73f67",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bcolor\\b",
+              "replacement": "colour",
+              "observed_count": 2,
+              "reason": "American ASR spelling for the source British colour"
+            },
+            {
+              "pattern": "\\bfirelight\\b",
+              "replacement": "fire light",
+              "observed_count": 1,
+              "reason": "compound ASR tokenization for the source fire light"
+            }
+          ],
+          "missing_harken_normalized": false,
+          "trailing_unexpected_you_deleted_or_normalized": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 179,
+          "transcript_token_count": 179,
+          "equal_token_count": 179,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        }
+      ],
+      "ebony_clock_tension": [
+        {
+          "passage_id": "ebony_clock_tension",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "1a1451fbaa957ff5dfb7ead723d1107433c3266209ea64af787665946556a9bc",
+          "source_text_sha256": "b23e8a225f916e6c56b810058cdf70f819a08f3ab155b71afcb1075f8d971227",
+          "raw_transcript": "It was in this apartment also that there stood against the western wall, a gigantic clock of ebony. Its pendulum swung to and fro with a dull, heavy, monotonous clang, and when the minute hand made the circuit of the face, and the hour was to be stricken, there came from the brazen lungs of the clock a sound which was clear and loud and deep and exceedingly musical. But of so peculiar a note and emphasis that at each lapse of an hour, the musicians of the orchestra were constrained to pause, momentarily in their performance, to hearken to the sound.",
+          "raw_transcript_sha256": "72b03a7be35973ad757298183e66a07b819bd634ccc2b2ec50ee7dac87a3a5e6",
+          "evaluated_transcript": "It was in this apartment also that there stood against the western wall, a gigantic clock of ebony. Its pendulum swung to and fro with a dull, heavy, monotonous clang, and when the minute hand made the circuit of the face, and the hour was to be stricken, there came from the brazen lungs of the clock a sound which was clear and loud and deep and exceedingly musical. But of so peculiar a note and emphasis that at each lapse of an hour, the musicians of the orchestra were constrained to pause, momentarily in their performance, to hearken to the sound.",
+          "evaluated_transcript_sha256": "72b03a7be35973ad757298183e66a07b819bd634ccc2b2ec50ee7dac87a3a5e6",
+          "source_equivalences_applied": [],
+          "missing_harken_normalized": false,
+          "trailing_unexpected_you_deleted_or_normalized": false,
+          "score": 9.902,
+          "coverage": 0.9902,
+          "precision": 0.9902,
+          "source_token_count": 102,
+          "transcript_token_count": 102,
+          "equal_token_count": 101,
+          "first_words_match": true,
+          "last_words_match": false,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "harken": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "hearken": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                98,
+                99
+              ],
+              "transcript_range": [
+                98,
+                99
+              ],
+              "source_tokens": [
+                "harken"
+              ],
+              "transcript_tokens": [
+                "hearken"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "ebony_clock_tension",
+          "decoder_arm": "unprompted_greedy",
+          "audio_sha256": "1a1451fbaa957ff5dfb7ead723d1107433c3266209ea64af787665946556a9bc",
+          "source_text_sha256": "b23e8a225f916e6c56b810058cdf70f819a08f3ab155b71afcb1075f8d971227",
+          "raw_transcript": "It was in this apartment also that there stood against the western wall a gigantic clock of ebony. Its pendulum swung to and fro with a dull, heavy, monotonous clang, and when the minute hand made the circuit of the face, and the hour was to be stricken, there came from the brazen lungs of the clock a sound which was clear and loud and deep and exceedingly musical. But of so peculiar a note and emphasis that at each lapse of an hour, the musicians of the orchestra were constrained to pause, momentarily in their performance, to hearken to the sound.",
+          "raw_transcript_sha256": "aa942d6a33a723add1cd6d89de47d1c109cf01c4f93d192e4737aacf0f419c4e",
+          "evaluated_transcript": "It was in this apartment also that there stood against the western wall a gigantic clock of ebony. Its pendulum swung to and fro with a dull, heavy, monotonous clang, and when the minute hand made the circuit of the face, and the hour was to be stricken, there came from the brazen lungs of the clock a sound which was clear and loud and deep and exceedingly musical. But of so peculiar a note and emphasis that at each lapse of an hour, the musicians of the orchestra were constrained to pause, momentarily in their performance, to hearken to the sound.",
+          "evaluated_transcript_sha256": "aa942d6a33a723add1cd6d89de47d1c109cf01c4f93d192e4737aacf0f419c4e",
+          "source_equivalences_applied": [],
+          "missing_harken_normalized": false,
+          "trailing_unexpected_you_deleted_or_normalized": false,
+          "score": 9.902,
+          "coverage": 0.9902,
+          "precision": 0.9902,
+          "source_token_count": 102,
+          "transcript_token_count": 102,
+          "equal_token_count": 101,
+          "first_words_match": true,
+          "last_words_match": false,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "harken": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "hearken": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                98,
+                99
+              ],
+              "transcript_range": [
+                98,
+                99
+              ],
+              "source_tokens": [
+                "harken"
+              ],
+              "transcript_tokens": [
+                "hearken"
+              ]
+            }
+          ],
+          "pass": false
+        }
+      ],
+      "final_confrontation_and_dominion": [
+        {
+          "passage_id": "final_confrontation_and_dominion",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "c383b4aaaa8978c7376cebe2816331cc479d5e62732975e0f96d2f53bfca4e37",
+          "source_text_sha256": "3156906cde350ac6a1964dd686fa7b92475390b0db3f5fd13d2fca277c3b2335",
+          "raw_transcript": "There was a sharp cry, and the dagger dropped gleaming upon the sable carpet, upon which instantly afterwards fell prostrate in death the Prince Prospero. Then summoning the wild courage of despair, a throng of the revelers at once threw themselves into the black apartment, and seizing the mummer whose tall figure stood erect and motionless within the shadow of the ebony clock, gasp'd in unutterable horror at finding the grave serments and corpse-like mask, which they handled with so violent a rudeness, untenanted by any tangible form. And now was acknowledged the presence of the Red Death. He had come like a thief in the night. And one by one dropp'd the revelers in the blood-bedew'd halls of their revel, and died each in the despairing posture of his fall. And the life of the ebony clock went out with that of the last of the gay. And the flames of the tripods expired. and darkness and decay and the Red Death held illimitable dominion over all.",
+          "raw_transcript_sha256": "4bde224ea75cc30032328d0d6fe0f0a44c985a9e64abb551643b8660a1831db7",
+          "evaluated_transcript": "There was a sharp cry, and the dagger dropped gleaming upon the sable carpet, upon which instantly afterwards fell prostrate in death the Prince Prospero. Then summoning the wild courage of despair, a throng of the revellers at once threw themselves into the black apartment, and seizing the mummer whose tall figure stood erect and motionless within the shadow of the ebony clock, gasp'd in unutterable horror at finding the grave serments and corpse-like mask, which they handled with so violent a rudeness, untenanted by any tangible form. And now was acknowledged the presence of the Red Death. He had come like a thief in the night. And one by one dropp'd the revellers in the blood-bedew'd halls of their revel, and died each in the despairing posture of his fall. And the life of the ebony clock went out with that of the last of the gay. And the flames of the tripods expired. and darkness and decay and the Red Death held illimitable dominion over all.",
+          "evaluated_transcript_sha256": "4cb3265a351bb4b44bd2be3153c36fe1226c0f98b9f29ae982e84fcb4826a4cf",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\brevelers\\b",
+              "replacement": "revellers",
+              "observed_count": 2,
+              "reason": "American ASR spelling for the source British revellers"
+            }
+          ],
+          "missing_harken_normalized": false,
+          "trailing_unexpected_you_deleted_or_normalized": false,
+          "score": 9.7647,
+          "coverage": 0.9765,
+          "precision": 0.9765,
+          "source_token_count": 170,
+          "transcript_token_count": 170,
+          "equal_token_count": 166,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "dropped": 1,
+            "gasped": 1,
+            "cerements": 1,
+            "bedewed": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "gasp'd": 1,
+            "serments": 1,
+            "dropp'd": 1,
+            "bedew'd": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                63,
+                64
+              ],
+              "transcript_range": [
+                63,
+                64
+              ],
+              "source_tokens": [
+                "gasped"
+              ],
+              "transcript_tokens": [
+                "gasp'd"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                71,
+                72
+              ],
+              "transcript_range": [
+                71,
+                72
+              ],
+              "source_tokens": [
+                "cerements"
+              ],
+              "transcript_tokens": [
+                "serments"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                112,
+                113
+              ],
+              "transcript_range": [
+                112,
+                113
+              ],
+              "source_tokens": [
+                "dropped"
+              ],
+              "transcript_tokens": [
+                "dropp'd"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                118,
+                119
+              ],
+              "transcript_range": [
+                118,
+                119
+              ],
+              "source_tokens": [
+                "bedewed"
+              ],
+              "transcript_tokens": [
+                "bedew'd"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "final_confrontation_and_dominion",
+          "decoder_arm": "unprompted_greedy",
+          "audio_sha256": "c383b4aaaa8978c7376cebe2816331cc479d5e62732975e0f96d2f53bfca4e37",
+          "source_text_sha256": "3156906cde350ac6a1964dd686fa7b92475390b0db3f5fd13d2fca277c3b2335",
+          "raw_transcript": "There was a sharp cry, and the dagger dropped gleaming upon the sable carpet, upon which, instantly afterwards, fell prostrate in death the Prince Prospero. Then summoning the wild courage of despair, a throng of the revelers at once threw themselves into the black apartment, and seizing the mamma whose tall figure stood erect and motionless within the shadow of the ebony clock, gasped in unutterable horror at finding the grave serments and corpse-like mask, which they handled with so violent a rudeness, untenanted by any tangible form, and now was acknowledged the presence of the Red Death. He had come like a thief in the night. And one by one dropped the revelers in the blood-bedewed halls of their revel, and died each in the despairing posture of his fall. And the life of the ebony clock went out with that of the last of the gay, and the flames of the tripods expired, and darkness and decay, and the Red Death held illimitable dominion over all.",
+          "raw_transcript_sha256": "17c9ad7bbd2bb0272d7329cbfce69a283fa62210d6e92df323142244f387ab08",
+          "evaluated_transcript": "There was a sharp cry, and the dagger dropped gleaming upon the sable carpet, upon which, instantly afterwards, fell prostrate in death the Prince Prospero. Then summoning the wild courage of despair, a throng of the revellers at once threw themselves into the black apartment, and seizing the mamma whose tall figure stood erect and motionless within the shadow of the ebony clock, gasped in unutterable horror at finding the grave serments and corpse-like mask, which they handled with so violent a rudeness, untenanted by any tangible form, and now was acknowledged the presence of the Red Death. He had come like a thief in the night. And one by one dropped the revellers in the blood-bedewed halls of their revel, and died each in the despairing posture of his fall. And the life of the ebony clock went out with that of the last of the gay, and the flames of the tripods expired, and darkness and decay, and the Red Death held illimitable dominion over all.",
+          "evaluated_transcript_sha256": "c435f724f3efd27f89c8f99a6e1719c1c9443e86ab7347a2b1cd40b35ef1fbd5",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\brevelers\\b",
+              "replacement": "revellers",
+              "observed_count": 2,
+              "reason": "American ASR spelling for the source British revellers"
+            }
+          ],
+          "missing_harken_normalized": false,
+          "trailing_unexpected_you_deleted_or_normalized": false,
+          "score": 9.8824,
+          "coverage": 0.9882,
+          "precision": 0.9882,
+          "source_token_count": 170,
+          "transcript_token_count": 170,
+          "equal_token_count": 168,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "mummer": 1,
+            "cerements": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "mamma": 1,
+            "serments": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                48,
+                49
+              ],
+              "transcript_range": [
+                48,
+                49
+              ],
+              "source_tokens": [
+                "mummer"
+              ],
+              "transcript_tokens": [
+                "mamma"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                71,
+                72
+              ],
+              "transcript_range": [
+                71,
+                72
+              ],
+              "source_tokens": [
+                "cerements"
+              ],
+              "transcript_tokens": [
+                "serments"
+              ]
+            }
+          ],
+          "pass": false
+        }
+      ]
+    },
+    "selected_decoder_by_passage": {
+      "opening_plague_and_prospero": "unprompted_beam_2",
+      "black_room_blood_light": "unprompted_beam_2",
+      "ebony_clock_tension": "unprompted_beam_2",
+      "final_confrontation_and_dominion": "unprompted_greedy"
+    },
+    "retained_audio_hashes_before": {
+      "opening_plague_and_prospero": "50ff80a37a6ec44a899a1d5e1c8485d711c01fa931903d465a9165df2c301d7d",
+      "black_room_blood_light": "a1154d9771f17e88cb70ac874ca8e9a491d73ebc20c17f247689e43a2399e370",
+      "ebony_clock_tension": "1a1451fbaa957ff5dfb7ead723d1107433c3266209ea64af787665946556a9bc",
+      "final_confrontation_and_dominion": "c383b4aaaa8978c7376cebe2816331cc479d5e62732975e0f96d2f53bfca4e37"
+    },
+    "retained_audio_hashes_after": {
+      "opening_plague_and_prospero": "50ff80a37a6ec44a899a1d5e1c8485d711c01fa931903d465a9165df2c301d7d",
+      "black_room_blood_light": "a1154d9771f17e88cb70ac874ca8e9a491d73ebc20c17f247689e43a2399e370",
+      "ebony_clock_tension": "1a1451fbaa957ff5dfb7ead723d1107433c3266209ea64af787665946556a9bc",
+      "final_confrontation_and_dominion": "c383b4aaaa8978c7376cebe2816331cc479d5e62732975e0f96d2f53bfca4e37"
+    },
+    "retained_audio_immutable": true,
+    "resynthesis_performed": false,
+    "audio_edit_or_trim_performed": false,
+    "unexpected_speech_deleted_or_normalized": false,
+    "missing_harken_normalized": false,
+    "trailing_unexpected_you_deleted_or_normalized": false
+  }
+}

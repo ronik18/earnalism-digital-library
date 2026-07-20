@@ -1,0 +1,701 @@
+{
+  "schema": "earnalism.kokoro.gift_bf_emma_private_preflight.v1",
+  "generated_at": "2026-07-20T03:54:48Z",
+  "status": "PRIVATE_REPRESENTATIVE_PILOT_REJECTED",
+  "scope": {
+    "slug": "the-gift-of-the-magi",
+    "title": "The Gift of the Magi",
+    "author": "O. Henry",
+    "language": "en",
+    "profile": "gift-bf-emma-british-literary-warmth-v1",
+    "passage_count": 4,
+    "characters": 1765,
+    "representative_only": true,
+    "full_title_generated": false
+  },
+  "source": {
+    "chapter_path": "/private/tmp/earnalism-next-kokoro-pilot/data/controlled_publications/the-gift-of-the-magi/chapters/chapter-001.json",
+    "source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+    "passages": [
+      {
+        "passage_id": "opening_money",
+        "characters": 386,
+        "text_sha256": "302ec156c140104af1e3b20507baf0605913116950b6a9de768e6e91e646a834",
+        "risk": "opening cadence, currency, repetition, and quiet disappointment"
+      },
+      {
+        "passage_id": "hair_sale_dialogue",
+        "characters": 327,
+        "text_sha256": "033d48a6a7b89a0341ad37b7abe0d3495a8ddd1c3dfa1b1cd03c20d3ef4db61d",
+        "risk": "Madame Sofronie, source dialect, bargaining, and rapid dialogue"
+      },
+      {
+        "passage_id": "sacrifice_dialogue",
+        "characters": 381,
+        "text_sha256": "6a5f6a372c472a7b43e4fa56178e53a74861c3847f7043469dd3958892bceeac",
+        "risk": "intimate dialogue, emotional restraint, and precise speaker turns"
+      },
+      {
+        "passage_id": "magi_ending",
+        "characters": 671,
+        "text_sha256": "93594c51c10e250f5075169ebeb57e75ad10a9c10ee0af225338ddb4ba67db83",
+        "risk": "magi pronunciation, long literary syntax, and reflective final cadence"
+      }
+    ],
+    "origin_source_sha256": "490b76d444db0d952f5286f60c4ec2834ab91731d47e42dc94a3639d9183d295",
+    "sanitized_source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+    "normalized_source_sha256": "f32ebf1df2826126eac28341a0dba111be5a734828d9f7b6fffb41d9b95bfe27",
+    "normalized_characters": 11122,
+    "word_count": 2109
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "package_version": "0.9.4",
+    "model_repo": "hexgrad/Kokoro-82M",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "bf_emma",
+    "voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+    "speed": 0.98,
+    "random_seed": 2026072001,
+    "sample_rate_hz": 24000,
+    "pronunciation_overrides": {
+      "Della": "dˈɛlə",
+      "Sofronie": "səfɹˈoʊni",
+      "Jim": "dʒˈɪm",
+      "magi": "mˈeɪdʒaɪ"
+    },
+    "g2p_fallback_enabled": false,
+    "attempt_fingerprint": "519fdef2999d9d8e9b7f01cd4b2cb571cff6e41a1457aab1925b45d0c30f9fe3",
+    "known_failed_fingerprint_count": 11,
+    "kokoro_lang_code": "b",
+    "g2p_british": true
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "ordered_content_integrity_required": true
+  },
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/bf_emma.pt",
+      "sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+      "size_bytes": 523420
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "python_executable": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "deterministic_algorithms_required": true,
+    "torch_thread_count": 1,
+    "offline_local_artifacts_only": true
+  },
+  "rights": {
+    "model_and_voicepack_license": "Apache-2.0",
+    "private_audition_allowed": true,
+    "title_scoped_production_risk_acceptance_bound": false,
+    "production_release_approved": false,
+    "public_disclosure_required_if_later_approved": "AI voice"
+  },
+  "safety": {
+    "provider_calls": 0,
+    "estimated_tts_provider_cost_usd": 0.0,
+    "paid_tts_lock": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_touched": false,
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-gift-of-the-magi/f3ff3571-bf-emma-representative-v1",
+    "audio_generated": true,
+    "listening_provider_calls": 0,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false,
+    "execution_performed_by_this_preflight": false,
+    "asr_run": false,
+    "paid_tts_lock_before": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_after": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_unchanged": true
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_OBJECTIVE_OR_ASR_GATE_FAILED",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "GIFT_TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN",
+    "OWNER_10_TARGET_NOT_VERIFIED"
+  ],
+  "catalog_truth": {
+    "reader_status": "reader_ready",
+    "publication_status": "live",
+    "audiobook_enabled": false,
+    "audio_enabled": false,
+    "generate_audiobook": false,
+    "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED"
+  },
+  "g2p_preflight": {
+    "status": "PASS",
+    "kokoro_lang_code": "b",
+    "british": true,
+    "fallback": null,
+    "unknown_token_output": "",
+    "all_source_tokens_resolved": true,
+    "reports": [
+      {
+        "passage_id": "opening_money",
+        "source_text_sha256": "302ec156c140104af1e3b20507baf0605913116950b6a9de768e6e91e646a834",
+        "token_count": 74,
+        "phoneme_sha256": "d64b779e3970ccc4c07694990984106cfd4afbd09a10c839a319662fb67d1990",
+        "unresolved_tokens": []
+      },
+      {
+        "passage_id": "hair_sale_dialogue",
+        "source_text_sha256": "033d48a6a7b89a0341ad37b7abe0d3495a8ddd1c3dfa1b1cd03c20d3ef4db61d",
+        "token_count": 86,
+        "phoneme_sha256": "cca1d6db45aff83f3497136394f48f899f0ba69cb8082836708f6f9a3d8e6e16",
+        "unresolved_tokens": []
+      },
+      {
+        "passage_id": "sacrifice_dialogue",
+        "source_text_sha256": "6a5f6a372c472a7b43e4fa56178e53a74861c3847f7043469dd3958892bceeac",
+        "token_count": 95,
+        "phoneme_sha256": "7cc6c7d53e6ee9b443953f443f417e7ff0099ee92b3c0074ee57fab9b4540710",
+        "unresolved_tokens": []
+      },
+      {
+        "passage_id": "magi_ending",
+        "source_text_sha256": "93594c51c10e250f5075169ebeb57e75ad10a9c10ee0af225338ddb4ba67db83",
+        "token_count": 139,
+        "phoneme_sha256": "12a877dca697469d5bef9c0de6663adde1c976a40c57589ca4f65b711a493549",
+        "unresolved_tokens": []
+      }
+    ]
+  },
+  "prior_attempts": [
+    {
+      "stage": "google_candidate",
+      "fingerprint": "716473a1705c4aa3e6ea718f2c117668875215ac368540f6402b4dab47932f43",
+      "status": "FAILED"
+    },
+    {
+      "stage": "google_candidate",
+      "fingerprint": "75a6fbc43a06e181677d1f4a2afc2508416d7f0b137d325f79948df48a04fabe",
+      "status": "FAILED"
+    },
+    {
+      "stage": "google_candidate",
+      "fingerprint": "cda6b9c871c9751f8ade43db4ec0c71b865c9ac0ba5ab5a63a49c6fbf2b13ddd",
+      "status": "FAILED"
+    },
+    {
+      "stage": "google_candidate",
+      "fingerprint": "cf9b59637d5ba9180a691867ac5d6574dac6458a96344389dd4d8606867d1595",
+      "status": "FAILED"
+    },
+    {
+      "stage": "google_candidate",
+      "fingerprint": "018bef83ba81b9902246be7a164bdda4027dc5dafe8efad03d724272c3b09e93",
+      "status": "FAILED"
+    },
+    {
+      "stage": "kokoro_af_bella_representative",
+      "fingerprint": "bf5ff8b24d23e4ae912d332b247d26d5efb60eeb0b91ebad0bc179e40a7ea015",
+      "status": "COMPLETED"
+    },
+    {
+      "stage": "kokoro_af_bella_representative_asr",
+      "fingerprint": "1b932d7d1193947aad72e51cc2deba889a4c09468b21618d02b21b38db124755",
+      "status": "COMPLETED"
+    },
+    {
+      "stage": "kokoro_af_bella_representative_listening",
+      "fingerprint": "1ef9100b249fae4540df00cad7eba5d03dc29fa6008f3eb393ec3163b243fdf4",
+      "status": "COMPLETED"
+    },
+    {
+      "stage": "kokoro_af_bella_full_title",
+      "fingerprint": "c28f5c70373854feed9009c5cb4dd0789dd7c2d09a5451e71d7fa41723283039",
+      "status": "FAILED_CLOSED"
+    },
+    {
+      "stage": "kokoro_af_bella_full_title_initial_asr",
+      "fingerprint": "4343dbb64e9de4b741b5f0192b28b562e2b1530064ad7e7f3fc3a11382dbc0c3",
+      "status": "FAILED"
+    },
+    {
+      "stage": "kokoro_af_bella_full_title_asr_repair",
+      "fingerprint": "b05c6392075ace4d50046f6f266ba20e04e48e68038755a1950b077b8ca27af9",
+      "status": "FAILED_CLOSED"
+    }
+  ],
+  "no_repeat_history": {
+    "inspected_paths": [
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/earnalism_intelligence/provider_performance_memory.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/earnalism_intelligence/title_decision_history.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/earnalism_intelligence/bengali_audiobook_campaign_state.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/sprint1_provider_failure_registry.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_release_gate_evidence.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_kokoro_af_bella_representative_v1.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_kokoro_af_bella_full_title_asr_repair_v1.json"
+    ],
+    "prior_fingerprints": [
+      "018bef83ba81b9902246be7a164bdda4027dc5dafe8efad03d724272c3b09e93",
+      "1b932d7d1193947aad72e51cc2deba889a4c09468b21618d02b21b38db124755",
+      "1ef9100b249fae4540df00cad7eba5d03dc29fa6008f3eb393ec3163b243fdf4",
+      "4343dbb64e9de4b741b5f0192b28b562e2b1530064ad7e7f3fc3a11382dbc0c3",
+      "716473a1705c4aa3e6ea718f2c117668875215ac368540f6402b4dab47932f43",
+      "75a6fbc43a06e181677d1f4a2afc2508416d7f0b137d325f79948df48a04fabe",
+      "b05c6392075ace4d50046f6f266ba20e04e48e68038755a1950b077b8ca27af9",
+      "bf5ff8b24d23e4ae912d332b247d26d5efb60eeb0b91ebad0bc179e40a7ea015",
+      "c28f5c70373854feed9009c5cb4dd0789dd7c2d09a5451e71d7fa41723283039",
+      "cda6b9c871c9751f8ade43db4ec0c71b865c9ac0ba5ab5a63a49c6fbf2b13ddd",
+      "cf9b59637d5ba9180a691867ac5d6574dac6458a96344389dd4d8606867d1595"
+    ],
+    "exact_current_fingerprint_found": false,
+    "fail_closed_on_completed_fingerprint": true
+  },
+  "voice_selection": {
+    "selected_voice": "bf_emma",
+    "selected_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+    "previous_voice": "af_bella",
+    "previous_voice_sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+    "voice_tensor_is_materially_different": true,
+    "selected_asset_is_locally_installed_and_hash_verified": true,
+    "locale": "British English",
+    "kokoro_lang_code": "b",
+    "g2p_british": true
+  },
+  "decision": {
+    "representative_execution": "GO",
+    "reason": "Canonical source, exact passages, materially different local voice, pinned artifacts/runtime, British fallback-free G2P, private path, audio-hidden truth, and no-repeat checks pass.",
+    "release": "NO_GO"
+  },
+  "next_stage_contract": {
+    "status": "READY_FOR_ONE_PRIVATE_REPRESENTATIVE_EXECUTION",
+    "exact_execute_command": "PYTHONDONTWRITEBYTECODE=1 /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python internal/audiobook_lab/scripts/sprint1_gift_bf_emma_private_preflight.py --execute --slug the-gift-of-the-magi --profile gift-bf-emma-british-literary-warmth-v1 --asset-root /private/tmp/earnalism-next-kokoro-pilot --artifact-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts --whisper-cache-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache --private-output-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-gift-of-the-magi/f3ff3571-bf-emma-representative-v1 --output internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_kokoro_bf_emma_representative_preflight_v1.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+    "execution_performed_by_this_preflight": false,
+    "scope": "four exact source-bound passages only",
+    "kokoro_lang_code": "b",
+    "g2p_british": true,
+    "g2p_fallback_enabled": false,
+    "browser_or_system_speech_fallback": false,
+    "local_synthesis_provider_calls": 0,
+    "estimated_provider_cost_usd": 0.0,
+    "asr_must_pass_before_listening_qa": true,
+    "full_title_generation_allowed": false,
+    "upload_allowed": false,
+    "publication_allowed": false,
+    "release_gate_mutation_allowed": false,
+    "fail_closed_on": [
+      "catalog_or_source_hash_change",
+      "passage_hash_change",
+      "artifact_or_runtime_hash_change",
+      "unresolved_g2p_token_with_fallback_disabled",
+      "repeated_attempt_fingerprint",
+      "non_private_output_path",
+      "asr_source_score_below_9.7",
+      "missing_first_or_last_words",
+      "missing_duplicated_reordered_or_unexpected_content"
+    ]
+  },
+  "samples": [
+    {
+      "passage_id": "opening_money",
+      "source_text_sha256": "302ec156c140104af1e3b20507baf0605913116950b6a9de768e6e91e646a834",
+      "characters": 386,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-gift-of-the-magi/f3ff3571-bf-emma-representative-v1/opening_money.wav",
+      "phoneme_sha256": "d64b779e3970ccc4c07694990984106cfd4afbd09a10c839a319662fb67d1990",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 21.8,
+      "size_bytes": 1046444,
+      "audio_sha256": "d255e324eab3cc6ec7f5813621ea1125461c4479e8fea525ccb84bc5efb55fc5",
+      "peak_fraction": 0.608875,
+      "rms_fraction": 0.060247,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "hair_sale_dialogue",
+      "source_text_sha256": "033d48a6a7b89a0341ad37b7abe0d3495a8ddd1c3dfa1b1cd03c20d3ef4db61d",
+      "characters": 327,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-gift-of-the-magi/f3ff3571-bf-emma-representative-v1/hair_sale_dialogue.wav",
+      "phoneme_sha256": "cca1d6db45aff83f3497136394f48f899f0ba69cb8082836708f6f9a3d8e6e16",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 17.75,
+      "size_bytes": 852044,
+      "audio_sha256": "0c72ea2a774638a2e18c698f174686610f072543217f77d193325502de7c6df2",
+      "peak_fraction": 0.524308,
+      "rms_fraction": 0.060911,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "sacrifice_dialogue",
+      "source_text_sha256": "6a5f6a372c472a7b43e4fa56178e53a74861c3847f7043469dd3958892bceeac",
+      "characters": 381,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-gift-of-the-magi/f3ff3571-bf-emma-representative-v1/sacrifice_dialogue.wav",
+      "phoneme_sha256": "7cc6c7d53e6ee9b443953f443f417e7ff0099ee92b3c0074ee57fab9b4540710",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 19.3,
+      "size_bytes": 926444,
+      "audio_sha256": "08bc8458e3fd6631221ebf8d565917a844aaaae3f4f140438cf793bb76bd4abc",
+      "peak_fraction": 0.524522,
+      "rms_fraction": 0.059114,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "magi_ending",
+      "source_text_sha256": "93594c51c10e250f5075169ebeb57e75ad10a9c10ee0af225338ddb4ba67db83",
+      "characters": 671,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-gift-of-the-magi/f3ff3571-bf-emma-representative-v1/magi_ending.wav",
+      "phoneme_sha256": "98418da20774cb57276c8103f4fba11cc630debd25ae206dbfdcc95640ce44a8",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 38.1,
+      "size_bytes": 1828844,
+      "audio_sha256": "0a3cf92907bed1f321ab4f85a6a876a7e7ea7f17a1865bd512b92753b1f6d579",
+      "peak_fraction": 0.558733,
+      "rms_fraction": 0.060233,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    }
+  ],
+  "asr": {
+    "status": "FAIL",
+    "mode": "ASR_REVERIFY_EXISTING_AUDIO_ONLY",
+    "config_fingerprint": "19d764242ccee81e6248d626ee29c68f51199ce4b5b56d6698927cd8950ac58b",
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "audio_derived": true,
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "prompt_policy": {
+      "opening_money": "canonical_vocabulary_prompt",
+      "hair_sale_dialogue": "canonical_vocabulary_prompt",
+      "sacrifice_dialogue": "no_prompt",
+      "magi_ending": "canonical_vocabulary_prompt"
+    },
+    "source_equivalence_policy": {
+      "opening_money": [
+        {
+          "pattern": "\\$1\\.87\\b",
+          "replacement": "one dollar and eighty-seven cents",
+          "reason": "ASR currency notation for the exact spoken source amount"
+        }
+      ],
+      "hair_sale_dialogue": [
+        {
+          "pattern": "\\byour\\b",
+          "replacement": "yer",
+          "reason": "ASR standard spelling for the source dialect spelling yer"
+        }
+      ],
+      "sacrifice_dialogue": [],
+      "magi_ending": []
+    },
+    "unexpected_speech_may_be_normalized_or_discarded": false,
+    "reports": [
+      {
+        "passage_id": "opening_money",
+        "audio_sha256": "d255e324eab3cc6ec7f5813621ea1125461c4479e8fea525ccb84bc5efb55fc5",
+        "source_text_sha256": "302ec156c140104af1e3b20507baf0605913116950b6a9de768e6e91e646a834",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "f4f6e0433ac20ecfdc0bbe34da1388c585a3db5dea73464b1f426c4bb4e17758",
+        "transcript": "$1.87, that was all. And sixty cents of it was in pennies. Pennies saved one and two at a time by bulldozing the grocer and the vegetable man and the butcher until one's cheeks burned with the silent imputation of parsimony that such close dealing implied. Three times Della counted it. $1.87. And the next day would be Christmas. this.",
+        "transcript_sha256": "c5ea4f21479b020ab0882934f99c8d43be0a976eeab93a3d992bed8a1be02d23",
+        "evaluated_transcript": "one dollar and eighty-seven cents, that was all. And sixty cents of it was in pennies. Pennies saved one and two at a time by bulldozing the grocer and the vegetable man and the butcher until one's cheeks burned with the silent imputation of parsimony that such close dealing implied. Three times Della counted it. one dollar and eighty-seven cents. And the next day would be Christmas. this.",
+        "evaluated_transcript_sha256": "3d1cc111571617ea4778c2bef7c23f992b275546032b123142ca2d891bd98fe3",
+        "source_equivalences_applied": [
+          {
+            "pattern": "\\$1\\.87\\b",
+            "replacement": "one dollar and eighty-seven cents",
+            "reason": "ASR currency notation for the exact spoken source amount",
+            "match_count": 2
+          }
+        ],
+        "max_no_speech_probability": 0.578459,
+        "score": 9.9281,
+        "coverage": 1.0,
+        "precision": 0.9857,
+        "source_token_count": 69,
+        "transcript_token_count": 70,
+        "equal_token_count": 69,
+        "first_words_match": true,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "this": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "insert",
+            "source_range": [
+              69,
+              69
+            ],
+            "transcript_range": [
+              69,
+              70
+            ],
+            "source_tokens": [],
+            "transcript_tokens": [
+              "this"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "hair_sale_dialogue",
+        "audio_sha256": "0c72ea2a774638a2e18c698f174686610f072543217f77d193325502de7c6df2",
+        "source_text_sha256": "033d48a6a7b89a0341ad37b7abe0d3495a8ddd1c3dfa1b1cd03c20d3ef4db61d",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "f4f6e0433ac20ecfdc0bbe34da1388c585a3db5dea73464b1f426c4bb4e17758",
+        "transcript": "Madame large too white chilli hardly looked the Sofronie. Will you buy my hair? asked Della. I buy hair, said Madame. Take your hat off and let's have a sight at the looks of it. Down rippled the brown cascade. Twenty dollars, said Madame, lifting the mass with a practised hand. Give it to me quick, said Della. The end.",
+        "transcript_sha256": "bf9b6adc98302da61fc6993fdfce07cf114e6943cea5421d2c72ff74c1a2546e",
+        "evaluated_transcript": "Madame large too white chilli hardly looked the Sofronie. Will you buy my hair? asked Della. I buy hair, said Madame. Take yer hat off and let's have a sight at the looks of it. Down rippled the brown cascade. Twenty dollars, said Madame, lifting the mass with a practised hand. Give it to me quick, said Della. The end.",
+        "evaluated_transcript_sha256": "cf9396864845efddbe4d98549bff623e394f63af272a36951df2f0f49265666a",
+        "source_equivalences_applied": [
+          {
+            "pattern": "\\byour\\b",
+            "replacement": "yer",
+            "reason": "ASR standard spelling for the source dialect spelling yer",
+            "match_count": 1
+          }
+        ],
+        "max_no_speech_probability": 0.553721,
+        "score": 9.661,
+        "coverage": 0.9828,
+        "precision": 0.95,
+        "source_token_count": 58,
+        "transcript_token_count": 60,
+        "equal_token_count": 57,
+        "first_words_match": false,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": false,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "chilly": 1
+        },
+        "duplicate_tokens": {
+          "the": 1
+        },
+        "unexpected_tokens": {
+          "chilli": 1,
+          "the": 1,
+          "end": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              4,
+              5
+            ],
+            "transcript_range": [
+              4,
+              5
+            ],
+            "source_tokens": [
+              "chilly"
+            ],
+            "transcript_tokens": [
+              "chilli"
+            ]
+          },
+          {
+            "operation": "insert",
+            "source_range": [
+              58,
+              58
+            ],
+            "transcript_range": [
+              58,
+              60
+            ],
+            "source_tokens": [],
+            "transcript_tokens": [
+              "the",
+              "end"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "sacrifice_dialogue",
+        "audio_sha256": "08bc8458e3fd6631221ebf8d565917a844aaaae3f4f140438cf793bb76bd4abc",
+        "source_text_sha256": "6a5f6a372c472a7b43e4fa56178e53a74861c3847f7043469dd3958892bceeac",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "Jim, darling,\" she cried, don't look at me that way. I had my hair cut off and sold because I couldn't have lived through Christmas without giving you a present. It'll grow out again, you won't mind, will you? I just had to do it. My hair grows awfully fast. Say Merry Christmas, Jim, and let's be happy, you don't know what a nice, what a beautiful, nice gift I've got for you.",
+        "transcript_sha256": "714be124eccac1d5a9131a2a261c48a659c274e1a0faf91fb215ef6d8cec1875",
+        "evaluated_transcript": "Jim, darling,\" she cried, don't look at me that way. I had my hair cut off and sold because I couldn't have lived through Christmas without giving you a present. It'll grow out again, you won't mind, will you? I just had to do it. My hair grows awfully fast. Say Merry Christmas, Jim, and let's be happy, you don't know what a nice, what a beautiful, nice gift I've got for you.",
+        "evaluated_transcript_sha256": "714be124eccac1d5a9131a2a261c48a659c274e1a0faf91fb215ef6d8cec1875",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.020709,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 73,
+        "transcript_token_count": 73,
+        "equal_token_count": 73,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      },
+      {
+        "passage_id": "magi_ending",
+        "audio_sha256": "0a3cf92907bed1f321ab4f85a6a876a7e7ea7f17a1865bd512b92753b1f6d579",
+        "source_text_sha256": "93594c51c10e250f5075169ebeb57e75ad10a9c10ee0af225338ddb4ba67db83",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "f4f6e0433ac20ecfdc0bbe34da1388c585a3db5dea73464b1f426c4bb4e17758",
+        "transcript": "The magi, as you know, were wise men, wonderfully wise men, who brought gifts to the babe in the manger. They invented the art of giving Christmas presents. Being wise, their gifts were no doubt wise ones, possibly bearing the privilege of exchange in case of duplication. And here I have lamely related to you the uneventful chronicle of two foolish children in a flat who most unwisely sacrificed for each other the greatest treasures of their house. But in a last word to the wise of these days let it be said that of all who give gifts these two are the wisest. Of all who give and receive gifts such as they are wisest. Everywhere they are wisest. They are the Magi.",
+        "transcript_sha256": "2de0ed1678a337723ec4d5bf07e83080ceabfaed955ed532b6dc92af34c57456",
+        "evaluated_transcript": "The magi, as you know, were wise men, wonderfully wise men, who brought gifts to the babe in the manger. They invented the art of giving Christmas presents. Being wise, their gifts were no doubt wise ones, possibly bearing the privilege of exchange in case of duplication. And here I have lamely related to you the uneventful chronicle of two foolish children in a flat who most unwisely sacrificed for each other the greatest treasures of their house. But in a last word to the wise of these days let it be said that of all who give gifts these two are the wisest. Of all who give and receive gifts such as they are wisest. Everywhere they are wisest. They are the Magi.",
+        "evaluated_transcript_sha256": "2de0ed1678a337723ec4d5bf07e83080ceabfaed955ed532b6dc92af34c57456",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.309517,
+        "score": 9.9194,
+        "coverage": 0.9919,
+        "precision": 0.9919,
+        "source_token_count": 124,
+        "transcript_token_count": 124,
+        "equal_token_count": 123,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": false,
+        "no_reordered_content": false,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "were": 1
+        },
+        "duplicate_tokens": {
+          "are": 1
+        },
+        "unexpected_tokens": {
+          "are": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              101,
+              102
+            ],
+            "transcript_range": [
+              101,
+              102
+            ],
+            "source_tokens": [
+              "were"
+            ],
+            "transcript_tokens": [
+              "are"
+            ]
+          }
+        ],
+        "pass": false
+      }
+    ]
+  }
+}

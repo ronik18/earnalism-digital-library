@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-20T03:30:00Z",
+  "generated_at": "2026-07-20T04:29:45Z",
   "scope": "private_representative_pilots_not_release_evidence",
   "customer_release_cutoff": {
     "listening_score_min": 9.2,
@@ -62,6 +62,23 @@
       "full_title_sections_failed": 8,
       "full_title_listening_qa_run": false,
       "full_title_result": "FAIL_OBJECTIVE_SOURCE_AND_TIMESTAMP_BINDING",
+      "alternative_voice": "bf_emma",
+      "alternative_voice_objective_asr_scores": [
+        10.0,
+        9.6552,
+        10.0,
+        9.8776
+      ],
+      "alternative_voice_objective_coverages": [
+        1.0,
+        0.9655,
+        1.0,
+        0.9758
+      ],
+      "alternative_voice_ordered_content_integrity_pass": false,
+      "alternative_voice_passed_passages": 2,
+      "alternative_voice_listening_qa_run": false,
+      "alternative_voice_result": "FAIL_OBJECTIVE_SOURCE_INTEGRITY",
       "public_audio_enabled": false,
       "next_stage": "CONFIGURATION_CLOSED_MATERIALLY_DIFFERENT_VOICE_OR_PROVIDER_REQUIRED"
     },
@@ -139,6 +156,56 @@
       "failed_passages": {
         "johnsy_leaf_dialogue": "Sudie decoded as suitie",
         "behrman_dialect_emotion": "multiple proper-name and dialect substitutions, including Vy do/Vite and in/and"
+      },
+      "listening_overall_scores": null,
+      "fatal_flags": null,
+      "cutoff_9_2_pass": false,
+      "exact_10_observed": false,
+      "representative_result": "FAIL_OBJECTIVE_SOURCE_INTEGRITY",
+      "full_title_generated": false,
+      "public_audio_enabled": false,
+      "next_stage": "CONFIGURATION_CLOSED_MATERIALLY_DIFFERENT_VOICE_OR_PROVIDER_REQUIRED"
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "title": "The Masque of the Red Death",
+      "author": "Edgar Allan Poe",
+      "voice": "bf_emma",
+      "objective_asr_scores": [9.7959, 10.0, 9.902, 9.8824],
+      "objective_coverages": [0.9796, 1.0, 0.9902, 0.9882],
+      "ordered_content_integrity_pass": false,
+      "passed_passages": [
+        "black_room_blood_light"
+      ],
+      "failed_passages": {
+        "opening_plague_and_prospero": "source phrase an hour missing and unexpected trailing thank you",
+        "ebony_clock_tension": "source harken decoded as hearken",
+        "final_confrontation_and_dominion": "source mummer and cerements decoded as mamma and serments"
+      },
+      "listening_overall_scores": null,
+      "fatal_flags": null,
+      "cutoff_9_2_pass": false,
+      "exact_10_observed": false,
+      "representative_result": "FAIL_OBJECTIVE_SOURCE_INTEGRITY",
+      "full_title_generated": false,
+      "public_audio_enabled": false,
+      "next_stage": "CONFIGURATION_CLOSED_MATERIALLY_DIFFERENT_VOICE_OR_PROVIDER_REQUIRED"
+    },
+    {
+      "slug": "the-tell-tale-heart",
+      "title": "The Tell-Tale Heart",
+      "author": "Edgar Allan Poe",
+      "voice": "bf_emma",
+      "objective_asr_scores": [10.0, 10.0, 10.0, 9.8605],
+      "objective_coverages": [1.0, 1.0, 1.0, 1.0],
+      "ordered_content_integrity_pass": false,
+      "passed_passages": [
+        "opening_unreliable_sanity",
+        "bedroom_suspense_dialogue",
+        "heartbeat_crescendo"
+      ],
+      "failed_passages": {
+        "final_confession": "both bounded decoder arms added unexpected trailing phrase thanks for watching"
       },
       "listening_overall_scores": null,
       "fatal_flags": null,

@@ -1,0 +1,565 @@
+{
+  "schema": "earnalism.kokoro.tell_tale_private_executor.v1",
+  "generated_at": "2026-07-20T04:19:52Z",
+  "status": "PRIVATE_REPRESENTATIVE_PILOT_REJECTED",
+  "go_no_go": "GO_PRIVATE_REPRESENTATIVE_ONLY",
+  "scope": {
+    "slug": "the-tell-tale-heart",
+    "title": "The Tell-Tale Heart",
+    "author": "Edgar Allan Poe",
+    "language": "en",
+    "profile": "tell-tale-bf-emma-controlled-gothic-v1",
+    "passage_count": 4,
+    "characters": 2149,
+    "representative_only": true,
+    "full_title_generated": false
+  },
+  "source": {
+    "chapter_path": "/private/tmp/earnalism-next-kokoro-pilot/data/controlled_publications/the-tell-tale-heart/chapters/chapter-001.json",
+    "origin_source_sha256": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+    "raw_source_sha256": "be8259855845762a7a1c6e5e1bd45d43bbd04c7d769427b25132e2bf514af1f8",
+    "normalized_source_sha256": "6aa43cf6dcf4c6fba097237c01938ab5269a7edda16e4006db05b5a56c7e164e",
+    "word_count": 2155,
+    "rights_basis": "Edgar Allan Poe died 1849; first published 1843. Public domain in India and the U.S.",
+    "passages": [
+      {
+        "passage_id": "opening_unreliable_sanity",
+        "characters": 386,
+        "text_sha256": "1bd845cd383b10550ac7fe03ccfafc01d3059c7ae9f473a4a371c20782f6a524",
+        "risk": "fractured punctuation, repeated emphasis, and calm-versus-agitated contrast"
+      },
+      {
+        "passage_id": "bedroom_suspense_dialogue",
+        "characters": 534,
+        "text_sha256": "7b2efa882aed81bb447c8d00fee89dfc011d48ffb2c2ba0f1d2b202918125029",
+        "risk": "stealth pacing, parentheses, repetition, and a sudden dialogue transition"
+      },
+      {
+        "passage_id": "heartbeat_crescendo",
+        "characters": 619,
+        "text_sha256": "90686993699298d204d639da36bf779b3ae52397e99e2d6e1b5fdb5a316ab639",
+        "risk": "accelerating repetitions that must intensify without rushing or mechanical cadence"
+      },
+      {
+        "passage_id": "final_confession",
+        "characters": 610,
+        "text_sha256": "3e0f8c27ceca25a940b8d411c6bf015a46ba188a513273748c9666f7a7695745",
+        "risk": "sustained emotional escalation, italicized emphasis, and the shouted confession"
+      }
+    ]
+  },
+  "prior_attempt_audit": {
+    "closed_attempts": [
+      {
+        "provider": "google",
+        "voice": "en-GB-Studio-C",
+        "scope": "contextual_representative_audition",
+        "attempt_fingerprint": "4f7b571d8625924e82cb32ab3e1e3d33ae5123fc61c05a548dd0c4f2e9b304c4",
+        "scores": [
+          9.5,
+          8.4,
+          9.4,
+          9.6
+        ],
+        "minimum_score": 8.4,
+        "status": "BLOCKED_LISTENING_QA"
+      },
+      {
+        "provider": "google",
+        "voice": "en-GB-Studio-C",
+        "scope": "final_slow_contextual_representative_audition",
+        "attempt_fingerprint": "fd54248900cc4c9cc174fe327635781ac7749625e1bfd3635c897fb126ab632b",
+        "scores": [
+          9.4,
+          8.5,
+          9.4,
+          8.8
+        ],
+        "minimum_score": 8.5,
+        "status": "BLOCKED_LISTENING_QA"
+      }
+    ],
+    "closed_attempt_count": 2,
+    "new_attempt_is_materially_different_provider_and_voice": true
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "package_version": "0.9.4",
+    "model_repo": "hexgrad/Kokoro-82M",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "bf_emma",
+    "voice_language": "British English",
+    "voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+    "speed": 0.96,
+    "random_seed": 2026072001,
+    "g2p_language_code_required_for_future_execution": "b",
+    "g2p_british_required_for_future_execution": true,
+    "g2p_fallback_enabled": false,
+    "attempt_fingerprint": "5ab7a8abdc62cd901d16d7cb9fb6fe10094bb829d279574a6ccd6da88e1562f9"
+  },
+  "voice_selection": {
+    "selected_voice": "bf_emma",
+    "selected_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+    "official_voice_catalog_grade": "B-",
+    "official_voice_catalog_training_hours": "HH",
+    "title_suitability_rationale": "The nameless first-person narrator does not impose a canonical gender. bf_emma is the only unused exact local British voice and is suited to Poe's controlled Gothic tension, whispered stealth, and escalating confession.",
+    "previous_voice_comparison": {
+      "af_bella": {
+        "sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+        "cosine_similarity_to_selected": 0.6428000927
+      },
+      "af_sarah": {
+        "sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
+        "cosine_similarity_to_selected": 0.6364917159
+      }
+    },
+    "selected_voice_is_checksum_distinct_from_closed_local_voices": true
+  },
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/bf_emma.pt",
+      "sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+      "size_bytes": 523420
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "status": "PINNED_EXECUTION_RUNTIME_VERIFIED",
+    "pinned_execution_runtime_verified": true,
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "python_executable": "/opt/homebrew/Cellar/python@3.11/3.11.15_1/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "expected_python_version": "3.11.15",
+    "expected_python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "expected_package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    }
+  },
+  "rights": {
+    "model_and_voicepack_license": "Apache-2.0",
+    "official_model_card_url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "official_voice_file_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/voices/bf_emma.pt",
+    "private_audition_allowed": true,
+    "commercial_use_allowed_under_recorded_license": true,
+    "apache_notice_obligations_still_apply": true,
+    "title_scoped_production_risk_acceptance_bound": false,
+    "production_release_approved": false,
+    "public_disclosure_required_if_later_approved": "AI voice"
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "ordered_content_integrity_required": true,
+    "estimated_sync_allowed": false
+  },
+  "next_stage_contract": {
+    "status": "EXECUTOR_COMPLETED_OBJECTIVE_FAIL_CLOSED",
+    "exact_execute_command": "PYTHONDONTWRITEBYTECODE=1 /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python internal/audiobook_lab/scripts/sprint1_tell_tale_kokoro_private_executor.py --execute --slug the-tell-tale-heart --profile tell-tale-bf-emma-controlled-gothic-v1 --asset-root /private/tmp/earnalism-next-kokoro-pilot --artifact-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts --whisper-cache-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache --private-output-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-tell-tale-heart/f3ff3571-bf-emma-representative-v1 --output internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_kokoro_bf_emma_representative_execution_v1.json",
+    "attempt_fingerprint": "5ab7a8abdc62cd901d16d7cb9fb6fe10094bb829d279574a6ccd6da88e1562f9",
+    "scope": "these four exact source-bound passages only",
+    "lang_code": "b",
+    "british_g2p": true,
+    "g2p_fallback_enabled": false,
+    "asr_source_score_min": 9.7,
+    "asr_coverage_min": 0.98,
+    "ordered_content_integrity_required": true,
+    "full_title_generation_allowed": false,
+    "listening_qa_allowed_by_this_command": false,
+    "upload_allowed": false,
+    "publication_allowed": false,
+    "release_gate_mutation_allowed": false
+  },
+  "safety": {
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-tell-tale-heart/f3ff3571-bf-emma-representative-v1",
+    "provider_calls": 0,
+    "estimated_provider_cost_usd": 0.0,
+    "paid_tts_lock_inspected": false,
+    "paid_tts_lock_touched": false,
+    "audio_generated": true,
+    "asr_run": true,
+    "listening_qa_run": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false,
+    "executor_implemented": true,
+    "executor_run": true,
+    "artifact_hashes_before": {
+      "model": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "config": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "voice": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+      "whisper": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f"
+    },
+    "artifact_hashes_after": {
+      "model": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "config": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "voice": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+      "whisper": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f"
+    },
+    "artifact_hashes_unchanged": true
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_OBJECTIVE_OR_ASR_GATE_FAILED",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "CANONICAL_FRONT_COVER_MISSING",
+    "TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "PRIVATE_UPLOAD_CHECKSUM_NOT_RUN",
+    "PRODUCTION_ENDPOINT_NOT_RUN",
+    "BROWSER_PLAYBACK_GATE_NOT_RUN"
+  ],
+  "g2p_audit": {
+    "status": "PASS",
+    "lang_code": "b",
+    "british": true,
+    "fallback": null,
+    "unknown_token_output": "",
+    "reports": [
+      {
+        "passage_id": "opening_unreliable_sanity",
+        "source_text_sha256": "1bd845cd383b10550ac7fe03ccfafc01d3059c7ae9f473a4a371c20782f6a524",
+        "token_count": 90,
+        "phoneme_sha256": "358708c587367584a392794b2a169288c7e0e806491fa49da66c4b31ae06d3f5",
+        "unresolved_tokens": []
+      },
+      {
+        "passage_id": "bedroom_suspense_dialogue",
+        "source_text_sha256": "7b2efa882aed81bb447c8d00fee89dfc011d48ffb2c2ba0f1d2b202918125029",
+        "token_count": 125,
+        "phoneme_sha256": "53889e558a06e270be0d283eea6b91e75e6a1c814856fc85a03b5f761f1c0044",
+        "unresolved_tokens": []
+      },
+      {
+        "passage_id": "heartbeat_crescendo",
+        "source_text_sha256": "90686993699298d204d639da36bf779b3ae52397e99e2d6e1b5fdb5a316ab639",
+        "token_count": 134,
+        "phoneme_sha256": "8dcc83a940610a93f41842c5e9460a459d984332bf9b7dc2b8a6a79567851dde",
+        "unresolved_tokens": []
+      },
+      {
+        "passage_id": "final_confession",
+        "source_text_sha256": "3e0f8c27ceca25a940b8d411c6bf015a46ba188a513273748c9666f7a7695745",
+        "token_count": 127,
+        "phoneme_sha256": "048b7e72baca9d575e108c138e3a4aa19b95f7f34420e3620a0d1f9b3c9695e5",
+        "unresolved_tokens": []
+      }
+    ]
+  },
+  "samples": [
+    {
+      "passage_id": "opening_unreliable_sanity",
+      "source_text_sha256": "1bd845cd383b10550ac7fe03ccfafc01d3059c7ae9f473a4a371c20782f6a524",
+      "characters": 386,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-tell-tale-heart/f3ff3571-bf-emma-representative-v1/opening_unreliable_sanity.wav",
+      "phoneme_sha256": "358708c587367584a392794b2a169288c7e0e806491fa49da66c4b31ae06d3f5",
+      "lang_code": "b",
+      "british_g2p": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 21.5,
+      "size_bytes": 1032044,
+      "audio_sha256": "e8d932b1a11e59c286d540e6f62117ecb4a2d36413e7245246dc439248a8422b",
+      "peak_fraction": 0.518509,
+      "rms_fraction": 0.059175,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "bedroom_suspense_dialogue",
+      "source_text_sha256": "7b2efa882aed81bb447c8d00fee89dfc011d48ffb2c2ba0f1d2b202918125029",
+      "characters": 534,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-tell-tale-heart/f3ff3571-bf-emma-representative-v1/bedroom_suspense_dialogue.wav",
+      "phoneme_sha256": "53889e558a06e270be0d283eea6b91e75e6a1c814856fc85a03b5f761f1c0044",
+      "lang_code": "b",
+      "british_g2p": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 29.425,
+      "size_bytes": 1412444,
+      "audio_sha256": "bd737502e4e606cada8f6e35938f9061b11ae8f223932fb5831fa73f866a890f",
+      "peak_fraction": 0.527879,
+      "rms_fraction": 0.060671,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "heartbeat_crescendo",
+      "source_text_sha256": "90686993699298d204d639da36bf779b3ae52397e99e2d6e1b5fdb5a316ab639",
+      "characters": 619,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-tell-tale-heart/f3ff3571-bf-emma-representative-v1/heartbeat_crescendo.wav",
+      "phoneme_sha256": "8dcc83a940610a93f41842c5e9460a459d984332bf9b7dc2b8a6a79567851dde",
+      "lang_code": "b",
+      "british_g2p": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 33.7,
+      "size_bytes": 1617644,
+      "audio_sha256": "baf322c5af34276e234ab7bf9a19e3087302fe8fb1a3f3e411df5d61bd3c31a7",
+      "peak_fraction": 0.501938,
+      "rms_fraction": 0.058357,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "final_confession",
+      "source_text_sha256": "3e0f8c27ceca25a940b8d411c6bf015a46ba188a513273748c9666f7a7695745",
+      "characters": 610,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-tell-tale-heart/f3ff3571-bf-emma-representative-v1/final_confession.wav",
+      "phoneme_sha256": "048b7e72baca9d575e108c138e3a4aa19b95f7f34420e3620a0d1f9b3c9695e5",
+      "lang_code": "b",
+      "british_g2p": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 30.3,
+      "size_bytes": 1454444,
+      "audio_sha256": "c85148a6389d543ca1e4ed443e97f970c5063b902958a102cf94cac176883c86",
+      "peak_fraction": 0.683645,
+      "rms_fraction": 0.056978,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    }
+  ],
+  "asr": {
+    "status": "FAIL",
+    "mode": "ASR_REVERIFY_EXISTING_AUDIO_ONLY",
+    "config_fingerprint": "9aec87e0efcb5ff795ca4488dbc2143cac34d386862445bda90c3f947772c288",
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "audio_derived": true,
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "prompt_policy": {
+      "opening_unreliable_sanity": "no_prompt",
+      "bedroom_suspense_dialogue": "no_prompt",
+      "heartbeat_crescendo": "no_prompt",
+      "final_confession": "no_prompt"
+    },
+    "source_equivalence_policy": {
+      "opening_unreliable_sanity": [],
+      "bedroom_suspense_dialogue": [],
+      "heartbeat_crescendo": [],
+      "final_confession": []
+    },
+    "unexpected_speech_may_be_normalized_or_discarded": false,
+    "reports": [
+      {
+        "passage_id": "opening_unreliable_sanity",
+        "audio_sha256": "e8d932b1a11e59c286d540e6f62117ecb4a2d36413e7245246dc439248a8422b",
+        "source_text_sha256": "1bd845cd383b10550ac7fe03ccfafc01d3059c7ae9f473a4a371c20782f6a524",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "True nervous, very, very dreadfully nervous I had been and am, but why will you say that I am mad? The disease had sharpened my senses, not destroyed, not dulled them. Above all was the sense of hearing acute. I heard all things in the heaven and in the earth, I heard many things in hell. How then am I mad, hearken, and observe how healthily, how calmly I can tell you the whole story.",
+        "transcript_sha256": "c0c6b13c36a180c1d20209c481cec826402fe531e61d8698f3bc5341f5c5a094",
+        "evaluated_transcript": "True nervous, very, very dreadfully nervous I had been and am, but why will you say that I am mad? The disease had sharpened my senses, not destroyed, not dulled them. Above all was the sense of hearing acute. I heard all things in the heaven and in the earth, I heard many things in hell. How then am I mad, hearken, and observe how healthily, how calmly I can tell you the whole story.",
+        "evaluated_transcript_sha256": "c0c6b13c36a180c1d20209c481cec826402fe531e61d8698f3bc5341f5c5a094",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.008282,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 75,
+        "transcript_token_count": 75,
+        "equal_token_count": 75,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      },
+      {
+        "passage_id": "bedroom_suspense_dialogue",
+        "audio_sha256": "bd737502e4e606cada8f6e35938f9061b11ae8f223932fb5831fa73f866a890f",
+        "source_text_sha256": "7b2efa882aed81bb447c8d00fee89dfc011d48ffb2c2ba0f1d2b202918125029",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "I fairly chuckled at the idea, and perhaps he heard me, for he moved on the bed suddenly as if startled. Now you may think that I drew back, but no. His room was as black as pitch with the thick darkness, for the shutters were close fastened through fear of robbers, and so I knew that he could not see the opening of the door, and I kept pushing it on steadily, steadily. I had my head in, and was about to open the lantern, when my thumb slipped upon the tin fastening, and the old man sprang up in bed, crying out, Who's there? you",
+        "transcript_sha256": "f328665fff147def049da745c75dcee14bbaf2707d6ae02393257a8359a9a01b",
+        "evaluated_transcript": "I fairly chuckled at the idea, and perhaps he heard me, for he moved on the bed suddenly as if startled. Now you may think that I drew back, but no. His room was as black as pitch with the thick darkness, for the shutters were close fastened through fear of robbers, and so I knew that he could not see the opening of the door, and I kept pushing it on steadily, steadily. I had my head in, and was about to open the lantern, when my thumb slipped upon the tin fastening, and the old man sprang up in bed, crying out, Who's there? you",
+        "evaluated_transcript_sha256": "f328665fff147def049da745c75dcee14bbaf2707d6ae02393257a8359a9a01b",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.518104,
+        "score": 9.9531,
+        "coverage": 1.0,
+        "precision": 0.9907,
+        "source_token_count": 106,
+        "transcript_token_count": 107,
+        "equal_token_count": 106,
+        "first_words_match": true,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": true,
+        "no_duplicate_content": false,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {},
+        "duplicate_tokens": {
+          "you": 1
+        },
+        "unexpected_tokens": {
+          "you": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "insert",
+            "source_range": [
+              106,
+              106
+            ],
+            "transcript_range": [
+              106,
+              107
+            ],
+            "source_tokens": [],
+            "transcript_tokens": [
+              "you"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "heartbeat_crescendo",
+        "audio_sha256": "baf322c5af34276e234ab7bf9a19e3087302fe8fb1a3f3e411df5d61bd3c31a7",
+        "source_text_sha256": "90686993699298d204d639da36bf779b3ae52397e99e2d6e1b5fdb5a316ab639",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "Meantime the hellish tattoo of the heart increased. It grew quicker and quicker, and louder and louder every instant. The old man's terror must have been extreme. It grew louder I say, louder every moment do you mark me well. I have told you that I am nervous, so I am. And now at the dead hour of the night, amid the dreadful silence of that old house, so strange a noise as this excited me to uncontrollable terror. Yet for some minutes longer I refrained and stood still. But the beating grew louder, louder, I thought the heart must burst. and now a new anxiety seized me, the sound would be heard by a neighbour.",
+        "transcript_sha256": "6ed223a1d6905c6dbd4bda18109c7d286d32379e1ddc7a06f00d19b09f5bb6e4",
+        "evaluated_transcript": "Meantime the hellish tattoo of the heart increased. It grew quicker and quicker, and louder and louder every instant. The old man's terror must have been extreme. It grew louder I say, louder every moment do you mark me well. I have told you that I am nervous, so I am. And now at the dead hour of the night, amid the dreadful silence of that old house, so strange a noise as this excited me to uncontrollable terror. Yet for some minutes longer I refrained and stood still. But the beating grew louder, louder, I thought the heart must burst. and now a new anxiety seized me, the sound would be heard by a neighbour.",
+        "evaluated_transcript_sha256": "6ed223a1d6905c6dbd4bda18109c7d286d32379e1ddc7a06f00d19b09f5bb6e4",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.036792,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 116,
+        "transcript_token_count": 116,
+        "equal_token_count": 116,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      },
+      {
+        "passage_id": "final_confession",
+        "audio_sha256": "c85148a6389d543ca1e4ed443e97f970c5063b902958a102cf94cac176883c86",
+        "source_text_sha256": "3e0f8c27ceca25a940b8d411c6bf015a46ba188a513273748c9666f7a7695745",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "It grew louder, louder, louder, and still the men chatted pleasantly and smiled. Was it possible they heard not? Almighty God, no, no, they heard they suspected they knew they were making a mockery of my horror this I thought and this I think. But anything was better than this agony, anything was more tolerable than this derision, I could bear those hypocritical smiles no longer. I felt that I must scream or die, and now, again, hark, louder, louder, louder, louder. Villains, I shrieked, dissemble no more. I admit the deed tear up the planks here, here it is the beating of his hideous heart. Thanks for watching.",
+        "transcript_sha256": "62adee7f9fe8f26367085e1c10e96c4bd7257ef2eaf092c51b32b4976f722cf6",
+        "evaluated_transcript": "It grew louder, louder, louder, and still the men chatted pleasantly and smiled. Was it possible they heard not? Almighty God, no, no, they heard they suspected they knew they were making a mockery of my horror this I thought and this I think. But anything was better than this agony, anything was more tolerable than this derision, I could bear those hypocritical smiles no longer. I felt that I must scream or die, and now, again, hark, louder, louder, louder, louder. Villains, I shrieked, dissemble no more. I admit the deed tear up the planks here, here it is the beating of his hideous heart. Thanks for watching.",
+        "evaluated_transcript_sha256": "62adee7f9fe8f26367085e1c10e96c4bd7257ef2eaf092c51b32b4976f722cf6",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.624004,
+        "score": 9.8605,
+        "coverage": 1.0,
+        "precision": 0.9725,
+        "source_token_count": 106,
+        "transcript_token_count": 109,
+        "equal_token_count": 106,
+        "first_words_match": true,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "thanks": 1,
+          "for": 1,
+          "watching": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "insert",
+            "source_range": [
+              106,
+              106
+            ],
+            "transcript_range": [
+              106,
+              109
+            ],
+            "source_tokens": [],
+            "transcript_tokens": [
+              "thanks",
+              "for",
+              "watching"
+            ]
+          }
+        ],
+        "pass": false
+      }
+    ]
+  }
+}

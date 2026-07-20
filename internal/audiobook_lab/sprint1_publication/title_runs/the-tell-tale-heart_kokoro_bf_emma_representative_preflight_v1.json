@@ -1,0 +1,229 @@
+{
+  "schema": "earnalism.kokoro.tell_tale_private_preflight.v1",
+  "generated_at": "2026-07-20T03:51:13Z",
+  "status": "READY_FOR_ONE_PRIVATE_REPRESENTATIVE_EXECUTION",
+  "go_no_go": "GO_PRIVATE_REPRESENTATIVE_ONLY",
+  "scope": {
+    "slug": "the-tell-tale-heart",
+    "title": "The Tell-Tale Heart",
+    "author": "Edgar Allan Poe",
+    "language": "en",
+    "profile": "tell-tale-bf-emma-controlled-gothic-v1",
+    "passage_count": 4,
+    "characters": 2149,
+    "representative_only": true,
+    "full_title_generated": false
+  },
+  "source": {
+    "chapter_path": "/private/tmp/earnalism-next-kokoro-pilot/data/controlled_publications/the-tell-tale-heart/chapters/chapter-001.json",
+    "origin_source_sha256": "f5d856baf4abec894c1fdc82f8676a416dc96efd3708162c04bcde0ff0a4579b",
+    "raw_source_sha256": "be8259855845762a7a1c6e5e1bd45d43bbd04c7d769427b25132e2bf514af1f8",
+    "normalized_source_sha256": "6aa43cf6dcf4c6fba097237c01938ab5269a7edda16e4006db05b5a56c7e164e",
+    "word_count": 2155,
+    "rights_basis": "Edgar Allan Poe died 1849; first published 1843. Public domain in India and the U.S.",
+    "passages": [
+      {
+        "passage_id": "opening_unreliable_sanity",
+        "characters": 386,
+        "text_sha256": "1bd845cd383b10550ac7fe03ccfafc01d3059c7ae9f473a4a371c20782f6a524",
+        "risk": "fractured punctuation, repeated emphasis, and calm-versus-agitated contrast"
+      },
+      {
+        "passage_id": "bedroom_suspense_dialogue",
+        "characters": 534,
+        "text_sha256": "7b2efa882aed81bb447c8d00fee89dfc011d48ffb2c2ba0f1d2b202918125029",
+        "risk": "stealth pacing, parentheses, repetition, and a sudden dialogue transition"
+      },
+      {
+        "passage_id": "heartbeat_crescendo",
+        "characters": 619,
+        "text_sha256": "90686993699298d204d639da36bf779b3ae52397e99e2d6e1b5fdb5a316ab639",
+        "risk": "accelerating repetitions that must intensify without rushing or mechanical cadence"
+      },
+      {
+        "passage_id": "final_confession",
+        "characters": 610,
+        "text_sha256": "3e0f8c27ceca25a940b8d411c6bf015a46ba188a513273748c9666f7a7695745",
+        "risk": "sustained emotional escalation, italicized emphasis, and the shouted confession"
+      }
+    ]
+  },
+  "prior_attempt_audit": {
+    "closed_attempts": [
+      {
+        "provider": "google",
+        "voice": "en-GB-Studio-C",
+        "scope": "contextual_representative_audition",
+        "attempt_fingerprint": "4f7b571d8625924e82cb32ab3e1e3d33ae5123fc61c05a548dd0c4f2e9b304c4",
+        "scores": [9.5, 8.4, 9.4, 9.6],
+        "minimum_score": 8.4,
+        "status": "BLOCKED_LISTENING_QA"
+      },
+      {
+        "provider": "google",
+        "voice": "en-GB-Studio-C",
+        "scope": "final_slow_contextual_representative_audition",
+        "attempt_fingerprint": "fd54248900cc4c9cc174fe327635781ac7749625e1bfd3635c897fb126ab632b",
+        "scores": [9.4, 8.5, 9.4, 8.8],
+        "minimum_score": 8.5,
+        "status": "BLOCKED_LISTENING_QA"
+      }
+    ],
+    "closed_attempt_count": 2,
+    "new_attempt_is_materially_different_provider_and_voice": true
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "package_version": "0.9.4",
+    "model_repo": "hexgrad/Kokoro-82M",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "bf_emma",
+    "voice_language": "British English",
+    "voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+    "speed": 0.96,
+    "random_seed": 2026072001,
+    "g2p_language_code_required_for_future_execution": "b",
+    "g2p_british_required_for_future_execution": true,
+    "g2p_fallback_enabled": false,
+    "attempt_fingerprint": "5ab7a8abdc62cd901d16d7cb9fb6fe10094bb829d279574a6ccd6da88e1562f9"
+  },
+  "voice_selection": {
+    "selected_voice": "bf_emma",
+    "selected_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+    "official_voice_catalog_grade": "B-",
+    "official_voice_catalog_training_hours": "HH",
+    "title_suitability_rationale": "The nameless first-person narrator does not impose a canonical gender. bf_emma is the only unused exact local British voice and is suited to Poe's controlled Gothic tension, whispered stealth, and escalating confession.",
+    "previous_voice_comparison": {
+      "af_bella": {
+        "sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+        "cosine_similarity_to_selected": 0.6428000927
+      },
+      "af_sarah": {
+        "sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
+        "cosine_similarity_to_selected": 0.6364917159
+      }
+    },
+    "selected_voice_is_checksum_distinct_from_closed_local_voices": true
+  },
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/bf_emma.pt",
+      "sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+      "size_bytes": 523420
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "status": "PINNED_EXECUTION_RUNTIME_VERIFIED",
+    "pinned_execution_runtime_verified": true,
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "python_executable": "/opt/homebrew/Cellar/python@3.11/3.11.15_1/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "expected_python_version": "3.11.15",
+    "expected_python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "expected_package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    }
+  },
+  "rights": {
+    "model_and_voicepack_license": "Apache-2.0",
+    "official_model_card_url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "official_voice_file_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/voices/bf_emma.pt",
+    "private_audition_allowed": true,
+    "commercial_use_allowed_under_recorded_license": true,
+    "apache_notice_obligations_still_apply": true,
+    "title_scoped_production_risk_acceptance_bound": false,
+    "production_release_approved": false,
+    "public_disclosure_required_if_later_approved": "AI voice"
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "ordered_content_integrity_required": true,
+    "estimated_sync_allowed": false
+  },
+  "next_stage_contract": {
+    "status": "CODE_REVIEWED_BRITISH_G2P_EXECUTOR_REQUIRED_BEFORE_SYNTHESIS",
+    "scope": "these four exact source-bound passages only",
+    "future_executor_requirements": [
+      "pin this exact fingerprint and all artifact hashes",
+      "use Kokoro language code b with British G2P",
+      "disable every G2P fallback and refuse unresolved tokens",
+      "write only beneath the recorded private output directory",
+      "run local ASR before any paid listening QA"
+    ],
+    "full_title_generation_allowed": false,
+    "upload_allowed": false,
+    "publication_allowed": false,
+    "release_gate_mutation_allowed": false
+  },
+  "safety": {
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-tell-tale-heart/f3ff3571-bf-emma-representative-v1",
+    "provider_calls": 0,
+    "estimated_provider_cost_usd": 0.0,
+    "paid_tts_lock_inspected": false,
+    "paid_tts_lock_touched": false,
+    "audio_generated": false,
+    "asr_run": false,
+    "listening_qa_run": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_AUDIO_NOT_GENERATED",
+    "REPRESENTATIVE_ASR_NOT_RUN",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "CANONICAL_FRONT_COVER_MISSING",
+    "TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "PRIVATE_UPLOAD_CHECKSUM_NOT_RUN",
+    "PRODUCTION_ENDPOINT_NOT_RUN",
+    "BROWSER_PLAYBACK_GATE_NOT_RUN"
+  ]
+}

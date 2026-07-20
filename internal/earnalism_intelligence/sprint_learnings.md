@@ -473,3 +473,25 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Johnsy still scored `9.8611/0.9861` but failed exact integrity because source `Sudie` decoded as `suitie`. The Behrman dialect passage scored `8.6957/0.8642` with multiple unresolved proper-name and content substitutions, including `Vy do` decoded as `Vite` and `in` decoded as `and`.
 - The repair correctly refused to normalize genuine `do/de`, `in/and`, trailing hallucinated speech, or duplicated content. Only two of four passages passed, so the af_sarah synthesis and repair fingerprints are closed.
 - No listening, full-title generation, delivery, endpoint, browser, or publication stage ran. All WAVs remain private, the paid lock is unchanged, and The Last Leaf remains reader-live/audio-hidden.
+
+## 2026-07-20 The Gift of the Magi Kokoro bf_emma Alternative Pilot
+
+- The checksum-distinct British `bf_emma` voice passed fallback-free G2P and generated a new four-passage private candidate at zero provider cost. This was a materially different voice/fingerprint, not a repeat of the closed af_bella lane.
+- Prompted ASR initially retained trailing `this` and `the end`; both unprompted decoder arms removed the opening hallucination, and the greedy arm removed `the end`. No transcript content was manually deleted.
+- Opening and sacrifice passed ASR/source `10.0/1.0`. Hair sale remained `9.6552/0.9655` because `Sofronie` and `practised` decoded as `Saffroni` and `practiced`; the ending remained `9.8776/0.9758` because both arms omitted source phrase `these two were`.
+- British `chilly/chilli` was the only new exact-count sound-equivalence allowance. Substantive `were/are`, missing source words, and trailing speech were never normalized away.
+- Only two of four passages passed exact content integrity, so listening and all downstream stages were skipped. The bf_emma synthesis and ASR-repair fingerprints are closed; Gift remains audio-hidden.
+
+## 2026-07-20 The Masque of the Red Death Kokoro bf_emma Representative Pilot
+
+- A new checksum-bound British `bf_emma` lane generated four private passages at zero provider cost; no existing Google or Kokoro fingerprint was repeated.
+- The bounded retained-WAV repair produced scores `9.7959`, `10.0`, `9.902`, and `9.8824`, with coverages `0.9796`, `1.0`, `0.9902`, and `0.9882`. Only the black-room passage preserved exact ordered source content.
+- Opening omitted `an hour` and added trailing `thank you`; the clock passage decoded manuscript `harken` as `hearken`; the finale decoded `mummer/cerements` as `mamma/serments`. These genuine content differences were not normalized away.
+- Mean ASR `9.8951` and mean coverage `0.9895` cannot override three exact-integrity failures. Listening and every full-title or delivery stage were skipped, the synthesis and repair fingerprints are closed, and the title remains audio-hidden.
+
+## 2026-07-20 The Tell-Tale Heart Kokoro bf_emma Representative Pilot
+
+- The British `bf_emma` preflight resolved all four source passages with fallback disabled, then generated four private WAVs through the exact pinned local Kokoro runtime at zero provider cost.
+- Initial ASR passed opening and heartbeat exactly, while bedroom added trailing `you` and the finale added `thanks for watching`. A single bounded retained-WAV repair removed the bedroom hallucination without deleting transcript text.
+- Opening, bedroom, and heartbeat then reached exact `10.0/1.0`. Both bounded finale decoder arms retained `thanks for watching`, producing `9.8605/1.0`; unexpected decoded speech was not manually trimmed or normalized.
+- Mean selected ASR `9.9651` does not satisfy ordered-content integrity when one passage contains unexpected words. Listening, full-title generation, upload, endpoint, browser, and publication were skipped; both fingerprints are closed and the title remains audio-hidden.

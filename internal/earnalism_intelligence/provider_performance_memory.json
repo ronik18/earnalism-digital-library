@@ -227,7 +227,7 @@
   },
   "english": {
     "kokoro": {
-      "status": "title_specific_mixed_results_gift_full_title_objective_fail",
+      "status": "title_specific_mixed_results_multiple_exact_objective_failures",
       "package_version": "0.9.4",
       "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
       "voice": "af_bella",
@@ -283,8 +283,30 @@
           "section-017",
           "section-018"
         ],
+        "bf_emma_representative_attempt_fingerprint": "519fdef2999d9d8e9b7f01cd4b2cb571cff6e41a1457aab1925b45d0c30f9fe3",
+        "bf_emma_representative_asr_repair_fingerprint": "804d06f2f84ce24a2af4a5e92039d8c28019a782dbe11df958fef91c16647193",
+        "bf_emma_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+        "bf_emma_representative_asr_scores": [
+          10.0,
+          9.6552,
+          10.0,
+          9.8776
+        ],
+        "bf_emma_representative_coverages": [
+          1.0,
+          0.9655,
+          1.0,
+          0.9758
+        ],
+        "bf_emma_ordered_content_integrity_pass": false,
+        "bf_emma_passed_passages": 2,
+        "bf_emma_failed_passages": {
+          "hair_sale_dialogue": "Sofronie and practised decoded as Saffroni and practiced",
+          "magi_ending": "source phrase these two were omitted by both decoder arms"
+        },
+        "bf_emma_listening_qa_run": false,
         "public_audio_approved": false,
-        "next_action": "Do not repeat the representative, full-title generation, or ASR-repair fingerprints. The af_bella full-title lane is closed after exact content/timestamp failures; use a materially different voice/provider or validate source-bound narration. Keep audio hidden."
+        "next_action": "Do not repeat any completed af_bella or bf_emma synthesis/ASR fingerprints. Both local voice lanes are closed on exact objective failures; use a genuinely different voice/provider or validate source-bound narration. Keep audio hidden."
       },
       "the_cop_and_the_anthem": {
         "source_sha256": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
@@ -424,6 +446,64 @@
         "full_title_generated": false,
         "public_audio_approved": false,
         "next_action": "Do not repeat the G2P-blocked, af_sarah synthesis, or ASR-repair fingerprints. Keep audio hidden and require a genuinely different voice/provider or source-bound narration; never normalize the remaining content mismatches."
+      },
+      "the_masque_of_the_red_death": {
+        "source_sha256": "c517483495ef7266f533d077036a8e83bba53dc33cac60580cd895e757f637e3",
+        "voice": "bf_emma",
+        "voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+        "attempt_fingerprint": "dabff0b69632542f712b259fe039c9fa74092506141c71adb1d76b5afc21f33a",
+        "asr_repair_fingerprint": "f727d85f6d50cf99038f56b2fe826260dc205bf691d3ac65689c32f46f30f133",
+        "representative_asr_scores": [
+          9.7959,
+          10.0,
+          9.902,
+          9.8824
+        ],
+        "representative_coverages": [
+          0.9796,
+          1.0,
+          0.9902,
+          0.9882
+        ],
+        "ordered_content_integrity_pass": false,
+        "passed_passages": 1,
+        "failed_passages": {
+          "opening_plague_and_prospero": "source phrase an hour missing and unexpected trailing thank you",
+          "ebony_clock_tension": "source harken decoded as hearken",
+          "final_confrontation_and_dominion": "source mummer and cerements decoded as mamma and serments"
+        },
+        "listening_qa_run": false,
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "next_action": "Do not repeat the bf_emma synthesis or ASR-repair fingerprints. Keep audio hidden and require a genuinely different voice/provider or source-bound narration; aggregate scores cannot override exact content failures."
+      },
+      "the_tell_tale_heart": {
+        "source_sha256": "be8259855845762a7a1c6e5e1bd45d43bbd04c7d769427b25132e2bf514af1f8",
+        "voice": "bf_emma",
+        "voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+        "attempt_fingerprint": "5ab7a8abdc62cd901d16d7cb9fb6fe10094bb829d279574a6ccd6da88e1562f9",
+        "asr_repair_fingerprint": "6377ce48f1d97e9f8e5cfdd602dce256332c6a6ced7767877a20774578d72533",
+        "representative_asr_scores": [
+          10.0,
+          10.0,
+          10.0,
+          9.8605
+        ],
+        "representative_coverages": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "ordered_content_integrity_pass": false,
+        "passed_passages": 3,
+        "failed_passages": {
+          "final_confession": "both bounded decoder arms added unexpected trailing phrase thanks for watching"
+        },
+        "listening_qa_run": false,
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "next_action": "Do not repeat the bf_emma synthesis or ASR-repair fingerprints. Keep audio hidden and require a genuinely different voice/provider or source-bound narration; never delete unexpected decoded speech to manufacture a pass."
       }
     },
     "openai": {
