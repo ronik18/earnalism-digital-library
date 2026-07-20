@@ -226,6 +226,206 @@
     }
   },
   "english": {
+    "kokoro": {
+      "status": "title_specific_mixed_results_gift_full_title_objective_fail",
+      "package_version": "0.9.4",
+      "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "voice": "af_bella",
+      "the_gift_of_the_magi": {
+        "source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+        "attempt_fingerprint": "bf5ff8b24d23e4ae912d332b247d26d5efb60eeb0b91ebad0bc179e40a7ea015",
+        "asr_config_fingerprint": "1b932d7d1193947aad72e51cc2deba889a4c09468b21618d02b21b38db124755",
+        "representative_asr_scores": [10.0, 10.0, 10.0, 10.0],
+        "representative_coverages": [1.0, 1.0, 1.0, 1.0],
+        "ordered_content_integrity_pass": true,
+        "representative_listening_overall_scores": [9.6, 9.6, 9.5, 9.5],
+        "minimum_dimension_scores": {
+          "naturalness": 9.5,
+          "pronunciation": 9.7,
+          "emotional_expression": 9.4,
+          "punctuation_pause": 9.3,
+          "pacing": 9.2,
+          "continuity": 9.5,
+          "anti_robotic_texture": 9.8,
+          "anti_choppy_join": 9.7,
+          "listener_enjoyment": 9.5,
+          "overall": 9.5,
+          "confidence": 0.95
+        },
+        "fatal_flags": [],
+        "platform_screen_pass": true,
+        "owner_exact_10_pass": false,
+        "exact_10_is_release_gate": false,
+        "active_listening_floor": 9.2,
+        "private_full_title_pilot_eligible": false,
+        "full_title_generated": true,
+        "full_title_generation_fingerprint": "c28f5c70373854feed9009c5cb4dd0789dd7c2d09a5451e71d7fa41723283039",
+        "full_title_asr_repair_fingerprint": "b05c6392075ace4d50046f6f266ba20e04e48e68038755a1950b077b8ca27af9",
+        "full_title_audio_sha256": "c352f9cd960eb37cea37e79fc4d6f288088ea8a07ccc8574b4c8ecc34c5d01cb",
+        "full_title_duration_seconds": 647.825,
+        "full_title_asr_score": 9.9545,
+        "full_title_coverage": 0.9952,
+        "full_title_precision": 0.9957,
+        "full_title_sections_passed": 11,
+        "full_title_sections_failed": 8,
+        "full_title_ordered_content_integrity_pass": false,
+        "full_title_measured_sync_score": 9.8131,
+        "full_title_measured_sync_coverage": 0.9813,
+        "full_title_measured_sync_pass": false,
+        "full_title_listening_qa_run": false,
+        "full_title_failed_sections": [
+          "section-002",
+          "section-003",
+          "section-004",
+          "section-007",
+          "section-013",
+          "section-015",
+          "section-017",
+          "section-018"
+        ],
+        "public_audio_approved": false,
+        "next_action": "Do not repeat the representative, full-title generation, or ASR-repair fingerprints. The af_bella full-title lane is closed after exact content/timestamp failures; use a materially different voice/provider or validate source-bound narration. Keep audio hidden."
+      },
+      "the_cop_and_the_anthem": {
+        "source_sha256": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
+        "attempt_fingerprint": "b693be6196019d6e44b22ac1cdcc7e1ea7099550f69eb326bb3cdacf4f27c6bf",
+        "asr_config_fingerprint": "3610d60e9094c3f80f4c22d65b63db45f622f48b7ea927301acf01a221444075",
+        "representative_asr_scores": [
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ],
+        "representative_coverages": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "ordered_content_integrity_pass": true,
+        "representative_listening_overall_scores": [
+          8.7,
+          8.3,
+          9.5,
+          9.5
+        ],
+        "minimum_dimension_scores": {
+          "naturalness": 8.5,
+          "pronunciation": 9.0,
+          "emotional_expression": 8.0,
+          "punctuation_pause": 8.5,
+          "pacing": 8.0,
+          "continuity": 8.5,
+          "anti_robotic_texture": 9.0,
+          "anti_choppy_join": 9.0,
+          "listener_enjoyment": 8.0,
+          "overall": 8.3,
+          "confidence": 0.85
+        },
+        "fatal_flags": [],
+        "platform_screen_pass": false,
+        "owner_exact_10_pass": false,
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "next_action": "Close this Kokoro af_bella configuration without repair or repetition. Keep the title audio-hidden; only a materially different provider, voice, or source-bound narration lane may reopen representative evaluation."
+      },
+      "dsires_baby": {
+        "source_sha256": "8bfaa9cc56c6e731cd0a5372f7fc4bf1c870ace2261ff7f0b6be44bfd013f8a5",
+        "base_attempt_fingerprint": "b07e30881ec1c1a04944c8f2ba5ccc1b94bf24dc176a784ae12963b9e072f266",
+        "execution_fingerprint": "66e0b11cca0c530679ffda849d1069dd4f3f5d6a76ed0b756f719f86256284d3",
+        "asr_repair_fingerprint": "63c614ca791064d7bdcaaf8ad595c20198af55295a7d4b3a08d7fe4106ebac9e",
+        "representative_asr_scores": [
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ],
+        "representative_coverages": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "ordered_content_integrity_pass": true,
+        "listening_sample_fingerprint": "95278a7a57ff73b09e8f40dd9dc16a59c2c6d78f9f6dfd5e35064af7afb079fb",
+        "listening_transport_valid_samples": 1,
+        "listening_transport_invalid_samples": 3,
+        "audible_sample_fatal_flags": [
+          "robotic_texture_detected",
+          "mechanical_cadence_detected",
+          "choppy_joins_detected",
+          "fallback_tts_detected"
+        ],
+        "platform_screen_pass": false,
+        "owner_exact_10_pass": false,
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "next_action": "Do not report the transport-invalid zeroes as narration scores and do not repeat this listening fingerprint. Close the af_bella configuration because the one audible sample independently raised fatal narration flags; only a materially different voice or provider may reopen representative evaluation."
+      },
+      "the_necklace": {
+        "normalized_source_sha256": "981170428ff2cfc1233e14933153eb5b265ec20ccb21397986c210a053856a6d",
+        "voice": "af_sarah",
+        "voice_sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
+        "attempt_fingerprint": "62d2a46ada6314da36e300f334a4cca0526c7ad102a2a4e86f3d7acb0c08d23d",
+        "initial_asr_config_fingerprint": "9948402f62db1e9996ec1cdae16776c6bfd5dc382d600efa42d742c1bacb659a",
+        "asr_repair_fingerprint": "127ebeb2c482a3c7d316e80570b2a6fe39f95d2c1783e185908795c8b7b169c6",
+        "representative_asr_scores": [
+          9.9631,
+          10.0,
+          10.0,
+          9.8605
+        ],
+        "representative_coverages": [
+          0.9926,
+          1.0,
+          1.0,
+          0.9815
+        ],
+        "ordered_content_integrity_pass": false,
+        "failed_passages": {
+          "opening_social_cadence": "source token had missing under beam and greedy",
+          "final_ironic_reveal": "opening I missing and source is decoded as has under beam and greedy"
+        },
+        "listening_qa_run": false,
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "next_action": "Do not repeat the af_sarah synthesis or ASR repair fingerprints. Keep audio hidden and use a genuinely different voice/provider or source-bound narration; never normalize the unresolved had, I, or is/has content mismatches."
+      },
+      "the_last_leaf": {
+        "source_sha256": "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7",
+        "voice": "af_sarah",
+        "voice_sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
+        "g2p_blocked_fingerprint": "b62c996d97def9e3f805eba13be2aa2b29ebf03858200657b2c959676b9d4935",
+        "attempt_fingerprint": "f152ffdc135dea3c9ffd463138489739a80a163196059e7cc0130527d83a7ed1",
+        "initial_asr_config_fingerprint": "4313b4d132c6b4886844e2431bd6180c426a7c4882317faa51f29f69290eee47",
+        "asr_repair_fingerprint": "6af4f78de1ff7aef48d178d3ae46d535ce9ad968cde190e4257c0cff16742312",
+        "representative_asr_scores": [
+          10.0,
+          9.8611,
+          8.6957,
+          10.0
+        ],
+        "representative_coverages": [
+          1.0,
+          0.9861,
+          0.8642,
+          1.0
+        ],
+        "ordered_content_integrity_pass": false,
+        "passed_passages": [
+          "opening_literary_setting",
+          "final_masterpiece_reveal"
+        ],
+        "failed_passages": {
+          "johnsy_leaf_dialogue": "source Sudie decoded as suitie",
+          "behrman_dialect_emotion": "multiple proper-name and dialect substitutions remain, including Vy do decoded as Vite and in decoded as and"
+        },
+        "listening_qa_run": false,
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "next_action": "Do not repeat the G2P-blocked, af_sarah synthesis, or ASR-repair fingerprints. Keep audio hidden and require a genuinely different voice/provider or source-bound narration; never normalize the remaining content mismatches."
+      }
+    },
     "openai": {
       "status": "usable_but_must_pass_asr_sync_and_listening"
     },

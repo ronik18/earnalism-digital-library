@@ -1,0 +1,604 @@
+{
+  "schema": "earnalism.gift_kokoro_full_title_private_qa.v1",
+  "generated_at": "2026-07-19T17:51:09Z",
+  "status": "READY_FOR_PRIVATE_FULL_TITLE_EXECUTION",
+  "scope": {
+    "slug": "the-gift-of-the-magi",
+    "title": "The Gift of the Magi",
+    "author": "O. Henry",
+    "language": "eng",
+    "profile": "gift-full-v1",
+    "private_only": true,
+    "section_count": 19,
+    "full_title_generated": false
+  },
+  "source": {
+    "chapter_path": "/private/tmp/earnalism-next-kokoro-pilot/data/controlled_publications/the-gift-of-the-magi/chapters/chapter-001.json",
+    "source_sha256": "be7f050f1affc65144172ae7157ad10ab8a8ee698e196623ff072fe410f4ec5e",
+    "source_characters": 11298,
+    "normalized_source_sha256": "f32ebf1df2826126eac28341a0dba111be5a734828d9f7b6fffb41d9b95bfe27",
+    "normalized_characters": 11122,
+    "normalized_words": 2057,
+    "lossless_section_reconstruction": true,
+    "section_word_counts": [
+      105,
+      110,
+      108,
+      125,
+      117,
+      108,
+      106,
+      107,
+      109,
+      108,
+      105,
+      120,
+      109,
+      111,
+      106,
+      130,
+      109,
+      118,
+      46
+    ],
+    "sections": [
+      {
+        "passage_id": "section-001",
+        "section_index": 1,
+        "text_sha256": "f9d0cd1b456936cc2d708ae5705b6cbc7f9e53e611d98f833c79e0d2e84ace73",
+        "characters": 605,
+        "word_count": 105
+      },
+      {
+        "passage_id": "section-002",
+        "section_index": 2,
+        "text_sha256": "85100b18e3734c13411d07fa9c8f6250d76dd2949fc5bd30373f0c21583d9374",
+        "characters": 616,
+        "word_count": 110
+      },
+      {
+        "passage_id": "section-003",
+        "section_index": 3,
+        "text_sha256": "09fee0603b288178d9765437d4fcc4ff2dc3de984c8c7e1dd07ec240e66e3b27",
+        "characters": 589,
+        "word_count": 108
+      },
+      {
+        "passage_id": "section-004",
+        "section_index": 4,
+        "text_sha256": "aafc64445c47d06c5f442c82b1bf60780bc257ea04008885f53bae51fe285f91",
+        "characters": 681,
+        "word_count": 125
+      },
+      {
+        "passage_id": "section-005",
+        "section_index": 5,
+        "text_sha256": "86030586b0999c88203e88bc8eb8900f1dfe9d2cabb29c50306a71b9fc19d0ba",
+        "characters": 652,
+        "word_count": 117
+      },
+      {
+        "passage_id": "section-006",
+        "section_index": 6,
+        "text_sha256": "45c22620381c223b54ac855ed11b94c1e53e20fad424b2c576c2595293bec10f",
+        "characters": 562,
+        "word_count": 108
+      },
+      {
+        "passage_id": "section-007",
+        "section_index": 7,
+        "text_sha256": "c3b40d45c886795d0b77a4b06940ef39b743283a399b52bbc6c928c4c02cabf8",
+        "characters": 594,
+        "word_count": 106
+      },
+      {
+        "passage_id": "section-008",
+        "section_index": 8,
+        "text_sha256": "a5ba8ed2f8a10fb9980f870ae44c208a387032c309e84dd3910053bbd658b41d",
+        "characters": 554,
+        "word_count": 107
+      },
+      {
+        "passage_id": "section-009",
+        "section_index": 9,
+        "text_sha256": "3b99c0e4ea034eeb10b729a54bdbf59d5946e12d15eef234ae5f66c16f934754",
+        "characters": 582,
+        "word_count": 109
+      },
+      {
+        "passage_id": "section-010",
+        "section_index": 10,
+        "text_sha256": "947c59526026448beb788cfe2411c97e9783c3a1346448bb258735fc136cf4dc",
+        "characters": 594,
+        "word_count": 108
+      },
+      {
+        "passage_id": "section-011",
+        "section_index": 11,
+        "text_sha256": "62a0919f84ecd93a1f1e793ca7f963700f5c9b13cb5da7eafb9cba4fcf221c95",
+        "characters": 549,
+        "word_count": 105
+      },
+      {
+        "passage_id": "section-012",
+        "section_index": 12,
+        "text_sha256": "f74a46256d68f7d1d65f6b85a41e5b9453ece5865e154eb605643b0598ca4c4c",
+        "characters": 648,
+        "word_count": 120
+      },
+      {
+        "passage_id": "section-013",
+        "section_index": 13,
+        "text_sha256": "f4d90dfa2ea8c93e8a1bd1d4cc72a52028ddcffff3020cf966fdc7a90a80d1b7",
+        "characters": 573,
+        "word_count": 109
+      },
+      {
+        "passage_id": "section-014",
+        "section_index": 14,
+        "text_sha256": "60fe005e44c6d6259c5830c0ea09b396b66125589c3f645ca38f0204dfdb047f",
+        "characters": 603,
+        "word_count": 111
+      },
+      {
+        "passage_id": "section-015",
+        "section_index": 15,
+        "text_sha256": "99168aa86bdd68efcc485b7642dc35813b5d1df7a23996b2384ba9b81064fbb9",
+        "characters": 550,
+        "word_count": 106
+      },
+      {
+        "passage_id": "section-016",
+        "section_index": 16,
+        "text_sha256": "f3fbdbbe79fa4f0e0180a43dd8935f0c759250b950f125843d7c05e615e20517",
+        "characters": 735,
+        "word_count": 130
+      },
+      {
+        "passage_id": "section-017",
+        "section_index": 17,
+        "text_sha256": "5400e7427937794214331a39246ea47a036bc769cdfc4c39647183b983c54215",
+        "characters": 536,
+        "word_count": 109
+      },
+      {
+        "passage_id": "section-018",
+        "section_index": 18,
+        "text_sha256": "3a64383412b0f6ab5bdf52bedc0b16ff09f8302194cfed574a8467fb5edfbf03",
+        "characters": 661,
+        "word_count": 118
+      },
+      {
+        "passage_id": "section-019",
+        "section_index": 19,
+        "text_sha256": "305f66db4ae11a06cacff9e05a06bec1762155da6d46c8094262e8655b0cf58d",
+        "characters": 220,
+        "word_count": 46
+      }
+    ]
+  },
+  "predecessor_gate": {
+    "representative_evidence_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_kokoro_af_bella_representative_v1.json",
+    "representative_evidence_sha256": "7c0aa1286d5915899afa1b2eafc2afb7d79512ea14548c8ec490f570be217dde",
+    "representative_attempt_fingerprint": "bf5ff8b24d23e4ae912d332b247d26d5efb60eeb0b91ebad0bc179e40a7ea015",
+    "representative_asr_fingerprint": "1b932d7d1193947aad72e51cc2deba889a4c09468b21618d02b21b38db124755",
+    "listening_evidence_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/title_runs/the-gift-of-the-magi_kokoro_af_bella_listening_qa_v1.json",
+    "listening_evidence_sha256": "6da110e6c0017ac7dd4c79eb299efed7ee81567841f9a75357462167b5764358",
+    "listening_fingerprint": "1ef9100b249fae4540df00cad7eba5d03dc29fa6008f3eb393ec3163b243fdf4",
+    "platform_screen_pass": true,
+    "minimum_overall_listening_score": 9.5,
+    "minimum_confidence_score": 0.95,
+    "fatal_flags": [],
+    "owner_exact_10_observed": false,
+    "exact_10_is_private_full_title_gate": false,
+    "authorization_basis": "owner-authorized global 9.2 floor; exact 10 remains an aspiration, not a release gate"
+  },
+  "rights": {
+    "text_rights_status": "PASS_PUBLIC_DOMAIN_TIER_A",
+    "rights_basis": "O. Henry died 1910; first published 1905. Public domain in India and the U.S.",
+    "model_and_voicepack_license": "Apache-2.0",
+    "private_full_title_allowed": true,
+    "gift_title_scoped_publication_risk_acceptance_bound": false,
+    "production_release_approved": false,
+    "public_disclosure_required_if_later_approved": "Narration: AI voice"
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "package_version": "0.9.4",
+    "model_repo": "hexgrad/Kokoro-82M",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "af_bella",
+    "voice_sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+    "speed": 1.0,
+    "random_seed": 20260719,
+    "sample_rate_hz": 24000,
+    "pronunciation_overrides": {
+      "Della": "dˈɛlə",
+      "Jim": "dʒˈɪm",
+      "Dillingham": "dˈɪlɪŋhæm",
+      "Sofronie": "səfɹˈoʊni",
+      "Broadway": "bɹˈɔdweɪ",
+      "Coney": "kˈoʊni",
+      "Solomon": "sˈɑləmən",
+      "Sheba": "ʃˈibə",
+      "magi": "mˈeɪdʒaɪ",
+      "Mme": "mədˈæm",
+      "airshaft": "ˈɛɹʃæft"
+    },
+    "g2p_fallback_enabled": false,
+    "attempt_fingerprint": "c28f5c70373854feed9009c5cb4dd0789dd7c2d09a5451e71d7fa41723283039",
+    "fingerprint_payload_sha256": "c28f5c70373854feed9009c5cb4dd0789dd7c2d09a5451e71d7fa41723283039"
+  },
+  "g2p_preflight": {
+    "status": "PASS",
+    "fallback_enabled": false,
+    "settings": {
+      "language_code": "a",
+      "transformer": false,
+      "british": false,
+      "fallback": null,
+      "unknown_token": ""
+    },
+    "pronunciation_overrides": {
+      "Della": "dˈɛlə",
+      "Jim": "dʒˈɪm",
+      "Dillingham": "dˈɪlɪŋhæm",
+      "Sofronie": "səfɹˈoʊni",
+      "Broadway": "bɹˈɔdweɪ",
+      "Coney": "kˈoʊni",
+      "Solomon": "sˈɑləmən",
+      "Sheba": "ʃˈibə",
+      "magi": "mˈeɪdʒaɪ",
+      "Mme": "mədˈæm",
+      "airshaft": "ˈɛɹʃæft"
+    },
+    "canonical_proper_names_encountered": [
+      "Broadway",
+      "Coney",
+      "Della",
+      "Dillingham",
+      "Jim",
+      "Sheba",
+      "Sofronie",
+      "Solomon"
+    ],
+    "unresolved_token_count": 0,
+    "unresolved_tokens": [],
+    "implementation_sha256": "5ed4a1426745d0ef26c9b365f0e7d8a73fec4ea413611b464e0cc0635fe50ef8",
+    "sections": [
+      {
+        "section_id": "section-001",
+        "source_text_sha256": "f9d0cd1b456936cc2d708ae5705b6cbc7f9e53e611d98f833c79e0d2e84ace73",
+        "phoneme_sha256": "f7b3a87e2f30f419887c7617346299f1838eaef21183c39066d3700072c9c1b1",
+        "pronunciation_checkpoints": [
+          "Della"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-002",
+        "source_text_sha256": "85100b18e3734c13411d07fa9c8f6250d76dd2949fc5bd30373f0c21583d9374",
+        "phoneme_sha256": "0cb5add4d828f480313ed1d6157bf1f783039531402f05239e703363d2d3abf9",
+        "pronunciation_checkpoints": [
+          "Dillingham"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-003",
+        "source_text_sha256": "09fee0603b288178d9765437d4fcc4ff2dc3de984c8c7e1dd07ec240e66e3b27",
+        "phoneme_sha256": "fa550b21051bf439347e2d924eb5d9c58d895debdbf9bbc5705c99c0b67e77fc",
+        "pronunciation_checkpoints": [
+          "Della",
+          "Jim",
+          "Dillingham"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-004",
+        "source_text_sha256": "aafc64445c47d06c5f442c82b1bf60780bc257ea04008885f53bae51fe285f91",
+        "phoneme_sha256": "91f4b2699ddc017059fa6f729810cdb75ba7670d727767629ebdf3a30bd49084",
+        "pronunciation_checkpoints": [
+          "Jim"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-005",
+        "source_text_sha256": "86030586b0999c88203e88bc8eb8900f1dfe9d2cabb29c50306a71b9fc19d0ba",
+        "phoneme_sha256": "84ba0ee699cdb09f1adaa8b70bee17870a56081a9fbcb8262bde9f89de6d742b",
+        "pronunciation_checkpoints": [
+          "Della",
+          "Jim",
+          "Dillingham",
+          "Sheba"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-006",
+        "source_text_sha256": "45c22620381c223b54ac855ed11b94c1e53e20fad424b2c576c2595293bec10f",
+        "phoneme_sha256": "63a3b6c8eece280da5aaa912f914f437ba2af224aa0c478dfbfce44aebf26b67",
+        "pronunciation_checkpoints": [
+          "Della",
+          "Jim",
+          "Solomon"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-007",
+        "source_text_sha256": "c3b40d45c886795d0b77a4b06940ef39b743283a399b52bbc6c928c4c02cabf8",
+        "phoneme_sha256": "f90630d9f647de197d06b7928db386d9e0600ea65da236069cf92b8f161c921d",
+        "pronunciation_checkpoints": [
+          "Della",
+          "Sofronie"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-008",
+        "source_text_sha256": "a5ba8ed2f8a10fb9980f870ae44c208a387032c309e84dd3910053bbd658b41d",
+        "phoneme_sha256": "e373fc11e159b7c682d73631d5a957236880854fd1467df0a7811f02ab339cec",
+        "pronunciation_checkpoints": [
+          "Jim"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-009",
+        "source_text_sha256": "3b99c0e4ea034eeb10b729a54bdbf59d5946e12d15eef234ae5f66c16f934754",
+        "phoneme_sha256": "0b7dcf6e9b52a3aa5310a0131549d057ed500a21f3956d2316062e0812e7a936",
+        "pronunciation_checkpoints": [
+          "Della",
+          "Jim"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-010",
+        "source_text_sha256": "947c59526026448beb788cfe2411c97e9783c3a1346448bb258735fc136cf4dc",
+        "phoneme_sha256": "245b765a5a3331492e2a515b3b4f008ee0ca59a819bca6b37092da7198997270",
+        "pronunciation_checkpoints": [
+          "Jim",
+          "Coney"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-011",
+        "source_text_sha256": "62a0919f84ecd93a1f1e793ca7f963700f5c9b13cb5da7eafb9cba4fcf221c95",
+        "phoneme_sha256": "0a6a6d153578baea4787a3a93472943c2653ac4ab5abfcb0d69aab4719d19280",
+        "pronunciation_checkpoints": [
+          "Della",
+          "Jim"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-012",
+        "source_text_sha256": "f74a46256d68f7d1d65f6b85a41e5b9453ece5865e154eb605643b0598ca4c4c",
+        "phoneme_sha256": "cc67072a45a63cdcca3baf8c6a3e1ba52ce32ab5b468028b453f5be02d383838",
+        "pronunciation_checkpoints": [
+          "Della",
+          "Jim"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-013",
+        "source_text_sha256": "f4d90dfa2ea8c93e8a1bd1d4cc72a52028ddcffff3020cf966fdc7a90a80d1b7",
+        "phoneme_sha256": "42fbf6cd7e5bece02a08a8d8ebcc06b382a0924a2628ee7aaa747b61944f901d",
+        "pronunciation_checkpoints": [
+          "Della",
+          "Jim"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-014",
+        "source_text_sha256": "60fe005e44c6d6259c5830c0ea09b396b66125589c3f645ca38f0204dfdb047f",
+        "phoneme_sha256": "3a033b477cda55757ddb3fb7abc2774325f00aeb35c3e8e6159438bf5584337d",
+        "pronunciation_checkpoints": [
+          "Della",
+          "Jim"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-015",
+        "source_text_sha256": "99168aa86bdd68efcc485b7642dc35813b5d1df7a23996b2384ba9b81064fbb9",
+        "phoneme_sha256": "e3a08796a5703649d38eb43c26b19a29fca6f55aac58b4f9fc7e14f5af444cd5",
+        "pronunciation_checkpoints": [
+          "Jim"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-016",
+        "source_text_sha256": "f3fbdbbe79fa4f0e0180a43dd8935f0c759250b950f125843d7c05e615e20517",
+        "phoneme_sha256": "a898346a0b2161135d1da6dba65603d4ac52a30251f6fc5db0db88abbe2b0747",
+        "pronunciation_checkpoints": [
+          "Della",
+          "Jim",
+          "Broadway"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-017",
+        "source_text_sha256": "5400e7427937794214331a39246ea47a036bc769cdfc4c39647183b983c54215",
+        "phoneme_sha256": "27e5a2ef0ff322b7d5a5a566ffd52c412fe3595699bb02e4adb7376db4ee380d",
+        "pronunciation_checkpoints": [
+          "Della",
+          "Jim"
+        ],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-018",
+        "source_text_sha256": "3a64383412b0f6ab5bdf52bedc0b16ff09f8302194cfed574a8467fb5edfbf03",
+        "phoneme_sha256": "78f887b944d0acb4af37e30a73e12fb1392c6b36d8567ba4d2692c69bbf11718",
+        "pronunciation_checkpoints": [],
+        "unresolved_tokens": [],
+        "pass": true
+      },
+      {
+        "section_id": "section-019",
+        "source_text_sha256": "305f66db4ae11a06cacff9e05a06bec1762155da6d46c8094262e8655b0cf58d",
+        "phoneme_sha256": "43bd1eae4cab55b2e9b6f42527e52b7903fab1701ba5b9c20cfbf969db11c1e5",
+        "pronunciation_checkpoints": [],
+        "unresolved_tokens": [],
+        "pass": true
+      }
+    ]
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "no_missing_duplicated_reordered_or_unexpected_content_required": true,
+    "audio_derived": true,
+    "settings": {
+      "language": "en",
+      "task": "transcribe",
+      "fp16": false,
+      "temperature": 0,
+      "condition_on_previous_text": false,
+      "initial_prompt": null,
+      "word_timestamps": true
+    },
+    "source_equivalence_policy": {
+      "$1.87": "one dollar and eighty-seven cents",
+      "$8": "eight dollars",
+      "$20": "twenty dollars",
+      "$30": "thirty dollars",
+      "Mr.": "mister",
+      "Mrs.": "mrs",
+      "Mme.": "madame",
+      "your": "yer"
+    }
+  },
+  "sync_contract": {
+    "tier": "PARAGRAPH_OR_SECTION_SYNC_PREMIUM",
+    "measured_section_sync_min": 9.7,
+    "audio_derived_or_measured_required": true,
+    "estimated_sync_allowed": false,
+    "public_word_level_sync_claim_allowed": false
+  },
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/af_bella.pt",
+      "sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+      "size_bytes": 523425
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "python_executable": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "deterministic_algorithms_required": true,
+    "torch_thread_count": 1,
+    "offline_local_artifacts_only": true
+  },
+  "cost_and_capacity": {
+    "tts_provider_cost_usd": 0.0,
+    "asr_provider_cost_usd": 0.0,
+    "listening_provider_cost_usd_this_stage": 0.0,
+    "estimated_duration_seconds": 666.532,
+    "estimated_pcm_wav_bytes": 31993580,
+    "estimated_pcm_wav_mib": 30.511,
+    "estimated_local_runtime_minutes": {
+      "apple_silicon_expected": [
+        12,
+        35
+      ],
+      "cpu_fallback_expected": [
+        30,
+        90
+      ]
+    }
+  },
+  "safety": {
+    "provider_calls": 0,
+    "listening_provider_calls": 0,
+    "paid_tts_lock": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_touched": false,
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-gift-of-the-magi/full-v1",
+    "audio_generated": false,
+    "full_title_generated": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false
+  },
+  "blockers_to_release": [
+    "PRIVATE_FULL_TITLE_NOT_GENERATED",
+    "FULL_TITLE_AUDIO_DERIVED_ASR_NOT_RUN",
+    "MEASURED_FULL_TITLE_SECTION_SYNC_NOT_RUN",
+    "FULL_TITLE_SIX_SAMPLE_LISTENING_NOT_RUN",
+    "GIFT_TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "PRIVATE_DELIVERY_UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN"
+  ]
+}

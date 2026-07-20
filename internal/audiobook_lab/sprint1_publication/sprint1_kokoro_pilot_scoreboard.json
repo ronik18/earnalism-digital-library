@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-20T03:30:00Z",
+  "scope": "private_representative_pilots_not_release_evidence",
+  "customer_release_cutoff": {
+    "listening_score_min": 9.2,
+    "confidence_min": 0.9,
+    "fatal_flags_allowed": 0,
+    "asr_source_score_min": 9.7,
+    "source_coverage_min": 0.98,
+    "owner_10_of_10": "aspirational_and_reported_separately"
+  },
+  "toolchain": {
+    "synthesis": {
+      "library": "kokoro",
+      "version": "0.9.4",
+      "model_repo": "hexgrad/Kokoro-82M",
+      "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "voice": "af_bella",
+      "local_cost_usd": 0.0
+    },
+    "objective_alignment": {
+      "tool": "faster-whisper",
+      "model": "medium.en",
+      "audio_derived": true,
+      "local_cost_usd": 0.0
+    },
+    "listening_judge": {
+      "provider": "openai",
+      "model": "gpt-audio",
+      "estimated_cap_usd_per_four_sample_run": 0.2,
+      "actual_billing": "NOT_REPORTED"
+    }
+  },
+  "titles": [
+    {
+      "slug": "the-gift-of-the-magi",
+      "title": "The Gift of the Magi",
+      "author": "O. Henry",
+      "objective_min_asr_score": 10.0,
+      "objective_min_coverage": 1.0,
+      "listening_overall_scores": [9.6, 9.6, 9.5, 9.5],
+      "listening_min_overall": 9.5,
+      "listening_min_confidence": 0.95,
+      "fatal_flags": [],
+      "cutoff_9_2_pass": true,
+      "exact_10_observed": false,
+      "representative_result": "PASS",
+      "full_title_generated": true,
+      "full_title_generation_fingerprint": "c28f5c70373854feed9009c5cb4dd0789dd7c2d09a5451e71d7fa41723283039",
+      "full_title_asr_repair_fingerprint": "b05c6392075ace4d50046f6f266ba20e04e48e68038755a1950b077b8ca27af9",
+      "full_title_audio_sha256": "c352f9cd960eb37cea37e79fc4d6f288088ea8a07ccc8574b4c8ecc34c5d01cb",
+      "full_title_duration_seconds": 647.825,
+      "full_title_asr_source_score": 9.9545,
+      "full_title_source_coverage": 0.9952,
+      "full_title_precision": 0.9957,
+      "full_title_ordered_content_integrity_pass": false,
+      "full_title_measured_sync_score": 9.8131,
+      "full_title_measured_sync_coverage": 0.9813,
+      "full_title_measured_sync_pass": false,
+      "full_title_sections_passed": 11,
+      "full_title_sections_failed": 8,
+      "full_title_listening_qa_run": false,
+      "full_title_result": "FAIL_OBJECTIVE_SOURCE_AND_TIMESTAMP_BINDING",
+      "public_audio_enabled": false,
+      "next_stage": "CONFIGURATION_CLOSED_MATERIALLY_DIFFERENT_VOICE_OR_PROVIDER_REQUIRED"
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "title": "The Cop and the Anthem",
+      "author": "O. Henry",
+      "objective_min_asr_score": 10.0,
+      "objective_min_coverage": 1.0,
+      "listening_overall_scores": [8.7, 8.3, 9.5, 9.5],
+      "listening_min_overall": 8.3,
+      "listening_min_confidence": 0.85,
+      "fatal_flags": [],
+      "cutoff_9_2_pass": false,
+      "exact_10_observed": false,
+      "representative_result": "FAIL",
+      "full_title_generated": false,
+      "public_audio_enabled": false,
+      "next_stage": "CONFIGURATION_CLOSED_MATERIALLY_DIFFERENT_VOICE_OR_PROVIDER_REQUIRED"
+    },
+    {
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "author": "Kate Chopin",
+      "objective_min_asr_score": 10.0,
+      "objective_min_coverage": 1.0,
+      "listening_overall_scores": null,
+      "listening_min_overall": null,
+      "listening_min_confidence": null,
+      "listening_transport_valid_samples": 1,
+      "listening_transport_invalid_samples": 3,
+      "fatal_flags_on_audible_sample": [
+        "robotic_texture_detected",
+        "mechanical_cadence_detected",
+        "choppy_joins_detected",
+        "fallback_tts_detected"
+      ],
+      "transport_invalid_zeroes_count_as_quality_scores": false,
+      "cutoff_9_2_pass": false,
+      "exact_10_observed": false,
+      "representative_result": "FAIL_TRANSPORT_INVALID_AND_AUDIBLE_SAMPLE_FATAL",
+      "full_title_generated": false,
+      "public_audio_enabled": false,
+      "next_stage": "CONFIGURATION_CLOSED_MATERIALLY_DIFFERENT_VOICE_OR_PROVIDER_REQUIRED"
+    },
+    {
+      "slug": "the-necklace",
+      "title": "The Necklace",
+      "author": "Guy de Maupassant",
+      "voice": "af_sarah",
+      "objective_asr_scores": [9.9631, 10.0, 10.0, 9.8605],
+      "objective_coverages": [0.9926, 1.0, 1.0, 0.9815],
+      "ordered_content_integrity_pass": false,
+      "listening_overall_scores": null,
+      "fatal_flags": null,
+      "cutoff_9_2_pass": false,
+      "exact_10_observed": false,
+      "representative_result": "FAIL_OBJECTIVE_SOURCE_INTEGRITY",
+      "full_title_generated": false,
+      "public_audio_enabled": false,
+      "next_stage": "CONFIGURATION_CLOSED_MATERIALLY_DIFFERENT_VOICE_OR_PROVIDER_REQUIRED"
+    },
+    {
+      "slug": "the-last-leaf",
+      "title": "The Last Leaf",
+      "author": "O. Henry",
+      "voice": "af_sarah",
+      "objective_asr_scores": [10.0, 9.8611, 8.6957, 10.0],
+      "objective_coverages": [1.0, 0.9861, 0.8642, 1.0],
+      "ordered_content_integrity_pass": false,
+      "passed_passages": [
+        "opening_literary_setting",
+        "final_masterpiece_reveal"
+      ],
+      "failed_passages": {
+        "johnsy_leaf_dialogue": "Sudie decoded as suitie",
+        "behrman_dialect_emotion": "multiple proper-name and dialect substitutions, including Vy do/Vite and in/and"
+      },
+      "listening_overall_scores": null,
+      "fatal_flags": null,
+      "cutoff_9_2_pass": false,
+      "exact_10_observed": false,
+      "representative_result": "FAIL_OBJECTIVE_SOURCE_INTEGRITY",
+      "full_title_generated": false,
+      "public_audio_enabled": false,
+      "next_stage": "CONFIGURATION_CLOSED_MATERIALLY_DIFFERENT_VOICE_OR_PROVIDER_REQUIRED"
+    }
+  ],
+  "production_truth": {
+    "public_audiobook_count": 4,
+    "approved_slugs": [
+      "book-2b9853ec52",
+      "a-ghost-story",
+      "sredni-vashtar",
+      "the-open-window"
+    ],
+    "the_open_window": {
+      "listening_score": 9.4,
+      "asr_source_score": 10.0,
+      "source_coverage": 1.0,
+      "measured_paragraph_sync_score": 10.0,
+      "confidence": 0.95,
+      "fatal_flags": [],
+      "production_range_http": 206
+    },
+    "sampled_hidden_slugs_http_404": [
+      "the-gift-of-the-magi",
+      "the-cop-and-the-anthem",
+      "dsires-baby",
+      "the-tell-tale-heart",
+      "the-monkeys-paw"
+    ]
+  }
+}

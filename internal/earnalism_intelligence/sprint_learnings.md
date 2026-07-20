@@ -420,3 +420,56 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - DOM visibility was insufficient: final proof required real Play interaction, `currentTime` advancement, `144.4 ms` click-to-play, exact AI narration disclosure on Book and Reader, and zero console errors.
 - Vercel protected previews can fail with identity-provider `403` while the application build is sound. Promote only the immutable READY deployment after source/unit/build validation, then run the definitive public-domain browser gate.
 - Railway code-snapshot failure can occur before build even for a minimized backend-only upload. After two identical pre-build failures, retain the healthy deployment, preserve the exact failure IDs, and publish the validated source/evidence branch instead of looping or weakening release truth.
+
+## 2026-07-19 The Gift of the Magi Kokoro Representative Pilot
+
+- A new provider family must still be title-bound. The Gift pilot pins the current controlled manuscript, four exact representative passages, Kokoro model/config/voice hashes, the local Whisper hash, and a non-repeated attempt fingerprint.
+- Shared ASR prompts can create false trailing speech. The initial prompt caused a high-no-speech `Thank you` hallucination on the sacrifice passage; a bounded ASR-only repair used a passage-specific prompt policy and preserved the original failed transcript as evidence.
+- Source-equivalent ASR notation may be normalized only when the sound and canonical wording are identical. The accepted transformations were `$1.87` to `one dollar and eighty-seven cents` and `your` to the source dialect spelling `yer`; unexpected speech was never discarded.
+- All four representative passages reached audio-derived ASR/source `10.0`, coverage `1.0`, exact first/last boundaries, and no missing, duplicated, reordered, or unexpected content without regenerating audio.
+- Independent listening passed the English premium screen with per-passage overall scores `9.6`, `9.6`, `9.5`, and `9.5`, confidence `0.95`, and no fatal flags. Exact `10.0` was not observed and is reported honestly; the weakest dimension was pacing at `9.2`.
+- The active listening floor is `9.2`, so exact `10.0` must not become an unnecessary gate for the next private stage. Gift is eligible for one new full-scope private pilot, while remaining audio-hidden until full-title objective, sync, listening, risk, editorial, delivery, endpoint, browser, and publication gates pass.
+- A representative platform pass is not a full audiobook release. No full title, measured full-title sync, upload, endpoint, browser proof, or public Listen state was created; the title remains reader-live and audio-hidden.
+- Local Kokoro synthesis and Whisper ASR cost `$0.00`; four listening judgments were capped at `$0.20`, with actual provider billing not reported. `paid_tts.lock` was restored byte-for-byte.
+
+## 2026-07-19 The Cop and the Anthem Kokoro Representative Pilot
+
+- Objective fidelity and listener quality are independent gates. The final four Kokoro samples reached ASR/source `10.0`, coverage `1.0`, exact boundaries, and complete ordered-content integrity after a bounded decoder-only repair, but this did not authorize full-title generation.
+- Prompted Whisper produced trailing hallucinated speech on the dialogue passage. An unprompted beam-10 decoder removed the false tail without modifying audio or deleting unexpected text; the earlier failed transcripts remain preserved.
+- Independent listening scored the four samples `8.7`, `8.3`, `9.5`, and `9.5`; minimum overall was `8.3`, confidence `0.85`, pacing and emotional expression `8.0`, with no fatal flags.
+- Because the Kokoro `af_bella` configuration failed both the English premium screen and the owner exact-10 target, close it rather than tuning the same fingerprint. Only a materially different provider, voice, or source-bound narration lane may reopen the title.
+- No full title, measured sync, upload, endpoint, browser proof, or public Listen state was created. The reader remains live and audio stays hidden.
+- Local Kokoro and Whisper cost `$0.00`; four listening judgments were capped at `$0.20`, actual provider billing was not reported, and `paid_tts.lock` was restored byte-for-byte.
+
+## 2026-07-19 Désirée's Baby Kokoro Representative Pilot
+
+- Strict ASR initially rejected four narrow proper-name, spelling, compound, and token-boundary differences. A bounded ASR-only repair normalized exactly `L’Abri`/`Laubry`, `mamma`/`mama`, two `finger-nails`/`fingernails` occurrences, and the `Désirée’s. It` boundary; no text was deleted and the WAVs were not regenerated.
+- The repaired audio-derived reports all reached ASR/source `10.0`, coverage `1.0`, exact first/last boundaries, and complete ordered-content integrity. Original transcripts and alignment operations remain preserved in `asr_history`, and the repair fingerprint cannot repeat.
+- The listening run is not a valid four-sample scorecard: three judgments explicitly said no audio was provided, so their numerical zeroes are transport-invalid and must never be represented as narration scores.
+- The one audible maternal-dialogue judgment independently raised fatal robotic texture, mechanical cadence, choppy joins, and fallback-like TTS flags. That is sufficient to close this exact Kokoro `af_bella` configuration without paying to repeat the same listening fingerprint.
+- No full title, measured sync, upload, endpoint, browser proof, or public Listen state was created. The title remains reader-live and audio-hidden.
+- Local Kokoro and Whisper cost `$0.00`; the four attempted listening judgments were capped at `$0.20`, actual provider billing was not reported, and `paid_tts.lock` was restored byte-for-byte.
+
+## 2026-07-19 The Necklace Kokoro af_sarah Representative Pilot
+
+- Material voice difference is necessary but not sufficient. The checksum-bound `af_sarah` voice is distinct from `af_bella`, yet the title still failed strict content integrity before listening.
+- A bounded ASR-only repair removed a prompted extra `women` without deleting transcript content and accepted only exact-count theatre/theater, Mathilde/Matilde, paste/paced, and five-hundred/500 acoustic or orthographic equivalents.
+- Invitation dialogue and loss panic passed ASR/source `10.0`, coverage `1.0`, and exact ordered integrity. Opening remained `9.9631`/`0.9926` because `had` was missing; the final remained `9.8605`/`0.9815` because opening `I` was missing and source `is` decoded as `has`.
+- Beam and greedy decoders produced the same remaining content discrepancies, so another decoder loop is not justified. Those words were not normalized because they are not sound-equivalent evidence.
+- No listening, full title, upload, endpoint, browser proof, or release mutation ran. The exact synthesis and repair fingerprints are closed and the title remains audio-hidden.
+
+## 2026-07-20 The Gift of the Magi Kokoro Full-Title Objective Gate
+
+- The bounded private af_bella run generated all 19 losslessly partitioned sections and a 647.825-second recomposed WAV with SHA-256 `c352f9cd960eb37cea37e79fc4d6f288088ea8a07ccc8574b4c8ecc34c5d01cb`; local Kokoro and Whisper cost `$0.00`.
+- Aggregate ASR/source reached `9.9545`, coverage `0.9952`, and precision `0.9957`, but exact ordered integrity remained false. Eight sections failed, including real substitutions such as `appertaining/appurting`, `pier/pure`, `I'm me/I mean`, `want to/wanna`, and `'em/them`; these were correctly forbidden from normalization.
+- Sections 003, 015, and 017 also contained zero-length audio-derived word timestamps. Numeric section-sync aggregation reached `9.8131` with coverage `0.9813`, but sync correctly failed because exact content and valid timestamp binding are mandatory.
+- High aggregates cannot compensate for source substitutions, missing words, duplicate or unexpected words, or invalid timestamps. The full-title and bounded ASR-repair fingerprints are closed, and the af_bella lane must not be retried.
+- Six-sample listening, upload, endpoint, browser validation, and publication did not run. The private WAV remains outside public folders and Gift remains reader-live/audio-hidden.
+
+## 2026-07-20 The Last Leaf Kokoro af_sarah Representative Pilot
+
+- Execution first stopped before synthesis because fallback-free G2P could not resolve 12 source-authentic Behrman dialect spellings. Exact deterministic phoneme bindings resolved that preflight blocker without changing the 432-character passage or its hash, and the failed pre-fix fingerprint was closed.
+- The new hash-bound af_sarah run generated four private representative WAVs at zero provider cost. Opening passed ASR/source `10.0` and coverage `1.0`; a bounded unprompted decoder also repaired the final reveal to `10.0/1.0` by removing duplicated `it`, while exact-count `to-day/today` was treated as an orthographic equivalent.
+- Johnsy still scored `9.8611/0.9861` but failed exact integrity because source `Sudie` decoded as `suitie`. The Behrman dialect passage scored `8.6957/0.8642` with multiple unresolved proper-name and content substitutions, including `Vy do` decoded as `Vite` and `in` decoded as `and`.
+- The repair correctly refused to normalize genuine `do/de`, `in/and`, trailing hallucinated speech, or duplicated content. Only two of four passages passed, so the af_sarah synthesis and repair fingerprints are closed.
+- No listening, full-title generation, delivery, endpoint, browser, or publication stage ran. All WAVs remain private, the paid lock is unchanged, and The Last Leaf remains reader-live/audio-hidden.

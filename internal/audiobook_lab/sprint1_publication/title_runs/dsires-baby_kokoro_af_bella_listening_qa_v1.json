@@ -1,0 +1,321 @@
+{
+  "schema_version": 1,
+  "status": "PRIVATE_DESIREE_LISTENING_TRANSPORT_INVALID_WITH_AUDIBLE_FATAL",
+  "scope": "PRIVATE_DESIREE_REPRESENTATIVE_SCREEN_ONLY_NOT_RELEASE_EVIDENCE",
+  "approved_scope": "desirees_baby_kokoro_representative_listening_qa_v1",
+  "slug": "dsires-baby",
+  "title": "Désirée's Baby",
+  "author": "Kate Chopin",
+  "sample_fingerprint": "95278a7a57ff73b09e8f40dd9dc16a59c2c6d78f9f6dfd5e35064af7afb079fb",
+  "evidence_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/title_runs/dsires-baby_kokoro_af_bella_representative_preflight_v1.json",
+  "evidence_sha256": "05a3bf2e322c45b25819908e9260533bf3bca476a8700ee8a1c8a2379b6cbf37",
+  "attempt_fingerprint": "b07e30881ec1c1a04944c8f2ba5ccc1b94bf24dc176a784ae12963b9e072f266",
+  "execution_fingerprint": "66e0b11cca0c530679ffda849d1069dd4f3f5d6a76ed0b756f719f86256284d3",
+  "asr_repair_fingerprint": "63c614ca791064d7bdcaaf8ad595c20198af55295a7d4b3a08d7fe4106ebac9e",
+  "sample_count": 4,
+  "sample_bindings": [
+    {
+      "passage_id": "opening_names",
+      "sample_label": "opening_names",
+      "sample_audio_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1/opening_names.wav",
+      "sample_audio_hash": "fece6253f13c7655f195dd5a7ca27f13e33a82b713da6a02e2f3ff6b408b8abf",
+      "sample_audio_size_bytes": 1030844,
+      "sample_audio_duration_seconds": 21.475,
+      "source_text_sha256": "70745d2ae03039744b0395d76b6de106f0f782c8718066db71d475641e3f521d"
+    },
+    {
+      "passage_id": "maternal_dialogue",
+      "sample_label": "maternal_dialogue",
+      "sample_audio_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1/maternal_dialogue.wav",
+      "sample_audio_hash": "b490ace6cac89b381146236b44d0ce8458ca906a3379ddcf0e46adf3e15381ae",
+      "sample_audio_size_bytes": 1218044,
+      "sample_audio_duration_seconds": 25.375,
+      "source_text_sha256": "8afc4db73ebe2e947fb6db89732ce84deec1999411b595086adec403dcb08f51"
+    },
+    {
+      "passage_id": "accusation_dialogue",
+      "sample_label": "accusation_dialogue",
+      "sample_audio_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1/accusation_dialogue.wav",
+      "sample_audio_hash": "981beef0d13a017f7c4e2f43a69262bc3455bdb7f27f113b8478c4e11dfaf953",
+      "sample_audio_size_bytes": 1467644,
+      "sample_audio_duration_seconds": 30.575,
+      "source_text_sha256": "226f3fc6668a7ca68e472e79781a5917c30e50f8f5522b0e58826c64388d97be"
+    },
+    {
+      "passage_id": "final_revelation",
+      "sample_label": "final_revelation",
+      "sample_audio_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1/final_revelation.wav",
+      "sample_audio_hash": "4cef4b68b3abec2fceaa068fa63b81c0e004061fac7a2fbc6e23c3c502627ced",
+      "sample_audio_size_bytes": 1742444,
+      "sample_audio_duration_seconds": 36.3,
+      "source_text_sha256": "4718ed95408ff638bd2ab0cd75b91dcd85295c84262cb364d85354e93db6398c"
+    }
+  ],
+  "judge": "openai:gpt-audio",
+  "budget": {
+    "status": "PASS",
+    "sample_count": 4,
+    "estimated_usd_per_sample": 0.05,
+    "estimated_listening_qa_usd": 0.2,
+    "stage_cap_usd": 0.2,
+    "total_cap_usd": 0.2,
+    "blockers": []
+  },
+  "provider_calls_ran": true,
+  "full_title_generated": false,
+  "upload_performed": false,
+  "publication_performed": false,
+  "release_gate_mutated": false,
+  "lock_sha256_before": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+  "objective_evidence_status": "PRIVATE_REPRESENTATIVE_OBJECTIVE_PASS_AWAITING_LISTENING_QA",
+  "actual_provider_billing": "NOT_REPORTED",
+  "judged_samples": [
+    {
+      "passage_id": "opening_names",
+      "sample_label": "opening_names",
+      "sample_audio_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1/opening_names.wav",
+      "sample_audio_hash": "fece6253f13c7655f195dd5a7ca27f13e33a82b713da6a02e2f3ff6b408b8abf",
+      "sample_audio_size_bytes": 1030844,
+      "sample_audio_duration_seconds": 21.475,
+      "source_text_sha256": "70745d2ae03039744b0395d76b6de106f0f782c8718066db71d475641e3f521d",
+      "scores": {
+        "naturalness_score": 0.0,
+        "pronunciation_score": 0.0,
+        "emotional_expression_score": 0.0,
+        "punctuation_pause_score": 0.0,
+        "pacing_score": 0.0,
+        "continuity_score": 0.0,
+        "anti_robotic_texture_score": 0.0,
+        "anti_choppy_join_score": 0.0,
+        "listener_enjoyment_score": 0.0,
+        "overall_listening_score": 0.0,
+        "confidence_score": 0.0
+      },
+      "judge_flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "frontmatter_present": false,
+      "notes": "",
+      "blocker_reason": "No audio provided for evaluation."
+    },
+    {
+      "passage_id": "maternal_dialogue",
+      "sample_label": "maternal_dialogue",
+      "sample_audio_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1/maternal_dialogue.wav",
+      "sample_audio_hash": "b490ace6cac89b381146236b44d0ce8458ca906a3379ddcf0e46adf3e15381ae",
+      "sample_audio_size_bytes": 1218044,
+      "sample_audio_duration_seconds": 25.375,
+      "source_text_sha256": "8afc4db73ebe2e947fb6db89732ce84deec1999411b595086adec403dcb08f51",
+      "scores": {
+        "naturalness_score": 0.0,
+        "pronunciation_score": 0.0,
+        "emotional_expression_score": 0.0,
+        "punctuation_pause_score": 0.0,
+        "pacing_score": 0.0,
+        "continuity_score": 0.0,
+        "anti_robotic_texture_score": 0.0,
+        "anti_choppy_join_score": 0.0,
+        "listener_enjoyment_score": 0.0,
+        "overall_listening_score": 0.0,
+        "confidence_score": 0.0
+      },
+      "judge_flags": {
+        "robotic_texture_detected": true,
+        "mechanical_cadence_detected": true,
+        "choppy_joins_detected": true,
+        "fallback_tts_detected": true,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "frontmatter_present": false,
+      "notes": "Robotic texture, mechanical cadence, choppy joins, fallback TTS detected. Pronunciation, emotion, pacing, and pauses are not natural.",
+      "blocker_reason": "Robotic texture, mechanical cadence, choppy joins, fallback TTS detected."
+    },
+    {
+      "passage_id": "accusation_dialogue",
+      "sample_label": "accusation_dialogue",
+      "sample_audio_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1/accusation_dialogue.wav",
+      "sample_audio_hash": "981beef0d13a017f7c4e2f43a69262bc3455bdb7f27f113b8478c4e11dfaf953",
+      "sample_audio_size_bytes": 1467644,
+      "sample_audio_duration_seconds": 30.575,
+      "source_text_sha256": "226f3fc6668a7ca68e472e79781a5917c30e50f8f5522b0e58826c64388d97be",
+      "scores": {
+        "naturalness_score": 0.0,
+        "pronunciation_score": 0.0,
+        "emotional_expression_score": 0.0,
+        "punctuation_pause_score": 0.0,
+        "pacing_score": 0.0,
+        "continuity_score": 0.0,
+        "anti_robotic_texture_score": 0.0,
+        "anti_choppy_join_score": 0.0,
+        "listener_enjoyment_score": 0.0,
+        "overall_listening_score": 0.0,
+        "confidence_score": 0.0
+      },
+      "judge_flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "frontmatter_present": false,
+      "notes": "",
+      "blocker_reason": "No audio provided for evaluation."
+    },
+    {
+      "passage_id": "final_revelation",
+      "sample_label": "final_revelation",
+      "sample_audio_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1/final_revelation.wav",
+      "sample_audio_hash": "4cef4b68b3abec2fceaa068fa63b81c0e004061fac7a2fbc6e23c3c502627ced",
+      "sample_audio_size_bytes": 1742444,
+      "sample_audio_duration_seconds": 36.3,
+      "source_text_sha256": "4718ed95408ff638bd2ab0cd75b91dcd85295c84262cb364d85354e93db6398c",
+      "scores": {
+        "naturalness_score": 0.0,
+        "pronunciation_score": 0.0,
+        "emotional_expression_score": 0.0,
+        "punctuation_pause_score": 0.0,
+        "pacing_score": 0.0,
+        "continuity_score": 0.0,
+        "anti_robotic_texture_score": 0.0,
+        "anti_choppy_join_score": 0.0,
+        "listener_enjoyment_score": 0.0,
+        "overall_listening_score": 0.0,
+        "confidence_score": 0.0
+      },
+      "judge_flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "frontmatter_present": false,
+      "notes": "",
+      "blocker_reason": "No audio provided for evaluation."
+    }
+  ],
+  "listening_gate": {
+    "platform_thresholds": {
+      "naturalness_score": 9.2,
+      "pronunciation_score": 9.2,
+      "emotional_expression_score": 9.2,
+      "punctuation_pause_score": 9.2,
+      "pacing_score": 9.2,
+      "continuity_score": 9.2,
+      "anti_robotic_texture_score": 9.2,
+      "anti_choppy_join_score": 9.2,
+      "listener_enjoyment_score": 9.2,
+      "overall_listening_score": 9.2,
+      "confidence_score": 0.9
+    },
+    "platform_screen_pass": false,
+    "owner_exact_10_observed": false,
+    "next_private_stage_authorized": false,
+    "transport_valid_sample_count": 1,
+    "transport_invalid_sample_count": 3,
+    "transport_invalid_samples": [
+      "opening_names",
+      "accusation_dialogue",
+      "final_revelation"
+    ],
+    "transport_invalid_zeroes_are_quality_scores": false,
+    "minimum_scores": {
+      "naturalness_score": 0.0,
+      "pronunciation_score": 0.0,
+      "emotional_expression_score": 0.0,
+      "punctuation_pause_score": 0.0,
+      "pacing_score": 0.0,
+      "continuity_score": 0.0,
+      "anti_robotic_texture_score": 0.0,
+      "anti_choppy_join_score": 0.0,
+      "listener_enjoyment_score": 0.0,
+      "overall_listening_score": 0.0,
+      "confidence_score": 0.0
+    },
+    "threshold_failures": {
+      "naturalness_score": {
+        "minimum": 0.0,
+        "required": 9.2
+      },
+      "pronunciation_score": {
+        "minimum": 0.0,
+        "required": 9.2
+      },
+      "emotional_expression_score": {
+        "minimum": 0.0,
+        "required": 9.2
+      },
+      "punctuation_pause_score": {
+        "minimum": 0.0,
+        "required": 9.2
+      },
+      "pacing_score": {
+        "minimum": 0.0,
+        "required": 9.2
+      },
+      "continuity_score": {
+        "minimum": 0.0,
+        "required": 9.2
+      },
+      "anti_robotic_texture_score": {
+        "minimum": 0.0,
+        "required": 9.2
+      },
+      "anti_choppy_join_score": {
+        "minimum": 0.0,
+        "required": 9.2
+      },
+      "listener_enjoyment_score": {
+        "minimum": 0.0,
+        "required": 9.2
+      },
+      "overall_listening_score": {
+        "minimum": 0.0,
+        "required": 9.2
+      },
+      "confidence_score": {
+        "minimum": 0.0,
+        "required": 0.9
+      }
+    },
+    "fatal_flags": [
+      "choppy_joins_detected",
+      "fallback_tts_detected",
+      "mechanical_cadence_detected",
+      "robotic_texture_detected"
+    ],
+    "sample_blockers": [
+      "opening_names: No audio provided for evaluation.",
+      "maternal_dialogue: Robotic texture, mechanical cadence, choppy joins, fallback TTS detected.",
+      "accusation_dialogue: No audio provided for evaluation.",
+      "final_revelation: No audio provided for evaluation."
+    ]
+  },
+  "error": null,
+  "lock_restored": true,
+  "lock_sha256_after": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+  "release_blockers_preserved": [
+    "FOUR_SAMPLE_SCREEN_IS_NOT_FULL_TITLE_RELEASE_EVIDENCE",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN"
+  ]
+}
