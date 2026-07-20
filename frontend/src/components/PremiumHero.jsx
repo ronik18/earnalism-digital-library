@@ -315,6 +315,7 @@ export default function PremiumHero({
           {headline.includes(goldHeadline) ? <span>{goldHeadline}</span> : null}
         </h1>
         <p>{subheadline}</p>
+        <p className="sr-only">Reading time is used only while you read. Chapter 1 remains free to preview.</p>
       </div>
 
       <div className="premium-hero-actions" data-testid="hero-ctas">

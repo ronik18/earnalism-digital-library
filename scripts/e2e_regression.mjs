@@ -92,8 +92,8 @@ const homeHeroFixture = JSON.parse(
 );
 const homeHeroFixtureBooks = homeHeroFixture.hero.featured_books;
 const expectedHeroVisualSlugs = [
-  "book-2b9853ec52",
   "sredni-vashtar",
+  "book-2b9853ec52",
   "bn-066",
   "radharani",
   "pride-and-prejudice",
