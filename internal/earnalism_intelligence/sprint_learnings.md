@@ -495,3 +495,12 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Initial ASR passed opening and heartbeat exactly, while bedroom added trailing `you` and the finale added `thanks for watching`. A single bounded retained-WAV repair removed the bedroom hallucination without deleting transcript text.
 - Opening, bedroom, and heartbeat then reached exact `10.0/1.0`. Both bounded finale decoder arms retained `thanks for watching`, producing `9.8605/1.0`; unexpected decoded speech was not manually trimmed or normalized.
 - Mean selected ASR `9.9651` does not satisfy ordered-content integrity when one passage contains unexpected words. Listening, full-title generation, upload, endpoint, browser, and publication were skipped; both fingerprints are closed and the title remains audio-hidden.
+
+## 2026-07-20 B2 Live Audio Storage Cleanup
+
+- Catalog truth currently binds four live audiobooks to twenty exact B2 objects: one MP3 plus timestamps, VTT, chapters, and metadata for each title.
+- Public playback is range-capable through the Earnalism reader API. All four MP3 routes returned HTTP `206`, all sixteen sidecar routes returned `200`, and sampled hidden-audio routes remained `404`.
+- The primary `earnalism-audiobooks` origin was anonymously reachable, while the separate `earnalism-private-qa-audio` origin correctly returned `401`. Historical repository references must not justify retaining a non-live object in the public-origin bucket.
+- A version-ID-bound cleanup removed 42 non-live public-origin versions totaling 7,396,374,442 bytes with zero errors. The post-delete inventory contains only fifteen exact live objects in the primary bucket and no further deletion candidate.
+- The five Open Window live objects and 249 referenced campaign-evidence versions remain in the private bucket. They are not public-origin clutter: they are anonymous-inaccessible working evidence for release-gated playback and the remaining audiobook campaign.
+- A zero-live allowlist is always a hard blocker. The initial inventory exposed a partial-mirror loading issue, performed no deletion, and was replaced by a self-contained controlled-artifact load plus a non-empty allowlist gate.
