@@ -46,6 +46,8 @@ CONFIG_SHA256 = "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17
 VOICE = "af_bella"
 VOICE_FILENAME = "voices/af_bella.pt"
 VOICE_SHA256 = "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6"
+KOKORO_LANG_CODE = "a"
+G2P_BRITISH = False
 WHISPER_MODEL = "medium.en"
 WHISPER_FILENAME = "medium.en.pt"
 WHISPER_SHA256 = "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f"
@@ -628,8 +630,10 @@ def synthesize(
     torch.set_num_threads(1)
     torch.use_deterministic_algorithms(True)
     model = KModel(config=str(artifacts["config"]), model=str(artifacts["model"]))
-    pipeline = KPipeline(lang_code="a", model=model, repo_id=None)
-    pipeline.g2p = misaki_en.G2P(trf=False, british=False, fallback=None, unk="")
+    pipeline = KPipeline(lang_code=KOKORO_LANG_CODE, model=model, repo_id=None)
+    pipeline.g2p = misaki_en.G2P(
+        trf=False, british=G2P_BRITISH, fallback=None, unk=""
+    )
     pipeline.g2p.lexicon.golds.update(PRONUNCIATION_OVERRIDES)
     pipeline.g2p.lexicon.golds.update(
         {key.lower(): value for key, value in PRONUNCIATION_OVERRIDES.items()}
@@ -671,6 +675,8 @@ def synthesize(
                 "characters": passage["characters"],
                 "audio_path": str(target),
                 "phoneme_sha256": sha256_text("".join(phonemes)),
+                "kokoro_lang_code": KOKORO_LANG_CODE,
+                "g2p_british": G2P_BRITISH,
                 "g2p_fallback_enabled": False,
                 **wav_metrics(target),
             }

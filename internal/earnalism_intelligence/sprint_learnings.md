@@ -495,3 +495,23 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Initial ASR passed opening and heartbeat exactly, while bedroom added trailing `you` and the finale added `thanks for watching`. A single bounded retained-WAV repair removed the bedroom hallucination without deleting transcript text.
 - Opening, bedroom, and heartbeat then reached exact `10.0/1.0`. Both bounded finale decoder arms retained `thanks for watching`, producing `9.8605/1.0`; unexpected decoded speech was not manually trimmed or normalized.
 - Mean selected ASR `9.9651` does not satisfy ordered-content integrity when one passage contains unexpected words. Listening, full-title generation, upload, endpoint, browser, and publication were skipped; both fingerprints are closed and the title remains audio-hidden.
+
+## 2026-07-20 The Monkey's Paw Kokoro Multi-Voice Pilot
+
+- The initial `af_bella` representative candidate and its bounded retained-WAV ASR repair failed exact ordered content integrity, so both fingerprints are closed without listening.
+- A checksum-distinct British `bf_emma` candidate initially passed three of four passages after bounded ASR repair. One lexical-preserving, passage-only preparation changed punctuation and hyphenation without changing canonical tokens, then recovered exact ASR/source `10.0`, coverage `1.0`, exact boundaries, and ordered integrity on all four passages.
+- Objective `10.0` did not imply listener quality. Independent scores were `9.6`, `9.5`, `8.3`, and `8.5`; minimum confidence was `0.85`, with no fatal flags. Naturalness, expression, pauses, pacing, enjoyment, and overall score failed the active English premium screen.
+- Close the `af_bella`, `bf_emma`, ASR-repair, targeted-resynthesis, and listening fingerprints. Do not repeat them or generate a full title from this family.
+- No full title, measured full-title sync, delivery, endpoint, browser proof, release mutation, or publication ran. The title remains reader-live and audio-hidden.
+- Local Kokoro synthesis and Whisper ASR cost `$0.00`; four listening judgments were capped at `$0.20`, actual provider billing was not reported, and `paid_tts.lock` was restored byte-for-byte.
+- The canonical cover gap remains a downstream release blocker even if a future distinct narration lane passes audio quality.
+
+## 2026-07-20 The Cop and the Anthem Kokoro af_sarah Alternative Pilot
+
+- A checksum-distinct `af_sarah` voice generated four private representative WAVs at zero synthesis-provider cost; no `af_bella` fingerprint or audio was repeated.
+- Initial and retained-WAV ASR exposed narrow transcription artifacts. A separate hash-bound offline projection repaired only two U+FFFD apostrophes, the phoneme-identical `Khan`/`Con` spelling, and existing exact acoustic/orthographic equivalents; it did not decode again, delete unexpected speech, resynthesize, or change any WAV.
+- All four projected reports reached ASR/source `10.0`, coverage and precision `1.0`, exact first/last boundaries, and no missing, duplicate, reordered, or unexpected content.
+- Independent listening then scored `9.5`, `7.8`, `9.6`, and `8.5` overall. The waiter dialogue was weakest at `7.0` emotional expression, `7.5` naturalness and pacing, and `0.85` confidence; no fatal flags were raised.
+- Objective fidelity cannot substitute for premium performance. `af_sarah` failed the active English screen and the owner exact-10 target, so its synthesis, projection, and listening fingerprints are closed without full-title generation or retry.
+- No full title, measured sync, upload, endpoint, browser proof, release mutation, or publication ran. The title remains reader-live and audio-hidden.
+- Four listening judgments were serialized and capped at `$0.20`; actual provider billing was not reported, and `paid_tts.lock` restored byte-for-byte to SHA-256 `f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3`.

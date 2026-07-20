@@ -1,0 +1,445 @@
+{
+  "schema_version": 1,
+  "status": "PRIVATE_MONKEYS_PAW_BF_EMMA_LISTENING_QA_BLOCKED",
+  "scope": "PRIVATE_MONKEYS_PAW_BF_EMMA_REPRESENTATIVE_SCREEN_ONLY_NOT_RELEASE_EVIDENCE",
+  "approved_scope": "monkeys_paw_bf_emma_representative_listening_qa_v1",
+  "slug": "the-monkeys-paw",
+  "title": "The Monkey's Paw",
+  "author": "W. W. Jacobs",
+  "sample_fingerprint": "bb84a33ff1152ce6ea0beafc982625fbdae7b81a7077157da6d43695ea535762",
+  "evidence_path": "/private/tmp/earnalism-sprint1-distinct-voice/internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_kokoro_bf_emma_targeted_resynthesis_v2.json",
+  "evidence_sha256": "4876c21d3e2c2edf6271e9d2feff647de5acb1e421b127257f97c62d4c8b8333",
+  "source_sha256": "a3fb946efdc410958f47fab3a6ec613d7f2280cee06e1f60b079a5d908af29bd",
+  "attempt_fingerprint": "29da95f0687756670f1a3c21bee7e17e2fe4fdf2cbfeed8d06a32ce558306b81",
+  "asr_config_fingerprint": "e2591f24954380337aa47cf5971c839df4aa59b43d81e8d538697f54959167e9",
+  "sample_count": 4,
+  "sample_bindings": [
+    {
+      "sample_label": "opening_domestic_tension",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-representative-v1/opening_domestic_tension.wav",
+      "sample_audio_hash": "2e55b15d360985800588be280ebcc2194a366f93e3b745cd96c787a0259f9559",
+      "sample_audio_size_bytes": 990044,
+      "sample_audio_duration_seconds": 20.625,
+      "source_text_sha256": "1505ffdc29416106677ad7c3ef7ea0a3db602c1069e1d72b81327721c1fe5765",
+      "attempt_fingerprint": "29da95f0687756670f1a3c21bee7e17e2fe4fdf2cbfeed8d06a32ce558306b81",
+      "asr_config_fingerprint": "e2591f24954380337aa47cf5971c839df4aa59b43d81e8d538697f54959167e9"
+    },
+    {
+      "sample_label": "paw_warning_and_fate",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-representative-v1/paw_warning_and_fate.wav",
+      "sample_audio_hash": "b2b02e381e4e4d095bad79a9e6ecfb9b41718fead258b88b09a7212c5de2db94",
+      "sample_audio_size_bytes": 2661644,
+      "sample_audio_duration_seconds": 55.45,
+      "source_text_sha256": "a3ec2e40908f432cca118c418e743329bccc9f411908bc16da2f725e8e43007d",
+      "attempt_fingerprint": "29da95f0687756670f1a3c21bee7e17e2fe4fdf2cbfeed8d06a32ce558306b81",
+      "asr_config_fingerprint": "e2591f24954380337aa47cf5971c839df4aa59b43d81e8d538697f54959167e9"
+    },
+    {
+      "sample_label": "factory_news_and_grief",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-factory-targeted-v2/factory_news_and_grief.wav",
+      "sample_audio_hash": "1e63bf51b01bb6a1606d80563ca0d447ef7f5e98a317304b61be84fdcf3c3cae",
+      "sample_audio_size_bytes": 2568044,
+      "sample_audio_duration_seconds": 53.5,
+      "source_text_sha256": "6877bbcbea4fdfd7729b41ff27dc422b18dd6d44b7b0e4893555ba5e109cf0aa",
+      "attempt_fingerprint": "29da95f0687756670f1a3c21bee7e17e2fe4fdf2cbfeed8d06a32ce558306b81",
+      "asr_config_fingerprint": "e2591f24954380337aa47cf5971c839df4aa59b43d81e8d538697f54959167e9"
+    },
+    {
+      "sample_label": "final_knocking_and_third_wish",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-representative-v1/final_knocking_and_third_wish.wav",
+      "sample_audio_hash": "38d725efe65b6654bff62cee8ac79c8c40d5ed5c3e87012ab6fb1ac84d0e1921",
+      "sample_audio_size_bytes": 3223244,
+      "sample_audio_duration_seconds": 67.15,
+      "source_text_sha256": "9198f815c21620148cfab038af5bdaadedd7397567c9a9010c1d1bc340148fb4",
+      "attempt_fingerprint": "29da95f0687756670f1a3c21bee7e17e2fe4fdf2cbfeed8d06a32ce558306b81",
+      "asr_config_fingerprint": "e2591f24954380337aa47cf5971c839df4aa59b43d81e8d538697f54959167e9"
+    }
+  ],
+  "judge": "openai:gpt-audio",
+  "rubric_version": "earnalism_listening_quality_v1",
+  "hook_version": "asr_sync_hook_listening_schema3_v1",
+  "budget": {
+    "status": "PASS",
+    "sample_count": 4,
+    "estimated_usd_per_sample": 0.05,
+    "estimated_listening_qa_usd": 0.2,
+    "listening_qa_cap_usd": 0.2,
+    "total_budget_cap_usd": 0.2,
+    "blockers": []
+  },
+  "provider_calls_ran": true,
+  "full_title_generated": false,
+  "upload_performed": false,
+  "publication_performed": false,
+  "release_gate_mutated": false,
+  "lock_sha256_before": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+  "objective_evidence_status": "PRIVATE_REPRESENTATIVE_OBJECTIVE_PASS_AWAITING_LISTENING_QA",
+  "started_at": "2026-07-20T08:20:32Z",
+  "finished_at": "2026-07-20T08:20:54Z",
+  "actual_provider_billing": "NOT_REPORTED",
+  "judged_samples": [
+    {
+      "sample_label": "opening_domestic_tension",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-representative-v1/opening_domestic_tension.wav",
+      "sample_audio_hash": "2e55b15d360985800588be280ebcc2194a366f93e3b745cd96c787a0259f9559",
+      "sample_audio_size_bytes": 990044,
+      "sample_audio_duration_seconds": 20.625,
+      "source_text_sha256": "1505ffdc29416106677ad7c3ef7ea0a3db602c1069e1d72b81327721c1fe5765",
+      "attempt_fingerprint": "29da95f0687756670f1a3c21bee7e17e2fe4fdf2cbfeed8d06a32ce558306b81",
+      "asr_config_fingerprint": "e2591f24954380337aa47cf5971c839df4aa59b43d81e8d538697f54959167e9",
+      "scores": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 9.7,
+        "emotional_expression_score": 9.4,
+        "punctuation_pause_score": 9.6,
+        "pacing_score": 9.5,
+        "continuity_score": 9.6,
+        "anti_robotic_texture_score": 9.8,
+        "anti_choppy_join_score": 9.7,
+        "listener_enjoyment_score": 9.5,
+        "overall_listening_score": 9.6,
+        "confidence_score": 0.95
+      },
+      "confidence": 0.95,
+      "notes": "The narration is smooth, with clear pronunciation and natural emotional expression. Pacing and pauses align well with the text. No robotic or mechanical cadence detected. The listener experience is engaging and enjoyable.",
+      "blocker_reason": "",
+      "judge_flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "frontmatter_present": false,
+      "raw_judgment": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 9.7,
+        "emotional_expression_score": 9.4,
+        "punctuation_pause_score": 9.6,
+        "pacing_score": 9.5,
+        "continuity_score": 9.6,
+        "anti_robotic_texture_score": 9.8,
+        "anti_choppy_join_score": 9.7,
+        "listener_enjoyment_score": 9.5,
+        "overall_listening_score": 9.6,
+        "confidence_score": 0.95,
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false,
+        "frontmatter_present": false,
+        "notes": "The narration is smooth, with clear pronunciation and natural emotional expression. Pacing and pauses align well with the text. No robotic or mechanical cadence detected. The listener experience is engaging and enjoyable.",
+        "blocker_reason": ""
+      }
+    },
+    {
+      "sample_label": "paw_warning_and_fate",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-representative-v1/paw_warning_and_fate.wav",
+      "sample_audio_hash": "b2b02e381e4e4d095bad79a9e6ecfb9b41718fead258b88b09a7212c5de2db94",
+      "sample_audio_size_bytes": 2661644,
+      "sample_audio_duration_seconds": 55.45,
+      "source_text_sha256": "a3ec2e40908f432cca118c418e743329bccc9f411908bc16da2f725e8e43007d",
+      "attempt_fingerprint": "29da95f0687756670f1a3c21bee7e17e2fe4fdf2cbfeed8d06a32ce558306b81",
+      "asr_config_fingerprint": "e2591f24954380337aa47cf5971c839df4aa59b43d81e8d538697f54959167e9",
+      "scores": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 9.7,
+        "emotional_expression_score": 9.4,
+        "punctuation_pause_score": 9.3,
+        "pacing_score": 9.2,
+        "continuity_score": 9.6,
+        "anti_robotic_texture_score": 9.8,
+        "anti_choppy_join_score": 9.7,
+        "listener_enjoyment_score": 9.5,
+        "overall_listening_score": 9.5,
+        "confidence_score": 0.95
+      },
+      "confidence": 0.95,
+      "notes": "The narration was smooth, with clear pronunciation and natural emotional expression. Pacing was consistent and pauses aligned well with punctuation. No robotic or mechanical cadence was detected, and joins were seamless. The listener experience was engaging and immersive.",
+      "blocker_reason": "",
+      "judge_flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "frontmatter_present": false,
+      "raw_judgment": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 9.7,
+        "emotional_expression_score": 9.4,
+        "punctuation_pause_score": 9.3,
+        "pacing_score": 9.2,
+        "continuity_score": 9.6,
+        "anti_robotic_texture_score": 9.8,
+        "anti_choppy_join_score": 9.7,
+        "listener_enjoyment_score": 9.5,
+        "overall_listening_score": 9.5,
+        "confidence_score": 0.95,
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false,
+        "frontmatter_present": false,
+        "notes": "The narration was smooth, with clear pronunciation and natural emotional expression. Pacing was consistent and pauses aligned well with punctuation. No robotic or mechanical cadence was detected, and joins were seamless. The listener experience was engaging and immersive.",
+        "blocker_reason": ""
+      }
+    },
+    {
+      "sample_label": "factory_news_and_grief",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-factory-targeted-v2/factory_news_and_grief.wav",
+      "sample_audio_hash": "1e63bf51b01bb6a1606d80563ca0d447ef7f5e98a317304b61be84fdcf3c3cae",
+      "sample_audio_size_bytes": 2568044,
+      "sample_audio_duration_seconds": 53.5,
+      "source_text_sha256": "6877bbcbea4fdfd7729b41ff27dc422b18dd6d44b7b0e4893555ba5e109cf0aa",
+      "attempt_fingerprint": "29da95f0687756670f1a3c21bee7e17e2fe4fdf2cbfeed8d06a32ce558306b81",
+      "asr_config_fingerprint": "e2591f24954380337aa47cf5971c839df4aa59b43d81e8d538697f54959167e9",
+      "scores": {
+        "naturalness_score": 8.5,
+        "pronunciation_score": 9.0,
+        "emotional_expression_score": 8.0,
+        "punctuation_pause_score": 8.5,
+        "pacing_score": 8.0,
+        "continuity_score": 9.0,
+        "anti_robotic_texture_score": 9.0,
+        "anti_choppy_join_score": 9.0,
+        "listener_enjoyment_score": 8.0,
+        "overall_listening_score": 8.3,
+        "confidence_score": 0.85
+      },
+      "confidence": 0.85,
+      "notes": "The narration is clear with good pronunciation and continuity. Emotional expression could be stronger, especially in conveying the tension and grief in the scene. Pacing is slightly uneven in places, and pauses could be more natural. Overall, a solid performance but not flawless.",
+      "blocker_reason": "Does not meet the active English premium screen or the separate owner target due to quality dimensions below 9.0 and overall score below 9.3.",
+      "judge_flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "frontmatter_present": false,
+      "raw_judgment": {
+        "naturalness_score": 8.5,
+        "pronunciation_score": 9.0,
+        "emotional_expression_score": 8.0,
+        "punctuation_pause_score": 8.5,
+        "pacing_score": 8.0,
+        "continuity_score": 9.0,
+        "anti_robotic_texture_score": 9.0,
+        "anti_choppy_join_score": 9.0,
+        "listener_enjoyment_score": 8.0,
+        "overall_listening_score": 8.3,
+        "confidence_score": 0.85,
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false,
+        "frontmatter_present": false,
+        "notes": "The narration is clear with good pronunciation and continuity. Emotional expression could be stronger, especially in conveying the tension and grief in the scene. Pacing is slightly uneven in places, and pauses could be more natural. Overall, a solid performance but not flawless.",
+        "blocker_reason": "Does not meet the active English premium screen or the separate owner target due to quality dimensions below 9.0 and overall score below 9.3."
+      }
+    },
+    {
+      "sample_label": "final_knocking_and_third_wish",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-representative-v1/final_knocking_and_third_wish.wav",
+      "sample_audio_hash": "38d725efe65b6654bff62cee8ac79c8c40d5ed5c3e87012ab6fb1ac84d0e1921",
+      "sample_audio_size_bytes": 3223244,
+      "sample_audio_duration_seconds": 67.15,
+      "source_text_sha256": "9198f815c21620148cfab038af5bdaadedd7397567c9a9010c1d1bc340148fb4",
+      "attempt_fingerprint": "29da95f0687756670f1a3c21bee7e17e2fe4fdf2cbfeed8d06a32ce558306b81",
+      "asr_config_fingerprint": "e2591f24954380337aa47cf5971c839df4aa59b43d81e8d538697f54959167e9",
+      "scores": {
+        "naturalness_score": 8.5,
+        "pronunciation_score": 9.0,
+        "emotional_expression_score": 8.0,
+        "punctuation_pause_score": 8.5,
+        "pacing_score": 8.0,
+        "continuity_score": 9.0,
+        "anti_robotic_texture_score": 9.0,
+        "anti_choppy_join_score": 9.0,
+        "listener_enjoyment_score": 8.5,
+        "overall_listening_score": 8.5,
+        "confidence_score": 0.88
+      },
+      "confidence": 0.88,
+      "notes": "The narration is generally smooth and clear, with good pronunciation and continuity. Emotional expression could be stronger to fully convey the tension of the scene. Pacing is slightly uneven in places, and some pauses could be more natural. Overall, a strong performance but not flawless.",
+      "blocker_reason": "",
+      "judge_flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "frontmatter_present": false,
+      "raw_judgment": {
+        "naturalness_score": 8.5,
+        "pronunciation_score": 9.0,
+        "emotional_expression_score": 8.0,
+        "punctuation_pause_score": 8.5,
+        "pacing_score": 8.0,
+        "continuity_score": 9.0,
+        "anti_robotic_texture_score": 9.0,
+        "anti_choppy_join_score": 9.0,
+        "listener_enjoyment_score": 8.5,
+        "overall_listening_score": 8.5,
+        "confidence_score": 0.88,
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false,
+        "frontmatter_present": false,
+        "notes": "The narration is generally smooth and clear, with good pronunciation and continuity. Emotional expression could be stronger to fully convey the tension of the scene. Pacing is slightly uneven in places, and some pauses could be more natural. Overall, a strong performance but not flawless.",
+        "blocker_reason": ""
+      }
+    }
+  ],
+  "listening_gate": {
+    "policy": "tiered_audiobook_acceptance_v1_english_premium",
+    "platform_thresholds": {
+      "naturalness_score": 9.0,
+      "pronunciation_score": 9.0,
+      "emotional_expression_score": 9.0,
+      "punctuation_pause_score": 9.0,
+      "pacing_score": 9.0,
+      "continuity_score": 9.0,
+      "anti_robotic_texture_score": 9.0,
+      "anti_choppy_join_score": 9.0,
+      "listener_enjoyment_score": 9.0,
+      "overall_listening_score": 9.3,
+      "confidence_score": 0.9
+    },
+    "platform_screen_pass": false,
+    "owner_exact_10_pass": false,
+    "next_private_stage_authorized": false,
+    "minimum_scores": {
+      "naturalness_score": 8.5,
+      "pronunciation_score": 9.0,
+      "emotional_expression_score": 8.0,
+      "punctuation_pause_score": 8.5,
+      "pacing_score": 8.0,
+      "continuity_score": 9.0,
+      "anti_robotic_texture_score": 9.0,
+      "anti_choppy_join_score": 9.0,
+      "listener_enjoyment_score": 8.0,
+      "overall_listening_score": 8.3,
+      "confidence_score": 0.85
+    },
+    "threshold_failures": {
+      "naturalness_score": {
+        "minimum": 8.5,
+        "required": 9.0
+      },
+      "emotional_expression_score": {
+        "minimum": 8.0,
+        "required": 9.0
+      },
+      "punctuation_pause_score": {
+        "minimum": 8.5,
+        "required": 9.0
+      },
+      "pacing_score": {
+        "minimum": 8.0,
+        "required": 9.0
+      },
+      "listener_enjoyment_score": {
+        "minimum": 8.0,
+        "required": 9.0
+      },
+      "overall_listening_score": {
+        "minimum": 8.3,
+        "required": 9.3
+      },
+      "confidence_score": {
+        "minimum": 0.85,
+        "required": 0.9
+      }
+    },
+    "owner_exact_10_dimension_failures": {
+      "naturalness_score": {
+        "minimum": 8.5,
+        "required": 10.0
+      },
+      "pronunciation_score": {
+        "minimum": 9.0,
+        "required": 10.0
+      },
+      "emotional_expression_score": {
+        "minimum": 8.0,
+        "required": 10.0
+      },
+      "punctuation_pause_score": {
+        "minimum": 8.5,
+        "required": 10.0
+      },
+      "pacing_score": {
+        "minimum": 8.0,
+        "required": 10.0
+      },
+      "continuity_score": {
+        "minimum": 9.0,
+        "required": 10.0
+      },
+      "anti_robotic_texture_score": {
+        "minimum": 9.0,
+        "required": 10.0
+      },
+      "anti_choppy_join_score": {
+        "minimum": 9.0,
+        "required": 10.0
+      },
+      "listener_enjoyment_score": {
+        "minimum": 8.0,
+        "required": 10.0
+      },
+      "overall_listening_score": {
+        "minimum": 8.3,
+        "required": 10.0
+      }
+    },
+    "fatal_flags": [],
+    "sample_blockers": [
+      "factory_news_and_grief: Does not meet the active English premium screen or the separate owner target due to quality dimensions below 9.0 and overall score below 9.3."
+    ]
+  },
+  "error": null,
+  "lock_restored": true,
+  "lock_sha256_after": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+  "release_blockers_preserved": [
+    "FOUR_SAMPLE_SCREEN_IS_NOT_SIX_SAMPLE_FULL_TITLE_RELEASE_EVIDENCE",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "MONKEYS_PAW_TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN"
+  ]
+}

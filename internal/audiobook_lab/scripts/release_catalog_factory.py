@@ -750,8 +750,25 @@ def blocked_by_lane(states: Iterable[BookState]) -> dict[str, int]:
     return {lane: counts.get(lane, 0) for lane in LANE_NAMES}
 
 
+def validate_serial_worker_limits(args: argparse.Namespace) -> None:
+    """Reject concurrency that can duplicate paid calls or release mutations."""
+
+    requested_paid = int(getattr(args, "max_paid_workers", 1) or 1)
+    if requested_paid > 1:
+        raise ValueError(
+            "--max-paid-workers must be <= 1; paid/provider TTS is globally serialized"
+        )
+    requested_metadata = int(getattr(args, "max_metadata_workers", 1) or 1)
+    if bool(getattr(args, "publish_approved", False)) and requested_metadata > 1:
+        raise ValueError(
+            "--max-metadata-workers must be <= 1 with --publish-approved; "
+            "release mutations are globally serialized"
+        )
+
+
 class ReleaseCatalogFactory:
     def __init__(self, args: argparse.Namespace) -> None:
+        validate_serial_worker_limits(args)
         self.args = args
         self.started_at = iso_now()
         self.timestamp = utc_stamp()
@@ -783,9 +800,9 @@ class ReleaseCatalogFactory:
         self.stage_queues: dict[str, deque[BookState]] = {name: deque() for name in QUEUE_NAMES}
         preflight_workers = max(1, int(getattr(args, "max_preflight_workers", 0) or args.max_books_active))
         audio_reuse_workers = max(1, int(getattr(args, "max_audio_reuse_workers", 0) or args.max_tts_workers))
-        paid_workers = max(1, int(getattr(args, "max_paid_workers", 0) or args.max_tts_workers))
+        paid_workers = max(1, int(getattr(args, "max_paid_workers", 1) or 1))
         upload_workers = max(1, int(getattr(args, "max_upload_workers", 0) or args.max_books_active))
-        metadata_workers = max(1, int(getattr(args, "max_metadata_workers", 0) or args.max_books_active))
+        metadata_workers = max(1, int(getattr(args, "max_metadata_workers", 1) or 1))
         self.stage_limits = {
             "inventory_queue": preflight_workers,
             "cover_queue": max(1, args.max_cover_workers),
@@ -3527,11 +3544,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--max-preflight-workers", type=int, default=0)
     parser.add_argument("--max-audio-reuse-workers", type=int, default=0)
     parser.add_argument("--max-tts-workers", type=int, default=3)
-    parser.add_argument("--max-paid-workers", type=int, default=0)
+    parser.add_argument("--max-paid-workers", type=int, default=1)
     parser.add_argument("--max-asr-workers", type=int, default=3)
     parser.add_argument("--max-cover-workers", type=int, default=2)
     parser.add_argument("--max-upload-workers", type=int, default=0)
-    parser.add_argument("--max-metadata-workers", type=int, default=0)
+    parser.add_argument("--max-metadata-workers", type=int, default=1)
     parser.add_argument("--max-browser-workers", type=int, default=2)
     parser.add_argument("--max-attempts", type=int, default=4)
     parser.add_argument("--publish-approved", action="store_true")

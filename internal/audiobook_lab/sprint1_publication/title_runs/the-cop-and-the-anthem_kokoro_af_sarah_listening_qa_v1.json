@@ -1,0 +1,457 @@
+{
+  "schema_version": 1,
+  "status": "PRIVATE_COP_AF_SARAH_LISTENING_QA_BLOCKED",
+  "scope": "PRIVATE_COP_AF_SARAH_REPRESENTATIVE_SCREEN_ONLY_NOT_RELEASE_EVIDENCE",
+  "approved_scope": "cop_af_sarah_representative_listening_qa_v1",
+  "slug": "the-cop-and-the-anthem",
+  "title": "The Cop and the Anthem",
+  "author": "O. Henry",
+  "sample_fingerprint": "3e736a435600a24df74fb2d7a138db8d3015f9ffa2df60a013866252e09ee2ff",
+  "evidence_path": "/private/tmp/earnalism-sprint1-distinct-voice/internal/audiobook_lab/sprint1_publication/title_runs/the-cop-and-the-anthem_kokoro_af_sarah_asr_projection_v1.json",
+  "evidence_sha256": "6b8744f0e14c1dedc5500dd4e42697faef0630883ce52483a9e0957dfa10281f",
+  "source_sha256": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
+  "attempt_fingerprint": "bb7c0f0967804c6d9bd4d715239b9e0741b47e7164c45f8e405e9ca1e6e9c553",
+  "asr_config_fingerprint": "5a6efff8ae1067e31d3cfe6ad7338a4b1cb7d42de24252eb0cabb23111d7c6a3",
+  "sample_count": 4,
+  "sample_bindings": [
+    {
+      "sample_label": "opening_winter",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1/opening_winter.wav",
+      "sample_audio_hash": "bb297bbd8faf6645a1a7a47600c7f160f7638a3551c2c5c3c10df24d7c17f236",
+      "sample_audio_size_bytes": 782444,
+      "sample_audio_duration_seconds": 16.3,
+      "source_text_sha256": "99ec90941755c7e7b70c98f2a122f1aeefdf7c996bd3e66bade805b8149f4a4c",
+      "attempt_fingerprint": "bb7c0f0967804c6d9bd4d715239b9e0741b47e7164c45f8e405e9ca1e6e9c553",
+      "asr_config_fingerprint": "5a6efff8ae1067e31d3cfe6ad7338a4b1cb7d42de24252eb0cabb23111d7c6a3"
+    },
+    {
+      "sample_label": "waiter_dialogue",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1/waiter_dialogue.wav",
+      "sample_audio_hash": "93e51660309ee71eb4ed6aa2755e2cdd585da6c06a519355b577de455f8fcd37",
+      "sample_audio_size_bytes": 1262444,
+      "sample_audio_duration_seconds": 26.3,
+      "source_text_sha256": "9b7aa5abbd52519cc2fd4c155ceb43711cd287f068792c319b8e1cf4554e50b8",
+      "attempt_fingerprint": "bb7c0f0967804c6d9bd4d715239b9e0741b47e7164c45f8e405e9ca1e6e9c553",
+      "asr_config_fingerprint": "5a6efff8ae1067e31d3cfe6ad7338a4b1cb7d42de24252eb0cabb23111d7c6a3"
+    },
+    {
+      "sample_label": "church_reckoning",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1/church_reckoning.wav",
+      "sample_audio_hash": "80a05603579ec39aabdf6f42740ba2b818783b75d3a192621b148f3ae5bb3d46",
+      "sample_audio_size_bytes": 934844,
+      "sample_audio_duration_seconds": 19.475,
+      "source_text_sha256": "8af80b2d0f436da3933b2a50bed8dc98d299367d982d520110c0b07da8b364ae",
+      "attempt_fingerprint": "bb7c0f0967804c6d9bd4d715239b9e0741b47e7164c45f8e405e9ca1e6e9c553",
+      "asr_config_fingerprint": "5a6efff8ae1067e31d3cfe6ad7338a4b1cb7d42de24252eb0cabb23111d7c6a3"
+    },
+    {
+      "sample_label": "ironic_ending",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1/ironic_ending.wav",
+      "sample_audio_hash": "b73b0891dcc2d6a5360e0ebb267e4fc345cae1b8e395bb67a694d308c472c825",
+      "sample_audio_size_bytes": 2749244,
+      "sample_audio_duration_seconds": 57.275,
+      "source_text_sha256": "cb03b2bf6553545bc323f4417dafced01e0042aca8d5f31f32245311357f3c3d",
+      "attempt_fingerprint": "bb7c0f0967804c6d9bd4d715239b9e0741b47e7164c45f8e405e9ca1e6e9c553",
+      "asr_config_fingerprint": "5a6efff8ae1067e31d3cfe6ad7338a4b1cb7d42de24252eb0cabb23111d7c6a3"
+    }
+  ],
+  "judge": "openai:gpt-audio",
+  "rubric_version": "earnalism_listening_quality_v1",
+  "hook_version": "asr_sync_hook_listening_schema3_v1",
+  "budget": {
+    "status": "PASS",
+    "sample_count": 4,
+    "estimated_usd_per_sample": 0.05,
+    "estimated_listening_qa_usd": 0.2,
+    "listening_qa_cap_usd": 0.2,
+    "total_budget_cap_usd": 0.2,
+    "blockers": []
+  },
+  "provider_calls_ran": true,
+  "full_title_generated": false,
+  "upload_performed": false,
+  "publication_performed": false,
+  "release_gate_mutated": false,
+  "lock_sha256_before": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+  "objective_evidence_status": "PRIVATE_REPRESENTATIVE_OBJECTIVE_PASS_AWAITING_LISTENING_QA",
+  "started_at": "2026-07-20T09:37:53Z",
+  "finished_at": "2026-07-20T09:38:13Z",
+  "actual_provider_billing": "NOT_REPORTED",
+  "judged_samples": [
+    {
+      "sample_label": "opening_winter",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1/opening_winter.wav",
+      "sample_audio_hash": "bb297bbd8faf6645a1a7a47600c7f160f7638a3551c2c5c3c10df24d7c17f236",
+      "sample_audio_size_bytes": 782444,
+      "sample_audio_duration_seconds": 16.3,
+      "source_text_sha256": "99ec90941755c7e7b70c98f2a122f1aeefdf7c996bd3e66bade805b8149f4a4c",
+      "attempt_fingerprint": "bb7c0f0967804c6d9bd4d715239b9e0741b47e7164c45f8e405e9ca1e6e9c553",
+      "asr_config_fingerprint": "5a6efff8ae1067e31d3cfe6ad7338a4b1cb7d42de24252eb0cabb23111d7c6a3",
+      "scores": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 10.0,
+        "emotional_expression_score": 9.2,
+        "punctuation_pause_score": 9.3,
+        "pacing_score": 9.4,
+        "continuity_score": 9.6,
+        "anti_robotic_texture_score": 9.7,
+        "anti_choppy_join_score": 9.8,
+        "listener_enjoyment_score": 9.4,
+        "overall_listening_score": 9.5,
+        "confidence_score": 0.95
+      },
+      "confidence": 0.95,
+      "notes": "The narration is smooth, with clear pronunciation and natural pacing. Emotional expression is present but could be slightly more dynamic. Pauses align well with punctuation, and the flow is continuous without choppy joins. No robotic or mechanical cadence detected. Listener enjoyment is high due to the engaging delivery.",
+      "blocker_reason": "",
+      "judge_flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "frontmatter_present": false,
+      "raw_judgment": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 10.0,
+        "emotional_expression_score": 9.2,
+        "punctuation_pause_score": 9.3,
+        "pacing_score": 9.4,
+        "continuity_score": 9.6,
+        "anti_robotic_texture_score": 9.7,
+        "anti_choppy_join_score": 9.8,
+        "listener_enjoyment_score": 9.4,
+        "overall_listening_score": 9.5,
+        "confidence_score": 0.95,
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false,
+        "frontmatter_present": false,
+        "notes": "The narration is smooth, with clear pronunciation and natural pacing. Emotional expression is present but could be slightly more dynamic. Pauses align well with punctuation, and the flow is continuous without choppy joins. No robotic or mechanical cadence detected. Listener enjoyment is high due to the engaging delivery.",
+        "blocker_reason": ""
+      }
+    },
+    {
+      "sample_label": "waiter_dialogue",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1/waiter_dialogue.wav",
+      "sample_audio_hash": "93e51660309ee71eb4ed6aa2755e2cdd585da6c06a519355b577de455f8fcd37",
+      "sample_audio_size_bytes": 1262444,
+      "sample_audio_duration_seconds": 26.3,
+      "source_text_sha256": "9b7aa5abbd52519cc2fd4c155ceb43711cd287f068792c319b8e1cf4554e50b8",
+      "attempt_fingerprint": "bb7c0f0967804c6d9bd4d715239b9e0741b47e7164c45f8e405e9ca1e6e9c553",
+      "asr_config_fingerprint": "5a6efff8ae1067e31d3cfe6ad7338a4b1cb7d42de24252eb0cabb23111d7c6a3",
+      "scores": {
+        "naturalness_score": 7.5,
+        "pronunciation_score": 9.0,
+        "emotional_expression_score": 7.0,
+        "punctuation_pause_score": 8.0,
+        "pacing_score": 7.5,
+        "continuity_score": 8.5,
+        "anti_robotic_texture_score": 8.0,
+        "anti_choppy_join_score": 8.5,
+        "listener_enjoyment_score": 7.0,
+        "overall_listening_score": 7.8,
+        "confidence_score": 0.85
+      },
+      "confidence": 0.85,
+      "notes": "The narration is clear with good pronunciation, but emotional expression is somewhat lacking. Pacing is slightly uneven, and naturalness could be improved. There are no major technical flaws, but the overall performance does not reach premium or owner target levels.",
+      "blocker_reason": "Quality dimensions and overall score do not meet the premium screen or owner target requirements.",
+      "judge_flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "frontmatter_present": false,
+      "raw_judgment": {
+        "naturalness_score": 7.5,
+        "pronunciation_score": 9.0,
+        "emotional_expression_score": 7.0,
+        "punctuation_pause_score": 8.0,
+        "pacing_score": 7.5,
+        "continuity_score": 8.5,
+        "anti_robotic_texture_score": 8.0,
+        "anti_choppy_join_score": 8.5,
+        "listener_enjoyment_score": 7.0,
+        "overall_listening_score": 7.8,
+        "confidence_score": 0.85,
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false,
+        "frontmatter_present": false,
+        "notes": "The narration is clear with good pronunciation, but emotional expression is somewhat lacking. Pacing is slightly uneven, and naturalness could be improved. There are no major technical flaws, but the overall performance does not reach premium or owner target levels.",
+        "blocker_reason": "Quality dimensions and overall score do not meet the premium screen or owner target requirements."
+      }
+    },
+    {
+      "sample_label": "church_reckoning",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1/church_reckoning.wav",
+      "sample_audio_hash": "80a05603579ec39aabdf6f42740ba2b818783b75d3a192621b148f3ae5bb3d46",
+      "sample_audio_size_bytes": 934844,
+      "sample_audio_duration_seconds": 19.475,
+      "source_text_sha256": "8af80b2d0f436da3933b2a50bed8dc98d299367d982d520110c0b07da8b364ae",
+      "attempt_fingerprint": "bb7c0f0967804c6d9bd4d715239b9e0741b47e7164c45f8e405e9ca1e6e9c553",
+      "asr_config_fingerprint": "5a6efff8ae1067e31d3cfe6ad7338a4b1cb7d42de24252eb0cabb23111d7c6a3",
+      "scores": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 9.7,
+        "emotional_expression_score": 9.4,
+        "punctuation_pause_score": 9.6,
+        "pacing_score": 9.5,
+        "continuity_score": 9.8,
+        "anti_robotic_texture_score": 9.7,
+        "anti_choppy_join_score": 9.8,
+        "listener_enjoyment_score": 9.5,
+        "overall_listening_score": 9.6,
+        "confidence_score": 0.95
+      },
+      "confidence": 0.95,
+      "notes": "The narration is smooth, with clear pronunciation and natural pacing. Emotional expression is well conveyed, and pauses align with punctuation. No robotic texture or choppy joins detected. Listener enjoyment is high.",
+      "blocker_reason": "",
+      "judge_flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "frontmatter_present": false,
+      "raw_judgment": {
+        "naturalness_score": 9.5,
+        "pronunciation_score": 9.7,
+        "emotional_expression_score": 9.4,
+        "punctuation_pause_score": 9.6,
+        "pacing_score": 9.5,
+        "continuity_score": 9.8,
+        "anti_robotic_texture_score": 9.7,
+        "anti_choppy_join_score": 9.8,
+        "listener_enjoyment_score": 9.5,
+        "overall_listening_score": 9.6,
+        "confidence_score": 0.95,
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false,
+        "frontmatter_present": false,
+        "notes": "The narration is smooth, with clear pronunciation and natural pacing. Emotional expression is well conveyed, and pauses align with punctuation. No robotic texture or choppy joins detected. Listener enjoyment is high.",
+        "blocker_reason": ""
+      }
+    },
+    {
+      "sample_label": "ironic_ending",
+      "sample_audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1/ironic_ending.wav",
+      "sample_audio_hash": "b73b0891dcc2d6a5360e0ebb267e4fc345cae1b8e395bb67a694d308c472c825",
+      "sample_audio_size_bytes": 2749244,
+      "sample_audio_duration_seconds": 57.275,
+      "source_text_sha256": "cb03b2bf6553545bc323f4417dafced01e0042aca8d5f31f32245311357f3c3d",
+      "attempt_fingerprint": "bb7c0f0967804c6d9bd4d715239b9e0741b47e7164c45f8e405e9ca1e6e9c553",
+      "asr_config_fingerprint": "5a6efff8ae1067e31d3cfe6ad7338a4b1cb7d42de24252eb0cabb23111d7c6a3",
+      "scores": {
+        "naturalness_score": 8.5,
+        "pronunciation_score": 9.0,
+        "emotional_expression_score": 8.0,
+        "punctuation_pause_score": 8.5,
+        "pacing_score": 8.0,
+        "continuity_score": 9.0,
+        "anti_robotic_texture_score": 9.0,
+        "anti_choppy_join_score": 9.0,
+        "listener_enjoyment_score": 8.5,
+        "overall_listening_score": 8.5,
+        "confidence_score": 0.88
+      },
+      "confidence": 0.88,
+      "notes": "The narration is clear with good pronunciation and continuity. Emotional expression could be stronger, and pacing is slightly uneven in places. Pauses around punctuation could be more natural. Overall, a solid performance but not flawless.",
+      "blocker_reason": "",
+      "judge_flags": {
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false
+      },
+      "frontmatter_present": false,
+      "raw_judgment": {
+        "naturalness_score": 8.5,
+        "pronunciation_score": 9.0,
+        "emotional_expression_score": 8.0,
+        "punctuation_pause_score": 8.5,
+        "pacing_score": 8.0,
+        "continuity_score": 9.0,
+        "anti_robotic_texture_score": 9.0,
+        "anti_choppy_join_score": 9.0,
+        "listener_enjoyment_score": 8.5,
+        "overall_listening_score": 8.5,
+        "confidence_score": 0.88,
+        "robotic_texture_detected": false,
+        "mechanical_cadence_detected": false,
+        "choppy_joins_detected": false,
+        "fallback_tts_detected": false,
+        "list_reading_rhythm_detected": false,
+        "repeated_identical_sentence_endings_detected": false,
+        "abrupt_tts_resets_detected": false,
+        "placeholder_audio_detected": false,
+        "frontmatter_present": false,
+        "notes": "The narration is clear with good pronunciation and continuity. Emotional expression could be stronger, and pacing is slightly uneven in places. Pauses around punctuation could be more natural. Overall, a solid performance but not flawless.",
+        "blocker_reason": ""
+      }
+    }
+  ],
+  "listening_gate": {
+    "policy": "tiered_audiobook_acceptance_v1_english_premium",
+    "platform_thresholds": {
+      "naturalness_score": 9.0,
+      "pronunciation_score": 9.0,
+      "emotional_expression_score": 9.0,
+      "punctuation_pause_score": 9.0,
+      "pacing_score": 9.0,
+      "continuity_score": 9.0,
+      "anti_robotic_texture_score": 9.0,
+      "anti_choppy_join_score": 9.0,
+      "listener_enjoyment_score": 9.0,
+      "overall_listening_score": 9.3,
+      "confidence_score": 0.9
+    },
+    "platform_screen_pass": false,
+    "owner_exact_10_pass": false,
+    "next_private_stage_authorized": false,
+    "minimum_scores": {
+      "naturalness_score": 7.5,
+      "pronunciation_score": 9.0,
+      "emotional_expression_score": 7.0,
+      "punctuation_pause_score": 8.0,
+      "pacing_score": 7.5,
+      "continuity_score": 8.5,
+      "anti_robotic_texture_score": 8.0,
+      "anti_choppy_join_score": 8.5,
+      "listener_enjoyment_score": 7.0,
+      "overall_listening_score": 7.8,
+      "confidence_score": 0.85
+    },
+    "threshold_failures": {
+      "naturalness_score": {
+        "minimum": 7.5,
+        "required": 9.0
+      },
+      "emotional_expression_score": {
+        "minimum": 7.0,
+        "required": 9.0
+      },
+      "punctuation_pause_score": {
+        "minimum": 8.0,
+        "required": 9.0
+      },
+      "pacing_score": {
+        "minimum": 7.5,
+        "required": 9.0
+      },
+      "continuity_score": {
+        "minimum": 8.5,
+        "required": 9.0
+      },
+      "anti_robotic_texture_score": {
+        "minimum": 8.0,
+        "required": 9.0
+      },
+      "anti_choppy_join_score": {
+        "minimum": 8.5,
+        "required": 9.0
+      },
+      "listener_enjoyment_score": {
+        "minimum": 7.0,
+        "required": 9.0
+      },
+      "overall_listening_score": {
+        "minimum": 7.8,
+        "required": 9.3
+      },
+      "confidence_score": {
+        "minimum": 0.85,
+        "required": 0.9
+      }
+    },
+    "owner_exact_10_dimension_failures": {
+      "naturalness_score": {
+        "minimum": 7.5,
+        "required": 10.0
+      },
+      "pronunciation_score": {
+        "minimum": 9.0,
+        "required": 10.0
+      },
+      "emotional_expression_score": {
+        "minimum": 7.0,
+        "required": 10.0
+      },
+      "punctuation_pause_score": {
+        "minimum": 8.0,
+        "required": 10.0
+      },
+      "pacing_score": {
+        "minimum": 7.5,
+        "required": 10.0
+      },
+      "continuity_score": {
+        "minimum": 8.5,
+        "required": 10.0
+      },
+      "anti_robotic_texture_score": {
+        "minimum": 8.0,
+        "required": 10.0
+      },
+      "anti_choppy_join_score": {
+        "minimum": 8.5,
+        "required": 10.0
+      },
+      "listener_enjoyment_score": {
+        "minimum": 7.0,
+        "required": 10.0
+      },
+      "overall_listening_score": {
+        "minimum": 7.8,
+        "required": 10.0
+      }
+    },
+    "fatal_flags": [],
+    "sample_blockers": [
+      "waiter_dialogue: Quality dimensions and overall score do not meet the premium screen or owner target requirements."
+    ]
+  },
+  "error": null,
+  "lock_restored": true,
+  "lock_sha256_after": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+  "release_blockers_preserved": [
+    "FOUR_SAMPLE_SCREEN_IS_NOT_SIX_SAMPLE_FULL_TITLE_RELEASE_EVIDENCE",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "COP_TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN"
+  ]
+}

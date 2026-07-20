@@ -1,0 +1,1720 @@
+{
+  "schema": "earnalism.kokoro.monkeys_paw_af_bella_asr_repair.v1",
+  "generated_at": "2026-07-20T05:27:42Z",
+  "status": "PRIVATE_REPRESENTATIVE_ASR_REPAIR_FAILED_FINGERPRINT_CLOSED",
+  "go_no_go": "NO_GO_REPRESENTATIVE_ASR_REPAIR_FAILED",
+  "scope": {
+    "slug": "the-monkeys-paw",
+    "title": "The Monkey's Paw",
+    "author": "W.W. Jacobs",
+    "language": "en",
+    "profile": "monkeys-paw-af-bella-gothic-v1",
+    "chapter_count": 3,
+    "passage_count": 4,
+    "characters": 3639,
+    "representative_only": true,
+    "full_title_generated": false
+  },
+  "source": {
+    "chapter_paths": [
+      "/private/tmp/earnalism-sprint1-distinct-voice/data/controlled_publications/the-monkeys-paw/chapters/chapter-001.json",
+      "/private/tmp/earnalism-sprint1-distinct-voice/data/controlled_publications/the-monkeys-paw/chapters/chapter-002.json",
+      "/private/tmp/earnalism-sprint1-distinct-voice/data/controlled_publications/the-monkeys-paw/chapters/chapter-003.json"
+    ],
+    "origin_source_sha256": "e435de0511bd61d2373a445b0c5e054b747072357b5373e27b7a4b8a5b40cd01",
+    "aggregate_source_sha256": "993ea84df5163bddcb4d4579a78ee5fb4b5ad9002a9659f9ac2e2f73198ec6b7",
+    "normalized_source_sha256": "a3fb946efdc410958f47fab3a6ec613d7f2280cee06e1f60b079a5d908af29bd",
+    "rights_basis": "Author died 1943. Published 1902. Pre-1928 publication supports U.S. public-domain status.",
+    "passages": [
+      {
+        "passage_id": "opening_domestic_tension",
+        "chapter": "chapter-001.json",
+        "characters": 378,
+        "text_sha256": "1505ffdc29416106677ad7c3ef7ea0a3db602c1069e1d72b81327721c1fe5765",
+        "risk": "period dialogue, domestic understatement, and abrupt chess beats"
+      },
+      {
+        "passage_id": "paw_warning_and_fate",
+        "chapter": "chapter-001.json",
+        "characters": 1023,
+        "text_sha256": "a3ec2e40908f432cca118c418e743329bccc9f411908bc16da2f725e8e43007d",
+        "risk": "mythic exposition, ominous restraint, and multi-speaker dialogue"
+      },
+      {
+        "passage_id": "factory_news_and_grief",
+        "chapter": "chapter-002.json",
+        "characters": 988,
+        "text_sha256": "6877bbcbea4fdfd7729b41ff27dc422b18dd6d44b7b0e4893555ba5e109cf0aa",
+        "risk": "interrupted speech, shock, grief, and a required meaningful silence"
+      },
+      {
+        "passage_id": "final_knocking_and_third_wish",
+        "chapter": "chapter-003.json",
+        "characters": 1250,
+        "text_sha256": "9198f815c21620148cfab038af5bdaadedd7397567c9a9010c1d1bc340148fb4",
+        "risk": "suspense crescendo, physical action, final wish, and desolate release"
+      }
+    ]
+  },
+  "prior_attempt_audit": {
+    "evidence_path": "/private/tmp/earnalism-sprint1-distinct-voice/internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_release_gate_evidence.json",
+    "closed_google_fingerprints": [
+      "14b9ef3e3465b1b0",
+      "8b671c0f3c569295"
+    ],
+    "full_candidate_fingerprint": "5587b21dfa3da95c",
+    "repaired_candidate_binding": "21d75ab9607f533fc6526ff965b41dfc01d34d3865d423cb23ff2b6e94bdc9bc",
+    "new_provider_family": "kokoro",
+    "materially_distinct": true
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "package_version": "0.9.4",
+    "model_repo": "hexgrad/Kokoro-82M",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "af_bella",
+    "voice_language": "American English",
+    "voice_sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+    "speed": 0.96,
+    "random_seed": 2026072002,
+    "g2p_language_code": "a",
+    "g2p_fallback_enabled": false,
+    "attempt_fingerprint": "26175ed9126e6221858801187d16879984736a7f72f00e51943b54940babf7b5"
+  },
+  "voice_selection": {
+    "selected_voice": "af_bella",
+    "evidence_basis": "af_bella has the strongest retained local record: exact 4/4 objective passes on multiple titles and release-quality listening evidence on The Gift of the Magi and The Open Window. The Monkey's Paw has no prior Kokoro fingerprint, so this is a new provider family for the title.",
+    "same_title_prior_provider": "google",
+    "new_provider_family": "kokoro",
+    "checksum_distinct_from_same_title_attempts": true
+  },
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/af_bella.pt",
+      "sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+      "size_bytes": 523425
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "status": "PINNED_EXECUTION_RUNTIME_VERIFIED",
+    "pinned_execution_runtime_verified": true,
+    "python_version": "3.11.15",
+    "python_executable": "/opt/homebrew/Cellar/python@3.11/3.11.15_1/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "expected_python_version": "3.11.15",
+    "expected_python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "expected_package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    }
+  },
+  "g2p_audit": {
+    "status": "PASS",
+    "lang_code": "a",
+    "british": false,
+    "fallback": null,
+    "pronunciation_overrides": {
+      "Herbert": "hˈɜɹbɚt",
+      "Meggins": "mˈɛɡɪnz"
+    },
+    "reports": [
+      {
+        "passage_id": "opening_domestic_tension",
+        "phoneme_sha256": "9be297db46ae7cbdf4280115ce2ae28a089fd5d14b2f252bee1c8543ad3f2614",
+        "token_count": 90,
+        "unresolved_tokens": []
+      },
+      {
+        "passage_id": "paw_warning_and_fate",
+        "phoneme_sha256": "15cc934d2726bfa75b00545720c79f7ce0b7085047298c478fb376a74e24458b",
+        "token_count": 236,
+        "unresolved_tokens": []
+      },
+      {
+        "passage_id": "factory_news_and_grief",
+        "phoneme_sha256": "f43d99ee98cb361e32777735f406afd0b2d9a061ee185cb793b497ba891772f5",
+        "token_count": 243,
+        "unresolved_tokens": []
+      },
+      {
+        "passage_id": "final_knocking_and_third_wish",
+        "phoneme_sha256": "93e65e675a0ca6ec44f401d69e79a11240ac9d164c1157df86bb47cc0962d53a",
+        "token_count": 263,
+        "unresolved_tokens": []
+      }
+    ]
+  },
+  "rights": {
+    "model_and_voicepack_license": "Apache-2.0",
+    "official_model_card_url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "official_voice_file_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/voices/af_bella.pt",
+    "private_audition_allowed": true,
+    "commercial_use_allowed_under_recorded_license": true,
+    "apache_notice_obligations_still_apply": true,
+    "title_scoped_production_risk_acceptance_bound": false,
+    "production_release_approved": false,
+    "public_disclosure_required_if_later_approved": "AI voice"
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "ordered_content_integrity_required": true,
+    "source_equivalence_rules": [],
+    "estimated_sync_allowed": false
+  },
+  "next_stage_contract": {
+    "status": "ASR_REPAIR_FINGERPRINT_CLOSED_OBJECTIVE_FAIL",
+    "repair_fingerprint": "7adae43127011aa84218f79a9a4042f9f3e4b723825d04fea2d7ad519fcc7588",
+    "exact_execute_command": null,
+    "do_not_repeat_completed_fingerprint": true,
+    "listening_qa_allowed": false,
+    "full_title_generation_allowed": false,
+    "upload_allowed": false,
+    "publication_allowed": false,
+    "release_gate_mutation_allowed": false,
+    "next_action": "Use a materially different voice/provider or source-bound narration; do not repeat this synthesis or ASR-repair fingerprint."
+  },
+  "safety": {
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-af-bella-representative-v1",
+    "provider_calls": 0,
+    "estimated_provider_cost_usd": 0.0,
+    "paid_tts_lock_inspected": false,
+    "paid_tts_lock_touched": false,
+    "audio_generated": true,
+    "asr_run": true,
+    "listening_qa_run": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false,
+    "artifact_hashes_before": {
+      "model": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "config": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "voice": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+      "whisper": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f"
+    },
+    "artifact_hashes_after": {
+      "model": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "config": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "voice": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+      "whisper": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f"
+    },
+    "artifact_hashes_unchanged": true,
+    "audio_generated_during_repair": false,
+    "resynthesis_performed": false,
+    "audio_edit_or_trim_performed": false,
+    "asr_only_repair": true,
+    "provider_calls_during_repair": 0,
+    "listening_provider_calls": 0,
+    "paid_tts_lock_before_sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+    "paid_tts_lock_after_sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+    "paid_tts_lock_touched_during_repair": false
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_ASR_REPAIR_FAILED",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "MONKEYS_PAW_TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "PRIVATE_DELIVERY_MANIFEST_NOT_COMPLETE",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN",
+    "OWNER_10_TARGET_NOT_VERIFIED"
+  ],
+  "samples": [
+    {
+      "passage_id": "opening_domestic_tension",
+      "source_text_sha256": "1505ffdc29416106677ad7c3ef7ea0a3db602c1069e1d72b81327721c1fe5765",
+      "characters": 378,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-af-bella-representative-v1/opening_domestic_tension.wav",
+      "phoneme_sha256": "9be297db46ae7cbdf4280115ce2ae28a089fd5d14b2f252bee1c8543ad3f2614",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 23.2,
+      "size_bytes": 1113644,
+      "audio_sha256": "f05904b0e4a8172dfb6409390d0e696fd5fb14dd8b7a4599738b7ecad65f1f7e",
+      "peak_fraction": 0.594958,
+      "rms_fraction": 0.060361,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "paw_warning_and_fate",
+      "source_text_sha256": "a3ec2e40908f432cca118c418e743329bccc9f411908bc16da2f725e8e43007d",
+      "characters": 1023,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-af-bella-representative-v1/paw_warning_and_fate.wav",
+      "phoneme_sha256": "cda6fa3627b82dc4b2e3201606eae6d41c67b54f9f2f889d17f2c2b0fb121df3",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 58.375,
+      "size_bytes": 2802044,
+      "audio_sha256": "92db4c64575a3198fee24d94ac882d1cef32e49c6b43cee49f1b3f4c1c8924cd",
+      "peak_fraction": 0.629597,
+      "rms_fraction": 0.055499,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "factory_news_and_grief",
+      "source_text_sha256": "6877bbcbea4fdfd7729b41ff27dc422b18dd6d44b7b0e4893555ba5e109cf0aa",
+      "characters": 988,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-af-bella-representative-v1/factory_news_and_grief.wav",
+      "phoneme_sha256": "8869337d5ba055c0d2bc34533b890af8278cb37451f48fa0f443a48c037d7c77",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 55.7,
+      "size_bytes": 2673644,
+      "audio_sha256": "9c15cc86759e7258be239fdc4166c768b8acf4cb98a3268006df7137950a070f",
+      "peak_fraction": 0.534501,
+      "rms_fraction": 0.056185,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "final_knocking_and_third_wish",
+      "source_text_sha256": "9198f815c21620148cfab038af5bdaadedd7397567c9a9010c1d1bc340148fb4",
+      "characters": 1250,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-af-bella-representative-v1/final_knocking_and_third_wish.wav",
+      "phoneme_sha256": "28657ee7bf8bbe86c9445de055a420923bbfa24e3c5c2806bf0236ca812f4423",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 72.525,
+      "size_bytes": 3481244,
+      "audio_sha256": "0d5fd578ba36d0826ac63ebf5bbdebb9eadf3e22186855a41a16d42206b75081",
+      "peak_fraction": 0.55327,
+      "rms_fraction": 0.057333,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    }
+  ],
+  "asr": {
+    "status": "FAIL",
+    "mode": "ASR_ONLY_RETAINED_HASH_BOUND_AUDIO",
+    "audio_derived": true,
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "repair_fingerprint": "7adae43127011aa84218f79a9a4042f9f3e4b723825d04fea2d7ad519fcc7588",
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "reports": [
+      {
+        "passage_id": "opening_domestic_tension",
+        "decoder_arm": "unprompted_beam_2",
+        "audio_sha256": "f05904b0e4a8172dfb6409390d0e696fd5fb14dd8b7a4599738b7ecad65f1f7e",
+        "source_text_sha256": "1505ffdc29416106677ad7c3ef7ea0a3db602c1069e1d72b81327721c1fe5765",
+        "raw_transcript": "Hark at the wind, said Mr. White, who, having seen a fatal mistake after it was too late, was amiably desirous of preventing his son from seeing it. I'm listening, said the latter, grimly surveying the board as he stretched out his hand, check. I should hardly think that he'd come tonight, said his father with his hand poised over the board. Mate, replied the son.",
+        "raw_transcript_sha256": "bce2114f08241610e02173e5ec6f873813721b903e36aeee1170ee21bffedb1d",
+        "evaluated_transcript": "Hark at the wind, said Mr. White, who, having seen a fatal mistake after it was too late, was amiably desirous of preventing his son from seeing it. I'm listening, said the latter, grimly surveying the board as he stretched out his hand, check. I should hardly think that he'd come to night, said his father with his hand poised over the board. Mate, replied the son.",
+        "evaluated_transcript_sha256": "0afb58615d418e478d7b71a247695dc156d941c2a8f1ac4ff75786270fd89ef6",
+        "source_equivalences_applied": [
+          {
+            "pattern": "\\btonight\\b",
+            "replacement": "to night",
+            "observed_count": 1,
+            "reason": "single-token ASR rendering of the acoustically identical source to-night"
+          }
+        ],
+        "substantive_normalization_performed": false,
+        "unexpected_speech_deleted_or_normalized": false,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 67,
+        "transcript_token_count": 67,
+        "equal_token_count": 67,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      },
+      {
+        "passage_id": "paw_warning_and_fate",
+        "decoder_arm": "unprompted_beam_2",
+        "audio_sha256": "92db4c64575a3198fee24d94ac882d1cef32e49c6b43cee49f1b3f4c1c8924cd",
+        "source_text_sha256": "a3ec2e40908f432cca118c418e743329bccc9f411908bc16da2f725e8e43007d",
+        "raw_transcript": "It had a spell put on it by an old Fakir, said the sergeant major, a very holy man. He wanted to show that fate ruled people's lives and that those who interfered with it did so to their sorrow. He put a spell on it so that three separate men could each have three wishes from it. His manner was so impressive that his hearers were conscious that their light laughter jarred somewhat. Well, why don't you have three, sir, said Herbert White cleverly. The soldier regarded him in the way that middle ages want to regard presumptuous youth. I have, he said quietly, and his blotchy face whitened. And did you really have the three wishes granted, asked Mrs. White. I did, said the sergeant major, and his glass tapped against his strong teeth. And has anybody else wished, persisted the old lady. The first man had his three wishes. Yes, was the reply. I don't know what the first two were, but the third was for death. That's how I got the paw. His tones were so grave that a hush fell upon the group.",
+        "raw_transcript_sha256": "9722f04eb8b9e48096c3e51c2de18abad95e3691b8d1c5485a1d1975fb759f5d",
+        "evaluated_transcript": "It had a spell put on it by an old Fakir, said the sergeant major, a very holy man. He wanted to show that fate ruled people's lives and that those who interfered with it did so to their sorrow. He put a spell on it so that three separate men could each have three wishes from it. His manner was so impressive that his hearers were conscious that their light laughter jarred somewhat. Well, why don't you have three, sir, said Herbert White cleverly. The soldier regarded him in the way that middle ages want to regard presumptuous youth. I have, he said quietly, and his blotchy face whitened. And did you really have the three wishes granted, asked Mrs. White. I did, said the sergeant major, and his glass tapped against his strong teeth. And has anybody else wished, persisted the old lady. The first man had his three wishes. Yes, was the reply. I don't know what the first two were, but the third was for death. That's how I got the paw. His tones were so grave that a hush fell upon the group.",
+        "evaluated_transcript_sha256": "9722f04eb8b9e48096c3e51c2de18abad95e3691b8d1c5485a1d1975fb759f5d",
+        "source_equivalences_applied": [],
+        "substantive_normalization_performed": false,
+        "unexpected_speech_deleted_or_normalized": false,
+        "score": 9.8674,
+        "coverage": 0.9841,
+        "precision": 0.9894,
+        "source_token_count": 189,
+        "transcript_token_count": 188,
+        "equal_token_count": 186,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "age": 1,
+          "is": 1,
+          "wont": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "ages": 1,
+          "want": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              94,
+              97
+            ],
+            "transcript_range": [
+              94,
+              96
+            ],
+            "source_tokens": [
+              "age",
+              "is",
+              "wont"
+            ],
+            "transcript_tokens": [
+              "ages",
+              "want"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "factory_news_and_grief",
+        "decoder_arm": "canonical_vocabulary_beam_2",
+        "audio_sha256": "9c15cc86759e7258be239fdc4166c768b8acf4cb98a3268006df7137950a070f",
+        "source_text_sha256": "6877bbcbea4fdfd7729b41ff27dc422b18dd6d44b7b0e4893555ba5e109cf0aa",
+        "raw_transcript": "I was asked to call, he said at last, and stooped and picked a piece of cotton from his trousers. I come from Maw and Meggins. The old lady started. Is anything the matter, she asked breathlessly. Has anything happened to Herbert? What is it, what is it? Her husband interposed. There, there, mother, he said hastily. Sit down and don't jump to conclusions. You've not brought bad news, I'm sure, sir, and he eyed the other wistfully. I'm sorry, began the visitor. Is he hurt? Demanded the mother wildly, the visitor bowed in assent. Badly hurt, he said quietly, but he is not in any pain. Thank God, said the old woman clasping her hands. Thank God for that, thank. She broke off suddenly as the sinister meaning of the assurance dawned upon her and she saw the awful confirmation of her fears in the other's averted face. She caught her breath and turning to her slower husband, laid her trembling old hand upon his. There was a long silence. Thanks for watching!",
+        "raw_transcript_sha256": "b1f7ddb806a5a1908c3c195c0e5a97da626172899f500f1f9f97acc06fe3055a",
+        "evaluated_transcript": "I was asked to call, he said at last, and stooped and picked a piece of cotton from his trousers. I come from Maw and Meggins. The old lady started. Is anything the matter, she asked breathlessly. Has anything happened to Herbert? What is it, what is it? Her husband interposed. There, there, mother, he said hastily. Sit down and don't jump to conclusions. You've not brought bad news, I'm sure, sir, and he eyed the other wistfully. I'm sorry, began the visitor. Is he hurt? Demanded the mother wildly, the visitor bowed in assent. Badly hurt, he said quietly, but he is not in any pain. Thank God, said the old woman clasping her hands. Thank God for that, thank. She broke off suddenly as the sinister meaning of the assurance dawned upon her and she saw the awful confirmation of her fears in the other's averted face. She caught her breath and turning to her slower husband, laid her trembling old hand upon his. There was a long silence. Thanks for watching!",
+        "evaluated_transcript_sha256": "b1f7ddb806a5a1908c3c195c0e5a97da626172899f500f1f9f97acc06fe3055a",
+        "source_equivalences_applied": [],
+        "substantive_normalization_performed": false,
+        "unexpected_speech_deleted_or_normalized": false,
+        "score": 9.8559,
+        "coverage": 0.9884,
+        "precision": 0.9828,
+        "source_token_count": 173,
+        "transcript_token_count": 174,
+        "equal_token_count": 171,
+        "first_words_match": true,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": false,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "oh": 1,
+          "witted": 1
+        },
+        "duplicate_tokens": {
+          "for": 1
+        },
+        "unexpected_tokens": {
+          "for": 1,
+          "thanks": 1,
+          "watching": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "delete",
+            "source_range": [
+              107,
+              108
+            ],
+            "transcript_range": [
+              107,
+              107
+            ],
+            "source_tokens": [
+              "oh"
+            ],
+            "transcript_tokens": []
+          },
+          {
+            "operation": "delete",
+            "source_range": [
+              159,
+              160
+            ],
+            "transcript_range": [
+              158,
+              158
+            ],
+            "source_tokens": [
+              "witted"
+            ],
+            "transcript_tokens": []
+          },
+          {
+            "operation": "insert",
+            "source_range": [
+              173,
+              173
+            ],
+            "transcript_range": [
+              171,
+              174
+            ],
+            "source_tokens": [],
+            "transcript_tokens": [
+              "thanks",
+              "for",
+              "watching"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "final_knocking_and_third_wish",
+        "decoder_arm": "unprompted_beam_2",
+        "audio_sha256": "0d5fd578ba36d0826ac63ebf5bbdebb9eadf3e22186855a41a16d42206b75081",
+        "source_text_sha256": "9198f815c21620148cfab038af5bdaadedd7397567c9a9010c1d1bc340148fb4",
+        "raw_transcript": "There was another knock, and another. The old woman with a sudden wrench broke free and ran from the room. Her husband followed to the landing and called after her appealingly as she hurried downstairs. He heard the chain rattle back and the bottom bolt drawn slowly and stiffly from the socket. Then the old woman's voice strained and panting. The bolt! she cried loudly. Come down, I can't reach it. But her husband was on his hands and knees groping wildly on the floor in search of the paw. If he could only find it before the thing outside got in, a perfect fuselod of knocks reverberated through the house. And he heard the scraping of a chair as his wife put it down in the passage against the door. He heard the creaking of the bolt as it came slowly back. And at the same moment he found the monkey's paw and frantically breathed his third and last wish. The knocking ceased suddenly, although the echoes of it were still in the house. He heard the chair drawn back and the door opened. A cold wind rushed up the staircase, and a long loud wail of disappointment and misery from his wife gave him courage to run down to her side, and then to the gate beyond. The street lamp flickering opposite shone on a quiet and deserted road.",
+        "raw_transcript_sha256": "24b9b1736685f1be570ea156714d9bb164db88a635d867648766a86635af6fe0",
+        "evaluated_transcript": "There was another knock, and another. The old woman with a sudden wrench broke free and ran from the room. Her husband followed to the landing and called after her appealingly as she hurried downstairs. He heard the chain rattle back and the bottom bolt drawn slowly and stiffly from the socket. Then the old woman's voice strained and panting. The bolt! she cried loudly. Come down, I can't reach it. But her husband was on his hands and knees groping wildly on the floor in search of the paw. If he could only find it before the thing outside got in, a perfect fuselod of knocks reverberated through the house. And he heard the scraping of a chair as his wife put it down in the passage against the door. He heard the creaking of the bolt as it came slowly back. And at the same moment he found the monkey's paw and frantically breathed his third and last wish. The knocking ceased suddenly, although the echoes of it were still in the house. He heard the chair drawn back and the door opened. A cold wind rushed up the staircase, and a long loud wail of disappointment and misery from his wife gave him courage to run down to her side, and then to the gate beyond. The street lamp flickering opposite shone on a quiet and deserted road.",
+        "evaluated_transcript_sha256": "24b9b1736685f1be570ea156714d9bb164db88a635d867648766a86635af6fe0",
+        "source_equivalences_applied": [],
+        "substantive_normalization_performed": false,
+        "unexpected_speech_deleted_or_normalized": false,
+        "score": 9.9567,
+        "coverage": 0.9957,
+        "precision": 0.9957,
+        "source_token_count": 231,
+        "transcript_token_count": 231,
+        "equal_token_count": 230,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "fusillade": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "fuselod": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              104,
+              105
+            ],
+            "transcript_range": [
+              104,
+              105
+            ],
+            "source_tokens": [
+              "fusillade"
+            ],
+            "transcript_tokens": [
+              "fuselod"
+            ]
+          }
+        ],
+        "pass": false
+      }
+    ]
+  },
+  "input_evidence": {
+    "path": "/private/tmp/earnalism-sprint1-distinct-voice/internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_kokoro_af_bella_representative_v1.json",
+    "sha256": "3801f927ed3f37e1892392e017f3db29b648fd0ebab57c086c339c75ccd5b539",
+    "unchanged": true
+  },
+  "asr_prior_prompted_run": {
+    "status": "FAIL",
+    "mode": "ASR_REVERIFY_EXISTING_AUDIO_ONLY",
+    "config_fingerprint": "7a65147b1c38c2ff4164a425e99c074eb930b2b0e42c1a6e257fdf03efac5671",
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "audio_derived": true,
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "prompt_policy": {
+      "opening_domestic_tension": "no_prompt",
+      "paw_warning_and_fate": "no_prompt",
+      "factory_news_and_grief": "no_prompt",
+      "final_knocking_and_third_wish": "no_prompt"
+    },
+    "source_equivalence_policy": {
+      "opening_domestic_tension": [],
+      "paw_warning_and_fate": [],
+      "factory_news_and_grief": [],
+      "final_knocking_and_third_wish": []
+    },
+    "unexpected_speech_may_be_normalized_or_discarded": false,
+    "reports": [
+      {
+        "passage_id": "opening_domestic_tension",
+        "audio_sha256": "f05904b0e4a8172dfb6409390d0e696fd5fb14dd8b7a4599738b7ecad65f1f7e",
+        "source_text_sha256": "1505ffdc29416106677ad7c3ef7ea0a3db602c1069e1d72b81327721c1fe5765",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "Hark at the wind, said Mr. White, who having seen a fatal mistake after it was too late, was amiably desirous of preventing his son from seeing it. I'm listening, said the latter, grimly surveying the board as he stretched out his hand, check. I should hardly think that he'd come tonight, said his father with his hand poised over the board. Mate, replied the son.",
+        "transcript_sha256": "4461b6b881d1d20f41ba86f8821dc3c6166488a4eac9f4be8550498897e853a8",
+        "evaluated_transcript": "Hark at the wind, said Mr. White, who having seen a fatal mistake after it was too late, was amiably desirous of preventing his son from seeing it. I'm listening, said the latter, grimly surveying the board as he stretched out his hand, check. I should hardly think that he'd come tonight, said his father with his hand poised over the board. Mate, replied the son.",
+        "evaluated_transcript_sha256": "4461b6b881d1d20f41ba86f8821dc3c6166488a4eac9f4be8550498897e853a8",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.003482,
+        "score": 9.7744,
+        "coverage": 0.9701,
+        "precision": 0.9848,
+        "source_token_count": 67,
+        "transcript_token_count": 66,
+        "equal_token_count": 65,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "to": 1,
+          "night": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "tonight": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              51,
+              53
+            ],
+            "transcript_range": [
+              51,
+              52
+            ],
+            "source_tokens": [
+              "to",
+              "night"
+            ],
+            "transcript_tokens": [
+              "tonight"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "paw_warning_and_fate",
+        "audio_sha256": "92db4c64575a3198fee24d94ac882d1cef32e49c6b43cee49f1b3f4c1c8924cd",
+        "source_text_sha256": "a3ec2e40908f432cca118c418e743329bccc9f411908bc16da2f725e8e43007d",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "It had a spell put on it by an old Fakir, said the sergeant major, a very holy man. He wanted to show that fate ruled people's lives and that those who interfered with it did so to their sorrow. He put a spell on it so that three separate men could each have three wishes from it. His manner was so impressive that his hearers were conscious that their light laughter jarred somewhat. Well, why don't you have three, sir? Said Herbert White cleverly. The soldier regarded him in the way that middle ages want to regard presumptuous youth. I have, he said quietly and his blotchy face whitened. And did you really have the three wishes granted, asked Mrs. White. I did, said the sergeant major and his glass tapped against his strong teeth. And has anybody else wished, persisted the old lady. The first man had his three wishes. Yes, was the reply. I don't know what the first two were, but the third was for death. That's how I got the paw. His tones were so grave that a hush fell upon the group.",
+        "transcript_sha256": "6d701decdd44cbcebe5444cce0eeb11c76fd7f1c7b49ee63fdfbf627e6930204",
+        "evaluated_transcript": "It had a spell put on it by an old Fakir, said the sergeant major, a very holy man. He wanted to show that fate ruled people's lives and that those who interfered with it did so to their sorrow. He put a spell on it so that three separate men could each have three wishes from it. His manner was so impressive that his hearers were conscious that their light laughter jarred somewhat. Well, why don't you have three, sir? Said Herbert White cleverly. The soldier regarded him in the way that middle ages want to regard presumptuous youth. I have, he said quietly and his blotchy face whitened. And did you really have the three wishes granted, asked Mrs. White. I did, said the sergeant major and his glass tapped against his strong teeth. And has anybody else wished, persisted the old lady. The first man had his three wishes. Yes, was the reply. I don't know what the first two were, but the third was for death. That's how I got the paw. His tones were so grave that a hush fell upon the group.",
+        "evaluated_transcript_sha256": "6d701decdd44cbcebe5444cce0eeb11c76fd7f1c7b49ee63fdfbf627e6930204",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.157246,
+        "score": 9.8674,
+        "coverage": 0.9841,
+        "precision": 0.9894,
+        "source_token_count": 189,
+        "transcript_token_count": 188,
+        "equal_token_count": 186,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "age": 1,
+          "is": 1,
+          "wont": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "ages": 1,
+          "want": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              94,
+              97
+            ],
+            "transcript_range": [
+              94,
+              96
+            ],
+            "source_tokens": [
+              "age",
+              "is",
+              "wont"
+            ],
+            "transcript_tokens": [
+              "ages",
+              "want"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "factory_news_and_grief",
+        "audio_sha256": "9c15cc86759e7258be239fdc4166c768b8acf4cb98a3268006df7137950a070f",
+        "source_text_sha256": "6877bbcbea4fdfd7729b41ff27dc422b18dd6d44b7b0e4893555ba5e109cf0aa",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "I was asked to call,\" he said at last, and stooped and picked a piece of cotton from his trousers. I come from Ma and Meghan's. The old lady started. Is anything the matter? she asked, breathlessly. Has anything happened to Herbert? What is it, what is it? her husband interposed. There, there, Mother, he said hastily. Sit down and don't jump to conclusions. You've not brought bad news, I'm sure, sir, and he eyed the other wistfully. I'm sorry, began the visitor. Is he hurt? Demanded the mother wildly, the visitor bowed in assent. Badly hurt, he said quietly, but he is not in any pain. Thank God, said the old woman clasping her hands. Thank God for that, thank. She broke off suddenly as the sinister meaning of the assurance dawned upon her and she saw the awful confirmation of her fears in the other's averted face. She caught her breath and turning to her slower husband, laid her trembling old hand upon his. There was a long silence. .",
+        "transcript_sha256": "be269616d12c39c13f25a1fd4bdbc99caaf4f06822bf1e80518c5bf0bc10ae67",
+        "evaluated_transcript": "I was asked to call,\" he said at last, and stooped and picked a piece of cotton from his trousers. I come from Ma and Meghan's. The old lady started. Is anything the matter? she asked, breathlessly. Has anything happened to Herbert? What is it, what is it? her husband interposed. There, there, Mother, he said hastily. Sit down and don't jump to conclusions. You've not brought bad news, I'm sure, sir, and he eyed the other wistfully. I'm sorry, began the visitor. Is he hurt? Demanded the mother wildly, the visitor bowed in assent. Badly hurt, he said quietly, but he is not in any pain. Thank God, said the old woman clasping her hands. Thank God for that, thank. She broke off suddenly as the sinister meaning of the assurance dawned upon her and she saw the awful confirmation of her fears in the other's averted face. She caught her breath and turning to her slower husband, laid her trembling old hand upon his. There was a long silence. .",
+        "evaluated_transcript_sha256": "be269616d12c39c13f25a1fd4bdbc99caaf4f06822bf1e80518c5bf0bc10ae67",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.575505,
+        "score": 9.8256,
+        "coverage": 0.9769,
+        "precision": 0.9883,
+        "source_token_count": 173,
+        "transcript_token_count": 171,
+        "equal_token_count": 169,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "maw": 1,
+          "meggins": 1,
+          "oh": 1,
+          "witted": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "ma": 1,
+          "meghan's": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              23,
+              24
+            ],
+            "transcript_range": [
+              23,
+              24
+            ],
+            "source_tokens": [
+              "maw"
+            ],
+            "transcript_tokens": [
+              "ma"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              25,
+              26
+            ],
+            "transcript_range": [
+              25,
+              26
+            ],
+            "source_tokens": [
+              "meggins"
+            ],
+            "transcript_tokens": [
+              "meghan's"
+            ]
+          },
+          {
+            "operation": "delete",
+            "source_range": [
+              107,
+              108
+            ],
+            "transcript_range": [
+              107,
+              107
+            ],
+            "source_tokens": [
+              "oh"
+            ],
+            "transcript_tokens": []
+          },
+          {
+            "operation": "delete",
+            "source_range": [
+              159,
+              160
+            ],
+            "transcript_range": [
+              158,
+              158
+            ],
+            "source_tokens": [
+              "witted"
+            ],
+            "transcript_tokens": []
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "final_knocking_and_third_wish",
+        "audio_sha256": "0d5fd578ba36d0826ac63ebf5bbdebb9eadf3e22186855a41a16d42206b75081",
+        "source_text_sha256": "9198f815c21620148cfab038af5bdaadedd7397567c9a9010c1d1bc340148fb4",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "There was another knock and another. The old woman with a sudden wrench broke free and ran from the room. Her husband followed to the landing and called after her appealingly as she hurried downstairs. He heard the chain rattle back and the bottom bolt drawn slowly and stiffly from the socket. Then the old woman's voice strained and panting. The bolt! she cried loudly. Come down. I can't reach it. But her husband was on his hands and knees groping wildly on the floor in search of the paw. If he could only find it before the thing outside got in, a perfect fuselage of knocks reverberated through the house. And he heard the scraping of a chair as his wife put it down in the passage against the door. He heard the creaking of the bolt as it came slowly back. And at the same moment he found the monkey's paw and frantically breathed his third and last wish. The knocking ceased suddenly, although the echoes of it were still in the house. He heard the chair drawn back and the door opened. A cold wind rushed up the staircase, and a long loud wail of disappointment and misery from his wife gave him courage to run down to her side, and then to the gate beyond. The street lamp flickering opposite shone on a quiet and deserted road.",
+        "transcript_sha256": "47eb5c98c82ca08f8728a16fdcc069a6e5b34089fcd1f53a3010adc46b770ce8",
+        "evaluated_transcript": "There was another knock and another. The old woman with a sudden wrench broke free and ran from the room. Her husband followed to the landing and called after her appealingly as she hurried downstairs. He heard the chain rattle back and the bottom bolt drawn slowly and stiffly from the socket. Then the old woman's voice strained and panting. The bolt! she cried loudly. Come down. I can't reach it. But her husband was on his hands and knees groping wildly on the floor in search of the paw. If he could only find it before the thing outside got in, a perfect fuselage of knocks reverberated through the house. And he heard the scraping of a chair as his wife put it down in the passage against the door. He heard the creaking of the bolt as it came slowly back. And at the same moment he found the monkey's paw and frantically breathed his third and last wish. The knocking ceased suddenly, although the echoes of it were still in the house. He heard the chair drawn back and the door opened. A cold wind rushed up the staircase, and a long loud wail of disappointment and misery from his wife gave him courage to run down to her side, and then to the gate beyond. The street lamp flickering opposite shone on a quiet and deserted road.",
+        "evaluated_transcript_sha256": "47eb5c98c82ca08f8728a16fdcc069a6e5b34089fcd1f53a3010adc46b770ce8",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.080218,
+        "score": 9.9567,
+        "coverage": 0.9957,
+        "precision": 0.9957,
+        "source_token_count": 231,
+        "transcript_token_count": 231,
+        "equal_token_count": 230,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "fusillade": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "fuselage": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              104,
+              105
+            ],
+            "transcript_range": [
+              104,
+              105
+            ],
+            "source_tokens": [
+              "fusillade"
+            ],
+            "transcript_tokens": [
+              "fuselage"
+            ]
+          }
+        ],
+        "pass": false
+      }
+    ]
+  },
+  "asr_repair": {
+    "completed": true,
+    "repair_fingerprint": "7adae43127011aa84218f79a9a4042f9f3e4b723825d04fea2d7ad519fcc7588",
+    "fingerprint_closed": true,
+    "prior_config_fingerprint": "7a65147b1c38c2ff4164a425e99c074eb930b2b0e42c1a6e257fdf03efac5671",
+    "prior_transcript_hashes": {
+      "opening_domestic_tension": "4461b6b881d1d20f41ba86f8821dc3c6166488a4eac9f4be8550498897e853a8",
+      "paw_warning_and_fate": "6d701decdd44cbcebe5444cce0eeb11c76fd7f1c7b49ee63fdfbf627e6930204",
+      "factory_news_and_grief": "be269616d12c39c13f25a1fd4bdbc99caaf4f06822bf1e80518c5bf0bc10ae67",
+      "final_knocking_and_third_wish": "47eb5c98c82ca08f8728a16fdcc069a6e5b34089fcd1f53a3010adc46b770ce8"
+    },
+    "decoder_arms": [
+      {
+        "id": "unprompted_beam_2",
+        "initial_prompt": null,
+        "temperature": 0,
+        "condition_on_previous_text": false,
+        "word_timestamps": true,
+        "beam_size": 2,
+        "patience": 1,
+        "hallucination_silence_threshold": 0.5
+      },
+      {
+        "id": "unprompted_greedy",
+        "initial_prompt": null,
+        "temperature": 0,
+        "condition_on_previous_text": false,
+        "word_timestamps": true,
+        "beam_size": null,
+        "patience": null,
+        "hallucination_silence_threshold": 0.5
+      },
+      {
+        "id": "canonical_vocabulary_beam_2",
+        "initial_prompt": "Canonical spellings: to-night; age is wont; Maw and Meggins; Oh, thank God; slower-witted; fusillade. Preserve every spoken word.",
+        "temperature": 0,
+        "condition_on_previous_text": false,
+        "word_timestamps": true,
+        "beam_size": 2,
+        "patience": 1,
+        "hallucination_silence_threshold": 0.5
+      }
+    ],
+    "both_arms_run_for_every_passage": true,
+    "equivalence_policy": {
+      "opening_domestic_tension": [
+        {
+          "pattern": "\\btonight\\b",
+          "replacement": "to night",
+          "expected_count_when_observed": 1,
+          "reason": "single-token ASR rendering of the acoustically identical source to-night"
+        }
+      ],
+      "paw_warning_and_fate": [],
+      "factory_news_and_grief": [],
+      "final_knocking_and_third_wish": []
+    },
+    "forbidden_normalizations": [
+      "age is wont / ages want",
+      "Maw / Ma",
+      "Meggins / Meghan's",
+      "missing Oh",
+      "missing witted",
+      "fusillade / fuselage",
+      "unexpected speech deletion"
+    ],
+    "all_candidates": {
+      "opening_domestic_tension": [
+        {
+          "passage_id": "opening_domestic_tension",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "f05904b0e4a8172dfb6409390d0e696fd5fb14dd8b7a4599738b7ecad65f1f7e",
+          "source_text_sha256": "1505ffdc29416106677ad7c3ef7ea0a3db602c1069e1d72b81327721c1fe5765",
+          "raw_transcript": "Hark at the wind, said Mr. White, who, having seen a fatal mistake after it was too late, was amiably desirous of preventing his son from seeing it. I'm listening, said the latter, grimly surveying the board as he stretched out his hand, check. I should hardly think that he'd come tonight, said his father with his hand poised over the board. Mate, replied the son.",
+          "raw_transcript_sha256": "bce2114f08241610e02173e5ec6f873813721b903e36aeee1170ee21bffedb1d",
+          "evaluated_transcript": "Hark at the wind, said Mr. White, who, having seen a fatal mistake after it was too late, was amiably desirous of preventing his son from seeing it. I'm listening, said the latter, grimly surveying the board as he stretched out his hand, check. I should hardly think that he'd come to night, said his father with his hand poised over the board. Mate, replied the son.",
+          "evaluated_transcript_sha256": "0afb58615d418e478d7b71a247695dc156d941c2a8f1ac4ff75786270fd89ef6",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\btonight\\b",
+              "replacement": "to night",
+              "observed_count": 1,
+              "reason": "single-token ASR rendering of the acoustically identical source to-night"
+            }
+          ],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 67,
+          "transcript_token_count": 67,
+          "equal_token_count": 67,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        },
+        {
+          "passage_id": "opening_domestic_tension",
+          "decoder_arm": "unprompted_greedy",
+          "audio_sha256": "f05904b0e4a8172dfb6409390d0e696fd5fb14dd8b7a4599738b7ecad65f1f7e",
+          "source_text_sha256": "1505ffdc29416106677ad7c3ef7ea0a3db602c1069e1d72b81327721c1fe5765",
+          "raw_transcript": "Hark at the wind, said Mr. White, who having seen a fatal mistake after it was too late, was amiably desirous of preventing his son from seeing it. I'm listening, said the latter, grimly surveying the board as he stretched out his hand, check. I should hardly think that he'd come tonight, said his father with his hand poised over the board. Mate, replied the son.",
+          "raw_transcript_sha256": "4461b6b881d1d20f41ba86f8821dc3c6166488a4eac9f4be8550498897e853a8",
+          "evaluated_transcript": "Hark at the wind, said Mr. White, who having seen a fatal mistake after it was too late, was amiably desirous of preventing his son from seeing it. I'm listening, said the latter, grimly surveying the board as he stretched out his hand, check. I should hardly think that he'd come to night, said his father with his hand poised over the board. Mate, replied the son.",
+          "evaluated_transcript_sha256": "573aceaefe3c6dde59e3630b5d6b064eeff75100979a0da6ce3c8ee9f2351900",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\btonight\\b",
+              "replacement": "to night",
+              "observed_count": 1,
+              "reason": "single-token ASR rendering of the acoustically identical source to-night"
+            }
+          ],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 67,
+          "transcript_token_count": 67,
+          "equal_token_count": 67,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        },
+        {
+          "passage_id": "opening_domestic_tension",
+          "decoder_arm": "canonical_vocabulary_beam_2",
+          "audio_sha256": "f05904b0e4a8172dfb6409390d0e696fd5fb14dd8b7a4599738b7ecad65f1f7e",
+          "source_text_sha256": "1505ffdc29416106677ad7c3ef7ea0a3db602c1069e1d72b81327721c1fe5765",
+          "raw_transcript": "Hark at the wind, said Mr. White, who, having seen a fatal mistake after it was too late, was amiably desirous of preventing his son from seeing it. I'm listening, said the latter, grimly surveying the board as he stretched out his hand. Check. I should hardly think that he'd come tonight, said his father with his hand poised over the board. Mate, replied the son.",
+          "raw_transcript_sha256": "c51ec40b8b962b71456a21c3d1c5d18c536ba855f606e957811b07b05b119f94",
+          "evaluated_transcript": "Hark at the wind, said Mr. White, who, having seen a fatal mistake after it was too late, was amiably desirous of preventing his son from seeing it. I'm listening, said the latter, grimly surveying the board as he stretched out his hand. Check. I should hardly think that he'd come to night, said his father with his hand poised over the board. Mate, replied the son.",
+          "evaluated_transcript_sha256": "6f4db437ab9eacf870aa172c617ef8099e155e5dfc58a83658c2f67aa4205af3",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\btonight\\b",
+              "replacement": "to night",
+              "observed_count": 1,
+              "reason": "single-token ASR rendering of the acoustically identical source to-night"
+            }
+          ],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 67,
+          "transcript_token_count": 67,
+          "equal_token_count": 67,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        }
+      ],
+      "paw_warning_and_fate": [
+        {
+          "passage_id": "paw_warning_and_fate",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "92db4c64575a3198fee24d94ac882d1cef32e49c6b43cee49f1b3f4c1c8924cd",
+          "source_text_sha256": "a3ec2e40908f432cca118c418e743329bccc9f411908bc16da2f725e8e43007d",
+          "raw_transcript": "It had a spell put on it by an old Fakir, said the sergeant major, a very holy man. He wanted to show that fate ruled people's lives and that those who interfered with it did so to their sorrow. He put a spell on it so that three separate men could each have three wishes from it. His manner was so impressive that his hearers were conscious that their light laughter jarred somewhat. Well, why don't you have three, sir, said Herbert White cleverly. The soldier regarded him in the way that middle ages want to regard presumptuous youth. I have, he said quietly, and his blotchy face whitened. And did you really have the three wishes granted, asked Mrs. White. I did, said the sergeant major, and his glass tapped against his strong teeth. And has anybody else wished, persisted the old lady. The first man had his three wishes. Yes, was the reply. I don't know what the first two were, but the third was for death. That's how I got the paw. His tones were so grave that a hush fell upon the group.",
+          "raw_transcript_sha256": "9722f04eb8b9e48096c3e51c2de18abad95e3691b8d1c5485a1d1975fb759f5d",
+          "evaluated_transcript": "It had a spell put on it by an old Fakir, said the sergeant major, a very holy man. He wanted to show that fate ruled people's lives and that those who interfered with it did so to their sorrow. He put a spell on it so that three separate men could each have three wishes from it. His manner was so impressive that his hearers were conscious that their light laughter jarred somewhat. Well, why don't you have three, sir, said Herbert White cleverly. The soldier regarded him in the way that middle ages want to regard presumptuous youth. I have, he said quietly, and his blotchy face whitened. And did you really have the three wishes granted, asked Mrs. White. I did, said the sergeant major, and his glass tapped against his strong teeth. And has anybody else wished, persisted the old lady. The first man had his three wishes. Yes, was the reply. I don't know what the first two were, but the third was for death. That's how I got the paw. His tones were so grave that a hush fell upon the group.",
+          "evaluated_transcript_sha256": "9722f04eb8b9e48096c3e51c2de18abad95e3691b8d1c5485a1d1975fb759f5d",
+          "source_equivalences_applied": [],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.8674,
+          "coverage": 0.9841,
+          "precision": 0.9894,
+          "source_token_count": 189,
+          "transcript_token_count": 188,
+          "equal_token_count": 186,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "age": 1,
+            "is": 1,
+            "wont": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "ages": 1,
+            "want": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                94,
+                97
+              ],
+              "transcript_range": [
+                94,
+                96
+              ],
+              "source_tokens": [
+                "age",
+                "is",
+                "wont"
+              ],
+              "transcript_tokens": [
+                "ages",
+                "want"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "paw_warning_and_fate",
+          "decoder_arm": "unprompted_greedy",
+          "audio_sha256": "92db4c64575a3198fee24d94ac882d1cef32e49c6b43cee49f1b3f4c1c8924cd",
+          "source_text_sha256": "a3ec2e40908f432cca118c418e743329bccc9f411908bc16da2f725e8e43007d",
+          "raw_transcript": "It had a spell put on it by an old Fakir, said the sergeant major, a very holy man. He wanted to show that fate ruled people's lives and that those who interfered with it did so to their sorrow. He put a spell on it so that three separate men could each have three wishes from it. His manner was so impressive that his hearers were conscious that their light laughter jarred somewhat. Well, why don't you have three, sir? Said Herbert White cleverly. The soldier regarded him in the way that middle ages want to regard presumptuous youth. I have, he said quietly and his blotchy face whitened. And did you really have the three wishes granted, asked Mrs. White. I did, said the sergeant major and his glass tapped against his strong teeth. And has anybody else wished, persisted the old lady. The first man had his three wishes. Yes, was the reply. I don't know what the first two were, but the third was for death. That's how I got the paw. His tones were so grave that a hush fell upon the group.",
+          "raw_transcript_sha256": "6d701decdd44cbcebe5444cce0eeb11c76fd7f1c7b49ee63fdfbf627e6930204",
+          "evaluated_transcript": "It had a spell put on it by an old Fakir, said the sergeant major, a very holy man. He wanted to show that fate ruled people's lives and that those who interfered with it did so to their sorrow. He put a spell on it so that three separate men could each have three wishes from it. His manner was so impressive that his hearers were conscious that their light laughter jarred somewhat. Well, why don't you have three, sir? Said Herbert White cleverly. The soldier regarded him in the way that middle ages want to regard presumptuous youth. I have, he said quietly and his blotchy face whitened. And did you really have the three wishes granted, asked Mrs. White. I did, said the sergeant major and his glass tapped against his strong teeth. And has anybody else wished, persisted the old lady. The first man had his three wishes. Yes, was the reply. I don't know what the first two were, but the third was for death. That's how I got the paw. His tones were so grave that a hush fell upon the group.",
+          "evaluated_transcript_sha256": "6d701decdd44cbcebe5444cce0eeb11c76fd7f1c7b49ee63fdfbf627e6930204",
+          "source_equivalences_applied": [],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.8674,
+          "coverage": 0.9841,
+          "precision": 0.9894,
+          "source_token_count": 189,
+          "transcript_token_count": 188,
+          "equal_token_count": 186,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "age": 1,
+            "is": 1,
+            "wont": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "ages": 1,
+            "want": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                94,
+                97
+              ],
+              "transcript_range": [
+                94,
+                96
+              ],
+              "source_tokens": [
+                "age",
+                "is",
+                "wont"
+              ],
+              "transcript_tokens": [
+                "ages",
+                "want"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "paw_warning_and_fate",
+          "decoder_arm": "canonical_vocabulary_beam_2",
+          "audio_sha256": "92db4c64575a3198fee24d94ac882d1cef32e49c6b43cee49f1b3f4c1c8924cd",
+          "source_text_sha256": "a3ec2e40908f432cca118c418e743329bccc9f411908bc16da2f725e8e43007d",
+          "raw_transcript": "It had a spell put on it by an old fakir, said the sergeant-major, a very holy man. He wanted to show that fate ruled people's lives and that those who interfered with it did so to their sorrow. He put a spell on it so that three separate men could each have three wishes from it. His manner was so impressive that his hearers were conscious that their light laughter jarred somewhat. Well, why don't you have three, sir? said Herbert White cleverly. The soldier regarded him in the way that middle ages want to regard presumptuous youth. I have, he said quietly, and his blotchy face whitened. And did you really have the three wishes granted, asked Mrs. White. I did, said the sergeant major, and his glass tapped against his strong teeth. And has anybody else wished, persisted the old lady. The first man had his three wishes. Yes, was the reply. I don't know what the first two were, but the third was for death. That's how I got the paw. His tones were so grave that a hush fell upon the group.",
+          "raw_transcript_sha256": "4832ae31732c3ac66ed9fadf2bb6fee1c5f3eddc3012c3e560330dce49232811",
+          "evaluated_transcript": "It had a spell put on it by an old fakir, said the sergeant-major, a very holy man. He wanted to show that fate ruled people's lives and that those who interfered with it did so to their sorrow. He put a spell on it so that three separate men could each have three wishes from it. His manner was so impressive that his hearers were conscious that their light laughter jarred somewhat. Well, why don't you have three, sir? said Herbert White cleverly. The soldier regarded him in the way that middle ages want to regard presumptuous youth. I have, he said quietly, and his blotchy face whitened. And did you really have the three wishes granted, asked Mrs. White. I did, said the sergeant major, and his glass tapped against his strong teeth. And has anybody else wished, persisted the old lady. The first man had his three wishes. Yes, was the reply. I don't know what the first two were, but the third was for death. That's how I got the paw. His tones were so grave that a hush fell upon the group.",
+          "evaluated_transcript_sha256": "4832ae31732c3ac66ed9fadf2bb6fee1c5f3eddc3012c3e560330dce49232811",
+          "source_equivalences_applied": [],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.8674,
+          "coverage": 0.9841,
+          "precision": 0.9894,
+          "source_token_count": 189,
+          "transcript_token_count": 188,
+          "equal_token_count": 186,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "age": 1,
+            "is": 1,
+            "wont": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "ages": 1,
+            "want": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                94,
+                97
+              ],
+              "transcript_range": [
+                94,
+                96
+              ],
+              "source_tokens": [
+                "age",
+                "is",
+                "wont"
+              ],
+              "transcript_tokens": [
+                "ages",
+                "want"
+              ]
+            }
+          ],
+          "pass": false
+        }
+      ],
+      "factory_news_and_grief": [
+        {
+          "passage_id": "factory_news_and_grief",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "9c15cc86759e7258be239fdc4166c768b8acf4cb98a3268006df7137950a070f",
+          "source_text_sha256": "6877bbcbea4fdfd7729b41ff27dc422b18dd6d44b7b0e4893555ba5e109cf0aa",
+          "raw_transcript": "\"'I was asked to call,' he said at last, and stooped and picked a piece of cotton from his trousers. \"'I come from Ma and Meghan's,' the old lady started. \"'Is anything the matter?' she asked breathlessly. \"'Has anything happened to Herbert? What is it, what is it?' her husband interposed. \"'There, there, Mother,' he said hastily. \"'Sit down and don't jump to conclusions. You've not brought bad news, I'm sure, sir,' and he eyed the other wistfully. \"'I'm sorry,' began the visitor. \"'Is he hurt?' Demanded the mother wildly, the visitor bowed in assent. Badly hurt, he said quietly, but he is not in any pain. Oh, thank God, said the old woman clasping her hands. Thank God for that, thank. She broke off suddenly as the sinister meaning of the assurance dawned upon her and she saw the awful confirmation of her fears in the other's averted face. She caught her breath and turning to her slower husband, laid her trembling old hand upon his. There was a long silence.",
+          "raw_transcript_sha256": "e82e7c39d9ea9af278346c62acf80e707d91b29da2e02f24fbed6cc34c488e32",
+          "evaluated_transcript": "\"'I was asked to call,' he said at last, and stooped and picked a piece of cotton from his trousers. \"'I come from Ma and Meghan's,' the old lady started. \"'Is anything the matter?' she asked breathlessly. \"'Has anything happened to Herbert? What is it, what is it?' her husband interposed. \"'There, there, Mother,' he said hastily. \"'Sit down and don't jump to conclusions. You've not brought bad news, I'm sure, sir,' and he eyed the other wistfully. \"'I'm sorry,' began the visitor. \"'Is he hurt?' Demanded the mother wildly, the visitor bowed in assent. Badly hurt, he said quietly, but he is not in any pain. Oh, thank God, said the old woman clasping her hands. Thank God for that, thank. She broke off suddenly as the sinister meaning of the assurance dawned upon her and she saw the awful confirmation of her fears in the other's averted face. She caught her breath and turning to her slower husband, laid her trembling old hand upon his. There was a long silence.",
+          "evaluated_transcript_sha256": "e82e7c39d9ea9af278346c62acf80e707d91b29da2e02f24fbed6cc34c488e32",
+          "source_equivalences_applied": [],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.8551,
+          "coverage": 0.9827,
+          "precision": 0.9884,
+          "source_token_count": 173,
+          "transcript_token_count": 172,
+          "equal_token_count": 170,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "maw": 1,
+            "meggins": 1,
+            "witted": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "ma": 1,
+            "meghan's": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                23,
+                24
+              ],
+              "transcript_range": [
+                23,
+                24
+              ],
+              "source_tokens": [
+                "maw"
+              ],
+              "transcript_tokens": [
+                "ma"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                25,
+                26
+              ],
+              "transcript_range": [
+                25,
+                26
+              ],
+              "source_tokens": [
+                "meggins"
+              ],
+              "transcript_tokens": [
+                "meghan's"
+              ]
+            },
+            {
+              "operation": "delete",
+              "source_range": [
+                159,
+                160
+              ],
+              "transcript_range": [
+                159,
+                159
+              ],
+              "source_tokens": [
+                "witted"
+              ],
+              "transcript_tokens": []
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "factory_news_and_grief",
+          "decoder_arm": "unprompted_greedy",
+          "audio_sha256": "9c15cc86759e7258be239fdc4166c768b8acf4cb98a3268006df7137950a070f",
+          "source_text_sha256": "6877bbcbea4fdfd7729b41ff27dc422b18dd6d44b7b0e4893555ba5e109cf0aa",
+          "raw_transcript": "I was asked to call,\" he said at last, and stooped and picked a piece of cotton from his trousers. I come from Ma and Meghan's. The old lady started. Is anything the matter? she asked, breathlessly. Has anything happened to Herbert? What is it, what is it? her husband interposed. There, there, Mother, he said hastily. Sit down and don't jump to conclusions. You've not brought bad news, I'm sure, sir, and he eyed the other wistfully. I'm sorry, began the visitor. Is he hurt? Demanded the mother wildly, the visitor bowed in assent. Badly hurt, he said quietly, but he is not in any pain. Thank God, said the old woman clasping her hands. Thank God for that, thank. She broke off suddenly as the sinister meaning of the assurance dawned upon her and she saw the awful confirmation of her fears in the other's averted face. She caught her breath and turning to her slower husband, laid her trembling old hand upon his. There was a long silence.",
+          "raw_transcript_sha256": "131696f4782372ee717bbecf293b5437436567dca426abed7c6663cc569b3911",
+          "evaluated_transcript": "I was asked to call,\" he said at last, and stooped and picked a piece of cotton from his trousers. I come from Ma and Meghan's. The old lady started. Is anything the matter? she asked, breathlessly. Has anything happened to Herbert? What is it, what is it? her husband interposed. There, there, Mother, he said hastily. Sit down and don't jump to conclusions. You've not brought bad news, I'm sure, sir, and he eyed the other wistfully. I'm sorry, began the visitor. Is he hurt? Demanded the mother wildly, the visitor bowed in assent. Badly hurt, he said quietly, but he is not in any pain. Thank God, said the old woman clasping her hands. Thank God for that, thank. She broke off suddenly as the sinister meaning of the assurance dawned upon her and she saw the awful confirmation of her fears in the other's averted face. She caught her breath and turning to her slower husband, laid her trembling old hand upon his. There was a long silence.",
+          "evaluated_transcript_sha256": "131696f4782372ee717bbecf293b5437436567dca426abed7c6663cc569b3911",
+          "source_equivalences_applied": [],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.8256,
+          "coverage": 0.9769,
+          "precision": 0.9883,
+          "source_token_count": 173,
+          "transcript_token_count": 171,
+          "equal_token_count": 169,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "maw": 1,
+            "meggins": 1,
+            "oh": 1,
+            "witted": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "ma": 1,
+            "meghan's": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                23,
+                24
+              ],
+              "transcript_range": [
+                23,
+                24
+              ],
+              "source_tokens": [
+                "maw"
+              ],
+              "transcript_tokens": [
+                "ma"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                25,
+                26
+              ],
+              "transcript_range": [
+                25,
+                26
+              ],
+              "source_tokens": [
+                "meggins"
+              ],
+              "transcript_tokens": [
+                "meghan's"
+              ]
+            },
+            {
+              "operation": "delete",
+              "source_range": [
+                107,
+                108
+              ],
+              "transcript_range": [
+                107,
+                107
+              ],
+              "source_tokens": [
+                "oh"
+              ],
+              "transcript_tokens": []
+            },
+            {
+              "operation": "delete",
+              "source_range": [
+                159,
+                160
+              ],
+              "transcript_range": [
+                158,
+                158
+              ],
+              "source_tokens": [
+                "witted"
+              ],
+              "transcript_tokens": []
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "factory_news_and_grief",
+          "decoder_arm": "canonical_vocabulary_beam_2",
+          "audio_sha256": "9c15cc86759e7258be239fdc4166c768b8acf4cb98a3268006df7137950a070f",
+          "source_text_sha256": "6877bbcbea4fdfd7729b41ff27dc422b18dd6d44b7b0e4893555ba5e109cf0aa",
+          "raw_transcript": "I was asked to call, he said at last, and stooped and picked a piece of cotton from his trousers. I come from Maw and Meggins. The old lady started. Is anything the matter, she asked breathlessly. Has anything happened to Herbert? What is it, what is it? Her husband interposed. There, there, mother, he said hastily. Sit down and don't jump to conclusions. You've not brought bad news, I'm sure, sir, and he eyed the other wistfully. I'm sorry, began the visitor. Is he hurt? Demanded the mother wildly, the visitor bowed in assent. Badly hurt, he said quietly, but he is not in any pain. Thank God, said the old woman clasping her hands. Thank God for that, thank. She broke off suddenly as the sinister meaning of the assurance dawned upon her and she saw the awful confirmation of her fears in the other's averted face. She caught her breath and turning to her slower husband, laid her trembling old hand upon his. There was a long silence. Thanks for watching!",
+          "raw_transcript_sha256": "b1f7ddb806a5a1908c3c195c0e5a97da626172899f500f1f9f97acc06fe3055a",
+          "evaluated_transcript": "I was asked to call, he said at last, and stooped and picked a piece of cotton from his trousers. I come from Maw and Meggins. The old lady started. Is anything the matter, she asked breathlessly. Has anything happened to Herbert? What is it, what is it? Her husband interposed. There, there, mother, he said hastily. Sit down and don't jump to conclusions. You've not brought bad news, I'm sure, sir, and he eyed the other wistfully. I'm sorry, began the visitor. Is he hurt? Demanded the mother wildly, the visitor bowed in assent. Badly hurt, he said quietly, but he is not in any pain. Thank God, said the old woman clasping her hands. Thank God for that, thank. She broke off suddenly as the sinister meaning of the assurance dawned upon her and she saw the awful confirmation of her fears in the other's averted face. She caught her breath and turning to her slower husband, laid her trembling old hand upon his. There was a long silence. Thanks for watching!",
+          "evaluated_transcript_sha256": "b1f7ddb806a5a1908c3c195c0e5a97da626172899f500f1f9f97acc06fe3055a",
+          "source_equivalences_applied": [],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.8559,
+          "coverage": 0.9884,
+          "precision": 0.9828,
+          "source_token_count": 173,
+          "transcript_token_count": 174,
+          "equal_token_count": 171,
+          "first_words_match": true,
+          "last_words_match": false,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": false,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "oh": 1,
+            "witted": 1
+          },
+          "duplicate_tokens": {
+            "for": 1
+          },
+          "unexpected_tokens": {
+            "for": 1,
+            "thanks": 1,
+            "watching": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "delete",
+              "source_range": [
+                107,
+                108
+              ],
+              "transcript_range": [
+                107,
+                107
+              ],
+              "source_tokens": [
+                "oh"
+              ],
+              "transcript_tokens": []
+            },
+            {
+              "operation": "delete",
+              "source_range": [
+                159,
+                160
+              ],
+              "transcript_range": [
+                158,
+                158
+              ],
+              "source_tokens": [
+                "witted"
+              ],
+              "transcript_tokens": []
+            },
+            {
+              "operation": "insert",
+              "source_range": [
+                173,
+                173
+              ],
+              "transcript_range": [
+                171,
+                174
+              ],
+              "source_tokens": [],
+              "transcript_tokens": [
+                "thanks",
+                "for",
+                "watching"
+              ]
+            }
+          ],
+          "pass": false
+        }
+      ],
+      "final_knocking_and_third_wish": [
+        {
+          "passage_id": "final_knocking_and_third_wish",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "0d5fd578ba36d0826ac63ebf5bbdebb9eadf3e22186855a41a16d42206b75081",
+          "source_text_sha256": "9198f815c21620148cfab038af5bdaadedd7397567c9a9010c1d1bc340148fb4",
+          "raw_transcript": "There was another knock, and another. The old woman with a sudden wrench broke free and ran from the room. Her husband followed to the landing and called after her appealingly as she hurried downstairs. He heard the chain rattle back and the bottom bolt drawn slowly and stiffly from the socket. Then the old woman's voice strained and panting. The bolt! she cried loudly. Come down, I can't reach it. But her husband was on his hands and knees groping wildly on the floor in search of the paw. If he could only find it before the thing outside got in, a perfect fuselod of knocks reverberated through the house. And he heard the scraping of a chair as his wife put it down in the passage against the door. He heard the creaking of the bolt as it came slowly back. And at the same moment he found the monkey's paw and frantically breathed his third and last wish. The knocking ceased suddenly, although the echoes of it were still in the house. He heard the chair drawn back and the door opened. A cold wind rushed up the staircase, and a long loud wail of disappointment and misery from his wife gave him courage to run down to her side, and then to the gate beyond. The street lamp flickering opposite shone on a quiet and deserted road.",
+          "raw_transcript_sha256": "24b9b1736685f1be570ea156714d9bb164db88a635d867648766a86635af6fe0",
+          "evaluated_transcript": "There was another knock, and another. The old woman with a sudden wrench broke free and ran from the room. Her husband followed to the landing and called after her appealingly as she hurried downstairs. He heard the chain rattle back and the bottom bolt drawn slowly and stiffly from the socket. Then the old woman's voice strained and panting. The bolt! she cried loudly. Come down, I can't reach it. But her husband was on his hands and knees groping wildly on the floor in search of the paw. If he could only find it before the thing outside got in, a perfect fuselod of knocks reverberated through the house. And he heard the scraping of a chair as his wife put it down in the passage against the door. He heard the creaking of the bolt as it came slowly back. And at the same moment he found the monkey's paw and frantically breathed his third and last wish. The knocking ceased suddenly, although the echoes of it were still in the house. He heard the chair drawn back and the door opened. A cold wind rushed up the staircase, and a long loud wail of disappointment and misery from his wife gave him courage to run down to her side, and then to the gate beyond. The street lamp flickering opposite shone on a quiet and deserted road.",
+          "evaluated_transcript_sha256": "24b9b1736685f1be570ea156714d9bb164db88a635d867648766a86635af6fe0",
+          "source_equivalences_applied": [],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.9567,
+          "coverage": 0.9957,
+          "precision": 0.9957,
+          "source_token_count": 231,
+          "transcript_token_count": 231,
+          "equal_token_count": 230,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "fusillade": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "fuselod": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                104,
+                105
+              ],
+              "transcript_range": [
+                104,
+                105
+              ],
+              "source_tokens": [
+                "fusillade"
+              ],
+              "transcript_tokens": [
+                "fuselod"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "final_knocking_and_third_wish",
+          "decoder_arm": "unprompted_greedy",
+          "audio_sha256": "0d5fd578ba36d0826ac63ebf5bbdebb9eadf3e22186855a41a16d42206b75081",
+          "source_text_sha256": "9198f815c21620148cfab038af5bdaadedd7397567c9a9010c1d1bc340148fb4",
+          "raw_transcript": "There was another knock and another. The old woman with a sudden wrench broke free and ran from the room. Her husband followed to the landing and called after her appealingly as she hurried downstairs. He heard the chain rattle back and the bottom bolt drawn slowly and stiffly from the socket. Then the old woman's voice strained and panting. The bolt! she cried loudly. Come down. I can't reach it. But her husband was on his hands and knees groping wildly on the floor in search of the paw. If he could only find it before the thing outside got in, a perfect fuselage of knocks reverberated through the house. And he heard the scraping of a chair as his wife put it down in the passage against the door. He heard the creaking of the bolt as it came slowly back. And at the same moment he found the monkey's paw and frantically breathed his third and last wish. The knocking ceased suddenly, although the echoes of it were still in the house. He heard the chair drawn back and the door opened. A cold wind rushed up the staircase, and a long loud wail of disappointment and misery from his wife gave him courage to run down to her side, and then to the gate beyond. The street lamp flickering opposite shone on a quiet and deserted road.",
+          "raw_transcript_sha256": "47eb5c98c82ca08f8728a16fdcc069a6e5b34089fcd1f53a3010adc46b770ce8",
+          "evaluated_transcript": "There was another knock and another. The old woman with a sudden wrench broke free and ran from the room. Her husband followed to the landing and called after her appealingly as she hurried downstairs. He heard the chain rattle back and the bottom bolt drawn slowly and stiffly from the socket. Then the old woman's voice strained and panting. The bolt! she cried loudly. Come down. I can't reach it. But her husband was on his hands and knees groping wildly on the floor in search of the paw. If he could only find it before the thing outside got in, a perfect fuselage of knocks reverberated through the house. And he heard the scraping of a chair as his wife put it down in the passage against the door. He heard the creaking of the bolt as it came slowly back. And at the same moment he found the monkey's paw and frantically breathed his third and last wish. The knocking ceased suddenly, although the echoes of it were still in the house. He heard the chair drawn back and the door opened. A cold wind rushed up the staircase, and a long loud wail of disappointment and misery from his wife gave him courage to run down to her side, and then to the gate beyond. The street lamp flickering opposite shone on a quiet and deserted road.",
+          "evaluated_transcript_sha256": "47eb5c98c82ca08f8728a16fdcc069a6e5b34089fcd1f53a3010adc46b770ce8",
+          "source_equivalences_applied": [],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.9567,
+          "coverage": 0.9957,
+          "precision": 0.9957,
+          "source_token_count": 231,
+          "transcript_token_count": 231,
+          "equal_token_count": 230,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "fusillade": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "fuselage": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                104,
+                105
+              ],
+              "transcript_range": [
+                104,
+                105
+              ],
+              "source_tokens": [
+                "fusillade"
+              ],
+              "transcript_tokens": [
+                "fuselage"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "final_knocking_and_third_wish",
+          "decoder_arm": "canonical_vocabulary_beam_2",
+          "audio_sha256": "0d5fd578ba36d0826ac63ebf5bbdebb9eadf3e22186855a41a16d42206b75081",
+          "source_text_sha256": "9198f815c21620148cfab038af5bdaadedd7397567c9a9010c1d1bc340148fb4",
+          "raw_transcript": "There was another knock, and another. The old woman with a sudden wrench broke free and ran from the room. Her husband followed to the landing and called after her appealingly as she hurried downstairs. He heard the chain rattle back and the bottom bolt drawn slowly and stiffly from the socket. Then the old woman's voice strained and panting. The bolt! she cried loudly. Come down, I can't reach it. But her husband was on his hands and knees groping wildly on the floor in search of the paw. If he could only find it before the thing outside got in, a perfect fuselod of knocks reverberated through the house. And he heard the scraping of a chair as his wife put it down in the passage against the door. He heard the creaking of the bolt as it came slowly back. And at the same moment he found the monkey's paw and frantically breathed his third and last wish. The knocking ceased suddenly, although the echoes of it were still in the house. He heard the chair drawn back and the door opened. A cold wind rushed up the staircase, and a long loud wail of disappointment and misery from his wife gave him courage to run down to her side, and then to the gate beyond. The street lamp flickering opposite shone on a quiet and deserted road.",
+          "raw_transcript_sha256": "24b9b1736685f1be570ea156714d9bb164db88a635d867648766a86635af6fe0",
+          "evaluated_transcript": "There was another knock, and another. The old woman with a sudden wrench broke free and ran from the room. Her husband followed to the landing and called after her appealingly as she hurried downstairs. He heard the chain rattle back and the bottom bolt drawn slowly and stiffly from the socket. Then the old woman's voice strained and panting. The bolt! she cried loudly. Come down, I can't reach it. But her husband was on his hands and knees groping wildly on the floor in search of the paw. If he could only find it before the thing outside got in, a perfect fuselod of knocks reverberated through the house. And he heard the scraping of a chair as his wife put it down in the passage against the door. He heard the creaking of the bolt as it came slowly back. And at the same moment he found the monkey's paw and frantically breathed his third and last wish. The knocking ceased suddenly, although the echoes of it were still in the house. He heard the chair drawn back and the door opened. A cold wind rushed up the staircase, and a long loud wail of disappointment and misery from his wife gave him courage to run down to her side, and then to the gate beyond. The street lamp flickering opposite shone on a quiet and deserted road.",
+          "evaluated_transcript_sha256": "24b9b1736685f1be570ea156714d9bb164db88a635d867648766a86635af6fe0",
+          "source_equivalences_applied": [],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.9567,
+          "coverage": 0.9957,
+          "precision": 0.9957,
+          "source_token_count": 231,
+          "transcript_token_count": 231,
+          "equal_token_count": 230,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "fusillade": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "fuselod": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                104,
+                105
+              ],
+              "transcript_range": [
+                104,
+                105
+              ],
+              "source_tokens": [
+                "fusillade"
+              ],
+              "transcript_tokens": [
+                "fuselod"
+              ]
+            }
+          ],
+          "pass": false
+        }
+      ]
+    },
+    "selected_decoder_by_passage": {
+      "opening_domestic_tension": "unprompted_beam_2",
+      "paw_warning_and_fate": "unprompted_beam_2",
+      "factory_news_and_grief": "canonical_vocabulary_beam_2",
+      "final_knocking_and_third_wish": "unprompted_beam_2"
+    },
+    "retained_audio_hashes_before": {
+      "opening_domestic_tension": "f05904b0e4a8172dfb6409390d0e696fd5fb14dd8b7a4599738b7ecad65f1f7e",
+      "paw_warning_and_fate": "92db4c64575a3198fee24d94ac882d1cef32e49c6b43cee49f1b3f4c1c8924cd",
+      "factory_news_and_grief": "9c15cc86759e7258be239fdc4166c768b8acf4cb98a3268006df7137950a070f",
+      "final_knocking_and_third_wish": "0d5fd578ba36d0826ac63ebf5bbdebb9eadf3e22186855a41a16d42206b75081"
+    },
+    "retained_audio_hashes_after": {
+      "opening_domestic_tension": "f05904b0e4a8172dfb6409390d0e696fd5fb14dd8b7a4599738b7ecad65f1f7e",
+      "paw_warning_and_fate": "92db4c64575a3198fee24d94ac882d1cef32e49c6b43cee49f1b3f4c1c8924cd",
+      "factory_news_and_grief": "9c15cc86759e7258be239fdc4166c768b8acf4cb98a3268006df7137950a070f",
+      "final_knocking_and_third_wish": "0d5fd578ba36d0826ac63ebf5bbdebb9eadf3e22186855a41a16d42206b75081"
+    },
+    "retained_audio_immutable": true,
+    "resynthesis_performed": false,
+    "audio_edit_or_trim_performed": false,
+    "unexpected_speech_deleted_or_normalized": false,
+    "substantive_normalization_performed": false
+  }
+}

@@ -1,0 +1,645 @@
+{
+  "schema": "earnalism.kokoro.monkeys_paw_bf_emma_private_audition.v1",
+  "generated_at": "2026-07-20T06:03:56Z",
+  "status": "PRIVATE_REPRESENTATIVE_PILOT_REJECTED",
+  "go_no_go": "NO_GO_REPRESENTATIVE_OBJECTIVE_GATE_FAILED",
+  "scope": {
+    "slug": "the-monkeys-paw",
+    "title": "The Monkey's Paw",
+    "author": "W.W. Jacobs",
+    "language": "en",
+    "profile": "monkeys-paw-bf-emma-gothic-v1",
+    "chapter_count": 3,
+    "passage_count": 4,
+    "characters": 3639,
+    "representative_only": true,
+    "full_title_generated": false
+  },
+  "source": {
+    "chapter_paths": [
+      "/private/tmp/earnalism-sprint1-distinct-voice/data/controlled_publications/the-monkeys-paw/chapters/chapter-001.json",
+      "/private/tmp/earnalism-sprint1-distinct-voice/data/controlled_publications/the-monkeys-paw/chapters/chapter-002.json",
+      "/private/tmp/earnalism-sprint1-distinct-voice/data/controlled_publications/the-monkeys-paw/chapters/chapter-003.json"
+    ],
+    "origin_source_sha256": "e435de0511bd61d2373a445b0c5e054b747072357b5373e27b7a4b8a5b40cd01",
+    "aggregate_source_sha256": "993ea84df5163bddcb4d4579a78ee5fb4b5ad9002a9659f9ac2e2f73198ec6b7",
+    "normalized_source_sha256": "a3fb946efdc410958f47fab3a6ec613d7f2280cee06e1f60b079a5d908af29bd",
+    "rights_basis": "Author died 1943. Published 1902. Pre-1928 publication supports U.S. public-domain status.",
+    "passages": [
+      {
+        "passage_id": "opening_domestic_tension",
+        "chapter": "chapter-001.json",
+        "characters": 378,
+        "text_sha256": "1505ffdc29416106677ad7c3ef7ea0a3db602c1069e1d72b81327721c1fe5765",
+        "risk": "period dialogue, domestic understatement, and abrupt chess beats"
+      },
+      {
+        "passage_id": "paw_warning_and_fate",
+        "chapter": "chapter-001.json",
+        "characters": 1023,
+        "text_sha256": "a3ec2e40908f432cca118c418e743329bccc9f411908bc16da2f725e8e43007d",
+        "risk": "mythic exposition, ominous restraint, and multi-speaker dialogue"
+      },
+      {
+        "passage_id": "factory_news_and_grief",
+        "chapter": "chapter-002.json",
+        "characters": 988,
+        "text_sha256": "6877bbcbea4fdfd7729b41ff27dc422b18dd6d44b7b0e4893555ba5e109cf0aa",
+        "risk": "interrupted speech, shock, grief, and a required meaningful silence"
+      },
+      {
+        "passage_id": "final_knocking_and_third_wish",
+        "chapter": "chapter-003.json",
+        "characters": 1250,
+        "text_sha256": "9198f815c21620148cfab038af5bdaadedd7397567c9a9010c1d1bc340148fb4",
+        "risk": "suspense crescendo, physical action, final wish, and desolate release"
+      }
+    ]
+  },
+  "prior_attempt_audit": {
+    "evidence_path": "/private/tmp/earnalism-sprint1-distinct-voice/internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_release_gate_evidence.json",
+    "closed_google_fingerprints": [
+      "14b9ef3e3465b1b0",
+      "8b671c0f3c569295"
+    ],
+    "full_candidate_fingerprint": "5587b21dfa3da95c",
+    "repaired_candidate_binding": "21d75ab9607f533fc6526ff965b41dfc01d34d3865d423cb23ff2b6e94bdc9bc",
+    "new_provider_family": "kokoro",
+    "materially_distinct": true
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "package_version": "0.9.4",
+    "model_repo": "hexgrad/Kokoro-82M",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "bf_emma",
+    "voice_language": "British English",
+    "voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+    "speed": 0.94,
+    "random_seed": 2026072003,
+    "g2p_language_code": "b",
+    "g2p_fallback_enabled": false,
+    "attempt_fingerprint": "e62afa333e08cb3c4df2d11e529c95dc661465f337537f02dbd7e054c1e405a4",
+    "kokoro_lang_code": "b",
+    "g2p_british": true,
+    "previous_voice_sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6"
+  },
+  "voice_selection": {
+    "selected_voice": "bf_emma",
+    "selected_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+    "previous_voice": "af_bella",
+    "previous_voice_sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+    "voice_tensor_is_materially_different": true,
+    "locale": "British English",
+    "kokoro_lang_code": "b",
+    "g2p_british": true,
+    "selection_reason": "The restrained British timbre is title-suitable for period Gothic suspense and is a checksum-distinct, previously untested voice for this title."
+  },
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/bf_emma.pt",
+      "sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+      "size_bytes": 523420
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "status": "PINNED_EXECUTION_RUNTIME_VERIFIED",
+    "pinned_execution_runtime_verified": true,
+    "python_version": "3.11.15",
+    "python_executable": "/opt/homebrew/Cellar/python@3.11/3.11.15_1/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "expected_python_version": "3.11.15",
+    "expected_python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "expected_package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    }
+  },
+  "g2p_audit": {
+    "status": "PASS",
+    "lang_code": "b",
+    "british": true,
+    "fallback": null,
+    "pronunciation_overrides": {
+      "Herbert": "hˈɜːbət",
+      "Meggins": "mˈɛɡɪnz",
+      "jarred": "ʤˈɑːd",
+      "tapped": "tˈæpt"
+    },
+    "reports": [
+      {
+        "passage_id": "opening_domestic_tension",
+        "phoneme_sha256": "a88b072d35edc4809432f0dee996ab30cfdf561a4320c8b2cff4582cff759fdc",
+        "token_count": 90,
+        "unresolved_tokens": []
+      },
+      {
+        "passage_id": "paw_warning_and_fate",
+        "phoneme_sha256": "11cfd6261a4d7ffc1a1179e0b392b7f915302a4dda9344d044ddc29d128a4dae",
+        "token_count": 236,
+        "unresolved_tokens": []
+      },
+      {
+        "passage_id": "factory_news_and_grief",
+        "phoneme_sha256": "4c0282da33f4c6eec6e0e3c15313f36599921ffc75dde3dcc95bd11a6e197aef",
+        "token_count": 243,
+        "unresolved_tokens": []
+      },
+      {
+        "passage_id": "final_knocking_and_third_wish",
+        "phoneme_sha256": "8aa37539eec3924e4010893cff8e2a57a85bc5b8bb169087315cfe8c186f1b1e",
+        "token_count": 263,
+        "unresolved_tokens": []
+      }
+    ]
+  },
+  "rights": {
+    "model_and_voicepack_license": "Apache-2.0",
+    "official_model_card_url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "official_voice_file_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/voices/bf_emma.pt",
+    "private_audition_allowed": true,
+    "commercial_use_allowed_under_recorded_license": true,
+    "apache_notice_obligations_still_apply": true,
+    "title_scoped_production_risk_acceptance_bound": false,
+    "production_release_approved": false,
+    "public_disclosure_required_if_later_approved": "AI voice"
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "ordered_content_integrity_required": true,
+    "source_equivalence_rules": [],
+    "estimated_sync_allowed": false
+  },
+  "next_stage_contract": {
+    "status": "EXECUTOR_COMPLETED_OBJECTIVE_FAIL_CLOSED",
+    "exact_execute_command": "PYTHONDONTWRITEBYTECODE=1 /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python internal/audiobook_lab/scripts/sprint1_monkeys_paw_bf_emma_private_audition.py --execute --slug the-monkeys-paw --profile monkeys-paw-bf-emma-gothic-v1 --asset-root /private/tmp/earnalism-sprint1-distinct-voice --artifact-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts --whisper-cache-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache --private-output-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-representative-v1 --output internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_kokoro_bf_emma_representative_v1.json",
+    "scope": "these four exact source-bound passages with bf_emma only",
+    "full_title_generation_allowed": false,
+    "listening_qa_allowed_by_this_command": false,
+    "upload_allowed": false,
+    "publication_allowed": false,
+    "release_gate_mutation_allowed": false,
+    "asr_must_pass_before_listening_qa": true,
+    "listening_qa_allowed": false
+  },
+  "safety": {
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-representative-v1",
+    "provider_calls": 0,
+    "estimated_provider_cost_usd": 0.0,
+    "paid_tts_lock_inspected": false,
+    "paid_tts_lock_touched": false,
+    "audio_generated": true,
+    "asr_run": true,
+    "listening_qa_run": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false,
+    "artifact_hashes_before": {
+      "model": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "config": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "voice": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+      "whisper": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f"
+    },
+    "artifact_hashes_after": {
+      "model": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "config": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "voice": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+      "whisper": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f"
+    },
+    "artifact_hashes_unchanged": true
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_OBJECTIVE_OR_ASR_GATE_FAILED",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "CANONICAL_FRONT_COVER_MISSING",
+    "TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "PRIVATE_UPLOAD_CHECKSUM_NOT_RUN",
+    "PRODUCTION_ENDPOINT_NOT_RUN",
+    "BROWSER_PLAYBACK_GATE_NOT_RUN",
+    "OWNER_10_TARGET_NOT_VERIFIED"
+  ],
+  "samples": [
+    {
+      "passage_id": "opening_domestic_tension",
+      "source_text_sha256": "1505ffdc29416106677ad7c3ef7ea0a3db602c1069e1d72b81327721c1fe5765",
+      "characters": 378,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-representative-v1/opening_domestic_tension.wav",
+      "phoneme_sha256": "a88b072d35edc4809432f0dee996ab30cfdf561a4320c8b2cff4582cff759fdc",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 20.625,
+      "size_bytes": 990044,
+      "audio_sha256": "2e55b15d360985800588be280ebcc2194a366f93e3b745cd96c787a0259f9559",
+      "peak_fraction": 0.651112,
+      "rms_fraction": 0.060991,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "paw_warning_and_fate",
+      "source_text_sha256": "a3ec2e40908f432cca118c418e743329bccc9f411908bc16da2f725e8e43007d",
+      "characters": 1023,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-representative-v1/paw_warning_and_fate.wav",
+      "phoneme_sha256": "282c46128c4a69bbfe104fae4f9c48ed64cc50958331d809bfb77cf4b1e09c3c",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 55.45,
+      "size_bytes": 2661644,
+      "audio_sha256": "b2b02e381e4e4d095bad79a9e6ecfb9b41718fead258b88b09a7212c5de2db94",
+      "peak_fraction": 0.550005,
+      "rms_fraction": 0.06029,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "factory_news_and_grief",
+      "source_text_sha256": "6877bbcbea4fdfd7729b41ff27dc422b18dd6d44b7b0e4893555ba5e109cf0aa",
+      "characters": 988,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-representative-v1/factory_news_and_grief.wav",
+      "phoneme_sha256": "dc4e7693b0ae1b4c348f699192c2cd2674bdbb6c6998cc1d1364219a28410563",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 51.625,
+      "size_bytes": 2478044,
+      "audio_sha256": "cf303ce5afeb6f66df9393ae44e2c4f5233f714ff5310dfcfda216c8c459577f",
+      "peak_fraction": 0.54857,
+      "rms_fraction": 0.059795,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "final_knocking_and_third_wish",
+      "source_text_sha256": "9198f815c21620148cfab038af5bdaadedd7397567c9a9010c1d1bc340148fb4",
+      "characters": 1250,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-monkeys-paw/f3ff3571-bf-emma-representative-v1/final_knocking_and_third_wish.wav",
+      "phoneme_sha256": "aaed606413ada538b88b4ef40ccaea05b9f8519e8373e692b19d563e66970886",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 67.15,
+      "size_bytes": 3223244,
+      "audio_sha256": "38d725efe65b6654bff62cee8ac79c8c40d5ed5c3e87012ab6fb1ac84d0e1921",
+      "peak_fraction": 0.618274,
+      "rms_fraction": 0.060015,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    }
+  ],
+  "asr": {
+    "status": "FAIL",
+    "mode": "ASR_REVERIFY_EXISTING_AUDIO_ONLY",
+    "config_fingerprint": "114a081664865b1dba6981cc138edb67381ff8775895c64884f491d074d62ac1",
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "audio_derived": true,
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "prompt_policy": {
+      "opening_domestic_tension": "no_prompt",
+      "paw_warning_and_fate": "no_prompt",
+      "factory_news_and_grief": "no_prompt",
+      "final_knocking_and_third_wish": "no_prompt"
+    },
+    "source_equivalence_policy": {
+      "opening_domestic_tension": [],
+      "paw_warning_and_fate": [],
+      "factory_news_and_grief": [],
+      "final_knocking_and_third_wish": []
+    },
+    "unexpected_speech_may_be_normalized_or_discarded": false,
+    "reports": [
+      {
+        "passage_id": "opening_domestic_tension",
+        "audio_sha256": "2e55b15d360985800588be280ebcc2194a366f93e3b745cd96c787a0259f9559",
+        "source_text_sha256": "1505ffdc29416106677ad7c3ef7ea0a3db602c1069e1d72b81327721c1fe5765",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "\"'Hark at the wind,' said Mr. White, who having seen a fatal mistake after it was too late, was amiably desirous of preventing his son from seeing it. \"'I'm listening,' said the latter, grimly surveying the board as he stretched out his hand. \"'Check.' \"'I should hardly think that he'd come tonight,' said his father, with his hand poised over the board. \"'Mate,' replied the son.",
+        "transcript_sha256": "0e6764a39e9be495a0ab1d20b51520bc7b02557cc7812ea438172a3126ae7706",
+        "evaluated_transcript": "\"'Hark at the wind,' said Mr. White, who having seen a fatal mistake after it was too late, was amiably desirous of preventing his son from seeing it. \"'I'm listening,' said the latter, grimly surveying the board as he stretched out his hand. \"'Check.' \"'I should hardly think that he'd come tonight,' said his father, with his hand poised over the board. \"'Mate,' replied the son.",
+        "evaluated_transcript_sha256": "0e6764a39e9be495a0ab1d20b51520bc7b02557cc7812ea438172a3126ae7706",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.004083,
+        "score": 9.7744,
+        "coverage": 0.9701,
+        "precision": 0.9848,
+        "source_token_count": 67,
+        "transcript_token_count": 66,
+        "equal_token_count": 65,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "to": 1,
+          "night": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "tonight": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              51,
+              53
+            ],
+            "transcript_range": [
+              51,
+              52
+            ],
+            "source_tokens": [
+              "to",
+              "night"
+            ],
+            "transcript_tokens": [
+              "tonight"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "paw_warning_and_fate",
+        "audio_sha256": "b2b02e381e4e4d095bad79a9e6ecfb9b41718fead258b88b09a7212c5de2db94",
+        "source_text_sha256": "a3ec2e40908f432cca118c418e743329bccc9f411908bc16da2f725e8e43007d",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "It had a spell put on it by an old fakir,\" said the sergeant-major, a very holy man. He wanted to show that fate ruled people's lives and that those who interfered with it did so to their sorrow. He put a spell on it so that three separate men could each have three wishes from it. His manner was so impressive that his hearers were conscious that their light laughter jarred somewhat. Well, why don't you have three, sir? said Herbert White cleverly. The soldier regarded him in the way that Middle Ages won't to regard presumptuous youth. I have,\" he said quietly, and his blotchy face whitened. And did you really have the three wishes granted?\" asked Mrs. White. I did,\" said the sergeant-major, and his glass tapped against his strong teeth. And has anybody else wished?\" persisted the old lady. The first man had his three wishes. Yes, was the reply. I don't know what the first two were, but the third was for death. That's how I got the poor. His tones were so grave that a hush fell upon the group.",
+        "transcript_sha256": "03a6b935fa705dde7db724f8c5a2dbdf54150703120b4f11538edd8a46f88998",
+        "evaluated_transcript": "It had a spell put on it by an old fakir,\" said the sergeant-major, a very holy man. He wanted to show that fate ruled people's lives and that those who interfered with it did so to their sorrow. He put a spell on it so that three separate men could each have three wishes from it. His manner was so impressive that his hearers were conscious that their light laughter jarred somewhat. Well, why don't you have three, sir? said Herbert White cleverly. The soldier regarded him in the way that Middle Ages won't to regard presumptuous youth. I have,\" he said quietly, and his blotchy face whitened. And did you really have the three wishes granted?\" asked Mrs. White. I did,\" said the sergeant-major, and his glass tapped against his strong teeth. And has anybody else wished?\" persisted the old lady. The first man had his three wishes. Yes, was the reply. I don't know what the first two were, but the third was for death. That's how I got the poor. His tones were so grave that a hush fell upon the group.",
+        "evaluated_transcript_sha256": "03a6b935fa705dde7db724f8c5a2dbdf54150703120b4f11538edd8a46f88998",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.010266,
+        "score": 9.8143,
+        "coverage": 0.9788,
+        "precision": 0.984,
+        "source_token_count": 189,
+        "transcript_token_count": 188,
+        "equal_token_count": 185,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "age": 1,
+          "is": 1,
+          "wont": 1,
+          "paw": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "ages": 1,
+          "won't": 1,
+          "poor": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              94,
+              97
+            ],
+            "transcript_range": [
+              94,
+              96
+            ],
+            "source_tokens": [
+              "age",
+              "is",
+              "wont"
+            ],
+            "transcript_tokens": [
+              "ages",
+              "won't"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              176,
+              177
+            ],
+            "transcript_range": [
+              175,
+              176
+            ],
+            "source_tokens": [
+              "paw"
+            ],
+            "transcript_tokens": [
+              "poor"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "factory_news_and_grief",
+        "audio_sha256": "cf303ce5afeb6f66df9393ae44e2c4f5233f714ff5310dfcfda216c8c459577f",
+        "source_text_sha256": "6877bbcbea4fdfd7729b41ff27dc422b18dd6d44b7b0e4893555ba5e109cf0aa",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "Was asked to call, he said at last, and stooped and picked a piece of cotton from his trousers. I come from Moore and Meggins, the old lady started. Is anything the matter? she asked breathlessly. Has anything happened to Herbert? What is it? what is it? her husband interposed. There, there, mother, he said hastily. Sit down and don't jump to conclusions. You've not brought bad news, I'm sure, sir, and he eyed the other wistfully. I'm sorry, began the visitor. Is he hurt? Demanded the mother wildly, the visitor bowed in assent. badly hurt,\" he said quietly, but he is not in any pain. \"'Oh, thank God!\" said the old woman, clasping her hands. \"'Thank God for that, thank!'\" She broke off suddenly as the sinister meaning of the assurance dawned upon her, and she saw the awful confirmation of her fears in the other's averted face. She caught her breath, and turning to her slower husband, laid her trembling old hand upon his. There was a long silence.",
+        "transcript_sha256": "182cf47c0c94b82bc6351b972a8d66cc6b810d63d227b8aa9024d723fa040c19",
+        "evaluated_transcript": "Was asked to call, he said at last, and stooped and picked a piece of cotton from his trousers. I come from Moore and Meggins, the old lady started. Is anything the matter? she asked breathlessly. Has anything happened to Herbert? What is it? what is it? her husband interposed. There, there, mother, he said hastily. Sit down and don't jump to conclusions. You've not brought bad news, I'm sure, sir, and he eyed the other wistfully. I'm sorry, began the visitor. Is he hurt? Demanded the mother wildly, the visitor bowed in assent. badly hurt,\" he said quietly, but he is not in any pain. \"'Oh, thank God!\" said the old woman, clasping her hands. \"'Thank God for that, thank!'\" She broke off suddenly as the sinister meaning of the assurance dawned upon her, and she saw the awful confirmation of her fears in the other's averted face. She caught her breath, and turning to her slower husband, laid her trembling old hand upon his. There was a long silence.",
+        "evaluated_transcript_sha256": "182cf47c0c94b82bc6351b972a8d66cc6b810d63d227b8aa9024d723fa040c19",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.017782,
+        "score": 9.8837,
+        "coverage": 0.9827,
+        "precision": 0.9942,
+        "source_token_count": 173,
+        "transcript_token_count": 171,
+        "equal_token_count": 170,
+        "first_words_match": false,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": false,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "i": 1,
+          "maw": 1,
+          "witted": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "moore": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "delete",
+            "source_range": [
+              0,
+              1
+            ],
+            "transcript_range": [
+              0,
+              0
+            ],
+            "source_tokens": [
+              "i"
+            ],
+            "transcript_tokens": []
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              23,
+              24
+            ],
+            "transcript_range": [
+              22,
+              23
+            ],
+            "source_tokens": [
+              "maw"
+            ],
+            "transcript_tokens": [
+              "moore"
+            ]
+          },
+          {
+            "operation": "delete",
+            "source_range": [
+              159,
+              160
+            ],
+            "transcript_range": [
+              158,
+              158
+            ],
+            "source_tokens": [
+              "witted"
+            ],
+            "transcript_tokens": []
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "final_knocking_and_third_wish",
+        "audio_sha256": "38d725efe65b6654bff62cee8ac79c8c40d5ed5c3e87012ab6fb1ac84d0e1921",
+        "source_text_sha256": "9198f815c21620148cfab038af5bdaadedd7397567c9a9010c1d1bc340148fb4",
+        "prompt_mode": "no_prompt",
+        "prompt_sha256": null,
+        "transcript": "There was another knock and another. The old woman with a sudden wrench broke free and ran from the room. Her husband followed to the landing and called after her appealingly as she hurried downstairs. He heard the chain rattle back and the bottom bolt drawn slowly and stiffly from the socket. Then the old woman's voice strained and panting. The bolt!\" she cried loudly. \"'Come down, I can't reach it.'\" But her husband was on his hands and knees groping wildly on the floor in search of the pour. If he could only find it before the thing outside got in. A perfect fusillade of knocks reverberated through the house, and he heard the scraping of a chair as his wife put it down in the passage against the door. He heard the creaking of the bolt as it came slowly back, and at the same moment he found the monkey's paw, and frantically breathed his third and last wish. The knocking ceased suddenly, although the echoes of it were still in the house. He heard the chair drawn back, and the door opened. A cold wind rushed up the staircase, and a long loud wail of disappointment and misery from his wife gave him courage to run down to her side, and then to the gate beyond. The street lamp flickering opposite shone on a quiet and deserted road.",
+        "transcript_sha256": "5a5047cc73b802c06d625a48cdad4aa8bb13ac3549f1cdf413b362827dcabdad",
+        "evaluated_transcript": "There was another knock and another. The old woman with a sudden wrench broke free and ran from the room. Her husband followed to the landing and called after her appealingly as she hurried downstairs. He heard the chain rattle back and the bottom bolt drawn slowly and stiffly from the socket. Then the old woman's voice strained and panting. The bolt!\" she cried loudly. \"'Come down, I can't reach it.'\" But her husband was on his hands and knees groping wildly on the floor in search of the pour. If he could only find it before the thing outside got in. A perfect fusillade of knocks reverberated through the house, and he heard the scraping of a chair as his wife put it down in the passage against the door. He heard the creaking of the bolt as it came slowly back, and at the same moment he found the monkey's paw, and frantically breathed his third and last wish. The knocking ceased suddenly, although the echoes of it were still in the house. He heard the chair drawn back, and the door opened. A cold wind rushed up the staircase, and a long loud wail of disappointment and misery from his wife gave him courage to run down to her side, and then to the gate beyond. The street lamp flickering opposite shone on a quiet and deserted road.",
+        "evaluated_transcript_sha256": "5a5047cc73b802c06d625a48cdad4aa8bb13ac3549f1cdf413b362827dcabdad",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.065958,
+        "score": 9.9567,
+        "coverage": 0.9957,
+        "precision": 0.9957,
+        "source_token_count": 231,
+        "transcript_token_count": 231,
+        "equal_token_count": 230,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": false,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "paw": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "pour": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              89,
+              90
+            ],
+            "transcript_range": [
+              89,
+              90
+            ],
+            "source_tokens": [
+              "paw"
+            ],
+            "transcript_tokens": [
+              "pour"
+            ]
+          }
+        ],
+        "pass": false
+      }
+    ]
+  }
+}

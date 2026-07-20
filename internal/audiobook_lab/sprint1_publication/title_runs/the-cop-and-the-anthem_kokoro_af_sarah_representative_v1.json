@@ -1,0 +1,1015 @@
+{
+  "schema": "earnalism.cop_kokoro_af_sarah_representative.v1",
+  "generated_at": "2026-07-20T09:19:34Z",
+  "status": "PRIVATE_REPRESENTATIVE_ASR_ONLY_REPAIR_FAIL_CLOSED",
+  "scope": {
+    "slug": "the-cop-and-the-anthem",
+    "title": "The Cop and the Anthem",
+    "author": "O. Henry",
+    "language": "eng",
+    "profile": "cop-af-sarah-ironic-restraint-v1",
+    "passage_count": 4,
+    "characters": 2016,
+    "representative_only": true,
+    "full_title_generated": false,
+    "reader_live": true,
+    "public_audio_hidden": true
+  },
+  "source": {
+    "chapter_path": "/private/tmp/earnalism-sprint1-distinct-voice/data/controlled_publications/the-cop-and-the-anthem/chapters/chapter-001.json",
+    "source_sha256": "77a6d1c7ff6162cc7aad47b950666c6bb1dedf0beb55a08f3f476e27e57bd3ab",
+    "flattened_source_sha256": "e23828f07e7bcd8fc48a0206427a267682e8c8cb155226ca1ee166be3172c64c",
+    "passages": [
+      {
+        "passage_id": "opening_winter",
+        "risk": "opening_and_narrative_tone",
+        "characters": 254,
+        "text_sha256": "99ec90941755c7e7b70c98f2a122f1aeefdf7c996bd3e66bade805b8149f4a4c"
+      },
+      {
+        "passage_id": "waiter_dialogue",
+        "risk": "comic_dialogue_and_dialect",
+        "characters": 445,
+        "text_sha256": "9b7aa5abbd52519cc2fd4c155ceb43711cd287f068792c319b8e1cf4554e50b8"
+      },
+      {
+        "passage_id": "church_reckoning",
+        "risk": "emotional_reversal_and_restraint",
+        "characters": 316,
+        "text_sha256": "8af80b2d0f436da3933b2a50bed8dc98d299367d982d520110c0b07da8b364ae"
+      },
+      {
+        "passage_id": "ironic_ending",
+        "risk": "sustained_emotion_dialogue_and_ironic_ending",
+        "characters": 1001,
+        "text_sha256": "cb03b2bf6553545bc323f4417dafced01e0042aca8d5f31f32245311357f3c3d"
+      }
+    ]
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "package_version": "0.9.4",
+    "model_repo": "hexgrad/Kokoro-82M",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "af_sarah",
+    "voice_sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
+    "speed": 0.98,
+    "random_seed": 2026072001,
+    "sample_rate_hz": 24000,
+    "pronunciation_overrides": {
+      "Soapy": "sˈoʊpi",
+      "youse": "jˈuːz",
+      "Manhattan": "mænhˈætən",
+      "doin'": "dˈuːɪn",
+      "nothin'": "nˈʌθɪn"
+    },
+    "source_dialect_pronunciation_bindings": {
+      "doin’": {
+        "lexicon_key": "doin'",
+        "phonemes": "dˈuːɪn"
+      },
+      "Nothin’": {
+        "lexicon_key": "nothin'",
+        "phonemes": "nˈʌθɪn"
+      }
+    },
+    "g2p_fallback_enabled": false,
+    "attempt_fingerprint": "bb7c0f0967804c6d9bd4d715239b9e0741b47e7164c45f8e405e9ca1e6e9c553",
+    "superseded_pre_synthesis_attempts": [
+      {
+        "attempt_fingerprint": "473233a16da8afc80e6a30c56a9a7d56c2bf964f7d99198d11ca6a80132df38f",
+        "status": "G2P_PRECHECK_BLOCKED_BEFORE_SYNTHESIS",
+        "reason": "canonical dialect tokens doin’ and Nothin’ had no explicit pronunciation",
+        "audio_generated": false,
+        "asr_run": false,
+        "private_audio_files_written": 0,
+        "eligible_to_retry_exact_fingerprint": false
+      },
+      {
+        "attempt_fingerprint": "18caca9ef65a850cda74a27991600f6b2a640eb8100a6c1e209b46dcef4aceda",
+        "status": "G2P_PRECHECK_BLOCKED_BEFORE_SYNTHESIS",
+        "reason": "source-curly-apostrophe lexicon keys did not match Misaki normalized lookup keys",
+        "audio_generated": false,
+        "asr_run": false,
+        "private_audio_files_written": 0,
+        "eligible_to_retry_exact_fingerprint": false
+      }
+    ],
+    "selection_evidence": {
+      "closed_title_voice": "af_bella",
+      "closed_title_voice_sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+      "closed_title_listening_scores": [
+        8.7,
+        8.3,
+        9.5,
+        9.5
+      ],
+      "closed_title_minimum_confidence": 0.85,
+      "new_voice": "af_sarah",
+      "new_voice_sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
+      "new_voice_is_checksum_distinct": true,
+      "prior_cross_title_af_sarah_objective_failures": [
+        "the-necklace",
+        "the-last-leaf"
+      ],
+      "success_not_assumed": true
+    },
+    "materially_distinct_from_prior": {
+      "prior_provider_families": [
+        "google_managed_tts",
+        "open_weight_local_kokoro"
+      ],
+      "prior_voices": [
+        "en-GB-Studio-C",
+        "en-GB-Chirp3-HD-Achird",
+        "af_bella"
+      ],
+      "current_family": "open_weight_local_kokoro",
+      "current_voice": "af_sarah",
+      "voice_tensor_checksum_distinct": true,
+      "distinct": true
+    }
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "ordered_content_integrity_required": true,
+    "initial_prompt_sha256": "d02283d816292b15108c8c9d9a21d231c2259cd328922a9c985db9512d6087a6"
+  },
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/af_sarah.pt",
+      "sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
+      "size_bytes": 523425
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "python_executable": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "deterministic_algorithms_required": true,
+    "torch_thread_count": 1,
+    "offline_local_artifacts_only": true
+  },
+  "g2p_preflight_evidence": [
+    {
+      "passage_id": "opening_winter",
+      "source_text_sha256": "99ec90941755c7e7b70c98f2a122f1aeefdf7c996bd3e66bade805b8149f4a4c",
+      "phoneme_sha256": "57acee3b38fb1dfdc2fbb6772b592f3c47eba23eb846899bc2fc433a2b4a062e",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    },
+    {
+      "passage_id": "waiter_dialogue",
+      "source_text_sha256": "9b7aa5abbd52519cc2fd4c155ceb43711cd287f068792c319b8e1cf4554e50b8",
+      "phoneme_sha256": "57fbc696b13594b5bd3d12bfe598946244d8e7cec67dcab62d114e7e7d228166",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    },
+    {
+      "passage_id": "church_reckoning",
+      "source_text_sha256": "8af80b2d0f436da3933b2a50bed8dc98d299367d982d520110c0b07da8b364ae",
+      "phoneme_sha256": "d5058fd1360f413806bba983071ed99c4a5ca08ca103374b0f85248c295d29c9",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    },
+    {
+      "passage_id": "ironic_ending",
+      "source_text_sha256": "cb03b2bf6553545bc323f4417dafced01e0042aca8d5f31f32245311357f3c3d",
+      "phoneme_sha256": "bea0903bdbc7f90f32fb68a77eb92e4526ccbce00679fabdfe7efe5b7320c885",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    }
+  ],
+  "rights": {
+    "model_and_voicepack_license": "Apache-2.0",
+    "private_audition_allowed": true,
+    "title_text_rights_basis": "controlled_publication_tier_A",
+    "production_risk_acceptance_bound": false,
+    "production_release_approved": false,
+    "public_disclosure_required_if_later_approved": "AI voice",
+    "model_card_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/README.md",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "voice_asset_sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9"
+  },
+  "safety": {
+    "provider_calls": 0,
+    "estimated_tts_provider_cost_usd": 0.0,
+    "paid_tts_lock": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_touched": false,
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1",
+    "audio_generated": true,
+    "asr_run": true,
+    "listening_provider_calls": 0,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false,
+    "paid_tts_lock_unchanged": true,
+    "asr_reverify_existing_performed": true,
+    "resynthesis_performed": false,
+    "audio_hashes_unchanged": true
+  },
+  "blockers_to_release": [
+    "ASR_ONLY_REPAIR_FAILED",
+    "COP_REPRESENTATIVE_LANE_CLOSED",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "PRIVATE_UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN",
+    "OWNER_10_TARGET_NOT_VERIFIED"
+  ],
+  "go_no_go": "NO_GO_REPRESENTATIVE_ASR_REPAIR_FAILED",
+  "voice_selection": {
+    "selected_voice": "af_sarah",
+    "selected_voice_sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
+    "previous_voice": "af_bella",
+    "previous_voice_sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+    "voice_tensor_is_materially_different": true,
+    "selection_reason": "One bounded zero-cost title experiment after the checksum-distinct voice was not previously attempted for this title. Prior af_sarah failures on other titles prevent any presumption of success."
+  },
+  "next_stage_contract": {
+    "status": "REPRESENTATIVE_ASR_REPAIR_FAILED_CONFIGURATION_CLOSED",
+    "exact_execute_command": "PYTHONDONTWRITEBYTECODE=1 /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python internal/audiobook_lab/scripts/sprint1_cop_af_sarah_private_audition.py --execute --slug the-cop-and-the-anthem --profile cop-af-sarah-ironic-restraint-v1 --asset-root /private/tmp/earnalism-sprint1-distinct-voice --artifact-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts --whisper-cache-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache --private-output-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1 --output internal/audiobook_lab/sprint1_publication/title_runs/the-cop-and-the-anthem_kokoro_af_sarah_representative_v1.json --paid-lock /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+    "scope": "four exact source-bound passages with af_sarah only",
+    "asr_must_pass_before_listening_qa": true,
+    "listening_qa_allowed_by_this_command": false,
+    "full_title_generation_allowed": false,
+    "upload_allowed": false,
+    "publication_allowed": false,
+    "release_gate_mutation_allowed": false,
+    "listening_qa_allowed": false
+  },
+  "samples": [
+    {
+      "passage_id": "opening_winter",
+      "source_text_sha256": "99ec90941755c7e7b70c98f2a122f1aeefdf7c996bd3e66bade805b8149f4a4c",
+      "characters": 254,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1/opening_winter.wav",
+      "phoneme_sha256": "57acee3b38fb1dfdc2fbb6772b592f3c47eba23eb846899bc2fc433a2b4a062e",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 16.3,
+      "size_bytes": 782444,
+      "audio_sha256": "bb297bbd8faf6645a1a7a47600c7f160f7638a3551c2c5c3c10df24d7c17f236",
+      "peak_fraction": 0.541215,
+      "rms_fraction": 0.059974,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "waiter_dialogue",
+      "source_text_sha256": "9b7aa5abbd52519cc2fd4c155ceb43711cd287f068792c319b8e1cf4554e50b8",
+      "characters": 445,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1/waiter_dialogue.wav",
+      "phoneme_sha256": "57fbc696b13594b5bd3d12bfe598946244d8e7cec67dcab62d114e7e7d228166",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 26.3,
+      "size_bytes": 1262444,
+      "audio_sha256": "93e51660309ee71eb4ed6aa2755e2cdd585da6c06a519355b577de455f8fcd37",
+      "peak_fraction": 0.591662,
+      "rms_fraction": 0.059238,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "church_reckoning",
+      "source_text_sha256": "8af80b2d0f436da3933b2a50bed8dc98d299367d982d520110c0b07da8b364ae",
+      "characters": 316,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1/church_reckoning.wav",
+      "phoneme_sha256": "d5058fd1360f413806bba983071ed99c4a5ca08ca103374b0f85248c295d29c9",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 19.475,
+      "size_bytes": 934844,
+      "audio_sha256": "80a05603579ec39aabdf6f42740ba2b818783b75d3a192621b148f3ae5bb3d46",
+      "peak_fraction": 0.734855,
+      "rms_fraction": 0.06138,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "ironic_ending",
+      "source_text_sha256": "cb03b2bf6553545bc323f4417dafced01e0042aca8d5f31f32245311357f3c3d",
+      "characters": 1001,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-cop-and-the-anthem/f3ff3571-af-sarah-representative-v1/ironic_ending.wav",
+      "phoneme_sha256": "87102a901236fde9987ee77396cb9264e87ec64ea15d431de76326a699ec1e42",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 57.275,
+      "size_bytes": 2749244,
+      "audio_sha256": "b73b0891dcc2d6a5360e0ebb267e4fc345cae1b8e395bb67a694d308c472c825",
+      "peak_fraction": 0.621204,
+      "rms_fraction": 0.058899,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    }
+  ],
+  "asr": {
+    "status": "FAIL",
+    "mode": "ASR_REVERIFY_EXISTING_AUDIO_ONLY",
+    "config_fingerprint": "1e5d4f3f3e203c6e5bf217f95f7af909f1edaf7106ab4975e4b130a0c50a101f",
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "audio_derived": true,
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "prompt_policy": {
+      "opening_winter": {
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "beam_size": 5,
+        "patience": 1.0,
+        "hallucination_silence_threshold": null
+      },
+      "waiter_dialogue": {
+        "prompt_mode": "no_prompt",
+        "beam_size": 10,
+        "patience": 1.0,
+        "hallucination_silence_threshold": 0.5
+      },
+      "church_reckoning": {
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "beam_size": 5,
+        "patience": 1.0,
+        "hallucination_silence_threshold": null
+      },
+      "ironic_ending": {
+        "prompt_mode": "no_prompt",
+        "beam_size": 5,
+        "patience": 1.0,
+        "hallucination_silence_threshold": 0.5
+      }
+    },
+    "source_equivalence_policy": {
+      "opening_winter": [
+        {
+          "pattern": "\\bseal[\\s-]+skin\\b",
+          "replacement": "sealskin",
+          "reason": "Whisper spacing or hyphenation for the exact spoken source compound sealskin"
+        }
+      ],
+      "waiter_dialogue": [
+        {
+          "pattern": "\\byous\\b",
+          "replacement": "youse",
+          "reason": "Whisper spelling for the exact spoken source dialect youse"
+        },
+        {
+          "pattern": "\\bcallus\\b",
+          "replacement": "callous",
+          "reason": "American fallback-free G2P gives source callous and decoded callus the same phoneme sequence"
+        }
+      ],
+      "church_reckoning": [],
+      "ironic_ending": [
+        {
+          "pattern": "\\btomorrow\\b",
+          "replacement": "to-morrow",
+          "reason": "Whisper modern spelling for the exact spoken source form to-morrow"
+        },
+        {
+          "pattern": "\\bdoing\\b",
+          "replacement": "doin’",
+          "reason": "Whisper standard spelling for the exact spoken source dialect doin’"
+        },
+        {
+          "pattern": "\\bnothing\\b",
+          "replacement": "nothin’",
+          "reason": "Whisper standard spelling for the exact spoken source dialect Nothin’"
+        }
+      ]
+    },
+    "diagnostic_summary": {
+      "initial_prompted_run": {
+        "status": "FAIL",
+        "opening": "sealskin decoded as seal-skin",
+        "waiter": "youse/use, callous/callus, and pitched/pitch",
+        "church": "exact pass",
+        "ending": "source spellings to-morrow, doin, and nothin decoded in modern form"
+      },
+      "allowed_new_equivalence": "callous/callus only; pitched/pitch and youse/use remain substantive"
+    },
+    "unexpected_speech_may_be_discarded": false,
+    "reports": [
+      {
+        "passage_id": "opening_winter",
+        "audio_sha256": "bb297bbd8faf6645a1a7a47600c7f160f7638a3551c2c5c3c10df24d7c17f236",
+        "source_text_sha256": "99ec90941755c7e7b70c98f2a122f1aeefdf7c996bd3e66bade805b8149f4a4c",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "decode_options": {
+          "beam_size": 5,
+          "patience": 1.0
+        },
+        "prompt_sha256": "d02283d816292b15108c8c9d9a21d231c2259cd328922a9c985db9512d6087a6",
+        "raw_transcript": "On his bench in Madison Square, Soapy moved uneasily. When wild geese honk high of nights, and when women without sealskin coats grow kind to their husbands, and when Soapy moves uneasily on his bench in the park, you may know that winter is near at hand.",
+        "raw_transcript_sha256": "40ebea60894f6dddf4909142d2d98364dcbcfd009ff08a1ff98feff993a3c8de",
+        "evaluated_transcript": "On his bench in Madison Square, Soapy moved uneasily. When wild geese honk high of nights, and when women without sealskin coats grow kind to their husbands, and when Soapy moves uneasily on his bench in the park, you may know that winter is near at hand.",
+        "evaluated_transcript_sha256": "40ebea60894f6dddf4909142d2d98364dcbcfd009ff08a1ff98feff993a3c8de",
+        "source_equivalences_applied": [],
+        "unexpected_speech_discarded": false,
+        "waiter_forbidden_trailing_speech_detected": false,
+        "waiter_unprompted_raw_contract_pass": true,
+        "segment_count": 1,
+        "segment_no_speech_probabilities": [
+          0.005473601631820202
+        ],
+        "max_no_speech_probability": 0.005474,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 47,
+        "transcript_token_count": 47,
+        "equal_token_count": 47,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      },
+      {
+        "passage_id": "waiter_dialogue",
+        "audio_sha256": "93e51660309ee71eb4ed6aa2755e2cdd585da6c06a519355b577de455f8fcd37",
+        "source_text_sha256": "9b7aa5abbd52519cc2fd4c155ceb43711cd287f068792c319b8e1cf4554e50b8",
+        "prompt_mode": "no_prompt",
+        "decode_options": {
+          "beam_size": 10,
+          "patience": 1.0,
+          "hallucination_silence_threshold": 0.5
+        },
+        "prompt_sha256": null,
+        "raw_transcript": "�Now get busy and call a cop,� said Soapy. �And don�t keep a gentleman waiting.� �No cop for yous,� said the waiter, with a voice like butter cakes and an eye like the cherry in a Manhattan cocktail. �Hey, Khan!� neatly upon his left ear on the callus pavement two waiters pitched Soapy. He arose, joint by joint, as a carpenter�s rule opens and beat the dust from his clothes. Arrest seemed but a rosy dream. The island seemed very far away.",
+        "raw_transcript_sha256": "937fba1fead018f8661e0bb980079f0e91a94fe173c7af15c2df23c34ac77c83",
+        "evaluated_transcript": "�Now get busy and call a cop,� said Soapy. �And don�t keep a gentleman waiting.� �No cop for youse,� said the waiter, with a voice like butter cakes and an eye like the cherry in a Manhattan cocktail. �Hey, Khan!� neatly upon his left ear on the callous pavement two waiters pitched Soapy. He arose, joint by joint, as a carpenter�s rule opens and beat the dust from his clothes. Arrest seemed but a rosy dream. The island seemed very far away.",
+        "evaluated_transcript_sha256": "20c404214a8ec31e606cd94ec730d6062c54785a03f558b16d2cc974d003a974",
+        "source_equivalences_applied": [
+          {
+            "pattern": "\\byous\\b",
+            "replacement": "youse",
+            "reason": "Whisper spelling for the exact spoken source dialect youse",
+            "match_count": 1
+          },
+          {
+            "pattern": "\\bcallus\\b",
+            "replacement": "callous",
+            "reason": "American fallback-free G2P gives source callous and decoded callus the same phoneme sequence",
+            "match_count": 1
+          }
+        ],
+        "unexpected_speech_discarded": false,
+        "waiter_forbidden_trailing_speech_detected": false,
+        "waiter_unprompted_raw_contract_pass": false,
+        "segment_count": 6,
+        "segment_no_speech_probabilities": [
+          0.0061939372681081295,
+          0.0061939372681081295,
+          0.0061939372681081295,
+          0.0061939372681081295,
+          0.0061939372681081295,
+          0.039911624044179916
+        ],
+        "max_no_speech_probability": 0.039912,
+        "score": 9.5181,
+        "coverage": 0.9634,
+        "precision": 0.9405,
+        "source_token_count": 82,
+        "transcript_token_count": 84,
+        "equal_token_count": 79,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "don't": 1,
+          "con": 1,
+          "carpenter's": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "don": 1,
+          "t": 1,
+          "khan": 1,
+          "carpenter": 1,
+          "s": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              10,
+              11
+            ],
+            "transcript_range": [
+              10,
+              12
+            ],
+            "source_tokens": [
+              "don't"
+            ],
+            "transcript_tokens": [
+              "don",
+              "t"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              39,
+              40
+            ],
+            "transcript_range": [
+              40,
+              41
+            ],
+            "source_tokens": [
+              "con"
+            ],
+            "transcript_tokens": [
+              "khan"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              60,
+              61
+            ],
+            "transcript_range": [
+              61,
+              63
+            ],
+            "source_tokens": [
+              "carpenter's"
+            ],
+            "transcript_tokens": [
+              "carpenter",
+              "s"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "church_reckoning",
+        "audio_sha256": "80a05603579ec39aabdf6f42740ba2b818783b75d3a192621b148f3ae5bb3d46",
+        "source_text_sha256": "8af80b2d0f436da3933b2a50bed8dc98d299367d982d520110c0b07da8b364ae",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "decode_options": {
+          "beam_size": 5,
+          "patience": 1.0
+        },
+        "prompt_sha256": "d02283d816292b15108c8c9d9a21d231c2259cd328922a9c985db9512d6087a6",
+        "raw_transcript": "The conjunction of Soapy's receptive state of mind and the influences about the old church wrought a sudden and wonderful change in his soul. He viewed with swift horror the pit into which he had tumbled, the degraded days, unworthy desires, dead hopes, wrecked faculties and base motives that made up his existence.",
+        "raw_transcript_sha256": "ef22747af6fd4a4c43b79a7c1fd8ddddf2a70b186e1e5cd5dc5a07b3bcb36b98",
+        "evaluated_transcript": "The conjunction of Soapy's receptive state of mind and the influences about the old church wrought a sudden and wonderful change in his soul. He viewed with swift horror the pit into which he had tumbled, the degraded days, unworthy desires, dead hopes, wrecked faculties and base motives that made up his existence.",
+        "evaluated_transcript_sha256": "ef22747af6fd4a4c43b79a7c1fd8ddddf2a70b186e1e5cd5dc5a07b3bcb36b98",
+        "source_equivalences_applied": [],
+        "unexpected_speech_discarded": false,
+        "waiter_forbidden_trailing_speech_detected": false,
+        "waiter_unprompted_raw_contract_pass": true,
+        "segment_count": 2,
+        "segment_no_speech_probabilities": [
+          0.00248943199403584,
+          0.00248943199403584
+        ],
+        "max_no_speech_probability": 0.002489,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 53,
+        "transcript_token_count": 53,
+        "equal_token_count": 53,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      },
+      {
+        "passage_id": "ironic_ending",
+        "audio_sha256": "b73b0891dcc2d6a5360e0ebb267e4fc345cae1b8e395bb67a694d308c472c825",
+        "source_text_sha256": "cb03b2bf6553545bc323f4417dafced01e0042aca8d5f31f32245311357f3c3d",
+        "prompt_mode": "no_prompt",
+        "decode_options": {
+          "beam_size": 5,
+          "patience": 1.0,
+          "hallucination_silence_threshold": 0.5
+        },
+        "prompt_sha256": null,
+        "raw_transcript": "And also in a moment, his heart responded thrillingly to this novel mood. An instantaneous and strong impulse moved him to battle with his desperate fate. He would pull himself out of the mire. He would make a man of himself again. He would conquer the evil that had taken possession of him. There was time. He was comparatively young yet. He would resurrect his old eager ambitions and pursue them without faltering. Those solemn but sweet organ notes had set up a revolution in him. Tomorrow, he would go into the roaring downtown district and find work. A fur importer had once offered him a place as driver. He would find him tomorrow and ask for the position. He would be somebody in the world. He would, Soapy felt a hand laid on his arm. He looked quickly around into the broad face of a policeman. What are you doing here? asked the officer. Nothing, said Soapy. Then come along, said the policeman. — three months on the island, said the magistrate in the police court the next morning.",
+        "raw_transcript_sha256": "640ff63a6f8986a81cfa8c3288fe04f1953aa1398aabda4559f1110d2ca5b1c0",
+        "evaluated_transcript": "And also in a moment, his heart responded thrillingly to this novel mood. An instantaneous and strong impulse moved him to battle with his desperate fate. He would pull himself out of the mire. He would make a man of himself again. He would conquer the evil that had taken possession of him. There was time. He was comparatively young yet. He would resurrect his old eager ambitions and pursue them without faltering. Those solemn but sweet organ notes had set up a revolution in him. to-morrow, he would go into the roaring downtown district and find work. A fur importer had once offered him a place as driver. He would find him to-morrow and ask for the position. He would be somebody in the world. He would, Soapy felt a hand laid on his arm. He looked quickly around into the broad face of a policeman. What are you doin’ here? asked the officer. nothin’, said Soapy. Then come along, said the policeman. — three months on the island, said the magistrate in the police court the next morning.",
+        "evaluated_transcript_sha256": "80d0c6946c5d2e5b00f976ed63013a2a259f43a115c0fae8f46620d13fc4ab62",
+        "source_equivalences_applied": [
+          {
+            "pattern": "\\btomorrow\\b",
+            "replacement": "to-morrow",
+            "reason": "Whisper modern spelling for the exact spoken source form to-morrow",
+            "match_count": 2
+          },
+          {
+            "pattern": "\\bdoing\\b",
+            "replacement": "doin’",
+            "reason": "Whisper standard spelling for the exact spoken source dialect doin’",
+            "match_count": 1
+          },
+          {
+            "pattern": "\\bnothing\\b",
+            "replacement": "nothin’",
+            "reason": "Whisper standard spelling for the exact spoken source dialect Nothin’",
+            "match_count": 1
+          }
+        ],
+        "unexpected_speech_discarded": false,
+        "waiter_forbidden_trailing_speech_detected": false,
+        "waiter_unprompted_raw_contract_pass": true,
+        "segment_count": 19,
+        "segment_no_speech_probabilities": [
+          0.00172236911021173,
+          0.00172236911021173,
+          0.00172236911021173,
+          0.00172236911021173,
+          0.00172236911021173,
+          0.00172236911021173,
+          0.00172236911021173,
+          0.00172236911021173,
+          0.00172236911021173,
+          0.010762190446257591,
+          0.010762190446257591,
+          0.010762190446257591,
+          0.010762190446257591,
+          0.010762190446257591,
+          0.010762190446257591,
+          0.010762190446257591,
+          0.010762190446257591,
+          0.010762190446257591,
+          0.008548491634428501
+        ],
+        "max_no_speech_probability": 0.010762,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 181,
+        "transcript_token_count": 181,
+        "equal_token_count": 181,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      }
+    ]
+  },
+  "asr_history": [
+    {
+      "status": "FAIL",
+      "model": "medium.en",
+      "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "prompt_sha256": "d02283d816292b15108c8c9d9a21d231c2259cd328922a9c985db9512d6087a6",
+      "reports": [
+        {
+          "passage_id": "opening_winter",
+          "audio_sha256": "bb297bbd8faf6645a1a7a47600c7f160f7638a3551c2c5c3c10df24d7c17f236",
+          "source_text_sha256": "99ec90941755c7e7b70c98f2a122f1aeefdf7c996bd3e66bade805b8149f4a4c",
+          "transcript": "On his bench in Madison Square, Soapy moved uneasily. When wild geese honk high of nights, and when women without seal-skin coats grow kind to their husbands, and when Soapy moves uneasily on his bench in the park, you may know that winter is near at hand.",
+          "transcript_sha256": "f4fb546d1ef2665912533bd267e334a49c7cd540d7526c227489bf114ccf7d1a",
+          "score": 9.6842,
+          "coverage": 0.9787,
+          "precision": 0.9583,
+          "source_token_count": 47,
+          "transcript_token_count": 48,
+          "equal_token_count": 46,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "sealskin": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "seal": 1,
+            "skin": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                20,
+                21
+              ],
+              "transcript_range": [
+                20,
+                22
+              ],
+              "source_tokens": [
+                "sealskin"
+              ],
+              "transcript_tokens": [
+                "seal",
+                "skin"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "waiter_dialogue",
+          "audio_sha256": "93e51660309ee71eb4ed6aa2755e2cdd585da6c06a519355b577de455f8fcd37",
+          "source_text_sha256": "9b7aa5abbd52519cc2fd4c155ceb43711cd287f068792c319b8e1cf4554e50b8",
+          "transcript": "Now get busy and call a cop, said Soapy. And don't keep a gentleman waiting. No cop for use, said the waiter, with a voice like butter cakes and an eye like the cherry in a Manhattan cocktail. Hey, Con! Neatly upon his left ear on the callus pavement, two waiters pitch Soapy. He arose, joint by joint, as a carpenter's rule opens, and beat the dust from his clothes. Arrest seemed but a rosy dream. The island seemed very far away.",
+          "transcript_sha256": "770c80d48a9f67ebb3c7dd0f1e13fc9c157a73aa0f8b5767d7b1f1d9b0d9c6b5",
+          "score": 9.6341,
+          "coverage": 0.9634,
+          "precision": 0.9634,
+          "source_token_count": 82,
+          "transcript_token_count": 82,
+          "equal_token_count": 79,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "youse": 1,
+            "callous": 1,
+            "pitched": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "use": 1,
+            "callus": 1,
+            "pitch": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                18,
+                19
+              ],
+              "transcript_range": [
+                18,
+                19
+              ],
+              "source_tokens": [
+                "youse"
+              ],
+              "transcript_tokens": [
+                "use"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                47,
+                48
+              ],
+              "transcript_range": [
+                47,
+                48
+              ],
+              "source_tokens": [
+                "callous"
+              ],
+              "transcript_tokens": [
+                "callus"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                51,
+                52
+              ],
+              "transcript_range": [
+                51,
+                52
+              ],
+              "source_tokens": [
+                "pitched"
+              ],
+              "transcript_tokens": [
+                "pitch"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "church_reckoning",
+          "audio_sha256": "80a05603579ec39aabdf6f42740ba2b818783b75d3a192621b148f3ae5bb3d46",
+          "source_text_sha256": "8af80b2d0f436da3933b2a50bed8dc98d299367d982d520110c0b07da8b364ae",
+          "transcript": "The conjunction of Soapy's receptive state of mind and the influences about the old church wrought a sudden and wonderful change in his soul. He viewed with swift horror the pit into which he had tumbled, the degraded days, unworthy desires, dead hopes, wrecked faculties and base motives that made up his existence.",
+          "transcript_sha256": "ef22747af6fd4a4c43b79a7c1fd8ddddf2a70b186e1e5cd5dc5a07b3bcb36b98",
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 53,
+          "transcript_token_count": 53,
+          "equal_token_count": 53,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        },
+        {
+          "passage_id": "ironic_ending",
+          "audio_sha256": "b73b0891dcc2d6a5360e0ebb267e4fc345cae1b8e395bb67a694d308c472c825",
+          "source_text_sha256": "cb03b2bf6553545bc323f4417dafced01e0042aca8d5f31f32245311357f3c3d",
+          "transcript": "And also in a moment, his heart responded thrillingly to this novel mood. An instantaneous and strong impulse moved him to battle with his desperate fate. He would pull himself out of the mire. He would make a man of himself again. He would conquer the evil that had taken possession of him. There was time. He was comparatively young yet. He would resurrect his old eager ambitions and pursue them without faltering. Those solemn but sweet organ notes had set up a revolution in him. Tomorrow, he would go into the roaring downtown district and find work. A fur importer had once offered him a place as driver. He would find him tomorrow and ask for the position. He would be somebody in the world. He would, Soapy felt a hand laid on his arm. He looked quickly around into the broad face of a policeman. What are you doing here? asked the officer. Nothing, said Soapy. Then come along, said the policeman. Three months on the island, said the magistrate in the police court the next morning.",
+          "transcript_sha256": "62ffce2ef6a1900fe9c7f7cb824ef7999e7440304239558f16cd8d4f173f1a24",
+          "score": 9.7222,
+          "coverage": 0.9669,
+          "precision": 0.9777,
+          "source_token_count": 181,
+          "transcript_token_count": 179,
+          "equal_token_count": 175,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "to": 2,
+            "morrow": 2,
+            "doin": 1,
+            "nothin": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "tomorrow": 2,
+            "doing": 1,
+            "nothing": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                86,
+                88
+              ],
+              "transcript_range": [
+                86,
+                87
+              ],
+              "source_tokens": [
+                "to",
+                "morrow"
+              ],
+              "transcript_tokens": [
+                "tomorrow"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                114,
+                116
+              ],
+              "transcript_range": [
+                113,
+                114
+              ],
+              "source_tokens": [
+                "to",
+                "morrow"
+              ],
+              "transcript_tokens": [
+                "tomorrow"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                152,
+                153
+              ],
+              "transcript_range": [
+                150,
+                151
+              ],
+              "source_tokens": [
+                "doin"
+              ],
+              "transcript_tokens": [
+                "doing"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                157,
+                158
+              ],
+              "transcript_range": [
+                155,
+                156
+              ],
+              "source_tokens": [
+                "nothin"
+              ],
+              "transcript_tokens": [
+                "nothing"
+              ]
+            }
+          ],
+          "pass": false
+        }
+      ],
+      "preserved_before_reverify": true
+    }
+  ]
+}

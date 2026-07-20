@@ -347,9 +347,49 @@
         "fatal_flags": [],
         "platform_screen_pass": false,
         "owner_exact_10_pass": false,
+        "af_sarah_voice_sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
+        "af_sarah_attempt_fingerprint": "bb7c0f0967804c6d9bd4d715239b9e0741b47e7164c45f8e405e9ca1e6e9c553",
+        "af_sarah_asr_projection_fingerprint": "5a6efff8ae1067e31d3cfe6ad7338a4b1cb7d42de24252eb0cabb23111d7c6a3",
+        "af_sarah_listening_sample_fingerprint": "3e736a435600a24df74fb2d7a138db8d3015f9ffa2df60a013866252e09ee2ff",
+        "af_sarah_representative_asr_scores": [
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ],
+        "af_sarah_representative_coverages": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "af_sarah_listening_overall_scores": [
+          9.5,
+          7.8,
+          9.6,
+          8.5
+        ],
+        "af_sarah_minimum_dimension_scores": {
+          "naturalness": 7.5,
+          "pronunciation": 9.0,
+          "emotional_expression": 7.0,
+          "punctuation_pause": 8.0,
+          "pacing": 7.5,
+          "continuity": 8.5,
+          "anti_robotic_texture": 8.0,
+          "anti_choppy_join": 8.5,
+          "listener_enjoyment": 7.0,
+          "overall": 7.8,
+          "confidence": 0.85
+        },
+        "af_sarah_fatal_flags": [],
+        "af_sarah_platform_screen_pass": false,
+        "af_sarah_owner_exact_10_pass": false,
+        "af_sarah_full_title_generated": false,
+        "af_sarah_listening_evidence_sha256": "7d82c76b4378d8cb58adddc6746f2abd02c8c86795e7144413ccd2dd61aa3946",
         "full_title_generated": false,
         "public_audio_approved": false,
-        "next_action": "Close this Kokoro af_bella configuration without repair or repetition. Keep the title audio-hidden; only a materially different provider, voice, or source-bound narration lane may reopen representative evaluation."
+        "next_action": "Close both completed Kokoro af_bella and af_sarah configurations without repair or repetition. Keep the title audio-hidden; use source-bound narration, licensed audio, or a genuinely different provider family before another representative evaluation."
       },
       "dsires_baby": {
         "source_sha256": "8bfaa9cc56c6e731cd0a5372f7fc4bf1c870ace2261ff7f0b6be44bfd013f8a5",
@@ -504,6 +544,54 @@
         "full_title_generated": false,
         "public_audio_approved": false,
         "next_action": "Do not repeat the bf_emma synthesis or ASR-repair fingerprints. Keep audio hidden and require a genuinely different voice/provider or source-bound narration; never delete unexpected decoded speech to manufacture a pass."
+      },
+      "the_monkeys_paw": {
+        "origin_source_sha256": "e435de0511bd61d2373a445b0c5e054b747072357b5373e27b7a4b8a5b40cd01",
+        "aggregate_source_sha256": "993ea84df5163bddcb4d4579a78ee5fb4b5ad9002a9659f9ac2e2f73198ec6b7",
+        "normalized_source_sha256": "a3fb946efdc410958f47fab3a6ec613d7f2280cee06e1f60b079a5d908af29bd",
+        "af_bella_attempt_fingerprint": "26175ed9126e6221858801187d16879984736a7f72f00e51943b54940babf7b5",
+        "af_bella_asr_repair_fingerprint": "01b3a0339316dc4c4034c7789747e1534af168e2315f57a5f061c5f8f2a9ee0a",
+        "af_bella_metadata_rebound_asr_repair_fingerprint": "7adae43127011aa84218f79a9a4042f9f3e4b723825d04fea2d7ad519fcc7588",
+        "af_bella_ordered_content_integrity_pass": false,
+        "bf_emma_voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+        "bf_emma_attempt_fingerprint": "e62afa333e08cb3c4df2d11e529c95dc661465f337537f02dbd7e054c1e405a4",
+        "bf_emma_asr_repair_fingerprint": "12a5b40c13022312a66b96adbc6e7fb6743da1efad9c20b6c5bed2f03935986e",
+        "bf_emma_targeted_resynthesis_fingerprint": "29da95f0687756670f1a3c21bee7e17e2fe4fdf2cbfeed8d06a32ce558306b81",
+        "representative_asr_scores": [
+          10.0,
+          10.0,
+          10.0,
+          10.0
+        ],
+        "representative_coverages": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "ordered_content_integrity_pass": true,
+        "listening_scores": [
+          9.6,
+          9.5,
+          8.3,
+          8.5
+        ],
+        "minimum_listening_score": 8.3,
+        "minimum_confidence": 0.85,
+        "fatal_flags": [],
+        "platform_screen_pass": false,
+        "owner_exact_10_pass": false,
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "evidence_paths": [
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_kokoro_af_bella_representative_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_kokoro_af_bella_asr_repair_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_kokoro_bf_emma_representative_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_kokoro_bf_emma_asr_repair_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_kokoro_bf_emma_targeted_resynthesis_v2.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-monkeys-paw_kokoro_bf_emma_listening_qa_v1.json"
+        ],
+        "next_action": "Do not repeat the closed af_bella or bf_emma synthesis, ASR-repair, targeted-resynthesis, or listening fingerprints. Keep audio hidden and use a genuinely different provider/voice or source-bound narration; objective 10.0 did not overcome the 8.3 listening minimum."
       }
     },
     "openai": {
