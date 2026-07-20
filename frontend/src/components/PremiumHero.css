@@ -236,11 +236,16 @@
   .premium-reference-hero {
     --reference-header-height: var(--site-header-height);
     width: 100%;
-    height: calc(var(--reference-header-height) + 48.0861vw);
+    height: min(calc(var(--reference-header-height) + 48.0861vw), 100vh);
     min-height: 0;
     aspect-ratio: auto;
     border-bottom: 0;
     background: #090301;
+  }
+
+  .premium-reference-hero--in-flow {
+    --reference-header-height: 0px;
+    height: min(48.0861vw, calc(100vh - var(--site-header-height)));
   }
 
   .premium-reference-hero__art {

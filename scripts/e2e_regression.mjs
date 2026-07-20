@@ -345,10 +345,12 @@ async function main() {
     hasLiveShelf: Boolean(document.querySelector('[data-testid="shelf-live-controlled-release"]')),
     hasPipelineShelf: Boolean(document.querySelector('[data-testid="shelf-pipeline"]')),
     hasAudioShelf: Boolean(document.querySelector('[data-testid="shelf-audiobooks"]')),
+    hasPremiumHero: Boolean(document.querySelector('[data-testid="library-page"] [data-testid="premium-landing-hero"]')),
     previewLinks: [...document.querySelectorAll('[data-testid="library-dracula-preview"], [data-testid^="card-preview-"], a[href^="/reader/"]')]
       .slice(0, 20)
       .map((link) => link.getAttribute("href")),
     nonDraculaReaderLinks: [...document.querySelectorAll('a[href^="/reader/"]')]
+      .filter((link) => !link.closest('[data-testid="premium-landing-hero"]'))
       .map((link) => link.getAttribute("href"))
       .filter((href) => href !== "/reader/dracula"),
     pipelineStatuses: [...document.querySelectorAll('[data-testid^="book-card-"]')]
@@ -357,6 +359,7 @@ async function main() {
   assert(library.hasLiveShelf, "library did not render the live controlled shelf");
   assert(library.hasPipelineShelf, "library did not render the pipeline shelf");
   assert(library.hasAudioShelf, "library did not render the audiobook status shelf");
+  assert(library.hasPremiumHero, "library did not render the shared premium hero");
   assert(library.previewLinks.includes("/reader/dracula"), "library has no Dracula reader preview CTA");
   assert(library.nonDraculaReaderLinks.length === 0, `library leaked non-Dracula reader links: ${JSON.stringify(library.nonDraculaReaderLinks)}`);
   assert(library.pipelineStatuses.every((status) => status === "COMING_SOON_PIPELINE"), `pipeline cards are not notify-only: ${JSON.stringify(library.pipelineStatuses)}`);

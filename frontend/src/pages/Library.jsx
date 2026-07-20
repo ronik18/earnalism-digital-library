@@ -7,6 +7,7 @@ import BookCard from "../components/BookCard";
 import BookCoverImage from "../components/BookCoverImage";
 import ComingSoonBoard from "../components/ComingSoonBoard";
 import ApprovedAudiobookSpotlight from "../components/ApprovedAudiobookSpotlight";
+import PremiumHero from "../components/PremiumHero";
 import {
   BATCH_1_READER_ONLY_SLUGS,
   DRACULA_CHAPTER_COUNT,
@@ -21,6 +22,7 @@ import {
 } from "../lib/controlledLaunch";
 import { languageOfBook, matchesLibraryFacets, sortLibraryBooks } from "../lib/libraryCatalog";
 import { LOCAL_LIBRARY_FALLBACK_BOOKS } from "../lib/libraryFallbackBooks";
+import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
 import useSEO from "../hooks/useSEO";
 
 const FILTERS = [
@@ -62,6 +64,8 @@ export default function Library() {
   const [params, setParams] = useSearchParams();
   const [dracula, setDracula] = useState(null);
   const [liveBooks, setLiveBooks] = useState([]);
+  const [homeCuration, setHomeCuration] = useState(() => getHomeCurationSnapshot());
+  const [homeCurationError, setHomeCurationError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [q, setQ] = useState(params.get("q") || "");
   const cat = params.get("category") || "all";
@@ -86,14 +90,22 @@ export default function Library() {
     Promise.allSettled([
       api.get(`/books/${LIVE_APPROVED_SLUG}`, { signal: controller.signal }),
       api.get("/books", { signal: controller.signal }),
+      fetchHomeCuration(controller.signal),
     ])
-      .then(([draculaResult, booksResult]) => {
+      .then(([draculaResult, booksResult, curationResult]) => {
         setDracula(draculaResult.status === "fulfilled" ? draculaResult.value.data : null);
         setLiveBooks(
           booksResult.status === "fulfilled" && Array.isArray(booksResult.value.data) && booksResult.value.data.length > 0
             ? booksResult.value.data
             : LOCAL_LIBRARY_FALLBACK_BOOKS,
         );
+        if (curationResult.status === "fulfilled") {
+          setHomeCuration(curationResult.value);
+          setHomeCurationError(false);
+        } else if (!controller.signal.aborted) {
+          // Keep the bundled normalized snapshot as the truthful slow-network fallback.
+          setHomeCurationError(false);
+        }
       })
       .finally(() => {
         if (!controller.signal.aborted) setLoading(false);
@@ -161,87 +173,14 @@ export default function Library() {
 
   return (
     <div className="library-room-page" data-testid="library-page">
-      <section
-        className="library-room-hero relative isolate overflow-hidden text-[#FDFCF8]"
-        data-testid="library-hero"
-      >
-        <div className="mx-auto grid max-w-7xl gap-9 px-5 py-10 sm:px-8 sm:py-14 lg:grid-cols-12 lg:items-center lg:px-12 lg:py-16">
-          <div className="lg:col-span-7">
-            <div className="italic-eyebrow mb-4 flex items-center gap-3 text-[var(--brand-gold-soft)]">
-              <span className="h-px w-8 bg-[var(--brand-gold)]/70" />
-              <span>The Earnalism Library</span>
-            </div>
-            <h1 className="font-serif-light max-w-3xl text-[2.04rem] leading-[1.04] tracking-normal sm:text-[2.86rem] lg:text-[3.42rem]">
-              Bengali and English classics, opened with release truth.
-            </h1>
-            <p className="mt-4 max-w-2xl font-serif-display text-[0.98rem] italic leading-snug text-[#F4EFEA]/88 sm:text-[1.18rem]">
-              A calm catalog where reader-only classics feel intentional and audiobooks appear only after source, listening, sync, and browser gates pass.
-            </p>
-            <p className="mt-5 max-w-2xl text-sm font-light leading-[1.8] text-[#F4EFEA]/76 sm:text-base">
-              Explore Bengali shelves, English classics, and release-gated listening without broad catalog or audio overclaim.
-            </p>
-            <div className="library-hero-facts mt-6" aria-label="Library launch facts">
-              <span><ShieldCheck size={14} strokeWidth={1.6} /> Reader-only releases protected</span>
-              <span><BookOpen size={14} strokeWidth={1.6} /> Bengali + English shelves</span>
-              <span><Sparkles size={14} strokeWidth={1.6} /> Public-domain source verified</span>
-              <span><Headphones size={14} strokeWidth={1.6} /> Audiobooks gated by evidence</span>
-            </div>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link
-                to="/library?language=bn&availability=reader-ready"
-                className="btn-primary justify-center"
-                data-testid="library-hero-bengali"
-                onClick={() => trackFunnelEvent("bengali_card_click", { cta: "library_hero_bengali" })}
-              >
-                <BookOpen size={15} /> Explore Bengali Classics
-              </Link>
-              <Link
-                to="/library?language=en"
-                className="btn-secondary justify-center !border-[var(--brand-gold)] !text-[#FDFCF8] hover:!bg-[rgba(216,185,122,0.12)]"
-                data-testid="library-hero-english"
-                onClick={() => trackFunnelEvent("english_card_click", { cta: "library_hero_english" })}
-              >
-                Browse English Classics
-              </Link>
-              <Link
-                to="/library?availability=approved-audiobook"
-                className="btn-link justify-center !text-[#FDFCF8]"
-                data-testid="library-hero-approved-audio"
-                onClick={() => trackFunnelEvent("approved_audio_card_click", { cta: "library_hero_audio" })}
-              >
-                Approved Audio Only <ArrowRight size={15} />
-              </Link>
-            </div>
-            <p className="mt-4 font-serif-display text-base italic text-[#F4EFEA]/70">
-              Reading time is used only while you read.
-            </p>
-          </div>
-
-          <div className="lg:col-span-5">
-            <div className="library-hero-book-object mx-auto max-w-[360px]" data-testid="library-hero-dracula-object">
-              <div className="library-hero-cover-frame mx-auto aspect-[500/696] max-w-[245px] overflow-hidden">
-                <BookCoverImage
-                  book={liveBook}
-                  alt="Custom Earnalism Dracula cover artwork"
-                  loading="eager"
-                  fetchPriority="high"
-                  width={520}
-                  widths={[360, 520, 720]}
-                  sizes="(min-width: 1024px) 245px, 58vw"
-                  imgClassName="premium-dracula-cover-img"
-                />
-              </div>
-              <div className="mt-5 text-center">
-                <div className="text-[0.62rem] uppercase tracking-[0.22em] text-[var(--brand-gold-soft)]">English classics tile</div>
-                <h2 className="mt-2 font-serif-display text-[1.72rem] text-[#FDFCF8]">Dracula</h2>
-                <p className="mx-auto mt-3 max-w-xs text-[0.82rem] leading-relaxed text-[#F4EFEA]/72">
-                  {DRACULA_CHAPTER_COUNT} chapters. A refined English reading route, not the whole library identity.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PremiumHero
+        curation={homeCuration}
+        loading={loading && !homeCuration}
+        error={homeCurationError}
+        headerMode="in-flow"
+        analyticsNamespace="library"
+        onTrack={(event, metadata) => trackFunnelEvent(event, { source: "library", ...metadata })}
+      />
 
       <ComingSoonBoard compact />
 

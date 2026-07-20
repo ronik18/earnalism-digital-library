@@ -22,8 +22,9 @@ describe("PremiumHero public contract", () => {
   });
 
   test("uses the owner reference as a high-priority visual layer with exact transparent CTA hotspots", () => {
-    const referenceAsset = path.join(process.cwd(), "public/assets/hero/premium-library-reference.webp");
+    const referenceAsset = path.join(process.cwd(), "public/assets/hero/premium-library-reference-art.webp");
     expect(source).toContain("premium-library-reference-art.webp");
+    expect(source).toContain('onError={() => setReferenceArtFailed(true)}');
     expect(source).toContain('width="1672"');
     expect(source).toContain('height="804"');
     expect(source).toContain("fetchPriority=\"high\"");
@@ -53,7 +54,9 @@ describe("PremiumHero public contract", () => {
     expect(source).not.toContain("premium-reference-brand-overlay");
     expect(styles).toContain("--reference-header-height: var(--site-header-height);");
     expect(styles).toContain("height: calc(100% - var(--reference-header-height));");
-    expect(styles).toContain("height: calc(var(--reference-header-height) + 48.0861vw);");
+    expect(styles).toContain("height: min(calc(var(--reference-header-height) + 48.0861vw), 100vh);");
+    expect(styles).toContain("--reference-header-height: 0px;");
+    expect(styles).toContain("height: min(48.0861vw, calc(100vh - var(--site-header-height)));");
     expect(styles).toContain("object-fit: fill;");
     expect(styles).toContain("aspect-ratio: 246 / 376;");
     expect(styles).toContain("inset: 5.2% 7.7% 5% 7.7%;");
@@ -65,5 +68,12 @@ describe("PremiumHero public contract", () => {
     expect(source).toContain("[0, 1, 2, 3].map");
     expect(source).toContain("featuredBooks.slice(0, 4)");
     expect(source).not.toContain("premium-reference-slot--reader-cover");
+  });
+
+  test("keeps mobile cover loading light and analytics scoped by surface", () => {
+    expect(source).toContain("eager={index === 0}");
+    expect(source).toContain("calc((100vw - 3.45rem) / 4)");
+    expect(source).toContain("analyticsNamespace = \"home\"");
+    expect(source).toContain("headerMode === \"in-flow\"");
   });
 });

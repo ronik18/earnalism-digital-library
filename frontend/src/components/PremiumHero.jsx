@@ -244,22 +244,30 @@ function CoverStack({ books, loading }) {
 
   return (
     <div className="premium-mobile-covers" aria-label="Featured Sprint 1 classics">
-      {books.map((book) => (
+      {books.map((book, index) => (
         <CatalogCoverLink
           key={book.slug}
           book={book}
           className="premium-mobile-cover"
-          sizes="(max-width: 520px) 29vw, 145px"
+          sizes="(max-width: 520px) calc((100vw - 3.45rem) / 4), 145px"
           widths={[180, 360]}
-          eager
+          eager={index === 0}
         />
       ))}
     </div>
   );
 }
 
-export default function PremiumHero({ curation, loading = false, error = false, onTrack }) {
+export default function PremiumHero({
+  curation,
+  loading = false,
+  error = false,
+  onTrack,
+  headerMode = "overlay",
+  analyticsNamespace = "home",
+}) {
   const isDesktopReference = useDesktopReference();
+  const [referenceArtFailed, setReferenceArtFailed] = useState(false);
   const hero = curation?.hero || {};
   const shelves = curation?.shelves || {};
   const featuredBooks = Array.isArray(hero.featured_books) ? hero.featured_books.slice(0, 6) : [];
@@ -277,7 +285,7 @@ export default function PremiumHero({ curation, loading = false, error = false, 
 
   return (
     <section
-      className="premium-landing-hero premium-dynamic-hero premium-reference-hero"
+      className={`premium-landing-hero premium-dynamic-hero premium-reference-hero${headerMode === "in-flow" ? " premium-reference-hero--in-flow" : ""}${referenceArtFailed ? " premium-reference-hero--art-failed" : ""}`}
       data-testid="premium-landing-hero"
       data-catalog-state={loading ? "loading" : error ? "unavailable" : "ready"}
       aria-label={headline}
@@ -294,6 +302,7 @@ export default function PremiumHero({ curation, loading = false, error = false, 
           loading="eager"
           fetchPriority="high"
           decoding="async"
+          onError={() => setReferenceArtFailed(true)}
         />
       ) : null}
       <div className="premium-hero-copy">
@@ -313,7 +322,7 @@ export default function PremiumHero({ curation, loading = false, error = false, 
           to={primaryCta.url}
           className="premium-hero-action premium-hero-action--primary"
           data-testid="hero-cta-library"
-          onClick={() => track(onTrack, "hero_primary_cta_click", { cta: "home_hero_start_reading" })}
+          onClick={() => track(onTrack, "hero_primary_cta_click", { cta: `${analyticsNamespace}_hero_start_reading` })}
         >
           <BookOpen size={19} strokeWidth={1.55} aria-hidden="true" />
           <span>{primaryCta.label || "Start Reading"}</span>
@@ -323,7 +332,7 @@ export default function PremiumHero({ curation, loading = false, error = false, 
           to={secondaryCta.url}
           className="premium-hero-action premium-hero-action--secondary"
           data-testid="hero-cta-audiobooks"
-          onClick={() => track(onTrack, "hero_secondary_cta_click", { cta: "home_hero_approved_audiobooks" })}
+          onClick={() => track(onTrack, "hero_secondary_cta_click", { cta: `${analyticsNamespace}_hero_approved_audiobooks` })}
         >
           <Headphones size={18} strokeWidth={1.55} aria-hidden="true" />
           <span>{secondaryCta.label || "Explore Audiobooks"}</span>
