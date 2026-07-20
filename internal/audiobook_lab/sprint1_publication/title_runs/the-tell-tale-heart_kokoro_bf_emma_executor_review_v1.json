@@ -1,0 +1,98 @@
+{
+  "schema": "earnalism.kokoro.tell_tale_private_executor_review.v1",
+  "generated_at": "2026-07-20T04:13:15Z",
+  "slug": "the-tell-tale-heart",
+  "title": "The Tell-Tale Heart",
+  "author": "Edgar Allan Poe",
+  "status": "EXECUTOR_CODE_REVIEWED_NOT_EXECUTED",
+  "go_no_go": "GO_FOR_ONE_PRIVATE_REPRESENTATIVE_EXECUTION",
+  "attempt_fingerprint": "5ab7a8abdc62cd901d16d7cb9fb6fe10094bb829d279574a6ccd6da88e1562f9",
+  "source_binding": {
+    "raw_source_sha256": "be8259855845762a7a1c6e5e1bd45d43bbd04c7d769427b25132e2bf514af1f8",
+    "normalized_source_sha256": "6aa43cf6dcf4c6fba097237c01938ab5269a7edda16e4006db05b5a56c7e164e",
+    "passage_count": 4,
+    "passage_characters": 2149,
+    "passage_sha256": {
+      "opening_unreliable_sanity": "1bd845cd383b10550ac7fe03ccfafc01d3059c7ae9f473a4a371c20782f6a524",
+      "bedroom_suspense_dialogue": "7b2efa882aed81bb447c8d00fee89dfc011d48ffb2c2ba0f1d2b202918125029",
+      "heartbeat_crescendo": "90686993699298d204d639da36bf779b3ae52397e99e2d6e1b5fdb5a316ab639",
+      "final_confession": "3e0f8c27ceca25a940b8d411c6bf015a46ba188a513273748c9666f7a7695745"
+    }
+  },
+  "engine_binding": {
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "bf_emma",
+    "voice_sha256": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+    "speed": 0.96,
+    "random_seed": 2026072001,
+    "sample_rate_hz": 24000
+  },
+  "british_g2p_audit": {
+    "status": "PASS",
+    "lang_code": "b",
+    "british": true,
+    "fallback": null,
+    "unknown_token_output": "",
+    "unresolved_token_count": 0,
+    "passages": {
+      "opening_unreliable_sanity": {
+        "token_count": 90,
+        "phoneme_sha256": "358708c587367584a392794b2a169288c7e0e806491fa49da66c4b31ae06d3f5"
+      },
+      "bedroom_suspense_dialogue": {
+        "token_count": 125,
+        "phoneme_sha256": "53889e558a06e270be0d283eea6b91e75e6a1c814856fc85a03b5f761f1c0044"
+      },
+      "heartbeat_crescendo": {
+        "token_count": 134,
+        "phoneme_sha256": "8dcc83a940610a93f41842c5e9460a459d984332bf9b7dc2b8a6a79567851dde"
+      },
+      "final_confession": {
+        "token_count": 127,
+        "phoneme_sha256": "048b7e72baca9d575e108c138e3a4aa19b95f7f34420e3620a0d1f9b3c9695e5"
+      }
+    }
+  },
+  "objective_asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "four_bound_reports_required": true,
+    "ordered_content_integrity_required": true,
+    "missing_duplicated_reordered_or_unexpected_content_allowed": false,
+    "source_equivalence_normalizations": [],
+    "estimated_sync_allowed": false
+  },
+  "exact_execute_command": "PYTHONDONTWRITEBYTECODE=1 /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python internal/audiobook_lab/scripts/sprint1_tell_tale_kokoro_private_executor.py --execute --slug the-tell-tale-heart --profile tell-tale-bf-emma-controlled-gothic-v1 --asset-root /private/tmp/earnalism-next-kokoro-pilot --artifact-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts --whisper-cache-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache --private-output-dir /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-tell-tale-heart/f3ff3571-bf-emma-representative-v1 --output internal/audiobook_lab/sprint1_publication/title_runs/the-tell-tale-heart_kokoro_bf_emma_representative_execution_v1.json",
+  "tests": {
+    "system_python": {
+      "status": "PASS",
+      "tests_run": 12
+    },
+    "pinned_audio_python": {
+      "status": "PASS",
+      "tests_run": 12
+    }
+  },
+  "safety": {
+    "executor_implemented": true,
+    "executor_run": false,
+    "audio_generated": false,
+    "asr_run": false,
+    "listening_qa_run": false,
+    "provider_calls": 0,
+    "estimated_provider_cost_usd": 0.0,
+    "paid_tts_lock_inspected": false,
+    "paid_tts_lock_touched": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false
+  },
+  "release_status": "AUDIO_HIDDEN_ALL_DOWNSTREAM_GATES_UNRUN"
+}

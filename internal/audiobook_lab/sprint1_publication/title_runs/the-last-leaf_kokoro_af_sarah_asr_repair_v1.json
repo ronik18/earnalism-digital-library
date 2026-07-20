@@ -1,0 +1,1836 @@
+{
+  "schema": "earnalism.kokoro.last_leaf_asr_repair.v1",
+  "generated_at": "2026-07-20T03:30:00Z",
+  "status": "PRIVATE_REPRESENTATIVE_ASR_REPAIR_FAILED_FINGERPRINT_CLOSED",
+  "scope": {
+    "slug": "the-last-leaf",
+    "title": "The Last Leaf",
+    "author": "O. Henry",
+    "language": "en",
+    "profile": "last-leaf-af-sarah-compassionate-restraint-v1",
+    "passage_count": 4,
+    "characters": 2302,
+    "representative_only": true,
+    "full_title_generated": false
+  },
+  "source": {
+    "chapter_path": "/private/tmp/earnalism-next-kokoro-pilot/data/controlled_publications/the-last-leaf/chapters/chapter-001.json",
+    "source_sha256": "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7",
+    "passages": [
+      {
+        "passage_id": "opening_literary_setting",
+        "characters": 720,
+        "text_sha256": "05c55ee1edd72ef0609c782226e4537ff35051b2ea7ea81e0eedfd2901d02dd5",
+        "risk": "long literary sentences, Greenwich Village names, and restrained irony"
+      },
+      {
+        "passage_id": "johnsy_leaf_dialogue",
+        "characters": 386,
+        "text_sha256": "8ece41198a202de474bef1a33218949f8bd72fd18413f4af140548db7026b775",
+        "risk": "quiet dialogue turns, vulnerability, contractions, and emotional restraint"
+      },
+      {
+        "passage_id": "behrman_dialect_emotion",
+        "characters": 432,
+        "text_sha256": "3ee0d5877dcd681e530ea3dc56fe0c7b11614d3bec736c9ca485799c897fafc1",
+        "risk": "source-authentic dialect, exclamations, character contrast, and proper names"
+      },
+      {
+        "passage_id": "final_masterpiece_reveal",
+        "characters": 764,
+        "text_sha256": "9b92d5b089d00a5896d243c6c6ac4c8e5ad645a76f820131df9476f582e1bc00",
+        "risk": "grief, sustained revelation, em-dash pause, and compassionate closing cadence"
+      }
+    ],
+    "origin_source_sha256": "3b86fb4d8aae47c9471240ba708f681dc16aec5b34d97976faa9a642339290ba",
+    "sanitized_source_sha256": "e3a825f58d8a086967586988d7eeaf902fbb415b53cd164340d935f98d7645f7",
+    "normalized_source_sha256": "203c0f52039399e2a49dbc836f3d77374625106e61e5926a6d97224bf0cb2fd6",
+    "word_count": 2402
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "package_version": "0.9.4",
+    "model_repo": "hexgrad/Kokoro-82M",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "af_sarah",
+    "voice_sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
+    "speed": 0.98,
+    "random_seed": 2026071905,
+    "sample_rate_hz": 24000,
+    "pronunciation_overrides": {
+      "Johnsy": "dʒˈɑnsi",
+      "Joanna": "dʒoʊˈænə",
+      "Behrman": "bˈɛɹmən",
+      "Greenwich": "ɡɹˈɛnɪtʃ",
+      "Sudie": "sˈudi",
+      "Vass": "vˈAs",
+      "Vy": "vˌI",
+      "bose": "bˈOz",
+      "de": "də",
+      "der": "dɛɹ",
+      "dere": "dˈɛɹ",
+      "dey": "dA",
+      "haf": "hˈæf",
+      "lettle": "lˈɛTᵊl",
+      "mit": "mˈɪt",
+      "prain": "pɹˈAn",
+      "pusiness": "pˈɪznəs"
+    },
+    "g2p_fallback_enabled": false,
+    "attempt_fingerprint": "f152ffdc135dea3c9ffd463138489739a80a163196059e7cc0130527d83a7ed1",
+    "known_failed_fingerprint_count": 3
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "ordered_content_integrity_required": true
+  },
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/af_sarah.pt",
+      "sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
+      "size_bytes": 523425
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "python_executable": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "deterministic_algorithms_required": true,
+    "torch_thread_count": 1,
+    "offline_local_artifacts_only": true
+  },
+  "rights": {
+    "model_and_voicepack_license": "Apache-2.0",
+    "private_audition_allowed": true,
+    "title_scoped_production_risk_acceptance_bound": false,
+    "production_release_approved": false,
+    "public_disclosure_required_if_later_approved": "AI voice"
+  },
+  "safety": {
+    "provider_calls": 0,
+    "estimated_tts_provider_cost_usd": 0.0,
+    "paid_tts_lock": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_touched": false,
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-last-leaf/f3ff3571-af-sarah-representative-v1",
+    "audio_generated": true,
+    "listening_provider_calls": 0,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false,
+    "paid_tts_lock_before": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_after": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_unchanged": true,
+    "audio_generated_during_repair": false,
+    "resynthesis_performed": false,
+    "audio_edit_or_trim_performed": false,
+    "asr_only_repair": true,
+    "provider_calls_during_repair": 0,
+    "paid_tts_lock_touched_during_repair": false
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_ASR_REPAIR_FAILED",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "LAST_LEAF_TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "PRIVATE_DELIVERY_MANIFEST_NOT_COMPLETE",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN",
+    "OWNER_10_TARGET_NOT_VERIFIED"
+  ],
+  "catalog_truth": {
+    "reader_status": "reader_ready",
+    "publication_status": "live",
+    "audiobook_enabled": false,
+    "audio_enabled": false,
+    "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED"
+  },
+  "prior_attempts": [
+    {
+      "provider": "google",
+      "voice": "en-GB-Studio-C",
+      "speaking_rate": 0.94,
+      "fingerprint": "c0f5f836abe9976e",
+      "scores": [
+        8.4,
+        8.4,
+        9.4,
+        8.3
+      ],
+      "fatal_flags": [],
+      "status": "BLOCKED_LISTENING_QA"
+    },
+    {
+      "provider": "google",
+      "voice": "en-GB-Chirp3-HD-Achird",
+      "speaking_rate": 0.9,
+      "fingerprint": "313f9bf5249bc7b5",
+      "scores": [
+        9.4,
+        9.4,
+        8.4,
+        9.4
+      ],
+      "fatal_flags": [],
+      "status": "BLOCKED_LISTENING_QA"
+    },
+    {
+      "provider": "kokoro",
+      "voice": "af_sarah",
+      "speaking_rate": 0.98,
+      "fingerprint": "b62c996d97def9e3f805eba13be2aa2b29ebf03858200657b2c959676b9d4935",
+      "scores": [],
+      "fatal_flags": [],
+      "status": "BLOCKED_UNRESOLVED_G2P_NO_AUDIO_GENERATED"
+    }
+  ],
+  "no_repeat_history": {
+    "inspected_paths": [
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/earnalism_intelligence/provider_performance_memory.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/earnalism_intelligence/title_decision_history.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/earnalism_intelligence/bengali_audiobook_campaign_state.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/sprint1_provider_failure_registry.json",
+      "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/title_runs/the-last-leaf_release_gate_evidence.json"
+    ],
+    "prior_fingerprints": [
+      "c0f5f836abe9976e",
+      "313f9bf5249bc7b5",
+      "b62c996d97def9e3f805eba13be2aa2b29ebf03858200657b2c959676b9d4935"
+    ],
+    "exact_current_fingerprint_found": false,
+    "fail_closed_on_completed_fingerprint": true
+  },
+  "voice_selection": {
+    "selected_voice": "af_sarah",
+    "selected_voice_sha256": "49bd364ea3be9eb3e9685e8f9a15448c4883112a7c0ff7ab139fa4088b08cef9",
+    "voice_audit_recommendation": "af_sarah",
+    "previous_campaign_kokoro_voice": "af_bella",
+    "previous_campaign_kokoro_voice_sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+    "voice_tensor_is_materially_different": true,
+    "selected_asset_is_locally_installed_and_hash_verified": true,
+    "selected_asset_source_repo": "hexgrad/Kokoro-82M",
+    "selected_asset_source_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987"
+  },
+  "next_stage_contract": {
+    "status": "ASR_REPAIR_FINGERPRINT_CLOSED_OBJECTIVE_FAIL",
+    "repair_fingerprint": "6af4f78de1ff7aef48d178d3ae46d535ce9ad968cde190e4257c0cff16742312",
+    "exact_execute_command": null,
+    "do_not_repeat_completed_fingerprint": true,
+    "listening_qa_allowed": false,
+    "full_title_generation_allowed": false,
+    "upload_allowed": false,
+    "publication_allowed": false,
+    "release_gate_mutation_allowed": false,
+    "next_action": "Use a materially different voice/provider or validate source-bound narration; do not repeat this synthesis or ASR-repair fingerprint."
+  },
+  "samples": [
+    {
+      "passage_id": "opening_literary_setting",
+      "source_text_sha256": "05c55ee1edd72ef0609c782226e4537ff35051b2ea7ea81e0eedfd2901d02dd5",
+      "characters": 720,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-last-leaf/f3ff3571-af-sarah-representative-v1/opening_literary_setting.wav",
+      "phoneme_sha256": "61ba987bcb60c14ca4402bda0a6498c56ab5f2c9a0284a97d45ef1020ba2ec74",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 42.8,
+      "size_bytes": 2054444,
+      "audio_sha256": "30ff73e6e7050e711662661dd1d029332d596fca091b4bb880db7274b3f64e05",
+      "peak_fraction": 0.625538,
+      "rms_fraction": 0.059865,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "johnsy_leaf_dialogue",
+      "source_text_sha256": "8ece41198a202de474bef1a33218949f8bd72fd18413f4af140548db7026b775",
+      "characters": 386,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-last-leaf/f3ff3571-af-sarah-representative-v1/johnsy_leaf_dialogue.wav",
+      "phoneme_sha256": "c85f96773a04c996437f5ca15f05ba9dc9545f1dfa49bb0d375ed5ab94e88cc4",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 22.075,
+      "size_bytes": 1059644,
+      "audio_sha256": "d2eeac9040f29b4c55efbeb75054343dba515b4980609572f0c49b2d5b6a85bc",
+      "peak_fraction": 0.539384,
+      "rms_fraction": 0.060078,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "behrman_dialect_emotion",
+      "source_text_sha256": "3ee0d5877dcd681e530ea3dc56fe0c7b11614d3bec736c9ca485799c897fafc1",
+      "characters": 432,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-last-leaf/f3ff3571-af-sarah-representative-v1/behrman_dialect_emotion.wav",
+      "phoneme_sha256": "525ea43e72e29c95a8e1f0f604baa0e64dac2610203ef6eb628bdae59165a8d1",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 25.3,
+      "size_bytes": 1214444,
+      "audio_sha256": "87b4b7ace968e8843693b6e73ad638a7058bae699a202b72e0c137b61e59b008",
+      "peak_fraction": 0.633442,
+      "rms_fraction": 0.05924,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "final_masterpiece_reveal",
+      "source_text_sha256": "9b92d5b089d00a5896d243c6c6ac4c8e5ad645a76f820131df9476f582e1bc00",
+      "characters": 764,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-last-leaf/f3ff3571-af-sarah-representative-v1/final_masterpiece_reveal.wav",
+      "phoneme_sha256": "3c3eed0a6de89787156889eec17cdb4dcf3ce05e5d1c20987583a11df1ece22f",
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 43.275,
+      "size_bytes": 2077244,
+      "audio_sha256": "b325b0eb22218168628be0efe9b2624081c637f255794e823132a7af63131406",
+      "peak_fraction": 0.6245,
+      "rms_fraction": 0.058929,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    }
+  ],
+  "asr": {
+    "status": "FAIL",
+    "mode": "ASR_ONLY_RETAINED_HASH_BOUND_AUDIO",
+    "audio_derived": true,
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "repair_fingerprint": "6af4f78de1ff7aef48d178d3ae46d535ce9ad968cde190e4257c0cff16742312",
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "reports": [
+      {
+        "passage_id": "opening_literary_setting",
+        "decoder_arm": "unprompted_beam_2",
+        "audio_sha256": "30ff73e6e7050e711662661dd1d029332d596fca091b4bb880db7274b3f64e05",
+        "source_text_sha256": "05c55ee1edd72ef0609c782226e4537ff35051b2ea7ea81e0eedfd2901d02dd5",
+        "raw_transcript": "In a little district west of Washington Square, the streets have run crazy and broken themselves into small strips called places. These places make strange angles and curves. One street crosses itself a time or two. An artist once discovered a valuable possibility in this street. Suppose a collector with a bill for paints, paper and canvas should, in traversing this route, suddenly meet himself coming back, without a cent having been paid on account. So, to quaint old Greenwich Village, the art people soon came prowling, hunting for north windows and eighteenth-century gables and Dutch attics and low rents. Then they imported some pewter mugs and a chafing dish or two from Sixth Avenue, and became a colony.",
+        "raw_transcript_sha256": "5e3de9ab9ff56b4f799014418e68c4153991fdcebbe69bd1b71f378bab12a5f0",
+        "evaluated_transcript": "In a little district west of Washington Square, the streets have run crazy and broken themselves into small strips called places. These places make strange angles and curves. One street crosses itself a time or two. An artist once discovered a valuable possibility in this street. Suppose a collector with a bill for paints, paper and canvas should, in traversing this route, suddenly meet himself coming back, without a cent having been paid on account. So, to quaint old Greenwich Village, the art people soon came prowling, hunting for north windows and eighteenth-century gables and Dutch attics and low rents. Then they imported some pewter mugs and a chafing dish or two from Sixth Avenue, and became a colony.",
+        "evaluated_transcript_sha256": "5e3de9ab9ff56b4f799014418e68c4153991fdcebbe69bd1b71f378bab12a5f0",
+        "source_equivalences_applied": [],
+        "unexpected_speech_deleted_or_normalized": false,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 120,
+        "transcript_token_count": 120,
+        "equal_token_count": 120,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      },
+      {
+        "passage_id": "johnsy_leaf_dialogue",
+        "decoder_arm": "unprompted_beam_2",
+        "audio_sha256": "d2eeac9040f29b4c55efbeb75054343dba515b4980609572f0c49b2d5b6a85bc",
+        "source_text_sha256": "8ece41198a202de474bef1a33218949f8bd72fd18413f4af140548db7026b775",
+        "raw_transcript": "Six, said Johnsy in almost a whisper. They're falling faster now. Three days ago there were almost a hundred. It made my head ache to count them. But now it's easy. There goes another one. There are only five left now. Five what, dear? Tell your suitie. Leaves. On the ivy vine. When the last one falls, I must go too. I've known that for three days. Didn't the doctor tell you?",
+        "raw_transcript_sha256": "d06c8d486c7be51a1a461ba71d489fc8a49f11c5742d54da8f153cccc2e91bcb",
+        "evaluated_transcript": "Six, said Johnsy in almost a whisper. They're falling faster now. Three days ago there were almost a hundred. It made my head ache to count them. But now it's easy. There goes another one. There are only five left now. Five what, dear? Tell your suitie. Leaves. On the ivy vine. When the last one falls, I must go too. I've known that for three days. Didn't the doctor tell you?",
+        "evaluated_transcript_sha256": "d06c8d486c7be51a1a461ba71d489fc8a49f11c5742d54da8f153cccc2e91bcb",
+        "source_equivalences_applied": [],
+        "unexpected_speech_deleted_or_normalized": false,
+        "score": 9.8611,
+        "coverage": 0.9861,
+        "precision": 0.9861,
+        "source_token_count": 72,
+        "transcript_token_count": 72,
+        "equal_token_count": 71,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "sudie": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "suitie": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              46,
+              47
+            ],
+            "transcript_range": [
+              46,
+              47
+            ],
+            "source_tokens": [
+              "sudie"
+            ],
+            "transcript_tokens": [
+              "suitie"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "behrman_dialect_emotion",
+        "decoder_arm": "unprompted_greedy_fallback",
+        "audio_sha256": "87b4b7ace968e8843693b6e73ad638a7058bae699a202b72e0c137b61e59b008",
+        "source_text_sha256": "3ee0d5877dcd681e530ea3dc56fe0c7b11614d3bec736c9ca485799c897fafc1",
+        "raw_transcript": "Old Bearman, with his red eyes plainly streaming, shouted his contempt and derision for such idiotic imaginings. \"'Vace,' he cried, \"'is dare people in de world mit dare foolishness to die because leafs de drop off from a confounded vine? I haff not heard of such a thing. No, I will not bose as a model for your fool hermit dunderhead. Vite you allow Dot silly pizness to come and dare prane of her? Ock, Dot, poor little Miss Johncy!\"",
+        "raw_transcript_sha256": "ada90f437e5bcc8307a51a0a29b2922bf3c9716e825ec964c9eab8484e525333",
+        "evaluated_transcript": "Old Bearman, with his red eyes plainly streaming, shouted his contempt and derision for such idiotic imaginings. \"'Vace,' he cried, \"'is dare people in de world mit dare foolishness to die because leafs dey drop off from a confounded vine? I haf not heard of such a thing. No, I will not bose as a model for your fool hermit dunderhead. Vite you allow Dot silly pusiness to come and dare prane of her? Ock, Dot, poor lettle Miss Johncy!\"",
+        "evaluated_transcript_sha256": "20c27d524a28fb3e9bbebaad22c7565294c672f25be684eaf1272281670389bd",
+        "source_equivalences_applied": [
+          {
+            "pattern": "\\bleafs de drop\\b",
+            "replacement": "leafs dey drop",
+            "observed_count": 1,
+            "reason": "source dialect dey/de acoustic spelling equivalent"
+          },
+          {
+            "pattern": "\\bhaff not\\b",
+            "replacement": "haf not",
+            "observed_count": 1,
+            "reason": "source dialect haf/haff acoustic spelling equivalent"
+          },
+          {
+            "pattern": "\\bsilly pizness\\b",
+            "replacement": "silly pusiness",
+            "observed_count": 1,
+            "reason": "source dialect pusiness/pizness acoustic spelling equivalent"
+          },
+          {
+            "pattern": "\\bpoor little\\b",
+            "replacement": "poor lettle",
+            "observed_count": 1,
+            "reason": "source dialect lettle/little acoustic spelling equivalent"
+          }
+        ],
+        "unexpected_speech_deleted_or_normalized": false,
+        "score": 8.6957,
+        "coverage": 0.8642,
+        "precision": 0.875,
+        "source_token_count": 81,
+        "transcript_token_count": 80,
+        "equal_token_count": 70,
+        "first_words_match": false,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": false,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "behrman": 1,
+          "vass": 1,
+          "dere": 1,
+          "in": 1,
+          "der": 2,
+          "vy": 1,
+          "do": 1,
+          "prain": 1,
+          "ach": 1,
+          "johnsy": 1
+        },
+        "duplicate_tokens": {
+          "and": 1
+        },
+        "unexpected_tokens": {
+          "bearman": 1,
+          "and": 1,
+          "vace": 1,
+          "dare": 3,
+          "vite": 1,
+          "prane": 1,
+          "ock": 1,
+          "johncy": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              1,
+              2
+            ],
+            "transcript_range": [
+              1,
+              2
+            ],
+            "source_tokens": [
+              "behrman"
+            ],
+            "transcript_tokens": [
+              "bearman"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              17,
+              18
+            ],
+            "transcript_range": [
+              17,
+              18
+            ],
+            "source_tokens": [
+              "vass"
+            ],
+            "transcript_tokens": [
+              "vace"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              21,
+              22
+            ],
+            "transcript_range": [
+              21,
+              22
+            ],
+            "source_tokens": [
+              "dere"
+            ],
+            "transcript_tokens": [
+              "dare"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              27,
+              28
+            ],
+            "transcript_range": [
+              27,
+              28
+            ],
+            "source_tokens": [
+              "der"
+            ],
+            "transcript_tokens": [
+              "dare"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              61,
+              63
+            ],
+            "transcript_range": [
+              61,
+              62
+            ],
+            "source_tokens": [
+              "vy",
+              "do"
+            ],
+            "transcript_tokens": [
+              "vite"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              70,
+              73
+            ],
+            "transcript_range": [
+              69,
+              72
+            ],
+            "source_tokens": [
+              "in",
+              "der",
+              "prain"
+            ],
+            "transcript_tokens": [
+              "and",
+              "dare",
+              "prane"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              75,
+              76
+            ],
+            "transcript_range": [
+              74,
+              75
+            ],
+            "source_tokens": [
+              "ach"
+            ],
+            "transcript_tokens": [
+              "ock"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              80,
+              81
+            ],
+            "transcript_range": [
+              79,
+              80
+            ],
+            "source_tokens": [
+              "johnsy"
+            ],
+            "transcript_tokens": [
+              "johncy"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "final_masterpiece_reveal",
+        "decoder_arm": "unprompted_beam_2",
+        "audio_sha256": "b325b0eb22218168628be0efe9b2624081c637f255794e823132a7af63131406",
+        "source_text_sha256": "9b92d5b089d00a5896d243c6c6ac4c8e5ad645a76f820131df9476f582e1bc00",
+        "raw_transcript": "I have something to tell you, White Mouse,\" she said. Mr. Behrman died of pneumonia today in the hospital. He was ill only two days. The janitor found him on the morning of the first day in his room downstairs helpless with pain. His shoes and clothing were wet through and icy cold. They couldn't imagine where he had been on such a dreadful night. And then they found a lantern, still lighted, and a ladder that had been dragged from its place, and some scattered brushes, and a palette with green and yellow colors mixed on it, and look out the window, dear, at the last ivy leaf on the wall. Didn't you wonder why it never fluttered or moved when the wind blew? Ah, darling, it's Behrman's masterpiece. He painted it there the night that the last leaf fell.",
+        "raw_transcript_sha256": "7fb9807c975aa9ac38a202653809b0381ee6408d6bc06d028e613e94495e25f8",
+        "evaluated_transcript": "I have something to tell you, White Mouse,\" she said. Mr. Behrman died of pneumonia to day in the hospital. He was ill only two days. The janitor found him on the morning of the first day in his room downstairs helpless with pain. His shoes and clothing were wet through and icy cold. They couldn't imagine where he had been on such a dreadful night. And then they found a lantern, still lighted, and a ladder that had been dragged from its place, and some scattered brushes, and a palette with green and yellow colors mixed on it, and look out the window, dear, at the last ivy leaf on the wall. Didn't you wonder why it never fluttered or moved when the wind blew? Ah, darling, it's Behrman's masterpiece. He painted it there the night that the last leaf fell.",
+        "evaluated_transcript_sha256": "d71a122c95bbd1fadd85f79dda4f6c71ea3c01b909be1593833bdbb374665946",
+        "source_equivalences_applied": [
+          {
+            "pattern": "\\bpneumonia today in\\b",
+            "replacement": "pneumonia to day in",
+            "observed_count": 1,
+            "reason": "source to-day/today orthographic equivalent"
+          }
+        ],
+        "unexpected_speech_deleted_or_normalized": false,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 142,
+        "transcript_token_count": 142,
+        "equal_token_count": 142,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      }
+    ]
+  },
+  "input_evidence": {
+    "path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/sprint1_publication/title_runs/the-last-leaf_kokoro_af_sarah_representative_preflight_v1.json",
+    "sha256": "b025ee591e2e470a52ad6f640d5135d2ae0b7ba7256a69634f41f6ba8122d07e",
+    "unchanged": true
+  },
+  "asr_prior_prompted_run": {
+    "status": "FAIL",
+    "mode": "ASR_REVERIFY_EXISTING_AUDIO_ONLY",
+    "config_fingerprint": "4313b4d132c6b4886844e2431bd6180c426a7c4882317faa51f29f69290eee47",
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "audio_derived": true,
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "prompt_policy": {
+      "opening_literary_setting": "canonical_vocabulary_prompt",
+      "johnsy_leaf_dialogue": "canonical_vocabulary_prompt",
+      "behrman_dialect_emotion": "canonical_vocabulary_prompt",
+      "final_masterpiece_reveal": "canonical_vocabulary_prompt"
+    },
+    "source_equivalence_policy": {
+      "opening_literary_setting": [],
+      "johnsy_leaf_dialogue": [],
+      "behrman_dialect_emotion": [],
+      "final_masterpiece_reveal": []
+    },
+    "unexpected_speech_may_be_normalized_or_discarded": false,
+    "reports": [
+      {
+        "passage_id": "opening_literary_setting",
+        "audio_sha256": "30ff73e6e7050e711662661dd1d029332d596fca091b4bb880db7274b3f64e05",
+        "source_text_sha256": "05c55ee1edd72ef0609c782226e4537ff35051b2ea7ea81e0eedfd2901d02dd5",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "1d7cf4cb70ebfc8e5a58bf367145185784d78ee031b2e655f1a21059a1afd09d",
+        "transcript": "In a little district west of Washington Square, the streets have run crazy and broken themselves into small strips called places. These places make strange angles and curves. One street crosses itself a time or two. An artist once discovered a valuable possibility in this street. Suppose a collector with a bill for paints, paper and canvas should in traversing this route, suddenly meet himself coming back, without a cent having been paid on account. So, to quaint old Greenwich Village, the art people soon came prowling, hunting for north windows and eighteenth-century gables and Dutch attics and low rents. Then they imported some pewter mugs and a chafing dish or two from Sixth Avenue, and became a colony.",
+        "transcript_sha256": "8ad16e7b17729d2e348fc34629718e3b9e97fb4ecc9ca52caa43577855cc9330",
+        "evaluated_transcript": "In a little district west of Washington Square, the streets have run crazy and broken themselves into small strips called places. These places make strange angles and curves. One street crosses itself a time or two. An artist once discovered a valuable possibility in this street. Suppose a collector with a bill for paints, paper and canvas should in traversing this route, suddenly meet himself coming back, without a cent having been paid on account. So, to quaint old Greenwich Village, the art people soon came prowling, hunting for north windows and eighteenth-century gables and Dutch attics and low rents. Then they imported some pewter mugs and a chafing dish or two from Sixth Avenue, and became a colony.",
+        "evaluated_transcript_sha256": "8ad16e7b17729d2e348fc34629718e3b9e97fb4ecc9ca52caa43577855cc9330",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.171104,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 120,
+        "transcript_token_count": 120,
+        "equal_token_count": 120,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      },
+      {
+        "passage_id": "johnsy_leaf_dialogue",
+        "audio_sha256": "d2eeac9040f29b4c55efbeb75054343dba515b4980609572f0c49b2d5b6a85bc",
+        "source_text_sha256": "8ece41198a202de474bef1a33218949f8bd72fd18413f4af140548db7026b775",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "1d7cf4cb70ebfc8e5a58bf367145185784d78ee031b2e655f1a21059a1afd09d",
+        "transcript": "Six, said Johnsy in almost a whisper. They're falling faster now. Three days ago there were almost a hundred. It made my head ache to count them. But now it's easy. There goes another one. There are only five left now. Five what, dear? Tell your Sudie. Leaves, on the ivy vine. When the last one falls, I must go too. I've known that for three days. Didn't the doctor tell you? Thank you.",
+        "transcript_sha256": "17459af8ef5f86b3259a0b6570b14217b9f10276e8b33836917f7b4a177dfe6e",
+        "evaluated_transcript": "Six, said Johnsy in almost a whisper. They're falling faster now. Three days ago there were almost a hundred. It made my head ache to count them. But now it's easy. There goes another one. There are only five left now. Five what, dear? Tell your Sudie. Leaves, on the ivy vine. When the last one falls, I must go too. I've known that for three days. Didn't the doctor tell you? Thank you.",
+        "evaluated_transcript_sha256": "17459af8ef5f86b3259a0b6570b14217b9f10276e8b33836917f7b4a177dfe6e",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.462011,
+        "score": 9.863,
+        "coverage": 1.0,
+        "precision": 0.973,
+        "source_token_count": 72,
+        "transcript_token_count": 74,
+        "equal_token_count": 72,
+        "first_words_match": true,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": true,
+        "no_duplicate_content": false,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {},
+        "duplicate_tokens": {
+          "you": 1
+        },
+        "unexpected_tokens": {
+          "you": 1,
+          "thank": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "insert",
+            "source_range": [
+              72,
+              72
+            ],
+            "transcript_range": [
+              72,
+              74
+            ],
+            "source_tokens": [],
+            "transcript_tokens": [
+              "thank",
+              "you"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "behrman_dialect_emotion",
+        "audio_sha256": "87b4b7ace968e8843693b6e73ad638a7058bae699a202b72e0c137b61e59b008",
+        "source_text_sha256": "3ee0d5877dcd681e530ea3dc56fe0c7b11614d3bec736c9ca485799c897fafc1",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "1d7cf4cb70ebfc8e5a58bf367145185784d78ee031b2e655f1a21059a1afd09d",
+        "transcript": "Old Behrman, with his red eyes plainly streaming, shouted his contempt and derision for such idiotic imaginings. Vass, he cried, is der people in de world mit der foolishness to die because leafs de drop off from a confounded vine? I haff not heard of such a thing. No, I will not bose as a model for your fool hermit dunderhead. Vy de you allow dot silly pizness to come and der prain of her? Ock dot poor little Miss Johnsy.",
+        "transcript_sha256": "9bf0e80403e26d05784156646409d7c2bab92e9620083aae3962d0ebc0d29bf1",
+        "evaluated_transcript": "Old Behrman, with his red eyes plainly streaming, shouted his contempt and derision for such idiotic imaginings. Vass, he cried, is der people in de world mit der foolishness to die because leafs de drop off from a confounded vine? I haff not heard of such a thing. No, I will not bose as a model for your fool hermit dunderhead. Vy de you allow dot silly pizness to come and der prain of her? Ock dot poor little Miss Johnsy.",
+        "evaluated_transcript_sha256": "9bf0e80403e26d05784156646409d7c2bab92e9620083aae3962d0ebc0d29bf1",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.002479,
+        "score": 9.0123,
+        "coverage": 0.9012,
+        "precision": 0.9012,
+        "source_token_count": 81,
+        "transcript_token_count": 81,
+        "equal_token_count": 73,
+        "first_words_match": true,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": false,
+        "no_reordered_content": false,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "dere": 1,
+          "in": 1,
+          "dey": 1,
+          "haf": 1,
+          "do": 1,
+          "pusiness": 1,
+          "ach": 1,
+          "lettle": 1
+        },
+        "duplicate_tokens": {
+          "and": 1,
+          "de": 2,
+          "der": 1
+        },
+        "unexpected_tokens": {
+          "and": 1,
+          "der": 1,
+          "de": 2,
+          "haff": 1,
+          "pizness": 1,
+          "ock": 1,
+          "little": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              21,
+              22
+            ],
+            "transcript_range": [
+              21,
+              22
+            ],
+            "source_tokens": [
+              "dere"
+            ],
+            "transcript_tokens": [
+              "der"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              33,
+              34
+            ],
+            "transcript_range": [
+              33,
+              34
+            ],
+            "source_tokens": [
+              "dey"
+            ],
+            "transcript_tokens": [
+              "de"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              41,
+              42
+            ],
+            "transcript_range": [
+              41,
+              42
+            ],
+            "source_tokens": [
+              "haf"
+            ],
+            "transcript_tokens": [
+              "haff"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              62,
+              63
+            ],
+            "transcript_range": [
+              62,
+              63
+            ],
+            "source_tokens": [
+              "do"
+            ],
+            "transcript_tokens": [
+              "de"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              67,
+              68
+            ],
+            "transcript_range": [
+              67,
+              68
+            ],
+            "source_tokens": [
+              "pusiness"
+            ],
+            "transcript_tokens": [
+              "pizness"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              70,
+              71
+            ],
+            "transcript_range": [
+              70,
+              71
+            ],
+            "source_tokens": [
+              "in"
+            ],
+            "transcript_tokens": [
+              "and"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              75,
+              76
+            ],
+            "transcript_range": [
+              75,
+              76
+            ],
+            "source_tokens": [
+              "ach"
+            ],
+            "transcript_tokens": [
+              "ock"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              78,
+              79
+            ],
+            "transcript_range": [
+              78,
+              79
+            ],
+            "source_tokens": [
+              "lettle"
+            ],
+            "transcript_tokens": [
+              "little"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "final_masterpiece_reveal",
+        "audio_sha256": "b325b0eb22218168628be0efe9b2624081c637f255794e823132a7af63131406",
+        "source_text_sha256": "9b92d5b089d00a5896d243c6c6ac4c8e5ad645a76f820131df9476f582e1bc00",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "1d7cf4cb70ebfc8e5a58bf367145185784d78ee031b2e655f1a21059a1afd09d",
+        "transcript": "I have something to tell you, white mouse,\" she said. Mr. Behrman died of pneumonia today in the hospital. He was ill only two days. The janitor found him on the morning of the first day in his room downstairs helpless with pain. His shoes and clothing were wet through and icy cold. They couldn't imagine where he had been on such a dreadful night. And then they found a lantern, still lighted, and a ladder that had been dragged from its place, and some scattered brushes, and a palette with green and yellow colors mixed on it. it, and look out the window, dear, at the last ivy leaf on the wall. Didn't you wonder why it never fluttered or moved when the wind blew? Ah, darling, it's Behrman's masterpiece. He painted it there the night that the last leaf fell.",
+        "transcript_sha256": "3e3f68cb9a822a16bc22b01cbfcfdfa42f5feaf05ead6bde4f3db7b01d54376e",
+        "evaluated_transcript": "I have something to tell you, white mouse,\" she said. Mr. Behrman died of pneumonia today in the hospital. He was ill only two days. The janitor found him on the morning of the first day in his room downstairs helpless with pain. His shoes and clothing were wet through and icy cold. They couldn't imagine where he had been on such a dreadful night. And then they found a lantern, still lighted, and a ladder that had been dragged from its place, and some scattered brushes, and a palette with green and yellow colors mixed on it. it, and look out the window, dear, at the last ivy leaf on the wall. Didn't you wonder why it never fluttered or moved when the wind blew? Ah, darling, it's Behrman's masterpiece. He painted it there the night that the last leaf fell.",
+        "evaluated_transcript_sha256": "3e3f68cb9a822a16bc22b01cbfcfdfa42f5feaf05ead6bde4f3db7b01d54376e",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.222786,
+        "score": 9.8592,
+        "coverage": 0.9859,
+        "precision": 0.9859,
+        "source_token_count": 142,
+        "transcript_token_count": 142,
+        "equal_token_count": 140,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": false,
+        "no_reordered_content": false,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "to": 1,
+          "day": 1
+        },
+        "duplicate_tokens": {
+          "it": 1
+        },
+        "unexpected_tokens": {
+          "today": 1,
+          "it": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              15,
+              17
+            ],
+            "transcript_range": [
+              15,
+              16
+            ],
+            "source_tokens": [
+              "to",
+              "day"
+            ],
+            "transcript_tokens": [
+              "today"
+            ]
+          },
+          {
+            "operation": "insert",
+            "source_range": [
+              99,
+              99
+            ],
+            "transcript_range": [
+              98,
+              99
+            ],
+            "source_tokens": [],
+            "transcript_tokens": [
+              "it"
+            ]
+          }
+        ],
+        "pass": false
+      }
+    ]
+  },
+  "asr_repair": {
+    "completed": true,
+    "repair_fingerprint": "6af4f78de1ff7aef48d178d3ae46d535ce9ad968cde190e4257c0cff16742312",
+    "fingerprint_closed": true,
+    "prior_config_fingerprint": "4313b4d132c6b4886844e2431bd6180c426a7c4882317faa51f29f69290eee47",
+    "prior_transcript_hashes": {
+      "opening_literary_setting": "8ad16e7b17729d2e348fc34629718e3b9e97fb4ecc9ca52caa43577855cc9330",
+      "johnsy_leaf_dialogue": "17459af8ef5f86b3259a0b6570b14217b9f10276e8b33836917f7b4a177dfe6e",
+      "behrman_dialect_emotion": "9bf0e80403e26d05784156646409d7c2bab92e9620083aae3962d0ebc0d29bf1",
+      "final_masterpiece_reveal": "3e3f68cb9a822a16bc22b01cbfcfdfa42f5feaf05ead6bde4f3db7b01d54376e"
+    },
+    "decoder_arms": [
+      {
+        "id": "unprompted_beam_2",
+        "initial_prompt": null,
+        "temperature": 0,
+        "condition_on_previous_text": false,
+        "word_timestamps": true,
+        "beam_size": 2,
+        "patience": 1,
+        "hallucination_silence_threshold": 0.5
+      },
+      {
+        "id": "unprompted_greedy_fallback",
+        "initial_prompt": null,
+        "temperature": 0,
+        "condition_on_previous_text": false,
+        "word_timestamps": true,
+        "beam_size": null,
+        "patience": null,
+        "hallucination_silence_threshold": 0.5
+      }
+    ],
+    "equivalence_policy": {
+      "opening_literary_setting": [],
+      "johnsy_leaf_dialogue": [],
+      "behrman_dialect_emotion": [
+        {
+          "pattern": "\\bder people\\b",
+          "replacement": "dere people",
+          "expected_count_when_observed": 1,
+          "reason": "source dialect dere/der acoustic spelling equivalent"
+        },
+        {
+          "pattern": "\\bleafs de drop\\b",
+          "replacement": "leafs dey drop",
+          "expected_count_when_observed": 1,
+          "reason": "source dialect dey/de acoustic spelling equivalent"
+        },
+        {
+          "pattern": "\\bhaff not\\b",
+          "replacement": "haf not",
+          "expected_count_when_observed": 1,
+          "reason": "source dialect haf/haff acoustic spelling equivalent"
+        },
+        {
+          "pattern": "\\bsilly pizness\\b",
+          "replacement": "silly pusiness",
+          "expected_count_when_observed": 1,
+          "reason": "source dialect pusiness/pizness acoustic spelling equivalent"
+        },
+        {
+          "pattern": "\\bock dot\\b",
+          "replacement": "ach dot",
+          "expected_count_when_observed": 1,
+          "reason": "source dialect Ach/Ock acoustic spelling equivalent"
+        },
+        {
+          "pattern": "\\bpoor little\\b",
+          "replacement": "poor lettle",
+          "expected_count_when_observed": 1,
+          "reason": "source dialect lettle/little acoustic spelling equivalent"
+        }
+      ],
+      "final_masterpiece_reveal": [
+        {
+          "pattern": "\\bpneumonia today in\\b",
+          "replacement": "pneumonia to day in",
+          "expected_count_when_observed": 1,
+          "reason": "source to-day/today orthographic equivalent"
+        }
+      ]
+    },
+    "forbidden_normalizations": [
+      "do/de",
+      "in/and",
+      "trailing Thank you",
+      "duplicated it"
+    ],
+    "all_candidates": {
+      "opening_literary_setting": [
+        {
+          "passage_id": "opening_literary_setting",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "30ff73e6e7050e711662661dd1d029332d596fca091b4bb880db7274b3f64e05",
+          "source_text_sha256": "05c55ee1edd72ef0609c782226e4537ff35051b2ea7ea81e0eedfd2901d02dd5",
+          "raw_transcript": "In a little district west of Washington Square, the streets have run crazy and broken themselves into small strips called places. These places make strange angles and curves. One street crosses itself a time or two. An artist once discovered a valuable possibility in this street. Suppose a collector with a bill for paints, paper and canvas should, in traversing this route, suddenly meet himself coming back, without a cent having been paid on account. So, to quaint old Greenwich Village, the art people soon came prowling, hunting for north windows and eighteenth-century gables and Dutch attics and low rents. Then they imported some pewter mugs and a chafing dish or two from Sixth Avenue, and became a colony.",
+          "raw_transcript_sha256": "5e3de9ab9ff56b4f799014418e68c4153991fdcebbe69bd1b71f378bab12a5f0",
+          "evaluated_transcript": "In a little district west of Washington Square, the streets have run crazy and broken themselves into small strips called places. These places make strange angles and curves. One street crosses itself a time or two. An artist once discovered a valuable possibility in this street. Suppose a collector with a bill for paints, paper and canvas should, in traversing this route, suddenly meet himself coming back, without a cent having been paid on account. So, to quaint old Greenwich Village, the art people soon came prowling, hunting for north windows and eighteenth-century gables and Dutch attics and low rents. Then they imported some pewter mugs and a chafing dish or two from Sixth Avenue, and became a colony.",
+          "evaluated_transcript_sha256": "5e3de9ab9ff56b4f799014418e68c4153991fdcebbe69bd1b71f378bab12a5f0",
+          "source_equivalences_applied": [],
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 120,
+          "transcript_token_count": 120,
+          "equal_token_count": 120,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        }
+      ],
+      "johnsy_leaf_dialogue": [
+        {
+          "passage_id": "johnsy_leaf_dialogue",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "d2eeac9040f29b4c55efbeb75054343dba515b4980609572f0c49b2d5b6a85bc",
+          "source_text_sha256": "8ece41198a202de474bef1a33218949f8bd72fd18413f4af140548db7026b775",
+          "raw_transcript": "Six, said Johnsy in almost a whisper. They're falling faster now. Three days ago there were almost a hundred. It made my head ache to count them. But now it's easy. There goes another one. There are only five left now. Five what, dear? Tell your suitie. Leaves. On the ivy vine. When the last one falls, I must go too. I've known that for three days. Didn't the doctor tell you?",
+          "raw_transcript_sha256": "d06c8d486c7be51a1a461ba71d489fc8a49f11c5742d54da8f153cccc2e91bcb",
+          "evaluated_transcript": "Six, said Johnsy in almost a whisper. They're falling faster now. Three days ago there were almost a hundred. It made my head ache to count them. But now it's easy. There goes another one. There are only five left now. Five what, dear? Tell your suitie. Leaves. On the ivy vine. When the last one falls, I must go too. I've known that for three days. Didn't the doctor tell you?",
+          "evaluated_transcript_sha256": "d06c8d486c7be51a1a461ba71d489fc8a49f11c5742d54da8f153cccc2e91bcb",
+          "source_equivalences_applied": [],
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.8611,
+          "coverage": 0.9861,
+          "precision": 0.9861,
+          "source_token_count": 72,
+          "transcript_token_count": 72,
+          "equal_token_count": 71,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "sudie": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "suitie": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                46,
+                47
+              ],
+              "transcript_range": [
+                46,
+                47
+              ],
+              "source_tokens": [
+                "sudie"
+              ],
+              "transcript_tokens": [
+                "suitie"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "johnsy_leaf_dialogue",
+          "decoder_arm": "unprompted_greedy_fallback",
+          "audio_sha256": "d2eeac9040f29b4c55efbeb75054343dba515b4980609572f0c49b2d5b6a85bc",
+          "source_text_sha256": "8ece41198a202de474bef1a33218949f8bd72fd18413f4af140548db7026b775",
+          "raw_transcript": "Six, said Johnsy in almost a whisper. They're falling faster now. Three days ago there were almost a hundred. It made my head ache to count them. But now it's easy. There goes another one. There are only five left now. Five what, dear? Tell your suitie. Leaves, on the ivy vine. When the last one falls, I must go too. I've known that for three days. Didn't the doctor tell you?",
+          "raw_transcript_sha256": "bedcd83f96710301e80415dcab47b42a6206af369a4a15d34b6a4541c0eef190",
+          "evaluated_transcript": "Six, said Johnsy in almost a whisper. They're falling faster now. Three days ago there were almost a hundred. It made my head ache to count them. But now it's easy. There goes another one. There are only five left now. Five what, dear? Tell your suitie. Leaves, on the ivy vine. When the last one falls, I must go too. I've known that for three days. Didn't the doctor tell you?",
+          "evaluated_transcript_sha256": "bedcd83f96710301e80415dcab47b42a6206af369a4a15d34b6a4541c0eef190",
+          "source_equivalences_applied": [],
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.8611,
+          "coverage": 0.9861,
+          "precision": 0.9861,
+          "source_token_count": 72,
+          "transcript_token_count": 72,
+          "equal_token_count": 71,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "sudie": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "suitie": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                46,
+                47
+              ],
+              "transcript_range": [
+                46,
+                47
+              ],
+              "source_tokens": [
+                "sudie"
+              ],
+              "transcript_tokens": [
+                "suitie"
+              ]
+            }
+          ],
+          "pass": false
+        }
+      ],
+      "behrman_dialect_emotion": [
+        {
+          "passage_id": "behrman_dialect_emotion",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "87b4b7ace968e8843693b6e73ad638a7058bae699a202b72e0c137b61e59b008",
+          "source_text_sha256": "3ee0d5877dcd681e530ea3dc56fe0c7b11614d3bec736c9ca485799c897fafc1",
+          "raw_transcript": "Old Bearman, with his red eyes plainly streaming, shouted his contempt and derision for such idiotic imaginings. \"'Vace,' he cried, \"'is dare people into world mitt dare foolishness to die because leafs dey drop off from a confounded vine? I haff not heard of such a thing. No, I will not bose as a model for your fool hermit dunderhead. Vite you allow Dot silly pizness to come and dare prane of her? Ock, Dot, poor little Miss Johncy!\"",
+          "raw_transcript_sha256": "49680c55be180a418bc9c2f4bed70cca23ad2064e1066f1e7c876a94c68a920e",
+          "evaluated_transcript": "Old Bearman, with his red eyes plainly streaming, shouted his contempt and derision for such idiotic imaginings. \"'Vace,' he cried, \"'is dare people into world mitt dare foolishness to die because leafs dey drop off from a confounded vine? I haf not heard of such a thing. No, I will not bose as a model for your fool hermit dunderhead. Vite you allow Dot silly pusiness to come and dare prane of her? Ock, Dot, poor lettle Miss Johncy!\"",
+          "evaluated_transcript_sha256": "4e3b35d343d35d98e389709b8626ed59ce3362f39460f1ee5279f046389fee8d",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bhaff not\\b",
+              "replacement": "haf not",
+              "observed_count": 1,
+              "reason": "source dialect haf/haff acoustic spelling equivalent"
+            },
+            {
+              "pattern": "\\bsilly pizness\\b",
+              "replacement": "silly pusiness",
+              "observed_count": 1,
+              "reason": "source dialect pusiness/pizness acoustic spelling equivalent"
+            },
+            {
+              "pattern": "\\bpoor little\\b",
+              "replacement": "poor lettle",
+              "observed_count": 1,
+              "reason": "source dialect lettle/little acoustic spelling equivalent"
+            }
+          ],
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 8.375,
+          "coverage": 0.8272,
+          "precision": 0.8481,
+          "source_token_count": 81,
+          "transcript_token_count": 79,
+          "equal_token_count": 67,
+          "first_words_match": false,
+          "last_words_match": false,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": false,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "behrman": 1,
+            "vass": 1,
+            "dere": 1,
+            "in": 2,
+            "de": 1,
+            "mit": 1,
+            "der": 2,
+            "vy": 1,
+            "do": 1,
+            "prain": 1,
+            "ach": 1,
+            "johnsy": 1
+          },
+          "duplicate_tokens": {
+            "and": 1
+          },
+          "unexpected_tokens": {
+            "bearman": 1,
+            "and": 1,
+            "vace": 1,
+            "dare": 3,
+            "into": 1,
+            "mitt": 1,
+            "vite": 1,
+            "prane": 1,
+            "ock": 1,
+            "johncy": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                1,
+                2
+              ],
+              "transcript_range": [
+                1,
+                2
+              ],
+              "source_tokens": [
+                "behrman"
+              ],
+              "transcript_tokens": [
+                "bearman"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                17,
+                18
+              ],
+              "transcript_range": [
+                17,
+                18
+              ],
+              "source_tokens": [
+                "vass"
+              ],
+              "transcript_tokens": [
+                "vace"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                21,
+                22
+              ],
+              "transcript_range": [
+                21,
+                22
+              ],
+              "source_tokens": [
+                "dere"
+              ],
+              "transcript_tokens": [
+                "dare"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                23,
+                25
+              ],
+              "transcript_range": [
+                23,
+                24
+              ],
+              "source_tokens": [
+                "in",
+                "de"
+              ],
+              "transcript_tokens": [
+                "into"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                26,
+                28
+              ],
+              "transcript_range": [
+                25,
+                27
+              ],
+              "source_tokens": [
+                "mit",
+                "der"
+              ],
+              "transcript_tokens": [
+                "mitt",
+                "dare"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                61,
+                63
+              ],
+              "transcript_range": [
+                60,
+                61
+              ],
+              "source_tokens": [
+                "vy",
+                "do"
+              ],
+              "transcript_tokens": [
+                "vite"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                70,
+                73
+              ],
+              "transcript_range": [
+                68,
+                71
+              ],
+              "source_tokens": [
+                "in",
+                "der",
+                "prain"
+              ],
+              "transcript_tokens": [
+                "and",
+                "dare",
+                "prane"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                75,
+                76
+              ],
+              "transcript_range": [
+                73,
+                74
+              ],
+              "source_tokens": [
+                "ach"
+              ],
+              "transcript_tokens": [
+                "ock"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                80,
+                81
+              ],
+              "transcript_range": [
+                78,
+                79
+              ],
+              "source_tokens": [
+                "johnsy"
+              ],
+              "transcript_tokens": [
+                "johncy"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "behrman_dialect_emotion",
+          "decoder_arm": "unprompted_greedy_fallback",
+          "audio_sha256": "87b4b7ace968e8843693b6e73ad638a7058bae699a202b72e0c137b61e59b008",
+          "source_text_sha256": "3ee0d5877dcd681e530ea3dc56fe0c7b11614d3bec736c9ca485799c897fafc1",
+          "raw_transcript": "Old Bearman, with his red eyes plainly streaming, shouted his contempt and derision for such idiotic imaginings. \"'Vace,' he cried, \"'is dare people in de world mit dare foolishness to die because leafs de drop off from a confounded vine? I haff not heard of such a thing. No, I will not bose as a model for your fool hermit dunderhead. Vite you allow Dot silly pizness to come and dare prane of her? Ock, Dot, poor little Miss Johncy!\"",
+          "raw_transcript_sha256": "ada90f437e5bcc8307a51a0a29b2922bf3c9716e825ec964c9eab8484e525333",
+          "evaluated_transcript": "Old Bearman, with his red eyes plainly streaming, shouted his contempt and derision for such idiotic imaginings. \"'Vace,' he cried, \"'is dare people in de world mit dare foolishness to die because leafs dey drop off from a confounded vine? I haf not heard of such a thing. No, I will not bose as a model for your fool hermit dunderhead. Vite you allow Dot silly pusiness to come and dare prane of her? Ock, Dot, poor lettle Miss Johncy!\"",
+          "evaluated_transcript_sha256": "20c27d524a28fb3e9bbebaad22c7565294c672f25be684eaf1272281670389bd",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bleafs de drop\\b",
+              "replacement": "leafs dey drop",
+              "observed_count": 1,
+              "reason": "source dialect dey/de acoustic spelling equivalent"
+            },
+            {
+              "pattern": "\\bhaff not\\b",
+              "replacement": "haf not",
+              "observed_count": 1,
+              "reason": "source dialect haf/haff acoustic spelling equivalent"
+            },
+            {
+              "pattern": "\\bsilly pizness\\b",
+              "replacement": "silly pusiness",
+              "observed_count": 1,
+              "reason": "source dialect pusiness/pizness acoustic spelling equivalent"
+            },
+            {
+              "pattern": "\\bpoor little\\b",
+              "replacement": "poor lettle",
+              "observed_count": 1,
+              "reason": "source dialect lettle/little acoustic spelling equivalent"
+            }
+          ],
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 8.6957,
+          "coverage": 0.8642,
+          "precision": 0.875,
+          "source_token_count": 81,
+          "transcript_token_count": 80,
+          "equal_token_count": 70,
+          "first_words_match": false,
+          "last_words_match": false,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": false,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "behrman": 1,
+            "vass": 1,
+            "dere": 1,
+            "in": 1,
+            "der": 2,
+            "vy": 1,
+            "do": 1,
+            "prain": 1,
+            "ach": 1,
+            "johnsy": 1
+          },
+          "duplicate_tokens": {
+            "and": 1
+          },
+          "unexpected_tokens": {
+            "bearman": 1,
+            "and": 1,
+            "vace": 1,
+            "dare": 3,
+            "vite": 1,
+            "prane": 1,
+            "ock": 1,
+            "johncy": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                1,
+                2
+              ],
+              "transcript_range": [
+                1,
+                2
+              ],
+              "source_tokens": [
+                "behrman"
+              ],
+              "transcript_tokens": [
+                "bearman"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                17,
+                18
+              ],
+              "transcript_range": [
+                17,
+                18
+              ],
+              "source_tokens": [
+                "vass"
+              ],
+              "transcript_tokens": [
+                "vace"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                21,
+                22
+              ],
+              "transcript_range": [
+                21,
+                22
+              ],
+              "source_tokens": [
+                "dere"
+              ],
+              "transcript_tokens": [
+                "dare"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                27,
+                28
+              ],
+              "transcript_range": [
+                27,
+                28
+              ],
+              "source_tokens": [
+                "der"
+              ],
+              "transcript_tokens": [
+                "dare"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                61,
+                63
+              ],
+              "transcript_range": [
+                61,
+                62
+              ],
+              "source_tokens": [
+                "vy",
+                "do"
+              ],
+              "transcript_tokens": [
+                "vite"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                70,
+                73
+              ],
+              "transcript_range": [
+                69,
+                72
+              ],
+              "source_tokens": [
+                "in",
+                "der",
+                "prain"
+              ],
+              "transcript_tokens": [
+                "and",
+                "dare",
+                "prane"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                75,
+                76
+              ],
+              "transcript_range": [
+                74,
+                75
+              ],
+              "source_tokens": [
+                "ach"
+              ],
+              "transcript_tokens": [
+                "ock"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                80,
+                81
+              ],
+              "transcript_range": [
+                79,
+                80
+              ],
+              "source_tokens": [
+                "johnsy"
+              ],
+              "transcript_tokens": [
+                "johncy"
+              ]
+            }
+          ],
+          "pass": false
+        }
+      ],
+      "final_masterpiece_reveal": [
+        {
+          "passage_id": "final_masterpiece_reveal",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "b325b0eb22218168628be0efe9b2624081c637f255794e823132a7af63131406",
+          "source_text_sha256": "9b92d5b089d00a5896d243c6c6ac4c8e5ad645a76f820131df9476f582e1bc00",
+          "raw_transcript": "I have something to tell you, White Mouse,\" she said. Mr. Behrman died of pneumonia today in the hospital. He was ill only two days. The janitor found him on the morning of the first day in his room downstairs helpless with pain. His shoes and clothing were wet through and icy cold. They couldn't imagine where he had been on such a dreadful night. And then they found a lantern, still lighted, and a ladder that had been dragged from its place, and some scattered brushes, and a palette with green and yellow colors mixed on it, and look out the window, dear, at the last ivy leaf on the wall. Didn't you wonder why it never fluttered or moved when the wind blew? Ah, darling, it's Behrman's masterpiece. He painted it there the night that the last leaf fell.",
+          "raw_transcript_sha256": "7fb9807c975aa9ac38a202653809b0381ee6408d6bc06d028e613e94495e25f8",
+          "evaluated_transcript": "I have something to tell you, White Mouse,\" she said. Mr. Behrman died of pneumonia to day in the hospital. He was ill only two days. The janitor found him on the morning of the first day in his room downstairs helpless with pain. His shoes and clothing were wet through and icy cold. They couldn't imagine where he had been on such a dreadful night. And then they found a lantern, still lighted, and a ladder that had been dragged from its place, and some scattered brushes, and a palette with green and yellow colors mixed on it, and look out the window, dear, at the last ivy leaf on the wall. Didn't you wonder why it never fluttered or moved when the wind blew? Ah, darling, it's Behrman's masterpiece. He painted it there the night that the last leaf fell.",
+          "evaluated_transcript_sha256": "d71a122c95bbd1fadd85f79dda4f6c71ea3c01b909be1593833bdbb374665946",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bpneumonia today in\\b",
+              "replacement": "pneumonia to day in",
+              "observed_count": 1,
+              "reason": "source to-day/today orthographic equivalent"
+            }
+          ],
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 142,
+          "transcript_token_count": 142,
+          "equal_token_count": 142,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        }
+      ]
+    },
+    "selected_decoder_by_passage": {
+      "opening_literary_setting": "unprompted_beam_2",
+      "johnsy_leaf_dialogue": "unprompted_beam_2",
+      "behrman_dialect_emotion": "unprompted_greedy_fallback",
+      "final_masterpiece_reveal": "unprompted_beam_2"
+    },
+    "retained_audio_hashes_before": {
+      "opening_literary_setting": "30ff73e6e7050e711662661dd1d029332d596fca091b4bb880db7274b3f64e05",
+      "johnsy_leaf_dialogue": "d2eeac9040f29b4c55efbeb75054343dba515b4980609572f0c49b2d5b6a85bc",
+      "behrman_dialect_emotion": "87b4b7ace968e8843693b6e73ad638a7058bae699a202b72e0c137b61e59b008",
+      "final_masterpiece_reveal": "b325b0eb22218168628be0efe9b2624081c637f255794e823132a7af63131406"
+    },
+    "retained_audio_hashes_after": {
+      "opening_literary_setting": "30ff73e6e7050e711662661dd1d029332d596fca091b4bb880db7274b3f64e05",
+      "johnsy_leaf_dialogue": "d2eeac9040f29b4c55efbeb75054343dba515b4980609572f0c49b2d5b6a85bc",
+      "behrman_dialect_emotion": "87b4b7ace968e8843693b6e73ad638a7058bae699a202b72e0c137b61e59b008",
+      "final_masterpiece_reveal": "b325b0eb22218168628be0efe9b2624081c637f255794e823132a7af63131406"
+    },
+    "retained_audio_immutable": true,
+    "resynthesis_performed": false,
+    "audio_edit_or_trim_performed": false,
+    "unexpected_speech_deleted_or_normalized": false
+  }
+}

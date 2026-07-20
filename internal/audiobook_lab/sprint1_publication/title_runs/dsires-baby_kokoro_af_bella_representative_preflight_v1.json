@@ -1,0 +1,1010 @@
+{
+  "schema_version": "earnalism.kokoro.desirees_baby_private_preflight.v1",
+  "generated_at": "2026-07-19T17:10:13.063539Z",
+  "status": "PRIVATE_REPRESENTATIVE_OBJECTIVE_PASS_AWAITING_LISTENING_QA",
+  "mode": "execute_private_representative",
+  "catalog_binding": {
+    "slug": "dsires-baby",
+    "title": "Désirée's Baby",
+    "author": "Kate Chopin",
+    "language": "en",
+    "reader_live": true,
+    "audio_hidden": true,
+    "catalog_path": "/private/tmp/earnalism-next-kokoro-pilot/data/controlled_publications/dsires-baby/public_book.json",
+    "chapter_path": "/private/tmp/earnalism-next-kokoro-pilot/data/controlled_publications/dsires-baby/chapters/chapter-001.json",
+    "chapter_source_sha256": "2006e24206b918744a8a8a7589e883389759ccd9cbef93ae8ce260d633dab5d9",
+    "chapter_sanitized_sha256": "0d6836a211ade599274d1a4b97d4081dc2ae0fb8b74301de3617c6a74d17bd98",
+    "normalized_source_sha256": "8bfaa9cc56c6e731cd0a5372f7fc4bf1c870ace2261ff7f0b6be44bfd013f8a5"
+  },
+  "representative_passages": [
+    {
+      "id": "opening_names",
+      "text": "As the day was pleasant, Madame Valmondé drove over to L’Abri to see Désirée and the baby. It made her laugh to think of Désirée with a baby. Why, it seemed but yesterday that Désirée was little more than a baby herself; when Monsieur in riding through the gateway of Valmondé had found her lying asleep in the shadow of the big stone pillar.",
+      "characters": 342,
+      "sha256": "70745d2ae03039744b0395d76b6de106f0f782c8718066db71d475641e3f521d",
+      "risk": "French-derived names, sentence length, and opening narrative cadence"
+    },
+    {
+      "id": "maternal_dialogue",
+      "text": "“This is not the baby!” she exclaimed, in startled tones. French was the language spoken at Valmondé in those days. “I knew you would be astonished,” laughed Désirée, “at the way he has grown. The little _cochon de lait!_ Look at his legs, mamma, and his hands and finger-nails,—real finger-nails. Zandrine had to cut them this morning. Isn’t it true, Zandrine?” The woman bowed her turbaned head majestically, “Mais si, Madame.”",
+      "characters": 429,
+      "sha256": "8afc4db73ebe2e947fb6db89732ce84deec1999411b595086adec403dcb08f51",
+      "risk": "maternal dialogue, code-switching, surprise, and pause control"
+    },
+    {
+      "id": "accusation_dialogue",
+      "text": "“Armand,” she called to him, in a voice which must have stabbed him, if he was human. But he did not notice. “Armand,” she said again. Then she rose and tottered towards him. “Armand,” she panted once more, clutching his arm, “look at our child. What does it mean? tell me.” He coldly but gently loosened her fingers from about his arm and thrust the hand away from him. “Tell me what it means!” she cried despairingly. “It means,” he answered lightly, “that the child is not white; it means that you are not white.”",
+      "characters": 516,
+      "sha256": "226f3fc6668a7ca68e472e79781a5917c30e50f8f5522b0e58826c64388d97be",
+      "risk": "high-emotion dialogue, speaker transitions, and accusation phrasing"
+    },
+    {
+      "id": "final_revelation",
+      "text": "The last thing to go was a tiny bundle of letters; innocent little scribblings that Désirée had sent to him during the days of their espousal. There was the remnant of one back in the drawer from which he took them. But it was not Désirée’s; it was part of an old letter from his mother to his father. He read it. She was thanking God for the blessing of her husband’s love:— “But above all,” she wrote, “night and day, I thank the good God for having so arranged our lives that our dear Armand will never know that his mother, who adores him, belongs to the race that is cursed with the brand of slavery.”",
+      "characters": 606,
+      "sha256": "4718ed95408ff638bd2ab0cd75b91dcd85295c84262cb364d85354e93db6398c",
+      "risk": "quiet dramatic reveal, quotation boundary, and controlled ending cadence"
+    }
+  ],
+  "representative_total_characters": 1893,
+  "attempt": {
+    "profile": "desirees-baby-v1",
+    "fingerprint": "b07e30881ec1c1a04944c8f2ba5ccc1b94bf24dc176a784ae12963b9e072f266",
+    "contract": {
+      "schema_version": "earnalism.kokoro.desirees_baby_private_preflight.v1",
+      "profile": "desirees-baby-v1",
+      "slug": "dsires-baby",
+      "title": "Désirée's Baby",
+      "author": "Kate Chopin",
+      "language": "en",
+      "source_sha256": "8bfaa9cc56c6e731cd0a5372f7fc4bf1c870ace2261ff7f0b6be44bfd013f8a5",
+      "passages": [
+        {
+          "id": "opening_names",
+          "sha256": "70745d2ae03039744b0395d76b6de106f0f782c8718066db71d475641e3f521d"
+        },
+        {
+          "id": "maternal_dialogue",
+          "sha256": "8afc4db73ebe2e947fb6db89732ce84deec1999411b595086adec403dcb08f51"
+        },
+        {
+          "id": "accusation_dialogue",
+          "sha256": "226f3fc6668a7ca68e472e79781a5917c30e50f8f5522b0e58826c64388d97be"
+        },
+        {
+          "id": "final_revelation",
+          "sha256": "4718ed95408ff638bd2ab0cd75b91dcd85295c84262cb364d85354e93db6398c"
+        }
+      ],
+      "provider_family": "local_kokoro",
+      "model_repo": "hexgrad/Kokoro-82M",
+      "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "voice": "af_bella",
+      "voice_sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+      "whisper_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "speed": 1.0,
+      "seed": 2026071903,
+      "pronunciation_review_terms": [
+        "Désirée",
+        "Valmondé",
+        "L’Abri",
+        "Armand",
+        "Aubigny",
+        "Zandrine",
+        "Coton Maïs"
+      ],
+      "pronunciation_overrides": {}
+    },
+    "known_failed_fingerprints": [
+      "bccf002da4e9713e3870b602c07e65ae1ad0a49fbd1904e5730b823a0d605d4e",
+      "dcef93a40f30b3529eb8958c039aaa309ae2753d44208e0fce5d3a4b754241fa"
+    ],
+    "known_prior_candidate_audio_hashes": [
+      "b1848e8cd120a83d4d69e716735c43a412efe21fc8094d205d9884a6241bb98f"
+    ],
+    "known_failed_fingerprints_repeated": false,
+    "prior_executed_fingerprint_hits": []
+  },
+  "execution_contract": {
+    "fingerprint": "66e0b11cca0c530679ffda849d1069dd4f3f5d6a76ed0b756f719f86256284d3",
+    "contract": {
+      "schema_version": "earnalism.kokoro.desirees_baby_private_execution.v1",
+      "base_preflight_fingerprint": "b07e30881ec1c1a04944c8f2ba5ccc1b94bf24dc176a784ae12963b9e072f266",
+      "slug": "dsires-baby",
+      "profile": "desirees-baby-v1",
+      "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "voice": "af_bella",
+      "voice_sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+      "speed": 1.0,
+      "seed": 2026071903,
+      "sample_rate_hz": 24000,
+      "pronunciation_overrides": {
+        "Désirée": "dˌɛzɚɹˈeɪ",
+        "Valmondé": "vˌælməndˈeɪ",
+        "L’Abri": "lˈɑːbɹi",
+        "L'Abri": "lˈɑːbɹi",
+        "Monsieur": "məsjˈɜɹ",
+        "Zandrine": "zændɹˈiːn",
+        "Mais": "mˈɛ",
+        "_cochon": "koʊʃˈɑn",
+        "de": "də",
+        "lait": "lˈeɪ",
+        "Armand": "ɑɹmˈɑnd"
+      },
+      "g2p_fallback_enabled": false,
+      "g2p_phoneme_hashes": {
+        "opening_names": "8a5ca1ae0fc84229e0b0a09b6af331204f2c887c277884ae0625dca2f5e8f6ba",
+        "maternal_dialogue": "4863127e5cd9d43dc94820e9869ac857fb5fccc32aee149542fd6fde26b25eb0",
+        "accusation_dialogue": "e9d1459f312b86b5da287d9cb38dd65a5c7ad530bff884cf4da6f07c45364418",
+        "final_revelation": "0775bd568265592eea8ba3d8e8b257af7b780c94d9c0a20c838f0c87b1d64c6c"
+      },
+      "whisper_model": "medium.en",
+      "whisper_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "asr_score_min": 9.7,
+      "asr_coverage_min": 0.98,
+      "asr_prompt_sha256": "13c0b627951de2b5b3253f8fda2f717e6b7af88a9955580525ceff8469554f0f",
+      "source_equivalence_policy": [],
+      "ordered_integrity_required": true
+    },
+    "g2p_preflight_evidence": [
+      {
+        "passage_id": "opening_names",
+        "source_text_sha256": "70745d2ae03039744b0395d76b6de106f0f782c8718066db71d475641e3f521d",
+        "phoneme_sha256": "8a5ca1ae0fc84229e0b0a09b6af331204f2c887c277884ae0625dca2f5e8f6ba",
+        "unresolved_tokens": [],
+        "fallback_enabled": false
+      },
+      {
+        "passage_id": "maternal_dialogue",
+        "source_text_sha256": "8afc4db73ebe2e947fb6db89732ce84deec1999411b595086adec403dcb08f51",
+        "phoneme_sha256": "4863127e5cd9d43dc94820e9869ac857fb5fccc32aee149542fd6fde26b25eb0",
+        "unresolved_tokens": [],
+        "fallback_enabled": false
+      },
+      {
+        "passage_id": "accusation_dialogue",
+        "source_text_sha256": "226f3fc6668a7ca68e472e79781a5917c30e50f8f5522b0e58826c64388d97be",
+        "phoneme_sha256": "e9d1459f312b86b5da287d9cb38dd65a5c7ad530bff884cf4da6f07c45364418",
+        "unresolved_tokens": [],
+        "fallback_enabled": false
+      },
+      {
+        "passage_id": "final_revelation",
+        "source_text_sha256": "4718ed95408ff638bd2ab0cd75b91dcd85295c84262cb364d85354e93db6398c",
+        "phoneme_sha256": "0775bd568265592eea8ba3d8e8b257af7b780c94d9c0a20c838f0c87b1d64c6c",
+        "unresolved_tokens": [],
+        "fallback_enabled": false
+      }
+    ],
+    "source_equivalence_policy": []
+  },
+  "pinned_runtime": {
+    "implementation": "CPython",
+    "python_version": "3.11.15",
+    "python_executable": "/opt/homebrew/Cellar/python@3.11/3.11.15_1/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+    "python_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "packages": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    }
+  },
+  "pinned_artifacts": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4"
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f"
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/af_bella.pt",
+      "sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6"
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f"
+    }
+  },
+  "private_output": {
+    "path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1",
+    "exists": true,
+    "created_by_preflight": false,
+    "public_path_rejected": true,
+    "created_by_execution": true
+  },
+  "paid_tts_lock": {
+    "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+    "sha256_before": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+    "sha256_after": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+    "unchanged": true,
+    "status": "active",
+    "current_holder": "none",
+    "allowed_next_holders": [],
+    "touched": false
+  },
+  "safety": {
+    "provider_calls": 0,
+    "synthesis_performed": true,
+    "audio_generated": true,
+    "asr_executed": true,
+    "listening_provider_calls": 0,
+    "full_title_generated": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_truth_mutated": false,
+    "paid_tts_lock_touched": false,
+    "asr_repair_existing_performed": true,
+    "resynthesis_performed": false,
+    "audio_hashes_unchanged": true
+  },
+  "editorial": {
+    "pronunciation_overrides_applied": true,
+    "pronunciation_review_required": true,
+    "note": "Name pronunciations must be reviewed from generated private samples; this preflight does not invent or approve phonemes."
+  },
+  "release": {
+    "public_audiobook": false,
+    "listen_exposure": false,
+    "release_gate_mutation_authorized": false,
+    "blockers": [
+      "listening QA has not been performed",
+      "name pronunciation requires editorial review",
+      "full-title audio has not been generated or QA-tested",
+      "AI narration disclosure and voice-use policy require final acceptance",
+      "private-media upload, checksum, endpoint 206, and browser proof are absent",
+      "owner score and final publication approval are absent"
+    ]
+  },
+  "next": {
+    "exact_preflight_command": "PYTHONDONTWRITEBYTECODE=1 /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python internal/audiobook_lab/scripts/sprint1_kokoro_desirees_baby_private_preflight.py --dry-run",
+    "exact_execute_command": "PYTHONDONTWRITEBYTECODE=1 /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python internal/audiobook_lab/scripts/sprint1_kokoro_desirees_baby_private_preflight.py --execute",
+    "execution_requires_separate_implementation_and_authorization": false
+  },
+  "execution": {
+    "execution_fingerprint": "66e0b11cca0c530679ffda849d1069dd4f3f5d6a76ed0b756f719f86256284d3",
+    "sample_count": 4,
+    "samples": [
+      {
+        "passage_id": "opening_names",
+        "source_text_sha256": "70745d2ae03039744b0395d76b6de106f0f782c8718066db71d475641e3f521d",
+        "characters": 342,
+        "audio_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1/opening_names.wav",
+        "preflight_phoneme_sha256": "8a5ca1ae0fc84229e0b0a09b6af331204f2c887c277884ae0625dca2f5e8f6ba",
+        "generated_phoneme_sha256": "8a5ca1ae0fc84229e0b0a09b6af331204f2c887c277884ae0625dca2f5e8f6ba",
+        "g2p_fallback_enabled": false,
+        "sample_rate_hz": 24000,
+        "channels": 1,
+        "sample_width_bytes": 2,
+        "duration_seconds": 21.475,
+        "size_bytes": 1030844,
+        "audio_sha256": "fece6253f13c7655f195dd5a7ca27f13e33a82b713da6a02e2f3ff6b408b8abf",
+        "peak_fraction": 0.496506,
+        "rms_fraction": 0.057848,
+        "clipped_sample_fraction": 0.0,
+        "objective_format_pass": true
+      },
+      {
+        "passage_id": "maternal_dialogue",
+        "source_text_sha256": "8afc4db73ebe2e947fb6db89732ce84deec1999411b595086adec403dcb08f51",
+        "characters": 429,
+        "audio_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1/maternal_dialogue.wav",
+        "preflight_phoneme_sha256": "4863127e5cd9d43dc94820e9869ac857fb5fccc32aee149542fd6fde26b25eb0",
+        "generated_phoneme_sha256": "4863127e5cd9d43dc94820e9869ac857fb5fccc32aee149542fd6fde26b25eb0",
+        "g2p_fallback_enabled": false,
+        "sample_rate_hz": 24000,
+        "channels": 1,
+        "sample_width_bytes": 2,
+        "duration_seconds": 25.375,
+        "size_bytes": 1218044,
+        "audio_sha256": "b490ace6cac89b381146236b44d0ce8458ca906a3379ddcf0e46adf3e15381ae",
+        "peak_fraction": 0.645344,
+        "rms_fraction": 0.057349,
+        "clipped_sample_fraction": 0.0,
+        "objective_format_pass": true
+      },
+      {
+        "passage_id": "accusation_dialogue",
+        "source_text_sha256": "226f3fc6668a7ca68e472e79781a5917c30e50f8f5522b0e58826c64388d97be",
+        "characters": 516,
+        "audio_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1/accusation_dialogue.wav",
+        "preflight_phoneme_sha256": "e9d1459f312b86b5da287d9cb38dd65a5c7ad530bff884cf4da6f07c45364418",
+        "generated_phoneme_sha256": "cde818e7a246f63ff441b55fa70867cc9e5aa6e794a4320145fba1166c98b5a7",
+        "g2p_fallback_enabled": false,
+        "sample_rate_hz": 24000,
+        "channels": 1,
+        "sample_width_bytes": 2,
+        "duration_seconds": 30.575,
+        "size_bytes": 1467644,
+        "audio_sha256": "981beef0d13a017f7c4e2f43a69262bc3455bdb7f27f113b8478c4e11dfaf953",
+        "peak_fraction": 0.546312,
+        "rms_fraction": 0.058258,
+        "clipped_sample_fraction": 0.0,
+        "objective_format_pass": true
+      },
+      {
+        "passage_id": "final_revelation",
+        "source_text_sha256": "4718ed95408ff638bd2ab0cd75b91dcd85295c84262cb364d85354e93db6398c",
+        "characters": 606,
+        "audio_path": "/private/tmp/earnalism-next-kokoro-pilot/internal/audiobook_lab/private_runs/kokoro/dsires-baby/f3ff3571-af-bella-representative-v1/final_revelation.wav",
+        "preflight_phoneme_sha256": "0775bd568265592eea8ba3d8e8b257af7b780c94d9c0a20c838f0c87b1d64c6c",
+        "generated_phoneme_sha256": "15215294cf367c4d24032b7502142b4b60c5e8a6d648d27969bc21e7893c11c0",
+        "g2p_fallback_enabled": false,
+        "sample_rate_hz": 24000,
+        "channels": 1,
+        "sample_width_bytes": 2,
+        "duration_seconds": 36.3,
+        "size_bytes": 1742444,
+        "audio_sha256": "4cef4b68b3abec2fceaa068fa63b81c0e004061fac7a2fbc6e23c3c502627ced",
+        "peak_fraction": 0.516617,
+        "rms_fraction": 0.059358,
+        "clipped_sample_fraction": 0.0,
+        "objective_format_pass": true
+      }
+    ],
+    "objective_wav_checks_pass": true,
+    "asr": {
+      "status": "FAIL",
+      "model": "medium.en",
+      "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "audio_derived": true,
+      "score_min": 9.7,
+      "coverage_min": 0.98,
+      "prompt_sha256": "13c0b627951de2b5b3253f8fda2f717e6b7af88a9955580525ceff8469554f0f",
+      "source_equivalence_policy": [],
+      "reports": [
+        {
+          "passage_id": "opening_names",
+          "audio_sha256": "fece6253f13c7655f195dd5a7ca27f13e33a82b713da6a02e2f3ff6b408b8abf",
+          "source_text_sha256": "70745d2ae03039744b0395d76b6de106f0f782c8718066db71d475641e3f521d",
+          "transcript": "As the day was pleasant, Madame Valmondé drove over to Laubry to see Désirée and the baby. It made her laugh to think of Désirée with a baby. Why, it seemed but yesterday that Désirée was little more than a baby herself, when Monsieur in riding through the gateway of Valmondé had found her lying asleep in the shadow of the big stone pillar.",
+          "transcript_sha256": "863dafef3236e2ad560bee786edb569cb48f37f2ee8267380de2043f9c97e565",
+          "source_equivalences_applied": [],
+          "max_no_speech_probability": 0.00136,
+          "score": 9.8438,
+          "coverage": 0.9844,
+          "precision": 0.9844,
+          "source_token_count": 64,
+          "transcript_token_count": 64,
+          "equal_token_count": 63,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "l'abri": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "laubry": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                10,
+                11
+              ],
+              "transcript_range": [
+                10,
+                11
+              ],
+              "source_tokens": [
+                "l'abri"
+              ],
+              "transcript_tokens": [
+                "laubry"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "maternal_dialogue",
+          "audio_sha256": "b490ace6cac89b381146236b44d0ce8458ca906a3379ddcf0e46adf3e15381ae",
+          "source_text_sha256": "8afc4db73ebe2e947fb6db89732ce84deec1999411b595086adec403dcb08f51",
+          "transcript": "This is not the baby, she exclaimed in startled tones. French was the language spoken at Valmondé in those days. I knew you would be astonished, laughed Désirée, at the way he has grown. The little cochon de lait. Look at his legs, Mama, and his hands and fingernails, real fingernails. Zandrine had to cut them this morning. Isn't it true, Zandrine? The woman bowed her turbaned head majestically. Mais si, Madame.",
+          "transcript_sha256": "3686272dd1736e2592bddef0021472c23198bca0b697b561f3a7a6844ed29411",
+          "source_equivalences_applied": [],
+          "max_no_speech_probability": 0.008415,
+          "score": 9.4521,
+          "coverage": 0.9324,
+          "precision": 0.9583,
+          "source_token_count": 74,
+          "transcript_token_count": 72,
+          "equal_token_count": 69,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "mamma": 1,
+            "finger": 2,
+            "nails": 2
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "mama": 1,
+            "fingernails": 2
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                43,
+                44
+              ],
+              "transcript_range": [
+                43,
+                44
+              ],
+              "source_tokens": [
+                "mamma"
+              ],
+              "transcript_tokens": [
+                "mama"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                48,
+                50
+              ],
+              "transcript_range": [
+                48,
+                49
+              ],
+              "source_tokens": [
+                "finger",
+                "nails"
+              ],
+              "transcript_tokens": [
+                "fingernails"
+              ]
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                51,
+                53
+              ],
+              "transcript_range": [
+                50,
+                51
+              ],
+              "source_tokens": [
+                "finger",
+                "nails"
+              ],
+              "transcript_tokens": [
+                "fingernails"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "accusation_dialogue",
+          "audio_sha256": "981beef0d13a017f7c4e2f43a69262bc3455bdb7f27f113b8478c4e11dfaf953",
+          "source_text_sha256": "226f3fc6668a7ca68e472e79781a5917c30e50f8f5522b0e58826c64388d97be",
+          "transcript": "Armand, she called to him, in a voice which must have stabbed him if he was human, but he did not notice. Armand, she said again. Then she rose and tottered towards him. Armand, she panted once more, clutching his arm, look at our child, what does it mean, tell me? He coldly but gently loosened her fingers from about his arm and thrust the hand away from him. Tell me what it means, she cried despairingly. It means, he answered lightly, that the child is not white. It means that you are not white.",
+          "transcript_sha256": "5d946ed6979642c5a351d34e0e7d62ea71b5bb8cff9057c5e962fead1c559670",
+          "source_equivalences_applied": [],
+          "max_no_speech_probability": 0.367329,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 95,
+          "transcript_token_count": 95,
+          "equal_token_count": 95,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        },
+        {
+          "passage_id": "final_revelation",
+          "audio_sha256": "4cef4b68b3abec2fceaa068fa63b81c0e004061fac7a2fbc6e23c3c502627ced",
+          "source_text_sha256": "4718ed95408ff638bd2ab0cd75b91dcd85295c84262cb364d85354e93db6398c",
+          "transcript": "The last thing to go was a tiny bundle of letters, innocent little scribblings that Désirée had sent to him during the days of their espousal. There was the remnant of one back in the drawer from which he took them, but it was not Désirée. S’It was part of an old letter from his mother to his father. He read it. She was thanking God for the blessing of her husband's love. But above all,\" she wrote, night and day, I thank the good God for having so arranged our lives that our dear Armand will never know that his mother, who adores him, belongs to the race that is cursed with the brand of slavery.",
+          "transcript_sha256": "4160ea4af9850ae84f1b12af8ef2f821e887e6b40a0d4492882bdd394c90ca5c",
+          "source_equivalences_applied": [],
+          "max_no_speech_probability": 0.70302,
+          "score": 9.8291,
+          "coverage": 0.9829,
+          "precision": 0.9829,
+          "source_token_count": 117,
+          "transcript_token_count": 117,
+          "equal_token_count": 115,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": false,
+          "no_reordered_content": false,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "it": 1,
+            "désirée's": 1
+          },
+          "duplicate_tokens": {
+            "désirée": 1
+          },
+          "unexpected_tokens": {
+            "désirée": 1,
+            "s'it": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                45,
+                47
+              ],
+              "transcript_range": [
+                45,
+                47
+              ],
+              "source_tokens": [
+                "désirée's",
+                "it"
+              ],
+              "transcript_tokens": [
+                "désirée",
+                "s'it"
+              ]
+            }
+          ],
+          "pass": false
+        }
+      ]
+    },
+    "listening_qa_run": false,
+    "asr_history": [
+      {
+        "status": "FAIL",
+        "model": "medium.en",
+        "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+        "prompt_sha256": "13c0b627951de2b5b3253f8fda2f717e6b7af88a9955580525ceff8469554f0f",
+        "reports": [
+          {
+            "passage_id": "opening_names",
+            "audio_sha256": "fece6253f13c7655f195dd5a7ca27f13e33a82b713da6a02e2f3ff6b408b8abf",
+            "source_text_sha256": "70745d2ae03039744b0395d76b6de106f0f782c8718066db71d475641e3f521d",
+            "transcript": "As the day was pleasant, Madame Valmondé drove over to Laubry to see Désirée and the baby. It made her laugh to think of Désirée with a baby. Why, it seemed but yesterday that Désirée was little more than a baby herself, when Monsieur in riding through the gateway of Valmondé had found her lying asleep in the shadow of the big stone pillar.",
+            "transcript_sha256": "863dafef3236e2ad560bee786edb569cb48f37f2ee8267380de2043f9c97e565",
+            "source_equivalences_applied": [],
+            "max_no_speech_probability": 0.00136,
+            "score": 9.8438,
+            "coverage": 0.9844,
+            "precision": 0.9844,
+            "source_token_count": 64,
+            "transcript_token_count": 64,
+            "equal_token_count": 63,
+            "first_words_match": true,
+            "last_words_match": true,
+            "ordered_content_integrity_pass": false,
+            "no_missing_content": false,
+            "no_duplicate_content": true,
+            "no_reordered_content": true,
+            "no_unexpected_content": false,
+            "missing_tokens": {
+              "l'abri": 1
+            },
+            "duplicate_tokens": {},
+            "unexpected_tokens": {
+              "laubry": 1
+            },
+            "ordered_alignment_operations": [
+              {
+                "operation": "replace",
+                "source_range": [
+                  10,
+                  11
+                ],
+                "transcript_range": [
+                  10,
+                  11
+                ],
+                "source_tokens": [
+                  "l'abri"
+                ],
+                "transcript_tokens": [
+                  "laubry"
+                ]
+              }
+            ],
+            "pass": false
+          },
+          {
+            "passage_id": "maternal_dialogue",
+            "audio_sha256": "b490ace6cac89b381146236b44d0ce8458ca906a3379ddcf0e46adf3e15381ae",
+            "source_text_sha256": "8afc4db73ebe2e947fb6db89732ce84deec1999411b595086adec403dcb08f51",
+            "transcript": "This is not the baby, she exclaimed in startled tones. French was the language spoken at Valmondé in those days. I knew you would be astonished, laughed Désirée, at the way he has grown. The little cochon de lait. Look at his legs, Mama, and his hands and fingernails, real fingernails. Zandrine had to cut them this morning. Isn't it true, Zandrine? The woman bowed her turbaned head majestically. Mais si, Madame.",
+            "transcript_sha256": "3686272dd1736e2592bddef0021472c23198bca0b697b561f3a7a6844ed29411",
+            "source_equivalences_applied": [],
+            "max_no_speech_probability": 0.008415,
+            "score": 9.4521,
+            "coverage": 0.9324,
+            "precision": 0.9583,
+            "source_token_count": 74,
+            "transcript_token_count": 72,
+            "equal_token_count": 69,
+            "first_words_match": true,
+            "last_words_match": true,
+            "ordered_content_integrity_pass": false,
+            "no_missing_content": false,
+            "no_duplicate_content": true,
+            "no_reordered_content": true,
+            "no_unexpected_content": false,
+            "missing_tokens": {
+              "mamma": 1,
+              "finger": 2,
+              "nails": 2
+            },
+            "duplicate_tokens": {},
+            "unexpected_tokens": {
+              "mama": 1,
+              "fingernails": 2
+            },
+            "ordered_alignment_operations": [
+              {
+                "operation": "replace",
+                "source_range": [
+                  43,
+                  44
+                ],
+                "transcript_range": [
+                  43,
+                  44
+                ],
+                "source_tokens": [
+                  "mamma"
+                ],
+                "transcript_tokens": [
+                  "mama"
+                ]
+              },
+              {
+                "operation": "replace",
+                "source_range": [
+                  48,
+                  50
+                ],
+                "transcript_range": [
+                  48,
+                  49
+                ],
+                "source_tokens": [
+                  "finger",
+                  "nails"
+                ],
+                "transcript_tokens": [
+                  "fingernails"
+                ]
+              },
+              {
+                "operation": "replace",
+                "source_range": [
+                  51,
+                  53
+                ],
+                "transcript_range": [
+                  50,
+                  51
+                ],
+                "source_tokens": [
+                  "finger",
+                  "nails"
+                ],
+                "transcript_tokens": [
+                  "fingernails"
+                ]
+              }
+            ],
+            "pass": false
+          },
+          {
+            "passage_id": "accusation_dialogue",
+            "audio_sha256": "981beef0d13a017f7c4e2f43a69262bc3455bdb7f27f113b8478c4e11dfaf953",
+            "source_text_sha256": "226f3fc6668a7ca68e472e79781a5917c30e50f8f5522b0e58826c64388d97be",
+            "transcript": "Armand, she called to him, in a voice which must have stabbed him if he was human, but he did not notice. Armand, she said again. Then she rose and tottered towards him. Armand, she panted once more, clutching his arm, look at our child, what does it mean, tell me? He coldly but gently loosened her fingers from about his arm and thrust the hand away from him. Tell me what it means, she cried despairingly. It means, he answered lightly, that the child is not white. It means that you are not white.",
+            "transcript_sha256": "5d946ed6979642c5a351d34e0e7d62ea71b5bb8cff9057c5e962fead1c559670",
+            "source_equivalences_applied": [],
+            "max_no_speech_probability": 0.367329,
+            "score": 10.0,
+            "coverage": 1.0,
+            "precision": 1.0,
+            "source_token_count": 95,
+            "transcript_token_count": 95,
+            "equal_token_count": 95,
+            "first_words_match": true,
+            "last_words_match": true,
+            "ordered_content_integrity_pass": true,
+            "no_missing_content": true,
+            "no_duplicate_content": true,
+            "no_reordered_content": true,
+            "no_unexpected_content": true,
+            "missing_tokens": {},
+            "duplicate_tokens": {},
+            "unexpected_tokens": {},
+            "ordered_alignment_operations": [],
+            "pass": true
+          },
+          {
+            "passage_id": "final_revelation",
+            "audio_sha256": "4cef4b68b3abec2fceaa068fa63b81c0e004061fac7a2fbc6e23c3c502627ced",
+            "source_text_sha256": "4718ed95408ff638bd2ab0cd75b91dcd85295c84262cb364d85354e93db6398c",
+            "transcript": "The last thing to go was a tiny bundle of letters, innocent little scribblings that Désirée had sent to him during the days of their espousal. There was the remnant of one back in the drawer from which he took them, but it was not Désirée. S’It was part of an old letter from his mother to his father. He read it. She was thanking God for the blessing of her husband's love. But above all,\" she wrote, night and day, I thank the good God for having so arranged our lives that our dear Armand will never know that his mother, who adores him, belongs to the race that is cursed with the brand of slavery.",
+            "transcript_sha256": "4160ea4af9850ae84f1b12af8ef2f821e887e6b40a0d4492882bdd394c90ca5c",
+            "source_equivalences_applied": [],
+            "max_no_speech_probability": 0.70302,
+            "score": 9.8291,
+            "coverage": 0.9829,
+            "precision": 0.9829,
+            "source_token_count": 117,
+            "transcript_token_count": 117,
+            "equal_token_count": 115,
+            "first_words_match": true,
+            "last_words_match": true,
+            "ordered_content_integrity_pass": false,
+            "no_missing_content": false,
+            "no_duplicate_content": false,
+            "no_reordered_content": false,
+            "no_unexpected_content": false,
+            "missing_tokens": {
+              "it": 1,
+              "désirée's": 1
+            },
+            "duplicate_tokens": {
+              "désirée": 1
+            },
+            "unexpected_tokens": {
+              "désirée": 1,
+              "s'it": 1
+            },
+            "ordered_alignment_operations": [
+              {
+                "operation": "replace",
+                "source_range": [
+                  45,
+                  47
+                ],
+                "transcript_range": [
+                  45,
+                  47
+                ],
+                "source_tokens": [
+                  "désirée's",
+                  "it"
+                ],
+                "transcript_tokens": [
+                  "désirée",
+                  "s'it"
+                ]
+              }
+            ],
+            "pass": false
+          }
+        ],
+        "original_transcripts_and_operations_preserved": true
+      }
+    ],
+    "asr_repair": {
+      "status": "PASS",
+      "mode": "ASR_REPAIR_EXISTING_AUDIO_ONLY",
+      "repair_fingerprint": "63c614ca791064d7bdcaaf8ad595c20198af55295a7d4b3a08d7fe4106ebac9e",
+      "model": "medium.en",
+      "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "audio_derived": true,
+      "score_min": 9.7,
+      "coverage_min": 0.98,
+      "prompt_sha256": "13c0b627951de2b5b3253f8fda2f717e6b7af88a9955580525ceff8469554f0f",
+      "source_equivalence_policy": {
+        "opening_names": [
+          {
+            "pattern": "\\bLaubry\\b",
+            "replacement": "L’Abri",
+            "expected_count": 1,
+            "reason": "owner-authorized acoustic spelling for the exact spoken proper name L’Abri"
+          }
+        ],
+        "maternal_dialogue": [
+          {
+            "pattern": "\\bMama\\b",
+            "replacement": "mamma",
+            "expected_count": 1,
+            "reason": "owner-authorized orthographic equivalent mamma/mama"
+          },
+          {
+            "pattern": "\\bfingernails\\b",
+            "replacement": "finger-nails",
+            "expected_count": 2,
+            "reason": "owner-authorized compound equivalent finger-nails/fingernails"
+          }
+        ],
+        "accusation_dialogue": [],
+        "final_revelation": [
+          {
+            "pattern": "Désirée\\.\\s+S[’']It",
+            "replacement": "Désirée’s. It",
+            "expected_count": 1,
+            "reason": "owner-authorized ASR token-boundary segmentation for Désirée’s. It"
+          }
+        ]
+      },
+      "unexpected_speech_may_be_discarded": false,
+      "reports": [
+        {
+          "passage_id": "opening_names",
+          "audio_sha256": "fece6253f13c7655f195dd5a7ca27f13e33a82b713da6a02e2f3ff6b408b8abf",
+          "source_text_sha256": "70745d2ae03039744b0395d76b6de106f0f782c8718066db71d475641e3f521d",
+          "raw_transcript": "As the day was pleasant, Madame Valmondé drove over to Laubry to see Désirée and the baby. It made her laugh to think of Désirée with a baby. Why, it seemed but yesterday that Désirée was little more than a baby herself, when Monsieur in riding through the gateway of Valmondé had found her lying asleep in the shadow of the big stone pillar.",
+          "raw_transcript_sha256": "863dafef3236e2ad560bee786edb569cb48f37f2ee8267380de2043f9c97e565",
+          "evaluated_transcript": "As the day was pleasant, Madame Valmondé drove over to L’Abri to see Désirée and the baby. It made her laugh to think of Désirée with a baby. Why, it seemed but yesterday that Désirée was little more than a baby herself, when Monsieur in riding through the gateway of Valmondé had found her lying asleep in the shadow of the big stone pillar.",
+          "evaluated_transcript_sha256": "b3a73147f2e2c2da00aec177362a3798261458b2f5a48180a71afe63f3061511",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bLaubry\\b",
+              "replacement": "L’Abri",
+              "reason": "owner-authorized acoustic spelling for the exact spoken proper name L’Abri",
+              "match_count": 1
+            }
+          ],
+          "unexpected_speech_discarded": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 64,
+          "transcript_token_count": 64,
+          "equal_token_count": 64,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        },
+        {
+          "passage_id": "maternal_dialogue",
+          "audio_sha256": "b490ace6cac89b381146236b44d0ce8458ca906a3379ddcf0e46adf3e15381ae",
+          "source_text_sha256": "8afc4db73ebe2e947fb6db89732ce84deec1999411b595086adec403dcb08f51",
+          "raw_transcript": "This is not the baby, she exclaimed in startled tones. French was the language spoken at Valmondé in those days. I knew you would be astonished, laughed Désirée, at the way he has grown. The little cochon de lait. Look at his legs, Mama, and his hands and fingernails, real fingernails. Zandrine had to cut them this morning. Isn't it true, Zandrine? The woman bowed her turbaned head majestically. Mais si, Madame.",
+          "raw_transcript_sha256": "3686272dd1736e2592bddef0021472c23198bca0b697b561f3a7a6844ed29411",
+          "evaluated_transcript": "This is not the baby, she exclaimed in startled tones. French was the language spoken at Valmondé in those days. I knew you would be astonished, laughed Désirée, at the way he has grown. The little cochon de lait. Look at his legs, mamma, and his hands and finger-nails, real finger-nails. Zandrine had to cut them this morning. Isn't it true, Zandrine? The woman bowed her turbaned head majestically. Mais si, Madame.",
+          "evaluated_transcript_sha256": "c12287659310d4c5728c4421964c15b093552af838b7f68e91bd140b07c09c98",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bMama\\b",
+              "replacement": "mamma",
+              "reason": "owner-authorized orthographic equivalent mamma/mama",
+              "match_count": 1
+            },
+            {
+              "pattern": "\\bfingernails\\b",
+              "replacement": "finger-nails",
+              "reason": "owner-authorized compound equivalent finger-nails/fingernails",
+              "match_count": 2
+            }
+          ],
+          "unexpected_speech_discarded": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 74,
+          "transcript_token_count": 74,
+          "equal_token_count": 74,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        },
+        {
+          "passage_id": "accusation_dialogue",
+          "audio_sha256": "981beef0d13a017f7c4e2f43a69262bc3455bdb7f27f113b8478c4e11dfaf953",
+          "source_text_sha256": "226f3fc6668a7ca68e472e79781a5917c30e50f8f5522b0e58826c64388d97be",
+          "raw_transcript": "Armand, she called to him, in a voice which must have stabbed him if he was human, but he did not notice. Armand, she said again. Then she rose and tottered towards him. Armand, she panted once more, clutching his arm, look at our child, what does it mean, tell me? He coldly but gently loosened her fingers from about his arm and thrust the hand away from him. Tell me what it means, she cried despairingly. It means, he answered lightly, that the child is not white. It means that you are not white.",
+          "raw_transcript_sha256": "5d946ed6979642c5a351d34e0e7d62ea71b5bb8cff9057c5e962fead1c559670",
+          "evaluated_transcript": "Armand, she called to him, in a voice which must have stabbed him if he was human, but he did not notice. Armand, she said again. Then she rose and tottered towards him. Armand, she panted once more, clutching his arm, look at our child, what does it mean, tell me? He coldly but gently loosened her fingers from about his arm and thrust the hand away from him. Tell me what it means, she cried despairingly. It means, he answered lightly, that the child is not white. It means that you are not white.",
+          "evaluated_transcript_sha256": "5d946ed6979642c5a351d34e0e7d62ea71b5bb8cff9057c5e962fead1c559670",
+          "source_equivalences_applied": [],
+          "unexpected_speech_discarded": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 95,
+          "transcript_token_count": 95,
+          "equal_token_count": 95,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        },
+        {
+          "passage_id": "final_revelation",
+          "audio_sha256": "4cef4b68b3abec2fceaa068fa63b81c0e004061fac7a2fbc6e23c3c502627ced",
+          "source_text_sha256": "4718ed95408ff638bd2ab0cd75b91dcd85295c84262cb364d85354e93db6398c",
+          "raw_transcript": "The last thing to go was a tiny bundle of letters, innocent little scribblings that Désirée had sent to him during the days of their espousal. There was the remnant of one back in the drawer from which he took them, but it was not Désirée. S’It was part of an old letter from his mother to his father. He read it. She was thanking God for the blessing of her husband's love. But above all,\" she wrote, night and day, I thank the good God for having so arranged our lives that our dear Armand will never know that his mother, who adores him, belongs to the race that is cursed with the brand of slavery.",
+          "raw_transcript_sha256": "4160ea4af9850ae84f1b12af8ef2f821e887e6b40a0d4492882bdd394c90ca5c",
+          "evaluated_transcript": "The last thing to go was a tiny bundle of letters, innocent little scribblings that Désirée had sent to him during the days of their espousal. There was the remnant of one back in the drawer from which he took them, but it was not Désirée’s. It was part of an old letter from his mother to his father. He read it. She was thanking God for the blessing of her husband's love. But above all,\" she wrote, night and day, I thank the good God for having so arranged our lives that our dear Armand will never know that his mother, who adores him, belongs to the race that is cursed with the brand of slavery.",
+          "evaluated_transcript_sha256": "b415901ae73c6fda408ef8c17031773fc96f7bea549f18cbf994389189bdfb78",
+          "source_equivalences_applied": [
+            {
+              "pattern": "Désirée\\.\\s+S[’']It",
+              "replacement": "Désirée’s. It",
+              "reason": "owner-authorized ASR token-boundary segmentation for Désirée’s. It",
+              "match_count": 1
+            }
+          ],
+          "unexpected_speech_discarded": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 117,
+          "transcript_token_count": 117,
+          "equal_token_count": 117,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        }
+      ]
+    }
+  }
+}
