@@ -15,7 +15,7 @@ import { optimizedImageUrl } from "../lib/images";
 import "./PremiumHero.css";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
-const REFERENCE_HERO_IMAGE = `${PUBLIC_URL}/assets/hero/premium-library-reference-art.webp`;
+const REFERENCE_HERO_IMAGE = `${PUBLIC_URL}/assets/hero/premium-library-reference-exact.webp`;
 
 const DEFAULT_HEADLINE = "A premium reading and listening sanctuary for timeless Bengali and English classics.";
 const DEFAULT_SUBHEADLINE = "Beautifully designed editions. Immersive audiobooks. Calm reading modes. A curated literary experience that stays with you.";
@@ -213,20 +213,18 @@ function ReferenceCatalogStage({ featuredBooks, approvedAudiobooks }) {
     || approvedAudiobooks.find((book) => book.slug !== primaryShelfSlug)
     || approvedAudiobooks[0]
     || null;
-  const deskBooks = featuredBooks.slice(0, 4);
 
   return (
-    <div className="premium-reference-catalog" aria-label="Featured Sprint 1 classics">
+    <div className="premium-reference-catalog premium-reference-catalog--exact" aria-label="Featured Sprint 1 classics">
       <ReferenceDeviceGroup listeningBook={listeningBook} />
-
       {[0, 1, 2, 3].map((index) => (
         <CatalogCoverLink
-          key={deskBooks[index]?.slug || `empty-${index}`}
-          book={deskBooks[index]}
+          key={featuredBooks[index]?.slug || `empty-${index}`}
+          book={featuredBooks[index]}
           className={`premium-reference-slot premium-reference-slot--desk-${index + 1}`}
           sizes="9vw"
           widths={[160, 320]}
-          eager={index === 0}
+          eager={false}
         />
       ))}
     </div>
@@ -286,7 +284,7 @@ export default function PremiumHero({
 
   return (
     <section
-      className={`premium-landing-hero premium-dynamic-hero premium-reference-hero${headerMode === "in-flow" ? " premium-reference-hero--in-flow" : ""}${referenceArtFailed ? " premium-reference-hero--art-failed" : ""}`}
+      className={`premium-landing-hero premium-dynamic-hero premium-reference-hero premium-reference-hero--exact${headerMode === "in-flow" ? " premium-reference-hero--in-flow" : ""}${referenceArtFailed ? " premium-reference-hero--art-failed" : ""}`}
       data-testid="premium-landing-hero"
       data-catalog-state={loading ? "loading" : error ? "unavailable" : "ready"}
       aria-label={headline}
@@ -298,8 +296,8 @@ export default function PremiumHero({
           src={REFERENCE_HERO_IMAGE}
           alt=""
           aria-hidden="true"
-          width="1672"
-          height="804"
+          width="2180"
+          height="1032"
           loading="eager"
           fetchPriority="high"
           decoding="async"

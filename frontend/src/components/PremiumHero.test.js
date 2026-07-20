@@ -22,15 +22,17 @@ describe("PremiumHero public contract", () => {
   });
 
   test("uses the owner reference as a high-priority visual layer with exact transparent CTA hotspots", () => {
-    const referenceAsset = path.join(process.cwd(), "public/assets/hero/premium-library-reference-art.webp");
-    expect(source).toContain("premium-library-reference-art.webp");
+    const referenceAsset = path.join(process.cwd(), "public/assets/hero/premium-library-reference-exact.webp");
+    expect(source).toContain("premium-library-reference-exact.webp");
     expect(source).toContain('onError={() => setReferenceArtFailed(true)}');
-    expect(source).toContain('width="1672"');
-    expect(source).toContain('height="804"');
+    expect(source).toContain('width="2180"');
+    expect(source).toContain('height="1032"');
     expect(source).toContain("fetchPriority=\"high\"");
+    expect(source).toContain("premium-reference-hero--exact");
+    expect(source).toContain("premium-reference-catalog--exact");
     expect(source).toContain("premium-hero-action--primary");
     expect(source).toContain("premium-hero-action--secondary");
-    expect(fs.statSync(referenceAsset).size).toBeLessThan(600_000);
+    expect(fs.statSync(referenceAsset).size).toBeLessThan(1_800_000);
   });
 
   test("renders the owner-approved reader-facing feature copy", () => {
