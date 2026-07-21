@@ -1,0 +1,991 @@
+{
+  "schema": "earnalism.kokoro.time_machine_bm_george_targeted_resynthesis.v1",
+  "generated_at": "2026-07-20T21:49:37Z",
+  "status": "PRIVATE_TARGETED_RESYNTHESIS_FAILED_FINGERPRINT_CLOSED",
+  "go_no_go": "NO_GO_TARGETED_RESYNTHESIS_OBJECTIVE_FAILED",
+  "attempt_fingerprint": "9c52c3779dbcea0bb395d4de028b52da13a470838b19d61f0113ac339859ab36",
+  "scope": {
+    "slug": "the-time-machine",
+    "title": "The Time Machine",
+    "author": "H. G. Wells",
+    "target_passage_ids": [
+      "eloi_first_contact",
+      "epilogue_tenderness"
+    ],
+    "resynthesized_passage_count": 2,
+    "reused_exact_passage_count": 2,
+    "full_title_generated": false
+  },
+  "source": {
+    "complete_source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
+    "preparations": [
+      {
+        "passage_id": "eloi_first_contact",
+        "canonical_text_sha256": "6262bd33a6ab3f8e742c55372b2eb4421ca84ec75e123c12ec36528c36a62077",
+        "prepared_text_sha256": "0d5edcf0730963c6cfbccff7851061367c9eaf10de572580da9c992aa7dbe9ce",
+        "canonical_lexical_tokens_unchanged": true,
+        "transformations": [
+          {
+            "source": "face to face, I and this",
+            "prepared": "face to face. I—and this",
+            "reason": "make both short source words audible without changing lexical content"
+          }
+        ]
+      },
+      {
+        "passage_id": "epilogue_tenderness",
+        "canonical_text_sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b",
+        "prepared_text_sha256": "4eb253296d579a566e2587ebe611e9be92104d15e52b378a85859567843f01fc",
+        "canonical_lexical_tokens_unchanged": true,
+        "transformations": [
+          {
+            "source": "some plesiosaurus-haunted Oolitic",
+            "prepared": "some plesiosaurus ... haunted Oolitic",
+            "reason": "separate the scientific noun from the compound while preserving every word"
+          },
+          {
+            "source": "brown and flat and brittle",
+            "prepared": "brown, and flat, and brittle",
+            "reason": "make the middle adjective audible without changing lexical content"
+          }
+        ]
+      }
+    ],
+    "all_prepared_lexical_tokens_unchanged": true
+  },
+  "prior_evidence": {
+    "path": "/private/tmp/earnalism-sprint1-distinct-voice/internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_asr_repair_v1.json",
+    "sha256": "28f916915bab79d26f91d1069e348967989ba7236f8c67eeed829555ba0e3a15",
+    "attempt_fingerprint": "9d59dee17c4ddd2bf2ba1e67b0e3dc80b9dd4a2c95785147869e3a305d75b7e3",
+    "repair_fingerprint": "058de6aa9d7477d7d8eb95dcdf836641dd09a7c2287f2bf7184fb03da13dfa15",
+    "exact_passages_reused": [
+      "opening_exposition",
+      "morlock_darkness"
+    ]
+  },
+  "engine": {
+    "provider": "local_kokoro",
+    "package_version": "0.9.4",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "bm_george",
+    "voice_sha256": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+    "speed": 0.94,
+    "random_seed": 2026072007,
+    "kokoro_lang_code": "b",
+    "g2p_british": true,
+    "g2p_fallback_enabled": false,
+    "pronunciation_overrides": {
+      "Morlocks": "mˈɔːlɒks",
+      "Weena": "wˈiːnə",
+      "civilisation": "sˌɪvɪlaɪzˈeɪʃən",
+      "plesiosaurus": "plˌiːzɪəsˈɔːrəs"
+    }
+  },
+  "rights": {
+    "controlled_text_public_domain": true,
+    "author_death_year": 1946,
+    "original_publication_year": 1895,
+    "model_and_voicepack_license": "Apache-2.0",
+    "model_revision_bound": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "voice_file_sha256_bound": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+    "private_generation_allowed": true,
+    "public_release_approved": false,
+    "public_disclosure_required_if_later_approved": "AI voice"
+  },
+  "g2p_audit": [
+    {
+      "passage_id": "eloi_first_contact",
+      "status": "PASS",
+      "kokoro_lang_code": "b",
+      "british": true,
+      "fallback": null,
+      "all_source_tokens_resolved": true,
+      "phoneme_sha256": "679799e8c5bfda6b1e67fcf329b1d8b7dfe8b90b6e16677820930bc537e7a22e",
+      "unresolved_tokens": []
+    },
+    {
+      "passage_id": "epilogue_tenderness",
+      "status": "PASS",
+      "kokoro_lang_code": "b",
+      "british": true,
+      "fallback": null,
+      "all_source_tokens_resolved": true,
+      "phoneme_sha256": "fc6a09014a2dc34a8c2919459a22c26161855a77c3faec546c247112339652f6",
+      "unresolved_tokens": []
+    }
+  ],
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/bm_george.pt",
+      "sha256": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+      "size_bytes": 523430
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "python_executable": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "deterministic_algorithms_required": true,
+    "torch_thread_count": 1,
+    "offline_local_artifacts_only": true
+  },
+  "decoder_arms": [
+    {
+      "id": "unprompted_beam_5",
+      "initial_prompt": null,
+      "temperature": 0,
+      "condition_on_previous_text": false,
+      "word_timestamps": true,
+      "beam_size": 5,
+      "patience": 1,
+      "hallucination_silence_threshold": 0.5
+    },
+    {
+      "id": "unprompted_greedy",
+      "initial_prompt": null,
+      "temperature": 0,
+      "condition_on_previous_text": false,
+      "word_timestamps": true,
+      "beam_size": null,
+      "patience": null,
+      "hallucination_silence_threshold": 0.5
+    },
+    {
+      "id": "canonical_vocabulary_beam_5",
+      "initial_prompt": "Canonical spellings and phrases: I and this fragile thing; ninepins; Cretaceous; plesiosaurus-haunted Oolitic coral reef; Triassic; civilisation; shrivelled; brown and flat and brittle. Preserve every spoken source word and British spelling.",
+      "temperature": 0,
+      "condition_on_previous_text": false,
+      "word_timestamps": true,
+      "beam_size": 5,
+      "patience": 1,
+      "hallucination_silence_threshold": 0.5
+    }
+  ],
+  "next_stage_contract": {
+    "exact_execute_command": null,
+    "listening_qa_allowed": false,
+    "full_title_generation_allowed": false,
+    "upload_allowed": false,
+    "publication_allowed": false,
+    "release_gate_mutation_allowed": false,
+    "do_not_repeat_completed_fingerprint": true
+  },
+  "safety": {
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-time-machine/f3ff3571-bm-george-two-passage-targeted-v2",
+    "provider_calls": 0,
+    "estimated_provider_cost_usd": 0.0,
+    "paid_tts_lock": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_touched": false,
+    "audio_generated": true,
+    "asr_run": true,
+    "listening_qa_run": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "paid_tts_lock_before": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_after": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_unchanged": true,
+    "resynthesized_passage_count": 2,
+    "reused_passage_count": 2,
+    "artifact_hashes_before": {
+      "model": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "config": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "voice": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+      "whisper": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f"
+    },
+    "artifact_hashes_after": {
+      "model": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "config": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "voice": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+      "whisper": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f"
+    },
+    "artifact_hashes_unchanged": true
+  },
+  "blockers_to_release": [
+    "TARGETED_RESYNTHESIS_OBJECTIVE_GATE_FAILED",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "FULL_TITLE_ASR_BOUNDARY_CONTENT_NOT_RUN",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "PRIVATE_MEDIA_DELIVERY_MANIFEST_NOT_BUILT",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN",
+    "PUBLIC_RELEASE_NOT_APPROVED",
+    "OWNER_10_TARGET_NOT_VERIFIED"
+  ],
+  "targeted_samples": [
+    {
+      "passage_id": "eloi_first_contact",
+      "source_text_sha256": "0d5edcf0730963c6cfbccff7851061367c9eaf10de572580da9c992aa7dbe9ce",
+      "characters": 1475,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-time-machine/f3ff3571-bm-george-two-passage-targeted-v2/eloi_first_contact.wav",
+      "phoneme_sha256": "681b4fa67fef343a67f2cb97a1058da691f9c4fca8afe161bc1c457e84f73a0e",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 80.8,
+      "size_bytes": 3878444,
+      "audio_sha256": "748009a828afbcd1684941932a1d8d04acd66e81796103364d2d120969f20c39",
+      "peak_fraction": 0.413892,
+      "rms_fraction": 0.055943,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true,
+      "canonical_source_text_sha256": "6262bd33a6ab3f8e742c55372b2eb4421ca84ec75e123c12ec36528c36a62077",
+      "prepared_text_sha256": "0d5edcf0730963c6cfbccff7851061367c9eaf10de572580da9c992aa7dbe9ce"
+    },
+    {
+      "passage_id": "epilogue_tenderness",
+      "source_text_sha256": "4eb253296d579a566e2587ebe611e9be92104d15e52b378a85859567843f01fc",
+      "characters": 1534,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-time-machine/f3ff3571-bm-george-two-passage-targeted-v2/epilogue_tenderness.wav",
+      "phoneme_sha256": "cbc84236cbccae01e129e01c00cc12cef3cf9510c9074c534771b9ac3af15fd7",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 95.575,
+      "size_bytes": 4587644,
+      "audio_sha256": "3449334838de2cf2b93249da265a6fb35dd65aa5f00d67ecb2ccfe39fcc49b31",
+      "peak_fraction": 0.404981,
+      "rms_fraction": 0.056982,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true,
+      "canonical_source_text_sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b",
+      "prepared_text_sha256": "4eb253296d579a566e2587ebe611e9be92104d15e52b378a85859567843f01fc"
+    }
+  ],
+  "targeted_asr": {
+    "status": "FAIL",
+    "all_candidates": {
+      "eloi_first_contact": [
+        {
+          "passage_id": "eloi_first_contact",
+          "decoder_arm": "unprompted_beam_5",
+          "audio_sha256": "748009a828afbcd1684941932a1d8d04acd66e81796103364d2d120969f20c39",
+          "canonical_source_text_sha256": "6262bd33a6ab3f8e742c55372b2eb4421ca84ec75e123c12ec36528c36a62077",
+          "prepared_text_sha256": "0d5edcf0730963c6cfbccff7851061367c9eaf10de572580da9c992aa7dbe9ce",
+          "raw_transcript": "In another moment we were standing face to face. I am this fragile thing out of futurity. He came straight up to me and laughed into my eyes. The absence from his bearing of any sign of fear struck me at once. Then he turned to the two others who were following him and spoke to them in a strange and very sweet and liquid tongue. There were others coming, and presently a little group of perhaps eight or ten of these exquisite creatures were about me. One of them addressed me. It came into my head, oddly enough, that my voice was too harsh and deep for them, so I shook my head and, pointing to my ears, shook it again. He came a step forward, hesitated, and then touched my hand. Then I felt other soft little tentacles upon my back and shoulders. They wanted to make sure I was real. There was nothing in this at all alarming. Indeed, there was something in these pretty little people that inspired confidence, a graceful gentleness, a certain childlike ease. And besides, they looked so frail that I could fancy myself flinging the whole dozen of them about like nine pins, but I made a sudden motion to warn them when I saw their little pink hands feeling at the time machine. Happily then, when it was not too late, I thought of a danger I had hitherto forgotten, and reaching over the bars of the machine, I unscrewed the little levers that would set it in motion and put these in my pocket. Then I turned again to see what I could do in the way of communication.",
+          "raw_transcript_sha256": "b90825e19c6ac3b6728cdb9d159de78f09ec21cfedf2352677876af664095231",
+          "evaluated_transcript": "In another moment we were standing face to face. I am this fragile thing out of futurity. He came straight up to me and laughed into my eyes. The absence from his bearing of any sign of fear struck me at once. Then he turned to the two others who were following him and spoke to them in a strange and very sweet and liquid tongue. There were others coming, and presently a little group of perhaps eight or ten of these exquisite creatures were about me. One of them addressed me. It came into my head, oddly enough, that my voice was too harsh and deep for them, so I shook my head and, pointing to my ears, shook it again. He came a step forward, hesitated, and then touched my hand. Then I felt other soft little tentacles upon my back and shoulders. They wanted to make sure I was real. There was nothing in this at all alarming. Indeed, there was something in these pretty little people that inspired confidence, a graceful gentleness, a certain childlike ease. And besides, they looked so frail that I could fancy myself flinging the whole dozen of them about like ninepins, but I made a sudden motion to warn them when I saw their little pink hands feeling at the time machine. Happily then, when it was not too late, I thought of a danger I had hitherto forgotten, and reaching over the bars of the machine, I unscrewed the little levers that would set it in motion and put these in my pocket. Then I turned again to see what I could do in the way of communication.",
+          "evaluated_transcript_sha256": "a04803f2ddae503b038b3197daa5702994ecdc63cd096c9569c7168c802046cd",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bnine pins\\b",
+              "replacement": "ninepins",
+              "expected_count_when_observed": 1,
+              "reason": "ASR token split for the acoustically identical source compound ninepins",
+              "observed_count": 1
+            }
+          ],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.964,
+          "coverage": 0.9964,
+          "precision": 0.9964,
+          "source_token_count": 278,
+          "transcript_token_count": 278,
+          "equal_token_count": 277,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": false,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "and": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "am": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                10,
+                11
+              ],
+              "transcript_range": [
+                10,
+                11
+              ],
+              "source_tokens": [
+                "and"
+              ],
+              "transcript_tokens": [
+                "am"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "eloi_first_contact",
+          "decoder_arm": "unprompted_greedy",
+          "audio_sha256": "748009a828afbcd1684941932a1d8d04acd66e81796103364d2d120969f20c39",
+          "canonical_source_text_sha256": "6262bd33a6ab3f8e742c55372b2eb4421ca84ec75e123c12ec36528c36a62077",
+          "prepared_text_sha256": "0d5edcf0730963c6cfbccff7851061367c9eaf10de572580da9c992aa7dbe9ce",
+          "raw_transcript": "In another moment we were standing face to face. I am this fragile thing out of futurity. He came straight up to me and laughed into my eyes. The absence from his bearing of any sign of fear struck me at once. Then he turned to the two others who were following him and spoke to them in a strange and very sweet and liquid tongue. There were others coming, and presently a little group of perhaps eight or ten of these exquisite creatures were about me. One of them addressed me. It came into my head, oddly enough, that my voice was too harsh and deep for them, so I shook my head and, pointing to my ears, shook it again. He came a step forward, hesitated, and then touched my hand. Then I felt other soft little tentacles upon my back and shoulders. They wanted to make sure I was real. There was nothing in this at all alarming. Indeed, there was something in these pretty little people that inspired confidence, a graceful gentleness, a certain childlike ease. And besides, they looked so frail that I could fancy myself flinging the whole dozen of them about like nine pins, but I made a sudden motion to warn them when I saw their little pink hands feeling at the time machine. Happily then, when it was not too late, I thought of a danger I had hitherto forgotten, and reaching over the bars of the machine, I unscrewed the little levers that would set it in motion and put these in my pocket. Then I turned again to see what I could do in the way of communication.",
+          "raw_transcript_sha256": "b90825e19c6ac3b6728cdb9d159de78f09ec21cfedf2352677876af664095231",
+          "evaluated_transcript": "In another moment we were standing face to face. I am this fragile thing out of futurity. He came straight up to me and laughed into my eyes. The absence from his bearing of any sign of fear struck me at once. Then he turned to the two others who were following him and spoke to them in a strange and very sweet and liquid tongue. There were others coming, and presently a little group of perhaps eight or ten of these exquisite creatures were about me. One of them addressed me. It came into my head, oddly enough, that my voice was too harsh and deep for them, so I shook my head and, pointing to my ears, shook it again. He came a step forward, hesitated, and then touched my hand. Then I felt other soft little tentacles upon my back and shoulders. They wanted to make sure I was real. There was nothing in this at all alarming. Indeed, there was something in these pretty little people that inspired confidence, a graceful gentleness, a certain childlike ease. And besides, they looked so frail that I could fancy myself flinging the whole dozen of them about like ninepins, but I made a sudden motion to warn them when I saw their little pink hands feeling at the time machine. Happily then, when it was not too late, I thought of a danger I had hitherto forgotten, and reaching over the bars of the machine, I unscrewed the little levers that would set it in motion and put these in my pocket. Then I turned again to see what I could do in the way of communication.",
+          "evaluated_transcript_sha256": "a04803f2ddae503b038b3197daa5702994ecdc63cd096c9569c7168c802046cd",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bnine pins\\b",
+              "replacement": "ninepins",
+              "expected_count_when_observed": 1,
+              "reason": "ASR token split for the acoustically identical source compound ninepins",
+              "observed_count": 1
+            }
+          ],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.964,
+          "coverage": 0.9964,
+          "precision": 0.9964,
+          "source_token_count": 278,
+          "transcript_token_count": 278,
+          "equal_token_count": 277,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": false,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "and": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "am": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "replace",
+              "source_range": [
+                10,
+                11
+              ],
+              "transcript_range": [
+                10,
+                11
+              ],
+              "source_tokens": [
+                "and"
+              ],
+              "transcript_tokens": [
+                "am"
+              ]
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "eloi_first_contact",
+          "decoder_arm": "canonical_vocabulary_beam_5",
+          "audio_sha256": "748009a828afbcd1684941932a1d8d04acd66e81796103364d2d120969f20c39",
+          "canonical_source_text_sha256": "6262bd33a6ab3f8e742c55372b2eb4421ca84ec75e123c12ec36528c36a62077",
+          "prepared_text_sha256": "0d5edcf0730963c6cfbccff7851061367c9eaf10de572580da9c992aa7dbe9ce",
+          "raw_transcript": "In another moment we were standing face to face. I and this fragile thing out of futurity. He came straight up to me and laughed into my eyes. The absence from his bearing of any sign of fear struck me at once. Then he turned to the two others who were following him and spoke to them in a strange and very sweet and liquid tongue. There were others coming, and presently a little group of perhaps eight or ten of these exquisite creatures were about me. One of them addressed me. for them, so I shook my head and, pointing to my ears, shook it again. He came a step forward, hesitated, and then touched my hand. Then I felt other soft little tentacles upon my back and shoulders. They wanted to make sure I was real. There was nothing in this at all alarming. Indeed, there was something in these pretty little people that inspired confidence, a graceful gentleness, a certain childlike ease. And besides, they looked so frail that I could fancy myself flinging the whole dozen of them about like 9 pins, but I made a sudden motion to warn them when I saw their little pink hands feeling at the time machine. Happily then, when it was not too late, I thought of a danger I had hitherto forgotten, and reaching over the bars of the machine, I unscrewed the little levers that would set it in motion and put these in my pocket. Then I turned again to see what I could do in the way of communication.",
+          "raw_transcript_sha256": "2aaa22c17b4723e2456f2951a0eb6e1084e694f96a6a69d7063450adb6caaeb4",
+          "evaluated_transcript": "In another moment we were standing face to face. I and this fragile thing out of futurity. He came straight up to me and laughed into my eyes. The absence from his bearing of any sign of fear struck me at once. Then he turned to the two others who were following him and spoke to them in a strange and very sweet and liquid tongue. There were others coming, and presently a little group of perhaps eight or ten of these exquisite creatures were about me. One of them addressed me. for them, so I shook my head and, pointing to my ears, shook it again. He came a step forward, hesitated, and then touched my hand. Then I felt other soft little tentacles upon my back and shoulders. They wanted to make sure I was real. There was nothing in this at all alarming. Indeed, there was something in these pretty little people that inspired confidence, a graceful gentleness, a certain childlike ease. And besides, they looked so frail that I could fancy myself flinging the whole dozen of them about like 9 pins, but I made a sudden motion to warn them when I saw their little pink hands feeling at the time machine. Happily then, when it was not too late, I thought of a danger I had hitherto forgotten, and reaching over the bars of the machine, I unscrewed the little levers that would set it in motion and put these in my pocket. Then I turned again to see what I could do in the way of communication.",
+          "evaluated_transcript_sha256": "2aaa22c17b4723e2456f2951a0eb6e1084e694f96a6a69d7063450adb6caaeb4",
+          "source_equivalences_applied": [],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.6679,
+          "coverage": 0.9424,
+          "precision": 0.9924,
+          "source_token_count": 278,
+          "transcript_token_count": 264,
+          "equal_token_count": 262,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": false,
+          "no_unexpected_content": false,
+          "missing_tokens": {
+            "and": 1,
+            "came": 1,
+            "into": 1,
+            "my": 2,
+            "it": 1,
+            "head": 1,
+            "oddly": 1,
+            "enough": 1,
+            "that": 1,
+            "voice": 1,
+            "was": 1,
+            "too": 1,
+            "harsh": 1,
+            "deep": 1,
+            "ninepins": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {
+            "9": 1,
+            "pins": 1
+          },
+          "ordered_alignment_operations": [
+            {
+              "operation": "delete",
+              "source_range": [
+                92,
+                107
+              ],
+              "transcript_range": [
+                92,
+                92
+              ],
+              "source_tokens": [
+                "it",
+                "came",
+                "into",
+                "my",
+                "head",
+                "oddly",
+                "enough",
+                "that",
+                "my",
+                "voice",
+                "was",
+                "too",
+                "harsh",
+                "and",
+                "deep"
+              ],
+              "transcript_tokens": []
+            },
+            {
+              "operation": "replace",
+              "source_range": [
+                199,
+                200
+              ],
+              "transcript_range": [
+                184,
+                186
+              ],
+              "source_tokens": [
+                "ninepins"
+              ],
+              "transcript_tokens": [
+                "9",
+                "pins"
+              ]
+            }
+          ],
+          "pass": false
+        }
+      ],
+      "epilogue_tenderness": [
+        {
+          "passage_id": "epilogue_tenderness",
+          "decoder_arm": "unprompted_beam_5",
+          "audio_sha256": "3449334838de2cf2b93249da265a6fb35dd65aa5f00d67ecb2ccfe39fcc49b31",
+          "canonical_source_text_sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b",
+          "prepared_text_sha256": "4eb253296d579a566e2587ebe611e9be92104d15e52b378a85859567843f01fc",
+          "raw_transcript": "One cannot choose but wonder, will he ever return? It may be that he swept back into the past and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone, into the abysses of the Cretaceous Sea, or among the grotesque Saurians, the huge reptilian brutes of the Jurassic times. He may even now, if I may use the phrase, be wandering on some plesiosaurus, haunted oolitic coral reef, or beside the lonely saline seas of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved, into the manhood of the race, for I for my own part cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord, are indeed man's culminating time, I say for my own part. He I know, for the question had been discussed among us long before the time machine was made, thought but cheerlessly of the advancement of mankind, and saw in the growing pile of civilization only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so, but to me the future is still black and blank, is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me for my comfort two strange white flowers, shriveled now and brown and flat and brittle, to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+          "raw_transcript_sha256": "1fba87ba2b5225810bf0db8f17b418756dd4a39233a62e93a737f5a0a94c04c3",
+          "evaluated_transcript": "One cannot choose but wonder, will he ever return? It may be that he swept back into the past and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone, into the abysses of the Cretaceous Sea, or among the grotesque Saurians, the huge reptilian brutes of the Jurassic times. He may even now, if I may use the phrase, be wandering on some plesiosaurus, haunted oolitic coral reef, or beside the lonely saline seas of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved, into the manhood of the race, for I for my own part cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord, are indeed man's culminating time, I say for my own part. He I know, for the question had been discussed among us long before the time machine was made, thought but cheerlessly of the advancement of mankind, and saw in the growing pile of civilisation only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so, but to me the future is still black and blank, is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me for my comfort two strange white flowers, shrivelled now and brown and flat and brittle, to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+          "evaluated_transcript_sha256": "8355ae203c671766461737a5d3465f2803ad7dfaa5efd237da9a2862ae5d8b8e",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bcivilization\\b",
+              "replacement": "civilisation",
+              "expected_count_when_observed": 1,
+              "reason": "American ASR spelling for source British spelling civilisation",
+              "observed_count": 1
+            },
+            {
+              "pattern": "\\bshriveled\\b",
+              "replacement": "shrivelled",
+              "expected_count_when_observed": 1,
+              "reason": "American ASR spelling for source British spelling shrivelled",
+              "observed_count": 1
+            }
+          ],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 286,
+          "transcript_token_count": 286,
+          "equal_token_count": 286,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        },
+        {
+          "passage_id": "epilogue_tenderness",
+          "decoder_arm": "unprompted_greedy",
+          "audio_sha256": "3449334838de2cf2b93249da265a6fb35dd65aa5f00d67ecb2ccfe39fcc49b31",
+          "canonical_source_text_sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b",
+          "prepared_text_sha256": "4eb253296d579a566e2587ebe611e9be92104d15e52b378a85859567843f01fc",
+          "raw_transcript": "One cannot choose but wonder, will he ever return? It may be that he swept back into the past and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone, into the abysses of the Cretaceous Sea, or among the grotesque Saurians, the huge reptilian brutes of the Jurassic times. He may even now, if I may use the phrase, be wandering on some plesiosaurus, haunted oolitic coral reef, or beside the lonely saline seas of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved, into the manhood of the race? For I for my own part cannot think that these latter days of weak experiment, fragmentary theory and mutual discord are indeed man's culminating time. I say for my own part. He I know, for the question had been discussed among us long before the time machine was made, thought but cheerlessly of the advancement of mankind, and saw in the growing pile of civilization only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so, but to me the future is still black and blank, is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me for my comfort two strange white flowers, shriveled now and brown and and brittle, to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+          "raw_transcript_sha256": "9a1a2295e79ddf048abb16e2c8e62e541739217e7e0ffb78d41801525bbf8d55",
+          "evaluated_transcript": "One cannot choose but wonder, will he ever return? It may be that he swept back into the past and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone, into the abysses of the Cretaceous Sea, or among the grotesque Saurians, the huge reptilian brutes of the Jurassic times. He may even now, if I may use the phrase, be wandering on some plesiosaurus, haunted oolitic coral reef, or beside the lonely saline seas of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved, into the manhood of the race? For I for my own part cannot think that these latter days of weak experiment, fragmentary theory and mutual discord are indeed man's culminating time. I say for my own part. He I know, for the question had been discussed among us long before the time machine was made, thought but cheerlessly of the advancement of mankind, and saw in the growing pile of civilisation only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so, but to me the future is still black and blank, is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me for my comfort two strange white flowers, shrivelled now and brown and and brittle, to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+          "evaluated_transcript_sha256": "f90c4fd13b4986c8de3fcf878731dc6bc6400b45401d6be732377b25752c3c01",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bcivilization\\b",
+              "replacement": "civilisation",
+              "expected_count_when_observed": 1,
+              "reason": "American ASR spelling for source British spelling civilisation",
+              "observed_count": 1
+            },
+            {
+              "pattern": "\\bshriveled\\b",
+              "replacement": "shrivelled",
+              "expected_count_when_observed": 1,
+              "reason": "American ASR spelling for source British spelling shrivelled",
+              "observed_count": 1
+            }
+          ],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 9.9825,
+          "coverage": 0.9965,
+          "precision": 1.0,
+          "source_token_count": 286,
+          "transcript_token_count": 285,
+          "equal_token_count": 285,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": false,
+          "no_missing_content": false,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {
+            "flat": 1
+          },
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [
+            {
+              "operation": "delete",
+              "source_range": [
+                260,
+                261
+              ],
+              "transcript_range": [
+                260,
+                260
+              ],
+              "source_tokens": [
+                "flat"
+              ],
+              "transcript_tokens": []
+            }
+          ],
+          "pass": false
+        },
+        {
+          "passage_id": "epilogue_tenderness",
+          "decoder_arm": "canonical_vocabulary_beam_5",
+          "audio_sha256": "3449334838de2cf2b93249da265a6fb35dd65aa5f00d67ecb2ccfe39fcc49b31",
+          "canonical_source_text_sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b",
+          "prepared_text_sha256": "4eb253296d579a566e2587ebe611e9be92104d15e52b378a85859567843f01fc",
+          "raw_transcript": "One cannot choose but wonder, will he ever return? It may be that he swept back into the past and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone, into the abysses of the Cretaceous Sea, or among the grotesque Saurians, the huge reptilian brutes of the Jurassic times. He may even now, if I may use the phrase, be wandering on some plesiosaurus-haunted Oolitic coral reef, or beside the lonely saline seas of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved, into the manhood of the race, for I for my own part cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord, are indeed man's culminating time, I say for my own part. He I know, for the question had been discussed among us long before the time machine was made, thought but cheerlessly of the advancement of mankind, and saw in the growing pile of civilization only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so, but to me the future is still black and blank, is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me for my comfort two strange white flowers, shriveled now and brown and flat and brittle, to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+          "raw_transcript_sha256": "1bc473af200a9e0cf28afbec17426ac963254768fac14d399102829900bd1277",
+          "evaluated_transcript": "One cannot choose but wonder, will he ever return? It may be that he swept back into the past and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone, into the abysses of the Cretaceous Sea, or among the grotesque Saurians, the huge reptilian brutes of the Jurassic times. He may even now, if I may use the phrase, be wandering on some plesiosaurus-haunted Oolitic coral reef, or beside the lonely saline seas of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved, into the manhood of the race, for I for my own part cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord, are indeed man's culminating time, I say for my own part. He I know, for the question had been discussed among us long before the time machine was made, thought but cheerlessly of the advancement of mankind, and saw in the growing pile of civilisation only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so, but to me the future is still black and blank, is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me for my comfort two strange white flowers, shrivelled now and brown and flat and brittle, to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+          "evaluated_transcript_sha256": "aa728b2e78037f26f19ef2a376c4b44d2c7269281bfe73581c22d3bc3c326700",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bcivilization\\b",
+              "replacement": "civilisation",
+              "expected_count_when_observed": 1,
+              "reason": "American ASR spelling for source British spelling civilisation",
+              "observed_count": 1
+            },
+            {
+              "pattern": "\\bshriveled\\b",
+              "replacement": "shrivelled",
+              "expected_count_when_observed": 1,
+              "reason": "American ASR spelling for source British spelling shrivelled",
+              "observed_count": 1
+            }
+          ],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 286,
+          "transcript_token_count": 286,
+          "equal_token_count": 286,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        }
+      ]
+    },
+    "selected": [
+      {
+        "passage_id": "eloi_first_contact",
+        "decoder_arm": "unprompted_beam_5",
+        "audio_sha256": "748009a828afbcd1684941932a1d8d04acd66e81796103364d2d120969f20c39",
+        "canonical_source_text_sha256": "6262bd33a6ab3f8e742c55372b2eb4421ca84ec75e123c12ec36528c36a62077",
+        "prepared_text_sha256": "0d5edcf0730963c6cfbccff7851061367c9eaf10de572580da9c992aa7dbe9ce",
+        "raw_transcript": "In another moment we were standing face to face. I am this fragile thing out of futurity. He came straight up to me and laughed into my eyes. The absence from his bearing of any sign of fear struck me at once. Then he turned to the two others who were following him and spoke to them in a strange and very sweet and liquid tongue. There were others coming, and presently a little group of perhaps eight or ten of these exquisite creatures were about me. One of them addressed me. It came into my head, oddly enough, that my voice was too harsh and deep for them, so I shook my head and, pointing to my ears, shook it again. He came a step forward, hesitated, and then touched my hand. Then I felt other soft little tentacles upon my back and shoulders. They wanted to make sure I was real. There was nothing in this at all alarming. Indeed, there was something in these pretty little people that inspired confidence, a graceful gentleness, a certain childlike ease. And besides, they looked so frail that I could fancy myself flinging the whole dozen of them about like nine pins, but I made a sudden motion to warn them when I saw their little pink hands feeling at the time machine. Happily then, when it was not too late, I thought of a danger I had hitherto forgotten, and reaching over the bars of the machine, I unscrewed the little levers that would set it in motion and put these in my pocket. Then I turned again to see what I could do in the way of communication.",
+        "raw_transcript_sha256": "b90825e19c6ac3b6728cdb9d159de78f09ec21cfedf2352677876af664095231",
+        "evaluated_transcript": "In another moment we were standing face to face. I am this fragile thing out of futurity. He came straight up to me and laughed into my eyes. The absence from his bearing of any sign of fear struck me at once. Then he turned to the two others who were following him and spoke to them in a strange and very sweet and liquid tongue. There were others coming, and presently a little group of perhaps eight or ten of these exquisite creatures were about me. One of them addressed me. It came into my head, oddly enough, that my voice was too harsh and deep for them, so I shook my head and, pointing to my ears, shook it again. He came a step forward, hesitated, and then touched my hand. Then I felt other soft little tentacles upon my back and shoulders. They wanted to make sure I was real. There was nothing in this at all alarming. Indeed, there was something in these pretty little people that inspired confidence, a graceful gentleness, a certain childlike ease. And besides, they looked so frail that I could fancy myself flinging the whole dozen of them about like ninepins, but I made a sudden motion to warn them when I saw their little pink hands feeling at the time machine. Happily then, when it was not too late, I thought of a danger I had hitherto forgotten, and reaching over the bars of the machine, I unscrewed the little levers that would set it in motion and put these in my pocket. Then I turned again to see what I could do in the way of communication.",
+        "evaluated_transcript_sha256": "a04803f2ddae503b038b3197daa5702994ecdc63cd096c9569c7168c802046cd",
+        "source_equivalences_applied": [
+          {
+            "pattern": "\\bnine pins\\b",
+            "replacement": "ninepins",
+            "expected_count_when_observed": 1,
+            "reason": "ASR token split for the acoustically identical source compound ninepins",
+            "observed_count": 1
+          }
+        ],
+        "substantive_normalization_performed": false,
+        "unexpected_speech_deleted_or_normalized": false,
+        "score": 9.964,
+        "coverage": 0.9964,
+        "precision": 0.9964,
+        "source_token_count": 278,
+        "transcript_token_count": 278,
+        "equal_token_count": 277,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": false,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "and": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "am": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              10,
+              11
+            ],
+            "transcript_range": [
+              10,
+              11
+            ],
+            "source_tokens": [
+              "and"
+            ],
+            "transcript_tokens": [
+              "am"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "epilogue_tenderness",
+        "decoder_arm": "unprompted_beam_5",
+        "audio_sha256": "3449334838de2cf2b93249da265a6fb35dd65aa5f00d67ecb2ccfe39fcc49b31",
+        "canonical_source_text_sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b",
+        "prepared_text_sha256": "4eb253296d579a566e2587ebe611e9be92104d15e52b378a85859567843f01fc",
+        "raw_transcript": "One cannot choose but wonder, will he ever return? It may be that he swept back into the past and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone, into the abysses of the Cretaceous Sea, or among the grotesque Saurians, the huge reptilian brutes of the Jurassic times. He may even now, if I may use the phrase, be wandering on some plesiosaurus, haunted oolitic coral reef, or beside the lonely saline seas of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved, into the manhood of the race, for I for my own part cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord, are indeed man's culminating time, I say for my own part. He I know, for the question had been discussed among us long before the time machine was made, thought but cheerlessly of the advancement of mankind, and saw in the growing pile of civilization only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so, but to me the future is still black and blank, is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me for my comfort two strange white flowers, shriveled now and brown and flat and brittle, to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+        "raw_transcript_sha256": "1fba87ba2b5225810bf0db8f17b418756dd4a39233a62e93a737f5a0a94c04c3",
+        "evaluated_transcript": "One cannot choose but wonder, will he ever return? It may be that he swept back into the past and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone, into the abysses of the Cretaceous Sea, or among the grotesque Saurians, the huge reptilian brutes of the Jurassic times. He may even now, if I may use the phrase, be wandering on some plesiosaurus, haunted oolitic coral reef, or beside the lonely saline seas of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved, into the manhood of the race, for I for my own part cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord, are indeed man's culminating time, I say for my own part. He I know, for the question had been discussed among us long before the time machine was made, thought but cheerlessly of the advancement of mankind, and saw in the growing pile of civilisation only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so, but to me the future is still black and blank, is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me for my comfort two strange white flowers, shrivelled now and brown and flat and brittle, to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+        "evaluated_transcript_sha256": "8355ae203c671766461737a5d3465f2803ad7dfaa5efd237da9a2862ae5d8b8e",
+        "source_equivalences_applied": [
+          {
+            "pattern": "\\bcivilization\\b",
+            "replacement": "civilisation",
+            "expected_count_when_observed": 1,
+            "reason": "American ASR spelling for source British spelling civilisation",
+            "observed_count": 1
+          },
+          {
+            "pattern": "\\bshriveled\\b",
+            "replacement": "shrivelled",
+            "expected_count_when_observed": 1,
+            "reason": "American ASR spelling for source British spelling shrivelled",
+            "observed_count": 1
+          }
+        ],
+        "substantive_normalization_performed": false,
+        "unexpected_speech_deleted_or_normalized": false,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 286,
+        "transcript_token_count": 286,
+        "equal_token_count": 286,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      }
+    ]
+  },
+  "combined_representative_reports": [
+    {
+      "passage_id": "opening_exposition",
+      "decoder_arm": "unprompted_beam_2",
+      "audio_sha256": "1a45c3b5ba1c06435ad66bbf00fb4c98fc46628357175990f03d2b9421c0e0e9",
+      "source_text_sha256": "22dc5f715d1f9ecf4a32b6a92c57d97cd6f86c39c70d7b997c453ec197eb82c2",
+      "raw_transcript": "The time traveller, for so it will be convenient to speak of him, was expounding a recondite matter to us. His pale grey eyes shone and twinkled, and his usually pale face was flushed and animated. The fire burnt brightly, and the soft radiance of the incandescent lights in the lilies of silver caught the bubbles that flashed and passed in our glasses. Our chairs, being his patents, embraced and caressed us rather than submitted to be sat upon, and there was that luxurious after-dinner atmosphere when thought runs gracefully free of the trammels of precision, and he put it to us in this way, marking the points with a lean forefinger, as we sat and lazily admired his earnestness over this new paradox, as we thought it and his fecundity.",
+      "raw_transcript_sha256": "49fe4cff3ad50c0a7db79e6124e753aca0d13c34c8fb68208a65b6624fe5b91a",
+      "evaluated_transcript": "The time traveller, for so it will be convenient to speak of him, was expounding a recondite matter to us. His pale grey eyes shone and twinkled, and his usually pale face was flushed and animated. The fire burnt brightly, and the soft radiance of the incandescent lights in the lilies of silver caught the bubbles that flashed and passed in our glasses. Our chairs, being his patents, embraced and caressed us rather than submitted to be sat upon, and there was that luxurious after-dinner atmosphere when thought runs gracefully free of the trammels of precision, and he put it to us in this way, marking the points with a lean forefinger, as we sat and lazily admired his earnestness over this new paradox, as we thought it and his fecundity.",
+      "evaluated_transcript_sha256": "49fe4cff3ad50c0a7db79e6124e753aca0d13c34c8fb68208a65b6624fe5b91a",
+      "source_equivalences_applied": [],
+      "substantive_normalization_performed": false,
+      "unexpected_speech_deleted_or_normalized": false,
+      "score": 10.0,
+      "coverage": 1.0,
+      "precision": 1.0,
+      "source_token_count": 132,
+      "transcript_token_count": 132,
+      "equal_token_count": 132,
+      "first_words_match": true,
+      "last_words_match": true,
+      "ordered_content_integrity_pass": true,
+      "no_missing_content": true,
+      "no_duplicate_content": true,
+      "no_reordered_content": true,
+      "no_unexpected_content": true,
+      "missing_tokens": {},
+      "duplicate_tokens": {},
+      "unexpected_tokens": {},
+      "ordered_alignment_operations": [],
+      "pass": true
+    },
+    {
+      "passage_id": "eloi_first_contact",
+      "decoder_arm": "unprompted_beam_5",
+      "audio_sha256": "748009a828afbcd1684941932a1d8d04acd66e81796103364d2d120969f20c39",
+      "canonical_source_text_sha256": "6262bd33a6ab3f8e742c55372b2eb4421ca84ec75e123c12ec36528c36a62077",
+      "prepared_text_sha256": "0d5edcf0730963c6cfbccff7851061367c9eaf10de572580da9c992aa7dbe9ce",
+      "raw_transcript": "In another moment we were standing face to face. I am this fragile thing out of futurity. He came straight up to me and laughed into my eyes. The absence from his bearing of any sign of fear struck me at once. Then he turned to the two others who were following him and spoke to them in a strange and very sweet and liquid tongue. There were others coming, and presently a little group of perhaps eight or ten of these exquisite creatures were about me. One of them addressed me. It came into my head, oddly enough, that my voice was too harsh and deep for them, so I shook my head and, pointing to my ears, shook it again. He came a step forward, hesitated, and then touched my hand. Then I felt other soft little tentacles upon my back and shoulders. They wanted to make sure I was real. There was nothing in this at all alarming. Indeed, there was something in these pretty little people that inspired confidence, a graceful gentleness, a certain childlike ease. And besides, they looked so frail that I could fancy myself flinging the whole dozen of them about like nine pins, but I made a sudden motion to warn them when I saw their little pink hands feeling at the time machine. Happily then, when it was not too late, I thought of a danger I had hitherto forgotten, and reaching over the bars of the machine, I unscrewed the little levers that would set it in motion and put these in my pocket. Then I turned again to see what I could do in the way of communication.",
+      "raw_transcript_sha256": "b90825e19c6ac3b6728cdb9d159de78f09ec21cfedf2352677876af664095231",
+      "evaluated_transcript": "In another moment we were standing face to face. I am this fragile thing out of futurity. He came straight up to me and laughed into my eyes. The absence from his bearing of any sign of fear struck me at once. Then he turned to the two others who were following him and spoke to them in a strange and very sweet and liquid tongue. There were others coming, and presently a little group of perhaps eight or ten of these exquisite creatures were about me. One of them addressed me. It came into my head, oddly enough, that my voice was too harsh and deep for them, so I shook my head and, pointing to my ears, shook it again. He came a step forward, hesitated, and then touched my hand. Then I felt other soft little tentacles upon my back and shoulders. They wanted to make sure I was real. There was nothing in this at all alarming. Indeed, there was something in these pretty little people that inspired confidence, a graceful gentleness, a certain childlike ease. And besides, they looked so frail that I could fancy myself flinging the whole dozen of them about like ninepins, but I made a sudden motion to warn them when I saw their little pink hands feeling at the time machine. Happily then, when it was not too late, I thought of a danger I had hitherto forgotten, and reaching over the bars of the machine, I unscrewed the little levers that would set it in motion and put these in my pocket. Then I turned again to see what I could do in the way of communication.",
+      "evaluated_transcript_sha256": "a04803f2ddae503b038b3197daa5702994ecdc63cd096c9569c7168c802046cd",
+      "source_equivalences_applied": [
+        {
+          "pattern": "\\bnine pins\\b",
+          "replacement": "ninepins",
+          "expected_count_when_observed": 1,
+          "reason": "ASR token split for the acoustically identical source compound ninepins",
+          "observed_count": 1
+        }
+      ],
+      "substantive_normalization_performed": false,
+      "unexpected_speech_deleted_or_normalized": false,
+      "score": 9.964,
+      "coverage": 0.9964,
+      "precision": 0.9964,
+      "source_token_count": 278,
+      "transcript_token_count": 278,
+      "equal_token_count": 277,
+      "first_words_match": true,
+      "last_words_match": true,
+      "ordered_content_integrity_pass": false,
+      "no_missing_content": false,
+      "no_duplicate_content": true,
+      "no_reordered_content": false,
+      "no_unexpected_content": false,
+      "missing_tokens": {
+        "and": 1
+      },
+      "duplicate_tokens": {},
+      "unexpected_tokens": {
+        "am": 1
+      },
+      "ordered_alignment_operations": [
+        {
+          "operation": "replace",
+          "source_range": [
+            10,
+            11
+          ],
+          "transcript_range": [
+            10,
+            11
+          ],
+          "source_tokens": [
+            "and"
+          ],
+          "transcript_tokens": [
+            "am"
+          ]
+        }
+      ],
+      "pass": false
+    },
+    {
+      "passage_id": "morlock_darkness",
+      "decoder_arm": "canonical_vocabulary_beam_2",
+      "audio_sha256": "ee0c32a3466ce3d30bc178cf9c70d23c012fc28452c742f4e5536213e12157cb",
+      "source_text_sha256": "f1a209de898abbbaf96624ac4ca16d06f9f065bd2d6137a995586dc2610ee084",
+      "raw_transcript": "For some way I heard nothing but the crackling twigs under my feet, the faint rustle of the breeze above, and my own breathing and the throb of the blood vessels in my ears. Then I seemed to know of a pattering behind me. I pushed on grimly. The pattering grew more distinct, and then I caught the same queer sound and voices I had heard in the underworld. There were evidently several of the Morlocks, and they were closing in upon me. Indeed, in another minute I felt a tug at my coat, then something at my arm, and Weena shivered violently and became quite still. It was time for a match, but to get one I must put her down. I did so, and as I fumbled with my pocket, a struggle began in the darkness about my knees, perfectly silent on her part and with the same peculiar cooing sounds from the Morlocks. Soft little hands, too, were creeping over my coat and back, touching even my neck. Then the match scratched and fizzed.",
+      "raw_transcript_sha256": "4b29449aa9c878e0ab1cd35d0d9e6464f5f6a9e9e9ffa399fec83f15bb71b4fa",
+      "evaluated_transcript": "For some way I heard nothing but the crackling twigs under my feet, the faint rustle of the breeze above, and my own breathing and the throb of the blood vessels in my ears. Then I seemed to know of a pattering behind me. I pushed on grimly. The pattering grew more distinct, and then I caught the same queer sound and voices I had heard in the underworld. There were evidently several of the Morlocks, and they were closing in upon me. Indeed, in another minute I felt a tug at my coat, then something at my arm, and Weena shivered violently and became quite still. It was time for a match, but to get one I must put her down. I did so, and as I fumbled with my pocket, a struggle began in the darkness about my knees, perfectly silent on her part and with the same peculiar cooing sounds from the Morlocks. Soft little hands, too, were creeping over my coat and back, touching even my neck. Then the match scratched and fizzed.",
+      "evaluated_transcript_sha256": "4b29449aa9c878e0ab1cd35d0d9e6464f5f6a9e9e9ffa399fec83f15bb71b4fa",
+      "source_equivalences_applied": [],
+      "substantive_normalization_performed": false,
+      "unexpected_speech_deleted_or_normalized": false,
+      "score": 10.0,
+      "coverage": 1.0,
+      "precision": 1.0,
+      "source_token_count": 177,
+      "transcript_token_count": 177,
+      "equal_token_count": 177,
+      "first_words_match": true,
+      "last_words_match": true,
+      "ordered_content_integrity_pass": true,
+      "no_missing_content": true,
+      "no_duplicate_content": true,
+      "no_reordered_content": true,
+      "no_unexpected_content": true,
+      "missing_tokens": {},
+      "duplicate_tokens": {},
+      "unexpected_tokens": {},
+      "ordered_alignment_operations": [],
+      "pass": true
+    },
+    {
+      "passage_id": "epilogue_tenderness",
+      "decoder_arm": "unprompted_beam_5",
+      "audio_sha256": "3449334838de2cf2b93249da265a6fb35dd65aa5f00d67ecb2ccfe39fcc49b31",
+      "canonical_source_text_sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b",
+      "prepared_text_sha256": "4eb253296d579a566e2587ebe611e9be92104d15e52b378a85859567843f01fc",
+      "raw_transcript": "One cannot choose but wonder, will he ever return? It may be that he swept back into the past and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone, into the abysses of the Cretaceous Sea, or among the grotesque Saurians, the huge reptilian brutes of the Jurassic times. He may even now, if I may use the phrase, be wandering on some plesiosaurus, haunted oolitic coral reef, or beside the lonely saline seas of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved, into the manhood of the race, for I for my own part cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord, are indeed man's culminating time, I say for my own part. He I know, for the question had been discussed among us long before the time machine was made, thought but cheerlessly of the advancement of mankind, and saw in the growing pile of civilization only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so, but to me the future is still black and blank, is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me for my comfort two strange white flowers, shriveled now and brown and flat and brittle, to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+      "raw_transcript_sha256": "1fba87ba2b5225810bf0db8f17b418756dd4a39233a62e93a737f5a0a94c04c3",
+      "evaluated_transcript": "One cannot choose but wonder, will he ever return? It may be that he swept back into the past and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone, into the abysses of the Cretaceous Sea, or among the grotesque Saurians, the huge reptilian brutes of the Jurassic times. He may even now, if I may use the phrase, be wandering on some plesiosaurus, haunted oolitic coral reef, or beside the lonely saline seas of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved, into the manhood of the race, for I for my own part cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord, are indeed man's culminating time, I say for my own part. He I know, for the question had been discussed among us long before the time machine was made, thought but cheerlessly of the advancement of mankind, and saw in the growing pile of civilisation only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so, but to me the future is still black and blank, is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me for my comfort two strange white flowers, shrivelled now and brown and flat and brittle, to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+      "evaluated_transcript_sha256": "8355ae203c671766461737a5d3465f2803ad7dfaa5efd237da9a2862ae5d8b8e",
+      "source_equivalences_applied": [
+        {
+          "pattern": "\\bcivilization\\b",
+          "replacement": "civilisation",
+          "expected_count_when_observed": 1,
+          "reason": "American ASR spelling for source British spelling civilisation",
+          "observed_count": 1
+        },
+        {
+          "pattern": "\\bshriveled\\b",
+          "replacement": "shrivelled",
+          "expected_count_when_observed": 1,
+          "reason": "American ASR spelling for source British spelling shrivelled",
+          "observed_count": 1
+        }
+      ],
+      "substantive_normalization_performed": false,
+      "unexpected_speech_deleted_or_normalized": false,
+      "score": 10.0,
+      "coverage": 1.0,
+      "precision": 1.0,
+      "source_token_count": 286,
+      "transcript_token_count": 286,
+      "equal_token_count": 286,
+      "first_words_match": true,
+      "last_words_match": true,
+      "ordered_content_integrity_pass": true,
+      "no_missing_content": true,
+      "no_duplicate_content": true,
+      "no_reordered_content": true,
+      "no_unexpected_content": true,
+      "missing_tokens": {},
+      "duplicate_tokens": {},
+      "unexpected_tokens": {},
+      "ordered_alignment_operations": [],
+      "pass": true
+    }
+  ]
+}

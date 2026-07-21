@@ -5,6 +5,8 @@
   "verification_status": "approved",
   "qa_status": "QA_PASSED",
   "approval_scope": "historical_admin_import_reconstruction",
+  "audiobook_use_approved": true,
+  "audiobook_use_basis": "The controlled public-domain text may be used to create a new narration; this approval does not approve any recording or public audiobook release.",
   "audio_public_release": "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
   "allowCheckout": false,
   "allowPayment": false,

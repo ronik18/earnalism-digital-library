@@ -641,6 +641,40 @@
           "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_bf_emma_asr_repair_v1.json"
         ],
         "next_action": "Do not repeat the closed af_bella or bf_emma fingerprints. Keep audio hidden; the Yorkshire dialect passage needs a genuinely different provider/voice family or source-bound narration before any new representative listening or full-title work."
+      },
+      "the_time_machine": {
+        "source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
+        "voice": "bm_george",
+        "voice_sha256": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+        "attempt_fingerprint": "9d59dee17c4ddd2bf2ba1e67b0e3dc80b9dd4a2c95785147869e3a305d75b7e3",
+        "asr_repair_fingerprint": "058de6aa9d7477d7d8eb95dcdf836641dd09a7c2287f2bf7184fb03da13dfa15",
+        "targeted_resynthesis_fingerprint": "9c52c3779dbcea0bb395d4de028b52da13a470838b19d61f0113ac339859ab36",
+        "targeted_audio_sha256": {
+          "eloi_first_contact": "748009a828afbcd1684941932a1d8d04acd66e81796103364d2d120969f20c39",
+          "epilogue_tenderness": "3449334838de2cf2b93249da265a6fb35dd65aa5f00d67ecb2ccfe39fcc49b31"
+        },
+        "retained_wav_repair_asr_scores": [10.0, 9.9459, 10.0, 9.9649],
+        "retained_wav_repair_coverages": [1.0, 0.9928, 1.0, 0.993],
+        "targeted_final_asr_scores": [10.0, 9.964, 10.0, 10.0],
+        "targeted_final_coverages": [1.0, 0.9964, 1.0, 1.0],
+        "ordered_content_integrity_pass": false,
+        "passed_passages": [
+          "opening_exposition",
+          "morlock_darkness",
+          "epilogue_tenderness"
+        ],
+        "failed_passage": "eloi_first_contact",
+        "failed_passage_reason": "source conjunction and decoded as am in both unprompted beam and greedy arms",
+        "listening_qa_run": false,
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "completed_attempts_must_not_repeat": true,
+        "evidence_paths": [
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_representative_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_asr_repair_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_targeted_resynthesis_v2.json"
+        ],
+        "next_action": "Do not repeat the closed bm_george synthesis, ASR-repair, or targeted-resynthesis fingerprints. Keep audio hidden and use a checksum-distinct voice/provider family or source-bound narration before any listening or full-title work."
       }
     },
     "openai": {

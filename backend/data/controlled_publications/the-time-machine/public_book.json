@@ -4,6 +4,8 @@
   "title": "The Time Machine",
   "subtitle": "An Invention",
   "author": "H. G. Wells",
+  "author_death_year": 1946,
+  "original_publication_year": 1895,
   "category_slug": "science-fiction",
   "short_description": "A foundational science-fiction novella about time travel, evolution, class, and the distant future.",
   "description": "This cleaned text-only public-domain edition is prepared for structured digital reading on Earnalism.",

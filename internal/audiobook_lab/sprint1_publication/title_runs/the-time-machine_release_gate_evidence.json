@@ -1,25 +1,124 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-07-12T19:35:15Z",
+  "schema_version": 2,
+  "generated_at": "2026-07-20T21:49:37Z",
   "slug": "the-time-machine",
   "title": "The Time Machine",
+  "author": "H. G. Wells",
   "language": "English",
-  "assigned_lane": {
-    "lane": 4,
-    "role": "Medium/Long English Lane",
-    "agent_id": "019f57d2-7aed-7840-95b5-642a9a5ed578",
-    "agent_nickname": "Goodall"
-  },
   "publicly_rendered_book": "Yes",
   "publicly_available_audiobook": "No",
-  "quality_score": "NOT_RUN",
-  "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
-  "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
-  "estimated_remaining_cost_usd": 1.797,
-  "evidence_path": "internal/audiobook_lab/sprint1_publication/sanitized_text_reports/the-time-machine.json",
-  "next_action": "Complete reader PR if applicable, then run the title's bounded audio repair path after runtime gates are supplied",
-  "next_command": "python3 scripts/book_production_workflow.py --manifest ./book_import_manifest.batch-1.json --book-slug the-time-machine --api-url https://api.theearnalism.com --frontend-url https://theearnalism.com",
-  "provider_calls_ran_this_sprint": false,
+  "reader_enabled": true,
+  "rights_status": "PASS",
+  "rights_basis": {
+    "author_death_year": 1946,
+    "original_publication_year": 1895,
+    "controlled_text_public_domain": true,
+    "model_and_voicepack_license": "Apache-2.0",
+    "voice_file_sha256": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b"
+  },
+  "cover_status": "PASS_DIRECT_FRONT_BACK",
+  "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+  "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566887/earnalism/covers/back/back_cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+  "canonical_source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
+  "quality_score": "OBJECTIVE_FAIL",
+  "classification": "REPRESENTATIVE_OBJECTIVE_FAIL_CLOSED",
+  "release_gate_state": "REPRESENTATIVE_OBJECTIVE_FAIL_CLOSED",
+  "exact_blocker": "ELOI_I_AND_DECODED_AS_I_AM_AFTER_TARGETED_RESYNTHESIS_BM_GEORGE_CONFIGURATION_CLOSED",
+  "can_publish_audio_now": false,
+  "provider_attempts": [
+    {
+      "provider": "kokoro",
+      "model": "Kokoro-82M 0.9.4",
+      "voice": "bm_george",
+      "profile": "time-machine-bm-george-v1",
+      "scope": "representative_audition",
+      "speaking_rate": 0.96,
+      "language": "English",
+      "source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
+      "attempt_fingerprint": "9d59dee17c4ddd2bf2ba1e67b0e3dc80b9dd4a2c95785147869e3a305d75b7e3",
+      "status": "PRIVATE_REPRESENTATIVE_ASR_REPAIR_FAILED_FINGERPRINT_CLOSED",
+      "failed": true,
+      "scores": [10.0, 9.9459, 10.0, 9.9649],
+      "minimum_observed_score": 9.9459,
+      "fatal_flags": [],
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_asr_repair_v1.json"
+    },
+    {
+      "provider": "kokoro",
+      "model": "Kokoro-82M 0.9.4",
+      "voice": "bm_george",
+      "profile": "time-machine-bm-george-two-passage-targeted-v2",
+      "scope": "targeted_representative_resynthesis",
+      "speaking_rate": 0.94,
+      "language": "English",
+      "source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
+      "prepared_text_sha256": {
+        "eloi_first_contact": "0d5edcf0730963c6cfbccff7851061367c9eaf10de572580da9c992aa7dbe9ce",
+        "epilogue_tenderness": "4eb253296d579a566e2587ebe611e9be92104d15e52b378a85859567843f01fc"
+      },
+      "text_prep_variant": "lexical_preserving_two_passage_punctuation_v2",
+      "attempt_fingerprint": "9c52c3779dbcea0bb395d4de028b52da13a470838b19d61f0113ac339859ab36",
+      "status": "PRIVATE_TARGETED_RESYNTHESIS_FAILED_FINGERPRINT_CLOSED",
+      "failed": true,
+      "scores": [10.0, 9.964, 10.0, 10.0],
+      "minimum_observed_score": 9.964,
+      "fatal_flags": [],
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_targeted_resynthesis_v2.json"
+    }
+  ],
+  "closed_non_provider_fingerprints": [
+    "058de6aa9d7477d7d8eb95dcdf836641dd09a7c2287f2bf7184fb03da13dfa15"
+  ],
+  "representative_passage_results": {
+    "bm_george_asr_repair": {
+      "asr_scores": [10.0, 9.9459, 10.0, 9.9649],
+      "source_coverages": [1.0, 0.9928, 1.0, 0.993],
+      "ordered_content_integrity_pass": false,
+      "failed_passages": {
+        "eloi_first_contact": "source I and decoded as ironing across all three decoder arms",
+        "epilogue_tenderness": "source plesiosaurus and flat omitted across the retained-audio decoder bakeoff"
+      }
+    },
+    "bm_george_targeted_resynthesis": {
+      "asr_scores": [10.0, 9.964, 10.0, 10.0],
+      "source_coverages": [1.0, 0.9964, 1.0, 1.0],
+      "ordered_content_integrity_pass": false,
+      "passed_passages": [
+        "opening_exposition",
+        "morlock_darkness",
+        "epilogue_tenderness"
+      ],
+      "failed_passage": "eloi_first_contact",
+      "failed_passage_reason": "source conjunction and decoded as am in both unprompted beam and greedy arms"
+    }
+  },
+  "targeted_private_audio": [
+    {
+      "passage_id": "eloi_first_contact",
+      "audio_sha256": "748009a828afbcd1684941932a1d8d04acd66e81796103364d2d120969f20c39",
+      "size_bytes": 3878444,
+      "duration_seconds": 80.8,
+      "public": false
+    },
+    {
+      "passage_id": "epilogue_tenderness",
+      "audio_sha256": "3449334838de2cf2b93249da265a6fb35dd65aa5f00d67ecb2ccfe39fcc49b31",
+      "size_bytes": 4587644,
+      "duration_seconds": 95.575,
+      "public": false
+    }
+  ],
+  "listening_qa_run": false,
+  "full_title_generated": false,
+  "measured_full_title_sync_run": false,
+  "upload_performed": false,
+  "endpoint_gate_run": false,
+  "browser_gate_run": false,
   "release_gate_mutated_this_sprint": false,
-  "public_audio_approved_this_sprint": false
+  "public_audio_approved_this_sprint": false,
+  "provider_calls_ran_this_sprint": false,
+  "estimated_provider_cost_usd": 0.0,
+  "paid_tts_lock_unchanged": true,
+  "next_action": "Do not repeat the closed bm_george synthesis, ASR-repair, or targeted-resynthesis fingerprints. Keep audio hidden and use a checksum-distinct voice/provider family or source-bound narration before any listening or full-title work.",
+  "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_autonomous_go_live_loop.py --asset-root /private/tmp/earnalism-sprint1-distinct-voice --registry-only"
 }

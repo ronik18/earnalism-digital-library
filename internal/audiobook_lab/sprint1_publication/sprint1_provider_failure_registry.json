@@ -1884,27 +1884,149 @@
       "slug": "the-time-machine",
       "title": "The Time Machine",
       "language": "English",
-      "classification": "INCOMPLETE_FAIL_CLOSED",
-      "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
+      "classification": "REPRESENTATIVE_OBJECTIVE_FAIL_CLOSED",
+      "release_gate_state": "REPRESENTATIVE_OBJECTIVE_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_release_gate_evidence.json",
-      "decision_history_classification": null,
-      "attempts": [],
-      "blocked_attempt_fingerprints": [],
-      "blocked_registry_identities": [],
-      "distinct_failed_provider_voice_families": [],
-      "distinct_failed_family_count": 0,
-      "automated_tts_exhausted": false,
+      "decision_history_classification": "KOKORO_BM_GEORGE_REPRESENTATIVE_OBJECTIVE_FAIL_CONFIGURATION_CLOSED",
+      "attempts": [
+        {
+          "provider": "kokoro",
+          "model": "Kokoro-82M 0.9.4",
+          "voice": "bm_george",
+          "style": null,
+          "style_profile": "time-machine-bm-george-two-passage-targeted-v2",
+          "scope": "targeted_representative_resynthesis",
+          "speaking_rate": 0.94,
+          "language": "English",
+          "text_sha256": null,
+          "prepared_text_sha256": {
+            "eloi_first_contact": "0d5edcf0730963c6cfbccff7851061367c9eaf10de572580da9c992aa7dbe9ce",
+            "epilogue_tenderness": "4eb253296d579a566e2587ebe611e9be92104d15e52b378a85859567843f01fc"
+          },
+          "source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
+          "prep_sha256": null,
+          "prep_identity": null,
+          "text_prep_variant": "lexical_preserving_two_passage_punctuation_v2",
+          "postprocess_sha256": null,
+          "postprocess_identity": null,
+          "postprocess_variant": null,
+          "status": "PRIVATE_TARGETED_RESYNTHESIS_FAILED_FINGERPRINT_CLOSED",
+          "failed": true,
+          "minimum_observed_score": 9.964,
+          "confidence": null,
+          "fatal_flags": [],
+          "scores": [
+            10.0,
+            9.964,
+            10.0,
+            10.0
+          ],
+          "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_targeted_resynthesis_v2.json",
+          "evidence_kind": "canonical_title_release_evidence",
+          "family": "kokoro:kokoro-82m 0.9.4:bm_george:time-machine-bm-george-two-passage-targeted-v2:lexical_preserving_two_passage_punctuation_v2:unknown:targeted_representative_resynthesis",
+          "registry_identity_sha256": "5549a87695fc73509326f27798aead1d1dab591bd380af1ee3dc961fa37db9b6",
+          "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
+          "attempt_fingerprint": "9c52c3779dbcea0bb395d4de028b52da13a470838b19d61f0113ac339859ab36",
+          "fingerprint_type": "full_sha256",
+          "fingerprint_is_evidence_native": true,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "fingerprint_provenance": {
+            "source": "canonical_title_release_evidence",
+            "field": "attempt_fingerprint",
+            "evidence_native": true,
+            "provider_native": false,
+            "synthetic": false
+          },
+          "evidence_paths": [
+            "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_targeted_resynthesis_v2.json"
+          ],
+          "evidence_kinds": [
+            "canonical_title_release_evidence"
+          ]
+        },
+        {
+          "provider": "kokoro",
+          "model": "Kokoro-82M 0.9.4",
+          "voice": "bm_george",
+          "style": null,
+          "style_profile": "time-machine-bm-george-v1",
+          "scope": "representative_audition",
+          "speaking_rate": 0.96,
+          "language": "English",
+          "text_sha256": null,
+          "prepared_text_sha256": null,
+          "source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
+          "prep_sha256": null,
+          "prep_identity": null,
+          "text_prep_variant": null,
+          "postprocess_sha256": null,
+          "postprocess_identity": null,
+          "postprocess_variant": null,
+          "status": "PRIVATE_REPRESENTATIVE_ASR_REPAIR_FAILED_FINGERPRINT_CLOSED",
+          "failed": true,
+          "minimum_observed_score": 9.9459,
+          "confidence": null,
+          "fatal_flags": [],
+          "scores": [
+            10.0,
+            9.9459,
+            10.0,
+            9.9649
+          ],
+          "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_asr_repair_v1.json",
+          "evidence_kind": "canonical_title_release_evidence",
+          "family": "kokoro:kokoro-82m 0.9.4:bm_george:time-machine-bm-george-v1:unknown:unknown:representative_audition",
+          "registry_identity_sha256": "893b203c32be88ffaa6ee80b0469a08cfa31f7e8590ac29354facb0daef715d3",
+          "registry_identity_provenance": "DERIVED_FOR_REGISTRY_DEDUPLICATION_NOT_PROVIDER_NATIVE",
+          "attempt_fingerprint": "9d59dee17c4ddd2bf2ba1e67b0e3dc80b9dd4a2c95785147869e3a305d75b7e3",
+          "fingerprint_type": "full_sha256",
+          "fingerprint_is_evidence_native": true,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "fingerprint_provenance": {
+            "source": "canonical_title_release_evidence",
+            "field": "attempt_fingerprint",
+            "evidence_native": true,
+            "provider_native": false,
+            "synthetic": false
+          },
+          "evidence_paths": [
+            "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_asr_repair_v1.json"
+          ],
+          "evidence_kinds": [
+            "canonical_title_release_evidence"
+          ]
+        }
+      ],
+      "blocked_attempt_fingerprints": [
+        "9c52c3779dbcea0bb395d4de028b52da13a470838b19d61f0113ac339859ab36",
+        "9d59dee17c4ddd2bf2ba1e67b0e3dc80b9dd4a2c95785147869e3a305d75b7e3"
+      ],
+      "blocked_registry_identities": [
+        "5549a87695fc73509326f27798aead1d1dab591bd380af1ee3dc961fa37db9b6",
+        "893b203c32be88ffaa6ee80b0469a08cfa31f7e8590ac29354facb0daef715d3"
+      ],
+      "distinct_failed_provider_voice_families": [
+        "kokoro:kokoro-82m 0.9.4:bm_george:time-machine-bm-george-two-passage-targeted-v2:lexical_preserving_two_passage_punctuation_v2:unknown:targeted_representative_resynthesis",
+        "kokoro:kokoro-82m 0.9.4:bm_george:time-machine-bm-george-v1:unknown:unknown:representative_audition"
+      ],
+      "distinct_failed_family_count": 2,
+      "automated_tts_exhausted": true,
       "exhaustion_evidence": {
         "external_audio_terminal_state": false,
-        "failed_family_threshold_met": false,
+        "failed_family_threshold_met": true,
         "approved_release_override": false
       },
       "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
-      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "exact_blocker": "ELOI_I_AND_DECODED_AS_I_AM_AFTER_TARGETED_RESYNTHESIS_BM_GEORGE_CONFIGURATION_CLOSED",
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
-        "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_release_gate_evidence.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_asr_repair_v1.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_targeted_resynthesis_v2.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_release_gate_evidence.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
       ],
       "retry_policy": "DO_NOT_REPEAT_BLOCKED_EVIDENCE_FINGERPRINTS_OR_IDENTITIES"
     },

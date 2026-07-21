@@ -1,0 +1,555 @@
+{
+  "schema": "earnalism.kokoro.time_machine_representative.v1",
+  "generated_at": "2026-07-20T15:55:31Z",
+  "status": "PRIVATE_REPRESENTATIVE_PILOT_REJECTED",
+  "scope": {
+    "slug": "the-time-machine",
+    "title": "The Time Machine",
+    "author": "H. G. Wells",
+    "language": "eng",
+    "profile": "time-machine-bm-george-v1",
+    "passage_count": 4,
+    "characters": 4681,
+    "representative_only": true,
+    "full_title_generated": false
+  },
+  "source": {
+    "chapter_path": "/private/tmp/earnalism-sprint1-distinct-voice/data/controlled_publications/the-time-machine/chapters",
+    "source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
+    "passages": [
+      {
+        "passage_id": "opening_exposition",
+        "characters": 745,
+        "text_sha256": "22dc5f715d1f9ecf4a32b6a92c57d97cd6f86c39c70d7b997c453ec197eb82c2"
+      },
+      {
+        "passage_id": "eloi_first_contact",
+        "characters": 1475,
+        "text_sha256": "6262bd33a6ab3f8e742c55372b2eb4421ca84ec75e123c12ec36528c36a62077"
+      },
+      {
+        "passage_id": "morlock_darkness",
+        "characters": 933,
+        "text_sha256": "f1a209de898abbbaf96624ac4ca16d06f9f065bd2d6137a995586dc2610ee084"
+      },
+      {
+        "passage_id": "epilogue_tenderness",
+        "characters": 1528,
+        "text_sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b"
+      }
+    ],
+    "chapter_count": 16,
+    "source_characters": 181242,
+    "root_backend_bound_files_match": true,
+    "bound_file_sha256": {
+      "approval_evidence.json": "3f39a3de047cc23fe9518c948711a5b81050a85833082e662d1cd89d40375a4c",
+      "public_book.json": "290154ee5771ebd684eceef3f026de18a1a0b79ac7f08503763488ab07531abc",
+      "source_evidence.json": "551ffed0f08c0e120cab9ae91cb4adfac8003e25f739d29a7b53c05ff269d0c5"
+    },
+    "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566866/earnalism/covers/front/cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png",
+    "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779566887/earnalism/covers/back/back_cover_d4cb4472-7e0a-4bad-ab89-05f7d7ace821.png"
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "package_version": "0.9.4",
+    "model_repo": "hexgrad/Kokoro-82M",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "bm_george",
+    "voice_sha256": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+    "speed": 0.96,
+    "random_seed": 2026072006,
+    "sample_rate_hz": 24000,
+    "pronunciation_overrides": {
+      "Morlocks": "mˈɔːlɒks",
+      "Weena": "wˈiːnə",
+      "civilisation": "sˌɪvɪlaɪzˈeɪʃən"
+    },
+    "g2p_fallback_enabled": false,
+    "attempt_fingerprint": "9d59dee17c4ddd2bf2ba1e67b0e3dc80b9dd4a2c95785147869e3a305d75b7e3",
+    "known_failed_fingerprint_count": 0,
+    "kokoro_lang_code": "b",
+    "g2p_british": true
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "ordered_content_integrity_required": true
+  },
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/bm_george.pt",
+      "sha256": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+      "size_bytes": 523430
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "python_executable": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "deterministic_algorithms_required": true,
+    "torch_thread_count": 1,
+    "offline_local_artifacts_only": true
+  },
+  "rights": {
+    "model_and_voicepack_license": "Apache-2.0",
+    "model_card_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/README.md",
+    "model_license_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/COPYING",
+    "voice_file_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/voices/bm_george.pt",
+    "controlled_text_public_domain": true,
+    "author_death_year": 1946,
+    "author_death_year_evidence_url": "https://www.gutenberg.org/ebooks/35",
+    "original_publication_year": 1895,
+    "original_publication_evidence_url": "https://www.gutenberg.org/ebooks/35",
+    "private_audition_allowed": true,
+    "production_release_approved": false,
+    "public_disclosure_required_if_later_approved": "AI voice"
+  },
+  "safety": {
+    "provider_calls": 0,
+    "estimated_tts_provider_cost_usd": 0.0,
+    "paid_tts_lock": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_touched": false,
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-time-machine/f3ff3571-bm-george-representative-v1",
+    "audio_generated": true,
+    "listening_provider_calls": 0,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false,
+    "paid_tts_lock_before": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_after": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_unchanged": true
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_OBJECTIVE_OR_ASR_GATE_FAILED",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "TIME_MACHINE_TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN",
+    "OWNER_10_TARGET_NOT_VERIFIED"
+  ],
+  "g2p_preflight_evidence": [
+    {
+      "passage_id": "opening_exposition",
+      "source_text_sha256": "22dc5f715d1f9ecf4a32b6a92c57d97cd6f86c39c70d7b997c453ec197eb82c2",
+      "phoneme_sha256": "c961205cd79814fc486a97d0ed4a7b275f26fcc34deedb49992ab8e90f9a5403",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    },
+    {
+      "passage_id": "eloi_first_contact",
+      "source_text_sha256": "6262bd33a6ab3f8e742c55372b2eb4421ca84ec75e123c12ec36528c36a62077",
+      "phoneme_sha256": "b27ee448fda845f4eadb916610c876d2549aa239a77710b74cb1dcb27bf4a25a",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    },
+    {
+      "passage_id": "morlock_darkness",
+      "source_text_sha256": "f1a209de898abbbaf96624ac4ca16d06f9f065bd2d6137a995586dc2610ee084",
+      "phoneme_sha256": "89b4e71933964121e6ec8e61b671b570bf4319ea564610702c34a427d4508302",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    },
+    {
+      "passage_id": "epilogue_tenderness",
+      "source_text_sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b",
+      "phoneme_sha256": "21ec5c946aa59e14c0eb5f798c382fbcc3035a99451b2f9297f022bb7da37793",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    }
+  ],
+  "samples": [
+    {
+      "passage_id": "opening_exposition",
+      "source_text_sha256": "22dc5f715d1f9ecf4a32b6a92c57d97cd6f86c39c70d7b997c453ec197eb82c2",
+      "characters": 745,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-time-machine/f3ff3571-bm-george-representative-v1/opening_exposition.wav",
+      "phoneme_sha256": "d7c4121417662887b4e07bd247d7d9cccfa31ae92bd6ef6d8bf22c4472fd6b78",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 47.725,
+      "size_bytes": 2290844,
+      "audio_sha256": "1a45c3b5ba1c06435ad66bbf00fb4c98fc46628357175990f03d2b9421c0e0e9",
+      "peak_fraction": 0.406629,
+      "rms_fraction": 0.0583,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "eloi_first_contact",
+      "source_text_sha256": "6262bd33a6ab3f8e742c55372b2eb4421ca84ec75e123c12ec36528c36a62077",
+      "characters": 1475,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-time-machine/f3ff3571-bm-george-representative-v1/eloi_first_contact.wav",
+      "phoneme_sha256": "e53fc0e501d6d914b69d2355ce950c9e2a7d3966040e18f0bc51415030a3207b",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 79.875,
+      "size_bytes": 3834044,
+      "audio_sha256": "f45ade35e35fe588e993a0ee60f62b7951c92d8fe9b2d3a3c976acc811860ce5",
+      "peak_fraction": 0.381664,
+      "rms_fraction": 0.055876,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "morlock_darkness",
+      "source_text_sha256": "f1a209de898abbbaf96624ac4ca16d06f9f065bd2d6137a995586dc2610ee084",
+      "characters": 933,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-time-machine/f3ff3571-bm-george-representative-v1/morlock_darkness.wav",
+      "phoneme_sha256": "85bb56ec0b60ebd47d4a14503b50971cf705eea03913b378f517f7faf3e8df59",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 52.475,
+      "size_bytes": 2518844,
+      "audio_sha256": "ee0c32a3466ce3d30bc178cf9c70d23c012fc28452c742f4e5536213e12157cb",
+      "peak_fraction": 0.399335,
+      "rms_fraction": 0.056529,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "epilogue_tenderness",
+      "source_text_sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b",
+      "characters": 1528,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-time-machine/f3ff3571-bm-george-representative-v1/epilogue_tenderness.wav",
+      "phoneme_sha256": "82b1545ebdfba41e33962c3ccb481aaa0fbabcb348260f9834162b7dc1b767dd",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 93.875,
+      "size_bytes": 4506044,
+      "audio_sha256": "6c920ab0557a16fd1fd5c5aaabd9e020a3120f32c1a176f8f7e858704fcd67a1",
+      "peak_fraction": 0.403363,
+      "rms_fraction": 0.056985,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    }
+  ],
+  "asr": {
+    "status": "FAIL",
+    "mode": "ASR_REVERIFY_EXISTING_AUDIO_ONLY",
+    "config_fingerprint": "54744926c96997eeaaf9530369e1dc38b454c21ad72554af33abe6b1a6d06577",
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "audio_derived": true,
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "prompt_policy": {
+      "opening_exposition": "canonical_vocabulary_prompt",
+      "eloi_first_contact": "canonical_vocabulary_prompt",
+      "morlock_darkness": "canonical_vocabulary_prompt",
+      "epilogue_tenderness": "canonical_vocabulary_prompt"
+    },
+    "source_equivalence_policy": {
+      "opening_exposition": [],
+      "eloi_first_contact": [],
+      "morlock_darkness": [],
+      "epilogue_tenderness": []
+    },
+    "unexpected_speech_may_be_normalized_or_discarded": false,
+    "reports": [
+      {
+        "passage_id": "opening_exposition",
+        "audio_sha256": "1a45c3b5ba1c06435ad66bbf00fb4c98fc46628357175990f03d2b9421c0e0e9",
+        "source_text_sha256": "22dc5f715d1f9ecf4a32b6a92c57d97cd6f86c39c70d7b997c453ec197eb82c2",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "c9933e81450df50ab193738a779a4d89e757804d222b0b224e007282efd3d8e2",
+        "transcript": "The Time Traveller, for so it will be convenient to speak of him, was expounding a recondite matter to us. His pale grey eyes shone and twinkled, and his usually pale face was flushed and animated. The fire burnt brightly, and the soft radiance of the incandescent lights in the lilies of silver caught the bubbles that flashed and passed in our glasses. Our chairs, being his patents, embraced and caressed us rather than submitted to be sat upon, and there was that luxurious after-dinner atmosphere when thought runs gracefully free of the trammels of precision, and he put it to us in this way, marking the points with a lean forefinger, as we sat and lazily admired his earnestness over this new paradox, as we thought it and his fecundity.",
+        "transcript_sha256": "f848ac024fc49b373e71f40c5472efbb14d58a9f62061d56c7d964cf384c7fd0",
+        "evaluated_transcript": "The Time Traveller, for so it will be convenient to speak of him, was expounding a recondite matter to us. His pale grey eyes shone and twinkled, and his usually pale face was flushed and animated. The fire burnt brightly, and the soft radiance of the incandescent lights in the lilies of silver caught the bubbles that flashed and passed in our glasses. Our chairs, being his patents, embraced and caressed us rather than submitted to be sat upon, and there was that luxurious after-dinner atmosphere when thought runs gracefully free of the trammels of precision, and he put it to us in this way, marking the points with a lean forefinger, as we sat and lazily admired his earnestness over this new paradox, as we thought it and his fecundity.",
+        "evaluated_transcript_sha256": "f848ac024fc49b373e71f40c5472efbb14d58a9f62061d56c7d964cf384c7fd0",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.37567,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 132,
+        "transcript_token_count": 132,
+        "equal_token_count": 132,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      },
+      {
+        "passage_id": "eloi_first_contact",
+        "audio_sha256": "f45ade35e35fe588e993a0ee60f62b7951c92d8fe9b2d3a3c976acc811860ce5",
+        "source_text_sha256": "6262bd33a6ab3f8e742c55372b2eb4421ca84ec75e123c12ec36528c36a62077",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "c9933e81450df50ab193738a779a4d89e757804d222b0b224e007282efd3d8e2",
+        "transcript": "In another moment we were standing face to face, ironing this fragile thing out of futurity. He came straight up to me and laughed into my eyes. The absence from his bearing of any sign of fear struck me at once. Then he turned to the two others who were following him and spoke to them in a strange and very sweet and liquid tongue. There were others coming, and presently a little group of perhaps eight or ten of these exquisite creatures were about me. One of them addressed me. It came into my head, oddly enough, that my voice was too harsh and deep for them, so I shook my head and pointing to my ears shook it again. He came a step forward, hesitated, and then touched my hand. Then I felt other soft little tentacles upon my back and shoulders. They wanted to make sure I was real. There was nothing in this at all alarming. Indeed, there was something in these pretty little people that inspired confidence, a graceful gentleness, a certain childlike ease. And besides, they looked so frail that I could fancy myself flinging the whole dozen of them about like nine pins, but I made a sudden motion to warn them when I saw their little pink hands feeling at the time machine. Happily then, when it was not too late, I thought of a danger I had hitherto forgotten, and reaching over the bars of the machine, I unscrewed the little levers that would set it in motion and put these in my pocket. Then I turned again to see what I could do in the way of communication.",
+        "transcript_sha256": "f4cdd5c225e1fc328df9d59b00a97e39eb5dde7a556b00c529bfdc319927bae6",
+        "evaluated_transcript": "In another moment we were standing face to face, ironing this fragile thing out of futurity. He came straight up to me and laughed into my eyes. The absence from his bearing of any sign of fear struck me at once. Then he turned to the two others who were following him and spoke to them in a strange and very sweet and liquid tongue. There were others coming, and presently a little group of perhaps eight or ten of these exquisite creatures were about me. One of them addressed me. It came into my head, oddly enough, that my voice was too harsh and deep for them, so I shook my head and pointing to my ears shook it again. He came a step forward, hesitated, and then touched my hand. Then I felt other soft little tentacles upon my back and shoulders. They wanted to make sure I was real. There was nothing in this at all alarming. Indeed, there was something in these pretty little people that inspired confidence, a graceful gentleness, a certain childlike ease. And besides, they looked so frail that I could fancy myself flinging the whole dozen of them about like nine pins, but I made a sudden motion to warn them when I saw their little pink hands feeling at the time machine. Happily then, when it was not too late, I thought of a danger I had hitherto forgotten, and reaching over the bars of the machine, I unscrewed the little levers that would set it in motion and put these in my pocket. Then I turned again to see what I could do in the way of communication.",
+        "evaluated_transcript_sha256": "f4cdd5c225e1fc328df9d59b00a97e39eb5dde7a556b00c529bfdc319927bae6",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.536383,
+        "score": 9.8921,
+        "coverage": 0.9892,
+        "precision": 0.9892,
+        "source_token_count": 278,
+        "transcript_token_count": 278,
+        "equal_token_count": 275,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": false,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "i": 1,
+          "and": 1,
+          "ninepins": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "ironing": 1,
+          "nine": 1,
+          "pins": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              9,
+              11
+            ],
+            "transcript_range": [
+              9,
+              10
+            ],
+            "source_tokens": [
+              "i",
+              "and"
+            ],
+            "transcript_tokens": [
+              "ironing"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              199,
+              200
+            ],
+            "transcript_range": [
+              198,
+              200
+            ],
+            "source_tokens": [
+              "ninepins"
+            ],
+            "transcript_tokens": [
+              "nine",
+              "pins"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "morlock_darkness",
+        "audio_sha256": "ee0c32a3466ce3d30bc178cf9c70d23c012fc28452c742f4e5536213e12157cb",
+        "source_text_sha256": "f1a209de898abbbaf96624ac4ca16d06f9f065bd2d6137a995586dc2610ee084",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "c9933e81450df50ab193738a779a4d89e757804d222b0b224e007282efd3d8e2",
+        "transcript": "For some way I heard nothing but the crackling twigs under my feet, the faint rustle of the breeze above, and my own breathing and the throb of the blood vessels in my ears. Then I seemed to know of a pattering behind me. I pushed on grimly. The pattering grew more distinct, and then I caught the same queer sound and voices I had heard in the underworld. There were evidently several of the Morlocks, and they were closing in upon me. Indeed, in another minute I felt a tug at my coat, then something at my arm, and Weena shivered violently and became quite still. It was time for a match, but to get one I must put her down. I did so, and as I fumbled with my pocket, a struggle began in the darkness about my knees, perfectly silent on her part and with the same peculiar cooing sounds from the Morlocks. Soft little hands, too, were creeping over my coat and back, touching even my neck. then the match scratched and fizzed.",
+        "transcript_sha256": "d7ae08debe1e46c0393e4d23e8dcd37a791d1950143b71802df30545a4f9fd5b",
+        "evaluated_transcript": "For some way I heard nothing but the crackling twigs under my feet, the faint rustle of the breeze above, and my own breathing and the throb of the blood vessels in my ears. Then I seemed to know of a pattering behind me. I pushed on grimly. The pattering grew more distinct, and then I caught the same queer sound and voices I had heard in the underworld. There were evidently several of the Morlocks, and they were closing in upon me. Indeed, in another minute I felt a tug at my coat, then something at my arm, and Weena shivered violently and became quite still. It was time for a match, but to get one I must put her down. I did so, and as I fumbled with my pocket, a struggle began in the darkness about my knees, perfectly silent on her part and with the same peculiar cooing sounds from the Morlocks. Soft little hands, too, were creeping over my coat and back, touching even my neck. then the match scratched and fizzed.",
+        "evaluated_transcript_sha256": "d7ae08debe1e46c0393e4d23e8dcd37a791d1950143b71802df30545a4f9fd5b",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.640313,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 177,
+        "transcript_token_count": 177,
+        "equal_token_count": 177,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      },
+      {
+        "passage_id": "epilogue_tenderness",
+        "audio_sha256": "6c920ab0557a16fd1fd5c5aaabd9e020a3120f32c1a176f8f7e858704fcd67a1",
+        "source_text_sha256": "ef675e8a4077b5e93c07f9e71102cf66ff51711a28be1ab22fef05bc1f78782b",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "c9933e81450df50ab193738a779a4d89e757804d222b0b224e007282efd3d8e2",
+        "transcript": "One cannot choose but wonder, will he ever return? It may be that he swept back into the past and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone, into the abysses of the Cretaceous Sea, or among the grotesque Saurians, the huge reptilian brutes of the Jurassic times. He may even now, if I may use the phrase, be wandering on some haunted oolitic coral reef or beside the lonely Saline seas of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved, into the manhood of the race? For I for my own part cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord are indeed man's culminating time. I say for my own part. He I know for the question had been discussed among us long before the time machine was made, thought but cheerlessly of the advancement of mankind, and saw in the growing pile of civilization only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so, but to me the future is still black and blank, is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me, for my comfort, two strange white flowers, shriveled now, and brown and flat and brittle, to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+        "transcript_sha256": "9bb6e4f9632f30f7482e0c69ee7dbb2e9450d12e71f38139824cfa06abfe66ad",
+        "evaluated_transcript": "One cannot choose but wonder, will he ever return? It may be that he swept back into the past and fell among the blood-drinking, hairy savages of the Age of Unpolished Stone, into the abysses of the Cretaceous Sea, or among the grotesque Saurians, the huge reptilian brutes of the Jurassic times. He may even now, if I may use the phrase, be wandering on some haunted oolitic coral reef or beside the lonely Saline seas of the Triassic Age. Or did he go forward, into one of the nearer ages, in which men are still men, but with the riddles of our own time answered and its wearisome problems solved, into the manhood of the race? For I for my own part cannot think that these latter days of weak experiment, fragmentary theory, and mutual discord are indeed man's culminating time. I say for my own part. He I know for the question had been discussed among us long before the time machine was made, thought but cheerlessly of the advancement of mankind, and saw in the growing pile of civilization only a foolish heaping that must inevitably fall back upon and destroy its makers in the end. If that is so, it remains for us to live as though it were not so, but to me the future is still black and blank, is a vast ignorance, lit at a few casual places by the memory of his story. And I have by me, for my comfort, two strange white flowers, shriveled now, and brown and flat and brittle, to witness that even when mind and strength had gone, gratitude and a mutual tenderness still lived on in the heart of man.",
+        "evaluated_transcript_sha256": "9bb6e4f9632f30f7482e0c69ee7dbb2e9450d12e71f38139824cfa06abfe66ad",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.374568,
+        "score": 9.9124,
+        "coverage": 0.9895,
+        "precision": 0.993,
+        "source_token_count": 286,
+        "transcript_token_count": 285,
+        "equal_token_count": 283,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "plesiosaurus": 1,
+          "civilisation": 1,
+          "shrivelled": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "civilization": 1,
+          "shriveled": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "delete",
+            "source_range": [
+              67,
+              68
+            ],
+            "transcript_range": [
+              67,
+              67
+            ],
+            "source_tokens": [
+              "plesiosaurus"
+            ],
+            "transcript_tokens": []
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              183,
+              184
+            ],
+            "transcript_range": [
+              182,
+              183
+            ],
+            "source_tokens": [
+              "civilisation"
+            ],
+            "transcript_tokens": [
+              "civilization"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              255,
+              256
+            ],
+            "transcript_range": [
+              254,
+              255
+            ],
+            "source_tokens": [
+              "shrivelled"
+            ],
+            "transcript_tokens": [
+              "shriveled"
+            ]
+          }
+        ],
+        "pass": false
+      }
+    ]
+  }
+}

@@ -1343,6 +1343,33 @@
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_af_bella_targeted_resynthesis_v2.json",
       "audiobook_next_action": "Do not repeat the closed AF Bella or BF Emma synthesis, ASR-repair, or targeted-resynthesis fingerprints. Keep audio hidden and use a genuinely different provider/voice family or source-bound narration for the Yorkshire dialect before any listening or full-title work."
     },
+    "the-time-machine": {
+      "latest_decision": "KOKORO_BM_GEORGE_REPRESENTATIVE_OBJECTIVE_FAIL_CONFIGURATION_CLOSED",
+      "decision_reason": "A three-arm retained-WAV repair left two exact passage failures. One lexical-preserving two-passage resynthesis recovered the scientific epilogue to 10.0/1.0, but Eloi source and still decoded as am in both unprompted beam and greedy arms. Three of four passages passed; listening was correctly skipped.",
+      "updated_at": "2026-07-20T21:49:37Z",
+      "language": "en",
+      "public_reader_status": "PUBLIC_READER",
+      "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
+      "canonical_source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
+      "kokoro_voice": "bm_george",
+      "kokoro_voice_sha256": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+      "kokoro_attempt_fingerprint": "9d59dee17c4ddd2bf2ba1e67b0e3dc80b9dd4a2c95785147869e3a305d75b7e3",
+      "kokoro_asr_repair_fingerprint": "058de6aa9d7477d7d8eb95dcdf836641dd09a7c2287f2bf7184fb03da13dfa15",
+      "kokoro_targeted_resynthesis_fingerprint": "9c52c3779dbcea0bb395d4de028b52da13a470838b19d61f0113ac339859ab36",
+      "kokoro_targeted_audio_sha256": {
+        "eloi_first_contact": "748009a828afbcd1684941932a1d8d04acd66e81796103364d2d120969f20c39",
+        "epilogue_tenderness": "3449334838de2cf2b93249da265a6fb35dd65aa5f00d67ecb2ccfe39fcc49b31"
+      },
+      "kokoro_final_asr_scores": [10.0, 9.964, 10.0, 10.0],
+      "kokoro_final_coverages": [1.0, 0.9964, 1.0, 1.0],
+      "kokoro_ordered_content_integrity_pass": false,
+      "kokoro_failed_passage": "eloi_first_contact",
+      "kokoro_listening_qa_run": false,
+      "kokoro_full_title_generated": false,
+      "completed_attempts_must_not_repeat": true,
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-time-machine_kokoro_bm_george_targeted_resynthesis_v2.json",
+      "audiobook_next_action": "Do not repeat the bm_george synthesis, ASR-repair, or targeted-resynthesis fingerprints. Keep audio hidden and use a checksum-distinct voice/provider family or source-bound narration before listening or full-title work."
+    },
     "the-yellow-wallpaper": {
       "latest_decision": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",
       "decision_reason": "Studio-C and Chirp3-HD-Achird produced the same sub-threshold representative score pattern",

@@ -525,3 +525,12 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - The remaining Yorkshire differences were substantive: `dress/dressed`, `Eh/Ay`, `tha/thou`, `thysen/thy son`, `an/and`, and `bein/being`. They were not normalized away. The source-bound ending spelling projection was separately hash-bound and produced exact `10.0/1.0` without deleting speech.
 - Because Yorkshire failed strict ordered source integrity, listening, full-title generation, measured sync, delivery, endpoint, browser, and publication stages were skipped. The AF Bella, BF Emma, ASR-repair, and targeted-resynthesis fingerprints are closed and the reader remains live with audio hidden.
 - Kokoro synthesis and Whisper ASR were local at `$0.00`; no paid listening call ran. `paid_tts.lock` remained byte-for-byte unchanged at SHA-256 `f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3`.
+
+## 2026-07-20 The Time Machine Kokoro bm_george Objective Pilot
+
+- The controlled 16-chapter manuscript, public-domain evidence, front/back covers, root/backend parity, pinned Kokoro model, British `bm_george` voice, Whisper model, and paid-lock hashes were bound before private synthesis. Fallback-free G2P resolved every selected source token.
+- The initial four-passage candidate passed the opening and Morlock passages exactly. A three-arm retained-WAV repair left Eloi at `9.9459/0.9928` because source `I and` decoded as `ironing`, and the epilogue at `9.9649/0.9930` because `plesiosaurus` and `flat` were omitted.
+- One bounded two-passage resynthesis changed punctuation only while preserving identical lexical-token arrays, used a slower `0.94` rate and new seed, and generated two new hash-bound private WAVs.
+- The new epilogue passed exact ASR/source `10.0`, coverage and precision `1.0` in two independent decoder arms. Eloi improved to `9.964/0.9964`, but source `and` decoded as `am` in both unprompted beam and greedy arms. That substantive conjunction change was not normalized.
+- Three of four representative passages passed exact ordered integrity. Listening, full-title generation, measured sync, delivery, endpoint, browser, and publication stages were therefore skipped; `bm_george` synthesis, ASR-repair, and targeted-resynthesis fingerprints are closed.
+- All audio remains under the private audiobook worktree. Kokoro synthesis and Whisper ASR cost `$0.00`; `paid_tts.lock` remained byte-for-byte unchanged at SHA-256 `f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3`.
