@@ -1,9 +1,53 @@
 {
-  "generated_at": "2026-07-13T07:30:39Z",
-  "status": "D19_HUMAN_NARRATION_REQUIRED_NO_SCALE_V3_PREFLIGHT_RECONCILED",
+  "generated_at": "2026-07-21T19:49:07Z",
+  "status": "SPRINT1_SCOPE_RECONCILED_RADHARANI_PRIVATE_REUSE_NO_GO",
   "policy_version": "bengali_audiobook_acceptance_v2_92",
   "total_campaign_titles": 31,
-  "published_bengali_audiobooks": 0,
+  "published_bengali_audiobooks": 1,
+  "sprint1_scope_reconciliation": {
+    "generated_at": "2026-07-21T19:49:07Z",
+    "truth_source": "backend/data/home_hero_curation.json",
+    "legacy_campaign_scope_note": "The existing 31-title Bengali campaign remains useful historical planning evidence but is broader than the current deterministic 32-title Sprint 1 catalog.",
+    "sprint1_bengali_total": 10,
+    "production_live": [
+      "book-2b9853ec52"
+    ],
+    "production_hidden": [
+      "bn-066",
+      "radharani",
+      "nishkriti",
+      "muchiram-gurer-jibanchorit",
+      "book-d19e96859f",
+      "book-f5d593e1f4",
+      "pather-panchali",
+      "devdas",
+      "book-edfcf810c5"
+    ],
+    "selected_private_canary": "radharani",
+    "representative_audition": {
+      "provider": "sarvam",
+      "model": "bulbul:v3",
+      "voice": "ratan",
+      "style": "literary_warm_pacing",
+      "score": 9.4,
+      "confidence": 0.95,
+      "fatal_flags": []
+    },
+    "historical_reuse_screen": "NO_GO_HISTORICAL_REUSE_NOT_RELEASE_ELIGIBLE",
+    "historical_candidate_sha256": "4de991f9afc420037ec09683aa4b53e4e62de8a4ae782ebdfb766ec48bb18a56",
+    "historical_candidate_blockers": [
+      "EXACT_HISTORICAL_RECORDING_VOICE_RIGHTS_PROOF_MISSING",
+      "FULL_AUDIO_DERIVED_ASR_SOURCE_SCORE_9_7_UNPROVEN",
+      "FIRST_LAST_AND_ORDERED_CONTENT_INTEGRITY_UNPROVEN",
+      "MEASURED_PARAGRAPH_OR_STANZA_SYNC_MISSING",
+      "FULL_SIX_SAMPLE_LISTENING_QA_MISSING",
+      "PRIVATE_UPLOAD_PRODUCTION_METADATA_ENDPOINT_AND_BROWSER_GATES_NOT_RUN"
+    ],
+    "publication_performed": false,
+    "provider_call_performed": false,
+    "spend_usd": 0.0,
+    "evidence": "internal/audiobook_lab/sprint1_publication/sprint1_bengali_scope_reconciliation_20260722.json"
+  },
   "titles_in_representative_audition": 0,
   "titles_with_representative_gte_9_2": 3,
   "titles_in_full_pilot": 0,
@@ -16,16 +60,17 @@
     "READY_FOR_REPRESENTATIVE_AUDITION": 27
   },
   "scale_gate": {
-    "status": "BLOCKED_UNTIL_D19_RAW_ASR_REACHES_9_7_AND_D19_PUBLISHES",
-    "pilot_slug": "book-d19e96859f",
-    "next_scale_stage": "THREE_TITLE_CANARY",
-    "rule": "Do not start any Bengali canary or broader wave unless a source-bound human or licensed D19 candidate reaches audio-derived source score >=9.7, passes listening and boundaries, and completes upload, endpoint, browser, and publication proof."
+    "status": "SPRINT1_INITIAL_PILOT_SATISFIED_ONE_TITLE_CANARY_ONLY",
+    "pilot_slug": "book-2b9853ec52",
+    "next_candidate_slug": "radharani",
+    "next_scale_stage": "ONE_TITLE_PRIVATE_CANARY",
+    "rule": "The live Bengali pilot satisfies the initial scale gate. Advance exactly one source-bound Radharani private canary and do not widen until it passes listening, objective, measured sync, delivery, endpoint, browser, and publication gates."
   },
   "best_settings": {
     "provider": "sarvam",
     "model": "bulbul:v3",
-    "voice": "pooja",
-    "style_profile": "dialogue_human_touch",
+    "voice": "ratan",
+    "style_profile": "literary_warm_pacing",
     "representative_score": 9.4,
     "confidence": 0.95
   },
@@ -44,24 +89,40 @@
   },
   "paid_gate_status": {
     "all_required_present": false,
-    "snapshot_at": "2026-07-13T07:30:39Z",
-    "snapshot_note": "Sprint 1 V3 fixed caps are present, but campaign-wide approval and Bengali-specific total/per-title caps remain absent; no Bengali provider call ran.",
+    "snapshot_at": "2026-07-21T19:49:07Z",
+    "snapshot_note": "Campaign approval, budget-cap, stop-on-budget, and provider credential gates were not explicitly present in this worktree process. The authoritative lock is idle but scoped to Nishkriti, not Radharani. No Bengali provider call ran.",
     "boolean_gates": {
-      "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS": true,
-      "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": true,
-      "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": true,
+      "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS": false,
+      "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": false,
+      "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": false,
       "EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN": false,
-      "EARNALISM_STOP_ON_BUDGET_EXCEEDED": true
+      "EARNALISM_STOP_ON_BUDGET_EXCEEDED": false
     },
     "value_gates_present": {
       "EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD": false,
       "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE": false
     },
     "missing": [
+      "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS",
+      "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF",
+      "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS",
       "EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN",
       "EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD",
-      "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE"
-    ]
+      "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE",
+      "EARNALISM_STOP_ON_BUDGET_EXCEEDED",
+      "SARVAM_API_KEY",
+      "OPENAI_API_KEY"
+    ],
+    "paid_tts_lock": {
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "allowed_slugs": [
+        "nishkriti"
+      ],
+      "requested_slug": "radharani",
+      "result": "PAID_TTS_LOCK_SLUG_MISMATCH"
+    }
   },
   "duplicate_attempts_avoided": 192,
   "plateau_strategies_triggered": 3,
@@ -114,8 +175,8 @@
       "fallback_tts_detected"
     ]
   },
-  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-  "next_generated_prompt": "Obtain source-bound human narration or licensed audio for D19. Validate the received candidate through ASR/source, first/last, listening, upload, endpoint, browser, and production gates; do not repeat failed Google or Sarvam arms. Keep Radharani, Nishkriti, Devdas, and Kshudhita Pashan preflight-ready but do not scale before the D19 pilot gate opens.",
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/sprint1_next_two_audiobook_fastpath.py --asset-root /private/tmp/earnalism-bengali-go-live --lock-path /Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock --candidate-slugs radharani --max-new-publications 1 --reuse-first --fail-closed",
+  "next_generated_prompt": "First reconcile the stale Nishkriti-only paid lock to an idle Radharani-only scope and explicitly provide every campaign approval and budget environment variable. Then run exactly one source-bound Sarvam bulbul:v3/ratan/literary_warm_pacing Radharani full-title canary. Do not reuse the historical TanishaaNeural MP3 for release and do not upload or publish unless ASR/source >=9.7, exact boundaries and ordered content, measured paragraph/stanza sync, six-sample listening >=9.2 at confidence >=0.90 with no fatal flags, private upload checksum, metadata, endpoint 206, and browser proof all pass.",
   "stage2f_book_d19e96859f": {
     "status": "AUTOMATED_ASR_ARMS_EXHAUSTED_NORMALIZATION_REPAIR_REQUIRED_PRIVATE_TTS_LISTENING_SYNC_PASS",
     "representative_score": 9.4,
