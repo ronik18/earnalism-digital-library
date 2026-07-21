@@ -1,0 +1,586 @@
+{
+  "schema": "earnalism.kokoro.jekyll_bm_george_targeted_resynthesis.v1",
+  "generated_at": "2026-07-21T17:51:16Z",
+  "status": "PRIVATE_REPRESENTATIVE_OBJECTIVE_PASS_AWAITING_LISTENING_QA",
+  "go_no_go": "GO_PRIVATE_LISTENING_QA_ONLY",
+  "attempt_fingerprint": "f2b2345ecef735b5ff79e8beeeb61cdbc567392669281606b0b9c5505570599b",
+  "scope": {
+    "slug": "jekyll-and-hyde",
+    "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+    "author": "Robert Louis Stevenson",
+    "voice": "bm_george",
+    "target_passage_ids": [
+      "opening_character"
+    ],
+    "reused_passage_ids": [
+      "carew_murder",
+      "lanyon_transformation",
+      "final_confession"
+    ],
+    "representative_only": true,
+    "full_title_generated": false
+  },
+  "prior_projection": {
+    "path": "/private/tmp/earnalism-sprint1-distinct-voice/internal/audiobook_lab/sprint1_publication/title_runs/jekyll-and-hyde_kokoro_bm_george_asr_projection_v1.json",
+    "sha256": "bbd402797591bbdd66d086faaab7132cb46ca9f1c9336148b8edb84d998d1e65",
+    "projection_fingerprint": "d8f01045423aaa6d4b0a0773db62759325f5360c8b822753ff0fa3e46d4f224a",
+    "exact_pass_count": 3
+  },
+  "text_preparation": {
+    "canonical_text_sha256": "b491afef3119554f32c9250f5a81446b55bd81a63bf2fecf3b4940da8e4f1994",
+    "prepared_text_sha256": "854a327350457e198f4ba94858306755ec3b1b2d4a51f508c0e0db0e819e597b",
+    "canonical_lexical_tokens_unchanged": true,
+    "transformations": [
+      {
+        "source": "something eminently human beaconed from his eye; something indeed",
+        "prepared": "something eminently human beaconed from his eye. Something indeed",
+        "reason": "separate the beaconed clause while preserving every lexical token"
+      },
+      {
+        "source": "for others; sometimes wondering, almost with envy, at the high pressure",
+        "prepared": "for others. Sometimes—wondering, almost with envy—at the high pressure",
+        "reason": "isolate wondering for audible stress without changing lexical content"
+      }
+    ]
+  },
+  "g2p_preflight_evidence": {
+    "passage_id": "opening_character",
+    "status": "PASS",
+    "kokoro_lang_code": "b",
+    "british": true,
+    "fallback": null,
+    "all_source_tokens_resolved": true,
+    "phoneme_sha256": "3054f6c39a4b6fdb7aa36c15a281ada7bcace35e9f3fb3f392537bd3ff00c6ab",
+    "unresolved_tokens": []
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "voice": "bm_george",
+    "voice_sha256": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+    "speed": 0.93,
+    "random_seed": 2026072108,
+    "g2p_british": true,
+    "g2p_fallback_enabled": false
+  },
+  "decoder_arms": [
+    {
+      "id": "unprompted_beam_5",
+      "initial_prompt": null,
+      "temperature": 0,
+      "condition_on_previous_text": false,
+      "word_timestamps": true,
+      "beam_size": 5,
+      "patience": 1,
+      "hallucination_silence_threshold": 0.5
+    },
+    {
+      "id": "unprompted_beam_2",
+      "initial_prompt": null,
+      "temperature": 0,
+      "condition_on_previous_text": false,
+      "word_timestamps": true,
+      "beam_size": 2,
+      "patience": 1,
+      "hallucination_silence_threshold": 0.5
+    },
+    {
+      "id": "unprompted_greedy",
+      "initial_prompt": null,
+      "temperature": 0,
+      "condition_on_previous_text": false,
+      "word_timestamps": true,
+      "beam_size": null,
+      "patience": null,
+      "hallucination_silence_threshold": 0.5
+    }
+  ],
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/bm_george.pt",
+      "sha256": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+      "size_bytes": 523430
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "python_executable": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "deterministic_algorithms_required": true,
+    "torch_thread_count": 1,
+    "offline_local_artifacts_only": true
+  },
+  "next_stage_contract": {
+    "listening_qa_allowed": true,
+    "full_title_generation_allowed": false,
+    "upload_allowed": false,
+    "publication_allowed": false,
+    "release_gate_mutation_allowed": false,
+    "do_not_repeat_completed_fingerprint": true
+  },
+  "safety": {
+    "provider_calls": 0,
+    "estimated_provider_cost_usd": 0.0,
+    "paid_tts_lock": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_touched": false,
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/jekyll-and-hyde/f3ff3571-bm-george-opening-targeted-v2",
+    "audio_generated": true,
+    "resynthesized_passage_count": 1,
+    "reused_passage_count": 3,
+    "listening_qa_run": false,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "paid_tts_lock_before": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_after": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_unchanged": true,
+    "asr_run": true,
+    "artifact_hashes_before": {
+      "model": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "config": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "voice": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+      "whisper": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f"
+    },
+    "artifact_hashes_after": {
+      "model": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "config": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "voice": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+      "whisper": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f"
+    },
+    "artifact_hashes_unchanged": true
+  },
+  "blockers_to_release": [
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "FULL_TITLE_ASR_BOUNDARY_CONTENT_NOT_RUN",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "FRONT_COVER_LINKAGE_REQUIRED_BEFORE_PUBLICATION",
+    "PRIVATE_MEDIA_DELIVERY_MANIFEST_NOT_BUILT",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN",
+    "PUBLIC_RELEASE_NOT_APPROVED",
+    "OWNER_10_TARGET_NOT_VERIFIED"
+  ],
+  "targeted_samples": [
+    {
+      "passage_id": "opening_character",
+      "source_text_sha256": "854a327350457e198f4ba94858306755ec3b1b2d4a51f508c0e0db0e819e597b",
+      "characters": 988,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/jekyll-and-hyde/f3ff3571-bm-george-opening-targeted-v2/opening_character.wav",
+      "phoneme_sha256": "6ad4c7a5621189203ea7b208a5cd1dcd7d906d342003e3b1a070230baf097227",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 57.225,
+      "size_bytes": 2746844,
+      "audio_sha256": "cc50f33467213667afbdc80bb82d9532428b9a39dfaf5a29f080abba698025c0",
+      "peak_fraction": 0.494125,
+      "rms_fraction": 0.055973,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true,
+      "canonical_source_text_sha256": "b491afef3119554f32c9250f5a81446b55bd81a63bf2fecf3b4940da8e4f1994",
+      "prepared_text_sha256": "854a327350457e198f4ba94858306755ec3b1b2d4a51f508c0e0db0e819e597b"
+    }
+  ],
+  "targeted_asr": {
+    "status": "PASS",
+    "all_candidates": {
+      "opening_character": [
+        {
+          "passage_id": "opening_character",
+          "decoder_arm": "unprompted_beam_5",
+          "audio_sha256": "cc50f33467213667afbdc80bb82d9532428b9a39dfaf5a29f080abba698025c0",
+          "canonical_source_text_sha256": "b491afef3119554f32c9250f5a81446b55bd81a63bf2fecf3b4940da8e4f1994",
+          "prepared_text_sha256": "854a327350457e198f4ba94858306755ec3b1b2d4a51f508c0e0db0e819e597b",
+          "raw_transcript": "Mr. Utterson, the lawyer, was a man of a rugged countenance that was never lighted by a smile, cold, scanty, and embarrassed in discourse, backward in sentiment, lean, long, dusty, dreary, and yet somehow lovable. At friendly meetings, and when the wine was to his taste, something eminently human-beakened from his eye, something indeed which never found its way into his talk, but which spoke not only in these silent symbols of the after-dinner face, but more often and loudly in the acts of his life. He was austere with himself, drank gin when he was alone to mortify a taste for vintages and though he enjoyed the theatre had not crossed the doors of one for twenty years, but he had an approved tolerance for others, sometimes wondering almost with envy at the high pressure of spirits involved in their misdeeds and in any extremity inclined to help rather than to reprove. I incline to Cain's heresy, he used to say quaintly, I let my brother go to the devil in his own way.",
+          "raw_transcript_sha256": "6227499578b9070661b95d7d90213966398161b967b62f2e78923dc5b95f8cb0",
+          "evaluated_transcript": "Mr. Utterson, the lawyer, was a man of a rugged countenance that was never lighted by a smile, cold, scanty, and embarrassed in discourse, backward in sentiment, lean, long, dusty, dreary, and yet somehow lovable. At friendly meetings, and when the wine was to his taste, something eminently human-beaconed from his eye, something indeed which never found its way into his talk, but which spoke not only in these silent symbols of the after-dinner face, but more often and loudly in the acts of his life. He was austere with himself, drank gin when he was alone to mortify a taste for vintages and though he enjoyed the theatre had not crossed the doors of one for twenty years, but he had an approved tolerance for others, sometimes wondering almost with envy at the high pressure of spirits involved in their misdeeds and in any extremity inclined to help rather than to reprove. I incline to Cain's heresy, he used to say quaintly, I let my brother go to the devil in his own way.",
+          "evaluated_transcript_sha256": "474442ac87bb7daa0e86d13490657a5c05bf8a3ca0565d38a5b20a47d37c6cc8",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bbeakened\\b",
+              "replacement": "beaconed",
+              "expected_count_when_observed": 1,
+              "reason": "non-word ASR spelling for source-generated beaconed phonemes",
+              "observed_count": 1
+            }
+          ],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 177,
+          "transcript_token_count": 177,
+          "equal_token_count": 177,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        },
+        {
+          "passage_id": "opening_character",
+          "decoder_arm": "unprompted_beam_2",
+          "audio_sha256": "cc50f33467213667afbdc80bb82d9532428b9a39dfaf5a29f080abba698025c0",
+          "canonical_source_text_sha256": "b491afef3119554f32c9250f5a81446b55bd81a63bf2fecf3b4940da8e4f1994",
+          "prepared_text_sha256": "854a327350457e198f4ba94858306755ec3b1b2d4a51f508c0e0db0e819e597b",
+          "raw_transcript": "Mr. Utterson, the lawyer, was a man of a rugged countenance that was never lighted by a smile, cold, scanty, and embarrassed in discourse, backward in sentiment, lean, long, dusty, dreary, and yet somehow lovable. At friendly meetings, and when the wine was to his taste, something eminently human-beakened from his eye, something indeed which never found its way into his talk, but which spoke not only in these silent symbols of the after-dinner face, but more often and loudly in the acts of his life. He was austere with himself, drank gin when he was alone, to mortify a taste for vintages, and though he enjoyed the theatre, had not crossed the doors of one for twenty years, but he had an approved tolerance for others, sometimes wondering almost with envy at the high pressure of spirits involved in their misdeeds, and in any extremity inclined to help rather than to reprove. I incline to Cain's heresy, he used to say quaintly, I let my brother go to the devil in his own way.",
+          "raw_transcript_sha256": "cf3394c7a396932023eef3f1b4a78ad76281599ea11564fd01b8b1477c10f580",
+          "evaluated_transcript": "Mr. Utterson, the lawyer, was a man of a rugged countenance that was never lighted by a smile, cold, scanty, and embarrassed in discourse, backward in sentiment, lean, long, dusty, dreary, and yet somehow lovable. At friendly meetings, and when the wine was to his taste, something eminently human-beaconed from his eye, something indeed which never found its way into his talk, but which spoke not only in these silent symbols of the after-dinner face, but more often and loudly in the acts of his life. He was austere with himself, drank gin when he was alone, to mortify a taste for vintages, and though he enjoyed the theatre, had not crossed the doors of one for twenty years, but he had an approved tolerance for others, sometimes wondering almost with envy at the high pressure of spirits involved in their misdeeds, and in any extremity inclined to help rather than to reprove. I incline to Cain's heresy, he used to say quaintly, I let my brother go to the devil in his own way.",
+          "evaluated_transcript_sha256": "fff7eb7d3743f68d9c19a78e11b4e17e3d0c331245fd54928dedda42606c8a3d",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bbeakened\\b",
+              "replacement": "beaconed",
+              "expected_count_when_observed": 1,
+              "reason": "non-word ASR spelling for source-generated beaconed phonemes",
+              "observed_count": 1
+            }
+          ],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 177,
+          "transcript_token_count": 177,
+          "equal_token_count": 177,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        },
+        {
+          "passage_id": "opening_character",
+          "decoder_arm": "unprompted_greedy",
+          "audio_sha256": "cc50f33467213667afbdc80bb82d9532428b9a39dfaf5a29f080abba698025c0",
+          "canonical_source_text_sha256": "b491afef3119554f32c9250f5a81446b55bd81a63bf2fecf3b4940da8e4f1994",
+          "prepared_text_sha256": "854a327350457e198f4ba94858306755ec3b1b2d4a51f508c0e0db0e819e597b",
+          "raw_transcript": "Mr. Utterson, the lawyer, was a man of a rugged countenance that was never lighted by a smile, cold, scanty, and embarrassed in discourse, backward in sentiment, lean, long, dusty, dreary, and yet somehow lovable. At friendly meetings, and when the wine was to his taste, something eminently human-beakened from his eye, something indeed which never found its way into his talk, but which spoke not only in these silent symbols of the after-dinner face, but more often and loudly in the acts of his life. He was austere with himself, drank gin when he was alone to mortify a taste for vintages, and though he enjoyed the theatre, had not crossed the doors of one for twenty years, but he had an approved tolerance for others, sometimes wondering almost with envy at the high pressure of spirits involved in their misdeeds, and in any extremity inclined to help rather than to reprove. I incline to Cain's heresy, he used to say quaintly, I let my brother go to the devil in his own way.",
+          "raw_transcript_sha256": "3026b15071c6570e587e23dae71310d8869d65fe2cdbfb86d88afeeb380364d2",
+          "evaluated_transcript": "Mr. Utterson, the lawyer, was a man of a rugged countenance that was never lighted by a smile, cold, scanty, and embarrassed in discourse, backward in sentiment, lean, long, dusty, dreary, and yet somehow lovable. At friendly meetings, and when the wine was to his taste, something eminently human-beaconed from his eye, something indeed which never found its way into his talk, but which spoke not only in these silent symbols of the after-dinner face, but more often and loudly in the acts of his life. He was austere with himself, drank gin when he was alone to mortify a taste for vintages, and though he enjoyed the theatre, had not crossed the doors of one for twenty years, but he had an approved tolerance for others, sometimes wondering almost with envy at the high pressure of spirits involved in their misdeeds, and in any extremity inclined to help rather than to reprove. I incline to Cain's heresy, he used to say quaintly, I let my brother go to the devil in his own way.",
+          "evaluated_transcript_sha256": "1531fdb4680c8f22a05511683ce21cf826fe4f1a91df0658ae632ba2ac2bb040",
+          "source_equivalences_applied": [
+            {
+              "pattern": "\\bbeakened\\b",
+              "replacement": "beaconed",
+              "expected_count_when_observed": 1,
+              "reason": "non-word ASR spelling for source-generated beaconed phonemes",
+              "observed_count": 1
+            }
+          ],
+          "substantive_normalization_performed": false,
+          "unexpected_speech_deleted_or_normalized": false,
+          "score": 10.0,
+          "coverage": 1.0,
+          "precision": 1.0,
+          "source_token_count": 177,
+          "transcript_token_count": 177,
+          "equal_token_count": 177,
+          "first_words_match": true,
+          "last_words_match": true,
+          "ordered_content_integrity_pass": true,
+          "no_missing_content": true,
+          "no_duplicate_content": true,
+          "no_reordered_content": true,
+          "no_unexpected_content": true,
+          "missing_tokens": {},
+          "duplicate_tokens": {},
+          "unexpected_tokens": {},
+          "ordered_alignment_operations": [],
+          "pass": true
+        }
+      ]
+    },
+    "selected": [
+      {
+        "passage_id": "opening_character",
+        "decoder_arm": "unprompted_beam_5",
+        "audio_sha256": "cc50f33467213667afbdc80bb82d9532428b9a39dfaf5a29f080abba698025c0",
+        "canonical_source_text_sha256": "b491afef3119554f32c9250f5a81446b55bd81a63bf2fecf3b4940da8e4f1994",
+        "prepared_text_sha256": "854a327350457e198f4ba94858306755ec3b1b2d4a51f508c0e0db0e819e597b",
+        "raw_transcript": "Mr. Utterson, the lawyer, was a man of a rugged countenance that was never lighted by a smile, cold, scanty, and embarrassed in discourse, backward in sentiment, lean, long, dusty, dreary, and yet somehow lovable. At friendly meetings, and when the wine was to his taste, something eminently human-beakened from his eye, something indeed which never found its way into his talk, but which spoke not only in these silent symbols of the after-dinner face, but more often and loudly in the acts of his life. He was austere with himself, drank gin when he was alone to mortify a taste for vintages and though he enjoyed the theatre had not crossed the doors of one for twenty years, but he had an approved tolerance for others, sometimes wondering almost with envy at the high pressure of spirits involved in their misdeeds and in any extremity inclined to help rather than to reprove. I incline to Cain's heresy, he used to say quaintly, I let my brother go to the devil in his own way.",
+        "raw_transcript_sha256": "6227499578b9070661b95d7d90213966398161b967b62f2e78923dc5b95f8cb0",
+        "evaluated_transcript": "Mr. Utterson, the lawyer, was a man of a rugged countenance that was never lighted by a smile, cold, scanty, and embarrassed in discourse, backward in sentiment, lean, long, dusty, dreary, and yet somehow lovable. At friendly meetings, and when the wine was to his taste, something eminently human-beaconed from his eye, something indeed which never found its way into his talk, but which spoke not only in these silent symbols of the after-dinner face, but more often and loudly in the acts of his life. He was austere with himself, drank gin when he was alone to mortify a taste for vintages and though he enjoyed the theatre had not crossed the doors of one for twenty years, but he had an approved tolerance for others, sometimes wondering almost with envy at the high pressure of spirits involved in their misdeeds and in any extremity inclined to help rather than to reprove. I incline to Cain's heresy, he used to say quaintly, I let my brother go to the devil in his own way.",
+        "evaluated_transcript_sha256": "474442ac87bb7daa0e86d13490657a5c05bf8a3ca0565d38a5b20a47d37c6cc8",
+        "source_equivalences_applied": [
+          {
+            "pattern": "\\bbeakened\\b",
+            "replacement": "beaconed",
+            "expected_count_when_observed": 1,
+            "reason": "non-word ASR spelling for source-generated beaconed phonemes",
+            "observed_count": 1
+          }
+        ],
+        "substantive_normalization_performed": false,
+        "unexpected_speech_deleted_or_normalized": false,
+        "score": 10.0,
+        "coverage": 1.0,
+        "precision": 1.0,
+        "source_token_count": 177,
+        "transcript_token_count": 177,
+        "equal_token_count": 177,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": true,
+        "no_missing_content": true,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": true,
+        "missing_tokens": {},
+        "duplicate_tokens": {},
+        "unexpected_tokens": {},
+        "ordered_alignment_operations": [],
+        "pass": true
+      }
+    ]
+  },
+  "combined_representative_reports": [
+    {
+      "passage_id": "opening_character",
+      "decoder_arm": "unprompted_beam_5",
+      "audio_sha256": "cc50f33467213667afbdc80bb82d9532428b9a39dfaf5a29f080abba698025c0",
+      "canonical_source_text_sha256": "b491afef3119554f32c9250f5a81446b55bd81a63bf2fecf3b4940da8e4f1994",
+      "prepared_text_sha256": "854a327350457e198f4ba94858306755ec3b1b2d4a51f508c0e0db0e819e597b",
+      "raw_transcript": "Mr. Utterson, the lawyer, was a man of a rugged countenance that was never lighted by a smile, cold, scanty, and embarrassed in discourse, backward in sentiment, lean, long, dusty, dreary, and yet somehow lovable. At friendly meetings, and when the wine was to his taste, something eminently human-beakened from his eye, something indeed which never found its way into his talk, but which spoke not only in these silent symbols of the after-dinner face, but more often and loudly in the acts of his life. He was austere with himself, drank gin when he was alone to mortify a taste for vintages and though he enjoyed the theatre had not crossed the doors of one for twenty years, but he had an approved tolerance for others, sometimes wondering almost with envy at the high pressure of spirits involved in their misdeeds and in any extremity inclined to help rather than to reprove. I incline to Cain's heresy, he used to say quaintly, I let my brother go to the devil in his own way.",
+      "raw_transcript_sha256": "6227499578b9070661b95d7d90213966398161b967b62f2e78923dc5b95f8cb0",
+      "evaluated_transcript": "Mr. Utterson, the lawyer, was a man of a rugged countenance that was never lighted by a smile, cold, scanty, and embarrassed in discourse, backward in sentiment, lean, long, dusty, dreary, and yet somehow lovable. At friendly meetings, and when the wine was to his taste, something eminently human-beaconed from his eye, something indeed which never found its way into his talk, but which spoke not only in these silent symbols of the after-dinner face, but more often and loudly in the acts of his life. He was austere with himself, drank gin when he was alone to mortify a taste for vintages and though he enjoyed the theatre had not crossed the doors of one for twenty years, but he had an approved tolerance for others, sometimes wondering almost with envy at the high pressure of spirits involved in their misdeeds and in any extremity inclined to help rather than to reprove. I incline to Cain's heresy, he used to say quaintly, I let my brother go to the devil in his own way.",
+      "evaluated_transcript_sha256": "474442ac87bb7daa0e86d13490657a5c05bf8a3ca0565d38a5b20a47d37c6cc8",
+      "source_equivalences_applied": [
+        {
+          "pattern": "\\bbeakened\\b",
+          "replacement": "beaconed",
+          "expected_count_when_observed": 1,
+          "reason": "non-word ASR spelling for source-generated beaconed phonemes",
+          "observed_count": 1
+        }
+      ],
+      "substantive_normalization_performed": false,
+      "unexpected_speech_deleted_or_normalized": false,
+      "score": 10.0,
+      "coverage": 1.0,
+      "precision": 1.0,
+      "source_token_count": 177,
+      "transcript_token_count": 177,
+      "equal_token_count": 177,
+      "first_words_match": true,
+      "last_words_match": true,
+      "ordered_content_integrity_pass": true,
+      "no_missing_content": true,
+      "no_duplicate_content": true,
+      "no_reordered_content": true,
+      "no_unexpected_content": true,
+      "missing_tokens": {},
+      "duplicate_tokens": {},
+      "unexpected_tokens": {},
+      "ordered_alignment_operations": [],
+      "pass": true
+    },
+    {
+      "passage_id": "carew_murder",
+      "decoder_arm": "unprompted_beam_2",
+      "audio_sha256": "dad290dcd691f60904a855373a1487ab3cd6ce393cb8bbf5776f931938b8145e",
+      "source_text_sha256": "b45aebd6abcc2e730d156ad71d2964eeff8a1f472cc7146ade53575ec386bd8f",
+      "raw_transcript": "Presently her eye wandered to the other, and she was surprised to recognize in him a certain Mr. Hyde, who had once visited her master, and for whom she had conceived a dislike. He had in his hand a heavy cane, with which he was trifling, but he answered never a word, and seemed to listen with an ill-contained impatience. And then all of a sudden he broke out in a great flame of anger, stamping with his foot, brandishing the cane, and carrying on, as the maid described it, like a madman. The old gentleman took a step back, with the air of one very much surprised and a trifle hurt, and at that Mr. Hyde broke out of all bounds and clubbed him to the earth. And next moment, with ape-like fury, he was trampling his victim underfoot and hailing down a storm of blows, under which the bones were audibly shattered and the body jumped upon the roadway. At the horror of these sights and sounds, the maid fainted.",
+      "raw_transcript_sha256": "d5b97390881de5543b1b16b2837a614f4a74d6af88a4cc80a0c4ec546af0d3b0",
+      "evaluated_transcript": "Presently her eye wandered to the other, and she was surprised to recognise in him a certain Mr. Hyde, who had once visited her master, and for whom she had conceived a dislike. He had in his hand a heavy cane, with which he was trifling, but he answered never a word, and seemed to listen with an ill-contained impatience. And then all of a sudden he broke out in a great flame of anger, stamping with his foot, brandishing the cane, and carrying on, as the maid described it, like a madman. The old gentleman took a step back, with the air of one very much surprised and a trifle hurt, and at that Mr. Hyde broke out of all bounds and clubbed him to the earth. And next moment, with ape-like fury, he was trampling his victim under foot and hailing down a storm of blows, under which the bones were audibly shattered and the body jumped upon the roadway. At the horror of these sights and sounds, the maid fainted.",
+      "evaluated_transcript_sha256": "dd36c4a78ea7d468e1f2ff847ad51d7d6841a856a112c05076719b01bec46171",
+      "source_equivalences_applied": [
+        {
+          "pattern": "\\bunderfoot\\b",
+          "replacement": "under foot",
+          "reason": "ASR compound for the exact source words under foot",
+          "match_count": 1,
+          "projection_only": true,
+          "substantive_normalization": false
+        },
+        {
+          "pattern": "\\brecognize\\b",
+          "replacement": "recognise",
+          "reason": "American ASR spelling for source British spelling recognise",
+          "match_count": 1,
+          "projection_only": true,
+          "substantive_normalization": false
+        }
+      ],
+      "new_asr_decoder_calls": 0,
+      "resynthesis_performed": false,
+      "unexpected_speech_deleted": false,
+      "substantive_normalization_performed": false,
+      "score": 10.0,
+      "coverage": 1.0,
+      "precision": 1.0,
+      "source_token_count": 175,
+      "transcript_token_count": 175,
+      "equal_token_count": 175,
+      "first_words_match": true,
+      "last_words_match": true,
+      "ordered_content_integrity_pass": true,
+      "no_missing_content": true,
+      "no_duplicate_content": true,
+      "no_reordered_content": true,
+      "no_unexpected_content": true,
+      "missing_tokens": {},
+      "duplicate_tokens": {},
+      "unexpected_tokens": {},
+      "ordered_alignment_operations": [],
+      "pass": true
+    },
+    {
+      "passage_id": "lanyon_transformation",
+      "decoder_arm": "unprompted_beam_2",
+      "audio_sha256": "3fe90dbfdceab82ab91bd28e58406cf145d107c141e2747aee98caa27966f0bb",
+      "source_text_sha256": "3bd9b43260be8299d10f73995dd4c5706e39eba3e0844bf88c619bc7373d47ff",
+      "raw_transcript": "He put the glass to his lips and drank at one gulp. A cry followed. He reeled, staggered, clutched at the table and held on, staring with injected eyes, gasping with open mouth. And as I looked there came, I thought, a change, he seemed to swell, his face became suddenly black and the features seemed to melt and alter, and the next moment I had sprung to my feet and leaped back against the wall, my arms raised to shield me from that prodigy, my mind submerged in terror. Oh God. I screamed, and O God! again and again, for there before my eyes pale and shaken and half fainting and groping before him with his hands, like a man restored from death, there stood Henry Jekyll.",
+      "raw_transcript_sha256": "12992631e8db85c1b42786997e2ce5fda21c4d64be0f9316e15107d17c737748",
+      "evaluated_transcript": "He put the glass to his lips and drank at one gulp. A cry followed. He reeled, staggered, clutched at the table and held on, staring with injected eyes, gasping with open mouth. And as I looked there came, I thought, a change, he seemed to swell, his face became suddenly black and the features seemed to melt and alter, and the next moment I had sprung to my feet and leaped back against the wall, my arms raised to shield me from that prodigy, my mind submerged in terror. O God. I screamed, and O God! again and again, for there before my eyes pale and shaken and half fainting and groping before him with his hands, like a man restored from death, there stood Henry Jekyll.",
+      "evaluated_transcript_sha256": "2a6b72a4d67dad40eca27e14f280155876cd9a767c7b31d79962e10462712773",
+      "source_equivalences_applied": [
+        {
+          "pattern": "\\boh\\b",
+          "replacement": "O",
+          "reason": "ASR interjection spelling for one source O exclamation",
+          "match_count": 1,
+          "projection_only": true,
+          "substantive_normalization": false
+        }
+      ],
+      "new_asr_decoder_calls": 0,
+      "resynthesis_performed": false,
+      "unexpected_speech_deleted": false,
+      "substantive_normalization_performed": false,
+      "score": 10.0,
+      "coverage": 1.0,
+      "precision": 1.0,
+      "source_token_count": 128,
+      "transcript_token_count": 128,
+      "equal_token_count": 128,
+      "first_words_match": true,
+      "last_words_match": true,
+      "ordered_content_integrity_pass": true,
+      "no_missing_content": true,
+      "no_duplicate_content": true,
+      "no_reordered_content": true,
+      "no_unexpected_content": true,
+      "missing_tokens": {},
+      "duplicate_tokens": {},
+      "unexpected_tokens": {},
+      "ordered_alignment_operations": [],
+      "pass": true
+    },
+    {
+      "passage_id": "final_confession",
+      "decoder_arm": "unprompted_beam_2",
+      "audio_sha256": "e4fbad3f91538722187afd82dede7e4e4691977f652e091933fb1a53d11d3112",
+      "source_text_sha256": "fee77d935c85880bed743ddd65949450c5bb5f5528e8a40101d34cf3e2d11e93",
+      "raw_transcript": "About a week has passed, and I am now finishing this statement under the influence of the last of the old powders. This, then, is the last time, short of a miracle, that Henry Jekyll can think his own thoughts or see his own face, now how sadly altered, in the glass. Nor must I delay too long to bring my writing to an end, for if my narrative has hitherto escaped destruction, it has been by a combination of great prudence and great good luck. Should the throes of change take me in the act of writing it, Hyde will tear it in pieces, but if some time shall have elapsed after I have laid it by, his wonderful selfishness and circumscription to the moment will probably save it once again from the action of his ape-like spite, and indeed the doom that is closing on us both has already changed and crushed him. Half an hour from now, when I shall again and forever reindue that hated personality, I know how I shall sit shuddering and weeping in my chair, or continue, with the most strained and fear-struck ecstasy of listening, to pace up and down this room, my last earthly refuge, and give ear to every sound of menace. Will Hyde die upon the scaffold, or will he find courage to release himself at the last moment? God knows I am careless. This is my true hour of death, and what is to follow concerns another than myself. Here, then, as I lay down the pen and proceed to seal up my confession, I bring the life of that unhappy Henry Jekyll to an end.",
+      "raw_transcript_sha256": "3720c094c94489a9d373f6af6fba3af314bb7a1247ddde5d5ce9a90f945b7c73",
+      "evaluated_transcript": "About a week has passed, and I am now finishing this statement under the influence of the last of the old powders. This, then, is the last time, short of a miracle, that Henry Jekyll can think his own thoughts or see his own face, now how sadly altered, in the glass. Nor must I delay too long to bring my writing to an end, for if my narrative has hitherto escaped destruction, it has been by a combination of great prudence and great good luck. Should the throes of change take me in the act of writing it, Hyde will tear it in pieces, but if some time shall have elapsed after I have laid it by, his wonderful selfishness and circumscription to the moment will probably save it once again from the action of his ape-like spite, and indeed the doom that is closing on us both has already changed and crushed him. Half an hour from now, when I shall again and forever reindue that hated personality, I know how I shall sit shuddering and weeping in my chair, or continue, with the most strained and fearstruck ecstasy of listening, to pace up and down this room, my last earthly refuge, and give ear to every sound of menace. Will Hyde die upon the scaffold, or will he find courage to release himself at the last moment? God knows I am careless. This is my true hour of death, and what is to follow concerns another than myself. Here, then, as I lay down the pen and proceed to seal up my confession, I bring the life of that unhappy Henry Jekyll to an end.",
+      "evaluated_transcript_sha256": "523fdf395b4c45aec51e38cda20831427d53ad31452ba2561bf5a357da5e4f72",
+      "source_equivalences_applied": [
+        {
+          "pattern": "\\bfear[- ]struck\\b",
+          "replacement": "fearstruck",
+          "reason": "ASR tokenization of the source compound fearstruck",
+          "match_count": 1,
+          "projection_only": true,
+          "substantive_normalization": false
+        }
+      ],
+      "new_asr_decoder_calls": 0,
+      "resynthesis_performed": false,
+      "unexpected_speech_deleted": false,
+      "substantive_normalization_performed": false,
+      "score": 10.0,
+      "coverage": 1.0,
+      "precision": 1.0,
+      "source_token_count": 279,
+      "transcript_token_count": 279,
+      "equal_token_count": 279,
+      "first_words_match": true,
+      "last_words_match": true,
+      "ordered_content_integrity_pass": true,
+      "no_missing_content": true,
+      "no_duplicate_content": true,
+      "no_reordered_content": true,
+      "no_unexpected_content": true,
+      "missing_tokens": {},
+      "duplicate_tokens": {},
+      "unexpected_tokens": {},
+      "ordered_alignment_operations": [],
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,637 @@
+{
+  "schema": "earnalism.kokoro.jekyll_representative.v1",
+  "generated_at": "2026-07-21T16:58:02Z",
+  "status": "PRIVATE_REPRESENTATIVE_PILOT_REJECTED",
+  "scope": {
+    "slug": "jekyll-and-hyde",
+    "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+    "author": "Robert Louis Stevenson",
+    "language": "eng",
+    "profile": "jekyll-bm-george-v1",
+    "passage_count": 4,
+    "characters": 4044,
+    "representative_only": true,
+    "full_title_generated": false
+  },
+  "source": {
+    "chapter_path": "/private/tmp/earnalism-sprint1-distinct-voice/data/controlled_publications/jekyll-and-hyde/chapters",
+    "source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
+    "passages": [
+      {
+        "passage_id": "opening_character",
+        "characters": 989,
+        "text_sha256": "b491afef3119554f32c9250f5a81446b55bd81a63bf2fecf3b4940da8e4f1994"
+      },
+      {
+        "passage_id": "carew_murder",
+        "characters": 915,
+        "text_sha256": "b45aebd6abcc2e730d156ad71d2964eeff8a1f472cc7146ade53575ec386bd8f"
+      },
+      {
+        "passage_id": "lanyon_transformation",
+        "characters": 680,
+        "text_sha256": "3bd9b43260be8299d10f73995dd4c5706e39eba3e0844bf88c619bc7373d47ff"
+      },
+      {
+        "passage_id": "final_confession",
+        "characters": 1460,
+        "text_sha256": "fee77d935c85880bed743ddd65949450c5bb5f5528e8a40101d34cf3e2d11e93"
+      }
+    ],
+    "chapter_count": 11,
+    "source_characters": 138182,
+    "root_backend_bound_files_match": true,
+    "bound_file_sha256": {
+      "approval_evidence.json": "ea3ef30e4fc42ad0b6e4c96a20727c2cf9c9e5eeac9a79acc035c9173c21f278",
+      "public_book.json": "08e1cc4cace4b82dccdb2b8189e6297717477bce1f1ee271e5f5e126ca8a6019",
+      "reader_manifest.json": "04a0b1df4bd25b9e1d554c3e1aa6994b7b44e5c51810392ff350ec3f998a81b6",
+      "source_evidence.json": "f9afc2e7e51313207f9ff903219b8ebc62dc8d34fd39ba0f454cff54117aead3"
+    },
+    "checksum_manifest_sha256": "92bdd921a927ceb1e81ca9736c31d7f48497c71340ab6d19d4162af463c4f8e3",
+    "front_cover_url": null,
+    "back_cover_url": null,
+    "cover_status": "PASS_GRAPHICAL_RUNTIME_FALLBACK_PRIVATE_ONLY"
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "package_version": "0.9.4",
+    "model_repo": "hexgrad/Kokoro-82M",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "bm_george",
+    "voice_sha256": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+    "speed": 0.95,
+    "random_seed": 2026072107,
+    "sample_rate_hz": 24000,
+    "pronunciation_overrides": {
+      "Utterson": "ˈʌtəsən",
+      "Hyde": "hˈaɪd",
+      "Jekyll": "dʒˈɛkəl",
+      "fearstruck": "fˈɪəstɹʌk"
+    },
+    "g2p_fallback_enabled": false,
+    "attempt_fingerprint": "e10223569eb619615f05c83cc824eca7a247ede7788eba5d78e0fb17fea3ec2f",
+    "known_failed_fingerprint_count": 0,
+    "kokoro_lang_code": "b",
+    "g2p_british": true
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "ordered_content_integrity_required": true
+  },
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/bm_george.pt",
+      "sha256": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+      "size_bytes": 523430
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "python_executable": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "deterministic_algorithms_required": true,
+    "torch_thread_count": 1,
+    "offline_local_artifacts_only": true
+  },
+  "rights": {
+    "model_and_voicepack_license": "Apache-2.0",
+    "model_card_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/README.md",
+    "model_license_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/COPYING",
+    "voice_file_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/voices/bm_george.pt",
+    "controlled_text_public_domain": true,
+    "author_death_year": 1894,
+    "original_publication_year": 1886,
+    "source_rights_url": "https://www.gutenberg.org/ebooks/43",
+    "private_audition_allowed": true,
+    "production_release_approved": false,
+    "public_disclosure_required_if_later_approved": "AI voice"
+  },
+  "safety": {
+    "provider_calls": 0,
+    "estimated_tts_provider_cost_usd": 0.0,
+    "paid_tts_lock": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_touched": false,
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/jekyll-and-hyde/f3ff3571-bm-george-representative-v1",
+    "audio_generated": true,
+    "listening_provider_calls": 0,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false,
+    "paid_tts_lock_before": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_after": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_unchanged": true
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_OBJECTIVE_OR_ASR_GATE_FAILED",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "JEKYLL_TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN",
+    "OWNER_10_TARGET_NOT_VERIFIED",
+    "FRONT_COVER_LINKAGE_REQUIRED_BEFORE_PUBLICATION"
+  ],
+  "g2p_preflight_evidence": [
+    {
+      "passage_id": "opening_character",
+      "source_text_sha256": "b491afef3119554f32c9250f5a81446b55bd81a63bf2fecf3b4940da8e4f1994",
+      "phoneme_sha256": "c4b5329c8ecda3ec2db00fd0b131546f0a1866cbd4849cb4ee70dc040435accc",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    },
+    {
+      "passage_id": "carew_murder",
+      "source_text_sha256": "b45aebd6abcc2e730d156ad71d2964eeff8a1f472cc7146ade53575ec386bd8f",
+      "phoneme_sha256": "d44754a9374f2f6f4590122eac9b97e693426cc67a8912fd1ae806688cb2bf4b",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    },
+    {
+      "passage_id": "lanyon_transformation",
+      "source_text_sha256": "3bd9b43260be8299d10f73995dd4c5706e39eba3e0844bf88c619bc7373d47ff",
+      "phoneme_sha256": "241ae80b022816cd45e1657485369330d624da4bdcced07095363cfed486831e",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    },
+    {
+      "passage_id": "final_confession",
+      "source_text_sha256": "fee77d935c85880bed743ddd65949450c5bb5f5528e8a40101d34cf3e2d11e93",
+      "phoneme_sha256": "83f057519e2bf67c4c416f089a650ea9d468aef6ca696493c1d56bf7f3d1a5c0",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    }
+  ],
+  "samples": [
+    {
+      "passage_id": "opening_character",
+      "source_text_sha256": "b491afef3119554f32c9250f5a81446b55bd81a63bf2fecf3b4940da8e4f1994",
+      "characters": 989,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/jekyll-and-hyde/f3ff3571-bm-george-representative-v1/opening_character.wav",
+      "phoneme_sha256": "040fc8c5c16c0bca92901921a3627498574af80b6b1e0937887518e03a52fd98",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 56.575,
+      "size_bytes": 2715644,
+      "audio_sha256": "0c39a3fa2fe66131f9c57cfbac3e5b270f5b43d75aa215158d9d298a508381a6",
+      "peak_fraction": 0.421613,
+      "rms_fraction": 0.055719,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "carew_murder",
+      "source_text_sha256": "b45aebd6abcc2e730d156ad71d2964eeff8a1f472cc7146ade53575ec386bd8f",
+      "characters": 915,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/jekyll-and-hyde/f3ff3571-bm-george-representative-v1/carew_murder.wav",
+      "phoneme_sha256": "871be02d02e2790027e1e589a009b781dce62ec8431750d62a369dc7383758bb",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 52.3,
+      "size_bytes": 2510444,
+      "audio_sha256": "dad290dcd691f60904a855373a1487ab3cd6ce393cb8bbf5776f931938b8145e",
+      "peak_fraction": 0.444288,
+      "rms_fraction": 0.056657,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "lanyon_transformation",
+      "source_text_sha256": "3bd9b43260be8299d10f73995dd4c5706e39eba3e0844bf88c619bc7373d47ff",
+      "characters": 680,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/jekyll-and-hyde/f3ff3571-bm-george-representative-v1/lanyon_transformation.wav",
+      "phoneme_sha256": "41e3ba362f47b7bdb03202de3d22e1e0c00ca3b701a1fd91689837822a019858",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 41.525,
+      "size_bytes": 1993244,
+      "audio_sha256": "3fe90dbfdceab82ab91bd28e58406cf145d107c141e2747aee98caa27966f0bb",
+      "peak_fraction": 0.407697,
+      "rms_fraction": 0.05675,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "final_confession",
+      "source_text_sha256": "fee77d935c85880bed743ddd65949450c5bb5f5528e8a40101d34cf3e2d11e93",
+      "characters": 1460,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/jekyll-and-hyde/f3ff3571-bm-george-representative-v1/final_confession.wav",
+      "phoneme_sha256": "d5c4850ce0d083803af3b84b3a442dabe7d9096028971332604fb293497fe29e",
+      "kokoro_lang_code": "b",
+      "g2p_british": true,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 90.5,
+      "size_bytes": 4344044,
+      "audio_sha256": "e4fbad3f91538722187afd82dede7e4e4691977f652e091933fb1a53d11d3112",
+      "peak_fraction": 0.416364,
+      "rms_fraction": 0.057642,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    }
+  ],
+  "asr": {
+    "status": "FAIL",
+    "mode": "ASR_REVERIFY_EXISTING_AUDIO_ONLY",
+    "config_fingerprint": "35822c09b7b162b790c258557c25abee07363873ab98f0a730edfbc6bb7468d9",
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "audio_derived": true,
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "prompt_policy": {
+      "opening_character": "canonical_vocabulary_prompt",
+      "carew_murder": "canonical_vocabulary_prompt",
+      "lanyon_transformation": "canonical_vocabulary_prompt",
+      "final_confession": "canonical_vocabulary_prompt"
+    },
+    "source_equivalence_policy": {
+      "opening_character": [],
+      "carew_murder": [],
+      "lanyon_transformation": [],
+      "final_confession": []
+    },
+    "unexpected_speech_may_be_normalized_or_discarded": false,
+    "reports": [
+      {
+        "passage_id": "opening_character",
+        "audio_sha256": "0c39a3fa2fe66131f9c57cfbac3e5b270f5b43d75aa215158d9d298a508381a6",
+        "source_text_sha256": "b491afef3119554f32c9250f5a81446b55bd81a63bf2fecf3b4940da8e4f1994",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "93220190e7798554a4b4dd335ab10df1f998b2c61f5e737269316eb377e0d0db",
+        "transcript": "Mr. Utterson, the lawyer, was a man of a rugged countenance that was never lighted by a smile, cold, scanty and embarrassed in discourse, backward in sentiment, lean, long, dusty, dreary and yet somehow lovable. At friendly meetings, and when the wine was to his taste, something eminently human-beakened from his eye, something indeed which never found its way into his talk, but which spoke not only in these silent symbols of the after-dinner face, but more often and loudly in the acts of his life. He was austere with himself, drank gin when he was alone, to mortify a taste for vintages, and though he enjoyed the theatre, had not crossed the doors of one for twenty years, but he had an approved tolerance for others, sometimes wandering, almost with envy, at the high pressure of spirits involved in their misdeeds, and in any extremity inclined to help rather than to reprove. I incline to Cain's heresy, he used to say quaintly, I let my brother go to the devil in his own way. Thank you for watching. I'll see you next time.",
+        "transcript_sha256": "a44b2c4c15e3c8bfc9141891dc04cf06f77b046c88c4962f0428912affea5fa4",
+        "evaluated_transcript": "Mr. Utterson, the lawyer, was a man of a rugged countenance that was never lighted by a smile, cold, scanty and embarrassed in discourse, backward in sentiment, lean, long, dusty, dreary and yet somehow lovable. At friendly meetings, and when the wine was to his taste, something eminently human-beakened from his eye, something indeed which never found its way into his talk, but which spoke not only in these silent symbols of the after-dinner face, but more often and loudly in the acts of his life. He was austere with himself, drank gin when he was alone, to mortify a taste for vintages, and though he enjoyed the theatre, had not crossed the doors of one for twenty years, but he had an approved tolerance for others, sometimes wandering, almost with envy, at the high pressure of spirits involved in their misdeeds, and in any extremity inclined to help rather than to reprove. I incline to Cain's heresy, he used to say quaintly, I let my brother go to the devil in his own way. Thank you for watching. I'll see you next time.",
+        "evaluated_transcript_sha256": "a44b2c4c15e3c8bfc9141891dc04cf06f77b046c88c4962f0428912affea5fa4",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.460368,
+        "score": 9.6419,
+        "coverage": 0.9887,
+        "precision": 0.9409,
+        "source_token_count": 177,
+        "transcript_token_count": 186,
+        "equal_token_count": 175,
+        "first_words_match": true,
+        "last_words_match": false,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": false,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "beaconed": 1,
+          "wondering": 1
+        },
+        "duplicate_tokens": {
+          "for": 1
+        },
+        "unexpected_tokens": {
+          "beakened": 1,
+          "for": 1,
+          "wandering": 1,
+          "thank": 1,
+          "you": 2,
+          "watching": 1,
+          "i'll": 1,
+          "see": 1,
+          "next": 1,
+          "time": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              49,
+              50
+            ],
+            "transcript_range": [
+              49,
+              50
+            ],
+            "source_tokens": [
+              "beaconed"
+            ],
+            "transcript_tokens": [
+              "beakened"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              130,
+              131
+            ],
+            "transcript_range": [
+              130,
+              131
+            ],
+            "source_tokens": [
+              "wondering"
+            ],
+            "transcript_tokens": [
+              "wandering"
+            ]
+          },
+          {
+            "operation": "insert",
+            "source_range": [
+              177,
+              177
+            ],
+            "transcript_range": [
+              177,
+              186
+            ],
+            "source_tokens": [],
+            "transcript_tokens": [
+              "thank",
+              "you",
+              "for",
+              "watching",
+              "i'll",
+              "see",
+              "you",
+              "next",
+              "time"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "carew_murder",
+        "audio_sha256": "dad290dcd691f60904a855373a1487ab3cd6ce393cb8bbf5776f931938b8145e",
+        "source_text_sha256": "b45aebd6abcc2e730d156ad71d2964eeff8a1f472cc7146ade53575ec386bd8f",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "93220190e7798554a4b4dd335ab10df1f998b2c61f5e737269316eb377e0d0db",
+        "transcript": "Presently her eye wandered to the other, and she was surprised to recognise in him a certain Mr. Hyde, who had once visited her master, and for whom she had conceived a dislike. He had in his hand a heavy cane, with which he was trifling, but he answered never a word, and seemed to listen with an ill-contained impatience. And then all of a sudden he broke out in a great flame of anger, stamping with his foot, brandishing the cane, and carrying on, as the maid described it, like a madman. The old gentleman took a step back, with the air of one very much surprised and a trifle hurt, and at that Mr. Hyde broke out of all bounds and clubbed him to the earth. And next moment, with ape-like fury, he was trampling his victim underfoot and hailing down a storm of blows, under which the bones were audibly shattered and the body jumped upon the roadway. At the horror of these sights and sounds, the maid fainted.",
+        "transcript_sha256": "681034ce414eeb1bd01fbe6e3abea6f525e6dbc55a4d5278036d20ca786638a0",
+        "evaluated_transcript": "Presently her eye wandered to the other, and she was surprised to recognise in him a certain Mr. Hyde, who had once visited her master, and for whom she had conceived a dislike. He had in his hand a heavy cane, with which he was trifling, but he answered never a word, and seemed to listen with an ill-contained impatience. And then all of a sudden he broke out in a great flame of anger, stamping with his foot, brandishing the cane, and carrying on, as the maid described it, like a madman. The old gentleman took a step back, with the air of one very much surprised and a trifle hurt, and at that Mr. Hyde broke out of all bounds and clubbed him to the earth. And next moment, with ape-like fury, he was trampling his victim underfoot and hailing down a storm of blows, under which the bones were audibly shattered and the body jumped upon the roadway. At the horror of these sights and sounds, the maid fainted.",
+        "evaluated_transcript_sha256": "681034ce414eeb1bd01fbe6e3abea6f525e6dbc55a4d5278036d20ca786638a0",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.272325,
+        "score": 9.914,
+        "coverage": 0.9886,
+        "precision": 0.9943,
+        "source_token_count": 175,
+        "transcript_token_count": 174,
+        "equal_token_count": 173,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": false,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "foot": 1,
+          "under": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "underfoot": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              141,
+              143
+            ],
+            "transcript_range": [
+              141,
+              142
+            ],
+            "source_tokens": [
+              "under",
+              "foot"
+            ],
+            "transcript_tokens": [
+              "underfoot"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "lanyon_transformation",
+        "audio_sha256": "3fe90dbfdceab82ab91bd28e58406cf145d107c141e2747aee98caa27966f0bb",
+        "source_text_sha256": "3bd9b43260be8299d10f73995dd4c5706e39eba3e0844bf88c619bc7373d47ff",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "93220190e7798554a4b4dd335ab10df1f998b2c61f5e737269316eb377e0d0db",
+        "transcript": "He put the glass to his lips and drank at one gulp. A cry followed. He reeled, staggered, clutched at the table and held on, staring with injected eyes, gasping with open mouth. And as I looked there came, I thought, a change, he seemed to swell, his face became suddenly black and the features seemed to melt and alter, and the next moment I had sprung to my feet and leaped back against the wall, my arms raised to shield me from that prodigy, my mind submerged in terror. Oh God! I screamed and oh God! again and again, for there before my eyes, pale and shaken, and half fainting, and groping before him with his hands, like a man restored from death, there stood Henry Jekyll.",
+        "transcript_sha256": "eb57286c4d660a926d5409a05e229ad2c9a6d8ece7930b62e8ec3e3ded932c85",
+        "evaluated_transcript": "He put the glass to his lips and drank at one gulp. A cry followed. He reeled, staggered, clutched at the table and held on, staring with injected eyes, gasping with open mouth. And as I looked there came, I thought, a change, he seemed to swell, his face became suddenly black and the features seemed to melt and alter, and the next moment I had sprung to my feet and leaped back against the wall, my arms raised to shield me from that prodigy, my mind submerged in terror. Oh God! I screamed and oh God! again and again, for there before my eyes, pale and shaken, and half fainting, and groping before him with his hands, like a man restored from death, there stood Henry Jekyll.",
+        "evaluated_transcript_sha256": "eb57286c4d660a926d5409a05e229ad2c9a6d8ece7930b62e8ec3e3ded932c85",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.115357,
+        "score": 9.8438,
+        "coverage": 0.9844,
+        "precision": 0.9844,
+        "source_token_count": 128,
+        "transcript_token_count": 128,
+        "equal_token_count": 126,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "o": 2
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "oh": 2
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              90,
+              91
+            ],
+            "transcript_range": [
+              90,
+              91
+            ],
+            "source_tokens": [
+              "o"
+            ],
+            "transcript_tokens": [
+              "oh"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              95,
+              96
+            ],
+            "transcript_range": [
+              95,
+              96
+            ],
+            "source_tokens": [
+              "o"
+            ],
+            "transcript_tokens": [
+              "oh"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "final_confession",
+        "audio_sha256": "e4fbad3f91538722187afd82dede7e4e4691977f652e091933fb1a53d11d3112",
+        "source_text_sha256": "fee77d935c85880bed743ddd65949450c5bb5f5528e8a40101d34cf3e2d11e93",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "93220190e7798554a4b4dd335ab10df1f998b2c61f5e737269316eb377e0d0db",
+        "transcript": "About a week has passed, and I am now finishing this statement under the influence of the last of the old powders. This, then, is the last time, short of a miracle, that Henry Jekyll can think his own thoughts or see his own face, now how sadly altered, in the glass. Nor must I delay too long to bring my writing to an end, for if my narrative has hitherto escaped destruction, it has been by a combination of great prudence and great good luck. Should the throes of change take me in the act of writing it, Hyde will tear it in pieces, but if some time shall have elapsed after I have laid it by, his wonderful selfishness and circumscription to the moment will probably save it once again from the action of his ape-like spite, and indeed the doom that is closing on us both has already changed and crushed him. Half an hour from now, when I shall again and forever reindue that hated personality, I know how I shall sit shuddering and weeping in my chair or continue with the most strained and fear-struck ecstasy of listening To pace up and down this room my last earthly refuge and give ear to every sound of menace Will hide die upon the scaffold or will he find courage to release himself at the last moment? God knows I am careless. This is my true hour of death and what is to follow concerns another than myself Here, then, as I lay down the pen and proceed to seal up my confession, I bring the life of that unhappy Henry Jekyll to an end.",
+        "transcript_sha256": "ae57240ff9811a31dcb41ccb2e3256308fce88ac87fdb8386b75b3038755e051",
+        "evaluated_transcript": "About a week has passed, and I am now finishing this statement under the influence of the last of the old powders. This, then, is the last time, short of a miracle, that Henry Jekyll can think his own thoughts or see his own face, now how sadly altered, in the glass. Nor must I delay too long to bring my writing to an end, for if my narrative has hitherto escaped destruction, it has been by a combination of great prudence and great good luck. Should the throes of change take me in the act of writing it, Hyde will tear it in pieces, but if some time shall have elapsed after I have laid it by, his wonderful selfishness and circumscription to the moment will probably save it once again from the action of his ape-like spite, and indeed the doom that is closing on us both has already changed and crushed him. Half an hour from now, when I shall again and forever reindue that hated personality, I know how I shall sit shuddering and weeping in my chair or continue with the most strained and fear-struck ecstasy of listening To pace up and down this room my last earthly refuge and give ear to every sound of menace Will hide die upon the scaffold or will he find courage to release himself at the last moment? God knows I am careless. This is my true hour of death and what is to follow concerns another than myself Here, then, as I lay down the pen and proceed to seal up my confession, I bring the life of that unhappy Henry Jekyll to an end.",
+        "evaluated_transcript_sha256": "ae57240ff9811a31dcb41ccb2e3256308fce88ac87fdb8386b75b3038755e051",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.256487,
+        "score": 9.9106,
+        "coverage": 0.9928,
+        "precision": 0.9893,
+        "source_token_count": 279,
+        "transcript_token_count": 280,
+        "equal_token_count": 277,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "hyde": 1,
+          "fearstruck": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "fear": 1,
+          "struck": 1,
+          "hide": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              190,
+              191
+            ],
+            "transcript_range": [
+              190,
+              192
+            ],
+            "source_tokens": [
+              "fearstruck"
+            ],
+            "transcript_tokens": [
+              "fear",
+              "struck"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              214,
+              215
+            ],
+            "transcript_range": [
+              215,
+              216
+            ],
+            "source_tokens": [
+              "hyde"
+            ],
+            "transcript_tokens": [
+              "hide"
+            ]
+          }
+        ],
+        "pass": false
+      }
+    ]
+  }
+}

@@ -1078,15 +1078,29 @@
       "audiobook_next_action": "obtain the exact owner rights, source, and cover documents in the requirements packet before any paid audio work"
     },
     "jekyll-and-hyde": {
-      "latest_decision": "READY_FOR_REPRESENTATIVE_AUDITION_GOOGLE_ADC_REAUTH_REQUIRED",
-      "decision_reason": "Public reader, public-domain rights, sanitation, graphical cover, and a hash-bound 138182-character private source input pass; Google ADC cannot refresh non-interactively.",
-      "updated_at": "2026-07-13T07:30:39Z",
+      "latest_decision": "KOKORO_BM_GEORGE_REPRESENTATIVE_OBJECTIVE_PASS_AWAITING_LISTENING_QA",
+      "decision_reason": "A source-bound British bm_george candidate reached exact 10.0 ASR/source, 1.0 coverage and precision, exact boundaries, and ordered integrity across four risk-diverse passages after one lexical-preserving opening-only resynthesis. This authorizes only independent private listening QA; full-title and release gates remain incomplete.",
+      "updated_at": "2026-07-21T19:39:11Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
       "source_sha256": "0e8cc7fb6c18abd38def7c85cc2a8f4907bde5f11db48e36ba7fd9afff7fdc8e",
       "source_character_count": 138182,
-      "audiobook_next_action": "Run gcloud auth application-default login, then execute one bounded source-bound representative audition; do not run full TTS unless every audition passage passes."
+      "kokoro_voice": "bm_george",
+      "kokoro_voice_sha256": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+      "kokoro_targeted_resynthesis_fingerprint": "f2b2345ecef735b5ff79e8beeeb61cdbc567392669281606b0b9c5505570599b",
+      "kokoro_prior_projection_fingerprint": "d8f01045423aaa6d4b0a0773db62759325f5360c8b822753ff0fa3e46d4f224a",
+      "kokoro_representative_asr_scores": [10.0, 10.0, 10.0, 10.0],
+      "kokoro_representative_coverages": [1.0, 1.0, 1.0, 1.0],
+      "kokoro_ordered_content_integrity_pass": true,
+      "kokoro_listening_qa_run": false,
+      "full_title_generated": false,
+      "front_cover_linkage_required": true,
+      "upload_performed": false,
+      "publication_performed": false,
+      "completed_synthesis_must_not_repeat": true,
+      "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/jekyll-and-hyde_kokoro_bm_george_targeted_resynthesis_v2.json",
+      "audiobook_next_action": "Run independent private listening QA on the four immutable hash-bound WAVs only. Do not repeat synthesis, generate the full title, upload, or expose Listen unless listening passes and the direct front-cover linkage plus every full-title release gate is completed."
     },
     "the-open-window": {
       "latest_decision": "PUBLIC_AUDIO_RELEASE_PROVEN",

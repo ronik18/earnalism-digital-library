@@ -566,3 +566,11 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - The failure is systemic: 210 sections had missing content, 214 unexpected content, 43 duplicated content, 44 reordered content, and 35 invalid timestamp evidence. Section 178 hallucinated `in the second half` more than fifty times and produced 202 timestamp anomalies.
 - This breadth cannot be repaired by source-bound spelling equivalence. The full-title generation and prompted `medium.en` fingerprints are closed; no same-fingerprint resynthesis, transcript deletion, broad normalization, listening QA, delivery, upload, endpoint, browser, or publication stage is allowed.
 - The public reader remains live and audio hidden. `paid_tts.lock` remained byte-for-byte safe at SHA-256 `f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3`. The next automated attempt for this title must use a checksum-distinct voice/provider, while the next end-to-end pilot should favor a shorter Sprint 1 title.
+
+## 2026-07-21 Jekyll and Hyde Kokoro British Representative Recovery
+
+- A title-specific British `bm_george` bakeoff outperformed `am_michael`. Retained-WAV decoder repair plus a projection limited to source-equivalent spelling and tokenization produced three exact passages without changing audio.
+- The only remaining substantive error was opening `wandering/wondering`. One opening-only resynthesis changed punctuation, speed, seed, and explicit pronunciation while preserving the canonical lexical-token sequence and produced a new immutable private WAV.
+- The final four-passage candidate reached ASR/source `10.0`, coverage and precision `1.0`, exact first/last boundaries, and no missing, duplicate, reordered, or unexpected content on every passage.
+- Representative objective success is not listening or release evidence. Independent listening, full-title content/boundary QA, measured sync, editorial pronunciation review, direct front-cover linkage, private delivery, endpoint, browser, and owner release gates remain open.
+- Kokoro synthesis and Whisper ASR were local at `$0.00`; no listening/provider call, upload, publication, or release mutation ran. `paid_tts.lock` remained byte-for-byte unchanged at SHA-256 `f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3`.
