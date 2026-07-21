@@ -8,7 +8,7 @@
     },
     "sarvam": {
       "status": "bengali_pilot_live_post_live_pr_open",
-      "best_observed_overall": 9.3,
+      "best_observed_overall": 9.4,
       "best_observed_confidence": 0.95,
       "notes": "Synthesis works; full schema-3 judging was interrupted by OpenAI listening-QA quota in prior bakeoff.",
       "model": "bulbul:v3",
@@ -22,7 +22,7 @@
         "release_sufficient": false,
         "reason": "isolated sample did not generalize across representative passages"
       },
-      "best_representative_overall": 9.3,
+      "best_representative_overall": 9.4,
       "best_representative_confidence": 0.95,
       "generalization_confirmed": true,
       "full_pilot_generated": true,
@@ -191,13 +191,43 @@
         "full_title_tts_generated": false,
         "public_audio_approved": false,
         "next_action": "Run the lock-safe Stage 2F title wrapper only after every budget, approval, ASR, and listening-QA gate is present."
+      },
+      "radharani_title_specific_representative": {
+        "status": "PASS_REPRESENTATIVE_ONLY_FULL_TITLE_RUNTIME_GATES_REQUIRED",
+        "provider": "sarvam",
+        "model": "bulbul:v3",
+        "voice": "ratan",
+        "style": "literary_warm_pacing",
+        "passages": [
+          "narrative_opening",
+          "dialogue"
+        ],
+        "overall_listening_score": 9.4,
+        "confidence": 0.95,
+        "fatal_flags": [],
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "evidence": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/radharani_representative_audition/bengali_tts_provider_bakeoff_report.json",
+        "next_action": "Use this exact arm for one fresh source-bound Radharani full-title canary only after all explicit campaign approval, budget, credential, and slug-scoped lock gates pass."
       }
     },
     "google": {
       "status": "credentials_or_adc_reauth_needed"
     },
     "azure": {
-      "status": "synthesis_cancellation_needs_diagnosis"
+      "status": "synthesis_cancellation_needs_diagnosis",
+      "radharani_retained_candidate": {
+        "status": "PRIVATE_REUSE_REJECTED_FOR_RELEASE_PROVENANCE_ASR_SYNC_UNPROVEN",
+        "provider_recorded_in_candidate_metadata": "command",
+        "voice_recorded_in_candidate_metadata": "bn-IN-TanishaaNeural",
+        "audio_sha256": "4de991f9afc420037ec09683aa4b53e4e62de8a4ae782ebdfb766ec48bb18a56",
+        "checksum_identity_match": true,
+        "exact_paid_azure_generation_or_subscription_proof": false,
+        "audio_derived_asr_source_9_7": "UNPROVEN_OFFLINE_TOOL_INADEQUATE",
+        "measured_paragraph_or_stanza_sync": false,
+        "public_audio_approved": false,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_private_reuse_screen_v1.json"
+      }
     },
     "automated_audiobook_lane_status": "BENGALI_9_2_PATH_FOUND_PILOT_READY",
     "automated_audiobook_lane_paused_at": "2026-07-06T20:36:38Z",
@@ -206,10 +236,14 @@
     "automated_audiobook_lane_reopen_reason": "Owner approved Bengali-specific 9.2 release threshold while preserving fatal-flag and objective release gates.",
     "automated_audiobook_lane_latest_result": "representative_passed; full pilot not generated; objective gates not run",
     "audiobook_completion_campaign": {
-      "status": "BENGALI_AUDIOBOOK_CAMPAIGN_ACTIVE",
+      "status": "SPRINT1_SCOPE_RECONCILED_ONE_RADHARANI_PRIVATE_CANARY_ONLY",
       "policy_version": "bengali_audiobook_acceptance_v2_92",
       "total_campaign_titles": 31,
-      "published_bengali_audiobooks": 0,
+      "published_bengali_audiobooks": 1,
+      "sprint1_bengali_titles": 10,
+      "sprint1_live_bengali_audiobooks": 1,
+      "sprint1_hidden_bengali_audiobooks": 9,
+      "sprint1_next_candidate": "radharani",
       "titles_with_representative_gte_9_2": 1,
       "best_settings": {
         "provider": "sarvam",
@@ -219,8 +253,8 @@
         "representative_score": 9.3,
         "confidence": 0.95
       },
-      "scale_rule": "one full pilot must publish before 3-title canary",
-      "updated_at": "2026-07-06T21:54:41Z",
+      "scale_rule": "Live book-2b9853ec52 satisfies the initial pilot; advance only one Radharani private canary and do not widen until every full release gate passes.",
+      "updated_at": "2026-07-21T19:49:07Z",
       "state_path": "internal/earnalism_intelligence/bengali_audiobook_campaign_state.json",
       "queue_path": "internal/earnalism_intelligence/bengali_audiobook_campaign_queue.json"
     }

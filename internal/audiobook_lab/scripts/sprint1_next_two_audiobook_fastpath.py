@@ -26,7 +26,7 @@ SCRIPT_DIR = ROOT / "internal" / "audiobook_lab" / "scripts"
 FASTPATH_DIR = ROOT / "internal" / "audiobook_lab" / "sprint1_publication" / "next_two_audio_fastpath"
 TITLE_RUNS_DIR = ROOT / "internal" / "audiobook_lab" / "sprint1_publication" / "title_runs"
 PUBLIC_API_BASE = "https://api.theearnalism.com"
-APPROVED_BASELINE = ["book-2b9853ec52", "a-ghost-story", "sredni-vashtar"]
+APPROVED_BASELINE = ["book-2b9853ec52", "a-ghost-story", "sredni-vashtar", "the-open-window"]
 DEFERRED_SLUGS = {
     "pather-panchali",
     "great-expectations",
@@ -57,6 +57,9 @@ PAID_ENV = {
     "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": "true",
     "EARNALISM_BENGALI_BAKEOFF_MAX_ESTIMATED_USD": "1",
     "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": "true",
+    "EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN": "true",
+    "EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD": "75",
+    "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE": "8",
     "EARNALISM_ALLOW_TITLE_SPECIFIC_BENGALI_TTS_ARM": "true",
     "EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD": "5",
     "EARNALISM_BENGALI_TTS_PROVIDER": "sarvam",
@@ -260,20 +263,36 @@ def runtime_gates(env: Mapping[str, str]) -> dict[str, Any]:
     }
 
 
-def lock_snapshot(path: Path) -> dict[str, Any]:
+def lock_snapshot(path: Path, *, slug: str | None = None) -> dict[str, Any]:
     if not path.is_file():
         return {"available": False, "blocker": "PAID_TTS_LOCK_MISSING"}
     try:
         payload = load_json(path)
     except Exception as exc:  # noqa: BLE001 - lock diagnostics must fail closed
         return {"available": False, "blocker": f"PAID_TTS_LOCK_INVALID:{exc}"}
-    available = payload.get("status") == "active" and payload.get("current_holder") == "none" and payload.get("allowed_next_holders") == []
+    allowed_slugs = [str(item) for item in (payload.get("allowed_slugs") or [])]
+    base_available = (
+        payload.get("status") == "active"
+        and payload.get("current_holder") == "none"
+        and payload.get("allowed_next_holders") == []
+    )
+    slug_authorized = slug is None or allowed_slugs == [slug]
+    available = base_available and slug_authorized
+    if not base_available:
+        blocker = "PAID_TTS_LOCK_NOT_AVAILABLE"
+    elif not slug_authorized:
+        blocker = f"PAID_TTS_LOCK_SLUG_MISMATCH:requested={slug}:allowed={','.join(allowed_slugs)}"
+    else:
+        blocker = ""
     return {
         "available": available,
         "status": payload.get("status"),
         "current_holder": payload.get("current_holder"),
         "allowed_next_holders": payload.get("allowed_next_holders"),
-        "blocker": "" if available else "PAID_TTS_LOCK_NOT_AVAILABLE",
+        "approved_scope": payload.get("approved_scope"),
+        "allowed_slugs": allowed_slugs,
+        "requested_slug": slug,
+        "blocker": blocker,
     }
 
 
@@ -283,7 +302,6 @@ def representative_evidence_path(slug: str) -> str:
 
 def paid_env(env: Mapping[str, str], *, slug: str | None = None) -> dict[str, str]:
     child = dict(env)
-    child.update(PAID_ENV)
     if slug:
         child["EARNALISM_BENGALI_FULL_PILOT_SLUG"] = slug
         child["EARNALISM_BENGALI_REPRESENTATIVE_EVIDENCE_PATH"] = representative_evidence_path(slug)
@@ -528,7 +546,7 @@ def process_candidate(
     if preflight["blockers"]:
         write_title_reports(result)
         return result
-    runtime = runtime_gates(paid_env(env, slug=slug))
+    runtime = runtime_gates(env)
     if not runtime["ready_for_bengali_paid_work"]:
         result.update(
             {
@@ -539,7 +557,7 @@ def process_candidate(
         )
         write_title_reports(result)
         return result
-    lock = lock_snapshot(lock_path)
+    lock = lock_snapshot(lock_path, slug=slug)
     if not lock["available"]:
         result.update({"status": "LOCK_PROTOCOL_BLOCKED", "blocker": lock["blocker"], "lock": lock})
         write_title_reports(result)
@@ -566,6 +584,20 @@ def process_candidate(
     }
     if not paid.get("representative_passed"):
         result.update({"status": "REPRESENTATIVE_AUDITION_FAILED", "blocker": paid.get("blocker") or "REPRESENTATIVE_AUDITION_FAILED"})
+        write_title_reports(result)
+        return result
+    if not args.execute:
+        result.update(
+            {
+                "status": "DRY_RUN_FULL_PIPELINE_NOT_EXECUTED",
+                "blocker": "EXECUTE_FLAG_REQUIRED_FOR_PAID_FULL_PIPELINE",
+                "full_pipeline": {
+                    "status": "NOT_EXECUTED",
+                    "command": full_factory_command(slug, publish=args.publish_if_pass),
+                    "provider_call_started": False,
+                },
+            }
+        )
         write_title_reports(result)
         return result
     factory = run_full_factory_if_allowed(slug, asset_root, lock_path, env, publish=args.publish_if_pass)
@@ -639,7 +671,7 @@ def run(args: argparse.Namespace, *, env: Mapping[str, str] | None = None) -> di
     missing_rows = [slug for slug in slugs if slug not in rows]
     if missing_rows:
         raise FastPathError("candidate missing from release evidence: " + ", ".join(missing_rows))
-    runtime = runtime_gates(paid_env(process_env))
+    runtime = runtime_gates(process_env)
     lock = lock_snapshot(args.lock_path)
     controls = production_controls(slugs) if args.execute else {"ok": True, "approved": [], "hidden": [], "blockers": []}
     if args.execute and not controls["ok"]:
@@ -677,8 +709,8 @@ def run(args: argparse.Namespace, *, env: Mapping[str, str] | None = None) -> di
         "runtime_gates": runtime,
         "lock": lock_snapshot(args.lock_path),
         "production_controls": controls,
-        "starting_yes_yes_count": 3,
-        "ending_yes_yes_count": 3 + len(newly_public),
+        "starting_yes_yes_count": len(APPROVED_BASELINE),
+        "ending_yes_yes_count": len(APPROVED_BASELINE) + len(newly_public),
         "newly_public_audiobooks": newly_public,
         "current_public_audiobooks": APPROVED_BASELINE + newly_public,
         "processed_titles": processed,

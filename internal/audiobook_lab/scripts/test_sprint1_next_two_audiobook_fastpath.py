@@ -42,6 +42,13 @@ class NextTwoFastPathTests(unittest.TestCase):
         self.assertFalse(snapshot["ready_for_bengali_paid_work"])
         self.assertIn("SARVAM_API_KEY", snapshot["missing_or_invalid"])
 
+    def test_paid_env_does_not_synthesize_approval_or_budget_gates(self):
+        child = MODULE.paid_env({"SARVAM_API_KEY": "secret"}, slug="radharani")
+        self.assertNotIn("EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS", child)
+        self.assertNotIn("EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN", child)
+        self.assertNotIn("EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD", child)
+        self.assertEqual(child["EARNALISM_BENGALI_FULL_PILOT_SLUG"], "radharani")
+
     def test_lock_snapshot_requires_empty_active_lock(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "paid_tts.lock"
@@ -55,6 +62,43 @@ class NextTwoFastPathTests(unittest.TestCase):
                 encoding="utf-8",
             )
             self.assertFalse(MODULE.lock_snapshot(path)["available"])
+
+    def test_lock_snapshot_rejects_stale_slug_scope(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "paid_tts.lock"
+            path.write_text(
+                json.dumps(
+                    {
+                        "status": "active",
+                        "current_holder": "none",
+                        "allowed_next_holders": [],
+                        "approved_scope": "Nishkriti only",
+                        "allowed_slugs": ["nishkriti"],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            snapshot = MODULE.lock_snapshot(path, slug="radharani")
+        self.assertFalse(snapshot["available"])
+        self.assertIn("PAID_TTS_LOCK_SLUG_MISMATCH", snapshot["blocker"])
+
+    def test_lock_snapshot_rejects_unscoped_paid_candidate(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "paid_tts.lock"
+            path.write_text(
+                json.dumps(
+                    {
+                        "status": "active",
+                        "current_holder": "none",
+                        "allowed_next_holders": [],
+                        "allowed_slugs": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            snapshot = MODULE.lock_snapshot(path, slug="radharani")
+        self.assertFalse(snapshot["available"])
+        self.assertIn("PAID_TTS_LOCK_SLUG_MISMATCH", snapshot["blocker"])
 
     def test_representative_gate_passes_only_current_thresholds(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -172,9 +216,43 @@ class NextTwoFastPathTests(unittest.TestCase):
             mock.patch.object(MODULE, "lock_snapshot", return_value={"available": True}), \
             mock.patch.object(MODULE, "production_controls", return_value={"ok": True, "approved": [], "hidden": [], "blockers": []}):
             summary = MODULE.run(args, env={**MODULE.PAID_ENV, "SARVAM_API_KEY": "x", "OPENAI_API_KEY": "y"})
-        self.assertEqual(summary["ending_yes_yes_count"], 4)
+        self.assertEqual(summary["ending_yes_yes_count"], 5)
         self.assertEqual(summary["processed_titles"][1]["status"], "SKIPPED_MAX_NEW_PUBLICATIONS_REACHED")
         self.assertEqual(process.call_count, 1)
+
+    def test_dry_run_reusing_audition_never_starts_full_factory(self):
+        args = argparse.Namespace(execute=False, publish_if_pass=False, reuse_first=True)
+        release_row = {
+            "slug": "radharani",
+            "title": "Radharani",
+            "language": "Bengali",
+            "public_reader_status": "PUBLIC_READER",
+            "gates": {"source_rights": "PASS", "text_sanitation": "PASS", "text_normalization": "PASS"},
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            book_dir = root / "backend/data/controlled_publications/radharani"
+            (book_dir / "chapters").mkdir(parents=True)
+            (book_dir / "public_book.json").write_text(json.dumps({"cover_url": "front"}), encoding="utf-8")
+            (book_dir / "chapters/chapter-001.json").write_text(json.dumps({"content": "text"}), encoding="utf-8")
+            with mock.patch.object(MODULE, "TITLE_RUNS_DIR", root / "title-runs"), \
+                mock.patch.object(MODULE, "runtime_gates", return_value={"ready_for_bengali_paid_work": True}), \
+                mock.patch.object(MODULE, "lock_snapshot", return_value={"available": True}), \
+                mock.patch.object(MODULE, "existing_representative_audition", return_value={
+                    "status": "PASS", "representative_passed": True, "reused_existing_evidence": True,
+                }), \
+                mock.patch.object(MODULE, "run_full_factory_if_allowed") as full_factory:
+                result = MODULE.process_candidate(
+                    slug="radharani",
+                    asset_root=root,
+                    lock_path=root / "paid_tts.lock",
+                    release_row=release_row,
+                    env={**MODULE.PAID_ENV, "SARVAM_API_KEY": "x", "OPENAI_API_KEY": "y"},
+                    args=args,
+                )
+        self.assertEqual(result["status"], "DRY_RUN_FULL_PIPELINE_NOT_EXECUTED")
+        self.assertFalse(result["full_pipeline"]["provider_call_started"])
+        full_factory.assert_not_called()
 
 
 if __name__ == "__main__":
