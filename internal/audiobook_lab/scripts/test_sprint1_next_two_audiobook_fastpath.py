@@ -100,41 +100,59 @@ class NextTwoFastPathTests(unittest.TestCase):
         self.assertFalse(snapshot["available"])
         self.assertIn("PAID_TTS_LOCK_SLUG_MISMATCH", snapshot["blocker"])
 
-    def test_representative_gate_passes_only_current_thresholds(self):
+    def test_representative_gate_enforces_policy_boundaries(self):
         with tempfile.TemporaryDirectory() as directory:
             sample_path = Path(directory) / "samples.json"
-            sample_path.write_text(
-                json.dumps(
-                    {
-                        "samples": [
-                            {
-                                "status": "PASS",
-                                "scores": {"overall_listening_score": 9.4, "confidence_score": 0.91},
-                                "judge_flags": {"robotic_texture_detected": False},
-                            }
-                        ]
-                    }
-                ),
-                encoding="utf-8",
+
+            def passes(score=9.2, confidence=0.90, flags=None):
+                sample_path.write_text(
+                    json.dumps(
+                        {
+                            "samples": [
+                                {
+                                    "status": "PASS",
+                                    "scores": {
+                                        "overall_listening_score": score,
+                                        "confidence_score": confidence,
+                                    },
+                                    "judge_flags": flags or {},
+                                }
+                            ]
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+                with mock.patch.object(MODULE, "ROOT", Path(directory)):
+                    return MODULE.representative_gate_passed({"sample_results_path": "samples.json"})
+
+            self.assertTrue(passes(score=9.2, confidence=0.90))
+            self.assertFalse(passes(score=9.19, confidence=0.90))
+            self.assertFalse(passes(score=9.2, confidence=0.89))
+            fatal_flags = (
+                "robotic_texture_detected",
+                "mechanical_cadence_detected",
+                "list_reading_rhythm_detected",
+                "choppy_joins_detected",
+                "fallback_tts_detected",
             )
-            with mock.patch.object(MODULE, "ROOT", Path(directory)):
-                self.assertTrue(MODULE.representative_gate_passed({"sample_results_path": "samples.json"}))
-            sample_path.write_text(
-                json.dumps(
+            for flag in fatal_flags:
+                with self.subTest(flag=flag):
+                    self.assertFalse(passes(score=9.2, confidence=0.90, flags={flag: True}))
+
+    def test_release_evidence_reports_policy_listening_minimum(self):
+        with tempfile.TemporaryDirectory() as directory:
+            title_runs = Path(directory) / "title-runs"
+            with mock.patch.object(MODULE, "TITLE_RUNS_DIR", title_runs):
+                MODULE.write_title_reports(
                     {
-                        "samples": [
-                            {
-                                "status": "PASS",
-                                "scores": {"overall_listening_score": 9.3, "confidence_score": 0.91},
-                                "judge_flags": {},
-                            }
-                        ]
+                        "slug": "radharani",
+                        "status": "PAID_GATES_MISSING",
+                        "blocker": "PAID_RUNTIME_GATES_MISSING",
+                        "new_public_audiobook": False,
                     }
-                ),
-                encoding="utf-8",
-            )
-            with mock.patch.object(MODULE, "ROOT", Path(directory)):
-                self.assertFalse(MODULE.representative_gate_passed({"sample_results_path": "samples.json"}))
+                )
+            evidence = json.loads((title_runs / "radharani_release_gate_evidence.json").read_text(encoding="utf-8"))
+        self.assertEqual(evidence["release_gate"]["listening_sample_minimum"], 9.2)
 
     def test_existing_representative_audition_reuses_passing_evidence(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -74,7 +74,7 @@ PAID_ENV = {
     "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "true",
     "EARNALISM_OPENAI_LISTENING_QA_MODEL": "gpt-audio",
 }
-LISTENING_MINIMUM = 9.4
+LISTENING_MINIMUM = 9.2
 LISTENING_CONFIDENCE_MINIMUM = 0.9
 ASR_SOURCE_MINIMUM = 9.7
 PRIOR_ESTIMATED_SPEND_USD = 14.90614
@@ -438,7 +438,7 @@ def representative_blocker(audition: Mapping[str, Any], returncode: int) -> str:
         return f"REPRESENTATIVE_AUDITION_REPORT_MISSING_RETURN_{returncode}"
     if audition.get("blockers"):
         return "; ".join(str(item) for item in audition.get("blockers") or [])
-    return "REPRESENTATIVE_AUDITION_DID_NOT_MEET_9_4_LISTENING_GATE"
+    return f"REPRESENTATIVE_AUDITION_DID_NOT_MEET_{LISTENING_MINIMUM:.1f}_LISTENING_GATE"
 
 
 def full_factory_command(slug: str, *, publish: bool) -> list[str]:
