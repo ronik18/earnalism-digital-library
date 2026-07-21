@@ -1,10 +1,10 @@
 {
   "slug": "the-call-of-the-wild",
-  "generated_at": "2026-07-12T07:04:07Z",
+  "generated_at": "2026-07-21T12:43:37Z",
   "files": [
     {
       "file": "approval_evidence.json",
-      "sha256": "c354fbd9ed94a896bab75b38db6470a1898b0aa5486433e7686a00f48e3359bd"
+      "sha256": "e4e9e8fe177c17b5a2093d4f380039897cae963d860ea339fbd417ac059c55d9"
     },
     {
       "file": "checksum_manifest.json",
@@ -16,7 +16,7 @@
     },
     {
       "file": "public_book.json",
-      "sha256": "e6ccc48019c97806a17b1c71dddb4e470c2cccc7b3df65e4d14db932ad307bd3"
+      "sha256": "163613f919b522eaa37585997eb0f2ac07569e921ab389f832a626c87c1a0b11"
     },
     {
       "file": "reader_manifest.json",
@@ -24,7 +24,7 @@
     },
     {
       "file": "source_evidence.json",
-      "sha256": "3fa6593fa727ec7a5377e9dfa779fa8f23f266a06daa662b12227a46c8125074"
+      "sha256": "336301883a565d6b850abd525597a66ae5a3b7b67bdb3c706a712233f0a47f32"
     },
     {
       "file": "chapters/chapter-001.json",

@@ -534,3 +534,19 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - The new epilogue passed exact ASR/source `10.0`, coverage and precision `1.0` in two independent decoder arms. Eloi improved to `9.964/0.9964`, but source `and` decoded as `am` in both unprompted beam and greedy arms. That substantive conjunction change was not normalized.
 - Three of four representative passages passed exact ordered integrity. Listening, full-title generation, measured sync, delivery, endpoint, browser, and publication stages were therefore skipped; `bm_george` synthesis, ASR-repair, and targeted-resynthesis fingerprints are closed.
 - All audio remains under the private audiobook worktree. Kokoro synthesis and Whisper ASR cost `$0.00`; `paid_tts.lock` remained byte-for-byte unchanged at SHA-256 `f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3`.
+
+## 2026-07-21 The Call of the Wild Retained Edge Reuse Benchmark
+
+- Reuse-first inspection found the retained 110,863,090-byte, 13,857.792-second `en-IN-NeerjaNeural` MP3 and verified its SHA-256 `1da9fb1eafcfd35b62865251e4807b8e5bc7fffcd3d04dfc8491605d9d1d3b63` without moving audio into a public directory.
+- Its 32,374-word timing sidecar aligned to the complete canonical manuscript at coverage `1.0` and score `9.9991`; the only differences were three source `St` to spoken `Saint` expansions before `Bernard`.
+- Actual-audio Whisper checks scored `9.5495`, `9.4954`, `9.3805`, and `9.5281`, with every passage below the mandatory `9.7` ASR/source gate. Misrecognitions included `ferine`, `François`, `caress`, and `Yeehats`, so the sidecar alone cannot establish audio fidelity.
+- Exact commercial rights for the retained Edge recording voice are also unresolved. The Edge fingerprint is closed, no listening/full-title/sync/delivery/publication stage ran, and the title remains reader-live with audio hidden.
+- The next safe comparison is one checksum-distinct Apache-2.0 Kokoro representative lane. All work was local at `$0.00`, and `paid_tts.lock` remained byte-for-byte unchanged.
+
+## 2026-07-21 The Call of the Wild Kokoro am_michael Objective Pilot
+
+- The title-specific American `am_michael` voice was downloaded from the pinned Kokoro revision, bound to SHA-256 `9a443b79a4b22489a5b0ab7c651a0bcd1a30bef675c28333f06971abbd47bd37`, and used only for four private risk-diverse passages. Fallback-free G2P resolved every selected token with exact pronunciation bindings for Puget, Diego, manœuvred, Nig, and Yeehats.
+- Initial ASR scores were `9.7409`, `9.7213`, `9.9294`, and `9.8353`. One retained-WAV, three-arm decoder repair accepted only source-equivalent compound, spelling, and homophone forms and improved the selected results to `9.8969`, `10.0`, `9.9294`, and `9.9061`.
+- The Spitz conflict passed exact ordered integrity. The other passages retained substantive discrepancies: `metal/medal`, `feigned a/feign`, and `coated and/coded as`. These were not normalized away even though every aggregate score exceeded `9.7` after repair.
+- Listening, full-title generation, measured sync, delivery, endpoint, browser, and publication stages were skipped. The synthesis and ASR-repair fingerprints are closed; one lexical-preserving targeted resynthesis of the three failed passages remains a bounded option.
+- Kokoro synthesis and Whisper ASR were local at `$0.00`. All WAVs remain private, public audio stays hidden, and `paid_tts.lock` remained SHA-256 `f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3`.

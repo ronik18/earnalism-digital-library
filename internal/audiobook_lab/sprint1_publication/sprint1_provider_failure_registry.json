@@ -2037,12 +2037,83 @@
       "classification": "INCOMPLETE_FAIL_CLOSED",
       "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
       "canonical_evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_release_gate_evidence.json",
-      "decision_history_classification": null,
-      "attempts": [],
-      "blocked_attempt_fingerprints": [],
-      "blocked_registry_identities": [],
-      "distinct_failed_provider_voice_families": [],
-      "distinct_failed_family_count": 0,
+      "decision_history_classification": "EDGE_AND_KOKORO_REPRESENTATIVE_OBJECTIVE_FAIL_TARGETED_RESYNTHESIS_AVAILABLE",
+      "attempts": [
+        {
+          "provider": "edge",
+          "model": null,
+          "voice": "en-IN-NeerjaNeural",
+          "style": "azure-command-english-natural-expressive",
+          "scope": "representative_sample",
+          "speaking_rate": 1.04,
+          "language": "English",
+          "source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+          "audio_sha256": "1da9fb1eafcfd35b62865251e4807b8e5bc7fffcd3d04dfc8491605d9d1d3b63",
+          "status": "BLOCKED_ASR_SOURCE_AND_RECORDING_RIGHTS",
+          "failed": true,
+          "minimum_observed_score": 9.3805,
+          "scores": [9.5495, 9.4954, 9.3805, 9.5281],
+          "source_coverages": [0.9636, 0.9409, 0.9636, 0.9636],
+          "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_edge_neerja_reuse_benchmark_v1.json",
+          "evidence_kind": "private_reuse_objective_benchmark",
+          "family": "edge:unknown:en-in-neerjaneural:unknown:unknown:unknown:representative_sample",
+          "registry_identity_sha256": "bd0aa3e6a8937bf780ae6bd02eb8fd450dd14ee05a7a89daa294d84b1ad7886e",
+          "registry_identity_provenance": "DERIVED_FROM_TITLE_PROVIDER_VOICE_SOURCE_AND_AUDIO_HASH",
+          "attempt_fingerprint": "5cc0e9048d63631aa43dd21819334b44c62a495bbb27823bdbc519549352ce76",
+          "fingerprint_type": "sha256",
+          "fingerprint_is_evidence_native": true,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "evidence_paths": [
+            "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_edge_neerja_reuse_benchmark_v1.json"
+          ]
+        },
+        {
+          "provider": "kokoro",
+          "model": "Kokoro-82M 0.9.4",
+          "voice": "am_michael",
+          "style": "call-wild-am-michael-v1",
+          "scope": "representative_audition",
+          "speaking_rate": 0.96,
+          "language": "English",
+          "source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+          "voice_sha256": "9a443b79a4b22489a5b0ab7c651a0bcd1a30bef675c28333f06971abbd47bd37",
+          "status": "BLOCKED_ASR_SOURCE_AFTER_BOUNDED_REPAIR",
+          "failed": true,
+          "minimum_observed_score": 9.8969,
+          "scores": [9.8969, 10.0, 9.9294, 9.9061],
+          "source_coverages": [0.9897, 1.0, 0.9906, 0.9906],
+          "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_asr_repair_v1.json",
+          "evidence_kind": "canonical_title_private_objective_evidence",
+          "family": "kokoro:kokoro-82m-0.9.4:am_michael:call-wild-am-michael-v1:representative_audition",
+          "registry_identity_sha256": "ddbd9bdd2b156c4cd11fc0d53df6b837f6c0aa40ebfcbddc23c2bbfa3254bfeb",
+          "registry_identity_provenance": "DERIVED_FROM_TITLE_PROVIDER_MODEL_VOICE_SOURCE_RATE_AND_SEED",
+          "attempt_fingerprint": "19e1586592c3d553ea9e7dcd6d2273e894f05869f760a6f072419f7028de4903",
+          "asr_repair_fingerprint": "0b990e5c8efbc8fd8eebbe347a95d36922bc00c16f814911136e4a047888b36c",
+          "fingerprint_type": "sha256",
+          "fingerprint_is_evidence_native": true,
+          "fingerprint_is_provider_native": false,
+          "fingerprint_is_synthetic": false,
+          "evidence_paths": [
+            "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_representative_v1.json",
+            "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_asr_repair_v1.json"
+          ]
+        }
+      ],
+      "blocked_attempt_fingerprints": [
+        "0b990e5c8efbc8fd8eebbe347a95d36922bc00c16f814911136e4a047888b36c",
+        "19e1586592c3d553ea9e7dcd6d2273e894f05869f760a6f072419f7028de4903",
+        "5cc0e9048d63631aa43dd21819334b44c62a495bbb27823bdbc519549352ce76"
+      ],
+      "blocked_registry_identities": [
+        "bd0aa3e6a8937bf780ae6bd02eb8fd450dd14ee05a7a89daa294d84b1ad7886e",
+        "ddbd9bdd2b156c4cd11fc0d53df6b837f6c0aa40ebfcbddc23c2bbfa3254bfeb"
+      ],
+      "distinct_failed_provider_voice_families": [
+        "edge:unknown:en-in-neerjaneural:unknown:unknown:unknown:representative_sample",
+        "kokoro:kokoro-82m-0.9.4:am_michael:call-wild-am-michael-v1:representative_audition"
+      ],
+      "distinct_failed_family_count": 2,
       "automated_tts_exhausted": false,
       "exhaustion_evidence": {
         "external_audio_terminal_state": false,
@@ -2050,11 +2121,15 @@
         "approved_release_override": false
       },
       "matrix_classification": "SPRINT_TARGET_INCOMPLETE",
-      "exact_blocker": "TITLE_AUDIO_RELEASE_GATES_INCOMPLETE; PAID_RUNTIME_ENV_GATES_MISSING",
+      "exact_blocker": "RETAINED_EDGE_FAILED_ASR_AND_RIGHTS; KOKORO_AM_MICHAEL_REPAIR_LEFT_METAL_MEDAL_FEIGNED_A_FEIGN_AND_COATED_AND_CODED_AS; ONE_LEXICAL_PRESERVING_TARGETED_RESYNTHESIS_AVAILABLE",
       "packet_exists": false,
       "budget_identity_stages": [],
       "evidence_paths": [
-        "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_release_gate_evidence.json"
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_release_gate_evidence.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_edge_neerja_reuse_benchmark_v1.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_representative_v1.json",
+        "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_asr_repair_v1.json",
+        "internal/earnalism_intelligence/title_decision_history.json"
       ],
       "retry_policy": "DO_NOT_REPEAT_BLOCKED_EVIDENCE_FINGERPRINTS_OR_IDENTITIES"
     },

@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-21T12:38:08Z",
+  "slug": "the-call-of-the-wild",
+  "title": "The Call of the Wild",
+  "author": "Jack London",
+  "status": "PRIVATE_BENCHMARK_COMPLETE_NO_GO",
+  "go_live_decision": "NO_GO",
+  "canonical": {
+    "source_path": "/private/tmp/earnalism-sprint1-distinct-voice/data/controlled_publications/the-call-of-the-wild/chapters",
+    "source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+    "source_characters": 177305,
+    "chapter_count": 7,
+    "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568766/earnalism/covers/front/cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+    "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568843/earnalism/covers/back/back_cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+    "reader_rights_status": "PASS",
+    "recording_voice_rights_status": "UNRESOLVED_FOR_PUBLICATION"
+  },
+  "candidate": {
+    "provider": "edge",
+    "voice": "en-IN-NeerjaNeural",
+    "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/output/english_audiobook_polish/english-polish-edge-queue-v1/bundles/en/the-call-of-the-wild/the-call-of-the-wild.mp3",
+    "audio_sha256": "1da9fb1eafcfd35b62865251e4807b8e5bc7fffcd3d04dfc8491605d9d1d3b63",
+    "audio_size_bytes": 110863090,
+    "duration_ms": 13857792,
+    "recording_voice_rights_status": "UNRESOLVED_FOR_PUBLICATION",
+    "benchmark_fingerprint": "5cc0e9048d63631aa43dd21819334b44c62a495bbb27823bdbc519549352ce76"
+  },
+  "source_sidecar_alignment": {
+    "source_token_count": 32374,
+    "sidecar_word_count": 32374,
+    "exact_token_count": 32371,
+    "approved_abbreviation_expansions": [
+      {
+        "index": 539,
+        "source": "st",
+        "spoken": "saint"
+      },
+      {
+        "index": 28758,
+        "source": "st",
+        "spoken": "saint"
+      },
+      {
+        "index": 28826,
+        "source": "st",
+        "spoken": "saint"
+      }
+    ],
+    "coverage": 1.0,
+    "score": 9.9991,
+    "first_words_match": true,
+    "last_words_match": true,
+    "timeline_monotonic": true,
+    "timeline_end_matches_audio_metadata": true
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_last_words_required": true
+  },
+  "representative_samples": [
+    {
+      "passage_id": "opening_exposition",
+      "risk": "opening_exposition_and_long_sentence_pacing",
+      "source_text_sha256": "8f8ae0f177aff35f768d715920a2de795c1bcd365ae059e0aa3b817b200264ad",
+      "source_word_count": 220,
+      "source_sidecar_range": [
+        19,
+        239
+      ],
+      "start_ms": 8912,
+      "end_ms": 109328,
+      "duration_seconds": 100.416,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/reuse/the-call-of-the-wild/edge-neerja-representative-v1/opening_exposition.wav",
+      "audio_sha256": "2e4559993b0997e2dee7652c672b617b3eb8be3ce4b19e6cc61439dbe7349e5a",
+      "audio_size_bytes": 3213390
+    },
+    {
+      "passage_id": "trail_action",
+      "risk": "sled_action_names_and_command_cadence",
+      "source_text_sha256": "b2b3725f26057017925584567c9a4f242eea571fdae22b8247166f06cf8726ae",
+      "source_word_count": 220,
+      "source_sidecar_range": [
+        4357,
+        4577
+      ],
+      "start_ms": 1864344,
+      "end_ms": 1956116,
+      "duration_seconds": 91.772,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/reuse/the-call-of-the-wild/edge-neerja-representative-v1/trail_action.wav",
+      "audio_sha256": "1e343e047820a5b761e697e8ee47893e4b626020cc10e0be95dc735e037e0c51",
+      "audio_size_bytes": 2936782
+    },
+    {
+      "passage_id": "thornton_bond",
+      "risk": "restrained_emotion_and_human_animal_bond",
+      "source_text_sha256": "ee5243e48388831df45a4ee3086226ff8feed75f2bbd671ca9f598649c38c379",
+      "source_word_count": 220,
+      "source_sidecar_range": [
+        21880,
+        22100
+      ],
+      "start_ms": 9415773,
+      "end_ms": 9506328,
+      "duration_seconds": 90.555,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/reuse/the-call-of-the-wild/edge-neerja-representative-v1/thornton_bond.wav",
+      "audio_sha256": "7cc86dc6793be619999e1bb48fb3c7610a65dccb240dfab85481551339042cdb",
+      "audio_size_bytes": 2897838
+    },
+    {
+      "passage_id": "closing_call",
+      "risk": "yeehaat_names_reflection_and_final_words",
+      "source_text_sha256": "2c7c5536ff5614d659f596d887a778e67077641a130574c6fe235c7c65a6788c",
+      "source_word_count": 220,
+      "source_sidecar_range": [
+        32154,
+        32374
+      ],
+      "start_ms": 13764101,
+      "end_ms": 13857792,
+      "duration_seconds": 93.691,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/reuse/the-call-of-the-wild/edge-neerja-representative-v1/closing_call.wav",
+      "audio_sha256": "b3b8ce4ffe0eeda18642c207a0ad214929d67fd047a7ea7ca68b00c19ab0b98a",
+      "audio_size_bytes": 2998190
+    }
+  ],
+  "representative_asr": [
+    {
+      "passage_id": "opening_exposition",
+      "source_text_sha256": "8f8ae0f177aff35f768d715920a2de795c1bcd365ae059e0aa3b817b200264ad",
+      "audio_sha256": "2e4559993b0997e2dee7652c672b617b3eb8be3ce4b19e6cc61439dbe7349e5a",
+      "transcript": "Wakens the Fyrine Strain. Buck did not read the newspapers, or he would have known that trouble. Was brewing, not alone for himself, but for every tied water dog, strong of muscle and with warm, long hair, from Puget Sound to San. Diego. Because men, groping in the Arctic darkness, had found a yellow. Metal, and because steamship and transportation companies were booming. The find, thousand years ago, Thousands of men were rushing into the Northland. These men wanted dogs, and the dogs they wanted were heavy dogs with strong muscles by which too tall and furry coats to protect them from the frost. Buck lived at a big house in the sun-kissed Santa Clara Valley. Judge Miller's place, it was called. It stood back from the road, half hidden, among the trees, through which glimpses could be caught off the wide. Cool veranda that ran around its four sides. The house was approached by gravel driveways which wound about through wide-spreading lawns, and under the interlacing boughs of tall poplars, at the rear things, were on even a more spacious scale than at the front. There were great stables, where There are dozen grooms and boys held forth, rows of wine-clad. Servants' cottages, an endless and orderly array of outhouses, long. Grape arbors, green pastures, orchards, and berry patches.",
+      "transcript_sha256": "5b374c356180216f0b3ccf0c643e94d00de15c6d186711ec0860cba213b6fbe1",
+      "metrics": {
+        "score": 9.5495,
+        "coverage": 0.9636,
+        "precision": 0.9464,
+        "source_token_count": 220,
+        "transcript_token_count": 224,
+        "equal_token_count": 212,
+        "first_words_match": false,
+        "last_words_match": true,
+        "no_missing_content": false,
+        "no_duplicate_content": false,
+        "asr_gate_pass": false
+      }
+    },
+    {
+      "passage_id": "trail_action",
+      "source_text_sha256": "b2b3725f26057017925584567c9a4f242eea571fdae22b8247166f06cf8726ae",
+      "audio_sha256": "1e343e047820a5b761e697e8ee47893e4b626020cc10e0be95dc735e037e0c51",
+      "transcript": "Buckles. It was a harness, such as he had seen the grooms put on the horses at home, and as he had seen horses work, so he was set to work hauling Francoise on a sled to the forest, that fringed the valley and returning with a load of firewood. Though his dignity was sorely hurt by thus being made a draught animal, he was. Too wise to rebel. He buckled down with a will and did his best, though. It was all new and strange. Francoise was stern, demanding instant. Obedience, and by virtue of his whip receiving instant obedience, a while. Dave, who was an experienced wheeler, nipped Buck's hindquarters. Whenever he was in error. Spitz was the leader, likewise experienced, and while he could not always get at Buck, he growled sharp reproof now. And again, or cunningly threw his weight in the traces to jerk Buck into the way he should go. Buck learned easily, and under the combined. Tuition of his two mates and Francoist made remarkable progress. array they returned to camp he knew enough to stop at ho to go ahead at mash to swing wide on the bends and to keep clear of the wheeler when the loaded sled shot downhill at their heels t-ray where",
+      "transcript_sha256": "98dfc885b41b8664e4eb62d1618db2cf4563be74359045bc2dcebe433ac9e3c9",
+      "metrics": {
+        "score": 9.4954,
+        "coverage": 0.9409,
+        "precision": 0.9583,
+        "source_token_count": 220,
+        "transcript_token_count": 216,
+        "equal_token_count": 207,
+        "first_words_match": false,
+        "last_words_match": false,
+        "no_missing_content": false,
+        "no_duplicate_content": false,
+        "asr_gate_pass": false
+      }
+    },
+    {
+      "passage_id": "thornton_bond",
+      "source_text_sha256": "ee5243e48388831df45a4ee3086226ff8feed75f2bbd671ca9f598649c38c379",
+      "audio_sha256": "7cc86dc6793be619999e1bb48fb3c7610a65dccb240dfab85481551339042cdb",
+      "transcript": "And as Buck understood the oaths to be love words, so the man understood this. Faint bite for a carousel. For the most part, however, Buck's love was expressed in adoration. While he went wild with happiness when Thornton touched him or spoke to him, he did not seek these tokens. Unlike Skeet, who was won't to shove, her nose under Thornton's hand in nudge and nudge-dill petted, or Neg, who would stalk up and rest his great head on Thornton's knee, Buck was. Content to adore at a distance. He would lie by the hour, eager, alert, at Thornton's feet, looking up into his face, dwelling upon it, studying it, following with keenest interest each fleeting expression, every movement or change of feature. Or, as chance might have it, he Would lie farther away, to the side or rear, watching the outlines of The man and the occasional movements of his body And often such was. The communion in which they lived, the strength of Buck's gaze would Draw John Thornton's head around, and he would return the gaze without out. Speech, his heart shining out of his eyes as Buck's heart shone out. For a long time after his rescue, Buck did not like Thornton to get out. Of his sight. From the moment he left the tent to when he",
+      "transcript_sha256": "25e81ef22caa9f343b7f1e78788a22ce89d176b9318702ad38b1bf781ed2b0a5",
+      "metrics": {
+        "score": 9.3805,
+        "coverage": 0.9636,
+        "precision": 0.9138,
+        "source_token_count": 220,
+        "transcript_token_count": 232,
+        "equal_token_count": 212,
+        "first_words_match": false,
+        "last_words_match": false,
+        "no_missing_content": false,
+        "no_duplicate_content": false,
+        "asr_gate_pass": false
+      }
+    },
+    {
+      "passage_id": "closing_call",
+      "source_text_sha256": "2c7c5536ff5614d659f596d887a778e67077641a130574c6fe235c7c65a6788c",
+      "audio_sha256": "b3b8ce4ffe0eeda18642c207a0ad214929d67fd047a7ea7ca68b00c19ab0b98a",
+      "transcript": "Prince about them in the snow greater than the prince of any wolf. Each fall, when the Yeehats follow the movement of the moose, there is a certain valley which they never enter. And women there are who become sad when the word goes over. The fire of how the evil spirit came to select that valley for an abiding place. In the summers there is one visitor, however, to that valley, of which the Yehats do not know. It is a great, gloriously coated wolf, like, and yet unlike, all other wolves. He crosses alone from the smiling timberland and comes down into an open space among the trees. Here a yellow stream flows from rotted moose hide sacks and sinks into the ground with long grasses growing through it and vegetable mold. Overrunning it and hiding its yellow from the sun, and here he muses. For a time, howling once, long and mournfully, Arrey he departs. But he is not always alone. When the long winter nights come on and are, wolves follow their meat into the lower valleys he may be seen running. At the head of the pack through the pale moonlight or glimmering, Borealis, leaping gigantic above his fellows, his great throat a-below, as he sings a song of the younger world, which is the song of the pack.",
+      "transcript_sha256": "5b30c850942a3f6257e8c84265ad6aca46479b6b112a456d6659eb7688e97fe1",
+      "metrics": {
+        "score": 9.5281,
+        "coverage": 0.9636,
+        "precision": 0.9422,
+        "source_token_count": 220,
+        "transcript_token_count": 225,
+        "equal_token_count": 212,
+        "first_words_match": false,
+        "last_words_match": true,
+        "no_missing_content": false,
+        "no_duplicate_content": false,
+        "asr_gate_pass": false
+      }
+    }
+  ],
+  "representative_asr_pass": false,
+  "safety": {
+    "provider_calls": 0,
+    "estimated_provider_cost_usd": 0.0,
+    "paid_tts_lock_touched": false,
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/reuse/the-call-of-the-wild/edge-neerja-representative-v1",
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_ASR_SOURCE_GATE_FAILED",
+    "EDGE_RECORDING_VOICE_COMMERCIAL_RIGHTS_UNRESOLVED",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_MEASURED_SYNC_NOT_RUN",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN",
+    "PUBLIC_AUDIO_RELEASE_NOT_APPROVED",
+    "OWNER_10_TARGET_NOT_VERIFIED"
+  ],
+  "next_action": "Reject this retained Edge recording for public use unless its exact voice-commercial-rights basis is documented; use its objective score only as a private benchmark against the Apache-2.0 Kokoro title lane."
+}

@@ -226,6 +226,26 @@
     }
   },
   "english": {
+    "edge": {
+      "status": "private_reuse_benchmark_only_not_publication_cleared",
+      "the_call_of_the_wild": {
+        "source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+        "audio_sha256": "1da9fb1eafcfd35b62865251e4807b8e5bc7fffcd3d04dfc8491605d9d1d3b63",
+        "voice": "en-IN-NeerjaNeural",
+        "benchmark_fingerprint": "5cc0e9048d63631aa43dd21819334b44c62a495bbb27823bdbc519549352ce76",
+        "source_sidecar_score": 9.9991,
+        "source_sidecar_coverage": 1.0,
+        "representative_asr_scores": [9.5495, 9.4954, 9.3805, 9.5281],
+        "representative_coverages": [0.9636, 0.9409, 0.9636, 0.9636],
+        "ordered_content_integrity_pass": false,
+        "recording_voice_commercial_rights_status": "UNRESOLVED_FOR_PUBLICATION",
+        "listening_qa_run": false,
+        "public_audio_approved": false,
+        "completed_attempts_must_not_repeat": true,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_edge_neerja_reuse_benchmark_v1.json",
+        "next_action": "Do not repeat this exact retained Edge audio/ASR fingerprint. Use the score only as a private benchmark."
+      }
+    },
     "kokoro": {
       "status": "title_specific_mixed_results_multiple_exact_objective_failures",
       "package_version": "0.9.4",
@@ -641,6 +661,35 @@
           "internal/audiobook_lab/sprint1_publication/title_runs/the-secret-garden_kokoro_bf_emma_asr_repair_v1.json"
         ],
         "next_action": "Do not repeat the closed af_bella or bf_emma fingerprints. Keep audio hidden; the Yorkshire dialect passage needs a genuinely different provider/voice family or source-bound narration before any new representative listening or full-title work."
+      },
+      "the_call_of_the_wild": {
+        "source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+        "voice": "am_michael",
+        "voice_sha256": "9a443b79a4b22489a5b0ab7c651a0bcd1a30bef675c28333f06971abbd47bd37",
+        "attempt_fingerprint": "19e1586592c3d553ea9e7dcd6d2273e894f05869f760a6f072419f7028de4903",
+        "asr_repair_fingerprint": "0b990e5c8efbc8fd8eebbe347a95d36922bc00c16f814911136e4a047888b36c",
+        "initial_representative_asr_scores": [9.7409, 9.7213, 9.9294, 9.8353],
+        "initial_representative_coverages": [0.9691, 0.9654, 0.9906, 0.9812],
+        "retained_wav_repair_asr_scores": [9.8969, 10.0, 9.9294, 9.9061],
+        "retained_wav_repair_coverages": [0.9897, 1.0, 0.9906, 0.9906],
+        "ordered_content_integrity_pass": false,
+        "passed_passages": [
+          "spitz_final_conflict"
+        ],
+        "failed_passages": {
+          "opening_exposition": "source metal decoded as medal in all three decoder arms",
+          "thornton_bond": "source feigned a decoded as feign in the selected arm",
+          "closing_call": "source coated and and decoded as coded and as"
+        },
+        "listening_qa_run": false,
+        "full_title_generated": false,
+        "public_audio_approved": false,
+        "completed_attempts_must_not_repeat": true,
+        "evidence_paths": [
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_representative_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_asr_repair_v1.json"
+        ],
+        "next_action": "Do not repeat the am_michael synthesis or ASR-repair fingerprints. One lexical-preserving three-passage targeted resynthesis may test metal, feigned a, and coated and; otherwise use a checksum-distinct voice/provider."
       },
       "the_time_machine": {
         "source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",

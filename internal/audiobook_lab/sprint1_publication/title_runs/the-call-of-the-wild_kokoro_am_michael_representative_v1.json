@@ -1,0 +1,733 @@
+{
+  "schema": "earnalism.kokoro.call_wild_representative.v1",
+  "generated_at": "2026-07-21T12:49:14Z",
+  "status": "PRIVATE_REPRESENTATIVE_PILOT_REJECTED",
+  "scope": {
+    "slug": "the-call-of-the-wild",
+    "title": "The Call of the Wild",
+    "author": "Jack London",
+    "language": "eng",
+    "profile": "call-wild-am-michael-v1",
+    "passage_count": 4,
+    "characters": 4476,
+    "representative_only": true,
+    "full_title_generated": false
+  },
+  "source": {
+    "chapter_path": "/private/tmp/earnalism-sprint1-distinct-voice/data/controlled_publications/the-call-of-the-wild/chapters",
+    "source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+    "passages": [
+      {
+        "passage_id": "opening_exposition",
+        "characters": 555,
+        "text_sha256": "1791560e493d4ea492e40cca2a7ebb9722b70c1bd282a9853cb12877c5172216"
+      },
+      {
+        "passage_id": "spitz_final_conflict",
+        "characters": 1602,
+        "text_sha256": "11ea4acd69bd769dcbb1ac522aa27f90f47bd900a94fffaab4890279a3af5d6f"
+      },
+      {
+        "passage_id": "thornton_bond",
+        "characters": 1171,
+        "text_sha256": "a0f70373151c13d69f99afbec80f83fb548e4b473eb19ad2ab05497c43927567"
+      },
+      {
+        "passage_id": "closing_call",
+        "characters": 1148,
+        "text_sha256": "01835614d16f85410731e48e6a4b11b6fb8f2c75a8cdaa68ba34ab849d09134b"
+      }
+    ],
+    "chapter_count": 7,
+    "source_characters": 177305,
+    "root_backend_bound_files_match": true,
+    "bound_file_sha256": {
+      "approval_evidence.json": "e4e9e8fe177c17b5a2093d4f380039897cae963d860ea339fbd417ac059c55d9",
+      "public_book.json": "163613f919b522eaa37585997eb0f2ac07569e921ab389f832a626c87c1a0b11",
+      "source_evidence.json": "336301883a565d6b850abd525597a66ae5a3b7b67bdb3c706a712233f0a47f32"
+    },
+    "front_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568766/earnalism/covers/front/cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png",
+    "back_cover_url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1779568843/earnalism/covers/back/back_cover_32a20edc-5097-4d64-98d0-fb3d29487a9d.png"
+  },
+  "engine": {
+    "family": "open_weight_local_tts",
+    "package": "kokoro",
+    "package_version": "0.9.4",
+    "model_repo": "hexgrad/Kokoro-82M",
+    "model_revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+    "model_sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+    "config_sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+    "voice": "am_michael",
+    "voice_sha256": "9a443b79a4b22489a5b0ab7c651a0bcd1a30bef675c28333f06971abbd47bd37",
+    "speed": 0.96,
+    "random_seed": 2026072101,
+    "sample_rate_hz": 24000,
+    "pronunciation_overrides": {
+      "Puget": "pjˈuːdʒɪt",
+      "Diego": "diˈeɪɡoʊ",
+      "manœuvred": "mənˈuːvɚd",
+      "Nig": "nˈɪɡ",
+      "Yeehat": "jˈiːhæt",
+      "Yeehats": "jˈiːhæts"
+    },
+    "g2p_fallback_enabled": false,
+    "attempt_fingerprint": "19e1586592c3d553ea9e7dcd6d2273e894f05869f760a6f072419f7028de4903",
+    "known_failed_fingerprint_count": 0,
+    "kokoro_lang_code": "a",
+    "g2p_british": false
+  },
+  "asr_contract": {
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "source_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_required": true,
+    "last_words_required": true,
+    "ordered_content_integrity_required": true
+  },
+  "artifact_evidence": {
+    "model": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/kokoro-v1_0.pth",
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "size_bytes": 327212226
+    },
+    "config": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/config.json",
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "size_bytes": 2351
+    },
+    "voice": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/artifacts/voices/am_michael.pt",
+      "sha256": "9a443b79a4b22489a5b0ab7c651a0bcd1a30bef675c28333f06971abbd47bd37",
+      "size_bytes": 523435
+    },
+    "whisper": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/whisper-cache/medium.en.pt",
+      "sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+      "size_bytes": 1528006491
+    }
+  },
+  "runtime_evidence": {
+    "python_version": "3.11.15",
+    "python_implementation": "CPython",
+    "python_executable": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python",
+    "python_executable_sha256": "50de159a94723fa71090030ac642b101e27f8d29488ec4bdae91edfa1e86dbbd",
+    "package_versions": {
+      "kokoro": "0.9.4",
+      "misaki": "0.9.4",
+      "torch": "2.13.0",
+      "transformers": "5.14.1",
+      "spacy": "3.8.14",
+      "soundfile": "0.14.0",
+      "numpy": "2.4.6",
+      "en-core-web-sm": "3.8.0",
+      "openai-whisper": "20250625"
+    },
+    "deterministic_algorithms_required": true,
+    "torch_thread_count": 1,
+    "offline_local_artifacts_only": true
+  },
+  "rights": {
+    "model_and_voicepack_license": "Apache-2.0",
+    "model_card_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/README.md",
+    "model_license_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/COPYING",
+    "voice_file_url": "https://huggingface.co/hexgrad/Kokoro-82M/blob/f3ff3571791e39611d31c381e3a41a3af07b4987/voices/am_michael.pt",
+    "controlled_text_public_domain": true,
+    "author_death_year": 1916,
+    "author_death_year_evidence_url": "https://www.gutenberg.org/ebooks/215",
+    "original_publication_year": 1903,
+    "original_publication_evidence_url": "https://www.gutenberg.org/ebooks/215",
+    "private_audition_allowed": true,
+    "production_release_approved": false,
+    "public_disclosure_required_if_later_approved": "AI voice"
+  },
+  "safety": {
+    "provider_calls": 0,
+    "estimated_tts_provider_cost_usd": 0.0,
+    "paid_tts_lock": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_touched": false,
+    "private_output_dir": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-call-of-the-wild/f3ff3571-am-michael-representative-v1",
+    "audio_generated": true,
+    "listening_provider_calls": 0,
+    "upload_performed": false,
+    "publication_performed": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "browser_or_system_speech_fallback": false,
+    "paid_tts_lock_before": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_after": {
+      "path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+      "sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+      "size_bytes": 3486,
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "read_only": true
+    },
+    "paid_tts_lock_unchanged": true
+  },
+  "blockers_to_release": [
+    "REPRESENTATIVE_OBJECTIVE_OR_ASR_GATE_FAILED",
+    "INDEPENDENT_LISTENING_QA_NOT_RUN",
+    "FULL_TITLE_NOT_GENERATED",
+    "MEASURED_FULL_TITLE_SYNC_NOT_RUN",
+    "CALL_WILD_TITLE_SCOPED_PRODUCTION_RISK_ACCEPTANCE_NOT_BOUND",
+    "EDITORIAL_PRONUNCIATION_REVIEW_NOT_RUN",
+    "UPLOAD_ENDPOINT_BROWSER_GATES_NOT_RUN",
+    "OWNER_10_TARGET_NOT_VERIFIED"
+  ],
+  "g2p_preflight_evidence": [
+    {
+      "passage_id": "opening_exposition",
+      "source_text_sha256": "1791560e493d4ea492e40cca2a7ebb9722b70c1bd282a9853cb12877c5172216",
+      "phoneme_sha256": "c92b6c4507b09b48cde6dd153607f48b66eef6237980ead8fd56193c814d07cf",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    },
+    {
+      "passage_id": "spitz_final_conflict",
+      "source_text_sha256": "11ea4acd69bd769dcbb1ac522aa27f90f47bd900a94fffaab4890279a3af5d6f",
+      "phoneme_sha256": "6f202af7cfbf213f748afa8d39c73cb808adcaddb24bf58690f8d748642e53e1",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    },
+    {
+      "passage_id": "thornton_bond",
+      "source_text_sha256": "a0f70373151c13d69f99afbec80f83fb548e4b473eb19ad2ab05497c43927567",
+      "phoneme_sha256": "4286ec2e74b58747d2d417ee0b3af80f2e184253f34be8ce6aad5abd146a47a1",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    },
+    {
+      "passage_id": "closing_call",
+      "source_text_sha256": "01835614d16f85410731e48e6a4b11b6fb8f2c75a8cdaa68ba34ab849d09134b",
+      "phoneme_sha256": "eeaafe8a0c7b18a658f0c2909c8f3cb911fb86787000bd57a510b2f6e5e6a9a7",
+      "unresolved_tokens": [],
+      "fallback_enabled": false
+    }
+  ],
+  "samples": [
+    {
+      "passage_id": "opening_exposition",
+      "source_text_sha256": "1791560e493d4ea492e40cca2a7ebb9722b70c1bd282a9853cb12877c5172216",
+      "characters": 555,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-call-of-the-wild/f3ff3571-am-michael-representative-v1/opening_exposition.wav",
+      "phoneme_sha256": "c6f4c4b44f9e7e541de8dee011d808a68ad2974cc44a23a239f790c51fdaa2ba",
+      "kokoro_lang_code": "a",
+      "g2p_british": false,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 38.075,
+      "size_bytes": 1827644,
+      "audio_sha256": "142dc34d80695597a51f0d3d7199392c5fedbcd5f865c4e40dc687140717bb87",
+      "peak_fraction": 0.693686,
+      "rms_fraction": 0.040447,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "spitz_final_conflict",
+      "source_text_sha256": "11ea4acd69bd769dcbb1ac522aa27f90f47bd900a94fffaab4890279a3af5d6f",
+      "characters": 1602,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-call-of-the-wild/f3ff3571-am-michael-representative-v1/spitz_final_conflict.wav",
+      "phoneme_sha256": "9202f644a34d1b5d89e826ba3a501fc715bc42a2c2a6662e4b60708f064999e7",
+      "kokoro_lang_code": "a",
+      "g2p_british": false,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 101.9,
+      "size_bytes": 4891244,
+      "audio_sha256": "ff10825d490813fd40bc2595df610216e5dd773c36196be2041c02f046d54506",
+      "peak_fraction": 0.616535,
+      "rms_fraction": 0.040974,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "thornton_bond",
+      "source_text_sha256": "a0f70373151c13d69f99afbec80f83fb548e4b473eb19ad2ab05497c43927567",
+      "characters": 1171,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-call-of-the-wild/f3ff3571-am-michael-representative-v1/thornton_bond.wav",
+      "phoneme_sha256": "07911ad247de6e308e517cff1003f1416f883384d53fa7add74e6b72e71be5fb",
+      "kokoro_lang_code": "a",
+      "g2p_british": false,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 74.2,
+      "size_bytes": 3561644,
+      "audio_sha256": "41d63dba01fa4370bf87a63892da0281411540ae12ac422e83e419e900bbaae1",
+      "peak_fraction": 0.67571,
+      "rms_fraction": 0.041463,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    },
+    {
+      "passage_id": "closing_call",
+      "source_text_sha256": "01835614d16f85410731e48e6a4b11b6fb8f2c75a8cdaa68ba34ab849d09134b",
+      "characters": 1148,
+      "audio_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/internal/audiobook_lab/private_runs/kokoro/the-call-of-the-wild/f3ff3571-am-michael-representative-v1/closing_call.wav",
+      "phoneme_sha256": "695acf17f7da1b1eb9aecd1814ed9e33615d856cf38b2298c4fb5131c7ab557d",
+      "kokoro_lang_code": "a",
+      "g2p_british": false,
+      "g2p_fallback_enabled": false,
+      "sample_rate_hz": 24000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "duration_seconds": 74.525,
+      "size_bytes": 3577244,
+      "audio_sha256": "61af540b5a7586a245aab7ef8b56394aa359902b249fe8986cf89ff388524942",
+      "peak_fraction": 0.497818,
+      "rms_fraction": 0.040032,
+      "clipped_sample_fraction": 0.0,
+      "objective_format_pass": true
+    }
+  ],
+  "asr": {
+    "status": "FAIL",
+    "mode": "ASR_REVERIFY_EXISTING_AUDIO_ONLY",
+    "config_fingerprint": "38d0227d93cde260025085bd9f7b5203cc80a64e5fceda66a3bff91795cd4fb2",
+    "model": "medium.en",
+    "model_sha256": "d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f",
+    "audio_derived": true,
+    "score_min": 9.7,
+    "coverage_min": 0.98,
+    "prompt_policy": {
+      "opening_exposition": "canonical_vocabulary_prompt",
+      "spitz_final_conflict": "canonical_vocabulary_prompt",
+      "thornton_bond": "canonical_vocabulary_prompt",
+      "closing_call": "canonical_vocabulary_prompt"
+    },
+    "source_equivalence_policy": {
+      "opening_exposition": [],
+      "spitz_final_conflict": [],
+      "thornton_bond": [],
+      "closing_call": []
+    },
+    "unexpected_speech_may_be_normalized_or_discarded": false,
+    "reports": [
+      {
+        "passage_id": "opening_exposition",
+        "audio_sha256": "142dc34d80695597a51f0d3d7199392c5fedbcd5f865c4e40dc687140717bb87",
+        "source_text_sha256": "1791560e493d4ea492e40cca2a7ebb9722b70c1bd282a9853cb12877c5172216",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "13fe990cb9e8cc88f4591581c0e8307d1751e644891c5dc9a9f9c428e6f66d52",
+        "transcript": "Buck did not read the newspapers, or he would have known that trouble was brewing, not alone for himself, but for every tidewater dog, strong of muscle and with warm, long hair, from Puget Sound to San Diego. Because men, groping in the Arctic darkness, had found a yellow medal, and because steamship and transportation companies were booming the find, thousands of men were rushing into the Northland. These men wanted dogs, and the dogs they wanted were heavy dogs, with strong muscles by which to toil and furry coats to protect them from the frost.",
+        "transcript_sha256": "361126381d422714145cb3f09b0910ce629e5ccba42db85bcee55be3bcfa06a0",
+        "evaluated_transcript": "Buck did not read the newspapers, or he would have known that trouble was brewing, not alone for himself, but for every tidewater dog, strong of muscle and with warm, long hair, from Puget Sound to San Diego. Because men, groping in the Arctic darkness, had found a yellow medal, and because steamship and transportation companies were booming the find, thousands of men were rushing into the Northland. These men wanted dogs, and the dogs they wanted were heavy dogs, with strong muscles by which to toil and furry coats to protect them from the frost.",
+        "evaluated_transcript_sha256": "361126381d422714145cb3f09b0910ce629e5ccba42db85bcee55be3bcfa06a0",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.065601,
+        "score": 9.7409,
+        "coverage": 0.9691,
+        "precision": 0.9792,
+        "source_token_count": 97,
+        "transcript_token_count": 96,
+        "equal_token_count": 94,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "tide": 1,
+          "water": 1,
+          "metal": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "tidewater": 1,
+          "medal": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              22,
+              24
+            ],
+            "transcript_range": [
+              22,
+              23
+            ],
+            "source_tokens": [
+              "tide",
+              "water"
+            ],
+            "transcript_tokens": [
+              "tidewater"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              50,
+              51
+            ],
+            "transcript_range": [
+              49,
+              50
+            ],
+            "source_tokens": [
+              "metal"
+            ],
+            "transcript_tokens": [
+              "medal"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "spitz_final_conflict",
+        "audio_sha256": "ff10825d490813fd40bc2595df610216e5dd773c36196be2041c02f046d54506",
+        "source_text_sha256": "11ea4acd69bd769dcbb1ac522aa27f90f47bd900a94fffaab4890279a3af5d6f",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "13fe990cb9e8cc88f4591581c0e8307d1751e644891c5dc9a9f9c428e6f66d52",
+        "transcript": "Buck possessed a quality that made for greatness, imagination. He fought by instinct, but he could fight by head as well. He rushed, as though attempting the old shoulder trick, but at the last instant swept low to the snow and in. His teeth closed on Spitz's left foreleg. There was a crunch of breaking bone, and the white dog faced him on three legs. Thrice he tried to knock him over, then repeated the trick and broke the right foreleg. Despite the pain and helplessness, Spitz struggled madly to keep up. He saw the silent circle, with gleaming eyes, lolling tongues and silvery breaths drifting upward, closing in upon him as he had seen similar circles close in upon beaten antagonists in the past. Only this time he was the one who was beaten. There was no hope for him. Buck was inexorable. Mercy was a thing reserved for gentler climbs. he maneuvered for the final rush. The circle had tightened till he could feel the breaths of the huskies on his flanks. He could see them beyond spits and to either side half crouching for the spring, their eyes fixed upon him. A pause seemed to fall. Every animal was motionless as though turned to stone. Only spits quivered and bristled as he staggered back and forth, snarling with horrible menace as though to frighten off impending death. Then Buck sprang in and out. but while he was in, Shoulder had at last squarely met Shoulder. The dark circle became a dot on the moon flooded snow as Spitz disappeared from view. Buck stood and looked on, the successful champion, the dominant primordial beast who had made his kill and found it good.",
+        "transcript_sha256": "5e26f0b5b3664748181b997c20bc763eff3c117c6ac68a1a4c55ab384ff18c4f",
+        "evaluated_transcript": "Buck possessed a quality that made for greatness, imagination. He fought by instinct, but he could fight by head as well. He rushed, as though attempting the old shoulder trick, but at the last instant swept low to the snow and in. His teeth closed on Spitz's left foreleg. There was a crunch of breaking bone, and the white dog faced him on three legs. Thrice he tried to knock him over, then repeated the trick and broke the right foreleg. Despite the pain and helplessness, Spitz struggled madly to keep up. He saw the silent circle, with gleaming eyes, lolling tongues and silvery breaths drifting upward, closing in upon him as he had seen similar circles close in upon beaten antagonists in the past. Only this time he was the one who was beaten. There was no hope for him. Buck was inexorable. Mercy was a thing reserved for gentler climbs. he maneuvered for the final rush. The circle had tightened till he could feel the breaths of the huskies on his flanks. He could see them beyond spits and to either side half crouching for the spring, their eyes fixed upon him. A pause seemed to fall. Every animal was motionless as though turned to stone. Only spits quivered and bristled as he staggered back and forth, snarling with horrible menace as though to frighten off impending death. Then Buck sprang in and out. but while he was in, Shoulder had at last squarely met Shoulder. The dark circle became a dot on the moon flooded snow as Spitz disappeared from view. Buck stood and looked on, the successful champion, the dominant primordial beast who had made his kill and found it good.",
+        "evaluated_transcript_sha256": "5e26f0b5b3664748181b997c20bc763eff3c117c6ac68a1a4c55ab384ff18c4f",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.273725,
+        "score": 9.7213,
+        "coverage": 0.9654,
+        "precision": 0.9789,
+        "source_token_count": 289,
+        "transcript_token_count": 285,
+        "equal_token_count": 279,
+        "first_words_match": false,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": false,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "but": 1,
+          "fore": 2,
+          "leg": 2,
+          "spitz": 2,
+          "climes": 1,
+          "man": 1,
+          "uvred": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "foreleg": 2,
+          "climbs": 1,
+          "maneuvered": 1,
+          "spits": 2
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "delete",
+            "source_range": [
+              0,
+              1
+            ],
+            "transcript_range": [
+              0,
+              0
+            ],
+            "source_tokens": [
+              "but"
+            ],
+            "transcript_tokens": []
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              49,
+              51
+            ],
+            "transcript_range": [
+              48,
+              49
+            ],
+            "source_tokens": [
+              "fore",
+              "leg"
+            ],
+            "transcript_tokens": [
+              "foreleg"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              82,
+              84
+            ],
+            "transcript_range": [
+              80,
+              81
+            ],
+            "source_tokens": [
+              "fore",
+              "leg"
+            ],
+            "transcript_tokens": [
+              "foreleg"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              154,
+              155
+            ],
+            "transcript_range": [
+              151,
+              152
+            ],
+            "source_tokens": [
+              "climes"
+            ],
+            "transcript_tokens": [
+              "climbs"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              156,
+              158
+            ],
+            "transcript_range": [
+              153,
+              154
+            ],
+            "source_tokens": [
+              "man",
+              "uvred"
+            ],
+            "transcript_tokens": [
+              "maneuvered"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              183,
+              184
+            ],
+            "transcript_range": [
+              179,
+              180
+            ],
+            "source_tokens": [
+              "spitz"
+            ],
+            "transcript_tokens": [
+              "spits"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              213,
+              214
+            ],
+            "transcript_range": [
+              209,
+              210
+            ],
+            "source_tokens": [
+              "spitz"
+            ],
+            "transcript_tokens": [
+              "spits"
+            ]
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "thornton_bond",
+        "audio_sha256": "41d63dba01fa4370bf87a63892da0281411540ae12ac422e83e419e900bbaae1",
+        "source_text_sha256": "a0f70373151c13d69f99afbec80f83fb548e4b473eb19ad2ab05497c43927567",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "13fe990cb9e8cc88f4591581c0e8307d1751e644891c5dc9a9f9c428e6f66d52",
+        "transcript": "And as Buck understood the oaths to be love words, so the man understood this feign bite for caress. For the most part, however, Buck's love was expressed in adoration. While he went wild with happiness when Thornton touched him or spoke to him, he did not seek these tokens. Unlike Skeet, who was wont to shove her nose under Thornton's hand and nudge and nudge till petted, or Nig, who would stalk up and rest his great head on Thornton's knee, Buck was content to adore at a distance. He would lie by the hour, eager, alert, at Thornton's feet, looking up into his face, dwelling upon it, studying it, following with keenest interest each fleeting expression, every movement or change of feature. Or, as chance might have it, he would lie farther away, to the side or rear, watching the outlines of the man and the occasional movements of his body. And often, such was the communion in which they lived, the strength of Buck's gaze would draw John Thornton's head around, and he would return the gaze without speech, his heart shining out of his eyes as Buck's heart shone out. For a long time after his rescue, Buck did not like Thornton to get out of his sight.",
+        "transcript_sha256": "6454dd9eb0c3c50aa542bc5f65b28d7e606ec061ca55a7d667a6a75ef4061ba7",
+        "evaluated_transcript": "And as Buck understood the oaths to be love words, so the man understood this feign bite for caress. For the most part, however, Buck's love was expressed in adoration. While he went wild with happiness when Thornton touched him or spoke to him, he did not seek these tokens. Unlike Skeet, who was wont to shove her nose under Thornton's hand and nudge and nudge till petted, or Nig, who would stalk up and rest his great head on Thornton's knee, Buck was content to adore at a distance. He would lie by the hour, eager, alert, at Thornton's feet, looking up into his face, dwelling upon it, studying it, following with keenest interest each fleeting expression, every movement or change of feature. Or, as chance might have it, he would lie farther away, to the side or rear, watching the outlines of the man and the occasional movements of his body. And often, such was the communion in which they lived, the strength of Buck's gaze would draw John Thornton's head around, and he would return the gaze without speech, his heart shining out of his eyes as Buck's heart shone out. For a long time after his rescue, Buck did not like Thornton to get out of his sight.",
+        "evaluated_transcript_sha256": "6454dd9eb0c3c50aa542bc5f65b28d7e606ec061ca55a7d667a6a75ef4061ba7",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.085511,
+        "score": 9.9294,
+        "coverage": 0.9906,
+        "precision": 0.9953,
+        "source_token_count": 213,
+        "transcript_token_count": 212,
+        "equal_token_count": 211,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": false,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "feigned": 1,
+          "a": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "feign": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              15,
+              16
+            ],
+            "transcript_range": [
+              15,
+              16
+            ],
+            "source_tokens": [
+              "feigned"
+            ],
+            "transcript_tokens": [
+              "feign"
+            ]
+          },
+          {
+            "operation": "delete",
+            "source_range": [
+              18,
+              19
+            ],
+            "transcript_range": [
+              18,
+              18
+            ],
+            "source_tokens": [
+              "a"
+            ],
+            "transcript_tokens": []
+          }
+        ],
+        "pass": false
+      },
+      {
+        "passage_id": "closing_call",
+        "audio_sha256": "61af540b5a7586a245aab7ef8b56394aa359902b249fe8986cf89ff388524942",
+        "source_text_sha256": "01835614d16f85410731e48e6a4b11b6fb8f2c75a8cdaa68ba34ab849d09134b",
+        "prompt_mode": "canonical_vocabulary_prompt",
+        "prompt_sha256": "13fe990cb9e8cc88f4591581c0e8307d1751e644891c5dc9a9f9c428e6f66d52",
+        "transcript": "Each fall, when the Yeehats follow the movement of the moose, there is a certain valley which they never enter, and women there are who become sad when the word goes over the fire of how the evil spirit came to select that valley for an abiding place. In the summers there is one visitor, however, to that valley, of which the Yeehats do not know. It is a great, gloriously coded wolf, like, and yet unlike, all other wolves. He crosses alone from the smiling timber land and comes down into an open space among the trees. Here a yellow stream flows from rotted moosehide sacks and sinks into the ground, with long grasses growing through it and vegetable mold overrunning it and hiding its yellow from the sun. And here he muses for a time, howling once, long and mournfully, ere he departs. But he is not always alone. When the long winter nights come on and the wolves follow their meat into the lower valleys, he may be seen running at the head of the pack through the pale moonlight or glimmering borealis, leaping gigantic above his fellows, his great throat a bellow as he sings a song of the younger world, which is the song of the pack.",
+        "transcript_sha256": "2e1303a672760a3aa8d4f556e5f902ec42a5748b1106bee8690837235a8fd138",
+        "evaluated_transcript": "Each fall, when the Yeehats follow the movement of the moose, there is a certain valley which they never enter, and women there are who become sad when the word goes over the fire of how the evil spirit came to select that valley for an abiding place. In the summers there is one visitor, however, to that valley, of which the Yeehats do not know. It is a great, gloriously coded wolf, like, and yet unlike, all other wolves. He crosses alone from the smiling timber land and comes down into an open space among the trees. Here a yellow stream flows from rotted moosehide sacks and sinks into the ground, with long grasses growing through it and vegetable mold overrunning it and hiding its yellow from the sun. And here he muses for a time, howling once, long and mournfully, ere he departs. But he is not always alone. When the long winter nights come on and the wolves follow their meat into the lower valleys, he may be seen running at the head of the pack through the pale moonlight or glimmering borealis, leaping gigantic above his fellows, his great throat a bellow as he sings a song of the younger world, which is the song of the pack.",
+        "evaluated_transcript_sha256": "2e1303a672760a3aa8d4f556e5f902ec42a5748b1106bee8690837235a8fd138",
+        "source_equivalences_applied": [],
+        "max_no_speech_probability": 0.180375,
+        "score": 9.8353,
+        "coverage": 0.9812,
+        "precision": 0.9858,
+        "source_token_count": 213,
+        "transcript_token_count": 212,
+        "equal_token_count": 209,
+        "first_words_match": true,
+        "last_words_match": true,
+        "ordered_content_integrity_pass": false,
+        "no_missing_content": false,
+        "no_duplicate_content": true,
+        "no_reordered_content": true,
+        "no_unexpected_content": false,
+        "missing_tokens": {
+          "moose": 1,
+          "coated": 1,
+          "hide": 1,
+          "mould": 1
+        },
+        "duplicate_tokens": {},
+        "unexpected_tokens": {
+          "coded": 1,
+          "moosehide": 1,
+          "mold": 1
+        },
+        "ordered_alignment_operations": [
+          {
+            "operation": "replace",
+            "source_range": [
+              71,
+              72
+            ],
+            "transcript_range": [
+              71,
+              72
+            ],
+            "source_tokens": [
+              "coated"
+            ],
+            "transcript_tokens": [
+              "coded"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              105,
+              107
+            ],
+            "transcript_range": [
+              105,
+              106
+            ],
+            "source_tokens": [
+              "moose",
+              "hide"
+            ],
+            "transcript_tokens": [
+              "moosehide"
+            ]
+          },
+          {
+            "operation": "replace",
+            "source_range": [
+              121,
+              122
+            ],
+            "transcript_range": [
+              120,
+              121
+            ],
+            "source_tokens": [
+              "mould"
+            ],
+            "transcript_tokens": [
+              "mold"
+            ]
+          }
+        ],
+        "pass": false
+      }
+    ]
+  }
+}

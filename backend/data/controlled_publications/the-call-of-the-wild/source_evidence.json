@@ -7,6 +7,11 @@
   "content_hash": "71dff1f58d48cd71957425bc2a4a9ebba42925495feeb18eea9d4ffe15072d85",
   "provenance_hash": "49b53124c009c2338bd90289a3568d59b71cae17e3f61451afaf4a6e76024714",
   "rights_basis": "Jack London died in 1916, so the original literary work is public domain in India under life plus 60 years. Original publication in 1903 supports U.S. public-domain status.",
+  "author_death_year": 1916,
+  "original_publication_year": 1903,
+  "author_death_year_evidence_url": "https://www.gutenberg.org/ebooks/215",
+  "original_publication_evidence_url": "https://www.gutenberg.org/ebooks/215",
+  "public_domain_text_basis": "Original literary work by Jack London, first published in 1903; author died in 1916.",
   "downloaded_at": "2026-05-24T04:14:18.062170+00:00",
   "source_format": "text/plain",
   "reader_facing_boilerplate_removed": true
