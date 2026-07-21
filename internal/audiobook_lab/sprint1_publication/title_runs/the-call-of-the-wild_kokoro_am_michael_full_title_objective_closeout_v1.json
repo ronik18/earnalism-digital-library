@@ -1,0 +1,87 @@
+{
+  "schema": "earnalism.call_wild_kokoro_am_michael_full_title_objective_closeout.v1",
+  "generated_at": "2026-07-21T16:40:59Z",
+  "slug": "the-call-of-the-wild",
+  "title": "The Call of the Wild",
+  "author": "Jack London",
+  "status": "PRIVATE_FULL_TITLE_OBJECTIVE_FAIL_FINGERPRINT_CLOSED",
+  "input_evidence": {
+    "path": "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_full_title_private_preflight_v1.json",
+    "sha256": "b24909d7a9cee92e0d6cb08c8351180a833d79ec341afedb35af7620af36b637",
+    "schema": "earnalism.call_wild_kokoro_am_michael_full_title_private_qa.v1",
+    "status": "PRIVATE_FULL_TITLE_REJECTED_OBJECTIVE_QA"
+  },
+  "source": {
+    "canonical_source_sha256": "36bf2714954e352c1c6a5fbbe65af1e77ab622e709e42907cd9451eda0982916",
+    "prepared_source_sha256": "737b712b90a28eaa9489b26bac56b66c1de89bfaf99248abe36dce96ed27763c",
+    "section_count": 280,
+    "rights": "PASS_PUBLIC_DOMAIN_TIER_A",
+    "catalog": "PASS_READER_LIVE_AUDIO_HIDDEN",
+    "covers": "PASS_DIRECT_FRONT_BACK"
+  },
+  "engine": {
+    "provider": "local_kokoro",
+    "model": "Kokoro-82M 0.9.4",
+    "voice": "am_michael",
+    "speed": 0.94,
+    "random_seed": 2026072102,
+    "attempt_fingerprint": "b1eaee2ea9d5dbcdf2fd7fe643a3d23a2c0d31c5445795fc0768ae5e1162ae20",
+    "asr_config_fingerprint": "c6b02227886589eb12f4cd8f6b4fe3e2e27540369b170eb1cef3aa5a403ebbae",
+    "provider_cost_usd": 0.0
+  },
+  "private_audio": {
+    "full_audio_sha256": "2d630a6e8d85ec241c75f9c78511acb2bda55dc225f901b7bdd2d93cfdbabe59",
+    "duration_seconds": 11462.35,
+    "size_bytes": 550192844,
+    "format": "wav_pcm_s16le_24000hz_mono",
+    "public_asset": false
+  },
+  "objective_result": {
+    "asr_status": "FAIL",
+    "measured_sync_status": "FAIL",
+    "full_title_aggregate_score": 9.7347,
+    "full_title_aggregate_coverage": 0.9738,
+    "full_title_aggregate_precision": 0.9731,
+    "measured_sync_score": 4.2553,
+    "measured_sync_coverage": 0.386,
+    "section_pass_count": 64,
+    "section_fail_count": 216,
+    "section_total": 280,
+    "sections_below_9_7": 70,
+    "sections_below_0_98_coverage": 110,
+    "missing_content_failures": 210,
+    "duplicate_content_failures": 43,
+    "reordered_content_failures": 44,
+    "unexpected_content_failures": 214,
+    "timestamp_failures": 35,
+    "first_word_failures": 34,
+    "last_word_failures": 37,
+    "worst_section": {
+      "section_id": "section-178",
+      "score": 4.2553,
+      "coverage": 0.8182,
+      "timestamp_anomaly_count": 202,
+      "fatal_evidence": "decoder repeated the phrase in the second half more than fifty times and omitted the source ending"
+    }
+  },
+  "repair_decision": {
+    "source_bound_offline_projection_allowed": false,
+    "reason": "The failure is systemic and substantive, not a bounded orthographic or acoustic equivalence. Missing, unexpected, duplicated, reordered, boundary, and timestamp defects span 216 sections.",
+    "resynthesis_allowed_for_same_fingerprint": false,
+    "same_decoder_retry_allowed": false,
+    "listening_qa_allowed": false,
+    "delivery_allowed": false,
+    "publication_allowed": false
+  },
+  "safety": {
+    "paid_tts_lock_sha256": "f586acc793022f28adb3e5fe08969075c2a16f09ef6814ebb31f6e6c90163df3",
+    "paid_tts_lock_safe": true,
+    "upload_performed": false,
+    "endpoint_enabled": false,
+    "browser_gate_run": false,
+    "release_gate_mutated": false,
+    "public_audio_approved": false,
+    "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED"
+  },
+  "next_action": "Do not repeat this am_michael full-title generation or prompted medium.en ASR fingerprint. Move The Call of the Wild to a checksum-distinct voice/provider or source-bound narration lane; prioritize a shorter Sprint 1 title for the next end-to-end pilot."
+}

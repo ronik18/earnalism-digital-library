@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-21T13:02:17Z",
+  "generated_at": "2026-07-21T16:40:59Z",
   "slug": "the-call-of-the-wild",
   "title": "The Call of the Wild",
   "language": "English",
@@ -12,19 +12,24 @@
   },
   "publicly_rendered_book": "Yes",
   "publicly_available_audiobook": "No",
-  "quality_score": "REPRESENTATIVE_OBJECTIVE_FAIL_SELECTED_SCORES_9.8969_10.0_9.9294_9.9061",
-  "release_gate_state": "INCOMPLETE_FAIL_CLOSED",
-  "exact_blocker": "EDGE_REUSE_FAILED_ASR_AND_RIGHTS; KOKORO_AM_MICHAEL_REPAIR_LEFT_THREE_EXACT_CONTENT_FAILURES; LISTENING_AND_DOWNSTREAM_GATES_NOT_RUN",
-  "estimated_remaining_cost_usd": 0.0,
-  "evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_asr_repair_v1.json",
+  "quality_score": "FULL_TITLE_OBJECTIVE_FAIL_64_OF_280_SECTIONS_PASS_AGGREGATE_9.7347_COVERAGE_0.9738_SYNC_4.2553",
+  "release_gate_state": "PRIVATE_FULL_TITLE_OBJECTIVE_FAIL_CLOSED",
+  "exact_blocker": "FULL_TITLE_OBJECTIVE_QA_FAILED; 216_OF_280_SECTIONS_FAILED; MISSING_UNEXPECTED_DUPLICATED_REORDERED_AND_TIMESTAMP_DEFECTS; FULL_TITLE_LISTENING_NOT_ALLOWED; DELIVERY_UPLOAD_ENDPOINT_BROWSER_AND_PUBLICATION_GATES_NOT_RUN",
+  "estimated_remaining_cost_usd": "ZERO_FOR_CLOSURE; NEW_CHECKSUM_DISTINCT_PROVIDER_OR_VOICE_UNESTIMATED",
+  "evidence_path": "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_full_title_objective_closeout_v1.json",
   "evidence_paths": [
     "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_edge_neerja_reuse_benchmark_v1.json",
     "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_representative_v1.json",
-    "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_asr_repair_v1.json"
+    "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_asr_repair_v1.json",
+    "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_targeted_resynthesis_v2.json",
+    "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_targeted_asr_projection_v1.json",
+    "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_listening_qa_v1.json",
+    "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_full_title_private_preflight_v1.json",
+    "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_full_title_objective_closeout_v1.json"
   ],
-  "next_action": "Code-review one lexical-preserving three-passage Kokoro targeted-resynthesis contract for metal, feigned a, and coated and; do not repeat closed fingerprints.",
-  "next_command": "PYTHONDONTWRITEBYTECODE=1 /Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/python -m unittest internal/audiobook_lab/scripts/test_sprint1_call_wild_edge_reuse_private_benchmark.py internal/audiobook_lab/scripts/test_sprint1_call_wild_am_michael_private_audition.py internal/audiobook_lab/scripts/test_sprint1_call_wild_am_michael_asr_repair.py",
-  "provider_calls_ran_this_sprint": false,
+  "next_action": "Do not repeat the closed am_michael full-title generation or prompted medium.en ASR fingerprint. Use a checksum-distinct voice/provider or source-bound narration for this title and prioritize a shorter end-to-end Sprint 1 pilot.",
+  "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m json.tool internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_full_title_objective_closeout_v1.json >/dev/null",
+  "provider_calls_ran_this_sprint": true,
   "release_gate_mutated_this_sprint": false,
   "public_audio_approved_this_sprint": false
 }

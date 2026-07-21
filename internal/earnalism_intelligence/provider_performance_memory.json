@@ -668,28 +668,81 @@
         "voice_sha256": "9a443b79a4b22489a5b0ab7c651a0bcd1a30bef675c28333f06971abbd47bd37",
         "attempt_fingerprint": "19e1586592c3d553ea9e7dcd6d2273e894f05869f760a6f072419f7028de4903",
         "asr_repair_fingerprint": "0b990e5c8efbc8fd8eebbe347a95d36922bc00c16f814911136e4a047888b36c",
+        "targeted_resynthesis_fingerprint": "86481d57a50301fa01372213d3291fe1edd42fac6eb85a032f860a017797bc71",
+        "targeted_asr_projection_fingerprint": "202233ae6913aefb18da02d8cce108edfd4bf3038955c146ec5d20aba0c60a46",
+        "listening_sample_fingerprint": "db726a1e0309e6cd2febda822431af827eb52f9d1a27f62306105a620b1f0ff6",
         "initial_representative_asr_scores": [9.7409, 9.7213, 9.9294, 9.8353],
         "initial_representative_coverages": [0.9691, 0.9654, 0.9906, 0.9812],
         "retained_wav_repair_asr_scores": [9.8969, 10.0, 9.9294, 9.9061],
         "retained_wav_repair_coverages": [0.9897, 1.0, 0.9906, 0.9906],
-        "ordered_content_integrity_pass": false,
+        "targeted_final_asr_scores": [10.0, 10.0, 10.0, 10.0],
+        "targeted_final_coverages": [1.0, 1.0, 1.0, 1.0],
+        "targeted_audio_sha256": {
+          "opening_exposition": "ce95652d03943d8f2613bdf988ecd3f3309a62e972513ee919b154dfc3288b51",
+          "thornton_bond": "96118bd3ef8fa4d87215efbdce5578738867aea9ed18e06a1bfd6fd4f367fbe5",
+          "closing_call": "4738e9a658420b101bb011678826041909fa743f8b580330fbba12a16d05765a"
+        },
+        "ordered_content_integrity_pass": true,
         "passed_passages": [
-          "spitz_final_conflict"
+          "opening_exposition",
+          "spitz_final_conflict",
+          "thornton_bond",
+          "closing_call"
         ],
-        "failed_passages": {
+        "historical_failed_passages_before_targeted_resynthesis": {
           "opening_exposition": "source metal decoded as medal in all three decoder arms",
           "thornton_bond": "source feigned a decoded as feign in the selected arm",
           "closing_call": "source coated and and decoded as coded and as"
         },
-        "listening_qa_run": false,
-        "full_title_generated": false,
+        "asr_projection": {
+          "source": "Pettid",
+          "replacement": "petted",
+          "occurrences": 1,
+          "source_word_phonemes": "pˈɛTᵻd",
+          "substantive_normalization": false,
+          "new_decoder_calls": 0
+        },
+        "representative_listening_overall_scores": [9.5, 9.4, 9.5, 9.5],
+        "minimum_dimension_scores": {
+          "naturalness": 9.5,
+          "pronunciation": 9.7,
+          "emotional_expression": 9.2,
+          "punctuation_pause": 9.0,
+          "pacing": 9.2,
+          "continuity": 9.4,
+          "anti_robotic_texture": 9.6,
+          "anti_choppy_join": 9.7,
+          "listener_enjoyment": 9.4,
+          "overall": 9.4,
+          "confidence": 0.95
+        },
+        "fatal_flags": [],
+        "platform_screen_pass": true,
+        "owner_exact_10_pass": false,
+        "listening_qa_run": true,
+        "full_title_generated": true,
+        "full_title_attempt_fingerprint": "b1eaee2ea9d5dbcdf2fd7fe643a3d23a2c0d31c5445795fc0768ae5e1162ae20",
+        "full_title_asr_fingerprint": "c6b02227886589eb12f4cd8f6b4fe3e2e27540369b170eb1cef3aa5a403ebbae",
+        "full_title_audio_sha256": "2d630a6e8d85ec241c75f9c78511acb2bda55dc225f901b7bdd2d93cfdbabe59",
+        "full_title_section_pass_count": 64,
+        "full_title_section_fail_count": 216,
+        "full_title_aggregate_score": 9.7347,
+        "full_title_aggregate_coverage": 0.9738,
+        "full_title_measured_sync_score": 4.2553,
+        "full_title_measured_sync_pass": false,
+        "full_title_listening_qa_run": false,
         "public_audio_approved": false,
         "completed_attempts_must_not_repeat": true,
         "evidence_paths": [
           "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_representative_v1.json",
-          "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_asr_repair_v1.json"
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_asr_repair_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_targeted_resynthesis_v2.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_targeted_asr_projection_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_listening_qa_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_full_title_private_preflight_v1.json",
+          "internal/audiobook_lab/sprint1_publication/title_runs/the-call-of-the-wild_kokoro_am_michael_full_title_objective_closeout_v1.json"
         ],
-        "next_action": "Do not repeat the am_michael synthesis or ASR-repair fingerprints. One lexical-preserving three-passage targeted resynthesis may test metal, feigned a, and coated and; otherwise use a checksum-distinct voice/provider."
+        "next_action": "Do not repeat the closed am_michael full-title generation or prompted medium.en ASR fingerprint. The 216-section failure breadth is not safe for normalization; use a checksum-distinct voice/provider or source-bound narration and prioritize a shorter end-to-end title."
       },
       "the_time_machine": {
         "source_sha256": "cb7c2b70194eeb8f0376f5ece4d6a5fdce547fbfca23d4c842337f2c024fe1e8",
