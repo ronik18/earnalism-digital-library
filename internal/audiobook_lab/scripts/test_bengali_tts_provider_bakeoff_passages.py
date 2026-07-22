@@ -25,6 +25,17 @@ MANUSCRIPT = " ".join(
 
 
 class SingleTitlePassageTests(unittest.TestCase):
+    def test_nishkriti_uses_backend_canonical_chapters_when_root_copy_is_absent(self) -> None:
+        manuscript = bakeoff.latest_clean_manuscript("nishkriti")
+        self.assertGreater(len(manuscript), 10000)
+        passages = bakeoff.build_passages(["nishkriti"], 4)
+        self.assertEqual(
+            [item["passage_id"] for item in passages],
+            ["narrative_opening", "dialogue", "punctuation_heavy", "ending_style"],
+        )
+        self.assertTrue(all(item["text"] for item in passages))
+        self.assertEqual(len({item["text_hash"] for item in passages}), 4)
+
     @mock.patch.object(bakeoff, "latest_clean_manuscript", return_value=MANUSCRIPT)
     def test_single_title_gets_four_representative_passage_categories(self, _manuscript: mock.Mock) -> None:
         passages = bakeoff.build_passages(["example"], 4)

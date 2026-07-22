@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-07-22T20:24:04Z",
+  "slug": "nishkriti",
+  "status": "PASSAGES_READY_OPENAI_LISTENING_QA_INSUFFICIENT_QUOTA",
+  "canonical_source": "backend/data/controlled_publications/nishkriti/chapters",
+  "chapter_count": 9,
+  "sanitized_manuscript_char_count": 83685,
+  "sanitized_manuscript_sha256": "e53d59d7384eae55da518158f5e6affb9d295abea6fb888eaf3794f0d4f5b660",
+  "passage_artifact": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition/bakeoff_passages.json",
+  "passage_artifact_sha256": "d20e5116cb3607076b83c220fdf90e387ff31a6ff73e3086796c855237a59883",
+  "passages": [
+    {
+      "passage_id": "narrative_opening",
+      "text_hash": "f4d1975b39fd3ec3b88356a77a0bcfe4291e22fcecde8fde8ab56c364ed29ac3"
+    },
+    {
+      "passage_id": "dialogue",
+      "text_hash": "56aeda8fd8e25256db1cd9e035297e0ad6b7bb0a0503282da09aa4b5f85ec4c7"
+    },
+    {
+      "passage_id": "punctuation_heavy",
+      "text_hash": "074db9181d974375131548ba6d6a979349cbe92de847931069a21f4c1477407a"
+    },
+    {
+      "passage_id": "ending_style",
+      "text_hash": "4f2a2bbd62bcc0057c4f139b29a4e8e9e227e5ddef1516b7d20b9382296f69d4"
+    }
+  ],
+  "tts_provider_calls_ran": false,
+  "listening_probe_provider_call_ran": true,
+  "audio_generated": false,
+  "listening_qa_status": "OPENAI_GPT_AUDIO_429_INSUFFICIENT_QUOTA",
+  "listening_probe_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/nishkriti_openai_listening_qa_probe_20260722.json",
+  "full_title_status": "NOT_AUTHORIZED_BEFORE_REPRESENTATIVE_PASS",
+  "upload_performed": false,
+  "publication_performed": false,
+  "public_audio_status": "AUDIO_HIDDEN",
+  "next_action": "Restore OpenAI listening-QA billing/quota or approve a different independent audio judge, then scope paid_tts.lock to Nishkriti and run exactly one bounded representative audition against this hash-bound passage artifact."
+}

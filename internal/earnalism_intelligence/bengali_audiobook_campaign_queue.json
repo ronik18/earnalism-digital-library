@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T18:43:31Z",
+  "generated_at": "2026-07-22T20:24:04Z",
   "policy_version": "bengali_audiobook_acceptance_v2_92",
   "total_titles": 31,
   "source": "bengali_audiobook_pilot_selection_report.json",
@@ -564,11 +564,15 @@
         "GPT4O_MINI_BN_CALIBRATION_BELOW_9_7",
         "OPENAI_INSUFFICIENT_QUOTA",
         "GOOGLE_ADC_REFRESH_UNAVAILABLE",
-        "LOCAL_WHISPER_MEDIUM_RUNTIME_RESOURCE_KILLED_EXIT_137"
+        "LOCAL_WHISPER_MEDIUM_RUNTIME_RESOURCE_KILLED_EXIT_137",
+        "SAARAS_CALIBRATION_RAW_SCORES_BELOW_9_7",
+        "SAARAS_STRICT_PROJECTION_UNEXPLAINED_GAPS_ALL_SAMPLES",
+        "SAARAS_FULL_ASR_GROUP_0000_FAILED_CURRENT_STRICT_POLICY",
+        "SAARAS_TIMESTAMPS_SEGMENT_ONLY_NOT_RELEASE_SYNC"
       ],
       "candidate_rank": 24,
-      "selected_strategy": "preserve_private_full_title_and_require_materially_different_asr_or_source",
-      "current_campaign_state": "LOCAL_WHISPER_MEDIUM_RUNTIME_NO_GO_AUDIO_HIDDEN",
+      "selected_strategy": "close_all_completed_radharani_fingerprints_and_require_source_bound_replacement",
+      "current_campaign_state": "SAARAS_RAW_ASR_EXACT_CONTENT_SYNC_NO_GO_AUDIO_HIDDEN",
       "best_representative_settings": {
         "provider": "sarvam",
         "model": "bulbul:v3",
@@ -577,8 +581,8 @@
         "score": 9.4,
         "confidence": 0.95
       },
-      "full_title_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_full_canary_closeout_20260722.json",
-      "next_action": "Do not repeat completed TTS, provider ASR, or local Whisper medium fingerprints. Keep audio hidden and resume only with a materially different usable Bengali ASR provider or source-bound replacement narration."
+      "full_title_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_saaras_asr_sync_closeout_20260722.json",
+      "next_action": "Do not repeat completed TTS, provider ASR, Saaras transcribe/verbatim, or local alignment fingerprints. Keep audio hidden and require source-bound replacement narration or a genuinely different full-book evaluator and measured alignment system."
     },
     {
       "slug": "bn-035",
@@ -593,12 +597,14 @@
       "cover_status": "PASS",
       "reader_route_status": "PASS",
       "prior_audio_status": "reader_only_audio_hidden",
-      "known_blockers": [],
+      "known_blockers": [
+        "OPENAI_LISTENING_QA_INSUFFICIENT_QUOTA"
+      ],
       "candidate_rank": 25,
-      "selected_strategy": "adaptive_sarvam_after_pilot",
-      "current_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
+      "selected_strategy": "canonical_four_passage_bounded_audition_after_listening_judge_restore",
+      "current_campaign_state": "PASSAGES_READY_OPENAI_LISTENING_QA_INSUFFICIENT_QUOTA",
       "best_representative_settings": null,
-      "next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path."
+      "next_action": "Restore OpenAI gpt-audio billing/quota or approve a different independent audio judge, then run one bounded title-scoped audition from the persisted four-passage artifact; do not start full-title generation."
     },
     {
       "slug": "bn-036",

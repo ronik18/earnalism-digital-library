@@ -361,7 +361,75 @@ def missing_spans(tokens: list[NormalizedToken], matched_indices: set[int]) -> l
 def sequence_score(tokens_a: list[NormalizedToken], tokens_b: list[NormalizedToken], attr: str) -> float:
     a = " ".join(str(getattr(token, attr)) for token in tokens_a if getattr(token, attr))
     b = " ".join(str(getattr(token, attr)) for token in tokens_b if getattr(token, attr))
-    return SequenceMatcher(None, a, b).ratio() if a and b else 0.0
+    return SequenceMatcher(None, a, b, autojunk=False).ratio() if a and b else 0.0
+
+
+def ordered_character_alignment(
+    asr_tokens: list[NormalizedToken], manuscript_tokens: list[NormalizedToken], attr: str
+) -> dict[str, Any]:
+    """Measure ordered content while ignoring ASR-only word-boundary changes.
+
+    Bengali ASR regularly splits historical compounds (for example one source
+    token into two transcript tokens). Token-greedy alignment treats the rest
+    of the passage as missing after such a split. This character projection is
+    still transcript-derived and ordered, but it removes only token spacing.
+    """
+    asr_text = "".join(str(getattr(token, attr)) for token in asr_tokens if getattr(token, attr))
+    manuscript_text = "".join(
+        str(getattr(token, attr)) for token in manuscript_tokens if getattr(token, attr)
+    )
+    if not asr_text or not manuscript_text:
+        return {
+            "sequence_similarity": 0.0,
+            "manuscript_coverage": 0.0,
+            "transcript_coverage": 0.0,
+            "first_boundary_score": 0.0,
+            "last_boundary_score": 0.0,
+            "first_words_match": False,
+            "last_words_match": False,
+            "max_manuscript_gap_chars": 0,
+            "max_transcript_gap_chars": 0,
+            "material_missing_spans": [],
+            "material_extra_spans": [],
+        }
+    matcher = SequenceMatcher(None, manuscript_text, asr_text, autojunk=False)
+    matched = sum(block.size for block in matcher.get_matching_blocks())
+    manuscript_gaps: list[dict[str, Any]] = []
+    transcript_gaps: list[dict[str, Any]] = []
+    for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+        if tag in {"delete", "replace"} and i2 > i1:
+            manuscript_gaps.append(
+                {"tag": tag, "start": i1, "end": i2, "chars": i2 - i1, "text": manuscript_text[i1:i2]}
+            )
+        if tag in {"insert", "replace"} and j2 > j1:
+            transcript_gaps.append(
+                {"tag": tag, "start": j1, "end": j2, "chars": j2 - j1, "text": asr_text[j1:j2]}
+            )
+    boundary_window = min(48, len(manuscript_text), len(asr_text))
+    first_score = SequenceMatcher(
+        None, manuscript_text[:boundary_window], asr_text[:boundary_window], autojunk=False
+    ).ratio()
+    last_score = SequenceMatcher(
+        None, manuscript_text[-boundary_window:], asr_text[-boundary_window:], autojunk=False
+    ).ratio()
+    # Release truth is exact after the explicit normalization/phonetic mapping
+    # above. Any remaining character gap is unexplained audio content loss or
+    # addition; a high aggregate score must never hide it.
+    material_missing = list(manuscript_gaps)
+    material_extra = list(transcript_gaps)
+    return {
+        "sequence_similarity": round(matcher.ratio(), 4),
+        "manuscript_coverage": round(matched / len(manuscript_text), 4),
+        "transcript_coverage": round(matched / len(asr_text), 4),
+        "first_boundary_score": round(first_score, 4),
+        "last_boundary_score": round(last_score, 4),
+        "first_words_match": first_score >= 0.9,
+        "last_words_match": last_score >= 0.9,
+        "max_manuscript_gap_chars": max((int(item["chars"]) for item in manuscript_gaps), default=0),
+        "max_transcript_gap_chars": max((int(item["chars"]) for item in transcript_gaps), default=0),
+        "material_missing_spans": material_missing[:20],
+        "material_extra_spans": material_extra[:20],
+    }
 
 
 def edge_match(matches: list[dict[str, Any]], manuscript_count: int, edge: str, tolerance: int = 10) -> bool:
@@ -409,23 +477,49 @@ def analyze_bengali_asr(
     alignment = align_tokens(asr_tokens, manuscript_tokens)
     normalized_similarity = sequence_score(asr_tokens, manuscript_tokens, "normalized")
     phonetic_similarity = sequence_score(asr_tokens, manuscript_tokens, "phonetic")
-    phonetic_projection_score = round(min(alignment["coverage"], alignment["average_match_score"]) * 10, 4)
-    normalized_score = round(min(normalized_similarity, alignment["coverage"]) * 10, 4)
+    normalized_ordered = ordered_character_alignment(asr_tokens, manuscript_tokens, "normalized")
+    phonetic_ordered = ordered_character_alignment(asr_tokens, manuscript_tokens, "phonetic")
+    phonetic_projection_score = round(
+        min(
+            phonetic_ordered["sequence_similarity"],
+            phonetic_ordered["manuscript_coverage"],
+            phonetic_ordered["transcript_coverage"],
+        )
+        * 10,
+        4,
+    )
+    normalized_score = round(
+        min(
+            normalized_ordered["sequence_similarity"],
+            normalized_ordered["manuscript_coverage"],
+            normalized_ordered["transcript_coverage"],
+        )
+        * 10,
+        4,
+    )
     raw_script = detect_script_mix(transcript)
-    first_words_match = edge_match(alignment["matches"], len(manuscript_tokens), "first")
-    last_words_match = edge_match(alignment["matches"], len(manuscript_tokens), "last")
-    content_match_proven = (
+    first_words_match = bool(phonetic_ordered["first_words_match"])
+    last_words_match = bool(phonetic_ordered["last_words_match"])
+    projected_coverage = min(
+        float(phonetic_ordered["manuscript_coverage"]), float(phonetic_ordered["transcript_coverage"])
+    )
+    projected_confidence = min(float(phonetic_ordered["sequence_similarity"]), projected_coverage)
+    no_unexplained_gap = not phonetic_ordered["material_missing_spans"] and not phonetic_ordered["material_extra_spans"]
+    projection_match_proven = (
         max(normalized_score, phonetic_projection_score) >= 9.7
-        and alignment["projection_confidence"] >= 0.95
-        and alignment["coverage"] >= 0.97
+        and projected_confidence >= 0.97
+        and projected_coverage >= 0.98
         and first_words_match
         and last_words_match
-        and not alignment["missing_spans"]
+        and no_unexplained_gap
         and not contains_frontmatter(transcript)
     )
+    # Projection remains diagnostic evidence. It cannot replace the mandatory
+    # raw audio-derived ASR/manuscript score at the public release gate.
+    content_match_proven = bool(projection_match_proven and raw_asr_score >= 9.7)
     script_shifted = raw_script in {"Devanagari", "Latin", "mixed"}
     likely_false_negative = bool(script_shifted and raw_asr_score < 9.7 and max(normalized_score, phonetic_projection_score) > raw_asr_score + 1.0)
-    likely_real_mismatch = bool(alignment["coverage"] < 0.5 and max(normalized_score, phonetic_projection_score) < 5.0)
+    likely_real_mismatch = bool(projected_coverage < 0.5 and max(normalized_score, phonetic_projection_score) < 5.0)
     sync_regeneration_required = bool(content_match_proven and raw_script != "Bengali")
 
     normalized_asr_path = run_dir / "normalized_asr_tokens.json"
@@ -436,7 +530,15 @@ def analyze_bengali_asr(
 
     write_json(normalized_asr_path, {"slug": slug, "script": raw_script, "tokens": [asdict(token) for token in asr_tokens]})
     write_json(normalized_manuscript_path, {"slug": slug, "tokens": [asdict(token) for token in manuscript_tokens]})
-    write_json(phonetic_alignment_path, {"slug": slug, **alignment})
+    write_json(
+        phonetic_alignment_path,
+        {
+            "slug": slug,
+            "ordered_normalized_alignment": normalized_ordered,
+            "ordered_phonetic_alignment": phonetic_ordered,
+            "legacy_token_alignment": alignment,
+        },
+    )
 
     report = {
         "slug": slug,
@@ -456,15 +558,19 @@ def analyze_bengali_asr(
         "normalized_asr_score": normalized_score,
         "phonetic_similarity": round(phonetic_similarity, 4),
         "phonetic_projection_score": phonetic_projection_score,
-        "coverage": alignment["coverage"],
-        "projection_confidence": alignment["projection_confidence"],
+        "coverage": round(projected_coverage, 4),
+        "projection_confidence": round(projected_confidence, 4),
         "first_words_match": first_words_match,
         "last_words_match": last_words_match,
-        "missing_spans": alignment["missing_spans"],
+        "missing_spans": phonetic_ordered["material_missing_spans"],
+        "extra_spans": phonetic_ordered["material_extra_spans"],
+        "ordered_normalized_alignment": normalized_ordered,
+        "ordered_phonetic_alignment": phonetic_ordered,
         "duplicated_spans": [],
         "frontmatter_absent": not contains_frontmatter(transcript),
         "likely_false_negative_due_to_script_mismatch": likely_false_negative,
         "likely_real_audio_manuscript_mismatch": likely_real_mismatch,
+        "projection_match_proven": projection_match_proven,
         "content_match_proven": content_match_proven,
         "sync_regeneration_required": sync_regeneration_required,
         "release_pass": bool(content_match_proven and not sync_regeneration_required),
@@ -514,9 +620,9 @@ def self_test() -> int:
             manuscript=manuscript,
             transcript=transcript,
             run_dir=tmp / name,
-            raw_asr_score=0.0,
+            raw_asr_score=10.0 if name == "bengali" else 0.0,
         )
-        passed = report["content_match_proven"] or report["release_pass"]
+        passed = report["content_match_proven"] if name == "bengali" else report["projection_match_proven"]
         if bool(passed) != expected:
             raise AssertionError(f"{name} expected {expected}, got {passed}: {report}")
     print("bengali_asr_normalization self-test PASS")

@@ -1,0 +1,108 @@
+{
+  "generated_at": "2026-07-22T20:18:07Z",
+  "slug": "radharani",
+  "decision": "NO_GO_KEEP_AUDIO_HIDDEN",
+  "private_audio": {
+    "sha256": "defeb886a990c68d297770f5d61c1ee239683c114fe06346751296a81f9476d8",
+    "duration_seconds": 3563.115792,
+    "source_sha256": "53b00ba494263f54f97c8c94bb64ed6e07e1819fc8060aafee90f57ea5a9541d",
+    "tts_provider": "sarvam",
+    "tts_model": "bulbul:v3",
+    "voice": "ratan",
+    "style": "literary_warm_pacing"
+  },
+  "saaras_transcribe_calibration": {
+    "fingerprint": "sarvam/saaras:v3/bn-IN/transcribe/rest/fixed-29s/no-timestamps",
+    "raw_scores": [8.6275, 8.8971, 8.7179],
+    "normalized_scores": [9.776, 9.818, 9.737],
+    "phonetic_projection_scores": [9.936, 9.898, 9.883],
+    "ordered_coverages": [0.9936, 0.9898, 0.9883],
+    "raw_boundaries_pass": [true, false, true],
+    "strict_missing_span_counts": [2, 5, 6],
+    "strict_extra_span_counts": [3, 2, 3],
+    "strict_release_pass": [false, false, false],
+    "classification": "THREE_SAMPLE_NO_GO_RAW_BELOW_9_7_AND_UNEXPLAINED_GAPS",
+    "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_saaras_v3_bn_asr_calibration_v1.json"
+  },
+  "full_asr_attempt": {
+    "fingerprint": "sarvam/saaras:v3/bn-IN/transcribe/rest/fixed-29s/timestamps-requested",
+    "groups_attempted": 2,
+    "groups_passed_under_current_strict_policy": 0,
+    "historical_groups_recorded_passed": 1,
+    "group_0000": {
+      "content_status": "BELOW_THRESHOLD_STRICT_REANALYSIS",
+      "raw_score": 8.6275,
+      "normalized_score": 9.776,
+      "phonetic_score": 9.936,
+      "coverage": 0.9936,
+      "strict_missing_spans": 2,
+      "strict_extra_spans": 3
+    },
+    "group_0001": {
+      "content_status": "BELOW_THRESHOLD",
+      "raw_score": 8.3099,
+      "normalized_score": 9.606,
+      "phonetic_score": 9.868,
+      "coverage": 0.9868,
+      "strict_missing_spans": 4,
+      "strict_extra_spans": 5
+    },
+    "timestamp_status": "SEGMENT_ONLY_NOT_WORD_LEVEL",
+    "classification": "NO_GROUP_PASSES_CURRENT_RAW_AND_EXACT_CONTENT_POLICY",
+    "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_saaras_v3_full_asr_v1.json"
+  },
+  "saaras_verbatim_timestamp_calibration": {
+    "fingerprint": "sarvam/saaras:v3/bn-IN/verbatim/rest/fixed-29s/timestamps-requested",
+    "groups": [1, 13, 27],
+    "result": "SEGMENT_TIMESTAMPS_ONLY_ALL_THREE",
+    "word_level_sync_eligible": false,
+    "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_saaras_v3_bn_verbatim_timestamp_calibration_v1.json"
+  },
+  "local_diagnostics": {
+    "whisper_base_transcription": {
+      "fingerprint": "openai-whisper/base/bn/temperature-0/beam-5/cpu",
+      "group": 1,
+      "phonetic_projection_score": 3.416,
+      "coverage": 0.3416,
+      "boundaries_pass": false,
+      "classification": "LOCAL_BASE_ASR_INADEQUATE"
+    },
+    "stable_whisper_base_forced_alignment": {
+      "fingerprint": "stable-whisper/base/bn/exact-source-forced-alignment",
+      "group": 1,
+      "reported_unaligned_words": "141/191",
+      "reported_failed_segments": "20/41",
+      "mean_probability": 0.0758,
+      "classification": "FORCED_ALIGNMENT_REJECTED_LOW_CONFIDENCE"
+    }
+  },
+  "cost": {
+    "prior_conservative_estimate_usd": 0.7539,
+    "saaras_transcribe_calibration_estimate_usd": 0.0507,
+    "full_asr_partial_estimate_usd": 0.0339,
+    "saaras_verbatim_reserved_estimate_usd": 0.051,
+    "conservative_cumulative_estimate_usd": 0.8895,
+    "radharani_cap_usd": 5.0,
+    "actual_provider_billing": "NOT_REPORTED"
+  },
+  "release_gates": {
+    "full_title_asr_source": "FAIL_RAW_SCORE_BELOW_9_7_AND_EXACT_CONTENT_GAPS",
+    "measured_paragraph_or_word_sync": "FAIL_PROVIDER_SEGMENT_ONLY_AND_LOCAL_ALIGNMENT_LOW_CONFIDENCE",
+    "six_sample_listening": "NOT_RUN",
+    "upload_checksum": "NOT_RUN",
+    "metadata": "NOT_RUN",
+    "endpoint": "HTTP_404_AUDIO_HIDDEN",
+    "browser": "NOT_RUN",
+    "blocker_list_empty": false
+  },
+  "paid_tts_lock": {
+    "status": "active",
+    "current_holder": "none",
+    "allowed_next_holders": [],
+    "sha256": "24f5a1751ab3124898c0d5436e75ff7ea0244ef6f82718dcb4c461b3b2c3e482"
+  },
+  "publication_performed": false,
+  "upload_performed": false,
+  "public_audio_status": "AUDIO_HIDDEN",
+  "next_action": "Do not repeat the closed Radharani fingerprints. Obtain a source-bound replacement narration or a genuinely different Bengali ASR plus measured alignment capability before another release attempt."
+}
