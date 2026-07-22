@@ -1,0 +1,101 @@
+{
+  "generated_at": "2026-07-22T18:43:31Z",
+  "status": "LOCAL_WHISPER_MEDIUM_RUNTIME_RESOURCE_KILLED_EXIT_137",
+  "slug": "radharani",
+  "cost_usd": 0.0,
+  "diagnostic_only": true,
+  "release_evidence_sufficient": false,
+  "provider_calls_ran": false,
+  "paid_lock_mutated": false,
+  "lock_sha256_before": "24f5a1751ab3124898c0d5436e75ff7ea0244ef6f82718dcb4c461b3b2c3e482",
+  "fingerprint": {
+    "slug": "radharani",
+    "scope": "opening_middle_ending_sample",
+    "provider": "local_openai_whisper",
+    "model": "medium",
+    "model_path": "/Users/ronikbasak/.cache/whisper/medium.pt",
+    "model_sha256": "345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1",
+    "whisper_cli": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library-audio-v2/.venv-audio/bin/whisper",
+    "whisper_version": "20250625",
+    "torch_version": "2.13.0",
+    "language": "bn",
+    "source_hash": "53b00ba494263f54f97c8c94bb64ed6e07e1819fc8060aafee90f57ea5a9541d",
+    "chunks": [
+      {
+        "group_id": "group_0000",
+        "audio_sha256": "2d131c3e2023ca51e8d6f59b193bd3ca206b6783f7124c5c8d1e09aa3e644ad3",
+        "source_text_sha256": "69cf76810ad0be68631fbbd20754315cef5b226cb99fbd8aa14d3f7790a92a8d"
+      },
+      {
+        "group_id": "group_0013",
+        "audio_sha256": "668c03ed0b02d47f8de0f4e36e8ccd13c2837bb9b4f85cd394f096a575574edd",
+        "source_text_sha256": "e6e548349e7fcefb52dd8c5e8fb4eebd8bb7e1618b22ef5582744a0b4a5bace8"
+      },
+      {
+        "group_id": "group_0027",
+        "audio_sha256": "43fba4d4251d1ca2673599d1c14746ef2f7ee31562e8b189df980757bb15e896",
+        "source_text_sha256": "e5344567e89bceaa891c05eaafcfa8521e92fcdd4f99f11feb7ca3c8f0f83761"
+      }
+    ],
+    "decoder": {
+      "device": "cpu",
+      "temperature": 0,
+      "beam_size": 5,
+      "condition_on_previous_text": true,
+      "fp16": false,
+      "temperature_increment_on_fallback": null,
+      "word_timestamps": true,
+      "initial_prompt": null
+    }
+  },
+  "hardware": {
+    "platform": "macOS-26.5-arm64-arm-64bit",
+    "machine": "arm64",
+    "processor": "arm",
+    "logical_cpu_count": 10,
+    "physical_cpu_count": 10,
+    "memory_bytes": 17179869184
+  },
+  "local_asr_ran": true,
+  "execution": {
+    "command_started": true,
+    "process_exit_code": 137,
+    "termination": "SIGKILL_OR_HOST_RESOURCE_KILL",
+    "runtime_capture_status": "EXACT_WALL_TIME_UNAVAILABLE_PROCESS_GROUP_TERMINATED_BEFORE_TIME_REPORT",
+    "observed_child_elapsed_seconds_lower_bound": 37,
+    "observed_cpu_percent": 255.0,
+    "observed_process_memory_percent": 14.4,
+    "private_output_file_count": 0,
+    "transcript_produced": false,
+    "word_timestamps_produced": false
+  },
+  "results": [
+    {
+      "group_id": "group_0000",
+      "status": "ERROR_RUNTIME_RESOURCE_KILLED_EXIT_137",
+      "audio_sha256": "2d131c3e2023ca51e8d6f59b193bd3ca206b6783f7124c5c8d1e09aa3e644ad3",
+      "transcript": null,
+      "source_score": null,
+      "first_words_match": null,
+      "last_words_match": null,
+      "bengali_script_ratio": null
+    },
+    {
+      "group_id": "group_0013",
+      "status": "NOT_STARTED_AFTER_GROUP_0000_RESOURCE_KILL",
+      "audio_sha256": "668c03ed0b02d47f8de0f4e36e8ccd13c2837bb9b4f85cd394f096a575574edd"
+    },
+    {
+      "group_id": "group_0027",
+      "status": "NOT_STARTED_AFTER_GROUP_0000_RESOURCE_KILL",
+      "audio_sha256": "43fba4d4251d1ca2673599d1c14746ef2f7ee31562e8b189df980757bb15e896"
+    }
+  ],
+  "sample_gate_pass": false,
+  "full_28_group_local_asr_run": false,
+  "stop_reason": "The fixed multilingual Whisper medium/bn process was killed before group_0000 produced JSON, transcript, or timestamps. No decoder-tuning or resource retry is authorized.",
+  "classification": "LOCAL_WHISPER_MEDIUM_UNSUITABLE_FOR_RADHARANI_AUDIO_IN_CURRENT_16_GIB_RUNTIME",
+  "lock_sha256_after": "24f5a1751ab3124898c0d5436e75ff7ea0244ef6f82718dcb4c461b3b2c3e482",
+  "paid_lock_mutated": false,
+  "next_action": "Do not repeat or tune local Whisper medium for this audio. Keep Radharani audio hidden and use a materially different Bengali ASR provider or source-bound replacement narration."
+}

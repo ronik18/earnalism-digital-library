@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-22T18:30:26Z",
-  "status": "RADHARANI_FULL_CANARY_AUDIO_DERIVED_ASR_NO_GO_AUDIO_HIDDEN",
+  "generated_at": "2026-07-22T18:43:31Z",
+  "status": "RADHARANI_LOCAL_WHISPER_MEDIUM_RUNTIME_NO_GO_AUDIO_HIDDEN",
   "policy_version": "bengali_audiobook_acceptance_v2_92",
   "total_campaign_titles": 31,
   "published_bengali_audiobooks": 1,
@@ -62,11 +62,11 @@
     "READY_FOR_REPRESENTATIVE_AUDITION": 27
   },
   "scale_gate": {
-    "status": "RADHARANI_CANARY_FAILED_NO_SCALE",
+    "status": "RADHARANI_CANARY_AND_LOCAL_ASR_FAILED_NO_SCALE",
     "pilot_slug": "book-2b9853ec52",
     "next_candidate_slug": "radharani",
     "next_scale_stage": "STOPPED_ASR_PROVIDER_REPAIR_OR_DIFFERENT_SOURCE_REQUIRED",
-    "rule": "Do not widen. Radharani failed raw audio-derived ASR and the materially different Bengali calibration. Preserve the private artifact and audio-hidden state; resume only with an untried Bengali ASR provider or source-bound replacement evidence."
+    "rule": "Do not widen. Radharani failed raw provider ASR, the materially different Bengali provider calibration, and the fixed zero-cost local Whisper medium runtime. Preserve the private artifact and audio-hidden state; resume only with an untried Bengali ASR provider or source-bound replacement evidence."
   },
   "best_settings": {
     "provider": "sarvam",
@@ -174,8 +174,8 @@
       "fallback_tts_detected"
     ]
   },
-  "next_exact_command": "python3 -m json.tool internal/audiobook_lab/sprint1_publication/title_runs/radharani_full_canary_closeout_20260722.json >/dev/null && git diff --check",
-  "next_generated_prompt": "Do not repeat Radharani Sarvam bulbul:v3/ratan/literary_warm_pacing TTS, OpenAI whisper-1/auto ASR, or gpt-4o-mini-transcribe/bn calibration fingerprints. Google is ADC_REFRESH_UNAVAILABLE for this run. Keep the title audio-hidden and resume only after a materially different Bengali ASR provider becomes usable or a source-bound licensed/human narration candidate is received.",
+  "next_exact_command": "python3 -m json.tool internal/audiobook_lab/sprint1_publication/title_runs/radharani_whisper_medium_bn_local_calibration_v1.json >/dev/null && python3 -m json.tool internal/audiobook_lab/sprint1_publication/title_runs/radharani_full_canary_closeout_20260722.json >/dev/null && git diff --check",
+  "next_generated_prompt": "Do not repeat Radharani Sarvam bulbul:v3/ratan/literary_warm_pacing TTS, OpenAI whisper-1/auto ASR, gpt-4o-mini-transcribe/bn calibration, or local Whisper medium/bn fingerprints. Local medium was killed with exit 137 before producing a transcript. Google is ADC_REFRESH_UNAVAILABLE for this run. Keep the title audio-hidden and resume only after a materially different Bengali ASR provider becomes usable or a source-bound licensed/human narration candidate is received.",
   "radharani_full_canary_20260722": {
     "status": "NO_GO_AUDIO_DERIVED_ASR_AND_CALIBRATION_FAILED",
     "full_tts_status": "PASS_PRIVATE_28_FRESH_GROUPS",
@@ -196,6 +196,20 @@
       "status": "CALIBRATION_REPAIR_REQUIRED"
     },
     "google_asr_status": "ADC_REFRESH_UNAVAILABLE_NOT_STARTED",
+    "local_whisper_medium_diagnostic": {
+      "status": "LOCAL_WHISPER_MEDIUM_RUNTIME_RESOURCE_KILLED_EXIT_137",
+      "model_sha256": "345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1",
+      "language": "bn",
+      "group_0000_status": "ERROR_RUNTIME_RESOURCE_KILLED_EXIT_137",
+      "groups_not_started": [
+        "group_0013",
+        "group_0027"
+      ],
+      "transcript_produced": false,
+      "cost_usd": 0.0,
+      "paid_lock_mutated": false,
+      "classification": "UNSUITABLE_IN_CURRENT_16_GIB_RUNTIME"
+    },
     "listening_sync_delivery_status": "NOT_RUN_ASR_BLOCKED",
     "public_audio_status": "AUDIO_HIDDEN",
     "production_endpoint_status": 404,

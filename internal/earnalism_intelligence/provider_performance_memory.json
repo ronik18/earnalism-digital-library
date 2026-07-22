@@ -220,11 +220,21 @@
         ],
         "distinct_calibration_ending_status": "ERROR_OPENAI_INSUFFICIENT_QUOTA",
         "google_asr_status": "ADC_REFRESH_UNAVAILABLE_NOT_STARTED",
+        "local_whisper_medium_diagnostic": {
+          "model_sha256": "345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1",
+          "language": "bn",
+          "decoder": "temperature_0_beam_5_no_fallback_word_timestamps_cpu",
+          "status": "RUNTIME_RESOURCE_KILLED_EXIT_137",
+          "transcript_produced": false,
+          "groups_completed": 0,
+          "cost_usd": 0.0,
+          "classification": "UNSUITABLE_FOR_RADHARANI_AUDIO_IN_CURRENT_16_GIB_RUNTIME"
+        },
         "estimated_completed_spend_usd": 0.7363,
         "actual_provider_billing": "NOT_REPORTED",
         "public_audio_approved": false,
         "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_full_canary_closeout_20260722.json",
-        "next_action": "Do not repeat Sarvam TTS, whisper-1/auto, or gpt-4o-mini-transcribe/bn fingerprints. Keep audio hidden and resume only with a materially different usable Bengali ASR provider or source-bound replacement narration."
+        "next_action": "Do not repeat Sarvam TTS, whisper-1/auto, gpt-4o-mini-transcribe/bn, or local Whisper medium/bn fingerprints. Keep audio hidden and resume only with a materially different usable Bengali ASR provider or source-bound replacement narration."
       }
     },
     "google": {
@@ -251,9 +261,9 @@
     "automated_audiobook_lane_pause_reason": "OpenAI failed premium threshold; Sarvam bulbul:v3 pooja seed had isolated high samples but representative audition scored 7.9/confidence 0.85 with list-reading/mechanical cadence flags.",
     "automated_audiobook_lane_reopened_at": "2026-07-07T00:00:00Z",
     "automated_audiobook_lane_reopen_reason": "Owner approved Bengali-specific 9.2 release threshold while preserving fatal-flag and objective release gates.",
-    "automated_audiobook_lane_latest_result": "Radharani private full title generated; whisper-1/auto ASR failed 1.0962; gpt-4o-mini-transcribe/bn calibration remained below 9.7 and then hit quota; no scale or publication",
+    "automated_audiobook_lane_latest_result": "Radharani private full title generated; whisper-1/auto ASR failed 1.0962; gpt-4o-mini-transcribe/bn calibration remained below 9.7 and hit quota; zero-cost local Whisper medium/bn was killed with exit 137 before transcript output; no scale or publication",
     "audiobook_completion_campaign": {
-      "status": "RADHARANI_FULL_CANARY_ASR_FAILED_NO_SCALE",
+      "status": "RADHARANI_FULL_CANARY_AND_LOCAL_ASR_RUNTIME_FAILED_NO_SCALE",
       "policy_version": "bengali_audiobook_acceptance_v2_92",
       "total_campaign_titles": 31,
       "published_bengali_audiobooks": 1,
@@ -270,8 +280,8 @@
         "representative_score": 9.3,
         "confidence": 0.95
       },
-      "scale_rule": "Radharani failed the mandatory raw ASR gate and a materially different sample calibration; do not widen or repeat fingerprints.",
-      "updated_at": "2026-07-22T18:30:26Z",
+      "scale_rule": "Radharani failed the mandatory raw ASR gate, a materially different provider sample calibration, and the fixed local Whisper medium runtime; do not widen or repeat fingerprints.",
+      "updated_at": "2026-07-22T18:43:31Z",
       "state_path": "internal/earnalism_intelligence/bengali_audiobook_campaign_state.json",
       "queue_path": "internal/earnalism_intelligence/bengali_audiobook_campaign_queue.json"
     }

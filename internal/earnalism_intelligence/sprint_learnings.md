@@ -523,3 +523,10 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Google credentials were present but two bounded ADC token probes hung; classify Google as `ADC_REFRESH_UNAVAILABLE_NOT_STARTED`, not provider-ready. No Google paid ASR ran.
 - Estimated completed provider work was `$0.7363`; actual billing was not reported. The authoritative lock restored byte-for-byte to Radharani-only idle SHA-256 `24f5a1751ab3124898c0d5436e75ff7ea0244ef6f82718dcb4c461b3b2c3e482`.
 - Radharani stays reader-live/audio-hidden, its production audiobook route remains HTTP `404`, and no listening, sync, upload, metadata, browser, or publication stage ran after the ASR failure.
+
+## 2026-07-23 Radharani zero-cost local Whisper medium diagnostic
+
+- The installed multilingual Whisper `medium` model was bound by SHA-256 `345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1`, Whisper `20250625`, torch `2.13.0`, explicit language `bn`, and a single fixed CPU decoder with temperature zero, beam size five, no temperature fallback, no source prompt, and word timestamps enabled.
+- The opening, middle, and ending audio hashes matched the fresh Sarvam group evidence. The process was killed with exit `137` during group 0 before JSON, transcript, or timestamps were emitted; groups 13 and 27 did not start.
+- `/usr/bin/time` was killed before it could emit an exact wall time. The last process snapshot proved at least 37 seconds elapsed, 255% CPU, and 14.4% process memory on a 16 GiB host. Do not invent a score or runtime beyond this evidence.
+- Classify this exact local Whisper medium/bn fingerprint as unsuitable for Radharani audio in the current runtime. Do not repeat it or run decoder-tuning loops. Cost was `$0.00`, no provider call ran, and `paid_tts.lock` stayed byte-identical.

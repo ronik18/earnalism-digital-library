@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T18:30:26Z",
+  "generated_at": "2026-07-22T18:43:31Z",
   "policy_version": "bengali_audiobook_acceptance_v2_92",
   "total_titles": 31,
   "source": "bengali_audiobook_pilot_selection_report.json",
@@ -563,11 +563,12 @@
         "FIRST_LAST_ORDER_AND_COVERAGE_FAILED",
         "GPT4O_MINI_BN_CALIBRATION_BELOW_9_7",
         "OPENAI_INSUFFICIENT_QUOTA",
-        "GOOGLE_ADC_REFRESH_UNAVAILABLE"
+        "GOOGLE_ADC_REFRESH_UNAVAILABLE",
+        "LOCAL_WHISPER_MEDIUM_RUNTIME_RESOURCE_KILLED_EXIT_137"
       ],
       "candidate_rank": 24,
       "selected_strategy": "preserve_private_full_title_and_require_materially_different_asr_or_source",
-      "current_campaign_state": "FULL_TITLE_ASR_NO_GO_AUDIO_HIDDEN",
+      "current_campaign_state": "LOCAL_WHISPER_MEDIUM_RUNTIME_NO_GO_AUDIO_HIDDEN",
       "best_representative_settings": {
         "provider": "sarvam",
         "model": "bulbul:v3",
@@ -577,7 +578,7 @@
         "confidence": 0.95
       },
       "full_title_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_full_canary_closeout_20260722.json",
-      "next_action": "Do not repeat completed TTS or ASR fingerprints. Keep audio hidden and resume only with a materially different usable Bengali ASR provider or source-bound replacement narration."
+      "next_action": "Do not repeat completed TTS, provider ASR, or local Whisper medium fingerprints. Keep audio hidden and resume only with a materially different usable Bengali ASR provider or source-bound replacement narration."
     },
     {
       "slug": "bn-035",

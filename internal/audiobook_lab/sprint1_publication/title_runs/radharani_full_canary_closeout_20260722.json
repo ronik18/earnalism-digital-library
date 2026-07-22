@@ -99,6 +99,40 @@
     "lock_restored": true,
     "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_gpt4o_mini_bn_asr_calibration_v1.json"
   },
+  "zero_cost_local_asr_diagnostic": {
+    "status": "LOCAL_WHISPER_MEDIUM_RUNTIME_RESOURCE_KILLED_EXIT_137",
+    "provider": "local_openai_whisper",
+    "model": "medium",
+    "model_sha256": "345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1",
+    "whisper_version": "20250625",
+    "torch_version": "2.13.0",
+    "language": "bn",
+    "device": "cpu",
+    "sample_groups": [
+      "group_0000",
+      "group_0013",
+      "group_0027"
+    ],
+    "group_0000_status": "ERROR_RUNTIME_RESOURCE_KILLED_EXIT_137",
+    "groups_not_started": [
+      "group_0013",
+      "group_0027"
+    ],
+    "transcript_produced": false,
+    "word_timestamps_produced": false,
+    "source_score": null,
+    "runtime_capture_status": "EXACT_WALL_TIME_UNAVAILABLE_PROCESS_GROUP_TERMINATED_BEFORE_TIME_REPORT",
+    "observed_elapsed_seconds_lower_bound": 37,
+    "observed_cpu_percent": 255.0,
+    "observed_process_memory_percent": 14.4,
+    "host_memory_bytes": 17179869184,
+    "cost_usd": 0.0,
+    "provider_calls_ran": false,
+    "paid_lock_mutated": false,
+    "full_28_group_local_asr_run": false,
+    "classification": "LOCAL_WHISPER_MEDIUM_UNSUITABLE_FOR_RADHARANI_AUDIO_IN_CURRENT_16_GIB_RUNTIME",
+    "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_whisper_medium_bn_local_calibration_v1.json"
+  },
   "budget": {
     "campaign_cap_usd": 75.0,
     "per_title_cap_usd": 8.0,
@@ -132,7 +166,8 @@
     "LAST_NARRATED_SPAN_MISMATCH",
     "GPT4O_MINI_BN_SAMPLE_SOURCE_SCORES_BELOW_9_7",
     "GPT4O_MINI_BN_MIDDLE_SAMPLE_LAST_BOUNDARY_MISMATCH",
-    "OPENAI_INSUFFICIENT_QUOTA_ON_ENDING_SAMPLE"
+    "OPENAI_INSUFFICIENT_QUOTA_ON_ENDING_SAMPLE",
+    "LOCAL_WHISPER_MEDIUM_RUNTIME_RESOURCE_KILLED_EXIT_137"
   ],
   "paid_lock": {
     "authoritative_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
@@ -144,6 +179,6 @@
       "radharani"
     ]
   },
-  "next_exact_command": "python3 -m json.tool internal/audiobook_lab/sprint1_publication/title_runs/radharani_full_canary_closeout_20260722.json >/dev/null && git diff --check",
-  "next_strategy": "Do not repeat Sarvam TTS, whisper-1/auto, or gpt-4o-mini-transcribe/bn fingerprints. Keep Radharani audio hidden. Resume only with a materially different Bengali ASR provider or source-bound licensed/human narration evidence under a separately recorded decision."
+  "next_exact_command": "python3 -m json.tool internal/audiobook_lab/sprint1_publication/title_runs/radharani_whisper_medium_bn_local_calibration_v1.json >/dev/null && python3 -m json.tool internal/audiobook_lab/sprint1_publication/title_runs/radharani_full_canary_closeout_20260722.json >/dev/null && git diff --check",
+  "next_strategy": "Do not repeat Sarvam TTS, whisper-1/auto, gpt-4o-mini-transcribe/bn, or local Whisper medium/bn fingerprints. Keep Radharani audio hidden. Resume only with a materially different Bengali ASR provider or source-bound licensed/human narration evidence under a separately recorded decision."
 }
