@@ -1,7 +1,7 @@
 {
   "status": "SUBPROCESS_FAILED",
-  "started_at": "2026-07-15T07:59:31Z",
-  "finished_at": "2026-07-15T08:26:04Z",
+  "started_at": "2026-07-22T18:02:15Z",
+  "finished_at": "2026-07-22T18:23:30Z",
   "holder": "sprint1_next_two_fastpath_radharani_full_factory",
   "slug": "radharani",
   "scope": "Sprint1 next-two fast-path full factory run for radharani; publish only if all gates pass.",
@@ -38,24 +38,23 @@
     "1",
     "--fail-closed",
     "--stop-after-terminal-books",
-    "1",
-    "--publish-approved"
+    "1"
   ],
   "provider_command_started": true,
   "process_returncode": 2,
   "timed_out": false,
   "actual_provider_billing": "NOT_REPORTED",
   "lock_restored": true,
-  "lock_sha256_before": "18757c4b267eace9ef99212cd3485ef503854997d7d7a3c6451b4993ce510fd9",
-  "lock_sha256_after": "18757c4b267eace9ef99212cd3485ef503854997d7d7a3c6451b4993ce510fd9",
+  "lock_sha256_before": "24f5a1751ab3124898c0d5436e75ff7ea0244ef6f82718dcb4c461b3b2c3e482",
+  "lock_sha256_after": "24f5a1751ab3124898c0d5436e75ff7ea0244ef6f82718dcb4c461b3b2c3e482",
   "blockers": [
     "paid subprocess exited with status 2"
   ],
   "budget": {
-    "sprint_cap_usd": 175.0,
-    "per_title_cap_usd": 30.0,
-    "max_tts_cap_usd": 175.0,
-    "effective_total_cap_usd": 175.0,
+    "sprint_cap_usd": 75.0,
+    "per_title_cap_usd": 8.0,
+    "max_tts_cap_usd": 75.0,
+    "effective_total_cap_usd": 75.0,
     "estimated_stage_usd": 5.0,
     "prior_estimated_spend_usd": 15.90614,
     "estimated_cumulative_spend_usd": 20.90614

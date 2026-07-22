@@ -49,9 +49,9 @@ LONG_ENGLISH_SLUGS = {
     "alices-adventures-in-wonderland",
 }
 PAID_ENV = {
-    "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "175",
-    "SPRINT1_MAX_USD_PER_TITLE": "30",
-    "MAX_TTS_BUDGET_USD": "175",
+    "SPRINT1_TOTAL_AUDIO_BUDGET_USD": "75",
+    "SPRINT1_MAX_USD_PER_TITLE": "8",
+    "MAX_TTS_BUDGET_USD": "75",
     "EARNALISM_STOP_ON_BUDGET_EXCEEDED": "true",
     "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS": "true",
     "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": "true",
@@ -66,13 +66,17 @@ PAID_ENV = {
     "EARNALISM_BENGALI_TTS_MODEL": "bulbul:v3",
     "EARNALISM_BENGALI_TTS_VOICE": "ratan",
     "EARNALISM_BENGALI_TTS_STYLE": "literary_warm_pacing",
-    "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "40",
-    "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "20",
+    "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD": "3",
+    "EARNALISM_ASR_RETRY_MAX_ESTIMATED_USD": "0",
     "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE": "0.008",
-    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "20",
+    "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD": "0.75",
     "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD": "0.05",
+    "EARNALISM_FULL_TITLE_CUMULATIVE_MAX_ESTIMATED_USD": "5",
+    "EARNALISM_REQUIRE_AUDIO_DERIVED_ASR_9_7": "true",
     "EARNALISM_ENABLE_OPENAI_LISTENING_QA": "true",
     "EARNALISM_OPENAI_LISTENING_QA_MODEL": "gpt-audio",
+    "EARNALISM_LISTENING_POLICY_VERSION": "bengali_audiobook_acceptance_v2_92",
+    "EARNALISM_SYNC_POLICY_VERSION": "tiered_sync_acceptance_v1",
 }
 LISTENING_MINIMUM = 9.2
 LISTENING_CONFIDENCE_MINIMUM = 0.9
@@ -465,11 +469,11 @@ def full_factory_command(slug: str, *, publish: bool) -> list[str]:
         "--max-asr-workers",
         "1",
         "--max-upload-workers",
-        "0",
+        "1" if publish else "0",
         "--max-metadata-workers",
-        "0",
+        "1" if publish else "0",
         "--max-browser-workers",
-        "0",
+        "1" if publish else "0",
         "--max-attempts",
         "1",
         "--fail-closed",
@@ -767,18 +771,36 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(json.dumps({"status": "FAIL_CLOSED", "blocker": str(exc)}, ensure_ascii=False))
             return 2
         raise
+    terminal_failures = [
+        item
+        for item in summary["processed_titles"]
+        if item.get("status")
+        not in {
+            "FULL_PIPELINE_COMPLETED_PRODUCTION_VALIDATION_REQUIRED",
+            "SKIPPED_MAX_NEW_PUBLICATIONS_REACHED",
+        }
+    ]
+    status = "FAIL_CLOSED" if args.fail_closed and terminal_failures else "PASS"
     print(
         json.dumps(
             {
-                "status": "PASS",
+                "status": status,
                 "ending_yes_yes_count": summary["ending_yes_yes_count"],
                 "newly_public_audiobooks": summary["newly_public_audiobooks"],
+                "failed_titles": [
+                    {
+                        "slug": item.get("slug"),
+                        "status": item.get("status"),
+                        "blocker": item.get("blocker"),
+                    }
+                    for item in terminal_failures
+                ],
                 "results": str(FASTPATH_DIR / "next_two_audio_fastpath_results.json"),
             },
             ensure_ascii=False,
         )
     )
-    return 0
+    return 2 if status == "FAIL_CLOSED" else 0
 
 
 if __name__ == "__main__":

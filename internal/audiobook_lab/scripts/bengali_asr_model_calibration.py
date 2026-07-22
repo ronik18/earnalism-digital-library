@@ -49,12 +49,15 @@ def atomic_write(path: Path, payload: dict | bytes) -> None:
     os.replace(temporary, path)
 
 
-def load_lock(raw: bytes) -> dict:
+def load_lock(raw: bytes, *, slug: str | None = None) -> dict:
     payload = json.loads(raw)
     if payload.get("status") != "active" or payload.get("current_holder") != "none":
         raise RuntimeError("paid_tts.lock is not available")
     if payload.get("allowed_next_holders") != []:
         raise RuntimeError("paid_tts.lock allowed_next_holders must be empty")
+    allowed_slugs = payload.get("allowed_slugs")
+    if slug and (not isinstance(allowed_slugs, list) or slug not in allowed_slugs):
+        raise RuntimeError(f"paid_tts.lock does not authorize slug: {slug}")
     return payload
 
 
@@ -235,6 +238,8 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--lock-path", type=Path, required=True)
     parser.add_argument("--max-estimated-usd", type=float, required=True)
+    parser.add_argument("--prior-estimated-usd", type=float, default=0.0)
+    parser.add_argument("--cumulative-cap-usd", type=float, required=True)
     parser.add_argument("--execute", action="store_true")
     args = parser.parse_args()
     if args.provider == "openai" and not os.environ.get("OPENAI_API_KEY"):
@@ -251,6 +256,11 @@ def main() -> int:
     estimate = estimated_cost(chunks, len(arms), rate)
     if estimate > args.max_estimated_usd:
         raise SystemExit(f"Estimated calibration cost {estimate:.4f} exceeds cap {args.max_estimated_usd:.4f}")
+    cumulative_estimate = round(args.prior_estimated_usd + estimate, 4)
+    if cumulative_estimate > args.cumulative_cap_usd:
+        raise SystemExit(
+            f"Estimated cumulative pilot cost {cumulative_estimate:.4f} exceeds cap {args.cumulative_cap_usd:.4f}"
+        )
     output = args.output if args.output.is_absolute() else ROOT / args.output
     fingerprint = {
         "slug": args.slug,
@@ -270,6 +280,9 @@ def main() -> int:
         "fingerprint": fingerprint,
         "estimated_cost_usd": estimate,
         "max_estimated_usd": args.max_estimated_usd,
+        "prior_estimated_usd": args.prior_estimated_usd,
+        "estimated_cumulative_usd": cumulative_estimate,
+        "cumulative_cap_usd": args.cumulative_cap_usd,
         "provider_calls_ran": False,
         "results": [],
     }
@@ -279,7 +292,7 @@ def main() -> int:
         return 0
 
     original_lock = args.lock_path.expanduser().resolve().read_bytes()
-    lock = load_lock(original_lock)
+    lock = load_lock(original_lock, slug=args.slug)
     results = []
     try:
         atomic_write(args.lock_path, acquired_lock(lock, slug=args.slug, estimate=estimate))
@@ -323,11 +336,22 @@ def main() -> int:
     finally:
         atomic_write(args.lock_path, original_lock)
     best = best_arm(results)
+    completed_estimate = round(
+        sum(
+            float(item.get("duration_seconds") or 0)
+            for item in results
+            if item.get("status") != "ERROR"
+        )
+        / 60.0
+        * rate,
+        4,
+    )
     payload = {
         **preflight,
         "generated_at": iso_now(),
         "status": "CALIBRATION_PASS" if best and best.get("status") == "PASS" else "CALIBRATION_REPAIR_REQUIRED",
         "provider_calls_ran": True,
+        "completed_call_estimated_cost_usd": completed_estimate,
         "results": results,
         "best_arm": best,
         "actual_provider_billing": "NOT_REPORTED",

@@ -47,6 +47,10 @@ OPENAI_LISTENING_QA_MODEL = os.environ.get("EARNALISM_OPENAI_LISTENING_QA_MODEL"
 OPENAI_LISTENING_QA_MAX_ESTIMATED_USD_ENV = "EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD"
 OPENAI_LISTENING_QA_ESTIMATED_USD_ENV = "EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD"
 OPENAI_LISTENING_QA_DEFAULT_ESTIMATED_USD = 0.05
+ASR_SYNC_MAX_ESTIMATED_USD_ENV = "EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD"
+ASR_SYNC_ESTIMATED_USD_PER_MINUTE_ENV = "EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE"
+FULL_TITLE_CUMULATIVE_MAX_ESTIMATED_USD_ENV = "EARNALISM_FULL_TITLE_CUMULATIVE_MAX_ESTIMATED_USD"
+REQUIRE_AUDIO_DERIVED_ASR_ENV = "EARNALISM_REQUIRE_AUDIO_DERIVED_ASR_9_7"
 UNIVERSAL_LISTENING_POLICY = "schema3_universal_9_7"
 BENGALI_PREMIUM_MVP_POLICY = "bengali_premium_mvp_v1"
 BENGALI_AUDIOBOOK_92_POLICY = "bengali_audiobook_acceptance_v2_92"
@@ -129,6 +133,10 @@ def safe_float(value, default: float = 0.0) -> float:
         return default
 
 
+def bool_env(name: str) -> bool:
+    return os.environ.get(name, "").strip().lower() in {"1", "true", "yes"}
+
+
 def _nonnegative_usd_env(name: str) -> tuple[float | None, str]:
     raw = os.environ.get(name, "").strip()
     if not raw:
@@ -202,6 +210,115 @@ def openai_listening_qa_budget_guard(*, sample_count: int = 1, prior_estimated_u
         "total_estimated_usd": total_estimate,
         "sample_count": count,
     }
+
+
+def full_title_paid_budget_guard(
+    *,
+    audio_duration_seconds: float,
+    tts_estimated_usd: float | None,
+    listening_sample_count: int = 6,
+) -> dict:
+    """Prove the full TTS + ASR + listening envelope before ASR starts.
+
+    The outer paid-stage runner reserves the same full-title cap, while this
+    guard derives the remaining estimates from the generated audio.  Both must
+    pass so a single child factory cannot hide cumulative provider spend behind
+    independent per-stage caps.
+    """
+
+    stop_on_budget = os.environ.get("EARNALISM_STOP_ON_BUDGET_EXCEEDED", "").strip().lower() in {
+        "1",
+        "true",
+        "yes",
+    }
+    asr_cap, asr_cap_error = _nonnegative_usd_env(ASR_SYNC_MAX_ESTIMATED_USD_ENV)
+    asr_rate, asr_rate_error = _nonnegative_usd_env(ASR_SYNC_ESTIMATED_USD_PER_MINUTE_ENV)
+    listening_cap, listening_cap_error = _nonnegative_usd_env(OPENAI_LISTENING_QA_MAX_ESTIMATED_USD_ENV)
+    listening_rate, listening_rate_error = _nonnegative_usd_env(OPENAI_LISTENING_QA_ESTIMATED_USD_ENV)
+    cumulative_cap, cumulative_cap_error = _nonnegative_usd_env(FULL_TITLE_CUMULATIVE_MAX_ESTIMATED_USD_ENV)
+    errors = [
+        error
+        for error in (
+            asr_cap_error,
+            asr_rate_error,
+            listening_cap_error,
+            listening_rate_error,
+            cumulative_cap_error,
+        )
+        if error
+    ]
+    duration = max(safe_float(audio_duration_seconds), 0.0)
+    if duration <= 0:
+        errors.append("generated audio duration must be measurable before ASR")
+    if tts_estimated_usd is None:
+        errors.append("TTS estimated cost is missing from the hash-bound TTS result")
+    if not stop_on_budget:
+        errors.append("EARNALISM_STOP_ON_BUDGET_EXCEEDED must be true")
+    if errors:
+        return {
+            "ok": False,
+            "code": "FULL_TITLE_CUMULATIVE_BUDGET_GATE_INVALID",
+            "blocker": "FULL_TITLE_CUMULATIVE_BUDGET_GATE_INVALID: " + "; ".join(errors),
+        }
+
+    tts_estimate = max(safe_float(tts_estimated_usd), 0.0)
+    asr_estimate = round((duration / 60.0) * float(asr_rate), 4)
+    sample_count = max(int(listening_sample_count or 1), 1)
+    listening_estimate = round(sample_count * float(listening_rate), 4)
+    cumulative_estimate = round(tts_estimate + asr_estimate + listening_estimate, 4)
+    blockers: list[str] = []
+    if asr_estimate > float(asr_cap):
+        blockers.append(
+            f"estimated ASR cost ${asr_estimate:.4f} exceeds {ASR_SYNC_MAX_ESTIMATED_USD_ENV} ${float(asr_cap):.4f}"
+        )
+    if listening_estimate > float(listening_cap):
+        blockers.append(
+            "estimated listening-QA cost "
+            f"${listening_estimate:.4f} exceeds {OPENAI_LISTENING_QA_MAX_ESTIMATED_USD_ENV} ${float(listening_cap):.4f}"
+        )
+    if cumulative_estimate > float(cumulative_cap):
+        blockers.append(
+            f"estimated cumulative full-title cost ${cumulative_estimate:.4f} exceeds "
+            f"{FULL_TITLE_CUMULATIVE_MAX_ESTIMATED_USD_ENV} ${float(cumulative_cap):.4f}"
+        )
+    return {
+        "ok": not blockers,
+        "code": "FULL_TITLE_CUMULATIVE_BUDGET_OK" if not blockers else "FULL_TITLE_CUMULATIVE_BUDGET_EXCEEDED",
+        "blocker": "FULL_TITLE_CUMULATIVE_BUDGET_EXCEEDED: " + "; ".join(blockers) if blockers else "",
+        "audio_duration_seconds": duration,
+        "tts_estimated_usd": round(tts_estimate, 4),
+        "asr_estimated_usd": asr_estimate,
+        "listening_sample_count": sample_count,
+        "listening_estimated_usd": listening_estimate,
+        "cumulative_estimated_usd": cumulative_estimate,
+        "asr_cap_usd": float(asr_cap),
+        "listening_cap_usd": float(listening_cap),
+        "cumulative_cap_usd": float(cumulative_cap),
+    }
+
+
+def audio_derived_asr_gate(metrics: dict, *, word_timestamp_count: int) -> tuple[bool, list[str]]:
+    """Evaluate the non-substitutable audio-derived ASR/content gates."""
+
+    blockers: list[str] = []
+    score = safe_float(metrics.get("score"), 0.0)
+    coverage = safe_float(metrics.get("coverage"), 0.0)
+    order = safe_float(metrics.get("token_order_similarity"), 0.0)
+    if score < 9.7:
+        blockers.append(f"AUDIO_DERIVED_ASR_GATE_FAILED: score {score} < 9.7")
+    if coverage < 0.98:
+        blockers.append(f"AUDIO_DERIVED_ASR_GATE_FAILED: coverage {coverage} < 0.98")
+    if order < 0.97:
+        blockers.append(f"AUDIO_DERIVED_ASR_GATE_FAILED: token order {order} < 0.97")
+    if metrics.get("first_words_match") is not True:
+        blockers.append("AUDIO_DERIVED_ASR_GATE_FAILED: first narrated span does not match")
+    if metrics.get("last_words_match") is not True:
+        blockers.append("AUDIO_DERIVED_ASR_GATE_FAILED: last narrated span does not match")
+    if int(word_timestamp_count or 0) <= 0:
+        blockers.append("AUDIO_DERIVED_ASR_GATE_FAILED: measured ASR timestamps are missing")
+    if metrics.get("frontmatter_absent") is not True:
+        blockers.append("AUDIO_DERIVED_ASR_GATE_FAILED: source/frontmatter appears in transcript")
+    return not blockers, blockers
 
 
 def listening_policy_for(language: str, release_policy: str | None = None) -> dict:
@@ -1696,6 +1813,28 @@ def main() -> int:
     if not final_audio.exists():
         return finish(args, "asr_sync", started, status="BLOCKED", blocker_category="tts", blockers=[f"TTS final audio file does not exist: {final_audio_value}"], retryable=True)
 
+    budget_guard = {"ok": True, "code": "FULL_TITLE_CUMULATIVE_BUDGET_NOT_REQUESTED"}
+    if os.environ.get(FULL_TITLE_CUMULATIVE_MAX_ESTIMATED_USD_ENV, "").strip():
+        tts_metrics = tts_result.get("metrics") if isinstance(tts_result.get("metrics"), dict) else {}
+        budget_guard = full_title_paid_budget_guard(
+            audio_duration_seconds=ffprobe_duration(final_audio) or 0.0,
+            tts_estimated_usd=tts_metrics.get("tts_estimated_cost"),
+            listening_sample_count=6,
+        )
+        if not budget_guard.get("ok"):
+            return finish(
+                args,
+                "asr_sync",
+                started,
+                status="BLOCKED",
+                ready_for_next_stage=False,
+                blocker_category="budget",
+                blockers=[str(budget_guard.get("blocker") or "FULL_TITLE_CUMULATIVE_BUDGET_GATE_BLOCKED")],
+                retryable=False,
+                artifacts={"final_audio_path": rel(final_audio)},
+                metrics={"full_title_budget_guard": budget_guard},
+            )
+
     manuscript = load_clean_manuscript(args)
     public_book = load_public_book(args.slug)
     reused = existing_sidecar_reuse(args, run_dir, public_book, final_audio, manuscript)
@@ -1913,8 +2052,44 @@ def main() -> int:
                     "projection_confidence": metrics["projection_confidence"],
                 },
             )
-        if bengali_report.get("release_pass"):
+        if bengali_report.get("release_pass") and not bool_env(REQUIRE_AUDIO_DERIVED_ASR_ENV):
             metrics["score"] = max(float(metrics.get("score") or 0), float(bengali_report.get("phonetic_projection_score") or 0))
+
+    if bool_env(REQUIRE_AUDIO_DERIVED_ASR_ENV):
+        strict_asr_pass, strict_asr_blockers = audio_derived_asr_gate(metrics, word_timestamp_count=len(words))
+        metrics["audio_derived_asr_required"] = True
+        metrics["audio_derived_asr_gate_pass"] = strict_asr_pass
+        metrics["full_title_budget_guard"] = budget_guard
+        write_json(diagnosis_path, metrics)
+        if not strict_asr_pass:
+            artifacts = {
+                "asr_transcript": rel(transcript_path),
+                "asr_alignment_diagnosis": rel(diagnosis_path),
+            }
+            if bengali_report:
+                artifacts.update(
+                    {
+                        "bengali_asr_mismatch_diagnosis": metrics.get("bengali_asr_diagnosis_path"),
+                        "bengali_asr_projection_report": metrics.get("bengali_asr_projection_report"),
+                    }
+                )
+            return finish(
+                args,
+                "asr_sync",
+                started,
+                status="BLOCKED",
+                ready_for_next_stage=False,
+                blocker_category="bengali_audio_manuscript_mismatch",
+                blockers=strict_asr_blockers,
+                retryable=False,
+                artifacts=artifacts,
+                metrics=metrics,
+                updated_fields={
+                    "raw_asr_score": metrics.get("score"),
+                    "audio_derived_asr_gate_pass": False,
+                    "asr_release_status": "AUDIO_DERIVED_ASR_REQUIRED_BLOCKED",
+                },
+            )
 
     if (
         metrics["score"] < 9.7

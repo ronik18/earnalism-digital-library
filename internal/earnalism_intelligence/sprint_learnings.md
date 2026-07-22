@@ -514,3 +514,12 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Existing Radharani sidecars are not release evidence because they contain empty cues or estimated timing. Measured paragraph/stanza sync remains mandatory.
 - The next safe path is one fresh, source-bound Radharani Sarvam full-title canary only after every explicit campaign approval/budget variable and a Radharani-scoped idle lock are present. The wrapper now refuses to synthesize approvals, rejects stale slug scope, and cannot start a full factory in dry-run mode.
 - No provider call, upload, metadata mutation, endpoint exposure, browser release, or publication ran; spend was `$0.00` and `paid_tts.lock` was untouched.
+
+## 2026-07-22 Radharani source-bound full-title canary
+
+- The source-bound Sarvam `bulbul:v3` / `ratan` / `literary_warm_pacing` arm produced 28 fresh groups and a 3,563.116-second private MP3 with SHA-256 `defeb886a990c68d297770f5d61c1ee239683c114fe06346751296a81f9476d8`. This proves deterministic generation, not release fidelity.
+- Raw OpenAI `whisper-1` with automatic language produced mixed-script output and failed decisively: score `1.0962`, coverage `0.1096`, token order `0.1033`, and both first and last boundaries false. Construction or phonetic projection must never replace this raw audio-derived gate.
+- A materially different bounded `gpt-4o-mini-transcribe` calibration with explicit Bengali improved Bengali-script ratios to `0.9875` and `0.9882`, but source scores were only `7.9085` and `9.0441`; the middle ending boundary failed, and the ending sample hit `insufficient_quota`. Do not run full corrected ASR from this arm.
+- Google credentials were present but two bounded ADC token probes hung; classify Google as `ADC_REFRESH_UNAVAILABLE_NOT_STARTED`, not provider-ready. No Google paid ASR ran.
+- Estimated completed provider work was `$0.7363`; actual billing was not reported. The authoritative lock restored byte-for-byte to Radharani-only idle SHA-256 `24f5a1751ab3124898c0d5436e75ff7ea0244ef6f82718dcb4c461b3b2c3e482`.
+- Radharani stays reader-live/audio-hidden, its production audiobook route remains HTTP `404`, and no listening, sync, upload, metadata, browser, or publication stage ran after the ASR failure.

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T22:56:24Z",
+  "generated_at": "2026-07-22T18:30:26Z",
   "policy_version": "bengali_audiobook_acceptance_v2_92",
   "total_titles": 31,
   "source": "bengali_audiobook_pilot_selection_report.json",
@@ -558,12 +558,26 @@
       "cover_status": "PASS",
       "reader_route_status": "PASS",
       "prior_audio_status": "reader_only_audio_hidden",
-      "known_blockers": [],
+      "known_blockers": [
+        "RAW_AUDIO_DERIVED_ASR_1_0962_BELOW_9_7",
+        "FIRST_LAST_ORDER_AND_COVERAGE_FAILED",
+        "GPT4O_MINI_BN_CALIBRATION_BELOW_9_7",
+        "OPENAI_INSUFFICIENT_QUOTA",
+        "GOOGLE_ADC_REFRESH_UNAVAILABLE"
+      ],
       "candidate_rank": 24,
-      "selected_strategy": "adaptive_sarvam_after_pilot",
-      "current_campaign_state": "READY_FOR_REPRESENTATIVE_AUDITION",
-      "best_representative_settings": null,
-      "next_action": "Await pilot result; then run adaptive representative audition if pilot proves the path."
+      "selected_strategy": "preserve_private_full_title_and_require_materially_different_asr_or_source",
+      "current_campaign_state": "FULL_TITLE_ASR_NO_GO_AUDIO_HIDDEN",
+      "best_representative_settings": {
+        "provider": "sarvam",
+        "model": "bulbul:v3",
+        "voice": "ratan",
+        "style": "literary_warm_pacing",
+        "score": 9.4,
+        "confidence": 0.95
+      },
+      "full_title_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_full_canary_closeout_20260722.json",
+      "next_action": "Do not repeat completed TTS or ASR fingerprints. Keep audio hidden and resume only with a materially different usable Bengali ASR provider or source-bound replacement narration."
     },
     {
       "slug": "bn-035",

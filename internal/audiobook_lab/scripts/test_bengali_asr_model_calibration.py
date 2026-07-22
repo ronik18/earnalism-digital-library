@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import unittest
 from pathlib import Path
 
@@ -30,6 +31,19 @@ class BengaliASRCalibrationTests(unittest.TestCase):
             ]
         )
         self.assertEqual(best["status"], "PASS")
+
+    def test_lock_must_explicitly_authorize_requested_slug(self) -> None:
+        raw = json.dumps(
+            {
+                "status": "active",
+                "current_holder": "none",
+                "allowed_next_holders": [],
+                "allowed_slugs": ["radharani"],
+            }
+        ).encode()
+        self.assertEqual(cal.load_lock(raw, slug="radharani")["current_holder"], "none")
+        with self.assertRaisesRegex(RuntimeError, "does not authorize slug"):
+            cal.load_lock(raw, slug="nishkriti")
 
 
 if __name__ == "__main__":

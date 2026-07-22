@@ -1,4 +1,6 @@
 import argparse
+import contextlib
+import io
 import importlib.util
 import json
 import tempfile
@@ -36,6 +38,13 @@ class NextTwoFastPathTests(unittest.TestCase):
         self.assertEqual(snapshot["credentials"]["SARVAM_API_KEY"], "SET")
         self.assertNotIn("sarvam-real-value", json.dumps(snapshot))
         self.assertNotIn("openai-real-value", json.dumps(snapshot))
+
+    def test_runtime_gates_enforce_owner_campaign_and_per_title_caps(self):
+        self.assertEqual(MODULE.PAID_ENV["SPRINT1_TOTAL_AUDIO_BUDGET_USD"], "75")
+        self.assertEqual(MODULE.PAID_ENV["SPRINT1_MAX_USD_PER_TITLE"], "8")
+        self.assertEqual(MODULE.PAID_ENV["EARNALISM_BENGALI_FULL_PILOT_MAX_ESTIMATED_USD"], "5")
+        self.assertEqual(MODULE.PAID_ENV["EARNALISM_FULL_TITLE_CUMULATIVE_MAX_ESTIMATED_USD"], "5")
+        self.assertEqual(MODULE.PAID_ENV["EARNALISM_REQUIRE_AUDIO_DERIVED_ASR_9_7"], "true")
 
     def test_missing_gates_fail_closed_before_paid_work(self):
         snapshot = MODULE.runtime_gates({})
@@ -271,6 +280,49 @@ class NextTwoFastPathTests(unittest.TestCase):
         self.assertEqual(result["status"], "DRY_RUN_FULL_PIPELINE_NOT_EXECUTED")
         self.assertFalse(result["full_pipeline"]["provider_call_started"])
         full_factory.assert_not_called()
+
+    def test_publish_command_enables_only_serial_downstream_workers(self):
+        command = MODULE.full_factory_command("radharani", publish=True)
+
+        def value_after(flag):
+            return command[command.index(flag) + 1]
+
+        self.assertEqual(value_after("--max-books-active"), "1")
+        self.assertEqual(value_after("--max-tts-workers"), "1")
+        self.assertEqual(value_after("--max-paid-workers"), "1")
+        self.assertEqual(value_after("--max-asr-workers"), "1")
+        self.assertEqual(value_after("--max-upload-workers"), "1")
+        self.assertEqual(value_after("--max-metadata-workers"), "1")
+        self.assertEqual(value_after("--max-browser-workers"), "1")
+        self.assertIn("--publish-approved", command)
+
+    def test_main_returns_nonzero_when_fail_closed_title_pipeline_fails(self):
+        summary = {
+            "ending_yes_yes_count": 4,
+            "newly_public_audiobooks": [],
+            "processed_titles": [
+                {
+                    "slug": "radharani",
+                    "status": "FULL_PIPELINE_FAILED",
+                    "blocker": "AUDIO_DERIVED_ASR_GATE_FAILED",
+                }
+            ],
+        }
+        with mock.patch.object(MODULE, "run", return_value=summary), io.StringIO() as output, contextlib.redirect_stdout(output):
+            result = MODULE.main(
+                [
+                    "--candidate-slugs",
+                    "radharani",
+                    "--max-new-publications",
+                    "1",
+                    "--execute",
+                    "--fail-closed",
+                ]
+            )
+            payload = json.loads(output.getvalue())
+        self.assertEqual(result, 2)
+        self.assertEqual(payload["status"], "FAIL_CLOSED")
+        self.assertEqual(payload["failed_titles"][0]["slug"], "radharani")
 
 
 if __name__ == "__main__":
