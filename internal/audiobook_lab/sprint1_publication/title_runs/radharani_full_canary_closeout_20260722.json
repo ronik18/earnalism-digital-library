@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-22T18:30:26Z",
+  "slug": "radharani",
+  "title": "রাধারাণী",
+  "author": "বঙ্কিমচন্দ্র চট্টোপাধ্যায়",
+  "decision": "NO_GO_AUDIO_DERIVED_ASR_AND_CALIBRATION_FAILED",
+  "public_audio_status": "AUDIO_HIDDEN",
+  "publication_performed": false,
+  "source": {
+    "clean_manuscript_sha256": "53b00ba494263f54f97c8c94bb64ed6e07e1819fc8060aafee90f57ea5a9541d",
+    "rights": "PASS",
+    "sanitation": "PASS",
+    "front_cover": "PASS",
+    "back_cover": "PASS"
+  },
+  "representative_audition": {
+    "evidence_reused": true,
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "ratan",
+    "style": "literary_warm_pacing",
+    "score": 9.4,
+    "confidence": 0.95,
+    "fatal_flags": []
+  },
+  "full_title_tts": {
+    "status": "PASS_PRIVATE_ONLY",
+    "provider": "sarvam",
+    "model": "bulbul:v3",
+    "voice": "ratan",
+    "style": "literary_warm_pacing",
+    "prepared_text_sha256": "d1624f644e394c3c3888bd94185bdd506e510448406b00865a178bdf2873d382",
+    "audio_sha256": "defeb886a990c68d297770f5d61c1ee239683c114fe06346751296a81f9476d8",
+    "audio_size_bytes": 57010989,
+    "duration_seconds": 3563.115792,
+    "group_count": 28,
+    "fresh_group_count": 28,
+    "fallback_tts_used": false,
+    "estimated_cost_usd": 0.2281,
+    "actual_provider_billing": "NOT_REPORTED",
+    "private_artifact": "internal/audiobook_lab/release_gate/radharani_20260722T180215Z/radharani_sarvam_bulbul_v3_ratan_literary_warm_pacing_final.mp3"
+  },
+  "primary_audio_derived_asr": {
+    "status": "FAIL",
+    "provider": "openai",
+    "model": "whisper-1",
+    "language": "auto",
+    "checkpoint_preserved": true,
+    "provider_calls_completed": true,
+    "word_timestamp_count": 3581,
+    "score": 1.0962,
+    "required_score": 9.7,
+    "coverage": 0.1096,
+    "required_coverage": 0.98,
+    "token_order_similarity": 0.1033,
+    "required_token_order_similarity": 0.97,
+    "first_words_match": false,
+    "last_words_match": false,
+    "estimated_cost_usd": 0.4751,
+    "actual_provider_billing": "NOT_REPORTED",
+    "evidence": "internal/audiobook_lab/release_gate/radharani_20260722T180215Z/asr_sync_hook_result.json"
+  },
+  "bounded_materially_different_asr_calibration": {
+    "status": "CALIBRATION_REPAIR_REQUIRED",
+    "provider": "openai",
+    "model": "gpt-4o-mini-transcribe",
+    "language": "bn",
+    "chunk_ids": [
+      "group_0000",
+      "group_0013",
+      "group_0027"
+    ],
+    "results": [
+      {
+        "chunk_id": "group_0000",
+        "status": "BELOW_THRESHOLD",
+        "source_score": 7.9085,
+        "first_words_match": true,
+        "last_words_match": true,
+        "bengali_script_ratio": 0.9875
+      },
+      {
+        "chunk_id": "group_0013",
+        "status": "BELOW_THRESHOLD",
+        "source_score": 9.0441,
+        "first_words_match": true,
+        "last_words_match": false,
+        "bengali_script_ratio": 0.9882
+      },
+      {
+        "chunk_id": "group_0027",
+        "status": "ERROR_OPENAI_INSUFFICIENT_QUOTA"
+      }
+    ],
+    "full_stage_reserved_estimated_cost_usd": 0.0507,
+    "completed_call_estimated_cost_usd": 0.0331,
+    "actual_provider_billing": "NOT_REPORTED",
+    "lock_restored": true,
+    "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_gpt4o_mini_bn_asr_calibration_v1.json"
+  },
+  "zero_cost_local_asr_diagnostic": {
+    "status": "LOCAL_WHISPER_MEDIUM_RUNTIME_RESOURCE_KILLED_EXIT_137",
+    "provider": "local_openai_whisper",
+    "model": "medium",
+    "model_sha256": "345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1",
+    "whisper_version": "20250625",
+    "torch_version": "2.13.0",
+    "language": "bn",
+    "device": "cpu",
+    "sample_groups": [
+      "group_0000",
+      "group_0013",
+      "group_0027"
+    ],
+    "group_0000_status": "ERROR_RUNTIME_RESOURCE_KILLED_EXIT_137",
+    "groups_not_started": [
+      "group_0013",
+      "group_0027"
+    ],
+    "transcript_produced": false,
+    "word_timestamps_produced": false,
+    "source_score": null,
+    "runtime_capture_status": "EXACT_WALL_TIME_UNAVAILABLE_PROCESS_GROUP_TERMINATED_BEFORE_TIME_REPORT",
+    "observed_elapsed_seconds_lower_bound": 37,
+    "observed_cpu_percent": 255.0,
+    "observed_process_memory_percent": 14.4,
+    "host_memory_bytes": 17179869184,
+    "cost_usd": 0.0,
+    "provider_calls_ran": false,
+    "paid_lock_mutated": false,
+    "full_28_group_local_asr_run": false,
+    "classification": "LOCAL_WHISPER_MEDIUM_UNSUITABLE_FOR_RADHARANI_AUDIO_IN_CURRENT_16_GIB_RUNTIME",
+    "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_whisper_medium_bn_local_calibration_v1.json"
+  },
+  "budget": {
+    "campaign_cap_usd": 75.0,
+    "per_title_cap_usd": 8.0,
+    "radharani_pilot_cap_usd": 5.0,
+    "campaign_prior_estimated_spend_usd": 15.90614,
+    "pilot_completed_call_estimated_spend_usd": 0.7363,
+    "pilot_conservative_reserved_estimate_usd": 0.7539,
+    "campaign_estimated_spend_after_completed_calls_usd": 16.64244,
+    "campaign_estimated_remaining_usd": 58.35756,
+    "actual_provider_billing": "NOT_REPORTED"
+  },
+  "release_gates": {
+    "source_rights_sanitation_covers": "PASS",
+    "representative_listening": "PASS",
+    "private_full_title_tts": "PASS",
+    "audio_derived_asr_9_7": "FAIL",
+    "exact_first_last_order_coverage": "FAIL",
+    "measured_sync": "NOT_RUN_ASR_BLOCKED",
+    "six_sample_listening": "NOT_RUN_ASR_BLOCKED",
+    "private_upload_checksum": "NOT_RUN_ASR_BLOCKED",
+    "controlled_metadata": "NOT_RUN_ASR_BLOCKED",
+    "production_endpoint": "HTTP_404_AUDIO_HIDDEN",
+    "browser": "NOT_RUN_ASR_BLOCKED",
+    "release_ready": false
+  },
+  "blockers": [
+    "AUDIO_DERIVED_ASR_SCORE_BELOW_9_7",
+    "AUDIO_DERIVED_ASR_COVERAGE_BELOW_0_98",
+    "AUDIO_DERIVED_ASR_TOKEN_ORDER_BELOW_0_97",
+    "FIRST_NARRATED_SPAN_MISMATCH",
+    "LAST_NARRATED_SPAN_MISMATCH",
+    "GPT4O_MINI_BN_SAMPLE_SOURCE_SCORES_BELOW_9_7",
+    "GPT4O_MINI_BN_MIDDLE_SAMPLE_LAST_BOUNDARY_MISMATCH",
+    "OPENAI_INSUFFICIENT_QUOTA_ON_ENDING_SAMPLE",
+    "LOCAL_WHISPER_MEDIUM_RUNTIME_RESOURCE_KILLED_EXIT_137"
+  ],
+  "paid_lock": {
+    "authoritative_path": "/Users/ronikbasak/Documents/GitHub/earnalism-digital-library/internal/earnalism_intelligence/locks/paid_tts.lock",
+    "terminal_sha256": "24f5a1751ab3124898c0d5436e75ff7ea0244ef6f82718dcb4c461b3b2c3e482",
+    "status": "active",
+    "current_holder": "none",
+    "allowed_next_holders": [],
+    "allowed_slugs": [
+      "radharani"
+    ]
+  },
+  "next_exact_command": "python3 -m json.tool internal/audiobook_lab/sprint1_publication/title_runs/radharani_whisper_medium_bn_local_calibration_v1.json >/dev/null && python3 -m json.tool internal/audiobook_lab/sprint1_publication/title_runs/radharani_full_canary_closeout_20260722.json >/dev/null && git diff --check",
+  "next_strategy": "Do not repeat Sarvam TTS, whisper-1/auto, gpt-4o-mini-transcribe/bn, or local Whisper medium/bn fingerprints. Keep Radharani audio hidden. Resume only with a materially different Bengali ASR provider or source-bound licensed/human narration evidence under a separately recorded decision."
+}

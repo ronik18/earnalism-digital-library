@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-07-22T20:23:59Z",
+  "finished_at": "2026-07-22T20:24:04Z",
+  "slug": "nishkriti",
+  "scope": "one-second OpenAI listening-QA availability probe only",
+  "model": "gpt-audio",
+  "status": "LISTENING_QA_QUOTA_BLOCKED",
+  "available": false,
+  "quota_blocked": true,
+  "provider_result": "HTTP_429_INSUFFICIENT_QUOTA",
+  "probe_audio_source": "locally_generated_one_second_silence",
+  "estimated_stage_usd": 0.01,
+  "actual_provider_billing": "NOT_REPORTED",
+  "campaign_cap_usd": 75.0,
+  "per_title_cap_usd": 8.0,
+  "estimated_campaign_cumulative_usd": 16.78804,
+  "paid_lock": {
+    "restored": true,
+    "sha256_before": "24f5a1751ab3124898c0d5436e75ff7ea0244ef6f82718dcb4c461b3b2c3e482",
+    "sha256_after": "24f5a1751ab3124898c0d5436e75ff7ea0244ef6f82718dcb4c461b3b2c3e482"
+  },
+  "synthesis_performed": false,
+  "audio_judgment_performed": false,
+  "upload_performed": false,
+  "publication_performed": false,
+  "public_audio_status": "AUDIO_HIDDEN",
+  "next_action": "Restore OpenAI API billing/quota for gpt-audio or approve a different independent audio judge. Do not repeat this probe before external state changes."
+}

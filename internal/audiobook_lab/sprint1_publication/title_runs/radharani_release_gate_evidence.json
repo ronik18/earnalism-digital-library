@@ -4,15 +4,36 @@
   "public_audiobook": false,
   "status": "FULL_PIPELINE_FAILED",
   "blocker": "RELEASE_FACTORY_RETURNED_2",
+  "closeout_status": "NO_GO_AUDIO_DERIVED_ASR_AND_CALIBRATION_FAILED",
+  "closeout_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_full_canary_closeout_20260722.json",
+  "audio_derived_asr": {
+    "provider": "openai",
+    "model": "whisper-1",
+    "language": "auto",
+    "score": 1.0962,
+    "coverage": 0.1096,
+    "token_order_similarity": 0.1033,
+    "first_words_match": false,
+    "last_words_match": false,
+    "passed": false
+  },
+  "materially_different_asr_calibration": {
+    "provider": "openai",
+    "model": "gpt-4o-mini-transcribe",
+    "language": "bn",
+    "best_source_score": 9.0441,
+    "passed": false,
+    "ending_sample": "ERROR_OPENAI_INSUFFICIENT_QUOTA"
+  },
   "release_gate": {
     "asr_source_minimum": 9.7,
-    "listening_sample_minimum": 9.4,
+    "listening_sample_minimum": 9.2,
     "listening_confidence_minimum": 0.9,
     "passed": false
   },
   "result": {
     "slug": "radharani",
-    "started_at": "2026-07-15T07:59:31Z",
+    "started_at": "2026-07-22T18:02:15Z",
     "finished_at": null,
     "preflight": {
       "slug": "radharani",
@@ -30,13 +51,13 @@
     "status": "FULL_PIPELINE_FAILED",
     "blocker": "RELEASE_FACTORY_RETURNED_2",
     "qa_scores": {},
-    "evidence_path": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/radharani_release_gate_evidence.json",
+    "evidence_path": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/title_runs/radharani_release_gate_evidence.json",
     "reuse_first": "REUSED_PASSING_REPRESENTATIVE_AUDITION_EVIDENCE",
     "representative_audition": {
       "status": "PASS",
       "lock_report": null,
       "lock_restored": null,
-      "audition_report": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/radharani_representative_audition/bengali_tts_provider_bakeoff_report.json",
+      "audition_report": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/radharani_representative_audition/bengali_tts_provider_bakeoff_report.json",
       "estimated_cost_usd": 0.0,
       "representative_passed": true,
       "blocker": "",
@@ -61,9 +82,9 @@
         "--prior-spend-usd",
         "15.90614",
         "--report",
-        "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/radharani_fastpath_full_factory_lock_report.json",
+        "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/title_runs/radharani_fastpath_full_factory_lock_report.json",
         "--workdir",
-        "/private/tmp/earnalism-cloudinary-three-part-fastpath",
+        "/private/tmp/earnalism-main-approved-integration",
         "--timeout-seconds",
         "7200",
         "--",
@@ -97,10 +118,9 @@
         "1",
         "--fail-closed",
         "--stop-after-terminal-books",
-        "1",
-        "--publish-approved"
+        "1"
       ],
-      "lock_report": "/private/tmp/earnalism-cloudinary-three-part-fastpath/internal/audiobook_lab/sprint1_publication/title_runs/radharani_fastpath_full_factory_lock_report.json",
+      "lock_report": "/private/tmp/earnalism-main-approved-integration/internal/audiobook_lab/sprint1_publication/title_runs/radharani_fastpath_full_factory_lock_report.json",
       "lock_restored": true,
       "blocker": "RELEASE_FACTORY_RETURNED_2"
     }

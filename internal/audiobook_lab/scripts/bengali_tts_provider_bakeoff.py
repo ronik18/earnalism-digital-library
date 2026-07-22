@@ -487,18 +487,22 @@ def latest_clean_manuscript(slug: str) -> str:
         text = candidate.read_text(encoding="utf-8", errors="replace").strip()
         if text:
             return sanitize_bengali_manuscript(text, slug)
-    chapter_dir = ROOT / "data" / "controlled_publications" / slug / "chapters"
-    parts: list[str] = []
-    for chapter in sorted(chapter_dir.glob("*.json")):
-        payload = read_json(chapter, {})
-        text = str(payload.get("content") or payload.get("text") or payload.get("body") or "").strip()
-        if text:
-            parts.append(text)
-    return sanitize_bengali_manuscript("\n\n".join(parts), slug)
+    for catalog_root in (ROOT / "data" / "controlled_publications", ROOT / "backend" / "data" / "controlled_publications"):
+        parts: list[str] = []
+        for chapter in sorted((catalog_root / slug / "chapters").glob("*.json")):
+            payload = read_json(chapter, {})
+            text = str(payload.get("content") or payload.get("text") or payload.get("body") or "").strip()
+            if text:
+                parts.append(text)
+        if parts:
+            return sanitize_bengali_manuscript("\n\n".join(parts), slug)
+    return ""
 
 
 def sanitize_bengali_manuscript(text: str, slug: str) -> str:
     public_book = read_json(ROOT / "data" / "controlled_publications" / slug / "public_book.json", {})
+    if not public_book:
+        public_book = read_json(ROOT / "backend" / "data" / "controlled_publications" / slug / "public_book.json", {})
     title = str(public_book.get("title") or "").strip()
     lines = [line.strip() for line in (text or "").replace("\r\n", "\n").splitlines()]
     cleaned: list[str] = []

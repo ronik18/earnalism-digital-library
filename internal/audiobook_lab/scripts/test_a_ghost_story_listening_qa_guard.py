@@ -18,7 +18,9 @@ HOOK_DIR = ROOT / "internal/audiobook_lab/scripts/factory_hooks"
 sys.path[:0] = [str(ROOT / "internal/audiobook_lab/scripts"), str(HOOK_DIR)]
 
 from asr_sync_hook import (  # noqa: E402
+    audio_derived_asr_gate,
     existing_sidecar_reuse,
+    full_title_paid_budget_guard,
     listening_qa_only,
     openai_listening_qa_budget_guard,
     run_openai_listening_judge,
@@ -55,6 +57,73 @@ class Args:
 
 
 class AStoryListeningQAGuardTests(unittest.TestCase):
+    def test_full_title_budget_guard_proves_cumulative_five_dollar_envelope(self) -> None:
+        with temporary_env(
+            EARNALISM_STOP_ON_BUDGET_EXCEEDED="true",
+            EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD="3",
+            EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE="0.008",
+            EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD="0.75",
+            EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD="0.05",
+            EARNALISM_FULL_TITLE_CUMULATIVE_MAX_ESTIMATED_USD="5",
+        ):
+            result = full_title_paid_budget_guard(
+                audio_duration_seconds=3600,
+                tts_estimated_usd=0.25,
+                listening_sample_count=6,
+            )
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["cumulative_estimated_usd"], 1.03)
+        self.assertEqual(result["cumulative_cap_usd"], 5.0)
+
+    def test_full_title_budget_guard_blocks_before_provider_when_cumulative_cap_exceeded(self) -> None:
+        with temporary_env(
+            EARNALISM_STOP_ON_BUDGET_EXCEEDED="true",
+            EARNALISM_ASR_SYNC_MAX_ESTIMATED_USD="5",
+            EARNALISM_ASR_SYNC_ESTIMATED_USD_PER_MINUTE="0.008",
+            EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD="1",
+            EARNALISM_OPENAI_LISTENING_QA_ESTIMATED_USD="0.05",
+            EARNALISM_FULL_TITLE_CUMULATIVE_MAX_ESTIMATED_USD="0.50",
+        ):
+            result = full_title_paid_budget_guard(
+                audio_duration_seconds=3600,
+                tts_estimated_usd=0.25,
+                listening_sample_count=6,
+            )
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["code"], "FULL_TITLE_CUMULATIVE_BUDGET_EXCEEDED")
+
+    def test_audio_derived_asr_gate_cannot_be_replaced_by_construction_score(self) -> None:
+        passed, blockers = audio_derived_asr_gate(
+            {
+                "score": 9.69,
+                "coverage": 1.0,
+                "token_order_similarity": 1.0,
+                "first_words_match": True,
+                "last_words_match": True,
+                "frontmatter_absent": True,
+                "tts_by_construction_verified": True,
+                "source_match_score": 10.0,
+            },
+            word_timestamp_count=100,
+        )
+        self.assertFalse(passed)
+        self.assertTrue(any("score 9.69 < 9.7" in blocker for blocker in blockers))
+
+    def test_audio_derived_asr_gate_accepts_exact_strict_boundary(self) -> None:
+        passed, blockers = audio_derived_asr_gate(
+            {
+                "score": 9.7,
+                "coverage": 0.98,
+                "token_order_similarity": 0.97,
+                "first_words_match": True,
+                "last_words_match": True,
+                "frontmatter_absent": True,
+            },
+            word_timestamp_count=1,
+        )
+        self.assertTrue(passed)
+        self.assertEqual(blockers, [])
+
     def test_budget_guard_blocks_missing_cap(self) -> None:
         with temporary_env(
             EARNALISM_OPENAI_LISTENING_QA_MAX_ESTIMATED_USD=None,

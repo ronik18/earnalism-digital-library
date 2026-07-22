@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-07-21T19:49:07Z",
+  "status": "SPRINT1_BENGALI_SCOPE_RECONCILED_ONE_LIVE_NINE_HIDDEN",
+  "truth_source": "backend/data/home_hero_curation.json",
+  "scope_rule": "The first ten deterministic Sprint 1 slugs are Bengali. The broader legacy 31-title Bengali campaign remains historical planning evidence, not the current Sprint 1 scope.",
+  "sprint1_bengali_total": 10,
+  "production_live_count": 1,
+  "production_hidden_count": 9,
+  "production_live": [
+    {
+      "slug": "book-2b9853ec52",
+      "reader_status": 200,
+      "reader_manifest_audio_enabled": true,
+      "audiobook_range_status": 206,
+      "release_gate": "APPROVED",
+      "audio_qa_status": "QA_PASSED"
+    }
+  ],
+  "production_hidden": [
+    "bn-066",
+    "radharani",
+    "nishkriti",
+    "muchiram-gurer-jibanchorit",
+    "book-d19e96859f",
+    "book-f5d593e1f4",
+    "pather-panchali",
+    "devdas",
+    "book-edfcf810c5"
+  ],
+  "hidden_control_result": {
+    "reader_manifest_audio_enabled": false,
+    "audiobook_endpoint_status": 404,
+    "checked_for_all_nine": true
+  },
+  "sitewide_public_audio_baseline": {
+    "public_readers": 32,
+    "approved_audiobooks": 4,
+    "approved_slugs": [
+      "book-2b9853ec52",
+      "a-ghost-story",
+      "sredni-vashtar",
+      "the-open-window"
+    ],
+    "source_generated_at": "2026-07-17T08:00:00Z"
+  },
+  "selected_private_canary": "radharani",
+  "selection_reason": "Radharani is reader-live, source/right/cover ready, short enough for a bounded run, and already has a source-bound Sarvam representative audition at 9.4 with 0.95 confidence and no fatal flags.",
+  "publication_mutation_performed": false,
+  "provider_call_performed": false,
+  "estimated_spend_usd": 0.0,
+  "actual_spend_usd": 0.0,
+  "paid_tts_lock_touched": false,
+  "evidence": [
+    "internal/audiobook_lab/sprint1_publication/title_runs/radharani_private_reuse_screen_v1.json",
+    "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/radharani_representative_audition/bengali_tts_provider_bakeoff_report.json",
+    "internal/audiobook_lab/sprint1_publication/sprint1_pipeline_input_reconciliation.json"
+  ]
+}

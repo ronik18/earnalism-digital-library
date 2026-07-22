@@ -1,0 +1,142 @@
+{
+  "generated_at": "2026-07-22T19:58:45Z",
+  "slug": "radharani",
+  "status": "CALIBRATION_REPAIR_REQUIRED",
+  "execution_code_hashes": "PARTIAL_HISTORICAL_BINDING_ADAPTER_FIELD_CONTAINED_RUNNER_HASH_ONLY",
+  "strict_release_interpretation": "NO_GO_SEGMENT_TIMESTAMPS_NOT_RELEASE_SYNC",
+  "superseded_by": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_saaras_asr_sync_closeout_20260722.json",
+  "fingerprint": {
+    "slug": "radharani",
+    "provider": "sarvam",
+    "chunks": [
+      {
+        "chunk_id": "group_0001",
+        "audio_hash": "fe8a1ad9cd251a6cd3a2391013d4f618356947cc40b424e8af2f721651b3aa9c"
+      },
+      {
+        "chunk_id": "group_0013",
+        "audio_hash": "668c03ed0b02d47f8de0f4e36e8ccd13c2837bb9b4f85cd394f096a575574edd"
+      },
+      {
+        "chunk_id": "group_0027",
+        "audio_hash": "43fba4d4251d1ca2673599d1c14746ef2f7ee31562e8b189df980757bb15e896"
+      }
+    ],
+    "models": [
+      "saaras:v3"
+    ],
+    "languages": [
+      "bn-IN"
+    ],
+    "modes": [
+      "verbatim"
+    ],
+    "require_timestamps": true,
+    "source_manifest_sha256": "f3241b9a9ae7e1c13b8c0778f26ac3c06b6bd59d9e53e983e5e7a13ba89fdcb1",
+    "provider_configuration": {
+      "endpoint": "https://api.sarvam.ai/speech-to-text",
+      "transport": "rest",
+      "mode": [
+        "verbatim"
+      ],
+      "with_timestamps": true,
+      "clip_seconds": 29.0,
+      "clip_codec": "pcm_s16le_16khz_mono"
+    },
+    "adapter_sha256": "24ee939e7ea2b1694269537a46c8fe2b3788d4987212ff88b0be2f3f9510e12d"
+  },
+  "estimated_cost_usd": 0.051,
+  "max_estimated_usd": 0.1,
+  "prior_estimated_usd": 0.8385,
+  "estimated_cumulative_usd": 0.8895,
+  "cumulative_cap_usd": 5.0,
+  "provider_calls_ran": true,
+  "results": [
+    {
+      "model": "saaras:v3",
+      "provider": "sarvam",
+      "language": "bn-IN",
+      "mode": "verbatim",
+      "chunk_id": "group_0001",
+      "audio_hash": "fe8a1ad9cd251a6cd3a2391013d4f618356947cc40b424e8af2f721651b3aa9c",
+      "duration_seconds": 128.18585,
+      "status": "ERROR",
+      "error": "RuntimeError: Sarvam ASR returned segment timestamps instead of word timestamps"
+    },
+    {
+      "model": "saaras:v3",
+      "provider": "sarvam",
+      "language": "bn-IN",
+      "mode": "verbatim",
+      "chunk_id": "group_0013",
+      "audio_hash": "668c03ed0b02d47f8de0f4e36e8ccd13c2837bb9b4f85cd394f096a575574edd",
+      "duration_seconds": 122.446576,
+      "status": "ERROR",
+      "error": "RuntimeError: Sarvam ASR returned segment timestamps instead of word timestamps"
+    },
+    {
+      "model": "saaras:v3",
+      "provider": "sarvam",
+      "language": "bn-IN",
+      "mode": "verbatim",
+      "chunk_id": "group_0027",
+      "audio_hash": "43fba4d4251d1ca2673599d1c14746ef2f7ee31562e8b189df980757bb15e896",
+      "duration_seconds": 131.558186,
+      "status": "ERROR",
+      "error": "RuntimeError: Sarvam ASR returned segment timestamps instead of word timestamps"
+    }
+  ],
+  "completed_call_estimated_cost_usd": 0.0,
+  "arm_summaries": [
+    {
+      "provider": "sarvam",
+      "model": "saaras:v3",
+      "language": "bn-IN",
+      "mode": "verbatim",
+      "status": "BELOW_THRESHOLD",
+      "chunk_ids": [
+        "group_0001",
+        "group_0013",
+        "group_0027"
+      ],
+      "expected_chunk_ids": [
+        "group_0001",
+        "group_0013",
+        "group_0027"
+      ],
+      "all_chunks_present": true,
+      "source_score": 0.0,
+      "source_score_min": 0.0,
+      "coverage_min": 0.0,
+      "token_order_similarity_min": 0.0,
+      "bengali_script_ratio": 0.0,
+      "all_boundaries_match": false
+    }
+  ],
+  "best_arm": {
+    "provider": "sarvam",
+    "model": "saaras:v3",
+    "language": "bn-IN",
+    "mode": "verbatim",
+    "status": "BELOW_THRESHOLD",
+    "chunk_ids": [
+      "group_0001",
+      "group_0013",
+      "group_0027"
+    ],
+    "expected_chunk_ids": [
+      "group_0001",
+      "group_0013",
+      "group_0027"
+    ],
+    "all_chunks_present": true,
+    "source_score": 0.0,
+    "source_score_min": 0.0,
+    "coverage_min": 0.0,
+    "token_order_similarity_min": 0.0,
+    "bengali_script_ratio": 0.0,
+    "all_boundaries_match": false
+  },
+  "actual_provider_billing": "NOT_REPORTED",
+  "lock_restored": true
+}

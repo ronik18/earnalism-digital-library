@@ -1,12 +1,58 @@
 {
-  "generated_at": "2026-07-13T07:30:39Z",
-  "status": "D19_HUMAN_NARRATION_REQUIRED_NO_SCALE_V3_PREFLIGHT_RECONCILED",
+  "generated_at": "2026-07-22T20:24:04Z",
+  "status": "RADHARANI_NO_GO_NISHKRITI_OPENAI_LISTENING_QA_QUOTA_BLOCKED",
   "policy_version": "bengali_audiobook_acceptance_v2_92",
   "total_campaign_titles": 31,
-  "published_bengali_audiobooks": 0,
+  "published_bengali_audiobooks": 1,
+  "sprint1_scope_reconciliation": {
+    "generated_at": "2026-07-22T20:18:07Z",
+    "truth_source": "backend/data/home_hero_curation.json",
+    "legacy_campaign_scope_note": "The existing 31-title Bengali campaign remains useful historical planning evidence but is broader than the current deterministic 32-title Sprint 1 catalog.",
+    "sprint1_bengali_total": 10,
+    "production_live": [
+      "book-2b9853ec52"
+    ],
+    "production_hidden": [
+      "bn-066",
+      "radharani",
+      "nishkriti",
+      "muchiram-gurer-jibanchorit",
+      "book-d19e96859f",
+      "book-f5d593e1f4",
+      "pather-panchali",
+      "devdas",
+      "book-edfcf810c5"
+    ],
+    "selected_private_canary": "radharani",
+    "representative_audition": {
+      "provider": "sarvam",
+      "model": "bulbul:v3",
+      "voice": "ratan",
+      "style": "literary_warm_pacing",
+      "score": 9.4,
+      "confidence": 0.95,
+      "fatal_flags": []
+    },
+    "historical_reuse_screen": "NO_GO_HISTORICAL_REUSE_NOT_RELEASE_ELIGIBLE",
+    "historical_candidate_sha256": "4de991f9afc420037ec09683aa4b53e4e62de8a4ae782ebdfb766ec48bb18a56",
+    "historical_candidate_blockers": [
+      "EXACT_HISTORICAL_RECORDING_VOICE_RIGHTS_PROOF_MISSING",
+      "FULL_AUDIO_DERIVED_ASR_SOURCE_SCORE_9_7_UNPROVEN",
+      "FIRST_LAST_AND_ORDERED_CONTENT_INTEGRITY_UNPROVEN",
+      "MEASURED_PARAGRAPH_OR_STANZA_SYNC_MISSING",
+      "FULL_SIX_SAMPLE_LISTENING_QA_MISSING",
+      "PRIVATE_UPLOAD_PRODUCTION_METADATA_ENDPOINT_AND_BROWSER_GATES_NOT_RUN"
+    ],
+    "publication_performed": false,
+    "provider_call_performed": true,
+    "estimated_completed_provider_spend_usd": 0.8895,
+    "actual_provider_billing": "NOT_REPORTED",
+    "full_canary_status": "NO_GO_RAW_ASR_EXACT_CONTENT_AND_MEASURED_SYNC_FAILED",
+    "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_saaras_asr_sync_closeout_20260722.json"
+  },
   "titles_in_representative_audition": 0,
   "titles_with_representative_gte_9_2": 3,
-  "titles_in_full_pilot": 0,
+  "titles_in_full_pilot": 1,
   "titles_with_private_tts_listening_sync_pass": 0,
   "titles_needing_human_narration": 3,
   "titles_needing_licensed_audio": 0,
@@ -16,58 +62,73 @@
     "READY_FOR_REPRESENTATIVE_AUDITION": 27
   },
   "scale_gate": {
-    "status": "BLOCKED_UNTIL_D19_RAW_ASR_REACHES_9_7_AND_D19_PUBLISHES",
-    "pilot_slug": "book-d19e96859f",
-    "next_scale_stage": "THREE_TITLE_CANARY",
-    "rule": "Do not start any Bengali canary or broader wave unless a source-bound human or licensed D19 candidate reaches audio-derived source score >=9.7, passes listening and boundaries, and completes upload, endpoint, browser, and publication proof."
+    "status": "RADHARANI_STRICT_RAW_ASR_EXACT_CONTENT_SYNC_FAILED_NO_SCALE",
+    "pilot_slug": "book-2b9853ec52",
+    "next_candidate_slug": "nishkriti",
+    "next_scale_stage": "OPENAI_LISTENING_QA_BILLING_OR_ALTERNATE_JUDGE_REQUIRED",
+    "rule": "Do not widen. Radharani is closed because all three Saaras calibration raw scores were below 9.7, every strict projection retained unexplained gaps, and the provider returned segment-only timing. Nishkriti's four canonical passages are ready, but no provider call may start until a usable listening judge is available and the exact paid title scope is approved."
   },
   "best_settings": {
     "provider": "sarvam",
     "model": "bulbul:v3",
-    "voice": "pooja",
-    "style_profile": "dialogue_human_touch",
+    "voice": "ratan",
+    "style_profile": "literary_warm_pacing",
     "representative_score": 9.4,
     "confidence": 0.95
   },
   "full_pilot_score": null,
   "private_listening_score": 8.0,
-  "asr_score": 1.3504,
+  "asr_score": 1.0962,
   "asr_score_basis": "raw_audio_derived_asr_source_score",
   "construction_audit_score": 10.0,
   "construction_audit_satisfies_asr_gate": false,
-  "sync_tier": "NOT_RELEASE_ELIGIBLE_STAGE2G_QA_FAILED",
+  "sync_tier": "NO_RELEASE_VALID_MEASURED_SYNC_SAARAS_SEGMENT_ONLY",
   "estimated_campaign_cost_policy": {
-    "campaign_max_env_present": false,
-    "per_title_max_env_present": false,
+    "campaign_max_env_present": true,
+    "per_title_max_env_present": true,
     "default_recommended_campaign_cap_usd": 75,
     "default_recommended_per_title_cap_usd": 8
   },
   "paid_gate_status": {
-    "all_required_present": false,
-    "snapshot_at": "2026-07-13T07:30:39Z",
-    "snapshot_note": "Sprint 1 V3 fixed caps are present, but campaign-wide approval and Bengali-specific total/per-title caps remain absent; no Bengali provider call ran.",
+    "all_required_present": true,
+    "snapshot_at": "2026-07-22T20:18:07Z",
+    "snapshot_note": "The owner-approved USD 75 campaign, USD 8 per-title, and USD 5 Radharani pilot gates were present. Strict reanalysis confirmed that normalized or phonetic projection cannot replace raw ASR 9.7 or hide any unexplained gap. Radharani failed before downstream gates; Nishkriti remains provider-free pending a usable listening judge.",
     "boolean_gates": {
       "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS": true,
       "EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF": true,
       "EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS": true,
-      "EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN": false,
+      "EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN": true,
       "EARNALISM_STOP_ON_BUDGET_EXCEEDED": true
     },
     "value_gates_present": {
-      "EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD": false,
-      "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE": false
+      "EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD": true,
+      "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE": true
     },
-    "missing": [
-      "EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN",
-      "EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD",
-      "EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE"
-    ]
+    "missing": [],
+    "runtime_provider_status": {
+      "sarvam": "AVAILABLE_AND_USED",
+      "openai": "USED_THEN_INSUFFICIENT_QUOTA",
+      "google": "ADC_REFRESH_UNAVAILABLE_NOT_STARTED"
+    },
+    "paid_tts_lock": {
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "allowed_slugs": [
+        "radharani"
+      ],
+      "requested_slug": "radharani",
+      "result": "RADHARANI_ONLY_IDLE_RESTORED"
+    }
   },
   "duplicate_attempts_avoided": 192,
-  "plateau_strategies_triggered": 3,
+  "plateau_strategies_triggered": 4,
   "latest_paid_run": {
     "paid_calls_serialized": true,
-    "sprint1_conservative_estimated_spend_usd": 10.1766,
+    "sprint1_conservative_estimated_spend_usd": 16.78804,
+    "radharani_estimated_completed_spend_usd": 0.8895,
+    "radharani_conservative_reserved_estimate_usd": 0.8895,
+    "nishkriti_listening_probe_reserved_estimate_usd": 0.01,
     "actual_provider_billing": "UNKNOWN_NOT_REPORTED_BY_PROVIDERS",
     "paid_tts_lock_restored": true,
     "bengali_plateau_escalations": [
@@ -114,8 +175,99 @@
       "fallback_tts_detected"
     ]
   },
-  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav",
-  "next_generated_prompt": "Obtain source-bound human narration or licensed audio for D19. Validate the received candidate through ASR/source, first/last, listening, upload, endpoint, browser, and production gates; do not repeat failed Google or Sarvam arms. Keep Radharani, Nishkriti, Devdas, and Kshudhita Pashan preflight-ready but do not scale before the D19 pilot gate opens.",
+  "next_exact_command": "EARNALISM_APPROVE_SARVAM_CORRECTIVE_AUDITIONS=true EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF=true EARNALISM_APPROVE_BENGALI_FULL_PILOT_TTS=true EARNALISM_APPROVE_BENGALI_31_AUDIO_CAMPAIGN=true EARNALISM_BENGALI_CAMPAIGN_MAX_ESTIMATED_USD=75 EARNALISM_BENGALI_MAX_ESTIMATED_USD_PER_TITLE=8 SPRINT1_TOTAL_AUDIO_BUDGET_USD=75 SPRINT1_MAX_USD_PER_TITLE=8 MAX_TTS_BUDGET_USD=75 EARNALISM_STOP_ON_BUDGET_EXCEEDED=true EARNALISM_ENABLE_OPENAI_LISTENING_QA=true EARNALISM_OPENAI_LISTENING_QA_MODEL=gpt-audio python3 internal/audiobook_lab/scripts/sprint1_paid_stage_runner.py --lock-path internal/earnalism_intelligence/locks/paid_tts.lock --holder nishkriti_openai_listening_probe --slug nishkriti --scope listening-qa-quota-probe --estimated-usd 0.01 --prior-spend-usd 16.78804 --report internal/audiobook_lab/sprint1_publication/title_runs/nishkriti_openai_listening_qa_probe_retry_runner.json --workdir . --timeout-seconds 120 -- python3 -c \"import sys; from pathlib import Path; sys.path.insert(0,'internal/audiobook_lab/scripts'); from bengali_tts_provider_bakeoff import openai_listening_quota_probe; print(openai_listening_quota_probe(Path('internal/audiobook_lab/sprint1_publication/title_runs/nishkriti_openai_listening_qa_probe_retry')))\"",
+  "next_generated_prompt": "OpenAI gpt-audio returned 429 insufficient_quota on a lock-serialized one-second listening probe. Do not repeat until billing or a different approved independent audio judge is available. Keep Radharani and Nishkriti audio-hidden; after the probe passes, run exactly one Nishkriti audition from the persisted four-passage artifact.",
+  "radharani_full_canary_20260722": {
+    "status": "NO_GO_AUDIO_DERIVED_ASR_AND_CALIBRATION_FAILED",
+    "full_tts_status": "PASS_PRIVATE_28_FRESH_GROUPS",
+    "audio_sha256": "defeb886a990c68d297770f5d61c1ee239683c114fe06346751296a81f9476d8",
+    "duration_seconds": 3563.115792,
+    "raw_audio_derived_asr_score": 1.0962,
+    "required_asr_score": 9.7,
+    "coverage": 0.1096,
+    "token_order_similarity": 0.1033,
+    "first_words_match": false,
+    "last_words_match": false,
+    "distinct_calibration": {
+      "model": "gpt-4o-mini-transcribe",
+      "language": "bn",
+      "opening_score": 7.9085,
+      "middle_score": 9.0441,
+      "ending_status": "ERROR_OPENAI_INSUFFICIENT_QUOTA",
+      "status": "CALIBRATION_REPAIR_REQUIRED"
+    },
+    "google_asr_status": "ADC_REFRESH_UNAVAILABLE_NOT_STARTED",
+    "local_whisper_medium_diagnostic": {
+      "status": "LOCAL_WHISPER_MEDIUM_RUNTIME_RESOURCE_KILLED_EXIT_137",
+      "model_sha256": "345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1",
+      "language": "bn",
+      "group_0000_status": "ERROR_RUNTIME_RESOURCE_KILLED_EXIT_137",
+      "groups_not_started": [
+        "group_0013",
+        "group_0027"
+      ],
+      "transcript_produced": false,
+      "cost_usd": 0.0,
+      "paid_lock_mutated": false,
+      "classification": "UNSUITABLE_IN_CURRENT_16_GIB_RUNTIME"
+    },
+    "listening_sync_delivery_status": "NOT_RUN_ASR_BLOCKED",
+    "public_audio_status": "AUDIO_HIDDEN",
+    "production_endpoint_status": 404,
+    "estimated_completed_spend_usd": 0.7363,
+    "actual_provider_billing": "NOT_REPORTED",
+    "lock_restored": true,
+    "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_full_canary_closeout_20260722.json"
+  },
+  "radharani_saaras_asr_sync_closeout_20260722": {
+    "status": "NO_GO_RAW_ASR_EXACT_CONTENT_AND_MEASURED_SYNC_FAILED",
+    "saaras_transcribe_representative_raw_scores": [8.6275, 8.8971, 8.7179],
+    "private_audio_sha256": "defeb886a990c68d297770f5d61c1ee239683c114fe06346751296a81f9476d8",
+    "saaras_transcribe_representative_normalized_scores": [9.776, 9.818, 9.737],
+    "saaras_transcribe_representative_phonetic_scores": [9.936, 9.898, 9.883],
+    "saaras_transcribe_representative_coverages": [0.9936, 0.9898, 0.9883],
+    "full_asr_groups_attempted": 2,
+    "full_asr_groups_passed_under_current_policy": 0,
+    "historical_groups_recorded_passed": 1,
+    "first_failed_group": "group_0000",
+    "first_failed_group_raw_score": 8.6275,
+    "first_failed_group_phonetic_score": 9.936,
+    "first_failed_group_coverage": 0.9936,
+    "timestamp_status": "SEGMENT_ONLY_NOT_WORD_LEVEL",
+    "verbatim_timestamp_calibration": "SEGMENT_ONLY_ALL_THREE",
+    "local_whisper_base_status": "FAIL_PHONETIC_3_416_COVERAGE_0_3416",
+    "stable_whisper_base_status": "FAIL_141_OF_191_UNALIGNED_MEAN_PROBABILITY_0_0758",
+    "listening_sync_delivery_status": "NOT_RUN_UPSTREAM_BLOCKED",
+    "public_audio_status": "AUDIO_HIDDEN",
+    "production_endpoint_status": 404,
+    "conservative_cumulative_estimated_spend_usd": 0.8895,
+    "actual_provider_billing": "NOT_REPORTED",
+    "paid_lock_restored": true,
+    "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_saaras_asr_sync_closeout_20260722.json",
+    "next_action": "Do not repeat closed Radharani fingerprints. Keep audio hidden; use a source-bound replacement or a genuinely different Bengali ASR and measured alignment system."
+  },
+  "nishkriti_passage_construction_repair_20260722": {
+    "status": "PASSAGES_READY_OPENAI_LISTENING_QA_INSUFFICIENT_QUOTA",
+    "canonical_source": "backend/data/controlled_publications/nishkriti/chapters",
+    "canonical_chapter_count": 9,
+    "canonical_manuscript_char_count": 83685,
+    "canonical_manuscript_sha256": "e53d59d7384eae55da518158f5e6affb9d295abea6fb888eaf3794f0d4f5b660",
+    "passage_count": 4,
+    "passage_hashes": [
+      "f4d1975b39fd3ec3b88356a77a0bcfe4291e22fcecde8fde8ab56c364ed29ac3",
+      "56aeda8fd8e25256db1cd9e035297e0ad6b7bb0a0503282da09aa4b5f85ec4c7",
+      "074db9181d974375131548ba6d6a979349cbe92de847931069a21f4c1477407a",
+      "4f2a2bbd62bcc0057c4f139b29a4e8e9e227e5ddef1516b7d20b9382296f69d4"
+    ],
+    "tts_provider_calls_ran": false,
+    "listening_probe_provider_call_ran": true,
+    "blocker": "OPENAI_LISTENING_QA_INSUFFICIENT_QUOTA",
+    "listening_probe": "internal/audiobook_lab/sprint1_publication/title_runs/nishkriti_openai_listening_qa_probe_20260722.json",
+    "listening_probe_reserved_estimate_usd": 0.01,
+    "public_audio_status": "AUDIO_HIDDEN",
+    "passage_artifact": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition/bakeoff_passages.json",
+    "passage_artifact_sha256": "d20e5116cb3607076b83c220fdf90e387ff31a6ff73e3086796c855237a59883"
+  },
   "stage2f_book_d19e96859f": {
     "status": "AUTOMATED_ASR_ARMS_EXHAUSTED_NORMALIZATION_REPAIR_REQUIRED_PRIVATE_TTS_LISTENING_SYNC_PASS",
     "representative_score": 9.4,

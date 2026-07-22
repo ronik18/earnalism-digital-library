@@ -8,7 +8,7 @@
     },
     "sarvam": {
       "status": "bengali_pilot_live_post_live_pr_open",
-      "best_observed_overall": 9.3,
+      "best_observed_overall": 9.4,
       "best_observed_confidence": 0.95,
       "notes": "Synthesis works; full schema-3 judging was interrupted by OpenAI listening-QA quota in prior bakeoff.",
       "model": "bulbul:v3",
@@ -22,7 +22,7 @@
         "release_sufficient": false,
         "reason": "isolated sample did not generalize across representative passages"
       },
-      "best_representative_overall": 9.3,
+      "best_representative_overall": 9.4,
       "best_representative_confidence": 0.95,
       "generalization_confirmed": true,
       "full_pilot_generated": true,
@@ -191,25 +191,109 @@
         "full_title_tts_generated": false,
         "public_audio_approved": false,
         "next_action": "Run the lock-safe Stage 2F title wrapper only after every budget, approval, ASR, and listening-QA gate is present."
+      },
+      "radharani_title_specific_representative": {
+        "status": "LISTENING_REPRESENTATIVE_PASS_FULL_TITLE_CLOSED_AFTER_SAARAS_RAW_ASR_EXACT_CONTENT_AND_SYNC_FAILED",
+        "provider": "sarvam",
+        "model": "bulbul:v3",
+        "voice": "ratan",
+        "style": "literary_warm_pacing",
+        "passages": [
+          "narrative_opening",
+          "dialogue"
+        ],
+        "overall_listening_score": 9.4,
+        "confidence": 0.95,
+        "fatal_flags": [],
+        "full_title_generated": true,
+        "full_title_audio_sha256": "defeb886a990c68d297770f5d61c1ee239683c114fe06346751296a81f9476d8",
+        "full_title_duration_seconds": 3563.115792,
+        "raw_asr_arm": "openai/whisper-1/auto",
+        "raw_asr_score": 1.0962,
+        "required_raw_asr_score": 9.7,
+        "raw_asr_coverage": 0.1096,
+        "raw_asr_token_order_similarity": 0.1033,
+        "distinct_calibration_arm": "openai/gpt-4o-mini-transcribe/bn",
+        "distinct_calibration_scores": [
+          7.9085,
+          9.0441
+        ],
+        "distinct_calibration_ending_status": "ERROR_OPENAI_INSUFFICIENT_QUOTA",
+        "google_asr_status": "ADC_REFRESH_UNAVAILABLE_NOT_STARTED",
+        "local_whisper_medium_diagnostic": {
+          "model_sha256": "345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1",
+          "language": "bn",
+          "decoder": "temperature_0_beam_5_no_fallback_word_timestamps_cpu",
+          "status": "RUNTIME_RESOURCE_KILLED_EXIT_137",
+          "transcript_produced": false,
+          "groups_completed": 0,
+          "cost_usd": 0.0,
+          "classification": "UNSUITABLE_FOR_RADHARANI_AUDIO_IN_CURRENT_16_GIB_RUNTIME"
+        },
+        "saaras_transcribe_representative_normalized_scores": [
+          9.776,
+          9.818,
+          9.737
+        ],
+        "saaras_transcribe_representative_phonetic_scores": [
+          9.936,
+          9.898,
+          9.883
+        ],
+        "saaras_transcribe_representative_raw_scores": [
+          8.6275,
+          8.8971,
+          8.7179
+        ],
+        "saaras_full_asr_groups_attempted": 2,
+        "saaras_full_asr_groups_passed_under_current_policy": 0,
+        "saaras_historical_groups_recorded_passed": 1,
+        "saaras_first_failed_group": "group_0000",
+        "saaras_first_failed_group_raw_score": 8.6275,
+        "saaras_first_failed_group_phonetic_score": 9.936,
+        "saaras_first_failed_group_coverage": 0.9936,
+        "saaras_timestamp_status": "SEGMENT_ONLY_NOT_RELEASE_SYNC",
+        "estimated_completed_spend_usd": 0.8895,
+        "actual_provider_billing": "NOT_REPORTED",
+        "public_audio_approved": false,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_saaras_asr_sync_closeout_20260722.json",
+        "next_action": "Do not repeat Sarvam TTS, whisper-1/auto, gpt-4o-mini-transcribe/bn, Saaras transcribe/verbatim, or local alignment fingerprints. Keep audio hidden and require a source-bound replacement or genuinely different full-book evaluator with measured alignment."
       }
     },
     "google": {
-      "status": "credentials_or_adc_reauth_needed"
+      "status": "ADC_REFRESH_UNAVAILABLE_NOT_STARTED",
+      "notes": "GOOGLE_APPLICATION_CREDENTIALS and GOOGLE_CLOUD_PROJECT were present and the credential file was readable, but two bounded ADC access-token probes hung. No Google ASR provider call ran."
     },
     "azure": {
-      "status": "synthesis_cancellation_needs_diagnosis"
+      "status": "synthesis_cancellation_needs_diagnosis",
+      "radharani_retained_candidate": {
+        "status": "PRIVATE_REUSE_REJECTED_FOR_RELEASE_PROVENANCE_ASR_SYNC_UNPROVEN",
+        "provider_recorded_in_candidate_metadata": "command",
+        "voice_recorded_in_candidate_metadata": "bn-IN-TanishaaNeural",
+        "audio_sha256": "4de991f9afc420037ec09683aa4b53e4e62de8a4ae782ebdfb766ec48bb18a56",
+        "checksum_identity_match": true,
+        "exact_paid_azure_generation_or_subscription_proof": false,
+        "audio_derived_asr_source_9_7": "UNPROVEN_OFFLINE_TOOL_INADEQUATE",
+        "measured_paragraph_or_stanza_sync": false,
+        "public_audio_approved": false,
+        "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_private_reuse_screen_v1.json"
+      }
     },
     "automated_audiobook_lane_status": "BENGALI_9_2_PATH_FOUND_PILOT_READY",
     "automated_audiobook_lane_paused_at": "2026-07-06T20:36:38Z",
     "automated_audiobook_lane_pause_reason": "OpenAI failed premium threshold; Sarvam bulbul:v3 pooja seed had isolated high samples but representative audition scored 7.9/confidence 0.85 with list-reading/mechanical cadence flags.",
     "automated_audiobook_lane_reopened_at": "2026-07-07T00:00:00Z",
     "automated_audiobook_lane_reopen_reason": "Owner approved Bengali-specific 9.2 release threshold while preserving fatal-flag and objective release gates.",
-    "automated_audiobook_lane_latest_result": "representative_passed; full pilot not generated; objective gates not run",
+    "automated_audiobook_lane_latest_result": "Radharani private full title remains hidden. Saaras diagnostic projection exceeded 9.7, but all raw calibration scores were below 9.7 and strict reanalysis found unexplained gaps in every sample. Both transcribe and verbatim returned segment-only timing. Nishkriti canonical passages are persisted; a lock-serialized OpenAI gpt-audio probe returned 429 insufficient_quota before synthesis.",
     "audiobook_completion_campaign": {
-      "status": "BENGALI_AUDIOBOOK_CAMPAIGN_ACTIVE",
+      "status": "RADHARANI_NO_GO_NISHKRITI_OPENAI_LISTENING_QA_QUOTA_BLOCKED",
       "policy_version": "bengali_audiobook_acceptance_v2_92",
       "total_campaign_titles": 31,
-      "published_bengali_audiobooks": 0,
+      "published_bengali_audiobooks": 1,
+      "sprint1_bengali_titles": 10,
+      "sprint1_live_bengali_audiobooks": 1,
+      "sprint1_hidden_bengali_audiobooks": 9,
+      "sprint1_next_candidate": "nishkriti",
       "titles_with_representative_gte_9_2": 1,
       "best_settings": {
         "provider": "sarvam",
@@ -219,8 +303,8 @@
         "representative_score": 9.3,
         "confidence": 0.95
       },
-      "scale_rule": "one full pilot must publish before 3-title canary",
-      "updated_at": "2026-07-06T21:54:41Z",
+      "scale_rule": "Radharani is closed after raw ASR below 9.7, strict exact-content gaps, and missing release-valid measured sync. Nishkriti may run only one bounded representative audition after listening QA is usable; do not widen or repeat fingerprints.",
+      "updated_at": "2026-07-22T20:24:04Z",
       "state_path": "internal/earnalism_intelligence/bengali_audiobook_campaign_state.json",
       "queue_path": "internal/earnalism_intelligence/bengali_audiobook_campaign_queue.json"
     }
