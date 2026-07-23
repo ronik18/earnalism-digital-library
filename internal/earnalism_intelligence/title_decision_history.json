@@ -148,7 +148,13 @@
       "public_audio_status": "AUDIO_HIDDEN_NOT_PUBLIC",
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/book-d19e96859f",
       "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_stage2g_report.md",
-      "supporting_private_qa_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json"
+      "supporting_private_qa_evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json",
+      "reader_content_repair_20260723": {
+        "status": "SOURCE_FRONTMATTER_REMOVED_HASHES_REBOUND",
+        "removed_characters": 54,
+        "new_source_sha256": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
+        "audio_release_state_changed": false
+      }
     },
     "book-d2fe532e1c": {
       "latest_decision": "BENGALI_AUDIO_DECOMMISSIONED_READER_LIVE",
@@ -180,7 +186,13 @@
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/book-f5d593e1f4",
       "public_audio_status": "AUDIO_HIDDEN",
       "storage_bypass_status": "SPRINT1_STORAGE_BYPASS_CONTAINED",
-      "source_cleanup_status": "SPRINT1_DIRECT_AUDIO_SOURCE_REMOVED"
+      "source_cleanup_status": "SPRINT1_DIRECT_AUDIO_SOURCE_REMOVED",
+      "reader_content_repair_20260723": {
+        "status": "SOURCE_FRONTMATTER_REMOVED_HASHES_REBOUND",
+        "removed_characters": 73,
+        "new_source_sha256": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
+        "audio_release_state_changed": false
+      }
     },
     "muchiram-gurer-jibanchorit": {
       "latest_decision": "HUMAN_NARRATION_REQUIRED",
@@ -287,7 +299,14 @@
       "bengali_audiobook_campaign_state": "PRIVATE_QA_RELEASE_GATES_PENDING",
       "bengali_audiobook_campaign_next_action": "Revalidate the production manifest and UI after the hide-only hotfix; do not publish, upload, or regenerate audio.",
       "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
-      "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
+      "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass",
+      "reader_content_repair_20260723": {
+        "status": "ALL_46_EDITION_PAGE_MARKERS_REMOVED_HASHES_REBOUND",
+        "removed_characters": 770,
+        "chapter_count": 46,
+        "new_source_sha256": "faf9dcea64878face44dc43464dbe0314d567a007dc10582e6d554f6844761d6",
+        "audio_release_state_changed": false
+      }
     },
     "book-1090573dff": {
       "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
@@ -446,14 +465,14 @@
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
     },
     "nishkriti": {
-      "latest_decision": "GEMINI_TTS_ADAPTER_READY_ADC_REAUTH_REQUIRED",
-      "decision_reason": "The canonical four-passage Nishkriti audition is now supported by an opt-in, source-bound Gemini-TTS adapter and a Vertex listening-judge route. Configuration-only validation detected the Google project and authorized-user ADC, but the ADC still requires interactive reauthentication; no synthesis or listening judgment ran.",
-      "updated_at": "2026-07-23T07:24:06Z",
+      "latest_decision": "SARVAM_AND_GEMINI_REPRESENTATIVE_QUALITY_FAILED_AUDIO_HIDDEN",
+      "decision_reason": "Vertex listening QA is operational. Sarvam Ratan failed dialogue at 5.5 with fatal cadence/list-reading flags; Gemini Charon improved the opening to 9.5 but dialogue reached only 7.0 with fatal list-reading rhythm. Neither four-passage set passed.",
+      "updated_at": "2026-07-23T11:31:00Z",
       "language": "ben",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "Run `gcloud auth application-default login --project=earnalism`, validate ADC refresh without synthesis, then run exactly one lock-serialized four-passage Gemini-TTS/Vertex audition. Do not generate the full title, upload, or publish from representative evidence.",
-      "bengali_audiobook_campaign_state": "PASSAGES_READY_GEMINI_ADAPTER_READY_ADC_REAUTH_REQUIRED",
-      "bengali_audiobook_campaign_next_action": "Repair Google ADC interactively, re-read the campaign ledger and paid lock, then use the persisted four passage hashes for one bounded Gemini-TTS audition with independent Vertex listening QA.",
+      "audiobook_next_action": "Do not repeat the completed Sarvam Ratan or Gemini Charon fingerprints. Keep audio hidden and require a genuinely different provider/voice or source-bound narration before another title-level pilot.",
+      "bengali_audiobook_campaign_state": "REPRESENTATIVE_QUALITY_FAILED_ALTERNATE_PATH_REQUIRED",
+      "bengali_audiobook_campaign_next_action": "Move to a different preflight-ready Sprint 1 title; do not generate Nishkriti full audio from isolated opening scores.",
       "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass",
       "storage_bypass_status": "SPRINT1_STORAGE_BYPASS_CONTAINED",
@@ -475,8 +494,15 @@
       "passage_artifact": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition/bakeoff_passages.json",
       "passage_artifact_sha256": "d20e5116cb3607076b83c220fdf90e387ff31a6ff73e3086796c855237a59883",
       "gemini_tts_adapter": "internal/audiobook_lab/scripts/providers/google_gemini_tts_adapter.py",
-      "gemini_tts_provider_calls_ran": false,
-      "google_adc_status": "AUTHORIZED_USER_DETECTED_INVALID_RAPT_REAUTH_REQUIRED",
+      "gemini_tts_provider_calls_ran": true,
+      "google_adc_status": "USABLE_VERTEX_AND_GEMINI_TTS_CALLS_COMPLETED",
+      "representative_results": {
+        "sarvam_ratan_literary_warm_pacing": [9.4, 5.5, 0.0, 0.0],
+        "gemini_charon_dialogue_human_touch": [9.5, 7.0, 0.0, 0.0],
+        "minimum_required": 9.2,
+        "fatal_flags_observed": ["mechanical_cadence_detected", "list_reading_rhythm_detected", "repeated_identical_sentence_endings_detected"]
+      },
+      "full_title_generated": false,
       "public_release_status": "AUDIO_HIDDEN_NO_RELEASE_GATE_CHANGE"
     },
     "radharani": {
@@ -1113,12 +1139,25 @@
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
     },
     "book-edfcf810c5": {
-      "latest_decision": "READY_FOR_SOURCE_BOUND_AUDITION_CAMPAIGN_POLICY_GATE_REQUIRED",
-      "decision_reason": "The public reader, rights, sanitation, and audited graphical cover pair now pass non-paid preflight; audio remains hidden pending campaign policy gates and full QA.",
-      "updated_at": "2026-07-13T07:30:39Z",
+      "latest_decision": "CANONICAL_READER_REPAIRED_THREE_GEMINI_VOICES_FAILED_REPRESENTATIVE_GATE",
+      "decision_reason": "The 63-character source title-page wrapper was removed and catalog hashes were rebound. On the corrected source, Charon scored 9.3/9.0/5.5, Kore failed at 5.8, and Callirrhoe scored 8.8/9.4/7.5 before adaptive stop; no voice passed all four passages.",
+      "updated_at": "2026-07-23T11:31:00Z",
       "language": "bn",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "run a source-bound representative audition after the Bengali pilot and campaign-specific paid gates open"
+      "audiobook_next_action": "Do not repeat these corrected-source Gemini fingerprints. Keep audio hidden and use a genuinely different provider/voice or source-bound narration.",
+      "reader_content_repair": {
+        "removed_characters": 63,
+        "new_source_sha256": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
+        "new_publication_content_hash": "12bc09cce1802df3c03d94ec8dee67e3feedc7fe754887b8e6cdb3acce02e614"
+      },
+      "representative_results": {
+        "gemini_charon_emotional_but_restrained": [9.3, 9.0, 5.5, 0.0],
+        "gemini_kore_anti_list_reading_flow": [5.8, 0.0, 0.0, 0.0],
+        "gemini_callirrhoe_punctuation_aware_emotional": [8.8, 9.4, 7.5, 0.0],
+        "minimum_required": 9.2
+      },
+      "full_title_generated": false,
+      "public_audio_status": "AUDIO_HIDDEN"
     },
     "book-ef193ffc52": {
       "latest_decision": "BENGALI_TITLE_BLOCKED_WITH_EVIDENCE",
@@ -1129,13 +1168,21 @@
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
     },
     "devdas": {
-      "latest_decision": "AUDIO_AUDITION_BLOCKED_INVALID_EXISTING_BACK_COVER",
-      "decision_reason": "The retained Devdas front cover is generic and the matching back cover contains overlapping, unreadable Bengali text. Cover truth remains a hard release prerequisite, so no audition, audio release, or metadata promotion is authorized.",
-      "updated_at": "2026-07-23T06:45:55Z",
+      "latest_decision": "COVER_GATE_STILL_BLOCKED_AND_TWO_GEMINI_REPRESENTATIVE_LANES_FAILED",
+      "decision_reason": "The cover gate remains unresolved. Two bounded representative diagnostics were nevertheless completed without full generation: Callirrhoe scored 9.2 then 5.5, and Charon scored 9.4 then 5.5; both dialogue samples had fatal cadence/list-reading failures.",
+      "updated_at": "2026-07-23T11:31:00Z",
       "language": "bn",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "Obtain an owner-approved, legible, graphical matched front/back cover pair and rerun the cover audit before any source-bound representative audition.",
-      "cover_gate_status": "BLOCKED_BACK_COVER_TEXT_OVERLAP_AND_READABILITY_FAILURE"
+      "audiobook_next_action": "Do not repeat the completed Gemini fingerprints. Repair the owner-approved matched cover pair, then use a genuinely different provider/voice or source-bound narration.",
+      "cover_gate_status": "BLOCKED_BACK_COVER_TEXT_OVERLAP_AND_READABILITY_FAILURE",
+      "representative_results": {
+        "gemini_callirrhoe_dialogue_human_touch": [9.2, 5.5, 0.0, 0.0],
+        "gemini_charon_anti_mechanical_cadence": [9.4, 5.5, 0.0, 0.0],
+        "minimum_required": 9.2,
+        "fatal_flags_observed": ["robotic_texture_detected", "mechanical_cadence_detected", "list_reading_rhythm_detected"]
+      },
+      "full_title_generated": false,
+      "public_audio_status": "AUDIO_HIDDEN"
     },
     "pather-panchali": {
       "latest_decision": "OWNER_DOCUMENT_REQUIRED",

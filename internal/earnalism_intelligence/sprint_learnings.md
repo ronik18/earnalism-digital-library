@@ -558,3 +558,13 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - The Monkey's Paw retained B2 object now has a plan-bound, private-only SHA-256 retrieval path. Its filename and title do not prove identity; only an exact match to the repaired candidate hash may advance to fresh QA. Anonymous ranged access correctly returned `401`, and no private audio entered frontend assets.
 - `book-edfcf810c5` now has its exact existing graphical Cloudinary cover pair linked in both controlled-publication mirrors. Devdas remains cover-blocked because the retained back cover has overlapping, unreadable Bengali copy; do not begin its audio release lane until a legible matched pair passes.
 - Production truth remains 32 public readers and four public audiobooks. All new provider, normalizer, and private-media work stayed source-only or preflight-only; no hidden title gained a public Listen surface.
+
+## 2026-07-23 Bengali reader sanitation and Gemini/Vertex title pilots
+
+- Vertex listening QA and Gemini 2.5 Pro TTS are operational. The silence probe returned a structured zero-score rejection instead of a transport error, proving the independent judge path works without pretending silence is audio.
+- Canonical reader frontmatter was removed and all dependent hashes were rebound for `bn-066` (46 chapters, 770 characters), `book-d19e96859f` (54 characters), `book-edfcf810c5` (63 characters), and `book-f5d593e1f4` (73 characters). Their reader availability and audio-hidden state did not change.
+- `book-2b9853ec52` has a similar reader-facing wrapper but was excluded because it already has a live, source-bound audiobook. Changing it safely requires one atomic source, audio evidence, sync, delivery, and runtime migration.
+- Nishkriti failed representative generalization with Sarvam Ratan scores `9.4/5.5/0/0` and Gemini Charon scores `9.5/7.0/0/0`. Kshudhita Pashan failed three corrected-source Gemini voices with `9.3/9.0/5.5/0`, `5.8/0/0/0`, and `8.8/9.4/7.5/0`.
+- Devdas remained cover-blocked and its two bounded Gemini diagnostics failed at `9.2/5.5/0/0` and `9.4/5.5/0/0`. Running even bounded audio diagnostics before repairing that known cover blocker was unnecessary; do not repeat them.
+- Adaptive stopping prevented any full-title generation, upload, release-gate mutation, or publication. Isolated high scores never overrode fatal robotic, mechanical, list-reading, or repeated-ending flags.
+- The completed provider, model, voice, style, and text-hash fingerprints are closed. The next audiobook attempt must be a genuinely different provider or voice, or source-bound narration, and must still pass raw audio ASR/source, measured sync, delivery checksum, endpoint, and browser gates.

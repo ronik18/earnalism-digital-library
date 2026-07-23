@@ -261,8 +261,39 @@
       }
     },
     "google": {
-      "status": "ADC_REFRESH_UNAVAILABLE_NOT_STARTED",
-      "notes": "GOOGLE_APPLICATION_CREDENTIALS and GOOGLE_CLOUD_PROJECT were present and the credential file was readable, but two bounded ADC access-token probes hung. No Google ASR provider call ran."
+      "status": "VERTEX_AND_GEMINI_TTS_OPERATIONAL_TITLE_SPECIFIC_QUALITY_LIMIT",
+      "notes": "Vertex AI API was enabled and authorized-user ADC successfully ran Gemini 2.5 Flash listening QA plus Gemini 2.5 Pro TTS. The provider is operational, but Nishkriti, Kshudhita Pashan, and Devdas each failed at least one representative passage; no full title was generated.",
+      "gemini_tts_20260723": {
+        "model": "gemini-2.5-pro-tts",
+        "judge": "vertex/gemini-2.5-flash",
+        "nishkriti": {
+          "charon_scores": [9.5, 7.0, 0.0, 0.0],
+          "status": "REPRESENTATIVE_FAIL_AUDIO_HIDDEN"
+        },
+        "book-edfcf810c5": {
+          "charon_scores": [9.3, 9.0, 5.5, 0.0],
+          "kore_scores": [5.8, 0.0, 0.0, 0.0],
+          "callirrhoe_scores": [8.8, 9.4, 7.5, 0.0],
+          "status": "THREE_VOICE_REPRESENTATIVE_FAIL_AUDIO_HIDDEN"
+        },
+        "devdas": {
+          "callirrhoe_scores": [9.2, 5.5, 0.0, 0.0],
+          "charon_scores": [9.4, 5.5, 0.0, 0.0],
+          "status": "TWO_VOICE_REPRESENTATIVE_FAIL_AUDIO_HIDDEN"
+        },
+        "do_not_repeat": [
+          "nishkriti/gemini-2.5-pro-tts/Charon/dialogue_human_touch",
+          "book-edfcf810c5/gemini-2.5-pro-tts/Charon/emotional_but_restrained",
+          "book-edfcf810c5/gemini-2.5-pro-tts/Kore/anti_list_reading_flow",
+          "book-edfcf810c5/gemini-2.5-pro-tts/Callirrhoe/punctuation_aware_emotional",
+          "devdas/gemini-2.5-pro-tts/Callirrhoe/dialogue_human_touch",
+          "devdas/gemini-2.5-pro-tts/Charon/anti_mechanical_cadence"
+        ],
+        "full_titles_generated": 0,
+        "publications_performed": 0,
+        "actual_provider_billing": "NOT_REPORTED",
+        "next_action": "Use a genuinely different provider/voice or source-bound narration; do not generalize isolated opening/dialogue passes."
+      }
     },
     "azure": {
       "status": "synthesis_cancellation_needs_diagnosis",
@@ -279,21 +310,21 @@
         "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_private_reuse_screen_v1.json"
       }
     },
-    "automated_audiobook_lane_status": "BENGALI_9_2_PATH_FOUND_PILOT_READY",
+    "automated_audiobook_lane_status": "TITLE_SPECIFIC_GEMINI_QUALITY_LIMIT_NO_NEW_RELEASE",
     "automated_audiobook_lane_paused_at": "2026-07-06T20:36:38Z",
     "automated_audiobook_lane_pause_reason": "OpenAI failed premium threshold; Sarvam bulbul:v3 pooja seed had isolated high samples but representative audition scored 7.9/confidence 0.85 with list-reading/mechanical cadence flags.",
     "automated_audiobook_lane_reopened_at": "2026-07-07T00:00:00Z",
     "automated_audiobook_lane_reopen_reason": "Owner approved Bengali-specific 9.2 release threshold while preserving fatal-flag and objective release gates.",
-    "automated_audiobook_lane_latest_result": "Radharani private full title remains hidden. Saaras diagnostic projection exceeded 9.7, but all raw calibration scores were below 9.7 and strict reanalysis found unexplained gaps in every sample. Both transcribe and verbatim returned segment-only timing. Nishkriti canonical passages are persisted; a lock-serialized OpenAI gpt-audio probe returned 429 insufficient_quota before synthesis.",
+    "automated_audiobook_lane_latest_result": "Vertex and Gemini-TTS are operational. Nishkriti, corrected-source Kshudhita Pashan, and Devdas all failed representative generalization despite isolated scores at or above 9.2. No full title, upload, metadata change, or publication followed.",
     "audiobook_completion_campaign": {
-      "status": "RADHARANI_NO_GO_NISHKRITI_OPENAI_LISTENING_QA_QUOTA_BLOCKED",
+      "status": "NISHKRITI_KSHUDHITA_DEVdas_REPRESENTATIVE_FAIL_NO_NEW_PUBLICATION",
       "policy_version": "bengali_audiobook_acceptance_v2_92",
       "total_campaign_titles": 31,
       "published_bengali_audiobooks": 1,
       "sprint1_bengali_titles": 10,
       "sprint1_live_bengali_audiobooks": 1,
       "sprint1_hidden_bengali_audiobooks": 9,
-      "sprint1_next_candidate": "nishkriti",
+      "sprint1_next_candidate": "ALTERNATE_PROVIDER_OR_SOURCE_BOUND_NARRATION_REQUIRED",
       "titles_with_representative_gte_9_2": 1,
       "best_settings": {
         "provider": "sarvam",
@@ -303,8 +334,8 @@
         "representative_score": 9.3,
         "confidence": 0.95
       },
-      "scale_rule": "Radharani is closed after raw ASR below 9.7, strict exact-content gaps, and missing release-valid measured sync. Nishkriti may run only one bounded representative audition after listening QA is usable; do not widen or repeat fingerprints.",
-      "updated_at": "2026-07-22T20:24:04Z",
+      "scale_rule": "Do not widen any failed voice fingerprint into full-title generation. The next automated step must be a genuinely different provider/voice on a cover-and-rights-complete Sprint 1 title; otherwise use source-bound narration.",
+      "updated_at": "2026-07-23T11:31:00Z",
       "state_path": "internal/earnalism_intelligence/bengali_audiobook_campaign_state.json",
       "queue_path": "internal/earnalism_intelligence/bengali_audiobook_campaign_queue.json"
     }

@@ -3,11 +3,15 @@
   "source_url": "https://bn.wikisource.org/wiki/গল্পগুচ্ছ_(প্রথম_খণ্ড)/গিন্নি",
   "source_name": "Bengali Wikisource",
   "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "source_hash": "44ddaba6e31e687d4eddeb70223d42ac78ab5240db01e4b7d77e8a7ca2e4c8ce",
-  "content_hash": "4377e0f42bf3123afc13e97de684f81381a866770536d8fec5297a518e6f03a1",
+  "source_hash": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5",
+  "content_hash": "021462a46f1c87fb984bd68c0d90ff022123dacc236e876ee97baee87ff065fa",
   "provenance_hash": "a2c7815b2c7477def2684e3e374b5d1db23d18888e6f9769dd9efbdf6c8a0717",
   "rights_basis": "Author died in 1941, so the original literary work is public domain in India under life plus 60 years. Original publication before 1931 supports U.S. public-domain status.",
   "downloaded_at": "2026-05-20T09:08:17.039087+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "reader_content_repaired_at": "2026-07-23T11:25:30Z",
+  "reader_content_repair": [
+    "removed_source_frontmatter_through_canonical_title_page"
+  ]
 }

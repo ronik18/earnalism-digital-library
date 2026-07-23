@@ -3,11 +3,15 @@
   "source_url": "https://bn.wikisource.org/wiki/%E0%A6%86%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%AE%E0%A6%A0_(%E0%A7%A7%E0%A7%AE%E0%A7%AE%E0%A7%A9)",
   "source_name": "Bengali Wikisource",
   "source_license": "Underlying Bengali literary text is public domain in India and the U.S.; Bengali Wikisource transcription/source layer is reused under CC BY-SA terms.",
-  "source_hash": "e760fa2eaf099b90fb6666a62e29f34a72bd84942bf22d487b7417dce60ba329",
-  "content_hash": "ec3352127f8065ec990f9c10f4a2a069a4a4f0c9e8793c7727b00306fa8d777f",
+  "source_hash": "faf9dcea64878face44dc43464dbe0314d567a007dc10582e6d554f6844761d6",
+  "content_hash": "d522fe1c869e93f151b5a0ccb40a4def1e7c0926e553eed4f73185a7c08c5b6e",
   "provenance_hash": "57717208ebcc8a365eedcb5e73bdcbab15d1108adad23dda28d85516e17bb979",
   "rights_basis": "Author died 1894. Published 1882. Public domain checks are enforced by the Earnalism import pipeline; source evidence kept internal/admin-only.",
   "downloaded_at": "2026-06-04T16:51:08.840745+00:00",
   "source_format": "text/plain",
-  "reader_facing_boilerplate_removed": true
+  "reader_facing_boilerplate_removed": true,
+  "reader_content_repaired_at": "2026-07-23T11:25:30Z",
+  "reader_content_repair": [
+    "removed_leading_bengali_edition_page_range"
+  ]
 }
