@@ -1804,8 +1804,13 @@ def judge_audio_sample_with_vertex(args, sample: dict) -> dict:
     }
     try:
         access_token = _google_adc_access_token()
+        api_host = (
+            "aiplatform.googleapis.com"
+            if location == "global"
+            else f"{location}-aiplatform.googleapis.com"
+        )
         endpoint = (
-            f"https://{location}-aiplatform.googleapis.com/v1/projects/{project}/locations/{location}"
+            f"https://{api_host}/v1/projects/{project}/locations/{location}"
             f"/publishers/google/models/{model}:generateContent"
         )
         request = urllib.request.Request(
@@ -1814,6 +1819,7 @@ def judge_audio_sample_with_vertex(args, sample: dict) -> dict:
             headers={
                 "Authorization": f"Bearer {access_token}",
                 "Content-Type": "application/json",
+                "x-goog-user-project": project,
             },
             method="POST",
         )
@@ -1825,8 +1831,11 @@ def judge_audio_sample_with_vertex(args, sample: dict) -> dict:
     except urllib.error.HTTPError as exc:
         error_code = ""
         error_message = ""
+        error_body_preview = ""
         try:
-            error_payload = json.loads(exc.read().decode("utf-8", errors="replace"))
+            error_body = exc.read().decode("utf-8", errors="replace")
+            error_body_preview = " ".join(error_body.split())[:400]
+            error_payload = json.loads(error_body)
             error = error_payload.get("error") if isinstance(error_payload, dict) else {}
             if isinstance(error, dict):
                 error_code = str(error.get("status") or error.get("code") or "")
@@ -1836,11 +1845,16 @@ def judge_audio_sample_with_vertex(args, sample: dict) -> dict:
                 error_message = str(error_payload.get("error_description") or "")[:400]
         except (json.JSONDecodeError, UnicodeDecodeError):
             pass
+        if not error_message:
+            error_message = error_body_preview
         return {
             **sample,
             "scores": {},
             "confidence": 0.0,
-            "notes": f"Vertex listening judge HTTP {exc.code}: code={error_code} message={error_message}",
+            "notes": (
+                f"Vertex listening judge HTTP {exc.code}: code={error_code} "
+                f"location={location} model={model} message={error_message}"
+            ),
             "blocker_reason": "LISTENING_QA_NOT_RUN",
         }
     except Exception as exc:  # noqa: BLE001

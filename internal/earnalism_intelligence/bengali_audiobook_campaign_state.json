@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-23T07:24:06Z",
-  "status": "RADHARANI_NO_GO_NISHKRITI_GEMINI_ADAPTER_READY_ADC_REAUTH_REQUIRED",
+  "generated_at": "2026-07-23T11:31:00Z",
+  "status": "VERTEX_OPERATIONAL_THREE_SPRINT1_TITLES_REPRESENTATIVE_FAILED_NO_NEW_PUBLICATION",
   "policy_version": "bengali_audiobook_acceptance_v2_92",
   "total_campaign_titles": 31,
   "published_bengali_audiobooks": 1,
@@ -62,11 +62,11 @@
     "READY_FOR_REPRESENTATIVE_AUDITION": 27
   },
   "scale_gate": {
-    "status": "RADHARANI_STRICT_RAW_ASR_EXACT_CONTENT_SYNC_FAILED_NO_SCALE",
+    "status": "NO_SCALE_AFTER_TITLE_SPECIFIC_REPRESENTATIVE_QUALITY_FAILURES",
     "pilot_slug": "book-2b9853ec52",
-    "next_candidate_slug": "nishkriti",
-    "next_scale_stage": "GOOGLE_ADC_REAUTH_THEN_ONE_NISHKRITI_GEMINI_VERTEX_AUDITION",
-    "rule": "Do not widen. Radharani is closed because all three Saaras calibration raw scores were below 9.7, every strict projection retained unexplained gaps, and the provider returned segment-only timing. Nishkriti's four canonical passages and opt-in Gemini-TTS/Vertex adapters are ready, but no provider call may start until Google ADC refresh succeeds, the current paid lock is re-read, and the exact title-only budget scope is approved."
+    "next_candidate_slug": "",
+    "next_scale_stage": "SELECT_GENUINELY_DIFFERENT_PROVIDER_OR_SOURCE_BOUND_NARRATION_AFTER_COVER_AND_RIGHTS_PREFLIGHT",
+    "rule": "Do not repeat completed Nishkriti, Kshudhita Pashan, or Devdas Gemini fingerprints. No title may widen to full generation until one complete four-passage set passes 9.2/0.90 with zero fatal flags and all non-audio preflight gates are complete."
   },
   "best_settings": {
     "provider": "sarvam",
@@ -175,8 +175,8 @@
       "fallback_tts_detected"
     ]
   },
-  "next_exact_command": "gcloud auth application-default login --project=earnalism",
-  "next_generated_prompt": "Google Gemini-TTS and Vertex listening adapters are ready and tested without provider calls. Repair authorized-user ADC interactively, validate one token refresh without synthesis, re-read campaign spend and the paid lock, then run exactly one four-passage Nishkriti audition. Keep every hidden title audio-hidden until its full objective, listening, delivery, endpoint, and browser evidence passes.",
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m json.tool internal/earnalism_intelligence/bengali_audiobook_campaign_state.json >/dev/null && git diff --check",
+  "next_generated_prompt": "Keep all nine hidden Bengali audiobooks hidden. Do not repeat the completed Gemini or Sarvam fingerprints. Merge and deploy the hash-bound reader sanitation repairs, then select a genuinely different provider/voice only for a cover-and-rights-complete title or validate source-bound narration through the existing packet.",
   "radharani_full_canary_20260722": {
     "status": "NO_GO_AUDIO_DERIVED_ASR_AND_CALIBRATION_FAILED",
     "full_tts_status": "PASS_PRIVATE_28_FRESH_GROUPS",
@@ -348,5 +348,59 @@
     "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/book-d19e96859f_release_gate_evidence.json",
     "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/book-d19e96859f",
     "next_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/build_narration_import_packet.py --slug book-d19e96859f --candidate-kind human_narration --asset-root . --output-root internal/audiobook_lab/sprint1_publication/human_narration_packets --received-audio /absolute/path/to/received_narration.wav"
+  },
+  "sprint1_bengali_execution_20260723": {
+    "status": "NO_NEW_AUDIO_RELEASE_READER_CONTENT_IMPROVED",
+    "production_readers": 32,
+    "sprint1_bengali_readers": 10,
+    "production_audiobooks": 4,
+    "sprint1_bengali_audiobooks": 1,
+    "vertex_listening_qa": "OPERATIONAL_GEMINI_2_5_FLASH",
+    "reader_repairs": {
+      "book-edfcf810c5": {
+        "removed_characters": 63,
+        "new_source_sha256": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7"
+      },
+      "book-d19e96859f": {
+        "removed_characters": 54,
+        "new_source_sha256": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5"
+      },
+      "book-f5d593e1f4": {
+        "removed_characters": 73,
+        "new_source_sha256": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350"
+      },
+      "bn-066": {
+        "chapters_repaired": 46,
+        "removed_characters": 770,
+        "new_source_sha256": "faf9dcea64878face44dc43464dbe0314d567a007dc10582e6d554f6844761d6"
+      }
+    },
+    "representative_failures": {
+      "nishkriti": {
+        "sarvam_ratan_scores": [9.4, 5.5, 0.0, 0.0],
+        "gemini_charon_scores": [9.5, 7.0, 0.0, 0.0]
+      },
+      "book-edfcf810c5": {
+        "gemini_charon_scores": [9.3, 9.0, 5.5, 0.0],
+        "gemini_kore_scores": [5.8, 0.0, 0.0, 0.0],
+        "gemini_callirrhoe_scores": [8.8, 9.4, 7.5, 0.0]
+      },
+      "devdas": {
+        "gemini_callirrhoe_scores": [9.2, 5.5, 0.0, 0.0],
+        "gemini_charon_scores": [9.4, 5.5, 0.0, 0.0]
+      }
+    },
+    "full_titles_generated": 0,
+    "uploads_performed": 0,
+    "publications_performed": 0,
+    "hidden_titles_promoted": 0,
+    "conservative_campaign_estimated_spend_usd": 18.1,
+    "actual_provider_billing": "NOT_REPORTED",
+    "paid_tts_lock_status": {
+      "status": "active",
+      "current_holder": "none",
+      "allowed_next_holders": [],
+      "allowed_slugs": ["devdas"]
+    }
   }
 }

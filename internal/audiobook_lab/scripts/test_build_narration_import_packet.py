@@ -151,6 +151,18 @@ class NarrationImportPacketTests(unittest.TestCase):
             brief = (packet_dir / "narrator_brief.md").read_text(encoding="utf-8")
             self.assertIn("archaic সাধু form", brief)
 
+    def test_punctuated_bengali_title_page_is_removed_with_leading_metadata(self):
+        content = (
+            "রবীন্দ্রনাথ ঠাকুর\n\n"
+            "গল্প-দশক\n\n"
+            "১৮৯৫ (পৃ. ১৬৫-১৮৮)\n\n"
+            "ক্ষুধিত পাষাণ।\n\n"
+            "গাড়িটি আসিয়া জংশনে থামিলে আমরা অপেক্ষা করিলাম।"
+        )
+        cleaned, removed = packet.sanitize_chapter(content, title="ক্ষুধিত পাষাণ")
+        self.assertEqual(cleaned, "গাড়িটি আসিয়া জংশনে থামিলে আমরা অপেক্ষা করিলাম।")
+        self.assertEqual(removed[0]["reason"], "frontmatter_through_exact_title")
+
     def test_english_licensed_import_uses_evidence_threshold_and_fingerprint(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

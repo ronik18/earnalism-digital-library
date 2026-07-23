@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-23T11:37:35Z",
+  "scope": "Sprint 1 Bengali digital books and audiobooks",
+  "production_truth_before_release": {
+    "public_readers": 32,
+    "public_audiobooks": 4,
+    "sprint1_bengali_readers": 10,
+    "sprint1_bengali_audiobooks": 1,
+    "approved_bengali_audio_slugs": [
+      "book-2b9853ec52"
+    ]
+  },
+  "reader_catalog_changes": {
+    "status": "READY_FOR_VALIDATION",
+    "audio_release_state_changed": false,
+    "repairs": {
+      "bn-066": {
+        "title": "আনন্দমঠ",
+        "chapters_repaired": 46,
+        "removed_characters": 770,
+        "source_sha256": "faf9dcea64878face44dc43464dbe0314d567a007dc10582e6d554f6844761d6"
+      },
+      "book-d19e96859f": {
+        "title": "গিন্নি",
+        "removed_characters": 54,
+        "source_sha256": "3c184ef8918fee4686c3ac93e17c12d7108617099c70425948cdd7cbf36b68d5"
+      },
+      "book-edfcf810c5": {
+        "title": "ক্ষুধিত পাষাণ",
+        "removed_characters": 63,
+        "source_sha256": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7"
+      },
+      "book-f5d593e1f4": {
+        "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+        "removed_characters": 73,
+        "source_sha256": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350"
+      }
+    },
+    "deferred_atomic_migration": {
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "reason": "The title already has a live source-bound audiobook; its reader wrapper cannot be changed without rebinding source, sync, delivery, and runtime evidence atomically."
+    }
+  },
+  "audiobook_wave_result": {
+    "status": "NO_NEW_AUDIO_RELEASE",
+    "full_titles_generated": 0,
+    "uploads_performed": 0,
+    "publications_performed": 0,
+    "release_gates_mutated": 0,
+    "representative_results": {
+      "nishkriti": {
+        "title": "নিষ্কৃতি",
+        "sarvam_ratan_scores": [
+          9.4,
+          5.5,
+          0.0,
+          0.0
+        ],
+        "gemini_charon_scores": [
+          9.5,
+          7.0,
+          0.0,
+          0.0
+        ],
+        "decision": "AUDIO_HIDDEN_PROVIDER_QUALITY_LIMIT"
+      },
+      "book-edfcf810c5": {
+        "title": "ক্ষুধিত পাষাণ",
+        "gemini_charon_scores": [
+          9.3,
+          9.0,
+          5.5,
+          0.0
+        ],
+        "gemini_kore_scores": [
+          5.8,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "gemini_callirrhoe_scores": [
+          8.8,
+          9.4,
+          7.5,
+          0.0
+        ],
+        "decision": "AUDIO_HIDDEN_PROVIDER_QUALITY_LIMIT"
+      },
+      "devdas": {
+        "title": "দেবদাস / Devdas",
+        "cover_gate": "BLOCKED_BACK_COVER_TEXT_OVERLAP_AND_READABILITY_FAILURE",
+        "gemini_callirrhoe_scores": [
+          9.2,
+          5.5,
+          0.0,
+          0.0
+        ],
+        "gemini_charon_scores": [
+          9.4,
+          5.5,
+          0.0,
+          0.0
+        ],
+        "decision": "AUDIO_HIDDEN_COVER_AND_PROVIDER_QUALITY_BLOCKED"
+      }
+    },
+    "fatal_flags_observed": [
+      "robotic_texture_detected",
+      "mechanical_cadence_detected",
+      "list_reading_rhythm_detected",
+      "repeated_identical_sentence_endings_detected"
+    ],
+    "policy_reason": "No isolated high score can approve a title. Every representative passage, objective source/sync gate, rights and cover gate, delivery checksum, public endpoint, and browser proof must pass."
+  },
+  "sprint1_bengali_title_status": [
+    {
+      "slug": "book-2b9853ec52",
+      "title": "দুই বিঘা জমি",
+      "reader": "LIVE",
+      "audio": "LIVE"
+    },
+    {
+      "slug": "bn-066",
+      "title": "আনন্দমঠ",
+      "reader": "LIVE_REPAIR_READY",
+      "audio": "HIDDEN_PRIVATE_QA_AND_OBJECTIVE_EVIDENCE_PENDING"
+    },
+    {
+      "slug": "radharani",
+      "title": "রাধারাণী",
+      "reader": "LIVE",
+      "audio": "HIDDEN_RAW_ASR_SOURCE_AND_SYNC_FAILED"
+    },
+    {
+      "slug": "nishkriti",
+      "title": "নিষ্কৃতি",
+      "reader": "LIVE",
+      "audio": "HIDDEN_REPRESENTATIVE_QUALITY_FAILED"
+    },
+    {
+      "slug": "muchiram-gurer-jibanchorit",
+      "title": "মুচিরাম গুড়ের জীবনচরিত",
+      "reader": "LIVE",
+      "audio": "HIDDEN_SOURCE_BOUND_NARRATION_REQUIRED"
+    },
+    {
+      "slug": "book-d19e96859f",
+      "title": "গিন্নি",
+      "reader": "LIVE_REPAIR_READY",
+      "audio": "HIDDEN_RAW_ASR_AND_LISTENING_FAILED"
+    },
+    {
+      "slug": "book-f5d593e1f4",
+      "title": "রামকানাইয়ের নির্বুদ্ধিতা",
+      "reader": "LIVE_REPAIR_READY",
+      "audio": "HIDDEN_AUTOMATED_PROVIDER_PLATEAU"
+    },
+    {
+      "slug": "pather-panchali",
+      "title": "পথের পাঁচালী / Pather Panchali",
+      "reader": "LIVE",
+      "audio": "HIDDEN_RIGHTS_AND_COVER_METADATA_PENDING"
+    },
+    {
+      "slug": "devdas",
+      "title": "দেবদাস / Devdas",
+      "reader": "LIVE",
+      "audio": "HIDDEN_COVER_AND_REPRESENTATIVE_QUALITY_FAILED"
+    },
+    {
+      "slug": "book-edfcf810c5",
+      "title": "ক্ষুধিত পাষাণ",
+      "reader": "LIVE_REPAIR_READY",
+      "audio": "HIDDEN_REPRESENTATIVE_QUALITY_FAILED"
+    }
+  ],
+  "provider_cost_control": {
+    "conservative_campaign_estimated_spend_usd": 18.1,
+    "actual_provider_billing": "NOT_REPORTED",
+    "paid_tts_lock_restored": true
+  },
+  "publication_decision": "PUBLISH_ONLY_VALIDATED_READER_AND_PIPELINE_CHANGES; DO_NOT_PUBLISH_FAILED_AUDIO"
+}

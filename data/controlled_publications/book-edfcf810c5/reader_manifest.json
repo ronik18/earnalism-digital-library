@@ -12,13 +12,13 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 3364,
-      "reading_minutes": 15,
+      "word_count": 3356,
+      "reading_minutes": 14,
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:46Z",
-      "updated_at": "2026-07-03T20:07:46Z"
+      "updated_at": "2026-07-23T11:10:13Z"
     }
   ],
   "preview_chapter_ids": [
@@ -26,5 +26,5 @@
   ],
   "audio_enabled": false,
   "audiobook_enabled": false,
-  "generated_at": "2026-07-03T20:07:46Z"
+  "generated_at": "2026-07-23T11:10:13Z"
 }

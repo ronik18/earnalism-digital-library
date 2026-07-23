@@ -372,6 +372,21 @@ def has_complete_schema3_judgment(sample: dict[str, Any]) -> bool:
     return all(field in flags for field in BINARY_LISTENING_FLAGS)
 
 
+def sample_generation_succeeded(sample: dict[str, Any]) -> bool:
+    """Return whether private provider audio exists and is ready for QA."""
+
+    return sample.get("status") in {"PASS", "PASS_PRIVATE_QA_REQUIRED"}
+
+
+def meaningful_judge_blocker(value: Any) -> str:
+    """Normalize schema-compliant no-blocker sentinels returned as strings."""
+
+    blocker = str(value or "").strip()
+    if blocker.casefold() in {"", "none", "null", "n/a", "no blocker"}:
+        return ""
+    return blocker
+
+
 def audio_inventory(run_dir: Path) -> dict[str, Any]:
     auditions_dir = run_dir / "auditions"
     all_audio = [
@@ -524,6 +539,18 @@ def sanitize_bengali_manuscript(text: str, slug: str) -> str:
         public_book = read_json(ROOT / "backend" / "data" / "controlled_publications" / slug / "public_book.json", {})
     title = str(public_book.get("title") or "").strip()
     lines = [line.strip() for line in (text or "").replace("\r\n", "\n").splitlines()]
+    normalized_title = re.sub(r"[\s।.!?？]+$", "", title).casefold()
+    title_index = next(
+        (
+            index
+            for index, line in enumerate(lines[:16])
+            if normalized_title
+            and re.sub(r"[\s।.!?？]+$", "", line).casefold() == normalized_title
+        ),
+        None,
+    )
+    if title_index is not None:
+        lines = lines[title_index + 1 :]
     cleaned: list[str] = []
     body_started = False
     for index, line in enumerate(lines):
@@ -531,8 +558,6 @@ def sanitize_bengali_manuscript(text: str, slug: str) -> str:
             if not line:
                 continue
             is_front = any(pattern.search(line) for pattern in FRONTMATTER_PATTERNS)
-            if title and line == title and index < 12:
-                continue
             if is_front and index < 16:
                 continue
             body_started = True
@@ -1073,7 +1098,7 @@ def openai_listening_quota_probe(run_dir: Path) -> dict[str, Any]:
                 "exact_next_fix": f"Restore {judge_provider} listening-judge quota, then rerun with --resume-existing-samples --judge-existing-only.",
             }
         )
-    elif judged.get("blocker_reason") or not judged.get("raw_judgment"):
+    elif not judged.get("raw_judgment"):
         payload.update(
             {
                 "status": "BLOCKED",
@@ -1093,6 +1118,8 @@ def openai_listening_quota_probe(run_dir: Path) -> dict[str, Any]:
                 "exact_next_fix": "",
             }
         )
+        if judged.get("blocker_reason"):
+            payload["probe_quality_result"] = "EXPECTED_NON_RELEASE_SAMPLE_REJECTED"
     payload["finished_at"] = iso_now()
     write_json(run_dir / "openai_listening_qa_quota_probe.json", payload)
     return payload
@@ -1670,8 +1697,8 @@ def judge_sample(sample: dict[str, Any], title: str, author: str, language: str,
         frontmatter_present=judged.get("frontmatter_present"),
     )
     blockers.extend(policy_blockers)
-    if judged.get("blocker_reason"):
-        blockers.append(str(judged["blocker_reason"]))
+    if blocker_reason := meaningful_judge_blocker(judged.get("blocker_reason")):
+        blockers.append(blocker_reason)
     return {
         **judge_sample,
         "release_policy": policy["name"],
@@ -2603,7 +2630,7 @@ def main() -> int:
                 reused_samples += 1
             elif generated.get("cache_status") == "MISS_GENERATED":
                 new_samples_generated += 1
-            if provider_voice.provider in capability_probe and generated.get("status") == "PASS":
+            if provider_voice.provider in capability_probe and sample_generation_succeeded(generated):
                 capability_probe[provider_voice.provider]["sample_synthesis_succeeded"] = True
                 capability_probe[provider_voice.provider]["auth_status"] = "usable"
                 capability_probe[provider_voice.provider]["error_message_redacted"] = ""
@@ -2627,7 +2654,11 @@ def main() -> int:
                         "Repair authorized-user ADC with `gcloud auth application-default login`, "
                         "then rerun the exact private audition under the paid-stage lock."
                     )
-            cached_judgment = existing_judgments.get(sample_identity(generated)) if generated.get("status") == "PASS" else None
+            cached_judgment = (
+                existing_judgments.get(sample_identity(generated))
+                if sample_generation_succeeded(generated)
+                else None
+            )
             if cached_judgment and cached_judgment.get("release_policy") == release_policy:
                 judged = {**cached_judgment, "cache_status": generated.get("cache_status", "")}
             elif args.reuse_existing_judgments_only:
@@ -2648,7 +2679,7 @@ def main() -> int:
                         language="ben",
                         release_policy=release_policy,
                     )
-                    if generated.get("status") == "PASS"
+                    if sample_generation_succeeded(generated)
                     else generated
                 )
             sample_results.append(judged)

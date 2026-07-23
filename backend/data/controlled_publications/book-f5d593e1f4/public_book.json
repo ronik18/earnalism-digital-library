@@ -44,17 +44,17 @@
       "is_preview": false,
       "has_images": false,
       "image_count": 0,
-      "word_count": 1407,
+      "word_count": 1399,
       "reading_minutes": 6,
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:46Z",
-      "updated_at": "2026-07-03T20:07:46Z"
+      "updated_at": "2026-07-23T11:25:30Z"
     }
   ],
-  "source_hash": "f4bd2ecf4d9eb2dc5e3917bc45965c768463a34d9ced5f1dfe1e1f336b300827",
-  "content_hash": "44be13ff4842287ea358bc8ec0d2e90ea437abdd41dd9d527bb52e03d03a5cf0",
+  "source_hash": "1c6c50661763d7497213b1041ae809c1f63a1262387eacdbc0b0a3348fe8e350",
+  "content_hash": "0fbaa0cb48c5a35910ebee2891591d340c1e8b4f6e7e37b3c4af1070fe4827eb",
   "provenance_hash": "96f13b64e75d574e6c94fa79a186f39f4bdeed875c52c7b9c6dacb55c1e06d5d",
   "rights_basis": "Author died in 1941, so the original literary work is public domain in India under life plus 60 years. Original publication before 1931 supports U.S. public-domain status.",
   "rights_tier": "A",
@@ -82,5 +82,5 @@
   "audiobook": {},
   "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:46Z",
-  "updated_at": "2026-07-03T20:07:46Z"
+  "updated_at": "2026-07-23T11:25:30Z"
 }
