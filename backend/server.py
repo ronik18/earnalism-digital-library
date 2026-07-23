@@ -433,7 +433,7 @@ async def _expensive_job_slot(job_type: str):
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v10"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v11"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
@@ -1614,15 +1614,20 @@ async def _reader_book_access_doc(slug: str, *, admin_preview: bool = False) -> 
     cached = await _redis_cache_get("reader-content", cache_key)
     if cached is not None:
         return cached
-    query = {"slug": slug} if admin_preview else _controlled_public_book_query({"slug": slug})
-    doc = await db.books.find_one(
-        query,
-        READER_ACCESS_PROJECTION,
-    )
-    if doc and not admin_preview and not can_expose_reader(doc):
-        doc = None
-    if not doc and not admin_preview:
+    if admin_preview:
+        doc = await db.books.find_one({"slug": slug}, READER_ACCESS_PROJECTION)
+    else:
+        # Controlled publication packets are the public catalog truth. Prefer
+        # them over a stale runtime database copy so chapter metadata and the
+        # chapter body are always derived from the same approved source.
         doc = _controlled_artifact_doc(slug, include_content=False)
+        if not doc:
+            doc = await db.books.find_one(
+                _controlled_public_book_query({"slug": slug}),
+                READER_ACCESS_PROJECTION,
+            )
+            if doc and not can_expose_reader(doc):
+                doc = None
     if doc:
         await _redis_cache_set("reader-content", cache_key, doc, READER_BOOK_CACHE_TTL_SECONDS)
     return doc
@@ -1640,17 +1645,24 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
         book = await _reader_book_access_doc(slug)
         if not book:
             return ""
-    query = {"slug": slug} if admin_preview else _controlled_public_book_query({"slug": slug})
-    content_doc = await db.books.find_one(
-        {**query, "chapters.id": chapter_id},
-        {"_id": 0, "chapters.$": 1},
-    )
-    target = ((content_doc or {}).get("chapters") or [{}])[0]
-    content = target.get("content", "")
-    if not content and not admin_preview:
+    if admin_preview:
+        content_doc = await db.books.find_one(
+            {"slug": slug, "chapters.id": chapter_id},
+            {"_id": 0, "chapters.$": 1},
+        )
+        target = ((content_doc or {}).get("chapters") or [{}])[0]
+        content = target.get("content", "")
+    else:
         artifact = _controlled_artifact_doc(slug, include_content=True) or {}
         target = next((chapter for chapter in artifact.get("chapters") or [] if chapter.get("id") == chapter_id), {})
         content = target.get("content", "")
+        if not content:
+            content_doc = await db.books.find_one(
+                {**_controlled_public_book_query({"slug": slug}), "chapters.id": chapter_id},
+                {"_id": 0, "chapters.$": 1},
+            )
+            target = ((content_doc or {}).get("chapters") or [{}])[0]
+            content = target.get("content", "")
     await _redis_cache_set("reader-content", cache_key, content, READER_CHAPTER_CACHE_TTL_SECONDS)
     return content
 
@@ -1820,12 +1832,17 @@ async def _reader_book_manifest_doc(slug: str, *, admin_preview: bool = False) -
     if cached is not None:
         return cached
 
-    query = {"slug": slug} if admin_preview else _controlled_public_book_query({"slug": slug})
-    doc = await db.books.find_one(query, {"_id": 0, "rights_metadata": 0})
-    if doc and not admin_preview and not can_expose_reader(doc):
-        doc = None
-    if not doc and not admin_preview:
+    if admin_preview:
+        doc = await db.books.find_one({"slug": slug}, {"_id": 0, "rights_metadata": 0})
+    else:
         doc = _controlled_artifact_doc(slug, include_content=True)
+        if not doc:
+            doc = await db.books.find_one(
+                _controlled_public_book_query({"slug": slug}),
+                {"_id": 0, "rights_metadata": 0},
+            )
+            if doc and not can_expose_reader(doc):
+                doc = None
     if not doc:
         return None
 

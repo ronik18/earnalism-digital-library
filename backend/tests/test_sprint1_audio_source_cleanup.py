@@ -164,6 +164,58 @@ class EmptyBooks:
         return None
 
 
+class StaleControlledChapterBooks:
+    async def find_one(self, *_args, **_kwargs):
+        return {
+            "slug": "book-edfcf810c5",
+            "chapters": [
+                {
+                    "id": "chapter-001",
+                    "title": "ক্ষুধিত পাষাণ",
+                    "order": 1,
+                    "is_preview": True,
+                    "content": "STALE DATABASE TITLE-PAGE WRAPPER",
+                }
+            ],
+        }
+
+
+async def no_reader_cache(*_args, **_kwargs):
+    return None
+
+
+async def ignore_reader_cache(*_args, **_kwargs):
+    return None
+
+
+def test_public_reader_prefers_canonical_chapter_over_stale_database(monkeypatch):
+    monkeypatch.setattr(server, "db", type("DB", (), {"books": StaleControlledChapterBooks()})())
+    monkeypatch.setattr(server, "_redis_cache_get", no_reader_cache)
+    monkeypatch.setattr(server, "_redis_cache_set", ignore_reader_cache)
+
+    content = asyncio.run(server._reader_chapter_content("book-edfcf810c5", "chapter-001"))
+    manifest = asyncio.run(server._reader_book_manifest_doc("book-edfcf810c5"))
+
+    assert content.startswith("গাড়িটি আসিয়া জংশনে থামিলে")
+    assert "STALE DATABASE TITLE-PAGE WRAPPER" not in content
+    assert manifest is not None
+    assert manifest["chapters"][0]["content_version"] == server._reader_chapter_content_version(
+        catalog_truth.load_controlled_artifact_book("book-edfcf810c5", include_content=True)["chapters"][0]
+    )
+
+
+def test_admin_reader_keeps_database_preview_source(monkeypatch):
+    monkeypatch.setattr(server, "db", type("DB", (), {"books": StaleControlledChapterBooks()})())
+    monkeypatch.setattr(server, "_redis_cache_get", no_reader_cache)
+    monkeypatch.setattr(server, "_redis_cache_set", ignore_reader_cache)
+
+    content = asyncio.run(
+        server._reader_chapter_content("book-edfcf810c5", "chapter-001", admin_preview=True)
+    )
+
+    assert content == "STALE DATABASE TITLE-PAGE WRAPPER"
+
+
 @pytest.mark.parametrize("slug", HIDDEN_PROXY_SAMPLES)
 def test_hidden_sprint1_audiobook_proxies_return_404(monkeypatch, slug: str):
     monkeypatch.setattr(server, "db", type("DB", (), {"books": EmptyBooks()})())
