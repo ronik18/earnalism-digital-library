@@ -433,7 +433,7 @@ async def _expensive_job_slot(job_type: str):
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v11"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v12"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
@@ -6750,7 +6750,12 @@ async def reader_get_chapter(
         not_modified = not_modified_response(response.headers["Cache-Control"])
         if not_modified:
             return not_modified
-        cache_key = _public_cache_key("reader_preview_chapter", slug=slug, chapter_id=chapter_id)
+        cache_key = _public_cache_key(
+            "reader_preview_chapter",
+            slug=slug,
+            chapter_id=chapter_id,
+            content_version=content_version,
+        )
         cached = await _public_cache_get(cache_key)
         if cached is not None:
             return cached

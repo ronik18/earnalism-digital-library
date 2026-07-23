@@ -216,6 +216,64 @@ def test_admin_reader_keeps_database_preview_source(monkeypatch):
     assert content == "STALE DATABASE TITLE-PAGE WRAPPER"
 
 
+def test_public_preview_cache_is_bound_to_requested_content_version(monkeypatch):
+    book = {
+        "slug": "book-edfcf810c5",
+        "chapters": [
+            {
+                "id": "chapter-001",
+                "title": "ক্ষুধিত পাষাণ",
+                "order": 1,
+                "is_preview": True,
+            }
+        ],
+    }
+    cache = {}
+
+    async def access_doc(*_args, **_kwargs):
+        return book
+
+    async def chapter_content(*_args, **_kwargs):
+        return "গাড়িটি আসিয়া জংশনে থামিলে"
+
+    async def cache_get(key):
+        return cache.get(key)
+
+    async def cache_set(key, value):
+        cache[key] = value
+
+    monkeypatch.setattr(server, "_reader_book_access_doc", access_doc)
+    monkeypatch.setattr(server, "_reader_chapter_content", chapter_content)
+    monkeypatch.setattr(server, "_public_cache_get", cache_get)
+    monkeypatch.setattr(server, "_public_cache_set", cache_set)
+
+    request = server.Request({"type": "http", "method": "GET", "headers": []})
+    first = asyncio.run(
+        server.reader_get_chapter(
+            "book-edfcf810c5",
+            "chapter-001",
+            request,
+            server.Response(),
+            v=None,
+            principal=None,
+        )
+    )
+    versioned = asyncio.run(
+        server.reader_get_chapter(
+            "book-edfcf810c5",
+            "chapter-001",
+            request,
+            server.Response(),
+            v="canonical-manifest-version",
+            principal=None,
+        )
+    )
+
+    assert first["chapter"]["content_version"] != "canonical-manifest-version"
+    assert versioned["chapter"]["content_version"] == "canonical-manifest-version"
+    assert len(cache) == 2
+
+
 @pytest.mark.parametrize("slug", HIDDEN_PROXY_SAMPLES)
 def test_hidden_sprint1_audiobook_proxies_return_404(monkeypatch, slug: str):
     monkeypatch.setattr(server, "db", type("DB", (), {"books": EmptyBooks()})())
