@@ -574,3 +574,10 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Railway correctly detected merge `ce7f1edd` and held it in `WAITING`, but the workflow named `Post-deploy k6 smoke test` also ran on the same `push` event before Railway could deploy because `Wait for CI` was enabled.
 - The production smoke portion passed 15/15 checks. The 100-user run passed all 17,664 functional checks with a 0% request failure rate, but the previous deployment missed the strict catalog p95 target (`2.48s` vs `1.2s`) and reader p95 target (`2.24s` vs `1.8s`).
 - Do not relax those latency targets and do not use the failed old-deployment run as evidence for the new commit. Remove the `push` trigger, keep manual dispatch, and run the unchanged test only after Railway reports the target commit as `SUCCESS`.
+
+## 2026-07-23 Controlled reader artifact precedence
+
+- Production validation found that the reader manifest reflected the newly repaired controlled-publication packet while the chapter endpoint still returned an older MongoDB chapter body. Cache-busting did not help because the endpoint itself preferred the database whenever any content existed.
+- Public controlled readers must resolve book access metadata, chapter versions, and chapter bodies from the same canonical artifact. A stale database copy may be used only as a fail-safe when the controlled artifact is unavailable; admin preview remains database-first.
+- Incrementing the reader truth-gate cache namespace is required whenever source precedence changes, otherwise Redis may continue serving the old body for up to the chapter cache TTL.
+- Focused reader and audio-truth coverage passed 31/31. The change does not alter audiobook approval, QA, storage, metadata, or public Listen state.
