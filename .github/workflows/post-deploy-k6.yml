@@ -1,9 +1,6 @@
 name: Post-deploy k6 smoke test
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 concurrency:
@@ -13,7 +10,10 @@ concurrency:
 jobs:
   k6-smoke:
     name: k6 production smoke
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Railway waits for push CI before deploying. This production test must be
+    # dispatched only after Railway reports the target commit as SUCCESS, or it
+    # creates a circular wait and measures the previous deployment.
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:

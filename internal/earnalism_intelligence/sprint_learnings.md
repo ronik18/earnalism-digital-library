@@ -568,3 +568,9 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Devdas remained cover-blocked and its two bounded Gemini diagnostics failed at `9.2/5.5/0/0` and `9.4/5.5/0/0`. Running even bounded audio diagnostics before repairing that known cover blocker was unnecessary; do not repeat them.
 - Adaptive stopping prevented any full-title generation, upload, release-gate mutation, or publication. Isolated high scores never overrode fatal robotic, mechanical, list-reading, or repeated-ending flags.
 - The completed provider, model, voice, style, and text-hash fingerprints are closed. The next audiobook attempt must be a genuinely different provider or voice, or source-bound narration, and must still pass raw audio ASR/source, measured sync, delivery checksum, endpoint, and browser gates.
+
+## 2026-07-23 Railway CI and post-deploy load-test ordering
+
+- Railway correctly detected merge `ce7f1edd` and held it in `WAITING`, but the workflow named `Post-deploy k6 smoke test` also ran on the same `push` event before Railway could deploy because `Wait for CI` was enabled.
+- The production smoke portion passed 15/15 checks. The 100-user run passed all 17,664 functional checks with a 0% request failure rate, but the previous deployment missed the strict catalog p95 target (`2.48s` vs `1.2s`) and reader p95 target (`2.24s` vs `1.8s`).
+- Do not relax those latency targets and do not use the failed old-deployment run as evidence for the new commit. Remove the `push` trigger, keep manual dispatch, and run the unchanged test only after Railway reports the target commit as `SUCCESS`.
