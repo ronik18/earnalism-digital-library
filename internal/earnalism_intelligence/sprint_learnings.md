@@ -581,3 +581,4 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Public controlled readers must resolve book access metadata, chapter versions, and chapter bodies from the same canonical artifact. A stale database copy may be used only as a fail-safe when the controlled artifact is unavailable; admin preview remains database-first.
 - Incrementing the reader truth-gate cache namespace is required whenever source precedence changes, otherwise Redis may continue serving the old body for up to the chapter cache TTL.
 - Focused reader and audio-truth coverage passed 31/31. The change does not alter audiobook approval, QA, storage, metadata, or public Listen state.
+- Preview response caches must include the resolved content version in their key. Caching only by slug and chapter lets an unversioned request seed a fallback-version response that is later reused for a manifest-versioned request, even when the body itself is canonical.
