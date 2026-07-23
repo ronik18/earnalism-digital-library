@@ -19,7 +19,14 @@ class PaidStageRunnerTests(unittest.TestCase):
         self.lock = self.root / "paid_tts.lock"
         self.original = (
             json.dumps(
-                {"lock": "paid_tts", "status": "active", "current_holder": "none", "allowed_next_holders": []},
+                {
+                    "lock": "paid_tts",
+                    "status": "active",
+                    "current_holder": "none",
+                    "allowed_next_holders": [],
+                    "allowed_slugs": ["test-slug"],
+                    "approved_scope": "one bounded test call",
+                },
                 indent=2,
             )
             + "\n"
@@ -103,6 +110,17 @@ class PaidStageRunnerTests(unittest.TestCase):
         returncode, report = runner.run_paid_stage(self.args(), env=self.env)
         self.assertEqual(returncode, 2)
         self.assertIn("allowed_next_holders", " ".join(report["blockers"]))
+        run.assert_not_called()
+
+    @mock.patch.object(runner.subprocess, "run")
+    def test_slug_scope_mismatch_blocks_before_subprocess(self, run: mock.Mock) -> None:
+        payload = json.loads(self.original)
+        payload["allowed_slugs"] = ["different-slug"]
+        self.lock.write_text(json.dumps(payload, indent=2) + "\n")
+        returncode, report = runner.run_paid_stage(self.args(), env=self.env)
+        self.assertEqual(returncode, 2)
+        self.assertFalse(report["provider_command_started"])
+        self.assertIn("slug scope mismatch", " ".join(report["blockers"]))
         run.assert_not_called()
 
 

@@ -433,7 +433,7 @@ async def _expensive_job_slot(job_type: str):
 # older published records, but the public launch surface must expose only the
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
-CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "preview-parity-v9"
+CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v10"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
@@ -1261,6 +1261,25 @@ def _is_controlled_public_slug(slug: str) -> bool:
 
 def _public_projection_is_live(projected: Optional[dict]) -> bool:
     preview_enabled = projected.get("preview_enabled") if projected else None
+    audio_enabled = projected.get("audio_enabled") if projected else None
+    audio_url = str(projected.get("audio_url") or "") if projected else ""
+    audio_status = str(projected.get("audio_status") or "") if projected else ""
+    audio_release_gate = str(projected.get("audiobook_release_gate") or "") if projected else ""
+    audio_qa_status = str(projected.get("audio_qa_status") or "").upper() if projected else ""
+    audio_contract_is_consistent = bool(
+        isinstance(audio_enabled, bool)
+        and projected.get("audiobook_enabled") is audio_enabled
+        and bool(audio_url) is audio_enabled
+        and audio_status == ("AVAILABLE" if audio_enabled else "NOT_AVAILABLE")
+        and (
+            (
+                audio_release_gate == "APPROVED"
+                and audio_qa_status in {"APPROVED", "PASS", "PASSED", "QA_PASSED"}
+            )
+            if audio_enabled
+            else not audio_release_gate and not audio_qa_status
+        )
+    )
     return bool(
         projected
         and projected.get("slug") in CONTROLLED_LIVE_BOOK_SLUGS
@@ -1268,8 +1287,7 @@ def _public_projection_is_live(projected: Optional[dict]) -> bool:
         and projected.get("reader_enabled") is True
         and isinstance(preview_enabled, bool)
         and bool(projected.get("preview_url")) is preview_enabled
-        and projected.get("audio_enabled") is False
-        and projected.get("audiobook_enabled") is False
+        and audio_contract_is_consistent
     )
 
 
@@ -2656,6 +2674,8 @@ class PublicBookOut(BaseModel):
     preview_url: str = ""
     audio_url: str = ""
     audio_status: str = ""
+    audiobook_release_gate: str = ""
+    audio_qa_status: str = ""
     cta_label: str = ""
     secondary_cta_label: str = ""
     public_json_ld_enabled: bool = False

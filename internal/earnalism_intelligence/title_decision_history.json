@@ -302,12 +302,12 @@
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
     },
     "book-2b9853ec52": {
-      "latest_decision": "BENGALI_AUDIOBOOK_LIVE_STABILIZATION_SOURCE_PATCH_READY",
-      "decision_reason": "Pilot remains live; frontend detail page source now consumes reader-manifest audio evidence and removes stale held-for-QA copy.",
-      "updated_at": "2026-07-07T12:30:00Z",
+      "latest_decision": "LIVE_AUDIO_PUBLIC_CONTRACT_RECONCILIATION_SOURCE_PATCH_READY",
+      "decision_reason": "The approved pilot remains live, but the public book-detail projection still forced audio booleans false while the gated reader manifest exposed approved audio. The source patch now derives both contracts from the same controlled allowlist plus release and QA evidence without exposing raw storage URLs.",
+      "updated_at": "2026-07-23T07:02:00Z",
       "language": "ben",
       "bengali_audio_lane_status": "BENGALI_AUDIOBOOK_LIVE",
-      "audiobook_next_action": "Do not rerun this pilot. Prepare the 3-title Bengali canary only after owner approval.",
+      "audiobook_next_action": "Deploy the source-only contract patch, verify the public book detail and reader manifest agree, and do not regenerate this pilot.",
       "latest_audio_evidence_path": "book_2b9853ec52_goliveevidence.json",
       "bengali_audiobook_campaign_state": "BENGALI_AUDIOBOOK_LIVE",
       "bengali_audiobook_campaign_next_action": "Recommend, but do not start, the next 3-title canary.",
@@ -352,7 +352,14 @@
       "audiobook_endpoint_status": 200,
       "public_book_status": 200,
       "reader_manifest_status": 200,
-      "next_action": "Deploy/merge source copy fix; do not regenerate audio."
+      "next_action": "Run the focused public-audio contract tests in the deploy runtime, deploy from approved source, then verify book-2b9853ec52 reports approved proxy-backed audio while bn-066 and radharani remain audio-hidden.",
+      "public_contract_fix": {
+        "status": "SOURCE_PATCH_READY_NOT_DEPLOYED",
+        "book_detail_before": "HTTP_200_AUDIO_FALSE_NOT_AVAILABLE",
+        "reader_manifest_before": "HTTP_200_AUDIO_TRUE_APPROVED_QA_PASSED",
+        "expected_after_deploy": "BOTH_CONTRACTS_AUDIO_TRUE_APPROVED_QA_PASSED_PROXY_ONLY",
+        "hidden_title_policy": "UNCHANGED_FAIL_CLOSED"
+      }
     },
     "book-4968248842": {
       "latest_decision": "BENGALI_READER_ONLY_LIVE_AUDIO_HIDDEN",
@@ -439,14 +446,14 @@
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass"
     },
     "nishkriti": {
-      "latest_decision": "CANONICAL_PASSAGES_PERSISTED_OPENAI_LISTENING_JUDGE_QUOTA_BLOCKED",
-      "decision_reason": "The canonical nine-chapter resolver now persists four source-bound passages. A lock-serialized one-second gpt-audio availability probe reached OpenAI but returned 429 insufficient_quota, so no synthesis or audition ran.",
-      "updated_at": "2026-07-22T20:24:04Z",
+      "latest_decision": "GEMINI_TTS_ADAPTER_READY_ADC_REAUTH_REQUIRED",
+      "decision_reason": "The canonical four-passage Nishkriti audition is now supported by an opt-in, source-bound Gemini-TTS adapter and a Vertex listening-judge route. Configuration-only validation detected the Google project and authorized-user ADC, but the ADC still requires interactive reauthentication; no synthesis or listening judgment ran.",
+      "updated_at": "2026-07-23T07:24:06Z",
       "language": "ben",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "Restore a release-valid listening judge, then run one bounded source-bound Nishkriti representative audition. Do not reuse or publish the retained unbound Azure-era audio.",
-      "bengali_audiobook_campaign_state": "PASSAGES_READY_OPENAI_LISTENING_QA_INSUFFICIENT_QUOTA",
-      "bengali_audiobook_campaign_next_action": "Restore OpenAI listening-QA billing/quota or approve a different independent audio judge, then use the four canonical passage hashes for one bounded audition.",
+      "audiobook_next_action": "Run `gcloud auth application-default login --project=earnalism`, validate ADC refresh without synthesis, then run exactly one lock-serialized four-passage Gemini-TTS/Vertex audition. Do not generate the full title, upload, or publish from representative evidence.",
+      "bengali_audiobook_campaign_state": "PASSAGES_READY_GEMINI_ADAPTER_READY_ADC_REAUTH_REQUIRED",
+      "bengali_audiobook_campaign_next_action": "Repair Google ADC interactively, re-read the campaign ledger and paid lock, then use the persisted four passage hashes for one bounded Gemini-TTS audition with independent Vertex listening QA.",
       "bengali_audiobook_policy": "bengali_audiobook_acceptance_v2_92",
       "bengali_audiobook_release_gate": "not_approved_until_full_objective_gates_pass",
       "storage_bypass_status": "SPRINT1_STORAGE_BYPASS_CONTAINED",
@@ -466,7 +473,11 @@
       "listening_probe_status": "OPENAI_GPT_AUDIO_429_INSUFFICIENT_QUOTA",
       "listening_probe_reserved_estimate_usd": 0.01,
       "passage_artifact": "internal/audiobook_lab/sprint1_publication/next_two_audio_fastpath/nishkriti_representative_audition/bakeoff_passages.json",
-      "passage_artifact_sha256": "d20e5116cb3607076b83c220fdf90e387ff31a6ff73e3086796c855237a59883"
+      "passage_artifact_sha256": "d20e5116cb3607076b83c220fdf90e387ff31a6ff73e3086796c855237a59883",
+      "gemini_tts_adapter": "internal/audiobook_lab/scripts/providers/google_gemini_tts_adapter.py",
+      "gemini_tts_provider_calls_ran": false,
+      "google_adc_status": "AUTHORIZED_USER_DETECTED_INVALID_RAPT_REAUTH_REQUIRED",
+      "public_release_status": "AUDIO_HIDDEN_NO_RELEASE_GATE_CHANGE"
     },
     "radharani": {
       "latest_decision": "RADHARANI_SAARAS_STRICT_RAW_ASR_EXACT_CONTENT_AND_SYNC_NO_GO",
@@ -1118,12 +1129,13 @@
       "audiobook_next_action": "keep_audio_hidden_until_new_provider_model_human_or_licensed_audio_evidence"
     },
     "devdas": {
-      "latest_decision": "READY_FOR_REPRESENTATIVE_AUDITION_CAMPAIGN_POLICY_GATE_REQUIRED",
-      "decision_reason": "Public-domain provenance, source, sanitation, and audited graphical cover preflight now pass; no paid call or audio release occurred.",
-      "updated_at": "2026-07-13T07:30:39Z",
+      "latest_decision": "AUDIO_AUDITION_BLOCKED_INVALID_EXISTING_BACK_COVER",
+      "decision_reason": "The retained Devdas front cover is generic and the matching back cover contains overlapping, unreadable Bengali text. Cover truth remains a hard release prerequisite, so no audition, audio release, or metadata promotion is authorized.",
+      "updated_at": "2026-07-23T06:45:55Z",
       "language": "bn",
       "bengali_audio_lane_status": "AUDIO_PROVIDER_QUALITY_LIMIT_CONFIRMED",
-      "audiobook_next_action": "run a source-bound representative audition after the Bengali pilot and campaign-specific paid gates open"
+      "audiobook_next_action": "Obtain an owner-approved, legible, graphical matched front/back cover pair and rerun the cover audit before any source-bound representative audition.",
+      "cover_gate_status": "BLOCKED_BACK_COVER_TEXT_OVERLAP_AND_READABILITY_FAILURE"
     },
     "pather-panchali": {
       "latest_decision": "OWNER_DOCUMENT_REQUIRED",
@@ -1329,9 +1341,9 @@
       "audiobook_next_action": "Do not repeat af_sarah or normalize the remaining content mismatches. Validate received source-bound narration or use a genuinely different voice/provider before any listening or full release QA."
     },
     "the-monkeys-paw": {
-      "latest_decision": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED_AFTER_FULL_QA_REPAIR_FAILED",
-      "decision_reason": "Chirp3-HD-Achird passed representative QA and raw ASR, but the full candidate and one bounded ending repair both failed the all-samples listening gate",
-      "updated_at": "2026-07-13T06:30:06Z",
+      "latest_decision": "RETAINED_PRIVATE_CANDIDATE_HASH_BINDING_PREFLIGHT_READY",
+      "decision_reason": "The repaired candidate remains blocked from release, but an immutable retained private B2 object is now bound in a network-free preflight to its exact expected SHA-256 and source evidence. Authorized private retrieval must prove the downloaded bytes match before any fresh QA; filename and title matching remain insufficient.",
+      "updated_at": "2026-07-23T07:16:29Z",
       "language": "en",
       "public_reader_status": "PUBLIC_READER",
       "public_audio_status": "AUDIO_HIDDEN_NOT_APPROVED",
@@ -1345,7 +1357,14 @@
       "repaired_listening_scores": [9.4, 8.4, 9.4, 8.4, 9.4, 9.4],
       "completed_attempts_must_not_repeat": true,
       "human_narration_packet": "internal/audiobook_lab/sprint1_publication/human_narration_packets/the-monkeys-paw/metadata.json",
-      "audiobook_next_action": "Validate received source-bound narration or licensed audio against the packet before full release QA."
+      "audiobook_next_action": "Inject the private B2 credentials, execute the plan-bound private hash binder, and proceed only if the downloaded object exactly matches `6b2c7f189bec2c175bb940cdaa218313801ca70bf6025408f0a703205418afa8`; then run fresh full release QA without exposing the object.",
+      "private_media_binding_preflight": {
+        "status": "READY_FOR_AUTHORIZED_PRIVATE_DOWNLOAD",
+        "plan_sha256": "9157f9ac0940b553225019eb0a1780f1c195f0edf5a701be5578aec140bf0a0e",
+        "expected_audio_sha256": "6b2c7f189bec2c175bb940cdaa218313801ca70bf6025408f0a703205418afa8",
+        "network_call_performed": false,
+        "publication_performed": false
+      }
     },
     "the-yellow-wallpaper": {
       "latest_decision": "HUMAN_NARRATION_OR_LICENSED_AUDIO_IMPORT_REQUIRED",

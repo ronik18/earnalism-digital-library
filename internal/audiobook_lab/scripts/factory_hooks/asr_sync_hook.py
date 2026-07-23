@@ -8,6 +8,9 @@ import shlex
 import subprocess
 import sys
 import base64
+import urllib.error
+import urllib.parse
+import urllib.request
 from difflib import SequenceMatcher
 from pathlib import Path
 
@@ -1618,25 +1621,70 @@ def judge_audio_sample_with_openai(client, args, sample: dict) -> dict:
         "fallback/system/browser TTS, or source frontmatter. The work is "
         f"{args.title} by {args.author}; preserve a literary audiobook listener perspective."
     )
-    try:
-        response = client.chat.completions.create(
-            model=OPENAI_LISTENING_QA_MODEL,
-            messages=[
-                {
-                    "role": "user",
-                    "content": [
-                        {"type": "text", "text": prompt},
-                        {"type": "input_audio", "input_audio": {"data": audio_b64, "format": "mp3"}},
-                    ],
-                }
+    messages = [
+        {
+            "role": "user",
+            "content": [
+                {"type": "text", "text": prompt},
+                {"type": "input_audio", "input_audio": {"data": audio_b64, "format": "mp3"}},
             ],
-            tools=[tool],
-            tool_choice={"type": "function", "function": {"name": "record_listening_quality"}},
-            temperature=0,
-            max_completion_tokens=500,
-        )
-        message = response.choices[0].message
-        arguments = message.tool_calls[0].function.arguments if message.tool_calls else ""
+        }
+    ]
+    tool_choice = {"type": "function", "function": {"name": "record_listening_quality"}}
+    try:
+        if client is not None:
+            response = client.chat.completions.create(
+                model=OPENAI_LISTENING_QA_MODEL,
+                messages=messages,
+                tools=[tool],
+                tool_choice=tool_choice,
+                temperature=0,
+                max_completion_tokens=500,
+            )
+            message = response.choices[0].message
+            arguments = message.tool_calls[0].function.arguments if message.tool_calls else ""
+        else:
+            api_key = os.environ.get("OPENAI_API_KEY", "")
+            if not api_key:
+                raise RuntimeError("OPENAI_API_KEY missing")
+            base_url = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1").rstrip("/")
+            request_body = {
+                "model": OPENAI_LISTENING_QA_MODEL,
+                "messages": messages,
+                "tools": [tool],
+                "tool_choice": tool_choice,
+                "temperature": 0,
+                "max_completion_tokens": 500,
+            }
+            request = urllib.request.Request(
+                f"{base_url}/chat/completions",
+                data=json.dumps(request_body).encode("utf-8"),
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
+                },
+                method="POST",
+            )
+            timeout_seconds = float(os.environ.get("EARNALISM_OPENAI_HTTP_TIMEOUT_SECONDS", "180"))
+            try:
+                with urllib.request.urlopen(request, timeout=timeout_seconds) as response:
+                    response_payload = json.loads(response.read().decode("utf-8"))
+            except urllib.error.HTTPError as exc:
+                error_payload = {}
+                try:
+                    error_payload = json.loads(exc.read().decode("utf-8", errors="replace"))
+                except (json.JSONDecodeError, UnicodeDecodeError):
+                    pass
+                error = error_payload.get("error") if isinstance(error_payload, dict) else {}
+                if not isinstance(error, dict):
+                    error = {}
+                error_code = str(error.get("code") or "")
+                error_type = str(error.get("type") or "")
+                raise RuntimeError(
+                    f"OpenAI listening judge HTTP {exc.code}: code={error_code} type={error_type}"
+                ) from exc
+            tool_calls = response_payload["choices"][0]["message"].get("tool_calls") or []
+            arguments = tool_calls[0]["function"]["arguments"] if tool_calls else ""
         judgment = json.loads(arguments or "{}")
     except Exception as exc:  # noqa: BLE001
         return {
@@ -1660,26 +1708,214 @@ def judge_audio_sample_with_openai(client, args, sample: dict) -> dict:
     }
 
 
-def run_openai_listening_judge(args, audio_path: Path, run_dir: Path, samples: list[dict], audio_hash: str) -> dict | None:
-    if os.environ.get("EARNALISM_ENABLE_OPENAI_LISTENING_QA", "").strip().lower() not in {"1", "true", "yes"}:
-        return None
-    if not os.environ.get("OPENAI_API_KEY"):
-        return {"_external_judge_error": "LISTENING_QA_NOT_RUN: OPENAI_API_KEY missing; OpenAI listening QA cannot run."}
-    budget_guard = openai_listening_qa_budget_guard(
-        sample_count=len(samples) or 1,
-        prior_estimated_usd=safe_float(os.environ.get("EARNALISM_PRIOR_ESTIMATED_SPEND_USD")),
+def _google_adc_access_token() -> str:
+    credentials_value = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS", "")
+    credentials_path = Path(credentials_value) if credentials_value else None
+    if credentials_path is None or not credentials_path.is_file():
+        raise RuntimeError("GOOGLE_APPLICATION_CREDENTIALS missing or unreadable")
+    credentials = json.loads(credentials_path.read_text(encoding="utf-8"))
+    if credentials.get("type") != "authorized_user":
+        raise RuntimeError("Vertex listening judge currently requires authorized_user ADC")
+    token_body = urllib.parse.urlencode(
+        {
+            "client_id": credentials.get("client_id", ""),
+            "client_secret": credentials.get("client_secret", ""),
+            "refresh_token": credentials.get("refresh_token", ""),
+            "grant_type": "refresh_token",
+        }
+    ).encode("utf-8")
+    token_request = urllib.request.Request(
+        credentials.get("token_uri") or "https://oauth2.googleapis.com/token",
+        data=token_body,
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
+        method="POST",
     )
+    timeout_seconds = float(os.environ.get("EARNALISM_VERTEX_HTTP_TIMEOUT_SECONDS", "180"))
+    with urllib.request.urlopen(token_request, timeout=timeout_seconds) as response:
+        token_payload = json.loads(response.read().decode("utf-8"))
+    access_token = str(token_payload.get("access_token") or "")
+    if not access_token:
+        raise RuntimeError("Vertex ADC refresh returned no access token")
+    return access_token
+
+
+def judge_audio_sample_with_vertex(args, sample: dict) -> dict:
+    sample_path = resolve_artifact(sample.get("sample_audio_path", ""), ROOT)
+    if not sample_path.exists() or sample_path.stat().st_size <= 0:
+        return {
+            **sample,
+            "scores": {},
+            "confidence": 0.0,
+            "notes": "sample audio missing for Vertex listening judge",
+            "blocker_reason": "LISTENING_QA_SAMPLE_MISSING",
+        }
+    audio_b64 = base64.b64encode(sample_path.read_bytes()).decode("ascii")
+    language_label = "English" if (args.language or "").lower().startswith("eng") else args.language
+    prompt = (
+        f"Evaluate this {language_label} audiobook sample for premium Earnalism public release. "
+        "Return strict JSON matching the supplied schema. Scores are 0 to 10 except confidence_score, which is 0 to 1. "
+        "A release score of 9.2 or higher requires natural literary warmth, accurate pronunciation, expressive but "
+        "restrained delivery, pleasant pacing, and no robotic or mechanical texture. Penalize flat narration, rushed "
+        "pacing, list-reading rhythm, poor pronunciation, bad punctuation pauses, choppy joins, glitches, clipping, "
+        "dead silence, fallback/system/browser TTS, source frontmatter, or placeholder audio. "
+        f"The work is {args.title} by {args.author}."
+    )
+    numeric_fields = [field for field in LISTENING_THRESHOLDS if field != "confidence_score"]
+    properties = {field: {"type": "NUMBER"} for field in numeric_fields}
+    properties["confidence_score"] = {"type": "NUMBER"}
+    properties.update({field: {"type": "BOOLEAN"} for field in BINARY_LISTENING_FLAGS})
+    properties.update(
+        {
+            "frontmatter_present": {"type": "BOOLEAN"},
+            "notes": {"type": "STRING"},
+            "blocker_reason": {"type": "STRING"},
+        }
+    )
+    model = os.environ.get("EARNALISM_VERTEX_LISTENING_QA_MODEL", "gemini-2.5-flash")
+    project = os.environ.get("GOOGLE_CLOUD_PROJECT") or os.environ.get("GOOGLE_TTS_PROJECT") or ""
+    location = os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1")
+    if not project:
+        return {
+            **sample,
+            "scores": {},
+            "confidence": 0.0,
+            "notes": "GOOGLE_CLOUD_PROJECT missing for Vertex listening judge",
+            "blocker_reason": "LISTENING_QA_NOT_RUN",
+        }
+    body = {
+        "contents": [
+            {
+                "role": "user",
+                "parts": [
+                    {"text": prompt},
+                    {"inlineData": {"mimeType": "audio/mpeg", "data": audio_b64}},
+                ],
+            }
+        ],
+        "generationConfig": {
+            "temperature": 0,
+            "responseMimeType": "application/json",
+            "responseSchema": {
+                "type": "OBJECT",
+                "properties": properties,
+                "required": list(properties),
+            },
+        },
+    }
+    try:
+        access_token = _google_adc_access_token()
+        endpoint = (
+            f"https://{location}-aiplatform.googleapis.com/v1/projects/{project}/locations/{location}"
+            f"/publishers/google/models/{model}:generateContent"
+        )
+        request = urllib.request.Request(
+            endpoint,
+            data=json.dumps(body).encode("utf-8"),
+            headers={
+                "Authorization": f"Bearer {access_token}",
+                "Content-Type": "application/json",
+            },
+            method="POST",
+        )
+        timeout_seconds = float(os.environ.get("EARNALISM_VERTEX_HTTP_TIMEOUT_SECONDS", "180"))
+        with urllib.request.urlopen(request, timeout=timeout_seconds) as response:
+            response_payload = json.loads(response.read().decode("utf-8"))
+        text = response_payload["candidates"][0]["content"]["parts"][0]["text"]
+        judgment = json.loads(text)
+    except urllib.error.HTTPError as exc:
+        error_code = ""
+        error_message = ""
+        try:
+            error_payload = json.loads(exc.read().decode("utf-8", errors="replace"))
+            error = error_payload.get("error") if isinstance(error_payload, dict) else {}
+            if isinstance(error, dict):
+                error_code = str(error.get("status") or error.get("code") or "")
+                error_message = str(error.get("message") or "")[:400]
+            elif isinstance(error, str):
+                error_code = error
+                error_message = str(error_payload.get("error_description") or "")[:400]
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            pass
+        return {
+            **sample,
+            "scores": {},
+            "confidence": 0.0,
+            "notes": f"Vertex listening judge HTTP {exc.code}: code={error_code} message={error_message}",
+            "blocker_reason": "LISTENING_QA_NOT_RUN",
+        }
+    except Exception as exc:  # noqa: BLE001
+        return {
+            **sample,
+            "scores": {},
+            "confidence": 0.0,
+            "notes": f"Vertex listening judge failed: {exc}",
+            "blocker_reason": "LISTENING_QA_NOT_RUN",
+        }
+    if safe_float(judgment.get("confidence_score"), 0.0) > 1.0:
+        judgment["confidence_score"] = round(safe_float(judgment.get("confidence_score")) / 10.0, 4)
+    return {
+        **sample,
+        "scores": {field: safe_float(judgment.get(field), 0.0) for field in LISTENING_THRESHOLDS},
+        "confidence": safe_float(judgment.get("confidence_score"), 0.0),
+        "notes": str(judgment.get("notes") or ""),
+        "blocker_reason": str(judgment.get("blocker_reason") or ""),
+        "judge_flags": {field: bool(judgment.get(field)) for field in BINARY_LISTENING_FLAGS},
+        "frontmatter_present": bool(judgment.get("frontmatter_present")),
+        "raw_judgment": judgment,
+        "judge_provider": "vertex",
+        "judge_model": model,
+    }
+
+
+def run_openai_listening_judge(args, audio_path: Path, run_dir: Path, samples: list[dict], audio_hash: str) -> dict | None:
+    provider = os.environ.get("EARNALISM_LISTENING_QA_PROVIDER", "openai").strip().lower()
+    generic_enabled = os.environ.get("EARNALISM_ENABLE_LISTENING_QA", "").strip().lower() in {"1", "true", "yes"}
+    legacy_openai_enabled = os.environ.get("EARNALISM_ENABLE_OPENAI_LISTENING_QA", "").strip().lower() in {"1", "true", "yes"}
+    if not generic_enabled and not legacy_openai_enabled:
+        return None
+    if provider == "openai" and not os.environ.get("OPENAI_API_KEY"):
+        return {"_external_judge_error": "LISTENING_QA_NOT_RUN: OPENAI_API_KEY missing; OpenAI listening QA cannot run."}
+    if provider == "vertex" and not (
+        os.environ.get("GOOGLE_APPLICATION_CREDENTIALS") and os.environ.get("GOOGLE_CLOUD_PROJECT")
+    ):
+        return {
+            "_external_judge_error": "LISTENING_QA_NOT_RUN: Vertex ADC/project credentials are missing."
+        }
+    if provider == "vertex":
+        sample_count = len(samples) or 1
+        per_sample = safe_float(os.environ.get("EARNALISM_VERTEX_LISTENING_QA_ESTIMATED_USD"), 0.0)
+        cap_raw = os.environ.get("EARNALISM_VERTEX_LISTENING_QA_MAX_ESTIMATED_USD")
+        if not cap_raw or per_sample <= 0:
+            return {
+                "_external_judge_error": "LISTENING_QA_BUDGET_GATE_MISSING: Vertex listening-QA cost estimate and cap are required."
+            }
+        estimated = round(sample_count * per_sample, 6)
+        cap = safe_float(cap_raw, 0.0)
+        budget_guard = {
+            "ok": cap > 0 and estimated <= cap,
+            "code": "" if cap > 0 and estimated <= cap else "LISTENING_QA_BUDGET_EXCEEDED",
+            "blocker": "" if cap > 0 and estimated <= cap else "LISTENING_QA_BUDGET_EXCEEDED",
+            "estimated_qa_cost_usd": estimated,
+            "qa_cap_usd": cap,
+        }
+    else:
+        budget_guard = openai_listening_qa_budget_guard(
+            sample_count=len(samples) or 1,
+            prior_estimated_usd=safe_float(os.environ.get("EARNALISM_PRIOR_ESTIMATED_SPEND_USD")),
+        )
     if not budget_guard.get("ok"):
         return {
             "_external_judge_error": budget_guard.get("blocker", "LISTENING_QA_BUDGET_BLOCKED"),
             "listening_qa_budget_guard": budget_guard,
         }
-    try:
-        from openai import OpenAI
-    except Exception as exc:  # noqa: BLE001
-        return {"_external_judge_error": f"LISTENING_QA_NOT_RUN: OpenAI SDK import failed for listening QA: {exc}"}
-    client = OpenAI()
-    judged_samples = [judge_audio_sample_with_openai(client, args, sample) for sample in samples]
+    judged_samples = [
+        (
+            judge_audio_sample_with_vertex(args, sample)
+            if provider == "vertex"
+            else judge_audio_sample_with_openai(None, args, sample)
+        )
+        for sample in samples
+    ]
     aggregate: dict[str, float] = {}
     for field in LISTENING_THRESHOLDS:
         values = [safe_float((sample.get("scores") or {}).get(field), 0.0) for sample in judged_samples]
@@ -1702,7 +1938,11 @@ def run_openai_listening_judge(args, audio_path: Path, run_dir: Path, samples: l
         judged_samples,
         status="PASS",
         blockers=blockers,
-        model_or_judge=f"openai:{OPENAI_LISTENING_QA_MODEL}",
+        model_or_judge=(
+            f"vertex:{os.environ.get('EARNALISM_VERTEX_LISTENING_QA_MODEL', 'gemini-2.5-flash')}"
+            if provider == "vertex"
+            else f"openai:{OPENAI_LISTENING_QA_MODEL}"
+        ),
     )
     listening = report["listening_quality"]
     listening["aggregate"] = aggregate
