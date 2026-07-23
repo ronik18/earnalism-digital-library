@@ -446,7 +446,13 @@ def safe_field_issues(endpoint: str, payload: Any) -> list[str]:
     ]
 
 
-def verify_live_detail_payload(endpoint: str, payload: Any, slug: str) -> list[str]:
+def verify_live_detail_payload(
+    endpoint: str,
+    payload: Any,
+    slug: str,
+    *,
+    audio_allowed: bool = False,
+) -> list[str]:
     normalized = normalize_slug(slug)
     issues = safe_field_issues(endpoint, payload)
     if not isinstance(payload, dict):
@@ -459,23 +465,31 @@ def verify_live_detail_payload(endpoint: str, payload: Any, slug: str) -> list[s
         "launch_status": PUBLIC_STATUS_LIVE_APPROVED,
         "reader_enabled": True,
         "preview_enabled": preview_enabled,
-        "audio_enabled": False,
-        "audiobook_enabled": False,
+        "audio_enabled": audio_allowed,
+        "audiobook_enabled": audio_allowed,
         "public_route": f"/book/{normalized}",
         "reader_url": f"/reader/{normalized}",
         "preview_url": f"/reader/{normalized}" if preview_enabled else "",
-        "audio_url": "",
+        "audio_url": f"/api/reader/book/{normalized}/audiobook" if audio_allowed else "",
         "public_json_ld_enabled": True,
     }
     for key, expected in expected_values.items():
         if payload.get(key) != expected:
             issues.append(f"{endpoint} {key} is {payload.get(key)!r}; expected {expected!r}")
 
-    if payload.get("audio_status") not in {"NOT_AVAILABLE", "DISABLED"}:
+    expected_audio_statuses = {"AVAILABLE"} if audio_allowed else {"NOT_AVAILABLE", "DISABLED"}
+    if payload.get("audio_status") not in expected_audio_statuses:
         issues.append(
             f"{endpoint} audio_status is {payload.get('audio_status')!r}; "
-            "expected 'NOT_AVAILABLE' or 'DISABLED'"
+            f"expected {sorted(expected_audio_statuses)!r}"
         )
+    if audio_allowed:
+        if payload.get("audiobook_release_gate") != "APPROVED":
+            issues.append(f"{endpoint} audiobook_release_gate is not 'APPROVED'")
+        if normalize_upper(payload.get("audio_qa_status")) not in {"APPROVED", "PASS", "PASSED", "QA_PASSED"}:
+            issues.append(f"{endpoint} audio_qa_status is not release-approved")
+    elif payload.get("audiobook_release_gate") or payload.get("audio_qa_status"):
+        issues.append(f"{endpoint} exposes audio approval fields for an audio-hidden title")
     if not normalize_text(payload.get("source_note")):
         issues.append(f"{endpoint} is missing a safe source_note")
     if not normalize_text(payload.get("rights_note")):
@@ -588,7 +602,14 @@ def verify_live_manifest_payload(endpoint: str, payload: Any, slug: str, *, audi
         book_preview_ids = set(explicit_preview_chapter_ids(book))
         if manifest_preview_ids != book_preview_ids:
             issues.append(f"{endpoint} preview chapters do not match its projected book")
-        issues.extend(verify_live_detail_payload(f"{endpoint}.book", book, slug))
+        issues.extend(
+            verify_live_detail_payload(
+                f"{endpoint}.book",
+                book,
+                slug,
+                audio_allowed=audio_allowed,
+            )
+        )
     return issues
 
 
@@ -650,7 +671,14 @@ def verify_api_audit(
         if endpoints[detail_path].status != 200:
             blockers.append(f"{detail_path} did not return 200")
         elif slug != LIVE_APPROVED_SLUG:
-            blockers.extend(verify_live_detail_payload(detail_path, endpoints[detail_path].json_data, slug))
+            blockers.extend(
+                verify_live_detail_payload(
+                    detail_path,
+                    endpoints[detail_path].json_data,
+                    slug,
+                    audio_allowed=slug in audio_enabled_slugs,
+                )
+            )
 
         manifest_path = f"/reader/book/{slug}/manifest"
         if manifest_path not in endpoints:

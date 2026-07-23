@@ -553,9 +553,26 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
     if public_book.get("allowCheckout") is not False or public_book.get("allowPayment") is not False:
         issues.append("public_book.json checkout/payment flags must remain false.")
     audio_allowed = normalized in AUDIO_ENABLED_SLUGS
-    if not audio_allowed and (public_book.get("audio_enabled") is not False or public_book.get("audiobook_enabled") is not False):
-        issues.append("public_book.json audio flags are not disabled.")
-    if audio_allowed:
+    audio_approved = bool(
+        audio_allowed
+        and approval_evidence.get("audiobook_enabled") is True
+        and normalize_upper(
+            approval_evidence.get("audio_public_release")
+            or approval_evidence.get("public_audio_release")
+        )
+        in PUBLIC_AUDIO_RELEASE_APPROVED_STATUSES
+        and normalize_upper(
+            approval_evidence.get("audio_qa_status")
+            or approval_evidence.get("qa_status")
+        )
+        in PUBLIC_AUDIO_QA_PASSED_STATUSES
+    )
+    if (
+        public_book.get("audio_enabled") is not audio_approved
+        or public_book.get("audiobook_enabled") is not audio_approved
+    ):
+        issues.append("public_book.json audio flags do not match controlled release approval.")
+    if audio_approved:
         assets = public_book.get("audiobook_assets") if isinstance(public_book.get("audiobook_assets"), dict) else {}
         if not assets.get("mp3") or not assets.get("timestamps"):
             issues.append("public_book.json audiobook assets are incomplete for an audio-enabled slug.")
@@ -567,8 +584,11 @@ def controlled_artifact_validation_issues(slug: str, artifact_dir: str = "") -> 
         issues.append("public_book.json qa_status is not QA_PASSED.")
     if int(reader_manifest.get("chapter_count") or 0) <= 0:
         issues.append("reader_manifest.json chapter_count must be greater than zero.")
-    if reader_manifest.get("audio_enabled") is not False or reader_manifest.get("audiobook_enabled") is not False:
-        issues.append("reader_manifest.json audio flags are not disabled.")
+    if (
+        reader_manifest.get("audio_enabled") is not audio_approved
+        or reader_manifest.get("audiobook_enabled") is not audio_approved
+    ):
+        issues.append("reader_manifest.json audio flags do not match controlled release approval.")
     manifest_preview_ids = {
         normalize_text(chapter_id)
         for chapter_id in (reader_manifest.get("preview_chapter_ids") or [])
@@ -844,19 +864,23 @@ def public_book_projection(book: dict[str, Any] | None) -> dict[str, Any] | None
     slug = normalize_slug(book.get("slug"))
     live = status == PUBLIC_STATUS_LIVE_APPROVED
     preview = live and can_expose_preview(book)
+    audio = live and can_expose_audio(book)
+    audio_status = "AVAILABLE" if audio else "NOT_AVAILABLE" if live else "BLOCKED_UNTIL_RIGHTS_QA"
     projected.update(
         {
             "publication_status": status,
             "launch_status": status,
             "reader_enabled": live,
             "preview_enabled": preview,
-            "audio_enabled": False,
-            "audiobook_enabled": False,
+            "audio_enabled": audio,
+            "audiobook_enabled": audio,
             "public_route": f"/book/{slug}" if live else "",
             "reader_url": f"/reader/{slug}" if live else "",
             "preview_url": f"/reader/{slug}" if preview else "",
-            "audio_url": "",
-            "audio_status": "NOT_AVAILABLE" if live else "BLOCKED_UNTIL_RIGHTS_QA",
+            "audio_url": f"/api/reader/book/{slug}/audiobook" if audio else "",
+            "audio_status": audio_status,
+            "audiobook_release_gate": "APPROVED" if audio else "",
+            "audio_qa_status": audio_release_qa_status(book) if audio else "",
             "cta_label": (
                 "Start Dracula"
                 if live and slug == LIVE_APPROVED_SLUG
@@ -918,6 +942,7 @@ def catalog_truth_row(book: dict[str, Any], *, sitemap_urls: set[str] | None = N
     status = normalize_book_publication_status(book)
     sitemap_urls = sitemap_urls or set()
     hashes = traceability_hashes(book)
+    audio = can_expose_audio(book)
     return {
         "slug": slug,
         "title": normalize_text(book.get("title")),
@@ -931,8 +956,8 @@ def catalog_truth_row(book: dict[str, Any], *, sitemap_urls: set[str] | None = N
         "approved_to_publish": approved_to_publish(book),
         "reader_enabled": can_expose_reader(book),
         "preview_enabled": can_expose_preview(book),
-        "audio_enabled": can_expose_audio(book),
-        "audiobook_enabled": False,
+        "audio_enabled": audio,
+        "audiobook_enabled": audio,
         "source_url_present": bool(first_text(book, "source_url", fallback_evidence=evidence_for_book(book))),
         "source_hash_present": bool(hashes["source_hash"]),
         "content_hash_present": bool(hashes["content_hash"]),
