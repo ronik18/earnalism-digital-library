@@ -22,6 +22,12 @@ describe("premium header navigation", () => {
   });
 
   test("keeps the reference header readable and geometrically stable", () => {
+    expect(styles).toContain("--premium-header-menu-size: calc(0.92rem + 2px);");
+    expect(styles).toContain("--premium-header-cta-size: calc(0.98rem + 2px);");
+    expect(styles).toContain("font-size: var(--premium-header-menu-size) !important;");
+    expect(styles).toContain("font-size: var(--premium-header-cta-size);");
+    expect(styles).toContain("calc(0.95vw + 2px)");
+    expect(styles).toContain(".premium-site-header #mobile-menu a");
     expect(styles).toContain("font-synthesis: none;");
     expect(styles).toContain("justify-content: flex-end;");
     expect(styles).toContain("min-height: 2.75rem;");
