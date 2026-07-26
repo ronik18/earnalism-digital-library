@@ -14,6 +14,7 @@ sys.path.insert(0, str(HOOK_DIR))
 from asr_sync_hook import (  # noqa: E402
     BENGALI_AUDIOBOOK_92_POLICY,
     BENGALI_PREMIUM_MVP_POLICY,
+    SPRINT1_AUDIOBOOK_90_POLICY,
     evaluate_listening_evidence,
     validate_bengali_mvp_hard_gates,
     validate_listening_quality_report,
@@ -161,6 +162,58 @@ def clean_flags() -> dict:
         "abrupt_tts_resets_detected": False,
         "placeholder_audio_detected": False,
     }
+
+
+def sprint1_90_scores() -> dict:
+    scores = bengali_92_scores()
+    scores["overall_listening_score"] = 9.0
+    return scores
+
+
+def assert_sprint1_90_policy_boundary_is_global_and_fail_closed() -> None:
+    for language in ("ben", "eng"):
+        valid, blockers, policy = evaluate_listening_evidence(
+            sprint1_90_scores(),
+            clean_flags(),
+            language=language,
+            release_policy=SPRINT1_AUDIOBOOK_90_POLICY,
+        )
+        assert valid, blockers
+        assert policy["name"] == SPRINT1_AUDIOBOOK_90_POLICY
+
+    below = sprint1_90_scores()
+    below["overall_listening_score"] = 8.99
+    valid, blockers, _ = evaluate_listening_evidence(
+        below,
+        clean_flags(),
+        language="eng",
+        release_policy=SPRINT1_AUDIOBOOK_90_POLICY,
+    )
+    assert not valid
+    assert any("overall_listening_score" in item for item in blockers), blockers
+
+    low_confidence = sprint1_90_scores()
+    low_confidence["confidence_score"] = 0.899
+    valid, blockers, _ = evaluate_listening_evidence(
+        low_confidence,
+        clean_flags(),
+        language="ben",
+        release_policy=SPRINT1_AUDIOBOOK_90_POLICY,
+    )
+    assert not valid
+    assert any("confidence_score" in item for item in blockers), blockers
+
+    for flag_name in clean_flags():
+        flags = clean_flags()
+        flags[flag_name] = True
+        valid, blockers, _ = evaluate_listening_evidence(
+            sprint1_90_scores(),
+            flags,
+            language="eng",
+            release_policy=SPRINT1_AUDIOBOOK_90_POLICY,
+        )
+        assert not valid
+        assert any(flag_name in item for item in blockers), blockers
 
 
 def assert_bengali_mvp_policy_passes_ratan_like_scores() -> None:
@@ -316,6 +369,7 @@ def main() -> int:
     assert_bengali_mvp_policy_fails_fatal_flags()
     assert_bengali_mvp_policy_does_not_apply_to_english()
     assert_bengali_92_policy_passes_only_clean_bengali()
+    assert_sprint1_90_policy_boundary_is_global_and_fail_closed()
     assert_bengali_mvp_hard_gates_fail_asr_and_fallback()
     assert_bengali_mvp_duplicate_passage_ids_can_pass()
     print("listening QA schema 3 regression checks PASS")

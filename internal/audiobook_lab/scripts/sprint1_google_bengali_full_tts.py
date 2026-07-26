@@ -34,6 +34,7 @@ LANGUAGE_CODE = "bn-IN"
 STYLE_PROFILE = "literary_warm_pacing"
 TEXT_PREP = "google_safe_tts_text_v1"
 SPEAKING_RATE = 0.94
+LISTENING_MINIMUM = 9.0
 DEFAULT_MAX_CHARS = 1400
 GOOGLE_MAX_INPUT_BYTES = 4500
 LOCK_REL = Path("internal/earnalism_intelligence/locks/paid_tts.lock")
@@ -411,8 +412,10 @@ def _representative_evidence_errors(config: RunConfig) -> tuple[list[str], str]:
     confidence = evidence.get("confidence", evidence.get("confidence_score", scores.get("confidence_score")))
     try:
         parsed_score = float(score)
-        if not math.isfinite(parsed_score) or parsed_score < 9.2:
-            errors.append("representative listening score must be at least 9.2")
+        if not math.isfinite(parsed_score) or parsed_score < LISTENING_MINIMUM:
+            errors.append(
+                f"representative listening score must be at least {LISTENING_MINIMUM:.1f}"
+            )
     except (TypeError, ValueError):
         errors.append("representative listening score is missing or invalid")
     try:
@@ -423,6 +426,7 @@ def _representative_evidence_errors(config: RunConfig) -> tuple[list[str], str]:
         errors.append("representative confidence is missing or invalid")
     status_pass = (
         str(evidence.get("status") or "").upper() == "PASS"
+        or evidence.get("representative_passed_9_0") is True
         or evidence.get("representative_passed_9_2") is True
     )
     if not status_pass:

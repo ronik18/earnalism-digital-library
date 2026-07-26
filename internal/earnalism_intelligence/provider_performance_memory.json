@@ -59,14 +59,14 @@
         "mechanical_cadence_detected"
       ],
       "automated_spend_paused": false,
-      "active_rescue_policy": "bengali_audiobook_acceptance_v2_92",
+      "active_rescue_policy": "sprint1_audiobook_acceptance_v3_90",
       "active_rescue_budget": {
         "representative_audition_max_estimated_usd": 15,
         "full_pilot_max_estimated_usd": 25,
         "broad_catalog_wave_allowed": false
       },
       "future_reopening_criteria": [
-        "new Bengali provider/model with representative audition evidence >=9.2 and confidence >=0.90 under bengali_audiobook_acceptance_v2_92",
+        "new Bengali provider/model with representative audition evidence >=9.0 and confidence >=0.90 under sprint1_audiobook_acceptance_v3_90",
         "human/professional narration workflow with representative audition pass",
         "licensed audiobook import with rights, provenance, ASR/manuscript match, and measured sync",
         "manually approved exceptional sample set that covers opening, dialogue, emotional, punctuation-heavy, and ending-style passages",
@@ -279,22 +279,22 @@
         "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_private_reuse_screen_v1.json"
       }
     },
-    "automated_audiobook_lane_status": "BENGALI_9_2_PATH_FOUND_PILOT_READY",
+    "automated_audiobook_lane_status": "SPRINT1_V3_90_PATH_ACTIVE_FULL_GATES_REQUIRED",
     "automated_audiobook_lane_paused_at": "2026-07-06T20:36:38Z",
     "automated_audiobook_lane_pause_reason": "OpenAI failed premium threshold; Sarvam bulbul:v3 pooja seed had isolated high samples but representative audition scored 7.9/confidence 0.85 with list-reading/mechanical cadence flags.",
     "automated_audiobook_lane_reopened_at": "2026-07-07T00:00:00Z",
-    "automated_audiobook_lane_reopen_reason": "Owner approved Bengali-specific 9.2 release threshold while preserving fatal-flag and objective release gates.",
+    "automated_audiobook_lane_reopen_reason": "Owner approved a Sprint 1 overall listening floor of 9.0 while preserving per-dimension, fatal-flag, objective, rights, sync, delivery, endpoint, and browser gates.",
     "automated_audiobook_lane_latest_result": "Radharani private full title remains hidden. Saaras diagnostic projection exceeded 9.7, but all raw calibration scores were below 9.7 and strict reanalysis found unexplained gaps in every sample. Both transcribe and verbatim returned segment-only timing. Nishkriti canonical passages are persisted; a lock-serialized OpenAI gpt-audio probe returned 429 insufficient_quota before synthesis.",
     "audiobook_completion_campaign": {
       "status": "RADHARANI_NO_GO_NISHKRITI_OPENAI_LISTENING_QA_QUOTA_BLOCKED",
-      "policy_version": "bengali_audiobook_acceptance_v2_92",
+      "policy_version": "sprint1_audiobook_acceptance_v3_90",
       "total_campaign_titles": 31,
       "published_bengali_audiobooks": 1,
       "sprint1_bengali_titles": 10,
       "sprint1_live_bengali_audiobooks": 1,
       "sprint1_hidden_bengali_audiobooks": 9,
       "sprint1_next_candidate": "nishkriti",
-      "titles_with_representative_gte_9_2": 1,
+      "titles_with_representative_gte_9_0": 1,
       "best_settings": {
         "provider": "sarvam",
         "model": "bulbul:v3",
@@ -340,7 +340,7 @@
         "platform_screen_pass": true,
         "owner_exact_10_pass": false,
         "exact_10_is_release_gate": false,
-        "active_listening_floor": 9.2,
+        "active_listening_floor": 9.0,
         "private_full_title_pilot_eligible": false,
         "full_title_generated": true,
         "full_title_generation_fingerprint": "c28f5c70373854feed9009c5cb4dd0789dd7c2d09a5451e71d7fa41723283039",

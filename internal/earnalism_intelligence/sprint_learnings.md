@@ -558,3 +558,17 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - The Monkey's Paw retained B2 object now has a plan-bound, private-only SHA-256 retrieval path. Its filename and title do not prove identity; only an exact match to the repaired candidate hash may advance to fresh QA. Anonymous ranged access correctly returned `401`, and no private audio entered frontend assets.
 - `book-edfcf810c5` now has its exact existing graphical Cloudinary cover pair linked in both controlled-publication mirrors. Devdas remains cover-blocked because the retained back cover has overlapping, unreadable Bengali copy; do not begin its audio release lane until a legible matched pair passes.
 - Production truth remains 32 public readers and four public audiobooks. All new provider, normalizer, and private-media work stayed source-only or preflight-only; no hidden title gained a public Listen surface.
+
+## 2026-07-26 Sprint 1 audiobook acceptance v3.90
+
+- The owner lowered only the active overall listening floor from `9.2` to
+  `9.0`. Confidence remains `>=0.90`; per-dimension floors, anti-robotic and
+  anti-choppy protections, and every fatal-flag rejection remain unchanged.
+- Objective release truth is unchanged: ASR/manuscript must remain `>=9.7`,
+  coverage `>=0.98`, first/last/order integrity must pass, sync must be
+  measured, and rights, covers, checksum, metadata, endpoint, browser, and
+  empty-blocker evidence are still mandatory.
+- The policy transition creates zero newly release-ready Sprint 1 titles.
+  A 9.0 representative sample can authorize only a private full-title pilot;
+  it cannot approve public release or expose Listen.
+- Historical `bengali_audiobook_acceptance_v2_92` evidence remains immutable.

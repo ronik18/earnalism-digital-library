@@ -44,7 +44,7 @@ Continue Bengali audiobook work from the saved campaign state:
 
 Non-negotiable Bengali audiobook release gates:
 
-- Listening score must be `>= 9.2`, confidence `>= 0.90`, with no fatal red flags.
+- Overall listening score must be `>= 9.0`, confidence `>= 0.90`, with no fatal red flags; existing per-dimension quality floors remain unchanged.
 - Fatal red flags are robotic texture, mechanical cadence, list-reading rhythm, choppy joins, and fallback TTS.
 - Objective gates remain strict: content/TOC, rights, covers, ASR/manuscript `>= 9.7`, first/last words, no missing/duplicated/reordered content, measured paragraph/stanza sync or better, no estimated sync, upload/checksum, metadata, endpoint, browser gate, and empty blocker list.
 

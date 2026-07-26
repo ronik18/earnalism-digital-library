@@ -57,6 +57,7 @@ REQUIRE_AUDIO_DERIVED_ASR_ENV = "EARNALISM_REQUIRE_AUDIO_DERIVED_ASR_9_7"
 UNIVERSAL_LISTENING_POLICY = "schema3_universal_9_7"
 BENGALI_PREMIUM_MVP_POLICY = "bengali_premium_mvp_v1"
 BENGALI_AUDIOBOOK_92_POLICY = "bengali_audiobook_acceptance_v2_92"
+SPRINT1_AUDIOBOOK_90_POLICY = "sprint1_audiobook_acceptance_v3_90"
 TIERED_AUDIOBOOK_ACCEPTANCE_POLICY = "tiered_audiobook_acceptance_v1"
 LISTENING_THRESHOLDS = {
     "naturalness_score": 9.7,
@@ -96,6 +97,10 @@ BENGALI_AUDIOBOOK_92_THRESHOLDS = {
     "listener_enjoyment_score": 8.9,
     "overall_listening_score": 9.2,
     "confidence_score": 0.90,
+}
+SPRINT1_AUDIOBOOK_90_THRESHOLDS = {
+    **BENGALI_AUDIOBOOK_92_THRESHOLDS,
+    "overall_listening_score": 9.0,
 }
 TIERED_AUDIOBOOK_ACCEPTANCE_THRESHOLDS = {
     "naturalness_score": 9.0,
@@ -356,6 +361,14 @@ def listening_policy_for(language: str, release_policy: str | None = None) -> di
             "allowed": True,
             "reason": "",
             "thresholds": BENGALI_AUDIOBOOK_92_THRESHOLDS,
+            "fatal_flags": BINARY_LISTENING_FLAGS,
+        }
+    if requested == SPRINT1_AUDIOBOOK_90_POLICY:
+        return {
+            "name": requested,
+            "allowed": True,
+            "reason": "",
+            "thresholds": SPRINT1_AUDIOBOOK_90_THRESHOLDS,
             "fatal_flags": BINARY_LISTENING_FLAGS,
         }
     if requested == TIERED_AUDIOBOOK_ACCEPTANCE_POLICY:
@@ -1754,7 +1767,7 @@ def judge_audio_sample_with_vertex(args, sample: dict) -> dict:
     prompt = (
         f"Evaluate this {language_label} audiobook sample for premium Earnalism public release. "
         "Return strict JSON matching the supplied schema. Scores are 0 to 10 except confidence_score, which is 0 to 1. "
-        "A release score of 9.2 or higher requires natural literary warmth, accurate pronunciation, expressive but "
+        "A release score of 9.0 or higher requires natural literary warmth, accurate pronunciation, expressive but "
         "restrained delivery, pleasant pacing, and no robotic or mechanical texture. Penalize flat narration, rushed "
         "pacing, list-reading rhythm, poor pronunciation, bad punctuation pauses, choppy joins, glitches, clipping, "
         "dead silence, fallback/system/browser TTS, source frontmatter, or placeholder audio. "

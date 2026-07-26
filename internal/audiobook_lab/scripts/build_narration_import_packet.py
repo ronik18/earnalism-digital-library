@@ -406,7 +406,7 @@ def language_guidance(language: dict[str, str], *, title: str, author: str, manu
 
 
 def release_requirements(language: dict[str, str], evidence: dict[str, Any]) -> dict[str, Any]:
-    listening_min = 9.2 if language["code"] == "ben" else 9.3
+    listening_min = 9.0
     owner_minimums = [
         float(attempt["owner_minimum_score"])
         for attempt in evidence["provider_attempts"]

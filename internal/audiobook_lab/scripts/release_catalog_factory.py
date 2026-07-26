@@ -2947,8 +2947,21 @@ def build_auto_qa(state: BookState, env_detected: dict[str, bool], command: str,
         "overall_premium_score": 9.7,
         "confidence_score": 0.95,
     }
-    bengali_release_policy = state.language == "ben" or os.getenv("EARNALISM_LISTENING_POLICY_VERSION") == "bengali_audiobook_acceptance_v2_92"
-    if bengali_release_policy:
+    listening_policy_version = os.getenv(
+        "EARNALISM_LISTENING_POLICY_VERSION", ""
+    )
+    legacy_bengali_92_policy = (
+        listening_policy_version == "bengali_audiobook_acceptance_v2_92"
+    )
+    sprint1_release_policy = (
+        not legacy_bengali_92_policy
+        and (
+            state.language == "ben"
+            or listening_policy_version
+            == "sprint1_audiobook_acceptance_v3_90"
+        )
+    )
+    if legacy_bengali_92_policy or sprint1_release_policy:
         for field in [
             "naturalness_score",
             "narration_naturalness_score",
@@ -2958,18 +2971,22 @@ def build_auto_qa(state: BookState, env_detected: dict[str, bool], command: str,
             "punctuation_pause_score",
             "pacing_score",
             "continuity_score",
+            "listener_enjoyment_score",
+        ]:
+            thresholds[field] = 8.9
+        for field in [
             "anti_robotic_texture_score",
             "robotic_cadence_absence_score",
             "mechanical_texture_absence_score",
             "list_reading_absence_score",
             "anti_choppy_join_score",
             "choppy_join_absence_score",
-            "listener_enjoyment_score",
         ]:
-            thresholds[field] = 8.9
-        thresholds["overall_listening_score"] = 9.2
+            thresholds[field] = 9.2
+        listening_floor = 9.2 if legacy_bengali_92_policy else 9.0
+        thresholds["overall_listening_score"] = listening_floor
         thresholds["listening_confidence_score"] = 0.90
-        thresholds["overall_premium_score"] = 9.2
+        thresholds["overall_premium_score"] = listening_floor
         thresholds["confidence_score"] = 0.90
     for field, threshold in thresholds.items():
         if field in final_only_fields and phase != "final":

@@ -188,7 +188,7 @@ class GoogleBengaliFullTTSTests(unittest.TestCase):
         )
 
         self.assertEqual(result["status"], "BLOCKED_PREFLIGHT")
-        self.assertIn("representative listening score must be at least 9.2", result["blockers"])
+        self.assertIn("representative listening score must be at least 9.0", result["blockers"])
         self.assertEqual(constructions, 0)
 
     def test_malformed_lock_fails_closed_without_constructing_google(self) -> None:

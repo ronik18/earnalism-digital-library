@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-07-22T20:24:04Z",
-  "policy_version": "bengali_audiobook_acceptance_v2_92",
+  "policy_version": "sprint1_audiobook_acceptance_v3_90",
   "total_titles": 31,
   "source": "bengali_audiobook_pilot_selection_report.json",
   "titles": [
