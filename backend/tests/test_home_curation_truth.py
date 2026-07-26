@@ -116,6 +116,19 @@ def test_title_mismatched_cover_is_excluded_from_hero_without_changing_audio_gat
     )
 
 
+def test_cover_visual_exclusion_report_is_bundled_for_backend_deployments():
+    bundled_report = ROOT / "backend/data/graphical_cover_generation_report.json"
+    assert bundled_report.exists()
+    report = json.loads(bundled_report.read_text(encoding="utf-8"))
+    excluded_slugs = {
+        row["slug"]
+        for row in report["visual_placeholder_candidates"]
+        if row.get("front") is True
+    }
+    assert "book-2b9853ec52" in excluded_slugs
+    assert "the-gift-of-the-magi" in excluded_slugs
+
+
 def test_missing_cover_titles_are_omitted_from_every_visual_collection():
     evidence = home_curation_evidence()
     payload_slugs = {book["slug"] for book in visual_payload_books(evidence["payload"])}

@@ -15,6 +15,7 @@ const inventoryJsonOut = path.join(repoRoot, "book_cover_visual_inventory.json")
 const inventoryCsvOut = path.join(repoRoot, "book_cover_visual_inventory.csv");
 const briefsJsonOut = path.join(repoRoot, "book_cover_art_briefs.json");
 const generationJsonOut = path.join(repoRoot, "graphical_cover_generation_report.json");
+const backendGenerationJsonOut = path.join(repoRoot, "backend", "data", "graphical_cover_generation_report.json");
 
 const FRONT_FIELDS = ["cover_image_url", "cover_url", "thumbnail_url", "front_cover_url", "coverImage", "cover_image"];
 const BACK_FIELDS = ["back_cover_image_url", "back_cover_url", "back_cover_thumbnail_url", "backCoverImage"];
@@ -463,7 +464,7 @@ const csv = [headers.join(","), ...rows.map((row) => headers.map((header) => csv
 fs.writeFileSync(legacyCsvOut, `${csv}\n`);
 fs.writeFileSync(inventoryCsvOut, `${csv}\n`);
 fs.writeFileSync(briefsJsonOut, `${JSON.stringify({ generated_at: summary.generated_at, briefs }, null, 2)}\n`);
-fs.writeFileSync(generationJsonOut, `${JSON.stringify({
+const generationReport = `${JSON.stringify({
   generated_at: summary.generated_at,
   generated_covers: [],
   reused_covers: rows.filter((row) => !row.front_uses_runtime_fallback && !row.back_uses_runtime_fallback).map((row) => row.slug),
@@ -483,6 +484,10 @@ fs.writeFileSync(generationJsonOut, `${JSON.stringify({
   skipped: [],
   performance_budget_status: "PASS; no raster generation and no new heavy assets",
   manual_review_recommended: rows.some((row) => row.front_cover_status === "GRAPHICAL_COVER_REPAIR_REQUIRED" || row.back_cover_status === "GRAPHICAL_COVER_REPAIR_REQUIRED"),
-}, null, 2)}\n`);
+}, null, 2)}\n`;
+fs.writeFileSync(generationJsonOut, generationReport);
+if (fs.existsSync(path.join(repoRoot, "backend"))) {
+  fs.writeFileSync(backendGenerationJsonOut, generationReport);
+}
 
 console.log(JSON.stringify(summary, null, 2));
