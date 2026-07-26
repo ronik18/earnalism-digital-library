@@ -91,14 +91,21 @@ const homeHeroFixture = JSON.parse(
   fs.readFileSync(path.resolve("frontend/src/data/homeCuratedSprint1.json"), "utf8"),
 );
 const homeHeroFixtureBooks = homeHeroFixture.hero.featured_books;
-const expectedHeroVisualSlugs = [
-  "sredni-vashtar",
-  "book-2b9853ec52",
-  "bn-066",
-  "radharani",
-  "pride-and-prejudice",
-];
-const expectedApprovedAudioSlugs = homeHeroFixture.shelves.approved_audiobooks.map((book) => book.slug);
+const expectedHeroVisualSlugs = homeHeroFixture.hero.featured_books
+  .slice(0, 4)
+  .map((book) => book.slug);
+const expectedVisibleShelfCount = homeHeroFixture.shelf_collage.groups
+  .filter((group) => Array.isArray(group.books) && group.books.length > 0)
+  .length;
+const expectedApprovedAudioSlugs = homeHeroFixture.shelf_collage.selected_audiobooks
+  .filter((book) => book.cover_valid && !book.is_placeholder && !book.is_typographic_only)
+  .map((book) => book.slug);
+const expectedHeroListeningSlug = expectedApprovedAudioSlugs.find((slug) => (
+  expectedHeroVisualSlugs.includes(slug)
+)) || expectedApprovedAudioSlugs[0] || null;
+const expectedHeroListenLinks = expectedHeroListeningSlug
+  ? [`/reader/${expectedHeroListeningSlug}?listen=1`]
+  : [];
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -293,7 +300,7 @@ async function main() {
   assert(!home.hasHeroCard, "retired Dracula-first hero card should not render");
   assert(home.hasPremiumHero, "premium editorial hero is missing");
   assert(home.hasCuratedShelfCollage, "curated shelf collage is missing");
-  assert(home.shelfGroupCount === 5, `curated shelf group count mismatch: ${home.shelfGroupCount}`);
+  assert(home.shelfGroupCount === expectedVisibleShelfCount, `curated shelf group count mismatch: ${home.shelfGroupCount}`);
   assert(home.selectedListeningCount === expectedApprovedAudioSlugs.length, `selected listening count mismatch: ${home.selectedListeningCount}`);
   assert(home.hasBengaliShelf, "Bengali Life & Legacy shelf is missing");
   assert(home.hasGothicShelf, "Gothic & the Uncanny shelf is missing");
@@ -329,7 +336,7 @@ async function main() {
     `hero cover alt text drifted from canonical title and author: ${JSON.stringify(home.heroVisualCoverAlts)}`,
   );
   assert(
-    JSON.stringify(home.heroListenLinks) === JSON.stringify(["/reader/sredni-vashtar?listen=1"]),
+    JSON.stringify(home.heroListenLinks) === JSON.stringify(expectedHeroListenLinks),
     `hero listening visual exposed a hidden or fake title: ${JSON.stringify(home.heroListenLinks)}`,
   );
   assert(home.staleCarouselCount === 0, "retired controlled launch carousel should not render in the luxury homepage");
