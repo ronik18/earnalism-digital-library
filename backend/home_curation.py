@@ -338,12 +338,16 @@ def _build_shelf_collage(
             "icon": str(raw_group.get("icon") or "book-open").strip(),
         })
 
+    approved_audio_visuals = [
+        book for book in approved_audio if book.get("cover_valid") is True
+    ]
+
     return {
         "eyebrow": str(shelf_config.get("eyebrow") or "CURATED PATHS THROUGH THE LIBRARY").strip(),
         "title": str(shelf_config.get("title") or "A shelf for every kind of curiosity.").strip(),
         "description": str(shelf_config.get("description") or "").strip(),
         "groups": groups,
-        "selected_audiobooks": [_public_book(book) for book in approved_audio],
+        "selected_audiobooks": [_public_book(book) for book in approved_audio_visuals],
     }
 
 
