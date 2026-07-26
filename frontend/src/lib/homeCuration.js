@@ -71,11 +71,38 @@ function normalizeBookList(value) {
   return Array.from(bySlug.values());
 }
 
+function normalizeShelfGroups(value) {
+  const groups = Array.isArray(value) ? value : [];
+  return groups
+    .map((group) => {
+      if (!group || typeof group !== "object") return null;
+      const books = normalizeBookList(group.books);
+      if (!books.length) return null;
+      return {
+        id: String(group.id || "").trim(),
+        title: String(group.title || "").trim(),
+        description: String(group.description || "").trim(),
+        book_count: Number.isFinite(Number(group.book_count)) ? Number(group.book_count) : books.length,
+        books,
+        cta_label: String(group.cta_label || "Explore the library").trim(),
+        cta_url: String(group.cta_url || "/library").trim(),
+        visual_variant: String(group.visual_variant || "medium").trim(),
+        icon: String(group.icon || "book-open").trim(),
+      };
+    })
+    .filter(Boolean);
+}
+
 export function normalizeHomeCuration(payload = {}) {
   const hero = payload.hero && typeof payload.hero === "object" ? payload.hero : {};
   const shelves = payload.shelves && typeof payload.shelves === "object" ? payload.shelves : {};
+  const shelfCollage = payload.shelf_collage && typeof payload.shelf_collage === "object"
+    ? payload.shelf_collage
+    : {};
   const source = payload.source && typeof payload.source === "object" ? payload.source : {};
   const approvedAudiobooks = normalizeBookList(shelves.approved_audiobooks)
+    .filter((book) => book.audiobook_enabled);
+  const collageAudiobooks = normalizeBookList(shelfCollage.selected_audiobooks)
     .filter((book) => book.audiobook_enabled);
 
   return {
@@ -91,6 +118,13 @@ export function normalizeHomeCuration(payload = {}) {
       bengali_classics: normalizeBookList(shelves.bengali_classics),
       english_classics: normalizeBookList(shelves.english_classics),
       approved_audiobooks: approvedAudiobooks,
+    },
+    shelf_collage: {
+      eyebrow: String(shelfCollage.eyebrow || "CURATED PATHS THROUGH THE LIBRARY").trim(),
+      title: String(shelfCollage.title || "A shelf for every kind of curiosity.").trim(),
+      description: String(shelfCollage.description || "").trim(),
+      groups: normalizeShelfGroups(shelfCollage.groups),
+      selected_audiobooks: collageAudiobooks.length ? collageAudiobooks : approvedAudiobooks,
     },
     source,
   };

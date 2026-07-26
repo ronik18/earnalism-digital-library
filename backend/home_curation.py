@@ -209,6 +209,58 @@ def _public_book(book: dict[str, Any]) -> dict[str, Any]:
     return public
 
 
+def _build_shelf_collage(
+    contracts_by_slug: dict[str, dict[str, Any]],
+    config: dict[str, Any],
+    approved_audio: list[dict[str, Any]],
+) -> dict[str, Any]:
+    shelf_config = config.get("shelf_collage") if isinstance(config.get("shelf_collage"), dict) else {}
+    groups_config = shelf_config.get("groups") if isinstance(shelf_config.get("groups"), list) else []
+    groups: list[dict[str, Any]] = []
+    used_visual_slugs: set[str] = set()
+
+    for raw_group in groups_config:
+        if not isinstance(raw_group, dict):
+            continue
+        group_slugs = [
+            str(raw_slug or "").strip().lower()
+            for raw_slug in raw_group.get("slugs", [])
+            if str(raw_slug or "").strip()
+        ]
+        candidates = [
+            contracts_by_slug[slug]
+            for slug in group_slugs
+            if slug in contracts_by_slug
+            and contracts_by_slug[slug].get("do_not_feature") is not True
+            and is_safe_cover_url(contracts_by_slug[slug].get("front_cover_url"))
+        ]
+        ranked_candidates = select_curated_books(candidates, len(candidates))
+        unique_candidates = [
+            book for book in ranked_candidates if book["slug"] not in used_visual_slugs
+        ]
+        selected = unique_candidates[: max(0, _rank_value(raw_group.get("limit"), 3))]
+        used_visual_slugs.update(book["slug"] for book in selected)
+        groups.append({
+            "id": str(raw_group.get("id") or "").strip(),
+            "title": str(raw_group.get("title") or "").strip(),
+            "description": str(raw_group.get("description") or "").strip(),
+            "book_count": len(candidates),
+            "books": [_public_book(book) for book in selected],
+            "cta_label": str(raw_group.get("cta_label") or "Explore the library").strip(),
+            "cta_url": str(raw_group.get("cta_url") or "/library").strip(),
+            "visual_variant": str(raw_group.get("visual_variant") or "medium").strip(),
+            "icon": str(raw_group.get("icon") or "book-open").strip(),
+        })
+
+    return {
+        "eyebrow": str(shelf_config.get("eyebrow") or "CURATED PATHS THROUGH THE LIBRARY").strip(),
+        "title": str(shelf_config.get("title") or "A shelf for every kind of curiosity.").strip(),
+        "description": str(shelf_config.get("description") or "").strip(),
+        "groups": groups,
+        "selected_audiobooks": [_public_book(book) for book in approved_audio],
+    }
+
+
 def build_home_curated_payload(
     *,
     publications_root: str | Path | None = None,
@@ -251,6 +303,7 @@ def build_home_curated_payload(
         (book for book in cover_ready if book.get("audiobook_enabled") is True),
         key=_selection_key,
     )
+    contracts_by_slug = {book["slug"]: book for book in contracts}
 
     payload = {
         "hero": {
@@ -269,6 +322,7 @@ def build_home_curated_payload(
             "english_classics": [_public_book(book) for book in english],
             "approved_audiobooks": [_public_book(book) for book in approved_audio],
         },
+        "shelf_collage": _build_shelf_collage(contracts_by_slug, config, approved_audio),
         "source": {
             "generated_at": str(config.get("updated_at") or ""),
             "truth_source": "controlled_publications",

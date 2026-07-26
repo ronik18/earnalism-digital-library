@@ -61,6 +61,6 @@ describe("MARKETING_LANDING release truth", () => {
     expect(spotlightSource).toContain("audiobookReleaseState");
     expect(spotlightSource).toContain("if (!book) return null");
     expect(spotlightSource).toContain("if (!audioState.canShowControls) return null");
-    expect(spotlightSource).toContain("Listen where the release gate is already proven.");
+    expect(spotlightSource).toContain("A classic to read and hear together.");
   });
 });
