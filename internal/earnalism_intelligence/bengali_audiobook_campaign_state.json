@@ -1,7 +1,17 @@
 {
-  "generated_at": "2026-07-23T11:31:00Z",
-  "status": "VERTEX_OPERATIONAL_THREE_SPRINT1_TITLES_REPRESENTATIVE_FAILED_NO_NEW_PUBLICATION",
-  "policy_version": "bengali_audiobook_acceptance_v2_92",
+  "generated_at": "2026-07-26T10:29:11Z",
+  "status": "SPRINT1_V3_90_ACTIVE_VERTEX_OPERATIONAL_THREE_TITLES_REPRESENTATIVE_FAILED_NO_NEW_PUBLICATION",
+  "policy_version": "sprint1_audiobook_acceptance_v3_90",
+  "policy_transition_20260726": {
+    "status": "ACTIVE",
+    "overall_listening_score_min": 9.0,
+    "confidence_score_min": 0.9,
+    "per_dimension_floors_unchanged": true,
+    "fatal_flags_unchanged": true,
+    "objective_and_delivery_gates_unchanged": true,
+    "newly_release_ready_title_count": 0,
+    "evidence": "internal/earnalism_intelligence/sprint1_audiobook_acceptance_v3_90_policy_decision.json"
+  },
   "total_campaign_titles": 31,
   "published_bengali_audiobooks": 1,
   "sprint1_scope_reconciliation": {
@@ -51,7 +61,7 @@
     "evidence": "internal/audiobook_lab/sprint1_publication/title_runs/radharani_saaras_asr_sync_closeout_20260722.json"
   },
   "titles_in_representative_audition": 0,
-  "titles_with_representative_gte_9_2": 3,
+  "titles_with_representative_gte_9_0": 3,
   "titles_in_full_pilot": 1,
   "titles_with_private_tts_listening_sync_pass": 0,
   "titles_needing_human_narration": 3,
@@ -66,7 +76,7 @@
     "pilot_slug": "book-2b9853ec52",
     "next_candidate_slug": "",
     "next_scale_stage": "SELECT_GENUINELY_DIFFERENT_PROVIDER_OR_SOURCE_BOUND_NARRATION_AFTER_COVER_AND_RIGHTS_PREFLIGHT",
-    "rule": "Do not repeat completed Nishkriti, Kshudhita Pashan, or Devdas Gemini fingerprints. No title may widen to full generation until one complete four-passage set passes 9.2/0.90 with zero fatal flags and all non-audio preflight gates are complete."
+    "rule": "Do not repeat completed Nishkriti, Kshudhita Pashan, or Devdas Gemini fingerprints. No title may widen to full generation until one complete four-passage set passes 9.0/0.90 with zero fatal flags and all non-audio preflight gates are complete."
   },
   "best_settings": {
     "provider": "sarvam",
@@ -108,7 +118,7 @@
     "runtime_provider_status": {
       "sarvam": "AVAILABLE_AND_USED",
       "openai": "USED_THEN_INSUFFICIENT_QUOTA",
-      "google": "GEMINI_TTS_AND_VERTEX_ADAPTERS_READY_ADC_INVALID_RAPT_REAUTH_REQUIRED"
+      "google": "VERTEX_AND_GEMINI_OPERATIONAL_TITLE_PILOTS_FAILED_GENERALIZATION"
     },
     "paid_tts_lock": {
       "status": "active",
@@ -143,8 +153,8 @@
   "controller_args": {
     "manifest": "book_import_manifest.json",
     "target_reader_only_approved_31": true,
-    "goal_score": 9.2,
-    "policy": "bengali_audiobook_acceptance_v2_92",
+    "goal_score": 9.0,
+    "policy": "sprint1_audiobook_acceptance_v3_90",
     "adaptive_optimizer": true,
     "resume": true,
     "fail_closed": true,
@@ -163,7 +173,7 @@
     "calm_literary_storyteller"
   ],
   "release_gates": {
-    "goal_score": 9.2,
+    "goal_score": 9.0,
     "confidence_min": 0.9,
     "asr_manuscript_min": 9.7,
     "sync": "measured paragraph/stanza or better; estimated sync blocked",

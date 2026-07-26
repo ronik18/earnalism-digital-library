@@ -775,7 +775,7 @@ def _validate_evidence(
         or baseline["documents"]["reader_manifest.json"].get("language")
         or ""
     ).strip().lower()
-    listening_minimum = 9.2 if language in {"ben", "bn", "bengali", "বাংলা"} else 9.3
+    listening_minimum = 9.0
     if listening.get("passes") is not True:
         blockers.append("QA evidence owner/full-book listening gate must explicitly pass")
     if listening_score is None or listening_score < listening_minimum:
@@ -1240,7 +1240,7 @@ def _prepare_staged_files(
         "validated_publication_gates": dict(evidence["gate_results"]),
         "quality_thresholds": {
             "asr_manuscript_min": 9.7,
-            "listening_min": 9.2 if evidence["language"] in {"ben", "bn", "bengali", "বাংলা"} else 9.3,
+            "listening_min": 9.0,
             "listening_confidence_min": 0.90,
             "auto_estimated_sync_required": False,
         },

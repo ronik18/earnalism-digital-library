@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "policy_name": "sprint1_audiobook_acceptance_v3_90",
+  "status": "ACTIVE_BY_OWNER_POLICY_UPDATE",
+  "effective_at": "2026-07-26T10:29:11Z",
+  "scope": "Sprint 1 Bengali and English audiobooks",
+  "owner_decision": "LOWER_OVERALL_LISTENING_CUTOFF_TO_9_0",
+  "listening_gate": {
+    "overall_listening_score_min": 9.0,
+    "confidence_score_min": 0.9,
+    "per_dimension_score_min": 8.9,
+    "anti_robotic_texture_score_min": 9.2,
+    "anti_choppy_join_score_min": 9.2,
+    "fatal_flags_required_false": true
+  },
+  "objective_gates_unchanged": {
+    "asr_manuscript_score_min": 9.7,
+    "coverage_min": 0.98,
+    "first_words_match_required": true,
+    "last_words_match_required": true,
+    "ordered_content_integrity_required": true,
+    "measured_sync_required": true,
+    "estimated_sync_forbidden": true,
+    "rights_required": true,
+    "cover_required": true,
+    "upload_checksum_required": true,
+    "metadata_approval_required": true,
+    "endpoint_200_206_required": true,
+    "browser_playback_required": true,
+    "empty_blocker_list_required": true
+  },
+  "representative_sample_rule": "A representative pass may authorize one private full-title pilot only. It cannot approve public release.",
+  "publication_rule": "Audio remains hidden until one exact full-title package passes every listening, objective, rights, delivery, endpoint, and browser gate.",
+  "historical_evidence_rule": "Existing v2_92 reports and recorded judge scores remain immutable and are not rewritten.",
+  "release_ready_delta_at_policy_activation": 0,
+  "impact_report": "internal/earnalism_intelligence/sprint1_audiobook_90_cutoff_impact_report.md",
+  "public_state_mutated": false,
+  "audio_uploaded": false,
+  "audiobook_published": false,
+  "next_exact_command": "PYTHONDONTWRITEBYTECODE=1 python3 internal/audiobook_lab/scripts/test_sprint1_audiobook_90_policy.py"
+}

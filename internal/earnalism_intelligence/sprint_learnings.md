@@ -582,3 +582,17 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - Incrementing the reader truth-gate cache namespace is required whenever source precedence changes, otherwise Redis may continue serving the old body for up to the chapter cache TTL.
 - Focused reader and audio-truth coverage passed 31/31. The change does not alter audiobook approval, QA, storage, metadata, or public Listen state.
 - Preview response caches must include the resolved content version in their key. Caching only by slug and chapter lets an unversioned request seed a fallback-version response that is later reused for a manifest-versioned request, even when the body itself is canonical.
+
+## 2026-07-26 Sprint 1 audiobook acceptance v3.90
+
+- The owner lowered only the active overall listening floor from `9.2` to
+  `9.0`. Confidence remains `>=0.90`; per-dimension floors, anti-robotic and
+  anti-choppy protections, and every fatal-flag rejection remain unchanged.
+- Objective release truth is unchanged: ASR/manuscript must remain `>=9.7`,
+  coverage `>=0.98`, first/last/order integrity must pass, sync must be
+  measured, and rights, covers, checksum, metadata, endpoint, browser, and
+  empty-blocker evidence are still mandatory.
+- The policy transition creates zero newly release-ready Sprint 1 titles.
+  A 9.0 representative sample can authorize only a private full-title pilot;
+  it cannot approve public release or expose Listen.
+- Historical `bengali_audiobook_acceptance_v2_92` evidence remains immutable.

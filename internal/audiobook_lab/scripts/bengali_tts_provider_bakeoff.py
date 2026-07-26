@@ -45,6 +45,7 @@ from asr_sync_hook import (  # noqa: E402
     BENGALI_PREMIUM_MVP_POLICY,
     LISTENING_THRESHOLDS,
     TIERED_AUDIOBOOK_ACCEPTANCE_POLICY,
+    SPRINT1_AUDIOBOOK_90_POLICY,
     UNIVERSAL_LISTENING_POLICY,
     evaluate_listening_evidence,
     judge_audio_sample_with_vertex,
@@ -272,6 +273,12 @@ def normalize_release_policy(value: str | None) -> str:
         return TIERED_AUDIOBOOK_ACCEPTANCE_POLICY
     if policy in {"bengali_92", "bengali-92", BENGALI_AUDIOBOOK_92_POLICY}:
         return BENGALI_AUDIOBOOK_92_POLICY
+    if policy in {
+        "sprint1_90",
+        "sprint1-90",
+        SPRINT1_AUDIOBOOK_90_POLICY,
+    }:
+        return SPRINT1_AUDIOBOOK_90_POLICY
     if policy == BENGALI_PREMIUM_MVP_POLICY:
         return policy
     return policy
@@ -282,9 +289,17 @@ def final_bakeoff_exit_code(*, passing: bool, fail_closed: bool) -> int:
 
 
 def prioritize_mvp_voices(voices: list[ProviderVoice], release_policy: str, limit_per_provider: int) -> list[ProviderVoice]:
-    if release_policy not in {BENGALI_PREMIUM_MVP_POLICY, BENGALI_AUDIOBOOK_92_POLICY}:
+    if release_policy not in {
+        BENGALI_PREMIUM_MVP_POLICY,
+        BENGALI_AUDIOBOOK_92_POLICY,
+        SPRINT1_AUDIOBOOK_90_POLICY,
+    }:
         return voices
-    voice_order = SARVAM_BENGALI_92_VOICE_ORDER if release_policy == BENGALI_AUDIOBOOK_92_POLICY else SARVAM_BENGALI_MVP_VOICE_ORDER
+    voice_order = (
+        SARVAM_BENGALI_MVP_VOICE_ORDER
+        if release_policy == BENGALI_PREMIUM_MVP_POLICY
+        else SARVAM_BENGALI_92_VOICE_ORDER
+    )
     ordered: list[ProviderVoice] = []
     for provider in sorted({voice.provider for voice in voices}):
         provider_voices = [voice for voice in voices if voice.provider == provider]
@@ -1147,10 +1162,14 @@ def available_voices(
                     item.startswith("sarvam/") or "/" not in item for item in voice_filters
                 )
                 sarvam_voices = sarvam_tts_adapter.candidate_voices(
-                    None if release_policy in {BENGALI_PREMIUM_MVP_POLICY, BENGALI_AUDIOBOOK_92_POLICY} or fetch_all_for_filter else limit_per_provider
+                    None if release_policy in {BENGALI_PREMIUM_MVP_POLICY, BENGALI_AUDIOBOOK_92_POLICY, SPRINT1_AUDIOBOOK_90_POLICY} or fetch_all_for_filter else limit_per_provider
                 )
-                if release_policy in {BENGALI_PREMIUM_MVP_POLICY, BENGALI_AUDIOBOOK_92_POLICY}:
-                    voice_order = SARVAM_BENGALI_92_VOICE_ORDER if release_policy == BENGALI_AUDIOBOOK_92_POLICY else SARVAM_BENGALI_MVP_VOICE_ORDER
+                if release_policy in {BENGALI_PREMIUM_MVP_POLICY, BENGALI_AUDIOBOOK_92_POLICY, SPRINT1_AUDIOBOOK_90_POLICY}:
+                    voice_order = (
+                        SARVAM_BENGALI_MVP_VOICE_ORDER
+                        if release_policy == BENGALI_PREMIUM_MVP_POLICY
+                        else SARVAM_BENGALI_92_VOICE_ORDER
+                    )
                     rank = {voice: index for index, voice in enumerate(voice_order)}
                     sarvam_voices = sorted(
                         sarvam_voices,
@@ -1724,7 +1743,10 @@ def sample_overall_score(sample: dict[str, Any]) -> float:
 
 
 def adaptive_early_stop_reason(sample: dict[str, Any], release_policy: str) -> str:
-    if release_policy != BENGALI_AUDIOBOOK_92_POLICY:
+    if release_policy not in {
+        BENGALI_AUDIOBOOK_92_POLICY,
+        SPRINT1_AUDIOBOOK_90_POLICY,
+    }:
         return ""
     if sample.get("judge_status") != "PASS" and sample.get("scores"):
         fatal = sample_fatal_flags(sample)
@@ -1923,6 +1945,19 @@ def write_bengali_92_policy_decision() -> str:
     }
     write_json(path, payload)
     write_json(ROOT / "bengali_audiobook_acceptance_v2_92_policy_decision.json", payload)
+    return rel(path)
+
+
+def sprint1_90_policy_decision_path() -> str:
+    path = (
+        ROOT
+        / "internal/earnalism_intelligence/"
+        "sprint1_audiobook_acceptance_v3_90_policy_decision.json"
+    )
+    if not path.is_file():
+        raise RuntimeError(
+            "Sprint 1 v3.90 policy decision artifact is missing"
+        )
     return rel(path)
 
 
@@ -2386,6 +2421,7 @@ def main() -> int:
     parser.add_argument("--generate-full-pilot-if-policy-pass", action="store_true")
     parser.add_argument("--allow-one-full-pilot-if-representative-passes", action="store_true")
     parser.add_argument("--bengali-audiobook-92-rescue", action="store_true")
+    parser.add_argument("--sprint1-audiobook-90", action="store_true")
     parser.add_argument("--adaptive-optimizer", action="store_true")
     parser.add_argument("--test-text-prep-variants", action="store_true")
     parser.add_argument("--test-postprocess-variants", action="store_true")
@@ -2399,6 +2435,8 @@ def main() -> int:
     run_dir.mkdir(parents=True, exist_ok=True)
     if args.bengali_audiobook_92_rescue and args.policy == UNIVERSAL_LISTENING_POLICY:
         args.policy = BENGALI_AUDIOBOOK_92_POLICY
+    if args.sprint1_audiobook_90:
+        args.policy = SPRINT1_AUDIOBOOK_90_POLICY
     if args.allow_one_full_pilot_if_representative_passes:
         args.generate_full_pilot_if_policy_pass = True
         args.max_pilot_count = args.max_pilot_count or 1
@@ -2406,10 +2444,14 @@ def main() -> int:
     release_policy = normalize_release_policy(args.policy)
     if args.bengali_audiobook_92_rescue and release_policy != BENGALI_AUDIOBOOK_92_POLICY:
         release_policy = BENGALI_AUDIOBOOK_92_POLICY
+    if args.sprint1_audiobook_90:
+        release_policy = SPRINT1_AUDIOBOOK_90_POLICY
     if release_policy == BENGALI_PREMIUM_MVP_POLICY:
         policy_decision_path = write_bengali_mvp_policy_decision()
     elif release_policy == BENGALI_AUDIOBOOK_92_POLICY:
         policy_decision_path = write_bengali_92_policy_decision()
+    elif release_policy == SPRINT1_AUDIOBOOK_90_POLICY:
+        policy_decision_path = sprint1_90_policy_decision_path()
     else:
         policy_decision_path = ""
     approval = bool_env("EARNALISM_APPROVE_BENGALI_PROVIDER_BAKEOFF")

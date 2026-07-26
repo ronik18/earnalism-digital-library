@@ -143,7 +143,7 @@ class NarrationImportPacketTests(unittest.TestCase):
             self.assertEqual(manuscript, "যাহারা বলে, তাহারা ভুল করে।\n\nশেষ কথা এখানে।\n")
             metadata = json.loads((packet_dir / "metadata.json").read_text(encoding="utf-8"))
             self.assertEqual(metadata["language"], {"code": "ben", "name": "Bengali"})
-            self.assertEqual(metadata["release_requirements"]["listening_score_min"], 9.2)
+            self.assertEqual(metadata["release_requirements"]["listening_score_min"], 9.0)
             self.assertEqual(metadata["source_binding"]["status"], "VERIFIED_SOURCE_AND_CHAPTER_HASHES")
             self.assertEqual(len(metadata["prior_provider_evidence"]["failed_attempts"]), 1)
             self.assertFalse(metadata["safety"]["provider_calls_ran"])

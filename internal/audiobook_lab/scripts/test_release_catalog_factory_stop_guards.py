@@ -29,6 +29,28 @@ def make_state(index: int) -> BookState:
     )
 
 
+def build_bengali_policy_qa(
+    state: BookState,
+    *,
+    policy: str,
+    phase: str = "pre_upload",
+) -> dict:
+    previous = os.environ.get("EARNALISM_LISTENING_POLICY_VERSION")
+    os.environ["EARNALISM_LISTENING_POLICY_VERSION"] = policy
+    try:
+        return build_auto_qa(
+            state,
+            {"EARNALISM_LISTENING_POLICY_VERSION": True},
+            f"release_catalog_factory.py --policy {policy}",
+            phase=phase,
+        )
+    finally:
+        if previous is None:
+            os.environ.pop("EARNALISM_LISTENING_POLICY_VERSION", None)
+        else:
+            os.environ["EARNALISM_LISTENING_POLICY_VERSION"] = previous
+
+
 def assert_inventory_only_does_not_count_as_attempted() -> None:
     states = []
     for index in range(10):
@@ -203,11 +225,9 @@ def make_bengali_qa_state(
 def assert_bengali_92_policy_allows_clean_full_pilot_qa() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         state = make_bengali_qa_state(Path(tmp))
-        qa = build_auto_qa(
+        qa = build_bengali_policy_qa(
             state,
-            {"EARNALISM_LISTENING_POLICY_VERSION": True},
-            "release_catalog_factory.py --policy bengali_audiobook_acceptance_v2_92",
-            phase="pre_upload",
+            policy="bengali_audiobook_acceptance_v2_92",
         )
         assert qa["auto_approval_decision"] is True, qa["blocker_list"]
         assert qa["scores"]["overall_listening_score"] == 9.4, qa["scores"]
@@ -219,11 +239,9 @@ def assert_bengali_92_policy_allows_clean_full_pilot_qa() -> None:
 def assert_bengali_92_policy_blocks_fatal_listening_flags() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         state = make_bengali_qa_state(Path(tmp), mechanical_cadence_detected=True)
-        qa = build_auto_qa(
+        qa = build_bengali_policy_qa(
             state,
-            {"EARNALISM_LISTENING_POLICY_VERSION": True},
-            "release_catalog_factory.py --policy bengali_audiobook_acceptance_v2_92",
-            phase="pre_upload",
+            policy="bengali_audiobook_acceptance_v2_92",
         )
         assert qa["auto_approval_decision"] is False, qa
         assert any("no_mechanical_texture failed" in blocker for blocker in qa["blocker_list"]), qa["blocker_list"]
@@ -232,11 +250,9 @@ def assert_bengali_92_policy_blocks_fatal_listening_flags() -> None:
 def assert_bengali_92_policy_blocks_low_listening_score() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         state = make_bengali_qa_state(Path(tmp), overall_listening_score=9.19)
-        qa = build_auto_qa(
+        qa = build_bengali_policy_qa(
             state,
-            {"EARNALISM_LISTENING_POLICY_VERSION": True},
-            "release_catalog_factory.py --policy bengali_audiobook_acceptance_v2_92",
-            phase="pre_upload",
+            policy="bengali_audiobook_acceptance_v2_92",
         )
         assert qa["auto_approval_decision"] is False, qa
         assert any("overall_listening_score below threshold" in blocker for blocker in qa["blocker_list"]), qa["blocker_list"]
@@ -245,11 +261,9 @@ def assert_bengali_92_policy_blocks_low_listening_score() -> None:
 def assert_bengali_92_policy_blocks_objective_gate_failure() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         state = make_bengali_qa_state(Path(tmp), rights_metadata_ready=False)
-        qa = build_auto_qa(
+        qa = build_bengali_policy_qa(
             state,
-            {"EARNALISM_LISTENING_POLICY_VERSION": True},
-            "release_catalog_factory.py --policy bengali_audiobook_acceptance_v2_92",
-            phase="pre_upload",
+            policy="bengali_audiobook_acceptance_v2_92",
         )
         assert qa["auto_approval_decision"] is False, qa
         assert any("rights_metadata_score below threshold" in blocker for blocker in qa["blocker_list"]), qa["blocker_list"]
@@ -259,11 +273,9 @@ def assert_bengali_92_policy_blocks_objective_gate_failure() -> None:
 def assert_bengali_92_policy_blocks_estimated_sync() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         state = make_bengali_qa_state(Path(tmp), auto_estimated_sync=True)
-        qa = build_auto_qa(
+        qa = build_bengali_policy_qa(
             state,
-            {"EARNALISM_LISTENING_POLICY_VERSION": True},
-            "release_catalog_factory.py --policy bengali_audiobook_acceptance_v2_92",
-            phase="pre_upload",
+            policy="bengali_audiobook_acceptance_v2_92",
         )
         assert qa["auto_approval_decision"] is False, qa
         assert any("auto_estimated_sync_false failed" in blocker for blocker in qa["blocker_list"]), qa["blocker_list"]
@@ -272,14 +284,42 @@ def assert_bengali_92_policy_blocks_estimated_sync() -> None:
 def assert_bengali_92_policy_blocks_frontmatter_contamination() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         state = make_bengali_qa_state(Path(tmp), frontmatter_in_body_detected=True)
-        qa = build_auto_qa(
+        qa = build_bengali_policy_qa(
             state,
-            {"EARNALISM_LISTENING_POLICY_VERSION": True},
-            "release_catalog_factory.py --policy bengali_audiobook_acceptance_v2_92",
-            phase="pre_upload",
+            policy="bengali_audiobook_acceptance_v2_92",
         )
         assert qa["auto_approval_decision"] is False, qa
         assert any("frontmatter_removal_score below threshold" in blocker for blocker in qa["blocker_list"]), qa["blocker_list"]
+
+
+def assert_sprint1_90_policy_enforces_exact_boundary_and_quality_floors() -> None:
+    policy = "sprint1_audiobook_acceptance_v3_90"
+    with tempfile.TemporaryDirectory() as tmp:
+        state = make_bengali_qa_state(Path(tmp), overall_listening_score=9.0)
+        qa = build_bengali_policy_qa(state, policy=policy)
+        assert qa["auto_approval_decision"] is True, qa["blocker_list"]
+
+    with tempfile.TemporaryDirectory() as tmp:
+        state = make_bengali_qa_state(Path(tmp), overall_listening_score=8.99)
+        qa = build_bengali_policy_qa(state, policy=policy)
+        assert qa["auto_approval_decision"] is False, qa
+        assert any(
+            "overall_listening_score below threshold" in blocker
+            for blocker in qa["blocker_list"]
+        ), qa["blocker_list"]
+
+    with tempfile.TemporaryDirectory() as tmp:
+        state = make_bengali_qa_state(Path(tmp))
+        report = state.stage_results["asr_sync_queue"]
+        report["metrics"]["audio_quality_scores"][
+            "anti_robotic_texture_score"
+        ] = 9.19
+        qa = build_bengali_policy_qa(state, policy=policy)
+        assert qa["auto_approval_decision"] is False, qa
+        assert any(
+            "anti_robotic_texture_score below threshold" in blocker
+            for blocker in qa["blocker_list"]
+        ), qa["blocker_list"]
 
 
 def main() -> int:
@@ -292,6 +332,7 @@ def main() -> int:
     assert_bengali_92_policy_blocks_objective_gate_failure()
     assert_bengali_92_policy_blocks_estimated_sync()
     assert_bengali_92_policy_blocks_frontmatter_contamination()
+    assert_sprint1_90_policy_enforces_exact_boundary_and_quality_floors()
     print("release_catalog_factory stop-guard regression checks PASS")
     return 0
 
