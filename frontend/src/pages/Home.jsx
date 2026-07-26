@@ -13,16 +13,13 @@ import {
   Youtube,
 } from "lucide-react";
 import { toast } from "sonner";
-import ComingSoonBoard from "../components/ComingSoonBoard";
-import ApprovedAudiobookSpotlight from "../components/ApprovedAudiobookSpotlight";
+import CuratedShelfCollage from "../components/CuratedShelfCollage";
 import PremiumHero from "../components/PremiumHero";
-import ShelfTwoSlideshow from "../components/ShelfTwoSlideshow";
 import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
 import { getEnabledSocialLinks } from "../config/socialLinks";
 import { trackFunnelEvent } from "../lib/funnelAnalytics";
 import { LIVE_APPROVED_SLUG } from "../lib/controlledLaunch";
-import { buildShelfTwoBooks } from "../lib/shelfTwoBooks";
 import { fetchHomeCuration, getHomeCurationSnapshot } from "../lib/homeCuration";
 import useSEO from "../hooks/useSEO";
 
@@ -51,7 +48,6 @@ export default function Home() {
       .map((item) => ({ ...item, Icon: SOCIAL_ICONS[item.icon] || SOCIAL_ICONS[item.id] }))
       .filter((item) => item.Icon)
   ), [social]);
-  const shelfTwoBooks = useMemo(() => buildShelfTwoBooks(), []);
 
   useSEO({
     title: "Earnalism | Bengali and English Classics in a Calm Digital Library",
@@ -107,31 +103,7 @@ export default function Home() {
         onTrack={track}
       />
 
-      <ComingSoonBoard />
-
-      <ApprovedAudiobookSpotlight />
-
-      <section
-        className="reference-pipeline-shelf"
-        data-testid="bengali-gothic-pipeline-shelf"
-        aria-labelledby="bengali-gothic-pipeline-title"
-      >
-        <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-12 lg:py-12">
-          <div className="mb-7">
-            <div className="overline mb-2">Shelf II</div>
-            <h2 id="bengali-gothic-pipeline-title" className="font-serif-light text-[1.68rem] leading-tight text-burgundy sm:text-[2.12rem]">
-              Coming Through the Rights-Safe Pipeline
-            </h2>
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-charcoal-soft">
-              A quieter lower shelf for editions in preparation. Reader-only books stay intentional; unreleased titles remain editorial promises with no checkout or audiobook overclaim.
-            </p>
-            <p className="mt-3 max-w-2xl text-[0.68rem] uppercase tracking-[0.22em] text-[var(--brand-gold-deep)]/78">
-              Real cover-led presentation where available. No placeholder launch claims.
-            </p>
-          </div>
-          <ShelfTwoSlideshow books={shelfTwoBooks} />
-        </div>
-      </section>
+      <CuratedShelfCollage curation={homeCuration?.shelf_collage} />
 
       <section
         className="reference-reading-path"

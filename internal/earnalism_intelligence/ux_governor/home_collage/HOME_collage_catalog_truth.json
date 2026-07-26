@@ -1,0 +1,45 @@
+{
+  "artifact": "HOME_CURATED_SHELF_COLLAGE",
+  "generated_at": "2026-07-26",
+  "truth_source": "backend/data/home_hero_curation.json + backend/home_curation.py",
+  "shelf_groups": [
+    {
+      "id": "bengali-life-and-legacy",
+      "title": "Bengali Life & Legacy",
+      "selected_slugs": ["book-2b9853ec52", "radharani", "nishkriti"]
+    },
+    {
+      "id": "gothic-and-the-uncanny",
+      "title": "Gothic & the Uncanny",
+      "selected_slugs": ["sredni-vashtar", "dracula"]
+    },
+    {
+      "id": "love-society-and-human-nature",
+      "title": "Love, Society & Human Nature",
+      "selected_slugs": ["pride-and-prejudice", "dsires-baby"]
+    },
+    {
+      "id": "adventure-nature-and-wonder",
+      "title": "Adventure, Nature & Wonder",
+      "selected_slugs": ["the-time-machine", "the-call-of-the-wild", "the-secret-garden"]
+    },
+    {
+      "id": "short-masterpieces",
+      "title": "Short Masterpieces",
+      "selected_slugs": ["the-gift-of-the-magi", "the-open-window", "the-cop-and-the-anthem"]
+    }
+  ],
+  "selected_listening_slugs": [
+    "book-2b9853ec52",
+    "a-ghost-story",
+    "sredni-vashtar",
+    "the-open-window"
+  ],
+  "invariants": {
+    "visible_cover_slugs_are_unique": true,
+    "reader_enabled_only": true,
+    "approved_audio_predicate_used": true,
+    "internal_release_evidence_not_rendered_as_customer_copy": true,
+    "deferred_or_invalid_cover_records_omitted": true
+  }
+}
