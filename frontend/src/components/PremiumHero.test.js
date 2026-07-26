@@ -33,6 +33,12 @@ describe("PremiumHero public contract", () => {
     expect(source).toContain("premium-hero-action--primary");
     expect(source).toContain("premium-hero-action--secondary");
     expect(fs.statSync(referenceAsset).size).toBeLessThan(1_800_000);
+
+    const hoverRule = styles.match(
+      /\.premium-hero-action:hover\s*\{([\s\S]*?)\}/,
+    )?.[1];
+    expect(hoverRule).toContain("background: transparent;");
+    expect(hoverRule).toContain("box-shadow: none;");
   });
 
   test("renders the owner-approved reader-facing feature copy", () => {

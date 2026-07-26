@@ -559,6 +559,30 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
 - `book-edfcf810c5` now has its exact existing graphical Cloudinary cover pair linked in both controlled-publication mirrors. Devdas remains cover-blocked because the retained back cover has overlapping, unreadable Bengali copy; do not begin its audio release lane until a legible matched pair passes.
 - Production truth remains 32 public readers and four public audiobooks. All new provider, normalizer, and private-media work stayed source-only or preflight-only; no hidden title gained a public Listen surface.
 
+## 2026-07-23 Bengali reader sanitation and Gemini/Vertex title pilots
+
+- Vertex listening QA and Gemini 2.5 Pro TTS are operational. The silence probe returned a structured zero-score rejection instead of a transport error, proving the independent judge path works without pretending silence is audio.
+- Canonical reader frontmatter was removed and all dependent hashes were rebound for `bn-066` (46 chapters, 770 characters), `book-d19e96859f` (54 characters), `book-edfcf810c5` (63 characters), and `book-f5d593e1f4` (73 characters). Their reader availability and audio-hidden state did not change.
+- `book-2b9853ec52` has a similar reader-facing wrapper but was excluded because it already has a live, source-bound audiobook. Changing it safely requires one atomic source, audio evidence, sync, delivery, and runtime migration.
+- Nishkriti failed representative generalization with Sarvam Ratan scores `9.4/5.5/0/0` and Gemini Charon scores `9.5/7.0/0/0`. Kshudhita Pashan failed three corrected-source Gemini voices with `9.3/9.0/5.5/0`, `5.8/0/0/0`, and `8.8/9.4/7.5/0`.
+- Devdas remained cover-blocked and its two bounded Gemini diagnostics failed at `9.2/5.5/0/0` and `9.4/5.5/0/0`. Running even bounded audio diagnostics before repairing that known cover blocker was unnecessary; do not repeat them.
+- Adaptive stopping prevented any full-title generation, upload, release-gate mutation, or publication. Isolated high scores never overrode fatal robotic, mechanical, list-reading, or repeated-ending flags.
+- The completed provider, model, voice, style, and text-hash fingerprints are closed. The next audiobook attempt must be a genuinely different provider or voice, or source-bound narration, and must still pass raw audio ASR/source, measured sync, delivery checksum, endpoint, and browser gates.
+
+## 2026-07-23 Railway CI and post-deploy load-test ordering
+
+- Railway correctly detected merge `ce7f1edd` and held it in `WAITING`, but the workflow named `Post-deploy k6 smoke test` also ran on the same `push` event before Railway could deploy because `Wait for CI` was enabled.
+- The production smoke portion passed 15/15 checks. The 100-user run passed all 17,664 functional checks with a 0% request failure rate, but the previous deployment missed the strict catalog p95 target (`2.48s` vs `1.2s`) and reader p95 target (`2.24s` vs `1.8s`).
+- Do not relax those latency targets and do not use the failed old-deployment run as evidence for the new commit. Remove the `push` trigger, keep manual dispatch, and run the unchanged test only after Railway reports the target commit as `SUCCESS`.
+
+## 2026-07-23 Controlled reader artifact precedence
+
+- Production validation found that the reader manifest reflected the newly repaired controlled-publication packet while the chapter endpoint still returned an older MongoDB chapter body. Cache-busting did not help because the endpoint itself preferred the database whenever any content existed.
+- Public controlled readers must resolve book access metadata, chapter versions, and chapter bodies from the same canonical artifact. A stale database copy may be used only as a fail-safe when the controlled artifact is unavailable; admin preview remains database-first.
+- Incrementing the reader truth-gate cache namespace is required whenever source precedence changes, otherwise Redis may continue serving the old body for up to the chapter cache TTL.
+- Focused reader and audio-truth coverage passed 31/31. The change does not alter audiobook approval, QA, storage, metadata, or public Listen state.
+- Preview response caches must include the resolved content version in their key. Caching only by slug and chapter lets an unversioned request seed a fallback-version response that is later reused for a manifest-versioned request, even when the body itself is canonical.
+
 ## 2026-07-26 Sprint 1 audiobook acceptance v3.90
 
 - The owner lowered only the active overall listening floor from `9.2` to

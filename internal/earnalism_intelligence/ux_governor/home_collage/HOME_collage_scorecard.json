@@ -1,0 +1,46 @@
+{
+  "artifact": "HOME_CURATED_SHELF_COLLAGE_VISUAL_SCORECARD",
+  "generated_at": "2026-07-26",
+  "status": "VALIDATED_WITHOUT_LIGHTHOUSE_LAB",
+  "overall_score_claim": null,
+  "overall_note": "A 10/10 claim is intentionally not made because Lighthouse, axe, and live production measurements were not run in this isolated worktree.",
+  "automated_evidence": {
+    "backend_home_curation_tests": "12 passed",
+    "frontend_focused_tests": "14 passed",
+    "frontend_full_tests": "104 passed",
+    "production_build": "passed",
+    "cover_audit": {
+      "broken_cover_sources": 0,
+      "typography_only_covers_found": 0,
+      "front_back_cover_pairs_available_effectively": 71
+    },
+    "git_diff_check": "passed"
+  },
+  "visual_measurements": {
+    "viewports": ["1440x900", "1536x864", "768x1024", "430x932", "390x844"],
+    "horizontal_overflow": false,
+    "shelf_group_count": 5,
+    "selected_listening_card_count": 4,
+    "collage_cover_image_count": 17,
+    "collage_cover_images_loaded": "17/17",
+    "visual_api_fixture": "frontend/src/data/homeCuratedSprint1.json"
+  },
+  "acceptance_categories": {
+    "catalog_truth": "PASS",
+    "release_safe_audio_selection": "PASS",
+    "responsive_layout": "PASS",
+    "visual_hierarchy": "REVIEWED",
+    "keyboard_focus_and_reduced_motion": "IMPLEMENTED",
+    "accessibility_lab": "NOT_MEASURED",
+    "performance_lab": "NOT_MEASURED",
+    "live_production_validation": "PENDING_DEPLOYMENT"
+  },
+  "screenshots": {
+    "desktop_1440x900": "HOME_collage_1440x900.png",
+    "desktop_1536x864": "HOME_collage_1536x864.png",
+    "tablet_768x1024": "HOME_collage_768x1024.png",
+    "mobile_430x932": "HOME_collage_430x932.png",
+    "mobile_390x844": "HOME_collage_390x844.png",
+    "contact_sheet": "HOME_collage_contact_sheet.png"
+  }
+}

@@ -127,6 +127,74 @@ class ProviderStdlibHttpTest(unittest.TestCase):
         self.assertEqual(result["judge_provider"], "vertex")
         model_request = urlopen.call_args_list[1].args[0]
         self.assertIn("gemini-2.5-flash:generateContent", model_request.full_url)
+        self.assertEqual(model_request.headers["X-goog-user-project"], "test-project")
+
+    def test_vertex_global_location_uses_global_api_host(self) -> None:
+        judgment = {
+            field: 9.3 for field in asr_sync_hook.LISTENING_THRESHOLDS if field != "confidence_score"
+        }
+        judgment.update(
+            {
+                "confidence_score": 0.92,
+                **{field: False for field in asr_sync_hook.BINARY_LISTENING_FLAGS},
+                "frontmatter_present": False,
+                "notes": "bounded vertex test",
+                "blocker_reason": "",
+            }
+        )
+        model_payload = {
+            "candidates": [{"content": {"parts": [{"text": json.dumps(judgment)}]}}]
+        }
+        with tempfile.TemporaryDirectory() as temp_dir:
+            audio_path = Path(temp_dir) / "sample.mp3"
+            audio_path.write_bytes(b"ID3-test")
+            credentials_path = Path(temp_dir) / "adc.json"
+            credentials_path.write_text(
+                json.dumps(
+                    {
+                        "type": "authorized_user",
+                        "client_id": "client",
+                        "client_secret": "secret",
+                        "refresh_token": "refresh",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with (
+                patch.dict(
+                    os.environ,
+                    {
+                        "GOOGLE_APPLICATION_CREDENTIALS": str(credentials_path),
+                        "GOOGLE_CLOUD_PROJECT": "test-project",
+                        "GOOGLE_CLOUD_LOCATION": "global",
+                    },
+                    clear=False,
+                ),
+                patch.object(
+                    asr_sync_hook.urllib.request,
+                    "urlopen",
+                    side_effect=[
+                        _Response({"access_token": "access-token"}),
+                        _Response(model_payload),
+                    ],
+                ) as urlopen,
+            ):
+                result = asr_sync_hook.judge_audio_sample_with_vertex(
+                    SimpleNamespace(title="Title", author="Author", language="Bengali"),
+                    {
+                        "sample_audio_path": str(audio_path),
+                        "sample_label": "probe",
+                        "start_time": 0.0,
+                        "duration": 1.0,
+                    },
+                )
+        self.assertEqual(result["scores"]["overall_listening_score"], 9.3)
+        model_request = urlopen.call_args_list[1].args[0]
+        self.assertEqual(
+            model_request.full_url,
+            "https://aiplatform.googleapis.com/v1/projects/test-project/locations/global/"
+            "publishers/google/models/gemini-2.5-flash:generateContent",
+        )
 
     def test_openai_listening_judge_works_without_sdk_client(self) -> None:
         judgment = {

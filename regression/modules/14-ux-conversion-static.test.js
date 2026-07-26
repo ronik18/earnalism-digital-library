@@ -60,6 +60,10 @@ function trackFunnelEventSnippets(source) {
 
 describe("UX conversion static signals", () => {
   const home = read("frontend/src/pages/Home.jsx");
+  const homeCurationConfig = read("backend/data/home_hero_curation.json");
+  const curatedShelfCollage = read("frontend/src/components/CuratedShelfCollage.jsx");
+  const shelfCollageTile = read("frontend/src/components/ShelfCollageTile.jsx");
+  const selectedListeningRail = read("frontend/src/components/SelectedListeningRail.jsx");
   const premiumHero = read("frontend/src/components/PremiumHero.jsx");
   const premiumHeroStyles = read("frontend/src/components/PremiumHero.css");
   const headerStyles = read("frontend/src/components/Header.css");
@@ -215,7 +219,10 @@ describe("UX conversion static signals", () => {
     expect(homeCurationClient).toContain('/home/curated');
     expect(homeCurationClient).toContain('audiobookUrl === `/api/reader/book/${slug}/audiobook`');
     expect(premiumHero).not.toMatch(/No unapproved audiobook controls|Audio gated by evidence|release gates|QA_PASSED|APPROVED/);
-    expect(home).toContain("Coming Through the Rights-Safe Pipeline");
+    expect(home).toContain("<CuratedShelfCollage");
+    expect(curatedShelfCollage).toContain('data-testid="curated-shelf-collage"');
+    expect(curatedShelfCollage).toContain("A shelf for every kind of curiosity.");
+    expect(selectedListeningRail).toContain("Selected Listening");
     expect(shelfTwoSlideshow).toContain("Request Update");
     expect(shelfTwoSlideshow).toContain("/contact?interest=");
     expect(shelfTwoSlideshow).not.toContain("Notify Me");
@@ -236,8 +243,9 @@ describe("UX conversion static signals", () => {
     expect(home).not.toMatch(/\b105 reading rooms open\b/i);
     expect(home).not.toContain("reading rooms open");
     expect(firstVisitSiteTour).toContain("A calm digital reading room for Bengali and English classics");
-    expect(firstVisitSiteTour).toContain("Audio never leaks early");
-    expect(firstVisitSiteTour).toContain("Reader-only books still feel complete");
+    expect(firstVisitSiteTour).toContain("A shelf for every mood");
+    expect(firstVisitSiteTour).toContain("Hear a classic in the reading room");
+    expect(shelfCollageTile).toContain("Open ${book.title} by ${book.author}");
     expect(firstVisitSiteTour).not.toContain("A calm digital reading room beginning with Dracula by Bram Stoker");
     expect(firstVisitSiteTour).not.toContain("Future titles stay Coming Soon or Notify Me");
     expect(firstVisitSiteTour).not.toContain("Browse what is ready now");
@@ -1151,10 +1159,10 @@ describe("UX conversion static signals", () => {
     expect(bookDetail).toContain("normalizeChapterDisplayTitle(c.title)");
   });
 
-  test("Bengali Gothic candidate is pipeline-only and not a live reading CTA", () => {
-    expect(home).toContain('data-testid="bengali-gothic-pipeline-shelf"');
-    expect(home).toContain("<ShelfTwoSlideshow books={shelfTwoBooks} />");
-    expect(home).toContain("Coming Through the Rights-Safe Pipeline");
+  test("Bengali and Gothic discovery shelves preserve reader-safe browse paths", () => {
+    expect(home).toContain("<CuratedShelfCollage");
+    expect(homeCurationConfig).toContain("Bengali Life & Legacy");
+    expect(homeCurationConfig).toContain("Gothic & the Uncanny");
     expect(shelfTwoSlideshow).toContain("Request Update");
     expect(shelfTwoSlideshow).toContain("/contact?interest=");
     expect(home).not.toContain("kshudhita-cover-placeholder__title");
@@ -1178,9 +1186,6 @@ describe("UX conversion static signals", () => {
     expect(library).toContain("KSHUDHITA_PASHAN_PIPELINE.subcopy");
     expect(library).toContain("No reader, payment, or audio CTA is available for this pipeline-only title.");
 
-    const homePipelineBlock = extractBetween(home, 'className="reference-pipeline-shelf"', 'data-testid="reading-time-library-path"');
-    expect(homePipelineBlock).toContain('data-testid="bengali-gothic-pipeline-shelf"');
-    expect(homePipelineBlock).toContain("ShelfTwoSlideshow");
     const libraryPipelineBlock = extractBetween(
       library,
       'data-testid="library-bengali-gothic-pipeline"',
@@ -1191,7 +1196,7 @@ describe("UX conversion static signals", () => {
     expect(libraryPipelineBlock).toContain("Request Update");
     expect(libraryPipelineBlock).not.toContain("Notify Me");
 
-    for (const block of [homePipelineBlock, libraryPipelineBlock]) {
+    for (const block of [libraryPipelineBlock]) {
       expect(block).not.toContain("Start Reading");
       expect(block).not.toContain("Read Preview");
       expect(block).not.toContain("Listen Now");
@@ -1222,18 +1227,13 @@ describe("UX conversion static signals", () => {
   });
 
   test("future pipeline books do not show live CTAs", () => {
-    const pipelineBlock = extractBetween(
-      home,
-      'className="reference-pipeline-shelf"',
-      'data-testid="reading-time-library-path"'
-    );
-    expect(pipelineBlock).toContain("ShelfTwoSlideshow");
+    expect(home).toContain("<CuratedShelfCollage");
+    expect(curatedShelfCollage).toContain("Browse the complete library");
+    expect(curatedShelfCollage).not.toContain("Notify Me");
+    expect(curatedShelfCollage).not.toContain("Read Preview");
+    expect(curatedShelfCollage).not.toContain("Listen Now");
     expect(shelfTwoSlideshow).toContain("Request Update");
     expect(shelfTwoSlideshow).toContain("/contact?interest=");
-    expect(pipelineBlock).not.toContain("Notify Me");
-    expect(pipelineBlock).not.toContain("Start Reading");
-    expect(pipelineBlock).not.toContain("Read Preview");
-    expect(pipelineBlock).not.toContain("Listen Now");
   });
 
   test("owner launch monitor analytics events are mock-safe and allowlisted", () => {
@@ -1342,7 +1342,7 @@ describe("UX conversion static signals", () => {
     expect(firstVisitSiteTour).toContain('first_time_site_tour_shown');
     expect(firstVisitSiteTour).toContain('first_time_site_tour_completed');
     expect(firstVisitSiteTour).toContain('first_time_site_tour_skipped');
-    expect(firstVisitSiteTour).toContain("audiobook controls stay hidden until endpoint, sync, QA, and browser gates pass");
+    expect(firstVisitSiteTour).toContain("A small collection of beautifully narrated editions is ready");
     expect(firstVisitSiteTour).not.toMatch(/\bAudio (is )?not available yet\b/i);
     expect(firstVisitSiteTour).not.toMatch(/\bListen Now\b|\bAudioObject\b/i);
   });

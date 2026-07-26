@@ -33,8 +33,8 @@ def test_home_curated_payload_is_deterministic_and_tracks_32_reader_titles():
         "sprint1_active_count": 32,
         "reader_enabled_count": 32,
             "approved_audiobook_count": 4,
-        "cover_eligible_count": 19,
-        "omitted_visual_count": 13,
+        "cover_eligible_count": 20,
+        "omitted_visual_count": 12,
     }
     assert first["hero"]["primary_cta"] == {"label": "Start Reading", "url": "/library"}
     assert first["hero"]["secondary_cta"]["url"] == "/library?availability=approved-audiobook"
@@ -168,3 +168,50 @@ def test_frontend_boot_snapshot_exactly_matches_canonical_home_payload():
 
     assert snapshot == build_home_curated_payload()
     assert {book["slug"] for book in snapshot["shelves"]["approved_audiobooks"]} == APPROVED_AUDIO_SLUGS
+
+
+def test_shelf_collage_is_dynamic_canonical_and_deduplicated():
+    payload = build_home_curated_payload()
+    collage = payload["shelf_collage"]
+
+    assert [group["id"] for group in collage["groups"]] == [
+        "bengali-life-and-legacy",
+        "gothic-and-the-uncanny",
+        "love-society-and-human-nature",
+        "adventure-nature-and-wonder",
+        "short-masterpieces",
+    ]
+    assert collage["selected_audiobooks"] == payload["shelves"]["approved_audiobooks"]
+    visible_slugs = [
+        book["slug"]
+        for group in collage["groups"]
+        for book in group["books"]
+    ]
+    assert len(visible_slugs) == len(set(visible_slugs))
+    assert all(book["reader_enabled"] is True for group in collage["groups"] for book in group["books"])
+    assert all(
+        book["cover_alt_text"] == f"{book['title']} by {book['author']}"
+        for group in collage["groups"]
+        for book in group["books"]
+    )
+
+
+def test_shelf_collage_contains_no_customer_facing_governance_copy():
+    collage = build_home_curated_payload()["shelf_collage"]
+    payload_text = json.dumps({
+        "eyebrow": collage["eyebrow"],
+        "title": collage["title"],
+        "description": collage["description"],
+        "groups": [
+            {
+                "title": group["title"],
+                "description": group["description"],
+                "cta_label": group["cta_label"],
+            }
+            for group in collage["groups"]
+        ],
+    }, ensure_ascii=False).lower()
+    assert "release gate" not in payload_text
+    assert "qa_passed" not in payload_text
+    assert "unapproved audio" not in payload_text
+    assert "manifest" not in payload_text

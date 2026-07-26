@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Headphones, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, Headphones, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import BookCoverImage from "./BookCoverImage";
 import { DRACULA_FALLBACK_BOOK } from "../lib/controlledLaunch";
@@ -7,9 +7,9 @@ import { trackFunnelEvent } from "../lib/funnelAnalytics";
 const ACTION_CARDS = [
   {
     icon: Sparkles,
-    eyebrow: "Reader-only live",
-    title: "Bengali Classics",
-    body: "A growing Bengali shelf presented as a complete reading experience: graphical covers, careful type, and audio hidden until every listening gate passes.",
+      eyebrow: "Bengali classics",
+      title: "Bengali Classics",
+      body: "Village life, memory, reform, love, and the emotional landscape of Bengal.",
     cta: "Explore Bengali Library",
     to: "/library?language=bn&availability=reader-ready",
     event: "bengali_card_click",
@@ -24,9 +24,9 @@ const ACTION_CARDS = [
   },
   {
     icon: BookOpen,
-    eyebrow: "English classics",
-    title: "English Classics",
-    body: "Bram Stoker's classic remains available as one polished reading tile, not the whole identity of the homepage.",
+      eyebrow: "English classics",
+      title: "English Classics",
+      body: "Dark houses, divided minds, and mysteries that linger beyond the final page.",
     cta: "Read Dracula",
     to: "/reader/dracula",
     event: "english_card_click",
@@ -34,9 +34,9 @@ const ACTION_CARDS = [
   },
   {
     icon: Headphones,
-    eyebrow: "Release-gated audio",
-    title: "Approved Audiobooks",
-    body: "Listening rooms appear only after endpoint, manifest, sync, QA, and browser evidence are present. Otherwise, audio stays private.",
+      eyebrow: "Selected listening",
+      title: "Approved Audiobooks",
+      body: "Beautifully narrated classics ready to read and hear in the Earnalism reading room.",
     cta: "",
     to: "",
     event: "approved_audio_card_click",
@@ -67,7 +67,7 @@ export default function ComingSoonBoard({ compact = false }) {
               Choose a shelf without losing the quiet.
             </h2>
             <p className="coming-soon-board__text">
-              Bengali reading, English classics, and listening releases each have a clear state. Reading is complete where approved; audio remains hidden until evidence makes it public.
+              Bengali classics, English classics, and selected listening rooms offer three calm ways into the collection.
             </p>
           </div>
 
@@ -99,7 +99,7 @@ export default function ComingSoonBoard({ compact = false }) {
                     </Link>
                   ) : (
                     <div className="coming-soon-board__card-gated" role="note">
-                      Selected listening releases appear after quality gates pass.
+                      Explore the collection at your own pace.
                     </div>
                   )}
                 </div>
@@ -107,24 +107,24 @@ export default function ComingSoonBoard({ compact = false }) {
             ))}
           </div>
 
-          <aside className="coming-soon-board__panel" aria-label="Earnalism release safeguards">
+          <aside className="coming-soon-board__panel" aria-label="Earnalism reading room principles">
             <div className="coming-soon-board__seal">
-              <ShieldCheck size={18} strokeWidth={1.6} aria-hidden="true" />
-              <span>Release truth preserved</span>
+              <Sparkles size={18} strokeWidth={1.6} aria-hidden="true" />
+              <span>Make room for wonder</span>
             </div>
             <div className="coming-soon-board__gate-list">
               <div className="coming-soon-board__gate">
-                <ShieldCheck size={17} strokeWidth={1.55} aria-hidden="true" />
+                <BookOpen size={17} strokeWidth={1.55} aria-hidden="true" />
                 <div>
-                  <h3>No unapproved audio</h3>
-                  <p>Audiobook controls are earned by endpoint, manifest, sync, QA, and browser evidence.</p>
+                  <h3>Read at your pace</h3>
+                  <p>Settle into carefully designed editions with room for a slower kind of attention.</p>
                 </div>
               </div>
               <div className="coming-soon-board__gate">
-                <BookOpen size={17} strokeWidth={1.55} aria-hidden="true" />
+                <Sparkles size={17} strokeWidth={1.55} aria-hidden="true" />
                 <div>
-                  <h3>Reader-first shelves</h3>
-                  <p>Bengali and English classics remain premium even when audio stays hidden.</p>
+                  <h3>Curated for discovery</h3>
+                  <p>Follow a mood, a literary world, or a story that has stayed with readers for generations.</p>
                 </div>
               </div>
             </div>

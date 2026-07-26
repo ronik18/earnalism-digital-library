@@ -44,17 +44,17 @@
       "is_preview": true,
       "has_images": false,
       "image_count": 0,
-      "word_count": 3364,
-      "reading_minutes": 15,
+      "word_count": 3356,
+      "reading_minutes": 14,
       "language_hint": "ben",
       "processing_status": "ready",
       "processing_warnings": [],
       "uploaded_at": "2026-07-03T20:07:46Z",
-      "updated_at": "2026-07-03T20:07:46Z"
+      "updated_at": "2026-07-23T11:10:13Z"
     }
   ],
-  "source_hash": "4603db0d085fd0c3225a4af8988a3f39376cffb3aa66089e0ddbcbac501f7141",
-  "content_hash": "d947615f8d1d1d1157c2bdc56156ad890fddaab521ea9ea7bb3c5ad751683531",
+  "source_hash": "2591896f7fd678dafae394be36f7c60f39f240d5ac74e5806b5570982b5d96d7",
+  "content_hash": "12bc09cce1802df3c03d94ec8dee67e3feedc7fe754887b8e6cdb3acce02e614",
   "provenance_hash": "c204c2faa373044ae1e5476b61cc0102027b5d2615e3bfca930781591c9270db",
   "rights_basis": "Author died 1941. Published 1895. Public domain in India and U.S.",
   "rights_tier": "A",
@@ -82,5 +82,5 @@
   "audiobook": {},
   "audiobook_assets_updated_at": "",
   "created_at": "2026-07-03T20:07:46Z",
-  "updated_at": "2026-07-03T20:07:46Z"
+  "updated_at": "2026-07-23T11:10:13Z"
 }

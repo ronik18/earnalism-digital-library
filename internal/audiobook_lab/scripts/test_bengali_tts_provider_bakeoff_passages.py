@@ -25,6 +25,38 @@ MANUSCRIPT = " ".join(
 
 
 class SingleTitlePassageTests(unittest.TestCase):
+    def test_no_op_judge_blocker_strings_are_not_release_blockers(self) -> None:
+        for value in ("", "None", "null", "N/A", "no blocker", None):
+            self.assertEqual(bakeoff.meaningful_judge_blocker(value), "")
+        self.assertEqual(
+            bakeoff.meaningful_judge_blocker("LISTENING_QA_NOT_RUN"),
+            "LISTENING_QA_NOT_RUN",
+        )
+
+    def test_punctuated_title_page_removes_all_leading_source_metadata(self) -> None:
+        public_book = {
+            "title": "ক্ষুধিত পাষাণ",
+        }
+        manuscript = (
+            "রবীন্দ্রনাথ ঠাকুর\n\n"
+            "গল্প-দশক\n\n"
+            "১৮৯৫ (পৃ. ১৬৫-১৮৮)\n\n"
+            "ক্ষুধিত পাষাণ।\n\n"
+            "গাড়িটি আসিয়া জংশনে থামিলে আমরা অপেক্ষা করিলাম।"
+        )
+        with mock.patch.object(bakeoff, "read_json", return_value=public_book):
+            cleaned = bakeoff.sanitize_bengali_manuscript(manuscript, "book-edfcf810c5")
+        self.assertEqual(cleaned, "গাড়িটি আসিয়া জংশনে থামিলে আমরা অপেক্ষা করিলাম।")
+        self.assertNotIn("গল্প-দশক", cleaned)
+        self.assertNotIn("পৃ.", cleaned)
+
+    def test_private_qa_required_generation_is_ready_for_judging(self) -> None:
+        self.assertTrue(bakeoff.sample_generation_succeeded({"status": "PASS"}))
+        self.assertTrue(
+            bakeoff.sample_generation_succeeded({"status": "PASS_PRIVATE_QA_REQUIRED"})
+        )
+        self.assertFalse(bakeoff.sample_generation_succeeded({"status": "BLOCKED"}))
+
     def test_voice_filter_is_applied_before_sarvam_voice_limit(self) -> None:
         provider_env = {
             "sarvam": {"detected": True},
@@ -58,6 +90,43 @@ class SingleTitlePassageTests(unittest.TestCase):
             selected, source = bakeoff._ensure_probe_mp3(Path(temporary))
         self.assertEqual(selected, probe)
         self.assertEqual(source, "preexisting_short_mp3_probe")
+        run_cmd.assert_not_called()
+
+    @mock.patch.object(bakeoff, "judge_audio_sample_with_vertex")
+    @mock.patch.object(bakeoff, "run_cmd")
+    def test_vertex_quota_probe_accepts_structured_rejection_of_silence(
+        self,
+        run_cmd: mock.Mock,
+        judge: mock.Mock,
+    ) -> None:
+        judge.return_value = {
+            "scores": {"overall_listening_score": 0.0},
+            "confidence": 0.99,
+            "blocker_reason": "No audible narration was present.",
+            "notes": "The silence probe was correctly rejected.",
+            "raw_judgment": {
+                "overall_listening_score": 0.0,
+                "confidence_score": 0.99,
+                "blocker_reason": "No audible narration was present.",
+            },
+        }
+        with tempfile.TemporaryDirectory() as temporary:
+            probe = Path(temporary) / "openai_listening_qa_quota_probe_silence.mp3"
+            probe.write_bytes(b"ID3-private-probe")
+            with mock.patch.dict(
+                bakeoff.os.environ,
+                {
+                    "EARNALISM_LISTENING_QA_PROVIDER": "vertex",
+                    "EARNALISM_ENABLE_LISTENING_QA": "true",
+                    "GOOGLE_APPLICATION_CREDENTIALS": "/tmp/adc.json",
+                    "GOOGLE_CLOUD_PROJECT": "earnalism",
+                },
+                clear=False,
+            ):
+                result = bakeoff.openai_listening_quota_probe(Path(temporary))
+        self.assertEqual(result["status"], "PASS")
+        self.assertTrue(result["available"])
+        self.assertEqual(result["probe_quality_result"], "EXPECTED_NON_RELEASE_SAMPLE_REJECTED")
         run_cmd.assert_not_called()
 
     def test_nishkriti_uses_backend_canonical_chapters_when_root_copy_is_absent(self) -> None:

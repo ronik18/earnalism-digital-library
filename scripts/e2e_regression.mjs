@@ -217,7 +217,7 @@ async function main() {
 
   await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });
   await page.waitForSelector('[data-testid="premium-landing-hero"][data-catalog-state="ready"]', { timeout: 30000 });
-  await page.waitForSelector('[data-testid="curated-action-cards"]', { timeout: 30000 });
+  await page.waitForSelector('[data-testid="curated-shelf-collage"]', { timeout: 30000 });
   await page.waitForTimeout(900);
   const home = await page.evaluate(() => {
     const pipelineCards = [...document.querySelectorAll('[data-testid^="pipeline-card-"]')]
@@ -233,7 +233,16 @@ async function main() {
       viewportWidth: window.innerWidth,
       hasHeroCard: Boolean(document.querySelector('[data-testid="hero-dracula-card"]')),
       hasPremiumHero: Boolean(document.querySelector('[data-testid="premium-landing-hero"]')),
-      hasCuratedActionCards: Boolean(document.querySelector('[data-testid="curated-action-cards"]')),
+      hasCuratedShelfCollage: Boolean(document.querySelector('[data-testid="curated-shelf-collage"]')),
+      shelfGroupCount: document.querySelectorAll('[data-testid^="curated-shelf-tile-"]').length,
+      selectedListeningCount: document.querySelectorAll('.selected-listening-card').length,
+      selectedListeningLinks: [...document.querySelectorAll('.selected-listening-card__cta')]
+        .map((link) => link.getAttribute("href") || ""),
+      hasBengaliShelf: /Bengali Life & Legacy/i.test(document.querySelector('[data-testid="curated-shelf-collage"]')?.textContent || ""),
+      hasGothicShelf: /Gothic & the Uncanny/i.test(document.querySelector('[data-testid="curated-shelf-collage"]')?.textContent || ""),
+      hasInternalCollageCopy: /release gate|QA_PASSED|manifest|unapproved audio|browser gates/i.test(
+        document.querySelector('[data-testid="curated-shelf-collage"]')?.textContent || "",
+      ),
       hasReadingTimePath: Boolean(document.querySelector('[data-testid="reading-time-library-path"]')),
       readingPathPricingHref: document.querySelector('[data-testid="reading-path-pricing-cta"]')?.getAttribute("href"),
       hasKshudhitaPipeline: /Kshudhita Pashan|ক্ষুধিত পাষাণ/i.test(document.querySelector('[data-testid="bengali-gothic-pipeline-shelf"]')?.textContent || ""),
@@ -283,11 +292,18 @@ async function main() {
   });
   assert(!home.hasHeroCard, "retired Dracula-first hero card should not render");
   assert(home.hasPremiumHero, "premium editorial hero is missing");
-  assert(home.hasCuratedActionCards, "curated action cards are missing");
+  assert(home.hasCuratedShelfCollage, "curated shelf collage is missing");
+  assert(home.shelfGroupCount === 5, `curated shelf group count mismatch: ${home.shelfGroupCount}`);
+  assert(home.selectedListeningCount === expectedApprovedAudioSlugs.length, `selected listening count mismatch: ${home.selectedListeningCount}`);
+  assert(home.hasBengaliShelf, "Bengali Life & Legacy shelf is missing");
+  assert(home.hasGothicShelf, "Gothic & the Uncanny shelf is missing");
+  assert(!home.hasInternalCollageCopy, "internal release language leaked into the public shelf collage");
+  assert(
+    JSON.stringify(home.selectedListeningLinks) === JSON.stringify(expectedApprovedAudioSlugs.map((slug) => `/reader/${slug}?listen=1`)),
+    `selected listening links drifted from approved audio truth: ${JSON.stringify(home.selectedListeningLinks)}`,
+  );
   assert(home.hasReadingTimePath, "reading-time library path section is missing");
   assert(home.readingPathPricingHref === "/pricing", `reading path pricing CTA mismatch: ${home.readingPathPricingHref}`);
-  assert(home.hasKshudhitaPipeline, "Kshudhita pipeline feature is missing");
-  assert(home.hasPipelineShelf, "pipeline shelf is missing");
   assert(
     home.headline === "A premium reading and listening sanctuary for timeless Bengali and English classics.",
     `hero headline does not match the approved premium catalog hero: ${home.headline}`,
@@ -316,22 +332,10 @@ async function main() {
     JSON.stringify(home.heroListenLinks) === JSON.stringify(["/reader/sredni-vashtar?listen=1"]),
     `hero listening visual exposed a hidden or fake title: ${JSON.stringify(home.heroListenLinks)}`,
   );
-  assert(home.hasBengaliClassicsCard, "Bengali Classics action card is missing");
-  assert(home.hasEnglishClassicsCard, "English Classics action card is missing");
-  assert(home.hasApprovedAudiobooksCard, "Approved Audiobooks action card is missing");
-  assert(home.bengaliCardHref === "/library?language=bn&availability=reader-ready", `Bengali card CTA mismatch: ${home.bengaliCardHref}`);
-  assert(home.draculaCardHref === "/reader/dracula", `Dracula should be a refined English Classics card CTA, got ${home.draculaCardHref}`);
-  assert(home.approvedAudioCardLinks.length === 0, `approved audio card leaked an unevidenced audio link: ${JSON.stringify(home.approvedAudioCardLinks)}`);
-  assert(
-    home.pipelineRequestUpdateLinkCount > 0,
-    "pipeline shelf should keep unreleased titles on truthful Request Update contact links",
-  );
-  assert(home.unsafePipelineLinks.length === 0, `pipeline cards leaked reader/payment/audio links: ${JSON.stringify(home.unsafePipelineLinks)}`);
   assert(home.staleCarouselCount === 0, "retired controlled launch carousel should not render in the luxury homepage");
   assert(home.staleAudioUnavailableCount === 0, "stale audiobook unavailable note should not render");
   assert(home.legacyLiveCoverCount === 0, "retired live-cover preview cards should not render in the approved landing");
   assert(home.legacyCategoryCardCount === 0, "retired broad category cards should not render in the approved landing");
-  assert(home.legacyBroadReaderLinks.length === 0, `non-Dracula reader links leaked: ${JSON.stringify(home.legacyBroadReaderLinks)}`);
   assert(home.heroCurrentPayCount === 0, "hero Preview & Pay CTA should not render");
   assert(home.railPrimaryPreviewCount === 0, "rail-level Read Preview CTA should not render");
   assert(home.railPrimaryPaymentCount === 0, "rail-level Preview & Pay CTA should not render");

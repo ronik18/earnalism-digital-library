@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Headphones, ShieldCheck, Sparkles } from "lucide-react";
+import { Headphones, Sparkles } from "lucide-react";
 import { api } from "../lib/api";
 import { audiobookReleaseState, readerManifestPath } from "../lib/audioReleaseSafety";
 
@@ -82,13 +82,13 @@ export default function ApprovedAudiobookSpotlight({ slug = DEFAULT_SLUG, compac
         </div>
         <div className="approved-audio-spotlight__copy">
           <div className="approved-audio-spotlight__eyebrow">
-            <ShieldCheck size={14} strokeWidth={1.6} /> Approved listening room
+            <Headphones size={14} strokeWidth={1.6} /> Selected listening
           </div>
           <h2 id="approved-audiobook-spotlight-title">
-            Listen where the release gate is already proven.
+            A classic to read and hear together.
           </h2>
           <p>
-            {book.title} by {book.author} is available with provider-backed audio, measured sync assets, and production reader-manifest approval. Other titles remain reader-only until their evidence passes.
+            {book.title} by {book.author} is ready for an unhurried listening room, with the edition always close at hand.
           </p>
         </div>
         <div className="approved-audio-spotlight__actions">

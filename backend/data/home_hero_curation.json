@@ -42,6 +42,107 @@
     "bengali_classics": 8,
     "english_classics": 8
   },
+  "shelf_collage": {
+    "eyebrow": "CURATED PATHS THROUGH THE LIBRARY",
+    "title": "A shelf for every kind of curiosity.",
+    "description": "Enter rural Bengal, Gothic shadows, enduring love stories, wild adventures, or a masterful short read—each path is curated from the live Earnalism collection.",
+    "groups": [
+      {
+        "id": "bengali-life-and-legacy",
+        "title": "Bengali Life & Legacy",
+        "description": "Village life, memory, reform, love, and the emotional landscape of Bengal.",
+        "cta_label": "Explore Bengali classics",
+        "cta_url": "/library?shelf=bengali-life-and-legacy",
+        "visual_variant": "feature",
+        "icon": "book-open",
+        "limit": 3,
+        "slugs": [
+          "book-2b9853ec52",
+          "pather-panchali",
+          "radharani",
+          "nishkriti",
+          "devdas",
+          "book-edfcf810c5"
+        ]
+      },
+      {
+        "id": "gothic-and-the-uncanny",
+        "title": "Gothic & the Uncanny",
+        "description": "Dark houses, divided minds, and mysteries that linger beyond the final page.",
+        "cta_label": "Enter the uncanny",
+        "cta_url": "/library?shelf=gothic-and-the-uncanny",
+        "visual_variant": "wide",
+        "icon": "moon-star",
+        "limit": 3,
+        "slugs": [
+          "a-ghost-story",
+          "dracula",
+          "jekyll-and-hyde",
+          "picture-of-dorian-gray",
+          "the-tell-tale-heart",
+          "the-masque-of-the-red-death",
+          "the-yellow-wallpaper",
+          "the-monkeys-paw",
+          "sredni-vashtar"
+        ]
+      },
+      {
+        "id": "love-society-and-human-nature",
+        "title": "Love, Society & Human Nature",
+        "description": "Desire, dignity, class, sacrifice, and the choices that define a life.",
+        "cta_label": "Follow the human story",
+        "cta_url": "/library?shelf=love-society-and-human-nature",
+        "visual_variant": "compact",
+        "icon": "heart",
+        "limit": 3,
+        "slugs": [
+          "devdas",
+          "pride-and-prejudice",
+          "the-necklace",
+          "dsires-baby",
+          "the-last-leaf",
+          "radharani",
+          "nishkriti"
+        ]
+      },
+      {
+        "id": "adventure-nature-and-wonder",
+        "title": "Adventure, Nature & Wonder",
+        "description": "Impossible journeys, untamed worlds, and stories built for curiosity.",
+        "cta_label": "Set out from here",
+        "cta_url": "/library?shelf=adventure-nature-and-wonder",
+        "visual_variant": "medium",
+        "icon": "compass",
+        "limit": 3,
+        "slugs": [
+          "the-time-machine",
+          "the-call-of-the-wild",
+          "white-fang",
+          "alices-adventures-in-wonderland",
+          "the-secret-garden"
+        ]
+      },
+      {
+        "id": "short-masterpieces",
+        "title": "Short Masterpieces",
+        "description": "Complete, unforgettable stories for a single thoughtful sitting.",
+        "cta_label": "Choose a short read",
+        "cta_url": "/library?shelf=short-masterpieces",
+        "visual_variant": "medium",
+        "icon": "sparkles",
+        "limit": 3,
+        "slugs": [
+          "the-gift-of-the-magi",
+          "the-open-window",
+          "the-cop-and-the-anthem",
+          "the-last-leaf",
+          "the-necklace",
+          "sredni-vashtar",
+          "the-tell-tale-heart"
+        ]
+      }
+    ]
+  },
   "books": {
     "book-2b9853ec52": {
       "hero_pinned": true,

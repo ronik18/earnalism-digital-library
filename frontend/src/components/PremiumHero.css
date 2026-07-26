@@ -340,8 +340,8 @@
   }
 
   .premium-hero-action:hover {
-    background: rgba(242, 187, 88, 0.06);
-    box-shadow: inset 0 0 0 1px rgba(255, 230, 178, 0.34);
+    background: transparent;
+    box-shadow: none;
   }
 
   .premium-hero-action:focus-visible {

@@ -131,18 +131,23 @@ def _removed_fragment(location: str, reason: str, paragraphs: list[str]) -> dict
     }
 
 
+def _normalized_title_page(value: str) -> str:
+    normalized = unicodedata.normalize("NFC", value).strip().casefold()
+    return re.sub(r"[\s।.!?？]+$", "", normalized)
+
+
 def sanitize_chapter(content: str, *, title: str) -> tuple[str, list[dict[str, Any]]]:
     normalized = unicodedata.normalize("NFC", content.replace("\r\n", "\n").replace("\r", "\n"))
     normalized = normalized.replace("\ufeff", "").replace("\u200b", "").replace("\u00ad", "")
     paragraphs = _paragraphs(normalized)
     removed: list[dict[str, Any]] = []
 
-    exact_title = unicodedata.normalize("NFC", title).strip().casefold()
+    exact_title = _normalized_title_page(title)
     title_index = next(
         (
             index
             for index, paragraph in enumerate(paragraphs[:8])
-            if paragraph.strip().casefold() == exact_title
+            if exact_title and _normalized_title_page(paragraph) == exact_title
         ),
         None,
     )
