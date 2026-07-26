@@ -33,7 +33,10 @@ except ImportError:  # pragma: no cover - package-style imports in tests
 
 MODULE_DIR = Path(__file__).resolve().parent
 DEFAULT_CURATION_CONFIG_PATH = MODULE_DIR / "data" / "home_hero_curation.json"
-GRAPHICAL_COVER_REPORT_PATH = MODULE_DIR.parent / "graphical_cover_generation_report.json"
+GRAPHICAL_COVER_REPORT_PATHS = (
+    MODULE_DIR.parent / "graphical_cover_generation_report.json",
+    MODULE_DIR / "data" / "graphical_cover_generation_report.json",
+)
 PUBLIC_AUDIO_RELEASE_APPROVED = "PUBLIC_AUDIO_RELEASE_APPROVED"
 AUDIO_QA_PASSED = {"APPROVED", "PASS", "PASSED", "QA_PASSED"}
 COVER_AUDIT_BLOCKED_STATUSES = {
@@ -93,7 +96,14 @@ def _first_cover(book: dict[str, Any], *keys: str) -> str:
 @lru_cache(maxsize=1)
 def _cover_visual_exclusions() -> dict[str, dict[str, Any]]:
     """Load checked-in cover exceptions without guessing in React."""
-    report = read_json_file(GRAPHICAL_COVER_REPORT_PATH)
+    report = next(
+        (
+            candidate
+            for path in GRAPHICAL_COVER_REPORT_PATHS
+            if isinstance(candidate := read_json_file(path), dict)
+        ),
+        {},
+    )
     if not isinstance(report, dict):
         return {}
     exclusions: dict[str, dict[str, Any]] = {}
