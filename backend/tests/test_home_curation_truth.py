@@ -22,6 +22,16 @@ def all_payload_books(payload):
     return books
 
 
+def visual_payload_books(payload):
+    books = list(payload["hero"]["featured_books"])
+    books.extend(payload["shelves"].get("reader_favorites", []))
+    books.extend(payload["shelves"].get("bengali_classics", []))
+    books.extend(payload["shelves"].get("english_classics", []))
+    for shelf in payload["shelf_collage"]["groups"]:
+        books.extend(shelf["books"])
+    return books
+
+
 def test_home_curated_payload_is_deterministic_and_tracks_32_reader_titles():
     first = build_home_curated_payload()
     second = build_home_curated_payload()
@@ -33,8 +43,8 @@ def test_home_curated_payload_is_deterministic_and_tracks_32_reader_titles():
         "sprint1_active_count": 32,
         "reader_enabled_count": 32,
             "approved_audiobook_count": 4,
-        "cover_eligible_count": 20,
-        "omitted_visual_count": 12,
+        "cover_eligible_count": 13,
+        "omitted_visual_count": 19,
     }
     assert first["hero"]["primary_cta"] == {"label": "Start Reading", "url": "/library"}
     assert first["hero"]["secondary_cta"]["url"] == "/library?availability=approved-audiobook"
@@ -44,12 +54,12 @@ def test_featured_books_are_the_exact_admin_pinned_canonical_records():
     payload = build_home_curated_payload()
     featured = payload["hero"]["featured_books"]
     assert [book["slug"] for book in featured] == [
-        "book-2b9853ec52",
         "bn-066",
         "radharani",
         "pride-and-prejudice",
-        "sredni-vashtar",
         "nishkriti",
+        "muchiram-gurer-jibanchorit",
+        "book-d19e96859f",
     ]
 
     for book in featured:
@@ -95,9 +105,11 @@ def test_title_mismatched_cover_is_excluded_from_hero_without_changing_audio_gat
     evidence = home_curation_evidence()
     featured_slugs = {book["slug"] for book in evidence["payload"]["hero"]["featured_books"]}
     approved_slugs = {book["slug"] for book in evidence["payload"]["shelves"]["approved_audiobooks"]}
+    catalog_row = next(row for row in evidence["catalog"] if row["slug"] == "a-ghost-story")
 
     assert "a-ghost-story" not in featured_slugs
     assert "a-ghost-story" in approved_slugs
+    assert catalog_row["audiobook_enabled"] is True
     assert any(
         item["slug"] == "a-ghost-story" and "title-mismatched" in item["reason"]
         for item in evidence["omitted"]
@@ -106,11 +118,11 @@ def test_title_mismatched_cover_is_excluded_from_hero_without_changing_audio_gat
 
 def test_missing_cover_titles_are_omitted_from_every_visual_collection():
     evidence = home_curation_evidence()
-    payload_slugs = {book["slug"] for book in all_payload_books(evidence["payload"])}
+    payload_slugs = {book["slug"] for book in visual_payload_books(evidence["payload"])}
     omitted_for_cover = {
         item["slug"]
         for item in evidence["omitted"]
-        if item["reason"] == "canonical front cover is missing"
+        if "cover truth" in item["reason"]
     }
 
     assert omitted_for_cover
@@ -181,6 +193,20 @@ def test_shelf_collage_is_dynamic_canonical_and_deduplicated():
         "adventure-nature-and-wonder",
         "short-masterpieces",
     ]
+    assert [group["layout_area"] for group in collage["groups"]] == [
+        "bengali",
+        "gothic",
+        "love",
+        "adventure",
+        "short",
+    ]
+    assert [group["accent"] for group in collage["groups"]] == [
+        "bengali",
+        "gothic",
+        "love",
+        "adventure",
+        "short",
+    ]
     assert collage["selected_audiobooks"] == payload["shelves"]["approved_audiobooks"]
     visible_slugs = [
         book["slug"]
@@ -193,6 +219,46 @@ def test_shelf_collage_is_dynamic_canonical_and_deduplicated():
         book["cover_alt_text"] == f"{book['title']} by {book['author']}"
         for group in collage["groups"]
         for book in group["books"]
+    )
+    assert all(
+        book["cover_valid"] is True
+        and book["is_placeholder"] is False
+        and book["is_typographic_only"] is False
+        and book["canonical_cover_match"] is True
+        for group in collage["groups"]
+        for book in group["books"]
+    )
+
+
+def test_shelf_collage_rejects_metadata_marked_placeholder_covers():
+    books = [{
+        "slug": "placeholder",
+        "reader_enabled": True,
+        "front_cover_url": "https://cdn.example.com/placeholder.png",
+        "cover_valid": False,
+        "is_placeholder": True,
+    }, {
+        "slug": "canonical",
+        "reader_enabled": True,
+        "front_cover_url": "https://cdn.example.com/canonical.png",
+        "cover_valid": True,
+    }]
+
+    assert [book["slug"] for book in select_curated_books(books, 2)] == ["canonical"]
+
+
+def test_shelf_collage_rejects_checked_in_runtime_graphical_fallbacks():
+    payload = build_home_curated_payload()
+    visible_slugs = {
+        book["slug"]
+        for group in payload["shelf_collage"]["groups"]
+        for book in group["books"]
+    }
+    assert "book-2b9853ec52" not in visible_slugs
+    assert any(
+        item["slug"] == "book-2b9853ec52"
+        and "cover truth" in item["reason"]
+        for item in home_curation_evidence()["omitted"]
     )
 
 

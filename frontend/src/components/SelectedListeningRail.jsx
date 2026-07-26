@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { ArrowRight, Headphones } from "lucide-react";
 import { Link } from "react-router-dom";
 import BookCoverImage from "./BookCoverImage";
 
 export default function SelectedListeningRail({ books = [] }) {
-  if (!books.length) return null;
+  const [failedSlugs, setFailedSlugs] = useState(() => new Set());
+  const visibleBooks = books.filter((book) => book?.slug && !failedSlugs.has(book.slug));
+  if (!visibleBooks.length) return null;
 
   return (
     <section className="selected-listening-rail" aria-labelledby="selected-listening-title">
@@ -11,11 +14,10 @@ export default function SelectedListeningRail({ books = [] }) {
         <div>
           <div className="selected-listening-rail__eyebrow">
             <Headphones size={15} strokeWidth={1.55} aria-hidden="true" />
-            Selected Listening
+            LISTENING ROOMS
           </div>
-          <h2 id="selected-listening-title" data-testid="selected-listening-title">
-            Beautifully narrated classics ready to read and hear.
-          </h2>
+          <h2 id="selected-listening-title" data-testid="selected-listening-title">Selected Listening</h2>
+          <p className="selected-listening-rail__supporting-copy">Beautifully narrated classics ready to read and hear.</p>
         </div>
         <Link className="selected-listening-rail__browse" to="/library?availability=approved-audiobook">
           See the listening shelf <ArrowRight size={15} strokeWidth={1.6} aria-hidden="true" />
@@ -23,7 +25,7 @@ export default function SelectedListeningRail({ books = [] }) {
       </div>
 
       <ul className="selected-listening-rail__items" aria-label="Selected audiobooks">
-        {books.map((book) => (
+        {visibleBooks.map((book) => (
           <li className="selected-listening-card" key={book.slug}>
             <Link
               className="selected-listening-card__cover-link"
@@ -39,6 +41,8 @@ export default function SelectedListeningRail({ books = [] }) {
                 sizes="(min-width: 768px) 10vw, 30vw"
                 className="selected-listening-card__cover"
                 loading="lazy"
+                allowGraphicalFallback={false}
+                onImageError={() => setFailedSlugs((current) => new Set([...current, book.slug]))}
               />
             </Link>
             <div className="selected-listening-card__copy">

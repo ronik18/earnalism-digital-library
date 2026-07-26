@@ -14,6 +14,10 @@ const listeningSource = fs.readFileSync(
   path.join(process.cwd(), "src/components/SelectedListeningRail.jsx"),
   "utf8",
 );
+const stylesSource = fs.readFileSync(
+  path.join(process.cwd(), "src/components/CuratedShelfCollage.css"),
+  "utf8",
+);
 
 const readerBook = {
   slug: "reader-book",
@@ -86,5 +90,54 @@ describe("CuratedShelfCollage", () => {
     });
     expect(listeningSource).toContain("Listen in Reader");
     expect(componentSource).not.toMatch(/release gate|QA_PASSED|unapproved audio|manifest|endpoint/i);
+  });
+
+  test("uses explicit editorial areas and responsive two-column composition", () => {
+    expect(stylesSource).toContain('grid-template-areas:\n    "bengali bengali bengali bengali bengali bengali gothic gothic gothic love love love"');
+    expect(stylesSource).toContain('"bengali bengali"\n      "gothic love"\n      "adventure short"');
+    expect(stylesSource).toContain('"bengali"\n      "gothic"\n      "love"\n      "adventure"\n      "short"');
+    expect(stylesSource).toContain('"bengali bengali"\n      "gothic love"\n      "adventure adventure"');
+    expect(componentSource).toContain('curated-shelf-collage--missing-short');
+    expect(stylesSource).toContain("grid-area: var(--shelf-area)");
+    expect(tileSource).toContain("data-layout-area={group.layout_area");
+  });
+
+  test("filters placeholder metadata and keeps the collage free of graphical fallbacks", () => {
+    const normalized = normalizeHomeCuration({
+      shelf_collage: {
+        groups: [{
+          id: "test-shelf",
+          title: "A Test Shelf",
+          books: [{ ...readerBook, cover_valid: false, is_placeholder: true }, { ...readerBook, slug: "reader-book-valid", cover_valid: true }],
+        }],
+      },
+    });
+
+    expect(normalized.shelf_collage.groups[0].books).toHaveLength(1);
+    expect(normalized.shelf_collage.groups[0].books[0].slug).toBe("reader-book-valid");
+    expect(tileSource).toContain("allowGraphicalFallback={false}");
+    expect(listeningSource).toContain("allowGraphicalFallback={false}");
+  });
+
+  test("uses canonical counts, routes, and selected listening only", () => {
+    const normalized = normalizeHomeCuration({
+      shelf_collage: {
+        groups: [{
+          id: "short-masterpieces",
+          layout_area: "short",
+          accent: "short",
+          book_count: 2,
+          books: [readerBook, { ...readerBook, slug: "second", title: "Second Book", book_url: "/book/second" }],
+        }],
+        selected_audiobooks: [approvedBook, readerBook],
+      },
+    });
+
+    expect(normalized.shelf_collage.groups[0]).toMatchObject({
+      book_count: 2,
+      layout_area: "short",
+      accent: "short",
+    });
+    expect(normalized.shelf_collage.selected_audiobooks.map((book) => book.slug)).toEqual(["approved-book"]);
   });
 });

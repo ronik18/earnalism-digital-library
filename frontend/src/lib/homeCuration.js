@@ -15,6 +15,21 @@ export function isSafeHeroCoverUrl(value) {
   }
 }
 
+export function isEligibleCuratedCover(book = {}) {
+  const coverAuditStatus = String(book.cover_audit_status || "").trim().toUpperCase();
+  return Boolean(
+    isSafeHeroCoverUrl(book.front_cover_url)
+    && book.cover_valid !== false
+    && book.canonical_cover_match !== false
+    && book.is_placeholder !== true
+    && book.is_typographic_only !== true
+    && !coverAuditStatus.includes("PLACEHOLDER")
+    && !coverAuditStatus.includes("TYPOGRAPHIC")
+    && !coverAuditStatus.includes("MISSING")
+    && !coverAuditStatus.includes("REPAIR_REQUIRED"),
+  );
+}
+
 export function isApprovedHomeAudiobook(book = {}) {
   const slug = String(book.slug || "").trim();
   const releaseStatus = String(book.audiobook_release_gate || "").trim().toUpperCase();
@@ -76,7 +91,7 @@ function normalizeShelfGroups(value) {
   return groups
     .map((group) => {
       if (!group || typeof group !== "object") return null;
-      const books = normalizeBookList(group.books);
+      const books = normalizeBookList(group.books).filter(isEligibleCuratedCover);
       if (!books.length) return null;
       return {
         id: String(group.id || "").trim(),
@@ -87,6 +102,9 @@ function normalizeShelfGroups(value) {
         cta_label: String(group.cta_label || "Explore the library").trim(),
         cta_url: String(group.cta_url || "/library").trim(),
         visual_variant: String(group.visual_variant || "medium").trim(),
+        accent: String(group.accent || "burgundy").trim(),
+        layout_area: String(group.layout_area || group.id || "shelf").trim(),
+        editorial_line: String(group.editorial_line || "").trim(),
         icon: String(group.icon || "book-open").trim(),
       };
     })
@@ -101,9 +119,9 @@ export function normalizeHomeCuration(payload = {}) {
     : {};
   const source = payload.source && typeof payload.source === "object" ? payload.source : {};
   const approvedAudiobooks = normalizeBookList(shelves.approved_audiobooks)
-    .filter((book) => book.audiobook_enabled);
+    .filter((book) => book.audiobook_enabled && isEligibleCuratedCover(book));
   const collageAudiobooks = normalizeBookList(shelfCollage.selected_audiobooks)
-    .filter((book) => book.audiobook_enabled);
+    .filter((book) => book.audiobook_enabled && isEligibleCuratedCover(book));
 
   return {
     hero: {

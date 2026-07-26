@@ -4,17 +4,17 @@
   --collage-burgundy: var(--color-burgundy, #5a1f2b);
   --collage-burgundy-deep: var(--color-burgundy-deep, #351018);
   --collage-gold: var(--color-gold, #b58a45);
-  --collage-forest: var(--color-sage, #546a55);
   position: relative;
   overflow: clip;
-  padding: clamp(4rem, 7vw, 7rem) 1.25rem clamp(4.5rem, 8vw, 7.5rem);
+  padding: clamp(4.5rem, 7vw, 6.5rem) 1.25rem clamp(4.5rem, 7vw, 6.5rem);
   color: var(--brand-charcoal);
   background:
-    radial-gradient(circle at 3% 0%, rgba(181, 138, 69, 0.2), transparent 24rem),
+    linear-gradient(180deg, rgba(36, 23, 19, 0.52) 0, rgba(36, 23, 19, 0.08) 4.5rem, transparent 8rem),
+    radial-gradient(circle at 3% 12%, rgba(181, 138, 69, 0.2), transparent 24rem),
     radial-gradient(circle at 97% 32%, rgba(90, 31, 43, 0.08), transparent 28rem),
-    linear-gradient(180deg, var(--collage-ivory) 0%, #f0e3d0 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.72);
+    linear-gradient(180deg, #e7d6bb 0, var(--collage-ivory) 8rem, #f0e3d0 100%);
   border-bottom: 1px solid rgba(181, 138, 69, 0.25);
+  box-shadow: inset 0 8px 24px -22px rgba(36, 23, 19, 0.9);
 }
 
 .curated-shelf-collage::before {
@@ -34,7 +34,7 @@
 }
 
 .curated-shelf-collage__intro {
-  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 1.5rem;
 }
 
 .curated-shelf-collage__eyebrow,
@@ -43,9 +43,9 @@
   align-items: center;
   gap: 0.75rem;
   color: var(--collage-gold);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 650;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   line-height: 1.3;
   text-transform: uppercase;
 }
@@ -58,10 +58,10 @@
 }
 
 .curated-shelf-collage__intro-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(13rem, 5fr);
   align-items: end;
-  justify-content: space-between;
-  gap: 2rem;
+  gap: clamp(1.5rem, 4vw, 4.5rem);
   margin-top: 1rem;
 }
 
@@ -70,17 +70,17 @@
   max-width: 17ch;
   color: var(--collage-burgundy);
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.65rem);
   font-weight: 400;
   letter-spacing: -0.025em;
-  line-height: 0.98;
+  line-height: 1;
 }
 
 .curated-shelf-collage__intro p {
-  max-width: 46rem;
-  margin-top: 1.1rem;
+  max-width: 66ch;
+  margin-top: 1rem;
   color: rgba(51, 40, 33, 0.72);
-  font-size: clamp(0.96rem, 1.25vw, 1.08rem);
+  font-size: clamp(0.96rem, 1.1vw, 1.08rem);
   line-height: 1.6;
 }
 
@@ -89,12 +89,13 @@
 .curated-shelf-tile__cta,
 .selected-listening-card__cta {
   display: inline-flex;
+  min-height: 2.75rem;
   align-items: center;
   gap: 0.48rem;
   color: var(--collage-burgundy);
   font-size: 0.72rem;
   font-weight: 650;
-  letter-spacing: 0.11em;
+  letter-spacing: 0.1em;
   line-height: 1.35;
   text-decoration: none;
   text-transform: uppercase;
@@ -102,8 +103,8 @@
 }
 
 .curated-shelf-collage__library-link {
-  flex: 0 0 auto;
-  min-height: 2.8rem;
+  align-self: end;
+  justify-self: end;
   padding: 0.75rem 1rem;
   border: 1px solid rgba(90, 31, 43, 0.28);
   border-radius: 999px;
@@ -118,67 +119,118 @@
   transform: translateY(-2px);
 }
 
+.curated-shelf-collage__divider {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.curated-shelf-collage__divider::before,
+.curated-shelf-collage__divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(181, 138, 69, 0.36));
+}
+
+.curated-shelf-collage__divider::after {
+  background: linear-gradient(90deg, rgba(181, 138, 69, 0.36), transparent);
+}
+
+.curated-shelf-collage__divider span {
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 1px solid var(--collage-gold);
+  transform: rotate(45deg);
+}
+
 .curated-shelf-collage__grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: clamp(0.8rem, 1.7vw, 1.35rem);
+  grid-template-rows: repeat(2, 21rem);
+  grid-template-areas:
+    "bengali bengali bengali bengali bengali bengali gothic gothic gothic love love love"
+    "bengali bengali bengali bengali bengali bengali adventure adventure adventure short short short";
+  gap: 1.6rem;
+  align-items: stretch;
+}
+
+/* Collapse a catalog-defect shelf without leaving an empty editorial quadrant. */
+.curated-shelf-collage--missing-short .curated-shelf-collage__grid {
+  grid-template-areas:
+    "bengali bengali bengali bengali bengali bengali gothic gothic gothic love love love"
+    "bengali bengali bengali bengali bengali bengali adventure adventure adventure adventure adventure adventure";
 }
 
 .curated-shelf-tile {
+  --tile-accent: var(--collage-burgundy);
+  --tile-tint: rgba(90, 31, 43, 0.06);
   position: relative;
   isolation: isolate;
-  display: flex;
+  display: grid;
   min-width: 0;
-  flex-direction: column;
-  min-height: 22rem;
+  min-height: 0;
+  height: 100%;
+  grid-area: var(--shelf-area);
+  grid-template-rows: auto auto minmax(3.7rem, auto) minmax(0, 1fr) auto;
   overflow: hidden;
-  padding: clamp(1.15rem, 2.3vw, 1.8rem);
-  border: 1px solid rgba(181, 138, 69, 0.3);
-  border-radius: 1.1rem;
+  padding: clamp(1.2rem, 2vw, 1.55rem);
+  border: 1px solid rgba(181, 138, 69, 0.32);
+  border-radius: 1.55rem;
   background:
-    linear-gradient(145deg, rgba(255, 252, 244, 0.9), rgba(239, 226, 204, 0.78)),
-    radial-gradient(circle at 90% 0%, rgba(90, 31, 43, 0.1), transparent 16rem);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), 0 30px 60px -48px rgba(53, 16, 24, 0.78);
+    linear-gradient(145deg, rgba(255, 252, 244, 0.94), rgba(239, 226, 204, 0.82)),
+    radial-gradient(circle at 92% 4%, var(--tile-tint), transparent 16rem);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 30px 60px -48px rgba(53, 16, 24, 0.78);
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
 .curated-shelf-tile::after {
   content: "";
   position: absolute;
-  inset: auto -3rem -4rem auto;
+  right: -3rem;
+  bottom: -4rem;
   width: 13rem;
   height: 13rem;
-  border: 1px solid rgba(181, 138, 69, 0.18);
+  border: 1px solid color-mix(in srgb, var(--tile-accent) 20%, transparent);
   border-radius: 50%;
-  box-shadow: 0 0 0 1rem rgba(181, 138, 69, 0.035), 0 0 0 2rem rgba(181, 138, 69, 0.025);
+  box-shadow: 0 0 0 1rem color-mix(in srgb, var(--tile-accent) 4%, transparent), 0 0 0 2rem color-mix(in srgb, var(--tile-accent) 3%, transparent);
   pointer-events: none;
 }
 
 .curated-shelf-tile:hover {
   transform: translateY(-3px);
-  border-color: rgba(181, 138, 69, 0.58);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), 0 36px 68px -48px rgba(53, 16, 24, 0.88);
+  border-color: color-mix(in srgb, var(--tile-accent) 60%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 36px 68px -48px rgba(53, 16, 24, 0.88);
 }
 
-.curated-shelf-tile--feature {
-  grid-column: span 5;
-  grid-row: span 2;
-  min-height: 40rem;
+.curated-shelf-tile--accent-bengali {
+  --tile-accent: #7b5634;
+  --tile-tint: rgba(33, 59, 46, 0.13);
+  border-radius: 1.8rem;
   background:
-    linear-gradient(145deg, rgba(255, 252, 244, 0.92), rgba(232, 214, 187, 0.9)),
-    radial-gradient(circle at 10% 100%, rgba(33, 59, 46, 0.13), transparent 20rem);
+    linear-gradient(145deg, rgba(255, 252, 244, 0.96), rgba(232, 214, 187, 0.9)),
+    radial-gradient(circle at 10% 100%, var(--tile-tint), transparent 20rem);
 }
 
-.curated-shelf-tile--wide {
-  grid-column: span 4;
+.curated-shelf-tile--accent-gothic {
+  --tile-accent: #6a3b55;
+  --tile-tint: rgba(70, 31, 65, 0.1);
 }
 
-.curated-shelf-tile--compact {
-  grid-column: span 3;
+.curated-shelf-tile--accent-love {
+  --tile-accent: #986a63;
+  --tile-tint: rgba(152, 106, 99, 0.09);
 }
 
-.curated-shelf-tile--medium {
-  grid-column: span 4;
+.curated-shelf-tile--accent-adventure {
+  --tile-accent: #3e526d;
+  --tile-tint: rgba(38, 50, 74, 0.1);
+}
+
+.curated-shelf-tile--accent-short {
+  --tile-accent: #a47735;
+  --tile-tint: rgba(181, 138, 69, 0.11);
 }
 
 .curated-shelf-tile__topline {
@@ -192,69 +244,100 @@
 
 .curated-shelf-tile__icon {
   display: inline-grid;
-  width: 2.55rem;
-  height: 2.55rem;
+  width: 2.8rem;
+  height: 2.8rem;
   place-items: center;
-  border: 1px solid rgba(181, 138, 69, 0.45);
+  border: 1px solid color-mix(in srgb, var(--tile-accent) 55%, transparent);
   border-radius: 50%;
-  color: var(--collage-gold);
-  background: rgba(255, 250, 238, 0.4);
+  color: var(--tile-accent);
+  background: color-mix(in srgb, var(--tile-accent) 8%, transparent);
 }
 
 .curated-shelf-tile__count {
-  color: rgba(90, 31, 43, 0.6);
-  font-size: 0.65rem;
+  color: color-mix(in srgb, var(--tile-accent) 75%, var(--brand-charcoal));
+  font-size: 0.72rem;
   font-weight: 650;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-align: right;
 }
 
 .curated-shelf-tile h3 {
   position: relative;
   z-index: 1;
-  max-width: 13ch;
-  margin-top: 1.25rem;
+  display: -webkit-box;
+  max-width: 14ch;
+  min-height: 3.1em;
+  margin-top: 1rem;
+  overflow: hidden;
   color: var(--collage-burgundy);
   font-family: var(--font-display);
-  font-size: clamp(1.65rem, 2.5vw, 2.45rem);
+  font-size: clamp(1.55rem, 2.15vw, 2rem);
   font-weight: 500;
   letter-spacing: -0.015em;
-  line-height: 0.98;
+  line-height: 1.04;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .curated-shelf-tile__description {
   position: relative;
   z-index: 1;
   max-width: 34ch;
-  margin-top: 0.85rem;
-  color: rgba(51, 40, 33, 0.7);
-  font-size: 0.86rem;
-  line-height: 1.55;
+  min-height: 3.25rem;
+  margin-top: 0.45rem;
+  color: rgba(51, 40, 33, 0.72);
+  font-size: 0.84rem;
+  line-height: 1.48;
+}
+
+.curated-shelf-tile__editorial-line {
+  position: relative;
+  z-index: 1;
+  max-width: 38ch;
+  margin-top: 0.3rem;
+  color: color-mix(in srgb, var(--tile-accent) 70%, var(--brand-charcoal));
+  font-size: 0.75rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.curated-shelf-tile__cover-stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 0;
+  align-items: end;
+  margin-top: 0.5rem;
 }
 
 .curated-shelf-tile__covers {
-  position: relative;
-  z-index: 1;
   display: flex;
-  align-items: flex-end;
+  min-height: 9.5rem;
+  align-items: end;
   justify-content: center;
-  min-height: 12rem;
-  margin: auto -0.2rem 1.2rem;
-  padding-top: 1.4rem;
+  margin: 0 0 0.85rem;
+  padding: 1rem 0.5rem 0;
   list-style: none;
   perspective: 900px;
 }
 
 .curated-shelf-tile__cover-item {
   position: relative;
-  width: clamp(4.8rem, 8.2vw, 8.4rem);
-  margin-left: -0.9rem;
-  transform: translateY(calc(var(--cover-order) * 0.08rem)) rotate(calc((var(--cover-order) - 1) * 1.4deg));
+  width: clamp(4.25rem, 6.9vw, 6.7rem);
+  margin-left: -0.8rem;
+  transform: translateY(calc(var(--cover-order) * 0.08rem)) rotate(calc((var(--cover-order) - 1) * 1.35deg));
   transition: transform 220ms ease, z-index 220ms ease;
 }
 
 .curated-shelf-tile__cover-item:first-child {
   margin-left: 0;
+}
+
+.curated-shelf-tile__cover-item--dominant {
+  width: clamp(5.1rem, 8vw, 7.8rem);
+  z-index: 2;
+  transform: translateY(-0.3rem) rotate(0deg);
 }
 
 .curated-shelf-tile__cover-item:hover {
@@ -266,8 +349,8 @@
   display: block;
   aspect-ratio: 2 / 3;
   overflow: hidden;
-  border: 1px solid rgba(181, 138, 69, 0.46);
-  border-radius: 0.46rem;
+  border: 1px solid color-mix(in srgb, var(--tile-accent) 55%, transparent);
+  border-radius: 0.52rem;
   background: var(--collage-burgundy-deep);
   box-shadow: 0 22px 32px -23px rgba(36, 23, 19, 0.9), 0 0 0 3px rgba(255, 252, 244, 0.2);
 }
@@ -277,44 +360,47 @@
   height: 100%;
   display: block;
   border-radius: inherit;
+  object-fit: cover;
+}
+
+.curated-shelf-tile__plinth {
+  display: block;
+  height: 1px;
+  margin-inline: 0.5rem;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--tile-accent) 60%, transparent), transparent);
+  box-shadow: 0 0.6rem 1.1rem color-mix(in srgb, var(--tile-accent) 18%, transparent);
 }
 
 .curated-shelf-tile__cta {
   position: relative;
   z-index: 1;
-  margin-top: auto;
-  padding-top: 0.85rem;
-  border-top: 1px solid rgba(181, 138, 69, 0.26);
+  justify-content: space-between;
+  margin-top: 0.85rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid color-mix(in srgb, var(--tile-accent) 35%, transparent);
+  color: var(--tile-accent);
 }
 
-.curated-shelf-tile--feature .curated-shelf-tile__covers {
-  min-height: 17rem;
-}
-
-.curated-shelf-tile--feature .curated-shelf-tile__cover-item {
-  width: clamp(6.2rem, 10vw, 10rem);
-}
-
-.curated-shelf-tile--compact {
-  --collage-burgundy: var(--collage-forest);
+.curated-shelf-tile--accent-bengali .curated-shelf-tile__cover-item--dominant {
+  width: clamp(6rem, 9.5vw, 9rem);
 }
 
 .selected-listening-rail {
-  margin-top: clamp(2rem, 4vw, 3.5rem);
-  padding: clamp(1.35rem, 3.5vw, 2.4rem);
-  border: 1px solid rgba(181, 138, 69, 0.4);
-  border-radius: 1.25rem;
+  margin-top: clamp(2rem, 3.5vw, 3rem);
+  padding: clamp(1.45rem, 3vw, 2.25rem);
+  border: 1px solid rgba(181, 138, 69, 0.46);
+  border-radius: 1.7rem;
   background:
-    linear-gradient(135deg, rgba(53, 16, 24, 0.97), rgba(36, 23, 19, 0.98)),
+    linear-gradient(135deg, rgba(53, 16, 24, 0.98), rgba(36, 23, 19, 0.98)),
     radial-gradient(circle at 88% 0%, rgba(181, 138, 69, 0.22), transparent 22rem);
   color: var(--collage-ivory);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 36px 66px -48px rgba(53, 16, 24, 0.9);
 }
 
 .selected-listening-rail__heading {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
-  justify-content: space-between;
   gap: 2rem;
 }
 
@@ -324,13 +410,20 @@
 
 .selected-listening-rail h2 {
   max-width: 19ch;
-  margin-top: 0.8rem;
+  margin-top: 0.7rem;
   color: #fff8e8;
-  font-size: clamp(2rem, 3.4vw, 3.15rem);
+  font-size: clamp(2rem, 3.2vw, 3rem);
+}
+
+.selected-listening-rail__supporting-copy {
+  margin-top: 0.55rem;
+  color: rgba(255, 248, 232, 0.72);
+  font-size: 0.94rem;
+  line-height: 1.55;
 }
 
 .selected-listening-rail__browse {
-  flex: 0 0 auto;
+  justify-self: end;
   color: #f0d49a;
 }
 
@@ -338,19 +431,19 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.9rem;
-  margin-top: 1.8rem;
+  margin-top: 1.7rem;
   list-style: none;
 }
 
 .selected-listening-card {
   display: grid;
-  grid-template-columns: minmax(4.2rem, 5.2rem) minmax(0, 1fr);
+  grid-template-columns: minmax(4rem, 4.8rem) minmax(0, 1fr);
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.85rem;
   min-width: 0;
-  padding: 0.75rem;
-  border: 1px solid rgba(222, 195, 141, 0.2);
-  border-radius: 0.9rem;
+  padding: 0.7rem;
+  border: 1px solid rgba(222, 195, 141, 0.22);
+  border-radius: 1rem;
   background: rgba(255, 248, 232, 0.06);
 }
 
@@ -366,6 +459,7 @@
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: cover;
 }
 
 .selected-listening-card__copy {
@@ -374,24 +468,28 @@
 
 .selected-listening-card__language {
   color: #dec38d;
-  font-size: 0.57rem;
+  font-size: 0.59rem;
   font-weight: 650;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   line-height: 1.3;
   text-transform: uppercase;
 }
 
 .selected-listening-card h3 {
-  margin-top: 0.45rem;
+  display: -webkit-box;
+  margin-top: 0.42rem;
+  overflow: hidden;
   color: #fff8e8;
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.18rem;
   font-weight: 500;
-  line-height: 1.03;
+  line-height: 1.05;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .selected-listening-card p {
-  margin-top: 0.35rem;
+  margin-top: 0.32rem;
   overflow: hidden;
   color: rgba(255, 248, 232, 0.68);
   font-size: 0.7rem;
@@ -401,10 +499,10 @@
 }
 
 .selected-listening-card__cta {
-  margin-top: 0.75rem;
+  margin-top: 0.62rem;
   color: #f0d49a;
-  font-size: 0.6rem;
-  letter-spacing: 0.08em;
+  font-size: 0.61rem;
+  letter-spacing: 0.07em;
 }
 
 .curated-shelf-collage a:focus-visible {
@@ -412,18 +510,21 @@
   outline-offset: 4px;
 }
 
-@media (max-width: 1100px) {
-  .curated-shelf-tile--feature {
-    grid-column: span 6;
+@media (max-width: 1279px) and (min-width: 768px) {
+  .curated-shelf-collage__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(20rem, auto));
+    grid-template-areas:
+      "bengali bengali"
+      "gothic love"
+      "adventure short";
   }
 
-  .curated-shelf-tile--wide,
-  .curated-shelf-tile--medium {
-    grid-column: span 6;
-  }
-
-  .curated-shelf-tile--compact {
-    grid-column: span 6;
+  .curated-shelf-collage--missing-short .curated-shelf-collage__grid {
+    grid-template-areas:
+      "bengali bengali"
+      "gothic love"
+      "adventure adventure";
   }
 
   .selected-listening-rail__items {
@@ -438,34 +539,56 @@
 
   .curated-shelf-collage__intro-row,
   .selected-listening-rail__heading {
+    display: flex;
     align-items: flex-start;
     flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .curated-shelf-collage h2 {
+    font-size: clamp(2rem, 9vw, 2.8rem);
   }
 
   .curated-shelf-collage__library-link,
   .selected-listening-rail__browse {
     align-self: flex-start;
+    justify-self: auto;
   }
 
   .curated-shelf-collage__grid {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-template-areas:
+      "bengali"
+      "gothic"
+      "love"
+      "adventure"
+      "short";
+    gap: 1rem;
   }
 
-  .curated-shelf-tile--feature,
-  .curated-shelf-tile--wide,
-  .curated-shelf-tile--compact,
-  .curated-shelf-tile--medium {
-    grid-column: auto;
-    min-height: 21rem;
+  .curated-shelf-collage--missing-short .curated-shelf-collage__grid {
+    grid-template-areas:
+      "bengali"
+      "gothic"
+      "love"
+      "adventure";
   }
 
-  .curated-shelf-tile--feature .curated-shelf-tile__covers {
-    min-height: 13rem;
+  .curated-shelf-tile {
+    min-height: 22rem;
   }
 
-  .curated-shelf-tile--feature .curated-shelf-tile__cover-item,
+  .curated-shelf-tile--accent-bengali {
+    min-height: 25rem;
+  }
+
   .curated-shelf-tile__cover-item {
-    width: clamp(5.4rem, 23vw, 7.5rem);
+    width: clamp(4.7rem, 20vw, 7rem);
+  }
+
+  .curated-shelf-tile--accent-bengali .curated-shelf-tile__cover-item--dominant {
+    width: clamp(5.7rem, 24vw, 8rem);
   }
 
   .selected-listening-rail__items {

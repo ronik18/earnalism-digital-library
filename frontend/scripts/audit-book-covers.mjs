@@ -20,6 +20,19 @@ const FRONT_FIELDS = ["cover_image_url", "cover_url", "thumbnail_url", "front_co
 const BACK_FIELDS = ["back_cover_image_url", "back_cover_url", "back_cover_thumbnail_url", "backCoverImage"];
 const FALLBACK_DIMENSIONS = { width: 900, height: 1200 };
 
+// Owner-reviewed visual exceptions. These are evidence-backed cover defects,
+// not a frontend filename denylist: the public collage must omit them until
+// canonical artwork is replaced or title linkage is corrected.
+const VISUAL_COVER_EXCLUSIONS = new Map([
+  ["a-ghost-story", { kind: "canonical_cover_mismatch", reason: "Current canonical image is titled Bharat at the Crossroads and cannot represent A Ghost Story." }],
+  ["book-2b9853ec52", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
+  ["dsires-baby", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
+  ["sredni-vashtar", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
+  ["the-cop-and-the-anthem", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
+  ["the-gift-of-the-magi", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
+  ["the-open-window", { kind: "visual_placeholder", reason: "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif." }],
+]);
+
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
@@ -354,6 +367,7 @@ function rowFor(entry) {
   const typographyOnly = front.typographyOnly || back.typographyOnly;
   const broken = front.broken || back.broken;
   const tooHeavy = front.tooHeavy || back.tooHeavy;
+  const visualExclusion = VISUAL_COVER_EXCLUSIONS.get(normalizeSlug(slug));
   const repairRequired = typographyOnly || broken || tooHeavy || front.status === "GRAPHICAL_COVER_REPAIR_REQUIRED" || back.status === "GRAPHICAL_COVER_REPAIR_REQUIRED";
   return {
     slug,
@@ -384,7 +398,10 @@ function rowFor(entry) {
     cover_is_graphical_content_themed: !typographyOnly && !broken,
     cover_broken_or_404: broken,
     cover_too_heavy: tooHeavy,
-    cover_stale_or_mismatched: false,
+    cover_stale_or_mismatched: visualExclusion?.kind === "canonical_cover_mismatch",
+    cover_is_visual_placeholder: visualExclusion?.kind === "visual_placeholder",
+    cover_visual_exclusion_reason: visualExclusion?.reason || "",
+    canonical_cover_match: visualExclusion?.kind !== "canonical_cover_mismatch",
     cover_cropped_or_clipped_in_ui: false,
     front_back_pair_exists: true,
     front_cover_status: front.status,
@@ -434,6 +451,7 @@ const summary = {
   missing_physical_cover_sources_using_graphical_fallback: rows.filter((row) => row.front_uses_runtime_fallback || row.back_uses_runtime_fallback).length,
   broken_cover_sources: rows.filter((row) => row.cover_broken_or_404).length,
   too_heavy_local_covers: rows.filter((row) => row.cover_too_heavy).length,
+  visual_placeholder_covers_blocked: rows.filter((row) => row.cover_is_visual_placeholder || row.canonical_cover_match === false).length,
   performance_policy: "Runtime SVG cover fallback is deterministic, lightweight, text-free, and lazy-loaded through BookCoverImage for non-LCP surfaces.",
   release_gate_policy: "Cover fallback does not change reader/audiobook release state and does not expose audio controls.",
 };
@@ -454,6 +472,14 @@ fs.writeFileSync(generationJsonOut, `${JSON.stringify({
     front: row.front_uses_runtime_fallback,
     back: row.back_uses_runtime_fallback,
   })),
+  visual_placeholder_candidates: rows
+    .filter((row) => row.cover_is_visual_placeholder || row.canonical_cover_match === false)
+    .map((row) => ({
+      slug: row.slug,
+      front: true,
+      kind: row.canonical_cover_match === false ? "canonical_cover_mismatch" : "visual_placeholder",
+      reason: row.cover_visual_exclusion_reason || "Cover failed visual truth review.",
+    })),
   skipped: [],
   performance_budget_status: "PASS; no raster generation and no new heavy assets",
   manual_review_recommended: rows.some((row) => row.front_cover_status === "GRAPHICAL_COVER_REPAIR_REQUIRED" || row.back_cover_status === "GRAPHICAL_COVER_REPAIR_REQUIRED"),
