@@ -32,11 +32,17 @@ export default function BookCoverImage({
   quality = 82,
   draggable,
   fallback = "E",
+  allowGraphicalFallback = true,
+  onImageError,
 }) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
   const intrinsicHeight = height || Math.round(Number(width || 420) * 4 / 3);
-  const sources = bookCoverImageSources(book, { width, widths, quality, forceFallback: failed, kind });
+  const sources = allowGraphicalFallback
+    ? bookCoverImageSources(book, { width, widths, quality, forceFallback: failed, kind })
+    : failed
+      ? { src: "", srcSet: "", placeholder: "", backgroundColor: "", hasCover: false }
+      : bookCoverImageSources(book, { width, widths, quality, kind });
   const showImage = Boolean(sources.hasCover);
   const coverAlt = typeof alt === "string" ? alt : (book?.title || "Book cover");
   const style = sources.backgroundColor ? { backgroundColor: sources.backgroundColor } : undefined;
@@ -73,7 +79,10 @@ export default function BookCoverImage({
           className={`book-cover-image__img ${imgClassName}`.trim()}
           draggable={draggable}
           onLoad={() => setLoaded(true)}
-          onError={() => setFailed(true)}
+          onError={() => {
+            setFailed(true);
+            onImageError?.(book);
+          }}
         />
       ) : (
         <span className={`book-cover-image__fallback ${fallbackClassName}`.trim()}>

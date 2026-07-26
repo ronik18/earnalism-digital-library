@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from copy import deepcopy
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
 from urllib.parse import urlparse
@@ -32,8 +33,15 @@ except ImportError:  # pragma: no cover - package-style imports in tests
 
 MODULE_DIR = Path(__file__).resolve().parent
 DEFAULT_CURATION_CONFIG_PATH = MODULE_DIR / "data" / "home_hero_curation.json"
+GRAPHICAL_COVER_REPORT_PATH = MODULE_DIR.parent / "graphical_cover_generation_report.json"
 PUBLIC_AUDIO_RELEASE_APPROVED = "PUBLIC_AUDIO_RELEASE_APPROVED"
 AUDIO_QA_PASSED = {"APPROVED", "PASS", "PASSED", "QA_PASSED"}
+COVER_AUDIT_BLOCKED_STATUSES = {
+    "COVER_MISSING",
+    "DESIGNED_PLACEHOLDER_NO_SAFE_LOCAL_COVER",
+    "GRAPHICAL_COVER_REPAIR_REQUIRED",
+    "TYPOGRAPHIC_ONLY_BLOCKER",
+}
 
 HERO_HEADLINE = "A premium reading and listening sanctuary for timeless Bengali and English classics."
 HERO_SUBHEADLINE = (
@@ -82,6 +90,66 @@ def _first_cover(book: dict[str, Any], *keys: str) -> str:
     return ""
 
 
+@lru_cache(maxsize=1)
+def _cover_visual_exclusions() -> dict[str, dict[str, Any]]:
+    """Load checked-in cover exceptions without guessing in React."""
+    report = read_json_file(GRAPHICAL_COVER_REPORT_PATH)
+    if not isinstance(report, dict):
+        return {}
+    exclusions: dict[str, dict[str, Any]] = {}
+    fallback_rows = report.get("runtime_graphical_fallbacks")
+    if isinstance(fallback_rows, list):
+        for row in fallback_rows:
+            if isinstance(row, dict) and row.get("front") is True:
+                slug = str(row.get("slug") or "").strip().lower()
+                if slug:
+                    exclusions[slug] = {
+                        "kind": "runtime_graphical_fallback",
+                        "reason": "Cover-generation report records a runtime graphical fallback.",
+                    }
+    visual_rows = report.get("visual_placeholder_candidates")
+    if isinstance(visual_rows, list):
+        for row in visual_rows:
+            if isinstance(row, dict) and row.get("front") is True:
+                slug = str(row.get("slug") or "").strip().lower()
+                if slug:
+                    exclusions[slug] = {
+                        "kind": str(row.get("kind") or "visual_placeholder").strip().lower(),
+                        "reason": str(row.get("reason") or "Cover failed visual truth review.").strip(),
+                    }
+    return exclusions
+
+
+def _cover_truth(slug: str, book: dict[str, Any], front_cover_url: str) -> dict[str, Any]:
+    """Expose a conservative cover eligibility contract backed by catalog metadata."""
+    status = str(book.get("cover_audit_status") or book.get("cover_status") or "").strip().upper()
+    audit_status = status or ("GRAPHICAL_COVER_APPROVED" if front_cover_url else "COVER_MISSING")
+    url_lower = front_cover_url.lower()
+    exclusion = _cover_visual_exclusions().get(slug.strip().lower())
+    is_runtime_fallback = exclusion is not None and exclusion.get("kind") == "runtime_graphical_fallback"
+    is_visual_placeholder = exclusion is not None and exclusion.get("kind") == "visual_placeholder"
+    is_cover_mismatch = exclusion is not None and exclusion.get("kind") == "canonical_cover_mismatch"
+    is_placeholder = bool(
+        book.get("is_placeholder") is True
+        or is_runtime_fallback
+        or is_visual_placeholder
+        or "placeholder" in url_lower
+        or "placeholder" in status
+    )
+    is_typographic_only = bool(book.get("is_typographic_only") is True or "typographic" in status)
+    canonical_cover_match = book.get("canonical_cover_match") is not False and not is_cover_mismatch
+    cover_valid = bool(front_cover_url) and canonical_cover_match and not is_placeholder and not is_typographic_only and audit_status not in COVER_AUDIT_BLOCKED_STATUSES
+    if exclusion is not None:
+        audit_status = "CANONICAL_COVER_MISMATCH_BLOCKED" if is_cover_mismatch else "VISUAL_PLACEHOLDER_BLOCKED"
+    return {
+        "cover_valid": cover_valid,
+        "is_placeholder": is_placeholder,
+        "is_typographic_only": is_typographic_only,
+        "cover_audit_status": audit_status,
+        "canonical_cover_match": canonical_cover_match,
+    }
+
+
 def _number_or_none(value: Any) -> float | None:
     if isinstance(value, bool):
         return None
@@ -118,6 +186,9 @@ def select_curated_books(books: Iterable[dict[str, Any]], limit: int) -> list[di
         for book in books
         if book.get("reader_enabled") is True
         and is_safe_cover_url(book.get("front_cover_url"))
+        and book.get("cover_valid", True) is not False
+        and book.get("is_placeholder") is not True
+        and book.get("is_typographic_only") is not True
         and book.get("do_not_feature") is not True
     ]
     return sorted(eligible, key=_selection_key)[: max(0, int(limit))]
@@ -157,6 +228,7 @@ def _book_contract(
         "back_cover_image_url",
         "back_cover_thumbnail_url",
     )
+    cover_truth = _cover_truth(slug, book, front_cover_url)
     language = _normalized_language(
         reader_manifest.get("language") or projection.get("language") or projection.get("language_code"),
         title=title,
@@ -179,6 +251,7 @@ def _book_contract(
         "language": language,
         "front_cover_url": front_cover_url,
         "back_cover_url": back_cover_url,
+        **cover_truth,
         "cover_alt_text": f"{title} by {author}",
         "reader_enabled": True,
         "book_url": f"/book/{slug}",
@@ -199,7 +272,7 @@ def _book_contract(
     }
     if audio_enabled:
         contract["audiobook_url"] = f"/api/reader/book/{slug}/audiobook"
-    return contract, "" if front_cover_url else "canonical front cover is missing"
+    return contract, "" if cover_truth["cover_valid"] else "canonical front cover failed cover truth"
 
 
 def _public_book(book: dict[str, Any]) -> dict[str, Any]:
@@ -232,23 +305,26 @@ def _build_shelf_collage(
             for slug in group_slugs
             if slug in contracts_by_slug
             and contracts_by_slug[slug].get("do_not_feature") is not True
-            and is_safe_cover_url(contracts_by_slug[slug].get("front_cover_url"))
+            and contracts_by_slug[slug].get("cover_valid") is True
         ]
         ranked_candidates = select_curated_books(candidates, len(candidates))
         unique_candidates = [
             book for book in ranked_candidates if book["slug"] not in used_visual_slugs
         ]
-        selected = unique_candidates[: max(0, _rank_value(raw_group.get("limit"), 3))]
+        selected = unique_candidates[: max(0, _rank_value(raw_group.get("cover_limit", raw_group.get("limit")), 3))]
         used_visual_slugs.update(book["slug"] for book in selected)
         groups.append({
             "id": str(raw_group.get("id") or "").strip(),
             "title": str(raw_group.get("title") or "").strip(),
             "description": str(raw_group.get("description") or "").strip(),
-            "book_count": len(candidates),
+            "book_count": len(selected),
             "books": [_public_book(book) for book in selected],
             "cta_label": str(raw_group.get("cta_label") or "Explore the library").strip(),
             "cta_url": str(raw_group.get("cta_url") or "/library").strip(),
             "visual_variant": str(raw_group.get("visual_variant") or "medium").strip(),
+            "accent": str(raw_group.get("accent") or "burgundy").strip(),
+            "layout_area": str(raw_group.get("layout_area") or raw_group.get("id") or "shelf").strip(),
+            "editorial_line": str(raw_group.get("editorial_line") or "").strip(),
             "icon": str(raw_group.get("icon") or "book-open").strip(),
         })
 
@@ -288,7 +364,10 @@ def build_home_curated_payload(
         if reason:
             omitted.append({"slug": slug, "reason": reason})
 
-    cover_ready = [book for book in contracts if is_safe_cover_url(book.get("front_cover_url"))]
+    cover_ready = [
+        book for book in contracts
+        if is_safe_cover_url(book.get("front_cover_url")) and book.get("cover_valid") is True
+    ]
     featured = select_curated_books(cover_ready, _rank_value(limits.get("featured_books"), 6))
     reader_favorites = select_curated_books(cover_ready, _rank_value(limits.get("reader_favorites"), 10))
     bengali = select_curated_books(
@@ -300,7 +379,7 @@ def build_home_curated_payload(
         _rank_value(limits.get("english_classics"), 8),
     )
     approved_audio = sorted(
-        (book for book in cover_ready if book.get("audiobook_enabled") is True),
+        (book for book in contracts if book.get("audiobook_enabled") is True),
         key=_selection_key,
     )
     contracts_by_slug = {book["slug"]: book for book in contracts}

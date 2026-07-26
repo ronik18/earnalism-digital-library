@@ -1,17 +1,29 @@
 {
-  "generated_at": "2026-07-07T12:11:32.631Z",
+  "generated_at": "2026-07-26T18:02:47.549Z",
   "generated_covers": [],
   "reused_covers": [
+    "a-ghost-story",
+    "book-2b9853ec52",
     "book-63afd5e9be",
     "book-754da4eab8",
     "book-a74c1a1451",
     "book-c7f3ce526c",
     "book-d19e96859f",
     "book-d2fe532e1c",
+    "book-edfcf810c5",
     "book-f5d593e1f4",
     "dracula",
+    "dsires-baby",
     "muchiram-gurer-jibanchorit",
+    "pride-and-prejudice",
     "radharani",
+    "sredni-vashtar",
+    "the-call-of-the-wild",
+    "the-cop-and-the-anthem",
+    "the-gift-of-the-magi",
+    "the-open-window",
+    "the-secret-garden",
+    "the-time-machine",
     "yugalanguriya"
   ],
   "runtime_graphical_fallbacks": [
@@ -37,11 +49,6 @@
     },
     {
       "slug": "book-1090573dff",
-      "front": true,
-      "back": true
-    },
-    {
-      "slug": "book-2b9853ec52",
       "front": true,
       "back": true
     },
@@ -122,11 +129,6 @@
     },
     {
       "slug": "book-c85323409f",
-      "front": true,
-      "back": true
-    },
-    {
-      "slug": "book-edfcf810c5",
       "front": true,
       "back": true
     },
@@ -216,6 +218,21 @@
       "back": true
     },
     {
+      "slug": "the-last-leaf",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "the-masque-of-the-red-death",
+      "front": true,
+      "back": true
+    },
+    {
+      "slug": "the-monkeys-paw",
+      "front": true,
+      "back": true
+    },
+    {
       "slug": "the-necklace",
       "front": true,
       "back": true
@@ -241,9 +258,58 @@
       "back": true
     },
     {
+      "slug": "white-fang",
+      "front": true,
+      "back": true
+    },
+    {
       "slug": "woman-in-white",
       "front": true,
       "back": true
+    }
+  ],
+  "visual_placeholder_candidates": [
+    {
+      "slug": "a-ghost-story",
+      "front": true,
+      "kind": "canonical_cover_mismatch",
+      "reason": "Current canonical image is titled Bharat at the Crossroads and cannot represent A Ghost Story."
+    },
+    {
+      "slug": "book-2b9853ec52",
+      "front": true,
+      "kind": "visual_placeholder",
+      "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
+    },
+    {
+      "slug": "dsires-baby",
+      "front": true,
+      "kind": "visual_placeholder",
+      "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
+    },
+    {
+      "slug": "sredni-vashtar",
+      "front": true,
+      "kind": "visual_placeholder",
+      "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
+    },
+    {
+      "slug": "the-cop-and-the-anthem",
+      "front": true,
+      "kind": "visual_placeholder",
+      "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
+    },
+    {
+      "slug": "the-gift-of-the-magi",
+      "front": true,
+      "kind": "visual_placeholder",
+      "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
+    },
+    {
+      "slug": "the-open-window",
+      "front": true,
+      "kind": "visual_placeholder",
+      "reason": "Burgundy LIVE CONTROLLED RELEASE template with repeated gold stroke motif."
     }
   ],
   "skipped": [],

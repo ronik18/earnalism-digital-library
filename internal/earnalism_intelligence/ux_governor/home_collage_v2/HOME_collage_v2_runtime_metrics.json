@@ -1,0 +1,387 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "metrics": {
+      "gridAreas": "\"bengali bengali bengali bengali bengali bengali gothic gothic gothic love love love\" \"bengali bengali bengali bengali bengali bengali adventure adventure adventure adventure adventure adventure\"",
+      "gridColumns": "83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px",
+      "gridRows": "336px 336px",
+      "rects": {
+        "Bengali Life & Legacy": {
+          "top": 1173,
+          "left": 80,
+          "right": 707,
+          "bottom": 1870,
+          "width": 627,
+          "height": 698
+        },
+        "Gothic & the Uncanny": {
+          "top": 1173,
+          "left": 733,
+          "right": 1034,
+          "bottom": 1509,
+          "width": 301,
+          "height": 336
+        },
+        "Love, Society & Human Nature": {
+          "top": 1173,
+          "left": 1059,
+          "right": 1360,
+          "bottom": 1509,
+          "width": 301,
+          "height": 336
+        },
+        "Adventure, Nature & Wonder": {
+          "top": 1534,
+          "left": 733,
+          "right": 1360,
+          "bottom": 1870,
+          "width": 627,
+          "height": 336
+        }
+      },
+      "tileCount": 4,
+      "selectedCount": 0,
+      "imageCount": 7,
+      "loadedImageCount": 7,
+      "fallbackCount": 0,
+      "ctaCount": 4,
+      "bodyWidth": 1440,
+      "viewportWidth": 1440,
+      "overflow": false,
+      "selectedRailPresent": false,
+      "missingShelves": "short-masterpieces"
+    },
+    "errors": []
+  },
+  {
+    "width": 1536,
+    "height": 864,
+    "metrics": {
+      "gridAreas": "\"bengali bengali bengali bengali bengali bengali gothic gothic gothic love love love\" \"bengali bengali bengali bengali bengali bengali adventure adventure adventure adventure adventure adventure\"",
+      "gridColumns": "83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px 83.2031px",
+      "gridRows": "336px 336px",
+      "rects": {
+        "Bengali Life & Legacy": {
+          "top": 1235,
+          "left": 128,
+          "right": 755,
+          "bottom": 1933,
+          "width": 627,
+          "height": 698
+        },
+        "Gothic & the Uncanny": {
+          "top": 1235,
+          "left": 781,
+          "right": 1082,
+          "bottom": 1571,
+          "width": 301,
+          "height": 336
+        },
+        "Love, Society & Human Nature": {
+          "top": 1235,
+          "left": 1107,
+          "right": 1408,
+          "bottom": 1571,
+          "width": 301,
+          "height": 336
+        },
+        "Adventure, Nature & Wonder": {
+          "top": 1597,
+          "left": 781,
+          "right": 1408,
+          "bottom": 1933,
+          "width": 627,
+          "height": 336
+        }
+      },
+      "tileCount": 4,
+      "selectedCount": 0,
+      "imageCount": 7,
+      "loadedImageCount": 7,
+      "fallbackCount": 0,
+      "ctaCount": 4,
+      "bodyWidth": 1536,
+      "viewportWidth": 1536,
+      "overflow": false,
+      "selectedRailPresent": false,
+      "missingShelves": "short-masterpieces"
+    },
+    "errors": []
+  },
+  {
+    "width": 1180,
+    "height": 900,
+    "metrics": {
+      "gridAreas": "\"bengali bengali\" \"gothic love\" \"adventure adventure\"",
+      "gridColumns": "557.203px 557.203px",
+      "gridRows": "551.719px 480px 480.484px",
+      "rects": {
+        "Bengali Life & Legacy": {
+          "top": 990,
+          "left": 20,
+          "right": 1160,
+          "bottom": 1542,
+          "width": 1140,
+          "height": 552
+        },
+        "Gothic & the Uncanny": {
+          "top": 1568,
+          "left": 20,
+          "right": 577,
+          "bottom": 2048,
+          "width": 557,
+          "height": 480
+        },
+        "Love, Society & Human Nature": {
+          "top": 1568,
+          "left": 603,
+          "right": 1160,
+          "bottom": 2048,
+          "width": 557,
+          "height": 480
+        },
+        "Adventure, Nature & Wonder": {
+          "top": 2073,
+          "left": 20,
+          "right": 1160,
+          "bottom": 2554,
+          "width": 1140,
+          "height": 480
+        }
+      },
+      "tileCount": 4,
+      "selectedCount": 0,
+      "imageCount": 7,
+      "loadedImageCount": 7,
+      "fallbackCount": 0,
+      "ctaCount": 4,
+      "bodyWidth": 1180,
+      "viewportWidth": 1180,
+      "overflow": false,
+      "selectedRailPresent": false,
+      "missingShelves": "short-masterpieces"
+    },
+    "errors": []
+  },
+  {
+    "width": 984,
+    "height": 1364,
+    "metrics": {
+      "gridAreas": "\"bengali bengali\" \"gothic love\" \"adventure adventure\"",
+      "gridColumns": "459.203px 459.203px",
+      "gridRows": "517.969px 470.391px 470.859px",
+      "rects": {
+        "Bengali Life & Legacy": {
+          "top": 1564,
+          "left": 20,
+          "right": 964,
+          "bottom": 2082,
+          "width": 944,
+          "height": 518
+        },
+        "Gothic & the Uncanny": {
+          "top": 2107,
+          "left": 20,
+          "right": 479,
+          "bottom": 2578,
+          "width": 459,
+          "height": 470
+        },
+        "Love, Society & Human Nature": {
+          "top": 2107,
+          "left": 505,
+          "right": 964,
+          "bottom": 2578,
+          "width": 459,
+          "height": 470
+        },
+        "Adventure, Nature & Wonder": {
+          "top": 2603,
+          "left": 20,
+          "right": 964,
+          "bottom": 3074,
+          "width": 944,
+          "height": 471
+        }
+      },
+      "tileCount": 4,
+      "selectedCount": 0,
+      "imageCount": 7,
+      "loadedImageCount": 7,
+      "fallbackCount": 0,
+      "ctaCount": 4,
+      "bodyWidth": 984,
+      "viewportWidth": 984,
+      "overflow": false,
+      "selectedRailPresent": false,
+      "missingShelves": "short-masterpieces"
+    },
+    "errors": []
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "metrics": {
+      "gridAreas": "\"bengali bengali\" \"gothic love\" \"adventure adventure\"",
+      "gridColumns": "351.203px 351.203px",
+      "gridRows": "517px 469.422px 469.891px",
+      "rects": {
+        "Bengali Life & Legacy": {
+          "top": 1557,
+          "left": 20,
+          "right": 748,
+          "bottom": 2074,
+          "width": 728,
+          "height": 517
+        },
+        "Gothic & the Uncanny": {
+          "top": 2099,
+          "left": 20,
+          "right": 371,
+          "bottom": 2569,
+          "width": 351,
+          "height": 469
+        },
+        "Love, Society & Human Nature": {
+          "top": 2099,
+          "left": 397,
+          "right": 748,
+          "bottom": 2569,
+          "width": 351,
+          "height": 469
+        },
+        "Adventure, Nature & Wonder": {
+          "top": 2594,
+          "left": 20,
+          "right": 748,
+          "bottom": 3064,
+          "width": 728,
+          "height": 470
+        }
+      },
+      "tileCount": 4,
+      "selectedCount": 0,
+      "imageCount": 7,
+      "loadedImageCount": 7,
+      "fallbackCount": 0,
+      "ctaCount": 4,
+      "bodyWidth": 768,
+      "viewportWidth": 768,
+      "overflow": false,
+      "selectedRailPresent": false,
+      "missingShelves": "short-masterpieces"
+    },
+    "errors": []
+  },
+  {
+    "width": 430,
+    "height": 932,
+    "metrics": {
+      "gridAreas": "\"bengali\" \"gothic\" \"love\" \"adventure\"",
+      "gridColumns": "398px",
+      "gridRows": "527.781px 469.422px 469.422px 469.891px",
+      "rects": {
+        "Bengali Life & Legacy": {
+          "top": 1881,
+          "left": 16,
+          "right": 414,
+          "bottom": 2409,
+          "width": 398,
+          "height": 528
+        },
+        "Gothic & the Uncanny": {
+          "top": 2425,
+          "left": 16,
+          "right": 414,
+          "bottom": 2895,
+          "width": 398,
+          "height": 469
+        },
+        "Love, Society & Human Nature": {
+          "top": 2911,
+          "left": 16,
+          "right": 414,
+          "bottom": 3380,
+          "width": 398,
+          "height": 469
+        },
+        "Adventure, Nature & Wonder": {
+          "top": 3396,
+          "left": 16,
+          "right": 414,
+          "bottom": 3866,
+          "width": 398,
+          "height": 470
+        }
+      },
+      "tileCount": 4,
+      "selectedCount": 0,
+      "imageCount": 7,
+      "loadedImageCount": 7,
+      "fallbackCount": 0,
+      "ctaCount": 4,
+      "bodyWidth": 430,
+      "viewportWidth": 430,
+      "overflow": false,
+      "selectedRailPresent": false,
+      "missingShelves": "short-masterpieces"
+    },
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "metrics": {
+      "gridAreas": "\"bengali\" \"gothic\" \"love\" \"adventure\"",
+      "gridColumns": "358px",
+      "gridRows": "513.391px 469.422px 469.422px 469.891px",
+      "rects": {
+        "Bengali Life & Legacy": {
+          "top": 1903,
+          "left": 16,
+          "right": 374,
+          "bottom": 2416,
+          "width": 358,
+          "height": 513
+        },
+        "Gothic & the Uncanny": {
+          "top": 2432,
+          "left": 16,
+          "right": 374,
+          "bottom": 2902,
+          "width": 358,
+          "height": 469
+        },
+        "Love, Society & Human Nature": {
+          "top": 2918,
+          "left": 16,
+          "right": 374,
+          "bottom": 3387,
+          "width": 358,
+          "height": 469
+        },
+        "Adventure, Nature & Wonder": {
+          "top": 3403,
+          "left": 16,
+          "right": 374,
+          "bottom": 3873,
+          "width": 358,
+          "height": 470
+        }
+      },
+      "tileCount": 4,
+      "selectedCount": 0,
+      "imageCount": 7,
+      "loadedImageCount": 7,
+      "fallbackCount": 0,
+      "ctaCount": 4,
+      "bodyWidth": 390,
+      "viewportWidth": 390,
+      "overflow": false,
+      "selectedRailPresent": false,
+      "missingShelves": "short-masterpieces"
+    },
+    "errors": []
+  }
+]

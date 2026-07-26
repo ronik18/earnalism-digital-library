@@ -85,11 +85,7 @@ describe("homepage curation contract", () => {
       approved_audiobook_count: 4,
     });
     expect(snapshot.hero.featured_books).toHaveLength(6);
-    expect(snapshot.shelves.approved_audiobooks.map((book) => book.slug).sort()).toEqual([
-      "a-ghost-story",
-      "book-2b9853ec52",
-      "sredni-vashtar",
-      "the-open-window",
-    ]);
+    expect(snapshot.shelves.approved_audiobooks).toEqual([]);
+    expect(snapshot.shelf_collage.selected_audiobooks).toEqual([]);
   });
 });
