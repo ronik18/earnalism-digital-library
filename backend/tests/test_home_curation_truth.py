@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from backend import catalog_truth
+from backend import catalog_truth, home_curation
 from backend.home_curation import (
     build_home_curated_payload,
     home_curation_evidence,
@@ -127,6 +127,17 @@ def test_cover_visual_exclusion_report_is_bundled_for_backend_deployments():
     }
     assert "book-2b9853ec52" in excluded_slugs
     assert "the-gift-of-the-magi" in excluded_slugs
+
+
+def test_missing_root_report_falls_back_to_bundled_backend_report(monkeypatch):
+    monkeypatch.setattr(
+        home_curation,
+        "GRAPHICAL_COVER_REPORT_PATHS",
+        (ROOT / "does-not-exist.json", ROOT / "backend/data/graphical_cover_generation_report.json"),
+    )
+    home_curation._cover_visual_exclusions.cache_clear()
+    assert "book-2b9853ec52" in home_curation._cover_visual_exclusions()
+    home_curation._cover_visual_exclusions.cache_clear()
 
 
 def test_missing_cover_titles_are_omitted_from_every_visual_collection():
