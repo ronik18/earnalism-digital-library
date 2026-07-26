@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-23T06:45:55Z",
+  "scope": [
+    "book-edfcf810c5",
+    "devdas"
+  ],
+  "provider_calls": 0,
+  "covers_generated": 0,
+  "audio_release_state_mutated": false,
+  "paid_tts_lock_mutated": false,
+  "prior_linkage_evidence_commit": "fccf50e483e4ecebf6f95b90a2df9158b656e7eb",
+  "targets": [
+    {
+      "slug": "book-edfcf810c5",
+      "status": "LINKED_PROVIDER_FREE",
+      "front": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226492/earnalism/covers/front/book-edfcf810c5_front_1024x1536.webp",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "884ddea11547201fbf6b58c6a34aee9cfdaff00d715123806c4e9baf164af839",
+        "resolves": true,
+        "visual_review": "PASS_GRAPHICAL_CONTENT_THEMED_LEGIBLE"
+      },
+      "back": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1784226493/earnalism/covers/back/book-edfcf810c5_back_1024x1536.webp",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "sha256": "506b5b5a924dbf9500ddaa672cf4d826a4dc46df30c114dd4910e22dad36282a",
+        "resolves": true,
+        "visual_review": "PASS_MATCHED_GRAPHICAL_PAIR_LEGIBLE"
+      },
+      "public_book_sha256": "8c2ff4ed6eab9a2c71def4b861d52ba6a8c01d5af1dea163db9d63b4fbb07848",
+      "controlled_publication_mirrors_identical": true,
+      "audio_hidden": true,
+      "blockers": []
+    },
+    {
+      "slug": "devdas",
+      "status": "BLOCKED_INVALID_EXISTING_BACK_COVER",
+      "front": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783315071/earnalism/covers/front/devdas_front_1600x2400.png",
+        "dimensions": [
+          1600,
+          2400
+        ],
+        "sha256": "a68e4ea6a1e177027a2c6b636f7249fbb22a2b26eeb2d462952d2b853e600ead",
+        "resolves": true,
+        "visual_review": "HOLD_GENERIC_GEOMETRIC_ART_REQUIRES_MATCHED_PAIR"
+      },
+      "back": {
+        "url": "https://res.cloudinary.com/dzlrhlfpu/image/upload/v1783315072/earnalism/covers/back/devdas_back_1600x2400.png",
+        "dimensions": [
+          1600,
+          2400
+        ],
+        "sha256": "1f9e60ef69e9f61968f374e681b442dc7210e57b67b78cf8857bfced0ea07b3a",
+        "resolves": true,
+        "visual_review": "FAIL_OVERLAPPING_GARBLED_BENGALI_COPY_UNREADABLE"
+      },
+      "controlled_publication_changed": false,
+      "audio_hidden": true,
+      "blockers": [
+        "BACK_COVER_TEXT_OVERLAP_AND_READABILITY_FAILURE",
+        "OWNER_APPROVED_LEGIBLE_MATCHED_FRONT_BACK_PAIR_REQUIRED"
+      ]
+    }
+  ],
+  "validation": {
+    "cloudinary_credential_and_missing_link_fail_closed_tests": "PASS_5_TESTS",
+    "sprint1_fastpath_tests": "PASS_17_TESTS",
+    "mirror_and_checksum_integrity": "PASS",
+    "remote_asset_resolution_and_dimensions": "PASS_NATIVE_FILE_INSPECTION",
+    "pillow_backed_cover_reuse_test": "NOT_COMPLETED_PIL_IMPORT_HUNG_IN_CURRENT_RUNTIME"
+  },
+  "next_exact_prompt": "Provide an owner-approved, legible, graphical Devdas front/back cover pair. Re-run URL resolution, 6x9 dimension, visual readability, controlled-publication mirror, and checksum checks before linking it; do not change any audio field."
+}

@@ -56,10 +56,12 @@ def test_a_ghost_story_public_detail_falls_back_without_leaking_storage_assets(m
     assert dumped["title"] == "A Ghost Story"
     assert dumped["reader_enabled"] is True
     assert dumped["reader_url"] == "/reader/a-ghost-story"
-    assert dumped["audio_enabled"] is False
-    assert dumped["audiobook_enabled"] is False
-    assert dumped["audio_url"] == ""
-    assert dumped["audio_status"] == "NOT_AVAILABLE"
+    assert dumped["audio_enabled"] is True
+    assert dumped["audiobook_enabled"] is True
+    assert dumped["audio_url"] == "/api/reader/book/a-ghost-story/audiobook"
+    assert dumped["audio_status"] == "AVAILABLE"
+    assert dumped["audiobook_release_gate"] == "APPROVED"
+    assert dumped["audio_qa_status"] == "QA_PASSED"
     assert dumped["cta_label"] == "Read"
     assert "audiobook_assets" not in result
     assert "audiobook" not in result
@@ -74,6 +76,8 @@ def test_a_ghost_story_reader_manifest_has_content_and_approved_audio(monkeypatc
     assert manifest is not None
     assert manifest["book"]["slug"] == "a-ghost-story"
     assert manifest["book"]["reader_enabled"] is True
+    assert manifest["book"]["audio_enabled"] is True
+    assert manifest["book"]["audiobook_enabled"] is True
     assert manifest["audio"]["enabled"] is True
     assert manifest["audio"]["provider"] == "google"
     assert manifest["audio"]["voice"] == "en-GB-Studio-C"

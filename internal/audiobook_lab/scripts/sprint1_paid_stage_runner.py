@@ -76,7 +76,7 @@ def budget_guard(estimated_usd: float, prior_spend_usd: float, env: dict[str, st
     }
 
 
-def load_available_lock(raw: bytes) -> dict[str, Any]:
+def load_available_lock(raw: bytes, *, slug: str) -> dict[str, Any]:
     try:
         payload = json.loads(raw.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
@@ -87,6 +87,11 @@ def load_available_lock(raw: bytes) -> dict[str, Any]:
         raise ValueError("paid_tts.lock already has a holder")
     if payload.get("allowed_next_holders") != []:
         raise ValueError("paid_tts.lock allowed_next_holders must be empty")
+    allowed_slugs = payload.get("allowed_slugs")
+    if allowed_slugs != [slug]:
+        raise ValueError(
+            f"paid_tts.lock slug scope mismatch: requested {slug}, allowed {allowed_slugs}"
+        )
     return payload
 
 
@@ -144,7 +149,7 @@ def run_paid_stage(args: argparse.Namespace, *, env: dict[str, str] | None = Non
             raise ValueError(f"paid_tts.lock is missing: {args.lock_path}")
         original_lock = args.lock_path.read_bytes()
         report["lock_sha256_before"] = sha256_bytes(original_lock)
-        lock = load_available_lock(original_lock)
+        lock = load_available_lock(original_lock, slug=args.slug)
         acquired_payload = acquired_lock_payload(
             lock,
             holder=args.holder,

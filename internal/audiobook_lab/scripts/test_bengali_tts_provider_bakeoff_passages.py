@@ -25,6 +25,41 @@ MANUSCRIPT = " ".join(
 
 
 class SingleTitlePassageTests(unittest.TestCase):
+    def test_voice_filter_is_applied_before_sarvam_voice_limit(self) -> None:
+        provider_env = {
+            "sarvam": {"detected": True},
+            "openai": {"detected": False},
+            "google": {"detected": False},
+            "azure": {"detected": False},
+            "human_licensed_import": {"detected": False},
+        }
+        voices, unavailable, metadata = bakeoff.available_voices(
+            provider_env,
+            limit_per_provider=1,
+            provider_order=["sarvam"],
+            release_policy=bakeoff.BENGALI_AUDIOBOOK_92_POLICY,
+            voice_filters={"ratan"},
+        )
+        filtered = [voice for voice in voices if bakeoff.voice_filter_match(voice, {"ratan"})]
+        prioritized = bakeoff.prioritize_mvp_voices(
+            filtered,
+            bakeoff.BENGALI_AUDIOBOOK_92_POLICY,
+            limit_per_provider=1,
+        )
+        self.assertEqual([voice.voice for voice in prioritized], ["ratan"])
+        self.assertIn("ratan", metadata["sarvam"])
+        self.assertEqual(unavailable, [])
+
+    @mock.patch.object(bakeoff, "run_cmd")
+    def test_quota_probe_reuses_preexisting_short_mp3_without_ffmpeg(self, run_cmd: mock.Mock) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            probe = Path(temporary) / "openai_listening_qa_quota_probe_silence.mp3"
+            probe.write_bytes(b"ID3-private-probe")
+            selected, source = bakeoff._ensure_probe_mp3(Path(temporary))
+        self.assertEqual(selected, probe)
+        self.assertEqual(source, "preexisting_short_mp3_probe")
+        run_cmd.assert_not_called()
+
     def test_nishkriti_uses_backend_canonical_chapters_when_root_copy_is_absent(self) -> None:
         manuscript = bakeoff.latest_clean_manuscript("nishkriti")
         self.assertGreater(len(manuscript), 10000)

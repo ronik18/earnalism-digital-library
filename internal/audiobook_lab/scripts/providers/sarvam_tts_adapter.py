@@ -11,12 +11,11 @@ from __future__ import annotations
 import base64
 import json
 import os
+import urllib.error
+import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
-
-import requests
-
 
 DEFAULT_ENDPOINT = os.environ.get("SARVAM_TTS_ENDPOINT", "https://api.sarvam.ai/text-to-speech")
 DEFAULT_MODEL = os.environ.get("SARVAM_TTS_MODEL", "bulbul:v3")
@@ -142,11 +141,20 @@ def synthesize(text: str, out_path: Path, *, speaker: str, model: str = DEFAULT_
         "api-subscription-key": api_key,
         "Content-Type": "application/json",
     }
-    response = requests.post(DEFAULT_ENDPOINT, headers=headers, data=json.dumps(request_body), timeout=TIMEOUT_SECONDS)
-    if response.status_code >= 400:
-        body = response.text[:500] if response.text else ""
-        raise RuntimeError(f"Sarvam TTS HTTP {response.status_code}: {body}")
-    payload = response.json()
+    request = urllib.request.Request(
+        DEFAULT_ENDPOINT,
+        data=json.dumps(request_body).encode("utf-8"),
+        headers=headers,
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=TIMEOUT_SECONDS) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")[:500]
+        raise RuntimeError(f"Sarvam TTS HTTP {exc.code}: {body}") from exc
+    except urllib.error.URLError as exc:
+        raise RuntimeError(f"Sarvam TTS request failed: {exc.reason}") from exc
     audio_bytes = _extract_audio_bytes(payload)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_bytes(audio_bytes)

@@ -47,6 +47,7 @@ from asr_sync_hook import (  # noqa: E402
     TIERED_AUDIOBOOK_ACCEPTANCE_POLICY,
     UNIVERSAL_LISTENING_POLICY,
     evaluate_listening_evidence,
+    judge_audio_sample_with_vertex,
     listening_policy_for,
     judge_audio_sample_with_openai,
     safe_float,
@@ -238,7 +239,9 @@ def parse_provider_filter(value: str) -> list[str]:
     requested = [item.strip().lower() for item in (value or "").split(",") if item.strip()]
     if not requested:
         return ["sarvam", "google", "azure", "openai"]
-    supported = {"sarvam", "google", "azure", "openai"}
+    # Gemini-TTS is opt-in while its title-specific audition evidence is being
+    # established. Do not add it to the implicit default provider wave.
+    supported = {"sarvam", "google", "gemini_tts", "azure", "openai"}
     return [provider for provider in requested if provider in supported]
 
 
@@ -458,6 +461,22 @@ def detect_provider_env() -> dict[str, Any]:
                 "GOOGLE_CLOUD_PROJECT": bool(os.environ.get("GOOGLE_CLOUD_PROJECT")),
                 "GOOGLE_TTS_PROJECT": bool(os.environ.get("GOOGLE_TTS_PROJECT")),
             },
+        },
+        "gemini_tts": {
+            "detected": bool(
+                os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+                and (os.environ.get("GOOGLE_CLOUD_PROJECT") or os.environ.get("GOOGLE_TTS_PROJECT"))
+            ),
+            "env": {
+                "GOOGLE_APPLICATION_CREDENTIALS": bool(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")),
+                "GOOGLE_CLOUD_PROJECT": bool(os.environ.get("GOOGLE_CLOUD_PROJECT")),
+                "GOOGLE_TTS_PROJECT": bool(os.environ.get("GOOGLE_TTS_PROJECT")),
+                "EARNALISM_APPROVE_GOOGLE_GEMINI_TTS": bool_env("EARNALISM_APPROVE_GOOGLE_GEMINI_TTS"),
+            },
+            "status": "adapter_config_detected" if bool(
+                os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+                and (os.environ.get("GOOGLE_CLOUD_PROJECT") or os.environ.get("GOOGLE_TTS_PROJECT"))
+            ) else "missing_adc_or_project",
         },
         "azure": {
             "detected": bool(os.environ.get("AZURE_SPEECH_KEY") and os.environ.get("AZURE_SPEECH_REGION")),
@@ -764,6 +783,20 @@ def estimate_cost(passages: list[dict[str, str]], voices: list[ProviderVoice]) -
     return round((total_chars / 1000.0) * DEFAULT_ESTIMATED_USD_PER_1K_CHARS, 4)
 
 
+def audio_duration(path: Path) -> float | None:
+    """Read duration without requiring the local FFmpeg runtime to initialize."""
+    try:
+        from mutagen import File as MutagenFile
+
+        parsed = MutagenFile(path)
+        duration = float(getattr(getattr(parsed, "info", None), "length", 0.0) or 0.0)
+        if duration > 0:
+            return duration
+    except Exception:  # noqa: BLE001 - ffprobe remains the portable fallback
+        pass
+    return ffprobe_duration(path)
+
+
 def available_google_voices(limit: int) -> tuple[list[ProviderVoice], list[dict[str, Any]]]:
     try:
         from google.cloud import texttospeech
@@ -832,6 +865,27 @@ def provider_capability_probe(provider_env: dict[str, Any], provider_order: list
             "retryable": not provider_env["google"]["detected"],
             "exact_next_fix": "" if provider_env["google"]["detected"] else "Set GOOGLE_APPLICATION_CREDENTIALS and GOOGLE_CLOUD_PROJECT or GOOGLE_TTS_PROJECT.",
         }
+    if "gemini_tts" in provider_order:
+        try:
+            import google_gemini_tts_adapter
+
+            probe["gemini_tts"] = google_gemini_tts_adapter.capability_probe()
+        except Exception as exc:  # noqa: BLE001
+            probe["gemini_tts"] = {
+                "provider": "google_gemini_tts",
+                "credentials_detected": provider_env["gemini_tts"]["detected"],
+                "auth_status": "adapter_import_failed",
+                "endpoint_used": "https://texttospeech.googleapis.com/v1/text:synthesize",
+                "voices_listed": [],
+                "bengali_voices_detected": [],
+                "sample_synthesis_succeeded": False,
+                "error_message_redacted": str(exc)[:500],
+                "retryable": True,
+                "exact_next_fix": "Repair the stdlib Google Gemini-TTS adapter before any paid audition.",
+                "network_probe_performed": False,
+                "qa_required": True,
+                "release_ready": False,
+            }
     if "azure" in provider_order:
         probe["azure"] = {
             "provider": "azure",
@@ -895,7 +949,7 @@ def _ensure_probe_mp3(run_dir: Path) -> tuple[Path | None, str]:
             return path, "existing_sample"
     probe_path = run_dir / "openai_listening_qa_quota_probe_silence.mp3"
     if probe_path.exists() and probe_path.stat().st_size > 0:
-        return probe_path, "local_silence_probe"
+        return probe_path, "preexisting_short_mp3_probe"
     result = run_cmd(
         [
             "ffmpeg",
@@ -924,6 +978,15 @@ def _ensure_probe_mp3(run_dir: Path) -> tuple[Path | None, str]:
 
 def openai_listening_quota_probe(run_dir: Path) -> dict[str, Any]:
     started = iso_now()
+    judge_provider = os.environ.get("EARNALISM_LISTENING_QA_PROVIDER", "openai").strip().lower()
+    listening_qa_enabled = bool_env("EARNALISM_ENABLE_LISTENING_QA") or bool_env(
+        "EARNALISM_ENABLE_OPENAI_LISTENING_QA"
+    )
+    credential_detected = (
+        bool(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS") and os.environ.get("GOOGLE_CLOUD_PROJECT"))
+        if judge_provider == "vertex"
+        else bool(os.environ.get("OPENAI_API_KEY"))
+    )
     payload: dict[str, Any] = {
         "status": "NOT_RUN",
         "available": False,
@@ -931,19 +994,25 @@ def openai_listening_quota_probe(run_dir: Path) -> dict[str, Any]:
         "started_at": started,
         "finished_at": "",
         "openai_key_detected": bool(os.environ.get("OPENAI_API_KEY")),
-        "listening_qa_enabled": bool_env("EARNALISM_ENABLE_OPENAI_LISTENING_QA"),
-        "model": os.environ.get("EARNALISM_OPENAI_LISTENING_QA_MODEL", ""),
+        "judge_credential_detected": credential_detected,
+        "listening_qa_enabled": listening_qa_enabled,
+        "model": (
+            os.environ.get("EARNALISM_VERTEX_LISTENING_QA_MODEL", "gemini-2.5-flash")
+            if judge_provider == "vertex"
+            else os.environ.get("EARNALISM_OPENAI_LISTENING_QA_MODEL", "")
+        ),
+        "judge_provider": judge_provider,
         "probe_audio_path": "",
         "probe_audio_source": "",
         "error_message_redacted": "",
         "exact_next_fix": "",
     }
-    if not payload["openai_key_detected"]:
+    if not payload["judge_credential_detected"]:
         payload.update(
             {
                 "status": "BLOCKED",
-                "error_message_redacted": "OPENAI_API_KEY missing",
-                "exact_next_fix": "Set OPENAI_API_KEY before schema-3 listening QA.",
+                "error_message_redacted": f"{judge_provider} listening-judge credentials are missing",
+                "exact_next_fix": f"Configure {judge_provider} credentials before schema-3 listening QA.",
             }
         )
         payload["finished_at"] = iso_now()
@@ -953,8 +1022,8 @@ def openai_listening_quota_probe(run_dir: Path) -> dict[str, Any]:
         payload.update(
             {
                 "status": "BLOCKED",
-                "error_message_redacted": "EARNALISM_ENABLE_OPENAI_LISTENING_QA is not true",
-                "exact_next_fix": "Set EARNALISM_ENABLE_OPENAI_LISTENING_QA=true before schema-3 listening QA.",
+                "error_message_redacted": "Listening QA is not enabled",
+                "exact_next_fix": "Set EARNALISM_ENABLE_LISTENING_QA=true before schema-3 listening QA.",
             }
         )
         payload["finished_at"] = iso_now()
@@ -974,29 +1043,24 @@ def openai_listening_quota_probe(run_dir: Path) -> dict[str, Any]:
         write_json(run_dir / "openai_listening_qa_quota_probe.json", payload)
         return payload
     payload["probe_audio_path"] = rel(probe_audio)
-    try:
-        from openai import OpenAI
-    except Exception as exc:  # noqa: BLE001
-        payload.update(
-            {
-                "status": "BLOCKED",
-                "error_message_redacted": f"OpenAI SDK import failed: {exc}",
-                "exact_next_fix": "Install the OpenAI Python SDK in the execution environment.",
-            }
-        )
-        payload["finished_at"] = iso_now()
-        write_json(run_dir / "openai_listening_qa_quota_probe.json", payload)
-        return payload
-
     args = argparse.Namespace(slug="bengali-provider-bakeoff-quota-probe", title="Quota probe", author="Earnalism", language="Bengali")
     judge_input = {
         "sample_label": "openai_listening_qa_quota_probe",
         "start_time": 0.0,
-        "duration": ffprobe_duration(probe_audio) or 1.0,
+        "duration": (
+            1.0
+            if source in {"local_silence_probe", "preexisting_short_mp3_probe"}
+            else audio_duration(probe_audio) or 1.0
+        ),
         "sample_audio_path": rel(probe_audio),
         "sample_audio_hash": sha256_file(probe_audio),
     }
-    judged = judge_audio_sample_with_openai(OpenAI(), args, judge_input)
+    judged = (
+        judge_audio_sample_with_vertex(args, judge_input)
+        if judge_provider == "vertex"
+        else judge_audio_sample_with_openai(None, args, judge_input)
+    )
+    payload["judge_provider"] = judge_provider
     payload["raw_probe_blocker_reason"] = judged.get("blocker_reason", "")
     payload["raw_probe_notes"] = judged.get("notes", "")
     if quota_error_detected(judged.get("notes"), judged.get("blocker_reason"), judged.get("raw_judgment")):
@@ -1005,8 +1069,18 @@ def openai_listening_quota_probe(run_dir: Path) -> dict[str, Any]:
                 "status": QUOTA_BLOCKER,
                 "available": False,
                 "quota_blocked": True,
-                "error_message_redacted": "OpenAI listening judge returned insufficient_quota/quota-billing error.",
-                "exact_next_fix": "Restore OpenAI API billing/quota for the listening-QA model, then rerun with --resume-existing-samples --judge-existing-only.",
+                "error_message_redacted": f"{judge_provider} listening judge returned a quota/billing error.",
+                "exact_next_fix": f"Restore {judge_provider} listening-judge quota, then rerun with --resume-existing-samples --judge-existing-only.",
+            }
+        )
+    elif judged.get("blocker_reason") or not judged.get("raw_judgment"):
+        payload.update(
+            {
+                "status": "BLOCKED",
+                "available": False,
+                "quota_blocked": False,
+                "error_message_redacted": str(judged.get("notes") or "Listening judge returned no evidence.")[:500],
+                "exact_next_fix": "Repair the configured independent listening judge before provider synthesis.",
             }
         )
     else:
@@ -1051,7 +1125,12 @@ def available_voices(
                 if release_policy in {BENGALI_PREMIUM_MVP_POLICY, BENGALI_AUDIOBOOK_92_POLICY}:
                     voice_order = SARVAM_BENGALI_92_VOICE_ORDER if release_policy == BENGALI_AUDIOBOOK_92_POLICY else SARVAM_BENGALI_MVP_VOICE_ORDER
                     rank = {voice: index for index, voice in enumerate(voice_order)}
-                    sarvam_voices = sorted(sarvam_voices, key=lambda voice: (rank.get(voice.speaker, 999), voice.speaker))[:limit_per_provider]
+                    sarvam_voices = sorted(
+                        sarvam_voices,
+                        key=lambda voice: (rank.get(voice.speaker, 999), voice.speaker),
+                    )
+                    if not fetch_all_for_filter:
+                        sarvam_voices = sarvam_voices[:limit_per_provider]
                 voices.extend(
                     ProviderVoice(
                         "sarvam",
@@ -1085,6 +1164,37 @@ def available_voices(
                 )
         else:
             unavailable.append({"provider": "google", "reason": "Google TTS credentials/project env missing"})
+    if "gemini_tts" in provider_order:
+        try:
+            import google_gemini_tts_adapter
+
+            gemini_probe = google_gemini_tts_adapter.capability_probe()
+            if gemini_probe.get("available_for_private_generation"):
+                gemini_voices = google_gemini_tts_adapter.candidate_voices(limit_per_provider)
+                voices.extend(
+                    ProviderVoice(
+                        "gemini_tts",
+                        voice.name,
+                        voice.language_code,
+                        model=voice.model,
+                        output_codec=voice.output_codec,
+                        endpoint_used=google_gemini_tts_adapter.endpoint_for_region(),
+                        style_control=True,
+                    )
+                    for voice in gemini_voices
+                )
+                voice_metadata["gemini_tts"] = [voice.name for voice in gemini_voices]
+            else:
+                unavailable.append(
+                    {
+                        "provider": "gemini_tts",
+                        "reason": gemini_probe.get("error_message_redacted")
+                        or "Gemini-TTS explicit approval, budget, ADC, or project configuration is incomplete.",
+                        "exact_next_fix": gemini_probe.get("exact_next_fix", ""),
+                    }
+                )
+        except Exception as exc:  # noqa: BLE001
+            unavailable.append({"provider": "gemini_tts", "reason": f"Gemini-TTS adapter unavailable: {exc}"})
     if "azure" in provider_order:
         if provider_env["azure"]["detected"]:
             azure_voices = AZURE_VOICES[:limit_per_provider]
@@ -1128,7 +1238,11 @@ def available_voices(
 
 
 def sample_cache_path(run_dir: Path, provider_voice: ProviderVoice, passage: dict[str, str], instructions: str) -> Path:
-    tts_text = prepare_tts_text(passage["text"], provider_voice.style_profile)
+    tts_text = (
+        passage["text"]
+        if provider_voice.provider == "gemini_tts"
+        else prepare_tts_text(passage["text"], provider_voice.style_profile)
+    )
     key = sha256_text(
         json.dumps(
             {
@@ -1250,6 +1364,37 @@ def generate_sarvam_sample(provider_voice: ProviderVoice, text: str, instruction
     )
 
 
+def generate_gemini_tts_sample(
+    provider_voice: ProviderVoice,
+    passage: dict[str, str],
+    text: str,
+    instructions: str,
+    out_path: Path,
+) -> dict[str, Any]:
+    import google_gemini_tts_adapter
+
+    slug = str(passage.get("slug") or "").strip()
+    public_book = read_json(ROOT / "data" / "controlled_publications" / slug / "public_book.json", {})
+    if not public_book:
+        public_book = read_json(ROOT / "backend" / "data" / "controlled_publications" / slug / "public_book.json", {})
+    title = str(public_book.get("title") or "").strip()
+    author = str(public_book.get("author") or "").strip()
+    if not slug or not title or not author:
+        raise RuntimeError("Canonical slug/title/author are required for a Gemini-TTS audition")
+    return google_gemini_tts_adapter.synthesize(
+        text,
+        out_path,
+        slug=slug,
+        title=title,
+        author=author,
+        direction=instructions,
+        voice=provider_voice.voice,
+        model=provider_voice.model,
+        language_code=provider_voice.language_code,
+        expected_source_sha256=sha256_text(text),
+    )
+
+
 def generate_azure_sample(provider_voice: ProviderVoice, text: str, instructions: str, out_path: Path) -> dict[str, Any]:
     import azure.cognitiveservices.speech as speechsdk
 
@@ -1293,7 +1438,13 @@ def generate_azure_sample(provider_voice: ProviderVoice, text: str, instructions
 
 def generate_sample(provider_voice: ProviderVoice, passage: dict[str, str], run_dir: Path, max_seconds: float, *, allow_synthesis: bool = True) -> dict[str, Any]:
     instructions = STYLE_PROFILES[provider_voice.style_profile]
-    tts_text = prepare_tts_text(passage["text"], provider_voice.style_profile)
+    # Gemini receives the exact source-bound passage; delivery style belongs in
+    # its separate prompt field and must never rewrite the manuscript text.
+    tts_text = (
+        passage["text"]
+        if provider_voice.provider == "gemini_tts"
+        else prepare_tts_text(passage["text"], provider_voice.style_profile)
+    )
     out_path = sample_cache_path(run_dir, provider_voice, passage, instructions)
     if out_path.exists() and out_path.stat().st_size > 0:
         status = {
@@ -1340,6 +1491,14 @@ def generate_sample(provider_voice: ProviderVoice, passage: dict[str, str], run_
                     status = generate_openai_sample(provider_voice, tts_text, instructions, out_path)
                 elif provider_voice.provider == "google":
                     status = generate_google_sample(provider_voice, tts_text, instructions, out_path)
+                elif provider_voice.provider == "gemini_tts":
+                    status = generate_gemini_tts_sample(
+                        provider_voice,
+                        passage,
+                        tts_text,
+                        instructions,
+                        out_path,
+                    )
                 elif provider_voice.provider == "azure":
                     status = generate_azure_sample(provider_voice, tts_text, instructions, out_path)
                 else:
@@ -1353,7 +1512,7 @@ def generate_sample(provider_voice: ProviderVoice, passage: dict[str, str], run_
                     "passage_id": passage["passage_id"],
                     "error": str(exc)[:600],
                 }
-    duration = ffprobe_duration(out_path) if out_path.exists() else None
+    duration = audio_duration(out_path) if out_path.exists() else None
     if not duration or duration <= 0:
         return {
             "status": "BLOCKED",
@@ -1385,7 +1544,7 @@ def generate_sample(provider_voice: ProviderVoice, passage: dict[str, str], run_
         )
         if result["returncode"] == 0 and clipped.exists() and clipped.stat().st_size > 0:
             out_path = clipped
-            duration = ffprobe_duration(out_path) or max_seconds
+            duration = audio_duration(out_path) or max_seconds
     return {
         **status,
         "provider": provider_voice.provider,
@@ -1408,31 +1567,30 @@ def generate_sample(provider_voice: ProviderVoice, passage: dict[str, str], run_
 
 
 def judge_sample(sample: dict[str, Any], title: str, author: str, language: str, release_policy: str = UNIVERSAL_LISTENING_POLICY) -> dict[str, Any]:
-    if not os.environ.get("OPENAI_API_KEY"):
+    listening_provider = os.environ.get("EARNALISM_LISTENING_QA_PROVIDER", "openai").strip().lower()
+    credential_detected = (
+        bool(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS") and os.environ.get("GOOGLE_CLOUD_PROJECT"))
+        if listening_provider == "vertex"
+        else bool(os.environ.get("OPENAI_API_KEY"))
+    )
+    if not credential_detected:
         return {
             **sample,
             "judge_status": "BLOCKED",
             "scores": {},
             "confidence": 0.0,
-            "judge_blockers": ["LISTENING_QA_NOT_RUN: OPENAI_API_KEY missing for schema-3 listening QA."],
+            "judge_blockers": [f"LISTENING_QA_NOT_RUN: {listening_provider} judge credentials are missing."],
         }
-    if os.environ.get("EARNALISM_ENABLE_OPENAI_LISTENING_QA", "").strip().lower() not in {"1", "true", "yes"}:
+    if not (
+        bool_env("EARNALISM_ENABLE_LISTENING_QA")
+        or bool_env("EARNALISM_ENABLE_OPENAI_LISTENING_QA")
+    ):
         return {
             **sample,
             "judge_status": "BLOCKED",
             "scores": {},
             "confidence": 0.0,
-            "judge_blockers": ["LISTENING_QA_NOT_RUN: EARNALISM_ENABLE_OPENAI_LISTENING_QA=true is required."],
-        }
-    try:
-        from openai import OpenAI
-    except Exception as exc:  # noqa: BLE001
-        return {
-            **sample,
-            "judge_status": "BLOCKED",
-            "scores": {},
-            "confidence": 0.0,
-            "judge_blockers": [f"LISTENING_QA_NOT_RUN: OpenAI SDK import failed: {exc}"],
+            "judge_blockers": ["LISTENING_QA_NOT_RUN: EARNALISM_ENABLE_LISTENING_QA=true is required."],
         }
     judge_sample = dict(sample)
     source_audio_path = ROOT / str(sample.get("audio_path", ""))
@@ -1480,7 +1638,11 @@ def judge_sample(sample: dict[str, Any], title: str, author: str, language: str,
         "sample_audio_path": judge_sample["listening_qa_audio_path"],
         "sample_audio_hash": judge_sample["listening_qa_audio_hash"],
     }
-    judged = judge_audio_sample_with_openai(OpenAI(), args, judge_input)
+    judged = (
+        judge_audio_sample_with_vertex(args, judge_input)
+        if listening_provider == "vertex"
+        else judge_audio_sample_with_openai(None, args, judge_input)
+    )
     if quota_error_detected(judged.get("notes"), judged.get("blocker_reason"), judged.get("raw_judgment")):
         return {
             **judge_sample,
@@ -2054,10 +2216,11 @@ def write_quota_blocked_report(
     inventory = audio_inventory(run_dir)
     best_observed = best_observed_from_progress(run_dir)
     blocker_code = QUOTA_BLOCKER if quota_probe.get("quota_blocked") or quota_probe.get("status") == QUOTA_BLOCKER else "LISTENING_QA_NOT_AVAILABLE"
+    judge_provider = str(quota_probe.get("judge_provider") or "configured")
     blocker_message = (
-        "OpenAI listening-QA quota/billing must be restored before release-quality judging can continue."
+        f"{judge_provider} listening-QA quota/billing must be restored before release-quality judging can continue."
         if blocker_code == QUOTA_BLOCKER
-        else "OpenAI listening-QA must be available before provider auditions can continue."
+        else f"{judge_provider} listening-QA must be available before provider auditions can continue."
     )
     best_provider = best_observed.get("provider", "")
     best_voice = best_observed.get("voice", "")
@@ -2066,7 +2229,7 @@ def write_quota_blocked_report(
     report_path = run_dir / "bengali_tts_provider_bakeoff_report.json"
     report = {
         "status": "EXTERNAL_ACTION_REQUIRED",
-        "pass_fail_decision": QUOTA_BLOCKER,
+        "pass_fail_decision": blocker_code,
         "qa_schema_version": 3,
         "started_at": started_at,
         "finished_at": iso_now(),
@@ -2103,11 +2266,11 @@ def write_quota_blocked_report(
         "any_audition_passed": False,
         "pilot_slug": "",
         "blockers": [f"{blocker_code}: {blocker_message}"],
-        "recommendation": "Restore OpenAI listening-QA availability, then resume with --resume-existing-samples --judge-existing-only --target-near-pass-only --no-new-synthesis.",
+        "recommendation": f"Restore {judge_provider} listening-QA availability, then resume with --resume-existing-samples --judge-existing-only --target-near-pass-only --no-new-synthesis.",
         "report_path": rel(report_path),
         "status_path": rel(BAKEOFF_STATUS_PATH),
     }
-    write_json(run_dir / "bakeoff_sample_results.json", {"samples": sample_results, "status": QUOTA_BLOCKER})
+    write_json(run_dir / "bakeoff_sample_results.json", {"samples": sample_results, "status": blocker_code})
     report["bengali_existing_sample_judging_report_path"] = write_existing_sample_judging_report(run_dir, report, sample_results)
     report["bengali_provider_audition_report_path"] = write_audition_report(run_dir, report, sample_results, [])
     interrupted_progress = {
@@ -2122,7 +2285,7 @@ def write_quota_blocked_report(
         "final_report_written": True,
         "final_report_path": rel(report_path),
         "known_observed_high_water_before_quota": [best_observed] if best_observed else [],
-        "next_fix": "Restore OpenAI API billing/quota for the configured listening-QA model, then rerun the resume-existing-samples command.",
+        "next_fix": f"Restore {judge_provider} credentials/quota for the configured listening-QA model, then rerun the resume-existing-samples command.",
         "written_at": iso_now(),
     }
     write_json(run_dir / "bengali_provider_bakeoff_interrupted_progress.json", interrupted_progress)
@@ -2251,7 +2414,6 @@ def main() -> int:
         release_policy,
         voice_filters=voice_filters,
     )
-    voices = prioritize_mvp_voices(voices, release_policy, args.max_voices_per_provider)
     if voice_filters:
         voices = [voice for voice in voices if voice_filter_match(voice, voice_filters)]
         unavailable.append(
@@ -2261,6 +2423,7 @@ def main() -> int:
                 "voice_filter": sorted(voice_filters),
             }
         )
+    voices = prioritize_mvp_voices(voices, release_policy, args.max_voices_per_provider)
     if args.target_near_pass_only:
         voices = [voice for voice in voices if voice.provider == "sarvam" and voice.voice in NEAR_PASS_VOICES]
         unavailable.append(
@@ -2458,6 +2621,12 @@ def main() -> int:
                 elif provider_voice.provider == "google":
                     capability_probe[provider_voice.provider]["auth_status"] = "blocked"
                     capability_probe[provider_voice.provider]["exact_next_fix"] = "Refresh Google ADC or provide a Railway service account: gcloud auth application-default login"
+                elif provider_voice.provider == "gemini_tts":
+                    capability_probe[provider_voice.provider]["auth_status"] = "blocked"
+                    capability_probe[provider_voice.provider]["exact_next_fix"] = (
+                        "Repair authorized-user ADC with `gcloud auth application-default login`, "
+                        "then rerun the exact private audition under the paid-stage lock."
+                    )
             cached_judgment = existing_judgments.get(sample_identity(generated)) if generated.get("status") == "PASS" else None
             if cached_judgment and cached_judgment.get("release_policy") == release_policy:
                 judged = {**cached_judgment, "cache_status": generated.get("cache_status", "")}
