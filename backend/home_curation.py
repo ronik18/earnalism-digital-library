@@ -100,7 +100,7 @@ def _cover_visual_exclusions() -> dict[str, dict[str, Any]]:
         (
             candidate
             for path in GRAPHICAL_COVER_REPORT_PATHS
-            if isinstance(candidate := read_json_file(path), dict)
+            if path.exists() and isinstance(candidate := read_json_file(path), dict)
         ),
         {},
     )
