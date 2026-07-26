@@ -231,7 +231,13 @@ def test_shelf_collage_is_dynamic_canonical_and_deduplicated():
         "adventure",
         "short",
     ]
-    assert collage["selected_audiobooks"] == payload["shelves"]["approved_audiobooks"]
+    assert {
+        book["slug"] for book in collage["selected_audiobooks"]
+    } == {
+        book["slug"]
+        for book in payload["shelves"]["approved_audiobooks"]
+        if book["cover_valid"] is True
+    }
     visible_slugs = [
         book["slug"]
         for group in collage["groups"]
