@@ -434,6 +434,7 @@ async def _expensive_job_slot(job_type: str):
 # rights-approved Tier A core reading candidate until the next approval packet
 # is intentionally merged.
 CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION = "audio-contract-v12"
+READER_CONTENT_RENDER_VERSION = "semantic-html-v1"
 CONTROLLED_LIVE_BOOK_SLUGS = CATALOG_TRUTH_LIVE_BOOK_SLUGS
 CONTROLLED_PIPELINE_SLUGS = tuple(sorted(CATALOG_TRUTH_PIPELINE_SLUGS))
 CONTROLLED_AUDIO_ENABLED_SLUGS = tuple(sorted(CATALOG_TRUTH_AUDIO_ENABLED_SLUGS))
@@ -1637,7 +1638,7 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
     if not admin_preview and not _is_controlled_public_slug(slug):
         return ""
     generation = await _reader_content_cache_generation_value()
-    cache_key = f"chapter-content:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
+    cache_key = f"chapter-content:{CONTROLLED_PUBLICATION_TRUTH_GATE_VERSION}:{READER_CONTENT_RENDER_VERSION}:{generation}:{'admin' if admin_preview else 'public'}:{slug}:{chapter_id}"
     cached = await _redis_cache_get("reader-content", cache_key)
     if cached is not None:
         return str(cached or "")
@@ -1663,8 +1664,9 @@ async def _reader_chapter_content(slug: str, chapter_id: str, *, admin_preview: 
             )
             target = ((content_doc or {}).get("chapters") or [{}])[0]
             content = target.get("content", "")
-    await _redis_cache_set("reader-content", cache_key, content, READER_CHAPTER_CACHE_TTL_SECONDS)
-    return content
+    rendered_content, _ = _manual_content_to_render_html(content)
+    await _redis_cache_set("reader-content", cache_key, rendered_content, READER_CHAPTER_CACHE_TTL_SECONDS)
+    return rendered_content
 
 
 def _stable_digest(value: Any, length: int = 16) -> str:
