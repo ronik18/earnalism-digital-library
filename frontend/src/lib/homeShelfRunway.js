@@ -47,3 +47,37 @@ export function getUniqueShelfBooks(group, limit = 3) {
     })
     .slice(0, limit);
 }
+
+function shelfBookLimit(group) {
+  if (group?.display_mode === "runway" || group?.layout_area === "short" || group?.id === "short-masterpieces") return 6;
+  if (group?.display_mode === "duo") return 2;
+  if (group?.display_mode === "spotlight") return 1;
+  return 3;
+}
+
+export function allocateUniqueShelfBooks(groups = []) {
+  const allocatedSlugs = new Set();
+
+  return groups.map((group) => {
+    const candidates = [
+      ...(Array.isArray(group?.books) ? group.books : []),
+      ...(Array.isArray(group?.reserve_books) ? group.reserve_books : []),
+    ];
+    const books = [];
+
+    for (const book of candidates) {
+      if (!book?.slug || allocatedSlugs.has(book.slug) || books.some((item) => item.slug === book.slug)) continue;
+      books.push(book);
+      allocatedSlugs.add(book.slug);
+      if (books.length >= shelfBookLimit(group)) break;
+    }
+
+    return {
+      ...group,
+      books,
+      visible_books: books,
+      reserve_books: [],
+      total_count: books.length,
+    };
+  }).filter((group) => group.books.length > 0);
+}
