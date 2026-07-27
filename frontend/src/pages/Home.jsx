@@ -14,7 +14,6 @@ import {
   Youtube,
 } from "lucide-react";
 import { toast } from "sonner";
-import ComingSoonBoard from "../components/ComingSoonBoard";
 import HomeShelfArchitecture from "../components/HomeShelfArchitecture";
 import { useSettings } from "../context/SettingsContext";
 import { api, formatError } from "../lib/api";
@@ -105,12 +104,12 @@ export default function Home() {
               A calm home for Bengali and English classics, with room to read, reflect, and return.
             </p>
             <p className="home-hero-description mt-4 max-w-2xl font-light text-[#F4EFEA]/82">
-              Graphical editions lead the way. Reader-only titles stay clearly marked, and approved listening rooms appear only after production evidence passes.
+              Illustrated editions lead the way, with quiet reading rooms and a small, carefully selected listening shelf for the late hour.
             </p>
             <div className="reference-hero-trust mt-5" aria-label="Earnalism launch trust signals">
               <span><ShieldCheck size={16} strokeWidth={1.6} /> Rights-safe releases</span>
               <span><BookOpen size={16} strokeWidth={1.6} /> Bengali + English shelves</span>
-              <span><CreditCard size={16} strokeWidth={1.6} /> Audio gated by evidence</span>
+              <span><CreditCard size={16} strokeWidth={1.6} /> Curated listening</span>
             </div>
             <div className="premium-hero-ctas mt-5 sm:mt-6" data-testid="hero-ctas">
               <Link
@@ -130,9 +129,6 @@ export default function Home() {
                 Browse Library <ArrowRight size={15} strokeWidth={1.7} />
               </Link>
             </div>
-            <p className="mt-3 max-w-xl text-[0.66rem] uppercase tracking-[0.16em] text-[var(--brand-gold-soft)]/92 sm:text-[0.7rem]">
-              No unapproved audiobook controls. No typographic-only cover fallbacks.
-            </p>
           </div>
 
           <div className="reference-editorial-stage lg:col-span-5" data-testid="hero-editorial-index">
@@ -140,23 +136,21 @@ export default function Home() {
               <div className="reference-editorial-card__eyebrow">Live shelves</div>
               <div className="reference-editorial-card__rows">
                 <span>Bengali classics</span>
-                <strong>Reader-only editions live</strong>
+                <strong>Stories rooted in Bengal</strong>
               </div>
               <div className="reference-editorial-card__rows">
                 <span>English classics</span>
-                <strong>Dracula and companion shelves</strong>
+                <strong>Dark houses and strange roads</strong>
               </div>
               <div className="reference-editorial-card__rows">
                 <span>Audiobooks</span>
-                <strong>Visible only after release gates pass</strong>
+                <strong>Narrated classics for the late hour</strong>
               </div>
               <div className="reference-editorial-card__mark" aria-hidden="true">E</div>
             </div>
           </div>
         </div>
       </section>
-
-      <ComingSoonBoard />
 
       <HomeShelfArchitecture />
 

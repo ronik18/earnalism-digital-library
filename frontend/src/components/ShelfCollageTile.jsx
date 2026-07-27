@@ -18,7 +18,7 @@ export default function ShelfCollageTile({ group, index = 0 }) {
     ...group,
     books: (Array.isArray(group?.books) ? group.books : [])
       .filter((book) => book?.slug && !failedSlugs.has(book.slug)),
-  });
+  }, group.display_mode === "runway" ? 6 : group.display_mode === "duo" ? 2 : group.display_mode === "spotlight" ? 1 : 3);
   if (!books.length) return null;
 
   const Icon = ICONS[group.icon] || BookOpen;
@@ -37,55 +37,32 @@ export default function ShelfCollageTile({ group, index = 0 }) {
       data-variant={variant}
       aria-labelledby={headingId}
     >
-      <div className="curated-shelf-tile__topline">
-        <span className="curated-shelf-tile__icon" aria-hidden="true">
-          <Icon size={26} strokeWidth={1.35} />
-        </span>
-        <span className="curated-shelf-tile__count">{countLabel}</span>
-      </div>
-      <h3 id={headingId}>{group.title}</h3>
-      <p className="curated-shelf-tile__description">{group.description}</p>
-      {group.editorial_line && <p className="curated-shelf-tile__editorial-line">{group.editorial_line}</p>}
-      <ul className="curated-shelf-tile__themes" aria-label={`${group.title} themes`}>
-        {themeChips.map((theme) => <li key={theme}>{theme}</li>)}
-      </ul>
-
-      <div className="curated-shelf-tile__cover-stage">
-        <ul className="curated-shelf-tile__covers" aria-label={`${group.title} books`}>
-        {books.map((book, bookIndex) => (
-          <li
-            className={`curated-shelf-tile__cover-item ${variant === "shelf-feature" && bookIndex === 1 ? "curated-shelf-tile__cover-item--dominant" : ""}`}
-            key={book.slug}
-            style={{ "--cover-order": bookIndex }}
-          >
-            <Link
-              to={book.book_url}
-              className="curated-shelf-tile__cover-link"
-              aria-label={`Open ${book.title} by ${book.author}`}
-            >
-              <BookCoverImage
-                book={book}
-                alt={book.cover_alt_text}
-                width={220}
-                height={330}
-                widths={[180, 220, 320, 440]}
-                sizes="(min-width: 1200px) 13vw, (min-width: 768px) 22vw, 34vw"
-                className="curated-shelf-tile__cover"
-                loading="lazy"
-                allowGraphicalFallback={false}
-                onImageError={() => setFailedSlugs((current) => new Set([...current, book.slug]))}
-              />
-            </Link>
-          </li>
-        ))}
+      <div className="curated-shelf-tile__body">
+        <div className="curated-shelf-tile__topline" data-content-zone="meta">
+          <span className="curated-shelf-tile__icon" aria-hidden="true"><Icon size={26} strokeWidth={1.35} /></span>
+          <span className="curated-shelf-tile__count">{countLabel}</span>
+        </div>
+        <h3 id={headingId} data-content-zone="title">{group.title}</h3>
+        <div className="curated-shelf-tile__description" data-content-zone="description">
+          <p>{group.description}</p>
+          {group.editorial_line && <p className="curated-shelf-tile__editorial-line">{group.editorial_line}</p>}
+        </div>
+        <ul className="curated-shelf-tile__themes" aria-label={`${group.title} themes`} data-content-zone="chips">
+          {themeChips.map((theme) => <li key={theme}>{theme}</li>)}
         </ul>
-        <span className="curated-shelf-tile__plinth" aria-hidden="true" />
+        <div className="curated-shelf-tile__cover-stage" data-content-zone="covers">
+          <ul className="curated-shelf-tile__covers" aria-label={`${group.title} books`}>
+            {books.map((book, bookIndex) => (
+              <li className={`curated-shelf-tile__cover-item ${variant === "shelf-feature" && bookIndex === 1 ? "curated-shelf-tile__cover-item--dominant" : ""}`} key={book.slug}>
+                <Link to={book.book_url} className="curated-shelf-tile__cover-link" aria-label={`Open ${book.title} by ${book.author}`}>
+                  <BookCoverImage book={book} alt={book.cover_alt_text} width={220} height={330} widths={[180, 220, 320, 440]} sizes="(min-width: 1200px) 13vw, (min-width: 768px) 22vw, 34vw" className="curated-shelf-tile__cover" loading="lazy" allowGraphicalFallback={false} onImageError={() => setFailedSlugs((current) => new Set([...current, book.slug]))} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <Link className="curated-shelf-tile__cta" to={group.cta_url} data-content-zone="cta"><span>{group.cta_label}</span><ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" /></Link>
       </div>
-
-      <Link className="curated-shelf-tile__cta" to={group.cta_url}>
-        <span>{group.cta_label}</span>
-        <ArrowRight size={16} strokeWidth={1.6} aria-hidden="true" />
-      </Link>
     </article>
   );
 }

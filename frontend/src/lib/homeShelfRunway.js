@@ -15,6 +15,10 @@ export const SHELF_THEME_CHIPS = {
 };
 
 export function getShelfVariant(group) {
+  if (group?.display_mode === "runway" || group?.layout_area === "short") return "runway";
+  if (group?.display_mode === "spotlight") return "spotlight";
+  if (group?.display_mode === "duo") return "duo-shelf";
+  if (group?.display_mode === "overflow") return "shelf-feature";
   const count = Array.isArray(group?.books) ? group.books.length : 0;
   if (count >= 3) return "shelf-feature";
   if (count === 2) return "duo-shelf";
@@ -28,7 +32,9 @@ export function getShelfCountLabel(group) {
 }
 
 export function getShelfThemeChips(group) {
-  return SHELF_THEME_CHIPS[group?.id] || [];
+  return Array.isArray(group?.theme_chips) && group.theme_chips.length
+    ? group.theme_chips
+    : SHELF_THEME_CHIPS[group?.id] || [];
 }
 
 export function getUniqueShelfBooks(group, limit = 3) {

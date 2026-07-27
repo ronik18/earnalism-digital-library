@@ -94,11 +94,10 @@ describe("CuratedShelfCollage", () => {
   });
 
   test("uses explicit editorial areas and responsive two-column composition", () => {
-    expect(stylesSource).toContain('grid-template-areas:\n    "bengali bengali bengali bengali bengali bengali bengali gothic gothic gothic gothic gothic"');
-    expect(stylesSource).toContain('"love love love love adventure adventure adventure adventure adventure short short short"');
-    expect(stylesSource).toContain('"bengali bengali"\n      "gothic love"\n      "adventure short"');
-    expect(stylesSource).toContain('"bengali"\n      "gothic"\n      "love"\n      "adventure"\n      "short"');
-    expect(stylesSource).toContain('"bengali bengali"\n      "gothic love"\n      "adventure adventure"');
+    expect(componentSource).toContain('"bengali bengali bengali bengali bengali bengali bengali gothic gothic gothic gothic gothic"');
+    expect(componentSource).toContain('"love love love love love adventure adventure adventure adventure adventure adventure adventure"');
+    expect(stylesSource).toContain("grid-template-areas: var(--shelf-grid-areas-tablet)");
+    expect(stylesSource).toContain("grid-template-areas: var(--shelf-grid-areas-mobile)");
     expect(componentSource).toContain('curated-shelf-collage--missing-short');
     expect(stylesSource).toContain("grid-area: var(--shelf-area)");
     expect(tileSource).toContain("data-layout-area={group.layout_area");
