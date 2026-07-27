@@ -972,6 +972,16 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.curated-shelf-tile--runway .curated-shelf-tile__body > h3 {
+  font-size: 1.35rem;
+  font-size: clamp(1.35rem, 7.2cqw, 1.65rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
 @container (max-width: 42rem) {
   .curated-shelf-tile__body,
   .curated-shelf-tile--runway .curated-shelf-tile__body {
