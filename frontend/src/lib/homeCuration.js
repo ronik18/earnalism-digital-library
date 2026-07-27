@@ -1,4 +1,5 @@
 import { api } from "./api";
+import homeCuratedSprint1 from "../data/homeCuratedSprint1.json";
 
 export const HOME_SHELF_ORDER = [
   "bengali-life-and-legacy",
@@ -132,7 +133,13 @@ export function approvedListeningBooks(payload = {}) {
 }
 
 export function getHomeCurationSnapshot() {
-  return normalizeHomeCuration({ literary_shelves: [], audiobook_shelf: null, source: { truth_source: "runtime_endpoint_pending" } });
+  return normalizeHomeCuration({
+    ...homeCuratedSprint1,
+    source: {
+      ...(homeCuratedSprint1.source || {}),
+      truth_source: "bundled_sprint1_release_snapshot",
+    },
+  });
 }
 
 export async function fetchHomeCuration(signal) {

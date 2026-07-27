@@ -41,6 +41,17 @@ describe("PremiumHero public contract", () => {
     expect(hoverRule).toContain("box-shadow: none;");
   });
 
+  test("keeps canonical desktop book jackets visible over the blank reference slots", () => {
+    expect(styles).toContain(
+      ".premium-reference-slot .book-cover-image--loaded .book-cover-image__img",
+    );
+    expect(styles).toMatch(
+      /\.premium-reference-slot \.book-cover-image--loaded \.book-cover-image__img\s*\{\s*opacity: 1;/,
+    );
+    expect(source).toContain('fetchPriority={eager ? "high" : undefined}');
+    expect(source).toContain("eager");
+  });
+
   test("renders the owner-approved reader-facing feature copy", () => {
     expect(source).toContain("Curated Classics");
     expect(source).toContain("Immersive Audiobooks");

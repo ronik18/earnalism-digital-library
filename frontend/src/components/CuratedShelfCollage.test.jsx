@@ -1,7 +1,12 @@
 import fs from "fs";
 import path from "path";
 import { normalizeHomeCuration } from "../lib/homeCuration";
-import { getShelfCountLabel, getShelfVariant, getUniqueShelfBooks } from "../lib/homeShelfRunway";
+import {
+  allocateUniqueShelfBooks,
+  getShelfCountLabel,
+  getShelfVariant,
+  getUniqueShelfBooks,
+} from "../lib/homeShelfRunway";
 import { buildShelfGridLayout, normalizeShelfArea } from "../lib/shelfGridLayout";
 
 const componentSource = fs.readFileSync(
@@ -142,6 +147,28 @@ describe("CuratedShelfCollage", () => {
     expect(getShelfVariant({ books: [readerBook, { ...readerBook, slug: "second" }, { ...readerBook, slug: "third" }] })).toBe("shelf-feature");
     expect(getShelfCountLabel({ books: [readerBook] })).toBe("Featured classic");
     expect(getUniqueShelfBooks({ books: [readerBook, readerBook, { ...readerBook, slug: "second" }] })).toHaveLength(2);
+  });
+
+  test("allocates each canonical cover to only one collage tile", () => {
+    const duplicate = { ...readerBook, slug: "duplicate" };
+    const unique = { ...readerBook, slug: "unique" };
+    const groups = allocateUniqueShelfBooks([
+      { id: "gothic-and-the-uncanny", books: [duplicate] },
+      { id: "short-masterpieces", display_mode: "runway", books: [duplicate, unique] },
+    ]);
+
+    expect(groups.map((group) => group.books.map((book) => book.slug))).toEqual([
+      ["duplicate"],
+      ["unique"],
+    ]);
+    expect(componentSource).toContain("allocateUniqueShelfBooks");
+  });
+
+  test("keeps the final production geometry contract collision resistant", () => {
+    expect(stylesSource).toContain("Production geometry contract");
+    expect(stylesSource).toContain('grid-template-areas:\n    "meta covers"');
+    expect(stylesSource).toContain("grid-template-columns: repeat(3, minmax(0, 1fr));");
+    expect(stylesSource).toContain("grid-template-rows: repeat(var(--shelf-grid-row-count-mobile), minmax(0, auto));");
   });
 
   test("does not use public governance language or placeholder imagery", () => {

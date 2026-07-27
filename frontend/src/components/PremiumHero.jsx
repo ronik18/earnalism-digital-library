@@ -117,6 +117,7 @@ function CatalogCoverLink({
         height={360}
         widths={widths}
         loading={eager ? "eager" : "lazy"}
+        fetchPriority={eager ? "high" : undefined}
         allowGraphicalFallback={false}
         onPermanentFailure={() => setCoverFailed(true)}
       />
@@ -231,7 +232,7 @@ function ReferenceCatalogStage({ featuredBooks, approvedAudiobooks }) {
           className={`premium-reference-slot premium-reference-slot--desk-${index + 1}`}
           sizes="9vw"
           widths={[160, 320]}
-          eager={false}
+          eager
         />
       ))}
     </div>
@@ -275,9 +276,14 @@ export default function PremiumHero({
   const isDesktopReference = useDesktopReference();
   const [referenceArtFailed, setReferenceArtFailed] = useState(false);
   const hero = curation?.hero || {};
-  const shelves = curation?.shelves || {};
   const featuredBooks = Array.isArray(hero.featured_books) ? hero.featured_books.slice(0, 6) : [];
-  const approvedAudiobooks = Array.isArray(shelves.approved_audiobooks) ? shelves.approved_audiobooks : [];
+  const approvedAudiobooks = Array.isArray(curation?.listening_rooms?.items)
+    ? curation.listening_rooms.items
+    : Array.isArray(curation?.selected_audiobooks)
+      ? curation.selected_audiobooks
+      : Array.isArray(curation?.audiobook_shelf?.books)
+        ? curation.audiobook_shelf.books
+        : [];
   const primaryCta = hero.primary_cta?.url ? hero.primary_cta : { label: "Start Reading", url: "/library" };
   const secondaryCta = hero.secondary_cta?.url
     ? hero.secondary_cta

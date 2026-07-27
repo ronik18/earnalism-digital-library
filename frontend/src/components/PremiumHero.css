@@ -278,6 +278,21 @@
     opacity: 0;
   }
 
+  /* The reference artwork intentionally leaves the four book jackets blank.
+     Canonical catalog covers remain live DOM content and must stay visible. */
+  .premium-reference-hero--exact .premium-reference-catalog--exact
+    .premium-reference-slot .book-cover-image--loaded .book-cover-image__img {
+    opacity: 1;
+  }
+
+  .premium-reference-hero--exact .premium-reference-catalog--exact
+    .premium-reference-slot.premium-hero-cover-mask {
+    background:
+      linear-gradient(150deg, rgba(62, 30, 18, 0.98), rgba(14, 6, 4, 0.99)),
+      #1a0b07;
+    box-shadow: inset 0 0 0 1px rgba(228, 180, 92, 0.22);
+  }
+
   .premium-reference-hero--exact .premium-reference-catalog--exact .premium-reference-tablet::after {
     display: none;
   }

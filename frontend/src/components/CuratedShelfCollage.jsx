@@ -2,15 +2,15 @@ import { ArrowRight, LibraryBig } from "lucide-react";
 import { Link } from "react-router-dom";
 import ShelfCollageTile from "./ShelfCollageTile";
 import "./CuratedShelfCollage.css";
-import { SHELF_RUNWAY_ORDER } from "../lib/homeShelfRunway";
+import { allocateUniqueShelfBooks, SHELF_RUNWAY_ORDER } from "../lib/homeShelfRunway";
 import { buildShelfGridLayout, normalizeShelfArea, SHELF_AREAS } from "../lib/shelfGridLayout";
 
 export default function CuratedShelfCollage({ curation }) {
   const groups = Array.isArray(curation?.groups)
-    ? curation.groups
-      .filter((group) => group?.books?.length)
+    ? allocateUniqueShelfBooks(curation.groups
+      .filter((group) => group?.books?.length || group?.reserve_books?.length)
       .map((group) => ({ ...group, layout_area: normalizeShelfArea(group) }))
-      .sort((left, right) => SHELF_RUNWAY_ORDER.indexOf(left.id) - SHELF_RUNWAY_ORDER.indexOf(right.id))
+      .sort((left, right) => SHELF_RUNWAY_ORDER.indexOf(left.id) - SHELF_RUNWAY_ORDER.indexOf(right.id)))
     : [];
   const gridLayout = buildShelfGridLayout(groups);
   const missingShelfIds = SHELF_AREAS.filter((area) => !gridLayout.areas.has(area));
