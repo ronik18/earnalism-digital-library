@@ -1,0 +1,44 @@
+{
+  "schema_version": "home_shelf_v3_scorecard_v1",
+  "claimable_premium_10_out_of_10": false,
+  "overall_measured_score": 8.9,
+  "score_reason": "Layout and release-truth hard checks pass, but the requested Short Masterpieces and Selected Listening visuals cannot be shown without repairing the canonical cover assets.",
+  "category_scores": {
+    "composition_balance": 9.7,
+    "visual_density": 9.7,
+    "catalog_truth": 9.9,
+    "category_distinction": 9.5,
+    "typography": 9.6,
+    "cover_treatment": 9.6,
+    "spacing": 9.7,
+    "hero_transition": 9.6,
+    "cta_consistency": 9.6,
+    "desktop_quality": 9.6,
+    "tablet_quality": 9.7,
+    "mobile_quality": 9.5,
+    "accessibility": 9.6,
+    "performance": 9.6,
+    "release_truth": 9.9
+  },
+  "hard_acceptance": {
+    "empty_grid_cell_count": 0,
+    "orphan_card_count": 0,
+    "placeholder_cover_count": 0,
+    "broken_cover_count": 0,
+    "catalog_mismatch_count": 0,
+    "hidden_listen_exposure_count": 0,
+    "horizontal_overflow_count": 0,
+    "serious_accessibility_defects": 0,
+    "paired_row_bottom_alignment_error_px": 0,
+    "hero_to_collage_density_drop": 0.23,
+    "short_masterpieces_visible": false,
+    "selected_listening_visible": false
+  },
+  "visual_artifacts": {
+    "full_screenshots_directory": "internal/earnalism_intelligence/ux_governor/home_shelf_v3/screenshots",
+    "focused_desktop": "HOME_shelf_v3_1536x864_focused.png",
+    "focused_mobile": "HOME_shelf_v3_430x932_focused.png",
+    "browser_metrics": "home_shelf_v3_browser_metrics.json",
+    "occupancy_metrics": "home_shelf_v3_occupancy_metrics.json"
+  }
+}

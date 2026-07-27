@@ -1,0 +1,31 @@
+{
+  "schema_version": "home_horizontal_density_v3",
+  "measurement_method": "structural section scoring plus local production-build browser geometry",
+  "target_ranges": {
+    "hero": [1.0, 1.0],
+    "hero_feature_rail": [0.82, 0.92],
+    "collage_intro": [0.52, 0.66],
+    "genre_collage": [0.68, 0.82],
+    "selected_listening": [0.75, 0.88]
+  },
+  "measured": {
+    "hero": 1.0,
+    "hero_feature_rail": 0.88,
+    "collage_intro": 0.6,
+    "genre_collage": 0.77,
+    "selected_listening": null
+  },
+  "density_delta_checks": {
+    "hero_to_collage_drop": 0.23,
+    "largest_adjacent_section_delta": 0.23,
+    "within_target_drop": true,
+    "selected_listening_not_scored": true,
+    "selected_listening_reason": "Canonical approved-audiobook covers currently fail cover truth, so the rail is safely omitted rather than rendering status or placeholder cards."
+  },
+  "browser_geometry": {
+    "viewports_checked": ["1536x864", "1440x900", "1180x900", "984x1364", "768x1024", "430x932", "390x844"],
+    "horizontal_overflow_count": 0,
+    "paired_row_bottom_alignment_error_max_px": 0,
+    "unsupported_empty_grid_cells": 0
+  }
+}

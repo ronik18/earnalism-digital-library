@@ -3,28 +3,23 @@ import { Link } from "react-router-dom";
 import ShelfCollageTile from "./ShelfCollageTile";
 import SelectedListeningRail from "./SelectedListeningRail";
 import "./CuratedShelfCollage.css";
-
-const SHELF_ORDER = [
-  "bengali-life-and-legacy",
-  "gothic-and-the-uncanny",
-  "love-society-and-human-nature",
-  "adventure-nature-and-wonder",
-  "short-masterpieces",
-];
+import { SHELF_RUNWAY_ORDER } from "../lib/homeShelfRunway";
 
 export default function CuratedShelfCollage({ curation }) {
   const groups = Array.isArray(curation?.groups)
     ? curation.groups
       .filter((group) => group?.books?.length)
-      .sort((left, right) => SHELF_ORDER.indexOf(left.id) - SHELF_ORDER.indexOf(right.id))
+      .sort((left, right) => SHELF_RUNWAY_ORDER.indexOf(left.id) - SHELF_RUNWAY_ORDER.indexOf(right.id))
     : [];
   const selectedAudiobooks = Array.isArray(curation?.selected_audiobooks)
     ? curation.selected_audiobooks
     : [];
-  const missingShelfIds = SHELF_ORDER.filter((id) => !groups.some((group) => group.id === id));
+  const missingShelfIds = SHELF_RUNWAY_ORDER.filter((id) => !groups.some((group) => group.id === id));
   const layoutClass = missingShelfIds.includes("short-masterpieces")
     ? "curated-shelf-collage--missing-short"
-    : "";
+    : missingShelfIds.length
+      ? `curated-shelf-collage--missing-${missingShelfIds.map((id) => id.replaceAll("-", "_")).join("-")}`
+      : "";
 
   if (!groups.length && !selectedAudiobooks.length) return null;
 

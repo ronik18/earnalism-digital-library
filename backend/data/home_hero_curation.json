@@ -61,9 +61,13 @@
         "cover_limit": 3,
         "slugs": [
           "book-2b9853ec52",
+          "bn-066",
           "pather-panchali",
           "radharani",
           "nishkriti",
+          "muchiram-gurer-jibanchorit",
+          "book-d19e96859f",
+          "book-f5d593e1f4",
           "devdas",
           "book-edfcf810c5"
         ]
@@ -88,7 +92,8 @@
           "the-masque-of-the-red-death",
           "the-yellow-wallpaper",
           "the-monkeys-paw",
-          "sredni-vashtar"
+          "sredni-vashtar",
+          "book-edfcf810c5"
         ]
       },
       {
@@ -109,7 +114,8 @@
           "dsires-baby",
           "the-last-leaf",
           "radharani",
-          "nishkriti"
+          "nishkriti",
+          "dsires-baby"
         ]
       },
       {
