@@ -306,6 +306,12 @@ def build_home_curated_payload_v4(books: Iterable[dict[str, Any]], *, config: di
     config = config or {}
     contracts = [_book_contract(book, config, (audio_contracts or {}).get(str(book.get("slug") or "").lower())) for book in books]
     contracts = [book for book in contracts if book and book.get("title") and book.get("author")]
+    contract_by_slug = {book["slug"]: book for book in contracts}
+    sprint1_slugs = tuple(
+        str(slug or "").strip().lower()
+        for slug in (config.get("sprint1_active_slugs") or ())
+        if str(slug or "").strip()
+    )
     literary_shelves: list[dict[str, Any]] = []
     used_slugs: set[str] = set()
     for definition in SHELF_DEFINITIONS:
@@ -358,5 +364,14 @@ def build_home_curated_payload_v4(books: Iterable[dict[str, Any]], *, config: di
         "shelves": {"approved_audiobooks": listening_items},
         "groups": groups,
         "selected_audiobooks": audiobook_shelf["books"],
-        "source": {"truth_source": "public_catalog_and_canonical_reader_manifest", "generated_at": generated_at or datetime.now(timezone.utc).isoformat(), "live_title_count": len(contracts), "audiobook_count": len(audio_candidates), "catalog_version": "home-curated-v4"},
+        "source": {
+            "truth_source": "public_catalog_and_canonical_reader_manifest",
+            "generated_at": generated_at or datetime.now(timezone.utc).isoformat(),
+            "live_title_count": len(contracts),
+            "reader_enabled_count": len(contracts),
+            "sprint1_active_count": sum(slug in contract_by_slug for slug in sprint1_slugs),
+            "audiobook_count": len(audio_candidates),
+            "approved_audiobook_count": len(audio_candidates),
+            "catalog_version": "home-curated-v4",
+        },
     }

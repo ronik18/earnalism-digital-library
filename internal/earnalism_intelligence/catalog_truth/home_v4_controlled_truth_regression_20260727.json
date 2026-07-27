@@ -1,0 +1,92 @@
+{
+  "schema": "earnalism.home_v4_controlled_truth_regression.v1",
+  "generated_at": "2026-07-27T17:46:56Z",
+  "status": "SOURCE_FIX_VALIDATED_DEPLOY_REQUIRED",
+  "production_before_fix": {
+    "endpoint": "https://api.theearnalism.com/api/home/curated",
+    "catalog_version": "home-curated-v4",
+    "live_title_count": 19,
+    "sprint1_active_count_present": false,
+    "approved_audiobook_count": 3,
+    "approved_audiobook_slugs": [
+      "a-ghost-story",
+      "sredni-vashtar",
+      "the-open-window"
+    ],
+    "missing_approved_home_audio_slug": "book-2b9853ec52"
+  },
+  "independent_book_truth": {
+    "endpoint": "https://api.theearnalism.com/api/books/book-2b9853ec52",
+    "slug": "book-2b9853ec52",
+    "title": "দুই বিঘা জমি",
+    "audiobook_enabled": true,
+    "audio_enabled": true,
+    "audiobook_release_gate": "APPROVED",
+    "audio_qa_status": "QA_PASSED",
+    "audio_url": "/api/reader/book/book-2b9853ec52/audiobook"
+  },
+  "root_cause": {
+    "deployed_main_commit": "e247c5c843d8dc84fe840d750afc1a6bb39bed76",
+    "summary_projection_excludes_audio_release_fields": true,
+    "same_slug_database_summary_prevented_controlled_artifact_load": true,
+    "effect": "A compact database summary shadowed complete controlled reader and audio truth in Home v4."
+  },
+  "repair": {
+    "controlled_artifact_precedence": true,
+    "database_editorial_fields_preserved": [
+      "editorial_shelf_ids",
+      "home_shelf_ids",
+      "home_feature_eligible",
+      "home_shelf_rank",
+      "admin_pinned",
+      "do_not_feature",
+      "popularity_score",
+      "freshness_score",
+      "release_cycle",
+      "sprint_id",
+      "published_at"
+    ],
+    "database_fields_forbidden_from_overriding_truth": [
+      "reader_enabled",
+      "audiobook_enabled",
+      "audiobook_release_gate",
+      "audio_qa_status",
+      "cover_valid",
+      "cover_audit_status"
+    ],
+    "cache_key_rotated": true,
+    "source_counters_restored": [
+      "reader_enabled_count",
+      "sprint1_active_count",
+      "approved_audiobook_count"
+    ]
+  },
+  "offline_expected_payload": {
+    "live_title_count": 43,
+    "reader_enabled_count": 43,
+    "sprint1_active_count": 32,
+    "approved_audiobook_count": 4,
+    "approved_audiobook_slugs": [
+      "book-2b9853ec52",
+      "a-ghost-story",
+      "sredni-vashtar",
+      "the-open-window"
+    ]
+  },
+  "validation": {
+    "focused_home_and_public_audio_tests": "41 passed",
+    "release_truth_and_hidden_audio_tests": "36 passed",
+    "b2_audiobook_routing_tests": "10 passed",
+    "total_focused_tests": 87,
+    "git_diff_check": "PASS",
+    "public_audio_mutated": false,
+    "release_gate_mutated": false,
+    "private_audio_touched": false,
+    "paid_tts_lock_touched": false
+  },
+  "known_unrelated_baseline_debt": [
+    "Ten legacy backend catalog tests still assert the superseded Dracula-only launch model.",
+    "Two reader-content tests still assert pre-normalization raw text instead of current paragraph HTML."
+  ],
+  "next_exact_command": "git push origin codex/main-approved-integration"
+}
