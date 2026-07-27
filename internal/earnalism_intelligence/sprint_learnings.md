@@ -596,3 +596,11 @@ LIBRARY owner approval must be recorded as a phase transition, not a launch-gree
   A 9.0 representative sample can authorize only a private full-title pilot;
   it cannot approve public release or expose Listen.
 - Historical `bengali_audiobook_acceptance_v2_92` evidence remains immutable.
+
+## 2026-07-27 Home v4 controlled-artifact precedence
+
+- Production Home v4 dropped `book-2b9853ec52` from its approved-audiobook rail and reported only 19 live contracts even though the independent book endpoint still proved its audiobook `APPROVED` and `QA_PASSED`.
+- `BOOK_SUMMARY_PROJECTION` intentionally excludes audio release fields. Treating a same-slug database summary as complete prevented the canonical controlled artifact from loading and let incomplete database state shadow release truth.
+- Home now overlays validated controlled artifacts for every controlled slug. Only whitelisted editorial fields survive from the database; reader, rights, cover, audio, and QA truth remain artifact-governed.
+- The Home cache key must rotate whenever truth precedence changes. Otherwise Redis may continue serving the regressed payload after correct source is deployed.
+- Offline reconstruction proves all 32 Sprint 1 readers and the exact four approved audiobooks, with 87 focused tests passing and no audio gate, media, or paid-lock mutation.

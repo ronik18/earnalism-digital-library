@@ -1015,6 +1015,19 @@ BOOK_SUMMARY_PROJECTION = {
     "release_cycle": 1,
     "published_at": 1,
 }
+HOME_CURATION_DB_FIELDS = (
+    "editorial_shelf_ids",
+    "home_shelf_ids",
+    "home_feature_eligible",
+    "home_shelf_rank",
+    "admin_pinned",
+    "do_not_feature",
+    "popularity_score",
+    "freshness_score",
+    "release_cycle",
+    "sprint_id",
+    "published_at",
+)
 PUBLIC_CACHE_PATHS = {
     "/api/home",
     "/api/home/books",
@@ -1385,6 +1398,52 @@ def _append_controlled_artifact_projections(
         if projected:
             appended.append(projected)
     return [*appended, *books]
+
+
+def _home_curation_controlled_truth_docs(books: list[dict]) -> list[dict]:
+    """Resolve Home books with controlled publication truth taking precedence.
+
+    The Home query intentionally uses a compact projection that excludes audio
+    assets and release evidence. A same-slug database summary must therefore
+    never shadow its complete controlled artifact. Editorial fields remain
+    database-controlled, but reader, rights, cover, and audio truth come from
+    the validated artifact.
+    """
+
+    database_by_slug: dict[str, dict] = {}
+    database_order: list[str] = []
+    unkeyed: list[dict] = []
+    for book in books:
+        slug = str(book.get("slug") or "").strip().lower()
+        if not slug:
+            unkeyed.append(book)
+            continue
+        if slug not in database_by_slug:
+            database_order.append(slug)
+        database_by_slug[slug] = book
+
+    resolved: list[dict] = []
+    resolved_slugs: set[str] = set()
+    for slug in CONTROLLED_LIVE_BOOK_SLUGS:
+        database_book = database_by_slug.get(slug)
+        artifact = _controlled_artifact_doc(slug, include_content=False)
+        if artifact:
+            merged = {**(database_book or {}), **artifact, "slug": slug}
+            if database_book:
+                for field in HOME_CURATION_DB_FIELDS:
+                    if field in database_book:
+                        merged[field] = database_book[field]
+            resolved.append(merged)
+            resolved_slugs.add(slug)
+        elif database_book:
+            resolved.append(database_book)
+            resolved_slugs.add(slug)
+
+    for slug in database_order:
+        if slug not in resolved_slugs:
+            resolved.append(database_by_slug[slug])
+    resolved.extend(unkeyed)
+    return resolved
 
 
 def _append_dracula_artifact_projection(
@@ -4685,7 +4744,7 @@ async def list_categories():
 @api.get("/home/curated")
 async def get_home_curated():
     """Return one canonical, release-safe Home curation contract."""
-    cache_key = _public_cache_key("home_curated_v4")
+    cache_key = _public_cache_key("home_curated_v4_controlled_truth_v2")
     cached = await _public_cache_get(cache_key)
     if cached is not None:
         return cached
@@ -4694,13 +4753,7 @@ async def get_home_curated():
         _controlled_public_book_query(),
         BOOK_SUMMARY_PROJECTION,
     ).sort("created_at", -1).to_list(500)
-    seen = {str(doc.get("slug") or "").strip().lower() for doc in docs}
-    for slug in CONTROLLED_LIVE_BOOK_SLUGS:
-        if slug in seen:
-            continue
-        artifact = _controlled_artifact_doc(slug, include_content=False)
-        if artifact:
-            docs.append(artifact)
+    docs = _home_curation_controlled_truth_docs(docs)
 
     audio_contracts: dict[str, dict[str, Any]] = {}
     for doc in docs:
