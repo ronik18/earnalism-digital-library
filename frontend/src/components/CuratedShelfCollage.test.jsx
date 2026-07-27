@@ -169,6 +169,9 @@ describe("CuratedShelfCollage", () => {
     expect(stylesSource).toContain('grid-template-areas:\n    "meta covers"');
     expect(stylesSource).toContain("grid-template-columns: repeat(3, minmax(0, 1fr));");
     expect(stylesSource).toContain("grid-template-rows: repeat(var(--shelf-grid-row-count-mobile), minmax(0, auto));");
+    expect(stylesSource).toContain(".curated-shelf-tile--runway .curated-shelf-tile__body > h3");
+    expect(stylesSource).toContain("overflow-wrap: normal;");
+    expect(stylesSource).toContain("word-break: normal;");
   });
 
   test("does not use public governance language or placeholder imagery", () => {
